@@ -320,10 +320,10 @@ importers:
   semcore/accordion:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       csstype:
         specifier: 3.1.3
@@ -345,22 +345,22 @@ importers:
   semcore/add-filter:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 16.4.4
-        version: 16.4.4(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../base-trigger
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/dropdown':
-        specifier: 16.1.3
-        version: 16.1.3(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 16.1.14
-        version: 16.1.14(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../dropdown-menu
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/select':
-        specifier: 16.1.12
+        specifier: ^17.0.0
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -419,19 +419,19 @@ importers:
   semcore/base-trigger:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/counter':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../counter
       '@semcore/spin':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -450,7 +450,7 @@ importers:
   semcore/breadcrumbs:
     dependencies:
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -469,16 +469,16 @@ importers:
   semcore/bulk-textarea:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/counter':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../counter
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       dompurify:
         specifier: 3.2.3
@@ -503,13 +503,13 @@ importers:
   semcore/button:
     dependencies:
       '@semcore/link':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../link
       '@semcore/spin':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../spin
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -528,13 +528,13 @@ importers:
   semcore/card:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -553,11 +553,11 @@ importers:
   semcore/carousel:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/modal':
-        specifier: 16.1.12
-        version: 16.1.12(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../modal
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -575,8 +575,8 @@ importers:
   semcore/checkbox:
     dependencies:
       '@semcore/typography':
-        specifier: 16.3.1
-        version: 16.3.1(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -591,16 +591,16 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/divider':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 16.1.3
-        version: 16.1.3(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../dropdown
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
     devDependencies:
       '@semcore/base-components':
@@ -677,13 +677,13 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(typescript@4.9.5)
       '@semcore/checkbox':
-        specifier: 16.2.2
+        specifier: ^17.0.0
         version: link:../checkbox
       '@semcore/divider':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../divider
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       '@types/d3-shape':
         specifier: ^3.1.7
@@ -756,19 +756,19 @@ importers:
   semcore/data-table:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: 16.2.1
-        version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^17.0.0
+        version: link:../checkbox
       '@semcore/spin':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
       '@semcore/widget-empty':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../widget-empty
     devDependencies:
       '@semcore/accordion':
@@ -814,31 +814,31 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 16.4.4
-        version: 16.4.4(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../base-trigger
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: 16.2.1
-        version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^17.0.0
+        version: link:../checkbox
       '@semcore/divider':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 16.1.3
-        version: 16.1.3(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../dropdown
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../input-mask
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       dayjs:
         specifier: 1.8.36
@@ -887,7 +887,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 16.1.12
+        specifier: ^17.0.0
         version: link:../card
     devDependencies:
       '@semcore/badge':
@@ -924,13 +924,13 @@ importers:
   semcore/dropdown-menu:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/dropdown':
-        specifier: 16.1.3
-        version: 16.1.3(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../dropdown
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       classnames:
         specifier: 2.2.6
@@ -958,7 +958,7 @@ importers:
   semcore/ellipsis:
     dependencies:
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
@@ -974,13 +974,13 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/illustration':
         specifier: 17.0.0-prerelease.4
         version: 17.0.0-prerelease.4(@semcore/base-components@semcore+base-components)
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -996,40 +996,40 @@ importers:
   semcore/feature-highlight:
     dependencies:
       '@semcore/badge':
-        specifier: ^16.0.7
+        specifier: ^17.0.0
         version: link:../badge
       '@semcore/base-trigger':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../checkbox
       '@semcore/input':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/notice':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../notice
       '@semcore/pills':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../pills
       '@semcore/radio':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../radio
       '@semcore/select':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../select
       '@semcore/switch':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../switch
       '@semcore/tab-line':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../tab-line
       '@semcore/typography':
-        specifier: ^16.0.0
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1045,7 +1045,7 @@ importers:
   semcore/feature-popover:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
     devDependencies:
       '@popperjs/core':
@@ -1073,40 +1073,40 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: 16.2.1
-        version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^17.0.0
+        version: link:../checkbox
       '@semcore/illustration':
         specifier: 17.0.0-prerelease.4
         version: 17.0.0-prerelease.4(@semcore/base-components@semcore+base-components)
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/link':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../link
       '@semcore/modal':
-        specifier: 16.1.12
-        version: 16.1.12(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../modal
       '@semcore/notice':
-        specifier: 16.1.12
+        specifier: ^17.0.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: 16.1.12
-        version: 16.1.12(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../notice-bubble
       '@semcore/spin-container':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../spin-container
       '@semcore/textarea':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../textarea
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       final-form:
         specifier: 4.20.7
@@ -1165,13 +1165,13 @@ importers:
   semcore/fullscreen-modal:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/modal':
-        specifier: 16.1.12
-        version: 16.1.12(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../modal
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1291,19 +1291,19 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/input-number':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../input-number
       '@semcore/spin':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
@@ -1337,7 +1337,7 @@ importers:
   semcore/input-mask:
     dependencies:
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       text-mask-core:
         specifier: 5.1.2
@@ -1356,7 +1356,7 @@ importers:
   semcore/input-number:
     dependencies:
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
     devDependencies:
       '@semcore/base-components':
@@ -1372,11 +1372,11 @@ importers:
   semcore/input-tags:
     dependencies:
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/tag':
-        specifier: 16.1.13
-        version: 16.1.13(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../tag
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1406,7 +1406,7 @@ importers:
   semcore/link:
     dependencies:
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@floating-ui/dom':
@@ -1440,10 +1440,10 @@ importers:
   semcore/modal:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1462,10 +1462,10 @@ importers:
   semcore/notice:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1484,7 +1484,7 @@ importers:
   semcore/notice-bubble:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
     devDependencies:
       '@semcore/base-components':
@@ -1503,19 +1503,19 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/input-number':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../input-number
       '@semcore/link':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../link
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1576,8 +1576,8 @@ importers:
   semcore/radio:
     dependencies:
       '@semcore/typography':
-        specifier: 16.3.1
-        version: 16.3.1(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1592,28 +1592,28 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 16.4.4
-        version: 16.4.4(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../base-trigger
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: 16.2.1
-        version: 16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^17.0.0
+        version: link:../checkbox
       '@semcore/divider':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 16.1.3
-        version: 16.1.3(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 16.1.14
-        version: 16.1.14(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../dropdown-menu
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       classnames:
         specifier: 2.2.6
@@ -1638,10 +1638,10 @@ importers:
   semcore/side-panel:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1696,7 +1696,7 @@ importers:
   semcore/spin-container:
     dependencies:
       '@semcore/spin':
-        specifier: 16.0.11
+        specifier: ^17.0.0
         version: link:../spin
     devDependencies:
       '@semcore/base-components':
@@ -1724,7 +1724,7 @@ importers:
   semcore/tab-line:
     dependencies:
       '@semcore/typography':
-        specifier: ^16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1740,7 +1740,7 @@ importers:
   semcore/tab-panel:
     dependencies:
       '@semcore/typography':
-        specifier: ^16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1759,7 +1759,7 @@ importers:
   semcore/tag:
     dependencies:
       '@semcore/typography':
-        specifier: 16.3.2
+        specifier: ^17.0.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1793,13 +1793,13 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/input':
-        specifier: 16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/select':
-        specifier: 16.1.12
+        specifier: ^17.0.0
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -1848,94 +1848,94 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: ^16.7.2
+        specifier: ^17.0.0
         version: link:../accordion
       '@semcore/add-filter':
-        specifier: ^16.6.3
+        specifier: ^17.0.0
         version: link:../add-filter
       '@semcore/badge':
-        specifier: ^16.0.7
+        specifier: ^17.0.0
         version: link:../badge
       '@semcore/base-components':
-        specifier: ^16.4.2
+        specifier: ^17.0.0
         version: link:../base-components
       '@semcore/base-trigger':
-        specifier: ^16.4.5
+        specifier: ^17.0.0
         version: link:../base-trigger
       '@semcore/breadcrumbs':
-        specifier: ^16.5.4
+        specifier: ^17.0.0
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
-        specifier: ^16.6.2
+        specifier: ^17.0.0
         version: link:../bulk-textarea
       '@semcore/button':
-        specifier: ^16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/card':
-        specifier: ^16.1.12
+        specifier: ^17.0.0
         version: link:../card
       '@semcore/carousel':
-        specifier: ^16.1.13
+        specifier: ^17.0.0
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: ^16.2.2
+        specifier: ^17.0.0
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: ^16.1.13
+        specifier: ^17.0.0
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^16.5.1
+        specifier: ^17.0.0
         version: link:../core
       '@semcore/counter':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: ^16.5.0
+        specifier: ^17.0.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^16.5.3
+        specifier: ^17.0.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: ^16.2.4
+        specifier: ^17.0.0
         version: link:../date-picker
       '@semcore/divider':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../divider
       '@semcore/dot':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../dot
       '@semcore/drag-and-drop':
-        specifier: ^16.1.12
+        specifier: ^17.0.0
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: ^16.1.4
+        specifier: ^17.0.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^16.2.2
+        specifier: ^17.0.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: ^16.0.12
         version: link:../ellipsis
       '@semcore/errors':
-        specifier: ^16.1.7
+        specifier: ^17.0.0
         version: link:../errors
       '@semcore/feature-highlight':
-        specifier: ^16.3.0
+        specifier: ^17.0.0
         version: link:../feature-highlight
       '@semcore/feature-popover':
-        specifier: ^16.2.5
+        specifier: ^17.0.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: ^16.2.0
+        specifier: ^17.0.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: ^16.1.8
+        specifier: ^17.0.0
         version: link:../flags
       '@semcore/fullscreen-modal':
-        specifier: ^16.1.12
+        specifier: ^17.0.0
         version: link:../fullscreen-modal
       '@semcore/i18n-unplugin':
-        specifier: ^16.0.9
+        specifier: ^16.0.10
         version: link:../i18n-unplugin
       '@semcore/icon':
         specifier: ^16.0.0 || ^17.0.0 || ^17.0.0-0
@@ -1944,100 +1944,100 @@ importers:
         specifier: ^16.0.0 || ^17.0.0 || ^17.0.0-0
         version: link:../illustration
       '@semcore/inline-edit':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: ^16.2.2
+        specifier: ^17.0.0
         version: link:../inline-input
       '@semcore/input':
-        specifier: ^16.1.1
+        specifier: ^17.0.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../input-mask
       '@semcore/input-number':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: ^16.0.13
+        specifier: ^17.0.0
         version: link:../input-tags
       '@semcore/link':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../link
       '@semcore/mini-chart':
-        specifier: ^16.1.1
+        specifier: ^17.0.0
         version: link:../mini-chart
       '@semcore/modal':
-        specifier: ^16.1.13
+        specifier: ^17.0.0
         version: link:../modal
       '@semcore/notice':
-        specifier: ^16.1.12
+        specifier: ^17.0.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: ^16.2.1
+        specifier: ^17.0.0
         version: link:../notice-bubble
       '@semcore/pagination':
-        specifier: ^16.1.12
+        specifier: ^17.0.0
         version: link:../pagination
       '@semcore/pills':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../pills
       '@semcore/product-head':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../product-head
       '@semcore/progress-bar':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: ^16.1.1
+        specifier: ^17.0.0
         version: link:../radio
       '@semcore/select':
-        specifier: ^16.1.12
+        specifier: ^17.0.0
         version: link:../select
       '@semcore/side-panel':
-        specifier: ^16.1.12
+        specifier: ^17.0.0
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../skeleton
       '@semcore/slider':
-        specifier: ^16.1.1
+        specifier: ^17.0.0
         version: link:../slider
       '@semcore/spin':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../spin
       '@semcore/spin-container':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../spin-container
       '@semcore/switch':
-        specifier: ^16.1.1
+        specifier: ^17.0.0
         version: link:../switch
       '@semcore/tab-line':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../tab-line
       '@semcore/tab-panel':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../tab-panel
       '@semcore/tag':
-        specifier: ^16.1.14
+        specifier: ^17.0.0
         version: link:../tag
       '@semcore/textarea':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: ^16.1.13
+        specifier: ^17.0.0
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^16.3.2
+        specifier: ^17.0.0
         version: link:../typography
       '@semcore/widget-empty':
-        specifier: ^16.0.11
+        specifier: ^17.0.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: ^16.2.2
+        specifier: ^17.0.0
         version: link:../wizard
       react:
         specifier: 16.8 - 19
@@ -2090,11 +2090,11 @@ importers:
   semcore/wizard:
     dependencies:
       '@semcore/button':
-        specifier: 16.0.12
+        specifier: ^17.0.0
         version: link:../button
       '@semcore/modal':
-        specifier: 16.1.12
-        version: 16.1.12(@semcore/base-components@semcore+base-components)
+        specifier: ^17.0.0
+        version: link:../modal
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -2163,7 +2163,7 @@ importers:
     devDependencies:
       babel-plugin-tester:
         specifier: 8.0.1
-        version: 8.0.1(@babel/core@7.27.7)
+        version: 8.0.1(@babel/core@7.28.4)
 
   tools/babel-plugin-root:
     dependencies:
@@ -2172,7 +2172,7 @@ importers:
         version: 7.18.6
       '@babel/plugin-syntax-jsx':
         specifier: 7.18.6
-        version: 7.18.6(@babel/core@7.27.7)
+        version: 7.18.6(@babel/core@7.28.4)
 
   tools/babel-plugin-styles:
     dependencies:
@@ -2181,7 +2181,7 @@ importers:
         version: 7.18.6
       '@babel/plugin-syntax-jsx':
         specifier: 7.18.6
-        version: 7.18.6(@babel/core@7.27.7)
+        version: 7.18.6(@babel/core@7.28.4)
       chokidar:
         specifier: 3.5.1
         version: 3.5.1
@@ -2383,10 +2383,10 @@ importers:
         version: 1.58.2
       '@previewjs/plugin-react':
         specifier: 17.1.0
-        version: 17.1.0(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
+        version: 17.1.0(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
       '@previewjs/screenshot':
         specifier: 0.3.2
-        version: 0.3.2(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
+        version: 0.3.2(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
       '@semcore/babel-preset-ui':
         specifier: workspace:*
         version: link:../babel-preset-ui
@@ -2407,10 +2407,10 @@ importers:
         version: 4.9.1
       babel-jest:
         specifier: 29.0.1
-        version: 29.0.1(@babel/core@7.27.7)
+        version: 29.0.1(@babel/core@7.28.4)
       babel-plugin-transform-import-meta:
         specifier: 2.2.0
-        version: 2.2.0(@babel/core@7.27.7)
+        version: 2.2.0(@babel/core@7.28.4)
       dotenv:
         specifier: 16.0.1
         version: 16.0.1
@@ -2447,7 +2447,7 @@ importers:
         version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
-        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@18.16.15)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
+        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@22.19.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
 
   website:
     dependencies:
@@ -2555,7 +2555,7 @@ importers:
         version: 7.54.0(patch_hash=5ea80c984744a8ae88b2ac5d6a6b4bd9793291e90ba98f3c1701c4ba9770fd20)(react@18.3.1)
       react-instantsearch:
         specifier: 6.8.3
-        version: 6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
+        version: 6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
       react-loadable:
         specifier: 5.5.0
         version: 5.5.0(react@18.3.1)
@@ -2595,13 +2595,13 @@ importers:
     devDependencies:
       '@babel/plugin-proposal-class-properties':
         specifier: 7.18.6
-        version: 7.18.6(@babel/core@7.27.7)
+        version: 7.18.6(@babel/core@7.28.4)
       '@babel/plugin-proposal-export-default-from':
         specifier: 7.23.3
-        version: 7.23.3(@babel/core@7.27.7)
+        version: 7.23.3(@babel/core@7.28.4)
       '@babel/plugin-proposal-optional-chaining':
         specifier: 7.18.9
-        version: 7.18.9(@babel/core@7.27.7)
+        version: 7.18.9(@babel/core@7.28.4)
       '@mdit-vue/shared':
         specifier: 1.0.0
         version: 1.0.0
@@ -5072,130 +5072,18 @@ packages:
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
-  '@semcore/animation@16.0.7':
-    resolution: {integrity: sha512-NP4EMT2eOTfoT6Dk8jEUhzT6kIV0g259ByItZGX8sOz3nByWHqQD6LCc+reh9eEhxAFJNVTVAY0Cry36FhWUzw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
   '@semcore/base-components@17.0.0-prerelease.30':
     resolution: {integrity: sha512-r9JFqEb+JAsE1PiPPDdLIU6mFTIabMrgXdHgdKrE5BVtw9EDSaPEmfdAhU6zBcQwnC/kXaYj1e8JASVHyi9krg==}
     peerDependencies:
       '@semcore/core': ^17.0.0 || ^17.0.0-0
-
-  '@semcore/base-trigger@16.4.4':
-    resolution: {integrity: sha512-+vVEfM60MryaMo1ljDqIdyJK6bnPYyUSq98FC3g8CO6kPkz/T94E5sE76Cjc7yNfNbtB4qJYi1f9Whjtv4rfCw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/button@16.0.12':
-    resolution: {integrity: sha512-RRkwK7b+UAm32YPy63GXlphqZ/ufKXxGHj4jHx1c+rzH5G6zOWuAgksRwiXYKcTGrAsDTRXJjL0672HOJV/HPg==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/checkbox@16.2.1':
-    resolution: {integrity: sha512-JBZ0ycb9G3WVtmH/SUFJQnZN6RypJUQa3991ltd1eJJ85u+HVm4Svt8v3NONEED7x0kC/M/4U1twS1ktrs/B9w==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-
-  '@semcore/dot@16.0.11':
-    resolution: {integrity: sha512-UZBvQGz/Fsv3kiwTbx6tb7veusmFq3w/+qpcTghd6kKwGmTYI676HKiubO+oBm5iBo3fyEcsRcUU8Q2GvFjNBg==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/dropdown-menu@16.1.14':
-    resolution: {integrity: sha512-gKGc5K/QGhtFxEjSV7B1NqovI7aUlu3tD7FXVaS1oCMMLbEYEQfaRG+HDvJKGOa2DXgKo461QJ7yFIBvVLlnjw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/dropdown@16.1.3':
-    resolution: {integrity: sha512-CcU+CMPpzRLH9OG7aJsHuWEmS933zSQKD+hXanQiyKlqBOVxSDhhthXgKqzOI15aJ/uUBkIRUJq9qFFCe3sy7A==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/flex-box@16.0.11':
-    resolution: {integrity: sha512-KjzQtTTLiPYwASHyfLWtywsslij+CIsz2McEb0Pcw38uaE0y9LG7tlmbdsWz0/rUDkL+QqO6GYZ2gmQ9l/uX/g==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/icon@16.7.2':
-    resolution: {integrity: sha512-KKnnU2c6zyaUjwzCR8XjIi3ArgvgIJqqad4D81popRuMuKH6KAfvXmUuePnvX2PhlU580HCP66hFTeoOXjiJeA==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/icon@16.7.3':
-    resolution: {integrity: sha512-BfuPVc7KqEQM6CE+w7nhrN0aMz/Y56DHVcb3bAGhTOHV/QBtb6tGzWXHmPRynVaC8AUyF9sRPjbBK8GNbRzkuA==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
 
   '@semcore/illustration@17.0.0-prerelease.4':
     resolution: {integrity: sha512-4CSkXaepVz+oTVS7du2NYKkyi17WKOK+HGPRJkFRiXkT1je/RT9w/E7OD/0K4cxYh48WmnLKoP4Q0PkmcOx0PQ==}
     peerDependencies:
       '@semcore/base-components': ^17.0.0 || ^17.0.0-0
 
-  '@semcore/modal@16.1.12':
-    resolution: {integrity: sha512-kjer8Omtdx7foRKfkeq7mzjQjlp7X3GwKkyXztOgaX3rzGSgpizmvypFnFbQX1mIGsK8lpfaUTrUbbBVhEnGwQ==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/neighbor-location@16.0.11':
-    resolution: {integrity: sha512-uDZ+0xxJZ3ap49/CL+KVG31gqNPXhE7Ft634lDuc3XG/G1aCw7sdL1zalU079ex6qfbgbfICCdv7TKOPpK80Qw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/notice-bubble@16.1.12':
-    resolution: {integrity: sha512-tJKRvwLXwT+Ox/P+kAIgCzuCPeFuT/fXUjYutRh4rKJLMR6N5N9wAixbYVtVtpvG3f5mT1aI+YyaE6Svx0vkuw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/outside-click@16.0.11':
-    resolution: {integrity: sha512-fW4clx8uIEgOpMvGjVrKZnu9gTwmgKufM/MV9zr7l0IXNgSxEXo63VMzooO6O5YqN47q9BsA0yzXy1P2PvgDow==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/popper@16.0.11':
-    resolution: {integrity: sha512-5I6I/0as3S0bZRxaZfVVLDf/zxXpgDA8wqBcqX9xKCH73W29YpIHey4rn55lZ7EvxOUnexXZRulwI19cegU+dQ==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/portal@16.0.11':
-    resolution: {integrity: sha512-o0kVkCTG9tNBiU1KwzbogHEsry/GnRW8qxX8L6+bmV2Yv3p0Wz0JOZleoQaCGnh/q+851rLCKQFqR/QlohW0Fw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/scroll-area@16.0.11':
-    resolution: {integrity: sha512-DZi2vL3mTeKDR/Pt0Eg2dgGBtIOCC6r+PPnYI+DfvDKZVis4XZBinevBRDmFZSEkcDZotwCgE35+IY0Akj5WPA==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/spin@16.0.11':
-    resolution: {integrity: sha512-q4sqYxsGWCjy9FEhcxWfCt7hF6waduTJvvCC8LZHX4G64zblQaUkb19xs0B4165Xl1xRos5RHf5f23HHvj0qHg==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/tag@16.1.13':
-    resolution: {integrity: sha512-YZpCRD+QB2Wl9tJllqsFaq23DbomyXyteUEfk2HLuOPEjeYFJVcS2+qdwABog7387XxaOAlIWhnU+PleCjvCRw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
   '@semcore/theme-redesign@1.5.12':
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
-
-  '@semcore/tooltip@16.0.11':
-    resolution: {integrity: sha512-v5fogbtyYs5qEs52yWLQe65fX5APjdUJegSmcISE4qpYkawMuOLaagPkEy9wpBBQ6thIcWFjjG0HgQA/x+FQjQ==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/typography@16.3.1':
-    resolution: {integrity: sha512-R6m1p9N02DOZw4XVVMJQQzQsEckd/QgJM9v28dAlDtKI/PqsLHaBokarjIpb4NdHq1bb5eoL4TyWRvw+8Omo6Q==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
-
-  '@semcore/typography@16.3.2':
-    resolution: {integrity: sha512-Vpo80dDDQCz28XTkx2RRRH4Rn9naN718uAVf6h7wjl7BZDxeZLCfqcM0q/iPikfPdIz5SKZ8sHyc8J5SvQD1xw==}
-    peerDependencies:
-      '@semcore/base-components': ^16.0.0
 
   '@shikijs/core@1.29.2':
     resolution: {integrity: sha512-vju0lY9r27jJfOY4Z7+Rt/nIOjzJpZ3y+nYpqtUZInVoXQ/TJZcfGnNOGnKjFdVZb8qexiCuSlZRKcGfhhTTZQ==}
@@ -14799,6 +14687,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@babel/plugin-proposal-class-properties@7.18.6(@babel/core@7.28.4)':
+    dependencies:
+      '@babel/core': 7.28.4
+      '@babel/helper-create-class-features-plugin': 7.28.6(@babel/core@7.28.4)
+      '@babel/helper-plugin-utils': 7.28.6
+    transitivePeerDependencies:
+      - supports-color
+
   '@babel/plugin-proposal-decorators@7.28.0(@babel/core@7.27.7)':
     dependencies:
       '@babel/core': 7.27.7
@@ -14808,23 +14704,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-proposal-export-default-from@7.23.3(@babel/core@7.27.7)':
+  '@babel/plugin-proposal-export-default-from@7.23.3(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
-      '@babel/plugin-syntax-export-default-from': 7.28.6(@babel/core@7.27.7)
+      '@babel/plugin-syntax-export-default-from': 7.28.6(@babel/core@7.28.4)
 
   '@babel/plugin-proposal-export-default-from@7.27.1(@babel/core@7.27.7)':
     dependencies:
       '@babel/core': 7.27.7
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-proposal-optional-chaining@7.18.9(@babel/core@7.27.7)':
+  '@babel/plugin-proposal-optional-chaining@7.18.9(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
       '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
-      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.27.7)
+      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.28.4)
     transitivePeerDependencies:
       - supports-color
 
@@ -14832,24 +14728,24 @@ snapshots:
     dependencies:
       '@babel/core': 7.27.7
 
-  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/plugin-syntax-decorators@7.28.6(@babel/core@7.27.7)':
@@ -14857,9 +14753,9 @@ snapshots:
       '@babel/core': 7.27.7
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-export-default-from@7.28.6(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-export-default-from@7.28.6(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/plugin-syntax-flow@7.28.6(@babel/core@7.28.4)':
@@ -14877,19 +14773,24 @@ snapshots:
       '@babel/core': 7.27.7
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-import-attributes@7.28.6(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-jsx@7.18.6(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
+      '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/plugin-syntax-jsx@7.18.6(@babel/core@7.28.4)':
+    dependencies:
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.27.7)':
@@ -14902,44 +14803,44 @@ snapshots:
       '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-private-property-in-object@7.14.5(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-private-property-in-object@7.14.5(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
-  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/helper-plugin-utils': 7.28.6
 
   '@babel/plugin-syntax-typescript@7.28.6(@babel/core@7.27.7)':
@@ -16170,26 +16071,26 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  '@fwouts/vite-tsconfig-paths@4.2.1(typescript@5.8.3)(vite@5.4.21(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1))':
+  '@fwouts/vite-tsconfig-paths@4.2.1(typescript@5.8.3)(vite@5.4.21(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1))':
     dependencies:
       async-mutex: 0.4.1
       debug: 4.4.3
       globrex: 0.1.2
       tsconfck: 2.1.2(typescript@5.8.3)
     optionalDependencies:
-      vite: 5.4.21(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
+      vite: 5.4.21(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@fwouts/vite-tsconfig-paths@4.2.1(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))':
+  '@fwouts/vite-tsconfig-paths@4.2.1(typescript@5.8.3)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))':
     dependencies:
       async-mutex: 0.4.1
       debug: 4.4.3
       globrex: 0.1.2
       tsconfck: 2.1.2(typescript@5.8.3)
     optionalDependencies:
-      vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      vite: 6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -16837,14 +16738,14 @@ snapshots:
       pino: 9.14.0
       pino-pretty: 11.3.0
 
-  '@previewjs/analyzer-react@0.1.11(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
+  '@previewjs/analyzer-react@0.1.11(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
     dependencies:
       '@previewjs/analyzer-api': 0.1.8
       '@previewjs/serializable-values': 9.0.6
-      '@previewjs/storybook-helpers': 6.0.1(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      '@previewjs/storybook-helpers': 6.0.1(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
       '@previewjs/type-analyzer': 10.1.5
       '@previewjs/vfs': 2.1.4
-      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
+      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
       typescript: 5.8.3
     transitivePeerDependencies:
       - '@swc/core'
@@ -16872,10 +16773,10 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@previewjs/chromeless@13.1.1(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)':
+  '@previewjs/chromeless@13.1.1(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)':
     dependencies:
       '@previewjs/api': 16.1.0
-      '@previewjs/core': 29.1.1(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
+      '@previewjs/core': 29.1.1(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
       '@previewjs/iframe': 17.1.1
       '@previewjs/properties': 5.0.6
       '@previewjs/vfs': 2.1.4
@@ -16898,9 +16799,9 @@ snapshots:
       - supports-color
       - terser
 
-  '@previewjs/config@6.0.1(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)':
+  '@previewjs/config@6.0.1(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)':
     dependencies:
-      vite: 5.4.21(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
+      vite: 5.4.21(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -16911,9 +16812,9 @@ snapshots:
       - sugarss
       - terser
 
-  '@previewjs/config@7.0.1(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)':
+  '@previewjs/config@7.0.1(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)':
     dependencies:
-      vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      vite: 6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -16927,12 +16828,12 @@ snapshots:
       - tsx
       - yaml
 
-  '@previewjs/core@29.1.1(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)':
+  '@previewjs/core@29.1.1(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)':
     dependencies:
-      '@fwouts/vite-tsconfig-paths': 4.2.1(typescript@5.8.3)(vite@5.4.21(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1))
+      '@fwouts/vite-tsconfig-paths': 4.2.1(typescript@5.8.3)(vite@5.4.21(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1))
       '@previewjs/analyzer-api': 0.1.8
       '@previewjs/api': 16.1.0
-      '@previewjs/config': 6.0.1(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
+      '@previewjs/config': 6.0.1(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
       '@previewjs/iframe': 17.1.1
       '@previewjs/serializable-values': 9.0.6
       '@previewjs/type-analyzer': 10.1.5
@@ -16949,10 +16850,10 @@ snapshots:
       pino: 9.14.0
       pino-pretty: 11.3.0
       rollup-plugin-friendly-type-imports: 1.0.3
-      ts-node: 10.9.2(@types/node@18.16.15)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.19.15)(typescript@5.8.3)
       tsconfig-paths: 4.2.0
       typescript: 5.8.3
-      vite: 5.4.21(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
+      vite: 5.4.21(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
       zod: 3.25.76
     transitivePeerDependencies:
       - '@swc/core'
@@ -16969,12 +16870,12 @@ snapshots:
       - supports-color
       - terser
 
-  '@previewjs/core@30.2.0(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)':
+  '@previewjs/core@30.2.0(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)':
     dependencies:
-      '@fwouts/vite-tsconfig-paths': 4.2.1(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
+      '@fwouts/vite-tsconfig-paths': 4.2.1(typescript@5.8.3)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
       '@previewjs/analyzer-api': 0.1.8
       '@previewjs/api': 16.1.0
-      '@previewjs/config': 7.0.1(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      '@previewjs/config': 7.0.1(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
       '@previewjs/iframe': 18.0.0
       '@previewjs/serializable-values': 9.0.6
       '@previewjs/type-analyzer': 10.1.5
@@ -16990,10 +16891,10 @@ snapshots:
       pino: 9.14.0
       pino-pretty: 11.3.0
       rollup-plugin-friendly-type-imports: 1.0.3
-      ts-node: 10.9.2(@types/node@18.16.15)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.19.15)(typescript@5.8.3)
       tsconfig-paths: 4.2.0
       typescript: 5.8.3
-      vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      vite: 6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
       zod: 3.25.76
     transitivePeerDependencies:
       - '@swc/core'
@@ -17016,10 +16917,10 @@ snapshots:
 
   '@previewjs/iframe@18.0.0': {}
 
-  '@previewjs/plugin-react@16.0.2(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
+  '@previewjs/plugin-react@16.0.2(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
     dependencies:
-      '@previewjs/analyzer-react': 0.1.11(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
-      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
+      '@previewjs/analyzer-react': 0.1.11(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
+      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -17038,10 +16939,10 @@ snapshots:
       - vite
       - yaml
 
-  '@previewjs/plugin-react@17.1.0(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
+  '@previewjs/plugin-react@17.1.0(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
     dependencies:
-      '@previewjs/analyzer-react': 0.1.11(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
-      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
+      '@previewjs/analyzer-react': 0.1.11(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
+      '@vitejs/plugin-react': 4.7.0(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
       esbuild-plugin-polyfill-node: 0.3.0(esbuild@0.14.29)
     transitivePeerDependencies:
       - '@swc/core'
@@ -17067,12 +16968,12 @@ snapshots:
       '@previewjs/serializable-values': 9.0.6
       '@previewjs/type-analyzer': 10.1.5
 
-  '@previewjs/screenshot@0.3.2(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
+  '@previewjs/screenshot@0.3.2(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)':
     dependencies:
       '@previewjs/analyzer-api': 0.1.8
-      '@previewjs/chromeless': 13.1.1(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
-      '@previewjs/core': 29.1.1(@types/node@18.16.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
-      '@previewjs/plugin-react': 16.0.2(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
+      '@previewjs/chromeless': 13.1.1(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
+      '@previewjs/core': 29.1.1(@types/node@22.19.15)(esbuild@0.14.29)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)
+      '@previewjs/plugin-react': 16.0.2(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))(yaml@2.8.0)
       globby: 14.1.0
       playwright: 1.58.2
     transitivePeerDependencies:
@@ -17102,11 +17003,11 @@ snapshots:
       prettier: 2.8.8
       typescript: 5.8.3
 
-  '@previewjs/storybook-helpers@6.0.1(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)':
+  '@previewjs/storybook-helpers@6.0.1(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)':
     dependencies:
       '@previewjs/analyzer-api': 0.1.8
       '@previewjs/api': 16.1.0
-      '@previewjs/core': 30.2.0(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      '@previewjs/core': 30.2.0(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
       '@previewjs/serializable-values': 9.0.6
       '@previewjs/type-analyzer': 10.1.5
       typescript: 5.8.3
@@ -17179,9 +17080,9 @@ snapshots:
 
   '@react-native/assets-registry@0.84.1': {}
 
-  '@react-native/codegen@0.84.1(@babel/core@7.27.7)':
+  '@react-native/codegen@0.84.1(@babel/core@7.28.4)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/parser': 7.29.2
       hermes-parser: 0.32.0
       invariant: 2.2.4
@@ -17238,12 +17139,12 @@ snapshots:
 
   '@react-native/normalize-colors@0.84.1': {}
 
-  '@react-native/virtualized-lists@0.84.1(@types/react@18.2.19)(react-native@0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)':
+  '@react-native/virtualized-lists@0.84.1(@types/react@18.2.19)(react-native@0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react: 18.3.1
-      react-native: 0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1)
+      react-native: 0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.2.19
 
@@ -17343,10 +17244,6 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semcore/animation@16.0.7(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
   '@semcore/base-components@17.0.0-prerelease.30(@semcore/core@semcore+core)':
     dependencies:
       '@floating-ui/dom': 1.7.2
@@ -17356,149 +17253,12 @@ snapshots:
       csstype: 3.1.3
       popper-max-size-modifier: 0.2.0(@popperjs/core@2.11.5)
 
-  '@semcore/base-trigger@16.4.4(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/dot': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/spin': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/button@16.0.12(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/neighbor-location': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/spin': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/tooltip': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/checkbox@16.2.1(@semcore/base-components@semcore+base-components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.3.1(@semcore/base-components@semcore+base-components)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@semcore/dot@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/animation': 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/dropdown-menu@16.1.14(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
-      '@semcore/dropdown': 16.1.3(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/scroll-area': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.3.2(@semcore/base-components@semcore+base-components)
-      classnames: 2.2.6
-
-  '@semcore/dropdown@16.1.3(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/flex-box@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/icon@16.7.2(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      classnames: 2.2.6
-
-  '@semcore/icon@16.7.3(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      classnames: 2.2.6
-
   '@semcore/illustration@17.0.0-prerelease.4(@semcore/base-components@semcore+base-components)':
     dependencies:
       '@semcore/base-components': link:semcore/base-components
       colorjs.io: 0.4.3
 
-  '@semcore/modal@16.1.12(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/animation': 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
-      '@semcore/outside-click': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/typography': 16.3.2(@semcore/base-components@semcore+base-components)
-
-  '@semcore/neighbor-location@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/notice-bubble@16.1.12(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/animation': 16.0.7(@semcore/base-components@semcore+base-components)
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/button': 16.0.12(@semcore/base-components@semcore+base-components)
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/outside-click@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/popper@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/portal@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/scroll-area@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-
-  '@semcore/spin@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/tag@16.1.13(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
-
   '@semcore/theme-redesign@1.5.12': {}
-
-  '@semcore/tooltip@16.0.11(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/popper': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/portal': 16.0.11(@semcore/base-components@semcore+base-components)
-
-  '@semcore/typography@16.3.1(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.2(@semcore/base-components@semcore+base-components)
-
-  '@semcore/typography@16.3.2(@semcore/base-components@semcore+base-components)':
-    dependencies:
-      '@semcore/base-components': link:semcore/base-components
-      '@semcore/flex-box': 16.0.11(@semcore/base-components@semcore+base-components)
-      '@semcore/icon': 16.7.3(@semcore/base-components@semcore+base-components)
 
   '@shikijs/core@1.29.2':
     dependencies:
@@ -18343,18 +18103,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-react@4.7.0(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))':
-    dependencies:
-      '@babel/core': 7.28.4
-      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.4)
-      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.28.4)
-      '@rolldown/pluginutils': 1.0.0-beta.27
-      '@types/babel__core': 7.20.5
-      react-refresh: 0.17.0
-      vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
-    transitivePeerDependencies:
-      - supports-color
-
   '@vitejs/plugin-react@4.7.0(vite@6.3.5(@types/node@18.19.130)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.33))(terser@5.46.1)(yaml@2.8.0))':
     dependencies:
       '@babel/core': 7.28.4
@@ -18364,6 +18112,18 @@ snapshots:
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
       vite: 6.3.5(@types/node@18.19.130)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.33))(terser@5.46.1)(yaml@2.8.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@vitejs/plugin-react@4.7.0(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))':
+    dependencies:
+      '@babel/core': 7.28.4
+      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.4)
+      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.28.4)
+      '@rolldown/pluginutils': 1.0.0-beta.27
+      '@types/babel__core': 7.20.5
+      react-refresh: 0.17.0
+      vite: 6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -18437,14 +18197,14 @@ snapshots:
       msw: 2.12.14(@types/node@18.16.15)(typescript@5.8.3)
       vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0)
 
-  '@vitest/mocker@3.0.9(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))':
+  '@vitest/mocker@3.0.9(msw@2.12.14(@types/node@22.19.15)(typescript@5.8.3))(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))':
     dependencies:
       '@vitest/spy': 3.0.9
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      msw: 2.12.14(@types/node@18.16.15)(typescript@5.8.3)
-      vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      msw: 2.12.14(@types/node@22.19.15)(typescript@5.8.3)
+      vite: 6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
 
   '@vitest/mocker@3.2.4(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))':
     dependencies:
@@ -19223,26 +18983,26 @@ snapshots:
 
   b4a@1.8.0: {}
 
-  babel-jest@29.0.1(@babel/core@7.27.7):
+  babel-jest@29.0.1(@babel/core@7.28.4):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@jest/transform': 29.7.0
       '@types/babel__core': 7.20.5
       babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 29.6.3(@babel/core@7.27.7)
+      babel-preset-jest: 29.6.3(@babel/core@7.28.4)
       chalk: 4.1.2
       graceful-fs: 4.2.11
       slash: 3.0.0
     transitivePeerDependencies:
       - supports-color
 
-  babel-jest@29.7.0(@babel/core@7.27.7):
+  babel-jest@29.7.0(@babel/core@7.28.4):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@jest/transform': 29.7.0
       '@types/babel__core': 7.20.5
       babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 29.6.3(@babel/core@7.27.7)
+      babel-preset-jest: 29.6.3(@babel/core@7.28.4)
       chalk: 4.1.2
       graceful-fs: 4.2.11
       slash: 3.0.0
@@ -19309,43 +19069,43 @@ snapshots:
     dependencies:
       hermes-parser: 0.32.0
 
-  babel-plugin-tester@8.0.1(@babel/core@7.27.7):
+  babel-plugin-tester@8.0.1(@babel/core@7.28.4):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       lodash.mergewith: 4.6.2
       prettier: 1.19.1
       strip-indent: 3.0.0
 
-  babel-plugin-transform-import-meta@2.2.0(@babel/core@7.27.7):
+  babel-plugin-transform-import-meta@2.2.0(@babel/core@7.28.4):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       '@babel/template': 7.28.6
       tslib: 2.8.1
 
-  babel-preset-current-node-syntax@1.2.0(@babel/core@7.27.7):
+  babel-preset-current-node-syntax@1.2.0(@babel/core@7.28.4):
     dependencies:
-      '@babel/core': 7.27.7
-      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.27.7)
-      '@babel/plugin-syntax-class-static-block': 7.14.5(@babel/core@7.27.7)
-      '@babel/plugin-syntax-import-attributes': 7.28.6(@babel/core@7.27.7)
-      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.27.7)
-      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.27.7)
+      '@babel/core': 7.28.4
+      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.28.4)
+      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.28.4)
+      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.28.4)
+      '@babel/plugin-syntax-class-static-block': 7.14.5(@babel/core@7.28.4)
+      '@babel/plugin-syntax-import-attributes': 7.28.6(@babel/core@7.28.4)
+      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.28.4)
+      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.28.4)
+      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.28.4)
+      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.28.4)
+      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.28.4)
+      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.28.4)
+      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.28.4)
+      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.28.4)
+      '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.28.4)
+      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.28.4)
 
-  babel-preset-jest@29.6.3(@babel/core@7.27.7):
+  babel-preset-jest@29.6.3(@babel/core@7.28.4):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.28.4
       babel-plugin-jest-hoist: 29.6.3
-      babel-preset-current-node-syntax: 1.2.0(@babel/core@7.27.7)
+      babel-preset-current-node-syntax: 1.2.0(@babel/core@7.28.4)
 
   bail@2.0.2: {}
 
@@ -25868,20 +25628,20 @@ snapshots:
       react-fast-compare: 3.2.2
       react-instantsearch-core: 6.40.4(algoliasearch@4.8.4)(react@18.3.1)
 
-  react-instantsearch-native@6.40.4(algoliasearch@4.8.4)(react-native@0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
+  react-instantsearch-native@6.40.4(algoliasearch@4.8.4)(react-native@0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.27.6
       algoliasearch: 4.8.4
       react: 18.3.1
       react-instantsearch-core: 6.40.4(algoliasearch@4.8.4)(react@18.3.1)
-      react-native: 0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1)
+      react-native: 0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1)
 
-  react-instantsearch@6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
+  react-instantsearch@6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.27.6
       react-instantsearch-core: 6.40.4(algoliasearch@4.8.4)(react@18.3.1)
       react-instantsearch-dom: 6.40.4(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-instantsearch-native: 6.40.4(algoliasearch@4.8.4)(react-native@0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
+      react-instantsearch-native: 6.40.4(algoliasearch@4.8.4)(react-native@0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
     transitivePeerDependencies:
       - algoliasearch
       - react
@@ -25917,20 +25677,20 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  react-native@0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1):
+  react-native@0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native/assets-registry': 0.84.1
-      '@react-native/codegen': 0.84.1(@babel/core@7.27.7)
+      '@react-native/codegen': 0.84.1(@babel/core@7.28.4)
       '@react-native/community-cli-plugin': 0.84.1
       '@react-native/gradle-plugin': 0.84.1
       '@react-native/js-polyfills': 0.84.1
       '@react-native/normalize-colors': 0.84.1
-      '@react-native/virtualized-lists': 0.84.1(@types/react@18.2.19)(react-native@0.84.1(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
+      '@react-native/virtualized-lists': 0.84.1(@types/react@18.2.19)(react-native@0.84.1(@babel/core@7.28.4)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
-      babel-jest: 29.7.0(@babel/core@7.27.7)
+      babel-jest: 29.7.0(@babel/core@7.28.4)
       babel-plugin-syntax-hermes-parser: 0.32.0
       base64-js: 1.5.1
       commander: 12.1.0
@@ -27562,14 +27322,14 @@ snapshots:
 
   ts-dedent@2.2.0: {}
 
-  ts-node@10.9.2(@types/node@18.16.15)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.19.15)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.12
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.16.15
+      '@types/node': 22.19.15
       acorn: 8.16.0
       acorn-walk: 8.3.5
       arg: 4.1.3
@@ -27979,13 +27739,13 @@ snapshots:
       - tsx
       - yaml
 
-  vite-node@3.0.9(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0):
+  vite-node@3.0.9(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      vite: 6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -28005,19 +27765,6 @@ snapshots:
       '@babel/core': 7.27.7
       vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0)
 
-  vite@5.4.21(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1):
-    dependencies:
-      esbuild: 0.21.5
-      postcss: 8.5.8
-      rollup: 4.60.0
-    optionalDependencies:
-      '@types/node': 18.16.15
-      fsevents: 2.3.3
-      less: 3.13.1
-      sass: 1.98.0
-      sugarss: 5.0.1(postcss@8.5.8)
-      terser: 5.46.1
-
   vite@5.4.21(@types/node@18.19.130)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.33))(terser@5.46.1):
     dependencies:
       esbuild: 0.21.5
@@ -28029,6 +27776,19 @@ snapshots:
       less: 3.13.1
       sass: 1.98.0
       sugarss: 5.0.1(postcss@8.4.33)
+      terser: 5.46.1
+
+  vite@5.4.21(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1):
+    dependencies:
+      esbuild: 0.21.5
+      postcss: 8.5.8
+      rollup: 4.60.0
+    optionalDependencies:
+      '@types/node': 22.19.15
+      fsevents: 2.3.3
+      less: 3.13.1
+      sass: 1.98.0
+      sugarss: 5.0.1(postcss@8.5.8)
       terser: 5.46.1
 
   vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0):
@@ -28045,23 +27805,6 @@ snapshots:
       less: 3.13.1
       sass: 1.98.0
       sugarss: 5.0.1(postcss@8.4.38)
-      terser: 5.46.1
-      yaml: 2.8.0
-
-  vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0):
-    dependencies:
-      esbuild: 0.25.12
-      fdir: 6.5.0(picomatch@4.0.4)
-      picomatch: 4.0.4
-      postcss: 8.5.8
-      rollup: 4.60.0
-      tinyglobby: 0.2.15
-    optionalDependencies:
-      '@types/node': 18.16.15
-      fsevents: 2.3.3
-      less: 3.13.1
-      sass: 1.98.0
-      sugarss: 5.0.1(postcss@8.5.8)
       terser: 5.46.1
       yaml: 2.8.0
 
@@ -28147,7 +27890,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@18.16.15)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)):
+  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@22.19.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.9.1
@@ -28155,50 +27898,7 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.23
       redent: 3.0.0
-      vitest: 3.0.9(@types/debug@4.1.13)(@types/node@18.16.15)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
-
-  vitest@3.0.9(@types/debug@4.1.13)(@types/node@18.16.15)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.58.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0):
-    dependencies:
-      '@vitest/expect': 3.0.9
-      '@vitest/mocker': 3.0.9(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
-      '@vitest/pretty-format': 3.2.4
-      '@vitest/runner': 3.0.9
-      '@vitest/snapshot': 3.0.9
-      '@vitest/spy': 3.0.9
-      '@vitest/utils': 3.0.9
-      chai: 5.3.3
-      debug: 4.4.3
-      expect-type: 1.3.0
-      magic-string: 0.30.21
-      pathe: 2.0.3
-      std-env: 3.10.0
-      tinybench: 2.9.0
-      tinyexec: 0.3.2
-      tinypool: 1.1.1
-      tinyrainbow: 2.0.0
-      vite: 6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
-      vite-node: 3.0.9(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
-      why-is-node-running: 2.3.0
-    optionalDependencies:
-      '@types/debug': 4.1.13
-      '@types/node': 18.16.15
-      '@vitest/browser': 3.0.6(@types/node@18.16.15)(playwright@1.58.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3))
-      '@vitest/ui': 3.0.6(vitest@3.0.9)
-      happy-dom: 9.20.3
-      jsdom: 22.1.0
-    transitivePeerDependencies:
-      - jiti
-      - less
-      - lightningcss
-      - msw
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - tsx
-      - yaml
+      vitest: 3.0.9(@types/debug@4.1.13)(@types/node@22.19.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@22.19.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
 
   vitest@3.0.9(@types/debug@4.1.13)(@types/node@18.16.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@18.16.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0):
     dependencies:
@@ -28225,6 +27925,49 @@ snapshots:
     optionalDependencies:
       '@types/debug': 4.1.13
       '@types/node': 18.16.15
+      '@vitest/browser': 3.0.6(@types/node@18.16.15)(playwright@1.58.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3))
+      '@vitest/ui': 3.0.6(vitest@3.0.9)
+      happy-dom: 9.20.3
+      jsdom: 22.1.0
+    transitivePeerDependencies:
+      - jiti
+      - less
+      - lightningcss
+      - msw
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - tsx
+      - yaml
+
+  vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(msw@2.12.14(@types/node@22.19.15)(typescript@5.8.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0):
+    dependencies:
+      '@vitest/expect': 3.0.9
+      '@vitest/mocker': 3.0.9(msw@2.12.14(@types/node@22.19.15)(typescript@5.8.3))(vite@6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0))
+      '@vitest/pretty-format': 3.2.4
+      '@vitest/runner': 3.0.9
+      '@vitest/snapshot': 3.0.9
+      '@vitest/spy': 3.0.9
+      '@vitest/utils': 3.0.9
+      chai: 5.3.3
+      debug: 4.4.3
+      expect-type: 1.3.0
+      magic-string: 0.30.21
+      pathe: 2.0.3
+      std-env: 3.10.0
+      tinybench: 2.9.0
+      tinyexec: 0.3.2
+      tinypool: 1.1.1
+      tinyrainbow: 2.0.0
+      vite: 6.3.5(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      vite-node: 3.0.9(@types/node@22.19.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.0)
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/debug': 4.1.13
+      '@types/node': 22.19.15
       '@vitest/browser': 3.0.6(@types/node@18.16.15)(playwright@1.58.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3))
       '@vitest/ui': 3.0.6(vitest@3.0.9)
       happy-dom: 9.20.3

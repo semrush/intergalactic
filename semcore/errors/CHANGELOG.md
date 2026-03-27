@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-03-27
+
+### BREAK
+
+- **ellipsis**: New major version.
+
+### Fixed
+
+- Rewrite component to TS.
+
 ## [16.1.7] - 2025-11-17
 
 ### Changed

@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-03-27
+
+### BREAK
+
+- New major version.
+
+### Added
+
+- Added `autoFocus` prop for `BulkTextarea.InputField`
+
+### Fixed
+
+- Fixed types for `Bulktextarea.InputField`.
+
 ## [16.6.2] - 2025-11-17
 
 ### Changed

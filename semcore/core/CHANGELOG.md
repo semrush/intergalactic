@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-03-27
+
+### BREAK
+
+- New major version.
+- Removed `WithI18n`. Use `useI18n`.
+- Removed `WithCSS`. Use `useCss`.
+- Removed `WithAutoFocus` and `autoFocusEnhance`.
+- Removed `WithKeyboardFocus`. Just don't use.
+- Removed `WithRef`. Use `useForkRef`.
+
+### Fixed
+
+- Prevent `body` pollution in `usePreventScroll`.
+
 ## [16.5.1] - 2025-10-30
 
 ### Fixed

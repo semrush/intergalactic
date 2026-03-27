@@ -2,6 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-03-27
+
+### BREAK
+
+- Removed 2px border-radius for Bars.
+
+### Added
+
+- `percentFormatter` for Cigarette.
+- Added `cursor:pointer` for `Bubble` chart in case bubbles are
+clickable.
+- `minimalBarWidth` for `Cigarette` chart.
+
+### Changed
+
+- Refined a11y module invocation logic
+
 ## [16.5.0] - 2026-02-10
 
 ### Added
