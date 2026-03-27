@@ -17,7 +17,7 @@ const INTERGALACTIC_TYPE_TO_PANDA: Record<string, string> = {
   border: 'borders',
   boxShadow: 'shadows',
   opacity: 'opacity',
-  // z-index - zIndex
+  // handled within process function, since token has type = 'other'
   // duration - durations
 };
 
