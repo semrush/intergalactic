@@ -62,6 +62,7 @@ const BaseTokens = ({ tokens }) => {
 };
 
 const BaseTokensTable = React.memo(({ filteredTokens }) => {
+  console.log(filteredTokens);
   const nameHeaderRef = React.useRef(null);
   const valueHeaderRef = React.useRef(null);
   const descriptionHeaderRef = React.useRef(null);
@@ -124,6 +125,9 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
             </Copy>
           );
         } else if (props.dataKey === 'value') {
+          const value = props.row[props.dataKey];
+          const isColor = value.startsWith('#');
+
           return (
             <Copy
               copiedToast='Copied'
@@ -133,8 +137,8 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
               className={styles.tokenValueWrapper}
             >
               <button type='button' className={styles.tokenValue} data-token-type='baseToken'>
-                <ColorPreview color={props.row[props.dataKey]} />
-                {props.row[props.dataKey]}
+                {isColor && <ColorPreview color={value} /> }
+                {value}
               </button>
             </Copy>
           );

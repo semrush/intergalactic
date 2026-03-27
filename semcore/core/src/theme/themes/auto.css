@@ -182,8 +182,6 @@
   --intergalactic-rounded-medium: 6px;
   --intergalactic-rounded-large: 12px;
   --intergalactic-rounded-extra-large: 24px;
-  /* Use for the disabled state of all kind of the controls and elements. */
-  --intergalactic-disabled-opacity: 0.3;
   /* Extra small screens (small phones). */
   --intergalactic-screen-extra-small: 320px;
   /* Small screens (phones and small tablets). */
@@ -192,13 +190,6 @@
   --intergalactic-screen-medium: 1200px;
   /* Large screens (tablets and laptops). */
   --intergalactic-screen-large: 1920px;
-  --intergalactic-z-index-deep: -999;
-  --intergalactic-z-index-overlay: 500;
-  --intergalactic-z-index-modal: 900;
-  --intergalactic-z-index-popper: 700;
-  --intergalactic-z-index-dropdown: 750;
-  --intergalactic-z-index-tooltip: 800;
-  --intergalactic-z-index-notice-bubble: 999;
   /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
   --intergalactic-duration-extra-slow: 500;
   /* Should be used for more larger scale animations (such as page transitions) */
@@ -627,6 +618,8 @@
   --intergalactic-brand-google-green: #016723;
   /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
+  /* Use for the disabled state of all kind of the controls and elements. */
+  --intergalactic-disabled-opacity: 0.3;
   /* Default shadow of the Card. */
   --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12);
   /* Hover state for the shadow of the Card with hover state. */
@@ -862,6 +855,13 @@
   --intergalactic-sidebar-nav-control-text-active: #4D407E;
   --intergalactic-sidebar-nav-control-icon-normal: #9083C5;
   --intergalactic-sidebar-nav-control-icon-active: #4D407E;
+  --intergalactic-z-index-deep: -999;
+  --intergalactic-z-index-overlay: 500;
+  --intergalactic-z-index-modal: 900;
+  --intergalactic-z-index-popper: 700;
+  --intergalactic-z-index-dropdown: 750;
+  --intergalactic-z-index-tooltip: 800;
+  --intergalactic-z-index-notice-bubble: 999;
   /* Use for small controls like Switch or Slider. */
   --intergalactic-duration-switch: 100;
   /* Use for components based on popper like Tooltip, Dropdown or Filter trigger. */
@@ -1059,8 +1059,6 @@
   --intergalactic-rounded-medium: 6px;
   --intergalactic-rounded-large: 12px;
   --intergalactic-rounded-extra-large: 24px;
-  /* Use for the disabled state of all kind of the controls and elements. */
-  --intergalactic-disabled-opacity: 0.3;
   /* Extra small screens (small phones). */
   --intergalactic-screen-extra-small: 320px;
   /* Small screens (phones and small tablets). */
@@ -1069,13 +1067,6 @@
   --intergalactic-screen-medium: 1200px;
   /* Large screens (tablets and laptops). */
   --intergalactic-screen-large: 1920px;
-  --intergalactic-z-index-deep: -999;
-  --intergalactic-z-index-overlay: 500;
-  --intergalactic-z-index-modal: 900;
-  --intergalactic-z-index-popper: 700;
-  --intergalactic-z-index-dropdown: 750;
-  --intergalactic-z-index-tooltip: 800;
-  --intergalactic-z-index-notice-bubble: 999;
   /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
   --intergalactic-duration-extra-slow: 500;
   /* Should be used for more larger scale animations (such as page transitions) */
@@ -1498,6 +1489,8 @@
   --intergalactic-brand-google-green: #016723;
   /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
+  /* Use for the disabled state of all kind of the controls and elements. */
+  --intergalactic-disabled-opacity: 0.3;
   /* Default shadow of the Card. */
   --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12);
   /* Hover state for the shadow of the Card with hover state. */
@@ -1733,6 +1726,13 @@
   --intergalactic-sidebar-nav-control-text-active: #4D407E;
   --intergalactic-sidebar-nav-control-icon-normal: #9083C5;
   --intergalactic-sidebar-nav-control-icon-active: #4D407E;
+  --intergalactic-z-index-deep: -999;
+  --intergalactic-z-index-overlay: 500;
+  --intergalactic-z-index-modal: 900;
+  --intergalactic-z-index-popper: 700;
+  --intergalactic-z-index-dropdown: 750;
+  --intergalactic-z-index-tooltip: 800;
+  --intergalactic-z-index-notice-bubble: 999;
   /* Use for small controls like Switch or Slider. */
   --intergalactic-duration-switch: 100;
   /* Use for components based on popper like Tooltip, Dropdown or Filter trigger. */

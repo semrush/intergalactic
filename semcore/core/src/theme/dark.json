@@ -622,36 +622,6 @@
       "type": "sizing",
       "description": "Large screens (tablets and laptops)."
     },
-    "z-index": {
-      "deep": {
-        "value": "-999",
-        "type": "other"
-      },
-      "overlay": {
-        "value": "500",
-        "type": "other"
-      },
-      "modal": {
-        "value": "900",
-        "type": "other"
-      },
-      "popper": {
-        "value": "700",
-        "type": "other"
-      },
-      "dropdown": {
-        "value": "750",
-        "type": "other"
-      },
-      "tooltip": {
-        "value": "800",
-        "type": "other"
-      },
-      "notice-bubble": {
-        "value": "999",
-        "type": "other"
-      }
-    },
     "duration": {
       "extra-slow": {
         "value": "500",
@@ -2535,6 +2505,36 @@
             "type": "color"
           }
         }
+      }
+    },
+    "z-index": {
+      "deep": {
+        "value": "-999",
+        "type": "other"
+      },
+      "overlay": {
+        "value": "500",
+        "type": "other"
+      },
+      "modal": {
+        "value": "900",
+        "type": "other"
+      },
+      "popper": {
+        "value": "700",
+        "type": "other"
+      },
+      "dropdown": {
+        "value": "750",
+        "type": "other"
+      },
+      "tooltip": {
+        "value": "800",
+        "type": "other"
+      },
+      "notice-bubble": {
+        "value": "999",
+        "type": "other"
       }
     },
     "duration": {

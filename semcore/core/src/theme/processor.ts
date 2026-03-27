@@ -243,50 +243,36 @@ for (const theme of themes) {
       description: string;
       components: string[];
     }[] = [];
-
-    for (const token in values) {
-      if (basicTokens.has(token) && types[token] === 'color') continue;
-
-      const components = [
-        ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
-      ];
-      components.sort((a, b) => a.localeCompare(b));
-
-      designTokensDocumentation.push({
-        name: `--${prefix}-${token}`,
-        type: types[token],
-        rawValue: rawValues[token],
-        computedValue: values[token],
-        description: descriptions[token],
-        components,
-      });
-    }
-
     const baseTokensDocumentation: Token[] = [];
 
-    const processGroup = (group: string, data: any) => {
-      if (data.type && data.type !== 'color') return;
+    for (const processedToken of [...processedTokens, ...highlightsTokens]) {
+      const { originalName: token, name, value, description } = processedToken;
 
-      for (const key in data) {
-        if (data[key].value && data[key].type === 'color') {
-          const token: Token = {
-            name: `--${group}-${key}`,
-            value: data[key].value,
-          };
+      const isBase = basicTokens.has(token);
 
-          if (data[key].description?.trim()) {
-            token.description = data[key].description;
-          }
+      if (isBase) {
+        const token: Token = {
+          name,
+          value,
+          description,
+        };
 
-          baseTokensDocumentation.push(token);
-        } else {
-          processGroup(`${group}-${key}`, data[key]);
-        }
+        baseTokensDocumentation.push(token);
+      } else {
+        const components = [
+          ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
+        ];
+        components.sort((a, b) => a.localeCompare(b));
+
+        designTokensDocumentation.push({
+          name,
+          type: types[token],
+          rawValue: rawValues[token],
+          computedValue: value,
+          description: description,
+          components,
+        });
       }
-    };
-
-    for (const group in base) {
-      processGroup(group, base[group]);
     }
 
     await writeIfChanged(

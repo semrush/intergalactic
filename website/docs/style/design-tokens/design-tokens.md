@@ -55,8 +55,7 @@ Base tokens include:
 - sizing;
 - spacing;
 - the base border radius scale;
-- breakpoints;
-- z-index.
+- breakpoints.
 
 The palette was built with [Huetone tool](https://huetone.ardov.me/) (learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
 
@@ -86,6 +85,8 @@ Semantic tokens include:
 - box shadows;
 - border radius;
 - form control heights;
+- opacity;
+- z-index;
 - animation durations.
 
 To learn more about the tokens names, see [Token naming structure section](/style/design-tokens/design-tokens-usage#token-naming-structure).

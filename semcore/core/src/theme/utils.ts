@@ -269,8 +269,8 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
     }
   }
 
-  const processedTokens: { name: string; value: string; description: string }[] = [];
-  const highlightsTokens: { name: string; value: string; description: string }[] = [];
+  const processedTokens: { name: string; value: string; description: string; originalName: string }[] = [];
+  const highlightsTokens: { name: string; value: string; description: string; originalName: string }[] = [];
 
   for (const token in values) {
     const isBase = basicTokens.has(token) && types[token] === 'color';
@@ -278,6 +278,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, featureHig
       name: isBase ? `--${token}` : `--${prefix}-${token}`,
       description: descriptions[token],
       value: values[token],
+      originalName: token,
     });
   }
 
