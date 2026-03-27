@@ -8,6 +8,11 @@ tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in 
 Design tokens are available for use from **intergalactic@13.5.0** version.
 :::
 
+::: warning
+You should use tokens from the **@semcore/theme** package instead of **@semcore/core**, 
+as they will be removed from the core package starting from **version 17**.
+:::
+
 ## Description
 
 Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). The most important thing is that tokens ensure the same style names and values are used in design files and code.
