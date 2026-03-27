@@ -21,7 +21,7 @@ const columns = [
   {
     name: 'keyword', gtcWidth: '65px', sortable: true,
     children: (
-      <Text ellipsis={{ cropPosition: 'middle' }}>
+      <Text ellipsis:cropPosition='middle'>
         Keyword
         <Text color='text-secondary'>(Keyword 1-100)</Text>
       </Text>

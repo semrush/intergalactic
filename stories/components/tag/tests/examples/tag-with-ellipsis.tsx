@@ -15,7 +15,7 @@ const Demo = () => {
       <Box>
         <h3>Tag.Text with ellipsis middle crop</h3>
         <Tag w={120} size='m'>
-          <Tag.Text ellipsis={{ cropPosition: 'middle' }}>
+          <Tag.Text ellipsis:cropPosition='middle'>
             Long tag text that should be truncated
           </Tag.Text>
         </Tag>

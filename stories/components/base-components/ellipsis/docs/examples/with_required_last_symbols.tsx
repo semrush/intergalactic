@@ -6,10 +6,8 @@ const text = 'Intergalactic is a constantly developing system of UI components, 
 const Demo = () => {
   return (
     <Text
-      ellipsis={{
-        cropPosition: 'middle',
-        lastRequiredSymbols: 5,
-      }}
+      ellipsis:cropPosition='middle'
+      ellipsis:lastRequiredSymbols={5}
       size={300}
       w='300px'
     >

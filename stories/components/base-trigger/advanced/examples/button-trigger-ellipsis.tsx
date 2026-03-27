@@ -16,8 +16,8 @@ const Demo = (props: ButtonTriggerEllipsisProps) => {
             w={150}
             tag='h2'
             size={400}
-            ellipsis={{ cropPosition: 'middle' }}
-            hintProps={props.hintProps}
+            ellipsis:cropPosition='middle'
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
           >
             Few Tags Tags Tags
@@ -30,8 +30,8 @@ const Demo = (props: ButtonTriggerEllipsisProps) => {
             w={150}
             size={400}
             data-test-id='ellipsis-middle'
-            ellipsis={{ cropPosition: 'middle' }}
-            hintProps={props.hintProps}
+            ellipsis:cropPosition='middle'
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
           >
             This is first trigger with a very very long text!
@@ -44,7 +44,7 @@ const Demo = (props: ButtonTriggerEllipsisProps) => {
             w={150}
             size={400}
             ellipsis={true}
-            hintProps={props.hintProps}
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
           >
 
@@ -64,7 +64,7 @@ const Demo = (props: ButtonTriggerEllipsisProps) => {
       <ButtonTrigger w={100} data-test-id='active-trigger'>
         <ButtonTrigger.Text
           ellipsis={true}
-          hintProps={props.hintProps}
+          hint={props.hintProps}
           hint:placement={props.hintPlacement}
         >
           This is third trigger with a very very long text!

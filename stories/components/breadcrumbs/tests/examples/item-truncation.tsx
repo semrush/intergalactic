@@ -11,7 +11,7 @@ const Demo = (props: BreadcrumbsExampleProps) => (
   <>
     <Breadcrumbs w={600}>
       <Breadcrumbs.Item
-        hintProps={props.hintProps}
+        hint={props.hintProps}
         hint:placement={props.hintPlacement}
       >
         With Hint Props Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur assumenda harum
