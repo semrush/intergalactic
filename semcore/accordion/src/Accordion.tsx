@@ -137,7 +137,7 @@ export class RootItem extends Component<AccordionItemProps, typeof RootItem.enha
   }
 }
 
-class Toggle extends Component<AccordionItemToggleProps, never, {}, Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootItem, 'Toggle'>> {
+class Toggle extends Component<AccordionItemToggleProps, never, {}, InferPropsFromRoot<typeof RootItem, 'Toggle'>> {
   toggleRef = React.createRef();
 
   handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
