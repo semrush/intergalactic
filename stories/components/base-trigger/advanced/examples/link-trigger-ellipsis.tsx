@@ -11,10 +11,9 @@ const Demo = (props: LinkTriggerEllipsisProps) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenu.Trigger tag={LinkTrigger}>
+        <DropdownMenu.Trigger tag={LinkTrigger} size={400}>
           <LinkTrigger.Text
             w={150}
-            size={400}
             display='inline-flex'
             hint={props.hintProps}
             hint:placement={props.hintPlacement}
@@ -26,10 +25,9 @@ const Demo = (props: LinkTriggerEllipsisProps) => {
         <br />
         <br />
         <br />
-        <DropdownMenu.Trigger tag={LinkTrigger}>
+        <DropdownMenu.Trigger tag={LinkTrigger} size={400}>
           <LinkTrigger.Text
             w={150}
-            size={400}
             ellipsis:cropPosition='middle'
             hint={props.hintProps}
             hint:placement={props.hintPlacement}
@@ -43,10 +41,9 @@ const Demo = (props: LinkTriggerEllipsisProps) => {
         <br />
         <br />
         <br />
-        <DropdownMenu.Trigger tag={LinkTrigger}>
+        <DropdownMenu.Trigger tag={LinkTrigger} size={400}>
           <LinkTrigger.Text
             w={150}
-            size={400}
             ellipsis={true}
             hint={props.hintProps}
             hint:placement={props.hintPlacement}
