@@ -520,9 +520,9 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.MOUSE,
       '@dropdown-menu'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/with_ellipsis.tsx', 'en');
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/with_ellipsis.tsx', 'en', { hintPlacement: 'bottom' });
 
-    await test.step('Verify Ellipsis applies and Hint shown on Hover with placement Top', async () => {
+    await test.step('Verify Ellipsis applies and Hint shown on Hover with default placement', async () => {
       await locators.button(page).click();
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await locators.menuitem(page, 0).hover();
