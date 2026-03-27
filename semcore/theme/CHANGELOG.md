@@ -6,4 +6,4 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Release package with themes.
+- Release package with theme.

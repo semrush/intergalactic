@@ -94,7 +94,7 @@ for (const theme of themes) {
         cwd: semcorePath,
       })
     ).filter((path) => {
-      if (path.split('/').some((pathPart) => ['design-system', 'chart', 'email', 'table'].includes(pathPart))) {
+      if (path.split('/').some((pathPart) => ['theme', 'chart', 'email', 'table'].includes(pathPart))) {
         return false;
       }
       return true;

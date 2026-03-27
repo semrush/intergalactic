@@ -1,5 +1,5 @@
 {
-  "name": "@semcore/design-system",
+  "name": "@semcore/theme",
   "description": "Semrush Design System package",
   "version": "1.0.0",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -13,7 +13,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
-    "directory": "semcore/design-system"
+    "directory": "semcore/theme"
   },
   "devDependencies": {
     "colorjs.io": "0.4.3",
