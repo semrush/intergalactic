@@ -53,10 +53,4 @@ import { Blockquote } from '@semcore/ui/typography';
 
 <TypesView type="BlockquoteProps" :types={...types} />
 
-## FormatText
-
-::: warning
-`FormatText` is deprecated. To style native tags, wrap them in `Text`. Refer to the [Native typography tags example](./typography-code#native-typography-tags)
-:::
-
 <script setup>import { data as types } from '@types.data.ts';</script>
