@@ -2152,6 +2152,38 @@
     "components": []
   },
   {
+    "name": "--intergalactic-disabled-opacity",
+    "type": "opacity",
+    "rawValue": "0.3",
+    "computedValue": "0.3",
+    "description": "Use for the disabled state of all kind of the controls and elements.",
+    "components": [
+      "accordion",
+      "base-trigger",
+      "bulk-textarea",
+      "button",
+      "carousel",
+      "checkbox",
+      "date-picker",
+      "dropdown",
+      "inline-input",
+      "input",
+      "input-number",
+      "link",
+      "pills",
+      "radio",
+      "slider",
+      "switch",
+      "tab-line",
+      "tab-panel",
+      "tag",
+      "textarea",
+      "time-picker",
+      "typography",
+      "wizard"
+    ]
+  },
+  {
     "name": "--intergalactic-box-shadow-card",
     "type": "boxShadow",
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
@@ -3135,70 +3167,6 @@
     ]
   },
   {
-    "name": "--intergalactic-disabled-opacity",
-    "type": "opacity",
-    "rawValue": "0.3",
-    "computedValue": "0.3",
-    "description": "Use for the disabled state of all kind of the controls and elements.",
-    "components": [
-      "accordion",
-      "base-trigger",
-      "bulk-textarea",
-      "button",
-      "carousel",
-      "checkbox",
-      "date-picker",
-      "dropdown",
-      "inline-input",
-      "input",
-      "input-number",
-      "link",
-      "pills",
-      "radio",
-      "slider",
-      "switch",
-      "tab-line",
-      "tab-panel",
-      "tag",
-      "textarea",
-      "time-picker",
-      "typography",
-      "wizard"
-    ]
-  },
-  {
-    "name": "--intergalactic-screen-extra-small",
-    "type": "sizing",
-    "rawValue": "320px",
-    "computedValue": "320px",
-    "description": "Extra small screens (small phones).",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-screen-small",
-    "type": "sizing",
-    "rawValue": "768px",
-    "computedValue": "768px",
-    "description": "Small screens (phones and small tablets).",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-screen-medium",
-    "type": "sizing",
-    "rawValue": "1200px",
-    "computedValue": "1200px",
-    "description": "Medium screens (tablets and small laptops).",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-screen-large",
-    "type": "sizing",
-    "rawValue": "1920px",
-    "computedValue": "1920px",
-    "description": "Large screens (tablets and laptops).",
-    "components": []
-  },
-  {
     "name": "--intergalactic-overlay-primary",
     "type": "color",
     "rawValue": "rgba({gray.800}, 0.7)",
@@ -3238,59 +3206,6 @@
       "data-table",
       "spin-container"
     ]
-  },
-  {
-    "name": "--intergalactic-z-index-deep",
-    "type": "other",
-    "rawValue": "-999",
-    "computedValue": "-999",
-    "components": [
-      "date-picker"
-    ]
-  },
-  {
-    "name": "--intergalactic-z-index-overlay",
-    "type": "other",
-    "rawValue": "500",
-    "computedValue": "500",
-    "components": [
-      "d3-chart"
-    ]
-  },
-  {
-    "name": "--intergalactic-z-index-modal",
-    "type": "other",
-    "rawValue": "900",
-    "computedValue": "900",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-popper",
-    "type": "other",
-    "rawValue": "700",
-    "computedValue": "700",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-dropdown",
-    "type": "other",
-    "rawValue": "750",
-    "computedValue": "750",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-tooltip",
-    "type": "other",
-    "rawValue": "800",
-    "computedValue": "800",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-z-index-notice-bubble",
-    "type": "other",
-    "rawValue": "999",
-    "computedValue": "999",
-    "components": []
   },
   {
     "name": "--intergalactic-tooltip-default",
@@ -4070,54 +3985,57 @@
     "components": []
   },
   {
-    "name": "--intergalactic-duration-extra-slow",
+    "name": "--intergalactic-z-index-deep",
     "type": "other",
-    "rawValue": "500",
-    "computedValue": "500",
-    "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)",
-    "components": [
-      "mini-chart"
-    ]
-  },
-  {
-    "name": "--intergalactic-duration-slow",
-    "type": "other",
-    "rawValue": "400",
-    "computedValue": "400",
-    "description": "Should be used for more larger scale animations (such as page transitions)",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-duration-medium",
-    "type": "other",
-    "rawValue": "300",
-    "computedValue": "300",
-    "description": "Should be used for more complex effects (such as Modal)",
+    "rawValue": "-999",
+    "computedValue": "-999",
     "components": [
       "date-picker"
     ]
   },
   {
-    "name": "--intergalactic-duration-fast",
+    "name": "--intergalactic-z-index-overlay",
     "type": "other",
-    "rawValue": "200",
-    "computedValue": "200",
-    "description": "Should be used for more complex effects (such as Dropdown or Accordion)",
+    "rawValue": "500",
+    "computedValue": "500",
     "components": [
-      "slider"
+      "d3-chart"
     ]
   },
   {
-    "name": "--intergalactic-duration-extra-fast",
+    "name": "--intergalactic-z-index-modal",
     "type": "other",
-    "rawValue": "100",
-    "computedValue": "100",
-    "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
-    "components": [
-      "data-table",
-      "drag-and-drop",
-      "feature-highlight"
-    ]
+    "rawValue": "900",
+    "computedValue": "900",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-popper",
+    "type": "other",
+    "rawValue": "700",
+    "computedValue": "700",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-dropdown",
+    "type": "other",
+    "rawValue": "750",
+    "computedValue": "750",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-tooltip",
+    "type": "other",
+    "rawValue": "800",
+    "computedValue": "800",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-z-index-notice-bubble",
+    "type": "other",
+    "rawValue": "999",
+    "computedValue": "999",
+    "components": []
   },
   {
     "name": "--intergalactic-duration-switch",

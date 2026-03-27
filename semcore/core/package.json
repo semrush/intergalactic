@@ -21,6 +21,11 @@
       "types": "./src/index.ts",
       "import": "./src/index.ts"
     },
+    "./lib/theme/themes/panda-preset": {
+      "require": "./lib/theme/themes/panda-preset.js",
+      "import": "./lib/theme/themes/panda-preset.mjs",
+      "types": "./lib/theme/themes/panda-preset.d.ts"
+    },
     "./lib/theme/themes/default.css": {
       "import": "./lib/theme/themes/default.css",
       "require": "./lib/theme/themes/default.css"
@@ -434,6 +439,7 @@
     "directory": "semcore/core"
   },
   "devDependencies": {
+    "@pandacss/dev": "^1.9.0",
     "@semcore/testing-utils": "workspace:*",
     "@types/classnames": "2.2.6",
     "@types/hoist-non-react-statics": "^3.3.6",

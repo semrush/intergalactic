@@ -403,6 +403,251 @@
         "value": "#002203",
         "type": "color"
       }
+    },
+    "base": {
+      "value": "Inter",
+      "type": "fontFamilies",
+      "description": "Base font family."
+    },
+    "fs-50": {
+      "value": "10px",
+      "type": "fontSizes",
+      "description": "Use only for text in Badge component."
+    },
+    "fs-100": {
+      "value": "12px",
+      "type": "fontSizes",
+      "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability."
+    },
+    "fs-200": {
+      "value": "14px",
+      "type": "fontSizes"
+    },
+    "fs-300": {
+      "value": "16px",
+      "type": "fontSizes"
+    },
+    "fs-400": {
+      "value": "20px",
+      "type": "fontSizes"
+    },
+    "fs-500": {
+      "value": "24px",
+      "type": "fontSizes"
+    },
+    "fs-600": {
+      "value": "32px",
+      "type": "fontSizes"
+    },
+    "fs-700": {
+      "value": "36px",
+      "type": "fontSizes"
+    },
+    "fs-800": {
+      "value": "48px",
+      "type": "fontSizes"
+    },
+    "lh-100": {
+      "value": "133%",
+      "type": "lineHeights",
+      "description": "Use with font-size-100."
+    },
+    "lh-200": {
+      "value": "142%",
+      "type": "lineHeights",
+      "description": "Use with font-size-200."
+    },
+    "lh-300": {
+      "value": "150%",
+      "type": "lineHeights",
+      "description": "Use with font-size-300."
+    },
+    "lh-400": {
+      "value": "120%",
+      "type": "lineHeights",
+      "description": "Use with font-size-400."
+    },
+    "lh-500": {
+      "value": "117%",
+      "type": "lineHeights",
+      "description": "Use with font-size-500."
+    },
+    "lh-600": {
+      "value": "125%",
+      "type": "lineHeights",
+      "description": "Use with font-size-600."
+    },
+    "lh-700": {
+      "value": "110%",
+      "type": "lineHeights",
+      "description": "Use with font-size-700."
+    },
+    "lh-800": {
+      "value": "117%",
+      "type": "lineHeights",
+      "description": "Use with font-size-800."
+    },
+    "semi-bold": {
+      "value": "600",
+      "type": "fontWeights",
+      "description": "Semi-bold font weight."
+    },
+    "bold": {
+      "value": "700",
+      "type": "fontWeights",
+      "description": "Bold font weight."
+    },
+    "regular": {
+      "value": "400",
+      "type": "fontWeights",
+      "description": "Regular font weight."
+    },
+    "medium": {
+      "value": "500",
+      "type": "fontWeights",
+      "description": "Medium font weight."
+    },
+    "compact": {
+      "value": "0.3",
+      "type": "letterSpacing",
+      "description": "Compact letter spacing."
+    },
+    "scale-indent": {
+      "value": "4px",
+      "type": "spacing",
+      "description": "Base denominator of the design system."
+    },
+    "spacing-05x": {
+      "value": "{scale-indent}*0.5",
+      "type": "spacing",
+      "description": "2px"
+    },
+    "spacing-1x": {
+      "value": "{scale-indent}*1",
+      "type": "spacing",
+      "description": "4px"
+    },
+    "spacing-2x": {
+      "value": "{scale-indent}*2",
+      "type": "spacing",
+      "description": "8px"
+    },
+    "spacing-3x": {
+      "value": "{scale-indent}*3",
+      "type": "spacing",
+      "description": "12px"
+    },
+    "spacing-4x": {
+      "value": "{scale-indent}*4",
+      "type": "spacing",
+      "description": "16px"
+    },
+    "spacing-5x": {
+      "value": "{scale-indent}*5",
+      "type": "spacing",
+      "description": "20px"
+    },
+    "spacing-6x": {
+      "value": "{scale-indent}*6",
+      "type": "spacing",
+      "description": "24px"
+    },
+    "spacing-8x": {
+      "value": "{scale-indent}*8",
+      "type": "spacing",
+      "description": "32px"
+    },
+    "spacing-10x": {
+      "value": "{scale-indent}*10",
+      "type": "spacing",
+      "description": "40px"
+    },
+    "spacing-14x": {
+      "value": "{scale-indent}*14",
+      "type": "spacing",
+      "description": "56px"
+    },
+    "spacing-20x": {
+      "value": "{scale-indent}*20",
+      "type": "spacing",
+      "description": "80px"
+    },
+    "spacing-24x": {
+      "value": "{scale-indent}*24",
+      "type": "spacing",
+      "description": "96px"
+    },
+    "spacing-30x": {
+      "value": "{scale-indent}*30",
+      "type": "spacing",
+      "description": "120px"
+    },
+    "rounded-extra-small": {
+      "value": "2px",
+      "type": "borderRadius"
+    },
+    "rounded-small": {
+      "value": "4px",
+      "type": "borderRadius"
+    },
+    "rounded-medium": {
+      "value": "6px",
+      "type": "borderRadius"
+    },
+    "rounded-large": {
+      "value": "12px",
+      "type": "borderRadius"
+    },
+    "rounded-extra-large": {
+      "value": "24px",
+      "type": "borderRadius"
+    },
+    "screen-extra-small": {
+      "value": "320px",
+      "type": "sizing",
+      "description": "Extra small screens (small phones)."
+    },
+    "screen-small": {
+      "value": "768px",
+      "type": "sizing",
+      "description": "Small screens (phones and small tablets)."
+    },
+    "screen-medium": {
+      "value": "1200px",
+      "type": "sizing",
+      "description": "Medium screens (tablets and small laptops)."
+    },
+    "screen-large": {
+      "value": "1920px",
+      "type": "sizing",
+      "description": "Large screens (tablets and laptops)."
+    },
+    "duration": {
+      "extra-slow": {
+        "value": "500",
+        "type": "other",
+        "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)"
+      },
+      "slow": {
+        "value": "400",
+        "type": "other",
+        "description": "Should be used for more larger scale animations (such as page transitions)"
+      },
+      "medium": {
+        "value": "300",
+        "type": "other",
+        "description": "Should be used for more complex effects (such as Modal)"
+      },
+      "fast": {
+        "value": "200",
+        "type": "other",
+        "description": "Should be used for more complex effects (such as Dropdown or Accordion)"
+      },
+      "extra-fast": {
+        "value": "100",
+        "type": "other",
+        "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
+      }
     }
   },
   "tokens": {
@@ -1524,6 +1769,11 @@
         "description": "Google My Business brand color."
       }
     },
+    "disabled-opacity": {
+      "value": "0.3",
+      "type": "opacity",
+      "description": "Use for the disabled state of all kind of the controls and elements."
+    },
     "box-shadow": {
       "card": {
         "value": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
@@ -1595,153 +1845,45 @@
         "description": "Use it only for controls that float above the whole interface."
       }
     },
-"keyboard-focus": {
-  "value": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
-  "type": "boxShadow",
-  "description": "Default keyboard focus box-shadow styles.",
-  "outline": {
-    "value": "{blue.400}",
-    "type": "color",
-    "description": "Color for default keyboard focus outline styles."
-  },
-  "invalid": {
-    "value": "0px 0px 0px 3px rgba({keyboard-focus.invalid.outline}, 0.5)",
-    "type": "boxShadow",
-    "description": "Keyboard focus styles for elements with invalid state.",
-    "outline": {
-      "value": "{red.400}",
-      "type": "color",
-      "description": "Color for keyboard focus outline styles for elements with invalid state."
-    }
-  },
-  "valid": {
-    "value": "0px 0px 0px 3px rgba({keyboard-focus.valid.outline}, 0.5)",
-    "type": "boxShadow",
-    "description": "Keyboard focus styles for elements with valid state.",
-    "outline": {
-      "value": "{green.400}",
-      "type": "color",
-      "description": "Color for keyboard focus outline styles for elements with valid state."
-    }
-  },
-  "invert": {
-    "value": "0px 0px 0px 3px {keyboard-focus.invert.outline}",
-    "type": "boxShadow",
-    "description": "Keyboard focus styles for use on dark backgrounds.",
-    "outline": {
-      "value": "rgba({gray.white}, 0.8)",
-      "type": "color",
-      "description": "Color for keyboard focus outline styles to use on the dark and color background."
-    }
-  }
-},
-    "base": {
-      "value": "Inter",
-      "type": "fontFamilies",
-      "description": "Base font family."
-    },
-    "lh-800": {
-      "value": "117%",
-      "type": "lineHeights",
-      "description": "Use with font-size-800."
-    },
-    "lh-700": {
-      "value": "110%",
-      "type": "lineHeights",
-      "description": "Use with font-size-700."
-    },
-    "lh-600": {
-      "value": "125%",
-      "type": "lineHeights",
-      "description": "Use with font-size-600."
-    },
-    "lh-500": {
-      "value": "117%",
-      "type": "lineHeights",
-      "description": "Use with font-size-500."
-    },
-    "lh-400": {
-      "value": "120%",
-      "type": "lineHeights",
-      "description": "Use with font-size-400."
-    },
-    "lh-300": {
-      "value": "150%",
-      "type": "lineHeights",
-      "description": "Use with font-size-300."
-    },
-    "lh-200": {
-      "value": "142%",
-      "type": "lineHeights",
-      "description": "Use with font-size-200."
-    },
-    "lh-100": {
-      "value": "133%",
-      "type": "lineHeights",
-      "description": "Use with font-size-100."
-    },
-    "semi-bold": {
-      "value": "600",
-      "type": "fontWeights",
-      "description": "Semi-bold font weight."
-    },
-    "bold": {
-      "value": "700",
-      "type": "fontWeights",
-      "description": "Bold font weight."
-    },
-    "regular": {
-      "value": "400",
-      "type": "fontWeights",
-      "description": "Regular font weight."
-    },
-    "medium": {
-      "value": "500",
-      "type": "fontWeights",
-      "description": "Medium font weight."
-    },
-    "fs-50": {
-      "value": "10px",
-      "type": "fontSizes",
-      "description": "Use only for text in Badge component."
-    },
-    "fs-100": {
-      "value": "12px",
-      "type": "fontSizes",
-      "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability."
-    },
-    "fs-200": {
-      "value": "14px",
-      "type": "fontSizes"
-    },
-    "fs-300": {
-      "value": "16px",
-      "type": "fontSizes"
-    },
-    "fs-400": {
-      "value": "20px",
-      "type": "fontSizes"
-    },
-    "fs-500": {
-      "value": "24px",
-      "type": "fontSizes"
-    },
-    "fs-600": {
-      "value": "32px",
-      "type": "fontSizes"
-    },
-    "fs-700": {
-      "value": "36px",
-      "type": "fontSizes"
-    },
-    "fs-800": {
-      "value": "48px",
-      "type": "fontSizes"
-    },
-    "compact": {
-      "value": "0.3",
-      "type": "letterSpacing",
-      "description": "Compact letter spacing."
+    "keyboard-focus": {
+      "value": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
+      "type": "boxShadow",
+      "description": "Default keyboard focus box-shadow styles.",
+      "outline": {
+        "value": "{blue.400}",
+        "type": "color",
+        "description": "Color for default keyboard focus outline styles."
+      },
+      "invalid": {
+        "value": "0px 0px 0px 3px rgba({keyboard-focus.invalid.outline}, 0.5)",
+        "type": "boxShadow",
+        "description": "Keyboard focus styles for elements with invalid state.",
+        "outline": {
+          "value": "{red.400}",
+          "type": "color",
+          "description": "Color for keyboard focus outline styles for elements with invalid state."
+        }
+      },
+      "valid": {
+        "value": "0px 0px 0px 3px rgba({keyboard-focus.valid.outline}, 0.5)",
+        "type": "boxShadow",
+        "description": "Keyboard focus styles for elements with valid state.",
+        "outline": {
+          "value": "{green.400}",
+          "type": "color",
+          "description": "Color for keyboard focus outline styles for elements with valid state."
+        }
+      },
+      "invert": {
+        "value": "0px 0px 0px 3px {keyboard-focus.invert.outline}",
+        "type": "boxShadow",
+        "description": "Keyboard focus styles for use on dark backgrounds.",
+        "outline": {
+          "value": "rgba({gray.white}, 0.8)",
+          "type": "color",
+          "description": "Color for keyboard focus outline styles to use on the dark and color background."
+        }
+      }
     },
     "heading-h1": {
       "value": {
@@ -1812,11 +1954,6 @@
       "type": "typography",
       "description": "Use for big subtitles on the landing pages."
     },
-    "scale-indent": {
-      "value": "4px",
-      "type": "spacing",
-      "description": "Base denominator of the design system."
-    },
     "form-control-s": {
       "value": "{scale-indent}*5",
       "type": "sizing",
@@ -1831,91 +1968,6 @@
       "value": "{scale-indent}*10",
       "type": "sizing",
       "description": "Large size of the controls."
-    },
-    "spacing-05x": {
-      "value": "{scale-indent}*0.5",
-      "type": "spacing",
-      "description": "2px"
-    },
-    "spacing-1x": {
-      "value": "{scale-indent}*1",
-      "type": "spacing",
-      "description": "4px"
-    },
-    "spacing-2x": {
-      "value": "{scale-indent}*2",
-      "type": "spacing",
-      "description": "8px"
-    },
-    "spacing-3x": {
-      "value": "{scale-indent}*3",
-      "type": "spacing",
-      "description": "12px"
-    },
-    "spacing-4x": {
-      "value": "{scale-indent}*4",
-      "type": "spacing",
-      "description": "16px"
-    },
-    "spacing-5x": {
-      "value": "{scale-indent}*5",
-      "type": "spacing",
-      "description": "20px"
-    },
-    "spacing-6x": {
-      "value": "{scale-indent}*6",
-      "type": "spacing",
-      "description": "24px"
-    },
-    "spacing-8x": {
-      "value": "{scale-indent}*8",
-      "type": "spacing",
-      "description": "32px"
-    },
-    "spacing-10x": {
-      "value": "{scale-indent}*10",
-      "type": "spacing",
-      "description": "40px"
-    },
-    "spacing-14x": {
-      "value": "{scale-indent}*14",
-      "type": "spacing",
-      "description": "56px"
-    },
-    "spacing-20x": {
-      "value": "{scale-indent}*20",
-      "type": "spacing",
-      "description": "80px"
-    },
-    "spacing-24x": {
-      "value": "{scale-indent}*24",
-      "type": "spacing",
-      "description": "96px"
-    },
-    "spacing-30x": {
-      "value": "{scale-indent}*30",
-      "type": "spacing",
-      "description": "120px"
-    },
-    "rounded-extra-small": {
-      "value": "2px",
-      "type": "borderRadius"
-    },
-    "rounded-small": {
-      "value": "4px",
-      "type": "borderRadius"
-    },
-    "rounded-medium": {
-      "value": "6px",
-      "type": "borderRadius"
-    },
-    "rounded-large": {
-      "value": "12px",
-      "type": "borderRadius"
-    },
-    "rounded-extra-large": {
-      "value": "24px",
-      "type": "borderRadius"
     },
     "addon-rounded": {
       "value": "{rounded-small}",
@@ -1972,31 +2024,6 @@
       "type": "borderRadius",
       "description": "Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard)."
     },
-    "disabled-opacity": {
-      "value": "0.3",
-      "type": "opacity",
-      "description": "Use for the disabled state of all kind of the controls and elements."
-    },
-    "screen-extra-small": {
-      "value": "320px",
-      "type": "sizing",
-      "description": "Extra small screens (small phones)."
-    },
-    "screen-small": {
-      "value": "768px",
-      "type": "sizing",
-      "description": "Small screens (phones and small tablets)."
-    },
-    "screen-medium": {
-      "value": "1200px",
-      "type": "sizing",
-      "description": "Medium screens (tablets and small laptops)."
-    },
-    "screen-large": {
-      "value": "1920px",
-      "type": "sizing",
-      "description": "Large screens (tablets and laptops)."
-    },
     "overlay": {
       "primary": {
         "value": "rgba({gray.800}, 0.7)",
@@ -2017,36 +2044,6 @@
         "value": "rgba({gray.white}, 0.85)",
         "type": "color",
         "description": "Use as a secondary cover of the content under the messages about limitations."
-      }
-    },
-    "z-index": {
-      "deep": {
-        "value": "-999",
-        "type": "other"
-      },
-      "overlay": {
-        "value": "500",
-        "type": "other"
-      },
-      "modal": {
-        "value": "900",
-        "type": "other"
-      },
-      "popper": {
-        "value": "700",
-        "type": "other"
-      },
-      "dropdown": {
-        "value": "750",
-        "type": "other"
-      },
-      "tooltip": {
-        "value": "800",
-        "type": "other"
-      },
-      "notice-bubble": {
-        "value": "999",
-        "type": "other"
       }
     },
     "tooltip": {
@@ -2545,32 +2542,37 @@
         }
       }
     },
-    "duration": {
-      "extra-slow": {
+    "z-index": {
+      "deep": {
+        "value": "-999",
+        "type": "other"
+      },
+      "overlay": {
         "value": "500",
-        "type": "other",
-        "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)"
+        "type": "other"
       },
-      "slow": {
-        "value": "400",
-        "type": "other",
-        "description": "Should be used for more larger scale animations (such as page transitions)"
+      "modal": {
+        "value": "900",
+        "type": "other"
       },
-      "medium": {
-        "value": "300",
-        "type": "other",
-        "description": "Should be used for more complex effects (such as Modal)"
+      "popper": {
+        "value": "700",
+        "type": "other"
       },
-      "fast": {
-        "value": "200",
-        "type": "other",
-        "description": "Should be used for more complex effects (such as Dropdown or Accordion)"
+      "dropdown": {
+        "value": "750",
+        "type": "other"
       },
-      "extra-fast": {
-        "value": "100",
-        "type": "other",
-        "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
+      "tooltip": {
+        "value": "800",
+        "type": "other"
       },
+      "notice-bubble": {
+        "value": "999",
+        "type": "other"
+      }
+    },
+    "duration": {
       "switch": {
         "value": "{duration.extra-fast}",
         "type": "other",

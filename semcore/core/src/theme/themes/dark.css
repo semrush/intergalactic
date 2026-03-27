@@ -110,6 +110,96 @@
   --salad-600: #005613;
   --salad-700: #003509;
   --salad-800: #002203;
+  /* Base font family. */
+  --intergalactic-base: Inter;
+  /* Use only for text in Badge component. */
+  --intergalactic-fs-50: 10px;
+  /* Use this font-size with caution for text in some additional messages. Always check its contrast and readability. */
+  --intergalactic-fs-100: 12px;
+  --intergalactic-fs-200: 14px;
+  --intergalactic-fs-300: 16px;
+  --intergalactic-fs-400: 20px;
+  --intergalactic-fs-500: 24px;
+  --intergalactic-fs-600: 32px;
+  --intergalactic-fs-700: 36px;
+  --intergalactic-fs-800: 48px;
+  /* Use with font-size-100. */
+  --intergalactic-lh-100: 133%;
+  /* Use with font-size-200. */
+  --intergalactic-lh-200: 142%;
+  /* Use with font-size-300. */
+  --intergalactic-lh-300: 150%;
+  /* Use with font-size-400. */
+  --intergalactic-lh-400: 120%;
+  /* Use with font-size-500. */
+  --intergalactic-lh-500: 117%;
+  /* Use with font-size-600. */
+  --intergalactic-lh-600: 125%;
+  /* Use with font-size-700. */
+  --intergalactic-lh-700: 110%;
+  /* Use with font-size-800. */
+  --intergalactic-lh-800: 117%;
+  /* Semi-bold font weight. */
+  --intergalactic-semi-bold: 600;
+  /* Bold font weight. */
+  --intergalactic-bold: 700;
+  /* Regular font weight. */
+  --intergalactic-regular: 400;
+  /* Medium font weight. */
+  --intergalactic-medium: 500;
+  /* Compact letter spacing. */
+  --intergalactic-compact: 0.3;
+  /* Base denominator of the design system. */
+  --intergalactic-scale-indent: 4px;
+  /* 2px */
+  --intergalactic-spacing-05x: 2px;
+  /* 4px */
+  --intergalactic-spacing-1x: 4px;
+  /* 8px */
+  --intergalactic-spacing-2x: 8px;
+  /* 12px */
+  --intergalactic-spacing-3x: 12px;
+  /* 16px */
+  --intergalactic-spacing-4x: 16px;
+  /* 20px */
+  --intergalactic-spacing-5x: 20px;
+  /* 24px */
+  --intergalactic-spacing-6x: 24px;
+  /* 32px */
+  --intergalactic-spacing-8x: 32px;
+  /* 40px */
+  --intergalactic-spacing-10x: 40px;
+  /* 56px */
+  --intergalactic-spacing-14x: 56px;
+  /* 80px */
+  --intergalactic-spacing-20x: 80px;
+  /* 96px */
+  --intergalactic-spacing-24x: 96px;
+  /* 120px */
+  --intergalactic-spacing-30x: 120px;
+  --intergalactic-rounded-extra-small: 2px;
+  --intergalactic-rounded-small: 4px;
+  --intergalactic-rounded-medium: 6px;
+  --intergalactic-rounded-large: 12px;
+  --intergalactic-rounded-extra-large: 24px;
+  /* Extra small screens (small phones). */
+  --intergalactic-screen-extra-small: 320px;
+  /* Small screens (phones and small tablets). */
+  --intergalactic-screen-small: 768px;
+  /* Medium screens (tablets and small laptops). */
+  --intergalactic-screen-medium: 1200px;
+  /* Large screens (tablets and laptops). */
+  --intergalactic-screen-large: 1920px;
+  /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
+  --intergalactic-duration-extra-slow: 500;
+  /* Should be used for more larger scale animations (such as page transitions) */
+  --intergalactic-duration-slow: 400;
+  /* Should be used for more complex effects (such as Modal) */
+  --intergalactic-duration-medium: 300;
+  /* Should be used for more complex effects (such as Dropdown or Accordion) */
+  --intergalactic-duration-fast: 200;
+  /* Should be used for simpler effects and relatively small-sized animations (such as fades or color changes) */
+  --intergalactic-duration-extra-fast: 100;
   /* Primary background of the interface which contains the main data and information. */
   --intergalactic-bg-primary-neutral: rgba(30, 34, 49, 1);
   /* Hover state of the primary background of the interface which contains the main data and information. */
@@ -522,6 +612,8 @@
   --intergalactic-brand-google-green: #016723;
   /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
+  /* Use for the disabled state of all kind of the controls and elements. */
+  --intergalactic-disabled-opacity: 0.3;
   /* Default shadow of the Card. */
   --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12);
   /* Hover state for the shadow of the Card with hover state. */
@@ -548,84 +640,12 @@
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.8);
   /* Default keyboard focus box-shadow styles. */
   --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.5);
-  /* Base font family. */
-  --intergalactic-base: Inter;
-  /* Use with font-size-800. */
-  --intergalactic-lh-800: 117%;
-  /* Use with font-size-700. */
-  --intergalactic-lh-700: 110%;
-  /* Use with font-size-600. */
-  --intergalactic-lh-600: 125%;
-  /* Use with font-size-500. */
-  --intergalactic-lh-500: 117%;
-  /* Use with font-size-400. */
-  --intergalactic-lh-400: 120%;
-  /* Use with font-size-300. */
-  --intergalactic-lh-300: 150%;
-  /* Use with font-size-200. */
-  --intergalactic-lh-200: 142%;
-  /* Use with font-size-100. */
-  --intergalactic-lh-100: 133%;
-  /* Semi-bold font weight. */
-  --intergalactic-semi-bold: 600;
-  /* Bold font weight. */
-  --intergalactic-bold: 700;
-  /* Regular font weight. */
-  --intergalactic-regular: 400;
-  /* Medium font weight. */
-  --intergalactic-medium: 500;
-  /* Use only for text in Badge component. */
-  --intergalactic-fs-50: 10px;
-  /* Use this font-size with caution for text in some additional messages. Always check its contrast and readability. */
-  --intergalactic-fs-100: 12px;
-  --intergalactic-fs-200: 14px;
-  --intergalactic-fs-300: 16px;
-  --intergalactic-fs-400: 20px;
-  --intergalactic-fs-500: 24px;
-  --intergalactic-fs-600: 32px;
-  --intergalactic-fs-700: 36px;
-  --intergalactic-fs-800: 48px;
-  /* Compact letter spacing. */
-  --intergalactic-compact: 0.3;
-  /* Base denominator of the design system. */
-  --intergalactic-scale-indent: 4px;
   /* Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions. */
   --intergalactic-form-control-s: 20px;
   /* Default size of the controls. */
   --intergalactic-form-control-m: 28px;
   /* Large size of the controls. */
   --intergalactic-form-control-l: 40px;
-  /* 2px */
-  --intergalactic-spacing-05x: 2px;
-  /* 4px */
-  --intergalactic-spacing-1x: 4px;
-  /* 8px */
-  --intergalactic-spacing-2x: 8px;
-  /* 12px */
-  --intergalactic-spacing-3x: 12px;
-  /* 16px */
-  --intergalactic-spacing-4x: 16px;
-  /* 20px */
-  --intergalactic-spacing-5x: 20px;
-  /* 24px */
-  --intergalactic-spacing-6x: 24px;
-  /* 32px */
-  --intergalactic-spacing-8x: 32px;
-  /* 40px */
-  --intergalactic-spacing-10x: 40px;
-  /* 56px */
-  --intergalactic-spacing-14x: 56px;
-  /* 80px */
-  --intergalactic-spacing-20x: 80px;
-  /* 96px */
-  --intergalactic-spacing-24x: 96px;
-  /* 120px */
-  --intergalactic-spacing-30x: 120px;
-  --intergalactic-rounded-extra-small: 2px;
-  --intergalactic-rounded-small: 4px;
-  --intergalactic-rounded-medium: 6px;
-  --intergalactic-rounded-large: 12px;
-  --intergalactic-rounded-extra-large: 24px;
   /* Use for rounding addons and small controls like Checkbox. */
   --intergalactic-addon-rounded: 4px;
   /* Use for rounding Badge. */
@@ -648,16 +668,6 @@
   --intergalactic-popper-rounded: 6px;
   /* Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard). */
   --intergalactic-modal-rounded: 12px;
-  /* Use for the disabled state of all kind of the controls and elements. */
-  --intergalactic-disabled-opacity: 0.3;
-  /* Extra small screens (small phones). */
-  --intergalactic-screen-extra-small: 320px;
-  /* Small screens (phones and small tablets). */
-  --intergalactic-screen-small: 768px;
-  /* Medium screens (tablets and small laptops). */
-  --intergalactic-screen-medium: 1200px;
-  /* Large screens (tablets and laptops). */
-  --intergalactic-screen-large: 1920px;
   /* Use for cover the content under the modal dialogs. */
   --intergalactic-overlay-primary: rgba(25, 27, 35, 0.7);
   /* Use for the secondary modal dialogs that were opened upon the other modal dialogs. */
@@ -666,13 +676,6 @@
   --intergalactic-overlay-limitation-primary: #f4f5f9;
   /* Use as a secondary cover of the content under the messages about limitations. */
   --intergalactic-overlay-limitation-secondary: rgba(255, 255, 255, 0.85);
-  --intergalactic-z-index-deep: -999;
-  --intergalactic-z-index-overlay: 500;
-  --intergalactic-z-index-modal: 900;
-  --intergalactic-z-index-popper: 700;
-  --intergalactic-z-index-dropdown: 750;
-  --intergalactic-z-index-tooltip: 800;
-  --intergalactic-z-index-notice-bubble: 999;
   /* Default Tooltip background. */
   --intergalactic-tooltip-default: #484a54;
   /* Warning Tooltip background. */
@@ -846,16 +849,13 @@
   --intergalactic-sidebar-nav-control-text-active: #4D407E;
   --intergalactic-sidebar-nav-control-icon-normal: #9083C5;
   --intergalactic-sidebar-nav-control-icon-active: #4D407E;
-  /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
-  --intergalactic-duration-extra-slow: 500;
-  /* Should be used for more larger scale animations (such as page transitions) */
-  --intergalactic-duration-slow: 400;
-  /* Should be used for more complex effects (such as Modal) */
-  --intergalactic-duration-medium: 300;
-  /* Should be used for more complex effects (such as Dropdown or Accordion) */
-  --intergalactic-duration-fast: 200;
-  /* Should be used for simpler effects and relatively small-sized animations (such as fades or color changes) */
-  --intergalactic-duration-extra-fast: 100;
+  --intergalactic-z-index-deep: -999;
+  --intergalactic-z-index-overlay: 500;
+  --intergalactic-z-index-modal: 900;
+  --intergalactic-z-index-popper: 700;
+  --intergalactic-z-index-dropdown: 750;
+  --intergalactic-z-index-tooltip: 800;
+  --intergalactic-z-index-notice-bubble: 999;
   /* Use for small controls like Switch or Slider. */
   --intergalactic-duration-switch: 100;
   /* Use for components based on popper like Tooltip, Dropdown or Filter trigger. */
