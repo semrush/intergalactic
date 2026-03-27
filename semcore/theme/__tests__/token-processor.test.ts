@@ -356,7 +356,7 @@ describe('Token Processor - processTokens', () => {
       const { resolve } = await import('node:path');
 
       const lightThemeContent = await fs.readFile(
-        resolve(__dirname, '../src/theme/light.json'),
+        resolve(__dirname, '../src/light.json'),
         'utf-8',
       );
       const { base, tokens, featureHighlight } = JSON.parse(lightThemeContent);
@@ -382,7 +382,7 @@ describe('Token Processor - processTokens', () => {
       const { resolve } = await import('node:path');
 
       const darkThemeContent = await fs.readFile(
-        resolve(__dirname, '../src/theme/dark.json'),
+        resolve(__dirname, '../src/dark.json'),
         'utf-8',
       );
       const { base, tokens, featureHighlight } = JSON.parse(darkThemeContent);
