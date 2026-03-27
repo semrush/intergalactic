@@ -111,6 +111,9 @@ export type InputFieldProps<T extends string | string[]> = {
    */
   lineProcessing?: (line: string, lines: string[]) => string;
 
+  /** Defines whether the input should receive focus on initial render */
+  autoFocus?: boolean;
+
   /**
    * Internal
    */

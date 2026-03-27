@@ -34,6 +34,18 @@ export const BasicUsage = {
     tooltipViewType: { control: { type: 'select' }, options: ['all', 'single'] },
     enableMinimalBarWidth: { control: { type: 'boolean' } },
     minimalBarWidth: { control: { type: 'number' } },
+    percentFormatter: {
+      control: { type: 'select' },
+      options: ['none', 'round', 'floor', 'ceil', 'oneDecimal', 'twoDecimal'],
+      mapping: {
+        none: undefined,
+        round: (v: number) => Math.round(v),
+        floor: (v: number) => Math.floor(v),
+        ceil: (v: number) => Math.ceil(v),
+        oneDecimal: (v: number) => Number(v.toFixed(1)),
+        twoDecimal: (v: number) => Number(v.toFixed(2)),
+      },
+    },
     duration: { control: { type: 'number' } },
     data: {
       control: { type: 'select' },

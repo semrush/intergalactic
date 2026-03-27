@@ -382,5 +382,248 @@
   {
     "name": "--salad-800",
     "value": "#002203"
+  },
+  {
+    "name": "--intergalactic-base",
+    "value": "Inter",
+    "description": "Base font family."
+  },
+  {
+    "name": "--intergalactic-fs-50",
+    "value": "10px",
+    "description": "Use only for text in Badge component."
+  },
+  {
+    "name": "--intergalactic-fs-100",
+    "value": "12px",
+    "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability."
+  },
+  {
+    "name": "--intergalactic-fs-200",
+    "value": "14px"
+  },
+  {
+    "name": "--intergalactic-fs-300",
+    "value": "16px"
+  },
+  {
+    "name": "--intergalactic-fs-400",
+    "value": "20px"
+  },
+  {
+    "name": "--intergalactic-fs-500",
+    "value": "24px"
+  },
+  {
+    "name": "--intergalactic-fs-600",
+    "value": "32px"
+  },
+  {
+    "name": "--intergalactic-fs-700",
+    "value": "36px"
+  },
+  {
+    "name": "--intergalactic-fs-800",
+    "value": "48px"
+  },
+  {
+    "name": "--intergalactic-lh-100",
+    "value": "133%",
+    "description": "Use with font-size-100."
+  },
+  {
+    "name": "--intergalactic-lh-200",
+    "value": "142%",
+    "description": "Use with font-size-200."
+  },
+  {
+    "name": "--intergalactic-lh-300",
+    "value": "150%",
+    "description": "Use with font-size-300."
+  },
+  {
+    "name": "--intergalactic-lh-400",
+    "value": "120%",
+    "description": "Use with font-size-400."
+  },
+  {
+    "name": "--intergalactic-lh-500",
+    "value": "117%",
+    "description": "Use with font-size-500."
+  },
+  {
+    "name": "--intergalactic-lh-600",
+    "value": "125%",
+    "description": "Use with font-size-600."
+  },
+  {
+    "name": "--intergalactic-lh-700",
+    "value": "110%",
+    "description": "Use with font-size-700."
+  },
+  {
+    "name": "--intergalactic-lh-800",
+    "value": "117%",
+    "description": "Use with font-size-800."
+  },
+  {
+    "name": "--intergalactic-semi-bold",
+    "value": "600",
+    "description": "Semi-bold font weight."
+  },
+  {
+    "name": "--intergalactic-bold",
+    "value": "700",
+    "description": "Bold font weight."
+  },
+  {
+    "name": "--intergalactic-regular",
+    "value": "400",
+    "description": "Regular font weight."
+  },
+  {
+    "name": "--intergalactic-medium",
+    "value": "500",
+    "description": "Medium font weight."
+  },
+  {
+    "name": "--intergalactic-compact",
+    "value": "0.3",
+    "description": "Compact letter spacing."
+  },
+  {
+    "name": "--intergalactic-scale-indent",
+    "value": "4px",
+    "description": "Base denominator of the design system."
+  },
+  {
+    "name": "--intergalactic-spacing-05x",
+    "value": "2px",
+    "description": "2px"
+  },
+  {
+    "name": "--intergalactic-spacing-1x",
+    "value": "4px",
+    "description": "4px"
+  },
+  {
+    "name": "--intergalactic-spacing-2x",
+    "value": "8px",
+    "description": "8px"
+  },
+  {
+    "name": "--intergalactic-spacing-3x",
+    "value": "12px",
+    "description": "12px"
+  },
+  {
+    "name": "--intergalactic-spacing-4x",
+    "value": "16px",
+    "description": "16px"
+  },
+  {
+    "name": "--intergalactic-spacing-5x",
+    "value": "20px",
+    "description": "20px"
+  },
+  {
+    "name": "--intergalactic-spacing-6x",
+    "value": "24px",
+    "description": "24px"
+  },
+  {
+    "name": "--intergalactic-spacing-8x",
+    "value": "32px",
+    "description": "32px"
+  },
+  {
+    "name": "--intergalactic-spacing-10x",
+    "value": "40px",
+    "description": "40px"
+  },
+  {
+    "name": "--intergalactic-spacing-14x",
+    "value": "56px",
+    "description": "56px"
+  },
+  {
+    "name": "--intergalactic-spacing-20x",
+    "value": "80px",
+    "description": "80px"
+  },
+  {
+    "name": "--intergalactic-spacing-24x",
+    "value": "96px",
+    "description": "96px"
+  },
+  {
+    "name": "--intergalactic-spacing-30x",
+    "value": "120px",
+    "description": "120px"
+  },
+  {
+    "name": "--intergalactic-rounded-extra-small",
+    "value": "2px"
+  },
+  {
+    "name": "--intergalactic-rounded-small",
+    "value": "4px"
+  },
+  {
+    "name": "--intergalactic-rounded-medium",
+    "value": "6px"
+  },
+  {
+    "name": "--intergalactic-rounded-large",
+    "value": "12px"
+  },
+  {
+    "name": "--intergalactic-rounded-extra-large",
+    "value": "24px"
+  },
+  {
+    "name": "--intergalactic-screen-extra-small",
+    "value": "320px",
+    "description": "Extra small screens (small phones)."
+  },
+  {
+    "name": "--intergalactic-screen-small",
+    "value": "768px",
+    "description": "Small screens (phones and small tablets)."
+  },
+  {
+    "name": "--intergalactic-screen-medium",
+    "value": "1200px",
+    "description": "Medium screens (tablets and small laptops)."
+  },
+  {
+    "name": "--intergalactic-screen-large",
+    "value": "1920px",
+    "description": "Large screens (tablets and laptops)."
+  },
+  {
+    "name": "--intergalactic-duration-extra-slow",
+    "value": "500",
+    "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)"
+  },
+  {
+    "name": "--intergalactic-duration-slow",
+    "value": "400",
+    "description": "Should be used for more larger scale animations (such as page transitions)"
+  },
+  {
+    "name": "--intergalactic-duration-medium",
+    "value": "300",
+    "description": "Should be used for more complex effects (such as Modal)"
+  },
+  {
+    "name": "--intergalactic-duration-fast",
+    "value": "200",
+    "description": "Should be used for more complex effects (such as Dropdown or Accordion)"
+  },
+  {
+    "name": "--intergalactic-duration-extra-fast",
+    "value": "100",
+    "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
   }
 ]
