@@ -62,7 +62,6 @@ const BaseTokens = ({ tokens }) => {
 };
 
 const BaseTokensTable = React.memo(({ filteredTokens }) => {
-  console.log(filteredTokens);
   const nameHeaderRef = React.useRef(null);
   const valueHeaderRef = React.useRef(null);
   const descriptionHeaderRef = React.useRef(null);

@@ -2,7 +2,6 @@ const FIGMA_TOKENS_ONLY = [
   'keyboard-focus-feature-highlight',
 ];
 
-const PANDA_Z_INDEX_KEY = 'zIndex';
 const PANDA_DURATIONS_KEY = 'durations';
 
 const INTERGALACTIC_TYPE_TO_PANDA: Record<string, string> = {
@@ -98,16 +97,11 @@ export const getPandaConfig = (
     const description = descriptions[key];
 
     let pandaKey = INTERGALACTIC_TYPE_TO_PANDA[type];
-    const isZIndexKey = ifZIndex(key);
     const isDurationKey = ifDuration(key);
 
-    if (!pandaKey && !isZIndexKey && !isDurationKey) return;
+    if (!pandaKey && !isDurationKey) return;
 
     const isBaseToken = basicTokens.has(key);
-
-    if (isZIndexKey) {
-      pandaKey = PANDA_Z_INDEX_KEY;
-    }
 
     if (isDurationKey) {
       pandaKey = PANDA_DURATIONS_KEY;
