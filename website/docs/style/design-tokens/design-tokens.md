@@ -20,7 +20,7 @@ Intergalactic Design System has:
 These sets form the default theme of the design system.
 
 ::: tip
-For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/design-system/src/light.json).
+For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/theme/src/light.json).
 :::
 
 ## Stylelint plugin
