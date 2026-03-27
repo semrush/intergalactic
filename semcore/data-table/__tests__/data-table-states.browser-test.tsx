@@ -575,6 +575,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeHidden();
         await expect(selectedRowsCount).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
 
       await test.step('Verify each checkbox in cell has aria-labelledby ', async () => {
@@ -624,7 +626,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(selectedRowsCount).toHaveText('10');
         await expect(selectAllCheckbox).toBeChecked();
-        await expect(selectAllCheckbox).toHaveClass(/checked/);
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify action bar when one item on next page unchecked', async () => {
@@ -633,6 +636,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(rowCheckboxes.first()).not.toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+        for (let i = 1; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify action bar when next page opened', async () => {
@@ -640,11 +645,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(selectAllCheckbox).not.toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
 
       await test.step('Verify indeterminate state saved when prev button is opened', async () => {
         await prevButton.click();
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+        await expect(rowCheckboxes.first()).not.toBeChecked();
+        for (let i = 1; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify checked state on all pages changes to undhecked by click on Deselect all', async () => {
@@ -701,13 +711,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).toBeChecked();
 
-        const count = await firstColumnCells.count();
-        for (let i = 0; i < count; i++) {
-          const firstColumnCell = firstColumnCells.nth(i);
-          const checkbox = firstColumnCell.locator(
-            'input[type="checkbox"][data-ui-name="Checkbox.Value"]',
-          );
-        }
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
       await test.step('Verify panel state when next page opened', async () => {
         await page.keyboard.press('Tab');
@@ -716,6 +721,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeVisible();
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
       await test.step('Verify panel when activating Select all on text page', async () => {
         await page.keyboard.press('Shift+Tab');
@@ -724,17 +731,21 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
         await expect(selectedRowsCount).toHaveText('10');
         await expect(selectAllCheckbox).toBeChecked();
-        await expect(selectAllCheckbox).toHaveClass(/checked/);
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify counter on the panel decreased and indeterminate state when uncheck one checkbox', async () => {
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Space');
+        await expect(rowCheckboxes.nth(0)).toBeChecked();
 
         await expect(rowCheckboxes.nth(1)).not.toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+        for (let i = 2; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
       await test.step('Verify panel when opening next page', async () => {
         await page.keyboard.press('Tab');
@@ -743,15 +754,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
         await expect(selectAllCheckbox).not.toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
       await test.step('Verify panel state saved on prev pages', async () => {
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Space');
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+        await expect(rowCheckboxes.nth(0)).toBeChecked();
 
+        await expect(rowCheckboxes.nth(1)).not.toBeChecked();
+        for (let i = 2; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).toBeChecked();
       });
       if (browserName === 'webkit') return; // because of pagination bus in safari
 
@@ -1046,6 +1062,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeVisible();
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).not.toBeChecked();
+        const count = await rowCheckboxes.count();
+        for (let i = 0; i < count; i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
 
       await test.step('Verify counter increases when selecting on next page', async () => {
@@ -1053,12 +1072,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(selectedRowsCount).toHaveText('10');
         await expect(selectAllCheckbox).toBeChecked();
+        const count = await rowCheckboxes.count();
+        for (let i = 0; i < count; i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify indeterminate when one row unchecked', async () => {
         await rowCheckboxes.first().click();
 
         await expect(rowCheckboxes.first()).not.toBeChecked();
+        const count = await rowCheckboxes.count();
+        for (let i = 1; i < count; i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
       });
@@ -1067,12 +1092,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await nextButton.click();
 
         await expect(selectAllCheckbox).not.toBeChecked();
+        const count = await rowCheckboxes.count();
+        for (let i = 0; i < count; i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
       });
 
       await test.step('Verify indeterminate state saved when prev button clicked', async () => {
         await prevButton.click();
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+        await expect(rowCheckboxes.first()).not.toBeChecked();
+        const count = await rowCheckboxes.count();
+        for (let i = 1; i < count; i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify deselect all clears everything', async () => {
@@ -1080,9 +1112,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(collapse).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
 
         await nextButton.click();
         await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
     });
 
@@ -1106,6 +1142,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeVisible();
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify navigate to next page', async () => {
@@ -1115,6 +1153,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(collapse).toBeVisible();
         await expect(selectedRowsCount).toHaveText('5');
         await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
 
       await test.step('Verify select all on second page', async () => {
@@ -1125,14 +1165,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
         await expect(selectedRowsCount).toHaveText('10');
         await expect(selectAllCheckbox).toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
       });
 
       await test.step('Verify uncheck single row', async () => {
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Space');
-
+        await expect(rowCheckboxes.nth(0)).toBeChecked();
         await expect(rowCheckboxes.nth(1)).not.toBeChecked();
+        for (let i = 2; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).toBeChecked();
         await expect(selectedRowsCount).toHaveText('9');
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
       });
@@ -1145,6 +1189,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(collapse).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
     });
 
