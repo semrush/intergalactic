@@ -25,6 +25,12 @@ SBox[inAfterOutline='true']:focus-visible {
     outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
   }
 }
+
+SBox[hoverCursor] {
+  &:hover {
+    cursor: var(--hoverCursor);
+  }
+}
 SBoxInnerOutline[inAfterOutline='false']:focus-visible {
   outline-offset: -2px;
 }

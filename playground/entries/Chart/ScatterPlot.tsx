@@ -24,8 +24,8 @@ const data = [...Array(25).keys()].map((_, i) => ({
 function getJSX(props: ScatterPlotChartJSXProps) {
   return (
     <Chart.ScatterPlot
-      plotWidth={300}
-      plotHeight={300}
+      plotWidth={props.commonChartProps.direction.startsWith('row') ? 250 : 370}
+      plotHeight={props.commonChartProps.direction.startsWith('row') ? 250 : 300}
       groupKey='x'
       valueKey='value'
       xTicksCount={10}
@@ -34,7 +34,7 @@ function getJSX(props: ScatterPlotChartJSXProps) {
       aria-label='Scatterplot chart'
       {...props.commonChartProps}
       {...(props.legendProps && {
-        legendProps: props.legendProps,
+        legendProps: { ...props.legendProps, w: props.commonChartProps.direction.startsWith('row') ? 100 : 370 },
         showLegend: props.commonChartProps.showLegend as true,
       })}
       {...(props.legendProps?.patterns && { patterns: props.legendProps.patterns })}
