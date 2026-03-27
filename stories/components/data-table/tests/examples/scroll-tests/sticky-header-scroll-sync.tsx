@@ -1,12 +1,17 @@
 import type { BoxProps } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableData } from '@semcore/ui/data-table';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 export type StickyHeaderScrollSyncProps = {
   sticky: boolean;
   withScrollBar?: boolean;
   multiLevel?: boolean;
+  limitEnabled?: boolean;
+  rowsLimit?: number;
+  columnsLimit?: number;
 } & BoxProps;
 
 const flatColumns = [
@@ -50,6 +55,26 @@ const Demo = (props: StickyHeaderScrollSyncProps) => {
           withScrollBar: props.withScrollBar,
         }}
         columns={props.multiLevel ? multiLevelColumns : flatColumns}
+        limit={
+          props.limitEnabled
+            ? {
+                fromRow: props.rowsLimit,
+                fromColumn: props.columnsLimit,
+                renderOverlay() {
+                  return (
+                    <Flex alignItems='center' direction='column' gap={3} py={6} wMax={320}>
+                      <Text size={300} fontWeight='bold' textAlign='center'>
+                        You've reached your report limit for today
+                      </Text>
+                      <Text size={200} textAlign='center'>
+                        To increase your daily report limit, upgrade to a Guru plan.
+                      </Text>
+                    </Flex>
+                  );
+                },
+              }
+            : undefined
+        }
       />
       <div style={{ height: '400px', background: '#f0f0f0' }}>Spacer below</div>
     </>
@@ -70,6 +95,9 @@ export const defaultProps: StickyHeaderScrollSyncProps = {
   withScrollBar: true,
   multiLevel: false,
   wMax: '400px',
+  limitEnabled: false,
+  rowsLimit: 3,
+  columnsLimit: 3,
 };
 
 Demo.defaultProps = defaultProps;

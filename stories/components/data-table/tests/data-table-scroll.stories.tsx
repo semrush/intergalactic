@@ -71,6 +71,11 @@ export const CaseWithW100: Story = {
 
 export const StickyHeaderScrollSync: StoryObj<typeof StickyHeaderScrollSyncProps> = {
   render: StickyHeaderScrollSyncExample,
+  argTypes: {
+    limitEnabled: { control: 'boolean', name: 'Limit overlay' },
+    rowsLimit: { control: { type: 'number', min: 0, max: 6 }, if: { arg: 'limitEnabled' } },
+    columnsLimit: { control: { type: 'number', min: 0, max: 5 }, if: { arg: 'limitEnabled' } },
+  },
   args: {
     ...StickyHeaderScrollSyncProps,
   },
