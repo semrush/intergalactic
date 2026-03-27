@@ -7,7 +7,8 @@ import glob from 'fast-glob';
 import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
-import { processTokens, tokensToCss, tokensToJs, tokensToJson } from './utils';
+import { getPandaConfig, toPandaPreset } from './panda-processor';
+import { processTokens, tokensToCss, tokensToJs } from './utils';
 
 type Token = {
   name: string;
@@ -47,6 +48,11 @@ for (const theme of themes) {
   );
   const { values, types, rawValues, descriptions, basicTokens, highlightsTokens } = processed;
   const { processedTokens } = processed;
+
+  await writeIfChanged(
+    './semcore/core/src/theme/themes/panda-preset.ts',
+    toPandaPreset(getPandaConfig(values, basicTokens, types, descriptions)),
+  );
 
   await writeIfChanged(
     `./semcore/core/src/theme/themes/${theme}.css`,
@@ -237,48 +243,36 @@ for (const theme of themes) {
       description: string;
       components: string[];
     }[] = [];
+    const baseTokensDocumentation: Token[] = [];
 
-    for (const token in values) {
-      if (!basicTokens.has(token)) {
+    for (const processedToken of [...processedTokens, ...highlightsTokens]) {
+      const { originalName: token, name, value, description } = processedToken;
+
+      const isBase = basicTokens.has(token);
+
+      if (isBase) {
+        const token: Token = {
+          name,
+          value,
+          description,
+        };
+
+        baseTokensDocumentation.push(token);
+      } else {
         const components = [
           ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
         ];
         components.sort((a, b) => a.localeCompare(b));
 
         designTokensDocumentation.push({
-          name: `--${prefix}-${token}`,
+          name,
           type: types[token],
           rawValue: rawValues[token],
-          computedValue: values[token],
-          description: descriptions[token],
+          computedValue: value,
+          description: description,
           components,
         });
       }
-    }
-
-    const baseTokensDocumentation: Token[] = [];
-
-    const processGroup = (group: string, data: any) => {
-      for (const key in data) {
-        if (data[key].value) {
-          const token: Token = {
-            name: `--${group}-${key}`,
-            value: data[key].value,
-          };
-
-          if (data[key].description?.trim()) {
-            token.description = data[key].description;
-          }
-
-          baseTokensDocumentation.push(token);
-        } else {
-          processGroup(`${group}-${key}`, data[key]);
-        }
-      }
-    };
-
-    for (const group in base) {
-      processGroup(group, base[group]);
     }
 
     await writeIfChanged(

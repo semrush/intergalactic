@@ -22,6 +22,8 @@ export default mergeConfig(
           'classnames',
           'hoist-non-react-statics',
           '@phytonmk/nano-css',
+
+          '@pandacss/dev',
         ],
         output: [
           {
