@@ -1,6 +1,6 @@
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 
-import { processTokens } from '../src/theme/utils';
+import { processTokens } from '../src/utils';
 
 describe('Token Processor - processTokens', () => {
   describe('Basic token processing', () => {

@@ -2251,6 +2251,9 @@ importers:
       '@pandacss/dev':
         specifier: 1.9.0
         version: 1.9.0(jsdom@22.1.0)(typescript@5.9.3)
+      '@semcore/testing-utils':
+        specifier: workspace:*
+        version: link:../../tools/testing-utils
       colorjs.io:
         specifier: 0.4.3
         version: 0.4.3
