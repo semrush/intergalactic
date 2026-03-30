@@ -175,7 +175,7 @@ const Demo = () => {
       </Select.Trigger>
       <Select.Popper w={224} aria-label='Volume'>
         <Select.List aria-label='Presets'>
-          {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
+          {['100,001+', '10,001–100,000', '1,001–10,000', '101–1,000', '11–100', '1–10'].map(
             (item) => (
               <Select.Option key={item} value={item}>
                 {item}
