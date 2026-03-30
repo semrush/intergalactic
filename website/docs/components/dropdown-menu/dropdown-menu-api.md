@@ -79,6 +79,17 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 <TypesView type="FlexProps" :types={...types} />
 
+## DropdownMenu.Item.Text
+
+Text of menu item. Use it if you need to crop your text in an item.
+
+```jsx
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+<DropdownMenu.Item.Text />;
+```
+
+<TypesView type="TextProps" :types={...types} />
+
 ## Dropdown.Group
 
 Group of interactive menu items.

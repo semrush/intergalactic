@@ -24,7 +24,6 @@ Table: Attributes
 | Attribute              | Usage                                                                                                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `aria-busy="true"`     | **Applies to button with `loading` prop.** Indicates that button is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. |
-| `aria-disabled="true"` | **Applies to button with `disabled` prop.** Indicates that the element is perceivable but disabled, so it's not editable or otherwise operable.                                                                |
 
 ## Considerations for developers
 

@@ -110,6 +110,8 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   componentDidMount() {
+    const { autoFocus, disabled, readonly } = this.asProps;
+
     this.containerRef.current?.append(this.textarea);
 
     this.handleValueOutChange();
@@ -122,6 +124,13 @@ class InputField<T extends string | string[]> extends Component<
 
     if (this.props.onImmediatelyChange) {
       this.observer.observe(this.textarea, config);
+    }
+
+    if (autoFocus && !disabled) {
+      /* Safari & Firefox may silently ignore programmatic focus calls with very short
+        delays (<10ms). Using 10ms as a safe threshold based on observed behavior.
+      */
+      setTimeout(() => this.textarea.focus(), 10);
     }
   }
 

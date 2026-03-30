@@ -21,7 +21,7 @@ const columns = [
   {
     name: 'keyword', gtcWidth: '65px', sortable: true,
     children: (
-      <Text ellipsis={{ cropPosition: 'middle' }}>
+      <Text ellipsis:cropPosition='middle'>
         Keyword
         <Text color='text-secondary'>(Keyword 1-100)</Text>
       </Text>
@@ -33,8 +33,8 @@ const columns = [
     children: (
       <Text>
         Difficulty Difficlty 123
-        <ButtonLink addonLeft={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-        <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <ButtonLink size={100} addonLeft={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
       </Text>
     ),
   },
@@ -43,8 +43,8 @@ const columns = [
     children: (
       <>
         <Text ellipsis={true}>Difficulty Difficulty</Text>
-        <ButtonLink addonLeft={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-        <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <ButtonLink size={100} addonLeft={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
       </>
     ),
   },

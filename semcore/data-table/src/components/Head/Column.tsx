@@ -327,6 +327,7 @@ export class Column<
           <SSortWrapper ref={this.sortWrapperRef}>
             <SSortButton
               aria-label={ariaSortValue}
+              size={100}
               color='--intergalactic-icon-primary-neutral'
               onClick={this.handleSortClick}
             >

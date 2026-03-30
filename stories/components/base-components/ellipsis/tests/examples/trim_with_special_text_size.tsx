@@ -1,24 +1,17 @@
-import type { EllipsisSettings, BoxProps, SimpleHintPopperProps } from '@semcore/ui/base-components';
-import type { TextProps } from '@semcore/ui/typography';
+import type { BoxProps } from '@semcore/ui/base-components';
+import type { TextEllipsisProps, TextProps } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type TextExampleProps = {
-  ellipsis?: true | EllipsisSettings;
+  ellipsis?: TextEllipsisProps;
   size: TextProps['size'];
   w: BoxProps['w'];
-  hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>> | false;
+  hintProps?: false;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
 };
 
 const Demo = (props: TextExampleProps) => {
-  const resolvedHintProps = props.hintProps === false
-    ? false
-    : {
-        ...(props.hintPlacement ? { placement: props.hintPlacement } : {}),
-        ...(typeof props.hintProps === 'object' ? props.hintProps : {}),
-      };
-
   return (
     <Text
       w={props.w}
@@ -27,8 +20,9 @@ const Demo = (props: TextExampleProps) => {
       tag='p'
       mt={0}
       style={{ outline: '1px solid red' }}
-      ellipsis={props.ellipsis}
-      {...(resolvedHintProps !== undefined ? { hintProps: resolvedHintProps } : {})}
+      {...props.ellipsis}
+      hint={props.hintProps}
+      hint:placement={props.hintPlacement}
     >
       WordWord WordWord
     </Text>
@@ -36,7 +30,7 @@ const Demo = (props: TextExampleProps) => {
 };
 
 export const defaultProps: TextExampleProps = {
-  ellipsis: true,
+  ellipsis: { ellipsis: true },
   size: 400,
   w: 100,
 };

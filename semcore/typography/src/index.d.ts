@@ -4,10 +4,20 @@ import type { Property } from 'csstype';
 import type React from 'react';
 
 export type TextHintProps = {
+  /** Manually enabled/disabled Hint */
+  hint?: boolean;
+} & {
   /** Settings for a hint with full text (cropped by ellipsis) */
   [K in keyof SimpleHintPopperProps as `hint:${string & K}`]?: SimpleHintPopperProps[K];
-} | {
-  hintProps?: false;
+};
+
+/** The text will not be wrapped on a new line and will be cut off with ellipsis. Also, it will show a hint with full text. */
+export type TextEllipsisProps = {
+  /** Manually enabled/disabled Ellipsis or provide an instance of it. */
+  ellipsis?: (boolean | Ellipsis);
+} & {
+  /** Settings for an Ellipsis */
+  [K in keyof EllipsisSettings as `ellipsis:${string & K}`]?: EllipsisSettings[K];
 };
 
 export type BaseTextProps = {
@@ -59,13 +69,15 @@ export type TextProps = BoxProps & BaseTextProps & (
     /** Enable formatting/styling for all nested HTML tags with our default styles for them */
     formatTags?: boolean;
     ellipsis?: never;
+    ellipsisProps?: never;
+    hint?: never;
+    hintProps?: never;
   } |
   ({
-    /** The text will not be wrapped on a new line and will be cut off with ellipsis. Also, it will show a hint with full text. */
-    ellipsis?: true | Readonly<EllipsisSettings> | Ellipsis;
+    formatTags?: never;
     // /** Settings for a hint with full text (cropped by ellipsis) */
     // hintProps?: Partial<Omit<SimpleHintPopperProps, 'children'>> | false;
-  } & TextHintProps)
+  } & TextHintProps & TextEllipsisProps)
 );
 
 export type ListProps = TextProps & {

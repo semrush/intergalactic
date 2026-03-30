@@ -56,7 +56,7 @@ const Demo = (props: BasicModalProps) => {
           ref: cellRef,
           children: (
             <Text
-              ellipsis={{ cropPosition: 'middle' }}
+              ellipsis:cropPosition='middle'
               hint:triggerRef={cellRef}
               hint:placement='right'
               flex={1}
@@ -97,10 +97,8 @@ const Demo = (props: BasicModalProps) => {
 
         <Flex direction='column'>
           <Text
-            ellipsis={{
-              cropPosition: 'middle',
-              lastRequiredSymbols: 5,
-            }}
+            ellipsis:cropPosition='middle'
+            ellipsis:lastRequiredSymbols={5}
             size={300}
             w='300px'
           >

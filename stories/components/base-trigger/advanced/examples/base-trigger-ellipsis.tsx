@@ -18,12 +18,13 @@ const Demo = (props: BaseTriggerEllipsisProps) => {
         </DropdownMenu.Trigger>
         <br />
         <br />
+        <br />
         <DropdownMenu.Trigger tag={BaseTrigger}>
           <BaseTrigger.Text
             w={150}
             size={400}
-            ellipsis={{ cropPosition: 'middle' }}
-            hintProps={props.hintProps}
+            ellipsis:cropPosition='middle'
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
           >
             This is first trigger with a very very long text!
@@ -36,7 +37,7 @@ const Demo = (props: BaseTriggerEllipsisProps) => {
             w={150}
             size={400}
             ellipsis={true}
-            hintProps={props.hintProps}
+            hint={props.hintProps}
             hint:placement={props.hintPlacement}
           >
             This is second trigger with a very very long text!
@@ -55,7 +56,7 @@ const Demo = (props: BaseTriggerEllipsisProps) => {
       <BaseTrigger w={100} data-test-id='active-trigger'>
         <BaseTrigger.Text
           ellipsis={true}
-          hintProps={props.hintProps}
+          hint={props.hintProps}
           hint:placement={props.hintPlacement}
         >
           This is third trigger with a very very long text!

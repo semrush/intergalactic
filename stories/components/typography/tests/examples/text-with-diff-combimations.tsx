@@ -4,7 +4,10 @@ import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleProps = TextProps & BoxProps & { formatTags: boolean };
-const Demo = (props: ExampleProps) => (
+
+type DemoComponent = ((props: ExampleProps) => React.ReactElement) & { defaultProps?: Partial<ExampleProps> };
+
+const Demo: DemoComponent = (props) => (
   <>
     <div style={{ width: 200 }}>
       <Text

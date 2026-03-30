@@ -37,7 +37,7 @@ const Demo = () => (
             addonLeft={Info}
             aria-label='About visibility'
             color='icon-secondary-neutral'
-            mt='-2px'
+            mt='-1.5px'
           />
           <DescriptionTooltip.Popper aria-label='About visibility'>
             <Text size={200}>
@@ -65,7 +65,7 @@ const Demo = () => (
             addonLeft={Info}
             aria-label='About estimated traffic'
             color='icon-secondary-neutral'
-            mt='-2px'
+            mt='-1.5px'
           />
           <DescriptionTooltip.Popper aria-label='About estimated traffic'>
             <Text size={200}>
@@ -92,7 +92,7 @@ const Demo = () => (
             addonLeft={Info}
             aria-label='About Average position'
             color='icon-secondary-neutral'
-            mt='-2px'
+            mt='-1.5px'
           />
           <DescriptionTooltip.Popper aria-label='About Average position'>
             <Text size={200}>

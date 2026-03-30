@@ -1,4 +1,3 @@
-import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
@@ -100,21 +99,17 @@ const TableExample = () => {
 
   const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
     return (props) => {
-      const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
-        return {
-          cropPosition: 'middle',
-          containerElement: containerElement ?? undefined,
-          recalculateContainerWidth: typeof props.row.vol === 'string'
-            ? undefined
-            : (width: number) => {
-                return width - 26;
-              },
-        } as const;
-      }, [containerElement, props.row.vol]);
-
       if (props.columnName === 'vol' && containerElement) {
         return (
-          <Text ellipsis={ellipsisSettings}>
+          <Text
+            ellipsis:cropPosition='middle'
+            ellipsis:containerElement={containerElement}
+            ellipsis:recalculateContainerWidth={typeof props.row.vol === 'string'
+              ? undefined
+              : (width: number) => {
+                  return width - 26;
+                }}
+          >
             {props.value}
           </Text>
         );
@@ -162,21 +157,17 @@ const TableExample1 = () => {
 
   const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
     return (props) => {
-      const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
-        return {
-          cropPosition: 'middle',
-          containerElement: containerElement ?? undefined,
-          recalculateContainerWidth: typeof props.row.vol === 'string'
-            ? undefined
-            : (width: number) => {
-                return width - 26;
-              },
-        } as const;
-      }, [containerElement]);
-
       if (props.columnName === 'vol' && containerElement) {
         return (
-          <Text ellipsis={ellipsisSettings}>
+          <Text
+            ellipsis:cropPosition='middle'
+            ellipsis:containerElement={containerElement}
+            ellipsis:recalculateContainerWidth={typeof props.row.vol === 'string'
+              ? undefined
+              : (width: number) => {
+                  return width - 26;
+                }}
+          >
             {props.value}
           </Text>
         );

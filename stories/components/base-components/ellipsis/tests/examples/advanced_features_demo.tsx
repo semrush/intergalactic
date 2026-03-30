@@ -163,7 +163,7 @@ const Demo = () => {
                   <FileM color='icon-secondary' />
                   <Text
                     w={200}
-                    ellipsis={{ cropPosition: 'middle' }}
+                    ellipsis:cropPosition='middle'
                     style={{ cursor: 'pointer' }}
                     onClick={() => handleCopy(rowData.name)}
                     title='Click to copy'
@@ -180,7 +180,7 @@ const Demo = () => {
                   <FolderM color='icon-secondary' />
                   <Text
                     w={250}
-                    ellipsis={{ cropPosition: 'middle' }}
+                    ellipsis:cropPosition='middle'
                     style={{ cursor: 'pointer', fontFamily: 'monospace' }}
                     onClick={() => handleCopy(rowData.path)}
                     title='Click to copy'
@@ -195,7 +195,7 @@ const Demo = () => {
               return (
                 <Text
                   w={300}
-                  ellipsis={{ cropPosition: 'end' }}
+                  ellipsis:cropPosition='end'
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleCopy(rowData.description)}
                   title='Click to copy description'
@@ -252,7 +252,7 @@ const Demo = () => {
               return (
                 <Text
                   w={400}
-                  ellipsis={{ cropPosition: 'middle' }}
+                  ellipsis:cropPosition='middle'
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleCopy(rowData.message)}
                   title='Click to copy full message'

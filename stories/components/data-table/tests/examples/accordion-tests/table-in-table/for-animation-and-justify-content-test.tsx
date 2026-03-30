@@ -81,7 +81,7 @@ const ChartExample = () => {
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
-            <Text ellipsis={{ cropPosition: 'middle' }} display='block'>
+            <Text ellipsis:cropPosition='middle' display='block'>
               {props.value}
             </Text>
           );

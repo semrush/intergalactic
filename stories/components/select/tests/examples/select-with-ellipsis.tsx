@@ -31,7 +31,7 @@ const Demo = (props: SelectWithEllipsisProps) => {
               <Select.Option.Text
                 ellipsis
                 wMax={150}
-                hintProps={props.hintProps}
+                hint={props.hintProps}
                 hint:placement={props.hintPlacement}
               >
                 {formatName(iso2Name[value])}
