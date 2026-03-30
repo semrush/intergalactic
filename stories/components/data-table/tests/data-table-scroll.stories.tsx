@@ -9,6 +9,7 @@ import OneLevelScrollInTableExample, { oneLevelScrollIntableProps } from './exam
 import type { OneLevelScrollIntableProps } from './examples/scroll-tests/one-level-scroll-in-table';
 import OneLevelWithFixedColumnExample, { fixedColumnScrollExampleProps } from './examples/scroll-tests/one-level-with-fixed-column';
 import type { FixedColumnScrollExampleProps } from './examples/scroll-tests/one-level-with-fixed-column';
+import RealTableExample from './examples/scroll-tests/real-table';
 import ScrollWithStickyAndTopTopHeaderPropsExample, { defaultProps as ScrollTopHeaderProps } from './examples/scroll-tests/scroll-with-sticky-and-top-props-header';
 import StickyHeaderAccordionExample from './examples/scroll-tests/sticky-header-accordion';
 import StickyHeaderAsyncDataExample from './examples/scroll-tests/sticky-header-async-data';
@@ -98,4 +99,8 @@ export const StickyHeaderSorting: StoryObj<typeof StickyHeaderSortingProps> = {
   args: {
     ...StickyHeaderSortingProps,
   },
+};
+
+export const RealTable: Story = {
+  render: RealTableExample,
 };
