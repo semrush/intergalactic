@@ -27,7 +27,7 @@ const Demo = () => {
           </Breadcrumbs>
 
           <Header.Links>
-            <ButtonLink addonLeft={Chat}>Feedback</ButtonLink>
+            <ButtonLink noWrap addonLeft={Chat}>Feedback</ButtonLink>
             <Link noWrap addonLeft={BookM}>User manual</Link>
           </Header.Links>
         </Header.Row>
@@ -95,7 +95,7 @@ const Demo = () => {
                   addonLeft={InfoM}
                   display='inline-flex'
                   ml={1}
-                  mt='-2px'
+                  mt='-1.5px'
                   color='icon-secondary-neutral'
                   aria-label='About update rate'
                 />

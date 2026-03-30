@@ -26,7 +26,7 @@ const Demo = () => {
           ref: cellRef,
           children: (
             <Text
-              ellipsis={{ cropPosition: 'middle' }}
+              ellipsis:cropPosition='middle'
               hint:triggerRef={cellRef}
               hint:placement='right'
               flex={1}

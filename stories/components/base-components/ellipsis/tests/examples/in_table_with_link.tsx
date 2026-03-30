@@ -16,14 +16,6 @@ const Demo = () => {
     }
   }, []);
 
-  const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
-    return {
-      cropPosition: 'middle',
-      containerElement: columnElement,
-      recalculateContainerWidth: (width: number) => width - 28,
-    };
-  }, [columnElement]);
-
   return (
     <DataTable
       data={data}
@@ -67,12 +59,17 @@ const Demo = () => {
             >
               <Link.Text
                 wMin={0}
-                ellipsis={ellipsisSettings}
+                ellipsis={Boolean(columnElement)}
+                ellipsis:cropPosition='middle'
+                ellipsis:containerElement={columnElement}
+                ellipsis:recalculateContainerWidth={(width: number) => width - 28}
                 hint:triggerRef={triggerRef}
               >
                 {removeProtocol(pageUrl)}
               </Link.Text>
-              <Link.Addon tag={LinkExternalM} color='icon-secondary-neutral' />
+              <Link.Addon>
+                <LinkExternalM color='icon-secondary-neutral' />
+              </Link.Addon>
             </Link>
           );
         }

@@ -1,10 +1,11 @@
+import type { TextEllipsisProps } from '@semcore/typography';
 import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import React from 'react';
 
 type ButtonEllipsisProps = ButtonProps & {
-  ellipsis?: true | EllipsisSettings;
+  ellipsis?: TextEllipsisProps;
   w?: number | string;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
@@ -23,10 +24,10 @@ const Demo = (props: ButtonEllipsisProps) => {
         loading={props.loading}
       >
         <Button.Text
-          ellipsis={props.ellipsis}
+          {...props.ellipsis}
           w={props.w}
           hint:placement={props.hintPlacement}
-          hintProps={props.hintProps}
+          hint={props.hintProps}
         >
           Button with very long text that should be truncated with ellipsis
         </Button.Text>
@@ -50,7 +51,7 @@ const Demo = (props: ButtonEllipsisProps) => {
 };
 
 export const defaultButtonEllipsisProps: ButtonEllipsisProps = {
-  ellipsis: true,
+  ellipsis: { ellipsis: true },
   w: 120,
   size: 'm',
   use: 'secondary',

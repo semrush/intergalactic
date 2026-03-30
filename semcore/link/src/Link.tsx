@@ -74,10 +74,15 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     const SInner = Box;
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
     const showHint = children === undefined || title;
+
+    const excludeProps = ['title', 'aria-disabled'];
+    if (!this.asProps['use:disabled']) {
+      excludeProps.push('disabled');
+    }
+
     return sstyled(styles)(
       <>
         <SLink
-          role='link'
           tabIndex={disabled ? -1 : 0}
           use:href={disabled ? undefined : href}
           visually-disabled={disabled}
@@ -85,7 +90,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
           text-color={resolveColor(color)}
           tag='a'
           ref={this.containerRef}
-          __excludeProps={['disabled', 'aria-disabled', 'title']}
+          __excludeProps={excludeProps}
           aria-label={showHint ? hintContent : undefined}
         >
           <SInner

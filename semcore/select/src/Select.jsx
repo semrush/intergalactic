@@ -52,7 +52,6 @@ class RootSelect extends AbstractDropdown {
 
     return {
       placeholder: props.multiselect ? 'Select options' : 'Select option',
-      size: 'm',
       defaultValue: getEmptyValue(props.multiselect),
       defaultVisible: false,
       defaultHighlightedIndex: props.highlightedIndex ?? defaultIndex,

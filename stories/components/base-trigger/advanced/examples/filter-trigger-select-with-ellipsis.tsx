@@ -18,7 +18,7 @@ const Demo = () => {
           >
             <FilterTrigger.Text
               wMax={80}
-              ellipsis={{ cropPosition: 'middle' }}
+              ellipsis:cropPosition='middle'
               key={material.length}
             >
               <span aria-hidden='true'>Material: </span>

@@ -49,6 +49,7 @@ const Demo = () => {
                 ml={1}
                 tag={ButtonLink}
                 addonLeft={InfoM}
+                size={100}
                 color='icon-secondary-neutral'
                 aria-label='Additional info 1'
                 data-test-id='tooltip-with-interactive-el'

@@ -285,13 +285,12 @@ function TagContainerCircle(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles, tagRef, ellipsis = false } = props;
+  const { styles, tagRef } = props;
 
   return sstyled(styles)(
     <>
       <SText
         render={TypographyText}
-        ellipsis={ellipsis}
         hint:triggerRef={tagRef}
       />
     </>,

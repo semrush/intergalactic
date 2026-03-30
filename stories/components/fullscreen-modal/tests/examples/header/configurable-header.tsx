@@ -58,6 +58,8 @@ const Demo = (props: HeaderConfig) => {
                       tag={ButtonLink}
                       addonLeft={InfoM}
                       color='icon-secondary-neutral'
+                      size={100}
+                      top='-1px'
                       aria-label='More information'
                     />
                     <DescriptionTooltip.Popper aria-labelledby='modal-description-tooltip'>
