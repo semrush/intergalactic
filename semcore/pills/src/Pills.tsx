@@ -5,7 +5,7 @@ import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import React from 'react';
 
-import type { IntergalacticPillsComponent, PillProps, PillsComponent, PillsHandlers, PillsProps } from './Pills.type';
+import type { IntergalacticPillsComponent, PillProps, PillsComponent, PillsHandlers, PillsProps, PillsValue } from './Pills.type';
 import style from './style/pills.shadow.css';
 
 class RootPills extends Component<PillsProps, typeof RootPills.enhance, PillsHandlers> {
@@ -37,7 +37,7 @@ class RootPills extends Component<PillsProps, typeof RootPills.enhance, PillsHan
 
   uncontrolledProps() {
     return {
-      value: null,
+      value: (value: PillProps['value'], e: React.SyntheticEvent) => value,
     };
   }
 
@@ -89,9 +89,11 @@ class RootPills extends Component<PillsProps, typeof RootPills.enhance, PillsHan
   }
 }
 
-type PillPropsFromRoot = ReturnType<InstanceType<typeof RootPills>['getItemProps']>;
-
-function Pill(props: PillPropsFromRoot & PillProps & IRootComponentProps) {
+function Pill(props:
+  IRootComponentProps
+  & Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootPills, 'Item'>
+  & PillProps,
+) {
   const SPill = Root;
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
