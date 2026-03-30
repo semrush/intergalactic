@@ -121,7 +121,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await expect(locators.trigger(page)).toBeFocused();
 
-      await expect(locators.triggerText(page)).toHaveText('Com.: 2-7');
+      await expect(locators.triggerText(page)).toHaveText('Com.: 2–7');
     });
 
     await test.step('Verify hint on close button and trigger keyboard navigation', async () => {
@@ -166,7 +166,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await locators.textbox(page).nth(1).fill('8');
       await locators.button(page, 'Apply').click();
       await locators.button(page, 'Apply').waitFor({ state: 'hidden' });
-      await expect(locators.triggerText(page)).toHaveText('Com.: 1-8');
+      await expect(locators.triggerText(page)).toHaveText('Com.: 1–8');
       await expect(locators.button(page, 'Clear')).toBeVisible();
     });
 
