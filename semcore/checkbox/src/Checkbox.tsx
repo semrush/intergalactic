@@ -1,5 +1,5 @@
 import { Box, Flex, InvalidStateBox } from '@semcore/base-components';
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -106,9 +106,8 @@ class CheckboxRoot extends Component<CheckboxProps, never, {}, State> {
   }
 }
 
-type ValuePropsFromRoot = ReturnType<InstanceType<typeof CheckboxRoot>['getValueProps']>;
 class ValueRoot extends Component<
-  ValuePropsFromRoot & CheckboxValueProps,
+  CheckboxValueProps & JSX.IntrinsicElements['input'],
   typeof ValueRoot.enhance,
   { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
 > {
@@ -151,7 +150,6 @@ class ValueRoot extends Component<
       size,
       state,
       theme,
-      // keyboardFocused,
       checked,
       indeterminate,
       includeInputProps,
@@ -166,7 +164,6 @@ class ValueRoot extends Component<
       theme: resolveColor(theme),
       size,
       state,
-      // keyboardFocused,
       checked,
       indeterminate,
       resolveColor,
@@ -202,17 +199,18 @@ class ValueRoot extends Component<
   }
 }
 
-type ControlPropsFromRoot = ReturnType<InstanceType<typeof ValueRoot>['getControlProps']>;
-function Control(props: IRootComponentProps & ControlPropsFromRoot & CheckboxValueControlProps) {
+function Control(props:
+  IRootComponentProps
+  & Intergalactic.InternalTypings.InferPropsFromRoot<typeof ValueRoot, 'Control'>
+  & CheckboxValueControlProps,
+) {
   const SControl = Root;
   const { indeterminate, styles, state } = props;
   const checkboxRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     if (checkboxRef.current) {
-      if (indeterminate === undefined) return;
-
-      checkboxRef.current.indeterminate = indeterminate;
+      checkboxRef.current.indeterminate = Boolean(indeterminate);
     }
   }, [indeterminate, checkboxRef]);
 
@@ -228,8 +226,11 @@ function Control(props: IRootComponentProps & ControlPropsFromRoot & CheckboxVal
 }
 Control.displayName = 'Control';
 
-type CheckMarkPropsFromRoot = ReturnType<InstanceType<typeof ValueRoot>['getCheckMarkProps']>;
-function CheckMark(props: IRootComponentProps & CheckMarkPropsFromRoot & CheckboxValueCheckMarkProps) {
+function CheckMark(props:
+  IRootComponentProps
+  & Intergalactic.InternalTypings.InferPropsFromRoot<typeof ValueRoot, 'CheckMark'>
+  & CheckboxValueCheckMarkProps,
+) {
   const SCheckbox = Root;
   const SInvalidPattern = InvalidStateBox;
   const { styles, state, checked, indeterminate } = props;
@@ -241,16 +242,17 @@ function CheckMark(props: IRootComponentProps & CheckMarkPropsFromRoot & Checkbo
 }
 CheckMark.displayName = 'CheckMark';
 
-type TextPropsFromRoot = ReturnType<InstanceType<typeof CheckboxRoot>['getTextProps']>;
-function Text(props: IRootComponentProps & TextPropsFromRoot & CheckboxTextProps) {
+function Text(props:
+  IRootComponentProps
+  & Intergalactic.InternalTypings.InferPropsFromRoot<typeof CheckboxRoot, 'Text'>
+  & CheckboxTextProps,
+) {
   const SText = Root;
   const { styles, color } = props;
 
   React.useEffect(() => {
     if (props.rootDisabled !== props.disabled) {
-      if (props.disabled === undefined) return;
-
-      props.hoistDisabled(props.disabled);
+      props.hoistDisabled(Boolean(props.disabled));
     }
   }, [props.rootDisabled, props.disabled, props.hoistDisabled]);
 
