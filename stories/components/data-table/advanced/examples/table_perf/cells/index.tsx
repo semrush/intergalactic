@@ -58,15 +58,6 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
   });
   const copiedTitle = intl.formatMessage(copiedMessageDescriptor);
 
-  const ellipsisProps = React.useMemo<EllipsisSettings>(() => {
-    return {
-      cropPosition: cropPosition === 'none' ? 'end' : cropPosition,
-      containerElement: headerRef ?? undefined,
-      // `width - 28` because there is custom copy icon (20px) on each cell + 8px gap between text and Icon. Therefore, the header width should be reduced based on the width of this icon.
-      recalculateContainerWidth: (width: number) => (width - 28),
-    };
-  }, [cropPosition, cellProps.columnName, headerRef]);
-
   return (
     <Tooltip
       w='100%'
@@ -82,7 +73,13 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
             <Box inline>{value}</Box>
           )
         : (
-            <Text ellipsis={ellipsisProps} {...(hintProps !== undefined ? { hintProps } : { hintProps: false })}>
+            <Text
+              ellipsis:cropPosition={cropPosition ?? 'end'}
+              ellipsis:containerElement={headerRef ?? undefined}
+              // `width - 28` because there is custom copy icon (20px) on each cell + 8px gap between text and Icon. Therefore, the header width should be reduced based on the width of this icon.
+              ellipsis:recalculateContainerWidth={(width: number) => (width - 28)}
+              hint={hintProps}
+            >
               {value}
             </Text>
           )}

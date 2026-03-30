@@ -121,11 +121,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger-ellipsis.tsx', 'en');
-
-    await expect(page).toHaveScreenshot();
+    await page.waitForTimeout(200);
 
     await locators.trigger(page).nth(1).hover();
     await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
   });
 
@@ -160,12 +165,19 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('Clear').waitFor({ state: 'visible' });
+    await locators.hint(page).waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('Clear tooltip').waitFor({ state: 'visible' });
+    await expect(locators.hint(page)).toHaveCount(1);
+    await expect(locators.hint(page)).toHaveText('Clear text');
   });
 });
 

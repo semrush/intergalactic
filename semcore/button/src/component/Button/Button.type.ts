@@ -1,33 +1,48 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps, NeighborItemProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
+import type { TextProps } from '@semcore/typography';
+import type React from 'react';
 
-import type {
-  AbstractButtonAddonProps,
-  AbstractButtonContext,
-  AbstractButtonTextProps,
-  AbstractButtonProps,
-} from '../AbstractButton/AbstractButton.type';
+export type ButtonProps = BoxProps &
+  NeighborItemProps & {
+  /** Button activity state */
+    active?: boolean;
+    /** Disabled button state */
+    disabled?: boolean;
+    /** Loading button state */
+    loading?: boolean;
+    /** Tag for the left Addon */
+    addonLeft?: React.ElementType;
+    /** Tag for the right Addon */
+    addonRight?: React.ElementType;
+    /**
+   * Placement for hint
+   * @default top
+   */
+    hintPlacement?: SimpleHintPopperProps['placement'];
 
-/**
- *  Button size
- * @default m
- */
-export type ButtonSize = 'l' | 'm';
-/**
- *  Button type
- * @default secondary
- */
-type Use = 'primary' | 'secondary' | 'tertiary';
+    /** Button size.
+   * @default `m`
+   */
+    size?: 'l' | 'm';
+    /** Button usage.
+   * @default `primary`
+   */
+    use?: 'primary' | 'secondary' | 'tertiary';
+    /** Button theme.
+   * @default undefined
+   */
+    theme?: 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
+  };
 
-/** Button theme */
-type Theme = 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
+export type ButtonTextProps = TextProps;
 
-export type ButtonProps = AbstractButtonProps<ButtonSize, Use, Theme>;
+export type ButtonAddonProps = BoxProps;
 
-export type ButtonTextProps = AbstractButtonTextProps<ButtonSize>;
-
-export type ButtonAddonProps = AbstractButtonAddonProps;
-
-export type ButtonContext = AbstractButtonContext;
+export type ButtonContext = {
+  getTextProps: PropGetterFn;
+  getAddonProps: PropGetterFn;
+};
 
 export type ButtonChildren = {
   Text: Intergalactic.Component<'span', ButtonTextProps>;

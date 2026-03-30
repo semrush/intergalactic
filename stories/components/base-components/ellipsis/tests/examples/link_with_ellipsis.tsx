@@ -1,9 +1,10 @@
+import type { TextEllipsisProps } from '@semcore/typography';
 import type { EllipsisSettings } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
 type LinkEllipsisProps = {
-  ellipsis?: true | EllipsisSettings;
+  ellipsis?: TextEllipsisProps;
   w?: number | string;
   color?: string;
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
@@ -16,7 +17,7 @@ type LinkEllipsisProps = {
 const Demo = (props: LinkEllipsisProps) => {
   let linkDisplayValue: 'inline-block' | undefined;
 
-  if (typeof props.ellipsis === 'object' && props.ellipsis.maxLine && props.ellipsis.maxLine > 1) {
+  if (props.ellipsis?.['ellipsis:maxLine'] && props.ellipsis['ellipsis:maxLine'] > 1) {
     linkDisplayValue = 'inline-block';
   }
 
@@ -28,11 +29,11 @@ const Demo = (props: LinkEllipsisProps) => {
       display={linkDisplayValue}
     >
       <Link.Text
-        ellipsis={props.ellipsis}
+        {...props.ellipsis}
         w={props.w}
         color={props.color}
         size={props.size}
-        hintProps={props.hintProps}
+        hint={props.hintProps}
         hint:placement={props.hintPlacement}
       >
         https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
@@ -42,7 +43,7 @@ const Demo = (props: LinkEllipsisProps) => {
 };
 
 export const defaultProps: LinkEllipsisProps = {
-  ellipsis: true,
+  ellipsis: { ellipsis: true },
   size: 200,
   w: 120,
 };

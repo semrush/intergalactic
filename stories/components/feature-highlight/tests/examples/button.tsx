@@ -1,5 +1,5 @@
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import type { EllipsisSettings } from '@semcore/ui/base-components';
+import type { TextEllipsisProps } from '@semcore/typography';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import type { ButtonProps } from '@semcore/ui/button';
 import { ButtonFH, BadgeFH } from '@semcore/ui/feature-highlight';
@@ -17,7 +17,7 @@ export type ButtonFHAdvancedProps = ButtonProps & {
   disabled?: boolean;
   loading?: boolean;
   active?: boolean;
-  ellipsis?: true | EllipsisSettings;
+  ellipsis?: TextEllipsisProps;
   w?: number | string;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
@@ -57,8 +57,8 @@ const Demo = (props: ButtonFHAdvancedProps) => {
                 <>
                   <ButtonFH.Addon animatedSparkleCount={animatedSparkleCount} />
                   <ButtonFH.Text
-                    ellipsis={ellipsis}
-                    hintProps={props.hintProps}
+                    {...ellipsis}
+                    hint={props.hintProps}
                     hint:placement={props.hintPlacement}
                     w={props.w}
                   >
@@ -71,8 +71,8 @@ const Demo = (props: ButtonFHAdvancedProps) => {
               )
             : (
                 <ButtonFH.Text
-                  ellipsis={ellipsis}
-                  hintProps={props.hintProps}
+                  {...ellipsis}
+                  hint={props.hintProps}
                   hint:placement={props.hintPlacement}
                   w={props.w}
                 >
@@ -98,7 +98,9 @@ export const defaultProps: ButtonFHAdvancedProps = {
   loading: false,
   active: false,
   useBadge: 'accent',
-  ellipsis: true,
+  ellipsis: {
+    ellipsis: true,
+  },
   w: 200,
 };
 

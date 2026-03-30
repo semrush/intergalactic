@@ -236,8 +236,8 @@ const Demo = (demoProps: AccordionInTableProps) => {
             return {
               children: (
                 <Text
-                  ellipsis={{ cropPosition: cropPos } as EllipsisSettings}
-                  hintProps={demoProps.hintProps}
+                  ellipsis:cropPosition={cropPos}
+                  hint={demoProps.hintProps}
                 >
                   {String(props.row.payment_description)}
                 </Text>

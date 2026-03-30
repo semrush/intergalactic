@@ -15,6 +15,8 @@ type WithTableLinkProps = ModalProps & {
 };
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
+const recalculateContainerWidth = (width: number) => width - 28;
+
 const ModalContent = ({ title, content, text, showCloseButton, handleClose }: any) => {
   const urlRef = React.useRef(null);
   const [columnElement, setColumnElement] = React.useState<HTMLElement | undefined>(undefined);
@@ -26,14 +28,6 @@ const ModalContent = ({ title, content, text, showCloseButton, handleClose }: an
     }
   }, []);
 
-  const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
-    return {
-      cropPosition: 'end',
-      containerElement: columnElement,
-      recalculateContainerWidth: (width: number) => width - 28,
-    };
-  }, [columnElement]);
-
   return (
     <>
       <Modal.Title>{title}</Modal.Title>
@@ -41,10 +35,8 @@ const ModalContent = ({ title, content, text, showCloseButton, handleClose }: an
         {content}
       </Text>
       <Text
-        ellipsis={{
-          cropPosition: 'middle',
-          lastRequiredSymbols: 5,
-        }}
+        ellipsis:cropPosition='middle'
+        ellipsis:lastRequiredSymbols={5}
         size={300}
         w='300px'
       >
@@ -93,7 +85,9 @@ const ModalContent = ({ title, content, text, showCloseButton, handleClose }: an
                 <Link.Text
                   wMin={0}
                   wMax='calc(100% - 20px)'
-                  ellipsis={ellipsisSettings}
+                  ellipsis:cropPosition='end'
+                  ellipsis:containerElement={columnElement}
+                  ellipsis:recalculateContainerWidth={recalculateContainerWidth}
                   hint:triggerRef={triggerRef}
                 >
                   {removeProtocol(pageUrl)}

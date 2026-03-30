@@ -90,7 +90,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-      await page.waitForTimeout(300); // for chart animation is finished
+      await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
 
       await page.keyboard.press('ArrowDown');
       await expect(page).toHaveScreenshot();

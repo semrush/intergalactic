@@ -3,13 +3,12 @@ import React from 'react';
 
 const text = 'Intergalactic is a constantly developing system of UI components, guidelines and UX patterns.';
 
-const ellipsisSettings = { cropPosition: 'end', maxLine: 2 } as const;
-
 const Demo = () => {
   return (
     <Text
       w={180}
-      ellipsis={ellipsisSettings}
+      ellipsis:cropPosition='end'
+      ellipsis:maxLine={2}
     >
       {text}
     </Text>

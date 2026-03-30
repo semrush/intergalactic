@@ -50,10 +50,10 @@ test.describe(` ${TAG.VISUAL}`, () => {
   ];
 
   const ellipsisVariants = [
-    { desc: 'ellipsis: true', vars: { ellipsis: true } },
-    { desc: 'cropPosition: middle', vars: { ellipsis: { cropPosition: 'middle' } } },
-    { desc: 'middle, lastRequired: 2', vars: { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 } } },
-    { desc: 'end, maxLine: 2', vars: { ellipsis: { cropPosition: 'end', maxLine: 2 } } },
+    { desc: 'ellipsis: true', vars: { ellipsis: { ellipsis: true } } },
+    { desc: 'cropPosition: middle', vars: { ellipsis: { 'ellipsis:cropPosition': 'middle' } } },
+    { desc: 'middle, lastRequired: 2', vars: { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 } } },
+    { desc: 'end, maxLine: 2', vars: { ellipsis: { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 2 } } },
   ];
 
   const colorBySize: Record<number, string | undefined> = {
@@ -187,8 +187,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
   // Section 3: No-ellipsis-hint tests — verify hint does NOT appear when text is not truncated
   test.describe('ButtonLink without ellipsis', () => {
     const noHintVariants = [
-      { desc: 'ellipsis: false', vars: { ellipsis: false as const }, text: longText },
-      { desc: 'maxLine: 9 (text not truncated)', vars: { ellipsis: { cropPosition: 'end', maxLine: 9 } }, text: longText },
+      { desc: 'ellipsis: false', vars: { ellipsis: { ellipsis: false } }, text: longText },
+      { desc: 'maxLine: 9 (text not truncated)', vars: { ellipsis: { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 9 } }, text: longText },
     ];
 
     const noHintSizes = [100, 300] as const;
@@ -278,7 +278,7 @@ test.describe(`@button-link ${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@ellipsis', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
-      ellipsis: { cropPosition: 'middle' }, size: 300,
+      ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 300,
       text: 'The quick brown fox jumps over the lazy dog and even more text to ensure truncation',
     });
     await locators.button(page).first().waitFor({ state: 'visible' });

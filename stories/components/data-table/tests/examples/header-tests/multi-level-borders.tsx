@@ -27,7 +27,7 @@ const Demo = () => {
                   <>
                     <Text>
                       Kd Organic Sessions Organic Sessions
-                      <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                      <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
                 ),
@@ -55,7 +55,7 @@ const Demo = () => {
                     <Text ellipsis={true}>
                       Kd Organic Sessions Organic Sessions
                     </Text>
-                    <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                    <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                   </>
                 ),
 
@@ -80,7 +80,7 @@ const Demo = () => {
                   <>
                     <Text>
                       Kd Organic Sessions Organic Sessions
-                      <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                      <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
                 ),
@@ -104,7 +104,7 @@ const Demo = () => {
                   <>
                     <Text>
                       Kd Organic Sessions Organic Sessions
-                      <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                      <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
                     </Text>
                   </>
                 ),

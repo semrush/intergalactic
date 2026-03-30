@@ -55,6 +55,7 @@ function Title(props: IRootComponentProps & TitleProps) {
               tag={ButtonLink}
               ml={1}
               use='secondary'
+              size={300}
               aria-label={innerHintAriaLabel}
               color='--intergalactic-icon-secondary-neutral'
             >
@@ -71,6 +72,7 @@ function Title(props: IRootComponentProps & TitleProps) {
           <SInfoTrigger
             tag={ButtonLink}
             use='secondary'
+            size={300}
             aria-label={hintAfterAriaLabel}
             color='--intergalactic-icon-secondary-neutral'
           >
