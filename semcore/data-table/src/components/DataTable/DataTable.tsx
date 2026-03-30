@@ -1,6 +1,7 @@
 import { Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
@@ -583,7 +584,12 @@ class DataTableRoot<
       }
 
       cell?.focus({ focusVisible: true, preventScroll: true });
-      this.scrollToCell(cell);
+      if (rowIndex !== 0 && row) {
+        this.verticalScrollToCell(cell);
+      }
+      if (colIndex !== 0 && cell) {
+        this.horizontalScrollToCell(cell);
+      }
 
       if (newRow !== 0) {
         currentHeaderCell?.setAttribute('inert', '');
@@ -805,12 +811,13 @@ class DataTableRoot<
 
       cell?.removeAttribute('inert');
 
-      if (cell instanceof HTMLElement) {
+      if (row instanceof HTMLElement && cell instanceof HTMLElement) {
         if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus({ focusVisible: true });
         } else {
           cell.focus({ focusVisible: true, preventScroll: true });
-          this.scrollToCell(cell);
+          this.verticalScrollToCell(cell);
+          this.horizontalScrollToCell(cell);
         }
       }
 
@@ -1530,37 +1537,48 @@ class DataTableRoot<
     return height;
   }
 
-  private scrollToCell(to: Element) {
+  private verticalScrollToCell(to: Element) {
+    to.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'start',
+    });
+  }
+
+  private horizontalScrollToCell(to: Element) {
     const header = this.headerScrollContainerRef.current;
     const body = this.tableContainerRef.current;
+    const toParent = to.parentElement;
 
     const currentScrollLeft = body?.scrollLeft ?? 0;
-    const currentScrollTop = body?.scrollTop ?? 0;
 
-    if (to instanceof HTMLElement && header && body) {
+    if (to instanceof HTMLElement && toParent instanceof HTMLElement && header && body) {
+      const toParentStyles = getComputedStyle(toParent);
+
+      if (toParentStyles.position === 'sticky') {
+        return;
+      }
+
       const duration = 300;
+      const bodyStyles = getComputedStyle(body);
+      const bodyScrollPaddingLeft = cssToIntDefault(bodyStyles.scrollPaddingLeft, 0);
+      const bodyScrollPaddingRight = cssToIntDefault(bodyStyles.scrollPaddingRight, 0);
+      const bodyClientWidth = body.clientWidth - bodyScrollPaddingLeft - bodyScrollPaddingRight;
 
-      const toLeft = to.offsetLeft;
-      const toTop = to.offsetTop;
+      const toLeft = to.offsetLeft - bodyScrollPaddingLeft;
+
+      const horizontalCenter = (bodyClientWidth > to.clientWidth ? (bodyClientWidth - to.clientWidth) / 2 : 0);
 
       const leftScroll = (toLeft > currentScrollLeft
-        ? toLeft - currentScrollLeft - ((body.clientWidth - to.clientWidth) / 2)
-        : currentScrollLeft - toLeft + ((body.clientWidth - to.clientWidth) / 2)
+        ? toLeft - currentScrollLeft - horizontalCenter
+        : currentScrollLeft - toLeft + horizontalCenter
       );
-      const maxLeftScroll = body.clientWidth - to.clientWidth;
-
-      const topScroll = (toTop > currentScrollTop
-        ? toTop - currentScrollTop - ((body.clientHeight - to.clientHeight) / 2)
-        : currentScrollTop - toTop + ((body.clientHeight - to.clientHeight) / 2)
-      );
-      const maxTopScroll = body.clientHeight - to.clientHeight;
+      const maxLeftScroll = body.scrollWidth - bodyScrollPaddingLeft;
 
       const distanceLeft = toLeft > currentScrollLeft
         ? Math.max(0, Math.min(leftScroll, maxLeftScroll))
-        : Math.min(leftScroll);
-      const distanceTop = toTop > currentScrollTop
-        ? Math.max(0, Math.min(topScroll, maxTopScroll))
-        : Math.min(topScroll);
+        : Math.max(0, leftScroll);
+
       let startTime: DOMHighResTimeStamp | null = null;
 
       const animation = (currentTime: DOMHighResTimeStamp) => {
@@ -1574,13 +1592,9 @@ class DataTableRoot<
           : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
         const newLeft = currentScrollLeft + distanceLeft * ease * (currentScrollLeft < toLeft ? 1 : -1);
-        const newTop = currentScrollTop + distanceTop * ease * (currentScrollTop < toTop ? 1 : -1);
 
         header.scrollLeft = newLeft;
-        header.scrollTop = newTop;
-
         body.scrollLeft = newLeft;
-        body.scrollTop = newTop;
 
         if (timeElapsed < duration) {
           requestAnimationFrame(animation);
