@@ -582,7 +582,8 @@ class DataTableRoot<
         cell.setAttribute('aria-describedby', describedBy);
       }
 
-      cell?.focus({ focusVisible: true });
+      cell?.focus({ focusVisible: true, preventScroll: true });
+      this.scrollToCell(cell);
 
       if (newRow !== 0) {
         currentHeaderCell?.setAttribute('inert', '');
@@ -808,7 +809,8 @@ class DataTableRoot<
         if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus({ focusVisible: true });
         } else {
-          cell.focus({ focusVisible: true });
+          cell.focus({ focusVisible: true, preventScroll: true });
+          this.scrollToCell(cell);
         }
       }
 
@@ -1526,6 +1528,67 @@ class DataTableRoot<
     }
 
     return height;
+  }
+
+  private scrollToCell(to: Element) {
+    const header = this.headerScrollContainerRef.current;
+    const body = this.tableContainerRef.current;
+
+    const currentScrollLeft = body?.scrollLeft ?? 0;
+    const currentScrollTop = body?.scrollTop ?? 0;
+
+    if (to instanceof HTMLElement && header && body) {
+      const duration = 300;
+
+      const toLeft = to.offsetLeft;
+      const toTop = to.offsetTop;
+
+      const leftScroll = (toLeft > currentScrollLeft
+        ? toLeft - currentScrollLeft - ((body.clientWidth - to.clientWidth) / 2)
+        : currentScrollLeft - toLeft + ((body.clientWidth - to.clientWidth) / 2)
+      );
+      const maxLeftScroll = body.clientWidth - to.clientWidth;
+
+      const topScroll = (toTop > currentScrollTop
+        ? toTop - currentScrollTop - ((body.clientHeight - to.clientHeight) / 2)
+        : currentScrollTop - toTop + ((body.clientHeight - to.clientHeight) / 2)
+      );
+      const maxTopScroll = body.clientHeight - to.clientHeight;
+
+      const distanceLeft = toLeft > currentScrollLeft
+        ? Math.max(0, Math.min(leftScroll, maxLeftScroll))
+        : Math.min(leftScroll);
+      const distanceTop = toTop > currentScrollTop
+        ? Math.max(0, Math.min(topScroll, maxTopScroll))
+        : Math.min(topScroll);
+      let startTime: DOMHighResTimeStamp | null = null;
+
+      const animation = (currentTime: DOMHighResTimeStamp) => {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+
+        // EaseInOut
+        const ease = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+        const newLeft = currentScrollLeft + distanceLeft * ease * (currentScrollLeft < toLeft ? 1 : -1);
+        const newTop = currentScrollTop + distanceTop * ease * (currentScrollTop < toTop ? 1 : -1);
+
+        header.scrollLeft = newLeft;
+        header.scrollTop = newTop;
+
+        body.scrollLeft = newLeft;
+        body.scrollTop = newTop;
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      requestAnimationFrame(animation);
+    }
   }
 }
 
