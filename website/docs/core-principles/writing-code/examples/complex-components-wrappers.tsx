@@ -9,6 +9,7 @@ const CardDataTable = wrapDataTable<{ title: string }>(({ title, ...restProps })
         <Card.Title>{title}</Card.Title>
       </Card.Header>
       <Card.Body px={0}>
+        {/* @ts-ignore todo: Ilia Brauer remove in 17 */}
         <DataTable {...restProps} aria-label='Table title' />
       </Card.Body>
     </Card>
@@ -17,6 +18,7 @@ const CardDataTable = wrapDataTable<{ title: string }>(({ title, ...restProps })
 
 const Demo = () => {
   return (
+    // @ts-ignore todo: Ilia Brauer remove in 17
     <CardDataTable
       data={data}
       title='A table combined with card'
