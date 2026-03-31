@@ -583,7 +583,7 @@ class DataTableRoot<
         cell.setAttribute('aria-describedby', describedBy);
       }
 
-      cell?.focus({ focusVisible: true, preventScroll: true });
+      // cell?.focus({ focusVisible: true, preventScroll: true });
       if (rowIndex !== 0 && row) {
         this.verticalScrollToCell(cell);
       }
@@ -815,7 +815,7 @@ class DataTableRoot<
         if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus({ focusVisible: true });
         } else {
-          cell.focus({ focusVisible: true, preventScroll: true });
+          // cell.focus({ focusVisible: true, preventScroll: true });
           this.verticalScrollToCell(cell);
           this.horizontalScrollToCell(cell);
         }
@@ -1538,11 +1538,14 @@ class DataTableRoot<
   }
 
   private verticalScrollToCell(to: Element) {
-    to.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'start',
-    });
+    if (to instanceof HTMLElement) {
+      to.focus({ focusVisible: true });
+      to.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'start',
+      });
+    }
   }
 
   private horizontalScrollToCell(to: Element) {
@@ -1553,6 +1556,8 @@ class DataTableRoot<
     const currentScrollLeft = body?.scrollLeft ?? 0;
 
     if (to instanceof HTMLElement && toParent instanceof HTMLElement && body) {
+      to.focus({ focusVisible: true, preventScroll: true });
+
       const toParentStyles = getComputedStyle(toParent);
 
       if (toParentStyles.position === 'sticky') {
