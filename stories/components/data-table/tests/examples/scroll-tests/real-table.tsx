@@ -1,12 +1,30 @@
 import Serp from '@semcore/icon/Serp/m';
 import { Box } from '@semcore/ui/base-components';
 import Card from '@semcore/ui/card';
-import type { DataTableData } from '@semcore/ui/data-table';
+import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
 import Ellipsis from '@semcore/ui/ellipsis';
 import React from 'react';
 
+type SortableColumn = 'previous' | 'current' | 'diff' | 'traffic' | 'kd' | 'cpc';
+type ColumnName = keyof (typeof data)[0];
+
 const Demo = () => {
+  const [sort, setSort] = React.useState<DataTableSort<ColumnName>>(['current', 'asc']);
+
+  const sortedData = React.useMemo(
+    () =>
+      [...data].sort((aRow, bRow) => {
+        const [prop, sortDirection] = sort;
+        const a = aRow[prop as SortableColumn];
+        const b = bRow[prop as SortableColumn];
+        if (a === b) return 0;
+        if (sortDirection === 'asc') return a > b ? 1 : -1;
+        return a > b ? -1 : 1;
+      }),
+    [sort],
+  );
+
   return (
     <Box
       wMin={980}
@@ -18,8 +36,10 @@ const Demo = () => {
         <Card.Body px={0} pt={0}>
           <DataTable
             aria-label='real table'
-            data={data}
+            data={sortedData}
             columns={columns}
+            sort={sort}
+            onSortChange={setSort}
             sideIndents='wide'
             compact
             headerProps={{
@@ -59,16 +79,19 @@ const columns = [
     name: 'previous',
     children: <TableHeaderCell>Previous</TableHeaderCell>,
     gtcWidth: 'minmax(60px, 90px)',
+    sortable: true,
   },
   {
     name: 'current',
     children: <TableHeaderCell>Current</TableHeaderCell>,
     gtcWidth: 'minmax(60px, 90px)',
+    sortable: true,
   },
   {
     name: 'diff',
     children: <TableHeaderCell>Diff.</TableHeaderCell>,
     gtcWidth: 'minmax(48px, 60px)',
+    sortable: true,
   },
   {
     name: 'trafficDiff',
@@ -79,6 +102,7 @@ const columns = [
     name: 'traffic',
     children: <TableHeaderCell>Traffic %</TableHeaderCell>,
     gtcWidth: 'minmax(66px, 80px)',
+    sortable: true,
   },
   {
     name: 'changesSerp',
@@ -94,11 +118,13 @@ const columns = [
     name: 'kd',
     children: <TableHeaderCell>KD %</TableHeaderCell>,
     gtcWidth: 'minmax(64px, 80px)',
+    sortable: true,
   },
   {
     name: 'cpc',
     children: <TableHeaderCell>CPC</TableHeaderCell>,
     gtcWidth: 'minmax(68px, 80px)',
+    sortable: true,
   },
   {
     name: 'url',
