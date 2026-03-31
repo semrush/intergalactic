@@ -4,12 +4,8 @@ fileSource: utils
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Changelog('design-tokens-changelog')
 ---
 
-::: info
-Design tokens are available for use from **intergalactic@13.5.0** version.
-:::
-
 ::: warning
-You should use tokens from the **@semcore/theme** package instead of **@semcore/core**,
+Use tokens from the **@semcore/theme** package instead of **@semcore/core**,
 as they will be removed from the core package starting from **version 17**.
 :::
 
