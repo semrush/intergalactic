@@ -31,7 +31,7 @@
     "@types/fs-extra": "8.1.0",
     "esbuild": "0.14.29",
     "fs-extra": "8.1.0",
-    "happy-dom": "9.20.3",
+    "happy-dom": "20.8.9",
     "svg-to-jsx": "1.0.4"
   },
   "exports": {
