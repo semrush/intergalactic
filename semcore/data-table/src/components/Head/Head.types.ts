@@ -1,4 +1,5 @@
 import type { ColumnPropsInner, DTColumn } from './Column.types';
+import type { ISelectedRows } from '../../store/SelectableRows';
 import type { BodyPropsInner } from '../Body/Body.types';
 import type { DataTableCellProps } from '../Body/Cell.types';
 import type { DTRow } from '../Body/Row.types';
@@ -54,7 +55,7 @@ export type HeadPropsInner<
   sideIndents?: 'wide';
 
   totalRows: number;
-  selectedRows?: UniqKeyType[];
+  selectedRows?: UniqKeyType[] | ISelectedRows<UniqKeyType>;
   onChangeSelectAll?: (selectedRows: UniqKeyType[], event?: React.SyntheticEvent<HTMLElement>) => void;
   flatRows: DTRow<UniqKeyType>[];
 
