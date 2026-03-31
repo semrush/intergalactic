@@ -4,8 +4,9 @@ fileSource: utils
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Changelog('design-tokens-changelog')
 ---
 
-::: info
-Design tokens are available for use from **intergalactic@13.5.0** version.
+::: warning
+Use tokens from the **@semcore/theme** package instead of **@semcore/core**,
+as they will be removed from the core package starting from **version 17**.
 :::
 
 ## Description
@@ -20,7 +21,7 @@ Intergalactic Design System has:
 These sets form the default theme of the design system.
 
 ::: tip
-For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/core/src/theme/light.json).
+For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/theme/src/light.json).
 :::
 
 ## Stylelint plugin
