@@ -36,7 +36,7 @@ There are two approaches for applying colors from our palette:
 
 ### Categorical order
 
-This method assists in selecting colors in a predefined order with suitable contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic-tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base-tokens-palette).
+This method assists in selecting colors in a predefined order with suitable contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic-tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base-tokens).
 
 ::: react-view
 
@@ -57,7 +57,7 @@ const App = function (props) {
 
 ### Sequental order
 
-This method helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base-tokens-palette).
+This method helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base-tokens).
 
 ::: react-view
 
@@ -80,7 +80,7 @@ The recommended maximum number of colors on a chart is 30.
 
 Using 30 or more colors is reserved for exceptionally complex scenarios when a large number of colors must be assigned by the system for data representation.
 
-To create a usable palette for such situations, begin by using [tokens from the base palette](/style/design-tokens/design-tokens#base-tokens-palette) with a hue of 300, followed by 200, and then 400. Continue this process until you achieve the desired quantity of colors.
+To create a usable palette for such situations, begin by using [tokens from the base palette](/style/design-tokens/design-tokens#base-tokens) with a hue of 300, followed by 200, and then 400. Continue this process until you achieve the desired quantity of colors.
 
 ## Accessibility
 
