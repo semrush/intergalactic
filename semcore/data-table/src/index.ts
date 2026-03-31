@@ -13,6 +13,7 @@ import type {
   ColumnGroupConfig,
   ColumnItemConfig,
 } from './components/DataTable/DataTable.types';
+import { SelectableRows } from './store/SelectableRows';
 
 const wrapDataTable = <PropsExtending extends {}>(
   wrapper: (
@@ -30,6 +31,7 @@ export {
   ACCORDION,
   ROW_GROUP,
   wrapDataTable,
+  SelectableRows,
 };
 export type {
   DataTableSort,

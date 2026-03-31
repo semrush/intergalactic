@@ -63,6 +63,7 @@ export const BoxAllPropsConfigurable: StoryObj<typeof BoxAllProps> = {
     innerOutline: { control: { type: 'boolean' } },
     invertOutline: { control: { type: 'boolean' } },
     inAfterOutline: { control: { type: 'boolean' } },
+    hoverCursor: { control: { type: 'text' } },
   },
   args: BoxAllProps,
 };

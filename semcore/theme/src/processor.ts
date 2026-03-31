@@ -1,13 +1,16 @@
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
-import { resolve as resolvePath } from 'node:path';
+import { resolve as resolvePath, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import glob from 'fast-glob';
 import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
-import { processTokens, tokensToCss, tokensToJs, tokensToJson } from './utils';
+// @ts-ignore
+import { getPandaConfig, toPandaPreset } from './panda-processor.ts';
+// @ts-ignore
+import { processTokens, tokensToCss, tokensToJs } from './utils.ts';
 
 type Token = {
   name: string;
@@ -15,14 +18,21 @@ type Token = {
   description?: string;
 };
 
-export const writeIfChanged = async (path: string, content: string) => {
+export const writeIfChanged = async (relativePath: string, content: string) => {
+  const pathToFile = resolvePath(packageDirname, relativePath);
   try {
-    const originalContent = await fs.readFile(path, 'utf-8');
+    const originalContent = await fs.readFile(pathToFile, 'utf-8');
     if (originalContent.replace(/[\s\n]/g, '') === content.replace(/[\s\n]/g, '')) {
       return;
     }
-  } catch {}
-  await fs.writeFile(path, content);
+  } catch (err: unknown) {
+    if (!(err instanceof Error) || !('code' in err) || err.code !== 'ENOENT' || !err.message.startsWith('ENOENT: no such file')) {
+      throw err;
+    }
+  }
+  const dirName = dirname(pathToFile);
+  await fs.mkdir(dirName, { recursive: true });
+  await fs.writeFile(pathToFile, content);
 };
 
 const defaultTheme = 'light';
@@ -30,14 +40,15 @@ const themes = ['light', 'dark'];
 
 const warning = !process.argv.includes('--no-warning');
 
-const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
+const packageDirname = resolvePath(fileURLToPath(import.meta.url), '..', '..');
+const semcorePath = resolvePath(packageDirname, '..');
 
 const autoTheme: Record<string, { name: string; value: string; description: string }[]> = {};
 
 for (const theme of themes) {
   const prefix = 'intergalactic';
   const { base, tokens, featureHighlight } = JSON.parse(
-    await fs.readFile(resolvePath(dirname, `./${theme}.json`), 'utf-8'),
+    await fs.readFile(resolvePath(packageDirname, 'src', `${theme}.json`), 'utf-8'),
   );
   const processed = processTokens(
     base,
@@ -49,17 +60,22 @@ for (const theme of themes) {
   const { processedTokens } = processed;
 
   await writeIfChanged(
-    `./semcore/core/src/theme/themes/${theme}.css`,
+    'lib/panda-preset.ts',
+    toPandaPreset(getPandaConfig(values, basicTokens, types, descriptions)),
+  );
+
+  await writeIfChanged(
+    `lib/${theme}.css`,
     tokensToCss(processedTokens),
   );
-  await writeIfChanged(`./semcore/core/src/theme/themes/${theme}.ts`, tokensToJs(processedTokens));
+  await writeIfChanged(`lib/${theme}.ts`, tokensToJs(processedTokens));
 
   if (highlightsTokens.length > 0) {
     await writeIfChanged(
-      `./semcore/core/src/theme/themes/highlights-${theme}.css`,
+      `lib/highlights-${theme}.css`,
       tokensToCss(highlightsTokens),
     );
-    await writeIfChanged(`./semcore/core/src/theme/themes/highlights-${theme}.ts`, tokensToJs(highlightsTokens));
+    await writeIfChanged(`lib/highlights-${theme}.ts`, tokensToJs(highlightsTokens));
   }
 
   autoTheme[theme] = processedTokens;
@@ -67,24 +83,25 @@ for (const theme of themes) {
   const usages: { [tokenName: string]: string[] } = {};
   if (theme === defaultTheme) {
     await writeIfChanged(
-      './semcore/core/src/theme/themes/default.css',
+      'lib/default.css',
       tokensToCss(processedTokens),
     );
-    await writeIfChanged('./semcore/core/src/theme/themes/default.ts', tokensToJs(processedTokens));
+    await writeIfChanged('lib/default.ts', tokensToJs(processedTokens));
 
     const projectCssPaths = (
-      await glob('./semcore/*/src/**/*.shadow.css', {
+      await glob(`./*/src/**/*.shadow.css`, {
         ignore: ['node_modules', 'lib'],
+        cwd: semcorePath,
       })
     ).filter((path) => {
-      if (path.split('/').some((pathPart) => ['chart', 'email', 'table'].includes(pathPart))) {
+      if (path.split('/').some((pathPart) => ['theme', 'chart', 'email', 'table'].includes(pathPart))) {
         return false;
       }
       return true;
     });
 
     const projectCssContents = await Promise.all(
-      projectCssPaths.map((path) => fs.readFile(path, 'utf-8')),
+      projectCssPaths.map((path) => fs.readFile(resolvePath(semcorePath, path), 'utf-8')),
     );
 
     const usedVariables: any = {};
@@ -202,7 +219,7 @@ for (const theme of themes) {
       ),
     );
     await Promise.all(
-      projectCssPaths.map((path, index) => writeIfChanged(path, processedCss[index].css)),
+      projectCssPaths.map((path, index) => writeIfChanged(resolvePath(semcorePath, path), processedCss[index].css)),
     );
 
     const unusedVariables: string[] = [];
@@ -237,56 +254,44 @@ for (const theme of themes) {
       description: string;
       components: string[];
     }[] = [];
+    const baseTokensDocumentation: Token[] = [];
 
-    for (const token in values) {
-      if (!basicTokens.has(token)) {
+    for (const processedToken of [...processedTokens, ...highlightsTokens]) {
+      const { originalName: token, name, value, description } = processedToken;
+
+      const isBase = basicTokens.has(token);
+
+      if (isBase) {
+        const token: Token = {
+          name,
+          value,
+          description,
+        };
+
+        baseTokensDocumentation.push(token);
+      } else {
         const components = [
-          ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])),
+          ...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[0])),
         ];
         components.sort((a, b) => a.localeCompare(b));
 
         designTokensDocumentation.push({
-          name: `--${prefix}-${token}`,
+          name,
           type: types[token],
           rawValue: rawValues[token],
-          computedValue: values[token],
-          description: descriptions[token],
+          computedValue: value,
+          description: description,
           components,
         });
       }
     }
 
-    const baseTokensDocumentation: Token[] = [];
-
-    const processGroup = (group: string, data: any) => {
-      for (const key in data) {
-        if (data[key].value) {
-          const token: Token = {
-            name: `--${group}-${key}`,
-            value: data[key].value,
-          };
-
-          if (data[key].description?.trim()) {
-            token.description = data[key].description;
-          }
-
-          baseTokensDocumentation.push(token);
-        } else {
-          processGroup(`${group}-${key}`, data[key]);
-        }
-      }
-    };
-
-    for (const group in base) {
-      processGroup(group, base[group]);
-    }
-
     await writeIfChanged(
-      resolvePath(dirname, '../../../../website/docs/style/design-tokens/design-tokens.json'),
+      resolvePath(packageDirname, '../../website/docs/style/design-tokens/design-tokens.json'),
       JSON.stringify(designTokensDocumentation, null, 2) + '\n',
     );
     await writeIfChanged(
-      resolvePath(dirname, '../../../../website/docs/style/design-tokens/base-tokens.json'),
+      resolvePath(packageDirname, '../../website/docs/style/design-tokens/base-tokens.json'),
       JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
     );
   }
@@ -298,10 +303,10 @@ for (const theme in autoTheme) {
   autoThemeLines.push(tokensToCss(autoTheme[theme], selector));
 }
 
-await writeIfChanged('./semcore/core/src/theme/themes/auto.css', autoThemeLines.join('\n'));
+await writeIfChanged('lib/auto.css', autoThemeLines.join('\n'));
 
 execSync('pnpm lint:css --fix', {
   encoding: 'utf-8',
-  cwd: resolvePath(dirname, '../../../../'),
+  cwd: resolvePath(packageDirname, '../../'),
   stdio: ['inherit', 'inherit', 'inherit'],
 });

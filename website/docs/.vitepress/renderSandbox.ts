@@ -190,8 +190,8 @@ export const renderSandbox = (
         tokens[idx + 1].executableCode = executableCode;
       }
 
-      const encodedHtmlCode = btoa(htmlCode);
-      const encodedRawCode = btoa(displayedCode);
+      const encodedHtmlCode = Buffer.from(htmlCode).toString('base64');
+      const encodedRawCode = Buffer.from(displayedCode).toString('base64');
 
       const sandboxArgs: Record<string, string | boolean> = {
         playgroundId: playgroundId,
@@ -201,7 +201,7 @@ export const renderSandbox = (
       };
 
       if (mockData) {
-        sandboxArgs.mockData = btoa(mockData);
+        sandboxArgs.mockData = Buffer.from(mockData).toString('base64');
       }
 
       const args = Object.entries(sandboxArgs).reduce((acc, [key, value]) => {

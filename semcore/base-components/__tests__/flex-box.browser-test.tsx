@@ -209,4 +209,33 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/base-components/flex-box/docs/examples/flex.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify Flex hover cursor', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page, browserName }) => {
+    /*
+     Firefox doesn't retain the :hover pseudo-state when getComputedStyle
+     is evaluated via Playwright — by the time the JS executes, the browser
+     has already dropped the synthetic hover, so cursor falls back to 'auto'.
+    */
+    if (browserName === 'firefox') return;
+
+    const hoverCursor = 'zoom-in';
+
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', { hoverCursor });
+
+    const box = page.locator('[data-ui-name="Box"]');
+
+    await box.hover();
+
+    const cursor = await box.evaluate((el) => {
+      const { cursor } = getComputedStyle(el);
+
+      return cursor;
+    });
+
+    expect(cursor).toBe(hoverCursor);
+  });
 });

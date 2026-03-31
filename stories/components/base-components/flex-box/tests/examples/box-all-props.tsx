@@ -75,6 +75,7 @@ const Demo = (props: ExampleProps) => {
         innerOutline={props.innerOutline}
         invertOutline={props.invertOutline}
         inAfterOutline={props.inAfterOutline}
+        hoverCursor={props.hoverCursor}
         style={{ background: '#e0e0ff', border: '1px solid #7b68ee' }}
       >
         Box content
@@ -121,6 +122,7 @@ export const defaultProps: ExampleProps = {
   innerOutline: false,
   invertOutline: false,
   inAfterOutline: false,
+  hoverCursor: undefined,
 };
 
 Demo.defaultProps = defaultProps;

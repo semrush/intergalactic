@@ -247,7 +247,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
 
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-
         await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
         const accordion = page.locator('[role="gridcell"][aria-level="2"]');
 
@@ -257,6 +256,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await checkStyles(cells, {
           'background-color': stylesActiveHovered[1],
+        });
+
+        await checkStyles(accordion, {
+          'background-color': stylesNotActive[2],
         });
 
         await expect(page).toHaveScreenshot();
