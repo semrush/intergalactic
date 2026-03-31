@@ -102,8 +102,14 @@ export const StickyHeaderSorting: StoryObj<typeof StickyHeaderSortingProps> = {
   },
 };
 
-export const FolderTable: Story = {
+export const FolderTable: StoryObj<{ loading: boolean }> = {
   render: FolderTableExample,
+  argTypes: {
+    loading: { control: 'boolean' },
+  },
+  args: {
+    loading: false,
+  },
 };
 
 export const RealTable: Story = {
