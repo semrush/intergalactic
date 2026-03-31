@@ -1,3 +1,48 @@
+## [16.15.0] - 2026-03-31
+
+### @semcore/feedback-form
+
+- **Fixed** `Star` SVG alignment for `FeedbackRating` component.
+
+### @semcore/inline-input
+
+- **Fixed** Some non-working properties marked as deprecated.
+
+### @semcore/bulk-textarea
+
+- **Added** Added `autoFocus` prop for `BulkTextarea.InputField`
+
+### @semcore/icon
+
+- **Changed** `Semrush` icon.
+
+### @semcore/d3-chart
+
+- **Fixed** Bubble chart plot size calculation.
+- **Added** `percentFormatter` for Cigarette.
+- **Added** Added `cursor:pointer` for `Bubble` chart in case bubbles are
+clickable.
+- **Added** `minimalBarWidth` for `Cigarette` chart.
+
+### @semcore/base-components
+
+- **Added** **box**: Add `hoverCursor` to `Box`.
+- **Added** `inset` property for the Box component.
+
+### @semcore/data-table
+
+- **Added** New structure `SelectableRows` to handle selected rows in reactive
+way.
+- **Fixed** Impossible to navigate by keyboard when sorting was clicked by mouse.
+- **Fixed** Impossible to navigate cells near the merger when accordion collapsed.
+- **Fixed** Sorted column remains visually selected after sorting another column
+via mouse when sorted was focused
+
+### @semcore/core
+
+- **Changed** Moved css-variables to separate package - `@semcore/theme`.
+- **Fixed** Prevent `body` pollution in `usePreventScroll`.
+
 ## [16.14.0] - 2026-02-10
 
 ### @semcore/dropdown-menu
