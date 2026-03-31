@@ -8,7 +8,8 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
 const semcorePackages = fs
   .readdirSync(path.resolve(__dirname, '../../'))
-  .filter((pkg) => !['ui', 'table', 'icon', 'illustration', 'stylelint-plugin'].includes(pkg))
+  // todo Brauer Ilia: remove 'table', 'stylelint-plugin' from 17 verison
+  .filter((pkg) => !['ui', 'table', 'icon', 'illustration', 'stylelint-plugin', 'theme'].includes(pkg))
   .map((pkg) => `@semcore/${pkg}`);
 
 const dependencyPackages = Object.keys(packageJson.dependencies || {}).filter((pkg) =>

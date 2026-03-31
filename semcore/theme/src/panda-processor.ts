@@ -123,17 +123,16 @@ export const getPandaConfig = (
 };
 
 export const toPandaPreset = (config: PandaConfig) => {
-  const preset = `
-    import { definePreset } from '@pandacss/dev';
+  const preset = `import { definePreset } from '@pandacss/dev';
 
-    export default definePreset({
-      name: '@semcore/panda-preset',
-      theme: {
-        tokens: ${JSON.stringify(config.tokens, undefined, 4)},
-        semanticTokens: ${JSON.stringify(config.semanticTokens, undefined, 4)}
-      },
-    });
-    `;
+export default definePreset({
+  name: '@semcore/panda-preset',
+  theme: {
+    tokens: ${JSON.stringify(config.tokens, undefined, 4)},
+    semanticTokens: ${JSON.stringify(config.semanticTokens, undefined, 4)}
+  },
+});
+`;
 
   return preset;
 };

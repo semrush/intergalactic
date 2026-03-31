@@ -4,6 +4,11 @@ fileSource: utils
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Changelog('design-tokens-changelog')
 ---
 
+::: warning
+Use tokens from the **@semcore/theme** package instead of **@semcore/core**,
+as they will be removed from the core package starting from **version 17**.
+:::
+
 ## Description
 
 Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). The most important thing is that tokens ensure the same style names and values are used in design files and code.
@@ -16,7 +21,7 @@ Intergalactic Design System has:
 These sets form the default theme of the design system.
 
 ::: tip
-For the complete token set, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/core/src/theme/themes/default.ts).
+For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/theme/src/light.json).
 :::
 
 ## Stylelint plugin

@@ -51,9 +51,9 @@ Theme for React components subtree may also be applied via `<ThemeProvider />`.
 
 :::
 
-## Custom components
+## Components with custom styles
 
-Design tokens are recommended when creating a custom component to ensure a consistent look and reducing the time and effort spent on manual updates.
+Design tokens are recommended when creating custom styles for a component to ensure a consistent look and reduce the time and effort spent on manual updates.
 
 ::: sandbox
 
