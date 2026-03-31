@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.5.0] - 2026-03-31
+
+### Added
+
+- **box**: Add `hoverCursor` to `Box`.
+- `inset` property for the Box component.
+
 ## [16.4.2] - 2025-12-01
 
 ### Fixed
