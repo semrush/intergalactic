@@ -43,6 +43,7 @@ const headerToolCellProps = {
 const headerProps = { sticky: true, h: 41, withScrollBar: true } as const;
 
 const emptyLoadingRow: RowData = {
+  id: '',
   isLoading: true,
   isLastAdded: false,
   domain: '',
