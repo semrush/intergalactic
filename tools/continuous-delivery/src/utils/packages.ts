@@ -56,7 +56,8 @@ export class Package {
 
         if (
           !(await fs.pathExists(packageFilePath)) ||
-          packagePath.endsWith('semcore/table')
+          packagePath.endsWith('semcore/table') ||
+          packagePath.endsWith('semcore/theme')
         )
           return null;
 
