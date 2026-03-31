@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/ui/data-table';
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj, ArgTypes } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
 import type { AccordionWithCheckboxProps } from './examples/accordion_with_checkbox';
@@ -9,6 +9,8 @@ import AccordionWithPaginationExample, { tableInTableDefaultProps } from './exam
 import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
+import CheckboxInBigTableExample, { defaultProps as checkboxInBigTableDefaultProps } from './examples/checkbox_in_big_table';
+import CheckboxInBigTableReactiveExample, { defaultProps as checkboxInBigReactiveTableDefaultProps } from './examples/checkbox_in_big_table_reactive';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWidthWithShadowsExample from './examples/fixed_columns_width_with_shadows';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
@@ -27,6 +29,20 @@ import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Advanced',
   component: DataTable,
+};
+
+const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigTableDefaultProps>> = {
+  loading: { control: 'boolean' },
+  sideIndents: {
+    control: 'select',
+    options: [undefined, 'wide'],
+    defaultValue: undefined,
+  },
+  compact: {
+    control: 'radio',
+    options: [undefined, true, false],
+    defaultValue: undefined,
+  },
 };
 
 export default meta;
@@ -87,6 +103,18 @@ export const AccordionWithStickyRows: StoryObj<typeof accordionStickyProps> = {
 
 export const BigTableWithStickyHeader: Story = {
   render: BigTableWithStickyHeaderExample,
+};
+
+export const CheckboxInBigTable: StoryObj<typeof checkboxInBigTableDefaultProps> = {
+  render: CheckboxInBigTableExample,
+  argTypes: checkboxArgTypes,
+  args: checkboxInBigTableDefaultProps,
+};
+
+export const CheckboxInBigTableReactive: StoryObj<typeof checkboxInBigReactiveTableDefaultProps> = {
+  render: CheckboxInBigTableReactiveExample,
+  argTypes: checkboxArgTypes,
+  args: checkboxInBigReactiveTableDefaultProps,
 };
 
 export const FixedColumnsWithDiffWidths: Story = {

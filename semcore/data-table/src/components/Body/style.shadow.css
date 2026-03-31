@@ -103,9 +103,9 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
 @media (hover: hover) {
-  SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
-  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
-  SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
+  :not(SRowGroup:has([data-row-selector="true"] input:checked)) > SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not(:has([data-row-selector="true"] input:checked)):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
   }
 
@@ -121,9 +121,13 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
   /* INFO THEME */
   SRow:hover:not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell[theme='info']:not([aria-hidden]),
+  SRow:hover:has([data-row-selector="true"] input:checked):not([isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([aria-hidden]),
   SRow[theme='info']:hover:not([expanded][isNonInteractive]):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[theme='info']:not([aria-hidden]),
+  SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover):has([data-row-selector="true"] input:checked) SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
+  SRowGroup:has(SCell:hover):has([data-row-selector="true"] input:checked) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([aria-hidden]),
+  SRowGroup:has([data-row-selector="true"] input:checked) > SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
     background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
@@ -177,7 +181,7 @@ SRow[theme='muted'][active] > SCellWrapper > SCell:not([theme]) {
 
 /* INFO THEME */
 
-SRow[theme='info'] SCell:not([theme]) {
+SRow[theme='info'] SCell:not([theme]), SRow:has([data-row-selector="true"] input:checked) SCell:not([theme]) {
   &:not([expanded][withAccordion]) {
     background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
   }
@@ -233,6 +237,11 @@ SRow[theme='danger'] SCell:not([theme]) {
 
 SRow[theme='danger'][active] > SCellWrapper > SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-critical-active, #ffd7df);
+}
+
+SRowGroup:has([data-row-selector="true"] input:checked) > SRow > SCellWrapper > SCell,
+SRow:has([data-row-selector="true"] input:checked) > SCellWrapper > SCell {
+  background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
 }
 
 SCell {

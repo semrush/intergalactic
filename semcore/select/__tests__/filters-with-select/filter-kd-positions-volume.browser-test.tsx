@@ -130,7 +130,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.popper(page).waitFor({ state: 'hidden' });
 
       await expect(locators.trigger(page)).toBeFocused();
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001-10,000/);
+      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001–10,000/);
     });
 
     await test.step('Verify hint on close button and trigger keyboard navigation', async () => {
@@ -180,7 +180,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1-5+/);
+      await expect(locators.trigger(page)).toHaveText('Volume: 1-5');
     });
   });
 
@@ -203,7 +203,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.popper(page).waitFor({ state: 'hidden' });
 
       await expect(locators.popper(page)).toBeHidden();
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001-10,000/);
+      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001–10,000/);
       await expect(locators.filterTriggerClear(page)).toHaveCount(1);
     });
 
@@ -234,7 +234,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.textboxes(page).nth(1).fill('5');
       await locators.apply(page).click();
       await locators.popper(page).waitFor({ state: 'hidden' });
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1-5/);
+      await expect(locators.trigger(page)).toHaveText('Volume: 1-5');
     });
   });
 });
