@@ -1552,7 +1552,7 @@ class DataTableRoot<
 
     const currentScrollLeft = body?.scrollLeft ?? 0;
 
-    if (to instanceof HTMLElement && toParent instanceof HTMLElement && header && body) {
+    if (to instanceof HTMLElement && toParent instanceof HTMLElement && body) {
       const toParentStyles = getComputedStyle(toParent);
 
       if (toParentStyles.position === 'sticky') {
@@ -1593,7 +1593,9 @@ class DataTableRoot<
 
         const newLeft = currentScrollLeft + distanceLeft * ease * (currentScrollLeft < toLeft ? 1 : -1);
 
-        header.scrollLeft = newLeft;
+        if (header) {
+          header.scrollLeft = newLeft;
+        }
         body.scrollLeft = newLeft;
 
         if (timeElapsed < duration) {
