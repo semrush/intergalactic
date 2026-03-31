@@ -9,7 +9,7 @@ Design tokens are available for use from **intergalactic@13.5.0** version.
 :::
 
 ::: warning
-You should use tokens from the **@semcore/theme** package instead of **@semcore/core**, 
+You should use tokens from the **@semcore/theme** package instead of **@semcore/core**,
 as they will be removed from the core package starting from **version 17**.
 :::
 
