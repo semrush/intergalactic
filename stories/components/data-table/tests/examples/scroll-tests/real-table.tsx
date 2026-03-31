@@ -16,8 +16,8 @@ const Demo = () => {
     () =>
       [...data].sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
-        const a = aRow[prop as SortableColumn];
-        const b = bRow[prop as SortableColumn];
+        const a = aRow[prop as SortableColumn] ?? 0;
+        const b = bRow[prop as SortableColumn] ?? 0;
         if (a === b) return 0;
         if (sortDirection === 'asc') return a > b ? 1 : -1;
         return a > b ? -1 : 1;
