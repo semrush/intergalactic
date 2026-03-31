@@ -1,6 +1,7 @@
 import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import FolderTableExample from './examples/scroll-tests/folder-table';
 import MultiLevelScrollInTableExample, { multiLevelScrollIntableProps } from './examples/scroll-tests/multi-level-scroll-in-table';
 import type { MultiLevelScrollIntableProps } from './examples/scroll-tests/multi-level-scroll-in-table';
 import MultiLevelWithFixedColumnExample, { fixedColumnMultiLevelScrollExampleProps } from './examples/scroll-tests/multi-level-with-fixed-column';
@@ -99,6 +100,10 @@ export const StickyHeaderSorting: StoryObj<typeof StickyHeaderSortingProps> = {
   args: {
     ...StickyHeaderSortingProps,
   },
+};
+
+export const FolderTable: Story = {
+  render: FolderTableExample,
 };
 
 export const RealTable: Story = {
