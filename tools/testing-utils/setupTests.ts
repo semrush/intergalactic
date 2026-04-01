@@ -32,9 +32,10 @@ Object.defineProperty(window.SVGElement.prototype, 'getBBox', {
   addListener: (e: any) => e('mediaQueryListEvent'),
   removeListener: vi.fn(),
 }));
-class ResizeObserverMock {
+class ObserverMock {
   observe() {}
   unobserve() {}
   disconnect() {}
 }
-(window as any).ResizeObserver = ResizeObserverMock;
+(window as any).ResizeObserver = ObserverMock;
+(window as any).IntersectionObserver = ObserverMock;
