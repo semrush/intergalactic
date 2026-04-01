@@ -130,14 +130,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@data-table'],
   }, async ({ page, browserName }) => {
-    if (browserName === 'webkit') {
-      test.setTimeout(60000);
-    }
     await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
 
     await page.keyboard.press('Tab');
     for (let i = 0; i < 100; i++) {
       await page.keyboard.press('ArrowDown');
+      if (browserName === 'webkit') {
+        await new Promise((resolve) => setTimeout(resolve, 20));
+      }
     }
     await page.waitForTimeout(500);
     await expect(locators.getCell(page, 101, 1)).toBeVisible();
