@@ -37,7 +37,7 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
       loading={props.loading}
       data={data}
       aria-label='Accordion with fixed column'
-      headerProps={{ sticky: props.sticky, withScrollBar: props.withScrollBar, top: props.top }}
+      headerProps={{ sticky: props.sticky, withScrollBar: props.withScrollBar, top: props.top, ref: headerRef }}
       hMax={500}
       wMax={400}
       columns={[

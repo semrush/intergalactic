@@ -1557,9 +1557,10 @@ class DataTableRoot<
 
     if (to instanceof HTMLElement && toParent instanceof HTMLElement && body) {
       const toParentStyles = getComputedStyle(toParent);
+      let offsetLeft = to.offsetLeft;
 
       if (toParentStyles.position === 'sticky') {
-        return;
+        offsetLeft = toParent.offsetLeft;
       }
 
       const duration = 300;
@@ -1568,7 +1569,7 @@ class DataTableRoot<
       const bodyScrollPaddingRight = cssToIntDefault(bodyStyles.scrollPaddingRight, 0);
       const bodyClientWidth = body.clientWidth - bodyScrollPaddingLeft - bodyScrollPaddingRight;
 
-      const toLeft = to.offsetLeft - bodyScrollPaddingLeft;
+      const toLeft = offsetLeft - bodyScrollPaddingLeft;
 
       const horizontalCenter = (bodyClientWidth > to.clientWidth ? (bodyClientWidth - to.clientWidth) / 2 : 0);
 
