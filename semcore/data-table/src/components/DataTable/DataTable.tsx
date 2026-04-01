@@ -100,6 +100,8 @@ class DataTableRoot<
   private hasGroups = false;
   private hasFixedColumn = false;
 
+  private verticalIntersectionObserver = new IntersectionObserver(this.handleIntersectionObserver);
+
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   private scrollAreaRef = React.createRef<HTMLDivElement>();
@@ -583,11 +585,10 @@ class DataTableRoot<
         cell.setAttribute('aria-describedby', describedBy);
       }
 
-      // cell?.focus({ focusVisible: true, preventScroll: true });
+      cell?.focus({ focusVisible: true, preventScroll: true });
       if (rowIndex !== 0 && row) {
         this.verticalScrollToCell(cell);
-      }
-      if (colIndex !== 0 && cell) {
+      } else if (colIndex !== 0 && cell) {
         this.horizontalScrollToCell(cell);
       }
 
@@ -815,9 +816,8 @@ class DataTableRoot<
         if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus({ focusVisible: true });
         } else {
-          // cell.focus({ focusVisible: true, preventScroll: true });
+          cell.focus({ focusVisible: true, preventScroll: true });
           this.verticalScrollToCell(cell);
-          this.horizontalScrollToCell(cell);
         }
       }
 
@@ -1539,7 +1539,7 @@ class DataTableRoot<
 
   private verticalScrollToCell(to: Element) {
     if (to instanceof HTMLElement) {
-      to.focus({ focusVisible: true });
+      this.verticalIntersectionObserver.observe(to);
       to.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
@@ -1556,8 +1556,6 @@ class DataTableRoot<
     const currentScrollLeft = body?.scrollLeft ?? 0;
 
     if (to instanceof HTMLElement && toParent instanceof HTMLElement && body) {
-      to.focus({ focusVisible: true, preventScroll: true });
-
       const toParentStyles = getComputedStyle(toParent);
 
       if (toParentStyles.position === 'sticky') {
@@ -1609,6 +1607,16 @@ class DataTableRoot<
       };
 
       requestAnimationFrame(animation);
+    }
+  }
+
+  private handleIntersectionObserver(entries: IntersectionObserverEntry[]) {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        this.verticalIntersectionObserver.unobserve(entry.target);
+
+        this.horizontalScrollToCell(entry.target);
+      }
     }
   }
 }
