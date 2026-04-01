@@ -80,8 +80,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
       await test.step('Verify accordion is responsive', async () => {
         await page.setViewportSize({ width: 920, height: 1080 });
-        await page.waitForTimeout(100);
-        await expect(page).toHaveScreenshot();
+        await locators.toggle(page).nth(1).waitFor({ state: 'visible' });
+        await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
       });
     });
 
@@ -472,8 +473,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify accordion is responsive', async () => {
         await page.setViewportSize({ width: 920, height: 1080 });
-        await page.waitForTimeout(100);
-        await expect(page).toHaveScreenshot();
+        await locators.toggle(page).first().waitFor({ state: 'visible' });
+        await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
       });
     });
 

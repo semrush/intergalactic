@@ -30,6 +30,7 @@ const Row = React.memo(({ index, data, row }: RenderRowProps<string, { selected:
       selected={data.selected === projectName}
       disabled={data.disabledAll || (index === 0 && data.disabledFirstItem)}
       index={index}
+      data-test-id={`item-${projectName}`}
     >
       <DropdownMenu inlineActions placement='right'>
         <Flex justifyContent='space-between'>
