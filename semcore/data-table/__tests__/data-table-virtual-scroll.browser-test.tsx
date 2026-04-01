@@ -59,6 +59,86 @@ test.describe(`${TAG.VISUAL}`, () => {
   We verify states, visibility, and attributes.
   ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
+  const STORY = 'stories/components/data-table/tests/examples/virtualization/virtual-scroll-controls.tsx';
+
+  const scrollTo = (scrollContainer: ReturnType<typeof locators.dataTable>, amount: number) =>
+    scrollContainer.evaluate((el: HTMLElement, px) => {
+      el.scrollTop = px;
+      el.dispatchEvent(new Event('scroll', { bubbles: true }));
+    }, amount);
+
+  const firstRenderedRowIndex = (page: Parameters<typeof locators.dataTable>[0]) =>
+    page
+      .locator('[data-ui-name="Body.Row"]')
+      .first()
+      .evaluate((el) => parseInt(el.getAttribute('aria-rowindex') ?? '0', 10));
+
+  test('Verify virtual scroll renders fewer DOM rows than total', {
+    tag: [TAG.PRIORITY_HIGH, '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, STORY, 'en', { mode: 'boolean' });
+
+    const grid = locators.dataTable(page);
+    await expect(grid).toHaveAttribute('aria-rowcount', '500');
+    const count = await page.locator('[data-ui-name="Body.Row"]').count();
+    expect(count).toBeLessThan(500);
+  });
+
+  test('Verify rowHeight mode sets valid grid-template-rows (CSS bracket fix)', {
+    tag: [TAG.PRIORITY_HIGH, '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, STORY, 'en', { mode: 'rowHeight', rowHeight: 50 });
+
+    const gridTemplateRows = await locators.dataTable(page).evaluate(
+      (el) => getComputedStyle(el).gridTemplateRows,
+    );
+    // If bracket was missing in repeat(), browser ignores the rule and returns 'none'
+    expect(gridTemplateRows).not.toBe('none');
+    expect(gridTemplateRows).toMatch(/\d+px/);
+  });
+
+  test('Verify rowHeight mode scrolls to correct row by fixed offset', {
+    tag: [TAG.PRIORITY_HIGH, '@data-table'],
+  }, async ({ page }) => {
+    const rowHeight = 40;
+    await loadPage(page, STORY, 'en', { mode: 'rowHeight', rowHeight });
+
+    const sc = page.locator('[data-ui-name="ScrollArea.Container"]');
+    await scrollTo(sc, rowHeight * 20);
+    await page.locator('[role="row"][aria-rowindex="21"]').waitFor({ state: 'attached' });
+
+    await expect(page.locator('[role="row"][aria-rowindex="2"]')).toHaveCount(0);
+    await expect(page.locator('[role="row"][aria-rowindex="21"]')).toHaveCount(1);
+  });
+
+  test('Verify rowsBufferOnly routes to auto-height branch, not rowHeight (routing fix)', {
+    tag: [TAG.PRIORITY_HIGH, '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, STORY, 'en', { mode: 'rowsBufferOnly', rowsBuffer: 5 });
+
+    const grid = locators.dataTable(page);
+    const gridTemplateRows = await grid.evaluate((el: HTMLElement) => el.style.gridTemplateRows);
+    expect(gridTemplateRows).toBe('');
+
+    await expect(grid).toHaveAttribute('aria-rowcount', '500');
+    const count = await page.locator('[data-ui-name="Body.Row"]').count();
+    expect(count).toBeLessThan(500);
+  });
+
+  test('Verify scroll down then up restores row #1 position', {
+    tag: [TAG.PRIORITY_HIGH, '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, STORY, 'en', { mode: 'aproxRowsOnPage', rowsBuffer: 10, aproxRowsOnPage: 10 });
+
+    const sc = page.locator('[data-ui-name="ScrollArea.Container"]');
+    await scrollTo(sc, 1000);
+    await scrollTo(sc, 0);
+
+    const firstRow = page.locator('[role="row"][aria-rowindex="2"]');
+    await expect(firstRow).toBeVisible();
+    await expect(firstRow.locator('[data-ui-name="Row.Cell"]').first()).toContainText('#1');
+  });
+
   test('Verify keyboard interactions with accordion and chart inside', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
