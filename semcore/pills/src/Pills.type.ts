@@ -50,7 +50,7 @@ export type PillsContext = {
 };
 
 export type PillsHandlers = {
-  value: PillsValue;
+  value: (value: PillProps['value'], event: React.SyntheticEvent) => PillProps['value'];
 };
 
 export type IntergalacticPillsComponent<PropsExtending = {}> = (<
