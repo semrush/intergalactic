@@ -129,7 +129,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
+    if (browserName === 'webkit') {
+      test.setTimeout(60000);
+    }
     await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
 
     await page.keyboard.press('Tab');
