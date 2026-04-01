@@ -3,8 +3,14 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
-import CheckBoxExample from './examples/cells-tests/checkbox';
-import CheckboxInTableWithNoDataExample from './examples/cells-tests/checkbox-in-table-with-no-data';
+import CheckBoxExample, { defaultProps as checkboxProps } from './examples/cells-tests/checkbox';
+import type { DemoProps as CheckboxProps } from './examples/cells-tests/checkbox';
+import CheckboxInTableWithNoDataExample, { defaultProps as checkboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
+import type { DemoProps as CheckboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
+import CheckboxReactiveExample, { defaultProps as checkboxReactiveProps } from './examples/cells-tests/checkbox-reactive';
+import type { DemoProps as CheckboxReactiveProps } from './examples/cells-tests/checkbox-reactive';
+import CheckboxReactiveWithPaginationExample, { defaultProps as checkboxReactivePaginationProps } from './examples/cells-tests/checkbox-reactive-with-pagination';
+import type { DemoProps as CheckboxReactivePaginationProps } from './examples/cells-tests/checkbox-reactive-with-pagination';
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
@@ -50,12 +56,52 @@ export const CardFlagInCell: Story = {
   render: CardFlagInCellExample,
 };
 
-export const CheckBox: Story = {
-  render: CheckBoxExample,
+export const CheckBox: StoryObj<CheckboxProps> = {
+  render: CheckBoxExample as any,
+  argTypes: {
+    fixedColumns: {
+      control: 'boolean',
+      description: 'Enable fixed left/right columns with horizontal scroll',
+    },
+  },
+  args: checkboxProps,
 };
 
-export const CheckboxInTableWithNoData: Story = {
+export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
   render: CheckboxInTableWithNoDataExample,
+  argTypes: {
+    reactive: {
+      control: 'boolean',
+      description: 'Use SelectableRows (reactive) instead of array',
+    },
+  },
+  args: checkboxNoDataProps,
+};
+
+export const CheckboxReactive: StoryObj<CheckboxReactiveProps> = {
+  render: CheckboxReactiveExample as any,
+  argTypes: {
+    fixedColumns: {
+      control: 'boolean',
+      description: 'Enable fixed left/right columns with horizontal scroll',
+    },
+  },
+  args: checkboxReactiveProps,
+};
+
+export const CheckboxReactiveWithPagination: StoryObj<CheckboxReactivePaginationProps> = {
+  render: CheckboxReactiveWithPaginationExample,
+  argTypes: {
+    mergedRows: {
+      control: 'boolean',
+      description: 'Use merged rows (ROW_GROUP) data',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Show loading state',
+    },
+  },
+  args: checkboxReactivePaginationProps,
 };
 
 export const MergedRowForMultiLevelHeader: StoryObj<MergedRowForMultiLevelHeaderProps> = {

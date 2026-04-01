@@ -86,7 +86,7 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
 
 const setTriggerText = ({ from, to }: { from: string; to: string }): string | null => {
   if (from !== '' && to !== '') {
-    return from === to ? `${from}` : `${from}-${to}`;
+    return from === to ? `${from}` : `${from}–${to}`;
   }
   return null;
 };

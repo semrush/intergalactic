@@ -3,6 +3,7 @@ import type * as React from 'react';
 
 import type { DataTableCellProps, Theme } from './Cell.types';
 import type { DTRow, RowPropsInner } from './Row.types';
+import type { ISelectedRows } from '../../store/SelectableRows';
 import type { ACCORDION } from '../DataTable/DataTable';
 import type { DataRowItem, DTUse, VirtualScroll, DataTableProps, DataTableData } from '../DataTable/DataTable.types';
 import type { DTColumn } from '../Head/Column.types';
@@ -74,7 +75,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   renderCell?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
   onBackFromAccordion: (colName: string) => void;
   stickyHeader?: boolean;
-  selectedRows?: UniqKeyType[];
+  selectedRows?: UniqKeyType[] | ISelectedRows<UniqKeyType>;
   onSelectRow?: (
     isSelect: boolean,
     selectedRowIndex: number,
