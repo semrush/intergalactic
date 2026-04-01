@@ -89,7 +89,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   };
 
   handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
-    if (!this.rowsHeightMap.has(index) && node) {
+    if (node) {
       this.rowsHeightMap.set(index, [0, 0, node]);
       this.setRowHeight(index, row);
     }
@@ -249,7 +249,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 4;
       const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
 
-      if (typeof virtualScroll === 'boolean' || 'aproxRowsOnPage' in virtualScroll) {
+      if (typeof virtualScroll === 'boolean' || !('rowHeight' in virtualScroll)) {
         const aproxRowsOnPage =
           typeof virtualScroll !== 'boolean'
             ? virtualScroll.aproxRowsOnPage ?? APROX_ROWS_ON_PAGE
@@ -331,6 +331,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     this.startIndex = startIndex === -1 ? 0 : startIndex;
     const rowMarginTop = this.rowsHeightMap.get(this.startIndex - 1)?.[1];
+    const needMarginTop = typeof virtualScroll === 'boolean' || (virtualScroll && !('rowHeight' in virtualScroll));
 
     let emptyRow: DTRow<string> | null = null;
 
@@ -354,7 +355,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
         {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
-        {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
+        {needMarginTop && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
             const groupUniqKey = row[0][UNIQ_ROW_KEY];

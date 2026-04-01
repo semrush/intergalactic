@@ -177,7 +177,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
-      await expect(locators.trigger(page)).toHaveText('Volume: 1-5');
+      await expect(locators.trigger(page)).toHaveText('Volume: 1–5');
     });
   });
 
@@ -231,7 +231,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.textboxes(page).nth(1).fill('5');
       await locators.apply(page).click();
       await locators.popper(page).waitFor({ state: 'hidden' });
-      await expect(locators.trigger(page)).toHaveText('Volume: 1-5');
+      await expect(locators.trigger(page)).toHaveText('Volume: 1–5');
     });
   });
 });
