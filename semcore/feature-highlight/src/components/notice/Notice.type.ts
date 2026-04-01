@@ -1,6 +1,6 @@
+import type { Intergalactic } from '@semcore/core';
 import type { NoticeSmart } from '@semcore/notice';
 import type Notice from '@semcore/notice';
-import type { Intergalactic } from '@semcore/ui/core/lib/index';
 
 export type HighlightedNoticeComponent = Intergalactic.Component<typeof Notice & typeof NoticeSmart, { children: React.ReactNode }> & {
   Label: typeof Notice['Label'];
