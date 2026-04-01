@@ -67,7 +67,12 @@ declare const Notice: Intergalactic.Component<'div', NoticeProps, NoticeContext>
   Close: typeof Button;
 };
 
-declare const NoticeSmart: Intergalactic.Component<'div', NoticeSmartProps>;
+declare const NoticeSmart: <Tag extends Intergalactic.Tag = 'div'> (
+  props: Intergalactic.InternalTypings.EfficientOmit<
+    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', NoticeSmartProps>,
+    'children'
+  >
+) => Intergalactic.InternalTypings.ComponentRenderingResults & Intergalactic.InternalTypings.ComponentAdditive<Tag, 'div', NoticeSmartProps>;
 
 export { NoticeSmart };
 export default Notice;
