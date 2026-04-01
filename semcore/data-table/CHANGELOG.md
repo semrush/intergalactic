@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.6.0] - 2026-04-01
+
+### Fixed
+
+- Scroll issue in virtualized tables in Firefox.
+- Impossible to navigate by keyboard when sorting was clicked by mouse.
+- Impossible to navigate cells near the merger when accordion collapsed.
+- Sorted column remains visually selected after sorting another column
+via mouse when sorted was focused
+
+### Added
+
+- New structure `SelectableRows` to handle selected rows in reactive
+way.
+
 ## [16.5.3] - 2026-02-10
 
 ### Fixed

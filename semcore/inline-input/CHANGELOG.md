@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.2.3] - 2026-04-01
+
+### Fixed
+
+- Some non-working properties marked as deprecated.
+
 ## [16.2.2] - 2025-11-17
 
 ### Changed
