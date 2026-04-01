@@ -90,9 +90,9 @@ const setTriggerText = ({ from, to }: ValueState): string | undefined => {
   if (from !== '') {
     if (to === '') return `${numberFormat.format(Number(from))}+`;
     if (from === to) return numberFormat.format(Number(from));
-    return `${numberFormat.format(Number(from))}-${numberFormat.format(Number(to))}`;
+    return `${numberFormat.format(Number(from))}–${numberFormat.format(Number(to))}`;
   } else if (to !== '') {
-    return `${numberFormat.format(minRange)}-${numberFormat.format(Number(to))}`;
+    return `${numberFormat.format(minRange)}–${numberFormat.format(Number(to))}`;
   }
   return undefined;
 };
