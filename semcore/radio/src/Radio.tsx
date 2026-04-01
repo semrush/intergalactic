@@ -1,6 +1,7 @@
 import { Flex, Box, InvalidStateBox } from '@semcore/base-components';
-import { createComponent, Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
-import assignProps, { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
@@ -8,9 +9,29 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
+import type {
+  IntergalacticRadioGroupComponent,
+  RadioProps,
+  RadioComponent,
+  RadioGroupProps,
+  RadioValueComponent,
+  RadioTextComponent,
+  RadioValueRadioMarkComponent,
+  RadioRootComponent,
+  RadioValueControlComponent,
+} from './Radio.type';
 import style from './style/radio.shadow.css';
 
-class RadioGroupRoot extends Component {
+const RadioContext = React.createContext<{
+  onChange?: RadioGroupProps['onChange'];
+  value?: RadioGroupProps['value'];
+  theme?: RadioGroupProps['theme'];
+  size?: RadioGroupProps['size'];
+  name?: RadioGroupProps['name'];
+  disabled?: RadioGroupProps['disabled'];
+}>({});
+
+class RadioGroupRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<IntergalacticRadioGroupComponent>, [], { value: null }> {
   static displayName = 'RadioGroup';
 
   static defaultProps = {
@@ -47,18 +68,22 @@ class RadioGroupRoot extends Component {
   }
 }
 
-const RadioGroup = createComponent(RadioGroupRoot);
+const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as IntergalacticRadioGroupComponent;
 
-class RadioRoot extends Component {
+class RadioRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<RadioRootComponent>
+> {
   static displayName = 'Radio';
   static style = style;
-  static contextType = RadioGroup[CONTEXT_COMPONENT];
+  static contextType = RadioContext;
+
+  context: React.ContextType<typeof RadioContext> = {};
 
   state = {
     hoistedDisabled: undefined,
   };
 
-  hoistDisabled = (disabled) => {
+  hoistDisabled = (disabled: RadioProps['disabled']) => {
     logger.warn(
       true,
       `Don't set disabled on Radio.Value or Radio.Text, set it on Radio or on RadioGroup (for all items) instead. Otherwise it will produce wrong SSR output.`,
@@ -68,12 +93,15 @@ class RadioRoot extends Component {
   };
 
   getTextProps() {
-    // The default values are here, since you cannot rewrite out of context
-    const { size = 'm', disabled, label } = assignProps(this.asProps, this.context);
+    const { label } = this.asProps;
+    const {
+      size = this.asProps.size ?? 'm',
+      disabled = this.asProps.disabled,
+    } = this.context;
     const { hoistedDisabled } = this.state;
 
     const textProps = {
-      size,
+      size: size === 'm' ? 200 : 300,
       children: label,
       disabled: disabled ?? hoistedDisabled,
       hoistDisabled: this.hoistDisabled,
@@ -84,14 +112,15 @@ class RadioRoot extends Component {
   }
 
   getValueProps() {
-    // The default values are here, since you cannot rewrite out of context
+    const { state = 'normal' } = this.asProps;
+
     const {
-      size = 'm',
-      state = 'normal',
-      theme,
-      disabled,
-      name,
-    } = assignProps(this.asProps, this.context);
+      size = this.asProps.size ?? 'm',
+      theme = this.asProps.theme,
+      disabled = this.asProps.disabled,
+      name = this.asProps.name,
+    } = this.context;
+
     const { value, checked } = this.asProps;
     const { hoistedDisabled } = this.state;
 
@@ -129,54 +158,60 @@ class RadioRoot extends Component {
   }
 }
 
-class ValueRoot extends Component {
+class ValueRoot extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<RadioValueComponent, typeof RadioRoot, 'Value'>,
+  typeof ValueRoot.enhance,
+  { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
+> {
+  context: React.ContextType<typeof RadioContext> = {};
+
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
 
-  static enhance = [resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()] as const;
   static displayName = 'Value';
-  static contextType = RadioGroup[CONTEXT_COMPONENT];
+  static contextType = RadioContext;
   static style = style;
 
-  bindHandlerChange = (value) => (e) => {
-    if (typeof this.context.onChange === 'function') {
+  bindHandlerChange = (value: RadioProps['value']) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof this.context.onChange === 'function' && value !== undefined) {
       this.context.onChange(value, e);
     }
   };
 
   uncontrolledProps() {
     return {
-      checked: (e) => e.target.checked,
+      checked: (e: React.ChangeEvent<HTMLInputElement>) => e.target.checked,
     };
   }
 
   getControlProps() {
-    const currentValue = this.context.value;
+    const { value: currentValue } = this.context;
     const { forwardRef, includeInputProps, state, value } = this.asProps;
+    const { onChange } = this.props;
+
     const [commonControlProps] = getInputProps(this.asProps, includeInputProps);
     const inputValue = value ?? '';
 
-    const controlProps = {
+    return {
       ref: forwardRef,
       state,
       ...commonControlProps,
       value: inputValue,
+      ...(currentValue !== undefined
+        ? {
+            checked: currentValue === inputValue,
+            onChange: callAllEventHandlers(onChange, this.bindHandlerChange(inputValue)),
+          }
+        : {}
+      ),
     };
-
-    if (currentValue !== undefined) {
-      const { onChange } = this.props;
-
-      controlProps.checked = currentValue === inputValue;
-      controlProps.onChange = callAllEventHandlers(onChange, this.bindHandlerChange(inputValue));
-    }
-
-    return controlProps;
   }
 
   getRadioMarkProps() {
-    const currentValue = this.context.value;
+    const { value: currentValue } = this.context;
     const {
       size,
       state,
@@ -187,13 +222,15 @@ class ValueRoot extends Component {
       disabled,
       includeInputProps,
       resolveColor,
+      children,
+      Children,
       ...other
     } = this.asProps;
+    const { onClick } = this.props;
     const [commonControlProps, radioMarkProps] = getInputProps(other, includeInputProps);
-    const { children: _children, Children: _Children, ...propsWithoutChildren } = radioMarkProps;
     const inputValue = value ?? '';
 
-    const markProps = {
+    return {
       theme,
       size,
       state,
@@ -201,18 +238,15 @@ class ValueRoot extends Component {
       disabled,
       resolveColor,
       checked: commonControlProps.checked,
-      ...propsWithoutChildren,
+      ...radioMarkProps,
+      ...(currentValue !== undefined && tag !== 'label'
+        ? {
+            onClick: callAllEventHandlers(onClick, this.bindHandlerChange(inputValue)),
+          }
+        : {}
+
+      ),
     };
-
-    if (currentValue !== undefined) {
-      const { onClick } = this.props;
-
-      if (tag !== 'label') {
-        markProps.onClick = callAllEventHandlers(onClick, this.bindHandlerChange(inputValue));
-      }
-    }
-
-    return markProps;
   }
 
   componentDidUpdate() {
@@ -243,7 +277,7 @@ class ValueRoot extends Component {
   }
 }
 
-function Control(props) {
+function Control(props: Intergalactic.InternalTypings.InferChildComponentProps<RadioValueControlComponent, typeof ValueRoot, 'Control'>) {
   const SControl = Root;
   const { styles, state } = props;
 
@@ -253,7 +287,7 @@ function Control(props) {
 };
 Control.displayName = 'Control';
 
-function RadioMark(props) {
+function RadioMark(props: Intergalactic.InternalTypings.InferChildComponentProps<RadioValueRadioMarkComponent, typeof ValueRoot, 'RadioMark'>) {
   const SValue = Root;
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked } = props;
@@ -266,7 +300,7 @@ function RadioMark(props) {
 }
 RadioMark.displayName = 'RadioMark';
 
-function Text(props) {
+function Text(props: Intergalactic.InternalTypings.InferChildComponentProps<RadioTextComponent, typeof RadioRoot, 'Text'>) {
   const SText = Root;
   const { styles, color } = props;
 
@@ -283,18 +317,23 @@ function Text(props) {
 }
 Text.displayName = 'Text';
 
-export { inputProps, RadioGroup };
-
 const Value = createComponent(ValueRoot, {
   Control,
   RadioMark,
-});
+}) as RadioValueComponent;
 
 const Radio = createComponent(RadioRoot, {
   Text,
   Value,
-});
+}) as RadioComponent;
 
-export const wrapRadioGroup = (wrapper) => wrapper;
+export const wrapRadioGroup = <PropsExtending extends {}>(wrapper: (
+  props: Intergalactic.InternalTypings.UntypeRefAndTag<
+    Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticRadioGroupComponent>
+  > &
+  PropsExtending,
+) => React.ReactNode) => wrapper as IntergalacticRadioGroupComponent<PropsExtending>;
+
+export { inputProps, RadioGroup };
 
 export default Radio;

@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import type { IRootComponentProps, IStyledProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import InfoM from '@semcore/icon/Info/m';
@@ -8,10 +8,19 @@ import { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import type { CardProps, CardComponent, TitleProps } from './Card.type';
+import type {
+  CardComponent,
+  CardRootComponent,
+  CardTitleComponent,
+  CardDescriptionComponent,
+  CardHeaderComponent,
+  CardBodyComponent,
+} from './Card.type';
 import style from './style/card.shadow.css';
 
-class CardRoot extends Component<CardProps> {
+class CardRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<CardRootComponent>
+> {
   static displayName = 'Card';
 
   static style = style;
@@ -38,7 +47,9 @@ class CardRoot extends Component<CardProps> {
   }
 }
 
-function Title(props: IRootComponentProps & TitleProps) {
+function Title(
+  props: Intergalactic.InternalTypings.InferComponentProps<CardTitleComponent>,
+) {
   const { styles, innerHint, innerHintAriaLabel, hintAfterAriaLabel, Children } = props;
   const hintAfter = props.hintAfter;
   const STitle = Root;
@@ -87,19 +98,19 @@ function Title(props: IRootComponentProps & TitleProps) {
   );
 }
 
-function Description(props: IStyledProps) {
+function Description(props: Intergalactic.InternalTypings.InferComponentProps<CardDescriptionComponent>) {
   const { styles } = props;
   const SDescription = Root;
   return sstyled(styles)(<SDescription render={Text} tag='p' />);
 }
 
-function Header(props: IStyledProps) {
+function Header(props: Intergalactic.InternalTypings.InferComponentProps<CardHeaderComponent>) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(<SHeader render={Box} {...props} />);
 }
 
-function Body(props: IStyledProps) {
+function Body(props: Intergalactic.InternalTypings.InferComponentProps<CardBodyComponent>) {
   const { styles } = props;
   const SBody = Root;
   return sstyled(styles)(<SBody render={Box} {...props} />);

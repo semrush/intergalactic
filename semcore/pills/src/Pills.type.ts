@@ -68,9 +68,13 @@ export type IntergalacticPillsComponent<PropsExtending = {}> = (<
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', PillsProps>;
 
+export type PillsItemComponent = Intergalactic.Component<'button', PillProps, [handlers: PillsHandlers]>;
+export type PillsItemTextComponent = typeof Box;
+export type PillsItemAddonComponent = typeof Box;
+
 export type PillsComponent = IntergalacticPillsComponent & {
-  Item: Intergalactic.Component<'button', PillProps, [handlers: PillsHandlers]> & {
-    Text: typeof Box;
-    Addon: typeof Box;
+  Item: PillsItemComponent & {
+    Text: PillsItemTextComponent;
+    Addon: PillsItemAddonComponent;
   };
 };

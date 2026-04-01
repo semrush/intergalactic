@@ -1,5 +1,5 @@
 import { Collapse as CollapseAnimate, Flex } from '@semcore/base-components';
-import type { Intergalactic, IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
@@ -9,19 +9,23 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 import type {
-  AccordionCollapseProps,
   AccordionComponent,
   AccordionHandlers,
+  AccordionItemChevronComponent,
+  AccordionItemCollapseComponent,
   AccordionItemComponent,
   AccordionItemProps,
-  AccordionItemToggleProps,
-  AccordionProps,
-  ChevronItemProps,
+  AccordionItemToggleButtonComponent,
+  AccordionItemToggleComponent,
   IntergalacticAccordionComponent,
 } from './Accordion.type';
 import style from './style/accordion.shadow.css';
 
-class RootAccordion extends Component<AccordionProps, typeof RootAccordion.enhance, AccordionHandlers> {
+class RootAccordion extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<IntergalacticAccordionComponent>,
+  typeof RootAccordion.enhance,
+  AccordionHandlers
+> {
   static displayName = 'Accordion';
   static style = style;
   static defaultProps = {
@@ -78,10 +82,8 @@ class RootAccordion extends Component<AccordionProps, typeof RootAccordion.enhan
   }
 }
 export class RootItem extends Component<
-  AccordionItemProps,
-  typeof RootItem.enhance,
-  {},
-  Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootAccordion, 'Item'>
+  Intergalactic.InternalTypings.InferChildComponentProps<AccordionItemComponent, typeof RootAccordion, 'Item'>,
+  typeof RootItem.enhance
 > {
   static displayName = 'Item';
   static style = style;
@@ -142,10 +144,7 @@ export class RootItem extends Component<
 }
 
 class Toggle extends Component<
-  AccordionItemToggleProps,
-  never,
-  {},
-  Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootItem, 'Toggle'>
+  Intergalactic.InternalTypings.InferChildComponentProps<AccordionItemToggleComponent, typeof RootItem, 'Toggle'>
 > {
   toggleRef = React.createRef();
 
@@ -172,23 +171,40 @@ class Toggle extends Component<
   }
 }
 
-function Chevron(props: ChevronItemProps) {
+function Chevron(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    AccordionItemChevronComponent,
+    typeof RootItem,
+    'Chevron'
+  >,
+) {
   const { styles, size } = props;
 
   const SItemChevron = Root;
   return sstyled(styles)(<SItemChevron render={size === 'l' ? ChevronRightL : ChevronRightM} />);
 }
 
-function ToggleButton(props: IRootComponentProps) {
+function ToggleButton(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    AccordionItemToggleButtonComponent,
+    typeof RootItem,
+    'ToggleButton'
+  >,
+) {
   const { styles } = props;
 
-  const SToggleButton = Root;
   return sstyled(styles)(
-    <SToggleButton alignItems='center' render={Flex} role='button' {...props} />,
+    <Root render={Flex} {...props} alignItems='center' role='button' />,
   );
 }
 
-function Collapse(props: AccordionCollapseProps & Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootItem, 'Collapse'>) {
+function Collapse(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    AccordionItemCollapseComponent,
+    typeof RootItem,
+    'Collapse'
+  >,
+) {
   const { selected } = props;
   const visible = selected;
 
