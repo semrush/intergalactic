@@ -29,12 +29,10 @@ class RootPageError extends Component<
   };
 
   render() {
-    const { Children, getI18nText, onClick, titleTag, ...other } = this.asProps;
-
-    type A = typeof other['ref'];
+    const { Children, getI18nText, onClick, titleTag } = this.asProps;
 
     return (
-      <Root render={Error} {...other}>
+      <Root render={Error} __excludeProps={['Children', 'getI18nText', 'onClick', 'titleTag']}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
         <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />

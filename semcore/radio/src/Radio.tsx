@@ -93,11 +93,12 @@ class RadioRoot extends Component<
   };
 
   getTextProps() {
-    const { label } = this.asProps;
     const {
-      size = this.asProps.size ?? 'm',
-      disabled = this.asProps.disabled,
-    } = this.context;
+      size = this.context.size ?? 'm',
+      disabled = this.context.disabled,
+      label,
+    } = this.asProps;
+
     const { hoistedDisabled } = this.state;
 
     const textProps = {
@@ -112,14 +113,13 @@ class RadioRoot extends Component<
   }
 
   getValueProps() {
-    const { state = 'normal' } = this.asProps;
-
     const {
-      size = this.asProps.size ?? 'm',
-      theme = this.asProps.theme,
-      disabled = this.asProps.disabled,
-      name = this.asProps.name,
-    } = this.context;
+      state = 'normal',
+      size = this.context.size ?? 'm',
+      theme = this.context.theme,
+      disabled = this.context.disabled,
+      name = this.context.name,
+    } = this.asProps;
 
     const { value, checked } = this.asProps;
     const { hoistedDisabled } = this.state;
