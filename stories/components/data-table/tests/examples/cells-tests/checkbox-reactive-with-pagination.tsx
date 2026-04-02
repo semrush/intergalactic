@@ -2,13 +2,14 @@ import {
   Box,
   Flex,
   Collapse,
-  ScreenReaderOnly,
 } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable, ROW_GROUP, SelectableRows } from '@semcore/ui/data-table';
 import Pagination from '@semcore/ui/pagination';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
+
+import { ScreenReaderSelectedAllAnnouncement, useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
 
 export type DemoProps = {
   mergedRows?: boolean;
@@ -25,8 +26,7 @@ const columns: { name: string; children: string }[] = [
 ];
 
 const Demo = ({ mergedRows = false, loading = false }: DemoProps) => {
-  const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
-  const [ariaMessage, setAriaMessage] = React.useState('');
+  const { count } = useSelectedRowsCount(selectedRows);
   const [currentPage, setCurrentPage] = React.useState(0);
   const tableRef = React.useRef<HTMLDivElement>(null);
 
@@ -35,41 +35,16 @@ const Demo = ({ mergedRows = false, loading = false }: DemoProps) => {
     tableRef.current?.focus();
   };
 
-  React.useEffect(() => {
-    const unsubscribeToggle = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, () => {
-      const size = selectedRows.get().length;
-      if (size > 0) setAriaMessage('Action bar appeared before the table');
-      setSelectedRowsDisplay(size);
-    });
-    const unsubscribeSelectAll = selectedRows.subscribe(SelectableRows.SELECT_ALL_EVENT, () => {
-      const size = selectedRows.get().length;
-      if (size > 0) setAriaMessage('Action bar appeared before the table');
-      setSelectedRowsDisplay(size);
-    });
-
-    return () => {
-      unsubscribeToggle();
-      unsubscribeSelectAll();
-    };
-  }, []);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 300);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
-
   const currentData = mergedRows ? mergedData : flatData;
   const limit = 5;
   const tableData = currentData.slice(currentPage * limit, currentPage * limit + limit);
 
   return (
     <>
-      <Box tabIndex={-1} wMax={800} h={250} style={{ overflow: 'auto', scrollPaddingTop: selectedRowsDisplay ? '44px' : undefined }}>
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
+      <Box tabIndex={-1} wMax={800} h={250} style={{ overflow: 'auto', scrollPaddingTop: count ? '44px' : undefined }}>
+        <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} />
         <Collapse
-          visible={selectedRowsDisplay > 0}
+          visible={count > 0}
           duration={0}
           style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
@@ -83,7 +58,7 @@ const Demo = ({ mergedRows = false, loading = false }: DemoProps) => {
             style={{ backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)' }}
           >
             <Text size={200}>
-              Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+              Selected rows: <Text bold>{count}</Text>
             </Text>
             <Button use='tertiary' onClick={handleDeselectAll}>
               Deselect all
@@ -99,7 +74,7 @@ const Demo = ({ mergedRows = false, loading = false }: DemoProps) => {
           loading={loading}
           headerProps={{
             sticky: true,
-            top: selectedRowsDisplay ? 44 : 0,
+            top: count ? 44 : 0,
             animationDuration: 0,
           }}
           columns={columns}

@@ -5,41 +5,30 @@ import {
   ScreenReaderOnly,
 } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { DataTable, ROW_GROUP } from '@semcore/ui/data-table';
+import { DataTable, ROW_GROUP, SelectableRows } from '@semcore/ui/data-table';
 import Pagination from '@semcore/ui/pagination';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
+
+import { ScreenReaderSelectedAllAnnouncement, useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
 
 export type SelectableWithMergedRowsProps = {
   headerLevels?: 1 | 2;
   withBorders?: boolean;
 };
 
+const selectedRows = new SelectableRows<string>();
+
 const Demo = (props: SelectableWithMergedRowsProps) => {
   const { headerLevels = 1, withBorders = false } = props;
-  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
-  const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
-  const [ariaMessage, setAriaMessage] = React.useState('');
+  const { count } = useSelectedRowsCount(selectedRows);
   const [currentPage, setCurrentPage] = React.useState(0);
   const tableRef = React.useRef<HTMLDivElement>(null);
 
-  const handleChangeSelectedRows = (value: string[]) => {
-    console.log(value);
-    setSelectedRows(value);
-    if (!selectedRows.length)
-      setAriaMessage('Action bar appeared before the table');
-    if (value.length) setSelectedRowsDisplay(value.length);
-  };
-
   const handleDeselectAll = () => {
-    setSelectedRows([]);
+    selectedRows.clearAllAvailable();
     tableRef.current?.focus();
   };
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 300);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
 
   const limit = 5;
   const tableData = data.slice(
@@ -80,11 +69,9 @@ const Demo = (props: SelectableWithMergedRowsProps) => {
       <Box
         tabIndex={-1}
       >
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
+        <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} />
         <Collapse
-          visible={!!selectedRows.length}
+          visible={!!count}
           duration={200}
           style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
@@ -101,7 +88,7 @@ const Demo = (props: SelectableWithMergedRowsProps) => {
             }}
           >
             <Text size={200}>
-              Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+              Selected rows: <Text bold>{count}</Text>
             </Text>
             <Button use='tertiary' onClick={handleDeselectAll}>
               Deselect all
@@ -113,11 +100,10 @@ const Demo = (props: SelectableWithMergedRowsProps) => {
           aria-label='Table example with selectable rows'
           defaultGridTemplateColumnWidth='auto'
           selectedRows={selectedRows}
-          onSelectedRowsChange={handleChangeSelectedRows}
           ref={tableRef}
           headerProps={{
             sticky: true,
-            top: selectedRows.length ? 44 : 0,
+            top: count ? 44 : 0,
             animationDuration: 200,
           }}
           columns={columns}

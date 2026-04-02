@@ -1,4 +1,4 @@
-import { DataTable, type DataTableSort } from '@semcore/ui/data-table';
+import { DataTable, type DataTableSort, SelectableRows } from '@semcore/ui/data-table';
 import React from 'react';
 
 export type DemoProps = {
@@ -31,8 +31,9 @@ const fixedColumns = [
   { name: 'vol', children: 'Vol.', sortable: true, fixed: 'right' as const, gtcWidth: '120px' },
 ];
 
+const selectedRows = new SelectableRows<string>();
+
 const Demo = ({ fixedColumns: useFixedColumns = false }: DemoProps) => {
-  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [sort, setSort] = React.useState<DataTableSort<'id' | 'name'>>();
 
   return (
@@ -47,7 +48,6 @@ const Demo = ({ fixedColumns: useFixedColumns = false }: DemoProps) => {
         sort={sort}
         selectedRows={selectedRows}
         onSortChange={setSort}
-        onSelectedRowsChange={setSelectedRows}
       />
     </div>
   );

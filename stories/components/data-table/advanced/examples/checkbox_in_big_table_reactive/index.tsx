@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  ScreenReaderOnly,
 } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { SelectableRows } from '@semcore/ui/data-table';
@@ -9,6 +8,7 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { Table } from './table';
+import { ScreenReaderSelectedAllAnnouncement, useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
 
 type CheckboxExampleProps = {
   loading: boolean;
@@ -19,45 +19,13 @@ type CheckboxExampleProps = {
 const selectedRows = new SelectableRows<string>();
 
 const Demo = (props: CheckboxExampleProps) => {
-  const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
-  const [ariaMessage, setAriaMessage] = React.useState('');
+  const { count: selectedRowsDisplay } = useSelectedRowsCount(selectedRows);
   const tableRef = React.useRef<HTMLDivElement>(null);
 
   const handleDeselectAll = () => {
-    selectedRows.clearAll();
+    selectedRows.clearAllAvailable();
     tableRef.current?.focus();
   };
-
-  React.useEffect(() => {
-    const unsubscribe = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, () => {
-      const selectedRowsSize = selectedRows.get().length;
-      if (selectedRowsSize > 0) {
-        setAriaMessage('Action bar appeared before the table');
-      }
-
-      setSelectedRowsDisplay(selectedRowsSize);
-    });
-
-    return unsubscribe;
-  }, []);
-
-  React.useEffect(() => {
-    const unsubscribe = selectedRows.subscribe(SelectableRows.SELECT_ALL_EVENT, () => {
-      const selectedRowsSize = selectedRows.get().length;
-      if (selectedRowsSize > 0) {
-        setAriaMessage('Action bar appeared before the table');
-      }
-
-      setSelectedRowsDisplay(selectedRowsSize);
-    });
-
-    return unsubscribe;
-  }, []);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 300);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
 
   return (
     <>
@@ -71,9 +39,7 @@ const Demo = (props: CheckboxExampleProps) => {
           scrollPaddingTop: '44px',
         }}
       >
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
+        <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} />
         <Flex
           role='region'
           aria-label='Table action bar'
