@@ -1,8 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
-import type { NoticeSmart } from '@semcore/notice';
+import type { NoticeSmartProps } from '@semcore/notice';
 import type Notice from '@semcore/notice';
 
-export type HighlightedNoticeComponent = Intergalactic.Component<typeof Notice & typeof NoticeSmart, { children: React.ReactNode }> & {
+export type HighlightedNoticeComponent = Intergalactic.Component<'div', NoticeSmartProps> & {
   Label: typeof Notice['Label'];
   Actions: typeof Notice['Actions'];
   Content: typeof Notice['Content'];

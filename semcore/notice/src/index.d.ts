@@ -27,7 +27,7 @@ export type NoticeLabelProps = BoxProps & {
 };
 
 export type NoticeContext = {
-  getLabelProps: PropGetterFn;
+  getLabelProps?: PropGetterFn;
 };
 
 export type NoticeSmartProps = NoticeProps & {
@@ -67,12 +67,12 @@ declare const Notice: Intergalactic.Component<'div', NoticeProps, NoticeContext>
   Close: typeof Button;
 };
 
-declare const NoticeSmart: <Tag extends Intergalactic.Tag = 'div'> (
+declare const NoticeSmart: (
   props: Intergalactic.InternalTypings.EfficientOmit<
-    Intergalactic.InternalTypings.ComponentProps<Tag, 'div', NoticeSmartProps>,
+    Intergalactic.InternalTypings.ComponentProps<'div', 'div', NoticeSmartProps>,
     'children'
   >
-) => Intergalactic.InternalTypings.ComponentRenderingResults & Intergalactic.InternalTypings.ComponentAdditive<Tag, 'div', NoticeSmartProps>;
+) => Intergalactic.InternalTypings.ComponentRenderingResults & Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', NoticeSmartProps>;
 
 export { NoticeSmart };
 export default Notice;
