@@ -24,10 +24,10 @@ export function getSwitcherData(theme: Ref<any, any>, route: Route, currentVersi
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
   const hash = typeof window !== 'undefined' ? window.location.hash : '';
   const path = route.path.split('/');
-  const isVersion = /v[0-9]+\.[0-9]+\.[0-9]+/.test(path[2]);
+  const isVersion = /v[0-9]+-[0-9]+-[0-9]+/.test(path[2]);
 
   return {
-    text: currentVersion,
+    text: currentVersion.replaceAll('-', '.'),
     items: theme.value.versions.items.map((v: string) => {
       const text = v === currentVersion ? theme.value.versions.currentVersion : v;
       const link = `${origin}/intergalactic/${text === latest ? '' : `${text}/`}${path
@@ -35,7 +35,7 @@ export function getSwitcherData(theme: Ref<any, any>, route: Route, currentVersi
         .join('/')}${hash}`;
 
       return {
-        text,
+        text: text.replaceAll('-', '.'),
         target: '_blank',
         link,
         version: v.replace(' ', '_'),
