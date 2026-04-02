@@ -15,7 +15,9 @@ export const LATEST = process.env.VITE_LATEST ?? 'latest';
 export const currentBuildVersion = process.env.VITE_CURRENT_VERSION ?? LATEST;
 
 export const viteConfig = defineConfig({
-  base: `/intergalactic${currentBuildVersion !== LATEST ? `/${currentBuildVersion}` : ''}/`,
+  base: `/intergalactic${
+    currentBuildVersion !== LATEST ? `/${currentBuildVersion.replaceAll('_', '-')}` : ''
+  }/`,
   plugins: [
     pluginReact({
       babel: {
