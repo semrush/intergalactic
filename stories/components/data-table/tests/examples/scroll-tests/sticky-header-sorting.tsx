@@ -7,6 +7,8 @@ type SortableColumn = 'kd' | 'cpc' | 'vol';
 export type StickyHeaderSortingProps = {
   sticky: boolean;
   withScrollBar?: boolean;
+  fixedFirstColumn?: boolean;
+  fixedLastColumn?: boolean;
 } & BoxProps;
 
 type ColumnName = keyof (typeof data)[0];
@@ -41,10 +43,10 @@ const Demo = (props: StickyHeaderSortingProps) => {
           withScrollBar: props.withScrollBar,
         }}
         columns={[
-          { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
+          { name: 'keyword', children: 'Keyword', gtcWidth: '200px', fixed: props.fixedFirstColumn ? 'left' as const : undefined },
           { name: 'kd', children: 'KD,%', gtcWidth: '200px', sortable: true },
           { name: 'cpc', children: 'CPC', gtcWidth: '200px', sortable: true },
-          { name: 'vol', children: 'Vol.', gtcWidth: '200px', sortable: true },
+          { name: 'vol', children: 'Vol.', gtcWidth: '200px', sortable: true, fixed: props.fixedLastColumn ? 'right' as const : undefined },
         ]}
       />
       <div style={{ height: '400px', background: '#f0f0f0' }}>Spacer below</div>
@@ -65,6 +67,8 @@ export const defaultProps: StickyHeaderSortingProps = {
   sticky: true,
   withScrollBar: true,
   wMax: '400px',
+  fixedFirstColumn: false,
+  fixedLastColumn: false,
 };
 
 export default Demo;

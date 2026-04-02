@@ -89,10 +89,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, STORY, 'en', { mode: 'rowHeight', rowHeight: 50 });
 
-    const gridTemplateRows = await locators.dataTable(page).evaluate(
-      (el) => getComputedStyle(el).gridTemplateRows,
-    );
-    // If bracket was missing in repeat(), browser ignores the rule and returns 'none'
+    // gridTemplateRows is on SDataTable: DataTable[role=grid] > ScrollArea > ScrollArea.Container > div > SDataTable
+    const gridTemplateRows = await locators.dataTable(page).evaluate((el) => {
+      const container = el.querySelector('[data-ui-name="ScrollArea.Container"]');
+      const sDataTable = container?.firstElementChild?.firstElementChild;
+      return getComputedStyle(sDataTable ?? el).gridTemplateRows;
+    });
     expect(gridTemplateRows).not.toBe('none');
     expect(gridTemplateRows).toMatch(/\d+px/);
   });
@@ -219,7 +221,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await new Promise((resolve) => setTimeout(resolve, 20));
       }
     }
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(500); // Wait for scroll animation finish
     await expect(locators.getCell(page, 101, 1)).toBeVisible();
     await expect(page.getByText('#101')).toBeVisible();
   });

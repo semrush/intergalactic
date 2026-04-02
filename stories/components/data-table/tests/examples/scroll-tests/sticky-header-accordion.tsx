@@ -1,8 +1,14 @@
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
-import type { DataTableData } from '@semcore/ui/data-table';
+import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
 import React from 'react';
 
-const Demo = () => {
+export type StickyHeaderAccordionProps = {
+  sticky?: boolean;
+  withScrollBar?: boolean;
+  accordionMode?: DataTableProps<typeof data, any, any>['accordionMode'];
+};
+
+const Demo = (props: StickyHeaderAccordionProps) => {
   return (
     <>
       <div style={{ height: '200px', background: '#f0f0f0' }}>Spacer above</div>
@@ -11,10 +17,10 @@ const Demo = () => {
         aria-label='Accordion with sticky header'
         wMax='400px'
         headerProps={{
-          sticky: true,
-          withScrollBar: true,
+          sticky: props.sticky,
+          withScrollBar: props.withScrollBar,
         }}
-        accordionMode='independent'
+        accordionMode={props.accordionMode}
         columns={[
           { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
           { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
@@ -52,5 +58,13 @@ const data: DataTableData = [
   { keyword: 'ebay buy', kd: '75.89', cpc: '$0', vol: '21,644,290' },
   { keyword: 'www.ebay.com', kd: '10', cpc: '$0.65', vol: '47,354,640' },
 ];
+
+export const defaultProps: StickyHeaderAccordionProps = {
+  sticky: true,
+  withScrollBar: true,
+  accordionMode: 'independent',
+};
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
