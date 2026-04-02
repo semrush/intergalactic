@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.6.0] - 2026-04-01
+
+### Fixed
+
+- Bubble chart plot size calculation.
+
+### Added
+
+- `percentFormatter` for Cigarette.
+- Added `cursor:pointer` for `Bubble` chart in case bubbles are
+clickable.
+- `minimalBarWidth` for `Cigarette` chart.
+
 ## [16.5.0] - 2026-02-10
 
 ### Added
