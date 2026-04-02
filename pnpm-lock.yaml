@@ -1875,7 +1875,7 @@ importers:
         specifier: ^16.0.7
         version: link:../badge
       '@semcore/base-components':
-        specifier: ^16.4.2
+        specifier: ^16.5.0
         version: link:../base-components
       '@semcore/base-trigger':
         specifier: ^16.4.5
@@ -1884,7 +1884,7 @@ importers:
         specifier: ^16.5.4
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
-        specifier: ^16.6.2
+        specifier: ^16.7.0
         version: link:../bulk-textarea
       '@semcore/button':
         specifier: ^16.0.12
@@ -1902,16 +1902,16 @@ importers:
         specifier: ^16.1.13
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^16.5.1
+        specifier: ^16.5.2
         version: link:../core
       '@semcore/counter':
         specifier: ^16.0.11
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: ^16.5.0
+        specifier: ^16.6.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^16.5.3
+        specifier: ^16.6.0
         version: link:../data-table
       '@semcore/date-picker':
         specifier: ^16.2.4
@@ -1944,7 +1944,7 @@ importers:
         specifier: ^16.2.5
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: ^16.2.0
+        specifier: ^16.2.1
         version: link:../feedback-form
       '@semcore/flags':
         specifier: ^16.1.8
@@ -1965,7 +1965,7 @@ importers:
         specifier: ^16.0.11
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: ^16.2.2
+        specifier: ^16.2.3
         version: link:../inline-input
       '@semcore/input':
         specifier: ^16.1.1
