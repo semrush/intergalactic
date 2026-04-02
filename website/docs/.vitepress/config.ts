@@ -31,7 +31,7 @@ if (links.length > 0) {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: viteConfig.base,
+  base: viteConfig.base?.replaceAll('_', '-'),
   outDir: resolvePath(__dirname, 'dist'),
   title: 'Intergalactic Design System',
   description: 'Design System',
