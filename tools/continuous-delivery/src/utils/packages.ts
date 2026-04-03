@@ -88,6 +88,15 @@ export class Package {
     });
   }
 
+  public async collectToolPackageBy(path: string) {
+    const packageFile: PackageJson = await fs.readJson(resolvePath(path, 'package.json'));
+
+    this.packagesMap.set(packageFile.name, {
+      path,
+      data: packageFile,
+    });
+  }
+
   public async updateVersions(collectedChangelog: CollectedChangelog) {
     const changelogComponents = collectedChangelog.components;
 

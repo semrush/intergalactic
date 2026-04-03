@@ -54,6 +54,41 @@ export class NpmUtils {
     log('Static upload done.');
   }
 
+  public static getAvailableTools() {
+    const toolsString = execSync('pnpm list --filter "./tools/*" --depth -1 --json', {
+      encoding: 'utf-8',
+    });
+
+    try {
+      const tools = (JSON.parse(toolsString) as Array<{ name: string; path: string; private: boolean }>).reduce<
+        Map<string, string>
+      >((acc, item) => {
+        const { name, private: isPrivate, path } = item;
+
+        if (isPrivate) return acc;
+
+        acc.set(name, path);
+
+        return acc;
+      }, new Map());
+
+      return tools;
+    } catch {
+      return null;
+    }
+  }
+
+  public static build(packages: Array<string>) {
+    for (const pckg of packages) {
+      log(`Building ${pckg}...`);
+      execSync(`pnpm --filter ${pckg} build`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+      log(`${pckg} is built.`);
+    }
+  }
+
   private static async publishComponents(pnpmFilter: string, pnpmOptions: string) {
     log('Publishing to registry...');
     execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
