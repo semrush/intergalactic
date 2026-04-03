@@ -1,4 +1,3 @@
-import fs from 'node:fs';
 import * as process from 'process';
 
 import dotenv from 'dotenv';
