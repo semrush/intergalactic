@@ -1,5 +1,5 @@
+import { Flex, Box } from '@semcore/ui/base-components';
 import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
-import { Flex, Box } from '@semcore/ui/flex-box';
 import React, { useState } from 'react';
 
 const Demo = () => {

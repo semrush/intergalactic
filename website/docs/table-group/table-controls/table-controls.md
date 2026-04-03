@@ -96,9 +96,11 @@ Use `Shift` key to select a range of rows at once.
 
 Use the action bar to show info and actions for the selected rows.
 
+<!-- vale DevDocs.Inclusive = NO -->
 * Place the bar above the table. Placing the bar between the table header and body will make the table less accessible.
 * If the beginning of the table is currently visible, the action bar shifts the whole table down and up when appearing and disappearing.
 * Alternatively, the action bar can be displayed permanently. In this case selecting rows adds or replaces elements in the bar.
+<!-- vale DevDocs.Inclusive = YES -->
 
 ::: tip
 If your action bar shifts the table down and up, set a 150–200ms transition for smooth entrance and exit. [Refer to our example](../data-table/data-table-code.md#checkboxes-and-action-bar).
@@ -172,17 +174,19 @@ Links in cells can lead to internal pages or external resources:
 
 Choose from three options based on context:
 
+<!-- vale DevDocs.ArticlesHeadings = NO -->
 ### Truncate text at the end
 
-- This solution is suitable for most tables, since data they contain usually occupies a single row.
-- Show the full text in the tooltip while hovering over the text.
+- this solution is suitable for most tables, since data they contain usually occupies a single row
+- show the full text in a [hint](../../utils/hint/hint) while hovering over the text
 
 ![](static/ellipsis-end.png)
 
 ### Truncate text in the middle
+<!-- vale DevDocs.ArticlesHeadings = YES -->
 
-- This option is suitable for URLs that differ in the last characters.
-- Show the full text in the tooltip while hovering over the text.
+- this option is suitable for URLs that differ in the last characters
+- show the full text in a [hint](../../utils/hint/hint) while hovering over the text
 
 ![](static/ellipsis-middle.png)
 

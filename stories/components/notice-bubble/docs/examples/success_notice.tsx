@@ -1,5 +1,5 @@
+import CheckM from '@semcore/icon/Check/m';
 import Button from '@semcore/ui/button';
-import CheckM from '@semcore/ui/icon/Check/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 type SuccessNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };

@@ -1,13 +1,12 @@
+import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
-import { Box, ScreenReaderOnly } from '@semcore/flex-box';
 import React from 'react';
 
-import type { DragAndDropProps, DropZoneProps } from './index';
+import type { DragAndDropComponent, DragAndDropProps, DropZoneProps } from './DragAndDrop.type';
 import style from './style/drag-and-drop.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -49,11 +48,10 @@ type State = {
 
 type A11yHintKeys = keyof typeof localizedMessages.en;
 
-class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof DragAndDropRoot.enhance> {
+class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot.enhance, {}, {}, State> {
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
   static defaultProps = {
-    theme: 'default',
     i18n: localizedMessages,
     locale: 'en',
   };
@@ -261,11 +259,6 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
           toIndex: dragOver ?? dragging.index,
         });
       }
-    }
-    if (!currentItem.draggingAllowed) {
-      this.asProps.onInsertDroppable?.(items[dragging!.index]?.children, currentItem.children);
-    } else {
-      this.asProps.onSwapDraggable?.(items[dragging!.index]?.children, currentItem.children);
     }
   };
 
@@ -485,7 +478,6 @@ class DragAndDropRoot extends Component<DragAndDropProps, {}, State, typeof Drag
       dropPreview: index === this.state.dragOver,
       keyboardDragging: index === this.state.keyboardDraggingIndex,
       reversedScaling: this.state.reversedScaling,
-      dark: this.asProps.theme === 'dark',
       hideHoverEffect: this.state.hideHoverEffect,
       animatedScaling: index === this.state.animatedScaling,
       active: index === this.state.dragging?.index ? 'true' : 'false',
@@ -640,12 +632,12 @@ function Draggable(props: any) {
       role='group'
       aria-describedby={`describe-draggable-${uid}`}
       use:keyboardFocused={isCustomFocus ? false : keyboardFocused}
+      tabIndex={0}
     >
       <Children />
     </SDraggable>,
   );
 };
-Draggable.enhance = [keyboardFocusEnhance()];
 
 type DirectionArrows = 'ArrowRight' | 'ArrowLeft' | 'ArrowUp' | 'ArrowDown';
 const findNextRectangleIndex = <
@@ -721,6 +713,6 @@ const DragAndDrop = createComponent(DragAndDropRoot, {
   Draggable,
   DropZone,
   Dropable: DropZone,
-}) as any;
+}) as DragAndDropComponent;
 
 export default DragAndDrop;

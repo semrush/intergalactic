@@ -10,7 +10,7 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   input: (page: Page) => page.getByRole('textbox'),
-  hint: (page: Page, text: string) => page.getByText(text),
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
   addon: (page: Page) => page.locator('[data-ui-name="Input.Addon"]'),
 };
@@ -140,7 +140,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.type('Hello world');
     await page.keyboard.press('Tab');
-    await locators.hint(page, 'Submit').waitFor({ state: 'visible' });
+    await locators.hint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -152,9 +152,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
-    const hint = page.locator('[data-ui-name="Hint"]');
-    await hint.click();
-    await locators.hint(page, 'Hide password').waitFor({ state: 'visible' });
+    const hintTrigger = locators.addon(page).locator('button');
+    await hintTrigger.click();
+    await locators.hint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -263,7 +263,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
-    const hint = page.locator('[data-ui-name="Hint"]');
+    const hintTrigger = locators.addon(page).locator('button');
     await test.step('Verify focus return back to Input by Enter press on Submit button ', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.input(page)).toBeFocused();
@@ -273,14 +273,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.input(page)).toHaveValue('Hello world');
 
       await page.keyboard.press('Tab');
-      await expect(hint).toBeFocused();
+      await expect(hintTrigger).toBeFocused();
       await page.getByText('Submit').waitFor({ state: 'visible' });
 
       await page.keyboard.press('Enter');
 
       await expect(locators.input(page)).toHaveValue('');
       await expect(locators.input(page)).toBeFocused();
-      await expect(hint).not.toBeVisible();
+      await expect(hintTrigger).not.toBeVisible();
     });
 
     await test.step('Verify focus return back to Input by Space press on Submit button ', async () => {
@@ -288,13 +288,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(await locators.input(page).inputValue()).toBe('Hello world');
 
       await page.keyboard.press('Tab');
-      await expect(hint).toBeFocused();
+      await expect(hintTrigger).toBeFocused();
       await page.getByText('Submit').waitFor({ state: 'visible' });
       await page.keyboard.press('Space');
 
       await expect(await locators.input(page).inputValue()).toBe('');
       await expect(locators.input(page)).toBeFocused();
-      await expect(hint).not.toBeVisible();
+      await expect(hintTrigger).not.toBeVisible();
     });
   });
 
@@ -307,7 +307,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_a_submit_icon.tsx', 'en');
 
-    const hint = page.locator('[data-ui-name="Hint"]');
+    const hintTrigger = locators.addon(page).locator('button');
 
     await locators.input(page).click();
     await expect(locators.input(page)).toBeFocused();
@@ -315,16 +315,16 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.type('Hello world');
     await expect(await locators.input(page).inputValue()).toBe('Hello world');
 
-    await expect(hint).toBeVisible();
+    await expect(hintTrigger).toBeVisible();
 
-    await hint.hover();
+    await hintTrigger.hover();
     await page.getByText('Submit').waitFor({ state: 'visible' });
     await expect(await locators.input(page).inputValue()).toBe('Hello world');
 
-    await hint.click();
+    await hintTrigger.click();
     await expect(await locators.input(page).inputValue()).toBe('');
     await expect(locators.input(page)).toBeFocused();
-    await expect(hint).not.toBeVisible();
+    await expect(hintTrigger).not.toBeVisible();
   });
 
   test('Verify password input keyboard interactions', {
@@ -336,12 +336,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
-    const hint = page.locator('[data-ui-name="Hint"]');
+    const hintTrigger = locators.addon(page).locator('button');
 
     await page.keyboard.press('Tab');
     await expect(locators.input(page)).toBeFocused();
-    await expect(hint).toBeVisible();
-    await expect(hint).not.toBeFocused();
+    await expect(hintTrigger).toBeVisible();
+    await expect(hintTrigger).not.toBeFocused();
 
     await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
     await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
@@ -353,14 +353,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.input(page)).toHaveValue('Hello world');
 
     await page.keyboard.press('Tab');
-    await expect(hint).toBeFocused();
+    await expect(hintTrigger).toBeFocused();
     await page.getByText('Show password').waitFor({ state: 'visible' });
 
     await page.keyboard.down('Enter');
 
     await expect(locators.input(page)).toHaveValue('Hello world');
     await page.getByText('Hide password').waitFor({ state: 'visible' });
-    await expect(hint).toBeVisible();
+    await expect(hintTrigger).toBeVisible();
 
     await page.keyboard.press('Shift+Tab');
     await expect(locators.input(page)).toBeFocused();
@@ -375,28 +375,28 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/password_input.tsx', 'en');
 
-    const hint = page.locator('[data-ui-name="Hint"]');
+    const hintTrigger = locators.addon(page).locator('button');
 
-    await expect(hint).toBeVisible();
+    await expect(hintTrigger).toBeVisible();
 
     await expect(locators.input(page)).toHaveAttribute('autocomplete', 'current-password');
     await expect(locators.input(page)).toHaveAttribute('value', 'I_like_cats');
 
-    await hint.hover();
+    await hintTrigger.hover();
     await page.getByText('Show password').waitFor({ state: 'visible' });
     await expect(locators.input(page)).not.toBeFocused();
-    await expect(hint).not.toBeFocused();
+    await expect(hintTrigger).not.toBeFocused();
 
-    await hint.click();
+    await hintTrigger.click();
     await expect(await locators.input(page).inputValue()).toBe('I_like_cats');
     await page.getByText('Hide password').waitFor({ state: 'visible' });
     await expect(locators.input(page)).toBeFocused();
-    await expect(hint).not.toBeFocused();
+    await expect(hintTrigger).not.toBeFocused();
 
     await locators.input(page).click();
     await expect(await locators.input(page).inputValue()).toBe('I_like_cats');
     await expect(locators.input(page)).toBeFocused();
-    await expect(hint).not.toBeFocused();
+    await expect(hintTrigger).not.toBeFocused();
   });
 
   test('Verify Input Text addon mouse interactions', {
@@ -451,27 +451,27 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input/docs/examples/input_with_multiple_addons.tsx', 'en');
 
-    const hint = page.locator('[data-ui-name="Hint"]');
+    const hintTrigger = locators.addon(page).locator('button');
     const link = page.locator('[data-ui-name="Link"]');
 
     await page.keyboard.press('Tab');
     await expect(locators.input(page)).toBeFocused();
-    await expect(hint).not.toBeFocused();
+    await expect(hintTrigger).not.toBeFocused();
     await expect(link).not.toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(locators.input(page)).not.toBeFocused();
     await expect(link).toBeFocused();
-    await expect(hint).not.toBeFocused();
+    await expect(hintTrigger).not.toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(locators.input(page)).not.toBeFocused();
     await expect(link).not.toBeFocused();
-    await expect(hint).toBeFocused();
+    await expect(hintTrigger).toBeFocused();
 
     await page.keyboard.press('Shift+Tab');
     await expect(locators.input(page)).not.toBeFocused();
     await expect(link).toBeFocused();
-    await expect(hint).not.toBeFocused();
+    await expect(hintTrigger).not.toBeFocused();
   });
 });

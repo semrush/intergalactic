@@ -14,7 +14,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const breadcrumbLinks = page.locator('a[data-ui-name="Breadcrumbs.Item"]');
     const chevronIcons = page.locator('[data-ui-name="ChevronRight"]');
     const lastItem = page.locator('[aria-current="page"]');
 
@@ -51,7 +51,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     await test.step('Verify links in normal and hover states', async () => {
-      for (const link of await breadcrumbLinks.all()) {
+      const links = await breadcrumbLinks.all();
+      for (const link of links) {
         const styles = await link.evaluate((el) => {
           const computed = getComputedStyle(el);
           return {
@@ -77,6 +78,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       }
 
       await breadcrumbLinks.first().hover();
+
       await expect(page).toHaveScreenshot();
     });
     await test.step('Verify separator styles', async () => {
@@ -104,14 +106,19 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', item);
 
       const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
+      const hint = page.locator('[data-ui-name="Hint"]');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
       await breadcrumbLinks.first().hover();
+      await hint.first().waitFor({ state: 'visible' });
+
       await expect(page).toHaveScreenshot();
       if (!item.active) {
         await page.keyboard.press('Tab');
+        await hint.nth(1).waitFor({ state: 'visible' });
+
         await expect(page).toHaveScreenshot();
       }
     });
@@ -122,14 +129,18 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@ellipis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
-
-      const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
-      const status = page.getByRole('status');
+      await page.waitForTimeout(200); // wait for finish ellipsis calculation
+      const breadcrumb0 = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(0);
+      const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
+      const hint = page.locator('[data-ui-name="Hint"]');
 
       await page.keyboard.press('Tab');
+      await expect(breadcrumb0).toBeFocused();
+
       await page.keyboard.press('Tab');
-      await breadcrumbLinks.nth(1).hover();
-      await status.waitFor({ state: 'attached' });
+      await expect(breadcrumb).toBeFocused();
+      await breadcrumb.hover();
+      await hint.waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -140,14 +151,19 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
-
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
-    const status = page.getByRole('status');
+    await page.waitForTimeout(200); // wait for finish ellipsis calculation
+    const breadcrumb0 = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(0);
+    const breadcrumb = page.locator('[data-ui-name="Breadcrumbs.Item"]').nth(1);
+    const hint = page.locator('[data-ui-name="Hint"]');
 
     await page.keyboard.press('Tab');
+    await expect(breadcrumb0).toBeFocused();
+
     await page.keyboard.press('Tab');
-    await breadcrumbLinks.nth(1).hover();
-    await status.waitFor({ state: 'attached' });
+    await expect(breadcrumb).toBeFocused();
+
+    await breadcrumb.hover();
+    await hint.waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -171,7 +187,7 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test('Verify ellipsis in the end', {
+  test('Verify ellipsis truncation in the end', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       TAG.KEYBOARD,
@@ -180,43 +196,21 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const breadcrumbLinks = page.getByRole('link');
     const lastItem = page.locator('[aria-current="page"]');
     const status = page.getByRole('status');
-
-    const count = await breadcrumbLinks.count();
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
+    const hint = page.locator('[data-ui-name="Hint"]');
 
     await breadcrumbLinks.first().hover();
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
+    await expect(hint).toHaveCount(0);
 
     await breadcrumbLinks.nth(1).hover();
-    await expect(breadcrumbLinks.nth(0)).not.toHaveAttribute('aria-describedby', /popper/);
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
-    await expect(status).toHaveCount(1);
+    await expect(hint).toHaveCount(1);
+    await expect(status).toHaveCount(0);
 
     await lastItem.hover();
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
-
-    await page.keyboard.press('Tab');
-    for (let i = 0; i < count; i++) {
-      await expect(status).toHaveCount(0);
-      await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-    }
-
-    await page.keyboard.press('Tab');
-    await expect(breadcrumbLinks.nth(0)).not.toHaveAttribute('aria-describedby', /popper/);
-    await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
-    await expect(status).toHaveCount(1);
+    await expect(hint).toHaveCount(0);
+    await expect(status).toHaveCount(0);
   });
 
   const variables = [
@@ -232,38 +226,22 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
 
-      const breadcrumbLinks = page.locator('[data-ui-name="Tooltip"]');
+      const breadcrumbLinks = page.getByRole('link');
       const lastItem = page.locator('[aria-current="page"]');
       const status = page.getByRole('status');
+      const hint = page.locator('[data-ui-name="Hint"]');
 
-      const count = await breadcrumbLinks.count();
-      for (let i = 0; i < count; i++) {
-        await expect(status).toHaveCount(0);
-        await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-      }
       await breadcrumbLinks.first().hover();
-      await expect(breadcrumbLinks.first()).toHaveAttribute('aria-describedby', /popper/);
-      await expect(status).toHaveCount(1);
-      await expect(breadcrumbLinks.nth(1)).not.toHaveAttribute('aria-describedby', /popper/);
+      await expect(hint).toHaveCount(0);
 
       await breadcrumbLinks.nth(1).hover();
-      await expect(breadcrumbLinks.first()).not.toHaveAttribute('aria-describedby', /popper/);
-      await expect(status).toHaveCount(1);
-      await expect(breadcrumbLinks.nth(1)).toHaveAttribute('aria-describedby', /popper/);
+      await expect(hint).toHaveCount(1);
+      await expect(status).toHaveCount(0);
 
       if (item.active) {
         await lastItem.hover();
-        for (let i = 0; i < count; i++) {
-          await expect(status).toHaveCount(0);
-          await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-        }
-      } else {
-        await breadcrumbLinks.nth(2).hover();
-        for (let i = 0; i < count - 1; i++) {
-          await expect(breadcrumbLinks.nth(i).first()).not.toHaveAttribute('aria-describedby', /popper/);
-          await expect(breadcrumbLinks.nth(2)).toHaveAttribute('aria-describedby', /popper/);
-          await expect(status).toHaveCount(1);
-        }
+        await expect(hint).toHaveCount(1);
+        await expect(status).toHaveCount(0);
       }
     });
   });
@@ -300,8 +278,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(item).toHaveAttribute('level', `${i + 1}`);
       }
 
-      const currentItem = page.locator('nav ol > li').nth(2).locator('span');
-      await expect(currentItem).toHaveAttribute('aria-current', 'page');
+      const currentItem = page.locator('nav ol > li').nth(2).locator('span').first();
       await expect(currentItem).toHaveAttribute('tabindex', '-1');
     });
 
@@ -351,7 +328,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
-    const breadcrumbLinks = page.locator('[data-ui-name="Ellipsis.Content"]');
+    const breadcrumbLinks = page.locator('[data-ui-name="Breadcrumbs.Item"]');
     const lastItem = page.locator('[aria-current="page"]');
     await page.keyboard.press('Tab');
     await expect(breadcrumbLinks.first()).toBeFocused();

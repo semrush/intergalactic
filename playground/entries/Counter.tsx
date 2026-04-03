@@ -18,7 +18,7 @@ const entry: PlaygroundEntry<CounterJSXProps> = {
     size: {
       type: 'inline-radio',
       value: 'm',
-      options: ['m', 'l', 'xl'],
+      options: ['s', 'm', 'l'],
       displayName: 'Size',
     },
     theme: {

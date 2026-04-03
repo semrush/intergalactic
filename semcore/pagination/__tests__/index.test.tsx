@@ -1,7 +1,6 @@
-import Button from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -203,17 +202,16 @@ describe('Pagination.PageInput.Value', () => {
 
     const input = getByTestId('value') as HTMLInputElement;
 
-    vi.useFakeTimers();
+    input.focus();
+    await userEvent.keyboard('0');
 
-    fireEvent.change(input, { target: { value: '100' } });
     expect(input.value).toBe('100');
     expect(spy).toBeCalledTimes(0);
-    fireEvent.blur(input);
-    await vi.runAllTimersAsync();
+
+    await userEvent.keyboard('[Tab]');
+
     expect(spy).toBeCalledTimes(0);
     expect(input.value).toBe('10');
-
-    vi.useRealTimers();
   });
 
   test('Verify calls onCurrentPageChange on Enter click', () => {
@@ -273,14 +271,13 @@ describe('Pagination.PageInput.Value', () => {
     expect(spy).toBeCalledWith(totalPages);
   });
 
-  test('Verify typed valu keept in input when focus moves to Addon, resets to currentPage when focus moves outside', async () => {
+  test('Verify typed value keep in input when focus moves to Addon, resets to currentPage when focus moves outside', async () => {
     const { getByTestId } = render(
       <>
         <Pagination currentPage={1} totalPages={100}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
-            {/* @ts-ignore */}
-            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={Return} interactive />
+            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={ButtonLink} addonLeft={Return} p={0} />
           </Pagination.PageInput>
         </Pagination>
         <Button data-testid='testButton'>test button</Button>

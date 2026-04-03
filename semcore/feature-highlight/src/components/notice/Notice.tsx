@@ -12,35 +12,15 @@ class NoticeFHRoot extends Component<NoticeSmartProps> {
   static displayName = 'NoticeFH';
   static style = style;
 
-  renderContent() {
-    const { Children, label, title, closable } = this.asProps;
-    let textContent = <Children />;
-
-    if (typeof Children.origin === 'string') {
-      textContent =
-              isNode(title) || isNode(label) || closable
-                ? (
-                    <Notice.Text>
-                      <Children />
-                    </Notice.Text>
-                  )
-                : (
-                    <Children />
-                  );
-    }
-
-    return textContent;
-  }
-
   renderSmartMode() {
-    const { label, title, actions, closable, onClose } = this.asProps;
+    const { label, title, text, actions, closable, onClose } = this.asProps;
 
     return (
       <>
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
           {isNode(title) && <Notice.Title>{title}</Notice.Title>}
-          {this.renderContent()}
+          {isNode(text) && <Notice.Text>{text}</Notice.Text>}
           {isNode(actions) && <Notice.Actions>{actions}</Notice.Actions>}
         </Notice.Content>
         {closable && <Notice.Close onClick={onClose} />}
@@ -84,5 +64,4 @@ export const NoticeFH = createComponent(NoticeFHRoot, {
   Title: Notice.Title,
   Text: Notice.Text,
   Close: Notice.Close,
-  CloseIcon: Notice.CloseIcon,
 }) as HighlightedNoticeComponent;

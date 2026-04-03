@@ -1,30 +1,25 @@
-import { Flex } from '@semcore/ui/base-components';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Divider from '@semcore/ui/divider';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
   return (
-    <Flex>
+    <Text size={300} display='flex'>
       <Text flex='0 0 auto'>Sep 3</Text>
       <Divider mx={4} orientation='vertical' />
-      <Link w={500} wMin={0} href='#'>
-        <Flex alignItems='center'>
-          <Link.Text w='100%' inline noWrap>
-            <Text w='100%' inline noWrap>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed!
-              Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
-              Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?
-            </Text>
-          </Link.Text>
-          <Link.Addon>
-            <LinkExternalM />
-          </Link.Addon>
-        </Flex>
+      <Link href='#'>
+        <Link.Text w={480} ellipsis={true}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed!
+          Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
+          Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?
+        </Link.Text>
+        <Link.Addon mt='-3px'>
+          <LinkExternalM />
+        </Link.Addon>
       </Link>
-    </Flex>
+    </Text>
   );
 };
 

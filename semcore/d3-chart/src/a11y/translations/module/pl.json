@@ -1,5 +1,5 @@
 {
-  "disabled": "Naciśnij Tab, aby włączyć moduł dostępności wykresów graficznych.",
   "loading": "Ładowanie modułu dostępności.",
-  "failed": "Nie udało się załadować modułu dostępności. Skontaktuj się ze wsparciem użytkowników, aby pomóc nam w szybszym rozwiązaniu problemu."
+  "failed": "Nie udało się załadować modułu dostępności. Skontaktuj się ze wsparciem użytkowników, aby pomóc nam w szybszym rozwiązaniu problemu.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Otwórz podsumowanie danych"
 }

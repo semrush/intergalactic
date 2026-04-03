@@ -260,7 +260,6 @@ SCell {
   overflow: hidden;
 
   SAccordionToggle {
-    margin-top: var(--intergalactic-spacing-05x, 2px);
     margin-right: var(--intergalactic-spacing-3x, 12px);
     margin-left: calc(var(--intergalactic-spacing-05x, 2px) * -1);
     height: fit-content;

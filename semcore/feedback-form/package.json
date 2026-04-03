@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feedback-form",
   "description": "Semrush Feedback Form Component",
-  "version": "16.2.0",
+  "version": "16.2.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,14 +17,12 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.11",
     "@semcore/checkbox": "16.2.1",
     "@semcore/notice-bubble": "16.1.12",
     "@semcore/typography": "16.3.2",
     "@semcore/link": "16.0.11",
     "@semcore/modal": "16.1.12",
-    "@semcore/illustration": "16.0.12",
-    "@semcore/icon": "16.7.3",
+    "@semcore/illustration": "17.0.0-prerelease.4",
     "@semcore/textarea": "16.0.11",
     "@semcore/input": "16.1.1",
     "final-form": "4.20.7",
@@ -36,7 +34,8 @@
     "react-final-form": "6.5.9"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
+    "@semcore/icon": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {
     "type": "git",
@@ -45,6 +44,8 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@types/final-form-focus": "1.1.7",
     "@semcore/testing-utils": "workspace:*"
   },

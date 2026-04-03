@@ -1,25 +1,40 @@
+import { Box } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
 import { useAsyncI18nMessages } from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import { DataAccessibilityTable } from './DataAccessibilityTable';
 import { heavyFindNextFocusableElement } from './focus';
 import { makeDataSummarizationConfig } from './hints';
+import type { DataStructureHints, PartialDataSummarizationConfig } from './hints';
 import { getIntl } from './intl';
-import type { A11yViewProps } from './PlotA11yModule';
 import { summarize } from './summarize';
 import styles from '../style/plotA11yView.shadow.css';
 import { localizedMessages } from './translations/view/__intergalactic-dynamic-locales';
 
+export type A11yViewProps = {
+  id: string;
+  payload: Record<string, unknown>[];
+  hints: DataStructureHints;
+  plotLabel: string;
+  locale: NavigatorLanguage['language'];
+  config: PartialDataSummarizationConfig;
+
+  plotRef: React.RefObject<HTMLElement>;
+  triggerRef: React.RefObject<HTMLElement>;
+  onCloseHandler: () => void;
+};
+
 export const PlotA11yView: React.FC<A11yViewProps> = ({
   id,
-  data: providedData,
+  payload: providedData,
   hints,
   plotLabel,
+  triggerRef,
   plotRef,
   config: providedConfig,
   locale,
+  onCloseHandler,
 }) => {
   const SPlotA11yView = Root;
   const translations = useAsyncI18nMessages(localizedMessages, locale);
@@ -32,9 +47,29 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
     () => (Array.isArray(providedData) ? providedData : [providedData]),
     [providedData],
   );
+  const rootRef = React.useRef<HTMLDivElement>(null);
 
   const [summary, setSummary] = React.useState<string | null>(null);
   const [generatingSummary, setGeneratingSummary] = React.useState(true);
+
+  React.useEffect(() => {
+    rootRef.current?.focus();
+
+    function focusOutHandler(event: FocusEvent) {
+      if (event.relatedTarget === null) {
+        return requestIdleCallback(onCloseHandler);
+      }
+
+      if (!(event.relatedTarget instanceof HTMLElement)) return;
+
+      if (rootRef.current?.contains(event.relatedTarget)) return;
+
+      requestIdleCallback(onCloseHandler);
+    }
+
+    rootRef.current?.addEventListener('focusout', focusOutHandler);
+    return () => rootRef.current?.removeEventListener('focusout', focusOutHandler);
+  }, []);
 
   React.useEffect(() => {
     if (config.disable) {
@@ -54,13 +89,19 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   }, [providedData, hints, config, locale, translations, localizedMessages]);
 
   const handleClose = React.useCallback(() => {
-    plotRef.current?.focus();
+    onCloseHandler();
+
+    requestIdleCallback(() => {
+      triggerRef.current?.focus();
+    });
   }, []);
   const handleSkip = React.useCallback((event: React.SyntheticEvent) => {
     event.preventDefault();
     if (!plotRef.current) return;
 
     heavyFindNextFocusableElement(plotRef.current)?.focus();
+
+    onCloseHandler();
   }, []);
   const handleSkipKeyboard = React.useCallback(
     (event: React.KeyboardEvent) => {
@@ -108,6 +149,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
       aria-label={texts.label}
       role='dialog'
       __excludeProps={['data']}
+      ref={rootRef}
     >
       <button type='button' onClick={handleClose}>
         {texts.close}

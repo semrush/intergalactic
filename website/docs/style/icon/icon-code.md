@@ -5,7 +5,7 @@ tabs: Design('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), 
 
 ## Interactive icon
 
-If you want an interactive icon that changes when hovered over (such as color and cursor), simply set the default color using the `color` property and add the `interactive` property. That's it! You won't need to specify an extra color for the hovered or the active state.
+If you want an interactive icon, use [ButtonLink](/components/button/button-code#button-looking-like-link) with addon.
 
 ::: sandbox
 

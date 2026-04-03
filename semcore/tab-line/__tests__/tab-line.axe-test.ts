@@ -4,7 +4,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`${TAG.ACCESSIBILITY} @tab-line`, () => {
   test('Automatic tab activation', async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-line/docs/examples/automatic_tab_activation.tsx', 'en');
+    await loadPage(page, 'stories/components/tab-line/docs/examples/manual_tab_activation.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 

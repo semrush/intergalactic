@@ -1,6 +1,5 @@
 import Button from '@semcore/button';
-import { createComponent, Root, sstyled, Component } from '@semcore/core';
-import type { IRootNodeProps } from '@semcore/core/src/core-types/Component';
+import { createComponent, Root, sstyled, Component, type IRootNodeProps } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 

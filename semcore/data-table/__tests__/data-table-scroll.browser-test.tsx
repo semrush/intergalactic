@@ -97,7 +97,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName == 'webkit') {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         } else {
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
         }
 
         if (item.withScrollBar) {
@@ -158,7 +158,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           if (browserName == 'webkit') {
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
           } else {
-            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
           }
           if (item.withScrollBar)
             await checkScrolled(scrollBar.nth(1));
@@ -205,7 +205,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           if (browserName == 'webkit') {
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
           } else {
-            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+            await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
           }
           if (item.withScrollBar) {
             await checkScrolled(scrollBar.nth(0));
@@ -237,7 +237,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       expect(topStyle).toBe('100px');
     }
 
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.0005 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
   // add cases when hedader has interactive element

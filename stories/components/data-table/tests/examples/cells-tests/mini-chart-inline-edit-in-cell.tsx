@@ -1,6 +1,6 @@
+import EditM from '@semcore/icon/Edit/m';
+import { Box, Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import EditM from '@semcore/ui/icon/Edit/m';
 import InlineEdit from '@semcore/ui/inline-edit';
 import InlineInput from '@semcore/ui/inline-input';
 import MiniChart from '@semcore/ui/mini-chart';

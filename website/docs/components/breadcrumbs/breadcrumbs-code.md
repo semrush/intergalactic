@@ -3,10 +3,12 @@ title: Breadcrumbs
 tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
-## Breadcrumbs item truncation
+## Truncating long items
 
-Try resizing the page to see how the links adjust. If the text in a link is too long, it will be truncated with an ellipsis. You can also place the `<Breadcrumbs.Item />` within other components.
+<!-- vale DevDocs.Inclusive = NO -->
+[Ellipsis](../../utils/ellipsis/ellipsis-code) is enabled in Breadcrumbs by default (you should explicitly limit the item width to see the effect).
 
+<!-- vale DevDocs.Inclusive = YES -->
 ::: sandbox
 
 <script lang="tsx">

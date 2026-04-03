@@ -1,6 +1,6 @@
+import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import { NoticeSmart } from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
 import createFocusDecorator from 'final-form-focus';

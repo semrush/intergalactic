@@ -7,7 +7,7 @@ import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
 import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
 // @ts-ignore
-import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
+import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { BarProps } from '../../types';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -175,6 +175,63 @@ class BarChartComponent extends AbstractChart<
           };
         }}
       </HoverRect.Tooltip>
+    );
+  }
+
+  protected override renderAxis(): React.ReactNode {
+    const {
+      invertAxis,
+      showXAxis,
+      showYAxis,
+      data,
+      axisXValueFormatter,
+      axisYValueFormatter,
+      multilineXTicks,
+      multilineYTicks,
+    } = this.asProps;
+
+    if (!Array.isArray(data)) {
+      return null;
+    }
+
+    const xTicks = this.xTicks;
+    const yTicks = this.yTicks;
+
+    const childrenX = axisXValueFormatter
+      ? ({ value }: any) => ({ children: axisXValueFormatter(value) })
+      : undefined;
+    const childrenY = axisYValueFormatter
+      ? ({ value }: any) => ({ children: axisYValueFormatter(value) })
+      : undefined;
+
+    return (
+      <>
+        {showYAxis && (
+          <YAxis>
+            {yTicks
+              ? (
+                  <YAxis.Ticks primaryText={invertAxis} multiline={multilineYTicks} ticks={yTicks}>{childrenY}</YAxis.Ticks>
+                )
+              : (
+                  <YAxis.Ticks primaryText={invertAxis} multiline={multilineYTicks}>{childrenY}</YAxis.Ticks>
+                )}
+            {invertAxis !== true && (yTicks ? <YAxis.Grid ticks={yTicks} /> : <YAxis.Grid />)}
+          </YAxis>
+        )}
+
+        {showXAxis && (
+          <XAxis>
+            {xTicks
+              ? (
+                  <XAxis.Ticks multiline={multilineXTicks} ticks={xTicks}>{childrenX}</XAxis.Ticks>
+                )
+              : (
+                  <XAxis.Ticks multiline={multilineXTicks}>{childrenX}</XAxis.Ticks>
+                )}
+            {invertAxis === true && (xTicks ? <XAxis.Grid ticks={xTicks} /> : <XAxis.Grid />)}
+          </XAxis>
+        )}
+      </>
     );
   }
 

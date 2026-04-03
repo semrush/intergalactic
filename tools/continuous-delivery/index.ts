@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { getUnlockedPrerelease } from './src/getUnlockedPrereelase';
 import { publishReleaseNotes } from './src/publishReleaseNotes';
 import { sendMessageAboutRelease } from './src/sendMessageAboutRelease';
+import type { SeparatedPackage } from './src/types/common.types';
 import { updateVersions } from './src/updateVersions';
 import { formatMarkdown, log } from './src/utils';
 import type { ChangelogChangeLabel, ChangelogItem } from './src/utils/changelog';
@@ -23,10 +24,33 @@ export const initPrerelease = async () => {
   const packages = new Package();
   await packages.collectPackages();
 
-  const changelog = new Changelog(prevReleaseTag, packages.list);
+  const changelog = new Changelog('v', prevReleaseTag, packages.list);
   await changelog.collectFromHistory();
 
   await packages.updateVersions(changelog.data);
+
+  await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
+};
+
+export const initPackagePrerelease = async (pack: SeparatedPackage) => {
+  const COMPONENT_NAME = `@semcore/${pack}`;
+  const prevReleaseTag = await gitUtils.getPrevPackageTag(pack);
+
+  const packages = new Package();
+  await packages.collectOnePackage(pack);
+
+  const changelog = new Changelog(pack, prevReleaseTag, packages.list);
+  await changelog.collectFromHistory();
+
+  const components = changelog.data.components;
+  const packageChangeLog = components[COMPONENT_NAME];
+
+  if (!packageChangeLog) {
+    console.log(`No changes in ${pack} package.`);
+    process.exit();
+  }
+
+  await packages.updatePackageVersion(COMPONENT_NAME, packageChangeLog.incrementType, packageChangeLog.changelog);
 
   await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
 };
@@ -65,6 +89,7 @@ export const publishPrerelease = async () => {
   }
 
   log('Update versions to prerelease...');
+  log(updatedPackages.join('\n'));
   await updateVersions(
     updatedPackages.map((pack) => {
       return {
@@ -97,14 +122,13 @@ export const getChangedPackages = async (base: string): Promise<string[]> => {
 
 const sendReleaseChangelog = async (endpoints: string[]) => {
   const versionTag = await gitUtils.getCurrentTag();
-  const version = versionTag?.slice(1);
 
-  if (version && endpoints) {
-    const releaseChangelog = await Changelog.getRelease();
+  if (versionTag && endpoints) {
+    const releaseChangelog = await Changelog.getRelease(versionTag);
 
     validateSlackIntegrationEnv(endpoints);
 
-    await sendMessageAboutRelease(version, releaseChangelog, endpoints);
+    await sendMessageAboutRelease(versionTag, releaseChangelog, endpoints);
   }
 };
 

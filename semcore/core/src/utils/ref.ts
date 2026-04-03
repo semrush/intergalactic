@@ -1,5 +1,4 @@
-import React, { type MutableRefObject, type Ref, type RefObject } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { type MutableRefObject, type Ref } from 'react';
 
 export function setRef<T>(ref: Ref<T>, value: T) {
   if (typeof ref === 'function') {
@@ -61,21 +60,4 @@ export function forkRef<T>(...refs: Ref<T>[]): Ref<T> {
     const uniqueRefs = [...new Set(refs)];
     uniqueRefs.forEach((ref) => setRef(ref, refValue));
   };
-}
-
-export type NodeByRef = RefObject<Element> | Element | (() => RefObject<Element> | Element);
-
-export function getNodeByRef(ref: NodeByRef): Element | null {
-  if (typeof ref === 'function') {
-    ref = ref();
-  }
-  if (!ref) return null;
-
-  const node = getRef(ref);
-  if (!node) return null;
-  if ('nodeType' in node && node.nodeType === 1) return node;
-  if (Object.keys(node).length === 1 && 'getBoundingClientRect' in node) return null;
-  if (!React.isValidElement(node) && !(node instanceof React.Component)) return null;
-
-  return findDOMNode(node) as Element;
 }

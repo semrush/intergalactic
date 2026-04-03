@@ -1,8 +1,8 @@
+import ChatM from '@semcore/icon/Chat/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
 import FeedbackForm from '@semcore/ui/feedback-form';
-import ChatM from '@semcore/ui/icon/Chat/m';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import Textarea from '@semcore/ui/textarea';
@@ -134,14 +134,19 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Cancel onClick={onCancel}>Cancel</FeedbackForm.Cancel>
           </Flex>
         </Box>
-        <FeedbackForm.Notice hidden={status === 'failed'}>
-          You can also send us an email to
-          {' '}
-          <Link>backlink.audit@semrush.com</Link>
+        <FeedbackForm.Notice
+          hidden={status === 'failed'}
+          text={(
+            <>
+              You can also send us an email to
+              {' '}
+              <Link>backlink.audit@semrush.com</Link>
+            </>
+          )}
+        >
+
         </FeedbackForm.Notice>
-        <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger'>
-          Your message has not been sent.
-        </FeedbackForm.Notice>
+        <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger' text='Your message has not been sent.' />
       </FeedbackForm>
     );
   }

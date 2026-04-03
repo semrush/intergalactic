@@ -16,7 +16,7 @@ tabs: Design('filter-tags'), Example('filter-tags-code')
 - All tags are pulled from the table data and attached to it. So the filter shows data user can work with in the context of the table.
 - The filter works with the "or" logic.
 
-**When working with Tags filter, it is important for the user to:**
+**When working with Tags filter, it's important for the user to:**
 
 - quickly understand it can choose one or several tags;
 - sort keywords with no tags;
@@ -28,7 +28,7 @@ tabs: Design('filter-tags'), Example('filter-tags-code')
 ### Trigger
 
 - For trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger) components.
-- **Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
+- **Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger isn't truncated.
 
 ![filter placeholder](static/placeholder-tags.png)
 ![active filter](static/active-tags.png)
@@ -38,18 +38,18 @@ tabs: Design('filter-tags'), Example('filter-tags-code')
 - Dropdown has the list of all tags from the table data.
 - There is a special option - the ability to select keywords without tags ("None").
 - Sort a list of tags in alphabetical order.
-- You cannot select both "None" and tags.
+- You can't select both "None" and tags.
 
 ![small tags](static/small-tags.png)
 
 - Show scroll if the list has more than 6 tags.
-- Add search input if the list has more than 10 tags. See the [Filter Search](/filter-group/filter-search/filter-search) guide to know more.
+- Add search input if the list has more than 10 tags. Refer to [Filter Search](/filter-group/filter-search/filter-search) to know more.
 - Add **Select/Deselect all** option if the list has more than 10 tags.
 
 ![opened filter](static/opened-tags.png)
 ![filled filter](static/filled-tags.png)
 
-**Don't make a dropdown width less than 224px**,so if there are long names for tags, most of them will be readable. If the name of the tag is too long, collapse it into `ellipsis`, and show its full name in the tooltip while hovering.
+**Don't make a dropdown width less than 224px**,so if there are long names for tags, most of them will be readable. If the name of the tag is too long, truncate it with an [ellipsis](../../utils/ellipsis/ellipsis), and show the full name in a [hint](../../utils/hint/hint).
 
 ![long tags](static/long-tags.png)
 
@@ -78,7 +78,7 @@ Other rules for working and interacting with filters are described in the [Filte
 
 For more information about tooltips, see the [Filter common rules guide](/filter-group/filter-rules/filter-rules).
 
-Don't abbreviate the name of this filter, it is always `Tags`.
+Don't abbreviate the name of this filter, it's always `Tags`.
 
 ![tooltips](static/tooltip.png)
 

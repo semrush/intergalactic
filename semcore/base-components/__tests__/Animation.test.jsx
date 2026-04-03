@@ -1,13 +1,8 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { Animation } from '../src';
-
-describe('Animation Dependency imports', () => {
-  runDependencyCheckTests('animation');
-});
 
 describe('Animation', () => {
   test('Verify not renders when visible is false and preserveNode is false', () => {

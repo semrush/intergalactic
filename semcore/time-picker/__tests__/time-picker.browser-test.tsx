@@ -58,6 +58,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await test.step('Verify format focused styles', async () => {
         await page.keyboard.press('Tab');
         await optionH.first().waitFor({ state: 'visible' });
+
         await expect(page).toHaveScreenshot();
       });
 
@@ -360,16 +361,31 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.timeBoxes(page).nth(2)).toHaveValue('12');
     });
 
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(2)).not.toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('');
+    });
+
+    await test.step('Verify value applues when entering wrong data', async () => {
+      await page.keyboard.press('3');
+      await page.keyboard.press('a');
+      await page.keyboard.press('3');
+      await expect(locators.timeBoxes(page).nth(2)).toHaveValue('12');
+    });
+
     await test.step('Verify Focus on the input with Minutes and list options expanded by Tab', async () => {
-      await page.keyboard.press('Tab');
+      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await expect(locators.timeBoxes(page).nth(3)).toBeFocused();
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
     });
 
     await test.step('Verify Arrows switch between options and it is possible select the option', async () => {
+      await page.waitForTimeout(100);
       await page.keyboard.press('ArrowDown');
-      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await page.keyboard.press('Enter');
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('01');
     });
@@ -379,6 +395,39 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
       await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('01');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('3');
+      await page.keyboard.press('?');
+      await page.keyboard.press('3');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'true');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('33');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('Enter');
+      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'hidden' });
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(3)).not.toHaveAttribute('aria-controls');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('33');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveAttribute('aria-expanded', 'false');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('');
+    });
+
+    await test.step('Verify Backspace clears hours', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await expect(locators.timeBoxes(page).nth(3)).toHaveValue('34');
     });
 
     await test.step('Verify Tab moves focus to the Format', async () => {
@@ -466,6 +515,131 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
       await page.keyboard.press('Shift+Tab');
       await expect(locators.timeBoxes(page).nth(2)).toBeFocused();
+    });
+  });
+
+  test('Verify Format changing when value empty', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@time-picker'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
+    const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
+
+    await test.step('Verify Format can be changed by keyboard when nothing entered', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      const formatValue = (await formatButton.textContent())?.trim();
+      expect(formatValue).toBe('PM');
+    });
+
+    await test.step('Verify Format can be changed by mouse', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await formatButton.click();
+      const formatValue = (await formatButton.textContent())?.trim();
+      expect(formatValue).toBe('AM');
+    });
+  });
+
+  test('Verify valid time is logged to console when selecting from list or entering manually', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.FUNCTIONAL,
+      '@time-picker'],
+  }, async ({ page }) => {
+    const consoleMessages: string[] = [];
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        consoleMessages.push(msg.text());
+      }
+    });
+
+    await loadPage(page, 'stories/components/time-picker/tests/examples/interactive_examples.tsx', 'en', {
+      showOnChange: true,
+    });
+
+    await test.step('Verify selecting time from list logs valid time format', async () => {
+      consoleMessages.length = 0;
+
+      await page.keyboard.press('Tab');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await page.keyboard.press('Enter');
+      await locators.options(page).first().waitFor({ state: 'hidden' });
+
+      // Wait a bit for console messages
+      await page.waitForTimeout(100);
+
+      // Check that console contains "Returned value:" with valid time format HH:MM
+      const returnedValueMsg = consoleMessages.find((msg) => msg.startsWith('Returned value:'));
+      expect(returnedValueMsg).toBeTruthy();
+
+      // Extract time value from message (hours: 00-23, minutes: 00-59)
+      const timeMatch = returnedValueMsg?.match(/Returned value:\s*((?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])/);
+      expect(timeMatch).toBeTruthy();
+
+      const timeValue = timeMatch?.[1];
+      // Verify time format with leading zeros: 00-23:00-59
+      expect(timeValue).toMatch(/^(?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/);
+    });
+
+    await test.step('Verify manually entering time logs valid time format', async () => {
+      consoleMessages.length = 0;
+
+      await locators.timeBoxes(page).first().click();
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.type('06');
+
+      await locators.timeBoxes(page).nth(1).click();
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.type('06');
+
+      // Trigger onChange by pressing Tab to lose focus
+      await page.keyboard.press('Tab');
+
+      // Wait a bit for console messages
+      await page.waitForTimeout(200);
+
+      // Check that console contains "Returned value:" with valid time format
+      const returnedValueMsg = consoleMessages.find((msg) => msg.startsWith('Returned value:'));
+      expect(returnedValueMsg).toBeTruthy();
+
+      // Extract time value from message (hours: 00-23, minutes: 00-59)
+      const timeMatch = returnedValueMsg?.match(/Returned value:\s*((?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])/);
+      expect(timeMatch).toBeTruthy();
+
+      const timeValue = timeMatch?.[1];
+      // Verify time format with leading zeros: 00-23:00-59
+      expect(timeValue).toMatch(/^(?:0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/);
+      const [hours, minutes] = timeValue!.split(':').map(Number);
+      expect(hours).toBeGreaterThanOrEqual(0);
+      expect(hours).toBeLessThanOrEqual(23);
+      expect(minutes).toBeGreaterThanOrEqual(0);
+      expect(minutes).toBeLessThanOrEqual(59);
+    });
+
+    await test.step('Verify buttons also log valid time format', async () => {
+      consoleMessages.length = 0;
+      await page.getByRole('button', { name: 'Set to 9:00 AM' }).click();
+
+      // Wait a bit for console messages
+      await page.waitForTimeout(100);
+      const returnedValueMsg = consoleMessages.find((msg) => msg.includes('Returned value:'));
+      expect(returnedValueMsg).toBeTruthy();
+      expect(returnedValueMsg).toContain('09:00');
     });
   });
 });

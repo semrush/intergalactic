@@ -1,26 +1,19 @@
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { ButtonLink } from '@semcore/button';
+import { createComponent, Component, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Box } from '@semcore/flex-box';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
 import React from 'react';
 
-import style from './style/link-trigger.shadow.css';
-
 class RootLinkTrigger extends Component {
   static displayName = 'LinkTrigger';
-  static style = style;
-  static defaultProps = {
-    size: 'm',
-  };
 
-  static enhance = [resolveColorEnhance()];
-
-  getTextProps() {
+  getTextProps(props) {
     const { placeholder, empty } = this.asProps;
+    const content = empty ? placeholder : props.children;
+
     return {
-      placeholder,
+      'use:children': content,
       empty,
     };
   }
@@ -28,47 +21,27 @@ class RootLinkTrigger extends Component {
   render() {
     const SLinkTrigger = Root;
     const SLinkAddon = LinkTrigger.Addon;
-    const { Children, loading, styles, empty, color: providedColor, resolveColor } = this.asProps;
+    const { Children, loading, empty, disabled } = this.asProps;
 
-    const color = resolveColor(providedColor);
-
-    return sstyled(styles)(
+    return (
       <SLinkTrigger
-        render={Box}
-        tag='button'
-        type='button'
-        tabIndex={loading ? -1 : 0}
-        use:color={color}
+        render={ButtonLink}
+        use:disabled={disabled || loading}
       >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
           {loading ? <Spin size='xs' theme='currentColor' /> : <ChevronDown />}
         </SLinkAddon>
-      </SLinkTrigger>,
+      </SLinkTrigger>
     );
   }
 }
 
-function Text(props) {
-  const SText = Root;
-  const { children, styles, empty, placeholder } = props;
-
-  return sstyled(styles)(
-    /* "use:" prefix was used for backward compatibility (by lsroman) */
-    <SText render={Box} display-placeholder={empty}>
-      {empty ? placeholder : children}
-    </SText>,
-  );
-}
-
-function Addon(props) {
-  const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} />);
-}
-
 const LinkTrigger = createComponent(RootLinkTrigger, {
-  Text,
-  Addon,
+  Text: ButtonLink.Text,
+  Addon: ButtonLink.Addon,
+}, {
+  parent: ButtonLink,
 });
 
 export default LinkTrigger;

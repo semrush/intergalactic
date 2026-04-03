@@ -1,4 +1,4 @@
-import { PortalProvider } from '@semcore/portal';
+import { PortalProvider } from '@semcore/base-components';
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 

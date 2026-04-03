@@ -1,9 +1,8 @@
+import CheckM from '@semcore/icon/Check/m';
+import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
-import CheckM from '@semcore/ui/icon/Check/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -39,7 +38,7 @@ const Demo = () => {
 
           if (props.columnName === 'cpc') {
             return (
-              <Flex>
+              <Flex alignItems='flex-start'>
 
                 <Text noWrap={false}>
                   No Wrap False
@@ -60,11 +59,11 @@ const Demo = () => {
           }
           if (props.columnName === 'vol') {
             return (
-              <>
-                <Ellipsis>
+              <Flex alignItems='flex-start'>
+                <Text ellipsis={true} flex='1' w={100}>
                   {' '}
                   {props.value}
-                </Ellipsis>
+                </Text>
                 <Link
                   href='#'
                   target='_blank'
@@ -74,7 +73,7 @@ const Demo = () => {
                   color='gray-300'
                   ml={1}
                 />
-              </>
+              </Flex>
             );
           }
           return props.defaultRender();

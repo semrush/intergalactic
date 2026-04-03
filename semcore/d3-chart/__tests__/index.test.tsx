@@ -1,7 +1,6 @@
 import Icon from '@semcore/icon/Video/m';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
@@ -233,40 +232,6 @@ describe('XAxis', () => {
     expect(eventEmitter.emit).toHaveBeenCalledTimes(2); // onMouseMoveRoot, onMouseLeaveChart
     (window.requestAnimationFrame as any).mockRestore();
   });
-
-  test.concurrent(
-    'should support to render custom components as Axis tick value',
-    async ({ task }) => {
-      const size = 16;
-      const TickFormatter = (props: any): any => {
-        return (
-          <foreignObject
-            transform={`translate(${props.x - size / 2},${props.y + 8})`}
-            width={`${size}px`}
-            height={`${size}px`}
-          >
-            {props.index === 3 && props.value}
-            {props.value === 0 && 'INIT'}
-            {props.index !== 3 && props.value !== 0 && (props.value === 10 ? 'V' : <Icon />)}
-          </foreignObject>
-        );
-      };
-
-      const component = (
-        <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={120} height={130}>
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition='below'>
-              {({ value, x, y, index }: any) => ({
-                children: <TickFormatter value={value} x={x} y={y} index={index} />,
-              })}
-            </XAxis.Ticks>
-          </XAxis>
-        </Plot>
-      );
-
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    },
-  );
 });
 
 describe('utils', () => {
@@ -299,6 +264,7 @@ describe('Focus skip to content after plot', () => {
     const hints = makeDataHintsContainer();
 
     const PlotComponent: React.FC = () => {
+      const triggerRef = React.useRef(null);
       const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
@@ -306,12 +272,14 @@ describe('Focus skip to content after plot', () => {
           <div ref={plotRef}>
             <PlotA11yView
               id='plotView'
-              data={data}
+              payload={data}
               plotRef={plotRef}
               plotLabel='plot label'
               locale='en'
               config={{}}
               hints={hints}
+              triggerRef={triggerRef}
+              onCloseHandler={() => {}}
             />
           </div>
           <div className='one'>
@@ -333,7 +301,6 @@ describe('Focus skip to content after plot', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
 
     expect(getByTestId('focusableElement-1')).toHaveFocus();
@@ -349,6 +316,7 @@ describe('Focus skip to content after plot', () => {
     const hints = makeDataHintsContainer();
 
     const PlotComponent: React.FC = () => {
+      const triggerRef = React.useRef(null);
       const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
@@ -356,12 +324,14 @@ describe('Focus skip to content after plot', () => {
           <div ref={plotRef}>
             <PlotA11yView
               id='plotView'
-              data={data}
+              payload={data}
               plotRef={plotRef}
               plotLabel='plot label'
               locale='en'
               config={{}}
               hints={hints}
+              triggerRef={triggerRef}
+              onCloseHandler={() => {}}
             />
           </div>
           <div className='one'>
@@ -385,7 +355,6 @@ describe('Focus skip to content after plot', () => {
 
     const { getByTestId } = render(<PlotComponent />);
 
-    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');

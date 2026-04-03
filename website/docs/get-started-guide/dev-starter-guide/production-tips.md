@@ -7,7 +7,7 @@ Here you will find some tips for optimizing the library in production.
 
 ## CSS extract
 
-The styles in our library are ready to use and don't require any additional actions. They are applied automatically and added to the head of your application by inserting CSS into JavaScript.
+The styles in our library are ready to use and don't require any additional actions. They're applied automatically and added to the head of your application by inserting CSS into JavaScript.
 
 To speed up the load time and decrease TTI (time to interactive), separate JS and CSS. This will reduce the size of the JS files and will allow to load CSS and JavaScript in parallel decreasing the application launch time.
 
@@ -149,7 +149,7 @@ const html = `
 
 ### SSR via style extract
 
-This method will work for you if you are using the **@semcore/shadow-loader** package (see [CSS extract](#css-extract)).
+This method will work for you if you're using the **@semcore/shadow-loader** package (see [CSS extract](#css-extract)).
 
 If you use `CSS-extract`, it should already be configured. If you don't use it, go to the [CSS extract](#css-extract) section and follow the steps described. Once you've done that, all component styles will be collected in a separate chunk that needs to be included in HTML generated on the server.
 

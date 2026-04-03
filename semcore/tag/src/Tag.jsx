@@ -1,3 +1,4 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -5,27 +6,13 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
-import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
+import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tag.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-const legacyThemeRecommendedMigration = {
-  primary: {
-    muted: 'gray-500',
-    info: 'blue-500',
-    success: 'green-500',
-    warning: 'orange-500',
-    danger: 'red-500',
-  },
-  secondary: {
-    muted: 'gray-50',
-  },
-};
 
 class RootTag extends Component {
   static displayName = 'Tag';
@@ -39,17 +26,7 @@ class RootTag extends Component {
     locale: 'en',
   };
 
-  constructor(props) {
-    super(props);
-
-    logger.warn(
-      props.use,
-      `Property 'use' is deprecated, replace property to "theme='${props.use}' color='${
-        legacyThemeRecommendedMigration[props.use]?.[props.theme]
-      }'"`,
-      props['data-ui-name'] || Tag.displayName,
-    );
-  }
+  tagRef = React.createRef();
 
   getCircleProps() {
     const { size, color, resolveColor } = this.asProps;
@@ -63,6 +40,7 @@ class RootTag extends Component {
       tabIndex: -1,
       id: `${id}-text`,
       role: undefined,
+      tagRef: this.tagRef,
     };
   }
 
@@ -97,20 +75,23 @@ class RootTag extends Component {
     const isInteractive = !disabled && interactive;
 
     return sstyled(styles)(
-      <STag
-        render={Box}
-        id={id}
-        use:interactive={isInteractive}
-        use:interactiveView={isInteractiveView}
-        tag-color={resolveColor(color)}
-        onKeyDown={this.handleKeyDown}
-        use:tabIndex={isInteractive ? 0 : -1}
-        role={isInteractive ? 'button' : undefined}
-      >
-        {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-        {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
-        {addonRight ? <Tag.Addon tag={addonRight} /> : null}
-      </STag>,
+      <>
+        <STag
+          render={Box}
+          id={id}
+          use:interactive={isInteractive}
+          use:interactiveView={isInteractiveView}
+          tag-color={resolveColor(color)}
+          onKeyDown={this.handleKeyDown}
+          use:tabIndex={isInteractive ? 0 : -1}
+          role={isInteractive ? 'button' : undefined}
+          ref={this.tagRef}
+        >
+          {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
+          {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
+          {addonRight ? <Tag.Addon tag={addonRight} /> : null}
+        </STag>
+      </>,
     );
   }
 }
@@ -304,8 +285,16 @@ function TagContainerCircle(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag='span' />);
+  const { styles, tagRef } = props;
+
+  return sstyled(styles)(
+    <>
+      <SText
+        render={TypographyText}
+        hint:triggerRef={tagRef}
+      />
+    </>,
+  );
 }
 
 function Addon(props) {

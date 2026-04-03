@@ -1,11 +1,11 @@
+import BookM from '@semcore/icon/Book/m';
+import Chat from '@semcore/icon/Chat/m';
+import InfoM from '@semcore/icon/Info/m';
+import MathPlusM from '@semcore/icon/MathPlus/m';
+import SettingsM from '@semcore/icon/Settings/m';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import BookM from '@semcore/ui/icon/Book/m';
-import Chat from '@semcore/ui/icon/Chat/m';
-import InfoM from '@semcore/ui/icon/Info/m';
-import MathPlusM from '@semcore/ui/icon/MathPlus/m';
-import SettingsM from '@semcore/ui/icon/Settings/m';
 import Link from '@semcore/ui/link';
 import Header, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
@@ -96,10 +96,10 @@ const Demo = () => {
         Info Item
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={InfoM}
+            tag={ButtonLink}
+            addonLeft={InfoM}
             display='inline-flex'
             ml={1}
-            interactive
             color='icon-secondary-neutral'
             aria-label='About update rate'
           />

@@ -11,7 +11,7 @@ Typically, users encounter this state when certain actions are necessary to init
 **For instance, this state indicates:**
 
 - Inability to display data due to the user's lack of access to the required product, service, or account.
-- Absence of displayed data because the user has not yet created or configured anything within the product.
+- Absence of displayed data because the user hasn't yet created or configured anything within the product.
 - A placeholder for an upcoming feature, such as "An exciting report will be available here soon," which functions as a preview for future features.
 
 ## Appearance
@@ -35,7 +35,7 @@ As an option, consider adding a tertiary button that opens a dropdown with suppl
 
 ## Illustration
 
-You can create illustrations for specific scenarios. These illustrations should fulfill an advertising role while reflecting the core essence of the product that is currently concealed from the user.
+You can create illustrations for specific scenarios. These illustrations should fulfill an advertising role while reflecting the core essence of the product that's currently concealed from the user.
 
 ![](static/example-1.png)
 

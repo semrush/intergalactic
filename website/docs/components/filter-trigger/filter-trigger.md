@@ -74,7 +74,7 @@ Usually, the label is positioned inside the filter instead of next to it. Howeve
 
 ### Value in trigger
 
-In the filter trigger, it's essential to show the applied value in a way that is clear for users. For example, it can be shown as **"Lost in Top 100"** or as **"{Filter Name}: {value}"**.
+In the filter trigger, it's essential to show the applied value in a way that's clear for users. For example, it can be shown as **"Lost in Top 100"** or as **"{Filter Name}: {value}"**.
 
 ![](static/filter-yes-no.png)
 

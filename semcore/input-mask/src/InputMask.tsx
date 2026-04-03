@@ -1,10 +1,10 @@
+import { NeighborLocation, Box, Flex, ScreenReaderOnly } from '@semcore/base-components';
 import {
   createComponent,
   Component,
   sstyled,
   Root,
   type PropGetterFn,
-  type UnknownProperties,
   type Intergalactic,
 } from '@semcore/core';
 import fire from '@semcore/core/lib/utils/fire';
@@ -12,9 +12,7 @@ import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box, Flex, ScreenReaderOnly } from '@semcore/flex-box';
-import Input, { type InputProps, type IInputProps, type InputValueProps } from '@semcore/input';
-import NeighborLocation from '@semcore/neighbor-location';
+import Input, { type InputProps, type InputValueProps } from '@semcore/input';
 import React from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
 
@@ -22,14 +20,10 @@ import style from './style/input-mask.shadow.css';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
-/** @deprecated */
-export interface InputMaskAliases extends nputMaskAliases, UnknownProperties {}
-export type nputMaskAliases = {
+export type InputMaskAliases = {
   [s: string]: RegExp;
 };
 
-/** @deprecated */
-export interface IInputMaskValueProps extends InputMaskValueProps, UnknownProperties {}
 export type InputMaskValueProps = InputValueProps & {
   /**
    * Mask for entering text
@@ -105,7 +99,7 @@ export function getAfterPositionValue(value: string, mask: any = ''): number {
   return afterPotionValue;
 }
 
-class InputMask extends Component<IInputProps> {
+class InputMask extends Component<InputProps> {
   static displayName = 'InputMask';
   static style = style;
 
@@ -114,7 +108,7 @@ class InputMask extends Component<IInputProps> {
   }
 }
 
-class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance> {
+class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value: Array<(value?: string) => string> }> {
   static defaultProps = {
     includeInputProps: inputProps,
     defaultValue: '',

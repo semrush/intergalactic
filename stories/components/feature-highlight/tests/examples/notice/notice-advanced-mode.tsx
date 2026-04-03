@@ -1,6 +1,6 @@
+import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { ButtonFH, NoticeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -18,9 +18,8 @@ const Demo = () => {
           label={<SummaryAI />}
           title={<Text>New Feature Available</Text>}
           actions={<ButtonFH use='primary'>Try it now</ButtonFH>}
-        >
-          We've added AI-powered optimization to help you improve your domain performance.
-        </NoticeFH>
+          text="We've added AI-powered optimization to help you improve your domain performance."
+        />
       </Box>
 
       <Box>

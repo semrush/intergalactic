@@ -1,11 +1,7 @@
-import type { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 import type { BoxProps, FlexProps } from '../flex-box';
 
-/* utils type */
-
-/** @deprecated */
-export interface IColProps extends ColProps, UnknownProperties {}
 export type ColProps = BoxProps & {
   /** Column size */
   span?: number | boolean | Array<number | boolean>;
@@ -27,8 +23,6 @@ export type ColProps = BoxProps & {
   gutter?: number;
 };
 
-/** @deprecated */
-export interface IRowProps extends RowProps, UnknownProperties {}
 export type RowProps = FlexProps & {
   /**
    * Gutter between columns
@@ -37,13 +31,10 @@ export type RowProps = FlexProps & {
   gutter?: number;
 };
 
-type GridContext = {
+export type GridContext = {
   getColProps: PropGetterFn;
 };
 
-declare const Row: Intergalactic.Component<'div', RowProps, GridContext> & {
+export type RowType = Intergalactic.Component<'div', RowProps, GridContext> & {
   Col: Intergalactic.Component<'div', ColProps, RowProps>;
 };
-declare const Col: typeof Row.Col;
-
-export { Row, Col };

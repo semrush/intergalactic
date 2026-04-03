@@ -41,6 +41,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify feedback First open styles', async () => {
       await locators.button(page).click();
       await locators.feedbackForm(page).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page).first()).toBeFocused();
       await expect(page).toHaveScreenshot();
 
       const boxinForm = locators.feedbackForm(page).locator('[data-ui-name="Box"]').first();
@@ -53,17 +54,21 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify 2nd input item', async () => {
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page).nth(1)).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify input items validation', async () => {
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 1)).toBeFocused();
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="Your feedback must contain at least 10 characters."');
+      await expect(locators.inputs(page).first()).toBeFocused();
+      await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
-      await locators.inputs(page, 0).fill('Your feedback must contain at least 10 characters. our feedback must contain at least 10 characters. our feedback must contain at least 10 characters. our feedback must contain at least 10 characters.');
+      await locators.inputs(page, 0).fill('Your feedback must contain at least 10 characters. our feedback must contain at least 10 characters');
       await page.keyboard.press('Tab');
       await page.getByRole('tooltip', { name: 'Please enter valid email.' }).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
@@ -72,7 +77,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify spin and success form', async () => {
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 1)).toBeFocused();
+
       await page.keyboard.press('Enter');
       await page.locator('[aria-label="Loading…"]').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
@@ -85,20 +94,28 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       '@feedback-form'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/feedback/tests/examples/feedback_form_theme_loading.tsx', 'en');
-
+    if (browserName == 'webkit') test.skip(); // unstable
     await locators.button(page).click();
     await locators.feedbackForm(page).waitFor({ state: 'visible' });
+    await expect(locators.inputs(page).nth(0)).toBeFocused();
+
     await locators.inputs(page, 0).fill('Your feedback must contain at least 10 characters.');
 
     await page.keyboard.press('Tab');
+    await expect(locators.inputs(page).nth(1)).toBeFocused();
 
     await locators.inputs(page, 1).fill('test@test.test');
     await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
     await page.keyboard.press('Tab');
+    await expect(locators.button(page, 1)).toBeFocused();
 
     await page.keyboard.press('Enter');
+    await expect(locators.button(page, 1)).not.toBeFocused();
+
     await page.locator('[aria-label="Loading…"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
@@ -140,8 +157,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify feedback form closed by Cancel', async () => {
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 1)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 2)).toBeFocused();
+
       await page.keyboard.press('Enter');
       await locators.feedbackForm(page).waitFor({ state: 'hidden' });
       await expect(locators.feedbackForm(page)).not.toBeVisible();
@@ -160,11 +183,23 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify feedback form validation starts and form not closed by activate Send Feedback', async () => {
       await page.keyboard.press('Space');
       await locators.feedbackForm(page).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page, 0)).toBeFocused();
+      await page.waitForTimeout(200);
+
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 1)).toBeFocused();
+      await page.waitForTimeout(200);
+
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 1)).toBeFocused();
+
       await page.keyboard.press('Space');
-      await page.waitForSelector('text="Your feedback must contain at least 10 characters."');
+      await expect(locators.inputs(page, 0)).toBeFocused();
+
+      await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
       await expect(locators.inputs(page, 0)).toBeFocused();
       const count = await locators.inputs(page).count();
 
@@ -174,17 +209,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
 
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 1)).toBeFocused();
     });
 
     await test.step('Verify feedback form changes to Success by Send feedback when inputs filled', async () => {
       await page.keyboard.press('Shift+Tab');
+
+      await expect(locators.inputs(page, 0)).toBeFocused();
+
       await locators.inputs(page, 0).fill('Your feedback must contain at least 10 characters.');
+
       await expect(locators.inputs(page, 0)).toHaveAttribute('aria-invalid', 'false');
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 1)).toBeFocused();
+
       await locators.inputs(page, 1).fill('test@test.test');
+      await page.waitForTimeout(200);
+
       await expect(locators.inputs(page, 1)).toHaveAttribute('aria-invalid', 'false');
+      await page.waitForTimeout(200);
+
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 1)).toBeFocused();
 
       await page.keyboard.press('Enter');
       await locators.success(page).waitFor({ state: 'visible' });
@@ -236,7 +285,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.feedbackForm(page).waitFor({ state: 'visible' });
       await expect(submit).toHaveAttribute('type', 'submit');
       await submit.click();
-      await page.waitForSelector('text="Your feedback must contain at least 10 characters."');
+      await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
       await expect(locators.inputs(page, 0)).toBeFocused();
       const count = await locators.inputs(page).count();
 

@@ -48,6 +48,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
     await page.keyboard.press('Tab');
 
     await page.keyboard.press('Tab');
@@ -70,10 +71,19 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
+
     await page.keyboard.press('Tab');
+    await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
+
     await page.keyboard.press('ArrowDown');
+    await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
+
     await page.keyboard.press('ArrowDown');
+    await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
+
     await page.keyboard.press('Enter');
+    await expect(page.getByRole('radio').first()).toBeFocused();
     await page.keyboard.press('Space');
     await expect(page).toHaveScreenshot();
   });
@@ -93,6 +103,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify active hovered', async () => {
         await locators.button(page).click();
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await locators.stepperTabs(page).nth(0).hover();
         await expect(page).toHaveScreenshot();
       });
@@ -115,20 +127,37 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify Focus on the normal menu', async () => {
         await locators.stepperTabs(page).nth(5).click();
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Go to Photos')).toBeFocused();
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.stepperTabs(page, 5)).toBeFocused();
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify Focus on the submenu', async () => {
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 4)).toBeFocused();
+
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 3)).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify focus doesnt go on disabled element', async () => {
-        for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
+        for (let i = 0; i < 7; i++) {
+          await page.keyboard.press('ArrowDown');
+          await page.waitForTimeout(200);
+        }
         await expect(page).toHaveScreenshot();
+      });
+
+      await test.step('Verify disabled stepper has correct aria attributes', async () => {
+        const disabledStepper = locators.stepperTabs(page).nth(8);
+        await expect(disabledStepper).toHaveAttribute('aria-disabled', 'true');
+        await expect(disabledStepper).toHaveAttribute('tabindex', '-1');
       });
     });
 
@@ -148,6 +177,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Open modal and check all states look good', async () => {
         await locators.button(page).click();
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
@@ -173,20 +204,34 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify Focus on the active normal menu', async () => {
         await locators.stepperTabs(page).nth(5).click();
+
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Go to Photos')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.stepperTabs(page, 5)).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify Focus on the not active submenu', async () => {
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 4)).toBeFocused();
+
         await page.keyboard.press('ArrowUp');
+        await expect(locators.stepperTabs(page, 3)).toBeFocused();
+
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify focus doesnt go on disabled element', async () => {
-        for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowDown');
+        for (let i = 0; i < 6; i++) {
+          await page.keyboard.press('ArrowDown');
+          await page.waitForTimeout(200);
+        }
         await expect(page).toHaveScreenshot();
       });
     });
@@ -384,27 +429,29 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Open modal using keyboard and verify focus', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Keywords').waitFor({ state: 'visible' });
+        await locators.button(page, 'Keywords').waitFor({ state: 'visible', timeout: 5000 });
         await expect(locators.button(page, 'Close')).toBeFocused();
       });
 
       await test.step('Close modal using keyboard', async () => {
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Keywords').waitFor({ state: 'hidden' });
+        await locators.button(page, 'Keywords').waitFor({ state: 'hidden', timeout: 5000 });
         await expect(locators.button(page)).toBeFocused();
       });
 
       await test.step('Reopen and close modal with Escape key', async () => {
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Keywords').waitFor({ state: 'visible' });
+        await locators.button(page, 'Keywords').waitFor({ state: 'visible', timeout: 5000 });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Escape');
-        await locators.button(page, 'Keywords').waitFor({ state: 'hidden' });
+        await locators.button(page, 'Keywords').waitFor({ state: 'hidden', timeout: 5000 });
         await expect(locators.button(page)).toBeFocused();
       });
 
       await test.step('Verify keyboard navigation on 1st page by TAB after modal just opened', async () => {
         await page.keyboard.press('Enter');
-        await locators.button(page, 'Keywords').waitFor({ state: 'visible' });
+        await locators.button(page, 'Keywords').waitFor({ state: 'visible', timeout: 5000 });
 
         await expect(locators.button(page, 'Close')).toBeFocused();
         await page.keyboard.press('Tab');
@@ -463,14 +510,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await page.keyboard.press('ArrowUp');
         await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
+
         await page.keyboard.press('ArrowUp');
-        await page.keyboard.press('Enter');
+        await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
+
+        await page.keyboard.press('Space');
         await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
         await expect(locators.button(page, 'Keywords')).toBeFocused();
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowDown');
+        await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
+
         await page.keyboard.press('Space');
         await expect(locators.button(page, 'Location')).toBeFocused();
       });
@@ -539,6 +591,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify keyboard navigation on 1st page with inputs by TAB after modal just opened', async () => {
         await page.keyboard.press('Enter');
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
         await page.keyboard.press('Tab');
         await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
         await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
@@ -561,6 +614,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowDown');
+        await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
         await page.keyboard.press('Enter');
         await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
@@ -708,9 +762,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Close')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
         await page.keyboard.press('ArrowDown');
+        await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
+
         await page.keyboard.press('ArrowDown');
+        await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
+
         await page.keyboard.press('Enter');
         await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');

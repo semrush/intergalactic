@@ -58,6 +58,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Tab');
+    await locators.hint(page, 'Clear').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 

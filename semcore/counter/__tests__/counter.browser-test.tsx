@@ -8,6 +8,9 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
   const variables = [
+    { theme: 'warning', size: 's' },
+    { theme: 'danger', size: 's' },
+    { theme: 'info', size: 's' },
     { theme: 'warning', size: 'm' },
     { theme: 'danger', size: 'm' },
     { theme: 'info', size: 'm' },

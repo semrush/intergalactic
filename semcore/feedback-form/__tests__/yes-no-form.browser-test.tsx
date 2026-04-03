@@ -54,6 +54,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page, 0)).toBeFocused();
       await expect(page).toHaveScreenshot();
     });
 
@@ -79,6 +80,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify close notification hint', async () => {
       await page.keyboard.press('Escape');
+      await locators.success(page).waitFor({ state: 'hidden' });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -188,6 +190,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Shift+Tab');
       await expect(locators.button(page, 'Yes')).toBeFocused();
       await page.keyboard.press('Enter');
+      await expect(locators.inputs(page).first()).toBeFocused();
       await locators.dialog(page).waitFor({ state: 'visible' });
       await page.keyboard.press('Escape');
       await locators.dialog(page).waitFor({ state: 'hidden' });
@@ -197,13 +200,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify Success form appeard and closed by Escape', async () => {
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
+      await expect(locators.inputs(page).first()).toBeFocused();
+
       await page.keyboard.type('test test test');
 
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page).nth(1)).toBeFocused();
+
       await page.keyboard.type('test@test.test');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Send feedback')).toBeFocused();
 
       await expect(feedbackFormItem.first()).toHaveAttribute('aria-invalid', 'false');
       await expect(feedbackFormItem.first()).toHaveAttribute('name', 'feedback');

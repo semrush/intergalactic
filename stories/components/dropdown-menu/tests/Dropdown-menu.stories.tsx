@@ -8,8 +8,11 @@ import NestedMenuPropsExample, { defaultNestedMenuPropsExample } from './example
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';
 import SelectablePropsExample, { defaultDropDownSelectablePropsExample } from './examples/selectable-props';
+import WithContentOnPageExample from './examples/test-with-content-on-page';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
+import WithEllipsisExample, { defaultProps as defaultWithEllipsisProps } from './examples/with_ellipsis';
+import WithHintOnMovedReferenceExample from './examples/with_hint_on_moved_reference';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -45,6 +48,10 @@ const commonArgTypes = {
 
 export const WithFocusableTrigger: Story = {
   render: WithFocusableTriggerExample,
+};
+
+export const WithContentOnPage: Story = {
+  render: WithContentOnPageExample,
 };
 
 export const ListItemsType: Story = {
@@ -114,6 +121,37 @@ export const WithSearch: Story = {
   render: WithSearchExample,
 };
 
+export const WithEllipsis: StoryObj<typeof defaultWithEllipsisProps> = {
+  render: WithEllipsisExample,
+  argTypes: {
+    addExtraItems: {
+      control: { type: 'boolean' },
+      description: 'Add 5 extra menu items to enable scroll',
+    },
+    selectable: {
+      control: { type: 'boolean' },
+      description: 'Enable selectable mode',
+    },
+    multiselect: {
+      control: { type: 'boolean' },
+      description: 'Enable multiselect mode (requires selectable to be true)',
+    },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
+  },
+  args: defaultWithEllipsisProps,
+};
+
 export const OnVisible2nd: Story = {
   render: OnVisible2ndExample,
 };
@@ -130,4 +168,8 @@ export const NestedMenuProps: StoryObj<typeof defaultNestedMenuPropsExample> = {
     },
   },
   args: defaultNestedMenuPropsExample,
+};
+
+export const WithHintOnMovedReference: Story = {
+  render: WithHintOnMovedReferenceExample,
 };

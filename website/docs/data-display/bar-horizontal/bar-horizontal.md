@@ -82,7 +82,7 @@ Allocate space for category labels on both sides of the chart.
 ## Category labels
 
 - Y-axis labels use the primary text color (`--text-primary` token).
-- Use `ellipsis` for long labels, with tooltips showing the full name.
+- Use [ellipsis](../../utils/ellipsis/ellipsis) for long labels, with [hint](../../utils/hint/hint) showing the full name.
 
 ![](static/label.png)
 
@@ -129,7 +129,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Don't display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/na.png)
 

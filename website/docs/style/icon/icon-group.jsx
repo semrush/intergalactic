@@ -1,8 +1,9 @@
 import Copy from '@components/Copy';
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/base-components';
 import Pills from '@semcore/pills';
 import SidePanel from '@semcore/side-panel';
 import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 import styles from './styles.module.css';
@@ -25,7 +26,7 @@ const DownloadIconButton = ({ size, name, action, iconData, icon }) => {
   const Icon = icon[size];
 
   const getImportText = React.useCallback(() => {
-    const lib = '@semcore/ui';
+    const lib = '@semcore';
     const haveSizeIcon = iconData.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
@@ -129,9 +130,48 @@ export const IconDetailsPanel = ({ name, visible, onClose }) => {
   );
 };
 
-export const ListIcons = ({ data, ...props }) => {
+const IconItem = (props) => {
+  const { icon } = props;
   const { icons, selectedIcon, setSelectedIcon } = React.useContext(Context);
+  const buttonRef = React.useRef(null);
 
+  const Icon = icons[icon.name].m;
+  if (!Icon) {
+    console.error(`Icon ${icon.name} not found in import from @icons`);
+    return null;
+  }
+
+  return (
+    <li className={styles.previewIcon} key={icon.name}>
+      <button
+        ref={buttonRef}
+        type='button'
+        aria-haspopup='dialog'
+        aria-expanded={selectedIcon === icon.name}
+        aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
+        onClick={() => {
+          setSelectedIcon(icon.name);
+        }}
+        data-id={icon.name}
+        data-name='PanelTrigger'
+      >
+        <Icon width={20} height={20} />
+        <Text
+          ellipsis={true}
+          w={100}
+          display='inline-block'
+          size={200}
+          use='secondary'
+          hintProps={{ triggerRef: buttonRef }}
+        >
+          {icon.name}
+        </Text>
+      </button>
+    </li>
+  );
+};
+
+export const ListIcons = ({ data, ...props }) => {
   return (
     <ul
       className={styles.list}
@@ -139,29 +179,7 @@ export const ListIcons = ({ data, ...props }) => {
       aria-label={props['aria-label']}
     >
       {data.map((icon) => {
-        const Icon = icons[icon.name].m;
-        if (!Icon) {
-          throw new Error(`Icon ${icon.name} not found in import from @icons`);
-        }
-
-        return (
-          <li className={styles.previewIcon} key={icon.name}>
-            <button
-              type='button'
-              aria-haspopup='dialog'
-              aria-expanded={selectedIcon === icon.name}
-              aria-controls={selectedIcon === icon.name ? `${icon.name}-dialog` : undefined}
-              onClick={() => {
-                setSelectedIcon(icon.name);
-              }}
-              data-id={icon.name}
-              data-name='PanelTrigger'
-            >
-              <Icon width={20} height={20} />
-              {icon.name}
-            </button>
-          </li>
-        );
+        return (<IconItem key={icon.name} icon={icon} />);
       })}
     </ul>
   );

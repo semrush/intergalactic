@@ -1,7 +1,7 @@
+import CloseM from '@semcore/icon/Close/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Flag from '@semcore/ui/flags';
-import CloseM from '@semcore/ui/icon/Close/m';
 import Input from '@semcore/ui/input';
 import InputMask from '@semcore/ui/input-mask';
 import Select from '@semcore/ui/select';
@@ -135,7 +135,7 @@ const Demo = () => {
               <ButtonLink
                 use='secondary'
                 addonLeft={CloseM}
-                title='Clear'
+                aria-label='Clear'
                 onClick={() => setPhoneNumber(prefix)}
               />
             </Input.Addon>

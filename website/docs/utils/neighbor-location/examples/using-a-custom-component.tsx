@@ -1,4 +1,4 @@
-import NeighborLocation from '@semcore/neighbor-location';
+import { NeighborLocation } from '@semcore/ui/base-components';
 import React from 'react';
 
 const CustomComponent: React.FC<{ neighborLocation?: string }> = ({ neighborLocation }) => {

@@ -1,4 +1,4 @@
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/ui/base-components';
 import ProgressBar from '@semcore/ui/progress-bar';
 import type { ProgressBarProps } from '@semcore/ui/progress-bar';
 import React from 'react';

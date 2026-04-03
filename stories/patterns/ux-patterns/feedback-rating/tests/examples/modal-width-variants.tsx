@@ -133,7 +133,7 @@ const Demo = () => {
                 <>
                   We will only use this email to respond to you on your feedback.
                   {' '}
-                  <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
+                  <Link noWrap={true} href='https://www.semrush.com/company/legal/privacy-policy/'>
                     Privacy Policy
                   </Link>
                 </>

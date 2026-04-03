@@ -1,9 +1,8 @@
-import { createComponent, Component, Root, sstyled, type ComponentType } from '@semcore/core';
-import { assignProps } from '@semcore/core';
+import { Box, type BoxProps } from '@semcore/base-components';
+import { createComponent, Component, Root, sstyled, assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './donut.shadow.css';
@@ -12,13 +11,7 @@ import { ScoreDonutUtils } from '../../utils/ScoreDonutUtils';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
-type Enhances = {
-  resolveColor: ReturnType<typeof resolveColorEnhance>;
-  duration: ReturnType<typeof cssVariableEnhance>;
-  isSemiDonut?: true;
-};
-
-class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
+class DonutRoot extends Component<ScoreDonutProps, typeof DonutRoot.enhance> {
   static enhance = [
     cssVariableEnhance({
       variable: '--intergalactic-duration-extra-slow',
@@ -121,12 +114,11 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
   }
 }
 
-export const ScoreDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> =
-  createComponent(DonutRoot);
+export const ScoreDonut = createComponent<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>(DonutRoot);
 
 ScoreDonut.displayName = 'MiniChart.ScoreDonut';
 
-export const ScoreSemiDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> = createComponent(
+export const ScoreSemiDonut = createComponent<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>(
   DonutRoot,
   {},
   {

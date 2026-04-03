@@ -1,10 +1,13 @@
-import type { BoxProps } from '@semcore/ui/flex-box';
+import type { BoxProps } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExmapleProps = TextProps & BoxProps;
-const Demo = (props: ExmapleProps) => (
+type ExampleProps = TextProps & BoxProps & { formatTags: boolean };
+
+type DemoComponent = ((props: ExampleProps) => React.ReactElement) & { defaultProps?: Partial<ExampleProps> };
+
+const Demo: DemoComponent = (props) => (
   <>
     <div style={{ width: 200 }}>
       <Text
@@ -40,7 +43,7 @@ const Demo = (props: ExmapleProps) => (
   </>
 );
 
-export const defaultProps: TextProps = {
+export const defaultProps: ExampleProps = {
   size: undefined,
   noWrap: false,
   bold: false,

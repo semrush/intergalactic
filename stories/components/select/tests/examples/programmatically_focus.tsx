@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import Select from '@semcore/ui/select';
 import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

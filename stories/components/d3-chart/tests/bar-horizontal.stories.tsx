@@ -16,6 +16,7 @@ export const HorizontalBarProps: StoryObj = {
     barTransparent: { control: 'boolean' },
     maxBarSize: { control: { type: 'number', min: 10, max: 100, step: 5 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
+    primaryText: { control: 'boolean' },
   },
   args: HorizontalBarPropsDefaultProps,
 };

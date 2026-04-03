@@ -1,8 +1,8 @@
+import ArrowRightL from '@semcore/icon/ArrowRight/l';
+import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import CheckL from '@semcore/icon/Check/l';
+import CheckM from '@semcore/icon/Check/m';
 import type { ButtonProps } from '@semcore/ui/button';
-import ArrowRightL from '@semcore/ui/icon/ArrowRight/l';
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
-import CheckL from '@semcore/ui/icon/Check/l';
-import CheckM from '@semcore/ui/icon/Check/m';
 import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 

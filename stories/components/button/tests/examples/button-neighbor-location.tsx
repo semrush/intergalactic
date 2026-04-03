@@ -1,7 +1,7 @@
+import VideoListM from '@semcore/icon/VideoList/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-import VideoListM from '@semcore/ui/icon/VideoList/m';
 import React from 'react';
 
 type ExampleProps = ButtonProps & { style?: any };
@@ -58,11 +58,9 @@ export const defaultButtonNeighborProps: ExampleProps = {
   size: 'm',
   use: 'primary',
   theme: 'muted',
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  loading: undefined,
-  style: undefined,
+  style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
+
 };
 
 Demo.defaultProps = defaultButtonNeighborProps;

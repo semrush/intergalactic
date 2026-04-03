@@ -1,29 +1,21 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
+import type { LinkProps } from '@semcore/link';
+import type { TextProps } from '@semcore/typography';
 
-import type {
-  AbstractButtonAddonProps,
-  AbstractButtonContext,
-  AbstractButtonTextProps,
-  AbstractButtonProps,
-} from '../AbstractButton/AbstractButton.type';
+import type { ButtonContext } from '../Button/Button.type';
 
-/**
- *  Button link size
- */
-export type ButtonLinkSize = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
-/**
- *  Button link type
- * @default primary
- */
-type Use = 'primary' | 'secondary';
+export type ButtonLinkProps = Intergalactic.InternalTypings.EfficientOmit<LinkProps, 'enableVisited'> & {
+  /**
+   *  Button link type
+   * @default primary
+   */
+  use?: 'primary' | 'secondary';
+};
 
-export type ButtonLinkProps = AbstractButtonProps<ButtonLinkSize, Use, never>;
+export type ButtonLinkTextProps = TextProps;
 
-export type ButtonLinkTextProps = AbstractButtonTextProps<ButtonLinkSize>;
-
-export type ButtonLinkAddonProps = AbstractButtonAddonProps<ButtonLinkSize>;
-
-export type ButtonLinkContext = AbstractButtonContext;
+export type ButtonLinkAddonProps = BoxProps;
 
 export type ButtonLinkChildren = {
   Text: Intergalactic.Component<'span', ButtonLinkTextProps>;
@@ -33,8 +25,5 @@ export type ButtonLinkChildren = {
 export type ButtonLinkComponent = Intergalactic.Component<
   'button',
   ButtonLinkProps,
-  ButtonLinkContext
-> & {
-  Text: Intergalactic.Component<'span', ButtonLinkTextProps>;
-  Addon: Intergalactic.Component<'span', ButtonLinkAddonProps>;
-};
+  ButtonContext
+> & ButtonLinkChildren;

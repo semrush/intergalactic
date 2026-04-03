@@ -1,7 +1,7 @@
+import NotificationM from '@semcore/icon/Notification/m';
 import Button from '@semcore/ui/button';
 import { AnimatedNumber } from '@semcore/ui/counter';
 import Dot from '@semcore/ui/dot';
-import NotificationM from '@semcore/ui/icon/Notification/m';
 import React from 'react';
 
 const notificationsCount = 18;

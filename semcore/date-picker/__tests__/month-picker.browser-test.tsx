@@ -146,7 +146,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify trigger svg attributes', async () => {
         const svg = locators.monthPickerTrigger(page).locator('svg');
         const svgAttributes = [
-          ['tabindex', '-1'],
           ['aria-hidden', 'true'],
           ['width', '16'],
           ['height', '16'],
@@ -372,7 +371,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
-        await page.keyboard.press('ArrowRight');// because of bug UIK-4652
+        await page.keyboard.press('ArrowRight'); // because of bug UIK-4652
         await page.keyboard.press('Space');
 
         await locators.button(page, 'Previous year').waitFor({ state: 'hidden' });

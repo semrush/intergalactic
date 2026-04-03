@@ -18,7 +18,7 @@ You can add addons to the Tag component in two ways: by passing the desired tag 
 
 ## Custom color
 
-You can set custom color to the tag using `color` property. 
+You can set custom color to the tag using `color` property.
 
 ::: tip
 We recommend to use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens), since they have the necessary contrast between the text and background. Background color for all states and color for icon inside the tag is calculated with CSS filter.

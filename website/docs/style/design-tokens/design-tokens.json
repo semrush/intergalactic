@@ -61,9 +61,7 @@
     "computedValue": "#008ff8",
     "description": "Accent background of the message with regular information.",
     "components": [
-      "base-trigger",
-      "counter",
-      "notice-global"
+      "counter"
     ]
   },
   {
@@ -72,9 +70,7 @@
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
     "description": "Accent background of the message or banner with information about the successful result.",
-    "components": [
-      "notice-global"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-critical",
@@ -84,8 +80,7 @@
     "description": "Accent background of a message or a banner with a critical information.",
     "components": [
       "counter",
-      "notice-bubble",
-      "notice-global"
+      "notice-bubble"
     ]
   },
   {
@@ -95,8 +90,7 @@
     "computedValue": "#ff642d",
     "description": "Accent background of a message or a banner with a warning information.",
     "components": [
-      "counter",
-      "notice-global"
+      "counter"
     ]
   },
   {
@@ -121,9 +115,7 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Accented muted background for a message with regular information.",
-    "components": [
-      "notice-global"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-invert",
@@ -372,6 +364,7 @@
     "description": "Primary text.",
     "components": [
       "accordion",
+      "badge",
       "base-components",
       "base-trigger",
       "breadcrumbs",
@@ -386,7 +379,6 @@
       "dropdown-menu",
       "errors",
       "feature-popover",
-      "format-text",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -424,7 +416,6 @@
       "dropdown",
       "dropdown-menu",
       "flags",
-      "format-text",
       "fullscreen-modal",
       "pills",
       "slider",
@@ -489,13 +480,14 @@
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary text.",
     "components": [
+      "badge",
+      "base-components",
       "button",
       "date-picker",
       "dot",
       "feature-highlight",
       "feature-popover",
       "notice-bubble",
-      "notice-global",
       "tag",
       "tooltip",
       "wizard"
@@ -516,9 +508,7 @@
     "computedValue": "#006dca",
     "description": "Link text.",
     "components": [
-      "base-trigger",
       "button",
-      "format-text",
       "link",
       "pagination",
       "tab-panel",
@@ -532,9 +522,7 @@
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
     "components": [
-      "base-trigger",
       "button",
-      "format-text",
       "link",
       "tab-panel",
       "typography"
@@ -565,7 +553,6 @@
     "computedValue": "#8649e1",
     "description": "Visited link text.",
     "components": [
-      "button",
       "link"
     ]
   },
@@ -577,8 +564,7 @@
     "description": "Hint link text.",
     "components": [
       "button",
-      "d3-chart",
-      "format-text"
+      "d3-chart"
     ]
   },
   {
@@ -589,7 +575,6 @@
     "description": "Hover and active states of the hint link text.",
     "components": [
       "button",
-      "format-text",
       "typography"
     ]
   },
@@ -854,6 +839,7 @@
     "computedValue": "#6c6e79",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
+      "base-components",
       "tooltip"
     ]
   },
@@ -1286,7 +1272,6 @@
       "carousel",
       "drag-and-drop",
       "feature-highlight",
-      "format-text",
       "fullscreen-modal",
       "notice",
       "typography"
@@ -1408,7 +1393,6 @@
     "components": [
       "breadcrumbs",
       "carousel",
-      "format-text",
       "inline-input",
       "input",
       "input-number",
@@ -2244,6 +2228,7 @@
     "computedValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
     "description": "Default shadow of all Poppers, Dropdowns and Tooltips.",
     "components": [
+      "base-components",
       "d3-chart",
       "dropdown",
       "feature-popover",
@@ -2583,6 +2568,7 @@
     "computedValue": "#191b23",
     "description": "Inverted version of the default Tooltip background.",
     "components": [
+      "base-components",
       "tooltip"
     ]
   },

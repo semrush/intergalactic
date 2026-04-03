@@ -1,8 +1,8 @@
+import VideoListM from '@semcore/icon/VideoList/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
-import VideoListM from '@semcore/ui/icon/VideoList/m';
 import React from 'react';
 
 type ExampleProps = ButtonProps & { style?: any };
@@ -88,7 +88,7 @@ const Demo = (props: ExampleProps) => {
         >
           <Button.Text>Button with Badge</Button.Text>
           <Button.Addon>
-            <Badge bg='--intergalactic-control-primary-success'>new</Badge>
+            <Badge type='new' />
           </Button.Addon>
         </Button>
       </Flex>
@@ -101,11 +101,8 @@ export const defaultButtonProps: ExampleProps = {
   size: 'm',
   use: 'primary',
   theme: 'muted',
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  loading: undefined,
-  style: undefined,
+  style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
 };
 
 Demo.defaultProps = defaultButtonProps;

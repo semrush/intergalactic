@@ -71,5 +71,5 @@ In addition, we offer libraries for internal use, which are accessible solely to
 ::: tip
 All Semrush product designers have an editing access to the libraries containing UI illustrations, patterns, experiments, and email templates.
 
-As a result, if you create any new illustrations, patterns, or email templates, you are encouraged to add them to the libraries through Figma branches. By doing so, you will facilitate your colleagues in finding readily usable illustrations, icons, and email templates in the future.
+As a result, if you create any new illustrations, patterns, or email templates, you're encouraged to add them to the libraries through Figma branches. By doing so, you will facilitate your colleagues in finding readily usable illustrations, icons, and email templates in the future.
 :::

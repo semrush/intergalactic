@@ -218,12 +218,6 @@ const group = {
     disabled: false,
     type: 'components',
   },
-  noticeGlobal: {
-    title: 'NoticeGlobal',
-    route: '../../components/notice-global/notice-global',
-    disabled: false,
-    type: 'components',
-  },
   pagination: {
     title: 'Pagination',
     route: '../../components/pagination/pagination',

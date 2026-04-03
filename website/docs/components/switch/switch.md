@@ -50,7 +50,7 @@ Table: Switch themes
 
 ## Switch with icon
 
-For larger sizes of the component (`l` and `xl`), you have the option to include an icon within the `Switch.Value`. It is recommended to use different icons for the off and on states.
+For larger sizes of the component (`l` and `xl`), you have the option to include an icon within the `Switch.Value`. It's recommended to use different icons for the off and on states.
 
 Table: Icon inside the Switch.Value
 

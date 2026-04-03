@@ -4,17 +4,27 @@ fileSource: tooltip
 tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
+::: tip New component 🎉
+**Hint** is now separate from **Tooltip**. You can find its documentation in [Utils/Hint](../../utils/hint/hint).
+:::
+
 <Playground for="Tooltip" />
 
 ## Description
 
-**Tooltip** is a component used to display various tips and hints, and serves as a wrapper over the [Popper](/utils/popper/popper) component.
+**Tooltip** is a component used to display additional information about features and data.
 
-Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
+Differences between Tooltip, [Hint](../../utils/hint/hint), DescriptionTooltip ([Informer pattern](../../patterns/informer/informer)), and [Dropdown](/components/dropdown/dropdown):
 
-- Tooltip usually appears when hovering over the trigger (except for the [Informer pattern](../../patterns/informer/informer)).
-- It has an arrow pointing to the trigger.
-- Tooltip only provides additional information about the feature, it doesn't contain any settings or commands.
+|                                                   | Tooltip                                                          | Hint                                                        | DescriptionTooltip                                                             | Dropdown                                   |
+| ------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------ |
+| Contains                                          | Element's additional description ![](./static/tooltip-basic.png) | Element's name, if hidden or cropped ![](./static/hint.png) | Extra information about features or data ![](./static/description-tooltip.png) | Forms, settings ![](./static/dropdown.png) |
+| Can contain interactive elements                  | ❌ No                                                            | ❌ No                                                       | ✅ Yes                                                                         | ✅ Yes                                     |
+| Trigger is the same element the tooltip describes | ✅ Yes                                                           | ✅ Yes                                                      | ❌ No                                                                          | —                                          |
+| Appears on                                        | Hover/focus                                                      | Hover/focus                                                 | Click/Enter                                                                    | Click/Enter                                |
+| Has an arrow                                      | ✅ Yes                                                           | ❌ No                                                       | ✅ Yes                                                                         | ❌ No                                      |
+
+Read more about the differences between **Tooltip** and **DescriptionTooltip** in [Interaction](#interaction) and [Content](#content).
 
 ## Component composition
 
@@ -24,15 +34,9 @@ It's useful to keep in mind that in code tooltips consist of two main parts:
 
 ![](static/tooltip-composition.png)
 
-Trigger and Popper behave differently depending on which component is used in the code — `Tooltip`, `Hint` or `DescriptionTooltip`, and you should choose the appropriate component according to your use case. Read about the differences in [Interaction](#interaction) and [Content](#content).
-
 ## Themes
 
 Tooltip has three themes: `default`, `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert`, and the background color changes accordingly.
-
-::: tip
-Starting from [version 3.1.0](/components/tooltip/tooltip-changelog), you can set your own custom theme and change the background color.
-:::
 
 Table: Tooltip themes
 
@@ -98,14 +102,16 @@ The default tooltip placement is `top`.
 
 ## Interaction
 
-For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon), [Link component](/components/link/link), [Button](/components/button/button), etc.
+**Tooltip** is usually triggered by an interactive element, such as a [table header](../../table-group/data-table/data-table#tooltip), a [Button](../button/button), or a [Link](../link/link). Avoid using tooltips with non-interactive triggers like plain text and disabled controls: this makes tooltips inaccessible for keyboard and screen reader users.
+
+**DescriptionTooltip** should have a separate trigger, such as a [ButtonLink with an Info icon](../../patterns/informer/informer) or a [ButtonLink](../button/button#button-with-link-styles) with "Learn more" text.
 
 ### Appearance and hiding
 
-`Hint` and `Tooltip` appear on hover and hide when cursor leaves both the trigger and the popper. If the trigger is focusable, they also appear on focus and hide on unfocus or Esc.
+**Tooltip** appears on hover and hides when cursor leaves both the trigger and the popper. If the trigger is focusable, it also appear on focus and hide on unfocus or `Esc`.
 ![](static/hover-2.png)
 
-`DescriptionTooltip` appears on click or Space/Enter, and hides when user clicks or moves focus outside of both trigger and popper, or presses Esc.
+**DescriptionTooltip** appears on click or Space/Enter, and hides when user clicks or moves focus outside of both trigger and popper, or presses `Esc`.
 
 ### Delay of appearance and hiding
 
@@ -122,11 +128,14 @@ Tooltip content is closely related to its behavior, so you should choose the app
 
 Table: Tooltip content
 
-| Component | Tooltip function | Content |
-| --------- | ---------------- | ------- |
-| `Hint` | Show a label for an interactive element without visible text | Very short unformatted text reflecting an action or element's name, for example, "Export", "Settings". ![](static/hint.png) |
-| `Tooltip` | Show additional information about an element with a visible label | Short unformatted text, preferably no more than one sentence. ![](static/tooltip-basic.png) |
-| `DescriptionTooltip` | Show information that's related not to the trigger itself, but to another element or the feature in general ([Informer pattern](../../patterns/informer/informer))  | Any amount of text, formatted or unformatted. Can include images, links, buttons and other element. ![](static/tooltip-advanced-2.png) |
+| Component            | Function                                                                                                                                                           | Content                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tooltip`            | Show additional information about an element with a visible label                                                                                                  | Short unformatted text, preferably no more than one sentence. ![](static/tooltip-basic.png)                                            |
+| `DescriptionTooltip` | Show information that's related not to the trigger itself, but to another element or the feature in general ([Informer pattern](../../patterns/informer/informer)) | Any amount of text, formatted or unformatted. Can include images, links, buttons and other element. ![](static/description-tooltip.png) |
+
+::: tip
+For complex content and forms, use [Dropdown](/components/dropdown/dropdown).
+:::
 
 ## Usage in UX/UI
 
@@ -135,11 +144,7 @@ Main recommendations:
 - Use the tooltip to show hints and additional information only. Avoid adding complex functionality inside it.
 - Ensure that the tooltip doesn't overlap important information for the user.
 
-::: tip
-For complex content and forms, use [DropdownMenu](/components/dropdown-menu/dropdown-menu).
-:::
-
-**If the tooltip trigger conveys information about a new feature, avoid duplicating the trigger text in the tooltip title.** The title may not be necessary if the trigger text already explains the tooltip content.
+**Avoid duplicating the trigger text in the tooltip title.** The title may not be necessary if the trigger text already explains the tooltip content.
 
 ![](static/tooltip-trigger-yes-no.png)
 

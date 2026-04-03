@@ -52,7 +52,7 @@ Table: Tag themes
 
 #### Tag colors
 
-To change tag color, use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens), since they are selected with the 60Lc contrast (according to APCA) between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
+To change tag color, use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens), since they're selected with the 60Lc contrast (according to APCA) between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
 
 In the case where you use other colors to color the tag, make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color-and-contrast).
 
@@ -74,7 +74,7 @@ Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and
 
 ![](static/add-loading-L.png)
 
-If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` should display a tooltip with the full tag label.
+If space is limited, text in tags should be truncated with [ellipsis](../../utils/ellipsis/ellipsis). Hovering over a tag with an `ellipsis` should display a [hint](../../utils/hint/hint) with the full tag label.
 
 ## Grouped tags
 
@@ -92,7 +92,7 @@ For editable tags, use the [InlineInput](/components/inline-input/inline-input) 
 
 ## Long text
 
-You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be collapsed with an `ellipsis`, and hovering over the tag will show a tooltip with the full tag label.
+You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be truncated with an [ellipsis](../../utils/ellipsis/ellipsis), and hovering over the tag will show a [hint](../../utils/hint/hint) with the full tag label.
 
 ![](static/ellipsis.png)
 

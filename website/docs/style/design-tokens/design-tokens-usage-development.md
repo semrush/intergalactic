@@ -13,7 +13,7 @@ Design tokens help ensure consistent visual choices and behavior across the desi
 - Design tokens add a centralized approach to updating the design system look and feel, making it easier to ensure that all updates are made in a controlled and deliberate manner. -->
 
 ::: tip
-If you can't find the token you are looking for, we recommend you to double-check the existing ones. If it's really missing, you can drop us a line with a request to add a new entity.
+If you can't find the token you're looking for, we recommend you to double-check the existing ones. If it's really missing, you can drop us a line with a request to add a new entity.
 :::
 
 ### How to apply theme globally

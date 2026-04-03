@@ -1,4 +1,4 @@
-import { hideScrollBarsFromScreenReadersContext } from '@semcore/base-components';
+import { hideScrollBarsFromScreenReadersContext, useBox, isInputTriggerTag } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import { createComponent, Root, sstyled, lastInteraction } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
@@ -9,8 +9,7 @@ import logger from '@semcore/core/lib/utils/logger';
 import Divider from '@semcore/divider';
 import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { useBox } from '@semcore/flex-box';
-import { isInputTriggerTag } from '@semcore/popper';
+import { Text } from '@semcore/typography';
 import cn from 'classnames';
 import React from 'react';
 
@@ -53,7 +52,6 @@ class RootSelect extends AbstractDropdown {
 
     return {
       placeholder: props.multiselect ? 'Select options' : 'Select option',
-      size: 'm',
       defaultValue: getEmptyValue(props.multiselect),
       defaultVisible: false,
       defaultHighlightedIndex: props.highlightedIndex ?? defaultIndex,
@@ -390,14 +388,21 @@ function Menu(props) {
 const optionPropsContext = React.createContext({});
 function Option(props) {
   const SSelectOption = Root;
-  const { styles, Children } = props;
+  const { styles, Children, highlighted } = props;
+  const itemRef = React.useRef(null);
 
   const hasCheckbox = isAdvanceMode(Children, [Select.Option.Checkbox.displayName]);
   const hasContent = isAdvanceMode(Children, [Select.Option.Content.displayName]);
 
+  const optionPropsContextValue = {
+    ...props,
+    itemRef,
+    highlighted,
+  };
+
   return sstyled(styles)(
-    <SSelectOption render={Dropdown.Item}>
-      <optionPropsContext.Provider value={props}>
+    <SSelectOption render={Dropdown.Item} ref={itemRef}>
+      <optionPropsContext.Provider value={optionPropsContextValue}>
         {hasCheckbox && !hasContent
           ? (
               <Select.Option.Content>
@@ -444,6 +449,30 @@ function Checkbox(providedProps) {
   );
 }
 
+function OptionText(providedProps) {
+  const optionProps = React.useContext(optionPropsContext);
+  const selectedIndex = React.useContext(selectedIndexContext);
+  const props = React.useMemo(
+    () => ({
+      key: optionProps?.id,
+      selected: optionProps?.selected,
+      disabled: optionProps?.disabled,
+      size: optionProps?.size,
+      ...(providedProps || {}),
+    }),
+    [providedProps, optionProps],
+  );
+
+  return sstyled(props.styles)(
+    <Text
+      {...props}
+      hint:triggerRef={optionProps.itemRef}
+      hint:visible={selectedIndex === optionProps.index}
+      hint:placement='right'
+    />,
+  );
+}
+
 const InputSearchWrapper = function () {
   return <Root render={InputSearch} />;
 };
@@ -466,13 +495,12 @@ const Select = createComponent(
       {
         Addon: DropdownMenu.Item.Addon,
         Content: DropdownMenu.Item.Content,
+        Text: OptionText,
         Hint: DropdownMenu.Item.Hint,
         Checkbox,
       },
     ],
     Group: Dropdown.Group,
-    OptionTitle: DropdownMenu.ItemTitle,
-    OptionHint: DropdownMenu.ItemHint,
     Divider,
     InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
     Input: [InputSearchWrapper, InputSearch._______childrenComponents],

@@ -1,9 +1,9 @@
+import SettingsM from '@semcore/icon/Settings/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Counter from '@semcore/ui/counter';
 import DnD from '@semcore/ui/drag-and-drop';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
-import SettingsM from '@semcore/ui/icon/Settings/m';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';

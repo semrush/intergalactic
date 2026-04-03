@@ -55,8 +55,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@filter-trigger',
-        '@tooltip',
-        '@icon'],
+        '@tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/with-addons.tsx', 'en', item);
 
@@ -122,11 +121,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger-ellipsis.tsx', 'en');
-
-    await expect(page).toHaveScreenshot();
+    await page.waitForTimeout(200);
 
     await locators.trigger(page).nth(1).hover();
-    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
   });
 
@@ -161,12 +165,19 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('Clear').waitFor({ state: 'visible' });
+    await locators.hint(page).waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('Clear tooltip').waitFor({ state: 'visible' });
+    await expect(locators.hint(page)).toHaveCount(1);
+    await expect(locators.hint(page)).toHaveText('Clear text');
   });
 });
 
@@ -444,15 +455,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const button = page.getByRole('combobox', { name: 'Material' });
 
       await expect(button).toHaveAttribute('value', 'Glass,Metal,Paper');
-      await expect(button.locator('div[data-ui-name="FilterTrigger.Text"]')).toContainText(
+      await expect(button.locator('[data-ui-name="FilterTrigger.Text"]')).toContainText(
         '3 selected',
       );
 
-      const textSpan = button.locator('div[data-ui-name="FilterTrigger.Text"] span');
+      const textSpan = button.locator('[data-ui-name="FilterTrigger.Text"] span');
       await expect(textSpan).toHaveAttribute('aria-hidden', 'true');
 
       await locators.clearButton(page).click();
-      await expect(button.locator('div[data-ui-name="FilterTrigger.Text"]')).not.toContainText(
+      await expect(button.locator('[data-ui-name="FilterTrigger.Text"]')).not.toContainText(
         '3 selected',
       );
     });

@@ -1,10 +1,10 @@
-import type { Intergalactic, UnknownProperties } from '@semcore/core';
 import type {
   PopperContext,
   PopperProps,
   PopperTriggerProps,
   eventInteraction,
-} from '@semcore/popper';
+} from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 export type ArrowCustom = {
@@ -12,8 +12,6 @@ export type ArrowCustom = {
   arrowShadowColor?: string;
 };
 
-/** @deprecated */
-export interface ITooltipProps extends TooltipProps, UnknownProperties {}
 export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperProps, 'interaction'> &
   PopperTriggerProps & {
     /**
@@ -38,8 +36,7 @@ export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperPro
 export type TooltipTriggerContext = PopperContext & {
   popperId?: string;
 };
-/** @deprecated */
-export interface ITooltipContext extends TooltipContext, UnknownProperties {}
+
 export type TooltipContext = PopperContext & {};
 
 declare const Tooltip: Intergalactic.Component<'div', TooltipProps, TooltipContext> & {
@@ -63,18 +60,13 @@ PopperTriggerProps & {
   theme?: 'default' | 'invert';
 };
 export type TooltipHintPopperProps = Intergalactic.InternalTypings.EfficientOmit<
-  HintProps,
+  TooltipHintProps,
   'title'
 >;
 
-/** @deprecated, use `TooltipHintProps` instead */
-export type HintProps = TooltipHintProps;
-/** @deprecated, use `TooltipHintPopperProps` instead */
-export type HintPopperProps = TooltipHintPopperProps;
-
-declare const Hint: Intergalactic.Component<'div', HintProps, TooltipTriggerContext> & {
+declare const Hint: Intergalactic.Component<'div', TooltipHintProps, TooltipTriggerContext> & {
   Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
-  Popper: Intergalactic.Component<'div', HintPopperProps & ArrowCustom, TooltipContext>;
+  Popper: Intergalactic.Component<'div', TooltipHintPopperProps & ArrowCustom, TooltipContext>;
 };
 
 export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmit<
@@ -126,4 +118,8 @@ declare const DescriptionTooltip: Intergalactic.Component<
 };
 
 export default Tooltip;
-export { Hint, DescriptionTooltip };
+export {
+  /** @deprecated. Use Hint component from @semcore/base-components */
+  Hint,
+  DescriptionTooltip,
+};

@@ -80,36 +80,4 @@ describe('NoticeBubbleContainer', () => {
     notice.remove();
     document.body.removeChild(customContainer);
   });
-
-  test('Verify notices render in custom container via ref when containerNode is RefObject', async () => {
-    const TestComponent = () => {
-      const containerRef = React.useRef<HTMLDivElement>(null);
-      const [manager] = React.useState(() => new NoticeBubbleManager());
-
-      React.useEffect(() => {
-        manager.add({
-          type: 'info',
-          children: 'Notice via ref',
-          initialAnimation: false,
-        });
-      }, [manager]);
-
-      return (
-        <>
-          <div ref={containerRef} data-testid='ref-container' />
-          <NoticeBubbleContainer containerNode={containerRef} manager={manager} />
-        </>
-      );
-    };
-
-    const { getByTestId } = render(<TestComponent />);
-
-    const refContainer = getByTestId('ref-container');
-
-    await waitFor(() => {
-      const noticeInRefContainer = refContainer.querySelector('[aria-live="polite"]');
-      expect(noticeInRefContainer).toBeTruthy();
-      expect(noticeInRefContainer?.textContent).toContain('Notice via ref');
-    });
-  });
 });

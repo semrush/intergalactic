@@ -8,7 +8,6 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
     await test.step('Navigate to select trigger and verify combobox announcement', async () => {
       await nvda.next();
-      await nvda.next();
       const trigger = await nvda.itemText();
       expect(trigger).toContain('combo box, collapsed');
     });
@@ -38,7 +37,6 @@ test.describe(`@select ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/select/docs/examples/multiselect.tsx', 'en');
 
     await test.step('Navigate to multiselect trigger and verify announcement', async () => {
-      await nvda.next();
       await nvda.next();
       const trigger = await nvda.itemText();
       expect(trigger).toContain('combo box, collapsed');

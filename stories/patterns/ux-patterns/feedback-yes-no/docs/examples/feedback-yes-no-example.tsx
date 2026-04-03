@@ -1,10 +1,10 @@
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import FeedbackIllustration from '@semcore/illustration/Feedback';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
 import FeedbackForm from '@semcore/ui/feedback-form';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
-import FeedbackIllustration from '@semcore/ui/illustration/Feedback';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import Notice from '@semcore/ui/notice';
@@ -143,14 +143,17 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Cancel onClick={onCancel}>Cancel</FeedbackForm.Cancel>
           </Flex>
         </Box>
-        <FeedbackForm.Notice hidden={status === 'failed'}>
-          You can also send us an email to
-          {' '}
-          <Link>some.team@domain.com</Link>
-        </FeedbackForm.Notice>
-        <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger'>
-          Your message has not been sent.
-        </FeedbackForm.Notice>
+        <FeedbackForm.Notice
+          hidden={status === 'failed'}
+          text={(
+            <>
+              You can also send us an email to
+              {' '}
+              <Link>some.team@domain.com</Link>
+            </>
+          )}
+        />
+        <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger' text='Your message has not been sent.' />
       </FeedbackForm>
     );
   }

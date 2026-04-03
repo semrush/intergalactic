@@ -49,7 +49,7 @@ Table: Common styles for table content
 
 You can use [Tooltip](../../components/tooltip/tooltip.md) to display additional information about a column.
 
-![](static/tooltip-2.png)
+![](static/tooltip.png)
 
 ### Long titles
 
@@ -57,9 +57,9 @@ By default, long column titles wrap to the next line.
 
 ![](static/header-text-wrap.png)
 
-Alternatively, if the space is limited, you can disable text wrap and truncate the title with [Ellipsis](../../components/ellipsis/ellipsis.md), showing the full text on hover.
+Alternatively, if the space is limited, you can disable text wrap and truncate the title with [ellipsis](../../utils/ellipsis/ellipsis), showing the full text on hover.
 
-![](static/tooltip-1.png)
+![](static/hint.png)
 
 ### Sticky header
 

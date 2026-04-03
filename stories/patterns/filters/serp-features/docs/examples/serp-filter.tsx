@@ -1,8 +1,7 @@
+import ReloadIcon from '@semcore/icon/Reload/m';
 import { Flex, Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import Ellipsis from '@semcore/ui/ellipsis';
-import ReloadIcon from '@semcore/ui/icon/Reload/m';
 import Select, { InputSearch } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -25,7 +24,7 @@ const serpFeatures = [
   'Hotel Pack',
   'Job Listings',
   'Google Ads',
-  'Shopping Ads (Product Listing Ads)',
+  'Shopping Ads (Product Listing Ads Block)',
   'Rich Snippets',
 ];
 
@@ -223,7 +222,7 @@ const Demo = () => {
                     onClick={isAllSelected ? handleDeselectAll : handleSelectAll}
                     disabled={value.length === 1 && value[0] === '%none%'}
                   >
-                    <Text color='text-link'>{isAllSelected ? 'Deselect all' : 'Select all'}</Text>
+                    <Select.Option.Text color='text-link'>{isAllSelected ? 'Deselect all' : 'Select all'}</Select.Option.Text>
                   </Select.Option>
                 )}
                 <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -244,10 +243,7 @@ const Demo = () => {
                             disabled={value.length === 1 && value[0] === '%none%'}
                           >
                             <Select.Option.Checkbox />
-                            <Ellipsis placement='right'>
-                              <Ellipsis.Content flex='auto'>{option.label}</Ellipsis.Content>
-                              <Ellipsis.Popper wMin={300}>{option.label}</Ellipsis.Popper>
-                            </Ellipsis>
+                            <Select.Option.Text flex={1} ellipsis hint:placement='right'>{option.label} </Select.Option.Text>
                           </Select.Option>
                         );
                       })}
@@ -275,7 +271,7 @@ const Demo = () => {
                             </Text>
                           )}
                     </ScrollArea.Container>
-                    { Boolean(options.length) && <ScrollArea.Bar orientation='vertical' /> }
+                    {Boolean(options.length) && <ScrollArea.Bar orientation='vertical' />}
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
 

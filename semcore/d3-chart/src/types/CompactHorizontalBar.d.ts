@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/base-components';
 
 import type { BackgroundProps } from './Bar';
 import type { Context } from './context';

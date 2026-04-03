@@ -1,7 +1,7 @@
+import Search from '@semcore/icon/Search/m';
 import Badge from '@semcore/ui/badge';
-import { Flex } from '@semcore/ui/flex-box';
-import type { BoxProps } from '@semcore/ui/flex-box';
-import Search from '@semcore/ui/icon/Search/m';
+import { Flex } from '@semcore/ui/base-components';
+import type { BoxProps } from '@semcore/ui/base-components';
 import type { InputProps, InputValueProps } from '@semcore/ui/input';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
@@ -69,7 +69,7 @@ const Demo = (props: BaseExampleProps) => {
             readOnly={props.readOnly}
           />
           <Input.Addon>
-            <Badge bg='red-400'>alpha</Badge>
+            <Badge type='alpha' />
           </Input.Addon>
         </Input>
 
@@ -92,7 +92,7 @@ const Demo = (props: BaseExampleProps) => {
             readOnly={props.readOnly}
           />
           <Input.Addon>
-            <Badge bg='red-400'>alpha</Badge>
+            <Badge type='alpha' />
           </Input.Addon>
         </Input>
 

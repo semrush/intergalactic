@@ -1,6 +1,6 @@
+import WarningIcon from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import { DateRangeComparator, MonthDateRangeComparator } from '@semcore/ui/date-picker';
-import WarningIcon from '@semcore/ui/icon/Warning/m';
 import Notice from '@semcore/ui/notice';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

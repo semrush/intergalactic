@@ -1,10 +1,9 @@
+import AmazonM from '@semcore/icon/color/Amazon/m';
+import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
 import type { BoxProps } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
-import AmazonM from '@semcore/ui/icon/color/Amazon/m';
-import WhatsAppM from '@semcore/ui/icon/color/WhatsApp/m';
-import { Hint } from '@semcore/ui/tooltip';
+import type { DataTableProps } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -22,8 +21,7 @@ const columns = [
   {
     name: 'keyword', gtcWidth: '65px', sortable: true,
     children: (
-      <Text noWrap>
-        ,
+      <Text ellipsis:cropPosition='middle'>
         Keyword
         <Text color='text-secondary'>(Keyword 1-100)</Text>
       </Text>
@@ -35,8 +33,8 @@ const columns = [
     children: (
       <Text>
         Difficulty Difficlty 123
-        <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-        <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <ButtonLink size={100} addonLeft={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
       </Text>
     ),
   },
@@ -44,9 +42,9 @@ const columns = [
     name: 'cpc', gtcWidth: '85px',
     children: (
       <>
-        <Ellipsis>Difficulty Difficulty</Ellipsis>
-        <Hint tag={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-        <Hint tag={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <Text ellipsis={true}>Difficulty Difficulty</Text>
+        <ButtonLink size={100} addonLeft={WhatsAppM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+        <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
       </>
     ),
   },

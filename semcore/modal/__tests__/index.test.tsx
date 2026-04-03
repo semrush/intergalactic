@@ -78,8 +78,9 @@ describe('Modal', () => {
       );
     };
     const { getByTestId, queryByText } = render(<Component />);
-    fireEvent.click(getByTestId('close-modal'));
-    await new Promise((r) => setTimeout(r, 0));
+
+    getByTestId('close-modal').click();
+    await new Promise((r) => setTimeout(r, 50));
     expect(queryByText('Hello world')).toBeNull();
   });
 

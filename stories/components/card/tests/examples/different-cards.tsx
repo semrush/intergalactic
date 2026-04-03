@@ -1,9 +1,9 @@
+import SettingsM from '@semcore/icon/Settings/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import SettingsM from '@semcore/ui/icon/Settings/m';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import Pills from '@semcore/ui/pills';
 import React from 'react';
 
@@ -39,7 +39,7 @@ const Demo = () => (
 
     <Card mb={2} data-testid='card-title-content-innerHint'>
       <Card.Header>
-        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint </Card.Title>
+        <Card.Title innerHint='innerHint test' innerHintAriaLabel='test-aria-label'>Market Traffic innerHint</Card.Title>
         <Card.Description>Info about data (optional)</Card.Description>
       </Card.Header>
       Content
@@ -47,7 +47,7 @@ const Demo = () => (
 
     <Card mb={2} data-testid='card-title-description-content-innerHint-tag-text-styles'>
       <Card.Header>
-        <Flex justifyContent='space-between' w={300}>
+        <Flex justifyContent='space-between' w={300} alignItems='center'>
           <Card.Title innerHint='test' innerHintAriaLabel='test-aria-label' tag='h1'>Market Traffic h1</Card.Title>
           <Button addonLeft={SettingsM} use='tertiary' theme='muted' aria-label='Settings' />
         </Flex>

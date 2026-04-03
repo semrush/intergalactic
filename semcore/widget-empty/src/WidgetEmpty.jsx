@@ -1,6 +1,6 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
-import { Box, Flex } from '@semcore/flex-box';
 import { getIllustrationPath } from '@semcore/illustration';
 import React from 'react';
 

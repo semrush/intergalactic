@@ -21,9 +21,9 @@ export async function ProjectSelectorTest({ canvasElement }: { canvasElement: HT
   expect(dropdown).toHaveAttribute('tabindex', '-1');
 
   const input = await waitFor(() => {
-    const element = (dropdown as HTMLElement).querySelector('input');
+    const element = dropdown.querySelector('[data-ui-name="InputSearch"]');
     if (!element) throw new Error('Input not found');
-    return element;
+    return element as HTMLInputElement;
   });
 
   expect(input).toHaveAttribute('type', 'text');

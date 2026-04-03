@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import ButtonLinkBaseExample, { defaultButtonLinkProps } from './examples/button-link/button-link-base';
 import ButtonLinkIconOnlyExample, { defaultButtonLinkIconOnlyProps } from './examples/button-link/button-link-icon-only';
+import ButtonLinkInTextExample, { defaultButtonLinkInTextProps } from './examples/button-link/button-link-in-text';
+import ButtonLinkSizesAddonsExample, { defaultButtonLinkSizesProps } from './examples/button-link/button-link-sizes-addons';
+import ButtonLinkSizesWrapExample from './examples/button-link/button-link-sizes-wrap';
 
 const meta: Meta = {
   title: 'Components/Button/Tests/Button Link',
@@ -30,20 +33,93 @@ const commonArgTypes = {
     control: { type: 'select' },
     options: ['top', 'bottom', 'left', 'right'],
   },
-  style: {
-    control: { type: 'select' },
-    options: [undefined, { backgroundColor: '#191B23' }],
-  },
 } as const;
 
 export const ButtonLinkBase: StoryObj<typeof defaultButtonLinkProps> = {
   render: ButtonLinkBaseExample,
-  argTypes: commonArgTypes,
+  argTypes: {
+    ...commonArgTypes,
+    text: {
+      control: { type: 'text' },
+    },
+    size: {
+      control: { type: 'select' },
+      options: [100, 200, 300, 400, 500, 600, 700, 800],
+    },
+    showAddonLeft: {
+      control: { type: 'boolean' },
+    },
+    showAddonRight: {
+      control: { type: 'boolean' },
+    },
+    addonLeftType: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
+    addonRightType: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
+    merged: {
+      control: { type: 'boolean' },
+    },
+    w: {
+      control: { type: 'number' },
+    },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    ellipsis: {
+      control: { type: 'select' },
+      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
+      mapping: {
+        'false': { ellipsis: false },
+        'true': { ellipsis: true },
+        'cropPosition:middle': { 'ellipsis:cropPosition': 'middle' },
+        'cropPosition:end': { 'ellipsis:cropPosition': 'end' },
+        'cropPosition:end maxLine:2': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 2 },
+        'cropPosition:end maxLine:6': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 6 },
+        'cropPosition:middle lastRequiredSymbols:3': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 3 },
+        'cropPosition:middle lastRequiredSymbols:0': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 0 },
+      },
+    },
+  },
   args: defaultButtonLinkProps,
+};
+
+export const ButtonLinkInText: StoryObj<typeof defaultButtonLinkInTextProps> = {
+  render: ButtonLinkInTextExample,
+  argTypes: commonArgTypes,
+  args: defaultButtonLinkInTextProps,
 };
 
 export const ButtonLinkIconOnly: StoryObj<typeof defaultButtonLinkIconOnlyProps> = {
   render: ButtonLinkIconOnlyExample,
   argTypes: commonArgTypes,
   args: defaultButtonLinkIconOnlyProps,
+};
+
+export const ButtonLinkSizesWrap: StoryObj = {
+  render: ButtonLinkSizesWrapExample,
+};
+
+export const ButtonLinkSizesAddons: StoryObj<typeof defaultButtonLinkSizesProps> = {
+  render: ButtonLinkSizesAddonsExample,
+  args: defaultButtonLinkSizesProps,
+  argTypes: {
+    ...commonArgTypes,
+    addonLeft: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
+    addonRight: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
+  },
 };

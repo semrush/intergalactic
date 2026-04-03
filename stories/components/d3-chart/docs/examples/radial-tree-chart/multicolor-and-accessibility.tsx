@@ -1,5 +1,5 @@
+import LikeM from '@semcore/icon/Like/m';
 import { Plot, RadialTree } from '@semcore/ui/d3-chart';
-import LikeM from '@semcore/ui/icon/Like/m';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 

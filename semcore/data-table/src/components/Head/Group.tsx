@@ -9,9 +9,8 @@ import { DataTable } from '../DataTable/DataTable';
 
 export class Group extends Component<
   DataTableGroupProps,
-  {},
-  {},
   typeof Group.enhance,
+  {},
   GroupPropsInner
 > {
   static displayName = 'Group';

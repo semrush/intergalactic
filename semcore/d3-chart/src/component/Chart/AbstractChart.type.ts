@@ -1,5 +1,5 @@
+import type { FlexProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { FlexProps } from '@semcore/flex-box';
 import type Icon from '@semcore/icon';
 import type React from 'react';
 

@@ -14,7 +14,6 @@ type ContainerNodeDemoProps = {
 
 const Demo = (props: ContainerNodeDemoProps) => {
   const [customElementContainer, setCustomElementContainer] = React.useState<HTMLDivElement | null>(null);
-  const customRefContainerRef = React.useRef<HTMLDivElement>(null);
   const [manager] = React.useState(() => new NoticeBubbleManager());
 
   React.useEffect(() => {
@@ -45,9 +44,6 @@ const Demo = (props: ContainerNodeDemoProps) => {
     if (props.containerMode === 'custom-element') {
       return customElementContainer;
     }
-    if (props.containerMode === 'custom-ref') {
-      return customRefContainerRef;
-    }
     return null;
   };
 
@@ -74,29 +70,10 @@ const Demo = (props: ContainerNodeDemoProps) => {
             'Notices render in default portal (top-right corner of the page)'}
           {props.containerMode === 'custom-element' &&
             'Notices render in a custom DOM element (bottom-left corner, blue dashed border)'}
-          {props.containerMode === 'custom-ref' &&
-            'Notices render in a custom container via React ref (below this button, orange border)'}
         </Text>
       </Box>
 
       <Button onClick={handleClick}>Show notice</Button>
-
-      {props.containerMode === 'custom-ref' && (
-        <Box
-          ref={customRefContainerRef}
-          style={{
-            border: '2px dashed var(--intergalactic-border-warning)',
-            padding: 'var(--intergalactic-spacing-3x)',
-            minHeight: '100px',
-            backgroundColor: 'var(--intergalactic-bg-primary-neutral)',
-            borderRadius: 'var(--intergalactic-border-radius)',
-          }}
-        >
-          <Text size={200} color='text-secondary'>
-            Custom container (via ref) - notices appear here
-          </Text>
-        </Box>
-      )}
 
       <NoticeBubbleContainer containerNode={containerNodeValue} manager={manager} />
     </Flex>

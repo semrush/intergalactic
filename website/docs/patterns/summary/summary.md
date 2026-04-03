@@ -88,7 +88,7 @@ Metrics can be placed not only within separate widgets but also within table cel
 
 ## Title
 
-- When there's an abundance of metrics causing them to exceed page width, truncate titles with [Ellipsis](../../components/ellipsis/ellipsis.md), showing the full name on hover.
+- When there's an abundance of metrics causing them to exceed page width, truncate titles with [ellipsis](../../utils/ellipsis/ellipsis), showing the full name on hover.
 - Alternatively, include the title within an [Informer](/patterns/informer/informer).
 
 ![](static/minitrend3.png)

@@ -17,18 +17,19 @@ export const unpluginIllustrations = createUnplugin(() => ({
   async load(id) {
     if (id !== '@illustrations') return null;
     const fullPath = resolvePath(illustrationsDir);
-    const illustrationPaths = await glob('**/index.mjs', {
+    const illustrationPaths = await glob('lib/*/index.mjs', {
       cwd: fullPath,
-      ignore: ['lib', 'src', 'node_modules', 'cjs', 'es6'],
     });
-    const illustrationNames = illustrationPaths.map((path) => {
-      const parts = path.split('/');
-      return parts[parts.length - 2];
-    });
+    const illustrationNames = illustrationPaths
+      .filter((path) => !path.includes('esm') && !path.includes('cjs') && !path.includes('es6'))
+      .map((path) => {
+        const parts = path.split('/');
+        return parts[parts.length - 2];
+      });
 
-    const imports = illustrationPaths.map(
-      (path, index) =>
-        `import illustration_${index} from "@semcore/illustration/${path.replace(/^\.\//, '')}"`,
+    const imports = illustrationNames.map(
+      (name, index) =>
+        `import illustration_${index} from "@semcore/illustration/${name}"`,
     );
     const exports = illustrationNames.map((name, index) => `["${name}"]: illustration_${index}`);
     const contents =

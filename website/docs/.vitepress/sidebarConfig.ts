@@ -256,7 +256,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/components/ellipsis/ellipsis',
             activeMatch: '/components/ellipsis/',
-            text: 'Ellipsis',
+            text: 'Ellipsis [deprecated]',
           },
           {
             link: '/components/feature-popover/feature-popover',
@@ -337,11 +337,6 @@ export const sideBarConfig: SidebarConfig = [
             link: '/components/notice-bubble/notice-bubble',
             activeMatch: '/components/notice-bubble/',
             text: 'NoticeBubble',
-          },
-          {
-            link: '/components/notice-global/notice-global',
-            activeMatch: '/components/notice-global/',
-            text: 'NoticeGlobal [deprecated]',
           },
           {
             link: '/components/pagination/pagination',
@@ -620,11 +615,6 @@ export const sideBarConfig: SidebarConfig = [
             link: '/table-group/table-states/table-states',
             text: 'Table states',
           },
-          {
-            link: '/table-group/table-old/table-old',
-            activeMatch: '/table-group/table-old/',
-            text: 'Table [deprecated]',
-          },
         ],
       },
       {
@@ -773,6 +763,16 @@ export const sideBarConfig: SidebarConfig = [
         text: 'Utils',
         collapsed: true,
         items: [
+          {
+            link: '/utils/ellipsis/ellipsis',
+            activeMatch: '/utils/ellipsis/',
+            text: 'Ellipsis',
+          },
+          {
+            link: '/utils/hint/hint',
+            activeMatch: '/utils/hint/',
+            text: 'Hint',
+          },
           {
             link: '/utils/neighbor-location/neighbor-location',
             activeMatch: '/utils/neighbor-location/',

@@ -1,8 +1,6 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
-/** @deprecated */
-export interface IProgressBarProps extends ProgressBarProps, UnknownProperties {}
 export type ProgressBarProps = BoxProps & {
   /**
    * Progress bar theme
@@ -22,8 +20,6 @@ export type ProgressBarProps = BoxProps & {
   duration?: number;
 };
 
-/** @deprecated */
-export interface IValueProps extends ValueProps, UnknownProperties {}
 export type ValueProps = BoxProps & {
   /** Controls the size of the value bar */
   size?: 's' | 'm' | 'l';
@@ -35,8 +31,6 @@ export type ValueProps = BoxProps & {
   theme?: string;
 };
 
-/** @deprecated */
-export interface IProgressBarCxt extends ProgressBarCxt, UnknownProperties {}
 export type ProgressBarCxt = {
   getValueProps: PropGetterFn;
 };

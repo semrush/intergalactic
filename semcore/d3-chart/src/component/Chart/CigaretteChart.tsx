@@ -1,10 +1,10 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
-import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { scaleThreshold, scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
@@ -36,8 +36,8 @@ class CigaretteChartComponent extends AbstractChart<
   CigaretteChartData,
   CigaretteChartProps,
   typeof CigaretteChartComponent.enhance,
-  CigaretteChartState,
-  typeof CigaretteChartComponent.defaultProps
+  typeof CigaretteChartComponent.defaultProps,
+  CigaretteChartState
 > {
   static displayName = 'Cigarette.Bar';
 

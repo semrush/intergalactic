@@ -212,7 +212,6 @@ SSortButton {
   display: none;
   fill: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   position: absolute;
-  top: calc(-1 * (1em * 1.25 - 16px));
   right: 0;
   margin-left: var(--intergalactic-spacing-1x, 4px);
   opacity: 0;

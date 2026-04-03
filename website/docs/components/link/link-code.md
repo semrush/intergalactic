@@ -5,12 +5,12 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 
 ## Link in text
 
-By default, links are displayed as `inline-block` and don’t wrap properly within the text. To achieve proper wrapping and underlining of links, set `noWrap=false` and `inline=true`.
+By default, links are displayed as `inline` element and don’t need some extra settings.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/link/docs/examples/link_inside_the_content.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_in_content.tsx';
 </script>
 
 :::
@@ -57,10 +57,7 @@ If you need to display disabled link as a `Button` you should remove `href` prop
 
 ## Link with ellipsis
 
-There are two moments you need to consider when using link with addons and ellipsis:
-
-- To properly display a link with ellipsis inside a flex block, you need to use a hack with `min-width: 0px`.
-- When the text has an `overflow:hidden` property, it may overlap with a vertical addon. To avoid this, wrap the content in a flex container with vertical alignment.
+Link can be cropped with ellipsis by setting the width and using the `ellipsis` property in `Link.Text`. Hint with the full text will appear automatically on hover on the link, including addons. Learn more about ellipsis in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
 
 ::: sandbox
 
@@ -72,7 +69,7 @@ There are two moments you need to consider when using link with addons and ellip
 
 ## Link without visible text
 
-If a link has no visible text, it's important to add a [Hint](/components/tooltip/tooltip-code) with a label of the link function for accessibility purposes. Adding a `Hint` will automatically provide an `aria-label` for the link.
+If a link has no visible text, it's important to add a [hint](../../utils/hint/hint-code) explaining where the link leads to. This can be done using either `title` or `aria-label`. Both will enable a visible hint on hover and an `aria-label` for assistive technology.
 
 ::: sandbox
 

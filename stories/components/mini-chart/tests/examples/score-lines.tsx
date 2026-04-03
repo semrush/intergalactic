@@ -1,7 +1,7 @@
-import { Flex, Box } from '@semcore/ui/flex-box';
+import { Flex, Box } from '@semcore/ui/base-components';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
-type scoreLinesProps = { value: number; loading?: boolean; color?: string; baseBgColor?: string; animate?: boolean; segments?: boolean };
+type scoreLinesProps = { value: number; loading?: boolean; color?: string; baseBgColor?: string; animate?: boolean; segments?: number };
 
 const Demo = ({
   value = 4,

@@ -67,4 +67,4 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
 export const PillsFH = createComponent(PillsFHRoot, {
   Item: Pills.Item,
   HighlightedItem: createComponent(HighlightedItemRoot, { Text: Pills.Item.Text, Addon: HighlightedItemAddon }),
-}) as HighlightedPillComponent;
+}) as unknown as HighlightedPillComponent;

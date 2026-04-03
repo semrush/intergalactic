@@ -1,7 +1,6 @@
 import Copy from '@components/Copy';
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
 import CopyM from '@semcore/icon/Copy/m';
 import FileDownloadM from '@semcore/icon/FileDownload/m';
 import SidePanel from '@semcore/side-panel';
@@ -12,7 +11,7 @@ import styles from './styles.module.css';
 
 export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
   const getImportText = React.useCallback(() => {
-    const lib = '@semcore/ui';
+    const lib = '@semcore';
     const importText = `import ${name} from '${lib}/illustration/${name}'`;
 
     return importText;
@@ -79,10 +78,12 @@ export const ListIllustrations = ({ data, ...props }) => {
             `Illustration ${illustration.name} not found in import from @illustrations`,
           );
         }
+        const buttonRef = React.useRef();
 
         return (
           <li className={styles.previewIllustration} key={illustration.name}>
             <button
+              ref={buttonRef}
               type='button'
               aria-haspopup='dialog'
               aria-expanded={selectedIllustration === illustration.name}
@@ -95,15 +96,18 @@ export const ListIllustrations = ({ data, ...props }) => {
                 setSelectedIllustration(illustration.name);
               }}
               data-id={illustration.name}
+              data-name='PanelTrigger'
             >
-              <Ellipsis
-                data-name='PanelTrigger'
-                placement='bottom'
-                includeTooltipProps={['placement']}
+              <Illustration width={80} height={80} />
+              <Text
+                w={80}
+                ellipsis={true}
+                size={200}
+                use='secondary'
+                hintProps={{ triggerRef: buttonRef, placement: 'bottom' }}
               >
-                <Illustration width={80} height={80} />
                 {illustration.name}
-              </Ellipsis>
+              </Text>
             </button>
           </li>
         );

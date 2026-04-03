@@ -1,7 +1,7 @@
 import InputTags from '@semcore/ui/input-tags';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import EnteringAndEditingTagsExample from './examples/entering_and_editing_tags';
+import EnteringAndEditingTagsExample, { defaultProps as defaultPropsEditing } from './examples/entering_and_editing_tags';
 import SelectForTagFilteringExample from './examples/select_for_tag_filtering';
 import WrappingEmailInTagExample, { defaultPropsEmail } from './examples/wrapping_email_in_tag';
 
@@ -35,6 +35,7 @@ export const WrappingEmailInTag: StoryObj<typeof defaultPropsEmail> = {
 
 export const EnteringAndEditingTags: StoryObj = {
   render: EnteringAndEditingTagsExample,
+  args: defaultPropsEditing,
 };
 
 export const SelectForTagFiltering: StoryObj<typeof InputTags> = {

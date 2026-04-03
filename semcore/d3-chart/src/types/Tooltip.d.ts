@@ -1,7 +1,5 @@
+import type { Popper, Box, BoxProps, PopperProps, PopperTriggerProps } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { PopperProps, PopperTriggerProps } from '@semcore/popper';
-import type Popper from '@semcore/popper';
 import type React from 'react';
 
 import type { Context } from './context';

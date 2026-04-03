@@ -9,6 +9,7 @@ test.describe(`@feedback-form ${TAG.ACCESSIBILITY}`, () => {
     await test.step('Verify empty form', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.locator(`[data-ui-name="FeedbackForm"]`).waitFor({ state: 'visible' });
 
       const violations = await getAccessibilityViolations({ page });
 
@@ -39,6 +40,7 @@ test.describe(`@feedback-form ${TAG.ACCESSIBILITY}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
+      await page.locator(`[data-ui-name="FeedbackForm"]`).waitFor({ state: 'visible' });
 
       const violations = await getAccessibilityViolations({ page });
 
@@ -74,6 +76,7 @@ test.describe(`@feedback-form ${TAG.ACCESSIBILITY}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
 
+      await page.getByRole(`dialog`).waitFor({ state: 'visible' });
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);

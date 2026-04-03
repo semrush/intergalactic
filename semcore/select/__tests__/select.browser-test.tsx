@@ -43,7 +43,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   pairwiseVariables.forEach((props) => {
     test(`Verify select basic props and addons: ${props.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@icon'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/basic_props_and_trigger_addons.tsx', 'en', props);
 

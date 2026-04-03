@@ -1,3 +1,12 @@
+import Book from '@semcore/icon/Book/m';
+import Chat from '@semcore/icon/Chat/m';
+import ChevronRight from '@semcore/icon/ChevronRight/m';
+import InfoIcon from '@semcore/icon/Info/m';
+import LinkExternal from '@semcore/icon/LinkExternal/m';
+import MathPlus from '@semcore/icon/MathPlus/m';
+import Question from '@semcore/icon/Question/m';
+import Search from '@semcore/icon/Search/m';
+import Settings from '@semcore/icon/Settings/m';
 import Accordion from '@semcore/ui/accordion';
 import Badge from '@semcore/ui/badge';
 import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
@@ -14,15 +23,6 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
 import type { FlagsIso2 } from '@semcore/ui/flags';
 import Flags, { iso2Name } from '@semcore/ui/flags';
-import Book from '@semcore/ui/icon/Book/m';
-import Chat from '@semcore/ui/icon/Chat/m';
-import ChevronRight from '@semcore/ui/icon/ChevronRight/m';
-import InfoIcon from '@semcore/ui/icon/Info/m';
-import LinkExternal from '@semcore/ui/icon/LinkExternal/m';
-import MathPlus from '@semcore/ui/icon/MathPlus/m';
-import Question from '@semcore/ui/icon/Question/m';
-import Search from '@semcore/ui/icon/Search/m';
-import Settings from '@semcore/ui/icon/Settings/m';
 import Input from '@semcore/ui/input';
 import InputTags from '@semcore/ui/input-tags';
 import Link from '@semcore/ui/link';
@@ -259,10 +259,10 @@ const FocusInAllComponents = () => {
               1 hour ago
               <DescriptionTooltip>
                 <DescriptionTooltip.Trigger
-                  tag={InfoIcon}
+                  tag={ButtonLink}
+                  addonLeft={InfoIcon}
                   display='inline-flex'
                   ml={1}
-                  interactive
                   color='icon-secondary-neutral'
                   aria-label='About update rate'
                 />
@@ -284,7 +284,7 @@ const FocusInAllComponents = () => {
             Instagram
           </TabLine.Item.Text>
           <TabLine.Item.Addon>
-            <Badge bg='green-400'>new</Badge>
+            <Badge type='new' />
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item value={3}>

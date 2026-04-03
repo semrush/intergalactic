@@ -250,16 +250,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
 
     const columns = await page.locator('[data-ui-name="Head.Column"]').all();
-    const [defaultSortColumnName, defaultSortValue] = ['kd', 'desc'];
+    const [defaultSortColumnName, defaultSortValue] = ['vol', 'desc'];
     for (const column of columns) {
       const columnName = await column.getAttribute('name');
 
       if (defaultSortColumnName === columnName) {
         expect(column).toHaveAttribute('aria-sort', COLUMN_SORT_TO_ARIA[defaultSortValue]);
         continue;
+      } else {
+        expect(column).not.toHaveAttribute('aria-sort');
       }
-
-      expect(column).not.toHaveAttribute('aria-sort');
       expect(column).toHaveAttribute('aria-describedby');
     }
   });

@@ -28,7 +28,7 @@ Table: Roles and attributes
 | `RadioGroup`  | `group`                                    |                 | Identifies the `div` element as a container for a group of native `radio` inputs. Isn’t focusable because focus is managed using a roving tabindex strategy as described below.                                                                                                                                                                                                                                                                                                 |
 | `Radio.Value` | `radio` implicit on `<input type="radio">` |                 | Identifies the input as an ARIA `radio` button. The accessible name is computed from the child text content of the `Radio.Text`.                                                                                                                                                                                                                                                                                                                                                |
 | `Radio.Value` |                                            | `tabIndex="0"`  | Makes the radio button focusable and includes it in the page `Tab` sequence. Set on only one radio in the radio group. On page load, is set on the first radio button in the radio group. Moves with focus inside the radio group so the most recently focused radio button is included in the page `Tab` sequence. This approach to managing focus is described in the [W3C roving tabindex documentation](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd-roving-tabindex). |
-| `Radio.Value` |                                            | `tabIndex="-1"` | Makes the element focusable but not part of the page `Tab` sequence. Applied to all radio buttons contained in the radio group except for one that is included in the page `Tab` sequence.                                                                                                                                                                                                                                                                                      |
+| `Radio.Value` |                                            | `tabIndex="-1"` | Makes the element focusable but not part of the page `Tab` sequence. Applied to all radio buttons contained in the radio group except for one that's included in the page `Tab` sequence.                                                                                                                                                                                                                                                                                      |
 
 ## Considerations for developers
 
@@ -42,7 +42,7 @@ Table: Attributes
 
 ### Grouping with fieldset
 
-You can also group `Radio` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of radio buttons.
+You can also group `Radio` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they're answering with the group of radio buttons.
 
 ## Resources
 

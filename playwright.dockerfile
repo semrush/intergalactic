@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.48.0-jammy
+FROM mcr.microsoft.com/playwright:v1.58.0-jammy
 
 WORKDIR /work/
 
@@ -8,4 +8,4 @@ COPY . .
 
 RUN npm install --global pnpm@10.11.1
 RUN pnpm install --ignore-scripts
-RUN npx playwright install
+RUN npx playwright install --with-deps

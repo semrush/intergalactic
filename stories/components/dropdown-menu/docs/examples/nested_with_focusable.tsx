@@ -1,8 +1,8 @@
+import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import ChevronRightIcon from '@semcore/ui/icon/ChevronRight/m';
 import InputNumber from '@semcore/ui/input-number';
 import React from 'react';
 

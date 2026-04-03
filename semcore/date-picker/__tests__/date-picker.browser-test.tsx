@@ -281,7 +281,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify trigger SVG attributes', async () => {
         const svg = locators.datePickerTrigger(page).locator('svg');
         const svgAttributes = [
-          ['tabindex', '-1'],
           ['aria-hidden', 'true'],
           ['width', '16'],
           ['height', '16'],
@@ -536,7 +535,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify month changes by Space press', async () => {
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Today')).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await expect(locators.popper(page)).toBeFocused();
+
         await page.keyboard.press('Tab');
         await expect(locators.button(page, 'Previous month')).toBeFocused();
 
@@ -550,6 +553,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Navigate to calendar and today button', async () => {
         await page.keyboard.press('Tab');
+        await expect(locators.button(page, 'Next month')).toBeFocused();
+
         await page.keyboard.press('Tab');
         await expect(locators.calendar(page)).toBeFocused();
 
@@ -574,12 +579,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await page.keyboard.press('Enter');
         await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+        await expect(locators.popper(page)).toBeFocused();
+
         await page.keyboard.press('Tab');
+        await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+
         await page.keyboard.press('Tab');
+        await locators.button(page, 'Next month').waitFor({ state: 'visible' });
+
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('Space');
 
         await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
+        await expect(input).toBeFocused();
         const newValue2 = await input.inputValue();
         expect(newValue2).not.toBe(newValue);
       });
@@ -587,13 +599,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Select today by Enter on Today button', async () => {
         await page.keyboard.press('Enter');
         await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+        await expect(locators.popper(page)).toBeFocused();
+
         await page.keyboard.press('Shift+Tab');
         await expect(locators.button(page, 'Today')).toBeFocused();
 
         await page.keyboard.press('Enter');
         await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
-
-        await expect(locators.popper(page)).not.toBeVisible();
+        await expect(input).toBeFocused();
 
         const todayValue = await input.inputValue();
         const today = new Date();
@@ -604,15 +617,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Select today by Space on Today button', async () => {
         await page.keyboard.press('Enter');
         await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+        await expect(locators.popper(page)).toBeFocused();
 
-        // Focus the Today button directly
-        await locators.button(page, 'Today').focus();
+        await page.keyboard.press('Shift+Tab');
         await expect(locators.button(page, 'Today')).toBeFocused();
 
         await page.keyboard.press('Space');
         await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });
 
-        await expect(locators.popper(page)).not.toBeVisible();
+        await expect(input).toBeFocused();
         const todayValue = await input.inputValue();
         const today = new Date();
         const expectedDate = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}/${today.getFullYear()}`;
@@ -631,7 +644,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify trigger SVG attributes', async () => {
         const svg = locators.datePickerTrigger(page).locator('svg');
         const svgAttributes = [
-          ['tabindex', '-1'],
           ['aria-hidden', 'true'],
           ['width', '16'],
           ['height', '16'],

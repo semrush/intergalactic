@@ -1,6 +1,6 @@
+import CheckM from '@semcore/icon/Check/m';
+import CloseM from '@semcore/icon/Close/m';
 import { Box, Flex } from '@semcore/ui/base-components';
-import CheckM from '@semcore/ui/icon/Check/m';
-import CloseM from '@semcore/ui/icon/Close/m';
 import Switch from '@semcore/ui/switch';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

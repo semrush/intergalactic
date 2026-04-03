@@ -6,7 +6,6 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import isNode from '@semcore/core/lib/utils/isNode';
-import type { NodeByRef } from '@semcore/core/lib/utils/ref';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
 import { useFocusLock, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
@@ -19,12 +18,10 @@ import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
 
 import type {
-  AddedNoticeMeta,
   NoticeBubbleContainerProps,
-  NoticeBubbleProps,
-  NoticeBubbleViewItemProps, NoticeBubbleWarningProps,
+  NoticeBubbleViewItemProps,
 } from './NoticeBubble.type';
-import type { NoticeBubbleManager, NoticeItem } from './NoticeBubbleManager';
+import type { NoticeItem } from './NoticeBubbleManager';
 import manager from './NoticeBubbleManager';
 import style from './style/notice-bubble.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -36,7 +33,7 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, {}, State, typeof NoticeBubbleContainerRoot.enhance, typeof NoticeBubbleContainerRoot.defaultProps> {
+class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, typeof NoticeBubbleContainerRoot.enhance, {}, typeof NoticeBubbleContainerRoot.defaultProps, State> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [
@@ -162,7 +159,7 @@ const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTM
   return <Flex ref={ref} {...other} />;
 });
 
-const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: NodeByRef; tag: typeof ViewInfo }) => {
+const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
   // Show content for info notice in previously mounted node with aria-live polite
@@ -350,55 +347,6 @@ class ViewWarning extends ViewInfo {
   };
 }
 
-class NoticeBubbleView extends Component<{ manager: NoticeBubbleManager } & (NoticeBubbleProps | NoticeBubbleWarningProps)> {
-  static defaultProps = {
-    duration: 5000,
-    type: 'info',
-    manager,
-  };
-
-  _notice: null | AddedNoticeMeta = null;
-
-  componentDidMount() {
-    this._notice = this.asProps.manager.add(this.asProps);
-  }
-
-  componentWillUnmount() {
-    if (this._notice) {
-      this._notice.remove();
-    }
-  }
-
-  componentDidUpdate() {
-    if (this._notice) {
-      this._notice.update(this.asProps);
-    }
-  }
-
-  render() {
-    return null;
-  }
-}
-
-class NoticeBubbleWarningView extends NoticeBubbleView {
-  static defaultProps = {
-    duration: 5000,
-    type: 'warning',
-    manager,
-  };
-}
-
-const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot, {
-  Info: NoticeBubbleView,
-  Warning: NoticeBubbleWarningView,
-}) as Intergalactic.Component<'div', NoticeBubbleContainerProps> & {
-  Info: typeof NoticeBubbleView;
-  Warning: typeof NoticeBubbleWarningView;
-};
-
-const NoticeBubble = NoticeBubbleContainer.Info;
-const NoticeBubbleWarning = NoticeBubbleContainer.Warning;
-
-export { NoticeBubble, NoticeBubbleWarning };
+const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot) as Intergalactic.Component<'div', NoticeBubbleContainerProps>;
 
 export default NoticeBubbleContainer;

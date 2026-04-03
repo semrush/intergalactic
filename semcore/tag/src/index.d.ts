@@ -1,23 +1,14 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { IconProps } from '@semcore/icon';
+import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 
 export type TagSize = 'xl' | 'l' | 'm';
-/** @deprecated */
-export type TagThemeOld =
-  | 'muted'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'invert'
-  | 'additional';
-export type TagTheme = 'primary' | 'secondary' | TagThemeOld;
+
+export type TagTheme = 'primary' | 'secondary' | 'additional';
 export type TagUse = 'primary' | 'secondary';
 
-/** @deprecated */
-export interface ITagProps extends TagProps, UnknownProperties {}
 export type TagProps = BoxProps & {
   /** Value responsible for tag availability
    */
@@ -28,12 +19,6 @@ export type TagProps = BoxProps & {
   /** Interactive tag
    */
   interactive?: boolean;
-  /** Tag type
-   * @default secondary
-   * @deprecated v4.0.0
-   * @use ITagProps.theme
-   */
-  use?: TagUse;
   /** Tag theme, there are several default themes or you can use your color
    * @default primary
    */
@@ -52,8 +37,6 @@ export type TagProps = BoxProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface ITagCloseProps extends TagCloseProps, UnknownProperties {}
 export type TagCloseProps = IconProps & {
   /** Tag type
    * @default secondary
@@ -65,19 +48,13 @@ export type TagCloseProps = IconProps & {
   theme?: TagTheme;
 };
 
-/** @deprecated */
-export interface ITagContext extends TagContext, UnknownProperties {}
 export type TagContext = TagProps & {
   getCloseProps?: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ITagAddonProps extends TagAddonProps, UnknownProperties {}
 export type TagAddonProps = BoxProps & {};
 
-/** @deprecated */
-export interface ITagTextProps extends TagTextProps, UnknownProperties {}
-export type TagTextProps = BoxProps & {};
+export type TagTextProps = TextProps;
 
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
   Text: Intergalactic.Component<'div', TagTextProps>;

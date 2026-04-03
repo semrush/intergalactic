@@ -1,10 +1,8 @@
+import ShowYesM from '@semcore/icon/ShowYes/m';
+import { Flex, NeighborLocation } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-import ShowYesM from '@semcore/ui/icon/ShowYes/m';
 import Input from '@semcore/ui/input';
-import NeighborLocation from '@semcore/ui/neighbor-location';
 import Select from '@semcore/ui/select';
-import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 const Demo = () => {
@@ -21,7 +19,7 @@ const Demo = () => {
         <Input w={200}>
           <Input.Value placeholder='Placeholder' aria-label='input example' />
           <Input.Addon>
-            <Hint title='Test hint' tag={ButtonLink} use='secondary' addonLeft={ShowYesM} />
+            <ButtonLink title='Test hint' use='secondary' addonLeft={ShowYesM} />
           </Input.Addon>
         </Input>
         <Button>Middle</Button>

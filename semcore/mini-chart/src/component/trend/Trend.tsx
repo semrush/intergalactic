@@ -1,5 +1,5 @@
+import type { BoxProps } from '@semcore/base-components';
 import { Component } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 export type CommonTrendProps = BoxProps & {
@@ -24,7 +24,7 @@ export type CommonTrendProps = BoxProps & {
 export abstract class Trend<
   P extends CommonTrendProps,
   E extends readonly ((...args: any[]) => any)[],
-> extends Component<P, {}, { width: number; height: number }, E> {
+> extends Component<P, E, Readonly<{}>, { width: number; height: number }> {
   state = {
     width: 200,
     height: 100,

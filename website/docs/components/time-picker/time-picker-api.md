@@ -35,7 +35,7 @@ import Timepicker from '@semcore/ui/time-picker';
 
 ## TimePicker.Separator
 
-It is a usual `span`-element, it takes the HTML-attributes available for it.
+An HTML `span` element. Accepts the HTML attributes for `span`.
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';

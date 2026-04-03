@@ -1,11 +1,11 @@
-import { Flex } from '@semcore/ui/flex-box';
-import SerpM from '@semcore/ui/icon/Serp/m';
+import SerpM from '@semcore/icon/Serp/m';
+import { Flex } from '@semcore/ui/base-components';
 import InlineInput from '@semcore/ui/inline-input';
-import type { InlineInputProps } from '@semcore/ui/inline-input';
+import type { InlineInputProps, InlineInputValueProps } from '@semcore/ui/inline-input';
 import type { InputNumberControlsProps } from '@semcore/ui/input-number';
 import React from 'react';
 
-type ExampleInputTagsProps = InlineInputProps & InputNumberControlsProps;
+type ExampleInputTagsProps = InlineInputProps & InputNumberControlsProps & InlineInputValueProps;
 
 const Styles = (props: ExampleInputTagsProps) => {
   const { disabled, loading, state, autoFocus, defaultValue, placeholder, showControls, onBlurBehavior } = props;
@@ -24,9 +24,9 @@ const Styles = (props: ExampleInputTagsProps) => {
         </Flex>
 
         <Flex direction='row' gap={2}>
-          <InlineInput onBlurBehavior={onBlurBehavior} state={state} loading={loading}>
+          <InlineInput onBlurBehavior={onBlurBehavior} state={state} loading={loading} disabled={disabled}>
             <InlineInput.Addon>I don't care, I punk:</InlineInput.Addon>
-            <InlineInput.Value id='constant-placeholder' defaultValue={defaultValue} disabled={disabled} placeholder={placeholder} />
+            <InlineInput.Value id='constant-placeholder' defaultValue={defaultValue} placeholder={placeholder} />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>

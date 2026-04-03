@@ -1,6 +1,6 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Box, Flex } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './line.shadow.css';
@@ -11,7 +11,7 @@ import type {
   InnerSegmentProps,
 } from './Line.types';
 
-class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.enhance> {
+class LineRoot extends Component<ScoreLineGaugeProps, typeof LineRoot.enhance> {
   static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
 
@@ -114,8 +114,8 @@ function Segment(props: InnerSegmentProps) {
 }
 Segment.displayName = 'Segment';
 
-export const ScoreLine: ScoreLineComponent = createComponent(LineRoot, {
+export const ScoreLine = createComponent(LineRoot, {
   Segment,
-});
+}) as ScoreLineComponent;
 
 ScoreLine.displayName = 'MiniChart.ScoreLine';

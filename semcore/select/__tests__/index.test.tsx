@@ -4,9 +4,7 @@ import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-uti
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import Select from '../src';
-// @ts-ignore
-import InputSearch from '../src/InputSearch';
+import Select, { InputSearch } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -14,7 +12,7 @@ describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
 });
 
-HTMLElement.prototype.scrollIntoView = () => {};
+HTMLElement.prototype.scrollIntoView = () => { };
 
 describe('Select Trigger', () => {
   beforeEach(() => {
@@ -255,8 +253,12 @@ describe('Option.Checkbox', () => {
             <Select.Option.Checkbox data-testid='thirdOptionCheckbox' />
             I'm disabled option-checkbox
           </Select.Option>
-          <Select.OptionTitle>I'm title</Select.OptionTitle>
-          <Select.OptionHint>I'm hint</Select.OptionHint>
+          <Select.Group title="I'm title">
+            <Select.Option value={4}>
+              <Select.Option.Content>Content</Select.Option.Content>
+              <Select.Option.Hint>I'm hint</Select.Option.Hint>
+            </Select.Option>
+          </Select.Group>
         </Select.Menu>
       </Select>,
     );
@@ -294,8 +296,11 @@ describe('InputSearch', () => {
     );
 
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
+    // await userEvent.keyboard('[Tab]');
+    // Wait for autoFocus in Input.Value to complete
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await userEvent.keyboard('test');
+    await new Promise((resolve) => setTimeout(resolve, 200));
     expect(spy).toHaveBeenCalledTimes(4);
     unmount();
   });

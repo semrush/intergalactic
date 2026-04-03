@@ -1,7 +1,5 @@
+import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
-import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
-import { Box, InvalidStateBox } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
 import React from 'react';
 
 import style from './style/input.shadow.css';
@@ -113,7 +111,15 @@ class Value extends Component {
     defaultValue: '',
   };
 
-  static enhance = [autoFocusEnhance()];
+  inputRef = React.createRef();
+
+  componentDidMount() {
+    if (this.asProps.autoFocus) {
+      setTimeout(() => {
+        this.inputRef.current?.focus();
+      }, 10); // in autoFocusEnhance it was boolean `true`. In FF and Safari was floating bug with focus, so, I set 10.
+    }
+  }
 
   uncontrolledProps() {
     return {
@@ -130,12 +136,14 @@ class Value extends Component {
         {(neighborLocation) =>
           sstyled(styles)(
             <SValue
+              ref={this.inputRef}
               render={Box}
               inAfterOutline
               neighborLocation={neighborLocation}
               tag='input'
               type='text'
               aria-invalid={state === 'invalid'}
+              use:autoFocus={false}
             />,
           )}
       </NeighborLocation.Detect>

@@ -1,6 +1,6 @@
-import { Box, Flex } from '@semcore/ui/flex-box';
-import CheckM from '@semcore/ui/icon/Check/m';
-import CloseM from '@semcore/ui/icon/Close/m';
+import CheckM from '@semcore/icon/Check/m';
+import CloseM from '@semcore/icon/Close/m';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Tag, { TagContainer } from '@semcore/ui/tag';
 import type { TagProps } from '@semcore/ui/tag';
 import React from 'react';

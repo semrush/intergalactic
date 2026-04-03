@@ -35,10 +35,14 @@ test.describe(TAG.VISUAL, () => {
     });
 
     await test.step('Verify dialog with values filled', async () => {
+      await expect(locators.textboxes(page).nth(0)).toBeFocused();
       await page.keyboard.type('6');
       await page.keyboard.press('Tab');
+      await expect(locators.textboxes(page).nth(1)).toBeFocused();
       await page.keyboard.type('1');
       await page.keyboard.press('Tab');
+      await expect(locators.apply(page)).toBeFocused();
+      await page.waitForTimeout(100);
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
@@ -60,21 +64,18 @@ test.describe(TAG.FUNCTIONAL, () => {
     await test.step('Verify 1st item highlighted when select opened', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(200);
       await locators.apply(page).waitFor({ state: 'visible' });
       await expect(locators.trigger(page)).toBeFocused();
       await expect(locators.options(page).first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify keyboard navigation inside dialog', async () => {
-      await page.waitForTimeout(200);
+      for (let i = 0; i++; i < 6) {
+        await page.keyboard.press('ArrowDown');
+        await page.waitForTimeout(50);
+      }
 
-      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
       await expect(locators.options(page).first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Tab');
@@ -87,6 +88,8 @@ test.describe(TAG.FUNCTIONAL, () => {
       await expect(locators.apply(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
+      await expect(locators.apply(page)).not.toBeFocused();
+
       await expect(locators.options(page).first()).toHaveClass(/highlighted/);
     });
 

@@ -42,7 +42,7 @@ The dropdown has:
 ![opened filter](static/opened-serp.png)
 ![opened filter](static/deselct-serp.png)
 
-**Don't make the dropdown width less than 224px**, otherwise, long SERP Features names can become unreadable after localization. If the SERP Feature name is too long, use the `ellipsis` and show the text in a `Hint` on hover.
+**Don't make the dropdown width less than 224px**, otherwise, long SERP Features names can become unreadable after localization. If a SERP Feature name is too long, use [ellipsis](../../utils/ellipsis/ellipsis) and show the full text in a [hint](../../utils/hint/hint).
 
 ## Interaction
 

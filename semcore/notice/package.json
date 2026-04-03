@@ -18,14 +18,11 @@
   },
   "dependencies": {
     "@semcore/button": "16.0.12",
-    "@semcore/icon": "16.7.3",
-    "@semcore/notice-global": "16.1.12",
-    "@semcore/animation": "16.0.7",
-    "@semcore/flex-box": "16.0.11",
     "@semcore/typography": "16.3.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
+    "@semcore/icon": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {
     "type": "git",
@@ -34,6 +31,8 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

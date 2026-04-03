@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import InlineInput from '@semcore/ui/inline-input';
 import React from 'react';
 

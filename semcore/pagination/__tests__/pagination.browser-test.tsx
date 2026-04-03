@@ -33,8 +33,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.firstPage(page)).toHaveAttribute('disabled', '');
       await expect(locators.firstPage(page)).toHaveAttribute('type', 'button');
 
-      await expect(firstpageSvg).toHaveAttribute('tabindex', '-1');
-      await expect(firstpageSvg).toHaveAttribute('disabled', '');
       await expect(firstpageSvg).toHaveAttribute('aria-hidden', 'true');
 
       await expect(locators.prevPage(page)).toHaveAttribute('disabled', '');

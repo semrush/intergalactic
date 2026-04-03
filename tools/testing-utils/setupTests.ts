@@ -32,10 +32,18 @@ Object.defineProperty(window.SVGElement.prototype, 'getBBox', {
   addListener: (e: any) => e('mediaQueryListEvent'),
   removeListener: vi.fn(),
 }));
-class ObserverMock {
+class ResizeObserverMock {
   observe() {}
   unobserve() {}
   disconnect() {}
 }
-(window as any).ResizeObserver = ObserverMock;
-(window as any).IntersectionObserver = ObserverMock;
+(window as any).ResizeObserver = ResizeObserverMock;
+
+class IntersectionObserverMock {
+  disconnect() {}
+  observe() {}
+  takeRecords() {}
+  unobserve() {}
+}
+
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);

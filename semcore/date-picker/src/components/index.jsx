@@ -1,8 +1,8 @@
+import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { Component, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import Dropdown from '@semcore/dropdown';
-import { Box } from '@semcore/flex-box';
 import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import dayjs from 'dayjs';

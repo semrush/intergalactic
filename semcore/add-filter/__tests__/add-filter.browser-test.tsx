@@ -44,7 +44,7 @@ export const locators = {
 
   selectTriggerFilled: (page: Page, placeholder: string, index?: number): Locator => {
     const base = page.locator(
-      `div[data-ui-name="FilterTrigger.Text"][placeholder="${placeholder}"]`,
+      `[data-ui-name="FilterTrigger.Text"][placeholder="${placeholder}"]`,
     );
     return typeof index === 'number' ? base.nth(index) : base;
   },
@@ -52,7 +52,7 @@ export const locators = {
   addFilterSelectInputSearch: (page: Page): Locator => page.locator('[data-ui-name="AddFilterSelect.InputSearch"]'),
 
   dropdownTrigger: (page: Page, placeholder: string): Locator =>
-    page.locator(`div[data-ui-name="AddFilterDropdown.Trigger"][placeholder="${placeholder}"]`),
+    page.locator(`[data-ui-name="AddFilterDropdown.Trigger"][placeholder="${placeholder}"]`),
 
   dialog: (page: Page): Locator => page.getByRole('dialog'),
 
@@ -112,6 +112,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.addFilterMenuItem(page, 'Color').waitFor({ state: 'visible' });
+      await expect(locators.addFilterMenuItem(page, 'Color')).toBeFocused();
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Enter');
@@ -248,6 +249,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await locators.addFilterMenuItem(page, 'Position').click();
     await locators.addFilterInput(page, 'Filter by position').fill('Test');
     await locators.clearInput(page).hover();
+    await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
     await expect(page).toHaveScreenshot();
   });
 
@@ -769,7 +771,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@add-filter',
         '@button',
-        '@icon',
         '@input',
         '@input-number',
         '@divider'],
@@ -819,7 +820,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@button',
-        '@icon',
         '@input',
         '@input-number',
         '@divider'],
@@ -857,7 +857,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@add-filter',
         '@button',
-        '@icon',
         '@input',
         '@input-number',
         '@divider'],
@@ -900,7 +899,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@button',
-        '@icon',
         '@input',
         '@input-number',
         '@divider'],
@@ -930,7 +928,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@add-filter',
         '@button',
-        '@icon',
         '@input',
         '@input-number',
         '@divider'],
@@ -962,7 +959,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@add-filter',
         '@button',
-        '@icon',
         '@input',
         '@input-number',
         '@divider'],
@@ -986,7 +982,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@add-filter',
         '@base-trigger',
         '@button',
-        '@icon',
         '@input',
         '@radio',
         '@textarea',

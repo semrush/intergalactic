@@ -1,5 +1,4 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -7,15 +6,6 @@ import React from 'react';
 import { Box, Flex } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
-describe('flex-box Dependency imports', () => {
-  runDependencyCheckTests('flex-box');
-});
-
-const styleBox = {
-  border: '1px solid',
-  background: '#ccc',
-};
 
 describe('Flex', () => {
   beforeEach(cleanup);

@@ -4,14 +4,22 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <Flex gap={2}>
-      <Badge bg='blue-400'>admin</Badge>
-      <Badge bg='red-400'>alpha</Badge>
-      <Badge bg='orange-400'>beta</Badge>
-      <Badge bg='green-400'>new</Badge>
-      <Badge bg='violet-400'>for you</Badge>
-      <Badge>soon</Badge>
-    </Flex>
+    <>
+      <Flex gap={2}>
+        <Badge type='admin' />
+        <Badge type='alpha' />
+        <Badge type='beta' />
+        <Badge type='new' />
+        <Badge type='soon' />
+      </Flex>
+      <Flex gap={2} mt={2} p='4px 0' style={{ background: '#000' }}>
+        <Badge type='admin' inverted />
+        <Badge type='alpha' inverted />
+        <Badge type='beta' inverted />
+        <Badge type='new' inverted />
+        <Badge type='soon' inverted />
+      </Flex>
+    </>
   );
 };
 

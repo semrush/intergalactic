@@ -1,6 +1,5 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -19,7 +18,7 @@ describe('InputMask', () => {
   shouldSupportClassName(InputMask);
   shouldSupportRef(InputMask);
 
-  test.concurrent('Should renders correctly', async ({ task }) => {
+  test.concurrent('Should renders correctly', async () => {
     const Component = ({ value = '' }) => (
       <InputMask size='l' mb={4}>
         <InputMask.Value
@@ -39,7 +38,6 @@ describe('InputMask', () => {
     fireEvent.change(input, { target: { value: '333' } });
 
     expect(input.value).toBe('33 3');
-    await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
   });
 
   test.sequential('should correctly work with `Backspace`', async () => {

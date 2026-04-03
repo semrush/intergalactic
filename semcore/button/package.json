@@ -17,13 +17,12 @@
     "build": "pnpm semcore-builder && pnpm vite build"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.11",
-    "@semcore/neighbor-location": "16.0.11",
     "@semcore/spin": "16.0.11",
-    "@semcore/tooltip": "16.0.11"
+    "@semcore/typography": "16.3.2",
+    "@semcore/link": "16.0.11"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {
     "type": "git",

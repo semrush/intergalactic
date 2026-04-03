@@ -1,5 +1,5 @@
+import type { Flex } from '@semcore/base-components';
 import type { Intergalactic, Root } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type Icon from '@semcore/icon';
 import type { Text } from '@semcore/typography';
 

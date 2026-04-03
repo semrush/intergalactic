@@ -1,12 +1,11 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
+import type { ButtonLinkProps, ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import type { DotProps } from '@semcore/dot';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { NeighborItemProps } from '@semcore/neighbor-location';
+import type { CounterProps } from '@semcore/counter';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
-/** @deprecated */
-export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}
 export type BaseTriggerProps = BoxProps &
   NeighborItemProps &
   WithAnimatedSizeEnhanceProps & {
@@ -35,15 +34,8 @@ export type BaseTriggerProps = BoxProps &
      * Sets disabled state to trigger
      */
     disabled?: boolean;
-    /** Trigger theme
-     * @deprecated
-     * @use IBaseTriggerProps.state
-     * */
-    theme?: 'normal' | 'valid' | 'invalid' | false;
   };
 
-/** @deprecated */
-export interface IButtonTriggerProps extends ButtonTriggerProps, UnknownProperties {}
 export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   /** Sets the loading state */
   loading?: boolean;
@@ -54,17 +46,17 @@ export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   chevron?: boolean;
 };
 
-/** @deprecated */
-export interface ILinkTriggerProps extends LinkTriggerProps, UnknownProperties {}
-export type LinkTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
+export type LinkTriggerProps = ButtonLinkProps & {
+  /** Trigger state */
+  state?: 'normal' | 'valid' | 'invalid';
   /** Sets the loading state */
   loading?: boolean;
-  /** Text color */
-  color?: string;
+  /** Placeholder text */
+  placeholder?: React.ReactNode;
+  /** Responsible for placeholder displaying */
+  empty?: boolean;
 };
 
-/** @deprecated */
-export interface IFilterTriggerProps extends FilterTriggerProps, UnknownProperties {}
 export type FilterTriggerProps = BaseTriggerProps & {
   /** Click on the filter cleaning cross */
   onClear?: (event: React.SyntheticEvent) => void;
@@ -82,7 +74,7 @@ export type FilterTriggerCounterProps = {
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
-  Text: typeof Box;
+  Text: typeof Text;
   Addon: typeof Box;
 };
 
@@ -92,14 +84,14 @@ declare const ButtonTrigger: Intergalactic.Component<'div', ButtonTriggerProps> 
 };
 
 declare const LinkTrigger: Intergalactic.Component<'div', LinkTriggerProps> & {
-  Text: typeof BaseTrigger.Text;
-  Addon: typeof BaseTrigger.Addon;
+  Text: typeof ButtonLink.Text;
+  Addon: typeof ButtonLink.Addon;
 };
 
 declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> & {
   Text: typeof BaseTrigger.Text;
   Addon: typeof BaseTrigger.Addon;
-  Counter: Intergalactic.Component<'div', BoxProps & DotProps & FilterTriggerCounterProps>;
+  Counter: Intergalactic.Component<'div', CounterProps & FilterTriggerCounterProps>;
   TriggerButton: typeof BaseTrigger;
   ClearButton: typeof BaseTrigger;
 };

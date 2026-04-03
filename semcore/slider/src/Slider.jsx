@@ -1,6 +1,6 @@
+import { Flex, Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import reactToText from '@semcore/core/lib/utils/reactToText';
-import { Flex, Box } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/slider.shadow.css';

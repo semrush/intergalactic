@@ -7,7 +7,7 @@ docs: true
 There are various chart types within the Intergalactic Design System, each designed for distinct scenarios and data representation.
 
 ::: tip
-Note that some chart types are still under development and are not yet clickable.
+Note that some chart types are still under development and aren't yet clickable.
 :::
 
 ## Comparison

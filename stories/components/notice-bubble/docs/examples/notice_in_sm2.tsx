@@ -1,6 +1,6 @@
+import CheckM from '@semcore/icon/Check/m';
 import Button from '@semcore/ui/button';
 import { lastInteraction } from '@semcore/ui/core';
-import CheckM from '@semcore/ui/icon/Check/m';
 import Link from '@semcore/ui/link';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';

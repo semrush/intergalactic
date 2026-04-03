@@ -1,10 +1,9 @@
+import CheckM from '@semcore/icon/Check/m';
+import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
-import CheckM from '@semcore/ui/icon/Check/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import { DescriptionTooltip, Hint } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -34,10 +33,9 @@ const Demo = () => {
                   {' '}
                   <Text color='text-secondary'>(100)</Text>
                 </Text>
-                <Hint
+                <ButtonLink
                   ml={1}
-                  tag={InfoM}
-                  interactive
+                  addonLeft={InfoM}
                   title='Go to our awesome article'
                   data-test-id='interactive-icon'
                   color='icon-secondary-neutral'

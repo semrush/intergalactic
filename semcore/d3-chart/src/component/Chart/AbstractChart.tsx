@@ -1,7 +1,7 @@
+import { Flex, Box } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
@@ -31,9 +31,9 @@ export abstract class AbstractChart<
   Data extends ListData | ObjectData,
   Props extends BaseChartProps<Data>,
   Enhancers extends readonly ((...args: any[]) => any)[] = [],
-  State extends ChartState = ChartState,
   DefaultProps = {},
-> extends Component<Props, {}, State, Enhancers, DefaultProps> {
+  State extends ChartState = ChartState,
+> extends Component<Props, Enhancers, Readonly<{}>, DefaultProps, State> {
   public static style = style;
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',

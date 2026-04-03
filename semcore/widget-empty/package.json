@@ -17,11 +17,10 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.11",
-    "@semcore/illustration": "16.0.12"
+    "@semcore/illustration": "17.0.0-prerelease.4"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {
     "type": "git",
@@ -30,6 +29,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

@@ -1,35 +1,13 @@
-import { sstyled, type UnknownProperties, type StyledProps } from '@semcore/core';
-import logger from '@semcore/core/lib/utils/logger';
+import { sstyled, type UnknownProperties, type IStyledProps } from '@semcore/core';
+import { getAutoOrScaleIndent, removeUndefinedKeys, getSize } from '@semcore/core/lib/utils/indentStyles';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
 import React from 'react';
 
 import style from '../style/use-box.shadow.css';
-import { getAutoOrScaleIndent } from '../utils';
 
-export function removeUndefinedKeys<T extends {}>(obj: T) {
-  return Object.entries(obj).reduce((acc: any, [key, value]) => {
-    if (value !== undefined) {
-      acc[key] = value;
-    }
-    return acc;
-  }, {});
-}
-
-function getSize(size: any) {
-  if (typeof size !== 'number') {
-    return size;
-  }
-  if (size < 1) {
-    return `${100 * size}%`;
-  }
-  if (size >= 1) {
-    return `${size}px`;
-  }
-}
-
-export type BoxProps = StyledProps & {
+export type BoxProps = IStyledProps & {
   /**
    * CSS `display` property
    */
@@ -151,11 +129,6 @@ export type BoxProps = StyledProps & {
    * @default false
    */
   inAfterOutline?: boolean;
-
-  /** Property for specifying css properties in js
-   * @deprecated v4.0.0 */
-  css?: React.CSSProperties;
-
   /** CSS `position` property */
   position?: Property.Position;
   /** CSS `top` property */
@@ -318,12 +291,6 @@ export default function useBox<T extends BoxProps>(
     inset,
     zIndex,
   ]);
-
-  logger.warn(
-    css !== undefined,
-    'The \'css\' property is deprecated, use \'style\'',
-    other['data-ui-name'] || 'Box',
-  );
 
   const styles = sstyled(style);
   const { className: rootClassName, style: rootStyle } = styles.cn('SBox', {

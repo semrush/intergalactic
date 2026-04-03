@@ -1,4 +1,4 @@
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from '@semcore/ui/base-components';
 import type { TagProps } from '@semcore/ui/tag';
 import Tag from '@semcore/ui/tag';
 import React from 'react';

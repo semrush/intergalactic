@@ -8,16 +8,3 @@ SIcon {
   outline: none;
   color: var(--color);
 }
-
-
-SIcon[interactive] {
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.8);
-  }
-
-  path {
-    pointer-events: none;
-  }
-}

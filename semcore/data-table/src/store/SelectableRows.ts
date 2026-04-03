@@ -40,18 +40,23 @@ export interface ISelectedRows<UniqKeyType> {
   isIndeterminate(): boolean;
 
   /** Subscribe to changes */
-  subscribe: EventEmitter['subscribe'];
+  subscribe: EventEmitter<Events<UniqKeyType>>['subscribe'];
 }
 
-export class SelectableRows<UniqRowKeyType> extends EventEmitter implements ISelectedRows<UniqRowKeyType> {
+type Events<UniqRowKeyType> = {
+  [SelectableRows.TOGGLE_EVENT]: (val: UniqRowKeyType) => void;
+  [SelectableRows.SELECT_ALL_EVENT]: () => void;
+};
+
+export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowKeyType>> implements ISelectedRows<UniqRowKeyType> {
   private readonly values: Set<UniqRowKeyType>;
 
   private availableKeys = new Set<UniqRowKeyType>();
 
   private lastSelectedRow: UniqRowKeyType | null = null;
 
-  public static TOGGLE_EVENT = 'toggle_selected_row';
-  public static SELECT_ALL_EVENT = 'select_all_selected_rows';
+  public static TOGGLE_EVENT = 'toggle_selected_row' as const;
+  public static SELECT_ALL_EVENT = 'select_all_selected_rows' as const;
 
   public isPressedShift: boolean = false;
 

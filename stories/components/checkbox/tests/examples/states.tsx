@@ -1,10 +1,10 @@
+import { Flex } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
 import type { CheckboxProps } from '@semcore/ui/checkbox';
-import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type CheckboxExampleProps = CheckboxProps & { color?: 'string' };
+type CheckboxExampleProps = CheckboxProps & { color?: 'string'; autoFocus: boolean };
 const Demo = (props: CheckboxExampleProps) => {
   return (
     <Flex m={5} data-test-id='checkbox'>
@@ -18,7 +18,7 @@ const Demo = (props: CheckboxExampleProps) => {
           indeterminate={props.indeterminate}
           checked={props.checked}
         >
-          <Checkbox.Value />
+          <Checkbox.Value autoFocus={props.autoFocus} />
           <Checkbox.Text color={props.color}>This isLabel</Checkbox.Text>
         </Checkbox>
       </Flex>
@@ -35,6 +35,7 @@ export const defaultExampleProps: CheckboxExampleProps = {
   checked: undefined,
   disabled: undefined,
   indeterminate: undefined,
+  autoFocus: false,
 };
 
 Demo.defaultProps = defaultExampleProps;

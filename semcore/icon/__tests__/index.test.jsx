@@ -32,23 +32,6 @@ describe('Icon', () => {
     expect(getByTestId('icon').attributes['class'].value).toMatch('more-than one-class');
   });
 
-  test('should support property for Box', () => {
-    const { getByTestId } = render(<Icon data-testid='icon' mr={2} />);
-    expect(getByTestId('icon').attributes['style'].value).toMatch('margin-right: 8px;');
-  });
-
-  test('should aria-hidden be true if interactive is false', () => {
-    const { getByTestId } = render(<Icon data-testid='icon' mr={2} interactive={false} />);
-    expect(getByTestId('icon').attributes['aria-hidden'].value).toEqual('true');
-  });
-
-  test('should not be aria-hidden if interactive is true', () => {
-    const { getByTestId } = render(
-      <Icon data-testid='icon' mr={2} interactive={true} aria-label='Interactive icon!' />,
-    );
-    expect(getByTestId('icon').attributes['aria-hidden']?.value).toEqual(undefined);
-  });
-
   test('should support children', () => {
     const { getByTestId } = render(
       <Icon>
@@ -58,12 +41,43 @@ describe('Icon', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('should support call onClick', async () => {
-    const onClick = vi.fn();
-    const { getByTestId } = render(<Icon data-testid='icon' interactive aria-label='Test icon' />);
+  test('should apply mt/mb margin props to style', () => {
+    const { getByTestId } = render(
+      <Icon data-testid='icon' m={2} mt={3} mr={1} mb={5} ml={4} mx={6} my={7} />,
+    );
+    const style = getByTestId('icon').style;
+    expect(style.marginTop).toBe('12px');
+    expect(style.marginRight).toBe('4px');
+    expect(style.marginBottom).toBe('20px');
+    expect(style.marginLeft).toBe('16px');
+  });
 
-    fireEvent.keyDown(getByTestId('icon'), { key: 'Enter' });
-    expect(onClick).toHaveBeenCalledTimes(0);
+  test('should apply margin props to style', () => {
+    const { getByTestId } = render(
+      <Icon data-testid='icon' m={2} />,
+    );
+    const style = getByTestId('icon').style;
+    expect(style.margin).toBe('8px');
+  });
+
+  test('should apply mx/my when individual props are not set', () => {
+    const { getByTestId } = render(<Icon data-testid='icon' mx={2} my={3} />);
+    const style = getByTestId('icon').style;
+    expect(style.marginLeft).toBe('8px');
+    expect(style.marginRight).toBe('8px');
+    expect(style.marginTop).toBe('12px');
+    expect(style.marginBottom).toBe('12px');
+  });
+
+  test('should support custom scaleIndent', () => {
+    const { getByTestId } = render(<Icon data-testid='icon' mt={2} scaleIndent={8} />);
+    expect(getByTestId('icon').style.marginTop).toBe('16px');
+  });
+
+  test('should support string margin values', () => {
+    const { getByTestId } = render(<Icon data-testid='icon' m='auto' />);
+    const style = getByTestId('icon').style;
+    expect(style.margin).toBe('auto');
   });
 
   test('should not call onClick with onKeydown', async () => {

@@ -61,6 +61,7 @@ For guidance on positioning the error message notice, refer to the [Notice](/com
 
 ## Validation messages
 
+<!-- vale DevDocs.Please = NO -->
 A standard text pattern is: Please enter something.
 
 Table: Validation messages
@@ -71,4 +72,4 @@ Table: Validation messages
 | Entering someone else's data | Use: Please enter a/an [field name].  |
 | Field filled with erroneous data | For instance, with email field: Please enter a valid email. |
 | Checkbox error for Terms & Conditions | Use: Please confirm that you agree to our Terms and Conditions and Privacy Policy.   |
-
+<!-- vale DevDocs.Please = YES -->

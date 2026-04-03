@@ -1,5 +1,5 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps, Flex } from '@semcore/flex-box';
+import type { Box, BoxProps, Flex } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
@@ -7,8 +7,6 @@ export type RadioSize = 'm' | 'l';
 export type RadioState = 'normal' | 'invalid';
 export type RadioValue = string | number | boolean;
 
-/** @deprecated */
-export interface IRadioProps extends RadioProps, UnknownProperties {}
 export type RadioProps = BoxProps & {
   /** Radio item value **/
   value?: RadioValue;
@@ -34,13 +32,6 @@ export type RadioProps = BoxProps & {
   disabled?: boolean;
 };
 
-/** @deprecated */
-export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {
-  /**
-   *  HTML tag name for the displayed item
-   */
-  tag?: React.ElementType | string;
-}
 export type RadioGroupProps<T extends RadioValue = RadioValue> = {
   /** Radio group name */
   name?: string;
@@ -60,51 +51,11 @@ export type RadioGroupProps<T extends RadioValue = RadioValue> = {
   disabled?: boolean;
 };
 
-/** @deprecated */
-export interface IRadioValueProps extends RadioValueProps, UnknownProperties {}
 export type RadioValueProps = BoxProps & {
   /** List of elements that can be put on a hidden input */
   includeInputProps?: string[];
-  /**
-   * @deprecated set `state` on root Radio instead
-   * The value displaying the state of the component
-   * @default normal
-   */
-  state?: RadioState;
-  /**
-   * @deprecated
-   * The theme of the radio button that you can send your color to
-   */
-  theme?: string;
-  /**
-   * @deprecated set `size` on root RadioGroup instead
-   * Radio button size
-   */
-  size?: RadioSize;
-  /**
-   * @deprecated set `value` on root Radio instead
-   * The element value is required for RadioGroup
-   */
-  value?: RadioValue;
-  /**
-   * @deprecated set `defaultValue` on root RadioGroup instead
-   * Default value if `value` property is not provided
-   */
-  defaultValue?: RadioValue;
-  /**
-   * @deprecated set `onChange` on root RadioGroup instead
-   * Called when the value changes
-   */
-  onChange?: (value: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-  /**
-   * @deprecated set `disabled` on root Radio instead
-   * Blocks access and changes to the form field
-   */
-  disabled?: boolean;
 };
 
-/** @deprecated */
-export interface IRadioCtx extends RadioCtx, UnknownProperties {}
 export type RadioCtx = {
   getValueProps: PropGetterFn;
   getTextProps: PropGetterFn;

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import TabPanelItemAddonsExample, { defaultProps as TabPanelItemAddonsProps } from './examples/tab_panel_item_addons_and_props';
 import ValueAndDefaultValueExample from './examples/value_and_default_value';
+import WithUpdateValueExample from './examples/with_update_value';
 
 const meta: Meta<typeof TabPanel> = {
   title: 'Components/TabPanel/Tests',
@@ -17,9 +18,6 @@ export const TabPanelItemAddons: StoryObj<typeof TabPanelItemAddonsProps> = {
     disabled: {
       control: { type: 'boolean' },
     },
-    selected: {
-      control: { type: 'boolean' },
-    },
     behavior: {
       control: { type: 'select' },
       options: ['auto', 'manual'],
@@ -27,10 +25,38 @@ export const TabPanelItemAddons: StoryObj<typeof TabPanelItemAddonsProps> = {
     w: {
       control: { type: 'number' },
     },
+    ellipsis: {
+      control: 'select',
+      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
+      mapping: {
+        'false': { ellipsis: false },
+        'true': { ellipsis: true },
+        'cropPosition:middle': { 'ellipsis:cropPosition': 'middle' },
+        'cropPosition:end': { 'ellipsis:cropPosition': 'end' },
+        'cropPosition:middle lastRequiredSymbols:3': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 3 },
+        'cropPosition:middle lastRequiredSymbols:0': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 0 },
+      },
+    },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
   },
   args: TabPanelItemAddonsProps,
 };
 
 export const ValueAndDefaultValue: StoryObj<typeof TabPanel> = {
   render: ValueAndDefaultValueExample,
+};
+
+export const WithUpdateValue: StoryObj<typeof TabPanel> = {
+  render: WithUpdateValueExample,
 };

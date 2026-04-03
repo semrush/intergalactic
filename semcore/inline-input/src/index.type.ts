@@ -1,11 +1,9 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { ButtonLinkComponent } from '@semcore/button';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { InputNumberControlsProps } from '@semcore/input-number';
 import type React from 'react';
 
-/** @deprecated */
-export interface IInlineInputProps extends InlineInputProps, UnknownProperties {}
 export type InlineInputProps = BoxProps & {
   /**
    * Visual state of inline input
@@ -37,27 +35,6 @@ export type InlineInputProps = BoxProps & {
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
   ) => void;
   /**
-   * Text value of input. Should be used with `onChange` property together
-   * @deprecated
-   */
-  value?: string;
-  /**
-   * Initial text value of input
-   * @deprecated
-   */
-  defaultValue?: string;
-  /**
-   * Makes component to catch browser focus on component mount
-   * @default false
-   * @deprecated
-   */
-  autoFocus?: boolean;
-  /**
-   * Gray text displayed in empty input
-   * @deprecated
-   */
-  placeholder?: string;
-  /**
    * defines callback (`onCancel` or `onConfirm`) triggered when `blur` event out of container fired
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
@@ -66,11 +43,8 @@ export type InlineInputProps = BoxProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IInlineInputAddonProps extends InlineInputAddonProps, UnknownProperties {}
 export type InlineInputAddonProps = BoxProps & {};
-/** @deprecated */
-export interface IInlineInputValueProps extends InlineInputValueProps, UnknownProperties {}
+
 export type InlineInputValueProps = BoxProps & {
   /**
    * id attribute of input tag
@@ -93,16 +67,6 @@ export type InlineInputValueProps = BoxProps & {
    */
   onChange?: (value: string, event: React.ChangeEvent) => void;
   /**
-   * visual state of component
-   * @deprecated
-   */
-  state?: 'normal' | 'valid' | 'invalid';
-  /**
-   * shows spinner in `InlineInput.ConfirmControl` and disables other interactive elements
-   * @deprecated
-   */
-  loading?: boolean;
-  /**
    * disables interactive elements
    */
   disabled?: boolean;
@@ -111,10 +75,7 @@ export type InlineInputValueProps = BoxProps & {
    */
   placeholder?: string;
 };
-/** @deprecated */
-export interface IInlineInputConfirmControlProps
-  extends InlineInputConfirmControlProps,
-  UnknownProperties {}
+
 export type InlineInputConfirmControlProps = BoxProps & {
   /**
    * Text of tooltip
@@ -127,10 +88,7 @@ export type InlineInputConfirmControlProps = BoxProps & {
    */
   icon?: React.FC;
 };
-/** @deprecated */
-export interface IInlineInputCancelControlProps
-  extends InlineInputCancelControlProps,
-  UnknownProperties {}
+
 export type InlineInputCancelControlProps = BoxProps & {
   /**
    * Text of tooltip

@@ -2,7 +2,6 @@ SWidgetEmpty {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--intergalactic-spacing-4x, 16px);
 }
 
 SImage {

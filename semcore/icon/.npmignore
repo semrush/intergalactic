@@ -1,4 +1,6 @@
 node_modules
 __tests__
 src
+transform-svg-icon.ts
 tsconfig.json
+vite.config.ts

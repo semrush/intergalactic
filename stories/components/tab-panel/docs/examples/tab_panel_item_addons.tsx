@@ -1,7 +1,7 @@
+import FacebookM from '@semcore/icon/Facebook/m';
+import InstagramM from '@semcore/icon/Instagram/m';
+import TwitterM from '@semcore/icon/Twitter/m';
 import Badge from '@semcore/ui/badge';
-import FacebookM from '@semcore/ui/icon/Facebook/m';
-import InstagramM from '@semcore/ui/icon/Instagram/m';
-import TwitterM from '@semcore/ui/icon/Twitter/m';
 import TabPanel from '@semcore/ui/tab-panel';
 import React from 'react';
 
@@ -30,7 +30,7 @@ const Demo = () => {
           </TabPanel.Item.Addon>
           <TabPanel.Item.Text>Instagram</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
-            <Badge bg='green-400'>new</Badge>
+            <Badge type='new'>new</Badge>
           </TabPanel.Item.Addon>
         </TabPanel.Item>
         <TabPanel.Item

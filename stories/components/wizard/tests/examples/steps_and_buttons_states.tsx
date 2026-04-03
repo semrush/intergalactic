@@ -1,5 +1,5 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Wizard from '@semcore/ui/wizard';
 import React from 'react';

@@ -1,6 +1,8 @@
 import { Box, Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
+import type Button from '@semcore/button';
+import type Checkbox from '@semcore/checkbox';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import CheckM from '@semcore/icon/Check/m';
@@ -18,7 +20,13 @@ import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
 
-import type { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
+import type {
+  FeedbackRatingCheckboxProps,
+  FeedbackRatingItemProps,
+  FeedbackRatingProps,
+  FormConfigItem,
+  FeedbackRatingDefaultProps,
+} from './FeedbackRating.type';
 import style from '../../style/feedback-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import CheckboxButton from '../checkbox-button/CheckboxButton';
@@ -32,17 +40,17 @@ type State = {
 
 class FeedbackRatingRoot extends Component<
   FeedbackRatingProps,
-  {},
-  State,
   typeof FeedbackRatingRoot.enhance,
-  typeof FeedbackRatingRoot.defaultProps
+  {},
+  FeedbackRatingDefaultProps,
+  State
 > {
   static displayName = 'FeedbackRatingForm';
   static style = style;
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
-  static defaultProps = {
+  static defaultProps: FeedbackRatingDefaultProps = {
     onSubmit: () => {},
     i18n: localizedMessages,
     locale: 'en',
@@ -400,12 +408,17 @@ function Header(props: any) {
   );
 }
 
-const FeedbackRating: typeof FeedbackRatingType & { validate: typeof FeedbackRatingRoot.validate } =
-  createComponent(FeedbackRatingRoot, {
-    Header,
-    Item: FeedbackItem,
-    Checkbox: CheckboxButton,
-    Submit: SubmitButton,
-  });
+const FeedbackRating = createComponent<'form', FeedbackRatingProps, {}, typeof FeedbackRatingRoot.enhance>(FeedbackRatingRoot, {
+  Header,
+  Item: FeedbackItem,
+  Checkbox: CheckboxButton,
+  Submit: SubmitButton,
+}) as Intergalactic.Component<'form', FeedbackRatingProps, {}, typeof FeedbackRatingRoot.enhance> & {
+  validate: typeof FeedbackRatingRoot.validate;
+  Item: Intergalactic.Component<'div', FeedbackRatingItemProps>;
+  Submit: typeof Button;
+  Checkbox: Intergalactic.Component<typeof Checkbox, FeedbackRatingCheckboxProps>;
+  Header: typeof Text;
+};
 
 export default FeedbackRating;

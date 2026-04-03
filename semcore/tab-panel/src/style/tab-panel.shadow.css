@@ -40,12 +40,6 @@ STabPanelItem {
   font-family: inherit;
   cursor: pointer;
 
-  & SText {
-    font-size: var(--intergalactic-fs-200, 14px);
-    line-height: var(--intergalactic-lh-200, 142%);
-    font-weight: var(--intergalactic-medium, 500);
-  }
-
   &::-moz-focus-inner {
     border: none;
     padding: 0;
@@ -96,11 +90,7 @@ STabPanelItem[selected] {
 }
 
 SText {
-  display: inline-block;
   margin: auto var(--intergalactic-spacing-2x, 8px);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 SAddon {

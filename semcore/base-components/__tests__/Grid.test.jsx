@@ -1,5 +1,4 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 import { describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -7,10 +6,6 @@ import React from 'react';
 import { Col, Row } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
-describe('grid Dependency imports', () => {
-  runDependencyCheckTests('grid');
-});
 
 describe('Grid', () => {
   beforeEach(cleanup);

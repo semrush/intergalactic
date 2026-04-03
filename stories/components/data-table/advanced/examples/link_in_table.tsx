@@ -1,8 +1,8 @@
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -16,7 +16,7 @@ const Demo = () => {
       renderCell={(props) => {
         return (
           <Flex>
-            <Ellipsis>{props.value}</Ellipsis>
+            <Text ellipsis={true}>{props.value}</Text>
             <Link
               href='#'
               target='_blank'

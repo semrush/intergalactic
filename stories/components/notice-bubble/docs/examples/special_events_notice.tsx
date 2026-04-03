@@ -1,6 +1,6 @@
+import MailSent from '@semcore/illustration/MailSent';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import MailSent from '@semcore/ui/illustration/MailSent';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 

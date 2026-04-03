@@ -1,16 +1,13 @@
 import React from 'react';
 
-import useEnhancedEffect from './use/useEnhancedEffect';
-import type { UnknownProperties } from '../core-types/UnknownProperties';
 import register from '../register';
+import useEnhancedEffect from './use/useEnhancedEffect';
 
 type ContextType = {
   prefix?: string;
   value: number;
 };
 
-/** @deprecated */
-export interface IUniqueIDProps extends UniqueIDProps, UnknownProperties {}
 export type UniqueIDProps = {
   /* Unique ID */
   uid?: string;

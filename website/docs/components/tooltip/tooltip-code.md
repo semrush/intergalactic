@@ -4,18 +4,20 @@ fileSource: tooltip
 tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
-The tooltip component is a wrap over [intergalactic/popper](/utils/popper/popper) with additional features:
+::: tip New component 🎉
+**Hint** is now separate from **Tooltip**. You can find its documentation in [Utils/Hint](../../utils/hint/hint-code).
+:::
+
+The tooltip component is a wrapper over [Popper](/utils/popper/popper) with additional features:
 
 - Stylization and themes for the popper.
 - Adding arrow for the popper to point to its trigger.
 
-::: tip
-If you need to customize tooltip behavior, refer to [intergalactic/popper](/utils/popper/popper) documentation.
-:::
+If you need to customize tooltip behavior, refer to [Popper documentation](/utils/popper/popper).
 
 ## Basic usage
 
-Use the appropriate component depending on your case. Refer to [Tooltip API](tooltip-api) and [Tooltip A11y](tooltip-a11y) for more details.
+Use the appropriate component depending on your case. Read more about the differences between tooltip types in the [Design guide](./tooltip).
 
 ::: sandbox
 

@@ -20,20 +20,17 @@
     "@semcore/base-trigger": "16.4.4",
     "@semcore/button": "16.0.12",
     "@semcore/divider": "16.0.11",
-    "@semcore/popper": "16.0.11",
     "@semcore/dropdown": "16.1.3",
-    "@semcore/icon": "16.7.3",
     "@semcore/input": "16.1.1",
     "@semcore/input-mask": "16.0.11",
     "@semcore/typography": "16.3.2",
     "@semcore/checkbox": "16.2.1",
     "@semcore/tooltip": "16.0.11",
-    "@semcore/flex-box": "16.0.11",
-    "@semcore/neighbor-location": "16.0.11",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
+    "@semcore/icon": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {
     "type": "git",
@@ -42,6 +39,8 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

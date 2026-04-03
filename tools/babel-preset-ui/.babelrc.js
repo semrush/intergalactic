@@ -15,6 +15,7 @@ module.exports = function (babel, opts = {}) {
       ],
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-import-assertions',
+      '@babel/plugin-transform-class-static-block',
       'babel-plugin-preval',
       [
         '@babel/plugin-transform-runtime',

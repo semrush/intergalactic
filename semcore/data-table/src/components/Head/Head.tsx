@@ -21,9 +21,8 @@ class HeadRoot<
   UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableHeadProps,
-    {},
-    {},
     [],
+    {},
     HeadPropsInner<Data, UniqKey, UniqKeyType>
   > {
   static displayName = 'Head';

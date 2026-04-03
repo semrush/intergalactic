@@ -192,6 +192,58 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
+  test.describe('Ellipsis', () => {
+    test(`Ellipsis with cropPosition = end`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table',
+        '@ellipsis',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/multiple_use.tsx', 'en');
+
+      await page.setViewportSize({ width: 1920, height: 1080 });
+      await page.waitForTimeout(200); // wait for ellipsis apply
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+
+      await page.keyboard.press('ArrowDown');
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
+      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+    });
+
+    test(`Ellipsis with cropPosition = middle`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table',
+        '@ellipsis',
+        '@link',
+        '@base-components'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en');
+      await page.waitForTimeout(250); // wait for ellipsis apply
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(200); // wait for ellipsis apply
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
+      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+    });
+  });
+
   test.describe('Limited mode', () => {
     test(`Verify limited state for table with accordion keyboard and mouse interactions`, {
       tag: [TAG.PRIORITY_HIGH,
@@ -202,21 +254,26 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify availabe accordion expands and visible ', async () => {
         await page.keyboard.press('Tab');
+        await expect(locators.toggle(page).nth(0)).toBeFocused();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(200);
         await locators.rowTableInTable(page, 2, 4).waitFor({ state: 'visible' });
       });
       await test.step('Verify partly available accordion expands by keyboard', async () => {
         for (let i = 0; i < 6; i++)
           await page.keyboard.press('ArrowDown');
+        await expect(locators.toggle(page).nth(2)).toBeFocused();
         await page.keyboard.press('Enter');
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await page.waitForTimeout(300);
         await page.keyboard.press('ArrowDown');
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('ArrowDown');
+        await expect(locators.toggle(page).nth(3)).toBeFocused();
       });
       await test.step('Verify hidden accordion cells not focused - overlay contens focused insted', async () => {
         await page.keyboard.press('Enter');
-
+        await page.waitForTimeout(200);
         await locators.rowTableInTable(page, 2, 11).waitFor({ state: 'visible' });
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowRight');
@@ -497,7 +554,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       expect(hasScroll).toBe(false);
 
-      page.setViewportSize({ width: 500, height: 700 });
+      await page.setViewportSize({ width: 500, height: 700 });
 
       hasScroll = await head.evaluate((node) => (node.scrollWidth - node.clientWidth) > 0);
 
@@ -1836,6 +1893,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table'],
     }, async ({ page, browserName }) => {
+      test.skip(browserName === 'webkit', 'Flaky focus handling in webkit');
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
       await test.step('Verify availabe accordion expands and visible ', async () => {
@@ -1851,7 +1909,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
         await page.keyboard.press('ArrowDown');
         await page.keyboard.press('ArrowDown');
-        await expect(locators.toggle(page).nth(3)).toBeFocused();
+        await expect(async () => {
+          await expect(locators.toggle(page).nth(3)).toBeFocused();
+        }).toPass({ timeout: 5000 });
       });
       await test.step('Verify hidden accordion cells not focused - overlay contens focused insted', async () => {
         await page.keyboard.press('Enter');

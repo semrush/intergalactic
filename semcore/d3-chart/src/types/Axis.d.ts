@@ -40,6 +40,10 @@ export type AxisTicksProps = Context & {
   ticks?: any[];
   /** Enables multiline tick labels, applicable only for band scales  */
   multiline?: boolean;
+  /**
+   * Enable `--intergalactic-text-primary` color for ticks
+   */
+  primaryText?: boolean;
 };
 
 /** @deprecated */

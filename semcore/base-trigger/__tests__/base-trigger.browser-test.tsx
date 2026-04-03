@@ -86,8 +86,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify With addons case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@base-trigger',
-        '@icon'],
+        '@base-trigger'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-addons.tsx', 'en', item);
 
@@ -214,8 +213,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@dropdown',
-        '@select',
-        '@icon'],
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
@@ -282,10 +280,14 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx', 'en');
 
-    await expect(page).toHaveScreenshot();
-
     await locators.button(page).nth(1).hover();
-    await page.getByRole('tooltip').waitFor({ state: 'visible' });
+    await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
   });
 });
@@ -401,10 +403,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(tagNameText).toBe('h2');
 
     await page.keyboard.press('Tab');
-    await expect(page.getByRole('tooltip')).toHaveCount(0);
+    await expect(page.locator(`[data-ui-name="Hint"]`)).toHaveCount(0);
 
     await locators.button(page).nth(1).hover();
-    await page.getByRole('tooltip').waitFor({ state: 'visible' });
-    await expect(page.getByRole('tooltip')).toHaveCount(1);
+    await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
+    await expect(page.locator(`[data-ui-name="Hint"]`)).toHaveCount(1);
   });
 });

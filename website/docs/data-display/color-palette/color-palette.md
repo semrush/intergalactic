@@ -12,7 +12,7 @@ docs: true
 - Be mindful that green and red are often associated with positive and negative connotations, such as growth and decline.
 
 ::: tip
-We recommend using red carefully, as it is typically reserved for destructive actions and invalid states.
+We recommend using red carefully, as it's typically reserved for destructive actions and invalid states.
 :::
 
 ## Chart tokens

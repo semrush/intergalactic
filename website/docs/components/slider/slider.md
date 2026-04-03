@@ -87,7 +87,7 @@ This design reduces errors associated with switching between mouse and keyboard.
 Ensure that keyboard shortcuts can still be used when the input is focused.
 
 - If the user enters a value through the associated input,
-the hover effect is not applied to the slider.
+the hover effect isn't applied to the slider.
 The slider knob moves according to the value entered in the input.
 
 Table: Slider with linked input in active state

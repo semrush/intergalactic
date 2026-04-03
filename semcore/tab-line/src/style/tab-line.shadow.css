@@ -97,13 +97,6 @@ STabLineItem[disabled] {
   pointer-events: none;
 }
 
-SText {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 SAddon {
   display: inline-flex;
   align-items: center;
@@ -113,21 +106,11 @@ SAddon {
 STabLineItem[size='m'] {
   height: 28px;
   min-width: 18px;
-
-  & SText {
-    font-size: var(--intergalactic-fs-200, 14px);
-    line-height: var(--intergalactic-lh-200, 142%);
-  }
 }
 
 STabLineItem[size='l'] {
   height: 40px;
   min-width: 26px;
-
-  & SText {
-    font-size: var(--intergalactic-fs-300, 16px);
-    line-height: var(--intergalactic-lh-300, 150%);
-  }
 }
 
 STabLineItem[neighborLocation='left'] {

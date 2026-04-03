@@ -52,7 +52,7 @@ const Demo = () => {
         </ScreenReaderOnly>
         <Collapse
           visible={!!selectedRows.length}
-          animationDuration={200}
+          duration={200}
           style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
           <Flex

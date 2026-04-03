@@ -29,11 +29,14 @@ const renderRow = ({
 
 const Demo = () => {
   const [data, setData] = React.useState(list);
-  const innerRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
+  const containerRef = React.useRef<HTMLElement | null>(null);
+
   const ref = (node: HTMLDivElement | null) => {
-    if (node && innerRef.current) {
-      innerRef.current = node.querySelector('.ReactVirtualized__Grid__innerScrollContainer');
+    if (node) {
+      containerRef.current = node.parentElement?.querySelector('.ReactVirtualized__Grid') ?? null;
     }
+
+    return node;
   };
 
   return (
@@ -57,9 +60,11 @@ const Demo = () => {
         {data.length
         // eslint-disable-next-line @stylistic/multiline-ternary
           ? (
-              <ScrollArea inner={innerRef}>
+              <ScrollArea container={containerRef}>
+                {/* Need this element to get ref to virtual list */}
+                <div ref={ref} style={{ display: 'contents' }} />
                 <ScrollArea.Container
-                  ref={ref}
+                  use:ref={undefined} // This is necessary to prevent the List component from being set as a reference to the container.
                   // @ts-ignore
                   tag={List}
                   height={500}

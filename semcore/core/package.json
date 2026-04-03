@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "16.5.1",
+  "version": "16.5.2",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "typings": "lib/index.d.ts",
@@ -13,298 +13,303 @@
   },
   "exports": {
     ".": {
-      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts",
       "import": "./lib/index.mjs",
-      "types": "./lib/index.d.ts"
+      "require": "./lib/index.js"
     },
     "./src": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts"
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
     },
     "./lib/theme/themes/default.css": {
-      "require": "./lib/theme/themes/default.css",
-      "import": "./lib/theme/themes/default.css"
+      "import": "./lib/theme/themes/default.css",
+      "require": "./lib/theme/themes/default.css"
     },
     "./lib/theme/themes/light.css": {
-      "require": "./lib/theme/themes/light.css",
-      "import": "./lib/theme/themes/light.css"
+      "import": "./lib/theme/themes/light.css",
+      "require": "./lib/theme/themes/light.css"
     },
     "./lib/theme/themes/dark.css": {
-      "require": "./lib/theme/themes/dark.css",
-      "import": "./lib/theme/themes/dark.css"
+      "import": "./lib/theme/themes/dark.css",
+      "require": "./lib/theme/themes/dark.css"
     },
     "./lib/theme/themes/auto.css": {
-      "require": "./lib/theme/themes/auto.css",
-      "import": "./lib/theme/themes/auto.css"
+      "import": "./lib/theme/themes/auto.css",
+      "require": "./lib/theme/themes/auto.css"
     },
     "./lib/theme/themes/highlights-light.css": {
-      "require": "./lib/theme/themes/highlights-light.css",
-      "import": "./lib/theme/themes/highlights-light.css"
+      "import": "./lib/theme/themes/highlights-light.css",
+      "require": "./lib/theme/themes/highlights-light.css"
     },
     "./lib/utils/focus-lock/getFocusableIn": {
-      "require": "./lib/utils/focus-lock/getFocusableIn.js",
+      "types": "./lib/utils/focus-lock/getFocusableIn.d.ts",
       "import": "./lib/utils/focus-lock/getFocusableIn.mjs",
-      "types": "./lib/utils/focus-lock/getFocusableIn.d.ts"
+      "require": "./lib/utils/focus-lock/getFocusableIn.js"
     },
     "./lib/utils/focus-lock/isFocusable": {
-      "require": "./lib/utils/focus-lock/isFocusable.js",
+      "types": "./lib/utils/focus-lock/isFocusable.d.ts",
       "import": "./lib/utils/focus-lock/isFocusable.mjs",
-      "types": "./lib/utils/focus-lock/isFocusable.d.ts"
+      "require": "./lib/utils/focus-lock/isFocusable.js"
     },
     "./lib/utils/focus-lock/isFocusInside": {
-      "require": "./lib/utils/focus-lock/isFocusInside.js",
+      "types": "./lib/utils/focus-lock/isFocusInside.d.ts",
       "import": "./lib/utils/focus-lock/isFocusInside.mjs",
-      "types": "./lib/utils/focus-lock/isFocusInside.d.ts"
+      "require": "./lib/utils/focus-lock/isFocusInside.js"
     },
     "./lib/utils/focus-lock/setFocus": {
-      "require": "./lib/utils/focus-lock/setFocus.js",
+      "types": "./lib/utils/focus-lock/setFocus.d.ts",
       "import": "./lib/utils/focus-lock/setFocus.mjs",
-      "types": "./lib/utils/focus-lock/setFocus.d.ts"
+      "require": "./lib/utils/focus-lock/setFocus.js"
     },
     "./lib/utils/enhances/a11yEnhance": {
-      "require": "./lib/utils/enhances/a11yEnhance.js",
+      "types": "./lib/utils/enhances/a11yEnhance.d.ts",
       "import": "./lib/utils/enhances/a11yEnhance.mjs",
-      "types": "./lib/utils/enhances/a11yEnhance.d.ts"
+      "require": "./lib/utils/enhances/a11yEnhance.js"
     },
     "./lib/utils/enhances/animatedSizeEnhance": {
-      "require": "./lib/utils/enhances/animatedSizeEnhance.js",
+      "types": "./lib/utils/enhances/animatedSizeEnhance.d.ts",
       "import": "./lib/utils/enhances/animatedSizeEnhance.mjs",
-      "types": "./lib/utils/enhances/animatedSizeEnhance.d.ts"
-    },
-    "./lib/utils/enhances/autoFocusEnhance": {
-      "require": "./lib/utils/enhances/autoFocusEnhance.js",
-      "import": "./lib/utils/enhances/autoFocusEnhance.mjs",
-      "types": "./lib/utils/enhances/autoFocusEnhance.d.ts"
+      "require": "./lib/utils/enhances/animatedSizeEnhance.js"
     },
     "./lib/utils/enhances/contextEnhance": {
-      "require": "./lib/utils/enhances/contextEnhance.js",
+      "types": "./lib/utils/enhances/contextEnhance.d.ts",
       "import": "./lib/utils/enhances/contextEnhance.mjs",
-      "types": "./lib/utils/enhances/contextEnhance.d.ts"
+      "require": "./lib/utils/enhances/contextEnhance.js"
     },
     "./lib/utils/enhances/focusSourceEnhance": {
-      "require": "./lib/utils/enhances/focusSourceEnhance.js",
+      "types": "./lib/utils/enhances/focusSourceEnhance.d.ts",
       "import": "./lib/utils/enhances/focusSourceEnhance.mjs",
-      "types": "./lib/utils/enhances/focusSourceEnhance.d.ts"
-    },
-    "./lib/utils/enhances/keyboardFocusEnhance": {
-      "require": "./lib/utils/enhances/keyboardFocusEnhance.js",
-      "import": "./lib/utils/enhances/keyboardFocusEnhance.mjs",
-      "types": "./lib/utils/enhances/keyboardFocusEnhance.d.ts"
+      "require": "./lib/utils/enhances/focusSourceEnhance.js"
     },
     "./lib/utils/enhances/i18nEnhance": {
-      "require": "./lib/utils/enhances/i18nEnhance.js",
+      "types": "./lib/utils/enhances/i18nEnhance.d.ts",
       "import": "./lib/utils/enhances/i18nEnhance.mjs",
-      "types": "./lib/utils/enhances/i18nEnhance.d.ts"
+      "require": "./lib/utils/enhances/i18nEnhance.js"
     },
     "./lib/utils/enhances/resolveColorEnhance": {
-      "require": "./lib/utils/enhances/resolveColorEnhance.js",
+      "types": "./lib/utils/enhances/resolveColorEnhance.d.ts",
       "import": "./lib/utils/enhances/resolveColorEnhance.mjs",
-      "types": "./lib/utils/enhances/resolveColorEnhance.d.ts"
+      "require": "./lib/utils/enhances/resolveColorEnhance.js"
     },
     "./lib/utils/enhances/WithI18n": {
-      "require": "./lib/utils/enhances/WithI18n.js",
+      "types": "./lib/utils/enhances/WithI18n.d.ts",
       "import": "./lib/utils/enhances/WithI18n.mjs",
-      "types": "./lib/utils/enhances/WithI18n.d.ts"
+      "require": "./lib/utils/enhances/WithI18n.js"
     },
     "./lib/utils/use/useEnhancedEffect": {
-      "require": "./lib/utils/use/useEnhancedEffect.js",
+      "types": "./lib/utils/use/useEnhancedEffect.d.ts",
       "import": "./lib/utils/use/useEnhancedEffect.mjs",
-      "types": "./lib/utils/use/useEnhancedEffect.d.ts"
+      "require": "./lib/utils/use/useEnhancedEffect.js"
     },
     "./lib/utils/use/useFocusLock": {
-      "require": "./lib/utils/use/useFocusLock.js",
+      "types": "./lib/utils/use/useFocusLock.d.ts",
       "import": "./lib/utils/use/useFocusLock.mjs",
-      "types": "./lib/utils/use/useFocusLock.d.ts"
+      "require": "./lib/utils/use/useFocusLock.js"
     },
     "./lib/utils/use/useColorResolver": {
-      "require": "./lib/utils/use/useColorResolver.js",
+      "types": "./lib/utils/use/useColorResolver.d.ts",
       "import": "./lib/utils/use/useColorResolver.mjs",
-      "types": "./lib/utils/use/useColorResolver.d.ts"
+      "require": "./lib/utils/use/useColorResolver.js"
     },
     "./lib/utils/use/useEventCallback": {
-      "require": "./lib/utils/use/useEventCallback.js",
+      "types": "./lib/utils/use/useEventCallback.d.ts",
       "import": "./lib/utils/use/useEventCallback.mjs",
-      "types": "./lib/utils/use/useEventCallback.d.ts"
+      "require": "./lib/utils/use/useEventCallback.js"
     },
     "./lib/utils/use/usePreventScroll": {
-      "require": "./lib/utils/use/usePreventScroll.js",
+      "types": "./lib/utils/use/usePreventScroll.d.ts",
       "import": "./lib/utils/use/usePreventScroll.mjs",
-      "types": "./lib/utils/use/usePreventScroll.d.ts"
+      "require": "./lib/utils/use/usePreventScroll.js"
     },
     "./lib/utils/addonTextChildren": {
-      "require": "./lib/utils/addonTextChildren.js",
+      "types": "./lib/utils/addonTextChildren.d.ts",
       "import": "./lib/utils/addonTextChildren.mjs",
-      "types": "./lib/utils/addonTextChildren.d.ts"
+      "require": "./lib/utils/addonTextChildren.js"
     },
     "./lib/utils/ariaProps": {
-      "require": "./lib/utils/ariaProps.js",
+      "types": "./lib/utils/ariaProps.d.ts",
       "import": "./lib/utils/ariaProps.mjs",
-      "types": "./lib/utils/ariaProps.d.ts"
+      "require": "./lib/utils/ariaProps.js"
     },
     "./lib/utils/assignProps": {
-      "require": "./lib/utils/assignProps.js",
+      "types": "./lib/utils/assignProps.d.ts",
       "import": "./lib/utils/assignProps.mjs",
-      "types": "./lib/utils/assignProps.d.ts"
+      "require": "./lib/utils/assignProps.js"
     },
     "./lib/utils/capitalizeFirstLetter": {
-      "require": "./lib/utils/capitalizeFirstLetter.js",
+      "types": "./lib/utils/capitalizeFirstLetter.d.ts",
       "import": "./lib/utils/capitalizeFirstLetter.mjs",
-      "types": "./lib/utils/capitalizeFirstLetter.d.ts"
+      "require": "./lib/utils/capitalizeFirstLetter.js"
     },
     "./lib/utils/canUseDOM": {
-      "require": "./lib/utils/canUseDOM.js",
+      "types": "./lib/utils/canUseDOM.d.ts",
       "import": "./lib/utils/canUseDOM.mjs",
-      "types": "./lib/utils/canUseDOM.d.ts"
+      "require": "./lib/utils/canUseDOM.js"
     },
     "./lib/utils/CSSinJS": {
-      "require": "./lib/utils/CSSinJS.js",
+      "types": "./lib/utils/CSSinJS.d.ts",
       "import": "./lib/utils/CSSinJS.mjs",
-      "types": "./lib/utils/CSSinJS.d.ts"
+      "require": "./lib/utils/CSSinJS.js"
     },
     "./lib/utils/cssToIntDefault": {
-      "require": "./lib/utils/cssToIntDefault.js",
+      "types": "./lib/utils/cssToIntDefault.d.ts",
       "import": "./lib/utils/cssToIntDefault.mjs",
-      "types": "./lib/utils/cssToIntDefault.d.ts"
+      "require": "./lib/utils/cssToIntDefault.js"
     },
     "./lib/utils/eventEmitter": {
-      "require": "./lib/utils/eventEmitter.js",
+      "types": "./lib/utils/eventEmitter.d.ts",
       "import": "./lib/utils/eventEmitter.mjs",
-      "types": "./lib/utils/eventEmitter.d.ts"
+      "require": "./lib/utils/eventEmitter.js"
     },
     "./lib/utils/fire": {
-      "require": "./lib/utils/fire.js",
+      "types": "./lib/utils/fire.d.ts",
       "import": "./lib/utils/fire.mjs",
-      "types": "./lib/utils/fire.d.ts"
+      "require": "./lib/utils/fire.js"
     },
     "./lib/utils/findComponent": {
-      "require": "./lib/utils/findComponent.js",
+      "types": "./lib/utils/findComponent.d.ts",
       "import": "./lib/utils/findComponent.mjs",
-      "types": "./lib/utils/findComponent.d.ts"
+      "require": "./lib/utils/findComponent.js"
     },
     "./lib/utils/getAccessibleName": {
-      "require": "./lib/utils/getAccessibleName.js",
+      "types": "./lib/utils/getAccessibleName.d.ts",
       "import": "./lib/utils/getAccessibleName.mjs",
-      "types": "./lib/utils/getAccessibleName.d.ts"
+      "require": "./lib/utils/getAccessibleName.js"
     },
     "./lib/utils/getDisplayName": {
-      "require": "./lib/utils/getDisplayName.js",
+      "types": "./lib/utils/getDisplayName.d.ts",
       "import": "./lib/utils/getDisplayName.mjs",
-      "types": "./lib/utils/getDisplayName.d.ts"
+      "require": "./lib/utils/getDisplayName.js"
     },
     "./lib/utils/getEventTarget": {
-      "require": "./lib/utils/getEventTarget.js",
+      "types": "./lib/utils/getEventTarget.d.ts",
       "import": "./lib/utils/getEventTarget.mjs",
-      "types": "./lib/utils/getEventTarget.d.ts"
+      "require": "./lib/utils/getEventTarget.js"
     },
     "./lib/utils/getOriginChildren": {
-      "require": "./lib/utils/getOriginChildren.js",
+      "types": "./lib/utils/getOriginChildren.d.ts",
       "import": "./lib/utils/getOriginChildren.mjs",
-      "types": "./lib/utils/getOriginChildren.d.ts"
+      "require": "./lib/utils/getOriginChildren.js"
     },
     "./lib/utils/hasLabels": {
-      "require": "./lib/utils/hasLabels.js",
+      "types": "./lib/utils/hasLabels.d.ts",
       "import": "./lib/utils/hasLabels.mjs",
-      "types": "./lib/utils/hasLabels.d.ts"
+      "require": "./lib/utils/hasLabels.js"
     },
     "./lib/utils/hasParent": {
-      "require": "./lib/utils/hasParent.js",
+      "types": "./lib/utils/hasParent.d.ts",
       "import": "./lib/utils/hasParent.mjs",
-      "types": "./lib/utils/hasParent.d.ts"
+      "require": "./lib/utils/hasParent.js"
+    },
+    "./lib/utils/indentStyles": {
+      "types": "./lib/utils/indentStyles.d.ts",
+      "import": "./lib/utils/indentStyles.mjs",
+      "require": "./lib/utils/indentStyles.js"
     },
     "./lib/utils/inputProps": {
-      "require": "./lib/utils/inputProps.js",
+      "types": "./lib/utils/inputProps.d.ts",
       "import": "./lib/utils/inputProps.mjs",
-      "types": "./lib/utils/inputProps.d.ts"
+      "require": "./lib/utils/inputProps.js"
     },
     "./lib/utils/isInteractiveElement": {
-      "require": "./lib/utils/isInteractiveElement.js",
+      "types": "./lib/utils/isInteractiveElement.d.ts",
       "import": "./lib/utils/isInteractiveElement.mjs",
-      "types": "./lib/utils/isInteractiveElement.d.ts"
+      "require": "./lib/utils/isInteractiveElement.js"
     },
     "./lib/utils/isNode": {
-      "require": "./lib/utils/isNode.js",
+      "types": "./lib/utils/isNode.d.ts",
       "import": "./lib/utils/isNode.mjs",
-      "types": "./lib/utils/isNode.d.ts"
+      "require": "./lib/utils/isNode.js"
     },
     "./lib/utils/isRetina": {
-      "require": "./lib/utils/isRetina.js",
+      "types": "./lib/utils/isRetina.d.ts",
       "import": "./lib/utils/isRetina.mjs",
-      "types": "./lib/utils/isRetina.d.ts"
+      "require": "./lib/utils/isRetina.js"
     },
     "./lib/utils/ownerDocument": {
-      "require": "./lib/utils/ownerDocument.js",
+      "types": "./lib/utils/ownerDocument.d.ts",
       "import": "./lib/utils/ownerDocument.mjs",
-      "types": "./lib/utils/ownerDocument.d.ts"
+      "require": "./lib/utils/ownerDocument.js"
     },
     "./lib/utils/pick": {
-      "require": "./lib/utils/pick.js",
+      "types": "./lib/utils/pick.d.ts",
       "import": "./lib/utils/pick.mjs",
-      "types": "./lib/utils/pick.d.ts"
+      "require": "./lib/utils/pick.js"
     },
     "./lib/utils/propsForElement": {
-      "require": "./lib/utils/propsForElement.js",
+      "types": "./lib/utils/propsForElement.d.ts",
       "import": "./lib/utils/propsForElement.mjs",
-      "types": "./lib/utils/propsForElement.d.ts"
+      "require": "./lib/utils/propsForElement.js"
     },
     "./lib/utils/logger": {
-      "require": "./lib/utils/logger.js",
+      "types": "./lib/utils/logger.d.ts",
       "import": "./lib/utils/logger.mjs",
-      "types": "./lib/utils/logger.d.ts"
+      "require": "./lib/utils/logger.js"
     },
     "./lib/utils/rafTrottle": {
-      "require": "./lib/utils/rafTrottle.js",
+      "types": "./lib/utils/rafTrottle.d.ts",
       "import": "./lib/utils/rafTrottle.mjs",
-      "types": "./lib/utils/rafTrottle.d.ts"
+      "require": "./lib/utils/rafTrottle.js"
     },
     "./lib/utils/reactToText": {
-      "require": "./lib/utils/reactToText.js",
+      "types": "./lib/utils/reactToText.d.ts",
       "import": "./lib/utils/reactToText.mjs",
-      "types": "./lib/utils/reactToText.d.ts"
+      "require": "./lib/utils/reactToText.js"
     },
     "./lib/utils/ref": {
-      "require": "./lib/utils/ref.js",
+      "types": "./lib/utils/ref.d.ts",
       "import": "./lib/utils/ref.mjs",
-      "types": "./lib/utils/ref.d.ts"
+      "require": "./lib/utils/ref.js"
     },
     "./lib/utils/setRef": {
-      "require": "./lib/utils/setRef.js",
+      "types": "./lib/utils/setRef.d.ts",
       "import": "./lib/utils/setRef.mjs",
-      "types": "./lib/utils/setRef.d.ts"
+      "require": "./lib/utils/setRef.js"
     },
     "./lib/utils/ScreenReaderOnly": {
-      "require": "./lib/utils/ScreenReaderOnly.js",
+      "types": "./lib/utils/ScreenReaderOnly.d.ts",
       "import": "./lib/utils/ScreenReaderOnly.mjs",
-      "types": "./lib/utils/ScreenReaderOnly.d.ts"
+      "require": "./lib/utils/ScreenReaderOnly.js"
     },
     "./lib/utils/syncScroll": {
-      "require": "./lib/utils/syncScroll.js",
+      "types": "./lib/utils/syncScroll.d.ts",
       "import": "./lib/utils/syncScroll.mjs",
-      "types": "./lib/utils/syncScroll.d.ts"
+      "require": "./lib/utils/syncScroll.js"
     },
     "./lib/utils/ThemeProvider": {
-      "require": "./lib/utils/ThemeProvider.js",
+      "types": "./lib/utils/ThemeProvider.d.ts",
       "import": "./lib/utils/ThemeProvider.mjs",
-      "types": "./lib/utils/ThemeProvider.d.ts"
+      "require": "./lib/utils/ThemeProvider.js"
     },
     "./lib/utils/uniqueID": {
-      "require": "./lib/utils/uniqueID.js",
+      "types": "./lib/utils/uniqueID.d.ts",
       "import": "./lib/utils/uniqueID.mjs",
-      "types": "./lib/utils/uniqueID.d.ts"
+      "require": "./lib/utils/uniqueID.js"
     },
     "./lib/utils/useCssVariable": {
-      "require": "./lib/utils/useCssVariable.js",
+      "types": "./lib/utils/useCssVariable.d.ts",
       "import": "./lib/utils/useCssVariable.mjs",
-      "types": "./lib/utils/useCssVariable.d.ts"
+      "require": "./lib/utils/useCssVariable.js"
     },
     "./lib/utils/zIndexStacking": {
-      "require": "./lib/utils/zIndexStacking.js",
+      "types": "./lib/utils/zIndexStacking.d.ts",
       "import": "./lib/utils/zIndexStacking.mjs",
-      "types": "./lib/utils/zIndexStacking.d.ts"
+      "require": "./lib/utils/zIndexStacking.js"
     },
     "./lib/utils/use/useScrollBarWidth": {
-      "require": "./lib/utils/use/useScrollBarWidth.js",
+      "types": "./lib/utils/use/useScrollBarWidth.d.ts",
       "import": "./lib/utils/use/useScrollBarWidth.mjs",
-      "types": "./lib/utils/use/useScrollBarWidth.d.ts"
+      "require": "./lib/utils/use/useScrollBarWidth.js"
+    },
+    "./lib/decorators/reactive": {
+      "types": "./lib/decorators/reactive.d.ts",
+      "import": "./lib/decorators/reactive.mjs",
+      "require": "./lib/decorators/reactive.js"
+    },
+    "./lib/decorators/propsObserver": {
+      "types": "./lib/decorators/propsObserver.d.ts",
+      "import": "./lib/decorators/propsObserver.mjs",
+      "require": "./lib/decorators/propsObserver.js"
     }
   },
   "dependencies": {
@@ -315,8 +320,8 @@
     "@babel/runtime": "7.27.6"
   },
   "peerDependencies": {
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "react": "16.8 - 19",
+    "react-dom": "16.8 - 19"
   },
   "repository": {
     "type": "git",

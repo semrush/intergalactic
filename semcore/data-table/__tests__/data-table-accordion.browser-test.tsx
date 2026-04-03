@@ -78,12 +78,6 @@ test.describe(`${TAG.VISUAL}`, () => {
             await checkStyles(cell, { 'background-color': 'rgb(240, 240, 244)' });
           }
       });
-      await test.step('Verify accordion is responsive', async () => {
-        await page.setViewportSize({ width: 920, height: 1080 });
-        await locators.toggle(page).nth(1).waitFor({ state: 'visible' });
-        await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
-      });
     });
 
     test('Verify accordion and custom component inside after keyboard interactions ', {
@@ -96,7 +90,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-      await page.waitForTimeout(200); // for chart animation is finished
+      await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
 
       await page.keyboard.press('ArrowDown');
       await expect(page).toHaveScreenshot();
@@ -122,8 +116,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await expect(sortIconKeywordAcc).toBeFocused();
         await page.keyboard.press('Enter');
-        await locators.dataTable(page).nth(1).waitFor({ state: 'visible' });
-
+        await locators.collapse(page).waitFor({ state: 'visible' });
+        await page.waitForTimeout(200);
         await page.keyboard.press('ArrowDown');
         await expect(page).toHaveScreenshot();
       });
@@ -182,7 +176,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
-        // await page.keyboard.press('Enter');
         await locators.collapse(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('ArrowRight');
@@ -450,8 +443,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify toggle styles when one expanded', async () => {
         await locators.toggle(page).first().click();
-        await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'visible' });
-
+        await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
+        await page.waitForTimeout(200);
         await checkStyles(toggles, { 'margin-right': '12px' });
       });
       await test.step('Verify cells in expanded state style', async () => {

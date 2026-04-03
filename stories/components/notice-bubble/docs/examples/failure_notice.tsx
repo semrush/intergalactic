@@ -1,7 +1,7 @@
+import ReloadM from '@semcore/icon/Reload/m';
+import WarningM from '@semcore/icon/Warning/m';
 import Button from '@semcore/ui/button';
 import { lastInteraction } from '@semcore/ui/core';
-import ReloadM from '@semcore/ui/icon/Reload/m';
-import WarningM from '@semcore/ui/icon/Warning/m';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 type FailtureNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };

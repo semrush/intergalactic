@@ -12,7 +12,7 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 
 **Why breadcrumbs are useful**:
 
-- they unobtrusively show the users which page they are on;
+- they unobtrusively show the users which page they're on;
 - they help you link to other pages on the site (useful for SEO);
 - they allow you to move between higher/lower nesting navigation levels without clicking the forward/backward buttons in the browser.
 
@@ -41,14 +41,14 @@ Margins between the links inside the breadcrumbs is 8px.
 
 ![](static/margins.png)
 
-## Long links truncation
+## Truncating long items
 
-If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), items are truncated into `ellipsis`.
+If there isn’t enough space for the breadcrumbs (viewport is too small or the text is too long), items are truncated with an `ellipsis`.
 
 ![](static/ellipsis.png)
 
 ::: tip
-Don't forget to check whether the full text is displayed in a tooltip. [Refer to our example](/components/breadcrumbs/breadcrumbs-code#breadcrumbs-item-truncation).
+Don't forget to check that the full text is displayed in a hint. [Refer to our example](./breadcrumbs-code#truncating-long-items).
 :::
 
 ## Interaction

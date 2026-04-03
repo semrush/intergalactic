@@ -1,9 +1,9 @@
+import SettingsM from '@semcore/icon/Settings/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Counter from '@semcore/ui/counter';
 import DnD from '@semcore/ui/drag-and-drop';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import SettingsM from '@semcore/ui/icon/Settings/m';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -79,7 +79,7 @@ const Demo = () => {
         </Button.Addon>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper hMax={800} aria-labelledby='popper_id'>
-        <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
+        <Flex direction='column' alignItems='flex-start' pt={2} px={2} pb={1} gap={3}>
           <Text bold id='popper_id'>
             Show table columns
           </Text>

@@ -21,45 +21,39 @@ export const locators = {
   Visual states, hover and focus styles, paddings, margins, and snapshots.
   ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
-  const variablesActive = [
-    { disabled: false, selected: undefined },
-    { disabled: false, selected: true },
-  ];
-  variablesActive.forEach((item) => {
-    test(`Verify active Tab Panel selected = ${item.selected} styles`, {
-      tag: [TAG.PRIORITY_HIGH,
-        '@tab-panel',
-        '@base-components',
-        '@icon',
-        '@counter',
-        '@badge'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', item);
+  test(`Verify active Tab Panel  styles`, {
+    tag: [TAG.PRIORITY_HIGH,
+      '@tab-panel',
+      '@base-components',
 
-      await page.keyboard.press('Tab');
-      await locators.tabPanels(page).nth(0).hover();
-      await expect(page).toHaveScreenshot();
+      '@counter',
+      '@badge'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en');
 
-      await locators.tabPanels(page).nth(1).hover();
-      await expect(page).toHaveScreenshot();
+    await page.keyboard.press('Tab');
+    await locators.tabPanels(page).nth(0).hover();
+    await expect(page).toHaveScreenshot();
 
-      await test.step('Verify tab panel styles', async () => {
-        const countText = await locators.text(page).count();
-        for (let i = 0; i < countText; i++) {
-          await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '8px');
-          await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '8px');
-        }
+    await locators.tabPanels(page).nth(1).hover();
+    await expect(page).toHaveScreenshot();
 
-        await expect(locators.addons(page).nth(0)).toHaveCSS('margin-left', '8px');
-        await expect(locators.addons(page).nth(2)).toHaveCSS('margin-left', '8px');
-        await expect(locators.addons(page).nth(4)).toHaveCSS('margin-left', '8px');
-        await expect(locators.addons(page).nth(7)).toHaveCSS('margin-left', '8px');
+    await test.step('Verify tab panel styles', async () => {
+      const countText = await locators.text(page).count();
+      for (let i = 0; i < countText; i++) {
+        await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '8px');
+        await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '8px');
+      }
 
-        await expect(locators.addons(page).nth(1)).toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(3)).toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(5)).toHaveCSS('margin-right', '8px');
-        await expect(locators.addons(page).nth(6)).toHaveCSS('margin-right', '8px');
-      });
+      await expect(locators.addons(page).nth(0)).toHaveCSS('margin-left', '8px');
+      await expect(locators.addons(page).nth(2)).toHaveCSS('margin-left', '8px');
+      await expect(locators.addons(page).nth(4)).toHaveCSS('margin-left', '8px');
+      await expect(locators.addons(page).nth(7)).toHaveCSS('margin-left', '8px');
+
+      await expect(locators.addons(page).nth(1)).toHaveCSS('margin-right', '8px');
+      await expect(locators.addons(page).nth(3)).toHaveCSS('margin-right', '8px');
+      await expect(locators.addons(page).nth(5)).toHaveCSS('margin-right', '8px');
+      await expect(locators.addons(page).nth(6)).toHaveCSS('margin-right', '8px');
     });
   });
 
@@ -67,24 +61,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@tab-panel',
       '@base-components',
-      '@icon',
+
       '@counter',
       '@badge'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { disabled: true });
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify text width is set', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@tab-panel',
-      '@base-components',
-      '@icon',
-      '@counter',
-      '@badge'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { w: 500 });
 
     await expect(page).toHaveScreenshot();
   });
@@ -104,6 +85,43 @@ test.describe(`${TAG.VISUAL} `, () => {
     }
     await page.waitForSelector('text="Do not forget to add short text to explain why this item is disabled."');
     await expect(page).toHaveScreenshot();
+  });
+
+  const variablesEllipsis = [
+    { w: 100, behavior: 'auto', hintPlacement: 'right', desc: 'default' },
+    { w: 100, behavior: 'auto', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+    { w: 100, behavior: 'manual', hintPlacement: 'right', desc: 'default' },
+    { w: 100, behavior: 'manual', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+
+  ];
+  variablesEllipsis.forEach((item) => {
+    test(`Verify ellipsis in Tab Panel ellipsis = ${item.desc} behavior = ${item.behavior} styles`, {
+
+      tag: [TAG.PRIORITY_HIGH,
+        '@tab-panel',
+        '@base-components',
+        '@ellipsis',
+        '@hint',
+        '@counter',
+        '@badge'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', item);
+      await page.waitForTimeout(100);
+
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(100);
+
+      await page.keyboard.press('ArrowLeft');
+      await page.waitForTimeout(100);
+
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+
+      await locators.tabPanels(page).nth(1).hover();
+      await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+
+      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
+      await expect(page).toHaveScreenshot();
+    });
   });
 });
 
@@ -196,29 +214,30 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@tab-panel'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-panel/docs/examples/manual_tab_activation.tsx', 'en');
+    await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
     await page.keyboard.press('Tab');
-    await expect(locators.tabPanels(page).first()).toBeFocused();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
-    await expect(locators.tabPanels(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(locators.tabPanels(page).nth(1)).toBeFocused();
+    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby');
+    await expect(locators.tabPanels(page).nth(0)).toHaveAttribute('aria-selected', 'false');
+    await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'true');
     await expect(locators.tabPanels(page).nth(2)).toHaveAttribute('aria-selected', 'false');
 
     await page.keyboard.press('ArrowRight');
-    await expect(locators.tabPanels(page).nth(1)).toBeFocused();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
+    await expect(locators.tabPanels(page).nth(2)).toBeFocused();
+    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby');
     await page.keyboard.press('Space');
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
-    await expect(locators.tabPanels(page).nth(0)).not.toHaveClass(/selected/);
-    await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(locators.tabPanels(page).nth(1)).toHaveClass(/selected/);
+    await expect(locators.tabPanels(page).nth(1)).not.toHaveClass(/selected/);
+    await expect(locators.tabPanels(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+    await expect(locators.tabPanels(page).nth(2)).toHaveClass(/selected/);
 
     await page.keyboard.press('ArrowLeft');
+    await page.keyboard.press('ArrowLeft');
+
     await expect(locators.tabPanels(page).first()).toBeFocused();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
+    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby');
     await page.keyboard.press('Enter');
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
+    await expect(page.locator('div[role="tabpanel"]')).toContainText('Facebook');
     await expect(locators.tabPanels(page).nth(0)).toHaveAttribute('aria-selected', 'true');
     await expect(locators.tabPanels(page).nth(1)).toHaveAttribute('aria-selected', 'false');
     await expect(locators.tabPanels(page).nth(2)).toHaveAttribute('aria-selected', 'false');
@@ -229,19 +248,20 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@tab-panel'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/tab-panel/docs/examples/manual_tab_activation.tsx', 'en');
+    await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
     const TabPanels = page.locator('[data-ui-name="TabPanel.Item"]');
-    await expect(page.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', 'tab-label-3-1');
-    await expect(TabPanels.nth(0)).toHaveAttribute('aria-selected', 'true');
-    await expect(TabPanels.nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(TabPanels.nth(1)).toHaveAttribute('aria-selected', 'true');
+    await expect(TabPanels.nth(0)).toHaveAttribute('aria-selected', 'false');
     await expect(TabPanels.nth(2)).toHaveAttribute('aria-selected', 'false');
 
-    await TabPanels.nth(1).click();
-    await expect(page.locator('div[role="tabpanel"]')).toHaveAttribute('aria-labelledby', 'tab-label-3-2');
+    await TabPanels.nth(2).click();
+    await expect(page.locator('div[role="tabpanel"]')).toContainText('Twitter');
+    await expect(TabPanels.nth(1)).not.toHaveClass(/selected/);
     await expect(TabPanels.nth(0)).not.toHaveClass(/selected/);
-    await expect(TabPanels.nth(1)).toHaveAttribute('aria-selected', 'true');
-    await expect(TabPanels.nth(1)).toHaveClass(/selected/);
+
+    await expect(TabPanels.nth(2)).toHaveAttribute('aria-selected', 'true');
+    await expect(TabPanels.nth(2)).toHaveClass(/selected/);
   });
 
   test('Verify interactions with defaultValue props', {
@@ -274,7 +294,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@tab-panel',
       '@base-components',
-      '@icon',
+
       '@counter',
       '@badge'],
   }, async ({ page }) => {
