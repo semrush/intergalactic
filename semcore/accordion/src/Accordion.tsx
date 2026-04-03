@@ -194,7 +194,7 @@ function ToggleButton(
   const { styles } = props;
 
   return sstyled(styles)(
-    <Root render={Flex} {...props} alignItems='center' role='button' />,
+    <Root render={Flex} alignItems='center' role='button' />,
   );
 }
 
