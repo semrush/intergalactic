@@ -959,7 +959,6 @@ class DataTableRoot<
               w={width}
               wMax={wMax}
               wMin={wMin}
-              h={headerHeight}
               shadow={true}
               styles={scrollStyles}
               onScroll={this.handleHeaderScroll}
@@ -974,7 +973,6 @@ class DataTableRoot<
                 scrollDirection={this.scrollDirection}
                 // @ts-ignore
                 loading={loading}
-                headerHeight={`${headerHeight}px`}
                 leftScrollPadding={`${offsetLeftSum}px`}
                 rightScrollPadding={`${offsetRightSum}px`}
                 ref={this.headerScrollContainerRef}
@@ -989,7 +987,6 @@ class DataTableRoot<
               {headerPropsToCheck?.withScrollBar && !loading && (
                 <ScrollArea.Bar
                   orientation='horizontal'
-                  top={headerHeight - SCROLL_BAR_HEIGHT}
                   zIndex={20}
                 />
               )}

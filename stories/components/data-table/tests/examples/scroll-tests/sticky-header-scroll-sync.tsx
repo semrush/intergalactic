@@ -1,7 +1,7 @@
 import type { BoxProps } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableData } from '@semcore/ui/data-table';
-import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
