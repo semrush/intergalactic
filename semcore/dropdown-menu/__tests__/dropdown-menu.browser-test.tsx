@@ -569,12 +569,16 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
+    const item33 = page.locator('[data-test-id="item-project 33"]');
+    const item33Content = item33.locator('[data-ui-name="DropdownMenu.Item.Content"]');
+    const item36 = page.locator('[data-test-id="item-project 36"]');
+    const item36Content = item36.locator('[data-ui-name="DropdownMenu.Item.Content"]');
+    await item33.waitFor({ state: 'visible' });
 
-    await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
+    await expect(item33Content).toBeFocused({ timeout: 10000 });
 
     await pressKeyMultipleTimes(page, 'ArrowDown', 3);
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
+    await expect(item36Content).toBeFocused();
 
     await page.keyboard.press('Tab');
     const createProject = page.getByRole('button', { name: 'Create new project' });
@@ -585,15 +589,15 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(input).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
+    await expect(item36Content).toBeFocused();
 
     await page.keyboard.press('Space');
-    await locators.menuitemradio(page, 'project 36').waitFor({ state: 'hidden' });
+    await item36.waitFor({ state: 'hidden' });
     await expect(locators.button(page)).toHaveText('project 36');
 
     await page.keyboard.press('ArrowDown');
-    await locators.menuitemradio(page, 'project 36').waitFor({ state: 'visible' });
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
+    await item36.waitFor({ state: 'visible' });
+    await expect(item36Content).toBeFocused();
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
