@@ -835,8 +835,13 @@ class DataTableRoot<
         if (hasParent(e.target, cell) && !e.target.dataset.skipTargetFocus) {
           e.target.focus({ focusVisible: true });
         } else {
-          cell.focus({ focusVisible: true, preventScroll: true });
-          this.verticalScrollToCell(cell, false);
+          if (colindex === 0) {
+            cell.focus({ focusVisible: true });
+            this.verticalScrollToCell(cell, true);
+          } else {
+            cell.focus({ focusVisible: true, preventScroll: true });
+            this.verticalScrollToCell(cell, false);
+          }
         }
       }
 
