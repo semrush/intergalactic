@@ -603,10 +603,11 @@ class DataTableRoot<
         cell.setAttribute('aria-describedby', describedBy);
       }
 
-      cell?.focus({ focusVisible: true, preventScroll: true });
       if (rowIndex !== 0 && row) {
-        this.verticalScrollToCell(cell);
+        cell?.focus({ focusVisible: true });
+        this.verticalScrollToCell(cell, colIndex === 0);
       } else if (colIndex !== 0 && cell) {
+        cell?.focus({ focusVisible: true, preventScroll: true });
         this.horizontalScrollToCell(cell);
       }
 
@@ -835,7 +836,7 @@ class DataTableRoot<
           e.target.focus({ focusVisible: true });
         } else {
           cell.focus({ focusVisible: true, preventScroll: true });
-          this.verticalScrollToCell(cell);
+          this.verticalScrollToCell(cell, false);
         }
       }
 
@@ -1566,9 +1567,11 @@ class DataTableRoot<
     return height;
   }
 
-  private verticalScrollToCell(to: Element) {
+  private verticalScrollToCell(to: Element, skipHorizontalScroll = true) {
     if (to instanceof HTMLElement) {
-      this.verticalIntersectionObserver.observe(to);
+      if (!skipHorizontalScroll) {
+        this.verticalIntersectionObserver.observe(to);
+      }
       to.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
