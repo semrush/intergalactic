@@ -208,7 +208,7 @@ SCell {
     background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
+      background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
     }
   }
 
@@ -216,7 +216,7 @@ SCell {
     background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
+      background-color: var(--intergalactic-table-td-cell-new-active, #9ef2c9);
     }
   }
 
@@ -224,7 +224,7 @@ SCell {
     background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
+      background-color: var(--intergalactic-table-td-cell-warning-active, #ffdca2);
     }
   }
 
@@ -232,7 +232,7 @@ SCell {
     background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
+      background-color: var(--intergalactic-table-td-cell-critical-active, #ffd7df);
     }
   }
 
