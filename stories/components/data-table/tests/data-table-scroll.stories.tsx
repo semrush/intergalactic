@@ -11,12 +11,15 @@ import StickyHeaderAccordionExample, { defaultProps as StickyHeaderAccordionDefa
 import type { StickyHeaderAccordionProps } from './examples/scroll-tests/sticky-header-accordion';
 import StickyHeaderDynamicDataExample, { defaultProps as StickyHeaderDynamicDataDefaultProps } from './examples/scroll-tests/sticky-header-dynamic-data';
 import type { StickyHeaderDynamicDataProps } from './examples/scroll-tests/sticky-header-dynamic-data';
+import StickyHeaderHiddenColumnExample from './examples/scroll-tests/sticky-header-hidden-column';
 import StickyHeaderLoadingFocusExample, { defaultProps as StickyHeaderLoadingFocusDefaultProps } from './examples/scroll-tests/sticky-header-loading-focus';
 import type { StickyHeaderLoadingFocusProps } from './examples/scroll-tests/sticky-header-loading-focus';
 import StickyHeaderScrollSyncExample, { defaultProps as StickyHeaderScrollSyncDefaultProps } from './examples/scroll-tests/sticky-header-scroll-sync';
 import type { StickyHeaderScrollSyncProps } from './examples/scroll-tests/sticky-header-scroll-sync';
 import StickyHeaderSortingExample, { defaultProps as StickyHeaderSortingDefaultProps } from './examples/scroll-tests/sticky-header-sorting';
 import type { StickyHeaderSortingProps } from './examples/scroll-tests/sticky-header-sorting';
+import StickyHeaderWithAnimationExample, { defaultProps as StickyHeaderWithAnimationDefaultProps } from './examples/scroll-tests/sticky-header-with-animation';
+import type { StickyHeaderWithAnimationProps } from './examples/scroll-tests/sticky-header-with-animation';
 import CaseWithW100Example from './examples/scroll-tests/w-100';
 import WithFixedColumnExample, { defaultProps as withFixedColumnDefaultProps } from './examples/scroll-tests/with-fixed-column';
 import type { WithFixedColumnProps } from './examples/scroll-tests/with-fixed-column';
@@ -124,6 +127,20 @@ export const StickyHeaderSorting: StoryObj<StickyHeaderSortingProps> = {
   },
 };
 
+export const StickyHeaderWithAnimation: StoryObj<StickyHeaderWithAnimationProps> = {
+  render: StickyHeaderWithAnimationExample,
+  argTypes: {
+    sticky: { control: 'boolean' },
+    withScrollBar: { control: 'boolean' },
+    animationDuration: { control: { type: 'number', min: 0, max: 1000, step: 50 } },
+    top: { control: { type: 'number', min: 0, max: 200, step: 10 } },
+    wMax: { control: 'text' },
+  },
+  args: {
+    ...StickyHeaderWithAnimationDefaultProps,
+  },
+};
+
 export const StickyHeaderLoadingFocus: StoryObj<StickyHeaderLoadingFocusProps> = {
   render: StickyHeaderLoadingFocusExample,
   argTypes: {
@@ -156,4 +173,8 @@ export const CaseWithW100: Story = {
 };
 export const CampaingsTable: Story = {
   render: CampaingsTableExample,
+};
+
+export const StickyHeaderHiddenColumn: Story = {
+  render: StickyHeaderHiddenColumnExample,
 };
