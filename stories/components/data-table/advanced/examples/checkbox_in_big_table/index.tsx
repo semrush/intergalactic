@@ -31,6 +31,7 @@ const Demo = (props: CheckboxExampleProps) => {
 
   const handleDeselectAll = () => {
     setSelectedRows([]);
+    setSelectedRowsDisplay(0);
     tableRef.current?.focus();
   };
 
@@ -73,9 +74,11 @@ const Demo = (props: CheckboxExampleProps) => {
           <Text size={200}>
             Selected rows: <Text bold>{selectedRowsDisplay}</Text>
           </Text>
-          <Button use='tertiary' onClick={handleDeselectAll}>
-            Deselect all
-          </Button>
+          {selectedRowsDisplay > 0 && (
+            <Button use='tertiary' onClick={handleDeselectAll}>
+              Deselect all
+            </Button>
+          )}
         </Flex>
         <Table
           selectedRows={selectedRows}
