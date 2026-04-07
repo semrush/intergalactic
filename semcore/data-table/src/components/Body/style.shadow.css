@@ -141,6 +141,10 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 SRowGroup:has([data-row-selector="true"] input:checked) > SRow > SCellWrapper > SCell,
 SRow:has([data-row-selector="true"] input:checked) > SCellWrapper > SCell {
   background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
+
+  &[expanded][withAccordion] {
+    background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
+  }
 }
 
 SCell {
