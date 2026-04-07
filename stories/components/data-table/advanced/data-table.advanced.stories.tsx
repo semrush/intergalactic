@@ -20,7 +20,8 @@ import OverlapCellsExample from './examples/overlap_cells';
 import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
-import SelectableWithMergedRowsExample from './examples/selectable_with_merged_rows';
+import SelectableWithMergedRowsExample, { defaultProps as selectableWithMergedRowsDefaultProps } from './examples/selectable_with_merged_rows';
+import type { DemoProps as SelectableWithMergedRowsProps } from './examples/selectable_with_merged_rows';
 import SideIndentsExample from './examples/side-indents';
 import type { AccordionInTableProps } from './examples/table_perf/table_perf';
 import TablePerfExample, { accordionInsideTableDefaultProps } from './examples/table_perf/table_perf';
@@ -133,8 +134,21 @@ export const RowCellStates: Story = {
   render: RowCellStatesExample,
 };
 
-export const SelectableWithMergedRows: Story = {
+export const SelectableWithMergedRows: StoryObj<SelectableWithMergedRowsProps> = {
   render: SelectableWithMergedRowsExample,
+  argTypes: {
+    reactive: { control: 'boolean' },
+    loading: { control: 'boolean' },
+    sideIndents: {
+      control: 'select',
+      options: [undefined, 'wide'],
+    },
+    compact: {
+      control: 'radio',
+      options: [undefined, true, false],
+    },
+  },
+  args: selectableWithMergedRowsDefaultProps,
 };
 
 export const SideIndents: Story = {
