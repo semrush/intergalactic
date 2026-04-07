@@ -159,23 +159,23 @@ export const ScreenReaderSelectedAllAnnouncement = (props: { selectedRows: Selec
   const [ariaMessage, setAriaMessage] = React.useState('');
 
   const setAriaCallback = React.useCallback(() => {
-    const selectedRowsSize = selectedRows.get().length;
+    const selectedRowsSize = props.selectedRows.get().length;
     if (selectedRowsSize > 0) {
       setAriaMessage('Action bar appeared before the table');
     }
-  }, []);
+  }, [props.selectedRows]);
 
   React.useEffect(() => {
-    const unsubscribe = selectedRows.on(SelectableRows.TOGGLE_EVENT, setAriaCallback);
+    const unsubscribe = props.selectedRows.on(SelectableRows.TOGGLE_EVENT, setAriaCallback);
 
     return unsubscribe;
-  }, []);
+  }, [props.selectedRows]);
 
   React.useEffect(() => {
-    const unsubscribe = selectedRows.on(SelectableRows.SELECT_ALL_EVENT, setAriaCallback);
+    const unsubscribe = props.selectedRows.on(SelectableRows.SELECT_ALL_EVENT, setAriaCallback);
 
     return unsubscribe;
-  }, []);
+  }, [props.selectedRows]);
 
   React.useEffect(() => {
     const timer = setTimeout(() => setAriaMessage(''), 300);
