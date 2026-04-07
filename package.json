@@ -134,7 +134,7 @@
     "typescript-plugin-css-modules": "2.2.0",
     "typescript-workspace-plugin": "2.0.1",
     "unplugin": "1.14.1",
-    "vite": "6.3.5",
+    "vite": "6.4.2",
     "vite-plugin-babel": "1.3.2",
     "vitest": "3.0.9",
     "webdriverio": "8.24.3",
