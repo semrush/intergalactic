@@ -88,7 +88,7 @@ export class Package {
     });
   }
 
-  public async collectToolPackageBy(path: string) {
+  public async collectPackageBy(path: string) {
     const packageFile: PackageJson = await fs.readJson(resolvePath(path, 'package.json'));
 
     this.packagesMap.set(packageFile.name, {

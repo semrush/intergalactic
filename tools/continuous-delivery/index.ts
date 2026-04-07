@@ -134,13 +134,10 @@ const sendReleaseChangelog = async (endpoints: string[]) => {
 
 export const publishTool = async (toolArg: string) => {
   const tool = toolArg.trim();
-  const availableTools = NpmUtils.getAvailableTools();
-
-  const toolPath = availableTools.get(tool);
+  const toolPath = NpmUtils.getPackagePath(tool);
 
   if (!toolPath) {
-    log(`Unable to find ${tool} within available tools...`);
-    log(`Available tools: \n${Array.from(availableTools.keys()).join('\n')}.`);
+    log(`Unable to query tool path for ${tool}...`);
 
     process.exit(1);
   }
@@ -149,7 +146,7 @@ export const publishTool = async (toolArg: string) => {
   const prevReleaseVersion = prevReleaseTag.replace(`tools/${tool}_`, '') as `${number}.${number}.${number}`;
 
   const packages = new Package();
-  await packages.collectToolPackageBy(toolPath);
+  await packages.collectPackageBy(toolPath);
 
   const changelog = new Changelog(`tools/${tool}_`, prevReleaseVersion, packages.list);
   await changelog.collectFromHistory();

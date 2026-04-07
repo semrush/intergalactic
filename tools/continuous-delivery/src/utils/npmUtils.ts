@@ -54,30 +54,22 @@ export class NpmUtils {
     log('Static upload done.');
   }
 
-  public static getAvailableTools() {
-    const toolsString = execSync('pnpm list --filter "./tools/*" --depth -1 --json', {
+  public static getPackagePath(pckg: string) {
+    const pckgInfo = execSync(`pnpm list --filter ${pckg} --depth -1 --json`, {
       encoding: 'utf-8',
     });
 
     try {
-      const tools = (JSON.parse(toolsString) as Array<{ name: string; path: string; private: boolean }>).reduce<
-        Map<string, string>
-      >((acc, item) => {
-        const { name, private: isPrivate, path } = item;
+      const [{ path } = {}] = JSON.parse(pckgInfo) as Array<{ name: string; path: string; private: boolean }>;
 
-        if (isPrivate) return acc;
+      if (!path) return null;
 
-        acc.set(name, path);
-
-        return acc;
-      }, new Map());
-
-      return tools;
+      return path;
     } catch {
-      log('Unable to parse list of available tools...');
-      log(`Tools: ${toolsString}`);
+      log('Unable to parse package info...');
+      log(`Info: ${pckgInfo}`);
 
-      return new Map<string, string>();
+      return null;
     }
   }
 
