@@ -27,13 +27,13 @@ jobs:
             --base 'release/v17' \
             --json title \
             -A semrush-ci-whale \
-            -S 'Merge tool tag into master' \
+            -S 'Merge new tool version into release/v17' \
             --jq 'length')
           if ((prs > 0)); then
             echo "Merge exist PR with last tool release to the master first"
             exit 1
           fi
-  publish-tool:
+  publish:
     runs-on: ubuntu-latest
     needs:
       - check-exist-pr
@@ -82,17 +82,20 @@ jobs:
         env:
           GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
         run: |
+          pnpm --filter ${{ inputs.tool }} build
+
           git config user.name "semrush-ci-whale"
           git config user.email "semrush-ci-whale@users.noreply.github.com"
           git remote set-url origin "https://${GITHUB_SECRET}@github.com/semrush/intergalactic.git"
+
           pnpm publish-tool ${{ inputs.tool }} ${{ inputs.publish-options }}
       - name: Create PR
         env:
-          GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
         run: |
           BRANCH=$(git branch --show-current)
           gh pr create \
             --base release/v17 \
             --head $BRANCH \
-            --title "Merge tool tag into master" \
+            --title "Merge new tool version into release/v17" \
             --body "Created by automatization"

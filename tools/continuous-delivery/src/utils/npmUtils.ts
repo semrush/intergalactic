@@ -74,18 +74,10 @@ export class NpmUtils {
 
       return tools;
     } catch {
-      return null;
-    }
-  }
+      log('Unable to parse list of available tools...');
+      log(`Tools: ${toolsString}`);
 
-  public static build(packages: Array<string>) {
-    for (const pckg of packages) {
-      log(`Building ${pckg}...`);
-      execSync(`pnpm --filter ${pckg} build`, {
-        encoding: 'utf-8',
-        stdio: ['inherit', 'inherit', 'inherit'],
-      });
-      log(`${pckg} is built.`);
+      return new Map<string, string>();
     }
   }
 

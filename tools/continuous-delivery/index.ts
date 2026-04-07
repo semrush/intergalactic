@@ -136,25 +136,20 @@ export const publishTool = async (toolArg: string) => {
   const tool = toolArg.trim();
   const availableTools = NpmUtils.getAvailableTools();
 
-  if (!availableTools) {
-    log('Unable to query list of available tools...');
+  const toolPath = availableTools.get(tool);
 
-    process.exit(1);
-  }
-
-  if (!availableTools.has(tool)) {
+  if (!toolPath) {
     log(`Unable to find ${tool} within available tools...`);
     log(`Available tools: \n${Array.from(availableTools.keys()).join('\n')}.`);
 
     process.exit(1);
   }
 
-  const toolRootPath = availableTools.get(tool)!;
   const prevReleaseTag = await gitUtils.getPrevReleaseToolsTag(tool);
   const prevReleaseVersion = prevReleaseTag.replace(`tools/${tool}_`, '') as `${number}.${number}.${number}`;
 
   const packages = new Package();
-  await packages.collectToolPackageBy(toolRootPath);
+  await packages.collectToolPackageBy(toolPath);
 
   const changelog = new Changelog(`tools/${tool}_`, prevReleaseVersion, packages.list);
   await changelog.collectFromHistory();
@@ -162,7 +157,6 @@ export const publishTool = async (toolArg: string) => {
   await packages.updateVersions(changelog.data);
   await gitUtils.initNewToolsRelease(changelog.data.version, packages.list);
 
-  NpmUtils.build([tool]);
   NpmUtils.publish([tool]);
 };
 
