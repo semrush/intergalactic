@@ -26,7 +26,7 @@ const Demo = (props: CheckboxExampleProps) => {
   const tableRef = React.useRef<HTMLDivElement>(null);
 
   const handleDeselectAll = () => {
-    selectedRows.clearAllAvailable();
+    selectedRows.clearAll();
     tableRef.current?.focus();
   };
 
