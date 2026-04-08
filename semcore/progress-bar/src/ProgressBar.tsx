@@ -1,18 +1,25 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
+import type { ProgressBarRootComponent, ProgressBarComponent, ProgressBarValueComponent } from './ProgressBar.type';
 import style from './style/progress-bar.shadow.css';
 
-function isCustomTheme(theme) {
+function isCustomTheme(theme?: string) {
+  if (!theme) return false;
+
   return !['dark', 'invert'].includes(theme);
 }
 
-class ProgressBarRoot extends Component {
+class ProgressBarRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<ProgressBarRootComponent>,
+  typeof ProgressBarRoot.enhance
+> {
   static displayName = 'ProgressBar';
   static style = style;
-  static enhance = [resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()] as const;
   static defaultProps = () => ({
     duration: 1000,
     size: 'm',
@@ -51,7 +58,13 @@ class ProgressBarRoot extends Component {
   }
 }
 
-function Value(props) {
+function Value(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    ProgressBarValueComponent,
+    typeof ProgressBarRoot,
+    'Value'
+  >,
+) {
   const SValue = Root;
   const { styles, value, theme, duration, resolveColor } = props;
   const width = `${value}%`;
@@ -68,6 +81,6 @@ function Value(props) {
 
 const ProgressBar = createComponent(ProgressBarRoot, {
   Value,
-});
+}) as ProgressBarComponent;
 
 export default ProgressBar;
