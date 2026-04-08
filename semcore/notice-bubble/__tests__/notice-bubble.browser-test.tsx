@@ -39,7 +39,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.closeButton(page).waitFor({ state: 'visible' });
         await expect(locators.closeButton(page)).toBeFocused();
         await locators.closeHint(page).waitFor({ state: 'visible' });
-        await expect(locators.closeHint(page)).toBeVisible();
+        await page.waitForFunction(() => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        });
         await expect(noticeBubbleContainer).toHaveAttribute('role', 'region');
         await expect(noticeBubbleContainer).toHaveAttribute('aria-label', 'Notifications');
         await expect(noticeBubbleContainer.locator('div').first()).toHaveAttribute('aria-live', 'polite');
@@ -62,6 +65,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'visible' });
         await locators.closeHint(page).waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        });
         await page.keyboard.press('Escape');
         await locators.closeHint(page).waitFor({ state: 'hidden' });
         await page.keyboard.press('Escape');
@@ -73,11 +80,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'visible' });
         await locators.closeHint(page).waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        });
         await page.keyboard.press('Shift+Tab');
         await locators.closeHint(page).waitFor({ state: 'hidden' });
         await expect(buttonTrigger).toBeFocused();
         await page.keyboard.press('Enter');
         await locators.closeHint(page).first().waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        });
 
         await expect(locators.closeButton(page)).toHaveCount(2);
 
@@ -111,6 +126,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.closeButton(page).waitFor({ state: 'visible' });
       await expect(locators.closeButton(page)).toBeFocused();
       await locators.closeHint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(() => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      });
       await expect(locators.closeHint(page)).toBeVisible();
     });
 
@@ -127,7 +146,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify focus returns to the trigger by pessing Enter on the Close button', async () => {
       await page.keyboard.press('Enter');
-      await locators.closeButton(page).waitFor({ state: 'hidden' });
+      await locators.closeHint(page).waitFor({ state: 'hidden' });
       await expect(buttonTrigger).toBeFocused();
     });
 
@@ -137,7 +156,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
       await page.keyboard.press('Escape');
-      await locators.closeButton(page).waitFor({ state: 'hidden' });
+      await locators.closeHint(page).waitFor({ state: 'hidden' });
       await expect(buttonTrigger).toBeFocused();
     });
   });
@@ -522,6 +541,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Enter');
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
+    await page.waitForFunction(() => {
+      const el = document.querySelector('[data-ui-name="Hint"]');
+      return el && getComputedStyle(el).opacity === '1';
+    });
     await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
   });

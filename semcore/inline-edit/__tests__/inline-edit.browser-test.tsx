@@ -426,6 +426,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify spin is NOT shown on Cancel', async () => {
       await page.keyboard.press('Enter');
+      await expect(page.locator('[aria-label="Article title"]')).toBeFocused({ timeout: 2000 });
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');

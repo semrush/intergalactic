@@ -105,9 +105,17 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await pressKeyMultipleTimes(page, 'ArrowDown', 4);
     await page.keyboard.press('Tab');
+    await expect.poll(async () => {
+      return await locators.menuitem(page, 4).getAttribute('class');
+    }, { timeout: 1000 }).toMatch(/highlighted/);
+    await locators.menuitem(page, 4).scrollIntoViewIfNeeded();
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowDown');
+    await expect.poll(async () => {
+      return await locators.menuitem(page, 5).getAttribute('class');
+    }, { timeout: 1000 }).toMatch(/highlighted/);
+    await locators.menuitem(page, 5).scrollIntoViewIfNeeded();
     await expect(page).toHaveScreenshot();
   });
 
@@ -123,6 +131,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+      await expect(locators.button(page)).not.toBeFocused();
       await expect(page).toHaveScreenshot();
     });
   });
@@ -205,6 +214,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', item);
 
+      await locators.menuitemcheckbox(page, 0).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
       if (item.size == 'm') {
@@ -478,7 +488,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page).click();
       await locators.menuitemradio(page, 4).waitFor({ state: 'visible' });
 
+      await deleteButton4.scrollIntoViewIfNeeded();
       await deleteButton4.hover();
+      await page.waitForFunction(() => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      });
       await page.getByText('Delete item').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
