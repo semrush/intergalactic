@@ -168,7 +168,21 @@ class DataTableRoot<
     }
 
     if (headerProps?.sticky && canUseDOM() && this.scrollDirection === 'horizontal') {
-      document.addEventListener('scroll', this.handleDocumentScroll);
+      if (this.isFirefox) {
+        document.addEventListener('scroll', this.handleDocumentScroll, { passive: true });
+      } else {
+        const scrollArea = this.scrollAreaRef.current;
+        const table = this.tableContainerRef.current;
+        if (scrollArea && table) {
+          const scrollTo = table.offsetHeight > innerHeight
+            ? table.offsetHeight
+            : table.offsetHeight + this.getHeaderHeight() + 14;
+
+          scrollArea.style.setProperty('--global-scroll-to', `${scrollTo}px`);
+          scrollArea.style.setProperty('--global-header-top', `${headerProps.top ?? 0}px`);
+          scrollArea.style.setProperty('--global-header-height', `${this.getHeaderHeight()}px`);
+        }
+      }
     }
   }
 
@@ -217,6 +231,10 @@ class DataTableRoot<
     }
 
     this.state.expandedRows?.clear();
+  }
+
+  get isFirefox() {
+    return navigator.userAgent.toLowerCase().search('firefox') > -1;
   }
 
   get totalRows() {
@@ -321,6 +339,7 @@ class DataTableRoot<
       shadowVertical,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
+      withAnimation: !this.isFirefox,
     };
   }
 
@@ -401,7 +420,6 @@ class DataTableRoot<
     const tableContainerTop = tableContainer.getBoundingClientRect().top;
     const { headerProps } = this.asProps;
     const headerContainer = this.headerRef.current;
-    const elements = headerContainer?.querySelectorAll('[role="columnheader"], [data-ui-name="Head.Group"]');
     const top = tableContainerTop - (headerProps?.top ?? 0);
     const headerScrollBar = headerProps?.withScrollBar
       ? this.scrollAreaRef.current?.querySelector(`[role=scrollbar][aria-orientation=horizontal]`)
@@ -409,21 +427,18 @@ class DataTableRoot<
 
     if (top && top < 0) {
       const translate = `translateY(${Math.abs(top)}px)`;
-      elements?.forEach((column) => {
-        if (column instanceof HTMLElement) {
-          column.style.setProperty('transform', translate);
-        }
-      });
+
+      if (headerContainer instanceof HTMLElement) {
+        headerContainer.style.setProperty('--global-scroll-translate', `${Math.abs(top)}px`);
+      }
 
       if (headerScrollBar instanceof HTMLElement) {
         headerScrollBar.style.setProperty('transform', translate);
       }
     } else {
-      elements?.forEach((column) => {
-        if (column instanceof HTMLElement) {
-          column.style.removeProperty('transform');
-        }
-      });
+      if (headerContainer instanceof HTMLElement) {
+        headerContainer.style.removeProperty('--global-scroll-translate');
+      }
 
       if (headerScrollBar instanceof HTMLElement) {
         headerScrollBar.style.removeProperty('transform');
@@ -893,6 +908,7 @@ class DataTableRoot<
 
   render() {
     const SDataTable = Root;
+    const SScrollAreaBarInHeader = ScrollArea.Bar;
     const {
       Children,
       styles,
@@ -998,10 +1014,12 @@ class DataTableRoot<
         </ScrollArea.Container>
 
         {headerPropsToCheck?.withScrollBar && topOffset && !loading && (
-          <ScrollArea.Bar
+          <SScrollAreaBarInHeader
             orientation='horizontal'
             top={topOffset - SCROLL_BAR_HEIGHT}
             zIndex={20}
+            // @ts-ignore
+            withAnimation={!this.isFirefox}
           />
         )}
 

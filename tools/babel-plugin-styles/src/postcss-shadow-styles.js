@@ -58,7 +58,7 @@ function walkRule(
 
 function walkVar(nodes, hash, variables) {
   nodes.forEach((node) => {
-    if (node.type === 'word' && /^--(?!intergalactic-)/.test(node.value)) {
+    if (node.type === 'word' && /^--(?!intergalactic-)/.test(node.value) && /^--(?!global-)/.test(node.value)) {
       variables[node.value] = node.value = `${node.value}_${hash}`;
     }
     if (node.nodes?.length) {
