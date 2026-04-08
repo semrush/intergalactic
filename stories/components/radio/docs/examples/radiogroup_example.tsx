@@ -1,10 +1,10 @@
 import { Flex } from '@semcore/ui/base-components';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
-import type { RadioGroupProps } from '@semcore/ui/radio';
+import type { NRadio } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = (props: RadioGroupProps) => {
+const Demo = (props: NRadio.Group.Props) => {
   const [value, setValue] = React.useState('1');
   return (
     <div>
@@ -31,7 +31,7 @@ const Demo = (props: RadioGroupProps) => {
   );
 };
 
-export const defaultProps: RadioGroupProps = {
+export const defaultProps: NRadio.Group.Props = {
   size: 'm',
   theme: undefined,
   disabled: false,
