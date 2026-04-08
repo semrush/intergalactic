@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-08
+
+### BREAK
+
+- New major version.
+
+### Fixed
+
+- Adjusted `ButtonLink` baseline.
+
 ## [16.0.12] - 2025-11-03
 
 ### Added
