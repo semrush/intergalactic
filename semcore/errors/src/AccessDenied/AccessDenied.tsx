@@ -1,13 +1,17 @@
 import Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
-import type { AccessDeniedComponent, AccessDeniedProps } from './AccessDenied.type';
+import type { AccessDeniedComponent } from './AccessDenied.type';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootAccessDenied extends Component<AccessDeniedProps, typeof RootAccessDenied.enhance> {
+class RootAccessDenied extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<AccessDeniedComponent>,
+  typeof RootAccessDenied.enhance
+> {
   static displayName = 'AccessDenied';
   static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
