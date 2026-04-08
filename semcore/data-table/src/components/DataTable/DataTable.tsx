@@ -168,7 +168,7 @@ class DataTableRoot<
     }
 
     if (headerProps?.sticky && canUseDOM() && this.scrollDirection === 'horizontal') {
-      if (this.isFirefox) {
+      if (!this.withAnimation) {
         document.addEventListener('scroll', this.handleDocumentScroll, { passive: true });
       } else {
         const scrollArea = this.scrollAreaRef.current;
@@ -233,8 +233,8 @@ class DataTableRoot<
     this.state.expandedRows?.clear();
   }
 
-  get isFirefox() {
-    return navigator.userAgent.toLowerCase().search('firefox') > -1;
+  get withAnimation() {
+    return CSS.supports('(animation-timeline: view()) and (animation-range: normal)');
   }
 
   get totalRows() {
@@ -339,7 +339,7 @@ class DataTableRoot<
       shadowVertical,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
-      withAnimation: !this.isFirefox,
+      withAnimation: this.withAnimation,
     };
   }
 
@@ -1019,7 +1019,7 @@ class DataTableRoot<
             top={topOffset - SCROLL_BAR_HEIGHT}
             zIndex={20}
             // @ts-ignore
-            withAnimation={!this.isFirefox}
+            withAnimation={this.withAnimation}
           />
         )}
 

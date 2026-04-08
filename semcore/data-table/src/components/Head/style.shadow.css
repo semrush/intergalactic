@@ -22,14 +22,6 @@ SHead[animationDuration] > SColumn {
   }
 }
 
-@-moz-document url-prefix() {
-  SHead[sticky] SColumn, SHead[sticky] SGroup {
-    transform: translateY(var(--global-scroll-translate));
-    will-change: transform;
-  }
-}
-
-/* Not for FF. Flag withAnimation === navigator.userAgent.toLowerCase().search('firefox') === -1; */
 SHead[withAnimation][sticky] SColumn, SHead[withAnimation][sticky] SGroup {
   animation-name: moveWithScroll;
   animation-timeline: --table-sticky-timeline;
@@ -37,12 +29,16 @@ SHead[withAnimation][sticky] SColumn, SHead[withAnimation][sticky] SGroup {
   animation-range-end: exit-crossing calc(100% - var(--global-header-top));
   animation-timing-function: linear;
   animation-fill-mode: both;
+
+  transform: none;
 }
 
 SHead[sticky] SColumn, SHead[sticky] SGroup {
   position: sticky;
   top: 0;
   z-index: 18;
+  transform: translateY(var(--global-scroll-translate));
+  will-change: transform;
 }
 
 SHead[compact] SColumn {
