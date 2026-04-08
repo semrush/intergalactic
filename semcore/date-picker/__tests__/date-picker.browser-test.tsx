@@ -582,12 +582,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.popper(page)).toBeFocused();
 
         await page.keyboard.press('Tab');
-        await locators.button(page, 'Previous month').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Previous month')).toBeFocused();
 
         await page.keyboard.press('Tab');
-        await locators.button(page, 'Next month').waitFor({ state: 'visible' });
+        await expect(locators.button(page, 'Next month')).toBeFocused();
 
-        await page.keyboard.press('ArrowLeft');
+        await page.keyboard.press('ArrowRight');
+        await expect(locators.button(page, 'Next month')).not.toBeFocused();
+
         await page.keyboard.press('Space');
 
         await locators.button(page, 'Previous month').waitFor({ state: 'hidden' });

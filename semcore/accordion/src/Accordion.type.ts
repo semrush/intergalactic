@@ -128,12 +128,16 @@ export type AccordionItemComponent = Intergalactic.Component<
   AccordionItemProps,
   AccordionItemContext
 >;
+export type AccordionItemToggleComponent = Intergalactic.Component<typeof Text, AccordionItemToggleProps>;
+export type AccordionItemToggleButtonComponent = Intergalactic.Component<typeof Flex, {}>;
+export type AccordionItemChevronComponent = Intergalactic.Component<'div', ChevronItemProps>;
+export type AccordionItemCollapseComponent = Intergalactic.Component<'div', AccordionCollapseProps>;
 
 export type AccordionComponent = IntergalacticAccordionComponent & {
   Item: AccordionItemComponent & {
-    Toggle: Intergalactic.Component<typeof Text, AccordionItemToggleProps>;
-    ToggleButton: Intergalactic.Component<typeof Flex, {}>;
-    Chevron: Intergalactic.Component<'div', ChevronItemProps>;
-    Collapse: Intergalactic.Component<'div', AccordionCollapseProps>;
+    Toggle: AccordionItemToggleComponent;
+    ToggleButton: AccordionItemToggleButtonComponent;
+    Chevron: AccordionItemChevronComponent;
+    Collapse: AccordionItemCollapseComponent;
   };
 };

@@ -1,6 +1,6 @@
 import type { Box, BoxProps, Flex } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Text } from '@semcore/typography';
+import type { Text, TextProps } from '@semcore/typography';
 import type React from 'react';
 
 export type RadioSize = 'm' | 'l';
@@ -61,7 +61,7 @@ export type RadioCtx = {
   getTextProps: PropGetterFn;
 };
 
-type IntergalacticRadioGroupComponent<PropsExtending = {}> = (<
+export type IntergalacticRadioGroupComponent<PropsExtending = {}> = (<
   Value extends RadioValue,
   Tag extends Intergalactic.Tag = typeof Flex,
 >(
@@ -72,27 +72,20 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, RadioGroupPr
 
 export type RadioValueControlProps = {};
 export type RadioValueMarkProps = {};
+export type RadioTextProps = TextProps;
 
-declare const RadioGroup: IntergalacticRadioGroupComponent;
+export type RadioValueControlComponent = Intergalactic.Component<'input', RadioValueControlProps>;
+export type RadioValueRadioMarkComponent = Intergalactic.Component<typeof Box, RadioValueMarkProps>;
 
-export { RadioGroup };
-
-declare const Radio: Intergalactic.Component<'label', RadioProps, RadioCtx> & {
-  Value: Intergalactic.Component<'input', RadioValueProps> & {
-    Control: Intergalactic.Component<'input', RadioValueControlProps>;
-    RadioMark: Intergalactic.Component<typeof Box, RadioValueMarkProps>;
-  };
-  Text: typeof Text;
+export type RadioValueComponent = Intergalactic.Component<'input', RadioValueProps> & {
+  Control: RadioValueControlComponent;
+  RadioMark: RadioValueRadioMarkComponent;
 };
 
-declare const wrapRadioGroup: <PropsExtending extends {}>(
-  wrapper: (
-    props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticRadioGroupComponent>
-    > &
-    PropsExtending,
-  ) => React.ReactNode,
-) => IntergalacticRadioGroupComponent<PropsExtending>;
-export { wrapRadioGroup };
+export type RadioTextComponent = typeof Text;
 
-export default Radio;
+export type RadioRootComponent = Intergalactic.Component<'label', RadioProps, RadioCtx>;
+export type RadioComponent = RadioRootComponent & {
+  Value: RadioValueComponent;
+  Text: RadioTextComponent;
+};

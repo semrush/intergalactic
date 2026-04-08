@@ -5,10 +5,14 @@ import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import React from 'react';
 
-import type { IntergalacticPillsComponent, PillProps, PillsComponent, PillsHandlers, PillsProps, PillsValue } from './Pills.type';
+import type { IntergalacticPillsComponent, PillProps, PillsComponent, PillsHandlers, PillsItemAddonComponent, PillsItemComponent, PillsItemTextComponent, PillsProps, PillsValue } from './Pills.type';
 import style from './style/pills.shadow.css';
 
-class RootPills extends Component<PillsProps, typeof RootPills.enhance, PillsHandlers> {
+class RootPills extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<IntergalacticPillsComponent>,
+  typeof RootPills.enhance,
+  PillsHandlers
+> {
   static displayName = 'Pills';
   static style = style;
   static defaultProps = ({ behavior }: PillsProps) => ({
@@ -89,11 +93,7 @@ class RootPills extends Component<PillsProps, typeof RootPills.enhance, PillsHan
   }
 }
 
-function Pill(props:
-  IRootComponentProps
-  & Intergalactic.InternalTypings.InferPropsFromRoot<typeof RootPills, 'Item'>
-  & PillProps,
-) {
+function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<PillsItemComponent, typeof RootPills, 'Item'>) {
   const SPill = Root;
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
@@ -121,12 +121,12 @@ function Pill(props:
   );
 }
 
-function Text(props: IRootComponentProps) {
+function Text(props: Intergalactic.InternalTypings.InferComponentProps<PillsItemTextComponent>) {
   const SText = Root;
   return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
-function Addon(props: IRootComponentProps) {
+function Addon(props: Intergalactic.InternalTypings.InferComponentProps<PillsItemAddonComponent>) {
   const SAddon = Root;
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
