@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BaseExample, { defaultLinkTriggerProps } from './examples/link-trigger/base';
 import DifferentSizesExample, { defaultLinkTriggerSizesProps } from './examples/link-trigger/link-trigger-different-sizes';
+import SelectWithEllipsisExample from './examples/link-trigger/select-with-ellipsis-in-trigger';
 import AddonExample, { linkTriggerWithAddonExampleProps } from './examples/link-trigger/with-addons';
 import SelectExample, { linkTriggerSelectExampleProps } from './examples/link-trigger/with-select';
 
@@ -98,6 +99,10 @@ export const Select: StoryObj<typeof linkTriggerSelectExampleProps> = {
   render: SelectExample,
   argTypes: sharedArgTypes,
   args: linkTriggerSelectExampleProps,
+};
+
+export const SelectWithEllipsis: StoryObj = {
+  render: SelectWithEllipsisExample,
 };
 
 export const DifferentSizes: StoryObj<typeof defaultLinkTriggerSizesProps> = {

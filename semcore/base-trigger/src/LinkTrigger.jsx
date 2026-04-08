@@ -15,6 +15,7 @@ class RootLinkTrigger extends Component {
     return {
       'use:children': content,
       empty,
+      'w': `calc(100% - 20px)`, // 20px is for the ChevronDown (16px) and marginLeft (4px)
     };
   }
 
