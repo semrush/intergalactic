@@ -115,9 +115,17 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.waitForTimeout(100);
 
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await page.waitForFunction(() => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      });
 
       await locators.tabPanels(page).nth(1).hover();
       await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+      await page.waitForFunction(() => {
+        const els = document.querySelectorAll('[data-ui-name="Hint"]');
+        return els.length >= 2 && getComputedStyle(els[1]).opacity === '1';
+      });
 
       await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
       await expect(page).toHaveScreenshot();
