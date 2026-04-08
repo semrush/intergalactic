@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-08
+
+### BREAK
+
+- New major version.
+
 ## [16.6.3] - 2025-12-18
 
 ### Fixed
