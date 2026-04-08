@@ -20,9 +20,15 @@ export type TitleProps = TextProps & {
   hintAfterAriaLabel?: string;
 };
 
-export type CardComponent = Intergalactic.Component<'div', CardProps> & {
-  Title: Intergalactic.Component<'div', TitleProps>;
-  Description: typeof Text;
-  Header: typeof Box;
-  Body: typeof Box;
+export type CardRootComponent = Intergalactic.Component<'div', CardProps>;
+export type CardTitleComponent = Intergalactic.Component<'div', TitleProps>;
+export type CardDescriptionComponent = typeof Text;
+export type CardHeaderComponent = typeof Box;
+export type CardBodyComponent = typeof Box;
+
+export type CardComponent = CardRootComponent & {
+  Title: CardTitleComponent;
+  Description: CardDescriptionComponent;
+  Header: CardHeaderComponent;
+  Body: CardBodyComponent;
 };

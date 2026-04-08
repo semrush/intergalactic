@@ -54,6 +54,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.options(page, 0).waitFor({ state: 'hidden' });
       await page.keyboard.press('Space');
       await locators.options(page, 0).waitFor({ state: 'visible' });
+      await page.mouse.move(0, 0);
+      await page.locator('[data-ui-name="Select.Divider"]').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });

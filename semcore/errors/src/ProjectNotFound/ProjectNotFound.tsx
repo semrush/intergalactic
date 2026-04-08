@@ -1,14 +1,18 @@
 import Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
-import type { ProjectNotFoundComponent, ProjectNotFoundProps } from './ProjectNotFound.type';
+import type { ProjectNotFoundComponent } from './ProjectNotFound.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootProjectNotFound extends Component<ProjectNotFoundProps, typeof RootProjectNotFound.enhance> {
+class RootProjectNotFound extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<ProjectNotFoundComponent>,
+  typeof RootProjectNotFound.enhance
+> {
   static displayName = 'ProjectNotFound';
   static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {

@@ -1,13 +1,17 @@
 import Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
-import type { MaintenanceComponent, MaintenanceProps } from './Maintenance.type';
+import type { MaintenanceComponent } from './Maintenance.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootMaintenance extends Component<MaintenanceProps, typeof RootMaintenance.enhance> {
+class RootMaintenance extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<MaintenanceComponent>,
+  typeof RootMaintenance.enhance
+> {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
