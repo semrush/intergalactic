@@ -19,8 +19,13 @@ export type ErrorsContext = {
   getControlsProps: PropGetterFn;
 };
 
-export type ErrorComponent = Intergalactic.Component<'div', ErrorsProps, ErrorsContext> & {
-  Title: typeof Box;
-  Description: typeof Box;
-  Controls: typeof Box;
+export type ErrorRootComponent = Intergalactic.Component<'div', ErrorsProps, ErrorsContext>;
+export type ErrorTitleComponent = typeof Box;
+export type ErrorDescriptionComponent = typeof Box;
+export type ErrorControlsComponent = typeof Box;
+
+export type ErrorComponent = ErrorRootComponent & {
+  Title: ErrorTitleComponent;
+  Description: ErrorDescriptionComponent;
+  Controls: ErrorControlsComponent;
 };

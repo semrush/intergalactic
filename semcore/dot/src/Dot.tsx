@@ -1,4 +1,5 @@
 import { Animation, Box, Portal } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import logger from '@semcore/core/lib/utils/logger';
@@ -11,7 +12,7 @@ import type { DotComponent, DotProps } from './Dot.type';
 import style from './style/dot.shadow.css';
 
 class DotRoot extends Component<
-  DotProps,
+  Intergalactic.InternalTypings.InferComponentProps<DotComponent>,
   typeof DotRoot.enhance
 > {
   static displayName = 'Dot';

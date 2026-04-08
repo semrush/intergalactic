@@ -46,12 +46,19 @@ export type CheckboxContext = {
 
 export type CheckboxTextProps = TextProps;
 
-export type CheckboxValueComponent = Intergalactic.Component<'input', CheckboxValueProps> & {
-  Control: Intergalactic.Component<'input', CheckboxValueControlProps>;
-  CheckMark: Intergalactic.Component<typeof Box, CheckboxValueCheckMarkProps>;
+export type CheckboxValueRootComponent = Intergalactic.Component<'input', CheckboxValueProps>;
+export type CheckboxValueControlComponent = Intergalactic.Component<'input', CheckboxValueControlProps>;
+export type CheckboxCheckMarkComponent = Intergalactic.Component<typeof Box, CheckboxValueCheckMarkProps>;
+
+export type CheckboxValueComponent = CheckboxValueRootComponent & {
+  Control: CheckboxValueControlComponent;
+  CheckMark: CheckboxCheckMarkComponent;
 };
 
-export type CheckboxComponent = Intergalactic.Component<'label', CheckboxProps, CheckboxContext> & {
-  Text: Intergalactic.Component<'span', CheckboxTextProps>;
+export type CheckboxRootComponent = Intergalactic.Component<'label', CheckboxProps, CheckboxContext>;
+export type CheckboxTextComponent = Intergalactic.Component<'span', CheckboxTextProps>;
+
+export type CheckboxComponent = CheckboxRootComponent & {
+  Text: CheckboxTextComponent;
   Value: CheckboxValueComponent;
 };
