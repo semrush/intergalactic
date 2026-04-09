@@ -234,7 +234,10 @@ class DataTableRoot<
   }
 
   get withAnimation() {
-    return CSS.supports('(animation-timeline: view()) and (animation-range: normal)');
+    if (canUseDOM()) {
+      return CSS.supports('(animation-timeline: view()) and (animation-range: normal)');
+    }
+    return false;
   }
 
   get totalRows() {
