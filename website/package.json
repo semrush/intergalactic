@@ -16,8 +16,7 @@
     "validate-sidebar-links": "tsm --require=../.ci/tsm-filter-warnings.js tools/validate-sidebar-links.ts"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^4.5.0",
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vitejs/plugin-vue-jsx": "5.1.5",
     "@vueuse/core": "^11.3.0",
     "algoliasearch": "4.8.4",
     "bowser": "^2.11.0",
@@ -73,9 +72,8 @@
     "@types/express": "4.17.1",
     "@types/markdown-it": "^13.0.9",
     "@types/mdast": "3.0.10",
-    "@types/node": "^18.19.108",
     "convert-layout": "0.11.1",
-    "esbuild": "0.14.29",
+    "esbuild": "0.28.0",
     "esbuild-plugin-alias": "0.2.1",
     "execa": "6.1.0",
     "fast-glob": "3.2.11",
