@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 import type { Flex, Box, BoxProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { TextProps } from '@semcore/typography';
 
-declare namespace NRadio {
+declare namespace NSRadio {
   type Size = 'm' | 'l';
   type State = 'normal' | 'invalid';
   type Value = string | number | boolean;
@@ -102,4 +101,23 @@ declare namespace NRadio {
   }
 }
 
-export type { NRadio };
+/** @deprecated It will be removed in v18. */
+export type RadioSize = NSRadio.Size;
+/** @deprecated It will be removed in v18. */
+export type RadioState = NSRadio.State;
+/** @deprecated It will be removed in v18. */
+export type RadioValue = NSRadio.Value;
+/** @deprecated It will be removed in v18. */
+export type RadioProps = NSRadio.Props;
+/** @deprecated It will be removed in v18. */
+export type RadioGroupProps<T extends RadioValue = RadioValue> = NSRadio.Group.Props<T>;
+/** @deprecated It will be removed in v18. */
+export type RadioValueProps = NSRadio.Value.Props;
+/** @deprecated It will be removed in v18. */
+export type RadioCtx = NSRadio.Ctx;
+/** @deprecated It will be removed in v18. */
+export type RadioValueControlProps = NSRadio.Value.Control.Props;
+/** @deprecated It will be removed in v18. */
+export type RadioValueMarkProps = NSRadio.Value.Mark.Props;
+
+export type { NSRadio };

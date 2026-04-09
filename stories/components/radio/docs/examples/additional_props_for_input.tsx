@@ -1,8 +1,8 @@
 import Radio, { RadioGroup } from '@semcore/ui/radio';
-import type { NRadio } from '@semcore/ui/radio';
+import type { NSRadio } from '@semcore/ui/radio';
 import React from 'react';
 
-const Demo = (props: NRadio.Group.Props) => {
+const Demo = (props: NSRadio.Group.Props) => {
   return (
     <RadioGroup
       name='radio'
@@ -22,7 +22,7 @@ const Demo = (props: NRadio.Group.Props) => {
     </RadioGroup>
   );
 };
-export const defaultAdditionalInputProps: NRadio.Group.Props = {
+export const defaultAdditionalInputProps: NSRadio.Group.Props = {
   size: 'm',
   theme: undefined,
   disabled: false,

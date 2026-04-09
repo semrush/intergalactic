@@ -9,20 +9,20 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
-import type { NRadio } from './Radio.type';
+import type { NSRadio } from './Radio.type';
 import style from './style/radio.shadow.css';
 
 const RadioContext = React.createContext<{
-  onChange?: NRadio.Group.Props['onChange'];
-  value?: NRadio.Group.Props['value'];
-  theme?: NRadio.Group.Props['theme'];
-  size?: NRadio.Group.Props['size'];
-  name?: NRadio.Group.Props['name'];
-  disabled?: NRadio.Group.Props['disabled'];
+  onChange?: NSRadio.Group.Props['onChange'];
+  value?: NSRadio.Group.Props['value'];
+  theme?: NSRadio.Group.Props['theme'];
+  size?: NSRadio.Group.Props['size'];
+  name?: NSRadio.Group.Props['name'];
+  disabled?: NSRadio.Group.Props['disabled'];
 }>({});
 
 class RadioGroupRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NRadio.Group.Component>,
+  Intergalactic.InternalTypings.InferComponentProps<NSRadio.Group.Component>,
   [],
   { value: null }
 > {
@@ -62,9 +62,9 @@ class RadioGroupRoot extends Component<
   }
 }
 
-const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as NRadio.Group.Component;
+const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as NSRadio.Group.Component;
 
-class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NRadio.Component>> {
+class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSRadio.Component>> {
   static displayName = 'Radio';
   static style = style;
   static contextType = RadioContext;
@@ -75,7 +75,7 @@ class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentPr
     hoistedDisabled: undefined,
   };
 
-  hoistDisabled = (disabled: NRadio.Props['disabled']) => {
+  hoistDisabled = (disabled: NSRadio.Props['disabled']) => {
     logger.warn(
       true,
       `Don't set disabled on Radio.Value or Radio.Text, set it on Radio or on RadioGroup (for all items) instead. Otherwise it will produce wrong SSR output.`,
@@ -147,7 +147,7 @@ class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentPr
 }
 
 class ValueRoot extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<NRadio.Value.Component, typeof RadioRoot, 'Value'>,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Value.Component, typeof RadioRoot, 'Value'>,
   typeof ValueRoot.enhance,
   { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
 > {
@@ -163,7 +163,7 @@ class ValueRoot extends Component<
   static contextType = RadioContext;
   static style = style;
 
-  bindHandlerChange = (value: NRadio.Props['value']) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  bindHandlerChange = (value: NSRadio.Props['value']) => (e: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof this.context.onChange === 'function' && value !== undefined) {
       this.context.onChange(value, e);
     }
@@ -264,7 +264,7 @@ class ValueRoot extends Component<
 
 function Control(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NRadio.Value.Control.Component,
+    NSRadio.Value.Control.Component,
     typeof ValueRoot,
     'Control'
   >,
@@ -278,7 +278,7 @@ Control.displayName = 'Control';
 
 function RadioMark(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NRadio.Value.Mark.Component,
+    NSRadio.Value.Mark.Component,
     typeof ValueRoot,
     'RadioMark'
   >,
@@ -296,7 +296,7 @@ function RadioMark(
 RadioMark.displayName = 'RadioMark';
 
 function Text(
-  props: Intergalactic.InternalTypings.InferChildComponentProps<NRadio.Text.Component, typeof RadioRoot, 'Text'>,
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Text.Component, typeof RadioRoot, 'Text'>,
 ) {
   const SText = Root;
   const { styles, color } = props;
@@ -315,21 +315,21 @@ Text.displayName = 'Text';
 const Value = createComponent(ValueRoot, {
   Control,
   RadioMark,
-}) as NRadio.Value.Component;
+}) as NSRadio.Value.Component;
 
 const Radio = createComponent(RadioRoot, {
   Text,
   Value,
-}) as NRadio.Component;
+}) as NSRadio.Component;
 
 export const wrapRadioGroup = <PropsExtending extends {}>(
   wrapper: (
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<NRadio.Group.Component>
+      Intergalactic.InternalTypings.ComponentPropsNesting<NSRadio.Group.Component>
     > &
     PropsExtending,
   ) => React.ReactNode,
-) => wrapper as NRadio.Group.Component<PropsExtending>;
+) => wrapper as NSRadio.Group.Component<PropsExtending>;
 
 export { inputProps, RadioGroup };
 

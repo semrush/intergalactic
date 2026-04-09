@@ -2,11 +2,11 @@ import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { RadioFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
-import type { RadioProps } from '@semcore/ui/radio';
+import type { NSRadio } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-export type RadioFHAdvancedProps = RadioProps & {
+export type RadioFHAdvancedProps = NSRadio.Props & {
   firstOptionText?: string;
   secondOptionText?: string;
   showBadge?: boolean;

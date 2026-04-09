@@ -1,9 +1,9 @@
 import { Flex } from '@semcore/ui/base-components';
 import Radio from '@semcore/ui/radio';
-import type { NRadio } from '@semcore/ui/radio';
+import type { NSRadio } from '@semcore/ui/radio';
 import React from 'react';
 
-type ExampleProps = NRadio.Props & {
+type ExampleProps = NSRadio.Props & {
   color?: string;
 };
 
