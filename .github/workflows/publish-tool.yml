@@ -7,9 +7,6 @@ on:
         description: "Tool:"
         required: true
         options:
-          - "@semcore/babel-plugin-react-semcore"
-          - "@semcore/babel-plugin-root"
-          - "@semcore/babel-plugin-styles"
           - "@semcore/process-css-unplugin"
           - "@semcore/stylelint-plugin"
       publish-options:
