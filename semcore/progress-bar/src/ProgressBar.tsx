@@ -4,7 +4,7 @@ import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import type { ProgressBarRootComponent, ProgressBarComponent, ProgressBarValueComponent } from './ProgressBar.type';
+import type { NSProgressBar } from './ProgressBar.type';
 import style from './style/progress-bar.shadow.css';
 
 function isCustomTheme(theme?: string) {
@@ -14,7 +14,7 @@ function isCustomTheme(theme?: string) {
 }
 
 class ProgressBarRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<ProgressBarRootComponent>,
+  Intergalactic.InternalTypings.InferComponentProps<NSProgressBar.Root>,
   typeof ProgressBarRoot.enhance
 > {
   static displayName = 'ProgressBar';
@@ -60,7 +60,7 @@ class ProgressBarRoot extends Component<
 
 function Value(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    ProgressBarValueComponent,
+    NSProgressBar.Value.Root,
     typeof ProgressBarRoot,
     'Value'
   >,
@@ -81,6 +81,6 @@ function Value(
 
 const ProgressBar = createComponent(ProgressBarRoot, {
   Value,
-}) as ProgressBarComponent;
+}) as NSProgressBar.Component;
 
 export default ProgressBar;
