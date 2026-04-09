@@ -466,7 +466,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(tagNameText).toBe('h2');
 
     await page.keyboard.press('Tab');
+    await expect(locators.button(page).nth(0)).toBeFocused();
     await page.keyboard.press('Tab');
+    await expect(locators.button(page).nth(1)).toBeFocused();
     await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
     await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
   });
