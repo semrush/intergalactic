@@ -47,7 +47,7 @@ export class NpmUtils {
 
   public static async uploadStatic(pnpmFilter: string) {
     log('Uploading static files...');
-    execSync(`pnpm ${pnpmFilter} run upload-static`, {
+    execSync(`pnpm ${pnpmFilter} run upload-static --if-present`, {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
