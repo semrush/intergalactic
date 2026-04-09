@@ -64,7 +64,7 @@ class RadioGroupRoot extends Component<
 
 const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as NSRadio.Group.Component;
 
-class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSRadio.Component>> {
+class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSRadio.Root>> {
   static displayName = 'Radio';
   static style = style;
   static contextType = RadioContext;
@@ -147,7 +147,7 @@ class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentPr
 }
 
 class ValueRoot extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Value.Component, typeof RadioRoot, 'Value'>,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Value.Root, typeof RadioRoot, 'Value'>,
   typeof ValueRoot.enhance,
   { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
 > {
@@ -264,7 +264,7 @@ class ValueRoot extends Component<
 
 function Control(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NSRadio.Value.Control.Component,
+    NSRadio.Value.Control.Root,
     typeof ValueRoot,
     'Control'
   >,
@@ -278,7 +278,7 @@ Control.displayName = 'Control';
 
 function RadioMark(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NSRadio.Value.Mark.Component,
+    NSRadio.Value.Mark.Root,
     typeof ValueRoot,
     'RadioMark'
   >,
@@ -296,7 +296,7 @@ function RadioMark(
 RadioMark.displayName = 'RadioMark';
 
 function Text(
-  props: Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Text.Component, typeof RadioRoot, 'Text'>,
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Text.Root, typeof RadioRoot, 'Text'>,
 ) {
   const SText = Root;
   const { styles, color } = props;

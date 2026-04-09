@@ -7,7 +7,7 @@ declare namespace NSRadio {
   type State = 'normal' | 'invalid';
   type Value = string | number | boolean;
 
-  export type Props = BoxProps & {
+  type Props = BoxProps & {
     /** Radio item value **/
     value?: Value;
     /** Radio item checked flag **/
@@ -30,48 +30,47 @@ declare namespace NSRadio {
     disabled?: boolean;
   };
 
-  export type Ctx = {
+  type Ctx = {
     getValueProps: PropGetterFn;
     getTextProps: PropGetterFn;
   };
 
+  type Root = Intergalactic.Component<'label', Props, Ctx>;
+
   namespace Value {
-    export type Props = BoxProps & {
+    type Props = BoxProps & {
     /** List of elements that can be put on a hidden input */
       includeInputProps?: string[];
     };
 
-    namespace Control {
-      export type Props = {};
+    type Root = Intergalactic.Component<'input', Props>;
 
-      export type Component = Intergalactic.Component<'input', Props>;
+    namespace Control {
+      type Props = {};
+
+      type Root = Intergalactic.Component<'input', Props>;
     }
 
     namespace Mark {
-      export type Props = {};
+      type Props = {};
 
-      export type Component = Intergalactic.Component<typeof Box, Props>;
+      type Root = Intergalactic.Component<typeof Box, Props>;
     }
 
-    export type Component = Intergalactic.Component<'input', Props> & {
-      Control: Control.Component;
-      RadioMark: Mark.Component;
+    type Component = Root & {
+      Control: Control.Root;
+      RadioMark: Mark.Root;
     };
   }
 
   namespace Text {
-    export type Props = TextProps;
+    type Props = TextProps;
 
-    export type Component = Intergalactic.Component<'span', Props>;
+    type Root = Intergalactic.Component<'span', Props>;
   }
 
-  export type Component = Intergalactic.Component<'label', Props, Ctx> & {
-    Value: Value.Component;
-    Text: Text.Component;
-  };
-
   namespace Group {
-    export type Props<T extends Value = Value> = {
+    type Props<T extends Value = Value> = {
       /** Radio group name */
       name?: string;
       /** Active default value */
@@ -90,7 +89,7 @@ declare namespace NSRadio {
       disabled?: boolean;
     };
 
-    export type Component<PropsExtending = {}> = (<
+    type Component<PropsExtending = {}> = (<
       V extends Value,
       Tag extends Intergalactic.Tag = 'div',
     >(
@@ -99,6 +98,11 @@ declare namespace NSRadio {
     ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
     Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, Props>;
   }
+
+  type Component = Root & {
+    Value: Value.Component;
+    Text: Text.Root;
+  };
 }
 
 /** @deprecated It will be removed in v18. */
