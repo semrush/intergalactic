@@ -1,16 +1,23 @@
 import { Ellipsis, Hint, Box, type EllipsisSettings } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { Root, sstyled, Component, createComponent } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import type { TextEllipsisProps, TextProps } from './index';
-import styles from './style/text.shadow.css';
+import type { TextComponent, TextEllipsisProps, TextProps } from './Text.type';
+import styles from '../../style/text.shadow.css';
 
 type State = {
   isEllipsized: boolean;
 };
 
-class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, {}, State> {
+class TextRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<TextComponent>,
+  typeof TextRoot.enhance,
+  {},
+  {},
+  State
+> {
   private ellipsis: Ellipsis | null = null;
   private innerRef = React.createRef<HTMLElement | null>();
 
@@ -59,7 +66,8 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, {}, Sta
 
   render(): React.ReactNode {
     const SText = Root;
-    const { color, underline, lineThrough, hint, hintProps, children, ellipsis, ellipsisProps, resolveColor } = this.asProps;
+    const { color, underline, lineThrough, hint, hintProps, children, ellipsis, ellipsisProps, resolveColor } =
+      this.asProps;
     const { isEllipsized } = this.state;
 
     const cropPosition = ellipsisProps?.cropPosition ?? 'end';
@@ -84,7 +92,11 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, {}, Sta
           maxLine={maxLineValue}
           trim={cropPosition}
         />
-        {isEllipsized && withHint && <Hint triggerRef={this.innerRef} {...hintProps}>{children}</Hint>}
+        {isEllipsized && withHint && (
+          <Hint triggerRef={this.innerRef} {...hintProps}>
+            {children}
+          </Hint>
+        )}
       </>,
     );
   }
@@ -98,7 +110,8 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, {}, Sta
     const shouldInit = hint !== false || ellipsisProps?.cropPosition === 'middle';
 
     if (shouldInit && (ellipsis || ellipsisProps) && this.innerRef.current) {
-      this.ellipsis = ellipsis instanceof Ellipsis ? ellipsis : new Ellipsis(this.innerRef.current, ellipsisProps ?? {});
+      this.ellipsis =
+        ellipsis instanceof Ellipsis ? ellipsis : new Ellipsis(this.innerRef.current, ellipsisProps ?? {});
 
       this.ellipsis.on('isEllipsized', this.handleEllipsized);
     }
@@ -121,4 +134,6 @@ class TextRoot extends Component<TextProps, typeof TextRoot.enhance, {}, {}, Sta
   }
 }
 
-export default createComponent(TextRoot);
+const Text = createComponent(TextRoot) as TextComponent;
+
+export default Text;

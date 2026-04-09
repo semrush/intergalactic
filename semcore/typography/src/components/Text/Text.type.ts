@@ -1,7 +1,6 @@
-import type { BoxProps, Flex, FlexProps, EllipsisSettings, SimpleHintPopperProps, Ellipsis } from '@semcore/base-components';
-import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { BoxProps, EllipsisSettings, SimpleHintPopperProps, Ellipsis } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type { Property } from 'csstype';
-import type React from 'react';
 
 export type TextHintProps = {
   /** Manually enabled/disabled Hint */
@@ -80,38 +79,4 @@ export type TextProps = BoxProps & BaseTextProps & (
   } & TextHintProps & TextEllipsisProps)
 );
 
-export type ListProps = TextProps & {
-  /** Marker of the entire list
-   * @default • */
-  marker?: React.ReactNode;
-};
-
-export type ListItemProps = TextProps & {
-  /** Individual marker of a list item */
-  marker?: React.ReactNode;
-};
-
-export type ListItemContentProps = FlexProps;
-
-export type ListContext = {
-  getItemProps: PropGetterFn;
-};
-
-export type BlockquoteProps = BoxProps & {
-  /** Source of the quote */
-  author?: React.ReactNode;
-};
-
-declare const Item: Intergalactic.Component<'li', ListItemProps> & {
-  Content: Intergalactic.Component<typeof Flex, ListItemContentProps>;
-};
-
-declare const List: Intergalactic.Component<'ul', ListProps> & {
-  Item: typeof Item;
-};
-
-declare const Text: Intergalactic.Component<'span', TextProps>;
-
-declare const Blockquote: Intergalactic.Component<'blockquote', BlockquoteProps>;
-
-export { Text, List, Blockquote };
+export type TextComponent = Intergalactic.Component<'span', TextProps>;
