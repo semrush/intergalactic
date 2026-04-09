@@ -8,7 +8,7 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { Table } from './table';
-import { ScreenReaderSelectedAllAnnouncement, useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
+import { useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
 
 type CheckboxExampleProps = {
   loading: boolean;
@@ -39,7 +39,6 @@ const Demo = (props: CheckboxExampleProps) => {
           scrollPaddingTop: '44px',
         }}
       >
-        <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} />
         <Flex
           role='region'
           aria-label='Table action bar'

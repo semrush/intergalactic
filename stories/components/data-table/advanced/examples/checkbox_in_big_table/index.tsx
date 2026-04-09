@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  ScreenReaderOnly,
 } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
@@ -18,14 +17,10 @@ type CheckboxExampleProps = {
 const Demo = (props: CheckboxExampleProps) => {
   const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
-  const [ariaMessage, setAriaMessage] = React.useState('');
   const tableRef = React.useRef<HTMLDivElement>(null);
 
   const handleChangeSelectedRows = React.useCallback((value: string[]) => {
     setSelectedRows(value);
-
-    if (!selectedRows.length)
-      setAriaMessage('Action bar appeared before the table');
     setSelectedRowsDisplay(value.length);
   }, []);
 
@@ -34,11 +29,6 @@ const Demo = (props: CheckboxExampleProps) => {
     setSelectedRowsDisplay(0);
     tableRef.current?.focus();
   };
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 300);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
 
   return (
     <>
@@ -52,9 +42,6 @@ const Demo = (props: CheckboxExampleProps) => {
           scrollPaddingTop: '44px',
         }}
       >
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
         <Flex
           role='region'
           aria-label='Table action bar'

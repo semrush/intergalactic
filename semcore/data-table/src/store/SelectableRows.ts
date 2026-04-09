@@ -40,7 +40,9 @@ export interface ISelectedRows<UniqKeyType> {
   isIndeterminate(): boolean;
 
   /** Subscribe to changes */
-  subscribe: EventEmitter<Events<UniqKeyType>>['subscribe'];
+  on: EventEmitter<Events<UniqKeyType>>['on'];
+  /** Unsubscribe to changes */
+  off: EventEmitter<Events<UniqKeyType>>['off'];
 }
 
 type Events<UniqRowKeyType> = {
@@ -178,20 +180,12 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
   private toggleOneRow(isSelected: boolean, key: UniqRowKeyType): void {
     if (isSelected) {
-      if (this.values.size === 0) {
-        this.emit(SelectableRows.SELECT_ALL_EVENT);
-      }
-
       this.values.add(key);
 
-      if (this.values.size === this.availableKeys.size) {
+      if (this.isAllSelected()) {
         this.emit(SelectableRows.SELECT_ALL_EVENT);
       }
     } else {
-      if (this.values.size === this.availableKeys.size) {
-        this.emit(SelectableRows.SELECT_ALL_EVENT);
-      }
-
       this.values.delete(key);
 
       if (this.values.size === 0) {

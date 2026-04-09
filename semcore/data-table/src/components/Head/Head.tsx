@@ -34,7 +34,7 @@ class HeadRoot<
     const { selectedRows } = this.asProps;
 
     if (selectedRows && !Array.isArray(selectedRows)) {
-      this.unsubscribeSelectAll = selectedRows.subscribe(SelectableRows.SELECT_ALL_EVENT, () => {
+      this.unsubscribeSelectAll = selectedRows.on(SelectableRows.SELECT_ALL_EVENT, () => {
         this.forceUpdate();
       });
     }
