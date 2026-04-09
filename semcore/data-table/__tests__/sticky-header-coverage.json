@@ -1,0 +1,152 @@
+{
+  "feature": "Sticky Header V1 (separate ScrollArea architecture)",
+  "branch": "UIK-4060/sticky-header-v1",
+  "baseBranch": "release/v16",
+  "generatedAt": "2026-03-19",
+  "risks": [
+    {
+      "id": 1,
+      "risk": "Бесконечный цикл scroll-sync между header и body ScrollArea",
+      "severity": "critical",
+      "description": "handleScroll и handleHeaderScroll слушают scroll друг друга — если одно событие меняет scrollLeft второго контейнера, может возникнуть бесконечная петля.",
+      "rootCause": "Двунаправленная синхронизация scroll без guard (isScrollingBySync или requestAnimationFrame debounce)",
+      "coverage": "covered",
+      "coveredBy": {
+        "browserTest": "data-table-scroll.browser-test.tsx :: Verify sticky header scroll sync - body scroll updates header",
+        "story": "stories/components/data-table/tests/examples/scroll-tests/sticky-header-scroll-sync.tsx",
+        "storyExport": "StickyHeaderScrollSync"
+      }
+    },
+    {
+      "id": 2,
+      "risk": "Рассинхрон ширин колонок header vs body",
+      "severity": "high",
+      "description": "calculateColumnsWidth() читает ширины ячеек body через getBoundingClientRect() и копирует в header grid-template-columns. Если DOM не готов или layout не завершён — ширины будут неверные.",
+      "rootCause": "calculateColumnsWidth вызывается в mount и resize, но не при изменении data/columns",
+      "coverage": "partial",
+      "coveredBy": {
+        "browserTest": "data-table-scroll.browser-test.tsx :: Verify sticky header appears with correct widths after async data load",
+        "story": "stories/components/data-table/tests/examples/scroll-tests/sticky-header-async-data.tsx",
+        "storyExport": "StickyHeaderAsyncData"
+      },
+      "uncoveredScenarios": [
+        "Изменение данных без resize (calculateColumnsWidth не вызывается при data change) — story создана (StickyHeaderDataChange), browser-test НЕ добавлен"
+      ]
+    },
+    {
+      "id": 3,
+      "risk": "auto-колонки коллапсируют при отсутствии body-данных",
+      "severity": "medium",
+      "description": "Когда Head вынесен из body grid, auto-sizing колонок опирается только на содержимое body. Колонки без данных в body (например hiddenColumn) схлопываются, перераспределяя пространство.",
+      "rootCause": "Head больше не участвует в grid body → auto не учитывает ширину заголовков",
+      "coverage": "not_covered",
+      "note": "Известная регрессия видна в base.tsx. Требует фикса в calculateColumnsWidth или учёта min-width заголовков."
+    },
+    {
+      "id": 4,
+      "risk": "Два role='grid' для одной логической таблицы (a11y)",
+      "severity": "high",
+      "description": "Отдельный ScrollArea для header создаёт второй role='grid' в DOM. Screen readers могут неправильно интерпретировать как две таблицы.",
+      "coverage": "covered",
+      "coveredBy": {
+        "axeTest": "data-table.axe-test.tsx :: sticky header with horizontal scroll",
+        "story": "stories/components/data-table/tests/examples/scroll-tests/sticky-header-scroll-sync.tsx",
+        "storyExport": "StickyHeaderScrollSync"
+      },
+      "note": "axe-test проверяет автоматические a11y-нарушения, но не ловит семантическую проблему двух grid. Нужен ручной screen-reader тест."
+    },
+    {
+      "id": 5,
+      "risk": "Accordion (expandable rows) + sticky header",
+      "severity": "medium",
+      "description": "Раскрытие строк меняет высоту body, может нарушить выравнивание header-body.",
+      "coverage": "covered",
+      "coveredBy": {
+        "browserTest": "data-table-scroll.browser-test.tsx :: Verify accordion rows with sticky header",
+        "story": "stories/components/data-table/tests/examples/scroll-tests/sticky-header-accordion.tsx",
+        "storyExport": "StickyHeaderAccordion"
+      }
+    },
+    {
+      "id": 6,
+      "risk": "Сортировка + sticky header",
+      "severity": "medium",
+      "description": "Переключение sort меняет порядок строк. Sticky header должен корректно отображать иконки сортировки и оставаться синхронизированным.",
+      "coverage": "partial",
+      "coveredBy": {
+        "story": "stories/components/data-table/tests/examples/scroll-tests/sticky-header-sorting.tsx",
+        "storyExport": "StickyHeaderSorting"
+      },
+      "uncoveredScenarios": [
+        "Browser-test для sorting + sticky НЕ добавлен"
+      ]
+    },
+    {
+      "id": 7,
+      "risk": "Интерактивные элементы в header (Select, Tooltip) + sticky",
+      "severity": "medium",
+      "description": "Dropdown/tooltip в ячейках header могут неправильно позиционироваться когда header в отдельном ScrollArea с position:sticky.",
+      "coverage": "partial",
+      "coveredBy": {
+        "story": "stories/components/data-table/advanced/examples/big_table_with_sticky_header.tsx",
+        "storyExport": "BigTableWithStickyHeader"
+      },
+      "uncoveredScenarios": [
+        "Browser-test для interactive elements НЕ добавлен"
+      ]
+    },
+    {
+      "id": 8,
+      "risk": "Async data load — mount с пустыми данными → sticky header появляется",
+      "severity": "high",
+      "description": "hasSeparateStickyHeader() возвращает false при пустых данных (isDataEmpty). Когда данные загружаются асинхронно, sticky header должен корректно появиться и рассчитать ширины.",
+      "coverage": "covered",
+      "coveredBy": {
+        "browserTest": "data-table-scroll.browser-test.tsx :: Verify sticky header appears with correct widths after async data load",
+        "story": "stories/components/data-table/tests/examples/scroll-tests/sticky-header-async-data.tsx",
+        "storyExport": "StickyHeaderAsyncData"
+      }
+    },
+    {
+      "id": 9,
+      "risk": "Изменение данных без resize — ширины не пересчитываются",
+      "severity": "high",
+      "description": "calculateColumnsWidth() вызывается только в mount и resize. При изменении data/columns без resize ширины header не обновляются → рассинхрон.",
+      "coverage": "partial",
+      "coveredBy": {
+        "story": "stories/components/data-table/tests/examples/scroll-tests/sticky-header-data-change.tsx",
+        "storyExport": "StickyHeaderDataChange"
+      },
+      "uncoveredScenarios": [
+        "Browser-test для data change НЕ добавлен"
+      ]
+    },
+    {
+      "id": 10,
+      "risk": "Custom renderCell + sticky header",
+      "severity": "low",
+      "description": "Кастомные ячейки через renderCell могут иметь нестандартную ширину, не учтённую calculateColumnsWidth.",
+      "coverage": "not_covered",
+      "note": "children?: never в типах DataTable означает что custom children через <DataTable.Head/><DataTable.Body/> не поддерживаются в columns API. renderCell — единственный способ кастомизации."
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "covered": 4,
+    "partial": 4,
+    "notCovered": 2
+  },
+  "testFiles": {
+    "browserTests": "semcore/data-table/__tests__/data-table-scroll.browser-test.tsx",
+    "axeTests": "semcore/data-table/__tests__/data-table.axe-test.tsx",
+    "stories": [
+      "stories/components/data-table/tests/examples/scroll-tests/sticky-header-scroll-sync.tsx",
+      "stories/components/data-table/tests/examples/scroll-tests/sticky-header-async-data.tsx",
+      "stories/components/data-table/tests/examples/scroll-tests/sticky-header-accordion.tsx",
+      "stories/components/data-table/tests/examples/scroll-tests/sticky-header-sorting.tsx",
+      "stories/components/data-table/tests/examples/scroll-tests/sticky-header-data-change.tsx",
+      "stories/components/data-table/advanced/examples/big_table_with_sticky_header.tsx"
+    ],
+    "storyRegistry": "stories/components/data-table/tests/data-table-scroll.stories.tsx"
+  }
+}

@@ -114,6 +114,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await test.step('Verify tooltip shown on hover', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
 
       const box = await locators.bubbleCircle(page, 0).boundingBox();
       if (box) {

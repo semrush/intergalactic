@@ -10,10 +10,6 @@ const sharedArgTypes = {
     control: { type: 'select' },
     options: [100, 200, 300, 400, 500, 600, 700, 800, undefined],
   },
-  state: {
-    control: { type: 'select' },
-    options: ['normal', 'valid', 'invalid', undefined],
-  },
   active: { control: { type: 'boolean' } },
   empty: { control: { type: 'boolean' } },
   placeholder: { control: { type: 'text' } },

@@ -254,7 +254,7 @@ describe('utils', () => {
 describe('Focus skip to content after plot', () => {
   beforeEach(cleanup);
 
-  test.sequential('nested case', async ({ expect }) => {
+  test('nested case', async ({ expect }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -306,7 +306,7 @@ describe('Focus skip to content after plot', () => {
     expect(getByTestId('focusableElement-1')).toHaveFocus();
   });
 
-  test.sequential('nested and shifted case', async ({ expect }) => {
+  test('nested and shifted case', async ({ expect }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({

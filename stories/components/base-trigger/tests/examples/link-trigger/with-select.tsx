@@ -25,7 +25,6 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
         data-test-id='base-trigger-as-tag-in-select'
         aria-label='base addon'
         size={props.size}
-        state={props.state}
         active={props.active}
         empty={props.empty}
         placeholder={props.placeholder}
@@ -44,7 +43,6 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
             <>
               <Select.Trigger
                 tag={LinkTrigger}
-                state={props.state}
                 active={props.active}
                 empty={props.empty}
                 placeholder={props.placeholder}
@@ -93,7 +91,6 @@ const projects: Project[] = [
 
 export const linkTriggerSelectExampleProps: LinkTriggerSelectDDMenuExample = {
   size: 300,
-  state: undefined,
   active: undefined,
   empty: undefined,
   placeholder: undefined,
