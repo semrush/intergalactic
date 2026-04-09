@@ -22,10 +22,21 @@ export const gitUtils = {
       await git.checkout(['-b', newPrereleaseBranch]);
 
       await NpmUtils.updateLockFile();
-      await gitUtils.commitNewPrerelease(packages);
+      await gitUtils.commitChangesFor(packages);
       const tag = await gitUtils.createPrereleaseTag(`${version}`);
       await gitUtils.push(tag);
     }
+  },
+
+  initNewToolsRelease: async (tagName: string, packages: PackageJson[]) => {
+    const branch = `release/${tagName}`;
+    await git.checkout(['-b', branch]);
+
+    await NpmUtils.updateLockFile();
+    await gitUtils.commitChangesFor(packages);
+
+    await git.tag([tagName]);
+    await git.push(['origin', branch, tagName]);
   },
 
   getUpdatedPackages: async () => {
@@ -83,7 +94,7 @@ export const gitUtils = {
     }
   },
 
-  commitNewPrerelease: async (packages: PackageJson[]) => {
+  commitChangesFor: async (packages: PackageJson[]) => {
     let commitMessage = '[chore] bumped';
     if (packages.length === 1) {
       commitMessage += ' version of ';
@@ -173,5 +184,13 @@ export const gitUtils = {
     const currentReleaseTag = releaseTags[releaseTags.length - 1];
 
     return currentReleaseTag.slice(pack.length) as ReleaseVersion;
+  },
+
+  getPrevReleaseToolsTag: async (tool: string): Promise<ReleaseVersion> => {
+    const tags = await git.tags([`tools/${tool}*`, '--sort', 'creatordate']);
+
+    const { all: allTags } = tags;
+
+    return allTags.at(-1) as ReleaseVersion;
   },
 };

@@ -54,6 +54,25 @@ export class NpmUtils {
     log('Static upload done.');
   }
 
+  public static getPackagePath(pckg: string) {
+    const pckgInfo = execSync(`pnpm list --filter ${pckg} --depth -1 --json`, {
+      encoding: 'utf-8',
+    });
+
+    try {
+      const [{ path } = {}] = JSON.parse(pckgInfo) as Array<{ name: string; path: string; private: boolean }>;
+
+      if (!path) return null;
+
+      return path;
+    } catch {
+      log('Unable to parse package info...');
+      log(`Info: ${pckgInfo}`);
+
+      return null;
+    }
+  }
+
   private static async publishComponents(pnpmFilter: string, pnpmOptions: string) {
     log('Publishing to registry...');
     execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
