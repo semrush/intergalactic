@@ -47,8 +47,6 @@ export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
 };
 
 export type LinkTriggerProps = ButtonLinkProps & {
-  /** Trigger state */
-  state?: 'normal' | 'valid' | 'invalid';
   /** Sets the loading state */
   loading?: boolean;
   /** Placeholder text */
