@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-10
+
+### BREAK
+
+- **ellipsis**: New major version.
+
 ## [16.0.13] - 2025-11-17
 
 ### Fixed
