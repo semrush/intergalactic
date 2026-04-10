@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BaseExample, { defaultLinkTriggerProps } from './examples/link-trigger/base';
 import DifferentSizesExample, { defaultLinkTriggerSizesProps } from './examples/link-trigger/link-trigger-different-sizes';
-import SelectWithEllipsisExample from './examples/link-trigger/select-with-ellipsis-in-trigger';
 import AddonExample, { linkTriggerWithAddonExampleProps } from './examples/link-trigger/with-addons';
 import SelectExample, { linkTriggerSelectExampleProps } from './examples/link-trigger/with-select';
 
@@ -93,12 +92,35 @@ export const Addon: StoryObj<typeof linkTriggerWithAddonExampleProps> = {
 
 export const Select: StoryObj<typeof linkTriggerSelectExampleProps> = {
   render: SelectExample,
-  argTypes: sharedArgTypes,
+  argTypes: {
+    ...sharedArgTypes,
+    showAddonLeft: {
+      control: { type: 'boolean' },
+    },
+    showAddonRight: {
+      control: { type: 'boolean' },
+    },
+    addonLeftType: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
+    addonRightType: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'spin'],
+    },
+    w: {
+      control: { type: 'number' },
+    },
+    ellipsis: {
+      control: { type: 'select' },
+      options: ['false', 'true'],
+      mapping: {
+        false: { ellipsis: false },
+        true: { ellipsis: true },
+      },
+    },
+  },
   args: linkTriggerSelectExampleProps,
-};
-
-export const SelectWithEllipsis: StoryObj = {
-  render: SelectWithEllipsisExample,
 };
 
 export const DifferentSizes: StoryObj<typeof defaultLinkTriggerSizesProps> = {
