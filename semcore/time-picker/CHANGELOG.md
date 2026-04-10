@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-10
+
+### BREAK
+
+- New major version.
+
+### Changed
+
+- Rewrite component to TS
+- `onChange` format to `HH:mm`
+
 ## [16.1.13] - 2025-12-01
 
 ### Fixed
