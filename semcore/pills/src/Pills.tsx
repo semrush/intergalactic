@@ -21,7 +21,7 @@ class RootPills extends Component<
     behavior: behavior ?? 'auto',
   });
 
-  itemValues: Array<NSPills.Props['value']> = [];
+  itemValues: Array<NSPills.Pill.Props['value']> = [];
 
   static enhance = [a11yEnhance({
     onNeighborChange: (neighborElement, props) => {
@@ -41,22 +41,22 @@ class RootPills extends Component<
 
   uncontrolledProps() {
     return {
-      value: (value: NSPills.Props['value'], e: React.SyntheticEvent) => value,
+      value: (value: NSPills.Pill.Props['value'], e: React.SyntheticEvent) => value,
     };
   }
 
-  bindHandlerClick = (value: NSPills.Props['value']) => (e: React.MouseEvent) => {
+  bindHandlerClick = (value: NSPills.Pill.Props['value']) => (e: React.MouseEvent) => {
     this.handlers.value(value, e);
   };
 
-  bindHandleKeyDown = (value: NSPills.Props['value']) => (e: React.KeyboardEvent) => {
+  bindHandleKeyDown = (value: NSPills.Pill.Props['value']) => (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       this.handlers.value(value, e);
     }
   };
 
-  getItemProps(props: NSPills.Props, index: number) {
+  getItemProps(props: NSPills.Pill.Props, index: number) {
     const { value, size, disabled, behavior } = this.asProps;
     const isSelected = value === props.value;
 
