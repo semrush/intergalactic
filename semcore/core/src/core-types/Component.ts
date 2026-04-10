@@ -119,10 +119,35 @@ export namespace Intergalactic {
   /** @private */
   // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
-    export type InferPropsFromRoot<
+    type MergeChildProps<Root, Component> = {
+      [K in keyof Root | keyof Component]:
+      K extends keyof Root
+        ? K extends keyof Component
+          ? Root[K] & Component[K] extends never
+            ? Root[K] | Component[K]
+            : Root[K] & Component[K]
+          : Root[K]
+        : K extends keyof Component
+          ? Component[K]
+          : never
+    };
+
+    type InferPropsFromRoot<
       Root extends new (...args: any) => any,
       Child extends string,
-    > = InstanceType<Root>[`get${Child}Props`] extends (...args: any[]) => infer R ? R : Record<string, unknown>;
+    > = InstanceType<Root>[`get${Child}Props`] extends (...args: any[]) => infer R ? R : Record<string, never>;
+
+    export type InferComponentProps<
+      Component extends ReactFCLike,
+    > = Omit<IRootComponentProps & ReactFCLikeProps<Component>, 'tag'>;
+
+    export type InferChildComponentProps<
+      Component extends ReactFCLike,
+      Root extends new (...args: any) => any,
+      ChildName extends string,
+      MergedProps = MergeChildProps<InferPropsFromRoot<Root, ChildName>, InferComponentProps<Component>>,
+    > = MergedProps & IStyledProps;
+
     export type PartialRequired<T, K extends keyof T> = Omit<T, K> & {
       [key in K]-?: T[key];
     };
@@ -273,7 +298,10 @@ export namespace Intergalactic {
     BaseProps = {},
     Context = {},
     AdditionalContext extends Readonly<any[]> = never[],
-  > = (<Tag extends InternalTypings.ComponentTag | [InternalTypings.ComponentTag, keyof JSX.IntrinsicElements] = BaseTag, Props extends BaseProps = BaseProps>(
+  > = (<
+    Tag extends InternalTypings.ComponentTag | [InternalTypings.ComponentTag, keyof JSX.IntrinsicElements] = BaseTag,
+    Props extends BaseProps = BaseProps,
+  >(
     props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
   ) => InternalTypings.ComponentRenderingResults) &
   InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;

@@ -11,7 +11,6 @@ const Demo = (props: LinkTriggerWithAddonExample) => (
       aria-label='base addon'
       data-test-id='addon-trigger'
       size={props.size}
-      state={props.state}
       active={props.active}
       empty={props.empty}
       placeholder={props.placeholder}
@@ -25,7 +24,6 @@ const Demo = (props: LinkTriggerWithAddonExample) => (
       aria-label='base trigger'
       data-test-id='text-addon-trigger'
       size={props.size}
-      state={props.state}
       active={props.active}
       empty={props.empty}
       placeholder={props.placeholder}
@@ -41,7 +39,6 @@ const Demo = (props: LinkTriggerWithAddonExample) => (
 
 export const linkTriggerWithAddonExampleProps: LinkTriggerWithAddonExample = {
   size: 300,
-  state: undefined,
   active: undefined,
   empty: undefined,
   placeholder: undefined,
