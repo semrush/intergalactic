@@ -147,7 +147,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
         )}
       </Select>
 
-      {/* Pattern 3: Select with ellipsis in trigger */}
+      {/* Pattern 3: Select with in wMax in Select Trigger and ellipsis in Link trigger */}
       <Select
         placeholder='Select SEO project'
         value={deviceValue}
