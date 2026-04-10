@@ -14,7 +14,8 @@
     "send-release-changelog": "bin/send-release-changelog.ts",
     "close-tasks": "bin/close-tasks.ts",
     "publish-release-notes": "bin/publish-release-notes.ts",
-    "format-changelogs": "bin/format-changelogs.ts"
+    "format-changelogs": "bin/format-changelogs.ts",
+    "publish-tool": "bin/publish-tool.ts"
   },
   "private": true,
   "license": "MIT",

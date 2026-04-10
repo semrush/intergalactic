@@ -132,6 +132,31 @@ const sendReleaseChangelog = async (endpoints: string[]) => {
   }
 };
 
+export const publishTool = async (toolArg: string) => {
+  const tool = toolArg.trim();
+  const toolPath = NpmUtils.getPackagePath(tool);
+
+  if (!toolPath) {
+    log(`Unable to query tool path for ${tool}...`);
+
+    process.exit(1);
+  }
+
+  const prevReleaseTag = await gitUtils.getPrevReleaseToolsTag(tool);
+  const prevReleaseVersion = prevReleaseTag.replace(`tools/${tool}_`, '') as `${number}.${number}.${number}`;
+
+  const packages = new Package();
+  await packages.collectPackageBy(toolPath);
+
+  const changelog = new Changelog(`tools/${tool}_`, prevReleaseVersion, packages.list);
+  await changelog.collectFromHistory();
+
+  await packages.updateVersions(changelog.data);
+  await gitUtils.initNewToolsRelease(changelog.data.version, packages.list);
+
+  NpmUtils.publish([tool]);
+};
+
 export {
   formatMarkdown,
   publishReleaseNotes,
