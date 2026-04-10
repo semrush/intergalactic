@@ -104,11 +104,11 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
         color={color}
       />
 
-      {/* Pattern 2: Select with Select.Trigger and custom addons */}
+      {/* Pattern 2: Select with Select.Trigger and LinkTrigger.Text with getTriggerProps */}
       <Select
         value={selectedProject?.id}
         onChange={handleSelect}
-        placeholder='Select Project'
+        placeholder={placeholder}
       >
         {({ getTriggerProps }) => (
           <>
@@ -116,7 +116,6 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
               tag={LinkTrigger}
               active={active}
               empty={empty}
-              placeholder={placeholder}
               disabled={disabled}
               loading={loading}
               color={color}
@@ -149,11 +148,20 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
 
       {/* Pattern 3: Select with in wMax in Select Trigger and ellipsis in Link trigger */}
       <Select
-        placeholder='Select SEO project'
         value={deviceValue}
         onChange={setDeviceValue}
+        placeholder={placeholder}
+
       >
-        <Select.Trigger tag={LinkTrigger} size={size} wMax={ellipsisW}>
+        <Select.Trigger
+          tag={LinkTrigger}
+          wMax={ellipsisW}
+          active={active}
+          disabled={disabled}
+          loading={loading}
+          color={color}
+          size={size}
+        >
           {renderAddon(showAddonLeft, addonLeftType)}
           <LinkTrigger.Text
             fontWeight={600}
@@ -190,11 +198,7 @@ const projects: Project[] = [
 
 export const linkTriggerSelectExampleProps: LinkTriggerSelectDDMenuExample = {
   size: 300,
-  active: undefined,
-  empty: undefined,
-  placeholder: undefined,
-  disabled: undefined,
-  loading: undefined,
+  placeholder: 'Select SEO option',
   color: undefined,
   showAddonLeft: false,
   showAddonRight: false,
