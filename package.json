@@ -96,7 +96,7 @@
     "allure-commandline": "2.34.0",
     "allure-js-commons": "3.4.5",
     "allure-playwright": "3.4.5",
-    "allure-vitest": "3.4.5",
+    "allure-vitest": "3.7.1",
     "babel-plugin-preval": "5.1.0",
     "babel-plugin-replace-import-extension": "1.1.5",
     "chromatic": "15.1.1",
