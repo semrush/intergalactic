@@ -1,11 +1,11 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
-export type PillsValue = string | number | boolean | null;
-
-export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps &
-  BoxProps & {
+declare namespace NSPills {
+  type Value = string | number | boolean | null;
+  type Props<T extends Value = Value> = NeighborLocationProps & BoxProps & {
     /** Pills size */
     size?: 'l' | 'm';
     /** Disabled state */
@@ -30,51 +30,70 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
       | 'auto'
       | 'manual';
   };
-
-export type PillProps = BoxProps &
-  NeighborItemProps & {
-    /** Pill value */
-    value?: PillsValue;
-    /** Disabled state */
-    disabled?: boolean;
-    /** Selected state */
-    selected?: boolean;
-    /** Left addon text */
-    addonLeft?: React.ElementType;
-    /** Right addon tag */
-    addonRight?: React.ElementType;
+  type Ctx = {
+    getItemProps: PropGetterFn;
+  };
+  type Handlers = {
+    value: (value: Props['value'], event: React.SyntheticEvent) => Props['value'];
   };
 
-export type PillsContext = {
-  getItemProps: PropGetterFn;
-};
+  namespace Pill {
+    type Props = BoxProps & NeighborItemProps & {
+      /** Pill value */
+      value?: Value;
+      /** Disabled state */
+      disabled?: boolean;
+      /** Selected state */
+      selected?: boolean;
+      /** Left addon text */
+      addonLeft?: React.ElementType;
+      /** Right addon tag */
+      addonRight?: React.ElementType;
+    };
 
-export type PillsHandlers = {
-  value: (value: PillProps['value'], event: React.SyntheticEvent) => PillProps['value'];
-};
+    namespace Text {
+      type Root = typeof Box;
+    }
 
-export type IntergalacticPillsComponent<PropsExtending = {}> = (<
-  Value extends PillsValue,
-  Tag extends Intergalactic.Tag = 'div',
->(
-  props: Intergalactic.InternalTypings.ComponentProps<
-    Tag,
-    'div',
-    PillsProps<Value>,
-    PillsContext,
-    [handlers: PillsHandlers]
-  > &
-  PropsExtending,
-) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', PillsProps>;
+    namespace Addon {
+      type Root = typeof Box;
+    }
 
-export type PillsItemComponent = Intergalactic.Component<'button', PillProps, [handlers: PillsHandlers]>;
-export type PillsItemTextComponent = typeof Box;
-export type PillsItemAddonComponent = typeof Box;
+    type Root = Intergalactic.Component<'button', Props, [handlers: Handlers]>;
+  }
 
-export type PillsComponent = IntergalacticPillsComponent & {
-  Item: PillsItemComponent & {
-    Text: PillsItemTextComponent;
-    Addon: PillsItemAddonComponent;
+  type Root<PropsExtending = {}> = (<
+    V extends Value,
+    Tag extends Intergalactic.Tag = 'div',
+  >(
+    props: Intergalactic.InternalTypings.ComponentProps<
+      Tag,
+      'div',
+      Props<V>,
+      Ctx,
+      [handlers: Handlers]
+    > &
+    PropsExtending,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', Props>;
+
+  type Component = Root & {
+    Item: Pill.Root & {
+      Text: Pill.Text.Root;
+      Addon: Pill.Addon.Root;
+    };
   };
-};
+}
+
+/** @deprecated It will be removed in v18. */
+export type PillsValue = NSPills.Value;
+/** @deprecated It will be removed in v18. */
+export type PillsProps<T extends PillsValue = PillsValue> = NSPills.Props<T>;
+/** @deprecated It will be removed in v18. */
+export type PillProps = NSPills.Pill.Props;
+/** @deprecated It will be removed in v18. */
+export type PillsContext = NSPills.Ctx;
+/** @deprecated It will be removed in v18. */
+export type PillsHandlers = NSPills.Handlers;
+
+export type { NSPills };

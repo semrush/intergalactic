@@ -1,4 +1,4 @@
-import type { PillsProps } from '@semcore/ui/pills';
+import type { NSPills } from '@semcore/ui/pills';
 import Pills from '@semcore/ui/pills';
 import React from 'react';
 
@@ -11,7 +11,7 @@ type AdditionalJSXProps = {
   before: boolean;
   after: boolean;
 };
-export type PillsJSXProps = JSXProps<PillsProps> & AdditionalJSXProps;
+export type PillsJSXProps = JSXProps<NSPills.Props> & AdditionalJSXProps;
 
 function getJSX(props: PillsJSXProps) {
   return (
