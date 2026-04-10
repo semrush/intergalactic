@@ -83,7 +83,7 @@ SItemHint {
 }
 
 SScrollContainer {
-  &:has([data-ui-name="DropdownMenu.Group"][data-sticky="true"]) {
+  &:has([data-ui-name$=".Group"][data-sticky="true"]) {
     overscroll-behavior: none;
   }
 }
