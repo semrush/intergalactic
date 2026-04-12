@@ -160,9 +160,8 @@ export const ScreenReaderSelectedAllAnnouncement = (props: { selectedRows: Selec
 
   const setAriaCallback = React.useCallback(() => {
     const selectedRowsSize = props.selectedRows.get().length;
-    if (!ariaMessage && selectedRowsSize > 0) {
-      setAriaMessage('Action bar appeared before the table');
-    }
+
+    setAriaMessage(selectedRowsSize === 0 ? '' : 'Actions are available before the table');
   }, [props.selectedRows]);
 
   React.useEffect(() => {
@@ -176,11 +175,6 @@ export const ScreenReaderSelectedAllAnnouncement = (props: { selectedRows: Selec
 
     return unsubscribe;
   }, [props.selectedRows]);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 1000);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
 
   return (
     <ScreenReaderOnly role='status' aria-live='polite'>
