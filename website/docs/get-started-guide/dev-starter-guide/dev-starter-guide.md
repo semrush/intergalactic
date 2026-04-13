@@ -183,6 +183,6 @@ To ensure the best performance and user experience, we don't support legacy brow
 
 Table: Browser support
 
-| Chrome | Firefox | Safari(macOS) | Safari(iOS) | Edge  |
-| ------ | ------- | ------------- | ----------- | ----- |
-| >= 90  | >= 78   | >= 14         | >= 12.5     | >= 91 |
+| Chrome          | Firefox         | Safari          | Edge            |
+| --------------- | --------------- | --------------- | --------------- |
+| last 3 versions | last 3 versions | last 3 versions | last 3 versions |
