@@ -97,7 +97,7 @@ describe('DateRangePicker', () => {
     vi.useRealTimers();
   });
 
-  test.sequential('Verify not select disabled date from the keyboard', async ({ expect }) => {
+  test.sequential('Verify not select disabled date from the keyboard', async () => {
     mockDate('2023-12-20T12:00:00.808Z');
     const onPreselectedValueChange = vi.fn();
     const { getByTestId, getByText } = render(
@@ -133,7 +133,7 @@ describe('DateRangePicker', () => {
     expect(onPreselectedValueChange).toBeCalledTimes(1); // shouldn't be called the second time - 28 is disabled date
   });
 
-  test('Verify change month after select new date from the keyboard', async ({ expect }) => {
+  test('Verify change month after select new date from the keyboard', async () => {
     mockDate('2023-12-20T12:00:00.808Z');
 
     const { getByTestId, getByText } = render(

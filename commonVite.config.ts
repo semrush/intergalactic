@@ -28,6 +28,7 @@ export default defineConfig({
     emptyOutDir: false,
     outDir: 'lib',
     rollupOptions: {
+      treeshake: false,
       external: ['react', 'react-dom', 'react/jsx-runtime', /@babel\/runtime\/*/, /@semcore\/*/],
       output: [
         {
