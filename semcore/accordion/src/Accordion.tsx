@@ -8,23 +8,13 @@ import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import type {
-  AccordionComponent,
-  AccordionHandlers,
-  AccordionItemChevronComponent,
-  AccordionItemCollapseComponent,
-  AccordionItemComponent,
-  AccordionItemProps,
-  AccordionItemToggleButtonComponent,
-  AccordionItemToggleComponent,
-  IntergalacticAccordionComponent,
-} from './Accordion.type';
+import type { NSAccordion } from './Accordion.type';
 import style from './style/accordion.shadow.css';
 
 class RootAccordion extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<IntergalacticAccordionComponent>,
+  Intergalactic.InternalTypings.InferComponentProps<NSAccordion.Root>,
   typeof RootAccordion.enhance,
-  AccordionHandlers
+  NSAccordion.Handlers
 > {
   static displayName = 'Accordion';
   static style = style;
@@ -48,7 +38,7 @@ class RootAccordion extends Component<
     };
   }
 
-  handleToggleInteraction = (newValue: AccordionItemProps['value']) => {
+  handleToggleInteraction = (newValue: NSAccordion.Item.Props['value']) => {
     const { value } = this.asProps;
 
     if (Array.isArray(value)) {
@@ -62,7 +52,7 @@ class RootAccordion extends Component<
     }
   };
 
-  getItemProps({ value }: AccordionItemProps) {
+  getItemProps({ value }: NSAccordion.Item.Props) {
     const { value: selectedValue, duration, use } = this.asProps;
     const selected = Array.isArray(selectedValue)
       ? selectedValue.includes(value)
@@ -82,7 +72,7 @@ class RootAccordion extends Component<
   }
 }
 export class RootItem extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<AccordionItemComponent, typeof RootAccordion, 'Item'>,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAccordion.Item.Root, typeof RootAccordion, 'Item'>,
   typeof RootItem.enhance
 > {
   static displayName = 'Item';
@@ -144,7 +134,7 @@ export class RootItem extends Component<
 }
 
 class Toggle extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<AccordionItemToggleComponent, typeof RootItem, 'Toggle'>
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAccordion.Item.Toggle.Root, typeof RootItem, 'Toggle'>
 > {
   toggleRef = React.createRef();
 
@@ -173,7 +163,7 @@ class Toggle extends Component<
 
 function Chevron(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    AccordionItemChevronComponent,
+    NSAccordion.Item.Chevron.Root,
     typeof RootItem,
     'Chevron'
   >,
@@ -186,7 +176,7 @@ function Chevron(
 
 function ToggleButton(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    AccordionItemToggleButtonComponent,
+    NSAccordion.Item.ToggleButton.Root,
     typeof RootItem,
     'ToggleButton'
   >,
@@ -200,7 +190,7 @@ function ToggleButton(
 
 function Collapse(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    AccordionItemCollapseComponent,
+    NSAccordion.Item.Collapse.Root,
     typeof RootItem,
     'Collapse'
   >,
@@ -219,24 +209,25 @@ function Collapse(
   );
 }
 
-const Item = createComponent(RootItem, {
-  Toggle,
-  Chevron,
-  ToggleButton,
-  Collapse,
-}) as AccordionItemComponent;
-
 const Accordion = createComponent(RootAccordion, {
-  Item,
-}) as unknown as AccordionComponent;
+  Item: [
+    RootItem,
+    {
+      Toggle,
+      Chevron,
+      ToggleButton,
+      Collapse,
+    },
+  ],
+}) as unknown as NSAccordion.Component;
 
 export const wrapAccordion = <PropsExtending extends {}>(
   wrapper: (
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticAccordionComponent>
+      Intergalactic.InternalTypings.ComponentPropsNesting<NSAccordion.Root>
     > &
     PropsExtending,
   ) => React.ReactNode,
-) => wrapper as IntergalacticAccordionComponent<PropsExtending>;
+) => wrapper as NSAccordion.Root<PropsExtending>;
 
 export default Accordion;
