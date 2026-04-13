@@ -122,9 +122,9 @@ describe('YAxis', () => {
   shouldSupportClassName(YAxis, PlotTest);
   shouldSupportRef(YAxis, PlotTest);
 
-  test.concurrent(
+  test(
     'Should support call children function for Grid how many ticks are passed',
-    ({ expect }) => {
+    () => {
       expect.assertions(2);
 
       render(
@@ -142,9 +142,9 @@ describe('YAxis', () => {
     },
   );
 
-  test.concurrent(
+  test(
     'Should support call children function for Ticks how many ticks are passed',
-    ({ expect }) => {
+    () => {
       /* It's called 4 times since after the initial render, re-render is triggered to have an access to rootRef to calculate multiline lines */
       expect.assertions(4);
 
@@ -163,7 +163,7 @@ describe('YAxis', () => {
     },
   );
 
-  test.concurrent('should support set data-ui-name for Line.Ticks', () => {
+  test('should support set data-ui-name for Line.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -175,7 +175,7 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test.sequential('should support change tag YAxis.Ticks', () => {
+  test('should support change tag YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -254,7 +254,7 @@ describe('utils', () => {
 describe('Focus skip to content after plot', () => {
   beforeEach(cleanup);
 
-  test('nested case', async ({ expect }) => {
+  test('nested case', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -306,7 +306,7 @@ describe('Focus skip to content after plot', () => {
     expect(getByTestId('focusableElement-1')).toHaveFocus();
   });
 
-  test('nested and shifted case', async ({ expect }) => {
+  test('nested and shifted case', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({

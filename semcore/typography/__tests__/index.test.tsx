@@ -11,7 +11,7 @@ describe('typography Dependency imports', () => {
 
 describe('List', () => {
   beforeEach(cleanup);
-  test('Default List.Item should have display block for content', async ({ task }) => {
+  test('Default List.Item should have display block for content', async () => {
     const component = (
       <List>
         <List.Item marker={null} data-testid='itemToCheck'>
@@ -23,7 +23,7 @@ describe('List', () => {
     expect(getComputedStyle(getByTestId('itemToCheck').children[0]).display).toBe('block');
   });
 
-  test('Nested List.Item should have display flex for content', async ({ task }) => {
+  test('Nested List.Item should have display flex for content', async () => {
     const component = (
       <List>
         <List.Item marker={null} data-testid='itemToCheck'>
