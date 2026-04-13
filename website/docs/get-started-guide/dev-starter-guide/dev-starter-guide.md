@@ -189,7 +189,7 @@ We run automated tests on every release in the following browsers and guarantee 
 - **Firefox**
 - **Safari**
 
-These are the browsers we own. If something breaks here, we fix it.
+These are the browsers we actively support. If something breaks here, we fix it.
 
 ### Works by default
 
