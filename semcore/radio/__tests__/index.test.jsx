@@ -150,7 +150,7 @@ describe('RadioGroup', () => {
     expect(getByTestId('radioControlSecond').checked).toBeTruthy();
   });
 
-  test('Verify supports disabled prop', async ({ expect }) => {
+  test('Verify supports disabled prop', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -182,7 +182,7 @@ describe('RadioGroup', () => {
     expect(spy).not.toBeCalledWith('2', expect.anything());
   });
 
-  test('Verify supports different types of value', async ({ expect }) => {
+  test('Verify supports different types of value', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(

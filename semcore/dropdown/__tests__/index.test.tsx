@@ -28,7 +28,7 @@ describe('Dropdown', () => {
     window.IntersectionObserver = mockIntersectionObserver;
   });
 
-  test('Verify not open popper by keyboard enter if interaction none', async ({ expect }) => {
+  test('Verify not open popper by keyboard enter if interaction none', async () => {
     const spy = vi.fn();
     render(
       <Dropdown onVisibleChange={spy} interaction='none'>

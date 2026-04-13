@@ -25,7 +25,7 @@ describe('BulkTextarea OnChange', () => {
     assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string[]) => { }} />);
   });
 
-  test('Verify onChange return the same type as value', async ({ expect }) => {
+  test('Verify onChange return the same type as value', async () => {
     const changedValue = ['1', '2', '3'];
     const initValue = 'init value';
     let valueInCb: string | string[] | null = null;
