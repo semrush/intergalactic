@@ -209,16 +209,15 @@ function Collapse(
   );
 }
 
+const Item = createComponent(RootItem, {
+  Toggle,
+  Chevron,
+  ToggleButton,
+  Collapse,
+}) as NSAccordion.Item.Component;
+
 const Accordion = createComponent(RootAccordion, {
-  Item: [
-    RootItem,
-    {
-      Toggle,
-      Chevron,
-      ToggleButton,
-      Collapse,
-    },
-  ],
+  Item,
 }) as unknown as NSAccordion.Component;
 
 export const wrapAccordion = <PropsExtending extends {}>(

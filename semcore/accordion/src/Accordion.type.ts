@@ -121,6 +121,13 @@ declare namespace NSAccordion {
     }
 
     type Root = Intergalactic.Component<'div', Props, Ctx>;
+
+    type Component = Root & {
+      Toggle: Toggle.Root;
+      ToggleButton: ToggleButton.Root;
+      Chevron: Chevron.Root;
+      Collapse: Collapse.Root;
+    };
   }
 
   type Root<PropsExtending = {}> = (<
@@ -138,12 +145,7 @@ declare namespace NSAccordion {
   Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', Props>;
 
   type Component = Root & {
-    Item: Item.Root & {
-      Toggle: Item.Toggle.Root;
-      ToggleButton: Item.ToggleButton.Root;
-      Chevron: Item.Chevron.Root;
-      Collapse: Item.Collapse.Root;
-    };
+    Item: Item.Component;
   };
 }
 
