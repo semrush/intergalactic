@@ -5,13 +5,14 @@ import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
+import Flags from '@semcore/ui/flags';
 import Select from '@semcore/ui/select';
-import Spin, { type SpinSize } from '@semcore/ui/spin';
+import Tag from '@semcore/ui/tag';
 import type { TextEllipsisProps } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type AddonType = 'icon' | 'badge' | 'counter' | 'spin';
+type AddonType = 'icon' | 'badge' | 'counter' | 'flag' | 'tag';
 
 interface Project {
   id: number;
@@ -50,13 +51,6 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   const numSize = Number(size);
   const IconAddon = numSize < 600 ? MathPlusAltM : MathPlusAltL;
 
-  let spinSize: SpinSize = 'm';
-  if (numSize <= 200) {
-    spinSize = 'xs';
-  } else if (numSize <= 500) {
-    spinSize = 's';
-  }
-
   let counterSize: CounterProps['size'];
   if (numSize >= 600) {
     counterSize = 'l';
@@ -72,8 +66,10 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
         return <LinkTrigger.Addon><Badge type='new' /></LinkTrigger.Addon>;
       case 'counter':
         return <LinkTrigger.Addon><Counter size={counterSize}>17</Counter></LinkTrigger.Addon>;
-      case 'spin':
-        return <LinkTrigger.Addon><Spin size={spinSize} /></LinkTrigger.Addon>;
+      case 'flag':
+        return <LinkTrigger.Addon><Flags name='US' /></LinkTrigger.Addon>;
+      case 'tag':
+        return <LinkTrigger.Addon><Tag>Label</Tag></LinkTrigger.Addon>;
       case 'icon':
       default:
         return <LinkTrigger.Addon><IconAddon /></LinkTrigger.Addon>;
