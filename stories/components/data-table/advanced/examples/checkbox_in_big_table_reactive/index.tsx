@@ -8,7 +8,7 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { Table } from './table';
-import { useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
+import { ScreenReaderSelectedAllAnnouncement, useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
 
 type CheckboxExampleProps = {
   loading: boolean;
@@ -56,6 +56,7 @@ const Demo = (props: CheckboxExampleProps) => {
                 'var(--intergalactic-bg-primary-neutral, #ffffff)',
           }}
         >
+          <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} />
           <Text size={200}>
             Selected rows: <Text bold>{selectedRowsDisplay}</Text>
           </Text>

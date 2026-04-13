@@ -9,7 +9,6 @@ import AccordionWithPaginationExample, { tableInTableDefaultProps } from './exam
 import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
-import CheckboxInBigTableExample, { defaultProps as checkboxInBigTableDefaultProps } from './examples/checkbox_in_big_table';
 import CheckboxInBigTableReactiveExample, { defaultProps as checkboxInBigReactiveTableDefaultProps } from './examples/checkbox_in_big_table_reactive';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWidthWithShadowsExample from './examples/fixed_columns_width_with_shadows';
@@ -32,7 +31,7 @@ const meta: Meta<typeof DataTable> = {
   component: DataTable,
 };
 
-const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigTableDefaultProps>> = {
+const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigReactiveTableDefaultProps>> = {
   loading: { control: 'boolean' },
   sideIndents: {
     control: 'select',
@@ -104,12 +103,6 @@ export const AccordionWithStickyRows: StoryObj<typeof accordionStickyProps> = {
 
 export const BigTableWithStickyHeader: Story = {
   render: BigTableWithStickyHeaderExample,
-};
-
-export const CheckboxInBigTable: StoryObj<typeof checkboxInBigTableDefaultProps> = {
-  render: CheckboxInBigTableExample,
-  argTypes: checkboxArgTypes,
-  args: checkboxInBigTableDefaultProps,
 };
 
 export const CheckboxInBigTableReactive: StoryObj<typeof checkboxInBigReactiveTableDefaultProps> = {
