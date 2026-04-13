@@ -2,7 +2,8 @@ import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
-import ChevronDown from '@semcore/icon/ChevronDown/m';
+import ChevronDownL from '@semcore/icon/ChevronDown/l';
+import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
 import React from 'react';
 
@@ -10,21 +11,22 @@ class RootLinkTrigger extends Component {
   static displayName = 'LinkTrigger';
 
   getTextProps(props) {
-    const { placeholder, empty, Children } = this.asProps;
+    const { placeholder, empty, Children, size } = this.asProps;
     const content = empty ? placeholder : props.children;
     const addons = findAllComponents(Children, [LinkTrigger.Addon.displayName]);
+    const addonWidth = size >= 600 ? 28 : 20;
 
     return {
       'use:children': content,
       empty,
-      'w': `calc(100% - ${20 * (addons.length + 1)}px)`, // 20px is for the ChevronDown (16px) and marginLeft (4px) * addons - for addons count
+      'w': `calc(100% - ${addonWidth * (addons.length + 1)}px)`, // 20px is for the ChevronDown (16px) and marginLeft (4px) * addons - for addons count
     };
   }
 
   render() {
     const SLinkTrigger = Root;
     const SLinkAddon = LinkTrigger.Addon;
-    const { Children, loading, empty, disabled } = this.asProps;
+    const { Children, loading, empty, disabled, size } = this.asProps;
 
     return (
       <SLinkTrigger
@@ -33,7 +35,9 @@ class RootLinkTrigger extends Component {
       >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
-          {loading ? <Spin size='xs' theme='currentColor' /> : <ChevronDown />}
+          {loading
+            ? <Spin size='xs' theme='currentColor' />
+            : size >= 600 ? <ChevronDownL /> : <ChevronDownM />}
         </SLinkAddon>
       </SLinkTrigger>
     );
