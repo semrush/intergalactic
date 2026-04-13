@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-13
+
+### BREAK
+
+- **ellipsis**: New major version.
+
+### Added
+
+- **ellipsis**: `Select.Option.Text` component. Use it if you have an options that should be ellipsized.
+
 ## [16.1.12] - 2025-11-17
 
 ### Changed

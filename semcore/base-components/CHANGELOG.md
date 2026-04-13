@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-13
+
+### BREAK
+
+- **ellipsis**: Deprecated component. Use the new `ellipsis` prop that's built into various components.
+- **portal**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **outside-click**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **scroll-area**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+
 ## [16.5.0] - 2026-04-01
 
 ### Added
