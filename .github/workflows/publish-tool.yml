@@ -81,7 +81,7 @@ jobs:
     needs:
       - build
     outputs:
-      tool_release_branch: ${{ steps.tool_branch_name.outputs.branch }}
+      tool_release_branch: ${{ steps.tool_release_branch.outputs.branch }}
     steps:
       - uses: actions/checkout@v4.1.1
         with:
@@ -148,10 +148,11 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
     steps:
+      - uses: actions/checkout@v4.1.1
       - name: Create PR
         run: |
           gh pr create \
-            --base release/v17 \
-            --head ${{ needs.publish.outputs.tool_release_branch }} \
-            --title "Merge new tool version into release/v17" \
-            --body "Created by automatization"
+            --base 'release/v17' \
+            --head '${{ needs.publish.outputs.tool_release_branch }}' \
+            --title 'Merge new tool version into release/v17' \
+            --body 'Created by automatization'
