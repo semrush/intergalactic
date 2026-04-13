@@ -179,10 +179,25 @@ import { Flex } from '@semcore/ui/base-components';
 
 ## Browser support
 
-To ensure the best performance and user experience, we don't support legacy browsers. Our design system is optimized for the following browser versions:
+We don’t support legacy browsers. Our design system targets modern evergreen browsers.
 
-Table: Browser support
+### Actively tested and supported
 
-| Chrome          | Firefox         | Safari          | Edge            |
-| --------------- | --------------- | --------------- | --------------- |
-| last 3 versions | last 3 versions | last 3 versions | last 3 versions |
+We run automated tests on every release in the following browsers and guarantee quality for the last 3 versions of:
+
+- **Chrome** 
+- **Firefox** 
+- **Safari**
+
+These are the browsers we own. If something breaks here, we fix it.
+
+### Works by default
+
+Edge and Opera are built on the same engines as Chrome (Blink) and Safari (WebKit), so components generally work in them without additional effort. We don’t run dedicated test suites for these browsers, but we also don’t knowingly introduce incompatibilities.
+
+- **Edge** - last 3 versions
+- **Opera** - last 3 versions
+
+::: tip
+If you encounter a browser-specific issue in Edge or Opera that doesn’t reproduce in Chrome or Safari, please [open an issue](https://github.com/semrush/intergalactic/issues) - we'll evaluate it case by case.
+:::
