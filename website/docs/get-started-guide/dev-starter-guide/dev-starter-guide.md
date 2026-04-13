@@ -185,8 +185,8 @@ We don’t support legacy browsers. Our design system targets modern evergreen b
 
 We run automated tests on every release in the following browsers and guarantee quality for the last 3 versions of:
 
-- **Chrome** 
-- **Firefox** 
+- **Chrome**
+- **Firefox**
 - **Safari**
 
 These are the browsers we own. If something breaks here, we fix it.
@@ -199,5 +199,5 @@ Edge and Opera are built on the same engines as Chrome (Blink) and Safari (WebKi
 - **Opera** - last 3 versions
 
 ::: tip
-If you encounter a browser-specific issue in Edge or Opera that doesn’t reproduce in Chrome or Safari, please [open an issue](https://github.com/semrush/intergalactic/issues) - we'll evaluate it case by case.
+If you encounter a browser-specific issue in Edge or Opera that doesn’t reproduce in Chrome or Safari, [open an issue](https://github.com/semrush/intergalactic/issues) - we'll evaluate it case by case.
 :::
