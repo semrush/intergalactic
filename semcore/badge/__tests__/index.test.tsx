@@ -12,7 +12,7 @@ describe('Badge Dependency imports', () => {
 describe('Badge deprecation warnings', () => {
   beforeEach(cleanup);
 
-  let consoleWarnSpy: ReturnType<typeof vi.spyOn>;
+  let consoleWarnSpy: ReturnType<typeof vi.spyOn<any, any>>;
 
   beforeEach(() => {
     consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });

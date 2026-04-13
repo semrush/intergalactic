@@ -35,8 +35,9 @@ export type ProgressBarCxt = {
   getValueProps: PropGetterFn;
 };
 
-declare const ProgressBar: Intergalactic.Component<'div', ProgressBarProps, ProgressBarCxt> & {
-  Value: Intergalactic.Component<'div', ValueProps>;
-};
+export type ProgressBarRootComponent = Intergalactic.Component<'div', ProgressBarProps, ProgressBarCxt>;
+export type ProgressBarValueComponent = Intergalactic.Component<'div', ValueProps>;
 
-export default ProgressBar;
+export type ProgressBarComponent = ProgressBarRootComponent & {
+  Value: ProgressBarValueComponent;
+};

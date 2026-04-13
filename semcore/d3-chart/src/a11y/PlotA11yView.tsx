@@ -25,7 +25,7 @@ export type A11yViewProps = {
   onCloseHandler: () => void;
 };
 
-export const PlotA11yView: React.FC<A11yViewProps> = ({
+export function PlotA11yView({
   id,
   payload: providedData,
   hints,
@@ -35,7 +35,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   config: providedConfig,
   locale,
   onCloseHandler,
-}) => {
+}: A11yViewProps) {
   const SPlotA11yView = Root;
   const translations = useAsyncI18nMessages(localizedMessages, locale);
   const intl = React.useMemo(

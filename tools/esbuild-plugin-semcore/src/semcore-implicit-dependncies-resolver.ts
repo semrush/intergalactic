@@ -18,7 +18,7 @@ const extractCssDependencies = async (
     .map((line) => line.substring('@import \''.length, line.length - '\';'.length));
   const dirname = resolveDirname(path);
   const resolvedImports = await Promise.all(
-    imports.map((importPath) => resolver(importPath, { resolveDir: dirname })),
+    imports.map((importPath) => resolver(importPath, { resolveDir: dirname, kind: 'import-statement' })),
   );
   const cssPaths = resolvedImports.map(({ path }) => path);
 

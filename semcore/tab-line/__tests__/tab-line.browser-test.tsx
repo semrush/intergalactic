@@ -144,8 +144,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.waitForTimeout(100);
 
       await page.keyboard.press('Tab');
+      await expect(locators.tabLines(page).nth(1)).toBeFocused();
       await page.waitForTimeout(100);
       await page.keyboard.press('ArrowLeft');
+      await expect(locators.tabLines(page).nth(0)).toBeFocused();
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
       await page.waitForFunction(() => {
         const el = document.querySelector('[data-ui-name="Hint"]');
