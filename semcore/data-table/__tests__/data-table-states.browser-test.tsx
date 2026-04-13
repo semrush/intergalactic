@@ -980,6 +980,44 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.getCell(page, 9, 5)).toBeFocused();
       });
     });
+
+    test('Verify aria-live announcement when all rows selected via header checkbox', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
+
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]');
+      await expect(announcer.first()).toBeAttached();
+
+      await test.step('Verify no announcement before any interaction', async () => {
+        await expect(announcer.first()).toBeEmpty();
+      });
+
+      await test.step('Verify "All items selected" announced when header checkbox clicked', async () => {
+        await selectAllCheckbox.click();
+        await expect(announcer.first()).toHaveText('Actions are available before the table');
+      });
+    });
+
+    test('Verify aria-live announcement on partial row selection', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
+
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]');
+
+      await test.step('Verify announcement when single row checked', async () => {
+        await rowCheckboxes.first().click();
+        await expect(announcer.first()).not.toBeEmpty();
+        await expect(announcer.first()).toHaveText('Actions are available before the table');
+      });
+    });
   });
 
   test.describe('SelectableRows (legacy API)', () => {
@@ -1427,6 +1465,39 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
         await expect(rowCheckboxes.first()).toBeChecked();
         await expect(selectAllCheckbox).toBeChecked();
+      });
+    });
+
+    test('Verify aria-live announcement when all rows selected via header checkbox', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
+
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]').first();
+      await expect(announcer).toBeAttached();
+      await test.step('Verify "All items selected" announced when header checkbox clicked', async () => {
+        await selectAllCheckbox.click();
+        await expect(announcer).toHaveText('Action bar appeared before the table');
+      });
+    });
+
+    test('Verify aria-live announcement on partial row selection', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
+
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]').first();
+
+      await test.step('Verify announcement when single row checked', async () => {
+        await page.waitForTimeout(500);
+        await rowCheckboxes.first().click();
+        await expect(announcer).toHaveText('Action bar appeared before the table');
       });
     });
   });
