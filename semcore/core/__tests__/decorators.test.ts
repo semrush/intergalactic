@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, Test } from '@semcore/testing-utils/vitest';
+import { describe, it, expect, vi } from '@semcore/testing-utils/vitest';
 
 import propsObserver from '../src/decorators/propsObserver';
 import reactive from '../src/decorators/reactive';

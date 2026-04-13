@@ -10,7 +10,6 @@ export default mergeConfig(
         entry: './src/index.ts',
       },
       rollupOptions: {
-        treeshake: false,
         external: [
           'react',
           'react-dom',

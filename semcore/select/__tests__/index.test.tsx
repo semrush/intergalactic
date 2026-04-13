@@ -29,7 +29,7 @@ describe('Select Trigger', () => {
 
   test.concurrent(
     'Verify popper not opened by keyboard if interaction is none',
-    async ({ expect }) => {
+    async () => {
       const spy = vi.fn();
       render(
         <Select onVisibleChange={spy} interaction='none'>
@@ -64,7 +64,7 @@ describe('Select Trigger', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify highlights selected item', async ({ expect }) => {
+  test('Verify highlights selected item', async () => {
     let highlightedIndex: number | null = null;
 
     const component = render(
@@ -90,9 +90,7 @@ describe('Select Trigger', () => {
     await expect(highlightedIndex).toBe(2);
   });
 
-  test('Verify select by keypress space with button as trigger (FilterTrigger as example)', async ({
-    expect,
-  }) => {
+  test('Verify select by keypress space with button as trigger (FilterTrigger as example)', async () => {
     const spyChange = vi.fn();
 
     const component = (
@@ -201,7 +199,7 @@ describe('Select Trigger', () => {
 
   test.sequential(
     'Verify focus position preserve with keyboard navigation and interaction=focus',
-    async ({ expect }) => {
+    async () => {
       // vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
@@ -235,9 +233,7 @@ describe('Option.Checkbox', () => {
   shouldSupportClassName(Select.Option.Checkbox, Select);
   shouldSupportRef(Select.Option.Checkbox, Select);
 
-  test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async ({
-    expect,
-  }) => {
+  test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async () => {
     const { getByTestId } = render(
       <Select>
         <Select.Trigger placeholder="I'll show u some options" data-testid='selectTrigger' />
@@ -287,7 +283,7 @@ describe('InputSearch', () => {
   shouldSupportClassName(InputSearch, Select);
   shouldSupportRef(InputSearch, Select);
 
-  test('Verify calls onChange ones per symbol', async ({ expect }) => {
+  test('Verify calls onChange ones per symbol', async () => {
     const spy = vi.fn();
     const { unmount } = render(
       <Select visible disablePortal>
