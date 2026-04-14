@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "정렬 가능"
+  "sortableColumn": "정렬 가능",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "세부 정보 표시",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "세부 정보 숨기기",
+  "DataTable.Header.selectAllCheckbox:aria-label": "모든 항목",
+  "DataTable.allItemsSelected:aria-live": "모든 항목이 선택됨",
+  "DataTable.allItemsDeselected:aria-live": "모든 항목이 선택 해제됨"
 }
