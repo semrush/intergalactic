@@ -107,7 +107,10 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
         disabled={disabled}
         loading={loading}
         color={color}
-      />
+      >
+        {renderAddon(showAddonLeft, addonLeftType)}
+        {renderAddon(showAddonRight, addonRightType)}
+      </Select>
 
       {/* Pattern 2: Select with Select.Trigger and LinkTrigger.Text with getTriggerProps */}
       <Select
