@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Sorterbar"
+  "sortableColumn": "Sorterbar",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Visa detaljer",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Dölj detaljer",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Alla objekt",
+  "DataTable.allItemsSelected:aria-live": "Alla objekt valda",
+  "DataTable.allItemsDeselected:aria-live": "Alla objekt avmarkerade"
 }
