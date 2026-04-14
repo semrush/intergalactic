@@ -171,17 +171,7 @@ class DataTableRoot<
       if (!this.withAnimation) {
         document.addEventListener('scroll', this.handleDocumentScroll, { passive: true });
       } else {
-        const scrollArea = this.scrollAreaRef.current;
-        const table = this.tableContainerRef.current;
-        if (scrollArea && table) {
-          const scrollTo = table.offsetHeight > innerHeight
-            ? table.offsetHeight
-            : table.offsetHeight + this.getHeaderHeight() + 14;
-
-          scrollArea.style.setProperty('--global-scroll-to', `${scrollTo}px`);
-          scrollArea.style.setProperty('--global-header-top', `${headerProps.top ?? 0}px`);
-          scrollArea.style.setProperty('--global-header-height', `${this.getHeaderHeight()}px`);
-        }
+        this.calculateStickyHeaderAnimation();
       }
     }
   }
@@ -231,6 +221,21 @@ class DataTableRoot<
     }
 
     this.state.expandedRows?.clear();
+  }
+
+  calculateStickyHeaderAnimation() {
+    const { headerProps } = this.asProps;
+    const scrollArea = this.scrollAreaRef.current;
+    const table = this.tableContainerRef.current;
+    if (scrollArea && table) {
+      const scrollTo = table.offsetHeight < innerHeight
+        ? table.offsetHeight
+        : table.offsetHeight - (headerProps?.top ?? 0);
+
+      scrollArea.style.setProperty('--global-scroll-to', `${scrollTo}px`);
+      scrollArea.style.setProperty('--global-header-top', `${headerProps?.top ?? 0}px`);
+      scrollArea.style.setProperty('--global-header-height', `${this.getHeaderHeight()}px`);
+    }
   }
 
   get withAnimation() {
@@ -904,7 +909,10 @@ class DataTableRoot<
       clearTimeout(this.containerResizeEndTimeoutId);
     }
 
-    this.containerResizeEndTimeoutId = setTimeout(this.calculateVerticalShadow, 0);
+    this.containerResizeEndTimeoutId = setTimeout(() => {
+      this.calculateVerticalShadow();
+      this.calculateStickyHeaderAnimation();
+    }, 0);
 
     this.asProps.onResize?.(entries, observer);
   };
