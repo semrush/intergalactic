@@ -59,7 +59,6 @@ export const checkStyles = async (
 ) => {
   const count = await elements.count().catch(() => 1);
 
-  // Если передан один элемент (не locator list)
   if (count === 1 && elements.evaluate) {
     for (const [property, value] of Object.entries(styles)) {
       await expect(elements).toHaveCSS(property, value);
@@ -67,7 +66,6 @@ export const checkStyles = async (
     return;
   }
 
-  // Если locator содержит несколько элементов
   await Promise.all(
     Array.from({ length: count }, async (_, i) => {
       const el = elements.nth(i);

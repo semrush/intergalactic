@@ -3,14 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
-import CheckBoxExample, { defaultProps as checkboxProps } from './examples/cells-tests/checkbox';
-import type { DemoProps as CheckboxProps } from './examples/cells-tests/checkbox';
+import CheckboxExample, { defaultProps as checkboxReactiveProps } from './examples/cells-tests/checkbox';
+import type { DemoProps as CheckboxReactiveProps } from './examples/cells-tests/checkbox';
 import CheckboxInTableWithNoDataExample, { defaultProps as checkboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
 import type { DemoProps as CheckboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
-import CheckboxReactiveExample, { defaultProps as checkboxReactiveProps } from './examples/cells-tests/checkbox-reactive';
-import type { DemoProps as CheckboxReactiveProps } from './examples/cells-tests/checkbox-reactive';
-import CheckboxReactiveWithPaginationExample, { defaultProps as checkboxReactivePaginationProps } from './examples/cells-tests/checkbox-reactive-with-pagination';
-import type { DemoProps as CheckboxReactivePaginationProps } from './examples/cells-tests/checkbox-reactive-with-pagination';
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
@@ -25,7 +21,7 @@ import MergedRowForMultiLevelHeaderExample, {
 import MiniChartsInlineEditInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
 import OneBigMergedRowAndScrollExample from './examples/cells-tests/one-big-merged-row-and-scroll';
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
-import SelectableWithMergedRowsExample, { selectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
+import SelectableWithMergedRowsColumnsExample, { selectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
 import type { SelectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
 
 const meta: Meta<typeof DataTable> = {
@@ -36,8 +32,8 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const SelectableWithMergedRows: StoryObj<SelectableWithMergedRowsProps> = {
-  render: SelectableWithMergedRowsExample,
+export const SelectableWithMergedRowsColumns: StoryObj<SelectableWithMergedRowsProps> = {
+  render: SelectableWithMergedRowsColumnsExample,
   argTypes: {
     headerLevels: {
       control: { type: 'radio' },
@@ -56,17 +52,6 @@ export const CardFlagInCell: Story = {
   render: CardFlagInCellExample,
 };
 
-export const CheckBox: StoryObj<CheckboxProps> = {
-  render: CheckBoxExample as any,
-  argTypes: {
-    fixedColumns: {
-      control: 'boolean',
-      description: 'Enable fixed left/right columns with horizontal scroll',
-    },
-  },
-  args: checkboxProps,
-};
-
 export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
   render: CheckboxInTableWithNoDataExample,
   argTypes: {
@@ -78,8 +63,8 @@ export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
   args: checkboxNoDataProps,
 };
 
-export const CheckboxReactive: StoryObj<CheckboxReactiveProps> = {
-  render: CheckboxReactiveExample as any,
+export const Checkbox: StoryObj<CheckboxReactiveProps> = {
+  render: CheckboxExample as any,
   argTypes: {
     fixedColumns: {
       control: 'boolean',
@@ -87,21 +72,6 @@ export const CheckboxReactive: StoryObj<CheckboxReactiveProps> = {
     },
   },
   args: checkboxReactiveProps,
-};
-
-export const CheckboxReactiveWithPagination: StoryObj<CheckboxReactivePaginationProps> = {
-  render: CheckboxReactiveWithPaginationExample,
-  argTypes: {
-    mergedRows: {
-      control: 'boolean',
-      description: 'Use merged rows (ROW_GROUP) data',
-    },
-    loading: {
-      control: 'boolean',
-      description: 'Show loading state',
-    },
-  },
-  args: checkboxReactivePaginationProps,
 };
 
 export const MergedRowForMultiLevelHeader: StoryObj<MergedRowForMultiLevelHeaderProps> = {

@@ -9,7 +9,6 @@ import AccordionWithPaginationExample, { tableInTableDefaultProps } from './exam
 import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
-import CheckboxInBigTableExample, { defaultProps as checkboxInBigTableDefaultProps } from './examples/checkbox_in_big_table';
 import CheckboxInBigTableReactiveExample, { defaultProps as checkboxInBigReactiveTableDefaultProps } from './examples/checkbox_in_big_table_reactive';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWidthWithShadowsExample from './examples/fixed_columns_width_with_shadows';
@@ -20,7 +19,8 @@ import OverlapCellsExample from './examples/overlap_cells';
 import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
-import SelectableWithMergedRowsExample from './examples/selectable_with_merged_rows';
+import SelectableWithMergedRowsExample, { defaultProps as selectableWithMergedRowsDefaultProps } from './examples/selectable_with_merged_rows';
+import type { DemoProps as SelectableWithMergedRowsProps } from './examples/selectable_with_merged_rows';
 import SideIndentsExample from './examples/side-indents';
 import type { AccordionInTableProps } from './examples/table_perf/table_perf';
 import TablePerfExample, { accordionInsideTableDefaultProps } from './examples/table_perf/table_perf';
@@ -31,7 +31,7 @@ const meta: Meta<typeof DataTable> = {
   component: DataTable,
 };
 
-const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigTableDefaultProps>> = {
+const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigReactiveTableDefaultProps>> = {
   loading: { control: 'boolean' },
   sideIndents: {
     control: 'select',
@@ -105,12 +105,6 @@ export const BigTableWithStickyHeader: Story = {
   render: BigTableWithStickyHeaderExample,
 };
 
-export const CheckboxInBigTable: StoryObj<typeof checkboxInBigTableDefaultProps> = {
-  render: CheckboxInBigTableExample,
-  argTypes: checkboxArgTypes,
-  args: checkboxInBigTableDefaultProps,
-};
-
 export const CheckboxInBigTableReactive: StoryObj<typeof checkboxInBigReactiveTableDefaultProps> = {
   render: CheckboxInBigTableReactiveExample,
   argTypes: checkboxArgTypes,
@@ -133,8 +127,21 @@ export const RowCellStates: Story = {
   render: RowCellStatesExample,
 };
 
-export const SelectableWithMergedRows: Story = {
+export const SelectableWithMergedRows: StoryObj<SelectableWithMergedRowsProps> = {
   render: SelectableWithMergedRowsExample,
+  argTypes: {
+    reactive: { control: 'boolean' },
+    loading: { control: 'boolean' },
+    sideIndents: {
+      control: 'select',
+      options: [undefined, 'wide'],
+    },
+    compact: {
+      control: 'radio',
+      options: [undefined, true, false],
+    },
+  },
+  args: selectableWithMergedRowsDefaultProps,
 };
 
 export const SideIndents: Story = {
