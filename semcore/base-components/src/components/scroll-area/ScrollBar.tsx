@@ -176,6 +176,10 @@ class ScrollBarRoot extends Component<ScrollBarProps, typeof ScrollBarRoot.enhan
 
     const visibleScroll = this.calculateVisibleScroll();
 
+    if (!visibleScroll && this.$slider) {
+      this.$slider.style.transform = 'none';
+    }
+
     this.setState({ visibleScroll }, () => {
       if (!this.$container || !this.$bar || !this.$slider) return;
       const orientation = this.getOrientation();
