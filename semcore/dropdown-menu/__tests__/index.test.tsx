@@ -52,7 +52,7 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test.sequential('Verify menu actions interactions', async ({ expect }) => {
+  test.sequential('Verify menu actions interactions', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -93,7 +93,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.sequential('Verify onVisibleChange event calls once', async ({ expect }) => {
+  test.sequential('Verify onVisibleChange event calls once', async () => {
     const spy = vi.fn();
     const Component = () => {
       return (
@@ -117,7 +117,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.sequential('Verify calls events on items in controlled component', async ({ expect }) => {
+  test.sequential('Verify calls events on items in controlled component', async () => {
     const spy = vi.fn();
     const Component = () => {
       const [visible, setVisible] = React.useState(false);
@@ -165,7 +165,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledTimes(3);
   });
 
-  test.sequential('Verify onClick event calls once', async ({ expect }) => {
+  test.sequential('Verify onClick event calls once', async () => {
     const spy = vi.fn();
     const Component = () => {
       return (
@@ -192,7 +192,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.concurrent('Verify interaction with disabled nested', async ({ expect }) => {
+  test.concurrent('Verify interaction with disabled nested', async () => {
     const { getByTestId } = render(
       <DropdownMenu placement='right'>
         <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>

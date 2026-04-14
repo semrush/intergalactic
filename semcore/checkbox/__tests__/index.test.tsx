@@ -24,7 +24,7 @@ describe('Checkbox', () => {
 
   test.concurrent(
     'Verify Control has aria-label, aria-labelledby, aria-describedby from root',
-    async ({ expect }) => {
+    async () => {
       const { getByTestId } = render(
         <Checkbox
           aria-label='test aria label'

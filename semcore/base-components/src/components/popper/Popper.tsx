@@ -12,7 +12,8 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import logger from '@semcore/core/lib/utils/logger';
 import pick from '@semcore/core/lib/utils/pick';
-import { setRef, forkRef } from '@semcore/core/lib/utils/ref';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import setRef from '@semcore/core/lib/utils/setRef';
 import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import {
