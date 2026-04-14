@@ -1,3 +1,298 @@
+## [v17.0.0] - 2026-04-14
+
+### @semcore/d3-chart
+
+- **Changed** Refined a11y module invocation logic
+- **BREAK** Removed 2px border-radius for Bars.
+
+### @semcore/illustration
+
+- **BREAK** New major version as a separate package with illustrations.
+
+### @semcore/core
+
+- **BREAK** New major version.
+- **BREAK** Removed `WithI18n`. Use `useI18n`.
+- **BREAK** Removed `WithCSS`. Use `useCss`.
+- **BREAK** Removed `WithAutoFocus` and `autoFocusEnhance`.
+- **BREAK** Removed `WithKeyboardFocus`. Just don't use.
+- **BREAK** Removed `WithRef`. Use `useForkRef`.
+
+### @semcore/icon
+
+- **BREAK** New major version as a separate package with icons.
+
+### @semcore/widget-empty
+
+- **BREAK** New major version.
+- **BREAK** Removed unnecessary `margin-bottom` for the widget container.
+
+### @semcore/tooltip
+
+- **BREAK** New major version. Deprecated `Tooltip.Hint`.
+
+### @semcore/textarea
+
+- **BREAK** New major version.
+
+### @semcore/tag
+
+- **BREAK** New major version.
+
+### @semcore/tab-panel
+
+- **BREAK** New major version.
+
+### @semcore/tab-line
+
+- **BREAK** New major version.
+
+### @semcore/switch
+
+- **BREAK** New major version.
+
+### @semcore/spin-container
+
+- **BREAK** New major version.
+
+### @semcore/spin
+
+- **BREAK** New major version.
+
+### @semcore/slider
+
+- **BREAK** New major version.
+
+### @semcore/skeleton
+
+- **BREAK** New major version.
+
+### @semcore/side-panel
+
+- **BREAK** New major version.
+
+### @semcore/select
+
+- **BREAK** New major version.
+- **Added** `Select.Option.Text` component. Use it if you have an options that should be ellipsized.
+
+### @semcore/product-head
+
+- **BREAK** New major version.
+
+### @semcore/pagination
+
+- **BREAK** New major version.
+
+### @semcore/notice-bubble
+
+- **BREAK** New major version.
+
+### @semcore/modal
+
+- **BREAK** New major version.
+
+### @semcore/link
+
+- **BREAK** New major version.
+
+### @semcore/input-tags
+
+- **BREAK** New major version.
+
+### @semcore/input-number
+
+- **BREAK** New major version.
+
+### @semcore/input-mask
+
+- **BREAK** New major version.
+
+### @semcore/inline-input
+
+- **BREAK** New major version.
+
+### @semcore/inline-edit
+
+- **BREAK** New major version.
+
+### @semcore/flags
+
+- **BREAK** New major version.
+
+### @semcore/feedback-form
+
+- **BREAK** New major version.
+
+### @semcore/feature-popover
+
+- **BREAK** New major version.
+
+### @semcore/ellipsis
+
+- **BREAK** Deprecated component. Use the new `ellipsis` prop that's built into various components.
+
+### @semcore/drag-and-drop
+
+- **BREAK** New major version.
+
+### @semcore/date-picker
+
+- **BREAK** New major version.
+
+### @semcore/data-table
+
+- **BREAK** New major version.
+
+### @semcore/color-picker
+
+- **BREAK** New major version.
+
+### @semcore/carousel
+
+- **BREAK** New major version.
+
+### @semcore/breadcrumbs
+
+- **BREAK** New major version.
+
+### @semcore/badge
+
+- **BREAK** New major version. Added property `type`. Deprecated `color` and `bg`.
+
+### @semcore/add-filter
+
+- **BREAK** New major version.
+
+### @semcore/wizard
+
+- **BREAK** New major version.
+- **Changed** WizardStep type to number only.
+
+### @semcore/typography
+
+- **BREAK** New major version.
+- **Added** `ellipsis` property to crop the text out of the box.
+- **Fixed** margins for native `p` and lists.
+
+### @semcore/time-picker
+
+- **BREAK** New major version.
+- **Changed** Rewrite component to TS
+- **Changed** `onChange` format to `HH:mm`
+
+### @semcore/input
+
+- **BREAK** New major version.
+- **Changed** Addon right padding for L size.
+
+### @semcore/fullscreen-modal
+
+- **BREAK** New major version.
+- **Changed** Header styles, for the correct text behaviour and design ofc ✨
+
+### @semcore/counter
+
+- **BREAK** New major version.
+- **Changed** value names for `size` property to match the whole size system in DS:
+'m', 'l', 'xl' -> 's', 'm', 'l'.
+
+### @semcore/button
+
+- **BREAK** New major version.
+- **Fixed** Adjusted `ButtonLink` baseline.
+
+### @semcore/base-trigger
+
+- **BREAK** New major version.
+- **Changed** `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Border-radius for shadow under sticky group.
+- **Fixed** Overscroll "bounce" effect for sticky groups.
+- **BREAK** New major version.
+
+### @semcore/mini-chart
+
+- **Fixed** TrendBar and TrendHistogram `displayName`
+- **BREAK** New major version.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Fixed types for `Bulktextarea.InputField`.
+- **BREAK** New major version.
+
+### @semcore/feature-highlight
+
+- **Fixed** Updated `NoticeFH` to be compatible with `NoticeSmart`.
+- **BREAK** New major version.
+
+### @semcore/notice
+
+- **Added** Added `text` prop to `NoticeSmart`.
+- **BREAK** New major version.
+
+### @semcore/dot
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/divider
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/card
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/errors
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/accordion
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/checkbox
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/pills
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/radio
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/progress-bar
+
+- **Fixed** Rewrite component to TS.
+- **BREAK** New major version.
+
+### @semcore/dropdown
+
+- **Fixed** Set default size for `Dropdown.Group`.
+- **BREAK** New major version.
+
+### @semcore/base-components
+
+- **BREAK** **grid**: New major version.
+- **BREAK** **flex-box**: New major version.
+- **BREAK** **neighbor-location**: New major version.
+- **BREAK** **popper**: New major version.
+- **BREAK** **portal**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **BREAK** **outside-click**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **BREAK** **scroll-area**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+
 ## [16.15.0] - 2026-04-01
 
 ### @semcore/feedback-form

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-14
+
+### BREAK
+
+- New major version. Deprecated `Tooltip.Hint`.
+
 ## [16.0.11] - 2025-10-30
 
 ### Fixed
