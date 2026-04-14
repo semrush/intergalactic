@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-14
+
+### BREAK
+
+- Deprecated component. Use the new `ellipsis` prop that's built into various components.
+
 ## [16.0.12] - 2025-11-14
 
 ### Changed

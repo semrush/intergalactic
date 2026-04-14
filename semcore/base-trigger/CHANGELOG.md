@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-14
+
+### BREAK
+
+- Removed old implementation for the `LinkTrigger`. This is a wrapper for the `ButtonLink` now.
+- New major version.
+
+### Changed
+
+- `Dot` component replaced by `Counter` for `FilterTrigger.Counter`.
+
 ## [16.4.5] - 2025-12-18
 
 ### Fixed

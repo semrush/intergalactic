@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-14
+
+### BREAK
+
+- Removed old implementation for the `ButtonLink`. This is a wrapper for the `Link` but in tag `button` now.
+- New major version.
+
+### Fixed
+
+- Adjusted `ButtonLink` baseline.
+
 ## [16.0.12] - 2025-11-03
 
 ### Added

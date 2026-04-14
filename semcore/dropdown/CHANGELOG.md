@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-14
+
+### BREAK
+
+- New major version.
+
+### Fixed
+
+- Set default size for `Dropdown.Group`.
+
 ## [16.1.4] - 2025-12-01
 
 ### Fixed

@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-14
+
+### BREAK
+
+- **breakpoints**: New major version.
+- **grid**: New major version.
+- **flex-box**: New major version.
+- **neighbor-location**: New major version.
+- **popper**: New major version.
+- **portal**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **outside-click**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+- **scroll-area**: Removed using `getNodeByRef`. Use `React.RefObject` instead.
+
 ## [16.5.0] - 2026-04-01
 
 ### Added
