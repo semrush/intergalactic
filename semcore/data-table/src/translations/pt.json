@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Classificável"
+  "sortableColumn": "Classificável",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Exibir detalhes",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Ocultar detalhes",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Todos os itens",
+  "DataTable.allItemsSelected:aria-live": "Todos os itens selecionados",
+  "DataTable.allItemsDeselected:aria-live": "Todos os itens desmarcados"
 }
