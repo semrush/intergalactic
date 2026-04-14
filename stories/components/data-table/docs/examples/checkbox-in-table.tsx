@@ -1,34 +1,23 @@
 import { Box, Flex, Collapse, ScreenReaderOnly } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { DataTable } from '@semcore/ui/data-table';
+import { DataTable, SelectableRows } from '@semcore/ui/data-table';
 import Pagination from '@semcore/ui/pagination';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type CheckboxExampleProps = { animationDuration: number; loading: boolean; sideIndents?: 'wide'; compact?: boolean };
 
+const selectedRows = new SelectableRows<string>();
+
 const Demo = (props: CheckboxExampleProps) => {
-  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
-  const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
-  const [ariaMessage, setAriaMessage] = React.useState('');
+  const { count } = useSelectedRowsCount(selectedRows);
   const [currentPage, setCurrentPage] = React.useState(0);
   const tableRef = React.useRef<HTMLDivElement>(null);
 
-  const handleChangeSelectedRows = (value: string[]) => {
-    setSelectedRows(value);
-    if (!selectedRows.length) setAriaMessage('Action bar appeared before the table');
-    if (value.length) setSelectedRowsDisplay(value.length);
-  };
-
   const handleDeselectAll = () => {
-    setSelectedRows([]);
+    selectedRows.clearAll();
     tableRef.current?.focus();
   };
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 300);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
 
   const limit = 5;
   const tableData = data.slice(currentPage * limit, currentPage * limit + limit);
@@ -40,13 +29,11 @@ const Demo = (props: CheckboxExampleProps) => {
         tabIndex={-1}
         wMax={800}
         h={250}
-        style={{ overflow: 'auto', scrollPaddingTop: selectedRows.length ? '44px' : undefined }}
+        style={{ overflow: 'auto', scrollPaddingTop: count > 0 ? '44px' : undefined }}
       >
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
+        <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} />
         <Collapse
-          visible={!!selectedRows.length}
+          visible={count > 0}
           duration={props.animationDuration}
           style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
@@ -64,7 +51,7 @@ const Demo = (props: CheckboxExampleProps) => {
             <Text size={200}>
               Selected rows:
               {' '}
-              <Text bold>{selectedRowsDisplay}</Text>
+              <Text bold>{count}</Text>
             </Text>
             <Button use='tertiary' onClick={handleDeselectAll}>
               Deselect all
@@ -76,14 +63,13 @@ const Demo = (props: CheckboxExampleProps) => {
           aria-label='Table example with selectable rows'
           defaultGridTemplateColumnWidth='auto'
           selectedRows={selectedRows}
-          onSelectedRowsChange={handleChangeSelectedRows}
           ref={tableRef}
           sideIndents={props.sideIndents}
           loading={props.loading}
           compact={props.compact}
           headerProps={{
             sticky: true,
-            top: selectedRows.length ? 44 : 0,
+            top: count > 0 ? 44 : 0,
             animationDuration: props.animationDuration,
           }}
           columns={[
@@ -142,3 +128,57 @@ export const defaultProps: CheckboxExampleProps = {
 Demo.defaultProps = defaultProps;
 
 export default Demo;
+
+export const useSelectedRowsCount = (selectedRows: SelectableRows<any>) => {
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    const unsubscribe = selectedRows.on(SelectableRows.TOGGLE_EVENT, () => {
+      const selectedRowsCount = selectedRows.get().length;
+
+      setCount(selectedRowsCount);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  React.useEffect(() => {
+    const unsubscribe = selectedRows.on(SelectableRows.SELECT_ALL_EVENT, () => {
+      const selectedRowsCount = selectedRows.get().length;
+
+      setCount(selectedRowsCount);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  return { count };
+};
+
+export const ScreenReaderSelectedAllAnnouncement = (props: { selectedRows: SelectableRows<any> }) => {
+  const [ariaMessage, setAriaMessage] = React.useState('');
+
+  const setAriaCallback = React.useCallback(() => {
+    const selectedRowsSize = props.selectedRows.get().length;
+
+    setAriaMessage(selectedRowsSize === 0 ? '' : 'Actions are available before the table');
+  }, [props.selectedRows]);
+
+  React.useEffect(() => {
+    const unsubscribe = props.selectedRows.on(SelectableRows.TOGGLE_EVENT, setAriaCallback);
+
+    return unsubscribe;
+  }, [props.selectedRows]);
+
+  React.useEffect(() => {
+    const unsubscribe = props.selectedRows.on(SelectableRows.SELECT_ALL_EVENT, setAriaCallback);
+
+    return unsubscribe;
+  }, [props.selectedRows]);
+
+  return (
+    <ScreenReaderOnly role='status' aria-live='polite'>
+      {ariaMessage}
+    </ScreenReaderOnly>
+  );
+};

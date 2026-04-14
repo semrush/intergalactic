@@ -51,7 +51,7 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
   componentDidMount(): void {
     const { row, selectedRows } = this.props;
     if (selectedRows && !Array.isArray(selectedRows)) {
-      this.unsubscribeToggle = selectedRows.subscribe(SelectableRows.TOGGLE_EVENT, (key: UniqKeyType) => {
+      this.unsubscribeToggle = selectedRows.on(SelectableRows.TOGGLE_EVENT, (key: UniqKeyType) => {
         if (row[UNIQ_ROW_KEY] === key) {
           this.setState({ checked: selectedRows.has(row[UNIQ_ROW_KEY]) });
         }
