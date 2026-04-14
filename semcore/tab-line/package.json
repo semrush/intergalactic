@@ -12,9 +12,9 @@
     "build": "pnpm semcore-builder --source=js && pnpm vite build"
   },
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "dependencies": {
     "@semcore/typography": "^16.3.2"

@@ -77,7 +77,7 @@ export class Changelog {
       }
 
       return collectedSet.has(element);
-    }).concat(...semcoreBaseComponents);
+    }).concat(...semcoreBaseComponents, 'icon', 'illustration');
     const allAllowedScopes = new Set(allowed);
 
     let traversingComponent: string | null = null;

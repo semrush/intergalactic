@@ -9,9 +9,9 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "scripts": {
     "build": "pnpm semcore-builder && pnpm vite build"
