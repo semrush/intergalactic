@@ -27,7 +27,7 @@ figma.connect(
 
 figma.connect(
   List,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11735-135520',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=57324-4583',
   {
     props: {
       children: figma.children('*'),

@@ -2,9 +2,13 @@ import figma from '@figma/code-connect';
 import Accordion from '@semcore/ui/accordion';
 import { Box } from '@semcore/ui/base-components';
 
+const AccordionItemToggle = Accordion.Item.Toggle;
+const AccordionItemCollapse = Accordion.Item.Collapse;
+const AccordionItem = Accordion.Item;
+
 figma.connect(
-  Accordion.Item.Toggle,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10085-55594&t=7CEXrbu9XEfMUFlr-11', {
+  AccordionItemToggle,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10085-55594', {
     props: {
       use: figma.enum('use', {
         primary: 'primary',
@@ -23,19 +27,21 @@ figma.connect(
   });
 
 figma.connect(
-  Accordion.Item.Collapse,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111795&t=7CEXrbu9XEfMUFlr-11', {
-
-    example: () => (
+  AccordionItemCollapse,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=13079-111795', {
+    props: {
+      content: figma.textContent('↳ text'),
+    },
+    example: ({ content }) => (
       <Accordion.Item.Collapse>
-        <Box p='/* Set paddings */'>{/* Add text */}</Box>
+        <Box p='/* Set paddings */'>{content}</Box>
       </Accordion.Item.Collapse>
     ),
   });
 
 figma.connect(
-  Accordion.Item,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111805&t=7CEXrbu9XEfMUFlr-11', {
+  AccordionItem,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=57405-3777', {
     props: {
       toggle: figma.children('Accordion.Item.Toggle'),
       collapse: figma.children('Accordion.Item.Collapse'),
@@ -50,18 +56,16 @@ figma.connect(
 
 figma.connect(
   Accordion,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=13079-111971&t=7CEXrbu9XEfMUFlr-11', {
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=13079-111971', {
     props: {
       children: figma.children('Accordion.Item'),
-      use: figma.nestedProps('Accordion.Item.Toggle', {
-        use: figma.enum('use', {
-          primary: 'primary',
-          secondary: 'secondary',
-        }),
+      use: figma.enum('use', {
+        primary: 'primary',
+        secondary: 'secondary',
       }),
     },
     example: ({ children, use }) => (
-      <Accordion use={use.use}>
+      <Accordion use={use}>
         {children}
       </Accordion>
     ),

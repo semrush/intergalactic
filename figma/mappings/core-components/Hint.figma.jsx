@@ -1,17 +1,12 @@
 import figma from '@figma/code-connect';
-import { Hint } from '@semcore/ui/tooltip';
+import Hint from '@semcore/ui/hint';
 
 figma.connect(
   Hint,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=45323-1421&t=0hjqYEp7RXqjnbR7-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=45323-1531',
   {
     props: {
       title: figma.textContent('↳ text'),
-      theme: figma.enum('theme', {
-        '⚪️ default': 'default',
-        '⚫️ invert': 'invert',
-        '🔴 warning': 'warning',
-      }),
       placement: figma.nestedProps('placement', {
         placement: figma.enum('placement', {
           'top-start': 'top-start',
@@ -29,10 +24,9 @@ figma.connect(
         }),
       }),
     },
-    example: ({ title, theme, placement }) => (
+    example: ({ title, placement }) => (
       <Hint
         title={title}
-        theme={theme}
         placement={placement.placement}
         tag={addonTag}
         {...addonProps}

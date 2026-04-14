@@ -10,7 +10,7 @@ import { Text } from '@semcore/ui/typography';
 
 figma.connect(
   Input.Value,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52263-2252&t=Q0bSsRErIQ7IEZAU-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=52263-2252',
   {
     props: {
       value: figma.textContent('↳ text'),
@@ -20,8 +20,90 @@ figma.connect(
 );
 
 figma.connect(
+  Flex,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=56781-2200',
+  {
+    variant: {
+      'label position': 'top',
+    },
+    props: {
+      label: figma.textContent('↳ label'),
+      addon: figma.children('*'),
+      optional: figma.boolean('optional', {
+        true: (
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        ),
+        false: undefined,
+      }),
+      counter: figma.boolean('counter', {
+        true: figma.children('Counter'),
+        false: undefined,
+      }),
+      infoIcon: figma.boolean('informer', {
+        true: figma.children('Info icon with tooltip (Informer)'),
+        false: undefined,
+      }),
+    },
+    example: ({ label, addon, optional, counter, infoIcon }) => (
+      <Flex direction='row' gap={1}>
+        <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+          {label}
+        </Text>
+        {optional}
+        {counter}
+        {infoIcon}
+        {addon}
+      </Flex>
+    ),
+  },
+);
+
+figma.connect(
+  Flex,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=56781-2200',
+  {
+    variant: {
+      'label position': 'left',
+    },
+    props: {
+      label: figma.textContent('↳ label'),
+      addon: figma.children('*'),
+      optional: figma.boolean('optional', {
+        true: (
+          <Text size='/* fontSize */' color='text-secondary'>
+            (optional)
+          </Text>
+        ),
+        false: undefined,
+      }),
+      counter: figma.boolean('counter', {
+        true: figma.children('Counter'),
+        false: undefined,
+      }),
+      infoIcon: figma.boolean('informer', {
+        true: figma.children('Info icon with tooltip (Informer)'),
+        false: undefined,
+      }),
+    },
+    example: ({ label, addon, optional, counter, infoIcon }) => (
+      <Flex direction='column' gap={1}>
+        <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
+          {label}
+        </Text>
+        {optional}
+        {counter}
+        {infoIcon}
+        {addon}
+      </Flex>
+    ),
+  },
+);
+
+figma.connect(
   Input,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=10043-48576&t=nJSzcLnvK6HvK1l7-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=10043-48576',
   {
     props: {
       size: figma.enum('size', {
@@ -42,7 +124,7 @@ figma.connect(
       addonRight: figma.boolean('addon →', {
         true: <Input.Addon>{/* addon */}</Input.Addon>,
       }),
-      textAddon: figma.boolean('↳ textAddon', {
+      textAddon: figma.boolean('textAddon ->', {
         true: <Input.Addon>{/* text addon */}</Input.Addon>,
       }),
       value: figma.children('Input.Value'),
@@ -75,40 +157,17 @@ figma.connect(
 // TODO: Move these complex examples to the separate file for mappings of all the inputs?
 
 figma.connect(
-  Input,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11613-139678&t=TXEgCxM6iJO0FYiJ-11',
+  Flex,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11613-139678',
   {
     variant: { 'label position': 'top' },
     props: {
-      label: figma.textContent('↳ label'),
+      label: figma.children('Input.Label'),
       input: figma.children('Input'),
-      optional: figma.boolean('optional', {
-        true: (
-          <Text size='/* fontSize */' color='text-secondary'>
-            (optional)
-          </Text>
-        ),
-        false: undefined,
-      }),
-      counter: figma.boolean('counter', {
-        true: figma.children('Counter'),
-        false: undefined,
-      }),
-      infoIcon: figma.boolean('informer', {
-        true: figma.children('Info icon with tooltip (Informer)'),
-        false: undefined,
-      }),
     },
-    example: ({ label, input, optional, counter, infoIcon }) => (
+    example: ({ label, input }) => (
       <Flex direction='column' gap={2}>
-        <Flex direction='row' justifyContent='space-between'>
-          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-            {label}
-          </Text>
-          {counter}
-          {infoIcon}
-          {optional}
-        </Flex>
+        {label}
         {input}
       </Flex>
     ),
@@ -117,39 +176,16 @@ figma.connect(
 
 figma.connect(
   Input,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11613-139678&t=TXEgCxM6iJO0FYiJ-11',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=11613-139678',
   {
     variant: { 'label position': 'left' },
     props: {
-      label: figma.textContent('↳ label'),
+      label: figma.children('Input.Label'),
       input: figma.children('Input'),
-      optional: figma.boolean('optional', {
-        true: (
-          <Text size='/* fontSize */' color='text-secondary'>
-            (optional)
-          </Text>
-        ),
-        false: undefined,
-      }),
-      counter: figma.boolean('counter', {
-        true: figma.children('Counter'),
-        false: undefined,
-      }),
-      infoIcon: figma.boolean('informer', {
-        true: figma.children('Info icon with tooltip (Informer)'),
-        false: undefined,
-      }),
     },
-    example: ({ label, input, optional, counter, infoIcon }) => (
+    example: ({ label, input }) => (
       <Flex direction='row' gap={6}>
-        <Flex direction='column' mt={/* value */}>
-          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-            {label}
-          </Text>
-          {counter}
-          {infoIcon}
-          {optional}
-        </Flex>
+        {label}
         {input}
       </Flex>
     ),

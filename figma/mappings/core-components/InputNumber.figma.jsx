@@ -37,7 +37,7 @@ figma.connect(
 
 figma.connect(
   Flex,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10162-90618&',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=10162-90618',
   {
     example: () => (
       <Flex>
@@ -113,39 +113,16 @@ figma.connect(
 
 figma.connect(
   InputNumber,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56367-564&',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56367-564',
   {
     variant: { 'label position': 'top' },
     props: {
-      label: figma.textContent('↳ label'),
+      label: figma.children('Input.Label'),
       input: figma.children('InputRange'),
-      optional: figma.boolean('optional', {
-        true: (
-          <Text size='/* fontSize */' color='text-secondary'>
-            (optional)
-          </Text>
-        ),
-        false: undefined,
-      }),
-      counter: figma.boolean('counter', {
-        true: figma.children('Counter'),
-        false: undefined,
-      }),
-      infoIcon: figma.boolean('informer', {
-        true: figma.children('Info icon with tooltip (Informer)'),
-        false: undefined,
-      }),
     },
-    example: ({ label, input, optional, counter, infoIcon }) => (
+    example: ({ label, input }) => (
       <Flex direction='column' gap={2}>
-        <Flex direction='row' justifyContent='space-between'>
-          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-            {label}
-          </Text>
-          {counter}
-          {infoIcon}
-          {optional}
-        </Flex>
+        {label}
         {input}
       </Flex>
     ),
@@ -154,39 +131,16 @@ figma.connect(
 
 figma.connect(
   InputNumber,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56367-564&',
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=56367-564',
   {
     variant: { 'label position': 'left' },
     props: {
-      label: figma.textContent('↳ label'),
+      label: figma.children('Input.Label'),
       input: figma.children('InputRange'),
-      optional: figma.boolean('optional', {
-        true: (
-          <Text size='/* fontSize */' color='text-secondary'>
-            (optional)
-          </Text>
-        ),
-        false: undefined,
-      }),
-      counter: figma.boolean('counter', {
-        true: figma.children('Counter'),
-        false: undefined,
-      }),
-      infoIcon: figma.boolean('informer', {
-        true: figma.children('Info icon with tooltip (Informer)'),
-        false: undefined,
-      }),
     },
-    example: ({ label, input, optional, counter, infoIcon }) => (
-      <Flex direction='row' gap={6}>
-        <Flex direction='column' mt={/* value */}>
-          <Text tag='label' htmlFor='/* input id */' size='/* fontSize */'>
-            {label}
-          </Text>
-          {counter}
-          {infoIcon}
-          {optional}
-        </Flex>
+    example: ({ label, input }) => (
+      <Flex direction='row' gap={2}>
+        {label}
         {input}
       </Flex>
     ),
