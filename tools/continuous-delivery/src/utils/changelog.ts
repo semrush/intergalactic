@@ -70,7 +70,7 @@ export class Changelog {
   public async collectFromHistory(): Promise<void> {
     const logs = await git.log({ from: this.tag });
     const { specialScopes, toolsComponents, semcoreBaseComponents, semcoreComponents } = await allowedScopes();
-    const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9))); // just name, without @semcore
+    const collectedSet = new Set(this.collectedPackages?.map((pack) => pack.name.slice(9)).concat('icon', 'illustration')); // just name, without @semcore
     const allowed = [...specialScopes, ...semcoreComponents, ...semcoreBaseComponents, ...toolsComponents].filter((element) => {
       if (!this.collectedPackages) {
         return true;
@@ -98,9 +98,13 @@ export class Changelog {
 
       body.forEach((token: Token) => {
         if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
+          traversingComponent = null;
+          traversingBaseComponent = null;
+          traversingType = null;
+
           traversingComponent = token.raw.toLowerCase();
 
-          if (semcoreBaseComponents.includes(traversingComponent.slice(9))) {
+          if (traversingComponent !== '@semcore/ellipsis' && semcoreBaseComponents.includes(traversingComponent.slice(9))) {
             traversingBaseComponent = traversingComponent;
             traversingComponent = '@semcore/base-components';
           }
