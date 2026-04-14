@@ -36,7 +36,7 @@ class RootLinkTrigger extends Component {
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
           {loading
-            ? <Spin size='xs' theme='currentColor' />
+            ? <Spin size={size >= 600 ? 's' : 'xs'} theme='currentColor' />
             : size >= 600 ? <ChevronDownL /> : <ChevronDownM />}
         </SLinkAddon>
       </SLinkTrigger>
