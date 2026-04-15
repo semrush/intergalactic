@@ -7,10 +7,40 @@ import { serializeClassDeclaration } from './classes';
 import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
 
+function buildNSRegistry(ns: ts.ModuleDeclaration, rootName?: string) {
+  const { name: { text: nsName }, body } = ns;
+
+  let registry: Record<string, ts.TypeAliasDeclaration> = {};
+
+  if (!body) return registry;
+
+  body.forEachChild((child) => {
+    if (ts.isTypeAliasDeclaration(child)) {
+      const { name: { text: childKey } } = child;
+
+      const key = rootName ? `${rootName}.${nsName}.${childKey}` : `${nsName}.${childKey}`;
+
+      registry[key] = child;
+    } else if (ts.isModuleDeclaration(child)) {
+      const key = rootName ? `${rootName}.${nsName}` : nsName;
+
+      registry = {
+        ...registry,
+        ...buildNSRegistry(child, key),
+      };
+    }
+  });
+
+  return registry;
+}
+
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
   const interfaceDec: ts.InterfaceDeclaration[] = [];
   const typesDec: ts.TypeAliasDeclaration[] = [];
   const classesDec: ts.ClassDeclaration[] = [];
+
+  let nsRegistry: Record<string, ts.TypeAliasDeclaration> = {};
+
   fileDeclaration.forEachChild((child) => {
     if (child.kind === ts.SyntaxKind.InterfaceDeclaration) {
       const isExported = child.modifiers?.some(
@@ -39,9 +69,16 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
         classesDec.push(child as ts.ClassDeclaration);
       }
     }
+
+    if (ts.isModuleDeclaration(child)) {
+      nsRegistry = {
+        ...nsRegistry,
+        ...buildNSRegistry(child),
+      };
+    }
   });
 
-  const types = typesDec.map((type) => serializeTypeDeclaration(type));
+  const types = typesDec.map((type) => serializeTypeDeclaration(type, nsRegistry));
   const interfaces = interfaceDec.map((int) => serializeInterfaceDeclaration(int));
   const classes = classesDec.map((cls) => serializeClassDeclaration(cls));
 

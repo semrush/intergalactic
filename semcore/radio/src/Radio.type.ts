@@ -9,19 +9,19 @@ declare namespace NSRadio {
 
   type Props = BoxProps & {
     /** Radio item value **/
-    value?: Value;
+    value?: NSRadio.Value;
     /** Radio item checked flag **/
     checked?: boolean;
     /**
    * The value displaying the state of the component
    * @default normal
    */
-    state?: State;
+    state?: NSRadio.State;
     /**
    * Radio button size
    * @default m
    **/
-    size?: Size;
+    size?: NSRadio.Size;
     /** The theme of the radio button that you can send your color to */
     theme?: string;
     /** Radio item text **/
@@ -70,7 +70,7 @@ declare namespace NSRadio {
   }
 
   namespace Group {
-    type Props<T extends Value = Value> = {
+    type Props<T extends NSRadio.Value = NSRadio.Value> = {
       /** Radio group name */
       name?: string;
       /** Active default value */
@@ -82,7 +82,7 @@ declare namespace NSRadio {
     | ((value: T, e?: React.SyntheticEvent<HTMLInputElement>) => void)
     | React.Dispatch<React.SetStateAction<T>>;
       /** Radio button size */
-      size?: Size;
+      size?: NSRadio.Size;
       /** The theme of the radio button that you can send your color to */
       theme?: string;
       /** Blocks access and changes to the form field */
