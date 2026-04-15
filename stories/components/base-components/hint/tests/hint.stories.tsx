@@ -37,6 +37,9 @@ export const Hint: StoryObj<typeof defaultProps> = {
     defaultVisible: {
       control: { type: 'boolean' },
     },
+    ignorePortalsStacking: {
+      control: { type: 'boolean' },
+    },
   },
   args: defaultProps,
 };

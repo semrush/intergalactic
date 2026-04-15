@@ -17,6 +17,7 @@ const Demo = (props: Partial<SimpleHintPopperProps>) => {
         timeout={props.timeout}
         visible={props.visible}
         defaultVisible={props.defaultVisible}
+        ignorePortalsStacking={props.ignorePortalsStacking}
         triggerRef={ref}
         onVisibleChange={(visible) => console.log('Hint visibility changed:', visible)}
       >
@@ -33,6 +34,7 @@ export const defaultProps: Partial<SimpleHintPopperProps> = {
   timeout: undefined,
   visible: undefined,
   defaultVisible: undefined,
+  ignorePortalsStacking: true,
 };
 
 Demo.defaultProps = defaultProps;
