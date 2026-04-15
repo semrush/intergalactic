@@ -33,8 +33,11 @@ const dataToLzCompressedJson = (data) => {
 };
 
 const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation, mockData: mockDataEncoded } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean, mockData: String })
+
+const decodeBase64 = (str: string) => new TextDecoder().decode(Uint8Array.from(atob(str), c => c.charCodeAt(0)));
+
 const htmlCode = computed(() => {
-  let code = atob(codeEncoded!);
+  let code = decodeBase64(codeEncoded!);
   return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code>');
 });
 
@@ -116,9 +119,9 @@ root.render(<App />);
   return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${codesandboxParameters}`;
 })
 
-let rawCode = atob(rawCodeEncoded!);
+let rawCode = decodeBase64(rawCodeEncoded!);
 const hideCode = hideCodeEncoded === 'true';
-const mockData = mockDataEncoded && atob(mockDataEncoded);
+const mockData = mockDataEncoded && decodeBase64(mockDataEncoded);
 
 let reactRoot;
 

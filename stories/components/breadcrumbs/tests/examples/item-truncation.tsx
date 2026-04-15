@@ -2,11 +2,19 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import type { BreadcrumbsItemProps } from '@semcore/ui/breadcrumbs';
 import React from 'react';
 
-const Demo = (props: BreadcrumbsItemProps) => (
+type BreadcrumbsExampleProps = {
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+} & BreadcrumbsItemProps;
+
+const Demo = (props: BreadcrumbsExampleProps) => (
   <>
     <Breadcrumbs w={600}>
-      <Breadcrumbs.Item>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur assumenda harum
+      <Breadcrumbs.Item
+        hint={props.hintProps}
+        hint:placement={props.hintPlacement}
+      >
+        With Hint Props Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur assumenda harum
         officia perspiciatis saepe sit? Aliquid consequatur culpa, eligendi harum ipsam molestias
         nulla odio quis recusandae sed, sequi ut!
       </Breadcrumbs.Item>
@@ -26,7 +34,7 @@ const Demo = (props: BreadcrumbsItemProps) => (
 
 );
 
-export const breadcrumbsExampleProps: BreadcrumbsItemProps = {
+export const breadcrumbsExampleProps: BreadcrumbsExampleProps = {
   active: true,
 };
 

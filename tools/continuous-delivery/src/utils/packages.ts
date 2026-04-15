@@ -30,8 +30,9 @@ const ignoreComponents = [
   '@semcore/email',
   '@semcore/utils',
   '@semcore/table',
-  '@semcore/icon', // separate to another pipeline
-  '@semcore/illustration', // separate to another pipeline
+  // '@semcore/icon', // separate to another pipeline
+  // '@semcore/illustration', // separate to another pipeline
+  '@semcore/theme', // separate to another pipeline
 ];
 
 export class Package {
@@ -83,6 +84,15 @@ export class Package {
 
     this.packagesMap.set(packageFile.name, {
       path: packagePath,
+      data: packageFile,
+    });
+  }
+
+  public async collectPackageBy(path: string) {
+    const packageFile: PackageJson = await fs.readJson(resolvePath(path, 'package.json'));
+
+    this.packagesMap.set(packageFile.name, {
+      path,
       data: packageFile,
     });
   }

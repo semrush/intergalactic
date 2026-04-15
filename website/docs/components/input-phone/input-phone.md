@@ -41,7 +41,7 @@ For actual examples of phone number inputs, refer to the [Example tab](/componen
 
 ## Text instructions
 
-It is recommended to provide visible text instructions for inputs with specific data formats.
+It's recommended to provide visible text instructions for inputs with specific data formats.
 
 Table: Sizes of InputPhone's hint text
 
@@ -58,11 +58,11 @@ Table: Sizes of InputPhone's hint text
 - If a number with a country code is inserted, and the code doesn't correspond to a specific country, the country changes to the one associated with the inserted code.
 - **The user should have the option to change the country and the corresponding code.** This is useful when entering a phone number while being in a different country, for example.
 - In the dropdown, each country name should be associated with the respective country code.
-- When the phone format is known, the input should have a mask specific to the country. If the format is unknown, it is recommended to remove the format mask altogether, as mentioned in [Baymard Research](https://baymard.com/blog/input-masking-form-field) (only leave the + country code at the beginning of the input).
+- When the phone format is known, the input should have a mask specific to the country. If the format is unknown, it's recommended to remove the format mask altogether, as mentioned in [Baymard Research](https://baymard.com/blog/input-masking-form-field) (only leave the + country code at the beginning of the input).
 - If the country code is known, it should be pre-filled in the input. The user can delete it if necessary.
 
 ::: tip
-According to [Baymard Research](https://baymard.com/blog/input-masking-form-field), if you are not certain about the correct regional formatting, or if the target audience is deemed to be too small, it is best to disable the input mask for all users in unverified or unsupported countries and use a traditional form field without any input restrictions.
+According to [Baymard Research](https://baymard.com/blog/input-masking-form-field), if you're not certain about the correct regional formatting, or if the target audience is deemed to be too small, it's best to disable the input mask for all users in unverified or unsupported countries and use a traditional form field without any input restrictions.
 :::
 
 ### Unknown country and/or phone number format
@@ -95,6 +95,6 @@ Table: States for the case when both country and phone number format are known
 
 ## Usage in UX/UI
 
-To ensure user clarity about how much information they need to enter, it is recommended to keep the width of the InputPhone as clear as possible. Typically, the width doesn't exceed 160px-250px for the input sizes.
+To ensure user clarity about how much information they need to enter, it's recommended to keep the width of the InputPhone as clear as possible. Typically, the width doesn't exceed 160px-250px for the input sizes.
 
 ![](static/size-yes-no.png)

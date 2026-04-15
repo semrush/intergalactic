@@ -3,5 +3,8 @@
     "strict": true
   },
   "extends": "../../tsconfig.json",
-  "include": ["src", "lib"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
+  "compilerOptions": {
+    "rootDir": "./src"
+  }
 }

@@ -1,4 +1,3 @@
-import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { DataTable, ACCORDION, type DataTableProps } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
@@ -56,16 +55,9 @@ const ChartExample = () => {
 
   const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
     return (props) => {
-      const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
-        return {
-          cropPosition: 'middle',
-          containerElement: containerElement ?? undefined,
-        } as const;
-      }, [containerElement]);
-
       if (props.columnName === 'vol' && containerElement) {
         return (
-          <Text ellipsis={ellipsisSettings}>
+          <Text ellipsis:cropPosition='middle' ellipsis:containerElement={containerElement}>
             {props.value}
           </Text>
         );

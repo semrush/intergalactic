@@ -280,10 +280,14 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/base-trigger-ellipsis.tsx', 'en');
 
-    await expect(page).toHaveScreenshot();
-
     await locators.button(page).nth(1).hover();
     await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
   });
 });

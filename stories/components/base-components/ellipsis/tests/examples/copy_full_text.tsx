@@ -44,7 +44,7 @@ const Demo = () => {
         <Text size={200} mb={1} mr={2} bold>
           Example 1: End crop
         </Text>
-        <Text w={300} ellipsis={{ cropPosition: 'end' }}>
+        <Text w={300} ellipsis:cropPosition='end'>
           {longText}
         </Text>
         <Text size={100} color='text-secondary' mt={1}>
@@ -57,7 +57,7 @@ const Demo = () => {
         <Text size={200} mb={1} mr={2} bold>
           Example 2: Middle crop
         </Text>
-        <Text w={300} ellipsis={{ cropPosition: 'middle' }}>
+        <Text w={300} ellipsis:cropPosition='middle'>
           {longText}
         </Text>
         <Text size={100} color='text-secondary' mt={1}>
@@ -65,17 +65,27 @@ const Demo = () => {
         </Text>
       </Flex>
 
-      {/* Example 3: Very long text */}
+      {/* Example 3: Very long text link trim=middle */}
       <Flex direction='row' gap={4} alignItems='center'>
         <Text size={200} mb={1} mr={2} bold>
           Example 3: Very long URL
         </Text>
-        <Link
+        <Link>
+          <Link.Text w={250} ellipsis:cropPosition='middle'>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
 
-          tag='code'
-          style={{ fontFamily: 'monospace' }}
-        >
-          <Link.Text w={250} ellipsis={{ cropPosition: 'middle' }}>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
+        </Link>
+        <Text size={100} color='text-secondary' mt={1}>
+          Perfect for copying long URLs or file paths
+        </Text>
+      </Flex>
+
+      {/* Example 4: Very long text link trim=end */}
+      <Flex direction='row' gap={4} alignItems='center'>
+        <Text size={200} mb={1} mr={2} bold>
+          Example 3: Very long URL
+        </Text>
+        <Link>
+          <Link.Text w={250} ellipsis:cropPosition='end'>https://example.com/very/long/path/to/resource/with/many/segments/file.pdf</Link.Text>
 
         </Link>
         <Text size={100} color='text-secondary' mt={1}>

@@ -58,6 +58,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await test.step('Verify format focused styles', async () => {
         await page.keyboard.press('Tab');
         await optionH.first().waitFor({ state: 'visible' });
+
         await expect(page).toHaveScreenshot();
       });
 
@@ -423,7 +424,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify Backspace clears hours', async () => {
       await page.keyboard.press('ArrowDown');
-      await page.getByRole('option', { name: '01' }).nth(0).waitFor({ state: 'visible' });
+      await page.getByRole('option', { name: '33' }).nth(0).waitFor({ state: 'visible' });
+      await expect.poll(async () => {
+        return page.getByRole('option', { name: '33' }).nth(0).getAttribute('class');
+      }, { timeout: 2000 }).toMatch(/highlighted/);
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       await expect(locators.timeBoxes(page).nth(3)).toHaveValue('34');

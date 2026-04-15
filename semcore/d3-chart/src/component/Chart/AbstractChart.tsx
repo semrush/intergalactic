@@ -19,7 +19,7 @@ import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type'
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
 
-type ChartState = {
+export type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
   highlightedLine: number;
   withTrend: boolean;
@@ -28,10 +28,12 @@ type ChartState = {
 export const NOT_A_VALUE = 'n/a';
 
 export abstract class AbstractChart<
-  D extends ListData | ObjectData,
-  T extends BaseChartProps<D>,
-  E extends readonly ((...args: any[]) => any)[] = [],
-> extends Component<T, E, Readonly<{}>, {}, ChartState> {
+  Data extends ListData | ObjectData,
+  Props extends BaseChartProps<Data>,
+  Enhancers extends readonly ((...args: any[]) => any)[] = [],
+  DefaultProps = {},
+  State extends ChartState = ChartState,
+> extends Component<Props, Enhancers, Readonly<{}>, DefaultProps, State> {
   public static style = style;
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
@@ -47,13 +49,7 @@ export abstract class AbstractChart<
 
   protected dataHints = makeDataHintsContainer();
 
-  public state: ChartState = {
-    dataDefinitions: this.getDefaultDataDefinitions(),
-    highlightedLine: -1,
-    withTrend: false,
-  };
-
-  constructor(props: T) {
+  constructor(props: Props) {
     super(props);
 
     this.setHighlightedLine = this.setHighlightedLine.bind(this);
@@ -63,9 +59,15 @@ export abstract class AbstractChart<
     this.resolveColor = this.resolveColor.bind(this);
     this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
     this.handleWithTrendChange = this.handleWithTrendChange.bind(this);
+
+    this.state = {
+      dataDefinitions: this.getDefaultDataDefinitions(),
+      highlightedLine: -1,
+      withTrend: false,
+    } as State;
   }
 
-  public componentDidUpdate(prevProps: T) {
+  public componentDidUpdate(prevProps: Props) {
     if (prevProps.data !== this.props.data || prevProps.legendProps !== this.props.legendProps) {
       this.setState({ dataDefinitions: this.getDefaultDataDefinitions() });
     }
@@ -282,24 +284,6 @@ export abstract class AbstractChart<
     }
 
     return total;
-  }
-
-  protected percentValue(data: ObjectData, key: string): string {
-    const total = this.totalValue(data);
-
-    const value = data[key];
-
-    if (typeof value === 'number' && total !== 0) {
-      const percent = Math.round((100 * value) / total);
-
-      return `${percent}%`;
-    }
-
-    if (value === null) {
-      return `0%`;
-    }
-
-    return NOT_A_VALUE;
   }
 
   protected getValueScale(values: number[]): number {

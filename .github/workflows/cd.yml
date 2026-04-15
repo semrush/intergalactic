@@ -17,12 +17,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -95,12 +95,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -140,12 +140,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -211,6 +211,7 @@ jobs:
         with:
           reporter: github-pr-review
           separator: ","
+          vale_flags: "--minAlertLevel=warning"
           files: ${{ needs.get-changed-files.outputs.changed_files }}
   unit-tests:
     runs-on: ubuntu-latest
@@ -222,12 +223,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -281,12 +282,12 @@ jobs:
 #      - name: Install Node.js
 #        uses: actions/setup-node@v4.0.1
 #        with:
-#          node-version: 22
+#          node-version: 24
 #      - uses: pnpm/action-setup@v4.0.0
 #        name: Install pnpm
 #        id: pnpm-install
 #        with:
-#          version: 10.11.1
+#          version: 10.32.1
 #          run_install: false
 #      - name: Get pnpm store directory
 #        id: pnpm-cache
@@ -359,7 +360,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -434,7 +435,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -502,7 +503,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -564,12 +565,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache

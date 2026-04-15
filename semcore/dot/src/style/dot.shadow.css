@@ -13,14 +13,6 @@ SDot {
   isolation: isolate;
 }
 
-SDot[size='xl'] {
-  height: 16px;
-  min-width: 16px;
-  /* disable-tokens-validator */
-  padding: 3px 4px;
-  border-radius: var(--intergalactic-counter-rounded, 12px);
-}
-
 SDot[size='l'] {
   height: 12px;
   min-width: 12px;
@@ -51,4 +43,30 @@ SA11yAlert {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+SDot[hasChildren] {
+  height: 16px;
+  min-width: 16px;
+  /* disable-tokens-validator */
+  padding: 3px 4px;
+  border-radius: var(--intergalactic-counter-rounded, 12px);
+}
+
+@keyframes enter {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes exit {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
 }

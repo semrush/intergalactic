@@ -10,7 +10,7 @@ By default, links are displayed as `inline` element and don’t need some extra 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/link/docs/examples/link_inside_the_content.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_in_content.tsx';
 </script>
 
 :::
@@ -57,9 +57,7 @@ If you need to display disabled link as a `Button` you should remove `href` prop
 
 ## Link with ellipsis
 
-<!-- There's a zero width space between curly braces in the text below because otherwise vitepress crashes -->
-
-If you need to crop a link that has an addon, refer to the root component with `hintProps={​{triggerRef: linkRef}​}` to make sure that the hint appears by hovering the entire link, including the addon. Learn more about ellipsis in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
+Link can be cropped with ellipsis by setting the width and using the `ellipsis` property in `Link.Text`. Hint with the full text will appear automatically on hover on the link, including addons. Learn more about ellipsis in [Utils/Ellipsis](../../utils/ellipsis/ellipsis-code).
 
 ::: sandbox
 
@@ -71,7 +69,7 @@ If you need to crop a link that has an addon, refer to the root component with `
 
 ## Link without visible text
 
-If a link has no visible text, it's important to add a [hint](../../utils/hint/hint-code) with a label of the link function for accessibility purposes. Adding a hint will automatically provide an `aria-label` for the link.
+If a link has no visible text, it's important to add a [hint](../../utils/hint/hint-code) explaining where the link leads to. This can be done using either `title` or `aria-label`. Both will enable a visible hint on hover and an `aria-label` for assistive technology.
 
 ::: sandbox
 

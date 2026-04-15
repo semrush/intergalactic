@@ -82,7 +82,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       }
     });
 
-    test(`Verify Button Trigger for Select size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
+    test(`Verify Filter Trigger for Select size=${item.size} disabled=${item.disabled}  active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@filter-trigger',
@@ -90,12 +90,15 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/filter-trigger/select.tsx', 'en', item);
 
-      const buttons = await locators.trigger(page).all();
+      const buttons = await locators.trigger(page);
       if (!item.disabled) {
         await test.step('Normal/Active styles', async () => {
-          for (const button of buttons) {
-            await checkBorderColor(page, button, 'rgb(0, 109, 202)');
-            await expect(button).toHaveAttribute('tabindex', '0');
+          if (!item.active) {
+            await checkBorderColor(page, buttons.nth(0), 'rgb(196, 199, 207)');
+          }
+
+          if (item.active) {
+            await checkBorderColor(page, buttons.nth(0), 'rgb(0, 109, 202)');
           }
 
           await page.keyboard.press('Tab');
@@ -105,9 +108,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       if (item.disabled) {
         await test.step('Disabled state', async () => {
-          for (const button of buttons) {
-            await expect(button).toHaveAttribute('tabindex', '0');
-          }
+          await expect(buttons.nth(0)).toHaveAttribute('tabindex', '0');
           await expect(page).toHaveScreenshot(`select-size:${item.size}-disabled:${item.disabled}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
       }
@@ -121,11 +122,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@ellipsis'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/advanced/examples/filter-trigger-ellipsis.tsx', 'en');
-
-    await expect(page).toHaveScreenshot();
+    await page.waitForTimeout(200);
 
     await locators.trigger(page).nth(1).hover();
     await page.locator(`[data-ui-name="Hint"]`).waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
   });
 
@@ -160,12 +166,19 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('Clear').waitFor({ state: 'visible' });
+    await locators.hint(page).waitFor({ state: 'visible' });
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      },
+    );
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('Clear tooltip').waitFor({ state: 'visible' });
+    await expect(locators.hint(page)).toHaveCount(1);
+    await expect(locators.hint(page)).toHaveText('Clear text');
   });
 });
 

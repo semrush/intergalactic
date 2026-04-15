@@ -4,9 +4,9 @@ import type React from 'react';
 import type { BaseChartProps } from './AbstractChart.type';
 import type { interpolateValue } from '../../utils';
 
-type DataKey = string;
+export type CigaretteChartDataKey = string;
 
-export type CigaretteChartData = Record<DataKey, number | typeof interpolateValue>;
+export type CigaretteChartData = Record<CigaretteChartDataKey, number | typeof interpolateValue>;
 
 export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<CigaretteChartData>,
@@ -18,12 +18,16 @@ export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   tooltipViewType?: 'all' | 'single';
   /** Show percent value in tooltip */
   showPercentValueInTooltip?: boolean;
+  /** Custom percent formatter. */
+  percentFormatter?: (value: number) => number;
   /** Header content for the chart */
   header?: React.ReactNode;
   /** Animation duration in milliseconds */
   duration?: number;
   /** Click handler that receives the data key and event */
-  onClick?: (key: DataKey, event: React.SyntheticEvent) => void;
+  onClick?: (key: CigaretteChartDataKey, event: React.SyntheticEvent) => void;
+  /** Minimal bar width in pixels. Default is `2`. */
+  minimalBarWidth?: number;
 };
 
 export type CigaretteChartType = Intergalactic.Component<'div', CigaretteChartProps>;

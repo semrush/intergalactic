@@ -21,12 +21,12 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Pick distinctly different colors for clarity.
 - Ensure the chart is large enough to easily read the data.
 
-::: tip
-**Bar vs. Histogram Chart**
+### Bar chart vs. Histogram
 
-- Bar charts categorize data qualitatively, showing how different categories compare.
-- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
-:::
+- [Histogram](../histogram-chart/histogram-chart) shows quantitative data distribution. Each bar represents a range of numerical values, such as age. The bar length shows how many values fall into that range.
+- Bar chart displays qualitative data distribution, with bars representing nominal categories, such as countries. Unlike histograms, bar charts have visual gaps between bars to emphasize the discrete character of the categories.
+
+![](static/histogram-vs-bar-chart.png)
 
 ## Appearance
 

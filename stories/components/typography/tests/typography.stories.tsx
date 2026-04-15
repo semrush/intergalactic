@@ -106,7 +106,9 @@ export const ListExampleAxe: Story = {
 export const FormattedNestedListMargins: StoryObj<typeof FormattedNestedListMarginsProps> = {
   render: FormattedNestedListMarginsExample,
   argTypes: {
-    ...getCommonArgTypes(),
+    formatTags: {
+      control: { type: 'boolean' },
+    },
   },
   args: FormattedNestedListMarginsProps,
 };

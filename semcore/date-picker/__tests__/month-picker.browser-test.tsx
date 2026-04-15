@@ -105,7 +105,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
       await test.step('Verify style of month cell', async () => {
-        await checkStyle(locators.cells(page, 2), {
+        const nonSelectedCell = page.locator('[data-ui-name="CalendarMonths.Unit"]:not([class*="Selected"])').first();
+        await checkStyle(nonSelectedCell, {
           color: 'rgb(25, 27, 35)',
           backgroundColor: 'rgb(255, 255, 255)',
           margin: '4px 0px 0px',

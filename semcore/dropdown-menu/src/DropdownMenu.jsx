@@ -112,7 +112,9 @@ class DropdownMenuRoot extends AbstractDropdown {
 
   afterOpenPopper() {
     const { selected, options } = this.menuElements;
+    const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
 
+    if (isFocusAlreadyInPopper) return;
     if (selected && options && !this.menuRef.current?.dataset.isVirtual) return;
 
     super.afterOpenPopper();
@@ -327,13 +329,14 @@ class DropdownMenuRoot extends AbstractDropdown {
 function List({ styles, Children }) {
   const SDropdownMenuList = Root;
   const SBar = ScrollAreaComponent.Bar;
+  const SScrollContainer = ScrollAreaComponent.Container;
 
   return sstyled(styles)(
     <ListBoxContextProvider>
       <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
-        <ScrollAreaComponent.Container tabIndex={undefined}>
+        <SScrollContainer tabIndex={undefined}>
           <Children />
-        </ScrollAreaComponent.Container>
+        </SScrollContainer>
         <SBar orientation='horizontal' />
         <SBar orientation='vertical' />
       </SDropdownMenuList>
@@ -521,20 +524,17 @@ function ItemContent({ styles }) {
   );
 }
 
-function ItemContentText({ styles, ellipsis = false, hintProps = {} }) {
+function ItemContentText({ styles, ellipsis = false }) {
   const SItemContentText = Root;
   const menuItemCtxValue = React.useContext(menuItemContext);
-
-  if (menuItemCtxValue.ref) {
-    hintProps.triggerRef = menuItemCtxValue.ref;
-  }
 
   return sstyled(styles)(
     <>
       <SItemContentText
         render={Text}
         ellipsis={ellipsis}
-        hintProps={hintProps}
+        hint:triggerRef={menuItemCtxValue.ref}
+        hint:placement='right'
       />
     </>,
   );

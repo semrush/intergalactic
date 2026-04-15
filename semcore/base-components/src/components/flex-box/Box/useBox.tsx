@@ -147,6 +147,8 @@ export type BoxProps = IStyledProps & {
   textAlign?: Property.TextAlign;
   /** Box content */
   children?: React.ReactNode;
+  /** Hover cursor */
+  hoverCursor?: Property.Cursor;
 };
 
 /** @deprecated */
@@ -251,6 +253,7 @@ export default function useBox<T extends BoxProps>(
     right,
     inset,
     zIndex,
+    hoverCursor,
     ...other
   } = props as any;
 
@@ -290,6 +293,14 @@ export default function useBox<T extends BoxProps>(
   ]);
 
   const styles = sstyled(style);
+  const { className: rootClassName, style: rootStyle } = styles.cn('SBox', {
+    SBoxSizing: boxSizing,
+    SBoxInline: inline,
+    SBoxInnerOutline: innerOutline,
+    inAfterOutline: inAfterOutline === true ? 'true' : 'false',
+    invertOutline,
+    hoverCursor,
+  });
 
   if (Tag === React.Fragment) return [React.Fragment, { children: props.children }];
 
@@ -299,16 +310,10 @@ export default function useBox<T extends BoxProps>(
       ref,
       'className':
         cn(
-          styles.cn('SBox', {
-            SBoxSizing: boxSizing,
-            SBoxInline: inline,
-            SBoxInnerOutline: innerOutline,
-            inAfterOutline: inAfterOutline === true ? 'true' : 'false',
-            invertOutline,
-          }).className,
+          rootClassName,
           className,
         ) || undefined,
-      'style': Object.assign({}, styleProp, css, indentStyles),
+      'style': Object.assign({}, rootStyle, styleProp, css, indentStyles),
       'data-ui-name': 'Box',
       ...propsForElement(other, Tag),
     },

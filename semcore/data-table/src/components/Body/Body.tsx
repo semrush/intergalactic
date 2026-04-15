@@ -6,15 +6,16 @@ import Spin from '@semcore/spin';
 import * as React from 'react';
 
 import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Body.types';
-import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
+import { MergedColumnsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import { Row } from './Row';
-import type { DataTableRowProps, DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import { RowGroup } from './RowGroup';
 import style from './style.shadow.css';
 import {
   GRID_ROW_INDEX,
   IS_EMPTY_DATA_ROW,
-  ROW_INDEX, SELECT_ALL,
+  ROW_INDEX,
   UNIQ_ROW_KEY,
 } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
@@ -68,6 +69,15 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
   calculateAriaRowIndex = () => {
     requestAnimationFrame(() => {
+      const collapsedElements = this.bodyRef.current?.querySelectorAll('[role=row][data-ui-name="Collapse"]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
+
+      collapsedElements?.forEach((collapsedElement) => {
+        const parent = collapsedElement.parentElement;
+        if (parent?.getAttribute('role') === 'rowgroup') {
+          parent?.appendChild(collapsedElement);
+        }
+      });
+
       const visibleRows = this.bodyRef.current?.querySelectorAll('[role=row]:not([aria-hidden=true]):not(:scope [data-ui-name="DataTable"] [role=row]:not([aria-hidden=true]))');
 
       visibleRows?.forEach((row, index) => {
@@ -83,7 +93,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   };
 
   handleRef = (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => {
-    if (!this.rowsHeightMap.has(index) && node) {
+    if (node) {
       this.rowsHeightMap.set(index, [0, 0, node]);
       this.setRowHeight(index, row);
     }
@@ -139,11 +149,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
     const calculatedRowProps = rowProps?.(row, index) ?? {};
-
-    const rowUniqKey = row[UNIQ_ROW_KEY];
-    if (selectedRows?.includes(rowUniqKey)) {
-      calculatedRowProps.theme = 'info';
-    }
 
     return {
       ...calculatedRowProps,
@@ -217,7 +222,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
   render() {
     const SBody = Root;
-    const SRowGroup = Box;
     const SSpinContainer = Box;
     const {
       styles,
@@ -249,7 +253,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       const prevPrepared = scrollDirection === 'up' ? rowsBuffer : 4;
       const nextPrepared = scrollDirection === 'up' ? 4 : rowsBuffer;
 
-      if (typeof virtualScroll === 'boolean' || 'aproxRowsOnPage' in virtualScroll) {
+      if (typeof virtualScroll === 'boolean' || !('rowHeight' in virtualScroll)) {
         const aproxRowsOnPage =
           typeof virtualScroll !== 'boolean'
             ? virtualScroll.aproxRowsOnPage ?? APROX_ROWS_ON_PAGE
@@ -331,6 +335,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     this.startIndex = startIndex === -1 ? 0 : startIndex;
     const rowMarginTop = this.rowsHeightMap.get(this.startIndex - 1)?.[1];
+    const needMarginTop = typeof virtualScroll === 'boolean' || (virtualScroll && !('rowHeight' in virtualScroll));
 
     let emptyRow: DTRow<string> | null = null;
 
@@ -354,50 +359,22 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
         {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
-        {typeof virtualScroll === 'boolean' && rowMarginTop && <Box h={rowMarginTop} />}
+        {needMarginTop && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
             const groupUniqKey = row[0][UNIQ_ROW_KEY];
 
-            let isFirstCellAreMergedRows = false;
-            const theme: 'info' | undefined = undefined;
-
-            if (selectedRows) {
-              const nextColumnName = columns[1].name;
-              const firstCell = row[0][nextColumnName];
-
-              if (firstCell instanceof MergedRowsCell) {
-                row[0][SELECT_ALL.toString()] = new MergedRowsCell('', firstCell.rowsCount);
-
-                isFirstCellAreMergedRows = true;
-              }
-            }
-
-            return sstyled(styles)(
-              <SRowGroup
-                role='rowgroup'
+            return (
+              <RowGroup
                 key={`gg_${groupUniqKey}`}
-                ref={this.handleRef(this.startIndex + index, row[0])}
-              >
-                {row.map((item, i) => {
-                  const rowProps: DataTableRowProps<any, any> = {
-                    row: item,
-                    mergedRow: i > 0 ? true : false,
-                    componentRef: this.handleComponentRef(item),
-                  };
-
-                  if ((isFirstCellAreMergedRows && selectedRows?.includes(groupUniqKey))) {
-                    rowProps.theme = 'info';
-                  }
-
-                  return (
-                    <Body.Row
-                      key={item[UNIQ_ROW_KEY]?.toString() ?? `gg_${groupUniqKey}_row_${i}`}
-                      {...rowProps}
-                    />
-                  );
-                })}
-              </SRowGroup>,
+                rows={row}
+                selectedRows={selectedRows}
+                columns={columns}
+                startIndex={this.startIndex}
+                rowIndex={index}
+                handleRef={this.handleRef}
+                handleComponentRef={this.handleComponentRef}
+              />
             );
           }
 

@@ -9,11 +9,6 @@ SLink {
   background: none;
   transition: color 0.15s ease-in-out;
 
-  &:active,
-  &:hover {
-    text-decoration: none;
-  }
-
   &::-moz-focus-inner {
     border: none;
     padding: 0;
@@ -25,7 +20,7 @@ SLink {
     color: var(--intergalactic-text-link-hover-active, #044792);
 
     & SText {
-      border-color: currentColor;
+      text-decoration-color: currentColor;
     }
   }
 
@@ -57,10 +52,10 @@ SInner {
 }
 
 SAddon {
-  align-items: baseline;
-  vertical-align: -2px;
   pointer-events: none;
-  align-self: center;
+  vertical-align: middle;
+  display: inline-flex;
+  margin-top: -2.5px;
 }
 
 SLink SAddon {
@@ -74,13 +69,13 @@ SLink SAddon {
 }
 
 SText {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: transparent;
-  transition: border-bottom-color 0.15s ease-in-out;
-}
-SText[ellipsis] {
-  vertical-align: middle;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-decoration-color: transparent;
+  text-underline-offset: 17%;
+
+  transition: text-decoration-color 0.15s ease-in-out;
 }
 
 SLink[text-color] {

@@ -1,6 +1,7 @@
-import type { EllipsisSettings, SimpleHintPopperProps, BoxProps } from '@semcore/base-components';
+import type { BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { IconProps } from '@semcore/icon';
+import type { TextProps } from '@semcore/typography';
 import type React from 'react';
 
 export type TagSize = 'xl' | 'l' | 'm';
@@ -53,14 +54,7 @@ export type TagContext = TagProps & {
 
 export type TagAddonProps = BoxProps & {};
 
-export type TagTextProps = BoxProps & {
-  /**
-   * Ellipsis settings
-   * @default true
-   */
-  ellipsis?: boolean | EllipsisSettings;
-  hintProps?: SimpleHintPopperProps | false;
-};
+export type TagTextProps = TextProps;
 
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
   Text: Intergalactic.Component<'div', TagTextProps>;

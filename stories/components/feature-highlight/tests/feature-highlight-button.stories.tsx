@@ -29,6 +29,32 @@ export const ButtonProps: StoryObj<typeof defaultProps> = {
     disabled: { control: 'boolean' },
     loading: { control: 'boolean' },
     active: { control: 'boolean' },
+    w: {
+      control: { type: 'number' },
+    },
+    ellipsis: {
+      control: 'select',
+      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
+      mapping: {
+        'false': { ellipsis: false },
+        'true': { ellipsis: true },
+        'cropPosition:middle': { 'ellipsis:cropPosition': 'middle' },
+        'cropPosition:end': { 'ellipsis:cropPosition': 'end' },
+        'cropPosition:middle lastRequiredSymbols:3': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 3 },
+        'cropPosition:middle lastRequiredSymbols:0': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 0 },
+      },
+    }, hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
   },
   args: defaultProps,
 };

@@ -112,7 +112,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.handleKeyDown = this.handleKeyDown.bind(this);
 
     this.state = {
-      innerVisible: props.visible ?? null,
+      innerVisible: null,
       calculatedPlacement: props.placement,
     };
   }
@@ -124,9 +124,10 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 
   componentDidMount() {
-    const trigger = this.asProps.triggerRef.current;
+    const { triggerRef, children } = this.asProps;
+    const trigger = triggerRef.current;
 
-    if (trigger) {
+    if (trigger && children) {
       this.subscribe(trigger);
     }
   }
@@ -175,7 +176,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     this.hideHint();
   }
 
-  private showHint(node: HTMLElement, mouseEvent?: MouseEvent): void {
+  private showHint(node: Element, mouseEvent?: MouseEvent): void {
     const { placement, timeout } = this.asProps;
 
     const showTimeout = Array.isArray(timeout) ? timeout[0] : timeout;
@@ -211,7 +212,6 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
               left: `${x}px`,
               top: `${y}px`,
             });
-            popperElement.style.visibility = 'visible';
 
             this.setState({ innerVisible: true, calculatedPlacement: placement });
           });
@@ -229,44 +229,53 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
       clearTimeout(this.showTimer);
     }
 
-    this.setState({ innerVisible: false });
+    if (this.state.innerVisible) {
+      this.setState({ innerVisible: false });
 
-    this.hideTimer = window.setTimeout(() => {
-      this.hintRef.current?.style.setProperty('visibility', 'hidden');
-      this.handlers.visible(false);
-      this.setState({ innerVisible: null });
-    }, hideTimeout);
+      this.hideTimer = window.setTimeout(() => {
+        this.handlers.visible(false);
+        this.setState({ innerVisible: null });
+      }, hideTimeout);
+    }
   }
 
   private handleFocus(e: FocusEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target && lastInteraction.isKeyboard()) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e) && lastInteraction.isKeyboard()) {
       this.showHint(e.target);
     }
   }
 
   private handleBlur(e: FocusEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e)) {
       this.hideHint();
     }
   }
 
   private handleKeyDown(e: KeyboardEvent): void {
-    if (e.key === 'Escape' && e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target && this.state.innerVisible) {
+    if (e.key === 'Escape' && this.isCompatibleElement(e.target) && this.sameAsTrigger(e) && this.state.innerVisible) {
       e.stopPropagation();
       this.hideHint();
     }
   }
 
   private handleMouseEnter(e: MouseEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e)) {
       this.showHint(e.target, e);
     }
   }
 
   private handleMouseLeave(e: MouseEvent): void {
-    if (e.target instanceof HTMLElement && this.asProps.triggerRef.current === e.target) {
+    if (this.isCompatibleElement(e.target) && this.sameAsTrigger(e)) {
       this.hideHint();
     }
+  }
+
+  private isCompatibleElement(target: unknown): target is HTMLElement | SVGElement {
+    return target instanceof HTMLElement || target instanceof SVGElement;
+  }
+
+  private sameAsTrigger(e: MouseEvent | KeyboardEvent | FocusEvent): boolean {
+    return this.asProps.triggerRef.current === e.target;
   }
 
   private keyframesKey(placement?: Placement) {
@@ -319,7 +328,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
       this.setTriggerAriaLabel();
     }
 
-    if (!visible) {
+    if (!visible && innerVisible === null) {
       return null;
     }
 
@@ -340,8 +349,8 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
           durationInitialize={`${duration[0]}ms`}
           durationFinalize={`${duration[1]}ms`}
           timingFunction={timingFunction}
-          keyframesInitialize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-in`]}
-          keyframesFinalize={keyframes[`@${this.keyframesKey(calculatedPlacement)}-out`]}
+          keyframesInitialize={innerVisible === true ? keyframes[`@${this.keyframesKey(calculatedPlacement)}-in`] : undefined}
+          keyframesFinalize={innerVisible === false ? keyframes[`@${this.keyframesKey(calculatedPlacement)}-out`] : undefined}
           use:data-ui-name='Hint'
         >
           <Children />

@@ -50,7 +50,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 ## DropdownMenu.Menu
 
-DropdownMenu.Menu is a wrap over the `<Dropdown.Popper/>` + `<DropdownMenu.List/>` component. In fact, it is syntactic sugar when no direct access to the `Popper` node is needed.
+DropdownMenu.Menu is a wrap over the `<Dropdown.Popper/>` + `<DropdownMenu.List/>` component. In fact, it's syntactic sugar when no direct access to the `Popper` node is needed.
 
 ```jsx
 import DropdownMenu from '@semcore/ui/dropdown-menu';
@@ -78,6 +78,17 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 ```
 
 <TypesView type="FlexProps" :types={...types} />
+
+## DropdownMenu.Item.Text
+
+Text of menu item. Use it if you need to crop your text in an item.
+
+```jsx
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+<DropdownMenu.Item.Text />;
+```
+
+<TypesView type="TextProps" :types={...types} />
 
 ## Dropdown.Group
 

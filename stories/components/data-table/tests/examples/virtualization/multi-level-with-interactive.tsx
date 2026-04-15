@@ -1,4 +1,5 @@
 import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
@@ -18,33 +19,50 @@ const options = Array(6)
 
 const CustomSelect = () => {
   const [isVisible, setIsVisible] = React.useState(false);
+  const [value, setValue] = React.useState<number | undefined>(undefined);
 
   return (
     <Select
       visible={isVisible}
       onVisibleChange={setIsVisible}
-      mt={2}
-      mr='auto'
-      options={options}
-      placeholder='Select option'
-      data-test-id='select-header'
-      id='basic-select'
-      tag={LinkTrigger}
-      onKeyDown={(e) => {
-        if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isVisible) {
-          return false;
-        }
-        if (e.key.startsWith('Arrow') && isVisible) {
-          e.stopPropagation();
-        }
-      }}
-    />
+      value={value}
+      onChange={setValue}
+    >
+      <Select.Trigger
+        tag={LinkTrigger}
+        aria-label='Select option'
+        color='text-primary'
+        size={100}
+        data-test-id='select-header'
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+            return false;
+          }
+          if (
+            (e.key === 'ArrowLeft' ||
+              e.key === 'ArrowRight' ||
+              e.key === 'ArrowDown' ||
+              e.key === 'ArrowUp') &&
+              isVisible
+          ) {
+            e.stopPropagation();
+          }
+        }}
+      >
+        {value !== undefined ? options[value].label : 'Select option'}
+      </Select.Trigger>
+      <Select.Menu>
+        {options.map((option) => (
+          <Select.Option key={option.value} value={option.value}>
+            {option.label}
+          </Select.Option>
+        ))}
+      </Select.Menu>
+    </Select>
   );
 };
 
 const Demo = () => {
-  const [isVisible, setIsVisible] = React.useState(false);
-
   return (
 
     <DataTable
@@ -71,32 +89,34 @@ const Demo = () => {
               name: 'kd',
               gtcWidth: 'minmax(100px, max-content)',
               children: (
-                <DescriptionTooltip placement='right'>
-                  Cpc 1
-                  <DescriptionTooltip.Trigger
-                    ml={1}
-                    tag={ButtonLink}
-                    addonLeft={InfoM}
-                    color='icon-secondary-neutral'
-                    aria-label='Additional info 1'
-                    data-test-id='tooltip-with-interactive-el'
-                  />
-                  <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
-                    Jesus Christ, Joe,
-                    {' '}
-                    <Link>fucking forget</Link>
-                    {' '}
-                    about it. I'm Mr.
-                    Pink. Let's move on.
-                  </DescriptionTooltip.Popper>
-                </DescriptionTooltip>
+                <Flex alignItems='center'>
+                  <DescriptionTooltip placement='right'>
+                    Cpc 1
+                    <DescriptionTooltip.Trigger
+                      ml={1}
+                      tag={ButtonLink}
+                      addonLeft={InfoM}
+                      color='icon-secondary-neutral'
+                      aria-label='Additional info 1'
+                      data-test-id='tooltip-with-interactive-el'
+                    />
+                    <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
+                      Jesus Christ, Joe,
+                      {' '}
+                      <Link>fucking forget</Link>
+                      {' '}
+                      about it. I'm Mr.
+                      Pink. Let's move on.
+                    </DescriptionTooltip.Popper>
+                  </DescriptionTooltip>
+                </Flex>
               ),
             },
             {
               name: 'cpc',
               gtcWidth: 'minmax(300px, max-content)',
               children: (
-                <>
+                <Flex alignItems='center'>
                   <Checkbox data-test-id='header-checkbox' />
                   <DescriptionTooltip placement='right'>
                     Hello
@@ -113,7 +133,7 @@ const Demo = () => {
                       Pink. Let's move on.
                     </DescriptionTooltip.Popper>
                   </DescriptionTooltip>
-                </>
+                </Flex>
               ),
             },
             {

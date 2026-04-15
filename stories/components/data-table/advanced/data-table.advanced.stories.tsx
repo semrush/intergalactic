@@ -1,5 +1,5 @@
 import { DataTable } from '@semcore/ui/data-table';
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj, ArgTypes } from '@storybook/react-vite';
 
 import AccordionInMergedRowsExample, { accordionMergedProps } from './examples/accordion_in_merged_rows';
 import type { AccordionWithCheckboxProps } from './examples/accordion_with_checkbox';
@@ -9,6 +9,7 @@ import AccordionWithPaginationExample, { tableInTableDefaultProps } from './exam
 import type { TableInTableProps } from './examples/accordion_with_pagination';
 import AccordionWithStickyRowsExample, { accordionStickyProps } from './examples/accordion_with_sticky_rows';
 import BigTableWithStickyHeaderExample from './examples/big_table_with_sticky_header';
+import CheckboxInBigTableReactiveExample, { defaultProps as checkboxInBigReactiveTableDefaultProps } from './examples/checkbox_in_big_table_reactive';
 import FakeMultiLineHeaderExample from './examples/fake-multi-level-header';
 import FixedColumnsWidthWithShadowsExample from './examples/fixed_columns_width_with_shadows';
 import FixedColumnsWithDiffWidthsExample from './examples/fixed_columns_with_diff_widths';
@@ -18,14 +19,30 @@ import OverlapCellsExample from './examples/overlap_cells';
 import RenderCellInAccordionExample from './examples/render_cell_in_accordion';
 import RenderCellRawValueExample from './examples/render_cell_raw_data';
 import RowCellStatesExample from './examples/row_cell_states';
-import SelectableWithMergedRowsExample from './examples/selectable_with_merged_rows';
+import SelectableWithMergedRowsExample, { defaultProps as selectableWithMergedRowsDefaultProps } from './examples/selectable_with_merged_rows';
+import type { DemoProps as SelectableWithMergedRowsProps } from './examples/selectable_with_merged_rows';
 import SideIndentsExample from './examples/side-indents';
-import TablePerfExample from './examples/table_perf/table_perf';
+import type { AccordionInTableProps } from './examples/table_perf/table_perf';
+import TablePerfExample, { accordionInsideTableDefaultProps } from './examples/table_perf/table_perf';
 import VirtualScrollWithH100Example from './examples/virtual-scroll-with-h100';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Advanced',
   component: DataTable,
+};
+
+const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigReactiveTableDefaultProps>> = {
+  loading: { control: 'boolean' },
+  sideIndents: {
+    control: 'select',
+    options: [undefined, 'wide'],
+    defaultValue: undefined,
+  },
+  compact: {
+    control: 'radio',
+    options: [undefined, true, false],
+    defaultValue: undefined,
+  },
 };
 
 export default meta;
@@ -48,6 +65,22 @@ export const AccordionWithCheckbox: StoryObj<AccordionWithCheckboxProps> = {
 
 export const AccordionWithManyRows: StoryObj<typeof accordionTableInTableDefaultProps> = {
   render: AccordionWithManyRowsExample,
+  argTypes: {
+    cropPosition: {
+      control: 'select',
+      options: ['end', 'middle'],
+    },
+    // UIK-4923: hintProps=false skips ellipsis calculation for cropPosition=end (CSS-only),
+    // but still calculates for cropPosition=middle (needs JS). No hint shown in either case.
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+  },
   args: {
     ...accordionTableInTableDefaultProps,
   },
@@ -72,6 +105,12 @@ export const BigTableWithStickyHeader: Story = {
   render: BigTableWithStickyHeaderExample,
 };
 
+export const CheckboxInBigTableReactive: StoryObj<typeof checkboxInBigReactiveTableDefaultProps> = {
+  render: CheckboxInBigTableReactiveExample,
+  argTypes: checkboxArgTypes,
+  args: checkboxInBigReactiveTableDefaultProps,
+};
+
 export const FixedColumnsWithDiffWidths: Story = {
   render: FixedColumnsWithDiffWidthsExample,
 };
@@ -88,8 +127,21 @@ export const RowCellStates: Story = {
   render: RowCellStatesExample,
 };
 
-export const SelectableWithMergedRows: Story = {
+export const SelectableWithMergedRows: StoryObj<SelectableWithMergedRowsProps> = {
   render: SelectableWithMergedRowsExample,
+  argTypes: {
+    reactive: { control: 'boolean' },
+    loading: { control: 'boolean' },
+    sideIndents: {
+      control: 'select',
+      options: [undefined, 'wide'],
+    },
+    compact: {
+      control: 'radio',
+      options: [undefined, true, false],
+    },
+  },
+  args: selectableWithMergedRowsDefaultProps,
 };
 
 export const SideIndents: Story = {
@@ -120,10 +172,23 @@ export const FixedColumnsWidthWithShadows: Story = {
   render: FixedColumnsWidthWithShadowsExample,
 };
 
-export const TablePerf: StoryObj<{ loading: boolean }> = {
+export const TablePerf: StoryObj<AccordionInTableProps> = {
   render: TablePerfExample,
   argTypes: {
     loading: { control: 'boolean' },
+    cropPosition: {
+      control: 'select',
+      options: ['end', 'middle'],
+    },
+    // UIK-4923: hintProps=false skips ellipsis JS calculation for cropPosition=end
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
   },
-  args: accordionMergedProps,
+  args: accordionInsideTableDefaultProps,
 };

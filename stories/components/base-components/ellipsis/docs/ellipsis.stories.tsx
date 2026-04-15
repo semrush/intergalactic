@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample from './examples/basic_usage';
+import FilterTriggerExample from './examples/filter-trigger';
 import MultipleUseExample from './examples/multiple_use';
 import NoHintWithMultilineExample from './examples/no_hint_with_multiline';
 import WithRequiredLastSymbolsExample from './examples/with_required_last_symbols';
@@ -16,6 +17,10 @@ export const BasicUsage: StoryObj = {
 
 export const MultipleUse: StoryObj = {
   render: MultipleUseExample,
+};
+
+export const FilterTrigger: StoryObj = {
+  render: FilterTriggerExample,
 };
 
 export const NoHintWithMultiline: StoryObj = {

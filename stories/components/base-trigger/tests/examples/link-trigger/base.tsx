@@ -1,40 +1,150 @@
-import { Flex } from '@semcore/ui/base-components';
+import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
+import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
+import Badge from '@semcore/ui/badge';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
-import type { LinkTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
+import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
+import Counter, { type CounterProps } from '@semcore/ui/counter';
+import Flags from '@semcore/ui/flags';
+import Tag, { type TagSize } from '@semcore/ui/tag';
+import type { TextEllipsisProps } from '@semcore/ui/typography';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type LinkTriggerBaseExample = LinkTriggerProps & BaseTriggerProps;
-const Demo = (props: LinkTriggerBaseExample) => (
-  <Flex direction='column' gap={3}>
-    <LinkTrigger
-      w={150}
-      size={props.size}
-      state={props.state}
-      active={props.active}
-      empty={props.empty}
-      placeholder={props.placeholder}
-      disabled={props.disabled}
-      loading={props.loading}
-      data-test-id='active-trigger'
-      color={props.color}
-    >
-      Link Trigger
-    </LinkTrigger>
+type AddonType = 'icon' | 'badge' | 'counter' | 'flag' | 'tag';
 
-  </Flex>
-);
-
-export const linkTriggerBaseExampleProps: LinkTriggerBaseExample = {
-  size: 'm',
-  state: undefined,
-  active: undefined,
-  empty: undefined,
-  placeholder: undefined,
-  disabled: undefined,
-  loading: undefined,
-  color: undefined,
+type BasicLinktriggerProps = LinkTriggerProps & {
+  text?: string;
+  showAddonLeft?: boolean;
+  showAddonRight?: boolean;
+  ellipsis?: TextEllipsisProps;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+  addonLeftType?: AddonType;
+  addonRightType?: AddonType;
+  merged?: boolean;
+  loading?: boolean;
+  color?: string;
+  w?: number;
 };
 
-Demo.defaultProps = linkTriggerBaseExampleProps;
+const Demo = (props: BasicLinktriggerProps) => {
+  const {
+    text = 'LinkTrigger example',
+    showAddonLeft = false,
+    showAddonRight = false,
+    disabled,
+    loading,
+    hintProps,
+    active,
+    size = 300,
+    w,
+    ellipsis,
+    hintPlacement,
+    addonLeftType = 'icon',
+    addonRightType = 'icon',
+    merged = false,
+  } = props;
+
+  const numSize = Number(size);
+  const IconAddon = numSize < 600 ? MathPlusAltM : MathPlusAltL;
+
+  let counterSize: CounterProps['size'];
+  if (numSize >= 600) {
+    counterSize = 'l';
+  } else if (numSize >= 300) {
+    counterSize = 'm';
+  }
+
+  let tagSize: TagSize | undefined;
+  if (numSize >= 600) {
+    tagSize = 'xl';
+  } else if (numSize >= 300) {
+    tagSize = 'l';
+  } else {
+    tagSize = 'm';
+  }
+
+  const renderAddon = (show: boolean, type: AddonType) => {
+    if (!show) return null;
+
+    switch (type) {
+      case 'badge':
+        return <LinkTrigger.Addon><Badge type='new' /></LinkTrigger.Addon>;
+      case 'counter':
+        return <LinkTrigger.Addon><Counter size={counterSize}>17</Counter></LinkTrigger.Addon>;
+      case 'flag':
+        return <LinkTrigger.Addon><Flags name='US' /></LinkTrigger.Addon>;
+      case 'tag':
+        return <LinkTrigger.Addon><Tag size={tagSize}>Label</Tag></LinkTrigger.Addon>;
+      case 'icon':
+      default:
+        if (merged) return <LinkTrigger.Addon tag={IconAddon} />;
+        return <LinkTrigger.Addon><IconAddon /></LinkTrigger.Addon>;
+    }
+  };
+
+  const hasEllipsis = ellipsis !== undefined && ellipsis.ellipsis !== false;
+  const ellipsisW = hasEllipsis ? (w || (numSize < 600 ? 150 : 300)) : undefined;
+
+  let displayValue: 'inline-block' | undefined;
+  if (ellipsis?.['ellipsis:maxLine'] && ellipsis?.['ellipsis:maxLine'] > 1) {
+    displayValue = 'inline-block';
+  }
+
+  return (
+    <Text tag='div' size={size}>
+      <LinkTrigger
+        size={size}
+        disabled={disabled}
+        active={active}
+        loading={loading}
+        color={props.color}
+        display={displayValue}
+        mr={4}
+      >
+        {renderAddon(showAddonLeft, addonLeftType)}
+        <LinkTrigger.Text
+          w={ellipsisW}
+          {...ellipsis}
+          hint:placement={hintPlacement}
+          hint={hintProps}
+        >
+          {text}
+        </LinkTrigger.Text>
+        {renderAddon(showAddonRight, addonRightType)}
+      </LinkTrigger>
+
+      {`${numSize} `}
+      <LinkTrigger
+        size={size}
+        loading={loading}
+        disabled={disabled}
+        active={active}
+        color={props.color}
+      >
+        {renderAddon(showAddonLeft, addonLeftType)}
+        <LinkTrigger.Text>
+          {text}
+        </LinkTrigger.Text>
+        {renderAddon(showAddonRight, addonRightType)}
+      </LinkTrigger>
+    </Text>
+  );
+};
+
+export const defaultLinkTriggerProps: BasicLinktriggerProps = {
+  text: 'LinkTrigger example',
+  size: 300,
+  showAddonLeft: false,
+  showAddonRight: false,
+  addonLeftType: 'icon',
+  addonRightType: 'icon',
+  merged: false,
+  ellipsis: { ellipsis: true },
+  loading: false,
+  w: 120,
+};
+
+Demo.defaultProps = defaultLinkTriggerProps;
 
 export default Demo;

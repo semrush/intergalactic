@@ -26,7 +26,7 @@ Refer to [WCAG text contrast guidelines](https://www.w3.org/WAI/WCAG22/Understan
 
 ### Non-text color contrast
 
-All graphics and components must have a contrast ratio of at least 3:1 compared to the surrounding colors, unless they are purely decorative. This rule applies to icons, charts, infographics, controls, and any states like hover or active. However, inactive components, states, and purely decorative elements are exempt from these contrast ratio requirements.
+All graphics and components must have a contrast ratio of at least 3:1 compared to the surrounding colors, unless they're purely decorative. This rule applies to icons, charts, infographics, controls, and any states like hover or active. However, inactive components, states, and purely decorative elements are exempt from these contrast ratio requirements.
 
 Refer to [WCAG non-text contrast guidelines](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast) for more information.
 
@@ -61,8 +61,8 @@ Make sure that user can easily understand the meaning and structure of the page 
 
 - All content and design of the page should have meaningful sequence and fit into the logical structure.
 - Make sure that users can navigate the site in multiple ways: with a table of contents, a sitemap, links between pages, and search on the website.
-- Screen readers should read the information in the same order it is displayed.
-- Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that is clearly not a level 1 heading shouldn't be marked up as H1 in the code. Also, don't use plain text for headings.
+- Screen readers should read the information in the same order it's displayed.
+- Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that's clearly not a level 1 heading shouldn't be marked up as H1 in the code. Also, don't use plain text for headings.
 
 Refer to [WCAG meaningful sequence guidelines](https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence) for more information.
 
@@ -101,7 +101,7 @@ Make sure that user understands all content, including charts, icons, and images
 
 ### Alternate versions
 
-- Create an alternate form for the content that cannot be presented as text. For example, to help the user find an ATM, you could offer a map, a table, or a list.
+- Create an alternate form for the content that can't be presented as text. For example, to help the user find an ATM, you could offer a map, a table, or a list.
 - Captcha tops the list of the most difficult and common problems that blind users face. It's often used needlessly from a security point of view, and can be replaced with other validation methods. If using a Captcha is absolutely necessary, be sure to add an audio alternative for visually impaired users.
 
 To learn more, visit the [text alternatives](https://www.w3.org/TR/WCAG22/#text-alternatives) section of the WCAG website.
@@ -152,7 +152,7 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 
 **Requirements**:
 
-- **It should be clear from the link text what will happen on click**. Don't use URLs or the _"Click here"_ anchor text for your links, as they are too uninformative. For example, instead of _"Click here"_ use _"Download report"_, or _"Create account"_ instead of _"Finish"_. This way, the user will have a clear idea of what will happen next.
+- **It should be clear from the link text what will happen on click**. Don't use URLs or the _"Click here"_ anchor text for your links, as they're too uninformative. For example, instead of _"Click here"_ use _"Download report"_, or _"Create account"_ instead of _"Finish"_. This way, the user will have a clear idea of what will happen next.
 - **Links should be an organic part of a sentence**. For example, it's better to write: _"In the new version of the iPhone application, we added support for the Cyrillic alphabet"_ – instead of _"In the new application for the iPhone, we added support for the Cyrillic alphabet. Download"_. Sentences like this are easier to understand for all users, and especially for those who use screen readers.
 - **If clicking on a link leads to the download of a document, let the user know**. If your link leads to a PDF file, write: _"Download instructions in PDF"_. This is important for mobile users with data caps.
 
@@ -160,7 +160,7 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 
 - **Make sure that the instructions can be followed by hearing or visually impaired users**.
 
-- **Don't make references to the shape, size, visual layout, or sound**. Prompts like _"See image above"_ or _"Find instructions in the right column"_ will mean nothing to a blind user, while a deaf user will not be able to follow the instructions like _"Continue after the beep"_ or _"Confirm the transfer via a phone call"_.
+- **Don't make references to the shape, size, visual layout, or sound**. Prompts like _"See image above"_ or _"Find instructions in the right column"_ will mean nothing to a blind user, while a deaf user won't be able to follow the instructions like _"Continue after the beep"_ or _"Confirm the transfer via a phone call"_.
 
 ![](/core-principles/a11y/static/instructions.png)
 
@@ -206,7 +206,7 @@ Some of your users may suffer from dyslexia or developmental disorders, making i
 
 - **Be careful with typos**. Watch your keyboard layout. Remember that the English letter _C_ and the Russian letter _С_ are 2 completely different characters, despite the fact that they look the same. Screen readers read symbols based on their code in the symbol table, and not from its typeface. So if there are any typos like this in the text of the page, it makes it extremely difficult to work with for your blind or visually impaired users.
 
-- **Avoid idioms**. Try not to use idioms or other expressions whose meaning cannot be easily recognized from the usual meanings of the words that they consist of. For example, an expression like _play the fool_ can be taken literally by users with mental disabilities or those who use a sign language to communicate.
+- **Avoid idioms**. Try not to use idioms or other expressions whose meaning can't be easily recognized from the usual meanings of the words that they consist of. For example, an expression like _play the fool_ can be taken literally by users with mental disabilities or those who use a sign language to communicate.
 
 ::: tip
 To learn more, visit the [Readable](https://www.w3.org/TR/WCAG22/#readable) section of the WCAG website.

@@ -1,91 +1,54 @@
-import { Box } from '@semcore/base-components';
-import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { ButtonLink } from '@semcore/button';
+import { createComponent, Component, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import ChevronDown from '@semcore/icon/ChevronDown/m';
+import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
+import ChevronDownL from '@semcore/icon/ChevronDown/l';
+import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
-import { Text as TextKit } from '@semcore/typography';
 import React from 'react';
-
-import style from './style/link-trigger.shadow.css';
 
 class RootLinkTrigger extends Component {
   static displayName = 'LinkTrigger';
-  static style = style;
-  static defaultProps = {
-    size: 'm',
-  };
 
-  static enhance = [resolveColorEnhance()];
+  getTextProps(props) {
+    const { placeholder, empty, Children, size } = this.asProps;
+    const content = empty ? placeholder : props.children;
+    const addons = findAllComponents(Children, [LinkTrigger.Addon.displayName]);
+    const addonWidth = size >= 600 ? 28 : 20;
 
-  triggerRef = React.createRef();
-
-  getTextProps() {
-    const { placeholder, empty } = this.asProps;
     return {
-      placeholder,
+      'use:children': content,
       empty,
-      triggerRef: this.triggerRef,
+      'w': `calc(100% - ${addonWidth * (addons.length + 1)}px)`,
     };
   }
 
   render() {
     const SLinkTrigger = Root;
     const SLinkAddon = LinkTrigger.Addon;
-    const { Children, loading, styles, empty, color: providedColor, resolveColor } = this.asProps;
+    const { Children, loading, empty, disabled, size } = this.asProps;
 
-    const color = resolveColor(providedColor);
-
-    return sstyled(styles)(
+    return (
       <SLinkTrigger
-        render={Box}
-        tag='button'
-        type='button'
-        tabIndex={loading ? -1 : 0}
-        ref={this.triggerRef}
-        use:color={color}
+        render={ButtonLink}
+        use:disabled={disabled || loading}
       >
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
-          {loading ? <Spin size='xs' theme='currentColor' /> : <ChevronDown />}
+          {loading
+            ? <Spin size={size >= 600 ? 's' : 'xs'} theme='currentColor' />
+            : size >= 600 ? <ChevronDownL /> : <ChevronDownM />}
         </SLinkAddon>
-      </SLinkTrigger>,
+      </SLinkTrigger>
     );
   }
 }
 
-function Text(props) {
-  const SText = Root;
-  const textRef = React.useRef();
-  const { children, styles, empty, placeholder, triggerRef, ellipsis = false, hintProps } = props;
-  const content = empty ? placeholder : children;
-
-  return sstyled(styles)(
-    <>
-      <SText
-        render={TextKit}
-        display-placeholder={empty}
-        ref={textRef}
-        ellipsis={ellipsis}
-        hintProps={{
-          ...hintProps,
-          triggerRef,
-        }}
-      >
-        {content}
-      </SText>
-    </>,
-  );
-}
-
-function Addon(props) {
-  const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} />);
-}
-
 const LinkTrigger = createComponent(RootLinkTrigger, {
-  Text,
-  Addon,
+  Text: ButtonLink.Text,
+  Addon: ButtonLink.Addon,
+}, {
+  parent: ButtonLink,
 });
 
 export default LinkTrigger;

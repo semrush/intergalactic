@@ -8,9 +8,11 @@ import NestedMenuPropsExample, { defaultNestedMenuPropsExample } from './example
 import OnVisibleExample from './examples/on-visible';
 import OnVisible2ndExample from './examples/on-visible-2nd';
 import SelectablePropsExample, { defaultDropDownSelectablePropsExample } from './examples/selectable-props';
+import WithContentOnPageExample from './examples/test-with-content-on-page';
 import WithFocusableTriggerExample from './examples/with-focusable-in-trigger';
 import WithSearchExample from './examples/with-search';
 import WithEllipsisExample, { defaultProps as defaultWithEllipsisProps } from './examples/with_ellipsis';
+import WithHintOnMovedReferenceExample from './examples/with_hint_on_moved_reference';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Tests',
@@ -46,6 +48,10 @@ const commonArgTypes = {
 
 export const WithFocusableTrigger: Story = {
   render: WithFocusableTriggerExample,
+};
+
+export const WithContentOnPage: Story = {
+  render: WithContentOnPageExample,
 };
 
 export const ListItemsType: Story = {
@@ -130,6 +136,18 @@ export const WithEllipsis: StoryObj<typeof defaultWithEllipsisProps> = {
       control: { type: 'boolean' },
       description: 'Enable multiselect mode (requires selectable to be true)',
     },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
   },
   args: defaultWithEllipsisProps,
 };
@@ -150,4 +168,8 @@ export const NestedMenuProps: StoryObj<typeof defaultNestedMenuPropsExample> = {
     },
   },
   args: defaultNestedMenuPropsExample,
+};
+
+export const WithHintOnMovedReference: Story = {
+  render: WithHintOnMovedReferenceExample,
 };

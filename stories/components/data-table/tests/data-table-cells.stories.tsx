@@ -3,8 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 import CardFlagInCellExample from './examples/cells-tests/card-flag-in-cell';
-import CheckBoxExample from './examples/cells-tests/checkbox';
-import CheckboxInTableWithNoDataExample from './examples/cells-tests/checkbox-in-table-with-no-data';
+import CheckboxExample, { defaultProps as checkboxReactiveProps } from './examples/cells-tests/checkbox';
+import type { DemoProps as CheckboxReactiveProps } from './examples/cells-tests/checkbox';
+import CheckboxInTableWithNoDataExample, { defaultProps as checkboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
+import type { DemoProps as CheckboxNoDataProps } from './examples/cells-tests/checkbox-in-table-with-no-data';
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
@@ -19,7 +21,7 @@ import MergedRowForMultiLevelHeaderExample, {
 import MiniChartsInlineEditInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
 import OneBigMergedRowAndScrollExample from './examples/cells-tests/one-big-merged-row-and-scroll';
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
-import SelectableWithMergedRowsExample, { selectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
+import SelectableWithMergedRowsColumnsExample, { selectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
 import type { SelectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
 
 const meta: Meta<typeof DataTable> = {
@@ -30,8 +32,8 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const SelectableWithMergedRows: StoryObj<SelectableWithMergedRowsProps> = {
-  render: SelectableWithMergedRowsExample,
+export const SelectableWithMergedRowsColumns: StoryObj<SelectableWithMergedRowsProps> = {
+  render: SelectableWithMergedRowsColumnsExample,
   argTypes: {
     headerLevels: {
       control: { type: 'radio' },
@@ -50,12 +52,26 @@ export const CardFlagInCell: Story = {
   render: CardFlagInCellExample,
 };
 
-export const CheckBox: Story = {
-  render: CheckBoxExample,
+export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
+  render: CheckboxInTableWithNoDataExample,
+  argTypes: {
+    reactive: {
+      control: 'boolean',
+      description: 'Use SelectableRows (reactive) instead of array',
+    },
+  },
+  args: checkboxNoDataProps,
 };
 
-export const CheckboxInTableWithNoData: Story = {
-  render: CheckboxInTableWithNoDataExample,
+export const Checkbox: StoryObj<CheckboxReactiveProps> = {
+  render: CheckboxExample as any,
+  argTypes: {
+    fixedColumns: {
+      control: 'boolean',
+      description: 'Enable fixed left/right columns with horizontal scroll',
+    },
+  },
+  args: checkboxReactiveProps,
 };
 
 export const MergedRowForMultiLevelHeader: StoryObj<MergedRowForMultiLevelHeaderProps> = {

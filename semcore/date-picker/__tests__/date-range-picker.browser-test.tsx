@@ -168,8 +168,10 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
+      const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
 
       await page.keyboard.press('Tab');
+      await expect(input.first()).toBeFocused();
       await page.keyboard.type('0505202310052023');
       await page.keyboard.press('Enter');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
@@ -679,6 +681,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Space');
         await page.keyboard.press('Tab');
+        if (!(await buttons.first().evaluate((el) => el === document.activeElement))) {
+          await page.keyboard.press('Tab');
+        }
         await expect(buttons.first()).toBeFocused();
 
         for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');

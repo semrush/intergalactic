@@ -90,9 +90,9 @@ const setTriggerText = ({ from, to }: ValueState): string | undefined => {
   if (from !== '') {
     if (to === '') return `${numberFormat.format(Number(from))}+`;
     if (from === to) return numberFormat.format(Number(from));
-    return `${numberFormat.format(Number(from))}-${numberFormat.format(Number(to))}`;
+    return `${numberFormat.format(Number(from))}–${numberFormat.format(Number(to))}`;
   } else if (to !== '') {
-    return `${numberFormat.format(minRange)}-${numberFormat.format(Number(to))}`;
+    return `${numberFormat.format(minRange)}–${numberFormat.format(Number(to))}`;
   }
   return undefined;
 };
@@ -175,7 +175,7 @@ const Demo = () => {
       </Select.Trigger>
       <Select.Popper w={224} aria-label='Volume'>
         <Select.List aria-label='Presets'>
-          {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
+          {['100,001+', '10,001–100,000', '1,001–10,000', '101–1,000', '11–100', '1–10'].map(
             (item) => (
               <Select.Option key={item} value={item}>
                 {item}

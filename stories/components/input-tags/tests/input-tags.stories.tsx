@@ -43,6 +43,18 @@ export const EnteringAndEditingTags: StoryObj<typeof enteringAndEditingTagsProps
     active: {
       control: { type: 'boolean' },
     },
+    hintProps: {
+      control: 'select',
+      options: ['default', 'false'],
+      mapping: {
+        default: undefined,
+        false: false,
+      },
+    },
+    hintPlacement: {
+      control: { type: 'select' },
+      options: ['top', 'bottom', 'left', 'right'],
+    },
   },
   args: enteringAndEditingTagsProps,
 };

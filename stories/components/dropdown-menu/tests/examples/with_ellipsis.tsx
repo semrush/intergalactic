@@ -8,6 +8,8 @@ type WithEllipsisProps = {
   addExtraItems?: boolean;
   selectable?: boolean;
   multiselect?: boolean;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
 };
 
 const Demo = (props: WithEllipsisProps) => {
@@ -42,7 +44,12 @@ const Demo = (props: WithEllipsisProps) => {
         <DropdownMenu.Group title='We do not recommend' subTitle='Use ellipsis in menu items!'>
           <DropdownMenu.Item selected={isSelected(0)} onClick={() => handleItemClick(0)}>
             <DropdownMenu.Item.Content w='100%'>
-              <DropdownMenu.Item.Text w='100%' ellipsis hintProps={{ placement: 'right' }}>Menu item 1 with long long long text</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text
+                w='100%'
+                ellipsis
+              >
+                Menu item 1 Without hint props long long
+              </DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
           </DropdownMenu.Item>
           <DropdownMenu.Item size='l' selected={isSelected(1)} onClick={() => handleItemClick(1)}>
@@ -56,9 +63,23 @@ const Demo = (props: WithEllipsisProps) => {
               <DropdownMenu.Item.Addon>
                 <DesktopIconM />
               </DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Text ellipsis hintProps={{ placement: 'right' }}>Menu item hint shown on hover and focus</DropdownMenu.Item.Text>
+              <DropdownMenu.Item.Text
+                ellipsis
+                {...(props.hintProps === false ? { hint: false } : {})}
+                {...(props.hintPlacement ? { 'hint:placement': props.hintPlacement } : {})}
+              >
+                Menu item 3 With hint props long long
+              </DropdownMenu.Item.Text>
             </DropdownMenu.Item.Content>
-            <DropdownMenu.Item.Hint w='100%' tag={Text} ellipsis hintProps={{ placement: 'right' }}>Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!</DropdownMenu.Item.Hint>
+            <DropdownMenu.Item.Hint
+              w='100%'
+              tag={Text}
+              ellipsis
+              {...(props.hintProps === false ? { hint: false } : {})}
+              {...(props.hintPlacement ? { 'hint:placement': props.hintPlacement } : {})}
+            >
+              Hint item menu item will show on hover but this is very bad example, for testing purposes, do not use it in real products!(With hint props)
+            </DropdownMenu.Item.Hint>
           </DropdownMenu.Item>
           <DropdownMenu.Item selected={isSelected(3)} onClick={() => handleItemClick(3)}>
             <DropdownMenu.Item.Content>

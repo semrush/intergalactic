@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [17.0.0] - 2026-02-27
+## [17.0.0] - 2026-04-15
 
 ### BREAK
 
 - New major version as a separate package with icons.
+
+## [16.7.5] - 2026-04-01
+
+### Changed
+
+- `Semrush` icon.
 
 ## [16.7.4] - 2026-01-19
 

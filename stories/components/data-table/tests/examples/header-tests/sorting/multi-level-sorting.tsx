@@ -34,7 +34,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         children: (
           <Text>
             Kd Organic Sessions Organic Sessions
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </Text>
         ),
       },
@@ -66,7 +66,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         children: (
           <>
             <Text ellipsis={true}>Kd Organic Sessions</Text>
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </>
         ),
       },
@@ -98,7 +98,8 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
             <Box ref={containerRef} display='inline-flex' wMin={0}>
               <Text
                 ellipsis={true}
-                hintProps={headerCell ? { placement: 'bottom', triggerRef: { current: headerCell } } : undefined}
+                hint:placement='bottom'
+                hint:triggerRef={{ current: headerCell }}
                 wMin={0}
               >
                 Vol.Vol.Vol.Vol.Vol.
@@ -122,8 +123,8 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         name: 'kd3',
         children: (
           <>
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-            <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+            <ButtonLink size={100} addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
           </>
         ),
       },

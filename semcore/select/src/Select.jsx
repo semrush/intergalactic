@@ -52,7 +52,6 @@ class RootSelect extends AbstractDropdown {
 
     return {
       placeholder: props.multiselect ? 'Select options' : 'Select option',
-      size: 'm',
       defaultValue: getEmptyValue(props.multiselect),
       defaultVisible: false,
       defaultHighlightedIndex: props.highlightedIndex ?? defaultIndex,
@@ -459,21 +458,17 @@ function OptionText(providedProps) {
       selected: optionProps?.selected,
       disabled: optionProps?.disabled,
       size: optionProps?.size,
-      hintProps: optionProps?.hintProps ?? {},
       ...(providedProps || {}),
     }),
     [providedProps, optionProps],
   );
 
-  if (optionProps.itemRef) {
-    props.hintProps.triggerRef = optionProps.itemRef;
-  }
-
-  props.hintProps.visible = selectedIndex === optionProps.index;
-
   return sstyled(props.styles)(
     <Text
       {...props}
+      hint:triggerRef={optionProps.itemRef}
+      hint:visible={selectedIndex === optionProps.index}
+      hint:placement='right'
     />,
   );
 }

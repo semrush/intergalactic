@@ -120,7 +120,7 @@ export const multiLevelScrollIntableProps: MultiLevelScrollIntableProps = {
   defaultGridTemplateColumnWidth: 'auto',
   loading: undefined,
   sticky: true,
-  withScrollBar: undefined,
+  withScrollBar: false,
 };
 
 Demo.defaultProps = multiLevelScrollIntableProps;

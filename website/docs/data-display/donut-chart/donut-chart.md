@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-code'), Changelog('donut-chart-changelog')
 ---
 
-<Playground for="Chart.Donut" /> 
+<Playground for="Chart.Donut" />
 
 ::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).

@@ -15,16 +15,12 @@ SCard {
     line-height: var(--intergalactic-lh-300, 150%);
     font-weight: var(--intergalactic-bold, 700);
     margin-right: var(--intergalactic-spacing-1x, 4px);
-
-    SInfoTrigger {
-      margin-top: var(--intergalactic-spacing-1x, 4px);
-    }
   }
 
   SInfoTrigger {
     margin-right: var(--intergalactic-spacing-1x, 4px);
-    line-height: normal;
-    vertical-align: top;
+    vertical-align: 0.5px;
+    margin-top: -1px;
   }
 
   SDescription {
@@ -32,6 +28,7 @@ SCard {
     margin-bottom: 0;
     margin-top: var(--intergalactic-spacing-2x, 8px);
     font-size: var(--intergalactic-fs-200, 14px);
+    line-height: var(--intergalactic-lh-200, 142%);
     color: var(--intergalactic-text-secondary, #6c6e79);
   }
 

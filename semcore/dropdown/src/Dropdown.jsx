@@ -156,7 +156,12 @@ function DropdownPopper({ styles }) {
 }
 
 function DropdownGroup(props) {
-  const { styles, title, Children, subTitle, size, sticky } = props;
+  /*
+    `size` is not exposed as a public prop,
+    but it may be implicitly inherited from parent components such as Select or DropdownMenu.
+    Since `size` directly affects item dimensions, we default it to 'm' to preserve backward compatibility.
+  */
+  const { styles, title, Children, subTitle, size = 'm', sticky } = props;
   const SGroup = Root;
   const SDropdownItemContainer = Dropdown.Item;
   const SGroupTitle = Flex;
@@ -173,7 +178,13 @@ function DropdownGroup(props) {
         <SGroupTitle id={uidTitle}>{title}</SGroupTitle>
         {subTitle && <SGroupHint id={uidSubTitle}>{subTitle}</SGroupHint>}
       </SDropdownItemContainer>
-      <SGroup render={Box} role='group' {...groupAriaProps} __excludeProps={['title', 'sticky']}>
+      <SGroup
+        render={Box}
+        role='group'
+        {...groupAriaProps}
+        __excludeProps={['title', 'sticky']}
+        data-sticky={sticky}
+      >
         <Children />
       </SGroup>
     </>,

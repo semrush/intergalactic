@@ -20,13 +20,6 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Ensure the chart's axes are clear, adding labels if the title isn't descriptive enough.
 - Use a single color or shades of one color for simplicity. Highlight categories only if needed.
 
-::: tip
-**Bar vs. Histogram Chart**
-
-- Bar charts categorize data qualitatively, showing how different categories compare.
-- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
-  :::
-
 ### When to use
 
 - Use the bar chart when you need to focus on individual data points' values rather than tracking trends. For instance, when measuring a goal's achievement in a specific month or when analyzing audience fluctuations on specific days.
@@ -37,6 +30,13 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 ::: tip
 Consider using the [horizontal bar chart](/data-display/bar-horizontal/bar-horizontal), as it makes it easier to fit category names within the bars.
 :::
+
+### Bar chart vs. Histogram
+
+- [Histogram](../histogram-chart/histogram-chart) shows quantitative data distribution. Each bar represents a range of numerical values, such as age. The bar length shows how many values fall into that range.
+- Bar chart displays qualitative data distribution, with bars representing nominal categories, such as countries. Unlike histograms, bar charts have visual gaps between bars to emphasize the discrete character of the categories.
+
+![](static/histogram-vs-bar-chart.png)
 
 ## Appearance
 
@@ -125,7 +125,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display bars for data points without values. When hovering over such data points, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Don't display bars for data points without values. When hovering over such data points, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/partially-trash.png)
 
@@ -141,7 +141,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ### Start the axes from zero
 
-When comparing bars, we are actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this is not accurate.
+When comparing bars, we're actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this isn't accurate.
 
 ![](static/deception-yes-no.png)
 

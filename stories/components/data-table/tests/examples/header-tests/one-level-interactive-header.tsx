@@ -1,12 +1,13 @@
 import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { Flex } from '@semcore/ui/base-components';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
-import { DataTable } from '@semcore/ui/data-table';
+import { DataTable, SelectableRows } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -29,63 +30,71 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
   {
     name: 'cpc',
     children: (
-      <DescriptionTooltip placement='right'>
-        Cpc 1
-        <DescriptionTooltip.Trigger
-          ml={1}
-          tag={ButtonLink}
-          addonLeft={InfoM}
-          color='icon-secondary-neutral'
-          aria-label='Additional info 1'
-          data-test-id='tooltip-without-interactive-el'
-        />
-        <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
-          Jesus Christ, Joe,
-          Pink. Let's move on.
-        </DescriptionTooltip.Popper>
-      </DescriptionTooltip>
+      <Flex alignItems='center'>
+        <DescriptionTooltip placement='right'>
+          Cpc 1
+          <DescriptionTooltip.Trigger
+            ml={1}
+            tag={ButtonLink}
+            size={100}
+            addonLeft={InfoM}
+            color='icon-secondary-neutral'
+            aria-label='Additional info 1'
+            data-test-id='tooltip-without-interactive-el'
+          />
+          <DescriptionTooltip.Popper aria-label='Additional info about item 1'>
+            Jesus Christ, Joe,
+            Pink. Let's move on.
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
     ),
   },
   {
     name: 'cpc',
     children: (
-      <DescriptionTooltip placement='right'>
-        Cpc 2
-        <DescriptionTooltip.Trigger
-          ml={1}
-          tag={ButtonLink}
-          addonLeft={InfoM}
-          color='icon-secondary-neutral'
-          aria-label='Additional info 2'
-          data-test-id='tooltip-with-interactive-el'
-        />
-        <DescriptionTooltip.Popper aria-label='Additional info about item 2'>
-          Jesus Christ, Joe,
-          {' '}
-          <Link>fucking forget</Link>
-          {' '}
-          about it. I'm Mr. Pink. Let's move on.
-        </DescriptionTooltip.Popper>
-      </DescriptionTooltip>
+      <Flex alignItems='center'>
+        <DescriptionTooltip placement='right'>
+          Cpc 2
+          <DescriptionTooltip.Trigger
+            ml={1}
+            tag={ButtonLink}
+            size={100}
+            addonLeft={InfoM}
+            color='icon-secondary-neutral'
+            aria-label='Additional info 2'
+            data-test-id='tooltip-with-interactive-el'
+          />
+          <DescriptionTooltip.Popper aria-label='Additional info about item 2'>
+            Jesus Christ, Joe,
+            {' '}
+            <Link>fucking forget</Link>
+            {' '}
+            about it. I'm Mr. Pink. Let's move on.
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
     ),
   },
   {
     name: 'cpc',
     children: (
-      <Tooltip
-        tag={Link}
-        title='Default tooltip contains short text explaining something about the trigger.'
-        data-test-id='tooltip-with-tag-link'
-      >
-        Keywords
-      </Tooltip>
+      <Flex alignItems='center'>
+        <Tooltip
+          tag={Link}
+          title='Default tooltip contains short text explaining something about the trigger.'
+          data-test-id='tooltip-with-tag-link'
+        >
+          Keywords
+        </Tooltip>
+      </Flex>
     ),
   },
   {
     name: 'kd',
     sortable: 'asc',
     children: (
-      <>
+      <Flex alignItems='center'>
         <Text noWrap>
           Keyword
           {' '}
@@ -94,23 +103,25 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
         <ButtonLink
           ml={1}
           addonLeft={LinkExternalM}
+          size={100}
           title='Go to our awesome article'
           data-test-id='interactive-icon'
           color='icon-secondary-neutral'
         />
-      </>
+      </Flex>
     ),
   },
   {
     name: 'keyword',
     children: (
-      <>
+      <Flex alignItems='center'>
         <Checkbox data-test-id='header-checkbox' />
         <DescriptionTooltip placement='right'>
           Hello
           <DescriptionTooltip.Trigger
             ml={1}
             tag={ButtonLink}
+            size={100}
             addonLeft={InfoM}
             color='icon-secondary-neutral'
             aria-label='Additional info'
@@ -120,7 +131,7 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
             Place an additional information here!
           </DescriptionTooltip.Popper>
         </DescriptionTooltip>
-      </>
+      </Flex>
     ),
   },
   {
@@ -141,6 +152,8 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
   },
 ];
 
+const selectedRows = new SelectableRows<string>();
+
 const Demo = (props: OneLevelInteractiveExampleProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'asc']);
   const sortedData = React.useMemo(
@@ -155,7 +168,6 @@ const Demo = (props: OneLevelInteractiveExampleProps) => {
       }),
     [sort],
   );
-  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   return (
 
     <DataTable
@@ -176,7 +188,6 @@ const Demo = (props: OneLevelInteractiveExampleProps) => {
         withScrollBar: props.withScrollBar,
       }}
       selectedRows={selectedRows}
-      onSelectedRowsChange={setSelectedRows}
       columns={columns}
       renderCell={(props) => {
         if (props.columnName === 'keyword') {
@@ -196,7 +207,7 @@ const Demo = (props: OneLevelInteractiveExampleProps) => {
         if (props.columnName === 'vol') {
           return (
             <>
-              <Text ellipsis={{ cropPosition: 'middle' }}>
+              <Text ellipsis:cropPosition='middle'>
                 {props.value}
               </Text>
             </>

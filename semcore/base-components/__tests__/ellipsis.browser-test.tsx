@@ -14,108 +14,46 @@ export const locators = {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  test.describe('Link with ellipsis', () => {
-    const ellipsisVariants = [
-      { ellipsis: true, size: 200, description: 'true and size: 200' },
-      { ellipsis: { cropPosition: 'middle' }, description: 'cropPosition: middle' },
-      { ellipsis: { cropPosition: 'end' }, color: 'text-success', description: 'cropPosition: end,  color: text- success' },
-      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
-      { ellipsis: { cropPosition: 'end', maxLine: 2 }, description: 'cropPosition: end, maxLine: 2' },
-    ];
-
-    ellipsisVariants.forEach((variant) => {
-      test(`Verify ellipsis on link with keyboard focus when ${variant.description}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
-      }, async ({ page }) => {
-        await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
-        await locators.link(page).waitFor({ state: 'visible' });
-        await page.waitForTimeout(200);
-
-        await test.step('Focus link with keyboard', async () => {
-          await page.keyboard.press('Tab');
-          await expect(locators.link(page)).toBeFocused();
-          await expect(page).toHaveScreenshot();
-        });
-      });
-
-      test(`Verify ellipsis on link with mouse hover when ${variant.description}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@link'],
-      }, async ({ page }) => {
-        await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
-        await page.waitForTimeout(200);
-
-        await test.step('Hover link and verify hint appears', async () => {
-          await locators.link(page).hover();
-
-          const hasMaxLine = typeof variant.ellipsis === 'object' && 'maxLine' in variant.ellipsis;
-          if (!hasMaxLine) {
-            await page.waitForTimeout(200);
-            await locators.hint(page).waitFor({ state: 'visible' });
-          }
-          await expect(page).toHaveScreenshot();
-        });
-      });
-    });
-  });
-
-  test.describe('Link without ellipsis', () => {
-    const noEllipsisVariants = [
-      { ellipsis: false, description: 'false' },
-      { ellipsis: { cropPosition: 'end', maxLine: 6 }, description: 'maxLine: 6 (text not truncated)' },
-    ];
-
-    noEllipsisVariants.forEach((variant) => {
-      test(`Verify no hint appears when ${variant.description}`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link'],
-      }, async ({ page }) => {
-        await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', variant);
-        await page.waitForTimeout(100);
-
-        await test.step('Focus and hover link - no hint should appear', async () => {
-          await page.keyboard.press('Tab');
-          await locators.link(page).hover();
-          await expect(locators.hint(page)).toHaveCount(0);
-          await expect(page).toHaveScreenshot();
-        });
-      });
-    });
-  });
-
   test.describe('Text with ellipsis', () => {
     const textVariants = [
-      { ellipsis: true, size: 100 },
-      { ellipsis: { cropPosition: 'end' }, size: 200 },
-      { ellipsis: true, size: 200 },
-      { ellipsis: { cropPosition: 'end' }, size: 400 },
-      { ellipsis: true, size: 500 },
-      { ellipsis: { cropPosition: 'end' }, size: 600 },
-      { ellipsis: true, size: 700 },
-      { ellipsis: { cropPosition: 'end' }, size: 800 },
-      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 2 }, size: 100 },
-      { ellipsis: { cropPosition: 'middle', lastRequiredSymbols: 7 }, size: 200 },
-      { ellipsis: { cropPosition: 'middle' }, size: 300 },
-      { ellipsis: { cropPosition: 'middle' }, size: 400 },
-      { ellipsis: { cropPosition: 'middle' }, size: 500 },
-      { ellipsis: { cropPosition: 'middle' }, size: 600 },
-      { ellipsis: { cropPosition: 'middle' }, size: 700 },
-      { ellipsis: { cropPosition: 'middle' }, size: 800 },
+      { ellipsis: { ellipsis: true }, size: 100 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 200 },
+      { ellipsis: { ellipsis: true }, size: 200 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 400 },
+      { ellipsis: { ellipsis: true }, size: 500 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 600 },
+      { ellipsis: { ellipsis: true }, size: 700 },
+      { ellipsis: { 'ellipsis:cropPosition': 'end' }, size: 800 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 }, size: 100 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 7 }, size: 200 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 300 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 400 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 500 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 600 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 700 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 800 },
     ];
 
     textVariants.forEach((variant) => {
-      const ellipsisDesc = variant.ellipsis === true ? 'true' : JSON.stringify(variant.ellipsis);
+      const ellipsisDesc = variant.ellipsis.ellipsis === true ? 'true' : JSON.stringify(variant.ellipsis);
       test(`Verify ellipsis on text with ellipsis: ${ellipsisDesc}, size: ${variant.size}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
 
         await locators.text(page).waitFor({ state: 'visible' });
-
         await page.waitForTimeout(200);
 
         await test.step('Hover text and verify hint appears', async () => {
           await locators.text(page).hover();
 
           await locators.hint(page).waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       });
@@ -153,6 +91,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Hover text and verify hint appears', async () => {
       await page.locator('[data-ui-name="Tag.Text"]').hover();
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });
@@ -184,10 +128,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 });
 
 /* =====================================================
-@functional
-Keyboard and mouse interactions - no snapshots here.
-We verify states, visibility, and attributes.
-===================================================== */
+  @functional
+  Keyboard and mouse interactions - no snapshots here.
+  We verify states, visibility, and attributes.
+  ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify hint shows full text on hover and hides on mouse leave', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],
@@ -209,10 +153,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify hint shows on link focus and hides when enableHintTriggerRef', {
+  test('Verify hint shows and hide via keyboard interaction', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', { ellipsis: true, enableHintTriggerRef: true });
+    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en');
     await locators.link(page).waitFor({ state: 'visible' });
     await page.waitForTimeout(200);
 
@@ -347,6 +291,136 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await textElement.hover();
       await expect(locators.hint(page)).toHaveCount(0);
+    });
+  });
+
+  const noEllipsisVariants = [
+    { ellipsis: { cropPosition: 'middle' }, hintProps: false, description: 'hint false when cropPosition: middle' },
+    { ellipsis: { cropPosition: 'end' }, hintProps: false, description: 'hint false when cropPosition: end' },
+  ];
+
+  noEllipsisVariants.forEach((variant) => {
+    test(`Verify no hint appears when: ${variant.description}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis', '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
+      await page.waitForTimeout(100);
+
+      await test.step('Hover text - no hint should appear', async () => {
+        await locators.text(page).hover();
+        await expect(locators.hint(page)).toHaveCount(0);
+      });
+    });
+  });
+
+  test.describe(` Clipboard copy`, () => {
+    const fullText =
+      'Intergalactic is a constantly developing system of UI components, guidelines and UX patterns for building exceptional web experiences.';
+    const longUrl = 'https://example.com/very/long/path/to/resource/with/many/segments/file.pdf';
+
+    const storyPath = 'stories/components/base-components/ellipsis/tests/examples/copy_full_text.tsx';
+
+    async function setupClipboardMock(page: Page) {
+      await page.evaluate(() => {
+        (window as any).__clipboardWritten = '';
+        if (!navigator.clipboard) {
+          Object.defineProperty(navigator, 'clipboard', {
+            value: {},
+            writable: true,
+            configurable: true,
+          });
+        }
+        (navigator.clipboard as any).writeText = (text: string) => {
+          (window as any).__clipboardWritten = text;
+          return Promise.resolve();
+        };
+      });
+    }
+
+    async function selectAllAndCopy(page: Page, element: ReturnType<typeof page.locator>) {
+      await element.click({ clickCount: 3 });
+      const modifier = process.platform === 'darwin' ? 'Meta' : 'Control';
+      await page.keyboard.press(`${modifier}+c`);
+      await page.waitForTimeout(100);
+    }
+
+    async function getClipboardText(page: Page): Promise<string> {
+      return page.evaluate(() => (window as any).__clipboardWritten);
+    }
+
+    test('Verify full text is copied from end-crop ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName == 'webkit') test.skip(); // doesnt work properly for webkit in headless mode
+
+      const textElements = locators.text(page);
+      await textElements.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select end-crop text and copy', async () => {
+        const endCropText = page.locator('[data-ui-name="Text"]').nth(3);
+        await selectAllAndCopy(page, endCropText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(fullText);
+      });
+    });
+
+    test('Verify full text is copied from middle-crop ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName == 'webkit') test.skip(); // doesnt work properly in headless mode
+
+      const textElements = locators.text(page);
+      await textElements.first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select middle-crop text and copy', async () => {
+        const middleCropText = page.locator('[data-ui-name="Text"]').nth(6);
+        await selectAllAndCopy(page, middleCropText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(fullText);
+      });
+    });
+
+    test('Verify full link is copied from middle-crop link ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName != 'chromium') test.skip();
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select middle-crop link text and copy', async () => {
+        const linkText = page.locator('[data-ui-name="Link.Text"]').first();
+        await selectAllAndCopy(page, linkText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(longUrl);
+      });
+    });
+
+    test('Verify full link is copied from end-crop link ellipsis', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
+    }, async ({ page, browserName }) => {
+      await loadPage(page, storyPath, 'en');
+      if (browserName != 'chromium') test.skip(); // doesnt work properly  in headless mode
+
+      await page.waitForTimeout(300);
+      await setupClipboardMock(page);
+
+      await test.step('Select middle-crop link text and copy', async () => {
+        const linkText = page.locator('[data-ui-name="Link.Text"]').nth(1);
+        await selectAllAndCopy(page, linkText);
+
+        const clipboardContent = await getClipboardText(page);
+        expect(clipboardContent).toBe(longUrl);
+      });
     });
   });
 });

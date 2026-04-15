@@ -1,7 +1,7 @@
 {
   "name": "@semcore/base-components",
   "description": "Semrush Base Components",
-  "version": "16.4.2",
+  "version": "16.5.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -13,9 +13,9 @@
   },
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
+      "types": "./lib/types/index.d.ts",
       "import": "./lib/esm/index.mjs",
-      "types": "./lib/types/index.d.ts"
+      "require": "./lib/cjs/index.js"
     }
   },
   "dependencies": {

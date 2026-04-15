@@ -1,4 +1,4 @@
-type CommonEllipsisSettings = {
+export type CommonEllipsisSettings = {
   /**
    * Common container element for few ellipsises for improve performance.
    */
@@ -16,7 +16,7 @@ type CommonEllipsisSettings = {
   observeChildrenMutations?: boolean;
 };
 
-type MiddleCroppedEllipsisSettings = {
+export type MiddleCroppedEllipsisSettings = {
   /**
    * Crop position
    * @default end
@@ -31,7 +31,7 @@ type MiddleCroppedEllipsisSettings = {
   lastRequiredSymbols?: number;
 };
 
-type EndCroppedEllipsisSettings = {
+export type EndCroppedEllipsisSettings = {
   /**
    * Crop position
    * @default end
@@ -43,9 +43,11 @@ type EndCroppedEllipsisSettings = {
    * @default 1
    */
   maxLine?: number;
+
+  lastRequiredSymbols?: never;
 };
 
-export type EllipsisSettings = Readonly<(EndCroppedEllipsisSettings | MiddleCroppedEllipsisSettings) & CommonEllipsisSettings>;
+export type EllipsisSettings = (EndCroppedEllipsisSettings | MiddleCroppedEllipsisSettings) & CommonEllipsisSettings;
 
 export type Events = {
   isEllipsized: (isEllipsized: boolean) => void;

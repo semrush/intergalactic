@@ -1,12 +1,12 @@
 import type { BoxProps } from '@semcore/base-components';
-import { Flex, Box, Hint } from '@semcore/base-components';
+import { Box, Hint } from '@semcore/base-components';
 import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import type { TextProps } from '@semcore/typography';
+import type { TextProps, TextHintProps } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -47,6 +47,12 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     }
   }
 
+  getTextProps(): TextHintProps {
+    return {
+      'hint:triggerRef': this.containerRef,
+    };
+  }
+
   render() {
     const {
       styles,
@@ -68,10 +74,15 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     const SInner = Box;
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
     const showHint = children === undefined || title;
+
+    const excludeProps = ['title', 'aria-disabled'];
+    if (!this.asProps['use:disabled']) {
+      excludeProps.push('disabled');
+    }
+
     return sstyled(styles)(
       <>
         <SLink
-          role='link'
           tabIndex={disabled ? -1 : 0}
           use:href={disabled ? undefined : href}
           visually-disabled={disabled}
@@ -79,7 +90,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
           text-color={resolveColor(color)}
           tag='a'
           ref={this.containerRef}
-          __excludeProps={['disabled', 'aria-disabled', 'title']}
+          __excludeProps={excludeProps}
           aria-label={showHint ? hintContent : undefined}
         >
           <SInner
@@ -120,7 +131,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
 function LinkText(props: IRootComponentProps) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Text} tag='span' />);
+  return sstyled(styles)(<SText render={Text} />);
 }
 
 function Addon(props: IRootComponentProps) {

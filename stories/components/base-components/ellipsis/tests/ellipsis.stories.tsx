@@ -14,6 +14,44 @@ const meta: Meta = {
 
 export default meta;
 
+const commonArgTypes = {
+  ellipsis: {
+    control: 'select',
+    options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
+    mapping: {
+      'false': { ellipsis: false },
+      'true': { ellipsis: true },
+      'cropPosition:middle': { 'ellipsis:cropPosition': 'middle' },
+      'cropPosition:end': { 'ellipsis:cropPosition': 'end' },
+      'cropPosition:end maxLine:2': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 2 },
+      'cropPosition:end maxLine:6': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 6 },
+      'cropPosition:middle lastRequiredSymbols:3': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 3 },
+      'cropPosition:middle lastRequiredSymbols:0': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 0 },
+    },
+  },
+  w: {
+    control: { type: 'number' },
+  },
+  // UIK-4923: hint=false skips ellipsis calculation for cropPosition=end (CSS-only),
+  // but still calculates for cropPosition=middle (needs JS). No hint shown in either case.
+  hintProps: {
+    control: 'select',
+    options: ['default', 'false'],
+    mapping: {
+      default: undefined,
+      false: false,
+    },
+  },
+  hintPlacement: {
+    control: { type: 'select' },
+    options: ['top', 'bottom', 'left', 'right'],
+  },
+  size: {
+    control: { type: 'select' },
+    options: [undefined, 100, 200, 300, 400, 500, 600, 700, 800],
+  },
+} as const;
+
 export const TableLink: StoryObj = {
   render: TableLinkExample,
 };
@@ -21,24 +59,7 @@ export const TableLink: StoryObj = {
 export const Link: StoryObj<typeof LinkExampleProps> = {
   render: LinkExample,
   argTypes: {
-    ellipsis: {
-      control: 'select',
-      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
-      mapping: {
-        'false': false,
-        'true': true,
-        'cropPosition:middle': { cropPosition: 'middle' },
-        'cropPosition:end': { cropPosition: 'end' },
-        'cropPosition:end maxLine:2': { cropPosition: 'end', maxLine: 2 },
-        'cropPosition:end maxLine:6': { cropPosition: 'end', maxLine: 6 },
-        'cropPosition:middle lastRequiredSymbols:3': { cropPosition: 'middle', lastRequiredSymbols: 3 },
-        'cropPosition:middle lastRequiredSymbols:0': { cropPosition: 'middle', lastRequiredSymbols: 0 },
-      },
-    },
-    w: {
-      control: { type: 'number' },
-      description: 'Width of the link text',
-    },
+    ...commonArgTypes,
     color: {
       control: { type: 'select' },
       options: [
@@ -50,11 +71,6 @@ export const Link: StoryObj<typeof LinkExampleProps> = {
       ],
       description: 'Text color',
     },
-    size: {
-      control: { type: 'select' },
-      options: [undefined, 100, 200, 300, 400, 500],
-      description: 'Text size',
-    },
     active: {
       control: { type: 'boolean' },
       description: 'Active state of the link',
@@ -63,14 +79,7 @@ export const Link: StoryObj<typeof LinkExampleProps> = {
       control: { type: 'boolean' },
       description: 'Disabled state of the link',
     },
-    enableHintTriggerRef: {
-      control: { type: 'boolean' },
-      description: 'Enable triggerRef in hintProps (sets link as hint trigger)',
-    },
-    hintProps: {
-      control: { type: 'object' },
-      description: 'Hint properties (triggerRef is set automatically when enableHintTriggerRef is true)',
-    },
+
   },
   args: LinkExampleProps,
 };
@@ -78,29 +87,8 @@ export const Link: StoryObj<typeof LinkExampleProps> = {
 export const TrimWithTextSize: StoryObj<typeof TextSizeExampleProps> = {
   render: TrimWithTextSizeExample,
   argTypes: {
-    ellipsis: {
-      control: 'select',
-      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
-      mapping: {
-        'false': false,
-        'true': true,
-        'cropPosition:middle': { cropPosition: 'middle' },
-        'cropPosition:end': { cropPosition: 'end' },
-        'cropPosition:end maxLine:2': { cropPosition: 'end', maxLine: 2 },
-        'cropPosition:end maxLine:6': { cropPosition: 'end', maxLine: 6 },
-        'cropPosition:middle lastRequiredSymbols:3': { cropPosition: 'middle', lastRequiredSymbols: 3 },
-        'cropPosition:middle lastRequiredSymbols:0': { cropPosition: 'middle', lastRequiredSymbols: 0 },
+    ...commonArgTypes,
 
-      },
-    },
-
-    size: {
-      control: { type: 'select' },
-      options: ['100', '200', '300', '400', '500', '600', '700', '800'],
-    },
-    w: {
-      control: { type: 'number' },
-    },
   },
   args: TextSizeExampleProps,
 };

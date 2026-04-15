@@ -88,10 +88,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesEllipsis = [
-    { w: 100, behavior: 'auto', desc: 'default' },
-    { w: 100, behavior: 'auto', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
-    { w: 100, behavior: 'manual', desc: 'default' },
-    { w: 100, behavior: 'manual', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
+    { w: 100, behavior: 'auto', hintPlacement: 'right', desc: 'default' },
+    { w: 100, behavior: 'auto', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+    { w: 100, behavior: 'manual', hintPlacement: 'right', desc: 'default' },
+    { w: 100, behavior: 'manual', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
 
   ];
   variablesEllipsis.forEach((item) => {
@@ -115,9 +115,17 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.waitForTimeout(100);
 
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await page.waitForFunction(() => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      });
 
       await locators.tabPanels(page).nth(1).hover();
       await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+      await page.waitForFunction(() => {
+        const els = document.querySelectorAll('[data-ui-name="Hint"]');
+        return els.length >= 2 && getComputedStyle(els[1]).opacity === '1';
+      });
 
       await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
       await expect(page).toHaveScreenshot();

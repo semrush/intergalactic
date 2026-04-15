@@ -12,12 +12,25 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
       return `Unexpected design token "${usedToken}" in property "${property}". Did you mean ${recommendation}?`;
     return `Unexpected design token "${usedToken}" in property "${property}".`;
   },
+  deprecated: (token) => {
+    return `Design token "${token}" is deprecated and will be removed in future versions. Please use arbitrary numeric values.`;
+  },
 });
 
 type TokensCache = Record<string, unknown>;
 
 let cachedTokens: TokensCache | null = null;
 let cachedTokensPath: string | null = null;
+
+const deprecatedTokens = new Set<string>([
+  '--intergalactic-z-index-deep',
+  '--intergalactic-z-index-overlay',
+  '--intergalactic-z-index-modal',
+  '--intergalactic-z-index-popper',
+  '--intergalactic-z-index-dropdown',
+  '--intergalactic-z-index-tooltip',
+  '--intergalactic-z-index-notice-bubble',
+]);
 
 function loadTokens(tokensSource: string): TokensCache | null {
   if (cachedTokens && cachedTokensPath === tokensSource) {
@@ -55,29 +68,41 @@ const stringifyList = (list: string[]) => {
 };
 
 type Replacement = { from: string; to: string } | null;
+type DeprecatedToken = string | null;
+
+type ValidationResult = {
+  replacement: Replacement;
+  deprecatedToken: DeprecatedToken;
+};
+
 const validateToken = (
   value: string,
   prefix: string,
   designTokensSet: Set<string>,
   designTokensList: string[],
-): Replacement => {
+): ValidationResult => {
   let replacement: Replacement = null;
+  let deprecatedToken: DeprecatedToken = null;
 
   const parsedValue = postcssValueParser(value);
   parsedValue.walk((node) => {
-    if (replacement) return;
+    if (replacement || deprecatedToken) return;
     if (node.type === 'function' && node.value === 'var' && node.nodes.length > 0) {
       const token = node.nodes[0].value;
-      if (token.startsWith(prefix) && !designTokensSet.has(token)) {
-        replacement = {
-          from: token,
-          to: stringifyList(getClosestTokens(token, designTokensList)),
-        };
+      if (token.startsWith(prefix)) {
+        if (!designTokensSet.has(token)) {
+          replacement = {
+            from: token,
+            to: stringifyList(getClosestTokens(token, designTokensList)),
+          };
+        } else if (deprecatedTokens.has(token)) {
+          deprecatedToken = token;
+        }
       }
     }
   });
 
-  return replacement;
+  return { replacement, deprecatedToken };
 };
 
 const validateDecl = (
@@ -90,7 +115,7 @@ const validateDecl = (
   const property = decl.prop;
   const value = decl.value;
 
-  const replacement = validateToken(value, prefix, designTokensSet, designTokensList);
+  const { replacement, deprecatedToken } = validateToken(value, prefix, designTokensSet, designTokensList);
 
   if (replacement) {
     stylelint.utils.report({
@@ -98,6 +123,16 @@ const validateDecl = (
       result,
       node: decl,
       message: messages.expected(property, replacement.from, replacement.to),
+    });
+  }
+
+  if (deprecatedToken) {
+    stylelint.utils.report({
+      ruleName,
+      result,
+      node: decl,
+      message: messages.deprecated(deprecatedToken),
+      severity: 'warning',
     });
   }
 };

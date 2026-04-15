@@ -125,11 +125,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   const variablesEllipsis = [
-    { w: 100, size: 'l', behavior: 'auto', desc: 'default' },
-    { w: 100, size: 'm', behavior: 'auto', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
-    { w: 100, size: 'l', behavior: 'manual', desc: 'default' },
-    { w: 100, size: 'm', behavior: 'manual', ellipsis: { cropPosition: 'middle' }, desc: 'cropPosition:middle' },
-
+    { w: 100, size: 'l', behavior: 'auto', hintPlacement: 'right', desc: 'default' },
+    { w: 100, size: 'm', behavior: 'auto', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
+    { w: 100, size: 'l', behavior: 'manual', hintPlacement: 'right', desc: 'default' },
+    { w: 100, size: 'm', behavior: 'manual', ellipsis: { 'ellipsis:cropPosition': 'middle' }, hintPlacement: 'right', desc: 'cropPosition:middle' },
   ];
   variablesEllipsis.forEach((item) => {
     test(`Verify ellipsis in Tab lines behavior = ${item.behavior} size = ${item.size} ellipsis = ${item.desc} styles`, {
@@ -145,11 +144,21 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.waitForTimeout(100);
 
       await page.keyboard.press('Tab');
+      await expect(locators.tabLines(page).nth(1)).toBeFocused();
       await page.waitForTimeout(100);
       await page.keyboard.press('ArrowLeft');
+      await expect(locators.tabLines(page).nth(0)).toBeFocused();
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await page.waitForFunction(() => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      });
       await locators.tabLines(page).nth(2).hover();
       await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+      await page.waitForFunction(() => {
+        const els = document.querySelectorAll('[data-ui-name="Hint"]');
+        return els.length >= 2 && getComputedStyle(els[1]).opacity === '1';
+      });
       await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
       await expect(page).toHaveScreenshot();
     });

@@ -17,6 +17,7 @@ export const locators = {
     const base = page.locator('[data-ui-name="Button.Addon"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
 };
 
@@ -187,14 +188,20 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
-      const hint = page.locator('[data-ui-name="Hint"]');
-
+      const hint = page.locator('div[data-ui-name="Hint"]');
+      await locators.button(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
+          await expect(locators.button(page).first()).toBeFocused();
           await hint.waitFor({ state: 'visible' });
-
-          await page.getByText('Addon only').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -203,6 +210,12 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -362,13 +375,21 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
-
-      const count = await locators.button(page).count();
+      const hint = page.locator('div[data-ui-name="Hint"]');
+      await locators.button(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
 
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+          await expect(locators.button(page).first()).toBeFocused();
+          await hint.waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -377,6 +398,12 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -536,13 +563,21 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
-
-      const count = await locators.button(page).count();
+      const hint = page.locator('div[data-ui-name="Hint"]');
+      await locators.button(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(100);
 
       if (!item.active && !item.disabled) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
-          await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+          await expect(locators.button(page).first()).toBeFocused();
+          await hint.waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -551,6 +586,12 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
+          await page.waitForFunction(
+            () => {
+              const el = document.querySelector('[data-ui-name="Hint"]');
+              return el && getComputedStyle(el).opacity === '1';
+            },
+          );
           await expect(page).toHaveScreenshot();
         });
       }
@@ -560,6 +601,36 @@ test.describe(`${TAG.VISUAL} `, () => {
           await expect(page).toHaveScreenshot();
         });
       }
+    });
+  });
+
+  const ellipsisVariants = [
+    { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 'l', description: 'cropPosition: middle size: l' },
+    { ellipsis: { 'ellipsis:cropPosition': 'end' }, description: 'cropPosition: end' },
+    { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
+  ];
+
+  ellipsisVariants.forEach((variant) => {
+    test(`Verify Ellipsis Hint visual ${variant.description}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@button'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-with-ellipsis.tsx', 'en', variant);
+      await locators.button(page).nth(0).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
+
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page).nth(0)).toBeFocused();
+      await locators.button(page).nth(0).hover();
+
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(locators.hint(page)).toHaveCount(1);
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
+      await expect(page).toHaveScreenshot();
     });
   });
 });
@@ -612,5 +683,61 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await locators.button(page).nth(2).hover();
     await expect(page.getByText('Hint Button Addon')).toHaveCount(0);
     await expect(page.getByText('Tooltip Button Addon')).toHaveCount(1);
+  });
+
+  const ellipsisVariants = [
+    { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 'l', description: 'cropPosition: middle size: l' },
+    { ellipsis: { 'ellipsis:cropPosition': 'end' }, description: 'cropPosition: end' },
+    { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 }, description: 'cropPosition: middle, , lastRequiredSymbols: 2' },
+  ];
+
+  ellipsisVariants.forEach((variant) => {
+    test(`Verify Hint Shown on mouse hover when ${variant.description}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@link'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-with-ellipsis.tsx', 'en', variant);
+      await page.waitForTimeout(200);
+
+      await test.step('Hover link and verify hint appears', async () => {
+        await locators.button(page).nth(0).hover();
+
+        await page.waitForTimeout(200);
+        await locators.hint(page).waitFor({ state: 'visible' });
+        await expect(locators.hint(page)).toHaveCount(1);
+      });
+    });
+
+    test(`Verify Ellipsis Hint on focus  ${variant.description}`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@button'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-with-ellipsis.tsx', 'en', variant);
+      await locators.button(page).nth(0).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200);
+
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page).nth(0)).toBeFocused();
+
+      await locators.hint(page).waitFor({ state: 'visible' });
+      await expect(locators.hint(page)).toHaveCount(1);
+    });
+  });
+
+  const noEllipsisVariants = [
+    { ellipsis: false, description: 'false' },
+  ];
+
+  noEllipsisVariants.forEach((variant) => {
+    test(`Verify no hint appears when ${variant.description}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@button'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/button/tests/examples/button-with-ellipsis.tsx', 'en', variant);
+      await page.waitForTimeout(100);
+
+      await test.step('Focus and hover  - no hint should appear', async () => {
+        await page.keyboard.press('Tab');
+        await locators.button(page).nth(0).hover();
+        await expect(locators.hint(page)).toHaveCount(0);
+      });
+    });
   });
 });

@@ -4,8 +4,9 @@ SHintPopper {
   top: 0;
   left: 0;
   max-width: 250px;
-  word-break: break-all;
-  visibility: hidden;
+  overflow-wrap: break-word;
+  opacity: 0;
+  pointer-events: none;
 
   background: var(--intergalactic-tooltip-invert, #191b23);
   border: 1px solid var(--intergalactic-border-tooltip-invert, #6c6e79);

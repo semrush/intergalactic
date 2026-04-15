@@ -47,14 +47,16 @@ In some cases, widget's height needs to be reduced in the empty state to save sp
 
 Some common empty states in widgets are:
 
+<!-- vale DevDocs.Contractions = NO -->
 - No data / Nothing found
 - Something went wrong (has a specific version: "Cannot filter data")
 - Product isn't set up
 - No more results
+<!-- vale DevDocs.Contractions = YES -->
 
 ## No data
 
-Use this state when there is no data or the system cannot display it for some reason. If the widget has a title, it should also be displayed in this state. In this case, display the following:
+Use this state when there is no data or the system can't display it for some reason. If the widget has a title, it should also be displayed in this state. In this case, display the following:
 
 - An illustration (use one of the [Chart type or Data type illustrations](../../style/illustration/illustration) to represent the kind of data that's normally displayed in the widget).
 - A message specifying why there's no data and what can be done to obtain it.
@@ -98,11 +100,13 @@ Display the following:
 - A text message specifying that we're working on the issue and asking the user to try again later.
 - Recommended: a helpful button (for example to reload the widget or the whole page).
 
+<!-- vale off -->
 Table: Something went wrong message examples
 
 | Large widget              | Medium widget                | Text                                                                                                                       |
 | ------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/big-error.png) | ![](static/medium-error.png) | Title: "Something went wrong". Description: "We are aware of the issue and are working to fix it. Please try again later". |
+<!-- vale on -->
 
 ### We don’t know there are problems in the system
 
@@ -136,11 +140,13 @@ Display the following:
 - An illustration.
 - A text message specifying what the user should do.
 
+<!-- vale DevDocs.Contractions = NO -->
 Table: Custom message examples
 
 | Large widget                     | Medium widget                       | Text                                                                                                                             |
 | -------------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/big-error-filter.png) | ![](static/medium-error-filter.png) | Title: "Cannot {filter/search/sort} data". Description: "{Provide helpful information for the user to deal with the situation}". |
+<!-- vale DevDocs.Contractions = YES -->
 
 ### Set up your product
 

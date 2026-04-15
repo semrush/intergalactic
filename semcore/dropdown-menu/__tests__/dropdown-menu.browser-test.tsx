@@ -105,9 +105,17 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await pressKeyMultipleTimes(page, 'ArrowDown', 4);
     await page.keyboard.press('Tab');
+    await expect.poll(async () => {
+      return await locators.menuitem(page, 4).getAttribute('class');
+    }, { timeout: 1000 }).toMatch(/highlighted/);
+    await locators.menuitem(page, 4).scrollIntoViewIfNeeded();
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowDown');
+    await expect.poll(async () => {
+      return await locators.menuitem(page, 5).getAttribute('class');
+    }, { timeout: 1000 }).toMatch(/highlighted/);
+    await locators.menuitem(page, 5).scrollIntoViewIfNeeded();
     await expect(page).toHaveScreenshot();
   });
 
@@ -123,6 +131,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+      await expect(locators.button(page)).not.toBeFocused();
       await expect(page).toHaveScreenshot();
     });
   });
@@ -205,6 +214,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', item);
 
+      await locators.menuitemcheckbox(page, 0).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
       if (item.size == 'm') {
@@ -335,6 +345,14 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await locators.button(page).click();
     await locators.menuitem(page, 0).waitFor({ state: 'visible' });
+
+    await test.step('Verify no hover style on group title', async () => {
+      await page.locator('[data-ui-name="Dropdown.Item"]').first().hover();
+      await checkStyles(page.locator('[data-ui-name="Dropdown.Item"]').first(), {
+        'background-color': 'rgba(0, 0, 0, 0)',
+        'cursor': 'default',
+      });
+    });
 
     await test.step('Verify item with hint L size', async () => {
       await checkStyles(locators.itemInGroup(page).nth(1), {
@@ -470,7 +488,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page).click();
       await locators.menuitemradio(page, 4).waitFor({ state: 'visible' });
 
+      await deleteButton4.scrollIntoViewIfNeeded();
       await deleteButton4.hover();
+      await page.waitForFunction(() => {
+        const el = document.querySelector('[data-ui-name="Hint"]');
+        return el && getComputedStyle(el).opacity === '1';
+      });
       await page.getByText('Delete item').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
     });
@@ -512,13 +535,19 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.MOUSE,
       '@dropdown-menu'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/with_ellipsis.tsx', 'en');
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/with_ellipsis.tsx', 'en', { hintPlacement: 'bottom' });
 
-    await test.step('Verify Ellipsis applies and Hint shown on Hover with placement Top', async () => {
+    await test.step('Verify Ellipsis applies and Hint shown on Hover with default placement', async () => {
       await locators.button(page).click();
       await locators.menuitem(page, 0).waitFor({ state: 'visible' });
       await locators.menuitem(page, 0).hover();
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
 
@@ -534,6 +563,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.hint(page).waitFor({ state: 'hidden' });
       await page.keyboard.press('ArrowDown');
       await locators.hint(page).waitFor({ state: 'visible' });
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        },
+      );
       await expect(page).toHaveScreenshot();
     });
   });
@@ -549,12 +584,16 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await expect(locators.button(page)).toBeFocused();
     await page.keyboard.press('Enter');
-    await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
+    const item33 = page.locator('[data-test-id="item-project 33"]');
+    const item33Content = item33.locator('[data-ui-name="DropdownMenu.Item.Content"]');
+    const item36 = page.locator('[data-test-id="item-project 36"]');
+    const item36Content = item36.locator('[data-ui-name="DropdownMenu.Item.Content"]');
+    await item33.waitFor({ state: 'visible' });
 
-    await expect(locators.menuitemradio(page, 'project 33')).toBeFocused();
+    await expect(item33Content).toBeFocused({ timeout: 10000 });
 
     await pressKeyMultipleTimes(page, 'ArrowDown', 3);
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
+    await expect(item36Content).toBeFocused();
 
     await page.keyboard.press('Tab');
     const createProject = page.getByRole('button', { name: 'Create new project' });
@@ -565,15 +604,15 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(input).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
+    await expect(item36Content).toBeFocused();
 
     await page.keyboard.press('Space');
-    await locators.menuitemradio(page, 'project 36').waitFor({ state: 'hidden' });
+    await item36.waitFor({ state: 'hidden' });
     await expect(locators.button(page)).toHaveText('project 36');
 
     await page.keyboard.press('ArrowDown');
-    await locators.menuitemradio(page, 'project 36').waitFor({ state: 'visible' });
-    await expect(locators.menuitemradio(page, 'project 36')).toBeFocused();
+    await item36.waitFor({ state: 'visible' });
+    await expect(item36Content).toBeFocused();
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -1308,6 +1347,35 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Enter');
     await locators.menuitemradio(page, 'project 10').waitFor({ state: 'visible' });
     await expect(page.getByText('project 10').first()).toBeVisible();
+  });
+
+  test('Verify Focus on input search when menu opened by keyboard ', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@dropdown-menu'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/test-with-content-on-page.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.menuitem(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(200); // this timeout needed for the test to make sure that focus does not move
+
+    await expect(page.getByRole('textbox')).toBeFocused();
+  });
+
+  test('Verify Focus on input search when menu opened by mouse ', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@dropdown-menu'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/test-with-content-on-page.tsx', 'en');
+
+    await page.getByRole('combobox').first().click();
+    await locators.menuitem(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(200); // this timeout needed for the test to make sure that focus does not move
+
+    await expect(page.getByRole('textbox')).toBeFocused();
   });
 
   test.describe('DD menu with input tags as trigger', () => {

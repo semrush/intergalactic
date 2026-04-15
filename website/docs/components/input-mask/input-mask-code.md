@@ -26,7 +26,7 @@ Remember to set a placeholder for the input field. The placeholder should match 
 
 ## Aliases
 
-`aliases` is the object that defines how characters in the mask are validated. By default, they are configured as follows:
+`aliases` is the object that defines how characters in the mask are validated. By default, they're configured as follows:
 
 - `9` - numbers
 - `a` - Latin and Cyrillic letters in any case
@@ -44,7 +44,7 @@ Remember to set a placeholder for the input field. The placeholder should match 
 
 `pipe` is a function that processes and changes the `InputMask` value after user input.
 
-In the example below, it is used for formatting and validating the card's expire date input. The focus is switched to the next input by the `onSucces` event. It is called when the entered value fully matches the input mask.
+In the example below, it's used for formatting and validating the card's expire date input. The focus is switched to the next input by the `onSucces` event. It's called when the entered value fully matches the input mask.
 
 ::: sandbox
 

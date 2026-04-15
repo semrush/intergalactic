@@ -111,6 +111,16 @@ class Value extends Component {
     defaultValue: '',
   };
 
+  inputRef = React.createRef();
+
+  componentDidMount() {
+    if (this.asProps.autoFocus) {
+      setTimeout(() => {
+        this.inputRef.current?.focus();
+      }, 10); // in autoFocusEnhance it was boolean `true`. In FF and Safari was floating bug with focus, so, I set 10.
+    }
+  }
+
   uncontrolledProps() {
     return {
       value: (e) => e.target.value,
@@ -126,12 +136,14 @@ class Value extends Component {
         {(neighborLocation) =>
           sstyled(styles)(
             <SValue
+              ref={this.inputRef}
               render={Box}
               inAfterOutline
               neighborLocation={neighborLocation}
               tag='input'
               type='text'
               aria-invalid={state === 'invalid'}
+              use:autoFocus={false}
             />,
           )}
       </NeighborLocation.Detect>

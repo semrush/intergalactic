@@ -19,12 +19,9 @@ const Demo = () => {
         onClose={() => setFirstHidden(true)}
         hidden={firstHidden}
         title='New tool was launched'
-      >
-        Hi there! There a cool new tool was launched. Take a look!
-      </NoticeSmart>
-      <NoticeSmart theme='muted' label={<QuestionAltM />} hidden={secondHidden}>
-        It's just a regular message or hint.
-      </NoticeSmart>
+        text='Hi there! There a cool new tool was launched. Take a look!'
+      />
+      <NoticeSmart theme='muted' label={<QuestionAltM />} hidden={secondHidden} text="It's just a regular message or hint." />
       <NoticeSmart
         aria-label='New feature announcement'
         theme='success'
@@ -38,23 +35,19 @@ const Demo = () => {
             Learn more
           </Button>
         )}
-      >
-        Unveiling a breakthrough feature, our latest product enhancement redefines the user
-        experience with unparalleled innovation and functionality.
-      </NoticeSmart>
+        text='Unveiling a breakthrough feature, our latest product enhancement redefines the user experience with unparalleled innovation and functionality.'
+      />
       <NoticeSmart
         theme='warning'
         title='The Link Building tool is under maintenance.'
         label={<WarningM />}
         aria-label='Maintenance notice'
-      >
-        Starting new campaigns is temporarily unavailable, but you can continue working with your
-        existing Link Building campaigns.
-      </NoticeSmart>
-      <NoticeSmart theme='danger'>
-        Once you click Regenerate, the article will be rewritten. The previous version cannot be
-        restored.
-      </NoticeSmart>
+        text='Starting new campaigns is temporarily unavailable, but you can continue working with your existing Link Building campaigns.'
+      />
+      <NoticeSmart
+        theme='danger'
+        text='Once you click Regenerate, the article will be rewritten. The previous version cannot be restored.'
+      />
     </Flex>
   );
 };

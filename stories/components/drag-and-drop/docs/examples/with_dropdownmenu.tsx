@@ -79,7 +79,7 @@ const Demo = () => {
         </Button.Addon>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper hMax={800} aria-labelledby='popper_id'>
-        <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
+        <Flex direction='column' alignItems='flex-start' pt={2} px={2} pb={1} gap={3}>
           <Text bold id='popper_id'>
             Show table columns
           </Text>
