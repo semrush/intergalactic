@@ -8,14 +8,15 @@ type Props = {
   loading?: boolean;
   withHeaderScrollBar?: boolean;
   topOffset?: number;
+  withAnimation: boolean;
 };
 
 const SCROLL_BAR_HEIGHT = 12;
 
-export class ScrollBarsRoot extends React.PureComponent<Props> {
+export class ScrollBars extends React.PureComponent<Props> {
   render() {
     const SScrollAreaBarInHeader = ScrollArea.Bar;
-    const { loading, topOffset, withHeaderScrollBar } = this.props;
+    const { loading, topOffset, withHeaderScrollBar, withAnimation } = this.props;
 
     return sstyled(styles)(
       <>
@@ -25,7 +26,7 @@ export class ScrollBarsRoot extends React.PureComponent<Props> {
             top={topOffset - SCROLL_BAR_HEIGHT}
             zIndex={20}
             // @ts-ignore
-            withAnimation={this.withAnimation}
+            withAnimation={withAnimation}
           />
         )}
 

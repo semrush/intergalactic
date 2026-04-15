@@ -2,7 +2,6 @@ import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import findComponent from '@semcore/core/lib/utils/findComponent';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { forkRef } from '@semcore/core/lib/utils/ref';
@@ -23,7 +22,7 @@ import type {
   ColumnItemConfig,
   DataRowItem,
 } from './DataTable.types';
-import { ScrollBarsRoot } from './ScrollBars';
+import { ScrollBars } from './ScrollBars';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import { SelectableRows } from '../../store/SelectableRows';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
@@ -34,7 +33,7 @@ import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 import { Head } from '../Head/Head';
-import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
+import type { HeadPropsInner } from '../Head/Head.types';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -1023,10 +1022,11 @@ class DataTableRoot<
           </SDataTable>
         </ScrollArea.Container>
 
-        <ScrollBarsRoot
+        <ScrollBars
           loading={loading}
           topOffset={topOffset}
           withHeaderScrollBar={headerProps?.withScrollBar}
+          withAnimation={this.withAnimation}
         />
 
         {selectedRows !== undefined && (
