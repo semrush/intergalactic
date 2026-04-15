@@ -43,6 +43,11 @@ export type SimpleHintPopperProps = {
   defaultVisible?: boolean;
   /** Function called when visibility changes */
   onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
+  /**
+   * Set ignore for portal stacking
+   * @default true
+   */
+  ignorePortalsStacking?: boolean;
 };
 
 type DefaultProps = {
@@ -50,6 +55,7 @@ type DefaultProps = {
   timeout: number | [number, number];
   timingFunction: DataType.EasingFunction;
   placement?: Placement;
+  ignorePortalsStacking?: boolean;
 };
 
 type State = {
@@ -100,6 +106,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     timeout: [500, 500],
     timingFunction: 'ease-out',
     placement: 'top',
+    ignorePortalsStacking: true,
   };
 
   constructor(props: SimpleHintPopperProps) {
@@ -321,7 +328,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
 
   render() {
     const SHintPopper = Root;
-    const { visible, Children, parentZIndexStacking, styles, timingFunction } = this.asProps;
+    const { visible, Children, parentZIndexStacking, styles, timingFunction, ignorePortalsStacking } = this.asProps;
     const { innerVisible, calculatedPlacement } = this.state;
 
     if (canUseDOM()) {
@@ -338,7 +345,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
     const showHint = (visible && innerVisible === null) || innerVisible === true;
 
     return sstyled(styles)(
-      <Portal>
+      <Portal ignorePortalsStacking={ignorePortalsStacking}>
         <SHintPopper
           render={Box}
           ref={this.hintRef}
