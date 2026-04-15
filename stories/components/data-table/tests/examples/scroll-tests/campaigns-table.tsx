@@ -231,7 +231,7 @@ const Demo = () => {
         'data-test-id': row.id,
       })}
       renderCell={renderCell}
-      w='100%'
+      w='calc(100vw - 3rem)'
       id='campaigns-list-table'
       data-test-id='campaigns-list-table'
       aria-label='Campaigns list'

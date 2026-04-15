@@ -23,6 +23,7 @@ import type {
   ColumnItemConfig,
   DataRowItem,
 } from './DataTable.types';
+import { ScrollBarsRoot } from './ScrollBars';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import { SelectableRows } from '../../store/SelectableRows';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
@@ -42,8 +43,6 @@ export const IS_EMPTY_DATA_ROW = Symbol('IS_EMPTY_DATA_ROW');
 export const SELECT_ALL = Symbol('SELECT_ALL');
 export const ROW_INDEX = Symbol('ROW_INDEX');
 export const GRID_ROW_INDEX = Symbol('GRID_ROW_INDEX');
-
-const SCROLL_BAR_HEIGHT = 12;
 
 type State<
   Data extends DataTableData,
@@ -228,9 +227,16 @@ class DataTableRoot<
     const scrollArea = this.scrollAreaRef.current;
     const table = this.tableContainerRef.current;
     if (scrollArea && table) {
+      const currentHeaderHeight = scrollArea.style.getPropertyValue('--global-header-height');
+      const newHeaderHeight = `${this.getHeaderHeight()}px`;
+
       scrollArea.style.setProperty('--global-scroll-to', `${table.offsetHeight}px`);
       scrollArea.style.setProperty('--global-header-top', `${headerProps?.top ?? 0}px`);
-      scrollArea.style.setProperty('--global-header-height', `${this.getHeaderHeight()}px`);
+      scrollArea.style.setProperty('--global-header-height', newHeaderHeight);
+
+      if (currentHeaderHeight && currentHeaderHeight !== newHeaderHeight) {
+        this.forceUpdate();
+      }
     }
   }
 
@@ -915,7 +921,6 @@ class DataTableRoot<
 
   render() {
     const SDataTable = Root;
-    const SScrollAreaBarInHeader = ScrollArea.Bar;
     const {
       Children,
       styles,
@@ -935,11 +940,9 @@ class DataTableRoot<
     const [offsetLeftSum, offsetRightSum] = this.getScrollOffsetValue();
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
-    const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
-    const headerPropsToCheck = headerProps ?? Head?.props;
     const headerHeight = headerProps?.h || this.getHeaderHeight();
     const topOffset =
-      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar ? headerHeight : undefined;
+      headerProps?.sticky || headerProps?.withScrollBar ? headerHeight : undefined;
 
     const width =
       w ??
@@ -1020,22 +1023,11 @@ class DataTableRoot<
           </SDataTable>
         </ScrollArea.Container>
 
-        {headerPropsToCheck?.withScrollBar && topOffset && !loading && (
-          <SScrollAreaBarInHeader
-            orientation='horizontal'
-            top={topOffset - SCROLL_BAR_HEIGHT}
-            zIndex={20}
-            // @ts-ignore
-            withAnimation={this.withAnimation}
-          />
-        )}
-
-        {!loading && (
-          <>
-            <ScrollArea.Bar orientation='horizontal' zIndex={20} />
-            <ScrollArea.Bar orientation='vertical' zIndex={20} />
-          </>
-        )}
+        <ScrollBarsRoot
+          loading={loading}
+          topOffset={topOffset}
+          withHeaderScrollBar={headerProps?.withScrollBar}
+        />
 
         {selectedRows !== undefined && (
           <ScreenReaderOnly aria-live='polite' role='status'>
