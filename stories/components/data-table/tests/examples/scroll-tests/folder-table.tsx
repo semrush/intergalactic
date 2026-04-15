@@ -225,7 +225,7 @@ const Demo = ({ loading = false }: DemoProps) => {
       use='secondary'
       data={computedData}
       aria-label='Folders table'
-      w='100%'
+      w='calc(100vw - 3rem)'
       headerProps={headerProps}
       sideIndents='wide'
       columns={columns}
