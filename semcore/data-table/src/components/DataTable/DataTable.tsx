@@ -228,11 +228,7 @@ class DataTableRoot<
     const scrollArea = this.scrollAreaRef.current;
     const table = this.tableContainerRef.current;
     if (scrollArea && table) {
-      const scrollTo = table.offsetHeight < innerHeight
-        ? table.offsetHeight
-        : table.offsetHeight - (headerProps?.top ?? 0);
-
-      scrollArea.style.setProperty('--global-scroll-to', `${scrollTo}px`);
+      scrollArea.style.setProperty('--global-scroll-to', `${table.offsetHeight}px`);
       scrollArea.style.setProperty('--global-header-top', `${headerProps?.top ?? 0}px`);
       scrollArea.style.setProperty('--global-header-height', `${this.getHeaderHeight()}px`);
     }
