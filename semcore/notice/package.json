@@ -1,7 +1,7 @@
 {
   "name": "@semcore/notice",
   "description": "Semrush Notice Component",
-  "version": "16.1.12",
+  "version": "17.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,8 +17,8 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "16.0.12",
-    "@semcore/typography": "16.3.2"
+    "@semcore/button": "^17.0.0",
+    "@semcore/typography": "^17.0.0"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.0 || ^17.0.0-0",

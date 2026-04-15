@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.0] - 2026-04-15
+
+### BREAK
+
+- Removed 2px border-radius for Bars.
+
+### Changed
+
+- Refined a11y module invocation logic
+
 ## [16.6.0] - 2026-04-01
 
 ### Fixed
