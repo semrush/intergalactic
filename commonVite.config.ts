@@ -23,6 +23,9 @@ export default defineConfig({
       enforce: 'pre',
     })).vite({}),
   ],
+  esbuild: {
+    legalComments: 'inline',
+  },
   build: {
     minify: false,
     emptyOutDir: false,
