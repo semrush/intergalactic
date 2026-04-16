@@ -29,12 +29,17 @@ class HeadRoot<
   static style = style;
 
   private unsubscribeSelectAll: undefined | (() => void) = undefined;
+  private unsubscribeSetIndeterminate: undefined | (() => void) = undefined;
 
   componentDidMount() {
     const { selectedRows } = this.asProps;
 
     if (selectedRows && !Array.isArray(selectedRows)) {
-      this.unsubscribeSelectAll = selectedRows.subscribe(SelectableRows.SELECT_ALL_EVENT, () => {
+      this.unsubscribeSelectAll = selectedRows.on(SelectableRows.SELECT_ALL_EVENT, () => {
+        this.forceUpdate();
+      });
+
+      this.unsubscribeSetIndeterminate = selectedRows.on(SelectableRows.SET_INDETERMINATE_EVENT, () => {
         this.forceUpdate();
       });
     }
@@ -42,6 +47,7 @@ class HeadRoot<
 
   componentWillUnmount() {
     this.unsubscribeSelectAll?.();
+    this.unsubscribeSetIndeterminate?.();
   }
 
   sortableColumnDescribeId() {

@@ -28,7 +28,7 @@ process.chdir(babelPresetPackagePath);
 const makeCommand: Record<string, (...args: any[]) => string> = {
   CLEANUP: () => `${workingDir}/lib`,
   TYPES: (output: string) =>
-    `tsc --emitDeclarationOnly --baseUrl ${workingDir}/src --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
+    `tsc --emitDeclarationOnly --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
   COPY_TYPES: (output: string) =>
     `mkdir -p ${workingDir}/lib/${output} && find ${workingDir}/src -type f -name "*.d.ts" -exec cp {} ${workingDir}/lib/${output} ";"`,
   BABEL: (output: string, babelArgs: string) =>

@@ -1,7 +1,6 @@
 packages:
   - 'semcore/*'
   - 'tools/*'
-  - '!tools/@types'
   - 'website'
   - 'stories'
   - vite-project

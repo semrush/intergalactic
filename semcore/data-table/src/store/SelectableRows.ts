@@ -40,12 +40,15 @@ export interface ISelectedRows<UniqKeyType> {
   isIndeterminate(): boolean;
 
   /** Subscribe to changes */
-  subscribe: EventEmitter<Events<UniqKeyType>>['subscribe'];
+  on: EventEmitter<Events<UniqKeyType>>['on'];
+  /** Unsubscribe to changes */
+  off: EventEmitter<Events<UniqKeyType>>['off'];
 }
 
 type Events<UniqRowKeyType> = {
   [SelectableRows.TOGGLE_EVENT]: (val: UniqRowKeyType) => void;
   [SelectableRows.SELECT_ALL_EVENT]: () => void;
+  [SelectableRows.SET_INDETERMINATE_EVENT]: () => void;
 };
 
 export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowKeyType>> implements ISelectedRows<UniqRowKeyType> {
@@ -57,6 +60,7 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
   public static TOGGLE_EVENT = 'toggle_selected_row' as const;
   public static SELECT_ALL_EVENT = 'select_all_selected_rows' as const;
+  public static SET_INDETERMINATE_EVENT = 'set_indeterminate' as const;
 
   public isPressedShift: boolean = false;
 
@@ -178,18 +182,18 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
   private toggleOneRow(isSelected: boolean, key: UniqRowKeyType): void {
     if (isSelected) {
-      if (this.values.size === 0) {
-        this.emit(SelectableRows.SELECT_ALL_EVENT);
+      if (!this.isIndeterminate()) {
+        this.emit(SelectableRows.SET_INDETERMINATE_EVENT);
       }
 
       this.values.add(key);
 
-      if (this.values.size === this.availableKeys.size) {
+      if (this.isAllSelected()) {
         this.emit(SelectableRows.SELECT_ALL_EVENT);
       }
     } else {
-      if (this.values.size === this.availableKeys.size) {
-        this.emit(SelectableRows.SELECT_ALL_EVENT);
+      if (this.isAllSelected()) {
+        this.emit(SelectableRows.SET_INDETERMINATE_EVENT);
       }
 
       this.values.delete(key);

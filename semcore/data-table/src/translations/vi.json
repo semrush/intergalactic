@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Có thể sắp xếp"
+  "sortableColumn": "Có thể sắp xếp",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Hiển thị chi tiết",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Ẩn bớt",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Tất cả các mục",
+  "DataTable.allItemsSelected:aria-live": "Tất cả các mục đã được chọn",
+  "DataTable.allItemsDeselected:aria-live": "Tất cả các mục đã được bỏ chọn"
 }

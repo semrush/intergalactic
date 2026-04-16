@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BaseExample, { filterTriggerBaseExampleProps } from './examples/filter-trigger/base';
-import SelectDDMenuExample, { filterTriggerSelectDDMenuExampleProps } from './examples/filter-trigger/select';
+import SelectExample, { filterTriggerSelectDDMenuExampleProps } from './examples/filter-trigger/select';
 import AddonExample, { filterTriggerWithAddonExampleProps } from './examples/filter-trigger/with-addons';
 
 const sharedArgTypes = {
@@ -36,8 +36,12 @@ export const Addon: StoryObj<typeof filterTriggerWithAddonExampleProps> = {
   args: filterTriggerWithAddonExampleProps,
 };
 
-export const SelectDDMenu: StoryObj<typeof filterTriggerSelectDDMenuExampleProps> = {
-  render: SelectDDMenuExample,
-  argTypes: sharedArgTypes,
+export const Select: StoryObj<typeof filterTriggerSelectDDMenuExampleProps> = {
+  render: SelectExample,
+  argTypes: {
+    ...sharedArgTypes,
+    ellipsis: { control: { type: 'boolean' } },
+    w: { control: { type: 'number' } },
+  },
   args: filterTriggerSelectDDMenuExampleProps,
 };

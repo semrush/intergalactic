@@ -5,86 +5,70 @@ import {
   ScreenReaderOnly,
 } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { DataTable, ROW_GROUP } from '@semcore/ui/data-table';
+import { DataTable, ROW_GROUP, SelectableRows } from '@semcore/ui/data-table';
 import Pagination from '@semcore/ui/pagination';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
+import { ScreenReaderSelectedAllAnnouncement, useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
+
 export type SelectableWithMergedRowsProps = {
   headerLevels?: 1 | 2;
   withBorders?: boolean;
+  reactive?: boolean;
 };
 
-const Demo = (props: SelectableWithMergedRowsProps) => {
-  const { headerLevels = 1, withBorders = false } = props;
-  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
-  const [selectedRowsDisplay, setSelectedRowsDisplay] = React.useState(0);
-  const [ariaMessage, setAriaMessage] = React.useState('');
+const reactiveSelectedRows = new SelectableRows<string>();
+
+const getColumns = (headerLevels: 1 | 2, withBorders: boolean) => {
+  const baseColumns: any[] = [
+    { name: 'category', children: 'Category', gtcWidth: '120px' },
+    { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
+  ];
+
+  if (headerLevels === 2) {
+    baseColumns.push({
+      name: 'metrics',
+      children: 'Metrics',
+      borders: withBorders ? 'both' : undefined,
+      columns: [
+        { name: 'kd', children: 'KD %', gtcWidth: '100px' },
+        { name: 'cpc', children: 'CPC', gtcWidth: '100px' },
+      ],
+    });
+    baseColumns.push({ name: 'vol', children: 'Vol.', gtcWidth: '120px' });
+  } else {
+    baseColumns.push(
+      { name: 'kd', children: 'KD %', gtcWidth: '100px' },
+      { name: 'cpc', children: 'CPC', gtcWidth: '100px' },
+      { name: 'vol', children: 'Vol.', gtcWidth: '120px' },
+    );
+  }
+
+  return baseColumns;
+};
+
+const ReactiveDemo = ({ headerLevels = 1, withBorders = false }: Omit<SelectableWithMergedRowsProps, 'reactive'>) => {
+  const { count } = useSelectedRowsCount(reactiveSelectedRows);
   const [currentPage, setCurrentPage] = React.useState(0);
   const tableRef = React.useRef<HTMLDivElement>(null);
 
-  const handleChangeSelectedRows = (value: string[]) => {
-    console.log(value);
-    setSelectedRows(value);
-    if (!selectedRows.length)
-      setAriaMessage('Action bar appeared before the table');
-    if (value.length) setSelectedRowsDisplay(value.length);
-  };
-
   const handleDeselectAll = () => {
-    setSelectedRows([]);
+    reactiveSelectedRows.clearAll();
     tableRef.current?.focus();
   };
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => setAriaMessage(''), 300);
-    return () => clearTimeout(timer);
-  }, [ariaMessage]);
+  const columns = React.useMemo(() => getColumns(headerLevels, withBorders), [headerLevels, withBorders]);
 
   const limit = 5;
-  const tableData = data.slice(
-    currentPage * limit,
-    currentPage * limit + limit,
-  );
-
-  const columns = React.useMemo(() => {
-    const baseColumns: any[] = [
-      { name: 'category', children: 'Category', gtcWidth: '120px' },
-      { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },
-    ];
-
-    if (headerLevels === 2) {
-      baseColumns.push({
-        name: 'metrics',
-        children: 'Metrics',
-        borders: withBorders ? 'both' : undefined,
-        columns: [
-          { name: 'kd', children: 'KD %', gtcWidth: '100px' },
-          { name: 'cpc', children: 'CPC', gtcWidth: '100px' },
-        ],
-      });
-      baseColumns.push({ name: 'vol', children: 'Vol.', gtcWidth: '120px' });
-    } else {
-      baseColumns.push(
-        { name: 'kd', children: 'KD %', gtcWidth: '100px' },
-        { name: 'cpc', children: 'CPC', gtcWidth: '100px' },
-        { name: 'vol', children: 'Vol.', gtcWidth: '120px' },
-      );
-    }
-
-    return baseColumns;
-  }, [headerLevels, withBorders]);
+  const tableData = data.slice(currentPage * limit, currentPage * limit + limit);
 
   return (
     <>
-      <Box
-        tabIndex={-1}
-      >
-        <ScreenReaderOnly role='status' aria-live='polite'>
-          {ariaMessage}
-        </ScreenReaderOnly>
+      <Box tabIndex={-1}>
+        <ScreenReaderSelectedAllAnnouncement selectedRows={reactiveSelectedRows} />
         <Collapse
-          visible={!!selectedRows.length}
+          visible={!!count}
           duration={200}
           style={{ position: 'sticky', top: 0, zIndex: 50 }}
         >
@@ -96,12 +80,11 @@ const Demo = (props: SelectableWithMergedRowsProps) => {
             py={2}
             px={3}
             style={{
-              backgroundColor:
-                                  'var(--intergalactic-bg-primary-neutral, #ffffff)',
+              backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)',
             }}
           >
             <Text size={200}>
-              Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+              Selected rows: <Text bold>{count}</Text>
             </Text>
             <Button use='tertiary' onClick={handleDeselectAll}>
               Deselect all
@@ -112,12 +95,11 @@ const Demo = (props: SelectableWithMergedRowsProps) => {
           data={tableData}
           aria-label='Table example with selectable rows'
           defaultGridTemplateColumnWidth='auto'
-          selectedRows={selectedRows}
-          onSelectedRowsChange={handleChangeSelectedRows}
+          selectedRows={reactiveSelectedRows}
           ref={tableRef}
           headerProps={{
             sticky: true,
-            top: selectedRows.length ? 44 : 0,
+            top: count ? 44 : 0,
             animationDuration: 200,
           }}
           columns={columns}
@@ -133,6 +115,97 @@ const Demo = (props: SelectableWithMergedRowsProps) => {
       />
     </>
   );
+};
+
+const LegacyDemo = ({ headerLevels = 1, withBorders = false }: Omit<SelectableWithMergedRowsProps, 'reactive'>) => {
+  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
+  const [count, setCount] = React.useState(0);
+  const [ariaMessage, setAriaMessage] = React.useState('');
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const tableRef = React.useRef<HTMLDivElement>(null);
+
+  const handleChangeSelectedRows = (value: string[]) => {
+    setSelectedRows(value);
+    if (!selectedRows.length) setAriaMessage('Action bar appeared before the table');
+    setCount(value.length);
+  };
+
+  const handleDeselectAll = () => {
+    setSelectedRows([]);
+    setCount(0);
+    tableRef.current?.focus();
+  };
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setAriaMessage(''), 300);
+    return () => clearTimeout(timer);
+  }, [ariaMessage]);
+
+  const columns = React.useMemo(() => getColumns(headerLevels, withBorders), [headerLevels, withBorders]);
+
+  const limit = 5;
+  const tableData = data.slice(currentPage * limit, currentPage * limit + limit);
+
+  return (
+    <>
+      <Box tabIndex={-1}>
+        <ScreenReaderOnly role='status' aria-live='polite'>
+          {ariaMessage}
+        </ScreenReaderOnly>
+        <Collapse
+          visible={!!count}
+          duration={200}
+          style={{ position: 'sticky', top: 0, zIndex: 50 }}
+        >
+          <Flex
+            role='region'
+            aria-label='Table action bar'
+            alignItems='center'
+            gap={6}
+            py={2}
+            px={3}
+            style={{
+              backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)',
+            }}
+          >
+            <Text size={200}>
+              Selected rows: <Text bold>{count}</Text>
+            </Text>
+            <Button use='tertiary' onClick={handleDeselectAll}>
+              Deselect all
+            </Button>
+          </Flex>
+        </Collapse>
+        <DataTable
+          data={tableData}
+          aria-label='Table example with selectable rows'
+          defaultGridTemplateColumnWidth='auto'
+          selectedRows={selectedRows}
+          onSelectedRowsChange={handleChangeSelectedRows}
+          ref={tableRef}
+          headerProps={{
+            sticky: true,
+            top: count ? 44 : 0,
+            animationDuration: 200,
+          }}
+          columns={columns}
+          uniqueRowKey='id'
+        />
+      </Box>
+      <Pagination
+        mt={4}
+        totalPages={Math.ceil(data.length / limit)}
+        currentPage={currentPage + 1}
+        onCurrentPageChange={(page) => setCurrentPage(page - 1)}
+        aria-label='Table with selectable rows pagination'
+      />
+    </>
+  );
+};
+
+const Demo = ({ reactive = true, ...rest }: SelectableWithMergedRowsProps) => {
+  if (reactive) return <ReactiveDemo {...rest} />;
+  return <LegacyDemo {...rest} />;
 };
 
 const data = [
@@ -442,6 +515,7 @@ const data = [
 export const selectableWithMergedRowsProps: SelectableWithMergedRowsProps = {
   headerLevels: 1,
   withBorders: false,
+  reactive: true,
 };
 
 Demo.defaultProps = selectableWithMergedRowsProps;
