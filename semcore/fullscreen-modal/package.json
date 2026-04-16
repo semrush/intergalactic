@@ -1,7 +1,7 @@
 {
   "name": "@semcore/fullscreen-modal",
   "description": "Semrush FullscreenModal Component",
-  "version": "17.0.0",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,9 +17,9 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/modal": "^17.0.0",
-    "@semcore/typography": "^17.0.0",
-    "@semcore/button": "^17.0.0"
+    "@semcore/modal": "^17.0.1",
+    "@semcore/typography": "^17.0.1",
+    "@semcore/button": "^17.0.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.0 || ^17.0.0-0",

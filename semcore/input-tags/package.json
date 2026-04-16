@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-tags",
   "description": "Semrush InputTags Component",
-  "version": "17.0.0",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,8 +17,8 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/input": "^17.0.0",
-    "@semcore/tag": "^17.0.0"
+    "@semcore/input": "^17.0.1",
+    "@semcore/tag": "^17.0.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.0 || ^17.0.0-0"
