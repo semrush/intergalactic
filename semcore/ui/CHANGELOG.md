@@ -2,7 +2,7 @@
 
 ### @semcore/core
 
-- Build processing to correct extract styles.
+- **Fixed** Build processing to correct extract styles.
 
 ## [17.0.0] - 2026-04-15
 
