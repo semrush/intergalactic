@@ -4,6 +4,7 @@
 # IDE
 .idea/
 .vscode/
+.cursor/rules/
 
 # Dependency directories
 node_modules/
