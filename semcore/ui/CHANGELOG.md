@@ -1,3 +1,9 @@
+## [17.0.1] - 2026-04-16
+
+### @semcore/core
+
+- Build processing to correct extract styles.
+
 ## [17.0.0] - 2026-04-15
 
 ### @semcore/d3-chart
