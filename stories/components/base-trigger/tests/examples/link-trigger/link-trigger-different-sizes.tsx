@@ -3,7 +3,8 @@ import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
-import Spin, { type SpinSize } from '@semcore/ui/spin';
+import Flags from '@semcore/ui/flags';
+import Tag, { type TagSize } from '@semcore/ui/tag';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -24,18 +25,20 @@ const Demo = (props: LinkTriggerSizesProps) => {
   return (
     <>
       {sizes.map((size) => {
-        let spinSize: SpinSize = 'm';
-        if (size <= 200) {
-          spinSize = 'xs';
-        } else if (size <= 500) {
-          spinSize = 's';
-        }
-
         let counterSize: CounterProps['size'];
         if (size >= 600) {
           counterSize = 'l';
         } else if (size >= 300) {
           counterSize = 'm';
+        }
+
+        let tagSize: TagSize;
+        if (size >= 600) {
+          tagSize = 'xl';
+        } else if (size >= 300) {
+          tagSize = 'l';
+        } else {
+          tagSize = 'm';
         }
 
         return (
@@ -64,9 +67,14 @@ const Demo = (props: LinkTriggerSizesProps) => {
                   </Counter>
                 </LinkTrigger.Addon>
               )}
-              {props.addonLeft === 'spin' && (
+              {props.addonLeft === 'tag' && (
                 <LinkTrigger.Addon>
-                  <Spin size={spinSize} />
+                  <Tag size={tagSize}>Label</Tag>
+                </LinkTrigger.Addon>
+              )}
+              {props.addonLeft === 'flag' && (
+                <LinkTrigger.Addon>
+                  <Flags name='US' />
                 </LinkTrigger.Addon>
               )}
               <LinkTrigger.Text
@@ -91,9 +99,14 @@ const Demo = (props: LinkTriggerSizesProps) => {
                   </Counter>
                 </LinkTrigger.Addon>
               )}
-              {props.addonRight === 'spin' && (
+              {props.addonRight === 'tag' && (
                 <LinkTrigger.Addon>
-                  <Spin size={spinSize} />
+                  <Tag size={tagSize}>Label</Tag>
+                </LinkTrigger.Addon>
+              )}
+              {props.addonRight === 'flag' && (
+                <LinkTrigger.Addon>
+                  <Flags name='US' />
                 </LinkTrigger.Addon>
               )}
             </LinkTrigger>
@@ -105,8 +118,8 @@ const Demo = (props: LinkTriggerSizesProps) => {
 };
 
 type LinkTriggerSizesProps = {
-  addonLeft: 'icon' | 'badge' | 'counter' | 'spin';
-  addonRight: 'icon' | 'badge' | 'counter' | 'spin' | 'none';
+  addonLeft: 'icon' | 'badge' | 'counter' | 'tag' | 'flag';
+  addonRight: 'icon' | 'badge' | 'counter' | 'tag' | 'flag' | 'none';
   ellipsis: boolean;
   active: boolean;
   disabled: boolean;

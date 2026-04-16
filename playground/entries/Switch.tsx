@@ -18,9 +18,8 @@ function getJSX(props: SwitchJSXProps) {
   const { handleControlChange } = props;
 
   return (
-    <Switch theme={props.theme} size={props.size}>
+    <Switch theme={props.theme} size={props.size} disabled={props.disabled}>
       <Switch.Value
-        disabled={props.disabled}
         checked={props.checked}
         onChange={(value) => handleControlChange?.('checked', value)}
       >
