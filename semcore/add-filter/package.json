@@ -25,7 +25,7 @@
     "@semcore/base-trigger": "^17.0.0"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
+    "@semcore/base-components": "^17.0.1",
     "@semcore/icon": "^17.0.0 || ^17.0.0-0"
   },
   "repository": {

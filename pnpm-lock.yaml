@@ -1193,7 +1193,7 @@ importers:
   semcore/i18n-unplugin:
     dependencies:
       '@semcore/core':
-        specifier: ^16.0.0 || ^17.0.0 || ^17.0.0-0
+        specifier: ^17.0.1
         version: link:../core
       unplugin:
         specifier: 1.2.0
@@ -1878,7 +1878,7 @@ importers:
         specifier: ^17.0.0
         version: link:../badge
       '@semcore/base-components':
-        specifier: ^17.0.0
+        specifier: ^17.0.1
         version: link:../base-components
       '@semcore/base-trigger':
         specifier: ^17.0.0
@@ -1905,7 +1905,7 @@ importers:
         specifier: ^17.0.0
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^17.0.0
+        specifier: ^17.0.1
         version: link:../core
       '@semcore/counter':
         specifier: ^17.0.0

@@ -21,7 +21,7 @@
     "text-mask-core": "5.1.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.0 || ^17.0.0-0"
+    "@semcore/base-components": "^17.0.1"
   },
   "repository": {
     "type": "git",
