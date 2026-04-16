@@ -310,22 +310,22 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test.describe('Selectable rows (old API)', () => {
-    test('Verify sideIndents=wide with selectable rows non compact and compact', {
+  test.describe('SelectableRows', () => {
+    test('Verify sideIndents=wide  and compact', {
       tag: [TAG.PRIORITY_MEDIUM,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         sideIndents: 'wide',
       });
 
-      await test.step('Verify wide for non compact data-table', async () => {
+      await test.step('Verify wide data-table', async () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify wide for compact data-table', async () => {
-        await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
-          sideIndents: 'wide', compact: true,
+      await test.step('Verify compact data-table', async () => {
+        await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+          compact: true,
         });
         await expect(page).toHaveScreenshot();
       });
@@ -427,15 +427,16 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test.describe('SelectableRows (reactive API)', () => {
+  test.describe('SelectableRows (legacy API)', () => {
     test('Verify SelectableRows row highlight on selection', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table'],
     }, async ({ page, browserName }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
       if (browserName == 'firefox') return;
       const firstRowCheckbox = locators.getCell(page, 2, 1).locator('label');
       await firstRowCheckbox.click();
+      await firstRowCheckbox.hover();
 
       await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(196, 229, 254)' });
       await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(196, 229, 254)' });
@@ -444,11 +445,31 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
+    test('Verify sideIndents=wide and compact', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        sideIndents: 'wide', reactive: false,
+      });
+
+      await test.step('Verify wide data-table', async () => {
+        await expect(page).toHaveScreenshot();
+      });
+
+      await test.step('Verify compact data-table', async () => {
+        await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+          compact: true, reactive: false,
+        });
+        await expect(page).toHaveScreenshot();
+      });
+    });
+
     test('Verify SelectableRows select all rows highlight', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       await selectAllCheckbox.click();
@@ -472,7 +493,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page, browserName }) => {
       if (browserName === 'firefox') test.skip();
 
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive-with-pagination.tsx', 'en', { mergedRows: true });
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { mergedRows: true, reactive: false });
 
       const consoleErrors: string[] = [];
 
@@ -594,7 +615,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.describe('Selectable rows (old API)', () => {
+  test.describe('Selectable rows ', () => {
     test('Verify empty data with selectable rows', {
       tag: [TAG.PRIORITY_MEDIUM,
         '@data-table'],
@@ -604,6 +625,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       await expect(selectAllCheckbox).not.toBeChecked();
     });
+
     test('Verify table with checkbox attributes and mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
@@ -958,14 +980,52 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.getCell(page, 9, 5)).toBeFocused();
       });
     });
+
+    test('Verify aria-live announcement when all rows selected via header checkbox', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
+
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]');
+      await expect(announcer.first()).toBeAttached();
+
+      await test.step('Verify no announcement before any interaction', async () => {
+        await expect(announcer.first()).toBeEmpty();
+      });
+
+      await test.step('Verify "All items selected" announced when header checkbox clicked', async () => {
+        await selectAllCheckbox.click();
+        await expect(announcer.first()).toHaveText('Actions are available before the table');
+      });
+    });
+
+    test('Verify aria-live announcement on partial row selection', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
+
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]');
+
+      await test.step('Verify announcement when single row checked', async () => {
+        await rowCheckboxes.first().click();
+        await expect(announcer.first()).not.toBeEmpty();
+        await expect(announcer.first()).toHaveText('Actions are available before the table');
+      });
+    });
   });
 
-  test.describe('SelectableRows (reactive API)', () => {
+  test.describe('SelectableRows (legacy API)', () => {
     test('Verify SelectableRows empty data with selectable rows', {
       tag: [TAG.PRIORITY_MEDIUM,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en', { reactive: true });
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en', { reactive: false });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       await expect(selectAllCheckbox).not.toBeChecked();
@@ -976,7 +1036,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const headerCheckbox = locators.getHeadColumn(page, 1).locator('input');
@@ -1037,7 +1097,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const headerCheckbox = locators.getHeadColumn(page, 1).locator('input');
@@ -1089,7 +1149,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive-with-pagination.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const collapse = locators.collapse(page);
@@ -1184,7 +1244,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table'],
     }, async ({ page, browserName }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive-with-pagination.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const collapse = locators.collapse(page);
@@ -1259,7 +1319,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
       ],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive.tsx', 'en');
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
       const firstCell = locators.getCell(page, 3, 1);
       const secondCell = locators.getCell(page, 7, 1);
@@ -1298,7 +1358,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
       ],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive-with-pagination.tsx', 'en', { mergedRows: true });
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
       const firstCell = locators.getCell(page, 2, 1);
       const secondCell = locators.getCell(page, 4, 1);
@@ -1326,7 +1386,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive-with-pagination.tsx', 'en', { mergedRows: true });
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const collapse = locators.collapse(page);
@@ -1375,7 +1435,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-reactive-with-pagination.tsx', 'en', { mergedRows: true });
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
@@ -1405,6 +1465,39 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Space');
         await expect(rowCheckboxes.first()).toBeChecked();
         await expect(selectAllCheckbox).toBeChecked();
+      });
+    });
+
+    test('Verify aria-live announcement when all rows selected via header checkbox', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
+
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]').first();
+      await expect(announcer).toBeAttached();
+      await test.step('Verify "All items selected" announced when header checkbox clicked', async () => {
+        await selectAllCheckbox.click();
+        await expect(announcer).toHaveText('Action bar appeared before the table');
+      });
+    });
+
+    test('Verify aria-live announcement on partial row selection', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
+
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const announcer = page.locator('[role="status"][aria-live="polite"]').first();
+
+      await test.step('Verify announcement when single row checked', async () => {
+        await page.waitForTimeout(500);
+        await rowCheckboxes.first().click();
+        await expect(announcer).toHaveText('Action bar appeared before the table');
       });
     });
   });

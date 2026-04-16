@@ -1,4 +1,4 @@
-import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
+import { Box, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -34,6 +34,8 @@ import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 import { Head } from '../Head/Head';
 import type { HeadPropsInner } from '../Head/Head.types';
+import { SRAnnouncer } from '../RowSelector/SRAnnouncer';
+import { SRReactiveAnnouncer } from '../RowSelector/SRReactiveAnnouncer';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -123,8 +125,6 @@ class DataTableRoot<
     gridTemplateAreas: [],
   };
 
-  private selectAllMessageTimer = 0;
-
   private headerNodesMap = new Map();
 
   private selectedRowsContainer: ISelectedRows<UniqKeyType>;
@@ -186,26 +186,6 @@ class DataTableRoot<
     if (prevProps.data !== data || prevProps.columns !== columns) {
       if (this.hasFixedColumn) {
         this.calculateVerticalShadow();
-      }
-    }
-    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined && Array.isArray(selectedRows)) {
-      const selectedRowsSet = new Set<UniqKeyType>(selectedRows);
-
-      const allChecked: UniqKeyType[] = [];
-      const allUnchecked: UniqKeyType[] = [];
-
-      this.flatRows.forEach((row) => {
-        if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
-          allChecked.push(row[UNIQ_ROW_KEY]);
-        } else {
-          allUnchecked.push(row[UNIQ_ROW_KEY]);
-        }
-      });
-
-      if (allChecked.length === data.length) {
-        this.setSelectAllMessage(true);
-      } else if (allUnchecked.length === data.length) {
-        this.setSelectAllMessage(false);
       }
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined && !Array.isArray(selectedRows)) {
@@ -522,24 +502,6 @@ class DataTableRoot<
     this.lastSelectedRowKey = row[UNIQ_ROW_KEY];
 
     onSelectedRowsChange(Array.from(selectedRowsSet), event, { selectedRowIndex, isSelected, row });
-  };
-
-  setSelectAllMessage = (selectedAll: boolean) => {
-    if (this.selectAllMessageTimer) {
-      clearTimeout(this.selectAllMessageTimer);
-    }
-
-    const { getI18nText } = this.asProps;
-    const message = getI18nText(
-      selectedAll
-        ? 'DataTable.allItemsSelected:aria-live'
-        : 'DataTable.allItemsDeselected:aria-live',
-    );
-    this.setState({ selectAllMessage: message });
-
-    this.selectAllMessageTimer = window.setTimeout(() => {
-      this.setState({ selectAllMessage: '' });
-    }, 5000);
   };
 
   setInert(value: boolean) {
@@ -934,6 +896,8 @@ class DataTableRoot<
       headerProps,
       loading,
       selectedRows,
+      getI18nText,
+      data,
     } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = this.getScrollOffsetValue();
@@ -1029,10 +993,11 @@ class DataTableRoot<
           withAnimation={this.withAnimation}
         />
 
-        {selectedRows !== undefined && (
-          <ScreenReaderOnly aria-live='polite' role='status'>
-            {this.state.selectAllMessage}
-          </ScreenReaderOnly>
+        {selectedRows !== undefined && !Array.isArray(selectedRows) && (
+          <SRReactiveAnnouncer selectedRows={selectedRows} getI18nText={getI18nText} />
+        )}
+        {selectedRows !== undefined && Array.isArray(selectedRows) && (
+          <SRAnnouncer selectedRows={selectedRows} getI18nText={getI18nText} data={data} flatRows={this.flatRows} />
         )}
       </ScrollArea>,
     );
