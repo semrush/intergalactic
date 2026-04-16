@@ -2,12 +2,12 @@ import * as path from 'node:path';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
-import type { SeparatedPackage } from '@tools/continuous-delivery/src/types/common.types';
 import dayjs from 'dayjs';
 import fs from 'fs-extra';
 import { toMarkdown } from 'marked-ast-markdown';
 import semver from 'semver';
 
+import type { SeparatedPackage } from '../../types/common.types';
 import { formatMarkdown } from '../utils';
 import type { ChangelogChange, CollectedChangelog, IncrementType } from './changelog';
 import { Changelog } from './changelog';
@@ -125,10 +125,10 @@ export class Package {
         packageFile.data.dependencies[componentName] = `^${newVersion}`;
         hasChanges = true;
       }
-      // if (packageFile.data.peerDependencies?.[componentName]) {
-      //   packageFile.data.peerDependencies[componentName] = `^${newVersion}`;
-      //   hasChanges = true;
-      // }
+      if (packageFile.data.peerDependencies?.[componentName] && !packageFile.data.peerDependencies[componentName].startsWith('workspace')) {
+        packageFile.data.peerDependencies[componentName] = `^${newVersion}`;
+        hasChanges = true;
+      }
 
       if (hasChanges) {
         await fs.writeJSON(resolvePath(packageFile.path, 'package.json'), packageFile.data, { spaces: 2 });
@@ -164,7 +164,9 @@ export class Package {
     const releasePackageJson = this.packagesMap.get('@semcore/ui');
     if (!releasePackageJson) return;
 
-    releasePackageJson.data.version = collectedChangelog.version;
+    const newVersion = collectedChangelog.version.slice(1); // remove v before version
+
+    releasePackageJson.data.version = newVersion;
     releasePackageJson.data.dependencies = releasePackageJson.data.dependencies ?? {};
 
     const packages = Array.from(this.packagesMap.values());
@@ -188,7 +190,7 @@ export class Package {
     for (const [componentName, changelogComponent] of Object.entries(collectedChangelog.components)) {
       packageChangelog.unshift({
         component: componentName,
-        version: collectedChangelog.version,
+        version: newVersion,
         date: dayjs().format('YYYY-MM-DD'),
         changes: changelogComponent.changelog,
       });
