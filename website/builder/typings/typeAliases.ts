@@ -2,17 +2,6 @@ import ts from 'typescript';
 
 import { extractDependenciesList, serializeProperty, serializeTsNode } from './serializer';
 
-const getQualifiedTypeName = (typeName: ts.TypeReferenceNode['typeName']): string => {
-  if (ts.isQualifiedName(typeName)) {
-    const left = getQualifiedTypeName(typeName.left);
-    const right = typeName.right.escapedText;
-
-    return `${left}.${right}`;
-  }
-
-  return typeName.text;
-};
-
 export const serializeTypeDeclaration = (typeDeclaration: ts.TypeAliasDeclaration) => {
   const name = typeDeclaration.name.escapedText as string;
 
@@ -22,7 +11,7 @@ export const serializeTypeDeclaration = (typeDeclaration: ts.TypeAliasDeclaratio
 
   for (const typeParameter of typeDeclaration.typeParameters ?? []) {
     if (typeParameter.kind === ts.SyntaxKind.TypeParameter && typeParameter.constraint) {
-      const computedNode = serializeTsNode(typeParameter.constraint, genericsMap, []);
+      const computedNode = serializeTsNode(typeParameter.constraint, genericsMap);
       dependencies.push(...extractDependenciesList(computedNode));
       const { escapedText } = typeParameter.name as { escapedText: string };
       genericsMap[escapedText] = computedNode;
