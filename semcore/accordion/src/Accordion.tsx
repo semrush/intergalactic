@@ -12,7 +12,7 @@ import type { NSAccordion } from './Accordion.type';
 import style from './style/accordion.shadow.css';
 
 class RootAccordion extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSAccordion.Root>,
+  Intergalactic.InternalTypings.InferComponentProps<NSAccordion.Component>,
   typeof RootAccordion.enhance,
   NSAccordion.Handlers
 > {
@@ -72,7 +72,7 @@ class RootAccordion extends Component<
   }
 }
 export class RootItem extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<NSAccordion.Item.Root, typeof RootAccordion, 'Item'>,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAccordion.Item.Component, typeof RootAccordion, 'Item'>,
   typeof RootItem.enhance
 > {
   static displayName = 'Item';
@@ -134,7 +134,7 @@ export class RootItem extends Component<
 }
 
 class Toggle extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<NSAccordion.Item.Toggle.Root, typeof RootItem, 'Toggle'>
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAccordion.Item.Toggle.Component, typeof RootItem, 'Toggle'>
 > {
   toggleRef = React.createRef();
 
@@ -163,7 +163,7 @@ class Toggle extends Component<
 
 function Chevron(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NSAccordion.Item.Chevron.Root,
+    NSAccordion.Item.Chevron.Component,
     typeof RootItem,
     'Chevron'
   >,
@@ -176,7 +176,7 @@ function Chevron(
 
 function ToggleButton(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NSAccordion.Item.ToggleButton.Root,
+    NSAccordion.Item.ToggleButton.Component,
     typeof RootItem,
     'ToggleButton'
   >,
@@ -190,7 +190,7 @@ function ToggleButton(
 
 function Collapse(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NSAccordion.Item.Collapse.Root,
+    NSAccordion.Item.Collapse.Component,
     typeof RootItem,
     'Collapse'
   >,
@@ -223,10 +223,10 @@ const Accordion = createComponent(RootAccordion, {
 export const wrapAccordion = <PropsExtending extends {}>(
   wrapper: (
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<NSAccordion.Root>
+      Intergalactic.InternalTypings.ComponentPropsNesting<NSAccordion.WrapComponent>
     > &
     PropsExtending,
   ) => React.ReactNode,
-) => wrapper as NSAccordion.Root<PropsExtending>;
+) => wrapper as NSAccordion.WrapComponent<PropsExtending>;
 
 export default Accordion;

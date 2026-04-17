@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 import type { BoxProps, FlexProps, Flex } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
@@ -6,7 +5,7 @@ import type { Property } from 'csstype';
 
 declare namespace NSAccordion {
   type Value = null | number | string | Array<number | string | null>;
-  type Props<V extends Value = Value> = FlexProps & {
+  type Props<V extends NSAccordion.Value = NSAccordion.Value> = FlexProps & {
   /** Value for the active tab. Can be set as stroke, number, null or as array.
    * @type AccordionValue
    * */
@@ -21,12 +20,11 @@ declare namespace NSAccordion {
    * @type (value: AccordionValue, event?: React.SyntheticEvent) => void
    * */
     onChange?:
-    | ((value: V, event?: React.SyntheticEvent) => void)
-    | React.Dispatch<React.SetStateAction<V>>;
+      | ((value: V, event?: React.SyntheticEvent) => void)
+      | React.Dispatch<React.SetStateAction<V>>;
     /** Animation duration of each Accordion.Item inside
    * @default 350 */
     duration?: number;
-
     /**
    * Changes the visual appearance of the component
    * @default secondary
@@ -39,7 +37,6 @@ declare namespace NSAccordion {
   type Handlers = {
     value: Props['value'];
   };
-
   namespace Item {
     type Props = {
       /** Tab value */
@@ -56,21 +53,16 @@ declare namespace NSAccordion {
       getChevronProps?: PropGetterFn;
       selected?: boolean;
     };
-
     namespace Toggle {
       type Props = BoxProps & {
         tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
       };
-
-      type Root = Intergalactic.Component<typeof Text, Props>;
+      type Component = Intergalactic.Component<typeof Text, Props>;
     }
-
     namespace ToggleButton {
       type Props = {};
-
-      type Root = Intergalactic.Component<typeof Flex, {}>;
+      type Component = Intergalactic.Component<typeof Flex, Props>;
     }
-
     namespace Chevron {
       type Props = BoxProps & {
         /**
@@ -80,7 +72,7 @@ declare namespace NSAccordion {
         size?: 'm' | 'l';
       };
 
-      type Root = Intergalactic.Component<'div', Props>;
+      type Component = Intergalactic.Component<'div', Props>;
     }
 
     namespace Collapse {
@@ -116,21 +108,18 @@ declare namespace NSAccordion {
          */
         defaultHeight?: 'auto' | '100%';
       };
-
-      type Root = Intergalactic.Component<'div', Props>;
+      type Component = Intergalactic.Component<'div', Props>;
     }
 
-    type Root = Intergalactic.Component<'div', Props, Ctx>;
-
-    type Component = Root & {
-      Toggle: Toggle.Root;
-      ToggleButton: ToggleButton.Root;
-      Chevron: Chevron.Root;
-      Collapse: Collapse.Root;
+    type Component = Intergalactic.Component<'div', Props, Ctx> & {
+      Toggle: Toggle.Component;
+      ToggleButton: ToggleButton.Component;
+      Chevron: Chevron.Component;
+      Collapse: Collapse.Component;
     };
   }
 
-  type Root<PropsExtending = {}> = (<
+  type WrapComponent<PropsExtending = {}> = (<
     V extends Value,
     Tag extends Intergalactic.Tag = 'div',
   >(
@@ -144,7 +133,7 @@ declare namespace NSAccordion {
   ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', Props>;
 
-  type Component = Root & {
+  type Component = WrapComponent & {
     Item: Item.Component;
   };
 }
