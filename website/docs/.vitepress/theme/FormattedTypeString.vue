@@ -8,8 +8,8 @@
   </span>
 
   <dialog ref="dialog" @click="handleDialogClick">
-    <TypesView :type="subTypeModal.referenceTo" :types="types" v-if="subTypeModal && types[subTypeModal.referenceTo]" />
-    <div v-if="subTypeModal && !types[subTypeModal.referenceTo]">
+    <TypesView :type="subTypeModal.referenceTo" :types="types" v-if="subTypeModalTypeResolved" />
+    <div v-if="subTypeModal && !subTypeModalTypeResolved">
       <h3>External type</h3>
       <div>
         Type <code>{{ subTypeModal.displayText }}</code> is external and not available in the documentation preview.
@@ -23,10 +23,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const { type, types } = defineProps({ type: Array, types: Object }) as { type: (string | { displayText: string; referenceTo: string })[], types: any }
 const subTypeModal = ref<{ referenceTo: string, displayText: string } | null>(null)
 const dialog = ref<HTMLDialogElement | null>(null)
+
+const subTypeModalTypeResolved = computed(() => {
+  if (!subTypeModal.value) return false;
+
+  const { referenceTo } = subTypeModal.value;
+  const typeWithQualifiedName = referenceTo.includes('.');
+
+  if (typeWithQualifiedName) {
+    const [nsName] = referenceTo.split('.');
+
+    const ns = types[nsName];
+
+    return Boolean(ns);
+  }
+
+  return types[subTypeModal.value.referenceTo]
+})
+
 const handleDialogOpen = (referenceTo: string, displayText: string) => {
   if (dialog.value) {
     dialog.value.showModal()

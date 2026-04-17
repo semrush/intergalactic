@@ -5,41 +5,16 @@ import ts from 'typescript';
 
 import { serializeClassDeclaration } from './classes';
 import { serializeInterfaceDeclaration } from './interfaces';
+import { serializeModuleDeclaration } from './moduleDeclaration';
 import { serializeTypeDeclaration } from './typeAliases';
 
-function buildNSRegistry(ns: ts.ModuleDeclaration, rootName?: string) {
-  const { name: { text: nsName }, body } = ns;
-
-  let registry: Record<string, ts.TypeAliasDeclaration> = {};
-
-  if (!body) return registry;
-
-  body.forEachChild((child) => {
-    if (ts.isTypeAliasDeclaration(child)) {
-      const { name: { text: childKey } } = child;
-
-      const key = rootName ? `${rootName}.${nsName}.${childKey}` : `${nsName}.${childKey}`;
-
-      registry[key] = child;
-    } else if (ts.isModuleDeclaration(child)) {
-      const key = rootName ? `${rootName}.${nsName}` : nsName;
-
-      registry = {
-        ...registry,
-        ...buildNSRegistry(child, key),
-      };
-    }
-  });
-
-  return registry;
-}
+const NAMESPACE_PREFIX = 'NS';
 
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
   const interfaceDec: ts.InterfaceDeclaration[] = [];
   const typesDec: ts.TypeAliasDeclaration[] = [];
   const classesDec: ts.ClassDeclaration[] = [];
-
-  let nsRegistry: Record<string, ts.TypeAliasDeclaration> = {};
+  let namespaces: Record<string, any> = {};
 
   fileDeclaration.forEachChild((child) => {
     if (child.kind === ts.SyntaxKind.InterfaceDeclaration) {
@@ -71,14 +46,14 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
     }
 
     if (ts.isModuleDeclaration(child)) {
-      nsRegistry = {
-        ...nsRegistry,
-        ...buildNSRegistry(child),
+      namespaces = {
+        ...namespaces,
+        ...serializeModuleDeclaration(child, filepath),
       };
     }
   });
 
-  const types = typesDec.map((type) => serializeTypeDeclaration(type, nsRegistry));
+  const types = typesDec.map((type) => serializeTypeDeclaration(type));
   const interfaces = interfaceDec.map((int) => serializeInterfaceDeclaration(int));
   const classes = classesDec.map((cls) => serializeClassDeclaration(cls));
 
@@ -87,6 +62,7 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
     types,
     interfaces,
     classes,
+    namespaces,
   };
 };
 
@@ -112,7 +88,8 @@ export default {
       const serialized = sourceFiles.map((file, index) =>
         serializeFileDeclaration(file, watchedFiles[index]),
       );
-      const typings = {};
+      let typings: Record<string, any> = {};
+
       for (const file of serialized) {
         for (const typing of [...file.types, ...file.interfaces, ...file.classes]) {
           if (typings[typing.name]) {
@@ -169,8 +146,15 @@ export default {
             declaration,
           };
         }
+
+        typings = {
+          ...typings,
+          ...file.namespaces,
+        };
       }
       for (const typing in typings) {
+        if (typing.startsWith(NAMESPACE_PREFIX)) continue;
+
         const dependencies = typings[typing].dependencies;
         const dependencyFiles = dependencies
           .map((dependency) => typings[dependency]?.filepath)

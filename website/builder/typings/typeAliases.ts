@@ -13,45 +13,16 @@ const getQualifiedTypeName = (typeName: ts.TypeReferenceNode['typeName']): strin
   return typeName.text;
 };
 
-export const serializeTypeDeclaration = (
-  typeDeclaration: ts.TypeAliasDeclaration,
-  nsRegistry: Record<string, ts.TypeAliasDeclaration>,
-  initialGenericsMap: Record<string, any> = {},
-) => {
+export const serializeTypeDeclaration = (typeDeclaration: ts.TypeAliasDeclaration) => {
   const name = typeDeclaration.name.escapedText as string;
 
-  if (ts.isTypeReferenceNode(typeDeclaration.type)) {
-    const { type } = typeDeclaration;
-    const qualifiedName = getQualifiedTypeName(type.typeName);
-
-    if (qualifiedName) {
-      const nsTypeDecl = nsRegistry[qualifiedName];
-
-      if (nsTypeDecl) {
-        const innerGenericMap: Record<string, any> = {};
-
-        if (type.typeArguments) {
-          nsTypeDecl.typeParameters?.forEach((p, i) => {
-            const parameter = p.name.text;
-            innerGenericMap[parameter] = serializeTsNode(p);
-          });
-        }
-
-        return {
-          ...serializeTypeDeclaration(nsTypeDecl, nsRegistry, innerGenericMap),
-          name,
-        };
-      }
-    }
-  }
-
-  const genericsMap = { ...initialGenericsMap };
+  const genericsMap = {};
   const properties = [];
   const dependencies = [];
 
   for (const typeParameter of typeDeclaration.typeParameters ?? []) {
     if (typeParameter.kind === ts.SyntaxKind.TypeParameter && typeParameter.constraint) {
-      const computedNode = serializeTsNode(typeParameter.constraint, genericsMap, [], nsRegistry);
+      const computedNode = serializeTsNode(typeParameter.constraint, genericsMap, []);
       dependencies.push(...extractDependenciesList(computedNode));
       const { escapedText } = typeParameter.name as { escapedText: string };
       genericsMap[escapedText] = computedNode;
@@ -64,7 +35,7 @@ export const serializeTypeDeclaration = (
     properties.push(
       ...members
         .filter((property) => property.kind === ts.SyntaxKind.PropertySignature)
-        .map((property) => serializeProperty(property as ts.PropertySignature, genericsMap, nsRegistry)),
+        .map((property) => serializeProperty(property as ts.PropertySignature, genericsMap)),
     );
   }
   if ('types' in typeDeclaration.type) {
@@ -76,7 +47,7 @@ export const serializeTypeDeclaration = (
         properties.push(
           ...members
             .filter((property) => property.kind === ts.SyntaxKind.PropertySignature)
-            .map((property) => serializeProperty(property as ts.PropertySignature, genericsMap, nsRegistry)),
+            .map((property) => serializeProperty(property as ts.PropertySignature, genericsMap)),
         );
       }
     }
@@ -85,7 +56,7 @@ export const serializeTypeDeclaration = (
     dependencies.push(...property.dependencies);
   }
 
-  const type = serializeTsNode(typeDeclaration.type, genericsMap, minimizeMembers, nsRegistry);
+  const type = serializeTsNode(typeDeclaration.type, genericsMap, minimizeMembers);
   dependencies.push(...extractDependenciesList(type));
 
   return {

@@ -28,7 +28,6 @@ export const serializeTsNode = (
   node: ts.Node,
   genericsMap = {},
   minimizeMembersOf = [],
-  nsRegistry: Record<string, ts.TypeAliasDeclaration> = {},
 ) => {
   const traverse = (node: ts.Node) => {
     switch (node.kind) {
@@ -261,6 +260,18 @@ export const serializeTsNode = (
         const { typeName, typeArguments } = node as Omit<ts.TypeReferenceNode, 'typeName'> & {
           typeName: ts.BinaryExpression & { escapedText: string };
         };
+        if (typeName.left && typeName.right) {
+          const reference: string = [
+            traverse(typeName.left),
+            '.',
+            traverse(typeName.right),
+          ].flat().join('');
+
+          return {
+            referenceTo: reference,
+            displayText: reference,
+          };
+        }
         if (typeArguments) {
           let name = [typeName.escapedText];
           if (typeName.left && typeName.right) {
@@ -283,14 +294,6 @@ export const serializeTsNode = (
           }
           result.push('>');
           return result;
-        }
-        if (typeName.left && typeName.right) {
-          const qualifiedName: Array<string> = [traverse(typeName.left), '.', traverse(typeName.right)];
-          const nsTypeDecl = nsRegistry[qualifiedName.join('')];
-
-          if (!nsTypeDecl) return qualifiedName;
-
-          return traverse(nsTypeDecl.type);
         }
         if (typeName.escapedText !== undefined) {
           const genericReference = genericsMap[typeName.escapedText];
@@ -378,10 +381,10 @@ const serializeJSDoc = (jsDoc: ts.JSDoc[], dependencies: string[], genericsMap) 
   return { description, params };
 };
 
-export const serializeProperty = (propertyDeclaration: ts.PropertySignature, genericsMap: Record<string, any>, nsRegistry: Record<string, ts.TypeAliasDeclaration> = {}) => {
+export const serializeProperty = (propertyDeclaration: ts.PropertySignature, genericsMap: Record<string, any>) => {
   const name = (propertyDeclaration as { name?: ts.Identifier }).name!.escapedText;
   const isOptional = propertyDeclaration.questionToken !== undefined;
-  const type = serializeTsNode(propertyDeclaration.type!, genericsMap, [], nsRegistry);
+  const type = serializeTsNode(propertyDeclaration.type!, genericsMap, []);
   const dependencies = extractDependenciesList(type);
 
   const jsDoc = (propertyDeclaration as { jsDoc?: ts.JSDoc[] }).jsDoc ?? [];

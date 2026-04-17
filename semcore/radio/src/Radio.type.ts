@@ -1,4 +1,4 @@
-import type { Flex, Box, BoxProps } from '@semcore/base-components';
+import type { Flex, BoxProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { TextProps } from '@semcore/typography';
 
