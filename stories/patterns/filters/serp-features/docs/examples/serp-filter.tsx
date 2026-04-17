@@ -271,7 +271,7 @@ const Demo = () => {
                             </Text>
                           )}
                     </ScrollArea.Container>
-                    {Boolean(options.length) && <ScrollArea.Bar orientation='vertical' />}
+                    <ScrollArea.Bar orientation='vertical' />
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
 

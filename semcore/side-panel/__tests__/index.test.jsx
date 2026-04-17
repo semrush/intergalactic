@@ -97,7 +97,7 @@ describe('SidePanel', () => {
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
-  test.concurrent('Verify ignorePortalsStacking prop', async ({ expect }) => {
+  test.concurrent('Verify ignorePortalsStacking prop', async () => {
     const component = render(
       <Portal>
         <SidePanel visible data-testid='inP'>

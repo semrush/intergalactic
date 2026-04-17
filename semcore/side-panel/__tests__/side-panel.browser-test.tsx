@@ -267,15 +267,17 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify modal can be closed by click outside', async () => {
       await page.getByRole('button').click();
       await locators.dialog(page).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200); // wait for animation to complete
 
       await page.mouse.click(0, 0);
-      await locators.button(page, 'Close').waitFor({ state: 'hidden' });
+      await locators.dialog(page).waitFor({ state: 'hidden' });
       await expect(locators.dialog(page)).not.toBeVisible();
     });
 
     await test.step('Verify Side panel closed by Escape', async () => {
       await page.getByRole('button').click();
       await locators.button(page, 'Close').waitFor({ state: 'visible' });
+      await page.waitForTimeout(200); // wait for animation to complete
 
       await page.keyboard.press('Escape');
       await locators.dialog(page).waitFor({ state: 'hidden' });
@@ -303,6 +305,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify modal can be closed Escape', async () => {
       await page.getByRole('button').click();
       await locators.button(page).nth(1).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200); // wait for animation to complete
 
       await page.keyboard.press('Escape');
       await locators.dialog(page).waitFor({ state: 'hidden' });
@@ -382,6 +385,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.dialog(page).waitFor({ state: 'visible' });
+      await page.waitForTimeout(200); // wait for animation to complete
 
       await page.mouse.click(0, 0);
       await locators.dialog(page).waitFor({ state: 'hidden' });

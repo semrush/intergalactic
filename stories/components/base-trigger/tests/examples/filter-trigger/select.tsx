@@ -33,14 +33,15 @@ const Demo = (props: FilterTriggerSelectDDMenuExample) => {
             disabled={disabled}
             {...(w ? { wMax: w } : {})}
           >
-            {value && (
-              <FilterTrigger.Text
-                ellipsis={ellipsis || undefined}
-                ellipsis:observeChildrenMutations
-              >
-                {value}
-              </FilterTrigger.Text>
-            )}
+
+            <FilterTrigger.Text
+              ellipsis={ellipsis || undefined}
+              ellipsis:observeChildrenMutations
+              key={value}
+            >
+              {value}
+            </FilterTrigger.Text>
+
           </Select.Trigger>
           <Select.Menu aria-label='Select device'>
             {devices.map((option) => (

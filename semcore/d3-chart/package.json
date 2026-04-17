@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "16.6.0",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -9,23 +9,23 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "scripts": {
     "build": "pnpm semcore-builder --source=js,ts && pnpm vite build"
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/checkbox": "16.2.2",
-    "@semcore/divider": "16.0.11",
-    "@semcore/typography": "16.3.2",
-    "@types/d3-shape": "^3.1.7",
-    "@upsetjs/venn.js": "1.4.2",
+    "@semcore/checkbox": "^17.0.1",
+    "@semcore/divider": "^17.0.1",
+    "@semcore/typography": "^17.0.1",
+    "@types/d3-shape": "3.1.7",
+    "@upsetjs/venn.js": "2.0.0",
     "d3-array": "3.1.6",
     "d3-interpolate": "3.0.1",
-    "d3-polygon": "^3.0.1",
+    "d3-polygon": "3.0.1",
     "d3-scale": "4.0.2",
     "d3-shape": "3.2.0",
     "d3-time": "3.1.0",
@@ -34,8 +34,8 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
-    "@semcore/icon": "^17.0.0 || ^17.0.0-0"
+    "@semcore/base-components": "^17.0.1",
+    "@semcore/icon": "^17.0.1"
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,9 @@
 import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, waitFor, cleanup, act } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import React, { useRef } from 'react';
 import { userEvent } from 'storybook/test';
 
-import { Hint } from '../src';
+import { Hint, PortalProvider } from '../src';
 
 describe('Hint', () => {
   afterEach(cleanup);
@@ -141,5 +141,59 @@ describe('Hint', () => {
     });
 
     vi.useRealTimers();
+  });
+
+  test('Should ignore portal stacking by default and render into document.body', async () => {
+    const containerRef = React.createRef<HTMLDivElement>();
+
+    const TestComponent = () => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <div data-testid='portal-container' ref={containerRef} />
+          <PortalProvider value={containerRef}>
+            <button ref={ref} data-testid='trigger'>Hover</button>
+            <Hint triggerRef={ref} defaultVisible={true} data-testid='hint'>
+              Hint text
+            </Hint>
+          </PortalProvider>
+        </>
+      );
+    };
+
+    render(<TestComponent />);
+
+    await waitFor(() => {
+      expect(document.body.querySelector('[data-testid="hint"]')).not.toBeNull();
+    });
+
+    const container = document.querySelector('[data-testid="portal-container"]');
+    expect(container?.querySelector('[data-testid="hint"]')).toBeNull();
+  });
+
+  test('Should respect portal stacking when ignorePortalsStacking is false', async () => {
+    const containerRef = React.createRef<HTMLDivElement>();
+
+    const TestComponent = () => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <>
+          <div data-testid='portal-container' ref={containerRef} />
+          <PortalProvider value={containerRef}>
+            <button ref={ref} data-testid='trigger'>Hover</button>
+            <Hint triggerRef={ref} defaultVisible={true} ignorePortalsStacking={false} data-testid='hint'>
+              Hint text
+            </Hint>
+          </PortalProvider>
+        </>
+      );
+    };
+
+    render(<TestComponent />);
+
+    await waitFor(() => {
+      const container = document.querySelector('[data-testid="portal-container"]');
+      expect(container?.querySelector('[data-testid="hint"]')).not.toBeNull();
+    });
   });
 });

@@ -1,7 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-import { test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { DataTable } from '../src';
@@ -129,7 +129,7 @@ describe('DataTable.Cell', () => {
   afterEach(() => {
     cleanup();
   });
-  test('Should support ref via renderCell', ({ expect }) => {
+  test('Should support ref via renderCell', () => {
     const spy = vi.fn();
 
     const Test = () => {
@@ -159,7 +159,7 @@ describe('DataTable.Cell', () => {
     expect(spy).toBeCalled();
   });
 
-  test('Should support rawData in custom renderCell function', ({ expect }) => {
+  test('Should support rawData in custom renderCell function', () => {
     const checkRowData = vi.fn();
     const dataItem = { keyword: 'test', kd: '1', vol: null };
 
@@ -188,7 +188,7 @@ describe('DataTable.Cell', () => {
     expect(checkRowData).toBeCalledWith({ ...dataItem });
   });
 
-  test('Should not call renderCell and rowProps functions on the data is empty', ({ expect }) => {
+  test('Should not call renderCell and rowProps functions on the data is empty', () => {
     const renderCell = vi.fn();
     const rowProps = vi.fn();
 

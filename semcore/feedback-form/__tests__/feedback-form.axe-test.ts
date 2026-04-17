@@ -91,6 +91,7 @@ test.describe(`@feedback-form ${TAG.ACCESSIBILITY}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
 
+      await page.getByRole('dialog').waitFor({ state: 'visible' });
       const violations = await getAccessibilityViolations({ page });
 
       expect(violations).toEqual([]);
