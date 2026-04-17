@@ -1,91 +1,110 @@
-import type { Box, BoxProps, Flex } from '@semcore/base-components';
-import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Text, TextProps } from '@semcore/typography';
-import type React from 'react';
+import type { Flex, BoxProps } from '@semcore/base-components';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
+import type { TextProps } from '@semcore/typography';
 
-export type RadioSize = 'm' | 'l';
-export type RadioState = 'normal' | 'invalid';
-export type RadioValue = string | number | boolean;
+declare namespace NSRadio {
+  type Size = 'm' | 'l';
+  type State = 'normal' | 'invalid';
+  type Value = string | number | boolean;
+  type Props = BoxProps & {
+    /** Radio item value **/
+    value?: NSRadio.Value;
+    /** Radio item checked flag **/
+    checked?: boolean;
+    /**
+     * The value displaying the state of the component
+     * @default normal
+     */
+    state?: NSRadio.State;
+    /**
+     * Radio button size
+     * @default m
+     **/
+    size?: NSRadio.Size;
+    /** The theme of the radio button that you can send your color to */
+    theme?: string;
+    /** Radio item text **/
+    label?: string;
+    /** Blocks access and changes to the radio item **/
+    disabled?: boolean;
+  };
+  type Ctx = {
+    getValueProps: PropGetterFn;
+    getTextProps: PropGetterFn;
+  };
+  namespace Value {
+    type Props = BoxProps & {
+      /** List of elements that can be put on a hidden input */
+      includeInputProps?: string[];
+    };
+    namespace Control {
+      type Props = {};
+      type Component = Intergalactic.Component<'input', Props>;
+    }
 
-export type RadioProps = BoxProps & {
-  /** Radio item value **/
-  value?: RadioValue;
+    namespace Mark {
+      type Props = {};
+      type Component = Intergalactic.Component<'input', Props>;
+    }
 
-  /** Radio item checked flag **/
-  checked?: boolean;
+    type Component = Intergalactic.Component<'input', Props> & {
+      Control: Control.Component;
+      RadioMark: Mark.Component;
+    };
+  }
 
-  /**
-   * The value displaying the state of the component
-   * @default normal
-   */
-  state?: RadioState;
-  /**
-   * Radio button size
-   * @default m
-   **/
-  size?: RadioSize;
-  /** The theme of the radio button that you can send your color to */
-  theme?: string;
-  /** Radio item text **/
-  label?: string;
-  /** Blocks access and changes to the radio item **/
-  disabled?: boolean;
-};
+  namespace Text {
+    type Props = TextProps;
+    type Component = Intergalactic.Component<'span', Props>;
+  }
 
-export type RadioGroupProps<T extends RadioValue = RadioValue> = {
-  /** Radio group name */
-  name?: string;
-  /** Active default value */
-  defaultValue?: T;
-  /** Active value */
-  value?: T;
-  /** Called when the selected element is changed */
-  onChange?:
-    | ((value: T, e?: React.SyntheticEvent<HTMLInputElement>) => void)
-    | React.Dispatch<React.SetStateAction<T>>;
-  /** Radio button size */
-  size?: RadioSize;
-  /** The theme of the radio button that you can send your color to */
-  theme?: string;
-  /** Blocks access and changes to the form field */
-  disabled?: boolean;
-};
+  namespace Group {
+    type Props<T extends NSRadio.Value = NSRadio.Value> = {
+      /** Radio group name */
+      name?: string;
+      /** Active default value */
+      defaultValue?: T;
+      /** Active value */
+      value?: T;
+      /** Called when the selected element is changed */
+      onChange?:
+        | ((value: T, e?: React.SyntheticEvent<HTMLInputElement>) => void)
+        | React.Dispatch<React.SetStateAction<T>>;
+      /** Radio button size */
+      size?: NSRadio.Size;
+      /** The theme of the radio button that you can send your color to */
+      theme?: string;
+      /** Blocks access and changes to the form field */
+      disabled?: boolean;
+    };
+    type Component<PropsExtending = {}> = (<V extends Value, Tag extends Intergalactic.Tag = 'div'>(
+      props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, Props<V>> & PropsExtending,
+    ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+    Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, Props>;
+  }
+  type Component = Intergalactic.Component<'label', Props, Ctx> & {
+    Value: Value.Component;
+    Text: Text.Component;
+  };
+}
 
-export type RadioValueProps = BoxProps & {
-  /** List of elements that can be put on a hidden input */
-  includeInputProps?: string[];
-};
+/** @deprecated It will be removed in v18. */
+export type RadioSize = NSRadio.Size;
+/** @deprecated It will be removed in v18. */
+export type RadioState = NSRadio.State;
+/** @deprecated It will be removed in v18. */
+export type RadioValue = NSRadio.Value;
+/** @deprecated It will be removed in v18. */
+export type RadioProps = NSRadio.Props;
+/** @deprecated It will be removed in v18. */
+export type RadioGroupProps<T extends RadioValue = RadioValue> = NSRadio.Group.Props<T>;
+/** @deprecated It will be removed in v18. */
+export type RadioValueProps = NSRadio.Value.Props;
+/** @deprecated It will be removed in v18. */
+export type RadioCtx = NSRadio.Ctx;
+/** @deprecated It will be removed in v18. */
+export type RadioValueControlProps = NSRadio.Value.Control.Props;
+/** @deprecated It will be removed in v18. */
+export type RadioValueMarkProps = NSRadio.Value.Mark.Props;
 
-export type RadioCtx = {
-  getValueProps: PropGetterFn;
-  getTextProps: PropGetterFn;
-};
-
-export type IntergalacticRadioGroupComponent<PropsExtending = {}> = (<
-  Value extends RadioValue,
-  Tag extends Intergalactic.Tag = typeof Flex,
->(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, RadioGroupProps<Value>> &
-    PropsExtending,
-) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, RadioGroupProps>;
-
-export type RadioValueControlProps = {};
-export type RadioValueMarkProps = {};
-export type RadioTextProps = TextProps;
-
-export type RadioValueControlComponent = Intergalactic.Component<'input', RadioValueControlProps>;
-export type RadioValueRadioMarkComponent = Intergalactic.Component<typeof Box, RadioValueMarkProps>;
-
-export type RadioValueComponent = Intergalactic.Component<'input', RadioValueProps> & {
-  Control: RadioValueControlComponent;
-  RadioMark: RadioValueRadioMarkComponent;
-};
-
-export type RadioTextComponent = typeof Text;
-
-export type RadioRootComponent = Intergalactic.Component<'label', RadioProps, RadioCtx>;
-export type RadioComponent = RadioRootComponent & {
-  Value: RadioValueComponent;
-  Text: RadioTextComponent;
-};
+export type { NSRadio };
