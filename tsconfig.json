@@ -14,17 +14,16 @@
     "noEmitHelpers": true,
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "baseUrl": "./semcore",
-    "typeRoots": ["node_modules/@types", "tools/@types"],
+    "types": ["node", "vitest", "@workspace/types/deps", "@workspace/types/globals", "@workspace/types/styles", "@workspace/types/vite"],
     "paths": {
-      "@semcore/illustration/*": ["illustration/lib/*"],
-      "@semcore/illustration": ["illustration"],
-      "@semcore/icon/*": ["icon/lib/*"],
-      "@semcore/ui/d3-chart": ["d3-chart"],
-      "@semcore/ui/core/lib/*": ["core/src/*"],
-      "@semcore/ui/*": ["*/src"],
-      "@semcore/*": ["*/src"],
-      "@tools/*": ["../tools/*"]
+      "@semcore/illustration/*": ["${configDir}/semcore/illustration/lib/*"],
+      "@semcore/illustration": ["${configDir}/semcore/illustration"],
+      "@semcore/icon/*": ["${configDir}/semcore/icon/lib/*"],
+      "@semcore/ui/d3-chart": ["${configDir}/semcore/d3-chart"],
+      "@semcore/ui/core/lib/*": ["${configDir}/semcore/core/src/*"],
+      "@semcore/ui/*": ["${configDir}/semcore/*/src"],
+      "@semcore/*": ["${configDir}/semcore/*/src"],
+      "@tools/*": ["${configDir}/tools/*"]
     }
   },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],

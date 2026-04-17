@@ -1,7 +1,7 @@
 {
   "name": "@semcore/card",
   "description": "Semrush Card Component",
-  "version": "16.1.12",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,18 +12,18 @@
     "build": "pnpm semcore-builder && pnpm vite build"
   },
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/typography": "16.3.2",
-    "@semcore/tooltip": "16.0.11",
-    "@semcore/button": "16.0.12"
+    "@semcore/typography": "^17.0.1",
+    "@semcore/tooltip": "^17.0.1",
+    "@semcore/button": "^17.0.1"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
-    "@semcore/icon": "^17.0.0 || ^17.0.0-0"
+    "@semcore/base-components": "^17.0.1",
+    "@semcore/icon": "^17.0.1"
   },
   "repository": {
     "type": "git",

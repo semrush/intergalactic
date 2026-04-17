@@ -98,9 +98,13 @@ export class Changelog {
 
       body.forEach((token: Token) => {
         if (token.type === 'heading' && token.level === 3 && token.raw && allAllowedScopes.has(token.raw.slice(9).toLowerCase())) { // slice(9) for remove @semcore scope
+          traversingComponent = null;
+          traversingBaseComponent = null;
+          traversingType = null;
+
           traversingComponent = token.raw.toLowerCase();
 
-          if (semcoreBaseComponents.includes(traversingComponent.slice(9))) {
+          if (traversingComponent !== '@semcore/ellipsis' && semcoreBaseComponents.includes(traversingComponent.slice(9))) {
             traversingBaseComponent = traversingComponent;
             traversingComponent = '@semcore/base-components';
           }

@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Triable"
+  "sortableColumn": "Triable",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Afficher les détails",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Masquer les détails",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Tous les éléments",
+  "DataTable.allItemsSelected:aria-live": "Tous les éléments sélectionnés",
+  "DataTable.allItemsDeselected:aria-live": "Tous les éléments désélectionnés"
 }

@@ -24,7 +24,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
   // Section 1: Size × addon position × ellipsis × addonType × color × use rotation
   const sizes = [100, 200, 300, 400, 500, 600, 700, 800];
   const longText = 'The quick brown fox jumps over the lazy dog and even more text to ensure truncation';
-  const addonTypes = ['icon', 'badge', 'counter', 'spin'];
+  const addonTypes = ['icon', 'badge', 'counter', 'tag'];
 
   const addonCombos = [
     { desc: 'no addons', showAddonLeft: false, showAddonRight: false },
@@ -144,11 +144,11 @@ test.describe(` ${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 300, showAddonLeft: true, addonLeftType: 'badge',
-      showAddonRight: true, addonRightType: 'spin',
+      showAddonRight: true, addonRightType: 'tag',
     });
     const clip1 = await getTextClip(page);
 
-    await test.step('Verify badge+spin addons', async () => {
+    await test.step('Verify badge+tag addons', async () => {
       await expect(page).toHaveScreenshot({ clip: clip1 });
     });
 

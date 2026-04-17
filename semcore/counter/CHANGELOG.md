@@ -2,6 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.1] - 2026-04-16
+
+### Fixed
+
+- Build processing to correct extract styles.
+
+## [17.0.0] - 2026-04-15
+
+### BREAK
+
+- New major version.
+
+### Changed
+
+- value names for `size` property to match the whole size system in DS:
+'m', 'l', 'xl' -> 's', 'm', 'l'.
+
 ## [16.0.11] - 2025-10-29
 
 ### Changed
