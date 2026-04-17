@@ -1,4 +1,4 @@
-import type { RadioGroupProps, RadioProps } from '@semcore/ui/radio';
+import type { NSRadio } from '@semcore/ui/radio';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type RadioJSXProps = JSXProps<RadioProps & RadioGroupProps>;
+export type RadioJSXProps = JSXProps<NSRadio.Props & NSRadio.Group.Props>;
 
 function getJSX(props: RadioJSXProps) {
   return (

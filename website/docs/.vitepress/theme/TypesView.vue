@@ -1,15 +1,15 @@
 <template>
-  <h3 :id="types[type].declaration.name.toLowerCase().replace(/\s+/g, '-')">
-    {{ types[type].declaration.name }}
+  <h3 :id="typeDefinition.declaration.name.toLowerCase().replace(/\s+/g, '-')">
+    {{ typeDefinition.declaration.name }}
     <a
         class="header-anchor"
-        :href="`#${types[type].declaration.name.toLowerCase().replace(/\s+/g, '-')}`"
-        :aria-label="`Permalink to &quot;${types[type].declaration.name}&quot;`"
+        :href="`#${typeDefinition.declaration.name.toLowerCase().replace(/\s+/g, '-')}`"
+        :aria-label="`Permalink to &quot;${typeDefinition.declaration.name}&quot;`"
     >
       &ZeroWidthSpace;
     </a>
   </h3>
-  <FormattedTypeString :type="types[type].declaration.type" :types="types" />
+  <FormattedTypeString :type="typeDefinition.declaration.type" :types="types" />
   <table v-if="filteredProperties.length > 0">
     <thead>
       <tr>
@@ -68,21 +68,64 @@
 <script setup lang="ts">
 import FormattedTypeString from './FormattedTypeString.vue';
 
+type SerializeType = {
+  filePath: string;
+  dependencies: Array<string>;
+  declaration: {
+    name: string;
+  };
+};
+
+type Tree = {
+  types: Record<string, SerializeType>;
+  ns?: {
+    [key: string]: Tree;
+  };
+}
+
+function getValueFromNamespace(root: Tree, key: string) {
+  let [,...rest] = key.split(".");
+  let value = root;
+
+  while (rest.length !== 0) {
+    const [firstPart, ...restParts] = rest;
+
+    if (value.types[firstPart] && restParts.length === 0) {
+      return value.types[firstPart];
+    } else if (value.ns?.[firstPart]) {
+      value = value.ns[firstPart];
+      rest = restParts;
+    }
+  }
+}
+
 const { type, types } = defineProps({ type: String, types: Object });
 
-const filteredProperties = types[type].declaration.properties.flat(1).filter((property) => {
+let typeDefinition = types[type];
+
+const isNSType = type && type.includes('.');
+
+if (isNSType) {
+  const [nsName] = type.split('.');
+
+  if (types[nsName]) {
+    typeDefinition = getValueFromNamespace(types[nsName], type)
+  }
+}
+
+const filteredProperties = typeDefinition.declaration.properties.flat(1).filter((property) => {
   return !property.params?.internal && !property.description?.startsWith('Internal');
 });
 
 let lastType = undefined;
 let unionProperties = undefined;
 
-if (Array.isArray(types[type].declaration.type)) {
-  lastType = types[type].declaration.type[types[type].declaration.type.length - 1];
-  unionProperties = types[type].declaration.type.find((t) => Boolean(t.properties));
+if (Array.isArray(typeDefinition.declaration.type)) {
+  lastType = typeDefinition.declaration.type[typeDefinition.declaration.type.length - 1];
+  unionProperties = typeDefinition.declaration.type.find((t) => Boolean(t.properties));
 }
 
-if (!types[type]) {
+if (!typeDefinition) {
   throw new Error(`Unable to render type ${type} view. Probably you forgot to add
 \<script setup\>
   import { data as types } from '@types.data.ts';

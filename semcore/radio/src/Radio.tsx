@@ -9,29 +9,23 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
-import type {
-  IntergalacticRadioGroupComponent,
-  RadioProps,
-  RadioComponent,
-  RadioGroupProps,
-  RadioValueComponent,
-  RadioTextComponent,
-  RadioValueRadioMarkComponent,
-  RadioRootComponent,
-  RadioValueControlComponent,
-} from './Radio.type';
+import type { NSRadio } from './Radio.type';
 import style from './style/radio.shadow.css';
 
 const RadioContext = React.createContext<{
-  onChange?: RadioGroupProps['onChange'];
-  value?: RadioGroupProps['value'];
-  theme?: RadioGroupProps['theme'];
-  size?: RadioGroupProps['size'];
-  name?: RadioGroupProps['name'];
-  disabled?: RadioGroupProps['disabled'];
+  onChange?: NSRadio.Group.Props['onChange'];
+  value?: NSRadio.Group.Props['value'];
+  theme?: NSRadio.Group.Props['theme'];
+  size?: NSRadio.Group.Props['size'];
+  name?: NSRadio.Group.Props['name'];
+  disabled?: NSRadio.Group.Props['disabled'];
 }>({});
 
-class RadioGroupRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<IntergalacticRadioGroupComponent>, [], { value: null }> {
+class RadioGroupRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSRadio.Group.Component>,
+  [],
+  { value: null }
+> {
   static displayName = 'RadioGroup';
 
   static defaultProps = {
@@ -68,11 +62,9 @@ class RadioGroupRoot extends Component<Intergalactic.InternalTypings.InferCompon
   }
 }
 
-const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as IntergalacticRadioGroupComponent;
+const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as NSRadio.Group.Component;
 
-class RadioRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<RadioRootComponent>
-> {
+class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSRadio.Component>> {
   static displayName = 'Radio';
   static style = style;
   static contextType = RadioContext;
@@ -83,7 +75,7 @@ class RadioRoot extends Component<
     hoistedDisabled: undefined,
   };
 
-  hoistDisabled = (disabled: RadioProps['disabled']) => {
+  hoistDisabled = (disabled: NSRadio.Props['disabled']) => {
     logger.warn(
       true,
       `Don't set disabled on Radio.Value or Radio.Text, set it on Radio or on RadioGroup (for all items) instead. Otherwise it will produce wrong SSR output.`,
@@ -93,11 +85,7 @@ class RadioRoot extends Component<
   };
 
   getTextProps() {
-    const {
-      size = this.context.size ?? 'm',
-      disabled = this.context.disabled,
-      label,
-    } = this.asProps;
+    const { size = this.context.size ?? 'm', disabled = this.context.disabled, label } = this.asProps;
 
     const { hoistedDisabled } = this.state;
 
@@ -159,7 +147,7 @@ class RadioRoot extends Component<
 }
 
 class ValueRoot extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<RadioValueComponent, typeof RadioRoot, 'Value'>,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Value.Component, typeof RadioRoot, 'Value'>,
   typeof ValueRoot.enhance,
   { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
 > {
@@ -175,7 +163,7 @@ class ValueRoot extends Component<
   static contextType = RadioContext;
   static style = style;
 
-  bindHandlerChange = (value: RadioProps['value']) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  bindHandlerChange = (value: NSRadio.Props['value']) => (e: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof this.context.onChange === 'function' && value !== undefined) {
       this.context.onChange(value, e);
     }
@@ -205,8 +193,7 @@ class ValueRoot extends Component<
             checked: currentValue === inputValue,
             onChange: callAllEventHandlers(onChange, this.bindHandlerChange(inputValue)),
           }
-        : {}
-      ),
+        : {}),
     };
   }
 
@@ -243,9 +230,7 @@ class ValueRoot extends Component<
         ? {
             onClick: callAllEventHandlers(onClick, this.bindHandlerChange(inputValue)),
           }
-        : {}
-
-      ),
+        : {}),
     };
   }
 
@@ -277,17 +262,27 @@ class ValueRoot extends Component<
   }
 }
 
-function Control(props: Intergalactic.InternalTypings.InferChildComponentProps<RadioValueControlComponent, typeof ValueRoot, 'Control'>) {
+function Control(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSRadio.Value.Control.Component,
+    typeof ValueRoot,
+    'Control'
+  >,
+) {
   const SControl = Root;
   const { styles, state } = props;
 
-  return sstyled(styles)(
-    <SControl render={Box} tag='input' type='radio' aria-invalid={state === 'invalid'} />,
-  );
-};
+  return sstyled(styles)(<SControl render={Box} tag='input' type='radio' aria-invalid={state === 'invalid'} />);
+}
 Control.displayName = 'Control';
 
-function RadioMark(props: Intergalactic.InternalTypings.InferChildComponentProps<RadioValueRadioMarkComponent, typeof ValueRoot, 'RadioMark'>) {
+function RadioMark(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSRadio.Value.Mark.Component,
+    typeof ValueRoot,
+    'RadioMark'
+  >,
+) {
   const SValue = Root;
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked } = props;
@@ -300,7 +295,9 @@ function RadioMark(props: Intergalactic.InternalTypings.InferChildComponentProps
 }
 RadioMark.displayName = 'RadioMark';
 
-function Text(props: Intergalactic.InternalTypings.InferChildComponentProps<RadioTextComponent, typeof RadioRoot, 'Text'>) {
+function Text(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Text.Component, typeof RadioRoot, 'Text'>,
+) {
   const SText = Root;
   const { styles, color } = props;
 
@@ -311,28 +308,28 @@ function Text(props: Intergalactic.InternalTypings.InferChildComponentProps<Radi
   }, [props.rootDisabled, props.disabled, props.hoistDisabled]);
   const resolveColor = useColorResolver();
 
-  return sstyled(styles)(
-    <SText render={TypographyText} tag='span' use:color={resolveColor(color)} />,
-  );
+  return sstyled(styles)(<SText render={TypographyText} tag='span' use:color={resolveColor(color)} />);
 }
 Text.displayName = 'Text';
 
 const Value = createComponent(ValueRoot, {
   Control,
   RadioMark,
-}) as RadioValueComponent;
+}) as NSRadio.Value.Component;
 
 const Radio = createComponent(RadioRoot, {
   Text,
   Value,
-}) as RadioComponent;
+}) as NSRadio.Component;
 
-export const wrapRadioGroup = <PropsExtending extends {}>(wrapper: (
-  props: Intergalactic.InternalTypings.UntypeRefAndTag<
-    Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticRadioGroupComponent>
-  > &
-  PropsExtending,
-) => React.ReactNode) => wrapper as IntergalacticRadioGroupComponent<PropsExtending>;
+export const wrapRadioGroup = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<NSRadio.Group.Component>
+    > &
+    PropsExtending,
+  ) => React.ReactNode,
+) => wrapper as NSRadio.Group.Component<PropsExtending>;
 
 export { inputProps, RadioGroup };
 
