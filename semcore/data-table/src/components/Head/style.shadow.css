@@ -88,6 +88,8 @@ SColumn[use='primary'] {
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 
+  box-shadow: 1px 0 0 0 var(--intergalactic-table-th-primary-cell, #f4f5f9);
+
   SSortWrapper::before {
     background: linear-gradient(
       270deg,
@@ -132,6 +134,8 @@ SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
   background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
+
+  box-shadow: 1px 0 0 0 var(--intergalactic-table-th-secondary-cell, #ffffff);
 
   SSortWrapper::before {
     background: linear-gradient(
