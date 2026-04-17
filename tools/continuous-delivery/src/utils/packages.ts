@@ -7,7 +7,7 @@ import fs from 'fs-extra';
 import { toMarkdown } from 'marked-ast-markdown';
 import semver from 'semver';
 
-import type { SeparatedPackage } from '../../types/common.types';
+import type { SeparatedPackage } from '../types/common.types';
 import { formatMarkdown } from '../utils';
 import type { ChangelogChange, CollectedChangelog, IncrementType } from './changelog';
 import { Changelog } from './changelog';
@@ -16,7 +16,7 @@ export type PackageJson = {
   name: string;
   version: string;
   dependencies?: Record<string, string>;
-  // peerDependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
   private?: boolean;
 };
 
