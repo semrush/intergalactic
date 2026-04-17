@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "1.9.0",
-    "compressing": "^1.10.3",
+    "compressing": "^1.10.5",
     "dayjs": "1.8.36",
     "marked-ast": "0.3.0",
     "marked-ast-markdown": "2.1.0",
