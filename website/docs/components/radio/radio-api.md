@@ -13,7 +13,7 @@ import { RadioGroup } from '@semcore/ui/radio';
 <RadioGroup />;
 ```
 
-<TypesView type="RadioGroupProps" :types={...types} />
+<TypesView type="NSRadio.Group.Props" :types={...types} />
 
 ## Radio
 
@@ -24,7 +24,7 @@ import Radio from '@semcore/ui/radio';
 <Radio />;
 ```
 
-<TypesView type="RadioProps" :types={...types} />
+<TypesView type="NSRadio.Props" :types={...types} />
 
 ## Radio.Value
 
@@ -33,7 +33,7 @@ import Radio from '@semcore/ui/radio';
 <Radio.Value />;
 ```
 
-<TypesView type="RadioValueProps" :types={...types} />
+<TypesView type="NSRadio.Value.Props" :types={...types} />
 
 ## Radio.Text
 

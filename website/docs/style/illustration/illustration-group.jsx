@@ -61,54 +61,61 @@ export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
   );
 };
 
-export const ListIllustrations = ({ data, ...props }) => {
+const IllustrationButton = ({ illustrationName }) => {
   const { illustrations, selectedIllustration, setSelectedIllustration } =
     React.useContext(Context);
 
+  const buttonRef = React.useRef();
+  const Illustration = illustrations[illustrationName];
+
+  if (!Illustration) {
+    throw new Error(
+      `Illustration ${illustrationName} not found in import from @illustrations`,
+    );
+  }
+
+  return (
+    <button
+      ref={buttonRef}
+      type='button'
+      aria-haspopup='dialog'
+      aria-expanded={selectedIllustration === illustrationName}
+      aria-controls={
+        selectedIllustration === illustrationName
+          ? `${illustrationName}-dialog`
+          : undefined
+      }
+      onClick={() => {
+        setSelectedIllustration(illustrationName);
+      }}
+      data-id={illustrationName}
+      data-name='PanelTrigger'
+    >
+      <Illustration width={80} height={80} />
+      <Text
+        w={80}
+        ellipsis={true}
+        size={200}
+        use='secondary'
+        hintProps={{ triggerRef: buttonRef, placement: 'bottom' }}
+      >
+        {illustrationName}
+      </Text>
+    </button>
+  );
+};
+
+export const ListIllustrations = ({ data, ...props }) => {
   return (
     <ul
       className={styles.list}
       aria-labelledby={props['aria-labelledby']}
       aria-label={props['aria-label']}
     >
-      {data.map((illustration, index) => {
-        const Illustration = illustrations[illustration.name];
-        if (!Illustration) {
-          throw new Error(
-            `Illustration ${illustration.name} not found in import from @illustrations`,
-          );
-        }
-        const buttonRef = React.useRef();
-
+      {data.map((illustration) => {
         return (
           <li className={styles.previewIllustration} key={illustration.name}>
-            <button
-              ref={buttonRef}
-              type='button'
-              aria-haspopup='dialog'
-              aria-expanded={selectedIllustration === illustration.name}
-              aria-controls={
-                selectedIllustration === illustration.name
-                  ? `${illustration.name}-dialog`
-                  : undefined
-              }
-              onClick={() => {
-                setSelectedIllustration(illustration.name);
-              }}
-              data-id={illustration.name}
-              data-name='PanelTrigger'
-            >
-              <Illustration width={80} height={80} />
-              <Text
-                w={80}
-                ellipsis={true}
-                size={200}
-                use='secondary'
-                hintProps={{ triggerRef: buttonRef, placement: 'bottom' }}
-              >
-                {illustration.name}
-              </Text>
-            </button>
+            <IllustrationButton illustrationName={illustration.name} />
           </li>
         );
       })}

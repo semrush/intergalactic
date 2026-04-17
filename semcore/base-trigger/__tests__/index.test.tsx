@@ -1,7 +1,7 @@
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
-import { test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
@@ -25,7 +25,7 @@ describe('ButtonTrigger', () => {
   shouldSupportClassName(ButtonTrigger);
   shouldSupportRef(ButtonTrigger);
 
-  test.concurrent('Should work as button with labels', async ({ expect }) => {
+  test.concurrent('Should work as button with labels', async () => {
     const component = (
       <>
         <label htmlFor='trigger' id='label' data-testid='label'>

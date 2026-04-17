@@ -176,6 +176,14 @@ class ScrollBarRoot extends Component<ScrollBarProps, typeof ScrollBarRoot.enhan
 
     const visibleScroll = this.calculateVisibleScroll();
 
+    /*
+      Safari retains GPU-composited layers after DOM removal.
+      Resetting transform before unmount prevents ghost rendering artifacts.
+    */
+    if (!visibleScroll && this.$slider) {
+      this.$slider.style.transform = 'none';
+    }
+
     this.setState({ visibleScroll }, () => {
       if (!this.$container || !this.$bar || !this.$slider) return;
       const orientation = this.getOrientation();

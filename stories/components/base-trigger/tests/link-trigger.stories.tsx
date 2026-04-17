@@ -2,17 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BaseExample, { defaultLinkTriggerProps } from './examples/link-trigger/base';
 import DifferentSizesExample, { defaultLinkTriggerSizesProps } from './examples/link-trigger/link-trigger-different-sizes';
-import AddonExample, { linkTriggerWithAddonExampleProps } from './examples/link-trigger/with-addons';
 import SelectExample, { linkTriggerSelectExampleProps } from './examples/link-trigger/with-select';
 
 const sharedArgTypes = {
   size: {
     control: { type: 'select' },
     options: [100, 200, 300, 400, 500, 600, 700, 800, undefined],
-  },
-  state: {
-    control: { type: 'select' },
-    options: ['normal', 'valid', 'invalid', undefined],
   },
   active: { control: { type: 'boolean' } },
   empty: { control: { type: 'boolean' } },
@@ -46,11 +41,11 @@ export const Base: StoryObj<typeof defaultLinkTriggerProps> = {
     },
     addonLeftType: {
       control: { type: 'select' },
-      options: ['icon', 'badge', 'counter', 'spin'],
+      options: ['icon', 'badge', 'counter', 'spin', 'flag', 'tag'],
     },
     addonRightType: {
       control: { type: 'select' },
-      options: ['icon', 'badge', 'counter', 'spin'],
+      options: ['icon', 'badge', 'counter', 'spin', 'flag', 'tag'],
     },
     merged: {
       control: { type: 'boolean' },
@@ -88,15 +83,36 @@ export const Base: StoryObj<typeof defaultLinkTriggerProps> = {
   args: defaultLinkTriggerProps,
 };
 
-export const Addon: StoryObj<typeof linkTriggerWithAddonExampleProps> = {
-  render: AddonExample,
-  argTypes: sharedArgTypes,
-  args: linkTriggerWithAddonExampleProps,
-};
-
 export const Select: StoryObj<typeof linkTriggerSelectExampleProps> = {
   render: SelectExample,
-  argTypes: sharedArgTypes,
+  argTypes: {
+    ...sharedArgTypes,
+    showAddonLeft: {
+      control: { type: 'boolean' },
+    },
+    showAddonRight: {
+      control: { type: 'boolean' },
+    },
+    addonLeftType: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'flag', 'tag'],
+    },
+    addonRightType: {
+      control: { type: 'select' },
+      options: ['icon', 'badge', 'counter', 'flag', 'tag'],
+    },
+    w: {
+      control: { type: 'number' },
+    },
+    ellipsis: {
+      control: { type: 'select' },
+      options: ['false', 'true'],
+      mapping: {
+        false: { ellipsis: false },
+        true: { ellipsis: true },
+      },
+    },
+  },
   args: linkTriggerSelectExampleProps,
 };
 
@@ -106,11 +122,11 @@ export const DifferentSizes: StoryObj<typeof defaultLinkTriggerSizesProps> = {
     ...sharedArgTypes,
     addonLeft: {
       control: { type: 'select' },
-      options: ['icon', 'badge', 'counter', 'spin'],
+      options: ['icon', 'badge', 'counter', 'flag', 'tag'],
     },
     addonRight: {
       control: { type: 'select' },
-      options: ['icon', 'badge', 'counter', 'spin', 'none'],
+      options: ['icon', 'badge', 'counter', 'flag', 'tag', 'none'],
     },
     ellipsis: { control: { type: 'boolean' } },
   },

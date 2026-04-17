@@ -1,7 +1,7 @@
 {
   "name": "@semcore/pagination",
   "description": "Semrush Pagination Component",
-  "version": "16.1.12",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,20 +12,20 @@
     "build": "pnpm semcore-builder --source=js && pnpm vite build"
   },
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "16.0.12",
-    "@semcore/input-number": "16.0.11",
-    "@semcore/input": "16.1.1",
-    "@semcore/link": "16.0.11",
-    "@semcore/typography": "16.3.2"
+    "@semcore/button": "^17.0.1",
+    "@semcore/input-number": "^17.0.1",
+    "@semcore/input": "^17.0.1",
+    "@semcore/link": "^17.0.1",
+    "@semcore/typography": "^17.0.1"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.0 || ^17.0.0-0",
-    "@semcore/icon": "^17.0.0 || ^17.0.0-0"
+    "@semcore/base-components": "^17.0.1",
+    "@semcore/icon": "^17.0.1"
   },
   "repository": {
     "type": "git",

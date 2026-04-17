@@ -84,7 +84,7 @@ describe('Modal', () => {
     expect(queryByText('Hello world')).toBeNull();
   });
 
-  test.concurrent('Verify supports onClose for OutsideClick', async ({ expect }) => {
+  test.concurrent('Verify supports onClose for OutsideClick', async () => {
     const spy = vi.fn();
     const { baseElement } = render(
       <Modal onClose={spy} visible>
@@ -110,7 +110,7 @@ describe('Modal', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test.sequential('Verify supports render function for children', async ({ expect }) => {
+  test.sequential('Verify supports render function for children', async () => {
     const component = <Modal visible>{() => <Modal.Overlay />}</Modal>;
     render(component);
 
@@ -119,7 +119,7 @@ describe('Modal', () => {
     ).toBe(1);
   });
 
-  test.sequential('Verify blocks global scroll when visible', async ({ expect }) => {
+  test.sequential('Verify blocks global scroll when visible', async () => {
     const component = render(<Modal visible>Content</Modal>);
     expect(document.body).toHaveStyle('overflow: hidden');
     component.unmount();
