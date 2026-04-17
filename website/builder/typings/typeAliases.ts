@@ -4,7 +4,6 @@ import { extractDependenciesList, serializeProperty, serializeTsNode } from './s
 
 export const serializeTypeDeclaration = (typeDeclaration: ts.TypeAliasDeclaration) => {
   const name = typeDeclaration.name.escapedText as string;
-
   const genericsMap = {};
   const properties = [];
   const dependencies = [];
