@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "分類可能"
+  "sortableColumn": "分類可能",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "詳細を表示する",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "詳細を非表示にする",
+  "DataTable.Header.selectAllCheckbox:aria-label": "すべての項目",
+  "DataTable.allItemsSelected:aria-live": "すべての項目が選択されました",
+  "DataTable.allItemsDeselected:aria-live": "すべての項目が選択解除されました"
 }

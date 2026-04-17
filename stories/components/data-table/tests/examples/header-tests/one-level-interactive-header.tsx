@@ -4,7 +4,7 @@ import { Flex } from '@semcore/ui/base-components';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
-import { DataTable } from '@semcore/ui/data-table';
+import { DataTable, SelectableRows } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
 import Tooltip, { DescriptionTooltip } from '@semcore/ui/tooltip';
@@ -152,6 +152,8 @@ const columns: DataTableProps<typeof data, any, any>['columns'] = [
   },
 ];
 
+const selectedRows = new SelectableRows<string>();
+
 const Demo = (props: OneLevelInteractiveExampleProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'asc']);
   const sortedData = React.useMemo(
@@ -166,7 +168,6 @@ const Demo = (props: OneLevelInteractiveExampleProps) => {
       }),
     [sort],
   );
-  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
   return (
 
     <DataTable
@@ -187,7 +188,6 @@ const Demo = (props: OneLevelInteractiveExampleProps) => {
         withScrollBar: props.withScrollBar,
       }}
       selectedRows={selectedRows}
-      onSelectedRowsChange={setSelectedRows}
       columns={columns}
       renderCell={(props) => {
         if (props.columnName === 'keyword') {

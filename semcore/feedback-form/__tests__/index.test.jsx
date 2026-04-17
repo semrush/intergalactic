@@ -53,7 +53,7 @@ describe('FeedbackForm', () => {
     unmount();
   });
 
-  test('Verify validationOnBlur=true (default behavior)', async ({ expect }) => {
+  test('Verify validationOnBlur=true (default behavior)', async () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -74,7 +74,7 @@ describe('FeedbackForm', () => {
     unmount();
   });
 
-  test('Verify validationOnBlur=false', async ({ expect }) => {
+  test('Verify validationOnBlur=false', async () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -115,7 +115,7 @@ describe('FeedbackForm.Item', () => {
 describe('5-star FeedbackForm', () => {
   beforeEach(cleanup);
 
-  test('Verify no submit if invalid', async ({ expect }) => {
+  test('Verify no submit if invalid', async () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 

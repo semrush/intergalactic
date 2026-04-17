@@ -10,15 +10,16 @@ import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import createFocusDecorator from 'final-form-focus';
 import React from 'react';
+import type { FieldRenderProps } from 'react-final-form';
 import { Field, Form } from 'react-final-form';
 
-const required = (value) => (value ? undefined : 'Please fill in this field.');
-const email = (value) => (value?.includes('@') ? undefined : 'Please enter valid email.');
+const required = (value: string) => (value ? undefined : 'Please fill in this field.');
+const email = (value: string) => (value?.includes('@') ? undefined : 'Please enter valid email.');
 
 class Demo extends React.Component {
   focusDecorator: any;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.focusDecorator = createFocusDecorator();
   }
@@ -151,6 +152,7 @@ class Demo extends React.Component {
                           onChange={(e) => input.onChange(e)}
                         >
                           <Tooltip.Trigger w='100%'>
+                            {/* @ts-ignore todo Brauer Ilya: remove after DatePicker refactoring */}
                             <DatePicker.Trigger
                               {...input}
                               w='100%'
