@@ -5,12 +5,17 @@ import ts from 'typescript';
 
 import { serializeClassDeclaration } from './classes';
 import { serializeInterfaceDeclaration } from './interfaces';
+import { serializeModuleDeclaration } from './moduleDeclaration';
 import { serializeTypeDeclaration } from './typeAliases';
+
+const NAMESPACE_PREFIX = 'NS';
 
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
   const interfaceDec: ts.InterfaceDeclaration[] = [];
   const typesDec: ts.TypeAliasDeclaration[] = [];
   const classesDec: ts.ClassDeclaration[] = [];
+  let namespaces: Record<string, any> = {};
+
   fileDeclaration.forEachChild((child) => {
     if (child.kind === ts.SyntaxKind.InterfaceDeclaration) {
       const isExported = child.modifiers?.some(
@@ -39,6 +44,13 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
         classesDec.push(child as ts.ClassDeclaration);
       }
     }
+
+    if (ts.isModuleDeclaration(child)) {
+      namespaces = {
+        ...namespaces,
+        ...serializeModuleDeclaration(child, filepath),
+      };
+    }
   });
 
   const types = typesDec.map((type) => serializeTypeDeclaration(type));
@@ -50,6 +62,7 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
     types,
     interfaces,
     classes,
+    namespaces,
   };
 };
 
@@ -75,7 +88,8 @@ export default {
       const serialized = sourceFiles.map((file, index) =>
         serializeFileDeclaration(file, watchedFiles[index]),
       );
-      const typings = {};
+      let typings: Record<string, any> = {};
+
       for (const file of serialized) {
         for (const typing of [...file.types, ...file.interfaces, ...file.classes]) {
           if (typings[typing.name]) {
@@ -132,8 +146,15 @@ export default {
             declaration,
           };
         }
+
+        typings = {
+          ...typings,
+          ...file.namespaces,
+        };
       }
       for (const typing in typings) {
+        if (typing.startsWith(NAMESPACE_PREFIX)) continue;
+
         const dependencies = typings[typing].dependencies;
         const dependencyFiles = dependencies
           .map((dependency) => typings[dependency]?.filepath)
