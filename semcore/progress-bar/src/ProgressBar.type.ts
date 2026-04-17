@@ -25,8 +25,6 @@ declare namespace NSProgressBar {
     getValueProps: PropGetterFn;
   };
 
-  type Root = Intergalactic.Component<'div', Props, Ctx>;
-
   namespace Value {
     type Props = BoxProps & {
       /** Controls the size of the value bar */
@@ -39,11 +37,11 @@ declare namespace NSProgressBar {
       theme?: string;
     };
 
-    type Root = Intergalactic.Component<'div', Props>;
+    type Component = Intergalactic.Component<'div', Props>;
   }
 
-  type Component = Root & {
-    Value: Value.Root;
+  type Component = Intergalactic.Component<'div', Props, Ctx> & {
+    Value: Value.Component;
   };
 }
 

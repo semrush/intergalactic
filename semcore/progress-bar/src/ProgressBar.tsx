@@ -14,7 +14,7 @@ function isCustomTheme(theme?: string) {
 }
 
 class ProgressBarRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSProgressBar.Root>,
+  Intergalactic.InternalTypings.InferComponentProps<NSProgressBar.Component>,
   typeof ProgressBarRoot.enhance
 > {
   static displayName = 'ProgressBar';
@@ -60,7 +60,7 @@ class ProgressBarRoot extends Component<
 
 function Value(
   props: Intergalactic.InternalTypings.InferChildComponentProps<
-    NSProgressBar.Value.Root,
+    NSProgressBar.Value.Component,
     typeof ProgressBarRoot,
     'Value'
   >,
