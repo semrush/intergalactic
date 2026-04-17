@@ -21,7 +21,7 @@
     "@semcore/typography": "^17.0.1",
     "@semcore/counter": "^17.0.1",
     "@semcore/tooltip": "^17.0.1",
-    "dompurify": "3.2.3"
+    "dompurify": "3.4.0"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.1",
