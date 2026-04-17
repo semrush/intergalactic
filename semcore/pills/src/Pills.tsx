@@ -9,7 +9,7 @@ import type { NSPills } from './Pills.type';
 import style from './style/pills.shadow.css';
 
 class RootPills extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSPills.Root>,
+  Intergalactic.InternalTypings.InferComponentProps<NSPills.Component>,
   typeof RootPills.enhance,
   NSPills.Handlers
 > {
@@ -93,7 +93,7 @@ class RootPills extends Component<
   }
 }
 
-function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPills.Pill.Root, typeof RootPills, 'Item'>) {
+function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPills.Pill.Component, typeof RootPills, 'Item'>) {
   const SPill = Root;
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
@@ -121,22 +121,22 @@ function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPi
   );
 }
 
-function Text(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Text.Root>) {
+function Text(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Text.Component>) {
   const SText = Root;
   return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
-function Addon(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Addon.Root>) {
+function Addon(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Addon.Component>) {
   const SAddon = Root;
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
 export const wrapPills = <PropsExtending extends {}>(wrapper: (
   props: Intergalactic.InternalTypings.UntypeRefAndTag<
-    Intergalactic.InternalTypings.ComponentPropsNesting<NSPills.Root>
+    Intergalactic.InternalTypings.ComponentPropsNesting<NSPills.WrapComponent>
   > &
   PropsExtending,
-) => React.ReactNode) => wrapper as NSPills.Root<PropsExtending>;
+) => React.ReactNode) => wrapper as NSPills.WrapComponent<PropsExtending>;
 
 const Pills = createComponent(RootPills, {
   Item: [Pill, { Text, Addon }],

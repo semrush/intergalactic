@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 declare namespace NSPills {
   type Value = string | number | boolean | null;
-  type Props<T extends Value = Value> = NeighborLocationProps & BoxProps & {
+  type Props<T extends NSPills.Value = NSPills.Value> = NeighborLocationProps & BoxProps & {
     /** Pills size */
     size?: 'l' | 'm';
     /** Disabled state */
@@ -36,11 +35,10 @@ declare namespace NSPills {
   type Handlers = {
     value: (value: Props['value'], event: React.SyntheticEvent) => Props['value'];
   };
-
   namespace Pill {
     type Props = BoxProps & NeighborItemProps & {
       /** Pill value */
-      value?: Value;
+      value?: NSPills.Value;
       /** Disabled state */
       disabled?: boolean;
       /** Selected state */
@@ -50,19 +48,17 @@ declare namespace NSPills {
       /** Right addon tag */
       addonRight?: React.ElementType;
     };
-
     namespace Text {
-      type Root = typeof Box;
+      type Component = typeof Box;
     }
-
     namespace Addon {
-      type Root = typeof Box;
+      type Component = typeof Box;
     }
 
-    type Root = Intergalactic.Component<'button', Props, [handlers: Handlers]>;
+    type Component = Intergalactic.Component<'button', Props, [handlers: Handlers]>;
   }
 
-  type Root<PropsExtending = {}> = (<
+  type WrapComponent<PropsExtending = {}> = (<
     V extends Value,
     Tag extends Intergalactic.Tag = 'div',
   >(
@@ -77,10 +73,10 @@ declare namespace NSPills {
   ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', Props>;
 
-  type Component = Root & {
-    Item: Pill.Root & {
-      Text: Pill.Text.Root;
-      Addon: Pill.Addon.Root;
+  type Component = WrapComponent & {
+    Item: Pill.Component & {
+      Text: Pill.Text.Component;
+      Addon: Pill.Addon.Component;
     };
   };
 }
