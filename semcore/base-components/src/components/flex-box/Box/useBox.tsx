@@ -254,6 +254,10 @@ export default function useBox<T extends BoxProps>(
     inset,
     zIndex,
     hoverCursor,
+    focusRingTopOffset,
+    focusRingRightOffset,
+    focusRingBottomOffset,
+    focusRingLeftOffset,
     ...other
   } = props as any;
 
@@ -300,6 +304,10 @@ export default function useBox<T extends BoxProps>(
     inAfterOutline: inAfterOutline === true ? 'true' : 'false',
     invertOutline,
     hoverCursor,
+    focusRingTopOffset,
+    focusRingRightOffset,
+    focusRingBottomOffset,
+    focusRingLeftOffset,
   });
 
   if (Tag === React.Fragment) return [React.Fragment, { children: props.children }];

@@ -255,7 +255,7 @@ SCell {
   }
 }
 
-SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCell[name='Symbol(SELECT_ALL)'] {
+SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCell[name='SELECT_ALL'] {
   cursor: pointer;
 }
 

@@ -4,10 +4,6 @@ SScrollArea {
   height: 100%;
 
   SContainer:focus-visible::after {
-    top: var(--focusRingTopOffset);
-    right: var(--focusRingRightOffset);
-    bottom: var(--focusRingBottomOffset);
-    left: var(--focusRingLeftOffset);
     pointer-events: none;
   }
 }

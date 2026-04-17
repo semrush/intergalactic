@@ -97,7 +97,7 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
       <SCheckboxCell
         row={row}
         rowIndex={rowIndex}
-        column={{ name: SELECT_ALL.toString() }}
+        column={{ name: SELECT_ALL.description ?? '' }}
         columnIndex={0}
         gridRowIndex={gridRowIndex}
         onClick={this.handleClickCheckbox(!checked)}
