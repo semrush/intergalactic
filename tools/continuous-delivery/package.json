@@ -4,6 +4,8 @@
   "main": "index.ts",
   "bin": {
     "init-prerelease": "bin/init-prerelease.ts",
+    "init-icon-prerelease": "bin/init-icon-prerelease.ts",
+    "init-illustration-prerelease": "bin/init-illustration-prerelease.ts",
     "publish-prerelease": "bin/publish-prerelease.ts",
     "publish-release": "bin/publish-release.ts",
     "upload-static": "bin/upload-static.ts",
@@ -12,7 +14,8 @@
     "send-release-changelog": "bin/send-release-changelog.ts",
     "close-tasks": "bin/close-tasks.ts",
     "publish-release-notes": "bin/publish-release-notes.ts",
-    "format-changelogs": "bin/format-changelogs.ts"
+    "format-changelogs": "bin/format-changelogs.ts",
+    "publish-tool": "bin/publish-tool.ts"
   },
   "private": true,
   "license": "MIT",

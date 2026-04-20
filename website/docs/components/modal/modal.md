@@ -32,7 +32,7 @@ Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
 **Don't use modal:**
 
 - To notify of an error in the interface or system.
-- To show content that is required for the user to complete the main task in the interface.
+- To show content that's required for the user to complete the main task in the interface.
 
 ::: tip
 If you want to display a lot of information in a modal, this component may not be the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/fullscreen-modal) or even a separate page.
@@ -135,7 +135,7 @@ If the content of the modal requires a large size, the modal is positioned with 
 ![](static/position-2.png)
 ![](static/position-3.png)
 
-If the size of the modal changes when the user interacts with it, it is recommended to anchor it to the top border with a 40px margin.
+If the size of the modal changes when the user interacts with it, it's recommended to anchor it to the top border with a 40px margin.
 
 ![](static/position-4-1.png)
 ![](static/position-4-2.png)
@@ -196,10 +196,10 @@ If the modal is used for confirmation, the title should pose a question, and the
 
 The alignment of the buttons should be consistent with the title.
 
-It is advisable to limit the usage of main buttons within the modal to a maximum of two.
+Try limiting the number of main buttons within the modal to a maximum of two.
 
 ![](static/buttons-yes-no.png)
 
-**Avoid labeling the main button with generic words such as "OK" or "Yes".** Users may require additional time to comprehend the required action if the buttons and their functions are not clearly designated.
+**Avoid labeling the main button with generic words such as "OK" or "Yes".** Users may require additional time to comprehend the required action if the buttons and their functions aren't clearly designated.
 
 ![](static/button-yes-no.png)

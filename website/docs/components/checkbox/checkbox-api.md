@@ -31,8 +31,7 @@ Represents `input[type=checkbox]`
 import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value.Control />;
 ```
-
-<TypesView type="CheckboxValueControlProps" :types={...types} />
+## Checkbox.Value.CheckMark
 
 Represents `span` in `Checkbox.Value`.
 
@@ -41,11 +40,9 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value.CheckMark />;
 ```
 
-<TypesView type="CheckboxValueCheckMarkProps" :types={...types} />
-
 ## Checkbox.Text
 
-It is the customized `Text` from `intergalactic/typography`, depending on the size.
+A customized `Text` from `intergalactic/typography`, depending on the size.
 
 ```jsx
 import Checkbox from '@semcore/ui/checkbox';

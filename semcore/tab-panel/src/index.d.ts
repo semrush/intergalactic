@@ -1,13 +1,10 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
+import type { Box, BoxProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type TabPanelValue = string | number | boolean;
 
-/** @deprecated */
-export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue>
-  extends TabPanelProps<T>,
-  UnknownProperties {}
 export type TabPanelProps<T extends TabPanelValue = TabPanelValue> = BoxProps & {
   /** Is invoked when changing the selection */
   onChange?:
@@ -28,8 +25,6 @@ export type TabPanelProps<T extends TabPanelValue = TabPanelValue> = BoxProps & 
   behavior?: 'auto' | 'manual';
 };
 
-/** @deprecated */
-export interface ITabPanelItemProps extends TabPanelItemProps, UnknownProperties {}
 export type TabPanelItemProps = BoxProps & {
   /** Makes a tab selected. This property is determined automatically depending on the value. */
   selected?: boolean;
@@ -43,14 +38,10 @@ export type TabPanelItemProps = BoxProps & {
   addonRight?: React.ElementType;
 };
 
-/** @deprecated */
-export interface ITabPanelContext extends TabPanelContext, UnknownProperties {}
 export type TabPanelContext = {
   getItemProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ITabPanelHandlers extends TabPanelHandlers, UnknownProperties {}
 export type TabPanelHandlers = {
   value: (value: TabPanelValue) => void;
 };
@@ -72,7 +63,7 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabPanelProps>;
 
 declare const TabPanel: IntergalacticTabPanelComponent & {
   Item: Intergalactic.Component<'div', TabPanelItemProps, {}, [handlers: TabPanelHandlers]> & {
-    Text: typeof Box;
+    Text: typeof Text;
     Addon: typeof Box;
   };
 };

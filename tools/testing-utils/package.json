@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "@axe-core/playwright": "4.9.1",
-    "@playwright/test": "1.48.0",
+    "@playwright/test": "1.58.2",
     "@previewjs/plugin-react": "17.1.0",
     "@previewjs/screenshot": "0.3.2",
     "@semcore/babel-preset-ui": "workspace:*",
@@ -25,12 +25,12 @@
     "sharp": "0.31.3"
   },
   "devDependencies": {
-    "@guidepup/guidepup": "0.24.0",
+    "@guidepup/guidepup": "0.24.1",
     "@types/pixelmatch": "5.2.6",
     "@types/pngjs": "6.0.5",
     "@types/request": "2.48.12",
     "@types/testing-library__jest-dom": "5.14.9",
-    "esbuild": "0.14.29",
+    "esbuild": "0.28.0",
     "vitest-axe": "0.1.0"
   },
   "peerDependencies": {

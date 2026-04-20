@@ -1,7 +1,7 @@
+import { Flex, Box, type BoxProps } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 import style from '../../style/slider-rating.shadow.css';
@@ -27,9 +27,10 @@ const MAX = 5;
 
 class SliderRatingRoot extends Component<
   SliderRatingProps,
+  typeof SliderRatingRoot.enhance,
   {},
-  State,
-  typeof SliderRatingRoot.enhance
+  {},
+  State
 > {
   static displayName = 'SliderRating';
   static style = style;
@@ -147,13 +148,7 @@ class SliderRatingRoot extends Component<
     if (readonly) {
       return (
         <SSliderRating render={Flex} gap={1} role='img' aria-label={label}>
-          {new Array(MAX).fill(null).map((_, index) => {
-            return (
-              <Box key={index} position='relative'>
-                <SliderRating.Star />
-              </Box>
-            );
-          })}
+          {new Array(MAX).fill(null).map((_, index) => <SliderRating.Star key={index} />)}
         </SSliderRating>
       );
     }
@@ -181,13 +176,7 @@ class SliderRatingRoot extends Component<
         aria-valuetext={editModeLabel}
         aria-valuenow={hoverValue}
       >
-        {new Array(MAX).fill(null).map((_, index) => {
-          return (
-            <Box key={index} position='relative'>
-              <SliderRating.Star />
-            </Box>
-          );
-        })}
+        {new Array(MAX).fill(null).map((_, index) => <SliderRating.Star key={index} />)}
       </SSliderRating>,
     );
   }

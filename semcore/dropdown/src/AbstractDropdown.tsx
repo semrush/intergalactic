@@ -28,7 +28,11 @@ export const enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] a
 
 export const selectedIndexContext = React.createContext(0);
 
-export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}, typeof enhance> {
+export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof enhance, {
+  selectedIndex: null;
+  highlightedIndex: any;
+  visible: null;
+}> {
   protected abstract role: 'menu' | 'listbox';
 
   popperRef = React.createRef<HTMLElement>();
@@ -175,6 +179,12 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const { size } = this.asProps;
     return {
       size,
+    };
+  }
+
+  getItemTextProps(_: any, index: number) {
+    return {
+      index,
     };
   }
 

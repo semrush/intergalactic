@@ -1,5 +1,5 @@
+import { Box } from '@semcore/ui/base-components';
 import Ellipsis from '@semcore/ui/ellipsis';
-import { Box } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = () => {

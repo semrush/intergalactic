@@ -4,9 +4,7 @@ import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-uti
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import Select from '../src';
-// @ts-ignore
-import InputSearch from '../src/InputSearch';
+import Select, { InputSearch } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -14,7 +12,7 @@ describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
 });
 
-HTMLElement.prototype.scrollIntoView = () => {};
+HTMLElement.prototype.scrollIntoView = () => { };
 
 describe('Select Trigger', () => {
   beforeEach(() => {
@@ -31,7 +29,7 @@ describe('Select Trigger', () => {
 
   test.concurrent(
     'Verify popper not opened by keyboard if interaction is none',
-    async ({ expect }) => {
+    async () => {
       const spy = vi.fn();
       render(
         <Select onVisibleChange={spy} interaction='none'>
@@ -66,7 +64,7 @@ describe('Select Trigger', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify highlights selected item', async ({ expect }) => {
+  test('Verify highlights selected item', async () => {
     let highlightedIndex: number | null = null;
 
     const component = render(
@@ -92,9 +90,7 @@ describe('Select Trigger', () => {
     await expect(highlightedIndex).toBe(2);
   });
 
-  test('Verify select by keypress space with button as trigger (FilterTrigger as example)', async ({
-    expect,
-  }) => {
+  test('Verify select by keypress space with button as trigger (FilterTrigger as example)', async () => {
     const spyChange = vi.fn();
 
     const component = (
@@ -203,7 +199,7 @@ describe('Select Trigger', () => {
 
   test.sequential(
     'Verify focus position preserve with keyboard navigation and interaction=focus',
-    async ({ expect }) => {
+    async () => {
       // vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
@@ -237,9 +233,7 @@ describe('Option.Checkbox', () => {
   shouldSupportClassName(Select.Option.Checkbox, Select);
   shouldSupportRef(Select.Option.Checkbox, Select);
 
-  test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async ({
-    expect,
-  }) => {
+  test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async () => {
     const { getByTestId } = render(
       <Select>
         <Select.Trigger placeholder="I'll show u some options" data-testid='selectTrigger' />
@@ -255,8 +249,12 @@ describe('Option.Checkbox', () => {
             <Select.Option.Checkbox data-testid='thirdOptionCheckbox' />
             I'm disabled option-checkbox
           </Select.Option>
-          <Select.OptionTitle>I'm title</Select.OptionTitle>
-          <Select.OptionHint>I'm hint</Select.OptionHint>
+          <Select.Group title="I'm title">
+            <Select.Option value={4}>
+              <Select.Option.Content>Content</Select.Option.Content>
+              <Select.Option.Hint>I'm hint</Select.Option.Hint>
+            </Select.Option>
+          </Select.Group>
         </Select.Menu>
       </Select>,
     );
@@ -285,7 +283,7 @@ describe('InputSearch', () => {
   shouldSupportClassName(InputSearch, Select);
   shouldSupportRef(InputSearch, Select);
 
-  test('Verify calls onChange ones per symbol', async ({ expect }) => {
+  test('Verify calls onChange ones per symbol', async () => {
     const spy = vi.fn();
     const { unmount } = render(
       <Select visible disablePortal>
@@ -294,8 +292,11 @@ describe('InputSearch', () => {
     );
 
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
+    // await userEvent.keyboard('[Tab]');
+    // Wait for autoFocus in Input.Value to complete
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await userEvent.keyboard('test');
+    await new Promise((resolve) => setTimeout(resolve, 200));
     expect(spy).toHaveBeenCalledTimes(4);
     unmount();
   });

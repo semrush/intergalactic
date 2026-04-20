@@ -12,7 +12,7 @@ describe('tag Dependency imports', () => {
 describe('Tag', () => {
   beforeEach(cleanup);
 
-  test('Verify works as Button from keyboard', async ({ expect }) => {
+  test('Verify works as Button from keyboard', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <Tag interactive onClick={onClick} data-testid='tagAsButton'>
@@ -31,7 +31,7 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify calls keydwon callback once per key down', async ({ expect }) => {
+  test('Verify calls keydwon callback once per key down', async () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <Tag interactive onKeyDown={onKeyDown} data-testid='tagKeyboardTest'>
@@ -85,7 +85,7 @@ describe('TagContainer', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  test('Verify works as Button from keyboard', async ({ expect }) => {
+  test('Verify works as Button from keyboard', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <TagContainer>
@@ -106,7 +106,7 @@ describe('TagContainer', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test('Verify calls keydwon callback once per key down', async ({ expect }) => {
+  test('Verify calls keydwon callback once per key down', async () => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <TagContainer>

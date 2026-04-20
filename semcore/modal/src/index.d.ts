@@ -1,13 +1,9 @@
-import type { FadeInOutProps, SlideProps } from '@semcore/animation';
+import type { FadeInOutProps, SlideProps, Box, BoxProps, PortalProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { PortalProps } from '@semcore/portal';
-import type { TextProps } from '@semcore/typography';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
-/** @deprecated */
-export interface IModalProps extends ModalProps, UnknownProperties {}
 export type ModalProps = PortalProps &
   BoxProps &
   FadeInOutProps & {
@@ -39,12 +35,8 @@ export type ModalProps = PortalProps &
     ghost?: boolean;
   };
 
-/** @deprecated */
-export interface IWindowProps extends WindowProps, UnknownProperties {}
 export type WindowProps = BoxProps & SlideProps & {};
 
-/** @deprecated */
-export interface IModalContext extends ModalContext, UnknownProperties {}
 export type ModalContext = {
   getOverlayProps: PropGetterFn;
   getWindowProps: PropGetterFn;
@@ -55,7 +47,7 @@ declare const Modal: Intergalactic.Component<'div', ModalProps, ModalContext> & 
   Window: Intergalactic.Component<'div', WindowProps>;
   Overlay: typeof Box;
   Close: typeof Button;
-  Title: Intergalactic.Component<'div', TextProps>;
+  Title: Intergalactic.Component<'div', NSText.Props>;
 };
 
 export default Modal;

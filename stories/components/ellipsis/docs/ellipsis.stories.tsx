@@ -4,6 +4,10 @@ export type ExampleEllipsisProps = EllipsisProps;
 
 import AdvancedUseExample, { defaultProps as advancedDefaultProps } from './examples/advanced_use';
 import BasicUsageExample, { defaultProps as basicDefaultProps } from './examples/basic_usage';
+import BreadcrumbsExample from './examples/breadcrumbs';
+import CardExample from './examples/card';
+import DataTableExample from './examples/data-table';
+import InputTagsExample, { defaultProps as inputTagsDefaultProps } from './examples/input-tags';
 import MultilineExample, { defaultProps as multilineDefaultProps } from './examples/multiline';
 import MultipleUseExample, { defaultProps as multipleUseProps } from './examples/multiple_use';
 import TooltipCursorAnchoringExample, { defaultProps as tooltipCursorAnchoringProps } from './examples/tooltip-cursor-anchoring';
@@ -52,6 +56,23 @@ export const MultipleUse: Story = {
 export const TooltipCursorAnchoring: Story = {
   render: TooltipCursorAnchoringExample,
   args: tooltipCursorAnchoringProps,
+};
+
+export const Breadcrumbs: Story = {
+  render: BreadcrumbsExample,
+};
+
+export const CardEllipsis: Story = {
+  render: CardExample,
+};
+
+export const DataTableEllipsis: Story = {
+  render: DataTableExample,
+};
+
+export const InputTags: Story = {
+  render: InputTagsExample,
+  args: inputTagsDefaultProps,
 };
 
 export const TrimmingType: Story = {

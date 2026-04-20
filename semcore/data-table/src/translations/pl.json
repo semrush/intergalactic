@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Umożliwia sortowanie"
+  "sortableColumn": "Umożliwia sortowanie",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Pokaż szczegóły",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Ukryj szczegóły",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Wszystkie przedmioty",
+  "DataTable.allItemsSelected:aria-live": "Wszystkie przedmioty wybrane",
+  "DataTable.allItemsDeselected:aria-live": "Wszystkie przedmioty odznaczone"
 }

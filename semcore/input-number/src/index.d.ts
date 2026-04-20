@@ -1,12 +1,10 @@
-import type { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
 import type React from 'react';
 
 export type InputNumberValue = string;
 export type InputNumberSize = 'm' | 'l';
 
-/** @deprecated */
-export interface IInputNumberProps extends InputNumberProps, UnknownProperties {}
 export type InputNumberProps = InputProps & {
   /** Input size
    * @default m
@@ -18,8 +16,6 @@ export type InputNumberProps = InputProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IInputNumberValueProps extends InputNumberValueProps, UnknownProperties {}
 export type InputNumberValueProps = InputValueProps & {
   /** Minimum value
    * @default Number.MIN_SAFE_INTEGER
@@ -39,8 +35,6 @@ export type InputNumberValueProps = InputValueProps & {
   onChange?: (value: InputNumberValue, event?: React.SyntheticEvent<HTMLInputElement>) => void;
 };
 
-/** @deprecated */
-export interface IInputNumberControlsProps extends InputNumberControlsProps, UnknownProperties {}
 export type InputNumberControlsProps = InputAddonProps & {
   /** Always displays controls (steppers)
    * @default false
@@ -48,8 +42,6 @@ export type InputNumberControlsProps = InputAddonProps & {
   showControls?: boolean;
 };
 
-/** @deprecated */
-export interface IInputNumberCtx extends InputNumberCtx, UnknownProperties {}
 export type InputNumberCtx = {
   getValueProps: PropGetterFn;
   getControlsProps: PropGetterFn;

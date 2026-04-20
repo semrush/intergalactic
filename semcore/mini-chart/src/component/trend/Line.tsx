@@ -1,8 +1,8 @@
-import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { Box } from '@semcore/base-components';
+import { createComponent, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import { Trend, type CommonTrendProps } from './Trend';
@@ -28,12 +28,6 @@ export type TrendLineProps = CommonTrendProps & {
    * Radius for last point item
    */
   lastPointRadius?: number;
-};
-
-type Enhances = {
-  uid: string;
-  resolveColor: ReturnType<typeof resolveColorEnhance>;
-  withArea?: true;
 };
 
 class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> {
@@ -149,12 +143,11 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
   }
 }
 
-export const TrendLine: ComponentType<TrendLineProps, {}, {}, Enhances> =
-  createComponent(TrendLineRoot);
+export const TrendLine = createComponent<'svg', TrendLineProps, {}, typeof TrendLineRoot.enhance>(TrendLineRoot);
 
 TrendLine.displayName = 'MiniChart.TrendLine';
 
-export const TrendArea: ComponentType<TrendLineProps, {}, {}, Enhances> = createComponent(
+export const TrendArea = createComponent<'svg', TrendLineProps, {}, typeof TrendLineRoot.enhance>(
   TrendLineRoot,
   {},
   {

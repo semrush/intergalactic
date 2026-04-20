@@ -1,8 +1,8 @@
+import HamburgerM from '@semcore/icon/Hamburger/m';
 import { Popper, Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import HamburgerM from '@semcore/ui/icon/Hamburger/m';
 import Input from '@semcore/ui/input';
 import React from 'react';
 

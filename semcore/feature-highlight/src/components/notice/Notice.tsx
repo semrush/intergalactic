@@ -1,4 +1,5 @@
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import isNode from '@semcore/core/lib/utils/isNode';
 import type { NoticeSmartProps } from '@semcore/notice';
 import Notice from '@semcore/notice';
@@ -11,42 +12,56 @@ class NoticeFHRoot extends Component<NoticeSmartProps> {
   static displayName = 'NoticeFH';
   static style = style;
 
-  renderContent() {
-    const { Children, label, title, closable } = this.asProps;
-    let textContent = <Children />;
+  renderSmartMode() {
+    const { label, title, text, actions, closable, onClose } = this.asProps;
 
-    if (typeof Children.origin === 'string') {
-      textContent =
-              isNode(title) || isNode(label) || closable
-                ? (
-                    <Notice.Text>
-                      <Children />
-                    </Notice.Text>
-                  )
-                : (
-                    <Children />
-                  );
-    }
+    return (
+      <>
+        {isNode(label) && <Notice.Label>{label}</Notice.Label>}
+        <Notice.Content>
+          {isNode(title) && <Notice.Title>{title}</Notice.Title>}
+          {isNode(text) && <Notice.Text>{text}</Notice.Text>}
+          {isNode(actions) && <Notice.Actions>{actions}</Notice.Actions>}
+        </Notice.Content>
+        {closable && <Notice.Close onClick={onClose} />}
+      </>
+    );
+  }
 
-    return textContent;
+  renderAdvancedMode() {
+    const { Children } = this.asProps;
+
+    return <Children />;
   }
 
   render() {
     const SHighlightedNotice = Root;
-    const { label, title, styles, actions, closable, onClose } = this.asProps;
+    const { styles, Children, visible } = this.asProps;
+
+    const advancedMode = isAdvanceMode(Children, [
+      NoticeFH.Label.displayName,
+      NoticeFH.Actions.displayName,
+      NoticeFH.Content.displayName,
+      NoticeFH.Title.displayName,
+      NoticeFH.Text.displayName,
+      NoticeFH.Close.displayName,
+    ]);
+
+    const beforeVisibility = visible === undefined || visible ? 'visible' : 'hidden';
 
     return sstyled(styles)(
-      <SHighlightedNotice render={Notice} __excludeProps={['title']} use:theme={undefined}>
-        {isNode(label) && <Notice.Label>{label}</Notice.Label>}
-        <Notice.Content>
-          {isNode(title) && <Notice.Title>{title}</Notice.Title>}
-          {this.renderContent()}
-          {isNode(actions) && <Notice.Actions>{actions}</Notice.Actions>}
-        </Notice.Content>
-        {closable && <Notice.Close onClick={onClose} />}
+      <SHighlightedNotice render={Notice} beforeVisibility={beforeVisibility} __excludeProps={['title']} use:theme={undefined}>
+        {advancedMode ? this.renderAdvancedMode() : this.renderSmartMode()}
       </SHighlightedNotice>,
     );
   }
 }
 
-export const NoticeFH = createComponent(NoticeFHRoot) as HighlightedNoticeComponent;
+export const NoticeFH = createComponent(NoticeFHRoot, {
+  Label: Notice.Label,
+  Actions: Notice.Actions,
+  Content: Notice.Content,
+  Title: Notice.Title,
+  Text: Notice.Text,
+  Close: Notice.Close,
+}) as HighlightedNoticeComponent;

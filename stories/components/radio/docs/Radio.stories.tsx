@@ -1,4 +1,4 @@
-import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Radio from '@semcore/ui/radio';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdditionalPropsInputExample, { defaultAdditionalInputProps } from './examples/additional_props_for_input';

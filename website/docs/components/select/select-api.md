@@ -102,28 +102,18 @@ import Select from '@semcore/ui/select';
 
 <TypesView type="SelectOptionCheckboxProps" :types={...types} />
 
-## Deprecated
+## Select.Option.Text
 
-### Select.OptionHint
+An instance of [`Text`](../../style/typography/typography-api#text) with the appropriate styles depending on the Select size.
 
-::: warning
-The `Select.OptionHint` is deprecated, use `Select.Option.Hint` or `Select.Group` with `subTitle` prop instead.
-:::
+Plain text without addons placed directly in `Select.Option` is wrapped in `Select.Option.Text` automatically.
 
 ```jsx
 import Select from '@semcore/ui/select';
-<Select.OptionHint />;
+<Select.Option.Text />;
 ```
 
-### Select.OptionTitle
+<TypesView type="NSText.Props" :types={...types} />
 
-::: warning
-The `Select.OptionTitle` is deprecated, use `Select.Group` with `title` prop instead.
-:::
-
-```jsx
-import Select from '@semcore/ui/select';
-<Select.OptionTitle />;
-```
 
 <script setup>import { data as types } from '@types.data.ts';</script>

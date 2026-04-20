@@ -7,6 +7,7 @@ import fs from 'fs-extra';
 import { toMarkdown } from 'marked-ast-markdown';
 import semver from 'semver';
 
+import type { SeparatedPackage } from '../types/common.types';
 import { formatMarkdown } from '../utils';
 import type { ChangelogChange, CollectedChangelog, IncrementType } from './changelog';
 import { Changelog } from './changelog';
@@ -15,19 +16,23 @@ export type PackageJson = {
   name: string;
   version: string;
   dependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
   private?: boolean;
 };
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
 
-const removedComponents = [
+const ignoreComponents = [
   '@semcore/babel-plugin-shadow',
   '@semcore/project-create',
   '@semcore/chart',
   '@semcore/email',
   '@semcore/utils',
   '@semcore/table',
+  '@semcore/icon', // separate to another pipeline
+  '@semcore/illustration', // separate to another pipeline
+  '@semcore/theme', // separate to another pipeline
 ];
 
 export class Package {
@@ -57,12 +62,13 @@ export class Package {
         if (
           !(await fs.pathExists(packageFilePath)) ||
           packagePath.endsWith('semcore/table')
-        )
+        ) {
           return null;
+        }
 
         const packageFile: PackageJson = await fs.readJson(resolvePath(packagePath, 'package.json'));
 
-        if (packageFile.private !== true) {
+        if (packageFile.private !== true && !ignoreComponents.includes(packageFile.name)) {
           this.packagesMap.set(packageFile.name, {
             path: packagePath,
             data: packageFile,
@@ -70,6 +76,25 @@ export class Package {
         }
       }),
     );
+  }
+
+  public async collectOnePackage(pack: SeparatedPackage) {
+    const packagePath = resolvePath(dirname, '..', '..', '..', '..', 'semcore', pack);
+    const packageFile: PackageJson = await fs.readJson(resolvePath(packagePath, 'package.json'));
+
+    this.packagesMap.set(packageFile.name, {
+      path: packagePath,
+      data: packageFile,
+    });
+  }
+
+  public async collectPackageBy(path: string) {
+    const packageFile: PackageJson = await fs.readJson(resolvePath(path, 'package.json'));
+
+    this.packagesMap.set(packageFile.name, {
+      path,
+      data: packageFile,
+    });
   }
 
   public async updateVersions(collectedChangelog: CollectedChangelog) {
@@ -82,7 +107,7 @@ export class Package {
     await this.updateReleaseVersion(collectedChangelog);
   }
 
-  private async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[]) {
+  public async updatePackageVersion(componentName: string, incrementType: IncrementType, changelog: ChangelogChange[]) {
     const packageJson = this.packagesMap.get(componentName);
     if (!packageJson || changelog.length === 0) return;
 
@@ -92,6 +117,22 @@ export class Package {
 
     packageJson.data.version = newVersion;
     await fs.writeJSON(resolvePath(packageJson.path, 'package.json'), packageJson.data, { spaces: 2 });
+
+    for (const packageFile of this.packagesMap.values()) {
+      let hasChanges = false;
+      if (packageFile.data.dependencies?.[componentName]) {
+        packageFile.data.dependencies[componentName] = `^${newVersion}`;
+        hasChanges = true;
+      }
+      if (packageFile.data.peerDependencies?.[componentName] && !packageFile.data.peerDependencies[componentName].startsWith('workspace')) {
+        packageFile.data.peerDependencies[componentName] = `^${newVersion}`;
+        hasChanges = true;
+      }
+
+      if (hasChanges) {
+        await fs.writeJSON(resolvePath(packageFile.path, 'package.json'), packageFile.data, { spaces: 2 });
+      }
+    }
 
     const changelogPath = resolvePath(packageJson.path, 'CHANGELOG.md');
     const packageChangelogString = await fs.readFile(changelogPath, 'utf8');
@@ -122,7 +163,9 @@ export class Package {
     const releasePackageJson = this.packagesMap.get('@semcore/ui');
     if (!releasePackageJson) return;
 
-    releasePackageJson.data.version = collectedChangelog.version;
+    const newVersion = collectedChangelog.version.slice(1); // remove v before version
+
+    releasePackageJson.data.version = newVersion;
     releasePackageJson.data.dependencies = releasePackageJson.data.dependencies ?? {};
 
     const packages = Array.from(this.packagesMap.values());
@@ -146,7 +189,7 @@ export class Package {
     for (const [componentName, changelogComponent] of Object.entries(collectedChangelog.components)) {
       packageChangelog.unshift({
         component: componentName,
-        version: collectedChangelog.version,
+        version: newVersion,
         date: dayjs().format('YYYY-MM-DD'),
         changes: changelogComponent.changelog,
       });

@@ -1,5 +1,5 @@
+import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import type React from 'react';
 
@@ -9,7 +9,10 @@ type BarKey = string;
 
 export type CompactHorizontalBarChartData = Array<Record<BarKey, number | string>>;
 
-export type CompactHorizontalBarChartProps = BaseChartProps<CompactHorizontalBarChartData> & {
+export type CompactHorizontalBarChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<CompactHorizontalBarChartData>,
+  'showTotalInTooltip'
+> & {
   /** Field name from data array for the x-axis values */
   x: string;
   /** Field name from data array for the y-axis values */

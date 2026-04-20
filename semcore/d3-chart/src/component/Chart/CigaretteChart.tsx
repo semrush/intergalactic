@@ -1,30 +1,43 @@
+import { Box, Flex } from '@semcore/base-components';
 import { createComponent, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
-import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import { scaleBand, scaleLinear } from 'd3-scale';
+import { scaleThreshold, scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
-import type { CigaretteChartData, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
+import type { CigaretteChartData, CigaretteChartDataKey, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
-import { AbstractChart } from './AbstractChart';
+import type { ChartState } from './AbstractChart';
+import { AbstractChart, NOT_A_VALUE } from './AbstractChart';
+import type { ObjectData } from './AbstractChart.type';
 // @ts-ignore
 import AnimatedClipPath from '../../AnimatedClipPath';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import { interpolateValue, scaleToBand } from '../../utils';
+import { eventToPoint, interpolateValue } from '../../utils';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import Cigarette from '../Cigarette/Cigarette';
 
-const wMin = 2;
+const DEFAULT_MINIMAL_BAR_WIDTH = 2;
+const DEFAULT_GAP = 2;
+
+type ScaleThresholdConfig = { range: Array<CigaretteChartDataKey>; domain: Array<number> };
+
+type CigaretteChartState = ChartState & {
+  pX: number | null;
+  pY: number | null;
+};
 
 class CigaretteChartComponent extends AbstractChart<
   CigaretteChartData,
   CigaretteChartProps,
-  typeof CigaretteChartComponent.enhance
+  typeof CigaretteChartComponent.enhance,
+  typeof CigaretteChartComponent.defaultProps,
+  CigaretteChartState
 > {
   static displayName = 'Cigarette.Bar';
 
@@ -41,6 +54,8 @@ class CigaretteChartComponent extends AbstractChart<
       duration: 500,
       plotWidth: !invertAxis && !props.plotWidth ? 44 : props.plotWidth,
       plotHeight: invertAxis && !props.plotHeight ? 28 : props.plotHeight,
+      showPercentValueInTooltip: false,
+      minimalBarWidth: DEFAULT_MINIMAL_BAR_WIDTH,
     };
   };
 
@@ -50,9 +65,37 @@ class CigaretteChartComponent extends AbstractChart<
     i18nEnhance(localizedMessages),
   ] as const;
 
+  constructor(props: CigaretteChartProps) {
+    super(props);
+
+    this.state = {
+      ...this.state,
+      pX: null,
+      pY: null,
+    };
+  }
+
+  private plotRef = React.createRef<SVGElement>();
+
   protected override plotPadding = 0;
 
   private offset = 0;
+
+  private get activeDataDefinitions() {
+    const { dataDefinitions } = this.state;
+
+    return dataDefinitions.filter(({ checked }) => checked);
+  }
+
+  private get activePositiveDataDefinitions() {
+    const { data } = this.asProps;
+
+    return this.activeDataDefinitions.filter(({ id }) => {
+      const itemValue = data[id];
+
+      return typeof itemValue === 'number' && itemValue > 0;
+    });
+  }
 
   protected override resolveColor(id: string, index: number) {
     return this.props.colorMap?.[id] ?? `blue-${5 - index}00`;
@@ -76,16 +119,109 @@ class CigaretteChartComponent extends AbstractChart<
     };
   }
 
-  get xScale() {
-    const { invertAxis } = this.asProps;
+  private onPlotMouseMove = trottle((event: React.MouseEvent<HTMLElement>) => {
+    if (!this.plotRef.current) return;
 
-    return invertAxis ? this.valueScale : this.categoryScale;
+    const [pX, pY] = eventToPoint(event, this.plotRef.current);
+
+    this.setState((prevState) => ({ pX, pY }));
+  });
+
+  private onPlotMouseLeave = trottle(() => {
+    this.setState((prevState) => ({ pX: null, pY: null }));
+  });
+
+  protected override totalValue() {
+    const { data } = this.asProps;
+
+    return this.activeDataDefinitions.reduce((acc, { id }) => {
+      const itemValue = data[id];
+
+      if (typeof itemValue === 'number') {
+        acc += itemValue;
+      }
+
+      return acc;
+    }, 0);
+  }
+
+  private computeCigaretteItems() {
+    const { plotWidth, plotHeight, data, invertAxis, minimalBarWidth } = this.asProps;
+
+    const dataDefinitions = invertAxis
+      ? this.activeDataDefinitions
+      : [...this.activeDataDefinitions].reverse();
+
+    const count = this.activePositiveDataDefinitions.length;
+    const totalGapWidth = DEFAULT_GAP * Math.max(0, count - 1);
+    const availableSpace = Math.max(0, (invertAxis ? plotWidth : plotHeight) - totalGapWidth);
+
+    const totalValue = this.totalValue();
+
+    const dataDefinitionsItemSize = dataDefinitions.map(({ id }) => {
+      if (totalValue === 0) {
+        return 0;
+      }
+
+      const itemValue = data[id];
+
+      if (typeof itemValue !== 'number') return 0;
+
+      return (itemValue / totalValue) * availableSpace;
+    });
+
+    const result = dataDefinitions.map((dd, index) => ({
+      ...dd,
+      value: data[dd.id],
+      dataWidth: dataDefinitionsItemSize[index],
+      visualWidth: dataDefinitionsItemSize[index],
+      isMinVisible: false,
+    }));
+
+    const smallItems = result.filter((r) => {
+      const { value, dataWidth } = r;
+
+      if (typeof value !== 'number') return false;
+
+      return value > 0 && dataWidth < minimalBarWidth;
+    });
+
+    if (smallItems.length === 0) return result;
+
+    let extraNeeded = 0;
+
+    for (const smallItem of smallItems) {
+      extraNeeded += minimalBarWidth - smallItem.dataWidth;
+      smallItem.visualWidth = minimalBarWidth;
+      smallItem.isMinVisible = true;
+    }
+
+    const donors = result.filter((r) => !r.isMinVisible && r.dataWidth > minimalBarWidth);
+    const donorCapacity = donors.reduce(
+      (s, d) => s + (d.dataWidth - minimalBarWidth),
+      0,
+    );
+
+    for (const donor of donors) {
+      const available = donor.dataWidth - minimalBarWidth;
+      const share = available / donorCapacity;
+      const taken = share * extraNeeded;
+      donor.visualWidth = donor.dataWidth - taken;
+    }
+
+    return result;
+  };
+
+  get xScale() {
+    const { plotWidth } = this.asProps;
+
+    return scaleLinear([0, plotWidth]);
   }
 
   get yScale() {
-    const { invertAxis } = this.asProps;
+    const { plotHeight } = this.asProps;
 
-    return invertAxis ? this.categoryScale : this.valueScale;
+    return scaleLinear([plotHeight, 0]);
   }
 
   renderChart() {
@@ -95,26 +231,29 @@ class CigaretteChartComponent extends AbstractChart<
 
     this.offset = 0;
 
+    const items = this.computeCigaretteItems();
+
     return (
       <>
-        {(invertAxis ? dataDefinitions : [...dataDefinitions].reverse()).map((item, index) => {
-          const value = data[item.id];
+        {items.map((item, index) => {
+          const { visualWidth, id } = item;
+          const value = data[id];
 
-          if (!item.checked || value === interpolateValue || value === null) {
+          if (value === interpolateValue || value === null) {
             return null;
           }
 
-          const absWidth = Math.abs(
-            this.valueScale(value) -
-            Math.max(this.valueScale(this.valueScale.domain()[0]), this.valueScale(0)),
-          );
-          const height = scaleToBand(this.categoryScale).bandwidth() - 4;
-          const width = value === 0 ? 0 : Math.max(absWidth, wMin * 2) - wMin;
-          const y = 2;
-          const x = index === 0 ? 0 : this.offset;
+          const height = invertAxis ? plotHeight - DEFAULT_GAP * 2 : plotWidth - DEFAULT_GAP * 2;
+          const width = visualWidth;
+          const y = DEFAULT_GAP;
+          const x = this.offset;
           const r = height < 28 ? 2 : 4;
 
-          this.offset = this.offset + width + wMin;
+          this.offset += visualWidth;
+
+          if (index < items.length - 1) {
+            this.offset += DEFAULT_GAP;
+          }
 
           return (
             <Cigarette
@@ -154,9 +293,10 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, showTotalInTooltip, showTooltip, invertAxis, tooltipTitle, tooltipViewType } =
+    const { data, invertAxis, tooltipTitle, tooltipViewType, showPercentValueInTooltip, styles, showTooltip } =
       this.asProps;
-    const { dataDefinitions } = this.state;
+    const { dataDefinitions, pX, pY } = this.state;
+    const STooltipChildrenWrapper = Root;
 
     if (!showTooltip) {
       return null;
@@ -168,65 +308,103 @@ class CigaretteChartComponent extends AbstractChart<
         y={invertAxis ? undefined : ''}
         wMin={100}
         hideHoverLine={true}
+        xIndex={pX !== null ? this.visualScale(pX) : undefined}
+        yIndex={pY !== null ? this.visualScale(pY) : undefined}
       >
         {(tooltipProps: any) => {
           const dataKey = invertAxis ? tooltipProps.xIndex : tooltipProps.yIndex;
-          const total = this.totalValue(data);
+          const showPercentColumn = showPercentValueInTooltip && this.totalValue() !== 0;
 
           if (tooltipViewType === 'single') {
             const item = dataDefinitions.find((dataDefItem) => dataDefItem.id === dataKey);
-
             if (!item) {
-              return null;
+              return {
+                children: null,
+              };
             }
 
             return {
-              children: (
-                <Flex justifyContent='space-between' key={dataKey}>
-                  <HoverRect.Tooltip.Dot mr={4} color={item.color}>
+              children: sstyled(styles)(
+                <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
+                  <HoverRect.Tooltip.Dot mr={2} color={item.color}>
                     {item.label}
                   </HoverRect.Tooltip.Dot>
-                  <Text bold>{this.tooltipValueFormatter(data[dataKey])}</Text>
-                </Flex>
+                  { showPercentColumn && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
+                  <Text textAlign='end' bold>{this.tooltipValueFormatter(data[item.id])}</Text>
+                </STooltipChildrenWrapper>,
               ),
             };
           }
 
           return {
-            children: (
-              <>
+            children: sstyled(styles)(
+              <Flex direction='column'>
                 {tooltipTitle && (
                   <HoverRect.Tooltip.Title>Some tooltip title</HoverRect.Tooltip.Title>
                 )}
 
-                {dataDefinitions.map((item) => {
-                  return (
-                    item.checked && (
-                      <Flex
-                        justifyContent='space-between'
-                        key={item.id}
-                        style={{ opacity: item.id === dataKey ? 1 : 0.3 }}
-                      >
-                        <HoverRect.Tooltip.Dot mr={4} color={item.color}>
-                          {item.label}
-                        </HoverRect.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(data[item.id])}</Text>
-                      </Flex>
-                    )
-                  );
-                })}
+                <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
+                  {dataDefinitions.map((item) => {
+                    const style = { opacity: item.id === dataKey ? 1 : 0.3 };
+                    return (
+                      item.checked && (
+                        <React.Fragment key={item.id}>
+                          <HoverRect.Tooltip.Dot mr={2} color={item.color} style={style}>
+                            {item.label}
+                          </HoverRect.Tooltip.Dot>
+                          { showPercentColumn && <Text textAlign='end' color='text-secondary' style={style}>{this.percentValue(data, item.id)}</Text> }
+                          <Text textAlign='end' bold style={style}>{this.tooltipValueFormatter(data[item.id])}</Text>
+                        </React.Fragment>
+                      )
+                    );
+                  })}
 
-                {showTotalInTooltip === true && (
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
-                  </Flex>
-                )}
-              </>
+                  {this.renderTooltipTotalLine(data)}
+                </STooltipChildrenWrapper>
+              </Flex>,
             ),
           };
         }}
       </HoverRect.Tooltip>
+    );
+  }
+
+  protected percentValue(data: ObjectData, key: string): string {
+    const { percentFormatter } = this.asProps;
+
+    const total = this.totalValue();
+
+    const value = data[key];
+
+    if (typeof value === 'number' && total !== 0) {
+      const rawPercent = (100 * value) / total;
+      const formattedPercent = percentFormatter ? percentFormatter(rawPercent) : Math.round(rawPercent);
+
+      return `${formattedPercent}%`;
+    }
+
+    if (value === null) {
+      return `0%`;
+    }
+
+    return NOT_A_VALUE;
+  }
+
+  protected override renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
+    const { showTotalInTooltip, showPercentValueInTooltip } = this.asProps;
+
+    if (!showTotalInTooltip) {
+      return null;
+    }
+
+    const total = this.totalValue();
+
+    return (
+      <>
+        <Box mt={2} mr={2}>Total</Box>
+        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
+        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
+      </>
     );
   }
 
@@ -236,8 +414,7 @@ class CigaretteChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig } =
-      this.asProps;
+    const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig } = this.asProps;
 
     const header = this.renderHeader();
 
@@ -247,6 +424,7 @@ class CigaretteChartComponent extends AbstractChart<
           <Flex direction='column'>
             {header}
             <Plot
+              ref={this.plotRef}
               data={data}
               scale={[this.xScale, this.yScale]}
               width={plotWidth}
@@ -254,6 +432,8 @@ class CigaretteChartComponent extends AbstractChart<
               dataHints={this.dataHints}
               patterns={patterns}
               a11yAltTextConfig={a11yAltTextConfig}
+              onMouseMove={this.onPlotMouseMove}
+              onMouseLeave={this.onPlotMouseLeave}
             >
               {this.renderTooltip()}
               {this.renderChart()}
@@ -267,6 +447,7 @@ class CigaretteChartComponent extends AbstractChart<
     return sstyled(styles)(
       <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']}>
         <Plot
+          ref={this.plotRef}
           data={data}
           scale={[this.xScale, this.yScale]}
           width={plotWidth}
@@ -274,6 +455,8 @@ class CigaretteChartComponent extends AbstractChart<
           dataHints={this.dataHints}
           patterns={patterns}
           a11yAltTextConfig={a11yAltTextConfig}
+          onMouseMove={this.onPlotMouseMove}
+          onMouseLeave={this.onPlotMouseLeave}
         >
           {this.renderTooltip()}
           {this.renderChart()}
@@ -295,42 +478,31 @@ class CigaretteChartComponent extends AbstractChart<
     return this.asProps.getI18nText('legendForChart', { chartType: 'Cigarette' });
   }
 
-  private get selectedData() {
-    const { data } = this.asProps;
-    const { dataDefinitions } = this.state;
+  private get visualScale() {
+    const cigaretteItems = this.computeCigaretteItems();
 
-    const result = new Map<string, number>();
+    const { range, domain } = cigaretteItems.reduce<ScaleThresholdConfig>((acc, { id, visualWidth }, index) => {
+      const { range, domain } = acc;
 
-    dataDefinitions.forEach((dataDefItem) => {
-      const value = data[dataDefItem.id];
-      if (dataDefItem.checked && value !== interpolateValue) {
-        result.set(dataDefItem.id, value);
+      if (visualWidth) {
+        range.push(id);
+
+        if (domain.length === 0) {
+          domain.push(visualWidth + DEFAULT_GAP);
+
+          return acc;
+        }
+
+        if (index !== cigaretteItems.length - 1) {
+          const lastAddedDomain = domain[domain.length - 1];
+          domain.push(lastAddedDomain + visualWidth + DEFAULT_GAP);
+        }
       }
-    });
 
-    return result;
-  }
+      return acc;
+    }, { range: [], domain: [] });
 
-  private get categoryScale() {
-    const { plotWidth, plotHeight, invertAxis } = this.asProps;
-
-    const range = invertAxis ? [plotHeight, 0] : [0, plotWidth];
-
-    return scaleBand<{}>([0], range);
-  }
-
-  private get valueScale() {
-    const { plotWidth, plotHeight, invertAxis } = this.asProps;
-
-    let max = 0;
-
-    this.selectedData.forEach((value) => {
-      max = max + value;
-    });
-
-    return scaleLinear()
-      .range(invertAxis ? [0, plotWidth] : [plotHeight, 0])
-      .domain([0, max]);
+    return scaleThreshold(domain, range);
   }
 }
 

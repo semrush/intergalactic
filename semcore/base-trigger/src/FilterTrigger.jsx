@@ -1,3 +1,4 @@
+import { NeighborLocation, Box, ScreenReaderOnly, Hint } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -5,16 +6,12 @@ import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEn
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
-import { ScreenReaderOnly } from '@semcore/core/lib/utils/ScreenReaderOnly';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import Dot from '@semcore/dot';
-import { Box } from '@semcore/flex-box';
+import { default as SemcoreCounter } from '@semcore/counter';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Close from '@semcore/icon/Close/m';
-import NeighborLocation from '@semcore/neighbor-location';
-import { Hint } from '@semcore/tooltip';
 import React from 'react';
 
 import BaseTrigger from './BaseTrigger';
@@ -112,10 +109,11 @@ class RootFilterTrigger extends Component {
   }
 
   getCounterProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, size } = this.asProps;
 
     return {
       getI18nText,
+      size,
     };
   }
 
@@ -199,6 +197,8 @@ class ClearButton extends Component {
   static displayName = 'ClearButton';
   static style = style;
 
+  triggerRef = React.createRef();
+
   render() {
     const SFilterTrigger = Root;
     const {
@@ -214,22 +214,22 @@ class ClearButton extends Component {
     if (empty) return null;
 
     return sstyled(styles)(
-      <Hint>
-        <Hint.Trigger>
-          <SFilterTrigger
-            render={BaseTrigger}
-            size={size}
-            empty={empty}
-            selected
-            disabled={disabled}
-            aria-label={title ?? ariaLabel ?? getI18nText('clear')}
-            __excludeProps={['title']}
-          >
-            <FilterTrigger.Addon tag={Close} />
-          </SFilterTrigger>
-        </Hint.Trigger>
-        <Hint.Popper>{title ?? ariaLabel ?? getI18nText('clear')}</Hint.Popper>
-      </Hint>,
+      <>
+        <SFilterTrigger
+          ref={this.triggerRef}
+          render={BaseTrigger}
+          size={size}
+          empty={empty}
+          selected
+          disabled={disabled}
+          aria-label={title ?? ariaLabel ?? getI18nText('clear')}
+          __excludeProps={['title']}
+        >
+          <FilterTrigger.Addon tag={Close} />
+        </SFilterTrigger>
+
+        <Hint triggerRef={this.triggerRef}>{title ?? ariaLabel ?? getI18nText('clear')}</Hint>
+      </>,
     );
   }
 }
@@ -237,7 +237,7 @@ class ClearButton extends Component {
 function Counter({ styles, Children, count, getI18nText }) {
   const SCounter = Root;
   return sstyled(styles)(
-    <SCounter render={BaseTrigger.Addon} tag={Dot}>
+    <SCounter render={BaseTrigger.Addon} tag={SemcoreCounter} theme='info'>
       {count !== undefined
         ? (
             <>

@@ -1,9 +1,9 @@
+import IconL from '@semcore/icon/Monitoring/l';
+import IconM from '@semcore/icon/Monitoring/m';
+import { Flex, Box } from '@semcore/ui/base-components';
 import { ButtonTrigger, LinkTrigger, FilterTrigger } from '@semcore/ui/base-trigger';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { Flex, Box } from '@semcore/ui/flex-box';
-import IconL from '@semcore/ui/icon/Monitoring/l';
-import IconM from '@semcore/ui/icon/Monitoring/m';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import Pills from '@semcore/ui/pills';
@@ -248,9 +248,9 @@ const Demo = () => {
 
       <Flex>
         <div>
-          <List size={300} marker={<IconM color='icon-secondary-success' mt={1} />}>
+          <List size={300} marker={<Box tag={IconM} color='icon-secondary-success' mt={1} />}>
             <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
-            <List.Item marker={<IconL color='icon-secondary-neutral' mt={1} />}>
+            <List.Item marker={<Box tag={IconL} color='icon-secondary-neutral' mt={1} />}>
               (Unchecked icon L) Carpe diem.
             </List.Item>
             <List.Item>Listen to them. Children of the night. What music they make.</List.Item>

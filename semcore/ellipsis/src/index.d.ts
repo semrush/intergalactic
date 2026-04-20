@@ -1,11 +1,9 @@
+import type { Box, BoxProps } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
 import type { TooltipProps } from '@semcore/tooltip';
 import type Tooltip from '@semcore/tooltip';
 import type { RefObject } from 'react';
 
-/** @deprecated */
-export interface IEllipsisProps extends EllipsisProps, UnknownProperties {}
 export type EllipsisProps = BoxProps &
   Partial<TooltipProps> & {
     /**
@@ -42,11 +40,14 @@ declare const useResizeObserver: (
   ref: RefObject<HTMLElement>,
   hookOverride?: { width: number },
 ) => { width: number };
-
+/**
+ * @deprecated. Use Text with ellipsis property for @semcore/typography.
+ */
 declare const Ellipsis: Intergalactic.Component<'div', EllipsisProps> & {
   Content: typeof Box;
   Popper: typeof Tooltip.Popper;
 };
 
-export { useResizeObserver };
 export default Ellipsis;
+
+export { useResizeObserver };

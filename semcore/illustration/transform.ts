@@ -108,7 +108,7 @@ await Promise.all(
     const component = `
 import React from 'react';
 import { createBaseComponent } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 const ${illustration} = ({${props.join(', ')}, ...props}, ref) => {
@@ -133,7 +133,7 @@ export default createBaseComponent(${illustration})
     `;
 
     const typesDeclaration = `
-import { BoxProps } from '@semcore/flex-box';
+import { BoxProps } from '@semcore/base-components';
 import { Intergalactic } from '@semcore/core';
 
 type IllustrationProps = BoxProps & {
@@ -172,14 +172,14 @@ export default Illustration;
     });
 
     try {
-      await fs.access(illustration);
+      await fs.access(resolvePath('lib', illustration));
     } catch {
-      await fs.mkdir(illustration);
+      await fs.mkdir(resolvePath('lib', illustration));
     }
 
-    await fs.writeFile(resolvePath(illustration, 'index.js'), cjs);
-    await fs.writeFile(resolvePath(illustration, 'index.mjs'), esm);
-    await fs.writeFile(resolvePath(illustration, 'index.d.ts'), typesDeclaration);
+    await fs.writeFile(resolvePath('lib', illustration, 'index.js'), cjs);
+    await fs.writeFile(resolvePath('lib', illustration, 'index.mjs'), esm);
+    await fs.writeFile(resolvePath('lib', illustration, 'index.d.ts'), typesDeclaration);
   }),
 );
 
@@ -190,9 +190,9 @@ async function patchExports(illustrations: string[]) {
 
   const exports: Record<string, any> = {
     '.': {
-      require: './lib/cjs/index.js',
-      import: './lib/esm/index.mjs',
       types: './lib/types/index.d.ts',
+      import: './lib/esm/index.mjs',
+      require: './lib/cjs/index.js',
     },
   };
 
@@ -200,9 +200,9 @@ async function patchExports(illustrations: string[]) {
     const name = item.replace('.svg', '');
 
     exports[`./${name}`] = {
-      require: `./${name}/index.js`,
-      import: `./${name}/index.mjs`,
-      types: `./${name}/index.d.ts`,
+      types: `./lib/${name}/index.d.ts`,
+      import: `./lib/${name}/index.mjs`,
+      require: `./lib/${name}/index.js`,
     };
   });
 

@@ -1,5 +1,5 @@
+import { Box } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import { Box } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];

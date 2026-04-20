@@ -35,7 +35,7 @@ STextarea[size='l'] {
 }
 
 STextarea[state='normal'] {
-  &:focus-visible {
+  &:focus {
     border-color: var(--intergalactic-border-info-active, #006dca);
     @mixin focus-outline-mixin {
       outline-offset: 0;
@@ -47,7 +47,7 @@ STextarea[state='normal'] {
 STextarea[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);
 
-  &:focus-visible {
+  &:focus {
     @mixin focus-outline-mixin {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
@@ -59,7 +59,7 @@ STextarea[state='valid'] {
 STextarea[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
 
-  &:focus-visible {
+  &:focus {
     @mixin focus-outline-mixin {
       outline-offset: 0;
       transition-property: outline-color, outline-width;

@@ -10,6 +10,9 @@ STick {
   font-size: var(--intergalactic-fs-100, 12px);
   fill: var(--intergalactic-chart-grid-text-label, #6c6e79);
 }
+STick[primaryText] {
+  fill: var(--intergalactic-text-primary, #191b23);
+}
 
 STick[hide] {
   display: none;

@@ -1,17 +1,14 @@
-import type { Intergalactic, UnknownProperties, PropGetterFn } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type {
+import type { Box, BoxProps,
+  Popper,
   PopperContext,
   PopperProps,
   PopperHandlers,
   PopperTriggerProps,
   PopperPopperProps,
-} from '@semcore/popper';
-import type Popper from '@semcore/popper';
+} from '@semcore/base-components';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type React from 'react';
 
-/** @deprecated */
-export interface IDropdownProps extends DropdownProps, UnknownProperties {}
 export type DropdownProps = PopperProps & {
   /**
    * Modifier responsible for the size of the pop-up window:
@@ -25,14 +22,10 @@ export type DropdownProps = PopperProps & {
   locale?: string;
 };
 
-/** @deprecated */
-export interface IDropdownContext extends DropdownContext, UnknownProperties {}
 export type DropdownContext = PopperContext & {
   getGroupProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface IDropdownHandlers extends DropdownHandlers, UnknownProperties {}
 export type DropdownHandlers = PopperHandlers & {};
 
 export type DropdownTriggerProps = PopperTriggerProps;

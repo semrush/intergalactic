@@ -212,7 +212,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
 
-      if (browserName !== 'chromium') {
+      if (browserName == 'firefox') {
         await page.keyboard.press('Tab');
       }
       await page.keyboard.press('Tab');
@@ -295,8 +295,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
-
-      if (browserName !== 'chromium') {
+      if (browserName == 'firefox') {
         await page.keyboard.press('Tab');
       }
       await page.keyboard.press('Tab');
@@ -401,14 +400,17 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.button(page, 'Open modal', 1).waitFor({ state: 'visible' });
-      await expect(locators.modal(page)).toHaveCount(1);
       await expect(locators.close(page)).toBeFocused();
+      await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify 2nd modal opened and X is focused', async () => {
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(locators.close(page).nth(1)).toBeFocused();
+
       await expect(locators.modal(page)).toHaveCount(2);
     });
 
@@ -422,6 +424,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify only one modal closed by ESC', async () => {
       await page.keyboard.press('Enter');
       await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await expect(locators.close(page).nth(1)).toBeFocused();
 
       await page.keyboard.press('Escape');
       await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
@@ -538,6 +541,45 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify closes by clicking On Buttons', async () => {
       await locators.button(page, 'Save changes').click();
       await expect(locators.modal(page)).toHaveCount(1);
+    });
+  });
+
+  test('Verify modal with focusable input inside by mouse', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal', '@input'],
+  }, async ({ page, browserName }) => {
+    if (browserName == 'webkit') test.skip(); // works unstable in playwright webkit
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_auto_focus_input', 'en');
+
+    await test.step('Verify input focused', async () => {
+      await locators.button(page).click();
+      await page.getByRole('textbox').waitFor({ state: 'visible' });
+      await expect(async () => {
+        await expect(page.getByRole('textbox')).toBeFocused();
+      }).toPass({ timeout: 5000 }); // focus first moves to the close button and then to the input
+    });
+  });
+
+  test('Verify modal with focusable input inside by keyboard', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@modal', '@input'],
+  }, async ({ page, browserName }) => {
+    if (browserName === 'webkit' || browserName === 'chromium') test.skip(); // works unstable in playwright webkit and chromium
+    await loadPage(page, 'stories/components/modal/advanced/examples/modal_with_auto_focus_input', 'en');
+
+    await test.step('Verify input focused', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.button(page)).toBeFocused();
+      await page.keyboard.press('Enter');
+
+      await page.getByRole('textbox').waitFor({ state: 'visible' });
+      await expect(async () => {
+        await expect(page.getByRole('textbox')).toBeFocused();
+      }).toPass({ timeout: 5000 }); // focus first moves to the close button and then to the input
+    });
+
+    await test.step('Verify closed by escape', async () => {
+      await page.keyboard.press('Escape');
+      await page.getByRole('textbox').waitFor({ state: 'hidden' });
+      await expect(locators.button(page)).toBeFocused();
     });
   });
 

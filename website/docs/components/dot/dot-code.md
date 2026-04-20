@@ -6,7 +6,7 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 
 ## Dot animation
 
-To animate the appearance and hiding of an element, it is better to pass a `hidden` value rather than delete the element from the DOM.
+To animate the appearance and hiding of an element, it's better to pass a `hidden` value rather than delete the element from the DOM.
 
 ::: sandbox
 

@@ -50,7 +50,7 @@ Table: Spin themes
 For recommendations on Spin positioning and indents in blocks and on the page, refer to [SpinContainer](/components/spin-container/spin-container).
 :::
 
-You can place text next to the spinner to inform the user that data is being loaded. The text should use the `--text-secondary` token for color, as it is considered a secondary message according to the overall visual hierarchy of the page.
+You can place text next to the spinner to inform the user that data is being loaded. The text should use the `--text-secondary` token for color, as it's considered a secondary message according to the overall visual hierarchy of the page.
 
 **Text can be placed on the right or below the spinner.** In small components, blocks, and widgets, place the text to the right of the spinner. For large components, blocks of components, or inside large blocks and widgets, we recommend placing the text below the spinner and using one of the four largest Spin sizes.
 
@@ -60,5 +60,5 @@ For Spin appearance and disappearance, use an animation with a 300ms delay and `
 
 ## Usage in UX/UI
 
-Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system cannot determine the exact data loading time, we recommend adding an explanatory message next to the spinner, for example:  **Loading...**.
+Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system can't determine the exact data loading time, we recommend adding an explanatory message next to the spinner, for example:  **Loading...**.
 

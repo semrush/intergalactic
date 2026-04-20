@@ -1,9 +1,9 @@
+import SettingsM from '@semcore/icon/Settings/m';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
 import { DataTable } from '@semcore/ui/data-table';
 import Flags, { iso2Name } from '@semcore/ui/flags';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import SettingsM from '@semcore/ui/icon/Settings/m';
 import MiniChart from '@semcore/ui/mini-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

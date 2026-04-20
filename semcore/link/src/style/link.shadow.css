@@ -1,23 +1,13 @@
 SLink {
-  display: inline-block;
-  font-family: inherit;
+  display: inline;
+  align-items: center;
   color: var(--intergalactic-text-link, #006dca);
-  line-height: normal;
   position: relative;
   cursor: pointer;
   text-decoration: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
   -webkit-tap-highlight-color: transparent;
   background: none;
   transition: color 0.15s ease-in-out;
-
-  &:active,
-  &:hover {
-    text-decoration: none;
-  }
 
   &::-moz-focus-inner {
     border: none;
@@ -30,7 +20,7 @@ SLink {
     color: var(--intergalactic-text-link-hover-active, #044792);
 
     & SText {
-      border-color: currentColor;
+      text-decoration-color: currentColor;
     }
   }
 
@@ -47,7 +37,7 @@ SLink[visually-disabled] {
   pointer-events: none;
 }
 
-SLink[noWrapText] {
+SLink[noWrap] {
   white-space: nowrap;
 }
 
@@ -55,13 +45,17 @@ SLink[inline] {
   display: inline;
 }
 
+SInner {
+  align-items: baseline;
+  height: 100%;
+  width: 100%;
+}
+
 SAddon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--intergalactic-spacing-05x, 2px);
-  vertical-align: middle;
   pointer-events: none;
+  vertical-align: middle;
+  display: inline-flex;
+  margin-top: -2.5px;
 }
 
 SLink SAddon {
@@ -75,10 +69,13 @@ SLink SAddon {
 }
 
 SText {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: transparent;
-  transition: border-bottom-color 0.15s ease-in-out;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-decoration-color: transparent;
+  text-underline-offset: 17%;
+
+  transition: text-decoration-color 0.15s ease-in-out;
 }
 
 SLink[text-color] {

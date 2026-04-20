@@ -1,7 +1,7 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "16.0.12",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -9,16 +9,16 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform && pnpm vite build",
+    "build": "pnpm clean && pnpm semcore-builder --source=js && pnpm run transform && pnpm vite build",
     "transform": "tsm --require=../../.ci/tsm-filter-warnings.js transform.ts",
-    "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
+    "clean": "rm -rf ./lib",
     "upload-static": "gcs-upload intergalactic-illustrations svg/*.svg"
   },
   "dependencies": {
     "colorjs.io": "0.4.3"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.1"
   },
   "repository": {
     "type": "git",
@@ -36,269 +36,269 @@
   },
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
+      "types": "./lib/types/index.d.ts",
       "import": "./lib/esm/index.mjs",
-      "types": "./lib/types/index.d.ts"
+      "require": "./lib/cjs/index.js"
     },
     "./AccessDenied": {
-      "require": "./AccessDenied/index.js",
-      "import": "./AccessDenied/index.mjs",
-      "types": "./AccessDenied/index.d.ts"
+      "types": "./lib/AccessDenied/index.d.ts",
+      "import": "./lib/AccessDenied/index.mjs",
+      "require": "./lib/AccessDenied/index.js"
     },
     "./AccessLogIn": {
-      "require": "./AccessLogIn/index.js",
-      "import": "./AccessLogIn/index.mjs",
-      "types": "./AccessLogIn/index.d.ts"
+      "types": "./lib/AccessLogIn/index.d.ts",
+      "import": "./lib/AccessLogIn/index.mjs",
+      "require": "./lib/AccessLogIn/index.js"
     },
     "./AreaChart": {
-      "require": "./AreaChart/index.js",
-      "import": "./AreaChart/index.mjs",
-      "types": "./AreaChart/index.d.ts"
+      "types": "./lib/AreaChart/index.d.ts",
+      "import": "./lib/AreaChart/index.mjs",
+      "require": "./lib/AreaChart/index.js"
     },
     "./Blocked": {
-      "require": "./Blocked/index.js",
-      "import": "./Blocked/index.mjs",
-      "types": "./Blocked/index.d.ts"
+      "types": "./lib/Blocked/index.d.ts",
+      "import": "./lib/Blocked/index.mjs",
+      "require": "./lib/Blocked/index.js"
     },
     "./ChoroplethMapChart": {
-      "require": "./ChoroplethMapChart/index.js",
-      "import": "./ChoroplethMapChart/index.mjs",
-      "types": "./ChoroplethMapChart/index.d.ts"
+      "types": "./lib/ChoroplethMapChart/index.d.ts",
+      "import": "./lib/ChoroplethMapChart/index.mjs",
+      "require": "./lib/ChoroplethMapChart/index.js"
     },
     "./Coffee": {
-      "require": "./Coffee/index.js",
-      "import": "./Coffee/index.mjs",
-      "types": "./Coffee/index.d.ts"
+      "types": "./lib/Coffee/index.d.ts",
+      "import": "./lib/Coffee/index.mjs",
+      "require": "./lib/Coffee/index.js"
     },
     "./Collection": {
-      "require": "./Collection/index.js",
-      "import": "./Collection/index.mjs",
-      "types": "./Collection/index.d.ts"
+      "types": "./lib/Collection/index.d.ts",
+      "import": "./lib/Collection/index.mjs",
+      "require": "./lib/Collection/index.js"
     },
     "./CombinedChart": {
-      "require": "./CombinedChart/index.js",
-      "import": "./CombinedChart/index.mjs",
-      "types": "./CombinedChart/index.d.ts"
+      "types": "./lib/CombinedChart/index.d.ts",
+      "import": "./lib/CombinedChart/index.mjs",
+      "require": "./lib/CombinedChart/index.js"
     },
     "./Configuration": {
-      "require": "./Configuration/index.js",
-      "import": "./Configuration/index.mjs",
-      "types": "./Configuration/index.d.ts"
+      "types": "./lib/Configuration/index.d.ts",
+      "import": "./lib/Configuration/index.mjs",
+      "require": "./lib/Configuration/index.js"
     },
     "./Confirmation": {
-      "require": "./Confirmation/index.js",
-      "import": "./Confirmation/index.mjs",
-      "types": "./Confirmation/index.d.ts"
+      "types": "./lib/Confirmation/index.d.ts",
+      "import": "./lib/Confirmation/index.mjs",
+      "require": "./lib/Confirmation/index.js"
     },
     "./Congrats": {
-      "require": "./Congrats/index.js",
-      "import": "./Congrats/index.mjs",
-      "types": "./Congrats/index.d.ts"
+      "types": "./lib/Congrats/index.d.ts",
+      "import": "./lib/Congrats/index.mjs",
+      "require": "./lib/Congrats/index.js"
     },
     "./ConnectionLost": {
-      "require": "./ConnectionLost/index.js",
-      "import": "./ConnectionLost/index.mjs",
-      "types": "./ConnectionLost/index.d.ts"
+      "types": "./lib/ConnectionLost/index.d.ts",
+      "import": "./lib/ConnectionLost/index.mjs",
+      "require": "./lib/ConnectionLost/index.js"
     },
     "./DeletedAccount": {
-      "require": "./DeletedAccount/index.js",
-      "import": "./DeletedAccount/index.mjs",
-      "types": "./DeletedAccount/index.d.ts"
+      "types": "./lib/DeletedAccount/index.d.ts",
+      "import": "./lib/DeletedAccount/index.mjs",
+      "require": "./lib/DeletedAccount/index.js"
     },
     "./DeletedPage": {
-      "require": "./DeletedPage/index.js",
-      "import": "./DeletedPage/index.mjs",
-      "types": "./DeletedPage/index.d.ts"
+      "types": "./lib/DeletedPage/index.d.ts",
+      "import": "./lib/DeletedPage/index.mjs",
+      "require": "./lib/DeletedPage/index.js"
     },
     "./Dns": {
-      "require": "./Dns/index.js",
-      "import": "./Dns/index.mjs",
-      "types": "./Dns/index.d.ts"
+      "types": "./lib/Dns/index.d.ts",
+      "import": "./lib/Dns/index.mjs",
+      "require": "./lib/Dns/index.js"
     },
     "./DonutChart": {
-      "require": "./DonutChart/index.js",
-      "import": "./DonutChart/index.mjs",
-      "types": "./DonutChart/index.d.ts"
+      "types": "./lib/DonutChart/index.d.ts",
+      "import": "./lib/DonutChart/index.mjs",
+      "require": "./lib/DonutChart/index.js"
     },
     "./Duplicates": {
-      "require": "./Duplicates/index.js",
-      "import": "./Duplicates/index.mjs",
-      "types": "./Duplicates/index.d.ts"
+      "types": "./lib/Duplicates/index.d.ts",
+      "import": "./lib/Duplicates/index.mjs",
+      "require": "./lib/Duplicates/index.js"
     },
     "./Feedback": {
-      "require": "./Feedback/index.js",
-      "import": "./Feedback/index.mjs",
-      "types": "./Feedback/index.d.ts"
+      "types": "./lib/Feedback/index.d.ts",
+      "import": "./lib/Feedback/index.mjs",
+      "require": "./lib/Feedback/index.js"
     },
     "./FunnelChart": {
-      "require": "./FunnelChart/index.js",
-      "import": "./FunnelChart/index.mjs",
-      "types": "./FunnelChart/index.d.ts"
+      "types": "./lib/FunnelChart/index.d.ts",
+      "import": "./lib/FunnelChart/index.mjs",
+      "require": "./lib/FunnelChart/index.js"
     },
     "./Good": {
-      "require": "./Good/index.js",
-      "import": "./Good/index.mjs",
-      "types": "./Good/index.d.ts"
+      "types": "./lib/Good/index.d.ts",
+      "import": "./lib/Good/index.mjs",
+      "require": "./lib/Good/index.js"
     },
     "./HeatMapChart": {
-      "require": "./HeatMapChart/index.js",
-      "import": "./HeatMapChart/index.mjs",
-      "types": "./HeatMapChart/index.d.ts"
+      "types": "./lib/HeatMapChart/index.d.ts",
+      "import": "./lib/HeatMapChart/index.mjs",
+      "require": "./lib/HeatMapChart/index.js"
     },
     "./HorizontalBarChart": {
-      "require": "./HorizontalBarChart/index.js",
-      "import": "./HorizontalBarChart/index.mjs",
-      "types": "./HorizontalBarChart/index.d.ts"
+      "types": "./lib/HorizontalBarChart/index.d.ts",
+      "import": "./lib/HorizontalBarChart/index.mjs",
+      "require": "./lib/HorizontalBarChart/index.js"
     },
     "./KagiChart": {
-      "require": "./KagiChart/index.js",
-      "import": "./KagiChart/index.mjs",
-      "types": "./KagiChart/index.d.ts"
+      "types": "./lib/KagiChart/index.d.ts",
+      "import": "./lib/KagiChart/index.mjs",
+      "require": "./lib/KagiChart/index.js"
     },
     "./LineChart": {
-      "require": "./LineChart/index.js",
-      "import": "./LineChart/index.mjs",
-      "types": "./LineChart/index.d.ts"
+      "types": "./lib/LineChart/index.d.ts",
+      "import": "./lib/LineChart/index.mjs",
+      "require": "./lib/LineChart/index.js"
     },
     "./LollipopChart": {
-      "require": "./LollipopChart/index.js",
-      "import": "./LollipopChart/index.mjs",
-      "types": "./LollipopChart/index.d.ts"
+      "types": "./lib/LollipopChart/index.d.ts",
+      "import": "./lib/LollipopChart/index.mjs",
+      "require": "./lib/LollipopChart/index.js"
     },
     "./MailSent": {
-      "require": "./MailSent/index.js",
-      "import": "./MailSent/index.mjs",
-      "types": "./MailSent/index.d.ts"
+      "types": "./lib/MailSent/index.d.ts",
+      "import": "./lib/MailSent/index.mjs",
+      "require": "./lib/MailSent/index.js"
     },
     "./Maintenance": {
-      "require": "./Maintenance/index.js",
-      "import": "./Maintenance/index.mjs",
-      "types": "./Maintenance/index.d.ts"
+      "types": "./lib/Maintenance/index.d.ts",
+      "import": "./lib/Maintenance/index.mjs",
+      "require": "./lib/Maintenance/index.js"
     },
     "./Nexttime": {
-      "require": "./Nexttime/index.js",
-      "import": "./Nexttime/index.mjs",
-      "types": "./Nexttime/index.d.ts"
+      "types": "./lib/Nexttime/index.d.ts",
+      "import": "./lib/Nexttime/index.mjs",
+      "require": "./lib/Nexttime/index.js"
     },
     "./NoPayment": {
-      "require": "./NoPayment/index.js",
-      "import": "./NoPayment/index.mjs",
-      "types": "./NoPayment/index.d.ts"
+      "types": "./lib/NoPayment/index.d.ts",
+      "import": "./lib/NoPayment/index.mjs",
+      "require": "./lib/NoPayment/index.js"
     },
     "./NothingFound": {
-      "require": "./NothingFound/index.js",
-      "import": "./NothingFound/index.mjs",
-      "types": "./NothingFound/index.d.ts"
+      "types": "./lib/NothingFound/index.d.ts",
+      "import": "./lib/NothingFound/index.mjs",
+      "require": "./lib/NothingFound/index.js"
     },
     "./OtherData": {
-      "require": "./OtherData/index.js",
-      "import": "./OtherData/index.mjs",
-      "types": "./OtherData/index.d.ts"
+      "types": "./lib/OtherData/index.d.ts",
+      "import": "./lib/OtherData/index.mjs",
+      "require": "./lib/OtherData/index.js"
     },
     "./PageError": {
-      "require": "./PageError/index.js",
-      "import": "./PageError/index.mjs",
-      "types": "./PageError/index.d.ts"
+      "types": "./lib/PageError/index.d.ts",
+      "import": "./lib/PageError/index.mjs",
+      "require": "./lib/PageError/index.js"
     },
     "./PageNotFound": {
-      "require": "./PageNotFound/index.js",
-      "import": "./PageNotFound/index.mjs",
-      "types": "./PageNotFound/index.d.ts"
+      "types": "./lib/PageNotFound/index.d.ts",
+      "import": "./lib/PageNotFound/index.mjs",
+      "require": "./lib/PageNotFound/index.js"
     },
     "./PieChart": {
-      "require": "./PieChart/index.js",
-      "import": "./PieChart/index.mjs",
-      "types": "./PieChart/index.d.ts"
+      "types": "./lib/PieChart/index.d.ts",
+      "import": "./lib/PieChart/index.mjs",
+      "require": "./lib/PieChart/index.js"
     },
     "./Processing": {
-      "require": "./Processing/index.js",
-      "import": "./Processing/index.mjs",
-      "types": "./Processing/index.d.ts"
+      "types": "./lib/Processing/index.d.ts",
+      "import": "./lib/Processing/index.mjs",
+      "require": "./lib/Processing/index.js"
     },
     "./ProjectNotFound": {
-      "require": "./ProjectNotFound/index.js",
-      "import": "./ProjectNotFound/index.mjs",
-      "types": "./ProjectNotFound/index.d.ts"
+      "types": "./lib/ProjectNotFound/index.d.ts",
+      "import": "./lib/ProjectNotFound/index.mjs",
+      "require": "./lib/ProjectNotFound/index.js"
     },
     "./RadarChart": {
-      "require": "./RadarChart/index.js",
-      "import": "./RadarChart/index.mjs",
-      "types": "./RadarChart/index.d.ts"
+      "types": "./lib/RadarChart/index.d.ts",
+      "import": "./lib/RadarChart/index.mjs",
+      "require": "./lib/RadarChart/index.js"
     },
     "./RadialTreeChart": {
-      "require": "./RadialTreeChart/index.js",
-      "import": "./RadialTreeChart/index.mjs",
-      "types": "./RadialTreeChart/index.d.ts"
+      "types": "./lib/RadialTreeChart/index.d.ts",
+      "import": "./lib/RadialTreeChart/index.mjs",
+      "require": "./lib/RadialTreeChart/index.js"
     },
     "./SankeyChart": {
-      "require": "./SankeyChart/index.js",
-      "import": "./SankeyChart/index.mjs",
-      "types": "./SankeyChart/index.d.ts"
+      "types": "./lib/SankeyChart/index.d.ts",
+      "import": "./lib/SankeyChart/index.mjs",
+      "require": "./lib/SankeyChart/index.js"
     },
     "./ScatterPlotChart": {
-      "require": "./ScatterPlotChart/index.js",
-      "import": "./ScatterPlotChart/index.mjs",
-      "types": "./ScatterPlotChart/index.d.ts"
+      "types": "./lib/ScatterPlotChart/index.d.ts",
+      "import": "./lib/ScatterPlotChart/index.mjs",
+      "require": "./lib/ScatterPlotChart/index.js"
     },
     "./StackedAreaChart": {
-      "require": "./StackedAreaChart/index.js",
-      "import": "./StackedAreaChart/index.mjs",
-      "types": "./StackedAreaChart/index.d.ts"
+      "types": "./lib/StackedAreaChart/index.d.ts",
+      "import": "./lib/StackedAreaChart/index.mjs",
+      "require": "./lib/StackedAreaChart/index.js"
     },
     "./Suggestion": {
-      "require": "./Suggestion/index.js",
-      "import": "./Suggestion/index.mjs",
-      "types": "./Suggestion/index.d.ts"
+      "types": "./lib/Suggestion/index.d.ts",
+      "import": "./lib/Suggestion/index.mjs",
+      "require": "./lib/Suggestion/index.js"
     },
     "./Suggestions": {
-      "require": "./Suggestions/index.js",
-      "import": "./Suggestions/index.mjs",
-      "types": "./Suggestions/index.d.ts"
+      "types": "./lib/Suggestions/index.d.ts",
+      "import": "./lib/Suggestions/index.mjs",
+      "require": "./lib/Suggestions/index.js"
     },
     "./Table": {
-      "require": "./Table/index.js",
-      "import": "./Table/index.mjs",
-      "types": "./Table/index.d.ts"
+      "types": "./lib/Table/index.d.ts",
+      "import": "./lib/Table/index.mjs",
+      "require": "./lib/Table/index.js"
     },
     "./TagCloud": {
-      "require": "./TagCloud/index.js",
-      "import": "./TagCloud/index.mjs",
-      "types": "./TagCloud/index.d.ts"
+      "types": "./lib/TagCloud/index.d.ts",
+      "import": "./lib/TagCloud/index.mjs",
+      "require": "./lib/TagCloud/index.js"
     },
     "./TextLinksEtc": {
-      "require": "./TextLinksEtc/index.js",
-      "import": "./TextLinksEtc/index.mjs",
-      "types": "./TextLinksEtc/index.d.ts"
+      "types": "./lib/TextLinksEtc/index.d.ts",
+      "import": "./lib/TextLinksEtc/index.mjs",
+      "require": "./lib/TextLinksEtc/index.js"
     },
     "./Timeout": {
-      "require": "./Timeout/index.js",
-      "import": "./Timeout/index.mjs",
-      "types": "./Timeout/index.d.ts"
+      "types": "./lib/Timeout/index.d.ts",
+      "import": "./lib/Timeout/index.mjs",
+      "require": "./lib/Timeout/index.js"
     },
     "./UnderConstruction": {
-      "require": "./UnderConstruction/index.js",
-      "import": "./UnderConstruction/index.mjs",
-      "types": "./UnderConstruction/index.d.ts"
+      "types": "./lib/UnderConstruction/index.d.ts",
+      "import": "./lib/UnderConstruction/index.mjs",
+      "require": "./lib/UnderConstruction/index.js"
     },
     "./VennChart": {
-      "require": "./VennChart/index.js",
-      "import": "./VennChart/index.mjs",
-      "types": "./VennChart/index.d.ts"
+      "types": "./lib/VennChart/index.d.ts",
+      "import": "./lib/VennChart/index.mjs",
+      "require": "./lib/VennChart/index.js"
     },
     "./VerticalBarChart": {
-      "require": "./VerticalBarChart/index.js",
-      "import": "./VerticalBarChart/index.mjs",
-      "types": "./VerticalBarChart/index.d.ts"
+      "types": "./lib/VerticalBarChart/index.d.ts",
+      "import": "./lib/VerticalBarChart/index.mjs",
+      "require": "./lib/VerticalBarChart/index.js"
     },
     "./Waiting": {
-      "require": "./Waiting/index.js",
-      "import": "./Waiting/index.mjs",
-      "types": "./Waiting/index.d.ts"
+      "types": "./lib/Waiting/index.d.ts",
+      "import": "./lib/Waiting/index.mjs",
+      "require": "./lib/Waiting/index.js"
     },
     "./Warning": {
-      "require": "./Warning/index.js",
-      "import": "./Warning/index.mjs",
-      "types": "./Warning/index.d.ts"
+      "types": "./lib/Warning/index.d.ts",
+      "import": "./lib/Warning/index.mjs",
+      "require": "./lib/Warning/index.js"
     }
   }
 }

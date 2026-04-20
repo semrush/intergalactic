@@ -44,13 +44,15 @@ import TabPanel from '@semcore/ui/tab-panel';
 
 ## TabPanel.Item.Text
 
-This ordinary text sets the appropriate indents depending on the size. If plain text without addons is used in the Tab, it will turn into `TabLine.Item.Text` automatically.
+An instance of [`Text`](../../style/typography/typography-api#text) with the appropriate styles depending on the TabPanel size.
 
-It takes all the properties of the `Box`.
+Plain text without addons placed directly in `TabPanel.Item` is wrapped in `TabPanel.Item.Text` automatically.
 
 ```jsx
 import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Text />;
 ```
+
+<TypesView type="NSText.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

@@ -5,17 +5,17 @@ import ts from 'typescript';
 
 import { serializeClassDeclaration } from './classes';
 import { serializeInterfaceDeclaration } from './interfaces';
+import { serializeModuleDeclaration } from './moduleDeclaration';
 import { serializeTypeDeclaration } from './typeAliases';
 
-const mapTypes = {
-  ButtonProps: 'AbstractButtonProps',
-  ButtonLinkProps: 'AbstractButtonProps',
-};
+const NAMESPACE_PREFIX = 'NS';
 
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
   const interfaceDec: ts.InterfaceDeclaration[] = [];
   const typesDec: ts.TypeAliasDeclaration[] = [];
   const classesDec: ts.ClassDeclaration[] = [];
+  let namespaces: Record<string, any> = {};
+
   fileDeclaration.forEachChild((child) => {
     if (child.kind === ts.SyntaxKind.InterfaceDeclaration) {
       const isExported = child.modifiers?.some(
@@ -44,6 +44,13 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
         classesDec.push(child as ts.ClassDeclaration);
       }
     }
+
+    if (ts.isModuleDeclaration(child)) {
+      namespaces = {
+        ...namespaces,
+        ...serializeModuleDeclaration(child, filepath),
+      };
+    }
   });
 
   const types = typesDec.map((type) => serializeTypeDeclaration(type));
@@ -55,17 +62,18 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
     types,
     interfaces,
     classes,
+    namespaces,
   };
 };
 
 export default {
   watch: [
-    resolvePath(__dirname, '../../../semcore/**/*.d.ts'),
-    resolvePath(__dirname, '../../../semcore/**/*.ts'),
-    resolvePath(__dirname, '../../../semcore/**/*.tsx'),
+    resolvePath(__dirname, '../../../semcore/*/src/**/*.d.ts'),
+    resolvePath(__dirname, '../../../semcore/*/src/**/*.ts'),
+    resolvePath(__dirname, '../../../semcore/*/src/**/*.tsx'),
   ],
   async load(watchedFiles) {
-    watchedFiles = watchedFiles.filter((path) => !path.includes('/lib/'));
+    watchedFiles = watchedFiles.filter((path) => !path.includes('/lib/') && !path.includes('/__tests__/'));
     const sourceFiles = await Promise.all(
       watchedFiles.map(async (path) =>
         ts.createSourceFile(
@@ -80,7 +88,8 @@ export default {
       const serialized = sourceFiles.map((file, index) =>
         serializeFileDeclaration(file, watchedFiles[index]),
       );
-      const typings = {};
+      let typings: Record<string, any> = {};
+
       for (const file of serialized) {
         for (const typing of [...file.types, ...file.interfaces, ...file.classes]) {
           if (typings[typing.name]) {
@@ -92,6 +101,44 @@ export default {
           }
           const { dependencies, ...declaration } = typing;
           const uniqueDependencies = [...new Set(dependencies)];
+
+          if ('type' in declaration && declaration.type.length > 0) {
+            if (typeof declaration.type[0] === 'string' && declaration.type[0]?.includes('keyof') && declaration.type[1]?.referenceTo) {
+              if (declaration.type[2]?.includes('as `')) {
+                let nestedType: undefined | typeof serialized[number]['types'][number];
+
+                for (const s of serialized) {
+                  for (const sType of s.types) {
+                    if (sType.name === declaration.type[1].referenceTo) {
+                      nestedType = sType;
+                      break;
+                    }
+                  }
+
+                  if (nestedType) {
+                    break;
+                  }
+                }
+
+                if (nestedType && nestedType.properties) {
+                  const prefix = declaration.type[2].match(/as `(\w+):/);
+
+                  declaration.type.push({
+                    properties: nestedType.properties.map((prop: any) => {
+                      return {
+                        ...prop,
+                        name: `${prefix[1]}:${prop.name}`,
+                      };
+                    }),
+                  });
+                }
+                if (nestedType && nestedType.type) {
+                  declaration.type.push(nestedType.type);
+                }
+              }
+            }
+          }
+
           typings[typing.name] = {
             filepath: file.filepath,
             dependencies: uniqueDependencies,
@@ -99,12 +146,15 @@ export default {
             declaration,
           };
         }
-      }
-      for (const originalKey in mapTypes) {
-        const mappedKey = mapTypes[originalKey];
-        typings[originalKey] = typings[mappedKey];
+
+        typings = {
+          ...typings,
+          ...file.namespaces,
+        };
       }
       for (const typing in typings) {
+        if (typing.startsWith(NAMESPACE_PREFIX)) continue;
+
         const dependencies = typings[typing].dependencies;
         const dependencyFiles = dependencies
           .map((dependency) => typings[dependency]?.filepath)

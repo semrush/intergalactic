@@ -1,7 +1,7 @@
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import type { ButtonTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trigger';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import React from 'react';
 
 type ButtonTriggerWithAddonExample = ButtonTriggerProps & BaseTriggerProps;

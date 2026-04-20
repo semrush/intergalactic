@@ -1,5 +1,5 @@
+import { Box } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import { Box } from '@semcore/ui/flex-box';
 import React from 'react';
 
 export type ExampleDataTableProps = { loading: boolean };

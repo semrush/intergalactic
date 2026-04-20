@@ -44,7 +44,7 @@ Table: Roles and attributes
 | `TabPanel.Item`     | `aria-controls="IDREF"`   | Refers to the `tabpanel` element associated with the tab.                                                                                                                                                                              |
 | `div`               | `role="tabpanel"`         | Indicates the element serves as a container for tab panel content. Is hidden unless its associated `tab` control is activated.                                                                                                         |
 | `div`               | `aria-labelledby="IDREF"` | Refers to the `tab` element that controls the panel. Provides an accessible name for the tab panel.                                                                                                                                    |
-| `div`               | `tabIndex="0"`            | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if any panels in a set contain content where the first element in the panel is not focusable. |
+| `div`               | `tabIndex="0"`            | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if any panels in a set contain content where the first element in the panel isn't focusable. |
 
 ## Resources
 

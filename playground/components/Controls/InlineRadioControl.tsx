@@ -1,4 +1,3 @@
-import { Box } from '@semcore/ui/base-components';
 import Pills from '@semcore/ui/pills';
 import { Text } from '@semcore/ui/typography';
 import React, { useId } from 'react';

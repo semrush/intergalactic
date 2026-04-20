@@ -1,13 +1,11 @@
+import type { BoxProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import type { BoxProps } from '@semcore/flex-box';
 import type { InputProps } from '@semcore/input';
 import type Input from '@semcore/input';
-import type { TextProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
-/** @deprecated */
-export interface IPaginationProps extends PaginationProps, UnknownProperties {}
 export type PaginationProps = BoxProps &
   WithI18nEnhanceProps & {
     /**
@@ -34,16 +32,10 @@ export type PaginationProps = BoxProps &
     size?: 'm' | 'l';
   };
 
-/** @deprecated */
-export interface ITotalPagesProps extends TotalPagesProps, UnknownProperties {}
-export type TotalPagesProps = TextProps & WithI18nEnhanceProps & {};
+export type TotalPagesProps = NSText.Props & WithI18nEnhanceProps & {};
 
-/** @deprecated */
-export interface IPageInputProps extends PageInputProps, UnknownProperties {}
 export type PageInputProps = InputProps & WithI18nEnhanceProps & {};
 
-/** @deprecated */
-export interface IPaginationContext extends PaginationContext, UnknownProperties {}
 export type PaginationContext = {
   getFirstPageProps: PropGetterFn;
   getPrevPageProps: PropGetterFn;
@@ -52,8 +44,6 @@ export type PaginationContext = {
   getTotalPagesProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface IPaginationHandlers extends PaginationHandlers, UnknownProperties {}
 export type PaginationHandlers = {
   totalPages: (value: number) => void;
   currentPage: (value: number) => void;
@@ -76,6 +66,7 @@ declare const Pagination: Intergalactic.Component<
   >;
   PageInput: Intergalactic.Component<'div', PageInputProps, {}, [handlers: PaginationHandlers]> & {
     Value: typeof Input.Value;
+    Addon: typeof Input.Addon;
   };
 };
 

@@ -15,28 +15,16 @@ function getJSX({ handleControlChange, ...badgeProps }: BadgeJSXProps) {
 const entry: PlaygroundEntry<BadgeJSXProps> = {
   JSX: (props) => getJSX(props),
   controls: {
-    color: {
+    type: {
       type: 'select',
-      displayName: 'Color',
-      options: ['text-primary', 'text-primary-invert'],
-      value: 'text-primary-invert',
-      colorOptions: {
-        withIntergalacticPrefix: true,
-      },
+      options: ['admin', 'alpha', 'beta', 'new', 'soon'],
+      displayName: 'Type',
+      value: 'new',
     },
-    bg: {
-      type: 'select',
-      options: ['gray-400', 'blue-400', 'red-400', 'orange-400', 'green-400', 'violet-400'],
-      displayName: 'Background color',
-      value: 'gray-400',
-      colorOptions: {
-        withIntergalacticPrefix: false,
-      },
-    },
-    children: {
-      type: 'text',
-      displayName: 'Text',
-      value: 'soon',
+    inverted: {
+      type: 'boolean',
+      displayName: 'Inverted',
+      value: false,
     },
   },
   link: createGithubLink('badge'),

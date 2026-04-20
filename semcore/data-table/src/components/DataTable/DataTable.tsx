@@ -1,4 +1,4 @@
-import { Box, ScreenReaderOnly, ScrollArea } from '@semcore/base-components';
+import { Box, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -23,6 +23,8 @@ import type {
   ColumnItemConfig,
   DataRowItem,
 } from './DataTable.types';
+import type { ISelectedRows } from '../../store/SelectableRows';
+import { SelectableRows } from '../../store/SelectableRows';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import { Body } from '../Body/Body';
@@ -32,6 +34,8 @@ import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 import { Head } from '../Head/Head';
 import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
+import { SRAnnouncer } from '../RowSelector/SRAnnouncer';
+import { SRReactiveAnnouncer } from '../RowSelector/SRReactiveAnnouncer';
 
 export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
@@ -45,8 +49,8 @@ const SCROLL_BAR_HEIGHT = 12;
 
 type State<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > = {
   scrollTop: number;
   scrollDirection: 'down' | 'up';
@@ -57,14 +61,14 @@ type State<
 
 class DataTableRoot<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableProps<Data, UniqKey, UniqKeyType>,
-    {},
-    {},
   typeof DataTableRoot.enhance,
-  typeof DataTableRoot.defaultProps
+  {},
+  typeof DataTableRoot.defaultProps,
+  State<Data, UniqKey, UniqKeyType>
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -123,11 +127,9 @@ class DataTableRoot<
     gridTemplateAreas: [],
   };
 
-  private selectAllMessageTimer = 0;
-
   private headerNodesMap = new Map();
 
-  private isPressedShift = false;
+  private selectedRowsContainer: ISelectedRows<UniqKeyType>;
   private lastSelectedRowKey: UniqKeyType | undefined;
 
   constructor(props: DataTableProps<Data, UniqKey, UniqKeyType>) {
@@ -140,6 +142,12 @@ class DataTableRoot<
     this.calculatedRows = this.getRows();
     this.flatRows = this.calculatedRows.flat();
     this.tmpData = props.data;
+
+    if (Array.isArray(props.selectedRows) || !props.selectedRows) {
+      this.selectedRowsContainer = new SelectableRows<UniqKeyType>();
+    } else {
+      this.selectedRowsContainer = props.selectedRows;
+    }
   }
 
   state: State<Data, UniqKey, UniqKeyType> = {
@@ -178,25 +186,8 @@ class DataTableRoot<
         this.calculateVerticalShadow();
       }
     }
-    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined) {
-      const selectedRowsSet = new Set<UniqKeyType>(selectedRows);
-
-      const allChecked: UniqKeyType[] = [];
-      const allUnchecked: UniqKeyType[] = [];
-
-      this.flatRows.forEach((row) => {
-        if (selectedRowsSet.has(row[UNIQ_ROW_KEY])) {
-          allChecked.push(row[UNIQ_ROW_KEY]);
-        } else {
-          allUnchecked.push(row[UNIQ_ROW_KEY]);
-        }
-      });
-
-      if (allChecked.length === data.length) {
-        this.setSelectAllMessage(true);
-      } else if (allUnchecked.length === data.length) {
-        this.setSelectAllMessage(false);
-      }
+    if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined && !Array.isArray(selectedRows)) {
+      this.selectedRowsContainer = selectedRows;
     }
   }
 
@@ -276,7 +267,6 @@ class DataTableRoot<
       getI18nText,
       uid,
       headerProps,
-      onSelectedRowsChange,
       selectedRows,
       sideIndents,
       variant,
@@ -305,18 +295,7 @@ class DataTableRoot<
       totalRows: this.totalRows,
       selectedRows,
       flatRows: this.getFlatRows(),
-      onChangeSelectAll: (value, e) => {
-        const mappedFlatRows = this.getFlatRows().map((r) => r[UNIQ_ROW_KEY]);
-        const selectedRowsSet = new Set(selectedRows);
-
-        if (value) {
-          mappedFlatRows.forEach(selectedRowsSet.add, selectedRowsSet);
-        } else {
-          mappedFlatRows.forEach(selectedRowsSet.delete, selectedRowsSet);
-        }
-
-        onSelectedRowsChange?.(Array.from(selectedRowsSet), e);
-      },
+      onChangeSelectAll: Array.isArray(selectedRows) ? this.handleSelectAllRows : undefined,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       shadowVertical,
@@ -383,7 +362,7 @@ class DataTableRoot<
       renderEmptyData,
       sideIndents,
       selectedRows,
-      onSelectRow: this.handleSelectRow,
+      onSelectRow: Array.isArray(selectedRows) ? this.handleSelectRow : undefined,
       getFixedStyle: this.getFixedStyle,
       onCellClick: this.handleCellClick,
       rawData,
@@ -438,22 +417,34 @@ class DataTableRoot<
     }
   };
 
+  handleSelectAllRows = (selectedRows: UniqKeyType[], event?: React.SyntheticEvent<HTMLElement>) => {
+    if (!('onSelectedRowsChange' in this.asProps) || !this.asProps.onSelectedRowsChange || !Array.isArray(selectedRows)) return;
+
+    this.asProps.onSelectedRowsChange(selectedRows, event);
+  };
+
   handleSelectRow = (
     isSelected: boolean,
     selectedRowIndex: number,
     row: DTRow<UniqKeyType>,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => {
-    const { selectedRows, onSelectedRowsChange } = this.asProps;
+    const { selectedRows } = this.asProps;
 
-    if (!selectedRows || !onSelectedRowsChange) return;
+    if (!selectedRows || !('onSelectedRowsChange' in this.asProps) || !this.asProps.onSelectedRowsChange || !Array.isArray(selectedRows)) return;
+
+    const { onSelectedRowsChange } = this.asProps;
 
     const selectedRowsSet = new Set(selectedRows);
 
-    if (this.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
+    if (this.selectedRowsContainer.isPressedShift && selectedRowsSet.size > 0 && this.lastSelectedRowKey && (isSelected ? selectedRowsSet.has(this.lastSelectedRowKey) : true)) {
       let select = false;
+      const firstColumnKey = this.columns[0].name;
+      const isMerged = this.flatRows.some((item) => item[firstColumnKey] instanceof MergedRowsCell);
 
       for (const item of this.flatRows) {
+        if (isMerged && !item[firstColumnKey]) continue;
+
         if (!select && (item[UNIQ_ROW_KEY] === row[UNIQ_ROW_KEY] || item[UNIQ_ROW_KEY] === this.lastSelectedRowKey)) {
           select = true;
           if (isSelected) {
@@ -487,24 +478,6 @@ class DataTableRoot<
     this.lastSelectedRowKey = row[UNIQ_ROW_KEY];
 
     onSelectedRowsChange(Array.from(selectedRowsSet), event, { selectedRowIndex, isSelected, row });
-  };
-
-  setSelectAllMessage = (selectedAll: boolean) => {
-    if (this.selectAllMessageTimer) {
-      clearTimeout(this.selectAllMessageTimer);
-    }
-
-    const { getI18nText } = this.asProps;
-    const message = getI18nText(
-      selectedAll
-        ? 'DataTable.allItemsSelected:aria-live'
-        : 'DataTable.allItemsDeselected:aria-live',
-    );
-    this.setState({ selectAllMessage: message });
-
-    this.selectAllMessageTimer = window.setTimeout(() => {
-      this.setState({ selectAllMessage: '' });
-    }, 5000);
   };
 
   setInert(value: boolean) {
@@ -717,14 +690,14 @@ class DataTableRoot<
         break;
       }
       case 'Shift': {
-        this.isPressedShift = true;
+        this.selectedRowsContainer.isPressedShift = true;
       }
     }
   };
 
   handleKeyUp = (e: React.KeyboardEvent) => {
     if (e.key === 'Shift') {
-      this.isPressedShift = false;
+      this.selectedRowsContainer.isPressedShift = false;
     }
   };
 
@@ -819,9 +792,10 @@ class DataTableRoot<
         }
       }
 
-      const cell = row
-        ?.querySelectorAll('[role=gridcell]:not([aria-hidden="true"]), [role=columnheader]:not([aria-hidden="true"])')
-        .item(this.focusedCell[1]);
+      const colindex = this.focusedCell[1];
+      const cell = colindex > -1
+        ? row?.querySelector(`[role=gridcell][aria-colindex="${colindex + 1}"]:not([aria-hidden="true"]), [role=columnheader][aria-colindex="${colindex + 1}"]:not([aria-hidden="true"])`)
+        : undefined;
 
       cell?.removeAttribute('inert');
 
@@ -895,6 +869,8 @@ class DataTableRoot<
       headerProps,
       loading,
       selectedRows,
+      getI18nText,
+      data,
     } = this.asProps;
 
     const [offsetLeftSum, offsetRightSum] = this.getScrollOffsetValue();
@@ -915,7 +891,7 @@ class DataTableRoot<
     let gridTemplateRows: string | undefined = undefined;
 
     if (virtualScroll && typeof virtualScroll !== 'boolean' && 'rowHeight' in virtualScroll) {
-      gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto)`;
+      gridTemplateRows = `auto auto repeat(${this.totalRows}, minmax(${virtualScroll.rowHeight}px, auto))`;
     }
 
     return sstyled(styles)(
@@ -1000,10 +976,11 @@ class DataTableRoot<
           </>
         )}
 
-        {selectedRows !== undefined && (
-          <ScreenReaderOnly aria-live='polite' role='status'>
-            {this.state.selectAllMessage}
-          </ScreenReaderOnly>
+        {selectedRows !== undefined && !Array.isArray(selectedRows) && (
+          <SRReactiveAnnouncer selectedRows={selectedRows} getI18nText={getI18nText} />
+        )}
+        {selectedRows !== undefined && Array.isArray(selectedRows) && (
+          <SRAnnouncer selectedRows={selectedRows} getI18nText={getI18nText} data={data} flatRows={this.flatRows} />
         )}
       </ScrollArea>,
     );
@@ -1249,13 +1226,15 @@ class DataTableRoot<
   private getRows(): Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> {
     const columns = this.columns;
     // @ts-ignore
-    const { data, uid, uniqueRowKey } = this.props;
+    const { data, uid, uniqueRowKey, selectedRows } = this.props;
 
     if (this.tmpData === data) {
       return this.calculatedRows;
     }
 
     this.tmpData = data;
+
+    const availableRowKeys: UniqKeyType[] = [];
 
     const rows: Array<DTRow<UniqKeyType>[] | DTRow<UniqKeyType>> = [];
     const columnNames = columns.map((column: DTColumn) => column.name);
@@ -1269,6 +1248,33 @@ class DataTableRoot<
       const columns = new Set(columnNames);
 
       let accordionInCell = null as null | React.ReactNode | DataTableData;
+
+      let rowKey = row[UNIQ_ROW_KEY];
+
+      if (!rowKey) {
+        if (uniqueRowKey) {
+          // @ts-ignore
+          const keyValue = row[uniqueRowKey];
+          if (keyValue instanceof MergedRowsCell) {
+            rowKey = keyValue.value;
+          } else {
+            rowKey = keyValue;
+          }
+        } else {
+          rowKey = `${uid}_${(rowIndex + id).toString(36)}`;
+        }
+      }
+
+      const initData: DTRow<UniqKeyType> = {
+        /*
+          row -> DataRowItem
+          uniqueRowKey is a `keyof Data[number]` -> `keyof DataRowItem`
+        */
+        // @ts-ignore
+        [UNIQ_ROW_KEY]: rowKey,
+        [ROW_INDEX]: rowIndex,
+        [GRID_ROW_INDEX]: gridRowIndex,
+      };
 
       const dtRow = Object.entries(row).reduce<DTRow<UniqKeyType>>(
         (acc, [key, value]) => {
@@ -1293,16 +1299,7 @@ class DataTableRoot<
 
           return acc;
         },
-        {
-          /*
-            row -> DataRowItem
-            uniqueRowKey is a `keyof Data[number]` -> `keyof DataRowItem`
-          */
-          // @ts-ignore
-          [UNIQ_ROW_KEY]: row[UNIQ_ROW_KEY] || (uniqueRowKey ? row[uniqueRowKey] : `${uid}_${(rowIndex + id).toString(36)}`),
-          [ROW_INDEX]: rowIndex,
-          [GRID_ROW_INDEX]: gridRowIndex,
-        },
+        initData,
       );
 
       gridRowIndex++;
@@ -1328,13 +1325,17 @@ class DataTableRoot<
         });
       }
 
+      if (!excludeColumns) { // we should add only the main row in mergedRows or default rows
+        availableRowKeys.push(dtRow[UNIQ_ROW_KEY]);
+      }
+
       return dtRow;
     };
 
     data.forEach((row) => {
       const groupedRows: DataTableData | undefined = row[ROW_GROUP];
 
-      if (groupedRows) {
+      if (groupedRows && groupedRows.length > 1) {
         const innerRows: DTRow<UniqKeyType>[] & { [ACCORDION]?: React.ReactElement } = [];
 
         const groupedKeys: string[] = [];
@@ -1385,6 +1386,14 @@ class DataTableRoot<
         });
 
         rows.push(innerRows);
+      } else if (groupedRows?.length === 1) {
+        const dtRow = makeDtRow({
+          ...groupedRows[0],
+          ...row,
+        });
+
+        rows.push(dtRow);
+        rowIndex++;
       } else {
         const dtRow = makeDtRow(row);
 
@@ -1394,6 +1403,11 @@ class DataTableRoot<
     });
 
     this.calculatedRows = rows;
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      selectedRows.setAvailableKeys(availableRowKeys);
+    }
+
     return rows;
   }
 
@@ -1435,7 +1449,7 @@ class DataTableRoot<
 export const DataTable = createComponent(DataTableRoot, {
   Head,
   Body,
-}) as DataTableType & {
+}) as unknown as DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };

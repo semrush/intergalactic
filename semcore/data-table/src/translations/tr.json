@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Sıralanabilir"
+  "sortableColumn": "Sıralanabilir",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Detayları göster",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Detayları gizle",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Tüm öğeler",
+  "DataTable.allItemsSelected:aria-live": "Tüm öğeler seçildi",
+  "DataTable.allItemsDeselected:aria-live": "Tüm öğeler seçilmedi"
 }

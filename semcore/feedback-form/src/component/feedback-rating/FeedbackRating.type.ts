@@ -1,12 +1,12 @@
-import type Button from '@semcore/button';
-import type Checkbox from '@semcore/checkbox';
 import type { CheckboxProps } from '@semcore/checkbox';
 import type { Intergalactic } from '@semcore/core';
-import type { Text } from '@semcore/typography';
+import type { IllustrationProps } from '@semcore/illustration';
+import type Notice from '@semcore/notice';
 import type React from 'react';
 import type { FieldProps } from 'react-final-form';
 
 import type { FeedbackFormProps } from '../../index';
+import type { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 export type FormConfigItem = {
   key: string;
@@ -56,6 +56,10 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   errorFeedbackEmail: string;
   /** Specifies the locale for i18n support */
   locale?: string;
+  /** Illustration element */
+  Illustration?: Intergalactic.Component<'svg', IllustrationProps>;
+  /** Notice component */
+  Notice?: typeof Notice;
 };
 
 export type FeedbackRatingItemProps = FieldProps<any, any> & {
@@ -70,11 +74,10 @@ export type FeedbackRatingCheckboxProps = Omit<CheckboxProps, 'label'> & {
   label: React.ReactNode;
 };
 
-declare const FeedbackRatingType: Intergalactic.Component<'form', FeedbackRatingProps> & {
-  Item: Intergalactic.Component<'div', FeedbackRatingItemProps>;
-  Submit: typeof Button;
-  Checkbox: Intergalactic.Component<typeof Checkbox, FeedbackRatingCheckboxProps>;
-  Header: typeof Text;
+export type FeedbackRatingDefaultProps = {
+  onSubmit: () => void;
+  i18n: typeof localizedMessages;
+  locale: 'en';
+  Illustration: Intergalactic.Component<'svg', IllustrationProps>;
+  Notice: typeof Notice;
 };
-
-export { FeedbackRatingType };

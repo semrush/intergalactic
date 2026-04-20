@@ -24,7 +24,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Comparing less than 10 categories.
 - Each category's value needs labeling.
 - Showing category distribution in the specific order.
-- A category cannot have multiple values (to be stacked, in other words).
+- A category can't have multiple values (to be stacked, in other words).
 
 ![](static/hor-bar-compact-example.png)
 
@@ -39,12 +39,12 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Grid and axes
 
-This chart type does not need a grid.
+This chart type doesn't need a grid.
 
 ## Category labels
 
 - Labels use the primary text color (`--text-primary` token).
-- Use `ellipsis` for long labels, with tooltips showing the full name.
+- Use [ellipsis](../../utils/ellipsis/ellipsis) for long labels, with [hint](../../utils/hint/hint) showing the full name.
 
 ![](static/hor-bar-compact-labels.png)
 
@@ -82,7 +82,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Don't display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/hor-bar-compact-na.png)
 

@@ -1,7 +1,5 @@
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
@@ -82,45 +80,18 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected renderTooltip() {
-    const { data, groupKey, showTotalInTooltip, showTooltip } = this.asProps;
-    const { dataDefinitions } = this.state;
-
-    if (!showTooltip) {
-      return null;
-    }
+    const { data, groupKey } = this.asProps;
 
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
         {({ xIndex }: any) => {
           const dataItem = data[xIndex];
-          const total = this.totalValue(dataItem);
 
           return {
-            children: (
-              <>
-                <HoverLine.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverLine.Tooltip.Title>
-
-                {dataDefinitions.map((item) => {
-                  return (
-                    item.checked && (
-                      <Flex justifyContent='space-between' key={item.id}>
-                        <HoverLine.Tooltip.Dot mr={4} color={item.color}>
-                          {item.label}
-                        </HoverLine.Tooltip.Dot>
-                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
-                      </Flex>
-                    )
-                  );
-                })}
-
-                {showTotalInTooltip === true && (
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Box mr={4}>Total</Box>
-                    <Text bold>{total}</Text>
-                  </Flex>
-                )}
-              </>
-            ),
+            children: this.getTooltipChildren({
+              Tooltip: HoverLine.Tooltip,
+              dataItem,
+            }),
           };
         }}
       </HoverLine.Tooltip>

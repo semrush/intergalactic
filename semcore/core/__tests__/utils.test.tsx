@@ -1,25 +1,18 @@
-import { snapshot } from '@semcore/testing-utils/snapshot';
-import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
+import { cleanup } from '@semcore/testing-utils/testing-library';
 import {
   expect,
   test,
   describe,
   beforeEach,
   vi,
-  it,
   afterEach,
 } from '@semcore/testing-utils/vitest';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import { extractAriaProps } from '../src/utils/ariaProps';
 import assignProps, { assignHandlers } from '../src/utils/assignProps';
 import { shade, opacity } from '../src/utils/color';
 import compose from '../src/utils/compose';
-import type {
-  KeyboardFocusEnhanceHook,
-} from '../src/utils/enhances/keyboardFocusEnhance';
-import keyboardFocusEnhance from '../src/utils/enhances/keyboardFocusEnhance';
 import EventEmitter from '../src/utils/eventEmitter';
 import { BEFORE_BORDER_ID, AFTER_BORDER_ID } from '../src/utils/focus-lock/focusBorders';
 import { isFocusable } from '../src/utils/focus-lock/isFocusable';
@@ -28,8 +21,7 @@ import getInputProps, { inputProps } from '../src/utils/inputProps';
 import isNode from '../src/utils/isNode';
 import propsForElement, { validAttr } from '../src/utils/propsForElement';
 import reactToText from '../src/utils/reactToText';
-import { getRef, setRef, getNodeByRef } from '../src/utils/ref';
-import useCss from '../src/utils/use/useCss';
+import { getRef, setRef } from '../src/utils/ref';
 
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);
@@ -276,16 +268,6 @@ describe('Utils CSS in JS', () => {
     expect(spy3).toBeCalledTimes(1);
     expect(result3.onClick).not.toEqual(spy3);
   });
-
-  test.concurrent('Verufy CSS in JS', async ({ task }) => {
-    const CSSJS = ({ css }: any) => {
-      const className = useCss(css);
-      return <div className={className} />;
-    };
-    const component = <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />;
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
 });
 
 describe('Utils isNode', () => {
@@ -424,52 +406,6 @@ describe('Utils ref', () => {
     setRef(fn, div);
     expect(fn).toHaveBeenCalledWith(div);
   });
-
-  test.concurrent('[getNodeByRef] support function', () => {
-    const div = document.createElement('div');
-    const fn = vi.fn(() => div);
-    // setRef(fn, div)
-    expect(getNodeByRef(fn)).toBe(div);
-  });
-
-  test.concurrent('[getNodeByRef] support ref', () => {
-    const div = document.createElement('div');
-    const ref = React.createRef<HTMLDivElement>();
-    // @ts-ignore
-    ref.current = div;
-    expect(getNodeByRef(ref)).toBe(div);
-  });
-});
-
-describe('Enhances - keyboardFocusEnhances', () => {
-  beforeEach(cleanup);
-
-  test.concurrent(
-    'Verify keyboardFocus returns keyboardFocused to false if component is disabled',
-    () => {
-      const enhance = keyboardFocusEnhance();
-
-      const { result, rerender } = renderHook<
-        ReturnType<KeyboardFocusEnhanceHook>,
-        { disabled: boolean }
-      >(enhance, { initialProps: { disabled: false } });
-
-      act(() => {
-        // @ts-ignore
-        result.current.onFocus({});
-      });
-
-      expect(result.current.keyboardFocused).toBe(true);
-
-      rerender({ disabled: true });
-
-      expect(result.current.keyboardFocused).toBe(false);
-
-      rerender({ disabled: false });
-
-      expect(result.current.keyboardFocused).toBe(false);
-    },
-  );
 });
 
 describe('extractAriaProps', () => {

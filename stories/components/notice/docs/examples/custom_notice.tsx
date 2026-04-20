@@ -1,5 +1,5 @@
+import Calendar from '@semcore/icon/Calendar/l';
 import Button from '@semcore/ui/button';
-import Calendar from '@semcore/ui/icon/Calendar/l';
 import Notice from '@semcore/ui/notice';
 import React from 'react';
 

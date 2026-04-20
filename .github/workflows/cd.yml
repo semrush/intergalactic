@@ -3,7 +3,7 @@ on:
   pull_request:
   workflow_dispatch:
   push:
-    branches: [master, major/16]
+    branches: [master, release/v16, release/v17]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
@@ -17,12 +17,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -95,12 +95,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -119,9 +119,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -143,12 +140,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -167,9 +164,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -180,15 +174,45 @@ jobs:
           pnpm install --frozen-lockfile
       - name: Lint
         run: pnpm lint
+  get-changed-files:
+    runs-on: ubuntu-latest
+    outputs:
+      changed_files: ${{ steps.changed-files.outputs.changed_files }}
+      count: ${{ steps.changed-files.outputs.count }}
+      skip_docs_lint: ${{ steps.changed-files.outputs.skip_docs_lint }}
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - name: Get changed files list
+        id: changed-files
+        run: |
+          FILES=$(git diff --name-only --diff-filter=AM ${{ github.event.pull_request.base.sha || 'HEAD^1' }} -- '*.md' | paste -sd "," -)
+          echo "changed_files=$FILES" >> $GITHUB_OUTPUT
+
+          ALL_FILES_COUNT=$(git diff --name-only ${{ github.event.pull_request.base.sha || 'HEAD^1' }} | wc -l)
+          echo "count=$ALL_FILES_COUNT" >> $GITHUB_OUTPUT
+
+          if [[ -z "$FILES" ]]; then
+            echo "::notice::The docs-lint job will be skipped because there’s no changed .md files."
+            echo "skip_docs_lint=true" >> $GITHUB_OUTPUT
+          fi
+          if [[ $ALL_FILES_COUNT -gt 300 && -n "$FILES" ]]; then
+            echo "::warning::The docs-lint job will be skipped because there’s >300 files in the PR. Please run the linter locally."
+          fi
   docs-lint:
     runs-on: ubuntu-latest
+    needs: get-changed-files
+    if: ${{ needs.get-changed-files.outputs.skip_docs_lint != 'true' && needs.get-changed-files.outputs.count <= 300 && needs.get-changed-files.outputs.count > 0 }}
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: errata-ai/vale-action@reviewdog
         name: Run Vale
-        continue-on-error: true
         with:
-          files: README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md website/docs
+          reporter: github-pr-review
+          separator: ","
+          vale_flags: "--minAlertLevel=warning"
+          files: ${{ needs.get-changed-files.outputs.changed_files }}
   unit-tests:
     runs-on: ubuntu-latest
     needs: [build, defineChangedComponents]
@@ -199,12 +223,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -223,9 +247,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -261,12 +282,12 @@ jobs:
 #      - name: Install Node.js
 #        uses: actions/setup-node@v4.0.1
 #        with:
-#          node-version: 22
+#          node-version: 24
 #      - uses: pnpm/action-setup@v4.0.0
 #        name: Install pnpm
 #        id: pnpm-install
 #        with:
-#          version: 10.11.1
+#          version: 10.32.1
 #          run_install: false
 #      - name: Get pnpm store directory
 #        id: pnpm-cache
@@ -325,7 +346,7 @@ jobs:
       matrix:
         browser: [chromium, firefox, webkit]
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git
@@ -339,7 +360,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -363,9 +384,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -403,7 +421,7 @@ jobs:
       matrix:
         browser: [chromium, firefox, webkit]
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git
@@ -417,7 +435,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -440,9 +458,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -475,7 +490,7 @@ jobs:
     needs: [ build, defineChangedComponents ]
     if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
       options: --ipc=host  # Needed for Chromium sandboxing
     steps:
       - name: Install Git
@@ -488,7 +503,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -512,9 +527,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
@@ -553,12 +565,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -579,9 +591,6 @@ jobs:
           path: |
             semcore/*/lib
             tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts

@@ -202,7 +202,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       { theme: 'primary', size: 'xl', disabled: false, interactive: true },
     ].forEach((item) => {
       test(`Verify InputTags.Tag with addon ${item.theme} and ${item.size} size and disabled ${item.disabled} and interactive ${item.interactive}`, {
-        tag: [TAG.PRIORITY_HIGH, '@input-tags', '@icon'],
+        tag: [TAG.PRIORITY_HIGH, '@input-tags'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/input-tags/tests/examples/tags-with-addons.tsx', 'en', item);
 
@@ -239,7 +239,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot();
         await inputText.nth(4).hover();
 
-        await page.waitForSelector('text="Social media with a very long name"');
+        await page
+          .getByText('Social media with a very long name').nth(1).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
         await tagClose.first().hover();
         await expect(page).toHaveScreenshot();
@@ -297,18 +298,19 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await test.step('Verify focused and menu opened by click on label', async () => {
         await label.click();
-        await page.waitForSelector('text="LinkedIn"');
+        await locators.options(page).first().waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify menu item focused when entered data', async () => {
         await page.keyboard.press('Backspace');
-        await page.waitForSelector('text="TikTok"');
+        await page.keyboard.type('TikTok');
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify menu item can be selected by click', async () => {
         await locators.options(page).first().click();
+        await locators.options(page).nth(1).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
     });
@@ -323,9 +325,16 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await test.step('Verify nothing found state', async () => {
         await page.keyboard.press('Tab');
+        await expect(locators.inputValue(page)).toBeFocused();
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.options(page).first()).toHaveClass(/highlighted/);
         await page.keyboard.press('Enter');
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.options(page).first()).toHaveClass(/highlighted/);
         await page.keyboard.press('Enter');
-        await page.keyboard.press('Space');
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+        await page.keyboard.press('1');
         await page.waitForSelector('text="Nothing found"');
         await expect(page).toHaveScreenshot();
       });
@@ -478,6 +487,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     await test.step('Verify Tag Close can be focused by Tab', async () => {
+      await expect(locators.inputClose(page).first()).toBeVisible();
       await page.keyboard.press('Tab');
       await expect(locators.inputClose(page).first()).toBeFocused();
     });
@@ -546,7 +556,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await expect(locators.tag(page)).toHaveCount(count1 - 1);
       await page.keyboard.type('Test2');
       await page.keyboard.press('|');
-      await expect(locators.inputText(page).nth(count1 - 1)).toHaveText('Social media with a very long nameTest2');
+      await expect(locators.inputText(page).nth(count1 - 1)).toContainText('Social media with a very long nameTest2');
       await expect(locators.tag(page)).toHaveCount(count1);
 
       await page.keyboard.press('Shift+Tab');

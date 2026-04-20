@@ -75,7 +75,7 @@ const tryToResolveIndexFile = async (path: string) => {
 };
 
 const rootFiles = ['README.md', 'package.json'];
-const generatedComponents = ['icon', 'ui', 'illustration'];
+const generatedComponents = ['ui'];
 const outOfSourceDirs = ['style'];
 
 export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => ({
@@ -108,6 +108,10 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
         ) {
           if (subPath.includes('lib')) {
             modifiedSubPath = subPath.replace('lib/', 'src/');
+          } else if (componentName === 'icon') {
+            modifiedSubPath = subPath ? `lib/${subPath}` : '';
+          } else if (componentName === 'illustration') {
+            modifiedSubPath = subPath ? `lib/${subPath}` : 'src';
           } else if (!subPath.startsWith('src/')) {
             modifiedSubPath = `src/${subPath}`;
           }

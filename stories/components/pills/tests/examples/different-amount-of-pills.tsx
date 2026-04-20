@@ -1,15 +1,9 @@
-import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
-import Globe from '@semcore/ui/icon/Globe/m';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import Pills from '@semcore/ui/pills';
-import type { PillsProps, PillProps } from '@semcore/ui/pills';
-import Spin from '@semcore/ui/spin';
-import { Text } from '@semcore/ui/typography';
+import type { NSPills } from '@semcore/ui/pills';
 import React from 'react';
 
-type PillExampleProps = PillsProps & PillProps;
+type PillExampleProps = NSPills.Props & NSPills.Pill.Props;
 const Demo = (props: PillExampleProps) => {
   const [choice, setChoice] = React.useState(null);
 

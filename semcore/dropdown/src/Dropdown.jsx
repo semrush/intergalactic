@@ -1,10 +1,9 @@
+import { Popper, Flex, Box, isInputTriggerTag } from '@semcore/base-components';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import capitalizeFirstLetter from '@semcore/core/lib/utils/capitalizeFirstLetter';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement, { useUID } from '@semcore/core/lib/utils/uniqueID';
 import { hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
-import { Flex, Box } from '@semcore/flex-box';
-import Popper, { isInputTriggerTag } from '@semcore/popper';
 import React from 'react';
 
 import { DropdownItem } from './DropdownItem';
@@ -157,7 +156,12 @@ function DropdownPopper({ styles }) {
 }
 
 function DropdownGroup(props) {
-  const { styles, title, Children, subTitle, size, sticky } = props;
+  /*
+    `size` is not exposed as a public prop,
+    but it may be implicitly inherited from parent components such as Select or DropdownMenu.
+    Since `size` directly affects item dimensions, we default it to 'm' to preserve backward compatibility.
+  */
+  const { styles, title, Children, subTitle, size = 'm', sticky } = props;
   const SGroup = Root;
   const SDropdownItemContainer = Dropdown.Item;
   const SGroupTitle = Flex;
@@ -174,7 +178,13 @@ function DropdownGroup(props) {
         <SGroupTitle id={uidTitle}>{title}</SGroupTitle>
         {subTitle && <SGroupHint id={uidSubTitle}>{subTitle}</SGroupHint>}
       </SDropdownItemContainer>
-      <SGroup render={Box} role='group' {...groupAriaProps} __excludeProps={['title', 'sticky']}>
+      <SGroup
+        render={Box}
+        role='group'
+        {...groupAriaProps}
+        __excludeProps={['title', 'sticky']}
+        data-sticky={sticky}
+      >
         <Children />
       </SGroup>
     </>,

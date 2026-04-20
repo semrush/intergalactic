@@ -1,6 +1,4 @@
-import { axe } from '@semcore/testing-utils/axe';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -18,21 +16,18 @@ describe('ColorPicker', () => {
     const value = '#2BB3FF';
     const spy = vi.fn();
 
-    const { getAllByTestId } = render(
+    const { getAllByRole } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker value={value} onChange={spy} disablePortal visible>
           <ColorPicker.Trigger />
           <ColorPicker.Popper>
-            <ColorPicker.Colors>
-              <ColorPicker.Item value='#8649E1' data-testid='item1' />
-              <ColorPicker.Item value='#2BB3FF' />
-            </ColorPicker.Colors>
+            <ColorPicker.Colors colors={['#8649E1', '#2BB3FF']} />
           </ColorPicker.Popper>
         </ColorPicker>
       </div>,
     );
 
-    fireEvent.click(getAllByTestId('item1')[0]);
+    fireEvent.click(getAllByRole('option')[0]);
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith('#8649E1', expect.anything());
   });

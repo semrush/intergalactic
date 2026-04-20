@@ -1,23 +1,42 @@
 import { execSync } from 'child_process';
 import process from 'process';
 
+import type { ReleaseVersion } from '@tools/continuous-delivery/src/utils/changelog';
 import Git from 'simple-git';
 
 import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
 import type { PackageJson } from './packages';
+import type { SeparatedPackage } from '../types/common.types';
 
 const git = Git();
 
 export const gitUtils = {
   initNewPrerelease: async (version: string, packages: PackageJson[]) => {
-    const newPrereleaseBranch = `prerelease/v${version}`;
-    await git.checkout(['-b', newPrereleaseBranch]);
+    const semcoreUiPatch = packages.find((item) => item.name === '@semcore/ui');
+    const isIcon = packages.length === 1 && packages[0].name === '@semcore/icon';
+    const isIllustration = packages.length === 1 && packages[0].name === '@semcore/illustration';
+
+    if (semcoreUiPatch || isIcon || isIllustration) {
+      const newPrereleaseBranch = `prerelease/${version}`;
+      await git.checkout(['-b', newPrereleaseBranch]);
+
+      await NpmUtils.updateLockFile();
+      await gitUtils.commitChangesFor(packages);
+      const tag = await gitUtils.createPrereleaseTag(`${version}`);
+      await gitUtils.push(tag);
+    }
+  },
+
+  initNewToolsRelease: async (tagName: string, packages: PackageJson[]) => {
+    const branch = `release/${tagName}`;
+    await git.checkout(['-b', branch]);
 
     await NpmUtils.updateLockFile();
-    await gitUtils.commitNewPrerelease(packages);
-    const tag = await gitUtils.createPrereleaseTag(version);
-    await gitUtils.push(tag);
+    await gitUtils.commitChangesFor(packages);
+
+    await git.tag([tagName]);
+    await git.push(['origin', branch, tagName]);
   },
 
   getUpdatedPackages: async () => {
@@ -35,7 +54,19 @@ export const gitUtils = {
   },
 
   getCurrentTag: async (): Promise<string | null> => {
-    const tag = execSync('git describe --tags --abbrev=0', {
+    const branchSummary = await git.branch();
+    const currentBranch = branchSummary.current;
+    let match = '';
+
+    if (currentBranch.startsWith('prerelease/v')) {
+      match = `--match "v*"`;
+    } else if (currentBranch.startsWith('prerelease/icon')) {
+      match = `--match "icon*"`;
+    } else if (currentBranch.startsWith('prerelease/illustration')) {
+      match = `--match "illustrations*"`;
+    }
+
+    const tag = execSync(`git describe --tags ${match} --abbrev=0`, {
       encoding: 'utf-8',
     });
 
@@ -63,7 +94,7 @@ export const gitUtils = {
     }
   },
 
-  commitNewPrerelease: async (packages: PackageJson[]) => {
+  commitChangesFor: async (packages: PackageJson[]) => {
     let commitMessage = '[chore] bumped';
     if (packages.length === 1) {
       commitMessage += ' version of ';
@@ -84,7 +115,7 @@ export const gitUtils = {
   },
 
   createPrereleaseTag: async (version: string) => {
-    const tagNamePrefix = `v${version}-${prerelaseSuffix}.`;
+    const tagNamePrefix = `${version}-${prerelaseSuffix}.`;
 
     const tag = await gitUtils.getTag(tagNamePrefix);
     const prerelease = tag?.split('-')[1] ?? null;
@@ -139,11 +170,27 @@ export const gitUtils = {
     }
   },
 
-  getPrevReleaseTag: async (): Promise<string> => {
+  getPrevReleaseTag: async (): Promise<ReleaseVersion> => {
     const tags = await git.tags(['v*', '--sort', 'creatordate']);
     const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
     const currentReleaseTag = releaseTags[releaseTags.length - 1];
 
-    return currentReleaseTag;
+    return currentReleaseTag.slice(1) as ReleaseVersion;
+  },
+
+  getPrevPackageTag: async (pack: SeparatedPackage): Promise<ReleaseVersion> => {
+    const tags = await git.tags([`${pack}*`, '--sort', 'creatordate']);
+    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
+    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+
+    return currentReleaseTag.slice(pack.length) as ReleaseVersion;
+  },
+
+  getPrevReleaseToolsTag: async (tool: string): Promise<ReleaseVersion> => {
+    const tags = await git.tags([`tools/${tool}*`, '--sort', 'creatordate']);
+
+    const { all: allTags } = tags;
+
+    return allTags.at(-1) as ReleaseVersion;
   },
 };

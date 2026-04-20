@@ -1,8 +1,6 @@
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
-import { getNodeByRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
-import { findDOMNode } from 'react-dom';
 
 import { Box } from '../flex-box';
 import type { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
@@ -33,7 +31,11 @@ const setAriaValues = (
   }
 };
 
-class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
+type State = {
+  visibleScroll: boolean;
+};
+
+class ScrollBarRoot extends Component<ScrollBarProps, typeof ScrollBarRoot.enhance, {}, { container: React.RefObject<HTMLElement> | null }, State> {
   static displayName = 'Bar';
 
   static style = style;
@@ -43,7 +45,7 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
 
   static defaultProps = () => {
     return {
-      container: React.createRef(),
+      container: React.createRef<HTMLElement | null>(),
       children: <ScrollBar.Slider />,
     };
   };
@@ -59,27 +61,30 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
   _scroll = { left: 0, top: 0 };
   _mouse = { pageX: 0, pageY: 0 };
 
-  state = {
+  state: State = {
     visibleScroll: false,
   };
 
-  get $container(): Element {
-    return getNodeByRef(this.asProps.container!)!;
+  get $container(): Element | null {
+    return this.asProps.container.current;
   }
 
-  refBar = (node: HTMLElement) => {
-    const domNode = findDOMNode(node) as HTMLElement;
-    this.$bar = domNode;
-    const orientation = this.getOrientation();
-    const { horizontalBarRef, verticalBarRef } = this.asProps;
-    if (orientation === 'horizontal' && horizontalBarRef) horizontalBarRef.current = domNode;
-    if (orientation === 'vertical' && verticalBarRef) verticalBarRef.current = domNode;
+  refBar = (domNode: HTMLElement | null) => {
+    if (domNode !== null) {
+      this.$bar = domNode;
+      const orientation = this.getOrientation();
+      const { horizontalBarRef, verticalBarRef } = this.asProps;
+      if (orientation === 'horizontal' && horizontalBarRef) horizontalBarRef.current = domNode;
+      if (orientation === 'vertical' && verticalBarRef) verticalBarRef.current = domNode;
 
-    setAriaValues(this.$container, horizontalBarRef?.current, verticalBarRef?.current);
+      setAriaValues(this.$container, horizontalBarRef?.current, verticalBarRef?.current);
+    }
   };
 
-  refSlider = (node: HTMLElement) => {
-    this.$slider = findDOMNode(node) as HTMLElement;
+  refSlider = (node: HTMLElement | null) => {
+    if (node) {
+      this.$slider = node;
+    }
   };
 
   calculateVisibleScroll() {
@@ -171,6 +176,14 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
 
     const visibleScroll = this.calculateVisibleScroll();
 
+    /*
+      Safari retains GPU-composited layers after DOM removal.
+      Resetting transform before unmount prevents ghost rendering artifacts.
+    */
+    if (!visibleScroll && this.$slider) {
+      this.$slider.style.transform = 'none';
+    }
+
     this.setState({ visibleScroll }, () => {
       if (!this.$container || !this.$bar || !this.$slider) return;
       const orientation = this.getOrientation();
@@ -245,6 +258,8 @@ class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRo
   };
 
   handleMouseDownBar = (e: MouseEvent) => {
+    if (!this.$container) return;
+
     // cancellation of the ascent as in a real scroll
     e.stopPropagation();
 

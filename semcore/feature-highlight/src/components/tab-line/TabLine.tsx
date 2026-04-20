@@ -68,4 +68,4 @@ function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boole
 export const TabLineFH = createComponent(TabLineFHRoot, {
   Item: [TabLine.Item, { Text: TabLine.Item.Text, Addon: TabLine.Item.Addon }],
   HighlightedItem: createComponent(HighlightedItemRoot, { Text: TabLine.Item.Text, Addon: HighlightedAddon }),
-}) as HighlightedTabLineComponent;
+}) as unknown as HighlightedTabLineComponent;

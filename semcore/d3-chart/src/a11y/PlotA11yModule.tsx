@@ -1,39 +1,22 @@
+import { Box } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
 import { Context as I18nContext, useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
-import type { DataStructureHints, PartialDataSummarizationConfig } from './hints';
 import { normalizeLocale } from './locale';
+import type { A11yViewProps } from './PlotA11yView';
 import styles from '../style/plotA11yModule.shadow.css';
 import { localizedMessages } from './translations/module/__intergalactic-dynamic-locales';
 
-let globalWasFocused = false;
-let globalNavWithKeyboard = false;
+type A11yModuleProps = Omit<A11yViewProps, 'onBlurHandler' | 'triggerRef'>;
 
-export type A11yViewProps = {
-  id: string;
-  data: Record<string, unknown>[];
-  hints: DataStructureHints;
-  plotLabel: string;
-  locale: NavigatorLanguage['language'];
-  config: PartialDataSummarizationConfig;
-
-  plotRef: React.RefObject<HTMLElement>;
-};
-
-export function PlotA11yModule(props: A11yViewProps) {
+export function PlotA11yModule(props: A11yModuleProps) {
   const SPlotA11yModule = Root;
-  const [wasFocused, setWasFocused] = React.useState(globalWasFocused);
-  const [navWithKeyboard, setNavWithKeyboard] = React.useState(globalNavWithKeyboard);
+  const [isOpened, setIsOpened] = React.useState(false);
   const [plotA11yView, setPlotA11yView] = React.useState<{
     Component: React.FC<A11yViewProps>;
   } | null>(null);
-
-  const hadnleHiddenElementsFocus = React.useCallback(() => {
-    setWasFocused(true);
-    setNavWithKeyboard(true);
-  }, []);
+  const srButtonRef = React.useRef<HTMLButtonElement>(null);
 
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<Error | null>(null);
@@ -46,40 +29,7 @@ export function PlotA11yModule(props: A11yViewProps) {
   const t = useI18n(localizedMessages, locale!);
 
   React.useEffect(() => {
-    if (wasFocused) return;
-    const focusListener = () => {
-      globalWasFocused = true;
-      setWasFocused(true);
-    };
-
-    props.plotRef.current?.addEventListener('focus', focusListener);
-    return () => props.plotRef.current?.removeEventListener('focus', focusListener);
-  }, [wasFocused, props.plotRef]);
-  React.useEffect(() => {
-    if (navWithKeyboard) return;
-    const keyboardListener = (event: Event) => {
-      const navigationKeys = [
-        'Tab',
-        'ArrowUp',
-        'ArrowLeft',
-        'ArrowDown',
-        'ArrowRight',
-        'ArrowUp',
-        'ArrowLeft',
-      ];
-      if ('key' in event && navigationKeys.includes((event as KeyboardEvent).key)) {
-        setNavWithKeyboard(true);
-        globalNavWithKeyboard = true;
-      }
-    };
-    document.body?.addEventListener('keydown', keyboardListener);
-    return () => document.body?.removeEventListener('keydown', keyboardListener);
-  }, [navWithKeyboard]);
-
-  const shouldDisplayView = wasFocused && navWithKeyboard;
-
-  React.useEffect(() => {
-    if (!shouldDisplayView) return;
+    if (!isOpened) return;
     if (plotA11yView) return;
     if (loading) return;
 
@@ -95,33 +45,35 @@ export function PlotA11yModule(props: A11yViewProps) {
         // eslint-disable-next-line no-console
         console.error(error);
         setError(error);
+        setLoading(false);
       });
-  }, [plotA11yView, shouldDisplayView, loading, setLoading]);
+  }, [plotA11yView, isOpened, loading, setLoading]);
 
   if (plotA11yView) {
     return sstyled(styles)(
-      <plotA11yView.Component {...props} locale={locale!} />,
-    ) as React.ReactElement;
-  }
-
-  if (error) {
-    return sstyled(styles)(
-      <SPlotA11yModule render={Box} tabIndex={0} aria-live='assertive'>
-        {t('failed')}
-      </SPlotA11yModule>,
-    ) as React.ReactElement;
-  }
-  if (loading) {
-    return sstyled(styles)(
-      <SPlotA11yModule render={Box} tabIndex={0} aria-live='polite'>
-        {t('loading')}
-      </SPlotA11yModule>,
+      <plotA11yView.Component
+        {...props}
+        onCloseHandler={() => {
+          setIsOpened(false);
+          setPlotA11yView(null);
+        }}
+        triggerRef={srButtonRef}
+        locale={locale!}
+      />,
     ) as React.ReactElement;
   }
 
   return sstyled(styles)(
-    <SPlotA11yModule render={Box} tabIndex={0} onFocus={hadnleHiddenElementsFocus}>
-      {t('disabled')}
+    <SPlotA11yModule render={Box}>
+      <button
+        ref={srButtonRef}
+        onClick={() => setIsOpened(true)}
+        aria-label={t('PlotA11yModule.ScreenReaderOnlyButton.Label')}
+      />
+      <Box role='status'>
+        {loading && t('loading')}
+        {error && t('failed')}
+      </Box>
     </SPlotA11yModule>,
-  ) as React.ReactElement;
+  );
 }

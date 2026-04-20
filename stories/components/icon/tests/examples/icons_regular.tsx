@@ -1,8 +1,8 @@
-import { Flex } from '@semcore/ui/flex-box';
-import ArrowsL from '@semcore/ui/icon/Arrows/l';
-import ArrowsM from '@semcore/ui/icon/Arrows/m';
-import MailFilledL from '@semcore/ui/icon/MailFilled/l';
-import MailFilledM from '@semcore/ui/icon/MailFilled/m';
+import ArrowsL from '@semcore/icon/Arrows/l';
+import ArrowsM from '@semcore/icon/Arrows/m';
+import MailFilledL from '@semcore/icon/MailFilled/l';
+import MailFilledM from '@semcore/icon/MailFilled/m';
+import { Flex, Box } from '@semcore/ui/base-components';
 import { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
@@ -10,31 +10,22 @@ const Demo = () => {
   return (
     <>
       <Flex columnGap={2} mb={4}>
-        <Hint
-          tag={ArrowsM}
-          interactive
-          title='Icon RegularM Interactive'
-          color='icon-secondary-neutral'
-        />
+        <Box title='Icon neutralM'>
+          <ArrowsM color='icon-secondary-neutral' />
+        </Box>
 
-        <Hint
-          tag={ArrowsL}
-          interactive
-          title='Icon RegularL Interative'
-          color='icon-secondary-neutral'
-        />
+        <Box title='Icon neutraL'>
+          <ArrowsL color='icon-secondary-neutral' />
+        </Box>
 
-        <Hint
-          tag={MailFilledM}
-          title='Icon ColoredM Non Interactive'
-          color='text-critical'
-        />
+        <Box title='Icon ColoredM'>
+          <MailFilledM color='text-critical' />
+        </Box>
 
-        <Hint
-          tag={MailFilledL}
-          title='Icon ColoredL Non Interactive'
-          color='text-critical'
-        />
+        <Box title='Icon ColoredL'>
+          <MailFilledL color='text-critical' />
+        </Box>
+
       </Flex>
     </>
   );

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/product-head",
   "description": "Semrush ProductHead Component",
-  "version": "16.0.11",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,15 +12,12 @@
     "build": "pnpm semcore-builder && pnpm vite build"
   },
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
-  },
-  "dependencies": {
-    "@semcore/flex-box": "16.0.11"
+    "require": "./lib/cjs/index.js"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.1"
   },
   "repository": {
     "type": "git",
@@ -29,6 +26,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

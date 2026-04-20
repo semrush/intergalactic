@@ -7,9 +7,9 @@ const longText = `Lorem Ipsum is simply dummy text of the printing and typesetti
 
 const Demo = (props: SwitchExampleProps) => {
   return (
-    <Switch size={props.size}>
+    <Switch size={props.size} disabled={props.disabled}>
       <Switch.Addon>{longText}</Switch.Addon>
-      <Switch.Value theme={props.theme} checked={props.checked} disabled={props.disabled} />
+      <Switch.Value theme={props.theme} checked={props.checked} />
       <Switch.Addon>{longText}</Switch.Addon>
     </Switch>
   );

@@ -1,5 +1,5 @@
-import CheckM from '@semcore/ui/icon/Check/m';
-import CloseM from '@semcore/ui/icon/Close/m';
+import CheckM from '@semcore/icon/Check/m';
+import CloseM from '@semcore/icon/Close/m';
 import type { SwitchProps, SwitchValueProps } from '@semcore/ui/switch';
 import Switch from '@semcore/ui/switch';
 import React from 'react';
@@ -18,9 +18,8 @@ function getJSX(props: SwitchJSXProps) {
   const { handleControlChange } = props;
 
   return (
-    <Switch theme={props.theme} size={props.size}>
+    <Switch theme={props.theme} size={props.size} disabled={props.disabled}>
       <Switch.Value
-        disabled={props.disabled}
         checked={props.checked}
         onChange={(value) => handleControlChange?.('checked', value)}
       >

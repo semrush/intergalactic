@@ -85,13 +85,13 @@ The transparency of values appearance changes from 0 to 100 with `ease-in` and `
 
 ### Few values
 
-If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.
+If there are very few values, then they're evenly distributed around the entire circle relative to the central value in a clockwise direction.
 
 ![](static/few-values.png)
 
 ### Very long main element
 
-Don't fold the long center value into ellipsis. Wrap it on the second line.
+Don't truncate the long center value with an ellipsis. Wrap it to the next line.
 
 ![](static/long-value.png)
 
@@ -105,7 +105,7 @@ Show a special message for cases when there is no data.
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-Use the `--skeleton-bg` color token for the skeleton's background.      
+Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/radial-tree-skeleton.png)
 

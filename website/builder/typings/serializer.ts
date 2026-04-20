@@ -24,7 +24,11 @@ const computeTypingStringLength = (typingsParts) =>
     0,
   );
 
-export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembersOf = []) => {
+export const serializeTsNode = (
+  node: ts.Node,
+  genericsMap = {},
+  minimizeMembersOf = [],
+) => {
   const traverse = (node: ts.Node) => {
     switch (node.kind) {
       case ts.SyntaxKind.NumberKeyword:
@@ -167,12 +171,24 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         ];
       }
       case ts.SyntaxKind.MappedType: {
-        const { typeParameter, type } = node as ts.MappedTypeNode;
+        const { typeParameter, type, questionToken, nameType } = node as ts.MappedTypeNode;
+
+        if (nameType !== undefined) {
+          return [
+            '[',
+            traverse(typeParameter.name),
+            traverse(typeParameter.constraint!),
+            traverse(nameType),
+            `]${questionToken !== undefined ? '?' : ''}:`,
+            traverse(type!),
+          ];
+        }
+
         return [
           '[',
           traverse(typeParameter.name),
           traverse(typeParameter.constraint!),
-          ']:',
+          `]${questionToken !== undefined ? '?' : ''}:`,
           traverse(type!),
         ];
       }
@@ -226,15 +242,15 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         const { type, operator } = node as ts.TypeOperatorNode;
         switch (operator) {
           case ts.SyntaxKind.KeyOfKeyword:
-            return ['keyof ', traverse(type)];
+            return [' keyof ', traverse(type)];
           case ts.SyntaxKind.ReadonlyKeyword:
-            return 'readonly';
+            return ' readonly ';
         }
         throw new Error(`Got unknown type operator ${ts.SyntaxKind[operator]} (${operator})`);
       }
       case ts.SyntaxKind.TemplateLiteralType: {
         const { head, templateSpans } = node as ts.TemplateLiteralTypeNode;
-        return ['`', head.text, templateSpans.map((span) => traverse(span)), '`'];
+        return [' as `', head.text, templateSpans.map((span) => traverse(span)), '`'];
       }
       case ts.SyntaxKind.TemplateLiteralTypeSpan: {
         const { type, literal } = node as ts.TemplateLiteralTypeSpan;
@@ -244,6 +260,28 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         const { typeName, typeArguments } = node as Omit<ts.TypeReferenceNode, 'typeName'> & {
           typeName: ts.BinaryExpression & { escapedText: string };
         };
+        if (typeName.left && typeName.right) {
+          const reference: string = [
+            traverse(typeName.left),
+            '.',
+            traverse(typeName.right),
+          ].flat().join('');
+
+          if (hideGenerics[reference] && typeArguments) {
+            const maxArgLength = hideGenerics[reference];
+            const result = [];
+            for (let i = 0; i < typeArguments.length && i < maxArgLength; i++) {
+              if (i !== 0) result.push(', ');
+              result.push(traverse(typeArguments[i]));
+            }
+            return result;
+          }
+
+          return {
+            referenceTo: reference,
+            displayText: reference,
+          };
+        }
         if (typeArguments) {
           let name = [typeName.escapedText];
           if (typeName.left && typeName.right) {
@@ -266,9 +304,6 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
           }
           result.push('>');
           return result;
-        }
-        if (typeName.left && typeName.right) {
-          return [traverse(typeName.left), '.', traverse(typeName.right)];
         }
         if (typeName.escapedText !== undefined) {
           const genericReference = genericsMap[typeName.escapedText];
@@ -356,7 +391,7 @@ const serializeJSDoc = (jsDoc: ts.JSDoc[], dependencies: string[], genericsMap) 
   return { description, params };
 };
 
-export const serializeProperty = (propertyDeclaration: ts.PropertySignature, genericsMap) => {
+export const serializeProperty = (propertyDeclaration: ts.PropertySignature, genericsMap: Record<string, any>) => {
   const name = (propertyDeclaration as { name?: ts.Identifier }).name!.escapedText;
   const isOptional = propertyDeclaration.questionToken !== undefined;
   const type = serializeTsNode(propertyDeclaration.type!, genericsMap, []);

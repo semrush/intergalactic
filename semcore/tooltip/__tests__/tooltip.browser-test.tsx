@@ -249,42 +249,6 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test.describe('Hint', () => {
-    test('Verify mouse interactions with Base example', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip', '@hint'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
-
-      const trigger = locators.hint(page);
-      const popper = locators.hintPopper(page);
-
-      await test.step('Verify tooltip shown on hover interactive element', async () => {
-        const triggerRect = (await trigger.nth(0).boundingBox())!;
-
-        await page.mouse.move(
-          triggerRect.x + triggerRect.width / 2,
-          triggerRect.y + triggerRect.height / 2,
-          { steps: 5 },
-        );
-
-        await page.getByText('Export to PDF').waitFor({ state: 'visible' });
-        await expect(page).toHaveScreenshot();
-      });
-
-      await test.step('Verify tooltip shown on hover non-interactive element', async () => {
-        const triggerRect = (await trigger.nth(1).boundingBox())!;
-
-        await page.mouse.move(
-          triggerRect.x + triggerRect.width / 2,
-          triggerRect.y + triggerRect.height / 2,
-          { steps: 5 },
-        );
-
-        await page.getByText('You confirmed your email').waitFor({ state: 'visible' });
-        await expect(popper).toHaveAttribute('aria-hidden', 'true');
-        await expect(page).toHaveScreenshot();
-      });
-    });
-
     const hintThemeVariables = [
       { hintTheme: 'default' },
       { hintTheme: 'invert' },
@@ -754,40 +718,13 @@ test.describe(TAG.FUNCTIONAL, () => {
   });
 
   test.describe('Hint', () => {
-    test('Verify keyboard interactions with Base example', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip', '@hint'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
-
-      const trigger = locators.hint(page);
-      const popper = locators.hintPopper(page);
-
-      await test.step('Verify tooltip shown on Tab', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await expect(trigger.nth(0)).toBeFocused();
-        await expect(popper).toHaveCount(1);
-        await expect(popper).toHaveAttribute('aria-hidden', 'true');
-      });
-
-      await test.step('Verify non interactive not focused by Tab', async () => {
-        await page.keyboard.press('Escape');
-        await expect(popper).toHaveCount(0);
-
-        await page.keyboard.press('Tab');
-        await expect(trigger.nth(1)).not.toBeFocused();
-        await expect(popper).toHaveCount(0);
-      });
-    });
-
     const hintThemeVariables = [
       { hintTheme: 'default' },
       { hintTheme: 'invert' },
     ];
 
     hintThemeVariables.forEach((item) => {
-      test(`Verify theme=${item.hintTheme}`, {
+      test(`Verify hint=${item.hintTheme} mouse interaction`, {
         tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@tooltip', '@hint'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
@@ -810,6 +747,32 @@ test.describe(TAG.FUNCTIONAL, () => {
 
         await test.step('Verify hint closes on mouse leave', async () => {
           await page.mouse.move(0, 0, { steps: 5 });
+          await hintPopper.first().waitFor({ state: 'hidden' });
+          await expect(hintPopper).not.toBeVisible();
+        });
+      });
+      test(`Verify hint=${item.hintTheme} keyboard interaction`, {
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@tooltip', '@hint'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
+
+        const hintPopper = locators.hintPopper(page);
+
+        await test.step('Verify hint shown focus', async () => {
+          await page.keyboard.press('Tab');
+          await page.keyboard.press('Tab');
+
+          await page.keyboard.press('Tab');
+
+          await hintPopper.first().waitFor({ state: 'visible' });
+          await expect(hintPopper).toBeVisible();
+          await expect(hintPopper).toHaveCount(1);
+          await expect(hintPopper).toHaveAttribute('aria-hidden', 'true');
+        });
+
+        await test.step('Verify hint closes on Esc', async () => {
+          await page.keyboard.press('Escape');
+
           await hintPopper.first().waitFor({ state: 'hidden' });
           await expect(hintPopper).not.toBeVisible();
         });

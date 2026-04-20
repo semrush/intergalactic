@@ -168,7 +168,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       return logEvent('tab_examples:open_sandbox:click', { pathname });
     }
   }
-  if (node.classList.contains('types-view-reference')) {
+  if (node.classList.contains('types-reference-button')) {
     return logEvent('tab_examples:open_sandbox:click', { pathname, type: node.textContent });
   }
 
@@ -483,8 +483,11 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     // External links
     if (node.tagName === 'A' && !node.classList.contains('page-top-tabs-tab')) {
       const link = node.getAttribute('href');
+      const version = node.dataset.version;
 
-      if (link && new URL(link).host !== window.location.host) {
+      if (version) {
+        return logEvent(`switch_version_${version}:click`, { pathname, link });
+      } else if (link?.startsWith('http') && new URL(link).host !== window.location.host) {
         return logEvent('links:click', { pathname, link });
       }
     }

@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import { Donut, Plot } from '@semcore/ui/d3-chart';
 import type { DonutProps } from '@semcore/ui/d3-chart';
-import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 

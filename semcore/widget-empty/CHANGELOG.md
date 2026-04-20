@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.1] - 2026-04-16
+
+### Fixed
+
+- Build processing to correct extract styles.
+
+## [17.0.0] - 2026-04-15
+
+### BREAK
+
+- New major version.
+- Removed unnecessary `margin-bottom` for the widget container.
+
 ## [16.0.11] - 2025-10-29
 
 ### Changed

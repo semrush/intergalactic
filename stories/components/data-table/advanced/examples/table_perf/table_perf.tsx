@@ -1,6 +1,7 @@
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
@@ -16,7 +17,11 @@ import {
 
 export type AccordionInTableProps = {
   loading: boolean;
+  hintProps?: false;
+  cropPosition?: 'end' | 'middle';
 };
+
+const refsMap: Record<string | symbol, HTMLElement | null> = {};
 
 const COLUMNS_CONFIG = [
   {
@@ -32,6 +37,7 @@ const COLUMNS_CONFIG = [
     defaultActive: true,
     Component: CopyCell,
     wMin: 150,
+    ref: (node: HTMLElement | null) => refsMap['payment_intent_id'] = node,
   },
   {
     id: 'payment_status',
@@ -128,6 +134,11 @@ const COLUMNS_CONFIG = [
     Component: CopyCell,
   },
   {
+    id: 'description_ellipsis',
+    defaultActive: true,
+    wMin: 150,
+  },
+  {
     id: 'merchant',
     defaultActive: true,
     wMin: 100,
@@ -176,6 +187,7 @@ const cols = COLUMNS_CONFIG.map((c) => ({
   name: c.id,
   children: c.id,
   gtcWidth: c.wMin ? `minmax(${c.wMin}px, 1fr)` : 'max-content',
+  ref: c.ref,
 }));
 
 // with React.memo
@@ -194,7 +206,9 @@ const componentsMap = Object.fromEntries(
 const DEFAULT_LOCALE = 'en-US';
 const DEFAULT_MESSAGES = {};
 
-const Demo = (props: AccordionInTableProps) => {
+const Demo = (demoProps: AccordionInTableProps) => {
+  const cropPos = demoProps.cropPosition ?? 'middle';
+
   return (
     <IntlProvider
       locale={DEFAULT_LOCALE}
@@ -202,7 +216,7 @@ const Demo = (props: AccordionInTableProps) => {
       messages={DEFAULT_MESSAGES}
     >
       <DataTable
-        loading={props.loading}
+        loading={demoProps.loading}
         data={data}
         aria-label='Accordion inside table'
         h='100%'
@@ -218,16 +232,29 @@ const Demo = (props: AccordionInTableProps) => {
             };
           }
 
+          if (props.dataKey === 'description_ellipsis') {
+            return {
+              children: (
+                <Text
+                  ellipsis:cropPosition={cropPos}
+                  hint={demoProps.hintProps}
+                >
+                  {String(props.row.payment_description)}
+                </Text>
+              ),
+            };
+          }
+
           // @ts-ignore
           const Component = componentsMap[props.columnName];
           if (Component) {
             return {
-              children: <Component value={props.value} row={props.row} />,
+              children: <Component value={props.value} row={props.row} cellProps={props} headerRef={refsMap[props.columnName]} cropPosition={cropPos} hintProps={demoProps.hintProps} />,
             };
           }
 
           return {
-            children: <Ellipsis>{props.value}</Ellipsis>,
+            children: <Text>{props.value}</Text>,
           };
         }}
       />
@@ -235,8 +262,10 @@ const Demo = (props: AccordionInTableProps) => {
   );
 };
 
-export const accordionInsideTableDefaultProps = {
+export const accordionInsideTableDefaultProps: AccordionInTableProps = {
   loading: false,
+  hintProps: undefined,
+  cropPosition: 'middle',
 };
 
 Demo.defaultProps = accordionInsideTableDefaultProps;

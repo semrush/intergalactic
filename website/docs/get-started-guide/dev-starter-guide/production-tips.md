@@ -7,16 +7,16 @@ Here you will find some tips for optimizing the library in production.
 
 ## CSS extract
 
-The styles in our library are ready to use and don't require any additional actions. They are applied automatically and added to the head of your application by inserting CSS into JavaScript.
+The styles in our library are ready to use and don't require any additional actions. They're applied automatically and added to the head of your application by inserting CSS into JavaScript.
 
 To speed up the load time and decrease TTI (time to interactive), separate JS and CSS. This will reduce the size of the JS files and will allow to load CSS and JavaScript in parallel decreasing the application launch time.
 
 ::: warning
-[`@semcore/shadow-loader`](https://github.com/semrush/intergalactic/tree/release/v16/tools/shadow-loader) is deprecated.
-To unify behavior across the bundlers, use [`@semcore/process-css-unplugin`](https://github.com/semrush/intergalactic/tree/release/v16/tools/process-css-unplugin/README.md) package. As for now it offers implementation for Vite and Webpack.
+[`@semcore/shadow-loader`](https://github.com/semrush/intergalactic/tree/HEAD/tools/shadow-loader) is deprecated.
+To unify behavior across the bundlers, use [`@semcore/process-css-unplugin`](https://github.com/semrush/intergalactic/tree/HEAD/tools/process-css-unplugin/README.md) package. As for now it offers implementation for Vite and Webpack.
 :::
 
-To do that, use the [shadow-loader](https://github.com/semrush/intergalactic/blob/master/tools/shadow-loader/README.md) webpack plugin. It will strip the styles from JavaScript and replace them with `require ("./style.css")` in the component code. This way you will be able to extract the styles into a separate file using [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) or a similar tool.
+To do that, use the [shadow-loader](https://github.com/semrush/intergalactic/tree/HEAD/tools/shadow-loader) webpack plugin. It will strip the styles from JavaScript and replace them with `require ("./style.css")` in the component code. This way you will be able to extract the styles into a separate file using [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) or a similar tool.
 
 This is what your `webpack.config.js` might look like:
 
@@ -83,40 +83,39 @@ module.exports = {
 
 ## Style isolation
 
-Classes in styles have a hash of the content and version to avoid collisions. However, this solution doesn't work when there are two components of the same version from two different teams on the same page. In such cases, styles may overlap and apply incorrectly due to issues with the order of the CSS cascade.
+Classes in styles include a hash based on content and version to avoid collisions. However, this approach breaks down when two components of the same version, built by different teams, are rendered on the same page. In such cases, styles may overlap or be applied incorrectly due to the CSS cascade order.
 
-To solve this problem, make the classes unique by using a prefix. Since we supply pre-built JavaScript and CSS files, there is no correct way to assign a prefix directly.
+To address this, class names must be made unique by adding a suffix. Since we distribute pre-built JavaScript and CSS files, the suffix can't be hardcoded at build time.
 
-The solution that we suggest is to replace the placeholder `_gg_` in the class names by using [string-replace-loader](https://www.npmjs.com/package/string-replace-loader).
+The recommended solution is to use the `isolationSuffix` option provided by `process-css-unplugin`. This option allows you to change default suffix to a unique one, defined as a value of `isolationSuffix`.
 
-Note that the placeholder needs to be replaced in both JS and CSS files. This is what your `webpack.config.js` might look like:
+The suffix is applied consistently to both JavaScript and CSS.
+
+Following is an example of how your `webpack.config.js` might look:
 
 ```js
+const { processCssWebpackPlugin } = require('@semcore/process-css-unplugin');
+
 module.exports = {
-  // ...
-  module: {
-    rules: [
-      {
-        test: /\.(m?js|css)$/,
-        include: /node_modules\/(@semcore|\.cache\/reshadow)/,
-        enforce: 'pre',
-        use: [
-          {
-            loader: 'string-replace-loader',
-            options: {
-              search: '_gg_',
-              replace: '-my-team',
-              flags: 'g',
-            },
-          },
-        ],
-      },
-    ],
-  },
+  //...
+  plugins: [
+    processCssWebpackPlugin({ isolationSuffix: '_unique-suffix_' }),
+  ],
 };
 ```
 
-Also note that the configuration of the `rule` parameter in JS files uses `enforce: 'pre'`. Otherwise, obfuscation will change the function names and make it impossible to search and replace CSS classes. Add these rules to your `webpack-config.js` as a separate section, since they should process packages from the @semcore library only.
+`vite.config.ts`:
+```js
+import { defineConfig } from 'vite';
+import { processCssVitePlugin } from '@semcore/process-css-unplugin';
+
+export default defineConfig({
+  //...
+  plugins: [
+    processCssVitePlugin({ isolationSuffix: '_unique-suffix_' }),
+  ],
+})
+```
 
 ## Server-side rendering
 
@@ -150,7 +149,7 @@ const html = `
 
 ### SSR via style extract
 
-This method will work for you if you are using the **@semcore/shadow-loader** package (see [CSS extract](#css-extract)).
+This method will work for you if you're using the **@semcore/shadow-loader** package (see [CSS extract](#css-extract)).
 
 If you use `CSS-extract`, it should already be configured. If you don't use it, go to the [CSS extract](#css-extract) section and follow the steps described. Once you've done that, all component styles will be collected in a separate chunk that needs to be included in HTML generated on the server.
 

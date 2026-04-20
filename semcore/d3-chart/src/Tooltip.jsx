@@ -1,8 +1,7 @@
+import { Popper, Box } from '@semcore/base-components';
 import { Component, Root, sstyled } from '@semcore/core';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import { Box } from '@semcore/flex-box';
-import Popper from '@semcore/popper';
 import React from 'react';
 
 import createElement from './createElement';

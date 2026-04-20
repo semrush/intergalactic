@@ -2,6 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.1] - 2026-04-16
+
+### Fixed
+
+- Build processing to correct extract styles.
+
+## [17.0.0] - 2026-04-15
+
+### BREAK
+
+- New major version.
+
+### Fixed
+
+- Border-radius for shadow under sticky group.
+- Overscroll "bounce" effect for sticky groups.
+
+## [16.2.2] - 2026-02-10
+
+### Fixed
+
+- Amount of prepared items for back scroll when `VirtualList` is used.
+
 ## [16.2.1] - 2025-12-18
 
 ### Fixed

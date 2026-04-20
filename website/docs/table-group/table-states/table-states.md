@@ -80,7 +80,7 @@ Illustrations for these cases are usually unique, designed specifically for each
 Show this message when:
 
 - There is no data for some reason
-- The data cannot be displayed for some reason
+- The data can't be displayed for some reason
 
 ![](static/no-data.png)
 

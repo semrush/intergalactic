@@ -1,7 +1,8 @@
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import CopyM from '@semcore/ui/icon/Copy/m';
+import CopyM from '@semcore/icon/Copy/m';
+import type { EllipsisSettings } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import {
   type FC,
@@ -29,11 +30,14 @@ const copiedMessageDescriptor = defineMessage({
 
 type CopyProps = {
   value: string;
-  trim?: 'middle' | 'end' | 'none';
+  cropPosition?: 'middle' | 'end' | 'none';
   handle?: boolean;
+  cellProps: any;
+  headerRef: HTMLElement | null;
+  hintProps?: false;
 };
 
-const Copy: FC<CopyProps> = ({ value, trim = 'none', handle = true }) => {
+const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cellProps, headerRef, hintProps }) => {
   const timeourRef = useRef<Timeout>();
   const [copied, setCopied] = useState(false);
   const intl = useIntl();
@@ -56,7 +60,7 @@ const Copy: FC<CopyProps> = ({ value, trim = 'none', handle = true }) => {
 
   return (
     <Tooltip
-      wMax='100%'
+      w='100%'
       tag={Flex}
       onClick={onClick}
       inline
@@ -64,25 +68,31 @@ const Copy: FC<CopyProps> = ({ value, trim = 'none', handle = true }) => {
       alignItems='center'
       gap={2}
     >
-      {trim === 'none'
+      {cropPosition === 'none'
         ? (
             <Box inline>{value}</Box>
           )
         : (
-            <Ellipsis tooltip={false} trim={trim}>
+            <Text
+              ellipsis:cropPosition={cropPosition ?? 'end'}
+              ellipsis:containerElement={headerRef ?? undefined}
+              // `width - 28` because there is custom copy icon (20px) on each cell + 8px gap between text and Icon. Therefore, the header width should be reduced based on the width of this icon.
+              ellipsis:recalculateContainerWidth={(width: number) => (width - 28)}
+              hint={hintProps}
+            >
               {value}
-            </Ellipsis>
+            </Text>
           )}
       {handle && (
         <Box>
-          <CopyM w={20} />
+          <CopyM width='20px' />
         </Box>
       )}
     </Tooltip>
   );
 };
 
-const CopyCell = ({ value }: any) => <Copy value={value} trim='middle' />;
+const CopyCell = ({ value, cellProps, headerRef, cropPosition = 'middle', hintProps }: any) => <Copy value={value} cropPosition={cropPosition} cellProps={cellProps} headerRef={headerRef} hintProps={hintProps} />;
 
 const StatusCell = ({ value }: any) => <PaymentStatus status={value} />;
 

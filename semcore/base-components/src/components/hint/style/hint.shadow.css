@@ -1,0 +1,40 @@
+SHintPopper {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 250px;
+  overflow-wrap: break-word;
+  opacity: 0;
+  pointer-events: none;
+
+  background: var(--intergalactic-tooltip-invert, #191b23);
+  border: 1px solid var(--intergalactic-border-tooltip-invert, #6c6e79);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-2x, 8px);
+  border-radius: var(--intergalactic-rounded-small, 4px);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
+  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
+
+  animation-fill-mode: both;
+  animation-timing-function: var(--timingFunction);
+  animation-duration: var(--durationFinalize);
+  animation-name: var(--keyframesFinalize);
+
+  &[visible] {
+    animation-duration: var(--durationInitialize);
+    animation-name: var(--keyframesInitialize);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  SHintPopper {
+    animation-timing-function: step-end;
+    animation-iteration-count: 1;
+  }
+  SHintPopper[visible] {
+    animation-timing-function: step-end;
+    animation-iteration-count: 1;
+  }
+}

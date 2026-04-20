@@ -23,11 +23,15 @@ export default defineConfig({
       enforce: 'pre',
     })).vite({}),
   ],
+  esbuild: {
+    legalComments: 'inline',
+  },
   build: {
     minify: false,
     emptyOutDir: false,
     outDir: 'lib',
     rollupOptions: {
+      treeshake: false,
       external: ['react', 'react-dom', 'react/jsx-runtime', /@babel\/runtime\/*/, /@semcore\/*/],
       output: [
         {

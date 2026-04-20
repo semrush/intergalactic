@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

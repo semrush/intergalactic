@@ -5,7 +5,7 @@ import type { LegendProps } from './BaseLegend.type';
 import { StaticShapes, type LegendItemKey, type LegendItemProps, type ShapeType } from './LegendItem/LegendItem.type';
 import { makeDataHintsHandlers } from '../../a11y/hints';
 
-export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
+export abstract class BaseLegend<T extends LegendProps, E extends readonly ((...args: any[]) => any)[] = never[]> extends Component<T, E> {
   componentDidMount() {
     this.setHints();
   }

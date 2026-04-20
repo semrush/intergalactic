@@ -4,8 +4,9 @@ fileSource: utils
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Changelog('design-tokens-changelog')
 ---
 
-::: info
-Design tokens are available for use from **intergalactic@13.5.0** version.
+::: warning
+Use tokens from the **@semcore/theme** package instead of **@semcore/core**,
+as they will be removed from the core package starting from **version 17**.
 :::
 
 ## Description
@@ -14,18 +15,18 @@ Design tokens are variables that store visual design choices (colors, fonts, spa
 
 Intergalactic Design System has:
 
-- set of base tokens that define a base palette;
-- set of semantic tokens which are applied across all components and even the chart library.
+- **set of base tokens** that define a base palette;
+- **set of semantic tokens** which are applied across all components and even the chart library.
 
 These sets form the default theme of the design system.
 
 ::: tip
-For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/tree/master/semcore/utils/theme).
+For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/theme/src/light.json).
 :::
 
 ## Stylelint plugin
 
-The stylelint plugin help developers avoid mistakes in design token names. It's part of [intergalactic npm package](https://www.npmjs.com/package/intergalactic) but also might be installed as [a separate package](https://www.npmjs.com/package/@semcore/stylelint-plugin).
+The stylelint plugin helps developers to avoid mistakes in the design token names. It's part of [intergalactic npm package](https://www.npmjs.com/package/intergalactic) but also might be installed as [a separate package](https://www.npmjs.com/package/@semcore/stylelint-plugin).
 
 ```json
 // .stylelintrc.json
@@ -42,12 +43,22 @@ The stylelint plugin help developers avoid mistakes in design token names. It's 
 
 - `include` - adds custom design tokens to the list of allowed tokens.
 - `exclude` - removes design tokens from the list of allowed tokens.
-- `tokensSource` - path to the file with design tokens. Default is `intergalactic/utils/lib/themes/default.json`.
+- `tokensSource` - path to the file with design tokens. Default is `node_modules/@semcore/core/lib/theme/themes/default.mjs`.
 - `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
 
-## Base tokens (palette)
+## Base tokens
 
-The list of base tokens is our palette. It was built with [Huetone tool](https://huetone.ardov.me/) (learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
+Base tokens include:
+
+- our product palette;
+- font size, line height, font weight, and letter spacing values;
+- the base spacing and sizing scale;
+- sizing;
+- spacing;
+- the base border radius scale;
+- breakpoints.
+
+The palette was built with [Huetone tool](https://huetone.ardov.me/) (learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
 
 Shades of the same color have a value ranging from 50 to 800, depending on its tone. Each shade has recommendations for use based on [Huetone's contrast ratio calculation](https://huetone.ardov.me/).
 
@@ -67,18 +78,19 @@ const App = BaseTokens;
 
 ## Semantic tokens
 
-It is a list of tokens for components and charts for the default Intergalactic theme.
+It's a list of tokens for components and charts for the default Intergalactic theme.
 
-Semantic tokens include tokens for:
+Semantic tokens include:
 
 - colors;
-- typography;
-- sizing;
-- spacings;
-- box-shadows;
-- border-radius.
+- box shadows;
+- border radius;
+- form control heights;
+- opacity;
+- z-index;
+- animation durations.
 
-To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage#token-naming-structure).
+To learn more about the tokens names, see [Token naming structure section](/style/design-tokens/design-tokens-usage#token-naming-structure).
 
 ::: react-view
 
@@ -96,9 +108,9 @@ const App = DesignTokens;
 
 ## Themes
 
-If you need to build a product that differs in style from our default theme, you can create a custom theme for it.
+If you need to build a product that differs in style and tone of voice from our default theme, you can create a custom theme.
 
-Theme is a set of tokens represented in CSS variables that has different from the default sets values. Values can be changed for base, semantic, or both sets. You can redefine them globally or only for a specific subtree of React app. Refer to [Usage in development](/style/design-tokens/design-tokens-usage-development).
+Theme is a set of tokens represented in CSS variables that has different from the default sets values. Values can be changed for base, semantic, or both sets. You can redefine them globally or only for a specific subtree of React app. Refer to the [Usage in development](/style/design-tokens/design-tokens-usage-development).
 
 ## Creating new theme
 
@@ -106,12 +118,14 @@ Theme is a set of tokens represented in CSS variables that has different from th
 
 Creating a theme usually starts with design. In fact, this is the most time-consuming part.
 
-**We recommend you using the native Figma variables (tokens) functionality**. But if you need more functionality that Figma doesn't have at the moment, use [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files.
+**We recommend you using the native Figma variables (tokens) functionality**. Refer to the following tutorials, for the detailed process for creating a new theme. Semrush designers and developers can use the following tutorials:
 
-Refer to the following tutorials, for the detailed process for creating a new theme:
+- [Tutorial for Figma tokens](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=13125-73031&node-type=canvas&t=qOTf0DSn0M8p63of-11)
+- [Tutorial for Tokens Studio](https://www.figma.com/design/K1s6wF8NTH3uNHvjkn6hjc/Themes'-playground-%26-tutorial-%F0%9F%8E%93?m=auto&t=jHrLhhOMB32IMklB-6)
 
-- Semrush designers and developers can use two tutorials, [tutorial for Figma tokens](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=13125-73031&node-type=canvas&t=qOTf0DSn0M8p63of-11) and [tutorial for Tokens Studio](https://www.figma.com/design/K1s6wF8NTH3uNHvjkn6hjc/Themes'-playground-%26-tutorial-%F0%9F%8E%93?m=auto&t=jHrLhhOMB32IMklB-6)
-- Other users can use the [tutorial for Tokens Studio](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens)
+In case if you need more functionality that Figma doesn't have at the moment, use [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files.
+
+For non-Semrush employees we have a [tutorial for Tokens Studio](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens).
 
 ::: tip
 **In cases where different styles are needed for just one component or a part of the design system:**

@@ -39,7 +39,7 @@ import Card from '@semcore/ui/card';
 <Card.Title />;
 ```
 
-<TypesView type="TitleProps" :types={...types} />
+<TypesView type="NSCard.Title.Props" :types={...types} />
 
 ## Card.Description
 

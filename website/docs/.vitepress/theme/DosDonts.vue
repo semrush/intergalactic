@@ -1,17 +1,21 @@
 <template>
   <table class="dosdonts">
-    <tr>
-      <th>Don’t</th>
-      <th>Do</th>
-    </tr>
-    <tr>
-      <td>
-        <slot name="dont"></slot>
-      </td>
-      <td>
-        <slot name="do"></slot>
-      </td>
-    </tr>
+    <thead>
+      <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <slot name="dont"></slot>
+        </td>
+        <td>
+          <slot name="do"></slot>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </template>
 
@@ -35,6 +39,7 @@
 
 .dosdonts tr {
   border-bottom: none;
+  background: transparent;
 }
 
 .dosdonts th {

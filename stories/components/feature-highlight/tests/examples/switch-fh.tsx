@@ -1,6 +1,6 @@
-import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import SummaryAI from '@semcore/icon/SummaryAI/m';
+import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { SwitchFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import type { SwitchProps } from '@semcore/ui/switch';
 import React from 'react';
 
@@ -29,18 +29,18 @@ const Demo = (props: SwitchFHAdvancedProps) => {
 
   return (
     <Flex direction='column' gap={4} alignItems='start'>
-      <SwitchFH size={size}>
+      <SwitchFH size={size} disabled={disabled}>
         <SwitchFH.Value
           aria-describedby='switch-aria-desc'
           checked={checked}
-          disabled={disabled}
           ml={0}
         />
         <SwitchFH.AnimatedSparkles count={animatedSparkleCount} />
         <SwitchFH.Addon>
           {label}
           {showIcon && (
-            <SummaryAI
+            <Box
+              tag={SummaryAI}
               color='--intergalactic-icon-primary-feature-highlight'
               ml={2}
               style={{ verticalAlign: -3 }}

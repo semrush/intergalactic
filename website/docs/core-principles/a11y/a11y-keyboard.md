@@ -37,7 +37,7 @@ Keyboard control should be performed sequentially across all interactive element
 - For inputs and text fields, focus also appears by `onClick`.
 - When navigating the keyboard all controls are highlighted with a blue border (see keyboard-focus tokens in [Design tokens](/style/design-tokens/design-tokens#semantic-tokens)). Exceptions are inputs and text fields when validating, that on focus have same border color (orange or green).
 - The focus inside groups of controls is consistent. After the last control in the group, the focus should move to the next control in the interface.
-- If the control has a tooltip in the `hover` state, it should appear on focus with `Tab`.
+- If the control has a tooltip or a hint in the `hover` state, it should appear on focus with `Tab`.
 
 ## Keyboard support for controls
 
@@ -73,7 +73,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 - The control gets focus when you press `Tab`.
 - When focused, controls are highlighted with a blue outline, regardless of the color of the control.
 - When you press `Enter`, an event occurs. _For example, a dropdown opens._
-- If a tooltip should appear on hovering over the control, then when pressing `Tab`, it will appear when focused.
+- If a tooltip or a hint should appear on hovering over the control, then when pressing `Tab`, it will appear when focused.
 
 ### Images as links or clickable groups
 
@@ -83,7 +83,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 
 ### Table
 
-- Table cells should only receive keyboard focus if they are interactive. In these cases, using the `grid` role on the entire table would be more appropriate.
+- Table cells should only receive keyboard focus if they're interactive. In these cases, using the `grid` role on the entire table would be more appropriate.
 - Controls inside the table cells get focus using `Tab` only.
 - Both rows and single elements in a row get `focus`. Besides, the rows are presented as a list and you can move through them with arrows. And inside rows – using `Tab`.
 - When you press `Enter`, an event occurs, as if you press the mouse button. If the entire row have `focus`, you follow the link, and if only the icon has `focus`, then the action is performed, etc.

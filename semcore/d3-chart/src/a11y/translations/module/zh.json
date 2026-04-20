@@ -1,5 +1,5 @@
 {
-  "disabled": "按“Tab”启用图形图表访问模块。",
   "loading": "加载访问模块。",
-  "failed": "无法加载访问模块。联系服务用户支持，以帮助我们更快地解决问题。"
+  "failed": "无法加载访问模块。联系服务用户支持，以帮助我们更快地解决问题。",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "打开数据摘要"
 }

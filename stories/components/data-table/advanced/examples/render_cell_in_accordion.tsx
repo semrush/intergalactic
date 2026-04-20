@@ -1,6 +1,5 @@
-import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
-import type { DataTableProps, DataTableSort } from '@semcore/ui/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import { DataTable, ACCORDION, type DataTableProps } from '@semcore/ui/data-table';
+import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
@@ -33,6 +32,7 @@ const Demo = () => {
       aria-label='Parent'
       h='100%'
       data={data}
+      uniqueRowKey='id'
       accordionDuration={400}
       renderCell={renderCell}
       columns={[
@@ -47,7 +47,25 @@ const Demo = () => {
 
 const ChartExample = () => {
   const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
+  const [containerElement, setContainerElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    setContainerElement(containerRef.current);
+  }, []);
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
+    return (props) => {
+      if (props.columnName === 'vol' && containerElement) {
+        return (
+          <Text ellipsis:cropPosition='middle' ellipsis:containerElement={containerElement}>
+            {props.value}
+          </Text>
+        );
+      }
+
+      return props.defaultRender();
+    };
+  }, [containerElement]);
 
   return (
     <DataTable
@@ -60,17 +78,7 @@ const ChartExample = () => {
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
       expandedRows={new Set<string>()}
-      renderCell={(props) => {
-        if (props.columnName === 'vol') {
-          return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
-              {props.value}
-            </Ellipsis>
-          );
-        }
-
-        return props.defaultRender();
-      }}
+      renderCell={renderCell}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
           e.stopPropagation();
@@ -109,7 +117,7 @@ const data1 = [
 
 const data = [
   {
-    [UNIQ_ROW_KEY]: '1',
+    id: '1',
     keyword: 'ebay buy1',
     kd: '77.8',
     cpc: '$1.25',
@@ -139,7 +147,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '2',
+    id: '2',
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
@@ -149,7 +157,7 @@ const data = [
     },
   },
   {
-    [UNIQ_ROW_KEY]: '4',
+    id: '4',
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
@@ -157,7 +165,7 @@ const data = [
     [ACCORDION]: (<ChartExample1 />),
   },
   {
-    [UNIQ_ROW_KEY]: '5',
+    id: '5',
     keyword: 'ebay buy2',
     kd: '75.89',
     cpc: '$0',
@@ -169,7 +177,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '6',
+    id: '6',
     keyword: 'ebay buy3',
     kd: '100',
     cpc: '$0',
@@ -181,7 +189,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '7',
+    id: '7',
     keyword: 'ebay buy4',
     kd: '-',
     cpc: '$0',

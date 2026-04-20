@@ -6,6 +6,7 @@ import React from 'react';
 
 export type SelectAdvancedConfigProps = SelectProps & {
   // Main Select props
+  size?: 'm' | 'l';
   labelText?: string;
   showLabel?: boolean;
   triggerPlaceholder?: string;

@@ -1,8 +1,7 @@
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import { axe } from '@semcore/testing-utils/axe';
+import CongratsIllustration from '@semcore/illustration/Congrats';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -54,7 +53,7 @@ describe('FeedbackForm', () => {
     unmount();
   });
 
-  test('Verify validationOnBlur=true (default behavior)', async ({ expect }) => {
+  test('Verify validationOnBlur=true (default behavior)', async () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -75,7 +74,7 @@ describe('FeedbackForm', () => {
     unmount();
   });
 
-  test('Verify validationOnBlur=false', async ({ expect }) => {
+  test('Verify validationOnBlur=false', async () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -116,7 +115,7 @@ describe('FeedbackForm.Item', () => {
 describe('5-star FeedbackForm', () => {
   beforeEach(cleanup);
 
-  test('Verify no submit if invalid', async ({ expect }) => {
+  test('Verify no submit if invalid', async () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -138,5 +137,154 @@ describe('5-star FeedbackForm', () => {
 
     expect(onSubmit).not.toHaveBeenCalled();
     unmount();
+  });
+});
+
+describe('FeedbackRating - Props and Rendering', () => {
+  beforeEach(cleanup);
+
+  const defaultProps = {
+    status: 'default',
+    notificationVisible: true,
+    notificationText: 'Test notification',
+    rating: 0,
+    visible: false,
+    onVisibleChange: vi.fn(),
+    onNotificationClose: vi.fn(),
+    onSubmit: vi.fn(),
+    header: 'Test Header',
+    formConfig: [],
+    initialValues: { rating: 0 },
+    errorFeedbackEmail: 'test@example.com',
+  };
+
+  test('Should render with default props', () => {
+    const { getByText } = render(<FeedbackRating {...defaultProps} />);
+
+    expect(getByText('Test notification')).toBeTruthy();
+  });
+
+  test('Should use default Illustration when prop not provided', () => {
+    const { container } = render(<FeedbackRating {...defaultProps} />);
+
+    // Verify default illustration is rendered (FeedbackIllustration)
+    const illustration = container.querySelector('svg');
+    expect(illustration).toBeTruthy();
+  });
+
+  test('Should render custom Illustration component', () => {
+    const { container } = render(
+      <FeedbackRating {...defaultProps} Illustration={CongratsIllustration} />,
+    );
+
+    // Verify custom illustration is rendered
+    const illustration = container.querySelector('svg');
+    expect(illustration).toBeTruthy();
+  });
+
+  test('Should call onNotificationClose when close button clicked', () => {
+    const onClose = vi.fn();
+    const { container } = render(
+      <FeedbackRating {...defaultProps} onNotificationClose={onClose} />,
+    );
+
+    const closeButton = container.querySelector('[aria-label="Close notification"]');
+    expect(closeButton).toBeTruthy();
+
+    if (closeButton) {
+      fireEvent.click(closeButton);
+      expect(onClose).toHaveBeenCalledTimes(1);
+    }
+  });
+
+  test('Should render notification title when provided', () => {
+    const { getByText } = render(
+      <FeedbackRating {...defaultProps} notificationTitle='Test Title' />,
+    );
+
+    expect(getByText('Test Title')).toBeTruthy();
+  });
+
+  test('Should render learn more link when provided', () => {
+    const { container } = render(
+      <FeedbackRating {...defaultProps} learnMoreLink='https://example.com' />,
+    );
+
+    const link = container.querySelector('a[href="https://example.com"]');
+    expect(link).toBeTruthy();
+    expect(link?.textContent).toContain('Learn more');
+  });
+});
+
+describe('FeedbackRating.validate', () => {
+  describe('description validator', () => {
+    test('Should require at least 10 characters', () => {
+      const validator = FeedbackRating.validate.description('Error: too short');
+
+      expect(validator('ab')).toBe('Error: too short');
+      expect(validator('short')).toBe('Error: too short');
+    });
+
+    test('Should require at least 3 words', () => {
+      const validator = FeedbackRating.validate.description('Error: not enough words');
+
+      expect(validator('hello world')).toBe('Error: not enough words');
+      expect(validator('one two')).toBe('Error: not enough words');
+    });
+
+    test('Should pass with valid input (10+ chars, 3+ words)', () => {
+      const validator = FeedbackRating.validate.description('Error message');
+
+      expect(validator('hello world test')).toBeUndefined(); // 16 chars, 3 words - passes
+      expect(validator('this is a valid feedback message')).toBeUndefined(); // 33 chars, 6 words - passes
+      expect(validator('one two three four')).toBeUndefined(); // 18 chars, 4 words - passes
+    });
+
+    test('Should fail when only one requirement met', () => {
+      const validator = FeedbackRating.validate.description('Error message');
+
+      expect(validator('ten chars!')).toBe('Error message'); // 10 chars, 2 words - fails (not enough words)
+      expect(validator('a b c')).toBe('Error message'); // 5 chars, 3 words - fails (not enough chars)
+    });
+
+    test('Should allow empty value (optional field)', () => {
+      const validator = FeedbackRating.validate.description('Error message');
+
+      expect(validator('')).toBeUndefined();
+      expect(validator()).toBeUndefined();
+    });
+
+    test('Should handle multiple spaces correctly', () => {
+      const validator = FeedbackRating.validate.description('Error message');
+
+      // Multiple spaces shouldn't count as words
+      expect(validator('one    two    three')).toBeUndefined(); // 3 words, but < 10 actual chars
+      expect(validator('hello    world    testing    feedback')).toBeUndefined(); // Valid
+    });
+  });
+
+  describe('email validator', () => {
+    test('Should validate email format', () => {
+      const validator = FeedbackRating.validate.email('Invalid email');
+
+      expect(validator('invalid')).toBe('Invalid email');
+      expect(validator('test@')).toBe('Invalid email');
+      expect(validator('@example.com')).toBe('Invalid email');
+      expect(validator('test@example')).toBe('Invalid email');
+    });
+
+    test('Should allow empty value (optional field)', () => {
+      const validator = FeedbackRating.validate.email('Invalid email');
+
+      expect(validator('')).toBeUndefined();
+      expect(validator()).toBeUndefined();
+    });
+
+    test('Should be case insensitive', () => {
+      const validator = FeedbackRating.validate.email('Invalid email');
+
+      expect(validator('Test@Example.COM')).toBeUndefined();
+      expect(validator('USER@DOMAIN.NET')).toBeUndefined();
+    });
   });
 });

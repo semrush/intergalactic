@@ -1,5 +1,5 @@
+import type { BoxProps } from '@semcore/base-components';
 import type { UnknownProperties } from '@semcore/core';
-import type { BoxProps } from '@semcore/flex-box';
 import type { CurveFactory } from 'd3-shape';
 
 import type { Context } from './context';

@@ -38,7 +38,7 @@ const verifyDataTestIds = (container: HTMLElement, ids: string[], texts?: Record
 };
 
 describe('PillsFH', () => {
-  test('Verofy allow adding data-test-id everywhere', () => {
+  test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <PillsFH defaultValue={1} data-test-id='PillsFH1'>
         <PillsFH.Item data-test-id='PillsItem1' value={1}>One</PillsFH.Item>
@@ -59,7 +59,7 @@ describe('PillsFH', () => {
 });
 
 describe('ButtonFH', () => {
-  test('Verofy allow adding data-test-id everywhere', () => {
+  test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <ButtonFH size='l' data-test-id='ButtonFH1'>
         <ButtonFH.Addon data-test-id='addon1' animatedSparkleCount={5} />
@@ -78,7 +78,7 @@ describe('ButtonFH', () => {
 });
 
 describe('CheckboxFH', () => {
-  test('Verofy allow adding data-test-id everywhere', () => {
+  test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <CheckboxFH aria-describedby='checkbox-aria-desc' data-test-id='test1'>
         <CheckboxFH.Value data-test-id='test2' />
@@ -93,7 +93,7 @@ describe('CheckboxFH', () => {
 });
 
 describe('InputFH', () => {
-  test('Verofy allow adding data-test-id everywhere', () => {
+  test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <InputFH w={200} data-test-id='test1'>
         <InputFH.Addon data-test-id='test2' />
@@ -106,19 +106,87 @@ describe('InputFH', () => {
 });
 
 describe('NoticeFH', () => {
-  test('Verofy render closable notice with data-test-id', () => {
+  test('Verify render closable notice with data-test-id', () => {
     const { container } = render(
-      <NoticeFH closable aria-label='Highlighted notice' data-test-id='test1'>
-        We have a new feature!
-      </NoticeFH>,
+      <NoticeFH closable aria-label='Highlighted notice' data-test-id='test1' text='We have a new feature!' />,
     );
 
     verifyDataTestIds(container, ['test1']);
   });
+
+  test('Should render in smart mode with simple props', () => {
+    const { getByText, container } = render(
+      <NoticeFH
+        closable
+        aria-label='Smart mode notice'
+        label={<span data-testid='label-icon'>Icon</span>}
+        title={<span>Test Title</span>}
+        actions={<button>Action</button>}
+        text='Test content'
+      />,
+    );
+
+    expect(getByText('Test Title')).toBeTruthy();
+    expect(getByText('Test content')).toBeTruthy();
+    expect(getByText('Action')).toBeTruthy();
+    expect(container.querySelector('[data-testid="label-icon"]')).toBeTruthy();
+  });
+
+  test('Should render in advanced mode with subcomponents', () => {
+    const { getByText, container } = render(
+      <NoticeFH closable aria-label='Advanced mode notice'>
+        <NoticeFH.Label data-testid='custom-label'>
+          <span>Custom Icon</span>
+        </NoticeFH.Label>
+        <NoticeFH.Content>
+          <NoticeFH.Title>
+            <span>Advanced Title</span>
+          </NoticeFH.Title>
+          <NoticeFH.Text>Advanced content text</NoticeFH.Text>
+          <NoticeFH.Actions>
+            <button>Advanced Action</button>
+          </NoticeFH.Actions>
+        </NoticeFH.Content>
+        <NoticeFH.Close />
+      </NoticeFH>,
+    );
+
+    expect(getByText('Custom Icon')).toBeTruthy();
+    expect(getByText('Advanced Title')).toBeTruthy();
+    expect(getByText('Advanced content text')).toBeTruthy();
+    expect(getByText('Advanced Action')).toBeTruthy();
+    expect(container.querySelector('[data-testid="custom-label"]')).toBeTruthy();
+  });
+
+  test('Should render advanced mode with only content and text', () => {
+    const { getByText } = render(
+      <NoticeFH aria-label='Minimal advanced mode'>
+        <NoticeFH.Content>
+          <NoticeFH.Text>Simple advanced mode text</NoticeFH.Text>
+        </NoticeFH.Content>
+      </NoticeFH>,
+    );
+
+    expect(getByText('Simple advanced mode text')).toBeTruthy();
+  });
+
+  test('Should support mixing Label and Content in advanced mode', () => {
+    const { getByText } = render(
+      <NoticeFH aria-label='Mixed mode'>
+        <NoticeFH.Label>Label part</NoticeFH.Label>
+        <NoticeFH.Content>
+          <NoticeFH.Text>Content part</NoticeFH.Text>
+        </NoticeFH.Content>
+      </NoticeFH>,
+    );
+
+    expect(getByText('Label part')).toBeTruthy();
+    expect(getByText('Content part')).toBeTruthy();
+  });
 });
 
 describe('RadioFH', () => {
-  test('Verofy allow adding data-test-id to all subcomponents', () => {
+  test('Verify allow adding data-test-id to all subcomponents', () => {
     const { container } = render(
       <RadioFH value={1} data-test-id='radio-1'>
         <RadioFH.Value data-test-id='radio-value' />
@@ -133,7 +201,7 @@ describe('RadioFH', () => {
 });
 
 describe('SwitchFH', () => {
-  test('Verofy allow adding data-test-id to all subcomponents', () => {
+  test('Verify allow adding data-test-id to all subcomponents', () => {
     const { container } = render(
       <SwitchFH data-test-id='switchfh'>
         <SwitchFH.Value data-test-id='switch-value' aria-describedby='switch-aria-desc' ml={0} />
@@ -148,7 +216,7 @@ describe('SwitchFH', () => {
 });
 
 describe('TabLineFH', () => {
-  test('Verofy allow adding data-test-id to all subcomponents', () => {
+  test('Verify allow adding data-test-id to all subcomponents', () => {
     const { container } = render(
       <TabLineFH size='m' aria-label='Tabs with highlighted item' defaultValue={1} data-test-id='tablinefh'>
         <TabLineFH.Item value={1} data-test-id='tab-item-1'>First option</TabLineFH.Item>

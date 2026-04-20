@@ -1,7 +1,6 @@
-import { Box } from '@semcore/base-components';
+import { ScrollArea as ScrollAreaComponent, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
-import ScrollAreaComponent from '@semcore/scroll-area';
 import React from 'react';
 
 import { ListBoxContextProvider } from './Context';
@@ -34,7 +33,7 @@ type State = {
   scrollDirection: 'up' | 'down';
 };
 
-class VirtualListRoot<T = string, D extends object = never> extends Component<VirtualListProps<T, D>, {}, State, [], { rowsBuffer: number; index: number }> {
+class VirtualListRoot<T = string, D extends object = never> extends Component<VirtualListProps<T, D>, [], Readonly<{}>, { rowsBuffer: number; index: number }, State> {
   static displayName = 'VirtualList';
   static style = style;
 
@@ -82,7 +81,7 @@ class VirtualListRoot<T = string, D extends object = never> extends Component<Vi
     const { rows, rowHeight, rowsBuffer, styles, renderRow: RenderRow, customData } = this.asProps;
 
     const offsetHeight = this.listRef.current?.offsetHeight ?? 0;
-    const prevPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
+    const prevPrepared = scrollDirection === 'down' ? rowsBuffer / 2 : rowsBuffer;
     const nextPrepared = scrollDirection === 'up' ? rowsBuffer / 2 : rowsBuffer;
 
     const startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);

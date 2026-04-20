@@ -1,6 +1,6 @@
+import LikeM from '@semcore/icon/Like/m';
 import { Flex } from '@semcore/ui/base-components';
 import { Plot, RadialTree } from '@semcore/ui/d3-chart';
-import LikeM from '@semcore/ui/icon/Like/m';
 import Select from '@semcore/ui/select';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';

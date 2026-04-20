@@ -1,5 +1,5 @@
+import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type { ScaleLinear } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -17,7 +17,10 @@ export type BubbleChartData = Array<{
   color?: string;
 }>;
 
-export type BubbleChartProps = BaseChartProps<BubbleChartData> & {
+export type BubbleChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<BubbleChartData>,
+  'showTotalInTooltip'
+> & {
   /** Field name that groups the data points */
   groupKey?: never;
   /** Custom x-axis scale */

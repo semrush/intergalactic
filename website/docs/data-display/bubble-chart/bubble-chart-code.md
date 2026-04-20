@@ -19,8 +19,8 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 :::
 
 ::: tip
-For all the following examples, scale is calculated taking into account synthetic data. 
-You can see the mathematics, used in `Change.Bubble` to calculate common scale, in [our GitHub repository](https://github.com/semrush/intergalactic/blob/master/semcore/d3-chart/src/component/Chart/BubbleChart.tsx#L84).
+For all the following examples, scale is calculated taking into account synthetic data.
+For understanding the mathematics, used in `Change.Bubble` to calculate common scale, refer to [our GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/d3-chart/src/component/Chart/BubbleChart.tsx#L63).
 :::
 
 ## Bubble chart

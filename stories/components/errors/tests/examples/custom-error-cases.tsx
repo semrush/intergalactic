@@ -1,6 +1,6 @@
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Error, { getIconPath } from '@semcore/ui/errors';
-import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 const Icon = () => (
   <svg height='100' width='100'>

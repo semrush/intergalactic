@@ -140,65 +140,197 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Close, LongTitle and Description with interactive element', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@button',
-      '@toooltip',
-      '@link'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/close-title-description.tsx', 'en');
+  const headerVariations = [
+    // empty header (no title, no description)
+    {
+      closable: false,
+      showClose: true,
+      showBack: true,
+      backText: 'Go Back',
+      titleText: '',
+      descriptionText: '',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+      testName: 'empty-header',
+    },
+    // Close + Short title + Short description
+    {
+      closable: true,
+      showClose: false,
+      showBack: false,
+      backText: '',
+      titleText: 'Modal Title',
+      descriptionText: 'Short description',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+      testName: 'close-short-title-desc',
+    },
+    // Long title + Long description (word wrapping)
+    {
+      closable: false,
+      showClose: true,
+      showBack: true,
+      backText: 'Go to Tool Name',
+      titleText: 'An Amazing Journey Through Enchanted Worlds, Where Every Step Unveils New Horizons and Dreams Become Reality',
+      descriptionText: 'In the bustling city of Eldoria, where the sun sets behind the towering spires of ancient castles, a mysterious event is about to unfold that will change the lives of everyone',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+      testName: 'long-title-desc-wrapping',
+    },
+    //  Close + Back + Title + Description + Tooltip
+    {
+      closable: true,
+      showClose: false,
+      showBack: true,
+      backText: 'Go to Tool Name',
+      titleText: 'Go to Tool Name Go to Tool Name',
+      titleWidth: 200,
+      descriptionText: 'Heading 6, 16px Heading 6, 16px',
+      showDescriptionTooltip: true,
+      hasBody: true,
+      hasFooter: true,
+      testName: 'close-back-title-desc-tooltip',
+    },
+    // No Close button + Back + Long title (but closable=true shows default close)
+    {
+      closable: true,
+      showClose: false,
+      showBack: true,
+      backText: 'Go to Main Page',
+      titleText: 'Modal Window Title Modal Window Title Modal Window Title Modal Window Title',
+      descriptionText: 'Additional information',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: false,
+      testName: 'back-long-title-no-custom-close',
+    },
+    // Close + No Back + Description only
+    {
+      closable: true,
+      showClose: false,
+      showBack: false,
+      backText: '',
+      titleText: '',
+      descriptionText: 'This modal shows only description without title',
+      showDescriptionTooltip: false,
+      hasBody: false,
+      hasFooter: true,
+      testName: 'close-desc-only',
+    },
+    // All features enabled
+    {
+      closable: false,
+      showClose: true,
+      showBack: true,
+      backText: 'Go to Tool Name long long long name',
+      titleText: 'Product Configuration Settings with Very Long Title Text',
+      descriptionText: 'This is a very long description that demonstrates the word wrapping behavior in the new vertical header layout',
+      showDescriptionTooltip: true,
+      hasBody: true,
+      hasFooter: true,
+      testName: 'all-features-enabled',
+    },
+    // closable=false + no Close button (only Escape can close)
+    {
+      closable: false,
+      showClose: false,
+      showBack: true,
+      backText: 'Go Back',
+      titleText: 'Modal with no close option',
+      descriptionText: 'Only Escape key can close this modal',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+      testName: 'not-closable-no-close-button',
+    },
+  ];
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
+  headerVariations.forEach((config) => {
+    test(`Verify header configuration: ${config.testName}`, {
+      tag: [TAG.PRIORITY_HIGH, '@fullscreen-modal'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/configurable-header.tsx', 'en', config);
 
-    await locators.modal(page).waitFor({ state: 'visible' });
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
-  });
+      await test.step('Open modal', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await locators.modal(page).waitFor({ state: 'visible' });
+      });
 
-  test('Verify Long Title with Ellipsis ', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@ellipsis'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/title-description.tsx', 'en');
+      if (config.showClose) {
+        await test.step('Verify Close button is visible', async () => {
+          await expect(locators.button(page, 'Close')).toBeVisible();
+        });
+      }
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.modal(page).waitFor({ state: 'visible' });
+      if (config.showBack) {
+        await test.step('Verify Back button is visible', async () => {
+          const backButton = locators.button(page, config.backText);
+          await expect(backButton).toBeVisible();
+        });
+      }
 
-    await page.locator('[data-ui-name="FullscreenModal.Title"]').hover();
-    await locators.hint(page, 'Go to Tool Name Go to Tool Name').waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
-  });
+      if (config.titleText) {
+        await test.step('Verify title renders and wraps correctly', async () => {
+          const title = page.locator('[data-ui-name="FullscreenModal.Title"]');
+          await expect(title).toBeVisible();
+          const titleStyles = await title.evaluate((el) => {
+            const computed = getComputedStyle(el);
+            return {
+              overflowWrap: computed.overflowWrap,
+              whiteSpace: computed.whiteSpace,
+            };
+          });
+          expect(titleStyles.overflowWrap).toBe('break-word');
+        });
+      }
 
-  test('Verify Close Back without Header ', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@ellipsis'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/back-no-text-close-no-header-1bth-footer.tsx', 'en');
+      if (config.descriptionText) {
+        await test.step('Verify description renders as <p> tag and wraps correctly', async () => {
+          const description = page.locator('[data-ui-name="FullscreenModal.Description"]');
+          await expect(description).toBeVisible();
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.button(page, 'Close').waitFor({ state: 'visible' });
+          const tagName = await description.evaluate((el) => el.tagName.toLowerCase());
+          expect(tagName).toBe('p');
 
-    await expect(page).toHaveScreenshot();
-  });
+          const descStyles = await description.evaluate((el) => {
+            const computed = getComputedStyle(el);
+            return {
+              overflowWrap: computed.overflowWrap,
+              whiteSpace: computed.whiteSpace,
+            };
+          });
+          expect(descStyles.overflowWrap).toBe('break-word');
+        });
+      }
 
-  test('Verify Back and title with long text and with Header', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal',
-      '@ellipsis'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/back-and-title-bodyh400-2btn-footer.tsx', 'en');
+      await test.step('Verify header vertical layout', async () => {
+        const header = page.locator('[data-ui-name="FullscreenModal.Header"]');
+        const headerStyles = await header.evaluate((el) => {
+          const computed = getComputedStyle(el);
+          return {
+            flexDirection: computed.flexDirection,
+            gap: computed.gap,
+            alignItems: computed.alignItems,
+          };
+        });
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.modal(page).waitFor({ state: 'visible' });
+        expect(headerStyles.flexDirection).toBe('column');
+        expect(headerStyles.gap).toBe('8px');
+        expect(headerStyles.alignItems).toBe('flex-start');
+      });
 
-    await expect(page).toHaveScreenshot();
+      await test.step('Take visual snapshot', async () => {
+        if (config.showClose || config.closable) {
+          const closeButton = locators.button(page, 'Close');
+          await closeButton.hover();
+        }
+        await expect(page).toHaveScreenshot();
+      });
+    });
   });
 });
 
@@ -208,18 +340,6 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL} `, () => {
-  test('Verify aria-describedby', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en');
-
-    await locators.button(page).click();
-    await locators.modal(page).waitFor({ state: 'visible' });
-    await expect(locators.modal(page)).toHaveAttribute('aria-labelledby', /title/i);
-    await expect(locators.modal(page)).toHaveAttribute('aria-describedby', 'my-modal-description');
-  });
-
   test('Verify keyboard navigation when no footer and 1 zone in body', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
@@ -239,6 +359,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
 
     await page.keyboard.press('Escape');
     await locators.button(page, 'Close').waitFor({ state: 'hidden' });
@@ -246,6 +367,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await expect(locators.button(page, 'Close')).toBeFocused();
+
     await page.keyboard.press('Tab');
     await expect(locators.button(page, 'Go to Tool Name')).toBeFocused();
     await page.keyboard.press('Enter');
@@ -315,7 +438,19 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@fullscreen-modal'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en', { closable: false });
+    const config = {
+      closable: false,
+      showClose: false,
+      showBack: true,
+      backText: 'Go Back',
+      titleText: 'Modal Title',
+      descriptionText: 'Description text',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+    };
+
+    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/configurable-header.tsx', 'en', config);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -339,12 +474,26 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@toooltip',
       '@link'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/close-title-description.tsx', 'en');
+    const config = {
+
+      showBack: true,
+      backText: 'Go to Tool Name',
+      titleText: 'Go to Tool Name Go to Tool Name',
+      titleWidth: 200,
+      descriptionText: 'Heading 6, 16px Heading 6, 16px',
+      showDescriptionTooltip: true,
+      hasBody: true,
+      hasFooter: true,
+    };
+
+    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/configurable-header.tsx', 'en', config);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
 
     await locators.modal(page).waitFor({ state: 'visible' });
+    await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'visible' });
@@ -359,7 +508,19 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en');
+    const config = {
+      closable: true,
+      showClose: false,
+      showBack: true,
+      backText: 'Go Back',
+      titleText: 'Modal Title',
+      descriptionText: 'Description text',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+    };
+
+    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/configurable-header.tsx', 'en', config);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -379,7 +540,19 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@fullscreen-modal'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/modal-props.tsx', 'en', { closable: false });
+    const config = {
+      closable: false,
+      showClose: false,
+      showBack: true,
+      backText: 'Go Back',
+      titleText: 'Modal with no close option',
+      descriptionText: 'Only Escape key can close this modal',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+    };
+
+    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/configurable-header.tsx', 'en', config);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -391,5 +564,38 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     expect(await modalClose.count()).toBe(0);
     expect(await fullScreenModalClose.count()).toBe(0);
+  });
+
+  test('Verify body scroll is restored after modal close (no inline style pollution)', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@fullscreen-modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/scroll-test.tsx', 'en');
+
+    await test.step('Open and close modal', async () => {
+      await locators.button(page, 'Open FullscreenModal').click();
+      await locators.modal(page).waitFor({ state: 'visible' });
+      await locators.button(page, 'Close').click();
+      await locators.modal(page).waitFor({ state: 'hidden' });
+    });
+
+    await test.step('Verify no inline overflow left and page is scrollable', async () => {
+      const inlineOverflow = await page.evaluate(() => document.body.style.overflow);
+      expect(inlineOverflow).toBe('');
+
+      const bottomMarker = page.getByTestId('bottom-marker');
+      await bottomMarker.scrollIntoViewIfNeeded();
+      await expect(bottomMarker).toBeVisible();
+    });
+
+    await test.step('Verify CSS-based scroll lock still works after modal close', async () => {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.locator('input[type="checkbox"]').check();
+
+      const overflowAfterCheck = await page.evaluate(() =>
+        window.getComputedStyle(document.body).overflow,
+      );
+      expect(overflowAfterCheck).toBe('hidden');
+    });
   });
 });

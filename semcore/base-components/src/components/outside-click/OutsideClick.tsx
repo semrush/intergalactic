@@ -1,13 +1,11 @@
-import { createComponent, type IFunctionProps, type Intergalactic, type UnknownProperties } from '@semcore/core';
+import { createComponent, type Intergalactic, type IRootComponentProps } from '@semcore/core';
 import { getEventTarget } from '@semcore/core/lib/utils/getEventTarget';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import ownerDocument from '@semcore/core/lib/utils/ownerDocument';
-import { getNodeByRef, type NodeByRef, useForkRef } from '@semcore/core/lib/utils/ref';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
 import useEventCallback from '@semcore/core/lib/utils/use/useEventCallback';
 import React, { cloneElement } from 'react';
 
-/** @deprecated */
-export interface IOutsideClickProps extends OutsideClickProps, UnknownProperties {}
 export type OutsideClickProps = {
   /**
    * Function called on click outside the component from excludeRefs
@@ -19,19 +17,19 @@ export type OutsideClickProps = {
    * List of refs that will not trigger `onOutsideClick` when clicked
    * @default []
    */
-  excludeRefs?: Array<NodeByRef>;
+  excludeRefs?: Array<React.RefObject<HTMLElement>>;
 
   /** Root element
    * @default document
    *  */
-  root?: NodeByRef;
+  root?: React.RefObject<HTMLElement>;
 };
 
 type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEventListenerObject };
 type RootEventsPair = [Element | Document, OutsideClickEvents];
 
 const noop = () => {};
-function OutsideClickRoot(props: IFunctionProps<IOutsideClickProps>) {
+function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
   const nodeRef = React.useRef<Node | null>(null);
@@ -40,7 +38,7 @@ function OutsideClickRoot(props: IFunctionProps<IOutsideClickProps>) {
   const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef!);
 
   const handleOutsideClick = useEventCallback((event: any) => {
-    const nodesToCheck = [...(excludeRefs as any), nodeRef].map((ref) => getNodeByRef(ref));
+    const nodesToCheck = [...excludeRefs, nodeRef].map((ref) => ref?.current);
     const eventTarget = getEventTarget(event) as Node | null;
 
     const isTargetEvent = nodesToCheck.some(
@@ -53,7 +51,7 @@ function OutsideClickRoot(props: IFunctionProps<IOutsideClickProps>) {
   });
 
   const handleMouseDown = useEventCallback((event: any) => {
-    const nodesToCheck = [...(excludeRefs as any), nodeRef].map((ref) => getNodeByRef(ref));
+    const nodesToCheck = [...excludeRefs, nodeRef].map((ref) => ref?.current);
     const eventTarget = getEventTarget(event) as Node | null;
 
     mouseDownInside.current = nodesToCheck.some((node) => node?.contains(eventTarget));
@@ -75,7 +73,7 @@ function OutsideClickRoot(props: IFunctionProps<IOutsideClickProps>) {
   };
 
   React.useEffect(() => {
-    const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current as any);
+    const outsideRoot = root ? root.current : ownerDocument(nodeRef.current as any);
 
     // disable previous events
     toggleEvents(false, outsideRoot);

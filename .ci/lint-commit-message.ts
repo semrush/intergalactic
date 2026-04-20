@@ -68,8 +68,8 @@ if (!description) {
   outputError('Got empty description in message of format "[scope] change description"');
 }
 
-const { specialScopes, semcoreComponents, toolsComponents } = await allowedScopes();
-const allAllowedScopes = [...specialScopes, ...semcoreComponents, ...toolsComponents];
+const { specialScopes, semcoreComponents, semcoreBaseComponents, toolsComponents } = await allowedScopes();
+const allAllowedScopes = [...specialScopes, ...semcoreComponents, ...semcoreBaseComponents, ...toolsComponents];
 
 const allProvidedScopes = scope.includes(',')
   ? scope.split(',').map((scope) => scope.trim())
@@ -79,9 +79,11 @@ const unknownScope = allProvidedScopes.find((scope) => !allAllowedScopes.include
 if (unknownScope) {
   outputError(
     `Got unknown scope "${unknownScope}" in message of format "[scope] change description". Only following scopes are allowed: ${specialScopes
-      .map((scope) => pc.cyan(scope))
-      .join(', ')}, ${semcoreComponents
+      .map((scope) => pc.yellow(scope))
+      .join(', ')}, ${semcoreBaseComponents
       .map((scope) => pc.blue(scope))
-      .join(', ')}, ${toolsComponents.map((scope) => pc.magenta(scope)).join(', ')}`,
+      .join(', ')}, ${semcoreComponents
+      .map((scope) => pc.magenta(scope))
+      .join(', ')}, ${toolsComponents.map((scope) => pc.green(scope)).join(', ')}`,
   );
 }

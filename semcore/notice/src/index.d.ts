@@ -1,23 +1,14 @@
-import type { FadeInOutProps } from '@semcore/animation';
+import type { FadeInOutProps, Box, BoxProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { IconProps } from '@semcore/icon';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
-export type NoticeUse = 'primary' | 'secondary';
 
-/** @deprecated */
-export interface INoticeProps extends NoticeProps, UnknownProperties {}
 export type NoticeProps = BoxProps &
   FadeInOutProps & {
     /** Property for managing visibility of Notice */
     hidden?: boolean;
-    /** Notice type
-     * @deprecated since version ^4.1.0
-     */
-    use?: NoticeUse;
     /**
      * Notice theme
      * @default info
@@ -31,20 +22,14 @@ export type NoticeProps = BoxProps &
     locale?: string;
   };
 
-/** @deprecated */
-export interface INoticeLabelProps extends NoticeLabelProps, UnknownProperties {}
 export type NoticeLabelProps = BoxProps & {
   theme?: NoticeTheme;
 };
 
-/** @deprecated */
-export interface INoticeContext extends NoticeContext, UnknownProperties {}
 export type NoticeContext = {
-  getLabelProps: PropGetterFn;
+  getLabelProps?: PropGetterFn;
 };
 
-/** @deprecated */
-export interface INoticeSmartProps extends NoticeSmartProps, UnknownProperties {}
 export type NoticeSmartProps = NoticeProps & {
   /**
    * A custom element for additional information
@@ -60,6 +45,9 @@ export type NoticeSmartProps = NoticeProps & {
    * Custom action element
    */
   actions?: React.ReactNode;
+
+  /** A custom element for text */
+  text?: React.ReactNode;
   /**
    *  Adds a Close button
    */
@@ -76,14 +64,15 @@ declare const Notice: Intergalactic.Component<'div', NoticeProps, NoticeContext>
   Content: typeof Box;
   Title: typeof Text;
   Text: typeof Text;
-  /**
-   * @deprecated Use Notice.Close instead of Notice.CloseIcon
-   */
-  CloseIcon: Intergalactic.Component<'div', IconProps>;
   Close: typeof Button;
 };
 
-declare const NoticeSmart: Intergalactic.Component<'div', NoticeSmartProps>;
+declare const NoticeSmart: (
+  props: Intergalactic.InternalTypings.EfficientOmit<
+    Intergalactic.InternalTypings.ComponentProps<'div', 'div', NoticeSmartProps>,
+    'children'
+  >
+) => Intergalactic.InternalTypings.ComponentRenderingResults & Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', NoticeSmartProps>;
 
 export { NoticeSmart };
 export default Notice;

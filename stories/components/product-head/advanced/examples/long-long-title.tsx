@@ -1,11 +1,10 @@
+import BookM from '@semcore/icon/Book/m';
+import Chat from '@semcore/icon/Chat/m';
+import EditM from '@semcore/icon/Edit/m';
+import InfoM from '@semcore/icon/Info/m';
+import { Flex, Box } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex, Box } from '@semcore/ui/flex-box';
-import BookM from '@semcore/ui/icon/Book/m';
-import Chat from '@semcore/ui/icon/Chat/m';
-import EditM from '@semcore/ui/icon/Edit/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Header, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
@@ -19,17 +18,17 @@ const Demo = () => {
       <Header mx={8}>
         <Header.Row>
           <Title toolName='Tool Name:'>
-            <Text color='text-secondary' noWrap tag={Flex} mr={4}>
-              <Ellipsis trim='end'>
+            <Text color='text-secondary' tag={Flex} mr={4}>
+              <Text ellipsis={true}>
                 Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com
                 Domain.com Domain.com Domain.com
-              </Ellipsis>
+              </Text>
               <ButtonLink addonLeft={EditM} aria-label='Hint for button-link' />
             </Text>
           </Title>
           <Header.Links>
-            <ButtonLink addonLeft={Chat}>Feedback</ButtonLink>
-            <Link addonLeft={BookM}>User manual</Link>
+            <ButtonLink noWrap addonLeft={Chat}>Feedback</ButtonLink>
+            <Link noWrap addonLeft={BookM}>User manual</Link>
           </Header.Links>
         </Header.Row>
 
@@ -85,10 +84,10 @@ const Demo = () => {
               1 hour ago
               <DescriptionTooltip>
                 <DescriptionTooltip.Trigger
-                  tag={InfoM}
+                  tag={ButtonLink}
+                  addonLeft={InfoM}
                   display='inline-flex'
                   ml={1}
-                  interactive
                   color='icon-secondary-neutral'
                   aria-label='About update rate'
                 />

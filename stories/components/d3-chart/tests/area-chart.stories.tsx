@@ -1,4 +1,3 @@
-import type { AreaChartProps } from '@semcore/d3-chart';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AnimatedDotsExample from './examples/area-chart/animated-dots';

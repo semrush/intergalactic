@@ -1,13 +1,11 @@
-import { FadeInOut } from '@semcore/animation';
+import { FadeInOut, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box } from '@semcore/flex-box';
 import CloseIconM from '@semcore/icon/Close/m';
-import NoticeGlobal from '@semcore/notice-global';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -82,18 +80,9 @@ class RootNotice extends Component {
 
   render() {
     const SNotice = Root;
-    const { Children, styles, hidden, theme, use, resolveColor, getI18nText } = this.asProps;
+    const { Children, styles, hidden, theme, resolveColor, getI18nText } = this.asProps;
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
-
-    if (use === 'primary') {
-      logger.warn(
-        true,
-        `Deprecated property-value pair "use=primary", use component <NoticeGlobal/> instead`,
-        RootNotice.displayName,
-      );
-      return <NoticeGlobal {...this.asProps} />;
-    }
 
     let ariaLabel = getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification');
 
@@ -146,13 +135,6 @@ function Content({ styles }) {
   return sstyled(styles)(<SContent render={Box} />);
 }
 
-function CloseIcon({ styles, getI18nText }) {
-  const SCloseIcon = Root;
-  return sstyled(styles)(
-    <SCloseIcon render={Box} tag={CloseIconM} interactive aria-label={getI18nText('close')} />,
-  );
-}
-
 function Close({ styles, getI18nText }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
@@ -172,7 +154,6 @@ const Notice = createComponent(RootNotice, {
   Text: NoticeText,
   Actions,
   Content,
-  CloseIcon,
   Close,
 });
 

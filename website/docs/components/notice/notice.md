@@ -10,16 +10,16 @@ tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-
 
 **Notice** is a component for displaying messages related to events concerning the user's work in the interface.
 
-It must fulfill four criteria to be considered a notice. Let's compare it to [NoticeBubble](/components/notice-bubble/notice-bubble) and [NoticeGlobal](/components/notice-global/notice-global):
+It must fulfill four criteria to be considered a notice. Let's compare it to [NoticeBubble](/components/notice-bubble/notice-bubble):
 
-Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice and NoticeBubble
 
-| Criteria                                                                                    | Notice | NoticeBubble | NoticeGlobal |
-| ------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
-| Refers to the entire website                                                                | ❌     | ✅ ❌        | ✅           |
-| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        | ✅           |
-| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           | ✅           |
-| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           | ✅           |
+| Criteria                                                                                    | Notice | NoticeBubble |
+| ------------------------------------------------------------------------------------------- | ------ | ------------ |
+| Refers to the entire website                                                                | ❌     | ✅ ❌        |
+| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        |
+| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           |
+| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           |
 
 **The notice message can be either:**
 

@@ -4,4 +4,4 @@ fileSource: breakpoints
 tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code'), Changelog('breakpoints-changelog')
 ---
 
-::: changelog breakpoints :::
+::: changelog base-components__breakpoints :::

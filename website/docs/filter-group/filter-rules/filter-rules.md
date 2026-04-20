@@ -4,7 +4,7 @@ title: Filter common rules
 
 ## Best practices
 
-**When working with filters, it is important for the user to:**
+**When working with filters, it's important for the user to:**
 
 - understand that there are preset values and the ability to enter what they need;
 - quickly navigate and choose a value from the preset ones;
@@ -13,7 +13,7 @@ title: Filter common rules
 - be able to change data.
 
 ::: tip
-**It is good practice to save the entered/selected value in the filter dropdown if the user haven't saved their selection.**
+**It's good practice to save the entered/selected value in the filter dropdown if the user haven't saved their selection.**
 
 For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the entered data when re-opening the filter dropdown. It's not necessary to keep the scroll position.
 :::
@@ -23,8 +23,8 @@ For example, a user opened a filter dropdown, entered something into the search 
 ### Trigger
 
 - For trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger).
-- Set the trigger min-width to 80px. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
-- When it turns out that the name of the filter is larger than the width specified for the filter, collapse it into the `ellipsis` and show the full name in the tooltip.
+- Set the trigger min-width to 80px. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be truncated.
+- If the name of the filter is too long, truncate it with an [ellipsis](../../utils/ellipsis/ellipsis) and show the full name in a hint.
 
 ### Dropdown
 
@@ -121,10 +121,8 @@ Show in the widget/widgets to which the filter was applied an ["empty" state](/c
 
 Don't add tooltips for the sake of tooltips.
 
-**Add tooltip:**
-
-- when the filter name is collapsed into `ellipsis`;
-- to explain how the filter works when a value is already selected.
+- add a [hint](../../utils/hint/hint) if the filter name or value is truncated
+- add a [tooltip](../../components/tooltip/tooltip) to explain how the filter works when a value is already selected
 
 ![tooltips](static/tooltips-cp.png)
 

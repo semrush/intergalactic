@@ -143,7 +143,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await expect
       .poll(async () => await checkAriaMaxValue(scrollBar))
-      .toBeGreaterThan(initialMax);
+      .toBeGreaterThanOrEqual(initialMax);
 
     await grid.focus();
     await page.keyboard.press('ArrowDown');

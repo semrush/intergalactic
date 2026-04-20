@@ -27,6 +27,7 @@ const sharedArgTypes = {
   minRows: { control: { type: 'number' } },
   maxRows: { control: { type: 'number' } },
   placeholder: { control: { type: 'text' } },
+  autoFocus: { control: { type: 'boolean' } },
   w: { control: { type: 'number' } },
   validateOn: {
     control: { type: 'check' },

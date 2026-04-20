@@ -36,23 +36,35 @@ export const locators = {
 Visual states, hover and focus styles.
 ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
+  test.describe(`BadgeFH`, () => {
+    test(`Verify BasgeFH Visual`, {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@pills'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/feature-highlight/docs/examples/badge.tsx', 'en');
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
   test.describe(`ButtonFH`, () => {
     const variables = [
       // Primary button variations
       { use: 'primary', disabled: false, size: 'm', loading: false, active: false, showBadge: false, showIcon: true },
       { use: 'primary', disabled: false, size: 'l', loading: true, active: false, showBadge: true, showIcon: true },
       { use: 'primary', disabled: false, size: 'm', loading: false, active: true, showBadge: false, showIcon: false },
-      { use: 'primary', disabled: true, size: 'l', loading: false, active: false, showBadge: true, showIcon: true },
+      { use: 'primary', disabled: true, size: 'l', loading: false, active: false, showBadge: true, showIcon: true, useBadge: 'neutral' },
+      { use: 'primary', disabled: true, size: 'l', loading: false, active: false, showBadge: true, showIcon: true, useBadge: 'accent' },
 
       // Secondary button variations
-      { use: 'secondary', disabled: false, size: 'm', loading: false, active: false, showBadge: true, showIcon: true },
+      { use: 'secondary', disabled: false, size: 'm', loading: false, active: false, showBadge: true, showIcon: true, useBadge: 'neutral' },
+      { use: 'secondary', disabled: false, size: 'm', loading: false, active: false, showBadge: true, showIcon: true, useBadge: 'accent' },
+
       { use: 'secondary', disabled: false, size: 'l', loading: false, active: true, showBadge: false, showIcon: true },
       { use: 'secondary', disabled: false, size: 'm', loading: true, active: false, showBadge: false, showIcon: false },
-      { use: 'secondary', disabled: true, size: 'm', loading: false, active: false, showBadge: false, showIcon: true },
+      { use: 'secondary', disabled: true, size: 'm', loading: false, active: false, showBadge: true, showIcon: true },
     ];
 
     variables.forEach((item) => {
-      test(`Verify Button use = ${item.use} showBadge=${item.showBadge} showIcon=${item.showIcon} disabled=${item.disabled} size=${item.size} active=${item.active} loading=${item.loading}`, {
+      test(`Verify Button use = ${item.use} showBadge=${item.showBadge} showIcon=${item.showIcon} disabled=${item.disabled} size=${item.size} active=${item.active} loading=${item.loading} useBadge=${item.useBadge} `, {
         tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@button'],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/button.tsx', 'en', item);
@@ -423,11 +435,23 @@ test.describe(`${TAG.VISUAL} `, () => {
       test(`Verify Notice showTitle=${item.showTitle} showActions=${item.showActions} iconType=${item.iconType} `, {
         tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice'],
       }, async ({ page }) => {
-        await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice.tsx', 'en', item);
+        await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice/notice.tsx', 'en', item);
 
         await test.step('Verify notice appearance', async () => {
           await expect(page).toHaveScreenshot();
         });
+      });
+    });
+
+    test('Verify Notice advanced mode rendering', {
+      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice/notice-advanced-mode.tsx', 'en');
+
+      await test.step('Verify both smart and advanced mode notices render correctly', async () => {
+        const notices = locators.notice(page);
+        await expect(notices).toHaveCount(2);
+        await expect(page).toHaveScreenshot();
       });
     });
   });

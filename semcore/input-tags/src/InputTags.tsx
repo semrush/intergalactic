@@ -1,10 +1,11 @@
+import { ScrollArea, Portal, ScreenReaderOnly } from '@semcore/base-components';
+import { type ScrollAreaProps } from '@semcore/base-components';
 import {
   createComponent,
   Component,
   sstyled,
   Root,
   type PropGetterFn,
-  type UnknownProperties,
   type Intergalactic,
   type IRootComponentProps,
 } from '@semcore/core';
@@ -13,24 +14,17 @@ import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponen
 import fire from '@semcore/core/lib/utils/fire';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { ScreenReaderOnly } from '@semcore/flex-box';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
-import Portal from '@semcore/portal';
-import ScrollArea, { type ScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { type TagProps, TagContainer, type TagTextProps, type TagContext } from '@semcore/tag';
 import React from 'react';
 
 import style from './style/input-tag.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-/** @deprecated */
-export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
 export type InputTagsValueProps = InputValueProps & {};
 
 export type InputTagsSize = 'l' | 'm';
 
-/** @deprecated */
-export interface IInputTagsProps extends InputTagsProps, UnknownProperties {}
 export type InputTagsProps = Omit<InputProps, 'size'> &
   ScrollAreaProps & {
     /**
@@ -38,11 +32,6 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
      * @default m
      */
     size?: InputTagsSize;
-    /**
-     * Event is called when tag needs to be added
-     * @deprecated use `onAppend` instead
-     */
-    onAdd?: (value: string, event: React.KeyboardEvent | React.ClipboardEvent) => void;
     /** Event is called when tags need to be added */
     onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
     /** Event is called when tags need to be removed  */
@@ -55,24 +44,20 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
     locale?: string;
   };
 
-/** @deprecated */
-export interface IInputTagsTagProps extends InputTagsTagProps, UnknownProperties {}
 export type InputTagsTagProps = TagProps & {
   /** Property enabling the ability to remove a tag on click */
   editable?: boolean;
 };
 
-/** @deprecated */
-export interface IInputTagsContext extends InputTagsContext, UnknownProperties {}
 export type InputTagsContext = InputTagsProps & {
   getValueProps: PropGetterFn;
   getTagProps: PropGetterFn;
 };
 
-class InputTags extends Component<IInputTagsProps> {
+class InputTagsRoot extends Component<InputTagsProps, typeof InputTagsRoot.enhance> {
   static displayName = 'InputTags';
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     size: 'm',
     delimiters: [',', ';', '|', 'Enter', 'Tab'],
@@ -145,7 +130,7 @@ class InputTags extends Component<IInputTagsProps> {
 
     const currentEnteredValue = this.inputRef.current?.value;
     const value = event.clipboardData.getData('text/plain');
-    const { delimiters, onAdd, onAppend } = this.asProps;
+    const { delimiters, onAppend } = this.asProps;
     const reg = new RegExp(
       delimiters!
         .filter((s) => !/\w+/.test(String(s)))
@@ -160,9 +145,6 @@ class InputTags extends Component<IInputTagsProps> {
 
     if (tagsToBeAdded.length > 0) {
       event.preventDefault();
-      for (const tag of tagsToBeAdded) {
-        onAdd?.(tag, event);
-      }
       onAppend?.(tagsToBeAdded, event);
     }
     if (typeof this.inputRef.current?.scrollIntoView === 'function') {
@@ -268,7 +250,7 @@ class InputTags extends Component<IInputTagsProps> {
   }
 }
 
-class Value extends Component<IInputTagsValueProps> {
+class Value extends Component<InputTagsValueProps> {
   private _spacer = React.createRef<HTMLDivElement>();
 
   state = {
@@ -401,7 +383,7 @@ function TagCloseButton(props: IRootComponentProps) {
   return sstyled(props.styles)(<STagContainerClose render={TagContainer.Close} />);
 }
 
-export default createComponent(InputTags, {
+const InputTags = createComponent(InputTagsRoot, {
   Value,
   TagsContainer: InputTagsContainer,
   Tag: [
@@ -413,7 +395,7 @@ export default createComponent(InputTags, {
       Circle: TagContainer.Circle,
     },
   ],
-}) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
+}) as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
   Value: typeof Input.Value;
   TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
@@ -425,3 +407,5 @@ export default createComponent(InputTags, {
     Circle: typeof Tag.Circle;
   };
 };
+
+export default InputTags;

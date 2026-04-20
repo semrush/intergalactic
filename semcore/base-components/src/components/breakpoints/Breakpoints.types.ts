@@ -1,11 +1,8 @@
-import type { UnknownProperties } from '@semcore/core';
 import type React from 'react';
 
 type listenerType = (index: number) => void;
 type mediaType = string[];
 
-/** @deprecated */
-export interface IMediaList extends MediaList, UnknownProperties {}
 export type Media = {
   /** Destroy the subscription to the window.matchMedia */
   destructor(): void;
@@ -20,22 +17,20 @@ export type Media = {
   removeListener(listener: listenerType): void;
 };
 
-/** @deprecated */
-export interface IBreakpointsProps extends BreakpointsProps, UnknownProperties {}
 export type BreakpointsProps = {
   children: React.ReactNode;
 };
 
 type createBreakpointsType = (media: mediaType) => ((
-  props: IBreakpointsProps,
+  props: BreakpointsProps,
 ) => React.ReactElement) & {
   Context: React.Context<number>;
-  mediaList: IMediaList;
+  mediaList: MediaList;
 };
 
 declare const MediaList: {
   prototype: MediaList;
-  new (media: mediaType, defaultIndex?: number): IMediaList;
+  new (media: mediaType, defaultIndex?: number): MediaList;
 };
 declare const DEFAULT_MEDIA: mediaType;
 declare const createBreakpoints: createBreakpointsType;

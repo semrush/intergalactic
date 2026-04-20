@@ -32,12 +32,12 @@ We have a compact version of the horizontal bar chart — **[Compact horizontal 
 - Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
 - All categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
 
-::: info
-**Bar vs. Histogram Chart**
+### Bar chart vs. Histogram
 
-- Bar charts categorize data qualitatively, showing how different categories compare.
-- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
-  :::
+- [Histogram](../histogram-chart/histogram-chart) shows quantitative data distribution. Each bar represents a range of numerical values, such as age. The bar length shows how many values fall into that range.
+- Bar chart displays qualitative data distribution, with bars representing nominal categories, such as countries. Unlike histograms, bar charts have visual gaps between bars to emphasize the discrete character of the categories.
+
+![](static/histogram-vs-bar-chart.png)
 
 ## Appearance
 
@@ -82,7 +82,7 @@ Allocate space for category labels on both sides of the chart.
 ## Category labels
 
 - Y-axis labels use the primary text color (`--text-primary` token).
-- Use `ellipsis` for long labels, with tooltips showing the full name.
+- Use [ellipsis](../../utils/ellipsis/ellipsis) for long labels, with [hint](../../utils/hint/hint) showing the full name.
 
 ![](static/label.png)
 
@@ -129,7 +129,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Don't display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/na.png)
 

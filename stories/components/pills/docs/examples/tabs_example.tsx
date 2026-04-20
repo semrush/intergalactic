@@ -1,6 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import Pills from '@semcore/ui/pills';
-import type { PillsProps, PillProps } from '@semcore/ui/pills';
+import type { NSPills } from '@semcore/ui/pills';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -10,7 +10,7 @@ const contentBLocks = [
   'Since hamsters are nocturnal, they naturally sleep more during the day and are more active at twilight. Don\'t wake them up to play.',
 ];
 
-type PillExampleProps = PillsProps & PillProps;
+type PillExampleProps = NSPills.Props & NSPills.Pill.Props;
 const Demo = (props: PillExampleProps) => {
   const [tab, setTab] = React.useState(0);
 

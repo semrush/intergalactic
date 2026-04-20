@@ -72,10 +72,6 @@ SClose {
 SBack {
   max-width: 100%;
 
-  SInner {
-    display: flex;
-  }
-
   SBackText {
     white-space: nowrap;
     overflow: hidden;

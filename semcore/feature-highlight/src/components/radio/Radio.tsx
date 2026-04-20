@@ -1,5 +1,5 @@
 import { Component, createComponent, Root, sstyled, CONTEXT_COMPONENT } from '@semcore/core';
-import type { RadioProps } from '@semcore/radio';
+import type { NSRadio } from '@semcore/radio';
 import Radio, { RadioGroup } from '@semcore/radio';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import style from './radio.shadow.css';
 import type { HighlightedRadioComponent } from './Radio.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class RadioFHRoot extends Component<RadioProps> {
+class RadioFHRoot extends Component<NSRadio.Props> {
   static displayName = 'RadioFH';
   static style = style;
   // @ts-ignore

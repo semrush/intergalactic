@@ -1,7 +1,6 @@
 import Copy from '@components/Copy';
+import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import Ellipsis from '@semcore/ellipsis';
-import { Flex } from '@semcore/flex-box';
 import CopyM from '@semcore/icon/Copy/m';
 import FileDownloadM from '@semcore/icon/FileDownload/m';
 import SidePanel from '@semcore/side-panel';
@@ -12,7 +11,7 @@ import styles from './styles.module.css';
 
 export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
   const getImportText = React.useCallback(() => {
-    const lib = '@semcore/ui';
+    const lib = '@semcore';
     const importText = `import ${name} from '${lib}/illustration/${name}'`;
 
     return importText;
@@ -50,7 +49,7 @@ export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
               rel='noopener noreferrer'
               download={repoPath}
               target='_blank'
-              href={`https://github.com/semrush/intergalactic/raw/master/${repoPath}?inline=false`}
+              href={`https://github.com/semrush/intergalactic/raw/HEAD/${repoPath}?inline=false`}
               data-illustration-download-svg={name}
             >
               Download SVG
@@ -62,49 +61,61 @@ export const IllustrationDetailsPanel = ({ name, visible, onClose }) => {
   );
 };
 
-export const ListIllustrations = ({ data, ...props }) => {
+const IllustrationButton = ({ illustrationName }) => {
   const { illustrations, selectedIllustration, setSelectedIllustration } =
     React.useContext(Context);
 
+  const buttonRef = React.useRef();
+  const Illustration = illustrations[illustrationName];
+
+  if (!Illustration) {
+    throw new Error(
+      `Illustration ${illustrationName} not found in import from @illustrations`,
+    );
+  }
+
+  return (
+    <button
+      ref={buttonRef}
+      type='button'
+      aria-haspopup='dialog'
+      aria-expanded={selectedIllustration === illustrationName}
+      aria-controls={
+        selectedIllustration === illustrationName
+          ? `${illustrationName}-dialog`
+          : undefined
+      }
+      onClick={() => {
+        setSelectedIllustration(illustrationName);
+      }}
+      data-id={illustrationName}
+      data-name='PanelTrigger'
+    >
+      <Illustration width={80} height={80} />
+      <Text
+        w={80}
+        ellipsis={true}
+        size={200}
+        use='secondary'
+        hintProps={{ triggerRef: buttonRef, placement: 'bottom' }}
+      >
+        {illustrationName}
+      </Text>
+    </button>
+  );
+};
+
+export const ListIllustrations = ({ data, ...props }) => {
   return (
     <ul
       className={styles.list}
       aria-labelledby={props['aria-labelledby']}
       aria-label={props['aria-label']}
     >
-      {data.map((illustration, index) => {
-        const Illustration = illustrations[illustration.name];
-        if (!Illustration) {
-          throw new Error(
-            `Illustration ${illustration.name} not found in import from @illustrations`,
-          );
-        }
-
+      {data.map((illustration) => {
         return (
           <li className={styles.previewIllustration} key={illustration.name}>
-            <button
-              type='button'
-              aria-haspopup='dialog'
-              aria-expanded={selectedIllustration === illustration.name}
-              aria-controls={
-                selectedIllustration === illustration.name
-                  ? `${illustration.name}-dialog`
-                  : undefined
-              }
-              onClick={() => {
-                setSelectedIllustration(illustration.name);
-              }}
-              data-id={illustration.name}
-            >
-              <Ellipsis
-                data-name='PanelTrigger'
-                placement='bottom'
-                includeTooltipProps={['placement']}
-              >
-                <Illustration width={80} height={80} />
-                {illustration.name}
-              </Ellipsis>
-            </button>
+            <IllustrationButton illustrationName={illustration.name} />
           </li>
         );
       })}

@@ -94,6 +94,13 @@ export default defineConfig([
 
       'no-console': 'error',
 
+      '@typescript-eslint/no-namespace': [
+        'error',
+        {
+          allowDeclarations: true,
+        },
+      ],
+
       // enable after migration
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/no-unused-vars': 'off',

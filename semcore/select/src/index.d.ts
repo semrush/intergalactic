@@ -1,5 +1,6 @@
-import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps, Flex } from '@semcore/base-components';
+import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps, LinkTriggerProps } from '@semcore/base-trigger';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type Divider from '@semcore/divider';
 import type Dropdown from '@semcore/dropdown';
 import type {
@@ -10,13 +11,11 @@ import type {
   DropdownMenuTriggerProps,
 } from '@semcore/dropdown-menu';
 import type DropdownMenu from '@semcore/dropdown-menu';
-import type { BoxProps, Flex } from '@semcore/flex-box';
 import type { InputValueProps } from '@semcore/input';
 import type Input from '@semcore/input';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
-/** @deprecated */
-export interface ISelectInputSearch extends SelectInputSearch, UnknownProperties {}
 export type SelectInputSearch = InputValueProps & {};
 
 export type OptionValue = string | number;
@@ -28,10 +27,8 @@ export type SelectOption = {
   label?: React.ReactNode;
 };
 
-/** @deprecated */
-export interface ISelectProps<T extends SelectValue = SelectValue> extends SelectProps<T> {}
-export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps &
-  BaseTriggerProps & {
+export type SelectProps<T extends SelectValue = SelectValue> = Intergalactic.InternalTypings.EfficientOmit<DropdownMenuProps, 'size'> &
+  Intergalactic.InternalTypings.EfficientOmit<BaseTriggerProps, 'size'> & {
     /**
      * Options array
      */
@@ -76,13 +73,14 @@ export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps
      * @default true
      */
     scrollToSelected?: boolean;
-  };
+  } & ({
+    tag?: never;
+    /**
+     * Default type for size from BaseTriggerProps if there is no customization via `tag`.
+     */
+    size?: BaseTriggerProps['size'];
+  } | {});
 
-/** @deprecated */
-export interface ISelectOption extends SelectOption, UnknownProperties {}
-
-/** @deprecated */
-export interface ISelectOptionProps extends SelectOptionProps, UnknownProperties {}
 export type SelectOptionProps = DropdownMenuItemProps & {
   /**
    * Enables selected state
@@ -92,8 +90,6 @@ export type SelectOptionProps = DropdownMenuItemProps & {
   value: string | number;
 };
 
-/** @deprecated */
-export interface ISelectOptionCheckboxProps extends SelectOptionCheckboxProps, UnknownProperties {}
 export type SelectOptionCheckboxProps = BoxProps & {
   /** Checkbox theme */
   theme?: string;
@@ -109,16 +105,12 @@ declare const InputSearch: Intergalactic.Component<'div', SelectInputSearch> & {
   Clear: typeof Input.Addon;
 };
 
-/** @deprecated */
-export interface ISelectContext extends SelectContext, UnknownProperties {}
 export type SelectContext = DropdownMenuContext & {
   getOptionProps: PropGetterFn;
   getOptionCheckboxProps: PropGetterFn;
   getDividerProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ISelectHandlers extends SelectHandlers, UnknownProperties {}
 export type SelectHandlers = DropdownMenuHandlers & {
   value: (index: SelectValue) => void;
 };
@@ -141,7 +133,7 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SelectProps>;
 declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
     typeof Dropdown.Trigger,
-    DropdownMenuTriggerProps & ButtonTriggerProps,
+    DropdownMenuTriggerProps & (ButtonTriggerProps | LinkTriggerProps),
     {},
     [handlers: SelectHandlers]
   > & {
@@ -161,16 +153,9 @@ declare const Select: IntergalacticSelectComponent & {
     Addon: typeof DropdownMenu.Item.Addon;
     Checkbox: Intergalactic.Component<'div', SelectOptionCheckboxProps>;
     Content: typeof Flex;
+    Text: typeof Text;
     Hint: typeof Flex;
   };
-  /**
-   * @deprecated Use Select.Group
-   */
-  OptionTitle: typeof DropdownMenu.ItemTitle;
-  /**
-   * @deprecated Use Select.Option.Hint or Select.Group with subTitle property
-   */
-  OptionHint: typeof DropdownMenu.ItemHint;
   Divider: typeof Divider;
   InputSearch: typeof InputSearch;
   Input: typeof InputSearch;

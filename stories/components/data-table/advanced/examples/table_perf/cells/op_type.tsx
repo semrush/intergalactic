@@ -1,11 +1,11 @@
-import { Flex } from '@semcore/ui/flex-box';
-import ChargebackLoss from '@semcore/ui/icon/ChargebackLoss/m';
-import ChargebackWinM from '@semcore/ui/icon/ChargebackWin/m';
-import MoneyCoinsM from '@semcore/ui/icon/MoneyCoins/m';
-import PopupM from '@semcore/ui/icon/Popup/m';
-import ReloadM from '@semcore/ui/icon/Reload/m';
-import ReturnM from '@semcore/ui/icon/Return/m';
-import { Text, type TextProps } from '@semcore/ui/typography';
+import ChargebackLoss from '@semcore/icon/ChargebackLoss/m';
+import ChargebackWinM from '@semcore/icon/ChargebackWin/m';
+import MoneyCoinsM from '@semcore/icon/MoneyCoins/m';
+import PopupM from '@semcore/icon/Popup/m';
+import ReloadM from '@semcore/icon/Reload/m';
+import ReturnM from '@semcore/icon/Return/m';
+import { Flex } from '@semcore/ui/base-components';
+import { Text, type NSText } from '@semcore/ui/typography';
 import React from 'react';
 import type { FC } from 'react';
 import { defineMessage, type MessageDescriptor, useIntl } from 'react-intl';
@@ -13,9 +13,9 @@ import { defineMessage, type MessageDescriptor, useIntl } from 'react-intl';
 type PaymentOperationTypeProps = {
   operationType: string;
   testIdPrefix?: string;
-} & TextProps;
+} & NSText.Props;
 
-const mapIcons: Record<string, FC<{ color: string }>> = {
+const mapIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   purchase: MoneyCoinsM,
   charge: ReloadM,
   refund: ReturnM,

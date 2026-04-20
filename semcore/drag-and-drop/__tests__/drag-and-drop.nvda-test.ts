@@ -9,7 +9,7 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await nvda.next();
     await nvda.press('Enter');
 
-    expect(await nvda.itemText()).toContain('expanded. Show table columns, dialog. drag and drop container, grouping. Show table columns, dialog. drag and drop container, grouping. Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5');
+    expect(await nvda.itemText()).toContain('expanded. Show table columns, dialog. Show table columns, dialog. menu. drag and drop container, grouping. Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5');
 
     await nvda.next();
 
@@ -22,6 +22,6 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await nvda.press('ArrowDown');
     await nvda.press('Space');
 
-    expect(await nvda.itemText()).toBe('space. Position 3 applied');
+    expect(await nvda.itemText()).toBe('space. Position 3 applied. Unique Visitors, not checked, Press Space to grab the element for drag and drop, 3 of 5');
   });
 });

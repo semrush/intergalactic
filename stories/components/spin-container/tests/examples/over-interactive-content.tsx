@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/base-components';
 import Input from '@semcore/ui/input';
 import SpinContainer from '@semcore/ui/spin-container';
 import { Text } from '@semcore/ui/typography';

@@ -1,9 +1,8 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
-import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import rafTrottle from '@semcore/core/lib/utils/rafTrottle';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/textarea.shadow.css';
@@ -18,7 +17,6 @@ class Textarea extends Component {
     defaultValue: '',
   };
 
-  static enhance = [autoFocusEnhance()];
   static style = style;
 
   node = null;
@@ -109,6 +107,11 @@ class Textarea extends Component {
   componentDidMount() {
     this.calculateRows(true);
     this.addGlobalHandlers();
+    if (this.asProps.autoFocus) {
+      setTimeout(() => {
+        this.node?.focus();
+      }, 10); // in autoFocusEnhance it was boolean `true`. In FF and Safari was floating bug with focus, so, I set 10.
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -130,7 +133,7 @@ class Textarea extends Component {
     const STextarea = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(<STextarea render={Box} tag='textarea' ref={this.setRef} />);
+    return sstyled(styles)(<STextarea render={Box} tag='textarea' ref={this.setRef} use:autoFocus={false} />);
   }
 }
 

@@ -12,7 +12,7 @@ import { Text } from '@semcore/ui/typography';
 <Text />;
 ```
 
-<TypesView type="TextProps" :types={...types} />
+<TypesView type="NSText.Props" :types={...types} />
 
 ## List
 
@@ -27,7 +27,7 @@ import { List } from '@semcore/ui/typography';
 The `size` property of this component only accepts the values `100`, `200`, and `300`.
 :::
 
-<TypesView type="ListProps" :types={...types} />
+<TypesView type="NSList.Props" :types={...types} />
 
 ## List.Item
 
@@ -39,8 +39,8 @@ import { List } from '@semcore/ui/typography';
 <List.Item.Content />;
 ```
 
-<TypesView type="ListItemProps" :types={...types} />
-<TypesView type="ListItemContentProps" :types={...types} />
+<TypesView type="NSList.Item.Props" :types={...types} />
+<TypesView type="NSList.Item.Content.Props" :types={...types} />
 
 ## Blockquote
 
@@ -51,12 +51,6 @@ import { Blockquote } from '@semcore/ui/typography';
 <Blockquote />;
 ```
 
-<TypesView type="BlockquoteProps" :types={...types} />
-
-## FormatText
-
-::: warning
-`FormatText` is deprecated. To style native tags, wrap them in `Text`. Refer to the [Native typography tags example](./typography-code#native-typography-tags)
-:::
+<TypesView type="NSBlockquote.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

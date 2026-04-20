@@ -11,8 +11,13 @@ import { unpluginIcons } from './unplugins/unplugin-icons';
 import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { unpluginStatic } from './unplugins/unplugin-static';
 
+export const LATEST = process.env.VITE_LATEST ?? 'latest';
+export const currentBuildVersion = process.env.VITE_CURRENT_VERSION ?? LATEST;
+
 export const viteConfig = defineConfig({
-  base: '/intergalactic/',
+  base: `/intergalactic${
+    currentBuildVersion !== LATEST ? `/${currentBuildVersion.replaceAll('_', '-')}` : ''
+  }/`,
   plugins: [
     pluginReact({
       babel: {
@@ -76,9 +81,14 @@ export const viteConfig = defineConfig({
   ],
   build: {
     chunkSizeWarningLimit: 1500,
+    emptyOutDir: false,
   },
   resolve: {
     alias: [
+      {
+        find: /^.*\/NotFound\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/NotFound.vue', import.meta.url)),
+      },
       {
         find: /^.*\/VPSidebarItem\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPSidebarItem.vue', import.meta.url)),
@@ -134,6 +144,18 @@ export const viteConfig = defineConfig({
       {
         find: /^.*\/VPNavBarSearchButton\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPNavBarSearchButton.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPNavScreenMenu\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPNavScreenMenu.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPMenuLink\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPMenuLink.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPNavScreenMenuGroupLink\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPNavScreenMenuGroupLink.vue', import.meta.url)),
       },
     ],
   },

@@ -98,7 +98,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const lastColumn = page.locator('[data-ui-name="Head.Column"]').last();
 
-    let isShadowExist = await lastColumn.evaluate((node) => {
+    const isShadowExist = await lastColumn.evaluate((node) => {
       // default `left` value is `auto`
       return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
     });
@@ -107,11 +107,12 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await page.setViewportSize({ width: 400, height: 700 });
 
-    isShadowExist = await lastColumn.evaluate((node) => {
-      return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
-    });
-
-    expect(isShadowExist).toBe(true);
+    await expect.poll(
+      () => lastColumn.evaluate((node) => {
+        return window.getComputedStyle(node, '::after').getPropertyValue('left') === '0px';
+      }),
+      { timeout: 5000 },
+    ).toBe(true);
   });
 });
 
@@ -248,16 +249,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
 
     const columns = await page.locator('[data-ui-name="Head.Column"]').all();
-    const [defaultSortColumnName, defaultSortValue] = ['kd', 'desc'];
+    const [defaultSortColumnName, defaultSortValue] = ['vol', 'desc'];
     for (const column of columns) {
       const columnName = await column.getAttribute('name');
 
       if (defaultSortColumnName === columnName) {
         expect(column).toHaveAttribute('aria-sort', COLUMN_SORT_TO_ARIA[defaultSortValue]);
         continue;
+      } else {
+        expect(column).not.toHaveAttribute('aria-sort');
       }
-
-      expect(column).not.toHaveAttribute('aria-sort');
       expect(column).toHaveAttribute('aria-describedby');
     }
   });

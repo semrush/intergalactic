@@ -1,5 +1,6 @@
+import ReloadM from '@semcore/icon/Reload/m';
 import Button from '@semcore/ui/button';
-import ReloadM from '@semcore/ui/icon/Reload/m';
+import { lastInteraction } from '@semcore/ui/core';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 type NoConnectionActionNoticeBubbleProps = { initialAnimation: boolean; duration: number; type: 'info' | 'warning'; focusLock: boolean };
@@ -21,9 +22,11 @@ const Demo = (props: NoConnectionActionNoticeBubbleProps) => {
       type: props.type,
       focusLock: props.focusLock,
       onClose: () => {
-        setTimeout(() => {
-          openButtonRef.current?.focus();
-        }, 300);
+        if (lastInteraction.isKeyboard()) {
+          setTimeout(() => {
+            openButtonRef.current?.focus();
+          }, 300);
+        }
       },
     });
   };

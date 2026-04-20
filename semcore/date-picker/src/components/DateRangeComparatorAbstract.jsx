@@ -1,10 +1,10 @@
+import { Flex } from '@semcore/base-components';
 import { LinkTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import Checkbox from '@semcore/checkbox';
 import { Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
 import dayjs from 'dayjs';
 import React from 'react';
 

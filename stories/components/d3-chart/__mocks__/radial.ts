@@ -1,4 +1,4 @@
-import LikeM from '@semcore/ui/icon/Like/m';
+import LikeM from '@semcore/icon/Like/m';
 
 export default {
   Default: Array(12)

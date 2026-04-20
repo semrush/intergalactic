@@ -1,10 +1,10 @@
 import type { Intergalactic } from '@semcore/core';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-import { test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import { DataTable, UNIQ_ROW_KEY } from '../src';
+import { DataTable } from '../src';
 import type { CellRenderProps } from '../src/components/Body/Body.types';
 
 describe('data-table Dependency imports', () => {
@@ -26,14 +26,14 @@ describe('DataTable', () => {
     });
     test('typed data', () => {
       assertType<JSX.Element>(
-        <DataTable<{ a: number; b: number; c: number }[]>
+        <DataTable<{ a: number; b: number; c: number }[], never, never>
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
           columns={[]}
         />,
       );
       assertType<JSX.Element>(
-        <DataTable<{ a: string; b: string; c: string }[]>
+        <DataTable<{ a: string; b: string; c: string }[], never, never>
           // @ts-expect-error
           data={[{ a: 1, b: 2, c: 3 }]}
           aria-label='table label'
@@ -42,7 +42,7 @@ describe('DataTable', () => {
     });
     test('sort typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number; name: string }[]>
+        <DataTable<{ id: number; name: string }[], never, never>
           data={[{ id: 1, name: 'test' }]}
           aria-label='label'
           columns={[]}
@@ -87,7 +87,7 @@ describe('DataTable', () => {
     });
     test('virtualScroll typing', () => {
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], never, never>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -96,7 +96,7 @@ describe('DataTable', () => {
       );
 
       assertType<JSX.Element>(
-        <DataTable<{ id: number }[]>
+        <DataTable<{ id: number }[], never, never>
           data={[{ id: 1 }]}
           aria-label='label'
           columns={[]}
@@ -129,7 +129,7 @@ describe('DataTable.Cell', () => {
   afterEach(() => {
     cleanup();
   });
-  test('Should support ref via renderCell', ({ expect }) => {
+  test('Should support ref via renderCell', () => {
     const spy = vi.fn();
 
     const Test = () => {
@@ -159,7 +159,7 @@ describe('DataTable.Cell', () => {
     expect(spy).toBeCalled();
   });
 
-  test('Should support rawData in custom renderCell function', ({ expect }) => {
+  test('Should support rawData in custom renderCell function', () => {
     const checkRowData = vi.fn();
     const dataItem = { keyword: 'test', kd: '1', vol: null };
 
@@ -188,7 +188,7 @@ describe('DataTable.Cell', () => {
     expect(checkRowData).toBeCalledWith({ ...dataItem });
   });
 
-  test('Should not call renderCell and rowProps functions on the data is empty', ({ expect }) => {
+  test('Should not call renderCell and rowProps functions on the data is empty', () => {
     const renderCell = vi.fn();
     const rowProps = vi.fn();
 

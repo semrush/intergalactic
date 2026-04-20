@@ -1,5 +1,5 @@
+import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type { ScaleLinear } from 'd3-scale';
 import type React from 'react';
 
@@ -9,7 +9,10 @@ export type DataKey = string;
 
 export type DonutChartData = Record<DataKey, number>;
 
-export type DonutChartProps = BaseChartProps<DonutChartData> & {
+export type DonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<DonutChartData>,
+  'showTotalInTooltip'
+> & {
   /** Internal */
   groupKey?: never;
   /** Custom x-axis scale */

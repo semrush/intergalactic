@@ -37,13 +37,15 @@ import TabLine from '@semcore/ui/tab-line';
 
 ## TabLine.Item.Text
 
-This ordinary text sets the appropriate indents depending on the size. If a simple text without addons is used in the Tab, it will turn into `TabLine.Item.Text` automatically.
+An instance of [`Text`](../../style/typography/typography-api#text) with the appropriate styles depending on the TabLine size.
 
-It takes all the properties of the `Box`.
+Plain text without addons placed directly in `TabLine.Item` is wrapped in `TabLine.Item.Text` automatically.
 
 ```jsx
 import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item.Text />;
 ```
+
+<TypesView type="NSText.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

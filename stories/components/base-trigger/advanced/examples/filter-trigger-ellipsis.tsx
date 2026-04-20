@@ -1,34 +1,47 @@
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+type ButtonTriggerEllipsisProps = {
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+};
+
+const Demo = (props: ButtonTriggerEllipsisProps) => {
   return (
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[FilterTrigger, 'h1']}>
-          <FilterTrigger.Text w={150} tag={[Text, 'h1']} size={400}>
-            <Ellipsis trim='middle'>Few tags tags</Ellipsis>
+          <FilterTrigger.Text
+            w={150}
+            tag='h1'
+            size={400}
+            ellipsis:cropPosition='middle'
+            hint={props.hintProps}
+            hint:placement={props.hintPlacement}
+          >
+            Few tags tags
           </FilterTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={FilterTrigger}>
-          <FilterTrigger.Text w={150} tag={Text} size={400} data-test-id='ellipsis-middle'>
-            <Ellipsis trim='middle'>
-              This is first trigger with a very very long text!
-            </Ellipsis>
+          <FilterTrigger.Text
+            w={150}
+            size={400}
+            data-test-id='ellipsis-middle'
+            ellipsis:cropPosition='middle'
+            hint={props.hintProps}
+            hint:placement={props.hintPlacement}
+          >
+            This is first trigger with a very very long text!
           </FilterTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
         <br />
         <DropdownMenu.Trigger tag={FilterTrigger}>
-          <FilterTrigger.Text w={150} tag={Text} size={400}>
-            <Ellipsis>
-              This is second trigger with a very very long text!
-            </Ellipsis>
+          <FilterTrigger.Text w={150} size={400} ellipsis={true}>
+            This is second trigger with a very very long text!
           </FilterTrigger.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
@@ -42,13 +55,19 @@ const Demo = () => {
       <br />
       <br />
       <FilterTrigger w={100} data-test-id='active-trigger'>
-        <Ellipsis>
+        <FilterTrigger.Text
+          ellipsis={true}
+          hint={props.hintProps}
+          hint:placement={props.hintPlacement}
+        >
           This is third trigger with a very very long text!
-        </Ellipsis>
+        </FilterTrigger.Text>
       </FilterTrigger>
-
     </>
   );
+};
+
+export const defaultProps: ButtonTriggerEllipsisProps = {
 };
 
 export default Demo;

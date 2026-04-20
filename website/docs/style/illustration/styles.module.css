@@ -38,7 +38,7 @@ ul.list {
   box-shadow: var(--intergalactic-keyboard-focus);
 }
 
-div[data-name='PanelTrigger'] {
+button[data-name='PanelTrigger'] {
   width: 100%;
   padding: var(--intergalactic-spacing-3x);
   font-size: var(--intergalactic-fs-200);
@@ -46,7 +46,7 @@ div[data-name='PanelTrigger'] {
   color: var(--intergalactic-text-secondary);
 }
 
-div[data-name='PanelTrigger'] svg {
+button[data-name='PanelTrigger'] svg {
   display: block;
   margin: 0 auto var(--intergalactic-spacing-3x);
 }

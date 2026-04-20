@@ -21,58 +21,58 @@ In this section, you'll find all the essential recommendations for table control
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import ComponentCard from '@components/../components/ComponentCard'; 
+import React from 'react';
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
-  const name = title.replace(/[ \/]+/g, ''); 
-  return name.charAt(0).toLowerCase() + name.slice(1); 
-}; 
+  const name = title.replace(/[ \/]+/g, '');
+  return name.charAt(0).toLowerCase() + name.slice(1);
+};
 
 const group = {
   accordion: {
 
     title: 'Accordion',
-    route: '/intergalactic/table-group/table-controls/table-controls#accordion',
+    route: '../table-controls/table-controls#accordion',
     disabled: false,
     type: 'table',
 
-  }, 
+  },
   checkboxes: {
 
     title: 'Checkboxes',
-    route: '/intergalactic/table-group/table-controls/table-controls#checkboxes',
+    route: '../table-controls/table-controls#checkboxes',
     disabled: false,
     type: 'table',
 
-  }, 
+  },
   resizing: {
 
     title: 'Column resizing',
-    route: '/intergalactic/table-group/table-controls/table-controls#column-resizing',
+    route: '../table-controls/table-controls#column-resizing',
     disabled: false,
     type: 'table',
 
-  }, 
+  },
   pagination: {
 
     title: 'Pagination',
-    route: '/intergalactic/table-group/table-controls/table-controls#pagination',
+    route: '../table-controls/table-controls#pagination',
     disabled: false,
     type: 'table',
 
-  }, 
+  },
   sorting: {
 
     title: 'Sorting',
-    route: '/intergalactic/table-group/table-controls/table-controls#sorting',
+    route: '../table-controls/table-controls#sorting',
     disabled: false,
     type: 'table',
 
-  }, 
+  },
   actionsRow: {
 
     title: 'Status and actions',
-    route: '/intergalactic/table-group/table-controls/table-controls#status-and-actions',
+    route: '../table-controls/table-controls#status-and-actions',
     disabled: false,
     type: 'table',
 
@@ -80,7 +80,7 @@ const group = {
     tableSettings: {
 
     title: 'Table settings',
-    route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
+    route: '../table-controls/table-controls#table-settings-and-column-manager',
     disabled: false,
     type: 'table',
 
@@ -88,12 +88,12 @@ const group = {
     columnsManager: {
 
     title: 'Column manager',
-    route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
+    route: '../table-controls/table-controls#table-settings-and-column-manager',
     disabled: false,
     type: 'table',
 
   },
-}; 
+};
 
 const styles = `
   .table-group-grid {
@@ -114,7 +114,7 @@ const styles = `
   ._card {
     gap: 8px;
   }
-`; 
+`;
 
 const App = function () {
   React.useEffect(() => {
@@ -124,9 +124,9 @@ const App = function () {
     document.head.appendChild(styleSheet);
     return () => styleSheet.remove();
 
-  }, []); 
+  }, []);
 
-  const items = Object.keys(group).map((el) => group[el]); 
+  const items = Object.keys(group).map((el) => group[el]);
 
   return (
 
@@ -143,7 +143,7 @@ const App = function () {
       ))}
     </ul>
 
-  ); 
+  );
 }
 </script>
 
@@ -156,47 +156,47 @@ This section outlines the most common scenarios for using our tables.
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import ComponentCard from '@components/../components/ComponentCard'; 
+import React from 'react';
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
-  const name = title.replace(/[ \/]+/g, ''); 
-  return name.charAt(0).toLowerCase() + name.slice(1); 
-}; 
+  const name = title.replace(/[ \/]+/g, '');
+  return name.charAt(0).toLowerCase() + name.slice(1);
+};
 
 const group = {
   editing: {
 
     title: 'Editing and adding content',
-    route: '/intergalactic/table-group/table-controls/table-controls#editing-and-adding-content',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  highlighting: {
-
-    title: 'Highlighting content',
-    route: '/intergalactic/table-group/table-controls/table-controls#highlighting-content',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  links: {
-
-    title: 'Internal and external links',
-    route: '/intergalactic/table-group/table-controls/table-controls#internal-and-external-links',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  linksLong: {
-
-    title: 'Long links and text',
-    route: '/intergalactic/table-group/table-controls/table-controls#long-links-and-text',
+    route: '../table-controls/table-controls#editing-and-adding-content',
     disabled: false,
     type: 'table',
 
   },
-}; 
+  highlighting: {
+
+    title: 'Highlighting content',
+    route: '../table-controls/table-controls#highlighting-content',
+    disabled: false,
+    type: 'table',
+
+  },
+  links: {
+
+    title: 'Internal and external links',
+    route: '../table-controls/table-controls#internal-and-external-links',
+    disabled: false,
+    type: 'table',
+
+  },
+  linksLong: {
+
+    title: 'Long links and text',
+    route: '../table-controls/table-controls#long-links-and-text',
+    disabled: false,
+    type: 'table',
+
+  },
+};
 
 const styles = `
   .table-group-grid {
@@ -212,7 +212,7 @@ const styles = `
     padding-left: 0 !important;
 
   }
-`; 
+`;
 
 const App = function () {
   React.useEffect(() => {
@@ -222,9 +222,9 @@ const App = function () {
     document.head.appendChild(styleSheet);
     return () => styleSheet.remove();
 
-  }, []); 
+  }, []);
 
-  const items = Object.keys(group).map((el) => group[el]); 
+  const items = Object.keys(group).map((el) => group[el]);
 
   return (
 
@@ -241,7 +241,7 @@ const App = function () {
       ))}
     </ul>
 
-  ); 
+  );
 }
 </script>
 
@@ -254,18 +254,18 @@ Here, you'll find descriptions of all the different states that our tables can h
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import ComponentCard from '@components/../components/ComponentCard'; 
+import React from 'react';
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
-  const name = title.replace(/[ \/]+/g, ''); 
-  return name.charAt(0).toLowerCase() + name.slice(1); 
-}; 
+  const name = title.replace(/[ \/]+/g, '');
+  return name.charAt(0).toLowerCase() + name.slice(1);
+};
 
 const group = {
   empty: {
 
     title: 'Empty table',
-    route: '/intergalactic/table-group/table-states/table-states#empty-table',
+    route: '../table-states/table-states#empty-table',
     disabled: false,
     type: 'table',
 
@@ -273,23 +273,23 @@ const group = {
     limitedData: {
 
     title: 'Limited data',
-    route: '/intergalactic/table-group/table-states/table-states#limited-data',
+    route: '../table-states/table-states#limited-data',
     disabled: false,
     type: 'table',
 
-  }, 
+  },
   noData: {
 
     title: 'No data',
-    route: '/intergalactic/table-group/table-states/table-states#no-data',
+    route: '../table-states/table-states#no-data',
     disabled: false,
     type: 'table',
 
-  }, 
+  },
   nothingFound: {
 
     title: 'Nothing found',
-    route: '/intergalactic/table-group/table-states/table-states#nothing-found',
+    route: '../table-states/table-states#nothing-found',
     disabled: false,
     type: 'table',
 
@@ -297,36 +297,36 @@ const group = {
   error: {
 
     title: 'Something went wrong',
-    route: '/intergalactic/table-group/table-states/table-states#something-went-wrong',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  skeleton: {
-
-    title: 'Initial loading',
-    route: '/intergalactic/table-group/table-states/table-states#initial-loading',
-    disabled: false,
-    type: 'table',
-
-  },  
-  loading: {
-
-    title: 'Loading',
-    route: '/intergalactic/table-group/table-states/table-states#loading-filtered-or-sorted-data',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  progressbar: {
-
-    title: 'Long loading',
-    route: '/intergalactic/table-group/table-states/table-states#long-loading',
+    route: '../table-states/table-states#something-went-wrong',
     disabled: false,
     type: 'table',
 
   },
-}; 
+  skeleton: {
+
+    title: 'Initial loading',
+    route: '../table-states/table-states#initial-loading',
+    disabled: false,
+    type: 'table',
+
+  },
+  loading: {
+
+    title: 'Loading',
+    route: '../table-states/table-states#loading-filtered-or-sorted-data',
+    disabled: false,
+    type: 'table',
+
+  },
+  progressbar: {
+
+    title: 'Long loading',
+    route: '../table-states/table-states#long-loading',
+    disabled: false,
+    type: 'table',
+
+  },
+};
 
 const styles = `
   .table-group-grid {
@@ -342,7 +342,7 @@ const styles = `
     padding-left: 0 !important;
 
   }
-`; 
+`;
 
 const App = function () {
   React.useEffect(() => {
@@ -352,9 +352,9 @@ const App = function () {
     document.head.appendChild(styleSheet);
     return () => styleSheet.remove();
 
-  }, []); 
+  }, []);
 
-  const items = Object.keys(group).map((el) => group[el]); 
+  const items = Object.keys(group).map((el) => group[el]);
 
   return (
 
@@ -371,7 +371,7 @@ const App = function () {
       ))}
     </ul>
 
-  ); 
+  );
 }
 </script>
 

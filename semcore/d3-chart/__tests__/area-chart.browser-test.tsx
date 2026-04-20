@@ -46,6 +46,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: true,
+      showPercentValueInTooltip: true,
       showLegend: true,
       showDots: true,
       patterns: false,
@@ -64,6 +65,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       invertAxis: false,
       showTooltip: true,
       showTotalInTooltip: false,
+      showPercentValueInTooltip: false,
       showLegend: true,
       showDots: false,
       patterns: true,
@@ -82,6 +84,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       invertAxis: true,
       showTooltip: false,
       showTotalInTooltip: false,
+      showPercentValueInTooltip: true,
       showLegend: false,
       showDots: true,
       patterns: false,
@@ -99,12 +102,26 @@ test.describe(`${TAG.VISUAL}`, () => {
         'en',
         vars,
       );
+      await locators.plot(page).waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
+      if (!vars.showTooltip) {
+        await test.step('Verify chart renders correctly', async () => {
+          await expect(page).toHaveScreenshot();
+        });
+      } else if (vars.showTooltip) {
+        await test.step('Verify tooltip appears on hover', async () => {
+          const chart = locators.plot(page).first();
+          const box = await chart.boundingBox();
+          if (box) {
+            await page.mouse.move(box.x + 50, box.y + 50);
+          }
 
-      await test.step('Verify chart renders correctly', async () => {
-        await locators.plot(page).waitFor({ state: 'visible' });
-        await page.waitForTimeout(500);
-        await expect(page).toHaveScreenshot();
-      });
+          const tooltip = locators.tooltip(page);
+          await tooltip.waitFor({ state: 'visible' });
+          await expect(tooltip).toBeVisible();
+          await expect(page).toHaveScreenshot();
+        });
+      }
     });
   });
 

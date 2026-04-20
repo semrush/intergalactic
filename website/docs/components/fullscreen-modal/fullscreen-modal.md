@@ -39,7 +39,7 @@ Table: Content styles for single-zone and dual-zone modal windows
 ### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them should be placed with `align: left`.
-- If there is only one zone for content in the modal window, it is necessary to center the content with `align: center` horizontally. We also recommend you to use the default [Modal](/components/modal/modal) component in this case instead.
+- If there is only one zone for content in the modal window, it's necessary to center the content with `align: center` horizontally. We also recommend you to use the default [Modal](/components/modal/modal) component in this case instead.
 
 Table: Content alignment for single-zone and dual-zone modal windows
 
@@ -83,8 +83,3 @@ When loading and reloading the content of the window, use [SpinContainer](../spi
 If an error occurred during data loading, show an error message with the **Reload** button.
 
 For error messages use [Widget empty state](/components/widget-empty/widget-empty) component.
-
-#### Limit
-
-![](static/limit.png)
-

@@ -19,6 +19,10 @@ import RowColumnMergeExample from './examples/virtualization/row-and-column-merg
 import SecondarySortingExample from './examples/virtualization/secondary-sorting';
 import TableInTableExample from './examples/virtualization/table-in-table-with-fixed-column';
 import InteractiveHeaderExample from './examples/virtualization/table-with-1tf-and diff-elements';
+import type { VirtualScrollControlsProps, VirtualScrollMode } from './examples/virtualization/virtual-scroll-controls';
+import VirtualScrollControlsExample, {
+  virtualScrollControlsDefaultProps,
+} from './examples/virtualization/virtual-scroll-controls';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Virtualization',
@@ -97,4 +101,44 @@ export const HorizontalScrollWithoutFixed: Story = {
 
 export const MultiLevelBorders: Story = {
   render: MultiLevelExample,
+};
+
+export const VirtualScrollControls: StoryObj<VirtualScrollControlsProps> = {
+  render: VirtualScrollControlsExample,
+  args: virtualScrollControlsDefaultProps,
+  argTypes: {
+    mode: {
+      control: 'radio',
+      options: ['boolean', 'aproxRowsOnPage', 'rowHeight', 'rowsBufferOnly'] satisfies VirtualScrollControlsProps['mode'][],
+      description:
+        'Selects the virtualScroll mode. ' +
+        '`boolean` - true, default buffers. ' +
+        '`aproxRowsOnPage` - auto row height, configurable buffer + page estimate. ' +
+        '`rowHeight` - fixed row height, configurable buffer + page estimate ' +
+        '`rowsBufferOnly` - only rowsBuffer set, no rowHeight, no aproxRowsOnPage (uses defaults for page estimate).',
+    },
+    useCustomBuffer: {
+      control: 'boolean',
+      description: 'When false — rowsBuffer is omitted, component uses default (20).',
+      if: { arg: 'mode', neq: 'boolean' },
+    },
+    rowsBuffer: {
+      control: { type: 'number', min: 1, max: 100 },
+      description: 'Pre-rendered rows above/below viewport. Only applied when `useCustomBuffer` is true.',
+      if: { arg: 'useCustomBuffer', truthy: true },
+    },
+    aproxRowsOnPage: {
+      control: { type: 'number', min: 1, max: 100 },
+      description: 'Estimated rows per page for scroll position calculation. Only used in `aproxRowsOnPage` mode.',
+      if: { arg: 'mode', eq: 'aproxRowsOnPage' },
+    },
+    rowHeight: {
+      control: { type: 'number', min: 20, max: 200 },
+      description:
+        'Fixed row height in px (required in `rowHeight` mode). ' +
+        'Mutually exclusive with `aproxRowsOnPage`. ' +
+        'If `rowsBuffer` is not set, defaults to 20.',
+      if: { arg: 'mode', eq: 'rowHeight' },
+    },
+  },
 };

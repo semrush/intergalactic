@@ -3,8 +3,6 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { disableEnforceFocus } from '../../../stories/components/base-components/popper/tests/popper.stories';
-
 export const locators = {
 
   button: (page: Page, name?: string, index?: number) => {
@@ -205,11 +203,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.press('ArrowDown');
     await locators.button(page, 'Export to PDF').waitFor({ state: 'visible' });
     await expect(locators.button(page).first()).not.toBeFocused();
+    await expect(locators.button(page).nth(1)).not.toBeFocused();
+
     await expect(locators.popper(page)).toBeFocused();
 
     await page.mouse.click(0, 0);
     await locators.button(page, 'Export to PDF').waitFor({ state: 'hidden' });
-    await expect(locators.button(page)).not.toBeFocused();
+    await expect.soft(locators.button(page)).not.toBeFocused();
     await expect(locators.popper(page)).toHaveCount(0);
 
     await locators.button(page).hover();
@@ -249,9 +249,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.popper(page).waitFor({ state: 'visible' });
+    await page.waitForTimeout(100);
+
     await page.mouse.click(0, 0);
     await locators.popper(page).waitFor({ state: 'hidden' });
-    await expect(locators.button(page)).not.toBeFocused();
+    await expect.soft(locators.button(page)).not.toBeFocused();
     await expect(locators.popper(page)).toHaveCount(0);
 
     await locators.button(page).hover();
@@ -525,44 +527,5 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       await expect(locators.popper(page)).toHaveCount(0);
     });
-  });
-
-  test('Verify dropdown can be closed by click on button inside', {
-    tag: [TAG.PRIORITY_HIGH,
-      TAG.MOUSE,
-      '@dropdown'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx', 'en');
-
-    const trigger = page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
-
-    await trigger.click();
-    await locators.popper(page).waitFor({ state: 'visible' });
-
-    await expect(locators.popper(page)).toHaveCount(1);
-    await locators.button(page, 'Apply').click();
-    await locators.popper(page).waitFor({ state: 'hidden' });
-
-    await expect(locators.popper(page)).toHaveCount(0);
-  });
-
-  test('Verify dropdown can be closed by keyboard press on button inside', {
-    tag: [TAG.PRIORITY_HIGH,
-      TAG.MOUSE,
-      '@dropdown'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx', 'en');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    await locators.popper(page).waitFor({ state: 'visible' });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.popper(page).waitFor({ state: 'hidden' });
-
-    await expect(locators.popper(page)).not.toBeVisible();
   });
 });

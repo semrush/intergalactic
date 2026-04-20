@@ -9,7 +9,7 @@ export async function ProjectSelectorTest({ canvasElement }: { canvasElement: HT
     return button;
   });
 
-  await userEvent.click(await trigger);
+  await userEvent.click(trigger);
 
   const dropdown = await waitFor(() => {
     const element = document.querySelector('[data-ui-name="DropdownMenu.Popper"]');
@@ -19,10 +19,9 @@ export async function ProjectSelectorTest({ canvasElement }: { canvasElement: HT
 
   expect(dropdown).toHaveAttribute('role', 'dialog');
   expect(dropdown).toHaveAttribute('tabindex', '-1');
-  await new Promise((resolve) => setTimeout(resolve, 50));
 
   const input = await waitFor(() => {
-    const element = dropdown.querySelector('[data-ui-name="Input.Value"]');
+    const element = dropdown.querySelector('[data-ui-name="InputSearch"]');
     if (!element) throw new Error('Input not found');
     return element as HTMLInputElement;
   });
@@ -30,9 +29,7 @@ export async function ProjectSelectorTest({ canvasElement }: { canvasElement: HT
   expect(input).toHaveAttribute('type', 'text');
   expect(input).toHaveAttribute('aria-invalid', 'false');
 
-  input.style.pointerEvents = 'auto';
-
-  await userEvent.click(input);
+  input.focus();
   expect(input).toHaveFocus();
 
   const element33 = await canvas.findByRole('menuitemradio', { name: /project 33/i });
@@ -50,8 +47,7 @@ export async function ProjectSelectorTest({ canvasElement }: { canvasElement: HT
   const actionsMenu = element33.nextElementSibling;
 
   if (!actionsMenu || actionsMenu.getAttribute('data-ui-name') !== 'DropdownMenu.Actions') {
-    console.error('Actions menu not found!');
-    return;
+    throw new Error('Actions menu not found');
   }
 
   const actionsMenuAsHTMLElement = actionsMenu as HTMLElement;
@@ -67,16 +63,9 @@ export async function ProjectSelectorTest({ canvasElement }: { canvasElement: HT
   expect(secondButton).toHaveAttribute('role', 'menuitem');
 
   const elements39 = await canvas.findAllByText(/project 39/i);
+  expect(elements39.length).toBeGreaterThan(0);
 
-  if (elements39.length > 0) {
-    const firstElement39 = elements39[0];
-
-    firstElement39.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    expect(firstElement39).toBeInTheDocument();
-  } else {
-    console.error('Element "project 39" not found!');
-  }
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  elements39[0].style.pointerEvents = 'auto';
+  const firstElement39 = elements39[0];
+  firstElement39.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  expect(firstElement39).toBeInTheDocument();
 }

@@ -30,7 +30,7 @@ Table: Roles and attributes
 
 ## Considerations for designers & developers
 
-Don't forget to check that long text in links is truncated with an `ellipsis`, and the full text is displayed in a tooltip when there isn't enough space.
+Don't forget to check that long text in links is truncated with an [ellipsis](../../utils/ellipsis/ellipsis) and the full text is displayed in a [hint](../../utils/hint/hint) when there isn't enough space.
 
 ## Resources
 

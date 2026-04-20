@@ -3,10 +3,11 @@ import { useForkRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
 
 import Animation from './Animation';
+import type { ScaleProps } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
-function Scale(props: any, ref: React.Ref<HTMLElement>) {
-  const [placement, setPlacement] = React.useState(props.placement);
+function Scale(props: ScaleProps, ref: React.Ref<HTMLDivElement>) {
+  const [placement, setPlacement] = React.useState(props.placement ?? '');
   const keyframesKey = React.useMemo(() => {
     if (placement.startsWith('left')) return 'scale-left';
     if (placement.startsWith('right')) return 'scale-right';
@@ -16,8 +17,8 @@ function Scale(props: any, ref: React.Ref<HTMLElement>) {
     return 'opacity';
   }, [placement]);
 
-  const popperCheckRef = React.useRef<HTMLElement>();
-  const forkedRef = useForkRef(ref, popperCheckRef);
+  const popperCheckRef = React.useRef<HTMLDivElement>(null);
+  const forkedRef = useForkRef<HTMLDivElement>(ref, popperCheckRef);
 
   React.useEffect(() => {
     if (placement && placement !== 'auto') return;
@@ -41,4 +42,4 @@ function Scale(props: any, ref: React.Ref<HTMLElement>) {
 
 Scale.displayName = 'Scale';
 
-export default createBaseComponent(Scale);
+export default createBaseComponent<'div', ScaleProps>(Scale);

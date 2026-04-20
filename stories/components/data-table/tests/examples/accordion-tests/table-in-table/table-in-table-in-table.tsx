@@ -1,6 +1,6 @@
-import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
@@ -20,7 +20,7 @@ const initData = new Array(7).fill({
   vol: '-',
 }).map((item, index) => {
   return {
-    [UNIQ_ROW_KEY]: (index + 1).toString(),
+    id: (index + 1).toString(),
     ...item,
   };
 });
@@ -74,6 +74,7 @@ const Demo = (props: TableInTableInTableProps) => {
       h='100%'
       data={sortedData}
       sort={sort}
+      uniqueRowKey='id'
       accordionMode={props.accordionMode}
       use={props.use}
       compact={props.compact}
@@ -90,7 +91,33 @@ const Demo = (props: TableInTableInTableProps) => {
 
 const TableExample = () => {
   const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
+  const [containerElement, setContainerElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    setContainerElement(containerRef.current);
+  }, []);
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
+    return (props) => {
+      if (props.columnName === 'vol' && containerElement) {
+        return (
+          <Text
+            ellipsis:cropPosition='middle'
+            ellipsis:containerElement={containerElement}
+            ellipsis:recalculateContainerWidth={typeof props.row.vol === 'string'
+              ? undefined
+              : (width: number) => {
+                  return width - 26;
+                }}
+          >
+            {props.value}
+          </Text>
+        );
+      }
+
+      return props.defaultRender();
+    };
+  }, [containerElement]);
 
   return (
     <DataTable
@@ -104,17 +131,7 @@ const TableExample = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      renderCell={(props) => {
-        if (props.columnName === 'vol') {
-          return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
-              {props.value}
-            </Ellipsis>
-          );
-        }
-
-        return props.defaultRender();
-      }}
+      renderCell={renderCell}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
           e.stopPropagation();
@@ -132,7 +149,33 @@ const ChartExample = () => {
 };
 const TableExample1 = () => {
   const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
+  const [containerElement, setContainerElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    setContainerElement(containerRef.current);
+  }, []);
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => {
+    return (props) => {
+      if (props.columnName === 'vol' && containerElement) {
+        return (
+          <Text
+            ellipsis:cropPosition='middle'
+            ellipsis:containerElement={containerElement}
+            ellipsis:recalculateContainerWidth={typeof props.row.vol === 'string'
+              ? undefined
+              : (width: number) => {
+                  return width - 26;
+                }}
+          >
+            {props.value}
+          </Text>
+        );
+      }
+
+      return props.defaultRender();
+    };
+  }, [containerElement]);
 
   return (
     <DataTable
@@ -145,17 +188,7 @@ const TableExample1 = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
       ]}
-      renderCell={(props) => {
-        if (props.columnName === 'vol') {
-          return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
-              {props.value}
-            </Ellipsis>
-          );
-        }
-
-        return props.defaultRender();
-      }}
+      renderCell={renderCell}
       onKeyDown={(e) => {
         if (e.key !== 'Escape') {
           e.stopPropagation();
@@ -247,7 +280,7 @@ const data2 = [
 
 const data = [
   {
-    [UNIQ_ROW_KEY]: '1',
+    id: '1',
     keyword: 'ebay buy1',
     kd: '77.8',
     cpc: '$1.25',
@@ -277,7 +310,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '2',
+    id: '2',
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
@@ -287,7 +320,7 @@ const data = [
     },
   },
   {
-    [UNIQ_ROW_KEY]: '3',
+    id: '3',
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
@@ -295,14 +328,14 @@ const data = [
     [ACCORDION]: (<TableExample />),
   },
   {
-    [UNIQ_ROW_KEY]: '4',
+    id: '4',
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
   },
   {
-    [UNIQ_ROW_KEY]: '5',
+    id: '5',
     keyword: 'ebay buy2',
     kd: '75.89',
     cpc: '$0',
@@ -314,7 +347,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '6',
+    id: '6',
     keyword: 'ebay buy3',
     kd: '100',
     cpc: '$0',
@@ -326,7 +359,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '7',
+    id: '7',
     keyword: 'ebay buy4',
     kd: '-',
     cpc: '$0',

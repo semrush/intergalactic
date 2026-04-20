@@ -1,25 +1,22 @@
+import { Box, type BoxProps } from '@semcore/base-components';
 import {
   createComponent,
   Component,
   sstyled,
   Root,
-  type UnknownProperties,
   type Intergalactic,
 } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
-import { Box, type BoxProps } from '@semcore/flex-box';
 import React from 'react';
 
 import style from './style/title.shadow.css';
 
-/** @deprecated */
-export interface IHeaderTitleProps extends HeaderTitleProps, UnknownProperties {}
 export type HeaderTitleProps = BoxProps & {
   /** A tool name that appears as part of the header title */
   toolName?: React.ReactNode;
 };
 
-class TitleRoot extends Component<IHeaderTitleProps> {
+class TitleRoot extends Component<HeaderTitleProps> {
   static displayName = 'Title';
   static style = style;
 

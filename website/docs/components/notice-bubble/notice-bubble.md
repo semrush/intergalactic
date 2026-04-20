@@ -8,16 +8,16 @@ tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-ap
 
 **NoticeBubble (Alert)** is a notification component that informs users about completed actions, the beginning or ending of a process.
 
-Let's compare NoticeBubble with [Notice](/components/notice/notice) and [NoticeGlobal](/components/notice-global/notice-global) based on the following criteria:
+Let's compare NoticeBubble with [Notice](/components/notice/notice) based on the following criteria:
 
-Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice and NoticeBubble
 
-| Criteria                                                                                    | Notice | NoticeBubble | NoticeGlobal |
-| ------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
-| Refers to the entire website                                                                | ❌     | ✅ ❌        | ✅           |
-| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        | ✅           |
-| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           | ✅           |
-| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           | ✅           |
+| Criteria                                                                                    | Notice | NoticeBubble |
+| ------------------------------------------------------------------------------------------- | ------ | ------------ |
+| Refers to the entire website                                                                | ❌     | ✅ ❌        |
+| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        |
+| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           |
+| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           |
 
 **This component includes:**
 
@@ -25,7 +25,7 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 - An optional `Close` icon to dismiss the alert (use the `Close` icon with M size).
 - An optional single button or two buttons.
 
-**It cannot contain:**
+**It can't contain:**
 
 - Images (messages for special events are an exception).
 - More than two buttons.
@@ -35,7 +35,7 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 ### When to use NoticeBubble
 
 - To notify about the beginning or completion of a process that remains hidden from the user.
-- For indicating changes to content in other parts of the report that are not currently being viewed._For example, starting or completing a campaign collection, or saving an event in drafts (where the changes are not visible to the user at the moment, as the event card remains unchanged on the screen), and more._
+- For indicating changes to content in other parts of the report that aren't currently being viewed._For example, starting or completing a campaign collection, or saving an event in drafts (where the changes aren't visible to the user at the moment, as the event card remains unchanged on the screen), and more._
 - To notify about an action that causes changes to the content on the page. _For example, using the "Undo" button to delete an item._
 - To notify about moving an item and removing it from its current position to other reports, lists, or tables (also applicable to content changes).
 
@@ -59,10 +59,10 @@ Table: Use cases for NoticeBubble types
 
 | Use case                       | Description                                                                                                                                                                                                                                                                                                                                   | Appearance example              |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| **Basic**                      | This type of notification is used to inform the user about the beginning or completion of a process that remains hidden from the user in the interface. It can also be used to notify about changes to content in other parts of the report that are not currently being viewed.                                                              | ![](static/text1.png)           |
-| **Undo action**                | This notification is used for completed actions with an option to cancel them. It is ideal for scenarios involving moving or deleting items. Use the button with `use="secondary"`, `theme="invert"`, and with M size for this purpose.                                                                                                       | ![](static/default.png)         |
+| **Basic**                      | This type of notification is used to inform the user about the beginning or completion of a process that remains hidden from the user in the interface. It can also be used to notify about changes to content in other parts of the report that aren't currently being viewed.                                                              | ![](static/text1.png)           |
+| **Undo action**                | This notification is used for completed actions with an option to cancel them. It's ideal for scenarios involving moving or deleting items. Use the button with `use="secondary"`, `theme="invert"`, and with M size for this purpose.                                                                                                       | ![](static/default.png)         |
 | **Reload action**              | The button name may change based on the context.                                                                                                                                                                                                                                                                                              | ![](static/reload-btn.png)      |
-| **Loading state**              | If the undo process takes time, display an intermediate loading state where the user cannot take any action. Use [Spin](/components/spin/spin) with size XS. However, refrain from using this state to display any other processes in the interface; instead, opt for the [ProgressBar](/components/progress-bar/progress-bar) in such cases. | ![](static/default-loading.png) |
+| **Loading state**              | If the undo process takes time, display an intermediate loading state where the user can't take any action. Use [Spin](/components/spin/spin) with size XS. However, refrain from using this state to display any other processes in the interface; instead, opt for the [ProgressBar](/components/progress-bar/progress-bar) in such cases. | ![](static/default-loading.png) |
 | **Completion state**           | Upon successful completion, show a notification that confirms the undo action (use an icon with M size). The height of the notification should be the same as the previous state. Refer to the animation description below for recommendations on animation and timing.                                                                       | ![](static/default-success.png) |
 | **Success**                    | This type of notification is suitable for conveying the success of user actions within the interface. It includes an additional colored icon to quickly convey the response of the interface to the user's actions without relying on reading the text.                                                                                       | ![](static/success-notice.png)  |
 | **Failure**                    | This type of notification is suitable for conveying the failure of user actions within the interface.                                                                                                                                                                                                                                         | ![](static/warning-notice.png)  |
@@ -100,7 +100,7 @@ Minimize the number of notifications to prevent banner blindness and irritation 
 You can show several notices at a time if necessary, but use this option thoughtfully.
 :::
 
-- It is recommended to display only one notification at a time for two primary reasons. Firstly, having multiple messages can hide valuable screen workspace, and secondly, they may scatter user's focus of attention. If multiple messages are shown simultaneously, it's likely they won't be read.
+- It's recommended to display only one notification at a time for two primary reasons. Firstly, having multiple messages can hide valuable screen workspace, and secondly, they may scatter user's focus of attention. If multiple messages are shown simultaneously, it's likely they won't be read.
 - If several actions are performed simultaneously by the system, they overlap each other in the same way as user actions, so only the last message will be visible.
 
 ### "Undo" notice
@@ -110,9 +110,9 @@ You can show several notices at a time if necessary, but use this option thought
 
 ### "Lost connection" notice
 
-- This type of notification appears as soon as the network connection is lost. It is commonly used in products that allow users to continue working with content even without network access.
+- This type of notification appears as soon as the network connection is lost. It's commonly used in products that allow users to continue working with content even without network access.
 - This notification acts as a separate alert and has the highest priority. Therefore, when it appears, all other user and system notifications appear below it. Each subsequent notification will overlap the previous one.
 - The notice automatically closes when the connection is restored.
 - There are two options for this notice type:
   1. For interfaces that can monitor the network connection themselves, use a notification without a button.
-  2. For interfaces that cannot monitor the network connection themselves and require a page refresh, use an alert notification with the "Reload the page" button.
+  2. For interfaces that can't monitor the network connection themselves and require a page refresh, use an alert notification with the "Reload the page" button.

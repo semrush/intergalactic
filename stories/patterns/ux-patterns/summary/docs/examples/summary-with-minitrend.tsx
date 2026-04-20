@@ -1,6 +1,7 @@
+import Info from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
-import Info from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import MiniChart from '@semcore/ui/mini-chart';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
@@ -10,16 +11,15 @@ import React from 'react';
 const Demo = () => (
   <Flex gap={6} direction='column' w='min-content'>
     <Flex direction='column'>
-      <Flex gap={1} alignItems='center'>
-        <Text size={200} noWrap>
-          Visibility
-        </Text>
+      <Flex gap={1} tag={Text} size={200}>
+        Visibility
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About visibility'
             color='icon-secondary-neutral'
+            mt='-1.5px'
           />
           <DescriptionTooltip.Popper aria-label='About visibility'>
             <Text size={200}>
@@ -43,16 +43,15 @@ const Demo = () => (
     </Flex>
     <Divider />
     <Flex direction='column'>
-      <Flex gap={1} alignItems='center'>
-        <Text size={200} noWrap>
-          Estimated traffic
-        </Text>
+      <Flex gap={1} tag={Text} size={200}>
+        Estimated traffic
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About estimated traffic'
             color='icon-secondary-neutral'
+            mt='-1.5px'
           />
           <DescriptionTooltip.Popper aria-label='About estimated traffic'>
             <Text size={200}>
@@ -90,16 +89,15 @@ const Demo = () => (
     </Flex>
     <Divider />
     <Flex direction='column'>
-      <Flex gap={1} alignItems='center'>
-        <Text size={200} noWrap>
-          Average position
-        </Text>
+      <Flex gap={1} tag={Text} size={200}>
+        Average position
         <DescriptionTooltip>
           <DescriptionTooltip.Trigger
-            tag={Info}
-            interactive
+            tag={ButtonLink}
+            addonLeft={Info}
             aria-label='About Average position'
             color='icon-secondary-neutral'
+            mt='-1.5px'
           />
           <DescriptionTooltip.Popper aria-label='About Average position'>
             <Text size={200}>

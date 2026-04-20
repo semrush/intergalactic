@@ -1,7 +1,7 @@
+import FileExportM from '@semcore/icon/FileExport/m';
 import Button from '@semcore/ui/button';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
 import Link from '@semcore/ui/link';
-import Tooltip, { DescriptionTooltip, Hint, type DescriptionTooltipProps, type HintProps, type TooltipProps } from '@semcore/ui/tooltip';
+import Tooltip, { DescriptionTooltip, type DescriptionTooltipProps, type TooltipProps } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -9,34 +9,19 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-const Components = [Hint.displayName, Tooltip.displayName, DescriptionTooltip.displayName] as const;
+const Components = [Tooltip.displayName, DescriptionTooltip.displayName] as const;
 
 type AdditionalJSXProps<Component extends (typeof Components)[number]> = {
   component: Component;
 };
-type HintComponentJSXProps = JSXProps<HintProps> & AdditionalJSXProps<'Hint'>;
 type DescriptionTooltipComponentJSXProps = JSXProps<DescriptionTooltipProps> & AdditionalJSXProps<'DescriptionTooltip'>;
 type TooltipComponentJSXProps = JSXProps<TooltipProps> & AdditionalJSXProps<'Tooltip'>;
 
 export type TooltipJSXProps =
-  | HintComponentJSXProps
   | DescriptionTooltipComponentJSXProps
   | TooltipComponentJSXProps;
 
 const JSXMap = {
-  Hint: (props: HintComponentJSXProps) => (
-    <Hint
-      title='Export to PDF'
-      placement={props.placement}
-      theme={props.theme}
-    >
-      <Button>
-        <Button.Addon>
-          <FileExportM />
-        </Button.Addon>
-      </Button>
-    </Hint>
-  ),
   DescriptionTooltip: (props: DescriptionTooltipComponentJSXProps) => (
     <DescriptionTooltip
       placement={props.placement}
@@ -74,7 +59,6 @@ const JSXMap = {
 function getJSX(props: TooltipJSXProps) {
   const { component } = props;
 
-  if (component === 'Hint') return JSXMap[component](props);
   if (component === 'DescriptionTooltip') return JSXMap[component](props);
   return JSXMap[component](props);
 }

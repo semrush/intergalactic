@@ -43,7 +43,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   pairwiseVariables.forEach((props) => {
     test(`Verify select basic props and addons: ${props.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@icon'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/basic_props_and_trigger_addons.tsx', 'en', props);
 
@@ -192,6 +192,13 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Enter');
     await locators.options(page).nth(14).waitFor({ state: 'visible' });
+    await locators.options(page).nth(14).scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => {
+      const el = document.querySelectorAll('[role="option"]')[14];
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      return rect.top >= 0 && rect.bottom <= window.innerHeight;
+    });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });

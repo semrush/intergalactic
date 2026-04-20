@@ -1,3 +1,4 @@
+import { Flex, ScrollArea as ScrollAreaComponent, Box } from '@semcore/base-components';
 import ButtonComponent from '@semcore/button';
 import { createComponent, sstyled, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -7,8 +8,6 @@ import { setFocus } from '@semcore/core/lib/utils/focus-lock/setFocus';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
-import { Flex, Box } from '@semcore/flex-box';
-import ScrollAreaComponent from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -113,7 +112,9 @@ class DropdownMenuRoot extends AbstractDropdown {
 
   afterOpenPopper() {
     const { selected, options } = this.menuElements;
+    const isFocusAlreadyInPopper = isFocusInside(this.popperRef.current);
 
+    if (isFocusAlreadyInPopper) return;
     if (selected && options && !this.menuRef.current?.dataset.isVirtual) return;
 
     super.afterOpenPopper();
@@ -328,13 +329,14 @@ class DropdownMenuRoot extends AbstractDropdown {
 function List({ styles, Children }) {
   const SDropdownMenuList = Root;
   const SBar = ScrollAreaComponent.Bar;
+  const SScrollContainer = ScrollAreaComponent.Container;
 
   return sstyled(styles)(
     <ListBoxContextProvider>
       <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
-        <ScrollAreaComponent.Container tabIndex={undefined}>
+        <SScrollContainer tabIndex={undefined}>
           <Children />
-        </ScrollAreaComponent.Container>
+        </SScrollContainer>
         <SBar orientation='horizontal' />
         <SBar orientation='vertical' />
       </SDropdownMenuList>
@@ -393,7 +395,8 @@ function Item({
 
   const menuItemContextValue = {
     contentId: id,
-    ref: forkRef(forwardRef, itemRef),
+    ref: itemRef,
+    forwardRef,
     role,
     tabIndex,
     ariaChecked,
@@ -446,13 +449,13 @@ function Item({
       document.removeEventListener('focus', onFocus, { capture: true });
       document.removeEventListener('blur', onBlur, { capture: true });
     };
-  }, [itemRef.current]);
+  });
 
   return sstyled(styles)(
     <menuItemContext.Provider value={menuItemContextValue}>
       <SDropdownMenuItemContainer
         render={Dropdown.Item}
-        ref={advancedMode ? undefined : menuItemContextValue.ref}
+        ref={advancedMode ? undefined : forkRef(itemRef, forwardRef)}
         use:highlighted={!disabled && highlighted && lastInteraction.isKeyboard()}
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
@@ -509,7 +512,7 @@ function ItemContent({ styles }) {
       role={menuItemCtxValue.role}
       id={menuItemCtxValue.contentId}
       tabIndex={menuItemCtxValue.tabIndex}
-      ref={forkRef(menuItemCtxValue.ref, ref)}
+      ref={forkRef(menuItemCtxValue.ref, menuItemCtxValue.forwardRef, ref)}
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
       aria-expanded={subMenu}
@@ -521,9 +524,20 @@ function ItemContent({ styles }) {
   );
 }
 
-function ItemContentText({ styles }) {
+function ItemContentText({ styles, ellipsis = false }) {
   const SItemContentText = Root;
-  return sstyled(styles)(<SItemContentText render={Text} />);
+  const menuItemCtxValue = React.useContext(menuItemContext);
+
+  return sstyled(styles)(
+    <>
+      <SItemContentText
+        render={Text}
+        ellipsis={ellipsis}
+        hint:triggerRef={menuItemCtxValue.ref}
+        hint:placement='right'
+      />
+    </>,
+  );
 }
 
 function ItemHint({ styles }) {
@@ -531,46 +545,6 @@ function ItemHint({ styles }) {
   const { hintId } = React.useContext(menuItemContext);
 
   return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden='true' />);
-}
-
-/**
- * @deprecated Use Item hint
- */
-function Hint(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItemContainer render={Dropdown.Item} variant='hint' />,
-  );
-}
-/**
- * @deprecated Use Group with title prop
- */
-function Title(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItemContainer render={Dropdown.Item} variant='title' />,
-  );
-}
-
-/**
- * @deprecated
- */
-function Nesting({ forwardRef }) {
-  return <Root render={DropdownMenu.Item} ref={forwardRef} />;
-}
-
-/**
- * @deprecated
- */
-function NestingTrigger({ forwardRef }) {
-  return (
-    <Root
-      render={DropdownMenu.Item.Content}
-      tag={DropdownMenu.Trigger}
-      ref={forwardRef}
-      use:role='menuitem'
-    />
-  );
 }
 
 const DropdownMenu = createComponent(
@@ -583,12 +557,6 @@ const DropdownMenu = createComponent(
     Actions,
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
-    /**
-     * @deprecated. Use just Item. See examples on
-     */
-    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
-    ItemTitle: Title,
-    ItemHint: Hint,
     Group: Dropdown.Group,
   },
   {

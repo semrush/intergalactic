@@ -1,7 +1,8 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
-import { Box } from '@semcore/flex-box';
+import { Text as UikitText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tab-panel.shadow.css';
@@ -28,6 +29,8 @@ class TabPanelRoot extends Component {
 
   static enhance = [a11yEnhance(optionsA11yEnhance)];
 
+  buttonRefsList = [];
+
   uncontrolledProps() {
     return {
       value: null,
@@ -45,7 +48,7 @@ class TabPanelRoot extends Component {
     }
   };
 
-  getItemProps(props, _index) {
+  getItemProps(props, index) {
     const { value } = this.asProps;
     const isSelected = value === props.value;
     return {
@@ -54,6 +57,15 @@ class TabPanelRoot extends Component {
       'onKeyDown': this.handleKeyDown(props.value),
       'tabIndex': isSelected ? 0 : -1,
       'aria-selected': isSelected,
+      'buttonRefsList': this.buttonRefsList,
+      index,
+    };
+  }
+
+  getItemTextProps(_, index) {
+    return {
+      buttonRefsList: this.buttonRefsList,
+      index,
     };
   }
 
@@ -67,10 +79,13 @@ class TabPanelRoot extends Component {
 
 function TabPanelItem(props) {
   const STabPanelItem = Root;
-  const { Children, styles, addonLeft, addonRight } = props;
+  const { Children, styles, addonLeft, addonRight, buttonRefsList, index } = props;
+  const buttonRef = React.useRef();
+
+  buttonRefsList[index] = buttonRef;
 
   return sstyled(styles)(
-    <STabPanelItem render={Box} type='button' tag='button' tabIndex={0} role='tab'>
+    <STabPanelItem render={Box} type='button' tag='button' tabIndex={0} role='tab' ref={buttonRef}>
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}
@@ -80,8 +95,8 @@ function TabPanelItem(props) {
 
 function Text(props) {
   const SText = Root;
-  const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag='span' />);
+  const { styles, ellipsis = true, buttonRefsList, index } = props;
+  return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} medium hint:triggerRef={buttonRefsList[index]} />);
 }
 
 function Addon(props) {

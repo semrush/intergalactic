@@ -1,8 +1,8 @@
+import CloseM from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/m';
 import AddFilter from '@semcore/ui/add-filter';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
-import CloseM from '@semcore/ui/icon/Close/m';
-import SearchM from '@semcore/ui/icon/Search/m';
 import Input from '@semcore/ui/input';
 import Select from '@semcore/ui/select';
 import React from 'react';

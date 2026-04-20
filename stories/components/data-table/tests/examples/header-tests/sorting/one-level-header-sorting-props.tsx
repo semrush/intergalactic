@@ -39,7 +39,7 @@ const Demo = (props: OneLevelHeaderSortingProps) => {
   );
 
   return (
-    <DataTable<typeof data>
+    <DataTable<typeof data, never, never>
       data={sortedData}
       sort={sort}
       onSortChange={setSort}

@@ -2,6 +2,47 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.1] - 2026-04-16
+
+### Fixed
+
+- Build processing to correct extract styles.
+
+## [17.0.0] - 2026-04-15
+
+### BREAK
+
+- Removed 2px border-radius for Bars.
+
+### Changed
+
+- Refined a11y module invocation logic
+
+## [16.6.0] - 2026-04-01
+
+### Fixed
+
+- Bubble chart plot size calculation.
+
+### Added
+
+- `percentFormatter` for Cigarette.
+- Added `cursor:pointer` for `Bubble` chart in case bubbles are
+clickable.
+- `minimalBarWidth` for `Cigarette` chart.
+
+## [16.5.0] - 2026-02-10
+
+### Added
+
+- `showPercentValueInTooltip` prop for Cigarette chart.
+
+### Fixed
+
+- Fixed types by removing unsupported `showTotalInTooltip` prop from
+certain chart components.
+- Fixed `Annotation` overflow in `CompactHorizontalBar`.
+
 ## [16.4.2] - 2025-12-18
 
 ### Fixed

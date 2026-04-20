@@ -14,14 +14,14 @@ For the Semrush developers and designers we have a couple of onboarding files. R
 
 - [Themization workshop file](https://www.figma.com/design/7dJaaWaqoTKdeGU4Pq02rz/Themization-workshop?node-id=0-1&node-type=canvas&t=cC709O9aHUP7lTRL-11) which you can duplicate and play with the examples
 - [Brief tokens explanation](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=14802-111796&node-type=frame&t=qOTf0DSn0M8p63of-11) from our Theme's playground file
-- [Big presentation on design tokens](https://www.figma.com/design/DfhEsCc7j9c1XTpi7mwHwt/Design-tokens-(for-designers)?node-id=0-1&node-type=canvas&t=2zFBWvB8qwRtpivO-11)
+- [Presentation on design tokens](https://www.figma.com/design/DfhEsCc7j9c1XTpi7mwHwt/Design-tokens-(for-designers)?node-id=0-1&node-type=canvas&t=2zFBWvB8qwRtpivO-11)
 :::
 
 ## Token sets
 
 There are base and semantic token sets in our design system.
 
-**Base tokens** represent the theme's global palette. Changing their values will affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette you can use tools like [Huetone](https://huetone.ardov.me/).
+**Base tokens** represent the theme's global palette. Changing their values will affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette and meet accessibility guidelines, use tools like [Huetone](https://huetone.ardov.me/).
 
 ![](static/base-tokens.png)
 

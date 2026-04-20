@@ -1,7 +1,8 @@
+import SummaryAI from '@semcore/icon/SummaryAI/m';
+import type { NSText } from '@semcore/typography';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import type { ButtonProps } from '@semcore/ui/button';
 import { ButtonFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import SummaryAI from '@semcore/ui/icon/SummaryAI/m';
 import React from 'react';
 
 export type ButtonFHAdvancedProps = ButtonProps & {
@@ -10,11 +11,16 @@ export type ButtonFHAdvancedProps = ButtonProps & {
   badgeText?: string;
   animatedSparkleCount?: number;
   showIcon?: boolean;
+  useBadge?: 'accent' | 'neutral';
   use?: 'primary' | 'secondary' | 'tertiary';
   size?: 'm' | 'l';
   disabled?: boolean;
   loading?: boolean;
   active?: boolean;
+  ellipsis?: NSText.EllipsisProps;
+  w?: number | string;
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
 };
 
 const Demo = (props: ButtonFHAdvancedProps) => {
@@ -24,11 +30,14 @@ const Demo = (props: ButtonFHAdvancedProps) => {
     badgeText = 'AI-powered',
     animatedSparkleCount = 5,
     showIcon = true,
+    hintPlacement,
+    hintProps,
     use = 'primary',
     size = 'l',
     disabled = false,
     loading = false,
     active = false,
+    ellipsis,
   } = props;
 
   return (
@@ -47,14 +56,28 @@ const Demo = (props: ButtonFHAdvancedProps) => {
             ? (
                 <>
                   <ButtonFH.Addon animatedSparkleCount={animatedSparkleCount} />
-                  <ButtonFH.Text>{buttonText}</ButtonFH.Text>
+                  <ButtonFH.Text
+                    {...ellipsis}
+                    hint={props.hintProps}
+                    hint:placement={props.hintPlacement}
+                    w={props.w}
+                  >
+                    {buttonText}
+                  </ButtonFH.Text>
                   <ButtonFH.Addon>
-                    <BadgeFH>{badgeText}</BadgeFH>
+                    <BadgeFH use={props.useBadge}>{badgeText}</BadgeFH>
                   </ButtonFH.Addon>
                 </>
               )
             : (
-                buttonText
+                <ButtonFH.Text
+                  {...ellipsis}
+                  hint={props.hintProps}
+                  hint:placement={props.hintPlacement}
+                  w={props.w}
+                >
+                  {buttonText}
+                </ButtonFH.Text>
               )}
         </ButtonFH>
         <ScreenReaderOnly id='button-aria-desc'>Powered by AI</ScreenReaderOnly>
@@ -64,7 +87,7 @@ const Demo = (props: ButtonFHAdvancedProps) => {
 };
 
 export const defaultProps: ButtonFHAdvancedProps = {
-  buttonText: 'Primary Large',
+  buttonText: 'Button Feature',
   showBadge: false,
   badgeText: 'AI-powered',
   animatedSparkleCount: 5,
@@ -74,6 +97,11 @@ export const defaultProps: ButtonFHAdvancedProps = {
   disabled: false,
   loading: false,
   active: false,
+  useBadge: 'accent',
+  ellipsis: {
+    ellipsis: true,
+  },
+  w: 200,
 };
 
 Demo.defaultProps = defaultProps;

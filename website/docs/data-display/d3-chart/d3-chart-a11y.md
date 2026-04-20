@@ -58,12 +58,12 @@ Data summarization is performed on the client side in linear time, linear memory
 1. Add both the `XAxis.Title` and the `YAxis.Title` components. These components help the summarizer generate a better chart summary.
 1. Make sure that all the information displayed in the tooltip is also provided in the `data` property of `<Plot />`.
 1. Update the accessible summary when the user checks or unchecks legend items.
-1. If you are [redefining children rendering](#redefining-children-rendering-of-ticks) of the `XAxis.Ticks` or `YAxis.Ticks` component, return both the `children` and the `value` properties.
+1. If you're [redefining children rendering](#redefining-children-rendering-of-ticks) of the `XAxis.Ticks` or `YAxis.Ticks` component, return both the `children` and the `value` properties.
 1. If your chart is highly customized, the summarizer may struggle with the summary. To fix that, either [tweak the data summarizer configuration](#tweak-data-summarizer-configuration) or [add your own summary manually](#add-summary-manually).
 
 ### Redefining children rendering of ticks
 
-If you are redefining children rendering of `<XAxis.Ticks>` or `<YAxis.Ticks>`, beside `children` return the `value` property in the render function. This way `value` will be used to describe a tick in the generated summary. Note that render function may be called more times than ticks displayed because some ticks making sense for summary generation may make no sense for visualization.
+If you're redefining children rendering of `<XAxis.Ticks>` or `<YAxis.Ticks>`, beside `children` return the `value` property in the render function. This way `value` will be used to describe a tick in the generated summary. Note that render function may be called more times than ticks displayed because some ticks making sense for summary generation may make no sense for visualization.
 
 ```jsx
 <XAxis>
@@ -114,6 +114,6 @@ Refer to [our live examples](/data-display/d3-chart/d3-chart-code#pattern-fills-
 
 ## Contributing to accessible summary module
 
-If you're interested in expanding the chart accessible data summary module, or ejecting the module into a separated package, feel free to [open a pull request](https://github.com/semrush/intergalactic/tree/master/semcore/d3-chart/src/a11y).
+If you're interested in expanding the chart accessible data summary module, or ejecting the module into a separated package, feel free to [open a pull request](https://github.com/semrush/intergalactic/tree/HEAD/semcore/d3-chart/src/a11y).
 
 <script setup>import { data as types } from '@types.data.ts';</script>

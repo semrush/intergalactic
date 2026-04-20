@@ -1,4 +1,4 @@
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/base-components';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
@@ -161,7 +161,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test.concurrent('Verify right change index with Next button', ({ expect }) => {
+  test.concurrent('Verify right change index with Next button', () => {
     const spy = vi.fn();
     const { rerender, getByTestId } = render(
       <Carousel index={1} onIndexChange={spy}>

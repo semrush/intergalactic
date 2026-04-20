@@ -5,6 +5,7 @@ import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
 import Animation from './Animation';
+import type { CollapseProps } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
 function Collapse(
@@ -76,4 +77,4 @@ function Collapse(
 
 Collapse.displayName = 'Collapse';
 
-export default createBaseComponent(Collapse);
+export default createBaseComponent<'div', CollapseProps>(Collapse);

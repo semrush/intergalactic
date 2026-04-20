@@ -4,7 +4,7 @@ import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import React from 'react';
 
 import { Box } from '../flex-box';
-import type { AnimationContext } from './Animation.types';
+import type { AnimationContext, AnimationProps } from './Animation.types';
 import style from './style/animate.shadow.css';
 
 function propToArray(prop: any[]) {
@@ -28,7 +28,7 @@ const makeAnimationContextValue = () => {
 };
 export const animationContext = React.createContext<AnimationContext | null>(null);
 
-class Animation extends Component {
+class Animation extends Component<AnimationProps, AnimationContext> {
   static displayName = 'Animation';
   static style = style;
   static defaultProps = {
@@ -144,4 +144,4 @@ class Animation extends Component {
   }
 }
 
-export default createComponent(Animation);
+export default createComponent<'div', AnimationProps>(Animation);

@@ -1,5 +1,5 @@
+import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type { ScaleLinear } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -8,7 +8,10 @@ export type DataKey = string;
 
 export type VennChartData = Record<DataKey, number>;
 
-export type VennChartProps = BaseChartProps<VennChartData> & {
+export type VennChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<VennChartData>,
+  'showTotalInTooltip'
+> & {
   /** Internal */
   groupKey?: never;
   /** Custom x-axis scale */

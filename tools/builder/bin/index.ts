@@ -28,7 +28,7 @@ process.chdir(babelPresetPackagePath);
 const makeCommand: Record<string, (...args: any[]) => string> = {
   CLEANUP: () => `${workingDir}/lib`,
   TYPES: (output: string) =>
-    `tsc --emitDeclarationOnly --baseUrl ${workingDir}/src --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
+    `tsc --emitDeclarationOnly --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
   COPY_TYPES: (output: string) =>
     `mkdir -p ${workingDir}/lib/${output} && find ${workingDir}/src -type f -name "*.d.ts" -exec cp {} ${workingDir}/lib/${output} ";"`,
   BABEL: (output: string, babelArgs: string) =>
@@ -37,6 +37,7 @@ const makeCommand: Record<string, (...args: any[]) => string> = {
     return `pnpm babel ${workingDir}/src/index.ts --out-dir ${workingDir}/lib ${babelArgs} &&
     pnpm babel ${workingDir}/src/coreFactory.tsx --out-dir ${workingDir}/lib ${babelArgs} &&
     pnpm babel ${workingDir}/src/utils --out-dir ${workingDir}/lib/utils ${babelArgs} &&
+    pnpm babel ${workingDir}/src/decorators --out-dir ${workingDir}/lib/decorators ${babelArgs} &&
     pnpm babel ${workingDir}/src/core-types --out-dir ${workingDir}/lib/core-types ${babelArgs} &&
     pnpm babel ${workingDir}/src/enhancement --out-dir ${workingDir}/lib/enhancement ${babelArgs} &&
     pnpm babel ${workingDir}/src/styled --out-dir ${workingDir}/lib/styled ${babelArgs} &&

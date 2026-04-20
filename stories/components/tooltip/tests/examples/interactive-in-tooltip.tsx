@@ -1,8 +1,8 @@
+import CheckAltM from '@semcore/icon/CheckAlt/m';
+import FileExportM from '@semcore/icon/FileExport/m';
+import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-import CheckAltM from '@semcore/ui/icon/CheckAlt/m';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';

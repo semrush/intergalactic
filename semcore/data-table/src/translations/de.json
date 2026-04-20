@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Sortierbar"
+  "sortableColumn": "Sortierbar",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Details einblenden",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Details ausblenden",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Alle Elemente",
+  "DataTable.allItemsSelected:aria-live": "Alle Elemente ausgewählt",
+  "DataTable.allItemsDeselected:aria-live": "Alle Elemente nicht ausgewählt"
 }

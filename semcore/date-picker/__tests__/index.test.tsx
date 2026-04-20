@@ -97,7 +97,7 @@ describe('DateRangePicker', () => {
     vi.useRealTimers();
   });
 
-  test.sequential('Verify not select disabled date from the keyboard', async ({ expect }) => {
+  test.sequential('Verify not select disabled date from the keyboard', async () => {
     mockDate('2023-12-20T12:00:00.808Z');
     const onPreselectedValueChange = vi.fn();
     const { getByTestId, getByText } = render(
@@ -133,7 +133,7 @@ describe('DateRangePicker', () => {
     expect(onPreselectedValueChange).toBeCalledTimes(1); // shouldn't be called the second time - 28 is disabled date
   });
 
-  test('Verify change month after select new date from the keyboard', async ({ expect }) => {
+  test('Verify change month after select new date from the keyboard', async () => {
     mockDate('2023-12-20T12:00:00.808Z');
 
     const { getByTestId, getByText } = render(
@@ -154,5 +154,157 @@ describe('DateRangePicker', () => {
     await userEvent.keyboard('[ArrowDown]');
 
     expect(getByText('February 2024')).toBeTruthy();
+  });
+
+  test('Verify isDisabled works with single disabled date', () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+    const disabledDate = new Date('2023-12-25');
+
+    const { getByLabelText } = render(
+      <DateRangePicker visible disabled={[disabledDate]} defaultDisplayedPeriod={new Date()}>
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
+
+    const disabledCell = getByLabelText('Dec 25, 2023');
+    expect(disabledCell).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  test('Verify isDisabled works with date range', () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+    const disabledRange = [new Date('2023-12-24'), new Date('2023-12-26')];
+
+    const { getByLabelText } = render(
+      <DateRangePicker visible disabled={[disabledRange]} defaultDisplayedPeriod={new Date()}>
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
+
+    const disabledCell24 = getByLabelText('Dec 24, 2023');
+    const disabledCell25 = getByLabelText('Dec 25, 2023');
+    const disabledCell26 = getByLabelText('Dec 26, 2023');
+
+    expect(disabledCell24).toHaveAttribute('aria-disabled', 'true');
+    expect(disabledCell25).toHaveAttribute('aria-disabled', 'true');
+    expect(disabledCell26).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  test('Verify isDisabled works with multiple disabled dates', () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+    const disabledDates = [new Date('2023-12-25'), new Date('2023-12-30')];
+
+    const { getByLabelText } = render(
+      <DateRangePicker visible disabled={disabledDates} defaultDisplayedPeriod={new Date()}>
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
+
+    const disabledCell25 = getByLabelText('Dec 25, 2023');
+    const disabledCell30 = getByLabelText('Dec 30, 2023');
+    const enabledCell27 = getByLabelText('Dec 27, 2023');
+
+    expect(disabledCell25).toHaveAttribute('aria-disabled', 'true');
+    expect(disabledCell30).toHaveAttribute('aria-disabled', 'true');
+    expect(enabledCell27).not.toHaveAttribute('aria-disabled', 'true');
+  });
+
+  test('Verify handleReset clears value and closes picker', async () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+    const onChange = vi.fn();
+    const onVisibleChange = vi.fn();
+
+    const { getByText } = render(
+      <DateRangePicker
+        visible
+        defaultValue={[new Date('2023-12-20'), new Date('2023-12-25')]}
+        onChange={onChange}
+        onVisibleChange={onVisibleChange}
+        defaultDisplayedPeriod={new Date()}
+      >
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
+
+    const resetButton = getByText('Reset');
+    fireEvent.click(resetButton);
+
+    expect(onChange).toHaveBeenCalledWith([]);
+    expect(onVisibleChange).toHaveBeenCalledWith(false);
+  });
+
+  test('Verify handleApply applies selected value and closes picker', async () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+    const onChange = vi.fn();
+    const onVisibleChange = vi.fn();
+
+    const { getByLabelText, getByText } = render(
+      <DateRangePicker
+        visible
+        onChange={onChange}
+        onVisibleChange={onVisibleChange}
+        defaultDisplayedPeriod={new Date()}
+      >
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
+
+    // Select date range using aria-labels to avoid duplicates
+    fireEvent.click(getByLabelText('Dec 20, 2023'));
+    fireEvent.click(getByLabelText('Dec 25, 2023'));
+
+    // Apply selection
+    const applyButton = getByText('Apply');
+    fireEvent.click(applyButton);
+
+    expect(onChange).toHaveBeenCalled();
+    expect(onVisibleChange).toHaveBeenCalledWith(false);
+  });
+
+  test('Verify handleApply with same start and end date', async () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+    const onChange = vi.fn();
+
+    const { getByLabelText, getByText } = render(
+      <DateRangePicker
+        visible
+        onChange={onChange}
+        defaultDisplayedPeriod={new Date()}
+      >
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
+
+    // Select single date (start date = end date)
+    fireEvent.click(getByLabelText('Dec 20, 2023'));
+
+    // Apply selection
+    const applyButton = getByText('Apply');
+    fireEvent.click(applyButton);
+
+    const callArgs = onChange.mock.calls[0][0];
+    expect(callArgs[0]).toEqual(callArgs[1]); // start date equals end date
+  });
+
+  test('Verify reset button is not rendered when unclearable is true', () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+
+    const { queryByText } = render(
+      <DateRangePicker
+        visible
+        unclearable
+        defaultDisplayedPeriod={new Date()}
+      >
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
+
+    expect(queryByText('Reset')).toBeNull();
   });
 });

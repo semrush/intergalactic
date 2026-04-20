@@ -1,5 +1,5 @@
+import type { Flex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Flex } from '@semcore/flex-box';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 
 import type { BaseChartProps } from './AbstractChart.type';
@@ -7,7 +7,10 @@ import type { interpolateValue } from '../../utils';
 
 export type ScatterPlotChartData = Array<Record<string, number | typeof interpolateValue | Date>>;
 
-export type ScatterPlotChartProps = BaseChartProps<ScatterPlotChartData> & {
+export type ScatterPlotChartProps = Intergalactic.InternalTypings.EfficientOmit<
+  BaseChartProps<ScatterPlotChartData>,
+  'showTotalInTooltip'
+> & {
   /** Field name that groups the data points */
   groupKey: string;
   /** Custom x-axis scale */

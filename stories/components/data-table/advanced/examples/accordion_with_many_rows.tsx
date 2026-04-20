@@ -1,5 +1,7 @@
+import type { EllipsisSettings } from '@semcore/ui/base-components';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 export type TableInTableProps = {
@@ -11,9 +13,51 @@ export type TableInTableProps = {
   >['onAccordionToggle'];
   accordionDuration: DataTableProps<typeof data, any, any>['accordionDuration'];
   accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
+  cropPosition?: EllipsisSettings['cropPosition'];
+  hintProps?: false;
 };
 
 const Demo = (props: TableInTableProps) => {
+  const keywordRef = React.useRef<HTMLDivElement | null>(null);
+  const volRef = React.useRef<HTMLDivElement | null>(null);
+
+  const [keywordElement, setKeywordElement] = React.useState<HTMLDivElement | null>(null);
+  const [volElement, setVolElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    setKeywordElement(keywordRef.current);
+    setVolElement(volRef.current);
+  }, []);
+
+  const cropPos = props.cropPosition ?? 'middle';
+
+  const renderCell: DataTableProps<any, any, any>['renderCell'] = React.useMemo(() => (cellProps) => {
+    if (cellProps.dataKey === 'keyword' && keywordElement) {
+      return (
+        <Text
+          ellipsis:cropPosition={cropPos}
+          ellipsis:containerElement={keywordElement}
+          ellipsis:recalculateContainerWidth={(cellProps.isAccordionRow || cellProps.row[ACCORDION]) ? (width: number) => width - 26 : undefined}
+          hint={props.hintProps}
+        >
+          {cellProps.value}
+        </Text>
+      );
+    }
+    if (cellProps.dataKey === 'vol' && volElement) {
+      return (
+        <Text
+          ellipsis:cropPosition={cropPos}
+          ellipsis:containerElement={volElement}
+          hint={props.hintProps}
+        >
+          {cellProps.value}
+        </Text>
+      );
+    }
+    return cellProps.defaultRender();
+  }, [keywordElement, volElement, cropPos, props.hintProps]);
+
   return (
     <DataTable
       data={data}
@@ -23,10 +67,10 @@ const Demo = (props: TableInTableProps) => {
       accordionAnimationRows={props.accordionAnimationRows}
       accordionMode={props.accordionMode}
       columns={[
-        { name: 'keyword', children: 'Keyword' },
+        { name: 'keyword', children: 'Keyword', ref: keywordRef, gtcWidth: '120px' },
         { name: 'kd', children: 'KD %' },
         { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.' },
+        { name: 'vol', children: 'Vol.', ref: volRef, gtcWidth: 'minmax(60px, 120px)' },
         { name: 'kd1', children: 'KD %' },
         { name: 'cpc1', children: 'CPC' },
         { name: 'vol1', children: 'Vol.' },
@@ -40,6 +84,7 @@ const Demo = (props: TableInTableProps) => {
         { name: 'cpc4', children: 'CPC' },
         { name: 'vol4', children: 'Vol.' },
       ]}
+      renderCell={renderCell}
     />
   );
 };
@@ -48,9 +93,20 @@ export const accordionTableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
   accordionAnimationRows: undefined,
   accordionDuration: undefined,
+  cropPosition: 'middle',
+  hintProps: undefined,
 };
 
 Demo.defaultProps = accordionTableInTableDefaultProps;
+
+function generateRandomString(length: number) {
+  const chars = '0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
 
 const acc = Array(300)
   .fill(null)
@@ -58,7 +114,7 @@ const acc = Array(300)
     keyword: 'www.ebay.com' + id,
     kd: '11.2',
     cpc: '$3.4',
-    vol: '65,457,920',
+    vol: generateRandomString(10),
 
     kd1: '1.2',
     cpc1: '$4.4',

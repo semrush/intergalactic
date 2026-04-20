@@ -1,16 +1,15 @@
+import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import DropdownMenu from '@semcore/dropdown-menu';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/Close/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import type { SelectProps } from '@semcore/select';
 import React from 'react';
 
-import type AddFilterType from './AddFilter.types';
-import type { AddFilterProps, AddFilterItemProps, AddFilterKey } from './AddFilter.types';
+import type { AddFilterType, AddFilterProps, AddFilterItemProps, AddFilterKey } from './AddFilter.types';
 import AddFilterDropdown from './components/AddFilterDropdown';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterSelect from './components/AddFilterSelect';
@@ -38,12 +37,12 @@ type AddFilterState = {
 
 class RootAddFilter extends Component<
   AddFilterProps,
-  {},
-  AddFilterState,
   typeof RootAddFilter.enhance,
+  { visibleFilters: null },
   {
     visibleFilters: Exclude<AddFilterProps['visibleFilters'], undefined>;
-  }
+  },
+  AddFilterState
 > {
   addFilterTrigger = React.createRef<HTMLButtonElement>();
   filtersFocusMap: Map<string | undefined, HTMLElement> = new Map();
@@ -306,10 +305,10 @@ function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFilte
     : null;
 }
 
-const AddFilter: typeof AddFilterType = createComponent(RootAddFilter, {
+const AddFilter = createComponent(RootAddFilter, {
   Select: AddFilterSelect,
   Input: AddFilterInput,
   Dropdown: AddFilterDropdown,
-});
+}) as AddFilterType;
 
 export default AddFilter;

@@ -76,4 +76,82 @@ describe('Wizard', () => {
     fireEvent.click(getByTestId('second-step'));
     expect(spy).toHaveBeenCalledWith(2, expect.any(Object));
   });
+
+  test('Should accept numeric steps starting from 0', () => {
+    const { getByText, queryByText } = render(
+      <Wizard disablePortal visible step={0}>
+        <Wizard.Sidebar title='Header'>
+          <Wizard.Stepper step={0}>Step 0</Wizard.Stepper>
+          <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
+          <Wizard.Stepper step={2}>Step 2</Wizard.Stepper>
+        </Wizard.Sidebar>
+        <Wizard.Content>
+          <Wizard.Step step={0}>First page (step 0)</Wizard.Step>
+          <Wizard.Step step={1}>Second page</Wizard.Step>
+          <Wizard.Step step={2}>Third page</Wizard.Step>
+        </Wizard.Content>
+      </Wizard>,
+    );
+
+    expect(getByText('First page (step 0)')).toBeTruthy();
+    expect(queryByText('Second page')).toBeNull();
+    expect(queryByText('Third page')).toBeNull();
+  });
+
+  test('Should call onActive with correct numeric step on StepNext click', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <Wizard disablePortal visible step={1}>
+        <Wizard.Content>
+          <Wizard.Step step={1}>Page 1</Wizard.Step>
+          <Wizard.Step step={2}>Page 2</Wizard.Step>
+          <Wizard.StepNext data-testid='next-btn' onActive={spy} />
+        </Wizard.Content>
+      </Wizard>,
+    );
+
+    fireEvent.click(getByTestId('next-btn'));
+    expect(spy).toHaveBeenCalledWith(2);
+  });
+
+  test('Should call onActive with correct numeric step on StepBack click', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <Wizard disablePortal visible step={2}>
+        <Wizard.Content>
+          <Wizard.Step step={1}>Page 1</Wizard.Step>
+          <Wizard.Step step={2}>Page 2</Wizard.Step>
+          <Wizard.StepBack data-testid='back-btn' onActive={spy} />
+        </Wizard.Content>
+      </Wizard>,
+    );
+
+    fireEvent.click(getByTestId('back-btn'));
+    expect(spy).toHaveBeenCalledWith(1);
+  });
+
+  test('Should set correct aria attributes for numeric steps', () => {
+    const { getByTestId } = render(
+      <Wizard disablePortal visible step={2}>
+        <Wizard.Sidebar>
+          <Wizard.Stepper step={1} data-testid='step-1'>
+            Step 1
+          </Wizard.Stepper>
+          <Wizard.Stepper step={2} data-testid='step-2'>
+            Step 2
+          </Wizard.Stepper>
+          <Wizard.Stepper step={3} data-testid='step-3' disabled>
+            Step 3
+          </Wizard.Stepper>
+        </Wizard.Sidebar>
+        <Wizard.Content>
+          <Wizard.Step step={2}>Current</Wizard.Step>
+        </Wizard.Content>
+      </Wizard>,
+    );
+
+    expect(getByTestId('step-2').getAttribute('aria-selected')).toBe('true');
+    expect(getByTestId('step-1').getAttribute('aria-selected')).toBe('false');
+    expect(getByTestId('step-3').getAttribute('aria-disabled')).toBe('true');
+  });
 });

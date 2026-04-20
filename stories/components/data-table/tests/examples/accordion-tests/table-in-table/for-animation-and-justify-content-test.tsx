@@ -1,6 +1,6 @@
-import { DataTable, ACCORDION, UNIQ_ROW_KEY } from '@semcore/ui/data-table';
+import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
@@ -50,6 +50,7 @@ const Demo = (props: AccordionWithTablenProps) => {
       h='100%'
       data={sortedData}
       sort={sort}
+      uniqueRowKey='id'
       accordionMode={props.accordionMode}
       sideIndents={props.sideIndents}
       use={props.use}
@@ -66,9 +67,6 @@ const Demo = (props: AccordionWithTablenProps) => {
 };
 
 const ChartExample = () => {
-  const containerRef = React.useRef(null);
-  const containerRect = useResizeObserver(containerRef);
-
   return (
     <DataTable
       data={data1}
@@ -77,15 +75,15 @@ const ChartExample = () => {
         { name: 'keyword', children: 'Keyword' },
         { name: 'kd', children: 'KD,%' },
         { name: 'cpc', children: 'CPC' },
-        { name: 'vol', children: 'Vol.', gtcWidth: '100px', ref: containerRef },
+        { name: 'vol', children: 'Vol.', gtcWidth: '100px' },
       ]}
       expandedRows={new Set<string>()}
       renderCell={(props) => {
         if (props.columnName === 'vol') {
           return (
-            <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
+            <Text ellipsis:cropPosition='middle' display='block'>
               {props.value}
-            </Ellipsis>
+            </Text>
           );
         }
 
@@ -139,7 +137,7 @@ const data1 = [
 
 const data = [
   {
-    [UNIQ_ROW_KEY]: '1',
+    id: '1',
     keyword: 'ebay buy1',
     kd: '77.8',
     cpc: '$1.25',
@@ -169,7 +167,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '2',
+    id: '2',
     keyword: 'www.ebay.com',
     kd: '11.2',
     cpc: '$3.4',
@@ -179,21 +177,21 @@ const data = [
     },
   },
   {
-    [UNIQ_ROW_KEY]: '3',
+    id: '3',
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
   },
   {
-    [UNIQ_ROW_KEY]: '4',
+    id: '4',
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
   },
   {
-    [UNIQ_ROW_KEY]: '5',
+    id: '5',
     keyword: 'ebay buy2',
     kd: '75.89',
     cpc: '$0',
@@ -205,7 +203,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '6',
+    id: '6',
     keyword: 'ebay buy3',
     kd: '100',
     cpc: '$0',
@@ -217,7 +215,7 @@ const data = [
     ],
   },
   {
-    [UNIQ_ROW_KEY]: '7',
+    id: '7',
     keyword: 'ebay buy4',
     kd: '-',
     cpc: '$0',

@@ -28,8 +28,8 @@ Table: DropdownMenu sizes
 
 The dropdown width can be defined in two ways.
 
-1. By the maximum width of the trigger. ![](static/trigger-dropdown.png)       
-2. By the longest item in the list.     ![](static/trigger-dropdown-width.png) 
+1. By the maximum width of the trigger. ![](static/trigger-dropdown.png)
+2. By the longest item in the list.     ![](static/trigger-dropdown-width.png)
 
 ### Height
 

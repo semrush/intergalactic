@@ -18,6 +18,7 @@ export default mergeConfig(
           /@semcore\/*/,
           'classnames',
           'csstype',
+          '@floating-ui/dom',
           '@popperjs/core',
           'popper-max-size-modifier',
         ],

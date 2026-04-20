@@ -1,15 +1,15 @@
+import Globe from '@semcore/icon/Globe/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
-import Globe from '@semcore/ui/icon/Globe/m';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import Pills from '@semcore/ui/pills';
-import type { PillsProps, PillProps } from '@semcore/ui/pills';
+import type { NSPills } from '@semcore/ui/pills';
 import Spin from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type PillExampleProps = PillsProps & PillProps;
+type PillExampleProps = NSPills.Props & NSPills.Pill.Props;
 const Demo = (props: PillExampleProps) => {
   const [choice, setChoice] = React.useState(null);
 
@@ -34,7 +34,7 @@ const Demo = (props: PillExampleProps) => {
         <Pills.Item value={1}>
           <Pills.Item.Addon>
             <Pills.Item.Text>Badge</Pills.Item.Text>
-            <Badge bg='blue-400'>admin</Badge>
+            <Badge type='admin' />
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item value={2} addonRight={Globe}>

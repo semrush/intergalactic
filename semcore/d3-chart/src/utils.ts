@@ -278,7 +278,7 @@ export const getChartDefaultColorName = (index: number) => {
 export const getBubbleChartValueScale = (data: any[], key: string) => {
   const z = scaleSqrt()
     .domain([0, Math.max(...data.map((el) => el[key]))])
-    .range([5.5, 50.5]);
+    .range([5.5, 50.5]); // min/max radius
 
   return z;
 };
@@ -328,19 +328,16 @@ export const calculateBubbleDomain = (
   min -= minValueShift * 2;
   max += maxValueShift * 2;
 
-  return [min, max];
+  return [Math.floor(min), Math.floor(max)];
 };
 
-interface PlotEventEmitterEmit {
-  (event: `setTooltipVisible_${string}`, visible: boolean): void;
-  (event: `setTooltipPosition_${string}`, x: number, y: number): void;
-}
-type Unsubscribe = () => void;
-interface PlotEventEmitterSubscribe {
-  (event: `setTooltipVisible_${string}`, callback: (visible: boolean) => void): Unsubscribe;
-  (event: `setTooltipPosition_${string}`, callback: (x: number, y: number) => void): Unsubscribe;
-}
-export const PlotEventEmitter = EventEmitter as typeof EventEmitter<
-  PlotEventEmitterEmit,
-  PlotEventEmitterSubscribe
->;
+type CommonEvents = {
+  setTooltipVisible: (visible: boolean) => void;
+  setTooltipPosition: (x: number, y: number) => void;
+};
+
+type Events = {
+  [K in keyof CommonEvents as `${K}_${string}`]: CommonEvents[K];
+};
+
+export const PlotEventEmitter = EventEmitter<Events>;

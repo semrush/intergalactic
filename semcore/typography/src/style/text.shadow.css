@@ -106,6 +106,11 @@ SText {
       background-color: var(--intergalactic-icon-primary-neutral, #6c6e79);
     }
 
+    & ol:not(ol[start], ol[reversed], ol[type]):has(+ p),
+    & ul:not(ul[start], ul[reversed], ul[type]):has(+ p) {
+      margin-bottom: var(--intergalactic-spacing-4x, 16px);
+    }
+
     & h1 {
       font-size: var(--intergalactic-fs-800, 48px);
       line-height: var(--intergalactic-lh-800, 117%);
@@ -192,7 +197,7 @@ SText {
     }
 
     & p {
-      margin: 0 0 var(--intergalactic-spacing-5x, 20px) 0;
+      margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
       &:last-child {
         margin-bottom: 0;
@@ -219,6 +224,31 @@ SText {
       margin-top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
       margin-left: var(--intergalactic-spacing-05x, 2px);
     }
+  }
+}
+
+SText[ellipsis] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  display: inline-block;
+  line-height: unset;
+  vertical-align: top;
+
+  &[trim='end'][isEllipsized]::after {
+    content: '';
+    display: block;
+  }
+
+  &[maxLine] {
+    -webkit-line-clamp: var(--maxLine);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  &[trim='middle'] {
+    text-overflow: unset;
   }
 }
 
@@ -275,7 +305,7 @@ SText[size='200'] {
     }
 
     & p {
-      margin: 0 0 var(--intergalactic-spacing-5x, 20px) 0;
+      margin: 0 0 var(--intergalactic-spacing-3x, 12px) 0;
 
       &:last-child {
         margin-bottom: 0;
@@ -317,7 +347,7 @@ SText[size='300'] {
     }
 
     & p {
-      margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
+      margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
       &:last-child {
         margin-bottom: 0;

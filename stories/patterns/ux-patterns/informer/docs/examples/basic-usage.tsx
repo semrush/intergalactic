@@ -1,7 +1,7 @@
+import InfoL from '@semcore/icon/Info/l';
+import InfoM from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import InfoL from '@semcore/ui/icon/Info/l';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -9,14 +9,15 @@ import React from 'react';
 
 const Demo = () => (
   <>
-    <Flex gap={1} mb={4} alignItems='baseline'>
-      <Text size={700}>Fastest animals</Text>
+    <Flex tag={Text} size={700} gap={1} mb={4}>
+      Fastest animals
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
           tag={ButtonLink}
           addonLeft={InfoL}
           aria-label='About fastest animals'
           color='icon-secondary-neutral'
+          mt='10px'
         />
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>
@@ -34,14 +35,15 @@ const Demo = () => (
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     </Flex>
-    <Flex gap={1} alignItems='center'>
-      <Text size={200}>Peregrine falcon</Text>
+    <Flex tag={Text} size={200} gap={1}>
+      Peregrine falcon
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
           tag={ButtonLink}
           addonLeft={InfoM}
           aria-label='About peregrine falcon'
           color='icon-secondary-neutral'
+          mt='-1px'
         />
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
           <Text tag='p' mb={3}>

@@ -1,7 +1,7 @@
-import { createComponent, type ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import { Box } from '@semcore/base-components';
+import { createComponent, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import { Trend, type CommonTrendProps } from './Trend';
@@ -23,11 +23,6 @@ export type TrendBarProps = CommonTrendProps & {
    * Data to bar chart
    */
   data: BarItem[];
-};
-
-type Enhances = {
-  resolveColor: ReturnType<typeof resolveColorEnhance>;
-  isHistogram?: true;
 };
 
 class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
@@ -100,12 +95,11 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
   }
 }
 
-export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances> =
-  createComponent(TrendBarRoot);
+export const TrendBar = createComponent<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>(TrendBarRoot);
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 
-export const TrendHistogram: ComponentType<TrendBarProps, {}, {}, Enhances> = createComponent(
+export const TrendHistogram = createComponent<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>(
   TrendBarRoot,
   {},
   {
@@ -121,4 +115,4 @@ export const TrendHistogram: ComponentType<TrendBarProps, {}, {}, Enhances> = cr
   },
 );
 
-TrendBar.displayName = 'MiniChart.TrendHistogram';
+TrendHistogram.displayName = 'MiniChart.TrendHistogram';

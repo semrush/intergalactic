@@ -8,15 +8,31 @@ import { buildHooks } from './buildHooks';
 import { figmaIcon } from './figma-icon';
 import { configureMarkdownIt } from './markdown-it-config';
 import { sideBarConfig } from './sidebarConfig';
-import { viteConfig } from './vite.config';
+import { viteConfig, currentBuildVersion, LATEST } from './vite.config';
 import { algoliaConfig } from '../../algoliaConfig';
+import { algoliaIndexes } from '../../algoliaIndexes';
 
+const prefix = currentBuildVersion === LATEST ? 'latest' : currentBuildVersion;
+const availableVersions = (process.env.AVAILABLE_VERSIONS ?? '').split(',');
 const gtmKey = 'GTM-PP7RKT7';
+
+const links = availableVersions.filter((version) => {
+  return version !== currentBuildVersion;
+});
+
+let versions: any = null;
+
+if (links.length > 0) {
+  versions = {
+    currentVersion: currentBuildVersion,
+    items: links.reverse(),
+  };
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/intergalactic/',
-  outDir: resolvePath(__dirname, 'dist/intergalactic/'),
+  base: viteConfig.base,
+  outDir: resolvePath(__dirname, 'dist'),
   title: 'Intergalactic Design System',
   description: 'Design System',
   markdown: {
@@ -83,13 +99,16 @@ export default defineConfig({
       copyright: 'Copyright © 2023-present Powered by Semrush. All rights reserved.',
     },
     siteTitle: false,
+    notFound: {
+      quote: 'This page may not exist in this version or the URL might be incorrect. Please check your spelling or try a different documentation version.',
+    },
 
     search: {
       provider: 'algolia',
       options: {
         appId: algoliaConfig.appName,
         apiKey: algoliaConfig.openKey,
-        indexName: algoliaConfig.mainSearchIndexName,
+        indexName: algoliaIndexes(prefix).mainSearchIndexName,
         searchParameters: {
           attributesToRetrieve: [
             'hierarchy',
@@ -105,16 +124,15 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: 'https://github.com/semrush/intergalactic/edit/master/website/docs/:path',
+      pattern: `https://github.com/semrush/intergalactic/edit/${currentBuildVersion}/website/docs/:path`,
       text: 'Edit this page on GitHub',
     },
+
+    // @ts-ignore. Need this for custom versions switcher
+    versions,
+
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      // {
-      //   text: 'Roadmap',
-      //   link: 'https://github.com/orgs/semrush/projects/3/views/2',
-      //   target: '_blank',
-      // },
       {
         text: 'Releases',
         link: 'https://github.com/semrush/intergalactic/releases',

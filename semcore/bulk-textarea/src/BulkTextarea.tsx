@@ -1,7 +1,7 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import type { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
@@ -21,9 +21,15 @@ type State<T extends string | string[]> = {
 
 class BulkTextareaRoot<T extends string | string[]> extends Component<
   BulkTextareaProps<T>,
+  typeof BulkTextareaRoot.enhance,
+  {
+    value: null;
+    state: null;
+    showErrors: null;
+    errors: null;
+  },
   {},
-  State<T>,
-  typeof BulkTextareaRoot.enhance
+  State<T>
 > {
   static displayName = 'BulkTextarea';
   static defaultProps = {
@@ -233,6 +239,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
     this.handlers.showErrors(false);
     this.handlers.errors([]);
     this.setState({ errorIndex: -1 });
+    // @ts-ignore
     this.handlers.value('', e);
     this.handlers.state('normal');
 
@@ -278,6 +285,6 @@ const BulkTextarea = (<T extends string | string[]>() =>
     Counter,
     ClearAll,
     ErrorsNavigation,
-  }) as BulkTextareaType<T>)();
+  }) as unknown as BulkTextareaType<T>)();
 
 export default BulkTextarea;

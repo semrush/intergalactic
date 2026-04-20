@@ -1,8 +1,7 @@
+import { Box } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
-import { Box } from '@semcore/flex-box';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -53,25 +52,7 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test.concurrent('Verify ItemHint and ItemTitle are not broken', async ({ task }) => {
-    const component = (
-      <React.Fragment>
-        <DropdownMenu visible disablePortal>
-          <DropdownMenu.Menu>
-            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.ItemHint>Hint 1</DropdownMenu.ItemHint>
-            <DropdownMenu.ItemTitle>Title 1</DropdownMenu.ItemTitle>
-          </DropdownMenu.Menu>
-        </DropdownMenu>
-      </React.Fragment>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.sequential('Verify menu actions interactions', async ({ expect }) => {
+  test.sequential('Verify menu actions interactions', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -112,7 +93,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.sequential('Verify onVisibleChange event calls once', async ({ expect }) => {
+  test.sequential('Verify onVisibleChange event calls once', async () => {
     const spy = vi.fn();
     const Component = () => {
       return (
@@ -136,7 +117,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.sequential('Verify calls events on items in controlled component', async ({ expect }) => {
+  test.sequential('Verify calls events on items in controlled component', async () => {
     const spy = vi.fn();
     const Component = () => {
       const [visible, setVisible] = React.useState(false);
@@ -184,7 +165,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledTimes(3);
   });
 
-  test.sequential('Verify onClick event calls once', async ({ expect }) => {
+  test.sequential('Verify onClick event calls once', async () => {
     const spy = vi.fn();
     const Component = () => {
       return (
@@ -211,7 +192,7 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.concurrent('Verify interaction with disabled nested', async ({ expect }) => {
+  test.concurrent('Verify interaction with disabled nested', async () => {
     const { getByTestId } = render(
       <DropdownMenu placement='right'>
         <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>

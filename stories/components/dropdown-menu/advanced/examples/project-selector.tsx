@@ -1,35 +1,36 @@
+import PlusM from '@semcore/icon/MathPlus/m';
+import Pin from '@semcore/icon/Pin/m';
+import Settings from '@semcore/icon/Settings/m';
+import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps, DropdownMenuItemHintProps } from '@semcore/ui/dropdown-menu';
-import { Flex } from '@semcore/ui/flex-box';
-import PlusM from '@semcore/ui/icon/MathPlus/m';
-import Pin from '@semcore/ui/icon/Pin/m';
-import Settings from '@semcore/ui/icon/Settings/m';
+import type { RenderRowProps, DropdownMenuProps, DropdownMenuListProps, DropdownMenuItemProps } from '@semcore/ui/dropdown-menu';
 import { InputSearch } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const projects = Array.from({ length: 100 }, (_, index) => `project ${index}`);
+const projects = Array.from({ length: 5500 }, (_, index) => `project ${index}`);
 const rowHeight = 52;
 
-type ProjectSelectorProps = DropdownMenuProps & DropdownMenuListProps & DropdownMenuItemProps & DropdownMenuItemHintProps & {
+type ProjectSelectorProps = DropdownMenuProps & DropdownMenuListProps & DropdownMenuItemProps & {
   disabledAll?: boolean;
   disabledFirstItem?: boolean;
   visibleItems?: number;
 };
 
-const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: string | null; setProject: (project: string, index: number) => void; disabledAll?: boolean; disabledFirstItem?: boolean }>) => {
-  const projectName = projects[index];
+const Row = React.memo(({ index, data, row }: RenderRowProps<string, { selected: string | null; setProject: (project: string, index: number) => void; disabledAll?: boolean; disabledFirstItem?: boolean }>) => {
+  const projectName = row;
 
   return (
     <DropdownMenu.Item
-      key={projectName}
+      key={row}
       onClick={() => data.setProject(projectName, index)}
       selected={data.selected === projectName}
       disabled={data.disabledAll || (index === 0 && data.disabledFirstItem)}
       index={index}
+      data-test-id={`item-${projectName}`}
     >
       <DropdownMenu inlineActions placement='right'>
         <Flex justifyContent='space-between'>
@@ -42,14 +43,14 @@ const Row = React.memo(({ index, data }: RenderRowProps<string, { selected: stri
               addonLeft={Settings}
               title='Settings'
               hintPlacement='right'
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
             />
             <DropdownMenu.Item
               tag={Button}
               addonLeft={Pin}
               title='Pin'
               hintPlacement='right'
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
             />
           </DropdownMenu.Actions>
         </Flex>
@@ -63,10 +64,20 @@ const Demo = (props: ProjectSelectorProps) => {
   const [searchValue, setSearchValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
   const [selectedProject, setProject] = React.useState<string | null>('project 33');
-  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(projects.findIndex((p) => p === selectedProject));
 
   const visibleItems = props.visibleItems ?? 10;
   const listHeight = visibleItems * rowHeight;
+
+  const normalizedQuery = searchValue.trim().toLowerCase();
+
+  const filteredProjects = React.useMemo(() => {
+    if (!normalizedQuery) return projects;
+    return projects.filter((p) => p.toLowerCase().includes(normalizedQuery));
+  }, [normalizedQuery]);
+
+  const defaultHighlightedIndex = filteredProjects.findIndex(
+    (project) => project === selectedProject,
+  );
 
   const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -79,17 +90,16 @@ const Demo = (props: ProjectSelectorProps) => {
 
   const handleSetProject = (project: string, index: number) => {
     setProject(project);
-    setHighlightedIndex(index);
   };
 
   return (
     <DropdownMenu
       stretch={props.stretch}
       selectable
-      itemsCount={projects.length}
+      itemsCount={filteredProjects.length}
       visible={visible}
       onVisibleChange={setVisible}
-      defaultHighlightedIndex={highlightedIndex}
+      defaultHighlightedIndex={defaultHighlightedIndex}
     >
       <DropdownMenu.Trigger tag={ButtonTrigger} w={220}>
         {selectedProject ?? 'Select project'}
@@ -99,11 +109,11 @@ const Demo = (props: ProjectSelectorProps) => {
         <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} />
 
         <DropdownMenu.VirtualList
+          key={filteredProjects.length === projects.length ? 'virtual-list-stable-key' : normalizedQuery}
           hMax={listHeight + 41}
           rowHeight={rowHeight}
           renderRow={Row}
-          rows={projects}
-
+          rows={filteredProjects}
           customData={{
             setProject: handleSetProject,
             selected: selectedProject,

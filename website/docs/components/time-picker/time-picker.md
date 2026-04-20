@@ -21,53 +21,18 @@ Component consists of the following:
 - `TimePicker.Format`
 - `TimePicker.Separator`
 
-## Formats
-
-The component includes [comboboxes](/patterns/auto-suggest/auto-suggest#combobox) inside the input field.
-
-If the user needs to choose the time in a 12-hour format, an additional button for switching between AM/PM is provided, eliminating the need for an extra click on the dropdown.
-
-Table: TimePicker 24-hour and 12-hour formats
-
-| Time format    | Appearance example              |
-| -------------- | ------------------------------- |
-| 24-hour format | ![](static/input-default-l.png) |
-| 12-hour format | ![](static/input-l.png)         |
-
 ## Appearance
 
 ### Sizes
 
 Table: TimePicker sizes
 
-| Input size (height in px) | Appearance example                 | Paddings                           |
-| ------------------------- | ---------------------------------- | ---------------------------------- |
-| M (28px)                  | ![](static/input-default-m.png) ![](static/input-m.png) | ![paddings](static/paddings-m.png) |
-| L (40px)                  | ![](static/input-default-l.png) ![](static/input-l.png) | ![paddings](static/paddings-l.png) |
+| Input size (height in px) | Appearance example                                      |
+|---------------------------|---------------------------------------------------------|
+| M (28px)                  | ![](static/input-default-m.png) ![](static/input-m.png) |
+| L (40px)                  | ![](static/input-default-l.png) ![](static/input-l.png) |
 
-## Interaction
-
-The first combobox is used for selecting hours, while the second one is for selecting minutes.
-
-Upon focusing on a combobox, a list with all the possible options is opened. When focusing on this group of controls, the input field is highlighted.
-
-::: tip
-The dropdown with the list is shifted to the left by 9px to accurately align the list items with the combobox figures.
-:::
-
-![](static/focus-hours-minutes.png)
-
-The button allows the user to switch between AM and PM values with a click.
-
-When the user navigates to a button with the `Tab` key, the button receives `focus` state.
-
-![](static/focus-3.png)
-
-- Users can select the time using the comboboxes with the mouse or enter it manually.
-- After completing the first field, the cursor automatically moves to the second field.
-- The inputs only accept numeric values with a maximum of two digits in each combobox.
-
-### Comboboxes content
+## Comboboxes
 
 The content of the comboboxes can be exact, up to a minute, or with preset steps.
 
@@ -84,8 +49,8 @@ Comboboxes content may be both exact, up to a minute, and with the preset step.
 
 Validation in this component is required in several cases:
 
-- When there is a selection of multiple time slots, and they cannot be set to equal values.
-- When users cannot select times in the past or future. In this case, the time selection also depends on the date selection, and the validation applies to the entire group of controls.
+- When there is a selection of multiple time slots, and they can't be set to equal values.
+- When users can't select times in the past or future. In this case, the time selection also depends on the date selection, and the validation applies to the entire group of controls.
 
 ### How validation is performed
 
@@ -94,4 +59,3 @@ Validation in this component is required in several cases:
 - Validation occurs upon submitting the entire form.
 
 ![](static/validation.png)
-

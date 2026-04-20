@@ -30,12 +30,6 @@ ul.list {
   box-sizing: border-box;
   outline: none;
   padding: var(--intergalactic-spacing-3x);
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-200);
-  color: var(--intergalactic-text-secondary);
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .previewIcon button:hover {

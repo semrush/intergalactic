@@ -1,35 +1,13 @@
-import { sstyled, type UnknownProperties, type StyledProps } from '@semcore/core';
-import logger from '@semcore/core/lib/utils/logger';
+import { sstyled, type UnknownProperties, type IStyledProps } from '@semcore/core';
+import { getAutoOrScaleIndent, removeUndefinedKeys, getSize } from '@semcore/core/lib/utils/indentStyles';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
 import React from 'react';
 
 import style from '../style/use-box.shadow.css';
-import { getAutoOrScaleIndent } from '../utils';
 
-export function removeUndefinedKeys<T extends {}>(obj: T) {
-  return Object.entries(obj).reduce((acc: any, [key, value]) => {
-    if (value !== undefined) {
-      acc[key] = value;
-    }
-    return acc;
-  }, {});
-}
-
-function getSize(size: any) {
-  if (typeof size !== 'number') {
-    return size;
-  }
-  if (size < 1) {
-    return `${100 * size}%`;
-  }
-  if (size >= 1) {
-    return `${size}px`;
-  }
-}
-
-export type BoxProps = StyledProps & {
+export type BoxProps = IStyledProps & {
   /**
    * CSS `display` property
    */
@@ -151,11 +129,6 @@ export type BoxProps = StyledProps & {
    * @default false
    */
   inAfterOutline?: boolean;
-
-  /** Property for specifying css properties in js
-   * @deprecated v4.0.0 */
-  css?: React.CSSProperties;
-
   /** CSS `position` property */
   position?: Property.Position;
   /** CSS `top` property */
@@ -166,12 +139,16 @@ export type BoxProps = StyledProps & {
   bottom?: number | string;
   /** CSS `right` property */
   right?: number | string;
+  /** CSS `inset` property */
+  inset?: string;
   /** CSS `z-index` property */
   zIndex?: number;
   /** CSS `text-align` property */
   textAlign?: Property.TextAlign;
   /** Box content */
   children?: React.ReactNode;
+  /** Hover cursor */
+  hoverCursor?: Property.Cursor;
 };
 
 /** @deprecated */
@@ -197,6 +174,7 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number) {
     left: getSize(props['left']),
     bottom: getSize(props['bottom']),
     right: getSize(props['right']),
+    inset: props.inset,
     flex: props.flex,
     zIndex: props.zIndex,
     textAlign: props.textAlign,
@@ -273,7 +251,9 @@ export default function useBox<T extends BoxProps>(
     left,
     bottom,
     right,
+    inset,
     zIndex,
+    hoverCursor,
     ...other
   } = props as any;
 
@@ -308,16 +288,19 @@ export default function useBox<T extends BoxProps>(
     left,
     bottom,
     right,
+    inset,
     zIndex,
   ]);
 
-  logger.warn(
-    css !== undefined,
-    'The \'css\' property is deprecated, use \'style\'',
-    other['data-ui-name'] || 'Box',
-  );
-
   const styles = sstyled(style);
+  const { className: rootClassName, style: rootStyle } = styles.cn('SBox', {
+    SBoxSizing: boxSizing,
+    SBoxInline: inline,
+    SBoxInnerOutline: innerOutline,
+    inAfterOutline: inAfterOutline === true ? 'true' : 'false',
+    invertOutline,
+    hoverCursor,
+  });
 
   if (Tag === React.Fragment) return [React.Fragment, { children: props.children }];
 
@@ -327,16 +310,10 @@ export default function useBox<T extends BoxProps>(
       ref,
       'className':
         cn(
-          styles.cn('SBox', {
-            SBoxSizing: boxSizing,
-            SBoxInline: inline,
-            SBoxInnerOutline: innerOutline,
-            inAfterOutline: inAfterOutline === true ? 'true' : 'false',
-            invertOutline,
-          }).className,
+          rootClassName,
           className,
         ) || undefined,
-      'style': Object.assign({}, styleProp, css, indentStyles),
+      'style': Object.assign({}, rootStyle, styleProp, css, indentStyles),
       'data-ui-name': 'Box',
       ...propsForElement(other, Tag),
     },

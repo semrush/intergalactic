@@ -8,7 +8,7 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
 const semcorePackages = fs
   .readdirSync(path.resolve(__dirname, '../../'))
-  .filter((pkg) => !['ui', 'table', 'stylelint-plugin'].includes(pkg))
+  .filter((pkg) => !['ui', 'icon', 'illustration', 'theme'].includes(pkg))
   .map((pkg) => `@semcore/${pkg}`);
 
 const dependencyPackages = Object.keys(packageJson.dependencies || {}).filter((pkg) =>

@@ -1,4 +1,4 @@
-import Portal from '@semcore/portal';
+import { Portal } from '@semcore/base-components';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -97,7 +97,7 @@ describe('SidePanel', () => {
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
-  test.concurrent('Verify ignorePortalsStacking prop', async ({ expect }) => {
+  test.concurrent('Verify ignorePortalsStacking prop', async () => {
     const component = render(
       <Portal>
         <SidePanel visible data-testid='inP'>
@@ -109,9 +109,9 @@ describe('SidePanel', () => {
       </Portal>,
     );
 
-    // 3 because: empty div, div with `Content in portal`
-    // and div with `Content in body` should be in body too.
+    // 4 because: empty div, canvas (from TextMeasurer for tabular-nums support),
+    // div with `Content in portal` and div with `Content in body` should be in body too.
     // Without `ignorePortalsStacking`, it'll be in the first `SidePanel`.
-    expect(document.body.children).toHaveLength(3);
+    expect(document.body.children).toHaveLength(4);
   });
 });

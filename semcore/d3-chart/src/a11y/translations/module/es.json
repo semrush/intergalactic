@@ -1,5 +1,5 @@
 {
-  "disabled": "Pulse \"Tab\" para activar el módulo de accesibilidad a los gráficos.",
   "loading": "Cargando módulo de accesibilidad.",
-  "failed": "No se ha podido cargar el módulo de accesibilidad. Contacta con el servicio de asistencia al usuario para ayudarnos a resolver el problema rápidamente."
+  "failed": "No se ha podido cargar el módulo de accesibilidad. Contacta con el servicio de asistencia al usuario para ayudarnos a resolver el problema rápidamente.",
+  "PlotA11yModule.ScreenReaderOnlyButton.Label": "Abrir resumen de datos"
 }

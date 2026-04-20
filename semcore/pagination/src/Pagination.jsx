@@ -1,11 +1,10 @@
+import { Flex, ScreenReaderOnly, Hint } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import InputNumber from '@semcore/input-number';
-import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -96,12 +95,6 @@ class PaginationRoot extends Component {
     return finalValue <= 0 ? 1 : finalValue;
   };
 
-  /** @deprecated */
-  handlePageInputIconClick = () => {
-    const dirtyCurrentPage = this.getDirtyCurrentPage();
-    this.handlePageChange(dirtyCurrentPage);
-  };
-
   handlePageInputKeyDown = (event) => {
     if (event.key !== 'Enter') return;
     const dirtyCurrentPage = this.getDirtyCurrentPage();
@@ -174,10 +167,8 @@ class PaginationRoot extends Component {
     };
   };
 
-  /** @deprecated */
   getPageInputAddonProps = () => {
     return {
-      onClick: this.handlePageInputIconClick,
       ref: this.pageInputAddonRef,
       onBlur: this.handlePageValueBlur,
     };
@@ -266,27 +257,23 @@ class PaginationRoot extends Component {
 }
 
 class FirstPage extends Component {
-  static defaultProps = (props) => {
-    const hintContent = props.getI18nText('firstPage');
-
-    return {
-      children: (
-        <Button.Addon
-          tag={Hint}
-          title={hintContent}
-          timeout={[250, 50]}
-          __excludeProps={['aria-label']}
-        >
-          <ChevronDoubleLeft />
-        </Button.Addon>
-      ),
-    };
-  };
+  buttonRef = React.createRef();
 
   render() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, Children, children, disabled } = this.asProps;
+    const hintContent = getI18nText('firstPage');
+    const isAdvanced = children !== undefined;
 
-    return <Root render={Button} aria-label={getI18nText('firstPage')} />;
+    return (
+      <>
+        <Root render={Button} aria-label={getI18nText('firstPage')} ref={this.buttonRef}>
+          {isAdvanced
+            ? <Children />
+            : <Button.Addon tag={ChevronDoubleLeft} />}
+        </Root>
+        {!isAdvanced && (<Hint triggerRef={this.buttonRef} timeout={[250, 50]}>{hintContent}</Hint>)}
+      </>
+    );
   }
 }
 

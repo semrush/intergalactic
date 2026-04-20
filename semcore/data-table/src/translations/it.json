@@ -1,3 +1,8 @@
 {
-  "sortableColumn": "Ordinabile"
+  "sortableColumn": "Ordinabile",
+  "DataTable.Cell.AccordionToggle.expand:aria-label": "Mostra dettagli",
+  "DataTable.Cell.AccordionToggle.collapse:aria-label": "Nascondi dettagli",
+  "DataTable.Header.selectAllCheckbox:aria-label": "Tutti gli elementi",
+  "DataTable.allItemsSelected:aria-live": "Tutti gli elementi selezionati",
+  "DataTable.allItemsDeselected:aria-live": "Tutti gli elementi deselezionati"
 }

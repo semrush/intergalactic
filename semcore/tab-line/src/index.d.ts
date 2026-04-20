@@ -1,14 +1,10 @@
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Box, BoxProps } from '@semcore/flex-box';
-import type { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type TabLineValue = string | number | boolean;
 
-/** @deprecated */
-export interface ITabLineProps<T extends TabLineValue = TabLineValue>
-  extends TabLineProps<T>,
-  UnknownProperties {}
 export type TabLineProps<T extends TabLineValue = TabLineValue> = BoxProps &
   NeighborLocationProps & {
     /** TabLine size
@@ -39,8 +35,6 @@ export type TabLineProps<T extends TabLineValue = TabLineValue> = BoxProps &
     behavior?: 'auto' | 'manual';
   };
 
-/** @deprecated */
-export interface ITabLineItemProps extends TabLineItemProps, UnknownProperties {}
 export type TabLineItemProps = BoxProps &
   NeighborItemProps & {
     /** Makes a tab selected. This property is determined automatically depending on the value. */
@@ -55,14 +49,10 @@ export type TabLineItemProps = BoxProps &
     addonRight?: React.ElementType;
   };
 
-/** @deprecated */
-export interface ITabLineContext extends TabLineContext, UnknownProperties {}
 export type TabLineContext = {
   getItemProps: PropGetterFn;
 };
 
-/** @deprecated */
-export interface ITabLineHandlers extends TabLineHandlers, UnknownProperties {}
 export type TabLineHandlers = {
   value: (value: TabLineValue) => void;
 };
@@ -84,7 +74,7 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabLineProps>;
 
 declare const TabLine: IntergalacticTabLineComponent & {
   Item: Intergalactic.Component<'div', TabLineItemProps, {}, [handlers: TabLineHandlers]> & {
-    Text: typeof Box;
+    Text: typeof Text;
     Addon: typeof Box;
   };
 };

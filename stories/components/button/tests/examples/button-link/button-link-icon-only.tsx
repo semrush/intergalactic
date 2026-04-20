@@ -1,10 +1,10 @@
+import VideoListM from '@semcore/icon/VideoList/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
-import VideoListM from '@semcore/ui/icon/VideoList/m';
 import React from 'react';
 
-type ExampleProps = ButtonLinkProps & { style?: any } & { color?: string };
+type ExampleProps = ButtonLinkProps & { color?: string };
 const Demo = (props: ExampleProps) => {
   return (
 
@@ -17,7 +17,7 @@ const Demo = (props: ExampleProps) => {
         use={props.use}
         color={props.color}
         hintPlacement={props.hintPlacement}
-        tag='strong'
+
       >
         <ButtonLink.Addon>
           <VideoListM />
@@ -46,6 +46,7 @@ const Demo = (props: ExampleProps) => {
         use={props.use}
         color={props.color}
         hintPlacement={props.hintPlacement}
+        tag='strong'
       />
 
     </Flex>
@@ -55,11 +56,7 @@ const Demo = (props: ExampleProps) => {
 export const defaultButtonLinkIconOnlyProps: ExampleProps = {
   size: undefined,
   use: 'primary',
-  color: undefined,
-  active: undefined,
-  disabled: undefined,
   hintPlacement: 'top',
-  style: undefined,
 };
 
 Demo.defaultProps = defaultButtonLinkIconOnlyProps;

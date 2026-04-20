@@ -1,11 +1,9 @@
+import type { Flex, Box, BoxProps } from '@semcore/base-components';
 import type Button from '@semcore/button';
-import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import type { Flex, Box, BoxProps } from '@semcore/flex-box';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { ModalProps } from '@semcore/modal';
 import type { Text } from '@semcore/typography';
 
-/** @deprecated */
-export interface IFullscreenModalProps extends FullscreenModalProps, UnknownProperties {}
 export type FullscreenModalProps = ModalProps & {
   /** Function that is invoked when hiding a component */
   onClose?: (
@@ -14,10 +12,6 @@ export type FullscreenModalProps = ModalProps & {
   ) => void;
 };
 
-/** @deprecated */
-export interface IFullscreenModalHeaderProps
-  extends FullscreenModalHeaderProps,
-  UnknownProperties {}
 export type FullscreenModalHeaderProps = BoxProps & {
   /** Title content displayed in the modal header */
   title?: React.ReactNode;
@@ -25,8 +19,6 @@ export type FullscreenModalHeaderProps = BoxProps & {
   description?: React.ReactNode;
 };
 
-/** @deprecated */
-export interface IFullscreenModalContext extends FullscreenModalContext, UnknownProperties {}
 export type FullscreenModalContext = {
   getBackProps: PropGetterFn;
   getCloseProps: PropGetterFn;

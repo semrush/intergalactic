@@ -6,7 +6,6 @@ import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
-import type Icon from '@semcore/icon';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import * as React from 'react';
@@ -15,9 +14,10 @@ import type { ColumnPropsInner, DataTableColumnProps } from './Column.types';
 import style from './style.shadow.css';
 import type { IFocusableCell, LockedCell } from '../../enhancers/focusableCell';
 import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusableCell';
+import type { ROW_GROUP } from '../DataTable/DataTable';
 import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
-const SORTING_ICON: { [key in SortDirection]: typeof Icon } = {
+const SORTING_ICON: { [key in SortDirection]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   desc: SortDesc,
   asc: SortAsc,
 } as const;
@@ -42,14 +42,14 @@ type State = {
 
 export class Column<
   Data extends DataTableData,
-  UniqKey extends keyof Data[number],
-  UniqKeyType extends Data[number][UniqKey],
+  UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
+  UniqKeyType extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? Data[number][typeof ROW_GROUP][number][UniqKey] : Data[number][UniqKey]),
 > extends Component<
     DataTableColumnProps,
-    {},
-    {},
     [],
-    ColumnPropsInner<Data, UniqKey, UniqKeyType>
+    {},
+    ColumnPropsInner<Data, UniqKey, UniqKeyType>,
+    State
   > implements IFocusableCell {
   lockedCell: LockedCell = [null, false];
 
@@ -214,26 +214,26 @@ export class Column<
 
   handleBlur = (e: React.FocusEvent<HTMLElement>) => {
     const relatedTarget = e.relatedTarget as HTMLElement | undefined;
-    if (!isFocusInside(e.currentTarget, relatedTarget) && lastInteraction.isKeyboard()) {
+    if (!isFocusInside(e.currentTarget, relatedTarget)) {
       this.setState({ sortVisible: false });
     }
   };
 
-  handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
-    e.stopPropagation();
-
+  handleSort = (e: React.SyntheticEvent<HTMLElement>) => {
     const { sort, onSortChange, name, sortable } = this.asProps;
 
-    if (
-      lastInteraction.isMouse() ||
-      (lastInteraction.isKeyboard() && e.target === e.currentTarget)
-    ) {
-      if (sortable && onSortChange) {
-        const sortDirection =
+    if (sortable && onSortChange) {
+      const sortDirection =
           sort?.[0] === name ? reversedSortDirection[sort[1]] : this.defaultDirection;
 
-        onSortChange([name, sortDirection], e);
-      }
+      onSortChange([name, sortDirection], e);
+    }
+  };
+
+  handleSortClick = (e: React.SyntheticEvent<HTMLElement>) => {
+    if (lastInteraction.isKeyboard()) {
+      e.stopPropagation();
+      this.handleSort(e);
     }
   };
 
@@ -264,7 +264,7 @@ export class Column<
   handleClick = (e: React.SyntheticEvent<HTMLElement>) => {
     const { sortable, onClick, columnIndex } = this.asProps;
     if (sortable) {
-      this.handleSortClick(e);
+      this.handleSort(e);
     }
 
     const focusableChildren = Array.from(this.columnRef.current?.children ?? []).flatMap((node) =>
@@ -326,9 +326,10 @@ export class Column<
         {sortable && (
           <SSortWrapper ref={this.sortWrapperRef}>
             <SSortButton
-              onClick={this.handleSortClick}
               aria-label={ariaSortValue}
+              size={100}
               color='--intergalactic-icon-primary-neutral'
+              onClick={this.handleSortClick}
             >
               <SSortButton.Addon tag={SSortIcon} />
             </SSortButton>

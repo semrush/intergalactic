@@ -1,10 +1,10 @@
+import { Flex } from '@semcore/ui/base-components';
 import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
-import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#98848D');
-  const [customColors, setCustomColors] = React.useState(['#8649E6', '#8649E7', '#8649E8']);
+  const [customColors, setCustomColors] = React.useState(['#00FF00', '#0000FF']);
 
   const presetColors = [
     null,
@@ -41,65 +41,20 @@ const Demo = () => {
       <ColorPicker value={value} onChange={setValue}>
         <ColorPicker.Trigger mt={2} id='player-1-color' />
         <ColorPicker.Popper>
-          <ColorPicker.Colors>
-            {filteredPresetColors.map((color, idx) => (
-              <ColorPicker.Item
-                key={idx}
-                value={color}
-                displayLabel
-                editable={true}
-                selected={color === value}
-                onRemove={() => handleRemove(color)}
-              />
-            ))}
-          </ColorPicker.Colors>
+          <ColorPicker.Colors colors={filteredPresetColors} />
 
           <PaletteManager
             colors={customColors}
             onColorsChange={setCustomColors}
-            defaultColors={['#00FF00', '#0000FF']}
           >
-            <PaletteManager.Colors>
-              {customColors.map((color) => (
-                <PaletteManager.Item
-                  key={color}
-                  value={color}
-                  displayLabel
-                  selected={color === value}
-                  onRemove={() => handleRemove(color)}
-                />
-              ))}
-            </PaletteManager.Colors>
-
-            <PaletteManager.Colors>
-              {customColors.map((color) => (
-                <PaletteManager.Item
-                  key={color}
-                  value={color}
-                  displayLabel
-                  editable={false}
-                  selected={color === value}
-                />
-              ))}
-            </PaletteManager.Colors>
+            <PaletteManager.Colors />
 
             <PaletteManager.InputColor
               defaultValue='#ABCDEF'
               ref={inputRef}
-              // disabled
               onAdd={handleAdd}
               size='l'
               state='normal'
-              colors={customColors}
-            />
-            <PaletteManager.InputColor
-              defaultValue='#ABCDEF'
-              ref={inputRef}
-              disabled
-              onAdd={handleAdd}
-              size='l'
-              state='normal'
-              colors={customColors}
             />
           </PaletteManager>
         </ColorPicker.Popper>

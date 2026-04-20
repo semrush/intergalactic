@@ -4,27 +4,57 @@ import type { FilterTriggerProps, BaseTriggerProps } from '@semcore/ui/base-trig
 import Select from '@semcore/ui/select';
 import React from 'react';
 
-type FilterTriggerSelectDDMenuExample = FilterTriggerProps & BaseTriggerProps;
-const Demo = (props: FilterTriggerSelectDDMenuExample) => (
-  <Flex direction='column' gap={3}>
-    <Flex gap={2} justifyContent='flex-start'>
-      <Select
-        tag={FilterTrigger}
-        options={devices}
-        data-test-id='base-trigger-as-tag-in-select'
-        aria-label='base addon'
-        size={props.size}
-        state={props.state}
-        active={props.active}
-        empty={props.empty}
-        placeholder={props.placeholder}
-        disabled={props.disabled}
-      >
-        Select
-      </Select>
+type FilterTriggerSelectDDMenuExample = FilterTriggerProps &
+  BaseTriggerProps & {
+    ellipsis?: boolean;
+    w?: number;
+  };
+
+const Demo = (props: FilterTriggerSelectDDMenuExample) => {
+  const { size, state, active, placeholder, disabled, ellipsis, w } = props;
+
+  const [value, setValue] = React.useState<string | null>(null);
+
+  return (
+    <Flex direction='column' gap={3}>
+      <Flex gap={2} justifyContent='flex-start'>
+        <Select
+          value={value}
+          onChange={setValue}
+          data-test-id='base-trigger-as-tag-in-select'
+          aria-label='base addon'
+        >
+          <Select.Trigger
+            tag={FilterTrigger}
+            size={size}
+            state={state}
+            active={active}
+            placeholder={placeholder}
+            disabled={disabled}
+            {...(w ? { wMax: w } : {})}
+          >
+
+            <FilterTrigger.Text
+              ellipsis={ellipsis || undefined}
+              ellipsis:observeChildrenMutations
+              key={value}
+            >
+              {value}
+            </FilterTrigger.Text>
+
+          </Select.Trigger>
+          <Select.Menu aria-label='Select device'>
+            {devices.map((option) => (
+              <Select.Option value={option.value} key={option.value}>
+                {option.children}
+              </Select.Option>
+            ))}
+          </Select.Menu>
+        </Select>
+      </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};
 
 const devices = ['Desktop', 'Mobile', 'Tablet'].map((item) => ({
   value: item,
@@ -36,8 +66,10 @@ export const filterTriggerSelectDDMenuExampleProps: FilterTriggerSelectDDMenuExa
   state: undefined,
   active: undefined,
   empty: undefined,
-  placeholder: undefined,
+  placeholder: 'Select device',
   disabled: undefined,
+  ellipsis: undefined,
+  w: undefined,
 };
 
 Demo.defaultProps = filterTriggerSelectDDMenuExampleProps;

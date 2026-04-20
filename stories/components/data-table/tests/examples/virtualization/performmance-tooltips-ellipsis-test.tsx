@@ -1,9 +1,8 @@
+import CheckM from '@semcore/icon/Check/m';
+import InfoM from '@semcore/icon/Info/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
-import CheckM from '@semcore/ui/icon/Check/m';
-import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -57,10 +56,9 @@ const Demo = () => {
                   NoWrapTrue
                   {props.value}
                 </Text>
-                <Hint
+                <ButtonLink
                   ml={1}
-                  tag={InfoM}
-                  interactive
+                  addonLeft={InfoM}
                   title='Go to our awesome article'
                   data-test-id='interactive-icon'
                   color='icon-secondary-neutral'
@@ -108,10 +106,10 @@ const Demo = () => {
           if (props.columnName === 'vol') {
             return (
               <>
-                <Ellipsis>
+                <Text ellipsis={true}>
                   {' '}
                   {props.value}
-                </Ellipsis>
+                </Text>
                 <Link
                   href='#'
                   target='_blank'

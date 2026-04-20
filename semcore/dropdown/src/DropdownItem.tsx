@@ -1,5 +1,5 @@
+import { Box } from '@semcore/base-components';
 import { Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 type DropdownItemProps = {

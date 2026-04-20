@@ -101,6 +101,78 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  test('Verify no tooltip when showTooltip=false', {
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+      'en',
+      { showTooltip: false },
+    );
+
+    await test.step('Verify tooltip with percent shown', async () => {
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(500);
+      await locators.plot(page).first().locator('path').nth(2).hover();
+      await expect(locators.tooltip(page)).toHaveCount(0);
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
+  const tooltipViewTypeVariants = [
+    {
+      name: 'single with percent',
+      props: {
+        showPercentValueInTooltip: true,
+        tooltipViewType: 'single',
+      },
+    },
+    {
+      name: 'single without percent',
+      props: {
+        showPercentValueInTooltip: false,
+        tooltipViewType: 'single',
+      },
+    },
+    {
+      name: 'all with percent and total',
+      props: {
+        showPercentValueInTooltip: true,
+        showTotalInTooltip: true,
+        tooltipViewType: 'all',
+      },
+    },
+    {
+      name: 'all without percent',
+      props: {
+        showPercentValueInTooltip: false,
+        tooltipViewType: 'all',
+      },
+    },
+  ];
+
+  tooltipViewTypeVariants.forEach((variant) => {
+    test(`Verify tooltipViewType=${variant.name}`, {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        variant.props,
+      );
+
+      await test.step('Verify tooltip shown correctly', async () => {
+        await locators.plot(page).first().waitFor({ state: 'visible' });
+        await page.waitForTimeout(500);
+        await locators.plot(page).first().locator('path').nth(2).hover();
+        await locators.tooltip(page).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
+    });
+  });
 });
 
 /* =====================================================
@@ -127,6 +199,135 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       for (const item of items) {
         await expect(item).toHaveAttribute('aria-hidden', 'true');
         await expect(item).toHaveAttribute('direction', 'horizontal');
+      }
+    });
+  });
+
+  test('Verify minimalBarWidth behavior', {
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await test.step('Verify tiny value invisible at minimalBarWidth=0', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { Large: 10000, Medium: 5000, Tiny: 1 }, minimalBarWidth: 0, duration: 0 },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(locators.barItem(page)).toHaveCount(3);
+
+      const items = await locators.barItem(page).all();
+      for (const item of items) {
+        const text = await item.textContent();
+        if (text?.trim() === 'Tiny') {
+          const width = Number(await item.getAttribute('width'));
+          expect(width).toBeLessThan(1);
+        }
+      }
+    });
+
+    await test.step('Verify tiny value visible at minimalBarWidth=10', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { Large: 10000, Medium: 5000, Tiny: 1 }, minimalBarWidth: 10, duration: 0 },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(locators.barItem(page)).toHaveCount(3);
+
+      const items = await locators.barItem(page).all();
+      for (const item of items) {
+        const text = await item.textContent();
+        if (text?.trim() === 'Tiny') {
+          const width = Number(await item.getAttribute('width'));
+          expect(width).toBeGreaterThanOrEqual(10);
+        }
+      }
+    });
+
+    await test.step('Verify multiple tiny values get minimalBarWidth from donor', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { Giant: 50000, Small1: 5, Small2: 3, Small3: 1 }, minimalBarWidth: 8, duration: 0 },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(locators.barItem(page)).toHaveCount(4);
+
+      const items = await locators.barItem(page).all();
+      for (const item of items) {
+        const text = await item.textContent();
+        if (['Small1', 'Small2', 'Small3'].includes(text?.trim() ?? '')) {
+          const width = Number(await item.getAttribute('width'));
+          expect(width).toBeGreaterThanOrEqual(8);
+        }
+      }
+    });
+
+    await test.step('Verify equal values have equal width', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { A: 100, B: 100, C: 100, D: 100 }, minimalBarWidth: 2, duration: 0 },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(locators.barItem(page)).toHaveCount(4);
+
+      const items = await locators.barItem(page).all();
+      const widths = await Promise.all(items.map((item) => item.getAttribute('width')));
+      const uniqueWidths = [...new Set(widths)];
+      expect(uniqueWidths).toHaveLength(1);
+    });
+
+    await test.step('Verify zero value present in DOM but has zero width', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { Present: 10000, Zero: 0, AlsoPresent: 5000 }, minimalBarWidth: 10, duration: 0 },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(locators.barItem(page)).toHaveCount(3);
+
+      const items = await locators.barItem(page).all();
+      for (const item of items) {
+        const text = await item.textContent();
+        if (text?.trim() === 'Zero') {
+          const width = Number(await item.getAttribute('width'));
+          expect(width).toBeLessThan(1);
+        }
+      }
+    });
+
+    await test.step('Verify all tiny values get minimalBarWidth without donors', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { A: 1, B: 1, C: 1, D: 1, E: 1 }, minimalBarWidth: 8, duration: 0 },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(locators.barItem(page)).toHaveCount(5);
+
+      const items = await locators.barItem(page).all();
+      for (const item of items) {
+        const width = Number(await item.getAttribute('width'));
+        expect(width).toBeGreaterThanOrEqual(8);
       }
     });
   });

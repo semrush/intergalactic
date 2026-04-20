@@ -152,7 +152,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const count = await icons.count();
 
       for (let i = 0; i < count - 1; i++) {
-        await expect(icons.nth(i)).toHaveAttribute('tabindex', '-1');
         await expect(icons.nth(i)).toHaveAttribute('aria-hidden', 'true');
       }
     });

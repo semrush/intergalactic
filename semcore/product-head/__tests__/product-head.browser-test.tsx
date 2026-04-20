@@ -40,12 +40,17 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@product-head',
       '@button',
-      '@tooltip',
     ],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/product-head/advanced/examples/long-long-title.tsx', 'en');
-
-    await expect(page).toHaveScreenshot();
+    await page.locator('[data-ui-name="Text"]').nth(1).waitFor({ state: 'visible' });
+    if (browserName == 'webkit') await expect(page).toHaveScreenshot(); // the hint not stable on webkit in ci
+    else {
+      await page.locator('[data-ui-name="Text"]').nth(1).hover();
+      await page.waitForTimeout(100); // needed for ff
+      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible', timeout: 1500 });
+      await expect(page).toHaveScreenshot();
+    }
   });
 
   test('Verify renders when single items used', {

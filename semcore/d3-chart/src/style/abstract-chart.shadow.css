@@ -1,0 +1,12 @@
+STooltipChildrenWrapper {
+  display: grid;
+  column-gap: var(--intergalactic-spacing-2x, 8px);
+
+  &[columnsCount='2'] {
+    grid-template-columns: auto minmax(28px, max-content);
+  }
+
+  &[columnsCount='3'] {
+    grid-template-columns: auto minmax(28px, max-content) minmax(28px, max-content);
+  }
+}

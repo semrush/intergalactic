@@ -6,13 +6,13 @@
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 [![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
-Intergalactic is a constantly developing design system of [React](https://reactjs.org/) components, guidelines and UX patterns for buiding interfaces. You can explore components in our [documentation website](https://i.semrush.com).
+Intergalactic is a constantly developing design system of [React](https://reactjs.org/) components, guidelines and UX patterns for building interfaces. You can explore components in our [documentation website](https://i.semrush.com).
 
 ---
 
 ### Features ✨
 
-- 56+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
+- 70+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
 - High-quality React components out of the box
 - Written in TypeScript with predictable static types
 - Whole package of design resources and development tools
@@ -23,10 +23,10 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 ### Browser support
 
 - Google Chrome
-- Mozilla Firefox
-- Opera
-- Microsoft Edge
 - Safari (two last versions)
+- Mozilla Firefox
+- Microsoft Edge
+- Opera
 
 ---
 
@@ -40,11 +40,73 @@ or
 npm install @semcore/ui
 ```
 
-After the installation, all components will be available at `@semcore/{{component_name}}`.
+After the installation, all components will be available at `@semcore/ui/{{component_name}}`.
+
+### Testing
+
+The project uses a comprehensive testing setup with multiple testing frameworks and tools:
+
+#### Testing tools
+
+- **Vitest** - Unit and component tests
+- **Playwright** - Browser automation and E2E tests
+- **React Testing Library** - Component testing utilities
+- **Axe** - Accessibility testing
+- **@guidepup** - Screen reader testing (NVDA)
+
+#### Running tests
+
+Docker ensures consistent rendering for image snapshot tests across different environments.
+
+```sh
+# Build Docker image (first time or after dependency changes)
+pnpm test:setup
+
+# Run all unit tests
+pnpm test
+
+# Run unit tests for a specific component
+pnpm test button
+
+# Run browser tests in Docker
+pnpm browser-test:docker
+
+# Run browser tests in Docker for a specific component
+pnpm browser-test:docker button
+
+# Run accessibility tests
+pnpm axe-test
+
+# Run NVDA tests (Windows only, requires setup)
+pnpm nvda-test:setup   # first time
+pnpm nvda-test
+```
+
+#### Configuration and setup
+
+Test configurations are located in the project root:
+- `vitest.config.mts` - Vitest configuration for unit tests
+- `playwright.*.config.ts` - Various Playwright configurations for different test types
+
+Testing utilities and shared test helpers are located in `./tools/testing-utils/`:
+- `setupTests.ts` - Global test setup with custom matchers and mocks
+- `vitest.ts` - Extended Vitest test runner with Allure integration
+- `playwright.ts` - Extended Playwright test runner with accessibility helpers
+- `testing-library.ts` - Re-exports React Testing Library utilities
+
+#### Mocks and utilities
+
+The testing setup includes:
+- `ResizeObserver` mock for components using resize detection
+- `matchMedia` mock for responsive components
+- `SVGElement.getBBox` mock for SVG-based components
+- Custom matchers from `@testing-library/jest-dom`: `toHaveStyle`, `toHaveFocus`, `toHaveAttribute`, `toBeInTheDocument`
+
+Tests are located in `__tests__` directories within each component package, for example: `semcore/button/__tests__/`.
 
 ### How to contribute to the project
 
-[Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
+[Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/HEAD/CONTRIBUTING.md)
 
 #### Contributors
 

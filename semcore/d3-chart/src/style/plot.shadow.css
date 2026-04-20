@@ -1,5 +1,3 @@
-@import './var.css';
-
 SPlot {
   overflow: hidden;
 }
@@ -17,7 +15,7 @@ foreignObject[data-aria-only] {
   pointer-events: none;
 }
 
-SPlot[keyboardFocused] {
+SPlot:has(foreignObject[data-aria-only]:focus-within) {
   @mixin focus-outline-mixin;
   border-radius: var(--intergalactic-surface-rounded, 6px);
 }

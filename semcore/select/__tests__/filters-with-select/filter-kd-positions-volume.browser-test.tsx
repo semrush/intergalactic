@@ -20,7 +20,7 @@ test.describe(TAG.VISUAL, () => {
   test('Verify filter KD positions volume visual states', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
+    await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
     await test.step('Verify opened dialog state', async () => {
       await page.keyboard.press('Tab');
@@ -35,10 +35,14 @@ test.describe(TAG.VISUAL, () => {
     });
 
     await test.step('Verify dialog with values filled', async () => {
+      await expect(locators.textboxes(page).nth(0)).toBeFocused();
       await page.keyboard.type('6');
       await page.keyboard.press('Tab');
+      await expect(locators.textboxes(page).nth(1)).toBeFocused();
       await page.keyboard.type('1');
       await page.keyboard.press('Tab');
+      await expect(locators.apply(page)).toBeFocused();
+      await page.waitForTimeout(100);
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
@@ -55,26 +59,23 @@ test.describe(TAG.FUNCTIONAL, () => {
   test('Verify filter KD positions volume keyboard navigation', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
+    await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
     await test.step('Verify 1st item highlighted when select opened', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForTimeout(200);
       await locators.apply(page).waitFor({ state: 'visible' });
       await expect(locators.trigger(page)).toBeFocused();
       await expect(locators.options(page).first()).toHaveClass(/highlighted/);
     });
 
     await test.step('Verify keyboard navigation inside dialog', async () => {
-      await page.waitForTimeout(200);
+      for (let i = 0; i++; i < 6) {
+        await page.keyboard.press('ArrowDown');
+        await page.waitForTimeout(50);
+      }
 
-      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
       await expect(locators.options(page).first()).toHaveClass(/highlighted/);
 
       await page.keyboard.press('Tab');
@@ -87,6 +88,8 @@ test.describe(TAG.FUNCTIONAL, () => {
       await expect(locators.apply(page)).toBeFocused();
 
       await page.keyboard.press('Tab');
+      await expect(locators.apply(page)).not.toBeFocused();
+
       await expect(locators.options(page).first()).toHaveClass(/highlighted/);
     });
 
@@ -127,7 +130,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.popper(page).waitFor({ state: 'hidden' });
 
       await expect(locators.trigger(page)).toBeFocused();
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001-10,000/);
+      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001–10,000/);
     });
 
     await test.step('Verify hint on close button and trigger keyboard navigation', async () => {
@@ -177,14 +180,14 @@ test.describe(TAG.FUNCTIONAL, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.popper(page).waitFor({ state: 'hidden' });
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1-5+/);
+      await expect(locators.trigger(page)).toHaveText('Volume: 1–5');
     });
   });
 
   test('Verify filter KD positions volume mouse navigation', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input-number'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx', 'en');
+    await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
     await test.step('Verify dialog opened and closed by trigger click', async () => {
       await locators.trigger(page).click();
@@ -200,7 +203,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.popper(page).waitFor({ state: 'hidden' });
 
       await expect(locators.popper(page)).toBeHidden();
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001-10,000/);
+      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1,001–10,000/);
       await expect(locators.filterTriggerClear(page)).toHaveCount(1);
     });
 
@@ -231,7 +234,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.textboxes(page).nth(1).fill('5');
       await locators.apply(page).click();
       await locators.popper(page).waitFor({ state: 'hidden' });
-      await expect(locators.trigger(page)).toHaveText(/Volume:\s*1-5/);
+      await expect(locators.trigger(page)).toHaveText('Volume: 1–5');
     });
   });
 });

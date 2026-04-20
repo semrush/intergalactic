@@ -1,53 +1,52 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { BoxProps, NeighborItemProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type { Intergalactic, PropGetterFn } from '@semcore/core';
+import type { NSText } from '@semcore/typography';
+import type React from 'react';
 
-import type {
-  AbstractButtonAddonProps,
-  AbstractButtonContext,
-  AbstractButtonTextProps,
-  AbstractButtonProps,
-} from '../AbstractButton/AbstractButton.type';
+export type ButtonProps = BoxProps &
+  NeighborItemProps & {
+  /** Button activity state */
+    active?: boolean;
+    /** Disabled button state */
+    disabled?: boolean;
+    /** Loading button state */
+    loading?: boolean;
+    /** Tag for the left Addon */
+    addonLeft?: React.ElementType;
+    /** Tag for the right Addon */
+    addonRight?: React.ElementType;
+    /**
+   * Placement for hint
+   * @default top
+   */
+    hintPlacement?: SimpleHintPopperProps['placement'];
 
-/**
- *  Button size
- * @default m
- */
-export type ButtonSize = 'l' | 'm';
-/**
- *  Button type
- * @default secondary
- */
-type Use = 'primary' | 'secondary' | 'tertiary';
+    /** Button size.
+   * @default `m`
+   */
+    size?: 'l' | 'm';
+    /** Button usage.
+   * @default `primary`
+   */
+    use?: 'primary' | 'secondary' | 'tertiary';
+    /** Button theme.
+   * @default undefined
+   */
+    theme?: 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
+  };
 
-/**
- * @deprecated don't use it. use `danger` for incorrect or danger behavior and `brand` for the orange one.
- */
-type DeprecatedTheme = 'warning';
+export type ButtonTextProps = NSText.Props;
 
-/** Button theme */
-type Theme = 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
+export type ButtonAddonProps = BoxProps;
 
-/** @deprecated */
-export interface IButtonProps extends ButtonProps, UnknownProperties {}
-export type ButtonProps = AbstractButtonProps<ButtonSize, Use, Theme | DeprecatedTheme>;
-
-/** @deprecated */
-export interface IButtonTextProps extends ButtonTextProps, UnknownProperties {}
-export type ButtonTextProps = AbstractButtonTextProps<ButtonSize>;
-
-/** @deprecated */
-export interface IButtonAddonProps extends ButtonAddonProps, UnknownProperties {}
-export type ButtonAddonProps = AbstractButtonAddonProps<ButtonSize>;
-
-/** @deprecated */
-export interface IButtonContext extends ButtonContext, UnknownProperties {}
-export type ButtonContext = AbstractButtonContext;
+export type ButtonContext = {
+  getTextProps: PropGetterFn;
+  getAddonProps: PropGetterFn;
+};
 
 export type ButtonChildren = {
   Text: Intergalactic.Component<'span', ButtonTextProps>;
   Addon: Intergalactic.Component<'span', ButtonAddonProps>;
 };
 
-export type ButtonComponent = Intergalactic.Component<'button', ButtonProps, ButtonContext> & {
-  Text: Intergalactic.Component<'span', ButtonTextProps>;
-  Addon: Intergalactic.Component<'span', ButtonAddonProps>;
-};
+export type ButtonComponent = Intergalactic.Component<'button', ButtonProps, ButtonContext> & ButtonChildren;

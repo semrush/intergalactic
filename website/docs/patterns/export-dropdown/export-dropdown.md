@@ -22,7 +22,7 @@ To add the data export, provide a button that users can click to initiate immedi
 
 ![](static/short-export.png)
 
-- Utilize the compact version when space is limited. Include a tooltip with a descriptive label to inform users about the button's purpose.
+- Utilize the compact version when space is limited. Include a [hint](../../utils/hint/hint) with a descriptive label to inform users about the button's purpose.
 - The export button opens a dropdown menu with the export form.
 
 ::: tip
@@ -37,7 +37,7 @@ Remember to add an `aria-label` for the [button with no text](/components/button
 - The export button opens a dropdown menu with the export form.
 
 ::: tip
-If there's no data available for download, the file is still downloaded with the table headers. The file should not be empty, as it's important to show users that the export is functioning.
+If there's no data available for download, the file is still downloaded with the table headers. The file shouldn't be empty, as it's important to show users that the export is functioning.
 
 For time-consuming processes, the button gets a loading state. The recommended spinner display time is `300ms`.
 :::
@@ -97,7 +97,9 @@ If there's no data available for all export parameters and settings, avoid disab
 
 ![](static/dropdown-info-1.png)
 
+<!-- vale DevDocs.Please = NO -->
 Use this message for such cases: "To export all data, please contact us at {email}". Alternatively, link to a page with a custom report form, displaying the message: "To export all data, please order a custom report."
+<!-- vale DevDocs.Please = YES -->
 
 ### Additional information concerning the selected export settings
 
@@ -110,7 +112,9 @@ Use this message for such cases: "To export all data, please contact us at {emai
 
 ### Error
 
+<!-- vale DevDocs.Please = NO -->
 For error messages, employ the following text: "Please try again later. If the problem persists, contact us at {email}".
+<!-- vale DevDocs.Please = YES -->
 
 - In case of export operation failure, display a [warning notice](/components/notice/notice) at the dropdown's bottom.
 - If the problem is known, describe it in the notice title immediately.

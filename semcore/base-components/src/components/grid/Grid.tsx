@@ -2,10 +2,10 @@ import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
 import { Box, Flex } from '../flex-box';
-import type { RowProps, ColProps, Row as RowType } from './Grid.types';
+import type { RowProps, ColProps, RowType, GridContext } from './Grid.types';
 import style from './style/grid.shadow.css';
 
-class Row extends Component<RowProps> {
+class RowRoot extends Component<RowProps, [], {}, GridContext> {
   static displayName = 'Row';
   static style = style;
   static defaultProps = {
@@ -68,4 +68,6 @@ function Col(props: ColProps) {
   );
 }
 
-export default createComponent(Row, { Col }) as typeof RowType;
+const Row = createComponent(RowRoot, { Col }) as RowType;
+
+export default Row;

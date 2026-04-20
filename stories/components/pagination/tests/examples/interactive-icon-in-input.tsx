@@ -1,5 +1,6 @@
-import { Flex } from '@semcore/ui/flex-box';
-import Return from '@semcore/ui/icon/Return/m';
+import { ButtonLink } from '@semcore/button';
+import Return from '@semcore/icon/Return/m';
+import { Flex } from '@semcore/ui/base-components';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
@@ -25,10 +26,13 @@ const Demo = () => {
           {/* @ts-ignore */}
           <Pagination.PageInput.Addon
             data-testid='selectPageButton'
-            tag={Return}
-            interactive
+            tag={ButtonLink}
             onClick={handleApplyPage}
-          />
+            p={0}
+            h='calc(100% - 8px)'
+          >
+            <ButtonLink.Addon tag={Return} />
+          </Pagination.PageInput.Addon>
         </Pagination.PageInput>
         <Pagination.TotalPages />
       </Pagination>

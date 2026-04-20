@@ -1,11 +1,11 @@
+import EditM from '@semcore/icon/Edit/m';
+import PlusM from '@semcore/icon/MathPlus/m';
+import Settings from '@semcore/icon/Settings/m';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { Flex, Box, ScreenReaderOnly } from '@semcore/ui/flex-box';
-import EditM from '@semcore/ui/icon/Edit/m';
-import PlusM from '@semcore/ui/icon/MathPlus/m';
-import Settings from '@semcore/ui/icon/Settings/m';
 import { InputSearch } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

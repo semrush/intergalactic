@@ -1,7 +1,6 @@
 import Icon from '@semcore/icon/Video/m';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
@@ -123,9 +122,9 @@ describe('YAxis', () => {
   shouldSupportClassName(YAxis, PlotTest);
   shouldSupportRef(YAxis, PlotTest);
 
-  test.concurrent(
+  test(
     'Should support call children function for Grid how many ticks are passed',
-    ({ expect }) => {
+    () => {
       expect.assertions(2);
 
       render(
@@ -143,9 +142,9 @@ describe('YAxis', () => {
     },
   );
 
-  test.concurrent(
+  test(
     'Should support call children function for Ticks how many ticks are passed',
-    ({ expect }) => {
+    () => {
       /* It's called 4 times since after the initial render, re-render is triggered to have an access to rootRef to calculate multiline lines */
       expect.assertions(4);
 
@@ -164,7 +163,7 @@ describe('YAxis', () => {
     },
   );
 
-  test.concurrent('should support set data-ui-name for Line.Ticks', () => {
+  test('should support set data-ui-name for Line.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -176,7 +175,7 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test.sequential('should support change tag YAxis.Ticks', () => {
+  test('should support change tag YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -233,40 +232,6 @@ describe('XAxis', () => {
     expect(eventEmitter.emit).toHaveBeenCalledTimes(2); // onMouseMoveRoot, onMouseLeaveChart
     (window.requestAnimationFrame as any).mockRestore();
   });
-
-  test.concurrent(
-    'should support to render custom components as Axis tick value',
-    async ({ task }) => {
-      const size = 16;
-      const TickFormatter = (props: any): any => {
-        return (
-          <foreignObject
-            transform={`translate(${props.x - size / 2},${props.y + 8})`}
-            width={`${size}px`}
-            height={`${size}px`}
-          >
-            {props.index === 3 && props.value}
-            {props.value === 0 && 'INIT'}
-            {props.index !== 3 && props.value !== 0 && (props.value === 10 ? 'V' : <Icon />)}
-          </foreignObject>
-        );
-      };
-
-      const component = (
-        <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={120} height={130}>
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition='below'>
-              {({ value, x, y, index }: any) => ({
-                children: <TickFormatter value={value} x={x} y={y} index={index} />,
-              })}
-            </XAxis.Ticks>
-          </XAxis>
-        </Plot>
-      );
-
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    },
-  );
 });
 
 describe('utils', () => {
@@ -289,7 +254,7 @@ describe('utils', () => {
 describe('Focus skip to content after plot', () => {
   beforeEach(cleanup);
 
-  test.sequential('nested case', async ({ expect }) => {
+  test('nested case', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -299,6 +264,7 @@ describe('Focus skip to content after plot', () => {
     const hints = makeDataHintsContainer();
 
     const PlotComponent: React.FC = () => {
+      const triggerRef = React.useRef(null);
       const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
@@ -306,12 +272,14 @@ describe('Focus skip to content after plot', () => {
           <div ref={plotRef}>
             <PlotA11yView
               id='plotView'
-              data={data}
+              payload={data}
               plotRef={plotRef}
               plotLabel='plot label'
               locale='en'
               config={{}}
               hints={hints}
+              triggerRef={triggerRef}
+              onCloseHandler={() => {}}
             />
           </div>
           <div className='one'>
@@ -333,13 +301,12 @@ describe('Focus skip to content after plot', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
 
     expect(getByTestId('focusableElement-1')).toHaveFocus();
   });
 
-  test.sequential('nested and shifted case', async ({ expect }) => {
+  test('nested and shifted case', async () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -349,6 +316,7 @@ describe('Focus skip to content after plot', () => {
     const hints = makeDataHintsContainer();
 
     const PlotComponent: React.FC = () => {
+      const triggerRef = React.useRef(null);
       const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
@@ -356,12 +324,14 @@ describe('Focus skip to content after plot', () => {
           <div ref={plotRef}>
             <PlotA11yView
               id='plotView'
-              data={data}
+              payload={data}
               plotRef={plotRef}
               plotLabel='plot label'
               locale='en'
               config={{}}
               hints={hints}
+              triggerRef={triggerRef}
+              onCloseHandler={() => {}}
             />
           </div>
           <div className='one'>
@@ -385,7 +355,6 @@ describe('Focus skip to content after plot', () => {
 
     const { getByTestId } = render(<PlotComponent />);
 
-    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
@@ -756,6 +725,48 @@ describe('Chart.Venn', () => {
     expect(circles.length).toBe(Object.keys(ChartOptions.venn.legendMap).length);
 
     expect(() => fireEvent.click(circles[0])).not.toThrow();
+  });
+});
+
+describe('Chart.Cigarette', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should call percentFormatter and return correct formatted percent', async () => {
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+
+    const percentFormatter = vi.fn((value: number) => value.toFixed(2));
+
+    const { getByLabelText } = render(
+      <Chart.Cigarette
+        data={{
+          Cats: 5,
+          Capybaras: 11,
+          Birds: 5,
+        }}
+        plotWidth={400}
+        plotHeight={28}
+        showPercentValueInTooltip={true}
+        percentFormatter={percentFormatter}
+        duration={200}
+        aria-label='Cigarette chart'
+      />,
+    );
+
+    const svg = getByLabelText('Chart');
+    fireEvent.mouseMove(svg, {
+      clientX: 200,
+      clientY: 14,
+    });
+
+    expect(percentFormatter).toHaveBeenNthCalledWith(1, (5 * 100) / 21);
+    expect(percentFormatter).toHaveBeenNthCalledWith(2, (11 * 100) / 21);
+    expect(percentFormatter).toHaveBeenNthCalledWith(3, (5 * 100) / 21);
+
+    expect(percentFormatter).toHaveNthReturnedWith(1, '23.81');
+    expect(percentFormatter).toHaveNthReturnedWith(2, '52.38');
+    expect(percentFormatter).toHaveNthReturnedWith(3, '23.81');
+
+    (window.requestAnimationFrame as any).mockRestore();
   });
 });
 

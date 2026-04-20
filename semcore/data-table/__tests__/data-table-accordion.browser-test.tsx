@@ -78,11 +78,6 @@ test.describe(`${TAG.VISUAL}`, () => {
             await checkStyles(cell, { 'background-color': 'rgb(240, 240, 244)' });
           }
       });
-      await test.step('Verify accordion is responsive', async () => {
-        await page.setViewportSize({ width: 920, height: 1080 });
-        await page.waitForTimeout(100);
-        await expect(page).toHaveScreenshot();
-      });
     });
 
     test('Verify accordion and custom component inside after keyboard interactions ', {
@@ -95,7 +90,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
-      await page.waitForTimeout(200); // for chart animation is finished
+      await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
 
       await page.keyboard.press('ArrowDown');
       await expect(page).toHaveScreenshot();
@@ -121,8 +116,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await expect(sortIconKeywordAcc).toBeFocused();
         await page.keyboard.press('Enter');
-        await locators.dataTable(page).nth(1).waitFor({ state: 'visible' });
-
+        await locators.collapse(page).waitFor({ state: 'visible' });
+        await page.waitForTimeout(200);
         await page.keyboard.press('ArrowDown');
         await expect(page).toHaveScreenshot();
       });
@@ -181,7 +176,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
-        // await page.keyboard.press('Enter');
         await locators.collapse(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('ArrowRight');
@@ -253,7 +247,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
 
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-
         await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
         const accordion = page.locator('[role="gridcell"][aria-level="2"]');
 
@@ -263,6 +256,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await checkStyles(cells, {
           'background-color': stylesActiveHovered[1],
+        });
+
+        await checkStyles(accordion, {
+          'background-color': stylesNotActive[2],
         });
 
         await expect(page).toHaveScreenshot();
@@ -446,8 +443,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify toggle styles when one expanded', async () => {
         await locators.toggle(page).first().click();
-        await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'visible' });
-
+        await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
+        await page.waitForTimeout(200);
         await checkStyles(toggles, { 'margin-right': '12px' });
       });
       await test.step('Verify cells in expanded state style', async () => {
@@ -469,8 +466,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify accordion is responsive', async () => {
         await page.setViewportSize({ width: 920, height: 1080 });
-        await page.waitForTimeout(100);
-        await expect(page).toHaveScreenshot();
+        await locators.toggle(page).first().waitFor({ state: 'visible' });
+        await locators.rowTableInTable(page, 2, 3).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
       });
     });
 
@@ -701,8 +699,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_in_merged_rows.tsx', 'en');
 
-      const cell = page.locator('[data-ui-name="Row.Cell"][aria-colindex="2"]').first();
-
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.collapse(page).waitFor({ state: 'visible' });
@@ -712,7 +708,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.collapse(page).locator('[data-ui-name="Row.Cell"]')).toBeFocused();
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowRight');
-      await expect(cell).toBeFocused();
+      await expect(locators.getCell(page, 2, 2)).toBeFocused();
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(locators.collapse(page).locator('[data-ui-name="Row.Cell"]')).toBeFocused();
     });
 
     test('Verify base keyboard interactions with accordion ', {

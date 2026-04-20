@@ -55,6 +55,7 @@ SError {
     }
 
     SDescription {
+      display: block;
       font-size: var(--intergalactic-fs-300, 16px);
       line-height: var(--intergalactic-lh-300, 150%);
       color: var(--intergalactic-text-primary, #191b23);

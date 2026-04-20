@@ -4,15 +4,13 @@ fileSource: tab-line
 tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
-Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be truncated with an `ellipsis`. You can also place the `TabLine.Item` within other components.
-
-::: info
-Make sure to provide a tooltip with full text for tabs with text truncated with an `ellipsis`.
-:::
-
 ## TabLine item with addons
 
 You can add icons, badges, and counters as addons to the left or right of the text in the item.
+
+<!-- vale DevDocs.Inclusive = NO -->
+Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be truncated with [ellipsis](../../utils/ellipsis/ellipsis) and a [hint](../../utils/hint/hint) will be shown on hover and focus.
+<!-- vale DevDocs.Inclusive = YES -->
 
 ::: sandbox
 
@@ -34,21 +32,12 @@ Use `disabled` property to make `<TabLine.Item />` disabled. Always add `Tooltip
 
 :::
 
-## Automatic tab activation
-
-By default, tabs are switched automatically when selected.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/tab-line/docs/examples/automatic_tab_activation.tsx';
-</script>
-
-:::
-
 ## Manual tab activation
 
-You can set `behavior='manual'` on TabLine to change the tab activation method to manual.
+By default, when using keyboard interaction, a tab is activated immediately as soon as it's selected.
+You can change this behavior by setting `behavior='manual'`, so that user has to confirm their selection by pressing `Enter` or `Space`.
+
+This can be useful when some tabs load a lot of data and you want user to be able to select farther tabs without having to activate all tabs in-between.
 
 ::: sandbox
 
@@ -60,7 +49,7 @@ You can set `behavior='manual'` on TabLine to change the tab activation method t
 
 ## Custom indents
 
-Since the TabLine component doesn't have default margins at the edges, to make it fill the entire width of its parent block (which may have its own margins), you can set the desired `padding` and `margin` for the TabLine component like this:
+TabLine doesn't have any margins by default. To make it fill the entire width of its parent block (which may have its own margins), you can set the desired `padding` and `margin` for the TabLine component like this:
 
 ```typescript
 <Box p={5}>

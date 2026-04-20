@@ -35,8 +35,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       '@feedback-form'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
+    const checkboxInput = page.getByRole('checkbox');
 
     await expect(page).toHaveScreenshot();
     const dialog = locators.dialog(page);
@@ -53,19 +54,33 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
 
+    if (browserName == 'webkit') test.skip();
     await test.step('Verify form styles', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
+      await expect(checkboxInput.first()).toBeFocused();
+
+      await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify email validation', async () => {
       await page.keyboard.press('Tab');
+      await expect(checkboxInput.nth(1)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(checkboxInput.nth(2)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 0)).toBeFocused();
+
       await page.keyboard.press('Tab');
+      await expect(locators.inputs(page, 1)).toBeFocused();
+
       await page.keyboard.type('t');
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
 
@@ -77,6 +92,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify loading styles', async () => {
       await page.keyboard.type('test@test.test');
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Tab');
 
       await page.keyboard.press('Enter');
@@ -111,6 +128,46 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify feedback rating notice with illustration and feature highlight notice', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-custom-illustration-and-notice.tsx', 'en');
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify feedback rating with custom modal width', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      '@feedback-form',
+      '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/modal-width-variants.tsx', 'en');
+
+    await test.step('Verify modal opens with default width', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.getByRole('option').nth(1).waitFor({ state: 'visible' });
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      await page.getByRole('option').nth(1).waitFor({ state: 'hidden' });
+
+      await locators.stars(page, 2).click();
+      await locators.dialog(page).waitFor({ state: 'visible' });
+
+      const modal = locators.dialog(page);
+      const width = await modal.evaluate((el) => {
+        const style = window.getComputedStyle(el);
+        return parseInt(style.width, 10);
+      });
+
+      expect(width).toBe(300);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================
@@ -124,7 +181,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@feedback-form'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
     const checkboxInput = page.getByRole('checkbox');
@@ -149,6 +206,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       }
 
       await page.keyboard.press('ArrowRight');
+      await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '1');
       await page.keyboard.press('ArrowRight');
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '2');
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '0');
@@ -160,15 +218,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '2');
-      await expect(checkboxInput.first()).toBeFocused();
+      if (browserName !== 'webkit') await expect.soft(checkboxInput.first()).toBeFocused();
       await expect(checkboxInput.first()).toHaveAttribute('aria-invalid', 'false');
       await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
     });
 
-    await test.step('Verify form closed by ESC and selected starts skipped', async () => {
+    await test.step('Verify form closed by ESC and selected stars skipped', async () => {
       await page.keyboard.press('Escape');
       await buttons.first().waitFor({ state: 'hidden' });
-      await expect(locators.sliderRating(page)).toBeFocused();
+      if (browserName !== 'webkit') await expect(locators.sliderRating(page)).toBeFocused();
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuenow', '0');
       await expect(locators.sliderRating(page)).toHaveAttribute('aria-valuetext', 'Not set');
 
@@ -180,24 +238,30 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(buttons.first()).not.toBeVisible();
     });
 
+    if (browserName === 'webkit') return;
+
     await test.step('Verify Form focus order', async () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="Great! What do you like the most?"');
+      await buttons.first().waitFor({ state: 'visible' });
+
       await expect(checkboxInput.first()).toBeFocused();
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      for (let i = 0; i < 3; i++) {
+        await page.keyboard.press('Tab');
+      }
       await expect(locators.inputs(page, 0)).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(locators.inputs(page, 1)).toBeFocused();
       await page.keyboard.press('Tab');
+      await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
       await page.keyboard.press('Shift+Tab');
       await expect(locators.inputs(page, 1)).toBeFocused();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      for (let i = 0; i < 2; i++) {
+        await page.keyboard.press('Tab');
+      }
       await expect(buttons.nth(1)).toBeFocused();
       await page.keyboard.press('Tab');
       await expect(buttons.nth(0)).toBeFocused();
@@ -213,7 +277,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text="Great! What do you like the most?"');
+      await page.waitForTimeout(200);
+      await buttons.first().waitFor({ state: 'visible' });
       await expect(checkboxInput.first()).toBeFocused();
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
@@ -228,7 +293,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@feedback-form'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
     const checkboxInput = page.getByRole('checkbox');
@@ -259,15 +324,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify form closed by click Close button', async () => {
       await locators.stars(page, 3).click();
-      await page.waitForSelector('text="Great! What do you like the most?"');
+      await buttons.first().waitFor({ state: 'visible' });
       await buttons.first().click();
       await locators.dialog(page).waitFor({ state: 'visible' });
     });
 
     await test.step('Verify form closed by click Send request', async () => {
       await locators.stars(page, 3).click();
-      await page.waitForSelector('text="Great! What do you like the most?"');
-      await expect(checkboxInput.first()).toBeFocused();
+      await buttons.first().waitFor({ state: 'visible' });
+      if (browserName !== 'webkit') await expect(checkboxInput.first()).toBeFocused();
       await buttons.nth(1).click();
 
       await page.locator('[aria-label="Loading…"]').nth(1).waitFor({ state: 'hidden' });

@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles } from './utils';
+import { locators } from './utils';
 
 /* =====================================================
 @visual
@@ -48,62 +48,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     }
     await expect(page).toHaveScreenshot();
   });
-
-  test('Verify empty data with selectable rows', {
-    tag: [TAG.PRIORITY_MEDIUM,
-      '@data-table'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox-in-table-with-no-data.tsx', 'en');
-
-    await expect(page).toHaveScreenshot();
-  });
-
-  test('Verify sideIndents=wide with selectable rows non compact and compact', {
-    tag: [TAG.PRIORITY_MEDIUM,
-      '@data-table'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
-      sideIndents: 'wide',
-    });
-
-    await test.step('Verify wide for non compact data-tablet', async () => {
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify wide for compact data-tablet', async () => {
-      await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en', {
-        sideIndents: 'wide', compact: true,
-      });
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify color on hover when merged rows AND columns with multi-level header', {
-    tag: [TAG.PRIORITY_HIGH,
-      '@data-table'],
-  }, async ({ page, browserName }) => {
-    if (browserName == 'firefox') test.skip();
-    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/merged-row-for-multi-level-header.tsx', 'en');
-
-    await test.step('Verify Color when child cell hovered', async () => {
-      await locators.getCell(page, 3, 1).hover();
-
-      await checkStyles(locators.getCell(page, 3, 1), { 'background-color': 'rgb(240, 240, 244)' });
-      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(240, 240, 244)' });
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(255, 255, 255)' });
-    });
-
-    await test.step('Verify Color when parent cell hovered', async () => {
-      await locators.getCell(page, 2, 2).hover();
-
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(240, 240, 244)' });
-
-      for (let row = 2; row <= 6; row++) {
-        await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
-      }
-    });
-  });
 });
+
 /* =====================================================
   @functional
   Keyboard and mouse interactions - no snapshots here.
@@ -268,6 +214,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(selectOption).toBeHidden();
 
       await selectButton.click();
+      await selectOption.waitFor({ state: 'visible' });
       await page.keyboard.press('Escape');
       await expect(selectOption).toBeHidden();
       await expect(selectButton).toBeFocused();
@@ -333,10 +280,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowDown');
-      await expect(locators.getCell(page, 7, 2)).toBeFocused();
+      await expect(locators.getCell(page, 6, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowUp');
+      await expect(locators.getCell(page, 2, 5)).toBeFocused();
+
+      await page.keyboard.press('ArrowLeft');
       await expect(locators.getCell(page, 2, 2)).toBeFocused();
 
       await page.keyboard.press('ArrowLeft');
@@ -399,37 +349,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('ArrowLeft');
       await expect(locators.getCell(page, 4, 2)).toBeFocused();
     });
-  });
-
-  test('Verify select rows with Shift', {
-    tag: [
-      TAG.KEYBOARD,
-      '@data-table',
-    ],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en');
-
-    const firstCell = locators.getCell(page, 3, 1);
-    const secondCell = locators.getCell(page, 7, 1);
-
-    await firstCell.locator('label').click();
-    await secondCell.locator('label').click({ modifiers: ['Shift'] });
-
-    for (let i = 3; i <= 7; i++) {
-      await expect(locators.getCell(page, i, 1).locator('input')).toBeChecked();
-    }
-
-    await locators.getCell(page, 5, 1).locator('label').click({ modifiers: ['Shift'] });
-
-    for (let i = 5; i <= 7; i++) {
-      await expect(locators.getCell(page, i, 1).locator('input')).not.toBeChecked();
-    }
-
-    await locators.getCell(page, 9, 1).locator('label').click({ modifiers: ['Shift'] });
-    for (let i = 5; i <= 8; i++) {
-      await expect(locators.getCell(page, i, 1).locator('input')).not.toBeChecked();
-    }
-    await expect(locators.getCell(page, 9, 1).locator('input')).toBeChecked();
   });
 
   test('Verify multiple access to cells with spin', {

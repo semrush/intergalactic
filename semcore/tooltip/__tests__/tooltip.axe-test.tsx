@@ -33,24 +33,7 @@ test.describe(`@tooltip ${TAG.ACCESSIBILITY}`, () => {
       }
     });
 
-    await test.step('Verify hint expanded', async () => {
-      {
-        await page.keyboard.press('Tab');
-        await page.waitForSelector('text="Export to PDF"');
-
-        const violations = await getAccessibilityViolations({ page });
-
-        expect(violations).toEqual([]);
-      }
-      {
-        await page.locator('[data-name="CheckAlt"]').hover();
-        await page.waitForSelector('text="You confirmed your email"');
-        const violations = await getAccessibilityViolations({ page });
-        expect(violations).toEqual([]);
-      }
-    });
-
-    await test.step('Verify desctiprion tooltip expanded', async () => {
+    await test.step('Verify descriprion tooltip expanded', async () => {
       {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');

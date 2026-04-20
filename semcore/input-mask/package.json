@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-mask",
   "description": "Semrush InputMask Component",
-  "version": "16.0.11",
+  "version": "17.0.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,18 +12,16 @@
     "build": "pnpm semcore-builder && pnpm vite build"
   },
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/input": "16.1.1",
-    "text-mask-core": "5.1.2",
-    "@semcore/neighbor-location": "16.0.11",
-    "@semcore/flex-box": "16.0.11"
+    "@semcore/input": "^17.0.1",
+    "text-mask-core": "5.1.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^17.0.1"
   },
   "repository": {
     "type": "git",
@@ -32,6 +30,7 @@
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }

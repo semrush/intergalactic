@@ -34,14 +34,16 @@ import Tag from '@semcore/ui/tag';
 
 ## Tag.Text
 
-This ordinary text sets the appropriate indents depending on the size. If a simple text without addons is used in the Tag, it will turn into `Tag.Text` automatically.
+An instance of [`Text`](../../style/typography/typography-api#text) with the appropriate styles depending on the tag size.
 
-It takes all the properties of the `Box`.
+Plain text without addons placed directly in `Tag` is wrapped in `Tag.Text` automatically.
 
 ```jsx
 import Tag from '@semcore/ui/tag';
 <Tag.Text />;
 ```
+
+<TypesView type="NSText.Props" :types={...types} />
 
 ## Tag.Circle
 

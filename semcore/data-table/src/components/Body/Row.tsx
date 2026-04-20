@@ -1,6 +1,5 @@
 import { Box, Collapse } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import Checkbox from '@semcore/checkbox';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
@@ -14,8 +13,9 @@ import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
 import type { DataTableRowProps, DataTableRowType, DTRow, DTRows, RowPropsInner } from './Row.types';
 import style from './style.shadow.css';
 import { AccordionRows } from '../AccordionRows/AccordionRows';
-import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
+import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData, DTValue } from '../DataTable/DataTable.types';
+import { RowSelector } from '../RowSelector/RowsSelector';
 
 type State<UniqKeyType> = {
   expandedForAnimation: boolean;
@@ -23,7 +23,7 @@ type State<UniqKeyType> = {
   accordionComponent?: React.ReactNode;
 };
 
-export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, {}, State<UniqKeyType>, [], RowPropsInner<Data, UniqKeyType>> {
+export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, [], {}, RowPropsInner<Data, UniqKeyType>, State<UniqKeyType>> {
   static displayName = 'Row';
   static style = style;
 
@@ -50,7 +50,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   componentDidMount() {
-    this.asProps.componentRef?.(this);
+    const { componentRef } = this.asProps;
+    componentRef?.(this);
 
     this.setAccordion();
   }
@@ -107,20 +108,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       Boolean(cellValue?.[ACCORDION])
     );
   }
-
-  handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
-    const { row, rowIndex, onSelectRow } = this.asProps;
-
-    onSelectRow?.(value, rowIndex, row, event);
-  };
-
-  handleClickCheckbox = (value: boolean) => (event?: React.SyntheticEvent<HTMLElement>) => {
-    event?.preventDefault();
-    event?.stopPropagation();
-    const { row, rowIndex, onSelectRow } = this.asProps;
-
-    onSelectRow?.(value, rowIndex, row, event);
-  };
 
   handleBackFromAccordion = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -275,6 +262,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       isAccordionRow,
       accordionRowIndex,
       selectedRows,
+      theme,
     } = this.asProps;
     const SAccordionToggle = ButtonLink;
 
@@ -316,6 +304,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       flatRows: this.asProps.flatRows,
       shadowVertical,
       withoutBorder,
+      theme,
     };
 
     if (renderCell) {
@@ -421,7 +410,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const SRow = Root;
     const SCollapseRow = Collapse;
     const SCell = Row.Cell;
-    const SCheckboxCell = Row.Cell;
     const {
       columns,
       row,
@@ -451,6 +439,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       scrollAreaRef,
       accordionAnimationRows,
       onCellClick,
+      onSelectRow,
+      theme,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
@@ -493,7 +483,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
           render={Box}
           role='row'
           accordionType={accordionType}
-          theme={selectedRows?.includes(rowUniqKey) ? 'info' : undefined}
           use:expanded={expanded && !mergedRow}
           onClick={this.handleClickRow(row)}
           aria-hidden={this.isRowHidden}
@@ -520,31 +509,27 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             }
 
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
-              const checked = selectedRows.includes(rowUniqKey);
+              const nextColumnName = columns[i + 1].name;
+
+              if (!(nextColumnName in row) || Array.isArray(row)) {
+                return null;
+              }
 
               return (
-                <SCheckboxCell
+                <RowSelector
                   key={i}
                   row={row}
                   rowIndex={rowIndex}
-                  // @ts-ignore
-                  column={{ name: SELECT_ALL.toString() }}
-                  columnIndex={0}
                   gridRowIndex={gridRowIndex}
-                  onClick={this.handleClickCheckbox(!checked)}
                   expanded={expanded}
                   isAccordionRow={isAccordionRow}
-                  aria-hidden={isCellHidden}
+                  isCellHidden={isCellHidden}
                   withAccordion={withAccordion}
-                >
-                  <Checkbox
-                    checked={checked}
-                    aria-labelledby={`${uid}_${rowUniqKey}_1`}
-                    onChange={this.handleSelectRow}
-                  >
-                    <Checkbox.Value />
-                  </Checkbox>
-                </SCheckboxCell>
+                  theme={theme}
+                  uid={uid}
+                  selectedRows={selectedRows}
+                  onSelectRow={onSelectRow}
+                />
               );
             }
 
@@ -602,6 +587,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             id={accordionId}
             visible={expanded}
             aria-hidden={!expanded}
+            // @ts-ignore
             interactive
             gridArea={accordionDataGridArea}
             duration={accordionDuration ?? 200}
@@ -673,6 +659,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
 export const Row = createComponent(RowRoot, {
   Cell,
-}) as DataTableRowType & {
+}) as unknown as DataTableRowType & {
   Cell: any;
 };

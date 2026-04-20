@@ -95,11 +95,11 @@ const Demo = (props: baseExampleProps) => {
           id='time-picker'
         >
           <TimePicker.Hours
-            step={6}
+            step={props.step}
             readOnly={props.readOnly}
           />
           <TimePicker.Minutes
-            step={6}
+            step={props.step}
             readOnly={props.readOnly}
           />
         </TimePicker>
@@ -156,7 +156,7 @@ export const defaultProps: baseExampleProps = {
   is12Hour: true,
   disabled: undefined,
   state: undefined,
-  step: undefined,
+  step: 6,
   readOnly: undefined,
   locale: undefined,
 

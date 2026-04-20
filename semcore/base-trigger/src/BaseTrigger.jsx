@@ -1,10 +1,9 @@
+import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
-import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
-import { Box, InvalidStateBox } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
+import { Text as TextKit } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/base-trigger.shadow.css';
@@ -30,11 +29,14 @@ class RootBaseTrigger extends Component {
     empty: false,
   };
 
+  triggerRef = React.createRef();
+
   getTextProps() {
     const { placeholder, empty } = this.asProps;
     return {
       placeholder,
       empty,
+      triggerRef: this.triggerRef,
     };
   }
 
@@ -43,12 +45,6 @@ class RootBaseTrigger extends Component {
     const SInner = 'span';
     const SInvalidPattern = InvalidStateBox;
     const { Children, styles, theme, neighborLocation, empty, state, size } = this.asProps;
-
-    logger.warn(
-      theme !== undefined,
-      'The \'theme\' property is deprecated, use \'state\'',
-      this.asProps['data-ui-name'] || BaseTrigger.displayName,
-    );
 
     // TODO: add aria
     return (
@@ -62,6 +58,7 @@ class RootBaseTrigger extends Component {
               tabIndex={0}
               neighborLocation={neighborLocation}
               state={theme}
+              ref={this.triggerRef}
             >
               {state === 'invalid' && <SInvalidPattern size={size} />}
               <SInner data-ui-name={`${this.asProps['data-ui-name']}.InnerTriggerWrapper`}>
@@ -76,12 +73,23 @@ class RootBaseTrigger extends Component {
 
 function Text(props) {
   const SText = Root;
-  const { children, styles, empty, placeholder } = props;
+  const textRef = React.useRef();
+  const { children, styles, empty, placeholder, triggerRef, ellipsis = false } = props;
+  const content = empty ? placeholder : children;
 
   return sstyled(styles)(
-    <SText render={Box} display-placeholder={empty} aria-hidden={empty}>
-      {empty ? placeholder : children}
-    </SText>,
+    <>
+      <SText
+        render={TextKit}
+        display-placeholder={empty}
+        aria-hidden={empty}
+        ref={textRef}
+        ellipsis={ellipsis}
+        hint:triggerRef={triggerRef}
+      >
+        {content}
+      </SText>
+    </>,
   );
 }
 

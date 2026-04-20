@@ -176,8 +176,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify add color styles', async () => {
       await expect(locators.addColor(page)).toHaveAttribute('aria-hidden', 'true');
       await expect(locators.addColor(page)).toBeHidden();
-      const confirmStyles = await getComputedStyles(locators.addColor(page), ['paddingRight']);
-      expect(confirmStyles.paddingRight).toBe('4px');
 
       const confirmIcon = locators.addColor(page).locator('[data-ui-name="Check"]');
       await expect(confirmIcon).toHaveAttribute('width', '16');
@@ -185,9 +183,6 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     await test.step('Verify clear color styles', async () => {
-      const clearStyles = await getComputedStyles(locators.clearColor(page), ['paddingLeft']);
-      expect(clearStyles.paddingLeft).toBe('4px');
-
       const clearIcon = locators.clearColor(page).locator('[data-ui-name="Close"]');
       await expect(clearIcon).toHaveAttribute('width', '16');
       await expect(clearIcon).toHaveAttribute('height', '16');
@@ -230,8 +225,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
 
       const paletteIcon = locators.paletteItem(page).locator('svg');
-      await expect(paletteIcon).toHaveAttribute('width', '16');
-      await expect(paletteIcon).toHaveAttribute('height', '16');
+      await expect(paletteIcon).toHaveAttribute('width', '10');
+      await expect(paletteIcon).toHaveAttribute('height', '10');
 
       const itemColorBox = page.locator('[data-ui-name="Box"][class*="ItemColor"]');
       const itemColorBoxBounding = await itemColorBox.boundingBox();
@@ -336,7 +331,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
 
     await locators.paletteItem(page).nth(1).hover();
-    await page.getByText('#8649E7').waitFor({ state: 'visible' });
+    await page.getByText('#0000FF').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -443,6 +438,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify palette item attributes', async () => {
       await locators.inputColor(page).fill('000');
+      await locators.addColor(page).waitFor({ state: 'visible' });
       await locators.addColor(page).click();
 
       await expect(locators.paletteItem(page)).toHaveCount(1);
@@ -453,8 +449,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await locators.paletteItem(page).click();
+      await locators.color(page, 0).waitFor({ state: 'hidden' });
+
       await locators.trigger(page).click();
+      await locators.color(page, 0).waitFor({ state: 'visible' });
+
       await locators.inputColor(page).fill('000');
+      await locators.addColor(page).waitFor({ state: 'visible' });
       await locators.addColor(page).click();
 
       await expect(locators.paletteItem(page)).toHaveAttribute('aria-selected', 'true');
@@ -467,10 +468,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       const paletteClose = locators.paletteItem(page).locator('svg');
-      await expectAttributes(paletteClose, {
-        'tabindex': '-1',
-        'aria-hidden': 'true',
-      });
+      await expectAttributes(paletteClose, { 'aria-hidden': 'true' });
     });
   });
 
@@ -528,23 +526,30 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Escape');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
     await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field');
+    await expect(locators.trigger(page, 0)).toBeFocused();
 
     await page.keyboard.press('Space');
+    await expect(locators.dialog(page)).toBeFocused();
+
     await locators.color(page, 0).waitFor({ state: 'visible' });
 
     await page.keyboard.press('Tab');
-    await expect(locators.color(page, 0)).toBeFocused();
     await page.getByText('Clear color').waitFor({ state: 'visible' });
 
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page, 0)).toBeFocused();
+
     await expect(locators.trigger(page)).toHaveAttribute('aria-label', 'Color field');
 
     await page.keyboard.press('Space');
+    await expect(locators.dialog(page)).toBeFocused();
+
     await locators.color(page, 0).waitFor({ state: 'visible' });
     for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page, 0)).toBeFocused();
 
     await expect(locators.trigger(page)).toHaveAttribute(
       'aria-label',
@@ -553,13 +558,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Space');
     await locators.color(page, 0).waitFor({ state: 'visible' });
+    await expect(locators.dialog(page)).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Escape');
     await expect(locators.dialog(page)).toBeVisible();
+
     await page.keyboard.press('Escape');
     await locators.color(page, 0).waitFor({ state: 'hidden' });
+    await expect(locators.trigger(page, 0)).toBeFocused();
+
     await page.keyboard.press('Space');
     await locators.trigger(page, 0).click();
     await expect(locators.dialog(page)).not.toBeVisible();

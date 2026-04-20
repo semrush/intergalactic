@@ -34,7 +34,7 @@ function collectMdFiles(dir: string) {
 function extractLinks(content: string) {
   const tokens = md.parse(content, {});
   const links = [];
-  const routeRegexp = /(?<!\/\/ *)route: '\/intergalactic(.+)'/;
+  const routeRegexp = /(?<!\/\/ *)route: '([./a-z0-9-#]+)'/;
 
   for (const token of tokens) {
     let lines = '';
@@ -50,6 +50,7 @@ function extractLinks(content: string) {
         if (child.type === 'link_open') {
           // don't check commented links
           const prev = token.children[i - 1];
+
           if (prev && prev.type === 'text' && prev.content.startsWith('<!--')) {
             continue;
           }

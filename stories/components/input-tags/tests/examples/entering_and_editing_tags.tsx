@@ -1,11 +1,13 @@
 import { Flex } from '@semcore/ui/base-components';
-import Ellipsis from '@semcore/ui/ellipsis';
 import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps & InputTagsTagProps;
+type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps & InputTagsTagProps & {
+  hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  hintProps?: false;
+};
 
 const Demo = (props: ExampleInputTagsProps) => {
   const inputValueRef = React.useRef<HTMLInputElement>(null);
@@ -87,7 +89,7 @@ const Demo = (props: ExampleInputTagsProps) => {
             active={props.active}
           >
             <InputTags.Tag.Text>
-              <Ellipsis wMax={100}>{tag}</Ellipsis>
+              <InputTags.Tag.Text.Content wMax={100} ellipsis:cropPosition='end' hint={props.hintProps} hint:placement={props.hintPlacement}>{tag}</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag(idx)} />
           </InputTags.Tag>

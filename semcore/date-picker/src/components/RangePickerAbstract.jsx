@@ -1,9 +1,9 @@
+import { Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
-import { Box, Flex } from '@semcore/flex-box';
 import dayjs from 'dayjs';
 import React from 'react';
 
@@ -219,6 +219,12 @@ class RangePickerAbstract extends Component {
 
     return disabled.some(includesDate(dayjs(date), 'date'));
   }
+
+  handleReset = () => {
+    this.handleChange([]);
+    this.handlers.value([]);
+    this.handlers.visible(false);
+  };
 
   handleApply = (value) => {
     const [startDate, endDate = startDate] = value;
@@ -442,7 +448,7 @@ class RangePickerAbstract extends Component {
     const { getI18nText } = this.asProps;
     return {
       getI18nText,
-      onClick: () => this.handleApply([]),
+      onClick: this.handleReset,
       ref: this.resetButtonRef,
     };
   }

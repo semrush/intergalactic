@@ -1,9 +1,8 @@
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import colorResolverEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { Box } from '@semcore/flex-box';
 import React from 'react';
 
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
@@ -26,7 +25,7 @@ class PlotRoot extends Component {
     height: 0,
   });
 
-  static enhance = [keyboardFocusEnhance(), colorResolverEnhance(), i18nEnhance(localizedMessages)];
+  static enhance = [colorResolverEnhance(), i18nEnhance(localizedMessages)];
 
   plotId = uniqueId();
 
@@ -104,14 +103,13 @@ class PlotRoot extends Component {
         onMouseMove={this.handlerMouseMove}
         onMouseLeave={this.handlerMouseLeave}
         aria-label={ariaLabel}
-        tabIndex={0}
         data-plot-id={this.plotId}
       >
         <Children />
         <foreignObject width='100%' height='100%' data-aria-only>
           <PlotA11yModule
             id={this.plotId}
-            data={data}
+            payload={data}
             plotLabel={label}
             locale={locale}
             plotRef={this.rootRef}

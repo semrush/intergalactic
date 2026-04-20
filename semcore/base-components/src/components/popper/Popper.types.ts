@@ -26,12 +26,10 @@ export type Strategy = Options['strategy'];
 export type Modifiers = Options['modifiers'];
 export type Placement = Options['placement'];
 
-/** @deprecated */
-export interface IPopperProps extends PopperProps, UnknownProperties {}
 export type PopperProps = OutsideClickProps &
   PortalProps &
   UniqueIDProps &
-  Omit<ScaleProps, 'placement'> & {
+  Omit<ScaleProps, 'placement' | 'preserveNode'> & {
     /**
      * Popper can have different positioning options
      * @default absolute
@@ -102,8 +100,6 @@ export type PopperProps = OutsideClickProps &
     popperMargin?: number;
   };
 
-/** @deprecated */
-export interface IPopperTriggerProps extends PopperTriggerProps, UnknownProperties {}
 export type PopperTriggerProps = BoxProps & {
   /**
    * Disabled focus trap, autofocus and focus return
@@ -121,8 +117,6 @@ export type InnerPopperTriggerProps = React.HTMLAttributes<HTMLDivElement> & {
   popperRef: React.MutableRefObject<HTMLElement>;
 };
 
-/** @deprecated */
-export interface IPopperPopperProps extends PopperPopperProps, UnknownProperties {}
 export type PopperPopperProps = BoxProps &
   PortalProps &
   NeighborLocationProps & {
@@ -130,11 +124,6 @@ export type PopperPopperProps = BoxProps &
      * Disabled focus trap, autofocus and focus return
      */
     disableEnforceFocus?: boolean;
-
-    /**
-   * @deprecated
-   */
-    keyboardFocused?: boolean;
     /** Automatically focus a popper when it opens */
     autoFocus?: boolean | 'enforced';
   };
@@ -149,8 +138,6 @@ export type InnerPopperPopperProps = React.HTMLAttributes<HTMLDivElement> & {
   handleFocusOut: () => void;
 };
 
-/** @deprecated */
-export interface IPopperContext extends PopperContext, UnknownProperties {}
 export type PopperContext = {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
@@ -160,8 +147,6 @@ export type PopperContext = {
   setPopper: (ref: HTMLElement) => void;
 };
 
-/** @deprecated */
-export interface IPopperHandlers extends PopperHandlers, UnknownProperties {}
 export type PopperHandlers = {
   visible: (visible: boolean) => void;
 };

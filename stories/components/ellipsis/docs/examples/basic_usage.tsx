@@ -5,11 +5,18 @@ import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = (props: EllipsisProps) => {
+  let linkDisplayValue: 'block' | undefined;
+
+  if (props.maxLine && props.maxLine > 1) {
+    linkDisplayValue = 'block';
+  }
+
   return (
     <Box w={220}>
       <Link
         inline
         href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'
+        display={linkDisplayValue}
       >
         <Link.Text
           tag={Ellipsis}
