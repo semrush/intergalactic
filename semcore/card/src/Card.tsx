@@ -8,18 +8,11 @@ import { DescriptionTooltip } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import type {
-  CardComponent,
-  CardRootComponent,
-  CardTitleComponent,
-  CardDescriptionComponent,
-  CardHeaderComponent,
-  CardBodyComponent,
-} from './Card.type';
+import type { NSCard } from './Card.type';
 import style from './style/card.shadow.css';
 
 class CardRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<CardRootComponent>
+  Intergalactic.InternalTypings.InferComponentProps<NSCard.Component>
 > {
   static displayName = 'Card';
 
@@ -48,7 +41,7 @@ class CardRoot extends Component<
 }
 
 function Title(
-  props: Intergalactic.InternalTypings.InferComponentProps<CardTitleComponent>,
+  props: Intergalactic.InternalTypings.InferComponentProps<NSCard.Title.Component>,
 ) {
   const { styles, innerHint, innerHintAriaLabel, hintAfterAriaLabel, Children } = props;
   const hintAfter = props.hintAfter;
@@ -98,19 +91,19 @@ function Title(
   );
 }
 
-function Description(props: Intergalactic.InternalTypings.InferComponentProps<CardDescriptionComponent>) {
+function Description(props: Intergalactic.InternalTypings.InferComponentProps<NSCard.Description.Component>) {
   const { styles } = props;
   const SDescription = Root;
   return sstyled(styles)(<SDescription render={Text} tag='p' />);
 }
 
-function Header(props: Intergalactic.InternalTypings.InferComponentProps<CardHeaderComponent>) {
+function Header(props: Intergalactic.InternalTypings.InferComponentProps<NSCard.Header.Component>) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(<SHeader render={Box} {...props} />);
 }
 
-function Body(props: Intergalactic.InternalTypings.InferComponentProps<CardBodyComponent>) {
+function Body(props: Intergalactic.InternalTypings.InferComponentProps<NSCard.Body.Component>) {
   const { styles } = props;
   const SBody = Root;
   return sstyled(styles)(<SBody render={Box} {...props} />);
@@ -121,6 +114,6 @@ const Card = createComponent(CardRoot, {
   Description,
   Header,
   Body,
-}) as CardComponent;
+}) as NSCard.Component;
 
 export default Card;
