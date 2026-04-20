@@ -23,12 +23,12 @@ const Demo = (props: IconPropsAdvanced) => {
       <Box
         style={{ border: '1px dashed var(--intergalactic-border-primary)', display: 'inline-flex' }}
       >
-        <ArrowsIcon color={props.color} m={props.m} mb={props.mb} mt={props.mt} mr={props.mr} ml={props.ml} mx={props.mx} my={props.my} />
+        <ArrowsIcon color={props.color} m={props.m} mb={props.mb} mt={props.mt} mr={props.mr} ml={props.ml} mx={props.mx} my={props.my} scaleIndent={props.scaleIndent} />
       </Box>
       <Box
         style={{ border: '1px dashed var(--intergalactic-border-primary)', display: 'inline-flex' }}
       >
-        <MailIcon color={props.color} m={props.m} mb={props.mb} mt={props.mt} mr={props.mr} ml={props.ml} mx={props.mx} my={props.my} />
+        <MailIcon color={props.color} m={props.m} mb={props.mb} mt={props.mt} mr={props.mr} ml={props.ml} mx={props.mx} my={props.my} scaleIndent={props.scaleIndent} />
       </Box>
     </Flex>
   );
@@ -36,6 +36,7 @@ const Demo = (props: IconPropsAdvanced) => {
 
 export const defaultProps: IconPropsAdvanced = {
   iconSize: 'm',
+  scaleIndent: undefined,
 };
 
 Demo.defaultProps = defaultProps;

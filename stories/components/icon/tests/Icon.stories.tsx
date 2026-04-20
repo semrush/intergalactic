@@ -52,6 +52,7 @@ export const IconMarginProps: StoryObj<typeof iconPropsDefaults> = {
       control: { type: 'select' },
       options: ['icon-secondary-neutral', 'red'],
     },
+    scaleIndent: { control: 'number' },
     m: { control: 'number' },
     mt: { control: 'number' },
     mr: { control: 'number' },
