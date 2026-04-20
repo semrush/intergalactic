@@ -5,10 +5,10 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ---
 
 ::: tip
-If you need more customization for the dropdown menu, refer to [intergalactic/popper](/utils/popper/popper).
+If you need more customization for the dropdown menu, refer to the [Popper](/utils/popper/popper).
 :::
 
-The Select component serves as a wrapper over [DropdownMenu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
+The Select component serves as a wrapper over the [DropdownMenu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
 
 ## Basic usage
 
