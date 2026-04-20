@@ -4,7 +4,7 @@ import { Root, sstyled, Component, createComponent } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import type { TextComponent, TextEllipsisProps, TextProps } from './Text.type';
+import type { NSText } from './Text.type';
 import styles from '../../style/text.shadow.css';
 
 type State = {
@@ -12,7 +12,7 @@ type State = {
 };
 
 class TextRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<TextComponent>,
+  Intergalactic.InternalTypings.InferComponentProps<NSText.Component>,
   typeof TextRoot.enhance,
   {},
   {},
@@ -29,7 +29,7 @@ class TextRoot extends Component<
     isEllipsized: false,
   };
 
-  constructor(props: TextProps) {
+  constructor(props: NSText.Props) {
     super(props);
 
     this.handleEllipsized = this.handleEllipsized.bind(this);
@@ -39,7 +39,7 @@ class TextRoot extends Component<
     this.initEllipsis();
   }
 
-  componentDidUpdate(prevProps: TextEllipsisProps) {
+  componentDidUpdate(prevProps: NSText.EllipsisProps) {
     const ellipsisKeys: Array<keyof EllipsisSettings> = [
       'cropPosition',
       'maxLine',
@@ -134,6 +134,6 @@ class TextRoot extends Component<
   }
 }
 
-const Text = createComponent(TextRoot) as TextComponent;
+const Text = createComponent(TextRoot) as NSText.Component;
 
 export default Text;

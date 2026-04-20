@@ -1,7 +1,7 @@
 import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { LinkProps } from '@semcore/link';
-import type { TextProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 import type { ButtonContext } from '../Button/Button.type';
 
@@ -13,7 +13,7 @@ export type ButtonLinkProps = Intergalactic.InternalTypings.EfficientOmit<LinkPr
   use?: 'primary' | 'secondary';
 };
 
-export type ButtonLinkTextProps = TextProps;
+export type ButtonLinkTextProps = NSText.Props;
 
 export type ButtonLinkAddonProps = BoxProps;
 

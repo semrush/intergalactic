@@ -4,11 +4,11 @@ import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
 
-import type { BlockquoteComponent } from './Blockquote.type';
+import type { NSBlockquote } from './Blockquote.type';
 import styles from '../../style/blockquote.shadow.css';
 
 function BlockquoteRoot(
-  props: Intergalactic.InternalTypings.InferComponentProps<BlockquoteComponent>,
+  props: Intergalactic.InternalTypings.InferComponentProps<NSBlockquote.Component>,
   ref: React.ForwardedRef<HTMLQuoteElement>,
 ) {
   const SBlockquote = Root;
@@ -29,6 +29,6 @@ function BlockquoteRoot(
 
 BlockquoteRoot.displayName = 'Blockquote';
 
-const Blockquote = createBaseComponent(BlockquoteRoot) as BlockquoteComponent;
+const Blockquote = createBaseComponent(BlockquoteRoot) as NSBlockquote.Component;
 
 export default Blockquote;

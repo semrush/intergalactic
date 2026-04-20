@@ -1,5 +1,4 @@
 import { Text } from '@semcore/ui/typography';
-import type { TextProps } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleProps = {

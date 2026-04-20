@@ -2,29 +2,41 @@ import type { Flex, FlexProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
-import type { TextProps } from '../Text/Text.type';
+import type { NSText } from '../Text/Text.type';
 
-export type ListItemProps = TextProps & {
-  /** Individual marker of a list item */
-  marker?: React.ReactNode;
-};
+declare namespace NSList {
+  type Props = NSText.Props & {
+    /** Marker of the entire list
+     * @default • */
+    marker?: React.ReactNode;
+  };
 
-export type ListItemContentProps = FlexProps;
+  namespace Item {
+    type Props = NSText.Props & {
+      /** Individual marker of a list item */
+      marker?: React.ReactNode;
+    };
 
-export type ListProps = TextProps & {
-  /** Marker of the entire list
-   * @default • */
-  marker?: React.ReactNode;
-};
+    namespace Content {
+      type Props = FlexProps;
+      type Component = Intergalactic.Component<typeof Flex, Props>;
+    }
 
-export type ListItemRootComponent = Intergalactic.Component<'li', ListItemProps>;
-export type ListItemContentComponent = Intergalactic.Component<typeof Flex, ListItemContentProps>;
+    type Component = Intergalactic.Component<'li', Props> & {
+      Content: Content.Component;
+    };
+  }
 
-export type ListItemComponent = ListItemRootComponent & {
-  Content: ListItemContentComponent;
-};
+  type Component = Intergalactic.Component<'ul', Props> & {
+    Item: Item.Component;
+  };
+}
 
-export type ListRootComponent = Intergalactic.Component<'ul', ListProps>;
-export type ListComponent = ListRootComponent & {
-  Item: ListItemComponent;
-};
+/** @deprecated It will be removed in v18. */
+export type ListItemProps = NSList.Item.Props;
+/** @deprecated It will be removed in v18. */
+export type ListItemContentProps = NSList.Item.Content.Props;
+/** @deprecated It will be removed in v18. */
+export type ListProps = NSList.Props;
+
+export type { NSList };

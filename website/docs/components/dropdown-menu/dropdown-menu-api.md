@@ -88,7 +88,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item.Text />;
 ```
 
-<TypesView type="TextProps" :types={...types} />
+<TypesView type="NSText.Props" :types={...types} />
 
 ## Dropdown.Group
 
