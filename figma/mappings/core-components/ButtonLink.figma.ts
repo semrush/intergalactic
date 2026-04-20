@@ -13,7 +13,7 @@ const ariaLabel = text
   ? undefined
   : connect.formatProp('aria-label', connect.childCode('↳ title') ?? '/* short description */');
 
-const active = connect.getProp('state', 'active');
+const active = connect.getProp('state', 'hover & active') ? 'active' : undefined;
 const disabled = connect.getProp('state', 'disabled');
 const use = connect.getProp('use');
 

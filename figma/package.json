@@ -7,6 +7,6 @@
     "figma-publish-custom": "npx figma connect publish --config figma-custom.config.json"
   },
   "devDependencies": {
-    "@figma/code-connect": "^1.3.12"
+    "@figma/code-connect": "^1.4.3"
   }
 }
