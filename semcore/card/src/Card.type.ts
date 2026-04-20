@@ -1,11 +1,11 @@
 import type { Box, BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { Text, TextProps } from '@semcore/typography';
+import type { Text, NSText } from '@semcore/typography';
 import type React from 'react';
 
 export type CardProps = BoxProps;
 
-export type TitleProps = TextProps & {
+export type TitleProps = NSText.Props & {
   /**
    * Content of the Informer that's displayed in the end of the title. Use it if you don't need Title with Ellipsis.
    */

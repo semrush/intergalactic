@@ -1,6 +1,6 @@
 import type { BoxProps, NeighborItemProps, SimpleHintPopperProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
-import type { TextProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 export type ButtonProps = BoxProps &
@@ -35,7 +35,7 @@ export type ButtonProps = BoxProps &
     theme?: 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
   };
 
-export type ButtonTextProps = TextProps;
+export type ButtonTextProps = NSText.Props;
 
 export type ButtonAddonProps = BoxProps;
 

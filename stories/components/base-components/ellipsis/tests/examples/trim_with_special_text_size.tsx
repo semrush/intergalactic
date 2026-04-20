@@ -1,11 +1,11 @@
 import type { BoxProps } from '@semcore/ui/base-components';
-import type { TextEllipsisProps, TextProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type TextExampleProps = {
-  ellipsis?: TextEllipsisProps;
-  size: TextProps['size'];
+  ellipsis?: NSText.EllipsisProps;
+  size: NSText.Props['size'];
   w: BoxProps['w'];
   hintProps?: false;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';

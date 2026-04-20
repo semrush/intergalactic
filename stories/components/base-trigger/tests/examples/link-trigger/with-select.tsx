@@ -8,7 +8,7 @@ import Counter, { type CounterProps } from '@semcore/ui/counter';
 import Flags from '@semcore/ui/flags';
 import Select from '@semcore/ui/select';
 import Tag, { type TagSize } from '@semcore/ui/tag';
-import type { TextEllipsisProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -24,7 +24,7 @@ type LinkTriggerSelectDDMenuExample = LinkTriggerProps & {
   showAddonRight?: boolean;
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   w?: number;
 };
 

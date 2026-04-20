@@ -2,7 +2,7 @@ import type { FlexProps } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import type { SpinProps } from '@semcore/ui/spin';
 import Spin from '@semcore/ui/spin';
-import type { TextProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -29,7 +29,7 @@ const margins = {
   xxl: 4,
 };
 
-const textSize: { [key in SpinJSXProps['size']]: TextProps['size'] } = {
+const textSize: { [key in SpinJSXProps['size']]: NSText.Props['size'] } = {
   xs: 200,
   s: 200,
   m: 300,

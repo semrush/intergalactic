@@ -1,6 +1,6 @@
 import type { Flex, BoxProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
-import type { TextProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 declare namespace NSRadio {
   type Size = 'm' | 'l';
@@ -54,7 +54,7 @@ declare namespace NSRadio {
   }
 
   namespace Text {
-    type Props = TextProps;
+    type Props = NSText.Props;
     type Component = Intergalactic.Component<'span', Props>;
   }
 
