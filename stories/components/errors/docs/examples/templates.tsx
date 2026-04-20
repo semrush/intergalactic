@@ -6,20 +6,21 @@ import {
   ProjectNotFound,
 } from '@semcore/ui/errors';
 import type {
-  NSAccessDenied,
-  NSMaintenance,
-  NSPageError,
-  NSPageNotFound,
-  NSProjectNotFound,
+  NSErrors,
+  // NSAccessDenied,
+  // NSMaintenance,
+  // NSPageError,
+  // NSPageNotFound,
+  // NSProjectNotFound,
 } from '@semcore/ui/errors';
 import React from 'react';
 
 type errorProps =
-  & NSAccessDenied.Props
-  & NSMaintenance.Props
-  & NSPageError.Props
-  & NSPageNotFound.Props
-  & NSProjectNotFound.Props;
+  & NSErrors.AccessDenied.Props
+  & NSErrors.Maintenance.Props
+  & NSErrors.PageError.Props
+  & NSErrors.PageNotFound.Props
+  & NSError.ProjectNotFound.Props;
 
 const Demo = (props: errorProps) => (
   <>

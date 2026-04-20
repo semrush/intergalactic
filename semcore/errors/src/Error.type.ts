@@ -3,7 +3,7 @@ import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { TIllustrationNamesErrors } from '@semcore/illustration';
 import type React from 'react';
 
-declare namespace NSErrors {
+declare namespace NSError {
   type Props = FlexProps & {
     /**
      * Error icon
@@ -38,10 +38,10 @@ declare namespace NSErrors {
 }
 
 /** @deprecated It will be removed in v18. */
-export type ErrorsProps = NSErrors.Props;
+export type ErrorsProps = NSError.Props;
 /** @deprecated It will be removed in v18. */
-export type ErrorsContext = NSErrors.Ctx;
+export type ErrorsContext = NSError.Ctx;
 /** @deprecated It will be removed in v18. */
-export type IconNamesErrors = NSErrors.IconName;
+export type IconNamesErrors = NSError.IconName;
 
-export type { NSErrors };
+export type { NSError };

@@ -1,7 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
-import type { NSErrors } from '../Error.type';
+import type { NSError } from '../Error.type';
 
 declare namespace NSMaintenance {
   type Props = WithI18nEnhanceProps & {
@@ -21,7 +21,7 @@ declare namespace NSMaintenance {
     titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
   };
 
-  type Component = Intergalactic.Component<'div', Props & NSErrors.Props>;
+  type Component = Intergalactic.Component<'div', Props & NSError.Props>;
 }
 
 /** @deprecated It will be removed in v18. */
