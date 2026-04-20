@@ -20,7 +20,7 @@ type errorProps =
   & NSErrors.Maintenance.Props
   & NSErrors.PageError.Props
   & NSErrors.PageNotFound.Props
-  & NSError.ProjectNotFound.Props;
+  & NSErrors.ProjectNotFound.Props;
 
 const Demo = (props: errorProps) => (
   <>
