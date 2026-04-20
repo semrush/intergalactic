@@ -4,6 +4,12 @@ import type { Text } from '@semcore/typography';
 import type { Property } from 'csstype';
 
 declare namespace NSAccordion {
+  /*
+  TODO: Revisit the value type and the component’s internal handling logic -
+  it currently appears to support `string | number | Array<string | number>`,
+  which may indicate inconsistent or overly permissive typing.
+  Consider tightening the contract or aligning the implementation with a clearly defined value shape.
+  */
   type Value = null | number | string | Array<number | string | null>;
   type Props<V extends NSAccordion.Value = NSAccordion.Value> = FlexProps & {
   /** Value for the active tab. Can be set as stroke, number, null or as array.
