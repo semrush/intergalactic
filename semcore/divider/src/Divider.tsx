@@ -4,10 +4,10 @@ import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import type { DividerComponent } from './Divider.type';
+import type { NSDivider } from './Divider.type';
 import style from './style/divider.shadow.css';
 
-class DividerRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<DividerComponent>, typeof DividerRoot.enhance> {
+class DividerRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSDivider.Component>, typeof DividerRoot.enhance> {
   static displayName = 'Divider';
   static style = style;
   static enhance = [resolveColorEnhance()] as const;
@@ -31,6 +31,6 @@ class DividerRoot extends Component<Intergalactic.InternalTypings.InferComponent
   }
 }
 
-const Divider = createComponent(DividerRoot) as DividerComponent;
+const Divider = createComponent(DividerRoot) as NSDivider.Component;
 
 export default Divider;
