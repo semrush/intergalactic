@@ -113,7 +113,7 @@ import Select from '@semcore/ui/select';
 <Select.Option.Text />;
 ```
 
-<TypesView type="TextProps" :types={...types} />
+<TypesView type="NSText.Props" :types={...types} />
 
 
 <script setup>import { data as types } from '@types.data.ts';</script>

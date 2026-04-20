@@ -8,11 +8,11 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import React from 'react';
 
-import type { DotComponent, DotProps } from './Dot.type';
+import type { NSDot } from './Dot.type';
 import style from './style/dot.shadow.css';
 
 class DotRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<DotComponent>,
+  Intergalactic.InternalTypings.InferComponentProps<NSDot.Component>,
   typeof DotRoot.enhance
 > {
   static displayName = 'Dot';
@@ -30,7 +30,7 @@ class DotRoot extends Component<
       map: (value: string) => `${Number.parseInt(value)}`,
       prop: 'duration',
     }),
-    contextThemeEnhance(({ hidden }: DotProps) => !hidden),
+    contextThemeEnhance(({ hidden }: NSDot.Props) => !hidden),
   ] as const;
 
   ref = React.createRef();
@@ -89,6 +89,6 @@ class DotRoot extends Component<
   }
 }
 
-const Dot = createComponent(DotRoot) as DotComponent;
+const Dot = createComponent(DotRoot) as NSDot.Component;
 
 export default Dot;

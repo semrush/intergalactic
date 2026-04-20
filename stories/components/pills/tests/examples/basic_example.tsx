@@ -4,12 +4,12 @@ import ThumbUpM from '@semcore/icon/ThumbUp/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import Pills from '@semcore/ui/pills';
-import type { PillsProps, PillProps } from '@semcore/ui/pills';
+import type { NSPills } from '@semcore/ui/pills';
 import Spin from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type PillExampleProps = PillsProps & PillProps;
+type PillExampleProps = NSPills.Props & NSPills.Pill.Props;
 const Demo = (props: PillExampleProps) => {
   const [choice, setChoice] = React.useState(null);
 

@@ -1,27 +1,27 @@
 import { NeighborLocation, Box, useNeighborLocationDetect } from '@semcore/base-components';
-import type { Intergalactic, IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import React from 'react';
 
-import type { IntergalacticPillsComponent, PillProps, PillsComponent, PillsHandlers, PillsItemAddonComponent, PillsItemComponent, PillsItemTextComponent, PillsProps, PillsValue } from './Pills.type';
+import type { NSPills } from './Pills.type';
 import style from './style/pills.shadow.css';
 
 class RootPills extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<IntergalacticPillsComponent>,
+  Intergalactic.InternalTypings.InferComponentProps<NSPills.Component>,
   typeof RootPills.enhance,
-  PillsHandlers
+  NSPills.Handlers
 > {
   static displayName = 'Pills';
   static style = style;
-  static defaultProps = ({ behavior }: PillsProps) => ({
+  static defaultProps = ({ behavior }: NSPills.Props) => ({
     size: 'm',
     defaultValue: null,
     behavior: behavior ?? 'auto',
   });
 
-  itemValues: Array<PillProps['value']> = [];
+  itemValues: Array<NSPills.Pill.Props['value']> = [];
 
   static enhance = [a11yEnhance({
     onNeighborChange: (neighborElement, props) => {
@@ -41,22 +41,22 @@ class RootPills extends Component<
 
   uncontrolledProps() {
     return {
-      value: (value: PillProps['value'], e: React.SyntheticEvent) => value,
+      value: (value: NSPills.Pill.Props['value'], e: React.SyntheticEvent) => value,
     };
   }
 
-  bindHandlerClick = (value: PillProps['value']) => (e: React.MouseEvent) => {
+  bindHandlerClick = (value: NSPills.Pill.Props['value']) => (e: React.MouseEvent) => {
     this.handlers.value(value, e);
   };
 
-  bindHandleKeyDown = (value: PillProps['value']) => (e: React.KeyboardEvent) => {
+  bindHandleKeyDown = (value: NSPills.Pill.Props['value']) => (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       this.handlers.value(value, e);
     }
   };
 
-  getItemProps(props: PillProps, index: number) {
+  getItemProps(props: NSPills.Pill.Props, index: number) {
     const { value, size, disabled, behavior } = this.asProps;
     const isSelected = value === props.value;
 
@@ -93,7 +93,7 @@ class RootPills extends Component<
   }
 }
 
-function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<PillsItemComponent, typeof RootPills, 'Item'>) {
+function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPills.Pill.Component, typeof RootPills, 'Item'>) {
   const SPill = Root;
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
@@ -121,25 +121,25 @@ function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<Pill
   );
 }
 
-function Text(props: Intergalactic.InternalTypings.InferComponentProps<PillsItemTextComponent>) {
+function Text(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Text.Component>) {
   const SText = Root;
   return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
-function Addon(props: Intergalactic.InternalTypings.InferComponentProps<PillsItemAddonComponent>) {
+function Addon(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Addon.Component>) {
   const SAddon = Root;
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
 export const wrapPills = <PropsExtending extends {}>(wrapper: (
   props: Intergalactic.InternalTypings.UntypeRefAndTag<
-    Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticPillsComponent>
+    Intergalactic.InternalTypings.ComponentPropsNesting<NSPills.WrapComponent>
   > &
   PropsExtending,
-) => React.ReactNode) => wrapper as IntergalacticPillsComponent<PropsExtending>;
+) => React.ReactNode) => wrapper as NSPills.WrapComponent<PropsExtending>;
 
 const Pills = createComponent(RootPills, {
   Item: [Pill, { Text, Addon }],
-}) as unknown as PillsComponent;
+}) as unknown as NSPills.Component;
 
 export default Pills;

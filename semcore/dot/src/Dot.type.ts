@@ -1,8 +1,8 @@
 import type { AnimationProps, BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
-export type DotProps = BoxProps &
-  AnimationProps & {
+declare namespace NSDot {
+  type Props = BoxProps & AnimationProps & {
     /** Size of the dot
      * @default m
      */
@@ -15,4 +15,10 @@ export type DotProps = BoxProps &
     hidden?: boolean;
   };
 
-export type DotComponent = Intergalactic.Component<'div', DotProps>;
+  type Component = Intergalactic.Component<'div', Props>;
+}
+
+/** @deprecated It will be removed in v18. */
+export type DotProps = NSDot.Props;
+
+export type { NSDot };

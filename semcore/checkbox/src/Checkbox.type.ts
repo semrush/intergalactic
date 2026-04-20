@@ -1,6 +1,6 @@
 import type { Box, BoxProps, FlexProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { TextProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 export type CheckboxSize = 'm' | 'l';
 export type CheckboxState = 'normal' | 'invalid';
@@ -44,7 +44,7 @@ export type CheckboxContext = {
   getValueProps: PropGetterFn;
 };
 
-export type CheckboxTextProps = TextProps;
+export type CheckboxTextProps = NSText.Props;
 
 export type CheckboxValueRootComponent = Intergalactic.Component<'input', CheckboxValueProps>;
 export type CheckboxValueControlComponent = Intergalactic.Component<'input', CheckboxValueControlProps>;

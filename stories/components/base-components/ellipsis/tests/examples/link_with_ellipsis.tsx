@@ -1,10 +1,9 @@
-import type { TextEllipsisProps } from '@semcore/typography';
-import type { EllipsisSettings } from '@semcore/ui/base-components';
+import type { NSText } from '@semcore/typography';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
 type LinkEllipsisProps = {
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   w?: number | string;
   color?: string;
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;

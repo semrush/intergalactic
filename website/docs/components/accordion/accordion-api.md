@@ -11,7 +11,7 @@ import Accordion from '@semcore/ui/accordion';
 <Accordion />;
 ```
 
-<TypesView type="AccordionProps" :types={...types} />
+<TypesView type="NSAccordion.Props" :types={...types} />
 
 ## Accordion.Item
 
@@ -21,7 +21,7 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item />;
 ```
 
-<TypesView type="AccordionItemProps" :types={...types} />
+<TypesView type="NSAccordion.Item.Props" :types={...types} />
 
 ## Accordion.Item.Toggle
 
@@ -41,7 +41,7 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item.Collapse />;
 ```
 
-<TypesView type="AccordionCollapseProps" :types={...types} />
+<TypesView type="NSAccordion.Item.Collapse.Props" :types={...types} />
 
 Has all properties as [BoxProps](/layout/box-system/box-system-api) prop does.
 

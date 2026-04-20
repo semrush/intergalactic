@@ -6,7 +6,7 @@ import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
-import type { TextProps, TextHintProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
@@ -47,7 +47,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     }
   }
 
-  getTextProps(): TextHintProps {
+  getTextProps(): NSText.HintProps {
     return {
       'hint:triggerRef': this.containerRef,
     };
@@ -144,7 +144,7 @@ const Link = createComponent(RootLink, {
   Text: LinkText,
   Addon,
 }) as Intergalactic.Component<'a', LinkProps, {}, typeof RootLink.enhance> & {
-  Text: Intergalactic.Component<'span', TextProps>;
+  Text: Intergalactic.Component<'span', NSText.Props>;
   Addon: Intergalactic.Component<'span', BoxProps>;
 };
 

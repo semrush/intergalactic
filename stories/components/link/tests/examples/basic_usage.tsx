@@ -4,7 +4,7 @@ import Badge from '@semcore/ui/badge';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
 import Link, { type LinkProps } from '@semcore/ui/link';
 import Spin, { type SpinSize } from '@semcore/ui/spin';
-import type { TextEllipsisProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -18,7 +18,7 @@ type BasicLinkProps = LinkProps & {
   showAddonRightLink2?: boolean;
   href?: string;
   title?: string;
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   addonLeftType?: AddonType;
   addonRightType?: AddonType;

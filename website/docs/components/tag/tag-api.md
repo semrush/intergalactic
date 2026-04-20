@@ -43,7 +43,7 @@ import Tag from '@semcore/ui/tag';
 <Tag.Text />;
 ```
 
-<TypesView type="TextProps" :types={...types} />
+<TypesView type="NSText.Props" :types={...types} />
 
 ## Tag.Circle
 

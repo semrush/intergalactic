@@ -1,8 +1,8 @@
 import ProgressBar from '@semcore/ui/progress-bar';
-import type { ProgressBarProps } from '@semcore/ui/progress-bar';
+import type { NSProgressBar } from '@semcore/ui/progress-bar';
 import React from 'react';
 
-type ProgressBarExampleProps = ProgressBarProps;
+type ProgressBarExampleProps = NSProgressBar.Props;
 const Demo = (props: ProgressBarExampleProps) => {
   return (
     <ProgressBar tabIndex={0} value={props.value} size={props.size} theme={props.theme} aria-label='Custom theme example' duration={props.duration}>

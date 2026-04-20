@@ -1,6 +1,6 @@
 import type { EllipsisSettings, SimpleHintPopperProps, BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { TextEllipsisProps, TextHintProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 export type BreadcrumbsProps = BoxProps & {
   /**
@@ -21,7 +21,7 @@ export type BreadcrumbsItemProps = BoxProps & {
    * If you're sure you need `cropPosition: middle`, set `w` to Breadcrumbs.Item manually, for correct Ellipsis calculations.
    * @default false
    */
-} & TextHintProps & TextEllipsisProps;
+} & NSText.HintProps & NSText.EllipsisProps;
 
 export type BreadcrumbsContext = BreadcrumbsProps & {
   getItemProps: PropGetterFn;

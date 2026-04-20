@@ -1,4 +1,4 @@
-import type { DividerProps } from '@semcore/ui/divider';
+import type { NSDivider } from '@semcore/ui/divider';
 import Divider from '@semcore/ui/divider';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type DividerJSXProps = JSXProps<DividerProps>;
+export type DividerJSXProps = JSXProps<NSDivider.Props>;
 
 function getJSX({ handleControlChange, ...dividerProps }: DividerJSXProps) {
   const { orientation } = dividerProps;

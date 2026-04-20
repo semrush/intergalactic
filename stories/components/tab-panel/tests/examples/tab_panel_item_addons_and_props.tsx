@@ -6,12 +6,12 @@ import type { BoxProps } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import TabPanel from '@semcore/ui/tab-panel';
 import type { TabPanelProps, TabPanelItemProps } from '@semcore/ui/tab-panel';
-import type { TextEllipsisProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type TabPanelDefProps = TabPanelProps & BoxProps & TabPanelItemProps & {
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
 };

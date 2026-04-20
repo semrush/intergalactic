@@ -1,21 +1,28 @@
 import type { BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
-export type DividerProps = BoxProps & {
-  /**
-   * Type of the divider
-   * @default primary
-   */
-  use?: 'primary' | 'secondary';
-  /**
-   * Theme of the divider
-   */
-  theme?: string | 'invert';
-  /**
-   * Orientation of the divider
-   * @default horizontal
-   */
-  orientation?: 'horizontal' | 'vertical';
-};
+declare namespace NSDivider {
+  type Props = BoxProps & {
+    /**
+     * Type of the divider
+     * @default primary
+     */
+    use?: 'primary' | 'secondary';
+    /**
+     * Theme of the divider
+     */
+    theme?: string | 'invert';
+    /**
+     * Orientation of the divider
+     * @default horizontal
+     */
+    orientation?: 'horizontal' | 'vertical';
+  };
 
-export type DividerComponent = Intergalactic.Component<'div', DividerProps>;
+  type Component = Intergalactic.Component<'div', Props>;
+}
+
+/** @deprecated It will be removed in v18. */
+export type DividerProps = NSDivider.Props;
+
+export type { NSDivider };
