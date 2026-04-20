@@ -222,6 +222,17 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
+  test.describe('DatePicker trigger and popper', () => {
+    test('Verify trigger with neighborLocation', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@date-picker'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/tests/examples/trigger_with_neighbor_location.tsx', 'en');
+
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
   test.describe('Calendar props and date picker', () => {
     test('Verify all calendar props work good', {
       tag: [TAG.PRIORITY_HIGH,

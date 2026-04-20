@@ -11,6 +11,7 @@ import DateRandeTriggerExample from './examples/day-range-trigger';
 import TriggerExample from './examples/day-trigger';
 import MonthRangeTriggerExample from './examples/month-range-trigger';
 import MonthTriggerExample from './examples/month-trigger';
+import TriggerWithNeighborLocationExample from './examples/trigger_with_neighbor_location';
 
 const meta: Meta = {
   title: 'Components/DatePicker/Tests',
@@ -58,4 +59,8 @@ export const DateRandePickerProps: StoryObj = {
 
 export const DateRandePickerPeriodProps: StoryObj = {
   render: DateRandePickerPeriodPropsExample,
+};
+
+export const TriggerWithNeighborLocation: StoryObj = {
+  render: TriggerWithNeighborLocationExample,
 };

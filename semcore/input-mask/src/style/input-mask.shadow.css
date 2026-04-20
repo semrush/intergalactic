@@ -6,17 +6,12 @@ SValue {
 SMask {
   line-height: 1.25;
   position: absolute;
-  left: 0.8em;
+  left: 0;
   pointer-events: none;
   letter-spacing: 0.1em;
   text-overflow: inherit;
   white-space: nowrap;
   color: var(--intergalactic-text-primary, #191b23);
-}
-
-SMask[data-neighbor-location='left'],
-SMask[data-neighbor-location='both'] {
-  left: 0;
 }
 
 SMaskHidden {
