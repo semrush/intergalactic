@@ -2,10 +2,10 @@ import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@s
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
-export type PillsValue = string | number | boolean | null;
-
-export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps &
-  BoxProps & {
+declare namespace NSPills {
+  // TODO: It looks like the value isn't accurate. Revise and align it with the component's logic.
+  type Value = string | number | boolean | null;
+  type Props<T extends NSPills.Value = NSPills.Value> = NeighborLocationProps & BoxProps & {
     /** Pills size */
     size?: 'l' | 'm';
     /** Disabled state */
@@ -30,51 +30,67 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
       | 'auto'
       | 'manual';
   };
-
-export type PillProps = BoxProps &
-  NeighborItemProps & {
-    /** Pill value */
-    value?: PillsValue;
-    /** Disabled state */
-    disabled?: boolean;
-    /** Selected state */
-    selected?: boolean;
-    /** Left addon text */
-    addonLeft?: React.ElementType;
-    /** Right addon tag */
-    addonRight?: React.ElementType;
+  type Ctx = {
+    getItemProps: PropGetterFn;
   };
-
-export type PillsContext = {
-  getItemProps: PropGetterFn;
-};
-
-export type PillsHandlers = {
-  value: (value: PillProps['value'], event: React.SyntheticEvent) => PillProps['value'];
-};
-
-export type IntergalacticPillsComponent<PropsExtending = {}> = (<
-  Value extends PillsValue,
-  Tag extends Intergalactic.Tag = 'div',
->(
-  props: Intergalactic.InternalTypings.ComponentProps<
-    Tag,
-    'div',
-    PillsProps<Value>,
-    PillsContext,
-    [handlers: PillsHandlers]
-  > &
-  PropsExtending,
-) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', PillsProps>;
-
-export type PillsItemComponent = Intergalactic.Component<'button', PillProps, [handlers: PillsHandlers]>;
-export type PillsItemTextComponent = typeof Box;
-export type PillsItemAddonComponent = typeof Box;
-
-export type PillsComponent = IntergalacticPillsComponent & {
-  Item: PillsItemComponent & {
-    Text: PillsItemTextComponent;
-    Addon: PillsItemAddonComponent;
+  type Handlers = {
+    value: (value: Props['value'], event: React.SyntheticEvent) => Props['value'];
   };
-};
+  namespace Pill {
+    type Props = BoxProps & NeighborItemProps & {
+      /** Pill value */
+      value?: NSPills.Value;
+      /** Disabled state */
+      disabled?: boolean;
+      /** Selected state */
+      selected?: boolean;
+      /** Left addon text */
+      addonLeft?: React.ElementType;
+      /** Right addon tag */
+      addonRight?: React.ElementType;
+    };
+    namespace Text {
+      type Component = typeof Box;
+    }
+    namespace Addon {
+      type Component = typeof Box;
+    }
+
+    type Component = Intergalactic.Component<'button', Props, [handlers: Handlers]>;
+  }
+
+  type WrapComponent<PropsExtending = {}> = (<
+    V extends Value,
+    Tag extends Intergalactic.Tag = 'div',
+  >(
+    props: Intergalactic.InternalTypings.ComponentProps<
+      Tag,
+      'div',
+      Props<V>,
+      Ctx,
+      [handlers: Handlers]
+    > &
+    PropsExtending,
+  ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', Props>;
+
+  type Component = WrapComponent & {
+    Item: Pill.Component & {
+      Text: Pill.Text.Component;
+      Addon: Pill.Addon.Component;
+    };
+  };
+}
+
+/** @deprecated It will be removed in v18. */
+export type PillsValue = NSPills.Value;
+/** @deprecated It will be removed in v18. */
+export type PillsProps<T extends PillsValue = PillsValue> = NSPills.Props<T>;
+/** @deprecated It will be removed in v18. */
+export type PillProps = NSPills.Pill.Props;
+/** @deprecated It will be removed in v18. */
+export type PillsContext = NSPills.Ctx;
+/** @deprecated It will be removed in v18. */
+export type PillsHandlers = NSPills.Handlers;
+
+export type { NSPills };
