@@ -1,6 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import Pills from '@semcore/ui/pills';
-import type { PillsProps, PillProps } from '@semcore/ui/pills';
+import type { NSPills } from '@semcore/ui/pills';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 import type { CSSProperties } from 'react';
@@ -18,7 +18,7 @@ const pillStyles: CSSProperties = {
   whiteSpace: 'normal',
 } as const;
 
-type PillExampleProps = PillsProps & PillProps;
+type PillExampleProps = NSPills.Props & NSPills.Pill.Props;
 const Demo = (props: PillExampleProps) => {
   const [tab, setTab] = React.useState<number>(0);
 

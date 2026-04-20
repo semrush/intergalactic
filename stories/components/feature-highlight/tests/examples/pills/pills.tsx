@@ -1,9 +1,9 @@
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { PillsFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import type { PillsProps } from '@semcore/ui/pills';
+import type { NSPills } from '@semcore/ui/pills';
 import React from 'react';
 
-export type PillsFHAdvancedProps = PillsProps & {
+export type PillsFHAdvancedProps = NSPills.Props & {
   firstPillText?: string;
   secondPillText?: string;
   thirdPillText?: string;

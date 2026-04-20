@@ -10,7 +10,7 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 import Pills from '@semcore/ui/pills';
 ```
 
-<TypesView type="PillsProps" :types={...types} />
+<TypesView type="NSPills.Props" :types={...types} />
 
 ## Pill.Item
 
@@ -19,7 +19,7 @@ import Pills from '@semcore/ui/pills';
 <Pills.Item />;
 ```
 
-<TypesView type="PillProps" :types={...types} />
+<TypesView type="NSPills.Pill.Props" :types={...types} />
 
 ## Pill.Item.Addon
 
