@@ -55,7 +55,7 @@ figma.connect(
   },
 );
 
-// For some reason, the AreaChartSkeleton is not working correctly. I guess it's because AreaChartSkeleton is used in two components.
+figma.connect(
   AreaChartSkeleton,
   'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13987-163781&t=kZysxCyJe4tnPXYg-11',
   {
