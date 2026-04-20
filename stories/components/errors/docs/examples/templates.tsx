@@ -5,10 +5,21 @@ import {
   PageNotFound,
   ProjectNotFound,
 } from '@semcore/ui/errors';
-import type { AccessDeniedProps, MaintenanceProps, PageErrorProps, PageNotFoundProps, ProjectNotFoundProps } from '@semcore/ui/errors';
+import type {
+  NSAccessDenied,
+  NSMaintenance,
+  NSPageError,
+  NSPageNotFound,
+  NSProjectNotFound,
+} from '@semcore/ui/errors';
 import React from 'react';
 
-type errorProps = AccessDeniedProps & MaintenanceProps & PageErrorProps & PageNotFoundProps & ProjectNotFoundProps;
+type errorProps =
+  & NSAccessDenied.Props
+  & NSMaintenance.Props
+  & NSPageError.Props
+  & NSPageNotFound.Props
+  & NSProjectNotFound.Props;
 
 const Demo = (props: errorProps) => (
   <>
