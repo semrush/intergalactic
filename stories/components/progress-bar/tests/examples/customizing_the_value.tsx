@@ -1,9 +1,9 @@
 import { Box } from '@semcore/ui/base-components';
 import ProgressBar from '@semcore/ui/progress-bar';
-import type { ValueProps } from '@semcore/ui/progress-bar';
+import type { NSProgressBar } from '@semcore/ui/progress-bar';
 import React from 'react';
 
-type ProgressBarExampleProps = ValueProps;
+type ProgressBarExampleProps = NSProgressBar.Value.Props;
 const Demo = (props: ProgressBarExampleProps) => {
   return (
     <Box>
