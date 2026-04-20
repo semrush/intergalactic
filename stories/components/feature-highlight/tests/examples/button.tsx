@@ -1,5 +1,5 @@
 import SummaryAI from '@semcore/icon/SummaryAI/m';
-import type { TextEllipsisProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import type { ButtonProps } from '@semcore/ui/button';
 import { ButtonFH, BadgeFH } from '@semcore/ui/feature-highlight';
@@ -17,7 +17,7 @@ export type ButtonFHAdvancedProps = ButtonProps & {
   disabled?: boolean;
   loading?: boolean;
   active?: boolean;
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   w?: number | string;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;

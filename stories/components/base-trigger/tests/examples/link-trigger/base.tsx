@@ -6,7 +6,7 @@ import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
 import Flags from '@semcore/ui/flags';
 import Tag, { type TagSize } from '@semcore/ui/tag';
-import type { TextEllipsisProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -16,7 +16,7 @@ type BasicLinktriggerProps = LinkTriggerProps & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
   addonLeftType?: AddonType;

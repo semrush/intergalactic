@@ -11,6 +11,6 @@ import Dot from '@semcore/ui/dot';
 <Dot aria-label="..." />;
 ```
 
-<TypesView type="DotProps" :types={...types} />
+<TypesView type="NSDot.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

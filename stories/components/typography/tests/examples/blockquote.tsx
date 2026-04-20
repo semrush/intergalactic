@@ -1,8 +1,8 @@
 import { Blockquote } from '@semcore/ui/typography';
-import type { BlockquoteProps } from '@semcore/ui/typography';
+import type { NSBlockquote } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = (props: BlockquoteProps) => (
+const Demo = (props: NSBlockquote.Props) => (
   <div>
     <Blockquote author={props.author} my={4.5}>
       I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.
@@ -18,7 +18,7 @@ const Demo = (props: BlockquoteProps) => (
   </div>
 );
 
-export const defaultProps: BlockquoteProps = {
+export const defaultProps: NSBlockquote.Props = {
   author: 'Roy Batty',
 };
 

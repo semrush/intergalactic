@@ -6,11 +6,11 @@ import type { BoxProps } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import TabLine from '@semcore/ui/tab-line';
 import type { TabLineProps, TabLineItemProps } from '@semcore/ui/tab-line';
-import { Text, type TextEllipsisProps } from '@semcore/ui/typography';
+import { Text, type NSText } from '@semcore/ui/typography';
 import React from 'react';
 
 type TabLineDefProps = TabLineProps & BoxProps & TabLineItemProps & {
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
 };

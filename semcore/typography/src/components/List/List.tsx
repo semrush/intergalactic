@@ -1,13 +1,15 @@
 import { Flex } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
 
-import style from './style/list.shadow.css';
-import Text from './Text';
+import type { NSList } from './List.type';
+import style from '../../style/list.shadow.css';
+import Text from '../Text/Text';
 
-class ListRoot extends Component {
+class ListRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSList.Component>> {
   static displayName = 'List';
   static style = style;
   static defaultProps = {
@@ -28,13 +30,15 @@ class ListRoot extends Component {
   }
 }
 
-class ItemRoot extends Component {
+class ItemRoot extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSList.Item.Component, typeof ListRoot, 'Item'>
+> {
   static style = style;
   static displayName = 'Item';
 
   render() {
     const SItem = Root;
-    const { styles, children, marker: markerNode, Children } = this.asProps;
+    const { styles, marker: markerNode, Children } = this.asProps;
     const SMarker = 'span';
     const SContent = 'div';
 
@@ -43,13 +47,13 @@ class ItemRoot extends Component {
     return sstyled(styles)(
       <SItem render={Text} tag='li'>
         {isNode(markerNode) && <SMarker aria-hidden='true'>{markerNode}</SMarker>}
-        {isAdvancedMode ? <Children /> : <SContent>{children}</SContent>}
+        {isAdvancedMode ? <Children /> : <SContent><Children /></SContent>}
       </SItem>,
     );
   }
 }
 
-function Content(props) {
+function Content(props: Intergalactic.InternalTypings.InferComponentProps<NSList.Item.Content.Component>) {
   const { styles, children } = props;
   const SContent = Root;
 
@@ -58,8 +62,8 @@ function Content(props) {
 
 Content.displayName = 'Content';
 
-const Item = createComponent(ItemRoot, { Content });
+const Item = createComponent(ItemRoot, { Content }) as NSList.Item.Component;
 
-const List = createComponent(ListRoot, { Item });
+const List = createComponent(ListRoot, { Item }) as NSList.Component;
 
 export default List;

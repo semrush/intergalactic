@@ -1,8 +1,8 @@
 import { List } from '@semcore/ui/typography';
-import type { TextProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = (props: TextProps) => (
+const Demo = (props: NSText.Props) => (
   <div>
     <List
       size={props.size}
@@ -49,7 +49,7 @@ const Demo = (props: TextProps) => (
   </div>
 );
 
-export const defaultProps: Omit<TextProps, 'formatTags'> = {
+export const defaultProps: Omit<NSText.Props, 'formatTags'> = {
   size: undefined,
   noWrap: false,
   bold: false,

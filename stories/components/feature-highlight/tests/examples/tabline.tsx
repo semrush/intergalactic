@@ -1,4 +1,4 @@
-import type { TextEllipsisProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { TabLineFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import type { TabLineProps } from '@semcore/ui/tab-line';
@@ -15,7 +15,7 @@ export type TabLineFHAdvancedProps = TabLineProps & {
   disabled?: boolean;
   defaultValue?: number;
   ariaLabel?: string;
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   w?: number | string;
 };
 

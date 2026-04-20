@@ -53,6 +53,6 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Text />;
 ```
 
-<TypesView type="TextProps" :types={...types} />
+<TypesView type="NSText.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

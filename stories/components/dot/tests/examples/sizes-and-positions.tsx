@@ -2,12 +2,12 @@ import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Dot from '@semcore/ui/dot';
-import type { DotProps } from '@semcore/ui/dot';
+import type { NSDot } from '@semcore/ui/dot';
 import Link from '@semcore/ui/link';
 import Pills from '@semcore/ui/pills';
 import React from 'react';
 
-const Demo = (props: DotProps) => {
+const Demo = (props: NSDot.Props) => {
   return (
     <Flex direction='row' gap={2} alignItems='center'>
 
@@ -59,7 +59,7 @@ const Demo = (props: DotProps) => {
   );
 };
 
-export const defaultDotProps: DotProps = {
+export const defaultDotProps: NSDot.Props = {
   size: 'm',
   up: undefined,
 };

@@ -4,7 +4,7 @@ import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type { InputProps } from '@semcore/input';
 import type Input from '@semcore/input';
-import type { TextProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 export type PaginationProps = BoxProps &
   WithI18nEnhanceProps & {
@@ -32,7 +32,7 @@ export type PaginationProps = BoxProps &
     size?: 'm' | 'l';
   };
 
-export type TotalPagesProps = TextProps & WithI18nEnhanceProps & {};
+export type TotalPagesProps = NSText.Props & WithI18nEnhanceProps & {};
 
 export type PageInputProps = InputProps & WithI18nEnhanceProps & {};
 
