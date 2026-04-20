@@ -97,6 +97,7 @@ SHeader {
   min-height: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-3x, 12px));
   box-shadow: inset 0 -1px 0 var(--intergalactic-border-primary, #c4c7cf);
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 SFooter {

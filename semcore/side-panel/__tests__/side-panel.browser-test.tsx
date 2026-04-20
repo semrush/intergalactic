@@ -402,4 +402,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     //   await expect(locators.dialog(page)).not.toBeVisible();
     // });
   });
+
+  test('Verify Header increases in height as the content in it increases', async ({ page }) => {
+    await loadPage(page, 'stories/components/side-panel/tests/examples/additional-content-in-header.tsx', 'en', { closable: true });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await expect(locators.header(page)).toHaveCSS('flex-shrink', '0');
+  });
 });
