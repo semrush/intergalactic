@@ -3,6 +3,7 @@ import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 declare namespace NSPills {
+  // TODO: It looks like the value isn't accurate. Revise and align it with the component's logic.
   type Value = string | number | boolean | null;
   type Props<T extends NSPills.Value = NSPills.Value> = NeighborLocationProps & BoxProps & {
     /** Pills size */
