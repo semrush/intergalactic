@@ -509,7 +509,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             }
 
             if (selectedRows && i === 0 && row[IS_EMPTY_DATA_ROW] !== true) {
-              const nextColumnName = columns[i + 1].name;
+              const nextColumn = columns[i + 1];
+              const nextColumnName = nextColumn.name;
 
               if (!(nextColumnName in row) || Array.isArray(row)) {
                 return null;
@@ -529,6 +530,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   uid={uid}
                   selectedRows={selectedRows}
                   onSelectRow={onSelectRow}
+                  fixed={nextColumn.fixed}
                 />
               );
             }
