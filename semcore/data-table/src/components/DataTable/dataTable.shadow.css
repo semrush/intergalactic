@@ -3,6 +3,8 @@ SDataTable {
   align-items: start;
   min-width: fit-content;
   grid-auto-rows: min-content;
+
+  scroll-behavior: smooth;
 }
 
 SDataTable[isDataEmpty] {
