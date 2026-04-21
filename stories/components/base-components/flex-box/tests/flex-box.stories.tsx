@@ -14,7 +14,7 @@ export const BoxAllPropsConfigurable: StoryObj<typeof BoxAllProps> = {
   argTypes: {
     tag: {
       control: { type: 'select' },
-      options: ['div', 'span', 'section', 'article', 'main', 'header', 'footer', 'aside', 'nav'],
+      options: ['div', 'button', 'span', 'section', 'article', 'main', 'header', 'footer', 'aside', 'nav'],
     },
     display: {
       control: { type: 'select' },
@@ -45,6 +45,10 @@ export const BoxAllPropsConfigurable: StoryObj<typeof BoxAllProps> = {
     pl: { control: { type: 'number' } },
     px: { control: { type: 'number' } },
     py: { control: { type: 'number' } },
+    focusRingTopOffset: { control: { type: 'text' } },
+    focusRingBottomOffset: { control: { type: 'text' } },
+    focusRingLeftOffset: { control: { type: 'text' } },
+    focusRingRightOffset: { control: { type: 'text' } },
     scaleIndent: { control: { type: 'number' } },
     position: {
       control: { type: 'select' },

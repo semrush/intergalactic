@@ -238,4 +238,72 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     expect(cursor).toBe(hoverCursor);
   });
+
+  test('Verify inAfterOutline applies focusRingXOffset attributes to ::after', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
+      tag: 'button',
+      inAfterOutline: true,
+      focusRingTopOffset: '8px',
+      focusRingRightOffset: '4px',
+      focusRingBottomOffset: '8px',
+      focusRingLeftOffset: '4px',
+    });
+
+    const box = page.locator('[data-ui-name="Box"]');
+    await box.focus();
+
+    const offsets = await box.evaluate((el) => {
+      const after = window.getComputedStyle(el, '::after');
+      return {
+        top: after.top,
+        right: after.right,
+        bottom: after.bottom,
+        left: after.left,
+      };
+    });
+
+    expect(offsets).toEqual({
+      top: '8px',
+      right: '4px',
+      bottom: '8px',
+      left: '4px',
+    });
+  });
+
+  test('Verify inAfterOutline without focusRingXOffset keeps inset 0 on ::after', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
+      tag: 'button',
+      inAfterOutline: true,
+    });
+
+    const box = page.locator('[data-ui-name="Box"]');
+    await box.focus();
+
+    const offsets = await box.evaluate((el) => {
+      const after = window.getComputedStyle(el, '::after');
+      return {
+        top: after.top,
+        right: after.right,
+        bottom: after.bottom,
+        left: after.left,
+      };
+    });
+
+    expect(offsets).toEqual({
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px',
+    });
+  });
 });
