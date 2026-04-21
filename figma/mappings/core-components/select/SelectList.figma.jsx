@@ -5,10 +5,10 @@ import { Text } from '@semcore/ui/typography';
 // Default Select List
 
 figma.connect(
-  Select.Menu,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
+  Select.List,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=47952-16111',
   {
-    variant: { 'type': 'select list', 'search input': 'true' },
+    variant: { 'country select': 'false' },
     props: {
       size: figma.enum('size', {
         M: 'm',
@@ -25,53 +25,24 @@ figma.connect(
     },
 
     example: ({ searchInput, notice, size }) => (
-      <Select.Popper size={size} aria-label='/* Add your aria-label */'>
+      <Select.List size={size} hMax={/* value */}>
         {searchInput}
-        <Select.List hMax={/* value */}>
-          <Select.Option key={/* value */} value={/* value */}>
-            {/* option */}
-          </Select.Option>
-        </Select.List>
+        <Select.Option key={/* value */} value={/* value */}>
+          {/* option */}
+        </Select.Option>
         {notice}
-      </Select.Popper>
+      </Select.List>
     ),
   },
 );
 
-// figma.connect(
-//   Select.Menu,
-//   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
-//   {
-//     variant: { 'search input': 'false' },
-//     props: {
-//       size: figma.enum('size', {
-//         M: 'm',
-//         L: 'l',
-//       }),
-//       notice: figma.boolean('notice ↓', {
-//         true: figma.children('Notice'),
-//         false: undefined,
-//       }),
-//     },
-
-//     example: ({ notice, size }) => (
-//       <Select.Menu size={size} hMax={/* value */}>
-//         <Select.Option key={/* value */} value={/* value */}>
-//           {/* option */}
-//         </Select.Option>
-//         {notice}
-//       </Select.Menu>
-//     ),
-//   },
-// );
-
 // Country Select List
 
 figma.connect(
-  Select.Menu,
+  Select.List,
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
   {
-    variant: { 'type': 'select list (country)', 'search input': 'true' },
+    variant: { 'country select': 'true' },
     props: {
       size: figma.enum('size', {
         M: 'm',
@@ -99,10 +70,9 @@ figma.connect(
 // Multiselect
 
 figma.connect(
-  Select.Menu,
-  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring-WIP--%E2%9D%96-Core-Components?node-id=47952-16111',
+  Select.List,
+  'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactored--%E2%9D%96-Core-Components?node-id=57511-1992',
   {
-    variant: { type: 'multiselect' },
     props: {
       size: figma.enum('size', {
         M: 'm',
@@ -121,7 +91,7 @@ figma.connect(
     example: ({ searchInput, notice, size }) => (
       <Select.Popper size={size} aria-label='/* Add your aria-label */'>
         {searchInput}
-        <Select.Menu hMax={/* value */}>
+        <Select.List hMax={/* value */}>
           <Select.Option value='%all%'>
             <Text color='text-link'>
               {currentValue.length ? 'Deselect all' : 'Select all'}
@@ -131,7 +101,7 @@ figma.connect(
             <Select.Option.Checkbox />
             {/* option */}
           </Select.Option>
-        </Select.Menu>
+        </Select.List>
         {notice}
       </Select.Popper>
     ),

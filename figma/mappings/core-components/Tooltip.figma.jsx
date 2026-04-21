@@ -6,7 +6,7 @@ figma.connect(
   'https://www.figma.com/design/RLic9ruqNNm6qgARKFk5Ae/-Refactoring--%E2%9D%96-Core-Components?node-id=10355-260578&t=TbZAkRDwOBuye4Je-11',
   {
     props: {
-      title: figma.instance('content'),
+      title: figma.textContent('↳ text'),
       theme: figma.enum('theme', {
         '⚪️ default': 'default',
         '⚫️ invert': 'invert',

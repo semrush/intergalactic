@@ -12,7 +12,6 @@ figma.connect(
           '⚫️ invert': 'invert',
           '🔴 warning': 'warning',
         }),
-        content: figma.instance('content'),
       }),
       ariaLabel: figma.textContent('aria-label prop'),
       placement: figma.enum('placement', {
@@ -31,7 +30,7 @@ figma.connect(
           {...addonProps}
         />
         <DescriptionTooltip.Popper>
-          {nested.content}
+          {/* Add content here */}
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     ),

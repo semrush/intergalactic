@@ -48,12 +48,15 @@ figma.connect(
 
       addonLeft: figma.boolean('← addon', {
         true: <Tag.Addon>{/* addon */}</Tag.Addon>,
+        false: undefined,
       }),
       circle: figma.boolean('← circle addon', {
         true: <Tag.Circle><img src='https://...' /></Tag.Circle>,
+        false: undefined,
       }),
-      textAddon: figma.boolean('↳ textAddon', {
+      textAddon: figma.boolean('textAddon ->', {
         true: <Tag.Addon>{/* text addon */}</Tag.Addon>,
+        false: undefined,
       }),
     },
 
