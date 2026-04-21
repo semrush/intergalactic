@@ -7,7 +7,7 @@ import { Text } from '@semcore/ui/typography';
 
 figma.connect(
   HoverLine,
-  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13086-3415&t=rJcL0Nl5bcNFNb66-11',
+  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13086-3415',
   {
     props: {
       footerText: figma.textContent('↳ text'),
@@ -20,7 +20,7 @@ figma.connect(
 
 figma.connect(
   HoverLine,
-  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13039-1404&t=rJcL0Nl5bcNFNb66-11',
+  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13039-1404',
   {
     variant: { 'no data': 'false' },
     example: () => (
@@ -39,7 +39,7 @@ figma.connect(
 
 figma.connect(
   HoverLine,
-  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13039-1404&t=rJcL0Nl5bcNFNb66-11',
+  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13039-1404',
   {
     variant: { 'no data': 'true' },
     props: {

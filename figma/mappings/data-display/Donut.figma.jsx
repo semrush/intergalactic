@@ -10,7 +10,7 @@ figma.connect(
   {
     variant: { 'skeleton': 'false', 'inner label': 'false' },
     example: () => (
-      <Donut>
+      <Donut innerRadius={/* value */}>
         <Donut.Pie />
         {/* Add other Donut.Pie components */}
       </Donut>
@@ -28,7 +28,7 @@ figma.connect(
       description: figma.textContent('↳ description'),
     },
     example: ({ innerLabel, description }) => (
-      <Donut>
+      <Donut innerRadius={/* value */}>
         <Donut.Pie />
         {/* Add other Donut.Pie components */}
         <Donut.Label>
@@ -63,7 +63,7 @@ figma.connect(
   {
     variant: { 'skeleton': 'false', 'inner label': 'false' },
     example: () => (
-      <Donut halfsize>
+      <Donut halfsize innerRadius={/* value */}>
         <Donut.Pie />
         {/* Add other Donut.Pie components */}
       </Donut>
@@ -81,7 +81,7 @@ figma.connect(
       description: figma.textContent('↳ description'),
     },
     example: ({ innerLabel, description }) => (
-      <Donut halfsize>
+      <Donut halfsize innerRadius={/* value */}>
         <Donut.Pie />
         {/* Add other Donut.Pie components */}
         <Donut.Label>

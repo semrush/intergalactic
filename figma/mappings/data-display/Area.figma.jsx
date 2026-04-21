@@ -31,7 +31,7 @@ figma.connect(
 
 figma.connect(
   Area,
-  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13987-163781&t=kZysxCyJe4tnPXYg-11',
+  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13987-163781',
   {
     variant: { skeleton: 'false' },
     props: {
@@ -53,13 +53,13 @@ figma.connect(
   },
 );
 
-// figma.connect(
-//   AreaChartSkeleton,
-//   'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13987-163781&t=kZysxCyJe4tnPXYg-11',
-//   {
-//     variant: { skeleton: 'true' },
-//     example: () => (
-//       <AreaChartSkeleton type='monotone' />
-//     ),
-//   },
-// );
+figma.connect(
+  AreaChartSkeleton,
+  'https://www.figma.com/design/EBG44NotS7lmjZnUOkhyrp/-Refactored---%E2%9C%A8-Charts?node-id=13987-163781',
+  {
+    variant: { skeleton: 'true' },
+    example: () => (
+      <AreaChartSkeleton type='monotone' />
+    ),
+  },
+);
