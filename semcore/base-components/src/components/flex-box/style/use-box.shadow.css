@@ -13,13 +13,21 @@ SBox[inAfterOutline='true']:focus-visible {
     display: block;
     content: '';
     inset: 0;
-    top: var(--focusRingTopOffset, 0);
-    right: var(--focusRingRightOffset, 0);
-    bottom: var(--focusRingBottomOffset, 0);
-    left: var(--focusRingLeftOffset, 0);
     z-index: 1;
 
     @mixin focus-outline-mixin;
+  }
+  &[focusRingTopOffset]::after {
+    top: var(--focusRingTopOffset);
+  }
+  &[focusRingRightOffset]::after {
+    right: var(--focusRingRightOffset);
+  }
+  &[focusRingBottomOffset]::after {
+    bottom: var(--focusRingBottomOffset);
+  }
+  &[focusRingLeftOffset]::after {
+    left: var(--focusRingLeftOffset);
   }
   &[invertOutline]::after {
     outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
