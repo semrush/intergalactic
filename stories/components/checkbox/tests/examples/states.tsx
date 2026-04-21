@@ -1,10 +1,10 @@
 import { Flex } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
-import type { CheckboxProps } from '@semcore/ui/checkbox';
+import type { NSCheckbox } from '@semcore/ui/checkbox';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type CheckboxExampleProps = CheckboxProps & { color?: 'string'; autoFocus: boolean };
+type CheckboxExampleProps = NSCheckbox.Props & { color?: 'string'; autoFocus: boolean };
 const Demo = (props: CheckboxExampleProps) => {
   return (
     <Flex m={5} data-test-id='checkbox'>
