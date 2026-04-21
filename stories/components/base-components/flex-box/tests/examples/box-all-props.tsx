@@ -4,6 +4,10 @@ import React from 'react';
 
 type ExampleProps = BoxProps & {
   tag?: React.ElementType;
+  focusRingTopOffset?: string;
+  focusRingRightOffset?: string;
+  focusRingBottomOffset?: string;
+  focusRingLeftOffset?: string;
 };
 
 const Demo = (props: ExampleProps) => {
@@ -75,6 +79,12 @@ const Demo = (props: ExampleProps) => {
         innerOutline={props.innerOutline}
         invertOutline={props.invertOutline}
         inAfterOutline={props.inAfterOutline}
+        {...({
+          focusRingTopOffset: props.focusRingTopOffset,
+          focusRingRightOffset: props.focusRingRightOffset,
+          focusRingBottomOffset: props.focusRingBottomOffset,
+          focusRingLeftOffset: props.focusRingLeftOffset,
+        } as Record<string, unknown>)}
         hoverCursor={props.hoverCursor}
         style={{ background: '#e0e0ff', border: '1px solid #7b68ee' }}
       >
@@ -86,43 +96,14 @@ const Demo = (props: ExampleProps) => {
 
 export const defaultProps: ExampleProps = {
   tag: 'div',
-  display: undefined,
   inline: false,
   boxSizing: false,
-  flex: undefined,
-  w: undefined,
-  wMin: undefined,
-  wMax: undefined,
-  h: undefined,
-  hMin: undefined,
-  hMax: undefined,
-  m: undefined,
-  mt: undefined,
-  mr: undefined,
-  mb: undefined,
-  ml: undefined,
-  mx: undefined,
-  my: undefined,
-  p: undefined,
-  pt: undefined,
-  pr: undefined,
-  pb: undefined,
-  pl: undefined,
-  px: undefined,
-  py: undefined,
+
   scaleIndent: 4,
-  position: undefined,
-  top: undefined,
-  left: undefined,
-  bottom: undefined,
-  right: undefined,
-  inset: undefined,
-  zIndex: undefined,
-  textAlign: undefined,
+
   innerOutline: false,
   invertOutline: false,
   inAfterOutline: false,
-  hoverCursor: undefined,
 };
 
 Demo.defaultProps = defaultProps;

@@ -4,13 +4,13 @@ import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import { getIllustrationPath } from '@semcore/illustration';
 import React from 'react';
 
-import type { ErrorComponent, ErrorControlsComponent, ErrorDescriptionComponent, ErrorRootComponent, ErrorTitleComponent, IconNamesErrors } from './Error.type';
+import type { NSErrors } from './Error.type';
 import style from './style/errors.shadow.css';
 
-export const getIconPath = (name: IconNamesErrors) => getIllustrationPath(name);
+export const getIconPath = (name: NSErrors.IconName) => getIllustrationPath(name);
 
 class RootError extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<ErrorRootComponent>
+  Intergalactic.InternalTypings.InferComponentProps<NSErrors.Component>
 > {
   static displayName = 'Error';
   static style = style;
@@ -39,17 +39,17 @@ class RootError extends Component<
   }
 }
 
-function Title(props: Intergalactic.InternalTypings.InferComponentProps<ErrorTitleComponent>) {
+function Title(props: Intergalactic.InternalTypings.InferComponentProps<NSErrors.Title.Component>) {
   const STitle = Root;
   return sstyled(props.styles)(<STitle render={Box} data-errors-title tag='h2' />);
 }
 
-function Description(props: Intergalactic.InternalTypings.InferComponentProps<ErrorDescriptionComponent>) {
+function Description(props: Intergalactic.InternalTypings.InferComponentProps<NSErrors.Description.Component>) {
   const SDescription = Root;
   return sstyled(props.styles)(<SDescription render={Box} tag='p' />);
 }
 
-function Controls(props: Intergalactic.InternalTypings.InferComponentProps<ErrorControlsComponent>) {
+function Controls(props: Intergalactic.InternalTypings.InferComponentProps<NSErrors.Controls.Component>) {
   const SControls = Root;
   return sstyled(props.styles)(<SControls render={Box} />);
 }
@@ -58,6 +58,6 @@ const Error = createComponent(RootError, {
   Title,
   Description,
   Controls,
-}) as ErrorComponent;
+}) as NSErrors.Component;
 
 export default Error;

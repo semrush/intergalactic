@@ -41,7 +41,7 @@ export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
 export const IS_EMPTY_DATA_ROW = Symbol('IS_EMPTY_DATA_ROW');
-export const SELECT_ALL = Symbol('SELECT_ALL');
+export const SELECT_ALL = 'SELECT_ALL_ROWS';
 export const ROW_INDEX = Symbol('ROW_INDEX');
 export const GRID_ROW_INDEX = Symbol('GRID_ROW_INDEX');
 
@@ -1098,7 +1098,7 @@ class DataTableRoot<
 
     if (selectedRows) {
       const column: DTColumn = {
-        name: SELECT_ALL.toString(),
+        name: SELECT_ALL,
         gtcWidth: 'min-content',
         alignItems: 'flex-start',
         children: '',
