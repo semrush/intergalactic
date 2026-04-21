@@ -236,7 +236,7 @@ class HeadRoot<
         >
           {selectedRows && (
             <SHeadCheckboxCol
-              name={SELECT_ALL.toString()}
+              name={SELECT_ALL}
               onClick={this.handleClickSelectAll(!areAllRowsSelected)}
             >
               <Checkbox
