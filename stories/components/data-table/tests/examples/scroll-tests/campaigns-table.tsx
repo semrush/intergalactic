@@ -1,7 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import React, { useCallback } from 'react';
@@ -40,7 +39,7 @@ const columns = [
   {
     name: 'name',
     children: 'Project',
-    gtcWidth: 'minmax(220px, auto)',
+    gtcWidth: 'minmax(150px, auto)',
     fixed: 'left' as const,
   },
   {
@@ -167,20 +166,17 @@ const renderCell: React.ComponentProps<typeof DataTable>['renderCell'] = ({
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Link
             href={`#campaign-${typedRow.id}`}
-            noWrap
             bold
             style={{ minWidth: 0 }}
             aria-label={`Open ${typedRow.domain} campaign`}
             data-test-id='link-to-campaign-review'
           >
-            <Ellipsis tooltip={false}>
-              <Ellipsis.Content data-test-id='campaign-name'>{typedRow.name}</Ellipsis.Content>
-            </Ellipsis>
+            <Link.Text ellipsis hint={false}>
+              {typedRow.name}
+            </Link.Text>
           </Link>
-          <Text use='secondary' size={200}>
-            <Ellipsis tooltip={false}>
-              <Ellipsis.Content data-test-id='domain-name'>{typedRow.domain}</Ellipsis.Content>
-            </Ellipsis>
+          <Text use='secondary' size={200} ellipsis hint={false} data-test-id='domain-name'>
+            {typedRow.domain}
           </Text>
         </div>
       ),

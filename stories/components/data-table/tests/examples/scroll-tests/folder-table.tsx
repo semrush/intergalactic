@@ -3,7 +3,6 @@ import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
 import Link from '@semcore/ui/link';
 import Skeleton from '@semcore/ui/skeleton';
 import { Text } from '@semcore/ui/typography';
@@ -76,12 +75,12 @@ const renderCellChildren = (cellName: TableColumn, row: RowData): React.ReactNod
               alt=''
               aria-hidden='true'
             />
-            <Ellipsis>
-              <Ellipsis.Content tag={Link} size={300} fontWeight={700}>
-                {row.domain}
-              </Ellipsis.Content>
-              <Ellipsis.Popper />
-            </Ellipsis>
+            <Link
+              size={300}
+              fontWeight={700}
+            >
+              <Link.Text ellipsis>{row.domain}</Link.Text>
+            </Link>
           </Flex>
           <Box style={{ paddingLeft: 24 }}>
             <Link
@@ -197,7 +196,7 @@ const Demo = ({ loading = false }: DemoProps) => {
       {
         name: TableColumn.folder,
         children: 'Folder',
-        gtcWidth: 'minmax(232px, 1fr)',
+        gtcWidth: 'minmax(215px, 1fr)',
         fixed: 'left' as const,
         justifyContent: 'start',
         alignItems: 'end',

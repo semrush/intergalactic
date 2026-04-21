@@ -3,7 +3,7 @@ import { Box } from '@semcore/ui/base-components';
 import Card from '@semcore/ui/card';
 import type { DataTableData, DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
-import Ellipsis from '@semcore/ui/ellipsis';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type SortableColumn = 'previous' | 'current' | 'diff' | 'traffic' | 'kd' | 'cpc';
@@ -27,13 +27,17 @@ const Demo = () => {
 
   return (
     <Box
-      wMin={980}
-      wMax={1606}
-      mx={8}
-      mt={4}
+      p={4}
+      h={800}
+      style={{
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        resize: 'both',
+        overflow: 'auto',
+      }}
     >
-      <Card tag='section'>
-        <Card.Body px={0} pt={0}>
+      <Card tag='section' h='100%'>
+        <Card.Body px={0} pt={0} h='100%'>
           <DataTable
             aria-label='real table'
             data={sortedData}
@@ -47,19 +51,19 @@ const Demo = () => {
               withScrollBar: true,
             }}
             w='auto'
+            h='100%'
           />
         </Card.Body>
       </Card>
     </Box>
-
   );
 };
 
 const TableHeaderCell: React.FC<{ children: string }> = ({ children }) => {
   return (
-    <Ellipsis tooltip={false}>
+    <Text ellipsis hint={false}>
       {children}
-    </Ellipsis>
+    </Text>
   );
 };
 
