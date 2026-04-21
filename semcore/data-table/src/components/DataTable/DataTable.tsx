@@ -328,7 +328,7 @@ class DataTableRoot<
       shadowVertical,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
-      withAnimation: this.withAnimation && this.scrollDirection === 'horizontal',
+      withAnimation: this.withAnimation && this.scrollDirection === 'horizontal' && !this.isDataEmpty,
     };
   }
 
