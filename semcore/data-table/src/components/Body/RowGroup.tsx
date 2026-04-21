@@ -35,7 +35,7 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
       const firstCell = rows[0][nextColumnName];
 
       if (firstCell instanceof MergedRowsCell) {
-        rows[0][SELECT_ALL.toString()] = new MergedRowsCell('', firstCell.rowsCount);
+        rows[0][SELECT_ALL] = new MergedRowsCell('', firstCell.rowsCount);
       }
     }
 
