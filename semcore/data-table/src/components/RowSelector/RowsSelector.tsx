@@ -1,4 +1,5 @@
 import Checkbox from '@semcore/checkbox';
+import type { CSSProperties } from 'react';
 import React from 'react';
 
 import type { ISelectedRows } from '../../store/SelectableRows';
@@ -26,6 +27,7 @@ type RowSelectorProps<UniqKeyType> = {
     row: DTRow<UniqKeyType>,
     event?: React.SyntheticEvent<HTMLElement>,
   ) => void;
+  fixed?: boolean;
 };
 
 type State = {
@@ -88,16 +90,33 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
   render() {
     const SCheckboxCell = Row.Cell;
 
-    const { row, rowIndex, gridRowIndex, expanded, withAccordion, isAccordionRow, isCellHidden, theme, uid, selectedRows } = this.props;
+    const {
+      row,
+      rowIndex,
+      gridRowIndex,
+      expanded,
+      withAccordion,
+      isAccordionRow,
+      isCellHidden,
+      theme,
+      uid,
+      selectedRows,
+      fixed,
+    } = this.props;
     const rowUniqKey = row[UNIQ_ROW_KEY];
 
     const checked = Array.isArray(selectedRows) ? selectedRows.includes(rowUniqKey) : this.state.checked;
+    const style: CSSProperties = {};
+
+    if (fixed) {
+      style.left = 0;
+    }
 
     return (
       <SCheckboxCell
         row={row}
         rowIndex={rowIndex}
-        column={{ name: SELECT_ALL.toString() }}
+        column={{ name: SELECT_ALL.toString(), fixed }}
         columnIndex={0}
         gridRowIndex={gridRowIndex}
         onClick={this.handleClickCheckbox(!checked)}
@@ -107,6 +126,8 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
         withAccordion={withAccordion}
         theme={theme}
         data-row-selector
+        fixed={fixed}
+        style={style}
       >
         <Checkbox
           checked={checked}
