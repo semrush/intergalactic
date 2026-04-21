@@ -65,7 +65,7 @@ const renderCellChildren = (cellName: TableColumn, row: RowData): React.ReactNod
   switch (cellName) {
     case TableColumn.folder:
       return (
-        <Flex direction='column' style={{ minWidth: 0, alignItems: 'start' }}>
+        <Flex direction='column' alignItems='start' w='100%'>
           <Flex style={{ width: '100%', alignItems: 'center', gap: 8 }}>
             <img
               src={`https://www.google.com/s2/favicons?sz=64&domain_url=${row.domain}`}
@@ -78,8 +78,9 @@ const renderCellChildren = (cellName: TableColumn, row: RowData): React.ReactNod
             <Link
               size={300}
               fontWeight={700}
+              w='calc(100% - 24px)'
             >
-              <Link.Text ellipsis>{row.domain}</Link.Text>
+              <Link.Text ellipsis w='100%'>{row.domain}</Link.Text>
             </Link>
           </Flex>
           <Box style={{ paddingLeft: 24 }}>
@@ -257,11 +258,7 @@ const Demo = ({ loading = false }: DemoProps) => {
 
         return {
           alignItems: 'start',
-          children: (
-            <Box py={1} wMin={0}>
-              {children}
-            </Box>
-          ),
+          children,
         };
       }}
     />

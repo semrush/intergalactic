@@ -163,22 +163,22 @@ const renderCell: React.ComponentProps<typeof DataTable>['renderCell'] = ({
   if (dataKey === 'name') {
     return {
       children: (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Flex direction='column' gap={2} w='100%'>
           <Link
             href={`#campaign-${typedRow.id}`}
             bold
-            style={{ minWidth: 0 }}
+            w='100%'
             aria-label={`Open ${typedRow.domain} campaign`}
             data-test-id='link-to-campaign-review'
           >
-            <Link.Text ellipsis hint={false}>
+            <Link.Text ellipsis hint={false} w='100%'>
               {typedRow.name}
             </Link.Text>
           </Link>
           <Text use='secondary' size={200} ellipsis hint={false} data-test-id='domain-name'>
             {typedRow.domain}
           </Text>
-        </div>
+        </Flex>
       ),
     };
   }
