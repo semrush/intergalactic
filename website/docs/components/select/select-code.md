@@ -74,7 +74,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 
 ## Menu customization
 
-Similar to [intergalactic/dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
+Similar to the [dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`
