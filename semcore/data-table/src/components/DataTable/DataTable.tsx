@@ -406,7 +406,8 @@ class DataTableRoot<
     const tableContainer = this.tableContainerRef.current;
     if (!tableContainer) return;
 
-    const tableContainerTop = tableContainer.getBoundingClientRect().top;
+    const tableRect = tableContainer.getBoundingClientRect();
+    const tableContainerTop = tableRect.top;
     const { headerProps } = this.asProps;
     const headerContainer = this.headerRef.current;
     const top = tableContainerTop - (headerProps?.top ?? 0);
@@ -414,8 +415,12 @@ class DataTableRoot<
       ? this.scrollAreaRef.current?.querySelector(`[role=scrollbar][aria-orientation=horizontal]`)
       : undefined;
 
-    if (top && top < 0) {
-      const translate = `translateY(${Math.abs(top)}px)`;
+    if (top && top < 0 && Math.abs(top) <= tableContainer.clientHeight) {
+      let translate = `translateY(${Math.abs(top)}px)`;
+
+      if (tableRect.bottom <= this.getHeaderHeight()) {
+        translate = `translateY(${Math.abs(top) - this.getHeaderHeight() - tableRect.bottom}px)`;
+      }
 
       if (headerContainer instanceof HTMLElement) {
         headerContainer.style.setProperty('--global-scroll-translate', `${Math.abs(top)}px`);
