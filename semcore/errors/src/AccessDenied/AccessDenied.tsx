@@ -4,12 +4,12 @@ import { createComponent, Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
-import type { AccessDeniedComponent } from './AccessDenied.type';
+import type { NSAccessDenied } from './AccessDenied.type';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootAccessDenied extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<AccessDeniedComponent>,
+  Intergalactic.InternalTypings.InferComponentProps<NSAccessDenied.Component>,
   typeof RootAccessDenied.enhance
 > {
   static displayName = 'AccessDenied';
@@ -39,4 +39,4 @@ class RootAccessDenied extends Component<
   }
 }
 
-export default createComponent(RootAccessDenied) as AccessDeniedComponent;
+export default createComponent(RootAccessDenied) as NSAccessDenied.Component;

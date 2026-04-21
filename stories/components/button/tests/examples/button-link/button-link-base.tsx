@@ -5,7 +5,7 @@ import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
 import Spin, { type SpinSize } from '@semcore/ui/spin';
-import type { TextEllipsisProps } from '@semcore/ui/typography';
+import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -15,7 +15,7 @@ type BasicButtonLinkProps = ButtonLinkProps & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
-  ellipsis?: TextEllipsisProps;
+  ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
   addonLeftType?: AddonType;

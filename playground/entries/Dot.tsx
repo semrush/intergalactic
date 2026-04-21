@@ -1,5 +1,5 @@
 import Button from '@semcore/ui/button';
-import type { DotProps } from '@semcore/ui/dot';
+import type { NSDot } from '@semcore/ui/dot';
 import Dot from '@semcore/ui/dot';
 import React from 'react';
 
@@ -8,7 +8,7 @@ import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
 type AdditionalJSXProps = { value: string };
-export type DotJSXProps = JSXProps<DotProps> & AdditionalJSXProps;
+export type DotJSXProps = JSXProps<NSDot.Props> & AdditionalJSXProps;
 
 function getJSX(props: DotJSXProps) {
   const { handleControlChange, ...dotProps } = props;

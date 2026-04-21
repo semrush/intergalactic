@@ -11,6 +11,6 @@ import Divider from '@semcore/ui/divider';
 <Divider />;
 ```
 
-<TypesView type="DividerProps" :types={...types} />
+<TypesView type="NSDivider.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

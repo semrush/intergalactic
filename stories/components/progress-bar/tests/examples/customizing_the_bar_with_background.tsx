@@ -1,9 +1,9 @@
 import { Box } from '@semcore/ui/base-components';
 import ProgressBar from '@semcore/ui/progress-bar';
-import type { ProgressBarProps } from '@semcore/ui/progress-bar';
+import type { NSProgressBar } from '@semcore/ui/progress-bar';
 import React from 'react';
 
-type ProgressBarExampleProps = ProgressBarProps;
+type ProgressBarExampleProps = NSProgressBar.Props;
 const Demo = (props: ProgressBarExampleProps) => {
   return (
     <Box style={{ backgroundColor: '#191B23' }} h={50}>

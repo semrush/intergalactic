@@ -1,7 +1,7 @@
 import type { BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { IconProps } from '@semcore/icon';
-import type { TextProps } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 export type TagSize = 'xl' | 'l' | 'm';
@@ -54,7 +54,7 @@ export type TagContext = TagProps & {
 
 export type TagAddonProps = BoxProps & {};
 
-export type TagTextProps = TextProps;
+export type TagTextProps = NSText.Props;
 
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
   Text: Intergalactic.Component<'div', TagTextProps>;

@@ -267,6 +267,16 @@ export const serializeTsNode = (
             traverse(typeName.right),
           ].flat().join('');
 
+          if (hideGenerics[reference] && typeArguments) {
+            const maxArgLength = hideGenerics[reference];
+            const result = [];
+            for (let i = 0; i < typeArguments.length && i < maxArgLength; i++) {
+              if (i !== 0) result.push(', ');
+              result.push(traverse(typeArguments[i]));
+            }
+            return result;
+          }
+
           return {
             referenceTo: reference,
             displayText: reference,

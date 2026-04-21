@@ -48,7 +48,11 @@ export const IconPlatform: StoryObj = {
 export const IconMarginProps: StoryObj<typeof iconPropsDefaults> = {
   render: IconPropsExample,
   argTypes: {
-    color: { control: 'text' },
+    color: {
+      control: { type: 'select' },
+      options: ['icon-secondary-neutral', 'red'],
+    },
+    scaleIndent: { control: 'number' },
     m: { control: 'number' },
     mt: { control: 'number' },
     mr: { control: 'number' },

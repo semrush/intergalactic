@@ -1,10 +1,10 @@
 import type { BoxProps } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import Divider from '@semcore/ui/divider';
-import type { DividerProps } from '@semcore/ui/divider';
+import type { NSDivider } from '@semcore/ui/divider';
 import React from 'react';
 
-type DividerStylesExample = DividerProps & BoxProps;
+type DividerStylesExample = NSDivider.Props;
 const Demo = (props: DividerStylesExample) => {
   return (
     <>
