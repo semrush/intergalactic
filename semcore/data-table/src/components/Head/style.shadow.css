@@ -31,7 +31,6 @@ SHead[withAnimation][sticky] SColumn, SHead[withAnimation][sticky] SGroup {
   animation-fill-mode: both;
 
   transform: none;
-  will-change: scroll-position;
 }
 
 SHead[sticky] SColumn, SHead[sticky] SGroup {
@@ -39,7 +38,7 @@ SHead[sticky] SColumn, SHead[sticky] SGroup {
   top: 0;
   z-index: 18;
   transform: translateY(var(--global-scroll-translate));
-  will-change: transform;
+  will-change: scroll-position;
 }
 
 SHead[compact] SColumn {
