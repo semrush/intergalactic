@@ -18,8 +18,6 @@ import StickyHeaderScrollSyncExample, { defaultProps as StickyHeaderScrollSyncDe
 import type { StickyHeaderScrollSyncProps } from './examples/scroll-tests/sticky-header-scroll-sync';
 import StickyHeaderSortingExample, { defaultProps as StickyHeaderSortingDefaultProps } from './examples/scroll-tests/sticky-header-sorting';
 import type { StickyHeaderSortingProps } from './examples/scroll-tests/sticky-header-sorting';
-import StickyHeaderWithAnimationExample, { defaultProps as StickyHeaderWithAnimationDefaultProps } from './examples/scroll-tests/sticky-header-with-animation';
-import type { StickyHeaderWithAnimationProps } from './examples/scroll-tests/sticky-header-with-animation';
 import CaseWithW100Example from './examples/scroll-tests/w-100';
 import WithFixedColumnExample, { defaultProps as withFixedColumnDefaultProps } from './examples/scroll-tests/with-fixed-column';
 import type { WithFixedColumnProps } from './examples/scroll-tests/with-fixed-column';
@@ -124,20 +122,6 @@ export const StickyHeaderSorting: StoryObj<StickyHeaderSortingProps> = {
   },
   args: {
     ...StickyHeaderSortingDefaultProps,
-  },
-};
-
-export const StickyHeaderWithAnimation: StoryObj<StickyHeaderWithAnimationProps> = {
-  render: StickyHeaderWithAnimationExample,
-  argTypes: {
-    sticky: { control: 'boolean' },
-    withScrollBar: { control: 'boolean' },
-    animationDuration: { control: { type: 'number', min: 0, max: 1000, step: 50 } },
-    top: { control: { type: 'number', min: 0, max: 200, step: 10 } },
-    wMax: { control: 'text' },
-  },
-  args: {
-    ...StickyHeaderWithAnimationDefaultProps,
   },
 };
 
