@@ -5,7 +5,7 @@ import PopupM from '@semcore/icon/Popup/m';
 import ReloadM from '@semcore/icon/Reload/m';
 import ReturnM from '@semcore/icon/Return/m';
 import { Flex } from '@semcore/ui/base-components';
-import { Text, type NSText } from '@semcore/ui/typography';
+import { Text, TextProps } from '@semcore/ui/typography';
 import React from 'react';
 import type { FC } from 'react';
 import { defineMessage, type MessageDescriptor, useIntl } from 'react-intl';
@@ -13,7 +13,7 @@ import { defineMessage, type MessageDescriptor, useIntl } from 'react-intl';
 type PaymentOperationTypeProps = {
   operationType: string;
   testIdPrefix?: string;
-} & NSText.Props;
+} & TextProps;
 
 const mapIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   purchase: MoneyCoinsM,
