@@ -5,10 +5,10 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ---
 
 ::: tip
-If you need more customization for the dropdown menu, refer to the [Popper](/utils/popper/popper).
+If you need more customization for the dropdown menu, refer to [Popper](/utils/popper/popper).
 :::
 
-The Select component serves as a wrapper over the [DropdownMenu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
+The Select component serves as a wrapper over [DropdownMenu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
 
 ## Basic usage
 
@@ -74,7 +74,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 
 ## Menu customization
 
-Similar to the [dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
+Similar to [DropdownMenu](/components/dropdown-menu/dropdown-menu), Select's menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`

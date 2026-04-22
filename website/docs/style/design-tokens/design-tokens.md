@@ -26,7 +26,7 @@ For the complete JSON with all the token sets, refer to the [GitHub repository](
 
 ## Stylelint plugin
 
-The stylelint plugin helps developers to avoid mistakes in the design token names. It's part of [intergalactic npm package](https://www.npmjs.com/package/intergalactic) but also might be installed as [a separate package](https://www.npmjs.com/package/@semcore/stylelint-plugin).
+The stylelint plugin helps developers to avoid mistakes in the design token names. It's part of the [@semcore/ui npm package](https://www.npmjs.com/package/@semcore/ui) but also might be installed as [a separate package](https://www.npmjs.com/package/@semcore/stylelint-plugin).
 
 ```json
 // .stylelintrc.json

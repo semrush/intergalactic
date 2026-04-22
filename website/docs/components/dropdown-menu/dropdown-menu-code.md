@@ -5,10 +5,10 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 ---
 
 ::: tip
- If you need to customize your work of the dropdown menu, refer to the documentation for the [Popper](/utils/popper/popper)
+ If you need to customize your work of the dropdown menu, refer to the documentation for [Popper](/utils/popper/popper)
 :::
 
-The component is a wrapper over the [Dropdown](/components/dropdown/dropdown) that allows for the following:
+The component is a wrapper over [Dropdown](/components/dropdown/dropdown) that allows for the following:
 
 - Displaying a list of options in a dropdown
 - Scrolling through the list of options using keyboard
