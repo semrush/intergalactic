@@ -1,22 +1,19 @@
-import { Flex } from '@semcore/base-components';
-import DropdownMenu from '@semcore/dropdown-menu';
 import BookM from '@semcore/icon/Book/m';
 import Chat from '@semcore/icon/Chat/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import InfoM from '@semcore/icon/Info/m';
 import MathPlus from '@semcore/icon/MathPlus/m';
-import MathPlusM from '@semcore/icon/MathPlus/m';
 import Settings from '@semcore/icon/Settings/m';
 import SettingsM from '@semcore/icon/Settings/m';
-import InlineEdit from '@semcore/inline-edit';
+import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import Button, { ButtonLink } from '@semcore/ui/button';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Link from '@semcore/ui/link';
 import Header, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { AddProjectWizard } from './AddProjectWizard';
