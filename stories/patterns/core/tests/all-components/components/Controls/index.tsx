@@ -1,7 +1,7 @@
-import Card from '@semcore/card';
-import Dot from '@semcore/dot';
 import { Flex } from '@semcore/ui/base-components';
+import Card from '@semcore/ui/card';
 import Divider from '@semcore/ui/divider';
+import Dot from '@semcore/ui/dot';
 import React from 'react';
 
 import BulkTextarea from '../../../../../../components/bulk-textarea/docs/examples/basic-usage';

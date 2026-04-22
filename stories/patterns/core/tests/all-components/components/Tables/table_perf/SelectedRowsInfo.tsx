@@ -1,7 +1,7 @@
-import { Flex } from '@semcore/base-components';
-import Button from '@semcore/button';
-import type { SelectableRows } from '@semcore/data-table';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import type { SelectableRows } from '@semcore/ui/data-table';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import {

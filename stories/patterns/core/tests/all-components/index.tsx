@@ -1,6 +1,6 @@
-import Badge from '@semcore/badge';
-import TabLine from '@semcore/tab-line';
+import Badge from '@semcore/ui/badge';
 import { Box } from '@semcore/ui/base-components';
+import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
 import { Carousel } from './components/Carousel';

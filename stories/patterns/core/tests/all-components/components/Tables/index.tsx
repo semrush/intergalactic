@@ -1,8 +1,7 @@
-import Accordion from '@semcore/accordion';
-import { Flex } from '@semcore/base-components';
-import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
-import { Box } from '@semcore/ui/base-components';
+import Accordion from '@semcore/ui/accordion';
+import { Flex, Box } from '@semcore/ui/base-components';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import PrimaryTable from './PrimaryTable';
