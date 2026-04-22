@@ -50,7 +50,7 @@ const COLUMNS_CONFIG = [
         refsMap['payment_intent_id'] = node;
       }
     },
-    fixed: 'left',
+    fixed: 'left' as const,
   },
   // {
   //   id: 'actions',
@@ -65,7 +65,7 @@ const COLUMNS_CONFIG = [
     defaultActive: true,
     Component: StatusCell,
     wMin: 110,
-    fixed: 'left',
+    fixed: 'left' as const,
   },
   {
     id: 'operation_type',

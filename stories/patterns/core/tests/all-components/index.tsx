@@ -6,6 +6,7 @@ import React from 'react';
 import { Carousel } from './components/Carousel';
 import { Controls } from './components/Controls';
 import { Dashboard } from './components/Dashboard';
+import { FeatureHighlight } from './components/FeatureHighlight';
 import { Tables } from './components/Tables';
 import PageHeader from '../../../../components/product-head/docs/examples/extended_example';
 
@@ -38,12 +39,16 @@ function Demo() {
         <TabLine.Item value={4}>
           Carousel
         </TabLine.Item>
+        <TabLine.Item value={5}>
+          Feature highlight
+        </TabLine.Item>
       </TabLine>
 
       {tab === 1 && <Tables />}
       {tab === 2 && <Dashboard />}
       {tab === 3 && <Controls />}
       {tab === 4 && <Carousel />}
+      {tab === 5 && <FeatureHighlight />}
     </Box>
   );
 }
