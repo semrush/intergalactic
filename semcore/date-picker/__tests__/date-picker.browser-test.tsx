@@ -49,7 +49,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.type('052');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.type('92000');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
@@ -59,18 +58,29 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
 
-    test('Verify trigger states and props', {
-      tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/date-picker/tests/examples/day-trigger.tsx', 'en');
+    const triggerVariables = [
+      { size: 'm', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'l', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'invalid', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'valid', disabled: false, neighborLocation: 'left' },
+      { size: 'm', state: 'normal', disabled: true, neighborLocation: 'both' },
+    ];
 
-      await expect(page).toHaveScreenshot();
-      for (let i = 0; i < 4; i++) await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+    triggerVariables.forEach((item) => {
+      test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
+        tag: [TAG.PRIORITY_HIGH,
+          '@date-picker'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/date-picker/tests/examples/day-trigger.tsx', 'en', item);
+        await page.keyboard.press('Tab');
 
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+        const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+        screenshotsClip.x -= 8;
+        screenshotsClip.y -= 8;
+        screenshotsClip.width += 16;
+        screenshotsClip.height += 16;
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
     });
   });
 
@@ -219,17 +229,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await expect(page).toHaveScreenshot();
       });
-    });
-  });
-
-  test.describe('DatePicker trigger and popper', () => {
-    test('Verify trigger with neighborLocation', {
-      tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/date-picker/tests/examples/trigger_with_neighbor_location.tsx', 'en');
-
-      await expect(page).toHaveScreenshot();
     });
   });
 

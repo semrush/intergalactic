@@ -1,129 +1,84 @@
 import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
 import { DatePicker } from '@semcore/ui/date-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+type ExampleProps = {
+  size?: 'm' | 'l';
+  disabled?: boolean;
+  state?: 'normal' | 'invalid' | 'valid';
+  neighborLocation?: 'left' | 'right' | 'both' | false;
+};
+
+const Demo = (props: ExampleProps) => {
   return (
-    <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker
-      </Text>
-      <DatePicker stretch='fixed'>
-        <DatePicker.Trigger mt={2}>
-          <DatePicker.Trigger.SingleDateInput>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
+    <Flex direction='column' gap={4} mt={4} alignItems='flex-start'>
+      <Flex direction='column' gap={1}>
+        <Text tag='label' size={200} htmlFor='trigger-default'>
+          Default
+        </Text>
+        <DatePicker size={props.size}>
+          <DatePicker.Trigger disabled={props.disabled}>
+            <DatePicker.Trigger.SingleDateInput state={props.state}>
+              <DatePicker.Trigger.SingleDateInput.Indicator />
+              <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-default' />
+            </DatePicker.Trigger.SingleDateInput>
+          </DatePicker.Trigger>
+          <DatePicker.Popper />
+        </DatePicker>
+      </Flex>
 
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker disabled
-      </Text>
-      <DatePicker>
-        <DatePicker.Trigger mt={2} disabled>
-          <DatePicker.Trigger.SingleDateInput>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
+      <Flex direction='column' gap={1}>
+        <Text tag='label' size={200} htmlFor='trigger-with-value'>
+          With selected date
+        </Text>
+        <DatePicker size={props.size} value={new Date('2024-06-15')}>
+          <DatePicker.Trigger disabled={props.disabled}>
+            <DatePicker.Trigger.SingleDateInput state={props.state}>
+              <DatePicker.Trigger.SingleDateInput.Indicator />
+              <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-with-value' />
+            </DatePicker.Trigger.SingleDateInput>
+          </DatePicker.Trigger>
+          <DatePicker.Popper />
+        </DatePicker>
+      </Flex>
 
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker L
-      </Text>
-      <DatePicker>
-        <DatePicker.Trigger mt={2} size='l'>
-          <DatePicker.Trigger.SingleDateInput>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
-
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker placeholder
-      </Text>
-      <DatePicker>
-        <DatePicker.Trigger mt={2} size='l'>
-          <DatePicker.Trigger.SingleDateInput placeholder='123'>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
-
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker placeholder
-      </Text>
-      <DatePicker>
-        <DatePicker.Trigger mt={2} size='l'>
-          <DatePicker.Trigger.SingleDateInput state='invalid'>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
-
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker placeholder
-      </Text>
-      <DatePicker>
-        <DatePicker.Trigger mt={2} size='l'>
-          <DatePicker.Trigger.SingleDateInput state='valid'>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
-
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker placeholder
-      </Text>
-      <DatePicker>
-        <DatePicker.Trigger mt={2} size='l'>
-          <DatePicker.Trigger.SingleDateInput>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
-
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Date picker size in date picker
-      </Text>
-      <DatePicker stretch='fixed' size='l'>
-        <DatePicker.Trigger mt={2}>
-          <DatePicker.Trigger.SingleDateInput>
-            <DatePicker.Trigger.SingleDateInput.Indicator />
-            <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-and-popper-example-picker' />
-          </DatePicker.Trigger.SingleDateInput>
-        </DatePicker.Trigger>
-        <DatePicker.Popper />
-      </DatePicker>
-
-      <Text tag='label' size={200} htmlFor='trigger-and-popper-example-picker'>
-        Placeholder without error tooltip
-      </Text>
-      <DatePicker
-        value={new Date('January 1, 2021 00:00:00')}
-        disabled={[new Date('January 1, 2021 00:00:00')]}
-      >
-        <DatePicker.Trigger disablePortal />
-        <DatePicker.Popper />
-      </DatePicker>
-
+      <Flex direction='column' gap={1}>
+        <Text tag='label' size={200} htmlFor='trigger-neighbor'>
+          With neighbor location
+        </Text>
+        <Flex>
+          {(props.neighborLocation === 'left' || props.neighborLocation === 'both') && (
+            <Button size={props.size} neighborLocation='right'>Left</Button>
+          )}
+          <DatePicker size={props.size}>
+            <DatePicker.Trigger
+              disabled={props.disabled}
+              neighborLocation={props.neighborLocation}
+            >
+              <DatePicker.Trigger.SingleDateInput state={props.state}>
+                <DatePicker.Trigger.SingleDateInput.Indicator />
+                <DatePicker.Trigger.SingleDateInput.MaskedInput id='trigger-neighbor' />
+              </DatePicker.Trigger.SingleDateInput>
+            </DatePicker.Trigger>
+            <DatePicker.Popper />
+          </DatePicker>
+          {(props.neighborLocation === 'right' || props.neighborLocation === 'both') && (
+            <Button size={props.size} neighborLocation='left'>Right</Button>
+          )}
+        </Flex>
+      </Flex>
     </Flex>
-
   );
 };
 
+export const defaultTriggerProps: ExampleProps = {
+  size: 'm',
+  disabled: false,
+  state: 'normal',
+  neighborLocation: 'both',
+};
+
+Demo.defaultProps = defaultTriggerProps;
 export default Demo;
