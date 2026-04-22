@@ -17,7 +17,7 @@ function Demo() {
   const [tab, setTab] = React.useState(1);
 
   return (
-    <Box w='calc(100vw - 96px)' style={{ background: 'var(--intergalactic-bg-secondary-neutral)' }} p={8}>
+    <Box w='calc(100vw - 64px)' style={{ background: 'var(--intergalactic-bg-secondary-neutral)' }} p={8}>
       <PageHeader />
 
       <TabLine size='l' mx={-8} px={8} mt={8} value={tab} onChange={setTab}>

@@ -53,4 +53,7 @@ export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultPr
 
 export const AllComponents: Story = {
   render: AllComponentsExample,
+  parameters: {
+    layout: 'fullscreen',
+  },
 };

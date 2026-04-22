@@ -37,7 +37,7 @@ type CopyProps = {
 };
 
 // `width - 28` because there is custom copy icon (20px) on each cell + 8px gap between text and Icon. Therefore, the header width should be reduced based on the width of this icon.
-const recalcFunc = (width: number) => (width - 28);
+const recalcFunc = (width: number) => (width - 28 - 26);
 
 const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cellProps, headerRef }) => {
   const timeourRef = useRef<Timeout>();
