@@ -1,4 +1,4 @@
-import type { CheckboxProps } from '@semcore/checkbox';
+import type { NSCheckbox } from '@semcore/checkbox';
 import type { Intergalactic } from '@semcore/core';
 import type { IllustrationProps } from '@semcore/illustration';
 import type Notice from '@semcore/notice';
@@ -69,7 +69,7 @@ export type FeedbackRatingItemProps = FieldProps<any, any> & {
   tooltipProps?: string[];
 };
 
-export type FeedbackRatingCheckboxProps = Omit<CheckboxProps, 'label'> & {
+export type FeedbackRatingCheckboxProps = Omit<NSCheckbox.Props, 'label'> & {
   focused: boolean;
   label: React.ReactNode;
 };
