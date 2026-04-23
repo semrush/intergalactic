@@ -22,7 +22,7 @@ export default function Demo() {
           <SidePanel.Header>
             <SidePanel.Back>Back</SidePanel.Back>
 
-            <SidePanel.Title>
+            <SidePanel.Title ellipsis={false}>
               <Text>Static text: </Text>
               <Text use='secondary' ellipsis={withEllipsis} w={80}>{dynamicText}</Text>
             </SidePanel.Title>
