@@ -9,15 +9,7 @@ import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
-import type {
-  CheckboxCheckMarkComponent,
-  CheckboxComponent,
-  CheckboxProps,
-  CheckboxRootComponent,
-  CheckboxTextComponent,
-  CheckboxValueComponent,
-  CheckboxValueControlComponent,
-} from './Checkbox.type';
+import type { NSCheckbox } from './Checkbox.type';
 import style from './style/checkbox.shadow.css';
 
 type State = {
@@ -25,7 +17,7 @@ type State = {
 };
 
 class CheckboxRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<CheckboxRootComponent>,
+  Intergalactic.InternalTypings.InferComponentProps<NSCheckbox.Component>,
   never,
   {},
   State
@@ -43,7 +35,7 @@ class CheckboxRoot extends Component<
     hoistedDisabled: undefined,
   };
 
-  hoistDisabled = (disabled: CheckboxProps['disabled']) => {
+  hoistDisabled = (disabled: NSCheckbox.Props['disabled']) => {
     logger.warn(
       true,
       `Don't set disabled on Checkbox.Value or Checkbox.Text, set it on Checkbox instead. Otherwise it will produce wrong SSR output.`,
@@ -119,7 +111,7 @@ class CheckboxRoot extends Component<
 }
 
 class ValueRoot extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<CheckboxValueComponent, typeof CheckboxRoot, 'Value'>,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSCheckbox.Value.Component, typeof CheckboxRoot, 'Value'>,
   typeof ValueRoot.enhance,
   { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
 > {
@@ -211,7 +203,7 @@ class ValueRoot extends Component<
   }
 }
 
-function Control(props: Intergalactic.InternalTypings.InferChildComponentProps<CheckboxValueControlComponent, typeof ValueRoot, 'Control'>) {
+function Control(props: Intergalactic.InternalTypings.InferChildComponentProps<NSCheckbox.Value.Control.Component, typeof ValueRoot, 'Control'>) {
   const SControl = Root;
   const { indeterminate, styles, state } = props;
   const checkboxRef = React.useRef<HTMLInputElement>(null);
@@ -234,7 +226,7 @@ function Control(props: Intergalactic.InternalTypings.InferChildComponentProps<C
 }
 Control.displayName = 'Control';
 
-function CheckMark(props: Intergalactic.InternalTypings.InferChildComponentProps<CheckboxCheckMarkComponent, typeof ValueRoot, 'CheckMark'>) {
+function CheckMark(props: Intergalactic.InternalTypings.InferChildComponentProps<NSCheckbox.Value.Mark.Component, typeof ValueRoot, 'CheckMark'>) {
   const SCheckbox = Root;
   const SInvalidPattern = InvalidStateBox;
   const { styles, state, checked, indeterminate } = props;
@@ -246,7 +238,7 @@ function CheckMark(props: Intergalactic.InternalTypings.InferChildComponentProps
 }
 CheckMark.displayName = 'CheckMark';
 
-function Text(props: Intergalactic.InternalTypings.InferChildComponentProps<CheckboxTextComponent, typeof CheckboxRoot, 'Text'>) {
+function Text(props: Intergalactic.InternalTypings.InferChildComponentProps<NSCheckbox.Text.Component, typeof CheckboxRoot, 'Text'>) {
   const SText = Root;
   const { styles, color } = props;
 
@@ -267,11 +259,11 @@ Text.displayName = 'Text';
 const Value = createComponent(ValueRoot, {
   Control,
   CheckMark,
-}) as CheckboxValueComponent;
+}) as NSCheckbox.Value.Component;
 
 const Checkbox = createComponent(CheckboxRoot, {
   Text,
   Value,
-}) as CheckboxComponent;
+}) as NSCheckbox.Component;
 
 export default Checkbox;
