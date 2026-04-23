@@ -162,7 +162,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@ellipsis',
       '@tooltip'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-demo.tsx', 'en', { ellipsisTitle: true, withTooltipInBody: true, withFooter: true });
+    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { ellipsisTitle: true, withTooltipInBody: true, withFooter: true });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -404,7 +404,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify Header increases in height as the content in it increases', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-demo.tsx', 'en', { withClose: true, withAdditionalHeaderContent: true });
+    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true, withAdditionalHeaderContent: true });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');

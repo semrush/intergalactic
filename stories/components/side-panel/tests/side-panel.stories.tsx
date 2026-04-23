@@ -1,9 +1,9 @@
 import SidePanel from '@semcore/ui/side-panel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import Demo1 from './examples/additional-content-in-header';
-import type { defaultSidePanelDemoProps } from './examples/side-panel-demo';
-import Demo from './examples/side-panel-demo';
+import AdditionalContentExample from './examples/additional-content-in-header';
+import type { defaultSidePanelDemoProps } from './examples/side-panel-additional-states';
+import AdditionalStatesExample from './examples/side-panel-additional-states';
 
 const meta: Meta<typeof SidePanel> = {
   title: 'Components/SidePanel/Tests',
@@ -12,8 +12,8 @@ const meta: Meta<typeof SidePanel> = {
 
 export default meta;
 
-export const SidePanelProps: StoryObj<typeof defaultSidePanelDemoProps> = {
-  render: Demo,
+export const AdditionalStates: StoryObj<typeof defaultSidePanelDemoProps> = {
+  render: AdditionalStatesExample,
   argTypes: {
     ellipsisTitle: { control: { type: 'boolean' } },
     ellipsisMaxLine: { control: { type: 'number', min: 1 } },
@@ -24,7 +24,7 @@ export const SidePanelProps: StoryObj<typeof defaultSidePanelDemoProps> = {
   },
 };
 
-export const SidePanelProps1 = {
-  render: Demo1,
+export const AdditionalContent = {
+  render: AdditionalContentExample,
 
 };
