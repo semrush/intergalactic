@@ -162,7 +162,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@ellipsis',
       '@tooltip'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/tests/examples/with-ellipsis-and-tooltip.tsx', 'en', { closable: true });
+    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-demo.tsx', 'en', { ellipsisTitle: true, withTooltipInBody: true, withFooter: true });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -175,8 +175,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     if (box) {
       await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
     }
-    await page.getByText('Heading 6, 16px Heading 6, 16px').nth(1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+    await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot();
   });
 });
 
@@ -404,11 +404,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify Header increases in height as the content in it increases', async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/tests/examples/additional-content-in-header.tsx', 'en', { closable: true });
+    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-demo.tsx', 'en', { withClose: true, withAdditionalHeaderContent: true });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-
+    await page.getByText('Close').waitFor({ state: 'visible' });
     await expect(locators.header(page)).toHaveCSS('flex-shrink', '0');
   });
 });
