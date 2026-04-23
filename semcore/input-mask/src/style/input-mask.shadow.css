@@ -1,6 +1,9 @@
-SValue {
-  letter-spacing: 0.1em;
-  text-overflow: inherit;
+SInputMask {
+  SValue {
+    letter-spacing: 0.1em;
+    text-overflow: inherit;
+    padding: 0;
+  }
 }
 
 SMask {
