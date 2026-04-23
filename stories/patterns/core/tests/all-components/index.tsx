@@ -14,8 +14,8 @@ import PageHeader from '../../../../components/product-head/docs/examples/extend
 // - dnd with cards/files
 // -
 
-function Demo() {
-  const [tab, setTab] = React.useState(1);
+function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
+  const [tab, setTab] = React.useState(defaultTab);
 
   return (
     <Box w='calc(100vw - 64px)' style={{ background: 'var(--intergalactic-bg-secondary-neutral)' }} p={8}>

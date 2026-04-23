@@ -4,7 +4,6 @@ import Divider from '@semcore/ui/divider';
 import Dot from '@semcore/ui/dot';
 import React from 'react';
 
-import BulkTextarea from '../../../../../../components/bulk-textarea/docs/examples/basic-usage';
 import Checkboxes from '../../../../../../components/checkbox/docs/examples/basic_usage';
 import ColorPicker from '../../../../../../components/color-picker/docs/examples/predefined_palette';
 import InputTags from '../../../../../../components/input-tags/docs/examples/entering_and_editing_tags';
@@ -43,8 +42,6 @@ export function Controls() {
           Advanced settings
         </Card.Header>
         <Card.Body>
-          <BulkTextarea />
-
           <Divider my={2} />
           <Slider1 />
           <Divider my={2} />

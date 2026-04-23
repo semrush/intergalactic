@@ -3,6 +3,7 @@ import Card from '@semcore/ui/card';
 import Divider from '@semcore/ui/divider';
 import React from 'react';
 
+import BulkTextarea from '../../../../../../components/bulk-textarea/docs/examples/basic-usage';
 import BarChart from '../../../../../../components/d3-chart/advanced/examples/sync_tooltips';
 import DonutChart from '../../../../../../components/d3-chart/docs/examples/donut-chart/basic-usage';
 import RadarChart from '../../../../../../components/d3-chart/docs/examples/radar-chart/basic-usage';
@@ -20,7 +21,11 @@ export function Dashboard() {
           <Card>
             <Card.Header>Bar stacked</Card.Header>
             <Card.Body>
-              <DefaultSummary />
+              <Flex>
+                <Box><DefaultSummary /></Box>
+                <Divider orientation='vertical' mx={8} />
+                <BulkTextarea />
+              </Flex>
               <Divider my={8} />
               <BarChart />
             </Card.Body>
