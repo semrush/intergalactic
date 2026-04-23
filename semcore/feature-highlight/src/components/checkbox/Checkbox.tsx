@@ -1,4 +1,4 @@
-import type { CheckboxProps } from '@semcore/checkbox';
+import type { NSCheckbox } from '@semcore/checkbox';
 import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
@@ -7,7 +7,7 @@ import style from './checkbox.shadow.css';
 import type { HighlightedCheckboxComponent } from './Checkbox.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class CheckboxFHRoot extends Component<CheckboxProps> {
+class CheckboxFHRoot extends Component<NSCheckbox.Props> {
   static displayName = 'CheckboxFH';
   static style = style;
 

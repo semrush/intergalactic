@@ -12,7 +12,7 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox />;
 ```
 
-<TypesView type="CheckboxProps" :types={...types} />
+<TypesView type="NSCheckbox.Props" :types={...types} />
 
 ## Checkbox.Value
 
@@ -42,13 +42,13 @@ import Checkbox from '@semcore/ui/checkbox';
 
 ## Checkbox.Text
 
-A customized `Text` from `intergalactic/typography`, depending on the size.
+A customized [Text](../../style/typography/typography-api#text) from `@semcore/typography`, depending on the size.
 
 ```jsx
 import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Text />;
 ```
 
-<TypesView type="CheckboxTextProps" :types={...types} />
+<TypesView type="NSCheckbox.Text.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

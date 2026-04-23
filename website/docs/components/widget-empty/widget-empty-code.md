@@ -9,7 +9,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 The component already includes a `title` and a default `description`. You only need to specify the [illustration](/style/illustration/illustration) `type`. You can provide a custom `description` and additional elements if needed.
 
 ::: tip
-The locale can be passed directly to the component or wrap your application in `I18nProvider` from the `intergalactic/utils` package, as shown in the example below.
+The locale can be passed directly to the component or wrap your application in `I18nProvider` from the `@semcore/core` package, as shown in the example below.
 :::
 
 ::: sandbox
