@@ -1,6 +1,6 @@
 import { Box, Collapse, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import { DataTable, type DataTableSort, ROW_GROUP, SelectableRows } from '@semcore/ui/data-table';
+import { ACCORDION, DataTable, type DataTableSort, ROW_GROUP, SelectableRows } from '@semcore/ui/data-table';
 import Pagination from '@semcore/ui/pagination';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -14,9 +14,12 @@ export type DemoProps = {
   pagination?: boolean;
   pageSize?: number;
   mergedRows?: boolean;
+  accordion?: boolean;
+  headerLevels?: 1 | 2;
+  virtualScroll?: boolean;
   use?: 'primary' | 'secondary';
   compact?: boolean;
-  sideIndents?: 'wide';
+  sideIndents?: 'wide' | 'default';
 };
 
 type DataRow = { id: string; keyword: string; kd: string; cpc: string; vol: string };
@@ -124,7 +127,7 @@ const fixedColumnsConfig = [
   { name: 'keyword', children: 'Keyword', sortable: true, fixed: 'left' as const, gtcWidth: '200px' },
   { name: 'kd', children: 'KD %', sortable: true, gtcWidth: '150px' },
   { name: 'cpc', children: 'CPC', sortable: true, gtcWidth: '120px' },
-  { name: 'vol', children: 'Vol.', sortable: true, fixed: 'right' as const, gtcWidth: '120px' },
+  { name: 'vol', children: 'Vol.', sortable: true, gtcWidth: '120px' },
 ];
 
 const reactiveSelectedRows = new SelectableRows<string>();
@@ -188,6 +191,31 @@ const getLimitConfig = (limitMode: boolean, rowsLimit?: number, columnsLimit?: n
   };
 };
 
+const virtualFlatData: DataRow[] = Array.from({ length: 500 }, (_, i) => {
+  const base = flatData[i % flatData.length];
+  return { ...base, id: `v${i + 1}` };
+});
+
+const ACCORDION_ROW_IDS = new Set(['1', '5', '11']);
+
+const AccordionContent = ({ keyword }: { keyword: string }) => (
+  <Flex direction='column' gap={2} p={4} style={{ backgroundColor: 'var(--intergalactic-bg-secondary-neutral, #f4f5f9)' }}>
+    <Text size={200} bold>Details for “{keyword}”</Text>
+    <Text size={100}>
+      Expanded row content. Replace with any React node — charts, nested tables, forms, etc.
+    </Text>
+  </Flex>
+);
+
+const withAccordion = (rows: DataRow[], enabled: boolean): DataRow[] => {
+  if (!enabled) return rows;
+  return rows.map((row) =>
+    ACCORDION_ROW_IDS.has(row.id)
+      ? ({ ...row, [ACCORDION]: <AccordionContent keyword={row.keyword} /> } as DataRow)
+      : row,
+  );
+};
+
 const sortData = (data: DataRow[], sort?: DataTableSort<DataColumn>): DataRow[] => {
   if (!sort) return data;
   const [prop, direction] = sort;
@@ -201,11 +229,15 @@ const sortData = (data: DataRow[], sort?: DataTableSort<DataColumn>): DataRow[] 
 
 const ACTION_BAR_HEIGHT = 44;
 
-const ActionBar = ({ count, onDeselectAll }: { count: number; onDeselectAll: () => void }) => (
+const ActionBar = ({
+  count,
+  onDeselectAll,
+  sticky = true,
+}: { count: number; onDeselectAll: () => void; sticky?: boolean }) => (
   <Collapse
     visible={count > 0}
     duration={0}
-    style={{ position: 'sticky', top: 0, zIndex: 50 }}
+    style={sticky ? { position: 'sticky', top: 0, zIndex: 50 } : undefined}
   >
     <Flex
       role='region'
@@ -234,9 +266,11 @@ const ReactiveDemo = ({
   pagination = false,
   pageSize = 5,
   mergedRows = false,
+  accordion = false,
+  virtualScroll = false,
   use,
   compact,
-  sideIndents,
+  sideIndents = 'default',
 }: Omit<DemoProps, 'reactive'>) => {
   const { count } = useSelectedRowsCount(reactiveSelectedRows);
   const [sort, setSort] = React.useState<DataTableSort<DataColumn>>();
@@ -249,39 +283,42 @@ const ReactiveDemo = ({
     tableRef.current?.focus();
   };
 
-  const allData = mergedRows ? mergedData : flatData;
+  const sourceData = virtualScroll ? virtualFlatData : flatData;
+  const allData = mergedRows ? mergedData : sourceData;
   const sortedData = React.useMemo(
-    () => (mergedRows ? allData : sortData(flatData, sort)),
-    [sort, mergedRows],
+    () => (mergedRows ? allData : withAccordion(sortData(sourceData, sort), accordion)),
+    [sort, mergedRows, accordion, virtualScroll],
   );
   const tableData = pagination
     ? sortedData.slice(currentPage * pageSize, currentPage * pageSize + pageSize)
     : sortedData;
+  const useInnerScroll = fixedColumns || virtualScroll;
 
   return (
     <>
       <Box
         tabIndex={-1}
-        hMax={fixedColumns ? undefined : 400}
-        style={{ overflow: fixedColumns ? undefined : 'auto', scrollPaddingTop: count > 0 ? `${ACTION_BAR_HEIGHT}px` : undefined }}
+        hMax={useInnerScroll ? undefined : 400}
+        style={{ overflow: useInnerScroll ? undefined : 'auto', scrollPaddingTop: count > 0 && !useInnerScroll ? `${ACTION_BAR_HEIGHT}px` : undefined }}
       >
         <ScreenReaderSelectedAllAnnouncement selectedRows={reactiveSelectedRows} />
-        <ActionBar count={count} onDeselectAll={handleDeselectAll} />
+        <ActionBar count={count} onDeselectAll={handleDeselectAll} sticky={!useInnerScroll} />
         <DataTable
           limit={limit}
           aria-label='Table'
           columns={fixedColumns ? fixedColumnsConfig : baseColumns}
           data={tableData}
-          hMax={fixedColumns ? 400 : undefined}
+          hMax={useInnerScroll ? 400 : undefined}
           w={fixedColumns ? '500px' : undefined}
-          headerProps={{ sticky: true, top: count > 0 ? ACTION_BAR_HEIGHT : 0, animationDuration: 0 }}
+          headerProps={{ sticky: true, top: count > 0 && !useInnerScroll ? ACTION_BAR_HEIGHT : 0, animationDuration: 0 }}
           sort={sort as DataTableSort<any>}
           selectedRows={reactiveSelectedRows}
           onSortChange={setSort}
           uniqueRowKey='id'
           use={use}
           compact={compact}
-          sideIndents={sideIndents}
+          sideIndents={sideIndents === 'wide' ? 'wide' : undefined}
+          virtualScroll={virtualScroll}
           ref={tableRef}
         />
       </Box>
@@ -306,6 +343,8 @@ const LegacyDemo = ({
   pagination = false,
   pageSize = 5,
   mergedRows = false,
+  accordion = false,
+  virtualScroll = false,
   use,
   compact,
   sideIndents,
@@ -335,34 +374,36 @@ const LegacyDemo = ({
     return () => clearTimeout(timer);
   }, [ariaMessage]);
 
-  const allData = mergedRows ? mergedData : flatData;
+  const sourceData = virtualScroll ? virtualFlatData : flatData;
+  const allData = mergedRows ? mergedData : sourceData;
   const sortedData = React.useMemo(
-    () => (mergedRows ? allData : sortData(flatData, sort)),
-    [sort, mergedRows],
+    () => (mergedRows ? allData : withAccordion(sortData(sourceData, sort), accordion)),
+    [sort, mergedRows, accordion, virtualScroll],
   );
   const tableData = pagination
     ? sortedData.slice(currentPage * pageSize, currentPage * pageSize + pageSize)
     : sortedData;
+  const useInnerScroll = fixedColumns || virtualScroll;
 
   return (
     <>
       <Box
         tabIndex={-1}
-        hMax={fixedColumns ? undefined : 400}
-        style={{ overflow: fixedColumns ? undefined : 'auto', scrollPaddingTop: count > 0 ? `${ACTION_BAR_HEIGHT}px` : undefined }}
+        hMax={useInnerScroll ? undefined : 400}
+        style={{ overflow: useInnerScroll ? undefined : 'auto', scrollPaddingTop: count > 0 && !useInnerScroll ? `${ACTION_BAR_HEIGHT}px` : undefined }}
       >
         <ScreenReaderOnly role='status' aria-live='polite'>
           {ariaMessage}
         </ScreenReaderOnly>
-        <ActionBar count={count} onDeselectAll={handleDeselectAll} />
+        <ActionBar count={count} onDeselectAll={handleDeselectAll} sticky={!useInnerScroll} />
         <DataTable
           limit={limit}
           aria-label='Table'
           columns={fixedColumns ? fixedColumnsConfig : baseColumns}
           data={tableData}
-          hMax={fixedColumns ? 400 : undefined}
+          hMax={useInnerScroll ? 400 : undefined}
           w={fixedColumns ? '500px' : undefined}
-          headerProps={{ sticky: true, top: count > 0 ? ACTION_BAR_HEIGHT : 0, animationDuration: 0 }}
+          headerProps={{ sticky: true, top: count > 0 && !useInnerScroll ? ACTION_BAR_HEIGHT : 0, animationDuration: 0 }}
           sort={sort as DataTableSort<any>}
           selectedRows={selectedRows}
           onSelectedRowsChange={handleChangeSelectedRows}
@@ -370,7 +411,8 @@ const LegacyDemo = ({
           uniqueRowKey='id'
           use={use}
           compact={compact}
-          sideIndents={sideIndents}
+          sideIndents={sideIndents === 'wide' ? 'wide' : undefined}
+          virtualScroll={virtualScroll}
           ref={tableRef}
         />
       </Box>
@@ -401,6 +443,8 @@ export const defaultProps: DemoProps = {
   pagination: false,
   pageSize: 5,
   mergedRows: false,
+  accordion: false,
+  virtualScroll: false,
   use: 'primary',
   compact: undefined,
   sideIndents: undefined,
