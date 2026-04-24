@@ -1,11 +1,14 @@
 import { createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
-import { Skeleton } from '../Skeleton';
-import styles from '../style/chart.shadow.css';
+import type { NSSkeletonBubbleChart } from './Bubble.type';
+import { Skeleton } from '../../Skeleton';
+import styles from '../../style/chart.shadow.css';
 
+// TODO: replace it with babel-plugin-inline-import/or vite plugin.
+// @ts-ignore
 const bubbleSvg = preval`
-module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/bubble-chart.svg'))
+module.exports = btoa(require('fs').readFileSync(__dirname + '/../../svg/bubble-chart.svg'))
 `;
 
 function BubbleChartSkeleton() {
@@ -21,4 +24,4 @@ function BubbleChartSkeleton() {
   );
 }
 
-export default createComponent(BubbleChartSkeleton);
+export default createComponent(BubbleChartSkeleton) as NSSkeletonBubbleChart.Component;

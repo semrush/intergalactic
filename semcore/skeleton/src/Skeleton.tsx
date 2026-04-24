@@ -1,10 +1,12 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
+import type { NSSkeleton } from './Skeleton.type';
 import style from './style/skeleton.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -13,10 +15,13 @@ const MAP_COLOR_THEME = {
   invert: 'rgba(224, 225, 233, 0.8)',
 };
 
-class SkeletonRoot extends Component {
+class SkeletonRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.RenderComponent>,
+  typeof SkeletonRoot.enhance
+> {
   static displayName = 'Skeleton';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     width: '100%',
     height: '100%',
@@ -40,7 +45,10 @@ class SkeletonRoot extends Component {
   }
 }
 
-class SkeletonSVG extends Component {
+class SkeletonSVG extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.Component>,
+  typeof SkeletonRoot.enhance
+> {
   static displayName = 'SkeletonSVG';
   static enhance = [uniqueIDEnhancement()];
   static style = style;
@@ -50,9 +58,10 @@ class SkeletonSVG extends Component {
     duration: 2000,
   };
 
-  svgRef = React.createRef();
+  svgRef = React.createRef<SVGElement>();
+  private observer: ResizeObserver | null = null;
 
-  constructor(props) {
+  constructor(props: NSSkeleton.Props) {
     super(props);
 
     if (canUseDOM() && props.observeParentSize) {
@@ -61,15 +70,19 @@ class SkeletonSVG extends Component {
   }
 
   componentDidMount() {
-    this.observer?.observe(this.svgRef.current?.parentElement);
+    const { current } = this.svgRef;
+
+    if (current && current.parentElement) {
+      this.observer?.observe(current.parentElement);
+    }
   }
 
   componentWillUnmount() {
     this.observer?.disconnect();
   }
 
-  handleResize(data) {
-    const target = data[0].target;
+  handleResize(entries: ResizeObserverEntry[]) {
+    const target = entries[0].target;
     const svg = this.svgRef.current;
 
     if (target && svg) {
@@ -79,6 +92,9 @@ class SkeletonSVG extends Component {
 
   setContext() {
     const { theme } = this.asProps;
+
+    if (!theme) return {};
+
     return {
       gradientUrl: MAP_COLOR_THEME[theme],
     };
@@ -108,35 +124,39 @@ class SkeletonSVG extends Component {
   }
 }
 
-function Text(props) {
+function Text(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.Text.Component>,
+) {
   const SText = Box;
   const { y = 0, x = 0, amount = 1, width = '100%', styles, forwardRef, ...other } = props;
   const amountLine = Number(amount);
 
-  const renderRect = (props) => {
-    return sstyled(styles)(<SText tag='rect' rx='4' ry='4' height='8' {...props} />);
-  };
-
   return (
     <React.Fragment>
       {[...Array(amountLine)].map((_el, index) =>
-        renderRect({
-          key: index,
-          y: y || 20 * index,
-          x,
-          ref: forwardRef,
-          width,
-          ...other,
-        }),
+        sstyled(styles)(
+          <SText
+            tag='rect'
+            rx='4'
+            ry='4'
+            height='8'
+            key={index}
+            y={y || 20 * index}
+            x={x}
+            ref={forwardRef}
+            width={width}
+            {...other}
+          />,
+        ),
       )}
     </React.Fragment>
   );
 }
 
-const Skeleton = createComponent(SkeletonRoot);
+const Skeleton = createComponent(SkeletonRoot) as NSSkeleton.RenderComponent;
 
 export { Skeleton };
 
 export default createComponent(SkeletonSVG, {
   Text,
-});
+}) as NSSkeleton.Component;
