@@ -530,7 +530,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   uid={uid}
                   selectedRows={selectedRows}
                   onSelectRow={onSelectRow}
-                  fixed={nextColumn.fixed}
+                  fixed={nextColumn.fixed === 'left'}
                 />
               );
             }
