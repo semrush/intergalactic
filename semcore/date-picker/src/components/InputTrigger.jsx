@@ -137,6 +137,7 @@ class SingleDateInputRoot extends Component {
       w: _w,
       ariaHasPopup: _ariaHasPopup,
       showError: _showError,
+      neighborLocation,
       ...otherProps
     } = this.asProps;
 
