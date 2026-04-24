@@ -67,7 +67,7 @@ export function serializeModuleDeclaration(
         ...tree[moduleName],
         ns: {
           ...tree[moduleName].ns,
-          ...serializeModuleDeclaration(child, filePath, moduleName),
+          ...serializeModuleDeclaration(child, filePath, rootName ? `${rootName}.${moduleName}` : moduleName),
         },
       };
     }
