@@ -1,6 +1,6 @@
 import Badge from '@semcore/ui/badge';
 import TabPanel from '@semcore/ui/tab-panel';
-import type { TabPanelItemProps, TabPanelProps } from '@semcore/ui/tab-panel';
+import type { NSTabPanel } from '@semcore/ui/tab-panel';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';
@@ -11,7 +11,7 @@ type AdditionalJSXProps = {
   addon: boolean;
 };
 
-export type TabPanelJSXProps = JSXProps<TabPanelProps & TabPanelItemProps> & AdditionalJSXProps;
+export type TabPanelJSXProps = JSXProps<NSTabPanel.Props & NSTabPanel.Item.Props> & AdditionalJSXProps;
 
 function getJSX(props: TabPanelJSXProps) {
   return (

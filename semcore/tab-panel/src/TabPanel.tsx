@@ -1,4 +1,5 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
@@ -6,20 +7,13 @@ import { Text as UikitText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tab-panel.shadow.css';
+import type { NSTabPanel } from './TabPanel.type';
 
-const optionsA11yEnhance = {
-  onNeighborChange: (neighborElement, props) => {
-    if (neighborElement) {
-      neighborElement.focus();
-      if (props.behavior === 'auto') {
-        neighborElement.click();
-      }
-    }
-  },
-  childSelector: ['role', 'tab'],
-};
-
-class TabPanelRoot extends Component {
+class TabPanelRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTabPanel.Component>,
+  typeof TabPanelRoot.enhance,
+  NSTabPanel.Handlers
+> {
   static displayName = 'TabPanel';
   static style = style;
   static defaultProps = {
@@ -27,9 +21,21 @@ class TabPanelRoot extends Component {
     behavior: 'manual',
   };
 
-  static enhance = [a11yEnhance(optionsA11yEnhance)];
+  static enhance = [
+    a11yEnhance({
+      onNeighborChange: (neighborElement, props) => {
+        if (neighborElement) {
+          neighborElement.focus();
+          if (props.behavior === 'auto') {
+            neighborElement.click();
+          }
+        }
+      },
+      childSelector: ['role', 'tab'],
+    }),
+  ] as const;
 
-  buttonRefsList = [];
+  buttonRefsList: Array<React.MutableRefObject<HTMLButtonElement | undefined>> = [];
 
   uncontrolledProps() {
     return {
@@ -37,18 +43,18 @@ class TabPanelRoot extends Component {
     };
   }
 
-  handleClick = (value) => (event) => {
+  handleClick = (value: NSTabPanel.Props['value']) => (event: React.MouseEvent<HTMLButtonElement>) => {
     this.handlers.value(value, event);
   };
 
-  handleKeyDown = (value) => (event) => {
+  handleKeyDown = (value: NSTabPanel.Props['value']) => (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       this.handlers.value(value, event);
     }
   };
 
-  getItemProps(props, index) {
+  getItemProps(props: NSTabPanel.Item.Props, index: number) {
     const { value } = this.asProps;
     const isSelected = value === props.value;
     return {
@@ -62,7 +68,7 @@ class TabPanelRoot extends Component {
     };
   }
 
-  getItemTextProps(_, index) {
+  getItemTextProps(_: NSTabPanel.Item.Text.Props, index: number) {
     return {
       buttonRefsList: this.buttonRefsList,
       index,
@@ -75,12 +81,18 @@ class TabPanelRoot extends Component {
 
     return sstyled(styles)(<STabPanel render={Box} role='tablist' />);
   }
-}
+};
 
-function TabPanelItem(props) {
+function TabPanelItem(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSTabPanel.Item.Component,
+    typeof TabPanelRoot,
+    'Item'
+  >,
+) {
   const STabPanelItem = Root;
   const { Children, styles, addonLeft, addonRight, buttonRefsList, index } = props;
-  const buttonRef = React.useRef();
+  const buttonRef = React.useRef<HTMLButtonElement>();
 
   buttonRefsList[index] = buttonRef;
 
@@ -93,13 +105,21 @@ function TabPanelItem(props) {
   );
 }
 
-function Text(props) {
+function Text(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSTabPanel.Item.Text.Component,
+    typeof TabPanelRoot,
+    'ItemText'
+  >,
+) {
   const SText = Root;
   const { styles, ellipsis = true, buttonRefsList, index } = props;
   return sstyled(styles)(<SText render={UikitText} size={200} ellipsis={ellipsis} medium hint:triggerRef={buttonRefsList[index]} />);
 }
 
-function Addon(props) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSTabPanel.Item.Addon.Component>,
+) {
   const SAddon = Root;
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
@@ -107,8 +127,13 @@ function Addon(props) {
 
 const TabPanel = createComponent(TabPanelRoot, {
   Item: [TabPanelItem, { Text, Addon }],
-});
+}) as unknown as NSTabPanel.Component;
 
-export const wrapTabPanel = (wrapper) => wrapper;
+export const wrapTabPanel = <PropsExtending extends {}>(wrapper: (
+  props: Intergalactic.InternalTypings.UntypeRefAndTag<
+    Intergalactic.InternalTypings.ComponentPropsNesting<NSTabPanel.WrapperComponent>
+  > &
+  PropsExtending,
+) => React.ReactNode) => wrapper as NSTabPanel.WrapperComponent<PropsExtending>;
 
 export default TabPanel;
