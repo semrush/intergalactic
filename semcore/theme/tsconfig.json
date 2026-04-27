@@ -2,6 +2,8 @@
   "extends": "../../tsconfig.json",
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
   "compilerOptions": {
-    "rootDir": "./src"
+    "lib": ["ESNext"],
+    "rootDir": "./src",
+    "allowImportingTsExtensions": true
   }
 }

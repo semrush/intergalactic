@@ -652,9 +652,6 @@ importers:
       '@types/hoist-non-react-statics':
         specifier: ^3.3.6
         version: 3.3.7(@types/react@18.2.19)
-      colorjs.io:
-        specifier: 0.4.3
-        version: 0.4.3
       postcss:
         specifier: 8.4.33
         version: 8.4.33
@@ -1253,9 +1250,6 @@ importers:
       '@semcore/base-components':
         specifier: ^17.0.1
         version: link:../base-components
-      colorjs.io:
-        specifier: 0.4.3
-        version: 0.4.3
     devDependencies:
       '@semcore/core':
         specifier: workspace:*
@@ -1266,9 +1260,9 @@ importers:
       '@types/fs-extra':
         specifier: 8.1.0
         version: 8.1.0
-      esbuild:
-        specifier: 0.14.29
-        version: 0.14.29
+      colorjs.io:
+        specifier: 0.6.1
+        version: 0.6.1
       fs-extra:
         specifier: 8.1.0
         version: 8.1.0
@@ -1802,8 +1796,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/testing-utils
       colorjs.io:
-        specifier: 0.4.3
-        version: 0.4.3
+        specifier: 0.6.1
+        version: 0.6.1
       postcss:
         specifier: 8.4.33
         version: 8.4.33
@@ -7376,8 +7370,8 @@ packages:
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
-  colorjs.io@0.4.3:
-    resolution: {integrity: sha512-Jr6NiWFZCuSECl23Bhe4jvDldQsE0ErnWrdl3xIUFy+Bkp0l8r5qt/iZlNH47/xxGP5izcyC8InjoUoI4Po+Pg==}
+  colorjs.io@0.6.1:
+    resolution: {integrity: sha512-8lyR2wHzuIykCpqHKgluGsqQi5iDm3/a2IgP2GBZrasn2sBRkE4NOGsglZxWLs/jZQoNkmA/KM/8NV16rLUdBg==}
 
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
@@ -20817,7 +20811,7 @@ snapshots:
 
   colorette@2.0.20: {}
 
-  colorjs.io@0.4.3: {}
+  colorjs.io@0.6.1: {}
 
   combined-stream@1.0.8:
     dependencies:

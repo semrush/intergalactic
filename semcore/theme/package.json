@@ -6,7 +6,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "node --experimental-transform-types src/processor.ts"
+    "build": "node --experimental-transform-types src/processor.ts",
+    "check": "node --experimental-transform-types src/checker.ts"
   },
   "dependencies": {},
   "peerDependencies": {},
@@ -16,7 +17,7 @@
     "directory": "semcore/theme"
   },
   "devDependencies": {
-    "colorjs.io": "0.4.3",
+    "colorjs.io": "0.6.1",
     "postcss": "8.4.33",
     "postcss-value-parser": "4.1.0",
     "@pandacss/dev": "1.9.0",
