@@ -1,5 +1,5 @@
 import Badge from '@semcore/ui/badge';
-import type { TabLineItemProps, TabLineProps } from '@semcore/ui/tab-line';
+import type { NSTabLine } from '@semcore/ui/tab-line';
 import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
@@ -11,7 +11,7 @@ type AdditionalJSXProps = {
   addon: boolean;
 };
 
-export type TabLineJSXProps = JSXProps<TabLineProps & TabLineItemProps> & AdditionalJSXProps;
+export type TabLineJSXProps = JSXProps<NSTabLine.Props & NSTabLine.Item.Props> & AdditionalJSXProps;
 
 function getJSX(props: TabLineJSXProps) {
   return (
