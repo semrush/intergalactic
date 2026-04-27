@@ -96,7 +96,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2023-present Powered by Semrush. All rights reserved.',
+      copyright: '<a href="https://business.adobe.com/" target="_blank"><img class="footer-logo-img" src="/intergalactic/adobe-logo.svg" alt="Adobe" /></a>© 2026 Semrush Holdings. All rights reserved.',
     },
     siteTitle: false,
     notFound: {
