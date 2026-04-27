@@ -3,7 +3,6 @@ import Chat from '@semcore/icon/Chat/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import InfoM from '@semcore/icon/Info/m';
 import MathPlus from '@semcore/icon/MathPlus/m';
-import Settings from '@semcore/icon/Settings/m';
 import SettingsM from '@semcore/icon/Settings/m';
 import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
@@ -61,7 +60,7 @@ const Demo = () => {
                       </DropdownMenu.Item.Content>
                       <DropdownMenu.Actions gap={1}>
                         <DropdownMenu.Item tag={Button} addonLeft={MathPlus} title='Add new' />
-                        <DropdownMenu.Item tag={Button} addonLeft={Settings} title='Delete' />
+                        <DropdownMenu.Item tag={Button} addonLeft={SettingsM} title='Delete' />
                       </DropdownMenu.Actions>
                     </Flex>
                   </DropdownMenu>

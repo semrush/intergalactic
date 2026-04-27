@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AllComponentsExample from './tests/all-components';
 import LinkButtonLinkTextCombinationExample, { defaultProps as combinationDefaultProps } from './tests/combination-link-button-link-text';
-import FocusStylesInSomeInputsExample from './tests/focus-styles-in-some-inputs';
 
 const meta: Meta = {
   title: 'Patterns/Core/Tests',
@@ -10,10 +9,6 @@ const meta: Meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-export const FocusStylesInSomeInputs: Story = {
-  render: FocusStylesInSomeInputsExample,
-};
 
 export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultProps> = {
   render: LinkButtonLinkTextCombinationExample,
