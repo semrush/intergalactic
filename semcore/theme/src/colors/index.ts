@@ -105,7 +105,7 @@ lightnessMap.set(600, 0.4); // Maybe 0.46?
 lightnessMap.set(700, 0.32); // Maybe 0.33?
 lightnessMap.set(800, 0.23);
 
-const initLightnessMap: Record<Lightness, { value: string }> = {
+const initLightnessMap: Record<Lightness, { value: string; description?: string }> = {
   50: { value: '', description: 'Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision.' },
   75: { value: '' },
   100: { value: '', description: 'Use only for light strokes and active backgrounds. Suitable for minimally visible elements.' },
@@ -120,15 +120,15 @@ const initLightnessMap: Record<Lightness, { value: string }> = {
 };
 
 // @ts-ignore
-const initColors: Record<Colors, Record<Lightness, { value: string }>> = {};
+const initColors: Record<Colors, typeof initLightnessMap> = {};
 
-export const colors = colorNames.reduce<Record<Colors, Record<Lightness, { value: string }>>>((acc, colorName) => {
+export const colors = colorNames.reduce<Record<Colors, typeof initLightnessMap>>((acc, colorName) => {
   if (!acc[colorName]) {
     acc[colorName] = { ...initLightnessMap };
   }
 
   for (const [key, lightness] of lightnessMap.entries()) {
-    acc[colorName][key].value = baseColors[colorName].at(lightness);
+    acc[colorName][key] = { value: baseColors[colorName].at(lightness), description: initLightnessMap[key].description };
   }
 
   return acc;
