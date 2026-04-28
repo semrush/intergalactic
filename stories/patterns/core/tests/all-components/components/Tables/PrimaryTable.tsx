@@ -2,7 +2,7 @@ import Return from '@semcore/icon/Return/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import { ACCORDION, type DataTableCellProps, SelectableRows } from '@semcore/ui/data-table';
+import { ACCORDION, type CellRenderProps, SelectableRows } from '@semcore/ui/data-table';
 import Divider from '@semcore/ui/divider';
 import Pagination from '@semcore/ui/pagination';
 import Pills from '@semcore/ui/pills';
@@ -201,7 +201,7 @@ const componentsMap = Object.fromEntries(
   COLUMNS_CONFIG.map((c) => [c.id, c.Component]),
 );
 
-const CellRenderer = (props: DataTableCellProps) => {
+const CellRenderer = (props: CellRenderProps<any, any>) => {
   const parentRowIndex = props.rowIndex;
 
   if (parentRowIndex === 0 && props.columnName === ACCORDION) {
@@ -324,6 +324,7 @@ export default function PrimaryTable() {
           </Flex>
           <Table
             loading={false}
+            variant='card'
             currentPage={currentPage}
             selectedRows={selectedRows}
             columns={cols.filter((c) => columns.includes(c.name))}

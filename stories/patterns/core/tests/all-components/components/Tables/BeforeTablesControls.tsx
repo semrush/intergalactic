@@ -1,5 +1,5 @@
 import Settings from '@semcore/icon/Settings/m';
-import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import { DatePicker, DateRangeComparator, DateRangePicker } from '@semcore/ui/date-picker';
@@ -64,7 +64,6 @@ export function BeforeTablesControls(props: Props) {
         onVisibleChange={setFpVisible}
         disablePortal
         placement='bottom-end'
-        theme='neutral'
       >
         <FeaturePopover.Trigger>
           <DropdownMenu
@@ -120,7 +119,8 @@ export function BeforeTablesControls(props: Props) {
         </FeaturePopover.Trigger>
         <FeaturePopover.Popper
           closeIcon
-          wMax={400}
+          autoFocus={false}
+          wMax={320}
           aria-label='New feature: Export'
         >
           <FPContent />
@@ -132,16 +132,6 @@ export function BeforeTablesControls(props: Props) {
 
 const FPContent = () => (
   <Flex alignItems='start'>
-    <Box
-      w={40}
-      h={40}
-      mr={4}
-      flex='0 0 auto'
-      style={{
-        borderRadius: '50%',
-        background: 'orange',
-      }}
-    />
     <div>
       <Text size={300} bold tag='h3' mb={1} mt={0}>
         Export your data
@@ -157,18 +147,11 @@ const FPContent = () => (
           Next
         </Button>
         <Button
-          theme='invert'
+          theme='muted'
           use='tertiary'
         >
           Remind me later
         </Button>
-
-        <Text size={200} aria-live='polite' ml='auto'>
-          Step 1
-          <span aria-hidden='true'>/</span>
-          <ScreenReaderOnly>of</ScreenReaderOnly>
-          5
-        </Text>
       </Flex>
     </div>
   </Flex>
