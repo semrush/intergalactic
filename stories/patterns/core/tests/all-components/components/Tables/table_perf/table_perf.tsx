@@ -16,7 +16,6 @@ type Props = {
   selectedRows: SelectableRows<string>;
   columns: any[];
   CellRenderer: (props: CellRenderProps<any, any>) => { p?: number; children?: React.ReactNode };
-  variant?: React.ComponentProps<typeof DataTable>['variant'];
 };
 
 const Demo = (props: Props) => {
@@ -28,10 +27,8 @@ const Demo = (props: Props) => {
       [...tableData].sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
 
-        const aRaw = aRow[prop];
-        const bRaw = bRow[prop];
-        const a = prop === 'amount_base' ? Number(aRaw ?? 0) : (aRaw ?? '');
-        const b = prop === 'amount_base' ? Number(bRaw ?? 0) : (bRaw ?? '');
+        const a = prop === 'amount_base' ? Number(aRow[prop]) : aRow[prop];
+        const b = prop === 'amount_base' ? Number(bRow[prop]) : bRow[prop];
         if (a === b) return 0;
         if (sortDirection === 'asc') return a > b ? 1 : -1;
         else return a > b ? -1 : 1;
@@ -41,7 +38,6 @@ const Demo = (props: Props) => {
 
   return (
     <DataTable
-      variant={props.variant}
       loading={props.loading}
       data={sortedData}
       aria-label='Accordion inside table'

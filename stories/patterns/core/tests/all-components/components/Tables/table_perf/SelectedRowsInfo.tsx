@@ -26,6 +26,7 @@ export function SelectedRowsInfo({ selectedRows }: Props) {
       alignItems='center'
       gap={6}
       py={2}
+      px={3}
       style={{
         backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)',
       }}

@@ -2,15 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomShapeAsLegendItemExample from './examples/chart-legend/custom-shape-as-legenditem';
 import TableViewExample from './examples/chart-legend/table-view';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/ChartLegend',
 };
+
 export default meta;
+
 export const TableView: StoryObj = {
   render: TableViewExample,
-  parameters: { sourceCode: 'import { ChartLegendTable } from \'@semcore/ui/d3-chart\';\nimport { Text } from \'@semcore/ui/typography\';\nimport React from \'react\';\n\nimport ChartLegendMockData from \'../../../__mocks__/chart-legend\';\n\nconst Demo = () => {\n  const [legendItems, setLegendItems] = React.useState(\n    Object.keys(data[0])\n      .filter((key) => key !== \'x\')\n      .map((item, index) => {\n        return {\n          id: item,\n          label: `Item ${index + 1}`,\n          checked: true,\n          color: `chart-palette-order-${index + 1}`,\n          columns: [\n            <Text use=\'secondary\' key={1}>\n              {(42 * (index + 3)) / 10}\n              %\n            </Text>,\n            <Text use=\'primary\' key={2}>{42 * (index + 3)}</Text>,\n          ],\n        };\n      }),\n  );\n\n  const onChangeVisibleItem = (id: string, isVisible: boolean) => {\n    setLegendItems((prevItems) => {\n      return prevItems.map((item) => {\n        if (item.id === id) {\n          item.checked = isVisible;\n        }\n\n        return item;\n      });\n    });\n  };\n\n  return (\n    <div style={{ width: \'200px\' }}>\n      <ChartLegendTable onChangeVisibleItem={onChangeVisibleItem} items={legendItems} aria-label=\'Chart legend aria label\' />\n    </div>\n  );\n};\n\nconst data = ChartLegendMockData.Default;\n\nexport default Demo;\n' },
 };
+
 export const CustomShapeAsLegendItem: StoryObj = {
   render: CustomShapeAsLegendItemExample,
-  parameters: { sourceCode: 'import { useColorResolver } from \'@semcore/ui/core/lib/utils/use/useColorResolver\';\nimport type { LegendItem } from \'@semcore/ui/d3-chart\';\nimport { ChartLegend } from \'@semcore/ui/d3-chart\';\nimport React from \'react\';\n\nimport ChartLegendMockData from \'../../../__mocks__/chart-legend\';\n\nconst Shape = (props: any) => {\n  const colorResolver = useColorResolver();\n\n  return (\n    <div\n      style={{\n        width: \'0\',\n        height: \'0\',\n        borderTop: \'8px solid transparent\',\n        borderLeft: `16px solid ${colorResolver(props.color)}`,\n        borderBottom: \'8px solid transparent\',\n        marginRight: \'4px\',\n      }}\n    />\n  );\n};\n\nconst Demo = () => {\n  const lines = Object.keys(data[0])\n    .filter((name) => name !== \'x\')\n    .reduce<LegendItem[]>((res, item, index) => {\n      res.push({\n        id: item,\n        label: item,\n        checked: true,\n        color: `chart-palette-order-${index + 1}`,\n      });\n\n      return res;\n    }, []);\n\n  return (\n    <div>\n      <ChartLegend items={lines} aria-label=\'Chart legend aria label\'>\n        <ChartLegend.LegendItem shape={undefined}>\n          <ChartLegend.LegendItem.Shape style={{ background: \'transparent\' }}>\n            {(props: any) => {\n              return <Shape {...props} />;\n            }}\n          </ChartLegend.LegendItem.Shape>\n          <ChartLegend.LegendItem.Label />\n        </ChartLegend.LegendItem>\n      </ChartLegend>\n    </div>\n  );\n};\n\nconst data = ChartLegendMockData.Default;\n\nexport default Demo;\n' },
 };
