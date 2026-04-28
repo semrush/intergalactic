@@ -7,7 +7,7 @@ import glob from 'fast-glob';
 import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
-import { getPandaConfig, toPandaPreset } from './panda-processor.ts';
+import { toPandaPreset } from './panda-processor.ts';
 import { theme as config } from './theme.ts';
 import { processTokens, tokensToCss, tokensToJs } from './utils.ts';
 
@@ -56,8 +56,8 @@ for (const theme of themes) {
   );
 
   await writeIfChanged(
-    'lib/panda-preset.ts',
-    toPandaPreset({ tokens: config.baseTokens, semanticTokens: config.semanticTokens }),
+    'lib/panda-preset.js',
+    toPandaPreset(config),
   );
 
   await writeIfChanged(

@@ -2,10 +2,11 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "lib": ["dom", "es2023"],
+    "lib": ["dom", "ESNext"],
     "jsx": "react",
     "declaration": true,
     "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": false,

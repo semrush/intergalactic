@@ -44,6 +44,10 @@ export const theme: Theme = {
           value: '#ffffff',
         },
       },
+      current: { value: 'currentColor' },
+      transparent: { value: 'rgb(0 0 0 / 0)' },
+      black: { value: '#000' },
+      white: { value: '#fff' },
     },
     fonts: {
       base: {
@@ -2038,6 +2042,106 @@ export const theme: Theme = {
       'z-index-notice-bubble': { value: '999' },
     },
   },
+  featureHighlight: {
+    bg: {
+      primary: {
+        'feature-highlight': {
+          value: '{baseTokens.colors.gray.white}',
+          description: 'Primary background for highlighted controls.',
+        },
+        'feature-highlight-hover-active': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.50}, {baseTokens.colors.blue.75})',
+          description: 'Primary background for hover and active (selected) state of highlighted controls.',
+        },
+      },
+      secondary: {
+        'feature-highlight': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.50}, {baseTokens.colors.blue.75})',
+          description: 'Secondary background for the highlighted message.',
+        },
+      },
+    },
+    border: {
+      'feature-highlight': {
+        value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.200}, {baseTokens.colors.blue.200})',
+        description: 'Primary border for highlighted controls.',
+      },
+      'feature-highlight-active': {
+        value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.300}, {baseTokens.colors.blue.300})',
+        description: 'Primary border for the active state of highlighted controls.',
+      },
+      'feature-highlight-secondary': {
+        value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.300}, {baseTokens.colors.blue.300})',
+        description: 'Secondary border for highlighted controls.',
+      },
+    },
+    control: {
+      primary: {
+        'feature-highlight': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.400}, {baseTokens.colors.blue.300})',
+          description: 'Background of the highlighted primary control.',
+        },
+        'feature-highlight-hover': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.400}, {baseTokens.colors.blue.300})',
+          description: 'Hover state of the highlighted primary control.',
+        },
+        'feature-highlight-active': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.400}, {baseTokens.colors.blue.400})',
+          description: 'Active (selected) state of the highlighted primary control.',
+        },
+      },
+      secondary: {
+        'feature-highlight': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.50}, {baseTokens.colors.blue.50})',
+          description: 'Background of the highlighted secondary control.',
+        },
+        'feature-highlight-hover': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.100}, {baseTokens.colors.blue.100})',
+          description: 'Hover state of the highlighted secondary control.',
+        },
+        'feature-highlight-active': {
+          value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.100}, {baseTokens.colors.blue.100})',
+          description: 'Active (selected) state of the highlighted secondary control.',
+        },
+      },
+    },
+    text: {
+      'feature-highlight': {
+        value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.500}, {baseTokens.colors.blue.500})',
+        description: 'Text for highlighted features.',
+      },
+      'feature-highlight-hover-active': {
+        value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.500}, {baseTokens.colors.blue.500})',
+        description: 'Text for hover and active states of highlighted features.',
+      },
+    },
+    icon: {
+      primary: {
+        'feature-highlight': {
+          value: highlight.at(L_ICON_PRIMARY),
+          description: 'Primary highlighted icon.',
+        },
+        'feature-highlight-hover-active': {
+          value: highlight.at(L_ICON_PRIMARY_HOVER),
+          description: 'Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.',
+        },
+      },
+    },
+    keyboard: {
+      focus: {
+        'feature-highlight': {
+          DEFAULT: {
+            value: '3px solid {featureHighlight.keyboard.focus.feature-highlight.outline}',
+            description: 'Keyboard focus styles for highlighted controls.',
+          },
+          outline: {
+            value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.300}, {baseTokens.colors.blue.400})',
+            description: 'Color for keyboard focus outline styles for highlighted controls.',
+          },
+        },
+      },
+    },
+  },
 };
 
 type FontSize = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
@@ -2060,7 +2164,7 @@ type Value<T = string> = {
 };
 
 export type BaseTokens = {
-  colors: Record<Colors, Record<Lightness, Value>> & Record<'gray', Record<'white', Value>>;
+  colors: Record<Colors, Record<Lightness, Value>> & Record<'gray', Record<'white', Value>> & Record<'white' | 'black' | 'transparent' | 'current', Value>;
   fonts: { base: Value };
   fontSizes: Record<FontSize, Value>;
   lineHeights: Record<LineHeight, Value>;
@@ -2091,13 +2195,6 @@ export type SemanticTokens = {
         advertising: Value;
         muted: Value;
         invert: Value;
-        // feature: {
-        //   highlight: {
-        //     hover: {
-        //       active: Value;
-        //     };
-        //   };
-        // };
       };
       secondary: {
         neutral: Value;
@@ -2107,9 +2204,6 @@ export type SemanticTokens = {
         warning: Value;
         highlight: Value;
         advertising: Value;
-        // feature: {
-        //   highlight: Value;
-        // };
       };
       highlight: {
         results: Value;
@@ -2183,14 +2277,6 @@ export type SemanticTokens = {
         };
       };
       advertising: Value;
-      // feature: {
-      //   highlight: {
-      //     DEFAULT: Value;
-      //     hover: {
-      //       active: Value;
-      //     };
-      //   };
-      // };
     };
     border: {
       primary: {
@@ -2231,13 +2317,6 @@ export type SemanticTokens = {
           };
         };
       };
-      // feature: {
-      //   highlight: {
-      //     DEFAULT: Value;
-      //     active: Value;
-      //     secondary: Value;
-      //   };
-      // };
     };
     control: {
       switch: {
@@ -2274,13 +2353,6 @@ export type SemanticTokens = {
           hover: Value;
           active: Value;
         };
-        // feature: {
-        //   highlight: {
-        //     DEFAULT: Value;
-        //     hover: Value;
-        //     active: Value;
-        //   };
-        // };
       };
       secondary: {
         neutral: {
@@ -2298,13 +2370,6 @@ export type SemanticTokens = {
           hover: Value;
           active: Value;
         };
-        // feature: {
-        //   highlight: {
-        //     DEFAULT: Value;
-        //     hover: Value;
-        //     active: Value;
-        //   };
-        // };
       };
       tertiary: {
         neutral: {
@@ -2362,14 +2427,6 @@ export type SemanticTokens = {
             active: Value;
           };
         };
-        // feature: {
-        //   highlight: {
-        //     DEFAULT: Value;
-        //     hover: {
-        //       active: Value;
-        //     };
-        //   };
-        // };
       };
       secondary: {
         neutral: {
@@ -2572,11 +2629,6 @@ export type SemanticTokens = {
         invert: {
           outline: Value;
         };
-        // feature: {
-        //   highlight: {
-        //     outline: Value;
-        //   };
-        // };
       };
     };
     overlay: {
@@ -2866,7 +2918,55 @@ export type SemanticTokens = {
   zIndexes: Record<string, Value>;
 };
 
+export type FeatureHighlight = {
+  bg: {
+    primary: {
+      'feature-highlight': Value;
+      'feature-highlight-hover-active': Value;
+    };
+    secondary: {
+      'feature-highlight': Value;
+    };
+  };
+  border: {
+    'feature-highlight': Value;
+    'feature-highlight-active': Value;
+    'feature-highlight-secondary': Value;
+  };
+  control: {
+    primary: {
+      'feature-highlight': Value;
+      'feature-highlight-hover': Value;
+      'feature-highlight-active': Value;
+    };
+    secondary: {
+      'feature-highlight': Value;
+      'feature-highlight-hover': Value;
+      'feature-highlight-active': Value;
+    };
+  };
+  text: {
+    'feature-highlight': Value;
+    'feature-highlight-hover-active': Value;
+  };
+  icon: {
+    primary: {
+      'feature-highlight': Value;
+      'feature-highlight-hover-active': Value;
+    };
+  };
+  keyboard: {
+    focus: {
+      'feature-highlight': {
+        DEFAULT: Value;
+        outline: Value;
+      };
+    };
+  };
+};
+
 export type Theme = {
   baseTokens: BaseTokens;
   semanticTokens: SemanticTokens;
+  featureHighlight: FeatureHighlight;
 };

@@ -1,135 +1,46 @@
-const FIGMA_TOKENS_ONLY = [
-  'keyboard-focus-feature-highlight',
-];
+import type { Theme } from './theme.ts';
+import type { N } from './utils.ts';
 
-const PANDA_DURATIONS_KEY = 'durations';
-
-const INTERGALACTIC_TYPE_TO_PANDA: Record<string, string> = {
-  color: 'colors',
-  sizing: 'sizes',
-  spacing: 'spacing',
-  fontFamilies: 'fonts',
-  fontSizes: 'fontSizes',
-  fontWeights: 'fontWeights',
-  letterSpacing: 'letterSpacings',
-  lineHeights: 'lineHeights',
-  borderRadius: 'radii',
-  border: 'borders',
-  boxShadow: 'shadows',
-  opacity: 'opacity',
-  // handled within process function, since token has type = 'other'
-  // duration - durations
-};
-
-type TokenType = {
-  [key: string]: TokenType | { value: string };
-};
-
-type PandaConfig = {
-  tokens: TokenType;
-  semanticTokens: TokenType;
-};
-
-const setToken = (
-  value: string,
-  from: Array<string>,
-  to: Record<string, any>,
-  description?: string,
-): TokenType => {
-  const [part, ...parts] = from;
-
-  if (parts.length === 0) {
-    if (to[part] && typeof to[part] === 'object') {
-      to[part].DEFAULT = { value, ...(description && { description }) };
+function merge(node: N, resultNode: N) {
+  Object.keys(node).forEach((key) => {
+    if (resultNode[key] &&
+      typeof node[key] === 'object' &&
+      typeof resultNode[key] === 'object'
+    ) {
+      merge(node[key], resultNode[key]);
     } else {
-      to[part] = { value, ...(description && { description }) };
-    }
-
-    return to;
-  }
-
-  if (to[part] && 'value' in to[part]) {
-    to[part] = { DEFAULT: { ...to[part] } };
-  }
-
-  to[part] = {
-    ...to[part],
-    ...setToken(value, parts, to[part] ?? {}, description),
-  };
-
-  return to;
-};
-
-const ifZIndex = (key: string) => key.startsWith('z-index-');
-const ifDuration = (key: string) => key.startsWith('duration-');
-
-const getKeyParts = (key: string) => {
-  const parts = key.split('-');
-
-  if (key === 'disabled-opacity') {
-    return [parts[0]];
-  }
-
-  if (ifDuration(key)) {
-    return parts.filter((p) => !p.startsWith('duration'));
-  }
-
-  if (ifZIndex(key)) {
-    return parts.filter((p) => !p.startsWith('z') && !p.startsWith('index'));
-  }
-
-  return parts;
-};
-
-export const getPandaConfig = (
-  values: Record<string, string>,
-  basicTokens: Set<string>,
-  types: Record<string, string>,
-  descriptions: Record<string, string>,
-): PandaConfig => {
-  const tokens: TokenType = {};
-  const semanticTokens: TokenType = {};
-
-  Object.entries(types).forEach(([key, type]) => {
-    if (FIGMA_TOKENS_ONLY.includes(key)) return;
-
-    const value = values[key];
-    const description = descriptions[key];
-
-    let pandaKey = INTERGALACTIC_TYPE_TO_PANDA[type];
-    const isDurationKey = ifDuration(key);
-
-    if (!pandaKey && !isDurationKey) return;
-
-    const isBaseToken = basicTokens.has(key);
-
-    if (isDurationKey) {
-      pandaKey = PANDA_DURATIONS_KEY;
-    }
-
-    const keyParts = getKeyParts(key);
-
-    if (isBaseToken) {
-      tokens[pandaKey] = setToken(value, keyParts, tokens[pandaKey] ?? {}, description);
-    } else {
-      semanticTokens[pandaKey] = setToken(value, keyParts, semanticTokens[pandaKey] ?? {}, description);
+      resultNode[key] = node[key];
     }
   });
+}
 
-  return {
-    tokens,
-    semanticTokens,
+export const toPandaPreset = (config: Theme) => {
+  const tokens = JSON.stringify({ ...config.baseTokens, breakpoints: undefined }, undefined, 2);
+  const semanticTokens = {
+    ...config.semanticTokens,
+    zIndexes: undefined,
+
   };
-};
 
-export const toPandaPreset = (config: PandaConfig) => {
+  merge(config.featureHighlight, semanticTokens.colors);
+
+  const semantic = JSON.stringify(semanticTokens, undefined, 2);
+  const breakpointsObject = Object.entries(config.baseTokens.breakpoints).reduce<Record<string, string | undefined>>((acc, [key, valueObj]) => {
+    acc[key] = 'value' in valueObj ? valueObj.value : undefined;
+    return acc;
+  }, {});
+  const breakpoints = JSON.stringify(breakpointsObject, undefined, 2);
+
   const preset = `import { definePreset } from '@pandacss/dev';
 
-export default definePreset({
+export const semcorePreset = definePreset({
   name: '@semcore/panda-preset',
   theme: {
-    tokens: ${JSON.stringify(config.tokens, undefined, 4)},
-    semanticTokens: ${JSON.stringify(config.semanticTokens, undefined, 4)}
+    tokens:${tokens.split('\n').map((line, index) => index === 0 ? ` ${line}` : `    ${line}`).join('\n')},
+    semanticTokens:${semantic.split('\n').map((line, index) => index === 0 ? ` ${line}` : `    ${line}`).join('\n')},
+    extend: {
+      breakpoints:${breakpoints.split('\n').map((line, index) => index === 0 ? ` ${line}` : `      ${line}`).join('\n')},
+    },
   },
 });
 `;

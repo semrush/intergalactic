@@ -267,11 +267,11 @@ type ProcessedTokens = {
   values: Record<string, string>;
   descriptions: Record<string, string>;
   processedTokens: { name: string; value: string; description: string }[];
-  highlightsTokens: [];
+  highlightsTokens: { name: string; value: string; description: string }[];
 };
 
 // @ts-ignore
-type N = Record<string, N | string>;
+export type N = Record<string, N | string>;
 
 export const logger = {
   // eslint-disable-next-line no-console
@@ -348,6 +348,25 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
     }
   }
 
+  function traverseHighlight(node: N, path: string[], prefix: string = '') {
+    if ('value' in node && typeof node.value === 'string') {
+      const nodeKey = path.filter((p) => p !== 'DEFAULT').join('-');
+      const key = prefix ? `--${prefix}-${nodeKey}` : `--${nodeKey}`;
+
+      const value = processValue(node.value);
+
+      processedTokens.highlightsTokens.push({
+        name: key,
+        value: value,
+        description: node.description,
+      });
+    } else {
+      Object.keys(node).forEach((key) => {
+        traverse(node[key], [...path, key], prefix);
+      });
+    }
+  }
+
   (Object.keys(config.baseTokens) as Array<keyof typeof config.baseTokens>).forEach((key) => {
     switch (key) {
       case 'colors': {
@@ -412,6 +431,8 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
     }
   });
 
+  traverseHighlight(config.featureHighlight, [], prefix);
+
   return processedTokens;
 }
 
@@ -439,7 +460,7 @@ export const tokensToJs = (tokens: { name: string; value: string; description: s
   return jsLines.join('\n');
 };
 
-const getByPath = (obj: any, parts: string[]) => {
+export const getByPath = (obj: any, parts: string[]) => {
   let result = obj;
   for (const part of parts) {
     result = result?.[part];
