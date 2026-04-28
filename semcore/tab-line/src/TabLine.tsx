@@ -1,25 +1,31 @@
 import { NeighborLocation, Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
-import { Text as UikitText } from '@semcore/typography';
+import { Text as SemcoreText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tab-line.shadow.css';
+import type { NSTabLine } from './TabLine.type';
 
-const optionsA11yEnhance = {
-  onNeighborChange: (neighborElement, props) => {
-    if (neighborElement) {
-      neighborElement.focus();
-      if (props.behavior === 'auto') {
-        neighborElement.click();
-      }
-    }
-  },
-  childSelector: ['role', 'tab'],
+type State = {
+  animation: {
+    fromLeft: number;
+    fromWidth: number;
+    toLeft: number;
+    toWidth: number;
+    started: boolean;
+  } | null;
 };
 
-class TabLineRoot extends Component {
+class TabLineRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTabLine.Component>,
+  typeof TabLineRoot.enhance,
+  NSTabLine.Handlers,
+  {},
+  State
+> {
   static displayName = 'TabLine';
   static style = style;
   static defaultProps = {
@@ -29,13 +35,24 @@ class TabLineRoot extends Component {
     behavior: 'auto',
   };
 
-  static enhance = [a11yEnhance(optionsA11yEnhance)];
-  state = { animation: null };
-  prevValue = undefined;
-  itemRefs = {};
-  containerRef = React.createRef();
-  animationStartTimeout = -1;
-  buttonRefsList = [];
+  static enhance = [a11yEnhance({
+    onNeighborChange: (neighborElement, props) => {
+      if (neighborElement) {
+        neighborElement.focus();
+        if (props.behavior === 'auto') {
+          neighborElement.click();
+        }
+      }
+    },
+    childSelector: ['role', 'tab'],
+  })] as const;
+
+  state: State = { animation: null };
+  prevValue: NSTabLine.Props['value'] = undefined;
+  itemRefs: Record<string, HTMLDivElement> = {};
+  containerRef = React.createRef<HTMLDivElement>();
+  animationStartTimeout: ReturnType<typeof setTimeout> | null = null;
+  buttonRefsList: Array<React.MutableRefObject<HTMLButtonElement | undefined>> = [];
 
   uncontrolledProps() {
     return {
@@ -59,12 +76,16 @@ class TabLineRoot extends Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.animationStartTimeout);
+    if (this.animationStartTimeout) {
+      clearTimeout(this.animationStartTimeout);
+    }
   }
 
   animate() {
-    const fromNode = this.itemRefs[this.prevValue];
-    const toNode = this.itemRefs[this.asProps.value];
+    if (this.prevValue === undefined || this.asProps.value === undefined) return;
+
+    const fromNode = this.itemRefs[this.prevValue.toString()];
+    const toNode = this.itemRefs[this.asProps.value.toString()];
     const containerNode = this.containerRef.current;
 
     if (!fromNode || !toNode || !containerNode) return;
@@ -79,7 +100,11 @@ class TabLineRoot extends Component {
       started: false,
     };
     this.setState({ animation });
-    clearTimeout(this.animationStartTimeout);
+
+    if (this.animationStartTimeout) {
+      clearTimeout(this.animationStartTimeout);
+    }
+
     this.animationStartTimeout = setTimeout(this.handleAnimationStart, 0);
   }
 
@@ -93,11 +118,11 @@ class TabLineRoot extends Component {
     this.setState({ animation: null });
   };
 
-  bindHandlerClick = (value) => (e) => {
+  bindHandlerClick = (value: NSTabLine.Props['value']) => (e: React.SyntheticEvent) => {
     this.handlers.value(value, e);
   };
 
-  getItemProps(props, index) {
+  getItemProps(props: NSTabLine.Item.Props, index: number) {
     const { value, size } = this.asProps;
     const isSelected = value === props.value;
     return {
@@ -106,15 +131,17 @@ class TabLineRoot extends Component {
       'onClick': this.bindHandlerClick(props.value),
       'tabIndex': isSelected ? 0 : -1,
       'aria-selected': isSelected,
-      'ref': (node) => {
-        this.itemRefs[props.value] = node;
+      'ref': (node: HTMLDivElement) => {
+        if (props.value === undefined) return;
+
+        this.itemRefs[props.value.toString()] = node;
       },
       'buttonRefsList': this.buttonRefsList,
       index,
     };
   }
 
-  getItemTextProps(props, index) {
+  getItemTextProps(props: NSTabLine.Item.Text.Props, index: number) {
     const { size: tabLineSize } = this.asProps;
     const size = props.size
       ? props.size
@@ -166,10 +193,16 @@ class TabLineRoot extends Component {
   }
 }
 
-function TabLineItem(props) {
+function TabLineItem(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSTabLine.Item.Component,
+    typeof TabLineRoot,
+    'Item'
+  >,
+) {
   const STabLineItem = Root;
   const { Children, styles, addonLeft, addonRight, neighborLocation, buttonRefsList, index } = props;
-  const buttonRef = React.useRef();
+  const buttonRef = React.useRef<HTMLButtonElement>();
 
   buttonRefsList[index] = buttonRef;
 
@@ -195,13 +228,21 @@ function TabLineItem(props) {
   );
 }
 
-function Text(props) {
+function Text(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSTabLine.Item.Text.Component,
+    typeof TabLineRoot,
+    'ItemText'
+  >,
+) {
   const { styles, ellipsis = true, size, buttonRefsList, index } = props;
   const SText = Root;
-  return sstyled(styles)(<SText render={UikitText} ellipsis={ellipsis} size={size} hint:triggerRef={buttonRefsList[index]} />);
+  return sstyled(styles)(<SText render={SemcoreText} ellipsis={ellipsis} size={size} hint:triggerRef={buttonRefsList[index]} />);
 }
 
-function Addon(props) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSTabLine.Item.Addon.Component>,
+) {
   const { styles } = props;
   const SAddon = Root;
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
@@ -209,8 +250,13 @@ function Addon(props) {
 
 const TabLine = createComponent(TabLineRoot, {
   Item: [TabLineItem, { Text, Addon }],
-});
+}) as unknown as NSTabLine.Component;
 
-export const wrapTabLine = (wrapper) => wrapper;
+export const wrapTabLine = <PropsExtending extends {}>(wrapper: (
+  props: Intergalactic.InternalTypings.UntypeRefAndTag<
+    Intergalactic.InternalTypings.ComponentPropsNesting<NSTabLine.WrapperComponent>
+  > &
+  PropsExtending,
+) => React.ReactNode) => wrapper as NSTabLine.WrapperComponent<PropsExtending>;
 
 export default TabLine;

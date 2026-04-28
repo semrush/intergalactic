@@ -1,11 +1,13 @@
 import { createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
-import { Skeleton } from '../Skeleton';
-import styles from '../style/chart.shadow.css';
+import { Skeleton } from '../../Skeleton';
+import styles from '../../style/chart.shadow.css';
 
+// TODO: replace it with babel-plugin-inline-import/or vite plugin.
+// @ts-ignore
 const vennSvg = preval`
-module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/venn-chart.svg'))
+module.exports = btoa(require('fs').readFileSync(__dirname + '/../../svg/venn-chart.svg'))
 `;
 
 function VennChartSkeleton() {

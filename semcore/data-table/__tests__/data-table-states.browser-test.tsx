@@ -331,6 +331,109 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
     });
 
+    test('Verify SelectableRows with fixed-left column — checkbox cell positioning', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        fixedColumns: true,
+      });
+
+      const selectorCell = locators.getCell(page, 2, 1);
+      await expect(selectorCell).toBeVisible();
+
+      await test.step('Selector cell has left: 0 and sticky positioning', async () => {
+        await expect(selectorCell).toHaveCSS('left', '0px');
+        const position = await selectorCell.evaluate((el) => window.getComputedStyle(el).position);
+        expect(['static']).toContain(position);
+      });
+
+      await test.step('First data column (keyword) is fixed-left too', async () => {
+        const keywordCell = locators.getCell(page, 2, 2);
+        const left = await keywordCell.evaluate((el) => window.getComputedStyle(el).left);
+        expect(left).not.toBe('auto');
+      });
+    });
+
+    test('Verify SelectableRows with fixed-left column — checkbox stays pinned on horizontal scroll', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        fixedColumns: true,
+      });
+
+      const selectorCell = locators.getCell(page, 2, 1);
+      const nonFixedCell = locators.getCell(page, 2, 3);
+
+      const selectorBefore = await selectorCell.boundingBox();
+      const nonFixedBefore = await nonFixedCell.boundingBox();
+
+      await locators.dataTable(page).hover();
+      await page.mouse.wheel(300, 0);
+      await page.waitForTimeout(500);
+
+      const selectorAfter = await selectorCell.boundingBox();
+      const nonFixedAfter = await nonFixedCell.boundingBox();
+
+      await test.step('Selector cell X position unchanged after scroll', async () => {
+        expect(selectorAfter?.x).toBe(selectorBefore?.x);
+        await expect(selectorCell).toBeVisible();
+      });
+
+      await test.step('Non-fixed data cell shifted left (scrolled)', async () => {
+        expect(nonFixedAfter!.x).toBeLessThan(nonFixedBefore!.x);
+      });
+    });
+
+    test('Verify SelectableRows with fixed-left column — selection persists after scroll', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        fixedColumns: true,
+      });
+
+      const selectorCell = locators.getCell(page, 2, 1);
+      const checkbox = selectorCell.locator('input[type="checkbox"]');
+
+      await selectorCell.locator('label').first().click();
+
+      await test.step('Row is selected and action bar appeared', async () => {
+        await expect(checkbox).toBeChecked();
+        await expect(page.getByRole('button', { name: 'Deselect all' })).toBeVisible();
+      });
+
+      await test.step('Checkbox stays checked after horizontal scroll', async () => {
+        await locators.dataTable(page).hover();
+        await page.mouse.wheel(300, 0);
+        await page.waitForTimeout(500);
+        await expect(checkbox).toBeChecked();
+      });
+    });
+
+    test('Verify SelectableRows with fixed-left column and accordion rows', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        fixedColumns: true,
+        accordion: true,
+      });
+
+      const selectorCell = locators.getCell(page, 2, 1);
+      await expect(selectorCell).toBeVisible();
+      await expect(selectorCell).toHaveCSS('left', '0px');
+
+      await test.step('Expanding an accordion row keeps selector pinned', async () => {
+        await locators.toggle(page).first().click();
+        await page.waitForTimeout(300);
+        await expect(selectorCell).toHaveCSS('left', '0px');
+      });
+    });
+
     test('Verify color on hover when merged rows AND columns with multi-level header', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table'],

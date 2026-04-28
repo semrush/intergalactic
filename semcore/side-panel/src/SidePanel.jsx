@@ -219,7 +219,7 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
 
 function Title(props) {
   const STitle = Root;
-  return sstyled(props.styles)(<STitle render={Text} tag='h6' />);
+  return sstyled(props.styles)(<STitle render={Text} tag='h6' size={300} bold ellipsis />);
 }
 
 function Back(props) {
