@@ -5,7 +5,6 @@ SScrollArea {
 
   SContainer {
     overflow: unset;
-    overscroll-behavior: none;
 
     &[scrollDirection='both'] {
       overflow: auto;
