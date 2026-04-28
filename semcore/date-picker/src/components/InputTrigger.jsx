@@ -807,34 +807,36 @@ function MaskedInput({
 
   useEnhancedEffect(() => {
     if (!ref.current) return;
-    const stringsToMeasure = humanizedDate ? [humanizedDate, mask] : [mask];
-    const widths = [];
-    const measureSpan = document.createElement('span');
-    const computedStyle = window.getComputedStyle(ref.current);
-    const typographyRelatedStyles = [
-      'height',
-      'font-size',
-      'font-family',
-      'font-weight',
-      'font-style',
-      'line-height',
-      'letter-spacing',
-      'text-transform',
-      'word-spacing',
-    ];
-    for (const style of typographyRelatedStyles) {
-      measureSpan.style[style] = computedStyle[style];
-    }
-    measureSpan.style.position = 'absolute';
-    measureSpan.style.visibility = 'hidden';
-    document.body.appendChild(measureSpan);
-    for (const string of stringsToMeasure) {
-      measureSpan.innerHTML = string;
-      widths.push(measureSpan.offsetWidth);
-    }
-    measureSpan.remove();
-    const maxWidth = Math.max(...widths);
-    setWidth(maxWidth);
+    document.fonts.ready.then(() => {
+      const stringsToMeasure = humanizedDate ? [humanizedDate, mask] : [mask];
+      const widths = [];
+      const measureSpan = document.createElement('span');
+      const computedStyle = window.getComputedStyle(ref.current);
+      const typographyRelatedStyles = [
+        'height',
+        'font-size',
+        'font-family',
+        'font-weight',
+        'font-style',
+        'line-height',
+        'letter-spacing',
+        'text-transform',
+        'word-spacing',
+      ];
+      for (const style of typographyRelatedStyles) {
+        measureSpan.style[style] = computedStyle[style];
+      }
+      measureSpan.style.position = 'absolute';
+      measureSpan.style.visibility = 'hidden';
+      document.body.appendChild(measureSpan);
+      for (const string of stringsToMeasure) {
+        measureSpan.innerHTML = string;
+        widths.push(Math.ceil(measureSpan.getBoundingClientRect().width));
+      }
+      measureSpan.remove();
+      const maxWidth = Math.max(...widths);
+      setWidth(maxWidth);
+    });
   }, [locale, humanizedDate, allowedParts, mask]);
 
   const SHumanizedDate = 'div';

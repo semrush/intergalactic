@@ -7,7 +7,6 @@ SMask {
   line-height: 1.25;
   position: absolute;
   left: 0.8em;
-  right: 0.8em;
   pointer-events: none;
   letter-spacing: 0.1em;
   text-overflow: inherit;
@@ -18,11 +17,6 @@ SMask {
 SMask[data-neighbor-location='left'],
 SMask[data-neighbor-location='both'] {
   left: 0;
-}
-
-SMask[data-neighbor-location='right'],
-SMask[data-neighbor-location='both'] {
-  right: 0;
 }
 
 SMaskHidden {
