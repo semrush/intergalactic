@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import { ACCORDION, DataTable } from '@semcore/ui/data-table';
 import React, { useState } from 'react';
 
@@ -66,17 +67,29 @@ function App() {
         </select>
       </div>
 
-      <DataTable
-        columns={columns}
-        data={data}
-        headerProps={{
-          sticky: true,
-          withScrollBar: true,
+      <Box
+        p={4}
+        h={800}
+        style={{
+          border: '1px solid #ddd',
+          borderRadius: '4px',
+          resize: 'both',
+          overflow: 'auto',
         }}
-        w={width}
-        defaultGridTemplateColumnWidth={'minmax(120px, 1fr)' as 'auto'}
-        aria-label=''
-      />
+      >
+        <DataTable
+          columns={columns}
+          data={data}
+          headerProps={{
+            sticky: true,
+            withScrollBar: true,
+          }}
+          w={width}
+          h='100%'
+          defaultGridTemplateColumnWidth={'minmax(120px, 1fr)' as 'auto'}
+          aria-label=''
+        />
+      </Box>
     </div>
   );
 }

@@ -66,4 +66,6 @@ export type HeadPropsInner<
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: ColumnPropsInner<Data, UniqKey, UniqKeyType>['scrollDirection'];
   isDataEmpty: boolean;
+
+  withAnimation: boolean;
 };
