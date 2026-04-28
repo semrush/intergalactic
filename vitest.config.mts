@@ -48,6 +48,7 @@ export default defineConfig({
   },
   test: {
     testTimeout: 60 * 1000,
+    projects: ['semcore/*', 'tools/*'],
     include: [
       'semcore/*/__tests__/**/*.test.tsx',
       'semcore/*/__tests__/**/*.test.jsx',
@@ -78,7 +79,7 @@ export default defineConfig({
 });
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
+
   namespace jest {
     interface Matchers<R> {
       toMatchImageSnapshot(task: any, options: any): R;

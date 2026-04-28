@@ -106,9 +106,9 @@ lightnessMap.set(700, 0.32); // Maybe 0.33?
 lightnessMap.set(800, 0.23);
 
 const initLightnessMap: Record<Lightness, { value: string }> = {
-  50: { value: '' },
+  50: { value: '', description: 'Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision.' },
   75: { value: '' },
-  100: { value: '' },
+  100: { value: '', description: 'Use only for light strokes and active backgrounds. Suitable for minimally visible elements.' },
   200: { value: '' },
   300: { value: '' },
   400: { value: '' },
@@ -128,7 +128,7 @@ export const colors = colorNames.reduce<Record<Colors, Record<Lightness, { value
   }
 
   for (const [key, lightness] of lightnessMap.entries()) {
-    acc[colorName][key] = { value: baseColors[colorName].at(lightness) };
+    acc[colorName][key].value = baseColors[colorName].at(lightness);
   }
 
   return acc;

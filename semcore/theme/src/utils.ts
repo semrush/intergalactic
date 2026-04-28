@@ -288,16 +288,16 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
     highlightsTokens: [],
   };
 
-  function getConfigValue(path: string[]) {
+  function getConfigValue(path: string[]): string {
     try {
       const valueObj = getByPath(config, path);
 
       if ('value' in valueObj) {
-        return valueObj.value;
+        return processValue(valueObj.value);
       }
 
       if ('DEFAULT' in valueObj && 'value' in valueObj.DEFAULT) {
-        return valueObj.DEFAULT.value;
+        return processValue(valueObj.DEFAULT.value);
       }
     } catch (e) {
       logger.log(e);
@@ -307,12 +307,12 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
     return `{${path.join('.')}}`;
   }
 
-  function processValue(value: string) {
+  function processValue(value: string): string {
     if (value.startsWith('{') && value.endsWith('}')) {
       return getConfigValue(value.slice(1, -1).split('.'));
     }
     if (value.includes('{') && value.includes('}')) {
-      const replacer = new RegExp(`{([a-z.-])+}`, 'gi');
+      const replacer = new RegExp(`{([a-z0-9.-])+}`, 'gi');
 
       const result = value.replace(replacer, (match) => {
         const calculatedValue = getConfigValue(match.slice(1, -1).split('.'));
@@ -355,6 +355,8 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
 
       const value = processValue(node.value);
 
+      processedTokens.values[key] = value;
+      processedTokens.descriptions[key] = node.description;
       processedTokens.highlightsTokens.push({
         name: key,
         value: value,
@@ -362,7 +364,7 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
       });
     } else {
       Object.keys(node).forEach((key) => {
-        traverse(node[key], [...path, key], prefix);
+        traverseHighlight(node[key], [...path, key], prefix);
       });
     }
   }
