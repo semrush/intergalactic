@@ -2,14 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AllComponentsExample from './tests/all-components';
 import LinkButtonLinkTextCombinationExample, { defaultProps as combinationDefaultProps } from './tests/combination-link-button-link-text';
-
 const meta: Meta = {
   title: 'Patterns/Core/Tests',
 };
-
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultProps> = {
   render: LinkButtonLinkTextCombinationExample,
   argTypes: {
@@ -45,7 +42,6 @@ export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultPr
   },
   args: combinationDefaultProps,
 };
-
 export const AllComponents: Story = {
   render: AllComponentsExample,
   parameters: {

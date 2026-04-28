@@ -4,7 +4,6 @@ import BaseExample, { buttonTriggerBaseExampleProps } from './examples/button-tr
 import NeighborLocationExample, { buttonTriggerNeighborLocationExampleProps } from './examples/button-trigger/neighbor-location';
 import AddonExample, { buttonTriggerWithAddonExampleProps } from './examples/button-trigger/with-addons';
 import SelectDDMenuExample, { buttonTriggerSelectDDMenuExampleProps } from './examples/button-trigger/with-select-and-dd-menu';
-
 const sharedArgTypes = {
   size: {
     control: { type: 'select' },
@@ -21,32 +20,31 @@ const sharedArgTypes = {
   loading: { control: { type: 'boolean' } },
   chevron: { control: { type: 'boolean' } },
 } as const;
-
 const meta: Meta = {
   title: 'Components/Base Trigger/Test/Button Trigger',
 };
 export default meta;
-
 export const Base: StoryObj<typeof buttonTriggerBaseExampleProps> = {
   render: BaseExample,
   argTypes: sharedArgTypes,
   args: buttonTriggerBaseExampleProps,
+  parameters: { sourceCode: 'import { Flex } from \'@semcore/ui/base-components\';\nimport { ButtonTrigger } from \'@semcore/ui/base-trigger\';\nimport type { ButtonTriggerProps, BaseTriggerProps } from \'@semcore/ui/base-trigger\';\nimport React from \'react\';\n\ntype ButtonTriggerBaseExample = ButtonTriggerProps & BaseTriggerProps;\nconst Demo = (props: ButtonTriggerBaseExample) => (\n  <Flex direction=\'column\' gap={3}>\n    <ButtonTrigger\n      w={150}\n      size={props.size}\n      state={props.state}\n      active={props.active}\n      empty={props.empty}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n      loading={props.loading}\n      chevron={props.chevron}\n      data-test-id=\'active-trigger\'\n    >\n      Button Trigger\n    </ButtonTrigger>\n\n  </Flex>\n);\n\nexport const buttonTriggerBaseExampleProps: ButtonTriggerBaseExample = {\n  size: \'m\',\n  state: undefined,\n  active: undefined,\n  empty: undefined,\n  placeholder: undefined,\n  disabled: undefined,\n  loading: undefined,\n  chevron: undefined,\n};\n\nDemo.defaultProps = buttonTriggerBaseExampleProps;\n\nexport default Demo;\n' },
 };
-
 export const NeighborLocation: StoryObj<typeof buttonTriggerNeighborLocationExampleProps> = {
   render: NeighborLocationExample,
   argTypes: sharedArgTypes,
   args: buttonTriggerNeighborLocationExampleProps,
+  parameters: { sourceCode: 'import { NeighborLocation, Flex } from \'@semcore/ui/base-components\';\nimport { ButtonTrigger } from \'@semcore/ui/base-trigger\';\nimport type { ButtonTriggerProps, BaseTriggerProps } from \'@semcore/ui/base-trigger\';\nimport React from \'react\';\n\ntype ButtonTriggerNeighborLocationExample = ButtonTriggerProps & BaseTriggerProps;\nconst Demo = (props: ButtonTriggerNeighborLocationExample) => (\n  <Flex justifyContent=\'flex-start\'>\n    <NeighborLocation>\n      <ButtonTrigger\n        data-test-id=\'left-location-trigger\'\n        size={props.size}\n        state={props.state}\n        active={props.active}\n        empty={props.empty}\n        placeholder={props.placeholder}\n        disabled={props.disabled}\n        loading={props.loading}\n        chevron={props.chevron}\n      >\n        Left\n      </ButtonTrigger>\n      <ButtonTrigger\n        data-test-id=\'center-location-trigger\'\n        size={props.size}\n        state={props.state}\n        active={props.active}\n        empty={props.empty}\n        placeholder={props.placeholder}\n        disabled={props.disabled}\n        loading={props.loading}\n        chevron={props.chevron}\n      >\n        Center\n      </ButtonTrigger>\n      <ButtonTrigger\n        data-test-id=\'right-location-trigger\'\n        size={props.size}\n        state={props.state}\n        active={props.active}\n        empty={props.empty}\n        placeholder={props.placeholder}\n        disabled={props.disabled}\n        loading={props.loading}\n        chevron={props.chevron}\n      >\n        Right\n      </ButtonTrigger>\n    </NeighborLocation>\n\n  </Flex>\n);\n\nexport const buttonTriggerNeighborLocationExampleProps: ButtonTriggerNeighborLocationExample = {\n  size: \'m\',\n  state: undefined,\n  active: undefined,\n  empty: undefined,\n  placeholder: undefined,\n  disabled: undefined,\n  loading: undefined,\n  chevron: undefined,\n};\n\nDemo.defaultProps = buttonTriggerNeighborLocationExampleProps;\n\nexport default Demo;\n' },
 };
-
 export const Addon: StoryObj<typeof buttonTriggerWithAddonExampleProps> = {
   render: AddonExample,
   argTypes: sharedArgTypes,
   args: buttonTriggerWithAddonExampleProps,
+  parameters: { sourceCode: 'import ThumbUpM from \'@semcore/icon/ThumbUp/m\';\nimport { Flex } from \'@semcore/ui/base-components\';\nimport { ButtonTrigger } from \'@semcore/ui/base-trigger\';\nimport type { ButtonTriggerProps, BaseTriggerProps } from \'@semcore/ui/base-trigger\';\nimport React from \'react\';\n\ntype ButtonTriggerWithAddonExample = ButtonTriggerProps & BaseTriggerProps;\nconst Demo = (props: ButtonTriggerWithAddonExample) => (\n  <Flex gap={2} justifyContent=\'flex-start\'>\n    <ButtonTrigger\n      aria-label=\'base addon\'\n      data-test-id=\'addon-trigger\'\n      size={props.size}\n      state={props.state}\n      active={props.active}\n      empty={props.empty}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n      loading={props.loading}\n      chevron={props.chevron}\n    >\n      <ButtonTrigger.Addon tag={ThumbUpM} />\n    </ButtonTrigger>\n    <ButtonTrigger\n      aria-label=\'base trigger\'\n      data-test-id=\'text-addon-trigger\'\n      size={props.size}\n      state={props.state}\n      active={props.active}\n      empty={props.empty}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n      loading={props.loading}\n      chevron={props.chevron}\n    >\n      <ButtonTrigger.Addon><ThumbUpM /></ButtonTrigger.Addon>\n      <ButtonTrigger.Text>Text</ButtonTrigger.Text>\n    </ButtonTrigger>\n  </Flex>\n);\n\nexport const buttonTriggerWithAddonExampleProps: ButtonTriggerWithAddonExample = {\n  size: \'m\',\n  state: undefined,\n  active: undefined,\n  empty: undefined,\n  placeholder: undefined,\n  disabled: undefined,\n  loading: undefined,\n  chevron: undefined,\n};\n\nDemo.defaultProps = buttonTriggerWithAddonExampleProps;\n\nexport default Demo;\n' },
 };
-
 export const SelectDDMenu: StoryObj<typeof buttonTriggerSelectDDMenuExampleProps> = {
   render: SelectDDMenuExample,
   argTypes: sharedArgTypes,
   args: buttonTriggerSelectDDMenuExampleProps,
+  parameters: { sourceCode: 'import ChevronDownM from \'@semcore/icon/ChevronDown/m\';\nimport { Flex } from \'@semcore/ui/base-components\';\nimport { ButtonTrigger } from \'@semcore/ui/base-trigger\';\nimport type { ButtonTriggerProps, BaseTriggerProps } from \'@semcore/ui/base-trigger\';\nimport Dropdown from \'@semcore/ui/dropdown\';\nimport Select from \'@semcore/ui/select\';\nimport React from \'react\';\n\ntype ButtonTriggerSelectDDMenuExample = ButtonTriggerProps & BaseTriggerProps;\nconst Demo = (props: ButtonTriggerSelectDDMenuExample) => (\n  <Flex direction=\'column\' gap={3}>\n    <Flex gap={2} justifyContent=\'flex-start\'>\n      <Select\n        tag={ButtonTrigger}\n        options={devices}\n        data-test-id=\'base-trigger-as-tag-in-select\'\n        aria-label=\'base addon\'\n        size={props.size}\n        state={props.state}\n        active={props.active}\n        empty={props.empty}\n        placeholder={props.placeholder}\n        disabled={props.disabled}\n        loading={props.loading}\n        chevron={props.chevron}\n      />\n      <Dropdown>\n        <Dropdown.Trigger>\n          <ButtonTrigger\n            aria-label=\'base trigger with dropdown\'\n            data-test-id=\'base-trigger-in-dropdown\'\n            size={props.size}\n            state={props.state}\n            active={props.active}\n            empty={props.empty}\n            placeholder={props.placeholder}\n            disabled={props.disabled}\n            loading={props.loading}\n            chevron={props.chevron}\n          >\n            <ButtonTrigger.Text>ButtonTrigger with dropdown</ButtonTrigger.Text>\n            <ButtonTrigger.Addon>\n              <ChevronDownM />\n            </ButtonTrigger.Addon>\n          </ButtonTrigger>\n        </Dropdown.Trigger>\n      </Dropdown>\n\n    </Flex>\n  </Flex>\n);\n\nconst devices = [\'Desktop\', \'Mobile\', \'Tablet\'].map((item) => ({\n  value: item,\n  children: item,\n}));\n\nexport const buttonTriggerSelectDDMenuExampleProps: ButtonTriggerSelectDDMenuExample = {\n  size: \'m\',\n  state: undefined,\n  active: undefined,\n  empty: undefined,\n  placeholder: undefined,\n  disabled: undefined,\n  loading: undefined,\n  chevron: undefined,\n};\n\nDemo.defaultProps = buttonTriggerSelectDDMenuExampleProps;\n\nexport default Demo;\n' },
 };

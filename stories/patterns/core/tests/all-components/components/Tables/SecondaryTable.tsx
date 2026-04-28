@@ -1,9 +1,16 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import SortDesc from '@semcore/icon/SortDesc/m';
+import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
+
+const parseKd = (kd: string) => {
+  const num = Number(kd);
+  return Number.isFinite(num) ? num : Number.NEGATIVE_INFINITY;
+};
 
 export function SecondaryTable() {
   const urlRef = React.useRef(null);
@@ -15,16 +22,27 @@ export function SecondaryTable() {
     }
   }, []);
 
+  const sortedData = React.useMemo(
+    () => [...data].sort((a, b) => parseKd(b.kd) - parseKd(a.kd)),
+    [],
+  );
+
   return (
     <DataTable
-      data={data}
+      data={sortedData}
       use='secondary'
+      variant='card'
       aria-label='Table title'
       columns={[
         { name: 'keyword', children: 'Keyword' },
         {
           name: 'kd',
-          children: 'KD, %',
+          children: (
+            <Flex alignItems='center' justifyContent='flex-end' gap={1}>
+              KD, %
+              <SortDesc color='icon-secondary-neutral' />
+            </Flex>
+          ),
           gtcWidth: 'minmax(70px, auto)',
           justifyContent: 'flex-end',
         },
@@ -97,6 +115,24 @@ const data = [
     keyword: 'www.ebay.com',
     kd: '10',
     cpc: '$0.65',
+    url: 'https://developer.semrush.com/intergalactic/',
+  },
+  {
+    keyword: 'buy on ebay',
+    kd: '34.1',
+    cpc: '$2.10',
+    url: 'https://www.ebay.com/',
+  },
+  {
+    keyword: 'ebay deals',
+    kd: '58.3',
+    cpc: '$1.80',
+    url: 'https://www.ebay.com/deals',
+  },
+  {
+    keyword: 'semrush intergalactic',
+    kd: '5.7',
+    cpc: '$0.00',
     url: 'https://developer.semrush.com/intergalactic/',
   },
   {

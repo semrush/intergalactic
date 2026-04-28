@@ -4,7 +4,7 @@ import React from 'react';
 
 const ChartExample = () => {
   return (
-    <div style={{ width: '600px', height: '400px', background: '#fff' }} />
+    <div style={{ width: '600px', height: '400px', background: 'var(--intergalactic-bg-primary-neutral)' }} />
   );
 };
 

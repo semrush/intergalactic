@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import BaseExample, { filterTriggerBaseExampleProps } from './examples/filter-trigger/base';
 import SelectExample, { filterTriggerSelectDDMenuExampleProps } from './examples/filter-trigger/select';
 import AddonExample, { filterTriggerWithAddonExampleProps } from './examples/filter-trigger/with-addons';
-
 const sharedArgTypes = {
   size: {
     control: { type: 'select' },
@@ -18,24 +17,22 @@ const sharedArgTypes = {
   placeholder: { control: { type: 'text' } },
   disabled: { control: { type: 'boolean' } },
 } as const;
-
 const meta: Meta = {
   title: 'Components/Base Trigger/Test/Filter Trigger',
 };
 export default meta;
-
 export const Base: StoryObj<typeof filterTriggerBaseExampleProps> = {
   render: BaseExample,
   argTypes: sharedArgTypes,
   args: filterTriggerBaseExampleProps,
+  parameters: { sourceCode: 'import { Flex } from \'@semcore/ui/base-components\';\nimport { FilterTrigger } from \'@semcore/ui/base-trigger\';\nimport type { FilterTriggerProps, BaseTriggerProps } from \'@semcore/ui/base-trigger\';\nimport React from \'react\';\n\ntype FilterTriggerBaseExample = FilterTriggerProps & BaseTriggerProps;\nconst Demo = (props: FilterTriggerBaseExample) => (\n  <Flex direction=\'column\' gap={3}>\n    <FilterTrigger\n      w={150}\n      size={props.size}\n      state={props.state}\n      active={props.active}\n      empty={props.empty}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n      data-test-id=\'active-trigger\'\n    >\n      Button Trigger\n    </FilterTrigger>\n\n    <FilterTrigger\n      w={150}\n      size={props.size}\n      state={props.state}\n      active={props.active}\n      empty={props.empty}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n    >\n      <FilterTrigger.TriggerButton>Clear Text</FilterTrigger.TriggerButton>\n      <FilterTrigger.ClearButton data-test-id=\'tooltip-hint-text\' title=\'Clear text\' />\n    </FilterTrigger>\n\n  </Flex>\n);\n\nexport const filterTriggerBaseExampleProps: FilterTriggerBaseExample = {\n  size: \'m\',\n  state: undefined,\n  active: undefined,\n  empty: undefined,\n  placeholder: undefined,\n  disabled: undefined,\n};\n\nDemo.defaultProps = filterTriggerBaseExampleProps;\n\nexport default Demo;\n' },
 };
-
 export const Addon: StoryObj<typeof filterTriggerWithAddonExampleProps> = {
   render: AddonExample,
   argTypes: sharedArgTypes,
   args: filterTriggerWithAddonExampleProps,
+  parameters: { sourceCode: 'import ThumbUpM from \'@semcore/icon/ThumbUp/m\';\nimport { Flex } from \'@semcore/ui/base-components\';\nimport { FilterTrigger } from \'@semcore/ui/base-trigger\';\nimport type { FilterTriggerProps, BaseTriggerProps } from \'@semcore/ui/base-trigger\';\nimport React from \'react\';\n\ntype FilterTriggerWithAddonExample = FilterTriggerProps & BaseTriggerProps;\nconst Demo = (props: FilterTriggerWithAddonExample) => (\n  <Flex gap={2} justifyContent=\'flex-start\'>\n    <FilterTrigger\n      aria-label=\'base addon\'\n      data-test-id=\'addon-trigger\'\n      size={props.size}\n      state={props.state}\n      active={props.active}\n      empty={props.empty}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n    >\n      <FilterTrigger.Addon tag={ThumbUpM} />\n    </FilterTrigger>\n    <FilterTrigger\n      aria-label=\'base trigger\'\n      data-test-id=\'text-addon-trigger\'\n      size={props.size}\n      state={props.state}\n      active={props.active}\n      empty={props.empty}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n    >\n      <FilterTrigger.Addon><ThumbUpM /></FilterTrigger.Addon>\n      <FilterTrigger.Text>Text</FilterTrigger.Text>\n    </FilterTrigger>\n  </Flex>\n);\n\nexport const filterTriggerWithAddonExampleProps: FilterTriggerWithAddonExample = {\n  size: \'m\',\n  state: undefined,\n  active: undefined,\n  empty: undefined,\n  placeholder: undefined,\n  disabled: undefined,\n};\n\nDemo.defaultProps = filterTriggerWithAddonExampleProps;\n\nexport default Demo;\n' },
 };
-
 export const Select: StoryObj<typeof filterTriggerSelectDDMenuExampleProps> = {
   render: SelectExample,
   argTypes: {
@@ -44,4 +41,5 @@ export const Select: StoryObj<typeof filterTriggerSelectDDMenuExampleProps> = {
     w: { control: { type: 'number' } },
   },
   args: filterTriggerSelectDDMenuExampleProps,
+  parameters: { sourceCode: 'import { Flex } from \'@semcore/ui/base-components\';\nimport { FilterTrigger } from \'@semcore/ui/base-trigger\';\nimport type { FilterTriggerProps, BaseTriggerProps } from \'@semcore/ui/base-trigger\';\nimport Select from \'@semcore/ui/select\';\nimport React from \'react\';\n\ntype FilterTriggerSelectDDMenuExample = FilterTriggerProps &\n  BaseTriggerProps & {\n    ellipsis?: boolean;\n    w?: number;\n  };\n\nconst Demo = (props: FilterTriggerSelectDDMenuExample) => {\n  const { size, state, active, placeholder, disabled, ellipsis, w } = props;\n\n  const [value, setValue] = React.useState<string | null>(null);\n\n  return (\n    <Flex direction=\'column\' gap={3}>\n      <Flex gap={2} justifyContent=\'flex-start\'>\n        <Select\n          value={value}\n          onChange={setValue}\n          data-test-id=\'base-trigger-as-tag-in-select\'\n          aria-label=\'base addon\'\n        >\n          <Select.Trigger\n            tag={FilterTrigger}\n            size={size}\n            state={state}\n            active={active}\n            placeholder={placeholder}\n            disabled={disabled}\n            {...(w ? { wMax: w } : {})}\n          >\n\n            <FilterTrigger.Text\n              ellipsis={ellipsis || undefined}\n              ellipsis:observeChildrenMutations\n              key={value}\n            >\n              {value}\n            </FilterTrigger.Text>\n\n          </Select.Trigger>\n          <Select.Menu aria-label=\'Select device\'>\n            {devices.map((option) => (\n              <Select.Option value={option.value} key={option.value}>\n                {option.children}\n              </Select.Option>\n            ))}\n          </Select.Menu>\n        </Select>\n      </Flex>\n    </Flex>\n  );\n};\n\nconst devices = [\'Desktop\', \'Mobile\', \'Tablet\'].map((item) => ({\n  value: item,\n  children: item,\n}));\n\nexport const filterTriggerSelectDDMenuExampleProps: FilterTriggerSelectDDMenuExample = {\n  size: \'m\',\n  state: undefined,\n  active: undefined,\n  empty: undefined,\n  placeholder: \'Select device\',\n  disabled: undefined,\n  ellipsis: undefined,\n  w: undefined,\n};\n\nDemo.defaultProps = filterTriggerSelectDDMenuExampleProps;\n\nexport default Demo;\n' },
 };
