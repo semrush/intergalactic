@@ -5,11 +5,11 @@ import Badge from '@semcore/ui/badge';
 import type { BoxProps } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import TabLine from '@semcore/ui/tab-line';
-import type { TabLineProps, TabLineItemProps } from '@semcore/ui/tab-line';
+import type { NSTabLine } from '@semcore/ui/tab-line';
 import { Text, type NSText } from '@semcore/ui/typography';
 import React from 'react';
 
-type TabLineDefProps = TabLineProps & BoxProps & TabLineItemProps & {
+type TabLineDefProps = NSTabLine.Props & BoxProps & NSTabLine.Item.Props & {
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
