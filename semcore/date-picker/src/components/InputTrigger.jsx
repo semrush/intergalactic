@@ -313,7 +313,7 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps } =
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, neighborLocation, ...otherProps } =
       this.asProps;
 
     return assignProps(
@@ -341,6 +341,7 @@ class DateRangeRoot extends Component {
       ariaHasPopup,
       inputId: _inputId,
       showError: _showError,
+      neighborLocation,
       ...otherProps
     } = this.asProps;
     const ariaLabel = this.asProps.getI18nText('toDate', {
