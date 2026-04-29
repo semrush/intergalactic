@@ -137,6 +137,7 @@ class SingleDateInputRoot extends Component {
       w: _w,
       ariaHasPopup: _ariaHasPopup,
       showError: _showError,
+      neighborLocation,
       ...otherProps
     } = this.asProps;
 
@@ -312,7 +313,7 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, ...otherProps } =
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, neighborLocation, ...otherProps } =
       this.asProps;
 
     return assignProps(
@@ -340,6 +341,7 @@ class DateRangeRoot extends Component {
       ariaHasPopup,
       inputId: _inputId,
       showError: _showError,
+      neighborLocation,
       ...otherProps
     } = this.asProps;
     const ariaLabel = this.asProps.getI18nText('toDate', {
@@ -829,7 +831,7 @@ function MaskedInput({
     document.body.appendChild(measureSpan);
     for (const string of stringsToMeasure) {
       measureSpan.innerHTML = string;
-      widths.push(measureSpan.offsetWidth);
+      widths.push(Math.ceil(measureSpan.getBoundingClientRect().width));
     }
     measureSpan.remove();
     const maxWidth = Math.max(...widths);
