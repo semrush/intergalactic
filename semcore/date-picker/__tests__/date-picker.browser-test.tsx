@@ -82,6 +82,42 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       });
     });
+
+    test('Verify trigger input width grows after entering date with locale=pt', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@date-picker'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/date-picker/tests/examples/day-trigger.tsx', 'pt', {
+        size: 'm', state: 'normal', disabled: false, neighborLocation: 'right',
+      });
+
+      const inputs = page.locator('input[data-ui-name="DatePicker.Trigger"]');
+      const firstInput = inputs.nth(0);
+      const thirdInput = inputs.nth(2);
+
+      const firstInitialWidth = (await firstInput.boundingBox())!.width;
+      const thirdInitialWidth = (await thirdInput.boundingBox())!.width;
+
+      await firstInput.focus();
+      await page.keyboard.type('15062024');
+
+      await thirdInput.focus();
+      await page.keyboard.type('20072024');
+      await page.keyboard.press('Tab');
+
+      const firstNewWidth = (await firstInput.boundingBox())!.width;
+      const thirdNewWidth = (await thirdInput.boundingBox())!.width;
+
+      expect(firstNewWidth).not.toBe(firstInitialWidth);
+      expect(thirdNewWidth).not.toBe(thirdInitialWidth);
+
+      const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+      screenshotsClip.x -= 8;
+      screenshotsClip.y -= 8;
+      screenshotsClip.width += 16;
+      screenshotsClip.height += 16;
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+    });
   });
 
   test.describe('DayPicker with today button', () => {
