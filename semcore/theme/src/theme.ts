@@ -29,7 +29,7 @@ import {
   L_TEXT_SECONDARY, L_TEXT_SECONDARY_HOVER,
 } from './colors/index.ts';
 
-const { neutral, brand, error, advertising, focus, highlight, info, success, warning } = semanticColors;
+const { neutral, brand, error, advertising, focus, highlight, info, link, success, warning } = semanticColors;
 const { green, violet, blue, pink, gray, red, orange, salad, yellow } = baseColors;
 
 const SCALE_INDENT = 4;
@@ -428,26 +428,26 @@ export const theme: Theme = {
         primary: {
           DEFAULT: {
             value: neutral.opaqueAt(L_TEXT_PRIMARY),
-            description: 'Primary text.',
+            description: 'Default body and UI copy; strongest reading emphasis for primary content.',
           },
           invert: {
-            value: neutral.at(L_INV_TEXT_PRIMARY),
+            value: neutral.opaqueInvAt(L_INV_TEXT_PRIMARY),
             description: 'Inverted version of the primary text.',
           },
         },
         secondary: {
           DEFAULT: {
             value: neutral.opaqueAt(L_TEXT_SECONDARY),
-            description: 'Secondary text.',
+            description: 'Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.',
           },
           invert: {
-            value: neutral.at(L_INV_TEXT_SECONDARY),
+            value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
             description: 'Inverted version of the secondary text.',
           },
         },
         placeholder: {
           value: neutral.opaqueAt(L_TEXT_PLACEHOLDER),
-          description: 'Placeholder text only.',
+          description: 'Placeholder text color for inputs and fields.',
         },
         success: {
           DEFAULT: {
@@ -475,34 +475,34 @@ export const theme: Theme = {
         },
         link: {
           DEFAULT: {
-            value: info.at(L_TEXT_SECONDARY),
-            description: 'Link text.',
+            value: link.at(L_TEXT_SECONDARY),
+            description: 'Default interactive link color for unfollowed links.',
           },
           hover: {
             active: {
-              value: info.at(L_TEXT_SECONDARY_HOVER),
+              value: link.at(L_TEXT_SECONDARY_HOVER),
               description: 'Hover and active states for the link text.',
             },
           },
           invert: {
             DEFAULT: {
-              value: info.at(L_INV_TEXT_SECONDARY),
+              value: link.at(L_INV_TEXT_SECONDARY),
               description: 'Inverted version of the link text. Use on dark background only.',
             },
             hover: {
-              value: info.at(L_INV_TEXT_SECONDARY_HOVER),
+              value: link.at(L_INV_TEXT_SECONDARY_HOVER),
               description: 'Hover and active states of the inverted version of the link text. Use on dark background only.',
             },
           },
           visited: {
             value: violet.at(L_TEXT_SECONDARY),
-            description: 'Visited link text.',
+            description: 'Visited link state so users can tell visited destinations apart from default links.',
           },
         },
         hint: {
           DEFAULT: {
             value: neutral.opaqueAt(L_TEXT_SECONDARY),
-            description: 'Hint link text.',
+            description: 'Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.',
           },
           hover: {
             active: {
@@ -567,14 +567,14 @@ export const theme: Theme = {
         },
         advertising: {
           value: advertising.at(L_TEXT_PRIMARY),
-          description: 'Advertising text.',
+          description: 'Promotional or sponsored emphasis (ads, marketing callouts)—use sparingly so it stays noticeable.',
         },
       },
       border: {
         primary: {
           DEFAULT: {
             value: neutral.opaqueAt(L_BORDER_PRIMARY),
-            description: 'Neutral primary border.',
+            description: 'Default stroke for interactive controls and structured surfaces.',
           },
           invert: {
             value: neutral.opaqueInvAt(L_INV_BORDER_PRIMARY),
@@ -584,7 +584,7 @@ export const theme: Theme = {
         secondary: {
           DEFAULT: {
             value: neutral.opaqueAt(L_BORDER_SECONDARY),
-            description: 'Subtle secondary border.',
+            description: 'Secondary hairline stroke for grids, cards, and subtle dividers.',
           },
           invert: {
             value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
@@ -845,12 +845,12 @@ export const theme: Theme = {
           neutral: {
             DEFAULT: {
               value: neutral.opaqueAt(L_ICON_PRIMARY),
-              description: 'Primary neutral icon.',
+              description: 'Default icon weight on normal backgrounds—stronger emphasis than secondary icons.',
             },
             hover: {
               active: {
                 value: neutral.opaqueAt(L_ICON_PRIMARY_HOVER),
-                description: 'Hover and active (selected) states of the primary neutral icon.',
+                description: 'Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.',
               },
             },
           },
@@ -862,43 +862,43 @@ export const theme: Theme = {
             hover: {
               active: {
                 value: info.opaqueAt(L_ICON_PRIMARY_HOVER),
-                description: 'Hover and active (selected) states of the primary link-lookalike icon.',
+                description: 'Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.',
               },
             },
           },
           success: {
             DEFAULT: {
               value: success.opaqueAt(L_ICON_PRIMARY),
-              description: 'Primary success icon.',
+              description: 'Semantic success icon.',
             },
             hover: {
               active: {
                 value: success.opaqueAt(L_ICON_PRIMARY_HOVER),
-                description: 'Hover and active (selected) states of the primary successful icon.',
+                description: 'Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.',
               },
             },
           },
           critical: {
             DEFAULT: {
               value: error.opaqueAt(L_ICON_PRIMARY),
-              description: 'Primary critical icon.',
+              description: 'Semantic error icon.',
             },
             hover: {
               active: {
                 value: error.opaqueAt(L_ICON_PRIMARY_HOVER),
-                description: 'Hover and active (selected) states of the primary critical icon.',
+                description: 'Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.',
               },
             },
           },
           warning: {
             DEFAULT: {
               value: warning.opaqueAt(L_ICON_PRIMARY + 0.15),
-              description: 'Primary warning icon.',
+              description: 'Semantic warning icon.',
             },
             hover: {
               active: {
                 value: warning.opaqueAt(L_ICON_PRIMARY_HOVER),
-                description: 'Hover and active (selected) states of the primary warning icon.',
+                description: 'Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.',
               },
             },
           },
@@ -919,12 +919,12 @@ export const theme: Theme = {
           neutral: {
             DEFAULT: {
               value: neutral.opaqueAt(L_ICON_SECONDARY),
-              description: 'Secondary neutral icon.',
+              description: 'De-emphasized icons for dense layouts (tables, tertiary actions).',
             },
             hover: {
               active: {
                 value: neutral.opaqueAt(L_ICON_SECONDARY_HOVER),
-                description: 'Hover and active (selected) states of the secondary neutral icon.',
+                description: 'Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.',
               },
             },
           },
@@ -936,43 +936,43 @@ export const theme: Theme = {
             hover: {
               active: {
                 value: info.at(L_ICON_SECONDARY_HOVER),
-                description: 'Hover and active (selected) states of the secondary link-lookalike icon.',
+                description: 'Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color.',
               },
             },
           },
           success: {
             DEFAULT: {
               value: success.opaqueAt(L_ICON_SECONDARY),
-              description: 'Secondary success icon.',
+              description: 'Softer success icon for dense UI or inline hints where the surface should stay calm.',
             },
             hover: {
               active: {
                 value: success.opaqueAt(L_ICON_SECONDARY_HOVER),
-                description: 'Hover and active (selected) states of the secondary successful icon.',
+                description: 'Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.',
               },
             },
           },
           critical: {
             DEFAULT: {
               value: error.opaqueAt(L_ICON_SECONDARY),
-              description: 'Secondary critical icon.',
+              description: 'Softer error icon for dense UI or inline hints where the surface should stay calm.',
             },
             hover: {
               active: {
                 value: error.opaqueAt(L_ICON_SECONDARY_HOVER),
-                description: 'Hover and active (selected) states of the secondary critical icon.',
+                description: 'Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color.',
               },
             },
           },
           warning: {
             DEFAULT: {
               value: warning.opaqueAt(L_ICON_SECONDARY),
-              description: 'Secondary warning icon.',
+              description: 'Softer warning icon for dense UI or inline hints where the surface should stay calm.',
             },
             hover: {
               active: {
                 value: warning.opaqueAt(L_ICON_SECONDARY_HOVER),
-                description: 'Hover and active (selected) states of the secondary warning icon.',
+                description: 'Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.',
               },
             },
           },
@@ -1103,29 +1103,29 @@ export const theme: Theme = {
           bg: {
             DEFAULT: {
               value: '{semanticTokens.colors.bg.primary.highlight}',
-              description: 'Color of the FeaturePopover background with accent theme.',
+              description: 'Color of the outer border of the FeaturePopover.Spot.',
             },
             neutral: {
               value: neutral.at(L_INV_BG_PRIMARY),
-              description: 'Color of the FeaturePopover background with neutral theme.',
+              description: 'Color of the outer border of the FeaturePopover.Spot.',
             },
           },
           dot: {
             outer: {
               border: {
                 value: '{semanticTokens.colors.bg.primary.highlight}',
-                description: 'Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme.',
+                description: 'Color of the outer border of the FeaturePopover.Spot.',
               },
             },
             neutral: {
               DEFAULT: {
                 value: '{semanticTokens.colors.bg.primary.highlight}',
-                description: 'Color of the FeaturePopover.Spot for FeaturePopover with neutral theme.',
+                description: 'Color of the outer border of the FeaturePopover.Spot.',
               },
               outer: {
                 border: {
                   value: '{semanticTokens.colors.feature.popover.dot.neutral}',
-                  description: 'Color of the outer border of the FeaturePopover.Spot for FeaturePopover with neutral theme.',
+                  description: 'Color of the outer border of the FeaturePopover.Spot.',
                 },
               },
             },
@@ -1233,7 +1233,7 @@ export const theme: Theme = {
             },
             accordion: {
               value: neutral.at(L_BG_PRIMARY),
-              description: 'Background of the cell inside an Accordion in the Table.',
+              description: 'Background of the cell used for Accordion or actions row, in the Table.',
             },
             selected: {
               DEFAULT: {
@@ -1297,35 +1297,35 @@ export const theme: Theme = {
       brand: {
         primary: {
           value: violet.at(0.74),
-          description: 'Primary brand color.',
+          description: 'Primary brand accent for logos and co-branded surfaces.',
         },
         secondary: {
           value: gray.at(0.22),
-          description: 'Secondary brand color.',
+          description: 'Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).',
         },
         pinterest: {
           value: '#bd081c',
-          description: 'Pinterest brand color.',
+          description: 'Official Pinterest brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
         },
         instagram: {
           value: '#e4405f',
-          description: 'Instagram brand color.',
+          description: 'Official Instagram brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
         },
         youtube: {
           value: '#ff0000',
-          description: 'Youtube brand color.',
+          description: 'Official YouTube brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
         },
         facebook: {
           value: '#1877f2',
-          description: 'Facebook brand color.',
+          description: 'Official Facebook brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
         },
         linkedIn: {
           value: '#0a66c2',
-          description: 'LinkedIn brand color.',
+          description: 'Official LinkedIn brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
         },
         twitter: {
           value: '#1d9bf0',
-          description: 'Twitter brand color.',
+          description: 'Official Twitter brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
         },
         google: {
           blue: {
@@ -1339,7 +1339,7 @@ export const theme: Theme = {
           my: {
             business: {
               value: '#1a73e8',
-              description: 'Google My Business brand color.',
+              description: 'Official Google My Business brand fill for logos and icons in approved placements; follow Google brand guidelines for size and clear space.',
             },
           },
         },
@@ -1364,7 +1364,7 @@ export const theme: Theme = {
           },
           invert: {
             outline: {
-              value: 'oklch(from var(--white) l c h / 0.7)',
+              value: 'oklch(1 0 0 / 0.7)',
               description: 'Color for keyboard focus outline styles to use on the dark and color background.',
             },
           },
@@ -1407,7 +1407,7 @@ export const theme: Theme = {
       neighbor: {
         location: {
           neutral: {
-            value: 'oklch(from var(--white) l c h / 0.5)',
+            value: 'oklch(1 0 0 / 0.5)',
             description: 'Neutral border of the components that are combined with neighbor-location property.',
           },
           invert: {
@@ -1420,38 +1420,42 @@ export const theme: Theme = {
         area: {
           shadow: {
             left: {
-              value: 'linear-gradient(to right, oklch(0 0 0 / 0.08) 0%, transparent 100%)',
+              value:
+                'linear-gradient(to right, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
               description: 'Left-to-right fade shadow for the ScrollArea.',
             },
             right: {
-              value: 'linear-gradient(to left, oklch(0 0 0 / 0.08) 0%, transparent 100%)',
+              value:
+                'linear-gradient(to left, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
               description: 'Right-to-left fade shadow for the ScrollArea.',
             },
             top: {
-              value: 'linear-gradient(to bottom, oklch(0 0 0 / 0.08) 0%, transparent 100%)',
+              value:
+                'linear-gradient(to bottom, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
               description: 'Top-to-bottom fade shadow for the ScrollArea.',
             },
             bottom: {
-              value: 'linear-gradient(to top, oklch(0 0 0 / 0.08) 0%, transparent 100%)',
+              value:
+                'linear-gradient(to top, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
               description: 'Bottom-to-top fade shadow for the ScrollArea.',
             },
           },
           dropdown: {
             menu: {
               left: {
-                value: 'linear-gradient(to right, oklch(1 0 0) 0%, transparent 100%)',
+                value: 'linear-gradient(to right, var(--white) 34.38%, transparent 100%)',
                 description: 'Left-to-right fade shadow for the ScrollArea inside the DropdownMenu.',
               },
               right: {
-                value: 'linear-gradient(to left, oklch(1 0 0) 0%, transparent 100%)',
+                value: 'linear-gradient(to left, var(--white) 34.38%, transparent 100%)',
                 description: 'Right-to-left fade shadow for the ScrollArea inside the DropdownMenu.',
               },
               bottom: {
-                value: 'linear-gradient(to top, oklch(1 0 0) 0%, transparent 100%)',
+                value: 'linear-gradient(to top, var(--white) 34.38%, transparent 100%)',
                 description: 'Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu.',
               },
               top: {
-                value: 'linear-gradient(to bottom, oklch(1 0 0) 0%, transparent 100%)',
+                value: 'linear-gradient(to bottom, var(--white) 34.38%, transparent 100%)',
                 description: 'Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.',
               },
             },
@@ -1468,120 +1472,120 @@ export const theme: Theme = {
         primary: {
           gray: {
             normal: {
-              value: 'rgba(69, 70, 81, 1)',
-              description: 'Gray background color for the primary tag.',
+              value: '#ecedec',
+              description: 'Gray background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.2 opacity on the white background underneath.',
             },
             hover: {
               active: {
-                value: '#e0e1e9',
-                description: 'Gray background color for the hover and active states of the primary tag.',
+                value: '#e2e3e2',
+                description: 'Gray background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.3 opacity on the white background underneath.',
               },
             },
             text: {
-              value: '#f4f5f9',
+              value: '#6a6c6a',
               description: 'Gray text for the primary gray tag.',
             },
           },
           blue: {
             normal: {
-              value: 'rgba(7, 77, 141, 1)',
-              description: 'Blue background color for primary tag.',
+              value: '#e7e5ff',
+              description: 'Blue background color for primary tag. It’s built with CSS filter brightness(150%) that was applied to blue-500 color with 0.2 opacity on the white background underneath.',
             },
             hover: {
               active: {
-                value: '#c4e5fe',
-                description: 'Blue background color for the hover and active states of the primary tag.',
+                value: '#dcd8ff',
+                description: 'Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. ',
               },
             },
             text: {
-              value: '#e9f7ff',
+              value: '#5c53d9',
               description: 'Blue text for the primary blue tag.',
             },
           },
           green: {
             normal: {
-              value: 'rgba(9, 99, 82, 1)',
-              description: 'Green background color for the primary tag.',
+              value: '#ccf4e8',
+              description: 'Green background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.2 opacity on the white background underneath.',
             },
             hover: {
               active: {
-                value: '#9ef2c9',
-                description: 'Green background color for the hover and active states of the primary tag.',
+                value: '#b3eedd',
+                description: 'Green background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.3 opacity on the white background underneath.',
               },
             },
             text: {
-              value: '#dbfee8',
+              value: '#00845f',
               description: 'Green text for the primary green tag.',
             },
           },
           orange: {
             normal: {
-              value: 'rgba(156, 49, 11, 1)',
-              description: 'Orange background color for the primary tag.',
+              value: '#ffdecc',
+              description: 'Orange background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.2 opacity on the white background underneath.',
             },
             hover: {
               active: {
-                value: '#ffdca2',
-                description: 'Orange background color for the hover and active states of the primary tag.',
+                value: '#ffceb3',
+                description: 'Orange background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.3 opacity on the white background underneath.',
               },
             },
             text: {
-              value: '#fff3d9',
+              value: '#b83c00',
               description: 'Orange text for the primary orange tag.',
             },
           },
           red: {
             normal: {
-              value: 'rgba(160, 13, 42, 1)',
-              description: 'Red background color for the primary tag.',
+              value: '#ffd3d4',
+              description: 'Red background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.2 opacity on the white background underneath.',
             },
             hover: {
               active: {
-                value: '#ffd7df',
-                description: 'Red background color for the hover and active states of the primary tag.',
+                value: '#ffbdbf',
+                description: 'Red background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.3 opacity on the white background underneath.',
               },
             },
             text: {
-              value: '#fff0f7',
+              value: '#c7161b',
               description: 'Red text for the primary red tag.',
             },
           },
           violet: {
             normal: {
-              value: 'rgba(95, 62, 157, 1)',
-              description: 'Violet background color for the primary tag.',
+              value: '#f2d8ff',
+              description: 'Violet background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.2 opacity on the white background underneath.',
             },
             hover: {
               active: {
-                value: '#edd9ff',
-                description: 'Violet background color for the hover and active states of the primary tag.',
+                value: '#ecc5ff',
+                description: 'Violet background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.3 opacity on the white background underneath.',
               },
             },
             text: {
-              value: 'rgba(244, 245, 249, 1)',
+              value: '#8029ec',
               description: 'Violet text for the primary violet tag.',
             },
           },
           yellow: {
             normal: {
-              value: 'rgba(252, 224, 129, 0.5)',
-              description: 'Yellow background color for the primary tag.',
+              value: '#fde5cc',
+              description: 'Yellow background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.2 opacity on the white background underneath.',
             },
             hover: {
               active: {
-                value: '#fce081',
-                description: 'Yellow background color for the hover and active states of the primary tag.',
+                value: '#fcd8b3',
+                description: 'Yellow background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.3 opacity on the white background underneath.',
               },
             },
             text: {
-              value: '#a75800',
+              value: '#a35400',
               description: 'Yellow text for the primary yellow tag.',
             },
           },
           white: {
             normal: {
               value: 'rgba(255, 255, 255, 0.15)',
-              description: 'Primary white tag.',
+              description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
             },
             hover: {
               active: {
@@ -1602,14 +1606,14 @@ export const theme: Theme = {
           },
           hover: {
             active: {
-              value: '#f4f5f9',
+              value: '#f4f5f5',
               description: 'Hover and active (selected) states of the background color for the default secondary tag.',
             },
           },
           white: {
             normal: {
               value: 'rgba(255, 255, 255, 0)',
-              description: 'White secondary tag.',
+              description: 'Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.',
             },
             hover: {
               active: {
@@ -1624,7 +1628,7 @@ export const theme: Theme = {
           },
           gray: {
             text: {
-              value: '#6c6e79',
+              value: '#6a6c6a',
               description: 'Gray text for the default secondary tag.',
             },
           },
@@ -1638,11 +1642,11 @@ export const theme: Theme = {
               description: '1 color in the default list of colors for charts.',
             },
             2: {
-              value: 'var(--violet-300)',
+              value: 'var(--green-200)',
               description: '2 color in the default list of colors for charts.',
             },
             3: {
-              value: 'var(--green-200)',
+              value: 'var(--violet-300)',
               description: '3 color in the default list of colors for charts.',
             },
             4: {
@@ -1650,59 +1654,59 @@ export const theme: Theme = {
               description: '4 color in the default list of colors for charts.',
             },
             5: {
-              value: 'var(--blue-300)',
+              value: 'var(--red-300)',
               description: '5 color in the default list of colors for charts.',
             },
             6: {
-              value: 'var(--salad-200)',
+              value: 'var(--blue-300)',
               description: '6 color in the default list of colors for charts.',
             },
             7: {
-              value: 'var(--red-300)',
+              value: 'var(--pink-300)',
               description: '7 color in the default list of colors for charts.',
             },
             8: {
-              value: 'var(--green-400)',
+              value: 'var(--salad-200)',
               description: '8 color in the default list of colors for charts.',
             },
             9: {
-              value: 'var(--violet-200)',
+              value: 'var(--blue-500)',
               description: '9 color in the default list of colors for charts.',
             },
             10: {
-              value: 'var(--yellow-300)',
+              value: 'var(--green-300)',
               description: '10 color in the default list of colors for charts.',
             },
             11: {
-              value: 'var(--red-400)',
+              value: 'var(--yellow-300)',
               description: '11 color in the default list of colors for charts.',
             },
             12: {
-              value: 'var(--salad-300)',
+              value: 'var(--pink-200)',
               description: '12 color in the default list of colors for charts.',
             },
             13: {
-              value: 'var(--blue-200)',
+              value: 'var(--salad-400)',
               description: '13 color in the default list of colors for charts.',
             },
             14: {
-              value: 'var(--pink-400)',
+              value: 'var(--violet-200)',
               description: '14 color in the default list of colors for charts.',
             },
             15: {
-              value: 'var(--green-300)',
+              value: 'var(--red-400)',
               description: '15 color in the default list of colors for charts.',
             },
             16: {
-              value: 'var(--violet-400)',
+              value: 'var(--green-400)',
               description: '16 color in the default list of colors for charts.',
             },
             17: {
-              value: 'var(--blue-500)',
+              value: 'var(--blue-200)',
               description: '17 color in the default list of colors for charts.',
             },
             18: {
-              value: 'var(--pink-300)',
+              value: 'var(--salad-300)',
               description: '18 color in the default list of colors for charts.',
             },
             19: {
@@ -1714,43 +1718,43 @@ export const theme: Theme = {
               description: '20 color in the default list of colors for charts.',
             },
             21: {
-              value: 'var(--salad-400)',
+              value: 'var(--yellow-500)',
               description: '21 color in the default list of colors for charts.',
             },
             22: {
-              value: 'var(--yellow-500)',
+              value: 'var(--violet-400)',
               description: '22 color in the default list of colors for charts.',
             },
             23: {
-              value: 'var(--pink-200)',
+              value: 'var(--pink-400)',
               description: '23 color in the default list of colors for charts.',
             },
             24: {
-              value: 'var(--green-500)',
+              value: 'var(--salad-500)',
               description: '24 color in the default list of colors for charts.',
             },
             total: {
               amount: {
                 value: 'var(--gray-400)',
-                description: 'Use it to show total value.',
+                description: 'Use it to show total value on the chart.',
               },
             },
             other: {
               data: {
                 value: 'var(--gray-200)',
-                description: 'Use it to indicate voids, missing or some other data.',
+                description: 'Use it to indicate voids, missing or some other data on the chart.',
               },
             },
             null: {
               value: 'var(--gray-100)',
-              description: 'Use it to show null value.',
+              description: 'Use it to show null value on the chart.',
             },
           },
         },
         grid: {
           line: {
             value: neutral.at(L_BORDER_SECONDARY),
-            description: 'Default chart grid line.',
+            description: 'Grid and axis guide lines for charts.',
           },
           x: {
             axis: {
@@ -1841,25 +1845,31 @@ export const theme: Theme = {
         nav: {
           control: {
             hover: {
-              value: 'rgba(224, 225, 233, 0.7)',
+              value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
+              description: 'Sidebar navigation row hover background.',
             },
             active: {
-              value: '#E2DDFF',
+              value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
+              description: 'Sidebar navigation row active background.',
             },
             text: {
               normal: {
-                value: '#6D619F',
+                value: neutral.at(L_TEXT_SECONDARY),
+                description: 'Sidebar navigation label color.',
               },
               active: {
-                value: '#4D407E',
+                value: neutral.at(L_TEXT_PRIMARY),
+                description: 'Sidebar navigation label color for the active item.',
               },
             },
             icon: {
               normal: {
-                value: '#9083C5',
+                value: neutral.at(L_ICON_PRIMARY),
+                description: 'Sidebar navigation icon color.',
               },
               active: {
-                value: '#4D407E',
+                value: neutral.at(L_ICON_PRIMARY_HOVER),
+                description: 'Sidebar navigation icon color for the active item.',
               },
             },
           },
@@ -1873,7 +1883,7 @@ export const theme: Theme = {
           },
           hover: {
             active: {
-              value: neutral.at(L_ICON_SECONDARY_HOVER),
+              value: highlight.at(L_ICON_SECONDARY_HOVER),
               description: 'Icon color for the SliderRating component in its hovered and active states.',
             },
           },
@@ -1882,8 +1892,8 @@ export const theme: Theme = {
     },
     opacity: {
       disabled: {
-        value: '0.3',
-        description: 'Use for the disabled state of all kind of the controls and elements.',
+        value: '0.4',
+        description: 'Use for adding opacity to elements and controls in disabled state.',
       },
     },
     shadows: {
@@ -1969,7 +1979,7 @@ export const theme: Theme = {
       },
       'badge': {
         value: '{baseTokens.radii.medium}',
-        description: 'Use for rounding Badge.',
+        description: 'Corner radius for Badge and compact status chips—aligned with small rounded controls.',
       },
       'chart': {
         value: '{baseTokens.radii.extra-small}',
@@ -1977,15 +1987,15 @@ export const theme: Theme = {
       },
       'counter': {
         value: '{baseTokens.radii.large}',
-        description: 'Use for rounding Counter.',
+        description: 'Rounding for counter/numeric capsules used as small indicators.',
       },
       'tag': {
         value: '{baseTokens.radii.extra-large}',
-        description: 'Use for rounding Tag.',
+        description: 'Corner radius for Tag (including removable tags) in dense UI.',
       },
       'switch': {
         value: '{baseTokens.radii.extra-large}',
-        description: 'Use for rounding Switch.',
+        description: 'Pill-shaped rounding for Switch geometry (full rounded track/thumb pattern).',
       },
       'control': {
         value: '{baseTokens.radii.medium}',

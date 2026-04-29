@@ -1,6 +1,19 @@
 import { ColorScale } from './ColorScale.ts';
 
-const colorNames = ['gray', 'red', 'orange', 'yellow', 'salad', 'green', 'blue', 'violet', 'violet-dusty', 'pink'] as const;
+const colorNames = [
+  'gray',
+  'mint',
+  'red',
+  'orange',
+  'yellow',
+  'salad',
+  'green',
+  'blue',
+  'blueIndigo',
+  'violet',
+  'violetDusty',
+  'pink',
+] as const;
 const lightnessNames = [50, 75, 100, 200, 300, 400, 450, 500, 600, 700, 800] as const;
 
 export type Colors = typeof colorNames[number];
@@ -9,12 +22,12 @@ export type Lightness = typeof lightnessNames[number];
 // =============================================================================
 // Base color scales
 export const baseColors: Record<Colors, ColorScale> = {
-  'gray': new ColorScale(['oklch(0.94 0.002 180)', 'oklch(0.40 0.004 140)', 'oklch(0.22 0.01 140)'], 'p3'),
-  'violet-dusty': new ColorScale(
-    ['oklch(0.94 0.003 180)', 'oklch(0.40 0.008 140)', 'oklch(0.22 0.02 140)'],
-    'p3', // Need to convert mint name to violet-dusty for the final CSS
+  gray: new ColorScale(['oklch(0.94 0.002 180)', 'oklch(0.40 0.004 140)', 'oklch(0.22 0.01 140)'], 'p3'),
+  mint: new ColorScale(
+    ['oklch(0.935 0.019 184.9)', 'oklch(0.736 0.036 189.338)', 'oklch(0.4 0.032 189.338)'],
+    'p3',
   ),
-  'red': new ColorScale(
+  red: new ColorScale(
     [
       'oklch(0.98 0.02 5)',
       'oklch(0.90 0.07 13)',
@@ -26,7 +39,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  'orange': new ColorScale(
+  orange: new ColorScale(
     [
       'oklch(0.99 0.02 88)',
       'oklch(0.88 0.13 68)',
@@ -38,7 +51,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  'yellow': new ColorScale(
+  yellow: new ColorScale(
     [
       'oklch(0.99 0.05 110)',
       'oklch(0.90 0.13 92)',
@@ -50,7 +63,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  'salad': new ColorScale(
+  salad: new ColorScale(
     [
       'oklch(0.98 0.04 124)',
       'oklch(0.90 0.12 136)',
@@ -61,7 +74,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  'green': new ColorScale(
+  green: new ColorScale(
     [
       'oklch(0.99 0.03 182)',
       'oklch(0.90 0.11 175)',
@@ -72,19 +85,48 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  'blue': new ColorScale(['oklch(0.64 0.18 278)', 'oklch(0.54 0.2 278)', 'oklch(0.22 0.12 278)'], 'p3'),
-  'violet': new ColorScale(['oklch(0.74 0.17 303)', 'oklch(0.55 0.27 296)'], 'p3'),
-  'pink': new ColorScale(['oklch(0.90 0.10 330)', 'oklch(0.82 0.18 330)', 'oklch(0.66 0.27 330)'], 'p3'),
+  blue: new ColorScale(
+    [
+      'oklch(0.74 0.14 280)',
+      'oklch(0.64 0.18 280)',
+      'oklch(0.54 0.2 280)',
+      'oklch(0.38 0.15 280)',
+      'oklch(0.22 0.12 280)',
+    ],
+    'p3',
+  ),
+  blueIndigo: new ColorScale(
+    [
+      'oklch(0.861 0.068 266.551)',
+      'oklch(0.703 0.154 265.122)',
+      'oklch(0.575 0.232 263.373)',
+    ],
+    'p3',
+  ),
+  violet: new ColorScale(['oklch(0.74 0.17 303)', 'oklch(0.55 0.27 296)'], 'p3'),
+  violetDusty: new ColorScale(
+    [
+      'oklch(0.74 0.14 280)',
+      'oklch(0.64 0.18 280)',
+      'oklch(0.54 0.2 280)',
+      'oklch(0.38 0.15 280)',
+      'oklch(0.22 0.12 280)',
+    ],
+    'p3',
+  ),
+  pink: new ColorScale(['oklch(0.90 0.10 330)', 'oklch(0.82 0.18 330)', 'oklch(0.66 0.27 330)'], 'p3'),
 };
 
 // =============================================================================
 // Semantic color scales
+// Maybe other name instead of 'link'?
 export const semanticColors = {
   neutral: baseColors.gray,
   success: baseColors.green,
   error: baseColors.red,
   warning: baseColors.orange,
   info: baseColors.blue,
+  link: baseColors.blueIndigo,
   focus: baseColors.blue,
   advertising: baseColors.violet,
   highlight: baseColors.violet,
@@ -136,13 +178,13 @@ export const colors = colorNames.reduce<Record<Colors, typeof initLightnessMap>>
 
 /** Primary bg */
 export const L_BG_PRIMARY = 1;
-export const L_BG_PRIMARY_HOVER = 0.96;
-export const L_BG_PRIMARY_ACTIVE = 0.96;
+export const L_BG_PRIMARY_HOVER = 0.98;
+export const L_BG_PRIMARY_ACTIVE = 0.97;
 
 /** Secondary bg */
 export const L_BG_SECONDARY = 0.98;
 export const L_BG_SECONDARY_HOVER = 0.96;
-export const L_BG_SECONDARY_ACTIVE = 0.93;
+export const L_BG_SECONDARY_ACTIVE = 0.94;
 
 /** Selected bg */
 export const L_BG_SELECTED = 0.96;
@@ -169,7 +211,7 @@ export const L_BG_BUTTON_STRONG_ACTIVE = 0;
 export const L_TEXT_PRIMARY = 0.23;
 /** Text secondary    | ⚠️ APCA 60+ on secondary bg ?? */
 export const L_TEXT_SECONDARY = 0.53;
-export const L_TEXT_SECONDARY_HOVER = 0.4;
+export const L_TEXT_SECONDARY_HOVER = 0.51;
 /** Text placeholder  | ⚠️ APCA 30+ on secondary bg */
 export const L_TEXT_PLACEHOLDER = 0.64;
 
@@ -179,8 +221,8 @@ export const L_ICON_NON_INTERACTIVE = 0.6;
 export const L_ICON_PRIMARY = 0.58;
 export const L_ICON_PRIMARY_HOVER = 0.53; // Delete with minor
 /** Icon secondary    | ⚠️ APCA 30+ on secondary bg */
-export const L_ICON_SECONDARY = 0.78;
-export const L_ICON_SECONDARY_HOVER = 0.74; // Delete with minor
+export const L_ICON_SECONDARY = 0.7;
+export const L_ICON_SECONDARY_HOVER = 0.66; // Delete with minor
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
 export const L_BORDER_PRIMARY = 0.88; // inputs, buttons, table header, tab-line, divider
@@ -217,20 +259,16 @@ export const L_INV_BG_LIGHT = 0.45;
 export const L_INV_BG_MEDIUM = 0.56;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
-export const L_INV_TEXT_PRIMARY = 1;
+export const L_INV_TEXT_PRIMARY = 0.96;
 /** Text secondary    | ⚠️ APCA 60+ on secondary bg ?? */
 export const L_INV_TEXT_SECONDARY = 0.75;
 export const L_INV_TEXT_SECONDARY_HOVER = 0.85;
 
 /** Icon primary    | ⚠️ APCA 60+ on secondary bg */
-export const L_INV_ICON_PRIMARY = 0.7;
-export const L_INV_ICON_PRIMARY_HOVER = 0.65;
+export const L_INV_ICON_PRIMARY = 0.85;
+export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
-export const L_INV_BORDER_PRIMARY = 0.6; // inputs, buttons, table header
+export const L_INV_BORDER_PRIMARY = 0.5; // inputs, buttons, table header
 /** Border secondary */
-export const L_INV_BORDER_SECONDARY = 0.7;
-/** Border active */
-export const L_INV_BORDER_ACTIVE = 0.7;
-/** Border focus      | ⚠️ APCA 30 on secondary bg */
-export const L_INV_BORDER_FOCUS = 0.75;
+export const L_INV_BORDER_SECONDARY = 0.48;
