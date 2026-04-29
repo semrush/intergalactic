@@ -144,60 +144,62 @@ export const theme: Theme = {
         description: 'Compact letter spacing.',
       },
     },
-    spacing: {
-      'scale-indent': {
+    scale: {
+      indent: {
         value: `${SCALE_INDENT}px`,
         description: 'Base denominator of the design system.',
       },
-      '05x': {
+    },
+    spacing: {
+      '05': {
         value: `${SCALE_INDENT / 2}px`,
         description: '2px',
       },
-      '1x': {
+      '1': {
         value: `${SCALE_INDENT}px`,
         description: '4px',
       },
-      '2x': {
+      '2': {
         value: `${SCALE_INDENT * 2}px`,
         description: '8px',
       },
-      '3x': {
+      '3': {
         value: `${SCALE_INDENT * 3}px`,
         description: '12px',
       },
-      '4x': {
+      '4': {
         value: `${SCALE_INDENT * 4}px`,
         description: '16px',
       },
-      '5x': {
+      '5': {
         value: `${SCALE_INDENT * 5}px`,
         description: '20px',
       },
-      '6x': {
+      '6': {
         value: `${SCALE_INDENT * 6}px`,
         description: '24px',
       },
-      '8x': {
+      '8': {
         value: `${SCALE_INDENT * 8}px`,
         description: '32px',
       },
-      '10x': {
+      '10': {
         value: `${SCALE_INDENT * 10}px`,
         description: '40px',
       },
-      '14x': {
+      '14': {
         value: `${SCALE_INDENT * 14}px`,
         description: '56px',
       },
-      '20x': {
+      '20': {
         value: `${SCALE_INDENT * 20}px`,
         description: '80px',
       },
-      '24x': {
+      '24': {
         value: `${SCALE_INDENT * 24}px`,
         description: '96px',
       },
-      '30x': {
+      '30': {
         value: `${SCALE_INDENT * 30}px`,
         description: '120px',
       },
@@ -1946,15 +1948,15 @@ export const theme: Theme = {
       form: {
         control: {
           s: {
-            value: 'calc({baseTokens.spacing.scale-indent} * 5)',
+            value: `${SCALE_INDENT * 5}px`,
             description: 'Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions.',
           },
           m: {
-            value: 'calc({baseTokens.spacing.scale-indent} * 7)',
+            value: `${SCALE_INDENT * 7}px`,
             description: 'Default size of the controls.',
           },
           l: {
-            value: 'calc({baseTokens.spacing.scale-indent} * 10)',
+            value: `${SCALE_INDENT * 10}px`,
             description: 'Large size of the controls.',
           },
         },
@@ -2147,7 +2149,7 @@ export const theme: Theme = {
 type FontSize = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
 type LineHeight = '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
-type Spacing = '05x' | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '8x' | '10x' | '14x' | '20x' | '24x' | '30x';
+type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
@@ -2170,9 +2172,8 @@ export type BaseTokens = {
   lineHeights: Record<LineHeight, Value>;
   fontWeights: Record<FontWeight, Value>;
   letterSpacings: { compact: Value };
-  spacing: {
-    'scale-indent': Value;
-  } & Record<Spacing, Value>;
+  scale: { indent: Value };
+  spacing: Record<Spacing, Value>;
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;

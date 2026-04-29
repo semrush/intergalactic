@@ -73,7 +73,7 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
       const nodeKey = path.filter((p) => p !== 'DEFAULT').join('-');
       let key = prefix ? `--${prefix}-${nodeKey}` : `--${nodeKey}`;
       if (postfix) {
-        key = `${key}-${postfix}`;
+        key = `${key}${postfix}`;
       }
       const value = processValue(node.value);
       processedTokens[groupKey].push({
@@ -114,10 +114,12 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
         traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-lh`, groupKey: 'baseTokens' });
         break;
       }
+      case 'scale': {
+        traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-scale`, groupKey: 'baseTokens' });
+        break;
+      }
       case 'spacing': {
-        const { 'scale-indent': scaleIndent, ...spacing } = config.baseTokens[key];
-        traverse({ node: { 'scale-indent': { ...scaleIndent } }, path: [], prefix: `${prefix}`, groupKey: 'baseTokens' });
-        traverse({ node: spacing, path: [], prefix: `${prefix}-spacing`, groupKey: 'baseTokens' });
+        traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-spacing`, postfix: 'x', groupKey: 'baseTokens' });
         break;
       }
       case 'radii': {
@@ -145,11 +147,11 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
         break;
       }
       case 'radii': {
-        traverse({ node: config.semanticTokens[key], path: [], prefix, postfix: 'rounded', groupKey: 'semanticTokens' });
+        traverse({ node: config.semanticTokens[key], path: [], prefix, postfix: '-rounded', groupKey: 'semanticTokens' });
         break;
       }
       case 'opacity': {
-        traverse({ node: config.semanticTokens[key], path: [], prefix, postfix: 'opacity', groupKey: 'semanticTokens' });
+        traverse({ node: config.semanticTokens[key], path: [], prefix, postfix: '-opacity', groupKey: 'semanticTokens' });
         break;
       }
       default: {
