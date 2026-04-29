@@ -4,7 +4,14 @@ import React from 'react';
 
 const ChartExample = () => {
   return (
-    <div style={{ width: '600px', height: '400px', background: 'var(--intergalactic-bg-primary-neutral)' }} />
+    <div
+      style={{
+        width: '100%',
+        maxWidth: '600px',
+        height: '200px',
+        background: 'var(--intergalactic-bg-primary-neutral)',
+      }}
+    />
   );
 };
 
@@ -21,6 +28,7 @@ const operationType = [
 const paymentStatus = [
   'success',
   'failed',
+  'pending',
 ];
 
 export const data: (page: number) => DataTableData = (page: number) => {
@@ -592,7 +600,7 @@ export const data: (page: number) => DataTableData = (page: number) => {
       payment_intent_id: `${page}__${item.payment_intent_id}`,
       affected_payment_intent_id: getRandomInt(0, 1) === 0 ? null : crypto.randomUUID(),
       operation_type: operationType[getRandomInt(0, 2)],
-      payment_status: paymentStatus[getRandomInt(0, 1)],
+      payment_status: paymentStatus[getRandomInt(0, 2)],
     };
   });
 };

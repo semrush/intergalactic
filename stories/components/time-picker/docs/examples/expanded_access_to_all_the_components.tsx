@@ -1,23 +1,21 @@
-import { Box } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import TimePicker from '@semcore/ui/time-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
   return (
-    <>
+    <Flex direction='column' gap={2} alignItems='flex-start'>
       <Text tag='label' htmlFor='time-picker' size={200}>
         Start time
       </Text>
-      <Box mt={2}>
-        <TimePicker is12Hour id='time-picker'>
-          <TimePicker.Hours />
-          <TimePicker.Separator />
-          <TimePicker.Minutes />
-          <TimePicker.Format />
-        </TimePicker>
-      </Box>
-    </>
+      <TimePicker is12Hour id='time-picker'>
+        <TimePicker.Hours />
+        <TimePicker.Separator />
+        <TimePicker.Minutes />
+        <TimePicker.Format />
+      </TimePicker>
+    </Flex>
   );
 };
 

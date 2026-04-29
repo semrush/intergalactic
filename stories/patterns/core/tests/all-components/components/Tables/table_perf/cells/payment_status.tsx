@@ -6,7 +6,7 @@ import type { FC } from 'react';
 import { defineMessage, useIntl } from 'react-intl';
 
 type PaymentStatusProps = {
-  status: 'success' | 'failed';
+  status: 'success' | 'failed' | 'pending';
   short?: boolean;
   testIdPrefix?: string;
 } & Omit<TagProps, 'color'>;
@@ -14,6 +14,7 @@ type PaymentStatusProps = {
 const colorsMap = {
   success: 'green-500',
   failed: 'red-500',
+  pending: 'gray-500',
 };
 
 const textsMap = {
@@ -24,6 +25,10 @@ const textsMap = {
   failed: defineMessage({
     defaultMessage: 'Failure',
     id: 'app.components.payments_status.failed',
+  }),
+  pending: defineMessage({
+    defaultMessage: 'Pending',
+    id: 'app.components.payments_status.pending',
   }),
 };
 

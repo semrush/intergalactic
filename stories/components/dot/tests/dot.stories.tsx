@@ -1,6 +1,7 @@
 import Dot from '@semcore/ui/dot';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AllDotsExample from './examples/all-dots';
 import SizesAndPositionsExample, { defaultDotProps } from './examples/sizes-and-positions';
 import WithCounterSizesAndPositionsExample, {
   defaultCounterDotProps,
@@ -12,6 +13,11 @@ const meta: Meta<typeof Dot> = {
 };
 
 export default meta;
+
+export const AllDots: StoryObj = {
+  render: AllDotsExample,
+};
+
 const commonArgTypes = {
   size: {
     control: { type: 'select' },

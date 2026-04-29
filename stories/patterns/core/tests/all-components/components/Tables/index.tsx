@@ -7,7 +7,6 @@ import PrimaryTable from './PrimaryTable';
 import { SecondaryTable } from './SecondaryTable';
 import HeadingTagAccordion from '../../../../../../components/accordion/docs/examples/heading_tag';
 import NonCompactAccordion from '../../../../../../components/accordion/docs/examples/non_compact';
-import WidgetEmpty from '../../../../../../components/widget-empty/docs/examples/nodata_example';
 
 export function Tables() {
   return (
@@ -35,8 +34,6 @@ export function Tables() {
           </Card.Body>
         </Card>
       </Flex>
-
-      <WidgetEmpty />
     </Box>
   );
 }

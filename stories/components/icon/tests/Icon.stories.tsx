@@ -5,6 +5,7 @@ import { iconPlatform } from './__tests__/icon_platform.test';
 import { iconSize } from './__tests__/icon_size.test';
 import AllIconsGeneratedExample from './examples/all-icons-generated';
 import IconPropsExample, { defaultProps as iconPropsDefaults } from './examples/icon-props';
+import IconWithAllColorsExample from './examples/icon_all_colors';
 import IconColorExample from './examples/icons_color';
 import IconOtherElementsExample from './examples/icons_in_other_elements_example';
 import IconPayExample from './examples/icons_pay';
@@ -19,6 +20,11 @@ const meta: Meta = {
 export default meta;
 export const AllIconsGenerated: StoryObj = {
   render: AllIconsGeneratedExample,
+};
+
+export const IconWithAllColors: StoryObj = {
+  name: 'Icon with all colors',
+  render: IconWithAllColorsExample,
 };
 
 export const IconRegular: StoryObj = {

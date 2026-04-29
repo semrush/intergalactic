@@ -68,7 +68,7 @@ const Demo = (props: ExampleInputTagsProps) => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={300} htmlFor='add-new-social-media'>
+      <Text tag='label' size={200} htmlFor='add-new-social-media'>
         Social media
       </Text>
       <InputTags mt={2} size={props.size} state={props.state} delimiters={props.delimiters} onAppend={handleAppendTags} onRemove={handleRemoveTag}>

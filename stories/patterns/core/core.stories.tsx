@@ -2,14 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AllComponentsExample from './tests/all-components';
 import LinkButtonLinkTextCombinationExample, { defaultProps as combinationDefaultProps } from './tests/combination-link-button-link-text';
-
+import CardWithHoverExample from '../../components/card/tests/examples/card_with_hover';
 const meta: Meta = {
   title: 'Patterns/Core/Tests',
 };
-
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultProps> = {
   render: LinkButtonLinkTextCombinationExample,
   argTypes: {
@@ -45,10 +43,13 @@ export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultPr
   },
   args: combinationDefaultProps,
 };
-
 export const AllComponents: Story = {
   render: AllComponentsExample,
   parameters: {
     layout: 'fullscreen',
   },
+};
+export const BoxShadows: Story = {
+  name: 'Box Shadows',
+  render: CardWithHoverExample,
 };

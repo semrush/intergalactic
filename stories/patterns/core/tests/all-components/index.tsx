@@ -3,10 +3,11 @@ import { Box } from '@semcore/ui/base-components';
 import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
-import { Carousel } from './components/Carousel';
-import { Controls } from './components/Controls';
+import { Components } from './components/Components';
 import { Dashboard } from './components/Dashboard';
 import { FeatureHighlight } from './components/FeatureHighlight';
+import { Graphics } from './components/Graphics';
+import { PopupsDialogs } from './components/PopupsDialogs';
 import { Tables } from './components/Tables';
 import PageHeader from '../../../../components/product-head/docs/examples/extended_example';
 
@@ -34,21 +35,25 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item value={3}>
-          Controls
+          Components
         </TabLine.Item>
         <TabLine.Item value={4}>
-          Carousel
+          Popups & Dialogs
         </TabLine.Item>
         <TabLine.Item value={5}>
           Feature highlight
+        </TabLine.Item>
+        <TabLine.Item value={6}>
+          Graphics
         </TabLine.Item>
       </TabLine>
 
       {tab === 1 && <Tables />}
       {tab === 2 && <Dashboard />}
-      {tab === 3 && <Controls />}
-      {tab === 4 && <Carousel />}
+      {tab === 3 && <Components />}
+      {tab === 4 && <PopupsDialogs />}
       {tab === 5 && <FeatureHighlight />}
+      {tab === 6 && <Graphics />}
     </Box>
   );
 }
