@@ -243,8 +243,7 @@ async function processTokensToDocs(usages: Record<string, string[]>, tokens: { b
 
   const designTokensDocumentation: {
     name: string;
-    rawValue: string;
-    computedValue: string;
+    value: string;
     description: string;
     components: string[];
   }[] = [];
@@ -259,8 +258,7 @@ async function processTokensToDocs(usages: Record<string, string[]>, tokens: { b
 
     designTokensDocumentation.push({
       name,
-      rawValue: '', // rawValues[token],
-      computedValue: value,
+      value: value,
       description: description,
       components,
     });
