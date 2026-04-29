@@ -39,8 +39,8 @@ const Demo = () => {
                 name: 'kd',
                 children: (
                   <>
-                    <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
-                    <ButtonLink addonLeft={AmazonM} title='AmazonM non interactive' color='icon-secondary-neutral' />
+                    <ButtonLink addonLeft={AmazonM} title='AmazonM buttonLink' color='icon-secondary-neutral' />
+                    <ButtonLink addonLeft={AmazonM} title='AmazonM buttonLink' />
                   </>
                 ),
                 gtcWidth: 'minmax(20%, 250px)',

@@ -121,6 +121,43 @@ let lastType = undefined;
 let unionProperties = undefined;
 
 if (Array.isArray(typeDefinition.declaration.type)) {
+  const t = typeDefinition.declaration.type;
+  if (typeof t[0] === 'string' && t[0]?.includes('keyof') && t[1]?.referenceTo) {
+    if (t[2]?.includes('as `')) {
+
+      let nestedType: any;
+
+      for (const s of Object.values(types)) {
+        if (s.declaration?.name === t[1].referenceTo) {
+          nestedType = s.declaration;
+          break;
+        }
+
+        if (nestedType) {
+          break;
+        }
+      }
+
+      if (nestedType && nestedType.properties) {
+        const prefix = t[2].match(/as `(\w+):/);
+
+        t.push({
+          properties: nestedType.properties.map((prop: any) => {
+            return {
+              ...prop,
+              name: `${prefix[1]}:${prop.name}`,
+            };
+          }),
+        });
+      }
+      if (nestedType && nestedType.type) {
+        t.push(nestedType.type);
+      }
+
+
+    }
+  }
+
   lastType = typeDefinition.declaration.type[typeDefinition.declaration.type.length - 1];
   unionProperties = typeDefinition.declaration.type.find((t) => Boolean(t.properties));
 }

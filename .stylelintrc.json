@@ -6,7 +6,7 @@
     "property-no-unknown": [
       true,
       {
-        "ignoreProperties": ["vertical-anchor"]
+        "ignoreProperties": ["vertical-anchor", "animation-timeline"]
       }
     ],
     "selector-pseudo-class-no-unknown": [

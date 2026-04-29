@@ -1,9 +1,9 @@
 import type { BoxProps } from '@semcore/ui/base-components';
 import Skeleton from '@semcore/ui/skeleton';
-import type { SkeletonProps, SkeletonTextProps } from '@semcore/ui/skeleton';
+import type { NSSkeleton } from '@semcore/ui/skeleton';
 import React from 'react';
 
-type ExampleProps = SkeletonTextProps & SkeletonProps & BoxProps;
+type ExampleProps = NSSkeleton.Props & NSSkeleton.Text.Props & BoxProps;
 const Demo = (props: ExampleProps) => {
   return (
     <>

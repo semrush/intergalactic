@@ -78,10 +78,9 @@ export default defineConfig({
 });
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
+
   namespace jest {
     interface Matchers<R> {
-      toMatchImageSnapshot(task: any, options: any): R;
       toHaveNoViolations(): R;
       toHaveFocus(): R;
       toHaveStyle(style: string): R;
