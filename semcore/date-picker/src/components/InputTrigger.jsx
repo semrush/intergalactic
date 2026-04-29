@@ -808,7 +808,8 @@ function MaskedInput({
 
   useEnhancedEffect(() => {
     if (!ref.current) return;
-    document.fonts.ready.then(() => {
+    const measure = () => {
+      if (!ref.current) return;
       const stringsToMeasure = humanizedDate ? [humanizedDate, mask] : [mask];
       const widths = [];
       const measureSpan = document.createElement('span');
@@ -837,7 +838,12 @@ function MaskedInput({
       measureSpan.remove();
       const maxWidth = Math.max(...widths);
       setWidth(maxWidth);
-    });
+    };
+    if (typeof document !== 'undefined' && document.fonts?.ready) {
+      document.fonts.ready.then(measure);
+    } else {
+      measure();
+    }
   }, [locale, humanizedDate, allowedParts, mask]);
 
   const SHumanizedDate = 'div';
