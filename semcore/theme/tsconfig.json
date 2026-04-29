@@ -3,7 +3,7 @@
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
   "compilerOptions": {
     "lib": ["ESNext"],
-    "rootDir": "./src",
+    "rootDir": "./",
     "allowImportingTsExtensions": true
   }
 }
