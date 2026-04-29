@@ -9,6 +9,7 @@ type ExampleProps = {
   disabled?: boolean;
   state?: 'normal' | 'invalid' | 'valid';
   neighborLocation?: 'left' | 'right' | 'both' | false;
+  locale?: 'en' | 'pl' | 'pt';
 };
 
 const Demo = (props: ExampleProps) => {
@@ -18,7 +19,7 @@ const Demo = (props: ExampleProps) => {
         <Text tag='label' size={200} htmlFor='month-range-trigger-default'>
           Default
         </Text>
-        <MonthRangePicker>
+        <MonthRangePicker locale={props.locale}>
           <MonthRangePicker.Trigger size={props.size} disabled={props.disabled}>
             <MonthRangePicker.Trigger.DateRange state={props.state}>
               <MonthRangePicker.Trigger.DateRange.Indicator />
@@ -35,7 +36,7 @@ const Demo = (props: ExampleProps) => {
         <Text tag='label' size={200} htmlFor='month-range-trigger-with-value'>
           With selected range
         </Text>
-        <MonthRangePicker value={[new Date('2024-06-15'), new Date('2024-09-15')]}>
+        <MonthRangePicker value={[new Date('2024-06-15'), new Date('2024-09-15')]} locale={props.locale}>
           <MonthRangePicker.Trigger size={props.size} disabled={props.disabled}>
             <MonthRangePicker.Trigger.DateRange state={props.state}>
               <MonthRangePicker.Trigger.DateRange.Indicator />
@@ -56,7 +57,7 @@ const Demo = (props: ExampleProps) => {
           {(props.neighborLocation === 'left' || props.neighborLocation === 'both') && (
             <Button size={props.size} neighborLocation='right'>Left</Button>
           )}
-          <MonthRangePicker>
+          <MonthRangePicker locale={props.locale}>
             <MonthRangePicker.Trigger
               size={props.size}
               disabled={props.disabled}
@@ -85,6 +86,7 @@ export const defaultMonthRangeTriggerProps: ExampleProps = {
   disabled: false,
   state: 'normal',
   neighborLocation: 'both',
+  locale: 'en',
 };
 
 Demo.defaultProps = defaultMonthRangeTriggerProps;

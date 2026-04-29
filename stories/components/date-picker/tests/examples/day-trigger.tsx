@@ -9,6 +9,7 @@ type ExampleProps = {
   disabled?: boolean;
   state?: 'normal' | 'invalid' | 'valid';
   neighborLocation?: 'left' | 'right' | 'both' | false;
+  locale?: 'en' | 'pl' | 'pt';
 };
 
 const Demo = (props: ExampleProps) => {
@@ -18,7 +19,7 @@ const Demo = (props: ExampleProps) => {
         <Text tag='label' size={200} htmlFor='trigger-default'>
           Default
         </Text>
-        <DatePicker size={props.size}>
+        <DatePicker size={props.size} locale={props.locale}>
           <DatePicker.Trigger disabled={props.disabled}>
             <DatePicker.Trigger.SingleDateInput state={props.state}>
               <DatePicker.Trigger.SingleDateInput.Indicator />
@@ -33,7 +34,7 @@ const Demo = (props: ExampleProps) => {
         <Text tag='label' size={200} htmlFor='trigger-with-value'>
           With selected date
         </Text>
-        <DatePicker size={props.size} value={new Date('2024-06-15')}>
+        <DatePicker size={props.size} value={new Date('2024-06-15')} locale={props.locale}>
           <DatePicker.Trigger disabled={props.disabled}>
             <DatePicker.Trigger.SingleDateInput state={props.state}>
               <DatePicker.Trigger.SingleDateInput.Indicator />
@@ -52,7 +53,7 @@ const Demo = (props: ExampleProps) => {
           {(props.neighborLocation === 'left' || props.neighborLocation === 'both') && (
             <Button size={props.size} neighborLocation='right'>Left</Button>
           )}
-          <DatePicker size={props.size}>
+          <DatePicker size={props.size} locale={props.locale}>
             <DatePicker.Trigger
               disabled={props.disabled}
               neighborLocation={props.neighborLocation}
@@ -78,6 +79,7 @@ export const defaultTriggerProps: ExampleProps = {
   disabled: false,
   state: 'normal',
   neighborLocation: 'both',
+  locale: 'en',
 };
 
 Demo.defaultProps = defaultTriggerProps;

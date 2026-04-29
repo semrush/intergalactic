@@ -30,6 +30,10 @@ const triggerArgTypes = {
     control: { type: 'select' },
     options: [false, 'left', 'right', 'both'],
   },
+  locale: {
+    control: { type: 'select' },
+    options: ['en', 'pl', 'pt'],
+  },
 } as const;
 
 export const DayTrigger: StoryObj<typeof defaultTriggerProps> = {
