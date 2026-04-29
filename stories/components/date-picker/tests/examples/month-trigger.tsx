@@ -14,8 +14,8 @@ type ExampleProps = {
 
 const Demo = (props: ExampleProps) => {
   return (
-    <Flex direction='column' gap={4} mt={4} alignItems='flex-start'>
-      <Flex direction='column' gap={1}>
+    <Flex direction='column' gap={4} mt={4}>
+      <Flex direction='column' gap={1} alignItems='start'>
         <Text tag='label' size={200} htmlFor='month-trigger-default'>
           Default
         </Text>
@@ -30,7 +30,7 @@ const Demo = (props: ExampleProps) => {
         </MonthPicker>
       </Flex>
 
-      <Flex direction='column' gap={1}>
+      <Flex direction='column' gap={1} alignItems='start'>
         <Text tag='label' size={200} htmlFor='month-trigger-with-value'>
           With selected month
         </Text>
@@ -45,7 +45,7 @@ const Demo = (props: ExampleProps) => {
         </MonthPicker>
       </Flex>
 
-      <Flex direction='column' gap={1}>
+      <Flex direction='column' gap={1} alignItems='start'>
         <Text tag='label' size={200} htmlFor='month-trigger-neighbor'>
           With neighbor location
         </Text>
