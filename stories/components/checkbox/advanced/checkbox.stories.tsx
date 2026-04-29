@@ -10,6 +10,5 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 export const AriaLabelPropsDrilling: Story = {
   render: AriaLabelPropsDrillingExample,
-  parameters: { sourceCode: 'import Checkbox from \'@semcore/ui/checkbox\';\nimport React from \'react\';\n\nconst Demo = () => {\n  return (\n    <>\n      <div id=\'mylabel\'>apples</div>\n      <Checkbox aria-label=\'fruit\' aria-describedby=\'mylabel\'>\n        <Checkbox.Value>\n          <Checkbox.Value.Control data-testid=\'checkbox_input_tag\' />\n          <Checkbox.Value.CheckMark />\n        </Checkbox.Value>\n      </Checkbox>\n    </>\n  );\n};\n\nexport default Demo;\n' },
-  parameters: { sourceCode: 'import Checkbox from \'@semcore/ui/checkbox\';\nimport React from \'react\';\n\nconst Demo = () => {\n  return (\n    <>\n      <div id=\'mylabel\'>apples</div>\n      <Checkbox aria-label=\'fruit\' aria-describedby=\'mylabel\'>\n        <Checkbox.Value>\n          <Checkbox.Value.Control data-testid=\'checkbox_input_tag\' />\n          <Checkbox.Value.CheckMark />\n        </Checkbox.Value>\n      </Checkbox>\n    </>\n  );\n};\n\nexport default Demo;\n' },
+
 };
