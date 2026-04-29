@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.0.2] - 2026-04-29
+
+### Fixed
+
+- Deprecated atomic types. Atomic parts are part of `NSCard` namespace.
+
 ## [17.0.1] - 2026-04-16
 
 ### Fixed
