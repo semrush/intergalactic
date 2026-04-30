@@ -11,7 +11,7 @@ The **Feedback** button uses the [ButtonLink](../button/button#button-with-link-
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/product-head/docs/examples/extended_example.tsx';
+  export Demo from 'stories/components/product-head/docs/examples/extended_example/index.tsx';
 </script>
 
 :::

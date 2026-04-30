@@ -4,7 +4,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`${TAG.ACCESSIBILITY} @product-head`, () => {
   test('Basic', async ({ page }) => {
-    await loadPage(page, 'stories/components/product-head/docs/examples/extended_example.tsx', 'en');
+    await loadPage(page, 'stories/components/product-head/docs/examples/extended_example/index.tsx', 'en');
 
     const violations = await getAccessibilityViolations({ page });
 

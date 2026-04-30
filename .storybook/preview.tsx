@@ -30,6 +30,16 @@ const preview: Preview = {
     (Story, params) => {
       const rootRef = React.useRef<HTMLDivElement>(null);
 
+      if (params.parameters.layout === 'fullscreen') {
+        return (
+          <PortalProvider value={rootRef}>
+            <div ref={rootRef}>
+              <Story />
+            </div>
+          </PortalProvider>
+        );
+      }
+
       return (
         <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
           <div tabIndex={0} />
