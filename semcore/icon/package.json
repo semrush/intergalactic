@@ -1238,6 +1238,16 @@
       "import": "./lib/color/PipedriveColored/m/index.mjs",
       "require": "./lib/color/PipedriveColored/m/index.js"
     },
+    "./color/RedditColored/l": {
+      "types": "./lib/color/RedditColored/l/index.d.ts",
+      "import": "./lib/color/RedditColored/l/index.mjs",
+      "require": "./lib/color/RedditColored/l/index.js"
+    },
+    "./color/RedditColored/m": {
+      "types": "./lib/color/RedditColored/m/index.d.ts",
+      "import": "./lib/color/RedditColored/m/index.mjs",
+      "require": "./lib/color/RedditColored/m/index.js"
+    },
     "./color/Salesforce/l": {
       "types": "./lib/color/Salesforce/l/index.d.ts",
       "import": "./lib/color/Salesforce/l/index.mjs",
@@ -3223,6 +3233,16 @@
       "import": "./lib/Printing/m/index.mjs",
       "require": "./lib/Printing/m/index.js"
     },
+    "./Prompt/l": {
+      "types": "./lib/Prompt/l/index.d.ts",
+      "import": "./lib/Prompt/l/index.mjs",
+      "require": "./lib/Prompt/l/index.js"
+    },
+    "./Prompt/m": {
+      "types": "./lib/Prompt/m/index.d.ts",
+      "import": "./lib/Prompt/m/index.mjs",
+      "require": "./lib/Prompt/m/index.js"
+    },
     "./Prowly/l": {
       "types": "./lib/Prowly/l/index.d.ts",
       "import": "./lib/Prowly/l/index.mjs",
@@ -3312,6 +3332,16 @@
       "types": "./lib/Recreation/m/index.d.ts",
       "import": "./lib/Recreation/m/index.mjs",
       "require": "./lib/Recreation/m/index.js"
+    },
+    "./Reddit/l": {
+      "types": "./lib/Reddit/l/index.d.ts",
+      "import": "./lib/Reddit/l/index.mjs",
+      "require": "./lib/Reddit/l/index.js"
+    },
+    "./Reddit/m": {
+      "types": "./lib/Reddit/m/index.d.ts",
+      "import": "./lib/Reddit/m/index.mjs",
+      "require": "./lib/Reddit/m/index.js"
     },
     "./Redirect/l": {
       "types": "./lib/Redirect/l/index.d.ts",
