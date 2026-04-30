@@ -64,11 +64,15 @@ const preview: Preview = {
 
       if (params.parameters.layout === 'fullscreen') {
         return (
-          <PortalProvider value={rootRef}>
-            <div ref={rootRef}>
-              <Story />
-            </div>
-          </PortalProvider>
+          <>
+            <link rel='stylesheet' href={stylesheet} />
+            <link rel='stylesheet' href={stylesheetHighlight} />
+            <PortalProvider value={rootRef}>
+              <div ref={rootRef}>
+                <Story />
+              </div>
+            </PortalProvider>
+          </>
         );
       }
 
