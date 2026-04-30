@@ -16,11 +16,47 @@ type ProcessedTokens = {
 export type N = Record<string, N | string>;
 
 export const logger = {
-
   log: console.log,
-
   error: console.error,
 };
+
+export function processValue(value: string, config: Theme): string {
+  if (value.startsWith('{') && value.endsWith('}')) {
+    return getConfigValue(value.slice(1, -1).split('.'), config);
+  }
+  if (value.includes('{') && value.includes('}')) {
+    const replacer = new RegExp(`{([a-z0-9.-])+}`, 'gi');
+
+    const result = value.replace(replacer, (match) => {
+      const calculatedValue = getConfigValue(match.slice(1, -1).split('.'), config);
+
+      return calculatedValue;
+    });
+
+    return result;
+  }
+
+  return value;
+}
+
+export function getConfigValue(path: string[], config: Theme): string {
+  try {
+    const valueObj = getByPath(config, path);
+
+    if ('value' in valueObj) {
+      return processValue(valueObj.value, config);
+    }
+
+    if ('DEFAULT' in valueObj && 'value' in valueObj.DEFAULT) {
+      return processValue(valueObj.DEFAULT.value, config);
+    }
+  } catch (e) {
+    logger.log(e);
+    logger.log(path);
+  }
+
+  return `{${path.join('.')}}`;
+}
 
 export function processTokens(config: Theme, prefix: string): ProcessedTokens {
   const processedTokens: ProcessedTokens = {
@@ -28,44 +64,6 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
     semanticTokens: [],
     highlightsTokens: [],
   };
-
-  function getConfigValue(path: string[]): string {
-    try {
-      const valueObj = getByPath(config, path);
-
-      if ('value' in valueObj) {
-        return processValue(valueObj.value);
-      }
-
-      if ('DEFAULT' in valueObj && 'value' in valueObj.DEFAULT) {
-        return processValue(valueObj.DEFAULT.value);
-      }
-    } catch (e) {
-      logger.log(e);
-      logger.log(path);
-    }
-
-    return `{${path.join('.')}}`;
-  }
-
-  function processValue(value: string): string {
-    if (value.startsWith('{') && value.endsWith('}')) {
-      return getConfigValue(value.slice(1, -1).split('.'));
-    }
-    if (value.includes('{') && value.includes('}')) {
-      const replacer = new RegExp(`{([a-z0-9.-])+}`, 'gi');
-
-      const result = value.replace(replacer, (match) => {
-        const calculatedValue = getConfigValue(match.slice(1, -1).split('.'));
-
-        return calculatedValue;
-      });
-
-      return result;
-    }
-
-    return value;
-  }
 
   function traverse(params: { node: N; path: string[]; prefix?: string; postfix?: string; groupKey: keyof ProcessedTokens }) {
     const { node, path, prefix = '', postfix = '', groupKey } = params;
@@ -75,7 +73,7 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
       if (postfix) {
         key = `${key}${postfix}`;
       }
-      const value = processValue(node.value);
+      const value = processValue(node.value, config);
       processedTokens[groupKey].push({
         name: key,
         value: value,
@@ -114,12 +112,10 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
         traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-lh`, groupKey: 'baseTokens' });
         break;
       }
-      case 'scale': {
-        traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-scale`, groupKey: 'baseTokens' });
-        break;
-      }
       case 'spacing': {
-        traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-spacing`, postfix: 'x', groupKey: 'baseTokens' });
+        const { scale, ...spacing } = config.baseTokens[key];
+        traverse({ node: { ...scale }, path: [], prefix: `${prefix}-scale`, groupKey: 'baseTokens' });
+        traverse({ node: spacing, path: [], prefix: `${prefix}-spacing`, postfix: 'x', groupKey: 'baseTokens' });
         break;
       }
       case 'radii': {

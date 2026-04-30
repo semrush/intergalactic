@@ -44,10 +44,10 @@ for (const theme of themes) {
     PREFIX,
   );
 
-  await writeIfChanged(
-    'lib/panda-preset.js',
-    toPandaPreset(config),
-  );
+  const pandaPreset = toPandaPreset(config);
+
+  await writeIfChanged('lib/panda-preset.js', pandaPreset);
+  await writeIfChanged('lib/panda-preset.ts', pandaPreset);
 
   await writeIfChanged(
     `lib/${theme}.css`,

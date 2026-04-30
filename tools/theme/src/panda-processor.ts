@@ -1,5 +1,6 @@
 import type { Theme } from './theme.ts';
 import type { N } from './utils.ts';
+import { processValue } from './utils.ts';
 
 function merge(node: N, resultNode: N) {
   Object.keys(node).forEach((key) => {
@@ -14,7 +15,52 @@ function merge(node: N, resultNode: N) {
   });
 }
 
+const kebabToCamel = (str: string) => {
+  return str.replace(/-./g, (match: string) => match[1].toUpperCase());
+};
+
+const sizeMapper = {
+  s: 'small',
+  m: 'medium',
+  l: 'large',
+};
+
+function processValues(node: N, config: Theme) {
+  if ('value' in node && typeof node.value === 'string') {
+    node.value = processValue(node.value, config);
+  } else {
+    Object.keys(node).forEach((key) => {
+      processValues(node[key], config);
+    });
+  }
+}
+
+function processKebabToCamel(node: N) {
+  if ('value' in node && typeof node.value === 'string') {
+    return;
+  } else {
+    Object.keys(node).forEach((key) => {
+      if (key.includes('-')) {
+        const newKey = kebabToCamel(key);
+        node[newKey] = { ...node[key] };
+        delete node[key];
+        processKebabToCamel(node[newKey]);
+      } else if (key === 's' || key === 'm' || key === 'l') {
+        const newKey = sizeMapper[key];
+        node[newKey] = { ...node[key] };
+        delete node[key];
+        processKebabToCamel(node[newKey]);
+      } else {
+        processKebabToCamel(node[key]);
+      }
+    });
+  }
+}
+
 export const toPandaPreset = (config: Theme) => {
+  processValues(config, config);
+  processKebabToCamel(config);
+
   const tokens = JSON.stringify({ ...config.baseTokens, breakpoints: undefined }, undefined, 2);
   const semanticTokens = {
     ...config.semanticTokens,
@@ -38,11 +84,11 @@ export const semcorePreset = definePreset({
   theme: {
     tokens:${tokens.split('\n').map((line, index) => index === 0 ? ` ${line}` : `    ${line}`).join('\n')},
     semanticTokens:${semantic.split('\n').map((line, index) => index === 0 ? ` ${line}` : `    ${line}`).join('\n')},
-    extend: {
-      breakpoints:${breakpoints.split('\n').map((line, index) => index === 0 ? ` ${line}` : `      ${line}`).join('\n')},
-    },
+    breakpoints:${breakpoints.split('\n').map((line, index) => index === 0 ? ` ${line}` : `    ${line}`).join('\n')},
   },
 });
+
+export default semcorePreset;
 `;
 
   return preset;

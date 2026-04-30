@@ -144,13 +144,13 @@ export const theme: Theme = {
         description: 'Compact letter spacing.',
       },
     },
-    scale: {
-      indent: {
-        value: `${SCALE_INDENT}px`,
-        description: 'Base denominator of the design system.',
-      },
-    },
     spacing: {
+      'scale': {
+        indent: {
+          value: `${SCALE_INDENT}px`,
+          description: 'Base denominator of the design system.',
+        },
+      },
       '05': {
         value: `${SCALE_INDENT / 2}px`,
         description: '2px',
@@ -2182,8 +2182,7 @@ export type BaseTokens = {
   lineHeights: Record<LineHeight, Value>;
   fontWeights: Record<FontWeight, Value>;
   letterSpacings: { compact: Value };
-  scale: { indent: Value };
-  spacing: Record<Spacing, Value>;
+  spacing: { scale: { indent: Value } } & Record<Spacing, Value>;
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
