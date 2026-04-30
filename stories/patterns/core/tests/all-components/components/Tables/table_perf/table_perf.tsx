@@ -27,8 +27,8 @@ const Demo = (props: Props) => {
       [...tableData].sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
 
-        const a = prop === 'amount_base' ? Number(aRow[prop]) : aRow[prop];
-        const b = prop === 'amount_base' ? Number(bRow[prop]) : bRow[prop];
+        const a = prop === 'amount_base' ? Number(aRow[prop]) : aRow[prop] ?? '';
+        const b = prop === 'amount_base' ? Number(bRow[prop]) : bRow[prop] ?? '';
         if (a === b) return 0;
         if (sortDirection === 'asc') return a > b ? 1 : -1;
         else return a > b ? -1 : 1;
