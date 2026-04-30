@@ -17,9 +17,9 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/checkbox": "^17.0.1",
+    "@semcore/checkbox": "^17.0.2",
     "@semcore/notice-bubble": "^17.0.1",
-    "@semcore/typography": "^17.0.1",
+    "@semcore/typography": "^17.0.2",
     "@semcore/link": "^17.0.1",
     "@semcore/modal": "^17.0.1",
     "@semcore/illustration": "^17.0.1",
@@ -34,7 +34,7 @@
     "react-final-form": "6.5.9"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1",
+    "@semcore/base-components": "^17.0.2",
     "@semcore/icon": "^17.0.1"
   },
   "repository": {
