@@ -21,7 +21,7 @@
     "@semcore/tag": "^17.0.1"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1"
+    "@semcore/base-components": "^17.0.2"
   },
   "repository": {
     "type": "git",

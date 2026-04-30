@@ -18,10 +18,10 @@
   },
   "dependencies": {
     "@semcore/button": "^17.0.1",
-    "@semcore/typography": "^17.0.1"
+    "@semcore/typography": "^17.0.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1",
+    "@semcore/base-components": "^17.0.2",
     "@semcore/icon": "^17.0.1"
   },
   "repository": {

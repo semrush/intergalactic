@@ -22,18 +22,18 @@
     "@semcore/badge": "^17.0.1",
     "@semcore/base-trigger": "^17.0.1",
     "@semcore/button": "^17.0.1",
-    "@semcore/checkbox": "^17.0.1",
+    "@semcore/checkbox": "^17.0.2",
     "@semcore/input": "^17.0.1",
     "@semcore/notice": "^17.0.1",
-    "@semcore/pills": "^17.0.1",
-    "@semcore/radio": "^17.0.1",
+    "@semcore/pills": "^17.0.2",
+    "@semcore/radio": "^17.0.2",
     "@semcore/select": "^17.0.1",
     "@semcore/switch": "^17.0.1",
-    "@semcore/tab-line": "^17.0.1",
-    "@semcore/typography": "^17.0.1"
+    "@semcore/tab-line": "^17.0.2",
+    "@semcore/typography": "^17.0.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1"
+    "@semcore/base-components": "^17.0.2"
   },
   "repository": {
     "type": "git",
