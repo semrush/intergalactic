@@ -88,7 +88,7 @@
     "micromark-extension-gfm": "2.0.1",
     "node-watch": "0.7.3",
     "picocolors": "1.0.0",
-    "postcss": "8.4.33",
+    "postcss": "8.5.10",
     "tsm": "2.2.2",
     "unified": "10.1.2",
     "vitepress": "1.3.1"
