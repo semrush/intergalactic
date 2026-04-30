@@ -16,9 +16,9 @@ type ProcessedTokens = {
 export type N = Record<string, N | string>;
 
 export const logger = {
-  // eslint-disable-next-line no-console
+
   log: console.log,
-  // eslint-disable-next-line no-console
+
   error: console.error,
 };
 

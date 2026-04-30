@@ -1,4 +1,5 @@
-import defaultDesignThemeJson from '../../theme/themes/default';
+import defaultDesignThemeJson from '@semcore/theme/light';
+
 import logger from '../logger';
 import { useContextTokens } from '../ThemeProvider';
 

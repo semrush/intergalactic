@@ -330,9 +330,8 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "workspace:*",
+    "@semcore/theme": "workspace:*",
     "@types/classnames": "2.2.6",
-    "@types/hoist-non-react-statics": "^3.3.6",
-    "postcss": "8.4.33",
-    "postcss-value-parser": "4.1.0"
+    "@types/hoist-non-react-statics": "^3.3.6"
   }
 }
