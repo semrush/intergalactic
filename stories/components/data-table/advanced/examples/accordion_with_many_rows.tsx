@@ -11,11 +11,13 @@ export type TableInTableProps = {
     any,
     any
   >['onAccordionToggle'];
-  accordionDuration: DataTableProps<typeof data, any, any>['accordionDuration'];
-  accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
+  accordionDuration?: DataTableProps<typeof data, any, any>['accordionDuration'];
+  accordionAnimationRows?: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
   cropPosition?: EllipsisSettings['cropPosition'];
   hintProps?: false;
 };
+
+const recalculateContainerWidth = (width: number) => width - 26;
 
 const Demo = (props: TableInTableProps) => {
   const keywordRef = React.useRef<HTMLDivElement | null>(null);
@@ -37,7 +39,7 @@ const Demo = (props: TableInTableProps) => {
         <Text
           ellipsis:cropPosition={cropPos}
           ellipsis:containerElement={keywordElement}
-          ellipsis:recalculateContainerWidth={(cellProps.isAccordionRow || cellProps.row[ACCORDION]) ? (width: number) => width - 26 : undefined}
+          ellipsis:recalculateContainerWidth={(cellProps.isAccordionRow || cellProps.row[ACCORDION]) ? recalculateContainerWidth : undefined}
           hint={props.hintProps}
         >
           {cellProps.value}
@@ -91,10 +93,7 @@ const Demo = (props: TableInTableProps) => {
 
 export const accordionTableInTableDefaultProps: TableInTableProps = {
   accordionMode: 'independent',
-  accordionAnimationRows: undefined,
-  accordionDuration: undefined,
   cropPosition: 'middle',
-  hintProps: undefined,
 };
 
 Demo.defaultProps = accordionTableInTableDefaultProps;

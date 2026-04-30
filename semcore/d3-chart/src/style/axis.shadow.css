@@ -72,7 +72,6 @@ STick[position='bottom'] {
 
 STick[position='right'] {
   transform: translateX(16px);
-  text-anchor: start;
   dominant-baseline: middle;
 
   tspan {

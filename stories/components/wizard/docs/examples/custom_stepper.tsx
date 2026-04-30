@@ -1,3 +1,4 @@
+import MathPlusM from '@semcore/icon/MathPlus/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Input from '@semcore/ui/input';
@@ -25,7 +26,7 @@ const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>)
   );
 });
 
-const steps = [{ title: 'Personal' }, { title: 'Keywords' }, { title: 'Import source' }];
+const steps = [{ title: 'Personal' }, { title: 'Keywords' }, { title: 'Import source' }, { title: 'Schedule' }];
 
 const Demo = () => {
   const [step, setStep] = React.useState(1);
@@ -40,23 +41,26 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleOpen}>Open wizard</Button>
+      <Button onClick={handleOpen} use='primary' addonLeft={MathPlusM}>Add Project</Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={handleStepChange(1)}>
-            Personal
+            {steps[0].title}
             <Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={2} onActive={handleStepChange(2)}>
-            Keywords
+            {steps[1].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={2.1}>
             <Text fontWeight={400}>Import source</Text>
             <Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
               {value === '' ? 'Not selected' : value}
             </Text>
+          </Wizard.Stepper>
+          <Wizard.Stepper step={4} onActive={handleStepChange(4)} number={3}>
+            {steps[3].title}
           </Wizard.Stepper>
         </Wizard.Sidebar>
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
@@ -81,6 +85,14 @@ const Demo = () => {
                 <Radio.Text>From CSV</Radio.Text>
               </Radio>
             </RadioGroup>
+          </Wizard.Step>
+          <Wizard.Step step={4}>
+            <Text size={500} tag='h3'>
+              Final step
+            </Text>
+            <Text tag='p' mt={2}>
+              Congratulations on passing all the steps!
+            </Text>
           </Wizard.Step>
           <Flex mt={5}>
             {step > 1 && (

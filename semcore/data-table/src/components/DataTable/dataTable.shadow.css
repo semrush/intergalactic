@@ -3,6 +3,8 @@ SDataTable {
   align-items: start;
   min-width: fit-content;
   grid-auto-rows: min-content;
+
+  scroll-behavior: smooth;
 }
 
 SDataTable[isDataEmpty] {
@@ -21,4 +23,21 @@ SDataTable[gridTemplateAreas] {
 
 SDataTable[gridTemplateRows] {
   grid-template-rows: var(--gridTemplateRows);
+}
+
+SScrollAreaBarInHeader[withAnimation] {
+  animation-name: moveBarWithScroll;
+  animation-timeline: --table-sticky-timeline;
+  animation-range-start: exit-crossing calc(-1 * var(--global-header-top));
+  animation-range-end: exit-crossing calc(100% - var(--global-header-top) - var(--global-header-height));
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+@keyframes moveBarWithScroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(var(--global-scroll-to) - var(--global-header-height)));
+  }
 }

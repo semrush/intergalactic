@@ -312,7 +312,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         }
 
         if (lastIndex === -1) {
-          lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
+          lastIndex = scrollTop === 0
+            ? aproxRowsOnPage
+            : Math.min(startIndex + aproxRowsOnPage * 2, rows.length);
         }
 
         this.indexForDownIterate = startIndex;

@@ -62,6 +62,16 @@ const preview: Preview = {
         ? '/assets/theme/highlights-light.css'
         : '/assets/core/highlights-light.css';
 
+      if (params.parameters.layout === 'fullscreen') {
+        return (
+          <PortalProvider value={rootRef}>
+            <div ref={rootRef}>
+              <Story />
+            </div>
+          </PortalProvider>
+        );
+      }
+
       return (
         <>
           <link rel='stylesheet' href={stylesheet} />

@@ -1,6 +1,8 @@
 SScrollArea {
   width: fit-content;
 
+  view-timeline: --table-sticky-timeline block;
+
   SContainer {
     overflow: unset;
 
