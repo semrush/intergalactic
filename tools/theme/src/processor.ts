@@ -36,7 +36,7 @@ const themes = ['light', 'dark'];
 const warning = !process.argv.includes('--no-warning');
 
 const packageDirname = resolvePath(fileURLToPath(import.meta.url), '..', '..');
-const semcorePath = resolvePath(packageDirname, '..');
+const semcorePath = resolvePath(packageDirname, '..', '..', 'semcore');
 
 for (const theme of themes) {
   const { baseTokens, semanticTokens, highlightsTokens } = processTokens(
