@@ -326,7 +326,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       csstype:
         specifier: 3.1.3
@@ -434,7 +434,7 @@ importers:
         specifier: ^17.0.1
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -453,7 +453,7 @@ importers:
   semcore/breadcrumbs:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -481,7 +481,7 @@ importers:
         specifier: ^17.0.1
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       dompurify:
         specifier: 3.4.0
@@ -512,7 +512,7 @@ importers:
         specifier: ^17.0.1
         version: link:../spin
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -537,7 +537,7 @@ importers:
         specifier: ^17.0.1
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -578,7 +578,7 @@ importers:
   semcore/checkbox:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -597,7 +597,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/divider':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../divider
       '@semcore/dropdown':
         specifier: ^17.0.1
@@ -680,13 +680,13 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(typescript@4.9.5)
       '@semcore/checkbox':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../checkbox
       '@semcore/divider':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../divider
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       '@types/d3-shape':
         specifier: 3.1.7
@@ -762,7 +762,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../checkbox
       '@semcore/spin':
         specifier: ^17.0.1
@@ -823,10 +823,10 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../checkbox
       '@semcore/divider':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../divider
       '@semcore/dropdown':
         specifier: ^17.0.1
@@ -835,13 +835,13 @@ importers:
         specifier: ^17.0.1
         version: link:../input
       '@semcore/input-mask':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../input-mask
       '@semcore/tooltip':
         specifier: ^17.0.1
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       dayjs:
         specifier: 1.8.36
@@ -890,7 +890,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../card
     devDependencies:
       '@semcore/badge':
@@ -933,7 +933,7 @@ importers:
         specifier: ^17.0.1
         version: link:../dropdown
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       classnames:
         specifier: 2.2.6
@@ -983,7 +983,7 @@ importers:
         specifier: ^17.0.1
         version: link:../illustration
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1008,7 +1008,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../checkbox
       '@semcore/input':
         specifier: ^17.0.1
@@ -1017,10 +1017,10 @@ importers:
         specifier: ^17.0.1
         version: link:../notice
       '@semcore/pills':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../pills
       '@semcore/radio':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../radio
       '@semcore/select':
         specifier: ^17.0.1
@@ -1029,10 +1029,10 @@ importers:
         specifier: ^17.0.1
         version: link:../switch
       '@semcore/tab-line':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../tab-line
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1079,7 +1079,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../checkbox
       '@semcore/illustration':
         specifier: ^17.0.1
@@ -1109,7 +1109,7 @@ importers:
         specifier: ^17.0.1
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       final-form:
         specifier: 4.20.7
@@ -1174,7 +1174,7 @@ importers:
         specifier: ^17.0.1
         version: link:../modal
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1409,7 +1409,7 @@ importers:
   semcore/link:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@floating-ui/dom':
@@ -1446,7 +1446,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1468,7 +1468,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1518,7 +1518,7 @@ importers:
         specifier: ^17.0.1
         version: link:../link
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1579,7 +1579,7 @@ importers:
   semcore/radio:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1601,10 +1601,10 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../checkbox
       '@semcore/divider':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../divider
       '@semcore/dropdown':
         specifier: ^17.0.1
@@ -1616,7 +1616,7 @@ importers:
         specifier: ^17.0.1
         version: link:../input
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       classnames:
         specifier: 2.2.6
@@ -1644,7 +1644,7 @@ importers:
         specifier: ^17.0.1
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1727,7 +1727,7 @@ importers:
   semcore/tab-line:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1743,7 +1743,7 @@ importers:
   semcore/tab-panel:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1762,7 +1762,7 @@ importers:
   semcore/tag:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1869,7 +1869,7 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../accordion
       '@semcore/add-filter':
         specifier: ^17.0.1
@@ -1878,7 +1878,7 @@ importers:
         specifier: ^17.0.1
         version: link:../badge
       '@semcore/base-components':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../base-components
       '@semcore/base-trigger':
         specifier: ^17.0.1
@@ -1887,19 +1887,19 @@ importers:
         specifier: ^17.0.1
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../bulk-textarea
       '@semcore/button':
         specifier: ^17.0.1
         version: link:../button
       '@semcore/card':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../card
       '@semcore/carousel':
         specifier: ^17.0.1
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../checkbox
       '@semcore/color-picker':
         specifier: ^17.0.1
@@ -1911,19 +1911,19 @@ importers:
         specifier: ^17.0.1
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../date-picker
       '@semcore/divider':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../divider
       '@semcore/dot':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../dot
       '@semcore/drag-and-drop':
         specifier: ^17.0.1
@@ -1938,7 +1938,7 @@ importers:
         specifier: ^17.0.1
         version: link:../ellipsis
       '@semcore/errors':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../errors
       '@semcore/feature-highlight':
         specifier: ^17.0.1
@@ -1974,7 +1974,7 @@ importers:
         specifier: ^17.0.1
         version: link:../input
       '@semcore/input-mask':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../input-mask
       '@semcore/input-number':
         specifier: ^17.0.1
@@ -2001,25 +2001,25 @@ importers:
         specifier: ^17.0.1
         version: link:../pagination
       '@semcore/pills':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../pills
       '@semcore/product-head':
         specifier: ^17.0.1
         version: link:../product-head
       '@semcore/progress-bar':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../radio
       '@semcore/select':
         specifier: ^17.0.1
         version: link:../select
       '@semcore/side-panel':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../skeleton
       '@semcore/slider':
         specifier: ^17.0.1
@@ -2034,10 +2034,10 @@ importers:
         specifier: ^17.0.1
         version: link:../switch
       '@semcore/tab-line':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../tab-line
       '@semcore/tab-panel':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../tab-panel
       '@semcore/tag':
         specifier: ^17.0.1
@@ -2052,7 +2052,7 @@ importers:
         specifier: ^17.0.1
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../typography
       '@semcore/widget-empty':
         specifier: ^17.0.1
@@ -19409,7 +19409,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.32.0)(msw@2.12.14(@types/node@25.5.2)(typescript@6.0.2))(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.32.0)(msw@2.12.14(@types/node@25.5.2)(typescript@5.9.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:

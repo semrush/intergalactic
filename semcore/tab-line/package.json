@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tab-line",
   "description": "Semrush TabLine Component",
-  "version": "17.0.1",
+  "version": "17.0.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,10 +17,10 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/typography": "^17.0.1"
+    "@semcore/typography": "^17.0.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1"
+    "@semcore/base-components": "^17.0.2"
   },
   "repository": {
     "type": "git",

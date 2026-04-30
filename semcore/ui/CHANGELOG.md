@@ -1,3 +1,93 @@
+## [17.0.2] - 2026-04-30
+
+### @semcore/radio
+
+- **Fixed** Deprecated atomic types. Atomic types are part of `NSRadio` namespace.
+
+### @semcore/d3-chart
+
+- **Fixed** Vulnerabilities were discovered in the `rollup` version.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Vulnerabilities were discovered in the `dompurify` version.
+
+### @semcore/accordion
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSAccordion`
+namespace.
+
+### @semcore/pills
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSPills` namespace.
+
+### @semcore/progress-bar
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSProgressBar`
+namespace.
+
+### @semcore/typography
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/divider
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSDivider`
+namespace.
+
+### @semcore/dot
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSDot` namespace.
+
+### @semcore/card
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSCard` namespace.
+
+### @semcore/errors
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of
+`NSErrors/NSAccessDenied/NSMaintenance/NSPageError/NSPageNotFound/NSProjectNotFound`
+namespaces.
+
+### @semcore/base-components
+
+- **Fixed** **flex-box**: Incorrect handling of styles for focus ring offset values.
+
+### @semcore/checkbox
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSCheckbox`
+namespaces.
+
+### @semcore/skeleton
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/tab-panel
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/tab-line
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/side-panel
+
+- **Fixed** Header height doesn't increase as content increases.
+
+### @semcore/data-table
+
+- **Fixed** Lags when scrolling and header sticks
+- **Fixed** Checkbox with fixed column - body cell with checkbox is not fixed.
+- **Fixed** Incorrect value in css-selectors.
+
+### @semcore/input-mask
+
+- **Fixed** Incorrect paddings with `neighborLocation=right`.
+
+### @semcore/date-picker
+
+- **Fixed** Incorrect input trigger width calculation.
+
 ## [17.0.1] - 2026-04-16
 
 ### @semcore/core
