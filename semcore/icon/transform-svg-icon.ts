@@ -68,7 +68,7 @@ export default Icon;
   }
 
   // @ts-ignore
-  packageJson.exports = exports;
+  packageJson.exports = Object.fromEntries(Object.entries(exports).sort((a, b) => a[0].localeCompare(b[0])));
   await fs.writeFile(resolvePath(__dirname, 'package.json'), JSON.stringify(packageJson, undefined, 2));
 }
 
