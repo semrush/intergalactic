@@ -1,78 +1,86 @@
 import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
 import { MonthPicker } from '@semcore/ui/date-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+type ExampleProps = {
+  size?: 'm' | 'l';
+  disabled?: boolean;
+  state?: 'normal' | 'invalid' | 'valid';
+  neighborLocation?: 'left' | 'right' | 'both' | false;
+  locale?: 'en' | 'pl' | 'pt';
+};
+
+const Demo = (props: ExampleProps) => {
   return (
-    <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month picker
-      </Text>
-      <MonthPicker>
-        <MonthPicker.Trigger mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
+    <Flex direction='column' gap={4} mt={4}>
+      <Flex direction='column' gap={1} alignItems='start'>
+        <Text tag='label' size={200} htmlFor='month-trigger-default'>
+          Default
+        </Text>
+        <MonthPicker size={props.size} locale={props.locale}>
+          <MonthPicker.Trigger disabled={props.disabled}>
+            <MonthPicker.Trigger.SingleDateInput state={props.state}>
+              <MonthPicker.Trigger.SingleDateInput.Indicator />
+              <MonthPicker.Trigger.SingleDateInput.MaskedInput id='month-trigger-default' />
+            </MonthPicker.Trigger.SingleDateInput>
+          </MonthPicker.Trigger>
+          <MonthPicker.Popper />
+        </MonthPicker>
+      </Flex>
 
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month picker disabled
-      </Text>
-      <MonthPicker>
-        <MonthPicker.Trigger disabled mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
+      <Flex direction='column' gap={1} alignItems='start'>
+        <Text tag='label' size={200} htmlFor='month-trigger-with-value'>
+          With selected month
+        </Text>
+        <MonthPicker size={props.size} value={new Date('2024-06-15')} locale={props.locale}>
+          <MonthPicker.Trigger disabled={props.disabled}>
+            <MonthPicker.Trigger.SingleDateInput state={props.state}>
+              <MonthPicker.Trigger.SingleDateInput.Indicator />
+              <MonthPicker.Trigger.SingleDateInput.MaskedInput id='month-trigger-with-value' />
+            </MonthPicker.Trigger.SingleDateInput>
+          </MonthPicker.Trigger>
+          <MonthPicker.Popper />
+        </MonthPicker>
+      </Flex>
 
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month  size in picker
-      </Text>
-      <MonthPicker size='l'>
-        <MonthPicker.Trigger mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
-
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month picker L
-      </Text>
-      <MonthPicker>
-        <MonthPicker.Trigger size='l' mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
-
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month picker placeholder
-      </Text>
-      <MonthPicker>
-        <MonthPicker.Trigger placeholder='123' mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
-
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month picker invalid
-      </Text>
-      <MonthPicker>
-        <MonthPicker.Trigger state='invalid' size='l' mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
-
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month picker valid
-      </Text>
-      <MonthPicker>
-        <MonthPicker.Trigger state='valid' mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
-
-      <Text tag='label' size={200} htmlFor='simple-month-picker'>
-        Simple month picker invalid disabled
-      </Text>
-      <MonthPicker>
-        <MonthPicker.Trigger disabled state='invalid' size='l' mt={2} id='simple-month-picker' />
-        <MonthPicker.Popper />
-      </MonthPicker>
-
+      <Flex direction='column' gap={1} alignItems='start'>
+        <Text tag='label' size={200} htmlFor='month-trigger-neighbor'>
+          With neighbor location
+        </Text>
+        <Flex>
+          {(props.neighborLocation === 'left' || props.neighborLocation === 'both') && (
+            <Button size={props.size} neighborLocation='right'>Left</Button>
+          )}
+          <MonthPicker size={props.size} locale={props.locale}>
+            <MonthPicker.Trigger
+              disabled={props.disabled}
+              neighborLocation={props.neighborLocation}
+            >
+              <MonthPicker.Trigger.SingleDateInput state={props.state}>
+                <MonthPicker.Trigger.SingleDateInput.Indicator />
+                <MonthPicker.Trigger.SingleDateInput.MaskedInput id='month-trigger-neighbor' />
+              </MonthPicker.Trigger.SingleDateInput>
+            </MonthPicker.Trigger>
+            <MonthPicker.Popper />
+          </MonthPicker>
+          {(props.neighborLocation === 'right' || props.neighborLocation === 'both') && (
+            <Button size={props.size} neighborLocation='left'>Right</Button>
+          )}
+        </Flex>
+      </Flex>
     </Flex>
-
   );
 };
 
+export const defaultMonthTriggerProps: ExampleProps = {
+  size: 'm',
+  disabled: false,
+  state: 'normal',
+  neighborLocation: 'both',
+  locale: 'en',
+};
+
+Demo.defaultProps = defaultMonthTriggerProps;
 export default Demo;

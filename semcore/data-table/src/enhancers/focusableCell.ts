@@ -6,7 +6,6 @@ export type LockedCell = [HTMLElement | null, boolean];
 export function handleFocusCell(lockedCell: LockedCell, target: Element, currentTarget: Element) {
   if (target instanceof HTMLElement && currentTarget instanceof HTMLElement && target === currentTarget && target.matches(':focus-visible')) {
     target.scrollIntoView({
-      behavior: 'smooth',
       block: 'center',
       inline: 'center',
     });
@@ -18,7 +17,6 @@ export function handleFocusCell(lockedCell: LockedCell, target: Element, current
     if (focusableChildren.length === 1) {
       focusableChildren[0].focus({ focusVisible: true });
       focusableChildren[0].scrollIntoView({
-        behavior: 'smooth',
         block: 'center',
         inline: 'center',
       });

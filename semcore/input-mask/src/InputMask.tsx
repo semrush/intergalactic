@@ -14,7 +14,7 @@ import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
 import React from 'react';
-import { createTextMaskInputElement } from 'text-mask-core';
+import * as mask from 'text-mask-core';
 
 import style from './style/input-mask.shadow.css';
 
@@ -84,6 +84,8 @@ type InputMaskCtx = {
   getInputProps: PropGetterFn;
   getValueProps: PropGetterFn;
 };
+
+const { createTextMaskInputElement } = mask;
 
 export function getAfterPositionValue(value: string, mask: any = ''): number {
   const { length } = value;

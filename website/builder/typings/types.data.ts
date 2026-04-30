@@ -102,43 +102,6 @@ export default {
           const { dependencies, ...declaration } = typing;
           const uniqueDependencies = [...new Set(dependencies)];
 
-          if ('type' in declaration && declaration.type.length > 0) {
-            if (typeof declaration.type[0] === 'string' && declaration.type[0]?.includes('keyof') && declaration.type[1]?.referenceTo) {
-              if (declaration.type[2]?.includes('as `')) {
-                let nestedType: undefined | typeof serialized[number]['types'][number];
-
-                for (const s of serialized) {
-                  for (const sType of s.types) {
-                    if (sType.name === declaration.type[1].referenceTo) {
-                      nestedType = sType;
-                      break;
-                    }
-                  }
-
-                  if (nestedType) {
-                    break;
-                  }
-                }
-
-                if (nestedType && nestedType.properties) {
-                  const prefix = declaration.type[2].match(/as `(\w+):/);
-
-                  declaration.type.push({
-                    properties: nestedType.properties.map((prop: any) => {
-                      return {
-                        ...prop,
-                        name: `${prefix[1]}:${prop.name}`,
-                      };
-                    }),
-                  });
-                }
-                if (nestedType && nestedType.type) {
-                  declaration.type.push(nestedType.type);
-                }
-              }
-            }
-          }
-
           typings[typing.name] = {
             filepath: file.filepath,
             dependencies: uniqueDependencies,

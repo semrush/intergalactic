@@ -5,10 +5,8 @@ import {
   toBeInTheDocument,
 } from '@testing-library/jest-dom/matchers';
 
-import { toMatchImageSnapshot } from './toMatchImageSnapshot';
 import { expect, vi } from './vitest';
 expect.extend({
-  toMatchImageSnapshot,
   toHaveStyle,
   toHaveFocus,
   toHaveAttribute,
@@ -47,3 +45,9 @@ class IntersectionObserverMock {
 }
 
 vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+
+vi.stubGlobal('CSS', {
+  supports: (property: string, value?: string) => {
+    return false;
+  },
+});
