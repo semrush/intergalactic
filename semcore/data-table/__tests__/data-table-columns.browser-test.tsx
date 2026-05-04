@@ -106,6 +106,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     expect(isShadowExist).toBe(false);
 
     await page.setViewportSize({ width: 400, height: 700 });
+    await page.waitForTimeout(100);
 
     await expect.poll(
       () => lastColumn.evaluate((node) => {

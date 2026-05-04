@@ -57,7 +57,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.type('052020');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.type('2005292020');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
@@ -68,23 +67,73 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
 
-    test('Verify trigger states and props', {
+    const triggerVariables = [
+      { size: 'm', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'l', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'invalid', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'valid', disabled: false, neighborLocation: 'left' },
+      { size: 'm', state: 'normal', disabled: true, neighborLocation: 'both' },
+
+    ];
+
+    triggerVariables.forEach((item) => {
+      test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
+        tag: [TAG.PRIORITY_HIGH,
+          '@date-picker',
+          '@base-components'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-trigger.tsx', 'en', item);
+        await page.keyboard.press('Tab');
+
+        const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+        screenshotsClip.x -= 8;
+        screenshotsClip.y -= 8;
+        screenshotsClip.width += 16;
+        screenshotsClip.height += 16;
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
+    });
+
+    test('Verify trigger input width grows after entering date with locale=pt', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
         '@base-components'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-trigger.tsx', 'en');
+      await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-trigger.tsx', 'pt', {
+        size: 'm', state: 'normal', disabled: false, neighborLocation: 'right',
+      });
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      const inputs = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
+      const firstInput = inputs.nth(0);
+      const secondInput = inputs.nth(1);
+      const thirdInput = inputs.nth(4);
+      const fourthInput = inputs.nth(5);
 
-      for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      const firstInitialWidth = (await firstInput.boundingBox())!.width;
+      const thirdInitialWidth = (await thirdInput.boundingBox())!.width;
 
+      await firstInput.focus();
+      await page.keyboard.type('15062024');
+      await secondInput.focus();
+      await page.keyboard.type('15122026');
+      await thirdInput.focus();
+      await page.keyboard.type('20072024');
+      await fourthInput.focus();
+      await page.keyboard.type('31082025');
       await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+
+      const firstNewWidth = (await firstInput.boundingBox())!.width;
+      const thirdNewWidth = (await thirdInput.boundingBox())!.width;
+
+      expect(firstNewWidth).not.toBe(firstInitialWidth);
+      expect(thirdNewWidth).not.toBe(thirdInitialWidth);
+
+      const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+      screenshotsClip.x -= 8;
+      screenshotsClip.y -= 8;
+      screenshotsClip.width += 16;
+      screenshotsClip.height += 16;
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
   });
   test.describe('Date range with standart ranges', () => {

@@ -8,6 +8,7 @@ const meta: Meta = {
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
+
 export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultProps> = {
   render: LinkButtonLinkTextCombinationExample,
   argTypes: {

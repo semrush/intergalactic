@@ -58,6 +58,17 @@ export const Checkbox: StoryObj<CheckboxReactiveProps> = {
       control: 'boolean',
       description: 'Enable fixed left/right columns with horizontal scroll',
     },
+    compact: {
+      control: 'boolean',
+    },
+    sideIndents: {
+      control: { type: 'select' },
+      options: ['wide', 'default'],
+    },
+    use: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+    },
   },
   args: checkboxReactiveProps,
 };

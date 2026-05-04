@@ -68,7 +68,7 @@ declare namespace NSText {
     [K in keyof EllipsisSettings as `ellipsis:${string & K}`]?: EllipsisSettings[K];
   };
 
-  type Props = BoxProps & BaseProps &
+  type Props = BoxProps & NSText.BaseProps &
     (
       | {
         /** Enable formatting/styling for all nested HTML tags with our default styles for them */
@@ -80,7 +80,7 @@ declare namespace NSText {
       }
       | ({
         formatTags?: never;
-      } & HintProps & EllipsisProps)
+      } & NSText.HintProps & NSText.EllipsisProps)
     );
 
   type Component = Intergalactic.Component<'span', Props>;

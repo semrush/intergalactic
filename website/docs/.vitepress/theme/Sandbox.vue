@@ -85,7 +85,9 @@ const codesandboxUrl = computed(() => {
             '@types/react': '18',
             '@fontsource/inter': '5',
             '@semcore/base-components': 'latest',
-            '@semcore/core': 'latest'
+            '@semcore/core': 'latest',
+            '@semcore/icon': 'latest',
+            '@semcore/illustration': 'latest',
           },
         },
       },
