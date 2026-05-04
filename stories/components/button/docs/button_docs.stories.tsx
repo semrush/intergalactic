@@ -8,30 +8,33 @@ import ButtonLinkExample from './examples/button_link';
 import ButtonWithIconExample from './examples/button_with_icon';
 import ButtonLoadingExample from './examples/button_with_loading';
 import { playWrapper } from '../../../utils/playWrapper';
+
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Documentation',
   component: Button,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof Button>;
+
 export const Addons: Story = {
   render: AddonsExample,
-
 };
+
 export const IconOnlyButton: Story = {
   render: ButtonWithIconExample,
-
 };
+
 export const ButtonLikeALink: Story = {
   render: ButtonLinkExample,
-
 };
+
 export const ButtonWithNoVisibleText: Story = {
   render: ButtonAccessibilityExample,
   play: playWrapper(ButtonAccessibilityTest),
-
 };
+
 export const ButtonWithLoadingState: Story = {
   render: ButtonLoadingExample,
-
 };

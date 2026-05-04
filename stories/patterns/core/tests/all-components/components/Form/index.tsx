@@ -26,7 +26,7 @@ export function Form() {
   const columnStyle = { flex: '1 1 calc(50% - 8px)', minWidth: 0, maxWidth: 'calc(50% - 8px)' } as const;
 
   return (
-    <Flex mt={4} gap={4} alignItems='flex-start' w='100%' flexWrap='wrap'>
+    <Flex mt={4} gap={4} alignItems='flex-start' w='100%' flexWrap>
       <Card w='100%' style={columnStyle}>
         <Card.Header>
           <Card.Title innerHint='Something'>Form</Card.Title>

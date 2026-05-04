@@ -26,7 +26,9 @@ const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Scroll',
   component: DataTable,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof DataTable>;
 
 export const ScrollInTable: StoryObj<ScrollInTableProps> = {
@@ -154,6 +156,7 @@ export const RealTable: Story = {
 export const CaseWithW100: Story = {
   render: CaseWithW100Example,
 };
+
 export const CampaingsTable: Story = {
   render: CampaingsTableExample,
 };

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import BaseExample, { defaultLinkTriggerProps } from './examples/link-trigger/base';
 import DifferentSizesExample, { defaultLinkTriggerSizesProps } from './examples/link-trigger/link-trigger-different-sizes';
 import SelectExample, { linkTriggerSelectExampleProps } from './examples/link-trigger/with-select';
+
 const sharedArgTypes = {
   size: {
     control: { type: 'select' },
@@ -22,7 +23,9 @@ const sharedArgTypes = {
 const meta: Meta = {
   title: 'Components/Base Trigger/Test/Link Trigger',
 };
+
 export default meta;
+
 export const Base: StoryObj<typeof defaultLinkTriggerProps> = {
   render: BaseExample,
   argTypes: {
@@ -78,8 +81,8 @@ export const Base: StoryObj<typeof defaultLinkTriggerProps> = {
     },
   },
   args: defaultLinkTriggerProps,
-
 };
+
 export const Select: StoryObj<typeof linkTriggerSelectExampleProps> = {
   render: SelectExample,
   argTypes: {
@@ -111,8 +114,8 @@ export const Select: StoryObj<typeof linkTriggerSelectExampleProps> = {
     },
   },
   args: linkTriggerSelectExampleProps,
-
 };
+
 export const DifferentSizes: StoryObj<typeof defaultLinkTriggerSizesProps> = {
   render: DifferentSizesExample,
   argTypes: {
@@ -128,5 +131,4 @@ export const DifferentSizes: StoryObj<typeof defaultLinkTriggerSizesProps> = {
     ellipsis: { control: { type: 'boolean' } },
   },
   args: defaultLinkTriggerSizesProps,
-
 };

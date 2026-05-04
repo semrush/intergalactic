@@ -5,10 +5,13 @@ import ButtonLinkIconOnlyExample, { defaultButtonLinkIconOnlyProps } from './exa
 import ButtonLinkInTextExample, { defaultButtonLinkInTextProps } from './examples/button-link/button-link-in-text';
 import ButtonLinkSizesAddonsExample, { defaultButtonLinkSizesProps } from './examples/button-link/button-link-sizes-addons';
 import ButtonLinkSizesWrapExample from './examples/button-link/button-link-sizes-wrap';
+
 const meta: Meta = {
   title: 'Components/Button/Tests/Button Link',
 };
+
 export default meta;
+
 const commonArgTypes = {
   size: {
     control: { type: 'number' },
@@ -87,24 +90,24 @@ export const ButtonLinkBase: StoryObj<typeof defaultButtonLinkProps> = {
     },
   },
   args: defaultButtonLinkProps,
-
 };
+
 export const ButtonLinkInText: StoryObj<typeof defaultButtonLinkInTextProps> = {
   render: ButtonLinkInTextExample,
   argTypes: commonArgTypes,
   args: defaultButtonLinkInTextProps,
-
 };
+
 export const ButtonLinkIconOnly: StoryObj<typeof defaultButtonLinkIconOnlyProps> = {
   render: ButtonLinkIconOnlyExample,
   argTypes: commonArgTypes,
   args: defaultButtonLinkIconOnlyProps,
-
 };
+
 export const ButtonLinkSizesWrap: StoryObj = {
   render: ButtonLinkSizesWrapExample,
-
 };
+
 export const ButtonLinkSizesAddons: StoryObj<typeof defaultButtonLinkSizesProps> = {
   render: ButtonLinkSizesAddonsExample,
   args: defaultButtonLinkSizesProps,
@@ -119,5 +122,4 @@ export const ButtonLinkSizesAddons: StoryObj<typeof defaultButtonLinkSizesProps>
       options: ['icon', 'badge', 'counter', 'spin'],
     },
   },
-
 };

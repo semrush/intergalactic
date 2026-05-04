@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import StackBarPropsExample, { defaultProps as StackBarPropsDefaultProps } from './examples/stacked-bar-chart/stack-bar-props-cases';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Stacked-Bar-Chart',
 };
+
 export default meta;
+
 export const StackBarProps: StoryObj = {
   render: StackBarPropsExample,
   argTypes: {

@@ -10,11 +10,14 @@ import EncodeOnchangeArrayExample from './examples/encode-onchange-array';
 import LinesAndIndexInPastePropsExample from './examples/lines-and-index-in-paste';
 import OnSubmitExample from './examples/on-submit-example';
 import WithNewValueOnHandleChangeExample from './examples/with-new-value-on-handleChange';
+
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Tests',
   component: BulkTextarea,
 };
+
 export default meta;
+
 const sharedArgTypes = {
   size: { control: { type: 'select' }, options: ['m', 'l'] },
   state: { control: { type: 'select' }, options: ['normal', 'valid', 'invalid'] },
@@ -36,37 +39,38 @@ export const BasicProps: StoryObj = {
   render: BasicPropsExample,
   argTypes: sharedArgTypes,
   args: defaultBulkTextareaProps,
-
 };
+
 export const ControlledErrors: StoryObj = {
   render: ControlledErrorsExample,
-
 };
+
 export const ControlledAndNotControlledErrors: StoryObj = {
   render: ControlledAndNotControlledErrorsExample,
   argTypes: sharedArgTypes,
   args: controlledAndNotControlledProps,
-
 };
+
 export const EncodeOnchangeArray: StoryObj = {
   render: EncodeOnchangeArrayExample,
-
 };
+
 export const EmptyValueInPaste: StoryObj = {
   render: EmptyValueInPasteExample,
-
 };
+
 export const LinesAndIndexInPasteProps: StoryObj = {
   render: LinesAndIndexInPastePropsExample,
-
 };
+
 export const WithNewValueOnHandleChange: StoryObj = {
   render: WithNewValueOnHandleChangeExample,
-
 };
+
 const sharedPasteProps = {
   lineProcessing: (line: string) => line.replace(/http:\/\//, ''),
 };
+
 export const OnSubmit: StoryObj = {
   args: {
     maxLines: 30,
@@ -106,5 +110,4 @@ export const BlurLine: StoryObj = {
     ...sharedPasteProps,
   },
   render: BlurLineExample,
-
 };

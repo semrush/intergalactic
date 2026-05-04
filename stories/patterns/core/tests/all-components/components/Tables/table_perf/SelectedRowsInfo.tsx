@@ -36,7 +36,7 @@ export function SelectedRowsInfo({ selectedRows }: Props) {
         {' '}
         <Text bold>{count}</Text>
       </Text>
-      <Button use='tertiary' onClick={handleDeselectAll}>
+      <Button use='tertiary' onClick={handleDeselectAll} disabled={count === 0}>
         Deselect all
       </Button>
     </Flex>

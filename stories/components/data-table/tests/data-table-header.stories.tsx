@@ -12,30 +12,37 @@ import MultiLevelInteractivePropsExample, { multiLevelInteractiveProps } from '.
 import type { MultiLevelInteractiveProps } from './examples/header-tests/multi-level-with-interactive';
 import OneLevelInteractiveHeaderExample, { oneLevelInteractiveExampleProps } from './examples/header-tests/one-level-interactive-header';
 import type { OneLevelInteractiveExampleProps } from './examples/header-tests/one-level-interactive-header';
+
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Header',
   component: DataTable,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof DataTable>;
+
 export const BaseOneLevelHeader: StoryObj<OneLevelHeaderBaseProps> = {
   render: BaseOneLevelHeaderExample,
   args: {
     ...baseDefaultProps,
   },
 };
+
 export const OneLevelInteractiveHeader: StoryObj<OneLevelInteractiveExampleProps> = {
   render: OneLevelInteractiveHeaderExample,
   args: {
     ...oneLevelInteractiveExampleProps,
   },
 };
+
 export const MultiLevelNonInteractivePropsStory: StoryObj<MultiLevelNonInteractiveProps> = {
   render: MultiLevelNonInteractivePropsExample,
   args: {
     ...multiLevelNonInteractiveProps,
   },
 };
+
 export const MultiLevelInteractivePropsStory: StoryObj<MultiLevelInteractiveProps> = {
   render: MultiLevelInteractivePropsExample,
   args: {
@@ -43,6 +50,7 @@ export const MultiLevelInteractivePropsStory: StoryObj<MultiLevelInteractiveProp
     sideIndents: 'wide',
   },
 };
+
 export const LongHeaderEllipsis: StoryObj<LongHeaderEllipsisProps> = {
   render: LongHeaderEllipsisExample,
   args: {
@@ -50,6 +58,7 @@ export const LongHeaderEllipsis: StoryObj<LongHeaderEllipsisProps> = {
     sideIndents: 'wide',
   },
 };
+
 export const MultiLevelBorders: Story = {
   render: MultiLevelBodersExample,
 };

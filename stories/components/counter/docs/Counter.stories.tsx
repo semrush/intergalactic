@@ -12,12 +12,16 @@ import CounterInFormsExample from './examples/counter_in_forms';
 import CounterInLimitsExample from './examples/counter_in_limits';
 import CounterInPillsExample from './examples/counter_in_pills';
 import { playWrapper } from '../../../utils/playWrapper';
+
 const meta: Meta<typeof Counter> = {
   title: 'Components/Counter/Documentation',
   component: Counter,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof Counter>;
+
 export const AnimatedNumber: StoryObj<typeof AnimatedNumberProps> = {
   render: AnimatedNumberExample,
   argTypes: {
@@ -29,34 +33,33 @@ export const AnimatedNumber: StoryObj<typeof AnimatedNumberProps> = {
     },
   },
   args: AnimatedNumberProps,
-
 };
+
 export const CounterAndTypography: Story = {
   render: CounterAndTypographyExample,
-
 };
+
 export const CounterInButton: Story = {
   render: CounterInButtonExample,
-
 };
+
 export const CounterInDot: Story = {
   render: CounterInDotExample,
-
 };
+
 export const CounterInFilters: Story = {
   render: CounterInFiltersExample,
   play: playWrapper(CounterInFiltersTest),
-
 };
+
 export const CounterInForms: Story = {
   render: CounterInFormsExample,
-
 };
+
 export const CounterInLimits: Story = {
   render: CounterInLimitsExample,
-
 };
+
 export const CounterInPills: Story = {
   render: CounterInPillsExample,
-
 };

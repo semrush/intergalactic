@@ -4,13 +4,17 @@ import GridAxisPropsExample, { defaultProps as BasicUsageProps } from './example
 import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
 import ReferenceLinePropsExample from './examples/d3-chart/reference-line-props';
 import XAsisiRenderDelayedExample from './examples/d3-chart/xAxis-ticks-render-delayed';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/D3-Chart',
 };
+
 export default meta;
+
 export const PlotAndA11yProps: StoryObj = {
   render: PlotAndA11yPropsExample,
 };
+
 export const GridAxisProps: StoryObj<typeof BasicUsageProps> = {
   render: GridAxisPropsExample,
   argTypes: {
@@ -21,9 +25,11 @@ export const GridAxisProps: StoryObj<typeof BasicUsageProps> = {
   },
   args: BasicUsageProps,
 };
+
 export const ReferenceLineProps: StoryObj = {
   render: ReferenceLinePropsExample,
 };
+
 export const XAsisiRenderDelayed: StoryObj = {
   render: XAsisiRenderDelayedExample,
 };

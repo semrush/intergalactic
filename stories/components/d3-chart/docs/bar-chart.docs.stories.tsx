@@ -9,34 +9,45 @@ import LegendAndPatternFillExample from './examples/bar-chart/legend-and-pattern
 import NegativeValuesExample from './examples/bar-chart/negative-values';
 import TooltipExample from './examples/bar-chart/tooltip';
 import TrendLineExample from './examples/bar-chart/trend-line';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Bar-Chart',
 };
+
 export default meta;
+
 export const BarHover: StoryObj = {
   render: BarHoverExample,
 };
+
 export const Bar: StoryObj = {
   render: BarExample,
 };
+
 export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
 };
+
 export const DateFormat: StoryObj = {
   render: DateFormatExample,
 };
+
 export const GroupedBars: StoryObj = {
   render: GroupedBarsExample,
 };
+
 export const NegativeValues: StoryObj = {
   render: NegativeValuesExample,
 };
+
 export const Tooltip: StoryObj = {
   render: TooltipExample,
 };
+
 export const TrendLine: StoryObj = {
   render: TrendLineExample,
 };
+
 export const LegendAndPatternFill: StoryObj = {
   render: LegendAndPatternFillExample,
 };

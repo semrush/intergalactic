@@ -4,10 +4,13 @@ import ButtonBaseExample, { defaultButtonProps } from './examples/button-base';
 import ButtonIconOnlyExample, { defaultIconButtonProps } from './examples/button-icon-only';
 import ButtonNeighborLocationExample, { defaultButtonNeighborProps } from './examples/button-neighbor-location';
 import ButtonWithEllipsisExample, { defaultButtonEllipsisProps } from './examples/button-with-ellipsis';
+
 const meta: Meta = {
   title: 'Components/Button/Tests',
 };
+
 export default meta;
+
 const commonArgTypes = {
   size: {
     control: { type: 'select' },
@@ -39,20 +42,20 @@ export const ButtonBase: StoryObj<typeof defaultButtonProps> = {
   render: ButtonBaseExample,
   argTypes: commonArgTypes,
   args: defaultButtonProps,
-
 };
+
 export const ButtonIconOnly: StoryObj<typeof defaultIconButtonProps> = {
   render: ButtonIconOnlyExample,
   argTypes: commonArgTypes,
   args: defaultIconButtonProps,
-
 };
+
 export const ButtonNeighborLocation: StoryObj<typeof defaultButtonNeighborProps> = {
   render: ButtonNeighborLocationExample,
   argTypes: commonArgTypes,
   args: defaultButtonNeighborProps,
-
 };
+
 const ellipsisHintArgTypes = {
   ...commonArgTypes,
   ellipsis: {
@@ -90,5 +93,4 @@ export const ButtonWithEllipsis: StoryObj<typeof defaultButtonEllipsisProps> = {
   render: ButtonWithEllipsisExample,
   argTypes: ellipsisHintArgTypes,
   args: defaultButtonEllipsisProps,
-
 };

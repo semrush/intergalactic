@@ -8,7 +8,7 @@ const THEMES_ON_LIGHT = ['info', 'warning', 'danger'] as const;
 
 export default function AllThemes() {
   return (
-    <Flex gap={8} alignItems='flex-start' flexWrap='wrap'>
+    <Flex gap={8} alignItems='flex-start' flexWrap>
       <Flex direction='column' gap={4}>
         {SIZES.map((size) => (
           <Flex key={size} gap={4} flexWrap alignItems='center'>

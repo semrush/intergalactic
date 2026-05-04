@@ -11,38 +11,41 @@ import LabelAndColorExpandedExample from './examples/label-and-color-expanded';
 import TriggersExample from './examples/triggers';
 import { playWrapper } from '../../../utils/playWrapper';
 import { InputValidationTest } from '../docs/__tests__/input_validation.test';
+
 const meta: Meta<typeof ColorPicker> = {
   title: 'Components/ColorPicker/Tests',
   component: ColorPicker,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof ColorPicker>;
+
 export const BaseNoPaletteManager: Story = {
   render: BaseNoPaletteManagerExample,
-
 };
+
 export const InputColorAndItemsProps: Story = {
   render: InputColorAndItemsPropsExample,
-
 };
+
 export const Triggers: Story = {
   render: TriggersExample,
-
 };
+
 export const LabelAndColorExpanded: Story = {
   render: LabelAndColorExpandedExample,
-
 };
+
 export const ColorPickerProps: Story = {
   render: ColorPickerPropsExample,
-
 };
+
 export const ColorsAndPaletterManagerProps: Story = {
   render: ColorsAndPaletterManagerPropsExample,
-
 };
+
 export const InputValidation: Story = {
   render: InputValidationExample,
   play: playWrapper(InputValidationTest),
-
 };

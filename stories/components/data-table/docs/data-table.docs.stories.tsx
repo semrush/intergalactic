@@ -37,32 +37,36 @@ import TableInTableExample, { tableInTableDefaultProps } from './examples/table-
 import TableInTableWithFixedColumnExample, { accordionTableDefaultProps } from './examples/table-in-table-with-fixed-column';
 import VirtualScrollInTableExample from './examples/virtual-scroll-in-table';
 import VirtualScrollInTableDifferentHeightExample from './examples/virtual-scroll-in-table-different-height';
+
 const meta = {
   title: 'Components/DataTable/Documentation',
 };
+
 export default meta;
+
 type Story = StoryObj<typeof DataTable>;
+
 export const Base: Story = {
   render: BaseExample,
-
 };
+
 export const AccessToCells: Story = {
   render: AccessToCellsExample,
-
 };
+
 export const AccessToSetOfCells: Story = {
   render: AccessToSetOfCellsExample,
-
 };
+
 export const AccordionInsideTable: StoryObj<AccordionInTableProps> = {
   render: AccordionInsideTableExample,
   args: accordionInsideTableDefaultProps,
-
 };
+
 export const Borders: Story = {
   render: BordersExample,
-
 };
+
 export const CheckboxInTable: StoryObj<typeof CheckboxInTableProps> = {
   render: CheckboxInTableExample,
   argTypes: {
@@ -82,84 +86,84 @@ export const CheckboxInTable: StoryObj<typeof CheckboxInTableProps> = {
     },
   },
   args: CheckboxInTableProps,
-
 };
+
 export const ColumnAlignment: Story = {
   render: ColumnAlignmentExample,
-
 };
+
 export const ColumnSize: Story = {
   render: ColumnSizeExample,
-
 };
+
 export const ColumnsMerging: Story = {
   render: ColumnsMergingExample,
-
 };
+
 export const Compact: Story = {
   render: CompactExample,
-
 };
+
 export const CustomRowsRendering: Story = {
   render: CustomRowsRenderingExample,
-
 };
+
 export const CustomizingHeader: Story = {
   render: CustomizingHeaderExample,
-
 };
+
 export const EmptyTable: Story = {
   render: EmptyTableExample,
-
 };
+
 export const ExportInImage: Story = {
   render: ExportInImageExample,
-
 };
+
 export const FixedColumns: Story = {
   render: FixedColumnsExample,
-
 };
+
 export const FixedHeader: Story = {
   render: FixedHeaderExample,
-
 };
+
 export const MultiLevelHeader: Story = {
   render: MultiLevelHeaderExample,
-
 };
+
 export const Pagination: Story = {
   render: PaginationExample,
-
 };
+
 export const RowsMerging: Story = {
   render: RowsMergingExample,
-
 };
+
 export const RowThemes: Story = {
   render: RowThemesExample,
-
 };
+
 export const ScrollInTable: Story = {
   render: ScrollInTableExample,
-
 };
+
 export const SecondaryTable: Story = {
   render: SecondaryTableExample,
-
 };
+
 export const SkeletonInTable: Story = {
   render: SkeletonInTableExample,
-
 };
+
 export const SpinContainerInTable: Story = {
   render: SpinContainerInTableExample,
-
 };
+
 export const Sorting: Story = {
   render: SortingExample,
-
 };
+
 export const SortingChangingSize: StoryObj<SortTableProps> = {
   render: SortingChangingSizeExample,
   args: defaultTableProps,
@@ -171,8 +175,8 @@ export const SortingChangingSize: StoryObj<SortTableProps> = {
       options: ['primary', 'secondary', undefined],
     },
   },
-
 };
+
 export const TableInTable: StoryObj<TableInTableProps> = {
   render: TableInTableExample,
   args: {
@@ -186,23 +190,22 @@ export const TableInTable: StoryObj<TableInTableProps> = {
       options: ['toggle', 'independed', undefined],
     },
   },
-
 };
+
 export const TableInTableWithFixedColumn: StoryObj<AccordionInTableProps> = {
   render: TableInTableWithFixedColumnExample,
   args: accordionTableDefaultProps,
-
 };
+
 export const VirtualScrollInTable: Story = {
   render: VirtualScrollInTableExample,
-
 };
+
 export const VirtualScrollInTableDifferentHeight: Story = {
   render: VirtualScrollInTableDifferentHeightExample,
-
 };
+
 export const LimitedMode: StoryObj<LimitedModeExampleProps> = {
   render: LimitedModeExample,
   args: limitedModeDefaultProps,
-
 };

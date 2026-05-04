@@ -6,7 +6,7 @@ import { ButtonLinkRow, ButtonRow } from './button-helpers';
 export default function AllButtons() {
   return (
     <Flex direction='column' gap={8}>
-      <Flex gap={8} alignItems='flex-start' flexWrap='wrap'>
+      <Flex gap={8} alignItems='flex-start' flexWrap>
         <Flex direction='column' gap={6}>
           <Flex gap={8} flexWrap alignItems='center'>
             <ButtonRow use='primary' theme='info' />
@@ -56,7 +56,7 @@ export default function AllButtons() {
           </Flex>
         </Box>
       </Flex>
-      <Flex gap={8} alignItems='flex-start' flexWrap='wrap'>
+      <Flex gap={8} alignItems='flex-start' flexWrap>
         <Flex direction='column' gap={6}>
           <Flex gap={8} flexWrap alignItems='center'>
             <ButtonLinkRow use='primary' />

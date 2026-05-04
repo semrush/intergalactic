@@ -1,7 +1,7 @@
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { CellRenderProps, DataTableSort, SelectableRows } from '@semcore/ui/data-table';
-import { ACCORDION, DataTable } from '@semcore/ui/data-table';
+import { DataTable } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
@@ -13,10 +13,7 @@ function rowMatchesNameQuery(row: Record<string, unknown>, query: string): boole
   if (!q) {
     return true;
   }
-  for (const [key, value] of Object.entries(row)) {
-    if (key === ACCORDION) {
-      continue;
-    }
+  for (const [, value] of Object.entries(row)) {
     if (value == null) {
       continue;
     }
@@ -30,14 +27,13 @@ function rowMatchesNameQuery(row: Record<string, unknown>, query: string): boole
   return false;
 }
 
-const BIG_TABLE_ROW_THEMES: Partial<
-  Record<string, 'success' | 'danger' | 'warning' | 'muted'>
-> = {
-  '508ba539-d1b2-4de1-bfcd-f877f08425d6': 'success',
-  '7602a0f3-e3bc-4c73-a710-ba76ea45700b': 'danger',
-  '602c4ceb-7ac7-421f-adce-583f798eda48': 'warning',
-  'faf1b384-da0b-447e-ab82-e0f9080245e2': 'muted',
-};
+const BIG_TABLE_ROW_THEMES: Array<'success' | 'warning' | 'danger' | 'info' | 'muted'> = [
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'muted',
+];
 
 const TABLE_LIMIT: NonNullable<React.ComponentProps<typeof DataTable>['limit']> = {
   fromRow: 5,
@@ -93,7 +89,7 @@ const Demo = (props: Props) => {
     return rows.filter((row) => rowMatchesNameQuery(row as Record<string, unknown>, q));
   }, [props.currentPage, props.nameSearchQuery]);
 
-  const [sort, setSort] = React.useState<DataTableSort<string>>(['payment_status', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<any>>(['payment_status', 'desc']);
   const sortedData = React.useMemo(
     () =>
       [...tableData].sort((aRow, bRow) => {
@@ -132,10 +128,8 @@ const Demo = (props: Props) => {
       renderCell={props.CellRenderer}
       sort={sort}
       onSortChange={setSort}
-      rowProps={(row) => {
-        const id = String(row.payment_intent_id);
-        const baseId = id.includes('__') ? id.slice(id.indexOf('__') + 2) : id;
-        const theme = BIG_TABLE_ROW_THEMES[baseId];
+      rowProps={(_row, rowIndex) => {
+        const theme = BIG_TABLE_ROW_THEMES[rowIndex];
         return theme ? { theme } : {};
       }}
       {...(showEmptySearch

@@ -10,9 +10,11 @@ import FilterTriggerSelectWithEllipsisExample from './examples/filter-trigger-se
 import FilterTriggerWithCounterExample from './examples/filter-trigger_with_counter';
 import type { defaultProps as LinkTriggerExampleProps } from './examples/link-trigger-ellipsis';
 import LinkTriggerEllipsisExample from './examples/link-trigger-ellipsis';
+
 const meta: Meta = {
   title: 'Components/Base Trigger/Advanced',
 };
+
 const commonArgTypes = {
   hintProps: {
     control: 'select',
@@ -32,35 +34,35 @@ export const LinkTriggerEllipsis: StoryObj<typeof LinkTriggerExampleProps> = {
   argTypes: {
     ...commonArgTypes,
   },
-
 };
+
 export const BaseTriggerEllipsis: StoryObj<typeof BaseTriggerExampleProps> = {
   render: BaseTriggerEllipsisExample,
   argTypes: {
     ...commonArgTypes,
   },
-
 };
+
 export const FilterTriggerSelectWithEllipsis: StoryObj = {
   render: FilterTriggerSelectWithEllipsisExample,
-
 };
+
 export const ButtonTriggerEllipsis: StoryObj<typeof ButtonTriggerExampleProps> = {
   render: ButtonTriggerEllipsisExample,
   argTypes: {
     ...commonArgTypes,
   },
-
 };
+
 export const FilterTriggerEllipsis: StoryObj<typeof FilterTriggerExampleProps> = {
   render: FilterTriggerEllipsisExample,
   argTypes: {
     ...commonArgTypes,
   },
-
 };
+
 export const FilterTriggerWithCounter: StoryObj = {
   render: FilterTriggerWithCounterExample,
-
 };
+
 export default meta;

@@ -6,24 +6,28 @@ import CardWithDescriptionTooltipInBodyExample from './examples/card_with_descri
 import DifferentCardsExample from './examples/different-cards';
 import type { TableInCardProps } from './examples/table-with-accordions-in-card';
 import TableWithAccordionsInCardExample, { tableInCardDefaultProps } from './examples/table-with-accordions-in-card';
+
 const meta: Meta<typeof Card> = {
   title: 'Components/Card/Tests',
   component: Card,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof Card>;
+
 export const CardLayoutForSortableTables: Story = {
   render: CardLayoutForSortableTablesExample,
-
 };
+
 export const CardWithDescriptionTooltipInBody: Story = {
   render: CardWithDescriptionTooltipInBodyExample,
-
 };
+
 export const DifferentCards: Story = {
   render: DifferentCardsExample,
-
 };
+
 export const TableWithAccordionsInCard: StoryObj<TableInCardProps> = {
   render: TableWithAccordionsInCardExample,
   args: {
@@ -49,5 +53,4 @@ export const TableWithAccordionsInCard: StoryObj<TableInCardProps> = {
       options: [true, undefined],
     },
   },
-
 };

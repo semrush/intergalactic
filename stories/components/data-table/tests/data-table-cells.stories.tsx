@@ -17,12 +17,16 @@ import OneBigMergedRowAndScrollExample from './examples/cells-tests/one-big-merg
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
 import SelectableWithMergedRowsColumnsExample, { selectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
 import type { SelectableWithMergedRowsProps } from './examples/cells-tests/selectable_with_merged_rows-cells';
+
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Cells',
   component: DataTable,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof DataTable>;
+
 export const SelectableWithMergedRowsColumns: StoryObj<SelectableWithMergedRowsProps> = {
   render: SelectableWithMergedRowsColumnsExample,
   argTypes: {
@@ -38,9 +42,11 @@ export const SelectableWithMergedRowsColumns: StoryObj<SelectableWithMergedRowsP
   },
   args: selectableWithMergedRowsProps,
 };
+
 export const CardFlagInCell: Story = {
   render: CardFlagInCellExample,
 };
+
 export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
   render: CheckboxInTableWithNoDataExample,
   argTypes: {
@@ -51,6 +57,7 @@ export const CheckboxInTableWithNoData: StoryObj<CheckboxNoDataProps> = {
   },
   args: checkboxNoDataProps,
 };
+
 export const Checkbox: StoryObj<CheckboxReactiveProps> = {
   render: CheckboxExample as any,
   argTypes: {
@@ -72,6 +79,7 @@ export const Checkbox: StoryObj<CheckboxReactiveProps> = {
   },
   args: checkboxReactiveProps,
 };
+
 export const MergedRowForMultiLevelHeader: StoryObj<MergedRowForMultiLevelHeaderProps> = {
   render: MergedRowForMultiLevelHeaderExample,
   args: mergedRowForMultiLevelHeaderProps,
@@ -82,24 +90,31 @@ export const MergedRowForMultiLevelHeader: StoryObj<MergedRowForMultiLevelHeader
     },
   },
 };
+
 export const MiniChartsInlineEditInCells: Story = {
   render: MiniChartsInlineEditInCellsExample,
 };
+
 export const OneMergedCell: Story = {
   render: OneMergedCellExample,
 };
+
 export const OneBigMergedRowAndScroll: Story = {
   render: OneBigMergedRowAndScrollExample,
 };
+
 export const DDSelectInCell: Story = {
   render: DDSelectInCellExample,
 };
+
 export const LongTextCells: Story = {
   render: LongTextCellsExample,
 };
+
 export const InteractiveCells: Story = {
   render: InteractiveCellsExample,
 };
+
 export const MergedRowColumnWithFixed: StoryObj<MergedRowColumnWithFixedProps> = {
   render: MergedRowColumnWithFixedExample,
   args: {

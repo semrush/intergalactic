@@ -10,37 +10,49 @@ import LineExample from './examples/line-chart/line';
 import LineWithAreaExample from './examples/line-chart/line-with-area';
 import TimeExample from './examples/line-chart/time';
 import TooltipExample from './examples/line-chart/tooltip';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Line-Chart',
 };
+
 export default meta;
+
 export const Line: StoryObj = {
   render: LineExample,
 };
+
 export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
 };
+
 export const Curve: StoryObj = {
   render: CurveExample,
 };
+
 export const DotsDisplayFunction: StoryObj = {
   render: DotsDisplayFunctionExample,
 };
+
 export const HoverLine: StoryObj = {
   render: HoverLineExample,
 };
+
 export const Interpolation: StoryObj = {
   render: InterpolationExample,
 };
+
 export const LegendAndSymbolsForDot: StoryObj = {
   render: LegendAndSymbolsForDotExample,
 };
+
 export const LineWithArea: StoryObj = {
   render: LineWithAreaExample,
 };
+
 export const Time: StoryObj = {
   render: TimeExample,
 };
+
 export const Tooltip: StoryObj = {
   render: TooltipExample,
 };

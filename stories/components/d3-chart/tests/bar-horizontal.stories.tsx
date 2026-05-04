@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import HorizontalBarPropsExample, { defaultProps as HorizontalBarPropsDefaultProps } from './examples/bar-horizontal/horizontal-bar-props';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Bar-Horizontal-Chart',
 };
+
 export default meta;
+
 export const HorizontalBarProps: StoryObj = {
   render: HorizontalBarPropsExample,
   argTypes: {

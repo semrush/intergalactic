@@ -57,7 +57,7 @@ export function buildDashboardAreaChart(domains: (string | undefined)[]) {
     };
   }
   const data = templateRows.map((row) => {
-    const point: Record<string, unknown> = { time: row.time };
+    const point: Record<string, number | Date> = { time: row.time };
     slots.forEach((s, j) => {
       const stackNum = (j % 3) + 1;
       const src = row[`stack${stackNum}` as 'stack1'];

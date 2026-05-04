@@ -3,12 +3,16 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BadgeBgExample, { defaultExampleBadgeProps } from './examples/badge-bg-colors';
 import BadgeI18nExample from './examples/badge_i18n_example';
+
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge/Tests',
   component: Badge,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof Badge>;
+
 export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
   render: BadgeBgExample,
   argTypes: {
@@ -36,9 +40,8 @@ export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
     },
   },
   args: defaultExampleBadgeProps,
-
 };
+
 export const BadgeI18nInteractive: Story = {
   render: BadgeI18nExample,
-
 };

@@ -90,9 +90,9 @@ export function Components() {
             <DotAllDotsExample />
             <BadgeMainTypesExample />
             <CounterAllThemesExample />
-            <Box w='fit-content' alignSelf='flex-start'>
+            <Flex w='fit-content'>
               <CounterInFiltersExample />
-            </Box>
+            </Flex>
             <TagAllTagsExample />
             <SkeletonAllSkeletonExample />
             <ProgressBarAllThemesExample />

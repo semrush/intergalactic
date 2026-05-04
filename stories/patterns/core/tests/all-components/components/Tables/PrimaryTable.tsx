@@ -404,7 +404,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
       : (
           <Card w='100%'>
             <Card.Body p={0}>
-              <Flex justifyContent='space-between' px={4}>
+              <Flex justifyContent='space-between' alignItems='center' px={4}>
                 <SelectedRowsInfo selectedRows={selectedRows} />
 
                 <BeforeTablesControls

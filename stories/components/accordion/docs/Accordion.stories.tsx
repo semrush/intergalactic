@@ -9,12 +9,16 @@ import NonCompactExample from './examples/non_compact';
 import OneSectionOpeningExample from './examples/one_section_opening';
 import SeoExample from './examples/seo';
 import { playWrapper } from '../../../utils/playWrapper';
+
 const meta: Meta<typeof Accrordion> = {
   title: 'Components/Accordion/Documentation',
   component: Accrordion,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof Accrordion>;
+
 export const Basic: StoryObj<typeof BasicExampleProps> = {
   render: BasicExample,
   argTypes: {
@@ -41,25 +45,24 @@ export const Basic: StoryObj<typeof BasicExampleProps> = {
   },
   args: BasicExampleProps,
   play: playWrapper(BasicUsageTest),
-
 };
+
 export const CustomStyles: Story = {
   render: CustomStylesExample,
-
 };
+
 export const HeadingTag: Story = {
   render: HeadingTagExample,
-
 };
+
 export const NonCompact: Story = {
   render: NonCompactExample,
-
 };
+
 export const OneSectionOpening: Story = {
   render: OneSectionOpeningExample,
-
 };
+
 export const Seo: Story = {
   render: SeoExample,
-
 };

@@ -11,40 +11,53 @@ import RotatedExample from './examples/radar-chart/rotated';
 import ScaleExample from './examples/radar-chart/scale';
 import TickSizeExample from './examples/radar-chart/tick-size';
 import TooltipExample from './examples/radar-chart/tooltip';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Documentation/Radar-Chart',
 };
+
 export default meta;
+
 export const BackgroundColor: StoryObj = {
   render: BackgroundColorExample,
 };
+
 export const BasicUsage: StoryObj = {
   render: BasicUsageExample,
 };
+
 export const Circle: StoryObj = {
   render: CircleExample,
 };
+
 export const Color: StoryObj = {
   render: ColorExample,
 };
+
 export const LabelCustom: StoryObj = {
   render: LabelCustomExample,
 };
+
 export const LabelLong: StoryObj = {
   render: LabelLongExample,
 };
+
 export const LegendAndPatternFill: StoryObj = {
   render: LegendAndPatternFillExample,
 };
+
 export const Rotated: StoryObj = {
   render: RotatedExample,
 };
+
 export const Scale: StoryObj = {
   render: ScaleExample,
 };
+
 export const Tooltip: StoryObj = {
   render: TooltipExample,
 };
+
 export const TickSize: StoryObj = {
   render: TickSizeExample,
 };

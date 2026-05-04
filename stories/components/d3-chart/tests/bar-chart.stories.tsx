@@ -4,10 +4,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import BarPropsExample, { defaultProps as BarPropsDefaultProps } from './examples/bar-chart/bars-props';
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/bar-chart/basic-usage';
 import { getChartArgTypes } from './examples/stories_props_helper';
+
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Bar-Chart',
 };
+
 export default meta;
+
 export const BarProps: StoryObj = {
   render: BarPropsExample,
   argTypes: {
@@ -24,6 +27,7 @@ export const BarProps: StoryObj = {
   },
   args: BarPropsDefaultProps,
 };
+
 export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({

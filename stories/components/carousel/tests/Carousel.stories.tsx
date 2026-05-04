@@ -4,15 +4,20 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import WithIndicatorsExample from './examples/carousel_with_indicators_only';
 import PrevNextExample from './examples/carousel_with_prev_next';
 import BasicExample, { defaultProps as basicProps } from './examples/carousel_with_props';
+
 const meta: Meta<typeof Carousel> = {
   title: 'Components/Carousel/Tests',
   component: Carousel,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof Carousel>;
+
 export const PrevNext: Story = {
   render: PrevNextExample,
 };
+
 export const Basic: StoryObj<typeof basicProps> = {
   render: BasicExample,
   argTypes: {
@@ -44,6 +49,7 @@ export const Basic: StoryObj<typeof basicProps> = {
   },
   args: basicProps,
 };
+
 export const WithIndicators: Story = {
   render: WithIndicatorsExample,
 };
