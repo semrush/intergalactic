@@ -31,6 +31,34 @@ const paymentStatus = [
   'pending',
 ];
 
+const TRANSACTION_CATEGORY_NAMES = [
+  'Shop',
+  'Vet Clinic',
+  'Bills',
+  'Auto',
+  'Concert',
+  'Groceries',
+  'Pharmacy',
+  'Streaming',
+  'Gym',
+  'Travel',
+  'Restaurant',
+  'Coffee',
+  'Utilities',
+  'Education',
+  'Electronics',
+  'Books',
+  'Subscription',
+  'Rent',
+  'Donations',
+  'Insurance',
+  'Hardware',
+  'Software',
+  'Parking',
+  'Fuel',
+  'Public transport',
+];
+
 export const data: (page: number) => DataTableData = (page: number) => {
   const data = [
     {
@@ -597,6 +625,7 @@ export const data: (page: number) => DataTableData = (page: number) => {
   return data.map((item) => {
     return {
       ...item,
+      name: TRANSACTION_CATEGORY_NAMES[getRandomInt(0, TRANSACTION_CATEGORY_NAMES.length - 1)],
       payment_intent_id: `${page}__${item.payment_intent_id}`,
       affected_payment_intent_id: getRandomInt(0, 1) === 0 ? null : crypto.randomUUID(),
       operation_type: operationType[getRandomInt(0, 2)],

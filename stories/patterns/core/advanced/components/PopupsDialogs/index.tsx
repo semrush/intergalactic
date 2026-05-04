@@ -5,18 +5,18 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-import CarouserStory from '../../../../../../components/carousel/docs/examples/carousel_with_default_indicators';
-import DropdownMenuWithDnDExample from '../../../../../../components/drag-and-drop/docs/examples/with_dropdownmenu';
-import DropdownMenuBasicUsage from '../../../../../../components/dropdown-menu/docs/examples/basic';
-import FullscreenModalBasicUsage from '../../../../../../components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use';
-import ModalBasicUsage from '../../../../../../components/modal/docs/examples/basic_modal_window_usage';
-import ModalOverAnotherModal from '../../../../../../components/modal/docs/examples/modal_window_inside_a_modal_window';
-import NoticeBubbleBasicNotice from '../../../../../../components/notice-bubble/docs/examples/basic_notice';
-import NoticeBubbleNoConnection from '../../../../../../components/notice-bubble/docs/examples/no_connection_notice';
-import SidePanelBasicUsage from '../../../../../../components/side-panel/docs/examples/basic_example';
-import SpinContainerUsageInContent from '../../../../../../components/spin-container/docs/examples/usage_in_content';
-import WizardBasicUsage from '../../../../../../components/wizard/docs/examples/basic_example';
-import FeedbackRatingExample from '../../../../../../patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
+import CarouselStory from '../../../../../components/carousel/docs/examples/carousel_with_default_indicators';
+import DropdownMenuWithDnDExample from '../../../../../components/drag-and-drop/docs/examples/with_dropdownmenu';
+import DropdownMenuBasicUsage from '../../../../../components/dropdown-menu/docs/examples/basic';
+import FullscreenModalBasicUsage from '../../../../../components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use';
+import ModalBasicUsage from '../../../../../components/modal/docs/examples/basic_modal_window_usage';
+import ModalOverAnotherModal from '../../../../../components/modal/docs/examples/modal_window_inside_a_modal_window';
+import NoticeBubbleBasicNotice from '../../../../../components/notice-bubble/docs/examples/basic_notice';
+import NoticeBubbleNoConnection from '../../../../../components/notice-bubble/docs/examples/no_connection_notice';
+import SidePanelBasicUsage from '../../../../../components/side-panel/docs/examples/basic_example';
+import SpinContainerUsageInContent from '../../../../../components/spin-container/docs/examples/usage_in_content';
+import WizardBasicUsage from '../../../../../components/wizard/docs/examples/basic_example';
+import FeedbackRatingExample from '../../../../../patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 
 export function PopupsDialogs() {
   const [featurePopoverAccentVisible, setFeaturePopoverAccentVisible] = React.useState(false);
@@ -24,21 +24,12 @@ export function PopupsDialogs() {
 
   return (
     <>
-      <Card mt={8}>
-        <Card.Body>
-          <Flex>
-            <CarouserStory />
-
-            <Text>
-              Description of carousel...
-            </Text>
-          </Flex>
-        </Card.Body>
-      </Card>
 
       <Card mt={4}>
         <Card.Body>
           <Flex direction='column' gap={10}>
+            <Text tag='h3' size={400} mb={4}>Carousel</Text>
+            <CarouselStory />
             <Box>
               <Text tag='h3' size={400} mb={4}>DropdownMenu</Text>
               <DropdownMenuBasicUsage />

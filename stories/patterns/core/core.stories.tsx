@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AllComponentsExample from './tests/all-components';
 import LinkButtonLinkTextCombinationExample, { defaultProps as combinationDefaultProps } from './tests/combination-link-button-link-text';
-import CardWithHoverExample from '../../components/card/tests/examples/card_with_hover';
+
 const meta: Meta = {
   title: 'Patterns/Core/Tests',
 };
@@ -48,8 +48,4 @@ export const AllComponents: Story = {
   parameters: {
     layout: 'fullscreen',
   },
-};
-export const BoxShadows: Story = {
-  name: 'Box Shadows',
-  render: CardWithHoverExample,
 };

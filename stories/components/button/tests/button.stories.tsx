@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AllButtonsExample from './examples/all-buttons';
 import ButtonBaseExample, { defaultButtonProps } from './examples/button-base';
 import ButtonIconOnlyExample, { defaultIconButtonProps } from './examples/button-icon-only';
 import ButtonNeighborLocationExample, { defaultButtonNeighborProps } from './examples/button-neighbor-location';
@@ -9,10 +8,6 @@ const meta: Meta = {
   title: 'Components/Button/Tests',
 };
 export default meta;
-export const AllButtons: StoryObj = {
-  render: AllButtonsExample,
-
-};
 const commonArgTypes = {
   size: {
     control: { type: 'select' },

@@ -1,85 +1,41 @@
-import FileExportM from '@semcore/icon/FileExport/m';
+import ReloadM from '@semcore/icon/Reload/m';
 import Return from '@semcore/icon/Return/m';
+import TrashM from '@semcore/icon/Trash/m';
+import WarningM from '@semcore/icon/Warning/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
-import {
-  ACCORDION,
-  DataTable,
-  type CellRenderProps,
-  type DataTableSort,
-  SelectableRows,
-} from '@semcore/ui/data-table';
-import Divider from '@semcore/ui/divider';
+import { ACCORDION, type CellRenderProps, SelectableRows } from '@semcore/ui/data-table';
+import { PageError } from '@semcore/ui/errors';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import Pagination from '@semcore/ui/pagination';
 import Pills from '@semcore/ui/pills';
+import ProgressBar from '@semcore/ui/progress-bar';
+import SidePanel from '@semcore/ui/side-panel';
 import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 import { BeforeTablesControls } from './BeforeTablesControls';
+import PrimaryTableAddFilter from './PrimaryTableAddFilter';
 import { CopyCell, Currency, DateCell, Money, OperationType, StatusCell, TimeCell } from './table_perf/cells';
 import { SelectedRowsInfo } from './table_perf/SelectedRowsInfo';
-import Table from './table_perf/table_perf';
-import AddFilter from '../../../../../../components/add-filter/docs/examples/add-filter-basic';
-import WidgetEmpty from '../../../../../../components/widget-empty/docs/examples/nodata_example';
+import Table, { type TableDemoState } from './table_perf/table_perf';
 import AdvancedFilter from '../../../../../filters/advanced-filters/docs/examples/filters-with-filter-conditions';
-
-const rowThemeStyles = ['success', 'info', 'muted', 'warning', 'danger'] as const;
-
-type PrimaryMetricRow = {
-  theme: string;
-  metric: number;
-  value: number;
-  change: string;
-};
-
-function parseChangeForSort(s: string): number {
-  return Number(String(s).replace(/[^-\d]/g, '')) || 0;
-}
-
-function sortPrimaryMetricTableData(
-  rows: PrimaryMetricRow[],
-  sort: DataTableSort<keyof PrimaryMetricRow>,
-): PrimaryMetricRow[] {
-  const [prop, direction] = sort;
-  return [...rows].sort((a, b) => {
-    const aVal = a[prop];
-    const bVal = b[prop];
-    if (prop === 'metric' || prop === 'value') {
-      const diff = Number(aVal) - Number(bVal);
-      return direction === 'asc' ? diff : -diff;
-    }
-    if (prop === 'change') {
-      const diff = parseChangeForSort(String(aVal)) - parseChangeForSort(String(bVal));
-      return direction === 'asc' ? diff : -diff;
-    }
-    const cmp = String(aVal).localeCompare(String(bVal));
-    return direction === 'asc' ? cmp : -cmp;
-  });
-}
-
-const PRIMARY_METRIC_TABLE_DEFAULT_SORT: DataTableSort<keyof PrimaryMetricRow> = ['metric', 'asc'];
-
-const primaryMetricTableSeed: PrimaryMetricRow[] = [
-  { theme: 'success', metric: 12, value: 120, change: '+4%' },
-  { theme: 'info', metric: 8, value: 88, change: '0%' },
-  { theme: 'muted', metric: 15, value: 64, change: '−2%' },
-  { theme: 'warning', metric: 22, value: 40, change: '+12%' },
-  { theme: 'danger', metric: 5, value: 10, change: '−8%' },
-];
 
 const refsMap: Record<string | symbol, HTMLElement | null> = {};
 
 const COLUMNS_CONFIG = [
   {
-    id: 'payment_intent_id',
+    id: 'name',
+    copyHandle: false,
     defaultActive: true,
     Component: CopyCell,
     wMin: 180,
     ref: (node: HTMLElement | null) => {
       if (node) {
-        refsMap['payment_intent_id'] = node;
+        refsMap.name = node;
       }
     },
     fixed: 'left' as const,
@@ -136,7 +92,7 @@ const COLUMNS_CONFIG = [
     id: 'percent_tax',
     defaultActive: true,
     justifyContent: 'flex-end',
-    wMin: 120,
+    wMin: 220,
   },
   {
     id: 'currency',
@@ -238,6 +194,12 @@ const COLUMNS_CONFIG = [
     defaultActive: false,
     wMin: 100,
   },
+  {
+    id: 'actions',
+    defaultActive: true,
+    wMin: 200,
+    fixed: 'right' as const,
+  },
 ];
 
 // with React.memo
@@ -253,49 +215,6 @@ const componentsMap = Object.fromEntries(
   COLUMNS_CONFIG.map((c) => [c.id, c.Component]),
 );
 
-const CellRenderer = (props: CellRenderProps<any, any>) => {
-  const parentRowIndex = props.rowIndex;
-
-  if (parentRowIndex === 0 && props.columnName === ACCORDION) {
-    return {
-      p: 0, // set empty paddings for the first accordion
-      children: props.defaultRender(),
-    };
-  }
-
-  if (props.dataKey === 'description_ellipsis') {
-    return {
-      children: (
-        <Text
-          ellipsis:cropPosition='middle'
-        >
-          {String(props.row.payment_description)}
-        </Text>
-      ),
-    };
-  }
-
-  // @ts-ignore
-  const Component = componentsMap[props.columnName];
-  if (Component) {
-    return {
-      children: (
-        <Component
-          value={props.value}
-          row={props.row}
-          cellProps={props}
-          headerRef={refsMap[props.columnName]}
-          cropPosition='middle'
-        />
-      ),
-    };
-  }
-
-  return {
-    children: <Text>{props.value}</Text>,
-  };
-};
-
 const cols = COLUMNS_CONFIG.map((c) => ({
   name: c.id,
   children: c.id,
@@ -303,26 +222,158 @@ const cols = COLUMNS_CONFIG.map((c) => ({
   ref: c.ref,
   fixed: c.fixed,
   sortable: c.sortable,
+  alignItems: 'flex-start' as const,
+  ...('justifyContent' in c && c.justifyContent ? { justifyContent: c.justifyContent } : {}),
 }));
+
+const COLUMN_COPY_HANDLE = Object.fromEntries(
+  COLUMNS_CONFIG.map((c) => [c.id, 'copyHandle' in c ? Boolean(c.copyHandle) : true]),
+);
 
 const DEFAULT_LOCALE = 'en-US';
 const DEFAULT_MESSAGES = {};
 
 const selectedRows = new SelectableRows<string>();
 
-export default function PrimaryTable() {
+export type PrimaryTableProps = {
+  onPageErrorChange?: (active: boolean) => void;
+};
+
+type PillValue = TableDemoState | 'pageError' | 'progress';
+
+export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = {}) {
   const [columns, setColumns] = useState<string[]>(cols.map((c) => c.name));
 
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [primaryMetricPage, setPrimaryMetricPage] = React.useState(1);
-  const [primaryMetricSort, setPrimaryMetricSort] = React.useState<DataTableSort<keyof PrimaryMetricRow>>(
-    PRIMARY_METRIC_TABLE_DEFAULT_SORT,
-  );
-  const primaryMetricSortedData = React.useMemo(
-    () => sortPrimaryMetricTableData(primaryMetricTableSeed, primaryMetricSort),
-    [primaryMetricSort],
-  );
+  const [pillValue, setPillValue] = React.useState<PillValue>('default');
+  const tableDemoState: TableDemoState =
+    pillValue === 'pageError' || pillValue === 'progress' ? 'default' : pillValue;
+  const [nameFilter, setNameFilter] = React.useState('');
+  const [debouncedNameFilter, setDebouncedNameFilter] = React.useState('');
+  const [sidePanelOpen, setSidePanelOpen] = React.useState(false);
+  const [sidePanelRow, setSidePanelRow] = React.useState<Record<string, unknown> | null>(null);
+  const [fullReportModalVisible, setFullReportModalVisible] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const [noticeBubbleManager] = React.useState(() => new NoticeBubbleManager());
+
+  React.useEffect(() => {
+    const id = window.setTimeout(() => setDebouncedNameFilter(nameFilter), 400);
+    return () => window.clearTimeout(id);
+  }, [nameFilter]);
+
+  const searchPending = nameFilter !== debouncedNameFilter;
+
+  const showFailureNoticeBubble = React.useCallback(() => {
+    noticeBubbleManager.add({
+      children: 'Unfortunately, your recent changes were not saved. Try again later.',
+      icon: <WarningM color='--intergalactic-icon-primary-warning' />,
+      action: (
+        <Button theme='invert' addonLeft={ReloadM}>
+          Reload the page
+        </Button>
+      ),
+      initialAnimation: true,
+      duration: 0,
+      type: 'info',
+      focusLock: false,
+    });
+  }, [noticeBubbleManager]);
+
+  const cellRenderer = React.useCallback(
+    (props: CellRenderProps<any, any>) => {
+      const parentRowIndex = props.rowIndex;
+
+      if (parentRowIndex === 0 && props.columnName === ACCORDION) {
+        return {
+          p: 0,
+          children: props.defaultRender(),
+        };
+      }
+
+      if (props.columnName === 'actions') {
+        return {
+          children: (
+            <Flex gap={2} alignItems='flex-start' inline>
+              <Button
+                use='tertiary'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSidePanelRow(props.row);
+                  setSidePanelOpen(true);
+                }}
+              >
+                Open SidePanel
+              </Button>
+              <Button
+                use='tertiary'
+                theme='muted'
+                addonLeft={TrashM}
+                aria-label='Delete'
+                title='Delete'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showFailureNoticeBubble();
+                }}
+              />
+            </Flex>
+          ),
+        };
+      }
+
+      if (props.dataKey === 'description_ellipsis') {
+        return {
+          children: (
+            <Text
+              ellipsis:cropPosition='middle'
+            >
+              {String(props.row.payment_description)}
+            </Text>
+          ),
+        };
+      }
+
+      if (props.columnName === 'percent_tax') {
+        return {
+          children: (
+            <Flex direction='column' alignItems='flex-end' gap={1} w='100%'>
+              <Text>{props.value != null ? String(props.value) : ''}</Text>
+              <ButtonLink
+                use='secondary'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFullReportModalVisible(true);
+                }}
+              >
+                Open full report
+              </ButtonLink>
+            </Flex>
+          ),
+        };
+      }
+
+      // @ts-ignore
+      const Component = componentsMap[props.columnName];
+      if (Component) {
+        return {
+          children: (
+            <Component
+              value={props.value}
+              row={props.row}
+              cellProps={props}
+              headerRef={refsMap[props.columnName]}
+              cropPosition='middle'
+              handle={COLUMN_COPY_HANDLE[props.columnName as string] ?? true}
+            />
+          ),
+        };
+      }
+
+      return {
+        children: <Text>{props.value}</Text>,
+      };
+    },
+    [showFailureNoticeBubble],
+  );
 
   const handleApplyPage = () => {
     const newValue = Number(inputRef.current?.value);
@@ -343,148 +394,137 @@ export default function PrimaryTable() {
     });
   }, [columns, setColumns]);
 
+  const mainTableContent =
+    pillValue === 'pageError'
+      ? (
+          <Box w='100%'>
+            <PageError />
+          </Box>
+        )
+      : (
+          <Card w='100%'>
+            <Card.Body p={0}>
+              <Flex justifyContent='space-between' px={4}>
+                <SelectedRowsInfo selectedRows={selectedRows} />
+
+                <BeforeTablesControls
+                  columns={cols}
+                  selectedColumns={columns}
+                  setSelectedColumns={(columns: string[] | null) => {
+                    if (columns === null) {
+                      setColumns(cols.map((c) => c.name));
+                    } else {
+                      setColumns(columns);
+                    }
+                  }}
+                  onChangeColumns={handleChangeColumns}
+                />
+              </Flex>
+              <Table
+                loading={searchPending}
+                variant='card'
+                currentPage={currentPage}
+                selectedRows={selectedRows}
+                columns={cols.filter((c) => columns.includes(c.name))}
+                CellRenderer={cellRenderer}
+                demoState={tableDemoState}
+                nameSearchQuery={debouncedNameFilter}
+              />
+              <Pagination currentPage={currentPage} totalPages={100} onCurrentPageChange={setCurrentPage} p={4}>
+                <Pagination.FirstPage />
+                <Pagination.PrevPage />
+                <Pagination.NextPage />
+                <Pagination.PageInput>
+                  <Pagination.PageInput.Value ref={inputRef} />
+                  {/* @ts-ignore */}
+                  <Pagination.PageInput.Addon
+                    data-testid='selectPageButton'
+                    tag={ButtonLink}
+                    onClick={handleApplyPage}
+                    p={0}
+                    h='calc(100% - 8px)'
+                  >
+                    <ButtonLink.Addon tag={Return} />
+                  </Pagination.PageInput.Addon>
+                </Pagination.PageInput>
+                <Pagination.TotalPages />
+              </Pagination>
+            </Card.Body>
+          </Card>
+        );
+
   return (
     <IntlProvider
       locale={DEFAULT_LOCALE}
       defaultLocale={DEFAULT_LOCALE}
       messages={DEFAULT_MESSAGES}
     >
-      <Flex gap={3} alignItems='center' my={4} justifyContent='space-between'>
-        <Flex>
-          <Pills defaultValue={1}>
-            <Pills.Item value={1}>Visibility</Pills.Item>
-            <Pills.Item value={2}>Est. Traffic</Pills.Item>
-            <Pills.Item value={3}>Avg. Position</Pills.Item>
+      <Flex gap={3} alignItems='flex-start' my={4} justifyContent='space-between'>
+        <Flex gap={2} alignItems='flex-start'>
+          <Pills
+            value={pillValue}
+            onChange={(v: string | null) => {
+              if (v === 'default' || v === 'progress' || v === 'limited' || v === 'pageError') {
+                setPillValue(v);
+                onPageErrorChange?.(v === 'pageError');
+              }
+            }}
+            aria-label='Table state'
+          >
+            <Pills.Item value='default'>Default state</Pills.Item>
+            <Pills.Item value='progress'>Progress</Pills.Item>
+            <Pills.Item value='limited'>Limited data</Pills.Item>
+            <Pills.Item value='pageError'>Page error</Pills.Item>
           </Pills>
-          <Divider orientation='vertical' mx={2} />
-          <AddFilter />
+          <PrimaryTableAddFilter nameFilter={nameFilter} onNameFilterChange={setNameFilter} />
         </Flex>
 
-        <AdvancedFilter />
+        <Flex gap={3} alignItems='center'>
+          {pillValue === 'progress' && (
+            <ProgressBar
+              tabIndex={0}
+              value={65}
+              size='l'
+              w={120}
+              aria-label='Progress'
+            >
+              <ProgressBar.Value />
+            </ProgressBar>
+          )}
+          <AdvancedFilter />
+        </Flex>
 
       </Flex>
 
-      <Card w='100%'>
-        <Card.Body p={0}>
-          <Flex justifyContent='space-between' px={4}>
-            <SelectedRowsInfo selectedRows={selectedRows} />
+      {mainTableContent}
 
-            <BeforeTablesControls
-              columns={cols}
-              selectedColumns={columns}
-              setSelectedColumns={(columns: string[] | null) => {
-                if (columns === null) {
-                  setColumns(cols.map((c) => c.name));
-                } else {
-                  setColumns(columns);
-                }
-              }}
-              onChangeColumns={handleChangeColumns}
-            />
-          </Flex>
-          <Table
-            loading={false}
-            variant='card'
-            currentPage={currentPage}
-            selectedRows={selectedRows}
-            columns={cols.filter((c) => columns.includes(c.name))}
-            CellRenderer={CellRenderer}
-          />
-          <Pagination currentPage={currentPage} totalPages={100} onCurrentPageChange={setCurrentPage} p={4}>
-            <Pagination.FirstPage />
-            <Pagination.PrevPage />
-            <Pagination.NextPage />
-            <Pagination.PageInput>
-              <Pagination.PageInput.Value ref={inputRef} />
-              {/* @ts-ignore */}
-              <Pagination.PageInput.Addon
-                data-testid='selectPageButton'
-                tag={ButtonLink}
-                onClick={handleApplyPage}
-                p={0}
-                h='calc(100% - 8px)'
-              >
-                <ButtonLink.Addon tag={Return} />
-              </Pagination.PageInput.Addon>
-            </Pagination.PageInput>
-            <Pagination.TotalPages />
-          </Pagination>
-        </Card.Body>
-      </Card>
+      <NoticeBubbleContainer manager={noticeBubbleManager} />
 
-      <Box mt={4}>
-        <WidgetEmpty />
-      </Box>
+      <SidePanel
+        visible={sidePanelOpen}
+        onClose={() => {
+          setSidePanelOpen(false);
+          setSidePanelRow(null);
+        }}
+        aria-label='Row data'
+      >
+        <SidePanel.Body px={5} py={4}>
+          {sidePanelRow && (
+            <Text tag='p' size={200}>
+              payment_intent_id:
+              {' '}
+              {String(sidePanelRow.payment_intent_id ?? '')}
+            </Text>
+          )}
+        </SidePanel.Body>
+      </SidePanel>
 
-      <Card w='100%' mt={4}>
-        <Card.Header>
-          <Flex justifyContent='space-between' alignItems='center' w='100%'>
-            <Card.Title tag='h3'>Primary DataTable</Card.Title>
-            <Button addonLeft={FileExportM} aria-label='Export'>
-              Export
-            </Button>
-          </Flex>
-        </Card.Header>
-        <Card.Body pt={0} px={0} pb={1} style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-          <Box w='100%' style={{ minWidth: 0 }}>
-            <DataTable
-              use='primary'
-              variant='card'
-              data={primaryMetricSortedData}
-              sort={primaryMetricSort}
-              onSortChange={setPrimaryMetricSort}
-              aria-label='Primary table with themed rows'
-              w='100%'
-              defaultGridTemplateColumnWidth='minmax(80px, 1fr)'
-              columns={[
-                {
-                  name: 'theme',
-                  children: 'Theme',
-                  gtcWidth: 'minmax(120px, 1fr)',
-                  sortable: true,
-                  changeSortSize: true,
-                },
-                {
-                  name: 'metric',
-                  children: 'Metric',
-                  gtcWidth: 'minmax(85px, 1fr)',
-                  justifyContent: 'end',
-                  sortable: true,
-                  changeSortSize: true,
-                },
-                {
-                  name: 'value',
-                  children: 'Value',
-                  gtcWidth: 'minmax(85px, 1fr)',
-                  justifyContent: 'end',
-                  sortable: true,
-                  changeSortSize: true,
-                },
-                {
-                  name: 'change',
-                  children: 'Change',
-                  gtcWidth: 'minmax(90px, 1fr)',
-                  justifyContent: 'end',
-                  sortable: true,
-                  changeSortSize: true,
-                },
-              ]}
-              rowProps={(row) =>
-                rowThemeStyles.includes(row.theme as (typeof rowThemeStyles)[number])
-                  ? { theme: row.theme as (typeof rowThemeStyles)[number] }
-                  : {}}
-            />
-          </Box>
-          <Box pt={3} px={5} pb={4}>
-            <Pagination
-              totalPages={10}
-              currentPage={primaryMetricPage}
-              onCurrentPageChange={setPrimaryMetricPage}
-              aria-label='Pagination'
-            />
-          </Box>
-        </Card.Body>
-      </Card>
+      <FullscreenModal visible={fullReportModalVisible} onClose={() => setFullReportModalVisible(false)}>
+        <FullscreenModal.Close />
+        <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
+        <FullscreenModal.Header title='Modal Window Title' description='Additional information' />
+        <FullscreenModal.Footer />
+      </FullscreenModal>
     </IntlProvider>
   );
 };

@@ -2,7 +2,7 @@ import { Box, Flex } from '@semcore/ui/base-components';
 import Notice from '@semcore/ui/notice';
 import React from 'react';
 
-export default function ComponentsSectionNotice() {
+export default function NoticeOnSecondaryBackground() {
   return (
     <Box
       p={4}

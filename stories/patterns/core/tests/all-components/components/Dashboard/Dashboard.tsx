@@ -1,33 +1,32 @@
 import FileExportM from '@semcore/icon/FileExport/m';
-import SearchM from '@semcore/icon/Search/m';
+import MathPlusM from '@semcore/icon/MathPlus/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
 import { Chart, ChartLegend, ResponsiveContainer } from '@semcore/ui/d3-chart';
-import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableData } from '@semcore/ui/data-table';
-import { DateRangePicker } from '@semcore/ui/date-picker';
 import Divider from '@semcore/ui/divider';
-import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import Pills from '@semcore/ui/pills';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
+import {
+  buildDashboardAreaChart,
+  buildDashboardLineChart,
+  DASHBOARD_DOMAIN_OPTIONS,
+} from './dashboardDomainCharts';
 import BarMockData from '../../../../../../components/d3-chart/__mocks__/bar';
 import CigaretteMockData from '../../../../../../components/d3-chart/__mocks__/cigarette';
 import DonutMockData from '../../../../../../components/d3-chart/__mocks__/donut';
-import LineMockData from '../../../../../../components/d3-chart/__mocks__/line';
 import ScatterplotMockData from '../../../../../../components/d3-chart/__mocks__/scatterplot';
-import StackAreaMockData from '../../../../../../components/d3-chart/__mocks__/stacked-area';
 import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
+import PrimaryTable from '../Tables/PrimaryTable';
 
-const DASHBOARD_DOMAIN_OPTIONS = [
-  { value: 'domain1', label: 'domain1', children: 'domain1' },
-  { value: 'domain2', label: 'domain2', children: 'domain2' },
-] as const;
+export type DashboardProps = {
+  showPrimaryTableFooter?: boolean;
+};
 
 const STACKED_BAR_SERIES_KEYS = ['a', 'b', 'c'] as const;
 const STACKED_BAR_COLOR_MAP: Record<(typeof STACKED_BAR_SERIES_KEYS)[number], string> = {
@@ -66,14 +65,6 @@ function projectStackedBarMonthData(visible: { a: boolean; b: boolean; c: boolea
   });
 }
 
-const secondaryTableData: DataTableData = [
-  { keyword: 'seo tools', kd: 72, cpc: 1.2, vol: 12100 },
-  { keyword: 'keyword research', kd: 65, cpc: 0.9, vol: 8900 },
-  { keyword: 'backlink checker', kd: 58, cpc: 2.1, vol: 5400 },
-  { keyword: 'site audit', kd: 48, cpc: 0.7, vol: 3200 },
-  { keyword: 'rank tracking', kd: 41, cpc: 1.5, vol: 2100 },
-];
-
 function ChartBox({
   children,
   h = CHART_CONTAINER_HEIGHT,
@@ -98,21 +89,16 @@ function cardSectionStyle(flexBasis: string): React.CSSProperties {
   };
 }
 
-export function Dashboard() {
+export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
   const [stackedBarSeriesVisible, setStackedBarSeriesVisible] = React.useState({
     a: true,
     b: true,
     c: true,
   });
-  const [filterDateRange, setFilterDateRange] = React.useState<[Date, Date]>([
-    new Date(2026, 2, 11),
-    new Date(2026, 2, 17),
-  ]);
   const [domains, setDomains] = React.useState<(string | undefined)[]>(['domain1', 'domain2']);
 
-  const handleFilterDateRangeChange = React.useCallback((dates: Date[]) => {
-    if (dates.length === 2) setFilterDateRange([dates[0], dates[1]]);
-  }, []);
+  const dashboardLineChart = React.useMemo(() => buildDashboardLineChart(domains), [domains]);
+  const dashboardAreaChart = React.useMemo(() => buildDashboardAreaChart(domains), [domains]);
 
   const dashboardStackedBarData = React.useMemo(
     () => projectStackedBarMonthData(stackedBarSeriesVisible),
@@ -135,6 +121,9 @@ export function Dashboard() {
         <Flex direction='column' gap={2} my={4} mb={6}>
           <Flex gap={2} flexWrap alignItems='center'>
             {domains.map((domain, index) => {
+              const removeSlot = () => {
+                setDomains((prev) => prev.filter((_, i) => i !== index));
+              };
               return (
                 <Select
                   key={`domain-filter-${index}`}
@@ -151,14 +140,7 @@ export function Dashboard() {
                   <Select.Trigger
                     tag={FilterTrigger}
                     placeholder='Add domain'
-                    empty={!domain}
-                    onClear={() => {
-                      setDomains((prev) => {
-                        const next = [...prev];
-                        next[index] = undefined;
-                        return next;
-                      });
-                    }}
+                    onClear={removeSlot}
                   />
                   <Select.Menu aria-label='Add domain'>
                     {DASHBOARD_DOMAIN_OPTIONS.map((opt) => (
@@ -170,41 +152,14 @@ export function Dashboard() {
                 </Select>
               );
             })}
-          </Flex>
-
-          <Flex w='100%' alignItems='center' gap={2} flexWrap>
-            <Flex gap={2} flexWrap alignItems='center' flex={1} style={{ minWidth: 0 }}>
-              <Flex alignItems='center'>
-                <Input size='m' w={220} neighborLocation='right'>
-                  <Input.Value placeholder='Filter by keyword' />
-                </Input>
-                <Button size='m' aria-label='Search' neighborLocation='left'>
-                  <SearchM />
-                </Button>
-              </Flex>
-              <Select
-                placeholder='Top positions & changes'
-                options={[
-                  {
-                    value: 'top',
-                    label: 'Top positions & changes',
-                    children: 'Top positions & changes',
-                  },
-                ]}
-                disablePortal
-              />
-              <Select
-                placeholder='SERP Features'
-                options={[{ value: 'serp', label: 'SERP Features', children: 'SERP Features' }]}
-                disablePortal
-              />
-            </Flex>
-            <Box style={{ flexShrink: 0, marginLeft: 'auto' }}>
-              <DateRangePicker value={filterDateRange} onChange={handleFilterDateRangeChange}>
-                <DateRangePicker.Trigger id='dashboard-filters-date-range' />
-                <DateRangePicker.Popper disablePortal />
-              </DateRangePicker>
-            </Box>
+            <Button
+              use='tertiary'
+              theme='muted'
+              addonLeft={MathPlusM}
+              onClick={() => setDomains((prev) => [...prev, undefined])}
+            >
+              Add domain
+            </Button>
           </Flex>
         </Flex>
 
@@ -305,7 +260,7 @@ export function Dashboard() {
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
                   <Box>
                     <Card.Title tag='h3'>Line</Card.Title>
-                    <Card.Description>Two series over index.</Card.Description>
+                    <Card.Description>One line per selected domain (legend matches domain name).</Card.Description>
                   </Box>
                   <Button addonLeft={FileExportM} aria-label='Export'>
                     Export
@@ -317,13 +272,14 @@ export function Dashboard() {
                   {([width, height]) => (
                     <Chart.Line
                       groupKey='x'
-                      data={LineMockData.TwoLines}
+                      data={dashboardLineChart.data}
                       plotWidth={width}
                       plotHeight={height - LEGEND_RESERVE_HEIGHT}
                       yTicksCount={Y_TICKS_COUNT}
                       xTicksCount={7}
                       showDots
                       showLegend
+                      legendProps={dashboardLineChart.legendProps}
                       aria-label='Line chart'
                     />
                   )}
@@ -336,7 +292,7 @@ export function Dashboard() {
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
                   <Box>
                     <Card.Title tag='h3'>Area</Card.Title>
-                    <Card.Description>Stacked area by time.</Card.Description>
+                    <Card.Description>Stacked area by time; stacks follow selected domains.</Card.Description>
                   </Box>
                   <Button addonLeft={FileExportM} aria-label='Export'>
                     Export
@@ -348,7 +304,7 @@ export function Dashboard() {
                   {([width, height]) => (
                     <Chart.Area
                       groupKey='time'
-                      data={StackAreaMockData.Default}
+                      data={dashboardAreaChart.data}
                       plotWidth={width}
                       plotHeight={height - LEGEND_RESERVE_HEIGHT}
                       yTicksCount={Y_TICKS_COUNT}
@@ -356,6 +312,7 @@ export function Dashboard() {
                       stacked
                       showDots
                       showLegend
+                      legendProps={dashboardAreaChart.legendProps}
                       tooltipValueFormatter={formatAreaAxis}
                       axisXValueFormatter={formatAreaAxis}
                       aria-label='Area chart'
@@ -550,7 +507,7 @@ export function Dashboard() {
                     items={dashboardStackedBarLegendItems}
                     direction='row'
                     aria-label='Bar series'
-                    onChangeVisibleItem={(id, isVisible) => {
+                    onChangeVisibleItem={(id: string, isVisible: boolean) => {
                       setStackedBarSeriesVisible((prev) => {
                         if (id !== 'a' && id !== 'b' && id !== 'c') return prev;
                         const next = { ...prev, [id]: isVisible };
@@ -641,45 +598,6 @@ export function Dashboard() {
           >
             <Card.Header>
               <Flex justifyContent='space-between' alignItems='center' w='100%'>
-                <Card.Title tag='h3'>Secondary DataTable</Card.Title>
-                <Button addonLeft={FileExportM} aria-label='Export'>
-                  Export
-                </Button>
-              </Flex>
-            </Card.Header>
-            <Card.Body pt={0} px={0} pb={5} style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-              <Box style={{ flex: 1, minHeight: 0 }}>
-                <DataTable
-                  use='secondary'
-                  sideIndents='wide'
-                  data={secondaryTableData}
-                  aria-label='Dashboard table'
-                  columns={[
-                    { name: 'keyword', children: 'Keyword' },
-                    { name: 'kd', children: 'KD %', justifyContent: 'end' },
-                    { name: 'cpc', children: 'CPC', justifyContent: 'end' },
-                    { name: 'vol', children: 'Vol.', justifyContent: 'end' },
-                  ]}
-                />
-              </Box>
-              <Box mt='auto' pt={3} ml={5} style={{ alignSelf: 'flex-start' }}>
-                <Button>View full report</Button>
-              </Box>
-            </Card.Body>
-          </Card>
-
-          <Card
-            tag='section'
-            style={{
-              flex: '1 1 calc(33.333% - 11px)',
-              minWidth: 'min(100%, 280px)',
-              maxWidth: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Card.Header>
-              <Flex justifyContent='space-between' alignItems='center' w='100%'>
                 <Card.Title tag='h3'>Venn</Card.Title>
                 <Button addonLeft={FileExportM} aria-label='Export'>
                   Export
@@ -744,6 +662,12 @@ export function Dashboard() {
             </Card.Body>
           </Card>
         </Flex>
+
+        {showPrimaryTableFooter && (
+          <Box mt={8} w='100%'>
+            <PrimaryTable />
+          </Box>
+        )}
       </Box>
     </Box>
   );

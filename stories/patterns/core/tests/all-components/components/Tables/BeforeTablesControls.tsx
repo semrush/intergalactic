@@ -6,6 +6,7 @@ import { DatePicker, DateRangeComparator, DateRangePicker } from '@semcore/ui/da
 import DnD from '@semcore/ui/drag-and-drop';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
+import TimePicker from '@semcore/ui/time-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -41,12 +42,10 @@ export function BeforeTablesControls(props: Props) {
     }
   }, [selectedColumns, columns]);
 
-  // featurepopover
   const [fpVisible, setFpVisible] = React.useState(true);
 
   return (
     <Flex gap={3} my={4}>
-
       <DatePicker>
         <DatePicker.Trigger />
         <DatePicker.Popper />
@@ -58,6 +57,13 @@ export function BeforeTablesControls(props: Props) {
       </DateRangePicker>
 
       <DateRangeComparator />
+
+      <TimePicker is12Hour id='primary-table-filters-time'>
+        <TimePicker.Hours />
+        <TimePicker.Separator />
+        <TimePicker.Minutes />
+        <TimePicker.Format />
+      </TimePicker>
 
       <FeaturePopover
         visible={fpVisible}
@@ -89,7 +95,7 @@ export function BeforeTablesControls(props: Props) {
               </Flex>
               <DropdownMenu.List hMax={500}>
                 <DnD onDnD={handleDnD} aria-label='drag-and-drop container'>
-                  {columns.map((column, index) => (
+                  {columns.map((column) => (
                     <DropdownMenu.Item
                       tag={DnD.Draggable}
                       isCustomFocus={true}

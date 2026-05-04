@@ -1,7 +1,6 @@
 import Skeleton from '@semcore/ui/skeleton';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AllSkeletonExample from './examples/all-skeleton';
 import ObserveParentSizeExample from './examples/observe-parent-size';
 import SkeletonThemesExample, { defaultProps } from './examples/skeleton-themes';
 
@@ -12,11 +11,6 @@ const meta: Meta<typeof Skeleton> = {
 
 export default meta;
 type Story = StoryObj<typeof Skeleton>;
-
-export const AllSkeleton: Story = {
-  name: 'All Skeleton',
-  render: AllSkeletonExample,
-};
 
 const commonArgTypes = {
   placement: {

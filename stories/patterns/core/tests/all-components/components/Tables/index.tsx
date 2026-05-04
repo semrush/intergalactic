@@ -1,39 +1,44 @@
-import { Flex, Box } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Card from '@semcore/ui/card';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import PrimaryTable from './PrimaryTable';
 import { SecondaryTable } from './SecondaryTable';
-import HeadingTagAccordion from '../../../../../../components/accordion/docs/examples/heading_tag';
-import NonCompactAccordion from '../../../../../../components/accordion/docs/examples/non_compact';
+import FeedbackRatingFormExample from '../../../../../../patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 
-export function Tables() {
+export type TablesProps = {
+  showPrimaryAndSecondary?: boolean;
+};
+
+export function Tables({ showPrimaryAndSecondary = true }: TablesProps) {
+  const [pageErrorActive, setPageErrorActive] = React.useState(false);
+
   return (
     <Box w='100%'>
-      <PrimaryTable />
+      {showPrimaryAndSecondary && (
+        <>
+          <PrimaryTable onPageErrorChange={setPageErrorActive} />
 
-      <Flex my={4} gap={4}>
-        <Card w='60%'>
-          <Card.Header>
-            <Card.Title tag='h3'>Keywords</Card.Title>
-          </Card.Header>
-          <Card.Body p={0} pb={1}>
-            <SecondaryTable />
-          </Card.Body>
-        </Card>
+          {!pageErrorActive && (
+            <>
+              <Box my={4} w='100%'>
+                <FeedbackRatingFormExample />
+              </Box>
 
-        <Card w='40%'>
-          <Card.Header>
-            <Card.Title tag='h3'>FAQ</Card.Title>
-          </Card.Header>
-          <Card.Body tag={Flex} direction='column'>
-            <NonCompactAccordion />
-            <Text size={300} my={3} semibold>Accordion with heading tag</Text>
-            <HeadingTagAccordion />
-          </Card.Body>
-        </Card>
-      </Flex>
+              <Flex my={4} gap={4}>
+                <Card w='100%'>
+                  <Card.Header>
+                    <Card.Title tag='h3'>Keywords</Card.Title>
+                  </Card.Header>
+                  <Card.Body p={0} pb={1}>
+                    <SecondaryTable />
+                  </Card.Body>
+                </Card>
+              </Flex>
+            </>
+          )}
+        </>
+      )}
     </Box>
   );
 }

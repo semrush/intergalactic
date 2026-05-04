@@ -1,18 +1,12 @@
 import Counter from '@semcore/ui/counter';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 
-import AllThemesExample from './examples/all-themes';
 import CounterExample, { defaultProps as CounterDefProps } from './examples/counter';
 const meta: Meta<typeof Counter> = {
   title: 'Components/Counter/Tests',
   component: Counter,
 };
 export default meta;
-export const AllThemes: StoryObj = {
-  name: 'All themes',
-  render: AllThemesExample,
-};
 export const CounterBase: StoryObj<typeof CounterDefProps> = {
   render: CounterExample,
   argTypes: {

@@ -1,7 +1,6 @@
 import ProgressBar from '@semcore/ui/progress-bar';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AllThemesExample from './examples/all-themes';
 import CustomizingTheBarExample, { defaultProps as CustomizingTheBarProps } from './examples/customizing_the_bar_with_background';
 import CustomizingTheValueExample, { defaultProps as CustomizingTheValueProps } from './examples/customizing_the_value';
 
@@ -11,11 +10,6 @@ const meta: Meta<typeof ProgressBar> = {
 };
 
 export default meta;
-
-export const AllThemes: StoryObj = {
-  name: 'All themes',
-  render: AllThemesExample,
-};
 
 const commonArgTypes = {
   size: {

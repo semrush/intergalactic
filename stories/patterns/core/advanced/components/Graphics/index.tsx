@@ -2,8 +2,8 @@ import { Box, Flex } from '@semcore/ui/base-components';
 import Card from '@semcore/ui/card';
 import React from 'react';
 
-import IconWithAllColorsExample from '../../../../../../components/icon/tests/examples/icon_all_colors';
-import IllustrationCustomColorExample from '../../../../../../components/illustration/docs/examples/custom-color';
+import IconWithAllColorsExample from '../../../../../components/icon/advanced/examples/icon-all-colors';
+import IllustrationCustomColorExample from '../../../../../components/illustration/docs/examples/custom-color';
 
 export function Graphics() {
   return (

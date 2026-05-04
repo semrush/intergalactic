@@ -3,12 +3,12 @@ import { Box } from '@semcore/ui/base-components';
 import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
-import { Carousel } from './components/Carousel';
-import { Dashboard } from './components/Dashboard';
-import { FeatureHighlight } from './components/FeatureHighlight';
-import { Form } from './components/Form';
-import { Tables } from './components/Tables';
-import PageHeader from '../../../../components/product-head/docs/examples/extended_example';
+import { Components } from './components/Components';
+import { Graphics } from './components/Graphics';
+import { PopupsDialogs } from './components/PopupsDialogs';
+import PageHeader from '../../../components/product-head/docs/examples/extended_example';
+import { Dashboard } from '../tests/all-components/components/Dashboard';
+import { FeatureHighlight } from '../tests/all-components/components/FeatureHighlight';
 
 // not including:
 // - dnd with cards/files
@@ -23,9 +23,6 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
 
       <TabLine size='l' mx={-8} px={8} mt={8} value={tab} onChange={setTab}>
         <TabLine.Item value={1}>
-          Tables
-        </TabLine.Item>
-        <TabLine.Item value={2}>
           <TabLine.Item.Text>
             Dashboard
           </TabLine.Item.Text>
@@ -33,22 +30,25 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
             <Badge type='new' />
           </TabLine.Item.Addon>
         </TabLine.Item>
+        <TabLine.Item value={2}>
+          Components
+        </TabLine.Item>
         <TabLine.Item value={3}>
-          Form
+          Popups & Dialogs
         </TabLine.Item>
         <TabLine.Item value={4}>
-          Carousel
+          Feature highlight
         </TabLine.Item>
         <TabLine.Item value={5}>
-          Feature highlight
+          Graphics
         </TabLine.Item>
       </TabLine>
 
-      {tab === 1 && <Tables />}
-      {tab === 2 && <Dashboard />}
-      {tab === 3 && <Form />}
-      {tab === 4 && <Carousel />}
-      {tab === 5 && <FeatureHighlight />}
+      {tab === 1 && <Dashboard showPrimaryTableFooter />}
+      {tab === 2 && <Components />}
+      {tab === 3 && <PopupsDialogs />}
+      {tab === 4 && <FeatureHighlight />}
+      {tab === 5 && <Graphics />}
     </Box>
   );
 }

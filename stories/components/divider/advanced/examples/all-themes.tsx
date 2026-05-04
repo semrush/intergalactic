@@ -2,7 +2,7 @@ import { Box, Flex } from '@semcore/ui/base-components';
 import Divider from '@semcore/ui/divider';
 import React from 'react';
 
-export default function ComponentsSectionDivider() {
+export default function AllThemes() {
   return (
     <Flex gap={8} flexWrap alignItems='flex-start'>
       <Flex direction='column' w={60} gap={2}>

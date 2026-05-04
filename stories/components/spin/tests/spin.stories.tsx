@@ -1,7 +1,6 @@
 import Spin from '@semcore/ui/spin';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AllSizesExample from './examples/all-sizes';
 import SpinBoxPropsExample from './examples/spin-box-props';
 import SpinCenteredExample from './examples/spin-centered';
 import SpinCustomThemeExample from './examples/spin-custom-theme';
@@ -16,11 +15,6 @@ const meta: Meta<typeof Spin> = {
 
 export default meta;
 type Story = StoryObj<typeof Spin>;
-
-export const AllSizes: Story = {
-  name: 'All Sizes',
-  render: AllSizesExample,
-};
 
 export const SpinSizes: Story = {
   render: SpinSizesExample,

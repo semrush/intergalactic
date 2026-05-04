@@ -1,7 +1,6 @@
 import Tag from '@semcore/ui/tag';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AllTagsExample from './examples/all-tags';
 import BasicPropsExample, { defaultProps } from './examples/basic_usage';
 import EllipsisExample from './examples/tag-with-ellipsis';
 
@@ -11,11 +10,6 @@ const meta: Meta<typeof Tag> = {
 };
 
 export default meta;
-
-export const AllTags: StoryObj = {
-  name: 'All Tags',
-  render: AllTagsExample,
-};
 
 export const BasicProps: StoryObj<typeof defaultProps> = {
   args: defaultProps,
