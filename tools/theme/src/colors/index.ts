@@ -9,9 +9,9 @@ const colorNames = [
   'salad',
   'green',
   'blue',
-  'blueIndigo',
+  'blue-indigo',
   'violet',
-  'violetDusty',
+  'violet-dusty',
   'pink',
 ] as const;
 const lightnessNames = [50, 75, 100, 200, 300, 400, 450, 500, 600, 700, 800] as const;
@@ -22,12 +22,12 @@ export type Lightness = typeof lightnessNames[number];
 // =============================================================================
 // Base color scales
 export const baseColors: Record<Colors, ColorScale> = {
-  gray: new ColorScale(['oklch(0.94 0.002 180)', 'oklch(0.40 0.004 140)', 'oklch(0.22 0.01 140)'], 'p3'),
-  mint: new ColorScale(
+  'gray': new ColorScale(['oklch(0.94 0.002 180)', 'oklch(0.40 0.004 140)', 'oklch(0.22 0.01 140)'], 'p3'),
+  'mint': new ColorScale(
     ['oklch(0.935 0.019 184.9)', 'oklch(0.736 0.036 189.338)', 'oklch(0.4 0.032 189.338)'],
     'p3',
   ),
-  red: new ColorScale(
+  'red': new ColorScale(
     [
       'oklch(0.98 0.02 5)',
       'oklch(0.90 0.07 13)',
@@ -39,7 +39,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  orange: new ColorScale(
+  'orange': new ColorScale(
     [
       'oklch(0.99 0.02 88)',
       'oklch(0.88 0.13 68)',
@@ -51,7 +51,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  yellow: new ColorScale(
+  'yellow': new ColorScale(
     [
       'oklch(0.99 0.05 110)',
       'oklch(0.90 0.13 92)',
@@ -63,7 +63,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  salad: new ColorScale(
+  'salad': new ColorScale(
     [
       'oklch(0.98 0.04 124)',
       'oklch(0.90 0.12 136)',
@@ -74,7 +74,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  green: new ColorScale(
+  'green': new ColorScale(
     [
       'oklch(0.99 0.03 182)',
       'oklch(0.90 0.11 175)',
@@ -85,7 +85,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  blue: new ColorScale(
+  'blue': new ColorScale(
     [
       'oklch(0.74 0.14 280)',
       'oklch(0.64 0.18 280)',
@@ -95,7 +95,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  blueIndigo: new ColorScale(
+  'blue-indigo': new ColorScale(
     [
       'oklch(0.861 0.068 266.551)',
       'oklch(0.703 0.154 265.122)',
@@ -103,8 +103,8 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  violet: new ColorScale(['oklch(0.74 0.17 303)', 'oklch(0.55 0.27 296)'], 'p3'),
-  violetDusty: new ColorScale(
+  'violet': new ColorScale(['oklch(0.74 0.17 303)', 'oklch(0.55 0.27 296)'], 'p3'),
+  'violet-dusty': new ColorScale(
     [
       'oklch(0.74 0.14 280)',
       'oklch(0.64 0.18 280)',
@@ -114,7 +114,7 @@ export const baseColors: Record<Colors, ColorScale> = {
     ],
     'p3',
   ),
-  pink: new ColorScale(['oklch(0.90 0.10 330)', 'oklch(0.82 0.18 330)', 'oklch(0.66 0.27 330)'], 'p3'),
+  'pink': new ColorScale(['oklch(0.90 0.10 330)', 'oklch(0.82 0.18 330)', 'oklch(0.66 0.27 330)'], 'p3'),
 };
 
 // =============================================================================
@@ -126,7 +126,7 @@ export const semanticColors = {
   error: baseColors.red,
   warning: baseColors.orange,
   info: baseColors.blue,
-  link: baseColors.blueIndigo,
+  link: baseColors['blue-indigo'],
   focus: baseColors.blue,
   advertising: baseColors.violet,
   highlight: baseColors.violet,

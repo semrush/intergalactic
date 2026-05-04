@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 
 import { logger } from './utils.ts';
 
-const oldStyles = await readFile('../core/src/theme/themes/light.css', 'utf-8');
+const oldStyles = await readFile('../../semcore/core/src/theme/themes/light.css', 'utf-8');
 const newStyles = await readFile('./lib/light.css', 'utf-8');
 
 const oldSet = new Set();
@@ -22,5 +22,8 @@ newStyles.split('\n').forEach((line) => {
   }
 });
 
+logger.log('Not in new theme:');
 logger.log(Array.from(oldSet.difference(newSet).values()).join('\n'));
+
+logger.log('-------\nAdded in new theme:');
 logger.log(Array.from(newSet.difference(oldSet).values()).join('\n'));
