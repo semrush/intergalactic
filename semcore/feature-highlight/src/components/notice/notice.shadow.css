@@ -1,5 +1,5 @@
 SHighlightedNotice[beforeVisibility] {
-  background-image: var(--intergalactic-bg-secondary-feature-highlight, linear-gradient(90deg, #f9f2ff, #e9f7ff));
+  background-image: var(--intergalactic-bg-secondary-feature-highlight, undefined);
   border-color: transparent;
   background-clip: padding-box;
   position: relative;
@@ -13,19 +13,19 @@ SHighlightedNotice[beforeVisibility] {
     border-radius: inherit;
     visibility: var(--beforeVisibility);
 
-    background: var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)
-  ) border-box, var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box;
+    background: var(--intergalactic-border-feature-highlight, undefined
+  ) border-box, var(--intergalactic-border-feature-highlight-active, undefined) padding-box;
   }
 
   & SLabel {
-    color: var(--intergalactic-icon-primary-feature-highlight, #8649e1);
+    color: var(--intergalactic-icon-primary-feature-highlight, undefined);
   }
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, #565861);
+      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.088 0.026 147.7 / 0.583));
     }
   }
 }

@@ -6,8 +6,8 @@ SPills {
   border-radius: var(--intergalactic-control-rounded, 6px);
 
   SPill[selected] {
-    background: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
-    border-color: var(--intergalactic-border-info-active, #006dca);
+    background: var(--intergalactic-control-secondary-info, oklch(0.468 0.302 264.2 / 0.033));
+    border-color: var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
     z-index: 3;
   }
   SPill:focus-visible, SPill[selected] {
@@ -39,8 +39,8 @@ SPill {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
-  background: var(--intergalactic-bg-primary-neutral, #ffffff);
-  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   border-radius: var(--intergalactic-control-rounded, 6px);
 
   &::-moz-focus-inner {
@@ -54,7 +54,7 @@ SPill {
   }
 
   &:hover {
-    background: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
+    background: var(--intergalactic-bg-primary-neutral-hover, oklch(0.98 0.001 180));
   }
 }
 
@@ -64,17 +64,17 @@ SPill[disabled] {
   pointer-events: none;
 
   &>* {
-    opacity: var(--intergalactic-disabled-opacity, 0.3);
+    opacity: var(--intergalactic-disabled-opacity, 0.4);
   }
 }
 
 SText {
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   display: inline-flex;
 }
 
 SAddon {
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   display: inline-flex;
   align-items: center;
   justify-content: center;

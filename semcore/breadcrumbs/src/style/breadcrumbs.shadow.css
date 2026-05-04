@@ -10,7 +10,7 @@ SBreadcrumbs {
 
     SSeparator {
       margin: 0 var(--intergalactic-spacing-2x, 8px);
-      color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+      color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
       display: flex;
 
       &:last-child {
@@ -31,18 +31,18 @@ SBreadcrumbs {
         position: relative;
         font-size: var(--intergalactic-fs-200, 14px);
         line-height: var(--intergalactic-lh-200, 142%);
-        color: var(--intergalactic-text-secondary, #6c6e79);
+        color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
         text-decoration: none;
         cursor: pointer;
 
         &:hover {
           text-decoration: underline;
-          color: var(--intergalactic-text-primary, #191b23);
+          color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
         }
       }
 
       SBreadcrumbsItem[active] {
-        color: var(--intergalactic-text-primary, #191b23);
+        color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
         cursor: default;
         &:hover {
           text-decoration: none;

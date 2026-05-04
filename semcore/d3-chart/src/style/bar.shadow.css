@@ -1,7 +1,7 @@
 @import './var.css';
 
 SBar {
-  fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280));
   transition-property: height, width, y;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -30,7 +30,7 @@ SBar[onClick] {
 }
 
 SBackground {
-  fill: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
+  fill: var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.96 0.001 180));
 }
 SBackground[onClick] {
   cursor: pointer;
@@ -41,13 +41,13 @@ SBarAnnotation {
   justify-content: space-between;
 }
 SBarLabel {
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   margin-right: auto;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 }
 SBarPercent {
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   margin-right: var(--intergalactic-spacing-2x, 8px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
@@ -56,11 +56,11 @@ SBarValue {
   min-width: 52px;
   display: flex;
   justify-content: flex-end;
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   text-align: right;
 }
 SCompactHorizontalBarHoverRect {
-  fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
+  fill: var(--intergalactic-chart-grid-bar-chart-hover, oklch(0.177 0.033 175.6 / 0.028));
 }

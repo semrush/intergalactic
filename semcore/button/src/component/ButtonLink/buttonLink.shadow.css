@@ -4,22 +4,22 @@ SButtonLink {
 }
 
 SButtonLink[use='primary']:not([color]) {
-  color: var(--intergalactic-text-link, #006dca);
+  color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
 
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-link-hover-active, #044792);
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.206 263.4));
   }
 }
 
 SButtonLink[use='secondary']:not([color]) {
-  color: var(--intergalactic-text-hint, #6c6e79);
+  color: var(--intergalactic-text-hint, oklch(0.088 0.026 147.7 / 0.583));
 
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-hint-hover-active, #484a54);
+    color: var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
   }
 }
 

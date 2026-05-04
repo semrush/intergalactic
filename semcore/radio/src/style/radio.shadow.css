@@ -5,7 +5,7 @@ SRadio {
 
   SText {
     margin-left: var(--intergalactic-spacing-2x, 8px);
-    color: var(--intergalactic-text-primary, #191b23);
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   SText[color] {
@@ -33,7 +33,7 @@ SValue {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, #ffffff);
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
     border: 1px solid;
     border-radius: 50%;
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
@@ -50,12 +50,12 @@ SValue {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: var(--intergalactic-bg-primary-neutral, #ffffff);
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   }
 }
 
 SValue[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
   user-select: none;
@@ -82,11 +82,11 @@ SValue[size='l'] {
 }
 
 SValue[state='normal']::before {
-  border-color: var(--intergalactic-border-primary, #c4c7cf);
+  border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-critical-active, #d1002f);
+  border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
 }
 
 SControl {
@@ -105,20 +105,20 @@ SControl:checked~SValue[size='l']::after {
 }
 
 SControl:focus-visible+SValue[state='normal']::before {
-  border-color: var(--intergalactic-border-info-active, #006dca);
+  border-color: var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
   @mixin focus-outline-mixin;
 }
 
 SControl:checked~SValue::before,
 SControl:checked:focus-visible~SValue::before {
-  border-color: var(--intergalactic-control-primary-info, #008ff8);
-  background-color: var(--intergalactic-control-primary-info, #008ff8);
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
 }
 
 SControl:focus-visible+SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-critical-active, #d1002f);
+  border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
   @mixin focus-outline-mixin;
-  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
 }
 
 SControl:checked~SValue[theme]::before {
@@ -140,8 +140,8 @@ SInvalidPattern {
     top: 1px;
     left: 1px;
     border-radius: 50%;
-    background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%));
+    background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.628 0.258 29 / 0.56) 0, oklch(0.628 0.258 29 / 0.56) 1px, transparent 0, transparent 50%));
     background-size: 6px 6px;
-    background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   }
 }

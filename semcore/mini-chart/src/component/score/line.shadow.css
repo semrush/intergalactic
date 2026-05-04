@@ -2,7 +2,7 @@
 
 SLineGauge {
   height: 8px;
-  background-color: var(--base-bg-color, var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9));
+  background-color: var(--base-bg-color, var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.96 0.001 180)));
   border-radius: var(--intergalactic-chart-rounded, 2px);
   overflow: hidden;
   position: relative;
@@ -18,7 +18,7 @@ SLineValue[percent] {
 }
 
 SLineValue[color], SLineSegmentItem[color] {
-  background-color: var(--color, var(--intergalactic-chart-palette-order-1, #2bb3ff));
+  background-color: var(--color, var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280)));
 }
 
 SLineGauge[segments] {
@@ -41,14 +41,14 @@ SLineSegmentItem:last-child {
 SLineSegmentItem {
   height: 8px;
   background: transparent;
-  border-right-color: var(--intergalactic-chart-grid-border, #ffffff);
+  border-right-color: var(--intergalactic-chart-grid-border, #fff);
   border-right-style: solid;
   border-right-width: 1px;
   box-sizing: content-box;
 }
 
 SAnimationLine {
-  background-color: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
+  background-color: var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.96 0.001 180));
   transition: all var(--intergalactic-duration-extra-slow, 500) ease-in-out;
   animation-name: move-line;
   animation-duration: 0.5s;

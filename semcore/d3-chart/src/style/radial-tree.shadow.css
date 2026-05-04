@@ -2,11 +2,11 @@
 
 SRadian {
   cursor: pointer;
-  fill: var(--intergalactic-text-large-info, #008ff8);
+  fill: var(--intergalactic-text-large-info, oklch(0.53 0.214 263.4));
 }
 
 SLine {
-  stroke: var(--intergalactic-text-large-info, #008ff8);
+  stroke: var(--intergalactic-text-large-info, oklch(0.53 0.214 263.4));
 }
 
 SLine[stroke] {
@@ -22,7 +22,7 @@ SCap {
 }
 
 SCap[pattern] {
-  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  stroke: var(--intergalactic-chart-grid-border, #fff);
   stroke-width: 1px;
 }
 

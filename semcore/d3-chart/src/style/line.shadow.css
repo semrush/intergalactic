@@ -3,7 +3,7 @@
 SLine {
   fill: transparent;
   stroke-width: 3;
-  stroke: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280));
   transition-property: d;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -23,7 +23,7 @@ SLine[transparent] {
 
 SNull {
   fill: transparent;
-  stroke: var(--intergalactic-border-primary, #c4c7cf);
+  stroke: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   stroke-dasharray: 4;
 }
 
@@ -36,7 +36,7 @@ SLineArea {
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
   opacity: 0.3;
-  fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280));
 }
 SLineArea[color] {
   fill: var(--color);

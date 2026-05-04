@@ -19,11 +19,11 @@ SBaseTrigger {
   font-family: inherit;
   cursor: pointer;
 
-  background: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 
   font-weight: var(--intergalactic-regular, 400);
-  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
-  color: var(--intergalactic-text-primary, #191b23);
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   &::-moz-focus-inner {
     border: none;
@@ -36,22 +36,22 @@ SBaseTrigger {
   }
 
   &:focus-visible {
-    border: 1px solid var(--intergalactic-border-info-active, #006dca);
+    border: 1px solid var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
   }
 
   &:hover {
-    background-color: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
+    background-color: var(--intergalactic-bg-primary-neutral-hover, oklch(0.98 0.001 180));
   }
 
   &:active,
   &[active] {
-    border-color: var(--intergalactic-border-info-active, #006dca);
-    background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+    border-color: var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   }
 }
 
 SBaseTrigger[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   /* Disable link interactions */
   pointer-events: none;
@@ -160,18 +160,18 @@ SBaseTrigger[neighborLocation='left'] {
 }
 
 SText[display-placeholder] {
-  color: var(--intergalactic-text-placeholder, #8a8e9b);
+  color: var(--intergalactic-text-placeholder, oklch(0.098 0.023 157.4 / 0.457));
 }
 
 SBaseTrigger[state='valid'] {
-  border-color: var(--intergalactic-border-success-active, #007c65);
+  border-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-critical-active, #d1002f);
+  border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
 
   &:focus-visible {
-    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+    outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
   }
 }
 

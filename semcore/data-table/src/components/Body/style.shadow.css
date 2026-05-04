@@ -59,7 +59,7 @@ SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
 
 SCollapseRow[gridArea] > SCellWrapper > SCell:not([withoutBorder]),
 SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([withoutBorder]) {
-  border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SCollapseRow > SCellWrapper > SCell {
@@ -68,11 +68,11 @@ SCollapseRow > SCellWrapper > SCell {
 
 SRow[accordionType='row'][expanded] > SCellWrapper > SCell:not([theme]),
 SCell:not([theme])[expanded][withAccordion] {
-  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+  background-color: var(--intergalactic-table-td-cell-active, oklch(0.177 0.033 175.6 / 0.042));
 }
 
 SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWrapper > SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-accordion, #f4f5f9);
+  background-color: var(--intergalactic-table-td-cell-accordion, oklch(1 0 0));
 }
 
 /* we need a media query here because of the postcssHoverMediaFeature plugin. it doesn't handle this type of selectors correctly */
@@ -80,7 +80,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   :not(SRowGroup:has([data-row-selector="true"] input:checked)) > SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not(:has([data-row-selector="true"] input:checked)):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
+    background-color: var(--intergalactic-table-td-cell-hover, oklch(0.177 0.033 175.6 / 0.028));
   }
 
   /* MUTED THEME */
@@ -90,7 +90,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+    background-color: var(--intergalactic-table-td-cell-active, oklch(0.177 0.033 175.6 / 0.042));
   }
 
   /* INFO THEME */
@@ -104,7 +104,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has([data-row-selector="true"] input:checked) > SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
+    background-color: var(--intergalactic-table-td-cell-selected-hover, oklch(0.96 0.021 279.9));
   }
 
   /* SUCCESS THEME */
@@ -114,7 +114,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='success']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='success']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='success']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
+    background-color: var(--intergalactic-table-td-cell-new-hover, oklch(0.96 0.057 179.7));
   }
 
   /* WARNING THEME */
@@ -124,7 +124,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='warning']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='warning']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='warning']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
+    background-color: var(--intergalactic-table-td-cell-warning-hover, oklch(0.96 0.05 83.1));
   }
 
   /* DANGER THEME */
@@ -134,16 +134,16 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='danger']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='danger']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='danger']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
+    background-color: var(--intergalactic-table-td-cell-critical-hover, oklch(0.958 0.029 5.7));
   }
 }
 
 SRowGroup:has([data-row-selector="true"] input:checked) > SRow > SCellWrapper > SCell,
 SRow:has([data-row-selector="true"] input:checked) > SCellWrapper > SCell {
-  background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
+  background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.011 279.9));
 
   &[expanded][withAccordion] {
-    background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
+    background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.032 280));
   }
 }
 
@@ -152,9 +152,9 @@ SCell {
   height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   box-sizing: border-box;
-  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   white-space: pre-wrap;
   word-break: break-word;
   font-variant-numeric: tabular-nums;
@@ -183,7 +183,7 @@ SCell {
   &[use='primary'] {
     padding: var(--intergalactic-spacing-3x, 12px);
     min-height: 45px;
-    background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 
     &[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-3x, 12px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
@@ -193,7 +193,7 @@ SCell {
   &[use='secondary'] {
     padding: var(--intergalactic-spacing-2x, 8px);
     min-height: 37px;
-    background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 
     &[data-aria-level] {
       padding-left: calc(var(--intergalactic-spacing-2x, 8px) + ((var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * (var(--data-aria-level) - 1)));
@@ -201,53 +201,53 @@ SCell {
   }
 
   &[theme='muted'] {
-    background-color: var(--intergalactic-table-td-cell-unread, #f4f5f9);
+    background-color: var(--intergalactic-table-td-cell-unread, oklch(0.98 0.001 180));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+      background-color: var(--intergalactic-table-td-cell-active, oklch(0.177 0.033 175.6 / 0.042));
     }
   }
 
   &[theme='info'] {
-    background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
+    background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.011 279.9));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
+      background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.032 280));
     }
   }
 
   &[theme='success'] {
-    background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
+    background-color: var(--intergalactic-table-td-cell-new, oklch(0.977 0.036 184));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-new-active, #9ef2c9);
+      background-color: var(--intergalactic-table-td-cell-new-active, oklch(0.94 0.074 178.1));
     }
   }
 
   &[theme='warning'] {
-    background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
+    background-color: var(--intergalactic-table-td-cell-warning, oklch(0.979 0.03 88.1));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-warning-active, #ffdca2);
+      background-color: var(--intergalactic-table-td-cell-warning-active, oklch(0.939 0.069 79.8));
     }
   }
 
   &[theme='danger'] {
-    background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
+    background-color: var(--intergalactic-table-td-cell-critical, oklch(0.977 0.016 1.8));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-critical-active, #ffd7df);
+      background-color: var(--intergalactic-table-td-cell-critical-active, oklch(0.938 0.042 8.4));
     }
   }
 
   &[borders='both'],
   &[borders='left'] {
-    border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+    border-left: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   }
 
   &[borders='both'],
   &[borders='right'] {
-    border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+    border-right: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   }
 
   &[innerOutline]:focus-visible {
@@ -278,7 +278,7 @@ SSpinContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--intergalactic-overlay-limitation-secondary, rgba(255, 255, 255, 0.85));
+  background-color: var(--intergalactic-overlay-limitation-secondary, oklch(1 0 0 / 0.85));
   z-index: 15;
 
   &:focus-visible {
@@ -330,7 +330,7 @@ SCellWrapper[fixed='left'][shadowVertical='start'] {
     display: block;
     right: 0;
     background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    linear-gradient(to right, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
   }
   SCell {
     margin-right: 5px;
@@ -343,7 +343,7 @@ SCellWrapper[fixed='right'][shadowVertical='end'] {
     display: block;
     left: 0;
     background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    linear-gradient(to left, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
   }
 
   SCell {

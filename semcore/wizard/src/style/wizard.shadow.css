@@ -7,8 +7,8 @@ SWizard {
 }
 
 SSidebar {
-  background: var(--intergalactic-control-primary-advertising, #5925ab);
-  color: var(--intergalactic-text-primary-invert, #ffffff);
+  background: var(--intergalactic-control-primary-advertising, oklch(0.64 0.223 299.3));
+  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   font-weight: var(--intergalactic-bold, 700);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
@@ -16,8 +16,8 @@ SSidebar {
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border-radius: var(--intergalactic-modal-rounded, 12px) 0 0
-    var(--intergalactic-modal-rounded, 12px);
+  border-radius: var(--intergalactic-modal-rounded, calc(12px + 2px)) 0 0
+    var(--intergalactic-modal-rounded, calc(12px + 2px));
   @media (max-width: 1060px) {
     width: 56px;
   }
@@ -34,19 +34,19 @@ SSidebar {
     line-height: var(--intergalactic-lh-200, 142%);
 
     &:focus-visible {
-      outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+      outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));
     }
 
     &:hover {
-      background: var(--intergalactic-control-primary-advertising-hover, #421983);
+      background: var(--intergalactic-control-primary-advertising-hover, oklch(0.6 0.244 297.8));
       z-index: 2;
     }
     &[active] {
-      background: var(--intergalactic-control-primary-advertising-active, #8649e1);
+      background: var(--intergalactic-control-primary-advertising-active, oklch(0.58 0.254 297.1));
     }
     &:disabled,
     &[disabled] {
-      opacity: var(--intergalactic-disabled-opacity, 0.3);
+      opacity: var(--intergalactic-disabled-opacity, 0.4);
       cursor: default;
       pointer-events: none; /* Disable interactions */
     }
@@ -63,7 +63,7 @@ SSidebar {
         overflow: auto;
       }
       &[active]:hover SStepDescription {
-        background: var(--intergalactic-control-primary-advertising-active, #8649e1);
+        background: var(--intergalactic-control-primary-advertising-active, oklch(0.58 0.254 297.1));
       }
     }
   }
@@ -98,12 +98,12 @@ SStepDescription {
 SContent {
   padding: var(--intergalactic-spacing-10x, 40px);
   width: 100%;
-  border-radius: 0 var(--intergalactic-modal-rounded, 12px) var(--intergalactic-modal-rounded, 12px)
+  border-radius: 0 var(--intergalactic-modal-rounded, calc(12px + 2px)) var(--intergalactic-modal-rounded, calc(12px + 2px))
     0;
-  background: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 }
 SContent[noSidebar] {
-  border-radius: var(--intergalactic-modal-rounded, 12px);
+  border-radius: var(--intergalactic-modal-rounded, calc(12px + 2px));
 }
 
 SSidebarMenu {

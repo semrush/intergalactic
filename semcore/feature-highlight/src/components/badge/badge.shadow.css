@@ -1,9 +1,9 @@
 SHighlightedBadge {
-  color: var(--intergalactic-text-primary-invert, #ffffff);
+  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
 }
 
 SHighlightedBadge[use='accent'] {
-  background-image: var(--intergalactic-control-primary-feature-highlight, linear-gradient(90deg, #ab6cfe, #008ff8));
+  background-image: var(--intergalactic-control-primary-feature-highlight, undefined);
 }
 
 SHighlightedBadge[bg] {

@@ -1,15 +1,15 @@
 SFilterTrigger[selected] {
-  border-color: var(--intergalactic-border-info-active, #006dca);
-  background-color: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
-  color: var(--intergalactic-text-primary, #191b23);
+  border-color: var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
+  background-color: var(--intergalactic-control-secondary-info, oklch(0.468 0.302 264.2 / 0.033));
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   &:hover {
-    background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.467 0.303 264.2 / 0.065));
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-control-secondary-info-active, rgba(0, 143, 248, 0.3));
+    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.466 0.303 264.2 / 0.097));
   }
 }
 

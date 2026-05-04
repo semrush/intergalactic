@@ -1,23 +1,23 @@
 SHighlightedButton[theme='primary-highlighted'] {
-  color: var(--intergalactic-text-primary-invert, #ffffff);
+  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-image: linear-gradient(90deg,
-  var(--intergalactic-violet-500, #8649e1),
-  var(--intergalactic-blue-500, #006dca),
-  var(--intergalactic-violet-400, #ab6cfe),
-  var(--intergalactic-blue-400, #008ff8));
+  var(--intergalactic-violet-500, undefined),
+  var(--intergalactic-blue-500, undefined),
+  var(--intergalactic-violet-400, undefined),
+  var(--intergalactic-blue-400, undefined));
   background-position-x: 99%;
   background-size: 300%;
   transition: background-position-x 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, #ffffff);
+    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-position-x: 1%;
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, #ffffff);
-    background-image: var(--intergalactic-control-primary-feature-highlight-active, linear-gradient(90deg, #5925ab, #044792));
+    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    background-image: var(--intergalactic-control-primary-feature-highlight-active, undefined);
     background-size: 100%;
   }
 
@@ -27,45 +27,45 @@ SHighlightedButton[theme='primary-highlighted'] {
 }
 
 SHighlightedButton[theme='secondary-highlighted'] {
-  color: var(--intergalactic-icon-primary-feature-highlight, #8649e1);
+  color: var(--intergalactic-icon-primary-feature-highlight, undefined);
 
   background:
-    var(--intergalactic-control-secondary-feature-highlight, linear-gradient(90deg, #f9f2ff, #e9f7ff)) padding-box,
-    var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg, #dcb8ff, #8ecdff)) border-box;
+    var(--intergalactic-control-secondary-feature-highlight, undefined) padding-box,
+    var(--intergalactic-border-feature-highlight-secondary, undefined) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
   & SText {
-    background-color: var(--intergalactic-icon-primary-feature-highlight, #8649e1);
-    background-image: var(--intergalactic-text-feature-highlight, linear-gradient(90deg, #8649e1, #006dca));
+    background-color: var(--intergalactic-icon-primary-feature-highlight, undefined);
+    background-image: var(--intergalactic-text-feature-highlight, undefined);
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   &:hover {
     background:
-      var(--intergalactic-control-secondary-feature-highlight-hover, linear-gradient(90deg, #f2e4ff, #d6edfe)) padding-box,
-      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg, #dcb8ff, #8ecdff)) border-box;
+      var(--intergalactic-control-secondary-feature-highlight-hover, undefined) padding-box,
+      var(--intergalactic-border-feature-highlight-secondary, undefined) border-box;
 
-    color: var(--intergalactic-icon-primary-feature-highlight-hover-active, #6B3AB4);
+    color: var(--intergalactic-icon-primary-feature-highlight-hover-active, undefined);
 
     & SText {
-      background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, #6B3AB4);
-      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg, #421983, #002b5f));
+      background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, undefined);
+      background-image: var(--intergalactic-text-feature-highlight-hover-active, undefined);
     }
   }
 
   &:active,
   &[active] {
     background:
-      var(--intergalactic-control-secondary-feature-highlight-active, linear-gradient(90deg, #edd9ff, #c4e5fe)) padding-box,
-      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg, #dcb8ff, #8ecdff)) border-box;
+      var(--intergalactic-control-secondary-feature-highlight-active, undefined) padding-box,
+      var(--intergalactic-border-feature-highlight-secondary, undefined) border-box;
 
-    color: var(--intergalactic-icon-primary-feature-highlight-hover-active, #6B3AB4);
+    color: var(--intergalactic-icon-primary-feature-highlight-hover-active, undefined);
 
     & SText {
-      background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, #6B3AB4);
-      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg, #421983, #002b5f));
+      background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, undefined);
+      background-image: var(--intergalactic-text-feature-highlight-hover-active, undefined);
     }
   }
 
@@ -87,7 +87,7 @@ SHighlightedButton {
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, undefined);
 
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;

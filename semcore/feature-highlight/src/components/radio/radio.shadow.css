@@ -5,7 +5,7 @@ SHighlightedRadio {
 SHighlightedRadio:not([state="invalid"]) {
   [data-ui-name="Value.RadioMark"] {
     border-radius: 50%;
-    background: var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff));
+    background: var(--intergalactic-border-feature-highlight, undefined);
   }
 
   [data-ui-name="Value.RadioMark"]::before {
@@ -18,7 +18,7 @@ SHighlightedRadio:not([state="invalid"]) {
     border-radius: 50%;
     border-width: 0;
     pointer-events: none;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg, #ab6cfe, #008ff8));
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, undefined);
 
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
@@ -38,7 +38,7 @@ SHighlightedRadio:not([state="invalid"]) {
     right: 0;
     bottom: 0;
     border-radius: 50%;
-    background: var(--intergalactic-bg-primary-neutral, #ffffff);
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
     top: 50%;
     left: 50%;
     width: calc(100% - 2px);

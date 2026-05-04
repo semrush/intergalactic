@@ -9,7 +9,7 @@ STabPanel {
     bottom: -1px;
     flex: 1;
     border-top: 1px solid transparent;
-    border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 }
 
@@ -19,7 +19,7 @@ STabPanelItem {
   display: inline-flex;
   min-width: 0;
   height: 32px;
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   border: 1px solid transparent;
   border-bottom: none;
   border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px) 0 0;
@@ -51,7 +51,7 @@ STabPanelItem {
   }
 
   &:hover {
-    color: var(--intergalactic-text-primary, #191b23);
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   &::after {
@@ -60,7 +60,7 @@ STabPanelItem {
     left: -1px;
     bottom: 0px;
     width: calc(100% + 2px);
-    border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 }
 
@@ -71,17 +71,17 @@ STabPanelItem[disabled] {
 
   & SText,
   & SAddon {
-    opacity: var(--intergalactic-disabled-opacity, 0.3);
+    opacity: var(--intergalactic-disabled-opacity, 0.4);
   }
 }
 
 STabPanelItem[selected] {
-  color: var(--intergalactic-text-link, #006dca);
-  border-color: var(--intergalactic-border-primary, #c4c7cf);
+  color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
+  border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   flex-shrink: 0;
 
   &:hover {
-    color: var(--intergalactic-text-link-hover-active, #044792);
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.206 263.4));
   }
 
   &::after {

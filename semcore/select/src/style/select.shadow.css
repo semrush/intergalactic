@@ -12,10 +12,10 @@ SOptionCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, #ffffff);
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
     border: 1px solid;
     border-radius: var(--intergalactic-addon-rounded, 4px);
-    border-color: var(--intergalactic-border-primary, #c4c7cf);
+    border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 
   width: 16px;
@@ -48,13 +48,13 @@ SOptionCheckbox[size='l'][selected]::after {
 }
 
 SOptionCheckbox[selected]:before {
-  background-color: var(--intergalactic-control-primary-info, #008ff8);
-  border-color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
 }
 
 SOptionCheckbox[indeterminate]:before {
-  background-color: var(--intergalactic-control-primary-info, #008ff8);
-  border-color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
 }
 
 SOptionCheckbox[theme]:before {
@@ -68,10 +68,10 @@ SOptionCheckbox[theme][indeterminate]:before {
 }
 
 SOptionCheckbox[selected] {
-  background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
+  background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.467 0.303 264.2 / 0.065));
 
   &:hover {
-    background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
+    background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.465 0.305 264.2 / 0.16));
   }
 }
 

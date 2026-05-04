@@ -50,6 +50,52 @@
     "value": "#ffffff"
   },
   {
+    "name": "--mint-50",
+    "value": "oklch(0.97 0.009 184.9)",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--mint-75",
+    "value": "oklch(0.93 0.019 185)"
+  },
+  {
+    "name": "--mint-100",
+    "value": "oklch(0.9 0.022 185.7)",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--mint-200",
+    "value": "oklch(0.82 0.029 187.5)"
+  },
+  {
+    "name": "--mint-300",
+    "value": "oklch(0.74 0.036 189.2)"
+  },
+  {
+    "name": "--mint-400",
+    "value": "oklch(0.64 0.035 189.3)"
+  },
+  {
+    "name": "--mint-450",
+    "value": "oklch(0.58 0.034 189.3)"
+  },
+  {
+    "name": "--mint-500",
+    "value": "oklch(0.53 0.034 189.3)"
+  },
+  {
+    "name": "--mint-600",
+    "value": "oklch(0.4 0.032 189.3)"
+  },
+  {
+    "name": "--mint-700",
+    "value": "oklch(0.32 0.026 189.3)"
+  },
+  {
+    "name": "--mint-800",
+    "value": "oklch(0.23 0.018 189.3)"
+  },
+  {
     "name": "--red-50",
     "value": "oklch(0.967 0.022 4)",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
@@ -281,49 +327,95 @@
   },
   {
     "name": "--blue-50",
-    "value": "oklch(0.97 0.015 278)",
+    "value": "oklch(0.97 0.016 279.9)",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
   },
   {
     "name": "--blue-75",
-    "value": "oklch(0.93 0.035 278)"
+    "value": "oklch(0.93 0.038 280)"
   },
   {
     "name": "--blue-100",
-    "value": "oklch(0.9 0.05 278)",
+    "value": "oklch(0.9 0.054 280)",
     "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
   },
   {
     "name": "--blue-200",
-    "value": "oklch(0.82 0.09 278)"
+    "value": "oklch(0.82 0.097 280)"
   },
   {
     "name": "--blue-300",
-    "value": "oklch(0.74 0.13 278)"
+    "value": "oklch(0.74 0.14 280)"
   },
   {
     "name": "--blue-400",
-    "value": "oklch(0.64 0.18 278)"
+    "value": "oklch(0.64 0.18 280)"
   },
   {
     "name": "--blue-450",
-    "value": "oklch(0.58 0.192 278)"
+    "value": "oklch(0.58 0.192 280)"
   },
   {
     "name": "--blue-500",
-    "value": "oklch(0.53 0.198 278)"
+    "value": "oklch(0.53 0.197 280)"
   },
   {
     "name": "--blue-600",
-    "value": "oklch(0.4 0.165 278)"
+    "value": "oklch(0.4 0.156 280)"
   },
   {
     "name": "--blue-700",
-    "value": "oklch(0.32 0.145 278)"
+    "value": "oklch(0.32 0.139 280)"
   },
   {
     "name": "--blue-800",
-    "value": "oklch(0.23 0.123 278)"
+    "value": "oklch(0.23 0.122 280)"
+  },
+  {
+    "name": "--blueIndigo-50",
+    "value": "oklch(0.97 0.015 266.6)",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--blueIndigo-75",
+    "value": "oklch(0.93 0.034 266.6)"
+  },
+  {
+    "name": "--blueIndigo-100",
+    "value": "oklch(0.9 0.049 266.6)",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--blueIndigo-200",
+    "value": "oklch(0.82 0.09 266.2)"
+  },
+  {
+    "name": "--blueIndigo-300",
+    "value": "oklch(0.74 0.134 265.5)"
+  },
+  {
+    "name": "--blueIndigo-400",
+    "value": "oklch(0.64 0.192 264.3)"
+  },
+  {
+    "name": "--blueIndigo-450",
+    "value": "oklch(0.58 0.229 263.4)"
+  },
+  {
+    "name": "--blueIndigo-500",
+    "value": "oklch(0.53 0.214 263.4)"
+  },
+  {
+    "name": "--blueIndigo-600",
+    "value": "oklch(0.4 0.161 263.4)"
+  },
+  {
+    "name": "--blueIndigo-700",
+    "value": "oklch(0.32 0.129 263.4)"
+  },
+  {
+    "name": "--blueIndigo-800",
+    "value": "oklch(0.23 0.093 263.4)"
   },
   {
     "name": "--violet-50",
@@ -372,50 +464,50 @@
     "value": "oklch(0.23 0.113 296)"
   },
   {
-    "name": "--violet-dusty-50",
-    "value": "oklch(0.97 0.002 180)",
+    "name": "--violetDusty-50",
+    "value": "oklch(0.97 0.016 279.9)",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
   },
   {
-    "name": "--violet-dusty-75",
-    "value": "oklch(0.93 0.003 179.3)"
+    "name": "--violetDusty-75",
+    "value": "oklch(0.93 0.038 280)"
   },
   {
-    "name": "--violet-dusty-100",
-    "value": "oklch(0.9 0.003 177)",
+    "name": "--violetDusty-100",
+    "value": "oklch(0.9 0.054 280)",
     "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
   },
   {
-    "name": "--violet-dusty-200",
-    "value": "oklch(0.82 0.004 171.1)"
+    "name": "--violetDusty-200",
+    "value": "oklch(0.82 0.097 280)"
   },
   {
-    "name": "--violet-dusty-300",
-    "value": "oklch(0.74 0.005 165.2)"
+    "name": "--violetDusty-300",
+    "value": "oklch(0.74 0.14 280)"
   },
   {
-    "name": "--violet-dusty-400",
-    "value": "oklch(0.64 0.006 157.8)"
+    "name": "--violetDusty-400",
+    "value": "oklch(0.64 0.18 280)"
   },
   {
-    "name": "--violet-dusty-450",
-    "value": "oklch(0.58 0.006 153.3)"
+    "name": "--violetDusty-450",
+    "value": "oklch(0.58 0.192 280)"
   },
   {
-    "name": "--violet-dusty-500",
-    "value": "oklch(0.53 0.007 149.6)"
+    "name": "--violetDusty-500",
+    "value": "oklch(0.53 0.197 280)"
   },
   {
-    "name": "--violet-dusty-600",
-    "value": "oklch(0.4 0.008 140)"
+    "name": "--violetDusty-600",
+    "value": "oklch(0.4 0.156 280)"
   },
   {
-    "name": "--violet-dusty-700",
-    "value": "oklch(0.32 0.013 140)"
+    "name": "--violetDusty-700",
+    "value": "oklch(0.32 0.139 280)"
   },
   {
-    "name": "--violet-dusty-800",
-    "value": "oklch(0.23 0.019 140)"
+    "name": "--violetDusty-800",
+    "value": "oklch(0.23 0.122 280)"
   },
   {
     "name": "--pink-50",
@@ -593,11 +685,6 @@
     "description": "Base denominator of the design system."
   },
   {
-    "name": "--intergalactic-spacing-05x",
-    "value": "2px",
-    "description": "2px"
-  },
-  {
     "name": "--intergalactic-spacing-1x",
     "value": "4px",
     "description": "4px"
@@ -656,6 +743,11 @@
     "name": "--intergalactic-spacing-30x",
     "value": "120px",
     "description": "120px"
+  },
+  {
+    "name": "--intergalactic-spacing-05x",
+    "value": "2px",
+    "description": "2px"
   },
   {
     "name": "--intergalactic-rounded-extra-small",
