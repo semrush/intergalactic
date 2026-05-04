@@ -6,46 +6,26 @@ const Demo = () => {
   return (
     <Flex gap={8} alignItems='center'>
       <Flex gap={2} alignItems='center'>
-        <Badge bg='blue-400' color='text-primary-invert'>
-          admin
-        </Badge>
-        <Badge bg='orange-400' color='text-primary-invert'>
-          alpha
-        </Badge>
-        <Badge bg='red-400' color='text-primary-invert'>
-          beta
-        </Badge>
-        <Badge bg='green-400' color='text-primary-invert'>
-          new
-        </Badge>
-        <Badge bg='gray-400' color='text-primary-invert'>
-          soon
-        </Badge>
+        <Badge type='admin' />
+        <Badge type='alpha' />
+        <Badge type='beta' />
+        <Badge type='new' />
+        <Badge type='soon' />
       </Flex>
       <Box
         p={4}
         style={{
-          background: 'var(--intergalactic-bg-primary-invert)',
-          borderRadius: 'var(--intergalactic-surface-rounded, 6px)',
+          background: '#191b23',
+          borderRadius: '6px',
           width: 'fit-content',
         }}
       >
         <Flex gap={2} alignItems='center'>
-          <Badge bg='gray-white' color='text-primary'>
-            admin
-          </Badge>
-          <Badge bg='gray-white' color='text-primary'>
-            alpha
-          </Badge>
-          <Badge bg='gray-white' color='text-primary'>
-            beta
-          </Badge>
-          <Badge bg='gray-white' color='text-primary'>
-            new
-          </Badge>
-          <Badge bg='gray-white' color='text-primary'>
-            soon
-          </Badge>
+          <Badge type='admin' inverted />
+          <Badge type='alpha' inverted />
+          <Badge type='beta' inverted />
+          <Badge type='new' inverted />
+          <Badge type='soon' inverted />
         </Flex>
       </Box>
     </Flex>
