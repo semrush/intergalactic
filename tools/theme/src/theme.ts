@@ -969,7 +969,7 @@ export const theme: Theme = {
         description: 'Background of the header cell in the secondary Table.',
       },
       table_th_gradient: {
-        value: 'linear-gradient(to right, transparent 0%, var(--gray-100) 100%)',
+        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100']} 100%)`,
         description: 'Background gradient for sorting icon that absolute positioned in the table head.',
       },
       table_td_cell_DEFAULT: {
@@ -1134,35 +1134,35 @@ export const theme: Theme = {
         description: 'Inverted border of the components that are combined with neighbor-location property.',
       },
       scroll_area_shadow_left: {
-        value: 'linear-gradient(to right, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
+        value: `linear-gradient(to right, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
         description: 'Left-to-right fade shadow for the ScrollArea.',
       },
       scroll_area_shadow_right: {
-        value: 'linear-gradient(to left, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
+        value: `linear-gradient(to left, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
         description: 'Right-to-left fade shadow for the ScrollArea.',
       },
       scroll_area_shadow_top: {
-        value: 'linear-gradient(to bottom, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
+        value: `linear-gradient(to bottom, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
         description: 'Top-to-bottom fade shadow for the ScrollArea.',
       },
       scroll_area_shadow_bottom: {
-        value: 'linear-gradient(to top, oklch(from var(--gray-800) l c h / 0.08) 20.55%, transparent 100%)',
+        value: `linear-gradient(to top, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
         description: 'Bottom-to-top fade shadow for the ScrollArea.',
       },
       scroll_area_dropdown_menu_left: {
-        value: 'linear-gradient(to right, var(--white) 34.38%, transparent 100%)',
+        value: 'linear-gradient(to right, {baseTokens.colors.white} 34.38%, transparent 100%)',
         description: 'Left-to-right fade shadow for the ScrollArea inside the DropdownMenu.',
       },
       scroll_area_dropdown_menu_right: {
-        value: 'linear-gradient(to left, var(--white) 34.38%, transparent 100%)',
+        value: 'linear-gradient(to left, {baseTokens.colors.white} 34.38%, transparent 100%)',
         description: 'Right-to-left fade shadow for the ScrollArea inside the DropdownMenu.',
       },
       scroll_area_dropdown_menu_bottom: {
-        value: 'linear-gradient(to top, var(--white) 34.38%, transparent 100%)',
+        value: 'linear-gradient(to top, {baseTokens.colors.white} 34.38%, transparent 100%)',
         description: 'Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu.',
       },
       scroll_area_dropdown_menu_top: {
-        value: 'linear-gradient(to bottom, var(--white) 34.38%, transparent 100%)',
+        value: 'linear-gradient(to bottom, {baseTokens.colors.white} 34.38%, transparent 100%)',
         description: 'Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.',
       },
       scroll_bar_background: {
@@ -1290,111 +1290,111 @@ export const theme: Theme = {
         description: 'Gray text for the default secondary tag.',
       },
       chart_palette_order_1: {
-        value: 'var(--blue-400)',
+        value: colors.blue['400'].value,
         description: '1 color in the default list of colors for charts.',
       },
       chart_palette_order_2: {
-        value: 'var(--green-200)',
+        value: colors.green['200'].value,
         description: '2 color in the default list of colors for charts.',
       },
       chart_palette_order_3: {
-        value: 'var(--violet-300)',
+        value: colors.violet['300'].value,
         description: '3 color in the default list of colors for charts.',
       },
       chart_palette_order_4: {
-        value: 'var(--yellow-200)',
+        value: colors.yellow['200'].value,
         description: '4 color in the default list of colors for charts.',
       },
       chart_palette_order_5: {
-        value: 'var(--red-300)',
+        value: colors.red['300'].value,
         description: '5 color in the default list of colors for charts.',
       },
       chart_palette_order_6: {
-        value: 'var(--blue-300)',
+        value: colors.blue['300'].value,
         description: '6 color in the default list of colors for charts.',
       },
       chart_palette_order_7: {
-        value: 'var(--pink-300)',
+        value: colors.pink['300'].value,
         description: '7 color in the default list of colors for charts.',
       },
       chart_palette_order_8: {
-        value: 'var(--salad-200)',
+        value: colors.salad['200'].value,
         description: '8 color in the default list of colors for charts.',
       },
       chart_palette_order_9: {
-        value: 'var(--blue-500)',
+        value: colors.blue['500'].value,
         description: '9 color in the default list of colors for charts.',
       },
       chart_palette_order_10: {
-        value: 'var(--green-300)',
+        value: colors.green['300'].value,
         description: '10 color in the default list of colors for charts.',
       },
       chart_palette_order_11: {
-        value: 'var(--yellow-300)',
+        value: colors.yellow['300'].value,
         description: '11 color in the default list of colors for charts.',
       },
       chart_palette_order_12: {
-        value: 'var(--pink-200)',
+        value: colors.pink['200'].value,
         description: '12 color in the default list of colors for charts.',
       },
       chart_palette_order_13: {
-        value: 'var(--salad-400)',
+        value: colors.salad['400'].value,
         description: '13 color in the default list of colors for charts.',
       },
       chart_palette_order_14: {
-        value: 'var(--violet-200)',
+        value: colors.violet['200'].value,
         description: '14 color in the default list of colors for charts.',
       },
       chart_palette_order_15: {
-        value: 'var(--red-400)',
+        value: colors.red['400'].value,
         description: '15 color in the default list of colors for charts.',
       },
       chart_palette_order_16: {
-        value: 'var(--green-400)',
+        value: colors.green['400'].value,
         description: '16 color in the default list of colors for charts.',
       },
       chart_palette_order_17: {
-        value: 'var(--blue-200)',
+        value: colors.blue['200'].value,
         description: '17 color in the default list of colors for charts.',
       },
       chart_palette_order_18: {
-        value: 'var(--salad-300)',
+        value: colors.salad['300'].value,
         description: '18 color in the default list of colors for charts.',
       },
       chart_palette_order_19: {
-        value: 'var(--yellow-400)',
+        value: colors.yellow['400'].value,
         description: '19 color in the default list of colors for charts.',
       },
       chart_palette_order_20: {
-        value: 'var(--red-200)',
+        value: colors.red['200'].value,
         description: '20 color in the default list of colors for charts.',
       },
       chart_palette_order_21: {
-        value: 'var(--yellow-500)',
+        value: colors.yellow['500'].value,
         description: '21 color in the default list of colors for charts.',
       },
       chart_palette_order_22: {
-        value: 'var(--violet-400)',
+        value: colors.violet['400'].value,
         description: '22 color in the default list of colors for charts.',
       },
       chart_palette_order_23: {
-        value: 'var(--pink-400)',
+        value: colors.pink['400'].value,
         description: '23 color in the default list of colors for charts.',
       },
       chart_palette_order_24: {
-        value: 'var(--salad-500)',
+        value: colors.salad['500'].value,
         description: '24 color in the default list of colors for charts.',
       },
       chart_palette_order_total_amount: {
-        value: 'var(--gray-400)',
+        value: colors.gray['400'].value,
         description: 'Use it to show total value on the chart.',
       },
       chart_palette_order_other_data: {
-        value: 'var(--gray-200)',
+        value: colors.gray['200'].value,
         description: 'Use it to indicate voids, missing or some other data on the chart.',
       },
       chart_palette_order_null: {
-        value: 'var(--gray-100)',
+        value: colors.gray['100'].value,
         description: 'Use it to show null value on the chart.',
       },
       chart_grid_line: {
@@ -1430,7 +1430,7 @@ export const theme: Theme = {
         description: 'Stripe color for diagonal pattern background.',
       },
       chart_grid_border: {
-        value: 'var(--white)',
+        value: '{baseTokens.colors.white}',
         description: 'Border for distinguishing data sets and chart dots on the chart grid.',
       },
       chart_x_axis_accent_period_active: {
