@@ -40,8 +40,15 @@ export function processValue(value: string, config: Theme): string {
 }
 
 export function getConfigValue(path: string[], config: Theme): string {
+  let pathToSearch = path;
   try {
-    const valueObj = getByPath(config, path);
+    const [group, subGroup, ...key] = path;
+    pathToSearch = path[0] === 'baseTokens'
+      ? path
+      : path[0] === 'featureHighlight'
+        ? [group, `${subGroup}_${key.join('_')}`]
+        : [group, subGroup, key.join('_')];
+    const valueObj = getByPath(config, pathToSearch);
 
     if ('value' in valueObj) {
       return processValue(valueObj.value, config);
@@ -81,9 +88,11 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
       });
     } else {
       Object.keys(node).forEach((key) => {
+        const newPath = key.includes('_') ? [...path, ...key.split('_')] : [...path, key];
+
         traverse({
           node: node[key],
-          path: [...path, key],
+          path: newPath,
           prefix,
           postfix,
           groupKey,
@@ -188,7 +197,11 @@ export const tokensToJs = (tokens: { name: string; value: string; description: s
 export const getByPath = (obj: any, parts: string[]) => {
   let result = obj;
   for (const part of parts) {
-    result = result?.[part];
+    if (!result?.[part]) {
+      result = result?.[`${part}_DEFAULT`];
+    } else {
+      result = result?.[part];
+    }
   }
   return result;
 };

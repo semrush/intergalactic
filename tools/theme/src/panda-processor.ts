@@ -57,8 +57,34 @@ function processKebabToCamel(node: N) {
   }
 }
 
+function toTree(node: N) {
+  Object.keys(node).forEach((key) => {
+    if (key.includes('_')) {
+      const paths = key.split('_');
+      let current = node;
+
+      paths.forEach((path, index) => {
+        if (index === paths.length - 1) {
+          current[path] = node[key];
+          delete node[key];
+        } else {
+          current[path] = current[path] || {};
+          current = current[path];
+        }
+      });
+    } else {
+      if ('value' in node[key]) {
+        return;
+      } else {
+        toTree(node[key]);
+      }
+    }
+  });
+}
+
 export const toPandaPreset = (config: Theme) => {
   processValues(config, config);
+  toTree(config);
   processKebabToCamel(config);
 
   const tokens = JSON.stringify({ ...config.baseTokens, breakpoints: undefined }, undefined, 2);

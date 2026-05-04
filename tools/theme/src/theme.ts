@@ -399,23 +399,23 @@ export const theme: Theme = {
         description: 'Focusing values in the input.',
       },
       text_primary_DEFAULT: {
-        value: 'neutral.opaqueAt(L_TEXT_PRIMARY)',
+        value: neutral.opaqueAt(L_TEXT_PRIMARY),
         description: 'Default body and UI copy; strongest reading emphasis for primary content.',
       },
       text_primary_invert: {
-        value: 'neutral.opaqueInvAt(L_INV_TEXT_PRIMARY)',
+        value: neutral.opaqueInvAt(L_INV_TEXT_PRIMARY),
         description: 'Inverted version of the primary text.',
       },
       text_secondary_DEFAULT: {
-        value: 'neutral.opaqueAt(L_TEXT_SECONDARY)',
+        value: neutral.opaqueAt(L_TEXT_SECONDARY),
         description: 'Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.',
       },
       text_secondary_invert: {
-        value: 'neutral.opaqueInvAt(L_INV_TEXT_SECONDARY)',
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
         description: 'Inverted version of the secondary text.',
       },
       text_placeholder: {
-        value: 'neutral.opaqueAt(L_TEXT_PLACEHOLDER)',
+        value: neutral.opaqueAt(L_TEXT_PLACEHOLDER),
         description: 'Placeholder text color for inputs and fields.',
       },
       text_success_DEFAULT: {
@@ -455,11 +455,11 @@ export const theme: Theme = {
         description: 'Visited link state so users can tell visited destinations apart from default links.',
       },
       text_hint_DEFAULT: {
-        value: 'neutral.opaqueAt(L_TEXT_SECONDARY)',
+        value: neutral.opaqueAt(L_TEXT_SECONDARY),
         description: 'Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.',
       },
       text_hint_hover_active: {
-        value: 'neutral.opaqueAt(L_TEXT_SECONDARY_HOVER)',
+        value: neutral.opaqueAt(L_TEXT_SECONDARY_HOVER),
         description: 'Hover and active states of the hint link text.',
       },
       text_hint_invert_DEFAULT: {
@@ -503,43 +503,43 @@ export const theme: Theme = {
         description: 'Promotional or sponsored emphasis (ads, marketing callouts)—use sparingly so it stays noticeable.',
       },
       border_primary_DEFAULT: {
-        value: 'neutral.opaqueAt(L_BORDER_PRIMARY)',
+        value: neutral.opaqueAt(L_BORDER_PRIMARY),
         description: 'Default stroke for interactive controls and structured surfaces.',
       },
       border_primary_invert: {
-        value: 'neutral.opaqueInvAt(L_INV_BORDER_PRIMARY)',
+        value: neutral.opaqueInvAt(L_INV_BORDER_PRIMARY),
         description: 'Inverted version of the neutral primary border. Use it for borders on the dark or color background.',
       },
       border_secondary_DEFAULT: {
-        value: 'neutral.opaqueAt(L_BORDER_SECONDARY)',
+        value: neutral.opaqueAt(L_BORDER_SECONDARY),
         description: 'Secondary hairline stroke for grids, cards, and subtle dividers.',
       },
       border_secondary_invert: {
-        value: 'neutral.opaqueInvAt(L_INV_BORDER_SECONDARY)',
+        value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
         description: 'Inverted version of the neutral secondary border. Use it for borders on the dark or color background.',
       },
       border_info_DEFAULT: {
-        value: 'info.opaqueAt(L_BORDER_PRIMARY)',
+        value: info.opaqueAt(L_BORDER_PRIMARY),
         description: 'Subtle secondary border in the informational message.',
       },
       border_info_active: {
-        value: 'info.opaqueAt(L_BORDER_ACTIVE)',
+        value: info.opaqueAt(L_BORDER_ACTIVE),
         description: 'Active border in focused input filed.',
       },
       border_success_DEFAULT: {
-        value: 'success.opaqueAt(L_BORDER_PRIMARY)',
+        value: success.opaqueAt(L_BORDER_PRIMARY),
         description: 'Subtle secondary border in the successful message and input field.',
       },
       border_success_active: {
-        value: 'success.opaqueAt(L_BORDER_ACTIVE)',
+        value: success.opaqueAt(L_BORDER_ACTIVE),
         description: 'Active border in the focused input field with valid state.',
       },
       border_critical_DEFAULT: {
-        value: 'error.opaqueAt(L_BORDER_PRIMARY)',
+        value: error.opaqueAt(L_BORDER_PRIMARY),
         description: 'Subtle secondary border in the critical message and invalid input field.',
       },
       border_critical_active: {
-        value: 'error.opaqueAt(L_BORDER_ACTIVE)',
+        value: error.opaqueAt(L_BORDER_ACTIVE),
         description: 'Active border in the focused input field with invalid state, and active state of the other components with invalid state.',
       },
       border_critical_pattern: {
@@ -547,19 +547,19 @@ export const theme: Theme = {
         description: 'Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.',
       },
       border_warning_DEFAULT: {
-        value: 'warning.opaqueAt(L_BORDER_PRIMARY)',
+        value: warning.opaqueAt(L_BORDER_PRIMARY),
         description: 'Subtle secondary border in the warning message.',
       },
       border_warning_active: {
-        value: 'warning.opaqueAt(L_BORDER_ACTIVE)',
+        value: warning.opaqueAt(L_BORDER_ACTIVE),
         description: 'Active border in components with warning intention.',
       },
       border_tooltip_invert: {
-        value: 'neutral.opaqueInvAt(L_INV_BORDER_SECONDARY)',
+        value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
         description: 'Border of the Tooltip with dark theme.',
       },
       border_table_accent: {
-        value: 'neutral.opaqueAt(L_BORDER_PRIMARY)',
+        value: neutral.opaqueAt(L_BORDER_PRIMARY),
         description: 'Accent borders in the Table: for the accordion in the table and for the header of the secondary table.',
       },
       border_date_picker_range_comparison: {
@@ -643,39 +643,39 @@ export const theme: Theme = {
         description: 'Active (selected) state of the inverted primary control.',
       },
       control_secondary_neutral_DEFAULT: {
-        value: 'neutral.opaqueAt(L_BG_SECONDARY)',
+        value: neutral.opaqueAt(L_BG_SECONDARY),
         description: 'Background of the regular secondary control.',
       },
       control_secondary_neutral_hover: {
-        value: 'neutral.opaqueAt(L_BG_SECONDARY_HOVER)',
+        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Hover state of the regular secondary control.',
       },
       control_secondary_neutral_active: {
-        value: 'neutral.opaqueAt(L_BG_SECONDARY_ACTIVE)',
+        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Active (selected) state of the regular secondary control.',
       },
       control_secondary_info_DEFAULT: {
-        value: 'info.opaqueAt(L_BG_SECONDARY)',
+        value: info.opaqueAt(L_BG_SECONDARY),
         description: 'Background of the accent secondary control.',
       },
       control_secondary_info_hover: {
-        value: 'info.opaqueAt(L_BG_SECONDARY_HOVER)',
+        value: info.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Hover state of the accent secondary control.',
       },
       control_secondary_info_active: {
-        value: 'info.opaqueAt(L_BG_SECONDARY_ACTIVE)',
+        value: info.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Active (selected) state of the accent secondary control.',
       },
       control_secondary_invert_DEFAULT: {
-        value: 'neutral.opaqueInvAt(L_INV_BG_SECONDARY)',
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY),
         description: 'Background of the inverted version of the secondary control.',
       },
       control_secondary_invert_hover: {
-        value: 'neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER)',
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
         description: 'Hover state of the inverted version of the secondary control.',
       },
       control_secondary_invert_active: {
-        value: 'neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE)',
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE),
         description: 'Active (selected) state of the inverted version of the secondary control.',
       },
       control_tertiary_neutral_DEFAULT: {
@@ -683,11 +683,11 @@ export const theme: Theme = {
         description: 'Background of the regular tertiary control.',
       },
       control_tertiary_neutral_hover: {
-        value: 'neutral.opaqueAt(L_BG_SECONDARY_HOVER)',
+        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Hover state of the regular tertiary control.',
       },
       control_tertiary_neutral_active: {
-        value: 'neutral.opaqueAt(L_BG_SECONDARY_ACTIVE)',
+        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Active (selected) state of the regular tertiary control.',
       },
       control_tertiary_info_DEFAULT: {
@@ -695,11 +695,11 @@ export const theme: Theme = {
         description: 'Background of the accent and link-lookalike tertiary control.',
       },
       control_tertiary_info_hover: {
-        value: 'info.opaqueAt(L_BG_SECONDARY_HOVER)',
+        value: info.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Hover state of the accent and link-lookalike tertiary control.',
       },
       control_tertiary_info_active: {
-        value: 'info.opaqueAt(L_BG_SECONDARY_ACTIVE)',
+        value: info.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Active (selected) state of the accent and link-lookalike tertiary control.',
       },
       control_tertiary_invert_DEFAULT: {
@@ -707,71 +707,71 @@ export const theme: Theme = {
         description: 'Background of the inverted version of the tertiary control.',
       },
       control_tertiary_invert_hover: {
-        value: 'neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER)',
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
         description: 'Hover state of the inverted version of the tertiary control.',
       },
       control_tertiary_invert_active: {
-        value: 'neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE)',
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE),
         description: 'Active (selected) state of the inverted version of the tertiary control.',
       },
       icon_primary_neutral_DEFAULT: {
-        value: 'neutral.opaqueAt(L_ICON_PRIMARY)',
+        value: neutral.opaqueAt(L_ICON_PRIMARY),
         description: 'Default icon weight on normal backgrounds—stronger emphasis than secondary icons.',
       },
       icon_primary_neutral_hover_active: {
-        value: 'neutral.opaqueAt(L_ICON_PRIMARY_HOVER)',
+        value: neutral.opaqueAt(L_ICON_PRIMARY_HOVER),
         description: 'Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.',
       },
       icon_primary_info_DEFAULT: {
-        value: 'info.opaqueAt(L_ICON_PRIMARY)',
+        value: info.opaqueAt(L_ICON_PRIMARY),
         description: 'Primary link-lookalike icon.',
       },
       icon_primary_info_hover_active: {
-        value: 'info.opaqueAt(L_ICON_PRIMARY_HOVER)',
+        value: info.opaqueAt(L_ICON_PRIMARY_HOVER),
         description: 'Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.',
       },
       icon_primary_success_DEFAULT: {
-        value: 'success.opaqueAt(L_ICON_PRIMARY)',
+        value: success.opaqueAt(L_ICON_PRIMARY),
         description: 'Semantic success icon.',
       },
       icon_primary_success_hover_active: {
-        value: 'success.opaqueAt(L_ICON_PRIMARY_HOVER)',
+        value: success.opaqueAt(L_ICON_PRIMARY_HOVER),
         description: 'Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.',
       },
       icon_primary_critical_DEFAULT: {
-        value: 'error.opaqueAt(L_ICON_PRIMARY)',
+        value: error.opaqueAt(L_ICON_PRIMARY),
         description: 'Semantic error icon.',
       },
       icon_primary_critical_hover_active: {
-        value: 'error.opaqueAt(L_ICON_PRIMARY_HOVER)',
+        value: error.opaqueAt(L_ICON_PRIMARY_HOVER),
         description: 'Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.',
       },
       icon_primary_warning_DEFAULT: {
-        value: 'warning.opaqueAt(L_ICON_PRIMARY + 0.15)',
+        value: warning.opaqueAt(L_ICON_PRIMARY + 0.15),
         description: 'Semantic warning icon.',
       },
       icon_primary_warning_hover_active: {
-        value: 'warning.opaqueAt(L_ICON_PRIMARY_HOVER)',
+        value: warning.opaqueAt(L_ICON_PRIMARY_HOVER),
         description: 'Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.',
       },
       icon_primary_invert_DEFAULT: {
-        value: 'neutral.opaqueInvAt(L_INV_ICON_PRIMARY)',
+        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY),
         description: 'Inverted version of the primary icon.',
       },
       icon_primary_invert_hover_active: {
-        value: 'neutral.opaqueInvAt(L_INV_ICON_PRIMARY_HOVER)',
+        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY_HOVER),
         description: 'Hover and active (selected) states of the inverted version of the primary icon.',
       },
       icon_secondary_neutral_DEFAULT: {
-        value: 'neutral.opaqueAt(L_ICON_SECONDARY)',
+        value: neutral.opaqueAt(L_ICON_SECONDARY),
         description: 'De-emphasized icons for dense layouts (tables, tertiary actions).',
       },
       icon_secondary_neutral_hover_active: {
-        value: 'neutral.opaqueAt(L_ICON_SECONDARY_HOVER)',
+        value: neutral.opaqueAt(L_ICON_SECONDARY_HOVER),
         description: 'Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.',
       },
       icon_secondary_info_DEFAULT: {
-        value: 'info.opaqueAt(L_ICON_SECONDARY)',
+        value: info.opaqueAt(L_ICON_SECONDARY),
         description: 'Secondary link-lookalike icon.',
       },
       icon_secondary_info_hover_active: {
@@ -779,31 +779,31 @@ export const theme: Theme = {
         description: 'Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color.',
       },
       icon_secondary_success_DEFAULT: {
-        value: 'success.opaqueAt(L_ICON_SECONDARY)',
+        value: success.opaqueAt(L_ICON_SECONDARY),
         description: 'Softer success icon for dense UI or inline hints where the surface should stay calm.',
       },
       icon_secondary_success_hover_active: {
-        value: 'success.opaqueAt(L_ICON_SECONDARY_HOVER)',
+        value: success.opaqueAt(L_ICON_SECONDARY_HOVER),
         description: 'Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.',
       },
       icon_secondary_critical_DEFAULT: {
-        value: 'error.opaqueAt(L_ICON_SECONDARY)',
+        value: error.opaqueAt(L_ICON_SECONDARY),
         description: 'Softer error icon for dense UI or inline hints where the surface should stay calm.',
       },
       icon_secondary_critical_hover_active: {
-        value: 'error.opaqueAt(L_ICON_SECONDARY_HOVER)',
+        value: error.opaqueAt(L_ICON_SECONDARY_HOVER),
         description: 'Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color.',
       },
       icon_secondary_warning_DEFAULT: {
-        value: 'warning.opaqueAt(L_ICON_SECONDARY)',
+        value: warning.opaqueAt(L_ICON_SECONDARY),
         description: 'Softer warning icon for dense UI or inline hints where the surface should stay calm.',
       },
       icon_secondary_warning_hover_active: {
-        value: 'warning.opaqueAt(L_ICON_SECONDARY_HOVER)',
+        value: warning.opaqueAt(L_ICON_SECONDARY_HOVER),
         description: 'Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.',
       },
       icon_non_interactive: {
-        value: 'neutral.opaqueAt(L_ICON_NON_INTERACTIVE)',
+        value: neutral.opaqueAt(L_ICON_NON_INTERACTIVE),
         description: 'Color for the default non-interactive icon.',
       },
       illustration_red: {
@@ -843,11 +843,11 @@ export const theme: Theme = {
         description: 'Default date-picker cell background.',
       },
       date_picker_cell_current_DEFAULT: {
-        value: 'neutral.opaqueAt(L_BORDER_ACTIVE)',
+        value: neutral.opaqueAt(L_BORDER_ACTIVE),
         description: 'Color for marking the cell with the current date, month or year in the date-picker.',
       },
       date_picker_cell_current_invert: {
-        value: 'neutral.opaqueInvAt(L_INV_BORDER_PRIMARY)',
+        value: neutral.opaqueInvAt(L_INV_BORDER_PRIMARY),
         description: 'Color for marking the active cell with the current date, month or year in the date-picker.',
       },
       date_picker_cell_hover: {
@@ -883,15 +883,15 @@ export const theme: Theme = {
         description: 'Default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_hover: {
-        value: 'neutral.opaqueAt(L_BG_PRIMARY_HOVER)',
+        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
         description: 'Hover state of the default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_selected_DEFAULT: {
-        value: 'focus.opaqueAt(L_BG_SELECTED)',
+        value: focus.opaqueAt(L_BG_SELECTED),
         description: 'Active (selected) state of the default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_selected_hover: {
-        value: 'focus.opaqueAt(L_BG_SELECTED_HOVER)',
+        value: focus.opaqueAt(L_BG_SELECTED_HOVER),
         description: 'Hover state for the selected state of the default background color for the list item in the dropdown-menu.',
       },
       feature_popover_bg_DEFAULT: {
@@ -977,11 +977,11 @@ export const theme: Theme = {
         description: 'Background of the default cell in the Table.',
       },
       table_td_cell_hover: {
-        value: 'neutral.opaqueAt(L_BG_PRIMARY_HOVER)',
+        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
         description: 'Background of the default hovered cell in the Table.',
       },
       table_td_cell_active: {
-        value: 'neutral.opaqueAt(L_BG_PRIMARY_ACTIVE)',
+        value: neutral.opaqueAt(L_BG_PRIMARY_ACTIVE),
         description: 'Background of the default active cell in the Table.',
       },
       table_td_cell_unread: {
@@ -1082,15 +1082,15 @@ export const theme: Theme = {
         description: 'Official Google My Business brand fill for logos and icons in approved placements; follow Google brand guidelines for size and clear space.',
       },
       keyboard_focus_outline: {
-        value: 'focus.opaqueAt(L_BORDER_FOCUS)',
+        value: focus.opaqueAt(L_BORDER_FOCUS),
         description: 'Color for default keyboard focus outline styles.',
       },
       keyboard_focus_invalid_outline: {
-        value: 'error.opaqueAt(L_BORDER_FOCUS)',
+        value: error.opaqueAt(L_BORDER_FOCUS),
         description: 'Color for keyboard focus outline styles for elements with invalid state.',
       },
       keyboard_focus_valid_outline: {
-        value: 'success.opaqueAt(L_BORDER_FOCUS)',
+        value: success.opaqueAt(L_BORDER_FOCUS),
         description: 'Color for keyboard focus outline styles for elements with valid state.',
       },
       keyboard_focus_invert_outline: {
@@ -1098,11 +1098,11 @@ export const theme: Theme = {
         description: 'Color for keyboard focus outline styles to use on the dark and color background.',
       },
       overlay_primary: {
-        value: 'neutral.opaqueAt(0.74)',
+        value: neutral.opaqueAt(0.74),
         description: 'Use for cover the content under the modal dialogs.',
       },
       overlay_secondary: {
-        value: 'neutral.opaqueAt(0.8)',
+        value: neutral.opaqueAt(0.8),
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       overlay_limitation_primary: {
@@ -1166,7 +1166,7 @@ export const theme: Theme = {
         description: 'Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.',
       },
       scroll_bar_background: {
-        value: 'neutral.opaqueAt(L_BORDER_PRIMARY)',
+        value: neutral.opaqueAt(L_BORDER_PRIMARY),
         description: 'Background color for ScrollBar.',
       },
       tag_primary_gray_normal: {
@@ -1410,11 +1410,11 @@ export const theme: Theme = {
         description: 'Accent line for the hover state on the chart grid.',
       },
       chart_grid_text_label: {
-        value: 'neutral.opaqueAt(L_TEXT_SECONDARY)',
+        value: neutral.opaqueAt(L_TEXT_SECONDARY),
         description: 'Text label on the chart grid.',
       },
       chart_grid_bar_chart_hover: {
-        value: 'neutral.opaqueAt(L_BG_PRIMARY_HOVER)',
+        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
         description: 'Background color for the hover state of a bar on the chart grid.',
       },
       chart_grid_bar_chart_base_bg: {
@@ -1434,22 +1434,22 @@ export const theme: Theme = {
         description: 'Border for distinguishing data sets and chart dots on the chart grid.',
       },
       chart_x_axis_accent_period_active: {
-        value: 'neutral.opaqueAt(L_BG_LIGHT)',
+        value: neutral.opaqueAt(L_BG_LIGHT),
         description: 'Background color for the clickable date on the X-axis of the chart grid.',
       },
       chart_x_axis_accent_data_start_tracking: {
-        value: 'success.opaqueAt(L_BG_LIGHT)',
+        value: success.opaqueAt(L_BG_LIGHT),
         description: 'Background color for the "Start tracking" date on the X-axis of the chart grid.',
       },
       header_bg: { value: '#382E5E' },
       header_border_primary: { value: '#382E5E' },
       header_border_secondary: { value: 'rgba(255,255,255, 0.15)' },
       sidebar_nav_control_hover: {
-        value: 'neutral.opaqueAt(L_BG_SECONDARY_HOVER)',
+        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Sidebar navigation row hover background.',
       },
       sidebar_nav_control_active: {
-        value: 'neutral.opaqueAt(L_BG_SECONDARY_ACTIVE)',
+        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Sidebar navigation row active background.',
       },
       sidebar_nav_control_text_normal: {
