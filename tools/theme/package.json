@@ -12,9 +12,8 @@
   "exports": {
     "./light.css": "./lib/light.css",
     "./dark.css": "./lib/dark.css",
-    "./highlight-light.css": "./lib/highlight-light.css",
-    "./highlight-dark.css": "./lib/highlight-dark.css",
-
+    "./highlights-light.css": "./lib/highlights-light.css",
+    "./highlights-dark.css": "./lib/highlights-dark.css",
     "./light": {
       "types": "./lib/light.ts",
       "import": "./lib/light.ts",

@@ -38,17 +38,12 @@ const warning = !process.argv.includes('--no-warning');
 const packageDirname = resolvePath(fileURLToPath(import.meta.url), '..', '..');
 const semcorePath = resolvePath(packageDirname, '..', '..', 'semcore');
 
+const { baseTokens, semanticTokens, highlightsTokens } = processTokens(
+  config,
+  PREFIX,
+);
+
 for (const theme of themes) {
-  const { baseTokens, semanticTokens, highlightsTokens } = processTokens(
-    config,
-    PREFIX,
-  );
-
-  const pandaPreset = toPandaPreset(config);
-
-  await writeIfChanged('lib/panda-preset.js', pandaPreset);
-  await writeIfChanged('lib/panda-preset.ts', pandaPreset);
-
   await writeIfChanged(
     `lib/${theme}.css`,
     tokensToCss([...baseTokens, ...semanticTokens]),
@@ -64,6 +59,11 @@ for (const theme of themes) {
   }
 
   if (theme === defaultTheme) {
+    const pandaPreset = toPandaPreset(config);
+
+    await writeIfChanged('lib/panda-preset.js', pandaPreset);
+    await writeIfChanged('lib/panda-preset.ts', pandaPreset);
+
     const usages = await processStyles();
 
     await processTokensToDocs(usages, {
