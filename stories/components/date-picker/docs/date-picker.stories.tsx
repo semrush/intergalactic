@@ -29,27 +29,30 @@ import { playWrapper } from '../../../utils/playWrapper';
 const meta: Meta = {
   title: 'Components/DatePicker/Documentation',
 };
-
 export default meta;
 
 export const CustomDateRanges: StoryObj = {
   render: CustomDateRangesExample,
   play: playWrapper(CustomDateRangesTest),
+
 };
 
 export const ResetDatePicker: StoryObj = {
   render: ResetDatePickerExample,
   play: playWrapper(ResetDatePickerTest),
+
 };
 
 export const CustomDay: StoryObj = {
   render: CustomDayExample,
   play: playWrapper(CustomDaysTest),
+
 };
 
 export const CustomHeader: StoryObj = {
   render: CustomHeaderExample,
   play: playWrapper(CustomHeaderTest),
+
 };
 
 export const DateRangeComparator: StoryObj = {
@@ -60,6 +63,7 @@ export const DateRangeComparator: StoryObj = {
 export const DateRangeComparatorAdvanceUse: StoryObj = {
   render: DateRangeComparatorAdvanceUseExample,
   play: playWrapper(DateRangeComparatorAdvancedTest),
+
 };
 
 export const Datepicker: StoryObj = {

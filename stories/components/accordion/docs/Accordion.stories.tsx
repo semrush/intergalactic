@@ -16,7 +16,6 @@ const meta: Meta<typeof Accrordion> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Accrordion>;
 
 export const Basic: StoryObj<typeof BasicExampleProps> = {

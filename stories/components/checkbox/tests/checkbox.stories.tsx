@@ -10,8 +10,8 @@ const meta: Meta<typeof Checkbox> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Checkbox>;
+
 const commonArgTypes = {
   size: {
     control: { type: 'select' },
@@ -39,6 +39,7 @@ const commonArgTypes = {
     options: [undefined, 'violet'],
   },
 } as const;
+
 export const States: StoryObj<typeof defaultExampleProps> = {
   render: StatesExample,
   argTypes: commonArgTypes,

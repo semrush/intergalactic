@@ -11,7 +11,6 @@ const meta: Meta<typeof Carousel> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Carousel>;
 
 export const PrevNext: Story = {

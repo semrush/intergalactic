@@ -15,7 +15,6 @@ const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Tests',
   component: BulkTextarea,
 };
-
 export default meta;
 
 const sharedArgTypes = {
@@ -35,6 +34,7 @@ const sharedArgTypes = {
     options: ['blur', 'blurLine', 'paste'],
   },
 } as const;
+
 export const BasicProps: StoryObj = {
   render: BasicPropsExample,
   argTypes: sharedArgTypes,
@@ -91,6 +91,7 @@ export const OnSubmit: StoryObj = {
   },
   render: OnSubmitExample,
 } as const;
+
 export const BlurLine: StoryObj = {
   args: {
     maxLines: 30,

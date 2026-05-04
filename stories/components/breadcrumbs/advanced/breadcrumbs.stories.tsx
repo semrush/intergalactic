@@ -8,7 +8,6 @@ const meta: Meta<typeof Breadcrumbs> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Breadcrumbs>;
 
 export const TrimMiddle: StoryObj<typeof breadcrumbsEllipsisExampleProps> = {

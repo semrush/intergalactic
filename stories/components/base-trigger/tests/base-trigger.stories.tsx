@@ -20,10 +20,10 @@ const sharedArgTypes = {
   placeholder: { control: { type: 'text' } },
   disabled: { control: { type: 'boolean' } },
 } as const;
+
 const meta: Meta = {
   title: 'Components/Base Trigger/Test/Base Trigger',
 };
-
 export default meta;
 
 export const Base: StoryObj<typeof baseTriggerBaseExampleProps> = {

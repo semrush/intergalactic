@@ -1,5 +1,6 @@
 import Counter from '@semcore/ui/counter';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
 
 import CounterExample, { defaultProps as CounterDefProps } from './examples/counter';
 

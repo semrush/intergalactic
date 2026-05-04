@@ -12,7 +12,6 @@ const meta: Meta<typeof Accrordion> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Accrordion>;
 
 export const ButtonsOnToggle: Story = {
@@ -25,6 +24,7 @@ export const Values: Story = {
 
 export const DefaultValues: Story = {
   render: DefaultValuesExample,
+
 };
 
 export const AccordionAnimation: StoryObj = {

@@ -13,7 +13,6 @@ const meta: Meta<typeof Card> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Card>;
 
 export const CardLayoutForSortableTables: Story = {

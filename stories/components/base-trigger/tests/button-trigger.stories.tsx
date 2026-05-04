@@ -21,10 +21,10 @@ const sharedArgTypes = {
   loading: { control: { type: 'boolean' } },
   chevron: { control: { type: 'boolean' } },
 } as const;
+
 const meta: Meta = {
   title: 'Components/Base Trigger/Test/Button Trigger',
 };
-
 export default meta;
 
 export const Base: StoryObj<typeof buttonTriggerBaseExampleProps> = {

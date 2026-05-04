@@ -11,7 +11,6 @@ import DateRangePickerPeriodPropsExample from './examples/day-range-picker-perio
 const meta: Meta = {
   title: 'Components/DatePicker/Tests',
 };
-
 export default meta;
 
 export const CustomDateRanges: StoryObj = {

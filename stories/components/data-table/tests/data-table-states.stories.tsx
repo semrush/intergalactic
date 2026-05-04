@@ -14,7 +14,6 @@ const meta: Meta<typeof DataTable> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof DataTable>;
 
 export const WidgetEmptyInCell: Story = {

@@ -29,6 +29,7 @@ const commonArgTypes = {
     options: ['top', 'bottom', 'left', 'right'],
   },
 } as const;
+
 export const LinkTriggerEllipsis: StoryObj<typeof LinkTriggerExampleProps> = {
   render: LinkTriggerEllipsisExample,
   argTypes: {

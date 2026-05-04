@@ -10,8 +10,14 @@ import type { DemoProps as CheckboxNoDataProps } from './examples/cells-tests/ch
 import DDSelectInCellExample from './examples/cells-tests/dd-select-in-cell';
 import InteractiveCellsExample from './examples/cells-tests/interactive-elements-in-cells';
 import LongTextCellsExample from './examples/cells-tests/long-text-in-cells';
-import MergedRowColumnWithFixedExample, { mergedRowColumnWithFixedProps, type MergedRowColumnWithFixedProps } from './examples/cells-tests/merged-row-column-with-fixed';
-import MergedRowForMultiLevelHeaderExample, { mergedRowForMultiLevelHeaderProps, type DemoProps as MergedRowForMultiLevelHeaderProps } from './examples/cells-tests/merged-row-for-multi-level-header';
+import MergedRowColumnWithFixedExample, {
+  mergedRowColumnWithFixedProps,
+  type MergedRowColumnWithFixedProps,
+} from './examples/cells-tests/merged-row-column-with-fixed';
+import MergedRowForMultiLevelHeaderExample, {
+  mergedRowForMultiLevelHeaderProps,
+  type DemoProps as MergedRowForMultiLevelHeaderProps,
+} from './examples/cells-tests/merged-row-for-multi-level-header';
 import MiniChartsInlineEditInCellsExample from './examples/cells-tests/mini-chart-inline-edit-in-cell';
 import OneBigMergedRowAndScrollExample from './examples/cells-tests/one-big-merged-row-and-scroll';
 import OneMergedCellExample from './examples/cells-tests/one-merged-cell';
@@ -24,7 +30,6 @@ const meta: Meta<typeof DataTable> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof DataTable>;
 
 export const SelectableWithMergedRowsColumns: StoryObj<SelectableWithMergedRowsProps> = {

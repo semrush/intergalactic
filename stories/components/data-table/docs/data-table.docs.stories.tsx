@@ -43,7 +43,6 @@ const meta = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof DataTable>;
 
 export const Base: Story = {

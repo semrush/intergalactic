@@ -20,7 +20,9 @@ import SecondarySortingExample from './examples/virtualization/secondary-sorting
 import TableInTableExample from './examples/virtualization/table-in-table-with-fixed-column';
 import InteractiveHeaderExample from './examples/virtualization/table-with-1tf-and diff-elements';
 import type { VirtualScrollControlsProps, VirtualScrollMode } from './examples/virtualization/virtual-scroll-controls';
-import VirtualScrollControlsExample, { virtualScrollControlsDefaultProps } from './examples/virtualization/virtual-scroll-controls';
+import VirtualScrollControlsExample, {
+  virtualScrollControlsDefaultProps,
+} from './examples/virtualization/virtual-scroll-controls';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/DataTable/Tests/Virtualization',
@@ -28,7 +30,6 @@ const meta: Meta<typeof DataTable> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof DataTable>;
 
 export const AccordionWithChart: StoryObj<accordionVirtualProps> = {
@@ -109,7 +110,8 @@ export const VirtualScrollControls: StoryObj<VirtualScrollControlsProps> = {
     mode: {
       control: 'radio',
       options: ['boolean', 'aproxRowsOnPage', 'rowHeight', 'rowsBufferOnly'] satisfies VirtualScrollControlsProps['mode'][],
-      description: 'Selects the virtualScroll mode. ' +
+      description:
+        'Selects the virtualScroll mode. ' +
         '`boolean` - true, default buffers. ' +
         '`aproxRowsOnPage` - auto row height, configurable buffer + page estimate. ' +
         '`rowHeight` - fixed row height, configurable buffer + page estimate ' +
@@ -132,7 +134,8 @@ export const VirtualScrollControls: StoryObj<VirtualScrollControlsProps> = {
     },
     rowHeight: {
       control: { type: 'number', min: 20, max: 200 },
-      description: 'Fixed row height in px (required in `rowHeight` mode). ' +
+      description:
+        'Fixed row height in px (required in `rowHeight` mode). ' +
         'Mutually exclusive with `aproxRowsOnPage`. ' +
         'If `rowsBuffer` is not set, defaults to 20.',
       if: { arg: 'mode', eq: 'rowHeight' },

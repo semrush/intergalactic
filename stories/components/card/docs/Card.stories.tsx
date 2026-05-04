@@ -13,7 +13,6 @@ const meta: Meta<typeof Card> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Card>;
 
 export const Basic: Story = {
@@ -27,7 +26,6 @@ export const Complex: Story = {
 export const Ellipsis: Story = {
   render: EllipsisExample,
 };
-
 export const CardLayoutForTables: StoryObj<TableInCardProps> = {
   render: CardLayoutForTablesExample,
   args: {

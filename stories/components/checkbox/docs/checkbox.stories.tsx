@@ -12,7 +12,6 @@ const meta: Meta<typeof Checkbox> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Checkbox>;
 
 export const AdditionalPropsForInput: Story = {

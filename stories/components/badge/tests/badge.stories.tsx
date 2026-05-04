@@ -10,7 +10,6 @@ const meta: Meta<typeof Badge> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Badge>;
 
 export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
@@ -38,6 +37,7 @@ export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
     m: {
       control: { type: 'number' },
     },
+
   },
   args: defaultExampleBadgeProps,
 };

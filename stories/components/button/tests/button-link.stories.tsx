@@ -9,7 +9,6 @@ import ButtonLinkSizesWrapExample from './examples/button-link/button-link-sizes
 const meta: Meta = {
   title: 'Components/Button/Tests/Button Link',
 };
-
 export default meta;
 
 const commonArgTypes = {
@@ -35,6 +34,7 @@ const commonArgTypes = {
     options: ['top', 'bottom', 'left', 'right'],
   },
 } as const;
+
 export const ButtonLinkBase: StoryObj<typeof defaultButtonLinkProps> = {
   render: ButtonLinkBaseExample,
   argTypes: {

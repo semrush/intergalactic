@@ -20,10 +20,10 @@ const sharedArgTypes = {
     options: ['violet', 'blue', 'text-success', undefined],
   },
 } as const;
+
 const meta: Meta = {
   title: 'Components/Base Trigger/Test/Link Trigger',
 };
-
 export default meta;
 
 export const Base: StoryObj<typeof defaultLinkTriggerProps> = {
