@@ -6,7 +6,9 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const [selectedColumn, setSelectedColumn] = React.useState('kd');
+  const [selectedColumn, setSelectedColumn] = React.useState<string>('kd');
+  const selectTrigger = React.useRef<HTMLDivElement | null>(null);
+
   return (
     <DataTable
       data={data}
@@ -39,12 +41,18 @@ const Demo = () => {
                 visible={isVisible}
                 onVisibleChange={setIsVisible}
                 value={selectedColumn}
-                onChange={setSelectedColumn}
+                onChange={(val: string) => {
+                  setSelectedColumn(val);
+                  setTimeout(() => {
+                    selectTrigger.current?.focus();
+                  }, 0);
+                }}
               >
                 <Select.Trigger
                   tag={LinkTrigger}
                   aria-label='Column'
                   color='text-primary'
+                  ref={selectTrigger}
                   size={100}
                   onKeyDown={(e) => {
                     if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
