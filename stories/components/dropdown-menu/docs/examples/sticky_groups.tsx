@@ -17,7 +17,10 @@ const groups = Array.from({ length: 3 }, (_, i) => {
     title: `Group title ${i}`,
     projects: Array.from({ length: 6 }, (_, j) => {
       index++;
-      return `Project ${index}`;
+      return {
+        title: `Project ${index}`,
+        index: index,
+      };
     }),
   };
 });
@@ -25,7 +28,7 @@ const groups = Array.from({ length: 3 }, (_, i) => {
 const listHeight = 200;
 
 const Row = React.memo(({ style, data: { project, setProject, selectedProject } }: any) => {
-  const projectName = project;
+  const projectName = project.title;
 
   return (
     <div style={style}>
@@ -33,6 +36,7 @@ const Row = React.memo(({ style, data: { project, setProject, selectedProject } 
         key={projectName}
         onClick={() => setProject(projectName)}
         selected={selectedProject === projectName}
+        index={project.index}
       >
         <DropdownMenu inlineActions placement='right'>
           <Flex justifyContent='space-between'>
@@ -68,6 +72,7 @@ const Demo = () => {
   const [visible, setVisible] = React.useState(false);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
   const [selectedProject, setProject] = React.useState<string | null>(null);
+  const [filteredMenuData, setFilteredMenuData] = React.useState(groups);
 
   const handleKeydownCreateButton = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -78,15 +83,28 @@ const Demo = () => {
     }
   };
 
-  const filteredProjects = groups.reduce<string[]>((acc, { projects }) => {
-    projects.forEach((project) => {
-      if (project.toLowerCase().includes(searchValue.toLowerCase())) {
-        acc.push(project);
-      }
+  React.useEffect(() => {
+    const newFilteredProjects = [];
+    let highlightedIndex = -1;
+    groups.forEach((group, i) => {
+      group.projects.forEach((item, j) => {
+        if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
+          if (!newFilteredProjects[i]) {
+            newFilteredProjects[i] = {
+              ...group,
+              projects: [],
+            };
+          }
+          newFilteredProjects[i].projects.push(item);
+          if (item.title === selectedProject || highlightedIndex === -1) {
+            highlightedIndex = item.index;
+          }
+        }
+      });
     });
-
-    return acc;
-  }, []);
+    setHighlightedIndex(highlightedIndex);
+    setFilteredMenuData(newFilteredProjects);
+  }, [searchValue]);
 
   return (
     <DropdownMenu
@@ -104,26 +122,21 @@ const Demo = () => {
         <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} aria-describedby={searchValue ? 'search-result' : undefined} />
 
         <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
-          {groups.map((group, index) => {
-            if (group.projects.some((project) => {
-              return project.toLowerCase().includes(searchValue.toLowerCase());
-            }))
-              return (
-                <DropdownMenu.Group key={index} title={group.title} sticky>
-                  {group.projects
-                    .filter((project) => project.toLowerCase().includes(searchValue.toLowerCase()))
-                    .map((project, index) => (<Row key={`${group.title}_${project}`} data={{ project, setProject, selectedProject }} />))}
-                </DropdownMenu.Group>
-              );
+          {filteredMenuData.map((group, index) => {
+            return (
+              <DropdownMenu.Group key={index} title={group.title} sticky>
+                {group.projects.map((project) => (<Row key={`${group.title}_${project.index}`} data={{ project, setProject, selectedProject }} />))}
+              </DropdownMenu.Group>
+            );
           })}
 
-          {filteredProjects.length
+          {filteredMenuData.length
             ? (
                 <ScreenReaderOnly id='search-result' aria-hidden='true'>
-                  {filteredProjects.length}
+                  {filteredMenuData.length}
                   {' '}
                   result
-                  {filteredProjects.length > 1 && 's'}
+                  {filteredMenuData.length > 1 && 's'}
                   {' '}
                   found
                 </ScreenReaderOnly>
