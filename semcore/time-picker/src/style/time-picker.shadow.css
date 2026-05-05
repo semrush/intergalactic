@@ -5,11 +5,11 @@ STimePicker {
 }
 
 STimePicker[keyboardFocused]:focus {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
 }
 
 STimePicker[disabled] {
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   cursor: default;
 }
 
@@ -23,7 +23,7 @@ SPickerInput {
     text-overflow: initial;
   }
   &:focus {
-    background-color: var(--intergalactic-bg-highlight-focus, rgba(0, 143, 248, 0.2));
+    background-color: var(--intergalactic-bg-highlight-focus, oklch(0.939 0.032 268));
   }
 }
 
@@ -50,7 +50,7 @@ SPickerFormat {
   line-height: normal;
   text-decoration: none;
   align-items: center;
-  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   border-radius: 0 var(--intergalactic-control-rounded, 6px)
     var(--intergalactic-control-rounded, 6px) 0;
   outline: 0;
@@ -61,18 +61,18 @@ SPickerFormat {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  color: var(--intergalactic-text-secondary, #6c6e79);
-  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
 
   &:hover {
-    color: var(--intergalactic-text-secondary, #6c6e79);
-    background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
+    color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    background-color: var(--intergalactic-bg-secondary-neutral-hover, oklch(0.96 0.001 180));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-secondary, #6c6e79);
-    background-color: var(--intergalactic-bg-secondary-neutral-active, #c4c7cf);
+    color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.94 0.002 180));
   }
 
   &:focus,
@@ -101,21 +101,21 @@ SPickerFormat[size='l'] {
 }
 
 SPickerFormat[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
-  border-color: transparent transparent transparent var(--intergalactic-border-primary, #c4c7cf);
+  border-color: transparent transparent transparent var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SPickerFormat[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
 }
 
 STimePickerSeparator {
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
 STimePickerSeparator[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   pointer-events: none;
 }

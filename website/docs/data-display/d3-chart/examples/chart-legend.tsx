@@ -3,11 +3,14 @@ import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from 'intergalactic/d3-
 import { scaleLinear } from 'd3-scale';
 import { Box } from 'intergalactic/flex-box';
 
+import LineMockData from '../../../__mocks__/line';
+
+const MAP_THEME = {
+  line1: 'chart-palette-order-1',
+  line2: 'chart-palette-order-2',
+};
+
 const Demo = () => {
-  const MAP_THEME = {
-    line1: 'orange',
-    line2: 'green',
-  };
   const width = 500;
   const height = 300;
   const MARGIN = 40;

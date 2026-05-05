@@ -48,8 +48,8 @@ const Demo = () => {
           };
         }}
       </HoverRect.Tooltip>
-      <Bar x='category' y='bar1' color='chart-palette-order-1' />
-      <Bar x='category' y='bar2' color='chart-palette-order-3' />
+      <Bar x='category' y='bar1' color='blue-400' />
+      <Bar x='category' y='bar2' color='red-300' />
     </Plot>
   );
 };

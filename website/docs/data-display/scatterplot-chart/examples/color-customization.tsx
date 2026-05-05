@@ -25,8 +25,8 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot x='x' y='y1' color='#2BB3FF' />
-      <ScatterPlot x='x' y='y2' color='#59DDAA' />
+      <ScatterPlot x='x' y='y1' color='chart-palette-order-1' />
+      <ScatterPlot x='x' y='y2' color='chart-palette-order-2' />
       <ScatterPlot.Tooltip>
         {({ index, x, y, color }) => {
           return {

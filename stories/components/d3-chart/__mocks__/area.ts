@@ -1,0 +1,48 @@
+import { interpolateValue } from '@semcore/ui/d3-chart';
+
+export default {
+  Default: [
+    { time: new Date(2025, 0, 1), line: 3 },
+    { time: new Date(2025, 0, 5), line: 7 },
+    { time: new Date(2025, 0, 10), line: 1 },
+    { time: new Date(2025, 0, 15), line: 9 },
+    { time: new Date(2025, 0, 20), line: 4 },
+    { time: new Date(2025, 0, 25), line: 6 },
+    { time: new Date(2025, 0, 30), line: 2 },
+    { time: new Date(2025, 1, 4), line: 8 },
+    { time: new Date(2025, 1, 9), line: 0 },
+    { time: new Date(2025, 1, 14), line: 5 },
+  ],
+  Interpolation: [
+    { time: new Date(2025, 0, 1), line1: 5, line2: 3 },
+    { time: new Date(2025, 0, 5), line1: 8, line2: interpolateValue },
+    { time: new Date(2025, 0, 10), line1: 4, line2: 8 },
+    { time: new Date(2025, 0, 15), line1: 5, line2: interpolateValue },
+    { time: new Date(2025, 0, 20), line1: 5, line2: interpolateValue },
+    { time: new Date(2025, 0, 25), line1: 4, line2: interpolateValue },
+    { time: new Date(2025, 0, 30), line1: 3, line2: 5 },
+    { time: new Date(2025, 1, 4), line1: 3, line2: interpolateValue },
+    { time: new Date(2025, 1, 9), line1: 4, line2: interpolateValue },
+    { time: new Date(2025, 1, 14), line1: 1, line2: 6 },
+  ],
+  XY: [
+    { x: 0, y: 3 },
+    { x: 1, y: 7 },
+    { x: 2, y: 1 },
+    { x: 3, y: 9 },
+    { x: 4, y: 4 },
+    { x: 5, y: 6 },
+    { x: 6, y: 2 },
+    { x: 7, y: 8 },
+    { x: 8, y: 0 },
+    { x: 9, y: 5 },
+  ],
+  XYEdgeCase: [
+    { x: 0, y: 1 },
+    { x: 1, y: 4 },
+    { x: 2, y: null },
+    { x: 3, y: null },
+    { x: 4, y: 1 },
+    { x: 5, y: null },
+  ],
+};

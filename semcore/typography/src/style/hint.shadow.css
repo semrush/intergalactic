@@ -4,21 +4,21 @@ SHint {
   text-decoration: none;
   outline: none;
   cursor: pointer;
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
 
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-hint-hover-active, #484a54);
+    color: var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
   }
 }
 
 SHint[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
 }
 
 SHint[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none; /* Disable hint interactions */
 }

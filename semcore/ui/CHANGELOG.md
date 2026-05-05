@@ -1,3 +1,9 @@
+## [15.132.0] - 2026-05-06
+
+### @semcore/utils
+
+- **Added** New brand theme.
+
 ## [15.131.0] - 2025-05-13
 
 ### @semcore/format-text

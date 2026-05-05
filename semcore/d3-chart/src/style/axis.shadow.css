@@ -1,5 +1,5 @@
 SAxis {
-  stroke: var(--intergalactic-chart-grid-x-axis, #c4c7cf);
+  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.002 175.6));
 }
 
 SAxis[hide] {
@@ -8,7 +8,7 @@ SAxis[hide] {
 
 STick {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-chart-grid-text-label, #6c6e79);
+  fill: var(--intergalactic-chart-grid-text-label, oklch(0.088 0.026 147.7 / 0.583));
 }
 
 STick[hide] {
@@ -17,12 +17,12 @@ STick[hide] {
 
 SGrid {
   fill: transparent;
-  stroke: var(--intergalactic-border-secondary, #e0e1e9);
+  stroke: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 }
 
 STitle {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-text-hint, #6c6e79);
+  fill: var(--intergalactic-text-hint, oklch(0.088 0.026 147.7 / 0.583));
   transform-origin: var(--transform-origin);
 }
 

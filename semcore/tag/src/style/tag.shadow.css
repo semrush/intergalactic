@@ -52,9 +52,9 @@ STagContainerClose {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  border: 1px solid var(--intergalactic-bg-primary-neutral, #ffffff);
+  border: 1px solid var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-radius: var(--intergalactic-tag-rounded, 24px);
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
@@ -64,7 +64,7 @@ STagContainerClose {
   &[interactive][keyboardFocused] {
     box-shadow: var(
       --intergalactic-keyboard-focus,
-      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
+      0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469)
     );
     z-index: 1;
   }
@@ -106,7 +106,7 @@ STagContainerClose {
 
 STag[disabled],
 STagContainerClose[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
 }
@@ -218,14 +218,14 @@ STagContainerClose[theme="primary-invert"] {
     --intergalactic-tag-primary-white-normal,
     rgba(255, 255, 255, 0.15)
   );
-  color: var(--intergalactic-text-primary-invert, #ffffff);
+  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
 }
 
 STag[theme="secondary-invert"],
 STagContainerClose[theme="secondary-invert"],
 STag[theme="additional-invert"],
 STagContainerClose[theme="additional-invert"] {
-  color: var(--intergalactic-text-primary-invert, #ffffff);
+  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
 }
 
 STag[theme="additional"] {
@@ -248,7 +248,7 @@ SText {
 SText[keyboardFocused] {
   box-shadow: var(
     --intergalactic-keyboard-focus,
-    0px 0px 0px 3px rgba(0, 143, 248, 0.5)
+    0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469)
   );
   z-index: 1;
 }

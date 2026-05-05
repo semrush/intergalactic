@@ -1,7 +1,7 @@
 SLink {
   display: inline-block;
   font-family: inherit;
-  color: var(--intergalactic-text-link, #006dca);
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
   line-height: normal;
   position: relative;
   cursor: pointer;
@@ -30,7 +30,7 @@ SLink {
   &[active],
   &:hover,
   &:active {
-    color: var(--intergalactic-text-link-hover-active, #044792);
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
 
     & SText {
       border-color: currentColor;
@@ -39,18 +39,18 @@ SLink {
 
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--intergalactic-text-link-visited, #8649e1);
+    color: var(--intergalactic-text-link-visited, oklch(0.53 0.26 296));
   }
 }
 
 SLink[keyboardFocused] {
-  outline-color: var(--intergalactic-keyboard-focus-outline, rgba(0, 143, 248, 0.5));
+  outline-color: var(--intergalactic-keyboard-focus-outline, oklch(0.424 0.269 264.2 / 0.469));
   outline-style: solid;
   outline-width: 3px;
 }
 
 SLink[visually-disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   /* Disable link interactions */
   pointer-events: none;

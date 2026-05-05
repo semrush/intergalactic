@@ -1,31 +1,31 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "3.60.2",
+  "version": "3.61.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
-  "typings": "lib/types/index.d.ts",
+  "types": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "scripts": {
     "build": "pnpm semcore-builder --source=js,ts && pnpm vite build"
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/animation": "2.41.4",
-    "@semcore/checkbox": "7.44.4",
-    "@semcore/divider": "4.40.4",
-    "@semcore/flex-box": "5.41.4",
-    "@semcore/popper": "5.46.4",
-    "@semcore/utils": "4.48.5",
-    "@semcore/typography": "5.53.2",
-    "@semcore/icon": "4.62.1",
+    "@semcore/animation": "2.42.0",
+    "@semcore/checkbox": "7.45.0",
+    "@semcore/divider": "4.41.0",
+    "@semcore/flex-box": "5.42.0",
+    "@semcore/popper": "5.47.0",
+    "@semcore/utils": "4.49.0",
+    "@semcore/typography": "5.54.0",
+    "@semcore/icon": "4.63.0",
     "@types/d3-shape": "^3.1.0",
     "@upsetjs/venn.js": "1.4.2",
     "d3-array": "3.1.6",

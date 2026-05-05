@@ -13,7 +13,7 @@ SDraggable[draggable] {
     display: none;
     pointer-events: none;
     background-image: radial-gradient(circle at center,
-    var(--intergalactic-icon-primary-neutral, #6c6e79) 1px,
+    var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526)) 1px,
     transparent 0);
     background-size: 6px 6px;
     background-position: 2px 2px;
@@ -84,13 +84,13 @@ SDropZone {
 
 SDropZone[dropPreview],
 SDraggable[dropPreview] {
-  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
 }
 
 
 SDropZone[dark][dropPreview],
 SDraggable[dark][dropPreview] {
-  background-color: var(--intergalactic-bg-primary-invert-active, #484a54);
+  background-color: var(--intergalactic-bg-primary-invert-active, oklch(0.4 0.004 140));
 }
 
 SDraggable:focus {
@@ -106,7 +106,7 @@ SDraggable[keyboardFocused]:focus:after {
   display: block;
   content: '';
   inset: 3px;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
   pointer-events: none;
 }
 
@@ -114,8 +114,8 @@ SDraggable[keyboardFocused]:focus:after {
 SDraggable[keyboardDragging] {
   scale: 1.1;
 
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-  box-shadow: var(--intergalactic-box-shadow-dnd, 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)) !important;
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  box-shadow: var(--intergalactic-box-shadow-dnd, 3px 3px 30px 0px oklch(0.176 0.033 175.7 / 0.07)) !important;
 
 
   &::before {

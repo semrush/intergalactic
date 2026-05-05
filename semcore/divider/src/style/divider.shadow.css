@@ -3,21 +3,21 @@ SDivider {
 }
 
 SDivider[use='primary'] {
-  background-color: var(--theme, var(--intergalactic-border-primary, #c4c7cf));
+  background-color: var(--theme, var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)));
 }
 
 SDivider[use='primary']SDivider[theme='default'] {
-  background: var(--intergalactic-border-primary, #c4c7cf);
+  background: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
 SDivider[use='primary']SDivider[theme='invert'] {
-  background-color: var(--intergalactic-border-primary-invert, #ffffff);
+  background-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391));
   opacity: 0.2;
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary'] {
   background-image: linear-gradient(
     to right,
-    var(--intergalactic-border-primary, #c4c7cf) 3px,
+    var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)) 3px,
     transparent 1px
   );
   background-size: 5px 1px;
@@ -26,7 +26,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary'] {
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='default'] {
   background: linear-gradient(
     to right,
-    var(--intergalactic-border-primary, #c4c7cf) 3px,
+    var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)) 3px,
     transparent 1px
   );
   background-size: 5px 1px;
@@ -34,7 +34,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='defau
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='invert'] {
   background-image: linear-gradient(
     to right,
-    var(--intergalactic-border-primary-invert, #ffffff) 3px,
+    var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391)) 3px,
     transparent 1px
   );
   opacity: 0.2;
@@ -44,7 +44,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='inver
 SDivider[orientation='vertical']SDivider[use='secondary'] {
   background-image: linear-gradient(
     to bottom,
-    var(--intergalactic-border-primary, #c4c7cf) 3px,
+    var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)) 3px,
     transparent 1px
   );
   background-size: 1px 5px;
@@ -53,7 +53,7 @@ SDivider[orientation='vertical']SDivider[use='secondary'] {
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default'] {
   background-image: linear-gradient(
     to bottom,
-    var(--intergalactic-border-primary, #c4c7cf) 3px,
+    var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)) 3px,
     transparent 1px
   );
   background-size: 1px 5px;
@@ -61,7 +61,7 @@ SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='invert'] {
   background-image: linear-gradient(
     to bottom,
-    var(--intergalactic-border-primary-invert, #ffffff) 3px,
+    var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391)) 3px,
     transparent 1px
   );
   opacity: 0.2;

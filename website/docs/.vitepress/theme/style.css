@@ -1,4 +1,7 @@
-@import url('../../../../semcore/utils/lib/themes/auto.css');
+@import url('@semcore/theme/light.css');
+@import url('@semcore/theme/highlights-light.css');
+/* Second import for Halloween only
+@import url('./halloween/fonts.css'); */
 
 /**
  * Customize default theme styling by overriding CSS variables:

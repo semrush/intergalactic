@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "4.48.5",
+  "version": "4.49.0",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -326,7 +326,8 @@
   },
   "peerDependencies": {
     "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "react-dom": "16.8 - 18",
+    "@semcore/theme": "1.0.0 || ^0.0.0-0"
   },
   "repository": {
     "type": "git",

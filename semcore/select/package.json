@@ -1,7 +1,7 @@
 {
   "name": "@semcore/select",
   "description": "Semrush Select Component",
-  "version": "4.52.2",
+  "version": "4.53.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,17 +16,17 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/base-trigger": "4.53.2",
-    "@semcore/button": "5.43.3",
-    "@semcore/checkbox": "7.44.4",
-    "@semcore/divider": "4.40.4",
-    "@semcore/dropdown-menu": "4.48.2",
-    "@semcore/dropdown": "4.43.4",
-    "@semcore/popper": "5.46.4",
-    "@semcore/flex-box": "5.41.4",
-    "@semcore/icon": "4.62.1",
-    "@semcore/input": "4.42.4",
-    "@semcore/utils": "4.48.5",
+    "@semcore/base-trigger": "4.54.0",
+    "@semcore/button": "5.44.0",
+    "@semcore/checkbox": "7.45.0",
+    "@semcore/divider": "4.41.0",
+    "@semcore/dropdown-menu": "4.49.0",
+    "@semcore/dropdown": "4.44.0",
+    "@semcore/popper": "5.47.0",
+    "@semcore/flex-box": "5.42.0",
+    "@semcore/icon": "4.63.0",
+    "@semcore/input": "4.43.0",
+    "@semcore/utils": "4.49.0",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
