@@ -35,7 +35,7 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
         <TabLine.Item value={3}>
           Form
         </TabLine.Item>
-        <TabLine.Item value={5}>
+        <TabLine.Item value={4}>
           Feature highlight
         </TabLine.Item>
       </TabLine>
@@ -43,7 +43,7 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
       {tab === 1 && <Tables />}
       {tab === 2 && <Dashboard />}
       {tab === 3 && <Form />}
-      {tab === 5 && <FeatureHighlight />}
+      {tab === 4 && <FeatureHighlight />}
     </Box>
   );
 }

@@ -114,6 +114,7 @@ const Demo = (props: Props) => {
       variant={props.variant}
       loading={loading}
       data={sortedData}
+      sideIndents='wide'
       aria-label='Accordion inside table'
       w='100%'
       defaultGridTemplateColumnWidth='1fr'

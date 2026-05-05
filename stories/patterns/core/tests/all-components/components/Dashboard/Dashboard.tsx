@@ -7,6 +7,7 @@ import Card from '@semcore/ui/card';
 import { Chart, ChartLegend, ResponsiveContainer } from '@semcore/ui/d3-chart';
 import Divider from '@semcore/ui/divider';
 import Link from '@semcore/ui/link';
+import MiniChart from '@semcore/ui/mini-chart';
 import Pills from '@semcore/ui/pills';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
@@ -179,6 +180,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                     value: '24,765',
                     delta: '−4',
                     deltaColor: 'text-large-critical',
+                    trendAreaData: [90, 82, 78, 74, 68, 62, 58, 52, 48, 42],
                   },
                   {
                     label: 'Average position',
@@ -200,6 +202,14 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                         <Text size={100} color={item.deltaColor} noWrap>
                           {item.delta}
                         </Text>
+                        {'trendAreaData' in item && item.trendAreaData && (
+                          <MiniChart.TrendArea
+                            aria-hidden
+                            data={item.trendAreaData}
+                            h={20}
+                            w={80}
+                          />
+                        )}
                       </Flex>
                     </Flex>
                   </React.Fragment>

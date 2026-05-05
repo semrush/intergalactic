@@ -6,6 +6,7 @@ import { Box, Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
 import { ACCORDION, type CellRenderProps, SelectableRows } from '@semcore/ui/data-table';
+import Dot from '@semcore/ui/dot';
 import { PageError } from '@semcore/ui/errors';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
@@ -425,7 +426,6 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
               </Flex>
               <Table
                 loading={searchPending}
-                variant='card'
                 currentPage={currentPage}
                 selectedRows={selectedRows}
                 columns={cols.filter((c) => c.name === ALWAYS_VISIBLE_COLUMN_NAME || columns.includes(c.name))}
@@ -476,7 +476,14 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
           >
             <Pills.Item value='default'>Default state</Pills.Item>
             <Pills.Item value='progress'>Progress</Pills.Item>
-            <Pills.Item value='limited'>Limited data</Pills.Item>
+            <Pills.Item value='limited'>
+              <Pills.Item.Text>Limited data</Pills.Item.Text>
+              <Dot
+                aria-label='New'
+                size='l'
+                up={true}
+              />
+            </Pills.Item>
             <Pills.Item value='pageError'>Page error</Pills.Item>
           </Pills>
           <PrimaryTableAddFilter nameFilter={nameFilter} onNameFilterChange={setNameFilter} />

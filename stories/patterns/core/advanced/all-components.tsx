@@ -8,11 +8,6 @@ import { Graphics } from './components/Graphics';
 import { PopupsDialogs } from './components/PopupsDialogs';
 import PageHeader from '../../../components/product-head/docs/examples/extended_example';
 import { Dashboard } from '../tests/all-components/components/Dashboard';
-import { FeatureHighlight } from '../tests/all-components/components/FeatureHighlight';
-
-// not including:
-// - dnd with cards/files
-// -
 
 function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
   const [tab, setTab] = React.useState(defaultTab);
@@ -37,9 +32,6 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
           Popups & Dialogs
         </TabLine.Item>
         <TabLine.Item value={4}>
-          Feature highlight
-        </TabLine.Item>
-        <TabLine.Item value={5}>
           Graphics
         </TabLine.Item>
       </TabLine>
@@ -47,8 +39,7 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
       {tab === 1 && <Dashboard showPrimaryTableFooter />}
       {tab === 2 && <Components />}
       {tab === 3 && <PopupsDialogs />}
-      {tab === 4 && <FeatureHighlight />}
-      {tab === 5 && <Graphics />}
+      {tab === 4 && <Graphics />}
     </Box>
   );
 }
