@@ -52,7 +52,7 @@ SText {
 
 SCounter[theme='info'] {
   border-color: transparent;
-  background: var(--intergalactic-bg-primary-info, oklch(0.64 0.18 280));
+  background: var(--intergalactic-bg-primary-info, oklch(0.64 0.135 278.4));
 }
 
 SCounter[theme='warning'] {

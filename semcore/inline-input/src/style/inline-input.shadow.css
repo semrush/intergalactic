@@ -106,7 +106,7 @@ SAddon[disabled] {
 }
 
 SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
+  border-bottom-color: var(--intergalactic-border-info-active, oklch(0.382 0.248 264.2 / 0.386));
   @mixin focus-outline-mixin;
 }
 

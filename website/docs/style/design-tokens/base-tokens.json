@@ -35,11 +35,11 @@
   },
   {
     "name": "--gray-600",
-    "value": "oklch(0.4 0.004 140)"
+    "value": "oklch(0.46 0.004 144.4)"
   },
   {
     "name": "--gray-700",
-    "value": "oklch(0.32 0.007 140)"
+    "value": "oklch(0.33 0.006 140)"
   },
   {
     "name": "--gray-800",
@@ -85,11 +85,11 @@
   },
   {
     "name": "--mint-600",
-    "value": "oklch(0.4 0.032 189.3)"
+    "value": "oklch(0.46 0.033 189.3)"
   },
   {
     "name": "--mint-700",
-    "value": "oklch(0.32 0.026 189.3)"
+    "value": "oklch(0.33 0.026 189.3)"
   },
   {
     "name": "--mint-800",
@@ -131,11 +131,11 @@
   },
   {
     "name": "--red-600",
-    "value": "oklch(0.4 0.161 28)"
+    "value": "oklch(0.46 0.184 28)"
   },
   {
     "name": "--red-700",
-    "value": "oklch(0.32 0.129 28)"
+    "value": "oklch(0.33 0.133 28)"
   },
   {
     "name": "--red-800",
@@ -177,11 +177,11 @@
   },
   {
     "name": "--orange-600",
-    "value": "oklch(0.4 0.133 42)"
+    "value": "oklch(0.46 0.153 42.2)"
   },
   {
     "name": "--orange-700",
-    "value": "oklch(0.32 0.105 42)"
+    "value": "oklch(0.33 0.108 42)"
   },
   {
     "name": "--orange-800",
@@ -223,11 +223,11 @@
   },
   {
     "name": "--yellow-600",
-    "value": "oklch(0.4 0.106 58.3)"
+    "value": "oklch(0.46 0.121 59)"
   },
   {
     "name": "--yellow-700",
-    "value": "oklch(0.32 0.087 57.4)"
+    "value": "oklch(0.33 0.09 57.5)"
   },
   {
     "name": "--yellow-800",
@@ -269,11 +269,11 @@
   },
   {
     "name": "--salad-600",
-    "value": "oklch(0.4 0.151 147)"
+    "value": "oklch(0.46 0.169 147)"
   },
   {
     "name": "--salad-700",
-    "value": "oklch(0.32 0.129 147)"
+    "value": "oklch(0.33 0.131 147)"
   },
   {
     "name": "--salad-800",
@@ -315,11 +315,11 @@
   },
   {
     "name": "--green-600",
-    "value": "oklch(0.4 0.108 170)"
+    "value": "oklch(0.46 0.124 170)"
   },
   {
     "name": "--green-700",
-    "value": "oklch(0.32 0.086 170)"
+    "value": "oklch(0.33 0.089 170)"
   },
   {
     "name": "--green-800",
@@ -327,49 +327,49 @@
   },
   {
     "name": "--blue-50",
-    "value": "oklch(0.97 0.016 279.9)",
+    "value": "oklch(0.97 0.011 278.4)",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
   },
   {
     "name": "--blue-75",
-    "value": "oklch(0.93 0.038 280)"
+    "value": "oklch(0.93 0.026 278.4)"
   },
   {
     "name": "--blue-100",
-    "value": "oklch(0.9 0.054 280)",
+    "value": "oklch(0.9 0.038 278.4)",
     "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
   },
   {
     "name": "--blue-200",
-    "value": "oklch(0.82 0.097 280)"
+    "value": "oklch(0.82 0.068 278.4)"
   },
   {
     "name": "--blue-300",
-    "value": "oklch(0.74 0.14 280)"
+    "value": "oklch(0.74 0.098 278.4)"
   },
   {
     "name": "--blue-400",
-    "value": "oklch(0.64 0.18 280)"
+    "value": "oklch(0.58 0.153 278.4)"
   },
   {
     "name": "--blue-450",
-    "value": "oklch(0.58 0.192 280)"
+    "value": "oklch(0.58 0.153 278.4)"
   },
   {
     "name": "--blue-500",
-    "value": "oklch(0.53 0.197 280)"
+    "value": "oklch(0.53 0.139 278.4)"
   },
   {
     "name": "--blue-600",
-    "value": "oklch(0.4 0.156 280)"
+    "value": "oklch(0.46 0.121 278.4)"
   },
   {
     "name": "--blue-700",
-    "value": "oklch(0.32 0.139 280)"
+    "value": "oklch(0.33 0.087 278.4)"
   },
   {
     "name": "--blue-800",
-    "value": "oklch(0.23 0.122 280)"
+    "value": "oklch(0.23 0.061 278.4)"
   },
   {
     "name": "--blue-indigo-50",
@@ -407,11 +407,11 @@
   },
   {
     "name": "--blue-indigo-600",
-    "value": "oklch(0.4 0.161 263.4)"
+    "value": "oklch(0.46 0.186 263.4)"
   },
   {
     "name": "--blue-indigo-700",
-    "value": "oklch(0.32 0.129 263.4)"
+    "value": "oklch(0.33 0.133 263.4)"
   },
   {
     "name": "--blue-indigo-800",
@@ -453,11 +453,11 @@
   },
   {
     "name": "--violet-600",
-    "value": "oklch(0.4 0.196 296)"
+    "value": "oklch(0.46 0.226 296)"
   },
   {
     "name": "--violet-700",
-    "value": "oklch(0.32 0.157 296)"
+    "value": "oklch(0.33 0.162 296)"
   },
   {
     "name": "--violet-800",
@@ -499,11 +499,11 @@
   },
   {
     "name": "--violet-dusty-600",
-    "value": "oklch(0.4 0.156 280)"
+    "value": "oklch(0.46 0.175 280)"
   },
   {
     "name": "--violet-dusty-700",
-    "value": "oklch(0.32 0.139 280)"
+    "value": "oklch(0.33 0.141 280)"
   },
   {
     "name": "--violet-dusty-800",
@@ -545,11 +545,11 @@
   },
   {
     "name": "--pink-600",
-    "value": "oklch(0.4 0.164 330)"
+    "value": "oklch(0.46 0.188 330)"
   },
   {
     "name": "--pink-700",
-    "value": "oklch(0.32 0.131 330)"
+    "value": "oklch(0.33 0.135 330)"
   },
   {
     "name": "--pink-800",

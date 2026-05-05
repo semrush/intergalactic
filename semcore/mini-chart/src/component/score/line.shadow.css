@@ -18,7 +18,7 @@ SLineValue[percent] {
 }
 
 SLineValue[color], SLineSegmentItem[color] {
-  background-color: var(--color, var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280)));
+  background-color: var(--color, var(--intergalactic-chart-palette-order-1, oklch(0.58 0.153 278.4)));
 }
 
 SLineGauge[segments] {

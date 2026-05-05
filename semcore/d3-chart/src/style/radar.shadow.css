@@ -31,7 +31,7 @@ SAxisLabel[yDirection] {
 }
 
 SPolygon {
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280));
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.153 278.4));
   opacity: 0.2;
 }
 
@@ -49,7 +49,7 @@ SPolygonDot {
   stroke-width: 2px;
   stroke: var(--intergalactic-chart-grid-border, #fff);
   r: 6px;
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280));
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.153 278.4));
 }
 
 SPolygonDot[transparent] {
@@ -61,7 +61,7 @@ SPolygonDot[color] {
 }
 
 SPolygonLine {
-  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.64 0.18 280));
+  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.153 278.4));
   stroke-width: 3;
   fill: transparent;
 }

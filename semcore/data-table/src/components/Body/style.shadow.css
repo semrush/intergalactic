@@ -104,7 +104,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has([data-row-selector="true"] input:checked) > SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-selected-hover, oklch(0.96 0.021 279.9));
+    background-color: var(--intergalactic-table-td-cell-selected-hover, oklch(0.96 0.015 278.4));
   }
 
   /* SUCCESS THEME */
@@ -140,10 +140,10 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
 SRowGroup:has([data-row-selector="true"] input:checked) > SRow > SCellWrapper > SCell,
 SRow:has([data-row-selector="true"] input:checked) > SCellWrapper > SCell {
-  background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.011 279.9));
+  background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.008 278.4));
 
   &[expanded][withAccordion] {
-    background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.032 280));
+    background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.023 278.4));
   }
 }
 
@@ -209,10 +209,10 @@ SCell {
   }
 
   &[theme='info'] {
-    background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.011 279.9));
+    background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.008 278.4));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.032 280));
+      background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.023 278.4));
     }
   }
 

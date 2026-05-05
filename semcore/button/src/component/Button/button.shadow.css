@@ -176,19 +176,19 @@ SButton[theme='secondary-muted'] {
 }
 
 SButton[theme='secondary-info'] {
-  background-color: var(--intergalactic-control-secondary-info, oklch(0.468 0.302 264.2 / 0.033));
+  background-color: var(--intergalactic-control-secondary-info, oklch(0.41 0.258 264.2 / 0.031));
   color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
   border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
 
   &:hover {
     color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.467 0.303 264.2 / 0.065));
+    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.407 0.258 264.2 / 0.062));
   }
 
   &:active,
   &[active] {
     color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.466 0.303 264.2 / 0.097));
+    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.405 0.257 264.2 / 0.093));
   }
 }
 
@@ -216,13 +216,13 @@ SButton[theme='tertiary-info'] {
 
   &:hover {
     color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.467 0.303 264.2 / 0.065));
+    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.407 0.258 264.2 / 0.062));
   }
 
   &:active,
   &[active] {
     color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.466 0.303 264.2 / 0.097));
+    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.405 0.257 264.2 / 0.093));
   }
 }
 

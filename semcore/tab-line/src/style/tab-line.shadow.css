@@ -66,7 +66,7 @@ STabLineItem {
 
   &[selected]::after {
     transition-delay: calc(var(--intergalactic-duration-control, 200) * 1ms);
-    background-color: var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
+    background-color: var(--intergalactic-border-info-active, oklch(0.382 0.248 264.2 / 0.386));
   }
 
   & SText:not(:last-child) {
@@ -82,7 +82,7 @@ SCaret {
   position: absolute;
   bottom: -1px;
   height: 3px;
-  background: var(--intergalactic-border-info-active, oklch(0.456 0.31 264.1 / 0.396));
+  background: var(--intergalactic-border-info-active, oklch(0.382 0.248 264.2 / 0.386));
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
 }
 
