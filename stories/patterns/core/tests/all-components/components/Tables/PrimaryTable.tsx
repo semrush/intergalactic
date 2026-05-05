@@ -226,6 +226,9 @@ const cols = COLUMNS_CONFIG.map((c) => ({
   ...('justifyContent' in c && c.justifyContent ? { justifyContent: c.justifyContent } : {}),
 }));
 
+const ALWAYS_VISIBLE_COLUMN_NAME = 'name';
+const manageableCols = cols.filter((c) => c.name !== ALWAYS_VISIBLE_COLUMN_NAME);
+
 const COLUMN_COPY_HANDLE = Object.fromEntries(
   COLUMNS_CONFIG.map((c) => [c.id, 'copyHandle' in c ? Boolean(c.copyHandle) : true]),
 );
@@ -242,7 +245,7 @@ export type PrimaryTableProps = {
 type PillValue = TableDemoState | 'pageError' | 'progress';
 
 export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = {}) {
-  const [columns, setColumns] = useState<string[]>(cols.map((c) => c.name));
+  const [columns, setColumns] = useState<string[]>(manageableCols.map((c) => c.name));
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [pillValue, setPillValue] = React.useState<PillValue>('default');
@@ -408,11 +411,11 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
                 <SelectedRowsInfo selectedRows={selectedRows} />
 
                 <BeforeTablesControls
-                  columns={cols}
+                  columns={manageableCols}
                   selectedColumns={columns}
                   setSelectedColumns={(columns: string[] | null) => {
                     if (columns === null) {
-                      setColumns(cols.map((c) => c.name));
+                      setColumns(manageableCols.map((c) => c.name));
                     } else {
                       setColumns(columns);
                     }
@@ -425,7 +428,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
                 variant='card'
                 currentPage={currentPage}
                 selectedRows={selectedRows}
-                columns={cols.filter((c) => columns.includes(c.name))}
+                columns={cols.filter((c) => c.name === ALWAYS_VISIBLE_COLUMN_NAME || columns.includes(c.name))}
                 CellRenderer={cellRenderer}
                 demoState={tableDemoState}
                 nameSearchQuery={debouncedNameFilter}

@@ -6,6 +6,7 @@ import React from 'react';
 
 import HeadingTagAccordion from '../../../../../../components/accordion/docs/examples/heading_tag';
 import NonCompactAccordion from '../../../../../../components/accordion/docs/examples/non_compact';
+import CarouselStory from '../../../../../../components/carousel/docs/examples/carousel_with_default_indicators';
 import Checkboxes from '../../../../../../components/checkbox/docs/examples/basic_usage';
 import ColorPicker from '../../../../../../components/color-picker/docs/examples/palettemanager';
 import DatePickerDemo from '../../../../../../components/date-picker/docs/examples/datepicker';
@@ -51,18 +52,29 @@ export function Form() {
         </Card.Body>
       </Card>
 
-      <Card w='100%' style={columnStyle}>
-        <Card.Header>
-          <Card.Title tag='h3'>FAQ</Card.Title>
-        </Card.Header>
-        <Card.Body tag={Flex} direction='column'>
-          <NonCompactAccordion />
-          <Text size={300} my={3} semibold>
-            Accordion with heading tag
-          </Text>
-          <HeadingTagAccordion />
-        </Card.Body>
-      </Card>
+      <Flex direction='column' gap={4} style={columnStyle}>
+        <Card w='100%'>
+          <Card.Header>
+            <Card.Title tag='h3'>FAQ</Card.Title>
+          </Card.Header>
+          <Card.Body tag={Flex} direction='column'>
+            <NonCompactAccordion />
+            <Text size={300} my={3} semibold>
+              Accordion with heading tag
+            </Text>
+            <HeadingTagAccordion />
+          </Card.Body>
+        </Card>
+
+        <Card w='100%'>
+          <Card.Body tag={Flex} gap={4} alignItems='flex-start'>
+            <CarouselStory />
+            <Text>
+              Description of carousel...
+            </Text>
+          </Card.Body>
+        </Card>
+      </Flex>
     </Flex>
   );
 }
