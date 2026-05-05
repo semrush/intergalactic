@@ -321,7 +321,8 @@
   },
   "peerDependencies": {
     "react": "16.8 - 19",
-    "react-dom": "16.8 - 19"
+    "react-dom": "16.8 - 19",
+    "@semcore/theme": "*"
   },
   "repository": {
     "type": "git",

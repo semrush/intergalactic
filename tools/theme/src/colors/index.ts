@@ -143,10 +143,9 @@ lightnessMap.set(600, 0.46);
 lightnessMap.set(700, 0.33);
 lightnessMap.set(800, 0.23);
 
-/** Overrides `lightnessMap` for that color only. */
 const lightnessOverrides: Partial<Record<Colors, Partial<Record<Lightness, number>>>> = {
   blue: {
-    400: lightnessMap.get(450)!,
+    400: lightnessMap.get(450),
   },
 };
 
