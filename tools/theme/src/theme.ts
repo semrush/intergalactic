@@ -1042,11 +1042,15 @@ export const theme: Theme = {
       },
       brand_primary: {
         value: violet.at(0.74),
-        description: 'Primary brand accent for logos and co-branded surfaces.',
+        description: 'Primary brand accent for logos and branded surfaces.',
       },
       brand_secondary: {
         value: gray.at(0.22),
         description: 'Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).',
+      },
+      brand_gradient: {
+        value: `linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%);`,
+        description: 'Brand light gradient for branded surfaces.',
       },
       brand_pinterest: {
         value: '#bd081c',
@@ -1310,7 +1314,7 @@ export const theme: Theme = {
         description: '5 color in the default list of colors for charts.',
       },
       chart_palette_order_6: {
-        value: colors.blue['300'].value,
+        value: colors.blue['200'].value,
         description: '6 color in the default list of colors for charts.',
       },
       chart_palette_order_7: {
@@ -1350,7 +1354,7 @@ export const theme: Theme = {
         description: '15 color in the default list of colors for charts.',
       },
       chart_palette_order_16: {
-        value: colors.green['400'].value,
+        value: colors.green['300'].value,
         description: '16 color in the default list of colors for charts.',
       },
       chart_palette_order_17: {
@@ -2227,6 +2231,7 @@ type SemanticColors = {
   brand: {
     primary: Value;
     secondary: Value;
+    gradient: Value;
     pinterest: Value;
     instagram: Value;
     youtube: Value;

@@ -87,11 +87,7 @@ export const baseColors: Record<Colors, ColorScale> = {
   ),
   'blue': new ColorScale(
     [
-      'oklch(0.74 0.14 280)',
-      'oklch(0.64 0.18 280)',
-      'oklch(0.54 0.2 280)',
-      'oklch(0.38 0.15 280)',
-      'oklch(0.22 0.12 280)',
+      'oklch(0.5879 0.1547 278.41)',
     ],
     'p3',
   ),
@@ -143,9 +139,16 @@ lightnessMap.set(300, 0.74);
 lightnessMap.set(400, 0.64);
 lightnessMap.set(450, 0.58);
 lightnessMap.set(500, 0.53);
-lightnessMap.set(600, 0.4); // Maybe 0.46?
-lightnessMap.set(700, 0.32); // Maybe 0.33?
+lightnessMap.set(600, 0.46);
+lightnessMap.set(700, 0.33);
 lightnessMap.set(800, 0.23);
+
+/** Overrides `lightnessMap` for that color only. */
+const lightnessOverrides: Partial<Record<Colors, Partial<Record<Lightness, number>>>> = {
+  blue: {
+    400: lightnessMap.get(450)!,
+  },
+};
 
 const initLightnessMap: Record<Lightness, { value: string; description?: string }> = {
   50: { value: '', description: 'Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision.' },
@@ -170,7 +173,8 @@ export const colors = colorNames.reduce<Record<Colors, typeof initLightnessMap>>
   }
 
   for (const [key, lightness] of lightnessMap.entries()) {
-    acc[colorName][key] = { value: baseColors[colorName].at(lightness), description: initLightnessMap[key].description };
+    const l = lightnessOverrides[colorName]?.[key] ?? lightness;
+    acc[colorName][key] = { value: baseColors[colorName].at(l), description: initLightnessMap[key].description };
   }
 
   return acc;
