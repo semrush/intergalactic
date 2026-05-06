@@ -15,7 +15,7 @@ import fire from '@semcore/core/lib/utils/fire';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
-import Tag, { type TagProps, TagContainer, type TagTextProps, type TagContext } from '@semcore/tag';
+import Tag, { type NSTag, TagContainer } from '@semcore/tag';
 import React from 'react';
 
 import style from './style/input-tag.shadow.css';
@@ -44,7 +44,7 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
     locale?: string;
   };
 
-export type InputTagsTagProps = TagProps & {
+export type InputTagsTagProps = NSTag.Props & {
   /** Property enabling the ability to remove a tag on click */
   editable?: boolean;
 };
@@ -399,8 +399,8 @@ const InputTags = createComponent(InputTagsRoot, {
   Value: typeof Input.Value;
   TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
-      Content: Intergalactic.Component<'div', TagTextProps>;
+    Text: Intergalactic.Component<'div', NSTag.Props, NSTag.Ctx> & {
+      Content: Intergalactic.Component<'div', NSTag.Text.Props>;
     };
     Close: typeof TagContainer.Close;
     Addon: typeof Tag.Addon;

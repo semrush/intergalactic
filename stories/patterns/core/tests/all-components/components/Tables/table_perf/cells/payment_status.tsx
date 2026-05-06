@@ -1,5 +1,5 @@
 import { Box } from '@semcore/ui/base-components';
-import type { TagProps } from '@semcore/ui/tag';
+import type { NSTag } from '@semcore/ui/tag';
 import Tag from '@semcore/ui/tag';
 import React from 'react';
 import type { FC } from 'react';
@@ -9,7 +9,7 @@ type PaymentStatusProps = {
   status: 'success' | 'failed' | 'pending';
   short?: boolean;
   testIdPrefix?: string;
-} & Omit<TagProps, 'color'>;
+} & Omit<NSTag.Props, 'color'>;
 
 const colorsMap = {
   success: 'green-500',

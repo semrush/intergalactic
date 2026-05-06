@@ -1,4 +1,5 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -12,12 +13,16 @@ import { Text as TypographyText } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/tag.shadow.css';
+import type { NSTag } from './Tag.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootTag extends Component {
+class RootTag extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTag.Component>,
+  typeof RootTag.enhance
+> {
   static displayName = 'Tag';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()] as const;
   static defaultProps = {
     theme: 'primary',
     color: 'gray-500',
@@ -44,12 +49,15 @@ class RootTag extends Component {
     };
   }
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     switch (event.key) {
       case ' ':
       case 'Enter':
         if (this.asProps.onClick) {
           event.preventDefault();
+
+          // TODO: Keyboard event isn't assignable to MouseEvent.
+          // @ts-ignore
           this.asProps.onClick(event);
         }
         break;
@@ -75,47 +83,50 @@ class RootTag extends Component {
     const isInteractive = !disabled && interactive;
 
     return sstyled(styles)(
-      <>
-        <STag
-          render={Box}
-          id={id}
-          use:interactive={isInteractive}
-          use:interactiveView={isInteractiveView}
-          tag-color={resolveColor(color)}
-          onKeyDown={this.handleKeyDown}
-          use:tabIndex={isInteractive ? 0 : -1}
-          role={isInteractive ? 'button' : undefined}
-          ref={this.tagRef}
-        >
-          {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-          {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
-          {addonRight ? <Tag.Addon tag={addonRight} /> : null}
-        </STag>
-      </>,
+      <STag
+        render={Box}
+        id={id}
+        use:interactive={isInteractive}
+        use:interactiveView={isInteractiveView}
+        tag-color={resolveColor(color)}
+        onKeyDown={this.handleKeyDown}
+        use:tabIndex={isInteractive ? 0 : -1}
+        role={isInteractive ? 'button' : undefined}
+        ref={this.tagRef}
+      >
+        {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
+        {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
+        {addonRight ? <Tag.Addon tag={addonRight} /> : null}
+      </STag>,
     );
   }
 }
 
-class RootTagContainer extends Component {
+class RootTagContainer extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTag.Container.Component>,
+  typeof RootTagContainer.enhance
+> {
   static displayName = 'TagContainer';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()] as const;
   static defaultProps = {
     color: 'gray-500',
     theme: 'primary',
   };
 
-  tagRef = React.createRef();
+  tagRef = React.createRef<HTMLDivElement>();
 
   componentWillUnmount() {
     const tagElement = this.tagRef.current;
 
-    if (isFocusInside(tagElement)) {
+    if (tagElement && isFocusInside(tagElement)) {
       const nextTagElement = tagElement.nextElementSibling;
-      if (nextTagElement) {
+      const nextParentElementSibling = tagElement.parentElement?.nextElementSibling;
+
+      if (nextTagElement && nextTagElement instanceof HTMLElement) {
         setFocus(nextTagElement);
-      } else {
-        setFocus(tagElement.parentElement?.nextElementSibling);
+      } else if (nextParentElementSibling && nextParentElementSibling instanceof HTMLElement) {
+        setFocus(nextParentElementSibling);
       }
     }
   }
@@ -222,7 +233,10 @@ class RootTagContainer extends Component {
   }
 }
 
-class RootCloseTagContainer extends Component {
+class Close extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTag.Close.Component>,
+  typeof Close.enhance
+> {
   static displayName = 'CloseTagContainer';
   static style = style;
 
@@ -233,13 +247,13 @@ class RootCloseTagContainer extends Component {
       size: 'm',
       i18n: localizedMessages,
       locale: 'en',
-      children: <CloseTagContainer.Close />,
+      children: <CloseM />,
     };
   };
 
-  static enhance = [resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()] as const;
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const { onKeyDown, onClick } = this.asProps;
 
     if (onKeyDown) {
@@ -248,6 +262,9 @@ class RootCloseTagContainer extends Component {
 
     if (onClick && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
+
+      // TODO: Keyboard event isn't assignable to MouseEvent.
+      // @ts-ignore
       onClick(event);
     }
   };
@@ -272,7 +289,9 @@ class RootCloseTagContainer extends Component {
   }
 }
 
-function TagContainerCircle(props) {
+function TagContainerCircle(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSTag.Circle.Component, typeof RootTagContainer, 'Circle'>,
+) {
   const SAddon = Box;
   const SCircle = Root;
   const { styles, color, resolveColor } = props;
@@ -283,7 +302,9 @@ function TagContainerCircle(props) {
   );
 }
 
-function Text(props) {
+function Text(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSTag.Text.Component, typeof RootTag, 'Text'>,
+) {
   const SText = Root;
   const { styles, tagRef } = props;
 
@@ -297,7 +318,9 @@ function Text(props) {
   );
 }
 
-function Addon(props) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSTag.Addon.Component, typeof RootTagContainer, 'Addon'>,
+) {
   const SAddon = Root;
   const { styles, color, resolveColor } = props;
 
@@ -309,7 +332,10 @@ function Addon(props) {
   return sstyled(styles)(<SAddon render={Box} tag='div' tag-color={tagColor} />);
 }
 
-function Circle(props) {
+function Circle(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSTag.Circle.Component, typeof RootTag, 'Circle'>
+    & Intergalactic.InternalTypings.InferChildComponentProps<NSTag.Circle.Component, typeof RootTagContainer, 'Circle'>,
+) {
   const SCircle = Root;
   const { styles, color, resolveColor } = props;
   const tagColor = React.useMemo(() => {
@@ -323,17 +349,13 @@ const Tag = createComponent(RootTag, {
   Text,
   Addon,
   Circle,
-});
-
-const CloseTagContainer = createComponent(RootCloseTagContainer, {
-  Close: CloseM,
-});
+}) as NSTag.Component;
 
 export const TagContainer = createComponent(RootTagContainer, {
   Tag,
   Addon,
-  Close: CloseTagContainer,
+  Close,
   Circle: TagContainerCircle,
-});
+}) as NSTag.Container.Component;
 
 export default Tag;
