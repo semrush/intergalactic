@@ -40,4 +40,6 @@ class RootSpin extends Component<
   }
 }
 
-export default createComponent(RootSpin);
+const Spin = createComponent(RootSpin) as NSSpin.Component;
+
+export default Spin;
