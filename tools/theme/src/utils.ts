@@ -167,6 +167,8 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
 
   traverse({ node: config.featureHighlight, path: [], prefix, groupKey: 'highlightsTokens' });
 
+  traverse({ node: config.deprecates, path: [], prefix, groupKey: 'baseTokens' });
+
   return processedTokens;
 }
 

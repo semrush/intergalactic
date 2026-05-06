@@ -1,10 +1,10 @@
 SHighlightedButton[theme='primary-highlighted'] {
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-image: linear-gradient(90deg,
-  var(--intergalactic-violet-500, undefined),
-  var(--intergalactic-blue-500, undefined),
-  var(--intergalactic-violet-400, undefined),
-  var(--intergalactic-blue-400, undefined));
+  var(--intergalactic-violet-500, oklch(0.53 0.26 296)),
+  var(--intergalactic-blue-500, oklch(0.53 0.139 278.4)),
+  var(--intergalactic-violet-400, oklch(0.64 0.223 299.3)),
+  var(--intergalactic-blue-400, oklch(0.58 0.153 278.4)));
   background-position-x: 99%;
   background-size: 300%;
   transition: background-position-x 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);

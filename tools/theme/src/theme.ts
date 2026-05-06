@@ -1701,6 +1701,18 @@ export const theme: Theme = {
       description: 'Color for keyboard focus outline styles for highlighted controls.',
     },
   },
+  deprecates: {
+    violet: {
+      400: colors.violet['400'],
+      500: colors.violet['500'],
+    },
+    blue: {
+      400: colors.blue['400'],
+      500: colors.blue['500'],
+    },
+    table: { td: { cell: { actions: { accordion: { value: '{semanticTokens.colors.table_td_cell_accordion}' } } } } },
+    keyboard: { focus: { outline: { invert: { value: '{semanticTokens.colors.keyboard_focus_invert_outline}' } } } },
+  },
 };
 
 type FontSize = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
@@ -1773,6 +1785,7 @@ export type Theme = {
   baseTokens: BaseTokens;
   semanticTokens: SemanticTokens;
   featureHighlight: Record<FlattenPaths<FeatureHighlight>, Value>;
+  deprecates: Deprecates;
 };
 
 type SemanticColors = {
@@ -2553,4 +2566,11 @@ export type FeatureHighlight = {
       };
     };
   };
+};
+
+type Deprecates = {
+  violet: { 400: Value; 500: Value };
+  blue: { 400: Value; 500: Value };
+  table: { td: { cell: { actions: { accordion: Value } } } };
+  keyboard: { focus: { outline: { invert: Value } } };
 };

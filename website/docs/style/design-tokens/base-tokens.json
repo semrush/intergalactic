@@ -813,5 +813,29 @@
     "name": "--intergalactic-duration-extra-fast",
     "value": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
+  },
+  {
+    "name": "--intergalactic-violet-400",
+    "value": "oklch(0.64 0.223 299.3)"
+  },
+  {
+    "name": "--intergalactic-violet-500",
+    "value": "oklch(0.53 0.26 296)"
+  },
+  {
+    "name": "--intergalactic-blue-400",
+    "value": "oklch(0.58 0.153 278.4)"
+  },
+  {
+    "name": "--intergalactic-blue-500",
+    "value": "oklch(0.53 0.139 278.4)"
+  },
+  {
+    "name": "--intergalactic-table-td-cell-actions-accordion",
+    "value": "oklch(1 0 0)"
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-outline-invert",
+    "value": "oklch(1 0 0 / 0.7)"
   }
 ]
