@@ -33,7 +33,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='slider-represantation'>
+      <Text tag='label' size={200} htmlFor='slider-represantation' mb={2}>
         Slider representation
       </Text>
       <Box w={140}>

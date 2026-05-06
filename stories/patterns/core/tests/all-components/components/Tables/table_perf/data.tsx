@@ -4,23 +4,43 @@ import React from 'react';
 
 const ChartExample = () => {
   return (
-    <div style={{ width: '600px', height: '400px', background: '#fff' }} />
+    <div
+      style={{
+        width: '100%',
+        maxWidth: '600px',
+        height: '200px',
+        background: 'var(--intergalactic-bg-primary-neutral)',
+      }}
+    />
   );
 };
 
-function getRandomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const operationType = [
-  'refund',
-  'purchase',
-  'charge',
-];
-
-const paymentStatus = [
-  'success',
-  'failed',
+const TRANSACTION_CATEGORY_NAMES = [
+  'Shop',
+  'Vet Clinic',
+  'Bills',
+  'Auto',
+  'Concert',
+  'Groceries',
+  'Pharmacy',
+  'Streaming',
+  'Gym',
+  'Travel',
+  'Restaurant',
+  'Coffee',
+  'Utilities',
+  'Education',
+  'Electronics',
+  'Books',
+  'Subscription',
+  'Rent',
+  'Donations',
+  'Insurance',
+  'Hardware',
+  'Software',
+  'Parking',
+  'Fuel',
+  'Public transport',
 ];
 
 export const data: (page: number) => DataTableData = (page: number) => {
@@ -586,13 +606,11 @@ export const data: (page: number) => DataTableData = (page: number) => {
     },
   ];
 
-  return data.map((item) => {
+  return data.map((item, idx) => {
     return {
       ...item,
+      name: TRANSACTION_CATEGORY_NAMES[idx % TRANSACTION_CATEGORY_NAMES.length],
       payment_intent_id: `${page}__${item.payment_intent_id}`,
-      affected_payment_intent_id: getRandomInt(0, 1) === 0 ? null : crypto.randomUUID(),
-      operation_type: operationType[getRandomInt(0, 2)],
-      payment_status: paymentStatus[getRandomInt(0, 1)],
     };
   });
 };

@@ -12,6 +12,7 @@ const meta: Meta<typeof Dot> = {
 };
 
 export default meta;
+
 const commonArgTypes = {
   size: {
     control: { type: 'select' },

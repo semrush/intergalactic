@@ -38,6 +38,7 @@ type CopyProps = {
 
 // `width - 28` because there is custom copy icon (20px) on each cell + 8px gap between text and Icon. Therefore, the header width should be reduced based on the width of this icon.
 const recalcFunc = (width: number) => (width - 28 - 26);
+const recalcFuncNoHandle = (width: number) => width - 26;
 
 const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cellProps, headerRef }) => {
   const timeourRef = useRef<Timeout>();
@@ -45,6 +46,28 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
   const intl = useIntl();
 
   useEffect(() => () => clearTimeout(timeourRef.current), []);
+
+  if (!handle) {
+    return (
+      <Flex w='100%' inline alignItems='flex-start'>
+        {cropPosition === 'none'
+          ? (
+              <Box inline>{value}</Box>
+            )
+          : (
+              <Text
+                ellipsis:cropPosition={cropPosition ?? 'end'}
+                ellipsis:containerElement={headerRef ?? undefined}
+                ellipsis:recalculateContainerWidth={recalcFuncNoHandle}
+                hint={false}
+                data-test-id={cellProps.dataKey}
+              >
+                {value}
+              </Text>
+            )}
+      </Flex>
+    );
+  }
 
   const onClick = (e: SyntheticEvent) => {
     e.stopPropagation();
@@ -67,7 +90,7 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
       onClick={onClick}
       inline
       title={copied ? copiedTitle : defaultTitle}
-      alignItems='center'
+      alignItems='flex-start'
       gap={2}
     >
       {cropPosition === 'none'
@@ -94,7 +117,9 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
   );
 };
 
-const CopyCell = ({ value, cellProps, headerRef, cropPosition = 'middle' }: any) => <Copy value={value} cropPosition={cropPosition} cellProps={cellProps} headerRef={headerRef} />;
+const CopyCell = ({ value, cellProps, headerRef, cropPosition = 'middle', handle = true }: any) => (
+  <Copy value={value} cropPosition={cropPosition} cellProps={cellProps} headerRef={headerRef} handle={handle} />
+);
 
 const StatusCell = ({ value }: any) => <PaymentStatus status={value} />;
 
