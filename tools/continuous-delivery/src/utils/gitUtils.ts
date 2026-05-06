@@ -17,7 +17,7 @@ export const gitUtils = {
       await NpmUtils.updateLockFile();
       await gitUtils.commitNewPrerelease(versionPatches);
       const tag = await gitUtils.createPrereleaseTag(semcoreUiPatch);
-      await gitUtils.push(tag);
+      // await gitUtils.push(tag);
     }
   },
 
