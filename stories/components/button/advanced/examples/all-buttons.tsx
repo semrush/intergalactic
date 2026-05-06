@@ -1,7 +1,46 @@
 import { Box, Flex } from '@semcore/ui/base-components';
+import Button, { ButtonLink } from '@semcore/ui/button';
 import React from 'react';
 
-import { ButtonLinkRow, ButtonRow } from './button-helpers';
+type ButtonRowProps = {
+  use?: 'primary' | 'secondary' | 'tertiary';
+  theme?: 'info' | 'success' | 'danger' | 'brand' | 'muted' | 'invert';
+  size?: 'm' | 'l';
+};
+
+function ButtonRow({ use = 'secondary', theme = 'info', size = 'm' }: ButtonRowProps) {
+  return (
+    <Flex gap={2} alignItems='center' flexWrap>
+      <Button use={use} theme={theme} size={size}>
+        Default
+      </Button>
+      <Button use={use} theme={theme} size={size} disabled>
+        Disabled
+      </Button>
+      <Button use={use} theme={theme} size={size} loading>
+        Loading
+      </Button>
+    </Flex>
+  );
+}
+
+type ButtonLinkRowProps = {
+  use?: 'primary' | 'secondary';
+  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
+};
+
+function ButtonLinkRow({ use = 'primary', size = 300 }: ButtonLinkRowProps) {
+  return (
+    <Flex gap={2} alignItems='center' flexWrap>
+      <ButtonLink use={use} size={size}>
+        Default
+      </ButtonLink>
+      <ButtonLink use={use} size={size} disabled>
+        Disabled
+      </ButtonLink>
+    </Flex>
+  );
+}
 
 export default function AllButtons() {
   return (
