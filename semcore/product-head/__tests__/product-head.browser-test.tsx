@@ -88,10 +88,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await expect(page.locator('[data-ui-name="ButtonLink"]')).toBeFocused();
+    await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
+    await expect(page.locator('[data-ui-name="ButtonLink"]')).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');

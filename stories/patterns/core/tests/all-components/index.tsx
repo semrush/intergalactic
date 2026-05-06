@@ -3,10 +3,9 @@ import { Box } from '@semcore/ui/base-components';
 import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
-import { Carousel } from './components/Carousel';
-import { Controls } from './components/Controls';
 import { Dashboard } from './components/Dashboard';
 import { FeatureHighlight } from './components/FeatureHighlight';
+import { Form } from './components/Form';
 import { Tables } from './components/Tables';
 import PageHeader from '../../../../components/product-head/docs/examples/extended_example';
 
@@ -18,7 +17,7 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
   const [tab, setTab] = React.useState(defaultTab);
 
   return (
-    <Box w='calc(100vw - 64px)' style={{ background: 'var(--intergalactic-bg-secondary-neutral)' }} p={8}>
+    <Box w='calc(100vw - 64px)' style={{ background: 'var(--intergalactic-bg-secondary-neutral)', overflowX: 'clip' }} p={8}>
       <PageHeader />
 
       <TabLine size='l' mx={-8} px={8} mt={8} value={tab} onChange={setTab}>
@@ -34,21 +33,17 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item value={3}>
-          Controls
+          Form
         </TabLine.Item>
         <TabLine.Item value={4}>
-          Carousel
-        </TabLine.Item>
-        <TabLine.Item value={5}>
           Feature highlight
         </TabLine.Item>
       </TabLine>
 
       {tab === 1 && <Tables />}
       {tab === 2 && <Dashboard />}
-      {tab === 3 && <Controls />}
-      {tab === 4 && <Carousel />}
-      {tab === 5 && <FeatureHighlight />}
+      {tab === 3 && <Form />}
+      {tab === 4 && <FeatureHighlight />}
     </Box>
   );
 }

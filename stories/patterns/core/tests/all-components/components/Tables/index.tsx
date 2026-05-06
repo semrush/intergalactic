@@ -1,70 +1,44 @@
-import Accordion from '@semcore/ui/accordion';
-import { Flex, Box } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Card from '@semcore/ui/card';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import PrimaryTable from './PrimaryTable';
 import { SecondaryTable } from './SecondaryTable';
-import WidgetEmpty from '../../../../../../components/widget-empty/docs/examples/nodata_example';
+import FeedbackRatingFormExample from '../../../../../../patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 
-export function Tables() {
+export type TablesProps = {
+  showPrimaryAndSecondary?: boolean;
+};
+
+export function Tables({ showPrimaryAndSecondary = true }: TablesProps) {
+  const [pageErrorActive, setPageErrorActive] = React.useState(false);
+
   return (
     <Box w='100%'>
-      <PrimaryTable />
+      {showPrimaryAndSecondary && (
+        <>
+          <PrimaryTable onPageErrorChange={setPageErrorActive} />
 
-      <Flex my={4} gap={4}>
-        <Card my={4} w='50%'>
-          <Text size={400} tag='h3' mb={3} mt={0} semibold textAlign='center'>
-            Some questions
-          </Text>
-          <Accordion use='primary'>
-            {[1, 2, 3].map((_, index) => (
-              <Accordion.Item value={index} key={index}>
-                <Accordion.Item.Toggle wMax={500} mx='auto'>
-                  <Accordion.Item.ToggleButton gap={2}>
-                    <Accordion.Item.Chevron />
-                    {`Section ${index + 1}`}
-                  </Accordion.Item.ToggleButton>
-                </Accordion.Item.Toggle>
-                <Accordion.Item.Collapse wMax={500} mx='auto'>
-                  <Box m={3} ml={6}>
-                    {`Hello Section ${index + 1}`}
-                  </Box>
-                </Accordion.Item.Collapse>
-              </Accordion.Item>
-            ))}
-          </Accordion>
-          <Text size={400} tag='h3' mb={3} mt={6} semibold textAlign='center'>
-            Other questions
-          </Text>
-          <Accordion>
-            {[1, 2, 3].map((_, index) => (
-              <Accordion.Item value={index} key={index}>
-                <Accordion.Item.Toggle wMax={500} mx='auto'>
-                  <Accordion.Item.ToggleButton gap={2}>
-                    <Accordion.Item.Chevron />
-                    {`Section ${index + 1}`}
-                  </Accordion.Item.ToggleButton>
-                </Accordion.Item.Toggle>
-                <Accordion.Item.Collapse wMax={500} mx='auto'>
-                  <Box m={3} ml={6}>
-                    {`Hello Section ${index + 1}`}
-                  </Box>
-                </Accordion.Item.Collapse>
-              </Accordion.Item>
-            ))}
-          </Accordion>
-        </Card>
+          {!pageErrorActive && (
+            <>
+              <Box my={4} w='100%'>
+                <FeedbackRatingFormExample />
+              </Box>
 
-        <Card w='50%'>
-          <Card.Body>
-            <WidgetEmpty />
-          </Card.Body>
-        </Card>
-      </Flex>
-
-      <SecondaryTable />
+              <Flex my={4} gap={4}>
+                <Card w='100%'>
+                  <Card.Header>
+                    <Card.Title tag='h3'>Keywords</Card.Title>
+                  </Card.Header>
+                  <Card.Body p={0} pb={1}>
+                    <SecondaryTable />
+                  </Card.Body>
+                </Card>
+              </Flex>
+            </>
+          )}
+        </>
+      )}
     </Box>
   );
 }

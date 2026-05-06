@@ -26,7 +26,6 @@ export function SelectedRowsInfo({ selectedRows }: Props) {
       alignItems='center'
       gap={6}
       py={2}
-      px={3}
       style={{
         backgroundColor: 'var(--intergalactic-bg-primary-neutral, #ffffff)',
       }}
@@ -37,7 +36,7 @@ export function SelectedRowsInfo({ selectedRows }: Props) {
         {' '}
         <Text bold>{count}</Text>
       </Text>
-      <Button use='tertiary' onClick={handleDeselectAll}>
+      <Button use='tertiary' onClick={handleDeselectAll} disabled={count === 0}>
         Deselect all
       </Button>
     </Flex>

@@ -6,7 +6,6 @@ import LinkButtonLinkTextCombinationExample, { defaultProps as combinationDefaul
 const meta: Meta = {
   title: 'Patterns/Core/Tests',
 };
-
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -45,7 +44,6 @@ export const LinkButtonLinkTextCombination: StoryObj<typeof combinationDefaultPr
   },
   args: combinationDefaultProps,
 };
-
 export const AllComponents: Story = {
   render: AllComponentsExample,
   parameters: {

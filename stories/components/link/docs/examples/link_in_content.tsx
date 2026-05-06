@@ -1,12 +1,13 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import { Flex } from '@semcore/ui/base-components';
 import Link from '@semcore/ui/link';
 import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
   return (
-    <>
-      <Text size={300} mt={3} tag='p'>
+    <Flex direction='column' gap={3}>
+      <Text size={300} tag='p'>
         The Intergalactic Design System
         {' '}
         <Link href='https://developer.semrush.com/intergalactic/components/link/link-api' enableVisited>
@@ -20,7 +21,7 @@ const Demo = () => {
         </Link>
         .
       </Text>
-      <Text size={300} mt={3} tag='p'>
+      <Text size={300} tag='p'>
         Aliens from distant galaxies use it to
         {' '}
         <Link href='#'>
@@ -29,7 +30,7 @@ const Demo = () => {
         {' '}
         that are so user-friendly, even a space-faring cat with paws can navigate them.
       </Text>
-      <Text size={300} mt={3} tag='p'>Look at these:</Text>
+      <Text size={300} tag='p'>Look at these:</Text>
       <List size={300} w={300}>
         <List.Item>
           <Link href='#'>
@@ -43,7 +44,7 @@ const Demo = () => {
           </Link>
         </List.Item>
       </List>
-    </>
+    </Flex>
   );
 };
 

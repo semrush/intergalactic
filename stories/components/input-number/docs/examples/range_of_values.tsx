@@ -16,7 +16,7 @@ const Demo = () => {
   }, [from, to]);
 
   return (
-    <>
+    <Flex direction='column' gap={2}>
       <Text tag='p' size={200}>
         <Text tag='label' htmlFor='basic-example-from'>
           From
@@ -26,7 +26,7 @@ const Demo = () => {
           To
         </Text>
       </Text>
-      <Flex w='20%' mt={2}>
+      <Flex w='20%'>
         <InputNumber neighborLocation='right'>
           <InputNumber.Value
             min={min}
@@ -52,7 +52,7 @@ const Demo = () => {
           <InputNumber.Controls />
         </InputNumber>
       </Flex>
-    </>
+    </Flex>
   );
 };
 

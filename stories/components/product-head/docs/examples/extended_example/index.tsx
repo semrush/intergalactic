@@ -10,9 +10,11 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Link from '@semcore/ui/link';
+import Modal from '@semcore/ui/modal';
 import Header, { Info, Title } from '@semcore/ui/product-head';
 import Select from '@semcore/ui/select';
 import { DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { AddProjectWizard } from './AddProjectWizard';
@@ -20,6 +22,14 @@ import { CountrySelect } from './CountrySelect';
 import { EditableName } from './EditableName';
 
 const Demo = () => {
+  const [visible, setVisible] = React.useState(false);
+  const [secondVisible, setSecondVisible] = React.useState(false);
+
+  const handleClose = () => setVisible(false);
+  const handleSecondClose = () => setSecondVisible(false);
+
+  const openSettingsModal = () => setVisible(true);
+
   return (
     <>
       <Header>
@@ -33,8 +43,8 @@ const Demo = () => {
           </Breadcrumbs>
 
           <Header.Links>
-            <ButtonLink addonLeft={Chat}>Feedback</ButtonLink>
             <Link href='#' addonLeft={BookM}>User manual</Link>
+            <ButtonLink addonLeft={Chat}>Feedback</ButtonLink>
           </Header.Links>
         </Header.Row>
 
@@ -48,15 +58,15 @@ const Demo = () => {
 
             <DropdownMenu>
               <DropdownMenu.Trigger tag={Button} addonLeft={SettingsM}>Settings</DropdownMenu.Trigger>
-              <DropdownMenu.Menu w={160}>
-                <DropdownMenu.Item>Menu item 1</DropdownMenu.Item>
-                <DropdownMenu.Item>Menu item 2</DropdownMenu.Item>
+              <DropdownMenu.Menu w={200}>
+                <DropdownMenu.Item onClick={openSettingsModal}>Open Modal</DropdownMenu.Item>
+                <DropdownMenu.Item onClick={openSettingsModal}>Open Modal one more time</DropdownMenu.Item>
 
                 <DropdownMenu.Item>
                   <DropdownMenu inlineActions placement='right'>
                     <Flex justifyContent='space-between' gap={3}>
                       <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-                        Menu item 3
+                        Open again?
                       </DropdownMenu.Item.Content>
                       <DropdownMenu.Actions gap={1}>
                         <DropdownMenu.Item tag={Button} addonLeft={MathPlus} title='Add new' />
@@ -73,12 +83,12 @@ const Demo = () => {
                     offset={[-11, 12]}
                   >
                     <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-                      Menu item 4
+                      Static menu item. Nothing will happen.
                       <ChevronRight color='icon-secondary-neutral' />
                     </DropdownMenu.Item.Content>
                     <DropdownMenu.Menu>
-                      <DropdownMenu.Item>Add</DropdownMenu.Item>
-                      <DropdownMenu.Item>Delete</DropdownMenu.Item>
+                      <DropdownMenu.Item>Okay. Got it!</DropdownMenu.Item>
+                      <DropdownMenu.Item>Oh no</DropdownMenu.Item>
                     </DropdownMenu.Menu>
                   </DropdownMenu>
                 </DropdownMenu.Item>
@@ -126,6 +136,26 @@ const Demo = () => {
           </Info>
         </Header.Row>
       </Header>
+
+      <Modal visible={visible} onClose={handleClose}>
+        <Text size={200} mb={3} tag='p'>
+          Open one more window
+        </Text>
+        <Button use='primary' onClick={() => setSecondVisible(true)}>
+          Open modal
+        </Button>
+      </Modal>
+      <Modal visible={secondVisible} onClose={handleSecondClose}>
+        <Text size={200} mb={3} tag='p'>
+          Your changes will be lost if you don't save them.
+        </Text>
+        <Button use='primary' theme='success' onClick={handleSecondClose}>
+          Save changes
+        </Button>
+        <Button ml={2} onClick={handleSecondClose}>
+          Cancel
+        </Button>
+      </Modal>
     </>
   );
 };
