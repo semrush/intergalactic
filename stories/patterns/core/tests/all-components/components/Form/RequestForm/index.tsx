@@ -106,9 +106,7 @@ export function RequestForm({ mt = 4, contentReady = true }: RequestFormProps) {
                     (optional)
                   </Text>
                 </Flex>
-                <Textarea size='l'>
-                  <Textarea.Value id='request-form-details' />
-                </Textarea>
+                <Textarea size='l' id='request-form-details' />
               </Flex>
 
               <Checkbox size='l' label={'I agree to the Terms and Conditions\nand Privacy Policy'} />
