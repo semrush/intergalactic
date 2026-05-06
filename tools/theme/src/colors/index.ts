@@ -86,28 +86,16 @@ export const baseColors: Record<Colors, ColorScale> = {
     'p3',
   ),
   'blue': new ColorScale(
-    [
-      'oklch(0.5879 0.1547 278.41)',
-    ],
+    ['oklch(0.90 0.06 270)', 'oklch(0.59 0.17 278)', 'oklch(0.01 0.04 290)'],
     'p3',
   ),
   'blue-indigo': new ColorScale(
-    [
-      'oklch(0.861 0.068 266.551)',
-      'oklch(0.703 0.154 265.122)',
-      'oklch(0.575 0.232 263.373)',
-    ],
+    ['oklch(0.86 0.07 266)', 'oklch(0.70 0.15 265)', 'oklch(0.58 0.23 263)'],
     'p3',
   ),
   'violet': new ColorScale(['oklch(0.74 0.17 303)', 'oklch(0.55 0.27 296)'], 'p3'),
   'violet-dusty': new ColorScale(
-    [
-      'oklch(0.74 0.14 280)',
-      'oklch(0.64 0.18 280)',
-      'oklch(0.54 0.2 280)',
-      'oklch(0.38 0.15 280)',
-      'oklch(0.22 0.12 280)',
-    ],
+    ['oklch(0.588 0.155 278.41)'],
     'p3',
   ),
   'pink': new ColorScale(['oklch(0.90 0.10 330)', 'oklch(0.82 0.18 330)', 'oklch(0.66 0.27 330)'], 'p3'),
