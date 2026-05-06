@@ -1,4 +1,4 @@
-@import url('../../../../semcore/utils/lib/themes/auto.css');
+@import url('@semcore/theme/light.css');
 
 /**
  * Customize default theme styling by overriding CSS variables:
