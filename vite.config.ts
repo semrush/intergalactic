@@ -15,9 +15,12 @@ export default defineConfig({
       name: 'semcore-resolve',
       async resolveId(id) {
         if (
-          !id.includes('@semcore') &&
-          !id.includes('/semcore/') &&
-          !id.startsWith('intergalactic/')
+          (
+            !id.includes('@semcore') &&
+            !id.includes('/semcore/') &&
+            !id.startsWith('intergalactic/')
+          ) ||
+          id.includes('@semcore/theme')
         )
           return null;
         if (id.endsWith('.md') || id.endsWith('.mdx') || id.includes('stories')) return null;

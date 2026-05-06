@@ -4,16 +4,16 @@ STooltip {
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
   position: relative;
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-radius: var(--intergalactic-popper-rounded, 6px);
-  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   box-sizing: border-box;
-  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
   padding: var(--intergalactic-spacing-3x, 12px);
 }
 
 STitle {
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
@@ -35,7 +35,7 @@ SDotCircle[color] {
 
 
 SFooter {
-  background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  background: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
   padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-3x, 12px);
   border-radius: 0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px);
   margin: var(--intergalactic-spacing-3x, 12px) calc(-1 * var(--intergalactic-spacing-3x, 12px)) calc(-1 * var(--intergalactic-spacing-3x, 12px));

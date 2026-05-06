@@ -15,7 +15,7 @@ SLinkTrigger {
   outline: 0;
   vertical-align: middle;
   cursor: pointer;
-  color: var(--intergalactic-text-link, #006dca);
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
   background: none;
   transition: color 0.15s ease-in-out;
   border: 0;
@@ -27,7 +27,7 @@ SLinkTrigger {
   &[active],
   &:hover,
   &:active {
-    color: var(--intergalactic-text-link-hover-active, #044792);
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
 
     & SText {
       border-color: currentColor;
@@ -53,13 +53,13 @@ SLinkTrigger[color] {
 }
 
 SLinkTrigger[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
 }
 
 SLinkTrigger[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
   z-index: 1;
 }
 

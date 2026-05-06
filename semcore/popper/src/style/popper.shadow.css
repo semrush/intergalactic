@@ -1,6 +1,6 @@
 SPopper {
   outline: none;
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
 SPopper[keyboardFocused]:focus:after {
@@ -8,7 +8,7 @@ SPopper[keyboardFocused]:focus:after {
   display: block;
   content: '';
   inset: 0;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
   pointer-events: none;
   border-radius: var(--intergalactic-popper-rounded, 6px);
 }

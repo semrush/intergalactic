@@ -21,11 +21,11 @@ SSkeleton {
 }
 
 SSkeletonSVG[theme='invert'] {
-  fill: var(--intergalactic-skeleton-bg, rgba(224, 225, 233, 0.8));
+  fill: var(--intergalactic-skeleton-bg, oklch(0.9 0.002 177));
 }
 
 SSkeletonSVG[theme='dark'] {
-  fill: var(--intergalactic-skeleton-bg-invert, rgba(255, 255, 255, 0.3));
+  fill: var(--intergalactic-skeleton-bg-invert, oklch(0.3 0.007 140));
 }
 
 SText {

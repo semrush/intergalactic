@@ -20,10 +20,10 @@ function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
-const lineColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('green-200'),
-  3: resolveColor('orange-400'),
+const lineColors: Record<string, string> = {
+  stack1: 'chart-palette-order-1',
+  stack2: 'chart-palette-order-2',
+  stack3: 'chart-palette-order-3',
 };
 
 const dataHints = makeDataHintsContainer();

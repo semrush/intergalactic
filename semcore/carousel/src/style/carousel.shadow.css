@@ -13,13 +13,13 @@ SContainer {
 SContentBox, SModalBox {
   position: relative;
   overflow: hidden;
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
   &:has(SItem[keyboardFocused]) {
     &:after {
       content: '';
       display: block;
       position: absolute;
-      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
       z-index: 1;
       width: calc(100% - 3px * 2);
       height: calc(100% - 3px * 2);
@@ -39,7 +39,7 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
   overflow: hidden;
   outline: none;
 }
@@ -63,7 +63,7 @@ SIndicators[keyboardFocused]:after {
   content: '';
   display: block;
   position: absolute;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
   z-index: 1;
   width: calc(100% - 3px * 2);
   height: calc(100% - 3px);
@@ -78,14 +78,14 @@ SIndicator {
   width: 12px;
   height: 12px;
   border-radius: var(--intergalactic-control-rounded, 6px);
-  background-color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  background-color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   object-fit: cover;
   transition: ease-in-out opacity 0.1s;
 }
 
 SIndicator:hover {
-  opacity: calc(2 * var(--intergalactic-disabled-opacity, 0.3));
+  opacity: calc(2 * var(--intergalactic-disabled-opacity, 0.4));
 }
 
 SIndicator[active] {
@@ -93,7 +93,7 @@ SIndicator[active] {
 }
 
 SIndicator[inverted] {
-  background-color: var(--intergalactic-icon-primary-invert, #ffffff);
+  background-color: var(--intergalactic-icon-primary-invert, oklch(0.998 0.003 173.3 / 0.808));
 }
 
 SPrev,
@@ -102,7 +102,7 @@ SNext {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 
   SPrevButton span:has(> svg:only-child), SNextButton span:has(> svg:only-child) {
     margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
@@ -117,7 +117,7 @@ SPrevButton, SNextButton {
       content: '';
       display: block;
       position: absolute;
-      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+      box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
       z-index: 1;
       width: calc(100% - 3px * 2);
       height: calc(100% - 3px * 2);
@@ -137,7 +137,7 @@ SNext {
 
 SPrev[disabled],
 SNext[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
 }

@@ -8,15 +8,15 @@ SView {
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
   box-sizing: border-box;
-  color: var(--intergalactic-text-primary-invert, #ffffff);
+  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   gap: var(--intergalactic-spacing-2x, 8px);
 
   &[type='info'] {
-    background: var(--intergalactic-bg-primary-invert, #191b23);
+    background: var(--intergalactic-bg-primary-invert, oklch(0.23 0.01 140));
   }
 
   &[type='warning'] {
-    background: var(--intergalactic-bg-primary-critical, #ff4953);
+    background: var(--intergalactic-bg-primary-critical, oklch(0.64 0.226 24.5));
   }
 }
 
@@ -71,7 +71,7 @@ SNoticeBubble[disablePortal] {
 }
 
 SMessage a {
-  color: var(--intergalactic-text-link-invert, #8ecdff);
+  color: var(--intergalactic-text-link-invert, oklch(0.75 0.125 265.3));
 }
 
 SNoticeAriaLiveWrapper {

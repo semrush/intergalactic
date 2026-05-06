@@ -5,9 +5,9 @@ SFeaturePopover {
   padding-left: var(--intergalactic-spacing-4x, 16px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-highlight, #fce081);
-  color: var(--intergalactic-text-primary, #191b23);
-  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
+  background-color: var(--intergalactic-bg-primary-highlight, oklch(0.88 0.078 303));
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
   position: relative;
 }
 
@@ -70,7 +70,7 @@ SSpot {
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
-    background-color: var(--intergalactic-feature-popover-dot-outer-border, #fce081);
+    background-color: var(--intergalactic-feature-popover-dot-outer-border, oklch(0.88 0.078 303));
     border-radius: 50%;
     width: 12px;
     height: 12px;
@@ -84,7 +84,7 @@ SSpot {
     border-radius: 50%;
     width: 12px;
     height: 12px;
-    background-color: var(--intergalactic-bg-primary-highlight, #fce081);
+    background-color: var(--intergalactic-bg-primary-highlight, oklch(0.88 0.078 303));
   }
 }
 

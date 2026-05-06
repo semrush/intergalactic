@@ -1,15 +1,15 @@
 SFilterTrigger[selected] {
-  border-color: var(--intergalactic-border-info-active, #006dca);
-  background-color: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
-  color: var(--intergalactic-text-primary, #191b23);
+  border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+  background-color: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039));
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   &:hover {
-    background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.525 0.265 263 / 0.077));
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-control-secondary-info-active, rgba(0, 143, 248, 0.3));
+    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.524 0.266 263.1 / 0.116));
   }
 }
 
@@ -22,9 +22,9 @@ SWrapper {
 }
 
 SWrapper[keyboardFocused]:focus {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
 }
 
 SCounter {
-  background-color: var(--intergalactic-bg-primary-info, #008ff8);
+  background-color: var(--intergalactic-bg-primary-info, oklch(0.64 0.152 276.7));
 }

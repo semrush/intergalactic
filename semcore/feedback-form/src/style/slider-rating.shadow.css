@@ -10,7 +10,7 @@ SSliderRating SStar:hover {
 
 SSliderRating[keyboardFocused] {
   outline: none;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
 }
 
 SSliderRating[readonly] SStar:hover {
@@ -24,10 +24,10 @@ SStar[filled]:active {
 }
 
 SStar path {
-  fill: var(--intergalactic-slider-rating-normal, #a9abb6);
+  fill: var(--intergalactic-slider-rating-normal, oklch(0.7 0.003 162.2));
 }
 
 SStar[filled] path {
   stroke-width: 0;
-  fill: var(--intergalactic-slider-rating-hover-active, #fdc23c);
+  fill: var(--intergalactic-slider-rating-hover-active, oklch(0.66 0.212 300.1));
 }

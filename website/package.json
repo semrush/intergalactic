@@ -72,6 +72,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@babel/preset-env": "7.19.1",
     "@babel/preset-react": "7.12.1",
+    "@semcore/theme": "workspace:*",
     "@types/classnames": "2.2.6",
     "@types/express": "4.17.1",
     "@types/markdown-it": "^13.0.1",

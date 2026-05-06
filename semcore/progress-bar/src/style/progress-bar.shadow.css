@@ -2,20 +2,20 @@ SProgressBar {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.96 0.001 180));
 }
 
 SProgressBar[theme='dark'] {
-  background-color: var(--intergalactic-progress-bar-bg-invert, rgba(255, 255, 255, 0.2));
+  background-color: var(--intergalactic-progress-bar-bg-invert, oklch(0.45 0.004 143.7));
 }
 
 SValue {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--intergalactic-progress-bar-value-bg, #000000);
+  background-color: var(--intergalactic-progress-bar-value-bg, oklch(1 0 0));
   background-image: var(--intergalactic-progress-bar-value-gradient,
-  linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%));
+  linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 0%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 75%, oklch(0.74 0.17 303) 0%));
   overflow: hidden;
 
   animation-name: loading;
@@ -57,7 +57,7 @@ SValue[size='l'] {
 
 
 SProgressBar[theme='invert'] {
-  background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.96 0.001 180));
 }
 
 @keyframes loading {
@@ -71,9 +71,9 @@ SProgressBar[theme='invert'] {
 }
 
 SProgressBar[animation] {
-  background-color: var(--intergalactic-progress-bar-value-bg, #000000);
+  background-color: var(--intergalactic-progress-bar-value-bg, oklch(1 0 0));
   background-image: var(--intergalactic-progress-bar-pattern-gradient,
-  linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%));
+  linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.96 0.001 180) 0%, oklch(0.96 0.001 180) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.96 0.001 180) 0%));
   animation-name: loading;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
