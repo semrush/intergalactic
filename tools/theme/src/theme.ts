@@ -395,7 +395,7 @@ export const theme: Theme = {
         description: 'Highlighting the search results.',
       },
       bg_highlight_focus: {
-        value: focus.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        value: focus.at(L_BG_SECONDARY_ACTIVE),
         description: 'Focusing values in the input.',
       },
       text_primary_DEFAULT: {
@@ -475,11 +475,11 @@ export const theme: Theme = {
         description: 'Secondary text. Use with font-size ≥20px.',
       },
       text_large_info_DEFAULT: {
-        value: '{semanticTokens.colors.text.link}',
+        value: info.at(L_TEXT_SECONDARY),
         description: 'Link text with font-size ≥20px.',
       },
       text_large_info_hover_active: {
-        value: '{semanticTokens.colors.text.link.hover.active}',
+        value: info.at(L_TEXT_SECONDARY_HOVER),
         description: 'Hover and active states of the link text with font-size ≥20px.',
       },
       text_large_success_DEFAULT: {
@@ -977,11 +977,11 @@ export const theme: Theme = {
         description: 'Background of the default cell in the Table.',
       },
       table_td_cell_hover: {
-        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
+        value: neutral.at(L_BG_PRIMARY_HOVER),
         description: 'Background of the default hovered cell in the Table.',
       },
       table_td_cell_active: {
-        value: neutral.opaqueAt(L_BG_PRIMARY_ACTIVE),
+        value: neutral.at(L_BG_PRIMARY_ACTIVE),
         description: 'Background of the default active cell in the Table.',
       },
       table_td_cell_unread: {
