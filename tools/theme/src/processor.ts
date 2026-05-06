@@ -77,7 +77,13 @@ for (const theme of themes) {
 export async function processStyles() {
   const usages: Record<string, string[]> = {};
 
-  const values = await import('../lib/light.ts').then((res) => res.default);
+  const commonValues = await import('../lib/light.ts').then((res) => res.default);
+  const highlightValues = await import('../lib/highlights-light.ts').then((res) => res.default);
+
+  const values = {
+    ...commonValues,
+    ...highlightValues,
+  };
 
   const projectCssPaths = (
     await glob(`./*/src/**/*.shadow.css`, {

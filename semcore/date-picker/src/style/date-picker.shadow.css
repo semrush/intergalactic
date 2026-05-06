@@ -137,7 +137,7 @@ SInputMask[noHumanizedDate] SMask {
 }
 
 SDateRange SInputMask:focus-within SMask {
-  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.94 0.023 278.4));
+  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.405 0.257 264.2 / 0.093));
 }
 
 SRangeSep[fulfilled],
