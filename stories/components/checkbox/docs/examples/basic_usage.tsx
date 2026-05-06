@@ -2,7 +2,7 @@ import Checkbox from '@semcore/ui/checkbox';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const fieldsetStyle = { border: 'none' };
+const fieldsetStyle = { margin: 0, padding: 0, border: 'none' };
 const ulStyle = { margin: 0, padding: 0 };
 const liStyle = { listStyle: 'none', margin: 0 };
 

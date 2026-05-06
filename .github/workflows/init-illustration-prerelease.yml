@@ -38,9 +38,11 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10.11.1
+          version: 10.32.1
           run_install: false
       - uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 24
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |

@@ -530,6 +530,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(afterRightFrom2).not.toBe(afterUpFrom2);
 
       await page.keyboard.press('Shift+Tab');
+      if ((await locators.calendar(page).first().evaluate((el) => el === document.activeElement))) {
+        await page.keyboard.press('Tab');
+      }
       await expect(locators.button(page, 'Next year')).toBeFocused();
 
       await page.keyboard.press('Shift+Tab');

@@ -77,7 +77,10 @@ export class Changelog {
       }
 
       return collectedSet.has(element);
-    }).concat(...semcoreBaseComponents);
+    });
+    if (collectedSet.has('base-components')) {
+      allowed.push(...semcoreBaseComponents);
+    }
     const allAllowedScopes = new Set(allowed);
 
     let traversingComponent: string | null = null;

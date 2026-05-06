@@ -1,11 +1,12 @@
 import Settings from '@semcore/icon/Settings/m';
-import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import { DatePicker, DateRangeComparator, DateRangePicker } from '@semcore/ui/date-picker';
 import DnD from '@semcore/ui/drag-and-drop';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
+import TimePicker from '@semcore/ui/time-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -41,12 +42,10 @@ export function BeforeTablesControls(props: Props) {
     }
   }, [selectedColumns, columns]);
 
-  // featurepopover
   const [fpVisible, setFpVisible] = React.useState(true);
 
   return (
     <Flex gap={3} my={4}>
-
       <DatePicker>
         <DatePicker.Trigger />
         <DatePicker.Popper />
@@ -59,12 +58,18 @@ export function BeforeTablesControls(props: Props) {
 
       <DateRangeComparator />
 
+      <TimePicker is12Hour id='primary-table-filters-time'>
+        <TimePicker.Hours />
+        <TimePicker.Separator />
+        <TimePicker.Minutes />
+        <TimePicker.Format />
+      </TimePicker>
+
       <FeaturePopover
         visible={fpVisible}
         onVisibleChange={setFpVisible}
         disablePortal
         placement='bottom-end'
-        theme='neutral'
       >
         <FeaturePopover.Trigger>
           <DropdownMenu
@@ -90,7 +95,7 @@ export function BeforeTablesControls(props: Props) {
               </Flex>
               <DropdownMenu.List hMax={500}>
                 <DnD onDnD={handleDnD} aria-label='drag-and-drop container'>
-                  {columns.map((column, index) => (
+                  {columns.map((column) => (
                     <DropdownMenu.Item
                       tag={DnD.Draggable}
                       isCustomFocus={true}
@@ -120,7 +125,8 @@ export function BeforeTablesControls(props: Props) {
         </FeaturePopover.Trigger>
         <FeaturePopover.Popper
           closeIcon
-          wMax={400}
+          autoFocus={false}
+          wMax={320}
           aria-label='New feature: Export'
         >
           <FPContent />
@@ -132,16 +138,6 @@ export function BeforeTablesControls(props: Props) {
 
 const FPContent = () => (
   <Flex alignItems='start'>
-    <Box
-      w={40}
-      h={40}
-      mr={4}
-      flex='0 0 auto'
-      style={{
-        borderRadius: '50%',
-        background: 'orange',
-      }}
-    />
     <div>
       <Text size={300} bold tag='h3' mb={1} mt={0}>
         Export your data
@@ -157,18 +153,11 @@ const FPContent = () => (
           Next
         </Button>
         <Button
-          theme='invert'
+          theme='muted'
           use='tertiary'
         >
           Remind me later
         </Button>
-
-        <Text size={200} aria-live='polite' ml='auto'>
-          Step 1
-          <span aria-hidden='true'>/</span>
-          <ScreenReaderOnly>of</ScreenReaderOnly>
-          5
-        </Text>
       </Flex>
     </div>
   </Flex>
