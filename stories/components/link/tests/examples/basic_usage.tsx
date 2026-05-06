@@ -3,7 +3,7 @@ import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
 import Counter, { type CounterProps } from '@semcore/ui/counter';
 import Link, { type LinkProps } from '@semcore/ui/link';
-import Spin, { type SpinSize } from '@semcore/ui/spin';
+import Spin, { type NSSpin } from '@semcore/ui/spin';
 import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -50,7 +50,7 @@ const Demo = (props: BasicLinkProps) => {
   const numSize = Number(size);
   const IconAddon = numSize < 600 ? MathPlusAltM : MathPlusAltL;
 
-  let spinSize: SpinSize = 'm';
+  let spinSize: NSSpin.Size = 'm';
   if (numSize <= 200) {
     spinSize = 'xs';
   } else if (numSize <= 500) {
