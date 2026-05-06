@@ -2616,6 +2616,9 @@ importers:
       '@mdit-vue/shared':
         specifier: 1.0.0
         version: 1.0.0
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../tools/theme
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
@@ -19401,7 +19404,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.32.0)(msw@2.12.14(@types/node@25.5.2)(typescript@5.9.3))(sass@1.98.0)(sugarss@5.0.1(postcss@8.5.8))(terser@5.46.1)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.32.0)(msw@2.12.14(@types/node@25.5.2)(typescript@6.0.2))(sass@1.98.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.46.1)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:
