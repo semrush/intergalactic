@@ -3,7 +3,7 @@ SBox[inAfterOutline='false']:focus-visible {
   @mixin focus-outline-mixin;
 
   &[invertOutline] {
-    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));
   }
 }
 
@@ -22,7 +22,7 @@ SBox[inAfterOutline='true']:focus-visible {
     @mixin focus-outline-mixin;
   }
   &[invertOutline]::after {
-    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));
   }
 }
 

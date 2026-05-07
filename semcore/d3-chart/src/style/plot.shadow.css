@@ -19,5 +19,5 @@ foreignObject[data-aria-only] {
 
 SPlot[keyboardFocused] {
   @mixin focus-outline-mixin;
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
 }

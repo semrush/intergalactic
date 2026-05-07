@@ -1,9 +1,6 @@
-import { PortalProvider } from '@semcore/portal';
+import { PortalProvider } from '@semcore/ui/base-components';
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
-
-import '@semcore/core/lib/theme/themes/default.css';
-import '@semcore/core/lib/theme/themes/highlights-light.css';
 
 const preview: Preview = {
   parameters: {
@@ -29,6 +26,18 @@ const preview: Preview = {
   decorators: [
     (Story, params) => {
       const rootRef = React.useRef<HTMLDivElement>(null);
+
+      if (params.parameters.layout === 'fullscreen') {
+        return (
+          <>
+            <PortalProvider value={rootRef}>
+              <div ref={rootRef}>
+                <Story />
+              </div>
+            </PortalProvider>
+          </>
+        );
+      }
 
       return (
         <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>

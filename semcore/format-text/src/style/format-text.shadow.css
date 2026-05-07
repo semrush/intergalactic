@@ -1,16 +1,16 @@
 SFormatText {
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   & abbr {
-    color: var(--intergalactic-text-secondary, #6c6e79);
-    text-decoration: underline dashed var(--intergalactic-text-hint, #6c6e79);
+    color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    text-decoration: underline dashed var(--intergalactic-text-hint, oklch(0.088 0.026 147.7 / 0.583));
 
     &:active,
     &:hover,
     &:focus {
       outline: none;
-      color: var(--intergalactic-text-hint-hover-active, #484a54);
-      text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, #484a54);
+      color: var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
+      text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
     }
   }
 
@@ -19,7 +19,7 @@ SFormatText {
     background: none;
     outline: none;
     text-decoration: none;
-    color: var(--intergalactic-text-link, #006dca);
+    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-color: transparent;
@@ -28,8 +28,8 @@ SFormatText {
     &:hover {
       outline: none;
       text-decoration: none;
-      color: var(--intergalactic-text-link-hover-active, #044792);
-      border-color: var(--intergalactic-text-link-hover-active, #044792);
+      color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
+      border-color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
     }
 
     &:focus {
@@ -55,7 +55,7 @@ SFormatText {
       display: inline-block;
       position: absolute;
       left: 0;
-      color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+      color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
       font-family: Georgia, Times, 'Times New Roman', serif;
     }
 
@@ -63,7 +63,7 @@ SFormatText {
       display: block;
       font-style: normal;
       margin-top: var(--intergalactic-spacing-4x, 16px);
-      color: var(--intergalactic-text-secondary, #6c6e79);
+      color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
       font-size: var(--intergalactic-fs-300, 16px);
       line-height: var(--intergalactic-lh-300, 150%);
     }
@@ -80,7 +80,7 @@ SFormatText {
       &:before {
         position: absolute;
         left: 0;
-        color: var(--intergalactic-text-secondary, #6c6e79);
+        color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
       }
     }
 
@@ -100,7 +100,7 @@ SFormatText {
 
   & ul:not(ul[start], ul[reversed], ul[type]) li:before {
     content: '';
-    background-color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+    background-color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
   }
 
   & h1 {
@@ -176,7 +176,7 @@ SFormatText {
   & h5,
   & h6 {
     & small {
-      color: var(--intergalactic-text-secondary, #6c6e79);
+      color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
       font-weight: 300;
       font-size: 100%;
     }

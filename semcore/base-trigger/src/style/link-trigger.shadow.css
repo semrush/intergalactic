@@ -16,7 +16,7 @@ SLinkTrigger {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
-  color: var(--intergalactic-text-link, #006dca);
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
   background: none;
   transition: color 0.15s ease-in-out;
   border: 0;
@@ -24,7 +24,7 @@ SLinkTrigger {
   &[active],
   &:hover,
   &:active {
-    color: var(--intergalactic-text-link-hover-active, #044792);
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
 
     & SText {
       border-color: currentColor;
@@ -50,7 +50,7 @@ SLinkTrigger[color] {
 }
 
 SLinkTrigger[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
 }

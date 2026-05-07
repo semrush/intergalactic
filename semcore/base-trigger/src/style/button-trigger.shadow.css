@@ -4,5 +4,5 @@ SButtonAddon {
 }
 
 SButtonTriggerSpin {
-  fill: var(--intergalactic-icon-primary-neutral, #6c6e79);
+  fill: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }

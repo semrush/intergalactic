@@ -3,15 +3,15 @@ SHighlightedCheckbox:not([state="invalid"]) {
     border: 1px solid transparent;
     border-radius: var(--intergalactic-addon-rounded, 4px);
     background: linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
   }
 
   input[data-ui-name="CheckboxFH.Value"]:checked + [data-ui-name="Value.CheckMark"] {
     border-color: transparent;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) padding-box,
-      var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) padding-box,
+      var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
   }
 
   [data-ui-name="Value.CheckMark"]::before {
@@ -25,7 +25,7 @@ SHighlightedCheckbox:not([state="invalid"]) {
     border-radius: calc(var(--intergalactic-addon-rounded, 4px) + 3px);
     border-color: transparent;
     pointer-events: none;
-    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight, linear-gradient(90deg, #c695ff, #2bb3ff)) border-box;
+    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
 
@@ -49,6 +49,6 @@ SHighlightedCheckbox:not([state="invalid"]) {
 
   input[data-ui-name="CheckboxFH.Value"]:checked:focus-visible+[data-ui-name="Value.CheckMark"]::before {
     border-color: transparent;
-    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg, #ab6cfe, #008ff8)) border-box;
+    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
   }
 }
