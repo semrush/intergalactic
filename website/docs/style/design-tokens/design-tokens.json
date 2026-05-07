@@ -277,7 +277,7 @@
   },
   {
     "name": "--intergalactic-bg-highlight-focus",
-    "value": "oklch(0.939 0.032 268)",
+    "value": "oklch(0.524 0.266 263.1 / 0.116)",
     "description": "Focusing values in the input.",
     "components": [
       "date-picker",
