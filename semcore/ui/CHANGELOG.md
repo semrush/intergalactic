@@ -1,3 +1,9 @@
+## [16.16.0] - 2026-05-07
+
+### @semcore/core
+
+- **Added** New brand theme.
+
 ## [16.15.0] - 2026-04-01
 
 ### @semcore/feedback-form

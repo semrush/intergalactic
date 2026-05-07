@@ -1,7 +1,7 @@
 {
   "name": "@semcore/product-head",
   "description": "Semrush ProductHead Component",
-  "version": "16.0.11",
+  "version": "16.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -20,7 +20,7 @@
     "@semcore/flex-box": "16.0.11"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.0.0"
+    "@semcore/base-components": "^16.6.0"
   },
   "repository": {
     "type": "git",
