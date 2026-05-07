@@ -1,7 +1,7 @@
 {
   "name": "@semcore/theme",
   "description": "Semrush Theme package",
-  "version": "0.0.0-prerelease.5",
+  "version": "1.0.0",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "type": "module",
@@ -15,6 +15,11 @@
     "./highlights-light.css": "./lib/highlights-light.css",
     "./highlights-dark.css": "./lib/highlights-dark.css",
     "./light": {
+      "types": "./lib/light.ts",
+      "import": "./lib/light.ts",
+      "require": "./lib/light.ts"
+    },
+    "./lib/light": {
       "types": "./lib/light.ts",
       "import": "./lib/light.ts",
       "require": "./lib/light.ts"
