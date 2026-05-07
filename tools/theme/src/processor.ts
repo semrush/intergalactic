@@ -86,7 +86,7 @@ export async function processStyles() {
   };
 
   const projectCssPaths = (
-    await glob(`./*/src/**/*.shadow.css`, {
+    await glob(['./*/src/**/*.shadow.css', './*/src/**/*mixin.css'], {
       ignore: ['node_modules', 'lib'],
       cwd: semcorePath,
     })
