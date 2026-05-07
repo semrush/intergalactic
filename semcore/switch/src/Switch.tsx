@@ -1,4 +1,5 @@
 import { NeighborLocation, Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -7,24 +8,30 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
 import style from './style/switch.shadow.css';
+import type { NSSwitch } from './Switch.type';
 
-function isCustomTheme(theme) {
+function isCustomTheme(theme?: NSSwitch.Theme) {
+  if (!theme) return true;
+
   return !['info', 'success'].includes(theme);
 }
 
-class Switch extends Component {
+class SwitchRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSwitch.Component>,
+  typeof SwitchRoot.enhance
+> {
   static displayName = 'Switch';
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement()] as const;
   static defaultProps = {
     theme: 'info',
     size: 'm',
   };
 
-  inputRef = React.createRef();
+  inputRef = React.createRef<HTMLInputElement>();
   state = { active: false };
 
-  constructor(props) {
+  constructor(props: NSSwitch.Props) {
     super(props);
     this.forceUpdate = this.forceUpdate.bind(this);
   }
@@ -33,7 +40,7 @@ class Switch extends Component {
     this.setState({ active: false });
   };
 
-  handleMouseDown = (event) => {
+  handleMouseDown = (event: React.MouseEvent<HTMLLabelElement>) => {
     if (event?.button !== 0) return;
     this.setState({ active: true });
   };
@@ -79,19 +86,23 @@ class Switch extends Component {
   }
 }
 
-class Value extends Component {
-  static enhance = [resolveColorEnhance()];
+class Value extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSSwitch.Value.Component, typeof SwitchRoot, 'Value'>,
+  typeof Value.enhance,
+  NSSwitch.Value.Handlers
+> {
+  static enhance = [resolveColorEnhance()] as const;
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
 
-  timer = null;
+  timer: ReturnType<typeof setTimeout> | undefined = undefined;
 
-  uncontrolledProps() {
+  uncontrolledProps(): NSSwitch.Value.Handlers {
     return {
       checked: [
-        (e) => e.target.checked,
+        (e: React.ChangeEvent<HTMLInputElement>) => e.target.checked,
         () => {
           // TODO: bad crutch for updating the DOM node
           clearTimeout(this.timer);
@@ -107,7 +118,7 @@ class Value extends Component {
     this.asProps.$rootForceUpdate();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: typeof this.props) {
     const { checked } = prevProps;
     // TODO: bad crutch for updating the DOM node
     if (checked !== undefined && checked !== this.asProps.checked) {
@@ -119,7 +130,7 @@ class Value extends Component {
     clearTimeout(this.timer);
   }
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       this.handlers.checked(!this.asProps.checked, event);
@@ -127,7 +138,7 @@ class Value extends Component {
   };
 
   // because clicking on label causes a click on input
-  handlerInputClick = (e) => e.stopPropagation();
+  handlerInputClick = (e: React.MouseEvent<HTMLInputElement>) => e.stopPropagation();
 
   render() {
     const SToggle = Box;
@@ -155,6 +166,7 @@ class Value extends Component {
         {(neighborLocation) =>
           sstyled(styles)(
             <SToggle
+              // @ts-expect-error
               neighborLocation={neighborLocation}
               checked={inputProps.checked}
               active={active}
@@ -172,7 +184,10 @@ class Value extends Component {
                 onClick={callAllEventHandlers(this.handlerInputClick, inputProps.click)}
                 onKeyDown={callAllEventHandlers(this.handleKeyDown, inputProps.onKeyDown)}
               />
-              <SSlider checked={inputProps.checked}>
+              <SSlider
+                // @ts-expect-error
+                checked={inputProps.checked}
+              >
                 <Children />
               </SSlider>
             </SToggle>,
@@ -182,7 +197,9 @@ class Value extends Component {
   }
 }
 
-function Addon(props) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSwitch.Addon.Component, typeof SwitchRoot, 'Addon'>,
+) {
   const SAddon = Root;
   const { styles, neighborLocation, uid } = props;
 
@@ -202,7 +219,10 @@ function Addon(props) {
 }
 
 export { inputProps };
-export default createComponent(Switch, {
+
+const Switch = createComponent(SwitchRoot, {
   Value,
   Addon,
-});
+}) as NSSwitch.Component;
+
+export default Switch;

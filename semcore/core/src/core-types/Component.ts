@@ -45,12 +45,15 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
+type UncontrolledPropValueSetterFunction<V> = (event?: any) => void | boolean | V;
+type UncontrolledPropValueChainHandler<V> = (value: V, event?: any) => void | boolean | V;
+
 type UncontrolledPropValue<V> =
   | V
   | null
-  | ((value: V, e?: any) => void | boolean | V)
-  | ((value: V, e?: any) => void | boolean | V)[]
-  | ((e?: any) => void | boolean | V);
+  | UncontrolledPropValueSetterFunction<V>
+  | Array<UncontrolledPropValueChainHandler<V>>
+  | [UncontrolledPropValueSetterFunction<V> | null, ...UncontrolledPropValueChainHandler<V>[]];
 
 export abstract class Component<
   Props = {},
@@ -68,7 +71,11 @@ export abstract class Component<
     [key in keyof Uncontrolled]: key extends keyof Props
       ? Uncontrolled[key] extends (null | Props[key])
         ? (value: Props[key], e?: any) => void
-        : Uncontrolled[key] extends Array<any> ? Uncontrolled[key][0] : Uncontrolled[key]
+        : Uncontrolled[key] extends [UncontrolledPropValueSetterFunction<any> | null, ...UncontrolledPropValueChainHandler<any>[]]
+          ? Uncontrolled[key][1]
+          : Uncontrolled[key] extends Array<UncontrolledPropValueChainHandler<any>>
+            ? Uncontrolled[key][0]
+            : Uncontrolled[key]
       : never
   }> {
     // @ts-ignore. The body will be generated in factory

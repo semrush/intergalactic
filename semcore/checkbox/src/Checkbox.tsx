@@ -113,7 +113,7 @@ class CheckboxRoot extends Component<
 class ValueRoot extends Component<
   Intergalactic.InternalTypings.InferChildComponentProps<NSCheckbox.Value.Component, typeof CheckboxRoot, 'Value'>,
   typeof ValueRoot.enhance,
-  { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
+  NSCheckbox.Value.Handlers
 > {
   static defaultProps = () => {
     return {
