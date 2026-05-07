@@ -21,6 +21,18 @@ export const locators = {
   valueNumber: (page: Page) => page.locator('[data-ui-name="InlineInput.NumberValue"]'),
 
 };
+
+const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate((name) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = `var(${name})`;
+    document.body.appendChild(probe);
+    const color = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, varName);
+};
+
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -92,6 +104,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@input-number'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
+      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
 
       const flex = await page.locator('[data-testid="no-controls"]');
       const value = flex.locator('[data-ui-name="InlineInput.Value"]');
@@ -103,7 +116,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(input.first()).toHaveCSS('align-items', 'center');
       await expect(input.first()).toHaveCSS('vertical-align', 'middle');
       await expect(input.first()).toHaveCSS('padding', '1px');
-      await expect(input.first()).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+      await expect(input.first()).toHaveCSS('background-color', bgPrimary);
     });
   });
 
