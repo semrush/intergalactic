@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles, getColumnWidth } from './utils';
+import { locators, checkStyles, getColumnWidth, getCssVarColor } from './utils';
 
 /* =====================================================
 @visual
@@ -42,13 +42,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     await test.step('Verify body cell styles', async () => {
+      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
       await firstCell.first().hover();
       if (browserName !== 'firefox')
         await checkStyles(firstCell, {
           'font-size': '14px',
           'border-bottom': '1px solid rgb(224, 225, 233)',
           'color': 'rgb(25, 27, 35)',
-          'background-color': 'rgb(240, 240, 244)',
+          'background-color': cellHoverBg,
         });
 
       await page.keyboard.press('Tab');
@@ -198,13 +199,14 @@ test.describe(`${TAG.VISUAL}`, () => {
       'padding': '8px',
     });
 
+    const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
     await firstCell.hover();
     if (browserName !== 'firefox')
-      await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+      await expect(firstCell).toHaveCSS('background-color', cellHoverBg);
 
     await page.keyboard.press('Tab');
     if (browserName !== 'firefox')
-      await expect(firstCell).toHaveCSS('background-color', 'rgb(240, 240, 244)');
+      await expect(firstCell).toHaveCSS('background-color', cellHoverBg);
     await expect(page).toHaveScreenshot();
   });
 });

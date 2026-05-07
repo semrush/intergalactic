@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles, stylesActiveHovered, stylesNotActive } from './utils';
+import { locators, checkStyles, stylesActiveHovered, stylesNotActive, getCssVarColor } from './utils';
 
 /* =====================================================
 @visual
@@ -44,13 +44,15 @@ test.describe(`${TAG.VISUAL}`, () => {
         });
       });
 
+      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
+
       await test.step('Verify styles of the cell with accordion', async () => {
         await locators.toggle(page).first().click();
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
         await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
         if (browserName !== 'firefox') {
           await checkStyles(cells, {
-            'background-color': 'rgb(240, 240, 244)',
+            'background-color': cellHoverBg,
           });
         }
       });
@@ -75,7 +77,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (browserName !== 'firefox')
           for (let i = 0; i < cellCount3 - 1; i++) {
             const cell = cells3.nth(i);
-            await checkStyles(cell, { 'background-color': 'rgb(240, 240, 244)' });
+            await checkStyles(cell, { 'background-color': cellHoverBg });
           }
       });
     });

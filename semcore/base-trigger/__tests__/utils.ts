@@ -29,6 +29,37 @@ export const locators = {
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
 
+// Hint can stay mounted while fading out, so wait for a fully opaque instance.
+export const waitForHint = async (page: Page): Promise<void> => {
+  await page.waitForFunction(() => {
+    return Array.from(document.querySelectorAll('[data-ui-name="Hint"]')).some(
+      (el) => {
+        const rect = el.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0 && getComputedStyle(el).opacity === '1';
+      },
+    );
+  });
+};
+
+export const expectVisibleHintsCount = async (page: Page, count: number): Promise<void> => {
+  await expect.poll(async () => {
+    return locators.hint(page).evaluateAll((hints) => {
+      return hints.filter((hint) => getComputedStyle(hint).opacity === '1').length;
+    });
+  }).toBe(count);
+};
+
+export const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate((name) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = `var(${name})`;
+    document.body.appendChild(probe);
+    const color = window.getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, varName);
+};
+
 export async function checkBackgroundColor(page: any, selectorOrLocator: string | Locator, expectedColor: string) {
   const element = typeof selectorOrLocator === 'string'
     ? page.locator(selectorOrLocator)

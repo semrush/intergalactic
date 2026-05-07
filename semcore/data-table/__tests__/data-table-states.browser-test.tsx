@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles } from './utils';
+import { locators, checkStyles, getCssVarColor } from './utils';
 
 /* =====================================================
 @visual
@@ -454,11 +454,13 @@ test.describe(`${TAG.VISUAL}`, () => {
         consoleErrors.push(error.message);
       });
 
+      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
+
       await test.step('Verify Color when child cell hovered', async () => {
         await locators.getCell(page, 3, 1).hover();
 
-        await checkStyles(locators.getCell(page, 3, 1), { 'background-color': 'rgb(240, 240, 244)' });
-        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(240, 240, 244)' });
+        await checkStyles(locators.getCell(page, 3, 1), { 'background-color': cellHoverBg });
+        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellHoverBg });
         await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(255, 255, 255)' });
       });
 
@@ -466,7 +468,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.getCell(page, 2, 2).hover();
 
         for (let row = 2; row <= 5; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellHoverBg });
         }
       });
 
@@ -610,20 +612,22 @@ test.describe(`${TAG.VISUAL}`, () => {
         consoleErrors.push(error.message);
       });
 
+      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
+
       await test.step('Verify color when child cell hovered', async () => {
         await locators.getCell(page, 3, 3).hover();
 
-        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(240, 240, 244)' });
-        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(240, 240, 244)' });
+        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellHoverBg });
+        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellHoverBg });
         await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(255, 255, 255)' });
-        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(240, 240, 244)' });
+        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellHoverBg });
       });
 
       await test.step('Verify color when parent merged cell hovered', async () => {
         await locators.getCell(page, 2, 2).hover();
 
         for (let row = 2; row <= 3; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellHoverBg });
         }
       });
 

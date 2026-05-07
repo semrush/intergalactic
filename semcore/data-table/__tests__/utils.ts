@@ -53,6 +53,17 @@ export const stylesNotActive = [
   'rgb(255, 240, 247)', // danger
 ];
 
+export const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate((name) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = `var(${name})`;
+    document.body.appendChild(probe);
+    const color = window.getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, varName);
+};
+
 export const checkStyles = async (
   elements: any,
   styles: Record<string, string>,

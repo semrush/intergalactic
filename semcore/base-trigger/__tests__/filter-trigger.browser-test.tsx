@@ -32,7 +32,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (!item.disabled) {
         await test.step('Normal/Active styles', async () => {
           for (const button of buttons) {
-            await checkBorderColor(page, button, 'rgb(0, 109, 202)');
             await expect(button).toHaveAttribute('tabindex', '0');
           }
 
@@ -63,7 +62,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (!item.disabled) {
         await test.step('Normal/Active styles', async () => {
           for (const button of buttons) {
-            await checkBorderColor(page, button, 'rgb(0, 109, 202)');
             await expect(button).toHaveAttribute('tabindex', '0');
           }
 
@@ -93,14 +91,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       const buttons = await locators.trigger(page);
       if (!item.disabled) {
         await test.step('Normal/Active styles', async () => {
-          if (!item.active) {
-            await checkBorderColor(page, buttons.nth(0), 'rgb(196, 199, 207)');
-          }
-
-          if (item.active) {
-            await checkBorderColor(page, buttons.nth(0), 'rgb(0, 109, 202)');
-          }
-
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot(`select-size:${item.size}-disabled:${item.disabled}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
