@@ -1,5 +1,8 @@
 SHighlightedCheckbox:not([state="invalid"]) {
   [data-ui-name="Value.CheckMark"] {
+    position: relative;
+    transform: translate(0);
+
     border: 1px solid transparent;
     border-radius: var(--intergalactic-addon-rounded, 4px);
     background: linear-gradient(white, white) padding-box,
