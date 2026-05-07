@@ -1,5 +1,5 @@
 import { expect } from '@semcore/testing-utils/playwright';
-import type { Page, Locator } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 
 export const locators = {
   toggle: (page: Page) => page.getByRole('row').getByLabel('Show details'),
@@ -37,32 +37,68 @@ export async function getColumnWidth(page: any, colIndex: any) {
   return box ? box.width : 0;
 }
 
-export const stylesActiveHovered = [
-  'rgb(158, 242, 201)', // success
-  'rgb(196, 229, 254)', // info
-  'rgb(230, 231, 237)', // muted
-  'rgb(255, 220, 162)', // warning
-  'rgb(255, 215, 223)', // danger
+const stylesActiveHoveredTokens = [
+  '--intergalactic-table-td-cell-new-hover', // success
+  '--intergalactic-table-td-cell-selected-hover', // info
+  '--intergalactic-table-td-cell-active', // muted
+  '--intergalactic-table-td-cell-warning-hover', // warning
+  '--intergalactic-table-td-cell-critical-hover', // danger
 ];
 
-export const stylesNotActive = [
-  'rgb(219, 254, 232)', // success
-  'rgb(233, 247, 255)', // info
-  'rgb(244, 245, 249)', // muted
-  'rgb(255, 243, 217)', // warning
-  'rgb(255, 240, 247)', // danger
+const stylesNotActiveTokens = [
+  '--intergalactic-table-td-cell-new', // success
+  '--intergalactic-table-td-cell-selected', // info
+  '--intergalactic-table-td-cell-unread', // muted
+  '--intergalactic-table-td-cell-warning', // warning
+  '--intergalactic-table-td-cell-critical', // danger
 ];
 
-export const getCssVarColor = async (page: Page, varName: string) => {
-  return page.evaluate((name) => {
+const stylesExpandedTokens = [
+  '--intergalactic-table-td-cell-new-active', // success
+  '--intergalactic-table-td-cell-selected-active', // info
+  '--intergalactic-table-td-cell-active', // muted
+  '--intergalactic-table-td-cell-warning-active', // warning
+  '--intergalactic-table-td-cell-critical-active', // danger
+];
+
+type ColorProperty = 'backgroundColor' | 'borderColor' | 'color';
+
+export const getCssVarColor = async (
+  page: Page,
+  varName: string,
+  property: ColorProperty = 'backgroundColor',
+) => {
+  return page.evaluate(({ name, property }) => {
     const probe = document.createElement('div');
-    probe.style.backgroundColor = `var(${name})`;
+    probe.style[property] = `var(${name})`;
+    document.body.appendChild(probe);
+    const color = window.getComputedStyle(probe)[property];
+    probe.remove();
+    return color;
+  }, { name: varName, property });
+};
+
+export const getCssVarBorder = async (page: Page, varName: string) =>
+  `1px solid ${await getCssVarColor(page, varName, 'borderColor')}`;
+
+export const getTransparentColor = async (page: Page) => {
+  return page.evaluate(() => {
+    const probe = document.createElement('div');
     document.body.appendChild(probe);
     const color = window.getComputedStyle(probe).backgroundColor;
     probe.remove();
     return color;
-  }, varName);
+  });
 };
+
+export const getStylesActiveHovered = async (page: Page) =>
+  Promise.all(stylesActiveHoveredTokens.map((token) => getCssVarColor(page, token)));
+
+export const getStylesNotActive = async (page: Page) =>
+  Promise.all(stylesNotActiveTokens.map((token) => getCssVarColor(page, token)));
+
+export const getStylesExpanded = async (page: Page) =>
+  Promise.all(stylesExpandedTokens.map((token) => getCssVarColor(page, token)));
 
 export const checkStyles = async (
   elements: any,

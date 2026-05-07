@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles, getColumnWidth, getCssVarColor } from './utils';
+import { locators, checkStyles, getColumnWidth, getCssVarBorder, getCssVarColor } from './utils';
 
 /* =====================================================
 @visual
@@ -14,6 +14,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@data-table'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
+    const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
+    const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
+    const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
     const firstCell = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
@@ -22,10 +26,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       await checkStyles(header, {
         'font-size': '12px',
         'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
-        'color': 'rgb(25, 27, 35)',
+        'color': textPrimary,
         'padding': '12px',
-        'background-color': 'rgb(244, 245, 249)',
-        'border-bottom': '1px solid rgb(224, 225, 233)',
+        'background-color': thPrimaryCellBg,
+        'border-bottom': borderSecondary,
       });
     });
 
@@ -34,21 +38,20 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (browserName !== 'firefox')
         await checkStyles(header.first(), {
           'font-size': '12px',
-          'border-bottom': '1px solid rgb(224, 225, 233)',
-          'color': 'rgb(25, 27, 35)',
-          'background-color': 'rgb(244, 245, 249)',
+          'border-bottom': borderSecondary,
+          'color': textPrimary,
+          'background-color': thPrimaryCellBg,
           'padding': '12px',
         });
     });
 
     await test.step('Verify body cell styles', async () => {
-      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
       await firstCell.first().hover();
       if (browserName !== 'firefox')
         await checkStyles(firstCell, {
           'font-size': '14px',
-          'border-bottom': '1px solid rgb(224, 225, 233)',
-          'color': 'rgb(25, 27, 35)',
+          'border-bottom': borderSecondary,
+          'color': textPrimary,
           'background-color': cellHoverBg,
         });
 
@@ -136,6 +139,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@data-table'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/compact.tsx', 'en');
+    const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
+    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+    const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
     const firstCell = page.getByRole('gridcell').first();
@@ -143,17 +150,17 @@ test.describe(`${TAG.VISUAL}`, () => {
     await checkStyles(header, {
       'font-size': '12px',
       'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
-      'color': 'rgb(25, 27, 35)',
+      'color': textPrimary,
       'padding': '12px 8px',
-      'background-color': 'rgb(244, 245, 249)',
-      'border-bottom': '1px solid rgb(224, 225, 233)',
+      'background-color': thPrimaryCellBg,
+      'border-bottom': borderSecondary,
     });
 
     await checkStyles(firstCell, {
       'font-size': '14px',
-      'border-bottom': '1px solid rgb(224, 225, 233)',
-      'background-color': 'rgb(255, 255, 255)',
-      'color': 'rgb(25, 27, 35)',
+      'border-bottom': borderSecondary,
+      'background-color': cellDefaultBg,
+      'color': textPrimary,
       'padding': '12px 8px',
     });
 
@@ -168,6 +175,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@data-table'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/secondary-table.tsx', 'en');
+    const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const thSecondaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-secondary-cell');
+    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+    const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
+    const borderTableAccent = await getCssVarBorder(page, '--intergalactic-border-table-accent');
+    const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
     const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
@@ -175,31 +188,30 @@ test.describe(`${TAG.VISUAL}`, () => {
     await checkStyles(header, {
       'font-size': '12px',
       'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
-      'color': 'rgb(25, 27, 35)',
+      'color': textPrimary,
       'padding': '8px',
-      'background-color': 'rgb(255, 255, 255)',
-      'border-bottom': '1px solid rgb(169, 171, 182)',
+      'background-color': thSecondaryCellBg,
+      'border-bottom': borderTableAccent,
     });
 
     await header.first().hover();
     if (browserName !== 'firefox')
       await checkStyles(header, {
         'font-size': '12px',
-        'color': 'rgb(25, 27, 35)',
+        'color': textPrimary,
         'padding': '8px',
-        'background-color': 'rgb(255, 255, 255)',
-        'border-bottom': '1px solid rgb(169, 171, 182)',
+        'background-color': thSecondaryCellBg,
+        'border-bottom': borderTableAccent,
       });
 
     await checkStyles(firstCell, {
       'font-size': '14px',
-      'border-bottom': '1px solid rgb(224, 225, 233)',
-      'color': 'rgb(25, 27, 35)',
-      'background-color': 'rgb(255, 255, 255)',
+      'border-bottom': borderSecondary,
+      'color': textPrimary,
+      'background-color': cellDefaultBg,
       'padding': '8px',
     });
 
-    const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
     await firstCell.hover();
     if (browserName !== 'firefox')
       await expect(firstCell).toHaveCSS('background-color', cellHoverBg);

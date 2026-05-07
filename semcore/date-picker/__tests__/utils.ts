@@ -1,5 +1,6 @@
 export const RealDate = global.Date;
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 
 // https://github.com/facebook/jest/issues/2234#issuecomment-384884729
 export function mockDate(isoDate: any) {
@@ -51,3 +52,35 @@ export const checkStyle = async (element: any, expectedStyles: Record<string, st
     expect(actualValue).toBe(expectedValue);
   }
 };
+
+type ColorProperty = 'backgroundColor' | 'borderColor' | 'color';
+
+export const getCssVarColor = async (
+  page: Page,
+  varName: string,
+  property: ColorProperty = 'backgroundColor',
+) => {
+  return page.evaluate(({ name, property }) => {
+    const probe = document.createElement('div');
+    probe.style[property] = `var(${name})`;
+    document.body.appendChild(probe);
+    const color = window.getComputedStyle(probe)[property];
+    probe.remove();
+    return color;
+  }, { name: varName, property });
+};
+
+export const getCalendarCellDefaultStyles = async (page: Page) => ({
+  color: await getCssVarColor(page, '--intergalactic-text-primary', 'color'),
+  backgroundColor: await getCssVarColor(page, '--intergalactic-date-picker-cell'),
+});
+
+export const getCalendarCellSelectedStyles = async (page: Page) => ({
+  color: await getCssVarColor(page, '--intergalactic-text-primary-invert', 'color'),
+  backgroundColor: await getCssVarColor(page, '--intergalactic-date-picker-cell-active'),
+});
+
+export const getPrimaryButtonStyles = async (page: Page) => ({
+  color: await getCssVarColor(page, '--intergalactic-text-primary-invert', 'color'),
+  backgroundColor: await getCssVarColor(page, '--intergalactic-control-primary-info'),
+});

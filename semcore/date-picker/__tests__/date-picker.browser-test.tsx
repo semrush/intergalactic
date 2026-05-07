@@ -3,7 +3,7 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { checkStyle } from './utils';
+import { checkStyle, getCalendarCellDefaultStyles, getCalendarCellSelectedStyles } from './utils';
 
 export const locators = {
 
@@ -128,6 +128,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
       const selectedCell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+      const selectedCellStyles = await getCalendarCellSelectedStyles(page);
 
       await test.step('Verify trigger margins', async () => {
         await checkStyle(locators.datePickerTrigger(page, 0), { marginTop: '8px' });
@@ -143,16 +145,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify disabled date styles', async () => {
         await checkStyle(locators.cells(page, 0), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
 
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 2), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
@@ -164,8 +164,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
-          color: 'rgb(255, 255, 255)',
-          backgroundColor: 'rgb(43, 179, 255)',
+          ...selectedCellStyles,
           margin: '4px 0px 0px',
           width: '32px',
           height: '32px',
@@ -194,17 +193,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       const selectedCell = page.locator(
         '[data-ui-name="CalendarDays.Unit"][class*="__startSelected_"][class*="__endSelected_"]',
       );
-
-      // Helper function to check style properties
-      const checkStyle = async (element: any, expectedStyles: any) => {
-        for (const [property, expectedValue] of Object.entries(expectedStyles)) {
-          const actualValue = await element.evaluate(
-            (el: any, property: any) => getComputedStyle(el)[property],
-            property,
-          );
-          expect(actualValue).toBe(expectedValue);
-        }
-      };
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+      const selectedCellStyles = await getCalendarCellSelectedStyles(page);
 
       await test.step('Verify trigger margins', async () => {
         await locators.datePickerTrigger(page, 0).click();
@@ -215,16 +205,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify hover disabled date', async () => {
         await checkStyle(locators.cells(page, 0), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
 
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 10), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
@@ -240,8 +228,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
-          color: 'rgb(255, 255, 255)',
-          backgroundColor: 'rgb(43, 179, 255)',
+          ...selectedCellStyles,
           margin: '4px 0px 0px',
           width: '32px',
         });
