@@ -1,10 +1,10 @@
 import Badge from '@semcore/ui/badge';
-import { Box } from '@semcore/ui/base-components';
+import { Box } from '@semcore/ui/flex-box';
 import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
 import { Dashboard } from './components/Dashboard';
-import { FeatureHighlight } from './components/FeatureHighlight';
+// import { FeatureHighlight } from './components/FeatureHighlight';
 import { Form } from './components/Form';
 import { Tables } from './components/Tables';
 import PageHeader from '../../../../components/product-head/docs/examples/extended_example';
@@ -29,21 +29,21 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
             Dashboard
           </TabLine.Item.Text>
           <TabLine.Item.Addon>
-            <Badge type='new' />
+            <Badge>new</Badge>
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item value={3}>
           Form
         </TabLine.Item>
-        <TabLine.Item value={4}>
-          Feature highlight
-        </TabLine.Item>
+        {/*<TabLine.Item value={4}>*/}
+        {/*  Feature highlight*/}
+        {/*</TabLine.Item>*/}
       </TabLine>
 
       {tab === 1 && <Tables />}
       {tab === 2 && <Dashboard />}
       {tab === 3 && <Form />}
-      {tab === 4 && <FeatureHighlight />}
+      {/*{tab === 4 && <FeatureHighlight />}*/}
     </Box>
   );
 }

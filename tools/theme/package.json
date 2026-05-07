@@ -19,6 +19,11 @@
       "import": "./lib/light.ts",
       "require": "./lib/light.ts"
     },
+    "./lib/light": {
+      "types": "./lib/light.ts",
+      "import": "./lib/light.ts",
+      "require": "./lib/light.ts"
+    },
     "./dark": {
       "types": "./lib/dark.ts",
       "import": "./lib/dark.ts",

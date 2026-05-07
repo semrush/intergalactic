@@ -1,9 +1,10 @@
 import FileExportM from '@semcore/icon/FileExport/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
-import { Box, Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
+// @ts-ignore
 import { Chart, ChartLegend, ResponsiveContainer } from '@semcore/ui/d3-chart';
 import Divider from '@semcore/ui/divider';
 import Link from '@semcore/ui/link';
@@ -23,7 +24,6 @@ import CigaretteMockData from '../../../../../../components/d3-chart/__mocks__/c
 import DonutMockData from '../../../../../../components/d3-chart/__mocks__/donut';
 import ScatterplotMockData from '../../../../../../components/d3-chart/__mocks__/scatterplot';
 import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
-import PrimaryTable from '../Tables/PrimaryTable';
 
 export type DashboardProps = {
   showPrimaryTableFooter?: boolean;
@@ -672,12 +672,6 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
             </Card.Body>
           </Card>
         </Flex>
-
-        {showPrimaryTableFooter && (
-          <Box mt={8} w='100%'>
-            <PrimaryTable />
-          </Box>
-        )}
       </Box>
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Box, Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import React from 'react';
 

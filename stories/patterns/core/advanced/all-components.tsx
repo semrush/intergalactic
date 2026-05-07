@@ -1,5 +1,5 @@
 import Badge from '@semcore/ui/badge';
-import { Box } from '@semcore/ui/base-components';
+import { Box } from '@semcore/ui/flex-box';
 import TabLine from '@semcore/ui/tab-line';
 import React from 'react';
 
@@ -22,7 +22,7 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
             Dashboard
           </TabLine.Item.Text>
           <TabLine.Item.Addon>
-            <Badge type='new' />
+            <Badge>new</Badge>
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item value={2}>

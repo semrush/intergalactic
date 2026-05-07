@@ -11,7 +11,8 @@
     "d3-scale": "3.3.0",
     "react-hook-form": "7.54.0",
     "react-virtualized": "9.22.3",
-    "react-window": "1.8.11"
+    "react-window": "1.8.11",
+    "react-intl": "10.1.5"
   },
   "devDependencies": {
     "@types/d3-scale": "3.3.0",

@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
 import Radio, { RadioGroup } from '@semcore/ui/radio';

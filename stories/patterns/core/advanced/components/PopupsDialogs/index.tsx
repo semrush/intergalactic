@@ -1,4 +1,4 @@
-import { Box, Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 import Card from '@semcore/ui/card';
 import FeaturePopover from '@semcore/ui/feature-popover';

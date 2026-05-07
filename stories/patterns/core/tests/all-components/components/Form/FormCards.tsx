@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -9,7 +9,7 @@ import type { FormTabColumnStyle } from './form-utils';
 import { RequestForm } from './RequestForm';
 import HeadingTagAccordion from '../../../../../../components/accordion/docs/examples/heading_tag';
 import NonCompactAccordion from '../../../../../../components/accordion/docs/examples/non_compact';
-import BulkTextareaBasicExample from '../../../../../../components/bulk-textarea/docs/examples/basic-usage';
+// import BulkTextareaBasicExample from '../../../../../../components/bulk-textarea/docs/examples/basic-usage';
 import CarouselStory from '../../../../../../components/carousel/docs/examples/carousel_with_default_indicators';
 
 type FormCardsProps = {
@@ -66,7 +66,8 @@ export function FormCards({ columnStyle, contentReady }: FormCardsProps) {
         <Card w='100%'>
           <Card.Body tag={Flex} direction='column'>
             <CardBodySkeleton contentReady={contentReady} h={320}>
-              <BulkTextareaBasicExample />
+              {/*<BulkTextareaBasicExample />*/}
+              here should be bulktextarea
             </CardBodySkeleton>
           </Card.Body>
         </Card>

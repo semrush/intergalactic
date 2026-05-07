@@ -1,9 +1,7 @@
-import { Box, Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import React from 'react';
 
-import PrimaryTable from './PrimaryTable';
-import { SecondaryTable } from './SecondaryTable';
 import FeedbackRatingFormExample from '../../../../../../patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 
 export type TablesProps = {
@@ -17,7 +15,8 @@ export function Tables({ showPrimaryAndSecondary = true }: TablesProps) {
     <Box w='100%'>
       {showPrimaryAndSecondary && (
         <>
-          <PrimaryTable onPageErrorChange={setPageErrorActive} />
+          {/*<PrimaryTable onPageErrorChange={setPageErrorActive} />*/}
+          here should be primary table
 
           {!pageErrorActive && (
             <>
@@ -31,7 +30,8 @@ export function Tables({ showPrimaryAndSecondary = true }: TablesProps) {
                     <Card.Title tag='h3'>Keywords</Card.Title>
                   </Card.Header>
                   <Card.Body p={0} pb={1}>
-                    <SecondaryTable />
+                    {/*<SecondaryTable />*/}
+                    here should be secondary table
                   </Card.Body>
                 </Card>
               </Flex>

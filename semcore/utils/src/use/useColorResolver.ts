@@ -1,7 +1,7 @@
 import { useContextTokens } from '../ThemeProvider';
 import logger from '../logger';
 
-import defaultDesignThemeJson from '@semcore/theme/light';
+import defaultDesignThemeJson from '@semcore/theme/lib/light';
 const defaultDesignTheme = defaultDesignThemeJson as Record<string, string>;
 const deprecatedPalette: Record<string, string> = {
   '--denim-blue': '#006dca',

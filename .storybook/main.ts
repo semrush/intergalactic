@@ -5,7 +5,7 @@ const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(ts|tsx)'],
 
   addons: [// '@storybook/addon-storysource',
-    '@storybook/addon-links', '@storybook/addon-a11y', '@storybook/addon-docs'],
+    '@storybook/addon-links', '@storybook/addon-a11y'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
@@ -13,7 +13,7 @@ const config: StorybookConfig = {
   typescript: {
     // reactDocgen: 'react-docgen-typescript',
   },
-  staticDirs: [{ from: '../semcore/core/src/theme/themes', to: '/assets/core' }, { from: '../tools/theme/lib', to: '/assets/theme' }],
+  staticDirs: [{ from: '../semcore/utils/src/themes', to: '/assets/core' }, { from: '../tools/theme/lib', to: '/assets/theme' }],
   viteFinal(config) {
     return mergeConfig(config, {
       build: {

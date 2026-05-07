@@ -1,4 +1,4 @@
-import { Box, Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import Divider from '@semcore/ui/divider';
 import { Text } from '@semcore/ui/typography';
@@ -55,7 +55,7 @@ export function Components() {
             <TimePickerDemo />
             <InputClear />
             <Textarea />
-            <InputTags size='m' />
+            <InputTags />
             <InputNumberDemo />
             <InlineNumberInput />
             <Divider my={4} />

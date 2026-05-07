@@ -1,4 +1,4 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/flex-box';
 import React from 'react';
 
 import { FORM_TAB_COLUMN_STYLE, useSimulatedSkeleton } from './form-utils';

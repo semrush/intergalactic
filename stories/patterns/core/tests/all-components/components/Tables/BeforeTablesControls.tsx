@@ -1,5 +1,5 @@
 import Settings from '@semcore/icon/Settings/m';
-import { Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/flex-box';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import { DatePicker, DateRangeComparator, DateRangePicker } from '@semcore/ui/date-picker';

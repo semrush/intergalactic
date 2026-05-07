@@ -3,7 +3,7 @@ import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import SettingsM from '@semcore/icon/Settings/m';
 import VideoListM from '@semcore/icon/VideoList/m';
 import Badge from '@semcore/ui/badge';
-import { Box, Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/flex-box';
 import { ButtonLink } from '@semcore/ui/button';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
@@ -252,7 +252,7 @@ const Demo = (props: CombinationProps) => {
           >
             <ButtonLink.Text>ButtonLink with Badge</ButtonLink.Text>
             <ButtonLink.Addon>
-              <Badge type='new' />
+              <Badge>new</Badge>
             </ButtonLink.Addon>
           </ButtonLink>
 
@@ -289,7 +289,7 @@ const Demo = (props: CombinationProps) => {
           >
             <Link.Text>Link with Badge</Link.Text>
             <Link.Addon>
-              <Badge type='new' />
+              <Badge>new</Badge>
             </Link.Addon>
           </Link>
 

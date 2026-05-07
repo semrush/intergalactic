@@ -4,14 +4,14 @@
   "version": "3.61.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
-  "typings": "lib/types/index.d.ts",
+  "types": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "exports": {
-    "require": "./lib/cjs/index.js",
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.mjs",
-    "types": "./lib/types/index.d.ts"
+    "require": "./lib/cjs/index.js"
   },
   "scripts": {
     "build": "pnpm semcore-builder --source=js,ts && pnpm vite build"
