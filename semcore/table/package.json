@@ -1,7 +1,7 @@
 {
   "name": "@semcore/table",
   "description": "Semrush Table Component",
-  "version": "4.53.6",
+  "version": "4.53.6-prerelease.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,14 +17,14 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "workspace:*",
-    "@semcore/icon": "16.0.0",
-    "@semcore/scroll-area": "workspace:*",
-    "@semcore/typography": "16.0.0",
+    "@semcore/flex-box": "16.1.0-prerelease.0",
+    "@semcore/icon": "16.8.0-prerelease.0",
+    "@semcore/scroll-area": "16.1.0-prerelease.0",
+    "@semcore/typography": "16.4.0-prerelease.0",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.6.0"
+    "@semcore/base-components": "^16.6.0-prerelease.0"
   },
   "repository": {
     "type": "git",

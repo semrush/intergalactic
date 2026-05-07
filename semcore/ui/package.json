@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "16.16.0",
+  "version": "16.16.0-prerelease.0",
   "description": "Semrush design system package that reexports all other single component packages.",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
@@ -13,82 +13,82 @@
     "update-dependencies": "tsm --require=../../.ci/tsm-filter-warnings.js update-dependencies.ts"
   },
   "dependencies": {
-    "@semcore/accordion": "^16.8.0",
-    "@semcore/add-filter": "^16.7.0",
-    "@semcore/animation": "^16.1.0",
-    "@semcore/badge": "^16.1.0",
-    "@semcore/base-components": "^16.6.0",
-    "@semcore/base-trigger": "^16.5.0",
-    "@semcore/breadcrumbs": "^16.6.0",
-    "@semcore/breakpoints": "^16.1.0",
-    "@semcore/bulk-textarea": "^16.8.0",
-    "@semcore/button": "^16.1.0",
-    "@semcore/card": "^16.2.0",
-    "@semcore/carousel": "^16.2.0",
-    "@semcore/checkbox": "^16.3.0",
-    "@semcore/color-picker": "^16.2.0",
-    "@semcore/core": "^16.6.0",
-    "@semcore/counter": "^16.1.0",
-    "@semcore/d3-chart": "^16.7.0",
-    "@semcore/data-table": "^16.7.0",
-    "@semcore/date-picker": "^16.3.0",
-    "@semcore/divider": "^16.1.0",
-    "@semcore/dot": "^16.1.0",
-    "@semcore/drag-and-drop": "^16.2.0",
-    "@semcore/dropdown": "^16.2.0",
-    "@semcore/dropdown-menu": "^16.3.0",
-    "@semcore/ellipsis": "^16.1.0",
-    "@semcore/errors": "^16.2.0",
-    "@semcore/feature-highlight": "^16.4.0",
-    "@semcore/feature-popover": "^16.3.0",
-    "@semcore/feedback-form": "^16.3.0",
-    "@semcore/flags": "^16.2.0",
-    "@semcore/flex-box": "^16.1.0",
-    "@semcore/format-text": "^16.2.0",
-    "@semcore/fullscreen-modal": "^16.2.0",
-    "@semcore/grid": "^16.1.0",
-    "@semcore/i18n-unplugin": "^16.1.0",
-    "@semcore/icon": "^16.8.0",
-    "@semcore/illustration": "^16.1.0",
-    "@semcore/inline-edit": "^16.1.0",
-    "@semcore/inline-input": "^16.3.0",
-    "@semcore/input": "^16.2.0",
-    "@semcore/input-mask": "^16.1.0",
-    "@semcore/input-number": "^16.1.0",
-    "@semcore/input-tags": "^16.1.0",
-    "@semcore/link": "^16.1.0",
-    "@semcore/mini-chart": "^16.2.0",
-    "@semcore/modal": "^16.2.0",
-    "@semcore/neighbor-location": "^16.1.0",
-    "@semcore/notice": "^16.2.0",
-    "@semcore/notice-bubble": "^16.3.0",
-    "@semcore/notice-global": "^16.2.0",
-    "@semcore/outside-click": "^16.1.0",
-    "@semcore/pagination": "^16.2.0",
-    "@semcore/pills": "^16.1.0",
-    "@semcore/popper": "^16.1.0",
-    "@semcore/portal": "^16.1.0",
-    "@semcore/product-head": "^16.1.0",
-    "@semcore/progress-bar": "^16.1.0",
-    "@semcore/radio": "^16.2.0",
-    "@semcore/scroll-area": "^16.1.0",
-    "@semcore/select": "^16.2.0",
-    "@semcore/side-panel": "^16.2.0",
-    "@semcore/skeleton": "^16.1.0",
-    "@semcore/slider": "^16.2.0",
-    "@semcore/spin": "^16.1.0",
-    "@semcore/spin-container": "^16.1.0",
-    "@semcore/sticky": "^16.1.0",
-    "@semcore/switch": "^16.2.0",
-    "@semcore/tab-line": "^16.1.0",
-    "@semcore/tab-panel": "^16.1.0",
-    "@semcore/tag": "^16.2.0",
-    "@semcore/textarea": "^16.1.0",
-    "@semcore/time-picker": "^16.2.0",
-    "@semcore/tooltip": "^16.1.0",
-    "@semcore/typography": "^16.4.0",
-    "@semcore/widget-empty": "^16.1.0",
-    "@semcore/wizard": "^16.3.0"
+    "@semcore/accordion": "^16.8.0-prerelease.0",
+    "@semcore/add-filter": "^16.7.0-prerelease.0",
+    "@semcore/animation": "^16.1.0-prerelease.0",
+    "@semcore/badge": "^16.1.0-prerelease.0",
+    "@semcore/base-components": "^16.6.0-prerelease.0",
+    "@semcore/base-trigger": "^16.5.0-prerelease.0",
+    "@semcore/breadcrumbs": "^16.6.0-prerelease.0",
+    "@semcore/breakpoints": "^16.1.0-prerelease.0",
+    "@semcore/bulk-textarea": "^16.8.0-prerelease.0",
+    "@semcore/button": "^16.1.0-prerelease.0",
+    "@semcore/card": "^16.2.0-prerelease.0",
+    "@semcore/carousel": "^16.2.0-prerelease.0",
+    "@semcore/checkbox": "^16.3.0-prerelease.0",
+    "@semcore/color-picker": "^16.2.0-prerelease.0",
+    "@semcore/core": "^16.6.0-prerelease.0",
+    "@semcore/counter": "^16.1.0-prerelease.0",
+    "@semcore/d3-chart": "^16.7.0-prerelease.0",
+    "@semcore/data-table": "^16.7.0-prerelease.0",
+    "@semcore/date-picker": "^16.3.0-prerelease.0",
+    "@semcore/divider": "^16.1.0-prerelease.0",
+    "@semcore/dot": "^16.1.0-prerelease.0",
+    "@semcore/drag-and-drop": "^16.2.0-prerelease.0",
+    "@semcore/dropdown": "^16.2.0-prerelease.0",
+    "@semcore/dropdown-menu": "^16.3.0-prerelease.0",
+    "@semcore/ellipsis": "^16.1.0-prerelease.0",
+    "@semcore/errors": "^16.2.0-prerelease.0",
+    "@semcore/feature-highlight": "^16.4.0-prerelease.0",
+    "@semcore/feature-popover": "^16.3.0-prerelease.0",
+    "@semcore/feedback-form": "^16.3.0-prerelease.0",
+    "@semcore/flags": "^16.2.0-prerelease.0",
+    "@semcore/flex-box": "^16.1.0-prerelease.0",
+    "@semcore/format-text": "^16.2.0-prerelease.0",
+    "@semcore/fullscreen-modal": "^16.2.0-prerelease.0",
+    "@semcore/grid": "^16.1.0-prerelease.0",
+    "@semcore/i18n-unplugin": "^16.1.0-prerelease.0",
+    "@semcore/icon": "^16.8.0-prerelease.0",
+    "@semcore/illustration": "^16.1.0-prerelease.0",
+    "@semcore/inline-edit": "^16.1.0-prerelease.0",
+    "@semcore/inline-input": "^16.3.0-prerelease.0",
+    "@semcore/input": "^16.2.0-prerelease.0",
+    "@semcore/input-mask": "^16.1.0-prerelease.0",
+    "@semcore/input-number": "^16.1.0-prerelease.0",
+    "@semcore/input-tags": "^16.1.0-prerelease.0",
+    "@semcore/link": "^16.1.0-prerelease.0",
+    "@semcore/mini-chart": "^16.2.0-prerelease.0",
+    "@semcore/modal": "^16.2.0-prerelease.0",
+    "@semcore/neighbor-location": "^16.1.0-prerelease.0",
+    "@semcore/notice": "^16.2.0-prerelease.0",
+    "@semcore/notice-bubble": "^16.3.0-prerelease.0",
+    "@semcore/notice-global": "^16.2.0-prerelease.0",
+    "@semcore/outside-click": "^16.1.0-prerelease.0",
+    "@semcore/pagination": "^16.2.0-prerelease.0",
+    "@semcore/pills": "^16.1.0-prerelease.0",
+    "@semcore/popper": "^16.1.0-prerelease.0",
+    "@semcore/portal": "^16.1.0-prerelease.0",
+    "@semcore/product-head": "^16.1.0-prerelease.0",
+    "@semcore/progress-bar": "^16.1.0-prerelease.0",
+    "@semcore/radio": "^16.2.0-prerelease.0",
+    "@semcore/scroll-area": "^16.1.0-prerelease.0",
+    "@semcore/select": "^16.2.0-prerelease.0",
+    "@semcore/side-panel": "^16.2.0-prerelease.0",
+    "@semcore/skeleton": "^16.1.0-prerelease.0",
+    "@semcore/slider": "^16.2.0-prerelease.0",
+    "@semcore/spin": "^16.1.0-prerelease.0",
+    "@semcore/spin-container": "^16.1.0-prerelease.0",
+    "@semcore/sticky": "^16.1.0-prerelease.0",
+    "@semcore/switch": "^16.2.0-prerelease.0",
+    "@semcore/tab-line": "^16.1.0-prerelease.0",
+    "@semcore/tab-panel": "^16.1.0-prerelease.0",
+    "@semcore/tag": "^16.2.0-prerelease.0",
+    "@semcore/textarea": "^16.1.0-prerelease.0",
+    "@semcore/time-picker": "^16.2.0-prerelease.0",
+    "@semcore/tooltip": "^16.1.0-prerelease.0",
+    "@semcore/typography": "^16.4.0-prerelease.0",
+    "@semcore/widget-empty": "^16.1.0-prerelease.0",
+    "@semcore/wizard": "^16.3.0-prerelease.0"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
@@ -330,6 +330,11 @@
       "import": "./core/lib/utils/inputProps.mjs",
       "types": "./core/lib/utils/inputProps.d.ts"
     },
+    "./core/lib/utils/isInteractiveElement": {
+      "require": "./core/lib/utils/isInteractiveElement.cjs",
+      "import": "./core/lib/utils/isInteractiveElement.mjs",
+      "types": "./core/lib/utils/isInteractiveElement.d.ts"
+    },
     "./core/lib/utils/isNode": {
       "require": "./core/lib/utils/isNode.cjs",
       "import": "./core/lib/utils/isNode.mjs",
@@ -535,6 +540,11 @@
       "import": "./core/lib/utils/use/usePreventScroll.mjs",
       "types": "./core/lib/utils/use/usePreventScroll.d.ts"
     },
+    "./core/lib/utils/use/useScrollBarWidth": {
+      "require": "./core/lib/utils/use/useScrollBarWidth.cjs",
+      "import": "./core/lib/utils/use/useScrollBarWidth.mjs",
+      "types": "./core/lib/utils/use/useScrollBarWidth.d.ts"
+    },
     "./core/lib/theme/themes/auto.css": {
       "require": "./core/lib/theme/themes/auto.css",
       "import": "./core/lib/theme/themes/auto.css"
@@ -546,6 +556,14 @@
     "./core/lib/theme/themes/default.css": {
       "require": "./core/lib/theme/themes/default.css",
       "import": "./core/lib/theme/themes/default.css"
+    },
+    "./core/lib/theme/themes/highlights-dark.css": {
+      "require": "./core/lib/theme/themes/highlights-dark.css",
+      "import": "./core/lib/theme/themes/highlights-dark.css"
+    },
+    "./core/lib/theme/themes/highlights-light.css": {
+      "require": "./core/lib/theme/themes/highlights-light.css",
+      "import": "./core/lib/theme/themes/highlights-light.css"
     },
     "./core/lib/theme/themes/light.css": {
       "require": "./core/lib/theme/themes/light.css",
@@ -606,6 +624,11 @@
       "import": "./errors/index.mjs",
       "types": "./errors/index.d.ts"
     },
+    "./feature-highlight": {
+      "require": "./feature-highlight/index.cjs",
+      "import": "./feature-highlight/index.mjs",
+      "types": "./feature-highlight/index.d.ts"
+    },
     "./feature-popover": {
       "require": "./feature-popover/index.cjs",
       "import": "./feature-popover/index.mjs",
@@ -640,6 +663,11 @@
       "require": "./grid/index.cjs",
       "import": "./grid/index.mjs",
       "types": "./grid/index.d.ts"
+    },
+    "./i18n-unplugin": {
+      "require": "./i18n-unplugin/index.cjs",
+      "import": "./i18n-unplugin/index.mjs",
+      "types": "./i18n-unplugin/index.d.ts"
     },
     "./icon/Ad/l": {
       "require": "./icon/Ad/l/index.cjs",
@@ -991,6 +1019,16 @@
       "import": "./icon/CalendarCheck/m/index.mjs",
       "types": "./icon/CalendarCheck/m/index.d.ts"
     },
+    "./icon/Canva/l": {
+      "require": "./icon/Canva/l/index.cjs",
+      "import": "./icon/Canva/l/index.mjs",
+      "types": "./icon/Canva/l/index.d.ts"
+    },
+    "./icon/Canva/m": {
+      "require": "./icon/Canva/m/index.cjs",
+      "import": "./icon/Canva/m/index.mjs",
+      "types": "./icon/Canva/m/index.d.ts"
+    },
     "./icon/Car/l": {
       "require": "./icon/Car/l/index.cjs",
       "import": "./icon/Car/l/index.mjs",
@@ -1130,6 +1168,16 @@
       "require": "./icon/ChartPie/m/index.cjs",
       "import": "./icon/ChartPie/m/index.mjs",
       "types": "./icon/ChartPie/m/index.d.ts"
+    },
+    "./icon/ChartVenn/l": {
+      "require": "./icon/ChartVenn/l/index.cjs",
+      "import": "./icon/ChartVenn/l/index.mjs",
+      "types": "./icon/ChartVenn/l/index.d.ts"
+    },
+    "./icon/ChartVenn/m": {
+      "require": "./icon/ChartVenn/m/index.cjs",
+      "import": "./icon/ChartVenn/m/index.mjs",
+      "types": "./icon/ChartVenn/m/index.d.ts"
     },
     "./icon/Chat/l": {
       "require": "./icon/Chat/l/index.cjs",
@@ -1331,6 +1379,16 @@
       "import": "./icon/Chrome/m/index.mjs",
       "types": "./icon/Chrome/m/index.d.ts"
     },
+    "./icon/Claude/l": {
+      "require": "./icon/Claude/l/index.cjs",
+      "import": "./icon/Claude/l/index.mjs",
+      "types": "./icon/Claude/l/index.d.ts"
+    },
+    "./icon/Claude/m": {
+      "require": "./icon/Claude/m/index.cjs",
+      "import": "./icon/Claude/m/index.mjs",
+      "types": "./icon/Claude/m/index.d.ts"
+    },
     "./icon/Close/l": {
       "require": "./icon/Close/l/index.cjs",
       "import": "./icon/Close/l/index.mjs",
@@ -1370,6 +1428,16 @@
       "require": "./icon/CollapseAlt/m/index.cjs",
       "import": "./icon/CollapseAlt/m/index.mjs",
       "types": "./icon/CollapseAlt/m/index.d.ts"
+    },
+    "./icon/CollapseList/l": {
+      "require": "./icon/CollapseList/l/index.cjs",
+      "import": "./icon/CollapseList/l/index.mjs",
+      "types": "./icon/CollapseList/l/index.d.ts"
+    },
+    "./icon/CollapseList/m": {
+      "require": "./icon/CollapseList/m/index.cjs",
+      "import": "./icon/CollapseList/m/index.mjs",
+      "types": "./icon/CollapseList/m/index.d.ts"
     },
     "./icon/ColumnThree/l": {
       "require": "./icon/ColumnThree/l/index.cjs",
@@ -2041,6 +2109,16 @@
       "import": "./icon/GenderMale/m/index.mjs",
       "types": "./icon/GenderMale/m/index.d.ts"
     },
+    "./icon/Gift/l": {
+      "require": "./icon/Gift/l/index.cjs",
+      "import": "./icon/Gift/l/index.mjs",
+      "types": "./icon/Gift/l/index.d.ts"
+    },
+    "./icon/Gift/m": {
+      "require": "./icon/Gift/m/index.cjs",
+      "import": "./icon/Gift/m/index.mjs",
+      "types": "./icon/Gift/m/index.d.ts"
+    },
     "./icon/Globe/l": {
       "require": "./icon/Globe/l/index.cjs",
       "import": "./icon/Globe/l/index.mjs",
@@ -2361,6 +2439,16 @@
       "import": "./icon/LinkExternal/m/index.mjs",
       "types": "./icon/LinkExternal/m/index.d.ts"
     },
+    "./icon/LinkExternalAlt/l": {
+      "require": "./icon/LinkExternalAlt/l/index.cjs",
+      "import": "./icon/LinkExternalAlt/l/index.mjs",
+      "types": "./icon/LinkExternalAlt/l/index.d.ts"
+    },
+    "./icon/LinkExternalAlt/m": {
+      "require": "./icon/LinkExternalAlt/m/index.cjs",
+      "import": "./icon/LinkExternalAlt/m/index.mjs",
+      "types": "./icon/LinkExternalAlt/m/index.d.ts"
+    },
     "./icon/LinkInternal/l": {
       "require": "./icon/LinkInternal/l/index.cjs",
       "import": "./icon/LinkInternal/l/index.mjs",
@@ -2641,6 +2729,16 @@
       "import": "./icon/MoneyCoins/m/index.mjs",
       "types": "./icon/MoneyCoins/m/index.d.ts"
     },
+    "./icon/Monitoring/l": {
+      "require": "./icon/Monitoring/l/index.cjs",
+      "import": "./icon/Monitoring/l/index.mjs",
+      "types": "./icon/Monitoring/l/index.d.ts"
+    },
+    "./icon/Monitoring/m": {
+      "require": "./icon/Monitoring/m/index.cjs",
+      "import": "./icon/Monitoring/m/index.mjs",
+      "types": "./icon/Monitoring/m/index.d.ts"
+    },
     "./icon/MoveAlt/l": {
       "require": "./icon/MoveAlt/l/index.cjs",
       "import": "./icon/MoveAlt/l/index.mjs",
@@ -2680,6 +2778,16 @@
       "require": "./icon/News/m/index.cjs",
       "import": "./icon/News/m/index.mjs",
       "types": "./icon/News/m/index.d.ts"
+    },
+    "./icon/Note/l": {
+      "require": "./icon/Note/l/index.cjs",
+      "import": "./icon/Note/l/index.mjs",
+      "types": "./icon/Note/l/index.d.ts"
+    },
+    "./icon/Note/m": {
+      "require": "./icon/Note/m/index.cjs",
+      "import": "./icon/Note/m/index.mjs",
+      "types": "./icon/Note/m/index.d.ts"
     },
     "./icon/Notification/l": {
       "require": "./icon/Notification/l/index.cjs",
@@ -2780,6 +2888,16 @@
       "require": "./icon/Pause/m/index.cjs",
       "import": "./icon/Pause/m/index.mjs",
       "types": "./icon/Pause/m/index.d.ts"
+    },
+    "./icon/Perplexity/l": {
+      "require": "./icon/Perplexity/l/index.cjs",
+      "import": "./icon/Perplexity/l/index.mjs",
+      "types": "./icon/Perplexity/l/index.d.ts"
+    },
+    "./icon/Perplexity/m": {
+      "require": "./icon/Perplexity/m/index.cjs",
+      "import": "./icon/Perplexity/m/index.mjs",
+      "types": "./icon/Perplexity/m/index.d.ts"
     },
     "./icon/Phone/l": {
       "require": "./icon/Phone/l/index.cjs",
@@ -3721,6 +3839,46 @@
       "import": "./icon/Text/m/index.mjs",
       "types": "./icon/Text/m/index.d.ts"
     },
+    "./icon/TextBold/l": {
+      "require": "./icon/TextBold/l/index.cjs",
+      "import": "./icon/TextBold/l/index.mjs",
+      "types": "./icon/TextBold/l/index.d.ts"
+    },
+    "./icon/TextBold/m": {
+      "require": "./icon/TextBold/m/index.cjs",
+      "import": "./icon/TextBold/m/index.mjs",
+      "types": "./icon/TextBold/m/index.d.ts"
+    },
+    "./icon/TextItalic/l": {
+      "require": "./icon/TextItalic/l/index.cjs",
+      "import": "./icon/TextItalic/l/index.mjs",
+      "types": "./icon/TextItalic/l/index.d.ts"
+    },
+    "./icon/TextItalic/m": {
+      "require": "./icon/TextItalic/m/index.cjs",
+      "import": "./icon/TextItalic/m/index.mjs",
+      "types": "./icon/TextItalic/m/index.d.ts"
+    },
+    "./icon/TextQuotes/l": {
+      "require": "./icon/TextQuotes/l/index.cjs",
+      "import": "./icon/TextQuotes/l/index.mjs",
+      "types": "./icon/TextQuotes/l/index.d.ts"
+    },
+    "./icon/TextQuotes/m": {
+      "require": "./icon/TextQuotes/m/index.cjs",
+      "import": "./icon/TextQuotes/m/index.mjs",
+      "types": "./icon/TextQuotes/m/index.d.ts"
+    },
+    "./icon/TextUnderline/l": {
+      "require": "./icon/TextUnderline/l/index.cjs",
+      "import": "./icon/TextUnderline/l/index.mjs",
+      "types": "./icon/TextUnderline/l/index.d.ts"
+    },
+    "./icon/TextUnderline/m": {
+      "require": "./icon/TextUnderline/m/index.cjs",
+      "import": "./icon/TextUnderline/m/index.mjs",
+      "types": "./icon/TextUnderline/m/index.d.ts"
+    },
     "./icon/ThumbDown/l": {
       "require": "./icon/ThumbDown/l/index.cjs",
       "import": "./icon/ThumbDown/l/index.mjs",
@@ -4211,6 +4369,16 @@
       "import": "./icon/color/CampaignMonitorColored/m/index.mjs",
       "types": "./icon/color/CampaignMonitorColored/m/index.d.ts"
     },
+    "./icon/color/ClaudeColored/l": {
+      "require": "./icon/color/ClaudeColored/l/index.cjs",
+      "import": "./icon/color/ClaudeColored/l/index.mjs",
+      "types": "./icon/color/ClaudeColored/l/index.d.ts"
+    },
+    "./icon/color/ClaudeColored/m": {
+      "require": "./icon/color/ClaudeColored/m/index.cjs",
+      "import": "./icon/color/ClaudeColored/m/index.mjs",
+      "types": "./icon/color/ClaudeColored/m/index.d.ts"
+    },
     "./icon/color/Confluence/l": {
       "require": "./icon/color/Confluence/l/index.cjs",
       "import": "./icon/color/Confluence/l/index.mjs",
@@ -4360,6 +4528,16 @@
       "require": "./icon/color/GoogleDocs/m/index.cjs",
       "import": "./icon/color/GoogleDocs/m/index.mjs",
       "types": "./icon/color/GoogleDocs/m/index.d.ts"
+    },
+    "./icon/color/GoogleGenerativeAIColored/l": {
+      "require": "./icon/color/GoogleGenerativeAIColored/l/index.cjs",
+      "import": "./icon/color/GoogleGenerativeAIColored/l/index.mjs",
+      "types": "./icon/color/GoogleGenerativeAIColored/l/index.d.ts"
+    },
+    "./icon/color/GoogleGenerativeAIColored/m": {
+      "require": "./icon/color/GoogleGenerativeAIColored/m/index.cjs",
+      "import": "./icon/color/GoogleGenerativeAIColored/m/index.mjs",
+      "types": "./icon/color/GoogleGenerativeAIColored/m/index.d.ts"
     },
     "./icon/color/GoogleMail/l": {
       "require": "./icon/color/GoogleMail/l/index.cjs",
@@ -4540,6 +4718,16 @@
       "require": "./icon/color/Moz/m/index.cjs",
       "import": "./icon/color/Moz/m/index.mjs",
       "types": "./icon/color/Moz/m/index.d.ts"
+    },
+    "./icon/color/PerplexityColored/l": {
+      "require": "./icon/color/PerplexityColored/l/index.cjs",
+      "import": "./icon/color/PerplexityColored/l/index.mjs",
+      "types": "./icon/color/PerplexityColored/l/index.d.ts"
+    },
+    "./icon/color/PerplexityColored/m": {
+      "require": "./icon/color/PerplexityColored/m/index.cjs",
+      "import": "./icon/color/PerplexityColored/m/index.mjs",
+      "types": "./icon/color/PerplexityColored/m/index.d.ts"
     },
     "./icon/color/PipedriveColored/l": {
       "require": "./icon/color/PipedriveColored/l/index.cjs",
@@ -4776,6 +4964,11 @@
       "import": "./icon/pay/WeChatPay/m/index.mjs",
       "types": "./icon/pay/WeChatPay/m/index.d.ts"
     },
+    "./icon/platform/AISEOToolkit": {
+      "require": "./icon/platform/AISEOToolkit/index.cjs",
+      "import": "./icon/platform/AISEOToolkit/index.mjs",
+      "types": "./icon/platform/AISEOToolkit/index.d.ts"
+    },
     "./icon/platform/AIToolkit": {
       "require": "./icon/platform/AIToolkit/index.cjs",
       "import": "./icon/platform/AIToolkit/index.mjs",
@@ -4796,6 +4989,11 @@
       "import": "./icon/platform/ContentToolkit/index.mjs",
       "types": "./icon/platform/ContentToolkit/index.d.ts"
     },
+    "./icon/platform/EnterpriseSolutions": {
+      "require": "./icon/platform/EnterpriseSolutions/index.cjs",
+      "import": "./icon/platform/EnterpriseSolutions/index.mjs",
+      "types": "./icon/platform/EnterpriseSolutions/index.d.ts"
+    },
     "./icon/platform/HomePlatform": {
       "require": "./icon/platform/HomePlatform/index.cjs",
       "import": "./icon/platform/HomePlatform/index.mjs",
@@ -4805,6 +5003,11 @@
       "require": "./icon/platform/LocalToolkit/index.cjs",
       "import": "./icon/platform/LocalToolkit/index.mjs",
       "types": "./icon/platform/LocalToolkit/index.d.ts"
+    },
+    "./icon/platform/PRToolkit": {
+      "require": "./icon/platform/PRToolkit/index.cjs",
+      "import": "./icon/platform/PRToolkit/index.mjs",
+      "types": "./icon/platform/PRToolkit/index.d.ts"
     },
     "./icon/platform/ReportsToolkit": {
       "require": "./icon/platform/ReportsToolkit/index.cjs",
@@ -5310,11 +5513,6 @@
       "require": "./wizard/index.cjs",
       "import": "./wizard/index.mjs",
       "types": "./wizard/index.d.ts"
-    },
-    "./i18n-unplugin": {
-      "require": "./i18n-unplugin/index.cjs",
-      "import": "./i18n-unplugin/index.mjs",
-      "types": "./i18n-unplugin/index.d.ts"
     }
   }
 }

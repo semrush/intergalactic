@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feedback-form",
   "description": "Semrush Feedback Form Component",
-  "version": "16.3.0",
+  "version": "16.3.0-prerelease.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,26 +17,26 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "16.0.11",
-    "@semcore/checkbox": "16.2.1",
-    "@semcore/notice-bubble": "16.1.12",
-    "@semcore/typography": "16.3.2",
-    "@semcore/link": "16.0.11",
-    "@semcore/modal": "16.1.12",
-    "@semcore/illustration": "16.0.12",
-    "@semcore/icon": "16.7.3",
-    "@semcore/textarea": "16.0.11",
-    "@semcore/input": "16.1.1",
+    "@semcore/flex-box": "16.1.0-prerelease.0",
+    "@semcore/checkbox": "16.3.0-prerelease.0",
+    "@semcore/notice-bubble": "16.3.0-prerelease.0",
+    "@semcore/typography": "16.4.0-prerelease.0",
+    "@semcore/link": "16.1.0-prerelease.0",
+    "@semcore/modal": "16.2.0-prerelease.0",
+    "@semcore/illustration": "16.1.0-prerelease.0",
+    "@semcore/icon": "16.8.0-prerelease.0",
+    "@semcore/textarea": "16.1.0-prerelease.0",
+    "@semcore/input": "16.2.0-prerelease.0",
     "final-form": "4.20.7",
-    "@semcore/button": "16.0.12",
-    "@semcore/notice": "16.1.12",
-    "@semcore/spin-container": "16.0.11",
-    "@semcore/tooltip": "16.0.11",
+    "@semcore/button": "16.1.0-prerelease.0",
+    "@semcore/notice": "16.2.0-prerelease.0",
+    "@semcore/spin-container": "16.1.0-prerelease.0",
+    "@semcore/tooltip": "16.1.0-prerelease.0",
     "final-form-focus": "1.1.2",
     "react-final-form": "6.5.9"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.6.0"
+    "@semcore/base-components": "^16.6.0-prerelease.0"
   },
   "repository": {
     "type": "git",
