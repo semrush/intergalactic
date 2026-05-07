@@ -2,9 +2,9 @@ SHighlightedButton[theme='primary-highlighted'] {
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-image: linear-gradient(90deg,
   var(--intergalactic-violet-500, oklch(0.53 0.26 296)),
-  var(--intergalactic-blue-500, oklch(0.53 0.139 278.4)),
+  var(--intergalactic-blue-500, oklch(0.53 0.157 279.2)),
   var(--intergalactic-violet-400, oklch(0.64 0.223 299.3)),
-  var(--intergalactic-blue-400, oklch(0.58 0.153 278.4)));
+  var(--intergalactic-blue-400, oklch(0.58 0.168 278.2)));
   background-position-x: 99%;
   background-size: 300%;
   transition: background-position-x 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -17,7 +17,7 @@ SHighlightedButton[theme='primary-highlighted'] {
   &:active,
   &[active] {
     color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-image: var(--intergalactic-control-primary-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.58 0.153 278.4)));
+    background-image: var(--intergalactic-control-primary-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.58 0.168 278.2)));
     background-size: 100%;
   }
 
@@ -30,42 +30,42 @@ SHighlightedButton[theme='secondary-highlighted'] {
   color: var(--intergalactic-icon-primary-feature-highlight, oklch(0.58 0.254 297.1));
 
   background:
-    var(--intergalactic-control-secondary-feature-highlight, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.97 0.011 278.4))) padding-box,
-    var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.098 278.4))) border-box;
+    var(--intergalactic-control-secondary-feature-highlight, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.969 0.016 267.7))) padding-box,
+    var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
   & SText {
     background-color: var(--intergalactic-icon-primary-feature-highlight, oklch(0.58 0.254 297.1));
-    background-image: var(--intergalactic-text-feature-highlight, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.139 278.4)));
+    background-image: var(--intergalactic-text-feature-highlight, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2)));
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   &:hover {
     background:
-      var(--intergalactic-control-secondary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.9 0.038 278.4))) padding-box,
-      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.098 278.4))) border-box;
+      var(--intergalactic-control-secondary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))) padding-box,
+      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
 
     color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
 
     & SText {
       background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
-      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.139 278.4)));
+      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2)));
     }
   }
 
   &:active,
   &[active] {
     background:
-      var(--intergalactic-control-secondary-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.9 0.038 278.4))) padding-box,
-      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.098 278.4))) border-box;
+      var(--intergalactic-control-secondary-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))) padding-box,
+      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
 
     color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
 
     & SText {
       background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
-      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.139 278.4)));
+      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2)));
     }
   }
 
@@ -87,7 +87,7 @@ SHighlightedButton {
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.153 278.4)));
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
 
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;

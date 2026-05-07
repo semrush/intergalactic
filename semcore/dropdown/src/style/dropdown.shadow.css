@@ -56,11 +56,11 @@ SDropdownPopper {
   }
 
   SDropdownItem[selected]:not(SDropdownItem[isMenuItemCheckbox]) {
-    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.407 0.258 264.2 / 0.062));
+    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.525 0.265 263 / 0.077));
     box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)) inset;
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.401 0.255 264.2 / 0.154));
+      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.52 0.268 263.2 / 0.191));
     }
   }
 

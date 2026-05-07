@@ -36,7 +36,7 @@ STextarea[size='l'] {
 
 STextarea[state='normal'] {
   &:focus {
-    border-color: var(--intergalactic-border-info-active, oklch(0.382 0.248 264.2 / 0.386));
+    border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
     @mixin focus-outline-mixin {
       outline-offset: 0;
       transition-property: outline-color, outline-width;

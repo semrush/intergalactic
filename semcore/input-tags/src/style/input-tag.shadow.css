@@ -15,8 +15,8 @@ SInputTags[disabled] {
 }
 
 SInputTags SContainer:focus SOutline {
-  border-color: var(--intergalactic-border-info-active, oklch(0.382 0.248 264.2 / 0.386));
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.376 0.247 264.2 / 0.441));
+  border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
 }
 
 SInputTags SContainer:focus:has(SOutline)::after {

@@ -4,12 +4,12 @@ SButtonLink {
 }
 
 SButtonLink[use='primary']:not([color]) {
-  color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
 
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.206 263.4));
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
   }
 }
 

@@ -74,7 +74,7 @@ SRangeIndicator {
 }
 
 SRangeIndicator[range='value'] {
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.64 0.135 278.4));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.64 0.152 276.7));
 }
 
 SRangeIndicator[range='compare'] {
@@ -137,7 +137,7 @@ SInputMask[noHumanizedDate] SMask {
 }
 
 SDateRange SInputMask:focus-within SMask {
-  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.405 0.257 264.2 / 0.093));
+  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.939 0.032 268));
 }
 
 SRangeSep[fulfilled],

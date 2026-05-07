@@ -71,7 +71,7 @@ SNoticeBubble[disablePortal] {
 }
 
 SMessage a {
-  color: var(--intergalactic-text-link-invert, oklch(0.75 0.128 265.5));
+  color: var(--intergalactic-text-link-invert, oklch(0.75 0.125 265.3));
 }
 
 SNoticeAriaLiveWrapper {

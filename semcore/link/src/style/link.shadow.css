@@ -1,7 +1,7 @@
 SLink {
   display: inline;
   align-items: center;
-  color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
   position: relative;
   cursor: pointer;
   text-decoration: none;
@@ -17,7 +17,7 @@ SLink {
   &[active],
   &:hover,
   &:active {
-    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.206 263.4));
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
 
     & SText {
       text-decoration-color: currentColor;

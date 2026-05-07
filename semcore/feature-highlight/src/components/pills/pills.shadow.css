@@ -2,7 +2,7 @@ SHighlightedPill {
   border: 1px solid transparent;
   background:
     linear-gradient(white, white) padding-box,
-    var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.068 278.4))) border-box;
+    var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
   z-index: 1;
@@ -17,7 +17,7 @@ SHighlightedPill {
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.153 278.4)));
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
 
@@ -46,14 +46,14 @@ SHighlightedPill {
   }
 
   &:hover {
-    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.93 0.026 278.4))) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.068 278.4))) border-box;
+    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))) padding-box,
+      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
   }
 
   &[selected] {
     background:
-      var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.93 0.026 278.4))) padding-box,
-      var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.098 278.4))) border-box;
+      var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))) padding-box,
+      var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1))) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-color: transparent;

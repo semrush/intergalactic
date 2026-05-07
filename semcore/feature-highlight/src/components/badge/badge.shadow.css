@@ -3,7 +3,7 @@ SHighlightedBadge {
 }
 
 SHighlightedBadge[use='accent'] {
-  background-image: var(--intergalactic-control-primary-feature-highlight, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.098 278.4)));
+  background-image: var(--intergalactic-control-primary-feature-highlight, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1)));
 }
 
 SHighlightedBadge[bg] {

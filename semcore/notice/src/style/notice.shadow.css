@@ -11,8 +11,8 @@ SNotice {
 }
 
 SNotice[theme='info'] {
-  background-color: var(--intergalactic-bg-secondary-info, oklch(0.96 0.015 278.4));
-  border-color: var(--intergalactic-border-info, oklch(0.399 0.254 264.2 / 0.184));
+  background-color: var(--intergalactic-bg-secondary-info, oklch(0.959 0.021 267.8));
+  border-color: var(--intergalactic-border-info, oklch(0.51 0.274 263.6 / 0.222));
 
   & SCloseIcon {
     color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));

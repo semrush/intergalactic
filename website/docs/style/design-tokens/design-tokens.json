@@ -50,7 +50,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-info",
-    "value": "oklch(0.64 0.135 278.4)",
+    "value": "oklch(0.64 0.152 276.7)",
     "description": "Accent background of the message with regular information.",
     "components": [
       "counter"
@@ -154,7 +154,7 @@
   },
   {
     "name": "--intergalactic-bg-secondary-info",
-    "value": "oklch(0.96 0.015 278.4)",
+    "value": "oklch(0.959 0.021 267.8)",
     "description": "Secondary background of a message with regular information.",
     "components": [
       "notice"
@@ -162,13 +162,13 @@
   },
   {
     "name": "--intergalactic-bg-secondary-info-hover",
-    "value": "oklch(0.96 0.015 278.4)",
+    "value": "oklch(0.959 0.021 267.8)",
     "description": "Hover state of the secondary background of a message with regular information.",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-info-active",
-    "value": "oklch(0.94 0.023 278.4)",
+    "value": "oklch(0.939 0.032 268)",
     "description": "Active (selected) state of the secondary background of a message with regular information.",
     "components": []
   },
@@ -277,7 +277,7 @@
   },
   {
     "name": "--intergalactic-bg-highlight-focus",
-    "value": "oklch(0.405 0.257 264.2 / 0.093)",
+    "value": "oklch(0.939 0.032 268)",
     "description": "Focusing values in the input.",
     "components": [
       "date-picker",
@@ -413,7 +413,7 @@
   },
   {
     "name": "--intergalactic-text-link",
-    "value": "oklch(0.53 0.214 263.4)",
+    "value": "oklch(0.53 0.21 263)",
     "description": "Default interactive link color for unfollowed links.",
     "components": [
       "button",
@@ -425,7 +425,7 @@
   },
   {
     "name": "--intergalactic-text-link-hover-active",
-    "value": "oklch(0.51 0.206 263.4)",
+    "value": "oklch(0.51 0.202 263)",
     "description": "Hover and active states for the link text.",
     "components": [
       "button",
@@ -436,7 +436,7 @@
   },
   {
     "name": "--intergalactic-text-link-invert",
-    "value": "oklch(0.75 0.128 265.5)",
+    "value": "oklch(0.75 0.125 265.3)",
     "description": "Inverted version of the link text. Use on dark background only.",
     "components": [
       "notice-bubble"
@@ -444,7 +444,7 @@
   },
   {
     "name": "--intergalactic-text-link-invert-hover",
-    "value": "oklch(0.85 0.074 266.5)",
+    "value": "oklch(0.85 0.075 265.9)",
     "description": "Hover and active states of the inverted version of the link text. Use on dark background only.",
     "components": []
   },
@@ -496,7 +496,7 @@
   },
   {
     "name": "--intergalactic-text-large-info",
-    "value": "oklch(0.53 0.214 263.4)",
+    "value": "oklch(0.53 0.157 279.2)",
     "description": "Link text with font-size ≥20px.",
     "components": [
       "d3-chart"
@@ -504,7 +504,7 @@
   },
   {
     "name": "--intergalactic-text-large-info-hover-active",
-    "value": "oklch(0.51 0.206 263.4)",
+    "value": "oklch(0.51 0.152 279.7)",
     "description": "Hover and active states of the link text with font-size ≥20px.",
     "components": []
   },
@@ -602,7 +602,7 @@
   },
   {
     "name": "--intergalactic-border-info",
-    "value": "oklch(0.399 0.254 264.2 / 0.184)",
+    "value": "oklch(0.51 0.274 263.6 / 0.222)",
     "description": "Subtle secondary border in the informational message.",
     "components": [
       "notice"
@@ -610,7 +610,7 @@
   },
   {
     "name": "--intergalactic-border-info-active",
-    "value": "oklch(0.382 0.248 264.2 / 0.386)",
+    "value": "oklch(0.443 0.273 264.2 / 0.419)",
     "description": "Active border in focused input filed.",
     "components": [
       "base-trigger",
@@ -906,7 +906,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-info",
-    "value": "oklch(0.41 0.258 264.2 / 0.031)",
+    "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
     "components": [
       "base-trigger",
@@ -916,7 +916,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
-    "value": "oklch(0.407 0.258 264.2 / 0.062)",
+    "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Hover state of the accent secondary control.",
     "components": [
       "base-trigger",
@@ -925,7 +925,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-info-active",
-    "value": "oklch(0.405 0.257 264.2 / 0.093)",
+    "value": "oklch(0.524 0.266 263.1 / 0.116)",
     "description": "Active (selected) state of the accent secondary control.",
     "components": [
       "base-trigger",
@@ -992,7 +992,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-info-hover",
-    "value": "oklch(0.407 0.258 264.2 / 0.062)",
+    "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Hover state of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
@@ -1000,7 +1000,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-info-active",
-    "value": "oklch(0.405 0.257 264.2 / 0.093)",
+    "value": "oklch(0.524 0.266 263.1 / 0.116)",
     "description": "Active (selected) state of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
@@ -1057,13 +1057,13 @@
   },
   {
     "name": "--intergalactic-icon-primary-info",
-    "value": "oklch(0.351 0.237 264.1 / 0.592)",
+    "value": "oklch(0.372 0.253 264.1 / 0.598)",
     "description": "Primary link-lookalike icon.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-primary-info-hover-active",
-    "value": "oklch(0.306 0.205 264.2 / 0.642)",
+    "value": "oklch(0.322 0.222 264.1 / 0.641)",
     "description": "Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.",
     "components": []
   },
@@ -1157,13 +1157,13 @@
   },
   {
     "name": "--intergalactic-icon-secondary-info",
-    "value": "oklch(0.376 0.247 264.2 / 0.441)",
+    "value": "oklch(0.424 0.269 264.2 / 0.469)",
     "description": "Secondary link-lookalike icon.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-info-hover-active",
-    "value": "oklch(0.66 0.128 278.4)",
+    "value": "oklch(0.66 0.145 276.2)",
     "description": "Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color.",
     "components": []
   },
@@ -1245,7 +1245,7 @@
   },
   {
     "name": "--intergalactic-illustration-blue",
-    "value": "oklch(0.84 0.06 278.4)",
+    "value": "oklch(0.84 0.081 271.5)",
     "description": "⚠️ Use only for illustrations.",
     "components": []
   },
@@ -1293,7 +1293,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-range",
-    "value": "oklch(0.96 0.015 278.4)",
+    "value": "oklch(0.959 0.021 267.8)",
     "description": "Background for the cell which is included in the date range in the date-picker.",
     "components": [
       "date-picker"
@@ -1301,7 +1301,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-range-hover",
-    "value": "oklch(0.9 0.038 278.4)",
+    "value": "oklch(0.898 0.054 268.3)",
     "description": "Hover state of the background for the cell which is included in the date range in the date-picker.",
     "components": [
       "date-picker"
@@ -1309,7 +1309,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active",
-    "value": "oklch(0.64 0.135 278.4)",
+    "value": "oklch(0.64 0.152 276.7)",
     "description": "Active (selected) date-picker cell background.",
     "components": [
       "date-picker"
@@ -1317,7 +1317,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active-hover",
-    "value": "oklch(0.6 0.15 278.4)",
+    "value": "oklch(0.6 0.166 277.7)",
     "description": "Hover for the active (selected) date-picker cell background.",
     "components": [
       "date-picker"
@@ -1357,7 +1357,7 @@
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected",
-    "value": "oklch(0.407 0.258 264.2 / 0.062)",
+    "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Active (selected) state of the default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown",
@@ -1366,7 +1366,7 @@
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
-    "value": "oklch(0.401 0.255 264.2 / 0.154)",
+    "value": "oklch(0.52 0.268 263.2 / 0.191)",
     "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown",
@@ -1525,7 +1525,7 @@
   },
   {
     "name": "--intergalactic-table-td-cell-hover",
-    "value": "oklch(0.177 0.033 175.6 / 0.028)",
+    "value": "oklch(0.98 0.001 180)",
     "description": "Background of the default hovered cell in the Table.",
     "components": [
       "data-table"
@@ -1533,7 +1533,7 @@
   },
   {
     "name": "--intergalactic-table-td-cell-active",
-    "value": "oklch(0.177 0.033 175.6 / 0.042)",
+    "value": "oklch(0.97 0.001 180)",
     "description": "Background of the default active cell in the Table.",
     "components": [
       "data-table"
@@ -1557,7 +1557,7 @@
   },
   {
     "name": "--intergalactic-table-td-cell-selected",
-    "value": "oklch(0.98 0.008 278.4)",
+    "value": "oklch(0.98 0.01 267.6)",
     "description": "Background of the selected cell in the Table.",
     "components": [
       "data-table"
@@ -1565,7 +1565,7 @@
   },
   {
     "name": "--intergalactic-table-td-cell-selected-hover",
-    "value": "oklch(0.96 0.015 278.4)",
+    "value": "oklch(0.959 0.021 267.8)",
     "description": "Background of the hovered selected cell in the Table.",
     "components": [
       "data-table"
@@ -1573,7 +1573,7 @@
   },
   {
     "name": "--intergalactic-table-td-cell-selected-active",
-    "value": "oklch(0.94 0.023 278.4)",
+    "value": "oklch(0.939 0.032 268)",
     "description": "Background of the active selected cell in the Table.",
     "components": [
       "data-table"
@@ -1725,7 +1725,7 @@
   },
   {
     "name": "--intergalactic-keyboard-focus-outline",
-    "value": "oklch(0.376 0.247 264.2 / 0.441)",
+    "value": "oklch(0.424 0.269 264.2 / 0.469)",
     "description": "Color for default keyboard focus outline styles.",
     "components": []
   },
@@ -2092,7 +2092,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-1",
-    "value": "oklch(0.58 0.153 278.4)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "1 color in the default list of colors for charts.",
     "components": [
       "d3-chart",
@@ -2127,7 +2127,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-6",
-    "value": "oklch(0.82 0.068 278.4)",
+    "value": "oklch(0.82 0.088 272.1)",
     "description": "6 color in the default list of colors for charts.",
     "components": []
   },
@@ -2145,7 +2145,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.53 0.139 278.4)",
+    "value": "oklch(0.53 0.157 279.2)",
     "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -2195,7 +2195,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-17",
-    "value": "oklch(0.82 0.068 278.4)",
+    "value": "oklch(0.82 0.088 272.1)",
     "description": "17 color in the default list of colors for charts.",
     "components": []
   },
@@ -2517,7 +2517,7 @@
   },
   {
     "name": "--intergalactic-keyboard-focus",
-    "value": "0px 0px 0px 3px oklch(0.376 0.247 264.2 / 0.441)",
+    "value": "0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469)",
     "description": "Default keyboard focus box-shadow styles.",
     "components": [
       "input-tags",
@@ -2772,7 +2772,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-feature-highlight-hover-active",
-    "value": "linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.93 0.026 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))",
     "description": "Primary background for hover and active (selected) state of highlighted controls.",
     "components": [
       "feature-highlight"
@@ -2780,7 +2780,7 @@
   },
   {
     "name": "--intergalactic-bg-secondary-feature-highlight",
-    "value": "linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.93 0.026 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))",
     "description": "Secondary background for the highlighted message.",
     "components": [
       "feature-highlight"
@@ -2788,7 +2788,7 @@
   },
   {
     "name": "--intergalactic-border-feature-highlight",
-    "value": "linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.068 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))",
     "description": "Primary border for highlighted controls.",
     "components": [
       "feature-highlight"
@@ -2796,7 +2796,7 @@
   },
   {
     "name": "--intergalactic-border-feature-highlight-active",
-    "value": "linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.098 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))",
     "description": "Primary border for the active state of highlighted controls.",
     "components": [
       "feature-highlight"
@@ -2804,7 +2804,7 @@
   },
   {
     "name": "--intergalactic-border-feature-highlight-secondary",
-    "value": "linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.098 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))",
     "description": "Secondary border for highlighted controls.",
     "components": [
       "feature-highlight"
@@ -2812,7 +2812,7 @@
   },
   {
     "name": "--intergalactic-control-primary-feature-highlight",
-    "value": "linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.098 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1))",
     "description": "Background of the highlighted primary control.",
     "components": [
       "feature-highlight"
@@ -2820,7 +2820,7 @@
   },
   {
     "name": "--intergalactic-control-primary-feature-highlight-hover",
-    "value": "linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.098 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1))",
     "description": "Hover state of the highlighted primary control.",
     "components": [
       "feature-highlight"
@@ -2828,7 +2828,7 @@
   },
   {
     "name": "--intergalactic-control-primary-feature-highlight-active",
-    "value": "linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.58 0.153 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.58 0.168 278.2))",
     "description": "Active (selected) state of the highlighted primary control.",
     "components": [
       "feature-highlight"
@@ -2836,7 +2836,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight",
-    "value": "linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.97 0.011 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.969 0.016 267.7))",
     "description": "Background of the highlighted secondary control.",
     "components": [
       "feature-highlight"
@@ -2844,7 +2844,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight-hover",
-    "value": "linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.9 0.038 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))",
     "description": "Hover state of the highlighted secondary control.",
     "components": [
       "feature-highlight"
@@ -2852,7 +2852,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight-active",
-    "value": "linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.9 0.038 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))",
     "description": "Active (selected) state of the highlighted secondary control.",
     "components": [
       "feature-highlight"
@@ -2860,7 +2860,7 @@
   },
   {
     "name": "--intergalactic-text-feature-highlight",
-    "value": "linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.139 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2))",
     "description": "Text for highlighted features.",
     "components": [
       "feature-highlight"
@@ -2868,7 +2868,7 @@
   },
   {
     "name": "--intergalactic-text-feature-highlight-hover-active",
-    "value": "linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.139 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2))",
     "description": "Text for hover and active states of highlighted features.",
     "components": [
       "feature-highlight"
@@ -2892,13 +2892,13 @@
   },
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight",
-    "value": "3px solid linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.153 278.4))",
+    "value": "3px solid linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2))",
     "description": "Keyboard focus styles for highlighted controls.",
     "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
-    "value": "linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.153 278.4))",
+    "value": "linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2))",
     "description": "Color for keyboard focus outline styles for highlighted controls.",
     "components": [
       "feature-highlight"

@@ -176,19 +176,19 @@ SButton[theme='secondary-muted'] {
 }
 
 SButton[theme='secondary-info'] {
-  background-color: var(--intergalactic-control-secondary-info, oklch(0.41 0.258 264.2 / 0.031));
-  color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
+  background-color: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039));
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
   border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
 
   &:hover {
-    color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.407 0.258 264.2 / 0.062));
+    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.525 0.265 263 / 0.077));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.405 0.257 264.2 / 0.093));
+    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.524 0.266 263.1 / 0.116));
   }
 }
 
@@ -211,18 +211,18 @@ SButton[theme='secondary-invert'] {
 }
 
 SButton[theme='tertiary-info'] {
-  color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
   background-color: var(--intergalactic-control-tertiary-info, transparent);
 
   &:hover {
-    color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.407 0.258 264.2 / 0.062));
+    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.525 0.265 263 / 0.077));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
-    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.405 0.257 264.2 / 0.093));
+    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.524 0.266 263.1 / 0.116));
   }
 }
 

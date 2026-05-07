@@ -228,7 +228,7 @@ SText {
 SText:focus-visible {
   box-shadow: var(
     --intergalactic-keyboard-focus,
-    0px 0px 0px 3px oklch(0.376 0.247 264.2 / 0.441)
+    0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469)
   );
   z-index: 1;
 }

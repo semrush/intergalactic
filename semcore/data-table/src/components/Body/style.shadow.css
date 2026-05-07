@@ -68,7 +68,7 @@ SCollapseRow > SCellWrapper > SCell {
 
 SRow[accordionType='row'][expanded] > SCellWrapper > SCell:not([theme]),
 SCell:not([theme])[expanded][withAccordion] {
-  background-color: var(--intergalactic-table-td-cell-active, oklch(0.177 0.033 175.6 / 0.042));
+  background-color: var(--intergalactic-table-td-cell-active, oklch(0.97 0.001 180));
 }
 
 SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWrapper > SCell:not([theme]) {
@@ -80,7 +80,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   :not(SRowGroup:has([data-row-selector="true"] input:checked)) > SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not(:has([data-row-selector="true"] input:checked)):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-hover, oklch(0.177 0.033 175.6 / 0.028));
+    background-color: var(--intergalactic-table-td-cell-hover, oklch(0.98 0.001 180));
   }
 
   /* MUTED THEME */
@@ -90,7 +90,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-active, oklch(0.177 0.033 175.6 / 0.042));
+    background-color: var(--intergalactic-table-td-cell-active, oklch(0.97 0.001 180));
   }
 
   /* INFO THEME */
@@ -104,7 +104,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has([data-row-selector="true"] input:checked) > SRow:hover:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='info']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow[theme='info']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-selected-hover, oklch(0.96 0.015 278.4));
+    background-color: var(--intergalactic-table-td-cell-selected-hover, oklch(0.959 0.021 267.8));
   }
 
   /* SUCCESS THEME */
@@ -140,10 +140,10 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
 
 SRowGroup:has([data-row-selector="true"] input:checked) > SRow > SCellWrapper > SCell,
 SRow:has([data-row-selector="true"] input:checked) > SCellWrapper > SCell {
-  background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.008 278.4));
+  background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.01 267.6));
 
   &[expanded][withAccordion] {
-    background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.023 278.4));
+    background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.939 0.032 268));
   }
 }
 
@@ -204,15 +204,15 @@ SCell {
     background-color: var(--intergalactic-table-td-cell-unread, oklch(0.98 0.001 180));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-active, oklch(0.177 0.033 175.6 / 0.042));
+      background-color: var(--intergalactic-table-td-cell-active, oklch(0.97 0.001 180));
     }
   }
 
   &[theme='info'] {
-    background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.008 278.4));
+    background-color: var(--intergalactic-table-td-cell-selected, oklch(0.98 0.01 267.6));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.94 0.023 278.4));
+      background-color: var(--intergalactic-table-td-cell-selected-active, oklch(0.939 0.032 268));
     }
   }
 

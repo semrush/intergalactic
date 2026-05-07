@@ -76,12 +76,12 @@ STabPanelItem[disabled] {
 }
 
 STabPanelItem[selected] {
-  color: var(--intergalactic-text-link, oklch(0.53 0.214 263.4));
+  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
   border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   flex-shrink: 0;
 
   &:hover {
-    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.206 263.4));
+    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
   }
 
   &::after {

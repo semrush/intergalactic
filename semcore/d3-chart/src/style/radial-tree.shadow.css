@@ -2,11 +2,11 @@
 
 SRadian {
   cursor: pointer;
-  fill: var(--intergalactic-text-large-info, oklch(0.53 0.214 263.4));
+  fill: var(--intergalactic-text-large-info, oklch(0.53 0.157 279.2));
 }
 
 SLine {
-  stroke: var(--intergalactic-text-large-info, oklch(0.53 0.214 263.4));
+  stroke: var(--intergalactic-text-large-info, oklch(0.53 0.157 279.2));
 }
 
 SLine[stroke] {
