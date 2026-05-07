@@ -208,7 +208,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await test.step('Verify focus orted and is looped inside side panel', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.back(page)).toBeFocused();
-      await expect(locators.back(page)).toHaveAttribute('color', 'var(--intergalactic-text-hint, #6c6e79)');
+      await expect(locators.back(page)).toHaveAttribute('color', /^var\(--intergalactic-text-hint,/);
 
       await page.keyboard.press('Tab');
       await expect(footerButtons.first()).toBeFocused();

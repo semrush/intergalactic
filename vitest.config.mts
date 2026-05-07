@@ -48,7 +48,6 @@ export default defineConfig({
   },
   test: {
     testTimeout: 60 * 1000,
-    projects: ['semcore/*', 'tools/*'],
     include: [
       'semcore/*/__tests__/**/*.test.tsx',
       'semcore/*/__tests__/**/*.test.jsx',
