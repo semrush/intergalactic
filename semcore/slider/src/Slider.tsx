@@ -110,7 +110,7 @@ class SliderRoot extends Component<
     document.removeEventListener('touchend', this.handleMouseEnd);
   };
 
-  handleMouseMove = (event: TouchEvent | MouseEvent) => {
+  handleMouseMove = (event: MouseEvent | TouchEvent | React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     if (!this.sliderRef.current) return;
@@ -124,7 +124,7 @@ class SliderRoot extends Component<
     const { min, max, step, options } = this.asProps;
 
     const sliderSize = this.sliderRef.current.offsetWidth;
-    const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
     const newLeft = clientX - this.sliderRef.current.getBoundingClientRect().left;
 
     if (newLeft <= 0) {
