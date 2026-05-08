@@ -21,9 +21,9 @@ function formatDate(value: any, options: any) {
 }
 
 const lineColors: Record<string, string> = {
-  stack1: '--blue-300',
-  stack2: '--green-200',
-  stack3: '--orange-400',
+  stack1: 'chart-palette-order-1',
+  stack2: 'chart-palette-order-2',
+  stack3: 'chart-palette-order-3',
 };
 
 const dataHints = makeDataHintsContainer();

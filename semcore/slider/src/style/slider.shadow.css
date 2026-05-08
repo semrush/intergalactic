@@ -15,11 +15,11 @@ SSlider {
     height: 4px;
     width: 100%;
     border-radius: var(--intergalactic-progress-bar-rounded, 6px);
-    background-color: var(--intergalactic-border-secondary, #e0e1e9);
+    background-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   }
 
   &:hover:before {
-    background-color: var(--intergalactic-border-primary, #c4c7cf);
+    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 
   &:active SKnob,
@@ -36,7 +36,7 @@ SSlider {
 }
 
 SSlider[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
 }
@@ -50,7 +50,7 @@ SBar {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
   cursor: pointer;
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) width ease-in-out;
 }
@@ -62,14 +62,14 @@ SKnob {
   width: 20px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-  border: 5px solid var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  border: 5px solid var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
   cursor: pointer;
   transform: translate(-50%, -50%);
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) left ease-in-out;
 
   &:hover {
-    border-color: var(--intergalactic-control-primary-info-hover, #006dca);
+    border-color: var(--intergalactic-control-primary-info-hover, oklch(0.32 0.007 140));
   }
 }
 
@@ -81,7 +81,7 @@ SInput {
 
 SSliderOptions {
   padding-top: var(--intergalactic-spacing-05x, 2px);
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   font-size: var(--intergalactic-fs-200, 14px);
   font-weight: var(--intergalactic-regular, 400);
   line-height: var(--intergalactic-lh-200, 142%);

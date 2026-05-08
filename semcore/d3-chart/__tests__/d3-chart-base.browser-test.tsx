@@ -110,6 +110,121 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
+  test.describe('Axes and Grids', () => {
+    const GRID_AXIS_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/grid-axis-props.tsx';
+
+    const pairwiseCases = [
+      {
+        name: '#1 left+top, all minimal',
+        props: {
+          yPosition: 'left',
+          xPosition: 'top',
+          yTicksMultiline: false,
+          yShowGrid: false,
+          yShowTitle: false,
+          xShowTitle: false,
+          xTicksMultiline: false,
+        },
+      },
+      {
+        name: '#2 left+top, multiline+grid+titles (yTitle=top, xTitle=right)',
+        props: {
+          yPosition: 'left',
+          xPosition: 'top',
+          yTicksMultiline: true,
+          yShowGrid: true,
+          yShowTitle: true,
+          yTitlePosition: 'top',
+          xShowTitle: true,
+          xTitlePosition: 'right',
+          xTicksMultiline: true,
+        },
+      },
+      {
+        name: '#3 left+bottom, grid+titles (yTitle=right, xTitle=bottom)',
+        props: {
+          yPosition: 'left',
+          xPosition: 'bottom',
+          yTicksMultiline: false,
+          yShowGrid: true,
+          yShowTitle: true,
+          yTitlePosition: 'right',
+          xShowTitle: true,
+          xTitlePosition: 'bottom',
+          xTicksMultiline: false,
+        },
+      },
+      {
+        name: '#4 left+bottom, multiline+titles (yTitle=bottom, xTitle=left)',
+        props: {
+          yPosition: 'left',
+          xPosition: 'bottom',
+          yTicksMultiline: true,
+          yShowGrid: false,
+          yShowTitle: true,
+          yTitlePosition: 'bottom',
+          xShowTitle: true,
+          xTitlePosition: 'left',
+          xTicksMultiline: true,
+        },
+      },
+      {
+        name: '#5 right+top, grid+titles (yTitle=left, xTitle=top)',
+        props: {
+          yPosition: 'right',
+          xPosition: 'top',
+          yTicksMultiline: false,
+          yShowGrid: true,
+          yShowTitle: true,
+          yTitlePosition: 'left',
+          xShowTitle: true,
+          xTitlePosition: 'top',
+          xTicksMultiline: true,
+        },
+      },
+      {
+        name: '#8 right+bottom, custom yTicks=[0,50,100] suffix=% xCategories=[Jan..Apr]',
+        props: {
+          yPosition: 'right',
+          xPosition: 'bottom',
+          yTicks: [0, 50, 100],
+          yTickSuffix: '%',
+          xCategories: ['Jan', 'Feb', 'Mar', 'Apr'],
+          yTicksMultiline: true,
+          yShowGrid: true,
+          yShowTitle: false,
+          xShowTitle: false,
+          xTicksMultiline: false,
+        },
+      },
+    ];
+
+    pairwiseCases.forEach((c) => {
+      test(`Verify pairwise ${c.name}`, {
+        tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
+      }, async ({ page }) => {
+        await loadPage(page, GRID_AXIS_EXAMPLE, 'en', c.props);
+        await locators.plot(page).waitFor({ state: 'visible' });
+        await expect(page).toHaveScreenshot();
+      });
+    });
+
+    test('Verify vertical writing mode + primaryText ticks on both axes', {
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en', {
+        yShowTitle: true,
+        yTitle: 'YAxis title',
+        yTitlePosition: 'left',
+        yVerticalWritingMode: true,
+        yTicksPrimaryText: true,
+        xTicksPrimaryText: true,
+      });
+      await locators.plot(page).waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot();
+    });
+  });
+
   test.describe('Adaptive chart', () => {
     test('Verify chart looks good on small resolutions', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
@@ -370,84 +485,109 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Axes and Grids', () => {
-    test('Verify attributes of all <text> elements in the chart ', {
+    const GRID_AXIS_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/grid-axis-props.tsx';
+
+    test('Verify attributes of all <text> elements in the chart', {
       tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/d3-chart/tests/examples/d3-chart/grid-axis-props.tsx', 'en');
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en', {
+        yShowTitle: true,
+        yTitle: 'YAxis title',
+        xShowTitle: true,
+        xTitle: 'XAxis title',
+        yShowGrid: true,
+      });
+      await locators.plot(page).waitFor({ state: 'visible' });
 
-      const svgs = page.locator('svg');
-      for (let i = 0; i < 2; i++) {
-        const svg = svgs.nth(i);
-        const lines = svg.locator('text');
+      const ticks = locators.axisTicks(page);
+      const ticksCount = await ticks.count();
+      expect(ticksCount).toBeGreaterThan(0);
 
-        const count = await lines.count();
-        expect(count).toBeGreaterThan(0);
-
-        for (let i = 0; i < count; i++) {
-          const line = lines.nth(i);
-
-          await expect(line).toHaveAttribute('aria-hidden', 'true');
-          await expect(line).toHaveAttribute('data-ui-name', 'Axis.Ticks');
-
-          const x = await line.getAttribute('x');
-          const y = await line.getAttribute('y');
-
-          expect(x).not.toBeNull();
-          expect(y).not.toBeNull();
-        }
+      for (let i = 0; i < ticksCount; i++) {
+        const tick = ticks.nth(i);
+        await expect(tick).toHaveAttribute('aria-hidden', 'true');
+        await expect(tick).toHaveAttribute('data-ui-name', 'Axis.Ticks');
+        const x = await tick.getAttribute('x');
+        const y = await tick.getAttribute('y');
+        expect(x).not.toBeNull();
+        expect(y).not.toBeNull();
       }
 
-      for (let i = 0; i < 1; i++) {
-        const svg = svgs.nth(i);
-        const lines = svg.locator('line');
+      const axes = locators.axis(page);
+      const axesCount = await axes.count();
+      expect(axesCount).toBeGreaterThan(0);
 
-        const count = await lines.count();
-        expect(count).toBeGreaterThan(0);
-
-        for (let i = 0; i < count; i++) {
-          const line = lines.nth(i);
-
-          await expect(line).toHaveAttribute('aria-hidden', 'true');
-          await expect(line).toHaveAttribute('data-ui-name', 'Axis');
-
-          const x1 = await line.getAttribute('x1');
-          const y1 = await line.getAttribute('y1');
-
-          expect(x1).not.toBeNull();
-          expect(y1).not.toBeNull();
-        }
+      for (let i = 0; i < axesCount; i++) {
+        const axis = axes.nth(i);
+        await expect(axis).toHaveAttribute('aria-hidden', 'true');
+        await expect(axis).toHaveAttribute('data-ui-name', 'Axis');
+        const x1 = await axis.getAttribute('x1');
+        const y1 = await axis.getAttribute('y1');
+        expect(x1).not.toBeNull();
+        expect(y1).not.toBeNull();
       }
 
-      const svg4 = svgs.nth(4);
-      const titleCount = await svg4.locator('[data-ui-name="Axis.Title"]').count();
+      const titles = locators.axisTitle(page);
+      const titleCount = await titles.count();
       expect(titleCount).toBeGreaterThan(0);
 
       for (let i = 0; i < titleCount; i++) {
-        const title = locators.axisTitle(page, i);
-
+        const title = titles.nth(i);
         await expect(title).toHaveAttribute('aria-hidden', 'true');
-
-        const x1 = await title.getAttribute('x');
-        const y1 = await title.getAttribute('y');
-
-        expect(x1).not.toBeNull();
-        expect(y1).not.toBeNull();
+        const x = await title.getAttribute('x');
+        const y = await title.getAttribute('y');
+        expect(x).not.toBeNull();
+        expect(y).not.toBeNull();
       }
 
-      const gridCount = await svg4.locator('[data-ui-name="Axis.Grid"]').count();
+      const grids = locators.axisGrid(page);
+      const gridCount = await grids.count();
       expect(gridCount).toBeGreaterThan(0);
 
       for (let i = 0; i < gridCount; i++) {
-        const grid = locators.axisGrid(page, i);
-
+        const grid = grids.nth(i);
         await expect(grid).toHaveAttribute('aria-hidden', 'true');
-
         const x1 = await grid.getAttribute('x1');
         const y1 = await grid.getAttribute('y1');
-
         expect(x1).not.toBeNull();
         expect(y1).not.toBeNull();
       }
+    });
+
+    test('Verify yHide=true hides at least one axis via display:none', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en', { yHide: true });
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const axes = locators.axis(page);
+      const count = await axes.count();
+      expect(count).toBeGreaterThan(0);
+
+      let hiddenCount = 0;
+      for (let i = 0; i < count; i++) {
+        const display = await axes.nth(i).evaluate((el) => getComputedStyle(el).display);
+        if (display === 'none') hiddenCount++;
+      }
+      expect(hiddenCount).toBeGreaterThan(0);
+    });
+
+    test('Verify yTicksHide=true hides Y tick texts via display:none', {
+      tag: [TAG.PRIORITY_HIGH, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, GRID_AXIS_EXAMPLE, 'en', { yTicksHide: true });
+      await locators.plot(page).waitFor({ state: 'visible' });
+
+      const ticks = locators.axisTicks(page);
+      const count = await ticks.count();
+      expect(count).toBeGreaterThan(0);
+
+      let hiddenCount = 0;
+      for (let i = 0; i < count; i++) {
+        const display = await ticks.nth(i).evaluate((el) => getComputedStyle(el).display);
+        if (display === 'none') hiddenCount++;
+      }
+      expect(hiddenCount).toBeGreaterThan(0);
     });
   });
 

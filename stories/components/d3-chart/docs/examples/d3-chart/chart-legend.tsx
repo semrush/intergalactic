@@ -6,8 +6,8 @@ import React from 'react';
 import LineMockData from '../../../__mocks__/line';
 
 const MAP_THEME = {
-  line1: 'orange',
-  line2: 'green',
+  line1: 'chart-palette-order-1',
+  line2: 'chart-palette-order-2',
 };
 
 const Demo = () => {

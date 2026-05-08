@@ -16,7 +16,7 @@ SItemContainer {
   cursor: pointer;
 
   &:hover {
-    border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+    border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   }
 
   &::after {
@@ -25,7 +25,7 @@ SItemContainer {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    box-shadow: inset 0px 0px 1px var(--intergalactic-border-secondary, #e0e1e9);
+    box-shadow: inset 0px 0px 1px var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
     background: var(--value);
   }
 }
@@ -35,7 +35,7 @@ SItemContainer:hover>SCloseIcon {
 }
 
 SItemContainer[selected] {
-  border: 1px solid var(--intergalactic-border-info-active, #006dca);
+  border: 1px solid var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
 }
 
 SItemContainer[displayLabel] {
@@ -47,7 +47,7 @@ SItemContainer[displayLabel] {
 
 SItemContainer:not([value]) {
   &::after {
-    border: 0.9px solid var(--intergalactic-border-secondary, #e0e1e9);
+    border: 0.9px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   }
 
   &::before {
@@ -58,7 +58,7 @@ SItemContainer:not([value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 22px;
-    background: var(--intergalactic-border-secondary, #e0e1e9);
+    background: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
     z-index: 0;
   }
 }
@@ -94,11 +94,11 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, rgba(138, 142, 155, 0.2));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.176 0.033 175.6 / 0.056));
   }
 
   &:active {
-    background-color: var(--intergalactic-control-tertiary-neutral-active, rgba(138, 142, 155, 0.3));
+    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.176 0.033 175.7 / 0.084));
   }
 }
 
@@ -124,7 +124,7 @@ STriggerCircle {
 }
 
 STriggerCircle:not([data-value]) {
-  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 
   &::before {
     content: '';
@@ -149,7 +149,7 @@ SCloseIcon {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   opacity: 0;
   z-index: 1;
 }
@@ -166,7 +166,7 @@ SItemColor {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   background: var(--data-value);
 }
 

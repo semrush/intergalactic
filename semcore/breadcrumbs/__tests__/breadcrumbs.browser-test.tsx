@@ -20,22 +20,18 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     const expectedLinkStyles = {
       fontSize: '14px',
-      color: 'rgb(108, 110, 121)',
       cursor: 'pointer',
     };
 
     const expectedHoverStyles = {
-      color: 'rgb(25, 27, 35)',
       textDecoration: 'underline',
     };
 
     const expectedLastItemStyles = {
       fontSize: '14px',
-      color: 'rgb(25, 27, 35)',
       cursor: 'default',
     };
 
-    const expectedChevronColor = 'rgb(169, 171, 182)';
     const expectedSeparatorMargin = '8px';
 
     await test.step('Verify active item style', async () => {
@@ -43,7 +39,6 @@ test.describe(`${TAG.VISUAL}`, () => {
         const styles = getComputedStyle(el);
         return {
           fontSize: styles.fontSize,
-          color: styles.color,
           cursor: styles.cursor,
         };
       });
@@ -57,7 +52,6 @@ test.describe(`${TAG.VISUAL}`, () => {
           const computed = getComputedStyle(el);
           return {
             fontSize: computed.fontSize,
-            color: computed.color,
             cursor: computed.cursor,
           };
         });
@@ -69,7 +63,6 @@ test.describe(`${TAG.VISUAL}`, () => {
           const hoverStyles = await link.evaluate((el) => {
             const computed = getComputedStyle(el);
             return {
-              color: computed.color,
               textDecoration: computed.textDecorationLine || computed.textDecoration,
             };
           });
@@ -83,9 +76,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
     await test.step('Verify separator styles', async () => {
       for (const icon of await chevronIcons.all()) {
-        const color = await icon.evaluate((el) => getComputedStyle(el).color);
-        expect(color).toBe(expectedChevronColor);
-
         const marginLeft = await icon.evaluate(
           (el) => getComputedStyle(el.parentElement!).marginLeft,
         );

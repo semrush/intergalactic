@@ -68,6 +68,7 @@
     "@babel/plugin-proposal-export-default-from": "7.23.3",
     "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@mdit-vue/shared": "1.0.0",
+    "@semcore/theme": "workspace:*",
     "@types/classnames": "2.2.6",
     "@types/express": "4.17.1",
     "@types/markdown-it": "^13.0.9",

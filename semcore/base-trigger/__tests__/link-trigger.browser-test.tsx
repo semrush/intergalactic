@@ -3,7 +3,7 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators } from './utils';
+import { locators, waitForHint } from './utils';
 
 const storyPath = 'stories/components/base-trigger/tests/examples/link-trigger/base.tsx';
 
@@ -79,13 +79,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
           await page.keyboard.press('Tab');
           await page.waitForTimeout(100);
           await expect(locators.button(page).first()).toBeFocused();
-          await locators.hint(page).waitFor({ state: 'visible' });
-          await page.waitForFunction(
-            () => {
-              const el = document.querySelector('[data-ui-name="Hint"]');
-              return el && getComputedStyle(el).opacity === '1';
-            },
-          );
+          await waitForHint(page);
           await expect(page).toHaveScreenshot({ clip });
         });
 
@@ -105,13 +99,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
         await test.step('Verify active state + hover hint', async () => {
           await locators.button(page).first().hover();
           await page.waitForTimeout(100);
-          await locators.hint(page).waitFor({ state: 'visible' });
-          await page.waitForFunction(
-            () => {
-              const el = document.querySelector('[data-ui-name="Hint"]');
-              return el && getComputedStyle(el).opacity === '1';
-            },
-          );
+          await waitForHint(page);
           await expect(page).toHaveScreenshot({ clip: activeClip });
         });
       });
