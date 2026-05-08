@@ -9,15 +9,22 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
   }
 };
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-dropdown-menu-item-hover': 'rgba(0, 22, 16, 0.028)',
+  '--intergalactic-dropdown-menu-item-selected': 'rgba(0, 80, 255, 0.077)',
+  '--intergalactic-dropdown-menu-item-selected-hover': 'rgba(0, 77, 255, 0.191)',
+};
+
 const getCssVarColor = async (page: Page, varName: string) => {
-  return page.evaluate((name) => {
+  return page.evaluate(({ name, fallback }) => {
     const probe = document.createElement('div');
-    probe.style.backgroundColor = `var(${name})`;
+    probe.style.backgroundColor = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
     document.body.appendChild(probe);
     const color = window.getComputedStyle(probe).backgroundColor;
     probe.remove();
     return color;
-  }, varName);
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
 };
 
 export const locators = {

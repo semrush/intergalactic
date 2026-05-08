@@ -63,19 +63,45 @@ const stylesExpandedTokens = [
 
 type ColorProperty = 'backgroundColor' | 'borderColor' | 'color';
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-bg-primary-neutral': 'rgb(255, 255, 255)',
+  '--intergalactic-border-secondary': 'rgba(0, 21, 16, 0.07)',
+  '--intergalactic-border-table-accent': 'rgba(0, 12, 8, 0.161)',
+  '--intergalactic-table-td-cell-accordion': 'rgb(255, 255, 255)',
+  '--intergalactic-table-td-cell-active': 'rgb(244, 245, 245)',
+  '--intergalactic-table-td-cell-critical': 'rgb(255, 244, 247)',
+  '--intergalactic-table-td-cell-critical-active': 'rgb(255, 226, 230)',
+  '--intergalactic-table-td-cell-critical-hover': 'rgb(255, 235, 239)',
+  '--intergalactic-table-td-cell-hover': 'rgb(248, 249, 248)',
+  '--intergalactic-table-td-cell-new': 'rgb(225, 255, 250)',
+  '--intergalactic-table-td-cell-new-active': 'rgb(181, 252, 235)',
+  '--intergalactic-table-td-cell-new-hover': 'rgb(201, 255, 243)',
+  '--intergalactic-table-td-cell-selected': 'rgb(246, 248, 255)',
+  '--intergalactic-table-td-cell-selected-active': 'rgb(226, 235, 255)',
+  '--intergalactic-table-td-cell-selected-hover': 'rgb(236, 241, 255)',
+  '--intergalactic-table-td-cell-unread': 'rgb(248, 249, 248)',
+  '--intergalactic-table-td-cell-warning': 'rgb(255, 248, 230)',
+  '--intergalactic-table-td-cell-warning-active': 'rgb(255, 231, 193)',
+  '--intergalactic-table-td-cell-warning-hover': 'rgb(255, 240, 212)',
+  '--intergalactic-table-th-primary-cell': 'rgb(248, 249, 248)',
+  '--intergalactic-table-th-secondary-cell': 'rgb(255, 255, 255)',
+  '--intergalactic-text-primary': 'rgba(1, 5, 0, 0.899)',
+};
+
 export const getCssVarColor = async (
   page: Page,
   varName: string,
   property: ColorProperty = 'backgroundColor',
 ) => {
-  return page.evaluate(({ name, property }) => {
+  return page.evaluate(({ name, property, fallback }) => {
     const probe = document.createElement('div');
-    probe.style[property] = `var(${name})`;
+    probe.style[property] = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
     document.body.appendChild(probe);
     const color = window.getComputedStyle(probe)[property];
     probe.remove();
     return color;
-  }, { name: varName, property });
+  }, { name: varName, property, fallback: cssVarColorFallbacks[varName] });
 };
 
 export const getCssVarBorder = async (page: Page, varName: string) =>
