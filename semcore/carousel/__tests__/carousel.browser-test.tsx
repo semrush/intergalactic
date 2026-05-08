@@ -54,9 +54,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await test.step('Verify Prev and Next buttons Focus and Hover styles', async () => {
         await page.keyboard.press('Tab');
-        await page.getByText('Previous slide').waitFor({ state: 'visible' });
+        await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
         await locators.button(page, 'Next slide').hover();
-        await page.getByText('Next slide').waitFor({ state: 'visible' });
+        await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
 
@@ -84,9 +84,9 @@ test.describe(`${TAG.VISUAL} `, () => {
         await locators.img(page).nth(4).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('Tab');
-        await page.getByText('Previous slide').waitFor({ state: 'visible' });
+        await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
         await locators.button(page, 'Next slide').nth(1).hover();
-        await page.getByText('Next slide').waitFor({ state: 'visible' });
+        await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
       });
 
