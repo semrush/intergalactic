@@ -84,7 +84,7 @@ const Demo = () => {
   };
 
   React.useEffect(() => {
-    const newFilteredProjects = [];
+    const newFilteredProjects: typeof groups = [];
     let highlightedIndex = -1;
     groups.forEach((group, i) => {
       group.projects.forEach((item, j) => {
