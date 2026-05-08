@@ -29,15 +29,15 @@
       "import": "./lib/dark.ts",
       "require": "./lib/dark.ts"
     },
-    "./highlight-light": {
-      "types": "./lib/highlight-light.ts",
-      "import": "./lib/highlight-light.ts",
-      "require": "./lib/highlight-light.ts"
+    "./highlights-light": {
+      "types": "./lib/highlights-light.ts",
+      "import": "./lib/highlights-light.ts",
+      "require": "./lib/highlights-light.ts"
     },
-    "./highlight-dark": {
-      "types": "./lib/highlight-dark.ts",
-      "import": "./lib/highlight-dark.ts",
-      "require": "./lib/highlight-dark.ts"
+    "./highlights-dark": {
+      "types": "./lib/highlights-dark.ts",
+      "import": "./lib/highlights-dark.ts",
+      "require": "./lib/highlights-dark.ts"
     },
     "./panda-preset": {
       "types": "./lib/panda-preset.ts",
@@ -50,7 +50,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
-    "directory": "semcore/theme"
+    "directory": "tools/theme"
   },
   "devDependencies": {
     "colorjs.io": "0.6.1",
