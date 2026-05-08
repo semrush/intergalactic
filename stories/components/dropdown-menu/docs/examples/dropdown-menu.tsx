@@ -41,11 +41,11 @@ const Demo = () => {
             aria-labelledby='export-notice-title'
             theme='warning'
             style={{
-              padding: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-2x)',
+              padding: 'var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px)',
               borderWidth: 0,
               borderTopWidth: '1px',
               borderRadius:
-                '0 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium)',
+                '0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)',
             }}
           >
             <Notice.Content>

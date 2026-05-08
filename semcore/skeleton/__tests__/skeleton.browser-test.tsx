@@ -45,8 +45,18 @@ test.describe(`${TAG.VISUAL}`, () => {
     const count = await card.count();
 
     for (let i = 0; i < count; i++) {
-      const title = await card.nth(i).locator('[data-ui-name="Card.Title"]').textContent();
-      await expect(card.nth(i)).toHaveScreenshot(`${title}.png`);
+      const currentCard = card.nth(i);
+      const title = await currentCard.locator('[data-ui-name="Card.Title"]').textContent();
+
+      await currentCard.scrollIntoViewIfNeeded();
+      await expect(currentCard).toBeVisible();
+
+      const clip = await currentCard.boundingBox();
+      if (!clip) {
+        throw new Error(`Card "${title}" is not available for screenshot`);
+      }
+
+      await expect(page).toHaveScreenshot(`${title}.png`, { clip });
     }
   });
 

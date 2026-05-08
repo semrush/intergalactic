@@ -1,5 +1,6 @@
 export const RealDate = global.Date;
-import { expect, test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 
 // https://github.com/facebook/jest/issues/2234#issuecomment-384884729
 export function mockDate(isoDate: any) {
@@ -51,3 +52,44 @@ export const checkStyle = async (element: any, expectedStyles: Record<string, st
     expect(actualValue).toBe(expectedValue);
   }
 };
+
+type ColorProperty = 'backgroundColor' | 'borderColor' | 'color';
+
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-control-primary-info': 'rgb(26, 30, 26)',
+  '--intergalactic-date-picker-cell': 'rgb(255, 255, 255)',
+  '--intergalactic-date-picker-cell-active': 'rgb(118, 128, 231)',
+  '--intergalactic-text-primary': 'rgba(1, 5, 0, 0.899)',
+  '--intergalactic-text-primary-invert': 'rgba(254, 255, 255, 0.949)',
+};
+
+export const getCssVarColor = async (
+  page: Page,
+  varName: string,
+  property: ColorProperty = 'backgroundColor',
+) => {
+  return page.evaluate(({ name, property, fallback }) => {
+    const probe = document.createElement('div');
+    probe.style[property] = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    document.body.appendChild(probe);
+    const color = window.getComputedStyle(probe)[property];
+    probe.remove();
+    return color;
+  }, { name: varName, property, fallback: cssVarColorFallbacks[varName] });
+};
+
+export const getCalendarCellDefaultStyles = async (page: Page) => ({
+  color: await getCssVarColor(page, '--intergalactic-text-primary', 'color'),
+  backgroundColor: await getCssVarColor(page, '--intergalactic-date-picker-cell'),
+});
+
+export const getCalendarCellSelectedStyles = async (page: Page) => ({
+  color: await getCssVarColor(page, '--intergalactic-text-primary-invert', 'color'),
+  backgroundColor: await getCssVarColor(page, '--intergalactic-date-picker-cell-active'),
+});
+
+export const getPrimaryButtonStyles = async (page: Page) => ({
+  color: await getCssVarColor(page, '--intergalactic-text-primary-invert', 'color'),
+  backgroundColor: await getCssVarColor(page, '--intergalactic-control-primary-info'),
+});

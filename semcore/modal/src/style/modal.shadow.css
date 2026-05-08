@@ -1,19 +1,19 @@
 SWindow {
   position: relative;
-  border-radius: var(--intergalactic-modal-rounded, 12px);
-  background: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border-radius: var(--intergalactic-modal-rounded, calc(12px + 2px));
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   box-sizing: border-box;
   margin: auto;
   padding: var(--intergalactic-spacing-10x, 40px);
-  box-shadow: var(--intergalactic-box-shadow-modal, 0px 3px 8px 0px rgba(25, 27, 35, 0.2));
-  color: var(--intergalactic-text-primary, #191b23);
+  box-shadow: var(--intergalactic-box-shadow-modal, 0px 1px 5px 0px oklch(0.176 0.033 175.7 / 0.07));
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   &:focus {
     outline: none;
   }
 
   STitle {
-    color: var(--intergalactic-text-primary, #191b23);
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 117%);
     font-weight: var(--intergalactic-semi-bold, 600);
@@ -60,12 +60,12 @@ SOverlay {
   left: 0;
   right: 0;
   margin: 0;
-  background: var(--intergalactic-overlay-primary, rgba(25, 27, 35, 0.7));
+  background: var(--intergalactic-overlay-primary, oklch(0.109 0.023 165.5 / 0.337));
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: var(--intergalactic-overlay-secondary, rgba(25, 27, 35, 0.4));
+    background: var(--intergalactic-overlay-secondary, oklch(0.118 0.023 170.1 / 0.262));
   }
   
 }

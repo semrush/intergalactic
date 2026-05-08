@@ -5,15 +5,15 @@ SText {
   &[formatTags] {
 
     & abbr {
-      color: var(--intergalactic-text-secondary, #6c6e79);
-      text-decoration: underline dashed var(--intergalactic-text-secondary, #6c6e79);
+      color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+      text-decoration: underline dashed var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
 
       &:active,
       &:hover,
       &:focus {
         outline: none;
-        color: var(--intergalactic-text-hint-hover-active, #484a54);
-        text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, #484a54);
+        color: var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
+        text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
       }
     }
 
@@ -22,7 +22,7 @@ SText {
       background: none;
       outline: none;
       text-decoration: none;
-      color: var(--intergalactic-text-link, #006dca);
+      color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
       border-bottom-width: 1px;
       border-bottom-style: solid;
       border-color: transparent;
@@ -31,8 +31,8 @@ SText {
       &:hover {
         outline: none;
         text-decoration: none;
-        color: var(--intergalactic-text-link-hover-active, #044792);
-        border-color: var(--intergalactic-text-link-hover-active, #044792);
+        color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
+        border-color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
       }
 
       &:focus {
@@ -58,7 +58,7 @@ SText {
         display: inline-block;
         position: absolute;
         left: 0;
-        color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+        color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
         font-family: Georgia, Times, 'Times New Roman', serif;
       }
 
@@ -66,7 +66,7 @@ SText {
         display: block;
         font-style: normal;
         margin-top: var(--intergalactic-spacing-4x, 16px);
-        color: var(--intergalactic-text-secondary, #6c6e79);
+        color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
         font-size: var(--intergalactic-fs-300, 16px);
         line-height: var(--intergalactic-lh-300, 150%);
       }
@@ -83,7 +83,7 @@ SText {
         &:before {
           position: absolute;
           left: 0;
-          color: var(--intergalactic-text-secondary, #6c6e79);
+          color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
         }
       }
 
@@ -103,7 +103,7 @@ SText {
 
     & ul:not(ul[start], ul[reversed], ul[type]) li:not(SText):before {
       content: '';
-      background-color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+      background-color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
     }
 
     & ol:not(ol[start], ol[reversed], ol[type]):has(+ p),
@@ -184,7 +184,7 @@ SText {
     & h5,
     & h6 {
       & small {
-        color: var(--intergalactic-text-secondary, #6c6e79);
+        color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
         font-weight: 300;
         font-size: 100%;
       }
@@ -464,15 +464,15 @@ SText[textAlign] {
 }
 
 SText[use='primary'] {
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
 SText[use='secondary'] {
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
 }
 
 SText[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
 }
 
 @media (prefers-reduced-motion) {

@@ -21,6 +21,23 @@ export const locators = {
   valueNumber: (page: Page) => page.locator('[data-ui-name="InlineInput.NumberValue"]'),
 
 };
+
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-bg-primary-neutral': 'rgb(255, 255, 255)',
+};
+
+const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate(({ name, fallback }) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    document.body.appendChild(probe);
+    const color = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
+};
+
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -92,6 +109,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@input-number'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
+      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
 
       const flex = await page.locator('[data-testid="no-controls"]');
       const value = flex.locator('[data-ui-name="InlineInput.Value"]');
@@ -103,7 +121,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(input.first()).toHaveCSS('align-items', 'center');
       await expect(input.first()).toHaveCSS('vertical-align', 'middle');
       await expect(input.first()).toHaveCSS('padding', '1px');
-      await expect(input.first()).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+      await expect(input.first()).toHaveCSS('background-color', bgPrimary);
     });
   });
 

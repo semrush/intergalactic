@@ -23,9 +23,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           '@breakpoints',
           '@button'],
       }, async ({ page }) => {
-        await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/simple-use.tsx', 'en');
-
         await page.setViewportSize({ width, height: 800 });
+        await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/simple-use.tsx', 'en');
         await page.waitForTimeout(100);
 
         const button = page.locator('[data-ui-name="Button"]');
@@ -54,9 +53,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           '@breakpoints',
           '@button'],
       }, async ({ page }) => {
-        await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/manual-control.tsx', 'en');
-
         await page.setViewportSize({ width, height: 800 });
+        await loadPage(page, 'stories/components/base-components/breakpoints/docs/examples/manual-control.tsx', 'en');
         await page.waitForTimeout(100);
 
         const button = page.locator('[data-ui-name="Button"]');

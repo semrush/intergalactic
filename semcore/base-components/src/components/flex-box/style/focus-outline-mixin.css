@@ -1,5 +1,5 @@
 @define-mixin focus-outline-mixin $offset: 2px {
-  outline-color: var(--intergalactic-keyboard-focus-outline, #008ff8);
+  outline-color: var(--intergalactic-keyboard-focus-outline, oklch(0.424 0.269 264.2 / 0.469));
   outline-style: solid;
   outline-width: 2px;
   outline-offset: $offset;

@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles, stylesActiveHovered, stylesNotActive } from './utils';
+import { locators, checkStyles, getStylesActiveHovered, getStylesNotActive } from './utils';
 
 /* =====================================================
 @visual
@@ -15,6 +15,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@data-table'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/row-themes.tsx', 'en');
+    const stylesActiveHovered = await getStylesActiveHovered(page);
+    const stylesNotActive = await getStylesNotActive(page);
 
     await test.step('Verify success theme', async () => {
       const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
