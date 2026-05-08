@@ -22,15 +22,20 @@ export const locators = {
 
 };
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-bg-primary-neutral': 'rgb(255, 255, 255)',
+};
+
 const getCssVarColor = async (page: Page, varName: string) => {
-  return page.evaluate((name) => {
+  return page.evaluate(({ name, fallback }) => {
     const probe = document.createElement('div');
-    probe.style.backgroundColor = `var(${name})`;
+    probe.style.backgroundColor = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
     document.body.appendChild(probe);
     const color = getComputedStyle(probe).backgroundColor;
     probe.remove();
     return color;
-  }, varName);
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
 };
 
 /* =====================================================

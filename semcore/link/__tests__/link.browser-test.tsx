@@ -17,15 +17,21 @@ export const locators = {
 
 const storyPath = 'stories/components/link/tests/examples/basic_usage.tsx';
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-text-link': 'rgb(35, 95, 226)',
+  '--intergalactic-text-link-hover-active': 'rgb(33, 89, 215)',
+};
+
 const getCssVarColor = async (page: Page, varName: string) => {
-  return page.evaluate((name) => {
+  return page.evaluate(({ name, fallback }) => {
     const probe = document.createElement('div');
-    probe.style.color = `var(${name})`;
+    probe.style.color = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
     document.body.appendChild(probe);
     const color = getComputedStyle(probe).color;
     probe.remove();
     return color;
-  }, varName);
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
 };
 
 async function getTextClip(page: Page) {
@@ -316,7 +322,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await page.keyboard.press('Tab');
       await page.waitForSelector('text="Go to the next page"');
       await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
-      await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+      await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
       await expect(page).toHaveScreenshot();
     });
   });
