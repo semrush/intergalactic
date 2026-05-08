@@ -1,8 +1,8 @@
 import Slider from '@semcore/ui/slider';
-import type { SliderProps } from '@semcore/ui/slider';
+import type { NSSlider } from '@semcore/ui/slider';
 import React from 'react';
 
-export type BasicSliderProps = SliderProps<number> & {
+export type BasicSliderProps = NSSlider.Props<number> & {
   showKnob?: boolean;
   showBar?: boolean;
 };
