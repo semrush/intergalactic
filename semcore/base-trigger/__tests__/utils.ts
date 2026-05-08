@@ -49,15 +49,24 @@ export const expectVisibleHintsCount = async (page: Page, count: number): Promis
   }).toBe(count);
 };
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-bg-primary-neutral': 'rgb(255, 255, 255)',
+  '--intergalactic-border-primary': 'rgba(0, 12, 8, 0.161)',
+  '--intergalactic-border-info-active': 'rgba(0, 40, 230, 0.419)',
+  '--intergalactic-border-success-active': 'rgb(0, 204, 154)',
+  '--intergalactic-border-critical-active': 'rgba(255, 0, 4, 0.56)',
+};
+
 export const getCssVarColor = async (page: Page, varName: string) => {
-  return page.evaluate((name) => {
+  return page.evaluate(({ name, fallback }) => {
     const probe = document.createElement('div');
-    probe.style.backgroundColor = `var(${name})`;
+    probe.style.background = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
     document.body.appendChild(probe);
     const color = window.getComputedStyle(probe).backgroundColor;
     probe.remove();
     return color;
-  }, varName);
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
 };
 
 export async function checkBackgroundColor(page: any, selectorOrLocator: string | Locator, expectedColor: string) {
