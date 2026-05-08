@@ -29,6 +29,20 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
 };
+
+const getCssVarBorderRadius = async (page: Page, varName: string, fallback: string) => {
+  return page.evaluate(({ varName, fallback }) => {
+    const element = document.createElement('div');
+    element.style.borderRadius = `var(${varName}, ${fallback})`;
+    document.body.appendChild(element);
+
+    const value = getComputedStyle(element).borderTopRightRadius;
+    element.remove();
+
+    return value;
+  }, { varName, fallback });
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -252,6 +266,12 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.button(page).click();
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    const modalRounded = await getCssVarBorderRadius(
+      page,
+      '--intergalactic-modal-rounded',
+      'calc(12px + 2px)',
+    );
+
     const {
       topLeft,
       bottomLeft,
@@ -270,8 +290,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     expect(topLeft).toBe('0px');
     expect(bottomLeft).toBe('0px');
 
-    expect(topRight).toBe('12px');
-    expect(bottomRight).toBe('12px');
+    expect(topRight).toBe(modalRounded);
+    expect(bottomRight).toBe(modalRounded);
   });
 
   test('Verify z index in content', {

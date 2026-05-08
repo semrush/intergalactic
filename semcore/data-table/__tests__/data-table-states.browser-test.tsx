@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles } from './utils';
+import { locators, checkStyles, getCssVarColor, getTransparentColor } from './utils';
 
 /* =====================================================
 @visual
@@ -78,6 +78,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/empty-table.tsx', 'en');
+      const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+      const transparentBg = await getTransparentColor(page);
       const cells = page.locator('div[data-ui-name="Row.Cell"]');
       const firstRow = locators.row(page, 2);
       const noData = page.locator('[data-ui-name="WidgetNoData"]');
@@ -93,13 +95,13 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify styles on hover', async () => {
         await firstRow.hover();
         const background = await cells.first().evaluate((el) => getComputedStyle(el).backgroundColor);
-        expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background);
+        expect([transparentBg, cellDefaultBg]).toContain(background);
       });
 
       await test.step('Verify empty state focus styles', async () => {
         await page.keyboard.press('Tab');
         const background2 = await cells.first().evaluate((el) => getComputedStyle(el).backgroundColor);
-        expect(['rgba(0, 0, 0, 0)', 'transparent', 'rgb(255, 255, 255)']).toContain(background2);
+        expect([transparentBg, cellDefaultBg]).toContain(background2);
         await expect(page).toHaveScreenshot();
       });
 
@@ -454,19 +456,22 @@ test.describe(`${TAG.VISUAL}`, () => {
         consoleErrors.push(error.message);
       });
 
+      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
+      const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+
       await test.step('Verify Color when child cell hovered', async () => {
         await locators.getCell(page, 3, 1).hover();
 
-        await checkStyles(locators.getCell(page, 3, 1), { 'background-color': 'rgb(240, 240, 244)' });
-        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(240, 240, 244)' });
-        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(255, 255, 255)' });
+        await checkStyles(locators.getCell(page, 3, 1), { 'background-color': cellHoverBg });
+        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellHoverBg });
+        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellDefaultBg });
       });
 
       await test.step('Verify Color when parent cell hovered', async () => {
         await locators.getCell(page, 2, 2).hover();
 
         for (let row = 2; row <= 5; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellHoverBg });
         }
       });
 
@@ -482,6 +487,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@tooltip'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
+      const cellSelectedBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected');
+      const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
 
       await page.keyboard.press('Tab');
 
@@ -491,13 +498,13 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('Space');
 
       await page.getByRole('button', { name: 'Deselect all' }).waitFor({ state: 'visible' });
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': 'rgb(233, 247, 255)' });
+      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedBg });
       await expect(page).toHaveScreenshot();
 
       if (browserName == 'firefox') return;
@@ -507,26 +514,26 @@ test.describe(`${TAG.VISUAL}`, () => {
         await page.mouse.move(box22.x + box22.width / 2, box22.y + box22.height / 2);
       }
 
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': 'rgb(196, 229, 254)' });
+      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedHoverBg });
 
       const cell23 = locators.getCell(page, 2, 3);
       const box23 = await cell23.boundingBox();
       if (box23) {
         await page.mouse.move(box23.x + box23.width / 2, box23.y + box23.height / 2);
       }
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(233, 247, 255)' });
-      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': 'rgb(233, 247, 255)' });
+      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 4), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 3, 2), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedBg });
+      await checkStyles(locators.getCell(page, 3, 4), { 'background-color': cellSelectedBg });
     });
   });
 
@@ -537,13 +544,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
       if (browserName == 'firefox') return;
+      const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
       const firstRowCheckbox = locators.getCell(page, 2, 1).locator('label');
       await firstRowCheckbox.click();
       await firstRowCheckbox.hover();
 
-      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(196, 229, 254)' });
-      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(196, 229, 254)' });
+      await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
+      await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedHoverBg });
 
       await expect(page).toHaveScreenshot();
     });
@@ -573,6 +581,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
+      const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
 
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       await selectAllCheckbox.click();
@@ -585,7 +594,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         const cells = row.locator('[data-ui-name="Row.Cell"]');
         const cellCount = await cells.count();
         for (let j = 0; j < cellCount; j++) {
-          await checkStyles(cells.nth(j), { 'background-color': 'rgb(196, 229, 254)' });
+          await checkStyles(cells.nth(j), { 'background-color': cellSelectedHoverBg });
         }
       }
     });
@@ -610,20 +619,25 @@ test.describe(`${TAG.VISUAL}`, () => {
         consoleErrors.push(error.message);
       });
 
+      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
+      const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+      const cellSelectedBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected');
+      const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
+
       await test.step('Verify color when child cell hovered', async () => {
         await locators.getCell(page, 3, 3).hover();
 
-        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(240, 240, 244)' });
-        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(240, 240, 244)' });
-        await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(255, 255, 255)' });
-        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(240, 240, 244)' });
+        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellHoverBg });
+        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellHoverBg });
+        await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellDefaultBg });
+        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellHoverBg });
       });
 
       await test.step('Verify color when parent merged cell hovered', async () => {
         await locators.getCell(page, 2, 2).hover();
 
         for (let row = 2; row <= 3; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(240, 240, 244)' });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellHoverBg });
         }
       });
 
@@ -632,7 +646,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await firstRowCheckbox.click();
         await locators.collapse(page).waitFor({ state: 'visible' });
         for (let row = 2; row <= 3; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(196, 229, 254)' });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedHoverBg });
         }
       });
 
@@ -640,17 +654,17 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.getCell(page, 2, 2).hover();
 
         for (let row = 2; row <= 3; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': 'rgb(196, 229, 254)' });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedHoverBg });
         }
       });
 
       await test.step('Verify color when child cell hovered', async () => {
         await locators.getCell(page, 3, 3).hover();
 
-        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': 'rgb(196, 229, 254)' });
-        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': 'rgb(196, 229, 254)' });
-        await checkStyles(locators.getCell(page, 2, 3), { 'background-color': 'rgb(233, 247, 255)' });
-        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': 'rgb(196, 229, 254)' });
+        await checkStyles(locators.getCell(page, 2, 1), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 2), { 'background-color': cellSelectedHoverBg });
+        await checkStyles(locators.getCell(page, 2, 3), { 'background-color': cellSelectedBg });
+        await checkStyles(locators.getCell(page, 3, 3), { 'background-color': cellSelectedHoverBg });
       });
 
       await test.step('Verify no console errors', async () => {

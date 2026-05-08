@@ -42,7 +42,6 @@
     "@semcore/feedback-form": "^17.0.1",
     "@semcore/flags": "^17.0.1",
     "@semcore/fullscreen-modal": "^17.0.1",
-    "@semcore/i18n-unplugin": "^16.0.10",
     "@semcore/inline-edit": "^17.0.1",
     "@semcore/inline-input": "^17.0.1",
     "@semcore/input": "^17.0.1",

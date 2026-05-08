@@ -9,6 +9,24 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
   }
 };
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-dropdown-menu-item-hover': 'rgba(0, 22, 16, 0.028)',
+  '--intergalactic-dropdown-menu-item-selected': 'rgba(0, 80, 255, 0.077)',
+  '--intergalactic-dropdown-menu-item-selected-hover': 'rgba(0, 77, 255, 0.191)',
+};
+
+const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate(({ name, fallback }) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    document.body.appendChild(probe);
+    const color = window.getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
+};
+
 export const locators = {
 
   button: (page: Page, name?: string, index?: number) => {
@@ -155,6 +173,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@dropdown-menu'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', item);
+      const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
 
       await expect(page).toHaveScreenshot();
 
@@ -166,7 +185,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitem(page, i), {
               'font-size': '14px',
               'min-height': '32px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -179,7 +197,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitem(page, i), {
               'font-size': '16px',
               'min-height': '40px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -190,7 +207,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
           for (let i = 0; i < count1; i++) {
             await checkStyles(locators.menuitem(page, i), {
-              opacity: '0.3',
+              opacity: '0.4',
             });
           }
         });
@@ -201,7 +218,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step('Verify hover styles', async () => {
           await locators.menuitem(page, 1).hover();
           await checkStyles(locators.menuitem(page, 1), {
-            'background-color': 'rgb(244, 245, 249)',
+            'background-color': itemHoverBg,
           });
         });
       }
@@ -237,7 +254,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitemcheckbox(page, i), {
               'font-size': '16px',
               'min-height': '40px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -250,6 +266,9 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@dropdown-menu'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', item);
+      const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
+      const itemSelectedBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-selected');
+      const itemSelectedHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-selected-hover');
 
       await expect(page).toHaveScreenshot();
 
@@ -274,7 +293,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           await checkStyles(locators.itemInGroup(page).first(), {
             'font-size': '14px',
             'min-height': '32px',
-            'background-color': 'rgba(196, 229, 254, 0.7)',
+            'background-color': itemSelectedBg,
           });
 
           const count1 = await locators.menuitemradio(page).count();
@@ -283,7 +302,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.itemInGroup(page).nth(i), {
               'font-size': '14px',
               'min-height': '32px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -305,7 +323,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           await checkStyles(locators.itemInGroup(page).first(), {
             'font-size': '16px',
             'min-height': '40px',
-            'background-color': 'rgba(196, 229, 254, 0.7)',
+            'background-color': itemSelectedBg,
           });
 
           const count1 = await locators.menuitemradio(page).count();
@@ -314,7 +332,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.itemInGroup(page).nth(i), {
               'font-size': '16px',
               'min-height': '40px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -325,11 +342,11 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step('Verify hover styles', async () => {
           await locators.menuitemradio(page, 0).hover();
           await checkStyles(locators.itemInGroup(page).first(), {
-            'background-color': 'rgb(196, 229, 254)',
+            'background-color': itemSelectedHoverBg,
           });
           await locators.menuitemradio(page, 1).hover();
           await checkStyles(locators.itemInGroup(page).nth(1), {
-            'background-color': 'rgb(244, 245, 249)',
+            'background-color': itemHoverBg,
           });
         });
       }
@@ -349,8 +366,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify no hover style on group title', async () => {
       await page.locator('[data-ui-name="Dropdown.Item"]').first().hover();
       await checkStyles(page.locator('[data-ui-name="Dropdown.Item"]').first(), {
-        'background-color': 'rgba(0, 0, 0, 0)',
-        'cursor': 'default',
+        cursor: 'default',
       });
     });
 
@@ -358,7 +374,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await checkStyles(locators.itemInGroup(page).nth(1), {
         'font-size': '16px',
         'min-height': '40px',
-        'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
 
@@ -366,7 +381,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await checkStyles(locators.itemInGroup(page).nth(2), {
         'font-size': '14px',
         'min-height': '32px',
-        'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
 

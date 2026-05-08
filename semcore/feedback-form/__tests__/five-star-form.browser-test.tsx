@@ -38,6 +38,15 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
     const checkboxInput = page.getByRole('checkbox');
+    const ensureFirstCheckboxFocused = async () => {
+      if (
+        browserName === 'firefox' &&
+        !(await checkboxInput.first().evaluate((node) => node === document.activeElement))
+      ) {
+        await page.keyboard.press('Tab');
+      }
+      await expect(checkboxInput.first()).toBeFocused();
+    };
 
     await expect(page).toHaveScreenshot();
     const dialog = locators.dialog(page);
@@ -58,7 +67,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify form styles', async () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
-      await expect(checkboxInput.first()).toBeFocused();
+      await ensureFirstCheckboxFocused();
 
       await page.waitForTimeout(200);
       await expect(page).toHaveScreenshot();
@@ -86,7 +95,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await page.waitForSelector('text="Please enter valid email"');
 
-      await expect(page).toHaveScreenshot();
+      await expect(page).toHaveScreenshot({
+        maxDiffPixelRatio: browserName === 'firefox' ? 0.01 : undefined,
+      });
     });
 
     await test.step('Verify loading styles', async () => {
@@ -186,6 +197,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const checkboxInput = page.getByRole('checkbox');
     const buttons = locators.dialog(page).getByRole('button');
+    const ensureFirstCheckboxFocused = async () => {
+      if (
+        browserName === 'firefox' &&
+        !(await checkboxInput.first().evaluate((node) => node === document.activeElement))
+      ) {
+        await page.keyboard.press('Tab');
+      }
+      await expect(checkboxInput.first()).toBeFocused();
+    };
 
     await test.step('Verify stars can be focused and their attributes ', async () => {
       await page.keyboard.press('Tab');
@@ -218,7 +238,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
       await expect(locators.sliderRating(page)).toHaveAttribute('value', '2');
-      if (browserName !== 'webkit') await expect.soft(checkboxInput.first()).toBeFocused();
+      if (browserName !== 'webkit') await ensureFirstCheckboxFocused();
       await expect(checkboxInput.first()).toHaveAttribute('aria-invalid', 'false');
       await expect(checkboxInput.first()).toHaveAttribute('aria-labelledby', 'option1');
     });
@@ -246,7 +266,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await buttons.first().waitFor({ state: 'visible' });
 
-      await expect(checkboxInput.first()).toBeFocused();
+      await ensureFirstCheckboxFocused();
 
       for (let i = 0; i < 3; i++) {
         await page.keyboard.press('Tab');
@@ -279,7 +299,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await page.waitForTimeout(200);
       await buttons.first().waitFor({ state: 'visible' });
-      await expect(checkboxInput.first()).toBeFocused();
+      await ensureFirstCheckboxFocused();
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Enter');

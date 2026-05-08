@@ -15,7 +15,7 @@ SModalBox,
 SIndicator {
   position: relative;
   overflow: hidden;
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
 }
 
 SContentBox:has(SItem:focus-visible)::after {
@@ -29,7 +29,7 @@ SContentBox:has(SItem:focus-visible)::after {
 
 SImageBoxContainer {
   position: relative;
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
 
   &:has(SItem:focus-visible)::after {
     border-radius: inherit;
@@ -38,7 +38,7 @@ SImageBoxContainer {
     inset: 0;
     content: '';
     @mixin focus-outline-mixin;
-    outline-color: var(--intergalactic-keyboard-focus-invert-outline, rgba(255, 255, 255, 0.8));
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));
   }
 
   SItem:focus-visible {
@@ -56,7 +56,7 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
   overflow: hidden;
   outline: none;
 
@@ -87,8 +87,8 @@ SIndicator {
   display: block;
   width: 12px;
   height: 12px;
-  background-color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  background-color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   object-fit: cover;
   transition: ease-in-out opacity 0.1s;
 }
@@ -99,7 +99,7 @@ SIndicator[aria-roledescription="slide"] {
 }
 
 SIndicator:hover {
-  opacity: calc(2 * var(--intergalactic-disabled-opacity, 0.3));
+  opacity: calc(2 * var(--intergalactic-disabled-opacity, 0.4));
 }
 
 SIndicator[active] {
@@ -107,7 +107,7 @@ SIndicator[active] {
 }
 
 SIndicator[inverted] {
-  background-color: var(--intergalactic-icon-primary-invert, #ffffff);
+  background-color: var(--intergalactic-icon-primary-invert, oklch(0.998 0.003 173.3 / 0.808));
 }
 
 SPrev,
@@ -116,7 +116,7 @@ SNext {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 
   SPrevButton span:has(> svg:only-child),
   SNextButton span:has(> svg:only-child) {
@@ -135,7 +135,7 @@ SNext {
 
 SPrev[disabled],
 SNext[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
 }

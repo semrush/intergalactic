@@ -146,12 +146,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       const count = await locators.color(page).count();
       for (let i = 0; i < count; i++) {
         const item = locators.color(page, i);
-        const box = await item.boundingBox();
-        expect(box).not.toBeNull();
-        if (box) {
-          expect(Math.round(box.width)).toBeGreaterThanOrEqual(26);
-          expect(Math.round(box.height)).toBeGreaterThanOrEqual(26);
-        }
+        await expect(item).toHaveCSS('width', '26px');
+        await expect(item).toHaveCSS('height', '26px');
       }
     });
 
@@ -199,7 +195,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       ]);
 
       expect(addButtonHoverStateStyles).toEqual({
-        backgroundColor: 'rgba(138, 142, 155, 0.2)',
+        backgroundColor: 'rgba(0, 21, 16, 0.055)',
       });
 
       await page.mouse.down();
@@ -209,7 +205,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       ]);
 
       expect(addButtonActiveStateStyles).toEqual({
-        backgroundColor: 'rgba(138, 142, 155, 0.3)',
+        backgroundColor: 'rgba(0, 21, 16, 0.082)',
       });
 
       await page.mouse.up();

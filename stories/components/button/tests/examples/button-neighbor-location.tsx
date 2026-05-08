@@ -57,7 +57,6 @@ const Demo = (props: ExampleProps) => {
 export const defaultButtonNeighborProps: ExampleProps = {
   size: 'm',
   use: 'primary',
-  theme: 'muted',
   hintPlacement: 'top',
   style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
 

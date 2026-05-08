@@ -2,7 +2,14 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators, checkStyles, stylesActiveHovered, stylesNotActive } from './utils';
+import {
+  locators,
+  checkStyles,
+  getCssVarColor,
+  getStylesActiveHovered,
+  getStylesExpanded,
+  getStylesNotActive,
+} from './utils';
 
 /* =====================================================
 @visual
@@ -16,6 +23,10 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
+      const cellActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-active');
+      const cellAccordionBg = await getCssVarColor(page, '--intergalactic-table-td-cell-accordion');
+      const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+      const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
       await test.step('Verify toggle styles', async () => {
         const toggles = locators.toggle(page);
@@ -28,15 +39,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify cells styles when accordion expanded in 1st cell', async () => {
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
-        await checkStyles(cells, { 'background-color': 'rgb(230, 231, 237)' });
+        await checkStyles(cells, { 'background-color': cellActiveBg });
 
         await locators.toggle(page).first().hover();
-        await checkStyles(cells, { 'background-color': 'rgb(230, 231, 237)' });
+        await checkStyles(cells, { 'background-color': cellActiveBg });
       });
 
       await test.step('Verify styles of cell with accordion', async () => {
         await checkStyles(locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').first(), {
-          'background-color': 'rgb(244, 245, 249)',
+          'background-color': cellAccordionBg,
         });
 
         await checkStyles(locators.row(page, 3).locator('[data-ui-name="Row.Cell"]').first(), {
@@ -50,7 +61,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
         if (browserName !== 'firefox') {
           await checkStyles(cells, {
-            'background-color': 'rgb(240, 240, 244)',
+            'background-color': cellHoverBg,
           });
         }
       });
@@ -65,17 +76,17 @@ test.describe(`${TAG.VISUAL}`, () => {
         const cellCount3 = await cells3.count();
         for (let i = 0; i < cellCount3 - 1; i++) {
           const cell = cells3.nth(i);
-          await checkStyles(cell, { 'background-color': 'rgb(255, 255, 255)' });
+          await checkStyles(cell, { 'background-color': cellDefaultBg });
         }
-        await checkStyles(cells3.nth(3), { 'background-color': 'rgb(230, 231, 237)' });
+        await checkStyles(cells3.nth(3), { 'background-color': cellActiveBg });
 
         await locators.toggle(page).nth(1).hover();
-        await checkStyles(cells3.nth(3), { 'background-color': 'rgb(230, 231, 237)' });
+        await checkStyles(cells3.nth(3), { 'background-color': cellActiveBg });
 
         if (browserName !== 'firefox')
           for (let i = 0; i < cellCount3 - 1; i++) {
             const cell = cells3.nth(i);
-            await checkStyles(cell, { 'background-color': 'rgb(240, 240, 244)' });
+            await checkStyles(cell, { 'background-color': cellHoverBg });
           }
       });
     });
@@ -194,6 +205,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@pagination'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
+      const stylesActiveHovered = await getStylesActiveHovered(page);
+      const stylesNotActive = await getStylesNotActive(page);
+      const cellSelectedActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-active');
 
       await locators.toggle(page).first().click();
       await page.locator('[data-ui-name="Checkbox"]').nth(0).click();
@@ -211,7 +225,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         }
 
         await checkStyles(cells.nth(cellCount - 1), {
-          'background-color': stylesActiveHovered[1],
+          'background-color': cellSelectedActiveBg,
         });
       });
       await test.step('Verify cells when expanded accordion not in 1st cell and checkbox is checked and row hovered', async () => {
@@ -221,11 +235,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         }
 
         if (browserName !== 'firefox') {
-          for (let i = 0; i < cellCount; i++) {
-            await checkStyles(cells, {
+          for (let i = 0; i < cellCount - 1; i++) {
+            await checkStyles(cells.nth(i), {
               'background-color': stylesActiveHovered[1],
             });
           }
+          await checkStyles(cells.nth(cellCount - 1), {
+            'background-color': stylesActiveHovered[1],
+          });
         }
       });
       await expect(page).toHaveScreenshot();
@@ -243,8 +260,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
           '@d3-chart'],
-      }, async ({ page }) => {
+      }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
+        const stylesActiveHovered = await getStylesActiveHovered(page);
+        const cellSelectedActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-active');
+        const cellAccordionBg = await getCssVarColor(page, '--intergalactic-table-td-cell-accordion');
 
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
         await page.locator('[data-ui-name="Checkbox"]').nth(1).click();
@@ -254,12 +274,16 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.collapse(page).waitFor({ state: 'visible' });
         await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
 
+        const parentCellBg = browserName === 'firefox'
+          ? cellSelectedActiveBg
+          : stylesActiveHovered[1];
+
         await checkStyles(cells, {
-          'background-color': stylesActiveHovered[1],
+          'background-color': parentCellBg,
         });
 
         await checkStyles(accordion, {
-          'background-color': stylesNotActive[2],
+          'background-color': cellAccordionBg,
         });
 
         await expect(page).toHaveScreenshot();
@@ -283,6 +307,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/themed-parent-rows.tsx', 'en');
+      const stylesExpanded = await getStylesExpanded(page);
+      const stylesNotActive = await getStylesNotActive(page);
+      const moveMouseAwayFromRows = async () => {
+        const box = await page.getByRole('columnheader').first().boundingBox();
+        if (box) {
+          await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        }
+      };
 
       await test.step('Verify success theme', async () => {
         const cells = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
@@ -293,9 +325,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.toggle(page).first().click();
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await moveMouseAwayFromRows();
 
         await checkStyles(cells, {
-          'background-color': stylesActiveHovered[0],
+          'background-color': stylesExpanded[0],
         });
 
         await locators.toggle(page).first().click();
@@ -310,9 +343,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.toggle(page).nth(1).click();
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await moveMouseAwayFromRows();
 
         await checkStyles(cells, {
-          'background-color': stylesActiveHovered[1],
+          'background-color': stylesExpanded[1],
         });
         await locators.toggle(page).nth(1).click();
         await page.getByText('Nothing found').waitFor({ state: 'hidden' });
@@ -326,9 +360,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.toggle(page).nth(2).click();
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await moveMouseAwayFromRows();
 
         await checkStyles(cells, {
-          'background-color': stylesActiveHovered[2],
+          'background-color': stylesExpanded[2],
         });
         await locators.toggle(page).nth(2).click();
         await page.getByText('Nothing found').waitFor({ state: 'hidden' });
@@ -343,9 +378,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.toggle(page).nth(3).click();
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await moveMouseAwayFromRows();
 
         await checkStyles(cells, {
-          'background-color': stylesActiveHovered[3],
+          'background-color': stylesExpanded[3],
         });
         await locators.toggle(page).nth(3).click();
         await page.getByText('Nothing found').waitFor({ state: 'hidden' });
@@ -360,9 +396,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await locators.toggle(page).nth(4).click();
         await page.getByText('Nothing found').waitFor({ state: 'visible' });
+        await moveMouseAwayFromRows();
 
         await checkStyles(cells, {
-          'background-color': stylesActiveHovered[4],
+          'background-color': stylesExpanded[4],
         });
       });
     });
@@ -373,6 +410,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/colored-parent-cells', 'en');
+      const stylesActiveHovered = await getStylesActiveHovered(page);
+      const stylesExpanded = await getStylesExpanded(page);
+      const stylesNotActive = await getStylesNotActive(page);
 
       const cells = locators.row(page, 2).getByRole('gridcell');
       const cellCount = await cells.count();
@@ -381,7 +421,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         for (let i = 0; i < cellCount; i++) {
           const cell = cells.nth(i);
           await checkStyles(cell, {
-            'background-color': stylesActiveHovered[i],
+            'background-color': stylesExpanded[i],
           });
         }
       });
@@ -434,6 +474,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/table-in-table.tsx', 'en');
+      const cellActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-active');
+      const cellAccordionBg = await getCssVarColor(page, '--intergalactic-table-td-cell-accordion');
 
       const toggles = locators.toggle(page);
 
@@ -451,14 +493,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         const cells2 = locators.row(page, 2).locator('[data-ui-name="Row.Cell"]');
 
         await checkStyles(cells2, {
-          'background-color': 'rgb(230, 231, 237)',
+          'background-color': cellActiveBg,
         });
       });
       await test.step('Verify accordion cells style', async () => {
         const cells = locators.rowTableInTable(page, 2, 1).locator('[data-ui-name="Row.Cell"]');
 
         await checkStyles(cells, {
-          'background-color': 'rgb(244, 245, 249)',
+          'background-color': cellAccordionBg,
         });
 
         await checkStyles(cells, { 'padding-left': '38px' });

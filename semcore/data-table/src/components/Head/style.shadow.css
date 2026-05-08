@@ -49,7 +49,7 @@ SGroup, SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
-  color: var(--intergalactic-text-primary, #191b23);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   box-sizing: border-box;
   height: 100%;
   position: relative;
@@ -61,14 +61,14 @@ SGroup, SColumn {
 SGroup {
   justify-content: center;
   text-align: center;
-  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.001 180));
 }
 
 SGroup[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
 
   &:has(~ SColumn[visibleSort]) {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.94 0.002 180));
   }
 }
 SGroup[use='secondary'] {
@@ -76,28 +76,28 @@ SGroup[use='secondary'] {
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
-  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border-left: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
-  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border-right: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 }
 
 SColumn[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
-  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.001 180));
 
   SSortWrapper::before {
     background: linear-gradient(
       270deg,
-      var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+      var(--intergalactic-table-th-primary-cell-hover, oklch(0.94 0.002 180)) 67.5%,
       rgba(224, 225, 233, 0) 105%
     );
   }
 
   &[visibleSort] {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.94 0.002 180));
 
     SSortWrapper {
       flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
@@ -130,13 +130,13 @@ SColumn[use='primary'] {
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
-  border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
-  background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.137 0.026 175.7 / 0.161));
+  background-color: var(--intergalactic-table-th-secondary-cell, oklch(1 0 0));
 
   SSortWrapper::before {
     background: linear-gradient(
       270deg,
-      var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+      var(--intergalactic-table-th-secondary-cell, oklch(1 0 0)) 67.5%,
       rgba(255, 255, 255, 0) 105%
     );
   }
@@ -210,7 +210,7 @@ SSortWrapper:before {
 
 SSortButton {
   display: none;
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.1 0.023 159.1 / 0.433));
   position: absolute;
   right: 0;
   margin-left: var(--intergalactic-spacing-1x, 4px);
@@ -266,7 +266,7 @@ SGroup[fixed='left'][shadowVertical='start'] {
     display: block;
     right: 0;
     background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    linear-gradient(to right, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
   }
 }
 SColumn[fixed='right'][shadowVertical='median'],
@@ -287,6 +287,6 @@ SGroup[fixed='right'][shadowVertical='end'] {
     display: block;
     left: 0;
     background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
+    linear-gradient(to left, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
   }
 }

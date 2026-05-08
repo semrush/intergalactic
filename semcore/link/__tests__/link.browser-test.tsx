@@ -17,6 +17,23 @@ export const locators = {
 
 const storyPath = 'stories/components/link/tests/examples/basic_usage.tsx';
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-text-link': 'rgb(35, 95, 226)',
+  '--intergalactic-text-link-hover-active': 'rgb(33, 89, 215)',
+};
+
+const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate(({ name, fallback }) => {
+    const probe = document.createElement('div');
+    probe.style.color = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    document.body.appendChild(probe);
+    const color = getComputedStyle(probe).color;
+    probe.remove();
+    return color;
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
+};
+
 async function getTextClip(page: Page) {
   const clip = (await page.locator('[data-ui-name="Text"]').boundingBox())!;
   clip.x -= 100;
@@ -248,10 +265,12 @@ test.describe(` ${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/link/docs/examples/link_without_text.tsx', 'en');
+    const linkColor = await getCssVarColor(page, '--intergalactic-text-link');
+    const linkHoverActiveColor = await getCssVarColor(page, '--intergalactic-text-link-hover-active');
 
     await test.step('Verify default color', async () => {
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+      await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
     });
 
     await test.step('Verify first link hover with hint', async () => {
@@ -264,8 +283,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
         },
       );
       if (browserName !== 'firefox') {
-        await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(4, 71, 146)');
-        await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+        await expect(locators.link(page).first()).toHaveCSS('color', linkHoverActiveColor);
+        await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
       }
       await expect(page).toHaveScreenshot();
     });
@@ -274,8 +293,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await locators.link(page, 1).hover();
       await page.waitForSelector('text="Go to the next page"');
       if (browserName !== 'firefox') {
-        await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-        await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(4, 71, 146)');
+        await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+        await expect(locators.link(page, 1)).toHaveCSS('color', linkHoverActiveColor);
       }
     });
   });
@@ -284,6 +303,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/link/docs/examples/link_without_text.tsx', 'en');
+    const linkColor = await getCssVarColor(page, '--intergalactic-text-link');
 
     await test.step('Verify first link focus with hint', async () => {
       await page.keyboard.press('Tab');
@@ -294,15 +314,15 @@ test.describe(` ${TAG.VISUAL}`, () => {
           return el && getComputedStyle(el).opacity === '1';
         },
       );
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+      await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
     });
 
     await test.step('Verify second link focus with hint', async () => {
       await page.keyboard.press('Tab');
       await page.waitForSelector('text="Go to the next page"');
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+      await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
       await expect(page).toHaveScreenshot();
     });
   });

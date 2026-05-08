@@ -3,7 +3,12 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { formatAriaLabelToInputValue, checkStyle } from './utils';
+import {
+  formatAriaLabelToInputValue,
+  checkStyle,
+  getCalendarCellDefaultStyles,
+  getPrimaryButtonStyles,
+} from './utils';
 
 export const locators = {
 
@@ -167,20 +172,20 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.button(page, 'Apply').waitFor({ state: 'visible' });
       });
 
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+
       const dateStyles = [
         {
           locator: locators.cells(page, 0),
           expectedStyles: {
-            color: 'rgb(25, 27, 35)',
-            backgroundColor: 'rgb(255, 255, 255)',
+            ...defaultCellStyles,
             margin: '4px 0px 0px',
           },
         },
         {
           locator: locators.cells(page, 10),
           expectedStyles: {
-            color: 'rgb(25, 27, 35)',
-            backgroundColor: 'rgb(255, 255, 255)',
+            ...defaultCellStyles,
             margin: '4px 0px 0px',
           },
         },
@@ -207,7 +212,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify style for Apply picker button', async () => {
-        await checkStyle(locators.button(page, 'Apply'), { color: 'rgb(255, 255, 255)', backgroundColor: 'rgb(0, 143, 248)' });
+        await checkStyle(locators.button(page, 'Apply'), await getPrimaryButtonStyles(page));
       });
     });
 

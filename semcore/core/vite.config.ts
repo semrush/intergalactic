@@ -15,7 +15,7 @@ export default mergeConfig(
           'react-dom',
           'react/jsx-runtime',
           /@babel\/runtime\/*/,
-          /@semcore\/*/,
+          /@semcore\/(?!theme$)/,
 
           '@formatjs/intl',
           'classnames',

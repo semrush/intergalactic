@@ -10,24 +10,24 @@ SInlineInput {
   padding: 1px;
   box-sizing: border-box;
 
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 
   SConfirmIcon:not([color]) {
-    color: var(--intergalactic-icon-secondary-success, #00c192);
+    color: var(--intergalactic-icon-secondary-success, oklch(0.711 0.146 166.9));
     cursor: pointer;
   }
 
   SConfirmIcon:not([color]):hover {
-    color: var(--intergalactic-icon-secondary-success-hover-active, #049B75);
+    color: var(--intergalactic-icon-secondary-success-hover-active, oklch(0.673 0.139 166.3));
   }
 
   SCancelIcon:not([color]) {
-    color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+    color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
     cursor: pointer;
   }
 
   SCancelIcon:not([color]):hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.1 0.023 159.1 / 0.433));
   }
 
   SValue {
@@ -39,7 +39,7 @@ SInlineInput {
     padding: 0 var(--intergalactic-spacing-1x, 4px);
     border: none;
     box-sizing: border-box;
-    color: var(--intergalactic-text-primary, #191b23);
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
     font-size: inherit;
     line-height: 1.2;
     text-overflow: ellipsis;
@@ -52,7 +52,7 @@ SInlineInput {
     }
 
     &::placeholder {
-      color: var(--intergalactic-text-placeholder, #8a8e9b);
+      color: var(--intergalactic-text-placeholder, oklch(0.098 0.023 157.4 / 0.457));
     }
 
     &[disabled] {
@@ -74,7 +74,7 @@ SInlineInput {
 SInlineInput[disabled] {
   cursor: default;
   pointer-events: none;
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
 }
 
 SUnderline {
@@ -86,7 +86,7 @@ SUnderline {
   height: 100%;
   min-height: 1em;
   border: 1px solid transparent;
-  border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SAddon {
@@ -95,39 +95,39 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
   padding: 0 var(--intergalactic-spacing-1x, 4px);
 }
 
 SAddon[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
 }
 
 SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-info-active, #006dca);
+  border-bottom-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
   @mixin focus-outline-mixin;
 }
 
 SInlineInput[state='valid'] SUnderline {
-  border-bottom-color: var(--intergalactic-border-success-active, #007c65);
+  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
 }
 
 SInlineInput[state='valid'] SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-success-active, #007c65);
+  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
   @mixin focus-outline-mixin;
-  outline-color: var(--intergalactic-keyboard-focus-valid-outline, #009f81);
+  outline-color: var(--intergalactic-keyboard-focus-valid-outline, oklch(0.711 0.146 166.9));
 }
 
 SInlineInput[state='invalid'] SUnderline {
-  border-bottom-color: var(--intergalactic-border-critical-active, #d1002f);
+  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
 }
 
 SInlineInput[state='invalid'] SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-critical-active, #d1002f);
+  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
   @mixin focus-outline-mixin;
-  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, #ff4953);
+  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
 }
 
 SValue:focus~SControls {

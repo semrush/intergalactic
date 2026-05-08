@@ -112,6 +112,8 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
             modifiedSubPath = subPath ? `lib/${subPath}` : '';
           } else if (componentName === 'illustration') {
             modifiedSubPath = subPath ? `lib/${subPath}` : 'src';
+          } else if (componentName === 'theme') {
+            modifiedSubPath = subPath ? `lib/${subPath}` : '';
           } else if (!subPath.startsWith('src/')) {
             modifiedSubPath = `src/${subPath}`;
           }
