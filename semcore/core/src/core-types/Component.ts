@@ -88,6 +88,57 @@ export abstract class Component<
   protected isControlled = false;
 }
 
+type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
+
+export function createTestComponent<
+  Props = {},
+  Enhance extends readonly ((...args: any[]) => any)[] = [],
+  Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
+  InnerProps = {},
+  State = {},
+  DefaultProps = {},
+>() {
+  abstract class Component extends PureComponent<Props, State> {
+    uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
+    // @ts-ignore. This is a default value. Should be defined in related classes.
+      return {};
+    };
+
+    get handlers(): Readonly<{
+      [key in keyof Uncontrolled]: key extends keyof Props
+        ? Uncontrolled[key] extends (null | Props[key])
+          ? (value: Props[key], e?: any) => void
+          : Uncontrolled[key] extends Array<any> ? Uncontrolled[key][0] : Uncontrolled[key]
+        : never
+    }> {
+    // @ts-ignore. The body will be generated in factory
+      return {};
+    }
+
+    get asProps() {
+      return {} as Readonly<
+        { Root: RootResult<any> } & BaseAsProps<Props, Enhance, InnerProps> &
+        Intergalactic.InternalTypings.EfficientOmit<
+          AllHTMLAttributes<any>,
+          keyof BaseAsProps<Props, Enhance, InnerProps>
+        > & {
+          [DefaultPropKey in keyof DefaultProps as StripDefaultPrefix<DefaultPropKey>]: StripDefaultPrefix<DefaultPropKey> extends keyof Props
+            ? Exclude<Props[StripDefaultPrefix<DefaultPropKey>], undefined>
+            : DefaultProps[DefaultPropKey];
+        }
+      >;
+    }
+
+    Root: RootResult<any> = undefined as any;
+
+    isControlled = false;
+
+    static defaultProps: (props?: Props) => DefaultProps;
+  }
+
+  return Component;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Intergalactic {
   type ReactFCProps<C extends React.FC> = C extends React.FC<infer Props> ? Omit<Props, 'tag'> : {};

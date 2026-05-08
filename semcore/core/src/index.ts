@@ -1,5 +1,5 @@
 /** ============================== core ============================== */
-import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './core-types/Component';
+import { Root, Component, Intergalactic, wrapIntergalacticComponent, createTestComponent } from './core-types/Component';
 import type {
   PropGetterFn,
   IRootComponentProps,
@@ -25,6 +25,7 @@ export {
   createBaseComponent,
   Root,
   Component,
+  createTestComponent,
   type UnknownProperties,
   Intergalactic,
   type PropGetterFn,

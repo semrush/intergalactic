@@ -48,6 +48,14 @@ declare namespace NSSlider {
     options?: NSSlider.Option<V>[];
   };
 
+  type DefaultProps = {
+    defaultValue: number;
+    min: number;
+    max: number;
+    step: number;
+    children: React.ReactNode;
+  };
+
   namespace Knob {
     type Component = typeof Box;
   }
