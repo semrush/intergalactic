@@ -1900,9 +1900,6 @@ importers:
       '@semcore/fullscreen-modal':
         specifier: ^17.0.1
         version: link:../fullscreen-modal
-      '@semcore/i18n-unplugin':
-        specifier: ^16.0.10
-        version: link:../../tools/i18n-unplugin
       '@semcore/icon':
         specifier: ^16.0.0 || ^17.0.1
         version: link:../icon
