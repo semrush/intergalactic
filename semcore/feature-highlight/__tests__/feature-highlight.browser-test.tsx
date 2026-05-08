@@ -17,15 +17,22 @@ const featureHighlightTokens = {
   borderActive: '--intergalactic-border-feature-highlight-active',
 };
 
+// Matches the CSS fallback gradients after the test bundle normalizes them.
+const cssVarBackgroundImageFallbacks: Record<string, string> = {
+  '--intergalactic-keyboard-focus-feature-highlight-outline': 'linear-gradient(90deg in oklch, rgb(192, 142, 255), rgb(102, 107, 219))',
+  '--intergalactic-border-feature-highlight': 'linear-gradient(90deg in oklch, rgb(210, 179, 255), rgb(176, 193, 254))',
+  '--intergalactic-border-feature-highlight-active': 'linear-gradient(90deg in oklch, rgb(192, 142, 255), rgb(148, 165, 245))',
+};
+
 const getCssVarBackgroundImage = async (page: Page, varName: string) => {
-  return page.evaluate((name) => {
+  return page.evaluate(({ name, fallback }) => {
     const probe = document.createElement('div');
-    probe.style.backgroundImage = `var(${name})`;
+    probe.style.backgroundImage = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
     document.body.appendChild(probe);
     const backgroundImage = getComputedStyle(probe).backgroundImage;
     probe.remove();
     return backgroundImage;
-  }, varName);
+  }, { name: varName, fallback: cssVarBackgroundImageFallbacks[varName] });
 };
 
 const expectBackgroundImageToContainToken = async (
