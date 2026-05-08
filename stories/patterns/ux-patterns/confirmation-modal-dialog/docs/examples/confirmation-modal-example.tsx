@@ -9,9 +9,9 @@ import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 const warningBlockStyles = {
-  background: 'var(--intergalactic-bg-secondary-critical)',
-  border: '1px solid var(--intergalactic-border-critical)',
-  borderRadius: 'var(--intergalactic-surface-rounded)',
+  background: 'var(--intergalactic-bg-secondary-critical, #fff0f7)',
+  border: '1px solid var(--intergalactic-border-critical, #ffaeb5)',
+  borderRadius: 'var(--intergalactic-surface-rounded, 6px)',
   marginBottom: '24px',
   padding: '16px',
 };
