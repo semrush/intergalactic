@@ -1,14 +1,11 @@
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath, URL } from 'url';
 
+import { unpluginSemcoreResolve, unpluginIcons, unpluginIllustrations } from '@semcore/builder/plugins';
 import pluginReact from '@vitejs/plugin-react';
 import { createUnplugin } from 'unplugin';
 import { defineConfig } from 'vite';
 
-import { loadSemcoreSources } from './load-semcore-sources';
-import { resolveSemcoreSources } from './resolve-semcore-sources';
-import { unpluginIcons } from './unplugins/unplugin-icons';
-import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { unpluginStatic } from './unplugins/unplugin-static';
 
 export const LATEST = process.env.VITE_LATEST ?? 'latest';
@@ -24,29 +21,7 @@ export const viteConfig = defineConfig({
         plugins: ['@babel/plugin-syntax-import-assertions', '@semcore/babel-plugin-styles'],
       },
     }),
-    createUnplugin<{}>(() => ({
-      name: 'semcore-resolve',
-      async resolveId(id) {
-        if (
-          (
-            !id.includes('@semcore') &&
-            !id.includes('/semcore/') &&
-            !id.startsWith('intergalactic/')
-          ) ||
-          id.includes('@semcore/theme')
-        )
-          return null;
-        if (id.endsWith('.md')) return null;
-        return await resolveSemcoreSources(id);
-      },
-      loadInclude: (id) => {
-        return id.includes('/semcore/');
-      },
-      async load(id) {
-        return await loadSemcoreSources(id);
-      },
-      enforce: 'pre',
-    })).vite({}),
+    unpluginSemcoreResolve.vite({}),
     createUnplugin<{}>(() => ({
       name: 'docs-components-resolver',
       async resolveId(id) {
