@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "17.0.2",
+  "version": "17.0.3",
   "description": "Semrush design system package that reexports all other single component packages.",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
