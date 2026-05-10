@@ -1,4 +1,3 @@
-import type { ButtonProps } from '@semcore/ui/button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
@@ -6,32 +5,10 @@ import ButtonBaseExample, { defaultButtonProps } from './examples/button-base';
 import ButtonIconOnlyExample, { defaultIconButtonProps } from './examples/button-icon-only';
 import ButtonNeighborLocationExample, { defaultButtonNeighborProps } from './examples/button-neighbor-location';
 import ButtonWithEllipsisExample, { defaultButtonEllipsisProps } from './examples/button-with-ellipsis';
+import { themeArg, THEMES } from './themeUtils.ts';
 
 const meta: Meta = { title: 'Components/Button/Tests' };
 export default meta;
-
-// Allowed `theme` per `use`. Mirrors SButton[theme='<use>-<theme>'] in
-// semcore/button/src/component/Button/button.shadow.css. First entry = default.
-const THEMES = {
-  primary: ['info', 'success', 'brand', 'danger', 'invert'],
-  secondary: ['muted', 'invert', 'info'],
-  tertiary: ['muted', 'invert', 'info'],
-} as const satisfies Record<NonNullable<ButtonProps['use']>, ReadonlyArray<NonNullable<ButtonProps['theme']>>>;
-
-type Use = keyof typeof THEMES;
-
-const themeFor = (args: any): ButtonProps['theme'] => {
-  const use: Use = args.use ?? 'primary';
-  const picked = args[`theme_${use}`];
-  return THEMES[use].includes(picked) ? picked : THEMES[use][0];
-};
-
-const themeArg = (use: Use) => ({
-  name: `theme (${use})`,
-  control: { type: 'select' as const },
-  options: THEMES[use],
-  if: { arg: 'use', eq: use },
-});
 
 const commonArgTypes = {
   size: { control: { type: 'select' }, options: ['m', 'l'] },
@@ -53,19 +30,19 @@ const themeDefaults = {
 };
 
 export const ButtonBase: StoryObj<typeof defaultButtonProps> = {
-  render: (args) => <ButtonBaseExample {...args} theme={themeFor(args)} />,
+  render: ButtonBaseExample,
   argTypes: commonArgTypes,
   args: { ...defaultButtonProps, ...themeDefaults },
 };
 
 export const ButtonIconOnly: StoryObj<typeof defaultIconButtonProps> = {
-  render: (args) => <ButtonIconOnlyExample {...args} theme={themeFor(args)} />,
+  render: ButtonIconOnlyExample,
   argTypes: commonArgTypes,
   args: { ...defaultIconButtonProps, ...themeDefaults },
 };
 
 export const ButtonNeighborLocation: StoryObj<typeof defaultButtonNeighborProps> = {
-  render: (args) => <ButtonNeighborLocationExample {...args} theme={themeFor(args)} />,
+  render: ButtonNeighborLocationExample,
   argTypes: commonArgTypes,
   args: { ...defaultButtonNeighborProps, ...themeDefaults },
 };
@@ -96,7 +73,7 @@ const ellipsisHintArgTypes = {
 } as const;
 
 export const ButtonWithEllipsis: StoryObj<typeof defaultButtonEllipsisProps> = {
-  render: (args) => <ButtonWithEllipsisExample {...args} theme={themeFor(args)} />,
+  render: ButtonWithEllipsisExample,
   argTypes: ellipsisHintArgTypes,
   args: { ...defaultButtonEllipsisProps, ...themeDefaults },
 };

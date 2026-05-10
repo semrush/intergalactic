@@ -5,8 +5,11 @@ import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import React from 'react';
 
+import { themeFor } from '../themeUtils.ts';
+
 type ExampleProps = ButtonProps & { style?: any };
 const Demo = (props: ExampleProps) => {
+  const theme = themeFor(props);
   return (
 
     <Flex direction='row' gap={2} mt={10} style={props.style}>
@@ -16,7 +19,7 @@ const Demo = (props: ExampleProps) => {
           active={props.active}
           disabled={props.disabled}
           use={props.use}
-          theme={props.theme}
+          theme={theme}
           loading={props.loading}
         >
           Button
@@ -28,7 +31,7 @@ const Demo = (props: ExampleProps) => {
           active={props.active}
           disabled={props.disabled}
           use={props.use}
-          theme={props.theme}
+          theme={theme}
           loading={props.loading}
 
         >
@@ -41,7 +44,7 @@ const Demo = (props: ExampleProps) => {
           active={props.active}
           disabled={props.disabled}
           use={props.use}
-          theme={props.theme}
+          theme={theme}
           loading={props.loading}
 
         >
@@ -53,7 +56,7 @@ const Demo = (props: ExampleProps) => {
           active={props.active}
           disabled={props.disabled}
           use={props.use}
-          theme={props.theme}
+          theme={theme}
           loading={props.loading}
 
         >
@@ -68,7 +71,7 @@ const Demo = (props: ExampleProps) => {
           active={props.active}
           disabled={props.disabled}
           use={props.use}
-          theme={props.theme}
+          theme={theme}
           addonLeft={VideoListM}
           addonRight={VideoListM}
           loading={props.loading}
@@ -82,7 +85,7 @@ const Demo = (props: ExampleProps) => {
           active={props.active}
           disabled={props.disabled}
           use={props.use}
-          theme={props.theme}
+          theme={theme}
           loading={props.loading}
 
         >
