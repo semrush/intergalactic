@@ -1,8 +1,9 @@
 import type { NSText } from '@semcore/typography';
-import type { EllipsisSettings, SimpleHintPopperProps } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import React from 'react';
+
+import { themeFor } from '../themeUtils.ts';
 
 type ButtonEllipsisProps = ButtonProps & {
   ellipsis?: NSText.EllipsisProps;
@@ -13,12 +14,14 @@ type ButtonEllipsisProps = ButtonProps & {
 };
 
 const Demo = (props: ButtonEllipsisProps) => {
+  const theme = themeFor(props);
+
   return (
     <>
       <Button
         size={props.size}
         use={props.use}
-        theme={props.theme}
+        theme={theme}
         active={props.active}
         disabled={props.disabled}
         loading={props.loading}
@@ -37,7 +40,7 @@ const Demo = (props: ButtonEllipsisProps) => {
         ml={2}
         size={props.size}
         use={props.use}
-        theme={props.theme}
+        theme={theme}
         active={props.active}
         disabled={props.disabled}
         loading={props.loading}
