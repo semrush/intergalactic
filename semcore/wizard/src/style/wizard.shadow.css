@@ -42,6 +42,16 @@ SStepper {
   overflow: auto;
   line-height: var(--intergalactic-lh-200, 142%);
 
+  &:focus-visible {
+    outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+    transition-duration: calc(var(--intergalactic-duration-extra-fast, 100) * 1ms);
+    transition-timing-function: ease-in-out;
+    transition-property: outline-color, outline-width, outline-offset;
+  }
+
   &:hover {
     background: var(--intergalactic-control-primary-advertising-hover, oklch(0.6 0.244 297.8));
     z-index: 1;
