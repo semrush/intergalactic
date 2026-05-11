@@ -7,7 +7,7 @@ import React from 'react';
 
 import { themeFor } from '../themeUtils.ts';
 
-type ExampleProps = ButtonProps & { style?: any };
+type ExampleProps = Exclude<ButtonProps, 'theme' | 'use'> & { style?: any; theme: string };
 const Demo = (props: ExampleProps) => {
   const theme = themeFor(props);
 
