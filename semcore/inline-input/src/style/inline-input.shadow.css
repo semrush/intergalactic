@@ -106,26 +106,26 @@ SAddon[disabled] {
 }
 
 SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+  border-bottom-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
   @mixin focus-outline-mixin;
 }
 
 SInlineInput[state='valid'] SUnderline {
-  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
+  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
 }
 
 SInlineInput[state='valid'] SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
+  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
   @mixin focus-outline-mixin;
   outline-color: var(--intergalactic-keyboard-focus-valid-outline, oklch(0.711 0.146 166.9));
 }
 
 SInlineInput[state='invalid'] SUnderline {
-  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 }
 
 SInlineInput[state='invalid'] SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
   @mixin focus-outline-mixin;
   outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
 }

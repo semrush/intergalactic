@@ -53,9 +53,9 @@ export const expectVisibleHintsCount = async (page: Page, count: number): Promis
 const cssVarColorFallbacks: Record<string, string> = {
   '--intergalactic-bg-primary-neutral': 'rgb(255, 255, 255)',
   '--intergalactic-border-primary': 'rgba(0, 12, 8, 0.161)',
-  '--intergalactic-border-info-active': 'rgba(0, 40, 230, 0.419)',
-  '--intergalactic-border-success-active': 'rgb(0, 204, 154)',
-  '--intergalactic-border-critical-active': 'rgba(255, 0, 4, 0.56)',
+  '--intergalactic-border-info-active': 'rgb(135, 150, 239)',
+  '--intergalactic-border-success-active': 'rgb(0, 185, 145)',
+  '--intergalactic-border-critical-active': 'rgb(255, 99, 100)',
 };
 
 export const getCssVarColor = async (page: Page, varName: string) => {
