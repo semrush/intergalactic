@@ -96,7 +96,11 @@ export function createTestComponent<
   Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
   State = {},
-  DefaultProps = {},
+  DefaultProps extends {
+    [K in keyof DefaultProps]: StripDefaultPrefix<K> extends keyof Props
+      ? Props[StripDefaultPrefix<K>]
+      : never;
+  } = {},
 >() {
   abstract class Component extends PureComponent<Props, State> {
     uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
@@ -124,7 +128,7 @@ export function createTestComponent<
         > & {
           [DefaultPropKey in keyof DefaultProps as StripDefaultPrefix<DefaultPropKey>]: StripDefaultPrefix<DefaultPropKey> extends keyof Props
             ? Exclude<Props[StripDefaultPrefix<DefaultPropKey>], undefined>
-            : DefaultProps[DefaultPropKey];
+            : never;
         }
       >;
     }
