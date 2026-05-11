@@ -53,7 +53,7 @@ function useEmailInputTags() {
   }, [emails, emailTagInput]);
 
   const handleCloseEmailTag = React.useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: React.MouseEvent<HTMLElement>) => {
       const { dataset } = e.currentTarget;
       setEmails(emails.filter((_tag, idx) => idx !== Number(dataset.id)));
     },
