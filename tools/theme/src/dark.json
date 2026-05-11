@@ -285,7 +285,7 @@
       },
       "dusty": {
         "50": {
-          "value": "#E7E8F2",
+          "value": "#F5F4FF",
           "type": "color",
           "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
         },
@@ -402,6 +402,251 @@
       "800": {
         "value": "#002203",
         "type": "color"
+      }
+    },
+    "base": {
+      "value": "Inter",
+      "type": "fontFamilies",
+      "description": "Base font family."
+    },
+    "fs-50": {
+      "value": "10px",
+      "type": "fontSizes",
+      "description": "Use only for text in Badge component."
+    },
+    "fs-100": {
+      "value": "12px",
+      "type": "fontSizes",
+      "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability."
+    },
+    "fs-200": {
+      "value": "14px",
+      "type": "fontSizes"
+    },
+    "fs-300": {
+      "value": "16px",
+      "type": "fontSizes"
+    },
+    "fs-400": {
+      "value": "20px",
+      "type": "fontSizes"
+    },
+    "fs-500": {
+      "value": "24px",
+      "type": "fontSizes"
+    },
+    "fs-600": {
+      "value": "32px",
+      "type": "fontSizes"
+    },
+    "fs-700": {
+      "value": "36px",
+      "type": "fontSizes"
+    },
+    "fs-800": {
+      "value": "48px",
+      "type": "fontSizes"
+    },
+    "lh-100": {
+      "value": "133%",
+      "type": "lineHeights",
+      "description": "Use with font-size-100."
+    },
+    "lh-200": {
+      "value": "142%",
+      "type": "lineHeights",
+      "description": "Use with font-size-200."
+    },
+    "lh-300": {
+      "value": "150%",
+      "type": "lineHeights",
+      "description": "Use with font-size-300."
+    },
+    "lh-400": {
+      "value": "120%",
+      "type": "lineHeights",
+      "description": "Use with font-size-400."
+    },
+    "lh-500": {
+      "value": "117%",
+      "type": "lineHeights",
+      "description": "Use with font-size-500."
+    },
+    "lh-600": {
+      "value": "125%",
+      "type": "lineHeights",
+      "description": "Use with font-size-600."
+    },
+    "lh-700": {
+      "value": "110%",
+      "type": "lineHeights",
+      "description": "Use with font-size-700."
+    },
+    "lh-800": {
+      "value": "117%",
+      "type": "lineHeights",
+      "description": "Use with font-size-800."
+    },
+    "semi-bold": {
+      "value": "600",
+      "type": "fontWeights",
+      "description": "Semi-bold font weight."
+    },
+    "bold": {
+      "value": "700",
+      "type": "fontWeights",
+      "description": "Bold font weight."
+    },
+    "regular": {
+      "value": "400",
+      "type": "fontWeights",
+      "description": "Regular font weight."
+    },
+    "medium": {
+      "value": "500",
+      "type": "fontWeights",
+      "description": "Medium font weight."
+    },
+    "compact": {
+      "value": "0.3",
+      "type": "letterSpacing",
+      "description": "Compact letter spacing."
+    },
+    "scale-indent": {
+      "value": "4px",
+      "type": "spacing",
+      "description": "Base denominator of the design system."
+    },
+    "spacing-05x": {
+      "value": "{scale-indent}*0.5",
+      "type": "spacing",
+      "description": "2px"
+    },
+    "spacing-1x": {
+      "value": "{scale-indent}*1",
+      "type": "spacing",
+      "description": "4px"
+    },
+    "spacing-2x": {
+      "value": "{scale-indent}*2",
+      "type": "spacing",
+      "description": "8px"
+    },
+    "spacing-3x": {
+      "value": "{scale-indent}*3",
+      "type": "spacing",
+      "description": "12px"
+    },
+    "spacing-4x": {
+      "value": "{scale-indent}*4",
+      "type": "spacing",
+      "description": "16px"
+    },
+    "spacing-5x": {
+      "value": "{scale-indent}*5",
+      "type": "spacing",
+      "description": "20px"
+    },
+    "spacing-6x": {
+      "value": "{scale-indent}*6",
+      "type": "spacing",
+      "description": "24px"
+    },
+    "spacing-8x": {
+      "value": "{scale-indent}*8",
+      "type": "spacing",
+      "description": "32px"
+    },
+    "spacing-10x": {
+      "value": "{scale-indent}*10",
+      "type": "spacing",
+      "description": "40px"
+    },
+    "spacing-14x": {
+      "value": "{scale-indent}*14",
+      "type": "spacing",
+      "description": "56px"
+    },
+    "spacing-20x": {
+      "value": "{scale-indent}*20",
+      "type": "spacing",
+      "description": "80px"
+    },
+    "spacing-24x": {
+      "value": "{scale-indent}*24",
+      "type": "spacing",
+      "description": "96px"
+    },
+    "spacing-30x": {
+      "value": "{scale-indent}*30",
+      "type": "spacing",
+      "description": "120px"
+    },
+    "rounded-extra-small": {
+      "value": "2px",
+      "type": "borderRadius"
+    },
+    "rounded-small": {
+      "value": "4px",
+      "type": "borderRadius"
+    },
+    "rounded-medium": {
+      "value": "6px",
+      "type": "borderRadius"
+    },
+    "rounded-large": {
+      "value": "12px",
+      "type": "borderRadius"
+    },
+    "rounded-extra-large": {
+      "value": "24px",
+      "type": "borderRadius"
+    },
+    "screen-extra-small": {
+      "value": "320px",
+      "type": "sizing",
+      "description": "Extra small screens (small phones)."
+    },
+    "screen-small": {
+      "value": "768px",
+      "type": "sizing",
+      "description": "Small screens (phones and small tablets)."
+    },
+    "screen-medium": {
+      "value": "1200px",
+      "type": "sizing",
+      "description": "Medium screens (tablets and small laptops)."
+    },
+    "screen-large": {
+      "value": "1920px",
+      "type": "sizing",
+      "description": "Large screens (tablets and laptops)."
+    },
+    "duration": {
+      "extra-slow": {
+        "value": "500",
+        "type": "other",
+        "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)"
+      },
+      "slow": {
+        "value": "400",
+        "type": "other",
+        "description": "Should be used for more larger scale animations (such as page transitions)"
+      },
+      "medium": {
+        "value": "300",
+        "type": "other",
+        "description": "Should be used for more complex effects (such as Modal)"
+      },
+      "fast": {
+        "value": "200",
+        "type": "other",
+        "description": "Should be used for more complex effects (such as Dropdown or Accordion)"
+      },
+      "extra-fast": {
+        "value": "100",
+        "type": "other",
+        "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
       }
     }
   },
@@ -582,20 +827,14 @@
         }
       },
       "highlight-results": {
-        "value": "{yellow.300}, 0.4",
+        "value": "rgba({yellow.300}, 0.4)",
         "type": "color",
         "description": "Highlighting the search results."
       },
       "highlight-focus": {
-        "value": "{blue.400}, 0.2",
+        "value": "rgba({blue.400}, 0.2)",
         "type": "color",
         "description": "Focusing values in the input."
-      },
-      "tertiary": {
-        "neutral": {
-          "value": "rgba(54, 56, 67, 1)",
-          "type": "color"
-        }
       }
     },
     "text": {
@@ -639,7 +878,7 @@
         "type": "color",
         "description": "Inverted version of the primary text."
       },
-      "secondary-Invert": {
+      "secondary-invert": {
         "value": "{gray.white}, 0.75",
         "type": "color",
         "description": "Inverted version of the secondary text."
@@ -726,7 +965,8 @@
       },
       "advertising": {
         "value": "{violet.700}",
-        "type": "color"
+        "type": "color",
+        "description": "Advertising text."
       }
     },
     "border": {
@@ -786,7 +1026,7 @@
         "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background."
       },
       "secondary-invert": {
-        "value": "{gray.white}, 0.3",
+        "value": "rgba({gray.white}, 0.3)",
         "type": "color",
         "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background."
       },
@@ -799,6 +1039,11 @@
         "value": "{gray.300}",
         "type": "color",
         "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table."
+      },
+      "date-picker-range-comparison": {
+        "value": "{violet.500}",
+        "type": "color",
+        "description": "Border color of the second period for the comparison mode in the DatePicker."
       }
     },
     "control": {
@@ -871,17 +1116,17 @@
         "advertising": {
           "value": "{violet.600}",
           "type": "color",
-          "description": "Hover state of the advertising primary control."
+          "description": "Background of the advertising primary control."
         },
         "advertising-hover": {
           "value": "{violet.700}",
           "type": "color",
-          "description": "Active (selected) state of the advertising primary control."
+          "description": "Hover state of the advertising primary control."
         },
         "advertising-active": {
           "value": "{violet.500}",
           "type": "color",
-          "description": "Background of the advertising primary control."
+          "description": "Active (selected) state of the advertising primary control."
         },
         "invert": {
           "value": "rgba(30, 34, 49, 1)",
@@ -901,105 +1146,97 @@
       },
       "secondary": {
         "neutral": {
-          "value": "{gray.400}, 0.1",
+          "value": "rgba({gray.400}, 0.1)",
           "type": "color",
           "description": "Background of the regular secondary control."
         },
         "neutral-hover": {
-          "value": "{gray.400}, 0.2",
+          "value": "rgba({gray.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the regular secondary control."
         },
         "neutral-active": {
-          "value": "{gray.400}, 0.3",
+          "value": "rgba({gray.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the regular secondary control."
         },
         "info": {
-          "value": "{blue.400}, 0.1",
+          "value": "rgba({blue.400}, 0.1)",
           "type": "color",
           "description": "Background of the accent secondary control."
         },
         "info-hover": {
-          "value": "{blue.400}, 0.2",
+          "value": "rgba({blue.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the accent secondary control."
         },
         "info-active": {
-          "value": "{blue.400}, 0.3",
+          "value": "rgba({blue.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the accent secondary control."
         },
         "invert": {
-          "value": "{gray.white}, 0.05",
+          "value": "rgba({gray.white}, 0.05)",
           "type": "color",
           "description": "Background of the inverted version of the secondary control."
         },
         "invert-hover": {
-          "value": "{gray.white}, 0.1",
+          "value": "rgba({gray.white}, 0.1)",
           "type": "color",
           "description": "Hover state of the inverted version of the secondary control."
         },
         "invert-active": {
-          "value": "{gray.white}, 0.3",
+          "value": "rgba({gray.white}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the inverted version of the secondary control."
         }
       },
       "tertiary": {
         "neutral": {
-          "value": "{gray.400}, 0",
+          "value": "rgba({gray.400}, 0)",
           "type": "color",
           "description": "Background of the regular tertiary control."
         },
         "neutral-hover": {
-          "value": "{gray.400}, 0.2",
+          "value": "rgba({gray.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the regular tertiary control."
         },
         "neutral-active": {
-          "value": "{gray.400}, 0.3",
+          "value": "rgba({gray.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the regular tertiary control."
         },
         "info": {
-          "value": "{blue.400}, 0",
+          "value": "rgba({blue.400}, 0)",
           "type": "color",
           "description": "Background of the accent and link-lookalike tertiary control."
         },
         "info-hover": {
-          "value": "{blue.400}, 0.2",
+          "value": "rgba({blue.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the accent and link-lookalike tertiary control."
         },
         "info-active": {
-          "value": "{blue.400}, 0.3",
+          "value": "rgba({blue.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the accent and link-lookalike tertiary control."
         },
         "invert": {
-          "value": "{gray.white}, 0",
+          "value": "rgba({gray.white}, 0)",
           "type": "color",
           "description": "Background of the inverted version of the tertiary control."
         },
         "invert-hover": {
-          "value": "{gray.white}, 0.1",
+          "value": "rgba({gray.white}, 0.1)",
           "type": "color",
           "description": "Hover state of the inverted version of the tertiary control."
         },
         "invert-active": {
-          "value": "{gray.white}, 0.3",
+          "value": "rgba({gray.white}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the inverted version of the tertiary control."
         }
-      },
-      "lift-me-up": {
-        "value": "{gray.500}",
-        "type": "color"
-      },
-      "lift-me-up-hover-active": {
-        "value": "{gray.600}",
-        "type": "color"
       }
     },
     "icon": {
@@ -1027,7 +1264,7 @@
         "success": {
           "value": "{green.400}",
           "type": "color",
-          "description": "Primary successful icon."
+          "description": "Primary success icon."
         },
         "success-hover-active": {
           "value": "{green.500}",
@@ -1089,7 +1326,7 @@
         "success": {
           "value": "{green.300}",
           "type": "color",
-          "description": "Secondary successful icon."
+          "description": "Secondary success icon."
         },
         "success-hover-active": {
           "value": "{green.400}",
@@ -1121,6 +1358,48 @@
         "value": "{gray.50}",
         "type": "color",
         "description": "Color for the default non-interactive icon."
+      }
+    },
+    "illustration": {
+      "red": {
+        "value": "#FF788F",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "orange": {
+        "value": "#FFB26E",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "yellow": {
+        "value": "#FFE84D",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "salad": {
+        "value": "#C7FA73",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "green": {
+        "value": "#45E0A8",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "blue": {
+        "value": "#6EDBFF",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "violet": {
+        "value": "#B880FF",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
+      },
+      "pink": {
+        "value": "#FF7AD1",
+        "type": "color",
+        "description": "⚠️ Use only for illustrations."
       }
     },
     "date-picker": {
@@ -1160,8 +1439,19 @@
         "description": "Hover for the active (selected) date-picker cell background."
       },
       "cell-current-invert": {
-        "value": "{gray.white}, 0.3",
-        "type": "color"
+        "value": "rgba({gray.white}, 0.5)",
+        "type": "color",
+        "description": "Color for marking the active cell with the current date, month or year in the date-picker."
+      },
+      "cell-comparison-active": {
+        "value": "{violet.500}",
+        "type": "color",
+        "description": "Active (selected) date-picker cell background for comparison periods."
+      },
+      "cell-comparison-active-hover": {
+        "value": "{violet.600}",
+        "type": "color",
+        "description": "Hover for the active (selected) date-picker cell background for comparison periods."
       }
     },
     "dropdown-menu": {
@@ -1187,10 +1477,30 @@
       }
     },
     "feature-popover": {
-      "dot-outer-border": {
-        "value": "{yellow.100}, 0.3",
+      "bg": {
+        "value": "{bg.primary.highlight}",
         "type": "color",
-        "description": "Color of the outer border of the FeaturePopover.Spot."
+        "description": "Color of the FeaturePopover background with accent theme."
+      },
+      "dot-outer-border": {
+        "value": "{feature-popover.bg}",
+        "type": "color",
+        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with accent theme."
+      },
+      "bg-neutral": {
+        "value": "{violet.dusty.800}",
+        "type": "color",
+        "description": "Color of the FeaturePopover background with neutral theme."
+      },
+      "dot-neutral": {
+        "value": "{green.300}",
+        "type": "color",
+        "description": "Color of the FeaturePopover.Spot for FeaturePopover with neutral theme."
+      },
+      "dot-neutral-outer-border": {
+        "value": "{feature-popover.dot-neutral}",
+        "type": "color",
+        "description": "Color of the outer border of the FeaturePopover.Spot for FeaturePopover with neutral theme."
       }
     },
     "progress-bar": {
@@ -1205,12 +1515,12 @@
         "description": "Hover state of the background color of the ProgressBar."
       },
       "bg-invert": {
-        "value": "{gray.white}, 0.2",
+        "value": "rgba({gray.white}, 0.2)",
         "type": "color",
         "description": "Inverted version of the background color of the ProgressBar."
       },
       "bg-invert-hover": {
-        "value": "{gray.white}, 0.4",
+        "value": "rgba({gray.white}, 0.4)",
         "type": "color",
         "description": "Hover state for the inverted version of the background color of the ProgressBar."
       },
@@ -1242,7 +1552,7 @@
         "description": "Default color for the Skeleton."
       },
       "bg-invert": {
-        "value": "{gray.white}, 0.3",
+        "value": "rgba({gray.white}, 0.3)",
         "type": "color",
         "description": "Inverted version of the default color for the Skeleton."
       }
@@ -1275,7 +1585,8 @@
         },
         "gradient": {
           "value": "linear-gradient(to right, rgba($gray.100, 0) 0%, rgba($gray.100, 1) 100%)",
-          "type": "color"
+          "type": "color",
+          "description": "Background gradient for sorting icon that absolute positioned in the table head."
         }
       },
       "td": {
@@ -1299,10 +1610,10 @@
           "type": "color",
           "description": "Background of the unread cell in the Table."
         },
-        "cell-actions-accordion": {
+        "cell-accordion": {
           "value": "rgba(54, 56, 67, 1)",
           "type": "color",
-          "description": "Background of the cell used for Accordion or actions row, in the Table."
+          "description": "Background of the cell inside an Accordion in the Table."
         },
         "cell-selected": {
           "value": "rgba(43, 54, 69, 1)",
@@ -1377,10 +1688,6 @@
         "type": "color",
         "description": "Secondary brand color."
       },
-      "tertiary": {
-        "value": "{gray.white}",
-        "type": "color"
-      },
       "pinterest": {
         "value": "#bd081c",
         "type": "color",
@@ -1426,6 +1733,11 @@
         "type": "color",
         "description": "Google My Business brand color."
       }
+    },
+    "disabled-opacity": {
+      "value": "0.3",
+      "type": "opacity",
+      "description": "Use for the disabled state of all kind of the controls and elements."
     },
     "box-shadow": {
       "card": {
@@ -1496,141 +1808,47 @@
         ],
         "type": "boxShadow",
         "description": "Use it only for controls that float above the whole interface."
-      },
-      "top-menu": {
-        "value": "5px 8px 25px 0px rgba({gray.800}, 0.40)",
-        "type": "boxShadow",
-        "description": "Default shadow of the top-menu."
-      },
-      "principles": {
-        "value": "10px 10px 45px 0px rgba({gray.800}, 0.30)",
-        "type": "boxShadow",
-        "description": "Default shadow of the principles card."
       }
     },
     "keyboard-focus": {
-      "value": "0px 0px 0px 3px rgba({blue.300}, 0.8)",
+      "value": "0px 0px 0px 3px rgba({keyboard-focus.outline}, 0.5)",
       "type": "boxShadow",
-      "description": "Default keyboard focus styles."
-    },
-    "keyboard-focus-invalid": {
-      "value": "0px 0px 0px 3px rgba(246, 58, 75, 0.8)",
-      "type": "boxShadow",
-      "description": "Keyboard focus styles for elements with invalid state."
-    },
-    "keyboard-focus-valid": {
-      "value": "0px 0px 0px 3px rgba(68, 209, 164, 0.8)",
-      "type": "boxShadow",
-      "description": "Keyboard focus styles for elements with valid state."
-    },
-    "base": {
-      "value": "Inter",
-      "type": "fontFamilies"
-    },
-    "lh-800": {
-      "value": "117%",
-      "type": "lineHeights",
-      "description": "Use with font-size-800."
-    },
-    "lh-700": {
-      "value": "110%",
-      "type": "lineHeights",
-      "description": "Use with font-size-700."
-    },
-    "lh-600": {
-      "value": "125%",
-      "type": "lineHeights",
-      "description": "Use with font-size-600."
-    },
-    "lh-500": {
-      "value": "117%",
-      "type": "lineHeights",
-      "description": "Use with font-size-500."
-    },
-    "lh-400": {
-      "value": "120%",
-      "type": "lineHeights",
-      "description": "Use with font-size-400."
-    },
-    "lh-300": {
-      "value": "150%",
-      "type": "lineHeights",
-      "description": "Use with font-size-300."
-    },
-    "lh-200": {
-      "value": "142%",
-      "type": "lineHeights",
-      "description": "Use with font-size-200."
-    },
-    "lh-100": {
-      "value": "133%",
-      "type": "lineHeights",
-      "description": "Use with font-size-100."
-    },
-    "semi-bold": {
-      "value": "600",
-      "type": "fontWeights"
-    },
-    "bold": {
-      "value": "700",
-      "type": "fontWeights"
-    },
-    "regular": {
-      "value": "400",
-      "type": "fontWeights"
-    },
-    "medium": {
-      "value": "500",
-      "type": "fontWeights"
-    },
-    "fs-50": {
-      "value": "10px",
-      "type": "fontSizes",
-      "description": "Use only for text in Badge component."
-    },
-    "fs-100": {
-      "value": "12px",
-      "type": "fontSizes",
-      "description": "Use with caution for text in additional messages. Always check its contrast and readability."
-    },
-    "fs-200": {
-      "value": "14px",
-      "type": "fontSizes",
-      "description": "Use for text in regular messages."
-    },
-    "fs-300": {
-      "value": "16px",
-      "type": "fontSizes",
-      "description": "Use for H6 with bold font-weight, and for text in regular messages."
-    },
-    "fs-400": {
-      "value": "20px",
-      "type": "fontSizes",
-      "description": "Use for H5 and subtitles."
-    },
-    "fs-500": {
-      "value": "24px",
-      "type": "fontSizes",
-      "description": "Use for H4."
-    },
-    "fs-600": {
-      "value": "32px",
-      "type": "fontSizes",
-      "description": "Use for H3."
-    },
-    "fs-700": {
-      "value": "36px",
-      "type": "fontSizes",
-      "description": "Use for H2."
-    },
-    "fs-800": {
-      "value": "48px",
-      "type": "fontSizes",
-      "description": "Use for H1."
-    },
-    "compact": {
-      "value": "0.3",
-      "type": "letterSpacing"
+      "description": "Default keyboard focus box-shadow styles.",
+      "outline": {
+        "value": "{blue.400}",
+        "type": "color",
+        "description": "Color for default keyboard focus outline styles."
+      },
+      "invalid": {
+        "value": "0px 0px 0px 3px rgba({keyboard-focus.invalid.outline}, 0.5)",
+        "type": "boxShadow",
+        "description": "Keyboard focus styles for elements with invalid state.",
+        "outline": {
+          "value": "{red.400}",
+          "type": "color",
+          "description": "Color for keyboard focus outline styles for elements with invalid state."
+        }
+      },
+      "valid": {
+        "value": "0px 0px 0px 3px rgba({keyboard-focus.valid.outline}, 0.5)",
+        "type": "boxShadow",
+        "description": "Keyboard focus styles for elements with valid state.",
+        "outline": {
+          "value": "{green.400}",
+          "type": "color",
+          "description": "Color for keyboard focus outline styles for elements with valid state."
+        }
+      },
+      "invert": {
+        "value": "0px 0px 0px 3px {keyboard-focus.invert.outline}",
+        "type": "boxShadow",
+        "description": "Keyboard focus styles for use on dark backgrounds.",
+        "outline": {
+          "value": "rgba({gray.white}, 0.8)",
+          "type": "color",
+          "description": "Color for keyboard focus outline styles to use on the dark and color background."
+        }
+      }
     },
     "heading-h1": {
       "value": {
@@ -1701,11 +1919,6 @@
       "type": "typography",
       "description": "Use for big subtitles on the landing pages."
     },
-    "scale-indent": {
-      "value": "4px",
-      "type": "spacing",
-      "description": "Base denominator of the design system."
-    },
     "form-control-s": {
       "value": "{scale-indent}*5",
       "type": "sizing",
@@ -1721,87 +1934,6 @@
       "type": "sizing",
       "description": "Large size of the controls."
     },
-    "spacing-05x": {
-      "value": "{scale-indent}*0.5",
-      "type": "spacing",
-      "description": "2px"
-    },
-    "spacing-1x": {
-      "value": "{scale-indent}*1",
-      "type": "spacing",
-      "description": "4px"
-    },
-    "spacing-2x": {
-      "value": "{scale-indent}*2",
-      "type": "spacing",
-      "description": "8px"
-    },
-    "spacing-3x": {
-      "value": "{scale-indent}*3",
-      "type": "spacing",
-      "description": "12px"
-    },
-    "spacing-4x": {
-      "value": "{scale-indent}*4",
-      "type": "spacing",
-      "description": "16px"
-    },
-    "spacing-5x": {
-      "value": "{scale-indent}*5",
-      "type": "spacing",
-      "description": "20px"
-    },
-    "spacing-6x": {
-      "value": "{scale-indent}*6",
-      "type": "spacing",
-      "description": "24px"
-    },
-    "spacing-8x": {
-      "value": "{scale-indent}*8",
-      "type": "spacing",
-      "description": "32px"
-    },
-    "spacing-10x": {
-      "value": "{scale-indent}*10",
-      "type": "spacing",
-      "description": "40px"
-    },
-    "spacing-14x": {
-      "value": "{scale-indent}*14",
-      "type": "spacing",
-      "description": "56px"
-    },
-    "spacing-20x": {
-      "value": "{scale-indent}*20",
-      "type": "spacing",
-      "description": "80px"
-    },
-    "spacing-24x": {
-      "value": "{scale-indent}*24",
-      "type": "spacing",
-      "description": "96px"
-    },
-    "spacing-30x": {
-      "value": "{scale-indent}*30",
-      "type": "spacing",
-      "description": "120px"
-    },
-    "rounded-small": {
-      "value": "4px",
-      "type": "borderRadius"
-    },
-    "rounded-medium": {
-      "value": "6px",
-      "type": "borderRadius"
-    },
-    "rounded-large": {
-      "value": "12px",
-      "type": "borderRadius"
-    },
-    "rounded-extra-large": {
-      "value": "24px",
-      "type": "borderRadius"
-    },
     "addon-rounded": {
       "value": "{rounded-small}",
       "type": "borderRadius",
@@ -1811,6 +1943,11 @@
       "value": "{rounded-medium}",
       "type": "borderRadius",
       "description": "Use for rounding Badge."
+    },
+    "chart-rounded": {
+      "value": "{rounded-extra-small}",
+      "type": "borderRadius",
+      "description": "Use for rounding big and small charts like bar, histogram and others."
     },
     "counter-rounded": {
       "value": "{rounded-large}",
@@ -1852,39 +1989,14 @@
       "type": "borderRadius",
       "description": "Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard)."
     },
-    "disabled-opacity": {
-      "value": "0.3",
-      "type": "opacity",
-      "description": "Use for the disabled state of all kind of the controls and elements."
-    },
-    "screen-extra-small": {
-      "value": "320px",
-      "type": "sizing",
-      "description": "Extra small screens (small phones)."
-    },
-    "screen-small": {
-      "value": "768px",
-      "type": "sizing",
-      "description": "Small screens (phones and small tablets)."
-    },
-    "screen-medium": {
-      "value": "1200px",
-      "type": "sizing",
-      "description": "Medium screens (tablets and small laptops)."
-    },
-    "screen-large": {
-      "value": "1920px",
-      "type": "sizing",
-      "description": "Large screens (tablets and laptops)."
-    },
     "overlay": {
       "primary": {
-        "value": "{gray.800}, 0.7",
+        "value": "rgba({gray.800}, 0.7)",
         "type": "color",
         "description": "Use for cover the content under the modal dialogs."
       },
       "secondary": {
-        "value": "{gray.800}, 0.4",
+        "value": "rgba({gray.800}, 0.4)",
         "type": "color",
         "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs."
       },
@@ -1894,39 +2006,9 @@
         "description": "Use as a primary cover of the content under the messages about limitations."
       },
       "limitation-secondary": {
-        "value": "{gray.white}, 0.85",
+        "value": "rgba({gray.white}, 0.85)",
         "type": "color",
         "description": "Use as a secondary cover of the content under the messages about limitations."
-      }
-    },
-    "z-index": {
-      "deep": {
-        "value": "-999",
-        "type": "other"
-      },
-      "overlay": {
-        "value": "500",
-        "type": "other"
-      },
-      "modal": {
-        "value": "900",
-        "type": "other"
-      },
-      "popper": {
-        "value": "700",
-        "type": "other"
-      },
-      "dropdown": {
-        "value": "750",
-        "type": "other"
-      },
-      "tooltip": {
-        "value": "800",
-        "type": "other"
-      },
-      "notice-bubble": {
-        "value": "999",
-        "type": "other"
       }
     },
     "tooltip": {
@@ -2002,7 +2084,7 @@
     },
     "scroll-bar": {
       "background": {
-        "value": "{gray.800}, 0.3",
+        "value": "rgba({gray.800}, 0.3)",
         "type": "color",
         "description": "Background color for ScrollBar."
       }
@@ -2012,72 +2094,72 @@
         "gray-normal": {
           "value": "rgba(69, 70, 81, 1)",
           "type": "color",
-          "description": "Primary gray tag."
+          "description": "Gray background color for the primary tag."
         },
         "gray-hover-active": {
           "value": "{gray.100}",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary gray tag."
+          "description": "Gray background color for the hover and active states of the primary tag."
         },
         "blue-normal": {
           "value": "rgba(7, 77, 141, 1)",
           "type": "color",
-          "description": "Primary blue tag."
+          "description": "Blue background color for primary tag."
         },
         "blue-hover-active": {
           "value": "{blue.100}",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary blue tag."
+          "description": "Blue background color for the hover and active states of the primary tag."
         },
         "green-normal": {
           "value": "rgba(9, 99, 82, 1)",
           "type": "color",
-          "description": "Primary green tag."
+          "description": "Green background color for the primary tag."
         },
         "green-hover-active": {
           "value": "{green.100}",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary green tag."
+          "description": "Green background color for the hover and active states of the primary tag."
         },
         "orange-normal": {
           "value": "rgba(156, 49, 11, 1)",
           "type": "color",
-          "description": "Primary orange tag."
+          "description": "Orange background color for the primary tag."
         },
         "orange-hover-active": {
           "value": "{orange.100}",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary orange tag."
+          "description": "Orange background color for the hover and active states of the primary tag."
         },
         "red-normal": {
           "value": "rgba(160, 13, 42, 1)",
           "type": "color",
-          "description": "Primary red tag."
+          "description": "Red background color for the primary tag."
         },
         "red-hover-active": {
           "value": "{red.100}",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary red tag."
+          "description": "Red background color for the hover and active states of the primary tag."
         },
         "violet-normal": {
           "value": "rgba(95, 62, 157, 1)",
           "type": "color",
-          "description": "Primary violet tag."
+          "description": "Violet background color for the primary tag."
         },
         "violet-hover-active": {
           "value": "{violet.100}",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary violet tag."
+          "description": "Violet background color for the hover and active states of the primary tag."
         },
         "yellow-normal": {
           "value": "{yellow.100}, 0.5",
           "type": "color",
-          "description": "Primary yellow tag."
+          "description": "Yellow background color for the primary tag."
         },
         "yellow-hover-active": {
           "value": "{yellow.100}",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary yellow tag."
+          "description": "Yellow background color for the hover and active states of the primary tag."
         },
         "white-normal": {
           "value": "{gray.white}, 0.15",
@@ -2142,12 +2224,12 @@
           "description": "Hover and active (selected) states of the background color for the default secondary tag."
         },
         "white-normal": {
-          "value": "{gray.white}, 0",
+          "value": "rgba({gray.white}, 0)",
           "type": "color",
           "description": "White secondary tag."
         },
         "white-hover-active": {
-          "value": "{gray.white}, 0.1",
+          "value": "rgba({gray.white}, 0.1)",
           "type": "color",
           "description": "Active state of the secondary white tag."
         },
@@ -2323,7 +2405,7 @@
           "description": "Text label on the chart grid."
         },
         "bar-chart-hover": {
-          "value": "{gray.200}, 0.3",
+          "value": "rgba({gray.200}, 0.3)",
           "type": "color",
           "description": "Background color for the hover state of a bar on the chart grid."
         },
@@ -2333,9 +2415,14 @@
           "description": "Default background color of a bar in the BarChart."
         },
         "period-bg": {
-          "value": "{gray.200}, 0.2",
+          "value": "rgba({gray.200}, 0.2)",
           "type": "color",
-          "description": "Use for highlighting the period on the chart grid."
+          "description": "Use for highlighting a period on the chart grid."
+        },
+        "period-pattern": {
+          "value": "rgba({gray.800}, 0.15)",
+          "type": "color",
+          "description": "Stripe color for diagonal pattern background."
         },
         "border": {
           "value": "{gray.800}",
@@ -2350,7 +2437,7 @@
           "description": "Background color for the clickable date on the X-axis of the chart grid."
         },
         "data-start-tracking": {
-          "value": "{green.400}, 0.2",
+          "value": "rgba({green.400}, 0.2)",
           "type": "color",
           "description": "Background color for the \"Start tracking\" date on the X-axis of the chart grid."
         }
@@ -2390,7 +2477,7 @@
     },
     "sidebar-nav": {
       "control-hover": {
-        "value": "{violet.dusty.50}",
+        "value": "rgba({gray.100}, 0.7)",
         "type": "color"
       },
       "control-active": {
@@ -2420,32 +2507,37 @@
         }
       }
     },
-    "duration": {
-      "extra-slow": {
+    "z-index": {
+      "deep": {
+        "value": "-999",
+        "type": "other"
+      },
+      "overlay": {
         "value": "500",
-        "type": "other",
-        "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)"
+        "type": "other"
       },
-      "slow": {
-        "value": "400",
-        "type": "other",
-        "description": "Should be used for more larger scale animations (such as page transitions)"
+      "modal": {
+        "value": "900",
+        "type": "other"
       },
-      "medium": {
-        "value": "300",
-        "type": "other",
-        "description": "Should be used for more complex effects (such as Modal)"
+      "popper": {
+        "value": "700",
+        "type": "other"
       },
-      "fast": {
-        "value": "200",
-        "type": "other",
-        "description": "Should be used for more complex effects (such as Dropdown or Accordion)"
+      "dropdown": {
+        "value": "750",
+        "type": "other"
       },
-      "extra-fast": {
-        "value": "100",
-        "type": "other",
-        "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
+      "tooltip": {
+        "value": "800",
+        "type": "other"
       },
+      "notice-bubble": {
+        "value": "999",
+        "type": "other"
+      }
+    },
+    "duration": {
       "switch": {
         "value": "{duration.extra-fast}",
         "type": "other",
@@ -2475,6 +2567,130 @@
         "value": "{duration.fast}",
         "type": "other",
         "description": "Use for Summary or Counter."
+      }
+    }
+  },
+  "featureHighlight": {
+    "bg": {
+      "primary": {
+        "feature-highlight": {
+          "value": "rgba(30, 34, 49, 1)",
+          "type": "color",
+          "description": "Primary background for highlighted controls."
+        },
+        "feature-highlight-hover-active": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Primary background for hover and active (selected) state of highlighted controls."
+        }
+      },
+      "secondary": {
+        "feature-highlight": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Secondary background for the highlighted message."
+        }
+      }
+    },
+    "border": {
+      "feature-highlight": {
+        "value": "linear-gradient(90deg, {violet.300}, {blue.300})",
+        "type": "color",
+        "description": "Primary border for highlighted controls."
+      },
+      "feature-highlight-active": {
+        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
+        "type": "color",
+        "description": "Primary border for the active state of highlighted controls."
+      },
+      "feature-highlight-secondary": {
+        "value": "linear-gradient(90deg, {violet.200}, {blue.200})",
+        "type": "color",
+        "description": "Secondary border for highlighted controls."
+      }
+    },
+    "control": {
+      "primary": {
+        "feature-highlight": {
+          "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
+          "type": "color",
+          "description": "Background of the highlighted primary control."
+        },
+        "feature-highlight-hover": {
+          "value": "linear-gradient(90deg, {violet.500}, {blue.500})",
+          "type": "color",
+          "description": "Hover state of the highlighted primary control."
+        },
+        "feature-highlight-active": {
+          "value": "linear-gradient(90deg, {violet.600}, {blue.600})",
+          "type": "color",
+          "description": "Active (selected) state of the highlighted primary control."
+        }
+      },
+      "secondary": {
+        "feature-highlight": {
+          "value": "linear-gradient(90deg, {violet.50}, {blue.50})",
+          "type": "color",
+          "description": "Background of the highlighted secondary control."
+        },
+        "feature-highlight-hover": {
+          "value": "linear-gradient(90deg, {violet.100}, {blue.100})",
+          "type": "color",
+          "description": "Hover state of the highlighted secondary control.",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "lighten",
+                "value": "0.3",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "feature-highlight-active": {
+          "value": "linear-gradient(90deg, {violet.100}, {blue.100})",
+          "type": "color",
+          "description": "Active (selected) state of the highlighted secondary control."
+        }
+      }
+    },
+    "text": {
+      "feature-highlight": {
+        "value": "linear-gradient(90deg, {violet.500}, {blue.500})",
+        "type": "color",
+        "description": "Text for highlighted features."
+      },
+      "feature-highlight-hover-active": {
+        "value": "linear-gradient(90deg, {violet.700}, {blue.700})",
+        "type": "color",
+        "description": "Text for hover and active states of highlighted features."
+      }
+    },
+    "icon": {
+      "primary": {
+        "feature-highlight": {
+          "value": "{violet.500}",
+          "type": "color",
+          "description": "Primary highlighted icon."
+        },
+        "feature-highlight-hover-active": {
+          "value": "#6B3AB4",
+          "type": "color",
+          "description": "Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color."
+        }
+      }
+    },
+    "keyboard-focus-feature-highlight": {
+      "value": {
+        "width": "3px",
+        "color": "{keyboard-focus-feature-highlight.outline}"
+      },
+      "type": "border",
+      "description": "Keyboard focus styles for highlighted controls.",
+      "outline": {
+        "value": "linear-gradient(90deg, {violet.400}, {blue.400})",
+        "type": "color",
+        "description": "Color for keyboard focus outline styles for highlighted controls."
       }
     }
   }

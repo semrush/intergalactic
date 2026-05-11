@@ -450,7 +450,7 @@ export const theme: Theme = {
         description: 'Highlighting the search results.',
       },
       bg_highlight_focus: {
-        value: focus.at(L_BG_SECONDARY_ACTIVE),
+        value: focus.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Focusing values in the input.',
       },
       text_primary_DEFAULT: {
