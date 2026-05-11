@@ -14,7 +14,7 @@ STimePicker {
     }
     &:focus {
       outline: none;
-      background-color: var(--intergalactic-bg-highlight-focus, oklch(0.939 0.032 268));
+      background-color: var(--intergalactic-bg-highlight-focus, oklch(0.524 0.266 263.1 / 0.116));
     }
   }
 }

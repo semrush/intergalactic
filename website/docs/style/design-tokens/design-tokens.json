@@ -285,7 +285,7 @@
   },
   {
     "name": "--intergalactic-bg-highlight-focus",
-    "value": "oklch(0.939 0.032 268)",
+    "value": "oklch(0.524 0.266 263.1 / 0.116)",
     "description": "Focusing values in the input.",
     "components": [
       "date-picker",
@@ -1743,7 +1743,9 @@
     "name": "--intergalactic-keyboard-focus-outline",
     "value": "oklch(0.424 0.269 264.2 / 0.469)",
     "description": "Color for default keyboard focus outline styles.",
-    "components": []
+    "components": [
+      "base-components"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invalid-outline",
