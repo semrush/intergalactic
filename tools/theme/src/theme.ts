@@ -523,7 +523,7 @@ export const theme: Theme = {
         description: 'Subtle secondary border in the informational message.',
       },
       border_info_active: {
-        value: info.opaqueAt(L_BORDER_ACTIVE),
+        value: info.at(L_BORDER_ACTIVE),
         description: 'Active border in focused input filed.',
       },
       border_success_DEFAULT: {
@@ -531,7 +531,7 @@ export const theme: Theme = {
         description: 'Subtle secondary border in the successful message and input field.',
       },
       border_success_active: {
-        value: success.opaqueAt(L_BORDER_ACTIVE),
+        value: success.at(L_BORDER_ACTIVE),
         description: 'Active border in the focused input field with valid state.',
       },
       border_critical_DEFAULT: {
@@ -539,7 +539,7 @@ export const theme: Theme = {
         description: 'Subtle secondary border in the critical message and invalid input field.',
       },
       border_critical_active: {
-        value: error.opaqueAt(L_BORDER_ACTIVE),
+        value: error.at(L_BORDER_ACTIVE),
         description: 'Active border in the focused input field with invalid state, and active state of the other components with invalid state.',
       },
       border_critical_pattern: {
@@ -551,7 +551,7 @@ export const theme: Theme = {
         description: 'Subtle secondary border in the warning message.',
       },
       border_warning_active: {
-        value: warning.opaqueAt(L_BORDER_ACTIVE),
+        value: warning.at(L_BORDER_ACTIVE),
         description: 'Active border in components with warning intention.',
       },
       border_tooltip_invert: {

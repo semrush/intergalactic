@@ -159,7 +159,7 @@ SInputField[size='l']>div {
 
 SInputField[state='normal']:not([disabled])>div {
   &:focus {
-    border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
     @mixin focus-outline-mixin {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
@@ -168,10 +168,10 @@ SInputField[state='normal']:not([disabled])>div {
 }
 
 SInputField[state='valid']>div {
-  border-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
+  border-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
 
   &:focus {
-    border-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
+    border-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
     @mixin focus-outline-mixin {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
@@ -181,10 +181,10 @@ SInputField[state='valid']>div {
 }
 
 SInputField[state='invalid']>div {
-  border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 
   &:focus {
-    border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+    border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
     @mixin focus-outline-mixin {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
@@ -192,7 +192,7 @@ SInputField[state='invalid']>div {
     outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
   }
 
-  background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.628 0.258 29 / 0.56) 0, oklch(0.628 0.258 29 / 0.56) 1px, transparent 0, transparent 50%));
+  background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.7 0.21 23) 0, oklch(0.7 0.21 23) 1px, transparent 0, transparent 50%));
   background-size: 6px 6px;
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);

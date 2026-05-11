@@ -149,13 +149,13 @@ SInput[state='normal'] {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
     }
-    border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
   }
 }
 
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
+    border-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
   }
 
   &:has(SValue:focus-visible) SOutline {
@@ -163,14 +163,14 @@ SInput[state='valid'] {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
     }
-    border-color: var(--intergalactic-border-success-active, oklch(0.75 0.153 167.5));
+    border-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
     outline-color: var(--intergalactic-keyboard-focus-valid-outline, oklch(0.711 0.146 166.9));
   }
 }
 
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+    border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
   }
 
   &:has(SValue:focus-visible) SOutline {
@@ -178,7 +178,7 @@ SInput[state='invalid'] {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
     }
-    border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+    border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
     outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
   }
 }

@@ -610,7 +610,7 @@
   },
   {
     "name": "--intergalactic-border-info-active",
-    "value": "oklch(0.443 0.273 264.2 / 0.419)",
+    "value": "oklch(0.7 0.131 275.2)",
     "description": "Active border in focused input filed.",
     "components": [
       "base-trigger",
@@ -637,7 +637,7 @@
   },
   {
     "name": "--intergalactic-border-success-active",
-    "value": "oklch(0.75 0.153 167.5)",
+    "value": "oklch(0.7 0.166 170)",
     "description": "Active border in the focused input field with valid state.",
     "components": [
       "base-trigger",
@@ -657,7 +657,7 @@
   },
   {
     "name": "--intergalactic-border-critical-active",
-    "value": "oklch(0.628 0.258 29 / 0.56)",
+    "value": "oklch(0.7 0.21 23)",
     "description": "Active border in the focused input field with invalid state, and active state of the other components with invalid state.",
     "components": [
       "base-trigger",
@@ -672,7 +672,7 @@
   },
   {
     "name": "--intergalactic-border-critical-pattern",
-    "value": "repeating-linear-gradient(315deg, oklch(0.628 0.258 29 / 0.56) 0, oklch(0.628 0.258 29 / 0.56) 1px, transparent 0, transparent 50%)",
+    "value": "repeating-linear-gradient(315deg, oklch(0.7 0.21 23) 0, oklch(0.7 0.21 23) 1px, transparent 0, transparent 50%)",
     "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
     "components": [
       "base-components",
@@ -691,7 +691,7 @@
   },
   {
     "name": "--intergalactic-border-warning-active",
-    "value": "oklch(0.734 0.185 53.5)",
+    "value": "oklch(0.7 0.195 50.5)",
     "description": "Active border in components with warning intention.",
     "components": []
   },
@@ -714,7 +714,7 @@
   },
   {
     "name": "--intergalactic-border-date-picker-range-comparison",
-    "value": "oklch(0.74 0.17 303)",
+    "value": "oklch(0.7 0.191 301.5)",
     "description": "Border color of the second period for the comparison mode in the DatePicker.",
     "components": []
   },
@@ -1271,7 +1271,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-current",
-    "value": "oklch(0.109 0.023 165.5 / 0.337)",
+    "value": "oklch(0.104 0.023 162.3 / 0.385)",
     "description": "Color for marking the cell with the current date, month or year in the date-picker.",
     "components": [
       "date-picker"
