@@ -1447,7 +1447,7 @@
     "name": "--intergalactic-keyboard-focus-invert-outline",
     "value": "oklch(1 0 0 / 0.7)",
     "description": "Color for keyboard focus outline styles to use on the dark and color background.",
-    "components": []
+    "components": ["wizard"]
   },
   {
     "name": "--intergalactic-overlay-primary",
