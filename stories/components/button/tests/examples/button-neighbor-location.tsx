@@ -6,7 +6,7 @@ import React from 'react';
 
 import { themeFor } from '../themeUtils.ts';
 
-type ExampleProps = ButtonProps & { style?: any };
+type ExampleProps = Exclude<ButtonProps, 'theme' | 'use'> & { style?: any; theme: string };
 const Demo = (props: ExampleProps) => {
   const theme = themeFor(props);
 
@@ -61,6 +61,7 @@ const Demo = (props: ExampleProps) => {
 export const defaultButtonNeighborProps: ExampleProps = {
   size: 'm',
   use: 'primary',
+  theme: 'info',
   hintPlacement: 'top',
   style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
 
