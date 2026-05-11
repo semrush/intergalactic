@@ -3144,6 +3144,9 @@ importers:
       '@mdit-vue/shared':
         specifier: 1.0.0
         version: 1.0.0
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../tools/theme
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6

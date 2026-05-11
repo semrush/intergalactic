@@ -1,5 +1,5 @@
-@import url('../../../../semcore/core/lib/theme/themes/auto.css');
-@import url('../../../../semcore/core/lib/theme/themes/highlights-light.css');
+@import url('@semcore/theme/light.css');
+@import url('@semcore/theme/highlights-light.css');
 /* Second import for Halloween only
 @import url('./halloween/fonts.css'); */
 
