@@ -21,6 +21,12 @@ export const locators = {
 
 };
 
+const normalizeThemeProps = <T extends { theme?: string }>(props: T) => {
+  const [use, theme] = props.theme?.split('-') ?? [];
+
+  return theme ? { ...props, use, [`theme_${use}`]: theme } : props;
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -69,7 +75,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@button'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', normalizeThemeProps(item));
 
       await page.keyboard.press('Tab');
       const count = await locators.button(page).count();
@@ -122,13 +128,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify Neignbor location example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+    test(`Verify Neignbor location example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components',
         '@neighbor-location'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', normalizeThemeProps(item));
 
       await page.keyboard.press('Tab');
       const count = await locators.button(page).count();
@@ -182,12 +188,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
+    test(`Verify Addon only example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', normalizeThemeProps(item));
       const hint = page.locator('div[data-ui-name="Hint"]');
       await locators.button(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(100);
@@ -251,11 +257,11 @@ test.describe(`${TAG.VISUAL} `, () => {
   ];
 
   variablesSeconsary.forEach((item) => {
-    test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+    test(`Verify Base example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', normalizeThemeProps(item));
 
       await page.keyboard.press('Tab');
       const count = await locators.button(page).count();
@@ -309,13 +315,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify Neignbor location example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+    test(`Verify Neignbor location example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components',
         '@neighbor-location'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', normalizeThemeProps(item));
 
       await page.keyboard.press('Tab');
       const count = await locators.button(page).count();
@@ -369,12 +375,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
+    test(`Verify Addon only example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', normalizeThemeProps(item));
       const hint = page.locator('div[data-ui-name="Hint"]');
       await locators.button(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(100);
@@ -439,11 +445,11 @@ test.describe(`${TAG.VISUAL} `, () => {
   ];
 
   variablesTertiary.forEach((item) => {
-    test(`Verify Base example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+    test(`Verify Base example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', normalizeThemeProps(item));
 
       await page.keyboard.press('Tab');
       const count = await locators.button(page).count();
@@ -497,13 +503,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify Neignbor location example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
+    test(`Verify Neignbor location example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components',
         '@neighbor-location'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', normalizeThemeProps(item));
 
       await page.keyboard.press('Tab');
       const count = await locators.button(page).count();
@@ -557,12 +563,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       }
     });
 
-    test(`Verify Addon only example size=${item.size} use=${item.use} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
+    test(`Verify Addon only example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', item);
+      await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', normalizeThemeProps(item));
       const hint = page.locator('div[data-ui-name="Hint"]');
       await locators.button(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(100);
