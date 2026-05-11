@@ -1,11 +1,7 @@
 import os from 'os';
-// import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'path';
 
 import { unpluginSemcoreResolve } from '@semcore/builder/plugins';
-// import {
-//   esbuildPluginSemcore,
-//   esbuildPluginSemcoreSourcesResolve, loadSemcoreSources,
-// } from '@semcore/esbuild-plugin-semcore';
 import esbuild from 'esbuild';
 
 export const e2eStandToHtml = async (
@@ -70,9 +66,9 @@ export const e2eStandToHtml = async (
           }));
         },
       },
-      unpluginSemcoreResolve.esbuild({}),
-      // esbuildPluginSemcoreSourcesResolve(resolvePath(__dirname, '../..')),
-      // esbuildPluginSemcore(/semcore|tools|stories/, /(tools\/playground)|node_modules/),
+      unpluginSemcoreResolve.esbuild({
+        rootPath: resolvePath(__dirname, '../..'),
+      }),
     ],
     bundle: true,
     write: false,

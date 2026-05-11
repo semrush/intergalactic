@@ -1,6 +1,5 @@
 import { access as fsAccess, stat as fsStat, readdir } from 'fs/promises';
 import { resolve as resolvePath } from 'path';
-import { fileURLToPath } from 'url';
 
 const fsExists = async (path: string) => {
   try {
@@ -74,9 +73,7 @@ const rootFiles = ['README.md', 'package.json'];
 const generatedComponents = ['icon', 'ui', 'illustration'];
 const outOfSourceDirs = ['style'];
 
-const rootPath = resolvePath(fileURLToPath(import.meta.url), '..', '..', '..', '..');
-
-export const resolveSemcoreSources = async (path: string) => {
+export const resolveSemcoreSources = async (path: string, rootPath: string) => {
   if (path.startsWith('@semcore/ui/')) path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
   if (path.startsWith('intergalactic/'))
     path = `@semcore/${path.substring('intergalactic/'.length)}`;

@@ -1,20 +1,16 @@
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve as resolvePath } from 'path';
 
 import glob from 'fast-glob';
 import { createUnplugin } from 'unplugin';
 
-const __dirname = resolveDirname(fileURLToPath(import.meta.url));
-
-const illustrationsDir = resolvePath(__dirname, '../../../../semcore/illustration');
-
-export const unpluginIllustrations = createUnplugin(() => ({
+export const unpluginIllustrations = createUnplugin<{ rootPath: string }>((opts) => ({
   name: 'unplugin-illustrations',
   async resolveId(id) {
     if (id === '@illustrations') return id;
   },
   async load(id) {
     if (id !== '@illustrations') return null;
+    const illustrationsDir = resolvePath(opts.rootPath, 'semcore', 'illustration');
     const fullPath = resolvePath(illustrationsDir);
     const illustrationPaths = await glob('lib/*/index.mjs', {
       cwd: fullPath,

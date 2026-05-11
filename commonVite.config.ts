@@ -1,27 +1,16 @@
+import { dirname, resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
+
+import { unpluginSemcoreResolve } from '@semcore/builder/plugins';
 import copy from 'rollup-plugin-copy';
-import { createUnplugin } from 'unplugin';
 import type { UserConfig } from 'vite';
 import { defineConfig } from 'vite';
 
-import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
-import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
+const rootDir = resolvePath(dirname(fileURLToPath(import.meta.url)));
 
 export default defineConfig({
   plugins: [
-    createUnplugin<{}>(() => ({
-      name: 'semcore-styles-resolver',
-      async resolveId(id) {
-        if (!id.endsWith('.shadow.css')) return null;
-        return await resolveSemcoreSources(id);
-      },
-      loadInclude: (id) => {
-        return id.includes('/semcore/');
-      },
-      async load(id) {
-        return await loadSemcoreSources(id, true);
-      },
-      enforce: 'pre',
-    })).vite({}),
+    unpluginSemcoreResolve.vite({ rootPath: rootDir }),
   ],
   esbuild: {
     legalComments: 'inline',

@@ -3,12 +3,15 @@
  * See build configuration in the component package folder.
  */
 
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 import { unpluginSemcoreResolve } from '@semcore/builder/plugins';
 import pluginReact from '@vitejs/plugin-react';
 import { createUnplugin } from 'unplugin';
 import { defineConfig } from 'vite';
+
+const rootDir = resolvePath(dirname(fileURLToPath(import.meta.url)));
 
 export default defineConfig({
   plugins: [
@@ -17,7 +20,7 @@ export default defineConfig({
         plugins: ['@babel/plugin-syntax-import-assertions'],
       },
     }),
-    unpluginSemcoreResolve.vite({}),
+    unpluginSemcoreResolve.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
       name: 'docs-components-resolver',
       async resolveId(id) {

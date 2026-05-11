@@ -1,4 +1,4 @@
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath, dirname } from 'path';
 import { fileURLToPath, URL } from 'url';
 
 import { unpluginSemcoreResolve, unpluginIcons, unpluginIllustrations } from '@semcore/builder/plugins';
@@ -11,6 +11,8 @@ import { unpluginStatic } from './unplugins/unplugin-static';
 export const LATEST = process.env.VITE_LATEST ?? 'latest';
 export const currentBuildVersion = process.env.VITE_CURRENT_VERSION ?? LATEST;
 
+const rootDir = resolvePath(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+
 export const viteConfig = defineConfig({
   base: `/intergalactic${
     currentBuildVersion !== LATEST ? `/${currentBuildVersion.replaceAll('_', '-')}` : ''
@@ -21,7 +23,7 @@ export const viteConfig = defineConfig({
         plugins: ['@babel/plugin-syntax-import-assertions', '@semcore/babel-plugin-styles'],
       },
     }),
-    unpluginSemcoreResolve.vite({}),
+    unpluginSemcoreResolve.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
       name: 'docs-components-resolver',
       async resolveId(id) {
@@ -46,9 +48,9 @@ export const viteConfig = defineConfig({
         return resolvePath(__dirname, '../../../stories', purePath);
       },
     })).vite({}),
-    unpluginIcons.vite({}),
+    unpluginIcons.vite({ rootPath: rootDir }),
     unpluginStatic.vite({}),
-    unpluginIllustrations.vite({}),
+    unpluginIllustrations.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
       name: 'typescript-data-resolver',
       async resolveId(id) {
