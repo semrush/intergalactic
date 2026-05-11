@@ -27,7 +27,7 @@ STooltip[theme='invert'] {
 
 STooltip[theme='warning'] {
   background-color: var(--intergalactic-tooltip-warning, oklch(0.958 0.029 5.7));
-  border: 1px solid var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+  border: 1px solid var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 }
 
 SArrow {
@@ -60,7 +60,7 @@ SArrow[theme='invert'] {
 }
 
 SArrow[theme='warning'] {
-  border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 
   &::before {
     border-color: var(--intergalactic-tooltip-warning, oklch(0.958 0.029 5.7));

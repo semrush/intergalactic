@@ -15,7 +15,7 @@ SInputTags[disabled] {
 }
 
 SInputTags SContainer:focus SOutline {
-  border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469));
 }
 

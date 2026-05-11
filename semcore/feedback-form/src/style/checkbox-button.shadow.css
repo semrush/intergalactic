@@ -12,7 +12,7 @@ SCheckboxButton {
 
 SCheckboxButton:hover, SCheckboxButton[checked] {
   cursor: pointer;
-  border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
   background-color: rgba(0, 143, 248, 0.10);
 }
 

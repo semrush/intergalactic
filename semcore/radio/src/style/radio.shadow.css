@@ -86,7 +86,7 @@ SValue[state='normal']::before {
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 }
 
 SControl {
@@ -105,7 +105,7 @@ SControl:checked~SValue[size='l']::after {
 }
 
 SControl:focus-visible+SValue[state='normal']::before {
-  border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
   @mixin focus-outline-mixin;
 }
 
@@ -116,7 +116,7 @@ SControl:checked:focus-visible~SValue::before {
 }
 
 SControl:focus-visible+SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
   @mixin focus-outline-mixin;
   outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
 }
@@ -140,7 +140,7 @@ SInvalidPattern {
     top: 1px;
     left: 1px;
     border-radius: 50%;
-    background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.628 0.258 29 / 0.56) 0, oklch(0.628 0.258 29 / 0.56) 1px, transparent 0, transparent 50%));
+    background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.7 0.21 23) 0, oklch(0.7 0.21 23) 1px, transparent 0, transparent 50%));
     background-size: 6px 6px;
     background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   }

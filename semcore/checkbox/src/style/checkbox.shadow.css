@@ -67,7 +67,7 @@ SCheckbox {
   }
 
   &[state='normal']:focus-visible:before {
-    border-color: var(--intergalactic-border-info-active, oklch(0.443 0.273 264.2 / 0.419));
+    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
   }
 }
 
@@ -117,7 +117,7 @@ SControl[indeterminate]~SCheckbox[state='normal']:before {
 SCheckbox[state='invalid'],
 SControl[checked]~SCheckbox[state='invalid'] {
   &:before {
-    border-color: var(--intergalactic-border-critical-active, oklch(0.628 0.258 29 / 0.56));
+    border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
   }
 }
 
