@@ -218,9 +218,9 @@ export const L_ICON_SECONDARY_HOVER = 0.66; // Delete with minor
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
 export const L_BORDER_PRIMARY = 0.88; // inputs, buttons, table header, tab-line, divider
 /** Border secondary */
-export const L_BORDER_SECONDARY = 0.95; // divider, cell borders, card header
+export const L_BORDER_SECONDARY = 0.95; // notice borders, divider, cell borders, card header
 /** Border active */
-export const L_BORDER_ACTIVE = 0.74; // notice borders, focused inputs
+export const L_BORDER_ACTIVE = 0.7; // focused inputs, active states of pills and base-trigger
 /** Border focus      | ⚠️ APCA 30 on secondary bg */
 export const L_BORDER_FOCUS = 0.7;
 
