@@ -30,11 +30,13 @@ figma.connect(
     example: ({ trigger, selectMenu }) => (
       <AddFilter.Select>
         <AddFilter.Select.Trigger
-          placeholder={/* Add placeholder */}
-          aria-label={/* Add aria-label */}
+          placeholder='/* Add placeholder */'
+          aria-label='/* Add aria-label */'
         >
+          {trigger}
         </AddFilter.Select.Trigger>
-        <AddFilter.Select.Menu aria-label={/* Add aria-label */}>
+        <AddFilter.Select.Menu aria-label='/* Add aria-label */'>
+          {selectMenu}
           <AddFilter.Select.Option>
             {/* Add option */}
           </AddFilter.Select.Option>

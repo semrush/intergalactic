@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect';
+import MathPlusL from '@semcore/icon/MathPlus/l';
 import { Flex } from '@semcore/ui/base-components';
 import DnD from '@semcore/ui/drag-and-drop';
-import { MathPlusL } from '@semcore/ui/icon';
 import { Text } from '@semcore/ui/typography';
 
 figma.connect(

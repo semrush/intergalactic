@@ -1,7 +1,7 @@
 import figma from '@figma/code-connect/react';
+import CloseM from '@semcore/icon/Close/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import CloseM from '@semcore/ui/icon/Close/m';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
 
