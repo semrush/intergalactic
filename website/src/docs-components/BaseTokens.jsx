@@ -125,7 +125,7 @@ const BaseTokensTable = React.memo(({ filteredTokens }) => {
           );
         } else if (props.dataKey === 'value') {
           const value = props.row[props.dataKey];
-          const isColor = value.startsWith('#');
+          const isColor = value.startsWith('#') || value.includes('oklch(');
 
           return (
             <Copy
