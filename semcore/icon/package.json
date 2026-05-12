@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "4.63.0",
+  "version": "4.63.0-prerelease.7",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -14,13 +14,13 @@
     "clean": "node clean.js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.42.0",
-    "@semcore/icon": "4.63.0",
-    "@semcore/utils": "4.49.0",
+    "@semcore/flex-box": "5.42.0-prerelease.7",
+    "@semcore/icon": "4.63.0-prerelease.7",
+    "@semcore/utils": "4.49.0-prerelease.7",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.5",
+    "@semcore/core": "^2.40.0-prerelease.7",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

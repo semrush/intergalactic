@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.132.0",
+  "version": "15.132.0-prerelease.7",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -12,81 +12,81 @@
     "update-changelog": "pnpm update-release-changelog"
   },
   "dependencies": {
-    "@semcore/accordion": "5.49.0",
-    "@semcore/animation": "2.42.0",
-    "@semcore/add-filter": "1.5.0",
-    "@semcore/badge": "4.41.0",
-    "@semcore/base-trigger": "4.54.0",
-    "@semcore/breadcrumbs": "5.50.0",
-    "@semcore/breakpoints": "1.42.0",
-    "@semcore/bulk-textarea": "1.5.0",
-    "@semcore/button": "5.44.0",
-    "@semcore/card": "5.49.0",
-    "@semcore/carousel": "3.50.0",
-    "@semcore/checkbox": "7.45.0",
-    "@semcore/color-picker": "2.46.0",
-    "@semcore/core": "2.40.0",
-    "@semcore/counter": "3.39.0",
-    "@semcore/data-table": "4.51.0",
-    "@semcore/date-picker": "4.58.0",
-    "@semcore/divider": "4.41.0",
-    "@semcore/dot": "5.41.0",
-    "@semcore/drag-and-drop": "3.50.0",
-    "@semcore/dropdown": "4.44.0",
-    "@semcore/dropdown-menu": "4.49.0",
-    "@semcore/d3-chart": "3.61.0",
-    "@semcore/ellipsis": "2.40.0",
-    "@semcore/email": "1.0.2",
-    "@semcore/errors": "4.48.0",
-    "@semcore/feature-popover": "4.56.0",
-    "@semcore/feedback-form": "6.43.0",
-    "@semcore/flags": "4.41.0",
-    "@semcore/flex-box": "5.42.0",
-    "@semcore/format-text": "4.43.0",
-    "@semcore/fullscreen-modal": "3.52.0",
-    "@semcore/grid": "5.41.0",
-    "@semcore/icon": "4.63.0",
-    "@semcore/illustration": "2.45.0",
-    "@semcore/inline-input": "4.49.0",
-    "@semcore/inline-edit": "4.44.0",
-    "@semcore/input": "4.43.0",
-    "@semcore/input-mask": "5.44.0",
-    "@semcore/input-number": "5.42.0",
-    "@semcore/input-tags": "4.48.0",
-    "@semcore/link": "5.45.0",
-    "@semcore/mini-chart": "0.30.0",
-    "@semcore/modal": "4.57.0",
-    "@semcore/neighbor-location": "4.41.0",
-    "@semcore/notice": "5.48.0",
-    "@semcore/notice-global": "2.63.0",
-    "@semcore/notice-bubble": "5.55.0",
-    "@semcore/outside-click": "3.41.0",
-    "@semcore/pagination": "4.53.0",
-    "@semcore/pills": "5.44.0",
-    "@semcore/popper": "5.47.0",
-    "@semcore/portal": "3.42.0",
-    "@semcore/product-head": "4.42.0",
-    "@semcore/progress-bar": "4.41.0",
-    "@semcore/radio": "6.44.0",
-    "@semcore/scroll-area": "5.46.0",
-    "@semcore/select": "4.53.0",
-    "@semcore/side-panel": "3.56.0",
-    "@semcore/skeleton": "5.43.0",
-    "@semcore/slider": "4.42.0",
-    "@semcore/spin": "5.42.0",
-    "@semcore/spin-container": "7.42.0",
-    "@semcore/sticky": "3.41.0",
-    "@semcore/switch": "5.41.0",
-    "@semcore/tab-line": "4.41.0",
-    "@semcore/tab-panel": "4.43.0",
-    "@semcore/tag": "5.55.0",
-    "@semcore/textarea": "5.41.0",
-    "@semcore/time-picker": "4.53.0",
-    "@semcore/tooltip": "6.50.0",
-    "@semcore/typography": "5.54.0",
-    "@semcore/utils": "4.49.0",
-    "@semcore/widget-empty": "4.44.0",
-    "@semcore/wizard": "2.55.0",
+    "@semcore/accordion": "5.49.0-prerelease.7",
+    "@semcore/animation": "2.42.0-prerelease.7",
+    "@semcore/add-filter": "1.5.0-prerelease.7",
+    "@semcore/badge": "4.41.0-prerelease.7",
+    "@semcore/base-trigger": "4.54.0-prerelease.7",
+    "@semcore/breadcrumbs": "5.50.0-prerelease.7",
+    "@semcore/breakpoints": "1.42.0-prerelease.7",
+    "@semcore/bulk-textarea": "1.5.0-prerelease.7",
+    "@semcore/button": "5.44.0-prerelease.7",
+    "@semcore/card": "5.49.0-prerelease.7",
+    "@semcore/carousel": "3.50.0-prerelease.7",
+    "@semcore/checkbox": "7.45.0-prerelease.7",
+    "@semcore/color-picker": "2.46.0-prerelease.7",
+    "@semcore/core": "2.40.0-prerelease.7",
+    "@semcore/counter": "3.39.0-prerelease.7",
+    "@semcore/data-table": "4.51.0-prerelease.7",
+    "@semcore/date-picker": "4.58.0-prerelease.7",
+    "@semcore/divider": "4.41.0-prerelease.7",
+    "@semcore/dot": "5.41.0-prerelease.7",
+    "@semcore/drag-and-drop": "3.50.0-prerelease.7",
+    "@semcore/dropdown": "4.44.0-prerelease.7",
+    "@semcore/dropdown-menu": "4.49.0-prerelease.7",
+    "@semcore/d3-chart": "3.61.0-prerelease.7",
+    "@semcore/ellipsis": "2.40.0-prerelease.7",
+    "@semcore/email": "1.0.2-prerelease.7",
+    "@semcore/errors": "4.48.0-prerelease.7",
+    "@semcore/feature-popover": "4.56.0-prerelease.7",
+    "@semcore/feedback-form": "6.43.0-prerelease.7",
+    "@semcore/flags": "4.41.0-prerelease.7",
+    "@semcore/flex-box": "5.42.0-prerelease.7",
+    "@semcore/format-text": "4.43.0-prerelease.7",
+    "@semcore/fullscreen-modal": "3.52.0-prerelease.7",
+    "@semcore/grid": "5.41.0-prerelease.7",
+    "@semcore/icon": "4.63.0-prerelease.7",
+    "@semcore/illustration": "2.45.0-prerelease.7",
+    "@semcore/inline-input": "4.49.0-prerelease.7",
+    "@semcore/inline-edit": "4.44.0-prerelease.7",
+    "@semcore/input": "4.43.0-prerelease.7",
+    "@semcore/input-mask": "5.44.0-prerelease.7",
+    "@semcore/input-number": "5.42.0-prerelease.7",
+    "@semcore/input-tags": "4.48.0-prerelease.7",
+    "@semcore/link": "5.45.0-prerelease.7",
+    "@semcore/mini-chart": "0.30.0-prerelease.7",
+    "@semcore/modal": "4.57.0-prerelease.7",
+    "@semcore/neighbor-location": "4.41.0-prerelease.7",
+    "@semcore/notice": "5.48.0-prerelease.7",
+    "@semcore/notice-global": "2.63.0-prerelease.7",
+    "@semcore/notice-bubble": "5.55.0-prerelease.7",
+    "@semcore/outside-click": "3.41.0-prerelease.7",
+    "@semcore/pagination": "4.53.0-prerelease.7",
+    "@semcore/pills": "5.44.0-prerelease.7",
+    "@semcore/popper": "5.47.0-prerelease.7",
+    "@semcore/portal": "3.42.0-prerelease.7",
+    "@semcore/product-head": "4.42.0-prerelease.7",
+    "@semcore/progress-bar": "4.41.0-prerelease.7",
+    "@semcore/radio": "6.44.0-prerelease.7",
+    "@semcore/scroll-area": "5.46.0-prerelease.7",
+    "@semcore/select": "4.53.0-prerelease.7",
+    "@semcore/side-panel": "3.56.0-prerelease.7",
+    "@semcore/skeleton": "5.43.0-prerelease.7",
+    "@semcore/slider": "4.42.0-prerelease.7",
+    "@semcore/spin": "5.42.0-prerelease.7",
+    "@semcore/spin-container": "7.42.0-prerelease.7",
+    "@semcore/sticky": "3.41.0-prerelease.7",
+    "@semcore/switch": "5.41.0-prerelease.7",
+    "@semcore/tab-line": "4.41.0-prerelease.7",
+    "@semcore/tab-panel": "4.43.0-prerelease.7",
+    "@semcore/tag": "5.55.0-prerelease.7",
+    "@semcore/textarea": "5.41.0-prerelease.7",
+    "@semcore/time-picker": "4.53.0-prerelease.7",
+    "@semcore/tooltip": "6.50.0-prerelease.7",
+    "@semcore/typography": "5.54.0-prerelease.7",
+    "@semcore/utils": "4.49.0-prerelease.7",
+    "@semcore/widget-empty": "4.44.0-prerelease.7",
+    "@semcore/wizard": "2.55.0-prerelease.7",
     "@semcore/i18n-unplugin": "16.0.10"
   },
   "peerDependencies": {
@@ -294,6 +294,16 @@
       "require": "./icon/AdBottom/m/index.cjs",
       "import": "./icon/AdBottom/m/index.mjs",
       "types": "./icon/AdBottom/m/index.d.ts"
+    },
+    "./icon/AdMiddle/l": {
+      "require": "./icon/AdMiddle/l/index.cjs",
+      "import": "./icon/AdMiddle/l/index.mjs",
+      "types": "./icon/AdMiddle/l/index.d.ts"
+    },
+    "./icon/AdMiddle/m": {
+      "require": "./icon/AdMiddle/m/index.cjs",
+      "import": "./icon/AdMiddle/m/index.mjs",
+      "types": "./icon/AdMiddle/m/index.d.ts"
     },
     "./icon/AdTop/l": {
       "require": "./icon/AdTop/l/index.cjs",
@@ -794,6 +804,16 @@
       "require": "./icon/ChatFilled/m/index.cjs",
       "import": "./icon/ChatFilled/m/index.mjs",
       "types": "./icon/ChatFilled/m/index.d.ts"
+    },
+    "./icon/ChatGPT/l": {
+      "require": "./icon/ChatGPT/l/index.cjs",
+      "import": "./icon/ChatGPT/l/index.mjs",
+      "types": "./icon/ChatGPT/l/index.d.ts"
+    },
+    "./icon/ChatGPT/m": {
+      "require": "./icon/ChatGPT/m/index.cjs",
+      "import": "./icon/ChatGPT/m/index.mjs",
+      "types": "./icon/ChatGPT/m/index.d.ts"
     },
     "./icon/ChatPlus/l": {
       "require": "./icon/ChatPlus/l/index.cjs",
@@ -2345,6 +2365,16 @@
       "import": "./icon/Organic/m/index.mjs",
       "types": "./icon/Organic/m/index.d.ts"
     },
+    "./icon/OrganicCarousel/l": {
+      "require": "./icon/OrganicCarousel/l/index.cjs",
+      "import": "./icon/OrganicCarousel/l/index.mjs",
+      "types": "./icon/OrganicCarousel/l/index.d.ts"
+    },
+    "./icon/OrganicCarousel/m": {
+      "require": "./icon/OrganicCarousel/m/index.cjs",
+      "import": "./icon/OrganicCarousel/m/index.mjs",
+      "types": "./icon/OrganicCarousel/m/index.d.ts"
+    },
     "./icon/OrientationLandscape/l": {
       "require": "./icon/OrientationLandscape/l/index.cjs",
       "import": "./icon/OrientationLandscape/l/index.mjs",
@@ -2535,6 +2565,16 @@
       "import": "./icon/PopularProducts/m/index.mjs",
       "types": "./icon/PopularProducts/m/index.d.ts"
     },
+    "./icon/PopularStores/l": {
+      "require": "./icon/PopularStores/l/index.cjs",
+      "import": "./icon/PopularStores/l/index.mjs",
+      "types": "./icon/PopularStores/l/index.d.ts"
+    },
+    "./icon/PopularStores/m": {
+      "require": "./icon/PopularStores/m/index.cjs",
+      "import": "./icon/PopularStores/m/index.mjs",
+      "types": "./icon/PopularStores/m/index.d.ts"
+    },
     "./icon/Popup/l": {
       "require": "./icon/Popup/l/index.cjs",
       "import": "./icon/Popup/l/index.mjs",
@@ -2544,6 +2584,16 @@
       "require": "./icon/Popup/m/index.cjs",
       "import": "./icon/Popup/m/index.mjs",
       "types": "./icon/Popup/m/index.d.ts"
+    },
+    "./icon/PopupAlt/l": {
+      "require": "./icon/PopupAlt/l/index.cjs",
+      "import": "./icon/PopupAlt/l/index.mjs",
+      "types": "./icon/PopupAlt/l/index.d.ts"
+    },
+    "./icon/PopupAlt/m": {
+      "require": "./icon/PopupAlt/m/index.cjs",
+      "import": "./icon/PopupAlt/m/index.mjs",
+      "types": "./icon/PopupAlt/m/index.d.ts"
     },
     "./icon/PositionBottom/l": {
       "require": "./icon/PositionBottom/l/index.cjs",
@@ -2565,6 +2615,16 @@
       "import": "./icon/PositionLeft/m/index.mjs",
       "types": "./icon/PositionLeft/m/index.d.ts"
     },
+    "./icon/PositionMiddle/l": {
+      "require": "./icon/PositionMiddle/l/index.cjs",
+      "import": "./icon/PositionMiddle/l/index.mjs",
+      "types": "./icon/PositionMiddle/l/index.d.ts"
+    },
+    "./icon/PositionMiddle/m": {
+      "require": "./icon/PositionMiddle/m/index.cjs",
+      "import": "./icon/PositionMiddle/m/index.mjs",
+      "types": "./icon/PositionMiddle/m/index.d.ts"
+    },
     "./icon/PositionRight/l": {
       "require": "./icon/PositionRight/l/index.cjs",
       "import": "./icon/PositionRight/l/index.mjs",
@@ -2584,6 +2644,16 @@
       "require": "./icon/PositionTop/m/index.cjs",
       "import": "./icon/PositionTop/m/index.mjs",
       "types": "./icon/PositionTop/m/index.d.ts"
+    },
+    "./icon/Power/l": {
+      "require": "./icon/Power/l/index.cjs",
+      "import": "./icon/Power/l/index.mjs",
+      "types": "./icon/Power/l/index.d.ts"
+    },
+    "./icon/Power/m": {
+      "require": "./icon/Power/m/index.cjs",
+      "import": "./icon/Power/m/index.mjs",
+      "types": "./icon/Power/m/index.d.ts"
     },
     "./icon/Printing/l": {
       "require": "./icon/Printing/l/index.cjs",
@@ -2654,6 +2724,26 @@
       "require": "./icon/QuestionSerp/m/index.cjs",
       "import": "./icon/QuestionSerp/m/index.mjs",
       "types": "./icon/QuestionSerp/m/index.d.ts"
+    },
+    "./icon/QuestionsAnswers/l": {
+      "require": "./icon/QuestionsAnswers/l/index.cjs",
+      "import": "./icon/QuestionsAnswers/l/index.mjs",
+      "types": "./icon/QuestionsAnswers/l/index.d.ts"
+    },
+    "./icon/QuestionsAnswers/m": {
+      "require": "./icon/QuestionsAnswers/m/index.cjs",
+      "import": "./icon/QuestionsAnswers/m/index.mjs",
+      "types": "./icon/QuestionsAnswers/m/index.d.ts"
+    },
+    "./icon/Recent/l": {
+      "require": "./icon/Recent/l/index.cjs",
+      "import": "./icon/Recent/l/index.mjs",
+      "types": "./icon/Recent/l/index.d.ts"
+    },
+    "./icon/Recent/m": {
+      "require": "./icon/Recent/m/index.cjs",
+      "import": "./icon/Recent/m/index.mjs",
+      "types": "./icon/Recent/m/index.d.ts"
     },
     "./icon/Recreation/l": {
       "require": "./icon/Recreation/l/index.cjs",
@@ -3205,6 +3295,26 @@
       "import": "./icon/Tablet/m/index.mjs",
       "types": "./icon/Tablet/m/index.d.ts"
     },
+    "./icon/Tack/l": {
+      "require": "./icon/Tack/l/index.cjs",
+      "import": "./icon/Tack/l/index.mjs",
+      "types": "./icon/Tack/l/index.d.ts"
+    },
+    "./icon/Tack/m": {
+      "require": "./icon/Tack/m/index.cjs",
+      "import": "./icon/Tack/m/index.mjs",
+      "types": "./icon/Tack/m/index.d.ts"
+    },
+    "./icon/TackNo/l": {
+      "require": "./icon/TackNo/l/index.cjs",
+      "import": "./icon/TackNo/l/index.mjs",
+      "types": "./icon/TackNo/l/index.d.ts"
+    },
+    "./icon/TackNo/m": {
+      "require": "./icon/TackNo/m/index.cjs",
+      "import": "./icon/TackNo/m/index.mjs",
+      "types": "./icon/TackNo/m/index.d.ts"
+    },
     "./icon/Tag/l": {
       "require": "./icon/Tag/l/index.cjs",
       "import": "./icon/Tag/l/index.mjs",
@@ -3264,6 +3374,16 @@
       "require": "./icon/ThumbUp/m/index.cjs",
       "import": "./icon/ThumbUp/m/index.mjs",
       "types": "./icon/ThumbUp/m/index.d.ts"
+    },
+    "./icon/TikTok/l": {
+      "require": "./icon/TikTok/l/index.cjs",
+      "import": "./icon/TikTok/l/index.mjs",
+      "types": "./icon/TikTok/l/index.d.ts"
+    },
+    "./icon/TikTok/m": {
+      "require": "./icon/TikTok/m/index.cjs",
+      "import": "./icon/TikTok/m/index.mjs",
+      "types": "./icon/TikTok/m/index.d.ts"
     },
     "./icon/Tile/l": {
       "require": "./icon/Tile/l/index.cjs",
@@ -3505,6 +3625,16 @@
       "import": "./icon/VideoCarousel/m/index.mjs",
       "types": "./icon/VideoCarousel/m/index.d.ts"
     },
+    "./icon/VideoList/l": {
+      "require": "./icon/VideoList/l/index.cjs",
+      "import": "./icon/VideoList/l/index.mjs",
+      "types": "./icon/VideoList/l/index.d.ts"
+    },
+    "./icon/VideoList/m": {
+      "require": "./icon/VideoList/m/index.cjs",
+      "import": "./icon/VideoList/m/index.mjs",
+      "types": "./icon/VideoList/m/index.d.ts"
+    },
     "./icon/VideoStop/l": {
       "require": "./icon/VideoStop/l/index.cjs",
       "import": "./icon/VideoStop/l/index.mjs",
@@ -3514,6 +3644,16 @@
       "require": "./icon/VideoStop/m/index.cjs",
       "import": "./icon/VideoStop/m/index.mjs",
       "types": "./icon/VideoStop/m/index.d.ts"
+    },
+    "./icon/VideoStreaming/l": {
+      "require": "./icon/VideoStreaming/l/index.cjs",
+      "import": "./icon/VideoStreaming/l/index.mjs",
+      "types": "./icon/VideoStreaming/l/index.d.ts"
+    },
+    "./icon/VideoStreaming/m": {
+      "require": "./icon/VideoStreaming/m/index.cjs",
+      "import": "./icon/VideoStreaming/m/index.mjs",
+      "types": "./icon/VideoStreaming/m/index.d.ts"
     },
     "./icon/Vk/l": {
       "require": "./icon/Vk/l/index.cjs",
@@ -3595,6 +3735,16 @@
       "import": "./icon/Wristwatch/m/index.mjs",
       "types": "./icon/Wristwatch/m/index.d.ts"
     },
+    "./icon/Yext/l": {
+      "require": "./icon/Yext/l/index.cjs",
+      "import": "./icon/Yext/l/index.mjs",
+      "types": "./icon/Yext/l/index.d.ts"
+    },
+    "./icon/Yext/m": {
+      "require": "./icon/Yext/m/index.cjs",
+      "import": "./icon/Yext/m/index.mjs",
+      "types": "./icon/Yext/m/index.d.ts"
+    },
     "./icon/Youtube/l": {
       "require": "./icon/Youtube/l/index.cjs",
       "import": "./icon/Youtube/l/index.mjs",
@@ -3635,6 +3785,66 @@
       "import": "./icon/ZoomPlus/m/index.mjs",
       "types": "./icon/ZoomPlus/m/index.d.ts"
     },
+    "./icon/color/Ahrefs/l": {
+      "require": "./icon/color/Ahrefs/l/index.cjs",
+      "import": "./icon/color/Ahrefs/l/index.mjs",
+      "types": "./icon/color/Ahrefs/l/index.d.ts"
+    },
+    "./icon/color/Ahrefs/m": {
+      "require": "./icon/color/Ahrefs/m/index.cjs",
+      "import": "./icon/color/Ahrefs/m/index.mjs",
+      "types": "./icon/color/Ahrefs/m/index.d.ts"
+    },
+    "./icon/color/Amazon/l": {
+      "require": "./icon/color/Amazon/l/index.cjs",
+      "import": "./icon/color/Amazon/l/index.mjs",
+      "types": "./icon/color/Amazon/l/index.d.ts"
+    },
+    "./icon/color/Amazon/m": {
+      "require": "./icon/color/Amazon/m/index.cjs",
+      "import": "./icon/color/Amazon/m/index.mjs",
+      "types": "./icon/color/Amazon/m/index.d.ts"
+    },
+    "./icon/color/BirdeyeColored/l": {
+      "require": "./icon/color/BirdeyeColored/l/index.cjs",
+      "import": "./icon/color/BirdeyeColored/l/index.mjs",
+      "types": "./icon/color/BirdeyeColored/l/index.d.ts"
+    },
+    "./icon/color/BirdeyeColored/m": {
+      "require": "./icon/color/BirdeyeColored/m/index.cjs",
+      "import": "./icon/color/BirdeyeColored/m/index.mjs",
+      "types": "./icon/color/BirdeyeColored/m/index.d.ts"
+    },
+    "./icon/color/CallRailColored/l": {
+      "require": "./icon/color/CallRailColored/l/index.cjs",
+      "import": "./icon/color/CallRailColored/l/index.mjs",
+      "types": "./icon/color/CallRailColored/l/index.d.ts"
+    },
+    "./icon/color/CallRailColored/m": {
+      "require": "./icon/color/CallRailColored/m/index.cjs",
+      "import": "./icon/color/CallRailColored/m/index.mjs",
+      "types": "./icon/color/CallRailColored/m/index.d.ts"
+    },
+    "./icon/color/CallTrackingMetricsColored/l": {
+      "require": "./icon/color/CallTrackingMetricsColored/l/index.cjs",
+      "import": "./icon/color/CallTrackingMetricsColored/l/index.mjs",
+      "types": "./icon/color/CallTrackingMetricsColored/l/index.d.ts"
+    },
+    "./icon/color/CallTrackingMetricsColored/m": {
+      "require": "./icon/color/CallTrackingMetricsColored/m/index.cjs",
+      "import": "./icon/color/CallTrackingMetricsColored/m/index.mjs",
+      "types": "./icon/color/CallTrackingMetricsColored/m/index.d.ts"
+    },
+    "./icon/color/CampaignMonitorColored/l": {
+      "require": "./icon/color/CampaignMonitorColored/l/index.cjs",
+      "import": "./icon/color/CampaignMonitorColored/l/index.mjs",
+      "types": "./icon/color/CampaignMonitorColored/l/index.d.ts"
+    },
+    "./icon/color/CampaignMonitorColored/m": {
+      "require": "./icon/color/CampaignMonitorColored/m/index.cjs",
+      "import": "./icon/color/CampaignMonitorColored/m/index.mjs",
+      "types": "./icon/color/CampaignMonitorColored/m/index.d.ts"
+    },
     "./icon/color/Confluence/l": {
       "require": "./icon/color/Confluence/l/index.cjs",
       "import": "./icon/color/Confluence/l/index.mjs",
@@ -3644,6 +3854,26 @@
       "require": "./icon/color/Confluence/m/index.cjs",
       "import": "./icon/color/Confluence/m/index.mjs",
       "types": "./icon/color/Confluence/m/index.d.ts"
+    },
+    "./icon/color/ConstantContactColored/l": {
+      "require": "./icon/color/ConstantContactColored/l/index.cjs",
+      "import": "./icon/color/ConstantContactColored/l/index.mjs",
+      "types": "./icon/color/ConstantContactColored/l/index.d.ts"
+    },
+    "./icon/color/ConstantContactColored/m": {
+      "require": "./icon/color/ConstantContactColored/m/index.cjs",
+      "import": "./icon/color/ConstantContactColored/m/index.mjs",
+      "types": "./icon/color/ConstantContactColored/m/index.d.ts"
+    },
+    "./icon/color/Copilot/l": {
+      "require": "./icon/color/Copilot/l/index.cjs",
+      "import": "./icon/color/Copilot/l/index.mjs",
+      "types": "./icon/color/Copilot/l/index.d.ts"
+    },
+    "./icon/color/Copilot/m": {
+      "require": "./icon/color/Copilot/m/index.cjs",
+      "import": "./icon/color/Copilot/m/index.mjs",
+      "types": "./icon/color/Copilot/m/index.d.ts"
     },
     "./icon/color/Figma/l": {
       "require": "./icon/color/Figma/l/index.cjs",
@@ -3745,6 +3975,16 @@
       "import": "./icon/color/GoogleDataStudio/m/index.mjs",
       "types": "./icon/color/GoogleDataStudio/m/index.d.ts"
     },
+    "./icon/color/GoogleDisplayVideoAds/l": {
+      "require": "./icon/color/GoogleDisplayVideoAds/l/index.cjs",
+      "import": "./icon/color/GoogleDisplayVideoAds/l/index.mjs",
+      "types": "./icon/color/GoogleDisplayVideoAds/l/index.d.ts"
+    },
+    "./icon/color/GoogleDisplayVideoAds/m": {
+      "require": "./icon/color/GoogleDisplayVideoAds/m/index.cjs",
+      "import": "./icon/color/GoogleDisplayVideoAds/m/index.mjs",
+      "types": "./icon/color/GoogleDisplayVideoAds/m/index.d.ts"
+    },
     "./icon/color/GoogleDocs/l": {
       "require": "./icon/color/GoogleDocs/l/index.cjs",
       "import": "./icon/color/GoogleDocs/l/index.mjs",
@@ -3815,6 +4055,16 @@
       "import": "./icon/color/Hubspot/m/index.mjs",
       "types": "./icon/color/Hubspot/m/index.d.ts"
     },
+    "./icon/color/InstagramColored/l": {
+      "require": "./icon/color/InstagramColored/l/index.cjs",
+      "import": "./icon/color/InstagramColored/l/index.mjs",
+      "types": "./icon/color/InstagramColored/l/index.d.ts"
+    },
+    "./icon/color/InstagramColored/m": {
+      "require": "./icon/color/InstagramColored/m/index.cjs",
+      "import": "./icon/color/InstagramColored/m/index.mjs",
+      "types": "./icon/color/InstagramColored/m/index.d.ts"
+    },
     "./icon/color/JavaScript/l": {
       "require": "./icon/color/JavaScript/l/index.cjs",
       "import": "./icon/color/JavaScript/l/index.mjs",
@@ -3825,6 +4075,16 @@
       "import": "./icon/color/JavaScript/m/index.mjs",
       "types": "./icon/color/JavaScript/m/index.d.ts"
     },
+    "./icon/color/LinkedInColored/l": {
+      "require": "./icon/color/LinkedInColored/l/index.cjs",
+      "import": "./icon/color/LinkedInColored/l/index.mjs",
+      "types": "./icon/color/LinkedInColored/l/index.d.ts"
+    },
+    "./icon/color/LinkedInColored/m": {
+      "require": "./icon/color/LinkedInColored/m/index.cjs",
+      "import": "./icon/color/LinkedInColored/m/index.mjs",
+      "types": "./icon/color/LinkedInColored/m/index.d.ts"
+    },
     "./icon/color/LookerStudio/l": {
       "require": "./icon/color/LookerStudio/l/index.cjs",
       "import": "./icon/color/LookerStudio/l/index.mjs",
@@ -3834,6 +4094,46 @@
       "require": "./icon/color/LookerStudio/m/index.cjs",
       "import": "./icon/color/LookerStudio/m/index.mjs",
       "types": "./icon/color/LookerStudio/m/index.d.ts"
+    },
+    "./icon/color/Mailchimp/l": {
+      "require": "./icon/color/Mailchimp/l/index.cjs",
+      "import": "./icon/color/Mailchimp/l/index.mjs",
+      "types": "./icon/color/Mailchimp/l/index.d.ts"
+    },
+    "./icon/color/Mailchimp/m": {
+      "require": "./icon/color/Mailchimp/m/index.cjs",
+      "import": "./icon/color/Mailchimp/m/index.mjs",
+      "types": "./icon/color/Mailchimp/m/index.d.ts"
+    },
+    "./icon/color/Matomo/l": {
+      "require": "./icon/color/Matomo/l/index.cjs",
+      "import": "./icon/color/Matomo/l/index.mjs",
+      "types": "./icon/color/Matomo/l/index.d.ts"
+    },
+    "./icon/color/Matomo/m": {
+      "require": "./icon/color/Matomo/m/index.cjs",
+      "import": "./icon/color/Matomo/m/index.mjs",
+      "types": "./icon/color/Matomo/m/index.d.ts"
+    },
+    "./icon/color/MetaColored/l": {
+      "require": "./icon/color/MetaColored/l/index.cjs",
+      "import": "./icon/color/MetaColored/l/index.mjs",
+      "types": "./icon/color/MetaColored/l/index.d.ts"
+    },
+    "./icon/color/MetaColored/m": {
+      "require": "./icon/color/MetaColored/m/index.cjs",
+      "import": "./icon/color/MetaColored/m/index.mjs",
+      "types": "./icon/color/MetaColored/m/index.d.ts"
+    },
+    "./icon/color/Microsoft/l": {
+      "require": "./icon/color/Microsoft/l/index.cjs",
+      "import": "./icon/color/Microsoft/l/index.mjs",
+      "types": "./icon/color/Microsoft/l/index.d.ts"
+    },
+    "./icon/color/Microsoft/m": {
+      "require": "./icon/color/Microsoft/m/index.cjs",
+      "import": "./icon/color/Microsoft/m/index.mjs",
+      "types": "./icon/color/Microsoft/m/index.d.ts"
     },
     "./icon/color/MicrosoftExchange/l": {
       "require": "./icon/color/MicrosoftExchange/l/index.cjs",
@@ -3865,6 +4165,86 @@
       "import": "./icon/color/MicrosoftOutlook/m/index.mjs",
       "types": "./icon/color/MicrosoftOutlook/m/index.d.ts"
     },
+    "./icon/color/Moz/l": {
+      "require": "./icon/color/Moz/l/index.cjs",
+      "import": "./icon/color/Moz/l/index.mjs",
+      "types": "./icon/color/Moz/l/index.d.ts"
+    },
+    "./icon/color/Moz/m": {
+      "require": "./icon/color/Moz/m/index.cjs",
+      "import": "./icon/color/Moz/m/index.mjs",
+      "types": "./icon/color/Moz/m/index.d.ts"
+    },
+    "./icon/color/PipedriveColored/l": {
+      "require": "./icon/color/PipedriveColored/l/index.cjs",
+      "import": "./icon/color/PipedriveColored/l/index.mjs",
+      "types": "./icon/color/PipedriveColored/l/index.d.ts"
+    },
+    "./icon/color/PipedriveColored/m": {
+      "require": "./icon/color/PipedriveColored/m/index.cjs",
+      "import": "./icon/color/PipedriveColored/m/index.mjs",
+      "types": "./icon/color/PipedriveColored/m/index.d.ts"
+    },
+    "./icon/color/Salesforce/l": {
+      "require": "./icon/color/Salesforce/l/index.cjs",
+      "import": "./icon/color/Salesforce/l/index.mjs",
+      "types": "./icon/color/Salesforce/l/index.d.ts"
+    },
+    "./icon/color/Salesforce/m": {
+      "require": "./icon/color/Salesforce/m/index.cjs",
+      "import": "./icon/color/Salesforce/m/index.mjs",
+      "types": "./icon/color/Salesforce/m/index.d.ts"
+    },
+    "./icon/color/ShopifyColored/l": {
+      "require": "./icon/color/ShopifyColored/l/index.cjs",
+      "import": "./icon/color/ShopifyColored/l/index.mjs",
+      "types": "./icon/color/ShopifyColored/l/index.d.ts"
+    },
+    "./icon/color/ShopifyColored/m": {
+      "require": "./icon/color/ShopifyColored/m/index.cjs",
+      "import": "./icon/color/ShopifyColored/m/index.mjs",
+      "types": "./icon/color/ShopifyColored/m/index.d.ts"
+    },
+    "./icon/color/Snapchat/l": {
+      "require": "./icon/color/Snapchat/l/index.cjs",
+      "import": "./icon/color/Snapchat/l/index.mjs",
+      "types": "./icon/color/Snapchat/l/index.d.ts"
+    },
+    "./icon/color/Snapchat/m": {
+      "require": "./icon/color/Snapchat/m/index.cjs",
+      "import": "./icon/color/Snapchat/m/index.mjs",
+      "types": "./icon/color/Snapchat/m/index.d.ts"
+    },
+    "./icon/color/TikTokColored/l": {
+      "require": "./icon/color/TikTokColored/l/index.cjs",
+      "import": "./icon/color/TikTokColored/l/index.mjs",
+      "types": "./icon/color/TikTokColored/l/index.d.ts"
+    },
+    "./icon/color/TikTokColored/m": {
+      "require": "./icon/color/TikTokColored/m/index.cjs",
+      "import": "./icon/color/TikTokColored/m/index.mjs",
+      "types": "./icon/color/TikTokColored/m/index.d.ts"
+    },
+    "./icon/color/TikTokColoredInvert/l": {
+      "require": "./icon/color/TikTokColoredInvert/l/index.cjs",
+      "import": "./icon/color/TikTokColoredInvert/l/index.mjs",
+      "types": "./icon/color/TikTokColoredInvert/l/index.d.ts"
+    },
+    "./icon/color/TikTokColoredInvert/m": {
+      "require": "./icon/color/TikTokColoredInvert/m/index.cjs",
+      "import": "./icon/color/TikTokColoredInvert/m/index.mjs",
+      "types": "./icon/color/TikTokColoredInvert/m/index.d.ts"
+    },
+    "./icon/color/WhatConvertsColored/l": {
+      "require": "./icon/color/WhatConvertsColored/l/index.cjs",
+      "import": "./icon/color/WhatConvertsColored/l/index.mjs",
+      "types": "./icon/color/WhatConvertsColored/l/index.d.ts"
+    },
+    "./icon/color/WhatConvertsColored/m": {
+      "require": "./icon/color/WhatConvertsColored/m/index.cjs",
+      "import": "./icon/color/WhatConvertsColored/m/index.mjs",
+      "types": "./icon/color/WhatConvertsColored/m/index.d.ts"
+    },
     "./icon/color/WhatsApp/l": {
       "require": "./icon/color/WhatsApp/l/index.cjs",
       "import": "./icon/color/WhatsApp/l/index.mjs",
@@ -3874,6 +4254,16 @@
       "require": "./icon/color/WhatsApp/m/index.cjs",
       "import": "./icon/color/WhatsApp/m/index.mjs",
       "types": "./icon/color/WhatsApp/m/index.d.ts"
+    },
+    "./icon/color/WooCommerceColored/l": {
+      "require": "./icon/color/WooCommerceColored/l/index.cjs",
+      "import": "./icon/color/WooCommerceColored/l/index.mjs",
+      "types": "./icon/color/WooCommerceColored/l/index.d.ts"
+    },
+    "./icon/color/WooCommerceColored/m": {
+      "require": "./icon/color/WooCommerceColored/m/index.cjs",
+      "import": "./icon/color/WooCommerceColored/m/index.mjs",
+      "types": "./icon/color/WooCommerceColored/m/index.d.ts"
     },
     "./icon/color/Yahoo/l": {
       "require": "./icon/color/Yahoo/l/index.cjs",
@@ -4150,6 +4540,61 @@
       "import": "./icon/pay/WeChatPay/m/index.mjs",
       "types": "./icon/pay/WeChatPay/m/index.d.ts"
     },
+    "./icon/platform/AIToolkit": {
+      "require": "./icon/platform/AIToolkit/index.cjs",
+      "import": "./icon/platform/AIToolkit/index.mjs",
+      "types": "./icon/platform/AIToolkit/index.d.ts"
+    },
+    "./icon/platform/AdsToolkit": {
+      "require": "./icon/platform/AdsToolkit/index.cjs",
+      "import": "./icon/platform/AdsToolkit/index.mjs",
+      "types": "./icon/platform/AdsToolkit/index.d.ts"
+    },
+    "./icon/platform/AppCenter": {
+      "require": "./icon/platform/AppCenter/index.cjs",
+      "import": "./icon/platform/AppCenter/index.mjs",
+      "types": "./icon/platform/AppCenter/index.d.ts"
+    },
+    "./icon/platform/ContentToolkit": {
+      "require": "./icon/platform/ContentToolkit/index.cjs",
+      "import": "./icon/platform/ContentToolkit/index.mjs",
+      "types": "./icon/platform/ContentToolkit/index.d.ts"
+    },
+    "./icon/platform/EnterpriseSolutions": {
+      "require": "./icon/platform/EnterpriseSolutions/index.cjs",
+      "import": "./icon/platform/EnterpriseSolutions/index.mjs",
+      "types": "./icon/platform/EnterpriseSolutions/index.d.ts"
+    },
+    "./icon/platform/HomePlatform": {
+      "require": "./icon/platform/HomePlatform/index.cjs",
+      "import": "./icon/platform/HomePlatform/index.mjs",
+      "types": "./icon/platform/HomePlatform/index.d.ts"
+    },
+    "./icon/platform/LocalToolkit": {
+      "require": "./icon/platform/LocalToolkit/index.cjs",
+      "import": "./icon/platform/LocalToolkit/index.mjs",
+      "types": "./icon/platform/LocalToolkit/index.d.ts"
+    },
+    "./icon/platform/ReportsToolkit": {
+      "require": "./icon/platform/ReportsToolkit/index.cjs",
+      "import": "./icon/platform/ReportsToolkit/index.mjs",
+      "types": "./icon/platform/ReportsToolkit/index.d.ts"
+    },
+    "./icon/platform/SEOToolkit": {
+      "require": "./icon/platform/SEOToolkit/index.cjs",
+      "import": "./icon/platform/SEOToolkit/index.mjs",
+      "types": "./icon/platform/SEOToolkit/index.d.ts"
+    },
+    "./icon/platform/SocialToolkit": {
+      "require": "./icon/platform/SocialToolkit/index.cjs",
+      "import": "./icon/platform/SocialToolkit/index.mjs",
+      "types": "./icon/platform/SocialToolkit/index.d.ts"
+    },
+    "./icon/platform/TrafficMarketToolkit": {
+      "require": "./icon/platform/TrafficMarketToolkit/index.cjs",
+      "import": "./icon/platform/TrafficMarketToolkit/index.mjs",
+      "types": "./icon/platform/TrafficMarketToolkit/index.d.ts"
+    },
     "./icon": {
       "require": "./icon/index.cjs",
       "import": "./icon/index.mjs",
@@ -4194,6 +4639,11 @@
       "require": "./illustration/CombinedChart/index.cjs",
       "import": "./illustration/CombinedChart/index.mjs",
       "types": "./illustration/CombinedChart/index.d.ts"
+    },
+    "./illustration/Configuration": {
+      "require": "./illustration/Configuration/index.cjs",
+      "import": "./illustration/Configuration/index.mjs",
+      "types": "./illustration/Configuration/index.d.ts"
     },
     "./illustration/Confirmation": {
       "require": "./illustration/Confirmation/index.cjs",
@@ -4645,6 +5095,11 @@
       "import": "./utils/lib/addonTextChildren.mjs",
       "types": "./utils/lib/addonTextChildren.d.ts"
     },
+    "./utils/lib/ariaProps": {
+      "require": "./utils/lib/ariaProps.cjs",
+      "import": "./utils/lib/ariaProps.mjs",
+      "types": "./utils/lib/ariaProps.d.ts"
+    },
     "./utils/lib/assignProps": {
       "require": "./utils/lib/assignProps.cjs",
       "import": "./utils/lib/assignProps.mjs",
@@ -4699,6 +5154,11 @@
       "require": "./utils/lib/fire.cjs",
       "import": "./utils/lib/fire.mjs",
       "types": "./utils/lib/fire.d.ts"
+    },
+    "./utils/lib/getAccessibleName": {
+      "require": "./utils/lib/getAccessibleName.cjs",
+      "import": "./utils/lib/getAccessibleName.mjs",
+      "types": "./utils/lib/getAccessibleName.d.ts"
     },
     "./utils/lib/getDisplayName": {
       "require": "./utils/lib/getDisplayName.cjs",
@@ -4835,6 +5295,11 @@
       "import": "./utils/lib/useCssVariable.mjs",
       "types": "./utils/lib/useCssVariable.d.ts"
     },
+    "./utils/lib/zIndexStacking": {
+      "require": "./utils/lib/zIndexStacking.cjs",
+      "import": "./utils/lib/zIndexStacking.mjs",
+      "types": "./utils/lib/zIndexStacking.d.ts"
+    },
     "./utils/lib/core/index": {
       "require": "./utils/lib/core/index.cjs",
       "import": "./utils/lib/core/index.mjs",
@@ -4890,6 +5355,11 @@
       "import": "./utils/lib/enhances/contextEnhance.mjs",
       "types": "./utils/lib/enhances/contextEnhance.d.ts"
     },
+    "./utils/lib/enhances/focusSourceEnhance": {
+      "require": "./utils/lib/enhances/focusSourceEnhance.cjs",
+      "import": "./utils/lib/enhances/focusSourceEnhance.mjs",
+      "types": "./utils/lib/enhances/focusSourceEnhance.d.ts"
+    },
     "./utils/lib/enhances/i18nEnhance": {
       "require": "./utils/lib/enhances/i18nEnhance.cjs",
       "import": "./utils/lib/enhances/i18nEnhance.mjs",
@@ -4938,13 +5408,28 @@
       "require": "./utils/lib/themes/dark.css",
       "import": "./utils/lib/themes/dark.css"
     },
+    "./utils/lib/themes/dark": {
+      "require": "./utils/lib/themes/dark.cjs",
+      "import": "./utils/lib/themes/dark.mjs",
+      "types": "./utils/lib/themes/dark.d.ts"
+    },
     "./utils/lib/themes/default.css": {
       "require": "./utils/lib/themes/default.css",
       "import": "./utils/lib/themes/default.css"
     },
+    "./utils/lib/themes/default": {
+      "require": "./utils/lib/themes/default.cjs",
+      "import": "./utils/lib/themes/default.mjs",
+      "types": "./utils/lib/themes/default.d.ts"
+    },
     "./utils/lib/themes/light.css": {
       "require": "./utils/lib/themes/light.css",
       "import": "./utils/lib/themes/light.css"
+    },
+    "./utils/lib/themes/light": {
+      "require": "./utils/lib/themes/light.cjs",
+      "import": "./utils/lib/themes/light.mjs",
+      "types": "./utils/lib/themes/light.d.ts"
     },
     "./utils/lib/use/useColorResolver": {
       "require": "./utils/lib/use/useColorResolver.cjs",
@@ -5055,6 +5540,11 @@
       "import": "./utils/lib/core/styled/index.mjs",
       "types": "./utils/lib/core/styled/index.d.ts"
     },
+    "./utils/lib/core/styled/reshadow-core": {
+      "require": "./utils/lib/core/styled/reshadow-core.cjs",
+      "import": "./utils/lib/core/styled/reshadow-core.mjs",
+      "types": "./utils/lib/core/styled/reshadow-core.d.ts"
+    },
     "./utils/lib/core/styled/sstyled": {
       "require": "./utils/lib/core/styled/sstyled.cjs",
       "import": "./utils/lib/core/styled/sstyled.mjs",
@@ -5080,9 +5570,9 @@
       "import": "./utils/lib/core/types/symbols.mjs",
       "types": "./utils/lib/core/types/symbols.d.ts"
     },
-    "./utils/lib/style/var": {
-      "require": "./utils/lib/style/var.css",
-      "import": "./utils/lib/style/var.css"
+    "./utils/style/var": {
+      "require": "./utils/style/var.css",
+      "import": "./utils/style/var.css"
     },
     "./utils": {
       "require": "./utils/index.cjs",
