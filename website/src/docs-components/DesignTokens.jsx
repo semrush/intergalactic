@@ -169,17 +169,20 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
             </Copy>
           );
         } else if (props.dataKey === 'value') {
+          const value = props.row[props.dataKey];
+          const isColor = value.startsWith('#') || value.includes('oklch');
+
           return (
             <Copy
               copiedToast='Copied'
-              toCopy={props.row.rawValue}
+              toCopy={value}
               title='Copy to clipboard'
               trigger='click'
               className={styles.tokenValueWrapper}
             >
               <button type='button' className={styles.tokenValue} data-token-type='semanticToken'>
-                {props.row.type === 'color' && <ColorPreview color={props.row.computedValue} />}
-                {props.row.rawValue}
+                {isColor && <ColorPreview color={value} />}
+                {value}
               </button>
             </Copy>
           );
