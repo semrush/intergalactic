@@ -2,6 +2,7 @@ import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -14,13 +15,11 @@ const parseKd = (kd: string) => {
 
 export function SecondaryTable() {
   const urlRef = React.useRef(null);
-  const [columnElement, setColumnElement] = React.useState<HTMLElement | undefined>(undefined);
-
-  React.useEffect(() => {
-    if (urlRef.current) {
-      setColumnElement(urlRef.current);
-    }
-  }, []);
+  const urlRect = useResizeObserver(urlRef);
+  const ellipsisRect = React.useMemo(
+    () => ({ width: Math.max(urlRect.width - 28, 0) }),
+    [urlRect.width],
+  );
 
   const sortedData = React.useMemo(
     () => [...data].sort((a, b) => parseKd(b.kd) - parseKd(a.kd)),
@@ -60,8 +59,6 @@ export function SecondaryTable() {
         },
       ]}
       renderCell={(props) => {
-        const triggerRef = React.useRef<HTMLAnchorElement | null>(null);
-
         if (props.columnName === 'url') {
           const pageUrl = props.value?.toString?.() || '';
 
@@ -71,19 +68,14 @@ export function SecondaryTable() {
               target='_blank'
               rel='noopener noreferrer'
               color='text-primary'
+              w='100%'
               wMin={0}
               style={{ display: 'inline-flex', alignItems: 'center' }}
-              ref={triggerRef}
             >
-              <Link.Text
-                wMin={0}
-                ellipsis={Boolean(columnElement)}
-                ellipsis:cropPosition='middle'
-                ellipsis:containerElement={columnElement}
-                ellipsis:recalculateContainerWidth={(width: number) => width - 28}
-                hint:triggerRef={triggerRef}
-              >
-                {removeProtocol(pageUrl)}
+              <Link.Text wMin={0}>
+                <Ellipsis trim='middle' containerRect={ellipsisRect} containerRef={urlRef}>
+                  {removeProtocol(pageUrl)}
+                </Ellipsis>
               </Link.Text>
               <Link.Addon>
                 <LinkExternalM color='icon-secondary-neutral' />
