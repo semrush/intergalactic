@@ -150,12 +150,12 @@ module.exports = (opts) => {
             if (Declaration.value.includes('var(')) {
               const rootNode = ValueParser(Declaration.value);
               walkVar(rootNode.nodes, hash, tokens);
-              Declaration.value = rootNode.toString();
+              Declaration.value = rootNode.toString().replaceAll('\n', '');
               Declaration[processed] = true;
             } else if (Declaration.prop.endsWith('animation-name')) {
               const rootNode = ValueParser(Declaration.value);
               walkAnimation(rootNode.nodes, hash);
-              Declaration.value = rootNode.toString();
+              Declaration.value = rootNode.toString().replaceAll('\n', '');
               Declaration[processed] = true;
             }
           }
