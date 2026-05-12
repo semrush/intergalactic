@@ -1,6 +1,6 @@
 import { Flex, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import { createComponent, Component, sstyled, Root, createTestComponent } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import reactToText from '@semcore/core/lib/utils/reactToText';
 import React from 'react';
 
@@ -8,17 +8,6 @@ import type { NSSlider } from './Slider.type';
 import style from './style/slider.shadow.css';
 
 const FALLBACK_VALUE = 0;
-// const FALLBACK_MIN_VALUE = 0;
-// const FALLBACK_MAX_VALUE = 100;
-// const FALLBACK_STEP_VALUE = 1;
-
-// const getNumericValue = ({ value, fallback }: { value?: NSSlider.Value; fallback: number }): number => {
-//   if (!value) return fallback;
-
-//   const numericValue = Number(value);
-
-//   return isNaN(numericValue) ? fallback : numericValue;
-// };
 
 const convertValueToPercent = (value: number, min: number, max: number) => {
   if (value > max) return 100;
@@ -26,34 +15,60 @@ const convertValueToPercent = (value: number, min: number, max: number) => {
   return ((value - min) / (max - min)) * 100;
 };
 
-class SliderRoot extends createTestComponent<
-  Intergalactic.InternalTypings.InferComponentProps<NSSlider.Component>,
-  [],
-  NSSlider.Handlers,
-  {},
-  {},
-  NSSlider.DefaultProps
->() {
+type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
+type DefaultProps<P, DP> = {
+  [K in keyof DP]: StripDefaultPrefix<K> extends keyof P
+    ? P[StripDefaultPrefix<K>]
+    : never
+};
+
+type DefaultPropsValue<P, DP> = [P] extends [never]
+  ? never
+  : [DP] extends [never]
+      ? never
+      : DefaultProps<P, DP> | ((props: P) => DefaultProps<P, DP>);
+
+export function withDefaultProps<
+  P = never,
+  DP = never,
+>(value: NoInfer<DefaultPropsValue<P, DP>>) {
+  return function <T extends new (...args: any[]) => any>(
+    target: T,
+    _context: ClassDecoratorContext<T>,
+  ) {
+    return class extends target {
+      static defaultProps = value;
+    };
+  };
+}
+
+@withDefaultProps<NSSlider.Props, NSSlider.DefaultProps>(() => ({
+  defaultValue: 0,
+  min: 0,
+  max: 100,
+  step: 1,
+  children: (
+    <>
+      <Slider.Bar />
+      <Slider.Knob />
+      <Slider.Options>
+        <Slider.Item />
+      </Slider.Options>
+    </>
+  ),
+}))
+class SliderRoot extends Component<
+    Intergalactic.InternalTypings.InferComponentProps<NSSlider.Component>,
+    [],
+    NSSlider.Handlers,
+    {},
+    {},
+    NSSlider.DefaultProps
+  > {
   static displayName = 'Slider';
   static style = style;
 
   sliderRef = React.createRef() as React.MutableRefObject<HTMLButtonElement | null>;
-
-  static defaultProps = () => ({
-    defaultValue: 0,
-    min: 0,
-    max: 100,
-    step: 1,
-    children: (
-      <>
-        <Slider.Bar />
-        <Slider.Knob />
-        <Slider.Options>
-          <Slider.Item />
-        </Slider.Options>
-      </>
-    ),
-  });
 
   handleRef = (node: HTMLButtonElement) => {
     this.sliderRef.current = node;
