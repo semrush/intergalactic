@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.1.0] - 2026-05-12
+
+### Added
+
+- New brand theme.
+- New brand theme.
+
 ## [17.0.1] - 2026-04-16
 
 ### Fixed
