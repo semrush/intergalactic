@@ -19,7 +19,8 @@ const cache = new CellMeasurerCache({
 });
 
 export const ColorPreview = ({ color }) => {
-  if (!color.startsWith('#') && !color.startsWith('rgba(') && !color.includes('oklch(')) return null;
+  if (!color.startsWith('#') && !color.startsWith('rgba(') && !color.includes('oklch('))
+    return null;
 
   return (
     <div
