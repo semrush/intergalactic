@@ -19,7 +19,7 @@ const cache = new CellMeasurerCache({
 });
 
 export const ColorPreview = ({ color }) => {
-  if (!color.startsWith('#') && !color.startsWith('rgba(')) return null;
+  if (!color.startsWith('#') && !color.startsWith('rgba(') && !color.includes('oklch(')) return null;
 
   return (
     <div
@@ -40,7 +40,7 @@ const DesignTokens = ({ tokens }) => {
   const [componentFilter, setComponentFilter] = React.useState(null);
   const [filteredTokensToTable, setFilteredTokensToTable] = React.useState(tokens);
   const tokensIndex = React.useMemo(
-    () => new Fuse(tokens, { isCaseSensitive: false, keys: ['name', 'rawValue', 'description'] }),
+    () => new Fuse(tokens, { isCaseSensitive: false, keys: ['name', 'value', 'description'] }),
     [tokens],
   );
   const filteredTokens = React.useMemo(() => {
@@ -215,7 +215,7 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                 children: (
                   <Copy
                     copiedToast='Copied'
-                    toCopy={row.rawValue}
+                    toCopy={row.value}
                     title={'Copy to clipboard'}
                     trigger='click'
                     className={styles.tokenValueWrapper}
@@ -225,8 +225,8 @@ const DesignTokensTable = React.memo(({ filteredTokens }) => {
                       className={styles.tokenValue}
                       data-token-type={'semanticToken'}
                     >
-                      <ColorPreview color={row.computedValue} />
-                      {row.rawValue}
+                      <ColorPreview color={row.value} />
+                      {row.value}
                     </button>
                   </Copy>
                 ),
