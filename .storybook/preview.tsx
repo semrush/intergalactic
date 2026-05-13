@@ -55,12 +55,12 @@ const preview: Preview = {
     (Story, params) => {
       const rootRef = React.useRef<HTMLDivElement>(null);
       const stylesheet = params.globals.theme === 'new'
-        ? '/assets/theme/light.css'
-        : '/assets/core/light.css';
+        ? 'assets/theme/light.css'
+        : 'assets/core/light.css';
 
       const stylesheetHighlight = params.globals.theme === 'new'
-        ? '/assets/theme/highlights-light.css'
-        : '/assets/core/highlights-light.css';
+        ? 'assets/theme/highlights-light.css'
+        : 'assets/core/highlights-light.css';
 
       if (params.parameters.layout === 'fullscreen') {
         return (
