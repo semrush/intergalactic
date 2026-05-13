@@ -2,8 +2,8 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.0.0] - 2026-03-16
+## [2.0.0] - 2026-05-13
 
 ### Added
 
-- Release package with theme.
+- Release a package with a theme.
