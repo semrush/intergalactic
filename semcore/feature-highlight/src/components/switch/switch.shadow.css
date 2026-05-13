@@ -1,5 +1,6 @@
 SToggle {
   position: relative;
+  transform: translate(0);
 
   &::before {
     content: "";
