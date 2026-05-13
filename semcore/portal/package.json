@@ -1,7 +1,7 @@
 {
   "name": "@semcore/portal",
   "description": "Semrush Portal Component",
-  "version": "16.1.0-prerelease.3",
+  "version": "16.1.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "types": "./lib/types/index.d.ts"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.6.0-prerelease.3"
+    "@semcore/base-components": "^16.6.0"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feature-highlight",
   "description": "Semrush toolkit for accent features",
-  "version": "16.4.0-prerelease.3",
+  "version": "16.4.1",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -19,21 +19,21 @@
     }
   },
   "dependencies": {
-    "@semcore/badge": "^16.1.0-prerelease.3",
-    "@semcore/base-trigger": "^16.5.0-prerelease.3",
-    "@semcore/button": "^16.1.0-prerelease.3",
-    "@semcore/checkbox": "^16.3.0-prerelease.3",
-    "@semcore/input": "^16.2.0-prerelease.3",
-    "@semcore/notice": "^16.2.0-prerelease.3",
-    "@semcore/pills": "^16.1.0-prerelease.3",
-    "@semcore/radio": "^16.2.0-prerelease.3",
-    "@semcore/select": "^16.2.0-prerelease.3",
-    "@semcore/switch": "^16.2.0-prerelease.3",
-    "@semcore/tab-line": "^16.1.0-prerelease.3",
-    "@semcore/typography": "^16.4.0-prerelease.3"
+    "@semcore/badge": "^16.1.0",
+    "@semcore/base-trigger": "^16.5.0",
+    "@semcore/button": "^16.1.0",
+    "@semcore/checkbox": "^16.3.0",
+    "@semcore/input": "^16.2.0",
+    "@semcore/notice": "^16.2.0",
+    "@semcore/pills": "^16.1.0",
+    "@semcore/radio": "^16.2.0",
+    "@semcore/select": "^16.2.0",
+    "@semcore/switch": "^16.2.0",
+    "@semcore/tab-line": "^16.1.0",
+    "@semcore/typography": "^16.4.0"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.6.0-prerelease.3"
+    "@semcore/base-components": "^16.6.0"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "16.7.0-prerelease.3",
+  "version": "16.7.1",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -18,13 +18,13 @@
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/animation": "16.1.0-prerelease.3",
-    "@semcore/checkbox": "16.3.0-prerelease.3",
-    "@semcore/divider": "16.1.0-prerelease.3",
-    "@semcore/flex-box": "16.1.0-prerelease.3",
-    "@semcore/icon": "16.8.0-prerelease.3",
-    "@semcore/popper": "16.1.0-prerelease.3",
-    "@semcore/typography": "16.4.0-prerelease.3",
+    "@semcore/animation": "16.1.1",
+    "@semcore/checkbox": "16.3.1",
+    "@semcore/divider": "16.1.1",
+    "@semcore/flex-box": "16.1.1",
+    "@semcore/icon": "16.8.1",
+    "@semcore/popper": "16.1.1",
+    "@semcore/typography": "16.4.1",
     "@types/d3-shape": "^3.1.7",
     "@upsetjs/venn.js": "1.4.2",
     "d3-array": "3.1.6",
@@ -38,7 +38,7 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^16.6.0-prerelease.3"
+    "@semcore/base-components": "^16.6.0"
   },
   "repository": {
     "type": "git",
