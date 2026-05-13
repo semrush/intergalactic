@@ -49,6 +49,7 @@ for (const theme of themes) {
     tokensToCss([...baseTokens, ...semanticTokens]),
   );
   await writeIfChanged(`lib/${theme}.ts`, tokensToJs([...baseTokens, ...semanticTokens]));
+  await writeIfChanged(`lib/${theme}.js`, tokensToJs([...baseTokens, ...semanticTokens]));
 
   if (highlightsTokens.length > 0) {
     await writeIfChanged(
@@ -56,6 +57,7 @@ for (const theme of themes) {
       tokensToCss(highlightsTokens),
     );
     await writeIfChanged(`lib/highlights-${theme}.ts`, tokensToJs(highlightsTokens));
+    await writeIfChanged(`lib/highlights-${theme}.js`, tokensToJs(highlightsTokens));
   }
 
   if (theme === defaultTheme) {

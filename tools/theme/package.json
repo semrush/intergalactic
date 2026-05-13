@@ -1,7 +1,7 @@
 {
   "name": "@semcore/theme",
   "description": "Semrush Theme package",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "type": "module",
@@ -16,33 +16,33 @@
     "./highlights-dark.css": "./lib/highlights-dark.css",
     "./light": {
       "types": "./lib/light.ts",
-      "import": "./lib/light.ts",
-      "require": "./lib/light.ts"
+      "import": "./lib/light.js",
+      "require": "./lib/light.js"
     },
     "./lib/light": {
       "types": "./lib/light.ts",
-      "import": "./lib/light.ts",
-      "require": "./lib/light.ts"
+      "import": "./lib/light.js",
+      "require": "./lib/light.js"
     },
     "./dark": {
       "types": "./lib/dark.ts",
-      "import": "./lib/dark.ts",
-      "require": "./lib/dark.ts"
+      "import": "./lib/dark.js",
+      "require": "./lib/dark.js"
     },
     "./highlights-light": {
       "types": "./lib/highlights-light.ts",
-      "import": "./lib/highlights-light.ts",
-      "require": "./lib/highlights-light.ts"
+      "import": "./lib/highlights-light.js",
+      "require": "./lib/highlights-light.js"
     },
     "./highlights-dark": {
       "types": "./lib/highlights-dark.ts",
-      "import": "./lib/highlights-dark.ts",
-      "require": "./lib/highlights-dark.ts"
+      "import": "./lib/highlights-dark.js",
+      "require": "./lib/highlights-dark.js"
     },
     "./panda-preset": {
       "types": "./lib/panda-preset.ts",
-      "import": "./lib/panda-preset.ts",
-      "require": "./lib/panda-preset.ts"
+      "import": "./lib/panda-preset.js",
+      "require": "./lib/panda-preset.js"
     }
   },
   "dependencies": {},
