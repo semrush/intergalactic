@@ -1,7 +1,7 @@
 {
   "name": "@semcore/link",
   "description": "Semrush Link Component",
-  "version": "17.0.1",
+  "version": "17.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/typography": "^17.0.2"
+    "@semcore/typography": "^17.1.0"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.2"

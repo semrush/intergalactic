@@ -1,7 +1,7 @@
 {
   "name": "@semcore/progress-bar",
   "description": "Semrush ProgressBar Component",
-  "version": "17.0.2",
+  "version": "17.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
