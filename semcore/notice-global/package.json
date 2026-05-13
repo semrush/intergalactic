@@ -1,7 +1,7 @@
 {
   "name": "@semcore/notice-global",
   "description": "Semrush NoticeGlobal Component",
-  "version": "2.63.0-prerelease.7",
+  "version": "2.63.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,11 +17,11 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/button": "5.44.0-prerelease.7",
-    "@semcore/utils": "4.49.0-prerelease.7",
-    "@semcore/icon": "4.63.0-prerelease.7",
-    "@semcore/flex-box": "5.42.0-prerelease.7",
-    "@semcore/animation": "2.42.0-prerelease.7"
+    "@semcore/button": "5.44.0",
+    "@semcore/utils": "4.49.0",
+    "@semcore/icon": "4.63.0",
+    "@semcore/flex-box": "5.42.0",
+    "@semcore/animation": "2.42.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.40.0-prerelease.7",

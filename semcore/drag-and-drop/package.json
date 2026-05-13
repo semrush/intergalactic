@@ -1,7 +1,7 @@
 {
   "name": "@semcore/drag-and-drop",
   "description": "Semrush DragAndDrop Component",
-  "version": "3.50.0-prerelease.7",
+  "version": "3.50.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,10 +17,10 @@
     "types": "./lib/types/index.d.ts"
   },
   "dependencies": {
-    "@semcore/card": "5.49.0-prerelease.7",
-    "@semcore/flex-box": "5.42.0-prerelease.7",
-    "@semcore/grid": "5.41.0-prerelease.7",
-    "@semcore/utils": "4.49.0-prerelease.7"
+    "@semcore/card": "5.49.0",
+    "@semcore/flex-box": "5.42.0",
+    "@semcore/grid": "5.41.0",
+    "@semcore/utils": "4.49.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.40.0-prerelease.7",
