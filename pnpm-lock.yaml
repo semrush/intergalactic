@@ -1814,91 +1814,91 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../accordion
       '@semcore/add-filter':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../add-filter
       '@semcore/badge':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../badge
       '@semcore/base-components':
-        specifier: ^17.0.2
+        specifier: 17.1.0
         version: link:../base-components
       '@semcore/base-trigger':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../base-trigger
       '@semcore/breadcrumbs':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../bulk-textarea
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../button
       '@semcore/card':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../card
       '@semcore/carousel':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../core
       '@semcore/counter':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../date-picker
       '@semcore/divider':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../divider
       '@semcore/dot':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../dot
       '@semcore/drag-and-drop':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../ellipsis
       '@semcore/errors':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../errors
       '@semcore/feature-highlight':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../feature-highlight
       '@semcore/feature-popover':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../flags
       '@semcore/fullscreen-modal':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../fullscreen-modal
       '@semcore/icon':
         specifier: ^16.0.0 || ^17.0.1
@@ -1907,100 +1907,100 @@ importers:
         specifier: ^16.0.0 || ^17.0.1
         version: link:../illustration
       '@semcore/inline-edit':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../inline-input
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../input-mask
       '@semcore/input-number':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../input-tags
       '@semcore/link':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../link
       '@semcore/mini-chart':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../mini-chart
       '@semcore/modal':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../modal
       '@semcore/notice':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../notice-bubble
       '@semcore/pagination':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../pagination
       '@semcore/pills':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../pills
       '@semcore/product-head':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../product-head
       '@semcore/progress-bar':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../select
       '@semcore/side-panel':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../skeleton
       '@semcore/slider':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../slider
       '@semcore/spin':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../spin
       '@semcore/spin-container':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../spin-container
       '@semcore/switch':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../switch
       '@semcore/tab-line':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../tab-line
       '@semcore/tab-panel':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../tab-panel
       '@semcore/tag':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../tag
       '@semcore/textarea':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../typography
       '@semcore/widget-empty':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: ^17.1.0
+        specifier: 17.1.0
         version: link:../wizard
       react:
         specifier: 16.8 - 19
@@ -17892,24 +17892,6 @@ snapshots:
     dependencies:
       spacetrim: 0.11.59
 
-  '@puppeteer/browsers@1.4.6(typescript@5.9.3)':
-    dependencies:
-      debug: 4.3.4
-      extract-zip: 2.0.1
-      progress: 2.0.3
-      proxy-agent: 6.3.0
-      tar-fs: 3.0.4
-      unbzip2-stream: 1.4.3
-      yargs: 17.7.1
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - bare-abort-controller
-      - bare-buffer
-      - react-native-b4a
-      - supports-color
-    optional: true
-
   '@puppeteer/browsers@1.4.6(typescript@6.0.2)':
     dependencies:
       debug: 4.3.4
@@ -19010,27 +18992,6 @@ snapshots:
     dependencies:
       vite: 5.4.21(@types/node@25.5.2)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.4.33))(terser@5.47.1)
       vue: 3.5.34(typescript@6.0.2)
-
-  '@vitest/browser@3.2.4(playwright@1.58.2)(vite@7.3.2(@types/node@25.5.2)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.3))(vitest@3.2.4)(webdriverio@8.24.3(typescript@5.9.3))':
-    dependencies:
-      '@testing-library/dom': 10.4.1
-      '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.1)
-      '@vitest/mocker': 3.2.4(vite@7.3.2(@types/node@25.5.2)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.3))
-      '@vitest/utils': 3.2.4
-      magic-string: 0.30.21
-      sirv: 3.0.2
-      tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.3)
-      ws: 8.20.1
-    optionalDependencies:
-      playwright: 1.58.2
-      webdriverio: 8.24.3(typescript@5.9.3)
-    transitivePeerDependencies:
-      - bufferutil
-      - msw
-      - utf-8-validate
-      - vite
-    optional: true
 
   '@vitest/browser@3.2.4(playwright@1.58.2)(vite@7.3.2(@types/node@25.5.2)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.3))(vitest@3.2.4)(webdriverio@8.24.3(typescript@6.0.2))':
     dependencies:
@@ -26392,26 +26353,6 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  puppeteer-core@20.9.0(typescript@5.9.3):
-    dependencies:
-      '@puppeteer/browsers': 1.4.6(typescript@5.9.3)
-      chromium-bidi: 0.4.16(devtools-protocol@0.0.1147663)
-      cross-fetch: 4.0.0
-      debug: 4.3.4
-      devtools-protocol: 0.0.1147663
-      ws: 8.13.0
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - bare-abort-controller
-      - bare-buffer
-      - bufferutil
-      - encoding
-      - react-native-b4a
-      - supports-color
-      - utf-8-validate
-    optional: true
-
   puppeteer-core@20.9.0(typescript@6.0.2):
     dependencies:
       '@puppeteer/browsers': 1.4.6(typescript@6.0.2)
@@ -28852,7 +28793,7 @@ snapshots:
     optionalDependencies:
       '@types/debug': 4.1.13
       '@types/node': 25.5.2
-      '@vitest/browser': 3.2.4(playwright@1.58.2)(vite@7.3.2(@types/node@25.5.2)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.3))(vitest@3.2.4)(webdriverio@8.24.3(typescript@5.9.3))
+      '@vitest/browser': 3.2.4(playwright@1.58.2)(vite@7.3.2(@types/node@25.5.2)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.3))(vitest@3.2.4)(webdriverio@8.24.3(typescript@6.0.2))
       '@vitest/ui': 3.2.4(vitest@3.2.4)
       happy-dom: 9.20.3
       jsdom: 22.1.0
@@ -28935,43 +28876,6 @@ snapshots:
       - react-native-b4a
       - supports-color
       - utf-8-validate
-
-  webdriverio@8.24.3(typescript@5.9.3):
-    dependencies:
-      '@types/node': 20.19.41
-      '@wdio/config': 8.24.3
-      '@wdio/logger': 8.16.17
-      '@wdio/protocols': 8.23.0
-      '@wdio/repl': 8.23.1
-      '@wdio/types': 8.24.2
-      '@wdio/utils': 8.24.3
-      archiver: 6.0.2
-      aria-query: 5.3.2
-      css-shorthand-properties: 1.1.2
-      css-value: 0.0.1
-      devtools-protocol: 0.0.1213968
-      grapheme-splitter: 1.0.4
-      import-meta-resolve: 3.1.1
-      is-plain-obj: 4.1.0
-      lodash.clonedeep: 4.5.0
-      lodash.zip: 4.2.0
-      minimatch: 9.0.9
-      puppeteer-core: 20.9.0(typescript@5.9.3)
-      query-selector-shadow-dom: 1.0.1
-      resq: 1.11.0
-      rgb2hex: 0.2.5
-      serialize-error: 11.0.3
-      webdriver: 8.24.3
-    transitivePeerDependencies:
-      - bare-abort-controller
-      - bare-buffer
-      - bufferutil
-      - encoding
-      - react-native-b4a
-      - supports-color
-      - typescript
-      - utf-8-validate
-    optional: true
 
   webdriverio@8.24.3(typescript@6.0.2):
     dependencies:
