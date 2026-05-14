@@ -1,3 +1,17 @@
+## [17.1.1] - 2026-05-13
+
+### @semcore/base-components
+
+- **Added** **animation**: New brand theme.
+- **Added** **breakpoints**: New brand theme.
+- **Added** **grid**: New brand theme.
+- **Added** **flex-box**: New brand theme.
+- **Added** **neighbor-location**: New brand theme.
+- **Added** **popper**: New brand theme.
+- **Added** **portal**: New brand theme.
+- **Added** **outside-click**: New brand theme.
+- **Added** **scroll-area**: New brand theme.
+
 ## [17.1.0] - 2026-05-13
 
 ### @semcore/wizard

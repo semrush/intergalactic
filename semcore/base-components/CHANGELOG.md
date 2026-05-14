@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.1.0] - 2026-05-13
+
+### Added
+
+- **animation**: New brand theme.
+- **breakpoints**: New brand theme.
+- **grid**: New brand theme.
+- **flex-box**: New brand theme.
+- **neighbor-location**: New brand theme.
+- **popper**: New brand theme.
+- **portal**: New brand theme.
+- **outside-click**: New brand theme.
+- **scroll-area**: New brand theme.
+
 ## [17.0.2] - 2026-04-30
 
 ### Fixed
