@@ -74,6 +74,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/base-components` [16.0.0 ~> 16.0.1]).
 
+## [16.1.1] - 2026-05-07
+
+### Added
+
+- New brand theme.
+
 ## [16.0.0] - 2025-05-19
 
 ### Added
