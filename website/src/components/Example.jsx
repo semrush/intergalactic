@@ -6,7 +6,7 @@ import Sandbox from './Sandbox';
 import CopyM from '@semcore/icon/Copy/m';
 import { logEvent } from '../utils/amplitude';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
-import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
+import lightThemeTokens from '@semcore/theme/light';
 
 class Example extends React.PureComponent {
   render() {
