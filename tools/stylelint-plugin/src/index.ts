@@ -145,7 +145,7 @@ type Options = {
 };
 
 const defaultOptions = {
-  tokensSource: 'node_modules/@semcore/core/lib/theme/themes/default.mjs',
+  tokensSource: 'node_modules/@semcore/theme/lib/light.js',
   include: [],
   exclude: [],
   prefix: '--intergalactic-',
