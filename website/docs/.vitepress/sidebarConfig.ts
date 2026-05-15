@@ -107,11 +107,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Breakpoints',
           },
           {
-            link: '/layout/grid-system/grid-system-layout',
-            activeMatch: '/layout/grid-system/',
-            text: 'Grid and page layout',
-          },
-          {
             link: '/layout/box-system/box-system-spacing',
             activeMatch: '/layout/box-system/',
             text: 'Flex-box and spacing system',
