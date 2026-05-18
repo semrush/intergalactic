@@ -969,7 +969,7 @@ export const theme: Theme = {
         description: 'Background of the header cell in the secondary Table.',
       },
       table_th_gradient: {
-        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100']} 100%)`,
+        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100'].value} 100%)`,
         description: 'Background gradient for sorting icon that absolute positioned in the table head.',
       },
       table_td_cell_DEFAULT: {
