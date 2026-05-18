@@ -1665,7 +1665,7 @@
   },
   {
     "name": "--intergalactic-brand-gradient",
-    "value": "linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%);",
+    "value": "linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%)",
     "description": "Brand light gradient for branded surfaces.",
     "components": []
   },
