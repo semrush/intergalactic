@@ -1049,7 +1049,7 @@ export const theme: Theme = {
         description: 'Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).',
       },
       brand_gradient: {
-        value: `linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%);`,
+        value: 'linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%)',
         description: 'Brand light gradient for branded surfaces.',
       },
       brand_pinterest: {
