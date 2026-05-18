@@ -43,10 +43,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Accessibility',
           },
           {
-            link: '/core-principles/principles/principles',
-            text: 'Design principles',
-          },
-          {
             link: '/core-principles/motion-principles-guide/motion-principles-guide',
             text: 'Motion',
           },

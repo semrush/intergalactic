@@ -8,7 +8,7 @@ tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local')
 :::
 
 ::: warning
-:rotating_light: If you're using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
+:rotating_light: If you're using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens-usage-development).
 :::
 
 ## Description

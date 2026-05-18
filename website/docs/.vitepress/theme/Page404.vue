@@ -12,7 +12,6 @@ const redirects = {
   "/intergalactic/get-started-guide/dis-starter-guide": "/intergalactic/get-started-guide/dis-starter-guide/dis-starter-guide",
   "/intergalactic/get-started-guide/work-figma": "/intergalactic/get-started-guide/work-figma/work-figma",
   "/intergalactic/core-principles/a11y": "/intergalactic/core-principles/a11y/a11y",
-  "/intergalactic/core-principles/principles": "/intergalactic/core-principles/principles/principles",
   "/intergalactic/core-principles/motion-principles-guide": "/intergalactic/core-principles/motion-principles-guide/motion-principles-guide",
   "/intergalactic/core-principles/visual-loudness-scale": "/intergalactic/core-principles/visual-loudness-scale/visual-loudness-scale",
   "/intergalactic/core-principles/writing-code": "/intergalactic/core-principles/writing-code/wrapping-components",
