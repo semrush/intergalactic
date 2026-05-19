@@ -3,6 +3,7 @@ import Button from '@semcore/button';
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
@@ -13,6 +14,7 @@ import type {
   FeaturePopoverSpotProps,
   FeaturePopoverPopperProps,
   FeaturePopoverPopperInnerProps,
+  FeaturePopoverDefaultProps,
 } from './FeaturePopover.type';
 import style from './style/feature-popover.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -45,19 +47,26 @@ const enhance = [
   i18nEnhance(localizedMessages),
 ] as const;
 
-class FeaturePopover extends Component<FeaturePopoverProps, typeof enhance, { visible: null }> {
+class FeaturePopover extends Component<
+  FeaturePopoverProps,
+  typeof enhance,
+  { visible: null },
+  WithI18nEnhanceProps,
+  {},
+  FeaturePopoverDefaultProps
+> {
   static displayName = 'FeaturePopover';
   static style = style;
   static defaultProps = {
-    offset: [0, 12],
+    offset: [0, 12] satisfies [number, number],
     placement: 'bottom-start',
     defaultVisible: false,
-    onOutsideClick: () => false,
+    onOutsideClick: () => {},
     interaction: 'none',
     i18n: localizedMessages,
     locale: 'en',
     theme: 'accent',
-  };
+  } as const;
 
   static enhance = enhance;
 
@@ -209,7 +218,10 @@ function Spot(props: IRootComponentProps & FeaturePopoverSpotProps) {
   return sstyled(styles)(<SSpot render={Box} />);
 }
 
-export default createComponent(
+export default createComponent<
+  FeaturePopoverComponent,
+  typeof FeaturePopover
+>(
   FeaturePopover,
   {
     Trigger: Trigger,
@@ -218,4 +230,4 @@ export default createComponent(
   },
   // @ts-ignore
   { parent: Popper },
-) as FeaturePopoverComponent;
+);

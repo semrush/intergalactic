@@ -9,7 +9,7 @@ import { Text } from '@semcore/typography';
 import { scaleThreshold, scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
-import type { CigaretteChartData, CigaretteChartDataKey, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
+import type { CigaretteChartData, CigaretteChartDataKey, CigaretteChartDefaultProps, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
 // @ts-ignore
 import { HoverRect, Plot } from '../..';
 import type { ChartState } from './AbstractChart';
@@ -36,15 +36,16 @@ class CigaretteChartComponent extends AbstractChart<
   CigaretteChartData,
   CigaretteChartProps,
   typeof CigaretteChartComponent.enhance,
-  typeof CigaretteChartComponent.defaultProps,
-  CigaretteChartState
+  {},
+  CigaretteChartState,
+  CigaretteChartDefaultProps
 > {
   static displayName = 'Cigarette.Bar';
 
-  static defaultProps: any = (props: CigaretteChartProps) => {
+  static defaultProps = (props: CigaretteChartProps) => {
     const invertAxis = props.invertAxis ?? true;
     return {
-      invertAxis: invertAxis,
+      invertAxis,
       showXAxis: false,
       showYAxis: false,
       showTooltip: true,
@@ -56,7 +57,7 @@ class CigaretteChartComponent extends AbstractChart<
       plotHeight: invertAxis && !props.plotHeight ? 28 : props.plotHeight,
       showPercentValueInTooltip: false,
       minimalBarWidth: DEFAULT_MINIMAL_BAR_WIDTH,
-    };
+    } as const;
   };
 
   static enhance = [
@@ -124,11 +125,11 @@ class CigaretteChartComponent extends AbstractChart<
 
     const [pX, pY] = eventToPoint(event, this.plotRef.current);
 
-    this.setState((prevState) => ({ pX, pY }));
+    this.setState(() => ({ pX, pY }));
   });
 
   private onPlotMouseLeave = trottle(() => {
-    this.setState((prevState) => ({ pX: null, pY: null }));
+    this.setState(() => ({ pX: null, pY: null }));
   });
 
   protected override totalValue() {
@@ -506,4 +507,7 @@ class CigaretteChartComponent extends AbstractChart<
   }
 }
 
-export const CigaretteChart: CigaretteChartType = createComponent(CigaretteChartComponent);
+export const CigaretteChart = createComponent<
+  CigaretteChartType,
+  typeof CigaretteChartComponent
+>(CigaretteChartComponent);

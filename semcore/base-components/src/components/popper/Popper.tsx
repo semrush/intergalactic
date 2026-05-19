@@ -43,6 +43,7 @@ import type {
   PopperPopperProps,
   PopperProps,
   PopperTriggerProps,
+  PopperDefaultProps,
 } from './Popper.types';
 import style from './style/popper.shadow.css';
 
@@ -89,7 +90,14 @@ const MODIFIERS_OPTIONS = [
   'cursorAnchoring',
 ] as const;
 
-class PopperRoot extends Component<PopperProps, typeof PopperRoot.enhance, { visible: null }, typeof PopperRoot.defaultProps> {
+class PopperRoot extends Component<
+  PopperProps,
+  typeof PopperRoot.enhance,
+  { visible: null },
+  {},
+  {},
+  PopperDefaultProps
+> {
   static displayName = 'Popper';
 
   static style = style;
@@ -97,17 +105,17 @@ class PopperRoot extends Component<PopperProps, typeof PopperRoot.enhance, { vis
   static defaultProps = {
     defaultVisible: false,
     placement: 'auto',
-    modifiers: [],
+    modifiers: [] as PopperDefaultProps['modifiers'],
     arrow: {
       padding: 6,
     },
     strategy: 'absolute',
     interaction: 'click',
     timeout: 0,
-    excludeRefs: [],
+    excludeRefs: [] as PopperDefaultProps['excludeRefs'],
     focusLoop: true,
     cursorAnchoring: false,
-  };
+  } as const;
 
   static enhance = [
     uniqueIDEnhancement(),
@@ -779,7 +787,10 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
   );
 }
 
-export const Popper = createComponent(PopperRoot, {
+export const Popper = createComponent<
+  typeof PopperType,
+  typeof PopperRoot
+>(PopperRoot, {
   Trigger,
   Popper: PopperPopper,
-}) as typeof PopperType;
+});

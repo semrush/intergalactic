@@ -1,34 +1,26 @@
 import { Flex, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { sstyled, Root, Component, createComponent } from '@semcore/core';
 import reactToText from '@semcore/core/lib/utils/reactToText';
 import React from 'react';
 
 import type { NSSlider } from './Slider.type';
 import style from './style/slider.shadow.css';
 
-const FALLBACK_MIN_VALUE = 0;
-const FALLBACK_MAX_VALUE = 100;
-const FALLBACK_STEP_VALUE = 1;
-
-const getNumericValue = ({ value, fallback }: { value?: NSSlider.Value; fallback: number }): number => {
-  if (!value) return fallback;
-
-  const numericValue = Number(value);
-
-  return isNaN(numericValue) ? fallback : numericValue;
-};
+const FALLBACK_VALUE = 0;
 
 const convertValueToPercent = (value: number, min: number, max: number) => {
   if (value > max) return 100;
   if (value < min) return 0;
   return ((value - min) / (max - min)) * 100;
 };
-
 class SliderRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSlider.Component>,
   [],
-  NSSlider.Handlers
+  NSSlider.Handlers,
+  {},
+  {},
+  NSSlider.DefaultProps
 > {
   static displayName = 'Slider';
   static style = style;
@@ -36,10 +28,10 @@ class SliderRoot extends Component<
   sliderRef = React.createRef() as React.MutableRefObject<HTMLButtonElement | null>;
 
   static defaultProps = () => ({
-    defaultValue: FALLBACK_MIN_VALUE,
-    min: FALLBACK_MIN_VALUE,
-    max: FALLBACK_MAX_VALUE,
-    step: FALLBACK_STEP_VALUE,
+    defaultValue: 0,
+    min: 0,
+    max: 100,
+    step: 1,
     children: (
       <>
         <Slider.Bar />
@@ -66,8 +58,8 @@ class SliderRoot extends Component<
 
     return {
       value: this.getNumericValue(),
-      min: getNumericValue({ value: min, fallback: FALLBACK_MIN_VALUE }),
-      max: getNumericValue({ value: max, fallback: FALLBACK_MAX_VALUE }),
+      min,
+      max,
       disabled,
       options,
     };
@@ -78,8 +70,8 @@ class SliderRoot extends Component<
 
     return {
       value: this.getNumericValue(),
-      min: getNumericValue({ value: min, fallback: FALLBACK_MIN_VALUE }),
-      max: getNumericValue({ value: max, fallback: FALLBACK_MAX_VALUE }),
+      min,
+      max,
       disabled,
       options,
     };
@@ -134,7 +126,7 @@ class SliderRoot extends Component<
       const lastOption = options?.[options?.length - 1];
       const resolvedMax = options ? lastOption?.value : max;
       this.handlers.value(resolvedMax, event);
-    } else if (step !== undefined && max !== undefined && min !== undefined) {
+    } else {
       const relativeValue = newLeft / sliderSize;
       const relativeStep = step / (max - min);
       const countSteps = Math.round(relativeValue / relativeStep);
@@ -164,7 +156,7 @@ class SliderRoot extends Component<
   handleSlideStep(event: React.KeyboardEvent<HTMLButtonElement>) {
     event.preventDefault();
 
-    const { min, max, step = FALLBACK_STEP_VALUE, options } = this.asProps;
+    const { min, max, step, options } = this.asProps;
     const direction = event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? -1 : 1;
     let value = this.getNumericValue() + step * direction;
 
@@ -182,7 +174,7 @@ class SliderRoot extends Component<
     event.preventDefault();
 
     const { min, options } = this.asProps;
-    let value: NSSlider.Value = min ?? FALLBACK_MIN_VALUE;
+    let value: NSSlider.Value = min;
 
     if (options) {
       value = options[0].value;
@@ -195,7 +187,7 @@ class SliderRoot extends Component<
     event.preventDefault();
 
     const { max, options } = this.asProps;
-    let value: NSSlider.Value = max ?? FALLBACK_MAX_VALUE;
+    let value: NSSlider.Value = max;
 
     if (options) {
       value = options[options.length - 1].value;
@@ -214,18 +206,17 @@ class SliderRoot extends Component<
       const numericDefault = Number(defaultValue);
       if (!isNaN(numericDefault)) return numericDefault;
 
-      return FALLBACK_MIN_VALUE;
+      return FALLBACK_VALUE;
     }
 
     const index = options.findIndex((option) => option.value === value);
 
     if (index === -1) {
       const numericDefault = Number(defaultValue);
-      return isNaN(numericDefault) ? FALLBACK_MIN_VALUE : numericDefault;
+      return isNaN(numericDefault) ? FALLBACK_VALUE : numericDefault;
     }
 
-    const offset = min ?? FALLBACK_MIN_VALUE;
-    const result = index + offset;
+    const result = index + min;
 
     if (min !== undefined && index < min) return min;
     if (max !== undefined && result > max) return max;
@@ -328,12 +319,15 @@ function Item(
   );
 }
 
-const Slider = createComponent(SliderRoot, {
+const Slider = createComponent<
+  NSSlider.Component,
+  typeof SliderRoot
+>(SliderRoot, {
   Bar,
   Knob,
   Options,
   Item,
-}) as unknown as NSSlider.Component;
+});
 
 export const wrapSlider = <PropsExtending extends {}>(wrapper: (
   props: Intergalactic.InternalTypings.UntypeRefAndTag<

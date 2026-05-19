@@ -38,4 +38,7 @@ function HistogramChartSkeleton(
   );
 }
 
-export default createComponent(HistogramChartSkeleton) as NSSkeletonHistogramChart.Component;
+export default createComponent<
+  NSSkeletonHistogramChart.Component,
+  typeof HistogramChartSkeleton
+>(HistogramChartSkeleton);

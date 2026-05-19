@@ -4,16 +4,23 @@ import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { HighLightedButtonAddonProps, HighlightedButtonComponent } from './Button.type';
+import type { HighLightedButtonAddonProps, HighlightedButtonComponent, HighlightedButtonDefaultProps, HighlightedButtonProps } from './Button.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class ButtonFHRoot extends Component {
+class ButtonFHRoot extends Component<
+  HighlightedButtonProps,
+  [],
+  {},
+  {},
+  {},
+  HighlightedButtonDefaultProps
+> {
   static displayName = 'ButtonFH';
   static style = style;
 
   static defaultProps = {
     theme: 'highlighted',
-  };
+  } as const;
 
   state = {
     clicked: false,
@@ -61,7 +68,10 @@ function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean 
   );
 }
 
-export const ButtonFH = createComponent(ButtonFHRoot, {
+export const ButtonFH = createComponent<
+  HighlightedButtonComponent,
+  typeof ButtonFHRoot
+>(ButtonFHRoot, {
   Addon: HighlightAddon,
   Text: Button.Text,
-}) as HighlightedButtonComponent;
+});

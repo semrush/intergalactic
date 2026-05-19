@@ -11,6 +11,10 @@ declare namespace NSList {
     marker?: React.ReactNode;
   };
 
+  type DefaultProps = {
+    marker: '•';
+  };
+
   namespace Item {
     type Props = NSText.Props & {
       /** Individual marker of a list item */

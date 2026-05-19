@@ -10,10 +10,13 @@ import type {
   BoxProps,
   OutsideClickProps,
   PortalProps,
-  Box, PopperContext, PopperPopperProps, Placement, Popper } from '@semcore/base-components';
+  Box, PopperContext, PopperPopperProps, Placement, Popper,
+  PopperProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type React from 'react';
+
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 /**
  * Popper must have an accessible names (aria-group-name).
@@ -80,6 +83,11 @@ export type FPPopperProps = OutsideClickProps &
     computeStyles?: Partial<OptionsComputeStyles>;
     /** PopperJS modifier settings responsible for subscribing to global events */
     eventListeners?: Partial<OptionsEventListeners>;
+    /**
+     * Interaction with a trigger to show and hide the popper
+     * @default none
+     */
+    interaction?: PopperProps['interaction'];
     /** @ignore */
     onFirstUpdate?: Options['onFirstUpdate'];
     /**
@@ -110,6 +118,17 @@ export type FeaturePopoverProps = FPPopperProps & {
    * @default accent
    */
   theme?: 'accent' | 'neutral';
+};
+
+export type FeaturePopoverDefaultProps = {
+  offset: FPPopperProps['offset'];
+  placement: 'bottom-start';
+  defaultVisible: false;
+  onOutsideClick: () => void;
+  interaction: 'none';
+  i18n: LocalizedMessages;
+  locale: 'en';
+  theme: 'accent';
 };
 
 export type FeaturePopoverTriggerProps = BoxProps & {

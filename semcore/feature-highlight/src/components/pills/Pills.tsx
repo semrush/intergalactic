@@ -5,7 +5,7 @@ import Pills from '@semcore/pills';
 import React from 'react';
 
 import style from './pills.shadow.css';
-import type { HighlightedItemAddonProps, HighlightedPillComponent } from './Pills.type';
+import type { HighlightedItemAddonProps, HighlightedPillComponent, HighlightedPillItemComponent } from './Pills.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class PillsFHRoot extends Component {
@@ -64,7 +64,18 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
   );
 }
 
-export const PillsFH = createComponent(PillsFHRoot, {
+const HighlightedItem = createComponent<
+  HighlightedPillItemComponent,
+  typeof HighlightedItemRoot
+>(HighlightedItemRoot, {
+  Text: Pills.Item.Text,
+  Addon: HighlightedItemAddon,
+});
+
+export const PillsFH = createComponent<
+  HighlightedPillComponent,
+  typeof PillsFHRoot
+>(PillsFHRoot, {
   Item: Pills.Item,
-  HighlightedItem: createComponent(HighlightedItemRoot, { Text: Pills.Item.Text, Addon: HighlightedItemAddon }),
-}) as unknown as HighlightedPillComponent;
+  HighlightedItem,
+});

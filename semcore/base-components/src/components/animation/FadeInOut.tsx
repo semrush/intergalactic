@@ -1,4 +1,5 @@
-import { createBaseComponent, sstyled } from '@semcore/core';
+import { createBaseComponent, type Intergalactic } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import React from 'react';
 
 import Animation from './Animation';
@@ -17,4 +18,6 @@ function FadeInOut(props: FadeInOutProps, ref: React.Ref<HTMLDivElement>) {
 
 FadeInOut.displayName = 'FadeInOut';
 
-export default createBaseComponent<'div', FadeInOutProps>(FadeInOut);
+type FadeInOutComponent = Intergalactic.Component<'div', FadeInOutProps>;
+
+export default createBaseComponent<FadeInOutComponent>(FadeInOut);

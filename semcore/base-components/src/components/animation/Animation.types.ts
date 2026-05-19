@@ -51,6 +51,16 @@ export type AnimationProps = BoxProps & {
   transformEnd?: string;
 };
 
+export type AnimationDefaultProps = {
+  visible: false;
+  duration: 0;
+  delay: 0;
+  keyframes: AnimationProps['keyframes'];
+  initialAnimation: false;
+  timingFunction: 'ease-out';
+  animationsDisabled: false;
+};
+
 export type CollapseProps = AnimationProps & {
   /**
    * Add overflow=clip when passing animation
@@ -63,6 +73,11 @@ export type CollapseProps = AnimationProps & {
    * @default auto
    */
   defaultHeight?: 'auto' | '100%';
+
+  /** @deprecated It will be removed in v18. */
+  onAnimationStart?: React.AnimationEventHandler;
+  /** @deprecated It will be removed in v18. */
+  onAnimationEnd?: React.AnimationEventHandler;
 };
 
 export type FadeInOutProps = AnimationProps & {};
@@ -96,9 +111,14 @@ export type SlideProps = AnimationProps & {
 
 type DisposeSubscription = () => void;
 
-export type AnimationContext = {
-  onAnimationStart: (callback: (duration: number) => void) => DisposeSubscription;
-  onAnimationEnd: (callback: () => void) => DisposeSubscription;
+export type AnimationContext<
+  AnimationStartCb = (duration: number) => void,
+  AnimationEndCb = () => void,
+> = {
+  onAnimationStart: (callback: AnimationStartCb) => DisposeSubscription;
+  onAnimationEnd: (callback: AnimationEndCb) => DisposeSubscription;
+  onAnimationStartSubscribers: Array<AnimationStartCb>;
+  onAnimationEndSubscribers: Array<AnimationEndCb>;
 };
 
 export type animationContext = React.Context<AnimationContext>;

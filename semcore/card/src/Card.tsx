@@ -109,11 +109,14 @@ function Body(props: Intergalactic.InternalTypings.InferComponentProps<NSCard.Bo
   return sstyled(styles)(<SBody render={Box} {...props} />);
 }
 
-const Card = createComponent(CardRoot, {
+const Card = createComponent<
+  NSCard.Component,
+  typeof CardRoot
+>(CardRoot, {
   Title,
   Description,
   Header,
   Body,
-}) as NSCard.Component;
+});
 
 export default Card;

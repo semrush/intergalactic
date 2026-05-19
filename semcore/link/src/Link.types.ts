@@ -1,4 +1,5 @@
 import type { BoxProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
@@ -33,4 +34,9 @@ export type LinkProps = BoxProps & NSText.BaseProps & {
    * @default top
    */
   hintPlacement?: SimpleHintPopperProps['placement'];
+};
+
+export type LinkComponent = Intergalactic.Component<'a', LinkProps> & {
+  Text: Intergalactic.Component<'span', NSText.Props>;
+  Addon: Intergalactic.Component<'span', BoxProps>;
 };

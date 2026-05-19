@@ -1,4 +1,5 @@
 import { Flex, Box } from '@semcore/base-components';
+import type { ValidDefaultProps } from '@semcore/core';
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -31,16 +32,11 @@ export abstract class AbstractChart<
   Data extends ListData | ObjectData,
   Props extends BaseChartProps<Data>,
   Enhancers extends readonly ((...args: any[]) => any)[] = [],
-  DefaultProps = {},
+  InnerProps = {},
   State extends ChartState = ChartState,
-> extends Component<Props, Enhancers, Readonly<{}>, DefaultProps, State> {
+  DefaultProps extends ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
+> extends Component<Props, Enhancers, Readonly<{}>, InnerProps, State, DefaultProps> {
   public static style = style;
-  public static defaultProps: Partial<BaseChartProps<any>> = {
-    direction: 'column',
-    showXAxis: true,
-    showYAxis: true,
-    showTooltip: true,
-  };
 
   /**
    * Padding from the end's of chart to the container (except axis sides)

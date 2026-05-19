@@ -22,6 +22,13 @@ export type TimePickerProps = Omit<InputProps, 'size'> & {
   locale?: string;
 };
 
+export type TimePickerDefaultProps = {
+  defaultValue: '';
+  size: 'm';
+  children: React.ReactNode;
+  locale: 'en';
+};
+
 export type TimePickerSeparatorProps = {
   /** @Internal */
   hoursInputRef: React.RefObject<HTMLElement>;
