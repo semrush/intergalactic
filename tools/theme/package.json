@@ -10,6 +10,7 @@
     "check": "node --experimental-transform-types src/checker.ts"
   },
   "exports": {
+    "./package.json": "./package.json",
     "./light.css": "./lib/light.css",
     "./dark.css": "./lib/dark.css",
     "./highlights-light.css": "./lib/highlights-light.css",
