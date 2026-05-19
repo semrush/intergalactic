@@ -24,13 +24,16 @@ const RadioContext = React.createContext<{
 class RadioGroupRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSRadio.Group.Component>,
   [],
-  { value: null }
+  { value: null },
+  {},
+  {},
+  NSRadio.Group.DefaultProps
 > {
   static displayName = 'RadioGroup';
 
   static defaultProps = {
-    defaultValue: null,
-  };
+    defaultValue: '',
+  } as const;
 
   uncontrolledProps() {
     return {
@@ -62,7 +65,10 @@ class RadioGroupRoot extends Component<
   }
 }
 
-const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as NSRadio.Group.Component;
+const RadioGroup = createComponent<
+  NSRadio.Group.Component,
+  typeof RadioGroupRoot
+>(RadioGroupRoot, {}, { context: RadioContext });
 
 class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSRadio.Component>> {
   static displayName = 'Radio';
@@ -149,14 +155,17 @@ class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentPr
 class ValueRoot extends Component<
   Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Value.Component, typeof RadioRoot, 'Value'>,
   typeof ValueRoot.enhance,
-  { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
+  { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean },
+  {},
+  {},
+  NSRadio.Value.DefaultProps
 > {
   context: React.ContextType<typeof RadioContext> = {};
 
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,
-  };
+  } as const;
 
   static enhance = [resolveColorEnhance()] as const;
   static displayName = 'Value';
@@ -312,15 +321,21 @@ function Text(
 }
 Text.displayName = 'Text';
 
-const Value = createComponent(ValueRoot, {
+const Value = createComponent<
+  NSRadio.Value.Component,
+  typeof ValueRoot
+>(ValueRoot, {
   Control,
   RadioMark,
-}) as NSRadio.Value.Component;
+});
 
-const Radio = createComponent(RadioRoot, {
+const Radio = createComponent<
+  NSRadio.Component,
+  typeof RadioRoot
+>(RadioRoot, {
   Text,
   Value,
-}) as NSRadio.Component;
+});
 
 export const wrapRadioGroup = <PropsExtending extends {}>(
   wrapper: (

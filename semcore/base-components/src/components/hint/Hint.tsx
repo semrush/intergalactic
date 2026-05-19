@@ -4,6 +4,7 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
+import type { Intergalactic } from '@semcore/core/src';
 import type { DataType } from 'csstype';
 import React from 'react';
 
@@ -50,6 +51,10 @@ export type SimpleHintPopperProps = {
   ignorePortalsStacking?: boolean;
 };
 
+type InnerProps = {
+  timingFunction: DataType.EasingFunction;
+};
+
 type DefaultProps = {
   defaultVisible?: boolean;
   timeout: number | [number, number];
@@ -62,6 +67,8 @@ type State = {
   innerVisible: boolean | null;
   calculatedPlacement?: Placement;
 };
+
+type SimpleHintPopperComponent = Intergalactic.Component<'div', SimpleHintPopperProps>;
 
 const enhances = [
   zIndexStackingEnhance('z-index-tooltip'),
@@ -91,7 +98,14 @@ function propToArray(prop: number | [number, number]): [number, number] {
 
 const keyframesMap = new Map<Placement, string>();
 
-class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, Handlers, DefaultProps, State> {
+class HintPopperRoot extends Component<
+  SimpleHintPopperProps,
+  typeof enhances,
+  Handlers,
+  InnerProps,
+  State,
+  DefaultProps
+> {
   public readonly hintRef = React.createRef<HTMLElement>();
 
   static style = Object.assign(keyframes, styles);
@@ -367,4 +381,7 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 }
 
-export const Hint = createComponent<'div', SimpleHintPopperProps>(HintPopperRoot);
+export const Hint = createComponent<
+  SimpleHintPopperComponent,
+  typeof HintPopperRoot
+>(HintPopperRoot);

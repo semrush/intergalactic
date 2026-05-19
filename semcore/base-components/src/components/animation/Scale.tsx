@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
@@ -42,4 +43,6 @@ function Scale(props: ScaleProps, ref: React.Ref<HTMLDivElement>) {
 
 Scale.displayName = 'Scale';
 
-export default createBaseComponent<'div', ScaleProps>(Scale);
+type ScaleComponent = Intergalactic.Component<'div', ScaleProps>;
+
+export default createBaseComponent<ScaleComponent>(Scale);

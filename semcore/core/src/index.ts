@@ -4,6 +4,8 @@ import type {
   PropGetterFn,
   IRootComponentProps,
   IRootNodeProps,
+  // TODO: shall it be a part of Intergalactic NS?
+  ValidDefaultProps,
 } from './core-types/Component';
 import {
   CORE_INSTANCE,
@@ -30,6 +32,7 @@ export {
   type PropGetterFn,
   type IRootComponentProps,
   type IRootNodeProps,
+  type ValidDefaultProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
   CONTEXT_COMPONENT,

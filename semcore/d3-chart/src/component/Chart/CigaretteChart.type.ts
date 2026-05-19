@@ -30,4 +30,19 @@ export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   minimalBarWidth?: number;
 };
 
+export type CigaretteChartDefaultProps = {
+  invertAxis: CigaretteChartProps['invertAxis'];
+  showXAxis: false;
+  showYAxis: false;
+  showTooltip: true;
+  showLegend: false;
+  marginX: 0;
+  marginY: 0;
+  duration: 500;
+  plotWidth: CigaretteChartProps['plotWidth'];
+  plotHeight: CigaretteChartProps['plotHeight'];
+  showPercentValueInTooltip: false;
+  minimalBarWidth: 2;
+};
+
 export type CigaretteChartType = Intergalactic.Component<'div', CigaretteChartProps>;

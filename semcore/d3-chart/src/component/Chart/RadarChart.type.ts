@@ -20,4 +20,11 @@ export type RadarChartProps = Intergalactic.InternalTypings.EfficientOmit<
   onClickRadar?: (index: number, e: React.SyntheticEvent) => void;
 };
 
+export type RadarChartDefaultProps = {
+  direction: 'column';
+  showXAxis: true;
+  showYAxis: true;
+  showTooltip: true;
+};
+
 export type RadarChartType = Intergalactic.Component<typeof Flex, RadarChartProps>;

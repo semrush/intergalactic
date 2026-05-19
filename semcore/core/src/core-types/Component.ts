@@ -54,29 +54,62 @@ type UncontrolledPropValue<V> =
 
 type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
 
+export type ValidDefaultProps<DefaultProps, MergedProps> = {
+  [K in keyof DefaultProps]: K extends keyof MergedProps
+    ? MergedProps[K]
+    : StripDefaultPrefix<K> extends keyof MergedProps
+      ? MergedProps[StripDefaultPrefix<K>]
+      : never;
+};
+
+type MappedDefaultProps<DefaultProps, MergedProps> = {
+  [K in keyof DefaultProps as StripDefaultPrefix<K>]: K extends keyof MergedProps
+    ? Exclude<MergedProps[K], undefined>
+    : StripDefaultPrefix<K> extends keyof MergedProps
+      ? Exclude<MergedProps[StripDefaultPrefix<K>], undefined>
+      : never;
+};
+
+export interface IComponent<
+  C,
+  /*
+  * Infered this way since `Props` within `Component` abstract class
+  * is used in multiple places in different variance positions
+  * causing the final type to be `never`.
+  * */
+  P = C extends { props: Readonly<infer P> } ? P : never,
+  DP = C extends Component<any, any, any, any, any, infer DP> ?
+    DP extends never
+      ? never
+      : DP
+    : never,
+> {
+  new (...args: any[]): C;
+  defaultProps?: DP | ((props: P) => DP) | (() => DP);
+}
 export abstract class Component<
   Props = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
   Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
   State = {},
-  DefaultProps extends {
-    [K in keyof DefaultProps]: StripDefaultPrefix<K> extends keyof Props
-      ? Props[StripDefaultPrefix<K>]
-      : never;
-  } = {},
+  DefaultProps extends ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
 > extends PureComponent<Props, State> {
+  protected __defaultProps: DefaultProps = {} as DefaultProps;
+
   protected uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
     // @ts-ignore. This is a default value. Should be defined in related classes.
     return {};
-  };
+  }
 
   protected get handlers(): Readonly<{
     [key in keyof Uncontrolled]: key extends keyof Props
-      ? Uncontrolled[key] extends (null | Props[key])
+      ? Uncontrolled[key] extends null | Props[key]
         ? (value: Props[key], e?: any) => void
-        : Uncontrolled[key] extends Array<any> ? Uncontrolled[key][0] : Uncontrolled[key]
-      : never
+        : Uncontrolled[key] extends Array<any>
+          ? Uncontrolled[key][0]
+          : Uncontrolled[key]
+      : never;
   }> {
     // @ts-ignore. The body will be generated in factory
     return {};
@@ -84,14 +117,12 @@ export abstract class Component<
 
   protected get asProps() {
     return {} as Readonly<
-      { Root: RootResult<any> } &
-      BaseAsProps<Props, Enhance, InnerProps> &
-      Intergalactic.InternalTypings.EfficientOmit<AllHTMLAttributes<any>, keyof BaseAsProps<Props, Enhance, InnerProps>> &
-      {
-        [DefaultPropKey in keyof DefaultProps as StripDefaultPrefix<DefaultPropKey>]: StripDefaultPrefix<DefaultPropKey> extends keyof Props
-          ? Exclude<Props[StripDefaultPrefix<DefaultPropKey>], undefined>
-          : never;
-      }
+      { Root: RootResult<any> } & BaseAsProps<Props, Enhance, InnerProps> &
+      Intergalactic.InternalTypings.EfficientOmit<
+        AllHTMLAttributes<any>,
+        keyof BaseAsProps<Props, Enhance, InnerProps>
+      > &
+      ([DefaultProps] extends [never] ? {} : MappedDefaultProps<DefaultProps, Props & InnerProps>)
     >;
   }
 
