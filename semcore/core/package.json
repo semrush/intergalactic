@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "17.0.1",
+  "version": "17.1.0",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "typings": "lib/index.d.ts",
@@ -322,7 +322,7 @@
   "peerDependencies": {
     "react": "16.8 - 19",
     "react-dom": "16.8 - 19",
-    "@semcore/theme": "2.0.0"
+    "@semcore/theme": "2.1.0"
   },
   "repository": {
     "type": "git",

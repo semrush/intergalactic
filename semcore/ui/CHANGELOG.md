@@ -1,3 +1,259 @@
+## [17.1.2] - 2026-05-13
+
+### @semcore/base-components
+
+- **Added** **animation**: New brand theme.
+- **Added** **breakpoints**: New brand theme.
+- **Added** **grid**: New brand theme.
+- **Added** **flex-box**: New brand theme.
+- **Added** **neighbor-location**: New brand theme.
+- **Added** **popper**: New brand theme.
+- **Added** **portal**: New brand theme.
+- **Added** **outside-click**: New brand theme.
+- **Added** **scroll-area**: New brand theme.
+
+## [17.1.0] - 2026-05-13
+
+### @semcore/wizard
+
+- **Added** New brand theme.
+
+### @semcore/widget-empty
+
+- **Added** New brand theme.
+
+### @semcore/typography
+
+- **Added** New brand theme.
+
+### @semcore/tooltip
+
+- **Added** New brand theme.
+
+### @semcore/time-picker
+
+- **Added** New brand theme.
+
+### @semcore/textarea
+
+- **Added** New brand theme.
+
+### @semcore/tag
+
+- **Added** New brand theme.
+
+### @semcore/tab-panel
+
+- **Added** New brand theme.
+
+### @semcore/tab-line
+
+- **Added** New brand theme.
+
+### @semcore/switch
+
+- **Added** New brand theme.
+
+### @semcore/spin-container
+
+- **Added** New brand theme.
+
+### @semcore/spin
+
+- **Added** New brand theme.
+
+### @semcore/slider
+
+- **Added** New brand theme.
+
+### @semcore/skeleton
+
+- **Added** New brand theme.
+
+### @semcore/side-panel
+
+- **Added** New brand theme.
+
+### @semcore/select
+
+- **Added** New brand theme.
+
+### @semcore/radio
+
+- **Added** New brand theme.
+
+### @semcore/progress-bar
+
+- **Added** New brand theme.
+
+### @semcore/product-head
+
+- **Added** New brand theme.
+
+### @semcore/pills
+
+- **Added** New brand theme.
+
+### @semcore/pagination
+
+- **Added** New brand theme.
+
+### @semcore/notice-bubble
+
+- **Added** New brand theme.
+
+### @semcore/notice
+
+- **Added** New brand theme.
+
+### @semcore/modal
+
+- **Added** New brand theme.
+
+### @semcore/mini-chart
+
+- **Added** New brand theme.
+
+### @semcore/link
+
+- **Added** New brand theme.
+
+### @semcore/input-tags
+
+- **Added** New brand theme.
+
+### @semcore/input-number
+
+- **Added** New brand theme.
+
+### @semcore/input-mask
+
+- **Added** New brand theme.
+
+### @semcore/input
+
+- **Added** New brand theme.
+
+### @semcore/inline-input
+
+- **Added** New brand theme.
+
+### @semcore/inline-edit
+
+- **Added** New brand theme.
+
+### @semcore/fullscreen-modal
+
+- **Added** New brand theme.
+
+### @semcore/flags
+
+- **Added** New brand theme.
+
+### @semcore/feedback-form
+
+- **Added** New brand theme.
+
+### @semcore/feature-popover
+
+- **Added** New brand theme.
+
+### @semcore/feature-highlight
+
+- **Added** New brand theme.
+
+### @semcore/errors
+
+- **Added** New brand theme.
+
+### @semcore/ellipsis
+
+- **Added** New brand theme.
+
+### @semcore/dropdown-menu
+
+- **Added** New brand theme.
+
+### @semcore/dropdown
+
+- **Added** New brand theme.
+
+### @semcore/drag-and-drop
+
+- **Added** New brand theme.
+
+### @semcore/dot
+
+- **Added** New brand theme.
+
+### @semcore/divider
+
+- **Added** New brand theme.
+
+### @semcore/date-picker
+
+- **Added** New brand theme.
+
+### @semcore/data-table
+
+- **Added** New brand theme.
+
+### @semcore/d3-chart
+
+- **Added** New brand theme.
+
+### @semcore/counter
+
+- **Added** New brand theme.
+
+### @semcore/core
+
+- **Added** New brand theme.
+
+### @semcore/color-picker
+
+- **Added** New brand theme.
+
+### @semcore/checkbox
+
+- **Added** New brand theme.
+
+### @semcore/carousel
+
+- **Added** New brand theme.
+
+### @semcore/card
+
+- **Added** New brand theme.
+
+### @semcore/button
+
+- **Added** New brand theme.
+
+### @semcore/bulk-textarea
+
+- **Added** New brand theme.
+
+### @semcore/breadcrumbs
+
+- **Added** New brand theme.
+
+### @semcore/base-trigger
+
+- **Added** New brand theme.
+
+### @semcore/badge
+
+- **Added** New brand theme.
+
+### @semcore/add-filter
+
+- **Added** New brand theme.
+
+### @semcore/accordion
+
+- **Added** New brand theme.
+
 ## [17.0.2] - 2026-04-30
 
 ### @semcore/radio

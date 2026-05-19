@@ -969,7 +969,7 @@ export const theme: Theme = {
         description: 'Background of the header cell in the secondary Table.',
       },
       table_th_gradient: {
-        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100']} 100%)`,
+        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100'].value} 100%)`,
         description: 'Background gradient for sorting icon that absolute positioned in the table head.',
       },
       table_td_cell_DEFAULT: {
@@ -1049,7 +1049,7 @@ export const theme: Theme = {
         description: 'Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).',
       },
       brand_gradient: {
-        value: `linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%);`,
+        value: 'linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%)',
         description: 'Brand light gradient for branded surfaces.',
       },
       brand_pinterest: {
