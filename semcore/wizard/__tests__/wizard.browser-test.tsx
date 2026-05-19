@@ -196,6 +196,16 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
+      await test.step('Verify stepper accessible names in small viewport', async () => {
+        await expect(
+          page.getByRole('tab', { name: /Completed step Personal Info/ }),
+        ).toBeVisible();
+        await expect(page.getByRole('tab', { name: /Import source\s+optional/ })).toBeVisible();
+        await expect(
+          page.getByRole('tab', { name: /Sub step name\s+Optional step/ }),
+        ).toBeVisible();
+      });
+
       await test.step('Verify active hovered', async () => {
         await locators.stepperTabs(page).nth(0).hover();
         await expect(page).toHaveScreenshot();
@@ -361,6 +371,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.stepperTabs(page).nth(2)).not.toHaveAttribute('aria-disabled', 'true');
         await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('tabindex', '-1');
+      });
+
+      await test.step('Verify stepper accessible names', async () => {
+        await expect(page.getByRole('tab', { name: /Completed step Location/ })).toBeVisible();
+        await expect(page.getByRole('tab', { name: 'Keywords' })).toBeVisible();
+        await expect(page.getByRole('tab', { name: 'Schedule' })).toBeVisible();
       });
 
       await test.step('Switch to middle step and check stepper attributes', async () => {
