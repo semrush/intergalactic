@@ -1513,7 +1513,7 @@
   },
   {
     "name": "--intergalactic-table-th-gradient",
-    "value": "linear-gradient(to right, transparent 0%, [object Object] 100%)",
+    "value": "linear-gradient(to right, transparent 0%, oklch(0.9 0.002 177) 100%)",
     "description": "Background gradient for sorting icon that absolute positioned in the table head.",
     "components": []
   },
@@ -1665,7 +1665,7 @@
   },
   {
     "name": "--intergalactic-brand-gradient",
-    "value": "linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%);",
+    "value": "linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%)",
     "description": "Brand light gradient for branded surfaces.",
     "components": []
   },

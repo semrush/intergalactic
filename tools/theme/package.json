@@ -1,7 +1,7 @@
 {
   "name": "@semcore/theme",
   "description": "Semrush Theme package",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "type": "module",
