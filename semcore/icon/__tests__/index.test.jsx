@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,6 +11,11 @@ describe('icon Dependency imports', () => {
 
 describe('Icon', () => {
   beforeEach(cleanup);
+
+  runComponentContractTests({
+    Component: Icon,
+    preset: 'root',
+  });
 
   test.each(['200', '100%'], 'should support custom width %i', (width) => {
     const { getByTestId } = render(<Icon data-testid='icon' width={width} />);
@@ -25,20 +30,6 @@ describe('Icon', () => {
   test('should support custom viewBox', () => {
     const { getByTestId } = render(<Icon data-testid='icon' viewBox='1 2 3 4' />);
     expect(getByTestId('icon').attributes['viewBox'].value).toBe('1 2 3 4');
-  });
-
-  test('should support custom className', () => {
-    const { getByTestId } = render(<Icon data-testid='icon' className='more-than one-class' />);
-    expect(getByTestId('icon').attributes['class'].value).toMatch('more-than one-class');
-  });
-
-  test('should support children', () => {
-    const { getByTestId } = render(
-      <Icon>
-        <p data-testid='child'>Test</p>
-      </Icon>,
-    );
-    expect(getByTestId('child')).toBeTruthy();
   });
 
   test('should apply mt/mb margin props to style', () => {

@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import InputMask from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('input-mask Dependency imports', () => {
   runDependencyCheckTests('input-mask');
@@ -15,8 +12,11 @@ describe('input-mask Dependency imports', () => {
 describe('InputMask', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(InputMask);
-  shouldSupportRef(InputMask);
+  runComponentContractTests({
+    Component: InputMask,
+    expectedDataUiName: 'InputMask',
+    preset: 'root',
+  });
 
   test.concurrent('Should renders correctly', async () => {
     const Component = ({ value = '' }) => (
@@ -102,9 +102,14 @@ describe('InputMask', () => {
 describe('InputMask.Value', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(InputMask.Value, InputMask, {
-    title: 'test mask',
-    includeInputProps: ['data-testid'],
+  runComponentContractTests({
+    Component: InputMask.Value,
+    Wrapper: InputMask,
+    props: {
+      title: 'test mask',
+      includeInputProps: ['data-testid'],
+    },
+    preset: [],
+    include: ['className', 'ref'],
   });
-  shouldSupportRef(InputMask.Value, InputMask, { title: 'test mask' });
 });

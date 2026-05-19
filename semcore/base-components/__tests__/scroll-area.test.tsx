@@ -1,11 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, fireEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { ScrollArea, eventCalculate } from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('ScrollArea', () => {
   beforeEach(cleanup);
@@ -25,8 +23,11 @@ describe('ScrollArea', () => {
     ).toBe(1);
   });
 
-  shouldSupportClassName(ScrollArea);
-  shouldSupportRef(ScrollArea);
+  runComponentContractTests({
+    Component: ScrollArea,
+    expectedDataUiName: 'ScrollArea',
+    preset: 'root',
+  });
 
   test.concurrent('Verify trigger calculate event on container', () => {
     const { getByTestId } = render(
@@ -84,6 +85,10 @@ describe('ScrollArea', () => {
 describe('ScrollArea.Container', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(ScrollArea.Container, ScrollArea);
-  shouldSupportRef(ScrollArea.Container, ScrollArea);
+  runComponentContractTests({
+    Component: ScrollArea.Container,
+    Wrapper: ScrollArea,
+    expectedDataUiName: 'ScrollArea.Container',
+    preset: 'root',
+  });
 });

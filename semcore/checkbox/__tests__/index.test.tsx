@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Checkbox from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Checkbox Dependency imports', () => {
   runDependencyCheckTests('checkbox');
@@ -15,12 +12,25 @@ describe('Checkbox Dependency imports', () => {
 describe('Checkbox', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Checkbox);
-  shouldSupportRef(Checkbox);
-  shouldSupportClassName(Checkbox.Value, Checkbox);
-  shouldSupportRef(Checkbox.Value, Checkbox);
-  shouldSupportClassName(Checkbox.Text, Checkbox);
-  shouldSupportRef(Checkbox.Text, Checkbox);
+  runComponentContractTests({
+    Component: Checkbox,
+    expectedDataUiName: 'Checkbox',
+    preset: 'root',
+  });
+
+  runComponentContractTests({
+    Component: Checkbox.Value,
+    Wrapper: Checkbox,
+    preset: [],
+    include: ['className', 'ref'],
+  });
+
+  runComponentContractTests({
+    Component: Checkbox.Text,
+    Wrapper: Checkbox,
+    expectedDataUiName: 'Checkbox.Text',
+    preset: 'root',
+  });
 
   test.concurrent(
     'Verify Control has aria-label, aria-labelledby, aria-describedby from root',

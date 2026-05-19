@@ -1,7 +1,6 @@
 import {
+  runComponentContractTests,
   runDependencyCheckTests,
-  shouldSupportClassName,
-  shouldSupportRef,
 } from '@semcore/testing-utils/shared-tests';
 import {
   render,
@@ -37,8 +36,11 @@ describe('notice-bubble Dependency imports', () => {
 describe('NoticeBubbleContainer', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(TestNoticeBubble);
-  shouldSupportRef(TestNoticeBubble);
+  runComponentContractTests({
+    Component: TestNoticeBubble,
+    preset: [],
+    include: ['className', 'ref'],
+  });
 
   test('Verify supports rendering outside DOM', () => {
     const { queryByTestId } = render(

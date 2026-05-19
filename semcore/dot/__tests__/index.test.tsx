@@ -1,13 +1,10 @@
 import Button from '@semcore/button';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Dot from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('dot Dependency imports', () => {
   runDependencyCheckTests('dot');
@@ -24,8 +21,12 @@ describe('Dot', () => {
     vi.restoreAllMocks();
   });
 
-  shouldSupportClassName(Dot, undefined, { 'aria-label': 'test dot' });
-  shouldSupportRef(Dot, undefined, { 'aria-label': 'test dot' });
+  runComponentContractTests({
+    Component: Dot,
+    props: { 'aria-label': 'test dot' },
+    expectedDataUiName: 'Dot',
+    preset: 'root',
+  });
 
   test('Verify no "alert" for screenreaders when hidden', async () => {
     const { queryByTestId } = render(

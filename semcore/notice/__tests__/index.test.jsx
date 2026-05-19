@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Notice, { NoticeSmart } from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('notice Dependency imports', () => {
   runDependencyCheckTests('notice');
@@ -15,22 +12,10 @@ describe('notice Dependency imports', () => {
 describe('Notice', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Notice);
-  shouldSupportRef(Notice);
-
-  test('Verify supports custom attributes', () => {
-    const { getByTestId } = render(<Notice data-testid='notice' name='notice' />);
-    expect(getByTestId('notice').attributes['name'].value).toBe('notice');
-  });
-
-  test('Verify supports children', () => {
-    const component = (
-      <Notice>
-        <p data-testid='child'>Test</p>
-      </Notice>
-    );
-    const { getByTestId } = render(component);
-    expect(getByTestId('child')).toBeTruthy();
+  runComponentContractTests({
+    Component: Notice,
+    expectedDataUiName: 'Notice',
+    preset: 'root',
   });
 
   test('Verify supports custom close icon', () => {
@@ -72,8 +57,11 @@ describe('Notice', () => {
 describe('NoticeSmart', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(NoticeSmart);
-  shouldSupportRef(NoticeSmart);
+  runComponentContractTests({
+    Component: NoticeSmart,
+    expectedDataUiName: 'NoticeSmart',
+    preset: 'leaf',
+  });
 
   test('Verify renders title and text from props', () => {
     const { container } = render(

@@ -3,19 +3,17 @@ import React from 'react';
 import { test, expect } from '../vitest';
 import { renderWithContractTarget } from './contractTestUtils';
 
-export const shouldSupportClassName = (
+export const shouldSupportStyle = (
   Component: any,
   Wrapper: any = React.Fragment,
   props: any = {},
 ) => {
-  test.sequential('should support className extending', () => {
-    const className = 'more-then one-class';
-
+  test.sequential('should support style prop', () => {
     const { target } = renderWithContractTarget(Component, Wrapper, {
       ...props,
-      className,
+      style: { marginLeft: '13px' },
     });
 
-    expect(target.getAttribute('class')).toContain(className);
+    expect((target as HTMLElement).style.marginLeft).toBe('13px');
   });
 };

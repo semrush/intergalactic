@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Input from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('input Dependency imports', () => {
   runDependencyCheckTests('input');
@@ -15,8 +12,11 @@ describe('input Dependency imports', () => {
 describe('Input', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Input);
-  shouldSupportRef(Input);
+  runComponentContractTests({
+    Component: Input,
+    expectedDataUiName: 'Input',
+    preset: 'root',
+  });
 
   test.concurrent('Verify value changes when rerender', () => {
     const { getByTestId, rerender } = render(
@@ -68,8 +68,12 @@ describe('Input', () => {
 describe('Input.Addon', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Input.Value);
-  shouldSupportRef(Input.Value, Input);
+  runComponentContractTests({
+    Component: Input.Value,
+    Wrapper: Input,
+    expectedDataUiName: 'Input.Value',
+    preset: 'inputLike',
+  });
 
   test.concurrent('Verify input focused if click additional element', () => {
     const spy = vi.fn();

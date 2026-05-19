@@ -1,5 +1,4 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -10,20 +9,24 @@ describe('BaseTrigger Dependency imports', () => {
   runDependencyCheckTests('base-trigger');
 });
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
 describe('BaseTrigger', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(BaseTrigger);
-  shouldSupportRef(BaseTrigger);
+  runComponentContractTests({
+    Component: BaseTrigger,
+    expectedDataUiName: 'BaseTrigger',
+    preset: 'root',
+  });
 });
 
 describe('ButtonTrigger', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(ButtonTrigger);
-  shouldSupportRef(ButtonTrigger);
+  runComponentContractTests({
+    Component: ButtonTrigger,
+    expectedDataUiName: 'ButtonTrigger',
+    preset: 'root',
+  });
 
   test.concurrent('Should work as button with labels', async () => {
     const component = (
@@ -46,13 +49,20 @@ describe('ButtonTrigger', () => {
 describe('FilterTrigger', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(FilterTrigger);
-  shouldSupportRef(FilterTrigger);
+  runComponentContractTests({
+    Component: FilterTrigger,
+    expectedDataUiName: 'FilterTrigger',
+    preset: 'root',
+  });
 });
 
 describe('LinkTrigger', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(LinkTrigger);
-  shouldSupportRef(LinkTrigger);
+  runComponentContractTests({
+    Component: LinkTrigger,
+    props: { children: 'Link trigger' },
+    expectedDataUiName: 'LinkTrigger',
+    preset: 'root',
+  });
 });

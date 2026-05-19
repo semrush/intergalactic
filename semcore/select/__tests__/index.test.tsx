@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Select, { InputSearch } from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
@@ -230,8 +227,12 @@ describe('Select Trigger', () => {
 describe('Option.Checkbox', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Select.Option.Checkbox, Select);
-  shouldSupportRef(Select.Option.Checkbox, Select);
+  runComponentContractTests({
+    Component: Select.Option.Checkbox,
+    Wrapper: Select,
+    preset: [],
+    include: ['className', 'ref'],
+  });
 
   test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async () => {
     const { getByTestId } = render(
@@ -280,8 +281,12 @@ describe('Option.Checkbox', () => {
 describe('InputSearch', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(InputSearch, Select);
-  shouldSupportRef(InputSearch, Select);
+  runComponentContractTests({
+    Component: InputSearch,
+    Wrapper: Select,
+    preset: [],
+    include: ['className', 'ref'],
+  });
 
   test('Verify calls onChange ones per symbol', async () => {
     const spy = vi.fn();

@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Radio, { RadioGroup, inputProps } from '../src/Radio';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('radio Dependency imports', () => {
   runDependencyCheckTests('radio');
@@ -15,12 +12,25 @@ describe('radio Dependency imports', () => {
 describe('Radio', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Radio);
-  shouldSupportRef(Radio);
-  shouldSupportClassName(Radio.Value, Radio);
-  shouldSupportRef(Radio.Value, Radio);
-  shouldSupportClassName(Radio.Text, Radio);
-  shouldSupportRef(Radio.Text, Radio);
+  runComponentContractTests({
+    Component: Radio,
+    expectedDataUiName: 'Radio',
+    preset: 'root',
+  });
+
+  runComponentContractTests({
+    Component: Radio.Value,
+    Wrapper: Radio,
+    preset: [],
+    include: ['className', 'ref'],
+  });
+
+  runComponentContractTests({
+    Component: Radio.Text,
+    Wrapper: Radio,
+    expectedDataUiName: 'Radio.Text',
+    preset: 'root',
+  });
 
   test.concurrent('Verify supports custom attributes on the input', () => {
     const { getByTestId } = render(

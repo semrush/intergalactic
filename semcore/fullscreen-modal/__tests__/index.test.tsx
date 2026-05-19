@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, screen } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FullscreenModal from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('fullscreen-modal Dependency imports', () => {
   runDependencyCheckTests('fullscreen-modal');
@@ -15,8 +12,12 @@ describe('fullscreen-modal Dependency imports', () => {
 describe('FullscreenModal', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(FullscreenModal, React.Fragment, { visible: true });
-  shouldSupportRef(FullscreenModal, React.Fragment, { visible: true });
+  runComponentContractTests({
+    Component: FullscreenModal,
+    props: { visible: true },
+    expectedDataUiName: 'FullscreenModal',
+    preset: 'root',
+  });
 
   test('should support hidden props', () => {
     const { rerender, queryByText } = render(<FullscreenModal>Text</FullscreenModal>);
@@ -72,12 +73,14 @@ describe('FullscreenModal', () => {
 describe('FullscreenModal.Header', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(FullscreenModal.Header, ({ children }: any) => (
-    <FullscreenModal visible>{children}</FullscreenModal>
-  ));
-  shouldSupportRef(FullscreenModal.Header, ({ children }: any) => (
-    <FullscreenModal visible>{children}</FullscreenModal>
-  ));
+  runComponentContractTests({
+    Component: FullscreenModal.Header,
+    Wrapper: ({ children }: any) => (
+      <FullscreenModal visible>{children}</FullscreenModal>
+    ),
+    expectedDataUiName: 'FullscreenModal.Header',
+    preset: 'leaf',
+  });
 
   test('Verify supports title', () => {
     const { queryByText } = render(

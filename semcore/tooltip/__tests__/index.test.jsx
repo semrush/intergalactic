@@ -1,4 +1,6 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import Button from '@semcore/button';
+import Link from '@semcore/link';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -6,6 +8,7 @@ import { waitFor } from 'storybook/test';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
+const TooltipWrapper = ({ children }) => <Tooltip>{children}</Tooltip>;
 describe('tooltip Dependency imports', () => {
   runDependencyCheckTests('tooltip');
 });
@@ -13,43 +16,20 @@ describe('tooltip Dependency imports', () => {
 describe('Tooltip', () => {
   beforeEach(cleanup);
 
-  test('Verify supports custom className on Trigger', () => {
-    const { getByTestId } = render(
-      <Tooltip>
-        <Tooltip.Trigger data-testid='trigger' className='custom-class' />
-      </Tooltip>,
-    );
-    expect(getByTestId('trigger').className).toContain('custom-class');
-  });
-
-  test('Verify supports custom attributes on Trigger', () => {
-    const { getByTestId } = render(
-      <Tooltip>
-        <Tooltip.Trigger data-testid='trigger' data-custom='value' />
-      </Tooltip>,
-    );
-    expect(getByTestId('trigger').getAttribute('data-custom')).toBe('value');
-  });
-
-  test('Verify supports ref on Trigger', () => {
-    const ref = React.createRef();
-    render(
-      <Tooltip>
-        <Tooltip.Trigger tag='button' ref={ref} />
-      </Tooltip>,
-    );
-    expect(ref.current.nodeName).toBe('BUTTON');
-  });
-
-  test('Verify renders children inside Trigger', () => {
-    const { getByText } = render(
-      <Tooltip>
-        <Tooltip.Trigger>
-          <span>Child</span>
-        </Tooltip.Trigger>
-      </Tooltip>,
-    );
-    expect(getByText('Child')).toBeTruthy();
+  describe('Tooltip.Trigger', () => {
+    runComponentContractTests({
+      Component: Tooltip.Trigger,
+      Wrapper: TooltipWrapper,
+      props: { children: 'Trigger' },
+      expectedDataUiName: 'Tooltip.Trigger',
+      preset: 'root',
+      include: ['tag'],
+      tagCases: [
+        { tag: 'button', expectedTagName: 'BUTTON', props: { type: 'button' } },
+        { tag: Button, name: 'Button', expectedTagName: 'BUTTON' },
+        { tag: Link, name: 'Link', expectedTagName: 'A', props: { href: '#' } },
+      ],
+    });
   });
 
   test('Verify supports className and custom attributes on Popper', async () => {

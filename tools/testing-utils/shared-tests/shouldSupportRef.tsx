@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '../testing-library';
+import { cleanup, render } from '../testing-library';
 import { test, expect } from '../vitest';
 
 export const shouldSupportRef = (
@@ -8,7 +8,9 @@ export const shouldSupportRef = (
   Wrapper: any = React.Fragment,
   props: any = {},
 ) => {
-  test.concurrent('ref should return DOM-node', () => {
+  test.sequential('ref should return DOM-node', () => {
+    cleanup();
+
     const ref = React.createRef<HTMLElement>();
 
     render(

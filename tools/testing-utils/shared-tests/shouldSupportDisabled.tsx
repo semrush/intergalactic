@@ -3,19 +3,19 @@ import React from 'react';
 import { test, expect } from '../vitest';
 import { renderWithContractTarget } from './contractTestUtils';
 
-export const shouldSupportClassName = (
+export const shouldSupportDisabled = (
   Component: any,
   Wrapper: any = React.Fragment,
   props: any = {},
 ) => {
-  test.sequential('should support className extending', () => {
-    const className = 'more-then one-class';
-
+  test.sequential('should support disabled state', () => {
     const { target } = renderWithContractTarget(Component, Wrapper, {
       ...props,
-      className,
+      disabled: true,
     });
 
-    expect(target.getAttribute('class')).toContain(className);
+    expect(
+      target.hasAttribute('disabled') || target.getAttribute('aria-disabled') === 'true',
+    ).toBe(true);
   });
 };

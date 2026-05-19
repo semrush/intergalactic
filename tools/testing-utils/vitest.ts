@@ -1,6 +1,11 @@
 import { label, story, suite, layer, subSuite } from 'allure-js-commons';
+import { getGlobalTestRuntime } from 'allure-js-commons/sdk/runtime';
 // eslint-disable-next-line no-restricted-imports
 import { test as baseTest } from 'vitest';
+
+const hasAllureRuntime = () => {
+  return getGlobalTestRuntime().constructor.name !== 'NoopTestRuntime';
+};
 
 const test = baseTest.extend<{
   testHook: void;
@@ -16,12 +21,14 @@ const test = baseTest.extend<{
 
       const subSuiteName = 'Unit tests';
 
-      await label('framework', 'Vitest');
-      await label('component', componentName);
-      await subSuite(subSuiteName);
-      await story(task.name);
-      await suite(componentName);
-      await layer(subSuiteName);
+      if (hasAllureRuntime()) {
+        await label('framework', 'Vitest');
+        await label('component', componentName);
+        await subSuite(subSuiteName);
+        await story(task.name);
+        await suite(componentName);
+        await layer(subSuiteName);
+      }
 
       await use();
     },
@@ -39,7 +46,7 @@ export {
 };
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
+
   namespace jest {
     interface Matchers<R> {
       toHaveAttribute(name: string, value: string): R;

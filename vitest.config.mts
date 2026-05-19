@@ -25,8 +25,12 @@ export default defineConfig({
         replacement: resolvePath(__dirname, 'semcore/core/src/utils/$1'),
       },
       {
+        find: '../../lib/esm/index.mjs',
+        replacement: resolvePath(__dirname, 'semcore/icon/src/index.ts'),
+      },
+      {
         find: /^@semcore\/icon\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/icon/lib/$1'),
+        replacement: resolvePath(__dirname, 'semcore/icon/$1/index.mjs'),
       },
       {
         find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,

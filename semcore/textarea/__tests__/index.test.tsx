@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
@@ -12,16 +12,16 @@ describe('textarea Dependency imports', () => {
 describe('Textarea', () => {
   beforeEach(cleanup);
 
+  runComponentContractTests({
+    Component: Textarea,
+    expectedDataUiName: 'Textarea',
+    preset: 'inputLike',
+  });
+
   test('Verify supports onChange callback', () => {
     const spyChange = vi.fn();
     const { getByTestId } = render(<Textarea data-testid='textarea' onChange={spyChange} />);
     fireEvent.input(getByTestId('textarea'), { target: { value: 'text' } });
     expect(spyChange).toBeCalledWith('text', expect.any(Object));
-  });
-
-  test('Verify supports forwarding ref', () => {
-    const ref = React.createRef<HTMLTextAreaElement>();
-    render(<Textarea ref={ref} />);
-    expect(ref.current?.tagName).toBe('TEXTAREA');
   });
 });

@@ -1,14 +1,11 @@
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import CongratsIllustration from '@semcore/illustration/Congrats';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FeedbackForm, { FeedbackRating } from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('feedback-form Dependency imports', () => {
   runDependencyCheckTests('feedback-form');
@@ -17,8 +14,11 @@ describe('feedback-form Dependency imports', () => {
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(FeedbackForm);
-  shouldSupportRef(FeedbackForm);
+  runComponentContractTests({
+    Component: FeedbackForm,
+    expectedDataUiName: 'FeedbackForm',
+    preset: 'root',
+  });
 
   test.concurrent('Verify call onSubmit', () => {
     const onSubmit = vi.fn();
@@ -108,8 +108,12 @@ describe('FeedbackForm.Item', () => {
     </FeedbackForm.Item>
   ));
 
-  shouldSupportClassName(Item, FeedbackForm);
-  shouldSupportRef(Item, FeedbackForm);
+  runComponentContractTests({
+    Component: Item,
+    Wrapper: FeedbackForm,
+    preset: [],
+    include: ['className', 'ref'],
+  });
 });
 
 describe('5-star FeedbackForm', () => {

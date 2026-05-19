@@ -1,6 +1,5 @@
 import Icon from '@semcore/icon/Video/m';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
@@ -17,8 +16,6 @@ import {
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
 import { getIndexFromData } from '../src/utils';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 const width = 500;
 const height = 500;
@@ -107,8 +104,12 @@ describe('d3-chart Dependency imports', () => {
 
 describe('Plot', () => {
   beforeEach(cleanup);
-  shouldSupportClassName(PlotTest);
-  shouldSupportRef(PlotTest);
+
+  runComponentContractTests({
+    Component: PlotTest,
+    preset: [],
+    include: ['className', 'ref'],
+  });
 
   test.concurrent('Should support render null', () => {
     const { queryByText } = render(<Plot>Test</Plot>);
@@ -119,8 +120,12 @@ describe('Plot', () => {
 describe('YAxis', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(YAxis, PlotTest);
-  shouldSupportRef(YAxis, PlotTest);
+  runComponentContractTests({
+    Component: YAxis,
+    Wrapper: PlotTest,
+    preset: [],
+    include: ['className', 'ref'],
+  });
 
   test(
     'Should support call children function for Grid how many ticks are passed',
@@ -190,8 +195,12 @@ describe('YAxis', () => {
 describe('XAxis', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(XAxis, PlotTest);
-  shouldSupportRef(XAxis, PlotTest);
+  runComponentContractTests({
+    Component: XAxis,
+    Wrapper: PlotTest,
+    preset: [],
+    include: ['className', 'ref'],
+  });
 
   test.concurrent('should support hover for custom XAxis.Ticks', () => {
     vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());

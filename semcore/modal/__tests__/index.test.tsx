@@ -1,13 +1,10 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, fireEvent, queryByAttribute } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Button from '../../button/src';
 import Modal from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('modal Dependency imports', () => {
   runDependencyCheckTests('modal');
@@ -16,13 +13,18 @@ describe('modal Dependency imports', () => {
 describe('Modal', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Modal.Window, (props: any) => <Modal {...props} visible />);
-  shouldSupportRef(Modal.Window, (props: any) => <Modal {...props} visible />);
+  runComponentContractTests({
+    Component: Modal,
+    props: { visible: true },
+    expectedDataUiName: 'Modal',
+    preset: 'root',
+  });
 
-  test.concurrent('Verify supports custom attributes', () => {
-    const { getByTestId } = render(<Modal visible data-testid='modal' data-name='modal' />);
-
-    expect((getByTestId('modal').attributes as any)['data-name'].value).toBe('modal');
+  runComponentContractTests({
+    Component: Modal.Window,
+    Wrapper: (props: any) => <Modal {...props} visible />,
+    preset: [],
+    include: ['className', 'ref'],
   });
 
   test.sequential('Verify onClose event for Escape', () => {
@@ -97,17 +99,6 @@ describe('Modal', () => {
 
     fireEvent.mouseUp(overlayContentWrapper!);
     expect(spy).toBeCalledWith('onOutsideClick', expect.anything());
-  });
-
-  test.concurrent('Verify supports children', () => {
-    const component = (
-      <Modal visible>
-        <p data-testid='child'>Test</p>
-      </Modal>
-    );
-    const { getByTestId } = render(component);
-
-    expect(getByTestId('child')).toBeTruthy();
   });
 
   test.sequential('Verify supports render function for children', async () => {

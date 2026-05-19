@@ -1,13 +1,10 @@
 import { Box } from '@semcore/base-components';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Carousel from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Carousel Dependency imports', () => {
   runDependencyCheckTests('carousel');
@@ -36,8 +33,11 @@ const Indicators = () => (
 describe('Carousel', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Carousel);
-  shouldSupportRef(Carousel);
+  runComponentContractTests({
+    Component: Carousel,
+    expectedDataUiName: 'Carousel',
+    preset: 'root',
+  });
 
   test('Verify control mode', () => {
     const spy = vi.fn();
@@ -97,22 +97,34 @@ describe('Carousel', () => {
 describe('Carousel.Container', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Carousel.Container, Carousel);
-  shouldSupportRef(Carousel.Container, Carousel);
+  runComponentContractTests({
+    Component: Carousel.Container,
+    Wrapper: Carousel,
+    expectedDataUiName: 'Carousel.Container',
+    preset: 'root',
+  });
 });
 
 describe('Carousel.Item', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Carousel.Item, Carousel);
-  shouldSupportRef(Carousel.Item, Carousel);
+  runComponentContractTests({
+    Component: Carousel.Item,
+    Wrapper: Carousel,
+    expectedDataUiName: 'Carousel.Item',
+    preset: 'leaf',
+  });
 });
 
 describe('Carousel.Indicators', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Carousel.Indicators, Carousel);
-  shouldSupportRef(Carousel.Indicators, Carousel);
+  runComponentContractTests({
+    Component: Carousel.Indicators,
+    Wrapper: Carousel,
+    expectedDataUiName: 'Carousel.Indicators',
+    preset: 'leaf',
+  });
 
   test('Verify call onIndexChange after click', () => {
     const spy = vi.fn();
@@ -191,8 +203,12 @@ describe('Carousel.Indicators', () => {
 describe('Carousel.Prev', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Carousel.Prev, Carousel);
-  shouldSupportRef(Carousel.Prev, Carousel);
+  runComponentContractTests({
+    Component: Carousel.Prev,
+    Wrapper: Carousel,
+    expectedDataUiName: 'Carousel.Prev',
+    preset: 'root',
+  });
 
   test('Verify call onIndexChange after click', () => {
     const spy = vi.fn();
@@ -244,8 +260,12 @@ describe('Carousel.Prev', () => {
 describe('Carousel.Next', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Carousel.Next, Carousel);
-  shouldSupportRef(Carousel.Next, Carousel);
+  runComponentContractTests({
+    Component: Carousel.Next,
+    Wrapper: Carousel,
+    expectedDataUiName: 'Carousel.Next',
+    preset: 'root',
+  });
 
   test('Verify call onIndexChange after click', () => {
     const spy = vi.fn();

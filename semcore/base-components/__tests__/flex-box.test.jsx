@@ -1,17 +1,22 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { Box, Flex } from '../src';
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+const SpanTag = function SpanTag(props) {
+  return <span {...props} />;
+};
 
 describe('Flex', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Flex);
-  shouldSupportRef(Flex);
+  runComponentContractTests({
+    Component: Flex,
+    expectedDataUiName: 'Flex',
+    preset: 'root',
+  });
 
   test.concurrent('Verify supports css property', async () => {
     const MAP_CSS = {
@@ -80,28 +85,15 @@ describe('Flex', () => {
 describe('Box', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Box);
-  shouldSupportRef(Box);
-
-  test('Verify \'tag\' prop', () => {
-    const { getByTestId } = render(
-      <Box tag='span' data-testid='box'>
-        tag
-      </Box>,
-    );
-    expect(getByTestId('box').tagName).toBe('SPAN');
-  });
-
-  test('Verify \'tag\' prop component', () => {
-    const Span = function (props) {
-      return <span {...props} />;
-    };
-    const { getByTestId } = render(
-      <Box tag={Span} data-testid='box'>
-        tag
-      </Box>,
-    );
-    expect(getByTestId('box').tagName).toBe('SPAN');
+  runComponentContractTests({
+    Component: Box,
+    expectedDataUiName: 'Box',
+    preset: 'root',
+    include: ['tag'],
+    tagCases: [
+      { tag: 'button', expectedTagName: 'BUTTON' },
+      { tag: SpanTag, name: 'SpanTag', expectedTagName: 'SPAN' },
+    ],
   });
 
   test('Verify clear non html props', () => {

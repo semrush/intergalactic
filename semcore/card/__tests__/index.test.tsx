@@ -1,11 +1,8 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 import { describe, beforeEach } from '@semcore/testing-utils/vitest';
 
 import Card from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Card Dependency imports', () => {
   runDependencyCheckTests('card');
@@ -14,12 +11,23 @@ describe('Card Dependency imports', () => {
 describe('Card', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Card);
-  shouldSupportRef(Card);
+  runComponentContractTests({
+    Component: Card,
+    expectedDataUiName: 'Card',
+    preset: 'root',
+  });
 
-  shouldSupportClassName(Card.Title, Card);
-  shouldSupportRef(Card.Title, Card);
+  runComponentContractTests({
+    Component: Card.Title,
+    Wrapper: Card,
+    expectedDataUiName: 'Card.Title',
+    preset: 'root',
+  });
 
-  shouldSupportClassName(Card.Description, Card);
-  shouldSupportRef(Card.Description, Card);
+  runComponentContractTests({
+    Component: Card.Description,
+    Wrapper: Card,
+    expectedDataUiName: 'Card.Description',
+    preset: 'root',
+  });
 });
