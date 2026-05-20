@@ -142,7 +142,10 @@ class EllipsisManager {
         const mutation = mutations[0];
         const addedNodes = mutation.addedNodes;
         const removedNodes = mutation.removedNodes;
-        if (addedNodes.length === 1 && addedNodes[0] instanceof Text && removedNodes.length === 2 && removedNodes[0] instanceof HTMLSpanElement && removedNodes[1] instanceof HTMLSpanElement) {
+
+        if (removedNodes.length === 0 && addedNodes.length === 1 && addedNodes[0] instanceof Text) {
+          text = addedNodes[0];
+        } else if (addedNodes.length === 1 && addedNodes[0] instanceof Text && removedNodes.length === 2 && removedNodes[0] instanceof HTMLSpanElement && removedNodes[1] instanceof HTMLSpanElement) {
           text = addedNodes[0];
         }
       }

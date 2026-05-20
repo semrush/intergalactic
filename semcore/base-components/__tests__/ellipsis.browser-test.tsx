@@ -230,6 +230,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify observe with undefined init value', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/async_init.tsx', 'en');
+
+    const textElement = locators.link(page);
+    const textContentInit = await textElement.textContent();
+    expect(textContentInit).toBe(''); // init value
+    await page.waitForTimeout(600);
+    const textContent = await textElement.textContent();
+    expect(textContent).toBe('https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'); // after initialization
+  });
+
   test('Verify observe children truncation', {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
   }, async ({ page }) => {
