@@ -64,9 +64,9 @@ export type ValidDefaultProps<DefaultProps, MergedProps> = {
 
 type MappedDefaultProps<DefaultProps, MergedProps> = {
   [K in keyof DefaultProps as StripDefaultPrefix<K>]: K extends keyof MergedProps
-    ? Exclude<MergedProps[K], undefined>
+    ? Required<MergedProps>[K]
     : StripDefaultPrefix<K> extends keyof MergedProps
-      ? Exclude<MergedProps[StripDefaultPrefix<K>], undefined>
+      ? Required<MergedProps>[StripDefaultPrefix<K>]
       : never;
 };
 

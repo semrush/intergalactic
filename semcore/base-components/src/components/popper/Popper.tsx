@@ -102,20 +102,20 @@ class PopperRoot extends Component<
 
   static style = style;
 
-  static defaultProps = {
+  static defaultProps: PopperDefaultProps = {
     defaultVisible: false,
     placement: 'auto',
-    modifiers: [] as PopperDefaultProps['modifiers'],
+    modifiers: [],
     arrow: {
       padding: 6,
     },
     strategy: 'absolute',
     interaction: 'click',
     timeout: 0,
-    excludeRefs: [] as PopperDefaultProps['excludeRefs'],
+    excludeRefs: [],
     focusLoop: true,
     cursorAnchoring: false,
-  } as const;
+  };
 
   static enhance = [
     uniqueIDEnhancement(),

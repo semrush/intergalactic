@@ -1,3 +1,4 @@
+import type { PopperProps } from '@semcore/base-components';
 import { Box, Popper, Animation } from '@semcore/base-components';
 import Button from '@semcore/button';
 import type { IRootComponentProps } from '@semcore/core';
@@ -47,18 +48,22 @@ const enhance = [
   i18nEnhance(localizedMessages),
 ] as const;
 
+type FeaturePopoverInternalProps = {
+  interaction?: PopperProps['interaction'];
+};
+
 class FeaturePopover extends Component<
   FeaturePopoverProps,
   typeof enhance,
   { visible: null },
-  WithI18nEnhanceProps,
+  WithI18nEnhanceProps & FeaturePopoverInternalProps,
   {},
   FeaturePopoverDefaultProps
 > {
   static displayName = 'FeaturePopover';
   static style = style;
-  static defaultProps = {
-    offset: [0, 12] satisfies [number, number],
+  static defaultProps: FeaturePopoverDefaultProps = {
+    offset: [0, 12],
     placement: 'bottom-start',
     defaultVisible: false,
     onOutsideClick: () => {},
@@ -66,7 +71,7 @@ class FeaturePopover extends Component<
     i18n: localizedMessages,
     locale: 'en',
     theme: 'accent',
-  } as const;
+  };
 
   static enhance = enhance;
 

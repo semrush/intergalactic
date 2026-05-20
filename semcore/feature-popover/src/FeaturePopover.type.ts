@@ -10,8 +10,7 @@ import type {
   BoxProps,
   OutsideClickProps,
   PortalProps,
-  Box, PopperContext, PopperPopperProps, Placement, Popper,
-  PopperProps } from '@semcore/base-components';
+  Box, PopperContext, PopperPopperProps, Placement, Popper } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type React from 'react';
@@ -83,11 +82,6 @@ export type FPPopperProps = OutsideClickProps &
     computeStyles?: Partial<OptionsComputeStyles>;
     /** PopperJS modifier settings responsible for subscribing to global events */
     eventListeners?: Partial<OptionsEventListeners>;
-    /**
-     * Interaction with a trigger to show and hide the popper
-     * @default none
-     */
-    interaction?: PopperProps['interaction'];
     /** @ignore */
     onFirstUpdate?: Options['onFirstUpdate'];
     /**

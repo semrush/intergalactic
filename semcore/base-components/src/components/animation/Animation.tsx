@@ -43,15 +43,15 @@ class Animation extends Component<
 > {
   static displayName = 'Animation';
   static style = style;
-  static defaultProps = {
+  static defaultProps: AnimationDefaultProps = {
     visible: false,
     duration: 0,
     delay: 0,
-    keyframes: ['', ''] as AnimationDefaultProps['keyframes'],
+    keyframes: ['', ''],
     initialAnimation: false,
     timingFunction: 'ease-out',
     animationsDisabled: false,
-  } as const;
+  };
 
   static enhance = [contextEnhance(animationContext, 'parentAnimationContext')];
 

@@ -1,5 +1,4 @@
-import { createBaseComponent, type Intergalactic } from '@semcore/core';
-import { sstyled } from '@semcore/core';
+import { sstyled, createBaseComponent, type Intergalactic } from '@semcore/core';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';

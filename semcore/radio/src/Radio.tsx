@@ -24,7 +24,7 @@ const RadioContext = React.createContext<{
 class RadioGroupRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSRadio.Group.Component>,
   [],
-  { value: null },
+  { value: string },
   {},
   {},
   NSRadio.Group.DefaultProps
@@ -37,7 +37,7 @@ class RadioGroupRoot extends Component<
 
   uncontrolledProps() {
     return {
-      value: null,
+      value: '',
     };
   }
 
@@ -55,10 +55,10 @@ class RadioGroupRoot extends Component<
   }
 
   render() {
-    const { Children } = this.asProps;
+    const { Children, value } = this.asProps;
 
     return (
-      <Root render={Flex} direction='column' role='group' __excludeProps={['onChange']}>
+      <Root render={Flex} direction='column' role='group' use:value={value || undefined} __excludeProps={['onChange']}>
         <Children />
       </Root>
     );

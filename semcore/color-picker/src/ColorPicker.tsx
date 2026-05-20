@@ -14,7 +14,7 @@ import style from './style/color-picker.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 const defaultColors = [
-  '',
+  null,
   '#2BB3FF',
   '#8649E1',
   '#C695FF',
@@ -57,12 +57,12 @@ class ColorPickerRoot extends Component<
 
   uncontrolledProps() {
     return {
-      value: '',
+      value: null,
       visible: false,
     };
   }
 
-  bindHandlerItemClick = (value: NSColorPicker.Props['value']) => (event: React.MouseEvent | React.KeyboardEvent) => {
+  bindHandlerItemClick = (value: ItemProps['value']) => (event: React.MouseEvent | React.KeyboardEvent) => {
     this.handlers.value(value, event);
     this.handlers.visible(false, event);
     event.preventDefault();
@@ -164,7 +164,7 @@ const DefaultTrigger = React.forwardRef(function (
       <STriggerCircle justifyContent='center' alignItems='center' data-value={value} />
       <ChevronDownM tabIndex={undefined} color='gray-800' />
     </SDefaultTrigger>,
-  ) as React.ReactElement;
+  );
 });
 
 function Popper(

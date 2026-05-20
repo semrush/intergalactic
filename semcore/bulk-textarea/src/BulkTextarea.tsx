@@ -34,18 +34,18 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
   BulkTextareaDefaultProps<T>
 > {
   static displayName = 'BulkTextarea';
-  static defaultProps = {
+  static defaultProps: BulkTextareaDefaultProps<string | string[]> = {
     defaultValue: '',
     size: 'm',
     defaultState: 'normal',
     minRows: 2,
     maxRows: 10,
     maxLines: 100,
-    validateOn: ['blur'] as BulkTextareaDefaultProps<string | string[]>['validateOn'],
+    validateOn: ['blur'],
     locale: 'en',
-    defaultErrors: [] as BulkTextareaDefaultProps<string | string[]>['defaultErrors'],
+    defaultErrors: [],
     defaultShowErrors: false,
-  } as const;
+  };
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 

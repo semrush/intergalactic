@@ -12,7 +12,9 @@ import MathPlusM from '@semcore/icon/MathPlus/m';
 import Input from '@semcore/input';
 import React from 'react';
 
+import ColorPicker from './ColorPicker';
 import Item from './components/Item';
+import type { ItemProps } from './components/Item.type';
 import type { NSPaletteManager } from './PaletteManager.type';
 import style from './style/color-picker.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -52,7 +54,7 @@ class PaletteManagerRoot extends Component<
     };
   }
 
-  bindHandlerItemRemove = (value: string) => (event: React.MouseEvent | React.KeyboardEvent) => {
+  bindHandlerItemRemove = (value: ItemProps['value']) => (event: React.MouseEvent | React.KeyboardEvent) => {
     event.stopPropagation();
     const { colors = [] } = this.asProps;
     this.handlers.colors(
@@ -74,16 +76,24 @@ class PaletteManagerRoot extends Component<
   };
 
   getColorsProps() {
-    const { colors, uid } = this.asProps;
+    const { colors } = this.asProps;
 
     return {
       colors,
       editable: true,
       onPlusButtonClick: this.bindHandlerButtonClick(),
       getI18nText: this.asProps.getI18nText,
+    };
+  }
 
-      itemUID: uid,
-      itemOnRemove: this.bindHandlerItemRemove,
+  getItemProps({ value }: ItemProps) {
+    const { uid } = this.asProps;
+
+    return {
+      uid,
+      editable: true,
+      onRemove: this.bindHandlerItemRemove(value),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
@@ -126,7 +136,7 @@ class PaletteManagerRoot extends Component<
 export function Colors(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSPaletteManager.Colors.Component, typeof PaletteManagerRoot, 'Colors'>,
 ) {
-  const { Children, styles, colors, onPlusButtonClick, getI18nText, editable, itemUID, itemOnRemove } = props;
+  const { Children, styles, colors, onPlusButtonClick, getI18nText } = props;
   const SColors = Root;
   const SColorsContainer = Flex;
   const SPlusButton = 'div';
@@ -289,5 +299,6 @@ export const PaletteManager = createComponent<
 >(PaletteManagerRoot, {
   Colors,
   InputColor,
-  Item,
+  // @ts-ignore
+  Item: ColorPicker.Item,
 });

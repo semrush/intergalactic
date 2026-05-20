@@ -1,5 +1,4 @@
-import { createBaseComponent, type Intergalactic } from '@semcore/core';
-import { sstyled } from '@semcore/core';
+import { sstyled, createBaseComponent, type Intergalactic } from '@semcore/core';
 import React from 'react';
 
 import Animation from './Animation';

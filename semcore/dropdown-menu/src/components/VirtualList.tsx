@@ -24,7 +24,7 @@ type VirtualListProps<T, D extends object = never> = {
    */
   rowsBuffer?: number;
   /** Some custom data for each renderRow function */
-  customData: [D] extends [never] ? undefined : D;
+  customData?: [D] extends [never] ? undefined : D;
 };
 
 type VirtualListDefaultProps = {

@@ -195,7 +195,11 @@ class DragAndDropRoot extends Component<
       (i) => i?.node === currentItem.node || (i?.id && i?.id === currentItem.id),
     );
 
-    const i18nKey = !zoneName ? 'grabbing' : currentItem.isDropZone ? 'grabbingJustWithZone' : 'grabbingFullWithZone';
+    const i18nKey = !zoneName
+      ? 'grabbing'
+      : currentItem.isDropZone
+        ? 'grabbingJustWithZone'
+        : 'grabbingFullWithZone';
 
     this.setA11yHint(i18nKey, {
       itemText,
@@ -227,7 +231,11 @@ class DragAndDropRoot extends Component<
       (i) => i?.node === currentItem.node || (i?.id && i?.id === currentItem.id),
     );
 
-    const i18nKey = !zoneName ? 'dropped' : currentItem.isDropZone ? 'droppedJustWithZone' : 'droppedFullWithZone';
+    const i18nKey = !zoneName
+      ? 'dropped'
+      : currentItem.isDropZone
+        ? 'droppedJustWithZone'
+        : 'droppedFullWithZone';
 
     this.setA11yHint(i18nKey, {
       itemText,

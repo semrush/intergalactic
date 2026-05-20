@@ -1,11 +1,22 @@
+import type { ButtonProps } from '@semcore/button';
 import Button from '@semcore/button';
 import { createComponent, Root, sstyled, Component, type IRootNodeProps } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { HighLightedButtonAddonProps, HighlightedButtonComponent, HighlightedButtonDefaultProps, HighlightedButtonProps } from './Button.type';
+import type { HighLightedButtonAddonProps, HighlightedButtonComponent, HighlightedButtonDefaultProps } from './Button.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
+
+/*
+ * `highlighted` is an internal-only value and cannot be represented in the public prop type.
+ * During composition the `highlighted` prop is intentionally stripped, so it never reaches
+ * the final component interface. Because of that, this implementation relies on the current approach.
+ * Public props are `ButtonProps`.
+*/
+type HighlightedButtonProps = Omit<ButtonProps, 'theme'> & {
+  theme?: ButtonProps['theme'] | 'highlighted';
+};
 
 class ButtonFHRoot extends Component<
   HighlightedButtonProps,
