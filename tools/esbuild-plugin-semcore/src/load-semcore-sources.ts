@@ -18,7 +18,7 @@ const babelTransform = async (contents: string, path: string, isEsm?: true) => {
         cwd: resolveDirname(path),
         ...babelConfig(babel, { isEsm: isEsm }),
       },
-      (error: Error | undefined, result: any) => {
+      (error: Error | null, result: any) => {
         if (error) reject(error);
         else resolve(result?.code);
       },
