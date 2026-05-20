@@ -46,7 +46,7 @@ Since many SVG elements don't support nesting, they're rendered sequentially. Fo
 </Line>
 ```
 
-CSS is responsible for all the chart styles. Refer to [Themes](/style/design-tokens/design-tokens#themes) for more information on how to customize it.
+CSS is responsible for all the chart styles. Refer to [Themes](/style/design-tokens/design-tokens-usage-development) for more information on how to customize it.
 
 ## Chart plot
 
