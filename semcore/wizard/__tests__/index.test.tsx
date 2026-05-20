@@ -13,7 +13,7 @@ describe('Wizard', () => {
   beforeEach(cleanup);
 
   test('Should support sidebar and content', async () => {
-    const { getByText } = render(
+    const { getByText, getByRole } = render(
       <Wizard disablePortal visible step={2}>
         <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
@@ -29,8 +29,8 @@ describe('Wizard', () => {
     );
 
     expect(getByText('Header')).toBeTruthy();
-    expect(getByText('Step 1')).toBeTruthy();
-    expect(getByText('Step 2')).toBeTruthy();
+    expect(getByRole('tab', { name: 'Step 1' })).toBeTruthy();
+    expect(getByRole('tab', { name: 'Step 2' })).toBeTruthy();
     expect(getByText('StepNext')).toBeTruthy();
     expect(getByText('StepBack')).toBeTruthy();
   });
