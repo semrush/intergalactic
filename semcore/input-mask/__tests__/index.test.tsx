@@ -109,7 +109,8 @@ describe('InputMask.Value', () => {
       title: 'test mask',
       includeInputProps: ['data-testid'],
     },
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 });

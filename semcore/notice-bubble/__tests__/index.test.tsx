@@ -38,8 +38,9 @@ describe('NoticeBubbleContainer', () => {
 
   runComponentContractTests({
     Component: TestNoticeBubble,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   test('Verify supports rendering outside DOM', () => {

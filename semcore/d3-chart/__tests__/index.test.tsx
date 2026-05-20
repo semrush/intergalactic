@@ -107,8 +107,9 @@ describe('Plot', () => {
 
   runComponentContractTests({
     Component: PlotTest,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   test.concurrent('Should support render null', () => {
@@ -123,8 +124,9 @@ describe('YAxis', () => {
   runComponentContractTests({
     Component: YAxis,
     Wrapper: PlotTest,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   test(
@@ -198,8 +200,9 @@ describe('XAxis', () => {
   runComponentContractTests({
     Component: XAxis,
     Wrapper: PlotTest,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   test.concurrent('should support hover for custom XAxis.Ticks', () => {

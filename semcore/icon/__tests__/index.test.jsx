@@ -15,6 +15,7 @@ describe('Icon', () => {
   runComponentContractTests({
     Component: Icon,
     preset: 'root',
+    skip: ['dataUiName'],
   });
 
   test.each(['200', '100%'], 'should support custom width %i', (width) => {

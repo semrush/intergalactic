@@ -2,23 +2,44 @@ import React from 'react';
 
 import { cleanup, render } from '../testing-library';
 import { test, expect } from '../vitest';
+import { getContractTestMarker } from './contractTestUtils';
+
+export type ComponentContractRefTarget = 'contractTarget' | 'domNode';
 
 export const shouldSupportRef = (
   Component: any,
   Wrapper: any = React.Fragment,
   props: any = {},
+  refTarget: ComponentContractRefTarget = 'contractTarget',
 ) => {
-  test.sequential('ref should return DOM-node', () => {
+  const testName =
+    refTarget === 'contractTarget'
+      ? 'ref should return contract target DOM-node'
+      : 'ref should return DOM-node';
+
+  test.sequential(testName, () => {
     cleanup();
 
     const ref = React.createRef<HTMLElement>();
+    const marker = getContractTestMarker('ref');
 
-    render(
+    const result = render(
       <Wrapper>
-        <Component {...props} ref={ref} />
+        <Component {...props} data-contract-target={marker} ref={ref} />
       </Wrapper>,
     );
 
-    expect(ref.current?.nodeName).toBeDefined();
+    if (refTarget === 'domNode') {
+      expect(ref.current?.nodeName).toBeDefined();
+      return;
+    }
+
+    const target = result.baseElement.querySelector(`[data-contract-target="${marker}"]`);
+
+    if (!target) {
+      throw new Error(`Unable to find contract test target by data-contract-target="${marker}"`);
+    }
+
+    expect(ref.current).toBe(target);
   });
 };

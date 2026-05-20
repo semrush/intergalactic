@@ -4,11 +4,11 @@ import { shouldSupportClassName } from './shouldSupportClassName';
 import { shouldSupportClickHandler } from './shouldSupportClickHandler';
 import { shouldSupportDataAttributes } from './shouldSupportDataAttributes';
 import { shouldSupportDisabled } from './shouldSupportDisabled';
-import { shouldSupportRef } from './shouldSupportRef';
+import { type ComponentContractRefTarget, shouldSupportRef } from './shouldSupportRef';
 import { shouldSupportStyle } from './shouldSupportStyle';
 import { type ComponentContractTagCase, shouldSupportTag } from './shouldSupportTag';
 
-export type ComponentContractPreset = 'root' | 'leaf' | 'inputLike' | 'interactive';
+export type ComponentContractPreset = 'root' | 'leaf' | 'inputLike' | 'interactive' | 'none';
 
 export type ComponentContractCheck =
   | 'className'
@@ -30,6 +30,7 @@ export type ComponentContractOptions = {
   include?: ComponentContractCheck[];
   skip?: ComponentContractCheck[];
   tagCases?: ComponentContractTagCase[];
+  refTarget?: ComponentContractRefTarget;
 };
 
 const presetChecks: Record<ComponentContractPreset, ComponentContractCheck[]> = {
@@ -37,6 +38,7 @@ const presetChecks: Record<ComponentContractPreset, ComponentContractCheck[]> = 
   leaf: ['className', 'ref', 'dataAttributes', 'style', 'dataUiName'],
   inputLike: ['className', 'ref', 'dataAttributes', 'style', 'dataUiName'],
   interactive: ['clickHandler', 'disabled'],
+  none: [],
 };
 
 const getChecks = ({
@@ -63,15 +65,19 @@ export const runComponentContractTests = (options: ComponentContractOptions) => 
     props,
     expectedDataUiName,
     tagCases,
+    refTarget,
   } = options;
   const checks = getChecks(options);
 
   if (checks.has('className')) shouldSupportClassName(Component, Wrapper, props);
-  if (checks.has('ref')) shouldSupportRef(Component, Wrapper, props);
+  if (checks.has('ref')) shouldSupportRef(Component, Wrapper, props, refTarget);
   if (checks.has('dataAttributes')) shouldSupportDataAttributes(Component, Wrapper, props);
   if (checks.has('style')) shouldSupportStyle(Component, Wrapper, props);
-  if (checks.has('dataUiName') && expectedDataUiName) {
-    shouldHaveDataUiName(Component, Wrapper, props, expectedDataUiName);
+  if (checks.has('dataUiName') && !expectedDataUiName) {
+    throw new Error('expectedDataUiName is required when dataUiName contract check is enabled. Pass expectedDataUiName or add skip: [\'dataUiName\'].');
+  }
+  if (checks.has('dataUiName')) {
+    shouldHaveDataUiName(Component, Wrapper, props, expectedDataUiName!);
   }
   if (checks.has('children')) shouldSupportChildren(Component, Wrapper, props);
   if (checks.has('clickHandler')) shouldSupportClickHandler(Component, Wrapper, props);

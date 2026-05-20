@@ -111,8 +111,9 @@ describe('FeedbackForm.Item', () => {
   runComponentContractTests({
     Component: Item,
     Wrapper: FeedbackForm,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 });
 

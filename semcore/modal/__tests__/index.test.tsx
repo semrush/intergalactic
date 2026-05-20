@@ -23,8 +23,9 @@ describe('Modal', () => {
   runComponentContractTests({
     Component: Modal.Window,
     Wrapper: (props: any) => <Modal {...props} visible />,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   test.sequential('Verify onClose event for Escape', () => {

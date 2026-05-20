@@ -21,8 +21,9 @@ describe('Checkbox', () => {
   runComponentContractTests({
     Component: Checkbox.Value,
     Wrapper: Checkbox,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   runComponentContractTests({

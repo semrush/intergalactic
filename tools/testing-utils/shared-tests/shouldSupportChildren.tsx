@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { cleanup, render } from '../testing-library';
 import { test, expect } from '../vitest';
-import { getContractTestMarker } from './contractTestUtils';
+import { getContractTestMarker, renderWithContractTarget } from './contractTestUtils';
 
 export const shouldSupportChildren = (
   Component: any,
@@ -10,17 +9,15 @@ export const shouldSupportChildren = (
   props: any = {},
 ) => {
   test.sequential('should render children', () => {
-    cleanup();
-
     const marker = getContractTestMarker('children');
-    const { baseElement } = render(
-      <Wrapper>
-        <Component {...props}>
-          <span data-contract-child={marker}>contract child</span>
-        </Component>
-      </Wrapper>,
+    const { target } = renderWithContractTarget(
+      Component,
+      Wrapper,
+      props,
+      getContractTestMarker('children-target'),
+      <span data-contract-child={marker}>contract child</span>,
     );
 
-    expect(baseElement.querySelector(`[data-contract-child="${marker}"]`)).toBeTruthy();
+    expect(target.querySelector(`[data-contract-child="${marker}"]`)).toBeTruthy();
   });
 };

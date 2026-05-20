@@ -230,8 +230,9 @@ describe('Option.Checkbox', () => {
   runComponentContractTests({
     Component: Select.Option.Checkbox,
     Wrapper: Select,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async () => {
@@ -284,8 +285,9 @@ describe('InputSearch', () => {
   runComponentContractTests({
     Component: InputSearch,
     Wrapper: Select,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   test('Verify calls onChange ones per symbol', async () => {

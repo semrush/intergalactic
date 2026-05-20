@@ -1,5 +1,5 @@
 export { shouldSupportClassName } from './shouldSupportClassName';
-export { shouldSupportRef } from './shouldSupportRef';
+export { shouldSupportRef, type ComponentContractRefTarget } from './shouldSupportRef';
 export { runDependencyCheckTests } from './dependencyCheck';
 export { shouldSupportDataAttributes } from './shouldSupportDataAttributes';
 export { shouldSupportChildren } from './shouldSupportChildren';

@@ -21,8 +21,9 @@ describe('Radio', () => {
   runComponentContractTests({
     Component: Radio.Value,
     Wrapper: Radio,
-    preset: [],
+    preset: 'none',
     include: ['className', 'ref'],
+    refTarget: 'domNode',
   });
 
   runComponentContractTests({

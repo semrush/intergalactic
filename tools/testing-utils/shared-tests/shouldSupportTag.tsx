@@ -21,7 +21,7 @@ const getTagCaseName = ({ tag, name }: ComponentContractTagCase) => {
 const getExpectedTagName = ({ tag, expectedTagName }: ComponentContractTagCase) => {
   if (expectedTagName) return expectedTagName.toUpperCase();
   if (typeof tag === 'string') return tag.toUpperCase();
-  return undefined;
+  throw new Error(`expectedTagName is required for component tag case "${getTagCaseName({ tag })}"`);
 };
 
 export const shouldSupportTag = (
@@ -40,12 +40,7 @@ export const shouldSupportTag = (
         tag,
       });
 
-      const expectedTagName = getExpectedTagName(tagCase);
-      if (expectedTagName) {
-        expect(target.tagName).toBe(expectedTagName);
-      } else {
-        expect(target).toBeTruthy();
-      }
+      expect(target.tagName).toBe(getExpectedTagName(tagCase));
     });
   }
 };
