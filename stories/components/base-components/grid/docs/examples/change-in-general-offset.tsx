@@ -3,10 +3,9 @@ import React from 'react';
 
 const Demo = () => {
   const styleBox = {
-    border: '3px solid #fff',
-    background: 'rgba(79, 96, 213, 0.5)',
-    borderRadius: '2px',
-    padding: '16px',
+    background: 'var(--intergalactic-bg-primary-advertising)',
+    padding: 'var(--intergalactic-spacing-4x, 16px)',
+    marginBottom: 'var(--intergalactic-spacing-2x, 8px)',
   };
   return (
     <Row gutter={4}>

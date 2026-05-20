@@ -15,8 +15,8 @@ const Demo = () => {
       <Box
         p={4}
         style={{
-          background: '#191b23',
-          borderRadius: '6px',
+          background: 'var(--intergalactic-bg-primary-invert)',
+          borderRadius: 'var(--intergalactic-surface-rounded)',
           width: 'fit-content',
         }}
       >

@@ -119,7 +119,7 @@ const Demo = () => {
             aria-label={`${widget.title} widget`}
             h='100%'
             style={{
-              borderRadius: '6px',
+              borderRadius: 'var(--intergalactic-surface-rounded)',
             }}
           >
             <Widget title={widget.title} />

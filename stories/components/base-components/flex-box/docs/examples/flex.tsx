@@ -3,7 +3,7 @@ import React from 'react';
 
 const Demo = () => {
   const styleBox = {
-    background: 'rgba(79, 96, 213, 0.5)',
+    background: 'var(--intergalactic-bg-primary-advertising)',
   };
 
   return (

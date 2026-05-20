@@ -2,8 +2,7 @@ import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
 import React, { useState } from 'react';
 
-const overlayStyles = { background: 'rgba(255, 147, 253, .75)' };
-const closeStyles = { fontSize: '20px' };
+const overlayStyles = { background: 'oklch(from var(--intergalactic-brand-primary) l c h / 0.5)' };
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
@@ -13,16 +12,14 @@ const Demo = () => {
       <Button onClick={() => setVisible(true)}>Open modal</Button>
       <Modal visible={visible} closable={false} onClose={() => setVisible(false)}>
         <Modal.Overlay style={overlayStyles}>
-          <Modal.Window wMax='400px' px={5} py={2.5}>
-            <Modal.Close style={closeStyles}>x</Modal.Close>
-            <h1>Lorem Title</h1>
+          <Modal.Window wMax='400px' px={5} py={5}>
+            <Modal.Close />
+            <h2>Customized modal window</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem blanditiis
-              consectetur distinctio dolorem ducimus earum facere fuga laudantium magni odit
-              officia porro provident quas quia sed sint voluptatum. Nesciunt!
+              This is a customized modal window with a custom overlay and window styles. The example also uses native tags for the heading and text.
             </p>
-            <Button use='primary' theme='danger' onClick={() => setVisible(false)}>
-              Close me!
+            <Button size='l' use='primary' theme='brand' onClick={() => setVisible(false)}>
+              Close
             </Button>
           </Modal.Window>
         </Modal.Overlay>

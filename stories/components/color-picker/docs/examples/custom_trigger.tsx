@@ -5,7 +5,7 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const [value, setValue] = React.useState('#C695FF');
+  const [value, setValue] = React.useState('var(--intergalactic-chart-palette-order-1)');
 
   return (
     <Flex direction='column' gap={2}>
@@ -28,7 +28,19 @@ const Demo = () => {
           <Input.Value placeholder='Tag name' id='new-tag' />
         </Input>
         <ColorPicker.Popper>
-          <ColorPicker.Colors />
+          <ColorPicker.Colors
+            colors={[
+              null,
+              'var(--intergalactic-chart-palette-order-1)',
+              'var(--intergalactic-chart-palette-order-2)',
+              'var(--intergalactic-chart-palette-order-3)',
+              'var(--intergalactic-chart-palette-order-4)',
+              'var(--intergalactic-chart-palette-order-5)',
+              'var(--intergalactic-chart-palette-order-6)',
+              'var(--intergalactic-chart-palette-order-7)',
+              'var(--intergalactic-chart-palette-order-8)',
+            ]}
+          />
         </ColorPicker.Popper>
       </ColorPicker>
     </Flex>

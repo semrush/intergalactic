@@ -328,7 +328,7 @@ const Demo = () => {
         <Text size={200} bold mb={2}>
           Try it out:
         </Text>
-        <Text size={100} tag='ol' style={{ paddingLeft: '20px', margin: 0 }}>
+        <Text size={100} tag='ol' style={{ paddingLeft: 'var(--intergalactic-spacing-5x, 20px)', margin: 0 }}>
           <li>Search for: "documentation", "error", "2024", "user"</li>
           <li>Notice how matches stay visible even when text is truncated</li>
           <li>Click on any truncated text to copy the full version</li>

@@ -4,8 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const [value, setValue] = React.useState('#98848D');
-  const [customColors, setCustomColors] = React.useState(['#8649E6', '#8649E7', '#8649E8']);
+  const [value, setValue] = React.useState('var(--intergalactic-chart-palette-order-1)');
+  const [customColors, setCustomColors] = React.useState(['#4C4AA4']);
 
   return (
     <Flex direction='column'>
@@ -18,15 +18,14 @@ const Demo = () => {
           <ColorPicker.Colors
             colors={[
               null,
-              '#8649E1',
-              '#FF5733',
-              '#98848D',
-              '#8E3B29',
-              '#B0E727',
-              '#27D3E7',
-              '#2D747C',
-              '#6ad0de',
-              '#6E2D7C',
+              'var(--intergalactic-chart-palette-order-1)',
+              'var(--intergalactic-chart-palette-order-2)',
+              'var(--intergalactic-chart-palette-order-3)',
+              'var(--intergalactic-chart-palette-order-4)',
+              'var(--intergalactic-chart-palette-order-5)',
+              'var(--intergalactic-chart-palette-order-6)',
+              'var(--intergalactic-chart-palette-order-7)',
+              'var(--intergalactic-chart-palette-order-8)',
             ]}
           />
           <PaletteManager colors={customColors} onColorsChange={setCustomColors}>
