@@ -25,7 +25,7 @@ class SliderRoot extends Component<
   static displayName = 'Slider';
   static style = style;
 
-  sliderRef = React.createRef() as React.MutableRefObject<HTMLButtonElement | null>;
+  sliderRef = React.createRef<HTMLButtonElement>();
 
   static defaultProps = () => ({
     defaultValue: 0,
@@ -42,10 +42,6 @@ class SliderRoot extends Component<
       </>
     ),
   });
-
-  handleRef = (node: HTMLButtonElement) => {
-    this.sliderRef.current = node;
-  };
 
   uncontrolledProps() {
     return {
@@ -160,8 +156,8 @@ class SliderRoot extends Component<
     const direction = event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? -1 : 1;
     let value = this.getNumericValue() + step * direction;
 
-    if (max !== undefined && value > max) value = max;
-    if (min !== undefined && value < min) value = min;
+    if (value > max) value = max;
+    if (value < min) value = min;
     if (options) {
       const option = options[value - (min ?? 0)];
       this.handlers.value(option.value, event);
@@ -218,8 +214,8 @@ class SliderRoot extends Component<
 
     const result = index + min;
 
-    if (min !== undefined && index < min) return min;
-    if (max !== undefined && result > max) return max;
+    if (index < min) return min;
+    if (result > max) return max;
 
     return result;
   };
@@ -249,7 +245,7 @@ class SliderRoot extends Component<
           tag='button'
           type='button'
           tabIndex={0}
-          ref={this.handleRef}
+          ref={this.sliderRef}
           onMouseDown={this.handleMouseMove}
           onTouchMove={this.handleMouseMove}
           onMouseUp={this.handleMouseEnd}
@@ -334,6 +330,6 @@ export const wrapSlider = <PropsExtending extends {}>(wrapper: (
     Intergalactic.InternalTypings.ComponentPropsNesting<NSSlider.WrapperComponent>
   > &
   PropsExtending,
-) => React.ReactNode) => wrapper as NSSlider.WrapperComponent<PropsExtending>; ;
+) => React.ReactNode) => wrapper as NSSlider.WrapperComponent<PropsExtending>;
 
 export default Slider;

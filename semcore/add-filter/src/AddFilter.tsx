@@ -52,11 +52,11 @@ class RootAddFilter extends Component<
   static displayName = 'AddFilter';
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
-  static defaultProps = {
+  static defaultProps: AddFilterDefaultProps = {
     i18n: localizedMessages,
     locale: 'en',
-    defaultVisibleFilters: [] as AddFilterDefaultProps['defaultVisibleFilters'],
-  } as const;
+    defaultVisibleFilters: [],
+  };
 
   static componentsNames = ['AddFilter.Input', 'AddFilter.Select', 'AddFilter.Dropdown'];
   static getFilterPatternItems = (children: React.ReactNode) => {
