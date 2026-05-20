@@ -13,7 +13,7 @@ export const closeTasks = async (versionTag: string) => {
   if (versionTag.startsWith('icon')) {
     match = `icon*`;
   } else if (versionTag.startsWith('illustration')) {
-    match = `illustrations*`;
+    match = `illustration*`;
   }
 
   const tags = await git.tags([match, '--sort', 'creatordate']);

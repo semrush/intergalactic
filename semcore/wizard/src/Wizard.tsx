@@ -280,8 +280,9 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
       onKeyDown={handlerKeyDown}
     >
       {completed && <ScreenReaderOnly>{getI18nText('completedStep')}</ScreenReaderOnly>}
+      <ScreenReaderOnly><Children /></ScreenReaderOnly>
       <SStepNumber aria-hidden='true'>{completed ? <SCompleted /> : number}</SStepNumber>
-      <SStepDescription>
+      <SStepDescription aria-hidden='true'>
         <Children />
       </SStepDescription>
     </SStepper>,
