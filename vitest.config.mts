@@ -33,6 +33,14 @@ export default defineConfig({
         replacement: resolvePath(__dirname, 'semcore/icon/$1/index.mjs'),
       },
       {
+        find: /^@semcore\/illustration\/(.*)/,
+        replacement: resolvePath(__dirname, 'semcore/illustration/$1/index.mjs'),
+      },
+      {
+        find: '@semcore/flex-box',
+        replacement: resolvePath(__dirname, 'semcore/base-components/src/components/flex-box/index.tsx'),
+      },
+      {
         find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,
         replacement: resolvePath(__dirname, 'tools/esbuild-plugin-semcore/$1'),
       },
