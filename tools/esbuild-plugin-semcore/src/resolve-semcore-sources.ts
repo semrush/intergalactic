@@ -1,4 +1,5 @@
 import { access as fsAccess, stat as fsStat, readdir } from 'fs/promises';
+import { exec } from 'node:child_process';
 import { resolve as resolvePath } from 'path';
 
 const fsExists = async (path: string) => {
@@ -14,31 +15,52 @@ const isFile = async (path: string) => {
   return (await fsStat(path)).isFile();
 };
 
+type PackageInfo = {
+  name?: string;
+  path: string;
+  private: boolean;
+  version?: string;
+};
+
+const workspaces: string[] = [];
+
+const getWorkspaces = async (): Promise<string[]> => {
+  if (workspaces.length > 0) {
+    return workspaces;
+  }
+
+  const data = await new Promise<PackageInfo[]>((resolve) => {
+    exec('pnpm ls -r --depth -1 --json', (error, stdout, stderr) => {
+      if (error) {
+        throw new Error(`Execution error: ${error.message}`);
+      }
+      if (stderr) {
+        throw new Error(`stderr: ${stderr}`);
+      }
+
+      const dependencies = JSON.parse(stdout) as PackageInfo[];
+
+      resolve(dependencies);
+    });
+  });
+
+  data.forEach((item) => {
+    if (item.name?.startsWith('@semcore')) {
+      workspaces.push(item.name);
+    }
+  });
+
+  return workspaces;
+};
+
 const tryToResolveWorkspacePath = async (path: string, rootPath: string) => {
   if (!path.startsWith('@semcore/') && !path.startsWith('intergalactic')) {
     throw new Error(
       `Unable to resolve workspace for non @semcore package (trying to resolve "${path}")`,
     );
   }
-  const [semcoreDirItems, toolsDirItems] = await Promise.all([
-    readdir(resolvePath(rootPath, 'semcore')),
-    readdir(resolvePath(rootPath, 'tools')),
-  ]);
-  const workspaces: string[] = [];
-  for (const item of semcoreDirItems) workspaces.push(`semcore/${item}`);
-  for (const item of toolsDirItems) workspaces.push(`tools/${item}`);
-  {
-    const destinationDirs = workspaces.map((workspacePath) => workspacePath.split('/').pop());
-    if (destinationDirs.length !== [...new Set(destinationDirs)].length) {
-      const ambiguousWorkspaces = destinationDirs
-        .filter((workspaceName, index) => destinationDirs.indexOf(workspaceName) !== index)
-        .join(', ');
-      throw new Error(
-        `Unable to resolve ambiguous workspaces (destination dir ${ambiguousWorkspaces} occured in multiple paths)`,
-      );
-    }
-  }
 
+  const workspaces = await getWorkspaces();
   const componentName = path.split('/')[1];
 
   for (const workspace of workspaces) {
@@ -74,9 +96,16 @@ const generatedComponents = ['icon', 'ui', 'illustration'];
 const outOfSourceDirs = ['style'];
 
 export const resolveSemcoreSources = async (path: string, rootPath: string) => {
-  if (path.startsWith('@semcore/ui/')) path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
-  if (path.startsWith('intergalactic/'))
+  if (path.startsWith('@semcore/ui/')) {
+    path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
+  }
+  if (path.startsWith('intergalactic/')) {
     path = `@semcore/${path.substring('intergalactic/'.length)}`;
+  }
+  if (path.includes('/semcore/')) {
+    const indexFrom = path.indexOf('/semcore/');
+    path = `@semcore/${path.substring(indexFrom + '/semcore/'.length)}`;
+  }
   const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
   const componentName = path.split('/')[1];
   const subPath = path.split('/').slice(2).join('/');

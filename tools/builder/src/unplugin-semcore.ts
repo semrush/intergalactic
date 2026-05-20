@@ -15,14 +15,7 @@ export const unpluginSemcoreResolve = createUnplugin<{ rootPath: string }>((opts
     }
   },
   async resolveId(id) {
-    if (
-      (
-        !id.includes('@semcore') &&
-        !id.includes('/semcore/')
-      ) ||
-      id.includes('@semcore/theme')
-    )
-      return null;
+    if (!id.includes('@semcore') || id.includes('@semcore/theme')) return null;
     if (id.endsWith('.md')) return null;
     return await resolveSemcoreSources(id, opts.rootPath);
   },
