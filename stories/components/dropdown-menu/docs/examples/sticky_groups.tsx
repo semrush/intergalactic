@@ -1,7 +1,7 @@
 import EditM from '@semcore/icon/Edit/m';
 import PlusM from '@semcore/icon/MathPlus/m';
 import Settings from '@semcore/icon/Settings/m';
-import { Flex, Box, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
@@ -19,7 +19,6 @@ const groups = Array.from({ length: 3 }, (_, i) => {
       index++;
       return {
         title: `Project ${index}`,
-        index: index,
       };
     }),
   };
@@ -36,7 +35,6 @@ const Row = React.memo(({ style, data: { project, setProject, selectedProject } 
         key={projectName}
         onClick={() => setProject(projectName)}
         selected={selectedProject === projectName}
-        index={project.index}
       >
         <DropdownMenu inlineActions placement='right'>
           <Flex justifyContent='space-between'>
@@ -86,6 +84,7 @@ const Demo = () => {
   React.useEffect(() => {
     const newFilteredProjects: typeof groups = [];
     let highlightedIndex = -1;
+    let index = -1;
     groups.forEach((group, i) => {
       group.projects.forEach((item, j) => {
         if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
@@ -96,8 +95,9 @@ const Demo = () => {
             };
           }
           newFilteredProjects[i].projects.push(item);
+          index++;
           if (item.title === selectedProject || highlightedIndex === -1) {
-            highlightedIndex = item.index;
+            highlightedIndex = index;
           }
         }
       });
@@ -125,7 +125,7 @@ const Demo = () => {
           {filteredMenuData.map((group, index) => {
             return (
               <DropdownMenu.Group key={index} title={group.title} sticky>
-                {group.projects.map((project) => (<Row key={`${group.title}_${project.index}`} data={{ project, setProject, selectedProject }} />))}
+                {group.projects.map((project) => (<Row key={`${group.title}_${project.title}`} data={{ project, setProject, selectedProject }} />))}
               </DropdownMenu.Group>
             );
           })}
