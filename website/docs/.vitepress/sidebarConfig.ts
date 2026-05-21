@@ -43,10 +43,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Accessibility',
           },
           {
-            link: '/core-principles/principles/principles',
-            text: 'Design principles',
-          },
-          {
             link: '/core-principles/motion-principles-guide/motion-principles-guide',
             text: 'Motion',
           },
@@ -105,11 +101,6 @@ export const sideBarConfig: SidebarConfig = [
             link: '/layout/breakpoints/breakpoints',
             activeMatch: '/layout/breakpoints/',
             text: 'Breakpoints',
-          },
-          {
-            link: '/layout/grid-system/grid-system-layout',
-            activeMatch: '/layout/grid-system/',
-            text: 'Grid and page layout',
           },
           {
             link: '/layout/box-system/box-system-spacing',

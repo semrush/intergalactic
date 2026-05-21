@@ -1,6 +1,5 @@
 ---
 title: Design tokens
-fileSource: utils
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Changelog('design-tokens-changelog')
 ---
 
@@ -18,34 +17,6 @@ Intergalactic Design System has:
 - **set of base tokens** that define a base palette;
 - **set of semantic tokens** which are applied across all components and even the chart library.
 
-These sets form the default theme of the design system.
-
-::: tip
-For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/blob/HEAD/semcore/theme/src/light.json).
-:::
-
-## Stylelint plugin
-
-The stylelint plugin helps developers to avoid mistakes in the design token names. It should be installed as [a separate package](https://www.npmjs.com/package/@semcore/stylelint-plugin).
-
-```json
-// .stylelintrc.json
-{
-  "extends": ["stylelint-config-standard"],
-  "plugins": ["@semcore/stylelint-plugin"],
-  "rules": {
-    "intergalactic/design-tokens": true
-  }
-}
-```
-
-### Available options
-
-- `include` - adds custom design tokens to the list of allowed tokens.
-- `exclude` - removes design tokens from the list of allowed tokens.
-- `tokensSource` - path to the file with design tokens. Default is `node_modules/@semcore/core/lib/theme/themes/default.mjs`.
-- `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
-
 ## Base tokens
 
 Base tokens include:
@@ -58,9 +29,9 @@ Base tokens include:
 - the base border radius scale;
 - breakpoints.
 
-The palette was built with [Huetone tool](https://huetone.ardov.me/) (learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
+<!-- Palette is built from a few OKLCH reference shades per hue. All steps 50–800 are filled by blending along lightness in OKLCH (then fitted to the display gamut).
 
-Shades of the same color have a value ranging from 50 to 800, depending on its tone. Each shade has recommendations for use based on [Huetone's contrast ratio calculation](https://huetone.ardov.me/).
+Each shade has recommendations for use based on [Huetone's contrast ratio calculation](https://huetone.ardov.me/). -->
 
 ::: react-view
 
@@ -106,38 +77,24 @@ const App = DesignTokens;
 
 :::
 
-## Themes
+## Stylelint plugin
 
-If you need to build a product that differs in style and tone of voice from our default theme, you can create a custom theme.
+The stylelint plugin helps developers to avoid mistakes in the design token names. It should be installed as [a separate package](https://www.npmjs.com/package/@semcore/stylelint-plugin).
 
-Theme is a set of tokens represented in CSS variables that has different from the default sets values. Values can be changed for base, semantic, or both sets. You can redefine them globally or only for a specific subtree of React app. Refer to the [Usage in development](/style/design-tokens/design-tokens-usage-development).
+```json
+// .stylelintrc.json
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["@semcore/stylelint-plugin"],
+  "rules": {
+    "intergalactic/design-tokens": true
+  }
+}
+```
 
-## Creating new theme
+### Available options
 
-### Step one. Design new theme
-
-Creating a theme usually starts with design. In fact, this is the most time-consuming part.
-
-**We recommend you using the native Figma variables (tokens) functionality**. Refer to the following tutorials, for the detailed process for creating a new theme. Semrush designers and developers can use the following tutorials:
-
-- [Tutorial for Figma tokens](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=13125-73031&node-type=canvas&t=qOTf0DSn0M8p63of-11)
-- [Tutorial for Tokens Studio](https://www.figma.com/design/K1s6wF8NTH3uNHvjkn6hjc/Themes'-playground-%26-tutorial-%F0%9F%8E%93?m=auto&t=jHrLhhOMB32IMklB-6)
-
-In case if you need more functionality that Figma doesn't have at the moment, use [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files.
-
-For non-Semrush employees we have a [tutorial for Tokens Studio](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens).
-
-::: tip
-**In cases where different styles are needed for just one component or a part of the design system:**
-
-- Designer can create a new theme as described earlier, and apply it only to the necessary component
-- Developer can use [ThemeProvider](/style/design-tokens/design-tokens-usage-development#themeprovider)
-  :::
-
-### Step two. Connect new theme to components in code
-
-For this step, you need to export your token sets with the new values and process them into CSS styles in the way that suits you best. We recommend referring to the following links:
-
-- [Usage in development](/style/design-tokens/design-tokens-usage-development);
-- [Example for custom component](/style/design-tokens/design-tokens-usage-development);
-- [CSS Injection guide](/style/css-injection/css-injection).
+- `include` — adds custom design tokens to the list of allowed tokens.
+- `exclude` — removes design tokens from the list of allowed tokens.
+- `tokensSource` — path to a JS module with the design token map (expects a default export). Use `node_modules/@semcore/theme/lib/light.js`.
+- `prefix` — design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.

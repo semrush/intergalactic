@@ -16,6 +16,10 @@ If you're adding adaptivity to your interface, then use breakpoints described in
 
 ## Breakpoints system
 
+::: warning
+These variables and their values are outdated and will be updated soon.
+:::
+
 Here is a list of the main breakpoints we recommend using in the interfaces:
 
 | Token                  | Default value | Usage                                                |
@@ -26,8 +30,6 @@ Here is a list of the main breakpoints we recommend using in the interfaces:
 | `screen-large`         | `1920px`      | Breakpoint for large desktop screens.                |
 
 ## Page layout
-
-Use [Grid system](/layout/grid-system/grid-system-layout) to build an adaptive page layout.
 
 The adaptivity (css with media-queries) of components can be enabled by adding our [babel-plugin-react-semcore plugin](https://github.com/semrush/intergalactic/blob/HEAD/tools/babel-plugin-react-semcore/README.md).
 
