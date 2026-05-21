@@ -1,4 +1,5 @@
 import type { BoxProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type Icon from '@semcore/icon';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
@@ -25,9 +26,9 @@ export type LinkProps = BoxProps & NSText.BaseProps & {
    */
   noWrap?: boolean;
   /** Left addon tag */
-  addonLeft?: React.ElementType;
+  addonLeft?: typeof Icon | React.ElementType;
   /** Right addon tag */
-  addonRight?: React.ElementType;
+  addonRight?: typeof Icon | React.ElementType;
   /**
    * The position of the popper relative to the trigger that called it.
    * @default top

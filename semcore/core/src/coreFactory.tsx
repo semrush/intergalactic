@@ -354,7 +354,11 @@ function createComponent<T extends Intergalactic.InternalTypings.ComponentTag = 
   return Component;
 }
 
-function createBaseComponent<T extends keyof React.JSX.IntrinsicElements, P>(OriginComponent: React.ForwardRefRenderFunction<React.ElementRef<T>, P>) {
+type BaseComponentOptions = {
+  isIcon?: boolean;
+};
+
+function createBaseComponent<T extends keyof React.JSX.IntrinsicElements, P>(OriginComponent: React.ForwardRefRenderFunction<React.ElementRef<T>, P>, opt?: BaseComponentOptions) {
   const Component = React.forwardRef<React.ElementRef<T>, P>(OriginComponent) as unknown as Intergalactic.Component<T, P>;
   Component.displayName = OriginComponent.displayName ?? '';
   // @ts-ignore
@@ -362,6 +366,8 @@ function createBaseComponent<T extends keyof React.JSX.IntrinsicElements, P>(Ori
     'data-ui-name': OriginComponent.displayName,
   };
   Component[CORE_COMPONENT] = true;
+
+  Component.__IS_ICON = Boolean(opt?.isIcon);
 
   return Component;
 }

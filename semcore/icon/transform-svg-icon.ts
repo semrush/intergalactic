@@ -119,7 +119,7 @@ function Root${name}({
 
 Root${name}.displayName = '${name}'
 
-const ${name} = createBaseComponent(Root${name})
+const ${name} = createBaseComponent(Root${name}, { isIcon: true })
 
 export {
   ${name} as default

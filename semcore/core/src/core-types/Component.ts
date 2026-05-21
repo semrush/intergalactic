@@ -8,6 +8,7 @@ RefObject,
 } from 'react';
 
 import type { CORE_COMPONENT } from './symbols';
+import { CORE_INSTANCE } from './symbols';
 import type { IStyledProps } from '../styled/index';
 
 type HandlersType<UCProps> = { [K in keyof UCProps]?: <T = unknown>(arg: T) => void };
@@ -86,6 +87,8 @@ export abstract class Component<
   protected Root: RootResult<any> = undefined as any;
 
   protected isControlled = false;
+
+  protected [CORE_INSTANCE]: any;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -269,6 +272,7 @@ export namespace Intergalactic {
       __props: Props;
       __context: Context;
       __additionalContext: AdditionalContext;
+      __IS_ICON: boolean;
       displayName: string;
       newInstance: () => Component<BaseTag, Props, Context>;
       [CORE_COMPONENT]: boolean;

@@ -123,4 +123,4 @@ function Icon({
   );
 }
 
-export default createBaseComponent<'svg', IconProps>(Icon);
+export default createBaseComponent<'svg', IconProps>(Icon, { isIcon: true });
