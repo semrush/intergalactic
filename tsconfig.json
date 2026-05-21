@@ -6,7 +6,6 @@
     "jsx": "react",
     "declaration": true,
     "esModuleInterop": true,
-    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": false,
