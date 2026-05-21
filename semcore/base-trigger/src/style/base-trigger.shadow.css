@@ -66,15 +66,9 @@ SInner {
 }
 
 SText {
-  display: inline;
   /* disable-tokens-validator */
   padding: 1px 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  line-height: var(--intergalactic-lh-200, 142%);
   flex-grow: 1;
-  text-align: left;
 }
 
 SAddon {

@@ -11,15 +11,12 @@ class RootLinkTrigger extends Component {
   static displayName = 'LinkTrigger';
 
   getTextProps(props) {
-    const { placeholder, empty, Children, size } = this.asProps;
+    const { placeholder, empty } = this.asProps;
     const content = empty ? placeholder : props.children;
-    const addons = findAllComponents(Children, [LinkTrigger.Addon.displayName]);
-    const addonWidth = size >= 600 ? 28 : 20;
 
     return {
       'use:children': content,
       empty,
-      'w': `calc(100% - ${addonWidth * (addons.length + 1)}px)`,
     };
   }
 

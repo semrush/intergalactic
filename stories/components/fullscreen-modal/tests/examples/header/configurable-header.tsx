@@ -35,7 +35,7 @@ const Demo = (props: HeaderConfig) => {
         {props.showClose && <FullscreenModal.Close />}
 
         {props.showBack && (
-          <FullscreenModal.Back>
+          <FullscreenModal.Back wMax={120}>
             {props.backText}
           </FullscreenModal.Back>
         )}

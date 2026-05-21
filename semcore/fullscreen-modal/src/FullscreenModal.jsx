@@ -1,5 +1,5 @@
 import { Flex, Box } from '@semcore/base-components';
-import Button from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
@@ -147,15 +147,13 @@ function Description(props) {
 
 function Back(props) {
   const SBack = Root;
-  const SBackText = Text;
   const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={Box} tag='button' tabIndex={0}>
-      <ArrowLeft />
-      <SBackText>
+    <SBack render={ButtonLink} color='text-hint' size={200} addonLeft={ArrowLeft}>
+      <ButtonLink.Text ellipsis>
         <Children />
-      </SBackText>
+      </ButtonLink.Text>
     </SBack>,
   );
 }

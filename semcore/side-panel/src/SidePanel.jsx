@@ -224,15 +224,13 @@ function Title(props) {
 
 function Back(props) {
   const SBack = Root;
-  const SBackText = ButtonLink.Text;
   const { Children, styles } = props;
 
   return sstyled(styles)(
     <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft}>
-      {/* <ButtonLink.Addon><ArrowLeft /></ButtonLink.Addon> */}
-      <SBackText>
+      <ButtonLink.Text ellipsis>
         <Children />
-      </SBackText>
+      </ButtonLink.Text>
     </SBack>,
   );
 }
