@@ -47,7 +47,7 @@ const Demo = () => {
                   </Accordion.Item.ToggleButton>
                 </Accordion.Item.Toggle>
                 <Accordion.Item.Collapse>
-                  <Box py={3} px={6}>{`Hello Section ${index + 1}`}</Box>
+                  <Box py={3} px={6}>{`This is section ${index + 1}`}</Box>
                 </Accordion.Item.Collapse>
               </>
             )}

@@ -13,10 +13,10 @@ const Demo = () => {
         <Donut.Pie dataKey='b' name='Pie 2' />
         <Donut.Pie dataKey='c' name='Pie 3' />
         <Donut.Label label='71,240 engagements'>
-          <Text tag='tspan' x='0' dy='-1.2em' fill='#191b23' size={600}>
+          <Text tag='tspan' x='0' dy='-1.2em' color='text-primary' size={600}>
             71,240
           </Text>
-          <Text tag='tspan' x='0' dy='1.2em' fill='#6c6e79' size={200}>
+          <Text tag='tspan' x='0' dy='1.2em' color='text-secondary' size={200}>
             Engagements
           </Text>
         </Donut.Label>
