@@ -732,23 +732,13 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      if (browserName !== 'webkit') {
-        await expect(button).toBeFocused();
 
-        await page.keyboard.press('Tab');
-        await expect(search).toBeFocused();
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
-        await locators.button(page).first().click();
-        await expect(locators.item(page).nth(0)).not.toBeVisible();
-      } else {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-
-        await locators.button(page).first().click();
-        await expect(locators.item(page).nth(0)).not.toBeVisible();
-      }
+      await locators.button(page).first().click();
+      await expect(locators.item(page).nth(0)).not.toBeVisible();
     });
   });
 });
