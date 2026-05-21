@@ -1,9 +1,9 @@
 import { execSync } from 'child_process';
 import process from 'process';
 
-import type { ReleaseVersion } from '@tools/continuous-delivery/src/utils/changelog';
 import Git from 'simple-git';
 
+import type { ReleaseVersion } from './changelog';
 import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
 import type { PackageJson } from './packages';

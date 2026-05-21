@@ -46,7 +46,7 @@ const getWorkspaces = async (): Promise<string[]> => {
 
   data.forEach((item) => {
     if (item.name?.startsWith('@semcore')) {
-      workspaces.push(item.name);
+      workspaces.push(item.name.slice(1));
     }
   });
 
