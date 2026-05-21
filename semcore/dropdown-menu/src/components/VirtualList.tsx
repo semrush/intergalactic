@@ -23,6 +23,10 @@ type VirtualListProps<T, D extends object = never> = {
    * @default 10
    */
   rowsBuffer?: number;
+  /*
+    TODO: As of now make it as optional, since TS has troubles with infering type depending on generic default value...
+    Revise it during refactoring.
+  */
   /** Some custom data for each renderRow function */
   customData?: [D] extends [never] ? undefined : D;
 };
@@ -35,7 +39,6 @@ type State = {
   scrollTop: number;
   scrollDirection: 'up' | 'down';
 };
-
 class VirtualListRoot<T = string, D extends object = never> extends Component<
   VirtualListProps<T, D>,
   [],

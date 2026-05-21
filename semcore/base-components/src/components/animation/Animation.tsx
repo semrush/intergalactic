@@ -97,14 +97,12 @@ class Animation extends Component<
   animationEventFallback = () => {
     if (!this.state.render) return;
     if (this.animationSupported) return;
-    let { duration } = this.asProps;
     const { animationsDisabled, visible } = this.asProps;
 
-    duration = Array.isArray(duration) ? duration[1] - duration[0] : duration;
-    duration = animationsDisabled ? 0 : duration + 100;
-
     const delayArr = animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
+    const durationArr = animationsDisabled ? [0, 0] : propToArray(this.asProps.duration);
     const delay = visible ? delayArr[0] : delayArr[1];
+    const duration = visible ? durationArr[0] + 100 : durationArr[1] + 100;
 
     setTimeout(() => {
       if (this.animationSupported) return;
