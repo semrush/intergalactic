@@ -1,10 +1,10 @@
 import { computePosition, flip, offset, shift, type Placement } from '@floating-ui/dom';
 import { createComponent, Root, sstyled, Component, lastInteraction } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
-import type { Intergalactic } from '@semcore/core/src';
 import type { DataType } from 'csstype';
 import React from 'react';
 
