@@ -52,24 +52,6 @@ type UncontrolledPropValue<V> =
   | ((value: V, e?: any) => void | boolean | V)[]
   | ((e?: any) => void | boolean | V);
 
-type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
-
-export type ValidDefaultProps<DefaultProps, MergedProps> = {
-  [K in keyof DefaultProps]: K extends keyof MergedProps
-    ? MergedProps[K]
-    : StripDefaultPrefix<K> extends keyof MergedProps
-      ? MergedProps[StripDefaultPrefix<K>]
-      : never;
-};
-
-type MappedDefaultProps<DefaultProps, MergedProps> = {
-  [K in keyof DefaultProps as StripDefaultPrefix<K>]: K extends keyof MergedProps
-    ? Required<MergedProps>[K]
-    : StripDefaultPrefix<K> extends keyof MergedProps
-      ? Required<MergedProps>[StripDefaultPrefix<K>]
-      : never;
-};
-
 export interface IComponent<
   C,
   /*
@@ -93,7 +75,7 @@ export abstract class Component<
   Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
   State = {},
-  DefaultProps extends ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
+  DefaultProps extends Intergalactic.InternalTypings.ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
 > extends PureComponent<Props, State> {
   protected __defaultProps: DefaultProps = {} as DefaultProps;
 
@@ -122,7 +104,7 @@ export abstract class Component<
         AllHTMLAttributes<any>,
         keyof BaseAsProps<Props, Enhance, InnerProps>
       > &
-      ([DefaultProps] extends [never] ? {} : MappedDefaultProps<DefaultProps, Props & InnerProps>)
+      ([DefaultProps] extends [never] ? {} : Intergalactic.InternalTypings.MappedDefaultProps<DefaultProps, Props & InnerProps>)
     >;
   }
 
@@ -162,6 +144,24 @@ export namespace Intergalactic {
   /** @private */
   // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
+    type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
+
+    export type ValidDefaultProps<DefaultProps, MergedProps> = {
+      [K in keyof DefaultProps]: K extends keyof MergedProps
+        ? MergedProps[K]
+        : StripDefaultPrefix<K> extends keyof MergedProps
+          ? MergedProps[StripDefaultPrefix<K>]
+          : never;
+    };
+
+    export type MappedDefaultProps<DefaultProps, MergedProps> = {
+      [K in keyof DefaultProps as StripDefaultPrefix<K>]: K extends keyof MergedProps
+        ? Required<MergedProps>[K]
+        : StripDefaultPrefix<K> extends keyof MergedProps
+          ? Required<MergedProps>[StripDefaultPrefix<K>]
+          : never;
+    };
+
     type MergeChildProps<Root, Component> = {
       [K in keyof Root | keyof Component]:
       K extends keyof Root

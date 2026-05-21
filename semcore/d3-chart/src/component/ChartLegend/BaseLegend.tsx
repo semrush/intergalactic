@@ -1,4 +1,4 @@
-import { Component, type Intergalactic, type ValidDefaultProps } from '@semcore/core';
+import { Component, type Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 import type { LegendProps } from './BaseLegend.type';
@@ -8,7 +8,7 @@ import { makeDataHintsHandlers } from '../../a11y/hints';
 export abstract class BaseLegend<
   P extends LegendProps,
   E extends readonly ((...args: any[]) => any)[] = never[],
-  DP extends ValidDefaultProps<DP, P> = never,
+  DP extends Intergalactic.InternalTypings.ValidDefaultProps<DP, P> = never,
 > extends Component<P, E, never, {}, {}, DP> {
   componentDidMount() {
     this.setHints();

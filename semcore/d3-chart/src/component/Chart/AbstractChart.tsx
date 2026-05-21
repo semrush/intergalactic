@@ -1,5 +1,5 @@
 import { Flex, Box } from '@semcore/base-components';
-import type { ValidDefaultProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -34,7 +34,7 @@ export abstract class AbstractChart<
   Enhancers extends readonly ((...args: any[]) => any)[] = [],
   InnerProps = {},
   State extends ChartState = ChartState,
-  DefaultProps extends ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
+  DefaultProps extends Intergalactic.InternalTypings.ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
 > extends Component<Props, Enhancers, Readonly<{}>, InnerProps, State, DefaultProps> {
   public static style = style;
 
