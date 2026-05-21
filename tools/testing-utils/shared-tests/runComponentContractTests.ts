@@ -41,7 +41,7 @@ const presetChecks: Record<ComponentContractPreset, ComponentContractCheck[]> = 
   none: [],
 };
 
-const getChecks = ({
+const getComponentContractChecks = ({
   preset,
   include = [],
   skip = [],
@@ -58,6 +58,28 @@ const getChecks = ({
   return checks;
 };
 
+const validateComponentContractOptions = (options: ComponentContractOptions) => {
+  const { expectedDataUiName, tagCases } = options;
+  const checks = getComponentContractChecks(options);
+
+  if (checks.has('dataUiName') && !expectedDataUiName) {
+    throw new Error('expectedDataUiName is required when dataUiName contract check is enabled. Pass expectedDataUiName or add skip: [\'dataUiName\'].');
+  }
+
+  if (checks.has('tag') && (!tagCases || tagCases.length === 0)) {
+    throw new Error('tagCases are required when tag contract check is enabled. Pass explicit tagCases for this component.');
+  }
+
+  tagCases?.forEach(({ tag, name, expectedTagName }) => {
+    if (typeof tag !== 'string' && !expectedTagName) {
+      const tagName = name || (tag as any).displayName || (tag as any).name || 'custom component';
+      throw new Error(`expectedTagName is required for component tag case "${tagName}"`);
+    }
+  });
+
+  return checks;
+};
+
 export const runComponentContractTests = (options: ComponentContractOptions) => {
   const {
     Component,
@@ -67,15 +89,12 @@ export const runComponentContractTests = (options: ComponentContractOptions) => 
     tagCases,
     refTarget,
   } = options;
-  const checks = getChecks(options);
+  const checks = validateComponentContractOptions(options);
 
   if (checks.has('className')) shouldSupportClassName(Component, Wrapper, props);
   if (checks.has('ref')) shouldSupportRef(Component, Wrapper, props, refTarget);
   if (checks.has('dataAttributes')) shouldSupportDataAttributes(Component, Wrapper, props);
   if (checks.has('style')) shouldSupportStyle(Component, Wrapper, props);
-  if (checks.has('dataUiName') && !expectedDataUiName) {
-    throw new Error('expectedDataUiName is required when dataUiName contract check is enabled. Pass expectedDataUiName or add skip: [\'dataUiName\'].');
-  }
   if (checks.has('dataUiName')) {
     shouldHaveDataUiName(Component, Wrapper, props, expectedDataUiName!);
   }

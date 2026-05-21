@@ -121,7 +121,6 @@ describe('Carousel.Indicators', () => {
 
   runComponentContractTests({
     Component: Carousel.Indicators,
-    Wrapper: Carousel,
     expectedDataUiName: 'Carousel.Indicators',
     preset: 'leaf',
   });
@@ -205,7 +204,7 @@ describe('Carousel.Prev', () => {
 
   runComponentContractTests({
     Component: Carousel.Prev,
-    Wrapper: Carousel,
+    props: { label: 'Previous slide' },
     expectedDataUiName: 'Carousel.Prev',
     preset: 'root',
   });
@@ -262,7 +261,7 @@ describe('Carousel.Next', () => {
 
   runComponentContractTests({
     Component: Carousel.Next,
-    Wrapper: Carousel,
+    props: { label: 'Next slide' },
     expectedDataUiName: 'Carousel.Next',
     preset: 'root',
   });
