@@ -10,6 +10,7 @@ import ProgrammaticallyFocusExample from './examples/programmatically_focus';
 import type { defaultProps as SelectWithEllipsisProps } from './examples/select-with-ellipsis';
 import SelectWithEllipsisExample from './examples/select-with-ellipsis';
 import SubcomponentsExample, { defaultProps as SubcomponentsProps } from './examples/subcomponents_trigger_popper_list_search';
+import VirtualizationExample from './examples/virtualization';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Test',
@@ -216,4 +217,8 @@ export const SubcomponentsTriggerPopperListSearch: StoryObj<typeof Subcomponents
     inputSearchPlaceholder: { control: { type: 'text' } },
   },
   args: SubcomponentsProps,
+};
+
+export const Virtualization: StoryObj = {
+  render: VirtualizationExample,
 };

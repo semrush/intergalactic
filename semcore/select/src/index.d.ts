@@ -143,6 +143,7 @@ declare const Select: IntergalacticSelectComponent & {
   Popper: typeof DropdownMenu.Popper;
   List: typeof DropdownMenu.List;
   Menu: typeof DropdownMenu.Menu;
+  VirtualList: typeof DropdownMenu.VirtualList;
   Group: typeof Dropdown.Group;
   Option: Intergalactic.Component<
     'option',
