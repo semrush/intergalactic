@@ -84,7 +84,7 @@ const Demo = () => {
               aria-label={`Drop zone ${index + 1}`}
               style={{
                 border: '1px dashed var(--intergalactic-border-primary, #c4c7cf)',
-                borderRadius: '6px',
+                borderRadius: 'var(--intergalactic-surface-rounded)',
               }}
             >
               <Flex
