@@ -60,6 +60,8 @@ class ModalRoot extends Component {
   handleOutsideClick = (e) => {
     fire(this, 'onClose', 'onOutsideClick', e);
 
+    // Keep focus on modal if overlay clicks don't close the modal.
+    // Otherwise, wait for close modal to cleanup windowRef.
     setTimeout(() => {
       this.windowRef.current?.focus({ focusVisible: false });
     });
