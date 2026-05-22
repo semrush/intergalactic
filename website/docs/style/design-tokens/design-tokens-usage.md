@@ -9,13 +9,13 @@ Basically, design tokens are atoms of the design system's visual styles. Think o
 
 ![](static/token-description.png)
 
-::: tip
+<!-- ::: tip
 For the Semrush developers and designers we have a couple of onboarding files. Refer to the following links:
 
 - [Themization workshop file](https://www.figma.com/design/7dJaaWaqoTKdeGU4Pq02rz/Themization-workshop?node-id=0-1&node-type=canvas&t=cC709O9aHUP7lTRL-11) which you can duplicate and play with the examples
 - [Brief tokens explanation](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=14802-111796&node-type=frame&t=qOTf0DSn0M8p63of-11) from our Theme's playground file
 - [Presentation on design tokens](https://www.figma.com/design/DfhEsCc7j9c1XTpi7mwHwt/Design-tokens-(for-designers)?node-id=0-1&node-type=canvas&t=2zFBWvB8qwRtpivO-11)
-:::
+::: -->
 
 ## Token sets
 
@@ -40,7 +40,7 @@ Semantic tokens include tokens for:
 
 ## Token naming structure
 
-Token name is the same in both Figma and code, except for the theme/project name which is added to the token in the code.
+Token name is the same in both Figma and code, except for the theme/project prefix which is added to the token in the code.
 
 For example, compare token for primary neutral background:
 
@@ -75,10 +75,6 @@ Semantic tokens are context-specific, so they're used according to the intention
 
 ![](static/token-usage3.png)
 
-Base tokens can be used for new elements and components which aren't in the Intergalactic Design System yet, but only if semantic tokens aren't suitable.
+When building something custom, we recommend using semantic tokens whenever possible. As a fallback, use base tokens. And if you feel like some semantic token is missing, let us know.
 
 ![](static/token-usage4.png)
-
-## Creating new theme
-
-Refer to [the section in the common guide](/style/design-tokens/design-tokens#creating-new-theme).
