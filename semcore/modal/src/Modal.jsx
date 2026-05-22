@@ -42,6 +42,8 @@ class ModalRoot extends Component {
     disablePreventScroll: false,
   };
 
+  windowRef = React.createRef();
+
   state = { hasTitle: false };
 
   handleKeyDown = (e) => {
@@ -57,6 +59,10 @@ class ModalRoot extends Component {
 
   handleOutsideClick = (e) => {
     fire(this, 'onClose', 'onOutsideClick', e);
+
+    setTimeout(() => {
+      this.windowRef.current?.focus({ focusVisible: false });
+    });
   };
 
   getOverlayProps() {
@@ -81,6 +87,7 @@ class ModalRoot extends Component {
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
       duration,
       animationsDisabled,
+      'ref': this.windowRef,
     };
   }
 
