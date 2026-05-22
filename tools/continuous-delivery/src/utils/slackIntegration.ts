@@ -3,18 +3,28 @@ import axios from 'axios';
 import type { ChangelogChangeLabel, ChangelogItem } from './changelog';
 
 const type2SectionLabel: Record<string, string> = {
-  added: ':white_check_mark: ADDED',
-  changed: ':recycle: CHANGED',
-  fixed: ':hammer_and_wrench: FIXED',
-  removed: ':wastebasket: REMOVED',
-  break: ':interrobang: BREAK',
+  added: ':sparkles: Added',
+  changed: ':arrows_counterclockwise: Changed',
+  fixed: ':ladybug: Fixed',
+  removed: ':wastebasket: Removed',
+  break: ':warning: Break',
 };
 
 export const makeMessageFromChangelogs = (changelogs: ChangelogItem[], withVersions: boolean) =>
   changelogs.map((item) => bodyTemplate(item, withVersions)).join('\n');
 
+const formatComponentDisplayName = (component: string): string => {
+  const name = component.replace(/^@semcore\//i, '');
+
+  if (!name) {
+    return component;
+  }
+
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
+
 const titleTemplate = (name: string, version: string | null) =>
-  `\n-------- \n:black_heart: *${name}* ${version ? `v${version}` : ''} \n\n`;
+  `\n- - - \n*${formatComponentDisplayName(name)}* ${version ? `v${version}` : ''} \n\n`;
 
 const bodyTemplate = (changeItem: ChangelogItem, withVersions: boolean) => {
   const sections: Partial<{ [label in NonNullable<ChangelogChangeLabel>]: string[] }> = {};
@@ -34,7 +44,7 @@ const bodyTemplate = (changeItem: ChangelogItem, withVersions: boolean) => {
         return (
           title +
           '\n' +
-          changeDescriptions.map((changeDescription) => `- ${changeDescription}`).join('\n')
+          changeDescriptions.map((changeDescription) => `• ${changeDescription}`).join('\n')
         );
       })
       .join('\n')
