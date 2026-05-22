@@ -24,7 +24,7 @@ import DonutMockData from '../../../../../../components/d3-chart/__mocks__/donut
 import ScatterplotMockData from '../../../../../../components/d3-chart/__mocks__/scatterplot';
 import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
 import FeedbackRatingFormExample
-  from '../../../../../ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
+  from '../../../../../ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 import PrimaryTable from '../Tables/PrimaryTable';
 
 export type DashboardProps = {
