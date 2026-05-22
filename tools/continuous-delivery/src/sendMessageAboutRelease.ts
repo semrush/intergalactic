@@ -6,7 +6,7 @@ export async function sendMessageAboutRelease(version: string, lastVersionChange
   log('Sending message to internal Slack...');
 
   try {
-    const title = `🐋 Semcore Release ${version.replace(/^v/, '')}`;
+    const title = `:whale2: Semcore Release v${version.replace(/^v/, '')}`;
     const body = makeMessageFromChangelogs(lastVersionChangelogs, false);
 
     await sendMessage({

@@ -23,8 +23,8 @@ const formatComponentDisplayName = (component: string): string => {
   return name.charAt(0).toUpperCase() + name.slice(1);
 };
 
-const titleTemplate = (name: string, version: string | null) =>
-  `\n- - - \n*${formatComponentDisplayName(name)}* ${version ? `v${version}` : ''} \n\n`;
+const getSectionTitle = (label: string): string =>
+  type2SectionLabel[label.toLowerCase()] ?? label.toUpperCase();
 
 const bodyTemplate = (changeItem: ChangelogItem, withVersions: boolean) => {
   const sections: Partial<{ [label in NonNullable<ChangelogChangeLabel>]: string[] }> = {};
@@ -35,20 +35,19 @@ const bodyTemplate = (changeItem: ChangelogItem, withVersions: boolean) => {
     }
   }
 
-  return (
-    titleTemplate(changeItem.component, withVersions ? changeItem.version : null) +
-    Object.entries(sections)
-      .map(([label, changeDescriptions]) => {
-        const title = label in type2SectionLabel ? type2SectionLabel[label] : label.toUpperCase();
+  const versionSuffix =
+    withVersions && changeItem.version ? ` v${changeItem.version}` : '';
+  const header = `- - -\n*${formatComponentDisplayName(changeItem.component)}*${versionSuffix}`;
+  const sectionsText = Object.entries(sections)
+    .map(([label, changeDescriptions]) => {
+      const title = getSectionTitle(label);
+      const lines = changeDescriptions.join('\n');
 
-        return (
-          title +
-          '\n' +
-          changeDescriptions.map((changeDescription) => `• ${changeDescription}`).join('\n')
-        );
-      })
-      .join('\n')
-  );
+      return lines ? `${title}\n${lines}` : title;
+    })
+    .join('\n');
+
+  return sectionsText ? `${header}\n${sectionsText}` : header;
 };
 
 export const sendMessage = async ({
