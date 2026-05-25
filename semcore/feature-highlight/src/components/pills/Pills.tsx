@@ -64,6 +64,11 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
   );
 }
 
+/**
+ * Pills FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#pills|Docs}
+ */
 export const PillsFH = createComponent(PillsFHRoot, {
   Item: Pills.Item,
   HighlightedItem: createComponent(HighlightedItemRoot, { Text: Pills.Item.Text, Addon: HighlightedItemAddon }),

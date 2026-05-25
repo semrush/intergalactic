@@ -709,6 +709,11 @@ function DropZone(props: DropZoneProps) {
   );
 };
 
+/**
+ * DragAndDrop
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/drag-and-drop/drag-and-drop-api/|API} | {@link https://developer.semrush.com/intergalactic/components/drag-and-drop/drag-and-drop-code/|Examples}
+ */
 const DragAndDrop = createComponent(DragAndDropRoot, {
   Draggable,
   DropZone,

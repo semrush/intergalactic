@@ -54,6 +54,11 @@ class CheckboxFHRoot extends Component<NSCheckbox.Props> {
   }
 }
 
+/**
+ * Checkbox FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#checkbox|Docs}
+ */
 export const CheckboxFH = createComponent(CheckboxFHRoot, {
   Text: Checkbox.Text,
   Value: Checkbox.Value,

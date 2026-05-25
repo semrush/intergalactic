@@ -29,6 +29,11 @@ class RootButtonLink extends Component<ButtonLinkProps> {
   }
 }
 
+/**
+ * ButtonLink
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/button/button-api/|API} | {@link https://developer.semrush.com/intergalactic/components/button/button-code/|Examples}
+ */
 export const ButtonLink = createComponent(RootButtonLink, {
   Text: Link.Text,
   Addon: Link.Addon,

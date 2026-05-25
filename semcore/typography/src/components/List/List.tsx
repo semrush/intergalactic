@@ -64,6 +64,11 @@ Content.displayName = 'Content';
 
 const Item = createComponent(ItemRoot, { Content }) as NSList.Item.Component;
 
+/**
+ * List
+ *
+ * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#list|Api} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
+ */
 const List = createComponent(ListRoot, { Item }) as NSList.Component;
 
 export default List;

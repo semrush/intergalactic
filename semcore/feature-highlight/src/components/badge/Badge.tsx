@@ -42,4 +42,9 @@ class BadgeFHRoot extends Component<BadgeFHProps, typeof BadgeFHRoot.enhance, ne
   }
 }
 
+/**
+ * Badge FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#badge|Docs}
+ */
 export const BadgeFH = createComponent<'span', BadgeFHProps>(BadgeFHRoot);

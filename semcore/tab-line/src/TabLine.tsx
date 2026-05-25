@@ -248,6 +248,11 @@ function Addon(
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
+/**
+ * TabLine
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tab-line/tab-line-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tab-line/tab-line-code/|Examples}
+ */
 const TabLine = createComponent(TabLineRoot, {
   Item: [TabLineItem, { Text, Addon }],
 }) as unknown as NSTabLine.Component;

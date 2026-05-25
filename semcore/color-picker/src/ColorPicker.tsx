@@ -195,6 +195,11 @@ export function Popper(props: PopperAsProps) {
   );
 }
 
+/**
+ * ColorPicker
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-code/|Examples}
+ */
 const ColorPicker = createComponent(ColorPickerRoot, {
   Trigger,
   Popper,
@@ -202,6 +207,11 @@ const ColorPicker = createComponent(ColorPickerRoot, {
   Colors,
 }) as any;
 
+/**
+ * PaletteManager
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-api#palettemanager|API} | {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-code/|Examples}
+ */
 const PaletteManager = createComponent(PaletteManagerRoot, {
   Item: ColorPicker.Item,
   Colors: ColorsCustom,

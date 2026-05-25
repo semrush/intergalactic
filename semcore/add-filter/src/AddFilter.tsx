@@ -305,6 +305,11 @@ function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFilte
     : null;
 }
 
+/**
+ * AddFilter
+ *
+ * {@link https://developer.semrush.com/intergalactic/filter-group/add-filter/add-filter-code|Example}
+ */
 const AddFilter = createComponent(RootAddFilter, {
   Select: AddFilterSelect,
   Input: AddFilterInput,

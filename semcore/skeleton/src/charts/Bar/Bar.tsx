@@ -39,4 +39,9 @@ function BarChartSkeleton(
   );
 }
 
+/**
+ * BarChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api#barchartskeleton|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code#chart-skeleton|Examples}
+ */
 export default createComponent(BarChartSkeleton) as NSSkeletonBarChart.Component;

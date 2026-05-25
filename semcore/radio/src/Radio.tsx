@@ -62,6 +62,11 @@ class RadioGroupRoot extends Component<
   }
 }
 
+/**
+ * RadioGroup
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/radio/radio-api/|API} | {@link https://developer.semrush.com/intergalactic/components/radio/radio-code/|Examples}
+ */
 const RadioGroup = createComponent(RadioGroupRoot, {}, { context: RadioContext }) as unknown as NSRadio.Group.Component;
 
 class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSRadio.Component>> {
@@ -312,11 +317,21 @@ function Text(
 }
 Text.displayName = 'Text';
 
+/**
+ * Value
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/radio/radio-api/|API} | {@link https://developer.semrush.com/intergalactic/components/radio/radio-code/|Examples}
+ */
 const Value = createComponent(ValueRoot, {
   Control,
   RadioMark,
 }) as NSRadio.Value.Component;
 
+/**
+ * Radio
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/radio/radio-api/|API} | {@link https://developer.semrush.com/intergalactic/components/radio/radio-code/|Examples}
+ */
 const Radio = createComponent(RadioRoot, {
   Text,
   Value,

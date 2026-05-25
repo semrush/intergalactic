@@ -202,6 +202,11 @@ function Addon(props) {
 }
 
 export { inputProps };
+/**
+ * Switch
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/switch/switch-api/|API} | {@link https://developer.semrush.com/intergalactic/components/switch/switch-code/|Examples}
+ */
 export default createComponent(Switch, {
   Value,
   Addon,

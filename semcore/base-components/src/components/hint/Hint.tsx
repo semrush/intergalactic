@@ -367,4 +367,9 @@ class HintPopperRoot extends Component<SimpleHintPopperProps, typeof enhances, H
   }
 }
 
+/**
+ * Hint
+ *
+ * {@link https://developer.semrush.com/intergalactic/utils/hint/hint-api|API} | {@link https://developer.semrush.com/intergalactic/utils/hint/hint-code|Examples}
+ */
 export const Hint = createComponent<'div', SimpleHintPopperProps>(HintPopperRoot);

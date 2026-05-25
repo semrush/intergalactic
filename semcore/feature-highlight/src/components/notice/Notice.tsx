@@ -57,6 +57,11 @@ class NoticeFHRoot extends Component<NoticeSmartProps> {
   }
 }
 
+/**
+ * Notice FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#notice|Docs}
+ */
 export const NoticeFH = createComponent(NoticeFHRoot, {
   Label: Notice.Label,
   Actions: Notice.Actions,

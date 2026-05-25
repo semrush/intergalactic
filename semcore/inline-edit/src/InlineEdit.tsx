@@ -191,6 +191,11 @@ type InputCtx = {
   getEditProps: PropGetterFn;
 };
 
+/**
+ * InlineEdit
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-api/|API} | {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-code/|Examples}
+ */
 export default createComponent(InlineEdit, {
   Edit,
   View,

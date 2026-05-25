@@ -114,10 +114,20 @@ class DonutRoot extends Component<ScoreDonutProps, typeof DonutRoot.enhance> {
   }
 }
 
+/**
+ * MiniCharts.ScoreDount
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const ScoreDonut = createComponent<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>(DonutRoot);
 
 ScoreDonut.displayName = 'MiniChart.ScoreDonut';
 
+/**
+ * MiniCharts.ScoreSemiDount
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const ScoreSemiDonut = createComponent<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>(
   DonutRoot,
   {},

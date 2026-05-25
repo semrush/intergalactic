@@ -506,4 +506,9 @@ class CigaretteChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * CigaretteChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/cigarette-chart/cigarette-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/cigarette-chart/cigarette-chart-code/|Examples}
+ */
 export const CigaretteChart: CigaretteChartType = createComponent(CigaretteChartComponent);

@@ -153,10 +153,20 @@ function Text(
   );
 }
 
+/**
+ * Skeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api/|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
 const Skeleton = createComponent(SkeletonRoot) as NSSkeleton.RenderComponent;
 
 export { Skeleton };
 
+/**
+ * Skeleton SVG
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api/|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
 export default createComponent(SkeletonSVG, {
   Text,
 }) as NSSkeleton.Component;

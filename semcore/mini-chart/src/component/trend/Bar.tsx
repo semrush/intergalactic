@@ -95,10 +95,20 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
   }
 }
 
+/**
+ * MiniCharts.TrendBar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const TrendBar = createComponent<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>(TrendBarRoot);
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 
+/**
+ * MiniCharts.TrendHistogram
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const TrendHistogram = createComponent<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>(
   TrendBarRoot,
   {},

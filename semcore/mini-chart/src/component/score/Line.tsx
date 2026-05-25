@@ -114,6 +114,11 @@ function Segment(props: InnerSegmentProps) {
 }
 Segment.displayName = 'Segment';
 
+/**
+ * MiniCharts.ScoreLine
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const ScoreLine = createComponent(LineRoot, {
   Segment,
 }) as ScoreLineComponent;

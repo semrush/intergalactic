@@ -24,4 +24,9 @@ function BubbleChartSkeleton() {
   );
 }
 
+/**
+ * BubbleChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api/|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
 export default createComponent(BubbleChartSkeleton) as NSSkeletonBubbleChart.Component;

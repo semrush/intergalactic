@@ -125,6 +125,11 @@ function Addon(
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
+/**
+ * TabPanel
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tab-panel/tab-panel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tab-panel/tab-panel-code/|Examples}
+ */
 const TabPanel = createComponent(TabPanelRoot, {
   Item: [TabPanelItem, { Text, Addon }],
 }) as unknown as NSTabPanel.Component;

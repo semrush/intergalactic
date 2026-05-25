@@ -383,6 +383,11 @@ function TagCloseButton(props: IRootComponentProps) {
   return sstyled(props.styles)(<STagContainerClose render={TagContainer.Close} />);
 }
 
+/**
+ * InputTags
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/input-tags/input-tags-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-tags/input-tags-code/|Examples}
+ */
 const InputTags = createComponent(InputTagsRoot, {
   Value,
   TagsContainer: InputTagsContainer,

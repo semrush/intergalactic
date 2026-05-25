@@ -124,4 +124,9 @@ class AreaChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * AreaChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/area-chart/area-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/area-chart/area-chart-code/|Examples}
+ */
 export const AreaChart: AreaChartType = createComponent(AreaChartComponent);

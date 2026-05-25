@@ -445,6 +445,11 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
   );
 }
 
+/**
+ * ScrollArea
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/scroll-area/scroll-area-api|API} | {@link https://developer.semrush.com/intergalactic/components/scroll-area/scroll-area-code|Examples}
+ */
 const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
   Bar: ScrollBar,

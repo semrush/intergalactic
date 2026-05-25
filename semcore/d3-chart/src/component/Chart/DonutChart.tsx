@@ -107,4 +107,9 @@ class DonutChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * DonutChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-code/|Examples}
+ */
 export const DonutChart: DonutChartType = createComponent(DonutChartComponent);

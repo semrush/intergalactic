@@ -115,4 +115,9 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   }
 }
 
+/**
+ * Badge
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/badge/badge-api/|API} | {@link https://developer.semrush.com/intergalactic/components/badge/badge-code/|Examples}
+ */
 export const Badge = createComponent<'span', BadgeProps>(RootBadge);

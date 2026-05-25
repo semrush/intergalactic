@@ -103,4 +103,9 @@ class LineChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * LineChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/line-chart/line-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/line-chart/line-chart-code/|Examples}
+ */
 export const LineChart: LineChartType = createComponent(LineChartComponent);

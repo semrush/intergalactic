@@ -117,6 +117,11 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * CompactHorizontalBarChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-code/|Examples}
+ */
 export const CompactHorizontalBarChart: CompactHorizontalBarChartType = createComponent(
   CompactHorizontalBarChartComponent,
 );

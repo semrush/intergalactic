@@ -29,6 +29,11 @@ function BlockquoteRoot(
 
 BlockquoteRoot.displayName = 'Blockquote';
 
+/**
+ * Blockquote
+ *
+ * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#blockquote|Api} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
+ */
 const Blockquote = createBaseComponent(BlockquoteRoot) as NSBlockquote.Component;
 
 export default Blockquote;

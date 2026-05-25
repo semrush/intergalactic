@@ -294,4 +294,9 @@ class BarChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * BarChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bar-chart/bar-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bar-chart/bar-chart-code/|Examples}
+ */
 export const BarChart: BarChartType = createComponent(BarChartComponent);

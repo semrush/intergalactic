@@ -15,4 +15,9 @@ function Box(props: any, ref: any) {
 
 Box.displayName = 'Box';
 
+/**
+ * Box
+ *
+ * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|Docs}
+ */
 export default createBaseComponent(Box) as any as Intergalactic.Component<'div', BoxProps>;

@@ -408,6 +408,11 @@ function Header(props: any) {
   );
 }
 
+/**
+ * FeedbackRating
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-api#feedbackform-feedbackrating|API} | {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-code/|Examples}
+ */
 const FeedbackRating = createComponent<'form', FeedbackRatingProps, {}, typeof FeedbackRatingRoot.enhance>(FeedbackRatingRoot, {
   Header,
   Item: FeedbackItem,

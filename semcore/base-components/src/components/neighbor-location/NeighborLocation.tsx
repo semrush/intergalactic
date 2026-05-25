@@ -123,6 +123,11 @@ function useNeighborLocationDetect(index: number) {
   return calculateNeighborLocation(controlsLengthRef.current, index);
 }
 
+/**
+ * NeighborLocation
+ *
+ * {@link https://developer.semrush.com/intergalactic/utils/neighbor-location/neighbor-location-api|API}
+ */
 export const NeighborLocation = createComponent(
   NeighborLocationRoot,
   {

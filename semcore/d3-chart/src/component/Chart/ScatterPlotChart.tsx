@@ -139,4 +139,9 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * ScatterPlotChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/scatterplot-chart/scatterplot-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/scatterplot-chart/scatterplot-chart-code/|Examples}
+ */
 export const ScatterPlotChart: ScatterPlotChartType = createComponent(ScatterPlotChartComponent);

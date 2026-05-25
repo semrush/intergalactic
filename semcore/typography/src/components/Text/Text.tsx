@@ -134,6 +134,11 @@ class TextRoot extends Component<
   }
 }
 
+/**
+ * Text
+ *
+ * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#text|Api} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
+ */
 const Text = createComponent(TextRoot) as NSText.Component;
 
 export default Text;

@@ -261,6 +261,11 @@ const Value = createComponent(ValueRoot, {
   CheckMark,
 }) as NSCheckbox.Value.Component;
 
+/**
+ * Checkbox
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/checkbox/checkbox-api/|API} | {@link https://developer.semrush.com/intergalactic/components/checkbox/checkbox-code/|Examples}
+ */
 const Checkbox = createComponent(CheckboxRoot, {
   Text,
   Value,

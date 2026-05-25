@@ -211,6 +211,11 @@ function Title(props) {
   return sstyled(styles)(<STitle render={Text} tag='h2' use:color={resolveColor(color)} />);
 }
 
+/**
+ * Modal
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/modal/modal-api/|API} | {@link https://developer.semrush.com/intergalactic/components/modal/modal-code/|Examples}
+ */
 const Modal = createComponent(ModalRoot, {
   Window,
   Overlay,

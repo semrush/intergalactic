@@ -216,6 +216,11 @@ const Item = createComponent(RootItem, {
   Collapse,
 }) as NSAccordion.Item.Component;
 
+/**
+ * Accordion
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/accordion/accordion-api/|API} | {@link https://developer.semrush.com/intergalactic/components/accordion/accordion-code/|Examples}
+ */
 const Accordion = createComponent(RootAccordion, {
   Item,
 }) as unknown as NSAccordion.Component;

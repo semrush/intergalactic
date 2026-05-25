@@ -290,6 +290,11 @@ function Item({ styles, Children }) {
   );
 }
 
+/**
+ * Slider
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/slider/slider-api/|API} | {@link https://developer.semrush.com/intergalactic/components/slider/slider-code/|Examples}
+ */
 const Slider = createComponent(SliderRoot, {
   Bar,
   Knob,

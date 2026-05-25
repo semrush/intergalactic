@@ -31,6 +31,11 @@ class DividerRoot extends Component<Intergalactic.InternalTypings.InferComponent
   }
 }
 
+/**
+ * Divider
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/divider/divider-api/|API} | {@link https://developer.semrush.com/intergalactic/components/divider/divider-code/|Examples}
+ */
 const Divider = createComponent(DividerRoot) as NSDivider.Component;
 
 export default Divider;

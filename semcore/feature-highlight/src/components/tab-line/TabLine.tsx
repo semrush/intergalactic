@@ -65,6 +65,11 @@ function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boole
   );
 }
 
+/**
+ * TabLine FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#tabline|Docs}
+ */
 export const TabLineFH = createComponent(TabLineFHRoot, {
   Item: [TabLine.Item, { Text: TabLine.Item.Text, Addon: TabLine.Item.Addon }],
   HighlightedItem: createComponent(HighlightedItemRoot, { Text: TabLine.Item.Text, Addon: HighlightedAddon }),

@@ -35,4 +35,9 @@ class RootSpin extends Component {
   }
 }
 
+/**
+ * Spin
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/spin/spin-api/|API} | {@link https://developer.semrush.com/intergalactic/components/spin/spin-code/|Examples}
+ */
 export default createComponent(RootSpin);

@@ -279,6 +279,11 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
   }
 }
 
+/**
+ * BulkTextarea
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-api/|API} | {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-code/|Examples}
+ */
 const BulkTextarea = (<T extends string | string[]>() =>
   createComponent(BulkTextareaRoot, {
     InputField,

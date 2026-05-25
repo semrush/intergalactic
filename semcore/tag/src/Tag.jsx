@@ -319,6 +319,11 @@ function Circle(props) {
   return sstyled(styles)(<SCircle render={Box} tag='span' tag-color={tagColor} />);
 }
 
+/**
+ * Tag
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tag/tag-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tag/tag-code/|Examples}
+ */
 const Tag = createComponent(RootTag, {
   Text,
   Addon,
@@ -329,6 +334,11 @@ const CloseTagContainer = createComponent(RootCloseTagContainer, {
   Close: CloseM,
 });
 
+/**
+ * TagContainer
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tag/tag-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tag/tag-code/|Examples}
+ */
 export const TagContainer = createComponent(RootTagContainer, {
   Tag,
   Addon,

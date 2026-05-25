@@ -393,6 +393,11 @@ class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value
   }
 }
 
+/**
+ * InputMask
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-code/|Examples}
+ */
 export default createComponent(InputMask, {
   Value,
   Addon: Input.Addon,

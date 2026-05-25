@@ -35,5 +35,10 @@ class Counter extends Component<CounterProps, typeof enhance> {
   }
 }
 
+/**
+ * Counter
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/counter/counter-api/|API} | {@link https://developer.semrush.com/intergalactic/components/counter/counter-code/|Examples}
+ */
 export default createComponent(Counter);
 export * from './AnimatedNumber';
