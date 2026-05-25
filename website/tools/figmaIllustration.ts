@@ -7,6 +7,7 @@ import sharp from 'sharp';
 
 const limit = pLimit(1);
 const FIGMA_PROJECT_ID = '74268036';
+const FIGMA_EXPORT_SCALE = 1.2;
 
 dotenv.config();
 
@@ -33,7 +34,7 @@ const downloadIllustrations = async () => {
       for (const illustration of children.children) {
         try {
           const response = await fetch(
-            `https://api.figma.com/v1/images/${fileId}?ids=${illustration.id}&format=png`,
+            `https://api.figma.com/v1/images/${fileId}?ids=${illustration.id}&format=png&scale=${FIGMA_EXPORT_SCALE}`,
             { headers: { 'X-Figma-Token': figmaKey } },
           );
 
@@ -44,7 +45,9 @@ const downloadIllustrations = async () => {
             .then((res) => res.arrayBuffer())
             .then((arrayBuffer) => {
               const buffer = Buffer.from(arrayBuffer);
-              sharp(buffer).png({ quality: 90 }).toFile(`${folderName}/${illustration.name}.png`);
+              sharp(buffer)
+                .png({ compressionLevel: 2, quality: 98, adaptiveFiltering: true })
+                .toFile(`${folderName}/${illustration.name}.png`);
             });
 
           const fileName = `${illustration.name}.png`;
