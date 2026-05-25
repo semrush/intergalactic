@@ -1,13 +1,13 @@
 import { log } from './utils';
 import type { ChangelogItem } from './utils/changelog';
-import { makeMessageFromChangelogs, sendMessage } from './utils/slackIntegration';
+import { makeTitleFromChangelogs, makeMessageFromChangelogs, sendMessage } from './utils/slackIntegration';
 
 export async function sendMessageAboutRelease(version: string, lastVersionChangelogs: ChangelogItem[], endpoints: string[]) {
   log('Sending message to internal Slack...');
 
   try {
-    const title = `:whale2: Semcore Release v${version.replace(/^v/, '')}`;
-    const body = makeMessageFromChangelogs(lastVersionChangelogs, false);
+    const title = makeTitleFromChangelogs(version);
+    const body = makeMessageFromChangelogs(version, lastVersionChangelogs);
 
     await sendMessage({
       title,

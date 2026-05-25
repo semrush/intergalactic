@@ -2,45 +2,57 @@ import axios from 'axios';
 
 import type { ChangelogChangeLabel, ChangelogItem } from './changelog';
 
-const type2SectionLabel: Record<string, string> = {
-  added: ':sparkles: Added',
-  changed: ':arrows_counterclockwise: Changed',
-  fixed: ':ladybug: Fixed',
-  removed: ':wastebasket: Removed',
-  break: ':warning: Break',
+const type2SectionLabel: Record<ChangelogChangeLabel, string> = {
+  Added: ':sparkles: Added',
+  Changed: ':arrows_counterclockwise: Changed',
+  Fixed: ':ladybug: Fixed',
+  BREAK: ':warning: Break',
 };
 
-export const makeMessageFromChangelogs = (changelogs: ChangelogItem[], withVersions: boolean) =>
-  changelogs.map((item) => bodyTemplate(item, withVersions)).join('\n');
+export const makeTitleFromChangelogs = (version: string) => {
+  if (version.startsWith('v')) {
+    return `:whale2: Semcore Release ${version}`;
+  }
+
+  if (version.startsWith('icon')) {
+    return `:art: Icon Release ${version}`;
+  }
+
+  if (version.startsWith('illustration')) {
+    return `:art: Illustration Release ${version}`;
+  }
+
+  throw new Error(`Unknown version: "${version}"`);
+};
+
+export const makeMessageFromChangelogs = (version: string, changelogs: ChangelogItem[]) => {
+  if (version.startsWith('v')) {
+    return changelogs.map((item) => bodyTemplate(item)).join('\n');
+  }
+
+  return '';
+};
 
 const formatComponentDisplayName = (component: string): string => {
   const name = component.replace(/^@semcore\//i, '');
 
-  if (!name) {
-    return component;
-  }
-
   return name.charAt(0).toUpperCase() + name.slice(1);
 };
 
-const getSectionTitle = (label: string): string =>
-  type2SectionLabel[label.toLowerCase()] ?? label.toUpperCase();
-
-const bodyTemplate = (changeItem: ChangelogItem, withVersions: boolean) => {
-  const sections: Partial<{ [label in NonNullable<ChangelogChangeLabel>]: string[] }> = {};
+const bodyTemplate = (changeItem: ChangelogItem) => {
+  const sections = new Map<ChangelogChangeLabel, string[]>();
   for (const change of changeItem.changes) {
     if (change.label) {
-      sections[change.label] = sections[change.label] || [];
-      sections[change.label]?.push(change.description);
+      const changes = sections.get(change.label) ?? [];
+      changes.push(change.description);
+      sections.set(change.label, changes);
     }
   }
 
-  const versionSuffix =
-    withVersions && changeItem.version ? ` v${changeItem.version}` : '';
-  const header = `- - -\n*${formatComponentDisplayName(changeItem.component)}*${versionSuffix}`;
-  const sectionsText = Object.entries(sections)
+  const header = `- - -\n*${formatComponentDisplayName(changeItem.component)}*`;
+  const sectionsText = Array.from(sections.entries())
     .map(([label, changeDescriptions]) => {
-      const title = getSectionTitle(label);
+      const title = type2SectionLabel[label] ?? label.toUpperCase();
       const lines = changeDescriptions.join('\n');
 
       return lines ? `${title}\n${lines}` : title;
