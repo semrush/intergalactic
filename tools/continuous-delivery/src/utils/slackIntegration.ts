@@ -15,11 +15,11 @@ export const makeTitleFromChangelogs = (version: string) => {
   }
 
   if (version.startsWith('icon')) {
-    return `:art: Icon Release ${version}`;
+    return `:art: Icon Release ${version}\n- - -\n`;
   }
 
   if (version.startsWith('illustration')) {
-    return `:art: Illustration Release ${version}`;
+    return `:art: Illustration Release ${version}\n- - -\n`;
   }
 
   throw new Error(`Unknown version: "${version}"`);
@@ -29,8 +29,21 @@ export const makeMessageFromChangelogs = (version: string, changelogs: Changelog
   if (version.startsWith('v')) {
     return changelogs.map((item) => bodyTemplate(item)).join('\n');
   }
+  let component: 'icon' | 'illustration';
 
-  return '';
+  if (version.startsWith('icon')) {
+    component = 'icon';
+  } else if (version.startsWith('illustration')) {
+    component = 'illustration';
+  } else {
+    throw new Error(`Unknown version: "${version}"`);
+  }
+
+  const changes = changelogs.find((item) => item.component === `@semcore/${component}`);
+
+  return changes?.changes.map((item) => {
+    return `- *${item.label}* ${item.description}`;
+  }).join('\n') ?? '';
 };
 
 const formatComponentDisplayName = (component: string): string => {
