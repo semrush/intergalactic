@@ -67,6 +67,7 @@ const Demo = () => {
   const [visible, setVisible] = React.useState(false);
   const [query, setQuery] = React.useState('');
   const [suggestions, setSuggestions] = React.useState<Suggestion[]>([]);
+  const [isEmptyQuery, setIsEmptyQuery] = React.useState(true);
   const loadSuggestions = React.useCallback(
     debounce(
       (query: string) => fakeFetch(query).then((suggestions) => setSuggestions(suggestions)),
@@ -75,8 +76,17 @@ const Demo = () => {
     [],
   );
   React.useEffect(() => {
-    loadSuggestions(query);
-  }, [query]);
+    if (query === '') {
+      setSuggestions([]);
+      setIsEmptyQuery(true);
+    } else {
+      if (isEmptyQuery) {
+        setVisible(true);
+        setIsEmptyQuery(false);
+      }
+      loadSuggestions(query);
+    }
+  }, [query, isEmptyQuery]);
   const handleSelect = React.useCallback((x: string) => {
     setQuery(x);
     setVisible(false);
