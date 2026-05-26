@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, fireEvent, queryByAttribute } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -71,14 +71,14 @@ describe('Modal', () => {
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
 
-  test.sequential('Verify supports onClose for CloseIcons', () => {
+  test.sequential('Verify supports onClose for CloseIcons', async () => {
     const spy = vi.fn();
     const { getByTitle } = render(<Modal onClose={spy} visible />);
-    fireEvent.click(getByTitle('Close'));
+    await userEvent.click(getByTitle('Close').closest('button')!);
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
-  test.sequential('Verify mount on open', () => {
+  test.sequential('Verify mount on open', async () => {
     const spy = vi.fn();
     const Component = () => {
       const [visible, setVisible] = React.useState(false);
@@ -94,7 +94,7 @@ describe('Modal', () => {
       );
     };
     const { getByTestId } = render(<Component />);
-    fireEvent.click(getByTestId('open-modal'));
+    await userEvent.click(getByTestId('open-modal'));
     expect(getByTestId('modal-content')).toBeTruthy();
   });
 

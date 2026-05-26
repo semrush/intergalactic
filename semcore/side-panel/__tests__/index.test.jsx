@@ -1,6 +1,6 @@
 import { Portal } from '@semcore/base-components';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -144,11 +144,11 @@ describe('SidePanel', () => {
     expect(spy).toBeCalledWith('onOutsideClick', expect.any(Object));
   });
 
-  test('Verify onClose for Sidebar.Close click', () => {
+  test('Verify onClose for Sidebar.Close click', async () => {
     const spy = vi.fn();
     const component = render(<SidePanel visible closable onClose={spy} />);
     const closeNode = component.queryByLabelText('Close');
-    fireEvent.click(closeNode);
+    await userEvent.click(closeNode);
     expect(spy).toBeCalledWith('onCloseClick', expect.any(Object));
   });
 

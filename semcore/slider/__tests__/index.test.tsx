@@ -18,7 +18,7 @@ describe('Slider data-ui-name', () => {
   shouldHaveDataUiName({
     Component: Slider.Options,
     Wrapper: Slider,
-    props: { children: <Slider.Item value={1}>One</Slider.Item> },
+    props: { options: [{ value: 1, label: 'One' }] },
     expectedDataUiName: 'Slider.Options',
   });
 });

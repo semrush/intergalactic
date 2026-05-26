@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import type { ButtonHTMLAttributes, HTMLAttributes } from 'react';
 import React from 'react';
@@ -234,7 +234,7 @@ describe('Root', () => {
 
     expect(queryByTestId('root')?.id).toBe('test');
   });
-  test('Should support assign props', () => {
+  test('Should support assign props', async () => {
     class TestRoot extends Component {
       static displayName = 'Test';
 
@@ -274,7 +274,7 @@ describe('Root', () => {
         ref={(node: any) => spyRef(node)}
       />,
     );
-    fireEvent.click(queryByTestId('root')!);
+    await userEvent.click(queryByTestId('root')!);
 
     expect(queryByTestId('root')!.id).toBe('test');
     expect(queryByTestId('root')!.className).toBe('test root-test');
@@ -458,7 +458,7 @@ describe('Getter props function', () => {
     expect(spy).toHaveBeenCalledWith('test');
   });
 
-  test('Should support assign props in getter', () => {
+  test('Should support assign props in getter', async () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -500,7 +500,7 @@ describe('Getter props function', () => {
       </Test>,
     );
 
-    fireEvent.click(queryByTestId('item')!);
+    await userEvent.click(queryByTestId('item')!);
     expect(queryByTestId('item')?.id).toBe('test');
     expect(queryByTestId('item')?.className).toBe('test root-test');
     expect(queryByTestId('item')?.style).toMatchObject({

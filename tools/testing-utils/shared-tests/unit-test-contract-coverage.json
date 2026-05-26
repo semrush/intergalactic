@@ -1,0 +1,1019 @@
+{
+  "title": "Unit test contract coverage",
+  "sourceOfTruth": "tools/testing-utils/shared-tests/unit-test-contract-coverage.json",
+  "lastUpdatedFor": "shared UI contract helpers reduced to shouldHaveDataUiName plus runDependencyCheckTests",
+  "sharedTestExports": [
+    "runDependencyCheckTests",
+    "shouldHaveDataUiName"
+  ],
+  "coreContractCoverage": {
+    "file": "semcore/core/__tests__/Core.test.tsx",
+    "contracts": [
+      "id forwarding",
+      "className forwarding",
+      "style forwarding",
+      "data-* forwarding",
+      "children rendering",
+      "onClick handler merge and order",
+      "disabled forwarding for supported tags",
+      "ref forwarding for createComponent",
+      "ref forwarding for createBaseComponent",
+      "data-ui-name default and override"
+    ],
+    "typeContracts": [
+      {
+        "file": "semcore/core/__tests__/types.test.tsx",
+        "contracts": [
+          "tag typing"
+        ]
+      }
+    ],
+    "notes": [
+      "Generic passthrough assertions belong to core because Root, assignProps, createComponent, and createBaseComponent implement the shared behavior.",
+      "Runtime tag behavior is tested locally only for components where custom tag is a documented public feature."
+    ]
+  },
+  "updateRules": [
+    "Update this JSON in the same change whenever component unit contract coverage changes.",
+    "For each touched component, record dependencyCheck, dataUiNameTests, specialLocalTests, unsupportedContracts, and notes.",
+    "Before adding tests around a generic contract that a component appears not to support, tell the user what is unsupported and wait for confirmation that the behavior is expected.",
+    "Do not reintroduce removed shared UI helpers. Use shouldHaveDataUiName for data-ui-name checks and local tests for component-specific public behavior."
+  ],
+  "componentCoverage": [
+    {
+      "package": "accordion",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Item.Toggle",
+        "Item.Chevron",
+        "Item.ToggleButton",
+        "Item.Collapse"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Accordion and Accordion.Item are context-only roots and do not expose a stable DOM target for shouldHaveDataUiName"
+      ],
+      "notes": []
+    },
+    {
+      "package": "add-filter",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "AddFilter"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "AddFilter.Input is context/configuration-only in unit helper terms and does not expose a stable target"
+      ],
+      "notes": []
+    },
+    {
+      "package": "badge",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Badge"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "base-components",
+      "dependencyCheck": "base-components package only; Flex, Box, Grid, and ScrollArea sub-tests do not repeat a package dependency check",
+      "dataUiNameTests": [
+        "Animation",
+        "Transform",
+        "FadeInOut",
+        "Collapse",
+        "Scale",
+        "Slide",
+        "Flex",
+        "Box",
+        "Row",
+        "Row.Col",
+        "ScrollArea",
+        "ScrollArea.Container",
+        "Popper.Trigger",
+        "Popper.Popper",
+        "Hint"
+      ],
+      "specialLocalTests": [
+        "Box custom tag",
+        "ScrollArea.Container render-function coverage",
+        "Hint data-ui-name requires triggerRef wrapper",
+        "Popper.Trigger and Popper.Popper require Popper wrapper setup"
+      ],
+      "unsupportedContracts": [
+        "Popper root, Portal, OutsideClick, Breakpoints, and NeighborLocation.Detect do not expose their own stable DOM root for shouldHaveDataUiName",
+        "NeighborLocation root exposes a DOM node only when a custom tag is provided, so it is not treated as a generic data-ui-name contract",
+        "ScrollArea.Bar and ScrollArea.Bar.Slider depend on measured scrollability and are not stable unit helper targets",
+        "InvalidStateBox and ScreenReaderOnly render through Box and currently expose inherited data-ui-name: Box"
+      ],
+      "notes": []
+    },
+    {
+      "package": "base-trigger",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "BaseTrigger",
+        "ButtonTrigger",
+        "FilterTrigger",
+        "LinkTrigger"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "breadcrumbs",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Breadcrumbs",
+        "Breadcrumbs.Item"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "bulk-textarea",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "BulkTextarea"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "button",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Button",
+        "Button.Text",
+        "Button.Addon",
+        "ButtonLink"
+      ],
+      "specialLocalTests": [
+        "Button onClick",
+        "Button disabled",
+        "Button custom tag"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "card",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Card",
+        "Card.Title",
+        "Card.Description",
+        "Card.Header",
+        "Card.Body"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "carousel",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Carousel",
+        "Carousel.Container",
+        "Carousel.Item",
+        "Carousel.Indicators",
+        "Carousel.Prev",
+        "Carousel.Next"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Carousel.Item is a leaf-like component and should not be treated as a generic root children contract",
+        "Carousel.Indicators is a leaf-like component and should not be treated as a generic root children contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "checkbox",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Checkbox",
+        "Checkbox.Text"
+      ],
+      "specialLocalTests": [
+        "Checkbox.Value is covered by component-specific input tests"
+      ],
+      "unsupportedContracts": [
+        "Checkbox.Value has limited input-like DOM behavior instead of the full root contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "color-picker",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "ColorPicker.Trigger",
+        "ColorPicker.Popper",
+        "ColorPicker.Colors",
+        "PaletteManager.Colors",
+        "PaletteManager.InputColor"
+      ],
+      "specialLocalTests": [
+        "ColorPicker and PaletteManager root wrappers do not expose a stable shouldHaveDataUiName target; public DOM parts are covered",
+        "ColorPicker.Item data-ui-name test is skipped because the runtime subcomponent is not exposed in the public TypeScript API"
+      ],
+      "unsupportedContracts": [
+        "ColorPicker and PaletteManager roots do not expose stable unit DOM targets for shouldHaveDataUiName",
+        "ColorPicker.Item exists at runtime but is not available through ColorPicker public types"
+      ],
+      "notes": []
+    },
+    {
+      "package": "counter",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Counter"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "d3-chart",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [],
+      "specialLocalTests": [
+        "chart/SVG behavior tests cover Axis.Ticks and chart series data-ui-name locally"
+      ],
+      "unsupportedContracts": [
+        "Plot, YAxis, and XAxis need SVG/chart setup; keep local chart behavior tests instead of shared helper tests"
+      ],
+      "notes": []
+    },
+    {
+      "package": "data-table",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "DataTable",
+        "DataTable.Head",
+        "Head.Column",
+        "Head.Group",
+        "DataTable.Body",
+        "Body.Row",
+        "Row.Cell"
+      ],
+      "specialLocalTests": [
+        "generated DataTable parts data-ui-name"
+      ],
+      "unsupportedContracts": [
+        "children and tag are intentionally excluded from the public root API",
+        "Head.Column, Head.Group, Body.Row, and Row.Cell currently expose short generated data-ui-name values instead of DataTable-prefixed values"
+      ],
+      "notes": []
+    },
+    {
+      "package": "date-picker",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "DatePicker, DateRangePicker, MonthPicker, MonthRangePicker, DateRangeComparator, and MonthDateRangeComparator roots do not expose stable helper targets in unit tests"
+      ],
+      "notes": []
+    },
+    {
+      "package": "divider",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Divider"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Divider is a leaf separator and should not be tested as a regular children-rendering root"
+      ],
+      "notes": []
+    },
+    {
+      "package": "dot",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Dot"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "drag-and-drop",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "DragAndDrop",
+        "DragAndDrop.Draggable",
+        "DragAndDrop.DropZone"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "dropdown",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Dropdown.Trigger",
+        "Dropdown.Popper",
+        "Dropdown.Item",
+        "Dropdown.Group"
+      ],
+      "specialLocalTests": [
+        "Dropdown root is composition-only for helper purposes; Trigger/Popper/Item/Group are covered"
+      ],
+      "unsupportedContracts": [
+        "Dropdown root does not expose a stable unit DOM target for shouldHaveDataUiName"
+      ],
+      "notes": []
+    },
+    {
+      "package": "dropdown-menu",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "DropdownMenu.Trigger",
+        "DropdownMenu.Popper",
+        "DropdownMenu.Menu",
+        "DropdownMenu.List",
+        "DropdownMenu.Item.Content",
+        "DropdownMenu.Item.Text",
+        "DropdownMenu.Item.Hint"
+      ],
+      "specialLocalTests": [
+        "DropdownMenu root, Item, and Group do not expose stable helper targets; Menu/List/Popper/Trigger and item content parts are covered"
+      ],
+      "unsupportedContracts": [
+        "DropdownMenu root, raw Item, Group, and VirtualList do not expose stable generic helper targets or require virtual/list context"
+      ],
+      "notes": []
+    },
+    {
+      "package": "ellipsis",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Ellipsis"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "errors",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Error",
+        "AccessDenied",
+        "Maintenance",
+        "PageError",
+        "PageNotFound",
+        "ProjectNotFound"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "feature-highlight",
+      "dependencyCheck": "not enabled; current dependency check reports @semcore/icon package metadata mismatch",
+      "dataUiNameTests": [
+        "ButtonFH",
+        "ButtonFH.Addon",
+        "ButtonFH.Text",
+        "BadgeFH",
+        "InputFH",
+        "InputFH.Addon",
+        "InputFH.Value",
+        "CheckboxFH",
+        "Value.CheckMark",
+        "CheckboxFH.Text",
+        "RadioFH",
+        "Value.RadioMark",
+        "RadioFH.Text",
+        "SwitchFH",
+        "Box",
+        "SwitchFH.Addon",
+        "PillsFH",
+        "PillsFH.Item",
+        "Pills.Item.Text",
+        "PillsFH.HighlightedItem",
+        "HighlightedItem.Text",
+        "HighlightedItem.Addon",
+        "TabLineFH",
+        "TabLineFH.Item",
+        "TabLineFH.Item.Text",
+        "TabLineFH.Item.Addon",
+        "TabLineFH.HighlightedItem",
+        "NoticeFH",
+        "NoticeFH.Label",
+        "NoticeFH.Content",
+        "NoticeFH.Title",
+        "NoticeFH.Text",
+        "NoticeFH.Actions",
+        "NoticeFH.Close",
+        "SelectFH.Trigger",
+        "SelectFH.Trigger.Addon",
+        "SelectFH.Trigger.Text",
+        "SelectFH.Popper",
+        "SelectFH.Menu",
+        "SelectFH.List",
+        "SelectFH.Option",
+        "Select.Option.Checkbox",
+        "Select.Option.Content",
+        "Select.Option.Hint"
+      ],
+      "specialLocalTests": [
+        "runDependencyCheckTests is not enabled because current package metadata check reports @semcore/icon mismatch"
+      ],
+      "unsupportedContracts": [
+        "CheckboxFH.Value currently targets inherited inner mark data-ui-name: Value.CheckMark",
+        "RadioFH.Value currently targets inherited inner mark data-ui-name: Value.RadioMark",
+        "SwitchFH.Value currently targets inherited Switch.Value root data-ui-name: Box",
+        "PillsFH.Item.Text currently exposes inherited data-ui-name: Pills.Item.Text",
+        "PillsFH.HighlightedItem.Text/Addon and TabLineFH.HighlightedItem.Text/Addon currently expose short data-ui-name values: HighlightedItem.Text and HighlightedItem.Addon",
+        "SelectFH root itself is not covered by shouldHaveDataUiName because public usage targets Trigger/Menu/Option composition",
+        "SelectFH.Option.Checkbox/Content/Hint currently expose inherited Select.Option.* data-ui-name values",
+        "CheckboxFH.AnimatedSparkles, RadioFH.AnimatedSparkles, and SwitchFH.AnimatedSparkles are animation helper renderers and do not expose a Root-based data-ui-name target"
+      ],
+      "notes": []
+    },
+    {
+      "package": "feature-popover",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "FeaturePopover.Trigger",
+        "FeaturePopover.Popper"
+      ],
+      "specialLocalTests": [
+        "FeaturePopover.Trigger custom tag",
+        "FeaturePopover.Popper custom tag"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "feedback-form",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "FeedbackForm"
+      ],
+      "specialLocalTests": [
+        "FeedbackForm.Item is covered by form behavior tests"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "flags",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Flags"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "fullscreen-modal",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "FullscreenModal",
+        "FullscreenModal.Body",
+        "FullscreenModal.Section",
+        "FullscreenModal.Footer",
+        "FullscreenModal.Close",
+        "FullscreenModal.Back",
+        "FullscreenModal.Title",
+        "FullscreenModal.Description",
+        "FullscreenModal.Header"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "FullscreenModal.Header is leaf-like and should not be treated as a generic children contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "icon",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Icon is root-like, but intentionally has no data-ui-name helper coverage"
+      ],
+      "notes": []
+    },
+    {
+      "package": "inline-edit",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "InlineEdit",
+        "InlineEdit.View",
+        "InlineEdit.Edit"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "inline-input",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "InlineInput",
+        "InlineInput.Value"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "InlineInput.Value is input-like and should not be tested as a regular children-rendering root"
+      ],
+      "notes": []
+    },
+    {
+      "package": "input",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Input",
+        "Input.Value"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Input.Value is input-like and should not be tested as a regular children-rendering root"
+      ],
+      "notes": []
+    },
+    {
+      "package": "input-mask",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "InputMask"
+      ],
+      "specialLocalTests": [
+        "InputMask.Value is covered by mask behavior tests"
+      ],
+      "unsupportedContracts": [
+        "InputMask.Value has limited input-like DOM behavior instead of the full root contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "input-number",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "InputNumber",
+        "InputNumber.Value",
+        "InputNumber.Controls",
+        "InputNumber.Addon"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "input-tags",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "InputTags",
+        "InputTags.Value",
+        "InputTags.Tag"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "link",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Link"
+      ],
+      "specialLocalTests": [
+        "Link custom tag"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "mini-chart",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "MiniChart.ScoreLine",
+        "MiniChart.ScoreDonut",
+        "MiniChart.ScoreSemiDonut",
+        "MiniChart.TrendLine",
+        "MiniChart.TrendArea",
+        "MiniChart.TrendBar",
+        "MiniChart.TrendHistogram"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "modal",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Modal",
+        "Modal.Overlay",
+        "Modal.Window",
+        "Modal.Close",
+        "Modal.Title"
+      ],
+      "specialLocalTests": [
+        "Modal overlay/window data-ui-name tests require visible disablePortal wrapper setup"
+      ],
+      "unsupportedContracts": [
+        "Modal.Overlay and Modal.Window need visible state and wrapper setup instead of a generic root contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "notice",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Notice",
+        "Notice.Label",
+        "Notice.Title",
+        "Notice.Text",
+        "Notice.Actions",
+        "Notice.Content",
+        "Notice.Close",
+        "NoticeSmart"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "NoticeSmart is a smart wrapper and should not be treated as a generic children contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "notice-bubble",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "NoticeBubbleContainer"
+      ],
+      "specialLocalTests": [
+        "NoticeBubbleContainer data-ui-name requires TestNoticeBubble wrapper for portal/container setup"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "pagination",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Pagination",
+        "Pagination.FirstPage",
+        "Pagination.PrevPage",
+        "Pagination.NextPage",
+        "Pagination.TotalPages",
+        "Pagination.PageInput"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "pills",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Pills",
+        "Pills.Item",
+        "Pills.Item.Text",
+        "Pills.Item.Addon"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "product-head",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "ProductHead",
+        "Info",
+        "Title"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "progress-bar",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "ProgressBar"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "radio",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Radio",
+        "Radio.Text"
+      ],
+      "specialLocalTests": [
+        "Radio.Value is covered by component-specific input tests"
+      ],
+      "unsupportedContracts": [
+        "Radio.Value has limited input-like DOM behavior instead of the full root contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "select",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Select.Trigger",
+        "Select.Popper",
+        "Select.Menu",
+        "Select.List",
+        "Select.Option",
+        "Select.Option.Checkbox",
+        "Select.Option.Content",
+        "Select.Option.Hint",
+        "Select.Group",
+        "Select.InputSearch"
+      ],
+      "specialLocalTests": [
+        "focus and keyboard behavior",
+        "Select.Option.Checkbox component-specific behavior",
+        "Select.InputSearch component-specific behavior"
+      ],
+      "unsupportedContracts": [
+        "Select root does not expose a stable unit DOM target for shouldHaveDataUiName",
+        "Select.Option.Checkbox has limited input-like DOM behavior instead of the full root contract",
+        "Select.InputSearch has limited input-like DOM behavior instead of the full root contract"
+      ],
+      "notes": []
+    },
+    {
+      "package": "side-panel",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "SidePanel",
+        "SidePanel.Overlay",
+        "SidePanel.Panel",
+        "SidePanel.Header",
+        "SidePanel.Body",
+        "SidePanel.Footer",
+        "SidePanel.Close",
+        "SidePanel.Back",
+        "SidePanel.Title"
+      ],
+      "specialLocalTests": [
+        "SidePanel overlay/panel tests require visible disablePortal wrapper"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "skeleton",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "SkeletonSVG"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Named render Skeleton is not exported from package root; public default SkeletonSVG is covered"
+      ],
+      "notes": []
+    },
+    {
+      "package": "slider",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Slider",
+        "Slider.Options"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Slider.Item does not expose a stable unit target through the helper; Slider.Options is covered"
+      ],
+      "notes": []
+    },
+    {
+      "package": "spin",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Spin"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Spin is SVG/leaf-like and should not be treated as a regular children-rendering root"
+      ],
+      "notes": []
+    },
+    {
+      "package": "spin-container",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "SpinContainer",
+        "SpinContainer.Content",
+        "SpinContainer.Overlay"
+      ],
+      "specialLocalTests": [
+        "SpinContainer.Overlay data-ui-name requires loading wrapper"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "switch",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Switch",
+        "Switch.Addon"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Switch.Value target resolves to Box in unit helper tests, so only Switch and Switch.Addon data-ui-name are covered"
+      ],
+      "notes": []
+    },
+    {
+      "package": "tab-line",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "TabLine",
+        "TabLine.Item",
+        "TabLine.Item.Text",
+        "TabLine.Item.Addon"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "tab-panel",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "TabPanel",
+        "TabPanel.Item",
+        "TabPanel.Item.Text",
+        "TabPanel.Item.Addon"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "tag",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Tag",
+        "Tag.Text",
+        "Tag.Addon",
+        "Tag.Circle",
+        "TagContainer",
+        "TagContainer.Close"
+      ],
+      "specialLocalTests": [
+        "Tag and TagContainer keyboard interaction behavior"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "textarea",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Textarea"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "Textarea is input-like and should not be tested as a regular children-rendering root"
+      ],
+      "notes": []
+    },
+    {
+      "package": "time-picker",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "TimePicker",
+        "TimePicker.Hours",
+        "TimePicker.Minutes",
+        "TimePicker.Separator",
+        "TimePicker.Format"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "tooltip",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Tooltip.Trigger"
+      ],
+      "specialLocalTests": [
+        "Tooltip.Trigger custom tag",
+        "Tooltip.Popper className/data/ref behavior"
+      ],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "typography",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Text",
+        "Blockquote",
+        "List",
+        "List.Item"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "ui",
+      "dependencyCheck": "aggregate package dependency validation is handled by its existing package tests",
+      "dataUiNameTests": [],
+      "specialLocalTests": [],
+      "unsupportedContracts": [
+        "@semcore/ui is an aggregate package, not a DOM component package"
+      ],
+      "notes": []
+    },
+    {
+      "package": "widget-empty",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "WidgetEmpty",
+        "WidgetEmpty.Title",
+        "WidgetEmpty.Description",
+        "WidgetNoData",
+        "WidgetError"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    },
+    {
+      "package": "wizard",
+      "dependencyCheck": "yes",
+      "dataUiNameTests": [
+        "Wizard",
+        "Wizard.Sidebar",
+        "Wizard.Content",
+        "Wizard.Step",
+        "Wizard.Stepper",
+        "Wizard.StepBack",
+        "Wizard.StepNext"
+      ],
+      "specialLocalTests": [],
+      "unsupportedContracts": [],
+      "notes": []
+    }
+  ],
+  "knownComponentSpecificContracts": [
+    {
+      "component": "DataTable",
+      "specificContract": "children and tag are intentionally excluded from the root public API; the component requires data, columns, and an accessible aria-label or title contract."
+    },
+    {
+      "component": "MiniChart.ScoreLine",
+      "specificContract": "children are rejected in value mode and accepted only as custom segment render children."
+    },
+    {
+      "component": "DropdownMenu.VirtualList",
+      "specificContract": "tag and children are excluded from public props."
+    },
+    {
+      "component": "Input.Value, InlineInput.Value, Textarea",
+      "specificContract": "input-like components should not be tested as regular children-rendering roots."
+    },
+    {
+      "component": "Divider, Spin, NoticeSmart, FullscreenModal.Header, Carousel.Item, Carousel.Indicators",
+      "specificContract": "leaf or smart-wrapper components do not use the full root children contract."
+    },
+    {
+      "component": "Checkbox.Value, Radio.Value, InputMask.Value, Select.Option.Checkbox, Select.InputSearch",
+      "specificContract": "limited input-like DOM behavior; use component-specific tests instead of generic root contracts."
+    },
+    {
+      "component": "Modal.Window, NoticeBubble wrapper, d3-chart Plot, YAxis, XAxis",
+      "specificContract": "visibility, portal, wrapper, or SVG setup is required, so behavior-specific local tests are expected."
+    },
+    {
+      "component": "Icon",
+      "specificContract": "root-like, but intentionally has no data-ui-name helper coverage."
+    },
+    {
+      "component": "Button",
+      "specificContract": "local coverage is required for onClick, disabled, and custom tag behavior."
+    },
+    {
+      "component": "Box, Link, Tooltip.Trigger, FeaturePopover.Trigger, FeaturePopover.Popper",
+      "specificContract": "custom tag is a public feature and must stay covered locally."
+    }
+  ]
+}

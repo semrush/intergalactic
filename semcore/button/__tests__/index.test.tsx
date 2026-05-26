@@ -1,6 +1,6 @@
 import Link from '@semcore/link';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { beforeEach, expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -37,7 +37,7 @@ describe('Button', () => {
     expectedDataUiName: 'ButtonLink',
   });
 
-  test('Verify supports user click handler', () => {
+  test('Verify supports user click handler', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Button data-testid='button' onClick={spy}>
@@ -45,7 +45,7 @@ describe('Button', () => {
       </Button>,
     );
 
-    fireEvent.click(getByTestId('button'));
+    await userEvent.click(getByTestId('button'));
     expect(spy).toHaveBeenCalledTimes(1);
   });
 

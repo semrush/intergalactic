@@ -69,7 +69,7 @@ describe('Pagination.FirstPage', () => {
     expect(getByTestId('firstPage')).toHaveProperty('disabled', false);
   });
 
-  test('Verify calls onCurrentPageChange(1) on click', () => {
+  test('Verify calls onCurrentPageChange(1) on click', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -79,7 +79,7 @@ describe('Pagination.FirstPage', () => {
     );
 
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('firstPage'));
+    await userEvent.click(getByTestId('firstPage'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(1);
   });
@@ -106,7 +106,7 @@ describe('Pagination.PrevPage', () => {
     expect((getByTestId('prevPage').attributes as any)['disabled']).toBeUndefined();
   });
 
-  test('Verify calls onCurrentPageChange(currentPage - 1) by one on click', () => {
+  test('Verify calls onCurrentPageChange(currentPage - 1) by one on click', async () => {
     const spy = vi.fn();
     const CURRENT_PAGE = 10;
 
@@ -117,7 +117,7 @@ describe('Pagination.PrevPage', () => {
     );
 
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('firstPage'));
+    await userEvent.click(getByTestId('firstPage'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(CURRENT_PAGE - 1);
   });
@@ -145,7 +145,7 @@ describe('Pagination.NextPage', () => {
     expect((getByTestId('nextPage').attributes as any)['disabled']).toBeUndefined();
   });
 
-  test('Verify Next Page calls onCurrentPageChange(currentPage + 1) by one on click', () => {
+  test('Verify Next Page calls onCurrentPageChange(currentPage + 1) by one on click', async () => {
     const spy = vi.fn();
     const CURRENT_PAGE = 10;
 
@@ -156,7 +156,7 @@ describe('Pagination.NextPage', () => {
     );
 
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('firstPage'));
+    await userEvent.click(getByTestId('firstPage'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(CURRENT_PAGE + 1);
   });
@@ -165,7 +165,7 @@ describe('Pagination.NextPage', () => {
 describe('Pagination.TotalPages', () => {
   beforeEach(cleanup);
 
-  test('Verify Total Pages call onCurrentPageChange(totalPages) on click', () => {
+  test('Verify Total Pages call onCurrentPageChange(totalPages) on click', async () => {
     const spy = vi.fn();
     const totalPages = 100;
     const { getByTestId } = render(
@@ -174,7 +174,7 @@ describe('Pagination.TotalPages', () => {
       </Pagination>,
     );
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('totalPages'));
+    await userEvent.click(getByTestId('totalPages'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(totalPages);
   });

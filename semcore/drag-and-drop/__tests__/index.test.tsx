@@ -11,21 +11,28 @@ describe('drag-and-drop Dependency imports', () => {
 describe('DragAndDrop data-ui-name', () => {
   shouldHaveDataUiName({
     Component: DragAndDrop,
-    props: { children: <DragAndDrop.Draggable>Item</DragAndDrop.Draggable> },
+    props: {
+      'aria-label': 'Drag and drop',
+      'children': <DragAndDrop.Draggable aria-label='Draggable item'>Item</DragAndDrop.Draggable>,
+    },
     expectedDataUiName: 'DragAndDrop',
   });
 
+  const DragAndDropWrapper = ({ children }: { children: React.ReactNode }) => (
+    <DragAndDrop aria-label='Drag and drop'>{children}</DragAndDrop>
+  );
+
   shouldHaveDataUiName({
     Component: DragAndDrop.Draggable,
-    Wrapper: DragAndDrop,
-    props: { children: 'Item' },
+    Wrapper: DragAndDropWrapper,
+    props: { 'aria-label': 'Draggable item', 'children': 'Item' },
     expectedDataUiName: 'DragAndDrop.Draggable',
   });
 
   shouldHaveDataUiName({
     Component: DragAndDrop.DropZone,
-    Wrapper: DragAndDrop,
-    props: { children: 'DropZone' },
+    Wrapper: DragAndDropWrapper,
+    props: { 'aria-label': 'Drop zone', 'children': 'DropZone' },
     expectedDataUiName: 'DragAndDrop.DropZone',
   });
 });

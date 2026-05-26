@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, screen } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, screen, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -78,25 +78,25 @@ describe('FullscreenModal', () => {
     expect(queryByText(/Text/)).toBeTruthy();
   });
 
-  test.sequential('Verify onClose supported for CloseIcons', () => {
+  test.sequential('Verify onClose supported for CloseIcons', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Close data-testid='close' />
       </FullscreenModal>,
     );
-    fireEvent.click(getByTestId('close'));
+    await userEvent.click(getByTestId('close'));
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
-  test('Verify onClose supported for BackClick', () => {
+  test('Verify onClose supported for BackClick', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Back data-testid='back' />
       </FullscreenModal>,
     );
-    fireEvent.click(getByTestId('back'));
+    await userEvent.click(getByTestId('back'));
     expect(spy).toBeCalledWith('onBackClick', expect.anything());
   });
 

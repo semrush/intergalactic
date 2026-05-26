@@ -457,7 +457,7 @@ describe('Chart.Bubble', () => {
 describe('Chart.Donut', () => {
   beforeEach(cleanup);
 
-  test.concurrent('should call onClickPie and return correct data key', () => {
+  test.concurrent('should call onClickPie and return correct data key', async () => {
     const onClickHandler = vi.fn();
 
     const { container } = render(
@@ -468,8 +468,8 @@ describe('Chart.Donut', () => {
 
     expect(pies.length).toBe(Object.keys(ChartOptions.donut.data).length);
 
-    fireEvent.click(pies[0]);
-    fireEvent.click(pies[pies.length - 1]);
+    await userEvent.click(pies[0]);
+    await userEvent.click(pies[pies.length - 1]);
 
     expect(onClickHandler).toBeCalledTimes(2);
     expect(onClickHandler.mock.calls[0][0]).toBe('a');

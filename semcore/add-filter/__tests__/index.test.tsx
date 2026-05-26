@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, waitFor, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -50,7 +50,7 @@ describe('AddFilter', () => {
       </AddFilter>,
     );
 
-    fireEvent.click(getByText('Add filter'));
+    await userEvent.click(getByText('Add filter'));
 
     await waitFor(() => {
       expect(queryByText('Name')).toBeInTheDocument();
@@ -70,7 +70,7 @@ describe('AddFilter', () => {
       </AddFilter>,
     );
 
-    fireEvent.click(getByText('Add filter'));
+    await userEvent.click(getByText('Add filter'));
 
     await waitFor(() => {
       expect(getByText('name')).toBeInTheDocument();

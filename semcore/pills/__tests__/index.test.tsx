@@ -1,6 +1,6 @@
 import type { Intergalactic } from '@semcore/core';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -66,7 +66,7 @@ describe('PillGroup', () => {
 
   beforeEach(cleanup);
 
-  test.concurrent('Verify supports onChange callback', () => {
+  test.concurrent('Verify supports onChange callback', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1 as number} onChange={spy}>
@@ -79,11 +79,11 @@ describe('PillGroup', () => {
       </Pills>,
     );
 
-    fireEvent.click(getByTestId('tab-4'));
+    await userEvent.click(getByTestId('tab-4'));
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Verify supports onClick on Pill', () => {
+  test('Verify supports onClick on Pill', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1}>
@@ -96,11 +96,11 @@ describe('PillGroup', () => {
       </Pills>,
     );
 
-    fireEvent.click(getByTestId('tab-4'));
+    await userEvent.click(getByTestId('tab-4'));
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Verify not calls PillGroup onChange after falsy onClick on Pill', () => {
+  test('Verify not calls PillGroup onChange after falsy onClick on Pill', async () => {
     const spy = vi.fn();
     const spyClick = vi.fn(() => false);
     const { getByTestId } = render(
@@ -114,12 +114,12 @@ describe('PillGroup', () => {
       </Pills>,
     );
 
-    fireEvent.click(getByTestId('tab-4'));
+    await userEvent.click(getByTestId('tab-4'));
     expect(spy).toHaveBeenCalledTimes(0);
     expect(spyClick).toHaveBeenCalledTimes(1);
   });
 
-  test('Verify not supports clicks on disabled tab', () => {
+  test('Verify not supports clicks on disabled tab', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -133,7 +133,7 @@ describe('PillGroup', () => {
       </Pills>,
     );
 
-    fireEvent.click(getByTestId('tab-4'));
+    await expect(userEvent.click(getByTestId('tab-4'))).rejects.toThrow('pointer-events: none');
 
     expect(spy).toHaveBeenCalledTimes(0);
   });

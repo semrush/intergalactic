@@ -1,6 +1,6 @@
 import type { Intergalactic } from '@semcore/core';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
@@ -66,7 +66,7 @@ describe('TabLine', () => {
 
   beforeEach(cleanup);
 
-  test('Verify supports onChange callback', () => {
+  test('Verify supports onChange callback', async () => {
     const spyChange = vi.fn();
     const spyClick = vi.fn();
     const { getByTestId } = render(
@@ -80,12 +80,12 @@ describe('TabLine', () => {
       </TabLine>,
     );
 
-    fireEvent.click(getByTestId('tab-4'));
+    await userEvent.click(getByTestId('tab-4'));
     expect(spyClick).lastCalledWith(expect.any(Object));
     expect(spyChange).lastCalledWith(4, expect.any(Object));
   });
 
-  test('Verify not supports clicks on disabled tab', () => {
+  test('Verify not supports clicks on disabled tab', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -99,7 +99,7 @@ describe('TabLine', () => {
       </TabLine>,
     );
 
-    fireEvent.click(getByTestId('tab-4'));
+    await expect(userEvent.click(getByTestId('tab-4'))).rejects.toThrow('pointer-events: none');
 
     expect(spy).toHaveBeenCalledTimes(0);
   });

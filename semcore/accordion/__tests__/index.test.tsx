@@ -1,6 +1,6 @@
 import type { Intergalactic } from '@semcore/core';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -80,7 +80,7 @@ describe('Accordion', () => {
 
   beforeEach(cleanup);
 
-  test.concurrent('Verify supports uncontrolled mode with single expandable item', () => {
+  test.concurrent('Verify supports uncontrolled mode with single expandable item', async () => {
     const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy} defaultValue={null}>
@@ -93,17 +93,17 @@ describe('Accordion', () => {
       </Accordion>,
     );
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith(1);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(2);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Verify supports controlled mode with single expandable item', () => {
+  test('Verify supports controlled mode with single expandable item', async () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(
@@ -117,7 +117,7 @@ describe('Accordion', () => {
       </Accordion>,
     );
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith(1);
 
     rerender(
@@ -130,7 +130,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(2);
 
     rerender(
@@ -143,11 +143,11 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Verify supports uncontrolled mode with multiple expandable items', () => {
+  test('Verify supports uncontrolled mode with multiple expandable items', async () => {
     const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy}>
@@ -160,20 +160,20 @@ describe('Accordion', () => {
       </Accordion>,
     );
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([1]);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([1, 2]);
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([2]);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });
 
-  test('Verify supports controlled mode with multiple expandable items', () => {
+  test('Verify supports controlled mode with multiple expandable items', async () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(
@@ -186,7 +186,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([1]);
 
     rerender(
@@ -199,7 +199,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([1, 2]);
 
     rerender(
@@ -212,7 +212,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([2]);
 
     rerender(
@@ -225,7 +225,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });
 });

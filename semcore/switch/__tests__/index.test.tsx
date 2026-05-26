@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
@@ -35,7 +35,7 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    fireEvent.click(getByTestId('label').childNodes[0]);
+    await userEvent.click(getByTestId('label').childNodes[0]);
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 

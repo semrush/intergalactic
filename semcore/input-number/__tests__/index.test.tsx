@@ -244,7 +244,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('200', expect.anything());
   });
 
-  test.concurrent('Verify inputs up/down buttons click', () => {
+  test.concurrent('Verify inputs up/down buttons click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -255,11 +255,11 @@ describe('InputNumber', () => {
     const controls = getByTestId('controls');
 
     const arrowUp = controls.querySelectorAll('button')[0];
-    fireEvent.click(arrowUp);
+    await userEvent.click(arrowUp);
     expect(spy).lastCalledWith('1', expect.anything());
     const arrowDown = controls.querySelectorAll('button')[1];
-    fireEvent.click(arrowDown); // 0
-    fireEvent.click(arrowDown); // -1
+    await userEvent.click(arrowDown);
+    await userEvent.click(arrowDown);
     expect(spy).lastCalledWith('-1', expect.anything());
   });
 

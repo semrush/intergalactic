@@ -49,12 +49,12 @@ describe('Hint', () => {
 
     expect(document.body.querySelector('[data-testid="hint"]')).toBeNull();
 
-    fireEvent.click(getByTestId('toggle'));
+    await userEvent.click(getByTestId('toggle'));
     await waitFor(() => {
       expect(document.body.querySelector('[data-testid="hint"]')).not.toBeNull();
     });
 
-    fireEvent.click(getByTestId('toggle'));
+    await userEvent.click(getByTestId('toggle'));
     await waitFor(() => {
       expect(document.body.querySelector('[data-testid="hint"]')).toBeNull();
     });

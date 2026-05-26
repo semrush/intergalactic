@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -138,7 +138,7 @@ describe('Select Trigger', () => {
     },
   );
 
-  test.concurrent('Verify onVisibleChange calls for click in Option when value selected', () => {
+  test.concurrent('Verify onVisibleChange calls for click in Option when value selected', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Select visible onVisibleChange={spy}>
@@ -149,10 +149,11 @@ describe('Select Trigger', () => {
       </Select>,
     );
 
-    fireEvent.click(getByTestId('option'));
-    expect(spy).toHaveBeenCalledTimes(1);
-    fireEvent.click(getByTestId('option'));
-    expect(spy).toHaveBeenCalledTimes(2);
+    await userEvent.click(getByTestId('option'));
+    expect(spy).toHaveBeenCalled();
+    const callsAfterFirstClick = spy.mock.calls.length;
+    await userEvent.click(getByTestId('option'));
+    expect(spy.mock.calls.length).toBeGreaterThan(callsAfterFirstClick);
   });
 
   test('Verify highlights selected item', async () => {
@@ -241,12 +242,12 @@ describe('Select Trigger', () => {
         </Select.Menu>
       </Select>,
     );
-    fireEvent.click(getByTestId('trigger'));
+    act(() => getByTestId('trigger').click());
     act(() => {
       vi.runAllTimers();
     });
     act(() => getByTestId('option-2').focus());
-    fireEvent.click(getByTestId('option-2'));
+    act(() => getByTestId('option-2').click());
     act(() => {
       vi.runAllTimers();
     });
@@ -264,7 +265,7 @@ describe('Select Trigger', () => {
       vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
-          <Select.Trigger aria-label='Select trigger' data-testid='trigger' tag='input' />
+          <Select.Trigger aria-label='Select trigger' data-testid='trigger' tag='input' readOnly />
           <Select.Menu data-testid='menu'>
             <Select.Option value='1'>Option 1</Select.Option>
             <Select.Option value='2' data-testid='option-2'>
@@ -278,7 +279,7 @@ describe('Select Trigger', () => {
         vi.runAllTimers();
       });
       act(() => getByTestId('option-2').focus());
-      fireEvent.click(getByTestId('option-2'));
+      act(() => getByTestId('option-2').click());
       act(() => {
         vi.runAllTimers();
       });

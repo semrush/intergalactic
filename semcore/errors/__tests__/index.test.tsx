@@ -1,6 +1,7 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { describe, it, expect, vi } from '@semcore/testing-utils/vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import Error, { AccessDenied, Maintenance, PageError, PageNotFound, ProjectNotFound } from '../src';
@@ -42,12 +43,12 @@ describe('Errors data-ui-name', () => {
 });
 
 describe('PageError', () => {
-  it('Verify calls onClick when reload button is clicked', () => {
+  it('Verify calls onClick when reload button is clicked', async () => {
     const handleClick = vi.fn();
     render(<PageError onClick={handleClick} />);
 
     const button = screen.getByRole('button', { name: /Try again/i });
-    fireEvent.click(button);
+    await userEvent.click(button);
 
     expect(handleClick).toHaveBeenCalledTimes(1);
   });

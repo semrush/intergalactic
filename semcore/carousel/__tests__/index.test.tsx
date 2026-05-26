@@ -1,6 +1,6 @@
 import { Box } from '@semcore/base-components';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -121,7 +121,7 @@ describe('Carousel.Indicators', () => {
     expectedDataUiName: 'Carousel.Indicators',
   });
 
-  test('Verify call onIndexChange after click', () => {
+  test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -130,13 +130,13 @@ describe('Carousel.Indicators', () => {
       </Carousel>,
     );
     const next = getByTestId('indicator-1');
-    fireEvent.click(next);
+    await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  test('Verify not call onIndexChange after click in same control', () => {
+  test('Verify not call onIndexChange after click in same control', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -145,13 +145,13 @@ describe('Carousel.Indicators', () => {
       </Carousel>,
     );
     const next = getByTestId('indicator-1');
-    fireEvent.click(next);
-    fireEvent.click(next);
+    await userEvent.click(next);
+    await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Veerify right change index with Prev button', () => {
+  test('Veerify right change index with Prev button', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -162,13 +162,13 @@ describe('Carousel.Indicators', () => {
     );
     const prev = getByTestId('prev');
     const next = getByTestId('indicator-0');
-    fireEvent.click(prev);
-    fireEvent.click(next);
+    await userEvent.click(prev);
+    await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test.concurrent('Verify right change index with Next button', () => {
+  test.concurrent('Verify right change index with Next button', async () => {
     const spy = vi.fn();
     const { rerender, getByTestId } = render(
       <Carousel index={1} onIndexChange={spy}>
@@ -179,7 +179,7 @@ describe('Carousel.Indicators', () => {
     );
     const next = getByTestId('next');
     const prev = getByTestId('indicator-1');
-    fireEvent.click(next);
+    await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledWith(0);
     rerender(
@@ -189,7 +189,7 @@ describe('Carousel.Indicators', () => {
         <Carousel.Next data-testid='next' />
       </Carousel>,
     );
-    fireEvent.click(prev);
+    await userEvent.click(prev);
 
     expect(spy).toHaveBeenCalledWith(1);
   });
@@ -204,7 +204,7 @@ describe('Carousel.Prev', () => {
     expectedDataUiName: 'Carousel.Prev',
   });
 
-  test('Verify call onIndexChange after click', () => {
+  test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -213,13 +213,13 @@ describe('Carousel.Prev', () => {
       </Carousel>,
     );
     const prev = getByTestId('prev');
-    fireEvent.click(prev);
+    await userEvent.click(prev);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  test('Verify not call onIndexChange for bounded property', () => {
+  test('Verify not call onIndexChange for bounded property', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
@@ -228,12 +228,12 @@ describe('Carousel.Prev', () => {
       </Carousel>,
     );
     const prev = getByTestId('prev');
-    fireEvent.click(prev);
+    await expect(userEvent.click(prev)).rejects.toThrow('pointer-events: none');
 
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Verify control mode and click', () => {
+  test('Verify control mode and click', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -244,7 +244,7 @@ describe('Carousel.Prev', () => {
     );
 
     const prev = getByTestId('prev');
-    fireEvent.click(prev);
+    await userEvent.click(prev);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(1);
@@ -260,7 +260,7 @@ describe('Carousel.Next', () => {
     expectedDataUiName: 'Carousel.Next',
   });
 
-  test('Verify call onIndexChange after click', () => {
+  test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -269,13 +269,13 @@ describe('Carousel.Next', () => {
       </Carousel>,
     );
     const next = getByTestId('next');
-    fireEvent.click(next);
+    await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  test('Verify not call onIndexChange for bounded property', () => {
+  test('Verify not call onIndexChange for bounded property', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
@@ -284,12 +284,12 @@ describe('Carousel.Next', () => {
       </Carousel>,
     );
     const next = getByTestId('next');
-    fireEvent.click(next);
+    await expect(userEvent.click(next)).rejects.toThrow('pointer-events: none');
 
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Verify control mode and click', () => {
+  test('Verify control mode and click', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -300,7 +300,7 @@ describe('Carousel.Next', () => {
     );
 
     const next = getByTestId('next');
-    fireEvent.click(next);
+    await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(0);
