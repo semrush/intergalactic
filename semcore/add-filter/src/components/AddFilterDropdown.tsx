@@ -16,9 +16,15 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps, [], { visible:
 
   static defaultProps = () => {
     return {
-      defaultVisible: true,
+      defaultVisible: false,
     };
   };
+
+  componentDidMount(): void {
+    setTimeout(() => {
+      this.handlers.visible(true);
+    }, 0);
+  }
 
   uncontrolledProps() {
     return {

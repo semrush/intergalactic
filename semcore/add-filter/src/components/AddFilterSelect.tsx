@@ -15,9 +15,15 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps, []
 
   static defaultProps = () => {
     return {
-      defaultVisible: true,
+      defaultVisible: false,
     };
   };
+
+  componentDidMount(): void {
+    setTimeout(() => {
+      this.handlers.visible(true);
+    }, 0);
+  }
 
   componentWillUnmount() {
     this.asProps.onUnmount?.();
