@@ -1,11 +1,11 @@
 import { ScreenReaderOnly } from '@semcore/base-components';
 import { Root } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import CounterKit, { type CounterProps as CounterPropsKit } from '@semcore/counter';
+import CounterKit, { type NSCounter } from '@semcore/counter';
 import React from 'react';
 
 export type CounterProps = {
-  theme: CounterPropsKit['theme'];
+  theme: NSCounter.Props['theme'];
   linesCount: number;
   maxLines: number;
   getI18nText: ReturnType<typeof useI18n>;

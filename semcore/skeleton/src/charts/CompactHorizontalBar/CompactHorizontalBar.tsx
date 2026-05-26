@@ -24,4 +24,7 @@ function CompactHorizontalBarChartSkeleton() {
   );
 }
 
-export default createComponent(CompactHorizontalBarChartSkeleton) as NSSkeletonCompactHorizontalBar.Component;
+export default createComponent<
+  NSSkeletonCompactHorizontalBar.Component,
+  typeof CompactHorizontalBarChartSkeleton
+>(CompactHorizontalBarChartSkeleton);

@@ -42,4 +42,7 @@ function DonutChartSkeleton(
   );
 }
 
-export default createComponent(DonutChartSkeleton) as NSSkeletonDonutChart.Component;
+export default createComponent<
+  NSSkeletonDonutChart.Component,
+  typeof DonutChartSkeleton
+>(DonutChartSkeleton);
