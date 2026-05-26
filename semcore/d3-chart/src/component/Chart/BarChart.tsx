@@ -3,9 +3,10 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
 import type { BaseLegendProps } from './AbstractChart.type';
-import type { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
+import type { BarChartData, BarChartProps, BarChartType, BarChartDefaultProps } from './BarChart.type';
 // @ts-ignore
 import { minMax, GroupBar, HoverRect, StackBar, Line, YAxis, XAxis } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -15,11 +16,21 @@ import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 class BarChartComponent extends AbstractChart<
   BarChartData,
   BarChartProps,
-  typeof BarChartComponent.enhance
+  typeof BarChartComponent.enhance,
+  {},
+  ChartState,
+  BarChartDefaultProps
 > {
   static displayName = 'Chart.Bar';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
 
   get xScale() {
     const { xScale, invertAxis } = this.asProps;
@@ -294,4 +305,7 @@ class BarChartComponent extends AbstractChart<
   }
 }
 
-export const BarChart: BarChartType = createComponent(BarChartComponent);
+export const BarChart = createComponent<
+  BarChartType,
+  typeof BarChartComponent
+>(BarChartComponent);

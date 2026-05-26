@@ -1,7 +1,8 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React from 'react';
 
-import { type Intergalactic, Component } from './core-types/Component';
+import type { IComponent, Intergalactic } from './core-types/Component';
+import { Component } from './core-types/Component';
 import {
   CONTEXT_COMPONENT,
   CORE_AS_PROPS,
@@ -281,17 +282,30 @@ export function assignProps(p1: any, p2: any) {
   return _assignProps(p2, p1);
 }
 
-function createComponent<T extends Intergalactic.InternalTypings.ComponentTag = 'div', ComponentProps = {}, ContextType = {}, E extends Readonly<any[]> = never[]>(
-  OriginComponent: any,
+type ClassComponent = new (...args: any[]) => Component<any, any, any, any, any, any>;
+type FunctionComponent = React.FunctionComponent<any>;
+
+type OriginComponent<OC> =
+  OC extends FunctionComponent
+    ? FunctionComponent
+    : OC extends ClassComponent
+      ? IComponent<InstanceType<OC>>
+      : never;
+
+function createComponent<
+  C = never,
+  OC extends ClassComponent | FunctionComponent = never,
+>(
+  OriginComponent: OriginComponent<OC>,
   childComponents: any = {},
   options: {
-    context?: React.Context<ContextType>;
+    context?: React.Context<any>;
     parent?: Intergalactic.Component<any, any, any, any> | Intergalactic.Component<any, any, any, any>[];
     enhancements?: [any];
   } = {},
-): Intergalactic.Component<T, ComponentProps, ContextType, E> {
+): C {
   const {
-    context = React.createContext<ContextType>({} as ContextType),
+    context = React.createContext({}),
     parent = [],
     enhancements = [],
   } = options;
@@ -341,29 +355,35 @@ function createComponent<T extends Intergalactic.InternalTypings.ComponentTag = 
     _childComponents = childComponents,
     _options = options,
   ) {
-    return createComponent(_OriginComponent, _childComponents, _options);
+    return createComponent<C, OC>(_OriginComponent, _childComponents, _options);
   };
   Component.newInstance = function (
           _OriginComponent = OriginComponent,
           _childComponents = childComponents,
           _options = options,
   ) {
-    return createComponent(_OriginComponent, _childComponents, _options);
+    return createComponent<C, OC>(_OriginComponent, _childComponents, _options);
   };
   Component[CORE_COMPONENT] = true;
   return Component;
 }
 
-function createBaseComponent<T extends keyof React.JSX.IntrinsicElements, P>(OriginComponent: React.ForwardRefRenderFunction<React.ElementRef<T>, P>) {
-  const Component = React.forwardRef<React.ElementRef<T>, P>(OriginComponent) as unknown as Intergalactic.Component<T, P>;
+function createBaseComponent<
+  C = never,
+  OC extends React.ForwardRefRenderFunction<unknown, any> = never,
+  OCRef = OC extends React.ForwardRefRenderFunction<infer Ref, any> ? Ref : never,
+  OCProps = OC extends React.ForwardRefRenderFunction<OCRef, infer Props> ? Props : never,
+>(OriginComponent: React.ForwardRefRenderFunction<OCRef, OCProps>): C {
+  const Component = React.forwardRef(OriginComponent);
   Component.displayName = OriginComponent.displayName ?? '';
-  // @ts-ignore
   Component.defaultProps = {
+    // @ts-ignore
     'data-ui-name': OriginComponent.displayName,
   };
+  // @ts-ignore
   Component[CORE_COMPONENT] = true;
 
-  return Component;
+  return Component as C;
 }
 
 export { createComponent, createBaseComponent };
