@@ -69,7 +69,15 @@ class Feedback extends React.PureComponent<FeedbackProps> {
     }
 
     return (
-      <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
+      <FeedbackForm
+        onSubmit={onSubmit}
+        loading={status === 'loading'}
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if (e.key === 'Escape') {
+            onCancel();
+          }
+        }}
+      >
         <Box p={4}>
           <Flex direction='column'>
             <Text mb={2} size={200} tag='label' htmlFor='description'>
