@@ -1,3 +1,4 @@
+import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   render,
@@ -9,8 +10,33 @@ import React from 'react';
 
 import { Popper } from '../src';
 
+const PopperWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Popper disablePortal>{children}</Popper>
+);
+
+const VisiblePopperWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Popper visible disablePortal>
+    <Popper.Trigger>Trigger</Popper.Trigger>
+    {children}
+  </Popper>
+);
+
 describe('Popper', () => {
   beforeEach(cleanup);
+
+  shouldHaveDataUiName({
+    Component: Popper.Trigger,
+    Wrapper: PopperWrapper,
+    props: { children: 'Trigger' },
+    expectedDataUiName: 'Popper.Trigger',
+  });
+
+  shouldHaveDataUiName({
+    Component: Popper.Popper,
+    Wrapper: VisiblePopperWrapper,
+    props: { children: 'Popper content' },
+    expectedDataUiName: 'Popper.Popper',
+  });
 
   describe('Visibility', () => {
     test('Verify popper content is removed from DOM when visible is false', () => {

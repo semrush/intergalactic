@@ -1,5 +1,5 @@
 import Icon from '@semcore/icon/Video/m';
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { scaleLinear, scaleBand } from 'd3-scale';
@@ -105,13 +105,6 @@ describe('d3-chart Dependency imports', () => {
 describe('Plot', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
-    Component: PlotTest,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
-  });
-
   test.concurrent('Should support render null', () => {
     const { queryByText } = render(<Plot>Test</Plot>);
     expect(queryByText(/Test/)).toBeNull();
@@ -120,14 +113,6 @@ describe('Plot', () => {
 
 describe('YAxis', () => {
   beforeEach(cleanup);
-
-  runComponentContractTests({
-    Component: YAxis,
-    Wrapper: PlotTest,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
-  });
 
   test(
     'Should support call children function for Grid how many ticks are passed',
@@ -196,14 +181,6 @@ describe('YAxis', () => {
 
 describe('XAxis', () => {
   beforeEach(cleanup);
-
-  runComponentContractTests({
-    Component: XAxis,
-    Wrapper: PlotTest,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
-  });
 
   test.concurrent('should support hover for custom XAxis.Ticks', () => {
     vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());

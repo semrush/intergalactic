@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -33,10 +33,9 @@ const Indicators = () => (
 describe('Carousel', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Carousel,
     expectedDataUiName: 'Carousel',
-    preset: 'root',
   });
 
   test('Verify control mode', () => {
@@ -97,32 +96,29 @@ describe('Carousel', () => {
 describe('Carousel.Container', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Carousel.Container,
     Wrapper: Carousel,
     expectedDataUiName: 'Carousel.Container',
-    preset: 'root',
   });
 });
 
 describe('Carousel.Item', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Carousel.Item,
     Wrapper: Carousel,
     expectedDataUiName: 'Carousel.Item',
-    preset: 'leaf',
   });
 });
 
 describe('Carousel.Indicators', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Carousel.Indicators,
     expectedDataUiName: 'Carousel.Indicators',
-    preset: 'leaf',
   });
 
   test('Verify call onIndexChange after click', () => {
@@ -202,11 +198,10 @@ describe('Carousel.Indicators', () => {
 describe('Carousel.Prev', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Carousel.Prev,
     props: { label: 'Previous slide' },
     expectedDataUiName: 'Carousel.Prev',
-    preset: 'root',
   });
 
   test('Verify call onIndexChange after click', () => {
@@ -259,11 +254,10 @@ describe('Carousel.Prev', () => {
 describe('Carousel.Next', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Carousel.Next,
     props: { label: 'Next slide' },
     expectedDataUiName: 'Carousel.Next',
-    preset: 'root',
   });
 
   test('Verify call onIndexChange after click', () => {

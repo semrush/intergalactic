@@ -1,10 +1,8 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, HTMLAttributes } from 'react';
 import React from 'react';
 
-const { shouldSupportRef } = sharedTests;
 import type { IRootComponentProps } from '../src';
 import { createComponent, createBaseComponent, Component } from '../src';
 import { CORE_COMPONENT } from '../src/core-types/symbols';
@@ -72,6 +70,15 @@ function shouldSupportRender(RootComponent: any, typeRootComponent: any) {
   });
 }
 
+function assertCoreSupportsRef(Component: any) {
+  test('Should support ref', () => {
+    const ref = React.createRef<HTMLElement>();
+    render(<Component ref={ref} />);
+
+    expect(ref.current?.nodeName).toBe('DIV');
+  });
+}
+
 function shouldSupportRenderChildrenRoot(
   RootComponent: any,
   ChildrenComponent: any,
@@ -90,7 +97,7 @@ function shouldSupportRenderChildrenRoot(
   });
 }
 
-function shouldSupportChildren(ChildrenComponent: any, typeChildrenComponent: any) {
+function assertCoreRegistersChildren(ChildrenComponent: any, typeChildrenComponent: any) {
   test(`Should support children components ${typeChildrenComponent}`, () => {
     const Test = createComponent<'div', CompType, ItemType>(RootTestClass, {
       Item: ChildrenComponent,
@@ -158,7 +165,7 @@ describe('Core', () => {
     'Root Function inside Root Function',
   );
 
-  shouldSupportRef(createComponent(RootTestClass));
+  assertCoreSupportsRef(createComponent(RootTestClass));
 
   shouldSupportCallEnhance(RootTestClass, 'Class');
   shouldSupportCallEnhance(RootTestFunc, 'Function');
@@ -166,8 +173,8 @@ describe('Core', () => {
   shouldSupportCallEnhanceWithProps(RootTestClass, 'Class');
   shouldSupportCallEnhanceWithProps(RootTestFunc, 'Function');
 
-  shouldSupportChildren(ChildrenTestClass, 'Class');
-  shouldSupportChildren(ChildrenTestFunc, 'Function');
+  assertCoreRegistersChildren(ChildrenTestClass, 'Class');
+  assertCoreRegistersChildren(ChildrenTestFunc, 'Function');
 
   test('Should support custom props name', () => {
     const Test = createComponent(RootTestClass);
@@ -257,6 +264,8 @@ describe('Root', () => {
       <Test
         id='test'
         className='test'
+        data-contract-value='contract-value'
+        data-test-id='legacy-test-id'
         style={{
           padding: '10px',
           margin: '10px',
@@ -269,6 +278,8 @@ describe('Root', () => {
 
     expect(queryByTestId('root')!.id).toBe('test');
     expect(queryByTestId('root')!.className).toBe('test root-test');
+    expect(queryByTestId('root')!.getAttribute('data-contract-value')).toBe('contract-value');
+    expect(queryByTestId('root')!.getAttribute('data-test-id')).toBe('legacy-test-id');
     expect(queryByTestId('root')!.style).toMatchObject({
       left: '5px',
       padding: '10px',
@@ -278,6 +289,22 @@ describe('Root', () => {
     expect(spyClick.mock.calls[1][0]).toBe('root-test');
     expect(spyRef.mock.calls[0][0].nodeName).toBe('DIV');
     expect(spyRef.mock.calls[1][0].nodeName).toBe('DIV');
+  });
+
+  test('Should forward disabled prop to interactive root', () => {
+    class TestRoot extends Component {
+      static displayName = 'Test';
+
+      render() {
+        const { Root } = this;
+        return <Root data-testid='root' render='button' />;
+      }
+    }
+
+    const Test = createComponent<'button', ButtonHTMLAttributes<HTMLButtonElement>>(TestRoot);
+    const { queryByTestId } = render(<Test disabled />);
+
+    expect((queryByTestId('root') as HTMLButtonElement).disabled).toBe(true);
   });
 });
 

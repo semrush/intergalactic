@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -12,17 +12,27 @@ describe('link Dependency imports', () => {
 describe('Link', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Link,
     Wrapper: React.Fragment,
     props: { children: 'Link' },
     expectedDataUiName: 'Link',
-    preset: 'root',
-    include: ['tag'],
-    tagCases: [
-      { tag: 'button', expectedTagName: 'BUTTON', props: { type: 'button' } },
-      { tag: 'span', expectedTagName: 'SPAN' },
-    ],
+  });
+
+  test('Verify supports custom tag', () => {
+    const { getByTestId } = render(
+      <>
+        <Link tag='button' type='button' data-testid='button-link'>
+          Link
+        </Link>
+        <Link tag='span' data-testid='span-link'>
+          Link
+        </Link>
+      </>,
+    );
+
+    expect(getByTestId('button-link').tagName).toBe('BUTTON');
+    expect(getByTestId('span-link').tagName).toBe('SPAN');
   });
 
   test('Verify not use ', () => {

@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
@@ -7,6 +7,21 @@ import Switch, { inputProps } from '../src';
 
 describe('switch Dependency imports', () => {
   runDependencyCheckTests('switch');
+});
+
+describe('Switch data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: Switch,
+    props: { children: <Switch.Value /> },
+    expectedDataUiName: 'Switch',
+  });
+
+  shouldHaveDataUiName({
+    Component: Switch.Addon,
+    Wrapper: Switch,
+    props: { children: 'Addon' },
+    expectedDataUiName: 'Switch.Addon',
+  });
 });
 
 describe('Switch', () => {

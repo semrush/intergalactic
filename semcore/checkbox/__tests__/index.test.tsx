@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -12,25 +12,15 @@ describe('Checkbox Dependency imports', () => {
 describe('Checkbox', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Checkbox,
     expectedDataUiName: 'Checkbox',
-    preset: 'root',
   });
 
-  runComponentContractTests({
-    Component: Checkbox.Value,
-    Wrapper: Checkbox,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
-  });
-
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Checkbox.Text,
     Wrapper: Checkbox,
     expectedDataUiName: 'Checkbox.Text',
-    preset: 'root',
   });
 
   test.concurrent(

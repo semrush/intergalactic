@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -7,6 +7,14 @@ import Flags from '../src';
 
 describe('flags Dependency imports', () => {
   runDependencyCheckTests('flags');
+});
+
+describe('Flags data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: Flags,
+    props: { iso2: 'US' },
+    expectedDataUiName: 'Flags',
+  });
 });
 
 describe('Flags', () => {

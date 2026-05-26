@@ -1,10 +1,28 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, fireEvent, queryByAttribute } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Button from '../../button/src';
 import Modal from '../src';
+
+const VisibleModal = ({ children }: { children: React.ReactNode }) => (
+  <Modal visible disablePortal>{children}</Modal>
+);
+
+const ModalOverlayWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Modal visible disablePortal>
+    <Modal.Overlay>{children}</Modal.Overlay>
+  </Modal>
+);
+
+const ModalWindowWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Modal visible disablePortal>
+    <Modal.Overlay>
+      <Modal.Window>{children}</Modal.Window>
+    </Modal.Overlay>
+  </Modal>
+);
 
 describe('modal Dependency imports', () => {
   runDependencyCheckTests('modal');
@@ -13,19 +31,37 @@ describe('modal Dependency imports', () => {
 describe('Modal', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Modal,
     props: { visible: true },
     expectedDataUiName: 'Modal',
-    preset: 'root',
   });
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
+    Component: Modal.Overlay,
+    Wrapper: VisibleModal,
+    props: { children: <Modal.Window /> },
+    expectedDataUiName: 'Modal.Overlay',
+  });
+
+  shouldHaveDataUiName({
     Component: Modal.Window,
-    Wrapper: (props: any) => <Modal {...props} visible />,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
+    Wrapper: ModalOverlayWrapper,
+    props: { children: 'Window' },
+    expectedDataUiName: 'Modal.Window',
+  });
+
+  shouldHaveDataUiName({
+    Component: Modal.Close,
+    Wrapper: ModalWindowWrapper,
+    expectedDataUiName: 'Modal.Close',
+  });
+
+  shouldHaveDataUiName({
+    Component: Modal.Title,
+    Wrapper: ModalWindowWrapper,
+    props: { children: 'Title' },
+    expectedDataUiName: 'Modal.Title',
   });
 
   test.sequential('Verify onClose event for Escape', () => {

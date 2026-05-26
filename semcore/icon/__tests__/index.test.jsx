@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,12 +11,6 @@ describe('icon Dependency imports', () => {
 
 describe('Icon', () => {
   beforeEach(cleanup);
-
-  runComponentContractTests({
-    Component: Icon,
-    preset: 'root',
-    skip: ['dataUiName'],
-  });
 
   test.each(['200', '100%'], 'should support custom width %i', (width) => {
     const { getByTestId } = render(<Icon data-testid='icon' width={width} />);

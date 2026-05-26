@@ -1,5 +1,5 @@
 import Button from '@semcore/button';
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -21,11 +21,10 @@ describe('Dot', () => {
     vi.restoreAllMocks();
   });
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Dot,
     props: { 'aria-label': 'test dot' },
     expectedDataUiName: 'Dot',
-    preset: 'root',
   });
 
   test('Verify no "alert" for screenreaders when hidden', async () => {

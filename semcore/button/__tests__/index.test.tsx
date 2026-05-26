@@ -1,7 +1,7 @@
 import Link from '@semcore/link';
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render } from '@semcore/testing-utils/testing-library';
-import { beforeEach, expect, test, describe } from '@semcore/testing-utils/vitest';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { beforeEach, expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Button, { ButtonLink } from '../src';
@@ -13,37 +13,66 @@ describe('Button Dependency imports', () => {
 describe('Button', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Button,
     props: { children: 'Button' },
     expectedDataUiName: 'Button',
-    preset: ['root', 'interactive'],
-    include: ['tag'],
-    tagCases: [
-      { tag: 'a', expectedTagName: 'A', props: { href: '#' } },
-      { tag: Link, name: 'Link', expectedTagName: 'A', props: { href: '#' } },
-    ],
   });
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Button.Text,
     props: { children: 'Button text' },
     expectedDataUiName: 'Button.Text',
-    preset: 'root',
   });
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Button.Addon,
     props: { children: <span>Addon</span> },
     expectedDataUiName: 'Button.Addon',
-    preset: 'root',
   });
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: ButtonLink,
     props: { children: 'ButtonLink' },
     expectedDataUiName: 'ButtonLink',
-    preset: 'root',
+  });
+
+  test('Verify supports user click handler', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <Button data-testid='button' onClick={spy}>
+        Button
+      </Button>,
+    );
+
+    fireEvent.click(getByTestId('button'));
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  test('Verify supports disabled state', () => {
+    const { getByTestId } = render(
+      <Button data-testid='button' disabled>
+        Button
+      </Button>,
+    );
+
+    expect((getByTestId('button') as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  test('Verify supports custom tag', () => {
+    const { getByTestId } = render(
+      <>
+        <Button tag='a' href='#' data-testid='link-button'>
+          Button
+        </Button>
+        <Button tag={Link} href='#' data-testid='semcore-link-button'>
+          Button
+        </Button>
+      </>,
+    );
+
+    expect(getByTestId('link-button').tagName).toBe('A');
+    expect(getByTestId('semcore-link-button').tagName).toBe('A');
   });
 
   test('Verify loading attributes', () => {

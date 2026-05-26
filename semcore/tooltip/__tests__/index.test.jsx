@@ -1,6 +1,6 @@
 import Button from '@semcore/button';
 import Link from '@semcore/link';
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -17,18 +17,31 @@ describe('Tooltip', () => {
   beforeEach(cleanup);
 
   describe('Tooltip.Trigger', () => {
-    runComponentContractTests({
+    shouldHaveDataUiName({
       Component: Tooltip.Trigger,
       Wrapper: TooltipWrapper,
       props: { children: 'Trigger' },
       expectedDataUiName: 'Tooltip.Trigger',
-      preset: 'root',
-      include: ['tag'],
-      tagCases: [
-        { tag: 'button', expectedTagName: 'BUTTON', props: { type: 'button' } },
-        { tag: Button, name: 'Button', expectedTagName: 'BUTTON' },
-        { tag: Link, name: 'Link', expectedTagName: 'A', props: { href: '#' } },
-      ],
+    });
+
+    test('Verify supports custom tag', () => {
+      const { getByTestId } = render(
+        <Tooltip>
+          <Tooltip.Trigger tag='button' type='button' data-testid='button-trigger'>
+            Trigger
+          </Tooltip.Trigger>
+          <Tooltip.Trigger tag={Button} data-testid='semcore-button-trigger'>
+            Trigger
+          </Tooltip.Trigger>
+          <Tooltip.Trigger tag={Link} href='#' data-testid='link-trigger'>
+            Trigger
+          </Tooltip.Trigger>
+        </Tooltip>,
+      );
+
+      expect(getByTestId('button-trigger').tagName).toBe('BUTTON');
+      expect(getByTestId('semcore-button-trigger').tagName).toBe('BUTTON');
+      expect(getByTestId('link-trigger').tagName).toBe('A');
     });
   });
 

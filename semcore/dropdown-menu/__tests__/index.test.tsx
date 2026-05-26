@@ -1,15 +1,78 @@
 import { Box } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import DropdownMenu from '../src';
 
+const VisibleDropdownMenu = ({ children }: { children: React.ReactNode }) => (
+  <DropdownMenu visible disablePortal>{children}</DropdownMenu>
+);
+
+const DropdownMenuItemWrapper = ({ children }: { children: React.ReactNode }) => (
+  <VisibleDropdownMenu>
+    <DropdownMenu.Menu>
+      <DropdownMenu.Item>{children}</DropdownMenu.Item>
+    </DropdownMenu.Menu>
+  </VisibleDropdownMenu>
+);
+
 describe('dropdown-menu Dependency imports', () => {
   runDependencyCheckTests('dropdown-menu');
+});
+
+describe('DropdownMenu data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: DropdownMenu.Trigger,
+    Wrapper: VisibleDropdownMenu,
+    props: { children: 'Trigger' },
+    expectedDataUiName: 'DropdownMenu.Trigger',
+  });
+
+  shouldHaveDataUiName({
+    Component: DropdownMenu.Popper,
+    Wrapper: VisibleDropdownMenu,
+    props: { 'aria-label': 'Dropdown menu popper', 'children': 'Content' },
+    expectedDataUiName: 'DropdownMenu.Popper',
+  });
+
+  shouldHaveDataUiName({
+    Component: DropdownMenu.Menu,
+    Wrapper: VisibleDropdownMenu,
+    props: { children: <DropdownMenu.Item>Item</DropdownMenu.Item> },
+    expectedDataUiName: 'DropdownMenu.Menu',
+  });
+
+  shouldHaveDataUiName({
+    Component: DropdownMenu.List,
+    Wrapper: VisibleDropdownMenu,
+    props: { children: <DropdownMenu.Item>Item</DropdownMenu.Item> },
+    expectedDataUiName: 'DropdownMenu.List',
+  });
+
+  shouldHaveDataUiName({
+    Component: DropdownMenu.Item.Content,
+    Wrapper: DropdownMenuItemWrapper,
+    props: { children: 'Content' },
+    expectedDataUiName: 'DropdownMenu.Item.Content',
+  });
+
+  shouldHaveDataUiName({
+    Component: DropdownMenu.Item.Text,
+    Wrapper: DropdownMenuItemWrapper,
+    props: { children: 'Text' },
+    expectedDataUiName: 'DropdownMenu.Item.Text',
+  });
+
+  shouldHaveDataUiName({
+    Component: DropdownMenu.Item.Hint,
+    Wrapper: DropdownMenuItemWrapper,
+    props: { children: 'Hint' },
+    expectedDataUiName: 'DropdownMenu.Item.Hint',
+  });
 });
 
 describe('DropdownMenu', () => {

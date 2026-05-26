@@ -1,10 +1,45 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { describe, it, expect } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
+import TimePicker from '../src';
 import TimePickerEntity from '../src/entity/TimePickerEntity';
 
 describe('time-picker Dependency imports', () => {
   runDependencyCheckTests('time-picker');
+});
+
+describe('TimePicker data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: TimePicker,
+    expectedDataUiName: 'TimePicker',
+  });
+
+  shouldHaveDataUiName({
+    Component: TimePicker.Hours,
+    Wrapper: TimePicker,
+    expectedDataUiName: 'TimePicker.Hours',
+  });
+
+  shouldHaveDataUiName({
+    Component: TimePicker.Minutes,
+    Wrapper: TimePicker,
+    expectedDataUiName: 'TimePicker.Minutes',
+  });
+
+  shouldHaveDataUiName({
+    Component: TimePicker.Separator,
+    Wrapper: TimePicker,
+    expectedDataUiName: 'TimePicker.Separator',
+  });
+
+  shouldHaveDataUiName({
+    Component: TimePicker.Format,
+    Wrapper: ({ children }: { children: React.ReactNode }) => (
+      <TimePicker is12Hour>{children}</TimePicker>
+    ),
+    expectedDataUiName: 'TimePicker.Format',
+  });
 });
 
 describe('TimePickerEntity', () => {

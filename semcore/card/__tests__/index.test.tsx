@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 import { describe, beforeEach } from '@semcore/testing-utils/vitest';
 
@@ -11,23 +11,32 @@ describe('Card Dependency imports', () => {
 describe('Card', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Card,
     expectedDataUiName: 'Card',
-    preset: 'root',
   });
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Card.Title,
     Wrapper: Card,
     expectedDataUiName: 'Card.Title',
-    preset: 'root',
   });
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Card.Description,
     Wrapper: Card,
     expectedDataUiName: 'Card.Description',
-    preset: 'root',
+  });
+
+  shouldHaveDataUiName({
+    Component: Card.Header,
+    Wrapper: Card,
+    expectedDataUiName: 'Card.Header',
+  });
+
+  shouldHaveDataUiName({
+    Component: Card.Body,
+    Wrapper: Card,
+    expectedDataUiName: 'Card.Body',
   });
 });

@@ -1,12 +1,71 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import ColorPicker, { PaletteManager } from '../src';
 
+const VisibleColorPicker = ({ children }: { children: React.ReactNode }) => (
+  <ColorPicker visible disablePortal>{children}</ColorPicker>
+);
+
+const ColorPickerPopperWrapper = ({ children }: { children: React.ReactNode }) => (
+  <VisibleColorPicker>
+    <ColorPicker.Popper>{children}</ColorPicker.Popper>
+  </VisibleColorPicker>
+);
+
+const ColorPickerColorsWrapper = ({ children }: { children: React.ReactNode }) => (
+  <ColorPickerPopperWrapper>
+    <ColorPicker.Colors>{children}</ColorPicker.Colors>
+  </ColorPickerPopperWrapper>
+);
+
+const PaletteManagerWrapper = ({ children }: { children: React.ReactNode }) => (
+  <PaletteManager>{children}</PaletteManager>
+);
+
 describe('color-picker Dependency imports', () => {
   runDependencyCheckTests('color-picker');
+});
+
+describe('ColorPicker data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: ColorPicker.Trigger,
+    Wrapper: VisibleColorPicker,
+    expectedDataUiName: 'ColorPicker.Trigger',
+  });
+
+  shouldHaveDataUiName({
+    Component: ColorPicker.Popper,
+    Wrapper: VisibleColorPicker,
+    expectedDataUiName: 'ColorPicker.Popper',
+  });
+
+  shouldHaveDataUiName({
+    Component: ColorPicker.Colors,
+    Wrapper: ColorPickerPopperWrapper,
+    expectedDataUiName: 'ColorPicker.Colors',
+  });
+
+  shouldHaveDataUiName({
+    Component: ColorPicker.Item,
+    Wrapper: ColorPickerColorsWrapper,
+    props: { value: '#2BB3FF' },
+    expectedDataUiName: 'ColorPicker.Item',
+  });
+
+  shouldHaveDataUiName({
+    Component: PaletteManager.Colors,
+    Wrapper: PaletteManagerWrapper,
+    expectedDataUiName: 'PaletteManager.Colors',
+  });
+
+  shouldHaveDataUiName({
+    Component: PaletteManager.InputColor,
+    Wrapper: PaletteManagerWrapper,
+    expectedDataUiName: 'PaletteManager.InputColor',
+  });
 });
 
 describe('ColorPicker', () => {

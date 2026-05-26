@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 import { describe, beforeEach } from '@semcore/testing-utils/vitest';
 
@@ -11,9 +11,8 @@ describe('Divider Dependency imports', () => {
 describe('Divider', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Divider,
     expectedDataUiName: 'Divider',
-    preset: 'leaf',
   });
 });

@@ -1,9 +1,13 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, screen } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FullscreenModal from '../src';
+
+const VisibleFullscreenModal = ({ children }: any) => (
+  <FullscreenModal visible disablePortal>{children}</FullscreenModal>
+);
 
 describe('fullscreen-modal Dependency imports', () => {
   runDependencyCheckTests('fullscreen-modal');
@@ -12,11 +16,58 @@ describe('fullscreen-modal Dependency imports', () => {
 describe('FullscreenModal', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: FullscreenModal,
     props: { visible: true },
     expectedDataUiName: 'FullscreenModal',
-    preset: 'root',
+  });
+
+  shouldHaveDataUiName({
+    Component: FullscreenModal.Body,
+    Wrapper: VisibleFullscreenModal,
+    props: { children: 'Body' },
+    expectedDataUiName: 'FullscreenModal.Body',
+  });
+
+  shouldHaveDataUiName({
+    Component: FullscreenModal.Section,
+    Wrapper: VisibleFullscreenModal,
+    props: { children: 'Section' },
+    expectedDataUiName: 'FullscreenModal.Section',
+  });
+
+  shouldHaveDataUiName({
+    Component: FullscreenModal.Footer,
+    Wrapper: VisibleFullscreenModal,
+    props: { children: 'Footer' },
+    expectedDataUiName: 'FullscreenModal.Footer',
+  });
+
+  shouldHaveDataUiName({
+    Component: FullscreenModal.Close,
+    Wrapper: VisibleFullscreenModal,
+    expectedDataUiName: 'FullscreenModal.Close',
+  });
+
+  shouldHaveDataUiName({
+    Component: FullscreenModal.Back,
+    Wrapper: VisibleFullscreenModal,
+    props: { children: 'Back' },
+    expectedDataUiName: 'FullscreenModal.Back',
+  });
+
+  shouldHaveDataUiName({
+    Component: FullscreenModal.Title,
+    Wrapper: VisibleFullscreenModal,
+    props: { children: 'Title' },
+    expectedDataUiName: 'FullscreenModal.Title',
+  });
+
+  shouldHaveDataUiName({
+    Component: FullscreenModal.Description,
+    Wrapper: VisibleFullscreenModal,
+    props: { children: 'Description' },
+    expectedDataUiName: 'FullscreenModal.Description',
   });
 
   test('should support hidden props', () => {
@@ -73,13 +124,10 @@ describe('FullscreenModal', () => {
 describe('FullscreenModal.Header', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: FullscreenModal.Header,
-    Wrapper: ({ children }: any) => (
-      <FullscreenModal visible>{children}</FullscreenModal>
-    ),
+    Wrapper: VisibleFullscreenModal,
     expectedDataUiName: 'FullscreenModal.Header',
-    preset: 'leaf',
   });
 
   test('Verify supports title', () => {

@@ -1,5 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -9,6 +9,59 @@ import type { CellRenderProps } from '../src/components/Body/Body.types';
 
 describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
+});
+
+describe('DataTable data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: DataTable,
+    props: {
+      'aria-label': 'Table',
+      'data': [{ keyword: 'test' }],
+      'columns': [{ name: 'keyword', children: 'Keyword' }],
+    },
+    expectedDataUiName: 'DataTable',
+  });
+
+  test('Should have data-ui-name on generated table parts', () => {
+    const { container } = render(
+      <DataTable
+        aria-label='Table'
+        data={[{ keyword: 'test', kd: '1' }]}
+        columns={[
+          { name: 'keyword', children: 'Keyword' },
+          { name: 'kd', children: 'KD' },
+        ]}
+      />,
+    );
+
+    expect(container.querySelector('[data-ui-name="DataTable.Head"]')).toBeTruthy();
+    expect(container.querySelectorAll('[data-ui-name="Head.Column"]')).toHaveLength(2);
+    expect(container.querySelector('[data-ui-name="DataTable.Body"]')).toBeTruthy();
+    expect(container.querySelector('[data-ui-name="Body.Row"]')).toBeTruthy();
+    expect(container.querySelectorAll('[data-ui-name="Row.Cell"]')).toHaveLength(2);
+  });
+
+  test('Should have data-ui-name on generated column groups', () => {
+    const { container } = render(
+      <DataTable
+        aria-label='Table'
+        data={[{ keyword: 'test', kd: '1' }]}
+        columns={[
+          {
+            name: 'metrics',
+            children: 'Metrics',
+            columns: [
+              { name: 'keyword', children: 'Keyword' },
+              { name: 'kd', children: 'KD' },
+            ],
+          },
+        ]}
+      />,
+    );
+
+    expect(container.querySelector('[data-ui-name="Head.Group"]')).toBeTruthy();
+    expect(container.querySelectorAll('[data-ui-name="Head.Column"]')).toHaveLength(2);
+  });
 });
 
 describe('DataTable', () => {

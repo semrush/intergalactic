@@ -1,12 +1,39 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
-import { List } from '../src';
+import { Blockquote, List, Text } from '../src';
 
 describe('typography Dependency imports', () => {
   runDependencyCheckTests('typography');
+});
+
+describe('Typography data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: Text,
+    props: { children: 'Text' },
+    expectedDataUiName: 'Text',
+  });
+
+  shouldHaveDataUiName({
+    Component: Blockquote,
+    props: { children: 'Blockquote' },
+    expectedDataUiName: 'Blockquote',
+  });
+
+  shouldHaveDataUiName({
+    Component: List,
+    props: { children: <List.Item>Item</List.Item> },
+    expectedDataUiName: 'List',
+  });
+
+  shouldHaveDataUiName({
+    Component: List.Item,
+    Wrapper: List,
+    props: { children: 'Item' },
+    expectedDataUiName: 'List.Item',
+  });
 });
 
 describe('List', () => {

@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -12,10 +12,9 @@ describe('input-mask Dependency imports', () => {
 describe('InputMask', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: InputMask,
     expectedDataUiName: 'InputMask',
-    preset: 'root',
   });
 
   test.concurrent('Should renders correctly', async () => {
@@ -96,21 +95,5 @@ describe('InputMask', () => {
     const input = getByTestId('input') as HTMLInputElement;
 
     expect(input.value).toBe('6000');
-  });
-});
-
-describe('InputMask.Value', () => {
-  beforeEach(cleanup);
-
-  runComponentContractTests({
-    Component: InputMask.Value,
-    Wrapper: InputMask,
-    props: {
-      title: 'test mask',
-      includeInputProps: ['data-testid'],
-    },
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
   });
 });

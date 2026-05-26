@@ -1,3 +1,4 @@
+import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import React, { useRef } from 'react';
@@ -5,8 +6,27 @@ import { userEvent } from 'storybook/test';
 
 import { Hint, PortalProvider } from '../src';
 
+const HintWithTrigger = ({ children, ...props }: any) => {
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  return (
+    <>
+      <button ref={triggerRef}>Trigger</button>
+      <Hint triggerRef={triggerRef} {...props}>
+        {children}
+      </Hint>
+    </>
+  );
+};
+
 describe('Hint', () => {
   afterEach(cleanup);
+
+  shouldHaveDataUiName({
+    Component: HintWithTrigger,
+    props: { visible: true, children: 'Hint' },
+    expectedDataUiName: 'Hint',
+  });
+
   test('Should support controlled visible mode', async () => {
     const TestComponent = () => {
       const [visible, setVisible] = React.useState(false);

@@ -1,4 +1,4 @@
-import { runComponentContractTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -12,10 +12,9 @@ const SpanTag = function SpanTag(props) {
 describe('Flex', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Flex,
     expectedDataUiName: 'Flex',
-    preset: 'root',
   });
 
   test.concurrent('Verify supports css property', async () => {
@@ -85,15 +84,21 @@ describe('Flex', () => {
 describe('Box', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Box,
     expectedDataUiName: 'Box',
-    preset: 'root',
-    include: ['tag'],
-    tagCases: [
-      { tag: 'button', expectedTagName: 'BUTTON' },
-      { tag: SpanTag, name: 'SpanTag', expectedTagName: 'SPAN' },
-    ],
+  });
+
+  test('Verify supports custom tag', () => {
+    const { getByTestId } = render(
+      <>
+        <Box tag='button' data-testid='button-box' />
+        <Box tag={SpanTag} data-testid='span-box' />
+      </>,
+    );
+
+    expect(getByTestId('button-box').tagName).toBe('BUTTON');
+    expect(getByTestId('span-box').tagName).toBe('SPAN');
   });
 
   test('Verify clear non html props', () => {

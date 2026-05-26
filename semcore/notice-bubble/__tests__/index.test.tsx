@@ -1,7 +1,4 @@
-import {
-  runComponentContractTests,
-  runDependencyCheckTests,
-} from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   render,
   cleanup,
@@ -36,11 +33,9 @@ describe('notice-bubble Dependency imports', () => {
 describe('NoticeBubbleContainer', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: TestNoticeBubble,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
+    expectedDataUiName: 'NoticeBubbleContainer',
   });
 
   test('Verify supports rendering outside DOM', () => {

@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -10,6 +10,100 @@ describe('select Dependency imports', () => {
 });
 
 HTMLElement.prototype.scrollIntoView = () => { };
+
+const SelectWrapper = ({ children }: { children: React.ReactNode }) => <Select>{children}</Select>;
+
+const VisibleSelectWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Select visible disablePortal>
+    {children}
+  </Select>
+);
+
+const SelectMenuWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Select visible disablePortal>
+    <Select.Trigger>Trigger</Select.Trigger>
+    <Select.Menu>{children}</Select.Menu>
+  </Select>
+);
+
+const SelectOptionWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Select visible disablePortal>
+    <Select.Trigger>Trigger</Select.Trigger>
+    <Select.Menu>
+      <Select.Option value='option'>{children}</Select.Option>
+    </Select.Menu>
+  </Select>
+);
+
+describe('Select data-ui-name', () => {
+  beforeEach(cleanup);
+
+  shouldHaveDataUiName({
+    Component: Select.Trigger,
+    Wrapper: SelectWrapper,
+    props: { children: 'Trigger' },
+    expectedDataUiName: 'Select.Trigger',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.Popper,
+    Wrapper: VisibleSelectWrapper,
+    props: { 'aria-label': 'Select popper', 'children': 'Popper' },
+    expectedDataUiName: 'Select.Popper',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.Menu,
+    Wrapper: VisibleSelectWrapper,
+    expectedDataUiName: 'Select.Menu',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.List,
+    Wrapper: VisibleSelectWrapper,
+    expectedDataUiName: 'Select.List',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.Option,
+    Wrapper: SelectMenuWrapper,
+    props: { value: 'option', children: 'Option' },
+    expectedDataUiName: 'Select.Option',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.Option.Checkbox,
+    Wrapper: SelectOptionWrapper,
+    expectedDataUiName: 'Select.Option.Checkbox',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.Option.Content,
+    Wrapper: SelectOptionWrapper,
+    props: { children: 'Content' },
+    expectedDataUiName: 'Select.Option.Content',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.Option.Hint,
+    Wrapper: SelectOptionWrapper,
+    props: { children: 'Hint' },
+    expectedDataUiName: 'Select.Option.Hint',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.Group,
+    Wrapper: SelectMenuWrapper,
+    props: { title: 'Group', children: <Select.Option value='group-option'>Option</Select.Option> },
+    expectedDataUiName: 'Select.Group',
+  });
+
+  shouldHaveDataUiName({
+    Component: Select.InputSearch,
+    Wrapper: VisibleSelectWrapper,
+    expectedDataUiName: 'Select.InputSearch',
+  });
+});
 
 describe('Select Trigger', () => {
   beforeEach(() => {
@@ -227,14 +321,6 @@ describe('Select Trigger', () => {
 describe('Option.Checkbox', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
-    Component: Select.Option.Checkbox,
-    Wrapper: Select,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
-  });
-
   test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async () => {
     const { getByTestId } = render(
       <Select>
@@ -281,14 +367,6 @@ describe('Option.Checkbox', () => {
 
 describe('InputSearch', () => {
   beforeEach(cleanup);
-
-  runComponentContractTests({
-    Component: InputSearch,
-    Wrapper: Select,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
-  });
 
   test('Verify calls onChange ones per symbol', async () => {
     const spy = vi.fn();

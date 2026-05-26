@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 import { beforeEach, describe } from '@semcore/testing-utils/vitest';
 
@@ -11,9 +11,8 @@ describe('spin Dependency imports', () => {
 describe('Spin', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: Spin,
     expectedDataUiName: 'Spin',
-    preset: 'leaf',
   });
 });

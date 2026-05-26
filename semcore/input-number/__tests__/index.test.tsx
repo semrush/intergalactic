@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -7,6 +7,33 @@ import InputNumber from '../src';
 
 describe('input-number Dependency imports', () => {
   runDependencyCheckTests('input-number');
+});
+
+describe('InputNumber data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: InputNumber,
+    props: { children: <InputNumber.Value /> },
+    expectedDataUiName: 'InputNumber',
+  });
+
+  shouldHaveDataUiName({
+    Component: InputNumber.Value,
+    Wrapper: InputNumber,
+    expectedDataUiName: 'InputNumber.Value',
+  });
+
+  shouldHaveDataUiName({
+    Component: InputNumber.Controls,
+    Wrapper: InputNumber,
+    expectedDataUiName: 'InputNumber.Controls',
+  });
+
+  shouldHaveDataUiName({
+    Component: InputNumber.Addon,
+    Wrapper: InputNumber,
+    props: { children: 'Addon' },
+    expectedDataUiName: 'InputNumber.Addon',
+  });
 });
 
 describe('InputNumber', () => {

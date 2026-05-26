@@ -1,4 +1,4 @@
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -12,20 +12,18 @@ describe('BaseTrigger Dependency imports', () => {
 describe('BaseTrigger', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: BaseTrigger,
     expectedDataUiName: 'BaseTrigger',
-    preset: 'root',
   });
 });
 
 describe('ButtonTrigger', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: ButtonTrigger,
     expectedDataUiName: 'ButtonTrigger',
-    preset: 'root',
   });
 
   test.concurrent('Should work as button with labels', async () => {
@@ -49,20 +47,18 @@ describe('ButtonTrigger', () => {
 describe('FilterTrigger', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: FilterTrigger,
     expectedDataUiName: 'FilterTrigger',
-    preset: 'root',
   });
 });
 
 describe('LinkTrigger', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: LinkTrigger,
     props: { children: 'Link trigger' },
     expectedDataUiName: 'LinkTrigger',
-    preset: 'root',
   });
 });

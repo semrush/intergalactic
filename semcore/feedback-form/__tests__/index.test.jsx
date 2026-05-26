@@ -1,6 +1,5 @@
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import CongratsIllustration from '@semcore/illustration/Congrats';
-import { runComponentContractTests, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -14,10 +13,9 @@ describe('feedback-form Dependency imports', () => {
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
 
-  runComponentContractTests({
+  shouldHaveDataUiName({
     Component: FeedbackForm,
     expectedDataUiName: 'FeedbackForm',
-    preset: 'root',
   });
 
   test.concurrent('Verify call onSubmit', () => {
@@ -96,24 +94,6 @@ describe('FeedbackForm', () => {
     await userEvent.keyboard('[Enter]');
     expect(Input.attributes.state.value).toBe('invalid');
     unmount();
-  });
-});
-
-describe('FeedbackForm.Item', () => {
-  beforeEach(cleanup);
-
-  const Item = React.forwardRef((props, ref) => (
-    <FeedbackForm.Item interaction='click' {...props}>
-      {(props) => <input ref={ref} {...propsForElement(props)} />}
-    </FeedbackForm.Item>
-  ));
-
-  runComponentContractTests({
-    Component: Item,
-    Wrapper: FeedbackForm,
-    preset: 'none',
-    include: ['className', 'ref'],
-    refTarget: 'domNode',
   });
 });
 

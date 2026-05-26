@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
@@ -7,6 +7,45 @@ import Tag, { TagContainer } from '../src';
 
 describe('tag Dependency imports', () => {
   runDependencyCheckTests('tag');
+});
+
+describe('Tag data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: Tag,
+    props: { children: 'Tag' },
+    expectedDataUiName: 'Tag',
+  });
+
+  shouldHaveDataUiName({
+    Component: Tag.Text,
+    Wrapper: Tag,
+    props: { children: 'Text' },
+    expectedDataUiName: 'Tag.Text',
+  });
+
+  shouldHaveDataUiName({
+    Component: Tag.Addon,
+    Wrapper: Tag,
+    expectedDataUiName: 'Tag.Addon',
+  });
+
+  shouldHaveDataUiName({
+    Component: Tag.Circle,
+    Wrapper: Tag,
+    expectedDataUiName: 'Tag.Circle',
+  });
+
+  shouldHaveDataUiName({
+    Component: TagContainer,
+    props: { children: 'TagContainer' },
+    expectedDataUiName: 'TagContainer',
+  });
+
+  shouldHaveDataUiName({
+    Component: TagContainer.Close,
+    Wrapper: TagContainer,
+    expectedDataUiName: 'TagContainer.Close',
+  });
 });
 
 describe('Tag', () => {

@@ -1,5 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
@@ -8,6 +8,43 @@ import TabLine from '../src';
 
 describe('tab-line Dependency imports', () => {
   runDependencyCheckTests('tab-line');
+});
+
+describe('TabLine data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: TabLine,
+    props: { children: <TabLine.Item value={1}>Item</TabLine.Item> },
+    expectedDataUiName: 'TabLine',
+  });
+
+  shouldHaveDataUiName({
+    Component: TabLine.Item,
+    Wrapper: TabLine,
+    props: { value: 1, children: 'Item' },
+    expectedDataUiName: 'TabLine.Item',
+  });
+
+  shouldHaveDataUiName({
+    Component: TabLine.Item.Text,
+    Wrapper: ({ children }: { children: React.ReactNode }) => (
+      <TabLine>
+        <TabLine.Item value={1}>{children}</TabLine.Item>
+      </TabLine>
+    ),
+    props: { children: 'Text' },
+    expectedDataUiName: 'TabLine.Item.Text',
+  });
+
+  shouldHaveDataUiName({
+    Component: TabLine.Item.Addon,
+    Wrapper: ({ children }: { children: React.ReactNode }) => (
+      <TabLine>
+        <TabLine.Item value={1}>{children}</TabLine.Item>
+      </TabLine>
+    ),
+    props: { children: 'Addon' },
+    expectedDataUiName: 'TabLine.Item.Addon',
+  });
 });
 
 describe('TabLine', () => {

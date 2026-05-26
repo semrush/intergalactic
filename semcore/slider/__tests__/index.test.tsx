@@ -1,4 +1,4 @@
-import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
@@ -7,6 +7,20 @@ import Slider from '../src';
 
 describe('slider Dependency imports', () => {
   runDependencyCheckTests('slider');
+});
+
+describe('Slider data-ui-name', () => {
+  shouldHaveDataUiName({
+    Component: Slider,
+    expectedDataUiName: 'Slider',
+  });
+
+  shouldHaveDataUiName({
+    Component: Slider.Options,
+    Wrapper: Slider,
+    props: { children: <Slider.Item value={1}>One</Slider.Item> },
+    expectedDataUiName: 'Slider.Options',
+  });
 });
 
 describe('Slider', () => {
