@@ -1,10 +1,10 @@
-import { Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import Wizard from '@semcore/ui/wizard';
 import React from 'react';
 
-const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
+const steps = [{ title: 'SiteAuditSettingsSiteAuditSettings' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
 const Demo = () => {
   const [step, setStep] = React.useState<number>(1);
@@ -30,19 +30,19 @@ const Demo = () => {
         </Wizard.Sidebar>
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           <Wizard.Step step={1}>
-            <Text size={500} tag='h3'>
+            <Wizard.StepTitle>
               {steps[0].title}
-            </Text>
+            </Wizard.StepTitle>
           </Wizard.Step>
           <Wizard.Step step={2}>
-            <Text size={500} tag='h3'>
+            <Wizard.StepTitle>
               {steps[1].title}
-            </Text>
+            </Wizard.StepTitle>
           </Wizard.Step>
           <Wizard.Step step={3}>
-            <Text size={500} tag='h3'>
+            <Wizard.StepTitle>
               {steps[2].title}
-            </Text>
+            </Wizard.StepTitle>
           </Wizard.Step>
           <Flex mt={5}>
             {step > 1 && (

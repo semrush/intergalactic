@@ -85,9 +85,9 @@ const Demo = () => {
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           {steps.map((stepData, index) => (
             <Wizard.Step key={index} step={index + 1}>
-              <Text size={500} tag='h3'>
+              <Wizard.StepTitle>
                 {stepData.title}
-              </Text>
+              </Wizard.StepTitle>
             </Wizard.Step>
           ))}
 

@@ -10,6 +10,7 @@ import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
 import CheckM from '@semcore/icon/Check/m';
 import Modal from '@semcore/modal';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/wizard.shadow.css';
@@ -345,10 +346,20 @@ function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
   );
 }
 
+function StepTitle(props: Intergalactic.InternalTypings.InferChildComponentProps<WizardType, typeof WizardRoot, 'StepTitle'>) {
+  const SWizardStepTitle = Root;
+  const { styles } = props;
+
+  return sstyled(styles)(
+    <SWizardStepTitle render={Text} tag='h3' size={500} />,
+  );
+}
+
 const Wizard = createComponent(WizardRoot, {
   Sidebar,
   Content,
   Step,
+  StepTitle,
   Stepper,
   StepBack,
   StepNext,

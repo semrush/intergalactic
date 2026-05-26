@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@semcore/button": "^17.1.0",
-    "@semcore/modal": "^17.1.0"
+    "@semcore/modal": "^17.1.0",
+    "@semcore/typography": "^17.1.0"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.0.2",

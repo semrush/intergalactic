@@ -97,7 +97,8 @@ SStepDescription {
 
 SContent {
   padding: var(--intergalactic-spacing-10x, 40px);
-  width: 100%;
+  overflow: hidden;
+  flex: 1;
   border-radius: 0 var(--intergalactic-modal-rounded, calc(12px + 2px)) var(--intergalactic-modal-rounded, calc(12px + 2px))
     0;
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
@@ -108,4 +109,8 @@ SContent[noSidebar] {
 
 SSidebarMenu {
   display: contents;
+}
+
+SWizardStepTitle {
+  word-break: break-word;
 }
