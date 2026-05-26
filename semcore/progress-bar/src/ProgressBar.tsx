@@ -15,7 +15,11 @@ function isCustomTheme(theme?: string) {
 
 class ProgressBarRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSProgressBar.Component>,
-  typeof ProgressBarRoot.enhance
+  typeof ProgressBarRoot.enhance,
+  {},
+  {},
+  {},
+  NSProgressBar.DefaultProps
 > {
   static displayName = 'ProgressBar';
   static style = style;
@@ -25,7 +29,7 @@ class ProgressBarRoot extends Component<
     size: 'm',
     theme: 'invert',
     children: <ProgressBar.Value />,
-  });
+  } as const);
 
   getValueProps() {
     const { value, duration, size, resolveColor } = this.asProps;
@@ -79,8 +83,11 @@ function Value(
   );
 }
 
-const ProgressBar = createComponent(ProgressBarRoot, {
+const ProgressBar = createComponent<
+  NSProgressBar.Component,
+  typeof ProgressBarRoot
+>(ProgressBarRoot, {
   Value,
-}) as NSProgressBar.Component;
+});
 
 export default ProgressBar;

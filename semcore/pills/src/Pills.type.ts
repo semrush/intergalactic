@@ -36,6 +36,11 @@ declare namespace NSPills {
   type Handlers = {
     value: (value: Props['value'], event: React.SyntheticEvent) => Props['value'];
   };
+  type DefaultProps = {
+    size: 'm';
+    defaultValue: null;
+    behavior: Props['behavior'];
+  };
   namespace Pill {
     type Props = BoxProps & NeighborItemProps & {
       /** Pill value */

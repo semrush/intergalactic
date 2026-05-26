@@ -23,7 +23,18 @@ type State<UniqKeyType> = {
   accordionComponent?: React.ReactNode;
 };
 
-export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTableRowProps<Data, UniqKeyType>, [], {}, RowPropsInner<Data, UniqKeyType>, State<UniqKeyType>> {
+type DefaultProps = {
+  'aria-level': undefined;
+};
+
+export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
+  DataTableRowProps<Data, UniqKeyType>,
+  [],
+  {},
+  RowPropsInner<Data, UniqKeyType>,
+  State<UniqKeyType>,
+  DefaultProps
+> {
   static displayName = 'Row';
   static style = style;
 
@@ -659,8 +670,13 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 }
 
-export const Row = createComponent(RowRoot, {
-  Cell,
-}) as unknown as DataTableRowType & {
+type RowComponent = DataTableRowType & {
   Cell: any;
 };
+
+export const Row = createComponent<
+  RowComponent,
+  typeof RowRoot
+>(RowRoot, {
+  Cell,
+});
