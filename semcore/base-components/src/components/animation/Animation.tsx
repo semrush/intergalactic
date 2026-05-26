@@ -100,9 +100,11 @@ class Animation extends Component<
     const { animationsDisabled, visible } = this.asProps;
 
     const delayArr = animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
-    const durationArr = animationsDisabled ? [0, 0] : propToArray(this.asProps.duration);
+    const durationArr = propToArray(this.asProps.duration);
     const delay = visible ? delayArr[0] : delayArr[1];
-    const duration = visible ? durationArr[0] + 100 : durationArr[1] + 100;
+    const duration = animationsDisabled
+      ? [0, 0]
+      : visible ? durationArr[0] + 100 : durationArr[1] + 100;
 
     setTimeout(() => {
       if (this.animationSupported) return;
