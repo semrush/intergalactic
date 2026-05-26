@@ -288,7 +288,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     return sstyled(styles)(
       <Animation
         initialAnimation={initialAnimation}
-        visible={visible ?? true}
+        visible={visible}
         duration={animationDuration}
         // @ts-ignore
         keyframes={[styles['@enter'], styles['@exit']]}
