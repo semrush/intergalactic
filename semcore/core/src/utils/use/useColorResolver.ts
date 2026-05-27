@@ -1,5 +1,5 @@
-import highlightsDesignThemeJson from '@semcore/theme/highlights-light';
-import defaultDesignThemeJson from '@semcore/theme/light';
+import highlightsDesignThemeJson from '@semcore/theme/lib/highlights-light';
+import defaultDesignThemeJson from '@semcore/theme/lib/light';
 
 import logger from '../logger';
 import { useContextTokens } from '../ThemeProvider';
