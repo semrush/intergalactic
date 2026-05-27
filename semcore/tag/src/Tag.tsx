@@ -2,6 +2,7 @@ import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -18,7 +19,11 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootTag extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSTag.Component>,
-  typeof RootTag.enhance
+  typeof RootTag.enhance,
+  {},
+  WithI18nEnhanceProps,
+  {},
+  NSTag.DefaultProps
 > {
   static displayName = 'Tag';
   static style = style;
@@ -29,7 +34,7 @@ class RootTag extends Component<
     size: 'm',
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
   tagRef = React.createRef();
 
@@ -104,7 +109,11 @@ class RootTag extends Component<
 
 class RootTagContainer extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSTag.Container.Component>,
-  typeof RootTagContainer.enhance
+  typeof RootTagContainer.enhance,
+  {},
+  WithI18nEnhanceProps,
+  {},
+  NSTag.Container.DefaultProps
 > {
   static displayName = 'TagContainer';
   static style = style;
@@ -112,7 +121,7 @@ class RootTagContainer extends Component<
   static defaultProps = {
     color: 'gray-500',
     theme: 'primary',
-  };
+  } as const;
 
   tagRef = React.createRef<HTMLDivElement>();
 
@@ -345,17 +354,23 @@ function Circle(
   return sstyled(styles)(<SCircle render={Box} tag='span' tag-color={tagColor} />);
 }
 
-const Tag = createComponent(RootTag, {
+const Tag = createComponent<
+  NSTag.Component,
+  typeof RootTag
+>(RootTag, {
   Text,
   Addon,
   Circle,
-}) as NSTag.Component;
+});
 
-export const TagContainer = createComponent(RootTagContainer, {
+export const TagContainer = createComponent<
+  NSTag.Container.Component,
+  typeof RootTagContainer
+>(RootTagContainer, {
   Tag,
   Addon,
   Close,
   Circle: TagContainerCircle,
-}) as NSTag.Container.Component;
+});
 
 export default Tag;

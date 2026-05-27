@@ -4,6 +4,8 @@ import type { IconProps } from '@semcore/icon';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
+
 declare namespace NSTag {
   type Size = 'xl' | 'l' | 'm';
   type Theme = 'primary' | 'secondary' | 'additional';
@@ -38,6 +40,13 @@ declare namespace NSTag {
     /** Specifies the locale for i18n support */
     locale?: string;
   };
+  type DefaultProps = {
+    theme: 'primary';
+    color: 'gray-500';
+    size: 'm';
+    i18n: LocalizedMessages;
+    locale: 'en';
+  };
 
   namespace Text {
     type Props = NSText.Props;
@@ -69,6 +78,10 @@ declare namespace NSTag {
   }
 
   namespace Container {
+    type DefaultProps = {
+      color: 'gray-500';
+      theme: 'primary';
+    };
     type Component = Intergalactic.Component<'div', NSTag.Props, NSTag.Ctx> & {
       Tag: NSTag.Component;
       Close: NSTag.Close.Component;
