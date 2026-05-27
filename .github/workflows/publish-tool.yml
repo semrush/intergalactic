@@ -9,6 +9,7 @@ on:
         options:
           - "@semcore/process-css-unplugin"
           - "@semcore/stylelint-plugin"
+          - "@semcore/theme"
       publish-options:
         description: "Publish options (f.e --dry-run):"
         required: false

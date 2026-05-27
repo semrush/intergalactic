@@ -123,7 +123,10 @@ function useNeighborLocationDetect(index: number) {
   return calculateNeighborLocation(controlsLengthRef.current, index);
 }
 
-export const NeighborLocation = createComponent(
+export const NeighborLocation = createComponent<
+  typeof NeighborLocationType,
+  typeof NeighborLocationRoot
+>(
   NeighborLocationRoot,
   {
     Detect: Detect,
@@ -131,6 +134,6 @@ export const NeighborLocation = createComponent(
   {
     context: Context,
   },
-) as typeof NeighborLocationType;
+);
 
 export { useNeighborLocationDetect };

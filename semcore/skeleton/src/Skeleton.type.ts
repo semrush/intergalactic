@@ -30,6 +30,11 @@ declare namespace NSSkeleton {
     gradientUrl: string;
   };
 
+  type DefaultProps = {
+    theme?: 'invert';
+    duration: 2000;
+  };
+
   namespace Text {
     type Props = BoxProps & {
       // TODO: It looks like it should be number (def. not a string...)

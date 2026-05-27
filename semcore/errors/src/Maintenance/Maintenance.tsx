@@ -10,7 +10,11 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootMaintenance extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSMaintenance.Component>,
-  typeof RootMaintenance.enhance
+  typeof RootMaintenance.enhance,
+  {},
+  {},
+  {},
+  NSMaintenance.DefaultProps
 > {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -20,7 +24,7 @@ class RootMaintenance extends Component<
     homeLink: '/',
     icon: getIconPath('maintenance'),
     titleTag: 'h2',
-  };
+  } as const;
 
   render() {
     const { Children, getI18nText, homeLink, toolName, titleTag } = this.asProps;
@@ -40,4 +44,7 @@ class RootMaintenance extends Component<
   }
 }
 
-export default createComponent(RootMaintenance) as NSMaintenance.Component;
+export default createComponent<
+  NSMaintenance.Component,
+  typeof RootMaintenance
+>(RootMaintenance);

@@ -15,4 +15,6 @@ function Box(props: any, ref: any) {
 
 Box.displayName = 'Box';
 
-export default createBaseComponent(Box) as any as Intergalactic.Component<'div', BoxProps>;
+type BoxComponent = Intergalactic.Component<'div', BoxProps>;
+
+export default createBaseComponent<BoxComponent>(Box);

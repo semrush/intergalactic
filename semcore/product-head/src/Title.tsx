@@ -16,6 +16,10 @@ export type HeaderTitleProps = BoxProps & {
   toolName?: React.ReactNode;
 };
 
+type HeaderTitleComponent = Intergalactic.Component<'h1', HeaderTitleProps> & {
+  Tool: typeof Box;
+};
+
 class TitleRoot extends Component<HeaderTitleProps> {
   static displayName = 'Title';
   static style = style;
@@ -40,10 +44,11 @@ function Tool(props: any) {
   return sstyled(props.styles)(<STool render={Box} />);
 }
 
-const Title = createComponent(TitleRoot, {
+const Title = createComponent<
+  HeaderTitleComponent,
+  typeof TitleRoot
+>(TitleRoot, {
   Tool,
-}) as any as Intergalactic.Component<'h1', HeaderTitleProps> & {
-  Tool: typeof Box;
-};
+});
 
 export default Title;

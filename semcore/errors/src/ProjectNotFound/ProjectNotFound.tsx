@@ -11,7 +11,11 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootProjectNotFound extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSProjectNotFound.Component>,
-  typeof RootProjectNotFound.enhance
+  typeof RootProjectNotFound.enhance,
+  {},
+  {},
+  {},
+  NSProjectNotFound.DefaultProps
 > {
   static displayName = 'ProjectNotFound';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -23,7 +27,7 @@ class RootProjectNotFound extends Component<
     contactsLink: '/company/contacts',
     supportTeamLink: '/company/contacts',
     titleTag: 'h2',
-  };
+  } as const;
 
   render() {
     const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag } = this.asProps;
@@ -53,4 +57,7 @@ class RootProjectNotFound extends Component<
   }
 }
 
-export default createComponent(RootProjectNotFound) as NSProjectNotFound.Component;
+export default createComponent<
+  NSProjectNotFound.Component,
+  typeof RootProjectNotFound
+>(RootProjectNotFound);

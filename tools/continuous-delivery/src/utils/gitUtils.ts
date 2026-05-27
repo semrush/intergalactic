@@ -156,8 +156,11 @@ export const gitUtils = {
 
   getTag: async (startStr: string): Promise<string | null> => {
     try {
+      const filter = startStr.includes('-prerelease')
+        ? `--match "${startStr}*"`
+        : `--match "${startStr}*" --exclude "*-prerelease.*"`;
       const tag = execSync(
-        `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags="${startStr}*" --max-count=1) `,
+        `git describe --tags --abbrev=0 ${filter} $(git rev-list --tags="${startStr}*" --max-count=1) `,
         {
           encoding: 'utf-8',
         },
@@ -170,12 +173,23 @@ export const gitUtils = {
     }
   },
 
-  getPrevReleaseTag: async (): Promise<ReleaseVersion> => {
-    const tags = await git.tags(['v*', '--sort', 'creatordate']);
-    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
-    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+  getPrevReleaseTag: async (): Promise<string> => {
+    const branchSummary = await git.branch();
+    const currentBranch = branchSummary.current;
+    const testPlaceholder = 'release/v';
+    const errorMessage = `Can't get prev release tag not from release branch. Current branch is: "${currentBranch}".`;
+    if (currentBranch.startsWith(testPlaceholder)) {
+      const versionNumber = currentBranch.substring(testPlaceholder.length, testPlaceholder.length + 2);
+      const lastReleasedTag = await gitUtils.getTag(`v${versionNumber}`);
 
-    return currentReleaseTag.slice(1) as ReleaseVersion;
+      if (lastReleasedTag === null) {
+        throw new Error(errorMessage);
+      }
+
+      return lastReleasedTag.slice(1) as ReleaseVersion;
+    } else {
+      throw new Error(errorMessage);
+    }
   },
 
   getPrevPackageTag: async (pack: SeparatedPackage): Promise<ReleaseVersion> => {

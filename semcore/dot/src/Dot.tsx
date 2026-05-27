@@ -13,13 +13,17 @@ import style from './style/dot.shadow.css';
 
 class DotRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSDot.Component>,
-  typeof DotRoot.enhance
+  typeof DotRoot.enhance,
+  {},
+  NSDot.InnerProps,
+  {},
+  NSDot.DefaultProps
 > {
   static displayName = 'Dot';
   static style = style;
   static defaultProps = {
-    size: 'm',
-    keyframes: [style['@enter'], style['@exit']],
+    size: 'm' as const,
+    keyframes: [style['@enter'], style['@exit']] as [string, string],
   };
 
   static enhance = [
@@ -89,6 +93,9 @@ class DotRoot extends Component<
   }
 }
 
-const Dot = createComponent(DotRoot) as NSDot.Component;
+const Dot = createComponent<
+  NSDot.Component,
+  typeof DotRoot
+>(DotRoot);
 
 export default Dot;

@@ -2294,7 +2294,7 @@ importers:
   tools/i18n-unplugin:
     dependencies:
       '@semcore/core':
-        specifier: ^16.0.0 || ^17.0.0 || ^17.0.0-0
+        specifier: ^17.0.0 || ^17.0.0-0
         version: link:../../semcore/core
       unplugin:
         specifier: 1.2.0

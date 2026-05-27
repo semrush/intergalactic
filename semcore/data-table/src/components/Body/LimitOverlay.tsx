@@ -146,4 +146,7 @@ type LimitOverlayType = (<
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', LimitOverlayProps<any>>;
 
-export const LimitOverlay = createComponent(LimitOverlayRoot) as LimitOverlayType;
+export const LimitOverlay = createComponent<
+  LimitOverlayType,
+  typeof LimitOverlayRoot
+>(LimitOverlayRoot);

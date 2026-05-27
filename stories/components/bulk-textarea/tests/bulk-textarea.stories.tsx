@@ -1,9 +1,16 @@
 import BulkTextarea from '@semcore/ui/bulk-textarea';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasicPropsExample, { defaultBulkTextareaProps } from './examples/basic-props';
+import BasicPropsExample, {
+  defaultBulkTextareaProps,
+  linesDelimiterOptions,
+  pasteDelimiterOptions,
+  pasteLineProcessingOptions,
+} from './examples/basic-props';
 import BlurLineExample from './examples/blurLine-base-example';
-import ControlledAndNotControlledErrorsExample, { defaultProps as controlledAndNotControlledProps } from './examples/controlled-and-not-controlled-errors';
+import ControlledAndNotControlledErrorsExample, {
+  defaultProps as controlledAndNotControlledProps,
+} from './examples/controlled-and-not-controlled-errors';
 import ControlledErrorsExample from './examples/controlled-errors';
 import EmptyValueInPasteExample from './examples/empty-value-in-paste';
 import EncodeOnchangeArrayExample from './examples/encode-onchange-array';
@@ -35,10 +42,35 @@ const sharedArgTypes = {
   },
 } as const;
 
+const basicPropsArgTypes = {
+  ...sharedArgTypes,
+  pasteDelimiter: {
+    control: { type: 'select' },
+    options: ['newline', 'comma', 'semicolon', 'space', 'undefined'],
+    mapping: pasteDelimiterOptions,
+  },
+  pasteSkipEmptyLines: { control: { type: 'boolean' } },
+  pasteLineProcessing: {
+    control: { type: 'select' },
+    options: ['undefined', 'remove-http', 'trim'],
+    mapping: pasteLineProcessingOptions,
+  },
+  linesDelimiters: {
+    control: { type: 'select' },
+    options: ['enter', 'comma', 'semicolon', 'space', 'enter-and-comma', 'undefined'],
+    mapping: linesDelimiterOptions,
+  },
+} as const;
+
 export const BasicProps: StoryObj = {
   render: BasicPropsExample,
-  argTypes: sharedArgTypes,
-  args: defaultBulkTextareaProps,
+  argTypes: basicPropsArgTypes,
+  args: {
+    ...defaultBulkTextareaProps,
+    pasteDelimiter: 'newline',
+    pasteLineProcessing: 'remove-http',
+    linesDelimiters: 'comma',
+  },
 };
 
 export const ControlledErrors: StoryObj = {
