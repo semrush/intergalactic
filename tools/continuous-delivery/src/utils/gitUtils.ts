@@ -125,8 +125,11 @@ export const gitUtils = {
 
   getTag: async (startStr: string): Promise<string | null> => {
     try {
+      const filter = startStr.includes('-prerelease')
+        ? `--match "${startStr}*"`
+        : `--match "${startStr}*" --exclude "*-prerelease.*"`;
       const tag = execSync(
-        `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags="${startStr}*" --max-count=1) `,
+        `git describe --tags --abbrev=0 ${filter} $(git rev-list --tags="${startStr}*" --max-count=1) `,
         {
           encoding: 'utf-8',
         },
