@@ -11,7 +11,11 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootSpin extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSpin.Component>,
-  typeof RootSpin.enhance
+  typeof RootSpin.enhance,
+  {},
+  {},
+  {},
+  NSSpin.DefaultProps
 > {
   static displayName = 'Spin';
   static style = style;
@@ -19,7 +23,7 @@ class RootSpin extends Component<
   static defaultProps = {
     size: 'm',
     theme: 'dark',
-  };
+  } as const;
 
   render() {
     const SSpin = Root;
@@ -40,6 +44,9 @@ class RootSpin extends Component<
   }
 }
 
-const Spin = createComponent(RootSpin) as NSSpin.Component;
+const Spin = createComponent<
+  NSSpin.Component,
+  typeof RootSpin
+>(RootSpin);
 
 export default Spin;

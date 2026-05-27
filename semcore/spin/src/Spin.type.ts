@@ -20,6 +20,10 @@ declare namespace NSSpin {
     /** Specifies the locale for i18n support */
     locale?: string;
   };
+  type DefaultProps = {
+    size: 'm';
+    theme: 'dark';
+  };
 
   type Component = Intergalactic.Component<'div', Props>;
 }
