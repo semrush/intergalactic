@@ -3,7 +3,7 @@ import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
 import { ButtonLink } from '@semcore/ui/button';
 import type { ButtonLinkProps } from '@semcore/ui/button';
-import Counter, { type CounterProps } from '@semcore/ui/counter';
+import Counter, { type NSCounter } from '@semcore/ui/counter';
 import Spin, { type NSSpin } from '@semcore/ui/spin';
 import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
@@ -53,7 +53,7 @@ const Demo = (props: BasicButtonLinkProps) => {
     spinSize = 's';
   }
 
-  let counterSize: CounterProps['size'];
+  let counterSize: NSCounter.Props['size'];
   if (numSize >= 600) {
     counterSize = 'l';
   } else if (numSize >= 300) {

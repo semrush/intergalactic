@@ -57,11 +57,14 @@ class NoticeFHRoot extends Component<NoticeSmartProps> {
   }
 }
 
-export const NoticeFH = createComponent(NoticeFHRoot, {
+export const NoticeFH = createComponent<
+  HighlightedNoticeComponent,
+  typeof NoticeFHRoot
+>(NoticeFHRoot, {
   Label: Notice.Label,
   Actions: Notice.Actions,
   Content: Notice.Content,
   Title: Notice.Title,
   Text: Notice.Text,
   Close: Notice.Close,
-}) as HighlightedNoticeComponent;
+});

@@ -2,7 +2,7 @@ import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
 import { ButtonLink } from '@semcore/ui/button';
-import type { CounterProps } from '@semcore/ui/counter';
+import type { NSCounter } from '@semcore/ui/counter';
 import Counter from '@semcore/ui/counter';
 import type { NSSpin } from '@semcore/ui/spin';
 import Spin from '@semcore/ui/spin';
@@ -32,7 +32,7 @@ const Demo = (props: ButtonLinkSizesProps) => {
           spinSize = 's';
         }
 
-        let counterSize: CounterProps['size'];
+        let counterSize: NSCounter.Props['size'];
         if (size >= 600) {
           counterSize = 'l';
         } else if (size >= 300) {

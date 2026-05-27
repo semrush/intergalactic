@@ -1,5 +1,5 @@
-import type { Flex } from '@semcore/base-components';
-import type { Intergalactic, Root } from '@semcore/core';
+import type { Box, Flex } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import type Icon from '@semcore/icon';
 import type { Text } from '@semcore/typography';
 
@@ -78,6 +78,10 @@ export type LegendItemProps = LegendItem & {
   onBlurLegendItem: (id: LegendItemKey) => void;
 };
 
+export type LegendItemDefaultProps = {
+  children: React.JSX.Element;
+};
+
 export type ShapeProps = LegendItem &
   (
     | {
@@ -96,10 +100,16 @@ export const StaticShapes = ['Circle', 'Line', 'Square', 'Pattern'] as const;
 
 export type ShapeType = 'Checkbox' | typeof StaticShapes[number];
 
+export type LegendItemShapeType = Intergalactic.Component<typeof Box, Partial<ShapeProps>>;
+export type LegendItemIconType = Intergalactic.Component<typeof Icon, Partial<LegendItem>>; ;
+export type LegendItemLabelType = Intergalactic.Component<typeof Text, Partial<Omit<LegendItem, 'theme'>>>; ;
+export type LegendItemAdditionalLabelType = Intergalactic.Component<typeof Text, Partial<LegendItem>>; ;
+export type LegendItemCountType = Intergalactic.Component<typeof Text, Partial<LegendItem>>; ;
+
 export type LegendItemType = Intergalactic.Component<typeof Flex, Partial<LegendItemProps>> & {
-  Shape: Intergalactic.Component<typeof Root, Partial<ShapeProps>>;
-  Icon: Intergalactic.Component<typeof Icon, Partial<LegendItem>>;
-  Label: Intergalactic.Component<typeof Text, Partial<Omit<LegendItem, 'theme'>>>;
-  AdditionalLabel: Intergalactic.Component<typeof Text, Partial<LegendItem>>;
-  Count: Intergalactic.Component<typeof Text, Partial<LegendItem>>;
+  Shape: LegendItemShapeType;
+  Icon: LegendItemIconType;
+  Label: LegendItemLabelType;
+  AdditionalLabel: LegendItemAdditionalLabelType;
+  Count: LegendItemCountType;
 };
