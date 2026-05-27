@@ -30,6 +30,11 @@
       "import": "./lib/dark.js",
       "require": "./lib/dark.js"
     },
+    "./lib/highlights-light": {
+      "types": "./lib/highlights-light.ts",
+      "import": "./lib/highlights-light.js",
+      "require": "./lib/highlights-light.js"
+    },
     "./highlights-light": {
       "types": "./lib/highlights-light.ts",
       "import": "./lib/highlights-light.js",
