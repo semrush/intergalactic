@@ -155,7 +155,7 @@ class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentPr
 class ValueRoot extends Component<
   Intergalactic.InternalTypings.InferChildComponentProps<NSRadio.Value.Component, typeof RadioRoot, 'Value'>,
   typeof ValueRoot.enhance,
-  { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean },
+  NSRadio.Value.Handlers,
   {},
   {},
   NSRadio.Value.DefaultProps

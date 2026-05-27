@@ -33,6 +33,9 @@ declare namespace NSRadio {
     getTextProps: PropGetterFn;
   };
   namespace Value {
+    type Handlers = {
+      checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
+    };
     type Props = BoxProps & {
       /** List of elements that can be put on a hidden input */
       includeInputProps?: string[];
