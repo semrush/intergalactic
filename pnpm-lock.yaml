@@ -2336,7 +2336,7 @@ importers:
         specifier: ^16.1.1
         version: link:../badge
       '@semcore/base-components':
-        specifier: ^16.6.0
+        specifier: ^16.6.1
         version: link:../base-components
       '@semcore/base-trigger':
         specifier: ^16.5.1
@@ -2366,7 +2366,7 @@ importers:
         specifier: ^16.2.1
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^16.6.0
+        specifier: ^16.6.2
         version: link:../core
       '@semcore/counter':
         specifier: ^16.1.1
@@ -2417,7 +2417,7 @@ importers:
         specifier: ^16.1.1
         version: link:../flex-box
       '@semcore/format-text':
-        specifier: ^16.2.0
+        specifier: ^16.2.1
         version: link:../format-text
       '@semcore/fullscreen-modal':
         specifier: ^16.2.1
@@ -2432,7 +2432,7 @@ importers:
         specifier: ^16.8.1
         version: link:../icon
       '@semcore/illustration':
-        specifier: ^16.1.0
+        specifier: ^16.1.1
         version: link:../illustration
       '@semcore/inline-edit':
         specifier: ^16.1.1
