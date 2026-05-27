@@ -10,7 +10,7 @@ import React from 'react';
 import style from './style/badge.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon';
+export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon' | 'unavailable';
 
 export type BadgeMargins = {
   m?: BoxProps['m'];
@@ -108,6 +108,9 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
         return resolveColor('--green-400');
       }
       case 'soon': {
+        return resolveColor('--gray-400');
+      }
+      case 'unavailable': {
         return resolveColor('--gray-400');
       }
       default: {
