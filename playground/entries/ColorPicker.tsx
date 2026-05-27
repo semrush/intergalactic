@@ -1,4 +1,4 @@
-import type { ColorPickerProps } from '@semcore/ui/color-picker';
+import type { NSColorPicker } from '@semcore/ui/color-picker';
 import ColorPicker from '@semcore/ui/color-picker';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type ColorPickerJSXProps = JSXProps<ColorPickerProps>;
+export type ColorPickerJSXProps = JSXProps<NSColorPicker.Props>;
 
 function getJSX({ handleControlChange, ...colorPickerProps }: ColorPickerJSXProps) {
   return <ColorPicker {...colorPickerProps} />;

@@ -23,23 +23,36 @@ type VirtualListProps<T, D extends object = never> = {
    * @default 10
    */
   rowsBuffer?: number;
-} & ([D] extends [never] ? { customData?: undefined } : {
+  /*
+    TODO: As of now make it as optional, since TS has troubles with infering type depending on generic default value...
+    Revise it during refactoring.
+  */
   /** Some custom data for each renderRow function */
-  customData: D;
-});
+  customData?: [D] extends [never] ? undefined : D;
+};
+
+type VirtualListDefaultProps = {
+  rowsBuffer: 6;
+};
 
 type State = {
   scrollTop: number;
   scrollDirection: 'up' | 'down';
 };
-
-class VirtualListRoot<T = string, D extends object = never> extends Component<VirtualListProps<T, D>, [], Readonly<{}>, { rowsBuffer: number; index: number }, State> {
+class VirtualListRoot<T = string, D extends object = never> extends Component<
+  VirtualListProps<T, D>,
+  [],
+  Readonly<{}>,
+  { index: number },
+  State,
+  VirtualListDefaultProps
+> {
   static displayName = 'VirtualList';
   static style = style;
 
   static defaultProps = {
     rowsBuffer: 6,
-  };
+  } as const;
 
   containerRef = React.createRef<HTMLDivElement>();
   listRef = React.createRef<HTMLDivElement>();
@@ -86,10 +99,7 @@ class VirtualListRoot<T = string, D extends object = never> extends Component<Vi
 
     const startIndex = Math.max(Math.floor(scrollTop / rowHeight) - prevPrepared, 0);
 
-    const lastIndex = Math.min(
-      Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared,
-      rows.length,
-    );
+    const lastIndex = Math.min(Math.ceil((scrollTop + offsetHeight) / rowHeight) + nextPrepared, rows.length);
 
     const rowsToRender = rows.slice(startIndex, lastIndex);
     const rowMarginTop = rowHeight * startIndex;
@@ -129,4 +139,7 @@ export type VirtualListComponent = (<
   props: Intergalactic.InternalTypings.EfficientOmit<Intergalactic.InternalTypings.ComponentProps<typeof Box, 'div', VirtualListProps<T, D>>, 'tag' | 'children'>
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) & Intergalactic.InternalTypings.ComponentAdditive<typeof Box, 'div', VirtualListProps<any, any>>;
 
-export const VirtualList = createComponent(VirtualListRoot) as VirtualListComponent;
+export const VirtualList = createComponent<
+  VirtualListComponent,
+  typeof VirtualListRoot
+>(VirtualListRoot);

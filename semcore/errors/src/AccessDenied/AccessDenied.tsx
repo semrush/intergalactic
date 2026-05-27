@@ -10,7 +10,11 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootAccessDenied extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSAccessDenied.Component>,
-  typeof RootAccessDenied.enhance
+  typeof RootAccessDenied.enhance,
+  {},
+  {},
+  {},
+  NSAccessDenied.DefaultProps
 > {
   static displayName = 'AccessDenied';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -20,7 +24,7 @@ class RootAccessDenied extends Component<
     homeLink: '/',
     icon: getIconPath('access_denied'),
     titleTag: 'h2',
-  };
+  } as const;
 
   render() {
     const { Children, getI18nText, homeLink, titleTag } = this.asProps;
@@ -39,4 +43,7 @@ class RootAccessDenied extends Component<
   }
 }
 
-export default createComponent(RootAccessDenied) as NSAccessDenied.Component;
+export default createComponent<
+  NSAccessDenied.Component,
+  typeof RootAccessDenied
+>(RootAccessDenied);

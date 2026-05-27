@@ -25,6 +25,11 @@ export type OutsideClickProps = {
   root?: React.RefObject<HTMLElement>;
 };
 
+type OutsideClickComponent = Intergalactic.Component<
+  Intergalactic.Tag,
+  OutsideClickProps
+>;
+
 type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEventListenerObject };
 type RootEventsPair = [Element | Document, OutsideClickEvents];
 
@@ -111,7 +116,7 @@ function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
 OutsideClickRoot.displayName = 'OutsideClick';
 OutsideClickRoot.eventsMap = [] as RootEventsPair[];
 
-export const OutsideClick = createComponent(OutsideClickRoot) as Intergalactic.Component<
-  Intergalactic.Tag,
-  OutsideClickProps
->;
+export const OutsideClick = createComponent<
+  OutsideClickComponent,
+  typeof OutsideClickRoot
+>(OutsideClickRoot);

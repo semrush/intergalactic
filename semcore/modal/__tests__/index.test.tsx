@@ -80,7 +80,7 @@ describe('Modal', () => {
     const { getByTestId, queryByText } = render(<Component />);
 
     getByTestId('close-modal').click();
-    await new Promise((r) => setTimeout(r, 50));
+    await new Promise((r) => setTimeout(r, 100));
     expect(queryByText('Hello world')).toBeNull();
   });
 

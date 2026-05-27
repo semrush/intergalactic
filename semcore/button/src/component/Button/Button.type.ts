@@ -35,6 +35,11 @@ export type ButtonProps = BoxProps &
     theme?: 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
   };
 
+export type ButtonDefaultProps = {
+  use: 'secondary';
+  size: 'm';
+};
+
 export type ButtonTextProps = NSText.Props;
 
 export type ButtonAddonProps = BoxProps;

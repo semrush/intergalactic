@@ -15,6 +15,8 @@ import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type React from 'react';
 
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
+
 /**
  * Popper must have an accessible names (aria-group-name).
  */
@@ -110,6 +112,17 @@ export type FeaturePopoverProps = FPPopperProps & {
    * @default accent
    */
   theme?: 'accent' | 'neutral';
+};
+
+export type FeaturePopoverDefaultProps = {
+  offset: FPPopperProps['offset'];
+  placement: 'bottom-start';
+  defaultVisible: false;
+  onOutsideClick: () => void;
+  interaction: 'none';
+  i18n: LocalizedMessages;
+  locale: 'en';
+  theme: 'accent';
 };
 
 export type FeaturePopoverTriggerProps = BoxProps & {

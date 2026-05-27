@@ -1,25 +1,30 @@
-// @ts-nocheck
 import { createComponent, sstyled, Root, Component } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import React from 'react';
 
 import { Box } from '../flex-box';
-import type { AnimationContext, AnimationProps } from './Animation.types';
+import type { AnimationContext, AnimationProps, Animation as AnimationComponent, AnimationDefaultProps } from './Animation.types';
 import style from './style/animate.shadow.css';
 
-function propToArray(prop: any[]) {
+type State = {
+  animationRunning: boolean;
+  render: AnimationProps['visible'] | AnimationProps['preserveNode'];
+  wasInvisible: AnimationProps['visible'];
+};
+
+function propToArray(prop: any) {
   return Array.isArray(prop) ? prop : [prop, prop];
 }
 
 const makeAnimationContextValue = () => {
-  const context = {
+  const context: AnimationContext = {
     onAnimationStartSubscribers: [],
-    onAnimationStart: (callback: any) => {
+    onAnimationStart: (callback) => {
       context.onAnimationStartSubscribers.push(callback);
       return () => context.onAnimationStartSubscribers.filter((cb) => cb !== callback);
     },
     onAnimationEndSubscribers: [],
-    onAnimationEnd: (callback: any) => {
+    onAnimationEnd: (callback) => {
       context.onAnimationEndSubscribers.push(callback);
       return () => context.onAnimationEndSubscribers.filter((cb) => cb !== callback);
     },
@@ -28,14 +33,21 @@ const makeAnimationContextValue = () => {
 };
 export const animationContext = React.createContext<AnimationContext | null>(null);
 
-class Animation extends Component<AnimationProps, AnimationContext> {
+class Animation extends Component<
+  AnimationProps,
+  typeof Animation.enhance,
+  {},
+  { parentAnimationContext: AnimationContext },
+  State,
+  AnimationDefaultProps
+> {
   static displayName = 'Animation';
   static style = style;
-  static defaultProps = {
+  static defaultProps: AnimationDefaultProps = {
     visible: false,
     duration: 0,
     delay: 0,
-    keyframes: [],
+    keyframes: ['', ''],
     initialAnimation: false,
     timingFunction: 'ease-out',
     animationsDisabled: false,
@@ -43,7 +55,7 @@ class Animation extends Component<AnimationProps, AnimationContext> {
 
   static enhance = [contextEnhance(animationContext, 'parentAnimationContext')];
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: AnimationProps, state: State) {
     const wasInvisible = state.wasInvisible || !props.visible;
     if (props.visible || props.preserveNode || state.wasInvisible !== wasInvisible) {
       return { render: true, wasInvisible };
@@ -51,7 +63,7 @@ class Animation extends Component<AnimationProps, AnimationContext> {
     return state;
   }
 
-  state = {
+  state: State = {
     animationRunning: false,
     render: this.props.visible || this.props.preserveNode,
     wasInvisible: !this.props.visible,
@@ -85,9 +97,15 @@ class Animation extends Component<AnimationProps, AnimationContext> {
   animationEventFallback = () => {
     if (!this.state.render) return;
     if (this.animationSupported) return;
-    const delayArr = this.asProps.animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
-    const delay = this.asProps.visible ? delayArr[0] : delayArr[1];
-    const duration = this.asProps.animationsDisabled ? 0 : this.asProps.duration + 100;
+    const { animationsDisabled, visible } = this.asProps;
+
+    const delayArr = animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
+    const durationArr = propToArray(this.asProps.duration);
+    const delay = visible ? delayArr[0] : delayArr[1];
+    const duration = animationsDisabled
+      ? 0
+      : visible ? durationArr[0] + 100 : durationArr[1] + 100;
+
     setTimeout(() => {
       if (this.animationSupported) return;
       this.handleAnimationEnd();
@@ -98,7 +116,7 @@ class Animation extends Component<AnimationProps, AnimationContext> {
     this.animationEventFallback();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: AnimationProps, prevState: State) {
     if (prevProps.visible !== this.props.visible || prevState.render !== this.state.render) {
       this.animationEventFallback();
     }
@@ -144,4 +162,4 @@ class Animation extends Component<AnimationProps, AnimationContext> {
   }
 }
 
-export default createComponent<'div', AnimationProps>(Animation);
+export default createComponent<AnimationComponent, typeof Animation>(Animation);

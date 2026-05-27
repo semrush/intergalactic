@@ -12,6 +12,9 @@ function ScreenReaderOnlyComponent() {
 
 type ScreenReaderOnlyType = Intergalactic.Component<'span'>;
 
-export const ScreenReaderOnly: ScreenReaderOnlyType = createComponent(ScreenReaderOnlyComponent);
+export const ScreenReaderOnly = createComponent<
+  ScreenReaderOnlyType,
+  typeof ScreenReaderOnlyComponent
+>(ScreenReaderOnlyComponent);
 
 export default ScreenReaderOnly;
