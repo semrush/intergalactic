@@ -24,4 +24,7 @@ function BubbleChartSkeleton() {
   );
 }
 
-export default createComponent(BubbleChartSkeleton) as NSSkeletonBubbleChart.Component;
+export default createComponent<
+  NSSkeletonBubbleChart.Component,
+  typeof BubbleChartSkeleton
+>(BubbleChartSkeleton);

@@ -54,8 +54,11 @@ class CheckboxFHRoot extends Component<NSCheckbox.Props> {
   }
 }
 
-export const CheckboxFH = createComponent(CheckboxFHRoot, {
+export const CheckboxFH = createComponent<
+  HighlightedCheckboxComponent,
+ typeof CheckboxFHRoot
+>(CheckboxFHRoot, {
   Text: Checkbox.Text,
   Value: Checkbox.Value,
   AnimatedSparkles,
-}) as HighlightedCheckboxComponent;
+});

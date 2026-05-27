@@ -32,4 +32,11 @@ export type BarChartProps = BaseChartProps<BarChartData> & {
   onClickBar?: (barItem: number, barKey: BarKey, e: React.SyntheticEvent) => void;
 };
 
+export type BarChartDefaultProps = {
+  direction: 'column';
+  showXAxis: true;
+  showYAxis: true;
+  showTooltip: true;
+};
+
 export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps & AriaNameProps>;

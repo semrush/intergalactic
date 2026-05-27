@@ -1,16 +1,23 @@
 import { Flex, Box, type BoxProps } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
 import style from '../../style/slider-rating.shadow.css';
+import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {
   value: number;
   onChange?: (value: number) => void;
   readonly?: boolean;
+};
+
+type SliderRatingDefaultProps = {
+  i18n: LocalizedMessages;
+  locale: 'en';
 };
 
 type State = {
@@ -22,6 +29,10 @@ type StarProps = BoxProps & {
   filled?: boolean;
 };
 
+type SliderRatingComponent = Intergalactic.Component<typeof Flex, SliderRatingProps> & {
+  Star: Intergalactic.Component<typeof Box, StarProps>;
+};
+
 const MIN = 1;
 const MAX = 5;
 
@@ -29,8 +40,9 @@ class SliderRatingRoot extends Component<
   SliderRatingProps,
   typeof SliderRatingRoot.enhance,
   {},
-  {},
-  State
+  WithI18nEnhanceProps,
+  State,
+  SliderRatingDefaultProps
 > {
   static displayName = 'SliderRating';
   static style = style;
@@ -45,7 +57,7 @@ class SliderRatingRoot extends Component<
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
   handleClick = (newValue: number) => (_e: React.SyntheticEvent<SVGElement>) => {
     const { readonly } = this.asProps;
@@ -211,10 +223,11 @@ function Star(props: StarProps) {
 }
 Star.displayName = 'Star';
 
-const SliderRating = createComponent(SliderRatingRoot, {
+const SliderRating = createComponent<
+  SliderRatingComponent,
+  typeof SliderRatingRoot
+>(SliderRatingRoot, {
   Star,
-}) as Intergalactic.Component<typeof Flex, SliderRatingProps> & {
-  Star: Intergalactic.Component<typeof Box, StarProps>;
-};
+});
 
 export default SliderRating;

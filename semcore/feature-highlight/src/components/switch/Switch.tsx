@@ -53,8 +53,11 @@ function Value(props: IRootComponentProps & { onChange: () => void }) {
   return sstyled(props.styles)(<SToggle render={Switch.Value} onChange={props.onChange} />);
 }
 
-export const SwitchFH = createComponent(SwitchFHRoot, {
+export const SwitchFH = createComponent<
+  HighlightedSwitchComponent,
+  typeof SwitchFHRoot
+>(SwitchFHRoot, {
   Addon: Switch.Addon,
   Value: Value,
   AnimatedSparkles,
-}) as HighlightedSwitchComponent;
+});

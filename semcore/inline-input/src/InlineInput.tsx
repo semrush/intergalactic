@@ -1,6 +1,7 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import CheckM from '@semcore/icon/Check/m';
@@ -12,6 +13,7 @@ import React from 'react';
 
 import type { InlineInputComponent } from './index.type';
 import style from './style/inline-input.shadow.css';
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type OnConfirm = (
@@ -75,6 +77,12 @@ type NumberControlsAsProps = ControlAsProps & {
   increment?: (event: React.SyntheticEvent) => void;
   decrement?: (event: React.SyntheticEvent) => void;
 };
+type DefaultProps = {
+  state: 'normal';
+  onBlurBehavior: 'confirm';
+  i18n: LocalizedMessages;
+  locale: 'en';
+};
 
 const pointInsideOfRect = ({
   x,
@@ -88,7 +96,14 @@ const pointInsideOfRect = ({
   return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
 };
 
-class InlineInputBase extends Component<RootAsProps> {
+class InlineInputBase extends Component<
+  RootAsProps,
+  [],
+  {},
+  WithI18nEnhanceProps,
+  {},
+  DefaultProps
+> {
   static displayName = 'InlineInput';
 
   static enhance = [i18nEnhance(localizedMessages)];
@@ -97,7 +112,7 @@ class InlineInputBase extends Component<RootAsProps> {
     onBlurBehavior: 'confirm',
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
   static style = style;
 
@@ -426,13 +441,16 @@ function NumberControls(props: NumberControlsAsProps) {
 }
 
 /** `createComponent` currently exposes unrelated junk instead of typings, that the reason of to any cast  */
-const InlineInput = createComponent(InlineInputBase, {
+const InlineInput = createComponent<
+  InlineInputComponent,
+  typeof InlineInputBase
+>(InlineInputBase, {
   Addon,
   Value,
   ConfirmControl,
   CancelControl,
   NumberValue,
   NumberControls,
-}) as InlineInputComponent;
+});
 
 export default InlineInput;

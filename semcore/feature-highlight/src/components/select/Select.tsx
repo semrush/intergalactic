@@ -32,7 +32,10 @@ function Trigger(props: IRootComponentProps) {
   );
 }
 
-export const SelectFH = createComponent(SelectFHRoot, {
+export const SelectFH: typeof Select = createComponent<
+  typeof Select,
+  typeof SelectFHRoot
+>(SelectFHRoot, {
   Trigger: [Trigger, {
     Text: ButtonTriggerFH.Text,
     Addon: ButtonTriggerFH.Addon,
@@ -41,4 +44,4 @@ export const SelectFH = createComponent(SelectFHRoot, {
   Menu: Select.Menu,
   Option: Select.Option,
   List: Select.List,
-}) as unknown as typeof Select;
+});

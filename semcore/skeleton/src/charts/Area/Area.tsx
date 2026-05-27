@@ -35,4 +35,7 @@ function AreaChartSkeleton(props: Intergalactic.InternalTypings.InferComponentPr
   );
 }
 
-export default createComponent(AreaChartSkeleton) as NSSkeletonAreaChart.Component;
+export default createComponent<
+  NSSkeletonAreaChart.Component,
+  typeof AreaChartSkeleton
+>(AreaChartSkeleton);
