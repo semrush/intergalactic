@@ -325,9 +325,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
       if (props.dataKey === 'description_ellipsis') {
         return {
           children: (
-            <Text
-              ellipsis:cropPosition='middle'
-            >
+            <Text>
               {String(props.row.payment_description)}
             </Text>
           ),
@@ -407,8 +405,6 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
           <Card w='100%'>
             <Card.Body p={0}>
               <Flex justifyContent='space-between' alignItems='center' px={4}>
-                <SelectedRowsInfo />
-
                 <BeforeTablesControls
                   columns={manageableCols}
                   selectedColumns={columns}
@@ -445,6 +441,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
                     h='calc(100% - 8px)'
                   >
                     <ButtonLink.Addon tag={Return} />
+                    {/* @ts-ignore */}
                   </Pagination.PageInput.Addon>
                 </Pagination.PageInput>
                 <Pagination.TotalPages />

@@ -54,13 +54,7 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
               <Box inline>{value}</Box>
             )
           : (
-              <Text
-                ellipsis:cropPosition={cropPosition ?? 'end'}
-                ellipsis:containerElement={headerRef ?? undefined}
-                ellipsis:recalculateContainerWidth={recalcFuncNoHandle}
-                hint={false}
-                data-test-id={cellProps.dataKey}
-              >
+              <Text data-test-id={cellProps.dataKey}>
                 {value}
               </Text>
             )}
@@ -97,13 +91,7 @@ const Copy: FC<CopyProps> = ({ value, cropPosition = 'none', handle = true, cell
             <Box inline>{value}</Box>
           )
         : (
-            <Text
-              ellipsis:cropPosition={cropPosition ?? 'end'}
-              ellipsis:containerElement={headerRef ?? undefined}
-              ellipsis:recalculateContainerWidth={recalcFunc}
-              hint={false}
-              data-test-id={cellProps.dataKey}
-            >
+            <Text data-test-id={cellProps.dataKey}>
               {value}
             </Text>
           )}
