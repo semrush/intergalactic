@@ -233,14 +233,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify observe with undefined init value', {
     tag: [TAG.PRIORITY_HIGH, '@ellipsis'],
   }, async ({ page }) => {
+    const link = 'https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis';
+
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/async_init.tsx', 'en');
 
     const textElement = locators.link(page);
-    const textContentInit = await textElement.textContent();
-    expect(textContentInit).toBe(''); // init value
-    await page.waitForTimeout(600);
-    const textContent = await textElement.textContent();
-    expect(textContent).toBe('https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'); // after initialization
+    await expect(textElement).toHaveText('');
+
+    await expect(textElement).toHaveText(link, { timeout: 1000 });
+
+    await textElement.hover();
+    await expect(locators.hint(page)).toHaveText(link);
   });
 
   test('Verify observe children truncation', {
