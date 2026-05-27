@@ -1,9 +1,9 @@
 import { execSync } from 'child_process';
 import process from 'process';
 
-import type { ReleaseVersion } from '@tools/continuous-delivery/src/utils/changelog';
 import Git from 'simple-git';
 
+import type { ReleaseVersion } from './changelog';
 import { log, prerelaseSuffix } from '../utils';
 import { NpmUtils } from './npmUtils';
 import type { PackageJson } from './packages';
@@ -170,12 +170,23 @@ export const gitUtils = {
     }
   },
 
-  getPrevReleaseTag: async (): Promise<ReleaseVersion> => {
-    const tags = await git.tags(['v*', '--sort', 'creatordate']);
-    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
-    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+  getPrevReleaseTag: async (): Promise<string> => {
+    const branchSummary = await git.branch();
+    const currentBranch = branchSummary.current;
+    const testPlaceholder = 'release/v';
+    const errorMessage = `Can't get prev release tag not from release branch. Current branch is: "${currentBranch}".`;
+    if (currentBranch.startsWith(testPlaceholder)) {
+      const versionNumber = currentBranch.substring(testPlaceholder.length, testPlaceholder.length + 2);
+      const lastReleasedTag = await gitUtils.getTag(`v${versionNumber}`);
 
-    return currentReleaseTag.slice(1) as ReleaseVersion;
+      if (lastReleasedTag === null) {
+        throw new Error(errorMessage);
+      }
+
+      return lastReleasedTag.slice(1) as ReleaseVersion;
+    } else {
+      throw new Error(errorMessage);
+    }
   },
 
   getPrevPackageTag: async (pack: SeparatedPackage): Promise<ReleaseVersion> => {
