@@ -140,10 +140,21 @@ export const gitUtils = {
   },
 
   getPrevReleaseTag: async (): Promise<string> => {
-    const tags = await git.tags(['v*', '--sort', 'creatordate']);
-    const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
-    const currentReleaseTag = releaseTags[releaseTags.length - 1];
+    const branchSummary = await git.branch();
+    const currentBranch = branchSummary.current;
+    const testPlaceholder = 'release/v';
+    const errorMessage = `Can't get prev release tag not from release branch. Current branch is: "${currentBranch}".`;
+    if (currentBranch.startsWith(testPlaceholder)) {
+      const versionNumber = currentBranch.substring(testPlaceholder.length, testPlaceholder.length + 2);
+      const lastReleasedTag = await gitUtils.getTag(`v${versionNumber}`);
 
-    return currentReleaseTag;
+      if (lastReleasedTag === null) {
+        throw new Error(errorMessage);
+      }
+
+      return lastReleasedTag;
+    } else {
+      throw new Error(errorMessage);
+    }
   },
 };
