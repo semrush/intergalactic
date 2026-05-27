@@ -4,7 +4,7 @@ import Badge from '@semcore/ui/badge';
 import { ButtonLink } from '@semcore/ui/button';
 import type { NSCounter } from '@semcore/ui/counter';
 import Counter from '@semcore/ui/counter';
-import type { SpinSize } from '@semcore/ui/spin';
+import type { NSSpin } from '@semcore/ui/spin';
 import Spin from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -25,7 +25,7 @@ const Demo = (props: ButtonLinkSizesProps) => {
   return (
     <>
       {sizes.map((size) => {
-        let spinSize: SpinSize = 'm';
+        let spinSize: NSSpin.Size = 'm';
         if (size <= 200) {
           spinSize = 'xs';
         } else if (size <= 500) {
