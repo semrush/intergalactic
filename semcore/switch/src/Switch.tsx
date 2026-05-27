@@ -18,7 +18,11 @@ function isCustomTheme(theme?: NSSwitch.Theme) {
 
 class SwitchRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSwitch.Component>,
-  typeof SwitchRoot.enhance
+  typeof SwitchRoot.enhance,
+  {},
+  {},
+  {},
+  NSSwitch.DefaultProps
 > {
   static displayName = 'Switch';
   static style = style;
@@ -26,7 +30,7 @@ class SwitchRoot extends Component<
   static defaultProps = {
     theme: 'info',
     size: 'm',
-  };
+  } as const;
 
   inputRef = React.createRef<HTMLInputElement>();
   state = { active: false };
@@ -220,9 +224,12 @@ function Addon(
 
 export { inputProps };
 
-const Switch = createComponent(SwitchRoot, {
+const Switch = createComponent<
+  NSSwitch.Component,
+  typeof SwitchRoot
+>(SwitchRoot, {
   Value,
   Addon,
-}) as NSSwitch.Component;
+});
 
 export default Switch;

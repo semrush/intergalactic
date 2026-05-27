@@ -54,9 +54,6 @@ declare namespace NSCheckbox {
     type DefaultProps = {
       includeInputProps: InnerProps['includeInputProps'];
     };
-    type Handlers = {
-      checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
-    };
 
     namespace Control {
       type Props = {};

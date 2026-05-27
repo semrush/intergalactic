@@ -21,6 +21,10 @@ declare namespace NSSwitch {
       /** Disabled state  */
       disabled?: boolean;
     };
+  type DefaultProps = {
+    theme: 'info';
+    size: 'm';
+  };
 
   namespace Value {
     type Props = BoxProps &
