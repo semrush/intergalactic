@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.6.2] - 2026-05-27
+
+### Fixed
+
+- FeatureHighlight tokens didn't work in color variables.
+
 ## [16.6.0] - 2026-05-07
 
 ### Added

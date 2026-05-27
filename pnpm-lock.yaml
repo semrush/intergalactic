@@ -2336,7 +2336,7 @@ importers:
         specifier: ^16.1.1
         version: link:../badge
       '@semcore/base-components':
-        specifier: ^16.6.0
+        specifier: ^16.6.1
         version: link:../base-components
       '@semcore/base-trigger':
         specifier: ^16.5.1
@@ -2366,7 +2366,7 @@ importers:
         specifier: ^16.2.1
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^16.6.0
+        specifier: ^16.6.2
         version: link:../core
       '@semcore/counter':
         specifier: ^16.1.1
@@ -2417,7 +2417,7 @@ importers:
         specifier: ^16.1.1
         version: link:../flex-box
       '@semcore/format-text':
-        specifier: ^16.2.0
+        specifier: ^16.2.1
         version: link:../format-text
       '@semcore/fullscreen-modal':
         specifier: ^16.2.1
@@ -2432,7 +2432,7 @@ importers:
         specifier: ^16.8.1
         version: link:../icon
       '@semcore/illustration':
-        specifier: ^16.1.0
+        specifier: ^16.1.1
         version: link:../illustration
       '@semcore/inline-edit':
         specifier: ^16.1.1
@@ -2968,7 +2968,7 @@ importers:
         version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
-        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.47.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0))
+        version: 0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0))
 
   tools/theme:
     devDependencies:
@@ -28770,7 +28770,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.47.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0)):
+  vitest-axe@0.1.0(vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0)):
     dependencies:
       aria-query: 5.3.2
       axe-core: 4.9.1
@@ -28778,7 +28778,7 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.18.1
       redent: 3.0.0
-      vitest: 3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.47.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0)
+      vitest: 3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0)
 
   vitest@3.0.9(@types/debug@4.1.13)(@types/node@18.16.15)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@18.16.15)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.47.1)(yaml@2.8.0):
     dependencies:
@@ -28823,7 +28823,7 @@ snapshots:
       - tsx
       - yaml
 
-  vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6(@types/node@18.16.15)(playwright@1.48.0)(typescript@5.8.3)(vite@6.3.5(@types/node@18.16.15)(less@3.13.1)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.4.38))(terser@5.47.1)(yaml@2.8.0))(vitest@3.0.9)(webdriverio@8.24.3(typescript@5.8.3)))(@vitest/ui@3.0.6(vitest@3.0.9))(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0):
+  vitest@3.0.9(@types/debug@4.1.13)(@types/node@22.19.19)(@vitest/browser@3.0.6)(@vitest/ui@3.0.6)(happy-dom@9.20.3)(jsdom@22.1.0)(less@3.13.1)(lightningcss@1.31.1)(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0):
     dependencies:
       '@vitest/expect': 3.0.9
       '@vitest/mocker': 3.0.9(msw@2.14.6(@types/node@22.19.19)(typescript@5.8.3))(vite@6.3.5(@types/node@22.19.19)(less@3.13.1)(lightningcss@1.31.1)(sass@1.99.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.47.1)(yaml@2.8.0))
