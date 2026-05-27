@@ -23,7 +23,9 @@ type BasicLinkProps = LinkProps & {
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
   merged?: boolean;
+  addonPassMethod?: 'slot' | 'prop';
   w?: number;
+  containerW?: number;
 };
 
 const Demo = (props: BasicLinkProps) => {
@@ -45,6 +47,8 @@ const Demo = (props: BasicLinkProps) => {
     addonLeftType = 'icon',
     addonRightType = 'icon',
     merged = false,
+    addonPassMethod = 'slot',
+    containerW,
   } = props;
 
   const numSize = Number(size);
@@ -76,12 +80,20 @@ const Demo = (props: BasicLinkProps) => {
         return <Link.Addon><Spin size={spinSize} /></Link.Addon>;
       case 'icon':
       default:
+        if (addonPassMethod === 'prop') return null;
         if (merged) return <Link.Addon tag={IconAddon} />;
         return <Link.Addon><IconAddon /></Link.Addon>;
     }
   };
 
-  const ellipsisW = ellipsis ? (w || (numSize < 600 ? 150 : 300)) : undefined;
+  const propAddonLeft = addonPassMethod === 'prop' && showAddonLeft && addonLeftType === 'icon'
+    ? IconAddon
+    : undefined;
+  const propAddonRight = addonPassMethod === 'prop' && showAddonRight && addonRightType === 'icon'
+    ? IconAddon
+    : undefined;
+
+  const ellipsisW = ellipsis && !containerW ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 
   let linkDisplayValue: 'inline-block' | undefined;
   if (ellipsis?.['ellipsis:maxLine'] && ellipsis?.['ellipsis:maxLine'] > 1) {
@@ -89,9 +101,10 @@ const Demo = (props: BasicLinkProps) => {
   }
 
   return (
-    <Text tag='div' size={size}>
+    <Text tag='div' size={size} style={containerW ? { width: containerW } : undefined}>
       <Link
         href={href}
+        size={size}
         disabled={disabled}
         active={active}
         enableVisited={enableVisited}
@@ -100,12 +113,13 @@ const Demo = (props: BasicLinkProps) => {
         title={title}
         w={noWrap ? w : undefined}
         display={linkDisplayValue}
-        mr={4}
+        addonLeft={propAddonLeft}
+        addonRight={propAddonRight}
       >
         {renderAddon(showAddonLeft, addonLeftType)}
         <Link.Text
           size={size}
-          w={ellipsisW}
+          {...(ellipsisW !== undefined && { w: ellipsisW })}
           {...ellipsis}
           hint:placement={hintPlacement}
         >
@@ -117,6 +131,7 @@ const Demo = (props: BasicLinkProps) => {
       {`${numSize} `}
       <Link
         href={href}
+        size={size}
         disabled={disabled}
         active={active}
         enableVisited={enableVisited}
@@ -124,6 +139,8 @@ const Demo = (props: BasicLinkProps) => {
         color={color}
         title={title}
         w={noWrap ? w : undefined}
+        addonLeft={propAddonLeft}
+        addonRight={propAddonRight}
       >
         {renderAddon(showAddonLeft, addonLeftType)}
         <Link.Text size={size}>
@@ -145,6 +162,7 @@ export const defaultProps: BasicLinkProps = {
   addonLeftType: 'icon',
   addonRightType: 'icon',
   merged: false,
+  addonPassMethod: 'slot',
   ellipsis: {
     ellipsis: true,
   },

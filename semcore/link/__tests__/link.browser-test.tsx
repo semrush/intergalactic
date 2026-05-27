@@ -8,6 +8,10 @@ export const locators = {
     const base = page.locator('[data-ui-name="Link"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  linkText: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Link.Text"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   linkAddon: (page: Page, index?: number) => {
     const base = page.locator('[data-ui-name="Link.Addon"]');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -367,5 +371,126 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
         await expect(locators.hint(page)).toHaveCount(0);
       });
     });
+  });
+
+  // ===== For UIK-5215: Link.Text auto-width inside a constrained container =====
+  const constrainedLinkProps = {
+    size: 300,
+    containerW: 100,
+    text: '1234567890abscdefjhf',
+  };
+
+  const expectAddonInsideConstrainedContainer = async (page: Page, addonIndex = 0) => {
+    const container = await page.locator('[data-ui-name="Text"]').first().boundingBox();
+    const addon = await locators.linkAddon(page, addonIndex).boundingBox();
+
+    expect(container).not.toBeNull();
+    expect(addon).not.toBeNull();
+    expect(addon!.x + addon!.width).toBeLessThanOrEqual(container!.x + container!.width + 1);
+  };
+
+  const expectConstrainedLinkHint = async (page: Page) => {
+    await page.keyboard.press('Tab');
+    await expect(locators.link(page).first()).toBeFocused();
+    await expect(locators.hint(page)).toBeVisible();
+  };
+
+  test('Verify constrained Link.Text width for icon addon passed via addonLeft prop', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      showAddonLeft: true,
+      addonLeftType: 'icon',
+      addonPassMethod: 'prop',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 20px)');
+    await expectAddonInsideConstrainedContainer(page);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width for icon addon passed via Link.Addon slot', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      showAddonRight: true,
+      addonRightType: 'icon',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 20px)');
+    await expectAddonInsideConstrainedContainer(page);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width for merged large icon addon', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      size: 600,
+      showAddonRight: true,
+      addonRightType: 'icon',
+      merged: true,
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 28px)');
+    await expectAddonInsideConstrainedContainer(page);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width for two icon addons', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      size: 600,
+      showAddonLeft: true,
+      addonLeftType: 'icon',
+      showAddonRight: true,
+      addonRightType: 'icon',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 56px)');
+    await expectAddonInsideConstrainedContainer(page, 1);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width is not reduced for non-icon addons', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    // Browsers normalize `calc(100% - 0px)` to `calc(100% + 0px)` - accept both.
+    const zeroOffsetWidth = /^calc\(100% [+-] 0px\)$/;
+
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      showAddonRight: true,
+      addonRightType: 'badge',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toMatch(zeroOffsetWidth);
+    await expect(locators.linkAddon(page).first()).toBeVisible();
+    await expectConstrainedLinkHint(page);
   });
 });
