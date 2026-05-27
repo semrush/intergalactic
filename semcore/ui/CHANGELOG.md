@@ -1,3 +1,9 @@
+## [16.16.1] - 2026-05-27
+
+### @semcore/core
+
+- **Fixed** FeatureHighlight tokens didn't work in color variables.
+
 ## [16.16.0] - 2026-05-07
 
 ### @semcore/core
