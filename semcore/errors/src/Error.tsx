@@ -54,10 +54,13 @@ function Controls(props: Intergalactic.InternalTypings.InferComponentProps<NSErr
   return sstyled(props.styles)(<SControls render={Box} />);
 }
 
-const Error = createComponent(RootError, {
+const Error = createComponent<
+  NSErrors.Component,
+  typeof RootError
+>(RootError, {
   Title,
   Description,
   Controls,
-}) as NSErrors.Component;
+});
 
 export default Error;

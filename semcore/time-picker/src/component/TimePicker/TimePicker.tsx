@@ -12,6 +12,7 @@ import type {
   TimePickerProps,
   TimePickerField,
   TimePickerSeparatorProps,
+  TimePickerDefaultProps,
 } from './TimePicker.type';
 import TimePickerEntity from '../../entity/TimePickerEntity';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -19,10 +20,18 @@ import Format from '../PickerFormat/PickerFormat';
 import { Hours, Minutes } from '../PickerInput/PickerInput';
 
 @propsObserver(['value', 'is12Hour'])
-class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.enhance, { value: null }> {
+class TimePickerRoot extends Component<
+    TimePickerProps,
+  typeof TimePickerRoot.enhance,
+  { value: null },
+  {},
+  {},
+  TimePickerDefaultProps
+  > {
   static displayName = 'TimePicker';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
   static defaultProps = ({ is12Hour }: TimePickerProps) => ({
     defaultValue: '',
     size: 'm',
@@ -35,7 +44,7 @@ class TimePickerRoot extends Component<TimePickerProps, typeof TimePickerRoot.en
       </>
     ),
     locale: 'en',
-  });
+  } as const);
 
   hoursInputRef = React.createRef<HTMLElement>();
   minutesInputRef = React.createRef<HTMLElement>();
@@ -184,11 +193,14 @@ class Separator extends Component<TimePickerSeparatorProps> {
   }
 }
 
-const TimePicker = createComponent(TimePickerRoot, {
+const TimePicker = createComponent<
+  TimePickerComponent,
+  typeof TimePickerRoot
+>(TimePickerRoot, {
   Hours,
   Minutes,
   Separator,
   Format,
-}) as TimePickerComponent;
+});
 
 export default TimePicker;

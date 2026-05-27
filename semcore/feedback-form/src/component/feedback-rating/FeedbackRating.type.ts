@@ -6,7 +6,7 @@ import type React from 'react';
 import type { FieldProps } from 'react-final-form';
 
 import type { FeedbackFormProps } from '../../index';
-import type { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 export type FormConfigItem = {
   key: string;
@@ -74,10 +74,12 @@ export type FeedbackRatingCheckboxProps = Omit<NSCheckbox.Props, 'label'> & {
   label: React.ReactNode;
 };
 
+export type FeedbackRatingCheckboxComponent = Intergalactic.Component<'div', FeedbackRatingCheckboxProps>;
+
 export type FeedbackRatingDefaultProps = {
   onSubmit: () => void;
-  i18n: typeof localizedMessages;
+  i18n: LocalizedMessages;
   locale: 'en';
-  Illustration: Intergalactic.Component<'svg', IllustrationProps>;
-  Notice: typeof Notice;
+  Illustration: FeedbackRatingProps['Illustration'];
+  Notice: FeedbackRatingProps['Notice'];
 };

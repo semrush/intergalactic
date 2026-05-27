@@ -16,6 +16,12 @@ export type InfoItemProps = BoxProps & {
   label?: React.ReactNode;
 };
 
+type InfoComponent = typeof Box & {
+  Item: Intergalactic.Component<'div', InfoItemProps> & {
+    Label: typeof Box;
+  };
+};
+
 class InfoRoot extends Component<BoxProps> {
   static displayName = 'Info';
   static style = style;
@@ -42,17 +48,16 @@ function Label(props: any) {
   return sstyled(props.styles)(<SLabel render={Box} />);
 }
 
-const Info = createComponent(InfoRoot, {
+const Info = createComponent<
+  InfoComponent,
+  typeof InfoRoot
+>(InfoRoot, {
   Item: [
     Item,
     {
       Label,
     },
   ],
-}) as typeof Box & {
-  Item: Intergalactic.Component<'div', InfoItemProps> & {
-    Label: typeof Box;
-  };
-};
+});
 
 export default Info;

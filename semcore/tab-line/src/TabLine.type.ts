@@ -41,6 +41,13 @@ declare namespace NSTabLine {
     value: null;
   };
 
+  type DefaultProps = {
+    defaultValue: 0;
+    size: 'm';
+    underlined: true;
+    behavior: 'auto';
+  };
+
   namespace Item {
     type Props = BoxProps &
       NeighborItemProps & {

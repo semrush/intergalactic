@@ -28,7 +28,39 @@ const lineProcessing = (line: string) => {
   return line.replace(/http:\/\//, '');
 };
 
-type ExampleProps = BulkTextareaProps<string> & BoxProps & { autoFocus?: boolean };
+export const pasteLineProcessingOptions = {
+  'remove-http': lineProcessing,
+  'trim': (line: string) => line.trim(),
+  'undefined': undefined,
+} as const;
+
+export const pasteDelimiterOptions = {
+  newline: '\n',
+  comma: ',',
+  semicolon: ';',
+  space: ' ',
+  undefined: undefined,
+} as const;
+
+export const linesDelimiterOptions = {
+  'enter': ['Enter'],
+  'comma': [','],
+  'semicolon': [';'],
+  'space': [' '],
+  'enter-and-comma': ['Enter', ','],
+  'undefined': undefined,
+} as const;
+
+type PasteProps = NonNullable<BulkTextareaProps<string>['pasteProps']>;
+
+type ExampleProps = Omit<BulkTextareaProps<string>, 'linesDelimiters'> &
+  BoxProps & {
+    autoFocus?: boolean;
+    pasteDelimiter?: PasteProps['delimiter'];
+    pasteSkipEmptyLines?: boolean;
+    pasteLineProcessing?: PasteProps['lineProcessing'];
+    linesDelimiters?: BulkTextareaProps<string>['linesDelimiters'];
+  };
 
 export const defaultBulkTextareaProps: ExampleProps = {
   w: 400,
@@ -43,10 +75,23 @@ export const defaultBulkTextareaProps: ExampleProps = {
   showErrors: undefined,
   validateOn: ['blur'],
   autoFocus: false,
+  pasteDelimiter: pasteDelimiterOptions.newline,
+  pasteSkipEmptyLines: true,
+  pasteLineProcessing: pasteLineProcessingOptions['remove-http'],
+  linesDelimiters: [...linesDelimiterOptions.comma],
 };
 
 const Demo = (props: Partial<ExampleProps>) => {
-  const { autoFocus, ...mergedProps } = { ...defaultBulkTextareaProps, ...props };
+  const {
+    autoFocus,
+    pasteDelimiter,
+    pasteSkipEmptyLines,
+    pasteLineProcessing,
+    linesDelimiters,
+    pasteProps,
+    lineProcessing: inputLineProcessing,
+    ...mergedProps
+  } = { ...defaultBulkTextareaProps, ...props };
 
   const [value, setValue] = React.useState('');
   const [errors, setErrors] = React.useState<ErrorItem[]>([]);
@@ -78,14 +123,15 @@ const Demo = (props: Partial<ExampleProps>) => {
         onErrorsChange={setErrors}
         onShowErrorsChange={setShowErrors}
         errors={errors}
-        linesDelimiters={[',']}
+        linesDelimiters={linesDelimiters}
         showErrors={showErrors}
         pasteProps={{
-          delimiter: '\n',
-          skipEmptyLines: true,
-          lineProcessing,
+          delimiter: pasteDelimiter,
+          skipEmptyLines: pasteSkipEmptyLines,
+          lineProcessing: pasteLineProcessing,
+          ...pasteProps,
         }}
-        lineProcessing={lineProcessing}
+        lineProcessing={inputLineProcessing}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
           <Text tag='label' size={300} id='keywords-label'>

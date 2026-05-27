@@ -1,9 +1,8 @@
-import type { Intergalactic } from '@semcore/core';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
 import React from 'react';
 
-import type { AnimatedNumberBaseProps } from './index';
+import type { NSAnimatedNumber } from './AnimatedNumber.type';
 
 const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 const defaultFormatValue = (value: number) => value.toFixed(2);
@@ -62,4 +61,4 @@ export const AnimatedNumber = ((props) => {
       {formatValue(value)}
     </Tag>
   );
-}) as Intergalactic.Component<'div', AnimatedNumberBaseProps>;
+}) as NSAnimatedNumber.Component;
