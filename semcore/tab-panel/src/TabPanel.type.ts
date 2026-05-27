@@ -29,6 +29,10 @@ declare namespace NSTabPanel {
   type Handlers = {
     value: null;
   };
+  type DefaultProps = {
+    defaultValue: 0;
+    behavior: 'manual';
+  };
 
   namespace Item {
     type Props = BoxProps & {

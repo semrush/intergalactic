@@ -7,6 +7,8 @@ import type { DropdownTriggerProps } from '@semcore/dropdown';
 import type Input from '@semcore/input';
 import type Select from '@semcore/select';
 
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
+
 export type AddFilterKey = string;
 
 export type AddFilterItemProps = {
@@ -73,6 +75,11 @@ export type AddFilterProps = FlexProps & {
    * Callback for handle changes in visible filters.
    */
   onVisibleFiltersChange?: (visibleFilters: AddFilterKey[]) => void;
+};
+export type AddFilterDefaultProps = {
+  i18n: LocalizedMessages;
+  locale: 'en';
+  defaultVisibleFilters: AddFilterProps['visibleFilters'];
 };
 
 export type AddFilterType = Intergalactic.Component<'div', AddFilterProps> & {

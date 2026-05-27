@@ -4,7 +4,7 @@ import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
-import Counter, { type CounterProps } from '@semcore/ui/counter';
+import Counter, { type NSCounter } from '@semcore/ui/counter';
 import Flags from '@semcore/ui/flags';
 import Select from '@semcore/ui/select';
 import Tag, { type NSTag } from '@semcore/ui/tag';
@@ -51,7 +51,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
   const numSize = Number(size);
   const IconAddon = numSize < 600 ? MathPlusAltM : MathPlusAltL;
 
-  let counterSize: CounterProps['size'];
+  let counterSize: NSCounter.Props['size'];
   if (numSize >= 600) {
     counterSize = 'l';
   } else if (numSize >= 300) {

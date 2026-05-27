@@ -20,6 +20,12 @@ declare namespace NSProgressBar {
      */
     duration?: number;
   };
+  type DefaultProps = {
+    duration: 1000;
+    size: 'm';
+    theme: 'invert';
+    children: React.ReactNode;
+  };
 
   type Ctx = {
     getValueProps: PropGetterFn;

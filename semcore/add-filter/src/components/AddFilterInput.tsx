@@ -4,7 +4,7 @@ import Input from '@semcore/input';
 import type { InputValueProps } from '@semcore/input';
 import React from 'react';
 
-import type { AddFilterItemProps } from '../AddFilter.types';
+import type { AddFilterInputType, AddFilterItemProps } from '../AddFilter.types';
 
 type AsPropsWithOnClear<T> = T & {
   onClear: () => void;
@@ -55,7 +55,10 @@ function Clear() {
   return <Root render={ButtonLink} />;
 }
 
-const AddFilterInput = createComponent(AddFilterInputRoot, {
+const AddFilterInput = createComponent<
+  typeof AddFilterInputType,
+  typeof AddFilterInputRoot
+>(AddFilterInputRoot, {
   Value: Input.Value,
   Addon: Input.Addon,
   Clear,

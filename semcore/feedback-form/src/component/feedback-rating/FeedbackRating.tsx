@@ -42,8 +42,9 @@ class FeedbackRatingRoot extends Component<
   FeedbackRatingProps,
   typeof FeedbackRatingRoot.enhance,
   {},
-  FeedbackRatingDefaultProps,
-  State
+  {},
+  State,
+  FeedbackRatingDefaultProps
 > {
   static displayName = 'FeedbackRatingForm';
   static style = style;
@@ -408,17 +409,22 @@ function Header(props: any) {
   );
 }
 
-const FeedbackRating = createComponent<'form', FeedbackRatingProps, {}, typeof FeedbackRatingRoot.enhance>(FeedbackRatingRoot, {
-  Header,
-  Item: FeedbackItem,
-  Checkbox: CheckboxButton,
-  Submit: SubmitButton,
-}) as Intergalactic.Component<'form', FeedbackRatingProps, {}, typeof FeedbackRatingRoot.enhance> & {
+type FeedbackRatingComponent = Intergalactic.Component<'form', FeedbackRatingProps, {}, typeof FeedbackRatingRoot.enhance> & {
   validate: typeof FeedbackRatingRoot.validate;
   Item: Intergalactic.Component<'div', FeedbackRatingItemProps>;
   Submit: typeof Button;
   Checkbox: Intergalactic.Component<typeof Checkbox, FeedbackRatingCheckboxProps>;
   Header: typeof Text;
 };
+
+const FeedbackRating = createComponent<
+  FeedbackRatingComponent,
+  typeof FeedbackRatingRoot
+>(FeedbackRatingRoot, {
+  Header,
+  Item: FeedbackItem,
+  Checkbox: CheckboxButton,
+  Submit: SubmitButton,
+});
 
 export default FeedbackRating;

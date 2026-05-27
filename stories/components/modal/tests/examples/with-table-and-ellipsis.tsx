@@ -5,6 +5,8 @@ import { DataTable, type DataTableProps } from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
 import Modal from '@semcore/ui/modal';
 import type { ModalProps } from '@semcore/ui/modal';
+import Tag from '@semcore/ui/tag';
+import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -34,18 +36,17 @@ const Demo = (props: BasicModalProps) => {
 
   const columns = React.useMemo(() => {
     return [
-      { name: 'keyword', children: 'Keyword' },
-      { name: 'kd', children: 'KD,%' },
-      { name: 'cpc', children: 'CPC' },
+      { name: 'keyword', children: 'Keyword', gtcWidth: '160px' },
+      { name: 'tags', children: 'Tags', gtcWidth: '210px' },
+      { name: 'kd', children: 'KD,%', gtcWidth: '80px' },
+      { name: 'cpc', children: 'CPC', gtcWidth: '80px' },
       {
         name: 'vol',
         children: 'Vol.',
-        gtcWidth: '100px',
+        gtcWidth: '220px',
       },
     ];
   }, []);
-
-  const cellRef = React.useRef<HTMLDivElement | null>(null);
 
   const renderCell: DataTableProps<any, any, any>['renderCell'] | undefined = React.useMemo(() => {
     return (props) => {
@@ -67,6 +68,30 @@ const Demo = (props: BasicModalProps) => {
         };
       }
 
+      if (props.columnName === 'tags') {
+        const tags = props.row.tags;
+
+        if (Array.isArray(tags)) {
+          return (
+            <Flex gap={1} flexWrap>
+              {tags.map((tag) => (
+                <Tooltip
+                  key={tag.label}
+                  placement='top'
+                >
+                  <Tooltip.Trigger tag={Tag} size='m' theme='secondary' color={tag.color}>
+                    <Tag.Text>{tag.label}</Tag.Text>
+                  </Tooltip.Trigger>
+                  <Tooltip.Popper>{tag.tooltip}</Tooltip.Popper>
+                </Tooltip>
+              ))}
+            </Flex>
+          );
+        }
+
+        return null;
+      }
+
       return props.defaultRender();
     };
   }, []);
@@ -85,7 +110,7 @@ const Demo = (props: BasicModalProps) => {
         closable={closable}
         disablePreventScroll={disablePreventScroll}
         ghost={ghost}
-        w={w}
+        w={w ?? 820}
         locale={locale}
         {...restProps}
       >
@@ -121,10 +146,13 @@ const Demo = (props: BasicModalProps) => {
           aria-label='Table title'
           columns={columns}
           renderCell={renderCell}
+          hMax={240}
+          headerProps={{ sticky: true, withScrollBar: true }}
+          w='100%'
         />
 
         {showCloseButton && (
-          <Button use='primary' theme='success' size='l' onClick={handleClose}>
+          <Button use='primary' theme='success' size='l' mt={4} onClick={handleClose}>
             Close
           </Button>
         )}
@@ -145,37 +173,65 @@ export const defaultProps: BasicModalProps = {
   locale: undefined,
 };
 
-const data = [
+const baseData = [
   {
     keyword: 'ebay buy',
+    tags: [
+      { label: 'SEO', tooltip: 'Search engine optimization keyword', color: 'blue-500' },
+      { label: 'Paid', tooltip: 'Paid search campaign keyword', color: 'green-500' },
+    ],
     kd: '77.8',
     cpc: '$1.25',
     vol: '32,500,000,500,00032,500,000,500,00032,500,000,500,000',
   },
   {
     keyword: 'www.ebay.com',
+    tags: [
+      { label: 'Brand', tooltip: 'Branded domain keyword', color: 'violet-500' },
+      { label: 'Top', tooltip: 'Top-performing keyword cluster', color: 'orange-500' },
+    ],
     kd: '11.2',
     cpc: '$3.4',
     vol: '65,457,920,000,50032,500,000,500,00032,500,000,500,000',
   },
   {
     keyword: 'www.ebay.com',
+    tags: [
+      { label: 'Organic', tooltip: 'Organic traffic opportunity', color: 'salad-500' },
+      { label: 'Audit', tooltip: 'Keyword requires manual review', color: 'red-500' },
+    ],
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640,000,50032,500,000,500,00032,500,000,500,00032,500,000,500,000',
   },
   {
     keyword: 'ebay buy',
+    tags: [
+      { label: 'Low CPC', tooltip: 'Low cost-per-click keyword', color: 'gray-500' },
+    ],
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
   },
   {
     keyword: 'ebay buy',
+    tags: [
+      { label: 'Growth', tooltip: 'Growing keyword segment', color: 'green-500' },
+      { label: 'Watch', tooltip: 'Track this keyword weekly', color: 'pink-500' },
+    ],
     kd: '75.89',
     cpc: '$0',
     vol: '21,644,290,000,500',
   },
 ];
+
+const data = Array.from({ length: 20 }, (_, index) => {
+  const row = baseData[index % baseData.length];
+
+  return {
+    ...row,
+    keyword: `${row.keyword} ${index + 1}`,
+  };
+});
 
 export default Demo;
