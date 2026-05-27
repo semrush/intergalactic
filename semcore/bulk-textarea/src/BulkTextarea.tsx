@@ -247,6 +247,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
     const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
     if (textarea instanceof HTMLDivElement) {
+      textarea.innerHTML = '';
       textarea.focus();
     }
   };
