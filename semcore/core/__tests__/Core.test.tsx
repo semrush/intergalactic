@@ -781,4 +781,16 @@ describe('createBaseComponent', () => {
     render(<Test ref={ref} />);
     expect(ref.current?.nodeName).toBe('DIV');
   });
+
+  // UIK-5215: components opted-in via { isIcon: true } expose __IS_ICON
+  // so consumers (e.g. <Link>) can branch on icon-vs-non-icon addons.
+  test('Should set __IS_ICON = true when created with { isIcon: true }', () => {
+    const IconLike = createBaseComponent<any>(TestFuncWithRef, { isIcon: true });
+    expect(IconLike.__IS_ICON).toBe(true);
+  });
+
+  test('Should set __IS_ICON = false by default (no isIcon option)', () => {
+    const Plain = createBaseComponent<any>(TestFuncWithRef);
+    expect(Plain.__IS_ICON).toBe(false);
+  });
 });

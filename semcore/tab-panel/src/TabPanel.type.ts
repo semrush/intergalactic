@@ -85,7 +85,7 @@ declare namespace NSTabPanel {
 /** @deprecated It will be removed in v18. */
 export type TabPanelValue = NSTabPanel.Value;
 /** @deprecated It will be removed in v18. */
-export type TabPanelProps<T extends TabPanelValue = TabPanelValue> = NSTabPanel.Props<T>;
+export type TabPanelProps<T extends NSTabPanel.Value = NSTabPanel.Value> = NSTabPanel.Props<T>;
 /** @deprecated It will be removed in v18. */
 export type TabPanelItemProps = NSTabPanel.Item.Props;
 /** @deprecated It will be removed in v18. */
