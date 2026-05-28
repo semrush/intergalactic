@@ -3,7 +3,7 @@ import { createComponent, Component, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import React from 'react';
 
-import type { AddFilterItemProps } from '../AddFilter.types';
+import type { AddFilterDropdownType, AddFilterItemProps } from '../AddFilter.types';
 
 type AsPropsTypeWithHandlers<T> = T & {
   onClear: () => void;
@@ -11,14 +11,22 @@ type AsPropsTypeWithHandlers<T> = T & {
   setFocusRef: (el: HTMLElement) => {};
 };
 
-class AddFilterDropdownRoot extends Component<AddFilterItemProps, [], { visible: null }> {
+type DefaultProps = {
+  defaultVisible: true;
+};
+class AddFilterDropdownRoot extends Component<
+  AddFilterItemProps,
+  [],
+  { visible: null },
+  {},
+  {},
+  DefaultProps
+> {
   static displayName = 'AddFilterDropdown';
 
-  static defaultProps = () => {
-    return {
-      defaultVisible: true,
-    };
-  };
+  static defaultProps = {
+    defaultVisible: true,
+  } as const;
 
   uncontrolledProps() {
     return {
@@ -64,7 +72,10 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps, [], { visible:
   }
 }
 
-const AddFilterDropdown = createComponent(AddFilterDropdownRoot, {
+const AddFilterDropdown = createComponent<
+  typeof AddFilterDropdownType,
+  typeof AddFilterDropdownRoot
+>(AddFilterDropdownRoot, {
   Trigger: Dropdown.Trigger,
   Popper: Dropdown.Popper,
 });

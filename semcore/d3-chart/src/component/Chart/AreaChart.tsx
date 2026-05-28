@@ -1,4 +1,3 @@
-import { Flex, Box } from '@semcore/base-components';
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
@@ -6,18 +5,29 @@ import React from 'react';
 
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
+import type { AreaChartData, AreaChartProps, AreaChartType, AreaChartDefaultProps } from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class AreaChartComponent extends AbstractChart<
   AreaChartData,
   AreaChartProps,
-  typeof AreaChartComponent.enhance
+  typeof AreaChartComponent.enhance,
+  {},
+  ChartState,
+  AreaChartDefaultProps
 > {
   static displayName = 'Chart.Area';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
 
   get xScale() {
     const { xScale, marginY = 40, plotWidth, data, groupKey } = this.asProps;
@@ -124,4 +134,7 @@ class AreaChartComponent extends AbstractChart<
   }
 }
 
-export const AreaChart: AreaChartType = createComponent(AreaChartComponent);
+export const AreaChart = createComponent<
+  AreaChartType,
+  typeof AreaChartComponent
+>(AreaChartComponent);

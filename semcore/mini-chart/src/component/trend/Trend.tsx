@@ -1,4 +1,5 @@
 import type { BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { Component } from '@semcore/core';
 import React from 'react';
 
@@ -21,10 +22,13 @@ export type CommonTrendProps = BoxProps & {
   data: any[];
 };
 
+type CommonTrendState = { width: number; height: number };
+
 export abstract class Trend<
   P extends CommonTrendProps,
   E extends readonly ((...args: any[]) => any)[],
-> extends Component<P, E, Readonly<{}>, { width: number; height: number }> {
+  DP extends Intergalactic.InternalTypings.ValidDefaultProps<DP, P> = never,
+> extends Component<P, E, Readonly<{}>, {}, CommonTrendState, DP> {
   state = {
     width: 200,
     height: 100,
