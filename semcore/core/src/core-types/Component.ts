@@ -45,30 +45,57 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
+type UncontrolledPropValueSetterFunction<V> = (event?: any) => void | boolean | V;
+type UncontrolledPropValueChainHandler<V> = (value: V, event?: any) => void | boolean | V;
+
 type UncontrolledPropValue<V> =
   | V
   | null
-  | ((value: V, e?: any) => void | boolean | V)
-  | ((value: V, e?: any) => void | boolean | V)[]
-  | ((e?: any) => void | boolean | V);
+  | UncontrolledPropValueSetterFunction<V>
+  | Array<UncontrolledPropValueChainHandler<V>>
+  | [UncontrolledPropValueSetterFunction<V> | null, ...UncontrolledPropValueChainHandler<V>[]];
 
+export interface IComponent<
+  C,
+  /*
+  * Infered this way since `Props` within `Component` abstract class
+  * is used in multiple places in different variance positions
+  * causing the final type to be `never`.
+  * */
+  P = C extends { props: Readonly<infer P> } ? P : never,
+  DP = C extends Component<any, any, any, any, any, infer DP> ?
+    DP extends never
+      ? never
+      : DP
+    : never,
+> {
+  new (...args: any[]): C;
+  defaultProps?: DP | ((props: P) => DP) | (() => DP);
+}
 export abstract class Component<
   Props = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
   Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
   State = {},
+  DefaultProps extends Intergalactic.InternalTypings.ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
 > extends PureComponent<Props, State> {
+  protected __defaultProps: DefaultProps = {} as DefaultProps;
+
   protected uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
     // @ts-ignore. This is a default value. Should be defined in related classes.
     return {};
-  };
+  }
 
   protected get handlers(): Readonly<{
     [key in keyof Uncontrolled]: key extends keyof Props
-      ? Uncontrolled[key] extends (null | Props[key])
+      ? Uncontrolled[key] extends null | Props[key]
         ? (value: Props[key], e?: any) => void
-        : Uncontrolled[key] extends Array<any> ? Uncontrolled[key][0] : Uncontrolled[key]
+        : Uncontrolled[key] extends [UncontrolledPropValueSetterFunction<any> | null, ...UncontrolledPropValueChainHandler<any>[]]
+          ? Uncontrolled[key][1]
+          : Uncontrolled[key] extends Array<UncontrolledPropValueChainHandler<any>>
+            ? Uncontrolled[key][0]
+            : Uncontrolled[key]
       : never
   }> {
     // @ts-ignore. The body will be generated in factory
@@ -77,9 +104,12 @@ export abstract class Component<
 
   protected get asProps() {
     return {} as Readonly<
-      { Root: RootResult<any> } &
-      BaseAsProps<Props, Enhance, InnerProps> &
-      Intergalactic.InternalTypings.EfficientOmit<AllHTMLAttributes<any>, keyof BaseAsProps<Props, Enhance, InnerProps>>
+      { Root: RootResult<any> } & BaseAsProps<Props, Enhance, InnerProps> &
+      Intergalactic.InternalTypings.EfficientOmit<
+        AllHTMLAttributes<any>,
+        keyof BaseAsProps<Props, Enhance, InnerProps>
+      > &
+      ([DefaultProps] extends [never] ? {} : Intergalactic.InternalTypings.MappedDefaultProps<DefaultProps, Props & InnerProps>)
     >;
   }
 
@@ -119,6 +149,24 @@ export namespace Intergalactic {
   /** @private */
   // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
+    type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
+
+    export type ValidDefaultProps<DefaultProps, MergedProps> = {
+      [K in keyof DefaultProps]: K extends keyof MergedProps
+        ? MergedProps[K]
+        : StripDefaultPrefix<K> extends keyof MergedProps
+          ? MergedProps[StripDefaultPrefix<K>]
+          : never;
+    };
+
+    export type MappedDefaultProps<DefaultProps, MergedProps> = {
+      [K in keyof DefaultProps as StripDefaultPrefix<K>]: K extends keyof MergedProps
+        ? Required<MergedProps>[K]
+        : StripDefaultPrefix<K> extends keyof MergedProps
+          ? Required<MergedProps>[StripDefaultPrefix<K>]
+          : never;
+    };
+
     type MergeChildProps<Root, Component> = {
       [K in keyof Root | keyof Component]:
       K extends keyof Root

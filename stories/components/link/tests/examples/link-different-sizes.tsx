@@ -1,9 +1,9 @@
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
-import Counter, { type CounterProps } from '@semcore/ui/counter';
+import Counter, { type NSCounter } from '@semcore/ui/counter';
 import Link from '@semcore/ui/link';
-import Spin, { type SpinSize } from '@semcore/ui/spin';
+import Spin, { type NSSpin } from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -24,14 +24,14 @@ const Demo = (props: LinkSizesProps) => {
   return (
     <>
       {sizes.map((size) => {
-        let spinSize: SpinSize = 'm';
+        let spinSize: NSSpin.Size = 'm';
         if (size <= 200) {
           spinSize = 'xs';
         } else if (size <= 500) {
           spinSize = 's';
         }
 
-        let counterSize: CounterProps['size'];
+        let counterSize: NSCounter.Props['size'];
         if (size >= 600) {
           counterSize = 'l';
         } else if (size >= 300) {

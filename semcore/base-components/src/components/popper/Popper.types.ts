@@ -100,6 +100,21 @@ export type PopperProps = OutsideClickProps &
     popperMargin?: number;
   };
 
+export type PopperDefaultProps = {
+  defaultVisible: false;
+  placement: 'auto';
+  modifiers: PopperProps['modifiers'];
+  arrow: {
+    padding: 6;
+  };
+  strategy: 'absolute';
+  interaction: 'click';
+  timeout: 0;
+  excludeRefs: PopperProps['excludeRefs'];
+  focusLoop: true;
+  cursorAnchoring: false;
+};
+
 export type PopperTriggerProps = BoxProps & {
   /**
    * Disabled focus trap, autofocus and focus return

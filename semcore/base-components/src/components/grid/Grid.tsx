@@ -2,15 +2,22 @@ import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
 import { Box, Flex } from '../flex-box';
-import type { RowProps, ColProps, RowType, GridContext } from './Grid.types';
+import type { RowProps, ColProps, RowType, GridContext, RowDefaultProps } from './Grid.types';
 import style from './style/grid.shadow.css';
 
-class RowRoot extends Component<RowProps, [], {}, GridContext> {
+class RowRoot extends Component<
+  RowProps,
+  [],
+  {},
+  GridContext,
+  {},
+  RowDefaultProps
+> {
   static displayName = 'Row';
   static style = style;
   static defaultProps = {
     gutter: 0,
-  };
+  } as const;
 
   getColProps() {
     const { gutter } = this.asProps;
@@ -68,6 +75,9 @@ function Col(props: ColProps) {
   );
 }
 
-const Row = createComponent(RowRoot, { Col }) as RowType;
+const Row = createComponent<
+  RowType,
+  typeof RowRoot
+>(RowRoot, { Col });
 
 export default Row;

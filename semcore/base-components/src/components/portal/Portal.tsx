@@ -16,6 +16,8 @@ export type PortalProps = {
 
 type PortalContextType = React.RefObject<HTMLElement | null> | HTMLElement | null;
 
+type PortalComponent = Intergalactic.Component<Intergalactic.Tag, PortalProps>;
+
 const PortalContext = register.get(
   'portal-context',
 
@@ -52,4 +54,7 @@ Portal.displayName = 'Portal';
 
 const { Provider: PortalProvider } = PortalContext;
 export { PortalProvider, PortalContext };
-export default createComponent(Portal) as Intergalactic.Component<Intergalactic.Tag, PortalProps>;
+export default createComponent<
+  PortalComponent,
+  typeof Portal
+>(Portal);

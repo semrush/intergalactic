@@ -23,4 +23,12 @@ export type ScatterPlotChartProps = Intergalactic.InternalTypings.EfficientOmit<
   onClickScatterItem?: (index: number, event: React.SyntheticEvent) => void;
 };
 
+export type ScatterPlotChartDefaultProps = {
+  direction: 'column';
+  showXAxis: true;
+  showYAxis: true;
+  showTooltip: true;
+  showLegend: false;
+};
+
 export type ScatterPlotChartType = Intergalactic.Component<typeof Flex, ScatterPlotChartProps>;
