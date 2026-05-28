@@ -1488,7 +1488,7 @@ type DataTableComponent = DataTableType & {
 /**
  * DataTable
  *
- * {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-api|Api} | {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-code|Examples}
+ * {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-api|API} | {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-code|Examples}
  */
 export const DataTable = createComponent<
   DataTableComponent,

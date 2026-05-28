@@ -77,7 +77,7 @@ const Item = createComponent<
 /**
  * List
  *
- * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#list|Api} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
+ * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#list|API} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
  */
 const List = createComponent<
   NSList.Component,
