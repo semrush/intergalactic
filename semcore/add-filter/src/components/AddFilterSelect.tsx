@@ -12,7 +12,7 @@ type AsPropsWithOnClear<T> = T & {
 };
 
 type DefaultProps = {
-  defaultVisible: true;
+  defaultVisible: false;
 };
 
 class AddFilterSelectRoot extends Component<

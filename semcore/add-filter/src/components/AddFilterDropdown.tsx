@@ -12,7 +12,7 @@ type AsPropsTypeWithHandlers<T> = T & {
 };
 
 type DefaultProps = {
-  defaultVisible: true;
+  defaultVisible: false;
 };
 class AddFilterDropdownRoot extends Component<
   AddFilterItemProps,
