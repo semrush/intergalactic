@@ -126,4 +126,4 @@ function Icon({
 
 type IconComponent = Intergalactic.Component<'svg', IconProps>;
 
-export default createBaseComponent<IconComponent>(Icon);
+export default createBaseComponent<IconComponent>(Icon, { isIcon: true });
