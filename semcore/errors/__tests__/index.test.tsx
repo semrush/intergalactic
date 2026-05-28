@@ -1,7 +1,6 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { render, screen, userEvent } from '@semcore/testing-utils/testing-library';
 import { describe, it, expect, vi } from '@semcore/testing-utils/vitest';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import Error, { AccessDenied, Maintenance, PageError, PageNotFound, ProjectNotFound } from '../src';

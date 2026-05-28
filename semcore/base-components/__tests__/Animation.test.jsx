@@ -1,6 +1,4 @@
 import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
-import { expect, test, describe } from '@semcore/testing-utils/vitest';
-import { render, screen } from '@testing-library/react';
 import { afterEach, expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
@@ -42,6 +40,8 @@ describe('Animation', () => {
     Component: Slide,
     props: { visible: true, slideOrigin: 'left', children: 'Slide' },
     expectedDataUiName: 'Slide',
+  });
+
   afterEach(() => {
     cleanup();
     vi.restoreAllMocks();
