@@ -69,6 +69,9 @@ export const SelectableProps: StoryObj<typeof defaultDropDownSelectablePropsExam
     disabledFirstItem: {
       control: { type: 'boolean' },
     },
+    disabledSecondItem: {
+      control: { type: 'boolean' },
+    },
   },
   args: defaultDropDownSelectablePropsExample,
 };

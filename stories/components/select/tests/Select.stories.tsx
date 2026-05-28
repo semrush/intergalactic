@@ -142,13 +142,13 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     disablePortal: { control: { type: 'boolean' } },
 
     // Option 1 - Default option (SelectOptionProps)
-    option1Value: { control: { type: 'text' } },
+    option1Value: { control: { type: 'number' } },
     option1Text: { control: { type: 'text' } },
     option1Disabled: { control: { type: 'boolean' } },
     option1Selected: { control: { type: 'boolean' } },
 
     // Option 2 - Checkbox option (SelectOptionProps + SelectOptionCheckboxProps)
-    option2Value: { control: { type: 'text' } },
+    option2Value: { control: { type: 'number' } },
     option2Text: { control: { type: 'text' } },
     option2Disabled: { control: { type: 'boolean' } },
     option2Selected: { control: { type: 'boolean' } },
@@ -157,7 +157,7 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     option2CheckboxIndeterminate: { control: { type: 'boolean' } },
 
     // Option 3 - Option with hint (SelectOptionProps + SelectOptionCheckboxProps + Hint)
-    option3Value: { control: { type: 'text' } },
+    option3Value: { control: { type: 'number' } },
     option3Text: { control: { type: 'text' } },
     option3Disabled: { control: { type: 'boolean' } },
     option3Selected: { control: { type: 'boolean' } },
@@ -166,7 +166,7 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     option3HintText: { control: { type: 'text' } },
 
     // Option 4 - Simple option (SelectOptionProps)
-    option4Value: { control: { type: 'text' } },
+    option4Value: { control: { type: 'number' } },
     option4Text: { control: { type: 'text' } },
     option4Disabled: { control: { type: 'boolean' } },
     option4Selected: { control: { type: 'boolean' } },
@@ -175,9 +175,9 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     showGroup: { control: { type: 'boolean' } },
     groupTitle: { control: { type: 'text' } },
     groupSubTitle: { control: { type: 'text' } },
-    groupOption1Value: { control: { type: 'text' } },
+    groupOption1Value: { control: { type: 'number' } },
     groupOption1Text: { control: { type: 'text' } },
-    groupOption2Value: { control: { type: 'text' } },
+    groupOption2Value: { control: { type: 'number' } },
     groupOption2Text: { control: { type: 'text' } },
 
     // Bulk controls
