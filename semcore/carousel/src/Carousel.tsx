@@ -2,6 +2,7 @@ import { createBreakpoints, Box, Flex } from '@semcore/base-components';
 import type { BoxProps } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
@@ -21,6 +22,7 @@ import type {
   CarouselButtonProps,
   CarouselIndicatorsProps,
   CarouselIndicatorProps,
+  CarouselDefaultProps,
 } from './Carousel.types';
 import style from './style/carousel.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -39,8 +41,9 @@ class CarouselRoot extends Component<
   CarouselProps,
   typeof enhance,
   { index: any },
-  CarouselContext,
-  CarouselState
+  CarouselContext & WithI18nEnhanceProps,
+  CarouselState,
+  CarouselDefaultProps
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -51,7 +54,7 @@ class CarouselRoot extends Component<
     i18n: localizedMessages,
     locale: 'en',
     indicators: 'default',
-  };
+  } as const;
 
   static style = style;
   static enhance = enhance;
@@ -735,7 +738,7 @@ function Indicators({ items, styles, Children, inverted }: CarouselIndicatorsPro
   );
 };
 
-function Indicator({ styles, Children, inverted }: CarouselIndicatorProps) {
+function Indicator({ styles, Children }: CarouselIndicatorProps) {
   const SIndicator = Root;
   return sstyled(styles)(
     <SIndicator render={Box}>
@@ -749,7 +752,10 @@ function Indicator({ styles, Children, inverted }: CarouselIndicatorProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/carousel/carousel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/carousel/carousel-code/|Examples}
  */
-const Carousel = createComponent(CarouselRoot, {
+const Carousel = createComponent<
+  typeof CarouselType,
+  typeof CarouselRoot
+>(CarouselRoot, {
   Container,
   ContentBox,
   Indicators,
@@ -757,6 +763,6 @@ const Carousel = createComponent(CarouselRoot, {
   Item,
   Prev,
   Next,
-}) as typeof CarouselType;
+});
 
 export default Carousel;

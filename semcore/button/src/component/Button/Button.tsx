@@ -7,7 +7,7 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { ButtonProps, ButtonAddonProps, ButtonTextProps, ButtonComponent } from './Button.type';
+import type { ButtonProps, ButtonAddonProps, ButtonTextProps, ButtonComponent, ButtonDefaultProps } from './Button.type';
 import SpinButton from './SpinButton';
 
 export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
@@ -20,13 +20,20 @@ type State = {
   ariaLabelledByContent: null | string;
 };
 
-export class RootButton extends Component<ButtonProps, [], never, {}, State> {
+export class RootButton extends Component<
+  ButtonProps,
+  [],
+  never,
+  {},
+  State,
+  ButtonDefaultProps
+> {
   static displayName = 'Button';
   static style = style;
   static defaultProps = {
     use: 'secondary',
     size: 'm',
-  };
+  } as const;
 
   containerRef = React.createRef<HTMLButtonElement>();
 
@@ -172,9 +179,12 @@ function Addon(props: ButtonAddonProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/button/button-api/|API} | {@link https://developer.semrush.com/intergalactic/components/button/button-code/|Examples}
  */
-const Button = createComponent(RootButton, {
+const Button = createComponent<
+  ButtonComponent,
+  typeof RootButton
+>(RootButton, {
   Text: ButtonText,
   Addon,
-}) as ButtonComponent;
+});
 
 export default Button;

@@ -1,14 +1,22 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import type { CounterProps } from './index';
+import type { NSCounter } from './Counter.type';
 import style from './style/counter.shadow.css';
 
 const enhance = [resolveColorEnhance()] as const;
 
-class Counter extends Component<CounterProps, typeof enhance> {
+class Counter extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSCounter.Component>,
+ typeof enhance,
+ {},
+ {},
+ {},
+ NSCounter.DefaultProps
+> {
   static displayName = 'Counter';
   static enhance = enhance;
 
@@ -16,7 +24,7 @@ class Counter extends Component<CounterProps, typeof enhance> {
 
   static defaultProps = {
     size: 's',
-  };
+  } as const;
 
   render() {
     const SCounter = Root;
@@ -40,5 +48,7 @@ class Counter extends Component<CounterProps, typeof enhance> {
  *
  * {@link https://developer.semrush.com/intergalactic/components/counter/counter-api/|API} | {@link https://developer.semrush.com/intergalactic/components/counter/counter-code/|Examples}
  */
-export default createComponent(Counter);
-export * from './AnimatedNumber';
+export default createComponent<
+  NSCounter.Component,
+  typeof Counter
+>(Counter);

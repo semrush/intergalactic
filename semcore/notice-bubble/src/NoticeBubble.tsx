@@ -2,6 +2,7 @@ import { Animation, Box, Flex, Portal } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
@@ -18,6 +19,7 @@ import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
 
 import type {
+  NoticeBubbleContainerDefaultProps,
   NoticeBubbleContainerProps,
   NoticeBubbleViewItemProps,
 } from './NoticeBubble.type';
@@ -33,7 +35,14 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, typeof NoticeBubbleContainerRoot.enhance, {}, typeof NoticeBubbleContainerRoot.defaultProps, State> {
+class NoticeBubbleContainerRoot extends Component<
+  NoticeBubbleContainerProps,
+  typeof NoticeBubbleContainerRoot.enhance,
+  {},
+  WithI18nEnhanceProps,
+  State,
+  NoticeBubbleContainerDefaultProps
+> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [
@@ -352,6 +361,9 @@ class ViewWarning extends ViewInfo {
  *
  * {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-code/|Examples}
  */
-const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot) as Intergalactic.Component<'div', NoticeBubbleContainerProps>;
+const NoticeBubbleContainer = createComponent<
+  Intergalactic.Component<'div', NoticeBubbleContainerProps>,
+  typeof NoticeBubbleContainerRoot
+>(NoticeBubbleContainerRoot);
 
 export default NoticeBubbleContainer;

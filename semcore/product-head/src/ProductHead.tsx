@@ -4,6 +4,12 @@ import React from 'react';
 
 import style from './style/product-head.shadow.css';
 
+type HeaderComponent = typeof Box & {
+  Buttons: typeof Box;
+  Links: typeof Box;
+  Row: typeof Box;
+};
+
 class HeaderRoot extends Component<BoxProps> {
   static displayName = 'ProductHead';
   static style = style;
@@ -34,13 +40,13 @@ function Row(props: any) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/product-head/product-head-api/|API} | {@link https://developer.semrush.com/intergalactic/components/product-head/product-head-code/|Examples}
  */
-const Header = createComponent(HeaderRoot, {
+const Header = createComponent<
+  HeaderComponent,
+  typeof HeaderRoot
+>(HeaderRoot, {
   Buttons,
   Links,
   Row,
-}) as typeof Box & {
-  Buttons: typeof Box;
-  Links: typeof Box;
-  Row: typeof Box;
-};
+});
+
 export default Header;

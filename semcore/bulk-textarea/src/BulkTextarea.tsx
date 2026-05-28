@@ -1,10 +1,11 @@
 import { Box } from '@semcore/base-components';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-import type { BulkTextareaType, BulkTextareaProps } from './BulkTextarea.types';
+import type { BulkTextareaType, BulkTextareaProps, BulkTextareaDefaultProps } from './BulkTextarea.types';
 import { ClearAll } from './components/ClearAll';
 import { Counter } from './components/Counter';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
@@ -28,18 +29,19 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
     showErrors: null;
     errors: null;
   },
-  {},
-  State<T>
+  WithI18nEnhanceProps,
+  State<T>,
+  BulkTextareaDefaultProps<T>
 > {
   static displayName = 'BulkTextarea';
-  static defaultProps = {
+  static defaultProps: BulkTextareaDefaultProps<string | string[]> = {
     defaultValue: '',
     size: 'm',
     defaultState: 'normal',
     minRows: 2,
     maxRows: 10,
     maxLines: 100,
-    validateOn: 'blur',
+    validateOn: ['blur'],
     locale: 'en',
     defaultErrors: [],
     defaultShowErrors: false,
@@ -285,11 +287,11 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
  * {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-api/|API} | {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-code/|Examples}
  */
 const BulkTextarea = (<T extends string | string[]>() =>
-  createComponent(BulkTextareaRoot, {
+  createComponent<BulkTextareaType<T>, typeof BulkTextareaRoot>(BulkTextareaRoot, {
     InputField,
     Counter,
     ClearAll,
     ErrorsNavigation,
-  }) as unknown as BulkTextareaType<T>)();
+  }))();
 
 export default BulkTextarea;

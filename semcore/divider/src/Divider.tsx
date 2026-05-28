@@ -7,26 +7,28 @@ import React from 'react';
 import type { NSDivider } from './Divider.type';
 import style from './style/divider.shadow.css';
 
-class DividerRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSDivider.Component>, typeof DividerRoot.enhance> {
+class DividerRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSDivider.Component>,
+  typeof DividerRoot.enhance,
+  {},
+  {},
+  {},
+  NSDivider.DefaultProps
+> {
   static displayName = 'Divider';
   static style = style;
   static enhance = [resolveColorEnhance()] as const;
   static defaultProps = {
     use: 'primary',
     orientation: 'horizontal',
-  };
+  } as const;
 
   render() {
     const SDivider = Root;
     const { orientation, resolveColor, theme } = this.asProps;
 
     return sstyled(this.asProps.styles)(
-      <SDivider
-        render={Box}
-        role='separator'
-        aria-orientation={orientation}
-        use:theme={resolveColor(theme)}
-      />,
+      <SDivider render={Box} role='separator' aria-orientation={orientation} use:theme={resolveColor(theme)} />,
     );
   }
 }
@@ -36,6 +38,9 @@ class DividerRoot extends Component<Intergalactic.InternalTypings.InferComponent
  *
  * {@link https://developer.semrush.com/intergalactic/components/divider/divider-api/|API} | {@link https://developer.semrush.com/intergalactic/components/divider/divider-code/|Examples}
  */
-const Divider = createComponent(DividerRoot) as NSDivider.Component;
+const Divider = createComponent<
+  NSDivider.Component,
+  typeof DividerRoot
+>(DividerRoot);
 
 export default Divider;

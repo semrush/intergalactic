@@ -10,9 +10,11 @@ function Flex(props: any, ref: any) {
 
 Flex.displayName = 'Flex';
 
+type FlexComponent = Intergalactic.Component<'div', FlexProps>;
+
 /**
  * Flex
  *
  * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|Docs}
  */
-export default createBaseComponent(Flex) as any as Intergalactic.Component<'div', FlexProps>;
+export default createBaseComponent<FlexComponent>(Flex);

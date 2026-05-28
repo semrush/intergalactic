@@ -9,7 +9,7 @@ import styles from '../../style/blockquote.shadow.css';
 
 function BlockquoteRoot(
   props: Intergalactic.InternalTypings.InferComponentProps<NSBlockquote.Component>,
-  ref: React.ForwardedRef<HTMLQuoteElement>,
+  ref: React.Ref<HTMLQuoteElement>,
 ) {
   const SBlockquote = Root;
   const SDoubleQuotation = 'span';
@@ -34,6 +34,6 @@ BlockquoteRoot.displayName = 'Blockquote';
  *
  * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#blockquote|Api} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
  */
-const Blockquote = createBaseComponent(BlockquoteRoot) as NSBlockquote.Component;
+const Blockquote = createBaseComponent<NSBlockquote.Component>(BlockquoteRoot);
 
 export default Blockquote;

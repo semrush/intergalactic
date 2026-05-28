@@ -7,9 +7,11 @@ export type HighlightedItemAddonProps = {
   animatedSparkleCount?: number;
 };
 
+export type HighlightedPillItemComponent = Intergalactic.Component<'div', PillProps> & {
+  Text: typeof Box;
+  Addon: Intergalactic.Component<'div', HighlightedItemAddonProps>;
+};
+
 export type HighlightedPillComponent = typeof Pills & {
-  HighlightedItem: Intergalactic.Component<'div', PillProps> & {
-    Text: typeof Box;
-    Addon: Intergalactic.Component<'div', HighlightedItemAddonProps>;
-  };
+  HighlightedItem: HighlightedPillItemComponent;
 };

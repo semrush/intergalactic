@@ -29,4 +29,7 @@ function CompactHorizontalBarChartSkeleton() {
  *
  * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api/|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
  */
-export default createComponent(CompactHorizontalBarChartSkeleton) as NSSkeletonCompactHorizontalBar.Component;
+export default createComponent<
+  NSSkeletonCompactHorizontalBar.Component,
+  typeof CompactHorizontalBarChartSkeleton
+>(CompactHorizontalBarChartSkeleton);

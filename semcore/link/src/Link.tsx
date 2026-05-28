@@ -10,7 +10,7 @@ import type { NSText } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import type { LinkProps } from './Link.types';
+import type { LinkComponent, LinkProps } from './Link.types';
 import style from './style/link.shadow.css';
 
 type State = {
@@ -145,12 +145,9 @@ function Addon(props: IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/link/link-api/|API} | {@link https://developer.semrush.com/intergalactic/components/link/link-code/|Examples}
  */
-const Link = createComponent(RootLink, {
+const Link = createComponent<LinkComponent, typeof RootLink>(RootLink, {
   Text: LinkText,
   Addon,
-}) as Intergalactic.Component<'a', LinkProps, {}, typeof RootLink.enhance> & {
-  Text: Intergalactic.Component<'span', NSText.Props>;
-  Addon: Intergalactic.Component<'span', BoxProps>;
-};
+});
 
 export default Link;

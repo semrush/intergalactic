@@ -128,7 +128,10 @@ function useNeighborLocationDetect(index: number) {
  *
  * {@link https://developer.semrush.com/intergalactic/utils/neighbor-location/neighbor-location-api|API}
  */
-export const NeighborLocation = createComponent(
+export const NeighborLocation = createComponent<
+  typeof NeighborLocationType,
+  typeof NeighborLocationRoot
+>(
   NeighborLocationRoot,
   {
     Detect: Detect,
@@ -136,6 +139,6 @@ export const NeighborLocation = createComponent(
   {
     context: Context,
   },
-) as typeof NeighborLocationType;
+);
 
 export { useNeighborLocationDetect };

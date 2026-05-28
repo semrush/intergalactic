@@ -2,6 +2,7 @@ import { ScreenReaderOnly, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import type { IRootComponentProps, Intergalactic } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -25,21 +26,29 @@ import type {
   WizardType,
   WizardStepBackProps,
   WizardStepNextProps,
+  WizardDefaultProps,
 } from './Wizard.types';
 
 type State = {
   highlighted: number;
 };
 
-class WizardRoot extends Component<WizardProps, typeof WizardRoot.enhance, {}, {}, State> {
+class WizardRoot extends Component<
+  WizardProps,
+  typeof WizardRoot.enhance,
+  {},
+  WithI18nEnhanceProps,
+  State,
+  WizardDefaultProps
+> {
   static displayName = 'Wizard';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
   static defaultProps = {
-    step: null,
+    step: 0,
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
   _steps = new Map();
   modalRef = React.createRef<HTMLElement>();
@@ -350,14 +359,17 @@ function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-api/|API} | {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-code/|Examples}
  */
-const Wizard = createComponent(WizardRoot, {
+const Wizard = createComponent<
+  WizardType,
+  typeof WizardRoot
+>(WizardRoot, {
   Sidebar,
   Content,
   Step,
   Stepper,
   StepBack,
   StepNext,
-}) as WizardType;
+});
 
 export const wrapWizardStepper = <PropsExtending extends {}>(
   wrapper: (

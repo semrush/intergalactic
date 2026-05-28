@@ -12,6 +12,7 @@ import type {
   ScrollAreaProps,
   ScrollArea as ScrollAreaType,
   ScrollAreaContainerProps,
+  ScrollAreaDefaultProps,
 } from './ScrollBar.types';
 import style from './style/scroll-area.shadow.css';
 
@@ -29,25 +30,22 @@ type State = {
   shadowVertical: boolean | string;
 };
 
-type DefaultProps = {
-  container: React.Ref<HTMLElement | null>;
-  inner: React.Ref<HTMLElement | null>;
-  tabIndex: number;
-  observeParentSize: boolean;
-  disableAutofocusToContent: boolean;
-  shadowSize: Exclude<ScrollAreaProps['shadowSize'], undefined>;
-  shadowTheme: Exclude<Required<ScrollAreaProps['shadowTheme']>, undefined>;
-};
-
 const DEFAULT_SHADOW_THEME = 'dark';
 
-class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.enhance, {}, DefaultProps, State> {
+class ScrollAreaRoot extends Component<
+  ScrollAreaProps,
+  typeof ScrollAreaRoot.enhance,
+  {},
+  {},
+  State,
+  ScrollAreaDefaultProps
+> {
   static displayName = 'ScrollArea';
 
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
 
-  static defaultProps: () => DefaultProps = () => ({
+  static defaultProps = () => ({
     container: React.createRef<HTMLElement | null>(),
     inner: React.createRef<HTMLElement | null>(),
     tabIndex: 0,
@@ -55,7 +53,7 @@ class ScrollAreaRoot extends Component<ScrollAreaProps, typeof ScrollAreaRoot.en
     disableAutofocusToContent: false,
     shadowSize: 5,
     shadowTheme: DEFAULT_SHADOW_THEME,
-  });
+  } as const);
 
   hasAutoFocusToContent = false;
 
@@ -450,10 +448,13 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/scroll-area/scroll-area-api|API} | {@link https://developer.semrush.com/intergalactic/components/scroll-area/scroll-area-code|Examples}
  */
-const ScrollArea = createComponent(ScrollAreaRoot, {
+const ScrollArea = createComponent<
+  typeof ScrollAreaType,
+  typeof ScrollAreaRoot
+>(ScrollAreaRoot, {
   Container: ContainerRoot,
   Bar: ScrollBar,
-}) as typeof ScrollAreaType;
+});
 
 // TODO: remove named ScrollArea export
 export { eventCalculate, ScrollArea };

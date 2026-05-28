@@ -9,16 +9,18 @@ import {
   type Intergalactic,
   type IRootComponentProps,
 } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import fire from '@semcore/core/lib/utils/fire';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
-import Tag, { type TagProps, TagContainer, type TagTextProps, type TagContext } from '@semcore/tag';
+import Tag, { type NSTag, TagContainer } from '@semcore/tag';
 import React from 'react';
 
 import style from './style/input-tag.shadow.css';
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 export type InputTagsValueProps = InputValueProps & {};
@@ -44,7 +46,14 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
     locale?: string;
   };
 
-export type InputTagsTagProps = TagProps & {
+export type InputTagsDefaultProps = {
+  size: 'm';
+  delimiters: InputTagsProps['delimiters'];
+  i18n: LocalizedMessages;
+  locale: 'en';
+};
+
+export type InputTagsTagProps = NSTag.Props & {
   /** Property enabling the ability to remove a tag on click */
   editable?: boolean;
 };
@@ -54,16 +63,35 @@ export type InputTagsContext = InputTagsProps & {
   getTagProps: PropGetterFn;
 };
 
-class InputTagsRoot extends Component<InputTagsProps, typeof InputTagsRoot.enhance> {
+export type InputTagsComponent = Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
+  Value: typeof Input.Value;
+  TagsContainer: Intergalactic.Component<'ul'>;
+  Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
+    Text: Intergalactic.Component<'div', NSTag.Props, NSTag.Ctx> & {
+      Content: Intergalactic.Component<'div', NSTag.Text.Props>;
+    };
+    Close: typeof TagContainer.Close;
+    Addon: typeof Tag.Addon;
+    Circle: typeof Tag.Circle;
+  };
+};
+
+class InputTagsRoot extends Component<
+  InputTagsProps,
+  typeof InputTagsRoot.enhance,
+  {},
+  WithI18nEnhanceProps,
+  {},
+  InputTagsDefaultProps
+> {
   static displayName = 'InputTags';
   static style = style;
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
-    size: 'm',
+    size: 'm' as const,
     delimiters: [',', ';', '|', 'Enter', 'Tab'],
-    defaultValue: '',
     i18n: localizedMessages,
-    locale: 'en',
+    locale: 'en' as const,
   };
 
   inputRef = React.createRef<HTMLInputElement>();
@@ -388,7 +416,10 @@ function TagCloseButton(props: IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/input-tags/input-tags-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-tags/input-tags-code/|Examples}
  */
-const InputTags = createComponent(InputTagsRoot, {
+const InputTags = createComponent<
+  InputTagsComponent,
+  typeof InputTagsRoot
+>(InputTagsRoot, {
   Value,
   TagsContainer: InputTagsContainer,
   Tag: [
@@ -400,17 +431,6 @@ const InputTags = createComponent(InputTagsRoot, {
       Circle: TagContainer.Circle,
     },
   ],
-}) as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
-  Value: typeof Input.Value;
-  TagsContainer: Intergalactic.Component<'ul'>;
-  Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
-      Content: Intergalactic.Component<'div', TagTextProps>;
-    };
-    Close: typeof TagContainer.Close;
-    Addon: typeof Tag.Addon;
-    Circle: typeof Tag.Circle;
-  };
-};
+});
 
 export default InputTags;

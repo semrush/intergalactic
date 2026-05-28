@@ -5,7 +5,7 @@ import TabLine from '@semcore/tab-line';
 import React from 'react';
 
 import style from './tabLine.shadow.css';
-import type { HighlightedTabLineComponent } from './TabLine.type';
+import type { HighlightedTabLineComponent, HighlightedTabLineItemComponent } from './TabLine.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
 class TabLineFHRoot extends Component {
@@ -65,12 +65,17 @@ function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boole
   );
 }
 
+const HighlightedItem = createComponent<HighlightedTabLineItemComponent, typeof HighlightedItemRoot>(
+  HighlightedItemRoot,
+  { Text: TabLine.Item.Text, Addon: HighlightedAddon },
+);
+
 /**
  * TabLine FeatureHighlight
  *
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#tabline|Docs}
  */
-export const TabLineFH = createComponent(TabLineFHRoot, {
+export const TabLineFH = createComponent<HighlightedTabLineComponent, typeof TabLineFHRoot>(TabLineFHRoot, {
   Item: [TabLine.Item, { Text: TabLine.Item.Text, Addon: TabLine.Item.Addon }],
-  HighlightedItem: createComponent(HighlightedItemRoot, { Text: TabLine.Item.Text, Addon: HighlightedAddon }),
-}) as unknown as HighlightedTabLineComponent;
+  HighlightedItem,
+});

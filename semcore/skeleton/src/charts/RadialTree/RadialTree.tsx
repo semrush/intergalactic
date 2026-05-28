@@ -29,4 +29,4 @@ function RadialTreeChartSkeleton() {
  *
  * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api#radialtreechartskeleton|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
  */
-export default createComponent(RadialTreeChartSkeleton) as NSSkeletonRadialTreeChart.Component;
+export default createComponent<NSSkeletonRadialTreeChart.Component, typeof RadialTreeChartSkeleton>(RadialTreeChartSkeleton);

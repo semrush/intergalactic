@@ -7,6 +7,7 @@ import {
   type Intergalactic,
   type PropGetterFn,
 } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import reactToText from '@semcore/core/lib/utils/reactToText';
@@ -14,6 +15,7 @@ import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
 import React from 'react';
 
 import style from './style/inline-edit.shadow.css';
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type AsProps = {
@@ -25,7 +27,14 @@ type AsProps = {
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
-class InlineEdit extends Component<AsProps, [], { editable: null }> {
+class InlineEdit extends Component<
+  AsProps,
+  [],
+  { editable: null },
+  WithI18nEnhanceProps,
+  {},
+  InlineEditDefaultProps
+> {
   static displayName = 'InlineEdit';
 
   static style = style;
@@ -35,7 +44,7 @@ class InlineEdit extends Component<AsProps, [], { editable: null }> {
     defaultEditable: false,
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
   viewRef = React.createRef<HTMLElement>();
 
@@ -183,6 +192,11 @@ type InlineEditProps = BoxProps & {
   onEdit?: () => void;
   locale?: string;
 };
+type InlineEditDefaultProps = {
+  defaultEditable: false;
+  i18n: LocalizedMessages;
+  locale: 'en';
+};
 type InlineEditViewProps = BoxProps & FadeInOutProps & {};
 type InlineEditEditProps = BoxProps & FadeInOutProps & {};
 
@@ -191,15 +205,20 @@ type InputCtx = {
   getEditProps: PropGetterFn;
 };
 
+type InlineEditComponent = Intergalactic.Component<'div', InlineEditProps, InputCtx> & {
+  View: Intergalactic.Component<'div', InlineEditViewProps, InlineEditProps>;
+  Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
+};
+
 /**
  * InlineEdit
  *
  * {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-api/|API} | {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-code/|Examples}
  */
-export default createComponent(InlineEdit, {
+export default createComponent<
+  InlineEditComponent,
+  typeof InlineEdit
+>(InlineEdit, {
   Edit,
   View,
-}) as Intergalactic.Component<'div', InlineEditProps, InputCtx> & {
-  View: Intergalactic.Component<'div', InlineEditViewProps, InlineEditProps>;
-  Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
-};
+});

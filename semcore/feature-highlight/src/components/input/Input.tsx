@@ -32,7 +32,10 @@ function HighlightAddon(props: IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#input|Docs}
  */
-export const InputFH = createComponent(InputFHRoot, {
+export const InputFH = createComponent<
+  typeof Input,
+  typeof InputFHRoot
+>(InputFHRoot, {
   Addon: HighlightAddon,
   Value: Input.Value,
-}) as typeof Input;
+});

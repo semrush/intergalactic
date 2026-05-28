@@ -16,6 +16,8 @@ export type PortalProps = {
 
 type PortalContextType = React.RefObject<HTMLElement | null> | HTMLElement | null;
 
+type PortalComponent = Intergalactic.Component<Intergalactic.Tag, PortalProps>;
+
 const PortalContext = register.get(
   'portal-context',
 
@@ -58,4 +60,7 @@ export { PortalProvider, PortalContext };
  *
  * {@link https://developer.semrush.com/intergalactic/utils/portal/portal-api|API}
  */
-export default createComponent(Portal) as Intergalactic.Component<Intergalactic.Tag, PortalProps>;
+export default createComponent<
+  PortalComponent,
+  typeof Portal
+>(Portal);

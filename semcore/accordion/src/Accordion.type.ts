@@ -8,23 +8,23 @@ declare namespace NSAccordion {
   type Value = null | number | string | Array<number | string | null>;
   type Props<V extends NSAccordion.Value = NSAccordion.Value> = FlexProps & {
   /** Value for the active tab. Can be set as stroke, number, null or as array.
-   * @type AccordionValue
+   * @type NSAccordion.Value
    * */
     value?: V;
     /**
    * Value of the active tabs selected by default
-   * @type AccordionValue
+   * @type NSAccordion.Value
    * @default []
    */
     defaultValue?: V;
     /** Called when the selection is changed
-   * @type (value: AccordionValue, event?: React.SyntheticEvent) => void
+   * @type (value: NSAccordion.Value, event?: React.SyntheticEvent) => void
    * */
     onChange?:
       | ((value: V, event?: React.SyntheticEvent) => void)
       | React.Dispatch<React.SetStateAction<V>>;
     /** Animation duration of each Accordion.Item inside
-   * @default 350 */
+   * @default 200 */
     duration?: number;
     /**
    * Changes the visual appearance of the component
@@ -37,6 +37,10 @@ declare namespace NSAccordion {
   };
   type Handlers = {
     value: Props['value'];
+  };
+  type DefaultProps = {
+    defaultValue: Value;
+    use: 'secondary';
   };
   namespace Item {
     type Props = {

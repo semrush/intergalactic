@@ -1,4 +1,5 @@
 import Badge, { type BadgeMargins } from '@semcore/badge';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
@@ -19,13 +20,22 @@ type DefaultProps = {
   use: BadgeFHUse;
 };
 
-class BadgeFHRoot extends Component<BadgeFHProps, typeof BadgeFHRoot.enhance, never, DefaultProps> {
+type BadgeFHComponent = Intergalactic.Component<'span', BadgeFHProps>;
+
+class BadgeFHRoot extends Component<
+  BadgeFHProps,
+  typeof BadgeFHRoot.enhance,
+  {},
+  {},
+  {},
+  DefaultProps
+> {
   static displayName = 'BadgeFH';
   static style = style;
   static enhance = [resolveColorEnhance()] as const;
-  static defaultProps: DefaultProps = {
+  static defaultProps = {
     use: 'accent',
-  };
+  } as const;
 
   render() {
     const SHighlightedBadge = Root;
@@ -47,4 +57,7 @@ class BadgeFHRoot extends Component<BadgeFHProps, typeof BadgeFHRoot.enhance, ne
  *
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#badge|Docs}
  */
-export const BadgeFH = createComponent<'span', BadgeFHProps>(BadgeFHRoot);
+export const BadgeFH = createComponent<
+  BadgeFHComponent,
+  typeof BadgeFHRoot
+>(BadgeFHRoot);

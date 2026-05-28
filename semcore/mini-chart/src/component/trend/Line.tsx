@@ -1,4 +1,5 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -30,14 +31,20 @@ export type TrendLineProps = CommonTrendProps & {
   lastPointRadius?: number;
 };
 
-class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> {
+type TrendLineComponent = Intergalactic.Component<'svg', TrendLineProps, {}, typeof TrendLineRoot.enhance>;
+
+type TrendLineDefaultProps = {
+  animate: true;
+};
+
+class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance, TrendLineDefaultProps> {
   static enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
 
   static style = style;
 
   static defaultProps = {
     animate: true,
-  };
+  } as const;
 
   get defaultData(): number[] {
     return [15, 70, 20, 85, 20];
@@ -148,7 +155,7 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendLine = createComponent<'svg', TrendLineProps, {}, typeof TrendLineRoot.enhance>(TrendLineRoot);
+export const TrendLine = createComponent<TrendLineComponent, typeof TrendLineRoot>(TrendLineRoot);
 
 TrendLine.displayName = 'MiniChart.TrendLine';
 
@@ -157,7 +164,7 @@ TrendLine.displayName = 'MiniChart.TrendLine';
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendArea = createComponent<'svg', TrendLineProps, {}, typeof TrendLineRoot.enhance>(
+export const TrendArea = createComponent<TrendLineComponent, typeof TrendLineRoot>(
   TrendLineRoot,
   {},
   {

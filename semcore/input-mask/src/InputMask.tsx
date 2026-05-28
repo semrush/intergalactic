@@ -85,6 +85,11 @@ type InputMaskCtx = {
   getValueProps: PropGetterFn;
 };
 
+type InputMaskComponent = Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
+  Value: Intergalactic.Component<'input', InputMaskValueProps>;
+  Addon: typeof Input.Addon;
+};
+
 const { createTextMaskInputElement } = mask;
 
 export function getAfterPositionValue(value: string, mask: any = ''): number {
@@ -398,10 +403,7 @@ class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value
  *
  * {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-code/|Examples}
  */
-export default createComponent(InputMask, {
+export default createComponent<InputMaskComponent, typeof InputMask>(InputMask, {
   Value,
   Addon: Input.Addon,
-}) as any as Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
-  Value: Intergalactic.Component<'input', InputMaskValueProps>;
-  Addon: typeof Input.Addon;
-};
+});

@@ -57,6 +57,17 @@ type State<
   expandedRows: Set<UniqKeyType>;
 };
 
+type DefaultProps = {
+  use: 'primary';
+  defaultGridTemplateColumnWidth: 'auto';
+  defaultSelectedRows: undefined;
+  h: 'fit-content';
+  renderEmptyData: () => React.JSX.Element;
+  variant: 'default';
+  accordionAnimationRows: 40;
+  accordionDuration: 200;
+};
+
 class DataTableRoot<
   Data extends DataTableData,
   UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
@@ -65,8 +76,9 @@ class DataTableRoot<
     DataTableProps<Data, UniqKey, UniqKeyType>,
   typeof DataTableRoot.enhance,
   {},
-  typeof DataTableRoot.defaultProps,
-  State<Data, UniqKey, UniqKeyType>
+  {},
+  State<Data, UniqKey, UniqKeyType>,
+  DefaultProps
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -85,7 +97,7 @@ class DataTableRoot<
     variant: 'default',
     accordionAnimationRows: 40,
     accordionDuration: 200,
-  };
+  } as const;
 
   static getDerivedStateFromProps(props: DataTableProps<any, any, any>, state: State<any, any, any>) {
     if (props.expandedRows === state.expandedRows || props.expandedRows === undefined) {
@@ -1468,15 +1480,20 @@ class DataTableRoot<
   }
 }
 
+type DataTableComponent = DataTableType & {
+  Head: typeof Head;
+  Body: typeof Body;
+};
+
 /**
  * DataTable
  *
  * {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-api|Api} | {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-code|Examples}
  */
-export const DataTable = createComponent(DataTableRoot, {
+export const DataTable = createComponent<
+  DataTableComponent,
+  typeof DataTableRoot
+>(DataTableRoot, {
   Head,
   Body,
-}) as unknown as DataTableType & {
-  Head: typeof Head;
-  Body: typeof Body;
-};
+});

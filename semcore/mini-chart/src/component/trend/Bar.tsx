@@ -1,4 +1,5 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, assignProps, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -25,14 +26,20 @@ export type TrendBarProps = CommonTrendProps & {
   data: BarItem[];
 };
 
-class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
+type TrendBarComponent = Intergalactic.Component<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>;
+
+type TrendBarDefaultProps = {
+  animate: true;
+};
+
+class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance, TrendBarDefaultProps> {
   static enhance = [resolveColorEnhance()] as const;
 
   static style = style;
 
   static defaultProps = {
     animate: true,
-  };
+  } as const;
 
   get defaultData(): BarItem[] {
     return [{ value: 20 }, { value: 80 }, { value: 45 }, { value: 10 }];
@@ -100,7 +107,10 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendBar = createComponent<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>(TrendBarRoot);
+export const TrendBar = createComponent<
+  TrendBarComponent,
+  typeof TrendBarRoot
+>(TrendBarRoot);
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 
@@ -109,7 +119,10 @@ TrendBar.displayName = 'MiniChart.TrendBar';
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendHistogram = createComponent<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>(
+export const TrendHistogram = createComponent<
+  TrendBarComponent,
+  typeof TrendBarRoot
+>(
   TrendBarRoot,
   {},
   {

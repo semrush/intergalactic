@@ -1,4 +1,5 @@
 import { Box, type BoxProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -11,7 +12,19 @@ import { ScoreDonutUtils } from '../../utils/ScoreDonutUtils';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
-class DonutRoot extends Component<ScoreDonutProps, typeof DonutRoot.enhance> {
+type ScoreDonutDefaultProps = {
+  animate: true;
+};
+
+type ScoreDonutComponent = Intergalactic.Component<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>;
+class DonutRoot extends Component<
+  ScoreDonutProps,
+  typeof DonutRoot.enhance,
+  {},
+  {},
+  {},
+  ScoreDonutDefaultProps
+> {
   static enhance = [
     cssVariableEnhance({
       variable: '--intergalactic-duration-extra-slow',
@@ -26,7 +39,7 @@ class DonutRoot extends Component<ScoreDonutProps, typeof DonutRoot.enhance> {
 
   static defaultProps = {
     animate: true,
-  };
+  } as const;
 
   render() {
     const SDonutContainer = Root;
@@ -119,7 +132,10 @@ class DonutRoot extends Component<ScoreDonutProps, typeof DonutRoot.enhance> {
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const ScoreDonut = createComponent<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>(DonutRoot);
+export const ScoreDonut = createComponent<
+  ScoreDonutComponent,
+  typeof DonutRoot
+>(DonutRoot);
 
 ScoreDonut.displayName = 'MiniChart.ScoreDonut';
 
@@ -128,7 +144,10 @@ ScoreDonut.displayName = 'MiniChart.ScoreDonut';
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const ScoreSemiDonut = createComponent<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>(
+export const ScoreSemiDonut = createComponent<
+  ScoreDonutComponent,
+  typeof DonutRoot
+>(
   DonutRoot,
   {},
   {

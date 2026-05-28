@@ -4,27 +4,30 @@ import { Text } from '@semcore/typography';
 import { scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { BaseChartProps } from './AbstractChart.type';
 // @ts-ignore
 import { Venn } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { VennChartData, VennChartProps, VennChartType } from './VennChart.type';
+import type { VennChartData, VennChartDefaultProps, VennChartProps, VennChartType } from './VennChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class VennChartComponent extends AbstractChart<
   VennChartData,
   VennChartProps,
-  typeof VennChartComponent.enhance
+  typeof VennChartComponent.enhance,
+  {},
+  ChartState,
+  VennChartDefaultProps
 > {
   static displayName = 'Chart.Venn';
 
-  static defaultProps: Partial<BaseChartProps<VennChartData>> = {
+  static defaultProps = {
     direction: 'row-reverse',
     alignItems: 'flex-start',
     marginY: 0,
     marginX: 0,
-  };
+  } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
@@ -154,4 +157,7 @@ class VennChartComponent extends AbstractChart<
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/venn-chart/venn-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/venn-chart/venn-chart-code/|Examples}
  */
-export const VennChart: VennChartType = createComponent(VennChartComponent);
+export const VennChart = createComponent<
+  VennChartType,
+  typeof VennChartComponent
+>(VennChartComponent);
