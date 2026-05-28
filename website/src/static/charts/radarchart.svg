@@ -6,8 +6,8 @@
 <path d="M72 75V4" stroke="#C3C4C4" stroke-dasharray="2 2"/>
 <path d="M36.5 31.5L72 43.5L108.5 31.5" stroke="#C3C4C4" stroke-dasharray="2 2"/>
 <path d="M49.5 74.5L72 43.5L95 74.5" stroke="#C3C4C4" stroke-dasharray="2 2"/>
-<path d="M108.449 30.7178L80.4102 55.6846L50.7012 72.9199L66.9102 37.415L66.9629 37.2988L66.9844 37.1738L72.7061 4.74805L108.449 30.7178Z" stroke="#666BDB" stroke-width="2"/>
-<path d="M72.2944 33.988L85.6538 38.7595L93.98 73.2791L64.5913 55.6892L36.8599 31.8181L72.2944 33.988Z" stroke="#38E3B5" stroke-width="2"/>
+<path d="M107.653 30.7568L80.1191 55.2754L51.8066 71.7002L67.3643 37.623L67.4443 37.4492L67.4775 37.2607L73.0586 5.62402L107.653 30.7568Z" stroke="#666BDB" stroke-width="3"/>
+<path d="M72.1968 34.4841L85.231 39.1394L93.2144 72.238L64.8823 55.2791L38.312 32.408L72.1968 34.4841Z" stroke="#38E3B5" stroke-width="3"/>
 <circle cx="72" cy="5" r="3.5" fill="#666BDB" stroke="white"/>
 <circle cx="108" cy="32" r="3.5" fill="#666BDB" stroke="white"/>
 <circle cx="80" cy="56" r="3.5" fill="#666BDB" stroke="white"/>
