@@ -1,4 +1,4 @@
-import type { CounterProps } from '@semcore/ui/counter';
+import type { NSCounter } from '@semcore/ui/counter';
 import Counter from '@semcore/ui/counter';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type CounterJSXProps = JSXProps<CounterProps>;
+export type CounterJSXProps = JSXProps<NSCounter.Props>;
 
 function getJSX({ handleControlChange, ...counterProps }: CounterJSXProps) {
   return <Counter {...counterProps} />;

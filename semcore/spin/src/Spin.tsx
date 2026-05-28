@@ -1,20 +1,29 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
+import type { NSSpin } from './Spin.type';
 import style from './style/spin.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootSpin extends Component {
+class RootSpin extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSpin.Component>,
+  typeof RootSpin.enhance,
+  {},
+  {},
+  {},
+  NSSpin.DefaultProps
+> {
   static displayName = 'Spin';
   static style = style;
-  static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)];
+  static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     size: 'm',
     theme: 'dark',
-  };
+  } as const;
 
   render() {
     const SSpin = Root;
@@ -35,4 +44,9 @@ class RootSpin extends Component {
   }
 }
 
-export default createComponent(RootSpin);
+const Spin = createComponent<
+  NSSpin.Component,
+  typeof RootSpin
+>(RootSpin);
+
+export default Spin;

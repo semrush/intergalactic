@@ -1,13 +1,15 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
-import type { DragAndDropComponent, DragAndDropProps, DropZoneProps } from './DragAndDrop.type';
+import type { DragAndDropComponent, DragAndDropProps, DropZoneProps, DragAndDropDefaultProps } from './DragAndDrop.type';
 import style from './style/drag-and-drop.shadow.css';
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 type AttachDetails = {
@@ -46,15 +48,22 @@ type State = {
   reversedScaling: boolean;
 };
 
-type A11yHintKeys = keyof typeof localizedMessages.en;
+type A11yHintKeys = keyof LocalizedMessages['en'];
 
-class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot.enhance, {}, {}, State> {
+class DragAndDropRoot extends Component<
+  DragAndDropProps,
+  typeof DragAndDropRoot.enhance,
+  {},
+  WithI18nEnhanceProps,
+  State,
+  DragAndDropDefaultProps
+> {
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
   static style = style;
 
@@ -77,8 +86,7 @@ class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot
     const currentItem = items[index];
     if (!currentItem || !(event.target instanceof HTMLElement)) return;
 
-    const itemText =
-      currentItem.node.getAttribute('aria-label') || currentItem.node.textContent || `${index + 1}`;
+    const itemText = currentItem.node.getAttribute('aria-label') || currentItem.node.textContent || `${index + 1}`;
 
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
@@ -109,7 +117,8 @@ class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot
       target.style.top = `${target.offsetTop}px`;
       target.style.position = 'absolute';
 
-      setTimeout(() => { // because FF and safari can't create visible draggableImage without timeout
+      setTimeout(() => {
+        // because FF and safari can't create visible draggableImage without timeout
         target.style.opacity = '0';
       });
     }
@@ -214,8 +223,7 @@ class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot
     if (!currentItem || !draggingItem) return;
 
     const node = currentItem.isDropZone ? draggingItem.node : currentItem.node;
-    const itemText =
-      node.getAttribute('aria-label') || node.textContent || `${(dragOver ?? dragging.index) + 1}`;
+    const itemText = node.getAttribute('aria-label') || node.textContent || `${(dragOver ?? dragging.index) + 1}`;
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
@@ -459,8 +467,7 @@ class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot
   };
 
   makeItemDragStartHandler = (index: number) => (e: DragEvent) => this.handleItemDragStart(index, e);
-  makeItemKeyDownHandler = (index: number) => (event: KeyboardEvent) =>
-    this.handleItemKeyDown(event, index);
+  makeItemKeyDownHandler = (index: number) => (event: KeyboardEvent) => this.handleItemKeyDown(event, index);
 
   getDraggableProps(_: any, index: number) {
     const { uid } = this.asProps;
@@ -494,18 +501,9 @@ class DragAndDropRoot extends Component<DragAndDropProps, typeof DragAndDropRoot
     }
   };
 
-  attach = ({
-    index,
-    children,
-    node,
-    id,
-    draggingAllowed,
-    zoneName,
-    isDropZone,
-  }: AttachDetails) => {
+  attach = ({ index, children, node, id, draggingAllowed, zoneName, isDropZone }: AttachDetails) => {
     this.setState((prevState: State) => {
-      if (prevState.items[index]?.children === children && prevState.items[index]?.node === node)
-        return prevState;
+      if (prevState.items[index]?.children === children && prevState.items[index]?.node === node) return prevState;
       const { items } = prevState;
       items[index] = { children, node, id, draggingAllowed, zoneName, isDropZone };
       return { items: [...items] };
@@ -709,10 +707,13 @@ function DropZone(props: DropZoneProps) {
   );
 };
 
-const DragAndDrop = createComponent(DragAndDropRoot, {
+const DragAndDrop = createComponent<
+  DragAndDropComponent,
+  typeof DragAndDropRoot
+>(DragAndDropRoot, {
   Draggable,
   DropZone,
   Dropable: DropZone,
-}) as DragAndDropComponent;
+});
 
 export default DragAndDrop;

@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
@@ -21,4 +22,5 @@ function Transform(props: TransformProps, ref: React.Ref<HTMLDivElement>) {
 
 Transform.displayName = 'Transform';
 
-export default createBaseComponent<'div', TransformProps>(Transform);
+type TransformComponent = Intergalactic.Component<'div', TransformProps>;
+export default createBaseComponent<TransformComponent>(Transform);

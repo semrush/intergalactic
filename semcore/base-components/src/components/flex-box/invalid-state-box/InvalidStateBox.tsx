@@ -4,12 +4,17 @@ import React from 'react';
 import style from './invalidStateBox.shadow.css';
 import Box from '../Box';
 
-function InvalidStatePatternComponent() {
+type InvalidStatePatternComponent = typeof Box;
+
+function InvalidStatePatternRoot() {
   const SPattern = Root;
 
   return sstyled(style)(<SPattern render={Box} />);
 };
 
-export const InvalidStateBox = createComponent(InvalidStatePatternComponent);
+export const InvalidStateBox = createComponent<
+  InvalidStatePatternComponent,
+  typeof InvalidStatePatternRoot
+>(InvalidStatePatternRoot);
 
 export default InvalidStateBox;

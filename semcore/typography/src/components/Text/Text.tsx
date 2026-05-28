@@ -134,6 +134,9 @@ class TextRoot extends Component<
   }
 }
 
-const Text = createComponent(TextRoot) as NSText.Component;
+const Text = createComponent<
+  NSText.Component,
+  typeof TextRoot
+>(TextRoot);
 
 export default Text;
