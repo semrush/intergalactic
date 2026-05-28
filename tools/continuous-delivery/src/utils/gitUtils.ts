@@ -173,7 +173,7 @@ export const gitUtils = {
     }
   },
 
-  getPrevReleaseTag: async (): Promise<string> => {
+  getPrevReleaseTag: async (): Promise<ReleaseVersion> => {
     const branchSummary = await git.branch();
     const currentBranch = branchSummary.current;
     const testPlaceholder = 'release/v';

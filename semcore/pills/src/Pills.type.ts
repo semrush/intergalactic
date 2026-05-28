@@ -34,7 +34,7 @@ declare namespace NSPills {
     getItemProps: PropGetterFn;
   };
   type Handlers = {
-    value: (value: Props['value'], event: React.SyntheticEvent) => Props['value'];
+    value: null;
   };
   type DefaultProps = {
     size: 'm';

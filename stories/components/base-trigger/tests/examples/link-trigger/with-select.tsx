@@ -7,7 +7,7 @@ import type { LinkTriggerProps } from '@semcore/ui/base-trigger';
 import Counter, { type NSCounter } from '@semcore/ui/counter';
 import Flags from '@semcore/ui/flags';
 import Select from '@semcore/ui/select';
-import Tag, { type TagSize } from '@semcore/ui/tag';
+import Tag, { type NSTag } from '@semcore/ui/tag';
 import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -58,7 +58,7 @@ const Demo = (props: LinkTriggerSelectDDMenuExample) => {
     counterSize = 'm';
   }
 
-  let tagSize: TagSize | undefined;
+  let tagSize: NSTag.Size | undefined;
   if (numSize >= 600) {
     tagSize = 'xl';
   } else if (numSize >= 300) {
