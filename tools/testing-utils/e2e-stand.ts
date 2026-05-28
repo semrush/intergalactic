@@ -67,7 +67,7 @@ export const e2eStandToHtml = async (
         },
       },
       unpluginSemcoreResolve.esbuild({
-        rootPath: resolvePath(__dirname, '../..'),
+        rootPath: resolvePath(__dirname, '..', '..'),
       }),
     ],
     bundle: true,
