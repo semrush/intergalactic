@@ -9,17 +9,27 @@ const type2SectionLabel: Record<ChangelogChangeLabel, string> = {
   BREAK: ':warning: Break',
 };
 
+const BULLET = '•';
+
+const formatBulletLine = (line: string) => `${BULLET} ${line}`;
+
+const formatAssetReleaseVersion = (version: string, assetPrefix: 'icon' | 'illustration') => {
+  const semver = version.startsWith(assetPrefix) ? version.slice(assetPrefix.length) : version;
+
+  return semver.startsWith('v') ? semver : `v${semver}`;
+};
+
 export const makeTitleFromChangelogs = (version: string) => {
   if (version.startsWith('v')) {
     return `:whale2: Semcore Release ${version}`;
   }
 
   if (version.startsWith('icon')) {
-    return `:art: Icon Release ${version}\n- - -\n`;
+    return `:art: Icon Release ${formatAssetReleaseVersion(version, 'icon')}\n- - -\n`;
   }
 
   if (version.startsWith('illustration')) {
-    return `:art: Illustration Release ${version}\n- - -\n`;
+    return `:art: Illustration Release ${formatAssetReleaseVersion(version, 'illustration')}\n- - -\n`;
   }
 
   throw new Error(`Unknown version: "${version}"`);
@@ -42,7 +52,7 @@ export const makeMessageFromChangelogs = (version: string, changelogs: Changelog
   const changes = changelogs.find((item) => item.component === `@semcore/${component}`);
 
   return changes?.changes.map((item) => {
-    return `- *${item.label}* ${item.description}`;
+    return formatBulletLine(`*${item.label}* ${item.description}`);
   }).join('\n') ?? '';
 };
 
@@ -66,7 +76,7 @@ const bodyTemplate = (changeItem: ChangelogItem) => {
   const sectionsText = Array.from(sections.entries())
     .map(([label, changeDescriptions]) => {
       const title = type2SectionLabel[label] ?? label.toUpperCase();
-      const lines = changeDescriptions.join('\n');
+      const lines = changeDescriptions.map(formatBulletLine).join('\n');
 
       return lines ? `${title}\n${lines}` : title;
     })
