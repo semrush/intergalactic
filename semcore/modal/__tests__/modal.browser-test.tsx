@@ -584,6 +584,29 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Modal outside click interaction', () => {
+    test('Verify modal keeps focus when outside click is ignored', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@modal'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/modal/advanced/examples/close_only_esc_or_close_button.tsx', 'en');
+      const dialog = page.getByRole('dialog');
+
+      await test.step('Click outside modal and verify modal keeps focus', async () => {
+        await dialog.waitFor({ state: 'visible' });
+
+        const overlayBox = await locators.overlay(page).boundingBox();
+        expect(overlayBox).toBeTruthy();
+
+        await page.mouse.click(overlayBox!.x + 5, overlayBox!.y + 5);
+        await expect(dialog).toBeVisible();
+        await expect(dialog).toBeFocused();
+      });
+
+      await test.step('Verify modal still closes by Escape', async () => {
+        await page.keyboard.press('Escape');
+        await expect(dialog).toBeHidden();
+      });
+    });
+
     test('Verify click near scrollbar closes modal', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
     }, async ({ page }) => {
