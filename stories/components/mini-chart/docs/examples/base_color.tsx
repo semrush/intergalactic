@@ -11,7 +11,7 @@ const Demo = () => {
       <MiniChart.ScoreLine
         value={value}
         w={120}
-        color='blue-400'
+        color='chart-palette-order-1'
         baseBgColor='blue-200'
       />
 
@@ -20,7 +20,7 @@ const Demo = () => {
         value={3}
         w={120}
         animate={false}
-        color='violet-400'
+        color='chart-palette-order-2'
         baseBgColor='violet-200'
       />
 
@@ -28,7 +28,7 @@ const Demo = () => {
         w={120}
         segments={3}
         value={2}
-        color='green-300'
+        color='chart-palette-order-3'
         baseBgColor='green-100'
       />
 
