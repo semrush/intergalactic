@@ -368,12 +368,19 @@ function createComponent<
   return Component;
 }
 
+type BaseComponentOptions = {
+  isIcon?: boolean;
+};
+
 function createBaseComponent<
   C = never,
   OC extends React.ForwardRefRenderFunction<unknown, any> = never,
   OCRef = OC extends React.ForwardRefRenderFunction<infer Ref, any> ? Ref : never,
   OCProps = OC extends React.ForwardRefRenderFunction<OCRef, infer Props> ? Props : never,
->(OriginComponent: React.ForwardRefRenderFunction<OCRef, OCProps>): C {
+>(
+  OriginComponent: React.ForwardRefRenderFunction<OCRef, OCProps>,
+  opt?: BaseComponentOptions,
+): C {
   const Component = React.forwardRef(OriginComponent);
   Component.displayName = OriginComponent.displayName ?? '';
   Component.defaultProps = {
@@ -382,6 +389,9 @@ function createBaseComponent<
   };
   // @ts-ignore
   Component[CORE_COMPONENT] = true;
+
+  // @ts-ignore
+  Component.__IS_ICON = Boolean(opt?.isIcon);
 
   return Component as C;
 }

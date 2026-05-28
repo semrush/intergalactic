@@ -1371,6 +1371,9 @@ importers:
 
   semcore/link:
     dependencies:
+      '@semcore/icon':
+        specifier: ^17.1.0
+        version: link:../icon
       '@semcore/typography':
         specifier: ^17.1.0
         version: link:../typography
@@ -1384,9 +1387,6 @@ importers:
       '@semcore/core':
         specifier: workspace:*
         version: link:../core
-      '@semcore/icon':
-        specifier: workspace:*
-        version: link:../icon
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
