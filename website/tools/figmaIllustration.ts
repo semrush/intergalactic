@@ -34,8 +34,16 @@ const downloadIllustrations = async () => {
       .join('-')}/static`;
 
     if (fs.existsSync(folderName)) {
-      const largeFrames = page.children.filter((frame) => 'absoluteRenderBounds' in frame && frame.absoluteRenderBounds && frame.absoluteRenderBounds.width > MIN_FRAME_WIDTH_FOR_SCALE);
-      const smallFrames = page.children.filter((frame) => 'absoluteRenderBounds' in frame && frame.absoluteRenderBounds && frame.absoluteRenderBounds.width <= MIN_FRAME_WIDTH_FOR_SCALE);
+      const largeFrames = page.children.filter((frame) =>
+        'absoluteRenderBounds' in frame &&
+        frame.absoluteRenderBounds &&
+        frame.absoluteRenderBounds.width > MIN_FRAME_WIDTH_FOR_SCALE,
+      );
+      const smallFrames = page.children.filter((frame) =>
+        'absoluteRenderBounds' in frame &&
+        frame.absoluteRenderBounds &&
+        frame.absoluteRenderBounds.width <= MIN_FRAME_WIDTH_FOR_SCALE,
+      );
       try {
         // scale up only big images
         const largeFrameIds = largeFrames.map((frame) => frame.id).join();
@@ -55,9 +63,9 @@ const downloadIllustrations = async () => {
         const imageResponses = { ...dataLarge.images, ...dataSmall.images };
 
         page.children.forEach((frame) => {
-          const id = imageResponses[frame.id];
-          if (typeof id === 'string') {
-            fetch(id)
+          const imageUrl = imageResponses[frame.id];
+          if (typeof imageUrl === 'string') {
+            fetch(imageUrl)
               .then((res) => res.arrayBuffer())
               .then((arrayBuffer) => {
                 const buffer = Buffer.from(arrayBuffer);
