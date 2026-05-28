@@ -13,23 +13,17 @@ const BULLET = '•';
 
 const formatBulletLine = (line: string) => `${BULLET} ${line}`;
 
-const formatAssetReleaseVersion = (version: string, assetPrefix: 'icon' | 'illustration') => {
-  const semver = version.startsWith(assetPrefix) ? version.slice(assetPrefix.length) : version;
-
-  return semver.startsWith('v') ? semver : `v${semver}`;
-};
-
 export const makeTitleFromChangelogs = (version: string) => {
   if (version.startsWith('v')) {
     return `:whale2: Semcore Release ${version}`;
   }
 
   if (version.startsWith('icon')) {
-    return `:art: Icon Release ${formatAssetReleaseVersion(version, 'icon')}`;
+    return `:art: Icon Release v${version.slice('icon'.length)}`;
   }
 
   if (version.startsWith('illustration')) {
-    return `:art: Illustration Release ${formatAssetReleaseVersion(version, 'illustration')}`;
+    return `:art: Illustration Release v${version.slice('illustration'.length)}`;
   }
 
   throw new Error(`Unknown version: "${version}"`);
@@ -53,7 +47,7 @@ export const makeMessageFromChangelogs = (version: string, changelogs: Changelog
 
   const lines = changes?.changes.map((item) => {
     return formatBulletLine(`*${item.label}* ${item.description}`);
-  }).join('\n') ?? '';
+  }).join('\n');
 
   return lines ? `- - -\n${lines}` : '- - -';
 };
