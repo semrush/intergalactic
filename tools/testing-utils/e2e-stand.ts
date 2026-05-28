@@ -5,6 +5,7 @@ import {
   esbuildPluginSemcore,
   esbuildPluginSemcoreSourcesResolve,
 } from '@semcore/esbuild-plugin-semcore';
+import light from '@semcore/theme/light';
 import esbuild from 'esbuild';
 
 export const e2eStandToHtml = async (
@@ -90,6 +91,11 @@ export const e2eStandToHtml = async (
     <html lang="${locale}">
       <head>
         <style>${cssFiles.join('\n')}</style>
+        <style>
+          :root {
+            ${Object.entries(light).map(([key, value]) => `${key}: ${value};`).join('\n')}
+          }
+        </style>
       </head>
       <body>
         <div id="root"></div>

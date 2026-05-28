@@ -2426,6 +2426,9 @@ importers:
       '@guidepup/guidepup':
         specifier: 0.24.1
         version: 0.24.1
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../theme
       '@types/pixelmatch':
         specifier: 5.2.6
         version: 5.2.6
