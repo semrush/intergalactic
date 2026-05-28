@@ -67,10 +67,15 @@ const Demo = () => {
     [search],
   );
 
+  const filteredValues = React.useMemo(() => {
+    return options.map((o) => o.value);
+  }, [options]);
+
   const handleChangeVisible = React.useCallback(
     (visible: boolean) => {
       setVisible(visible);
       if (visible === true) {
+        setValue(triggerValue);
         setLoading(true);
         setTimeout(() => {
           setMessage('Loading...');
@@ -83,7 +88,7 @@ const Demo = () => {
         setValue([]);
       }
     },
-    [setLoading, setMessage, setVisible, setValue],
+    [setLoading, setMessage, setVisible, setValue, triggerValue],
   );
 
   const handleReloadClick = React.useCallback(() => {
@@ -96,10 +101,6 @@ const Demo = () => {
       triggerRef.current?.focus();
     }, 1000);
   }, [triggerValue, triggerRef, setLoading, setMessage, setError, setValue]);
-
-  const filteredValues = React.useMemo(() => {
-    return options.map((o) => o.value);
-  }, [options]);
 
   const handleSelectAll = React.useCallback(() => {
     const values = new Set([...value, ...filteredValues]);

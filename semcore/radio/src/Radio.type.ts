@@ -33,9 +33,16 @@ declare namespace NSRadio {
     getTextProps: PropGetterFn;
   };
   namespace Value {
+    type Handlers = {
+      checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
+    };
     type Props = BoxProps & {
       /** List of elements that can be put on a hidden input */
       includeInputProps?: string[];
+    };
+    type DefaultProps = {
+      includeInputProps: Props['includeInputProps'];
+      defaultChecked: false;
     };
     namespace Control {
       type Props = {};
@@ -76,6 +83,9 @@ declare namespace NSRadio {
       theme?: string;
       /** Blocks access and changes to the form field */
       disabled?: boolean;
+    };
+    type DefaultProps = {
+      defaultValue: '';
     };
     type Component<PropsExtending = {}> = (<V extends Value, Tag extends Intergalactic.Tag = 'div'>(
       props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, Props<V>> & PropsExtending,
