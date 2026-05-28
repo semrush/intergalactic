@@ -4,6 +4,7 @@ import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
 import type { NSText } from '@semcore/typography';
@@ -47,9 +48,30 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     }
   }
 
-  getTextProps(): NSText.HintProps {
+  getTextProps(): NSText.Props {
+    const { addonLeft, addonRight, size, Children } = this.asProps;
+    const Component = this[CORE_INSTANCE];
+
+    const addons = findAllComponents(Children, [Component.Addon.displayName]);
+    const addonWidth = size === undefined || size < 600 ? 20 : 28;
+
+    let addonsCount = addons.reduce((acc, addon) => {
+      if (addon.props.tag?.__IS_ICON || addon.props.children?.type?.__IS_ICON) {
+        acc++;
+      }
+      return acc;
+    }, 0);
+
+    if (addonLeft && typeof addonLeft === 'object' && '__IS_ICON' in addonLeft) {
+      addonsCount++;
+    }
+    if (addonRight && typeof addonRight === 'object' && '__IS_ICON' in addonRight) {
+      addonsCount++;
+    }
+
     return {
       'hint:triggerRef': this.containerRef,
+      'w': `calc(100% - ${addonWidth * addonsCount}px)`,
     };
   }
 
@@ -68,7 +90,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
       'aria-label': ariaLabel,
       hintPlacement,
     } = this.asProps;
-    // @ts-ignore
+
     const Link = this[CORE_INSTANCE];
     const SLink = Root;
     const SInner = Box;

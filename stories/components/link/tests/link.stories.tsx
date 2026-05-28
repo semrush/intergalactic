@@ -47,11 +47,9 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     showAddonRight: {
       control: { type: 'boolean' },
     },
-    showAddonLeftLink2: {
-      control: { type: 'boolean' },
-    },
-    showAddonRightLink2: {
-      control: { type: 'boolean' },
+    containerW: {
+      control: { type: 'number' },
+      description: 'Constrain the outer container width and let Link.Text truncate without fixed width',
     },
     w: {
       control: { type: 'number' },
@@ -88,6 +86,12 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     merged: {
       control: { type: 'boolean' },
     },
+    addonPassMethod: {
+      control: { type: 'inline-radio' },
+      options: ['slot', 'prop'],
+      description: 'Pass icon addons as Link.Addon children or addonLeft/addonRight props',
+    },
+
   },
   args: BasicUsageProps,
 };
