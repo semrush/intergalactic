@@ -18,6 +18,10 @@ declare namespace NSDivider {
      */
     orientation?: 'horizontal' | 'vertical';
   };
+  type DefaultProps = {
+    use: 'primary';
+    orientation: 'horizontal';
+  };
 
   type Component = Intergalactic.Component<'div', Props>;
 }

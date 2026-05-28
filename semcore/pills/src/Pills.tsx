@@ -11,15 +11,18 @@ import style from './style/pills.shadow.css';
 class RootPills extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSPills.Component>,
   typeof RootPills.enhance,
-  NSPills.Handlers
+  NSPills.Handlers,
+  {},
+  {},
+  NSPills.DefaultProps
 > {
   static displayName = 'Pills';
   static style = style;
-  static defaultProps = ({ behavior }: NSPills.Props) => ({
+  static defaultProps = ({ behavior }: Intergalactic.InternalTypings.InferComponentProps<NSPills.Component>) => ({
     size: 'm',
     defaultValue: null,
     behavior: behavior ?? 'auto',
-  });
+  } as const);
 
   itemValues: Array<NSPills.Pill.Props['value']> = [];
 
@@ -41,7 +44,7 @@ class RootPills extends Component<
 
   uncontrolledProps() {
     return {
-      value: (value: NSPills.Pill.Props['value'], e: React.SyntheticEvent) => value,
+      value: null,
     };
   }
 
@@ -138,8 +141,11 @@ export const wrapPills = <PropsExtending extends {}>(wrapper: (
   PropsExtending,
 ) => React.ReactNode) => wrapper as NSPills.WrapComponent<PropsExtending>;
 
-const Pills = createComponent(RootPills, {
+const Pills = createComponent<
+  NSPills.Component,
+  typeof RootPills
+>(RootPills, {
   Item: [Pill, { Text, Addon }],
-}) as unknown as NSPills.Component;
+});
 
 export default Pills;

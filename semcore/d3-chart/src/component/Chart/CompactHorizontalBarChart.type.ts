@@ -29,6 +29,14 @@ export type CompactHorizontalBarChartProps = Intergalactic.InternalTypings.Effic
   onClickBar?: (barItem: number, e: React.SyntheticEvent) => void;
 };
 
+export type CompactHorizontalBarChartDefaultProps = {
+  direction: 'column';
+  showXAxis: false;
+  showYAxis: false;
+  showTooltip: true;
+  showLegend: false;
+};
+
 export type CompactHorizontalBarChartType = Intergalactic.Component<
   typeof Flex,
   CompactHorizontalBarChartProps

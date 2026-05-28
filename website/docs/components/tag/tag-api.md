@@ -8,7 +8,7 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 
 `TagContainer` is necessary for the correct appearance and behavior of the **Delete tag** button.
 
-<TypesView type="TagProps" :types={...types} />
+<TypesView type="NSTag.Props" :types={...types} />
 
 ## TagContainer.Close
 
@@ -43,7 +43,7 @@ import Tag from '@semcore/ui/tag';
 <Tag.Text />;
 ```
 
-<TypesView type="NSText.Props" :types={...types} />
+<TypesView type="NSTag.Text.Props" :types={...types} />
 
 ## Tag.Circle
 

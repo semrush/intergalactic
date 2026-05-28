@@ -1,6 +1,6 @@
 import type { FlexProps } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
-import type { SpinProps } from '@semcore/ui/spin';
+import type { NSSpin } from '@semcore/ui/spin';
 import Spin from '@semcore/ui/spin';
 import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
@@ -18,7 +18,7 @@ type AdditionalJSXProps = {
   size: (typeof Sizes)[number];
   textPlacement: (typeof TextPlacement)[number];
 };
-export type SpinJSXProps = JSXProps<SpinProps> & AdditionalJSXProps;
+export type SpinJSXProps = JSXProps<NSSpin.Props> & AdditionalJSXProps;
 
 const margins = {
   xs: 1,

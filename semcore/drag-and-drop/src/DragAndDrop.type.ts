@@ -1,6 +1,8 @@
 import type { Box, BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
+
 /**
  * DragAndDrop and Draggable containers must have an accessible names (aria-group-name).
  */
@@ -26,6 +28,11 @@ export type DragAndDropProps = BoxProps & {
    * Ref to a scrollable container, if exists
    */
   scrollableContainerRef?: React.MutableRefObject<HTMLElement | null>;
+};
+
+export type DragAndDropDefaultProps = {
+  i18n: LocalizedMessages;
+  locale: 'en';
 };
 
 export type DraggableProps = BoxProps & {

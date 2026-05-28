@@ -12,6 +12,10 @@ export type LegendTableProps = Intergalactic.InternalTypings.EfficientOmit<Legen
   items: Array<LegendItem & { columns: Array<React.ReactNode> }>;
 };
 
+export type LegendTableDefaultProps = {
+  children: React.JSX.Element;
+};
+
 export type LegendColumnProps = {
   index: number;
   size: LSize;

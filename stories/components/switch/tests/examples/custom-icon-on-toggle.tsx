@@ -1,8 +1,8 @@
 import Switch from '@semcore/ui/switch';
-import type { SwitchProps, SwitchValueProps } from '@semcore/ui/switch';
+import type { NSSwitch } from '@semcore/ui/switch';
 import React from 'react';
 
-type SwitchExampleProps = SwitchProps & SwitchValueProps;
+type SwitchExampleProps = NSSwitch.Props & NSSwitch.Value.Props;
 
 const Demo = (props: SwitchExampleProps) => {
   return (

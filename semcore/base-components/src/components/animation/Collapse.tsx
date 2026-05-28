@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { createBaseComponent, sstyled } from '@semcore/core';
+import { sstyled, createBaseComponent, type Intergalactic } from '@semcore/core';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
@@ -9,12 +8,12 @@ import type { CollapseProps } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
 function Collapse(
-  { onAnimationStart, onAnimationEnd, overflowHidden = true, defaultHeight = 'auto', ...props },
-  ref,
+  { onAnimationStart, onAnimationEnd, overflowHidden = true, defaultHeight = 'auto', ...props }: CollapseProps,
+  ref: React.Ref<HTMLDivElement>,
 ) {
   const SCollapse = Animation;
   const overflowRef = React.useRef('initial');
-  const innerRef = React.useRef(null);
+  const innerRef = React.useRef<HTMLDivElement>(null);
   const forkedRef = useForkRef(innerRef, ref);
 
   useEnhancedEffect(() => {
@@ -32,7 +31,7 @@ function Collapse(
   }, []);
 
   const handleAnimationStart = React.useCallback(
-    (event) => {
+    (event: React.AnimationEvent<HTMLDivElement>) => {
       if (event.currentTarget !== event.target) return;
       if (onAnimationStart) onAnimationStart(event);
       if (overflowHidden) {
@@ -48,7 +47,7 @@ function Collapse(
 
   const visibleRef = React.useRef(props.visible);
   visibleRef.current = props.visible;
-  const handleAnimationEnd = React.useCallback((event) => {
+  const handleAnimationEnd = React.useCallback((event: React.AnimationEvent<HTMLDivElement>) => {
     if (event.currentTarget !== event.target) return;
     if (onAnimationEnd) onAnimationEnd(event);
     const element = event.currentTarget;
@@ -77,4 +76,6 @@ function Collapse(
 
 Collapse.displayName = 'Collapse';
 
-export default createBaseComponent<'div', CollapseProps>(Collapse);
+type CollapseComponent = Intergalactic.Component<'div', CollapseProps>;
+
+export default createBaseComponent<CollapseComponent>(Collapse);
