@@ -1,5 +1,6 @@
 import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
+import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';
 
 const overlayStyles = { background: 'oklch(from var(--intergalactic-brand-primary) l c h / 0.5)' };
@@ -14,10 +15,10 @@ const Demo = () => {
         <Modal.Overlay style={overlayStyles}>
           <Modal.Window wMax='400px' px={5} py={5}>
             <Modal.Close />
-            <h2>Customized modal window</h2>
-            <p>
+            <Text size={400} mb={2} tag='h2'>Customized modal window</Text>
+            <Text size={300} mb={4} tag='p'>
               This is a customized modal window with a custom overlay and window styles. The example also uses native tags for the heading and text.
-            </p>
+            </Text>
             <Button size='l' use='primary' theme='brand' onClick={() => setVisible(false)}>
               Close
             </Button>

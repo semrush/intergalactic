@@ -14,16 +14,15 @@ const renderRow = ({
   return (
     <Box
       key={key}
-      p={3}
+      p={4}
+      mb={2}
       w={120}
       h={112}
+      boxSizing='border-box'
       style={{
         backgroundColor: 'var(--intergalactic-bg-primary-advertising)',
         borderRadius: 'var(--intergalactic-surface-rounded)',
         ...style,
-        height: 112,
-        marginBottom: 'var(--intergalactic-spacing-2x)',
-        boxSizing: 'border-box',
       }}
       role='row'
     >
