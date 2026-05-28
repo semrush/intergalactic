@@ -266,8 +266,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
     });
   }
 
-  getHighlightedIndex(amount: number): number {
-    const { highlightedIndex, itemsCount } = this.asProps;
+  getHighlightedIndex(amount: number, currentHighlightedIndex: number | null): number {
+    const { itemsCount } = this.asProps;
     const itemsLastIndex = (itemsCount ?? this.itemProps.length) - 1;
     const selectedIndex = this.itemProps.findIndex((item) => item?.selected);
 
@@ -275,7 +275,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
 
     let innerHighlightedIndex: number;
 
-    if (highlightedIndex == null) {
+    if (currentHighlightedIndex === null) {
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
       } else if (this.highlightedItem && this.prevHighlightedIndex !== null) {
@@ -285,7 +285,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
         innerHighlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
     } else {
-      innerHighlightedIndex = highlightedIndex > itemsLastIndex ? itemsLastIndex : highlightedIndex;
+      innerHighlightedIndex = currentHighlightedIndex > itemsLastIndex ? itemsLastIndex : currentHighlightedIndex;
     }
 
     let newIndex = innerHighlightedIndex + amount;
@@ -296,12 +296,23 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
     }
 
     if (this.itemProps[newIndex]?.disabled) {
-      return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
+      if (currentHighlightedIndex !== null && newIndex === 0 && amount < 0) {
+        return this.getHighlightedIndex(amount, currentHighlightedIndex - 1);
+      }
+      if (currentHighlightedIndex !== null && newIndex === itemsLastIndex && amount > 0) {
+        return this.getHighlightedIndex(amount, currentHighlightedIndex + 1);
+      }
+
+      return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, currentHighlightedIndex);
     } else if (!this.itemProps[newIndex]) {
       return -1;
     } else {
       return newIndex;
     }
+  }
+
+  getNextHighlightedIndex(newIndex: number) {
+
   }
 
   componentDidUpdate(prevProps: AbstractDDProps) {
@@ -427,7 +438,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
     }
 
     if (visible && amount !== null) {
-      const newHighlightedIndex = this.getHighlightedIndex(amount);
+      const newHighlightedIndex = this.getHighlightedIndex(amount, highlightedIndex);
 
       if (
         this.role === 'listbox' &&
