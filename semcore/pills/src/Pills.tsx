@@ -44,7 +44,7 @@ class RootPills extends Component<
 
   uncontrolledProps() {
     return {
-      value: (value: NSPills.Pill.Props['value'], e: React.SyntheticEvent) => value,
+      value: null,
     };
   }
 
