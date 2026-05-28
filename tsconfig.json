@@ -20,6 +20,8 @@
       "@semcore/illustration/*": ["${configDir}/semcore/illustration/lib/*"],
       "@semcore/illustration": ["${configDir}/semcore/illustration"],
       "@semcore/icon/*": ["${configDir}/semcore/icon/lib/*"],
+      "@semcore/testing-utils/*": ["${configDir}/tools/testing-utils/*"],
+      "@semcore/testing-utils": ["${configDir}/tools/testing-utils"],
       "@semcore/ui/d3-chart": ["${configDir}/semcore/d3-chart"],
       "@semcore/ui/core/lib/*": ["${configDir}/semcore/core/src/*"],
       "@semcore/ui/*": ["${configDir}/semcore/*/src"],
