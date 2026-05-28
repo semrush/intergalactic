@@ -25,11 +25,11 @@ export const makeTitleFromChangelogs = (version: string) => {
   }
 
   if (version.startsWith('icon')) {
-    return `:art: Icon Release ${formatAssetReleaseVersion(version, 'icon')}\n- - -\n`;
+    return `:art: Icon Release ${formatAssetReleaseVersion(version, 'icon')}`;
   }
 
   if (version.startsWith('illustration')) {
-    return `:art: Illustration Release ${formatAssetReleaseVersion(version, 'illustration')}\n- - -\n`;
+    return `:art: Illustration Release ${formatAssetReleaseVersion(version, 'illustration')}`;
   }
 
   throw new Error(`Unknown version: "${version}"`);
@@ -51,9 +51,11 @@ export const makeMessageFromChangelogs = (version: string, changelogs: Changelog
 
   const changes = changelogs.find((item) => item.component === `@semcore/${component}`);
 
-  return changes?.changes.map((item) => {
+  const lines = changes?.changes.map((item) => {
     return formatBulletLine(`*${item.label}* ${item.description}`);
   }).join('\n') ?? '';
+
+  return lines ? `- - -\n${lines}` : '- - -';
 };
 
 const formatComponentDisplayName = (component: string): string => {
