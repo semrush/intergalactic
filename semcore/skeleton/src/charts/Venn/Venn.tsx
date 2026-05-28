@@ -1,6 +1,7 @@
 import { createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
+import type { NSSkeletonVennChart } from './Venn.type';
 import { Skeleton } from '../../Skeleton';
 import styles from '../../style/chart.shadow.css';
 
@@ -23,4 +24,4 @@ function VennChartSkeleton() {
   );
 }
 
-export default createComponent(VennChartSkeleton);
+export default createComponent<NSSkeletonVennChart.Component, typeof VennChartSkeleton>(VennChartSkeleton);

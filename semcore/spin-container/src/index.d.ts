@@ -1,9 +1,9 @@
 import type { FadeInOutProps, BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { SpinProps } from '@semcore/spin';
+import type { NSSpin } from '@semcore/spin';
 
 export type SpinContainerProps = BoxProps &
-  SpinProps & {
+  NSSpin.Props & {
     /**
      * Color of container spinner; you can use your own color
      */

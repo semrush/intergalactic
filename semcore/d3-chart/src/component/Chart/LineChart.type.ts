@@ -34,4 +34,11 @@ export type LineChartProps = BaseChartProps<LineChartData> & {
   onClickLine?: (index: number, event: React.SyntheticEvent) => void;
 };
 
+export type LineChartDefaultProps = {
+  direction: 'column';
+  showXAxis: true;
+  showYAxis: true;
+  showTooltip: true;
+};
+
 export type LineChartType = Intergalactic.Component<typeof Flex, LineChartProps>;

@@ -110,6 +110,10 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
 };
 
 export type DataTableRowType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableRowProps<Data, UniqKeyType> & Partial<RowPropsInner<Data, UniqKeyType>>>
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    'div',
+    DataTableRowProps<Data, UniqKeyType> & Partial<RowPropsInner<Data, UniqKeyType>>
+  >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableRowProps<any, any>>;

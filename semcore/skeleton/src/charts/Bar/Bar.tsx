@@ -39,4 +39,7 @@ function BarChartSkeleton(
   );
 }
 
-export default createComponent(BarChartSkeleton) as NSSkeletonBarChart.Component;
+export default createComponent<
+  NSSkeletonBarChart.Component,
+  typeof BarChartSkeleton
+>(BarChartSkeleton);

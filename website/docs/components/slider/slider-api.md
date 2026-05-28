@@ -11,7 +11,7 @@ import Slider from '@semcore/ui/slider';
 <Slider />;
 ```
 
-<TypesView type="SliderProps" :types={...types} />
+<TypesView type="NSSlider.Props" :types={...types} />
 
 ## Slider.Bar
 

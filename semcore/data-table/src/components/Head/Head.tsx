@@ -286,7 +286,7 @@ class HeadRoot<
   }
 }
 
-export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalactic.Component<
+type HeadComponent = Intergalactic.Component<
   'div',
   DataTableHeadProps
 > & {
@@ -297,3 +297,8 @@ export const Head = createComponent(HeadRoot, { Column, Group }) as Intergalacti
     props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', DataTableGroupProps, {}, []>,
   ) => Intergalactic.InternalTypings.ComponentRenderingResults;
 };
+
+export const Head = createComponent<
+  HeadComponent,
+  typeof HeadRoot
+>(HeadRoot, { Column, Group });
