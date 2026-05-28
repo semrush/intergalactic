@@ -1,4 +1,5 @@
 import { ScoreLine, ScoreDonut, ScoreSemiDonut } from './component/score';
+import type { SegmentColor } from './component/score/Line.types';
 import { TrendLine, TrendArea, TrendBar, TrendHistogram } from './component/trend';
 
 const miniCharts: {
@@ -20,3 +21,7 @@ const miniCharts: {
 };
 
 export default miniCharts;
+
+export type {
+  SegmentColor,
+};
