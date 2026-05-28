@@ -33,8 +33,6 @@ const downloadIllustrations = async () => {
       .split(' ')
       .join('-')}/static`;
 
-    console.log('page', page.name);
-
     if (fs.existsSync(folderName)) {
       const largeFrames = page.children.filter((frame) => 'absoluteRenderBounds' in frame && frame.absoluteRenderBounds && frame.absoluteRenderBounds.width > MIN_FRAME_WIDTH_FOR_SCALE);
       const smallFrames = page.children.filter((frame) => 'absoluteRenderBounds' in frame && frame.absoluteRenderBounds && frame.absoluteRenderBounds.width <= MIN_FRAME_WIDTH_FOR_SCALE);
@@ -68,9 +66,6 @@ const downloadIllustrations = async () => {
                   .toFile(`${folderName}/${frame.name}.png`);
               });
           }
-
-          const fileName = `${frame.name}.png`;
-          console.log('illustration', fileName);
         });
       } catch (error) {
         if (error instanceof Error) {
