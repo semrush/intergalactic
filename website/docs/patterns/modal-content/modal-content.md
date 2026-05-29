@@ -37,7 +37,7 @@ We also advise using controls with a large (L) size within modal windows.
 
 ## Notice
 
-Notices should be positioned next to the element that triggers the alert. For instance, if a user attempts to submit a project title and encounters an error, the notice should be placed before the buttons.
+When something goes wrong, place Notice next to the element that triggered the error.
 
 ![](static/m-notice.png)
 
