@@ -297,10 +297,10 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
 
     if (this.itemProps[newIndex]?.disabled) {
       if (currentHighlightedIndex !== null && newIndex === 0 && amount < 0) {
-        return this.getHighlightedIndex(amount, currentHighlightedIndex - 1);
+        return this.getHighlightedIndex(-1, currentHighlightedIndex - 1);
       }
       if (currentHighlightedIndex !== null && newIndex === itemsLastIndex && amount > 0) {
-        return this.getHighlightedIndex(amount, currentHighlightedIndex + 1);
+        return this.getHighlightedIndex(1, currentHighlightedIndex + 1);
       }
 
       return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, currentHighlightedIndex);
