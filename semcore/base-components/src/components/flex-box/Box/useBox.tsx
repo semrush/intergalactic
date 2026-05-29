@@ -1,6 +1,8 @@
-import { sstyled, type UnknownProperties, type IStyledProps } from '@semcore/core';
+import type { Intergalactic, UnknownProperties, IStyledProps } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import { getAutoOrScaleIndent, removeUndefinedKeys, getSize } from '@semcore/core/lib/utils/indentStyles';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
 import React from 'react';
@@ -8,6 +10,19 @@ import React from 'react';
 import style from '../style/use-box.shadow.css';
 
 export type BoxProps = IStyledProps & {
+  /**
+   * Custom tag to render
+   * @default div
+   */
+  tag?: Intergalactic.Tag;
+  /**
+   * HTML class name attribute
+   */
+  className?: string;
+  /**
+   * HTML style attribute
+   */
+  style?: IStyledProps['styles'];
   /**
    * CSS `display` property
    */
@@ -149,18 +164,50 @@ export type BoxProps = IStyledProps & {
   children?: React.ReactNode;
   /** Hover cursor */
   hoverCursor?: Property.Cursor;
+  /**
+   * Background
+   */
+  bg?: Property.Background;
+  /**
+   * Color
+   */
+  color?: Property.Color;
+  /**
+   * Border radius
+   */
+  borderRadius?: Property.BorderRadius;
+  /**
+   * Border
+   */
+  border?: Property.Border;
+
+  /**
+   * Old way to add custom style
+   * @deprecated
+   */
+  css?: any;
+  /**
+   * Focus ring offset (top)
+   */
+  focusRingTopOffset?: number;
+  /**
+   * Focus ring offset (left)
+   */
+  focusRingLeftOffset?: number;
+  /**
+   * Focus ring offset (right)
+   */
+  focusRingRightOffset?: number;
+  /**
+   * Focus ring offset (bottom)
+   */
+  focusRingBottomOffset?: number;
 };
 
 /** @deprecated */
-export interface IBoxProps extends BoxProps, UnknownProperties {
-  /**
-   *  HTML tag name for the displayed item
-   * @default div
-   */
-  tag?: React.ElementType | string;
-}
+export interface IBoxProps extends BoxProps, UnknownProperties {}
 
-function calculateIndentStyles(props: BoxProps, scaleIndent: number) {
+function calculateIndentStyles(props: BoxProps, scaleIndent: number, colorResolver: (color: string) => string) {
   return removeUndefinedKeys({
     display: props['display'],
     width: getSize(props['w']),
@@ -206,6 +253,11 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number) {
     paddingRight:
       getAutoOrScaleIndent(props['pr'], scaleIndent) ||
       getAutoOrScaleIndent(props['px'], scaleIndent),
+
+    border: props.border,
+    borderRadius: props.borderRadius,
+    color: props.color ? colorResolver(props.color) : undefined,
+    backgroundColor: props.bg ? colorResolver(props.bg) : undefined,
   });
 }
 
@@ -224,6 +276,10 @@ export default function useBox<T extends BoxProps>(
     innerOutline,
     invertOutline,
     inAfterOutline,
+    color,
+    bg,
+    border,
+    borderRadius,
     flex,
     w,
     h,
@@ -259,10 +315,11 @@ export default function useBox<T extends BoxProps>(
     focusRingBottomOffset,
     focusRingLeftOffset,
     ...other
-  } = props as any;
+  } = props;
 
+  const colorResolver = useColorResolver();
   const indentStyles: Properties = React.useMemo(() => {
-    return calculateIndentStyles(props, scaleIndent);
+    return calculateIndentStyles(props, scaleIndent, colorResolver);
   }, [
     scaleIndent,
     display,
@@ -294,6 +351,10 @@ export default function useBox<T extends BoxProps>(
     right,
     inset,
     zIndex,
+    border,
+    borderRadius,
+    color,
+    bg,
   ]);
 
   const styles = sstyled(style);

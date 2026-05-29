@@ -415,6 +415,9 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../../tools/theme
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
