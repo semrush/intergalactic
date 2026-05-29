@@ -24,4 +24,7 @@ function ScatterPlotChartSkeleton() {
   );
 }
 
-export default createComponent(ScatterPlotChartSkeleton) as NSSkeletonScatterPlotChart.Component;
+export default createComponent<
+  NSSkeletonScatterPlotChart.Component,
+  typeof ScatterPlotChartSkeleton
+>(ScatterPlotChartSkeleton);

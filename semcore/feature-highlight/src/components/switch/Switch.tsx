@@ -1,6 +1,6 @@
 import type { IRootComponentProps } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
-import type { SwitchProps } from '@semcore/switch';
+import type { NSSwitch } from '@semcore/switch';
 import Switch from '@semcore/switch';
 import React from 'react';
 
@@ -8,7 +8,7 @@ import style from './switch.shadow.css';
 import type { HighlightedSwitchComponent } from './Switch.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class SwitchFHRoot extends Component<SwitchProps> {
+class SwitchFHRoot extends Component<NSSwitch.Props> {
   static displayName = 'SwitchFH';
   static style = style;
 
@@ -53,8 +53,11 @@ function Value(props: IRootComponentProps & { onChange: () => void }) {
   return sstyled(props.styles)(<SToggle render={Switch.Value} onChange={props.onChange} />);
 }
 
-export const SwitchFH = createComponent(SwitchFHRoot, {
+export const SwitchFH = createComponent<
+  HighlightedSwitchComponent,
+  typeof SwitchFHRoot
+>(SwitchFHRoot, {
   Addon: Switch.Addon,
   Value: Value,
   AnimatedSparkles,
-}) as HighlightedSwitchComponent;
+});

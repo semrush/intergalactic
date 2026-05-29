@@ -25,4 +25,11 @@ export type AreaChartProps = BaseChartProps<AreaChartData> & {
   onClickArea?: (index: number, event: React.SyntheticEvent) => void;
 };
 
+export type AreaChartDefaultProps = {
+  direction: 'column';
+  showXAxis: true;
+  showYAxis: true;
+  showTooltip: true;
+};
+
 export type AreaChartType = Intergalactic.Component<typeof Flex, Intergalactic.InternalTypings.EfficientOmit<AreaChartProps, 'showLegend'> & { showLegend?: boolean } & AriaNameProps>;

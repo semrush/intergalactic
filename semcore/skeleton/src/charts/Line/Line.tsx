@@ -38,4 +38,4 @@ function LineChartSkeleton(
   );
 }
 
-export default createComponent(LineChartSkeleton) as NSSkeletonLineChart.Component;
+export default createComponent<NSSkeletonLineChart.Component, typeof LineChartSkeleton>(LineChartSkeleton);

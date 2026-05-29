@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { removeUndefinedKeys, getAutoOrScaleIndent } from '@semcore/core/lib/utils/indentStyles';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
@@ -85,7 +86,7 @@ function Icon({
   mr,
   mx,
   ...props
-}: React.SVGProps<SVGSVGElement> & IconProps, ref: React.ForwardedRef<SVGSVGElement>) {
+}: React.SVGProps<SVGSVGElement> & IconProps, ref: React.Ref<SVGSVGElement>) {
   const SIcon = 'svg';
 
   const resolveColor = useColorResolver();
@@ -123,4 +124,6 @@ function Icon({
   );
 }
 
-export default createBaseComponent<'svg', IconProps>(Icon, { isIcon: true });
+type IconComponent = Intergalactic.Component<'svg', IconProps>;
+
+export default createBaseComponent<IconComponent>(Icon, { isIcon: true });

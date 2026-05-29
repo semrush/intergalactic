@@ -13,6 +13,6 @@ import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 
-<TypesView type="SpinProps" :types={...types} />
+<TypesView type="NSSpin.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
