@@ -3,9 +3,6 @@ import React from 'react';
 
 const CHART_PALETTE_ORDER_COUNT = 24;
 
-const chartPaletteBackground = (index: number) =>
-  `var(--intergalactic-chart-palette-order-${(index % CHART_PALETTE_ORDER_COUNT) + 1})`;
-
 class Demo extends React.PureComponent {
   controlled: HTMLDivElement | null = null;
   handleMainScroll = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -38,7 +35,8 @@ class Demo extends React.PureComponent {
                   m={2}
                   w={120}
                   h={120}
-                  style={{ backgroundColor: chartPaletteBackground(index), borderRadius: 'var(--intergalactic-surface-rounded)' }}
+                  borderRadius='surface-rounded'
+                  bg={`chart-palette-order-${(index % CHART_PALETTE_ORDER_COUNT) + 1}`}
                 />
               ))}
             </ScrollArea.Container>
@@ -63,7 +61,8 @@ class Demo extends React.PureComponent {
                   m={2}
                   w={120}
                   h={120}
-                  style={{ backgroundColor: chartPaletteBackground(index), borderRadius: 'var(--intergalactic-surface-rounded)' }}
+                  borderRadius='surface-rounded'
+                  bg={`chart-palette-order-${(index % CHART_PALETTE_ORDER_COUNT) + 1}`}
                 />
               ))}
             </ScrollArea.Container>

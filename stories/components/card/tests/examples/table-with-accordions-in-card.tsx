@@ -56,13 +56,13 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer onResize={setSize} h={200} w='100%' style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}>
+    <ResponsiveContainer onResize={setSize} h={200} w='100%' bg='bg-primary-neutral'>
       <Plot
         data={dataChart}
         scale={[xScale, yScale]}
         width={width}
         height={height}
-        style={{ background: 'var(--intergalactic-bg-primary-neutral)' }}
+        bg='bg-primary-neutral'
       >
         <YAxis>
           <YAxis.Ticks />

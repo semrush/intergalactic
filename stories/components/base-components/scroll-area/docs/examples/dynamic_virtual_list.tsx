@@ -19,11 +19,9 @@ const renderRow = ({
       w={120}
       h={112}
       boxSizing='border-box'
-      style={{
-        backgroundColor: 'var(--intergalactic-bg-primary-advertising)',
-        borderRadius: 'var(--intergalactic-surface-rounded)',
-        ...style,
-      }}
+      bg='bg-primary-advertising'
+      borderRadius='surface-rounded'
+      style={style}
       role='row'
     >
       <Text bold size={200} m='auto' role='gridcell'>

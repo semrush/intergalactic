@@ -51,7 +51,7 @@ const ScrollAreaDemo = ({
   ...rest
 }: ScrollAreaExampleProps) => {
   return (
-    <Flex p={4} style={{ backgroundColor: '#F5F6FA', minHeight: 360 }}>
+    <Flex p={4} bg='#F5F6FA' hMin={360}>
       <ScrollArea
         w={300}
         h={300}

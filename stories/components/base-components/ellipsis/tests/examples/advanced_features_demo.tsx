@@ -283,11 +283,9 @@ const Demo = () => {
         <Box
           flex={1}
           p={3}
-          style={{
-            background: 'var(--intergalactic-bg-primary-success-faint)',
-            borderRadius: '6px',
-            border: '1px solid var(--intergalactic-border-success)',
-          }}
+          bg='bg-primary-success-faint'
+          borderRadius='popper-round'
+          border='1px solid var(--intergalactic-border-success)'
         >
           <Text size={200} bold mb={2} color='text-success'>
             ✓ Copy Full Text
@@ -301,11 +299,9 @@ const Demo = () => {
         <Box
           flex={1}
           p={3}
-          style={{
-            background: 'var(--intergalactic-bg-primary-info-faint)',
-            borderRadius: '6px',
-            border: '1px solid var(--intergalactic-border-info)',
-          }}
+          bg='bg-primary-success-faint'
+          borderRadius='popper-round'
+          border='1px solid var(--intergalactic-border-info)'
         >
           <Text size={200} bold mb={2} color='text-info'>
             ✓ Different Crop Positions
@@ -320,10 +316,8 @@ const Demo = () => {
       {/* Instructions */}
       <Box
         p={3}
-        style={{
-          background: 'var(--intergalactic-bg-primary-info)',
-          borderRadius: '6px',
-        }}
+        bg='bg-primary-info'
+        borderRadius='popper-round'
       >
         <Text size={200} bold mb={2}>
           Try it out:

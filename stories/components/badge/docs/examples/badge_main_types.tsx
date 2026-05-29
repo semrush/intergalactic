@@ -15,10 +15,8 @@ const Demo = () => {
       <Box
         p={4}
         w='fit-content'
-        style={{
-          background: 'var(--intergalactic-bg-primary-invert)',
-          borderRadius: 'var(--intergalactic-surface-rounded)',
-        }}
+        bg='bg-primary-invert'
+        borderRadius='surface-rounded'
       >
         <Flex gap={2} alignItems='center'>
           <Badge type='admin' inverted />

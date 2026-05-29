@@ -12,9 +12,8 @@ const Demo = () => (
         m={2}
         w={160}
         h={160}
-        style={{
-          backgroundColor: `var(--intergalactic-chart-palette-order-${(index % CHART_PALETTE_ORDER_COUNT) + 1})`, borderRadius: 'var(--intergalactic-surface-rounded)',
-        }}
+        borderRadius='surface-rounded'
+        bg={`chart-palette-order-${(index % CHART_PALETTE_ORDER_COUNT) + 1}`}
       />
     ))}
   </ScrollArea>

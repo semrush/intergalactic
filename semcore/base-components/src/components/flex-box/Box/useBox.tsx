@@ -3,12 +3,14 @@ import { sstyled } from '@semcore/core';
 import { getAutoOrScaleIndent, removeUndefinedKeys, getSize } from '@semcore/core/lib/utils/indentStyles';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
-import type { BasicColorKeys, SemanticColorKeys } from '@semcore/theme';
+import type { Theme, BasicColorKeys, SemanticColorKeys } from '@semcore/theme';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
 import React from 'react';
 
 import style from '../style/use-box.shadow.css';
+
+type BorderRadius = `${keyof Theme['semanticTokens']['radii']}-rounded`;
 
 export type BoxProps = IStyledProps & {
   /**
@@ -23,7 +25,7 @@ export type BoxProps = IStyledProps & {
   /**
    * HTML style attribute
    */
-  style?: IStyledProps['styles'];
+  style?: Properties;
   /**
    * CSS `display` property
    */
@@ -176,7 +178,7 @@ export type BoxProps = IStyledProps & {
   /**
    * Border radius
    */
-  borderRadius?: Property.BorderRadius;
+  borderRadius?: Property.BorderRadius | BorderRadius;
   /**
    * Border
    */
@@ -256,7 +258,7 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number, colorResolv
       getAutoOrScaleIndent(props['px'], scaleIndent),
 
     border: props.border,
-    borderRadius: props.borderRadius,
+    borderRadius: props.borderRadius ? colorResolver(props.borderRadius) : undefined,
     color: props.color ? colorResolver(props.color) : undefined,
     backgroundColor: props.bg ? colorResolver(props.bg) : undefined,
   });

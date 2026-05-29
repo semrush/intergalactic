@@ -87,7 +87,7 @@ const NoticeSmokeDemo = () => {
       </Notice>
 
       {/* 9. Custom theme with color string */}
-      <Notice style={{ backgroundColor: 'var(--intergalactic-brand-primary)' }}>
+      <Notice bg='brand-primary'>
         <Notice.Label>Purple</Notice.Label>
         <Notice.Content>
           <Notice.Text>

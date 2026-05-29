@@ -82,10 +82,8 @@ const Demo = () => {
             <DnD.DropZone
               key={index}
               aria-label={`Drop zone ${index + 1}`}
-              style={{
-                border: '1px dashed var(--intergalactic-border-primary, #c4c7cf)',
-                borderRadius: 'var(--intergalactic-surface-rounded)',
-              }}
+              border='1px dashed var(--intergalactic-border-primary, #c4c7cf)'
+              borderRadius='surface-rounded'
             >
               <Flex
                 alignItems='center'
@@ -118,9 +116,7 @@ const Demo = () => {
             key={id}
             aria-label={`${widget.title} widget`}
             h='100%'
-            style={{
-              borderRadius: 'var(--intergalactic-surface-rounded)',
-            }}
+            borderRadius='surface-rounded'
           >
             <Widget title={widget.title} />
           </DnD.Draggable>

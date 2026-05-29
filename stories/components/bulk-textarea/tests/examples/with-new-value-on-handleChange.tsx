@@ -31,7 +31,7 @@ const Demo = () => {
   return (
     <SidePanel visible={true} wMax={800} w='100%'>
       <SidePanel.Overlay>
-        <SidePanel.Panel wMin={1200} wMax='100%' style={{ backgroundColor: 'var(--intergalactic-bg-secondary-neutral)' }}>
+        <SidePanel.Panel wMin={1200} wMax='100%' bg='bg-secondary-neutral'>
           <SidePanel.Body pl={20} pr={0}>
             <Flex justifyContent='end' pr={4}>
               <BulkTextarea
