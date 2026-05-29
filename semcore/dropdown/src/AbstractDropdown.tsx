@@ -311,10 +311,6 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
     }
   }
 
-  getNextHighlightedIndex(newIndex: number) {
-
-  }
-
   componentDidUpdate(prevProps: AbstractDDProps) {
     const { visible } = this.asProps;
     const visibilityChanged = visible !== prevProps.visible;
