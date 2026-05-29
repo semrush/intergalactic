@@ -950,7 +950,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await page.locator('[data-ui-name="AddFilterSelect.Trigger"]').click();
       await expect(page.locator('[data-ui-name="FilterTrigger.Text"]')).toHaveText(
-        'Multiselect: 0, 1',
+        'Multiselect: 1, 2',
       );
     });
 
