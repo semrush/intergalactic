@@ -115,7 +115,7 @@ export class RootButton extends Component<
                 type='button'
                 tag='button'
                 tabIndex={0}
-                disabled={disabled}
+                disabled={disabled || loading}
                 use:theme={useTheme}
                 ref={this.containerRef}
                 aria-busy={loading}
