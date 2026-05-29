@@ -1041,6 +1041,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.addFilterBtn(page)).not.toBeVisible();
         await expect(locators.clearAllBtn(page)).toBeVisible();
         await expect(locators.selectTriggerFilled(page, 'Color')).toHaveText('Color: Yellow');
+        await page.waitForTimeout(100);
+        await expect(locators.selectOption(page, 'Blue')).not.toBeVisible();
         await locators.clearAllBtn(page).click();
         await expect(locators.addFilterBtn(page)).toBeVisible();
         await expect(locators.clearAllBtn(page)).not.toBeVisible();
