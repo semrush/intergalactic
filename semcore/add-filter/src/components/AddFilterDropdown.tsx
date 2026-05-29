@@ -29,9 +29,11 @@ class AddFilterDropdownRoot extends Component<
   } as const;
 
   componentDidMount(): void {
-    setTimeout(() => {
-      this.handlers.visible(true);
-    }, 0);
+    if (this.props.visible === undefined) {
+      setTimeout(() => {
+        this.handlers.visible(true);
+      }, 0);
+    }
   }
 
   uncontrolledProps() {
