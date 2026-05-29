@@ -3,6 +3,7 @@ import { sstyled } from '@semcore/core';
 import { getAutoOrScaleIndent, removeUndefinedKeys, getSize } from '@semcore/core/lib/utils/indentStyles';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
+import type { BasicColorKeys, SemanticColorKeys } from '@semcore/theme';
 import cn from 'classnames';
 import type { Properties, Property } from 'csstype';
 import React from 'react';
@@ -167,11 +168,11 @@ export type BoxProps = IStyledProps & {
   /**
    * Background
    */
-  bg?: Property.Background;
+  bg?: Property.Background | BasicColorKeys | SemanticColorKeys;
   /**
    * Color
    */
-  color?: Property.Color;
+  color?: Property.Color | BasicColorKeys | SemanticColorKeys;
   /**
    * Border radius
    */
