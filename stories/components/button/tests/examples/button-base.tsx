@@ -5,7 +5,7 @@ import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import React from 'react';
 
-import { themeFor } from '../themeUtils.ts';
+import { themeFor } from '../themeUtils';
 
 type ExampleProps = Exclude<ButtonProps, 'theme' | 'use'> & { style?: any; theme: string };
 const Demo = (props: ExampleProps) => {

@@ -2,7 +2,9 @@ import SidePanel from '@semcore/ui/side-panel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdditionalContentExample from './examples/additional-content-in-header';
-import AdditionalStatesExample, { defaultSidePanelDemoProps } from './examples/side-panel-additional-states';
+import AsyncTitleInHeaderExample from './examples/async-title-in-header';
+import type { defaultSidePanelDemoProps } from './examples/side-panel-additional-states';
+import AdditionalStatesExample from './examples/side-panel-additional-states';
 
 const meta: Meta<typeof SidePanel> = {
   title: 'Components/SidePanel/Tests',
@@ -28,5 +30,10 @@ export const AdditionalStates: StoryObj<typeof defaultSidePanelDemoProps> = {
 
 export const AdditionalContent = {
   render: AdditionalContentExample,
+
+};
+
+export const AsyncTitleInHeader = {
+  render: AsyncTitleInHeaderExample,
 
 };

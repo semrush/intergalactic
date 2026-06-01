@@ -2643,7 +2643,7 @@
   },
   {
     "name": "--intergalactic-surface-rounded",
-    "value": "calc(6px + 2px)",
+    "value": "8px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
     "components": [
       "card",
@@ -2669,7 +2669,7 @@
   },
   {
     "name": "--intergalactic-modal-rounded",
-    "value": "calc(12px + 2px)",
+    "value": "14px",
     "description": "Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard).",
     "components": [
       "modal",

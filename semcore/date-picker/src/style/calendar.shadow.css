@@ -1,7 +1,7 @@
 SCalendar {
   display: flex;
   flex-direction: column;
-  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
+  border-radius: var(--intergalactic-surface-rounded, 8px);
 
   SCalendarUnit:focus-visible {
     outline: none;
@@ -243,7 +243,7 @@ SCalendar:focus {
   }
 
   &:not(&:has(SCalendarUnit[highlighted])) {
-    border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
+    border-radius: var(--intergalactic-surface-rounded, 8px);
   }
 }
 
