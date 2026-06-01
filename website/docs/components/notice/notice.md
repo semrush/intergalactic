@@ -169,6 +169,10 @@ Avoid using an advertising notice for an "empty" state on a page or inside a com
 - Typically, notices are replaced by others based on priority: danger > warning > success > info.
 - Be concise and avoid overshadowing other widgets or report functionalities. Strive to convey the message to users within two lines for notices, and within four lines for notices within blocks or other components.
 
+### Notice for invalid states
+
+For the details on positioning the message, refer to the [Notice](/patterns/validation-form/validation-form#notice-for-invalid-state).
+
 ### Incorrect usage
 
 A notice shouldn't be mistaken for other components:

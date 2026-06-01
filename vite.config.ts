@@ -3,16 +3,15 @@
  * See build configuration in the component package folder.
  */
 
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+import { unpluginSemcoreResolve } from '@semcore/builder/plugins';
 import pluginReact from '@vitejs/plugin-react';
 import { createUnplugin } from 'unplugin';
 import { defineConfig } from 'vite';
 
-import { loadSemcoreSources } from './website/docs/.vitepress/load-semcore-sources';
-import { resolveSemcoreSources } from './website/docs/.vitepress/resolve-semcore-sources';
-import { unpluginIcons } from './website/docs/.vitepress/unplugins/unplugin-icons';
-import { unpluginIllustrations } from './website/docs/.vitepress/unplugins/unplugin-illustrations';
+const rootDir = resolvePath(dirname(fileURLToPath(import.meta.url)));
 
 export default defineConfig({
   plugins: [
@@ -21,31 +20,7 @@ export default defineConfig({
         plugins: ['@babel/plugin-syntax-import-assertions'],
       },
     }),
-    createUnplugin<{}>(() => ({
-      name: 'semcore-resolve',
-      async resolveId(id) {
-        if (
-          (
-            !id.includes('@semcore') &&
-            !id.includes('/semcore/') &&
-            !id.startsWith('intergalactic/')
-          ) ||
-          id.includes('@semcore/theme')
-        )
-          return null;
-        if (id.endsWith('.md') || id.endsWith('.mdx') || id.includes('stories')) return null;
-        return await resolveSemcoreSources(id);
-      },
-      loadInclude: (id) => {
-        return id.includes('/semcore/') || id.includes('stories/');
-      },
-      async load(id) {
-        return await loadSemcoreSources(id);
-      },
-      enforce: 'pre',
-    })).vite({}),
-    unpluginIcons.vite({}),
-    unpluginIllustrations.vite({}),
+    unpluginSemcoreResolve.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
       name: 'docs-components-resolver',
       async resolveId(id) {
