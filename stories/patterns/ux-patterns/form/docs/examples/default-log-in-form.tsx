@@ -24,17 +24,13 @@ type FormControlProps = {
 const FormControl = ({ name, type, options, autocomplete }: FormControlProps) => {
   const {
     register,
-    trigger,
+    clearErrors,
     formState: { isSubmitted, errors },
   } = useFormContext();
   const [active, setActive] = React.useState<boolean>(false);
   const error = errors[name];
 
   const hasError = () => {
-    if (error?.type === 'required' && !isSubmitted) {
-      return false;
-    }
-
     return Boolean(error);
   };
 
@@ -55,8 +51,11 @@ const FormControl = ({ name, type, options, autocomplete }: FormControlProps) =>
     onChange: (_v: string, e: React.SyntheticEvent) => {
       // important: keep call order, otherwise validation breaks
       onChange(e);
-      if (hasError()) {
-        trigger();
+
+      if (hasError() && isSubmitted) {
+        requestAnimationFrame(() => {
+          clearErrors(name);
+        });
       }
     },
     ...restField,
@@ -86,7 +85,8 @@ const FormControl = ({ name, type, options, autocomplete }: FormControlProps) =>
 
 const Demo = () => {
   const methods = useForm<FormValues>({
-    mode: 'onBlur',
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
     defaultValues,
   });
   const { handleSubmit, reset } = methods;
