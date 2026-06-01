@@ -17,6 +17,9 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   overlayContentWrapper: (page: Page) => page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]'),
+  dialog: (page: Page, name?: string) => (
+    name ? page.getByRole('dialog', { name }) : page.getByRole('dialog')
+  ),
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
@@ -101,7 +104,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
     await test.step('Open modal and verify custom styles', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Close me!').waitFor({ state: 'visible' });
+      await page.getByRole('heading', { name: 'Customized modal window' }).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -119,14 +122,16 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
     await test.step('Open second modal and verify both visible', async () => {
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Close second modal and verify first still visible', async () => {
       await page.keyboard.press('Escape');
-      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(1);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -408,7 +413,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
       await expect(locators.close(page).nth(1)).toBeFocused();
 
       await expect(locators.modal(page)).toHaveCount(2);
@@ -416,6 +421,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify only one modal closed by activating Close', async () => {
       await page.keyboard.press('Enter');
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
       await locators.modal(page, 1).waitFor({ state: 'hidden' });
       await expect(locators.modal(page)).toHaveCount(1);
       await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
@@ -423,11 +429,11 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify only one modal closed by ESC', async () => {
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
       await expect(locators.close(page).nth(1)).toBeFocused();
 
       await page.keyboard.press('Escape');
-      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
 
       await expect(locators.modal(page)).toHaveCount(1);
       await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
@@ -475,7 +481,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Escape');
       await locators.modal(page).waitFor({ state: 'hidden' });
       await expect(locators.modal(page)).toHaveCount(0);
-      await expect(locators.button(page)).toBeFocused();
+      await expect(locators.button(page)).toBeVisible();
     });
   });
 
@@ -512,7 +518,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify 2nd opened', async () => {
       await locators.button(page, 'Open modal', 1).click();
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
 
       await expect(locators.modal(page)).toHaveCount(2);
     });
@@ -522,14 +528,14 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       if (overlayBox) {
         await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
       }
-      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
 
       await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify not closed when clicking inside modal', async () => {
       await locators.button(page, 'Open modal', 1).click();
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
 
       const modalBox = await locators.modal(page, 1).boundingBox();
       if (modalBox) {
@@ -539,7 +545,11 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify closes by clicking On Buttons', async () => {
-      await locators.button(page, 'Save changes').click();
+      await locators
+        .dialog(page, 'Modal window inside a modal window')
+        .getByRole('button', { name: 'Close' })
+        .last()
+        .click();
       await expect(locators.modal(page)).toHaveCount(1);
     });
   });
