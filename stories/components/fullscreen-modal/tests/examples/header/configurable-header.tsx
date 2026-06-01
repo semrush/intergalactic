@@ -11,7 +11,7 @@ export type HeaderConfig = {
   showClose?: boolean;
   showBack?: boolean;
   backText?: string;
-  backWMax?: number;
+  backWMax?: string;
   titleText?: string;
   titleWidth?: number;
   descriptionText?: string;

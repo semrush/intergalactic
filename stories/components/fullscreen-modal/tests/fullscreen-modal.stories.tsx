@@ -27,7 +27,7 @@ export const ConfigurableHeader: StoryObj = {
     showClose: { control: 'boolean' },
     showBack: { control: 'boolean' },
     backText: { control: 'text' },
-    backWMax: { control: 'number' },
+    backWMax: { control: 'text' },
     titleText: { control: 'text' },
     titleWidth: { control: 'number' },
     descriptionText: { control: 'text' },
