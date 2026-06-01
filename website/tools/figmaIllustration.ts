@@ -62,19 +62,24 @@ const downloadIllustrations = async () => {
         const dataSmall = await responseSmall.json() as GetImagesResponse;
         const imageResponses = { ...dataLarge.images, ...dataSmall.images };
 
-        page.children.forEach((frame) => {
+        const imagePromises = page.children.map(async (frame) => {
           const imageUrl = imageResponses[frame.id];
           if (typeof imageUrl === 'string') {
-            fetch(imageUrl)
+            await fetch(imageUrl)
               .then((res) => res.arrayBuffer())
               .then((arrayBuffer) => {
                 const buffer = Buffer.from(arrayBuffer);
                 sharp(buffer)
                   .png({ compressionLevel: 2, quality: 98, adaptiveFiltering: true })
                   .toFile(`${folderName}/${frame.name}.png`);
+              })
+              .catch((err) => {
+                console.error(err);
               });
           }
         });
+
+        await Promise.all(imagePromises);
       } catch (error) {
         if (error instanceof Error) {
           console.error(error.message);
@@ -96,14 +101,15 @@ const downloadIllustrations = async () => {
         const category = data.name.toLowerCase().split(' ').join('-');
 
         console.log('category', category);
-        data.document.children
+        const pages = data.document.children
           .filter(
             (page) =>
               chosenPath.length !== 2 || page.name.toLowerCase() === chosenPath[1].toLowerCase(),
-          )
-          .forEach(async (page) =>
-            await getIllustration(page, category, fileId),
           );
+
+        for (const page of pages) {
+          await getIllustration(page, category, fileId).catch((err) => console.error(err));
+        }
       } catch (error) {
         if (error instanceof Error) {
           console.error(error.message);
@@ -121,9 +127,12 @@ const downloadIllustrations = async () => {
   if (response.ok) {
     try {
       const data = await response.json() as GetProjectFilesResponse;
-      data.files
-        ?.filter((file) => !chosenPath.length || file.name.toLowerCase() === chosenPath[0])
-        .map((file) => getIllustrationList(file.key));
+      const files = data.files
+        ?.filter((file) => !chosenPath.length || file.name.toLowerCase() === chosenPath[0]);
+
+      for (const file of files) {
+        await getIllustrationList(file.key).catch((err) => console.error(err));
+      }
     } catch (error) {
       console.error(error);
     }
