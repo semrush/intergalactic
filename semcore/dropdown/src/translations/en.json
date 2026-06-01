@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Press Tab to go to popover"
+  "triggerHint": "Press Tab to go to popover",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, one {result} other {results}} found",
+  "StatusItem.defaultState.nothingFound": "Nothing found",
+  "StatusItem.loadingState": "Loading...",
+  "StatusItem.errorState": "Something went wrong. Please try again later."
 }

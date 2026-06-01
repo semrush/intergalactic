@@ -242,6 +242,12 @@ class DropdownMenuRoot extends AbstractDropdown {
     return itemProps;
   }
 
+  getStatusItemProps() {
+    return {
+      size: this.asProps.size,
+    };
+  }
+
   handleKeyDownForMenu(place) {
     return (e) => {
       const { visible, placement, inlineActions } = this.asProps;
@@ -558,6 +564,7 @@ const DropdownMenu = createComponent(
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
     Group: Dropdown.Group,
+    StatusItem: Dropdown.StatusItem,
   },
   {
     parent: [Dropdown],

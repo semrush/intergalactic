@@ -197,17 +197,16 @@ const Demo = () => {
             onChange={setSearch}
             aria-describedby={search ? 'search-result' : undefined}
           />
-          {(loading || error) && (
-            <Flex direction='column' alignItems='start' gap={1} p={2}>
-              <Text size={200} use='secondary' aria-live='polite' role='status'>
+          {loading && (<Select.StatusItem itemsCount={0} state='loading' />)}
+          {!loading && error && (
+            <Select.StatusItem itemsCount={0} state='error' tag={Flex} direction='column' alignItems='start' gap={1} p={2}>
+              <span aria-live='polite' role='status'>
                 {message}
-              </Text>
-              {error && !loading && (
-                <ButtonLink addonLeft={ReloadIcon} onClick={handleReloadClick}>
-                  Reload
-                </ButtonLink>
-              )}
-            </Flex>
+              </span>
+              <ButtonLink addonLeft={ReloadIcon} onClick={handleReloadClick}>
+                Reload
+              </ButtonLink>
+            </Select.StatusItem>
           )}
           {!loading && !error && (
             <>
@@ -248,35 +247,12 @@ const Demo = () => {
                           </Select.Option>
                         );
                       })}
-                      {options.length
-                        ? (
-                            <ScreenReaderOnly id='search-result'>
-                              {options.length}
-                              {' '}
-                              result
-                              {options.length > 1 && 's'}
-                              {' '}
-                              found
-                            </ScreenReaderOnly>
-                          )
-                        : (
-                            <Text
-                              tag='div'
-                              key='Nothing'
-                              id='search-result'
-                              use='secondary'
-                              size={200}
-                              p={2}
-                            >
-                              Nothing found
-                            </Text>
-                          )}
+                      <Select.StatusItem itemsCount={options.length} />
                     </ScrollArea.Container>
                     <ScrollArea.Bar orientation='vertical' />
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
 
-                {/* <Select.Divider mt={0} role={''} use:aria-orientation={undefined} /> */}
                 {options.length > 0 && (
                   <Select.Option
                     value='%none%'

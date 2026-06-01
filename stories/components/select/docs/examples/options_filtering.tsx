@@ -1,4 +1,4 @@
-import { ScreenReaderOnly, Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -32,29 +32,8 @@ const Demo = () => {
                 {label}
               </Select.Option>
             ))}
-            {options.length
-              ? (
-                  <ScreenReaderOnly id='search-result' aria-hidden='true'>
-                    {options.length}
-                    {' '}
-                    result
-                    {options.length > 1 && 's'}
-                    {' '}
-                    found
-                  </ScreenReaderOnly>
-                )
-              : (
-                  <Text
-                    tag='div'
-                    id='search-result'
-                    key='Nothing'
-                    p='6px 8px'
-                    size={200}
-                    use='secondary'
-                  >
-                    Nothing found
-                  </Text>
-                )}
+
+            <Select.StatusItem itemsCount={options.length} />
           </Select.List>
         </Select.Popper>
       </Select>

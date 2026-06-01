@@ -1,7 +1,7 @@
 import EditM from '@semcore/icon/Edit/m';
 import PlusM from '@semcore/icon/MathPlus/m';
 import Settings from '@semcore/icon/Settings/m';
-import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
@@ -130,29 +130,7 @@ const Demo = () => {
             );
           })}
 
-          {filteredMenuData.length
-            ? (
-                <ScreenReaderOnly id='search-result' aria-hidden='true'>
-                  {filteredMenuData.length}
-                  {' '}
-                  result
-                  {filteredMenuData.length > 1 && 's'}
-                  {' '}
-                  found
-                </ScreenReaderOnly>
-              )
-            : (
-                <Text
-                  tag='div'
-                  id='search-result'
-                  key='Nothing'
-                  p='6px 8px'
-                  size={200}
-                  use='secondary'
-                >
-                  Nothing found
-                </Text>
-              )}
+          <DropdownMenu.StatusItem itemsCount={filteredMenuData.length} />
         </DropdownMenu.List>
         <Divider />
         <DropdownMenu.Item
