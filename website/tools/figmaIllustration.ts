@@ -3,8 +3,10 @@ import * as fs from 'fs';
 import type { CanvasNode, GetFileResponse, GetImagesResponse, GetProjectFilesResponse } from '@figma/rest-api-spec';
 import * as dotenv from 'dotenv';
 import fetch from 'node-fetch';
+import pLimit from 'p-limit';
 import sharp from 'sharp';
 
+const limit = pLimit(10);
 const FIGMA_EXPORT_SCALE = 1.2;
 const MIN_FRAME_WIDTH_FOR_SCALE = 200;
 
@@ -62,21 +64,23 @@ const downloadIllustrations = async () => {
         const dataSmall = await responseSmall.json() as GetImagesResponse;
         const imageResponses = { ...dataLarge.images, ...dataSmall.images };
 
-        const imagePromises = page.children.map(async (frame) => {
-          const imageUrl = imageResponses[frame.id];
-          if (typeof imageUrl === 'string') {
-            await fetch(imageUrl)
-              .then((res) => res.arrayBuffer())
-              .then((arrayBuffer) => {
-                const buffer = Buffer.from(arrayBuffer);
-                sharp(buffer)
-                  .png({ compressionLevel: 2, quality: 98, adaptiveFiltering: true })
-                  .toFile(`${folderName}/${frame.name}.png`);
-              })
-              .catch((err) => {
-                console.error(err);
-              });
-          }
+        const imagePromises = page.children.map((frame) => {
+          return limit(async () => {
+            const imageUrl = imageResponses[frame.id];
+            if (typeof imageUrl === 'string') {
+              await fetch(imageUrl)
+                .then((res) => res.arrayBuffer())
+                .then((arrayBuffer) => {
+                  const buffer = Buffer.from(arrayBuffer);
+                  sharp(buffer)
+                    .png({ compressionLevel: 2, quality: 98, adaptiveFiltering: true })
+                    .toFile(`${folderName}/${frame.name}.png`);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          });
         });
 
         await Promise.all(imagePromises);
