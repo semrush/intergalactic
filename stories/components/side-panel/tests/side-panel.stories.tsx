@@ -3,8 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdditionalContentExample from './examples/additional-content-in-header';
 import AsyncTitleInHeaderExample from './examples/async-title-in-header';
-import type { defaultSidePanelDemoProps } from './examples/side-panel-additional-states';
-import AdditionalStatesExample from './examples/side-panel-additional-states';
+import AdditionalStatesExample, { defaultSidePanelDemoProps } from './examples/side-panel-additional-states';
 
 const meta: Meta<typeof SidePanel> = {
   title: 'Components/SidePanel/Tests',
