@@ -7,7 +7,6 @@
   "type": "module",
   "scripts": {
     "start": "pnpm dev",
-    "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js tools/searchIndexUpload.ts",
     "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts",
     "dev": "vitepress dev docs",
     "build": "pnpm check-links && vitepress build docs",
@@ -68,6 +67,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@figma/rest-api-spec": "^0.39.0",
     "@mdit-vue/shared": "1.0.0",
+    "@semcore/builder": "workspace:*",
     "@semcore/theme": "workspace:*",
     "@types/classnames": "2.2.6",
     "@types/express": "4.17.1",

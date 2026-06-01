@@ -2197,6 +2197,9 @@ importers:
       '@semcore/babel-preset-ui':
         specifier: workspace:*
         version: link:../babel-preset-ui
+      '@semcore/esbuild-plugin-semcore':
+        specifier: workspace:*
+        version: link:../esbuild-plugin-semcore
       execa:
         specifier: 5.0.0
         version: 5.0.0
@@ -2221,6 +2224,9 @@ importers:
       postcss-preset-env:
         specifier: 6.7.0
         version: 6.7.0
+      unplugin:
+        specifier: 3.0.0
+        version: 3.0.0
 
   tools/continuous-delivery:
     dependencies:
@@ -2613,6 +2619,9 @@ importers:
       '@mdit-vue/shared':
         specifier: 1.0.0
         version: 1.0.0
+      '@semcore/builder':
+        specifier: workspace:*
+        version: link:../tools/builder
       '@semcore/theme':
         specifier: workspace:*
         version: link:../tools/theme
@@ -14460,6 +14469,10 @@ packages:
   unplugin@2.3.11:
     resolution: {integrity: sha512-5uKD0nqiYVzlmCRs01Fhs2BdkEgBS3SAVP6ndrBsuK42iC2+JHyxM05Rm9G8+5mkmRtzMZGY8Ct5+mliZxU/Ww==}
     engines: {node: '>=18.12.0'}
+
+  unplugin@3.0.0:
+    resolution: {integrity: sha512-0Mqk3AT2TZCXWKdcoaufeXNukv2mTrEZExeXlHIOZXdqYoHHr4n51pymnwV8x2BOVxwXbK2HLlI7usrqMpycdg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
 
   update-browserslist-db@1.2.3:
     resolution: {integrity: sha512-Js0m9cx+qOgDxo0eMiFGEueWztz+d4+M3rGlmKPT+T4IS/jP4ylw3Nwpu6cpTTP8R1MAC1kF4VbdLt3ARf209w==}
@@ -29229,6 +29242,12 @@ snapshots:
     dependencies:
       '@jridgewell/remapping': 2.3.5
       acorn: 8.16.0
+      picomatch: 4.0.4
+      webpack-virtual-modules: 0.6.2
+
+  unplugin@3.0.0:
+    dependencies:
+      '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
 
