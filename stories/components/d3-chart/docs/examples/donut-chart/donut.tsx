@@ -13,7 +13,7 @@ const Demo = () => {
         <Donut.Pie dataKey='b' name='Pie 2' />
         <Donut.Pie dataKey='c' name='Pie 3' />
         <Donut.Label>
-          <Text tag='tspan' color='text-primary' size={400}>
+          <Text tag='tspan' fill='text-primary' size={400}>
             Example
           </Text>
         </Donut.Label>

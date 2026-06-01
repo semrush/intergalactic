@@ -17,14 +17,14 @@ const Demo = () => {
           <ColorPicker.Colors
             colors={[
               null,
-              'var(--intergalactic-chart-palette-order-1)',
-              'var(--intergalactic-chart-palette-order-2)',
-              'var(--intergalactic-chart-palette-order-3)',
-              'var(--intergalactic-chart-palette-order-4)',
-              'var(--intergalactic-chart-palette-order-5)',
-              'var(--intergalactic-chart-palette-order-6)',
-              'var(--intergalactic-chart-palette-order-7)',
-              'var(--intergalactic-chart-palette-order-8)',
+              'var(--blue-400)',
+              'var(--green-300)',
+              'var(--violet-300)',
+              'var(--yellow-200)',
+              'var(--red-300)',
+              'var(--blue-200)',
+              'var(--pink-300)',
+              'var(--salad-300)',
             ]}
           />
           <PaletteManager>
