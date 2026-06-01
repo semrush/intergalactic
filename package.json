@@ -136,7 +136,7 @@
     "unplugin": "1.14.1",
     "vite": "7.3.2",
     "vite-plugin-babel": "1.6.0",
-    "vitest": "3.2.4",
+    "vitest": "4.1.0",
     "webdriverio": "8.24.3",
     "yaml": "2.8.3"
   },
