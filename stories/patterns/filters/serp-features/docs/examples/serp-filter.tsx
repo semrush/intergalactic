@@ -199,7 +199,7 @@ const Demo = () => {
           />
           {loading && (<Select.StatusItem itemsCount={0} state='loading' />)}
           {!loading && error && (
-            <Select.StatusItem itemsCount={0} state='error' tag={Flex} direction='column' alignItems='start' gap={1} p={2}>
+            <Select.StatusItem itemsCount={0} state='error' id='search-result' tag={Flex} direction='column' alignItems='start' gap={1}>
               <span aria-live='polite' role='status'>
                 {message}
               </span>

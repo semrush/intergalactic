@@ -35,9 +35,8 @@ class StatusItemRoot extends Component<
       <Root
         render={Text}
         tag='div'
-        id='search-result'
         key='StatusItem'
-        p='6px 8px'
+        p={2}
         size={200}
         use='secondary'
       >
