@@ -25,7 +25,7 @@ export type BoxProps = IStyledProps & {
   /**
    * HTML style attribute
    */
-  style?: Properties;
+  style?: React.CSSProperties;
   /**
    * CSS `display` property
    */
