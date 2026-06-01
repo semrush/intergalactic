@@ -247,11 +247,11 @@ const Demo = () => {
                           </Select.Option>
                         );
                       })}
-                      <Select.StatusItem itemsCount={options.length} />
                     </ScrollArea.Container>
                     <ScrollArea.Bar orientation='vertical' />
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
+                <Select.StatusItem itemsCount={options.length} />
 
                 {options.length > 0 && (
                   <Select.Option

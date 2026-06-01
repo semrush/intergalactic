@@ -243,8 +243,9 @@ class DropdownMenuRoot extends AbstractDropdown {
   }
 
   getStatusItemProps() {
+    const { size } = this.asProps;
     return {
-      size: this.asProps.size,
+      size: size === 'm' ? 200 : 300,
     };
   }
 
