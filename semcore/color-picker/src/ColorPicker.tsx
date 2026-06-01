@@ -15,17 +15,14 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 const defaultColors = [
   null,
-  '#2BB3FF',
-  '#8649E1',
-  '#C695FF',
-  '#F67CF2',
-  '#FFA9FA',
-  '#FF8786',
-  '#FF8C43',
-  '#FDC23C',
-  '#66C030',
-  '#9BD85D',
-  '#C7EE96',
+  'var(--blue-400)',
+  'var(--green-300)',
+  'var(--violet-300)',
+  'var(--yellow-200)',
+  'var(--red-300)',
+  'var(--blue-200)',
+  'var(--pink-300)',
+  'var(--salad-300)',
 ];
 
 class ColorPickerRoot extends Component<
