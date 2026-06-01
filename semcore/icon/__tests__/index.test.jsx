@@ -97,4 +97,10 @@ describe('Icon', () => {
     expect(onKeyDown).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(0);
   });
+
+  // UIK-5215: icon components carry the __IS_ICON flag so consumers
+  // (e.g. <Link>) can detect them and adjust layout for icon-vs-non-icon addons.
+  test('should mark base Icon component with __IS_ICON = true', () => {
+    expect(Icon.__IS_ICON).toBe(true);
+  });
 });

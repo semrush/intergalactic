@@ -4,6 +4,12 @@ import React from 'react';
 
 import style from './style/product-head.shadow.css';
 
+type HeaderComponent = typeof Box & {
+  Buttons: typeof Box;
+  Links: typeof Box;
+  Row: typeof Box;
+};
+
 class HeaderRoot extends Component<BoxProps> {
   static displayName = 'ProductHead';
   static style = style;
@@ -29,13 +35,13 @@ function Row(props: any) {
   return sstyled(props.styles)(<SRow render={Box} />);
 }
 
-const Header = createComponent(HeaderRoot, {
+const Header = createComponent<
+  HeaderComponent,
+  typeof HeaderRoot
+>(HeaderRoot, {
   Buttons,
   Links,
   Row,
-}) as typeof Box & {
-  Buttons: typeof Box;
-  Links: typeof Box;
-  Row: typeof Box;
-};
+});
+
 export default Header;

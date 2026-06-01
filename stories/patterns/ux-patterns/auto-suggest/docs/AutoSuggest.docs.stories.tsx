@@ -7,7 +7,7 @@ import ComboboxExample from './examples/combobox_example';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {
-  title: 'Patterns/AutoSuggest',
+  title: 'Patterns/UX Patterns/AutoSuggest',
 };
 export default meta;
 

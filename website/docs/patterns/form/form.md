@@ -63,7 +63,7 @@ Table: Margins between inputs
 
 ## Form validation
 
-Find detailed information about form validation in [Validation](/patterns/validation-form/validation-form).
+Find detailed information about form validation in [Validation](/patterns/validation-form/validation-form) guide.
 
 ## Usage in UX/UI
 
