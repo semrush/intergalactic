@@ -86,7 +86,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Item
               name='description'
               validate={validate.description}
-              initialValue=''
+              initialValue={value.description}
               placement='left-start'
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
@@ -111,7 +111,7 @@ class Feedback extends React.PureComponent<FeedbackProps> {
             <FeedbackForm.Item
               name='email'
               validate={validate.email}
-              initialValue=''
+              initialValue={value.email}
               validateOnBlur={value.email === '' ? false : true}
             >
               {({ input }: any) => (
