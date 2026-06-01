@@ -11,6 +11,7 @@ export type HeaderConfig = {
   showClose?: boolean;
   showBack?: boolean;
   backText?: string;
+  backWMax?: number;
   titleText?: string;
   titleWidth?: number;
   descriptionText?: string;
@@ -35,7 +36,7 @@ const Demo = (props: HeaderConfig) => {
         {props.showClose && <FullscreenModal.Close />}
 
         {props.showBack && (
-          <FullscreenModal.Back wMax={120}>
+          <FullscreenModal.Back wMax={props.backWMax}>
             {props.backText}
           </FullscreenModal.Back>
         )}
@@ -101,7 +102,6 @@ export const defaultProps: HeaderConfig = {
   showBack: false,
   backText: 'Go to Tool Name',
   titleText: 'Modal Window Title',
-  titleWidth: undefined,
   descriptionText: 'Additional information about this modal',
   showDescriptionTooltip: false,
   hasBody: true,

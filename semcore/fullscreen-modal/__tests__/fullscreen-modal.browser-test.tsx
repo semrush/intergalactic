@@ -246,6 +246,21 @@ test.describe(`${TAG.VISUAL} `, () => {
       hasFooter: true,
       testName: 'not-closable-no-close-button',
     },
+    // Long back text + small wMax — verifies ellipsis truncation on Back button
+    {
+      closable: false,
+      showClose: true,
+      showBack: true,
+      backText: 'This is a very long Back navigation label that must be truncated',
+      backWMax: 80,
+      titleText: 'Modal Title',
+      descriptionText: 'Description text',
+      showDescriptionTooltip: false,
+      hasBody: true,
+      hasFooter: true,
+      testName: 'back-long-text-small-wmax-ellipsis',
+      skipSnapshot: true,
+    },
   ];
 
   headerVariations.forEach((config) => {
@@ -271,6 +286,21 @@ test.describe(`${TAG.VISUAL} `, () => {
           const backButton = locators.button(page, config.backText);
           await expect(backButton).toBeVisible();
         });
+
+        if ((config as { backWMax?: number }).backWMax !== undefined) {
+          await test.step('Verify Back text is truncated when wMax is constrained', async () => {
+            const back = page.locator('[data-ui-name="FullscreenModal.Back"]');
+            const backBox = await back.boundingBox();
+            expect(backBox!.width).toBeLessThanOrEqual(
+              (config as { backWMax: number }).backWMax + 1,
+            );
+            const textNode = back.locator('[data-ui-name="ButtonLink.Text"]');
+            const isTruncated = await textNode.evaluate(
+              (el) => el.scrollWidth > el.clientWidth,
+            );
+            expect(isTruncated).toBe(true);
+          });
+        }
       }
 
       if (config.titleText) {
@@ -323,13 +353,15 @@ test.describe(`${TAG.VISUAL} `, () => {
         expect(headerStyles.alignItems).toBe('flex-start');
       });
 
-      await test.step('Take visual snapshot', async () => {
-        if (config.showClose || config.closable) {
-          const closeButton = locators.button(page, 'Close');
-          await closeButton.hover();
-        }
-        await expect(page).toHaveScreenshot();
-      });
+      if (!(config as { skipSnapshot?: boolean }).skipSnapshot) {
+        await test.step('Take visual snapshot', async () => {
+          if (config.showClose || config.closable) {
+            const closeButton = locators.button(page, 'Close');
+            await closeButton.hover();
+          }
+          await expect(page).toHaveScreenshot();
+        });
+      }
     });
   });
 });
@@ -371,6 +403,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.keyboard.press('Tab');
     await expect(locators.button(page, 'Go to Tool Name')).toBeFocused();
+
     await page.keyboard.press('Enter');
 
     await locators.button(page, 'Close').waitFor({ state: 'hidden' });

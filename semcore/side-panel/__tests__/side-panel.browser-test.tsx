@@ -178,6 +178,38 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
+
+  test('Verify SidePanel.Back with long text truncates via ellipsis', {
+    tag: [TAG.PRIORITY_HIGH, '@side-panel', '@ellipsis', '@button'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx',
+      'en',
+      {
+        backText: 'This is a very long Back navigation label that must be truncated',
+        backWMax: 120,
+        withFooter: true,
+      },
+    );
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.back(page).waitFor({ state: 'visible' });
+
+    await test.step('Back container width is constrained by wMax', async () => {
+      const backBox = await locators.back(page).boundingBox();
+      expect(backBox!.width).toBeLessThanOrEqual(121);
+    });
+
+    await test.step('Back inner text node is actually truncated', async () => {
+      const textNode = locators.back(page).locator('[data-ui-name="ButtonLink.Text"]');
+      const isTruncated = await textNode.evaluate(
+        (el) => el.scrollWidth > el.clientWidth,
+      );
+      expect(isTruncated).toBe(true);
+    });
+  });
 });
 
 /* =====================================================
