@@ -1,5 +1,4 @@
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve as resolvePath } from 'path';
 
 import glob from 'fast-glob';
 import { createUnplugin } from 'unplugin';
@@ -12,18 +11,14 @@ type IconPaths = Record<string, {
   };
 }>;
 
-const __dirname = resolveDirname(fileURLToPath(import.meta.url));
-
-const iconsDir = resolvePath(__dirname, '../../../../semcore/icon');
-
-export const unpluginIcons = createUnplugin(() => ({
+export const unpluginIcons = createUnplugin<{ rootPath: string }>((opts) => ({
   name: 'unplugin-icons',
   async resolveId(id) {
     if (id === '@icons') return id;
   },
   async load(id) {
     if (id !== '@icons') return null;
-
+    const iconsDir = resolvePath(opts.rootPath, 'semcore', 'icon');
     const fullPath = id.endsWith('/lib') ? resolvePath(iconsDir, 'lib') : resolvePath(iconsDir);
     const allIcons = await glob('**/index.mjs', {
       cwd: fullPath,

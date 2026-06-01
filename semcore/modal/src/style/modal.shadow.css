@@ -1,6 +1,6 @@
 SWindow {
   position: relative;
-  border-radius: var(--intergalactic-modal-rounded, calc(12px + 2px));
+  border-radius: var(--intergalactic-modal-rounded, 14px);
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   box-sizing: border-box;
   margin: auto;

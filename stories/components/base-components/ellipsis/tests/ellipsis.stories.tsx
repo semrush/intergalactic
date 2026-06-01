@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AdvancedFeaturesDemoExample from './examples/advanced_features_demo';
+import AsyncInitExample from './examples/async_init';
 import CopyFullTextExample from './examples/copy_full_text';
 import TableLinkExample from './examples/in_table_with_link';
 import LinkExample, { defaultProps as LinkExampleProps } from './examples/link_with_ellipsis';
@@ -107,4 +108,8 @@ export const AdvancedFeaturesDemo: StoryObj = {
 
 export const ObserveChildrenMutations: StoryObj = {
   render: ObserveChildrenMutationsExample,
+};
+
+export const AsyncInit: StoryObj = {
+  render: AsyncInitExample,
 };
