@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, waitFor, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -60,5 +60,58 @@ describe('AddFilter', () => {
       expect(getByText('name')).toBeInTheDocument();
       expect(getByText('fullname')).toBeInTheDocument();
     });
+  });
+
+  test('should open Select and Dropdown filters after mount timer', () => {
+    vi.useFakeTimers();
+
+    try {
+      const selectVisibleChange = vi.fn();
+      const dropdownVisibleChange = vi.fn();
+
+      const { queryByText, getByText } = render(
+        <>
+          <AddFilter.Select
+            name='color'
+            disablePortal
+            onVisibleChange={selectVisibleChange}
+          >
+            <AddFilter.Select.Trigger aria-label='Color' placeholder='Color' />
+            <AddFilter.Select.Menu>
+              <AddFilter.Select.Option value='blue'>Blue</AddFilter.Select.Option>
+            </AddFilter.Select.Menu>
+          </AddFilter.Select>
+
+          <AddFilter.Dropdown
+            name='keywords'
+            disablePortal
+            onVisibleChange={dropdownVisibleChange}
+          >
+            <AddFilter.Dropdown.Trigger placeholder='Keywords' onClear={() => {}}>
+              Keywords
+            </AddFilter.Dropdown.Trigger>
+            <AddFilter.Dropdown.Popper aria-label='Keywords'>
+              Dropdown content
+            </AddFilter.Dropdown.Popper>
+          </AddFilter.Dropdown>
+        </>,
+      );
+
+      expect(queryByText('Blue')).not.toBeInTheDocument();
+      expect(queryByText('Dropdown content')).not.toBeInTheDocument();
+      expect(selectVisibleChange).not.toHaveBeenCalled();
+      expect(dropdownVisibleChange).not.toHaveBeenCalled();
+
+      act(() => {
+        vi.advanceTimersByTime(0);
+      });
+
+      expect(selectVisibleChange).toHaveBeenCalledWith(true);
+      expect(dropdownVisibleChange).toHaveBeenCalledWith(true);
+      expect(getByText('Blue')).toBeInTheDocument();
+      expect(getByText('Dropdown content')).toBeInTheDocument();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

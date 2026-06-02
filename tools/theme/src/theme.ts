@@ -1115,7 +1115,7 @@ export const theme: Theme = {
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       overlay_limitation_primary: {
-        value: neutral.at(L_BG_SECONDARY),
+        value: `oklch(from ${neutral.at(L_BG_SECONDARY)} l c h / 0.85)`,
         description: 'Use as a primary cover of the content under the messages about limitations.',
       },
       overlay_limitation_secondary: {

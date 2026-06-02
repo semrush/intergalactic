@@ -11,6 +11,7 @@ import HeadingTagAccordion from '../../../../../../components/accordion/docs/exa
 import NonCompactAccordion from '../../../../../../components/accordion/docs/examples/non_compact';
 import BulkTextareaBasicExample from '../../../../../../components/bulk-textarea/docs/examples/basic-usage';
 import CarouselStory from '../../../../../../components/carousel/docs/examples/carousel_with_default_indicators';
+import { PaywallMessage } from '../../../../advanced/components/Components/PaywallMessage';
 
 type FormCardsProps = {
   columnStyle: FormTabColumnStyle;
@@ -56,9 +57,6 @@ export function FormCards({ columnStyle, contentReady }: FormCardsProps) {
           <Card.Body tag={Flex} gap={4} alignItems='flex-start'>
             <CardBodySkeleton contentReady={contentReady} h={160}>
               <CarouselStory />
-              <Text>
-                Description of carousel...
-              </Text>
             </CardBodySkeleton>
           </Card.Body>
         </Card>
@@ -67,6 +65,13 @@ export function FormCards({ columnStyle, contentReady }: FormCardsProps) {
           <Card.Body tag={Flex} direction='column'>
             <CardBodySkeleton contentReady={contentReady} h={320}>
               <BulkTextareaBasicExample />
+            </CardBodySkeleton>
+          </Card.Body>
+        </Card>
+        <Card w='100%'>
+          <Card.Body tag={Flex} direction='column'>
+            <CardBodySkeleton contentReady={contentReady} h={320}>
+              <PaywallMessage />
             </CardBodySkeleton>
           </Card.Body>
         </Card>
