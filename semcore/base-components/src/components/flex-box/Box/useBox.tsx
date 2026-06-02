@@ -192,19 +192,19 @@ export type BoxProps = IStyledProps & {
   /**
    * Focus ring offset (top)
    */
-  focusRingTopOffset?: number;
+  focusRingTopOffset?: Property.Top;
   /**
    * Focus ring offset (left)
    */
-  focusRingLeftOffset?: number;
+  focusRingLeftOffset?: Property.Left;
   /**
    * Focus ring offset (right)
    */
-  focusRingRightOffset?: number;
+  focusRingRightOffset?: Property.Right;
   /**
    * Focus ring offset (bottom)
    */
-  focusRingBottomOffset?: number;
+  focusRingBottomOffset?: Property.Bottom;
 };
 
 /** @deprecated */

@@ -12,10 +12,6 @@ export type ScrollAreaExampleProps = ScrollAreaProps & {
   shadowSize?: number;
   itemsCount: number;
   shadowTheme?: 'dark' | 'light';
-  focusRingTopOffset?: string;
-  focusRingRightOffset?: string;
-  focusRingBottomOffset?: string;
-  focusRingLeftOffset?: string;
 };
 
 export const defaultProps: ScrollAreaExampleProps = {
