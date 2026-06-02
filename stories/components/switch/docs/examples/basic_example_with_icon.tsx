@@ -1,10 +1,10 @@
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Switch from '@semcore/ui/switch';
-import type { SwitchProps, SwitchValueProps } from '@semcore/ui/switch';
+import type { NSSwitch } from '@semcore/ui/switch';
 import React from 'react';
 
-type SwitchExampleProps = SwitchProps & SwitchValueProps;
+type SwitchExampleProps = NSSwitch.Props & NSSwitch.Value.Props;
 
 const Demo = (props: SwitchExampleProps) => {
   const [value, setValue] = React.useState(true);

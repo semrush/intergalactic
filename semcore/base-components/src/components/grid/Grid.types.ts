@@ -31,6 +31,10 @@ export type RowProps = FlexProps & {
   gutter?: number;
 };
 
+export type RowDefaultProps = {
+  gutter: 0;
+};
+
 export type GridContext = {
   getColProps: PropGetterFn;
 };

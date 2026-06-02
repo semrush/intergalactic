@@ -36,7 +36,7 @@ const Demo = (props: NotInPortalNoticeBubbleProps) => {
     <div
       style={{ border: '1px dashed #eee', height: '180px', position: 'relative', overflow: 'auto' }}
     >
-      <div style={{ height: '800px' }}>
+      <div style={{ height: '800px', overflow: 'hidden' }}>
         <NoticeBubbleContainer manager={manager} disablePortal={true} />
         <Button onClick={handleClick} m={5} ref={openButtonRef}>
           Show basic notice

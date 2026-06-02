@@ -10,14 +10,32 @@ type AsPropsWithOnClear<T> = T & {
   unsetFocusRef: () => void;
   setFocusRef: (el: HTMLElement) => {};
 };
-class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps, [], { visible: null }> {
+
+type DefaultProps = {
+  defaultVisible: false;
+};
+
+class AddFilterSelectRoot extends Component<
+  SelectProps & AddFilterItemProps,
+  [],
+  { visible: null },
+  {},
+  {},
+  DefaultProps
+> {
   static displayName = 'AddFilterSelect';
 
-  static defaultProps = () => {
-    return {
-      defaultVisible: true,
-    };
-  };
+  static defaultProps = {
+    defaultVisible: false,
+  } as const;
+
+  componentDidMount(): void {
+    if (this.props.visible === undefined) {
+      setTimeout(() => {
+        this.handlers.visible(true);
+      }, 0);
+    }
+  }
 
   componentWillUnmount() {
     this.asProps.onUnmount?.();
@@ -64,7 +82,10 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps, []
   }
 }
 
-const AddFilterSelect = createComponent(AddFilterSelectRoot, {
+const AddFilterSelect: typeof AddFilterSelectType = createComponent<
+  typeof AddFilterSelectType,
+  typeof AddFilterSelectRoot
+>(AddFilterSelectRoot, {
   Trigger: Select.Trigger,
   Menu: Select.Menu,
   Option: [
@@ -76,6 +97,6 @@ const AddFilterSelect = createComponent(AddFilterSelectRoot, {
   List: Select.List,
   Popper: Select.Popper,
   InputSearch: Select.InputSearch,
-}) as typeof AddFilterSelectType;
+});
 
 export default AddFilterSelect;

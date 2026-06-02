@@ -15,4 +15,11 @@ export type HistogramChartProps = BaseChartProps<HistogramChartData> & {
   yScale?: ScaleLinear<any, any>;
 };
 
+export type HistogramChartDefaultProps = {
+  direction: 'column';
+  showXAxis: true;
+  showYAxis: true;
+  showTooltip: true;
+};
+
 export type HistogramChartType = Intergalactic.Component<typeof Flex, HistogramChartProps>;

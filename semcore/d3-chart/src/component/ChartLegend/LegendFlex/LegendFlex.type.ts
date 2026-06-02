@@ -34,6 +34,11 @@ type AddonProps = ({ withTrend?: never } & SuffixProps) | ({ suffix?: never } & 
 
 export type LegendFlexProps = LegendProps & AddonProps & FlexProps;
 
+export type LegendFlexDefaultProps = {
+  direction: 'row';
+  children: React.JSX.Element;
+};
+
 export type LegendFlexType = Intergalactic.Component<typeof Flex, LegendFlexProps> & {
   LegendItem: LegendItemType;
 };

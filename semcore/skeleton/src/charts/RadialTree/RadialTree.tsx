@@ -24,4 +24,4 @@ function RadialTreeChartSkeleton() {
   );
 }
 
-export default createComponent(RadialTreeChartSkeleton) as NSSkeletonRadialTreeChart.Component;
+export default createComponent<NSSkeletonRadialTreeChart.Component, typeof RadialTreeChartSkeleton>(RadialTreeChartSkeleton);
