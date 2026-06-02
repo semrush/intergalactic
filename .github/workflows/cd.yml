@@ -631,7 +631,7 @@ jobs:
 
           exit $LASTEXITCODE
       - name: NVDA setup
-        uses: guidepup/setup-action@0.19.0
+        run: npx @guidepup/setup --ci
       - name: NVDA testing
         id: nvda-testing
         env:
