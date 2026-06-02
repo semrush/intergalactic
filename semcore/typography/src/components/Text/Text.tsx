@@ -86,11 +86,12 @@ class TextRoot extends Component<
           data-ui-name='Text'
           ref={this.innerRef}
           use:decoration={this.getTextDecoration(underline, lineThrough)}
-          use:color={resolveColor(color)}
+          textColor={resolveColor(color)}
           use:ellipsis={ellipsis !== undefined ? ellipsis : Boolean(ellipsisProps)}
           isEllipsized={isEllipsized}
           maxLine={maxLineValue}
           trim={cropPosition}
+          use:color={undefined}
         />
         {isEllipsized && withHint && (
           <Hint triggerRef={this.innerRef} {...hintProps}>
