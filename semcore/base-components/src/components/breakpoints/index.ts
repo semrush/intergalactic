@@ -3,7 +3,7 @@ import { MediaList, DEFAULT_MEDIA, createBreakpoints } from './Breakpoints';
 /**
  * Breakpoints
  *
- * {@link https://developer.semrush.com/intergalactic/layout/breakpoints/breakpoints-api|Docs}
+ * {@link https://developer.semrush.com/intergalactic/layout/breakpoints/breakpoints-api|API}
  */
 const defaultBreakpoints = createBreakpoints(DEFAULT_MEDIA);
 
