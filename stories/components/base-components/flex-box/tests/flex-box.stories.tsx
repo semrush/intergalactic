@@ -5,6 +5,42 @@ import BoxMarginsPaddingsExample from './examples/box-margins-and-paddings';
 import BoxWigthHeightExamples from './examples/flex-box-width-height-test';
 import FlexGapsExample from './examples/flex-gaps-test';
 
+const bgOptions = [
+  'bg-primary-neutral',
+  'bg-primary-info',
+  'bg-primary-info-faint',
+  'bg-primary-success-faint',
+  'bg-primary-advertising',
+  'chart-palette-order-1',
+  'transparent',
+];
+
+const colorOptions = [
+  'text-primary',
+  'text-secondary',
+  'text-info',
+  'text-success',
+  'text-critical',
+  'text-primary-invert',
+];
+
+const borderOptions = [
+  'none',
+  '1px solid var(--intergalactic-border-primary)',
+  '1px solid var(--intergalactic-border-info)',
+  '1px solid var(--intergalactic-border-success)',
+  '2px dashed var(--intergalactic-border-primary)',
+];
+
+const borderRadiusOptions = [
+  'addon-rounded',
+  'control-rounded',
+  'surface-rounded',
+  'popper-rounded',
+  '0',
+  '10px',
+];
+
 const meta: Meta = {
   title: 'Components/Base Components/Flex-Box/Tests',
 };
@@ -63,6 +99,22 @@ export const BoxAllPropsConfigurable: StoryObj<typeof BoxAllProps> = {
     textAlign: {
       control: { type: 'select' },
       options: ['left', 'center', 'right', 'justify'],
+    },
+    bg: {
+      control: { type: 'select' },
+      options: bgOptions,
+    },
+    color: {
+      control: { type: 'select' },
+      options: colorOptions,
+    },
+    border: {
+      control: { type: 'select' },
+      options: borderOptions,
+    },
+    borderRadius: {
+      control: { type: 'select' },
+      options: borderRadiusOptions,
     },
     innerOutline: { control: { type: 'boolean' } },
     invertOutline: { control: { type: 'boolean' } },
