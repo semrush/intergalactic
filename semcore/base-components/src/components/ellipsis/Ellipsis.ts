@@ -10,7 +10,7 @@ import { textMeasurer } from './TextMeasurer';
 /**
  * Ellipsis
  *
- * {@link https://developer.semrush.com/intergalactic/utils/ellipsis/ellipsis-code|Docs}
+ * {@link https://developer.semrush.com/intergalactic/utils/ellipsis/ellipsis-code|Examples}
  */
 export class Ellipsis extends EventEmitter<Events> {
   public readonly element: HTMLElement;
