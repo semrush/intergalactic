@@ -65,9 +65,9 @@ SInner {
 }
 
 SText {
-  /* disable-tokens-validator */
   padding: 1px 0;
   flex-grow: 1;
+  text-align: left;
 }
 
 SAddon {
