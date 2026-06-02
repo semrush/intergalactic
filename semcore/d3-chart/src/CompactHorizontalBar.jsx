@@ -481,6 +481,11 @@ function CompactHorizontalBarTooltip(props) {
   );
 };
 
+/**
+ * CompactHorizontalBar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-code/|Examples}
+ */
 const CompactHorizontalBar = createElement(CompactHorizontalBarRoot, {
   Annotation,
   Label,

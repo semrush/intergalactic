@@ -24,6 +24,11 @@ function ScatterPlotChartSkeleton() {
   );
 }
 
+/**
+ * ScatterPlotChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api#scatterplotchartskeleton|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
 export default createComponent<
   NSSkeletonScatterPlotChart.Component,
   typeof ScatterPlotChartSkeleton

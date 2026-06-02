@@ -151,4 +151,9 @@ class CigaretteBarRoot extends Component<any, [], { hovered: boolean }> {
   }
 }
 
+/**
+ * CigaretteBar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/cigarette-chart/cigarette-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/cigarette-chart/cigarette-chart-code/|Examples}
+ */
 export default createElement(CigaretteBarRoot);

@@ -224,6 +224,11 @@ function Addon(
 
 export { inputProps };
 
+/**
+ * Switch
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/switch/switch-api/|API} | {@link https://developer.semrush.com/intergalactic/components/switch/switch-code/|Examples}
+ */
 const Switch = createComponent<
   NSSwitch.Component,
   typeof SwitchRoot

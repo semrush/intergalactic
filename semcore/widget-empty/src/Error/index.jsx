@@ -29,4 +29,9 @@ class Error extends Component {
   }
 }
 
+/**
+ * WidgetEmpty Error
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/widget-empty/widget-empty-api#error|API} | {@link https://developer.semrush.com/intergalactic/components/widget-empty/widget-empty-code/|Examples}
+ */
 export default createComponent(Error);

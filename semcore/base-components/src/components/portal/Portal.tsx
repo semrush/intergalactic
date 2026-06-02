@@ -54,6 +54,12 @@ Portal.displayName = 'Portal';
 
 const { Provider: PortalProvider } = PortalContext;
 export { PortalProvider, PortalContext };
+
+/**
+ * Portal
+ *
+ * {@link https://developer.semrush.com/intergalactic/utils/portal/portal-api|API}
+ */
 export default createComponent<
   PortalComponent,
   typeof Portal
