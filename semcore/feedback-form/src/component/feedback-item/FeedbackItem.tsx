@@ -72,6 +72,7 @@ export function FeedbackItem({
               tag={tag}
               {...(tag ? inputProps : {})}
               __excludeProps={['type', 'aria-describedby']}
+              onKeyDown={() => false} // as this is controlled tooltip, we shouldn't stopPropagation for keyboard Escape events.
             >
               {typeof Children.origin === 'function' &&
                 Children.origin({

@@ -23,6 +23,9 @@ const defaultColors = [
   'var(--blue-200)',
   'var(--pink-300)',
   'var(--salad-300)',
+  'var(--blue-500)',
+  'var(--green-200)',
+  'var(--violet-400)',
 ];
 
 class ColorPickerRoot extends Component<
