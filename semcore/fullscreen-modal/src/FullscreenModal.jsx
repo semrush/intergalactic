@@ -160,6 +160,11 @@ function Back(props) {
   );
 }
 
+/**
+ * FullscreenModal
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/fullscreen-modal/fullscreen-modal-api/|API} | {@link https://developer.semrush.com/intergalactic/components/fullscreen-modal/fullscreen-modal-code/|Examples}
+ */
 const FullscreenModal = createComponent(
   FullscreenModalRoot,
   {

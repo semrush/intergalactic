@@ -148,6 +148,11 @@ function Close({ styles, getI18nText }) {
   );
 }
 
+/**
+ * Notice
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/notice/notice-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice/notice-code/|Examples}
+ */
 const Notice = createComponent(RootNotice, {
   Label,
   Title: Title,

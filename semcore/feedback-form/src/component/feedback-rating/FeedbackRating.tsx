@@ -417,6 +417,11 @@ type FeedbackRatingComponent = Intergalactic.Component<'form', FeedbackRatingPro
   Header: typeof Text;
 };
 
+/**
+ * FeedbackRating
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-api#feedbackform-feedbackrating|API} | {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-code/|Examples}
+ */
 const FeedbackRating = createComponent<
   FeedbackRatingComponent,
   typeof FeedbackRatingRoot

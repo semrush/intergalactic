@@ -32,6 +32,11 @@ function Trigger(props: IRootComponentProps) {
   );
 }
 
+/**
+ * Select FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#select|Docs}
+ */
 export const SelectFH: typeof Select = createComponent<
   typeof Select,
   typeof SelectFHRoot

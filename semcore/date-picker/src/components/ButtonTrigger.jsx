@@ -15,6 +15,11 @@ function ButtonTriggerRoot({ Children }) {
 
 ButtonTriggerRoot.displayName = 'ButtonTrigger';
 
+/**
+ * ButtonTrigger
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-code/|Examples}
+ */
 const ButtonTrigger = createComponent(ButtonTriggerRoot, {
   Text: BaseTrigger.Text,
   Addon: BaseTrigger.Addon,

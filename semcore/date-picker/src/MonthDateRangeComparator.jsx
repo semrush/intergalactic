@@ -242,6 +242,11 @@ function PeriodsControls(props) {
   return sstyled(styles)(<SPeriodsControls render={Flex} p={4} gap={2} />);
 }
 
+/**
+ * MonthDateRangeComparator
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-code/|Examples}
+ */
 const MonthDateRangeComparator = createComponent(
   MonthDateRangeComparatorRoot,
   {

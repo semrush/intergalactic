@@ -354,6 +354,11 @@ function Circle(
   return sstyled(styles)(<SCircle render={Box} tag='span' tag-color={tagColor} />);
 }
 
+/**
+ * Tag
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tag/tag-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tag/tag-code/|Examples}
+ */
 const Tag = createComponent<
   NSTag.Component,
   typeof RootTag
@@ -363,6 +368,11 @@ const Tag = createComponent<
   Circle,
 });
 
+/**
+ * TagContainer
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tag/tag-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tag/tag-code/|Examples}
+ */
 export const TagContainer = createComponent<
   NSTag.Container.Component,
   typeof RootTagContainer
