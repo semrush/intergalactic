@@ -239,6 +239,42 @@ test.describe(`${TAG.VISUAL}`, () => {
     expect(cursor).toBe(hoverCursor);
   });
 
+  test('Verify Box token style props in configurable story', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@base-components',
+      '@flex-box'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
+      bg: 'rgb(1, 2, 3)',
+      color: 'rgb(4, 5, 6)',
+      border: '2px solid rgb(7, 8, 9)',
+      borderRadius: '10px',
+    });
+
+    const box = page.locator('[data-ui-name="Box"]');
+
+    const styles = await box.evaluate((el) => {
+      const computedStyle = window.getComputedStyle(el);
+      return {
+        backgroundColor: computedStyle.backgroundColor,
+        color: computedStyle.color,
+        borderTopWidth: computedStyle.borderTopWidth,
+        borderTopStyle: computedStyle.borderTopStyle,
+        borderTopColor: computedStyle.borderTopColor,
+        borderRadius: computedStyle.borderRadius,
+      };
+    });
+
+    expect(styles).toEqual({
+      backgroundColor: 'rgb(1, 2, 3)',
+      color: 'rgb(4, 5, 6)',
+      borderTopWidth: '2px',
+      borderTopStyle: 'solid',
+      borderTopColor: 'rgb(7, 8, 9)',
+      borderRadius: '10px',
+    });
+  });
+
   test('Verify inAfterOutline applies focusRingXOffset attributes to ::after', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,

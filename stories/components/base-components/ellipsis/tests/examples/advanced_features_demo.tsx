@@ -284,7 +284,7 @@ const Demo = () => {
           flex={1}
           p={3}
           bg='bg-primary-success-faint'
-          borderRadius='popper-round'
+          borderRadius='popper-rounded'
           border='1px solid var(--intergalactic-border-success)'
         >
           <Text size={200} bold mb={2} color='text-success'>
@@ -300,7 +300,7 @@ const Demo = () => {
           flex={1}
           p={3}
           bg='bg-primary-success-faint'
-          borderRadius='popper-round'
+          borderRadius='popper-rounded'
           border='1px solid var(--intergalactic-border-info)'
         >
           <Text size={200} bold mb={2} color='text-info'>
@@ -317,7 +317,7 @@ const Demo = () => {
       <Box
         p={3}
         bg='bg-primary-info'
-        borderRadius='popper-round'
+        borderRadius='popper-rounded'
       >
         <Text size={200} bold mb={2}>
           Try it out:
