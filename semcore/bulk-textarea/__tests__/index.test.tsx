@@ -94,7 +94,9 @@ describe('BulkTextarea OnChange', () => {
 
       expect(inputField.innerHTML).toBe('');
       await waitFor(() => expect(queryByRole('button', { name: 'Clear all' })).toBeNull());
-      expect(container.querySelector('[data-ui-name="BulkTextarea.Counter"]')?.textContent).toContain('0/10');
+      expect(
+        container.querySelector('[data-ui-name="BulkTextarea.Counter"]')?.textContent,
+      ).toContain('0/10');
     } finally {
       window.HTMLElement.prototype.scrollIntoView = originalScrollIntoView;
     }
