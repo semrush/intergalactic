@@ -5,7 +5,7 @@ import ButtonBaseExample, { defaultButtonProps } from './examples/button-base';
 import ButtonIconOnlyExample, { defaultIconButtonProps } from './examples/button-icon-only';
 import ButtonNeighborLocationExample, { defaultButtonNeighborProps } from './examples/button-neighbor-location';
 import ButtonWithEllipsisExample, { defaultButtonEllipsisProps } from './examples/button-with-ellipsis';
-import { themeArg, THEMES } from './themeUtils.ts';
+import { themeArg, THEMES } from './themeUtils';
 
 const meta: Meta = { title: 'Components/Button/Tests' };
 export default meta;

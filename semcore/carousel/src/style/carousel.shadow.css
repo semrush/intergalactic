@@ -15,7 +15,7 @@ SModalBox,
 SIndicator {
   position: relative;
   overflow: hidden;
-  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
+  border-radius: var(--intergalactic-surface-rounded, 8px);
 }
 
 SContentBox:has(SItem:focus-visible)::after {
@@ -29,7 +29,7 @@ SContentBox:has(SItem:focus-visible)::after {
 
 SImageBoxContainer {
   position: relative;
-  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
+  border-radius: var(--intergalactic-surface-rounded, 8px);
 
   &:has(SItem:focus-visible)::after {
     border-radius: inherit;
@@ -56,7 +56,7 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: var(--intergalactic-surface-rounded, calc(6px + 2px));
+  border-radius: var(--intergalactic-surface-rounded, 8px);
   overflow: hidden;
   outline: none;
 

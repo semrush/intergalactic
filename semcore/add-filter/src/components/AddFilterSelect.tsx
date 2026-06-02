@@ -12,7 +12,7 @@ type AsPropsWithOnClear<T> = T & {
 };
 
 type DefaultProps = {
-  defaultVisible: true;
+  defaultVisible: false;
 };
 
 class AddFilterSelectRoot extends Component<
@@ -26,8 +26,16 @@ class AddFilterSelectRoot extends Component<
   static displayName = 'AddFilterSelect';
 
   static defaultProps = {
-    defaultVisible: true,
+    defaultVisible: false,
   } as const;
+
+  componentDidMount(): void {
+    if (this.props.visible === undefined) {
+      setTimeout(() => {
+        this.handlers.visible(true);
+      }, 0);
+    }
+  }
 
   componentWillUnmount() {
     this.asProps.onUnmount?.();

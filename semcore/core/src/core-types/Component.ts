@@ -8,6 +8,7 @@ RefObject,
 } from 'react';
 
 import type { CORE_COMPONENT } from './symbols';
+import { CORE_INSTANCE } from './symbols';
 import type { IStyledProps } from '../styled/index';
 
 type HandlersType<UCProps> = { [K in keyof UCProps]?: <T = unknown>(arg: T) => void };
@@ -45,12 +46,15 @@ type BaseAsProps<Props = {}, Enhance extends readonly ((...args: any[]) => any)[
   InnerProps
 >;
 
+type UncontrolledPropValueSetterFunction<V> = (event?: any) => void | boolean | V;
+type UncontrolledPropValueChainHandler<V> = (value: V, event?: any) => void | boolean | V;
+
 type UncontrolledPropValue<V> =
   | V
   | null
-  | ((value: V, e?: any) => void | boolean | V)
-  | ((value: V, e?: any) => void | boolean | V)[]
-  | ((e?: any) => void | boolean | V);
+  | UncontrolledPropValueSetterFunction<V>
+  | Array<UncontrolledPropValueChainHandler<V>>
+  | [UncontrolledPropValueSetterFunction<V> | null, ...UncontrolledPropValueChainHandler<V>[]];
 
 export interface IComponent<
   C,
@@ -88,10 +92,12 @@ export abstract class Component<
     [key in keyof Uncontrolled]: key extends keyof Props
       ? Uncontrolled[key] extends null | Props[key]
         ? (value: Props[key], e?: any) => void
-        : Uncontrolled[key] extends Array<any>
-          ? Uncontrolled[key][0]
-          : Uncontrolled[key]
-      : never;
+        : Uncontrolled[key] extends [UncontrolledPropValueSetterFunction<any> | null, ...UncontrolledPropValueChainHandler<any>[]]
+          ? Uncontrolled[key][1]
+          : Uncontrolled[key] extends Array<UncontrolledPropValueChainHandler<any>>
+            ? Uncontrolled[key][0]
+            : Uncontrolled[key]
+      : never
   }> {
     // @ts-ignore. The body will be generated in factory
     return {};
@@ -111,6 +117,8 @@ export abstract class Component<
   protected Root: RootResult<any> = undefined as any;
 
   protected isControlled = false;
+
+  protected [CORE_INSTANCE]: any;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -312,6 +320,7 @@ export namespace Intergalactic {
       __props: Props;
       __context: Context;
       __additionalContext: AdditionalContext;
+      __IS_ICON: boolean;
       displayName: string;
       newInstance: () => Component<BaseTag, Props, Context>;
       [CORE_COMPONENT]: boolean;
