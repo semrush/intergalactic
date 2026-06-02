@@ -15,6 +15,6 @@ type FlexComponent = Intergalactic.Component<'div', FlexProps>;
 /**
  * Flex
  *
- * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|Docs}
+ * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|API}
  */
 export default createBaseComponent<FlexComponent>(Flex);
