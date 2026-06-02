@@ -602,8 +602,13 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
+      - name: Setup Playwright browser cache
+        uses: actions/cache@v4
+        with:
+          path: ~/AppData/Local/ms-playwright
+          key: playwright-windows-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install Playwright Browsers
-        run: npx playwright install
+        run: pnpm exec playwright install firefox
       - name: NVDA setup
         run: pnpm nvda-test:setup
       - name: NVDA testing
