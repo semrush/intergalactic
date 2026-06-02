@@ -3,7 +3,7 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 test.describe(`@button ${TAG.NVDA}`, () => {
-  test(`Users can interact with Button with only Addons via NVDA`, async ({
+  test(`Users can interact with Button with only Addons via NVDA-test`, async ({
     page,
     nvda,
   }) => {
