@@ -1,9 +1,9 @@
 <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="80" height="80" fill="white"/>
-<path d="M8 26.5H72C73.933 26.5 75.5 28.067 75.5 30V48C75.5 49.933 73.933 51.5 72 51.5H8C6.06701 51.5 4.5 49.933 4.5 48V30C4.5 28.067 6.067 26.5 8 26.5Z" stroke="#8649E1"/>
-<path d="M8 26.5H30.5V51.5H8C6.067 51.5 4.5 49.933 4.5 48V30C4.5 28.067 6.067 26.5 8 26.5Z" fill="#F9F2FF" stroke="#8649E1"/>
-<path d="M30.5 26.5H53.5V51.5H30.5V26.5Z" stroke="#8649E1"/>
-<rect x="10" y="33" width="16" height="12" rx="4" fill="#DCB8FF"/>
-<rect x="35" y="33" width="14" height="12" rx="4" fill="#EDD9FF"/>
-<rect x="58" y="33" width="14" height="12" rx="4" fill="#EDD9FF"/>
+<path d="M8 26.5H72C73.933 26.5 75.5 28.067 75.5 30V48C75.5 49.933 73.933 51.5 72 51.5H8C6.067 51.5 4.5 49.933 4.5 48V30C4.5 28.067 6.067 26.5 8 26.5Z" stroke="#181C17"/>
+<path d="M8 26.5H30.5V51.5H8C6.067 51.5 4.5 49.933 4.5 48V30C4.5 28.067 6.067 26.5 8 26.5Z" fill="white" stroke="#181C17"/>
+<path d="M53.5 26.5V51.5H30.5V26.5H53.5Z" stroke="#181C17"/>
+<rect x="10" y="33" width="16" height="12" rx="4" fill="#C18DFF"/>
+<rect x="35" y="33" width="14" height="12" rx="4" fill="#E6D4FF"/>
+<rect x="58" y="33" width="14" height="12" rx="4" fill="#E6D4FF"/>
 </svg>

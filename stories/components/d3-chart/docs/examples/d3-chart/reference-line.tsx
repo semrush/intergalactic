@@ -28,6 +28,7 @@ const Demo = () => {
 
   return (
     <Plot data={dataBar} scale={[xScale, yScale]} width={width} height={height}>
+      <ReferenceBackground value={dataBar[3].category} endValue={dataBar[4].category} />
       <YAxis>
         <YAxis.Ticks />
       </YAxis>
@@ -39,7 +40,6 @@ const Demo = () => {
       <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
       <ReferenceLine title='Top data' position='top' value={9} />
       <ReferenceLine title='Bottom data' position='bottom' value={3} />
-      <ReferenceBackground value={dataBar[3].category} endValue={dataBar[4].category} />
     </Plot>
   );
 };
