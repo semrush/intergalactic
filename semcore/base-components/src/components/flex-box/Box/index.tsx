@@ -20,6 +20,6 @@ type BoxComponent = Intergalactic.Component<'div', BoxProps>;
 /**
  * Box
  *
- * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|Docs}
+ * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|API}
  */
 export default createBaseComponent<BoxComponent>(Box);
