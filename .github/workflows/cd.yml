@@ -608,9 +608,30 @@ jobs:
           path: ~/AppData/Local/ms-playwright
           key: playwright-windows-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install firefox
+        shell: pwsh
+        env:
+          DEBUG: pw:install
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: 120000
+        run: |
+          $ErrorActionPreference = 'Continue'
+
+          for ($attempt = 1; $attempt -le 3; $attempt++) {
+            Write-Host "Playwright Firefox install attempt $attempt of 3"
+            pnpm exec playwright install firefox
+
+            if ($LASTEXITCODE -eq 0) {
+              exit 0
+            }
+
+            Write-Warning "Playwright Firefox install failed with exit code $LASTEXITCODE"
+            if ($attempt -lt 3) {
+              Start-Sleep -Seconds (30 * $attempt)
+            }
+          }
+
+          exit $LASTEXITCODE
       - name: NVDA setup
-        run: pnpm nvda-test:setup
+        uses: guidepup/setup-action@0.19.0
       - name: NVDA testing
         id: nvda-testing
         env:
