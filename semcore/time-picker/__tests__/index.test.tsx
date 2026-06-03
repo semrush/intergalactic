@@ -77,24 +77,23 @@ describe('TimePickerEntity', () => {
       expect(entity.hours).toBe('00');
     });
 
-    it('should convert 12 AM to 00:00 in 24-hour format', () => {
-      const entity = new TimePickerEntity('12:00');
+    it('should not handle meridiem in 24-hour format', () => {
+      const entity = new TimePickerEntity('14:00');
 
-      expect(entity.hours).toBe('00');
+      expect(entity.hours).toBe('14');
+      entity.toggleMeridiem();
+      expect(entity.hours).toBe('14');
+
+      entity.hours = '3';
+      expect(entity.hours).toBe('03');
+      entity.toggleMeridiem();
+      expect(entity.hours).toBe('03');
     });
 
-    it('should convert 12 PM to 12:00 in 24-hour format', () => {
+    it('should not convert 12 to 00:00 in 24-hour format by default', () => {
       const entity = new TimePickerEntity('12:00');
-      entity.toggleMeridiem();
 
       expect(entity.hours).toBe('12');
-    });
-
-    it('should convert PM hours correctly', () => {
-      const entity = new TimePickerEntity('3:00');
-      entity.toggleMeridiem();
-
-      expect(entity.hours).toBe('15');
     });
 
     it('should keep AM hours unchanged (except 12)', () => {
