@@ -698,4 +698,106 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(hoursInput).toHaveValue('03');
     await expect(minutesInput).toHaveValue('44');
   });
+
+  test('Verify locale prop localizes time field labels', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.FUNCTIONAL,
+      '@time-picker'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'fr', {
+      locale: 'fr',
+      is12Hour: true,
+      defaultValue: '08:30',
+    });
+
+    const regular = page.locator('[data-testid="regular"]');
+
+    await expect(regular.getByRole('combobox', { name: 'Heures' })).toBeVisible();
+    await expect(regular.getByRole('combobox', { name: 'Minutes' })).toBeVisible();
+  });
+
+  test('Verify item-level step, placeholder and autoFocus props', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.FUNCTIONAL,
+      '@time-picker'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', {
+      autoFocus: true,
+      defaultValue: '',
+      is12Hour: false,
+      placeholder: 'HH',
+      step: 6,
+    });
+
+    const withoutSeparatorAndFormat = page.locator('[data-testid="expanded-without-separator-and-format"]');
+    const hoursInput = withoutSeparatorAndFormat.getByRole('combobox').nth(0);
+    const minutesInput = withoutSeparatorAndFormat.getByRole('combobox').nth(1);
+
+    await expect(hoursInput).toBeFocused();
+    await expect(hoursInput).toHaveAttribute('placeholder', 'HH');
+    await expect(minutesInput).toHaveAttribute('placeholder', 'HH');
+
+    await hoursInput.click();
+    await locators.options(page).first().waitFor({ state: 'visible' });
+
+    await expect(page.getByRole('option', { name: '00' })).toBeVisible();
+    await expect(page.getByRole('option', { name: '06' })).toBeVisible();
+    await expect(page.getByRole('option', { name: '12' })).toBeVisible();
+    await expect(page.getByRole('option', { name: '18' })).toBeVisible();
+    await expect(page.getByRole('option', { name: '05' })).toHaveCount(0);
+  });
+
+  test('Verify 12-hour mode should infer PM from a controlled 24-hour value', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.FUNCTIONAL,
+      '@time-picker'],
+  }, async ({ page }) => {
+    const consoleMessages: string[] = [];
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        consoleMessages.push(msg.text());
+      }
+    });
+
+    await loadPage(page, 'stories/components/time-picker/tests/examples/interactive_examples.tsx', 'en', {
+      showOnChange: true,
+      is12Hour: true,
+      value: '14:30',
+    });
+
+    await expect(locators.timeBoxes(page).nth(0)).toHaveValue('02');
+    await expect(locators.timeBoxes(page).nth(1)).toHaveValue('30');
+
+    const meridiem = await page.locator('[data-ui-name="TimePicker.Format"] span').first().textContent();
+    expect(meridiem?.trim()).toBe('AM'); // bug
+
+    await locators.timeBoxes(page).nth(1).fill('45');
+    await locators.timeBoxes(page).nth(1).evaluate((node) => (node as HTMLInputElement).blur());
+
+    await expect.poll(() => {
+      return consoleMessages.find((msg) => msg.startsWith('Returned value:')) ?? '';
+    }).toContain('Returned value: 02:45');
+  });
+
+  test('Verify 12-hour mode should infer PM after external controlled value updates', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.FUNCTIONAL,
+      '@time-picker'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/time-picker/tests/examples/interactive_examples.tsx', 'en', {
+      showOnChange: true,
+      is12Hour: true,
+      value: '09:00',
+    });
+
+    await page.getByRole('button', { name: 'Set to 1:30 PM' }).click();
+
+    await expect(page.getByText('Selected time (24h format): 13:30')).toBeVisible();
+    await expect(locators.timeBoxes(page).nth(0)).toHaveValue('01');
+    await expect(locators.timeBoxes(page).nth(1)).toHaveValue('30');
+
+    const meridiem = await page.locator('[data-ui-name="TimePicker.Format"] span').first().textContent();
+    expect(meridiem?.trim()).toBe('AM'); // bug
+  });
 });
