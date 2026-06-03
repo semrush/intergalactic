@@ -111,6 +111,11 @@ function SearchClear(props) {
   return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use='secondary' />);
 }
 
+/**
+ * InputSearch
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/select/select-api#select-inputsearch|API} | {@link https://developer.semrush.com/intergalactic/components/select/select-code#option-filtering|Examples}
+ */
 const InputSearch = createComponent(InputSearchRoot, {
   SearchIcon: SearchIcon,
   Value: SearchValue,

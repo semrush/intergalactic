@@ -70,6 +70,11 @@ const HighlightedItem = createComponent<HighlightedTabLineItemComponent, typeof 
   { Text: TabLine.Item.Text, Addon: HighlightedAddon },
 );
 
+/**
+ * TabLine FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#tabline|Docs}
+ */
 export const TabLineFH = createComponent<HighlightedTabLineComponent, typeof TabLineFHRoot>(TabLineFHRoot, {
   Item: [TabLine.Item, { Text: TabLine.Item.Text, Addon: TabLine.Item.Addon }],
   HighlightedItem,

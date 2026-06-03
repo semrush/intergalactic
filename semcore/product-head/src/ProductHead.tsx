@@ -35,6 +35,11 @@ function Row(props: any) {
   return sstyled(props.styles)(<SRow render={Box} />);
 }
 
+/**
+ * Product Head
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/product-head/product-head-api/|API} | {@link https://developer.semrush.com/intergalactic/components/product-head/product-head-code/|Examples}
+ */
 const Header = createComponent<
   HeaderComponent,
   typeof HeaderRoot

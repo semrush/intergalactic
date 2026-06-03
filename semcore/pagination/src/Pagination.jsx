@@ -378,6 +378,11 @@ class PageInput extends Component {
   }
 }
 
+/**
+ * Pagination
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/pagination/pagination-api/|API} | {@link https://developer.semrush.com/intergalactic/components/pagination/pagination-code/|Examples}
+ */
 const Pagination = createComponent(PaginationRoot, {
   PrevPage,
   NextPage,

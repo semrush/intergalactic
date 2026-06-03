@@ -477,6 +477,11 @@ const InputSearchWrapper = function () {
   return <Root render={InputSearch} />;
 };
 
+/**
+ * Select
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/select/select-api/|API} | {@link https://developer.semrush.com/intergalactic/components/select/select-code/|Examples}
+ */
 const Select = createComponent(
   RootSelect,
   {

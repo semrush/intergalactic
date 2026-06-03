@@ -174,6 +174,11 @@ function Addon(props: ButtonAddonProps) {
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
+/**
+ * Button
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/button/button-api/|API} | {@link https://developer.semrush.com/intergalactic/components/button/button-code/|Examples}
+ */
 const Button = createComponent<
   ButtonComponent,
   typeof RootButton

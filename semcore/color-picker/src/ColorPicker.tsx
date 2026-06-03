@@ -206,6 +206,11 @@ function Colors(
   );
 }
 
+/**
+ * ColorPicker
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-code/|Examples}
+ */
 const ColorPicker = createComponent<
   NSColorPicker.Component,
   typeof ColorPickerRoot

@@ -72,6 +72,11 @@ const HighlightedItem = createComponent<
   Addon: HighlightedItemAddon,
 });
 
+/**
+ * Pills FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#pills|Docs}
+ */
 export const PillsFH = createComponent<
   HighlightedPillComponent,
   typeof PillsFHRoot

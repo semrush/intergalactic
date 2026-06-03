@@ -41,6 +41,11 @@ class RootLinkTrigger extends Component {
   }
 }
 
+/**
+ * LinkTrigger
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-api#linktrigger|API} | {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-code#linktrigger|Examples}
+ */
 const LinkTrigger = createComponent(RootLinkTrigger, {
   Text: ButtonLink.Text,
   Addon: ButtonLink.Addon,

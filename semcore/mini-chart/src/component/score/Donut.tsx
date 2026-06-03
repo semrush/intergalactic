@@ -127,6 +127,11 @@ class DonutRoot extends Component<
   }
 }
 
+/**
+ * MiniCharts.ScoreDount
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const ScoreDonut = createComponent<
   ScoreDonutComponent,
   typeof DonutRoot
@@ -134,6 +139,11 @@ export const ScoreDonut = createComponent<
 
 ScoreDonut.displayName = 'MiniChart.ScoreDonut';
 
+/**
+ * MiniCharts.ScoreSemiDount
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const ScoreSemiDonut = createComponent<
   ScoreDonutComponent,
   typeof DonutRoot

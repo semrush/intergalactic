@@ -162,6 +162,11 @@ function Addon(props: IRootComponentProps) {
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
+/**
+ * Link
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/link/link-api/|API} | {@link https://developer.semrush.com/intergalactic/components/link/link-code/|Examples}
+ */
 const Link = createComponent<LinkComponent, typeof RootLink>(RootLink, {
   Text: LinkText,
   Addon,

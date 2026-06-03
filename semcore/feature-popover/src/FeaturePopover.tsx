@@ -223,6 +223,11 @@ function Spot(props: IRootComponentProps & FeaturePopoverSpotProps) {
   return sstyled(styles)(<SSpot render={Box} />);
 }
 
+/**
+ * FeaturePopover
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/feature-popover/feature-popover-api/|API} | {@link https://developer.semrush.com/intergalactic/components/feature-popover/feature-popover-code/|Examples}
+ */
 export default createComponent<
   FeaturePopoverComponent,
   typeof FeaturePopover

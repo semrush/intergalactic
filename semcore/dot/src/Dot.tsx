@@ -93,6 +93,11 @@ class DotRoot extends Component<
   }
 }
 
+/**
+ * Dot
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/dot/dot-api/|API} | {@link https://developer.semrush.com/intergalactic/components/dot/dot-code/|Examples}
+ */
 const Dot = createComponent<
   NSDot.Component,
   typeof DotRoot
