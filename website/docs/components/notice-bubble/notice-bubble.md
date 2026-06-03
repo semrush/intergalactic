@@ -22,7 +22,7 @@ Table: Comparison table of criteria for Notice and NoticeBubble
 **This component includes:**
 
 - Text (we recommend keeping the message within 2 lines, maximum – 4 lines).
-- An optional `Close` icon to dismiss the alert (use the `Close` icon with M size).
+- An optional `Close` icon to dismiss the alert.
 - An optional single button or two buttons.
 
 **It can't contain:**
@@ -35,7 +35,7 @@ Table: Comparison table of criteria for Notice and NoticeBubble
 ### When to use NoticeBubble
 
 - To notify about the beginning or completion of a process that remains hidden from the user.
-- For indicating changes to content in other parts of the report that aren't currently being viewed._For example, starting or completing a campaign collection, or saving an event in drafts (where the changes aren't visible to the user at the moment, as the event card remains unchanged on the screen), and more._
+- For indicating changes to content in other parts of the report that aren't currently being viewed. _For example, starting or completing a campaign collection, or saving an event in drafts (where the changes aren't visible to the user at the moment), and more._
 - To notify about an action that causes changes to the content on the page. _For example, using the "Undo" button to delete an item._
 - To notify about moving an item and removing it from its current position to other reports, lists, or tables (also applicable to content changes).
 
@@ -62,7 +62,7 @@ Table: Use cases for NoticeBubble types
 | **Basic**                      | This type of notification is used to inform the user about the beginning or completion of a process that remains hidden from the user in the interface. It can also be used to notify about changes to content in other parts of the report that aren't currently being viewed.                                                              | ![](static/text1.png)           |
 | **Undo action**                | This notification is used for completed actions with an option to cancel them. It's ideal for scenarios involving moving or deleting items. Use the button with `use="secondary"`, `theme="invert"`, and with M size for this purpose.                                                                                                       | ![](static/default.png)         |
 | **Reload action**              | The button name may change based on the context.                                                                                                                                                                                                                                                                                              | ![](static/reload-btn.png)      |
-| **Loading state**              | If the undo process takes time, display an intermediate loading state where the user can't take any action. Use [Spin](/components/spin/spin) with size XS. However, refrain from using this state to display any other processes in the interface; instead, opt for the [ProgressBar](/components/progress-bar/progress-bar) in such cases. | ![](static/default-loading.png) |
+| **Loading state**              | If the undo process takes time, display an intermediate loading state where the user can't take any action. Use [Spin](/components/spin/spin) with XS size. However, refrain from using this state to display any other processes in the interface; instead, opt for the [ProgressBar](/components/progress-bar/progress-bar) in such cases. | ![](static/default-loading.png) |
 | **Completion state**           | Upon successful completion, show a notification that confirms the undo action (use an icon with M size). The height of the notification should be the same as the previous state. Refer to the animation description below for recommendations on animation and timing.                                                                       | ![](static/default-success.png) |
 | **Success**                    | This type of notification is suitable for conveying the success of user actions within the interface. It includes an additional colored icon to quickly convey the response of the interface to the user's actions without relying on reading the text.                                                                                       | ![](static/success-notice.png)  |
 | **Failure**                    | This type of notification is suitable for conveying the failure of user actions within the interface.                                                                                                                                                                                                                                         | ![](static/warning-notice.png)  |
@@ -72,8 +72,8 @@ Table: Use cases for NoticeBubble types
 
 ## Appearance
 
-- The notice appears in the upper-right corner of the report, below the main website menu, with `var(--intergalactic-spacing-3x)` margins at the top and right.
-- When scrolling, it remains fixed in the upper-right corner with the same `var(--intergalactic-spacing-3x)` margins.
+- The notice appears in the upper-right corner of the report, below the main menu.
+- When scrolling, it remains fixed in the upper-right corner with the same margins.
 
 ![](static/noticeBubble1.png)
 
@@ -92,7 +92,7 @@ Minimize the number of notifications to prevent banner blindness and irritation 
 - Users can close the notice by clicking on the **Close** button in the upper-right corner.
 - If there are _no_ interactive elements in the notice beside the **Close** button, hide the notice automatically after 4–10 seconds, depending on the amount of text inside.
 - If there are interactive elements in the notice beside the **Close** button, don't hide the notice until it becomes irrelevant, or the user closes it or interacts with one of its interactive elements.
-- If the notice is closed automatically by a timer, hovering the mouse over it (`onMouseEnter`) will reset the timer, and the countdown will start again after moving the mouse away from the notice.
+- If the notice is closed automatically by a timer, hovering over it (`onMouseEnter`) or focusing (`onFocus`) on interactive elements inside it will reset the timer. The countdown will start again after moving the mouse pointer or focus leaves the notice.
 
 ### Several notices at a time
 
@@ -111,7 +111,7 @@ You can show several notices at a time if necessary, but use this option thought
 ### "Lost connection" notice
 
 - This type of notification appears as soon as the network connection is lost. It's commonly used in products that allow users to continue working with content even without network access.
-- This notification acts as a separate alert and has the highest priority. Therefore, when it appears, all other user and system notifications appear below it. Each subsequent notification will overlap the previous one.
+- This notification acts as a separate alert and has the highest priority. Therefore, when it appears, all other user and system notifications appear below it.
 - The notice automatically closes when the connection is restored.
 - There are two options for this notice type:
   1. For interfaces that can monitor the network connection themselves, use a notification without a button.
