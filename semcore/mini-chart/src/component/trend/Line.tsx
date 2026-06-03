@@ -150,10 +150,20 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance, 
   }
 }
 
+/**
+ * MiniCharts.TrendLine
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const TrendLine = createComponent<TrendLineComponent, typeof TrendLineRoot>(TrendLineRoot);
 
 TrendLine.displayName = 'MiniChart.TrendLine';
 
+/**
+ * MiniCharts.TrendArea
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
 export const TrendArea = createComponent<TrendLineComponent, typeof TrendLineRoot>(
   TrendLineRoot,
   {},

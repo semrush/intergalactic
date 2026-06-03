@@ -254,6 +254,11 @@ function Header(props) {
   );
 }
 
+/**
+ * SidePanel
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-code/|Examples}
+ */
 const SidePanel = createComponent(RootSidePanel, {
   Overlay,
   Panel,

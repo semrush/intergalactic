@@ -315,6 +315,11 @@ function Item(
   );
 }
 
+/**
+ * Slider
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/slider/slider-api/|API} | {@link https://developer.semrush.com/intergalactic/components/slider/slider-code/|Examples}
+ */
 const Slider = createComponent<
   NSSlider.Component,
   typeof SliderRoot

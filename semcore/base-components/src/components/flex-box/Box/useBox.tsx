@@ -172,10 +172,6 @@ export type BoxProps = IStyledProps & {
    */
   bg?: Property.Background | BasicColorKeys | SemanticColorKeys;
   /**
-   * Color
-   */
-  color?: Property.Color | BasicColorKeys | SemanticColorKeys;
-  /**
    * Border radius
    */
   borderRadius?: Property.BorderRadius | BorderRadius;
@@ -259,7 +255,6 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number, colorResolv
 
     border: props.border,
     borderRadius: props.borderRadius ? colorResolver(props.borderRadius) : undefined,
-    color: props.color ? colorResolver(props.color) : undefined,
     backgroundColor: props.bg ? colorResolver(props.bg) : undefined,
   });
 }
@@ -279,7 +274,6 @@ export default function useBox<T extends BoxProps>(
     innerOutline,
     invertOutline,
     inAfterOutline,
-    color,
     bg,
     border,
     borderRadius,
@@ -356,7 +350,6 @@ export default function useBox<T extends BoxProps>(
     zIndex,
     border,
     borderRadius,
-    color,
     bg,
   ]);
 

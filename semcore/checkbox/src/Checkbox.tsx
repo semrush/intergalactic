@@ -269,6 +269,11 @@ const Value = createComponent<
   CheckMark,
 });
 
+/**
+ * Checkbox
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/checkbox/checkbox-api/|API} | {@link https://developer.semrush.com/intergalactic/components/checkbox/checkbox-code/|Examples}
+ */
 const Checkbox = createComponent<
   NSCheckbox.Component,
   typeof CheckboxRoot

@@ -69,6 +69,11 @@ Item.defaultProps = {
   tabIndex: 0,
 };
 
+/**
+ * Breadcrumbs
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/breadcrumbs/breadcrumbs-api/|API} | {@link https://developer.semrush.com/intergalactic/components/breadcrumbs/breadcrumbs-code/|Examples}
+ */
 export default createComponent(Breadcrumbs, {
   Item,
 });

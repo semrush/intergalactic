@@ -65,6 +65,11 @@ class RadioGroupRoot extends Component<
   }
 }
 
+/**
+ * RadioGroup
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/radio/radio-api/|API} | {@link https://developer.semrush.com/intergalactic/components/radio/radio-code/|Examples}
+ */
 const RadioGroup = createComponent<
   NSRadio.Group.Component,
   typeof RadioGroupRoot
@@ -321,6 +326,11 @@ function Text(
 }
 Text.displayName = 'Text';
 
+/**
+ * Value
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/radio/radio-api/|API} | {@link https://developer.semrush.com/intergalactic/components/radio/radio-code/|Examples}
+ */
 const Value = createComponent<
   NSRadio.Value.Component,
   typeof ValueRoot
@@ -329,6 +339,11 @@ const Value = createComponent<
   RadioMark,
 });
 
+/**
+ * Radio
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/radio/radio-api/|API} | {@link https://developer.semrush.com/intergalactic/components/radio/radio-code/|Examples}
+ */
 const Radio = createComponent<
   NSRadio.Component,
   typeof RadioRoot

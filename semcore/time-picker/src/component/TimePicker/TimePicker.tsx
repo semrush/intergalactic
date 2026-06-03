@@ -193,6 +193,11 @@ class Separator extends Component<TimePickerSeparatorProps> {
   }
 }
 
+/**
+ * TimePicker
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/time-picker/time-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/time-picker/time-picker-code/|Examples}
+ */
 const TimePicker = createComponent<
   TimePickerComponent,
   typeof TimePickerRoot
