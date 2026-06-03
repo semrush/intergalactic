@@ -5,6 +5,10 @@ import BasicExample, {
   type BasicWidgetEmptyProps,
   defaultProps as BasicExampleProps,
 } from './examples/basic_usage';
+import CustomIconSizeExample, {
+  type CustomIconSizeProps,
+  defaultProps as CustomIconSizeExampleProps,
+} from './examples/custom_icon_size';
 import ErrorExample, {
   type BasicWidgetErrorProps,
   defaultProps as ErrorExampleProps,
@@ -79,6 +83,19 @@ export const Basic: StoryObj<BasicWidgetEmptyProps> = {
     },
   },
   args: BasicExampleProps,
+};
+
+export const CustomIconSize: StoryObj<CustomIconSizeProps> = {
+  render: CustomIconSizeExample,
+  argTypes: {
+    iconWidth: {
+      control: { type: 'number' },
+    },
+    iconHeight: {
+      control: { type: 'number' },
+    },
+  },
+  args: CustomIconSizeExampleProps,
 };
 
 export const ErrorWidget: StoryObj<BasicWidgetErrorProps> = {

@@ -9,8 +9,6 @@ SImage {
   align-items: flex-end;
   justify-content: center;
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
-  width: 80px;
-  height: 80px;
 }
 
 STitle {
