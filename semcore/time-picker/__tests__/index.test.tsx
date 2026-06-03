@@ -125,6 +125,16 @@ describe('TimePickerEntity', () => {
       expect(entity.toString()).toBe('14:30');
     });
 
+    it('should not apply meridiem conversion to 24-hour format string', () => {
+      const entity = new TimePickerEntity('12:30');
+
+      entity.toggleMeridiem();
+      expect(entity.toString()).toBe('12:30');
+
+      entity.hours = '3';
+      expect(entity.toString()).toBe('03:30');
+    });
+
     it('should convert to 24-hour format string when is12Hour is true', () => {
       const entity = new TimePickerEntity('2:30', true);
       entity.toggleMeridiem();

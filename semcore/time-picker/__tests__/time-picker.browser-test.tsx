@@ -645,4 +645,57 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       expect(returnedValueMsg).toContain('09:00');
     });
   });
+
+  test('Verify 24-hour mode returns 12 when entering noon manually', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.FUNCTIONAL,
+      '@time-picker'],
+  }, async ({ page }) => {
+    const consoleMessages: string[] = [];
+
+    page.on('console', (msg) => {
+      if (msg.type() === 'log') {
+        consoleMessages.push(msg.text());
+      }
+    });
+
+    await loadPage(page, 'stories/components/time-picker/tests/examples/interactive_examples.tsx', 'en', {
+      showOnChange: true,
+      is12Hour: false,
+      value: '14:30',
+    });
+
+    const hoursInput = locators.timeBoxes(page).first();
+
+    await hoursInput.fill('12');
+    await hoursInput.evaluate((node) => (node as HTMLInputElement).blur());
+
+    await expect.poll(() => {
+      return consoleMessages.find((msg) => msg.startsWith('Returned value:')) ?? '';
+    }).toContain('Returned value: 12:30');
+
+    await expect(page.getByText('Selected time (24h format): 12:30')).toBeVisible();
+  });
+
+  test('Verify custom format does not convert values in 24-hour mode', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.FUNCTIONAL,
+      '@time-picker'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', {
+      defaultValue: '14:44',
+      is12Hour: false,
+    });
+
+    const expanded = page.locator('[data-testid="expanded"]');
+    const hoursInput = expanded.getByRole('combobox').nth(0);
+    const minutesInput = expanded.getByRole('combobox').nth(1);
+
+    await expanded.getByRole('button').click();
+    await hoursInput.fill('3');
+    await hoursInput.evaluate((node) => (node as HTMLInputElement).blur());
+
+    await expect(hoursInput).toHaveValue('03');
+    await expect(minutesInput).toHaveValue('44');
+  });
 });
