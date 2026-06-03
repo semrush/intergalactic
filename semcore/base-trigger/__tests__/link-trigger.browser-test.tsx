@@ -179,7 +179,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
             },
           );
           await page.waitForTimeout(150);
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+          await expect(page).toHaveScreenshot();
         });
       });
     });
