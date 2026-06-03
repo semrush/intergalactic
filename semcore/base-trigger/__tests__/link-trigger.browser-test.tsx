@@ -158,12 +158,12 @@ test.describe(` ${TAG.VISUAL}`, () => {
     const selectAddonCombos = [
       { showAddonLeft: true, showAddonRight: false, desc: 'left only' },
       { showAddonLeft: false, showAddonRight: true, desc: 'right only' },
-      { showAddonLeft: true, showAddonRight: true, desc: 'both' },
+      { showAddonLeft: false, showAddonRight: false, loading: true, desc: 'loading' },
     ];
 
     selectSizes.forEach((size) => {
-      selectAddonCombos.forEach(({ desc, ...addons }) => {
-        test.skip(`Verify LinkTrigger inside Select truncates with ${desc}, size=${size}`, {
+      selectAddonCombos.forEach(({ desc, loading = false, ...addons }) => {
+        test(`Verify LinkTrigger inside Select truncates with ${desc}, size=${size}`, {
           tag: [TAG.PRIORITY_HIGH, '@link-trigger', '@select', '@ellipsis'],
         }, async ({ page }) => {
           await loadPage(
@@ -172,6 +172,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
             'en',
             {
               size,
+              loading,
               ...addons,
               ellipsis: { ellipsis: true },
               w: size < 600 ? 150 : 300,
