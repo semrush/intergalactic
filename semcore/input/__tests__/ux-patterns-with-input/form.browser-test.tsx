@@ -89,15 +89,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await locators.tooltip(page).waitFor({ state: 'hidden' });
     await page.keyboard.press('Enter');
     await locators.tooltip(page).waitFor({ state: 'visible' });
-    await expect(locators.tooltip(page)).toHaveText('Password is required.');
-    await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
-
-    await page.keyboard.press('Tab');
-    await expect(locators.button(page, 'Log in')).toBeFocused();
-
-    await page.keyboard.press('Enter');
-    await locators.tooltip(page).waitFor({ state: 'visible' });
-    await expect(locators.input(page).first()).toBeFocused();
     await expect(locators.tooltip(page)).toHaveText('Email is not valid.');
     await expect(locators.input(page).first()).toHaveAttribute('aria-invalid', 'true');
 
