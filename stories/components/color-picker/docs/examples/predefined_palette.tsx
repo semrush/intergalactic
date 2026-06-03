@@ -18,14 +18,17 @@ const Demo = () => {
           <ColorPicker.Colors
             colors={[
               null,
-              'var(--intergalactic-chart-palette-order-1)',
-              'var(--intergalactic-chart-palette-order-2)',
-              'var(--intergalactic-chart-palette-order-3)',
-              'var(--intergalactic-chart-palette-order-4)',
-              'var(--intergalactic-chart-palette-order-5)',
-              'var(--intergalactic-chart-palette-order-6)',
-              'var(--intergalactic-chart-palette-order-7)',
-              'var(--intergalactic-chart-palette-order-8)',
+              '#008ff8', // --blue-400
+              '#00c192', // --green-300
+              '#c695ff', // --violet-300
+              '#fdc23c', // --yellow-200
+              '#ff8786', // --red-300
+              '#8ecdff', // --blue-200
+              '#f67cf2', // --pink-300
+              '#66c030', // --salad-300
+              '#006dca', // --blue-500
+              '#59ddaa', // --green-200
+              '#ab6cfe', // --violet-400
             ]}
           />
           <PaletteManager colors={customColors} onColorsChange={setCustomColors}>
