@@ -13,7 +13,7 @@ const Demo = (props: BaseTriggerEllipsisProps) => {
       <DropdownMenu>
         <DropdownMenu.Trigger tag={[BaseTrigger, 'h1']}>
           <BaseTrigger.Text w={150} tag='h2' size={400}>
-            Few Tags
+            ellipsis with few few Few Tags
           </BaseTrigger.Text>
         </DropdownMenu.Trigger>
         <br />
