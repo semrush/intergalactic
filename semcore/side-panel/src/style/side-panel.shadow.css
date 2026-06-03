@@ -71,12 +71,6 @@ SClose {
 
 SBack {
   max-width: 100%;
-
-  SBackText {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 
 SHeader {
