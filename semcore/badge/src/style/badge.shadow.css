@@ -25,7 +25,3 @@ SBadge[inverted] {
 SBadge[color] {
   color: var(--color);
 }
-
-SBadge[type='unavailable'] {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-}
