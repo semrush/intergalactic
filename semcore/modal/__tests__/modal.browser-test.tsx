@@ -450,6 +450,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await locators.button(page).click();
       await locators.modal(page).waitFor({ state: 'visible' });
       await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.modal(page)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify closed by clicking outside modal', async () => {
@@ -469,13 +470,13 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
         await page.mouse.click(modalBox.x + modalBox.width / 2, modalBox.y + modalBox.height / 2);
       }
       await expect(locators.modal(page)).toBeVisible();
+      await expect(locators.modal(page)).toBeFocused();
     });
 
     await test.step('Verify closes by Pressing Escape', async () => {
       await page.keyboard.press('Escape');
       await locators.modal(page).waitFor({ state: 'hidden' });
       await expect(locators.modal(page)).toHaveCount(0);
-      await expect(locators.button(page)).toBeFocused();
     });
   });
 
@@ -489,6 +490,8 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.modal(page).waitFor({ state: 'visible' });
       await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.modal(page)).toHaveAttribute('tabindex', '0');
+      await expect(locators.modal(page)).toBeFocused();
     });
 
     await test.step('Verify closes by Pressing Escape', async () => {
