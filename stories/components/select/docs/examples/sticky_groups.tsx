@@ -83,7 +83,7 @@ const Demo = () => {
                   tag='div'
                   id='search-result'
                   key='Nothing'
-                  p='6px 8px'
+                  p={2}
                   size={200}
                   use='secondary'
                 >

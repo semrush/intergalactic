@@ -17,7 +17,7 @@ const Demo = () => {
         {
           name: 'keyword',
           tag: Tooltip,
-          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
+          title: 'Description of Keywords.',
           tabIndex: 0,
           children: (
             <Text noWrap>
@@ -85,14 +85,14 @@ const Demo = () => {
         {
           name: 'cpc',
           tag: Tooltip,
-          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
+          title: 'Description of CPC.',
           tabIndex: 0,
           children: 'CPC',
         },
         {
           name: 'vol',
           tag: Tooltip,
-          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
+          title: 'Description of Volume.',
           tabIndex: 0,
           children: 'Vol.',
         },

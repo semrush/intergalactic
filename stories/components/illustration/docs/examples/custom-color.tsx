@@ -13,10 +13,10 @@ const Demo = () => {
         <MailSent primaryColor='illustration-orange' />
       </Flex>
       <Flex gap={2}>
-        <Congrats primaryColor='illustration-red' secondaryColor='#000' />
-        <Congrats primaryColor='illustration-pink' secondaryColor='#000' />
-        <Congrats primaryColor='illustration-violet' secondaryColor='#000' />
-        <Congrats primaryColor='illustration-yellow' secondaryColor='#000' />
+        <Congrats primaryColor='illustration-red' secondaryColor='gray-800' />
+        <Congrats primaryColor='illustration-pink' secondaryColor='gray-800' />
+        <Congrats primaryColor='illustration-violet' secondaryColor='gray-800' />
+        <Congrats primaryColor='illustration-yellow' secondaryColor='gray-800' />
       </Flex>
     </Flex>
   );

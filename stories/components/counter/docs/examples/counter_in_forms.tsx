@@ -60,7 +60,7 @@ const Demo = () => {
         </Text>
       </Flex>
       <Textarea
-        placeholder='The goal of your project, required resources, and so on'
+        placeholder='The goal of your project and required resources'
         id='limited-text-field'
         aria-describedby='optional-for-textarea counter-for-textarea'
         onChange={handleChange}

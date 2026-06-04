@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "src/theme.ts"
+  ],
+  "compilerOptions": {
+    "lib": [
+      "ESNext"
+    ],
+    "rootDir": "./src",
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./lib"
+  }
+}
