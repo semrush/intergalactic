@@ -7,9 +7,8 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import isNode from '@semcore/core/lib/utils/isNode';
-import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
-import { useFocusLock, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import { setFocus, isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import {
   ZIndexStackingContextProvider,
@@ -159,15 +158,6 @@ class NoticeBubbleContainerRoot extends Component<
   }
 }
 
-const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTMLDivElement>) => {
-  const { focusLock, ...other } = props;
-  const innerRef = React.useRef<HTMLDivElement | null>(null);
-  useFocusLock(innerRef, false, 'auto', !focusLock, true);
-  const ref = useForkRef(outerRef, innerRef);
-
-  return <Flex ref={ref} {...other} />;
-});
-
 const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
@@ -206,6 +196,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
   timer: Timer | null = null;
   ref = React.createRef<HTMLDivElement>();
   closeButtonRef = React.createRef<HTMLButtonElement>();
+  triggerButtonComponent: Element | null = null;
 
   componentDidMount() {
     const { duration } = this.props;
@@ -213,6 +204,8 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
       this.timer = new Timer(this.handleClose, duration);
       document.body.addEventListener('mousemove', this.handleBodyMouseMove);
     }
+
+    this.triggerButtonComponent = document.activeElement;
 
     const noticeElement = this.ref.current;
 
@@ -228,6 +221,11 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
   }
 
   componentWillUnmount() {
+    const triggerElement = this.triggerButtonComponent;
+    if (this.ref.current && isFocusInside(this.ref.current) && triggerElement instanceof HTMLElement) {
+      setTimeout(() => setFocus(triggerElement), 0);
+    }
+
     this.clearTimer();
     document.body.removeEventListener('mousemove', this.handleBodyMouseMove);
   }
@@ -249,6 +247,16 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     if (e.key === 'Escape') {
       this.handleClose(e);
     }
+  };
+
+  handleFocus = () => {
+    if (!this.timer) return;
+    this.timer.pause();
+  };
+
+  handleBlur = () => {
+    if (!this.timer) return;
+    this.timer.resume();
   };
 
   handleMouseEnter = () => {
@@ -275,7 +283,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
   };
 
   render() {
-    const SBubble = FocusLock;
+    const SBubble = Root;
     const SDismiss = Button;
     const SContent = Flex;
     const SMessage = 'div';
@@ -291,7 +299,6 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
       icon,
       children,
       action,
-      focusLock,
     } = this.props;
 
     return sstyled(styles)(
@@ -303,13 +310,15 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
         keyframes={[styles['@enter'], styles['@exit']]}
       >
         <SBubble
+          render={Flex}
           type={type}
           ref={this.ref}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           onKeyDown={this.handleKeydown}
           role={type === 'warning' ? 'alert' : undefined}
-          focusLock={focusLock}
         >
           <SDismiss
             aria-haspopup={undefined}

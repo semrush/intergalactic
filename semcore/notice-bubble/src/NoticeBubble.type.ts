@@ -51,6 +51,8 @@ export type NoticeBubbleProps = BoxProps & {
    * If enabled, browser focus will be locked in the notice
    * until it's closed. After close focus should return to the element
    * where it was placed before notice appear.
+   *
+   * @deprecated
    */
   focusLock?: boolean;
   /**
