@@ -3,13 +3,49 @@ import * as path from 'node:path';
 import * as process from 'node:process';
 
 import glob from 'fast-glob';
+import ts from 'typescript';
 // eslint-disable-next-line no-restricted-imports
 import { test, expect } from 'vitest';
 
-async function extractImports(filePath: string) {
+function traverseImports(node: ts.Node, file: string, imports: Set<string>) {
+  if (ts.isImportDeclaration(node)) {
+    const modulePath = node.moduleSpecifier.getText().slice(1, -1);
+
+    if (!modulePath.startsWith('@semcore') || modulePath.startsWith('@semcore/core')) {
+      // console.debug(`Not semcore import "${modulePath}". Skip`);
+      return;
+    }
+
+    if (node.importClause?.phaseModifier === ts.SyntaxKind.TypeKeyword) {
+      // console.debug(`File: ${file}. ModulePath: ${modulePath}. TypeOnly: ${node.importClause.getText()}`);
+      return;
+    }
+
+    const namedBindings = node.importClause?.namedBindings;
+    if (namedBindings && ts.isNamedImportBindings(namedBindings)) {
+      const elements = node.importClause.namedBindings.getChildren();
+      const isAllTypes = elements.length > 0 && elements.every((node) => {
+        return ts.isImportSpecifier(node) && node.isTypeOnly;
+      });
+
+      if (isAllTypes) {
+        // console.debug(`File: ${file}. ModulePath: ${modulePath}. TypeOnly: ${node.importClause.getText()}`);
+        return;
+      }
+    }
+
+    const semcorePackage = modulePath.split('/').slice(0, 2).join('/');
+    imports.add(semcorePackage);
+  } else {
+    ts.forEachChild(node, (childNode) => traverseImports(childNode, file, imports));
+  }
+}
+
+async function extractImports(filePath: string, imports: Set<string>) {
   const content = await fs.readFile(filePath, 'utf8');
-  const importMatches = content.matchAll(/import .* from ['"]([^'";]+)['"]/g);
-  return Array.from(importMatches, (match) => match[1]);
+  const ast = ts.createSourceFile('tmp', content, ts.ScriptTarget.Latest, true);
+
+  traverseImports(ast, filePath, imports);
 }
 
 export function runDependencyCheckTests(component: string) {
@@ -26,15 +62,7 @@ export function runDependencyCheckTests(component: string) {
 
     await Promise.all(
       srcFiles.map(async (filePath) => {
-        const extractedImports = await extractImports(filePath);
-
-        extractedImports.forEach((imp) => {
-          // @semcore/core - peer from peer base-components. We don't need to check it.
-          if (imp.startsWith('@semcore/') && !imp.startsWith('@semcore/core')) {
-            const [scope, packageName] = imp.split('/');
-            allImports.add(`${scope}/${packageName}`);
-          }
-        });
+        await extractImports(filePath, allImports);
       }),
     );
 

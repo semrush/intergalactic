@@ -48,7 +48,7 @@ const Demo = () => {
             <Badge type='soon' />
             <Badge type='unavailable' />
           </Flex>
-          <Flex gap={2} mt={2} p='4px 0' style={{ background: '#000' }}>
+          <Flex gap={2} mt={2} p={4} bg='bg-primary-invert'>
             <Badge type='admin' inverted />
             <Badge type='alpha' inverted />
             <Badge type='beta' inverted />

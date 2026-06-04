@@ -38,7 +38,7 @@ const Demo = (props: DonutPropsWithLabel) => {
         <Donut.Pie dataKey='c' name='Pie 3' />
         {showLabel && (
           <Donut.Label>
-            <Text tag='tspan' fill='#191b23' size={100}>
+            <Text tag='tspan' color='text-primary' size={100}>
               Donut Chart
             </Text>
           </Donut.Label>

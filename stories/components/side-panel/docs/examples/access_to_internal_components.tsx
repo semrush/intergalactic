@@ -13,17 +13,22 @@ const Demo = (props: SidePanelProps) => {
       <SidePanel
         closable={props.closable}
         visible={visible}
+        aria-label='SidePanel example'
         onClose={() => setVisible(false)}
         placement={props.placement}
         disablePreventScroll={props.disablePreventScroll}
       >
         <SidePanel.Overlay>
-          <SidePanel.Panel aria-label='Taking the stage'>
-            <SidePanel.Close />
-            <Text size={300} tag='p'>
-              Taking the Stage: Trends and Strategies for 2024 and Beyond
-            </Text>
-            <Button mt={3}>Read more</Button>
+          <SidePanel.Panel>
+            <SidePanel.Header>
+              <SidePanel.Title mt={3}>Taking the Stage</SidePanel.Title>
+            </SidePanel.Header>
+            <SidePanel.Body>
+              <Text size={300} tag='p'>
+                Trends and Strategies for 2024 and Beyond
+              </Text>
+              <Button size='l' mt={3}>Read more</Button>
+            </SidePanel.Body>
           </SidePanel.Panel>
         </SidePanel.Overlay>
       </SidePanel>

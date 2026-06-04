@@ -283,11 +283,9 @@ const Demo = () => {
         <Box
           flex={1}
           p={3}
-          style={{
-            background: 'var(--intergalactic-bg-primary-success-faint)',
-            borderRadius: '6px',
-            border: '1px solid var(--intergalactic-border-success)',
-          }}
+          bg='bg-primary-success-faint'
+          borderRadius='popper-rounded'
+          border='1px solid var(--intergalactic-border-success)'
         >
           <Text size={200} bold mb={2} color='text-success'>
             ✓ Copy Full Text
@@ -301,11 +299,9 @@ const Demo = () => {
         <Box
           flex={1}
           p={3}
-          style={{
-            background: 'var(--intergalactic-bg-primary-info-faint)',
-            borderRadius: '6px',
-            border: '1px solid var(--intergalactic-border-info)',
-          }}
+          bg='bg-primary-success-faint'
+          borderRadius='popper-rounded'
+          border='1px solid var(--intergalactic-border-info)'
         >
           <Text size={200} bold mb={2} color='text-info'>
             ✓ Different Crop Positions
@@ -320,15 +316,13 @@ const Demo = () => {
       {/* Instructions */}
       <Box
         p={3}
-        style={{
-          background: 'var(--intergalactic-bg-primary-info)',
-          borderRadius: '6px',
-        }}
+        bg='bg-primary-info'
+        borderRadius='popper-rounded'
       >
         <Text size={200} bold mb={2}>
           Try it out:
         </Text>
-        <Text size={100} tag='ol' style={{ paddingLeft: '20px', margin: 0 }}>
+        <Text size={100} tag='ol' style={{ paddingLeft: 'var(--intergalactic-spacing-5x, 20px)', margin: 0 }}>
           <li>Search for: "documentation", "error", "2024", "user"</li>
           <li>Notice how matches stay visible even when text is truncated</li>
           <li>Click on any truncated text to copy the full version</li>

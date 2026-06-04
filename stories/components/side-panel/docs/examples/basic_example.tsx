@@ -1,7 +1,7 @@
 import Button from '@semcore/ui/button';
 import type { SidePanelProps } from '@semcore/ui/side-panel';
 import SidePanel from '@semcore/ui/side-panel';
-import { List } from '@semcore/ui/typography';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = (props: SidePanelProps) => {
@@ -13,19 +13,19 @@ const Demo = (props: SidePanelProps) => {
       <SidePanel
         visible={visible}
         onClose={() => setVisible(false)}
-        aria-label='Documentation'
+        aria-label='SidePanel example'
         placement={props.placement}
         closable={props.closable}
         disablePreventScroll={props.disablePreventScroll}
       >
-        <List size={300} marker={null}>
-          {['Features', 'Pricing', 'Resources', 'Company', 'Extra tools'].map((name, i, arr) => (
-            <React.Fragment key={i}>
-              <List.Item>{name}</List.Item>
-              {i < arr.length - 1}
-            </React.Fragment>
-          ))}
-        </List>
+        <SidePanel.Header>
+          <SidePanel.Title mt={3}>SidePanel Title</SidePanel.Title>
+        </SidePanel.Header>
+        <SidePanel.Body>
+          <Text size={300} tag='p'>
+            SidePanel content
+          </Text>
+        </SidePanel.Body>
       </SidePanel>
     </React.Fragment>
   );

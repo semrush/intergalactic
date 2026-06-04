@@ -91,7 +91,7 @@ const Demo = (props: SelectComponentConfigProps) => {
             </Select.Option>
           ))}
           {filteredOptions.length === 0 && (
-            <Text tag='div' p='6px 8px' size={200} use='secondary'>
+            <Text tag='div' p={2} size={200} use='secondary'>
               Nothing found
             </Text>
           )}

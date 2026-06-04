@@ -1,14 +1,11 @@
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
+import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';
 
-const loremString = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-          facere iste praesentium quae quia repudiandae tempore! Assumenda
-          consequatur cum ducimus, fuga incidunt necessitatibus nulla odit
-          placeat praesentium quidem rerum vero? Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Ducimus facere iste praesentium quae
-          quia repudiandae tempore`;
+const loremString = `As Gregor Samsa awoke one morning from uneasy dreams, he found himself transformed in his bed into a gigantic insect. He lay on his hard, armor-like back, and when he lifted his head a little, he could see his brown, domed belly divided into stiff, arched segments.
+`;
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
@@ -20,19 +17,20 @@ const Demo = () => {
     <>
       <Button onClick={openModal}>Open modal</Button>
       <Modal visible={visible} onClose={closeModal} w={500}>
-        <div style={{ fontSize: '16px' }}>
+        <Flex direction='column'>
           {Array(6)
             .fill(0)
             .map((_, index) => (
-              <p key={index}>{loremString}</p>
+              <Text key={index} size={300} tag='p'>
+                {loremString}
+              </Text>
             ))}
-
           <Flex justifyContent='center' mt={8}>
             <Button use='primary' theme='success' size='l' onClick={closeModal}>
               Got it!
             </Button>
           </Flex>
-        </div>
+        </Flex>
       </Modal>
     </>
   );
