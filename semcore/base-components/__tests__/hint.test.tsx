@@ -1,4 +1,5 @@
 import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
+import { userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import React, { useRef } from 'react';
@@ -22,6 +23,8 @@ describe('Hint', () => {
     Component: HintWithTrigger,
     props: { visible: true, children: 'Hint' },
     expectedDataUiName: 'Hint',
+  });
+
   afterEach(() => {
     cleanup();
     vi.useRealTimers();
