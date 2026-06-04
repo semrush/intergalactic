@@ -293,7 +293,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify pagination number formatting with locale=${item.locale}, totalPages=${item.totalPages}, currentPage=${item.currentPage}, size=${item.size}`, {
       tag: [TAG.PRIORITY_HIGH, '@pagination'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/pagination/tests/examples/pagination-props.tsx', item.locale, { locale: item.locale, totalPages: item.totalPages, currentPage: item.currentPage, size: item.size });
+      await loadPage(page, 'stories/components/pagination/tests/examples/pagination-props.tsx', item.locale, { totalPages: item.totalPages, currentPage: item.currentPage, size: item.size });
 
       await expect(page).toHaveScreenshot();
     });
