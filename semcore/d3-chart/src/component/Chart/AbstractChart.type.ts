@@ -158,6 +158,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Flag to show/hide legend
    */
   showLegend?: boolean;
+  /** Relation between height and width dimensions block */
+  aspect?: number;
+  /** Callback which will be called after changing the block size */
+  onResize?: (size: [number, number], entries: ResizeObserverEntry[]) => void;
   /**
    * Props for Legend
    */

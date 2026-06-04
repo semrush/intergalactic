@@ -14,17 +14,27 @@ function formatDate(value: any) {
 
 const Demo = () => {
   return (
-    <Chart.Area
-      groupKey='time'
-      data={data}
-      plotWidth={500}
-      plotHeight={200}
-      tooltipValueFormatter={formatDate}
-      aria-label='Area chart'
-    />
+    <div
+      style={{
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        resize: 'both',
+        overflow: 'auto',
+        height: '200px',
+      }}
+    >
+      <Chart.Area
+        groupKey='time'
+        data={data}
+        // plotWidth={500}
+        // plotHeight={200}
+        tooltipValueFormatter={formatDate}
+        aria-label='Area chart'
+      />
+    </div>
   );
 };
 
-const data = AreaMockData.Default;
+const data = AreaMockData.Interpolation;
 
 export default Demo;
