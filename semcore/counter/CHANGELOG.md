@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.0] - 2026-06-04
+
+### Added
+
+- Links to the API and examples in the docs.
+
+### Fixed
+
+- Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSCounter` namespace.
+
 ## [17.1.0] - 2026-05-13
 
 ### Added

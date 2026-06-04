@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.0] - 2026-06-04
+
+### Added
+
+- **flex-box**: New props: `bg`, `border`, `borderRadius`.
+- **breakpoints**: Links to the API and examples in the docs.
+- **flex-box**: Links to the API and examples in the docs.
+- **hint**: Links to the API and examples in the docs.
+- **neighbor-location**: Links to the API and examples in the docs.
+- **outside-click**: Links to the API and examples in the docs.
+- **popper**: Links to the API and examples in the docs.
+- **portal**: Links to the API and examples in the docs.
+- **scroll-area**: Links to the API and examples in the docs.
+
+### Changed
+
+- **flex-box**: Added export for types.
+
 ## [17.1.0] - 2026-05-13
 
 ### Added
