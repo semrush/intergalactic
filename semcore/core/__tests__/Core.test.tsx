@@ -3,7 +3,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import type { ButtonHTMLAttributes, HTMLAttributes } from 'react';
 import React from 'react';
 
-import type { IRootComponentProps } from '../src';
+import type { IRootComponentProps, Intergalactic } from '../src';
 import { createComponent, createBaseComponent, Component } from '../src';
 import { CORE_COMPONENT } from '../src/core-types/symbols';
 
@@ -162,7 +162,7 @@ describe('Core', () => {
     'Root Function inside Root Function',
   );
 
-  shouldSupportRef(createComponent<any, typeof RootTestClass>(RootTestClass));
+  assertCoreSupportsRef(createComponent<any, typeof RootTestClass>(RootTestClass));
 
   shouldSupportCallEnhance(RootTestClass, 'Class');
   shouldSupportCallEnhance(RootTestFunc, 'Function');
@@ -298,7 +298,10 @@ describe('Root', () => {
       }
     }
 
-    const Test = createComponent<'button', ButtonHTMLAttributes<HTMLButtonElement>>(TestRoot);
+    const Test = createComponent<
+      Intergalactic.Component<'button', ButtonHTMLAttributes<HTMLButtonElement>>,
+      typeof TestRoot
+    >(TestRoot);
     const { queryByTestId } = render(<Test disabled />);
 
     expect((queryByTestId('root') as HTMLButtonElement).disabled).toBe(true);

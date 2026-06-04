@@ -35,7 +35,7 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    await userEvent.click(getByTestId('label').childNodes[0]);
+    await userEvent.click(getByTestId('label').firstElementChild!);
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 

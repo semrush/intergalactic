@@ -13,13 +13,14 @@ describe('DragAndDrop data-ui-name', () => {
     Component: DragAndDrop,
     props: {
       'aria-label': 'Drag and drop',
+      'onDnD': () => {},
       'children': <DragAndDrop.Draggable aria-label='Draggable item'>Item</DragAndDrop.Draggable>,
     },
     expectedDataUiName: 'DragAndDrop',
   });
 
   const DragAndDropWrapper = ({ children }: { children: React.ReactNode }) => (
-    <DragAndDrop aria-label='Drag and drop'>{children}</DragAndDrop>
+    <DragAndDrop aria-label='Drag and drop' onDnD={() => {}}>{children}</DragAndDrop>
   );
 
   shouldHaveDataUiName({
