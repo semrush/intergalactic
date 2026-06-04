@@ -184,6 +184,11 @@ class HistogramChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * HistogramChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/histogram-chart/histogram-chart-api/|API}
+ */
 export const HistogramChart = createComponent<
   HistogramChartType,
   typeof HistogramChartComponent

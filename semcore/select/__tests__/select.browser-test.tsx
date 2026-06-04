@@ -402,6 +402,68 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
+  test('Verify ArrowUp reaches all enabled options when first options are disabled', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/select/tests/examples/options_checkbox_group_and_hint.tsx', 'en', {
+      option1Disabled: true,
+      option2Disabled: true,
+    });
+
+    await test.step('Verify opens by Tab and Enter without highlighting disabled leading options', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.selectTrigger(page)).toBeFocused();
+      await page.keyboard.press('Enter');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+
+      await expect(locators.options(page).nth(0)).toHaveAttribute('aria-disabled', 'true');
+      await expect(locators.options(page).nth(1)).toHaveAttribute('aria-disabled', 'true');
+      await expect(locators.options(page).nth(0)).not.toHaveClass(/highlighted/);
+      await expect(locators.options(page).nth(1)).not.toHaveClass(/highlighted/);
+      await expect(locators.selectTrigger(page)).toBeFocused();
+    });
+
+    await test.step('Verify ArrowUp wraps to the last enabled option', async () => {
+      await page.keyboard.press('ArrowUp');
+      const option = locators.options(page).nth(5);
+      const optionId = await option.getAttribute('id');
+      if (optionId === null) throw new Error('Last option should have an id');
+      await expect(option).toHaveClass(/highlighted/);
+      await expect(locators.selectTrigger(page)).toHaveAttribute('aria-activedescendant', optionId);
+    });
+
+    await test.step('Verify repeated ArrowUp reaches options with group, checkbox, and hint content', async () => {
+      for (const index of [4, 3, 2]) {
+        await page.keyboard.press('ArrowUp');
+        const option = locators.options(page).nth(index);
+        const optionId = await option.getAttribute('id');
+        if (optionId === null) throw new Error(`Option ${index + 1} should have an id`);
+        await expect(option).toHaveClass(/highlighted/);
+        await expect(locators.selectTrigger(page)).toHaveAttribute('aria-activedescendant', optionId);
+        await expect(locators.options(page).nth(0)).not.toHaveClass(/highlighted/);
+        await expect(locators.options(page).nth(1)).not.toHaveClass(/highlighted/);
+      }
+
+      await expect(locators.optionHint(page)).toBeVisible();
+    });
+
+    await test.step('Verify ArrowUp and ArrowDown wrap past disabled leading options', async () => {
+      await page.keyboard.press('ArrowUp');
+      const lastOption = locators.options(page).nth(5);
+      const lastOptionId = await lastOption.getAttribute('id');
+      if (lastOptionId === null) throw new Error('Last option should have an id');
+      await expect(lastOption).toHaveClass(/highlighted/);
+      await expect(locators.selectTrigger(page)).toHaveAttribute('aria-activedescendant', lastOptionId);
+
+      await page.keyboard.press('ArrowDown');
+      const firstEnabledOption = locators.options(page).nth(2);
+      const firstEnabledOptionId = await firstEnabledOption.getAttribute('id');
+      if (firstEnabledOptionId === null) throw new Error('First enabled option should have an id');
+      await expect(firstEnabledOption).toHaveClass(/highlighted/);
+      await expect(locators.selectTrigger(page)).toHaveAttribute('aria-activedescendant', firstEnabledOptionId);
+    });
+  });
+
   test('Verify custom selected label', {
     tag: [TAG.PRIORITY_MEDIUM, '@select'],
   }, async ({ page }) => {

@@ -33,6 +33,11 @@ class DividerRoot extends Component<
   }
 }
 
+/**
+ * Divider
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/divider/divider-api/|API} | {@link https://developer.semrush.com/intergalactic/components/divider/divider-code/|Examples}
+ */
 const Divider = createComponent<
   NSDivider.Component,
   typeof DividerRoot

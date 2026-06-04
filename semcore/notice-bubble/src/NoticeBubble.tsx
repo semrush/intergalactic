@@ -297,7 +297,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     return sstyled(styles)(
       <Animation
         initialAnimation={initialAnimation}
-        visible={visible ?? true}
+        visible={visible}
         duration={animationDuration}
         // @ts-ignore
         keyframes={[styles['@enter'], styles['@exit']]}
@@ -356,6 +356,11 @@ class ViewWarning extends ViewInfo {
   };
 }
 
+/**
+ * NoticeBubble
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-code/|Examples}
+ */
 const NoticeBubbleContainer = createComponent<
   Intergalactic.Component<'div', NoticeBubbleContainerProps>,
   typeof NoticeBubbleContainerRoot

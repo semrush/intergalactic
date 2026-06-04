@@ -787,6 +787,11 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
   );
 }
 
+/**
+ * Popper
+ *
+ * {@link https://developer.semrush.com/intergalactic/utils/popper/popper-api|API}
+ */
 export const Popper = createComponent<
   typeof PopperType,
   typeof PopperRoot

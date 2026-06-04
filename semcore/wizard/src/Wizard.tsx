@@ -354,6 +354,11 @@ function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
   );
 }
 
+/**
+ * Wizard
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-api/|API} | {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-code/|Examples}
+ */
 const Wizard = createComponent<
   WizardType,
   typeof WizardRoot

@@ -148,6 +148,11 @@ class StackBarRoot extends Component {
   }
 }
 
+/**
+ * StackBar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart-code/|Examples}
+ */
 const StackBar = createElement(StackBarRoot, {
   Bar,
   HorizontalBar,

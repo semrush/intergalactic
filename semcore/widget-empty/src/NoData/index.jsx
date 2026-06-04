@@ -29,4 +29,9 @@ class NoData extends Component {
   }
 }
 
+/**
+ * WidgetEmpty NoData
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/widget-empty/widget-empty-api/|API} | {@link https://developer.semrush.com/intergalactic/components/widget-empty/widget-empty-code/|Examples}
+ */
 export default createComponent(NoData);

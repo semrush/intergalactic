@@ -152,6 +152,11 @@ class VennChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * VennChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/venn-chart/venn-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/venn-chart/venn-chart-code/|Examples}
+ */
 export const VennChart = createComponent<
   VennChartType,
   typeof VennChartComponent

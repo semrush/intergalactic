@@ -28,29 +28,7 @@ SBack {
   z-index: 1;
   top: 8px;
   left: 32px;
-  display: flex;
-  align-items: center;
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
-  font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
-  background: none;
-  padding: 0;
-  border: none;
-  outline: none;
-
-  &:hover {
-    color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.088 0.026 147.7 / 0.583));
-  }
-}
-
-SBackText {
-  margin-left: var(--intergalactic-spacing-1x, 4px);
-  font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 STitle,

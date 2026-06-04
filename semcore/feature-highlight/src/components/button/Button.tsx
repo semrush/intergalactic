@@ -79,6 +79,11 @@ function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean 
   );
 }
 
+/**
+ * Button FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#button|Docs}
+ */
 export const ButtonFH = createComponent<
   HighlightedButtonComponent,
   typeof ButtonFHRoot

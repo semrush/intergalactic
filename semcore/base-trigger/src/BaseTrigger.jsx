@@ -99,6 +99,11 @@ function Addon(props) {
   return sstyled(styles)(<SAddon render={Box} />);
 }
 
+/**
+ * BaseTrigger
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-api/|API} | {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-code/|Examples}
+ */
 const BaseTrigger = createComponent(RootBaseTrigger, {
   Text,
   Addon,

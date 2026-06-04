@@ -128,7 +128,7 @@ const Demo = () => {
           {suggestions.length > 0 && (
             <Select.Menu>
               {suggestions.map((option) => (
-                <Select.Option value={option.value} key={option.value}>
+                <Select.Option value={option.value} key={option.value} selected={false}>
                   <Highlight highlight={query}>{option.title}</Highlight>
                 </Select.Option>
               ))}

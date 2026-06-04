@@ -151,6 +151,40 @@ test.describe(` ${TAG.VISUAL}`, () => {
     });
   });
 
+  // Section 2.5: LinkTrigger inside Select — ellipsis with addons
+  // Verifies truncation still works after removing manual calc() width logic in getTextProps.
+  test.describe('Link Trigger inside Select - ellipsis with addons', () => {
+    const selectSizes = [300, 600] as const;
+    const selectAddonCombos = [
+      { showAddonLeft: true, showAddonRight: false, desc: 'left only' },
+      { showAddonLeft: false, showAddonRight: true, desc: 'right only' },
+      { showAddonLeft: false, showAddonRight: false, loading: true, desc: 'loading' },
+    ];
+
+    selectSizes.forEach((size) => {
+      selectAddonCombos.forEach(({ desc, loading = false, ...addons }) => {
+        test(`Verify LinkTrigger inside Select truncates with ${desc}, size=${size}`, {
+          tag: [TAG.PRIORITY_HIGH, '@link-trigger', '@select', '@ellipsis'],
+        }, async ({ page }) => {
+          await loadPage(
+            page,
+            'stories/components/base-trigger/tests/examples/link-trigger/with-select.tsx',
+            'en',
+            {
+              size,
+              loading,
+              ...addons,
+              ellipsis: { ellipsis: true },
+              w: size < 600 ? 150 : 300,
+            },
+          );
+          await page.waitForTimeout(150);
+          await expect(page).toHaveScreenshot();
+        });
+      });
+    });
+  });
+
   // Section 3: No-ellipsis-hint tests — verify hint does NOT appear when text is not truncated
   test.describe('Link Trigger without ellipsis', () => {
     const noHintVariants = [

@@ -84,6 +84,11 @@ class GroupBarRoot extends Component {
   }
 }
 
+/**
+ * GroupBar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bar-chart/bar-chart-code#grouped-bars|Examples}
+ */
 const GroupBar = createElement(GroupBarRoot, {
   Bar,
   HorizontalBar,

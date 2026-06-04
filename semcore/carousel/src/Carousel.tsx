@@ -747,6 +747,11 @@ function Indicator({ styles, Children }: CarouselIndicatorProps) {
   );
 };
 
+/**
+ * Carousel
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/carousel/carousel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/carousel/carousel-code/|Examples}
+ */
 const Carousel = createComponent<
   typeof CarouselType,
   typeof CarouselRoot

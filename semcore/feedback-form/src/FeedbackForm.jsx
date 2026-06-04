@@ -108,6 +108,11 @@ function Notice(props) {
   return sstyled(styles)(<SNotice render={NoticeSmart} use:theme={theme} use:use={use} />);
 }
 
+/**
+ * FeedbackForm
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-api/|API} | {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-code/|Examples}
+ */
 export default createComponent(FeedbackForm, {
   Item: FeedbackItem,
   Success,

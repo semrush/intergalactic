@@ -506,6 +506,11 @@ function Controls(props) {
 }
 Controls.style = style;
 
+/**
+ * InputNumber
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/input-number/input-number-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-number/input-number-code/|Examples}
+ */
 export default createComponent(InputNumber, {
   Value,
   Controls,
