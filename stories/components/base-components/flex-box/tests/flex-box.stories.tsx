@@ -15,15 +15,6 @@ const bgOptions = [
   'transparent',
 ];
 
-const colorOptions = [
-  'text-primary',
-  'text-secondary',
-  'text-info',
-  'text-success',
-  'text-critical',
-  'text-primary-invert',
-];
-
 const borderOptions = [
   'none',
   '1px solid var(--intergalactic-border-primary)',
@@ -103,10 +94,6 @@ export const BoxAllPropsConfigurable: StoryObj<typeof BoxAllProps> = {
     bg: {
       control: { type: 'select' },
       options: bgOptions,
-    },
-    color: {
-      control: { type: 'select' },
-      options: colorOptions,
     },
     border: {
       control: { type: 'select' },

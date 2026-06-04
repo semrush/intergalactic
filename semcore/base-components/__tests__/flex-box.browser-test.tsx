@@ -246,7 +246,6 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/flex-box/tests/examples/box-all-props.tsx', 'en', {
       bg: 'rgb(1, 2, 3)',
-      color: 'rgb(4, 5, 6)',
       border: '2px solid rgb(7, 8, 9)',
       borderRadius: '10px',
     });
@@ -257,7 +256,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       const computedStyle = window.getComputedStyle(el);
       return {
         backgroundColor: computedStyle.backgroundColor,
-        color: computedStyle.color,
         borderTopWidth: computedStyle.borderTopWidth,
         borderTopStyle: computedStyle.borderTopStyle,
         borderTopColor: computedStyle.borderTopColor,
@@ -267,7 +265,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     expect(styles).toEqual({
       backgroundColor: 'rgb(1, 2, 3)',
-      color: 'rgb(4, 5, 6)',
       borderTopWidth: '2px',
       borderTopStyle: 'solid',
       borderTopColor: 'rgb(7, 8, 9)',

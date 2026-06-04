@@ -77,7 +77,6 @@ const Demo = (props: ExampleProps) => {
         zIndex={props.zIndex}
         textAlign={props.textAlign}
         bg={props.bg}
-        color={props.color}
         border={props.border}
         borderRadius={props.borderRadius}
         innerOutline={props.innerOutline}
