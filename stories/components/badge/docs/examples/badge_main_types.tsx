@@ -14,11 +14,9 @@ const Demo = () => {
       </Flex>
       <Box
         p={4}
-        style={{
-          background: '#191b23',
-          borderRadius: '6px',
-          width: 'fit-content',
-        }}
+        w='fit-content'
+        bg='bg-primary-invert'
+        borderRadius='surface-rounded'
       >
         <Flex gap={2} alignItems='center'>
           <Badge type='admin' inverted />

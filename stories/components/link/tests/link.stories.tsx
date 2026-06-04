@@ -59,7 +59,16 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     },
     ellipsis: {
       control: { type: 'select' },
-      options: ['false', 'true', 'cropPosition:middle', 'cropPosition:end', 'cropPosition:end maxLine:2', 'cropPosition:end maxLine:6', 'cropPosition:middle lastRequiredSymbols:3', 'cropPosition:middle lastRequiredSymbols:0'],
+      options: [
+        'false',
+        'true',
+        'cropPosition:middle',
+        'cropPosition:end',
+        'cropPosition:end maxLine:2',
+        'cropPosition:end maxLine:6',
+        'cropPosition:middle lastRequiredSymbols:3',
+        'cropPosition:middle lastRequiredSymbols:0',
+      ],
       mapping: {
         'false': { ellipsis: false },
         'true': { ellipsis: true },
@@ -67,8 +76,14 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
         'cropPosition:end': { 'ellipsis:cropPosition': 'end' },
         'cropPosition:end maxLine:2': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 2 },
         'cropPosition:end maxLine:6': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 6 },
-        'cropPosition:middle lastRequiredSymbols:3': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 3 },
-        'cropPosition:middle lastRequiredSymbols:0': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 0 },
+        'cropPosition:middle lastRequiredSymbols:3': {
+          'ellipsis:cropPosition': 'middle',
+          'ellipsis:lastRequiredSymbols': 3,
+        },
+        'cropPosition:middle lastRequiredSymbols:0': {
+          'ellipsis:cropPosition': 'middle',
+          'ellipsis:lastRequiredSymbols': 0,
+        },
       },
     },
     hintPlacement: {
@@ -91,7 +106,6 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
       options: ['slot', 'prop'],
       description: 'Pass icon addons as Link.Addon children or addonLeft/addonRight props',
     },
-
   },
   args: BasicUsageProps,
 };
