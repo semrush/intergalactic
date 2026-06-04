@@ -1,10 +1,10 @@
 import { ButtonLink } from '@semcore/button';
+import CloseM from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/m';
+import Input from '@semcore/input';
+import { Text } from '@semcore/typography';
 import { NoData } from '@semcore/widget-empty';
 import algoliasearch from 'algoliasearch/lite';
-import CloseM from 'intergalactic/icon/Close/m';
-import SearchM from 'intergalactic/icon/Search/m';
-import Input from 'intergalactic/input';
-import { Text } from 'intergalactic/typography';
 import React, { useState, useEffect } from 'react';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import { InstantSearch } from 'react-instantsearch/dom';

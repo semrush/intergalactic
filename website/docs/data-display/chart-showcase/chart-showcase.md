@@ -582,6 +582,12 @@ const group = {
     route: '../scatterplot-chart/scatterplot-chart',
     type: 'charts',
   },
+    radialtree: {
+    title: 'Radial Tree chart',
+    route: '../radial-tree-chart/radial-tree-chart',
+    disabled: false,
+    type: 'charts',
+  },
   heatmap: {
     title: 'Heatmap',
     route: '../heatmap/heatmap',
@@ -597,12 +603,6 @@ const group = {
   kagi: {
     title: 'Kagi chart',
     route: '../kagi-chart/kagi-chart',
-    disabled: true,
-    type: 'charts',
-  },
-  radialtree: {
-    title: 'Radial Tree chart',
-    route: '../radial-tree-chart/radial-tree-chart',
     disabled: true,
     type: 'charts',
   },

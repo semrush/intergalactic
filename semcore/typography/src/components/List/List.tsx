@@ -74,6 +74,11 @@ const Item = createComponent<
   typeof ItemRoot
 >(ItemRoot, { Content });
 
+/**
+ * List
+ *
+ * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#list|API} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
+ */
 const List = createComponent<
   NSList.Component,
   typeof ListRoot

@@ -15,7 +15,26 @@ export const locators = {
   title: (page: Page) => page.locator('h6[data-ui-name="SidePanel.Title"]'),
   back: (page: Page) => page.locator('[data-ui-name="SidePanel.Back"]'),
   dialog: (page: Page) => page.getByRole('dialog'),
+  hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
+};
+
+const collectRuntimeErrors = (page: Page) => {
+  const errors: string[] = [];
+
+  page.on('console', (msg) => {
+    const text = msg.text();
+
+    if (msg.type() === 'error' && !text.includes('ReactDOM.render is no longer supported')) {
+      errors.push(text);
+    }
+  });
+
+  page.on('pageerror', (error) => {
+    errors.push(error.message);
+  });
+
+  return errors;
 };
 
 /* =====================================================
@@ -177,6 +196,38 @@ test.describe(`${TAG.VISUAL} `, () => {
     }
     await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
+  });
+
+  test('Verify SidePanel.Back with long text truncates via ellipsis', {
+    tag: [TAG.PRIORITY_HIGH, '@side-panel', '@ellipsis', '@button'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx',
+      'en',
+      {
+        backText: 'This is a very long Back navigation label that must be truncated',
+        backWMax: 120,
+        withFooter: true,
+      },
+    );
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.back(page).waitFor({ state: 'visible' });
+
+    await test.step('Back container width is constrained by wMax', async () => {
+      const backBox = await locators.back(page).boundingBox();
+      expect(backBox!.width).toBeLessThanOrEqual(121);
+    });
+
+    await test.step('Back inner text node is actually truncated', async () => {
+      const textNode = locators.back(page).locator('[data-ui-name="ButtonLink.Text"]');
+      const isTruncated = await textNode.evaluate(
+        (el) => el.scrollWidth > el.clientWidth,
+      );
+      expect(isTruncated).toBe(true);
+    });
   });
 });
 
@@ -410,5 +461,55 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await page.keyboard.press('Enter');
     await page.getByText('Close').waitFor({ state: 'visible' });
     await expect(locators.header(page)).toHaveCSS('flex-shrink', '0');
+  });
+
+  test('Verify SidePanel title appears asynchronously in header', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@side-panel',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    const asyncTitle = 'My Article Title';
+    const errors = collectRuntimeErrors(page);
+
+    await loadPage(page, 'stories/components/side-panel/tests/examples/async-title-in-header.tsx', 'en');
+
+    await page.getByRole('button', { name: 'Show SidePanel with async title' }).click();
+    const dialog = locators.dialog(page);
+    const title = dialog.locator('h6[data-ui-name="SidePanel.Title"]');
+
+    await dialog.waitFor({ state: 'visible' });
+    await expect(title).toHaveText('', { timeout: 1000 });
+
+    await expect(title).toHaveText(asyncTitle, { timeout: 2000 });
+
+    await title.hover();
+    await expect(locators.hint(page)).toHaveText(asyncTitle);
+
+    expect(errors).toEqual([]);
+  });
+
+  test('Verify SidePanel title clears asynchronously in header', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@side-panel',
+      '@ellipsis'],
+  }, async ({ page }) => {
+    const initialTitle = 'My Article Title';
+    const errors = collectRuntimeErrors(page);
+
+    await loadPage(page, 'stories/components/side-panel/tests/examples/async-title-in-header.tsx', 'en');
+
+    await page.getByRole('button', { name: 'Show SidePanel with cleared title' }).click();
+    const dialog = locators.dialog(page);
+    const title = dialog.locator('h6[data-ui-name="SidePanel.Title"]');
+
+    await dialog.waitFor({ state: 'visible' });
+    await expect(title).toHaveText(initialTitle, { timeout: 1000 });
+
+    await expect(title).toHaveText('', { timeout: 2000 });
+    await expect(locators.hint(page)).toHaveCount(0);
+
+    expect(errors).toEqual([]);
   });
 });

@@ -166,6 +166,11 @@ function ScatterPlotTooltip(props) {
   return sstyled(props.styles)(<SScatterPlotTooltip render={Tooltip} excludeAnchorProps />);
 };
 
+/**
+ * ScatterPlot
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/scatterplot-chart/scatterplot-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/scatterplot-chart/scatterplot-chart-code/|Examples}
+ */
 const ScatterPlot = createElement(ScatterPlotRoot, {
   Tooltip: [ScatterPlotTooltip, Tooltip._______childrenComponents],
 });

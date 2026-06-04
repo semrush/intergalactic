@@ -94,5 +94,8 @@ declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> 
   ClearButton: typeof BaseTrigger;
 };
 
+/**
+ * @deprecated. Use one this: ButtonTrigger, FilterTrigger, LinkTrigger.
+ */
 export default BaseTrigger;
 export { ButtonTrigger, LinkTrigger, FilterTrigger };

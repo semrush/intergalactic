@@ -105,7 +105,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-trigger.tsx', 'pt', {
-        size: 'm', state: 'normal', disabled: false, neighborLocation: 'right',
+        size: 'm', state: 'normal', disabled: false, neighborLocation: 'right', locale: 'pt',
       });
 
       const inputs = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');

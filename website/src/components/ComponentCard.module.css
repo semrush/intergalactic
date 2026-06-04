@@ -16,7 +16,7 @@
   text-decoration: underline;
 }
 .card[disabled] {
-  opacity: calc(var(--intergalactic-disabled-opacity) + 0.1);
+  opacity: calc(var(--intergalactic-disabled-opacity) - 0.15);
   pointer-events: none;
 }
 a.linkUi {

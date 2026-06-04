@@ -53,6 +53,11 @@ function Value(props: IRootComponentProps & { onChange: () => void }) {
   return sstyled(props.styles)(<SToggle render={Switch.Value} onChange={props.onChange} />);
 }
 
+/**
+ * Switch FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#switch|Docs}
+ */
 export const SwitchFH = createComponent<
   HighlightedSwitchComponent,
   typeof SwitchFHRoot

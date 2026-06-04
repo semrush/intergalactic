@@ -28,6 +28,7 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
   expect(colorItem).not.toBeVisible();
   const deviceItem = within(document.body).getByRole('menuitem', { name: 'Device' });
   await userEvent.click(deviceItem);
+  await new Promise((resolve) => setTimeout(resolve, 100));
   const deviceOption = within(document.body).getByRole('option', { name: 'Phone' });
   expect(deviceOption).toBeVisible();
   await userEvent.click(deviceOption);
@@ -38,6 +39,7 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
   expect(deviceItem).not.toBeVisible();
   const languageItem = within(document.body).getByRole('menuitem', { name: 'Language' });
   await userEvent.click(languageItem);
+  await new Promise((resolve) => setTimeout(resolve, 100));
   const languageOption = within(document.body).getByRole('option', { name: 'Spanish' });
   expect(languageOption).toBeVisible();
   await userEvent.click(languageOption);
@@ -47,6 +49,7 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
   expect(languageItem).not.toBeVisible();
   const materialItem = within(document.body).getByRole('menuitem', { name: 'Material' });
   await userEvent.click(materialItem);
+  await new Promise((resolve) => setTimeout(resolve, 100));
   const materialOption = within(document.body).getByRole('option', { name: 'Glass' });
   expect(materialOption).toBeVisible();
   await userEvent.click(materialOption);
@@ -57,6 +60,7 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
   expect(languageItem).not.toBeVisible();
   const shapeItem = within(document.body).getByRole('menuitem', { name: 'Shape' });
   await userEvent.click(shapeItem);
+  await new Promise((resolve) => setTimeout(resolve, 100));
   const shapeOption = within(document.body).getByRole('option', { name: 'Star' });
   expect(shapeOption).toBeVisible();
   await userEvent.click(shapeOption);

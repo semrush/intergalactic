@@ -97,6 +97,39 @@ describe('FeedbackForm', () => {
     expect(Input.attributes.state.value).toBe('invalid');
     unmount();
   });
+
+  test('Verify Escape bubbles from controlled invalid item tooltip', async () => {
+    const required = (value) => (value ? undefined : 'Required');
+    const onSubmit = vi.fn();
+    const onKeyDown = vi.fn();
+
+    const { getByTestId, unmount } = render(
+      <FeedbackForm onSubmit={onSubmit} validateOnBlur={false} onKeyDown={onKeyDown}>
+        <FeedbackForm.Item
+          name='description'
+          validate={required}
+          tag='input'
+          visible
+          data-testid='input'
+        />
+        <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
+      </FeedbackForm>,
+    );
+
+    const Input = getByTestId('input');
+
+    await userEvent.click(Input);
+    await userEvent.click(getByTestId('submit'));
+
+    expect(Input.getAttribute('aria-invalid')).toBe('true');
+
+    await userEvent.click(Input);
+    await userEvent.keyboard('[Escape]');
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onKeyDown.mock.calls[0][0].key).toBe('Escape');
+    unmount();
+  });
 });
 
 describe('FeedbackForm.Item', () => {

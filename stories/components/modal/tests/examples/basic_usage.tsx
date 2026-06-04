@@ -27,6 +27,7 @@ const Demo = (props: BasicModalProps) => {
   const [visible, setVisible] = React.useState(false);
   const handleOpen = React.useCallback(() => setVisible(true), []);
   const handleClose = React.useCallback(() => setVisible(false), []);
+  const modalTabIndex = !closable && !showCloseButton ? 0 : undefined;
 
   return (
     <React.Fragment>
@@ -40,6 +41,7 @@ const Demo = (props: BasicModalProps) => {
         ghost={ghost}
         w={w}
         locale={locale}
+        tabIndex={modalTabIndex}
         {...restProps}
       >
         <Modal.Title>{title}</Modal.Title>
