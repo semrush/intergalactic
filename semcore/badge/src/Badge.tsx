@@ -1,5 +1,6 @@
 import type { BoxProps } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -48,6 +49,8 @@ export type BadgeProps = BadgeMargins & {
    * */
   color?: 'white' | 'gray20' | string;
 };
+
+type BadgeComponent = Intergalactic.Component<'span', BadgeProps>;
 
 class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   static displayName = 'Badge';
@@ -115,4 +118,12 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   }
 }
 
-export const Badge = createComponent<'span', BadgeProps>(RootBadge);
+/**
+ * Badge
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/badge/badge-api/|API} | {@link https://developer.semrush.com/intergalactic/components/badge/badge-code/|Examples}
+ */
+export const Badge = createComponent<
+  BadgeComponent,
+  typeof RootBadge
+>(RootBadge);

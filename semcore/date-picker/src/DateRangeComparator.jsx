@@ -204,6 +204,11 @@ function PeriodsControls(props) {
   return sstyled(styles)(<SPeriodsControls render={Flex} p={4} gap={2} />);
 }
 
+/**
+ * DateRangeComparator
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-api#daterangecomparator|API} | {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-code#daterangecomparator|Examples}
+ */
 const DateRangeComparator = createComponent(
   DateRangeComparatorRoot,
   {

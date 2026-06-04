@@ -29,4 +29,12 @@ export type DonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
   onClickPie?: (key: DataKey, e: React.SyntheticEvent) => void;
 };
 
+export type DonutChartDefaultProps = {
+  direction: 'row-reverse';
+  alignItems: 'flex-start';
+  innerRadius: 100;
+  marginX: 0;
+  marginY: 0;
+};
+
 export type DonutChartType = Intergalactic.Component<typeof Flex, DonutChartProps>;

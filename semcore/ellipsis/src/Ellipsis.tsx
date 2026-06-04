@@ -71,6 +71,18 @@ type EllipsisProps = BoxProps &
     includeTooltipProps?: string[];
   };
 
+type DefaultProps = {
+  trim: 'end';
+  tooltip: true;
+  includeTooltipProps: typeof defaultTooltipProps;
+  __excludeProps: AsProps['__excludeProps'];
+};
+
+type EllipsisComponent = Intergalactic.Component<'div', EllipsisProps> & {
+  Content: typeof Box;
+  Popper: typeof Tooltip.Popper;
+};
+
 const defaultTooltipProps = [
   'title',
   'theme',
@@ -95,12 +107,19 @@ const defaultTooltipProps = [
 const forcedAdvancedMode = { forcedAdvancedMode: true } as any;
 const noAdvancedMode = {} as any;
 
-class RootEllipsis extends Component<AsProps> {
+class RootEllipsis extends Component<
+  AsProps,
+  [],
+  {},
+  {},
+  {},
+  DefaultProps
+> {
   static displayName = 'Ellipsis';
   static style = style;
-  static defaultProps: AsProps = {
-    trim: 'end',
-    tooltip: true,
+  static defaultProps = {
+    trim: 'end' as const,
+    tooltip: true as const,
     includeTooltipProps: defaultTooltipProps,
     __excludeProps: ['title'],
   };
@@ -322,12 +341,17 @@ function Content({ styles, Children }: EllipsisContentAsProps) {
   ) as any;
 }
 
-const Ellipsis = createComponent(RootEllipsis, {
+/**
+ * Ellipsis
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis-api/|API} | {@link https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis-code/|Examples}
+ */
+const Ellipsis = createComponent<
+  EllipsisComponent,
+  typeof RootEllipsis
+>(RootEllipsis, {
   Content,
   Popper: Tooltip.Popper,
-}) as any as Intergalactic.Component<'div', EllipsisProps> & {
-  Content: typeof Box;
-  Popper: typeof Tooltip.Popper;
-};
+});
 
 export default Ellipsis;

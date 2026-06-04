@@ -1,12 +1,15 @@
 import { Box, Flex } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import Dropdown from '@semcore/dropdown';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import React from 'react';
 
-import { Item, Colors, ColorsCustom, InputColor } from './components';
-import PaletteManagerRoot from './PaletteManager';
+import type { NSColorPicker } from './ColorPicker.type';
+import Item from './components/Item';
+import type { ItemProps } from './components/Item.type';
 import style from './style/color-picker.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -25,44 +28,18 @@ const defaultColors = [
   '#C7EE96',
 ];
 
-type RootAsProps = {
-  defaultVisible?: boolean;
-  visible?: boolean;
-  defaultValue?: string;
-  value?: string;
-  onChange?: (value: string, event: React.ChangeEvent) => void;
-  colors?: string[];
-  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
-  displayLabel?: boolean;
-  styles?: React.CSSProperties;
-  Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-
-type TriggerAsProps = {
-  styles?: React.CSSProperties;
-  value?: string;
-  popperVisible: boolean;
-  Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-
-type PopperAsProps = {
-  styles?: React.CSSProperties;
-  Children: React.FC;
-  children?: React.ReactNode;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-
-type ItemAsProps = {
-  value: string;
-};
-
-class ColorPickerRoot extends Component<RootAsProps, [], { value: null; visible: boolean }> {
+class ColorPickerRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSColorPicker.Component>,
+  typeof ColorPickerRoot.enhance,
+  NSColorPicker.Handlers,
+  WithI18nEnhanceProps,
+  {},
+  NSColorPicker.DefaultProps
+> {
   static displayName = 'ColorPicker';
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   static defaultProps = () => ({
     defaultVisible: false,
@@ -76,7 +53,7 @@ class ColorPickerRoot extends Component<RootAsProps, [], { value: null; visible:
         <ColorPicker.Popper />
       </>
     ),
-  });
+  } as const);
 
   uncontrolledProps() {
     return {
@@ -85,7 +62,7 @@ class ColorPickerRoot extends Component<RootAsProps, [], { value: null; visible:
     };
   }
 
-  bindHandlerItemClick = (value: string) => (event: React.MouseEvent | React.KeyboardEvent) => {
+  bindHandlerItemClick = (value: ItemProps['value']) => (event: React.MouseEvent | React.KeyboardEvent) => {
     this.handlers.value(value, event);
     this.handlers.visible(false, event);
     event.preventDefault();
@@ -118,11 +95,12 @@ class ColorPickerRoot extends Component<RootAsProps, [], { value: null; visible:
     };
   }
 
-  getItemProps(props: ItemAsProps) {
-    const { value, displayLabel, getI18nText } = this.asProps;
+  getItemProps(props: ItemProps) {
+    const { value, displayLabel, getI18nText, uid } = this.asProps;
     const isSelected = value === props.value;
 
     return {
+      uid,
       displayLabel,
       onClick: this.bindHandlerItemClick(props.value),
       onKeyDown: (event: React.KeyboardEvent) => {
@@ -153,7 +131,9 @@ class ColorPickerRoot extends Component<RootAsProps, [], { value: null; visible:
   }
 }
 
-export function Trigger(props: TriggerAsProps) {
+function Trigger(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSColorPicker.Trigger.Component, typeof ColorPickerRoot, 'Trigger'>,
+) {
   const { Children, getI18nText, value } = props;
 
   const label = React.useMemo(() => {
@@ -171,7 +151,10 @@ export function Trigger(props: TriggerAsProps) {
   );
 }
 
-const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
+const DefaultTrigger = React.forwardRef(function (
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSColorPicker.Trigger.Component, typeof ColorPickerRoot, 'Trigger'>,
+  ref,
+) {
   const { styles, value } = props;
   const SDefaultTrigger = Root;
   const STriggerCircle = Flex;
@@ -181,32 +164,63 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
       <STriggerCircle justifyContent='center' alignItems='center' data-value={value} />
       <ChevronDownM tabIndex={undefined} color='gray-800' />
     </SDefaultTrigger>,
-  ) as React.ReactElement;
+  );
 });
 
-export function Popper(props: PopperAsProps) {
+function Popper(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSColorPicker.Popper.Component, typeof ColorPickerRoot, 'Popper'>,
+) {
   const { styles, Children, getI18nText, children } = props;
   const SColorPickerPopper = Root;
 
   return sstyled(styles)(
     <SColorPickerPopper render={Dropdown.Popper} aria-label={getI18nText('palette')}>
-      {children ? <Children /> : <ColorPicker.Colors getI18nText={props.getI18nText} />}
+      {children ? <Children /> : <ColorPicker.Colors />}
     </SColorPickerPopper>,
   );
 }
 
-const ColorPicker = createComponent(ColorPickerRoot, {
+function Colors(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSColorPicker.Colors.Component, typeof ColorPickerRoot, 'Colors'>,
+) {
+  const { Children, styles, colors, getI18nText } = props;
+  const SColors = Root;
+
+  return sstyled(styles)(
+    <SColors
+      render={Box}
+      role='listbox'
+      aria-orientation='horizontal'
+      aria-label={getI18nText('presetColors')}
+    >
+      {Children.origin
+        ? (
+            <Children />
+          )
+        : (
+            // TODO: Re-think the component structure.
+            // @ts-ignore
+            colors?.map((color) => <ColorPicker.Item value={color} key={color} />)
+          )}
+    </SColors>,
+  );
+}
+
+/**
+ * ColorPicker
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-code/|Examples}
+ */
+const ColorPicker = createComponent<
+  NSColorPicker.Component,
+  typeof ColorPickerRoot
+>(ColorPickerRoot, {
   Trigger,
   Popper,
-  Item,
   Colors,
-}) as any;
+  Item,
+});
 
-const PaletteManager = createComponent(PaletteManagerRoot, {
-  Item: ColorPicker.Item,
-  Colors: ColorsCustom,
-  InputColor,
-}) as any;
+export { defaultColors };
 
-export { PaletteManager, defaultColors };
 export default ColorPicker;

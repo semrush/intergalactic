@@ -14,13 +14,16 @@ import style from './style/accordion.shadow.css';
 class RootAccordion extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSAccordion.Component>,
   typeof RootAccordion.enhance,
-  NSAccordion.Handlers
+  NSAccordion.Handlers,
+  {},
+  {},
+  NSAccordion.DefaultProps
 > {
   static displayName = 'Accordion';
   static style = style;
   static defaultProps = {
     defaultValue: [],
-    use: 'secondary',
+    use: 'secondary' as const,
   };
 
   static enhance = [
@@ -209,16 +212,27 @@ function Collapse(
   );
 }
 
-const Item = createComponent(RootItem, {
+const Item = createComponent<
+  NSAccordion.Item.Component,
+  typeof RootItem
+>(RootItem, {
   Toggle,
   Chevron,
   ToggleButton,
   Collapse,
-}) as NSAccordion.Item.Component;
+});
 
-const Accordion = createComponent(RootAccordion, {
+/**
+ * Accordion
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/accordion/accordion-api/|API} | {@link https://developer.semrush.com/intergalactic/components/accordion/accordion-code/|Examples}
+ */
+const Accordion = createComponent<
+  NSAccordion.Component,
+  typeof RootAccordion
+>(RootAccordion, {
   Item,
-}) as unknown as NSAccordion.Component;
+});
 
 export const wrapAccordion = <PropsExtending extends {}>(
   wrapper: (

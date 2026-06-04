@@ -122,4 +122,9 @@ class PlotRoot extends Component {
   }
 }
 
+/**
+ * Plot
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-api#plot|API} | {@link https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#chart-plot|Examples}
+ */
 export default createComponent(PlotRoot);

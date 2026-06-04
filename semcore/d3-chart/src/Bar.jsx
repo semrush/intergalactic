@@ -198,4 +198,9 @@ function getRect({ x, y, width, height, radius, position }) {
   return roundedPath(x, y, width, height, radius);
 }
 
+/**
+ * Bar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bar-chart/bar-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bar-chart/bar-chart-code/|Examples}
+ */
 export default createElement(BarRoot, { Background });

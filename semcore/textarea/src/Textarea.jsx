@@ -137,4 +137,9 @@ class Textarea extends Component {
   }
 }
 
+/**
+ * STextarea
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/textarea/textarea-api/|API} | {@link https://developer.semrush.com/intergalactic/components/textarea/textarea-code/|Examples}
+ */
 export default createComponent(Textarea);

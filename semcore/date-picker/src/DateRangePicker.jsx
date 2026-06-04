@@ -112,6 +112,11 @@ class DateRangePickerRoot extends RangePickerAbstract {
   }
 }
 
+/**
+ * DateRangePicker
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-api#daterangepicker|API} | {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-code/|Examples}
+ */
 const DateRangePicker = createComponent(
   DateRangePickerRoot,
   {

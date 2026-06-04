@@ -109,6 +109,11 @@ function Content(props) {
   return sstyled(styles)(<SContent render={Box} />);
 }
 
+/**
+ * SpinContainer
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/spin-container/spin-container-api/|API} | {@link https://developer.semrush.com/intergalactic/components/spin-container/spin-container-code/|Examples}
+ */
 const SpinContainer = createComponent(SpinContainerRoot, {
   Overlay,
   Content,

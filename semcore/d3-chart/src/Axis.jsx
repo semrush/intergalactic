@@ -411,6 +411,11 @@ class XAxisRoot extends AxisRoot {
   };
 }
 
+/**
+ * XAxis
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-api#axis|API}
+ */
 const XAxis = createElement(XAxisRoot, {
   Ticks,
   Grid,
@@ -426,6 +431,11 @@ class YAxisRoot extends AxisRoot {
   };
 }
 
+/**
+ * YAxis
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-api#axis|API}
+ */
 const YAxis = createElement(YAxisRoot, {
   Ticks,
   Grid,

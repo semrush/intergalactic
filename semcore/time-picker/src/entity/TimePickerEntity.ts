@@ -68,11 +68,15 @@ class TimePickerEntity {
 
     if (Number.isNaN(numberHours)) return hours;
 
-    if (this.meridiem === 'AM') {
-      return this.withLeadingZero(numberHours === 12 ? 0 : numberHours);
+    if (this._is12Hour) {
+      if (this.meridiem === 'AM') {
+        return this.withLeadingZero(numberHours === 12 ? 0 : numberHours);
+      }
+
+      return this.withLeadingZero(numberHours < 12 ? numberHours + 12 : numberHours);
     }
 
-    return this.withLeadingZero(numberHours < 12 ? numberHours + 12 : numberHours);
+    return this.withLeadingZero(numberHours);
   }
 
   toggleMeridiem() {

@@ -24,16 +24,17 @@ class TabLineRoot extends Component<
   typeof TabLineRoot.enhance,
   NSTabLine.Handlers,
   {},
-  State
+  State,
+  NSTabLine.DefaultProps
 > {
   static displayName = 'TabLine';
   static style = style;
   static defaultProps = {
-    defaultValue: null,
+    defaultValue: 0,
     size: 'm',
     underlined: true,
     behavior: 'auto',
-  };
+  } as const;
 
   static enhance = [a11yEnhance({
     onNeighborChange: (neighborElement, props) => {
@@ -248,9 +249,17 @@ function Addon(
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
-const TabLine = createComponent(TabLineRoot, {
+/**
+ * TabLine
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tab-line/tab-line-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tab-line/tab-line-code/|Examples}
+ */
+const TabLine = createComponent<
+  NSTabLine.Component,
+  typeof TabLineRoot
+>(TabLineRoot, {
   Item: [TabLineItem, { Text, Addon }],
-}) as unknown as NSTabLine.Component;
+});
 
 export const wrapTabLine = <PropsExtending extends {}>(wrapper: (
   props: Intergalactic.InternalTypings.UntypeRefAndTag<

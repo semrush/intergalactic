@@ -1,5 +1,5 @@
 import EditM from '@semcore/icon/Edit/m';
-import type { TagProps } from '@semcore/ui/tag';
+import type { NSTag } from '@semcore/ui/tag';
 import { TagContainer } from '@semcore/ui/tag';
 import React from 'react';
 
@@ -13,7 +13,7 @@ type AdditionalJSXProps = {
   addon: (typeof Addons)[number];
   closeIcon: boolean;
 };
-export type TagJSXProps = JSXProps<TagProps> & AdditionalJSXProps;
+export type TagJSXProps = JSXProps<NSTag.Props> & AdditionalJSXProps;
 
 function getJSX(props: TagJSXProps) {
   return (

@@ -1,6 +1,5 @@
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import type { RefObject } from 'react';
 import React from 'react';
 
@@ -15,7 +14,7 @@ const EVENT_NAME = 'CHANGE';
 
 export type NoticeItem = (NoticeBubbleInfoProps | NoticeBubbleWarningProps) & {
   uid: number;
-  visible?: boolean;
+  visible: boolean;
   forwardRef: RefObject<HTMLElement>;
   onClose: () => void;
 };
@@ -40,7 +39,7 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
     const item = {
       type: 'info',
       uid,
-      visible: props.initialAnimation ? true : undefined,
+      visible: true,
       forwardRef: ref,
       ...props,
       onClose: callAllEventHandlers(props.onClose, () => {

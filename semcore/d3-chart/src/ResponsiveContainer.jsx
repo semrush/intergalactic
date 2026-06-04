@@ -83,6 +83,11 @@ class ResponsiveContainerRoot extends Component {
   }
 }
 
+/**
+ * ResponsiveContainer
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-api#responsivecontainer|API}
+ */
 const ResponsiveContainer = createComponent(ResponsiveContainerRoot);
 
 export default ResponsiveContainer;

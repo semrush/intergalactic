@@ -13,7 +13,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker />;
 ```
 
-<TypesView type="ColorPickerProps" :types={...types} />
+<TypesView type="NSColorPicker.Props" :types={...types} />
 
 ## ColorPicker.Trigger
 
@@ -42,7 +42,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Colors />;
 ```
 
-<TypesView type="ColorsProps" :types={...types} />
+<TypesView type="NSColorPicker.Colors.Props" :types={...types} />
 
 ## ColorPicker.Item
 
@@ -68,7 +68,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager />;
 ```
 
-<TypesView type="PaletteManagerProps" :types={...types} />
+<TypesView type="NSPaletteManager.Props" :types={...types} />
 
 ## PaletteManager.Colors
 
@@ -79,7 +79,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Colors />;
 ```
 
-<TypesView type="ColorsCustomProps" :types={...types} />
+<TypesView type="NSPaletteManager.Colors.Props" :types={...types} />
 
 ## PaletteManager.Item
 
@@ -105,6 +105,6 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.InputColor />;
 ```
 
-<TypesView type="InputColorProps" :types={...types} />
+<TypesView type="NSPaletteManager.InputColor.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
