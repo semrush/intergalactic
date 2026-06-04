@@ -2,7 +2,6 @@ import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import React, { useRef } from 'react';
-import { userEvent } from 'storybook/test';
 
 import { Hint, PortalProvider } from '../src';
 
@@ -19,12 +18,13 @@ const HintWithTrigger = ({ children, ...props }: any) => {
 };
 
 describe('Hint', () => {
-  afterEach(cleanup);
-
   shouldHaveDataUiName({
     Component: HintWithTrigger,
     props: { visible: true, children: 'Hint' },
     expectedDataUiName: 'Hint',
+  afterEach(() => {
+    cleanup();
+    vi.useRealTimers();
   });
 
   test('Should support controlled visible mode', async () => {
@@ -77,15 +77,27 @@ describe('Hint', () => {
 
     const { getByTestId } = render(<TestComponent />);
 
-    await userEvent.hover(getByTestId('trigger'));
+    fireEvent.mouseEnter(getByTestId('trigger'));
 
-    await new Promise((resolve) => setTimeout(resolve, 70));
-    expect(handleChange).toHaveBeenCalledWith(true);
+    await waitFor(() => {
+      expect(handleChange).toHaveBeenCalledTimes(1);
+      expect(handleChange).toHaveBeenLastCalledWith(true);
+    });
 
-    await userEvent.unhover(getByTestId('trigger'));
+    await waitFor(() => {
+      const hint = document.body.querySelector('[data-ui-name="Hint"]');
+      expect(hint).toBeInstanceOf(HTMLElement);
+      expect((hint as HTMLElement).style.left).not.toBe('');
+      expect((hint as HTMLElement).style.top).not.toBe('');
+      expect((hint as HTMLElement).style.cssText).toContain('--keyframesInitialize');
+    });
 
-    await new Promise((resolve) => setTimeout(resolve, 70));
-    expect(handleChange).toHaveBeenCalledWith(false);
+    fireEvent(getByTestId('trigger'), new MouseEvent('mouseleave', { bubbles: false }));
+
+    await waitFor(() => {
+      expect(handleChange).toHaveBeenCalledTimes(2);
+      expect(handleChange).toHaveBeenLastCalledWith(false);
+    });
   });
 
   test('Should use defaultVisible for initial state', () => {
@@ -106,7 +118,7 @@ describe('Hint', () => {
     expect(document.body.querySelector('[data-testid="hint"]')).not.toBeNull();
   });
 
-  test('Should not show hint when children is false', async () => {
+  test('Should not show hint when children is false', () => {
     vi.useFakeTimers();
     const handleChange = vi.fn();
 
@@ -127,14 +139,10 @@ describe('Hint', () => {
     fireEvent.mouseEnter(getByTestId('trigger'));
     vi.advanceTimersByTime(60);
 
-    await waitFor(() => {
-      expect(handleChange).not.toHaveBeenCalled();
-    });
-
-    vi.useRealTimers();
+    expect(handleChange).not.toHaveBeenCalled();
   });
 
-  test('Should not show hint when children is empty string', async () => {
+  test('Should not show hint when children is empty string', () => {
     vi.useFakeTimers();
     const handleChange = vi.fn();
 
@@ -156,11 +164,7 @@ describe('Hint', () => {
     fireEvent.mouseEnter(getByTestId('trigger'));
     vi.advanceTimersByTime(60);
 
-    await waitFor(() => {
-      expect(handleChange).not.toHaveBeenCalled();
-    });
-
-    vi.useRealTimers();
+    expect(handleChange).not.toHaveBeenCalled();
   });
 
   test('Should ignore portal stacking by default and render into document.body', async () => {

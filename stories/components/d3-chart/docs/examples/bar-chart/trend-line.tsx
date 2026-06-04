@@ -35,7 +35,7 @@ const Demo = () => {
         x='category'
         y='bar'
         color='chart-palette-order-total-amount'
-        style={{ strokeWidth: 3, strokeDasharray: 5 }}
+        style={{ strokeWidth: 3, strokeDasharray: '6 6' }}
       >
         <Line.Dots display />
       </Line>
