@@ -59,6 +59,11 @@ class LegendFlexRoot extends BaseLegend<
   }
 }
 
+/**
+ * LegendFlex
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/chart-legend/chart-legend-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/chart-legend/chart-legend-code/|Examples}
+ */
 export const LegendFlex = createComponent<
   LegendFlexType,
   typeof LegendFlexRoot

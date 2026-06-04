@@ -166,6 +166,11 @@ function Addon(props) {
   );
 }
 
+/**
+ * Input
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/input/input-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input/input-code/|Examples}
+ */
 export default createComponent(Input, {
   Addon,
   Value,

@@ -83,6 +83,11 @@ function Value(
   );
 }
 
+/**
+ * ProgressBar
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/progress-bar/progress-bar-api/|API} | {@link https://developer.semrush.com/intergalactic/components/progress-bar/progress-bar-code/|Examples}
+ */
 const ProgressBar = createComponent<
   NSProgressBar.Component,
   typeof ProgressBarRoot

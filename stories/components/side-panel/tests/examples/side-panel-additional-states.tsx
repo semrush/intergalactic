@@ -12,6 +12,8 @@ export type SidePanelDemoProps = {
   withAdditionalHeaderContent?: boolean;
   withTooltipInBody?: boolean;
   withFooter?: boolean;
+  backText?: string;
+  backWMax?: number;
 };
 
 export const defaultSidePanelDemoProps: SidePanelDemoProps = {
@@ -21,16 +23,18 @@ export const defaultSidePanelDemoProps: SidePanelDemoProps = {
   withAdditionalHeaderContent: false,
   withTooltipInBody: false,
   withFooter: false,
+  backText: 'Go to Tool Name',
 };
 
 const Demo = (props: SidePanelDemoProps) => {
   const [visible, setVisible] = React.useState(false);
+  const backText = props.backText ?? defaultSidePanelDemoProps.backText;
 
   const content = (
     <>
       {props.withClose && <SidePanel.Close />}
       <SidePanel.Header>
-        <SidePanel.Back>Go to Tool Name</SidePanel.Back>
+        <SidePanel.Back wMax={props.backWMax}>{backText}</SidePanel.Back>
         <SidePanel.Title w={100} ellipsis={props.ellipsisTitle} ellipsis:maxLine={props.ellipsisMaxLine}>
           Heading 6, 16px Heading 6, 16px
         </SidePanel.Title>

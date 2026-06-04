@@ -11,15 +11,12 @@ class RootLinkTrigger extends Component {
   static displayName = 'LinkTrigger';
 
   getTextProps(props) {
-    const { placeholder, empty, Children, size } = this.asProps;
+    const { placeholder, empty } = this.asProps;
     const content = empty ? placeholder : props.children;
-    const addons = findAllComponents(Children, [LinkTrigger.Addon.displayName]);
-    const addonWidth = size >= 600 ? 28 : 20;
 
     return {
       'use:children': content,
       empty,
-      'w': `calc(100% - ${addonWidth * (addons.length + 1)}px)`,
     };
   }
 
@@ -44,6 +41,11 @@ class RootLinkTrigger extends Component {
   }
 }
 
+/**
+ * LinkTrigger
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-api#linktrigger|API} | {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-code#linktrigger|Examples}
+ */
 const LinkTrigger = createComponent(RootLinkTrigger, {
   Text: ButtonLink.Text,
   Addon: ButtonLink.Addon,

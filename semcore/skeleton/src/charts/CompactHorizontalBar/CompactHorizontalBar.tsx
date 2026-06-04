@@ -24,6 +24,11 @@ function CompactHorizontalBarChartSkeleton() {
   );
 }
 
+/**
+ * CompactHorizontalBarChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api/|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
 export default createComponent<
   NSSkeletonCompactHorizontalBar.Component,
   typeof CompactHorizontalBarChartSkeleton

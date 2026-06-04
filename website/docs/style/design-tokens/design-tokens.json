@@ -1040,7 +1040,6 @@
       "carousel",
       "drag-and-drop",
       "feature-highlight",
-      "fullscreen-modal",
       "notice",
       "typography"
     ]
@@ -1051,7 +1050,6 @@
     "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.",
     "components": [
       "feature-highlight",
-      "fullscreen-modal",
       "notice"
     ]
   },
