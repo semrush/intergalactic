@@ -348,6 +348,7 @@
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.",
     "components": [
+      "badge",
       "breadcrumbs",
       "bulk-textarea",
       "button",

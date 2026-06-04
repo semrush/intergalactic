@@ -111,7 +111,7 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
         return resolveColor('--gray-400');
       }
       case 'unavailable': {
-        return resolveColor('--gray-400');
+        return resolveColor('--gray-100');
       }
       default: {
         const t: never = type;
