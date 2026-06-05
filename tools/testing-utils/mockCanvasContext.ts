@@ -1,7 +1,7 @@
 import { vi } from './vitest';
 
 // JSDOM doesn't implement canvas text measuring.
-// Some components create a text measurer on import, so tests import this helper first
+// Some components create a text measurer on import, so setup imports this helper first
 // to avoid noisy "getContext is not implemented" errors.
 export const canvasContextMock = {
   clearRect: vi.fn(),

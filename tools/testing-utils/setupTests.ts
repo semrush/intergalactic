@@ -6,6 +6,8 @@ import {
 } from '@testing-library/jest-dom/matchers';
 
 import { expect, vi } from './vitest';
+import './mockCanvasContext';
+
 expect.extend({
   toHaveStyle,
   toHaveFocus,

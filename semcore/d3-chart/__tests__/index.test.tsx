@@ -1,4 +1,3 @@
-import '@semcore/testing-utils/mockCanvasContext';
 import Icon from '@semcore/icon/Video/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';

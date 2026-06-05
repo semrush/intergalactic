@@ -1,4 +1,3 @@
-import '@semcore/testing-utils/mockCanvasContext';
 import { afterEach, beforeEach, describe, expect, test, vi } from '@semcore/testing-utils/vitest';
 
 import { Ellipsis } from '../src/components/ellipsis';
