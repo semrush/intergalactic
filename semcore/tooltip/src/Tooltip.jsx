@@ -309,6 +309,11 @@ class DescriptionTooltipRoot extends TooltipRoot {
   }
 }
 
+/**
+ * Hint
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tooltip/tooltip-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tooltip/tooltip-code/|Examples}
+ */
 export const Hint = createComponent(
   HintRoot,
   {
@@ -320,6 +325,11 @@ export const Hint = createComponent(
   },
 );
 
+/**
+ * Tooltip
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tooltip/tooltip-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tooltip/tooltip-code/|Examples}
+ */
 export const Tooltip = createComponent(
   TooltipRoot,
   {
@@ -331,6 +341,11 @@ export const Tooltip = createComponent(
   },
 );
 
+/**
+ * DescriptionTooltip
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tooltip/tooltip-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tooltip/tooltip-code/|Examples}
+ */
 export const DescriptionTooltip = createComponent(
   DescriptionTooltipRoot,
   {

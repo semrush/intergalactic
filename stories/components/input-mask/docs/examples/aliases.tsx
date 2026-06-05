@@ -21,7 +21,7 @@ const Demo = () => {
           aria-describedby='aliases-example-hint'
         />
       </InputMask>
-      <Text size={100} color='gray-500' id='aliases-example-hint'>
+      <Text size={100} color='text-secondary-neutral' id='aliases-example-hint'>
         Enter any 4 digits
       </Text>
     </Flex>

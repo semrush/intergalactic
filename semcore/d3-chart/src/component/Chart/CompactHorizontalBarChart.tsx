@@ -3,30 +3,35 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import React from 'react';
 
-import type { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
+import type { ChartState } from './AbstractChart';
+import { AbstractChart } from './AbstractChart';
+import type { BaseLegendProps } from './AbstractChart.type';
 import type {
   CompactHorizontalBarChartData,
+  CompactHorizontalBarChartDefaultProps,
   CompactHorizontalBarChartProps,
   CompactHorizontalBarChartType,
 } from './CompactHorizontalBarChart.type';
 // @ts-ignore
 import { CompactHorizontalBar } from '../..';
-import { AbstractChart } from './AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class CompactHorizontalBarChartComponent extends AbstractChart<
   CompactHorizontalBarChartData,
   CompactHorizontalBarChartProps,
-  typeof CompactHorizontalBarChartComponent.enhance
+  typeof CompactHorizontalBarChartComponent.enhance,
+  {},
+  ChartState,
+  CompactHorizontalBarChartDefaultProps
 > {
   static displayName = 'Chart.CompactHorizontalBar';
-  public static defaultProps: Partial<BaseChartProps<any>> = {
+  public static defaultProps = {
     direction: 'column',
     showXAxis: false,
     showYAxis: false,
     showTooltip: true,
     showLegend: false,
-  };
+  } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
@@ -117,6 +122,14 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
   }
 }
 
-export const CompactHorizontalBarChart: CompactHorizontalBarChartType = createComponent(
+/**
+ * CompactHorizontalBarChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact-code/|Examples}
+ */
+export const CompactHorizontalBarChart = createComponent<
+  CompactHorizontalBarChartType,
+  typeof CompactHorizontalBarChartComponent
+>(
   CompactHorizontalBarChartComponent,
 );

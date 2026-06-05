@@ -3,20 +3,31 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 import React from 'react';
 
-import type { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
+import type { LineChartData, LineChartDefaultProps, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class LineChartComponent extends AbstractChart<
   LineChartData,
   LineChartProps,
-  typeof LineChartComponent.enhance
+  typeof LineChartComponent.enhance,
+  {},
+  ChartState,
+  LineChartDefaultProps
 > {
   static displayName = 'Chart.Line';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
 
   protected get xScale() {
     const { xScale, marginY = 30, plotWidth, data, groupKey } = this.asProps;
@@ -103,4 +114,12 @@ class LineChartComponent extends AbstractChart<
   }
 }
 
-export const LineChart: LineChartType = createComponent(LineChartComponent);
+/**
+ * LineChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/line-chart/line-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/line-chart/line-chart-code/|Examples}
+ */
+export const LineChart = createComponent<
+  LineChartType,
+  typeof LineChartComponent
+>(LineChartComponent);

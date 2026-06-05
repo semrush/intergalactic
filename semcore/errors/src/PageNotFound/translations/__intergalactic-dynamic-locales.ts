@@ -31,3 +31,5 @@ export const localizedMessages = {
   pl,
   sv,
 };
+
+export type LocalizedMessages = typeof localizedMessages;

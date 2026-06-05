@@ -268,6 +268,11 @@ function BubbleCircle(props) {
   );
 }
 
+/**
+ * Bubble
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bubble-chart/bubble-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bubble-chart/bubble-chart-code/|Examples}
+ */
 const Bubble = createElement(BubbleRoot, {
   Tooltip: [BubbleTooltip, Tooltip._______childrenComponents],
   Circle: BubbleCircle,

@@ -17,9 +17,9 @@ const Demo = () => {
           dataKey='G/F/C'
           name='G/F/C'
           style={{
-            stroke: '#F00',
-            fill: '#0F0',
-            fillOpacity: 0.3,
+            stroke: 'var(--intergalactic-chart-palette-order-1)',
+            fill: 'var(--intergalactic-chart-palette-order-1)',
+            fillOpacity: 1,
           }}
         />
       </Venn>

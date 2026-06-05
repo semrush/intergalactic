@@ -1,8 +1,10 @@
+import type { PopperProps } from '@semcore/base-components';
 import { Box, Popper, Animation } from '@semcore/base-components';
 import Button from '@semcore/button';
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
@@ -13,6 +15,7 @@ import type {
   FeaturePopoverSpotProps,
   FeaturePopoverPopperProps,
   FeaturePopoverPopperInnerProps,
+  FeaturePopoverDefaultProps,
 } from './FeaturePopover.type';
 import style from './style/feature-popover.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -45,14 +48,25 @@ const enhance = [
   i18nEnhance(localizedMessages),
 ] as const;
 
-class FeaturePopover extends Component<FeaturePopoverProps, typeof enhance, { visible: null }> {
+type FeaturePopoverInternalProps = {
+  interaction?: PopperProps['interaction'];
+};
+
+class FeaturePopover extends Component<
+  FeaturePopoverProps,
+  typeof enhance,
+  { visible: null },
+  WithI18nEnhanceProps & FeaturePopoverInternalProps,
+  {},
+  FeaturePopoverDefaultProps
+> {
   static displayName = 'FeaturePopover';
   static style = style;
-  static defaultProps = {
+  static defaultProps: FeaturePopoverDefaultProps = {
     offset: [0, 12],
     placement: 'bottom-start',
     defaultVisible: false,
-    onOutsideClick: () => false,
+    onOutsideClick: () => {},
     interaction: 'none',
     i18n: localizedMessages,
     locale: 'en',
@@ -209,7 +223,15 @@ function Spot(props: IRootComponentProps & FeaturePopoverSpotProps) {
   return sstyled(styles)(<SSpot render={Box} />);
 }
 
-export default createComponent(
+/**
+ * FeaturePopover
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/feature-popover/feature-popover-api/|API} | {@link https://developer.semrush.com/intergalactic/components/feature-popover/feature-popover-code/|Examples}
+ */
+export default createComponent<
+  FeaturePopoverComponent,
+  typeof FeaturePopover
+>(
   FeaturePopover,
   {
     Trigger: Trigger,
@@ -218,4 +240,4 @@ export default createComponent(
   },
   // @ts-ignore
   { parent: Popper },
-) as FeaturePopoverComponent;
+);

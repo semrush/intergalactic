@@ -198,6 +198,11 @@ function Null(props) {
   );
 }
 
+/**
+ * Area
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/area-chart/area-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/area-chart/area-chart-code/|Examples}
+ */
 const Area = createElement(AreaRoot, {
   Dots,
   Null,

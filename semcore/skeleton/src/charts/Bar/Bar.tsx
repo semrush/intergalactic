@@ -39,4 +39,12 @@ function BarChartSkeleton(
   );
 }
 
-export default createComponent(BarChartSkeleton) as NSSkeletonBarChart.Component;
+/**
+ * BarChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api#barchartskeleton|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code#chart-skeleton|Examples}
+ */
+export default createComponent<
+  NSSkeletonBarChart.Component,
+  typeof BarChartSkeleton
+>(BarChartSkeleton);

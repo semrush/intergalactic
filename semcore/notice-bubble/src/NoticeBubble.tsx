@@ -2,6 +2,7 @@ import { Animation, Box, Flex, Portal } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
@@ -18,6 +19,7 @@ import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
 
 import type {
+  NoticeBubbleContainerDefaultProps,
   NoticeBubbleContainerProps,
   NoticeBubbleViewItemProps,
 } from './NoticeBubble.type';
@@ -33,7 +35,14 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, typeof NoticeBubbleContainerRoot.enhance, {}, typeof NoticeBubbleContainerRoot.defaultProps, State> {
+class NoticeBubbleContainerRoot extends Component<
+  NoticeBubbleContainerProps,
+  typeof NoticeBubbleContainerRoot.enhance,
+  {},
+  WithI18nEnhanceProps,
+  State,
+  NoticeBubbleContainerDefaultProps
+> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [
@@ -91,12 +100,12 @@ class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, ty
         return sstyled(styles)(
           <PortalForNoticeItem
             key={notice.uid}
-            tag={SView}
             containerNode={containerNode}
             animationDuration={duration}
             styles={styles}
             getI18nText={getI18nText}
             {...notice}
+            tag={SView}
           />,
         );
       });
@@ -159,7 +168,7 @@ const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTM
   return <Flex ref={ref} {...other} />;
 });
 
-const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
+const PortalForNoticeItem = (props: Intergalactic.InternalTypings.EfficientOmit<NoticeBubbleViewItemProps, 'tag'> & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
   // Show content for info notice in previously mounted node with aria-live polite
@@ -170,14 +179,14 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
   }, []);
 
   const SNoticeAriaLiveWrapper = 'div';
-  const Tag = props.tag;
+  const { tag: Tag, ...otherProps } = props;
 
-  if (props.type === 'info') {
+  if (otherProps.type === 'info') {
     return (
       <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-        <Portal nodeToMount={props.containerNode}>
+        <Portal nodeToMount={otherProps.containerNode}>
           <SNoticeAriaLiveWrapper aria-live='polite'>
-            {showContent && <Tag {...props} />}
+            {showContent && <Tag {...otherProps} />}
           </SNoticeAriaLiveWrapper>
         </Portal>
       </ZIndexStackingContextProvider>
@@ -186,8 +195,8 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
 
   return (
     <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-      <Portal nodeToMount={props.containerNode}>
-        <Tag {...props} />
+      <Portal nodeToMount={otherProps.containerNode}>
+        <Tag {...otherProps} />
       </Portal>
     </ZIndexStackingContextProvider>
   );
@@ -288,7 +297,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     return sstyled(styles)(
       <Animation
         initialAnimation={initialAnimation}
-        visible={visible ?? true}
+        visible={visible}
         duration={animationDuration}
         // @ts-ignore
         keyframes={[styles['@enter'], styles['@exit']]}
@@ -347,6 +356,14 @@ class ViewWarning extends ViewInfo {
   };
 }
 
-const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot) as Intergalactic.Component<'div', NoticeBubbleContainerProps>;
+/**
+ * NoticeBubble
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-code/|Examples}
+ */
+const NoticeBubbleContainer = createComponent<
+  Intergalactic.Component<'div', NoticeBubbleContainerProps>,
+  typeof NoticeBubbleContainerRoot
+>(NoticeBubbleContainerRoot);
 
 export default NoticeBubbleContainer;

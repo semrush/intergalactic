@@ -22,4 +22,11 @@ export type VennChartProps = Intergalactic.InternalTypings.EfficientOmit<
   onClickVennItem?: (key: DataKey, e: React.SyntheticEvent) => void;
 };
 
+export type VennChartDefaultProps = {
+  direction: 'row-reverse';
+  alignItems: 'flex-start';
+  marginY: 0;
+  marginX: 0;
+};
+
 export type VennChartType = Intergalactic.Component<typeof Flex, VennChartProps>;

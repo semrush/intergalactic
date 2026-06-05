@@ -102,7 +102,8 @@ test.describe(TAG.FUNCTIONAL, () => {
       await locators.options(page).first().waitFor({ state: 'visible' });
 
       const count = await locators.options(page).count();
-      for (let i = 1; i < count; i++) {
+      for (let i = 0; i < count; i++) {
+        await expect(locators.options(page).nth(i)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.options(page).nth(i)).not.toHaveClass(/selected/);
       }
     });
@@ -121,7 +122,8 @@ test.describe(TAG.FUNCTIONAL, () => {
       await page.keyboard.press('Enter');
       await locators.options(page).first().waitFor({ state: 'visible' });
       const count = await locators.options(page).count();
-      for (let i = 1; i < count; i++) {
+      for (let i = 0; i < count; i++) {
+        await expect(locators.options(page).nth(i)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.options(page).nth(i)).not.toHaveClass(/selected/);
       }
     });
@@ -136,23 +138,29 @@ test.describe(TAG.FUNCTIONAL, () => {
       await expect(locators.trigger(page)).toHaveAttribute('value', 'ragdoll');
     });
 
-    await test.step('Verify selected item shown and highlighted but not focused', async () => {
+    await test.step('Verify selected value is shown without selected option styling', async () => {
       await page.keyboard.press('Enter');
       await locators.options(page).first().waitFor({ state: 'visible' });
-      await expect(locators.options(page).first()).toHaveClass(/selected/);
+      await expect(locators.options(page).first()).toHaveText(/ragdoll/);
+      await expect(locators.options(page).first()).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.options(page).first()).not.toHaveClass(/selected/);
+      await expect(locators.options(page).first()).not.toHaveClass(/highlighted/);
     });
 
-    await test.step('Verify item is selected and menu not closed by Enter when exact match opened', async () => {
+    await test.step('Verify exact match keeps menu opened without selected option styling', async () => {
       for (let i = 0; i < 'ragdoll'.length; i++) {
         await page.keyboard.press('Backspace');
       }
       await page.keyboard.type('persian');
       await locators.options(page).first().waitFor({ state: 'visible' });
       await expect(locators.options(page).first()).toHaveText(/persian/);
-      await expect(locators.options(page).first()).toHaveClass(/selected/);
+      await expect(locators.options(page).first()).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.options(page).first()).not.toHaveClass(/selected/);
       await page.keyboard.press('Enter');
+      await expect(locators.menu(page)).toBeVisible();
       await expect(locators.options(page).first()).toHaveText(/persian/);
-      await expect(locators.options(page).first()).toHaveClass(/selected/);
+      await expect(locators.options(page).first()).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.options(page).first()).not.toHaveClass(/selected/);
     });
   });
 
@@ -176,7 +184,8 @@ test.describe(TAG.FUNCTIONAL, () => {
 
       await expect(locators.menu(page)).toBeVisible();
       const count = await locators.options(page).count();
-      for (let i = 1; i < count; i++) {
+      for (let i = 0; i < count; i++) {
+        await expect(locators.options(page).nth(i)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.options(page).nth(i)).not.toHaveClass(/selected/);
       }
     });
@@ -196,12 +205,14 @@ test.describe(TAG.FUNCTIONAL, () => {
       await expect(locators.trigger(page)).toHaveAttribute('value', 'persian');
     });
 
-    await test.step('Verify menu opened and selected option highlighted', async () => {
+    await test.step('Verify menu opened without selected option styling', async () => {
       await page.mouse.click(inputCoords[0], inputCoords[1]);
       await locators.options(page).first().waitFor({ state: 'visible' });
       await expect(locators.trigger(page)).toHaveAttribute('value', 'persian');
 
-      await expect(locators.options(page).first()).toHaveClass(/selected/);
+      await expect(locators.options(page).first()).toHaveText(/persian/);
+      await expect(locators.options(page).first()).toHaveAttribute('aria-selected', 'false');
+      await expect(locators.options(page).first()).not.toHaveClass(/selected/);
       await expect(locators.options(page).first()).not.toHaveClass(/highlighted/);
     });
   });

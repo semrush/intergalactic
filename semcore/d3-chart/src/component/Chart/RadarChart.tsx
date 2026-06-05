@@ -3,8 +3,9 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { scaleLinear, type ScaleLinear } from 'd3-scale';
 import React from 'react';
 
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
+import type { RadarChartData, RadarChartDefaultProps, RadarChartProps, RadarChartType } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -12,9 +13,19 @@ import { localizedMessages } from '../../translations/__intergalactic-dynamic-lo
 class RadarChartComponent extends AbstractChart<
   RadarChartData,
   RadarChartProps,
-  typeof RadarChartComponent.enhance
+  typeof RadarChartComponent.enhance,
+  {},
+  ChartState,
+  RadarChartDefaultProps
 > {
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
 
   protected renderChart(): React.ReactNode {
     const { groupKey, showDots, circle, onClickRadar } = this.asProps;
@@ -107,4 +118,12 @@ class RadarChartComponent extends AbstractChart<
   }
 }
 
-export const RadarChart: RadarChartType = createComponent(RadarChartComponent);
+/**
+ * RadarChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/radar-chart/radar-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/radar-chart/radar-chart-code/|Examples}
+ */
+export const RadarChart: RadarChartType = createComponent<
+  RadarChartType,
+  typeof RadarChartComponent
+>(RadarChartComponent);

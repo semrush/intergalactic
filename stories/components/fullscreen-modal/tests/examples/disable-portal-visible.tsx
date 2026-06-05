@@ -10,12 +10,12 @@ const Demo = () => {
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
 
-        <FullscreenModal.Header title='Modal Window Title' description='Additional information' w={300} />
+        <FullscreenModal.Header title='Modal Window Title' description='Additional information' />
         <FullscreenModal.Body>
           <FullscreenModal.Section>
             Content Title
           </FullscreenModal.Section>
-          <FullscreenModal.Section style={{ background: '#eee', overflow: 'auto' }} h={1000}>
+          <FullscreenModal.Section style={{ background: 'var(--intergalactic-bg-secondary-neutral)', overflow: 'auto' }} h={1000}>
             <div>
               Content Title
             </div>

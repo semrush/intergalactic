@@ -1,6 +1,6 @@
 <svg width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="144" height="80" rx="6" fill="white"/>
-<rect x="32" y="51" width="80" height="8" rx="4" fill="#E0E1E9" fill-opacity="0.8"/>
-<rect x="48" y="67" width="48" height="8" rx="4" fill="#E0E1E9" fill-opacity="0.8"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M49.6 42C48.7163 42 48 41.2837 48 40.4V11.6C48 10.7163 48.7163 10 49.6 10H94.4C95.2837 10 96 10.7163 96 11.6V40.4C96 41.2837 95.2837 42 94.4 42H49.6ZM51.2 19.6V13.2H92.8V19.6H51.2ZM78.4 22.8H51.2V29.2H78.4V22.8ZM78.4 32.4H51.2V38.8H78.4V32.4ZM81.6 38.8V32.4H92.8V38.8H81.6ZM81.6 29.2V22.8H92.8V29.2H81.6Z" fill="#A9ABB6"/>
+<rect x="32" y="51" width="80" height="8" rx="4" fill="#DDDEDE"/>
+<rect x="48" y="67" width="48" height="8" rx="4" fill="#DDDEDE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M57.0667 39.3C56.4776 39.3 56 38.8299 56 38.25V19.35C56 18.7702 56.4776 18.3 57.0667 18.3H86.9333C87.5224 18.3 88 18.7701 88 19.35V38.25C88 38.8299 87.5224 39.3 86.9333 39.3H57.0667ZM58.1333 24.6V20.4H85.8667V24.6H58.1333ZM76.2667 26.7H58.1333V30.9H76.2667V26.7ZM76.2667 33H58.1333V37.2H76.2667V33ZM78.4 37.2V33H85.8667V37.2H78.4ZM78.4 30.9V26.7H85.8667V30.9H78.4Z" fill="#C18DFF"/>
 </svg>

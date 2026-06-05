@@ -16,8 +16,8 @@ SSidebar {
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border-radius: var(--intergalactic-modal-rounded, calc(12px + 2px)) 0 0
-    var(--intergalactic-modal-rounded, calc(12px + 2px));
+  border-radius: var(--intergalactic-modal-rounded, 14px) 0 0
+    var(--intergalactic-modal-rounded, 14px);
   @media (max-width: 1060px) {
     width: 56px;
   }
@@ -99,12 +99,12 @@ SContent {
   padding: var(--intergalactic-spacing-10x, 40px);
   overflow: hidden;
   flex: 1;
-  border-radius: 0 var(--intergalactic-modal-rounded, calc(12px + 2px)) var(--intergalactic-modal-rounded, calc(12px + 2px))
+  border-radius: 0 var(--intergalactic-modal-rounded, 14px) var(--intergalactic-modal-rounded, 14px)
     0;
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 }
 SContent[noSidebar] {
-  border-radius: var(--intergalactic-modal-rounded, calc(12px + 2px));
+  border-radius: var(--intergalactic-modal-rounded, 14px);
 }
 
 SSidebarMenu {

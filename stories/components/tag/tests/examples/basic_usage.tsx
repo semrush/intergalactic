@@ -2,9 +2,9 @@ import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Tag, { TagContainer } from '@semcore/ui/tag';
-import type { TagProps } from '@semcore/ui/tag';
+import type { NSTag } from '@semcore/ui/tag';
 import React from 'react';
-export type BasicTagProps = TagProps & {
+export type BasicTagProps = NSTag.Props & {
   text?: string;
   disabled?: boolean;
   showAddonLeft?: boolean;

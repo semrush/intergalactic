@@ -3,7 +3,7 @@ import Modal from '@semcore/ui/modal';
 import React from 'react';
 
 const DEFAULT_TEXT =
-  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque commodi corporis culpa, eius error impedit itaque minus nemo nostrum numquam odio omnis sapiente soluta temporibus vel voluptatibus? Exercitationem?';
+  'As Gregor Samsa awoke one morning from uneasy dreams, he found himself transformed in his bed into a gigantic insect. He lay on his hard, armor-like back, and when he lifted his head a little, he could see his brown, domed belly divided into stiff, arched segments.';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

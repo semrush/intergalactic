@@ -1,6 +1,8 @@
 import type { BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic, IRootComponentProps } from '@semcore/core';
 
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
+
 export type CarouselProps = BoxProps & {
   /** Index active item */
   index?: number;
@@ -27,6 +29,16 @@ export type CarouselProps = BoxProps & {
   zoomWidth?: number;
   /** Type of indicators */
   indicators?: 'default' | 'hide' | 'preview';
+};
+
+export type CarouselDefaultProps = {
+  defaultIndex: 0;
+  duration: 350;
+  step: 100;
+  bounded: false;
+  i18n: LocalizedMessages;
+  locale: 'en';
+  indicators: 'default';
 };
 
 export type CarouselContext = {

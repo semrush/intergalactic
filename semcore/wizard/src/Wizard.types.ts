@@ -132,6 +132,11 @@ export type WizardStepNextProps = ButtonProps & {
    */
   getI18nText?: ReturnType<typeof useI18n>;
 };
+export type WizardDefaultProps = {
+  step: WizardStep;
+  i18n: Record<string, any>;
+  locale: 'en';
+};
 
 export type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
   Tag extends Intergalactic.Tag = 'div',

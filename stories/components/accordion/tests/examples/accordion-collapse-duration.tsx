@@ -16,8 +16,8 @@ const Demo = () => {
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse duration={500}>
-            <Box p='12px 12px '>Hello Section</Box>
-            <Box p='24px'> Hello Section</Box>
+            <Box p={3}>Hello Section</Box>
+            <Box p={6}> Hello Section</Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>
 
@@ -42,8 +42,8 @@ const Demo = () => {
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse duration={500}>
-            <Box p='12px 12px '>Hello Section</Box>
-            <Box p='24px'> Hello Section</Box>
+            <Box p={3}>Hello Section</Box>
+            <Box p={6}> Hello Section</Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>
 
@@ -55,8 +55,8 @@ const Demo = () => {
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse duration={0}>
-            <Box p='12px 12px '>Hello Section</Box>
-            <Box p='24px'> Hello Section</Box>
+            <Box p={3}>Hello Section</Box>
+            <Box p={6}> Hello Section</Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>
 
@@ -68,8 +68,8 @@ const Demo = () => {
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse>
-            <Box p='12px 12px '>Hello Section</Box>
-            <Box p='24px'> Hello Section</Box>
+            <Box p={3}>Hello Section</Box>
+            <Box p={6}> Hello Section</Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>
       </Accordion>
