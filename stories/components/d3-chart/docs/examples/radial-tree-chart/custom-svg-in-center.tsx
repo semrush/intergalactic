@@ -17,8 +17,8 @@ const Demo = () => {
           <RadialTree.Radian.Cap />
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
-        <circle r={60} cx={width / 2} cy={height / 2} fill='#7A7AF5' />
-        <RadialTree.Title color='white'>Sleeping</RadialTree.Title>
+        <circle r={60} cx={width / 2} cy={height / 2} fill='var(--intergalactic-chart-palette-order-1)' />
+        <RadialTree.Title color='gray-white'>Sleeping</RadialTree.Title>
       </RadialTree>
     </Plot>
   );

@@ -12,19 +12,19 @@ const Demo = (props: SidePanelProps) => {
       <SidePanel
         visible={visible}
         onClose={() => setVisible(false)}
-        aria-label='My side panel'
+        aria-label='SidePanel example'
         placement={props.placement}
         closable={props.closable}
         disablePreventScroll={props.disablePreventScroll}
       >
-        <SidePanel.Header>
+        <SidePanel.Header h='64px'>
           <SidePanel.Back>Go to Tool Name</SidePanel.Back>
-          <SidePanel.Title>Heading 6, 16px</SidePanel.Title>
+          <SidePanel.Title mt={3}>SidePanel title</SidePanel.Title>
         </SidePanel.Header>
         <SidePanel.Body>Content</SidePanel.Body>
-        <SidePanel.Footer justifyContent='center' pt={2}>
-          <Button use='primary'>Primary</Button>
-          <Button ml={2}>Cancel</Button>
+        <SidePanel.Footer justifyContent='center' pt={2} h='80px'>
+          <Button size='l' use='primary'>Got it!</Button>
+          <Button size='l' ml={2}>Cancel</Button>
         </SidePanel.Footer>
       </SidePanel>
     </>

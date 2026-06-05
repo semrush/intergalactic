@@ -75,7 +75,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.getByText('#F67CF2').waitFor({ state: 'visible' });
+    await page.getByText('#fdc23c').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -113,6 +113,16 @@ test.describe(`${TAG.VISUAL} `, () => {
           return acc;
         }, {});
       }, props);
+
+    const getCssVarColor = (varName: string, fallback: string) =>
+      page.evaluate(({ name, fallback }) => {
+        const probe = document.createElement('div');
+        probe.style.background = `var(${name}, ${fallback})`;
+        document.body.appendChild(probe);
+        const color = window.getComputedStyle(probe).backgroundColor;
+        probe.remove();
+        return color;
+      }, { name: varName, fallback });
 
     await test.step('Verify trigger styles', async () => {
       const triggerCircle = locators.trigger(page).locator('[data-ui-name="Flex"]');
@@ -187,6 +197,14 @@ test.describe(`${TAG.VISUAL} `, () => {
     if (browserName === 'firefox') return; //  hover doesn't work well in playwright browsers
     await test.step('Verify palette manager color styles', async () => {
       const addButton = page.getByRole('button').first();
+      const hoverBackgroundColor = await getCssVarColor(
+        '--intergalactic-control-tertiary-neutral-hover',
+        'oklch(0.176 0.033 175.6 / 0.056)',
+      );
+      const activeBackgroundColor = await getCssVarColor(
+        '--intergalactic-control-tertiary-neutral-active',
+        'oklch(0.176 0.033 175.7 / 0.084)',
+      );
 
       await addButton.hover();
 
@@ -194,9 +212,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         'backgroundColor',
       ]);
 
-      expect(addButtonHoverStateStyles).toEqual({
-        backgroundColor: 'rgba(0, 21, 16, 0.055)',
-      });
+      expect(addButtonHoverStateStyles.backgroundColor).toBe(hoverBackgroundColor);
 
       await page.mouse.down();
 
@@ -204,9 +220,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         'backgroundColor',
       ]);
 
-      expect(addButtonActiveStateStyles).toEqual({
-        backgroundColor: 'rgba(0, 21, 16, 0.082)',
-      });
+      expect(addButtonActiveStateStyles.backgroundColor).toBe(activeBackgroundColor);
 
       await page.mouse.up();
 
@@ -256,7 +270,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify hover on text color ', async () => {
       const items = locators.dialog(page, 1).getByRole('option');
       await items.nth(1).hover();
-      await page.getByText('#2BB3FF').waitFor({ state: 'visible' });
+      await page.getByText('#008ff8').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -277,7 +291,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await test.step('Verify hover state for Palette custom color', async () => {
       await locators.paletteItem(page).first().hover();
-      await page.getByText('#8649E6').waitFor({ state: 'visible' });
+      await page.getByText('#4C4AA4').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
@@ -488,7 +502,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await locators.trigger(page, 0).click();
     await locators.color(page, 4).click();
     await locators.color(page, 0).waitFor({ state: 'visible' });
-    await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field, current color is #F67CF2');
+    await expect(locators.trigger(page, 0)).toHaveAttribute('aria-label', 'Color field, current color is #fdc23c');
 
     await locators.trigger(page, 0).click();
     await locators.color(page, 0).click();
@@ -549,7 +563,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await expect(locators.trigger(page)).toHaveAttribute(
       'aria-label',
-      'Color field, current color is #F67CF2',
+      'Color field, current color is #fdc23c',
     );
 
     await page.keyboard.press('Space');

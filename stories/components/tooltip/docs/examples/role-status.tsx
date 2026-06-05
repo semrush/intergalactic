@@ -27,7 +27,7 @@ const Demo = () => {
   );
 
   return (
-    <Tooltip>
+    <Tooltip placement='bottom-start'>
       <Tooltip.Trigger tag={Input}>
         <Input.Value value={value} onChange={handleChange} />
       </Tooltip.Trigger>

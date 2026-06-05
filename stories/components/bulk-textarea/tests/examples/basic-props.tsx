@@ -53,14 +53,14 @@ export const linesDelimiterOptions = {
 
 type PasteProps = NonNullable<BulkTextareaProps<string>['pasteProps']>;
 
-type ExampleProps = Omit<BulkTextareaProps<string>, 'linesDelimiters'> &
-  BoxProps & {
-    autoFocus?: boolean;
-    pasteDelimiter?: PasteProps['delimiter'];
-    pasteSkipEmptyLines?: boolean;
-    pasteLineProcessing?: PasteProps['lineProcessing'];
-    linesDelimiters?: BulkTextareaProps<string>['linesDelimiters'];
-  };
+type ExampleProps = Omit<BulkTextareaProps<string>, 'linesDelimiters'> & {
+  autoFocus?: boolean;
+  w?: BoxProps['w'];
+  pasteDelimiter?: PasteProps['delimiter'];
+  pasteSkipEmptyLines?: boolean;
+  pasteLineProcessing?: PasteProps['lineProcessing'];
+  linesDelimiters?: BulkTextareaProps<string>['linesDelimiters'];
+};
 
 export const defaultBulkTextareaProps: ExampleProps = {
   w: 400,

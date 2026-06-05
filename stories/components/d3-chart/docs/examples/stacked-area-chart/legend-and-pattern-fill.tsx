@@ -11,7 +11,6 @@ import {
 } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import StackedAreaMockData from '../../../__mocks__/stacked-area';
@@ -149,7 +148,6 @@ const Demo = () => {
                     y={item.id}
                     fill={`chart-palette-order-${item.id}`}
                     color={lineColors[item.id]}
-                    curve={curveCardinal}
                   >
                     <StackedArea.Area.Dots />
                   </StackedArea.Area>

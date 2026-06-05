@@ -6,10 +6,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "node --experimental-transform-types src/processor.ts",
+    "build": "node --experimental-transform-types src/processor.ts && tsc --project tsconfig-theme.json",
     "check": "node --experimental-transform-types src/checker.ts"
   },
   "exports": {
+    ".": "./lib/theme.d.ts",
     "./package.json": "./package.json",
     "./light.css": "./lib/light.css",
     "./dark.css": "./lib/dark.css",

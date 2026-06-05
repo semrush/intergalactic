@@ -24,7 +24,7 @@ const Demo = () => {
           }
           .vp-doc h3.styled-accordion-item-selected {
             background-color: var(--intergalactic-bg-secondary-neutral-hover);
-            color: #000;
+            color: var(--intergalactic-text-primary);
           }
         `}
       </style>
@@ -47,7 +47,7 @@ const Demo = () => {
                   </Accordion.Item.ToggleButton>
                 </Accordion.Item.Toggle>
                 <Accordion.Item.Collapse>
-                  <Box p='12px 32px'>{`Hello Section ${index + 1}`}</Box>
+                  <Box py={3} px={6}>{`This is section ${index + 1}`}</Box>
                 </Accordion.Item.Collapse>
               </>
             )}

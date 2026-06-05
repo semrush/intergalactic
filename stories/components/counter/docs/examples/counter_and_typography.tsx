@@ -4,13 +4,13 @@ import React from 'react';
 const Demo = () => (
   <>
     <Text size={300}>
-      Lorem ipsum
+      Cats
       {' '}
       <Text color='text-secondary'>12,457</Text>
     </Text>
     <br />
     <Text size={300}>
-      Dolor sit amet:
+      Dogs:
       {' '}
       <Text color='text-secondary'>149</Text>
     </Text>

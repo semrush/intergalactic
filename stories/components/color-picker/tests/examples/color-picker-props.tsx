@@ -4,12 +4,9 @@ import { Text } from '@semcore/ui/typography';
 import React, { useState } from 'react';
 
 const Demo = () => {
-  const [selectedColor, setSelectedColor] = useState('#ff0000');
+  const [selectedColor, setSelectedColor] = useState('var(--blue-300)');
   const [paletteColors, setPaletteColors] = useState([
-    '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF',
-    '#800000', '#808000', '#008000', '#800080', '#008080', '#000080',
-    '#FFA500', '#FFC0CB', '#A52A2A', '#D2691E', '#B22222', '#5F9EA0',
-    '#7FFF00', '#DC143C', '#FF8C00', '#E9967A', '#2E8B57', '#FF1493',
+    'var(--blue-300)', 'var(--blue-400)', 'var(--blue-500)', 'var(--violet-300)', 'var(--violet-400)', 'var(--violet-500)', 'var(--green-300)', 'var(--green-400)', 'var(--green-500)', 'var(--salad-300)', 'var(--salad-400)', 'var(--salad-500)', 'var(--yellow-300)', 'var(--yellow-400)', 'var(--yellow-500)', 'var(--red-300)', 'var(--red-400)', 'var(--red-500)',
   ]);
 
   return (
