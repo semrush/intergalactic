@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.0] - 2026-06-05
+
+### Fixed
+
+- Converting issues in 24-hours format
+
+### Added
+
+- Links to the API and examples in the docs.
+
 ## [17.1.0] - 2026-05-13
 
 ### Added
