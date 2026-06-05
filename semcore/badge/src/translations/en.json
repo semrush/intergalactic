@@ -3,5 +3,6 @@
   "Badge.Alpha": "alpha",
   "Badge.Beta": "beta",
   "Badge.New": "new",
-  "Badge.Soon": "soon"
+  "Badge.Soon": "soon",
+  "Badge.Unavailable": "unavailable"
 }
