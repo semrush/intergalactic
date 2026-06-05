@@ -52,6 +52,11 @@ class BadgeFHRoot extends Component<
   }
 }
 
+/**
+ * Badge FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#badge|Docs}
+ */
 export const BadgeFH = createComponent<
   BadgeFHComponent,
   typeof BadgeFHRoot

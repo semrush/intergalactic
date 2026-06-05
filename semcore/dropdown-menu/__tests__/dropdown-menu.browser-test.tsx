@@ -1544,6 +1544,111 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify trigger is still focused', async () => {
         await expect(locators.button(page)).toBeFocused();
       });
+
+      await test.step('Verify arrows do not focus disabled items', async () => {
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('ArrowDown');
+        const count = await locators.menuitemradio(page).count();
+        for (let i = 0; i < count; i++) {
+          await expect(locators.menuitemradio(page, i)).not.toBeFocused();
+        }
+        await expect(locators.button(page)).toBeFocused();
+      });
+    });
+
+    test('Verify ArrowUp reaches all enabled selectable items when first items are disabled', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
+        size: 'm',
+        disabledFirstItem: true,
+        disabledSecondItem: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter and skips disabled first items', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 2)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(2)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowUp wraps to the last enabled item', async () => {
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify Enter activates the highlighted enabled item', async () => {
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'hidden' });
+        await expect(locators.button(page)).toBeFocused();
+
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 9)).toHaveAttribute('aria-checked', 'true');
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify repeated ArrowUp reaches all enabled items and skips disabled first items', async () => {
+        for (const index of [8, 7, 6, 5, 4, 3, 2]) {
+          await page.keyboard.press('ArrowUp');
+          await expect(locators.menuitemradio(page, index)).toBeFocused();
+          await expect(locators.itemInGroup(page).nth(index)).toHaveClass(/highlighted/);
+          await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+          await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+          await expect(locators.itemInGroup(page).nth(0)).not.toHaveClass(/highlighted/);
+          await expect(locators.itemInGroup(page).nth(1)).not.toHaveClass(/highlighted/);
+        }
+
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+    });
+
+    test('Verify arrows skip disabled last selectable item', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
+        size: 'm',
+        disabledLastItem: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter and focuses first item', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 0)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(0)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowUp skips disabled last item', async () => {
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 9)).not.toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).not.toHaveClass(/highlighted/);
+        await expect(locators.menuitemradio(page, 8)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(8)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowDown skips disabled last item and wraps to first item', async () => {
+        await page.keyboard.press('ArrowDown');
+        await expect(locators.menuitemradio(page, 9)).not.toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).not.toHaveClass(/highlighted/);
+        await expect(locators.menuitemradio(page, 0)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(0)).toHaveClass(/highlighted/);
+      });
     });
 
     test('Verify focus skips first disabled item in nested menu', {

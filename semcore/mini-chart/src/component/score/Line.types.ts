@@ -47,6 +47,9 @@ type ValuedScoreProps = {
 };
 
 type CustomRenderScoreProps = {
+  value?: never;
+  segments?: never;
+  color?: never;
   children: SegmentComponent[];
 };
 

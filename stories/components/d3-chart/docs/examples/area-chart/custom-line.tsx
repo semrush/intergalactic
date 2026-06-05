@@ -5,7 +5,7 @@ import React from 'react';
 
 import AreaMockData from '../../../__mocks__/area';
 
-const customLineStyles = { strokeWidth: 4, stroke: 'pink' };
+const customLineStyles = { strokeWidth: 2, strokeDasharray: '16 8', stroke: 'var(--intergalactic-chart-palette-order-1)' };
 
 const Demo = () => {
   const MARGIN = 40;

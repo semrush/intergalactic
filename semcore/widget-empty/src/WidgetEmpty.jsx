@@ -42,6 +42,11 @@ function Description(props) {
   return sstyled(styles)(<SDescription render={Box} />);
 }
 
+/**
+ * WidgetEmpty
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/widget-empty/widget-empty-api/|API} | {@link https://developer.semrush.com/intergalactic/components/widget-empty/widget-empty-code/|Examples}
+ */
 export default createComponent(WidgetEmpty, {
   Title,
   Description,

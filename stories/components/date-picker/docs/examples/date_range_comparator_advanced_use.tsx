@@ -57,9 +57,9 @@ const Demo = () => {
                 <Notice.Label>
                   <WarningIcon />
                 </Notice.Label>
-                <Text bold id='comparator-notice-title'>
+                <Notice.Title>
                   Warning
-                </Text>
+                </Notice.Title>
               </Flex>
               If you change your location, all previously collected data for this article will be
               lost.

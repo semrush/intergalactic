@@ -11,7 +11,8 @@ const Demo = () => {
       <MiniChart.ScoreLine
         value={value}
         w={120}
-        baseBgColor='chart-palette-order-5'
+        color='chart-palette-order-1'
+        baseBgColor='blue-200'
       />
 
       <MiniChart.ScoreLine
@@ -19,20 +20,22 @@ const Demo = () => {
         value={3}
         w={120}
         animate={false}
-        baseBgColor='chart-palette-order-2'
+        color='chart-palette-order-2'
+        baseBgColor='violet-200'
       />
 
       <MiniChart.ScoreLine
         w={120}
         segments={3}
         value={2}
-        baseBgColor='chart-palette-order-4'
+        color='chart-palette-order-3'
+        baseBgColor='green-100'
       />
 
       <MiniChart.ScoreDonut
         value={value}
         w={50}
-        baseBgColor='chart-palette-order-5'
+        baseBgColor='chart-palette-order-2'
         aria-hidden
       />
 

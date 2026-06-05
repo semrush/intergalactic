@@ -60,6 +60,11 @@ class StackedAreaRoot extends Component {
   }
 }
 
+/**
+ * StackedArea
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/stacked-area-chart/stacked-area-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/stacked-area-chart/stacked-area-chart-code/|Examples}
+ */
 const StackedArea = createElement(StackedAreaRoot, { Area });
 
 export default StackedArea;

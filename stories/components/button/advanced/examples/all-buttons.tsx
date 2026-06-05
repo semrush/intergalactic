@@ -8,7 +8,7 @@ type ButtonRowProps = {
   size?: 'm' | 'l';
 };
 
-function ButtonRow({ use = 'secondary', theme = 'info', size = 'm' }: ButtonRowProps) {
+function ButtonRow({ use = 'secondary', theme = 'muted', size = 'm' }: ButtonRowProps) {
   return (
     <Flex gap={2} alignItems='center' flexWrap>
       <Button use={use} theme={theme} size={size}>

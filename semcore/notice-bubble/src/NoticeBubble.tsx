@@ -100,12 +100,12 @@ class NoticeBubbleContainerRoot extends Component<
         return sstyled(styles)(
           <PortalForNoticeItem
             key={notice.uid}
-            tag={SView}
             containerNode={containerNode}
             animationDuration={duration}
             styles={styles}
             getI18nText={getI18nText}
             {...notice}
+            tag={SView}
           />,
         );
       });
@@ -168,7 +168,7 @@ const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTM
   return <Flex ref={ref} {...other} />;
 });
 
-const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
+const PortalForNoticeItem = (props: Intergalactic.InternalTypings.EfficientOmit<NoticeBubbleViewItemProps, 'tag'> & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
   // Show content for info notice in previously mounted node with aria-live polite
@@ -179,14 +179,14 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
   }, []);
 
   const SNoticeAriaLiveWrapper = 'div';
-  const Tag = props.tag;
+  const { tag: Tag, ...otherProps } = props;
 
-  if (props.type === 'info') {
+  if (otherProps.type === 'info') {
     return (
       <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-        <Portal nodeToMount={props.containerNode}>
+        <Portal nodeToMount={otherProps.containerNode}>
           <SNoticeAriaLiveWrapper aria-live='polite'>
-            {showContent && <Tag {...props} />}
+            {showContent && <Tag {...otherProps} />}
           </SNoticeAriaLiveWrapper>
         </Portal>
       </ZIndexStackingContextProvider>
@@ -195,8 +195,8 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
 
   return (
     <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-      <Portal nodeToMount={props.containerNode}>
-        <Tag {...props} />
+      <Portal nodeToMount={otherProps.containerNode}>
+        <Tag {...otherProps} />
       </Portal>
     </ZIndexStackingContextProvider>
   );
@@ -297,7 +297,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     return sstyled(styles)(
       <Animation
         initialAnimation={initialAnimation}
-        visible={visible ?? true}
+        visible={visible}
         duration={animationDuration}
         // @ts-ignore
         keyframes={[styles['@enter'], styles['@exit']]}
@@ -356,6 +356,11 @@ class ViewWarning extends ViewInfo {
   };
 }
 
+/**
+ * NoticeBubble
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-code/|Examples}
+ */
 const NoticeBubbleContainer = createComponent<
   Intergalactic.Component<'div', NoticeBubbleContainerProps>,
   typeof NoticeBubbleContainerRoot

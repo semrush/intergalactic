@@ -27,7 +27,7 @@ const Example = () => {
           <InlineEdit.View pr={5}>
             {title}
             {' '}
-            <Box tag={EditM} ml={1} />
+            <Box tag={EditM} ml={1} color='icon-secondary-neutral' />
           </InlineEdit.View>
           <InlineEdit.Edit>
             <InlineInput onConfirm={handleTitle} onCancel={stopEditing} loading={savingTitle}>

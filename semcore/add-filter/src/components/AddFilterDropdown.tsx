@@ -12,7 +12,7 @@ type AsPropsTypeWithHandlers<T> = T & {
 };
 
 type DefaultProps = {
-  defaultVisible: true;
+  defaultVisible: false;
 };
 class AddFilterDropdownRoot extends Component<
   AddFilterItemProps,
@@ -25,8 +25,16 @@ class AddFilterDropdownRoot extends Component<
   static displayName = 'AddFilterDropdown';
 
   static defaultProps = {
-    defaultVisible: true,
+    defaultVisible: false,
   } as const;
+
+  componentDidMount(): void {
+    if (this.props.visible === undefined) {
+      setTimeout(() => {
+        this.handlers.visible(true);
+      }, 0);
+    }
+  }
 
   uncontrolledProps() {
     return {

@@ -19,6 +19,17 @@ const Demo = (props: InteractiveExampleProps) => {
   const [error, setError] = React.useState('');
   const [startTime, setStartTime] = React.useState('09:00');
   const [endTime, setEndTime] = React.useState('17:00');
+  const presetButtons = props.is12Hour
+    ? [
+        { label: 'Set to 9:00 AM', value: '09:00' },
+        { label: 'Set to 1:30 PM', value: '13:30' },
+        { label: 'Set to 5:00 PM', value: '17:00' },
+      ]
+    : [
+        { label: 'Set to 09:00', value: '09:00' },
+        { label: 'Set to 13:30', value: '13:30' },
+        { label: 'Set to 17:00', value: '17:00' },
+      ];
 
   const handleChange = (newTime: string, event?: React.SyntheticEvent) => {
     console.log('Returned value:', newTime);
@@ -94,15 +105,11 @@ const Demo = (props: InteractiveExampleProps) => {
           </Box>
 
           <Box display='flex' m={2}>
-            <Button use='primary' onClick={() => handleChange('09:00')}>
-              Set to 9:00 AM
-            </Button>
-            <Button onClick={() => handleChange('13:30')}>
-              Set to 1:30 PM
-            </Button>
-            <Button onClick={() => handleChange('17:00')}>
-              Set to 5:00 PM
-            </Button>
+            {presetButtons.map(({ label, value }, index) => (
+              <Button key={value} use={index === 0 ? 'primary' : undefined} onClick={() => handleChange(value)}>
+                {label}
+              </Button>
+            ))}
           </Box>
         </Box>
       )}

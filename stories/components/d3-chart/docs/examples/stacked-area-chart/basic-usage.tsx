@@ -1,5 +1,4 @@
 import { Chart } from '@semcore/ui/d3-chart';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import StackedAreaMockData from '../../../__mocks__/stacked-area';
@@ -30,7 +29,6 @@ const Demo = () => {
       tooltipValueFormatter={formatDate('tooltip')}
       axisXValueFormatter={formatDate('axis')}
       stacked={true}
-      curve={curveCardinal}
       aria-label='Stacked area chart'
     />
   );

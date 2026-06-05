@@ -152,6 +152,11 @@ class BubbleChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * BubbleChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bubble-chart/bubble-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bubble-chart/bubble-chart-code/|Examples}
+ */
 export const BubbleChart = createComponent<
   BubbleChartType,
   typeof BubbleChartComponent

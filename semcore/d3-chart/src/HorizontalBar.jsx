@@ -182,4 +182,9 @@ function getHorizontalRect({ x, y, width, height, radius, position }) {
   return roundedPath(x, y, width, height, radius);
 }
 
+/**
+ * HorizontalBar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal/bar-horizontal-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bar-horizontal/bar-horizontal-code/|Examples}
+ */
 export default createElement(HorizontalBarRoot, { Background });

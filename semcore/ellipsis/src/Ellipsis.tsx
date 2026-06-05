@@ -28,7 +28,7 @@ type AsProps = {
 
 type AsPropsMiddle = {
   text: string;
-  textRef: RefObject<HTMLElement>;
+  textRef: RefObject<HTMLDivElement>;
   tooltip?: boolean;
   styles?: React.CSSProperties;
   containerRect?: { width: number };
@@ -341,6 +341,11 @@ function Content({ styles, Children }: EllipsisContentAsProps) {
   ) as any;
 }
 
+/**
+ * Ellipsis
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis-api/|API} | {@link https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis-code/|Examples}
+ */
 const Ellipsis = createComponent<
   EllipsisComponent,
   typeof RootEllipsis

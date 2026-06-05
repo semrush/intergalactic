@@ -293,6 +293,11 @@ class InputColor extends Component<
   }
 }
 
+/**
+ * PaletteManager
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-api#palettemanager|API} | {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-code/|Examples}
+ */
 export const PaletteManager = createComponent<
   NSPaletteManager.Component,
   typeof PaletteManagerRoot

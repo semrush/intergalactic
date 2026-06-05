@@ -60,13 +60,12 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer onResize={setSize} h={300} w='100%' style={{ background: '#fff' }}>
+    <ResponsiveContainer onResize={setSize} h={300} w='100%'>
       <Plot
         data={dataChart}
         scale={[xScale, yScale]}
         width={width}
         height={height}
-        style={{ background: '#fff' }}
       >
         <YAxis>
           <YAxis.Ticks />

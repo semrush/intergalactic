@@ -31,7 +31,6 @@ const Demo = () => {
                           size='s'
                           duration={0}
                           value={progress}
-                          theme='dark'
                           mt={1}
                           aria-label={`Progress is ${progress.toFixed(2)}%`}
                         />

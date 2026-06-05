@@ -91,6 +91,11 @@ class MonthPickerRoot extends PickerAbstract {
   }
 }
 
+/**
+ * MonthPicker
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/date-picker/date-picker-code/|Examples}
+ */
 const MonthPicker = createComponent(
   MonthPickerRoot,
   {

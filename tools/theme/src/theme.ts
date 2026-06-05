@@ -2579,3 +2579,9 @@ type Deprecates = {
   table: { td: { cell: { actions: { accordion: Value } } } };
   keyboard: { focus: { outline: { invert: Value } } };
 };
+
+export type BasicColorKeys = `${keyof BaseTokens['colors']}-${Lightness}`;
+
+type ReplaceUnderscore<T extends string> = T extends `${infer Prefix}_${infer Suffix}` ? `${Prefix}-${ReplaceUnderscore<Suffix>}` : T;
+
+export type SemanticColorKeys = Exclude<ReplaceUnderscore<FlattenPaths<SemanticColors>>, `${string}-DEFAULT`>;

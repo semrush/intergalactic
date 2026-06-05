@@ -29,4 +29,9 @@ class NoticeSmart extends Component {
   }
 }
 
+/**
+ * NoticeSmart
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/notice/notice-api#noticesmart|API} | {@link https://developer.semrush.com/intergalactic/components/notice/notice-code/|Examples}
+ */
 export default createComponent(NoticeSmart);

@@ -141,6 +141,11 @@ export const wrapPills = <PropsExtending extends {}>(wrapper: (
   PropsExtending,
 ) => React.ReactNode) => wrapper as NSPills.WrapComponent<PropsExtending>;
 
+/**
+ * Pills
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/pills/pills-api/|API} | {@link https://developer.semrush.com/intergalactic/components/pills/pills-code/|Examples}
+ */
 const Pills = createComponent<
   NSPills.Component,
   typeof RootPills

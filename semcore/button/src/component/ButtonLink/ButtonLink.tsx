@@ -36,6 +36,11 @@ class RootButtonLink extends Component<
   }
 }
 
+/**
+ * ButtonLink
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/button/button-api/|API} | {@link https://developer.semrush.com/intergalactic/components/button/button-code/|Examples}
+ */
 export const ButtonLink = createComponent<ButtonLinkComponent, typeof RootButtonLink>(
   RootButtonLink,
   {

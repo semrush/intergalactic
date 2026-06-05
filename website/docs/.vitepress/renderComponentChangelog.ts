@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { execSync } from 'node:child_process';
 import { resolve as resolvePath } from 'path';
 
 import { createMarkdownRenderer } from 'vitepress/dist/node/index';
@@ -13,8 +14,11 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
       const componentNameParts = token.info.split(':::')[0].split('changelog')[1].trim().split('__');
       const component = (componentNameParts[0] === 'base-components' && componentNameParts.length > 1) ? componentNameParts[1] : componentNameParts[0];
 
-      const baseChangelogPath = (componentNameParts[0] === 'base-components' && componentNameParts.length > 1) ? resolvePath(__dirname, `../../../semcore/base-components/CHANGELOG.md`) : null;
-      const changelogPath = resolvePath(__dirname, `../../../semcore/${componentNameParts.length === 1 ? component : `base-components/src/components/${component}`}/CHANGELOG.md`);
+      const baseChangelogPath = (componentNameParts[0] === 'base-components' && componentNameParts.length > 1) ? resolvePath(__dirname, '..', '..', '..', 'semcore', 'base-components', 'CHANGELOG.md') : null;
+      const changelogPath = baseChangelogPath
+        ? baseChangelogPath
+        : resolvePath(execSync(`pnpm --filter @semcore/${component} exec pwd`, { encoding: 'utf8' }).trim(), 'CHANGELOG.md');
+
       let changelogBody = changelogsCache[changelogPath];
       let baseChangelogBody = baseChangelogPath ? changelogsCache[baseChangelogPath] : undefined;
       if (!changelogBody) {

@@ -12,7 +12,7 @@ export function Highlight({ highlight, children }: HighlightProps) {
       const re = new RegExp(highlight.toLowerCase(), 'g');
       html = html.replace(
         re,
-        `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`,
+        `<span style="font-weight: bold; padding: var(--intergalactic-spacing-05x, 2px) 0">${highlight}</span>`,
       );
     } catch (e) {}
   }

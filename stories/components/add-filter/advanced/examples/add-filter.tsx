@@ -226,7 +226,7 @@ const AddFilterExample = () => {
 
         <AddFilter.Dropdown.Popper
           w={325}
-          p='8px 8px 16px'
+          p={4}
           role='dialog'
           aria-label='List of excluded keywords'
           aria-modal='false'
