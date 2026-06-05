@@ -23,20 +23,6 @@ Object.defineProperty(window.SVGElement.prototype, 'getBBox', {
   }),
 });
 
-const canvasContextMock = {
-  clearRect: vi.fn(),
-  measureText: vi.fn((text: string) => ({ width: text.length * 7 })),
-  font: '',
-};
-
-Object.defineProperty(window.HTMLCanvasElement.prototype, 'getContext', {
-  writable: true,
-  value: vi.fn((contextId: string) => {
-    if (contextId === '2d') return canvasContextMock;
-    return null;
-  }),
-});
-
 (window as any).matchMedia = vi.fn().mockImplementation((query) => ({
   matches: false,
   media: query,
@@ -44,13 +30,6 @@ Object.defineProperty(window.HTMLCanvasElement.prototype, 'getContext', {
   addListener: (e: any) => e('mediaQueryListEvent'),
   removeListener: vi.fn(),
 }));
-
-vi.stubGlobal('requestIdleCallback', (callback: any) => window.setTimeout(
-  () => callback({ didTimeout: false, timeRemaining: () => 0 }),
-  1,
-));
-vi.stubGlobal('cancelIdleCallback', (handle: number) => window.clearTimeout(handle));
-
 class ResizeObserverMock {
   observe() {}
   unobserve() {}

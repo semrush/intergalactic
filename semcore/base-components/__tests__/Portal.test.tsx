@@ -1,3 +1,4 @@
+import '@semcore/testing-utils/mockCanvasContext';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';

@@ -1,3 +1,4 @@
+import '@semcore/testing-utils/mockCanvasContext';
 import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
