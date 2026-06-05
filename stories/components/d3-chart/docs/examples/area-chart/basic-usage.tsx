@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
@@ -14,27 +15,23 @@ function formatDate(value: any) {
 
 const Demo = () => {
   return (
-    <div
-      style={{
-        border: '1px solid #ddd',
-        borderRadius: '4px',
-        resize: 'both',
-        overflow: 'auto',
-        height: '200px',
-      }}
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      h={200}
+      overflow='auto'
     >
       <Chart.Area
         groupKey='time'
         data={data}
-        // plotWidth={500}
-        // plotHeight={200}
         tooltipValueFormatter={formatDate}
         aria-label='Area chart'
       />
-    </div>
+    </Box>
   );
 };
 
-const data = AreaMockData.Interpolation;
+const data = AreaMockData.Default;
 
 export default Demo;

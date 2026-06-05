@@ -63,12 +63,14 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
   data: T;
   /**
    * Width of plot
+   * @deprecated. width is 100% of the parent element.
    */
-  plotWidth: number;
+  plotWidth?: number;
   /**
    * Height of plot
+   * @deprecated. height is 100% of the parent element.
    */
-  plotHeight: number;
+  plotHeight?: number;
 
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;

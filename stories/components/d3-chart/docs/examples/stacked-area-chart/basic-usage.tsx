@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
@@ -21,16 +22,23 @@ const formatDate = (type: 'axis' | 'tooltip') => (value: any) => {
 
 const Demo = () => {
   return (
-    <Chart.Area
-      data={data}
-      plotWidth={500}
-      plotHeight={200}
-      groupKey='time'
-      tooltipValueFormatter={formatDate('tooltip')}
-      axisXValueFormatter={formatDate('axis')}
-      stacked={true}
-      aria-label='Stacked area chart'
-    />
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={500}
+      h={200}
+      overflow='auto'
+    >
+      <Chart.Area
+        data={data}
+        groupKey='time'
+        tooltipValueFormatter={formatDate('tooltip')}
+        axisXValueFormatter={formatDate('axis')}
+        stacked={true}
+        aria-label='Stacked area chart'
+      />
+    </Box>
   );
 };
 

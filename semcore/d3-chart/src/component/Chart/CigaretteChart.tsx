@@ -147,7 +147,8 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   private computeCigaretteItems() {
-    const { plotWidth, plotHeight, data, invertAxis, minimalBarWidth } = this.asProps;
+    const { data, invertAxis, minimalBarWidth } = this.asProps;
+    const { plotWidth, plotHeight } = this.state;
 
     const dataDefinitions = invertAxis
       ? this.activeDataDefinitions
@@ -214,20 +215,21 @@ class CigaretteChartComponent extends AbstractChart<
   };
 
   get xScale() {
-    const { plotWidth } = this.asProps;
+    const { plotWidth } = this.state;
 
     return scaleLinear([0, plotWidth]);
   }
 
   get yScale() {
-    const { plotHeight } = this.asProps;
+    const { plotHeight } = this.state;
 
     return scaleLinear([plotHeight, 0]);
   }
 
   renderChart() {
-    const { invertAxis, data, uid, duration, patterns, plotHeight, plotWidth, onClick } =
+    const { invertAxis, data, uid, duration, patterns, onClick } =
       this.asProps;
+    const { plotWidth, plotHeight } = this.state;
     const { dataDefinitions, highlightedLine } = this.state;
 
     this.offset = 0;
@@ -415,13 +417,14 @@ class CigaretteChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig } = this.asProps;
+    const { styles, data, patterns, invertAxis, a11yAltTextConfig } = this.asProps;
+    const { plotWidth, plotHeight } = this.state;
 
     const header = this.renderHeader();
 
     if (invertAxis) {
       return sstyled(styles)(
-        <SChart render={Flex} gap={6} direction='column' __excludeProps={['onClick', 'data']}>
+        <SChart render={Flex} gap={6} direction='column' __excludeProps={['onClick', 'data']} ref={this.chartRef}>
           <Flex direction='column'>
             {header}
             <Plot
@@ -446,7 +449,7 @@ class CigaretteChartComponent extends AbstractChart<
     }
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']}>
+      <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']} ref={this.chartRef}>
         <Plot
           ref={this.plotRef}
           data={data}

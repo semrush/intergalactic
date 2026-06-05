@@ -34,12 +34,11 @@ class HistogramChartComponent extends AbstractChart<
       xScale,
       marginY = 30,
       marginX = 30,
-      plotWidth,
-      plotHeight,
       invertAxis,
       data,
       groupKey,
     } = this.asProps;
+    const { plotWidth, plotHeight } = this.state;
 
     if (xScale) {
       return xScale;
@@ -66,11 +65,10 @@ class HistogramChartComponent extends AbstractChart<
       yScale,
       marginY = 30,
       marginX = 30,
-      plotHeight,
-      plotWidth,
       invertAxis,
       data,
     } = this.asProps;
+    const { plotWidth, plotHeight } = this.state;
 
     let max: number;
 
