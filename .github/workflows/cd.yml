@@ -255,14 +255,11 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-      - name: Test setup
-        id: test-setup
-        run: pnpm test:setup
       - name: Test
         id: test
         env:
           CHANGED_COMPONENTS: ${{ needs.defineChangedComponents.outputs.changedComponents }}
-        run: pnpm test:docker run $CHANGED_COMPONENTS -- --allowOnly=false
+        run: pnpm test run $CHANGED_COMPONENTS -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
