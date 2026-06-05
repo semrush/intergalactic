@@ -14,21 +14,18 @@ const Demo = () => (
       </Notice.Label>
 
       <Notice.Content>
-        <Notice.Title>Your subscription has expired</Notice.Title>
+        <Notice.Title>New keyboard shortcuts are available</Notice.Title>
 
         <Notice.Text>
-          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
-          To unlock your projects, please upgrade your subscription.Please tell us how to improve
-          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
-          its debut becoming the biggest film of all time in. The reports are based on the data from
-          the Russian Federation and the CIS.
+          You can now navigate dashboards, switch tabs, and create reports faster with updated keyboard
+          shortcuts. Open the shortcuts panel anytime to explore the full list of available commands.
         </Notice.Text>
 
         <Notice.Actions>
           <Button use='primary' mr={2}>
-            Button
+            Learn more
           </Button>
-          <Button>Button</Button>
+          <Button>Close</Button>
         </Notice.Actions>
       </Notice.Content>
       <Notice.Close />
@@ -40,21 +37,18 @@ const Demo = () => (
       </Notice.Label>
 
       <Notice.Content>
-        <Notice.Title>Your subscription has expired</Notice.Title>
+        <Notice.Title>Data export is in progress</Notice.Title>
 
         <Notice.Text>
-          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
-          To unlock your projects, please upgrade your subscription.Please tell us how to improve
-          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
-          its debut becoming the biggest film of all time in. The reports are based on the data from
-          the Russian Federation and the CIS.
+          Your report is being prepared and will be ready in a few minutes. You can continue working while
+          we generate the export file in the background.
         </Notice.Text>
 
         <Notice.Actions>
           <Button use='primary' mr={2}>
-            Button
+            View details
           </Button>
-          <Button>Button</Button>
+          <Button>Close</Button>
         </Notice.Actions>
       </Notice.Content>
       <Notice.Close />
@@ -66,21 +60,18 @@ const Demo = () => (
       </Notice.Label>
 
       <Notice.Content>
-        <Notice.Title>Your subscription has expired</Notice.Title>
+        <Notice.Title>Payment method expires soon</Notice.Title>
 
         <Notice.Text>
-          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
-          To unlock your projects, please upgrade your subscription.Please tell us how to improve
-          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
-          its debut becoming the biggest film of all time in. The reports are based on the data from
-          the Russian Federation and the CIS.
+          Your current payment method will expire in 5 days. Please update your billing information to
+          avoid interruptions to your subscription and scheduled reports.
         </Notice.Text>
 
         <Notice.Actions>
           <Button use='primary' theme='success' mr={2}>
-            Button
+            Update payment method
           </Button>
-          <Button>Button</Button>
+          <Button>Close</Button>
         </Notice.Actions>
       </Notice.Content>
       <Notice.Close />
@@ -92,21 +83,18 @@ const Demo = () => (
       </Notice.Label>
 
       <Notice.Content>
-        <Notice.Title>Your subscription has expired</Notice.Title>
+        <Notice.Title>API request limit reached</Notice.Title>
 
         <Notice.Text>
-          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
-          To unlock your projects, please upgrade your subscription.Please tell us how to improve
-          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
-          its debut becoming the biggest film of all time in. The reports are based on the data from
-          the Russian Federation and the CIS.
+          Your workspace has reached the monthly API request limit. Some integrations may stop working
+          until the limit resets or your subscription is upgraded.
         </Notice.Text>
 
         <Notice.Actions>
           <Button use='primary' theme='danger' mr={2}>
-            Button
+            Increase limit
           </Button>
-          <Button>Button</Button>
+          <Button>Close</Button>
         </Notice.Actions>
       </Notice.Content>
       <Notice.Close />
@@ -118,21 +106,18 @@ const Demo = () => (
       </Notice.Label>
 
       <Notice.Content>
-        <Notice.Title>Your subscription has expired</Notice.Title>
+        <Notice.Title>Backup completed successfully</Notice.Title>
 
         <Notice.Text>
-          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
-          To unlock your projects, please upgrade your subscription.Please tell us how to improve
-          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
-          its debut becoming the biggest film of all time in. The reports are based on the data from
-          the Russian Federation and the CIS.
+          Your project settings and reports were successfully backed up. You can restore this version at
+          any time from the backup history page.
         </Notice.Text>
 
         <Notice.Actions>
           <Button use='primary' theme='success' mr={2}>
-            Button
+            View backup history
           </Button>
-          <Button>Button</Button>
+          <Button>Close</Button>
         </Notice.Actions>
       </Notice.Content>
       <Notice.Close />

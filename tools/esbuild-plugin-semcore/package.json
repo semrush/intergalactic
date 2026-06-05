@@ -2,15 +2,10 @@
   "name": "@semcore/esbuild-plugin-semcore",
   "version": "1.0.0",
   "exports": {
-    ".": "./src/esbuild-plugin-semcore.ts",
-    "./esbuild-plugin-semcore-sources-resolve": "./src/esbuild-plugin-semcore-sources-resolve.ts",
-    "./cache-manager": "./src/cache-manager.ts"
+    ".": "./src/index.ts"
   },
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "test": "jest"
-  },
   "devDependencies": {
     "@types/babel__core": "^7.20.5",
     "esbuild": "0.28.0"

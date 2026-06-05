@@ -3,7 +3,7 @@ import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import React from 'react';
 
-import { themeFor } from '../themeUtils.ts';
+import { themeFor } from '../themeUtils';
 
 type ButtonEllipsisProps = ButtonProps & {
   ellipsis?: NSText.EllipsisProps;

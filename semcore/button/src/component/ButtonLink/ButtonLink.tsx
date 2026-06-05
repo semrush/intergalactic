@@ -3,15 +3,22 @@ import Link from '@semcore/link';
 import React from 'react';
 
 import style from './buttonLink.shadow.css';
-import type { ButtonLinkComponent, ButtonLinkProps } from './ButtonLink.type';
+import type { ButtonLinkComponent, ButtonLinkDefaultProps, ButtonLinkProps } from './ButtonLink.type';
 
-class RootButtonLink extends Component<ButtonLinkProps> {
+class RootButtonLink extends Component<
+  ButtonLinkProps,
+  [],
+  {},
+  {},
+  {},
+  ButtonLinkDefaultProps
+> {
   static displayName = 'ButtonLink';
   static style = style;
   static defaultProps = {
     use: 'primary',
     size: 200,
-  };
+  } as const;
 
   render(): React.ReactNode {
     const SButtonLink = Root;
@@ -29,9 +36,18 @@ class RootButtonLink extends Component<ButtonLinkProps> {
   }
 }
 
-export const ButtonLink = createComponent(RootButtonLink, {
-  Text: Link.Text,
-  Addon: Link.Addon,
-}, {
-  parent: Link,
-}) as ButtonLinkComponent;
+/**
+ * ButtonLink
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/button/button-api/|API} | {@link https://developer.semrush.com/intergalactic/components/button/button-code/|Examples}
+ */
+export const ButtonLink = createComponent<ButtonLinkComponent, typeof RootButtonLink>(
+  RootButtonLink,
+  {
+    Text: Link.Text,
+    Addon: Link.Addon,
+  },
+  {
+    parent: Link,
+  },
+);

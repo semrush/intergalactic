@@ -10,8 +10,8 @@ const options = Array(12)
 
 const noticeStyle = {
   border: 'none',
-  borderRadius: '0 0 6px 6px',
-  padding: '12px 8px',
+  borderRadius: `0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)`,
+  padding: 'var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px)',
 };
 
 const Demo = () => (

@@ -42,6 +42,8 @@ class ModalRoot extends Component {
     disablePreventScroll: false,
   };
 
+  windowRef = React.createRef();
+
   state = { hasTitle: false };
 
   handleKeyDown = (e) => {
@@ -57,6 +59,12 @@ class ModalRoot extends Component {
 
   handleOutsideClick = (e) => {
     fire(this, 'onClose', 'onOutsideClick', e);
+
+    // Keep focus on modal if overlay clicks don't close the modal.
+    // Otherwise, wait for close modal to cleanup windowRef.
+    setTimeout(() => {
+      this.windowRef.current?.focus({ focusVisible: false });
+    });
   };
 
   getOverlayProps() {
@@ -81,6 +89,7 @@ class ModalRoot extends Component {
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
       duration,
       animationsDisabled,
+      'ref': this.windowRef,
     };
   }
 
@@ -211,6 +220,11 @@ function Title(props) {
   return sstyled(styles)(<STitle render={Text} tag='h2' use:color={resolveColor(color)} />);
 }
 
+/**
+ * Modal
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/modal/modal-api/|API} | {@link https://developer.semrush.com/intergalactic/components/modal/modal-code/|Examples}
+ */
 const Modal = createComponent(ModalRoot, {
   Window,
   Overlay,

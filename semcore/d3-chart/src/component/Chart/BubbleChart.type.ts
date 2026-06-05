@@ -31,4 +31,11 @@ export type BubbleChartProps = Intergalactic.InternalTypings.EfficientOmit<
   onClickBubble?: (index: number, event: React.SyntheticEvent) => void;
 };
 
+export type BubbleChartDefaultProps = {
+  direction: 'column';
+  showXAxis: true;
+  showYAxis: true;
+  showTooltip: true;
+};
+
 export type BubbleChartType = Intergalactic.Component<typeof Flex, BubbleChartProps>;

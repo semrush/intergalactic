@@ -2,43 +2,83 @@ import axios from 'axios';
 
 import type { ChangelogChangeLabel, ChangelogItem } from './changelog';
 
-const type2SectionLabel: Record<string, string> = {
-  added: ':white_check_mark: ADDED',
-  changed: ':recycle: CHANGED',
-  fixed: ':hammer_and_wrench: FIXED',
-  removed: ':wastebasket: REMOVED',
-  break: ':interrobang: BREAK',
+const type2SectionLabel: Record<ChangelogChangeLabel, string> = {
+  Added: ':sparkles: Added',
+  Changed: ':arrows_counterclockwise: Changed',
+  Fixed: ':ladybug: Fixed',
+  BREAK: ':warning: Break',
 };
 
-export const makeMessageFromChangelogs = (changelogs: ChangelogItem[], withVersions: boolean) =>
-  changelogs.map((item) => bodyTemplate(item, withVersions)).join('\n');
+const BULLET = '•';
 
-const titleTemplate = (name: string, version: string | null) =>
-  `\n-------- \n:black_heart: *${name}* ${version ? `v${version}` : ''} \n\n`;
+const formatBulletLine = (line: string) => `${BULLET} ${line}`;
 
-const bodyTemplate = (changeItem: ChangelogItem, withVersions: boolean) => {
-  const sections: Partial<{ [label in NonNullable<ChangelogChangeLabel>]: string[] }> = {};
+export const makeTitleFromChangelogs = (version: string) => {
+  if (version.startsWith('v')) {
+    return `:whale2: Semcore Release ${version}`;
+  }
+
+  if (version.startsWith('icon')) {
+    return `:art: Icon Release v${version.slice('icon'.length)}`;
+  }
+
+  if (version.startsWith('illustration')) {
+    return `:art: Illustration Release v${version.slice('illustration'.length)}`;
+  }
+
+  throw new Error(`Unknown version: "${version}"`);
+};
+
+export const makeMessageFromChangelogs = (version: string, changelogs: ChangelogItem[]) => {
+  if (version.startsWith('v')) {
+    return changelogs.map((item) => bodyTemplate(item)).join('\n');
+  }
+  let component: 'icon' | 'illustration';
+
+  if (version.startsWith('icon')) {
+    component = 'icon';
+  } else if (version.startsWith('illustration')) {
+    component = 'illustration';
+  } else {
+    throw new Error(`Unknown version: "${version}"`);
+  }
+
+  const changes = changelogs.find((item) => item.component === `@semcore/${component}`);
+
+  const lines = changes?.changes.map((item) => {
+    return formatBulletLine(`*${item.label}* ${item.description}`);
+  }).join('\n');
+
+  return lines ? `- - -\n${lines}` : '- - -';
+};
+
+const formatComponentDisplayName = (component: string): string => {
+  const name = component.replace(/^@semcore\//i, '');
+
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
+
+const bodyTemplate = (changeItem: ChangelogItem) => {
+  const sections = new Map<ChangelogChangeLabel, string[]>();
   for (const change of changeItem.changes) {
     if (change.label) {
-      sections[change.label] = sections[change.label] || [];
-      sections[change.label]?.push(change.description);
+      const changes = sections.get(change.label) ?? [];
+      changes.push(change.description);
+      sections.set(change.label, changes);
     }
   }
 
-  return (
-    titleTemplate(changeItem.component, withVersions ? changeItem.version : null) +
-    Object.entries(sections)
-      .map(([label, changeDescriptions]) => {
-        const title = label in type2SectionLabel ? type2SectionLabel[label] : label.toUpperCase();
+  const header = `- - -\n*${formatComponentDisplayName(changeItem.component)}*`;
+  const sectionsText = Array.from(sections.entries())
+    .map(([label, changeDescriptions]) => {
+      const title = type2SectionLabel[label] ?? label.toUpperCase();
+      const lines = changeDescriptions.map(formatBulletLine).join('\n');
 
-        return (
-          title +
-          '\n' +
-          changeDescriptions.map((changeDescription) => `- ${changeDescription}`).join('\n')
-        );
-      })
-      .join('\n')
-  );
+      return lines ? `${title}\n${lines}` : title;
+    })
+    .join('\n');
+
+  return sectionsText ? `${header}\n${sectionsText}` : header;
 };
 
 export const sendMessage = async ({

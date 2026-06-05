@@ -1,6 +1,5 @@
 import { Plot, XAxis, YAxis, minMax, Area } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import AreaMockData from '../../../__mocks__/area';
@@ -38,10 +37,10 @@ const Demo = () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Area x='time' y='line1' curve={curveCardinal}>
+      <Area x='time' y='line1'>
         <Area.Dots display />
       </Area>
-      <Area x='time' y='line2' curve={curveCardinal}>
+      <Area x='time' y='line2'>
         <Area.Dots display />
       </Area>
     </Plot>

@@ -8,7 +8,6 @@ import {
   makeDataHintsContainer,
 } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import AreaMockData from '../../../__mocks__/area';
@@ -91,7 +90,7 @@ const Demo = () => {
         {legendItems.map((item) => {
           return (
             item.checked && (
-              <Area key={item.id} x='time' y={item.id} curve={curveCardinal} color={item.color}>
+              <Area key={item.id} x='time' y={item.id} color={item.color}>
                 <Area.Dots display />
               </Area>
             )

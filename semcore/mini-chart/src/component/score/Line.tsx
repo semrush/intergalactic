@@ -9,9 +9,17 @@ import type {
   ScoreLineGaugeProps,
   SegmentProps,
   InnerSegmentProps,
+  ScoreLineGaugeDefaultProps,
 } from './Line.types';
 
-class LineRoot extends Component<ScoreLineGaugeProps, typeof LineRoot.enhance> {
+class LineRoot extends Component<
+  ScoreLineGaugeProps,
+  typeof LineRoot.enhance,
+  {},
+  {},
+  {},
+  ScoreLineGaugeDefaultProps
+> {
   static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
 
@@ -19,7 +27,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, typeof LineRoot.enhance> {
 
   static defaultProps = {
     animate: true,
-  };
+  } as const;
 
   getSegmentProps(segmentProps: SegmentProps) {
     const { children, resolveColor } = this.asProps;
@@ -114,8 +122,14 @@ function Segment(props: InnerSegmentProps) {
 }
 Segment.displayName = 'Segment';
 
-export const ScoreLine = createComponent(LineRoot, {
-  Segment,
-}) as ScoreLineComponent;
+/**
+ * MiniCharts.ScoreLine
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
+ */
+export const ScoreLine = createComponent<
+  ScoreLineComponent,
+  typeof LineRoot
+>(LineRoot, { Segment });
 
 ScoreLine.displayName = 'MiniChart.ScoreLine';

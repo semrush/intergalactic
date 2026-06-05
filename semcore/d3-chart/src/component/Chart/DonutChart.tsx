@@ -7,23 +7,27 @@ import React from 'react';
 
 // @ts-ignore
 import { Donut } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
+import type { DonutChartData, DonutChartDefaultProps, DonutChartProps, DonutChartType } from './DonutChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class DonutChartComponent extends AbstractChart<
   DonutChartData,
   DonutChartProps,
-  typeof DonutChartComponent.enhance
+  typeof DonutChartComponent.enhance,
+  {},
+  ChartState,
+  DonutChartDefaultProps
 > {
   static displayName = 'Chart.Donut';
-  static defaultProps: Partial<DonutChartProps> = {
+  static defaultProps = {
     direction: 'row-reverse',
     alignItems: 'flex-start',
     innerRadius: 100,
     marginX: 0,
     marginY: 0,
-  };
+  } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
@@ -107,4 +111,12 @@ class DonutChartComponent extends AbstractChart<
   }
 }
 
-export const DonutChart: DonutChartType = createComponent(DonutChartComponent);
+/**
+ * DonutChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-code/|Examples}
+ */
+export const DonutChart = createComponent<
+  DonutChartType,
+  typeof DonutChartComponent
+>(DonutChartComponent);

@@ -17,16 +17,18 @@ const MAP_COLOR_THEME = {
 
 class SkeletonRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.RenderComponent>,
-  typeof SkeletonRoot.enhance
+  typeof SkeletonRoot.enhance,
+  {},
+  {},
+  {},
+  NSSkeleton.DefaultProps
 > {
   static displayName = 'Skeleton';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
-    width: '100%',
-    height: '100%',
     duration: 2000,
-  };
+  } as const;
 
   render() {
     const SSkeleton = Root;
@@ -37,6 +39,8 @@ class SkeletonRoot extends Component<
     return sstyled(styles)(
       <SSkeleton
         render={Box}
+        width='100%'
+        height='100%'
         durationAnim={`${duration}ms`}
         role='img'
         aria-label={getI18nText('loading')}
@@ -47,7 +51,11 @@ class SkeletonRoot extends Component<
 
 class SkeletonSVG extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.Component>,
-  typeof SkeletonRoot.enhance
+  typeof SkeletonRoot.enhance,
+  never,
+  {},
+  {},
+  NSSkeleton.DefaultProps
 > {
   static displayName = 'SkeletonSVG';
   static enhance = [uniqueIDEnhancement()];
@@ -56,7 +64,7 @@ class SkeletonSVG extends Component<
   static defaultProps = {
     theme: 'invert',
     duration: 2000,
-  };
+  } as const;
 
   svgRef = React.createRef<SVGElement>();
   private observer: ResizeObserver | null = null;
@@ -153,10 +161,26 @@ function Text(
   );
 }
 
-const Skeleton = createComponent(SkeletonRoot) as NSSkeleton.RenderComponent;
+/**
+ * Skeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api/|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
+const Skeleton = createComponent<
+  NSSkeleton.RenderComponent,
+  typeof SkeletonRoot
+>(SkeletonRoot);
 
 export { Skeleton };
 
-export default createComponent(SkeletonSVG, {
+/**
+ * Skeleton SVG
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api/|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
+export default createComponent<
+  NSSkeleton.Component,
+  typeof SkeletonSVG
+>(SkeletonSVG, {
   Text,
-}) as NSSkeleton.Component;
+});

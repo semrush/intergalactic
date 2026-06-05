@@ -227,6 +227,11 @@ function VennTooltip(props) {
   return sstyled(props.styles)(<SVennTooltip render={Tooltip} excludeAnchorProps />);
 };
 
+/**
+ * Venn
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/venn-chart/venn-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/venn-chart/venn-chart-code/|Examples}
+ */
 const Venn = createElement(VennRoot, {
   Circle,
   Intersection,

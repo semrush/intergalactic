@@ -33,13 +33,27 @@ declare namespace NSCheckbox {
      */
     theme?: string;
   };
+  type DefaultProps = {
+    size: 'm';
+    state: 'normal';
+    defaultChecked: false;
+  };
   type Ctx = {
     getTextProps: PropGetterFn;
     getValueProps: PropGetterFn;
   };
 
   namespace Value {
+    type Handlers = {
+      checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
+    };
     type Props = FlexProps;
+    type InnerProps = {
+      includeInputProps: string[];
+    };
+    type DefaultProps = {
+      includeInputProps: InnerProps['includeInputProps'];
+    };
 
     namespace Control {
       type Props = {};

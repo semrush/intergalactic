@@ -5,18 +5,29 @@ import React from 'react';
 
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { HistogramChartData, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
+import type { HistogramChartData, HistogramChartDefaultProps, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class HistogramChartComponent extends AbstractChart<
   HistogramChartData,
   HistogramChartProps,
-  typeof HistogramChartComponent.enhance
+  typeof HistogramChartComponent.enhance,
+  {},
+  ChartState,
+  HistogramChartDefaultProps
 > {
   static displayName = 'Chart.Histogram';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
 
   get xScale() {
     const {
@@ -173,4 +184,12 @@ class HistogramChartComponent extends AbstractChart<
   }
 }
 
-export const HistogramChart: HistogramChartType = createComponent(HistogramChartComponent);
+/**
+ * HistogramChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/histogram-chart/histogram-chart-api/|API}
+ */
+export const HistogramChart = createComponent<
+  HistogramChartType,
+  typeof HistogramChartComponent
+>(HistogramChartComponent);

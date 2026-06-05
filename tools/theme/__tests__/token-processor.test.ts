@@ -26,6 +26,13 @@ describe('Token Processor - processTokens', () => {
       // processor pre-computes literal calc(4px * 5) → 20px, accept either form
       expect(byName['--intergalactic-form-control-s'].value).toMatch(/^(\d+px|calc\([^{}]+\))$/);
     });
+
+    test('Should process semantic radii as canonical literal values', () => {
+      expect(byName['--intergalactic-rounded-medium'].value).toBe('6px');
+      expect(byName['--intergalactic-rounded-large'].value).toBe('12px');
+      expect(byName['--intergalactic-surface-rounded'].value).toBe('8px');
+      expect(byName['--intergalactic-modal-rounded'].value).toBe('14px');
+    });
   });
 
   describe('Descriptions and metadata', () => {

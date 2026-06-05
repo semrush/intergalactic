@@ -10,7 +10,11 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootPageNotFound extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSPageNotFound.Component>,
-  typeof RootPageNotFound.enhance
+  typeof RootPageNotFound.enhance,
+  {},
+  {},
+  {},
+  NSPageNotFound.DefaultProps
 > {
   static displayName = 'PageNotFound';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -20,7 +24,7 @@ class RootPageNotFound extends Component<
     icon: getIconPath('page_not_found'),
     homeLink: '/',
     titleTag: 'h2',
-  };
+  } as const;
 
   render() {
     const { Children, getI18nText, homeLink, titleTag } = this.asProps;
@@ -40,4 +44,7 @@ class RootPageNotFound extends Component<
   }
 }
 
-export default createComponent(RootPageNotFound) as NSPageNotFound.Component;
+export default createComponent<
+  NSPageNotFound.Component,
+  typeof RootPageNotFound
+>(RootPageNotFound);

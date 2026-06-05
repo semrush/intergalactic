@@ -248,6 +248,40 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify feedback form closes by Escape with validation tooltip visible', {
+    tag: [
+      TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@feedback-form'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/feedback/docs/examples/default_feedback_form.tsx', 'en');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.feedbackForm(page).waitFor({ state: 'visible' });
+    await expect(locators.inputs(page, 0)).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(locators.inputs(page, 1)).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: 'Privacy Policy' })).toBeFocused();
+
+    await page.keyboard.press('Tab');
+    await expect(locators.button(page, 1)).toBeFocused();
+
+    await page.keyboard.press('Enter');
+    await page.getByRole('tooltip', { name: 'Your feedback must contain at least 10 characters.' }).waitFor({ state: 'visible' });
+    await expect(locators.inputs(page, 0)).toBeFocused();
+    await expect(locators.inputs(page, 0)).toHaveAttribute('aria-invalid', 'true');
+    await expect(locators.inputs(page, 0)).toHaveAttribute('aria-describedby');
+
+    await page.keyboard.press('Escape');
+    await locators.feedbackForm(page).waitFor({ state: 'hidden' });
+    await expect(locators.feedbackForm(page)).not.toBeVisible();
+    await expect(locators.button(page)).toBeFocused();
+  });
+
   test('Verify base feedback form mouse interaction', {
     tag: [
       TAG.PRIORITY_HIGH,

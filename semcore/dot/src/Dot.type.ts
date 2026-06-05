@@ -14,6 +14,13 @@ declare namespace NSDot {
     /** The property for Dot visibility control */
     hidden?: boolean;
   };
+  type InnerProps = {
+    keyframes: [string, string];
+  };
+  type DefaultProps = {
+    size: 'm';
+    keyframes: InnerProps['keyframes'];
+  };
 
   type Component = Intergalactic.Component<'div', Props>;
 }

@@ -17,11 +17,15 @@ const Demo = (props: SidePanelProps) => {
         closable={props.closable}
         disablePreventScroll={props.disablePreventScroll}
       >
-        <SidePanel.Panel aria-label='Taking the stage' mt={20}>
-          <Text size={300} tag='p'>
-            Taking the Stage: Trends and Strategies for 2024 and Beyond
-          </Text>
-          <Button mt={3}>Read more</Button>
+        <SidePanel.Panel aria-label='SidePanel example' mt={20}>
+          <SidePanel.Header>
+            <SidePanel.Title mt={3}>SidePanel Title</SidePanel.Title>
+          </SidePanel.Header>
+          <SidePanel.Body>
+            <Text size={300} tag='p'>
+              SidePanel content
+            </Text>
+          </SidePanel.Body>
         </SidePanel.Panel>
       </SidePanel>
     </React.Fragment>

@@ -27,7 +27,7 @@ const Demo = (props: ContainerNodeDemoProps) => {
       element.style.padding = 'var(--intergalactic-spacing-3x)';
       element.style.minWidth = '400px';
       element.style.backgroundColor = 'var(--intergalactic-bg-primary-neutral)';
-      element.style.borderRadius = 'var(--intergalactic-border-radius)';
+      element.style.borderRadius = 'var(--intergalactic-popper-rounded)';
       document.body.appendChild(element);
       setCustomElementContainer(element);
 

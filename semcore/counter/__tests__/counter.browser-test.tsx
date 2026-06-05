@@ -34,7 +34,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_filters.tsx', 'en');
 
-    await page.waitForSelector('text="500"');
+    await page.waitForSelector('text="12"');
     await expect(page).toHaveScreenshot();
 
     await page.locator('[data-ui-name="FilterTrigger.TriggerButton"]').click();

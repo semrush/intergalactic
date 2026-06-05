@@ -13,7 +13,7 @@ const Demo = () => (
     <Box tag={Button} mr={2}>
       Button 3
     </Box>
-    <Box tag={Button} mr={2}>
+    <Box tag={Button}>
       Button 4
     </Box>
   </div>

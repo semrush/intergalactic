@@ -38,4 +38,9 @@ function LineChartSkeleton(
   );
 }
 
-export default createComponent(LineChartSkeleton) as NSSkeletonLineChart.Component;
+/**
+ * LineChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api#linechartskeleton|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
+export default createComponent<NSSkeletonLineChart.Component, typeof LineChartSkeleton>(LineChartSkeleton);
