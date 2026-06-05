@@ -1,7 +1,7 @@
 {
   "name": "@semcore/accordion",
   "description": "Semrush Accordion Component",
-  "version": "17.1.0",
+  "version": "17.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,12 +17,12 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "^17.1.0",
-    "@semcore/typography": "^17.1.0",
+    "@semcore/button": "^17.2.0",
+    "@semcore/typography": "^17.2.0",
     "csstype": "3.1.3"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.2",
+    "@semcore/base-components": "^17.2.0",
     "@semcore/icon": "^17.0.1"
   },
   "repository": {
