@@ -46,6 +46,7 @@ const Demo = () => {
             <Badge type='beta' />
             <Badge type='new' />
             <Badge type='soon' />
+            <Badge type='unavailable' />
           </Flex>
           <Flex gap={2} mt={2} p={4} bg='bg-primary-invert'>
             <Badge type='admin' inverted />
@@ -53,6 +54,7 @@ const Demo = () => {
             <Badge type='beta' inverted />
             <Badge type='new' inverted />
             <Badge type='soon' inverted />
+            <Badge type='unavailable' inverted />
           </Flex>
         </Box>
       </I18nProvider>
