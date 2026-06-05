@@ -29,10 +29,6 @@ export default defineConfig({
         replacement: resolvePath(__dirname, 'semcore/icon/lib/$1'),
       },
       {
-        find: '@semcore/flex-box',
-        replacement: resolvePath(__dirname, 'semcore/base-components/src/components/flex-box/index.tsx'),
-      },
-      {
         find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,
         replacement: resolvePath(__dirname, 'tools/esbuild-plugin-semcore/$1'),
       },
