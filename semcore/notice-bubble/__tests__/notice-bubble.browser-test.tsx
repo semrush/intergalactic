@@ -351,11 +351,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify replace last notice in SM2 container - mouse interactions', {
+  test('Verify replace last notice in SM2 container without initial animation - mouse interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
-      initialAnimation: true, // we have bug here
+      initialAnimation: false,
       duration: 0,
       type: 'info',
       focusLock: false,

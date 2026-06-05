@@ -86,6 +86,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.input(page).first()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('tes');
+    await locators.tooltip(page).waitFor({ state: 'hidden' });
+    await page.keyboard.press('Enter');
     await locators.tooltip(page).waitFor({ state: 'visible' });
     await expect(locators.tooltip(page)).toHaveText('Email is not valid.');
     await expect(locators.input(page).first()).toHaveAttribute('aria-invalid', 'true');
@@ -100,6 +102,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
 
     await page.keyboard.type('Qwe');
+    await locators.tooltip(page).waitFor({ state: 'hidden' });
+    await page.keyboard.press('Enter');
+    await locators.tooltip(page).waitFor({ state: 'visible' });
     await expect(locators.tooltip(page)).toHaveText('Password must have at least 8 characters.');
     await expect(locators.input(page).last()).toHaveAttribute('aria-invalid', 'true');
 

@@ -42,6 +42,11 @@ function DonutChartSkeleton(
   );
 }
 
+/**
+ * DonutChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api#donutchartskeleton|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code#chart-skeleton|Examples}
+ */
 export default createComponent<
   NSSkeletonDonutChart.Component,
   typeof DonutChartSkeleton

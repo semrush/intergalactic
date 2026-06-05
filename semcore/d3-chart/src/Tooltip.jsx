@@ -163,6 +163,7 @@ PopperPopper.style = style;
 function Title(props) {
   const STitle = Root;
   const { styles } = props;
+
   return sstyled(styles)(<STitle render={Box} __excludeProps={['data', 'scale']} />);
 }
 Title.style = style;
@@ -183,7 +184,7 @@ function Dot(props) {
   const SDot = Box;
   const SDotCircle = Box;
   return sstyled(styles)(
-    <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
+    <SDotGroup render={Box} use:color={undefined} __excludeProps={['data', 'scale']}>
       {patterns
         ? (
             <SDot>

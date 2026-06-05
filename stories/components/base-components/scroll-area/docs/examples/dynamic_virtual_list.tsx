@@ -5,6 +5,7 @@ import React from 'react';
 import { List } from 'react-virtualized';
 
 const list = [...new Array(6)];
+
 const renderRow = ({
   key,
   index,
@@ -13,11 +14,14 @@ const renderRow = ({
   return (
     <Box
       key={key}
-      inline
-      m={2}
+      p={4}
+      mb={2}
       w={120}
-      h={120}
-      style={{ border: '1px solid black', ...style }}
+      h={112}
+      boxSizing='border-box'
+      bg='bg-primary-advertising'
+      borderRadius='surface-rounded'
+      style={style}
       role='row'
     >
       <Text bold size={200} m='auto' role='gridcell'>

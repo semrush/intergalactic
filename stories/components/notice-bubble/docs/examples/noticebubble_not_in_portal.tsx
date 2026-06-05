@@ -34,7 +34,7 @@ const Demo = (props: NotInPortalNoticeBubbleProps) => {
 
   return (
     <div
-      style={{ border: '1px dashed #eee', height: '180px', position: 'relative', overflow: 'auto' }}
+      style={{ border: '1px dashed var(--intergalactic-border-primary)', height: '180px', position: 'relative', overflow: 'auto' }}
     >
       <div style={{ height: '800px', overflow: 'hidden' }}>
         <NoticeBubbleContainer manager={manager} disablePortal={true} />

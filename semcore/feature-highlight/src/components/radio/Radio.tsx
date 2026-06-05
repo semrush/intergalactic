@@ -65,6 +65,11 @@ class RadioFHRoot extends Component<NSRadio.Props> {
   }
 }
 
+/**
+ * Radio FeatureHighlight
+ *
+ * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#radio|Docs}
+ */
 export const RadioFH = createComponent<
   HighlightedRadioComponent,
   typeof RadioFHRoot

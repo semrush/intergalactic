@@ -440,7 +440,11 @@ function NumberControls(props: NumberControlsAsProps) {
   ) as React.ReactElement;
 }
 
-/** `createComponent` currently exposes unrelated junk instead of typings, that the reason of to any cast  */
+/**
+ * InlineInput
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/inline-input/inline-input-api/|API} | {@link https://developer.semrush.com/intergalactic/components/inline-input/inline-input-code/|Examples}
+ */
 const InlineInput = createComponent<
   InlineInputComponent,
   typeof InlineInputBase

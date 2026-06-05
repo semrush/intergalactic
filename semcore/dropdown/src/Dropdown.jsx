@@ -192,6 +192,11 @@ function DropdownGroup(props) {
   );
 }
 
+/**
+ * Dropdown
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/dropdown/dropdown-api/|API} | {@link https://developer.semrush.com/intergalactic/components/dropdown/dropdown-code/|Examples}
+ */
 const Dropdown = createComponent(
   DropdownRoot,
   {

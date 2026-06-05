@@ -118,6 +118,11 @@ class RadarChartComponent extends AbstractChart<
   }
 }
 
+/**
+ * RadarChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/radar-chart/radar-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/radar-chart/radar-chart-code/|Examples}
+ */
 export const RadarChart: RadarChartType = createComponent<
   RadarChartType,
   typeof RadarChartComponent

@@ -299,7 +299,6 @@ const AddFilterDropdownAndSelectsExample = () => {
                     tag='div'
                     id='search-result'
                     key='Nothing'
-                    p='6px 8px'
                     size={200}
                     use='secondary'
                   >

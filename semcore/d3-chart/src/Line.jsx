@@ -220,6 +220,11 @@ function Area(props) {
   );
 }
 
+/**
+ * Line
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/line-chart/line-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/line-chart/line-chart-code/|Examples}
+ */
 export default createElement(LineRoot, {
   Dots,
   Null,

@@ -210,6 +210,11 @@ type InlineEditComponent = Intergalactic.Component<'div', InlineEditProps, Input
   Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
 };
 
+/**
+ * InlineEdit
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-api/|API} | {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-code/|Examples}
+ */
 export default createComponent<
   InlineEditComponent,
   typeof InlineEdit

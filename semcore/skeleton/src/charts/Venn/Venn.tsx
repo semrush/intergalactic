@@ -24,4 +24,9 @@ function VennChartSkeleton() {
   );
 }
 
+/**
+ * VennChartSkeleton
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-api#vennchartskeleton|API} | {@link https://developer.semrush.com/intergalactic/components/skeleton/skeleton-code/|Examples}
+ */
 export default createComponent<NSSkeletonVennChart.Component, typeof VennChartSkeleton>(VennChartSkeleton);

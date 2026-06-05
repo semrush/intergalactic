@@ -97,10 +97,13 @@ const Demo = (props: baseExampleProps) => {
           <TimePicker.Hours
             step={props.step}
             readOnly={props.readOnly}
+            {...(props.placeholder !== undefined && { placeholder: props.placeholder })}
+            {...(props.autoFocus !== undefined && { autoFocus: props.autoFocus })}
           />
           <TimePicker.Minutes
             step={props.step}
             readOnly={props.readOnly}
+            {...(props.placeholder !== undefined && { placeholder: props.placeholder })}
           />
         </TimePicker>
       </Box>
@@ -159,6 +162,8 @@ export const defaultProps: baseExampleProps = {
   step: 6,
   readOnly: undefined,
   locale: undefined,
+  placeholder: undefined,
+  autoFocus: undefined,
 
 };
 

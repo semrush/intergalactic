@@ -15,17 +15,17 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 const defaultColors = [
   null,
-  '#2BB3FF',
-  '#8649E1',
-  '#C695FF',
-  '#F67CF2',
-  '#FFA9FA',
-  '#FF8786',
-  '#FF8C43',
-  '#FDC23C',
-  '#66C030',
-  '#9BD85D',
-  '#C7EE96',
+  '#008ff8', // --blue-400
+  '#00c192', // --green-300
+  '#c695ff', // --violet-300
+  '#fdc23c', // --yellow-200
+  '#ff8786', // --red-300
+  '#8ecdff', // --blue-200
+  '#f67cf2', // --pink-300
+  '#66c030', // --salad-300
+  '#006dca', // --blue-500
+  '#59ddaa', // --green-200
+  '#ab6cfe', // --violet-400
 ];
 
 class ColorPickerRoot extends Component<
@@ -206,6 +206,11 @@ function Colors(
   );
 }
 
+/**
+ * ColorPicker
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/color-picker/color-picker-code/|Examples}
+ */
 const ColorPicker = createComponent<
   NSColorPicker.Component,
   typeof ColorPickerRoot

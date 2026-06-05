@@ -222,6 +222,11 @@ const Item = createComponent<
   Collapse,
 });
 
+/**
+ * Accordion
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/accordion/accordion-api/|API} | {@link https://developer.semrush.com/intergalactic/components/accordion/accordion-code/|Examples}
+ */
 const Accordion = createComponent<
   NSAccordion.Component,
   typeof RootAccordion
