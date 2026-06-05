@@ -1,40 +1,39 @@
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, within, waitFor } from 'storybook/test';
 
 export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
+  const expectSectionVisible = async (sectionNumber: number) => {
+    await expect(await canvas.findByText(`This is section ${sectionNumber}`)).toBeVisible();
+  };
+  const expectSectionClosed = async (sectionNumber: number) => {
+    await waitFor(() => {
+      expect(canvas.queryByText(`This is section ${sectionNumber}`)).not.toBeInTheDocument();
+    });
+  };
+
   // Interactions by the mouse
-  const section1 = within(document.body).queryByText('Section 1');
-  const section2 = within(document.body).queryByText('Section 2');
-  const section3 = within(document.body).queryByText('Section 3');
+  const section1 = await canvas.findByRole('button', { name: /section 1/i });
+  const section2 = await canvas.findByRole('button', { name: /section 2/i });
+  const section3 = await canvas.findByRole('button', { name: /section 3/i });
 
-  const subSection1 = within(document.body).queryByText('Hello Section 1');
-  expect(subSection1).toBeVisible();
-  if (!section1) {
-    throw new Error('Section 1 not found');
-  }
+  await expectSectionVisible(1);
 
   await userEvent.click(section1);
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  expect(subSection1).not.toBeVisible();
-  if (!section2) {
-    throw new Error('Section 2 not found');
-  }
+  await expectSectionClosed(1);
+
   await userEvent.click(section2);
-  const subSection2 = within(document.body).queryByText('Hello Section 2');
-  expect(subSection2).toBeVisible();
-  expect(subSection1).not.toBeVisible();
+  await expectSectionVisible(2);
+  expect(canvas.queryByText('This is section 1')).not.toBeInTheDocument();
 
   await userEvent.click(section1);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  expect(subSection2).toBeVisible();
-  expect(within(document.body).queryByText('Hello Section 1')).toBeVisible();
+  await expectSectionVisible(1);
+  await expectSectionVisible(2);
 
   await userEvent.click(section1);
   await userEvent.click(section2);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  expect(subSection2).not.toBeVisible();
-  expect(subSection1).not.toBeVisible();
+  await expectSectionClosed(1);
+  await expectSectionClosed(2);
 
-  expect(section3).toHaveAttribute('disabled', '');
+  await expect(section3).toHaveAttribute('disabled', '');
 }
