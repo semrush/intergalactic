@@ -2349,17 +2349,23 @@
   },
   {
     "name": "--intergalactic-header-bg",
-    "value": "#382E5E",
+    "value": "oklch(0.97 0.001 180)",
     "components": []
   },
   {
     "name": "--intergalactic-header-border-primary",
-    "value": "#382E5E",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "components": []
   },
   {
     "name": "--intergalactic-header-border-secondary",
-    "value": "rgba(255,255,255, 0.15)",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-page-bg",
+    "value": "oklch(0.97 0.001 180)",
+    "description": "Background fill for the whole product page.",
     "components": []
   },
   {

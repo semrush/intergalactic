@@ -1450,9 +1450,12 @@ export const theme: Theme = {
         value: success.opaqueAt(L_BG_LIGHT),
         description: 'Background color for the "Start tracking" date on the X-axis of the chart grid.',
       },
-      header_bg: { value: '#382E5E' },
-      header_border_primary: { value: '#382E5E' },
-      header_border_secondary: { value: 'rgba(255,255,255, 0.15)' },
+      header_bg: { value: '{semanticTokens.colors.page.bg}' },
+      header_border_primary: { value: '{semanticTokens.colors.border.primary}' },
+      header_border_secondary: { value: '{semanticTokens.colors.border.primary}' },
+      page_bg: { value: neutral.at(0.97),
+        description: 'Background fill for the whole product page.',
+      },
       sidebar_nav_control_hover: {
         value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Sidebar navigation row hover background.',
@@ -2480,6 +2483,9 @@ type SemanticColors = {
       primary: Value;
       secondary: Value;
     };
+  };
+  page: {
+    bg: Value;
   };
   sidebar: {
     nav: {
