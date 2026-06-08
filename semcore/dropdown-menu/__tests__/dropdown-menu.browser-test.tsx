@@ -11,9 +11,9 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
 
 // Matches the CSS fallback colors after the test bundle normalizes them.
 const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-dropdown-menu-item-hover': 'rgba(0, 22, 16, 0.028)',
-  '--intergalactic-dropdown-menu-item-selected': 'rgba(0, 80, 255, 0.077)',
-  '--intergalactic-dropdown-menu-item-selected-hover': 'rgba(0, 77, 255, 0.191)',
+  '--intergalactic-dropdown-menu-item-hover': 'oklch(0.177 0.033 175.6 / 0.028)',
+  '--intergalactic-dropdown-menu-item-selected': 'oklch(0.525 0.265 263 / 0.077)',
+  '--intergalactic-dropdown-menu-item-selected-hover': 'oklch(0.52 0.268 263.2 / 0.191)',
 };
 
 const getCssVarColor = async (page: Page, varName: string) => {
