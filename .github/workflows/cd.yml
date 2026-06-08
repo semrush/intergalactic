@@ -502,7 +502,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: 24
+          node-version: 24.15.0
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
@@ -536,8 +536,8 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
-      - name: Install Playwright Browsers
-        run: npx playwright install
+      - name: Install Playwright Firefox
+        run: pnpm exec playwright install firefox
       - name: NVDA setup
         run: pnpm nvda-test:setup
       - name: NVDA testing

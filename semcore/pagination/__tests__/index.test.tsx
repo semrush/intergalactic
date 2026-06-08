@@ -314,7 +314,13 @@ describe('Pagination.PageInput.Value', () => {
         <Pagination currentPage={1} totalPages={100}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
-            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={ButtonLink} addonLeft={Return} p={0} />
+            <Pagination.PageInput.Addon
+              aria-label='Select page'
+              data-testid='selectPageButton'
+              tag={ButtonLink}
+              addonLeft={Return}
+              p={0}
+            />
           </Pagination.PageInput>
         </Pagination>
         <Button data-testid='testButton'>test button</Button>

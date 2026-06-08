@@ -7,13 +7,13 @@ import React from 'react';
 import SidePanel from '../src';
 
 const VisibleSidePanel = ({ children }) => (
-  <SidePanel visible disablePortal>{children}</SidePanel>
+  <SidePanel visible disablePortal aria-label='Side panel'>{children}</SidePanel>
 );
 
 const SidePanelPanelWrapper = ({ children }) => (
   <VisibleSidePanel>
     <SidePanel.Overlay>
-      <SidePanel.Panel>{children}</SidePanel.Panel>
+      <SidePanel.Panel aria-label='Side panel'>{children}</SidePanel.Panel>
     </SidePanel.Overlay>
   </VisibleSidePanel>
 );
@@ -25,14 +25,14 @@ describe('side-panel Dependency imports', () => {
 describe('SidePanel data-ui-name', () => {
   shouldHaveDataUiName({
     Component: SidePanel,
-    props: { visible: true, disablePortal: true, children: 'Content' },
+    props: { 'visible': true, 'disablePortal': true, 'aria-label': 'Side panel', 'children': 'Content' },
     expectedDataUiName: 'SidePanel',
   });
 
   shouldHaveDataUiName({
     Component: SidePanel.Overlay,
     Wrapper: VisibleSidePanel,
-    props: { children: <SidePanel.Panel /> },
+    props: { children: <SidePanel.Panel aria-label='Side panel' /> },
     expectedDataUiName: 'SidePanel.Overlay',
   });
 
@@ -43,6 +43,7 @@ describe('SidePanel data-ui-name', () => {
         <SidePanel.Overlay>{children}</SidePanel.Overlay>
       </VisibleSidePanel>
     ),
+    props: { 'aria-label': 'Side panel' },
     expectedDataUiName: 'SidePanel.Panel',
   });
 
@@ -92,19 +93,19 @@ describe('SidePanel', () => {
   beforeEach(cleanup);
 
   test('Verify visible property', () => {
-    const component = render(<SidePanel>Content</SidePanel>);
+    const component = render(<SidePanel aria-label='Side panel'>Content</SidePanel>);
     expect(component.queryByText('Content')).toBeNull();
 
-    component.rerender(<SidePanel visible>Content</SidePanel>);
+    component.rerender(<SidePanel visible aria-label='Side panel'>Content</SidePanel>);
     expect(component.queryByText('Content')).not.toBeNull();
   });
 
   test('Verify closable false property', () => {
-    const component = render(<SidePanel visible>Content</SidePanel>);
+    const component = render(<SidePanel visible aria-label='Side panel'>Content</SidePanel>);
     expect(component.queryByLabelText('Close')).not.toBeNull();
 
     component.rerender(
-      <SidePanel visible closable={false}>
+      <SidePanel visible closable={false} aria-label='Side panel'>
         Content
       </SidePanel>,
     );
@@ -114,7 +115,7 @@ describe('SidePanel', () => {
   test('Verify onClose for Esc keypress', () => {
     const spy = vi.fn();
     const component = render(
-      <SidePanel visible onClose={spy}>
+      <SidePanel visible aria-label='Side panel' onClose={spy}>
         Content
       </SidePanel>,
     );
@@ -128,9 +129,9 @@ describe('SidePanel', () => {
   test('Verify onClose for click outside of SidePanel.Panel', () => {
     const spy = vi.fn();
     const component = render(
-      <SidePanel visible onClose={spy}>
+      <SidePanel visible aria-label='Side panel' onClose={spy}>
         <SidePanel.Overlay data-testid='overlay'>
-          <SidePanel.Panel />
+          <SidePanel.Panel aria-label='Side panel' />
         </SidePanel.Overlay>
       </SidePanel>,
     );
@@ -146,19 +147,19 @@ describe('SidePanel', () => {
 
   test('Verify onClose for Sidebar.Close click', async () => {
     const spy = vi.fn();
-    const component = render(<SidePanel visible closable onClose={spy} />);
+    const component = render(<SidePanel visible closable aria-label='Side panel' onClose={spy} />);
     const closeNode = component.queryByLabelText('Close');
     await userEvent.click(closeNode);
     expect(spy).toBeCalledWith('onCloseClick', expect.any(Object));
   });
 
   test('Verify block page scroll', () => {
-    render(<SidePanel visible />);
+    render(<SidePanel visible aria-label='Side panel' />);
     expect(document.body).toHaveStyle('overflow: hidden');
   });
 
   test.concurrent('Verify render function for children', () => {
-    const component = <SidePanel visible>{() => <SidePanel.Overlay />}</SidePanel>;
+    const component = <SidePanel visible aria-label='Side panel'>{() => <SidePanel.Overlay />}</SidePanel>;
     render(component);
 
     expect(
@@ -169,7 +170,7 @@ describe('SidePanel', () => {
   test.skip('Verify not block page scroll without Overlay', () => {
     render(
       <SidePanel visible>
-        <SidePanel.Panel />
+        <SidePanel.Panel aria-label='Side panel' />
       </SidePanel>,
     );
     expect(document.body).not.toHaveStyle('overflow: hidden');
@@ -178,9 +179,9 @@ describe('SidePanel', () => {
   test.concurrent('Verify ignorePortalsStacking prop', async () => {
     const component = render(
       <Portal>
-        <SidePanel visible data-testid='inP'>
+        <SidePanel visible data-testid='inP' aria-label='Side panel in portal'>
           Content in portal
-          <SidePanel ignorePortalsStacking visible data-testid='outP'>
+          <SidePanel ignorePortalsStacking visible data-testid='outP' aria-label='Side panel in body'>
             Content in body
           </SidePanel>
         </SidePanel>

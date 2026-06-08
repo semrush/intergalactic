@@ -40,13 +40,13 @@ describe('MiniChart data-ui-name', () => {
 
   shouldHaveDataUiName({
     Component: MiniChart.TrendBar,
-    props: { data: [1, 2, 3] },
+    props: { data: [{ value: 1 }, { value: 2 }, { value: 3 }] },
     expectedDataUiName: 'MiniChart.TrendBar',
   });
 
   shouldHaveDataUiName({
     Component: MiniChart.TrendHistogram,
-    props: { data: [1, 2, 3] },
+    props: { data: [{ value: 1 }, { value: 2 }, { value: 3 }] },
     expectedDataUiName: 'MiniChart.TrendHistogram',
   });
 });

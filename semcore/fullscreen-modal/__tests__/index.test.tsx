@@ -93,7 +93,7 @@ describe('FullscreenModal', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
-        <FullscreenModal.Back data-testid='back' />
+        <FullscreenModal.Back aria-label='Back' data-testid='back' />
       </FullscreenModal>,
     );
     await userEvent.click(getByTestId('back'));
