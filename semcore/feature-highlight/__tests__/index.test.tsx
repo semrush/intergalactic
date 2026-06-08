@@ -18,7 +18,7 @@ import SvgSparkle from '../src/inner-components/sparkle/Sparkle';
 HTMLElement.prototype.scrollIntoView = () => {};
 
 const ButtonFHWrapper = ({ children }: { children: React.ReactNode }) => (
-  <ButtonFH>{children}</ButtonFH>
+  <ButtonFH aria-label='Feature highlight button'>{children}</ButtonFH>
 );
 
 const CheckboxFHWrapper = ({ children }: { children: React.ReactNode }) => (

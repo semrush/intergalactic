@@ -1,6 +1,6 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, afterEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { mockDate, RealDate } from './utils';
@@ -37,6 +37,7 @@ describe('DatePicker', () => {
     global.Date = RealDate;
     cleanup();
   });
+  afterEach(cleanup);
 
   test('Verify supports onChange with format time 00:00:00:000', async () => {
     const spy = vi.fn();
@@ -74,6 +75,7 @@ describe('DateRangePicker', () => {
     global.Date = RealDate;
     cleanup();
   });
+  afterEach(cleanup);
 
   test('Verify pikcer support onChange with format time 00:00:00:000', async () => {
     const spy = vi.fn();
