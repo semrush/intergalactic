@@ -110,7 +110,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   componentDidMount() {
-    const { autoFocus, disabled, readonly } = this.asProps;
+    const { autoFocus, disabled } = this.asProps;
 
     this.containerRef.current?.append(this.textarea);
 
@@ -243,6 +243,7 @@ class InputField<T extends string | string[]> extends Component<
 
   componentWillUnmount() {
     this.removeEventListeners(this.textarea);
+    this.containerRef.current?.removeChild(this.textarea);
 
     this.observer.disconnect();
   }
