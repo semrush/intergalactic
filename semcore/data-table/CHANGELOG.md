@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.0] - 2026-06-05
+
+### Fixed
+
+- The focus disappears and lost when focus not active sorting icon and
+hover it.
+
+### Added
+
+- Links to the API and examples in the docs.
+
 ## [17.1.0] - 2026-05-13
 
 ### Added
