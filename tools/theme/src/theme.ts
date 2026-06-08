@@ -1456,7 +1456,7 @@ export const theme: Theme = {
       page_bg: { value: neutral.at(0.97),
         description: 'Background fill for the whole product page.',
       },
-      page_footer_bg: { value: '{semanticTokens.colors.page.bg}',
+      footer_bg: { value: '{semanticTokens.colors.page.bg}',
         description: 'Background fill for the product page footer.',
       },
       sidebar_nav_bg: { value: '{semanticTokens.colors.page.bg}',
@@ -2495,7 +2495,9 @@ type SemanticColors = {
   };
   page: {
     bg: Value;
-    footer_bg: Value;
+  };
+  footer: {
+    bg: Value;
   };
   sidebar: {
     nav: {

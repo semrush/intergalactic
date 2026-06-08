@@ -2369,7 +2369,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-page-footer-bg",
+    "name": "--intergalactic-footer-bg",
     "value": "oklch(0.97 0.001 180)",
     "description": "Background fill for the product page footer.",
     "components": []
