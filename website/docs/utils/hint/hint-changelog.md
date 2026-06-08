@@ -1,6 +1,6 @@
 ---
 title: Hint
-tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Example('hint-code'), Changelog('hint-changelog')
+tabs: Design('hint'), A11y('hint-a11y'), API('hint-api'), Examples('hint-code'), Changelog('hint-changelog')
 ---
 
 ::: info
