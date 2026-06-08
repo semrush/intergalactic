@@ -23,48 +23,13 @@ const preview: Preview = {
       },
     },
   },
-  globalTypes: {
-    theme: {
-      description: 'Theme',
-      toolbar: {
-        title: 'Theme',
-        icon: 'mirror',
-        items: [
-          {
-            value: 'old',
-            icon: 'circle',
-            title: 'Old theme',
-          },
-          {
-            value: 'new',
-            icon: 'circle',
-            title: 'New theme',
-          },
-        ],
-        dynamicTitle: true,
-      },
-    },
-  },
-
-  initialGlobals: {
-    theme: 'new',
-  },
   decorators: [
     (Story, params) => {
       const rootRef = React.useRef<HTMLDivElement>(null);
-      const stylesheet = params.globals.theme === 'new'
-        ? 'assets/theme/light.css'
-        : 'assets/core/light.css';
-
-      const stylesheetHighlight = params.globals.theme === 'new'
-        ? 'assets/theme/highlights-light.css'
-        : 'assets/core/highlights-light.css';
 
       if (params.parameters.layout === 'fullscreen') {
         return (
           <>
-            <link rel='stylesheet' href={stylesheet} />
-            <link rel='stylesheet' href={stylesheetHighlight} />
             <PortalProvider value={rootRef}>
               <div ref={rootRef}>
                 <Story />
@@ -76,8 +41,6 @@ const preview: Preview = {
 
       return (
         <>
-          <link rel='stylesheet' href={stylesheet} />
-          <link rel='stylesheet' href={stylesheetHighlight} />
           <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
             <div tabIndex={0} />
             <PortalProvider value={rootRef}>
