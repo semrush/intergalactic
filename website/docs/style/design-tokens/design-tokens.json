@@ -2369,6 +2369,24 @@
     "components": []
   },
   {
+    "name": "--intergalactic-page-footer-bg",
+    "value": "oklch(0.97 0.001 180)",
+    "description": "Background fill for the product page footer.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-bg",
+    "value": "oklch(0.97 0.001 180)",
+    "description": "Background fill for the product page sidebar.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Color for the border of the page sidebar.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-sidebar-nav-control-hover",
     "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Sidebar navigation row hover background.",

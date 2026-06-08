@@ -1456,6 +1456,15 @@ export const theme: Theme = {
       page_bg: { value: neutral.at(0.97),
         description: 'Background fill for the whole product page.',
       },
+      page_footer_bg: { value: '{semanticTokens.colors.page.bg}',
+        description: 'Background fill for the product page footer.',
+      },
+      sidebar_nav_bg: { value: '{semanticTokens.colors.page.bg}',
+        description: 'Background fill for the product page sidebar.',
+      },
+      sidebar_nav_border: { value: '{semanticTokens.colors.border.primary}',
+        description: 'Color for the border of the page sidebar.',
+      },
       sidebar_nav_control_hover: {
         value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Sidebar navigation row hover background.',
@@ -2486,9 +2495,12 @@ type SemanticColors = {
   };
   page: {
     bg: Value;
+    footer_bg: Value;
   };
   sidebar: {
     nav: {
+      bg: Value;
+      border: Value;
       control: {
         hover: Value;
         active: Value;
