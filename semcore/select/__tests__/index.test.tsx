@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { act, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -229,43 +229,13 @@ describe('Select Trigger', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  test.concurrent('Verify focus position preserve with mouse navigation', async () => {
+  test.sequential('Verify focus position preserve with mouse navigation', () => {
     vi.useFakeTimers();
-    const { getByTestId } = render(
-      <Select value={['2']} disablePortal>
-        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
-        <Select.Menu data-testid='menu'>
-          <Select.Option value='1'>Option 1</Select.Option>
-          <Select.Option value='2' data-testid='option-2'>
-            Option 2
-          </Select.Option>
-        </Select.Menu>
-      </Select>,
-    );
-    act(() => getByTestId('trigger').click());
-    act(() => {
-      vi.runAllTimers();
-    });
-    act(() => getByTestId('option-2').focus());
-    act(() => getByTestId('option-2').click());
-    act(() => {
-      vi.runAllTimers();
-    });
-    act(() => {
-      vi.runAllTimers();
-    });
-    expect(getByTestId('trigger')).toHaveFocus();
 
-    vi.useRealTimers();
-  });
-
-  test.sequential(
-    'Verify focus position preserve with mouse navigation and interaction=focus',
-    async () => {
-      vi.useFakeTimers();
+    try {
       const { getByTestId } = render(
-        <Select value={['2']} disablePortal interaction='focus'>
-          <Select.Trigger aria-label='Select trigger' data-testid='trigger' tag='input' readOnly />
+        <Select value={['2']} disablePortal>
+          <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
           <Select.Menu data-testid='menu'>
             <Select.Option value='1'>Option 1</Select.Option>
             <Select.Option value='2' data-testid='option-2'>
@@ -274,7 +244,8 @@ describe('Select Trigger', () => {
           </Select.Menu>
         </Select>,
       );
-      act(() => getByTestId('trigger').focus());
+
+      act(() => getByTestId('trigger').click());
       act(() => {
         vi.runAllTimers();
       });
@@ -283,9 +254,51 @@ describe('Select Trigger', () => {
       act(() => {
         vi.runAllTimers();
       });
+      act(() => {
+        vi.runAllTimers();
+      });
       expect(getByTestId('trigger')).toHaveFocus();
-
+    } finally {
       vi.useRealTimers();
+    }
+  });
+
+  test.sequential(
+    'Verify focus position preserve with mouse navigation and interaction=focus',
+    () => {
+      vi.useFakeTimers();
+
+      try {
+        const { getByTestId } = render(
+          <Select value={['2']} disablePortal interaction='focus'>
+            <Select.Trigger
+              aria-label='Select trigger'
+              data-testid='trigger'
+              tag='input'
+              readOnly
+            />
+            <Select.Menu data-testid='menu'>
+              <Select.Option value='1'>Option 1</Select.Option>
+              <Select.Option value='2' data-testid='option-2'>
+                Option 2
+              </Select.Option>
+            </Select.Menu>
+          </Select>,
+        );
+
+        act(() => getByTestId('trigger').focus());
+        act(() => {
+          vi.runAllTimers();
+        });
+        act(() => getByTestId('option-2').focus());
+        act(() => getByTestId('option-2').click());
+        act(() => {
+          vi.runAllTimers();
+        });
+        expect(getByTestId('trigger')).toHaveFocus();
+      } finally {
+        vi.useRealTimers();
+      }
     },
   );
 

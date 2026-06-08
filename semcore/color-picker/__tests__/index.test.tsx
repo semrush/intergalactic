@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -188,9 +188,7 @@ describe('ColorPicker', () => {
 
     const input = getByTestId('inputColor') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '#635472' } });
-    act(() => {
-      vi.runAllTimers();
-    });
+    vi.runAllTimers();
 
     expect(input.value).toBe('#635472');
 

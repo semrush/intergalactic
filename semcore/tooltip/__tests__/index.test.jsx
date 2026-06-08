@@ -1,10 +1,9 @@
 import Button from '@semcore/button';
 import Link from '@semcore/link';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
-import { waitFor } from 'storybook/test';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
@@ -87,22 +86,24 @@ describe('Tooltip', () => {
     });
   });
 
-  test('Verify opens and hides on mouse events', () => {
-    vi.useFakeTimers();
+  test('Verify opens and hides on mouse events', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
-      <Tooltip title='test' disablePortal onVisibleChange={spy}>
-        <button type='button' data-testid='trigger'>
-          Trigger
-        </button>
+    const { getByText } = render(
+      <Tooltip title='test' disablePortal timeout={0} onVisibleChange={spy}>
+        Trigger
       </Tooltip>,
     );
-    fireEvent.mouseEnter(getByTestId('trigger'));
-    act(() => vi.runAllTimers());
-    fireEvent.mouseLeave(getByTestId('trigger'));
-    act(() => vi.runAllTimers());
-    expect(spy).toHaveBeenCalledTimes(2);
-    vi.useRealTimers();
+
+    await userEvent.hover(getByText('Trigger'));
+    await waitFor(() => {
+      expect(spy).toHaveBeenCalledWith(true, expect.anything());
+    });
+
+    await userEvent.unhover(getByText('Trigger'));
+    await waitFor(() => {
+      expect(spy).toHaveBeenCalledWith(false, expect.anything());
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
   });
 });
 

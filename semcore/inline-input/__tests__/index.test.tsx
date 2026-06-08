@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -59,24 +59,16 @@ describe('InlineInput', () => {
 
     /** bubbling doesn't work in jest? */
     fireEvent.blur(getByTestId('behavior-cancel'));
-    act(() => {
-      vi.runAllTimers();
-    });
+    vi.runAllTimers();
     expect(spyCancel).toHaveBeenCalledTimes(1);
     fireEvent.blur(getByTestId('behavior-confirm'));
-    act(() => {
-      vi.runAllTimers();
-    });
+    vi.runAllTimers();
     expect(spyConfirm).toHaveBeenCalledTimes(1);
     fireEvent.blur(getByTestId('behavior-none'));
-    act(() => {
-      vi.runAllTimers();
-    });
+    vi.runAllTimers();
     expect(spyNone).toHaveBeenCalledTimes(0);
     fireEvent.blur(getByTestId('behavior-undefined'));
-    act(() => {
-      vi.runAllTimers();
-    });
+    vi.runAllTimers();
     expect(spyUndefined).toHaveBeenCalledTimes(1);
     vi.useRealTimers();
   });

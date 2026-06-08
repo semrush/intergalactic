@@ -1,4 +1,3 @@
-import { Box } from '@semcore/base-components';
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -10,24 +9,12 @@ describe('Carousel Dependency imports', () => {
   runDependencyCheckTests('carousel');
 });
 
-const Container = (props: any) => (
-  <Carousel.Container {...props}>
+const Items = () => (
+  <>
     {[...new Array(2)].map((_, ind) => (
       <Carousel.Item key={ind} />
     ))}
-  </Carousel.Container>
-);
-
-const Indicators = () => (
-  <Carousel.Indicators>
-    {({ items }) => (
-      <>
-        {items.map((item: any, ind) => (
-          <Box {...item} key={ind} data-testid={`indicator-${ind}`} />
-        ))}
-      </>
-    )}
-  </Carousel.Indicators>
+  </>
 );
 
 describe('Carousel', () => {
@@ -43,12 +30,12 @@ describe('Carousel', () => {
 
     const { rerender } = render(
       <Carousel index={0} onIndexChange={spy}>
-        <Container />
+        <Items />
       </Carousel>,
     );
     rerender(
       <Carousel index={1} onIndexChange={spy}>
-        <Container />
+        <Items />
       </Carousel>,
     );
     expect(spy).not.toHaveBeenCalled();
@@ -58,15 +45,15 @@ describe('Carousel', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <Carousel onIndexChange={spy}>
-        <Container data-testid='container' />
+      <Carousel data-testid='carousel' onIndexChange={spy}>
+        <Items />
       </Carousel>,
     );
 
-    const container = getByTestId('container');
-    fireEvent.keyDown(container, { key: 'ArrowLeft' });
+    const carousel = getByTestId('carousel');
+    fireEvent.keyDown(carousel, { key: 'ArrowLeft' });
     expect(spy).toHaveBeenCalledWith(1);
-    fireEvent.keyDown(container, { key: 'ArrowRight' });
+    fireEvent.keyDown(carousel, { key: 'ArrowRight' });
     expect(spy).toHaveBeenCalledWith(0);
   });
 
@@ -74,21 +61,21 @@ describe('Carousel', () => {
     const spy = vi.fn();
 
     const { rerender, getByTestId } = render(
-      <Carousel index={0} onIndexChange={spy}>
-        <Container data-testid='container' />
+      <Carousel data-testid='carousel' index={0} onIndexChange={spy}>
+        <Items />
       </Carousel>,
     );
 
-    const container = getByTestId('container');
-    fireEvent.keyDown(container, { key: 'ArrowLeft' });
+    const carousel = getByTestId('carousel');
+    fireEvent.keyDown(carousel, { key: 'ArrowLeft' });
     expect(spy).toHaveBeenCalledWith(1);
 
     rerender(
-      <Carousel index={1} onIndexChange={spy}>
-        <Container data-testid='container' />
+      <Carousel data-testid='carousel' index={1} onIndexChange={spy}>
+        <Items />
       </Carousel>,
     );
-    fireEvent.keyDown(container, { key: 'ArrowRight' });
+    fireEvent.keyDown(carousel, { key: 'ArrowRight' });
     expect(spy).toHaveBeenCalledWith(0);
   });
 });
@@ -123,13 +110,12 @@ describe('Carousel.Indicators', () => {
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
+    const { getByRole } = render(
       <Carousel onIndexChange={spy}>
-        <Container />
-        <Indicators />
+        <Items />
       </Carousel>,
     );
-    const next = getByTestId('indicator-1');
+    const next = getByRole('tab', { name: 'Slide 2' });
     await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -138,13 +124,12 @@ describe('Carousel.Indicators', () => {
 
   test('Verify not call onIndexChange after click in same control', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
+    const { getByRole } = render(
       <Carousel onIndexChange={spy}>
-        <Container />
-        <Indicators />
+        <Items />
       </Carousel>,
     );
-    const next = getByTestId('indicator-1');
+    const next = getByRole('tab', { name: 'Slide 2' });
     await userEvent.click(next);
     await userEvent.click(next);
 
@@ -153,15 +138,13 @@ describe('Carousel.Indicators', () => {
 
   test('Veerify right change index with Prev button', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
+    const { getByLabelText, getByRole } = render(
       <Carousel onIndexChange={spy}>
-        <Container />
-        <Indicators />
-        <Carousel.Prev data-testid='prev' />
+        <Items />
       </Carousel>,
     );
-    const prev = getByTestId('prev');
-    const next = getByTestId('indicator-0');
+    const prev = getByLabelText('Previous slide');
+    const next = getByRole('tab', { name: 'Slide 1' });
     await userEvent.click(prev);
     await userEvent.click(next);
 
@@ -170,25 +153,21 @@ describe('Carousel.Indicators', () => {
 
   test.concurrent('Verify right change index with Next button', async () => {
     const spy = vi.fn();
-    const { rerender, getByTestId } = render(
+    const { rerender, getByLabelText, getByRole } = render(
       <Carousel index={1} onIndexChange={spy}>
-        <Container />
-        <Indicators />
-        <Carousel.Next data-testid='next' />
+        <Items />
       </Carousel>,
     );
-    const next = getByTestId('next');
-    const prev = getByTestId('indicator-1');
+    const next = getByLabelText('Next slide');
     await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledWith(0);
     rerender(
       <Carousel index={0} onIndexChange={spy}>
-        <Container />
-        <Indicators />
-        <Carousel.Next data-testid='next' />
+        <Items />
       </Carousel>,
     );
+    const prev = getByRole('tab', { name: 'Slide 2' });
     await userEvent.click(prev);
 
     expect(spy).toHaveBeenCalledWith(1);
@@ -206,13 +185,12 @@ describe('Carousel.Prev', () => {
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <Carousel onIndexChange={spy}>
-        <Container />
-        <Carousel.Prev data-testid='prev' />
+        <Items />
       </Carousel>,
     );
-    const prev = getByTestId('prev');
+    const prev = getByLabelText('Previous slide');
     await userEvent.click(prev);
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -221,13 +199,12 @@ describe('Carousel.Prev', () => {
 
   test('Verify not call onIndexChange for bounded property', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <Carousel bounded onIndexChange={spy}>
-        <Container />
-        <Carousel.Prev data-testid='prev' />
+        <Items />
       </Carousel>,
     );
-    const prev = getByTestId('prev');
+    const prev = getByLabelText('Previous slide');
     await expect(userEvent.click(prev)).rejects.toThrow('pointer-events: none');
 
     expect(spy).not.toHaveBeenCalled();
@@ -236,14 +213,13 @@ describe('Carousel.Prev', () => {
   test('Verify control mode and click', async () => {
     const spy = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <Carousel index={0} onIndexChange={spy}>
-        <Container />
-        <Carousel.Prev data-testid='prev' />
+        <Items />
       </Carousel>,
     );
 
-    const prev = getByTestId('prev');
+    const prev = getByLabelText('Previous slide');
     await userEvent.click(prev);
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -262,13 +238,12 @@ describe('Carousel.Next', () => {
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <Carousel onIndexChange={spy}>
-        <Container />
-        <Carousel.Next data-testid='next' />
+        <Items />
       </Carousel>,
     );
-    const next = getByTestId('next');
+    const next = getByLabelText('Next slide');
     await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -277,13 +252,12 @@ describe('Carousel.Next', () => {
 
   test('Verify not call onIndexChange for bounded property', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
-      <Carousel bounded onIndexChange={spy}>
-        <Container />
-        <Carousel.Prev data-testid='next' />
+    const { getByLabelText } = render(
+      <Carousel bounded defaultIndex={1} onIndexChange={spy}>
+        <Items />
       </Carousel>,
     );
-    const next = getByTestId('next');
+    const next = getByLabelText('Next slide');
     await expect(userEvent.click(next)).rejects.toThrow('pointer-events: none');
 
     expect(spy).not.toHaveBeenCalled();
@@ -292,14 +266,13 @@ describe('Carousel.Next', () => {
   test('Verify control mode and click', async () => {
     const spy = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <Carousel index={1} onIndexChange={spy}>
-        <Container />
-        <Carousel.Next data-testid='next' />
+        <Items />
       </Carousel>,
     );
 
-    const next = getByTestId('next');
+    const next = getByLabelText('Next slide');
     await userEvent.click(next);
 
     expect(spy).toHaveBeenCalledTimes(1);

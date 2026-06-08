@@ -1,7 +1,12 @@
 import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
-import { userEvent } from '@semcore/testing-utils/testing-library';
+import {
+  cleanup,
+  fireEvent,
+  render,
+  userEvent,
+  waitFor,
+} from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, vi, afterEach } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import React, { useRef } from 'react';
 
 import { Hint, PortalProvider } from '../src';

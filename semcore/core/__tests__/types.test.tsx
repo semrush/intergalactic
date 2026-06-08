@@ -9,7 +9,7 @@ describe('Core Dependency imports', () => {
 });
 
 describe('Core types', () => {
-  const any: any = null;
+  const any: any = () => null;
   test('Props Nesting', () => {
     const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
     const Button: Intergalactic.Component<'button', { xProp2: 2 }> = any;

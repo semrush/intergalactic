@@ -1,5 +1,5 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, userEvent, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { render, userEvent, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
@@ -46,9 +46,7 @@ describe('InputTags', () => {
       </InputTags>,
     );
 
-    act(() => {
-      fireEvent.keyDown(getByTestId('tag'), { key: 'Enter' });
-    });
+    fireEvent.keyDown(getByTestId('tag'), { key: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
@@ -63,13 +61,11 @@ describe('InputTags', () => {
 
     const input = getByRole('textbox');
 
-    await act(() => {
-      fireEvent.paste(input, {
-        clipboardData: {
-          getData: () => 'foo,bar',
-        },
-      } as any);
-    });
+    fireEvent.paste(input, {
+      clipboardData: {
+        getData: () => 'foo,bar',
+      },
+    } as any);
 
     expect(onAppend).toHaveBeenCalledWith(['foo', 'bar'], expect.anything());
   });

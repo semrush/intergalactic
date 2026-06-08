@@ -1,15 +1,44 @@
 import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { describe, it, expect } from '@semcore/testing-utils/vitest';
+import { afterEach, beforeEach, describe, it, expect, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import TimePicker from '../src';
 import TimePickerEntity from '../src/entity/TimePickerEntity';
+
+const TimePickerWrapper = ({ children }: { children: React.ReactNode }) => (
+  <TimePicker>{children}</TimePicker>
+);
+
+const mockReadOnlyInputWarning = () => {
+  const originalConsoleError = console.error;
+
+  return vi.spyOn(console, 'error').mockImplementation((message?: any, ...args: any[]) => {
+    const isReadOnlyInputWarning =
+      typeof message === 'string' &&
+      message.includes('You provided a `value` prop to a form field without an `onChange` handler') &&
+      args.some((arg) => typeof arg === 'string' && arg.includes('ScreenReaderOnlyComponent'));
+
+    if (isReadOnlyInputWarning) return;
+
+    originalConsoleError(message, ...args);
+  });
+};
 
 describe('time-picker Dependency imports', () => {
   runDependencyCheckTests('time-picker');
 });
 
 describe('TimePicker data-ui-name', () => {
+  let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    consoleErrorSpy = mockReadOnlyInputWarning();
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
+  });
+
   shouldHaveDataUiName({
     Component: TimePicker,
     expectedDataUiName: 'TimePicker',
@@ -17,19 +46,19 @@ describe('TimePicker data-ui-name', () => {
 
   shouldHaveDataUiName({
     Component: TimePicker.Hours,
-    Wrapper: TimePicker,
+    Wrapper: TimePickerWrapper,
     expectedDataUiName: 'TimePicker.Hours',
   });
 
   shouldHaveDataUiName({
     Component: TimePicker.Minutes,
-    Wrapper: TimePicker,
+    Wrapper: TimePickerWrapper,
     expectedDataUiName: 'TimePicker.Minutes',
   });
 
   shouldHaveDataUiName({
     Component: TimePicker.Separator,
-    Wrapper: TimePicker,
+    Wrapper: TimePickerWrapper,
     expectedDataUiName: 'TimePicker.Separator',
   });
 

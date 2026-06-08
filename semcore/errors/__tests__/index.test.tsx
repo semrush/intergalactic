@@ -37,13 +37,27 @@ describe('Errors data-ui-name', () => {
 
   shouldHaveDataUiName({
     Component: ProjectNotFound,
+    props: {
+      locale: 'en-US',
+      i18n: {
+        'en-US': {
+          title: 'Project not found',
+          text: 'Project not found',
+          btnProjects: 'Go to Projects',
+          btnContacts: 'Contact us',
+        },
+      },
+    },
     expectedDataUiName: 'ProjectNotFound',
   });
 });
 
 describe('PageError', () => {
   it('Verify calls onClick when reload button is clicked', async () => {
-    const handleClick = vi.fn();
+    const handleClick = vi.fn((event: React.MouseEvent) => {
+      event.preventDefault();
+      return false;
+    });
     render(<PageError onClick={handleClick} />);
 
     const button = screen.getByRole('button', { name: /Try again/i });
