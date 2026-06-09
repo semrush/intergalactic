@@ -1,7 +1,7 @@
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import BarMockData from '../../../__mocks__/bar';
+import HistogramMockData from '../../../__mocks__/histogram';
 
 const Demo = () => {
   return (
@@ -15,6 +15,6 @@ const Demo = () => {
   );
 };
 
-const data = BarMockData.Default;
+const data = HistogramMockData.Default;
 
 export default Demo;
