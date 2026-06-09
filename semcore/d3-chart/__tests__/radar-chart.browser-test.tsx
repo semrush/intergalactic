@@ -20,7 +20,7 @@ export const locators = {
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
     text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"]'),
-  tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="Radar.Tooltip"]'),
 };
 
 /* =====================================================
