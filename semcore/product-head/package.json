@@ -1,7 +1,7 @@
 {
   "name": "@semcore/product-head",
   "description": "Semrush ProductHead Component",
-  "version": "17.1.0",
+  "version": "17.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "require": "./lib/cjs/index.js"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.2"
+    "@semcore/base-components": "^17.2.0"
   },
   "repository": {
     "type": "git",
