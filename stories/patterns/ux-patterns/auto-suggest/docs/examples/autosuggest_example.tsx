@@ -56,7 +56,7 @@ const Demo = () => {
       <Text tag='label' size={200} htmlFor='async-autosuggest'>
         ASYNC Your pet breed
       </Text>
-      <Box mt={2}>
+      <Box mt={2} w={300}>
         <AutoSuggest
           value={query}
           id='async-autosuggest'
@@ -69,7 +69,7 @@ const Demo = () => {
       <Text tag='label' size={200} htmlFor='sync-autosuggest'>
         SYNC Your pet breed
       </Text>
-      <Box mt={2}>
+      <Box mt={2} w={300}>
         <AutoSuggest
           value={query}
           id='sync-autosuggest'
