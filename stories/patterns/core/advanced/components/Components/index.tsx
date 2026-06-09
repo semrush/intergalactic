@@ -102,7 +102,7 @@ export function Components() {
           </Card.Body>
         </Card>
 
-        <Flex direction='column' px={4} gap={6} w='100%' aria-labelledby='components-surface-heading'>
+        <Flex direction='column' gap={6} w='100%' aria-labelledby='components-surface-heading'>
           <Text tag='h3' size={400} id='components-surface-heading'>
             Surface
           </Text>
