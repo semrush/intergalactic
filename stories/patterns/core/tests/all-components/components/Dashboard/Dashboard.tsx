@@ -119,7 +119,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
   );
 
   return (
-    <Box style={{ background: 'var(--intergalactic-bg-secondary-neutral)' }}>
+    <Box bg='page-bg'>
       <Box my={4} w='100%'>
         <FeedbackRatingFormExample />
       </Box>
