@@ -1,8 +1,7 @@
 ---
 title: SpinContainer
 fileSource: spin-container
-a11y: AA
-tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
+tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Examples('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
 ## What component has

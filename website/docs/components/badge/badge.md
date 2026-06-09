@@ -1,7 +1,7 @@
 ---
 title: Badge
 fileSource: badge
-tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code'), Changelog('badge-changelog')
+tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Examples('badge-code'), Changelog('badge-changelog')
 ---
 
 <Playground for="Badge" />
