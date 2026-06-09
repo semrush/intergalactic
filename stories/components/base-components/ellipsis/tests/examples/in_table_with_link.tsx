@@ -5,7 +5,7 @@ import Link from '@semcore/ui/link';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
-const removeProtocol = (url) => url.replace(/^(http|https):\/\//, '');
+const removeProtocol = (url: string) => url.replace(/^(http|https):\/\//, '');
 
 const data = [{
   keyword: 'ebay buy',
@@ -40,7 +40,7 @@ const data = [{
 }];
 
 const pageLimit = 10;
-const recalculateContainerWidth = (width) => width - 20;
+const recalculateContainerWidth = (width: number) => width - 20;
 
 export default function Demo() {
   const [currentPage, setCurrentPage] = React.useState(0);
@@ -121,6 +121,7 @@ export default function Demo() {
   return (
     <>
       <DataTable
+        aria-label='Table title'
         data={tableData.slice(currentPage * pageLimit, currentPage * pageLimit + pageLimit)}
         uniqueRowKey='keyword'
         columns={columns}
