@@ -7,11 +7,10 @@ import React from 'react';
 export type OnChangeInputSearchProps = {
   state?: StatusItemState;
   customChildren?: string;
-  itemsCount?: number;
   size?: 'm' | 'l';
 };
 
-const Demo = ({ state = 'default', customChildren, itemsCount, size = 'm' }: OnChangeInputSearchProps) => {
+const Demo = ({ state = 'default', customChildren, size = 'm' }: OnChangeInputSearchProps) => {
   const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
     () =>
@@ -43,13 +42,14 @@ const Demo = ({ state = 'default', customChildren, itemsCount, size = 'm' }: OnC
             aria-describedby={filter ? 'search-result' : undefined}
           />
           <Select.List hMax='224px'>
-            {options.map(({ value, label }) => (
-              <Select.Option value={value} key={value}>
-                {label}
-              </Select.Option>
-            ))}
+            {state === 'default' &&
+              options.map(({ value, label }) => (
+                <Select.Option value={value} key={value}>
+                  {label}
+                </Select.Option>
+              ))}
 
-            <Select.StatusItem itemsCount={itemsCount ?? options.length} state={state} id='search-result'>
+            <Select.StatusItem itemsCount={options.length} state={state} id='search-result'>
               {customChildren || undefined}
             </Select.StatusItem>
           </Select.List>
@@ -80,7 +80,6 @@ const data = [
 export const defaultProps: OnChangeInputSearchProps = {
   state: 'default',
   customChildren: '',
-  itemsCount: undefined,
   size: 'm',
 };
 

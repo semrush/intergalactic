@@ -136,10 +136,6 @@ export const OnChangeInputSearch: StoryObj<typeof OnChangeInputSearchProps> = {
       options: ['default', 'loading', 'error'],
       description: 'Select.StatusItem state',
     },
-    itemsCount: {
-      control: { type: 'number' },
-      description: 'Override Select.StatusItem itemsCount (defaults to filtered results)',
-    },
     customChildren: {
       control: { type: 'text' },
       description: 'Custom Select.StatusItem text (overrides the default i18n text)',
