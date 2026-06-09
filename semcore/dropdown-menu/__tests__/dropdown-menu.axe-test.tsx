@@ -119,4 +119,46 @@ test.describe(`@dropdown-menu ${TAG.ACCESSIBILITY}`, () => {
 
     expect(violations).toEqual([]);
   });
+
+  test('StatusItem with results', async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', { showSearch: true });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.locator('[data-ui-name="InputSearch"]').fill('d');
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+
+  test('StatusItem nothing found', async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', { showSearch: true });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.locator('[data-ui-name="InputSearch"]').fill('zzz');
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+
+  test('StatusItem loading state', async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', { showSearch: true, state: 'loading' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
+
+  test('StatusItem error state', async ({ page }) => {
+    await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', { showSearch: true, state: 'error' });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const violations = await getAccessibilityViolations({ page });
+
+    expect(violations).toEqual([]);
+  });
 });
