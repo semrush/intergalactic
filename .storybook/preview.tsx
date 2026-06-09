@@ -6,7 +6,22 @@ import React from 'react';
 
 type PreviewDecorator = NonNullable<Preview['decorators']>[number];
 
-const withStrictMode: PreviewDecorator = (Story, params) => {
+type StorybookStory = Parameters<PreviewDecorator>[0];
+
+type StorybookDecoratorParams = Parameters<PreviewDecorator>[1] & {
+  globals: Record<string, unknown> & {
+    theme?: 'new' | 'old';
+    strictMode?: 'on' | 'off';
+  };
+  parameters: Record<string, unknown> & {
+    layout?: string;
+  };
+};
+
+const withStrictMode: PreviewDecorator = (
+  Story: StorybookStory,
+  params: StorybookDecoratorParams,
+) => {
   const rootRef = React.useRef<HTMLDivElement>(null);
   const stylesheet = params.globals.theme === 'new'
     ? 'assets/theme/light.css'
