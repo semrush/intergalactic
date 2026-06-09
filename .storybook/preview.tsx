@@ -51,10 +51,29 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    strictMode: {
+      description: 'React StrictMode',
+      toolbar: {
+        title: 'StrictMode',
+        icon: 'circle',
+        items: [
+          {
+            value: 'off',
+            title: 'StrictMode off',
+          },
+          {
+            value: 'on',
+            title: 'StrictMode on',
+          },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
 
   initialGlobals: {
     theme: 'new',
+    strictMode: 'off',
   },
   decorators: [
     (Story, params) => {
@@ -67,6 +86,14 @@ const preview: Preview = {
         ? 'assets/theme/highlights-light.css'
         : 'assets/core/highlights-light.css';
 
+      const story = params.globals.strictMode === 'on'
+        ? (
+            <React.StrictMode>
+              <Story />
+            </React.StrictMode>
+          )
+        : <Story />;
+
       if (params.parameters.layout === 'fullscreen') {
         return (
           <>
@@ -74,7 +101,7 @@ const preview: Preview = {
             <link rel='stylesheet' href={stylesheetHighlight} />
             <PortalProvider value={rootRef}>
               <div ref={rootRef}>
-                <Story />
+                {story}
               </div>
             </PortalProvider>
           </>
@@ -89,7 +116,7 @@ const preview: Preview = {
             <div tabIndex={0} />
             <PortalProvider value={rootRef}>
               <div ref={rootRef}>
-                <Story />
+                {story}
               </div>
             </PortalProvider>
             <div tabIndex={0} />
