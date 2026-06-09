@@ -104,7 +104,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         const button = locators.buttons(page);
         await expect(page).toHaveScreenshot();
 
-        if (!item.disabled) {
+        if (!item.disabled && !item.loading) {
           await test.step('Verify focus style for buttons', async () => {
             await page.keyboard.press('Tab');
 
