@@ -1,5 +1,6 @@
 import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Input from '@semcore/input';
 import Spin from '@semcore/spin';
@@ -8,6 +9,7 @@ import React from 'react';
 import type { NSAutoSuggest } from './AutoSuggest.type';
 import { Highlight } from './Highlight';
 import Select from '../../index';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class AutoSuggestRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSAutoSuggest.Component>,
@@ -21,7 +23,7 @@ class AutoSuggestRoot extends Component<
     defaultValue: '',
   };
 
-  static enhance = [uniqueIDEnhancement()] as const;
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
   private abortController: AbortController | undefined;
   private changeDebounce = 0;
@@ -106,7 +108,7 @@ class AutoSuggestRoot extends Component<
   };
 
   render() {
-    const { value, uid } = this.asProps;
+    const { value, uid, getI18nText } = this.asProps;
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
     const id = `${uid}_autosuggest-trigger`;
 
@@ -124,7 +126,6 @@ class AutoSuggestRoot extends Component<
             render={Input.Value}
             value={value}
             role='combobox'
-            placeholder='Start typing for options'
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
             autoComplete='off'
@@ -135,11 +136,11 @@ class AutoSuggestRoot extends Component<
         </Select.Trigger>
         <Select.Popper aria-labelledby={id}>
           {isLoading
-            ? (<div>loading...</div>) /* todo use DD.StatusItem */
+            ? (<Select.StatusItem state='loading' />)
             : (
                 <>
                   {suggestions.length === 0
-                    ? (value.length > 0 && <div>start typing to see options</div>) /* todo use DD.StatusItem */
+                    ? (value.length === 0 && <Select.StatusItem itemsCount={0}>{getI18nText('AutoSuggest.Popper.placeholderText')}</Select.StatusItem>)
                     : (
                         <Select.List>
                           {suggestions.map((option) => (
