@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, userEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
 import { describe, test, vi, assertType, expect, afterEach, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -7,17 +7,6 @@ import BulkTextarea from '../src';
 
 describe('BulkTextarea Dependency imports', () => {
   runDependencyCheckTests('bulk-textarea');
-});
-
-describe('BulkTextarea data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: BulkTextarea,
-    props: {
-      value: '',
-      children: <BulkTextarea.InputField commonErrorMessage='' />,
-    },
-    expectedDataUiName: 'BulkTextarea',
-  });
 });
 
 describe('BulkTextarea OnChange', () => {

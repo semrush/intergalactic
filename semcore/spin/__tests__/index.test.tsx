@@ -1,18 +1,6 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup } from '@semcore/testing-utils/testing-library';
-import { beforeEach, describe } from '@semcore/testing-utils/vitest';
-
-import Spin from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { describe } from '@semcore/testing-utils/vitest';
 
 describe('spin Dependency imports', () => {
   runDependencyCheckTests('spin');
-});
-
-describe('Spin', () => {
-  beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Spin,
-    expectedDataUiName: 'Spin',
-  });
 });

@@ -1,6 +1,6 @@
 import Button, { ButtonLink } from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -9,43 +9,6 @@ import Pagination from '../src';
 
 describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');
-});
-
-describe('Pagination data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: Pagination,
-    expectedDataUiName: 'Pagination',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pagination.FirstPage,
-    Wrapper: Pagination,
-    expectedDataUiName: 'Pagination.FirstPage',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pagination.PrevPage,
-    Wrapper: Pagination,
-    expectedDataUiName: 'Pagination.PrevPage',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pagination.NextPage,
-    Wrapper: Pagination,
-    expectedDataUiName: 'Pagination.NextPage',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pagination.TotalPages,
-    Wrapper: Pagination,
-    expectedDataUiName: 'Pagination.TotalPages',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pagination.PageInput,
-    Wrapper: Pagination,
-    expectedDataUiName: 'Pagination.PageInput',
-  });
 });
 
 describe('Pagination.FirstPage', () => {

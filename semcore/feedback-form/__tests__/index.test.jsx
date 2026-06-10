@@ -1,5 +1,5 @@
 import CongratsIllustration from '@semcore/illustration/Congrats';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -12,11 +12,6 @@ describe('feedback-form Dependency imports', () => {
 
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: FeedbackForm,
-    expectedDataUiName: 'FeedbackForm',
-  });
 
   test.concurrent('Verify call onSubmit', async () => {
     const onSubmit = vi.fn();

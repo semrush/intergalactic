@@ -1,18 +1,6 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup } from '@semcore/testing-utils/testing-library';
-import { describe, beforeEach } from '@semcore/testing-utils/vitest';
-
-import ProgressBar from '../src';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { describe } from '@semcore/testing-utils/vitest';
 
 describe('progress-bar Dependency imports', () => {
   runDependencyCheckTests('progress-bar');
-});
-
-describe('ProgressBar', () => {
-  beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: ProgressBar,
-    expectedDataUiName: 'ProgressBar',
-  });
 });

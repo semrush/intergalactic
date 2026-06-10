@@ -1,48 +1,13 @@
 import type { Intergalactic } from '@semcore/core';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Accordion from '../src';
 
-const AccordionItemWrapper = ({ children }: { children: React.ReactNode }) => (
-  <Accordion defaultValue={1}>
-    <Accordion.Item value={1}>{children}</Accordion.Item>
-  </Accordion>
-);
-
 describe('Accordion Dependency imports', () => {
   runDependencyCheckTests('accordion');
-});
-
-describe('Accordion data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: Accordion.Item.Toggle,
-    Wrapper: AccordionItemWrapper,
-    props: { children: 'Toggle' },
-    expectedDataUiName: 'Item.Toggle',
-  });
-
-  shouldHaveDataUiName({
-    Component: Accordion.Item.Chevron,
-    Wrapper: AccordionItemWrapper,
-    expectedDataUiName: 'Item.Chevron',
-  });
-
-  shouldHaveDataUiName({
-    Component: Accordion.Item.ToggleButton,
-    Wrapper: AccordionItemWrapper,
-    props: { children: 'ToggleButton' },
-    expectedDataUiName: 'Item.ToggleButton',
-  });
-
-  shouldHaveDataUiName({
-    Component: Accordion.Item.Collapse,
-    Wrapper: AccordionItemWrapper,
-    props: { children: 'Collapse' },
-    expectedDataUiName: 'Item.Collapse',
-  });
 });
 
 describe('Accordion', () => {

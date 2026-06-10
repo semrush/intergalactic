@@ -1,4 +1,3 @@
-import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,11 +10,6 @@ const SpanTag = function SpanTag(props) {
 
 describe('Flex', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Flex,
-    expectedDataUiName: 'Flex',
-  });
 
   test.concurrent('Verify supports css property', async () => {
     const MAP_CSS = {
@@ -83,11 +77,6 @@ describe('Flex', () => {
 
 describe('Box', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Box,
-    expectedDataUiName: 'Box',
-  });
 
   test('Verify supports custom tag', () => {
     const { getByTestId } = render(

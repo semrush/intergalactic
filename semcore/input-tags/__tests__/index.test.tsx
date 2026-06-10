@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, userEvent, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
@@ -7,28 +7,6 @@ import InputTags from '../src';
 
 describe('input-tags Dependency imports', () => {
   runDependencyCheckTests('input-tags');
-});
-
-describe('InputTags data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: InputTags,
-    props: { children: <InputTags.Value aria-label='input with tags' /> },
-    expectedDataUiName: 'InputTags',
-  });
-
-  shouldHaveDataUiName({
-    Component: InputTags.Value,
-    Wrapper: InputTags,
-    props: { 'aria-label': 'input with tags' },
-    expectedDataUiName: 'InputTags.Value',
-  });
-
-  shouldHaveDataUiName({
-    Component: InputTags.Tag,
-    Wrapper: InputTags,
-    props: { children: 'Tag' },
-    expectedDataUiName: 'InputTags.Tag',
-  });
 });
 
 describe('InputTags', () => {

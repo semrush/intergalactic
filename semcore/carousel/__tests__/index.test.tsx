@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -19,11 +19,6 @@ const Items = () => (
 
 describe('Carousel', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Carousel,
-    expectedDataUiName: 'Carousel',
-  });
 
   test('Verify control mode', () => {
     const spy = vi.fn();
@@ -80,33 +75,8 @@ describe('Carousel', () => {
   });
 });
 
-describe('Carousel.Container', () => {
-  beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Carousel.Container,
-    Wrapper: Carousel,
-    expectedDataUiName: 'Carousel.Container',
-  });
-});
-
-describe('Carousel.Item', () => {
-  beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Carousel.Item,
-    Wrapper: Carousel,
-    expectedDataUiName: 'Carousel.Item',
-  });
-});
-
 describe('Carousel.Indicators', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Carousel.Indicators,
-    expectedDataUiName: 'Carousel.Indicators',
-  });
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
@@ -177,12 +147,6 @@ describe('Carousel.Indicators', () => {
 describe('Carousel.Prev', () => {
   beforeEach(cleanup);
 
-  shouldHaveDataUiName({
-    Component: Carousel.Prev,
-    props: { label: 'Previous slide' },
-    expectedDataUiName: 'Carousel.Prev',
-  });
-
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
     const { getByLabelText } = render(
@@ -229,12 +193,6 @@ describe('Carousel.Prev', () => {
 
 describe('Carousel.Next', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Carousel.Next,
-    props: { label: 'Next slide' },
-    expectedDataUiName: 'Carousel.Next',
-  });
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();

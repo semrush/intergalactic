@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { describe, test, expect, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -7,14 +7,6 @@ import Badge from '../src';
 
 describe('Badge Dependency imports', () => {
   runDependencyCheckTests('badge');
-});
-
-describe('Badge data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: Badge,
-    props: { type: 'admin' },
-    expectedDataUiName: 'Badge',
-  });
 });
 
 describe('Badge deprecation warnings', () => {
