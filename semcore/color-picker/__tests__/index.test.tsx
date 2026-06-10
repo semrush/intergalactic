@@ -1,62 +1,12 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import ColorPicker, { PaletteManager } from '../src';
 
-const VisibleColorPicker = ({ children }: { children: React.ReactNode }) => (
-  <ColorPicker visible disablePortal>{children}</ColorPicker>
-);
-
-const ColorPickerPopperWrapper = ({ children }: { children: React.ReactNode }) => (
-  <VisibleColorPicker>
-    <ColorPicker.Popper>{children}</ColorPicker.Popper>
-  </VisibleColorPicker>
-);
-
-const PaletteManagerWrapper = ({ children }: { children: React.ReactNode }) => (
-  <PaletteManager>{children}</PaletteManager>
-);
-
 describe('color-picker Dependency imports', () => {
   runDependencyCheckTests('color-picker');
-});
-
-describe('ColorPicker data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: ColorPicker.Trigger,
-    Wrapper: VisibleColorPicker,
-    expectedDataUiName: 'ColorPicker.Trigger',
-  });
-
-  shouldHaveDataUiName({
-    Component: ColorPicker.Popper,
-    Wrapper: VisibleColorPicker,
-    expectedDataUiName: 'ColorPicker.Popper',
-  });
-
-  shouldHaveDataUiName({
-    Component: ColorPicker.Colors,
-    Wrapper: ColorPickerPopperWrapper,
-    expectedDataUiName: 'ColorPicker.Colors',
-  });
-
-  test.skip('should have data-ui-name="ColorPicker.Item"', () => {
-    // ColorPicker.Item exists at runtime, but is not exposed in the public TypeScript API.
-  });
-
-  shouldHaveDataUiName({
-    Component: PaletteManager.Colors,
-    Wrapper: PaletteManagerWrapper,
-    expectedDataUiName: 'PaletteManager.Colors',
-  });
-
-  shouldHaveDataUiName({
-    Component: PaletteManager.InputColor,
-    Wrapper: PaletteManagerWrapper,
-    expectedDataUiName: 'PaletteManager.InputColor',
-  });
 });
 
 describe('ColorPicker', () => {

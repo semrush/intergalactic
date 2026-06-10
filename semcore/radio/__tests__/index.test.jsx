@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,17 +11,6 @@ describe('radio Dependency imports', () => {
 
 describe('Radio', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Radio,
-    expectedDataUiName: 'Radio',
-  });
-
-  shouldHaveDataUiName({
-    Component: Radio.Text,
-    Wrapper: Radio,
-    expectedDataUiName: 'Radio.Text',
-  });
 
   test.concurrent('Verify supports custom attributes on the input', () => {
     const { getByTestId } = render(

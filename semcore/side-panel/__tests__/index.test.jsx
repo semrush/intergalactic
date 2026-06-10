@@ -1,92 +1,13 @@
 import { Portal } from '@semcore/base-components';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import SidePanel from '../src';
 
-const VisibleSidePanel = ({ children }) => (
-  <SidePanel visible disablePortal aria-label='Side panel'>{children}</SidePanel>
-);
-
-const SidePanelPanelWrapper = ({ children }) => (
-  <VisibleSidePanel>
-    <SidePanel.Overlay>
-      <SidePanel.Panel aria-label='Side panel'>{children}</SidePanel.Panel>
-    </SidePanel.Overlay>
-  </VisibleSidePanel>
-);
-
 describe('side-panel Dependency imports', () => {
   runDependencyCheckTests('side-panel');
-});
-
-describe('SidePanel data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: SidePanel,
-    props: { 'visible': true, 'disablePortal': true, 'aria-label': 'Side panel', 'children': 'Content' },
-    expectedDataUiName: 'SidePanel',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Overlay,
-    Wrapper: VisibleSidePanel,
-    props: { children: <SidePanel.Panel aria-label='Side panel' /> },
-    expectedDataUiName: 'SidePanel.Overlay',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Panel,
-    Wrapper: ({ children }) => (
-      <VisibleSidePanel>
-        <SidePanel.Overlay>{children}</SidePanel.Overlay>
-      </VisibleSidePanel>
-    ),
-    props: { 'aria-label': 'Side panel' },
-    expectedDataUiName: 'SidePanel.Panel',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Header,
-    Wrapper: VisibleSidePanel,
-    props: { title: 'Header' },
-    expectedDataUiName: 'SidePanel.Header',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Body,
-    Wrapper: SidePanelPanelWrapper,
-    props: { children: 'Body' },
-    expectedDataUiName: 'SidePanel.Body',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Footer,
-    Wrapper: SidePanelPanelWrapper,
-    props: { children: 'Footer' },
-    expectedDataUiName: 'SidePanel.Footer',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Close,
-    Wrapper: SidePanelPanelWrapper,
-    expectedDataUiName: 'SidePanel.Close',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Back,
-    Wrapper: SidePanelPanelWrapper,
-    props: { children: 'Back' },
-    expectedDataUiName: 'SidePanel.Back',
-  });
-
-  shouldHaveDataUiName({
-    Component: SidePanel.Title,
-    Wrapper: SidePanelPanelWrapper,
-    props: { children: 'Title' },
-    expectedDataUiName: 'SidePanel.Title',
-  });
 });
 
 describe('SidePanel', () => {

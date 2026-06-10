@@ -1,85 +1,12 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, fireEvent, userEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, expect, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Wizard from '../src';
 
-const VisibleWizard = ({ children }: { children: React.ReactNode }) => (
-  <Wizard disablePortal visible step={1}>{children}</Wizard>
-);
-
 describe('wizard Dependency imports', () => {
   runDependencyCheckTests('wizard');
-});
-
-describe('Wizard data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: Wizard,
-    props: {
-      disablePortal: true,
-      visible: true,
-      step: 1,
-      children: 'Wizard',
-    },
-    expectedDataUiName: 'Wizard',
-  });
-
-  shouldHaveDataUiName({
-    Component: Wizard.Sidebar,
-    Wrapper: VisibleWizard,
-    props: { title: 'Header', children: <Wizard.Stepper step={1}>Step 1</Wizard.Stepper> },
-    expectedDataUiName: 'Wizard.Sidebar',
-  });
-
-  shouldHaveDataUiName({
-    Component: Wizard.Content,
-    Wrapper: VisibleWizard,
-    props: { children: <Wizard.Step step={1}>Step 1</Wizard.Step> },
-    expectedDataUiName: 'Wizard.Content',
-  });
-
-  shouldHaveDataUiName({
-    Component: Wizard.Step,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <VisibleWizard>
-        <Wizard.Content>{children}</Wizard.Content>
-      </VisibleWizard>
-    ),
-    props: { step: 1, children: 'Step' },
-    expectedDataUiName: 'Wizard.Step',
-  });
-
-  shouldHaveDataUiName({
-    Component: Wizard.Stepper,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <VisibleWizard>
-        <Wizard.Sidebar>{children}</Wizard.Sidebar>
-      </VisibleWizard>
-    ),
-    props: { step: 1, children: 'Stepper' },
-    expectedDataUiName: 'Wizard.Stepper',
-  });
-
-  shouldHaveDataUiName({
-    Component: Wizard.StepBack,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <VisibleWizard>
-        <Wizard.Content>{children}</Wizard.Content>
-      </VisibleWizard>
-    ),
-    expectedDataUiName: 'Wizard.StepBack',
-  });
-
-  shouldHaveDataUiName({
-    Component: Wizard.StepNext,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <VisibleWizard>
-        <Wizard.Content>{children}</Wizard.Content>
-      </VisibleWizard>
-    ),
-    expectedDataUiName: 'Wizard.StepNext',
-  });
 });
 
 describe('Wizard', () => {

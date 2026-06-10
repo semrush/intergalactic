@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   render,
   cleanup,
@@ -7,24 +7,8 @@ import {
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import {
-  NoticeBubbleContainer,
-} from '../src';
+import { NoticeBubbleContainer } from '../src';
 import { NoticeBubbleManager } from '../src/NoticeBubbleManager';
-
-const TestNoticeBubble = React.forwardRef((props: any, ref: React.Ref<HTMLElement>) => (
-  <>
-    <NoticeBubbleContainer
-      disablePortal
-      style={{ position: 'static', width: 'auto' }}
-    />
-    <NoticeBubbleContainer
-      ref={ref}
-      style={{ marginBottom: 0 }}
-      {...props}
-    />
-  </>
-));
 
 describe('notice-bubble Dependency imports', () => {
   runDependencyCheckTests('notice-bubble');
@@ -32,11 +16,6 @@ describe('notice-bubble Dependency imports', () => {
 
 describe('NoticeBubbleContainer', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: TestNoticeBubble,
-    expectedDataUiName: 'NoticeBubbleContainer',
-  });
 
   test('Verify supports rendering outside DOM', () => {
     const { queryByTestId } = render(

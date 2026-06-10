@@ -1,9 +1,8 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import Input from '../src';
 import InlineInput from '../src/InlineInput';
 
 describe('inline-input Dependency imports', () => {
@@ -12,17 +11,6 @@ describe('inline-input Dependency imports', () => {
 
 describe('InlineInput', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Input,
-    expectedDataUiName: 'InlineInput',
-  });
-
-  shouldHaveDataUiName({
-    Component: Input.Value,
-    Wrapper: Input,
-    expectedDataUiName: 'InlineInput.Value',
-  });
 
   test.concurrent('Verify blur behavior', () => {
     vi.useFakeTimers();

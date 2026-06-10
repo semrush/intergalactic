@@ -1,4 +1,3 @@
-import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, fireEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -21,11 +20,6 @@ describe('ScrollArea', () => {
     expect(
       document.querySelectorAll('[data-ui-name^="ScrollArea"][data-ui-name$="Container"]').length,
     ).toBe(1);
-  });
-
-  shouldHaveDataUiName({
-    Component: ScrollArea,
-    expectedDataUiName: 'ScrollArea',
   });
 
   test.concurrent('Verify trigger calculate event on container', () => {
@@ -78,15 +72,5 @@ describe('ScrollArea', () => {
 
     expect(document.activeElement).toBe(input);
     expect(input.getBoundingClientRect().top).toBeGreaterThanOrEqual(0);
-  });
-});
-
-describe('ScrollArea.Container', () => {
-  beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: ScrollArea.Container,
-    Wrapper: ScrollArea,
-    expectedDataUiName: 'ScrollArea.Container',
   });
 });

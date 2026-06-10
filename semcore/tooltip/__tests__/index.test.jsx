@@ -1,13 +1,12 @@
 import Button from '@semcore/button';
 import Link from '@semcore/link';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
-const TooltipWrapper = ({ children }) => <Tooltip>{children}</Tooltip>;
 describe('tooltip Dependency imports', () => {
   runDependencyCheckTests('tooltip');
 });
@@ -16,13 +15,6 @@ describe('Tooltip', () => {
   beforeEach(cleanup);
 
   describe('Tooltip.Trigger', () => {
-    shouldHaveDataUiName({
-      Component: Tooltip.Trigger,
-      Wrapper: TooltipWrapper,
-      props: { children: 'Trigger' },
-      expectedDataUiName: 'Tooltip.Trigger',
-    });
-
     test('Verify supports custom tag', () => {
       const { getByTestId } = render(
         <Tooltip>

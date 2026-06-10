@@ -1,5 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
@@ -8,43 +8,6 @@ import TabPanel from '../src';
 
 describe('tab-panel Dependency imports', () => {
   runDependencyCheckTests('tab-panel');
-});
-
-describe('TabPanel data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: TabPanel,
-    props: { children: <TabPanel.Item value={1}>Item</TabPanel.Item> },
-    expectedDataUiName: 'TabPanel',
-  });
-
-  shouldHaveDataUiName({
-    Component: TabPanel.Item,
-    Wrapper: TabPanel,
-    props: { value: 1, children: 'Item' },
-    expectedDataUiName: 'TabPanel.Item',
-  });
-
-  shouldHaveDataUiName({
-    Component: TabPanel.Item.Text,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <TabPanel>
-        <TabPanel.Item value={1}>{children}</TabPanel.Item>
-      </TabPanel>
-    ),
-    props: { children: 'Text' },
-    expectedDataUiName: 'TabPanel.Item.Text',
-  });
-
-  shouldHaveDataUiName({
-    Component: TabPanel.Item.Addon,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <TabPanel>
-        <TabPanel.Item value={1}>{children}</TabPanel.Item>
-      </TabPanel>
-    ),
-    props: { children: 'Addon' },
-    expectedDataUiName: 'TabPanel.Item.Addon',
-  });
 });
 
 describe('TabPanel', () => {

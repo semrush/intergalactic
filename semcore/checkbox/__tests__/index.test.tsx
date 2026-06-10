@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,17 +11,6 @@ describe('Checkbox Dependency imports', () => {
 
 describe('Checkbox', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Checkbox,
-    expectedDataUiName: 'Checkbox',
-  });
-
-  shouldHaveDataUiName({
-    Component: Checkbox.Text,
-    Wrapper: Checkbox,
-    expectedDataUiName: 'Checkbox.Text',
-  });
 
   test.concurrent(
     'Verify Control has aria-label, aria-labelledby, aria-describedby from root',

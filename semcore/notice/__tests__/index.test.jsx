@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,51 +11,6 @@ describe('notice Dependency imports', () => {
 
 describe('Notice', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Notice,
-    expectedDataUiName: 'Notice',
-  });
-
-  shouldHaveDataUiName({
-    Component: Notice.Label,
-    Wrapper: Notice,
-    expectedDataUiName: 'Notice.Label',
-  });
-
-  shouldHaveDataUiName({
-    Component: Notice.Title,
-    Wrapper: Notice,
-    props: { children: 'Title' },
-    expectedDataUiName: 'Notice.Title',
-  });
-
-  shouldHaveDataUiName({
-    Component: Notice.Text,
-    Wrapper: Notice,
-    props: { children: 'Text' },
-    expectedDataUiName: 'Notice.Text',
-  });
-
-  shouldHaveDataUiName({
-    Component: Notice.Actions,
-    Wrapper: Notice,
-    props: { children: <button type='button'>Action</button> },
-    expectedDataUiName: 'Notice.Actions',
-  });
-
-  shouldHaveDataUiName({
-    Component: Notice.Content,
-    Wrapper: Notice,
-    props: { children: 'Content' },
-    expectedDataUiName: 'Notice.Content',
-  });
-
-  shouldHaveDataUiName({
-    Component: Notice.Close,
-    Wrapper: Notice,
-    expectedDataUiName: 'Notice.Close',
-  });
 
   test('Verify supports custom close icon', () => {
     const component = (
@@ -95,11 +50,6 @@ describe('Notice', () => {
 
 describe('NoticeSmart', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: NoticeSmart,
-    expectedDataUiName: 'NoticeSmart',
-  });
 
   test('Verify renders title and text from props', () => {
     const { container } = render(

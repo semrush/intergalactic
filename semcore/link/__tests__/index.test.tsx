@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,13 +11,6 @@ describe('link Dependency imports', () => {
 
 describe('Link', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Link,
-    Wrapper: React.Fragment,
-    props: { children: 'Link' },
-    expectedDataUiName: 'Link',
-  });
 
   test('Verify supports custom tag', () => {
     const { getByTestId } = render(

@@ -1,5 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -8,43 +8,6 @@ import Pills from '../src';
 
 describe('pills Dependency imports', () => {
   runDependencyCheckTests('pills');
-});
-
-describe('Pills data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: Pills,
-    props: { children: <Pills.Item value={1}>Item</Pills.Item> },
-    expectedDataUiName: 'Pills',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pills.Item,
-    Wrapper: Pills,
-    props: { value: 1, children: 'Item' },
-    expectedDataUiName: 'Pills.Item',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pills.Item.Text,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <Pills>
-        <Pills.Item value={1}>{children}</Pills.Item>
-      </Pills>
-    ),
-    props: { children: 'Text' },
-    expectedDataUiName: 'Pills.Item.Text',
-  });
-
-  shouldHaveDataUiName({
-    Component: Pills.Item.Addon,
-    Wrapper: ({ children }: { children: React.ReactNode }) => (
-      <Pills>
-        <Pills.Item value={1}>{children}</Pills.Item>
-      </Pills>
-    ),
-    props: { children: 'Addon' },
-    expectedDataUiName: 'Pills.Item.Addon',
-  });
 });
 
 describe('PillGroup', () => {

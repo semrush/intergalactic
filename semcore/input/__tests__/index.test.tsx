@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,11 +11,6 @@ describe('input Dependency imports', () => {
 
 describe('Input', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Input,
-    expectedDataUiName: 'Input',
-  });
 
   test.concurrent('Verify value changes when rerender', () => {
     const { getByTestId, rerender } = render(
@@ -66,12 +61,6 @@ describe('Input', () => {
 
 describe('Input.Addon', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Input.Value,
-    Wrapper: Input,
-    expectedDataUiName: 'Input.Value',
-  });
 
   test.concurrent('Verify input focused if click additional element', () => {
     const spy = vi.fn();

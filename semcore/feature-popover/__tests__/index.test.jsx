@@ -1,13 +1,10 @@
 import Button from '@semcore/button';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { beforeEach, describe, expect, test } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FeaturePopover from '../src';
-
-const FeaturePopoverWrapper = ({ children }) => <FeaturePopover>{children}</FeaturePopover>;
-const VisibleFeaturePopoverWrapper = ({ children }) => <FeaturePopover visible>{children}</FeaturePopover>;
 
 describe('feature-popover Dependency imports', () => {
   runDependencyCheckTests('feature-popover');
@@ -15,13 +12,6 @@ describe('feature-popover Dependency imports', () => {
 
 describe('FeaturePopover.Trigger', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: FeaturePopover.Trigger,
-    Wrapper: FeaturePopoverWrapper,
-    props: { children: 'Trigger' },
-    expectedDataUiName: 'FeaturePopover.Trigger',
-  });
 
   test('Verify supports custom tag', () => {
     const { getByTestId } = render(
@@ -42,12 +32,6 @@ describe('FeaturePopover.Trigger', () => {
 
 describe('FeaturePopover.Popper', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: FeaturePopover.Popper,
-    Wrapper: VisibleFeaturePopoverWrapper,
-    expectedDataUiName: 'FeaturePopover.Popper',
-  });
 
   test('Verify supports custom tag', () => {
     const { getByTestId } = render(

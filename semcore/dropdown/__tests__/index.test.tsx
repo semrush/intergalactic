@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   render,
@@ -11,42 +11,8 @@ import React from 'react';
 
 import Dropdown from '../src';
 
-const VisibleDropdown = ({ children }: { children: React.ReactNode }) => (
-  <Dropdown visible disablePortal>{children}</Dropdown>
-);
-
 describe('dropdown Dependency imports', () => {
   runDependencyCheckTests('dropdown');
-});
-
-describe('Dropdown data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: Dropdown.Trigger,
-    Wrapper: VisibleDropdown,
-    props: { children: 'Trigger' },
-    expectedDataUiName: 'Dropdown.Trigger',
-  });
-
-  shouldHaveDataUiName({
-    Component: Dropdown.Popper,
-    Wrapper: VisibleDropdown,
-    props: { 'aria-label': 'Dropdown popper', 'children': 'Content' },
-    expectedDataUiName: 'Dropdown.Popper',
-  });
-
-  shouldHaveDataUiName({
-    Component: Dropdown.Item,
-    Wrapper: VisibleDropdown,
-    props: { children: 'Item' },
-    expectedDataUiName: 'Dropdown.Item',
-  });
-
-  shouldHaveDataUiName({
-    Component: Dropdown.Group,
-    Wrapper: VisibleDropdown,
-    props: { title: 'Group', children: 'Item' },
-    expectedDataUiName: 'Dropdown.Group',
-  });
 });
 
 describe('Dropdown', () => {

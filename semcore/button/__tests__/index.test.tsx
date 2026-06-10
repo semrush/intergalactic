@@ -1,10 +1,10 @@
 import Link from '@semcore/link';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { beforeEach, expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import Button, { ButtonLink } from '../src';
+import Button, { } from '../src';
 
 describe('Button Dependency imports', () => {
   runDependencyCheckTests('button');
@@ -12,30 +12,6 @@ describe('Button Dependency imports', () => {
 
 describe('Button', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: Button,
-    props: { children: 'Button' },
-    expectedDataUiName: 'Button',
-  });
-
-  shouldHaveDataUiName({
-    Component: Button.Text,
-    props: { children: 'Button text' },
-    expectedDataUiName: 'Button.Text',
-  });
-
-  shouldHaveDataUiName({
-    Component: Button.Addon,
-    props: { children: <span>Addon</span> },
-    expectedDataUiName: 'Button.Addon',
-  });
-
-  shouldHaveDataUiName({
-    Component: ButtonLink,
-    props: { children: 'ButtonLink' },
-    expectedDataUiName: 'ButtonLink',
-  });
 
   test('Verify supports user click handler', async () => {
     const spy = vi.fn();

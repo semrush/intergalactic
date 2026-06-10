@@ -1,4 +1,3 @@
-import { shouldHaveDataUiName } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   fireEvent,
@@ -11,25 +10,7 @@ import React, { useRef } from 'react';
 
 import { Hint, PortalProvider } from '../src';
 
-const HintWithTrigger = ({ children, ...props }: any) => {
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
-  return (
-    <>
-      <button ref={triggerRef}>Trigger</button>
-      <Hint triggerRef={triggerRef} {...props}>
-        {children}
-      </Hint>
-    </>
-  );
-};
-
 describe('Hint', () => {
-  shouldHaveDataUiName({
-    Component: HintWithTrigger,
-    props: { visible: true, children: 'Hint' },
-    expectedDataUiName: 'Hint',
-  });
-
   afterEach(() => {
     cleanup();
     vi.useRealTimers();

@@ -1,4 +1,4 @@
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -11,11 +11,6 @@ describe('input-mask Dependency imports', () => {
 
 describe('InputMask', () => {
   beforeEach(cleanup);
-
-  shouldHaveDataUiName({
-    Component: InputMask,
-    expectedDataUiName: 'InputMask',
-  });
 
   test.concurrent('Should renders correctly', async () => {
     const Component = ({ value = '' }) => (

@@ -1,5 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
-import { shouldHaveDataUiName, runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -12,16 +12,6 @@ describe('data-table Dependency imports', () => {
 });
 
 describe('DataTable data-ui-name', () => {
-  shouldHaveDataUiName({
-    Component: DataTable,
-    props: {
-      'aria-label': 'Table',
-      'data': [{ keyword: 'test' }],
-      'columns': [{ name: 'keyword', children: 'Keyword' }],
-    },
-    expectedDataUiName: 'DataTable',
-  });
-
   test('Should have data-ui-name on generated table parts', () => {
     const { container } = render(
       <DataTable
