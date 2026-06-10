@@ -7,7 +7,7 @@ import { getChartProps, getPropsToChart } from '../stories_props_helper';
 const Demo = (props: CompactHorizontalBarChartProps) => {
   return (
     <Chart.CompactHorizontalBar
-      {...getPropsToChart(props)}
+      {...chartProps}
       aria-label='CompactHorizontalBar chart'
     />
   );

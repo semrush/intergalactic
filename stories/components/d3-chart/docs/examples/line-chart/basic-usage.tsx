@@ -7,12 +7,8 @@ import LineMockData from '../../../__mocks__/line';
 const Demo = () => {
   return (
     <Box
-      border='1px solid #ddd'
-      borderRadius='surface-rounded'
-      resize='both'
       w={500}
       h={200}
-      overflow='auto'
     >
       <Chart.Line
         data={data}

@@ -1,8 +1,10 @@
 import { Box } from '@semcore/ui/base-components';
+import type { AreaChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import StackedAreaMockData from '../../../__mocks__/stacked-area';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const formatDate = (type: 'axis' | 'tooltip') => (value: any) => {
   const options =
@@ -20,18 +22,22 @@ const formatDate = (type: 'axis' | 'tooltip') => (value: any) => {
   return new Intl.DateTimeFormat('en', options).format(value);
 };
 
-const Demo = () => {
+const Demo = (props: AreaChartProps) => {
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+
   return (
     <Box
-      w={500}
-      h={200}
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
     >
       <Chart.Area
-        data={data}
-        groupKey='time'
+        {...chartProps}
         tooltipValueFormatter={formatDate('tooltip')}
         axisXValueFormatter={formatDate('axis')}
-        stacked={true}
         aria-label='Stacked area chart'
       />
     </Box>
@@ -39,5 +45,13 @@ const Demo = () => {
 };
 
 const data = StackedAreaMockData.Default;
+
+export const defaultProps = getChartProps<AreaChartProps>({
+  data,
+  groupKey: 'time',
+  stacked: true,
+});
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;

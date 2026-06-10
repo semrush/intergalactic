@@ -7,12 +7,8 @@ import ScatterplotMockData from '../../../__mocks__/scatterplot';
 const Demo = () => {
   return (
     <Box
-      border='1px solid #ddd'
-      borderRadius='surface-rounded'
-      resize='both'
       w={500}
       h={300}
-      overflow='auto'
     >
       <Chart.ScatterPlot
         data={data}

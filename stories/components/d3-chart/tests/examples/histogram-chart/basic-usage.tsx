@@ -7,7 +7,7 @@ import { getChartProps, getPropsToChart } from '../stories_props_helper';
 const Demo = (props: HistogramChartProps) => {
   return (
     <Chart.Histogram
-      {...getPropsToChart(props)}
+      {...chartProps}
       alignItems='flex-start'
     />
   );

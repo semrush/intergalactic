@@ -7,12 +7,8 @@ import VennMockData from '../../../__mocks__/venn';
 const Demo = () => {
   return (
     <Box
-      border='1px solid #ddd'
-      borderRadius='surface-rounded'
-      resize='both'
       w={500}
       h={300}
-      overflow='auto'
     >
       <Chart.Venn
         data={data}

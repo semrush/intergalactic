@@ -7,12 +7,8 @@ import StackedBarMockData from '../../../__mocks__/stacked-bar';
 const Demo = () => {
   return (
     <Box
-      border='1px solid #ddd'
-      borderRadius='surface-rounded'
-      resize='both'
       w={500}
       h={200}
-      overflow='auto'
     >
       <Chart.Bar
         groupKey='bar'

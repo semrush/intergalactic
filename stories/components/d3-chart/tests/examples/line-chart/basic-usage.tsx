@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import type { LineChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
@@ -8,13 +9,23 @@ const Demo = (props: LineChartProps) => {
   const onClickHandler = () => {
     console.log('Clicked line chart');
   };
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
 
   return (
-    <Chart.Line
-      {...getPropsToChart(props)}
-      aria-label='Line chart'
-      onClickLine={onClickHandler}
-    />
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
+      <Chart.Line
+        {...chartProps}
+        aria-label='Line chart'
+        onClickLine={onClickHandler}
+      />
+    </Box>
   );
 };
 

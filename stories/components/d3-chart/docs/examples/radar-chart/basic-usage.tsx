@@ -7,12 +7,8 @@ import RadarMockData from '../../../__mocks__/radar';
 const Demo = () => {
   return (
     <Box
-      border='1px solid #ddd'
-      borderRadius='surface-rounded'
-      resize='both'
       w={400}
       h={400}
-      overflow='auto'
     >
       <Chart.Radar
         data={data}

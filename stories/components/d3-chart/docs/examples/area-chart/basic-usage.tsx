@@ -16,11 +16,8 @@ function formatDate(value: any) {
 const Demo = () => {
   return (
     <Box
-      border='1px solid #ddd'
-      borderRadius='surface-rounded'
-      resize='both'
+      w={500}
       h={200}
-      overflow='auto'
     >
       <Chart.Area
         groupKey='time'
