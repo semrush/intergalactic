@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import type { HistogramChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
@@ -5,11 +6,22 @@ import React from 'react';
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: HistogramChartProps) => {
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+
   return (
-    <Chart.Histogram
-      {...chartProps}
-      alignItems='flex-start'
-    />
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
+      <Chart.Histogram
+        {...chartProps}
+        alignItems='flex-start'
+      />
+    </Box>
   );
 };
 

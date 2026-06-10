@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
@@ -10,17 +11,15 @@ const Demo = (props: BaseExampleProps) => {
     console.log('Clicked bubble chart');
   };
   return (
-    <>
+    <Box w={500} h={200}>
       { /* @ts-ignore: the value is not statically known, but it's valid at runtime */}
       <Chart.Bubble
         data={data}
-        plotWidth={500}
-        plotHeight={200}
         onClickBubble={onClickHandler}
         aria-label='Bubble chart'
         showLegend={showLegend}
       />
-    </>
+    </Box>
   );
 };
 
