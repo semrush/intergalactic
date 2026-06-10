@@ -31,14 +31,16 @@ const Demo = () => {
               }}
             />
           </InputSearch>
-          <Select.List hMax='224px'>
-            {options.map(({ value, label }) => (
-              <Select.Option value={value} key={value}>
-                {label}
-              </Select.Option>
-            ))}
-            <Select.StatusItem itemsCount={options.length} id='search-result' />
-          </Select.List>
+          {options.length > 0 && (
+            <Select.List hMax='224px'>
+              {options.map(({ value, label }) => (
+                <Select.Option value={value} key={value}>
+                  {label}
+                </Select.Option>
+              ))}
+            </Select.List>
+          )}
+          <Select.StatusItem itemsCount={options.length} id='search-result' />
         </Select.Popper>
       </Select>
     </Flex>
