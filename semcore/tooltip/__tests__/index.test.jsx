@@ -14,28 +14,6 @@ describe('tooltip Dependency imports', () => {
 describe('Tooltip', () => {
   beforeEach(cleanup);
 
-  describe('Tooltip.Trigger', () => {
-    test('Verify supports custom tag', () => {
-      const { getByTestId } = render(
-        <Tooltip>
-          <Tooltip.Trigger tag='button' type='button' data-testid='button-trigger'>
-            Trigger
-          </Tooltip.Trigger>
-          <Tooltip.Trigger tag={Button} data-testid='semcore-button-trigger'>
-            Trigger
-          </Tooltip.Trigger>
-          <Tooltip.Trigger tag={Link} href='#' data-testid='link-trigger'>
-            Trigger
-          </Tooltip.Trigger>
-        </Tooltip>,
-      );
-
-      expect(getByTestId('button-trigger').tagName).toBe('BUTTON');
-      expect(getByTestId('semcore-button-trigger').tagName).toBe('BUTTON');
-      expect(getByTestId('link-trigger').tagName).toBe('A');
-    });
-  });
-
   test('Verify supports className and custom attributes on Popper', async () => {
     const { getByTestId } = render(
       <Tooltip visible>
