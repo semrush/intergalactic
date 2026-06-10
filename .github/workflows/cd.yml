@@ -122,7 +122,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
         run: |
@@ -167,7 +167,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
         run: |
@@ -250,7 +250,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
         run: |
@@ -327,7 +327,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
@@ -402,7 +402,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
@@ -472,7 +472,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
@@ -537,7 +537,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
         run: |
