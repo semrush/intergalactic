@@ -1,6 +1,6 @@
 ---
 title: Informer
-tabs: Design('informer'), Example('informer-code')
+tabs: Design('informer'), Examples('informer-code')
 ---
 
 ## Basic usage

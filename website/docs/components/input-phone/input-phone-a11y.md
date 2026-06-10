@@ -1,7 +1,6 @@
 ---
 title: InputPhone
-a11y: AA
-tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code'), Changelog('input-phone-changelog')
+tabs: Design('input-phone'), A11y('input-phone-a11y'), Examples('input-phone-code')
 ---
 
 For accessibility documentation, refer to the components used in the InputPhone pattern:

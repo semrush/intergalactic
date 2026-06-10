@@ -1,8 +1,7 @@
 ---
 title: TabPanel
 fileSource: tab-panel
-a11y: AA
-tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
+tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Examples('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 ## TabPanel

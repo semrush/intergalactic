@@ -1,7 +1,6 @@
 ---
 title: Divider
-a11y: AA
-tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Example('divider-code'), Changelog('divider-changelog')
+tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Examples('divider-code'), Changelog('divider-changelog')
 ---
 
 ## What component has
