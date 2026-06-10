@@ -130,7 +130,7 @@ const Demo = () => {
             );
           })}
 
-          <DropdownMenu.StatusItem itemsCount={filteredMenuData.length} />
+          <DropdownMenu.StatusItem id='search-result' itemsCount={filteredMenuData.length} />
         </DropdownMenu.List>
         <Divider />
         <DropdownMenu.Item

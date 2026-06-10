@@ -33,7 +33,7 @@ const Demo = () => {
               </Select.Option>
             ))}
 
-            <Select.StatusItem itemsCount={options.length} />
+            <Select.StatusItem id='search-result' itemsCount={options.length} />
           </Select.List>
         </Select.Popper>
       </Select>
