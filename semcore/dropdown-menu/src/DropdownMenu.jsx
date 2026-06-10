@@ -242,13 +242,6 @@ class DropdownMenuRoot extends AbstractDropdown {
     return itemProps;
   }
 
-  getStatusItemProps() {
-    const { size } = this.asProps;
-    return {
-      size: size === 'm' ? 200 : 300,
-    };
-  }
-
   handleKeyDownForMenu(place) {
     return (e) => {
       const { visible, placement, inlineActions } = this.asProps;

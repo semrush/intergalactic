@@ -120,6 +120,13 @@ class DropdownRoot extends Component {
     };
   }
 
+  getStatusItemProps() {
+    const { size } = this.asProps;
+    return {
+      size,
+    };
+  }
+
   render() {
     const { Children, forwardRef, modifiers = [], stretch, ...other } = this.asProps;
 

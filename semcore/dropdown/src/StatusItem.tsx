@@ -31,13 +31,14 @@ class StatusItemRoot extends Component<
   };
 
   renderText(text: string, children: React.ReactNode) {
+    const { size } = this.asProps;
     return (
       <Root
         render={Text}
         tag='div'
         key='StatusItem'
-        p={2}
-        size={200}
+        p={size === 'l' ? 3 : 2}
+        use:size={size === 'l' ? 300 : 200}
         use='secondary'
       >
         {children ?? text}
