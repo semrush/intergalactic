@@ -41,7 +41,7 @@ describe('Input', () => {
           <Input.Value
             data-testid='input'
             value={value}
-            onChange={(newValue: string, event: React.ChangeEvent<HTMLInputElement>) => {
+            onChange={(newValue, event) => {
               spy(newValue, event);
               setValue(newValue);
             }}
