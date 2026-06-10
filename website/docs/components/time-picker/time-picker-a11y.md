@@ -2,8 +2,7 @@
 title: TimePicker
 titleTemplate: :title A11y | Intergalactic Design System
 fileSource: time-picker
-a11y: AA
-tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
+tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Examples('time-picker-code'), Changelog('time-picker-changelog')
 ---
 
 ## What component has

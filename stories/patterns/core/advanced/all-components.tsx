@@ -13,7 +13,7 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
   const [tab, setTab] = React.useState(defaultTab);
 
   return (
-    <Box w='calc(100vw - 64px)' style={{ background: 'var(--intergalactic-bg-secondary-neutral)' }} p={8}>
+    <Box w='calc(100vw - 64px)' bg='page-bg' p={8}>
       <PageHeader />
 
       <TabLine size='l' mx={-8} px={8} mt={8} value={tab} onChange={setTab}>

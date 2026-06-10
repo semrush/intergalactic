@@ -572,7 +572,7 @@ describe('Chart.Radar', () => {
       />,
     );
 
-    const radar = queryByAttribute('data-ui-name', container, 'Line');
+    const radar = queryByAttribute('data-ui-name', container, 'Radar');
     expect(radar).toBeTruthy();
 
     // Keep fireEvent: radar segment selection depends on explicit SVG coordinates.
@@ -595,7 +595,7 @@ describe('Chart.Radar', () => {
       />,
     );
 
-    const radar = queryByAttribute('data-ui-name', container, 'Line');
+    const radar = queryByAttribute('data-ui-name', container, 'Radar');
     expect(radar).toBeTruthy();
 
     // Keep fireEvent: radar segment selection depends on explicit SVG coordinates.

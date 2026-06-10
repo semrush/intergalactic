@@ -1,7 +1,6 @@
 ---
 title: FullscreenModal
-a11y: AA
-tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen-modal-api'), Example('fullscreen-modal-code'), Changelog('fullscreen-modal-changelog')
+tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen-modal-api'), Examples('fullscreen-modal-code'), Changelog('fullscreen-modal-changelog')
 ---
 
 ## What component has

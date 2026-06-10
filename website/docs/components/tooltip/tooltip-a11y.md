@@ -1,8 +1,7 @@
 ---
 title: Tooltip
 fileSource: tooltip
-a11y: AA
-tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
+tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Examples('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
 ::: tip New component 🎉
