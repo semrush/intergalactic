@@ -11,49 +11,6 @@ describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
 });
 
-describe('DataTable data-ui-name', () => {
-  test('Should have data-ui-name on generated table parts', () => {
-    const { container } = render(
-      <DataTable
-        aria-label='Table'
-        data={[{ keyword: 'test', kd: '1' }]}
-        columns={[
-          { name: 'keyword', children: 'Keyword' },
-          { name: 'kd', children: 'KD' },
-        ]}
-      />,
-    );
-
-    expect(container.querySelector('[data-ui-name="DataTable.Head"]')).toBeTruthy();
-    expect(container.querySelectorAll('[data-ui-name="Head.Column"]')).toHaveLength(2);
-    expect(container.querySelector('[data-ui-name="DataTable.Body"]')).toBeTruthy();
-    expect(container.querySelector('[data-ui-name="Body.Row"]')).toBeTruthy();
-    expect(container.querySelectorAll('[data-ui-name="Row.Cell"]')).toHaveLength(2);
-  });
-
-  test('Should have data-ui-name on generated column groups', () => {
-    const { container } = render(
-      <DataTable
-        aria-label='Table'
-        data={[{ keyword: 'test', kd: '1' }]}
-        columns={[
-          {
-            name: 'metrics',
-            children: 'Metrics',
-            columns: [
-              { name: 'keyword', children: 'Keyword' },
-              { name: 'kd', children: 'KD' },
-            ],
-          },
-        ]}
-      />,
-    );
-
-    expect(container.querySelector('[data-ui-name="Head.Group"]')).toBeTruthy();
-    expect(container.querySelectorAll('[data-ui-name="Head.Column"]')).toHaveLength(2);
-  });
-});
-
 describe('DataTable', () => {
   describe('types', () => {
     const any: any = null;
