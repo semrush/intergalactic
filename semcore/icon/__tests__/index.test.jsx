@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -75,11 +75,16 @@ describe('Icon', () => {
         onClick={onClick}
         onKeyDown={onKeyDown}
         interactive
+        tabIndex={0}
         aria-label='test icon'
       />,
     );
 
-    fireEvent.keyDown(getByTestId('icon'), { key: 'Enter' });
+    const icon = getByTestId('icon');
+    await userEvent.tab();
+    expect(icon).toHaveFocus();
+    await userEvent.keyboard('[Enter]');
+
     expect(onKeyDown).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(0);
   });

@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, screen, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, screen, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -42,10 +42,14 @@ describe('FullscreenModal', () => {
     expect(spy).toBeCalledWith('onBackClick', expect.anything());
   });
 
-  test.sequential('Verify onClose supported for Escape', () => {
+  test.sequential('Verify onClose supported for Escape', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid='modal' />);
-    fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
+    const modal = getByTestId('modal');
+    modal.focus();
+    expect(modal).toHaveFocus();
+
+    await userEvent.keyboard('[Escape]');
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
 

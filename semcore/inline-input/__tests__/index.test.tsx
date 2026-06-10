@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -12,8 +12,7 @@ describe('inline-input Dependency imports', () => {
 describe('InlineInput', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify blur behavior', () => {
-    vi.useFakeTimers();
+  test.sequential('Verify blur behavior', async () => {
     const spyCancel = vi.fn();
     const spyConfirm = vi.fn();
     const spyNone = vi.fn();
@@ -45,26 +44,34 @@ describe('InlineInput', () => {
     expect(spyNone).toHaveBeenCalledTimes(0);
     expect(spyUndefined).toHaveBeenCalledTimes(0);
 
-    /** bubbling doesn't work in jest? */
-    fireEvent.blur(getByTestId('behavior-cancel'));
-    vi.runAllTimers();
-    expect(spyCancel).toHaveBeenCalledTimes(1);
-    fireEvent.blur(getByTestId('behavior-confirm'));
-    vi.runAllTimers();
-    expect(spyConfirm).toHaveBeenCalledTimes(1);
-    fireEvent.blur(getByTestId('behavior-none'));
-    vi.runAllTimers();
+    const blurInlineInput = async (testId: string) => {
+      const input = getByTestId(testId).querySelector('input');
+      if (!(input instanceof HTMLInputElement)) {
+        throw new Error(`Expected ${testId} to contain an input element`);
+      }
+
+      await userEvent.click(input);
+      await userEvent.tab();
+    };
+
+    await blurInlineInput('behavior-cancel');
+    await waitFor(() => expect(spyCancel).toHaveBeenCalledTimes(1));
+
+    await blurInlineInput('behavior-confirm');
+    await waitFor(() => expect(spyConfirm).toHaveBeenCalledTimes(1));
+
+    // onBlurBehavior='none' must never trigger a callback; the undefined case
+    // below settles afterwards, proving enough ticks elapsed for any handler to run.
+    await blurInlineInput('behavior-none');
+    await blurInlineInput('behavior-undefined');
+    await waitFor(() => expect(spyUndefined).toHaveBeenCalledTimes(1));
     expect(spyNone).toHaveBeenCalledTimes(0);
-    fireEvent.blur(getByTestId('behavior-undefined'));
-    vi.runAllTimers();
-    expect(spyUndefined).toHaveBeenCalledTimes(1);
-    vi.useRealTimers();
   });
 
   test.concurrent('Verify onConfirm behaviour', async () => {
     const spyConfirm = vi.fn();
 
-    const { getByLabelText, getByTestId, debug } = render(
+    const { getByLabelText, getByTestId } = render(
       <>
         <InlineInput onConfirm={spyConfirm}>
           <InlineInput.Addon tag='label'>User name:</InlineInput.Addon>

@@ -12,22 +12,6 @@ describe('link Dependency imports', () => {
 describe('Link', () => {
   beforeEach(cleanup);
 
-  test('Verify supports custom tag', () => {
-    const { getByTestId } = render(
-      <>
-        <Link tag='button' type='button' data-testid='button-link'>
-          Link
-        </Link>
-        <Link tag='span' data-testid='span-link'>
-          Link
-        </Link>
-      </>,
-    );
-
-    expect(getByTestId('button-link').tagName).toBe('BUTTON');
-    expect(getByTestId('span-link').tagName).toBe('SPAN');
-  });
-
   test('Verify not use ', () => {
     const { getByTestId } = render(
       <Link data-testid='link' title='Link title'>

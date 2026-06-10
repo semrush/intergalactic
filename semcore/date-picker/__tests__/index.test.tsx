@@ -9,23 +9,6 @@ import {
   DateRangePicker,
 } from '../src';
 
-const mockDateRangeMaskedInputRefWarning = () => {
-  const originalConsoleError = console.error;
-
-  return vi.spyOn(console, 'error').mockImplementation((message?: any, ...args: any[]) => {
-    const isDateRangeMaskedInputRefWarning =
-      typeof message === 'string' &&
-      message.includes('Function components cannot be given refs') &&
-      args.some(
-        (arg) =>
-          typeof arg === 'string' &&
-          (arg.includes('FromMaskedInput') || arg.includes('ToMaskedInput')),
-      );
-
-    if (isDateRangeMaskedInputRefWarning) return;
-  });
-};
-
 describe('date-picker Dependency imports', () => {
   runDependencyCheckTests('date-picker');
 });
@@ -77,19 +60,14 @@ describe('DateRangePicker', () => {
 
   test('Verify pikcer support onChange with format time 00:00:00:000', async () => {
     const spy = vi.fn();
-    const consoleErrorSpy = mockDateRangeMaskedInputRefWarning();
     mockDate('2020-02-10T12:00:00.808Z');
 
-    try {
-      const { getByText } = render(<DateRangePicker onChange={spy} visible />);
+    const { getByText } = render(<DateRangePicker onChange={spy} visible />);
 
-      await userEvent.click(getByText('Last 2 days'));
-      await userEvent.click(getByText('Apply'));
-      const today = new Date(new Date().setHours(0, 0, 0, 0));
-      expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
-    } finally {
-      consoleErrorSpy.mockRestore();
-    }
+    await userEvent.click(getByText('Last 2 days'));
+    await userEvent.click(getByText('Apply'));
+    const today = new Date(new Date().setHours(0, 0, 0, 0));
+    expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
   });
 
   test('Verify trigger suppports set custom displayPeriod', () => {

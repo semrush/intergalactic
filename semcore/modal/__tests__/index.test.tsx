@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, fireEvent, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -13,10 +13,14 @@ describe('modal Dependency imports', () => {
 describe('Modal', () => {
   beforeEach(cleanup);
 
-  test.sequential('Verify onClose event for Escape', () => {
+  test.sequential('Verify onClose event for Escape', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<Modal onClose={spy} data-testid='modal' visible />);
-    fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
+    const modal = getByTestId('modal');
+    modal.focus();
+    expect(modal).toHaveFocus();
+
+    await userEvent.keyboard('[Escape]');
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
 
@@ -72,7 +76,7 @@ describe('Modal', () => {
     expect(queryByText('Hello world')).toBeNull();
   });
 
-  test.concurrent('Verify supports onClose for OutsideClick', async () => {
+  test.sequential('Verify supports onClose for OutsideClick', async () => {
     const spy = vi.fn();
     const { baseElement } = render(
       <Modal onClose={spy} visible>
@@ -83,7 +87,10 @@ describe('Modal', () => {
     const overlayContentWrapper = queryByAttribute('data-ui-name', baseElement, 'Modal.Overlay.ContentWrapper');
     expect(overlayContentWrapper).not.toBeNull();
 
-    fireEvent.mouseUp(overlayContentWrapper!);
+    await userEvent.pointer([
+      { keys: '[MouseLeft>]', target: overlayContentWrapper! },
+      { keys: '[/MouseLeft]', target: overlayContentWrapper! },
+    ]);
     expect(spy).toBeCalledWith('onOutsideClick', expect.anything());
   });
 

@@ -2,7 +2,6 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
   render,
-  fireEvent,
   userEvent,
   screen,
 } from '@semcore/testing-utils/testing-library';
@@ -68,7 +67,7 @@ describe('Dropdown', () => {
     expect(prevent).toHaveBeenCalled();
   });
 
-  test('Verify handlerTriggerKeyDown does not open dropdown if interaction is none', () => {
+  test('Verify handlerTriggerKeyDown does not open dropdown if interaction is none', async () => {
     const spyVisibleChange = vi.fn();
 
     render(
@@ -80,8 +79,9 @@ describe('Dropdown', () => {
 
     const buttons = screen.getAllByRole('button', { name: /Trigger/i });
     const triggerButton = buttons[0];
-    fireEvent.keyDown(triggerButton, { key: 'Enter' });
-    fireEvent.keyDown(triggerButton, { key: ' ' });
+    await userEvent.click(triggerButton);
+    await userEvent.keyboard('[Enter]');
+    await userEvent.keyboard('[Space]');
 
     expect(spyVisibleChange).not.toHaveBeenCalled();
   });

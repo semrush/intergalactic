@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -12,7 +12,7 @@ describe('input-mask Dependency imports', () => {
 describe('InputMask', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Should renders correctly', async () => {
+  test.sequential('Should renders correctly', async () => {
     const Component = ({ value = '' }) => (
       <InputMask size='l' mb={4}>
         <InputMask.Value
@@ -28,8 +28,8 @@ describe('InputMask', () => {
 
     const { getByTestId } = render(<Component />);
     const input = getByTestId('input') as HTMLInputElement;
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '333' } });
+    await userEvent.click(input);
+    await userEvent.type(input, '333');
 
     expect(input.value).toBe('33 3');
   });

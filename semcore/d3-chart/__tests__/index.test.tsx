@@ -217,6 +217,7 @@ describe('XAxis', () => {
       </Plot>,
     );
 
+    // Keep fireEvent: this test asserts one exact mouseMove emission.
     fireEvent.mouseMove(getAllByTestId('tick')[9]);
     expect(eventEmitter.emit).toHaveBeenCalledTimes(2); // onMouseMoveRoot, onMouseLeaveChart
     (window.requestAnimationFrame as any).mockRestore();
@@ -379,6 +380,7 @@ describe('Chart.Area', () => {
     const firstCallIndex = 0;
     const secondCallIndex = dots.length - 1;
 
+    // Keep fireEvent: chart index resolution depends on explicit SVG coordinates.
     [firstCallIndex, secondCallIndex].forEach((index) => {
       fireEvent.click(dots[index], {
         clientX: dotsCoords[index].x,
@@ -391,7 +393,7 @@ describe('Chart.Area', () => {
     expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
   });
 
-  test.concurrent('should not throw if onClickArea is not provided', () => {
+  test.concurrent('should not throw if onClickArea is not provided', async () => {
     const { container } = render(
       <Chart.Area
         groupKey='time'
@@ -405,7 +407,7 @@ describe('Chart.Area', () => {
     const dots = queryAllByAttribute('data-ui-name', container, 'Area.Dots');
     expect(dots.length).toBeGreaterThan(0);
 
-    expect(() => fireEvent.click(dots[0])).not.toThrow();
+    await userEvent.click(dots[0]);
   });
 });
 
@@ -430,6 +432,7 @@ describe('Chart.Bubble', () => {
     const firstCallIndex = 0;
     const secondCallIndex = bubbles.length - 1;
 
+    // Keep fireEvent: chart index resolution depends on explicit SVG coordinates.
     [firstCallIndex, secondCallIndex].forEach((index) => {
       fireEvent.click(bubbles[index], {
         clientX: bubblesCords[index].x,
@@ -450,6 +453,7 @@ describe('Chart.Bubble', () => {
     const bubbles = queryAllByAttribute('data-ui-name', container, 'Bubble.Circle');
     expect(bubbles.length).toBeGreaterThan(0);
 
+    // Keep fireEvent: userEvent triggers OutsideClick internals for this SVG target in jsdom.
     expect(() => fireEvent.click(bubbles[0])).not.toThrow();
   });
 });
@@ -476,7 +480,7 @@ describe('Chart.Donut', () => {
     expect(onClickHandler.mock.calls[1][0]).toBe('c');
   });
 
-  test.concurrent('should not throw if onClickPie is not provided', () => {
+  test.concurrent('should not throw if onClickPie is not provided', async () => {
     const { container } = render(
       <Chart.Donut plotWidth={width} plotHeight={height} data={ChartOptions.donut.data} aria-label='Donut chart' />,
     );
@@ -484,7 +488,7 @@ describe('Chart.Donut', () => {
     const pies = queryAllByAttribute('data-ui-name', container, 'Donut.Pie');
     expect(pies.length).toBeGreaterThan(0);
 
-    expect(() => fireEvent.click(pies[0])).not.toThrow();
+    await userEvent.click(pies[0]);
   });
 });
 
@@ -518,6 +522,7 @@ describe('Chart.Line', () => {
     const firstCallIndex = 0;
     const secondCallIndex = dots.length - 1;
 
+    // Keep fireEvent: chart index resolution depends on explicit SVG coordinates.
     [firstCallIndex, secondCallIndex].forEach((index) => {
       fireEvent.click(dots[index], {
         clientX: dotsCoords[index].x,
@@ -530,7 +535,7 @@ describe('Chart.Line', () => {
     expect(onClickHandler.mock.calls[1][0]).toBe(secondCallIndex);
   });
 
-  test.concurrent('should not throw if onClickLine is not provided', () => {
+  test.concurrent('should not throw if onClickLine is not provided', async () => {
     const { container } = render(
       <Chart.Line
         data={ChartOptions.line.data}
@@ -546,7 +551,7 @@ describe('Chart.Line', () => {
     const dots = queryAllByAttribute('data-ui-name', container, 'Line.Dots');
     expect(dots.length).toBeGreaterThan(0);
 
-    expect(() => fireEvent.click(dots[0])).not.toThrow();
+    await userEvent.click(dots[0]);
   });
 });
 
@@ -570,7 +575,7 @@ describe('Chart.Radar', () => {
     const radar = queryByAttribute('data-ui-name', container, 'Line');
     expect(radar).toBeTruthy();
 
-    // idk, just simulated the way the first and second segments are clicked.
+    // Keep fireEvent: radar segment selection depends on explicit SVG coordinates.
     fireEvent.click(radar!, { clientX: 250, clientY: 125 });
     fireEvent.click(radar!, { clientX: 375, clientY: 200 });
 
@@ -593,6 +598,7 @@ describe('Chart.Radar', () => {
     const radar = queryByAttribute('data-ui-name', container, 'Line');
     expect(radar).toBeTruthy();
 
+    // Keep fireEvent: radar segment selection depends on explicit SVG coordinates.
     expect(() => fireEvent.click(radar!, { clientX: 250, clientY: 125 })).not.toThrow();
   });
 });
@@ -625,6 +631,7 @@ describe('Chart.ScatterPlot', () => {
     const firstCallIndex = 0;
     const secondCallIndex = scatterItems.length - 1;
 
+    // Keep fireEvent: chart index resolution depends on explicit SVG coordinates.
     [firstCallIndex, secondCallIndex].forEach((index) => {
       fireEvent.click(scatterItems[index], {
         clientX: scatterItemsCoords[index].x,
@@ -651,6 +658,7 @@ describe('Chart.ScatterPlot', () => {
     const scatterItems = queryAllByAttribute('data-ui-name', container, 'ScatterPlot');
     expect(scatterItems.length).toBe(ChartOptions.scatterPlot.data.length);
 
+    // Keep fireEvent: userEvent triggers OutsideClick internals for this SVG target in jsdom.
     expect(() => fireEvent.click(scatterItems[0])).not.toThrow();
   });
 });
@@ -685,6 +693,7 @@ describe('Chart.Venn', () => {
     const firstCallIndex = 0;
     const secondCallIndex = circles.length - 1;
 
+    // Keep fireEvent: chart key resolution depends on explicit SVG coordinates.
     [firstCallIndex, secondCallIndex].forEach((index) => {
       fireEvent.click(circles[index], {
         clientX: circlesCoords[index].x,
@@ -697,7 +706,7 @@ describe('Chart.Venn', () => {
     expect(onClickHandler.mock.calls[1][0]).toBe('U');
   });
 
-  test.concurrent('should not throw if onClickVennItem is not provided', () => {
+  test.concurrent('should not throw if onClickVennItem is not provided', async () => {
     const { container } = render(
       <Chart.Venn
         data={ChartOptions.venn.data}
@@ -713,7 +722,7 @@ describe('Chart.Venn', () => {
     const circles = queryAllByAttribute('data-ui-name', container, 'Venn.Circle');
     expect(circles.length).toBe(Object.keys(ChartOptions.venn.legendMap).length);
 
-    expect(() => fireEvent.click(circles[0])).not.toThrow();
+    await userEvent.click(circles[0]);
   });
 });
 
@@ -742,6 +751,7 @@ describe('Chart.Cigarette', () => {
     );
 
     const svg = getByLabelText('Chart');
+    // Keep fireEvent: tooltip percent calculation depends on a precise SVG mouse position.
     fireEvent.mouseMove(svg, {
       clientX: 200,
       clientY: 14,

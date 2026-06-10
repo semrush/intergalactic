@@ -1,6 +1,5 @@
 import {
   cleanup,
-  fireEvent,
   render,
   userEvent,
   waitFor,
@@ -66,7 +65,8 @@ describe('Hint', () => {
 
     const { getByTestId } = render(<TestComponent />);
 
-    fireEvent.mouseEnter(getByTestId('trigger'));
+    const trigger = getByTestId('trigger');
+    await userEvent.hover(trigger);
 
     await waitFor(() => {
       expect(handleChange).toHaveBeenCalledTimes(1);
@@ -81,7 +81,7 @@ describe('Hint', () => {
       expect((hint as HTMLElement).style.cssText).toContain('--keyframesInitialize');
     });
 
-    fireEvent(getByTestId('trigger'), new MouseEvent('mouseleave', { bubbles: false }));
+    await userEvent.unhover(trigger);
 
     await waitFor(() => {
       expect(handleChange).toHaveBeenCalledTimes(2);
@@ -107,8 +107,7 @@ describe('Hint', () => {
     expect(document.body.querySelector('[data-testid="hint"]')).not.toBeNull();
   });
 
-  test('Should not show hint when children is false', () => {
-    vi.useFakeTimers();
+  test('Should not show hint when children is false', async () => {
     const handleChange = vi.fn();
 
     const TestComponent = () => {
@@ -125,14 +124,13 @@ describe('Hint', () => {
 
     const { getByTestId } = render(<TestComponent />);
 
-    fireEvent.mouseEnter(getByTestId('trigger'));
-    vi.advanceTimersByTime(60);
+    await userEvent.hover(getByTestId('trigger'));
+    await new Promise((resolve) => setTimeout(resolve, 60));
 
     expect(handleChange).not.toHaveBeenCalled();
   });
 
-  test('Should not show hint when children is empty string', () => {
-    vi.useFakeTimers();
+  test('Should not show hint when children is empty string', async () => {
     const handleChange = vi.fn();
 
     const emptyString = '';
@@ -150,8 +148,8 @@ describe('Hint', () => {
 
     const { getByTestId } = render(<TestComponent />);
 
-    fireEvent.mouseEnter(getByTestId('trigger'));
-    vi.advanceTimersByTime(60);
+    await userEvent.hover(getByTestId('trigger'));
+    await new Promise((resolve) => setTimeout(resolve, 60));
 
     expect(handleChange).not.toHaveBeenCalled();
   });

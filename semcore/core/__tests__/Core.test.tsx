@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import type { ButtonHTMLAttributes, HTMLAttributes } from 'react';
 import React from 'react';
@@ -341,7 +341,7 @@ describe('Controll/Uncontroll mode', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(RootTestClass.defaultProps.defaultValue, expect.anything());
   });
-  test('Should support set everything value and call it in handler uncontroll mode', () => {
+  test('Should support set everything value and call it in handler uncontroll mode', async () => {
     const spy = vi.fn();
 
     class RootTestClass extends Component<
@@ -369,9 +369,9 @@ describe('Controll/Uncontroll mode', () => {
     const Test = createComponent<any, typeof RootTestClass>(RootTestClass);
     const { getByTestId } = render(<Test data-testid='textarea' />);
     const TextareaDom = getByTestId('textarea');
-    fireEvent.change(TextareaDom, { target: { value: 'test' } });
+    await userEvent.type(TextareaDom, 'test');
 
-    expect(spy).toHaveBeenCalledWith('test');
+    expect(spy).lastCalledWith('test');
   });
 });
 
