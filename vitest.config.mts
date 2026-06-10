@@ -53,11 +53,8 @@ export default defineConfig({
   resolve: vitestResolve,
   test: {
     projects: [
-      'semcore/accordion',
-      'semcore/add-filter',
-      'semcore/data-table',
-      'semcore/d3-chart',
-      'semcore/feature-highlight',
+      '!semcore/illustration',
+      'semcore/*',
       'tools/process-css-unplugin',
     ],
     testTimeout: 60 * 1000,
