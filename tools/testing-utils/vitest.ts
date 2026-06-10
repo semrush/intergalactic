@@ -46,7 +46,6 @@ export {
 };
 
 declare global {
-
   namespace jest {
     interface Matchers<R> {
       toHaveAttribute(name: string, value: string): R;

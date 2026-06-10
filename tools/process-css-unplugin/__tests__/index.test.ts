@@ -1,4 +1,4 @@
-import { expect, test, describe } from '../../testing-utils/vitest';
+import { expect, describe } from '../../testing-utils/vitest';
 import { processCssVitePlugin } from '../src/index';
 
 // Helper to call transform hook
@@ -12,7 +12,7 @@ const callTransformInclude = (plugin: any, id: string) => {
 };
 
 describe('process-css-unplugin', () => {
-  describe('CSS extraction and transformation', () => {
+  describe('CSS extraction and transformation', (test) => {
     test('Verify CSS extraction from reshadow markers and virtual file creation', () => {
       const plugin = processCssVitePlugin({ virtualFilesPrefix: 'test' });
 
@@ -162,7 +162,7 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
     });
   });
 
-  describe('Virtual file handling', () => {
+  describe('Virtual file handling', (test) => {
     test('Verify creation and loading of virtual CSS files', () => {
       const plugin = processCssVitePlugin({});
 
@@ -186,7 +186,7 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
     });
   });
 
-  describe('CSS file generation', () => {
+  describe('CSS file generation', (test) => {
     test('Verify generation of different virtual files for different content', () => {
       const plugin = processCssVitePlugin({});
 
@@ -234,7 +234,7 @@ const style = (/*__reshadow_css_start__*/_sstyled.insert(/*__inner_css_start__*/
     });
   });
 
-  describe('Edge cases', () => {
+  describe('Edge cases', (test) => {
     test('Verify handling of @semcore/flags package specifically', () => {
       const plugin = processCssVitePlugin({});
 
@@ -270,7 +270,7 @@ export default Button;
     });
   });
 
-  describe('Plugin configuration', () => {
+  describe('Plugin configuration', (test) => {
     test('Verify plugin works without options and has correct metadata', () => {
       const plugin = processCssVitePlugin({});
       expect(plugin).toBeDefined();

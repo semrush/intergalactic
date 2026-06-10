@@ -13,8 +13,6 @@ import { SwitchFH } from '../src/components/switch/Switch';
 import { TabLineFH } from '../src/components/tab-line/TabLine';
 import SvgSparkle from '../src/inner-components/sparkle/Sparkle';
 
-HTMLElement.prototype.scrollIntoView = () => {};
-
 describe('SvgSparkle', () => {
   test('Verify renders an SVG element', () => {
     const { container } = render(<SvgSparkle num={5} index={0} />);

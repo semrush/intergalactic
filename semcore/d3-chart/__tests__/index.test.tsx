@@ -21,21 +21,6 @@ const width = 500;
 const height = 500;
 const date = new Date();
 
-Object.defineProperty(globalThis, 'requestIdleCallback', {
-  configurable: true,
-  writable: true,
-  value: (callback: IdleRequestCallback) => window.setTimeout(
-    () => callback({ didTimeout: false, timeRemaining: () => 0 }),
-    1,
-  ),
-});
-
-Object.defineProperty(globalThis, 'cancelIdleCallback', {
-  configurable: true,
-  writable: true,
-  value: (handle: number) => window.clearTimeout(handle),
-});
-
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
 
