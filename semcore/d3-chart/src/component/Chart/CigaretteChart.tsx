@@ -76,6 +76,9 @@ class CigaretteChartComponent extends AbstractChart<
     };
   }
 
+  public componentDidMount(): void {
+  }
+
   private plotRef = React.createRef<SVGElement>();
 
   protected override plotPadding = 0;
@@ -147,8 +150,7 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   private computeCigaretteItems() {
-    const { data, invertAxis, minimalBarWidth } = this.asProps;
-    const { plotWidth, plotHeight } = this.state;
+    const { data, invertAxis, minimalBarWidth, plotWidth, plotHeight } = this.asProps;
 
     const dataDefinitions = invertAxis
       ? this.activeDataDefinitions
@@ -227,9 +229,8 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { invertAxis, data, uid, duration, patterns, onClick } =
+    const { invertAxis, data, uid, duration, patterns, onClick, plotWidth, plotHeight } =
       this.asProps;
-    const { plotWidth, plotHeight } = this.state;
     const { dataDefinitions, highlightedLine } = this.state;
 
     this.offset = 0;
@@ -417,14 +418,13 @@ class CigaretteChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { styles, data, patterns, invertAxis, a11yAltTextConfig } = this.asProps;
-    const { plotWidth, plotHeight } = this.state;
+    const { styles, data, patterns, plotWidth, plotHeight, invertAxis, a11yAltTextConfig } = this.asProps;
 
     const header = this.renderHeader();
 
     if (invertAxis) {
       return sstyled(styles)(
-        <SChart render={Flex} gap={6} direction='column' __excludeProps={['onClick', 'data']} ref={this.chartRef}>
+        <SChart render={Flex} gap={6} direction='column' __excludeProps={['onClick', 'data']}>
           <Flex direction='column'>
             {header}
             <Plot
@@ -449,7 +449,7 @@ class CigaretteChartComponent extends AbstractChart<
     }
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']} ref={this.chartRef}>
+      <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']}>
         <Plot
           ref={this.plotRef}
           data={data}

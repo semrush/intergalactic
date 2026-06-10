@@ -1,4 +1,3 @@
-import { Box } from '@semcore/ui/base-components';
 import type { CigaretteChartProps } from '@semcore/ui/d3-chart';
 import { Chart, interpolateValue } from '@semcore/ui/d3-chart';
 import React from 'react';
@@ -60,22 +59,13 @@ export const dataOverflow = {
   Z: 3,
 };
 
-const Demo = ({ enableMinimalBarWidth = true, plotWidth, plotHeight, ...props }: CigaretteChartProps & { enableMinimalBarWidth?: boolean }) => {
+const Demo = ({ enableMinimalBarWidth = true, ...props }: CigaretteChartProps & { enableMinimalBarWidth?: boolean }) => {
   return (
-    <Box
-      border='1px solid #ddd'
-      borderRadius='surface-rounded'
-      resize='both'
-      w={plotWidth}
-      h={plotHeight}
-      overflow='auto'
-    >
-      <Chart.Cigarette
-        {...props}
-        minimalBarWidth={enableMinimalBarWidth ? props.minimalBarWidth : undefined}
-        aria-label='Cigarette chart'
-      />
-    </Box>
+    <Chart.Cigarette
+      {...props}
+      minimalBarWidth={enableMinimalBarWidth ? props.minimalBarWidth : undefined}
+      aria-label='Cigarette chart'
+    />
   );
 };
 
