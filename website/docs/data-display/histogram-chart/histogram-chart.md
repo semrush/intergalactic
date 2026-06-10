@@ -1,7 +1,7 @@
 ---
 title: Histogram
 fileSource: d3-chart
-tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('histogram-chart-changelog')
+tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Examples('histogram-chart-code'),Changelog('histogram-chart-changelog')
 ---
 
 <Playground for="Chart.Histogram" />

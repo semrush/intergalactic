@@ -6,12 +6,16 @@ import { Text } from '@semcore/typography';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
-import type { ProjectNotFoundComponent } from './ProjectNotFound.type';
+import type { NSProjectNotFound } from './ProjectNotFound.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootProjectNotFound extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<ProjectNotFoundComponent>,
-  typeof RootProjectNotFound.enhance
+  Intergalactic.InternalTypings.InferComponentProps<NSProjectNotFound.Component>,
+  typeof RootProjectNotFound.enhance,
+  {},
+  {},
+  {},
+  NSProjectNotFound.DefaultProps
 > {
   static displayName = 'ProjectNotFound';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -23,7 +27,7 @@ class RootProjectNotFound extends Component<
     contactsLink: '/company/contacts',
     supportTeamLink: '/company/contacts',
     titleTag: 'h2',
-  };
+  } as const;
 
   render() {
     const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink, titleTag } = this.asProps;
@@ -53,4 +57,7 @@ class RootProjectNotFound extends Component<
   }
 }
 
-export default createComponent(RootProjectNotFound) as ProjectNotFoundComponent;
+export default createComponent<
+  NSProjectNotFound.Component,
+  typeof RootProjectNotFound
+>(RootProjectNotFound);

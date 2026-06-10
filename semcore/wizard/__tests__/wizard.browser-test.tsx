@@ -29,6 +29,20 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
 };
+
+const getCssVarBorderRadius = async (page: Page, varName: string, fallback: string) => {
+  return page.evaluate(({ varName, fallback }) => {
+    const element = document.createElement('div');
+    element.style.borderRadius = `var(${varName}, ${fallback})`;
+    document.body.appendChild(element);
+
+    const value = getComputedStyle(element).borderTopRightRadius;
+    element.remove();
+
+    return value;
+  }, { varName, fallback });
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -182,6 +196,16 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
+      await test.step('Verify stepper accessible names in small viewport', async () => {
+        await expect(
+          page.getByRole('tab', { name: /Completed step Personal Info/ }),
+        ).toBeVisible();
+        await expect(page.getByRole('tab', { name: /Import source\s+optional/ })).toBeVisible();
+        await expect(
+          page.getByRole('tab', { name: /Sub step name\s+Optional step/ }),
+        ).toBeVisible();
+      });
+
       await test.step('Verify active hovered', async () => {
         await locators.stepperTabs(page).nth(0).hover();
         await expect(page).toHaveScreenshot();
@@ -252,6 +276,12 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.button(page).click();
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
+    const modalRounded = await getCssVarBorderRadius(
+      page,
+      '--intergalactic-modal-rounded',
+      'calc(12px + 2px)',
+    );
+
     const {
       topLeft,
       bottomLeft,
@@ -270,8 +300,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     expect(topLeft).toBe('0px');
     expect(bottomLeft).toBe('0px');
 
-    expect(topRight).toBe('12px');
-    expect(bottomRight).toBe('12px');
+    expect(topRight).toBe(modalRounded);
+    expect(bottomRight).toBe(modalRounded);
   });
 
   test('Verify z index in content', {
@@ -341,6 +371,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.stepperTabs(page).nth(2)).not.toHaveAttribute('aria-disabled', 'true');
         await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('tabindex', '-1');
+      });
+
+      await test.step('Verify stepper accessible names', async () => {
+        await expect(page.getByRole('tab', { name: /Completed step Location/ })).toBeVisible();
+        await expect(page.getByRole('tab', { name: 'Keywords' })).toBeVisible();
+        await expect(page.getByRole('tab', { name: 'Schedule' })).toBeVisible();
       });
 
       await test.step('Switch to middle step and check stepper attributes', async () => {

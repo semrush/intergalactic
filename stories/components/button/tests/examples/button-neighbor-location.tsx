@@ -4,8 +4,12 @@ import Button from '@semcore/ui/button';
 import type { ButtonProps } from '@semcore/ui/button';
 import React from 'react';
 
-type ExampleProps = ButtonProps & { style?: any };
+import { themeFor } from '../themeUtils';
+
+type ExampleProps = Exclude<ButtonProps, 'theme' | 'use'> & { style?: any; theme: string };
 const Demo = (props: ExampleProps) => {
+  const theme = themeFor(props);
+
   return (
 
     <Flex direction='row' gap={2} mt={10} style={props.style}>
@@ -18,7 +22,7 @@ const Demo = (props: ExampleProps) => {
             active={props.active}
             disabled={props.disabled}
             use={props.use}
-            theme={props.theme}
+            theme={theme}
             loading={props.loading}
           >
             First
@@ -30,7 +34,7 @@ const Demo = (props: ExampleProps) => {
             active={props.active}
             disabled={props.disabled}
             use={props.use}
-            theme={props.theme}
+            theme={theme}
             loading={props.loading}
           >
             Middle
@@ -42,7 +46,7 @@ const Demo = (props: ExampleProps) => {
             active={props.active}
             disabled={props.disabled}
             use={props.use}
-            theme={props.theme}
+            theme={theme}
             loading={props.loading}
           >
             Last
@@ -57,7 +61,7 @@ const Demo = (props: ExampleProps) => {
 export const defaultButtonNeighborProps: ExampleProps = {
   size: 'm',
   use: 'primary',
-  theme: 'muted',
+  theme: 'info',
   hintPlacement: 'top',
   style: undefined, // this prop is needed for barckground to verofy some button themes (primary invert for instance)
 

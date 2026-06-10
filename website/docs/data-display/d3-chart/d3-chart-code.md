@@ -1,7 +1,7 @@
 ---
 title: D3 chart
 fileSource: d3-chart
-tabs: Design('d3-chart'), A11y('d3-chart-a11y'), API('d3-chart-api'), Example('d3-chart-code'), Changelog('d3-chart-changelog')
+tabs: Design('d3-chart'), A11y('d3-chart-a11y'), API('d3-chart-api'), Examples('d3-chart-code'), Changelog('d3-chart-changelog')
 ---
 
 ## Description
@@ -46,7 +46,7 @@ Since many SVG elements don't support nesting, they're rendered sequentially. Fo
 </Line>
 ```
 
-CSS is responsible for all the chart styles. Refer to [Themes](/style/design-tokens/design-tokens#themes) for more information on how to customize it.
+CSS is responsible for all the chart styles. Refer to [Themes](/style/design-tokens/design-tokens-usage-development) for more information on how to customize it.
 
 ## Chart plot
 

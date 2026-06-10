@@ -48,7 +48,8 @@ async function transform() {
     await fs.mkdir(writeBasePath, { recursive: true });
 
     const dts = `
-declare const Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+import type { IconProps } from '../..${(type === 'pay' || type === 'color') ? '/../' : '/'}types/index.mjs';
+declare const Icon: React.FC<React.SVGProps<SVGSVGElement> & IconProps>;
 export default Icon;
     `;
 
@@ -67,7 +68,7 @@ export default Icon;
   }
 
   // @ts-ignore
-  packageJson.exports = exports;
+  packageJson.exports = Object.fromEntries(Object.entries(exports).sort((a, b) => a[0].localeCompare(b[0])));
   await fs.writeFile(resolvePath(__dirname, 'package.json'), JSON.stringify(packageJson, undefined, 2));
 }
 
@@ -118,7 +119,7 @@ function Root${name}({
 
 Root${name}.displayName = '${name}'
 
-const ${name} = createBaseComponent(Root${name})
+const ${name} = createBaseComponent(Root${name}, { isIcon: true })
 
 export {
   ${name} as default

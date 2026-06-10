@@ -1,7 +1,7 @@
 {
   "name": "@semcore/button",
   "description": "Semrush Button Component",
-  "version": "17.0.1",
+  "version": "17.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,12 +17,12 @@
     "build": "pnpm semcore-builder && pnpm vite build"
   },
   "dependencies": {
-    "@semcore/spin": "^17.0.1",
-    "@semcore/typography": "^17.0.1",
-    "@semcore/link": "^17.0.1"
+    "@semcore/spin": "^17.2.0",
+    "@semcore/typography": "^17.2.0",
+    "@semcore/link": "^17.2.0"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1"
+    "@semcore/base-components": "^17.2.0"
   },
   "repository": {
     "type": "git",

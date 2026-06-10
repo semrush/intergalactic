@@ -1,6 +1,6 @@
 ---
 title: FeedbackYesNo
-tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
+tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Examples('feedback-yes-no-code')
 ---
 
 ## What component has

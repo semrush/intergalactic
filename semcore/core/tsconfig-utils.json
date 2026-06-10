@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src/utils", "src/decorators"]
+  "include": ["src/utils", "src/decorators", "../../tools/theme/src"]
 }

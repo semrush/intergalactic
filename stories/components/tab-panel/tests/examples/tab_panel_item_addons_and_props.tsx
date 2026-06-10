@@ -5,12 +5,12 @@ import Badge from '@semcore/ui/badge';
 import type { BoxProps } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import TabPanel from '@semcore/ui/tab-panel';
-import type { TabPanelProps, TabPanelItemProps } from '@semcore/ui/tab-panel';
+import type { NSTabPanel } from '@semcore/ui/tab-panel';
 import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type TabPanelDefProps = TabPanelProps & BoxProps & TabPanelItemProps & {
+type TabPanelDefProps = NSTabPanel.Props & BoxProps & NSTabPanel.Item.Props & {
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;

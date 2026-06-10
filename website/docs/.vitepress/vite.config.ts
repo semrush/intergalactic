@@ -1,18 +1,17 @@
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath, dirname } from 'path';
 import { fileURLToPath, URL } from 'url';
 
+import { unpluginSemcoreResolve, unpluginIcons, unpluginIllustrations } from '@semcore/builder/plugins';
 import pluginReact from '@vitejs/plugin-react';
 import { createUnplugin } from 'unplugin';
 import { defineConfig } from 'vite';
 
-import { loadSemcoreSources } from './load-semcore-sources';
-import { resolveSemcoreSources } from './resolve-semcore-sources';
-import { unpluginIcons } from './unplugins/unplugin-icons';
-import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { unpluginStatic } from './unplugins/unplugin-static';
 
 export const LATEST = process.env.VITE_LATEST ?? 'latest';
 export const currentBuildVersion = process.env.VITE_CURRENT_VERSION ?? LATEST;
+
+const rootDir = resolvePath(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 
 export const viteConfig = defineConfig({
   base: `/intergalactic${
@@ -24,26 +23,7 @@ export const viteConfig = defineConfig({
         plugins: ['@babel/plugin-syntax-import-assertions', '@semcore/babel-plugin-styles'],
       },
     }),
-    createUnplugin<{}>(() => ({
-      name: 'semcore-resolve',
-      async resolveId(id) {
-        if (
-          !id.includes('@semcore') &&
-          !id.includes('/semcore/') &&
-          !id.startsWith('intergalactic/')
-        )
-          return null;
-        if (id.endsWith('.md')) return null;
-        return await resolveSemcoreSources(id);
-      },
-      loadInclude: (id) => {
-        return id.includes('/semcore/');
-      },
-      async load(id) {
-        return await loadSemcoreSources(id);
-      },
-      enforce: 'pre',
-    })).vite({}),
+    unpluginSemcoreResolve.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
       name: 'docs-components-resolver',
       async resolveId(id) {
@@ -68,9 +48,9 @@ export const viteConfig = defineConfig({
         return resolvePath(__dirname, '../../../stories', purePath);
       },
     })).vite({}),
-    unpluginIcons.vite({}),
+    unpluginIcons.vite({ rootPath: rootDir }),
     unpluginStatic.vite({}),
-    unpluginIllustrations.vite({}),
+    unpluginIllustrations.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
       name: 'typescript-data-resolver',
       async resolveId(id) {

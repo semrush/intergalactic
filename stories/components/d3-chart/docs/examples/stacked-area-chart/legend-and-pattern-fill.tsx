@@ -11,7 +11,6 @@ import {
 } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import StackedAreaMockData from '../../../__mocks__/stacked-area';
@@ -21,9 +20,9 @@ function formatDate(value: any, options: any) {
 }
 
 const lineColors: Record<string, string> = {
-  stack1: '--blue-300',
-  stack2: '--green-200',
-  stack3: '--orange-400',
+  stack1: 'chart-palette-order-1',
+  stack2: 'chart-palette-order-2',
+  stack3: 'chart-palette-order-3',
 };
 
 const dataHints = makeDataHintsContainer();
@@ -149,7 +148,6 @@ const Demo = () => {
                     y={item.id}
                     fill={`chart-palette-order-${item.id}`}
                     color={lineColors[item.id]}
-                    curve={curveCardinal}
                   >
                     <StackedArea.Area.Dots />
                   </StackedArea.Area>

@@ -7,7 +7,7 @@ const styles = `
     .popper {
       box-shadow: var(--intergalactic-box-shadow-card);
       padding: var(--intergalactic-spacing-8x, 32px) var(--intergalactic-spacing-10x, 40px);
-      border-radius: var(---intergalactic-popper-rounded, 6px);
+      border-radius: var(--intergalactic-popper-rounded, 6px);
     }
     .kraken {
       position: absolute;

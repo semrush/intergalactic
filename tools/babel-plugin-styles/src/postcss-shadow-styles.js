@@ -58,7 +58,7 @@ function walkRule(
 
 function walkVar(nodes, hash, variables) {
   nodes.forEach((node) => {
-    if (node.type === 'word' && /^--(?!intergalactic-)/.test(node.value)) {
+    if (node.type === 'word' && /^--(?!intergalactic-)/.test(node.value) && /^--(?!global-)/.test(node.value)) {
       variables[node.value] = node.value = `${node.value}_${hash}`;
     }
     if (node.nodes?.length) {
@@ -150,12 +150,12 @@ module.exports = (opts) => {
             if (Declaration.value.includes('var(')) {
               const rootNode = ValueParser(Declaration.value);
               walkVar(rootNode.nodes, hash, tokens);
-              Declaration.value = rootNode.toString();
+              Declaration.value = rootNode.toString().replaceAll('\n', '');
               Declaration[processed] = true;
             } else if (Declaration.prop.endsWith('animation-name')) {
               const rootNode = ValueParser(Declaration.value);
               walkAnimation(rootNode.nodes, hash);
-              Declaration.value = rootNode.toString();
+              Declaration.value = rootNode.toString().replaceAll('\n', '');
               Declaration[processed] = true;
             }
           }

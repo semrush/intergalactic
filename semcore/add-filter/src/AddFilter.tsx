@@ -1,6 +1,7 @@
 import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { extractFrom } from '@semcore/core/lib/utils/findComponent';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -9,7 +10,7 @@ import MathPlusM from '@semcore/icon/MathPlus/m';
 import type { SelectProps } from '@semcore/select';
 import React from 'react';
 
-import type { AddFilterType, AddFilterProps, AddFilterItemProps, AddFilterKey } from './AddFilter.types';
+import type { AddFilterType, AddFilterProps, AddFilterItemProps, AddFilterKey, AddFilterDefaultProps } from './AddFilter.types';
 import AddFilterDropdown from './components/AddFilterDropdown';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterSelect from './components/AddFilterSelect';
@@ -39,10 +40,9 @@ class RootAddFilter extends Component<
   AddFilterProps,
   typeof RootAddFilter.enhance,
   { visibleFilters: null },
-  {
-    visibleFilters: Exclude<AddFilterProps['visibleFilters'], undefined>;
-  },
-  AddFilterState
+  WithI18nEnhanceProps,
+  AddFilterState,
+  AddFilterDefaultProps
 > {
   addFilterTrigger = React.createRef<HTMLButtonElement>();
   filtersFocusMap: Map<string | undefined, HTMLElement> = new Map();
@@ -51,7 +51,8 @@ class RootAddFilter extends Component<
 
   static displayName = 'AddFilter';
   static enhance = [i18nEnhance(localizedMessages)] as const;
-  static defaultProps = {
+
+  static defaultProps: AddFilterDefaultProps = {
     i18n: localizedMessages,
     locale: 'en',
     defaultVisibleFilters: [],
@@ -305,10 +306,18 @@ function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFilte
     : null;
 }
 
-const AddFilter = createComponent(RootAddFilter, {
+/**
+ * AddFilter
+ *
+ * {@link https://developer.semrush.com/intergalactic/filter-group/add-filter/add-filter-code|Examples}
+ */
+const AddFilter = createComponent<
+  AddFilterType,
+  typeof RootAddFilter
+>(RootAddFilter, {
   Select: AddFilterSelect,
   Input: AddFilterInput,
   Dropdown: AddFilterDropdown,
-}) as AddFilterType;
+});
 
 export default AddFilter;

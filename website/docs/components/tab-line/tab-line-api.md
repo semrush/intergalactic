@@ -1,7 +1,7 @@
 ---
 title: TabLine
 fileSource: tab-line
-tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
+tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Examples('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
 ## TabLine
@@ -13,7 +13,7 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine />;
 ```
 
-<TypesView type="TabLineProps" :types={...types} />
+<TypesView type="NSTabLine.Props" :types={...types} />
 
 ## TabLine.Item
 
@@ -24,7 +24,7 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item />;
 ```
 
-<TypesView type="TabLineItemProps" :types={...types} />
+<TypesView type="NSTabLine.Item.Props" :types={...types} />
 
 ## TabLine.Item.Addon
 
@@ -46,6 +46,6 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item.Text />;
 ```
 
-<TypesView type="NSText.Props" :types={...types} />
+<TypesView type="NSTabLine.Item.Text.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

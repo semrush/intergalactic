@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.9.1] - 2026-05-12
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/babel-plugin-styles` [1.10.0 ~> 1.10.1]).
+
 ## [4.9.0] - 2025-05-07
 
 ### Changed

@@ -17,5 +17,5 @@ foreignObject[data-aria-only] {
 
 SPlot:has(foreignObject[data-aria-only]:focus-within) {
   @mixin focus-outline-mixin;
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  border-radius: var(--intergalactic-surface-rounded, 8px);
 }

@@ -37,3 +37,12 @@ export type DataTableCellProps<Data extends DataTableData, UniqKeyType> = Interg
 } & {
   'data-aria-level'?: number;
 };
+
+export type DataTableCellType = (<Data extends DataTableData, UniqKeyType, Tag extends Intergalactic.Tag = 'div'>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    'div',
+    DataTableCellProps<Data, UniqKeyType>
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableCellProps<any, any>>;

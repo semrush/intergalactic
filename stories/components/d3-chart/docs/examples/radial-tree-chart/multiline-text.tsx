@@ -14,14 +14,14 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
-      <RadialTree color='chart-palette-order-9' textSize={textSize}>
+      <RadialTree color='blue-500' textSize={textSize}>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
           <RadialTree.Radian.Cap />
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
-        <RadialTree.Title textSize={lineHeight} color='chart-palette-order-9'>
+        <RadialTree.Title textSize={lineHeight} color='blue-500'>
           {textLines.map((line, lineIndex) => (
             <tspan
               key={line}

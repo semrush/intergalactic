@@ -18,7 +18,7 @@ const Demo = () => {
           autoComplete='cc-number'
         />
       </InputMask>
-      <Text size={100} color='gray-500' id='basic-example-hint'>
+      <Text size={100} color='text-secondary-neutral' id='basic-example-hint'>
         Please enter the 16-digit number of your debit card.
       </Text>
     </Flex>

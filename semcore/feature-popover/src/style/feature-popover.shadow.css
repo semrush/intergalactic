@@ -5,16 +5,16 @@ SFeaturePopover {
   padding-left: var(--intergalactic-spacing-4x, 16px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
-  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
   position: relative;
 
   &[theme='accent'] {
-    background-color: var(--intergalactic-feature-popover-bg, #fce081);
-    color: var(--intergalactic-text-primary, #191b23);
+    background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303));
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
   &[theme='neutral'] {
-    background-color: var(--intergalactic-feature-popover-bg-neutral, #1D113E);
-    color: var(--intergalactic-text-primary-invert, #ffffff);
+    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140));
+    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   }
 }
 
@@ -94,18 +94,18 @@ SSpot {
 
   &[theme='accent'] {
     &::before {
-      background-color: var(--intergalactic-feature-popover-dot-outer-border, #fce081);
+      background-color: var(--intergalactic-feature-popover-dot-outer-border, oklch(0.88 0.078 303));
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-bg, #fce081);
+      background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303));
     }
   }
   &[theme='neutral'] {
     &::before {
-      background-color: var(--intergalactic-feature-popover-dot-neutral-outer-border, #00c192);
+      background-color: var(--intergalactic-feature-popover-dot-neutral-outer-border, oklch(0.88 0.078 303));
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-dot-neutral, #00c192);
+      background-color: var(--intergalactic-feature-popover-dot-neutral, oklch(0.88 0.078 303));
     }
   }
 }

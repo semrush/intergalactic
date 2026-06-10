@@ -9,7 +9,7 @@ export async function CustomStepperExampleTest({ canvasElement }: { canvasElemen
   // ==== Section 1: Mouse Interactions ====
 
   // Open the modal using a button
-  const trigger = within(document.body).queryByText('Open wizard');
+  const trigger = within(document.body).queryByText('Add Project');
   if (!trigger) {
     throw new Error('Trigger button "Open modal" not found');
   }

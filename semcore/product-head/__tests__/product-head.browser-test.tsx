@@ -28,7 +28,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@tooltip',
       ],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/product-head/docs/examples/extended_example.tsx', 'en');
+      await loadPage(page, 'stories/components/product-head/docs/examples/extended_example/index.tsx', 'en');
 
       await page.setViewportSize({ width, height: 800 });
       await page.keyboard.press('Tab');
@@ -81,31 +81,34 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@tooltip',
     ],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/product-head/docs/examples/extended_example.tsx', 'en');
+    await loadPage(page, 'stories/components/product-head/docs/examples/extended_example/index.tsx', 'en');
 
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-ui-name="Breadcrumbs.Item"]').first()).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
+    await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
+
+    await page.keyboard.press('Tab');
     await expect(page.locator('[data-ui-name="ButtonLink"]')).toBeFocused();
 
     await page.keyboard.press('Tab');
-    await expect(page.locator('[data-ui-name="Link"]')).toBeFocused();
-
     await page.keyboard.press('Tab');
     await expect(page.locator('[data-ui-name="Button"]').first()).toBeFocused();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await expect(page.locator('[data-ui-name="Select"]').first()).toBeFocused();
+
+    await expect(page.locator('[data-ui-name="Select.Trigger"]').first()).toBeFocused();
 
     await page.keyboard.press('Space');
-    await page.locator('[data-ui-name="Select.Option"]').first().waitFor({ state: 'visible' });
+    await page.locator('[data-ui-name="Input"]').waitFor({ state: 'visible' });
+    await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Space');
     await page.locator('[data-ui-name="Select.Option"]').first().waitFor({ state: 'hidden' });
-    await expect(page.locator('[data-ui-name="Select"]').first()).toBeFocused();
-    await expect(page.locator('[data-ui-name="Select"]').first()).toHaveAttribute('value', 'us');
+    await expect(page.locator('[data-ui-name="Select.Trigger"]').first()).toBeFocused();
+    await expect(page.locator('[data-ui-name="Select.Trigger"]').first()).toHaveAttribute('value', 'AF');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
@@ -118,6 +121,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await page.locator('[data-ui-name="DescriptionTooltip.Popper"]').waitFor({ state: 'hidden' });
     await page.keyboard.press('Shift+Tab');
-    await expect(page.locator('[data-ui-name="Select"]').nth(1)).toBeFocused();
+    await expect(page.locator('[data-ui-name="Select"]')).toBeFocused();
   });
 });

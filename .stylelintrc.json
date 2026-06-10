@@ -3,20 +3,34 @@
   "rules": {
     "selector-type-no-unknown": null,
     "no-descending-specificity": null,
+    "function-linear-gradient-no-nonstandard-direction": null,
     "property-no-unknown": [
       true,
       {
-        "ignoreProperties": ["vertical-anchor"]
+        "ignoreProperties": [
+          "vertical-anchor",
+          "animation-timeline"
+        ]
       }
     ],
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        "ignorePseudoClasses": ["global"]
+        "ignorePseudoClasses": [
+          "global"
+        ]
       }
     ],
     "font-family-no-missing-generic-family-keyword": null,
     "indentation": 2,
-    "at-rule-no-unknown": [true, { "ignoreAtRules": ["mixin", "define-mixin"] }]
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "mixin",
+          "define-mixin"
+        ]
+      }
+    ]
   }
 }

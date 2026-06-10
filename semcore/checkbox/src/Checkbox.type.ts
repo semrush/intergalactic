@@ -2,63 +2,101 @@ import type { Box, BoxProps, FlexProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 
-export type CheckboxSize = 'm' | 'l';
-export type CheckboxState = 'normal' | 'invalid';
+declare namespace NSCheckbox {
+  type Size = 'm' | 'l';
+  type State = 'normal' | 'invalid';
+  type Props = BoxProps & {
+    /** Callback when the value changes */
+    onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+    /** Controls the checked state of the checkbox (controlled mode) */
+    checked?: boolean;
+    /** Default state of uncontrolled checkbox */
+    defaultChecked?: boolean;
+    /** Checkbox text */
+    label?: string;
+    /** Special indeterminate state */
+    indeterminate?: boolean;
+    /** Special disabled state */
+    disabled?: boolean;
+    /**
+     * Checkbox visual state
+     * @default normal
+     */
+    state?: NSCheckbox.State;
+    /**
+     * Checkbox size
+     * @default m
+     */
+    size?: NSCheckbox.Size;
+    /**
+     * Checkbox color
+     */
+    theme?: string;
+  };
+  type DefaultProps = {
+    size: 'm';
+    state: 'normal';
+    defaultChecked: false;
+  };
+  type Ctx = {
+    getTextProps: PropGetterFn;
+    getValueProps: PropGetterFn;
+  };
 
-export type CheckboxProps = BoxProps & {
-  /** Callback when the value changes */
-  onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-  /** Controls the checked state of the checkbox (controlled mode) */
-  checked?: boolean;
-  /** Default state of uncontrolled checkbox */
-  defaultChecked?: boolean;
-  /** Checkbox text */
-  label?: string;
-  /** Special indeterminate state */
-  indeterminate?: boolean;
-  /** Special disabled state */
-  disabled?: boolean;
-  /**
-   * Checkbox visual state
-   * @default normal
-   */
-  state?: CheckboxState;
-  /**
-   * Checkbox size
-   * @default m
-   */
-  size?: CheckboxSize;
-  /**
-   * Checkbox color
-   */
-  theme?: string;
-};
+  namespace Value {
+    type Handlers = {
+      checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
+    };
+    type Props = FlexProps;
+    type InnerProps = {
+      includeInputProps: string[];
+    };
+    type DefaultProps = {
+      includeInputProps: InnerProps['includeInputProps'];
+    };
 
-export type CheckboxValueProps = FlexProps & CheckboxValueControlProps;
+    namespace Control {
+      type Props = {};
+      type Component = Intergalactic.Component<'input', Props>;
+    }
 
-export type CheckboxValueControlProps = {};
-export type CheckboxValueCheckMarkProps = {};
+    namespace Mark {
+      type Props = {};
+      type Component = Intergalactic.Component<typeof Box, Props>;
+    }
 
-export type CheckboxContext = {
-  getTextProps: PropGetterFn;
-  getValueProps: PropGetterFn;
-};
+    type Component = Intergalactic.Component<'input', Props> & {
+      Control: Control.Component;
+      CheckMark: Mark.Component;
+    };
+  }
 
-export type CheckboxTextProps = NSText.Props;
+  namespace Text {
+    type Props = NSText.Props;
+    type Component = Intergalactic.Component<'span', Props>;
+  }
 
-export type CheckboxValueRootComponent = Intergalactic.Component<'input', CheckboxValueProps>;
-export type CheckboxValueControlComponent = Intergalactic.Component<'input', CheckboxValueControlProps>;
-export type CheckboxCheckMarkComponent = Intergalactic.Component<typeof Box, CheckboxValueCheckMarkProps>;
+  type Component = Intergalactic.Component<'label', Props, Ctx> & {
+    Text: Text.Component;
+    Value: Value.Component;
+  };
+}
 
-export type CheckboxValueComponent = CheckboxValueRootComponent & {
-  Control: CheckboxValueControlComponent;
-  CheckMark: CheckboxCheckMarkComponent;
-};
+/** @deprecated It will be removed in v18. */
+export type CheckboxSize = NSCheckbox.Size;
+/** @deprecated It will be removed in v18. */
+export type CheckboxState = NSCheckbox.State;
+/** @deprecated It will be removed in v18. */
+export type CheckboxProps = NSCheckbox.Props;
+/** @deprecated It will be removed in v18. */
+export type CheckboxValueProps = NSCheckbox.Value.Props;
+/** @deprecated It will be removed in v18. */
+export type CheckboxValueControlProps = NSCheckbox.Value.Control.Props;
+/** @deprecated It will be removed in v18. */
+export type CheckboxValueCheckMarkProps = NSCheckbox.Value.Mark.Props;
+/** @deprecated It will be removed in v18. */
+export type CheckboxContext = NSCheckbox.Ctx;
+/** @deprecated It will be removed in v18. */
+export type CheckboxTextProps = NSCheckbox.Text.Props;
 
-export type CheckboxRootComponent = Intergalactic.Component<'label', CheckboxProps, CheckboxContext>;
-export type CheckboxTextComponent = Intergalactic.Component<'span', CheckboxTextProps>;
-
-export type CheckboxComponent = CheckboxRootComponent & {
-  Text: CheckboxTextComponent;
-  Value: CheckboxValueComponent;
-};
+export type { NSCheckbox };

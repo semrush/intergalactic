@@ -86,11 +86,12 @@ class TextRoot extends Component<
           data-ui-name='Text'
           ref={this.innerRef}
           use:decoration={this.getTextDecoration(underline, lineThrough)}
-          use:color={resolveColor(color)}
+          textColor={resolveColor(color)}
           use:ellipsis={ellipsis !== undefined ? ellipsis : Boolean(ellipsisProps)}
           isEllipsized={isEllipsized}
           maxLine={maxLineValue}
           trim={cropPosition}
+          use:color={undefined}
         />
         {isEllipsized && withHint && (
           <Hint triggerRef={this.innerRef} {...hintProps}>
@@ -134,6 +135,14 @@ class TextRoot extends Component<
   }
 }
 
-const Text = createComponent(TextRoot) as NSText.Component;
+/**
+ * Text
+ *
+ * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#text|API} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
+ */
+const Text = createComponent<
+  NSText.Component,
+  typeof TextRoot
+>(TextRoot);
 
 export default Text;

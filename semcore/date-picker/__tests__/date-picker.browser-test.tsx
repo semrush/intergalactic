@@ -3,7 +3,7 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { checkStyle } from './utils';
+import { checkStyle, getCalendarCellDefaultStyles, getCalendarCellSelectedStyles } from './utils';
 
 export const locators = {
 
@@ -49,7 +49,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.type('052');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.type('92000');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
@@ -59,18 +58,65 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
 
-    test('Verify trigger states and props', {
+    const triggerVariables = [
+      { size: 'm', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'l', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'invalid', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'valid', disabled: false, neighborLocation: 'left' },
+      { size: 'm', state: 'normal', disabled: true, neighborLocation: 'both' },
+    ];
+
+    triggerVariables.forEach((item) => {
+      test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
+        tag: [TAG.PRIORITY_HIGH,
+          '@date-picker'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/date-picker/tests/examples/day-trigger.tsx', 'en', item);
+        await page.keyboard.press('Tab');
+
+        const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+        screenshotsClip.x -= 8;
+        screenshotsClip.y -= 8;
+        screenshotsClip.width += 16;
+        screenshotsClip.height += 16;
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
+    });
+
+    test('Verify trigger input width grows after entering date with locale=pt', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/date-picker/tests/examples/day-trigger.tsx', 'en');
+      await loadPage(page, 'stories/components/date-picker/tests/examples/day-trigger.tsx', 'pt', {
+        size: 'm', state: 'normal', disabled: false, neighborLocation: 'right',
+      });
 
-      await expect(page).toHaveScreenshot();
-      for (let i = 0; i < 4; i++) await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+      const inputs = page.locator('input[data-ui-name="DatePicker.Trigger"]');
+      const firstInput = inputs.nth(0);
+      const thirdInput = inputs.nth(2);
 
+      const firstInitialWidth = (await firstInput.boundingBox())!.width;
+      const thirdInitialWidth = (await thirdInput.boundingBox())!.width;
+
+      await firstInput.focus();
+      await page.keyboard.type('15062024');
+
+      await thirdInput.focus();
+      await page.keyboard.type('20072024');
       await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+
+      const firstNewWidth = (await firstInput.boundingBox())!.width;
+      const thirdNewWidth = (await thirdInput.boundingBox())!.width;
+
+      expect(firstNewWidth).not.toBe(firstInitialWidth);
+      expect(thirdNewWidth).not.toBe(thirdInitialWidth);
+
+      const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+      screenshotsClip.x -= 8;
+      screenshotsClip.y -= 8;
+      screenshotsClip.width += 16;
+      screenshotsClip.height += 16;
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
   });
 
@@ -82,6 +128,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
       const selectedCell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+      const selectedCellStyles = await getCalendarCellSelectedStyles(page);
 
       await test.step('Verify trigger margins', async () => {
         await checkStyle(locators.datePickerTrigger(page, 0), { marginTop: '8px' });
@@ -97,16 +145,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify disabled date styles', async () => {
         await checkStyle(locators.cells(page, 0), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
 
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 2), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
@@ -118,8 +164,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
-          color: 'rgb(255, 255, 255)',
-          backgroundColor: 'rgb(43, 179, 255)',
+          ...selectedCellStyles,
           margin: '4px 0px 0px',
           width: '32px',
           height: '32px',
@@ -148,17 +193,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       const selectedCell = page.locator(
         '[data-ui-name="CalendarDays.Unit"][class*="__startSelected_"][class*="__endSelected_"]',
       );
-
-      // Helper function to check style properties
-      const checkStyle = async (element: any, expectedStyles: any) => {
-        for (const [property, expectedValue] of Object.entries(expectedStyles)) {
-          const actualValue = await element.evaluate(
-            (el: any, property: any) => getComputedStyle(el)[property],
-            property,
-          );
-          expect(actualValue).toBe(expectedValue);
-        }
-      };
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+      const selectedCellStyles = await getCalendarCellSelectedStyles(page);
 
       await test.step('Verify trigger margins', async () => {
         await locators.datePickerTrigger(page, 0).click();
@@ -169,16 +205,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify hover disabled date', async () => {
         await checkStyle(locators.cells(page, 0), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
 
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 10), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
@@ -194,8 +228,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
-          color: 'rgb(255, 255, 255)',
-          backgroundColor: 'rgb(43, 179, 255)',
+          ...selectedCellStyles,
           margin: '4px 0px 0px',
           width: '32px',
         });

@@ -1,5 +1,6 @@
 import type { BoxProps } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -9,7 +10,7 @@ import React from 'react';
 import style from './style/badge.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon';
+export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon' | 'unavailable';
 
 export type BadgeMargins = {
   m?: BoxProps['m'];
@@ -49,6 +50,8 @@ export type BadgeProps = BadgeMargins & {
   color?: 'white' | 'gray20' | string;
 };
 
+type BadgeComponent = Intergalactic.Component<'span', BadgeProps>;
+
 class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   static displayName = 'Badge';
   static style = style;
@@ -66,7 +69,7 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
     const SBadge = Root;
     const { styles, color, bg, resolveColor, type, children } = this.asProps;
     const resolvedBg = bg ? resolveColor(bg) : this.resolveBg();
-    const resolvedColor = color ? resolveColor(color) : undefined;
+    const resolvedColor = color ? resolveColor(color) : this.resolveTextColor();
 
     return sstyled(styles)(
       <SBadge render={Box} tag='span' use:color={resolvedColor} use:bg={resolvedBg}>
@@ -81,6 +84,16 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
     const badgeName = type[0].toUpperCase() + type.slice(1);
 
     return getI18nText(`Badge.${badgeName}`);
+  }
+
+  private resolveTextColor(): string | undefined {
+    const { type, inverted, resolveColor } = this.asProps;
+
+    if (type === 'unavailable' && !inverted) {
+      return resolveColor('--intergalactic-text-secondary');
+    }
+
+    return undefined;
   }
 
   private resolveBg(): string {
@@ -107,6 +120,9 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
       case 'soon': {
         return resolveColor('--gray-400');
       }
+      case 'unavailable': {
+        return resolveColor('--gray-100');
+      }
       default: {
         const t: never = type;
         throw new Error(`Type can't be "${t}"`);
@@ -115,4 +131,12 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
   }
 }
 
-export const Badge = createComponent<'span', BadgeProps>(RootBadge);
+/**
+ * Badge
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/badge/badge-api/|API} | {@link https://developer.semrush.com/intergalactic/components/badge/badge-code/|Examples}
+ */
+export const Badge = createComponent<
+  BadgeComponent,
+  typeof RootBadge
+>(RootBadge);

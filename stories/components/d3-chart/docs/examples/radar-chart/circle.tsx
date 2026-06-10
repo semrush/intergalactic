@@ -1,6 +1,5 @@
 import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinalClosed } from 'd3-shape';
 import React from 'react';
 
 import RadarMockData from '../../../__mocks__/radar';
@@ -31,11 +30,11 @@ const Demo = () => {
             };
           }}
         </Radar.Tooltip>
-        <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
+        <Radar.Polygon dataKey='data_1'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
+        <Radar.Polygon dataKey='data_2'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>

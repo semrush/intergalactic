@@ -14,7 +14,7 @@ import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Input, { type InputProps, type InputValueProps } from '@semcore/input';
 import React from 'react';
-import { createTextMaskInputElement } from 'text-mask-core';
+import * as mask from 'text-mask-core';
 
 import style from './style/input-mask.shadow.css';
 
@@ -84,6 +84,13 @@ type InputMaskCtx = {
   getInputProps: PropGetterFn;
   getValueProps: PropGetterFn;
 };
+
+type InputMaskComponent = Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
+  Value: Intergalactic.Component<'input', InputMaskValueProps>;
+  Addon: typeof Input.Addon;
+};
+
+const { createTextMaskInputElement } = mask;
 
 export function getAfterPositionValue(value: string, mask: any = ''): number {
   const { length } = value;
@@ -391,10 +398,12 @@ class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value
   }
 }
 
-export default createComponent(InputMask, {
+/**
+ * InputMask
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-code/|Examples}
+ */
+export default createComponent<InputMaskComponent, typeof InputMask>(InputMask, {
   Value,
   Addon: Input.Addon,
-}) as any as Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
-  Value: Intergalactic.Component<'input', InputMaskValueProps>;
-  Addon: typeof Input.Addon;
-};
+});

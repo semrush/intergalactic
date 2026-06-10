@@ -11,6 +11,38 @@ export const getBeforeStyles = async (el: Locator) => {
   });
 };
 
+const featureHighlightTokens = {
+  focusOutline: '--intergalactic-keyboard-focus-feature-highlight-outline',
+  border: '--intergalactic-border-feature-highlight',
+  borderActive: '--intergalactic-border-feature-highlight-active',
+};
+
+// Matches the CSS fallback gradients after the test bundle normalizes them.
+const cssVarBackgroundImageFallbacks: Record<string, string> = {
+  '--intergalactic-keyboard-focus-feature-highlight-outline': 'linear-gradient(90deg in oklch, rgb(192, 142, 255), rgb(102, 107, 219))',
+  '--intergalactic-border-feature-highlight': 'linear-gradient(90deg in oklch, rgb(210, 179, 255), rgb(176, 193, 254))',
+  '--intergalactic-border-feature-highlight-active': 'linear-gradient(90deg in oklch, rgb(192, 142, 255), rgb(148, 165, 245))',
+};
+
+const getCssVarBackgroundImage = async (page: Page, varName: string) => {
+  return page.evaluate(({ name, fallback }) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundImage = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    document.body.appendChild(probe);
+    const backgroundImage = getComputedStyle(probe).backgroundImage;
+    probe.remove();
+    return backgroundImage;
+  }, { name: varName, fallback: cssVarBackgroundImageFallbacks[varName] });
+};
+
+const expectBackgroundImageToContainToken = async (
+  page: Page,
+  backgroundImage: string,
+  varName: string,
+) => {
+  await expect(backgroundImage).toContain(await getCssVarBackgroundImage(page, varName));
+};
+
 export const locators = {
   buttons: (page: Page) => page.locator('[data-ui-name="ButtonFH"]'),
   pills: (page: Page) => page.getByRole('radio'),
@@ -72,14 +104,16 @@ test.describe(`${TAG.VISUAL} `, () => {
         const button = locators.buttons(page);
         await expect(page).toHaveScreenshot();
 
-        if (!item.disabled) {
+        if (!item.disabled && !item.loading) {
           await test.step('Verify focus style for buttons', async () => {
             await page.keyboard.press('Tab');
 
             await expect(button).toBeFocused();
             const styles = await getBeforeStyles(button);
-            expect(styles.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              styles.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
           });
@@ -119,8 +153,10 @@ test.describe(`${TAG.VISUAL} `, () => {
             await page.keyboard.press('ArrowRight');
             await page.keyboard.press('ArrowLeft');
             const styles = await getBeforeStyles(pills.nth(1));
-            expect(styles.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              styles.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
           });
@@ -163,8 +199,10 @@ test.describe(`${TAG.VISUAL} `, () => {
           await test.step('Verify focus style', async () => {
             await page.keyboard.press('Tab');
             const styles = await getBeforeStyles(outline);
-            expect(styles.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              styles.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
           });
@@ -198,15 +236,19 @@ test.describe(`${TAG.VISUAL} `, () => {
           await test.step('Verify focus and toggle', async () => {
             await page.keyboard.press('Tab');
             const styles = await getBeforeStyles(outline);
-            expect(styles.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              styles.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
 
             await page.keyboard.press('Space');
             const stylesSelected = await getBeforeStyles(outline);
-            expect(stylesSelected.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              stylesSelected.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
           });
@@ -274,8 +316,10 @@ test.describe(`${TAG.VISUAL} `, () => {
             await expect(page).toHaveScreenshot();
 
             const stylesFH = await getBeforeStyles(tab.nth(1));
-            expect(stylesFH.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              stylesFH.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
           });
         }
@@ -309,15 +353,19 @@ test.describe(`${TAG.VISUAL} `, () => {
             await test.step('Verify focus and selection', async () => {
               await page.keyboard.press('Tab');
               const styles = await getBeforeStyles(radioMark.first());
-              expect(styles.backgroundImage).toContain(
-                'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+              await expectBackgroundImageToContainToken(
+                page,
+                styles.backgroundImage,
+                featureHighlightTokens.focusOutline,
               );
               await expect(page).toHaveScreenshot();
 
               await page.keyboard.press('Space');
               const stylesSelected = await getBeforeStyles(radioMark.first());
-              expect(stylesSelected.backgroundImage).toContain(
-                'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+              await expectBackgroundImageToContainToken(
+                page,
+                stylesSelected.backgroundImage,
+                featureHighlightTokens.focusOutline,
               );
               await expect(page).toHaveScreenshot();
 
@@ -356,14 +404,20 @@ test.describe(`${TAG.VISUAL} `, () => {
           await test.step('Verify focus and toggle', async () => {
             await page.keyboard.press('Tab');
             const styles = await getBeforeStyles(value.first());
-            expect(styles.backgroundImage).toContain(
-              'linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(90deg, rgb(198, 149, 255), rgb(43, 179, 255))');
+            await expectBackgroundImageToContainToken(
+              page,
+              styles.backgroundImage,
+              featureHighlightTokens.border,
+            );
             await expect(page).toHaveScreenshot();
 
             await page.keyboard.press('Enter');
             const stylesSelected = await getBeforeStyles(value.first());
-            expect(stylesSelected.backgroundImage).toContain(
-              'linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(90deg, rgb(198, 149, 255), rgb(43, 179, 255))');
+            await expectBackgroundImageToContainToken(
+              page,
+              stylesSelected.backgroundImage,
+              featureHighlightTokens.border,
+            );
             await expect(page).toHaveScreenshot();
 
             await page.keyboard.press('Tab');
@@ -402,8 +456,10 @@ test.describe(`${TAG.VISUAL} `, () => {
             await page.keyboard.press('Tab');
             await trigger.hover();
             const stylesEmpty = await getBeforeStyles(trigger.nth(0));
-            expect(stylesEmpty.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              stylesEmpty.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
           });
@@ -415,8 +471,10 @@ test.describe(`${TAG.VISUAL} `, () => {
             await options.first().waitFor({ state: 'hidden' });
 
             const stylesSelected = await getBeforeStyles(trigger.nth(0));
-            expect(stylesSelected.backgroundImage).toContain(
-              'linear-gradient(90deg, rgb(171, 108, 254), rgb(0, 143, 248))',
+            await expectBackgroundImageToContainToken(
+              page,
+              stylesSelected.backgroundImage,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
           });

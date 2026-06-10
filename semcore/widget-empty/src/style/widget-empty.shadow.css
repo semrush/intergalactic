@@ -9,13 +9,11 @@ SImage {
   align-items: flex-end;
   justify-content: center;
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
-  width: 80px;
-  height: 80px;
 }
 
 STitle {
   text-align: center;
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
   font-weight: var(--intergalactic-bold, 700);
@@ -26,7 +24,7 @@ SDescription {
   text-wrap: balance;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
-  color: var(--intergalactic-text-secondary, #6c6e79);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   max-width: 400px;
 }
 

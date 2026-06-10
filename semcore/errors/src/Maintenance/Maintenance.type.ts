@@ -1,23 +1,38 @@
 import type { Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
-import type { ErrorsProps } from '../Error.type';
+import type { NSErrors } from '../Error.type';
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type MaintenanceProps = WithI18nEnhanceProps & {
-  /**
-   * Tool name
-   */
-  toolName: string;
-  /**
-   * href of the home link
-   * @default /
-   */
-  homeLink?: string;
-  /**
-   * HTML tag of the error title
-   * @default h2
-   */
-  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
-};
+declare namespace NSMaintenance {
+  type Props = WithI18nEnhanceProps & {
+    /**
+     * Tool name
+     */
+    toolName: string;
+    /**
+     * href of the home link
+     * @default /
+     */
+    homeLink?: string;
+    /**
+     * HTML tag of the error title
+     * @default h2
+     */
+    titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
+  };
+  type DefaultProps = {
+    i18n: LocalizedMessages;
+    locale: 'en';
+    homeLink: '/';
+    icon: string;
+    titleTag: 'h2';
+  };
 
-export type MaintenanceComponent = Intergalactic.Component<'div', MaintenanceProps & ErrorsProps>;
+  type Component = Intergalactic.Component<'div', Props & NSErrors.Props>;
+}
+
+/** @deprecated It will be removed in v18. */
+export type MaintenanceProps = NSMaintenance.Props;
+
+export type { NSMaintenance };

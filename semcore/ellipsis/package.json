@@ -1,7 +1,7 @@
 {
   "name": "@semcore/ellipsis",
   "description": "Semrush Ellipsis Component",
-  "version": "17.0.1",
+  "version": "17.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,10 +17,10 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/tooltip": "^17.0.1"
+    "@semcore/tooltip": "^17.2.0"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.1"
+    "@semcore/base-components": "^17.2.0"
   },
   "devDependencies": {
     "@semcore/core": "workspace:*",

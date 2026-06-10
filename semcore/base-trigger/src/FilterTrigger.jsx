@@ -254,6 +254,11 @@ function Counter({ styles, Children, count, getI18nText }) {
   );
 }
 
+/**
+ * FilterTrigger
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-api#filtertrigger|API} | {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-code#filtertrigger|Examples}
+ */
 const FilterTrigger = createComponent(
   RootFilterTrigger,
   {

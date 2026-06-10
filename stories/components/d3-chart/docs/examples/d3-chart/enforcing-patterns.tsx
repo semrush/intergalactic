@@ -1,6 +1,5 @@
 import { Plot, YAxis, minMax, StackedArea } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import StackedAreaMockData from '../../../__mocks__/stacked-area';
@@ -25,13 +24,13 @@ const Demo = () => {
         <YAxis.Grid />
       </YAxis>
       <StackedArea x='time'>
-        <StackedArea.Area y='stack1' curve={curveCardinal} patterns='crosses'>
+        <StackedArea.Area y='stack1' patterns='crosses'>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack2' curve={curveCardinal} patterns='linesDouble'>
+        <StackedArea.Area y='stack2' patterns='linesDouble'>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack3' curve={curveCardinal} patterns='linesDoubleHorizontal'>
+        <StackedArea.Area y='stack3' patterns='linesDoubleHorizontal'>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
       </StackedArea>

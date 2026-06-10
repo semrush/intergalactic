@@ -1,7 +1,7 @@
 ---
 title: SERP Features
 tabName: Example
-tabs: Design('filter-serp-features'), Example('filter-serp-features-code')
+tabs: Design('filter-serp-features'), Examples('filter-serp-features-code')
 ---
 
 This example shows different states of the SERP features filter.

@@ -8,6 +8,10 @@ export const locators = {
     const base = page.locator('[data-ui-name="Link"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  linkText: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Link.Text"]');
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   linkAddon: (page: Page, index?: number) => {
     const base = page.locator('[data-ui-name="Link.Addon"]');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -16,6 +20,23 @@ export const locators = {
 };
 
 const storyPath = 'stories/components/link/tests/examples/basic_usage.tsx';
+
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-text-link': 'rgb(35, 95, 226)',
+  '--intergalactic-text-link-hover-active': 'rgb(33, 89, 215)',
+};
+
+const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate(({ name, fallback }) => {
+    const probe = document.createElement('div');
+    probe.style.color = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    document.body.appendChild(probe);
+    const color = getComputedStyle(probe).color;
+    probe.remove();
+    return color;
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
+};
 
 async function getTextClip(page: Page) {
   const clip = (await page.locator('[data-ui-name="Text"]').boundingBox())!;
@@ -248,10 +269,12 @@ test.describe(` ${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/link/docs/examples/link_without_text.tsx', 'en');
+    const linkColor = await getCssVarColor(page, '--intergalactic-text-link');
+    const linkHoverActiveColor = await getCssVarColor(page, '--intergalactic-text-link-hover-active');
 
     await test.step('Verify default color', async () => {
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+      await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
     });
 
     await test.step('Verify first link hover with hint', async () => {
@@ -264,8 +287,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
         },
       );
       if (browserName !== 'firefox') {
-        await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(4, 71, 146)');
-        await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+        await expect(locators.link(page).first()).toHaveCSS('color', linkHoverActiveColor);
+        await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
       }
       await expect(page).toHaveScreenshot();
     });
@@ -274,8 +297,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await locators.link(page, 1).hover();
       await page.waitForSelector('text="Go to the next page"');
       if (browserName !== 'firefox') {
-        await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-        await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(4, 71, 146)');
+        await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+        await expect(locators.link(page, 1)).toHaveCSS('color', linkHoverActiveColor);
       }
     });
   });
@@ -284,6 +307,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/link/docs/examples/link_without_text.tsx', 'en');
+    const linkColor = await getCssVarColor(page, '--intergalactic-text-link');
 
     await test.step('Verify first link focus with hint', async () => {
       await page.keyboard.press('Tab');
@@ -294,15 +318,15 @@ test.describe(` ${TAG.VISUAL}`, () => {
           return el && getComputedStyle(el).opacity === '1';
         },
       );
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-      await expect(locators.link(page, 1)).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+      await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
     });
 
     await test.step('Verify second link focus with hint', async () => {
       await page.keyboard.press('Tab');
       await page.waitForSelector('text="Go to the next page"');
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
-      await expect(locators.link(page).first()).toHaveCSS('color', 'rgb(0, 109, 202)');
+      await expect(locators.link(page).first()).toHaveCSS('color', linkColor);
+      await expect(locators.link(page, 1)).toHaveCSS('color', linkColor);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -347,5 +371,126 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
         await expect(locators.hint(page)).toHaveCount(0);
       });
     });
+  });
+
+  // ===== For UIK-5215: Link.Text auto-width inside a constrained container =====
+  const constrainedLinkProps = {
+    size: 300,
+    containerW: 100,
+    text: '1234567890abscdefjhf',
+  };
+
+  const expectAddonInsideConstrainedContainer = async (page: Page, addonIndex = 0) => {
+    const container = await page.locator('[data-ui-name="Text"]').first().boundingBox();
+    const addon = await locators.linkAddon(page, addonIndex).boundingBox();
+
+    expect(container).not.toBeNull();
+    expect(addon).not.toBeNull();
+    expect(addon!.x + addon!.width).toBeLessThanOrEqual(container!.x + container!.width + 1);
+  };
+
+  const expectConstrainedLinkHint = async (page: Page) => {
+    await page.keyboard.press('Tab');
+    await expect(locators.link(page).first()).toBeFocused();
+    await expect(locators.hint(page)).toBeVisible();
+  };
+
+  test('Verify constrained Link.Text width for icon addon passed via addonLeft prop', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      showAddonLeft: true,
+      addonLeftType: 'icon',
+      addonPassMethod: 'prop',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 20px)');
+    await expectAddonInsideConstrainedContainer(page);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width for icon addon passed via Link.Addon slot', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      showAddonRight: true,
+      addonRightType: 'icon',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 20px)');
+    await expectAddonInsideConstrainedContainer(page);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width for merged large icon addon', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      size: 600,
+      showAddonRight: true,
+      addonRightType: 'icon',
+      merged: true,
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 28px)');
+    await expectAddonInsideConstrainedContainer(page);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width for two icon addons', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      size: 600,
+      showAddonLeft: true,
+      addonLeftType: 'icon',
+      showAddonRight: true,
+      addonRightType: 'icon',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toBe('calc(100% - 56px)');
+    await expectAddonInsideConstrainedContainer(page, 1);
+    await expectConstrainedLinkHint(page);
+  });
+
+  test('Verify constrained Link.Text width is not reduced for non-icon addons', {
+    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+  }, async ({ page }) => {
+    // Browsers normalize `calc(100% - 0px)` to `calc(100% + 0px)` - accept both.
+    const zeroOffsetWidth = /^calc\(100% [+-] 0px\)$/;
+
+    await loadPage(page, storyPath, 'en', {
+      ...constrainedLinkProps,
+      showAddonRight: true,
+      addonRightType: 'badge',
+    });
+    await page.waitForTimeout(200);
+
+    const linkText = locators.linkText(page).first();
+    await expect(linkText).toBeVisible();
+    expect(await linkText.evaluate((el) => (el as HTMLElement).style.width))
+      .toMatch(zeroOffsetWidth);
+    await expect(locators.linkAddon(page).first()).toBeVisible();
+    await expectConstrainedLinkHint(page);
   });
 });

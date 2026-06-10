@@ -15,4 +15,11 @@ function Box(props: any, ref: any) {
 
 Box.displayName = 'Box';
 
-export default createBaseComponent(Box) as any as Intergalactic.Component<'div', BoxProps>;
+type BoxComponent = Intergalactic.Component<'div', BoxProps>;
+
+/**
+ * Box
+ *
+ * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|API}
+ */
+export default createBaseComponent<BoxComponent>(Box);

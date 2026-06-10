@@ -7,11 +7,15 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
-import type { PageErrorComponent } from './PageError.type';
+import type { NSPageError } from './PageError.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 class RootPageError extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<PageErrorComponent>,
-  typeof RootPageError.enhance
+  Intergalactic.InternalTypings.InferComponentProps<NSPageError.Component>,
+  typeof RootPageError.enhance,
+  {},
+  {},
+  {},
+  NSPageError.DefaultProps
 > {
   static displayName = 'PageError';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -20,7 +24,7 @@ class RootPageError extends Component<
     locale: 'en',
     icon: getIconPath('page_error'),
     titleTag: 'h2',
-  };
+  } as const;
 
   handleReload = () => {
     if (canUseDOM()) {
@@ -51,4 +55,7 @@ class RootPageError extends Component<
   }
 }
 
-export default createComponent(RootPageError) as PageErrorComponent;
+export default createComponent<
+  NSPageError.Component,
+  typeof RootPageError
+>(RootPageError);

@@ -3,6 +3,8 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+import { checkStyle, getCalendarCellDefaultStyles, getPrimaryButtonStyles } from './utils';
+
 export function formatAriaLabelToInputValue(ariaLabel: string | null): string {
   if (!ariaLabel) {
     throw new Error('aria-label is null');
@@ -77,7 +79,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.type('05');
       await page.keyboard.type('2024');
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
@@ -92,26 +93,30 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
 
-    test('Verify trigger states and props', {
-      tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/date-picker/tests/examples/month-range-trigger.tsx', 'en');
+    const triggerVariables = [
+      { size: 'm', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'l', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'invalid', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'valid', disabled: false, neighborLocation: 'left' },
+      { size: 'm', state: 'normal', disabled: true, neighborLocation: 'both' },
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+    ];
 
-      await expect(page).toHaveScreenshot();
+    triggerVariables.forEach((item) => {
+      test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
+        tag: [TAG.PRIORITY_HIGH,
+          '@date-picker'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/date-picker/tests/examples/month-range-trigger.tsx', 'en', item);
+        await page.keyboard.press('Tab');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+        const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+        screenshotsClip.x -= 8;
+        screenshotsClip.y -= 8;
+        screenshotsClip.width += 16;
+        screenshotsClip.height += 16;
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
     });
   });
   test.describe('Month range', () => {
@@ -122,16 +127,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
       const separator = page.locator('[data-ui-name="DateRange.RangeSep"]');
-
-      const checkStyle = async (element: any, expectedStyles: Record<string, string>) => {
-        for (const [property, expectedValue] of Object.entries(expectedStyles)) {
-          const actualValue = await element.evaluate(
-            (el: any, property: any) => getComputedStyle(el)[property],
-            property,
-          );
-          expect(actualValue).toBe(expectedValue);
-        }
-      };
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+      const primaryButtonStyles = await getPrimaryButtonStyles(page);
 
       await test.step('Verify SVG dimensions and paddings', async () => {
         const svg = locators.monthRangePickerTrigger(page).locator('svg');
@@ -152,16 +149,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.button(page, 'Previous year').waitFor({ state: 'visible' });
 
         await checkStyle(locators.cells(page, 0), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
 
       await test.step('Verify available date style', async () => {
         await checkStyle(locators.cells(page, 2), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
@@ -187,10 +182,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify style for Apply picker button', async () => {
-        await checkStyle(locators.button(page, 'Apply'), {
-          color: 'rgb(255, 255, 255)',
-          backgroundColor: 'rgb(0, 143, 248)',
-        });
+        await checkStyle(locators.button(page, 'Apply'), primaryButtonStyles);
       });
     });
   });

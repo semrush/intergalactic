@@ -2,20 +2,6 @@
 title: For designers
 ---
 
-## Introduction
-
-<!-- Welcome to a series of quick video guides to help you get started with the Intergalactic Design System for your product designs. -->
-
-::: loom_video Introduction to Intergalactic Design System
-https://www.loom.com/embed/70c05f1fbadc457ebcd74af6c31bfbe7
-:::
-
-<!-- ## How to contribute?
-
-If you're interested in contributing to the Intergalactic Design System, check out this video.
-
-::: loom_video https://www.loom.com/embed/2d935c96e823486384cf22142418a72b ::: -->
-
 ## Principles
 
 Great data visualization is key to our UI, so handle charts and tables with care.
@@ -44,6 +30,10 @@ Check out [Typography](/style/typography/typography) for more details on our typ
 
 ## Breakpoints
 
+::: warning
+These variables and their values are outdated and will be updated soon.
+:::
+
 While most of our products are designed for desktop data visualization, we suggest using the following main breakpoints for adaptivity:
 
 Table: Breakpoints tokens
@@ -54,13 +44,7 @@ Table: Breakpoints tokens
 | `--screen-small`       | 768px  | Phones and tablets.                      |
 | `--screen-medium`      | 1200px | Big tablets and desktop devices.         |
 
-Refer to [Breakpoints](/layout/breakpoints/breakpoints) and [Grid and page layout](/layout/grid-system/grid-system-layout) for more information.
-
-## Grid system
-
-Our product interfaces use a 12-column grid with a 24px gutter. Some products use a flexible grid, while others use a fixed grid, depending on their needs. The standard design frame width for product pages is 1440px.
-
-Check out [Grid and page layout](/layout/grid-system/grid-system-layout) for more details and code examples.
+Refer to [Breakpoints](/layout/breakpoints/breakpoints) for more information.
 
 ## Charts
 

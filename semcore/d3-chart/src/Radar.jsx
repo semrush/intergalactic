@@ -118,7 +118,7 @@ export function getLabelOffsetPosition(xDirection, yDirection, width, height) {
 const MINIMUM_OFFSET = 5;
 
 class RadarRoot extends Component {
-  static displayName = 'Line';
+  static displayName = 'Radar';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
 
@@ -702,6 +702,11 @@ function RadarTooltip(props) {
   );
 }
 
+/**
+ * Radar
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/radar-chart/radar-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/radar-chart/radar-chart-code/|Examples}
+ */
 const Radar = createElement(RadarRoot, {
   Axis,
   Polygon,

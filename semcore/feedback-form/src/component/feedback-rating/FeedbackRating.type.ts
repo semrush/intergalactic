@@ -1,4 +1,4 @@
-import type { CheckboxProps } from '@semcore/checkbox';
+import type { NSCheckbox } from '@semcore/checkbox';
 import type { Intergalactic } from '@semcore/core';
 import type { IllustrationProps } from '@semcore/illustration';
 import type Notice from '@semcore/notice';
@@ -6,7 +6,7 @@ import type React from 'react';
 import type { FieldProps } from 'react-final-form';
 
 import type { FeedbackFormProps } from '../../index';
-import type { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 export type FormConfigItem = {
   key: string;
@@ -69,15 +69,17 @@ export type FeedbackRatingItemProps = FieldProps<any, any> & {
   tooltipProps?: string[];
 };
 
-export type FeedbackRatingCheckboxProps = Omit<CheckboxProps, 'label'> & {
+export type FeedbackRatingCheckboxProps = Omit<NSCheckbox.Props, 'label'> & {
   focused: boolean;
   label: React.ReactNode;
 };
 
+export type FeedbackRatingCheckboxComponent = Intergalactic.Component<'div', FeedbackRatingCheckboxProps>;
+
 export type FeedbackRatingDefaultProps = {
   onSubmit: () => void;
-  i18n: typeof localizedMessages;
+  i18n: LocalizedMessages;
   locale: 'en';
-  Illustration: Intergalactic.Component<'svg', IllustrationProps>;
-  Notice: typeof Notice;
+  Illustration: FeedbackRatingProps['Illustration'];
+  Notice: FeedbackRatingProps['Notice'];
 };

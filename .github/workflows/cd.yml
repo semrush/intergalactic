@@ -392,6 +392,7 @@ jobs:
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
+          pnpm --filter @semcore/theme build
           pnpm --filter @semcore/core build
           pnpm --filter @semcore/base-components build
           pnpm build:icons
@@ -465,6 +466,7 @@ jobs:
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
+          pnpm --filter @semcore/theme build
           pnpm --filter @semcore/core build
           pnpm --filter @semcore/base-components build
           pnpm build:icons
@@ -535,6 +537,7 @@ jobs:
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
+          pnpm --filter @semcore/theme build
           pnpm --filter @semcore/core build
           pnpm --filter @semcore/base-components build
           pnpm build:icons
@@ -616,6 +619,7 @@ jobs:
             exit 0
           }
 
+          pnpm --filter @semcore/theme build
           pnpm --filter @semcore/core build
           pnpm --filter @semcore/icon build
 

@@ -3,11 +3,11 @@ import { createComponent, sstyled, Root, type IRootComponentProps } from '@semco
 import React from 'react';
 
 import style from './legend-table.shadow.css';
-import type { LegendTableType, LegendTableProps, LegendColumnProps } from './LegendTable.type';
+import type { LegendTableType, LegendTableProps, LegendColumnProps, LegendTableDefaultProps } from './LegendTable.type';
 import { BaseLegend } from '../BaseLegend';
 import { LegendItemComponent } from '../LegendItem/LegendItem';
 
-class LegendTableRoot extends BaseLegend<LegendTableProps> {
+class LegendTableRoot extends BaseLegend<LegendTableProps, [], LegendTableDefaultProps> {
   static displayName = 'LegendTable';
   static style = style;
 
@@ -58,7 +58,15 @@ function ColumnComponent(props: LegendColumnProps & IRootComponentProps) {
   );
 }
 
-export const LegendTable = createComponent(LegendTableRoot, {
+/**
+ * LegendTable
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/chart-legend/chart-legend-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/chart-legend/chart-legend-code/|Examples}
+ */
+export const LegendTable = createComponent<
+  LegendTableType,
+  typeof LegendTableRoot
+>(LegendTableRoot, {
   LegendItem: LegendItemComponent,
   Column: ColumnComponent,
-}) as LegendTableType;
+});

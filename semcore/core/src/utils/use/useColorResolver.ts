@@ -1,8 +1,13 @@
-import defaultDesignThemeJson from '../../theme/themes/default';
+import highlightsDesignThemeJson from '@semcore/theme/highlights-light';
+import defaultDesignThemeJson from '@semcore/theme/light';
+
 import logger from '../logger';
 import { useContextTokens } from '../ThemeProvider';
 
-const defaultDesignTheme = defaultDesignThemeJson as Record<string, string>;
+const defaultDesignTheme: Record<string, string> = {
+  ...defaultDesignThemeJson,
+  ...highlightsDesignThemeJson,
+};
 const deprecatedPalette: Record<string, string> = {
   '--denim-blue': '#006dca',
   '--light-blue': '#008ff8',

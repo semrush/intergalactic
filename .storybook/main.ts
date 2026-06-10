@@ -3,6 +3,7 @@ import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(ts|tsx)'],
+
   addons: [// '@storybook/addon-storysource',
     '@storybook/addon-links', '@storybook/addon-a11y', '@storybook/addon-docs'],
   framework: {
@@ -10,8 +11,9 @@ const config: StorybookConfig = {
     options: {},
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    // reactDocgen: 'react-docgen-typescript',
   },
+  staticDirs: [{ from: '../semcore/core/src/theme/themes', to: '/assets/core' }, { from: '../tools/theme/lib', to: '/assets/theme' }],
   viteFinal(config) {
     return mergeConfig(config, {
       build: {

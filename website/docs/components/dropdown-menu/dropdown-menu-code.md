@@ -1,14 +1,14 @@
 ---
 title: DropdownMenu
 fileSource: dropdown-menu
-tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Example('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
+tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Examples('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
 ---
 
 ::: tip
- If you need to customize your work of the dropdown menu, refer to the documentation for [intergalactic/popper](/utils/popper/popper)
+ If you need to customize your work of the dropdown menu, refer to the documentation for [Popper](/utils/popper/popper)
 :::
 
-The component is a wrapper over the [intergalactic/dropdown](/components/dropdown/dropdown) that allows for the following:
+The component is a wrapper over [Dropdown](/components/dropdown/dropdown) that allows for the following:
 
 - Displaying a list of options in a dropdown
 - Scrolling through the list of options using keyboard

@@ -18,10 +18,13 @@ const Demo = () => {
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse preserveNode>
-            <Box p='12px 24px 24px'>
-              {`Hello Section ${index + 1}`}
+            <Box pt={3} px={6} pb={6}>
+              {`This is section ${index + 1}`}
+              ,
               {' '}
-              <a href='#'>Some focusable link in content</a>
+              and it contains a
+              {' '}
+              <a href='#'>focusable link</a>
             </Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>

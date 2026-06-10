@@ -1,265 +1,141 @@
-import { Flex } from '@semcore/ui/base-components';
-import { Plot, Line, XAxis, YAxis, minMax, Bar } from '@semcore/ui/d3-chart';
+import { Plot, Bar, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import React from 'react';
 
 type BaseExampleProps = {
-  multiline?: boolean;
+  // YAxis
+  yPosition?: 'left' | 'right';
+  yHide?: boolean;
+  yTicks?: number[];
+  yTickSuffix?: string;
+  // YAxis.Ticks
+  yTicksHide?: boolean;
+  yTicksMultiline?: boolean;
+  yTicksPrimaryText?: boolean;
+  // YAxis.Grid
+  yShowGrid?: boolean;
+  // YAxis.Title
+  yShowTitle?: boolean;
+  yTitle?: string;
+  yTitlePosition?: 'top' | 'right' | 'bottom' | 'left';
+  yVerticalWritingMode?: boolean;
+
+  // XAxis
+  xPosition?: 'top' | 'bottom';
+  xHide?: boolean;
+  xCategories?: string[];
+  // XAxis.Ticks
+  xTicksHide?: boolean;
+  xTicksMultiline?: boolean;
+  xTicksPrimaryText?: boolean;
+  // XAxis.Grid
+  xShowGrid?: boolean;
+  // XAxis.Title
+  xShowTitle?: boolean;
+  xTitle?: string;
+  xTitlePosition?: 'top' | 'right' | 'bottom' | 'left';
+  xVerticalWritingMode?: boolean;
 };
 
 const Demo = (props: BaseExampleProps) => {
-  const MARGIN = 40;
-  const width = 250;
-  const height = 200;
+  const MARGIN = 80;
+  const width = 520;
+  const height = 360;
 
-  const xScale1 = scaleLinear()
+  const yTicks = props.yTicks && props.yTicks.length > 0 ? props.yTicks : [0, 2.5, 5, 7.5, 10];
+  const yMin = Math.min(...yTicks);
+  const yMax = Math.max(...yTicks);
+
+  const xCategories =
+    props.xCategories && props.xCategories.length > 0
+      ? props.xCategories
+      : ['Cat Cat Cat 0', 'Cat Cat Cat 1', 'Cat Cat Cat 2', 'Cat Cat Cat 3', 'Cat Cat Cat 4'];
+
+  const data = xCategories.map((category, i) => ({
+    category,
+    bar: yMin + (Math.sin(i / 2) * 0.5 + 0.5) * (yMax - yMin),
+  }));
+
+  const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
-
-  const yScale1 = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
-
-  const xScale = scaleLinear()
-    .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
-
-  const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([-10, 10]);
-
-  const xScale2 = scaleBand()
-    .range([MARGIN, width - MARGIN])
-    .domain(data2.map((d) => d.category))
+    .domain(xCategories)
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
-  const yScale2 = scaleLinear()
+  const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([yMin, yMax]);
+
+  const suffix = props.yTickSuffix ?? '';
 
   return (
-    <Flex gap={4} direction='column'>
-      <Flex gap={4}>
-        <Plot
-          data={data}
-          scale={[xScale1, yScale1]}
-          width={width}
-          height={height}
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <YAxis position={props.yPosition} hide={props.yHide}>
+        <YAxis.Ticks
+          ticks={yTicks}
+          hide={props.yTicksHide}
+          multiline={props.yTicksMultiline}
+          primaryText={props.yTicksPrimaryText}
         >
-          <YAxis position='right'>
-            <YAxis.Ticks ticks={[0, 5, 10]} />
-          </YAxis>
-          <XAxis
-            position='top'
+          {suffix ? ({ value }) => ({ children: `${value}${suffix}` }) : undefined}
+        </YAxis.Ticks>
+        {props.yShowGrid && <YAxis.Grid />}
+        {props.yShowTitle && (
+          <YAxis.Title
+            {...(props.yTitlePosition ? { position: props.yTitlePosition } : {})}
+            verticalWritingMode={props.yVerticalWritingMode}
           >
-            <XAxis.Ticks ticks={xScale.ticks(width / 50)} />
-          </XAxis>
-          <Line x='x' y='y' />
-        </Plot>
-
-        <Plot
-          data={data}
-          scale={[xScale1, yScale1]}
-          width={width}
-          height={height}
-        >
-          <YAxis position='right'>
-            <YAxis.Ticks ticks={[0, 5, 10]} />
-          </YAxis>
-          <XAxis position='bottom'>
-            <XAxis.Ticks ticks={xScale.ticks(width / 50)} />
-          </XAxis>
-          <Line x='x' y='y' />
-        </Plot>
-
-        <Plot
-          data={data}
-          scale={[xScale, yScale]}
-          width={width}
-          height={height}
-        >
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks()} position='top' />
-          </XAxis>
-          <YAxis>
-            <YAxis.Ticks ticks={yScale.ticks(5)} position='right'>
-              {({ value }) => ({
-                children: yScale.tickFormat(5, '+%')(value / 10),
-              })}
-            </YAxis.Ticks>
-          </YAxis>
-          <Line x='x' y='y' />
-        </Plot>
-
-        <Plot
-          data={data}
-          scale={[xScale, yScale]}
-          width={width}
-          height={height}
-        >
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks()} position='top' />
-          </XAxis>
-          <YAxis>
-            <YAxis.Ticks ticks={yScale.ticks(5)} position='left'>
-              {({ value }) => ({
-                children: yScale.tickFormat(5, '+%')(value / 10),
-              })}
-            </YAxis.Ticks>
-          </YAxis>
-          <Line x='x' y='y' />
-        </Plot>
-      </Flex>
-
-      <Flex gap={4}>
-
-        <Plot
-          data={data2}
-          scale={[xScale2, yScale2]}
-          width={width}
-          height={height}
-
-        >
-          <YAxis>
-            <YAxis.Ticks
-              multiline={props.multiline}
-
-            />
-            <YAxis.Grid />
-            <YAxis.Title verticalWritingMode={true}>YAxis title</YAxis.Title>
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks
-              ticks={xScale2.domain()}
-              multiline={props.multiline}
-
-            />
-            <XAxis.Title>XAxis title</XAxis.Title>
-          </XAxis>
-          <Bar x='category' y='bar' />
-        </Plot>
-
-        <Plot
-          data={data2}
-          scale={[xScale2, yScale2]}
-          width={width}
-          height={height}
-        >
-          <YAxis>
-            <YAxis.Ticks
-              multiline={props.multiline}
-
-            />
-            <YAxis.Grid />
-            <YAxis.Title>YAxis title</YAxis.Title>
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks
-              ticks={xScale2.domain()}
-              multiline={props.multiline}
-
-            />
-            <XAxis.Title>XAxis title</XAxis.Title>
-          </XAxis>
-          <Bar x='category' y='bar' />
-        </Plot>
-
-        <Plot
-          data={data2}
-          scale={[xScale2, yScale2]}
-          width={width}
-          height={height}
-        >
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-            <YAxis.Title position='bottom'>YAxis title</YAxis.Title>
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks
-              ticks={xScale2.domain()}
-              multiline={props.multiline}
-            />
-            <XAxis.Title position='left'>XAxis title</XAxis.Title>
-          </XAxis>
-          <Bar x='category' y='bar' />
-        </Plot>
-      </Flex>
-
-      <Flex gap={4}>
-        <Plot
-          data={data2}
-          scale={[xScale2, yScale2]}
-          width={width}
-          height={height}
-        >
-          <YAxis>
-            <YAxis.Ticks hide={true} />
-            <YAxis.Grid />
-            <YAxis.Title position='bottom'>YAxis title</YAxis.Title>
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks hide={true} ticks={xScale2.domain()} />
-            <XAxis.Title position='left'>XAxis title</XAxis.Title>
-          </XAxis>
-          <Bar x='category' y='bar' />
-        </Plot>
-
-        <Plot
-          data={data}
-          scale={[xScale, yScale]}
-          width={width}
-          height={height}
-        >
-          <YAxis>
-            <YAxis.Ticks ticks={yScale.ticks()} />
-            <YAxis.Grid ticks={yScale.ticks()} />
-          </YAxis>
-          <XAxis ticks={xScale.ticks()}>
-            <XAxis.Ticks />
-            <XAxis.Grid />
-          </XAxis>
-          <Line x='x' y='y' />
-        </Plot>
-
-        <Plot
-          data={data}
-          scale={[xScale, yScale]}
-          width={width}
-          height={height}
-        >
-          <YAxis>
-
-          </YAxis>
-          <XAxis ticks={xScale.ticks()}>
-            <XAxis.Ticks />
-            <XAxis.Grid />
-          </XAxis>
-          <Line x='x' y='y' />
-        </Plot>
-      </Flex>
-    </Flex>
+            {props.yTitle}
+          </YAxis.Title>
+        )}
+      </YAxis>
+      <XAxis position={props.xPosition} hide={props.xHide}>
+        <XAxis.Ticks
+          ticks={xCategories}
+          hide={props.xTicksHide}
+          multiline={props.xTicksMultiline}
+          primaryText={props.xTicksPrimaryText}
+        />
+        {props.xShowGrid && <XAxis.Grid />}
+        {props.xShowTitle && (
+          <XAxis.Title
+            {...(props.xTitlePosition ? { position: props.xTitlePosition } : {})}
+            verticalWritingMode={props.xVerticalWritingMode}
+          >
+            {props.xTitle}
+          </XAxis.Title>
+        )}
+      </XAxis>
+      <Bar x='category' y='bar' />
+    </Plot>
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((_, i) => ({
-    x: i,
-    y: Math.sin(i / 2) * 5 + 5,
-  }));
-
-const data2 = Array(5)
-  .fill({})
-  .map((d, i) => ({
-    category: `Cat Cat Cat ${i}`,
-    bar: Math.sin(i / 2) * 5 + 5,
-  }));
-
 export const defaultProps: BaseExampleProps = {
+  yPosition: 'left',
+  yHide: false,
+  yTicks: [0, 2.5, 5, 7.5, 10],
+  yTickSuffix: '',
+  yTicksHide: false,
+  yTicksMultiline: false,
+  yTicksPrimaryText: false,
+  yShowGrid: true,
+  yShowTitle: true,
+  yTitle: 'YAxis title',
+  yTitlePosition: 'top',
+  yVerticalWritingMode: false,
 
-  multiline: undefined,
+  xPosition: 'bottom',
+  xHide: false,
+  xCategories: ['Cat Cat Cat 0', 'Cat Cat Cat 1', 'Cat Cat Cat 2', 'Cat Cat Cat 3', 'Cat Cat Cat 4'],
+  xTicksHide: false,
+  xTicksMultiline: false,
+  xTicksPrimaryText: false,
+  xShowGrid: false,
+  xShowTitle: true,
+  xTitle: 'XAxis title',
+  xTitlePosition: 'right',
+  xVerticalWritingMode: false,
 };
 
 export default Demo;

@@ -2,7 +2,7 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { checkBackgroundColor, checkBorderColor, locators } from './utils';
+import { checkBackgroundColor, checkBorderColor, getCssVarColor, locators } from './utils';
 
 /* =====================================================
 @visual
@@ -36,8 +36,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base.tsx', 'en', item);
 
+      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
+      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
+      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
+      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+
       await test.step('Base background check', async () => {
-        await checkBackgroundColor(page, locators.button(page), 'rgb(255, 255, 255)');
+        await checkBackgroundColor(page, locators.button(page), bgPrimary);
       });
 
       if (item.state === 'normal' && !item.disabled) {
@@ -48,9 +54,9 @@ test.describe(`${TAG.VISUAL}`, () => {
             await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
           }
           if (item.active) {
-            await checkBorderColor(page, locators.button(page), 'rgb(0, 109, 202)');
+            await checkBorderColor(page, locators.button(page), borderActive);
           } else {
-            await checkBorderColor(page, locators.button(page), 'rgb(196, 199, 207)');
+            await checkBorderColor(page, locators.button(page), borderPrimary);
           }
           await page.keyboard.press('Tab');
           await locators.button(page).hover();
@@ -69,7 +75,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       if (item.state === 'valid' && !item.disabled) {
         await test.step('Valid state styles', async () => {
-          await checkBorderColor(page, locators.button(page), 'rgb(0, 124, 101)');
+          await checkBorderColor(page, locators.button(page), borderSuccess);
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
@@ -77,7 +83,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       if (item.state === 'invalid' && !item.disabled) {
         await test.step('Invalid state styles', async () => {
-          await checkBorderColor(page, locators.button(page), 'rgb(209, 0, 47)');
+          await checkBorderColor(page, locators.button(page), borderCritical);
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot(`base-size:${item.size}-disabled:${item.disabled}-lstate:${item.state}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
@@ -92,9 +98,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const buttons = await locators.button(page).all();
 
+      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
+      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
+      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
+      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+
       await test.step('Base background check', async () => {
         for (const button of buttons) {
-          await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+          await checkBackgroundColor(page, button, bgPrimary);
         }
       });
 
@@ -107,9 +119,9 @@ test.describe(`${TAG.VISUAL}`, () => {
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
             if (item.active) {
-              await checkBorderColor(page, button, 'rgb(0, 109, 202)');
+              await checkBorderColor(page, button, borderActive);
             } else {
-              await checkBorderColor(page, button, 'rgb(196, 199, 207)');
+              await checkBorderColor(page, button, borderPrimary);
             }
           }
           await locators.button(page).nth(1).hover();
@@ -132,16 +144,20 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.state === 'valid' && !item.disabled) {
         await test.step('Valid state styles', async () => {
           for (const button of buttons) {
-            await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+            await checkBorderColor(page, button, borderSuccess);
           }
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}}.png`);
         });
       }
 
       if (item.state === 'invalid' && !item.disabled) {
         await test.step('Invalid state styles', async () => {
           for (const button of buttons) {
-            await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+            await checkBorderColor(page, button, borderCritical);
           }
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`with-addons-size:${item.size}-disabled:${item.disabled}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}}.png`);
         });
       }
     });
@@ -156,9 +172,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const buttons = await locators.button(page).all();
 
+      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
+      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
+      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
+      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+
       await test.step('Base background check', async () => {
         for (const button of buttons) {
-          await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+          await checkBackgroundColor(page, button, bgPrimary);
         }
       });
 
@@ -171,9 +193,9 @@ test.describe(`${TAG.VISUAL}`, () => {
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
             if (item.active) {
-              await checkBorderColor(page, button, 'rgb(0, 109, 202)');
+              await checkBorderColor(page, button, borderActive);
             } else {
-              await checkBorderColor(page, button, 'rgb(196, 199, 207)');
+              await checkBorderColor(page, button, borderPrimary);
             }
           }
           await locators.button(page).nth(1).hover();
@@ -195,16 +217,20 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.state === 'valid' && !item.disabled) {
         await test.step('Valid state styles', async () => {
           for (const button of buttons) {
-            await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+            await checkBorderColor(page, button, borderSuccess);
           }
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`neighbor-location-size:${item.size}-disabled:${item.disabled}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
       }
 
       if (item.state === 'invalid' && !item.disabled) {
         await test.step('Invalid state styles', async () => {
           for (const button of buttons) {
-            await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+            await checkBorderColor(page, button, borderCritical);
           }
+          await page.keyboard.press('Tab');
+          await expect(page).toHaveScreenshot(`neighbor-location-size:${item.size}-disabled:${item.disabled}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}.png`);
         });
       }
     });
@@ -219,9 +245,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       const triggers = await locators.trigger(page).all();
 
+      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+      const borderPrimary = await getCssVarColor(page, '--intergalactic-border-primary');
+      const borderActive = await getCssVarColor(page, '--intergalactic-border-info-active');
+      const borderSuccess = await getCssVarColor(page, '--intergalactic-border-success-active');
+      const borderCritical = await getCssVarColor(page, '--intergalactic-border-critical-active');
+
       await test.step('Base background check', async () => {
         for (const button of triggers) {
-          await checkBackgroundColor(page, button, 'rgb(255, 255, 255)');
+          await checkBackgroundColor(page, button, bgPrimary);
         }
         await expect(page).toHaveScreenshot(`triggers-size:${item.size}-disabled:${item.disabled}-state:${item.state}-active:${item.active}-placeholder:${item.placeholder}.png`);
       });
@@ -235,9 +267,9 @@ test.describe(`${TAG.VISUAL}`, () => {
               await expect(placeholderElement).toHaveAttribute('aria-hidden', 'true');
             }
             if (item.active) {
-              await checkBorderColor(page, button, 'rgb(0, 109, 202)');
+              await checkBorderColor(page, button, borderActive);
             } else {
-              await checkBorderColor(page, button, 'rgb(196, 199, 207)');
+              await checkBorderColor(page, button, borderPrimary);
             }
           }
         });
@@ -256,7 +288,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.state === 'valid' && !item.disabled) {
         await test.step('Valid state styles', async () => {
           for (const button of triggers) {
-            await checkBorderColor(page, button, 'rgb(0, 124, 101)');
+            await checkBorderColor(page, button, borderSuccess);
           }
         });
       }
@@ -264,7 +296,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (item.state === 'invalid' && !item.disabled) {
         await test.step('Invalid state styles', async () => {
           for (const button of triggers) {
-            await checkBorderColor(page, button, 'rgb(209, 0, 47)');
+            await checkBorderColor(page, button, borderCritical);
           }
         });
       }

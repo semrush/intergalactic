@@ -49,7 +49,7 @@ SError {
     STitle[data-errors-title] {
       font-size: var(--intergalactic-fs-700, 36px);
       line-height: var(--intergalactic-lh-700, 110%);
-      color: var(--intergalactic-text-primary, #191b23);
+      color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
       font-weight: var(--intergalactic-semi-bold, 600);
       margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
     }
@@ -58,7 +58,7 @@ SError {
       display: block;
       font-size: var(--intergalactic-fs-300, 16px);
       line-height: var(--intergalactic-lh-300, 150%);
-      color: var(--intergalactic-text-primary, #191b23);
+      color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
       margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
     }
   }

@@ -3,6 +3,8 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+import { checkStyle, getCalendarCellDefaultStyles, getCalendarCellSelectedStyles } from './utils';
+
 export const locators = {
 
   button: (page: Page, name?: string, index?: number) => {
@@ -60,19 +62,30 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     });
 
-    test('Verify trigger states and props', {
-      tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/date-picker/tests/examples/month-trigger.tsx', 'en');
+    const triggerVariables = [
+      { size: 'm', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'l', state: 'normal', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'invalid', disabled: false, neighborLocation: 'right' },
+      { size: 'm', state: 'valid', disabled: false, neighborLocation: 'left' },
+      { size: 'm', state: 'normal', disabled: true, neighborLocation: 'both' },
 
-      await expect(page).toHaveScreenshot();
+    ];
 
-      for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+    triggerVariables.forEach((item) => {
+      test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
+        tag: [TAG.PRIORITY_HIGH,
+          '@date-picker'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/date-picker/tests/examples/month-trigger.tsx', 'en', item);
+        await page.keyboard.press('Tab');
 
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
+        const screenshotsClip = (await page.locator('[data-ui-name="Flex"]').first().boundingBox())!;
+        screenshotsClip.x -= 8;
+        screenshotsClip.y -= 8;
+        screenshotsClip.width += 16;
+        screenshotsClip.height += 16;
+        await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      });
     });
   });
 
@@ -84,16 +97,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
       const selectedCell = page.locator('[data-ui-name="CalendarMonths.Unit"][class*="Selected"]');
-
-      const checkStyle = async (element: any, expectedStyles: Record<string, string>) => {
-        for (const [property, expectedValue] of Object.entries(expectedStyles)) {
-          const actualValue = await element.evaluate(
-            (el: any, property: any) => getComputedStyle(el)[property],
-            property,
-          );
-          expect(actualValue).toBe(expectedValue);
-        }
-      };
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+      const selectedCellStyles = await getCalendarCellSelectedStyles(page);
 
       await test.step('Verify trigger margins', async () => {
         await checkStyle(locators.monthPickerTrigger(page, 0), {
@@ -107,16 +112,14 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify style of month cell', async () => {
         const nonSelectedCell = page.locator('[data-ui-name="CalendarMonths.Unit"]:not([class*="Selected"])').first();
         await checkStyle(nonSelectedCell, {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
 
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
-          color: 'rgb(255, 255, 255)',
-          backgroundColor: 'rgb(43, 179, 255)',
+          ...selectedCellStyles,
           margin: '4px 0px 0px',
           width: '60px',
           height: '32px',

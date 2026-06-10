@@ -6,12 +6,16 @@ import Divider from '@semcore/divider';
 import React from 'react';
 
 import style from './legend-flex.shadow.css';
-import type { LegendFlexType, LegendFlexProps, TrendProps } from './LegendFlex.type';
+import type { LegendFlexType, LegendFlexProps, TrendProps, LegendFlexDefaultProps } from './LegendFlex.type';
 import { localizedMessages } from '../../../translations/__intergalactic-dynamic-locales';
 import { BaseLegend } from '../BaseLegend';
 import { LegendItemComponent } from '../LegendItem/LegendItem';
 
-class LegendFlexRoot extends BaseLegend<LegendFlexProps, typeof LegendFlexRoot.enhance> {
+class LegendFlexRoot extends BaseLegend<
+  LegendFlexProps,
+  typeof LegendFlexRoot.enhance,
+  LegendFlexDefaultProps
+> {
   static displayName = 'LegendFlex';
   static style = style;
 
@@ -20,7 +24,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps, typeof LegendFlexRoot.e
   static defaultProps = () => ({
     direction: 'row',
     children: <LegendFlex.LegendItem />,
-  });
+  } as const);
 
   renderTrend() {
     const { onTrendIsVisibleChange, trendIsVisible, trendLabel, size, getI18nText } = this
@@ -55,6 +59,14 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps, typeof LegendFlexRoot.e
   }
 }
 
-export const LegendFlex = createComponent(LegendFlexRoot, {
+/**
+ * LegendFlex
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/chart-legend/chart-legend-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/chart-legend/chart-legend-code/|Examples}
+ */
+export const LegendFlex = createComponent<
+  LegendFlexType,
+  typeof LegendFlexRoot
+>(LegendFlexRoot, {
   LegendItem: LegendItemComponent,
-}) as LegendFlexType;
+});

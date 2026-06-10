@@ -1,5 +1,5 @@
 <template>
-  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" aria-label="Playground" :role="!hideCode ? null : 'region'">
+  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }">
   </div>
   <div class="code-wrapper" v-if="!hideCode">
     <a title="Open CodeSandbox" class="open-codesandbox" target="_blank" rel='noopener noreferrer'
@@ -85,7 +85,10 @@ const codesandboxUrl = computed(() => {
             '@types/react': '18',
             '@fontsource/inter': '5',
             '@semcore/base-components': 'latest',
-            '@semcore/core': 'latest'
+            '@semcore/core': 'latest',
+            '@semcore/theme': 'latest',
+            '@semcore/icon': 'latest',
+            '@semcore/illustration': 'latest',
           },
         },
       },

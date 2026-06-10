@@ -2,7 +2,6 @@ import { Box, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import findComponent from '@semcore/core/lib/utils/findComponent';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { forkRef } from '@semcore/core/lib/utils/ref';
@@ -23,6 +22,7 @@ import type {
   ColumnItemConfig,
   DataRowItem,
 } from './DataTable.types';
+import { ScrollBars } from './ScrollBars';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import { SelectableRows } from '../../store/SelectableRows';
 import scrollStyles from '../../style/scroll-shadows.shadow.css';
@@ -33,7 +33,7 @@ import { MergedColumnsCell, MergedRowsCell } from '../Body/MergedCells';
 import type { DTRow } from '../Body/Row.types';
 import type { DataTableColumnProps, DTColumn } from '../Head/Column.types';
 import { Head } from '../Head/Head';
-import type { DataTableHeadProps, HeadPropsInner } from '../Head/Head.types';
+import type { HeadPropsInner } from '../Head/Head.types';
 import { SRAnnouncer } from '../RowSelector/SRAnnouncer';
 import { SRReactiveAnnouncer } from '../RowSelector/SRReactiveAnnouncer';
 
@@ -41,11 +41,9 @@ export const ACCORDION = Symbol('accordion');
 export const ROW_GROUP = Symbol('ROW_GROUP');
 export const UNIQ_ROW_KEY = Symbol('UNIQ_ROW_KEY');
 export const IS_EMPTY_DATA_ROW = Symbol('IS_EMPTY_DATA_ROW');
-export const SELECT_ALL = Symbol('SELECT_ALL');
+export const SELECT_ALL = 'SELECT_ALL_ROWS';
 export const ROW_INDEX = Symbol('ROW_INDEX');
 export const GRID_ROW_INDEX = Symbol('GRID_ROW_INDEX');
-
-const SCROLL_BAR_HEIGHT = 12;
 
 type State<
   Data extends DataTableData,
@@ -59,6 +57,17 @@ type State<
   expandedRows: Set<UniqKeyType>;
 };
 
+type DefaultProps = {
+  use: 'primary';
+  defaultGridTemplateColumnWidth: 'auto';
+  defaultSelectedRows: undefined;
+  h: 'fit-content';
+  renderEmptyData: () => React.JSX.Element;
+  variant: 'default';
+  accordionAnimationRows: 40;
+  accordionDuration: 200;
+};
+
 class DataTableRoot<
   Data extends DataTableData,
   UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
@@ -67,8 +76,9 @@ class DataTableRoot<
     DataTableProps<Data, UniqKey, UniqKeyType>,
   typeof DataTableRoot.enhance,
   {},
-  typeof DataTableRoot.defaultProps,
-  State<Data, UniqKey, UniqKeyType>
+  {},
+  State<Data, UniqKey, UniqKeyType>,
+  DefaultProps
   > {
   static displayName = 'DataTable';
   static style = style;
@@ -87,7 +97,7 @@ class DataTableRoot<
     variant: 'default',
     accordionAnimationRows: 40,
     accordionDuration: 200,
-  };
+  } as const;
 
   static getDerivedStateFromProps(props: DataTableProps<any, any, any>, state: State<any, any, any>) {
     if (props.expandedRows === state.expandedRows || props.expandedRows === undefined) {
@@ -168,7 +178,11 @@ class DataTableRoot<
     }
 
     if (headerProps?.sticky && canUseDOM() && this.scrollDirection === 'horizontal') {
-      document.addEventListener('scroll', this.handleDocumentScroll);
+      if (!this.withAnimation) {
+        document.addEventListener('scroll', this.handleDocumentScroll, { passive: true });
+      } else {
+        this.calculateStickyHeaderAnimation();
+      }
     }
   }
 
@@ -197,6 +211,31 @@ class DataTableRoot<
     }
 
     this.state.expandedRows?.clear();
+  }
+
+  calculateStickyHeaderAnimation() {
+    const { headerProps } = this.asProps;
+    const scrollArea = this.scrollAreaRef.current;
+    const table = this.tableContainerRef.current;
+    if (scrollArea && table) {
+      const currentHeaderHeight = scrollArea.style.getPropertyValue('--global-header-height');
+      const newHeaderHeight = `${this.getHeaderHeight()}px`;
+
+      scrollArea.style.setProperty('--global-scroll-to', `${table.offsetHeight}px`);
+      scrollArea.style.setProperty('--global-header-top', `${headerProps?.top ?? 0}px`);
+      scrollArea.style.setProperty('--global-header-height', newHeaderHeight);
+
+      if (currentHeaderHeight && currentHeaderHeight !== newHeaderHeight) {
+        this.forceUpdate();
+      }
+    }
+  }
+
+  get withAnimation() {
+    if (canUseDOM()) {
+      return CSS.supports('(animation-timeline: view()) and (animation-range: normal)');
+    }
+    return false;
   }
 
   get totalRows() {
@@ -301,6 +340,7 @@ class DataTableRoot<
       shadowVertical,
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
+      withAnimation: this.withAnimation && this.scrollDirection === 'horizontal' && !this.isDataEmpty,
     };
   }
 
@@ -378,32 +418,33 @@ class DataTableRoot<
     const tableContainer = this.tableContainerRef.current;
     if (!tableContainer) return;
 
-    const tableContainerTop = tableContainer.getBoundingClientRect().top;
+    const tableRect = tableContainer.getBoundingClientRect();
+    const tableContainerTop = tableRect.top;
     const { headerProps } = this.asProps;
     const headerContainer = this.headerRef.current;
-    const elements = headerContainer?.querySelectorAll('[role="columnheader"], [data-ui-name="Head.Group"]');
     const top = tableContainerTop - (headerProps?.top ?? 0);
     const headerScrollBar = headerProps?.withScrollBar
       ? this.scrollAreaRef.current?.querySelector(`[role=scrollbar][aria-orientation=horizontal]`)
       : undefined;
 
-    if (top && top < 0) {
-      const translate = `translateY(${Math.abs(top)}px)`;
-      elements?.forEach((column) => {
-        if (column instanceof HTMLElement) {
-          column.style.setProperty('transform', translate);
-        }
-      });
+    if (top && top < 0 && Math.abs(top) <= tableContainer.clientHeight) {
+      let translate = `translateY(${Math.abs(top)}px)`;
+
+      if (tableRect.bottom <= this.getHeaderHeight()) {
+        translate = `translateY(${Math.abs(top) - this.getHeaderHeight() - tableRect.bottom}px)`;
+      }
+
+      if (headerContainer instanceof HTMLElement) {
+        headerContainer.style.setProperty('--global-scroll-translate', `${Math.abs(top)}px`);
+      }
 
       if (headerScrollBar instanceof HTMLElement) {
         headerScrollBar.style.setProperty('transform', translate);
       }
     } else {
-      elements?.forEach((column) => {
-        if (column instanceof HTMLElement) {
-          column.style.removeProperty('transform');
-        }
-      });
+      if (headerContainer instanceof HTMLElement) {
+        headerContainer.style.removeProperty('--global-scroll-translate');
+      }
 
       if (headerScrollBar instanceof HTMLElement) {
         headerScrollBar.style.removeProperty('transform');
@@ -848,7 +889,10 @@ class DataTableRoot<
       clearTimeout(this.containerResizeEndTimeoutId);
     }
 
-    this.containerResizeEndTimeoutId = setTimeout(this.calculateVerticalShadow, 0);
+    this.containerResizeEndTimeoutId = setTimeout(() => {
+      this.calculateVerticalShadow();
+      this.calculateStickyHeaderAnimation();
+    }, 0);
 
     this.asProps.onResize?.(entries, observer);
   };
@@ -876,11 +920,9 @@ class DataTableRoot<
     const [offsetLeftSum, offsetRightSum] = this.getScrollOffsetValue();
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
-    const Head = findComponent<DataTableHeadProps>(Children, ['DataTable.Head']);
-    const headerPropsToCheck = headerProps ?? Head?.props;
     const headerHeight = headerProps?.h || this.getHeaderHeight();
     const topOffset =
-      headerPropsToCheck?.sticky || headerPropsToCheck?.withScrollBar ? headerHeight : undefined;
+      headerProps?.sticky || headerProps?.withScrollBar ? headerHeight : undefined;
 
     const width =
       w ??
@@ -961,20 +1003,12 @@ class DataTableRoot<
           </SDataTable>
         </ScrollArea.Container>
 
-        {headerPropsToCheck?.withScrollBar && topOffset && !loading && (
-          <ScrollArea.Bar
-            orientation='horizontal'
-            top={topOffset - SCROLL_BAR_HEIGHT}
-            zIndex={20}
-          />
-        )}
-
-        {!loading && (
-          <>
-            <ScrollArea.Bar orientation='horizontal' zIndex={20} />
-            <ScrollArea.Bar orientation='vertical' zIndex={20} />
-          </>
-        )}
+        <ScrollBars
+          loading={loading}
+          topOffset={topOffset}
+          withHeaderScrollBar={headerProps?.withScrollBar}
+          withAnimation={this.withAnimation}
+        />
 
         {selectedRows !== undefined && !Array.isArray(selectedRows) && (
           <SRReactiveAnnouncer selectedRows={selectedRows} getI18nText={getI18nText} />
@@ -1081,7 +1115,7 @@ class DataTableRoot<
 
     if (selectedRows) {
       const column: DTColumn = {
-        name: SELECT_ALL.toString(),
+        name: SELECT_ALL,
         gtcWidth: 'min-content',
         alignItems: 'flex-start',
         children: '',
@@ -1446,10 +1480,20 @@ class DataTableRoot<
   }
 }
 
-export const DataTable = createComponent(DataTableRoot, {
-  Head,
-  Body,
-}) as unknown as DataTableType & {
+type DataTableComponent = DataTableType & {
   Head: typeof Head;
   Body: typeof Body;
 };
+
+/**
+ * DataTable
+ *
+ * {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-api|API} | {@link https://developer.semrush.com/intergalactic/table-group/data-table/data-table-code|Examples}
+ */
+export const DataTable = createComponent<
+  DataTableComponent,
+  typeof DataTableRoot
+>(DataTableRoot, {
+  Head,
+  Body,
+});

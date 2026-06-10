@@ -3,7 +3,12 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { formatAriaLabelToInputValue } from './utils';
+import {
+  formatAriaLabelToInputValue,
+  checkStyle,
+  getCalendarCellDefaultStyles,
+  getPrimaryButtonStyles,
+} from './utils';
 
 export const locators = {
 
@@ -53,17 +58,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
       const selectedCell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
-
-      // Helper to check multiple style properties
-      const checkStyle = async (element: any, expectedStyles: any) => {
-        for (const [property, expectedValue] of Object.entries(expectedStyles)) {
-          const actualValue = await element.evaluate(
-            (el: any, property: any) => getComputedStyle(el)[property],
-            property,
-          );
-          expect(actualValue).toBe(expectedValue);
-        }
-      };
+      const defaultCellStyles = await getCalendarCellDefaultStyles(page);
+      const primaryButtonStyles = await getPrimaryButtonStyles(page);
 
       await locators.dateRangeComparatorTrigger(page, 0).click();
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
@@ -85,8 +81,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 2), {
-          color: 'rgb(25, 27, 35)',
-          backgroundColor: 'rgb(255, 255, 255)',
+          ...defaultCellStyles,
           margin: '4px 0px 0px',
         });
       });
@@ -110,10 +105,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
 
       await test.step('Verify style for Apply picker button', async () => {
-        await checkStyle(locators.button(page, 'Apply'), {
-          color: 'rgb(255, 255, 255)',
-          backgroundColor: 'rgb(0, 143, 248)',
-        });
+        await checkStyle(locators.button(page, 'Apply'), primaryButtonStyles);
       });
     });
   });

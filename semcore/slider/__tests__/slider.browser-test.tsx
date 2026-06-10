@@ -109,6 +109,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify invalid state with value below min', async () => {
       await inputValue.fill('0');
       await expect(inputValue).toHaveAttribute('aria-invalid', 'true');
+      await page.getByRole('tooltip').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });

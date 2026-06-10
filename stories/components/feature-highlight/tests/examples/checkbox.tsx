@@ -1,12 +1,12 @@
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import { Box, Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import Checkbox from '@semcore/ui/checkbox';
-import type { CheckboxProps } from '@semcore/ui/checkbox';
+import type { NSCheckbox } from '@semcore/ui/checkbox';
 import { CheckboxFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import { Text, List } from '@semcore/ui/typography';
 import React from 'react';
 
-export type CheckboxFHAdvancedProps = CheckboxProps & {
+export type CheckboxFHAdvancedProps = NSCheckbox.Props & {
   firstOptionText?: string;
   secondOptionText?: string;
   showBadge?: boolean;

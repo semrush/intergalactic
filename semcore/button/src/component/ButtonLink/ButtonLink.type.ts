@@ -13,6 +13,11 @@ export type ButtonLinkProps = Intergalactic.InternalTypings.EfficientOmit<LinkPr
   use?: 'primary' | 'secondary';
 };
 
+export type ButtonLinkDefaultProps = {
+  use: 'primary';
+  size: 200;
+};
+
 export type ButtonLinkTextProps = NSText.Props;
 
 export type ButtonLinkAddonProps = BoxProps;

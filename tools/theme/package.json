@@ -1,0 +1,69 @@
+{
+  "name": "@semcore/theme",
+  "description": "Semrush Theme package",
+  "version": "2.1.3",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node --experimental-transform-types src/processor.ts && tsc --project tsconfig-theme.json",
+    "check": "node --experimental-transform-types src/checker.ts"
+  },
+  "exports": {
+    ".": "./lib/theme.d.ts",
+    "./package.json": "./package.json",
+    "./light.css": "./lib/light.css",
+    "./dark.css": "./lib/dark.css",
+    "./highlights-light.css": "./lib/highlights-light.css",
+    "./highlights-dark.css": "./lib/highlights-dark.css",
+    "./light": {
+      "types": "./lib/light.ts",
+      "import": "./lib/light.js",
+      "require": "./lib/light.js"
+    },
+    "./lib/light": {
+      "types": "./lib/light.ts",
+      "import": "./lib/light.js",
+      "require": "./lib/light.js"
+    },
+    "./dark": {
+      "types": "./lib/dark.ts",
+      "import": "./lib/dark.js",
+      "require": "./lib/dark.js"
+    },
+    "./lib/highlights-light": {
+      "types": "./lib/highlights-light.ts",
+      "import": "./lib/highlights-light.js",
+      "require": "./lib/highlights-light.js"
+    },
+    "./highlights-light": {
+      "types": "./lib/highlights-light.ts",
+      "import": "./lib/highlights-light.js",
+      "require": "./lib/highlights-light.js"
+    },
+    "./highlights-dark": {
+      "types": "./lib/highlights-dark.ts",
+      "import": "./lib/highlights-dark.js",
+      "require": "./lib/highlights-dark.js"
+    },
+    "./panda-preset": {
+      "types": "./lib/panda-preset.ts",
+      "import": "./lib/panda-preset.js",
+      "require": "./lib/panda-preset.js"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "tools/theme"
+  },
+  "devDependencies": {
+    "colorjs.io": "0.6.1",
+    "postcss": "8.5.14",
+    "postcss-value-parser": "4.1.0",
+    "@pandacss/dev": "1.9.0",
+    "@semcore/testing-utils": "workspace:*"
+  }
+}

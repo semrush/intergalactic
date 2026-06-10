@@ -16,7 +16,7 @@ const Shape = (props: any) => {
         borderTop: '8px solid transparent',
         borderLeft: `16px solid ${colorResolver(props.color)}`,
         borderBottom: '8px solid transparent',
-        marginRight: '4px',
+        marginRight: 'var(--intergalactic-spacing-1x)',
       }}
     />
   );

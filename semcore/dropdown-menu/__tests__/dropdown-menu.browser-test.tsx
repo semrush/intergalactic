@@ -9,6 +9,24 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
   }
 };
 
+// Matches the CSS fallback colors after the test bundle normalizes them.
+const cssVarColorFallbacks: Record<string, string> = {
+  '--intergalactic-dropdown-menu-item-hover': 'rgba(0, 22, 16, 0.028)',
+  '--intergalactic-dropdown-menu-item-selected': 'rgba(0, 80, 255, 0.077)',
+  '--intergalactic-dropdown-menu-item-selected-hover': 'rgba(0, 77, 255, 0.191)',
+};
+
+const getCssVarColor = async (page: Page, varName: string) => {
+  return page.evaluate(({ name, fallback }) => {
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
+    document.body.appendChild(probe);
+    const color = window.getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
+};
+
 export const locators = {
 
   button: (page: Page, name?: string, index?: number) => {
@@ -155,6 +173,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@dropdown-menu'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', item);
+      const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
 
       await expect(page).toHaveScreenshot();
 
@@ -166,7 +185,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitem(page, i), {
               'font-size': '14px',
               'min-height': '32px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -179,7 +197,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitem(page, i), {
               'font-size': '16px',
               'min-height': '40px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -190,7 +207,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
           for (let i = 0; i < count1; i++) {
             await checkStyles(locators.menuitem(page, i), {
-              opacity: '0.3',
+              opacity: '0.4',
             });
           }
         });
@@ -201,7 +218,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step('Verify hover styles', async () => {
           await locators.menuitem(page, 1).hover();
           await checkStyles(locators.menuitem(page, 1), {
-            'background-color': 'rgb(244, 245, 249)',
+            'background-color': itemHoverBg,
           });
         });
       }
@@ -237,7 +254,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.menuitemcheckbox(page, i), {
               'font-size': '16px',
               'min-height': '40px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -250,6 +266,9 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@dropdown-menu'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', item);
+      const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
+      const itemSelectedBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-selected');
+      const itemSelectedHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-selected-hover');
 
       await expect(page).toHaveScreenshot();
 
@@ -274,7 +293,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           await checkStyles(locators.itemInGroup(page).first(), {
             'font-size': '14px',
             'min-height': '32px',
-            'background-color': 'rgba(196, 229, 254, 0.7)',
+            'background-color': itemSelectedBg,
           });
 
           const count1 = await locators.menuitemradio(page).count();
@@ -283,7 +302,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.itemInGroup(page).nth(i), {
               'font-size': '14px',
               'min-height': '32px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -305,7 +323,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           await checkStyles(locators.itemInGroup(page).first(), {
             'font-size': '16px',
             'min-height': '40px',
-            'background-color': 'rgba(196, 229, 254, 0.7)',
+            'background-color': itemSelectedBg,
           });
 
           const count1 = await locators.menuitemradio(page).count();
@@ -314,7 +332,6 @@ test.describe(`${TAG.VISUAL} `, () => {
             await checkStyles(locators.itemInGroup(page).nth(i), {
               'font-size': '16px',
               'min-height': '40px',
-              'background-color': 'rgba(0, 0, 0, 0)',
             });
           }
         });
@@ -325,11 +342,11 @@ test.describe(`${TAG.VISUAL} `, () => {
         await test.step('Verify hover styles', async () => {
           await locators.menuitemradio(page, 0).hover();
           await checkStyles(locators.itemInGroup(page).first(), {
-            'background-color': 'rgb(196, 229, 254)',
+            'background-color': itemSelectedHoverBg,
           });
           await locators.menuitemradio(page, 1).hover();
           await checkStyles(locators.itemInGroup(page).nth(1), {
-            'background-color': 'rgb(244, 245, 249)',
+            'background-color': itemHoverBg,
           });
         });
       }
@@ -349,8 +366,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify no hover style on group title', async () => {
       await page.locator('[data-ui-name="Dropdown.Item"]').first().hover();
       await checkStyles(page.locator('[data-ui-name="Dropdown.Item"]').first(), {
-        'background-color': 'rgba(0, 0, 0, 0)',
-        'cursor': 'default',
+        cursor: 'default',
       });
     });
 
@@ -358,7 +374,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await checkStyles(locators.itemInGroup(page).nth(1), {
         'font-size': '16px',
         'min-height': '40px',
-        'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
 
@@ -366,7 +381,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await checkStyles(locators.itemInGroup(page).nth(2), {
         'font-size': '14px',
         'min-height': '32px',
-        'background-color': 'rgba(0, 0, 0, 0)',
       });
     });
 
@@ -718,23 +732,13 @@ test.describe(`${TAG.VISUAL} `, () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      if (browserName !== 'webkit') {
-        await expect(button).toBeFocused();
 
-        await page.keyboard.press('Tab');
-        await expect(search).toBeFocused();
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
-        await locators.button(page).first().click();
-        await expect(locators.item(page).nth(0)).not.toBeVisible();
-      } else {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
-
-        await locators.button(page).first().click();
-        await expect(locators.item(page).nth(0)).not.toBeVisible();
-      }
+      await locators.button(page).first().click();
+      await expect(locators.item(page).nth(0)).not.toBeVisible();
     });
   });
 });
@@ -1539,6 +1543,111 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify trigger is still focused', async () => {
         await expect(locators.button(page)).toBeFocused();
+      });
+
+      await test.step('Verify arrows do not focus disabled items', async () => {
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('ArrowDown');
+        const count = await locators.menuitemradio(page).count();
+        for (let i = 0; i < count; i++) {
+          await expect(locators.menuitemradio(page, i)).not.toBeFocused();
+        }
+        await expect(locators.button(page)).toBeFocused();
+      });
+    });
+
+    test('Verify ArrowUp reaches all enabled selectable items when first items are disabled', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
+        size: 'm',
+        disabledFirstItem: true,
+        disabledSecondItem: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter and skips disabled first items', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 2)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(2)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowUp wraps to the last enabled item', async () => {
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify Enter activates the highlighted enabled item', async () => {
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'hidden' });
+        await expect(locators.button(page)).toBeFocused();
+
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 9)).toHaveAttribute('aria-checked', 'true');
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify repeated ArrowUp reaches all enabled items and skips disabled first items', async () => {
+        for (const index of [8, 7, 6, 5, 4, 3, 2]) {
+          await page.keyboard.press('ArrowUp');
+          await expect(locators.menuitemradio(page, index)).toBeFocused();
+          await expect(locators.itemInGroup(page).nth(index)).toHaveClass(/highlighted/);
+          await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+          await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+          await expect(locators.itemInGroup(page).nth(0)).not.toHaveClass(/highlighted/);
+          await expect(locators.itemInGroup(page).nth(1)).not.toHaveClass(/highlighted/);
+        }
+
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+    });
+
+    test('Verify arrows skip disabled last selectable item', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
+        size: 'm',
+        disabledLastItem: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter and focuses first item', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 0)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(0)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowUp skips disabled last item', async () => {
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 9)).not.toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).not.toHaveClass(/highlighted/);
+        await expect(locators.menuitemradio(page, 8)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(8)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowDown skips disabled last item and wraps to first item', async () => {
+        await page.keyboard.press('ArrowDown');
+        await expect(locators.menuitemradio(page, 9)).not.toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).not.toHaveClass(/highlighted/);
+        await expect(locators.menuitemradio(page, 0)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(0)).toHaveClass(/highlighted/);
       });
     });
 

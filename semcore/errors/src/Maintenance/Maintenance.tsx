@@ -5,12 +5,16 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
-import type { MaintenanceComponent } from './Maintenance.type';
+import type { NSMaintenance } from './Maintenance.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootMaintenance extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<MaintenanceComponent>,
-  typeof RootMaintenance.enhance
+  Intergalactic.InternalTypings.InferComponentProps<NSMaintenance.Component>,
+  typeof RootMaintenance.enhance,
+  {},
+  {},
+  {},
+  NSMaintenance.DefaultProps
 > {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -20,7 +24,7 @@ class RootMaintenance extends Component<
     homeLink: '/',
     icon: getIconPath('maintenance'),
     titleTag: 'h2',
-  };
+  } as const;
 
   render() {
     const { Children, getI18nText, homeLink, toolName, titleTag } = this.asProps;
@@ -40,4 +44,7 @@ class RootMaintenance extends Component<
   }
 }
 
-export default createComponent(RootMaintenance) as MaintenanceComponent;
+export default createComponent<
+  NSMaintenance.Component,
+  typeof RootMaintenance
+>(RootMaintenance);

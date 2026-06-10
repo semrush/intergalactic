@@ -59,6 +59,11 @@ class RootButtonTrigger extends Component {
   }
 }
 
+/**
+ * ButtonTrigger
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-api#buttontrigger|API} | {@link https://developer.semrush.com/intergalactic/components/base-trigger/base-trigger-code#buttontrigger|Examples}
+ */
 const ButtonTrigger = createComponent(
   RootButtonTrigger,
   {

@@ -312,7 +312,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
         }
 
         if (lastIndex === -1) {
-          lastIndex = scrollTop === 0 ? aproxRowsOnPage : rows.length;
+          lastIndex = scrollTop === 0
+            ? aproxRowsOnPage
+            : Math.min(startIndex + aproxRowsOnPage * 2, rows.length);
         }
 
         this.indexForDownIterate = startIndex;
@@ -424,8 +426,13 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 }
 
-export const Body = createComponent(BodyRoot, {
-  Row,
-}) as unknown as DataTableBodyType & {
+type BodyComponent = DataTableBodyType & {
   Row: DataTableRowType;
 };
+
+export const Body = createComponent<
+  BodyComponent,
+  typeof BodyRoot
+>(BodyRoot, {
+  Row,
+});

@@ -236,13 +236,19 @@ export const defaultProps: SelectAdvancedConfigProps = {
   option3CheckboxIndeterminate: true,
   option3HintText: 'This is a hint for the option',
 
+  // Option 4
+  option4Value: 4,
+  option4Text: 'Simple option',
+  option4Disabled: false,
+  option4Selected: false,
+
   // Group
   showGroup: true,
   groupTitle: 'Group title',
   groupSubTitle: 'Group subtitle',
-  groupOption1Value: 4,
+  groupOption1Value: 5,
   groupOption1Text: '1st option in group',
-  groupOption2Value: 5,
+  groupOption2Value: 6,
   groupOption2Text: '2nd option in group',
 };
 

@@ -2,6 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.0] - 2026-06-05
+
+### Fixed
+
+- It was impossible to focus the last dropdown item using the `Up` arrow
+when the first item disabled.
+
+### Added
+
+- Links to the API and examples in the docs.
+
+## [17.1.0] - 2026-05-13
+
+### Added
+
+- New brand theme.
+
 ## [17.0.1] - 2026-04-16
 
 ### Fixed

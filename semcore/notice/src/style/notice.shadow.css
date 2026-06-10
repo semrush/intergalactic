@@ -6,71 +6,71 @@ SNotice {
   box-sizing: border-box;
   border-style: solid;
   border-width: 1px;
-  border-radius: var(--intergalactic-surface-rounded, 6px);
-  color: var(--intergalactic-text-primary, #191b23);
+  border-radius: var(--intergalactic-surface-rounded, 8px);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
 SNotice[theme='info'] {
-  background-color: var(--intergalactic-bg-secondary-info, #e9f7ff);
-  border-color: var(--intergalactic-border-info, #8ecdff);
+  background-color: var(--intergalactic-bg-secondary-info, oklch(0.959 0.021 267.8));
+  border-color: var(--intergalactic-border-info, oklch(0.51 0.274 263.6 / 0.222));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, #565861);
+      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.088 0.026 147.7 / 0.583));
     }
   }
 }
 
 SNotice[theme='danger'] {
-  background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
-  border-color: var(--intergalactic-border-critical, #ffaeb5);
+  background-color: var(--intergalactic-bg-secondary-critical, oklch(0.958 0.029 5.7));
+  border-color: var(--intergalactic-border-critical, oklch(0.628 0.257 28.1 / 0.243));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-critical, #ff4953);
+    color: var(--intergalactic-icon-primary-critical, oklch(0.552 0.226 28.7 / 0.848));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-critical-hover-active, #CC3A42);
+      color: var(--intergalactic-icon-primary-critical-hover-active, oklch(0.511 0.209 28.7 / 0.91));
     }
   }
 }
 
 SNotice[theme='warning'] {
-  background-color: var(--intergalactic-bg-secondary-warning, #fff3d9);
-  border-color: var(--intergalactic-border-warning, #ffb26e);
+  background-color: var(--intergalactic-bg-secondary-warning, oklch(0.979 0.03 88.1));
+  border-color: var(--intergalactic-border-warning, oklch(0.77 0.174 64.1 / 0.543));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-warning, #ff642d);
+    color: var(--intergalactic-icon-primary-warning, oklch(0.728 0.188 51.8));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
+      color: var(--intergalactic-icon-primary-warning-hover-active, oklch(0.531 0.169 39.3));
     }
   }
 }
 
 SNotice[theme='success'] {
-  background-color: var(--intergalactic-bg-secondary-success, #dbfee8);
-  border-color: var(--intergalactic-border-success, #59ddaa);
+  background-color: var(--intergalactic-bg-secondary-success, oklch(0.96 0.057 179.7));
+  border-color: var(--intergalactic-border-success, oklch(0.818 0.171 165.4 / 0.531));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-success, #009f81);
+    color: var(--intergalactic-icon-primary-success, oklch(0.595 0.124 165.4));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-success-hover-active, #037E68);
+      color: var(--intergalactic-icon-primary-success-hover-active, oklch(0.545 0.115 164.9));
     }
   }
 }
 
 SNotice[theme='muted'] {
-  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
-  border-color: var(--intergalactic-border-secondary, #e0e1e9);
+  background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
+  border-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, #565861);
+      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.088 0.026 147.7 / 0.583));
     }
   }
 }
@@ -94,23 +94,23 @@ SLabel {
 }
 
 SLabel[theme='info'] {
-  color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
 SLabel[theme='danger'] {
-  color: var(--intergalactic-icon-primary-critical, #ff4953);
+  color: var(--intergalactic-icon-primary-critical, oklch(0.552 0.226 28.7 / 0.848));
 }
 
 SLabel[theme='warning'] {
-  color: var(--intergalactic-icon-primary-warning, #ff642d);
+  color: var(--intergalactic-icon-primary-warning, oklch(0.728 0.188 51.8));
 }
 
 SLabel[theme='success'] {
-  color: var(--intergalactic-icon-primary-success, #009f81);
+  color: var(--intergalactic-icon-primary-success, oklch(0.595 0.124 165.4));
 }
 
 SLabel[theme='muted'] {
-  color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
 SLabel[theme='custom'] {

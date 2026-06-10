@@ -1,6 +1,6 @@
 ---
 title: Validation
-tabs: Design('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
+tabs: Design('validation-form'), A11y('validation-form-a11y'), Examples('validation-form-code')
 ---
 
 ## Description
@@ -55,21 +55,8 @@ All form elements show an `invalid` state with a `var(--border-danger-active)` b
 
 ![](./static/textarea-validation.png)
 
-## Notice with error message
+## Notice for invalid state
 
-For guidance on positioning the error message notice, refer to the [Notice](/components/notice/notice).
+Notice with a message should be positioned next to the element that triggered an invalid state or error. For instance, if a user submits a project title and encounters an error, **place the notice next to the controls that triggered the error**.
 
-## Validation messages
-
-<!-- vale DevDocs.Please = NO -->
-A standard text pattern is: Please enter something.
-
-Table: Validation messages
-
-| Condition  | Text            |
-| ---------- | --------------- |
-| Empty field | If referring to user data input, use: Please enter your [field name]. |
-| Entering someone else's data | Use: Please enter a/an [field name].  |
-| Field filled with erroneous data | For instance, with email field: Please enter a valid email. |
-| Checkbox error for Terms & Conditions | Use: Please confirm that you agree to our Terms and Conditions and Privacy Policy.   |
-<!-- vale DevDocs.Please = YES -->
+![](static/notice-error-message.png)

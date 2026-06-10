@@ -1,4 +1,4 @@
-import type { CheckboxProps } from '@semcore/ui/checkbox';
+import type { NSCheckbox } from '@semcore/ui/checkbox';
 import Checkbox from '@semcore/ui/checkbox';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type CheckboxJSXProps = JSXProps<CheckboxProps>;
+export type CheckboxJSXProps = JSXProps<NSCheckbox.Props>;
 
 function getJSX({ handleControlChange, ...checkboxProps }: CheckboxJSXProps) {
   return <Checkbox {...checkboxProps} onChange={((value) => handleControlChange?.('checked', value))} />;

@@ -1,11 +1,11 @@
 ---
 title: Select / Multiselect
 fileSource: select
-tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
+tabs: Design('select'), A11y('select-a11y'), API('select-api'), Examples('select-code'), Changelog('select-changelog')
 ---
 
 ::: tip
-If you need more customization for the dropdown menu, refer to [intergalactic/popper](/utils/popper/popper).
+If you need more customization for the dropdown menu, refer to [Popper](/utils/popper/popper).
 :::
 
 The Select component serves as a wrapper over [DropdownMenu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
@@ -74,7 +74,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 
 ## Menu customization
 
-Similar to [intergalactic/dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
+Similar to [DropdownMenu](/components/dropdown-menu/dropdown-menu), Select's menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`

@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@guidepup/guidepup": "0.24.1",
+    "@semcore/theme": "workspace:*",
     "@types/pixelmatch": "5.2.6",
     "@types/pngjs": "6.0.5",
     "@types/request": "2.48.12",

@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.0] - 2026-06-05
+
+### Fixed
+
+- The focus disappears and lost when focus not active sorting icon and
+hover it.
+
+### Added
+
+- Links to the API and examples in the docs.
+
+## [17.1.0] - 2026-05-13
+
+### Added
+
+- New brand theme.
+
+## [17.0.2] - 2026-04-30
+
+### Fixed
+
+- Lags when scrolling and header sticks
+- Checkbox with fixed column - body cell with checkbox is not fixed.
+- Incorrect value in css-selectors.
+
 ## [17.0.1] - 2026-04-16
 
 ### Fixed

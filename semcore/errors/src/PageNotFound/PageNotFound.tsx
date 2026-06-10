@@ -5,12 +5,16 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import React from 'react';
 
 import Error, { getIconPath } from '../Error';
-import type { PageNotFoundComponent, PageNotFoundProps } from './PageNotFound.type';
+import type { NSPageNotFound } from './PageNotFound.type';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootPageNotFound extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<PageNotFoundComponent>,
-  typeof RootPageNotFound.enhance
+  Intergalactic.InternalTypings.InferComponentProps<NSPageNotFound.Component>,
+  typeof RootPageNotFound.enhance,
+  {},
+  {},
+  {},
+  NSPageNotFound.DefaultProps
 > {
   static displayName = 'PageNotFound';
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -20,7 +24,7 @@ class RootPageNotFound extends Component<
     icon: getIconPath('page_not_found'),
     homeLink: '/',
     titleTag: 'h2',
-  };
+  } as const;
 
   render() {
     const { Children, getI18nText, homeLink, titleTag } = this.asProps;
@@ -40,4 +44,7 @@ class RootPageNotFound extends Component<
   }
 }
 
-export default createComponent(RootPageNotFound) as PageNotFoundComponent; ;
+export default createComponent<
+  NSPageNotFound.Component,
+  typeof RootPageNotFound
+>(RootPageNotFound);

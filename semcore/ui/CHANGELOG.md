@@ -1,3 +1,635 @@
+## [17.2.0] - 2026-06-05
+
+### @semcore/icon
+
+- **Added** Flag to define `Icon` components.
+
+### @semcore/core
+
+- **Added** Flag to define `Icon` components.
+- **Fixed** FeatureHighlight tokens didn't work in color variables.
+- **Fixed** Update internal core types.
+
+### @semcore/wizard
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** SR did not read Stepper content aloud on small screens.
+
+### @semcore/typography
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/tooltip
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/textarea
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/tag
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSTag` namespace.
+
+### @semcore/tab-panel
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/tab-line
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/switch
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSSwitch` namespace.
+
+### @semcore/spin-container
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/spin
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSSpin` namespace.
+
+### @semcore/slider
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSSlider` namespace.
+
+### @semcore/skeleton
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/select
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/radio
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/progress-bar
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/product-head
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/pills
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/pagination
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/notice-bubble
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Issue with `replace last item` and `initialAnimation=false`.
+
+### @semcore/notice
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/modal
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** `Modal` lost focus when clicking on the overlay.
+
+### @semcore/mini-chart
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/link
+
+- **Added** Links to the API and examples in the docs.
+- **Added** Calculate `Text` width based on the number of added `Icons` as Addons.
+
+### @semcore/input-tags
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/input-number
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/input-mask
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/input
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/inline-input
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/inline-edit
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/feedback-form
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** The form wouldn't close when using `Escape` with an error field.
+
+### @semcore/feature-popover
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/feature-highlight
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Unnecessary line breaks in `Notice` styles.
+
+### @semcore/ellipsis
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Values ​​with asynchronous initialization are not displayed in text
+with ellipses.
+
+### @semcore/dropdown-menu
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/drag-and-drop
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/dot
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/divider
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/date-picker
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/d3-chart
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/counter
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSCounter` namespace.
+
+### @semcore/color-picker
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSColorPicker/NSPaletteManager` namespaces.
+
+### @semcore/checkbox
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/carousel
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/card
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/button
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/bulk-textarea
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** The value wasn't cleared by the `clearAll` button when using only
+`defaultValue`.
+- **Fixed** Error in processing styles by PostCSS plugins.
+
+### @semcore/breadcrumbs
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/base-trigger
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/add-filter
+
+- **Added** Links to the API and examples in the docs.
+- **Fixed** Added filters were opening without animation.
+
+### @semcore/accordion
+
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/widget-empty
+
+- **Changed** Removed unnecessary width/height of the image.
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/time-picker
+
+- **Fixed** Converting issues in 24-hours format
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/dropdown
+
+- **Fixed** It was impossible to focus the last dropdown item using the `Up` arrow
+when the first item disabled.
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/side-panel
+
+- **Changed** Replaced css-ellipsis with our `Ellipsis` in `Text`.
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Replaced css-ellipsis with our `Ellipsis` in `Text`.
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/data-table
+
+- **Fixed** The focus disappears and lost when focus not active sorting icon and
+hover it.
+- **Added** Links to the API and examples in the docs.
+
+### @semcore/base-components
+
+- **Added** **flex-box**: New props: `bg`, `border`, `borderRadius`.
+- **Changed** **flex-box**: Added export for types.
+- **Added** **breakpoints**: Links to the API and examples in the docs.
+- **Added** **flex-box**: Links to the API and examples in the docs.
+- **Added** **hint**: Links to the API and examples in the docs.
+- **Added** **neighbor-location**: Links to the API and examples in the docs.
+- **Added** **outside-click**: Links to the API and examples in the docs.
+- **Added** **popper**: Links to the API and examples in the docs.
+- **Added** **portal**: Links to the API and examples in the docs.
+- **Added** **scroll-area**: Links to the API and examples in the docs.
+
+### @semcore/badge
+
+- **Added** New `unavailable` type.
+- **Added** Links to the API and examples in the docs.
+
+## [17.1.2] - 2026-05-13
+
+### @semcore/base-components
+
+- **Added** **animation**: New brand theme.
+- **Added** **breakpoints**: New brand theme.
+- **Added** **grid**: New brand theme.
+- **Added** **flex-box**: New brand theme.
+- **Added** **neighbor-location**: New brand theme.
+- **Added** **popper**: New brand theme.
+- **Added** **portal**: New brand theme.
+- **Added** **outside-click**: New brand theme.
+- **Added** **scroll-area**: New brand theme.
+
+## [17.1.0] - 2026-05-13
+
+### @semcore/wizard
+
+- **Added** New brand theme.
+
+### @semcore/widget-empty
+
+- **Added** New brand theme.
+
+### @semcore/typography
+
+- **Added** New brand theme.
+
+### @semcore/tooltip
+
+- **Added** New brand theme.
+
+### @semcore/time-picker
+
+- **Added** New brand theme.
+
+### @semcore/textarea
+
+- **Added** New brand theme.
+
+### @semcore/tag
+
+- **Added** New brand theme.
+
+### @semcore/tab-panel
+
+- **Added** New brand theme.
+
+### @semcore/tab-line
+
+- **Added** New brand theme.
+
+### @semcore/switch
+
+- **Added** New brand theme.
+
+### @semcore/spin-container
+
+- **Added** New brand theme.
+
+### @semcore/spin
+
+- **Added** New brand theme.
+
+### @semcore/slider
+
+- **Added** New brand theme.
+
+### @semcore/skeleton
+
+- **Added** New brand theme.
+
+### @semcore/side-panel
+
+- **Added** New brand theme.
+
+### @semcore/select
+
+- **Added** New brand theme.
+
+### @semcore/radio
+
+- **Added** New brand theme.
+
+### @semcore/progress-bar
+
+- **Added** New brand theme.
+
+### @semcore/product-head
+
+- **Added** New brand theme.
+
+### @semcore/pills
+
+- **Added** New brand theme.
+
+### @semcore/pagination
+
+- **Added** New brand theme.
+
+### @semcore/notice-bubble
+
+- **Added** New brand theme.
+
+### @semcore/notice
+
+- **Added** New brand theme.
+
+### @semcore/modal
+
+- **Added** New brand theme.
+
+### @semcore/mini-chart
+
+- **Added** New brand theme.
+
+### @semcore/link
+
+- **Added** New brand theme.
+
+### @semcore/input-tags
+
+- **Added** New brand theme.
+
+### @semcore/input-number
+
+- **Added** New brand theme.
+
+### @semcore/input-mask
+
+- **Added** New brand theme.
+
+### @semcore/input
+
+- **Added** New brand theme.
+
+### @semcore/inline-input
+
+- **Added** New brand theme.
+
+### @semcore/inline-edit
+
+- **Added** New brand theme.
+
+### @semcore/fullscreen-modal
+
+- **Added** New brand theme.
+
+### @semcore/flags
+
+- **Added** New brand theme.
+
+### @semcore/feedback-form
+
+- **Added** New brand theme.
+
+### @semcore/feature-popover
+
+- **Added** New brand theme.
+
+### @semcore/feature-highlight
+
+- **Added** New brand theme.
+
+### @semcore/errors
+
+- **Added** New brand theme.
+
+### @semcore/ellipsis
+
+- **Added** New brand theme.
+
+### @semcore/dropdown-menu
+
+- **Added** New brand theme.
+
+### @semcore/dropdown
+
+- **Added** New brand theme.
+
+### @semcore/drag-and-drop
+
+- **Added** New brand theme.
+
+### @semcore/dot
+
+- **Added** New brand theme.
+
+### @semcore/divider
+
+- **Added** New brand theme.
+
+### @semcore/date-picker
+
+- **Added** New brand theme.
+
+### @semcore/data-table
+
+- **Added** New brand theme.
+
+### @semcore/d3-chart
+
+- **Added** New brand theme.
+
+### @semcore/counter
+
+- **Added** New brand theme.
+
+### @semcore/core
+
+- **Added** New brand theme.
+
+### @semcore/color-picker
+
+- **Added** New brand theme.
+
+### @semcore/checkbox
+
+- **Added** New brand theme.
+
+### @semcore/carousel
+
+- **Added** New brand theme.
+
+### @semcore/card
+
+- **Added** New brand theme.
+
+### @semcore/button
+
+- **Added** New brand theme.
+
+### @semcore/bulk-textarea
+
+- **Added** New brand theme.
+
+### @semcore/breadcrumbs
+
+- **Added** New brand theme.
+
+### @semcore/base-trigger
+
+- **Added** New brand theme.
+
+### @semcore/badge
+
+- **Added** New brand theme.
+
+### @semcore/add-filter
+
+- **Added** New brand theme.
+
+### @semcore/accordion
+
+- **Added** New brand theme.
+
+## [17.0.2] - 2026-04-30
+
+### @semcore/radio
+
+- **Fixed** Deprecated atomic types. Atomic types are part of `NSRadio` namespace.
+
+### @semcore/d3-chart
+
+- **Fixed** Vulnerabilities were discovered in the `rollup` version.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Vulnerabilities were discovered in the `dompurify` version.
+
+### @semcore/accordion
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSAccordion`
+namespace.
+
+### @semcore/pills
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSPills` namespace.
+
+### @semcore/progress-bar
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSProgressBar`
+namespace.
+
+### @semcore/typography
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/divider
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSDivider`
+namespace.
+
+### @semcore/dot
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSDot` namespace.
+
+### @semcore/card
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSCard` namespace.
+
+### @semcore/errors
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of
+`NSErrors/NSAccessDenied/NSMaintenance/NSPageError/NSPageNotFound/NSProjectNotFound`
+namespaces.
+
+### @semcore/base-components
+
+- **Fixed** **flex-box**: Incorrect handling of styles for focus ring offset values.
+
+### @semcore/checkbox
+
+- **Fixed** Deprecated atomic types. Atomic parts are part of `NSCheckbox`
+namespaces.
+
+### @semcore/skeleton
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/tab-panel
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/tab-line
+
+- **Fixed** Rewrite component to TS.
+
+### @semcore/side-panel
+
+- **Fixed** Header height doesn't increase as content increases.
+
+### @semcore/data-table
+
+- **Fixed** Lags when scrolling and header sticks
+- **Fixed** Checkbox with fixed column - body cell with checkbox is not fixed.
+- **Fixed** Incorrect value in css-selectors.
+
+### @semcore/input-mask
+
+- **Fixed** Incorrect paddings with `neighborLocation=right`.
+
+### @semcore/date-picker
+
+- **Fixed** Incorrect input trigger width calculation.
+
 ## [17.0.1] - 2026-04-16
 
 ### @semcore/core

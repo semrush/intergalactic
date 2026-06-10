@@ -1,8 +1,7 @@
 ---
 title: TabPanel
 fileSource: tab-panel
-a11y: AA
-tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
+tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Examples('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 ## TabPanel
@@ -14,7 +13,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel />;
 ```
 
-<TypesView type="TabPanelProps" :types={...types} />
+<TypesView type="NSTabPanel.Props" :types={...types} />
 
 ## TabPanel.Item
 
@@ -29,7 +28,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item />;
 ```
 
-<TypesView type="TabPanelItemProps" :types={...types} />
+<TypesView type="NSTabPanel.Item.Props" :types={...types} />
 
 ## TabPanel.Item.Addon
 
@@ -53,6 +52,6 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Text />;
 ```
 
-<TypesView type="NSText.Props" :types={...types} />
+<TypesView type="NSTabPanel.Item.Text.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

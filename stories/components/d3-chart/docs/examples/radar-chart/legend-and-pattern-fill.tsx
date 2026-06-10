@@ -70,8 +70,8 @@ const data = RadarMockData.Default;
 
 const lineColors: Record<keyof typeof data, string> = {
   categories: '',
-  data_1: '--intergalactic-chart-palette-order-3',
-  data_2: '--intergalactic-chart-palette-order-6',
+  data_1: '--intergalactic-chart-palette-order-1',
+  data_2: '--intergalactic-chart-palette-order-2',
 };
 
 export default Demo;

@@ -1,7 +1,7 @@
 ---
 title: Confirmation modal dialog
 fileSource: modal
-tabs: Design('confirm-dialog'), Example('confirm-dialog-code')
+tabs: Design('confirm-dialog'), Examples('confirm-dialog-code')
 ---
 
 ## Description

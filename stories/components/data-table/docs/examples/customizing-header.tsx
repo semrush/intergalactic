@@ -6,7 +6,9 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
-  const [selectedColumn, setSelectedColumn] = React.useState('kd');
+  const [selectedColumn, setSelectedColumn] = React.useState<string>('kd');
+  const selectTrigger = React.useRef<HTMLDivElement | null>(null);
+
   return (
     <DataTable
       data={data}
@@ -15,7 +17,7 @@ const Demo = () => {
         {
           name: 'keyword',
           tag: Tooltip,
-          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
+          title: 'Description of Keywords.',
           tabIndex: 0,
           children: (
             <Text noWrap>
@@ -39,12 +41,18 @@ const Demo = () => {
                 visible={isVisible}
                 onVisibleChange={setIsVisible}
                 value={selectedColumn}
-                onChange={setSelectedColumn}
+                onChange={(val: string) => {
+                  setSelectedColumn(val);
+                  setTimeout(() => {
+                    selectTrigger.current?.focus();
+                  }, 0);
+                }}
               >
                 <Select.Trigger
                   tag={LinkTrigger}
                   aria-label='Column'
                   color='text-primary'
+                  ref={selectTrigger}
                   size={100}
                   onKeyDown={(e) => {
                     if (!isVisible && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
@@ -77,14 +85,14 @@ const Demo = () => {
         {
           name: 'cpc',
           tag: Tooltip,
-          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
+          title: 'Description of CPC.',
           tabIndex: 0,
           children: 'CPC',
         },
         {
           name: 'vol',
           tag: Tooltip,
-          title: 'Jesus Christ, Joe, fucking forget about it. I\'m Mr. Pink. Let\'s move on.',
+          title: 'Description of Volume.',
           tabIndex: 0,
           children: 'Vol.',
         },

@@ -3,7 +3,7 @@ import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-import { locators } from './utils';
+import { locators, waitForHint } from './utils';
 
 const storyPath = 'stories/components/base-trigger/tests/examples/link-trigger/base.tsx';
 
@@ -79,13 +79,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
           await page.keyboard.press('Tab');
           await page.waitForTimeout(100);
           await expect(locators.button(page).first()).toBeFocused();
-          await locators.hint(page).waitFor({ state: 'visible' });
-          await page.waitForFunction(
-            () => {
-              const el = document.querySelector('[data-ui-name="Hint"]');
-              return el && getComputedStyle(el).opacity === '1';
-            },
-          );
+          await waitForHint(page);
           await expect(page).toHaveScreenshot({ clip });
         });
 
@@ -105,13 +99,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
         await test.step('Verify active state + hover hint', async () => {
           await locators.button(page).first().hover();
           await page.waitForTimeout(100);
-          await locators.hint(page).waitFor({ state: 'visible' });
-          await page.waitForFunction(
-            () => {
-              const el = document.querySelector('[data-ui-name="Hint"]');
-              return el && getComputedStyle(el).opacity === '1';
-            },
-          );
+          await waitForHint(page);
           await expect(page).toHaveScreenshot({ clip: activeClip });
         });
       });
@@ -160,6 +148,40 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
     await test.step('Verify counter+badge active', async () => {
       await expect(page).toHaveScreenshot({ clip: clip2 });
+    });
+  });
+
+  // Section 2.5: LinkTrigger inside Select — ellipsis with addons
+  // Verifies truncation still works after removing manual calc() width logic in getTextProps.
+  test.describe('Link Trigger inside Select - ellipsis with addons', () => {
+    const selectSizes = [300, 600] as const;
+    const selectAddonCombos = [
+      { showAddonLeft: true, showAddonRight: false, desc: 'left only' },
+      { showAddonLeft: false, showAddonRight: true, desc: 'right only' },
+      { showAddonLeft: false, showAddonRight: false, loading: true, desc: 'loading' },
+    ];
+
+    selectSizes.forEach((size) => {
+      selectAddonCombos.forEach(({ desc, loading = false, ...addons }) => {
+        test(`Verify LinkTrigger inside Select truncates with ${desc}, size=${size}`, {
+          tag: [TAG.PRIORITY_HIGH, '@link-trigger', '@select', '@ellipsis'],
+        }, async ({ page }) => {
+          await loadPage(
+            page,
+            'stories/components/base-trigger/tests/examples/link-trigger/with-select.tsx',
+            'en',
+            {
+              size,
+              loading,
+              ...addons,
+              ellipsis: { ellipsis: true },
+              w: size < 600 ? 150 : 300,
+            },
+          );
+          await page.waitForTimeout(150);
+          await expect(page).toHaveScreenshot();
+        });
+      });
     });
   });
 
