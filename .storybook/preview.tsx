@@ -2,8 +2,6 @@ import { PortalProvider } from '@semcore/base-components';
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 
-// import '@semcore/theme/lib/highlights-light.css';
-
 type PreviewDecorator = NonNullable<Preview['decorators']>[number];
 
 type StorybookStory = Parameters<PreviewDecorator>[0];
@@ -18,11 +16,40 @@ type StorybookDecoratorParams = Parameters<PreviewDecorator>[1] & {
   };
 };
 
-const withStrictMode: PreviewDecorator = (
+const withStrictMode = (
   Story: StorybookStory,
   params: StorybookDecoratorParams,
 ) => {
-  const rootRef = React.useRef<HTMLDivElement>(null);
+  return params.globals.strictMode === 'on'
+    ? (
+        <React.StrictMode>
+          <Story />
+        </React.StrictMode>
+      )
+    : <Story />;
+};
+
+const withLayout = (
+  Story: StorybookStory,
+  params: StorybookDecoratorParams,
+) => {
+  if (params.parameters.layout === 'fullscreen') {
+    return <Story />;
+  }
+
+  return (
+    <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
+      <div tabIndex={0} />
+      <Story />
+      <div tabIndex={0} />
+    </div>
+  );
+};
+
+const withTheme = (
+  Story: StorybookStory,
+  params: StorybookDecoratorParams,
+) => {
   const stylesheet = params.globals.theme === 'new'
     ? 'assets/theme/light.css'
     : 'assets/core/light.css';
@@ -31,42 +58,27 @@ const withStrictMode: PreviewDecorator = (
     ? 'assets/theme/highlights-light.css'
     : 'assets/core/highlights-light.css';
 
-  const story = params.globals.strictMode === 'on'
-    ? (
-        <React.StrictMode>
-          <Story />
-        </React.StrictMode>
-      )
-    : <Story />;
-
-  if (params.parameters.layout === 'fullscreen') {
-    return (
-      <>
-        <link rel='stylesheet' href={stylesheet} />
-        <link rel='stylesheet' href={stylesheetHighlight} />
-        <PortalProvider value={rootRef}>
-          <div ref={rootRef}>
-            {story}
-          </div>
-        </PortalProvider>
-      </>
-    );
-  }
-
   return (
     <>
       <link rel='stylesheet' href={stylesheet} />
       <link rel='stylesheet' href={stylesheetHighlight} />
-      <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
-        <div tabIndex={0} />
-        <PortalProvider value={rootRef}>
-          <div ref={rootRef}>
-            {story}
-          </div>
-        </PortalProvider>
-        <div tabIndex={0} />
-      </div>
+      <Story />
     </>
+  );
+};
+
+const withPortalProvider = (
+  Story: StorybookStory,
+  params: StorybookDecoratorParams,
+) => {
+  const rootRef = React.useRef<HTMLDivElement>(null);
+
+  return (
+    <PortalProvider value={rootRef}>
+      <div ref={rootRef}>
+        <Story />
+      </div>
+    </PortalProvider>
   );
 };
 
@@ -143,6 +155,9 @@ const preview: Preview = {
   },
   decorators: [
     withStrictMode,
+    withTheme,
+    withLayout,
+    withPortalProvider,
   ],
 };
 

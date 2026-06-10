@@ -112,6 +112,7 @@ class InputField<T extends string | string[]> extends Component<
   componentDidMount() {
     const { autoFocus, disabled } = this.asProps;
 
+    this.textarea = this.createContentEditableElement(this.asProps);
     this.containerRef.current?.append(this.textarea);
 
     this.handleValueOutChange();
