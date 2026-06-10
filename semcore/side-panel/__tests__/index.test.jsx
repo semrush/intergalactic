@@ -14,19 +14,19 @@ describe('SidePanel', () => {
   beforeEach(cleanup);
 
   test('Verify visible property', () => {
-    const component = render(<SidePanel aria-label='Side panel'>Content</SidePanel>);
+    const component = render(<SidePanel>Content</SidePanel>);
     expect(component.queryByText('Content')).toBeNull();
 
-    component.rerender(<SidePanel visible aria-label='Side panel'>Content</SidePanel>);
+    component.rerender(<SidePanel visible>Content</SidePanel>);
     expect(component.queryByText('Content')).not.toBeNull();
   });
 
   test('Verify closable false property', () => {
-    const component = render(<SidePanel visible aria-label='Side panel'>Content</SidePanel>);
+    const component = render(<SidePanel visible>Content</SidePanel>);
     expect(component.queryByLabelText('Close')).not.toBeNull();
 
     component.rerender(
-      <SidePanel visible closable={false} aria-label='Side panel'>
+      <SidePanel visible closable={false}>
         Content
       </SidePanel>,
     );
@@ -36,7 +36,7 @@ describe('SidePanel', () => {
   test('Verify onClose for Esc keypress', async () => {
     const spy = vi.fn();
     const component = render(
-      <SidePanel visible aria-label='Side panel' onClose={spy}>
+      <SidePanel visible onClose={spy}>
         Content
       </SidePanel>,
     );
@@ -52,9 +52,9 @@ describe('SidePanel', () => {
   test('Verify onClose for click outside of SidePanel.Panel', async () => {
     const spy = vi.fn();
     const component = render(
-      <SidePanel visible aria-label='Side panel' onClose={spy}>
+      <SidePanel visible onClose={spy}>
         <SidePanel.Overlay data-testid='overlay'>
-          <SidePanel.Panel aria-label='Side panel' />
+          <SidePanel.Panel />
         </SidePanel.Overlay>
       </SidePanel>,
     );
@@ -76,19 +76,19 @@ describe('SidePanel', () => {
 
   test('Verify onClose for Sidebar.Close click', async () => {
     const spy = vi.fn();
-    const component = render(<SidePanel visible closable aria-label='Side panel' onClose={spy} />);
+    const component = render(<SidePanel visible closable onClose={spy} />);
     const closeNode = component.queryByLabelText('Close');
     await userEvent.click(closeNode);
     expect(spy).toBeCalledWith('onCloseClick', expect.any(Object));
   });
 
   test('Verify block page scroll', () => {
-    render(<SidePanel visible aria-label='Side panel' />);
+    render(<SidePanel visible />);
     expect(document.body).toHaveStyle('overflow: hidden');
   });
 
   test.concurrent('Verify render function for children', () => {
-    const component = <SidePanel visible aria-label='Side panel'>{() => <SidePanel.Overlay />}</SidePanel>;
+    const component = <SidePanel visible>{() => <SidePanel.Overlay />}</SidePanel>;
     render(component);
 
     expect(
@@ -99,7 +99,7 @@ describe('SidePanel', () => {
   test.skip('Verify not block page scroll without Overlay', () => {
     render(
       <SidePanel visible>
-        <SidePanel.Panel aria-label='Side panel' />
+        <SidePanel.Panel />
       </SidePanel>,
     );
     expect(document.body).not.toHaveStyle('overflow: hidden');
@@ -108,9 +108,9 @@ describe('SidePanel', () => {
   test.concurrent('Verify ignorePortalsStacking prop', async () => {
     const component = render(
       <Portal>
-        <SidePanel visible data-testid='inP' aria-label='Side panel in portal'>
+        <SidePanel visible data-testid='inP'>
           Content in portal
-          <SidePanel ignorePortalsStacking visible data-testid='outP' aria-label='Side panel in body'>
+          <SidePanel ignorePortalsStacking visible data-testid='outP'>
             Content in body
           </SidePanel>
         </SidePanel>
