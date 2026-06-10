@@ -114,19 +114,21 @@ const Demo = (props: ProjectSelectorProps) => {
           aria-describedby={searchValue ? 'search-result' : undefined}
         />
 
-        <DropdownMenu.VirtualList
-          key={filteredProjects.length === projects.length ? 'virtual-list-stable-key' : normalizedQuery}
-          hMax={listHeight + 41}
-          rowHeight={rowHeight}
-          renderRow={Row}
-          rows={filteredProjects}
-          customData={{
-            setProject: handleSetProject,
-            selected: selectedProject,
-            disabledAll: props.disabledAll,
-            disabledFirstItem: props.disabledFirstItem,
-          }}
-        />
+        {filteredProjects.length > 0 && (
+          <DropdownMenu.VirtualList
+            key={filteredProjects.length === projects.length ? 'virtual-list-stable-key' : normalizedQuery}
+            hMax={listHeight + 41}
+            rowHeight={rowHeight}
+            renderRow={Row}
+            rows={filteredProjects}
+            customData={{
+              setProject: handleSetProject,
+              selected: selectedProject,
+              disabledAll: props.disabledAll,
+              disabledFirstItem: props.disabledFirstItem,
+            }}
+          />
+        )}
         <DropdownMenu.StatusItem itemsCount={filteredProjects.length} id='search-result' />
         <Divider />
         <DropdownMenu.Item
