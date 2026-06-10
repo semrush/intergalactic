@@ -125,7 +125,7 @@ test.describe(`@dropdown-menu ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="InputSearch"]').fill('d');
+    await page.getByRole('textbox', { name: 'Search' }).fill('d');
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
@@ -136,7 +136,7 @@ test.describe(`@dropdown-menu ${TAG.ACCESSIBILITY}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.locator('[data-ui-name="InputSearch"]').fill('zzz');
+    await page.getByRole('textbox', { name: 'Search' }).fill('zzz');
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);
