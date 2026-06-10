@@ -265,7 +265,7 @@ const Demo = () => {
                   </Select.Option>
                 )}
               </div>
-              <Box my={3} mx={2}>
+              <Box my={1} mx={2}>
                 <Button use='primary' w='100%' onClick={handleApply} ref={applyButtonRef}>
                   Apply
                 </Button>
