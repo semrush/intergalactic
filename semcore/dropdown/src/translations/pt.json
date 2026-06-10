@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Pressione Tab para acessar o pop-over"
+  "triggerHint": "Pressione Tab para acessar o pop-over",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, one {resultado} other {resultados}} encontrados",
+  "StatusItem.defaultState.nothingFound": "Nenhum resultado encontrado",
+  "StatusItem.loadingState": "Carregando...",
+  "StatusItem.errorState": "Algo deu errado. Tente novamente mais tarde."
 }

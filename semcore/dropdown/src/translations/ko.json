@@ -1,3 +1,7 @@
 {
-  "triggerHint": "팝업창으로 이동하려면 Tab 키를 누르세요"
+  "triggerHint": "팝업창으로 이동하려면 Tab 키를 누르세요",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, other {결과}} 발견됨",
+  "StatusItem.defaultState.nothingFound": "결과가 없습니다",
+  "StatusItem.loadingState": "로딩 중...",
+  "StatusItem.errorState": "오류가 발생했습니다. 나중에 다시 시도해 주세요."
 }
