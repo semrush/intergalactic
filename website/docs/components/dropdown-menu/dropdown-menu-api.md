@@ -114,8 +114,8 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 ## DropdownMenu.StatusItem
 
-Element to display one of statuses: `loading`, `error`, `default`. Use it when you have a list with dynamically loaded items.
-In default status it renders screen reader only with the number of elements found or `nothing found`.
+Item for displaying one of the following statuses: `loading`, `error`, or `default`. Use it in lists with dynamically loaded items.
+In the `default` status, it is rendered for screen readers only and announces either the number of items found or a "Nothing found" message.
 
 ```jsx
 import DropdownMenu from '@semcore/ui/dropdown-menu';
