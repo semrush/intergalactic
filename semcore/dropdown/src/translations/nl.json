@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Druk op Tab om naar de pop-over te gaan"
+  "triggerHint": "Druk op Tab om naar de pop-over te gaan",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, one {resultaat} other {resultaten}} gevonden",
+  "StatusItem.defaultState.nothingFound": "Niets gevonden",
+  "StatusItem.loadingState": "Bezig met laden...",
+  "StatusItem.errorState": "Er is iets fout gegaan. Probeer het later nog eens."
 }

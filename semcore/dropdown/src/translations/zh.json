@@ -1,3 +1,7 @@
 {
-  "triggerHint": "按 T​​ab 转到弹出框"
+  "triggerHint": "按 T​​ab 转到弹出框",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, other {结果}} 找到",
+  "StatusItem.defaultState.nothingFound": "未找到任何数据",
+  "StatusItem.loadingState": "正在加载……",
+  "StatusItem.errorState": "出错了。请稍后重试。"
 }

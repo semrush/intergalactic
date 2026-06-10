@@ -1,7 +1,7 @@
 ---
 title: Widget empty state
 fileSource: widget-empty
-tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
+tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Examples('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
 ## NoData

@@ -1,7 +1,7 @@
 ---
 title: TabPanel
 fileSource: tab-line
-tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
+tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Examples('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 ## What component has

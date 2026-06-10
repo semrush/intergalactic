@@ -2,14 +2,16 @@ import Select from '@semcore/ui/select';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
+import { OnChangeInputSearchNothingFoundTest } from './__tests__/on_change_input_search.test';
 import BasicPropsExample, { defaultProps as BasicProps } from './examples/basic_props_and_trigger_addons';
-import OnChangeInputSearchExample from './examples/on_change_input_search';
+import OnChangeInputSearchExample, { defaultProps as OnChangeInputSearchProps } from './examples/on_change_input_search';
 import OnVisibleExample from './examples/on_visible';
 import OptionsExample, { defaultProps as OptionsProps } from './examples/options_checkbox_group_and_hint';
 import ProgrammaticallyFocusExample from './examples/programmatically_focus';
 import type { defaultProps as SelectWithEllipsisProps } from './examples/select-with-ellipsis';
 import SelectWithEllipsisExample from './examples/select-with-ellipsis';
 import SubcomponentsExample, { defaultProps as SubcomponentsProps } from './examples/subcomponents_trigger_popper_list_search';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Test',
@@ -125,8 +127,22 @@ export const SelectWithEllipsis: StoryObj<typeof SelectWithEllipsisProps> = {
   },
 };
 
-export const OnChangeInputSearch: Story = {
+export const OnChangeInputSearch: StoryObj<typeof OnChangeInputSearchProps> = {
   render: OnChangeInputSearchExample,
+  argTypes: {
+    ...commonArgTypes,
+    state: {
+      control: { type: 'select' },
+      options: ['default', 'loading', 'error'],
+      description: 'Select.StatusItem state',
+    },
+    customChildren: {
+      control: { type: 'text' },
+      description: 'Custom Select.StatusItem text (overrides the default i18n text)',
+    },
+  },
+  args: OnChangeInputSearchProps,
+  play: playWrapper(OnChangeInputSearchNothingFoundTest),
 };
 
 export const ProgrammaticallyFocus: Story = {

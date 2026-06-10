@@ -1,7 +1,7 @@
 ---
 title: Link
 fileSource: link
-tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
+tabs: Design('link'), A11y('link-a11y'), API('link-api'), Examples('link-code'), Changelog('link-changelog')
 ---
 
 <Playground for="Link" />

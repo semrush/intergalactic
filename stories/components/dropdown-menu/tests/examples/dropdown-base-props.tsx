@@ -1,8 +1,10 @@
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
+import type { StatusItemState } from '@semcore/ui/dropdown';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import type { DropdownMenuProps, DropdownMenuListProps } from '@semcore/ui/dropdown-menu';
+import Select from '@semcore/ui/select';
 import React from 'react';
 
 type DropDownPropsExample = DropdownMenuProps & DropdownMenuListProps & {
@@ -15,6 +17,11 @@ type DropDownPropsExample = DropdownMenuProps & DropdownMenuListProps & {
   selectedRename?: boolean;
   selectedDownload?: boolean;
   selectedDelete?: boolean;
+
+  // Search functionality (DropdownMenu.StatusItem demo)
+  showSearch?: boolean;
+  state?: StatusItemState;
+  customChildren?: string;
 };
 const Demo = (props: DropDownPropsExample) => {
   const {
@@ -31,7 +38,61 @@ const Demo = (props: DropDownPropsExample) => {
     selectedRename,
     selectedDownload,
     selectedDelete,
+    showSearch,
+    state = 'default',
+    customChildren,
   } = props;
+
+  const [search, setSearch] = React.useState('');
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const items = [
+    { id: 'save', label: 'Save', selected: selectedSave, disabled: disabledAll || disabledSave },
+    { id: 'rename', label: 'Rename', selected: selectedRename, disabled: disabledAll || disabledRename },
+    { id: 'download', label: 'Download', selected: selectedDownload, disabled: disabledAll || disabledDownload },
+    { id: 'delete', label: 'Delete', selected: selectedDelete, disabled: disabledAll || disabledDelete },
+  ];
+  const filteredItems = items.filter((item) =>
+    item.label.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  if (showSearch) {
+    return (
+      <DropdownMenu
+        size={size}
+        visible={visible}
+        disablePortal={disablePortal}
+        stretch={stretch}
+        onVisibleChange={setIsVisible}
+      >
+        <DropdownMenu.Trigger tag={Button}>Trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Popper aria-label='Actions with search'>
+          <Select.InputSearch
+            autoFocus={isVisible}
+            value={search}
+            onChange={setSearch}
+            aria-describedby={search ? 'search-result' : undefined}
+          />
+          <DropdownMenu.List>
+            {state === 'default' &&
+              filteredItems.map((item) => (
+                <DropdownMenu.Item key={item.id} size={size} selected={item.selected} disabled={item.disabled}>
+                  {item.label}
+                </DropdownMenu.Item>
+              ))}
+
+            <DropdownMenu.StatusItem
+              itemsCount={filteredItems.length}
+              state={state}
+              id='search-result'
+            >
+              {customChildren || undefined}
+            </DropdownMenu.StatusItem>
+          </DropdownMenu.List>
+        </DropdownMenu.Popper>
+      </DropdownMenu>
+    );
+  }
 
   return (
     <Flex gap={16} direction='row'>
@@ -74,6 +135,9 @@ export const defaultDropDownPropsExample: DropDownPropsExample = {
   visible: undefined,
   stretch: undefined,
   disablePortal: undefined,
+  showSearch: false,
+  state: 'default',
+  customChildren: '',
 };
 
 Demo.defaultProps = defaultDropDownPropsExample;

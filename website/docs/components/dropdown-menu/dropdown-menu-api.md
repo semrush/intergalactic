@@ -1,7 +1,7 @@
 ---
 title: DropdownMenu
 fileSource: dropdown-menu
-tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Example('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
+tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Examples('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
 ---
 
 ::: tip
@@ -111,6 +111,18 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 ```
 
 <TypesView type="FlexProps" :types={...types} />
+
+## DropdownMenu.StatusItem
+
+Item for displaying one of the following statuses: `loading`, `error`, or `default`. Use it in lists with dynamically loaded items.
+In the `default` status, it is rendered for screen readers only and announces either the number of items found or a "Nothing found" message.
+
+```jsx
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+<DropdownMenu.StatusItem />;
+```
+
+<TypesView type="DropdownStatusItemProps" :types={...types} />
 
 ## Context
 
