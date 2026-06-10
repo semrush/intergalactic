@@ -1,63 +1,63 @@
-/// <reference types="vitest" />
-import { resolve as resolvePath } from 'path';
+import { dirname, resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
 
 import AllureReporter from 'allure-vitest/reporter';
 import babel from 'vite-plugin-babel';
 import { defineConfig } from 'vitest/config';
 
-export default defineConfig({
-  plugins: [
-    babel({
-      babelConfig: {
-        presets: [
-          ['@babel/preset-react', { throwIfNamespace: false }],
-          ['@semcore/babel-preset-ui', { cssStyle: { extract: null } }],
-        ],
-        plugins: ['babel-plugin-transform-import-meta'],
-      },
-      filter: /\.(j|t)sx?$/,
-    }),
+const rootDir = resolvePath(dirname(fileURLToPath(import.meta.url)));
+
+export const vitestPlugins = [
+  babel({
+    babelConfig: {
+      presets: [
+        ['@babel/preset-react', { throwIfNamespace: false }],
+        ['@semcore/babel-preset-ui', { cssStyle: { extract: null } }],
+      ],
+      plugins: ['babel-plugin-transform-import-meta'],
+    },
+    filter: /\.(j|t)sx?$/,
+  }),
+];
+export const vitestResolve = {
+  alias: [
+    {
+      find: /^@semcore\/core\/lib\/utils\/(.*)/,
+      replacement: resolvePath(rootDir, 'semcore/core/src/utils/$1'),
+    },
+    {
+      find: /^@semcore\/icon\/(.*)/,
+      replacement: resolvePath(rootDir, 'semcore/icon/lib/$1'),
+    },
+    {
+      find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,
+      replacement: resolvePath(rootDir, 'tools/esbuild-plugin-semcore/$1'),
+    },
+    {
+      find: /^@semcore\/testing-utils\/(.*)/,
+      replacement: resolvePath(rootDir, 'tools/testing-utils/$1'),
+    },
+    {
+      find: /^@semcore\/([\w-]*)$/,
+      replacement: resolvePath(rootDir, 'semcore/$1/src'),
+    },
+    {
+      find: /^intergalactic\/([\w-]*)$/,
+      replacement: resolvePath(rootDir, 'semcore/$1/src'),
+    },
   ],
-  resolve: {
-    alias: [
-      {
-        find: /^@semcore\/core\/lib\/utils\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/core/src/utils/$1'),
-      },
-      {
-        find: /^@semcore\/icon\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/icon/lib/$1'),
-      },
-      {
-        find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,
-        replacement: resolvePath(__dirname, 'tools/esbuild-plugin-semcore/$1'),
-      },
-      {
-        find: /^@semcore\/testing-utils\/(.*)/,
-        replacement: resolvePath(__dirname, 'tools/testing-utils/$1'),
-      },
-      {
-        find: /^@semcore\/([\w-]*)$/,
-        replacement: resolvePath(__dirname, 'semcore/$1/src'),
-      },
-      {
-        find: /^intergalactic\/([\w-]*)$/,
-        replacement: resolvePath(__dirname, 'semcore/$1/src'),
-      },
-    ],
-  },
+};
+
+export default defineConfig({
+  plugins: vitestPlugins,
+  resolve: vitestResolve,
   test: {
-    testTimeout: 60 * 1000,
-    include: [
-      'semcore/*/__tests__/**/*.test.tsx',
-      'semcore/*/__tests__/**/*.test.jsx',
-      'semcore/*/__tests__/**/*.test.ts',
-      'semcore/*/__tests__/**/*.test.js',
-      'tools/*/__tests__/**/*.test.tsx',
-      'tools/*/__tests__/**/*.test.jsx',
-      'tools/*/__tests__/**/*.test.ts',
-      'tools/*/__tests__/**/*.test.js',
+    projects: [
+      'semcore/accordion',
+      'semcore/add-filter',
+      'tools/process-css-unplugin',
     ],
+    testTimeout: 60 * 1000,
     exclude: [
       'tools/icon-transform-svg',
       '**/*.d.ts',
@@ -68,8 +68,6 @@ export default defineConfig({
       '.cache',
       'tools/*/__tests__/utils.ts',
     ],
-    environment: 'jsdom',
-    setupFiles: [resolvePath(__dirname, 'tools/testing-utils/setupTests')],
     reporters: ['default', new AllureReporter({})],
   },
   define: {

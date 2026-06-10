@@ -1,6 +1,6 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, waitFor, act } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { expect, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import AddFilter from '../src';
@@ -9,7 +9,7 @@ describe('AddFilter Dependency imports', () => {
   runDependencyCheckTests('add-filter');
 });
 
-describe('AddFilter', () => {
+describe('AddFilter', (test) => {
   beforeEach(() => {
     cleanup();
 

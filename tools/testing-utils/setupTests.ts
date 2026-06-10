@@ -51,3 +51,17 @@ vi.stubGlobal('CSS', {
     return false;
   },
 });
+
+Object.defineProperty(window.HTMLCanvasElement.prototype, 'getContext', {
+  writable: true,
+  value: (contextId: string) => {
+    if (contextId === '2d') {
+      return {
+        clearRect: vi.fn(),
+        measureText: vi.fn((text: string) => ({ width: text.length * 7 })),
+        font: '',
+      };
+    }
+    return null;
+  },
+});

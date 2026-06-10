@@ -1,7 +1,7 @@
 import type { Intergalactic } from '@semcore/core';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
+import { expect, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Accordion from '../src';
@@ -10,39 +10,39 @@ describe('Accordion Dependency imports', () => {
   runDependencyCheckTests('accordion');
 });
 
-describe('Accordion', () => {
-  describe('Types', () => {
-    const any: any = null;
-    test('Verify props nesting', () => {
-      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+describe('Accordion types', (test) => {
+  const any: any = null;
+  test('Verify props nesting', () => {
+    const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
 
-      assertType<JSX.Element>(<Accordion tag={Link} href='https://google.com' xProp1={1} />);
-      // @ts-expect-error
-      assertType<JSX.Element>(<Accordion href='https://google.com' />);
-    });
-    test('Verify value&onChange relation', () => {
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => { }} />);
-      // @ts-expect-error
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => { }} />);
-    });
-    test('Verify value&onChange relation with useState', () => {
-      const value: number[] = any;
-      const setValue: React.Dispatch<React.SetStateAction<number[]>> = any;
-
-      assertType<JSX.Element>(<Accordion value={value} onChange={setValue} />);
-    });
-    test('Verify value&children relation', () => {
-      assertType<JSX.Element>(<Accordion value={1}>{(props, handlers) => any}</Accordion>);
-      assertType<JSX.Element>(
-        <Accordion value={1}>{({ value }: { value: number }) => any}</Accordion>,
-      );
-      assertType<JSX.Element>(
-        // @ts-expect-error
-        <Accordion value={1}>{({ value }: { value: string }) => any}</Accordion>,
-      );
-    });
+    assertType<JSX.Element>(<Accordion tag={Link} href='https://google.com' xProp1={1} />);
+    // @ts-expect-error
+    assertType<JSX.Element>(<Accordion href='https://google.com' />);
   });
+  test('Verify value&onChange relation', () => {
+    assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => { }} />);
+    // @ts-expect-error
+    assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => { }} />);
+  });
+  test('Verify value&onChange relation with useState', () => {
+    const value: number[] = any;
+    const setValue: React.Dispatch<React.SetStateAction<number[]>> = any;
 
+    assertType<JSX.Element>(<Accordion value={value} onChange={setValue} />);
+  });
+  test('Verify value&children relation', () => {
+    assertType<JSX.Element>(<Accordion value={1}>{(props, handlers) => any}</Accordion>);
+    assertType<JSX.Element>(
+      <Accordion value={1}>{({ value }: { value: number }) => any}</Accordion>,
+    );
+    assertType<JSX.Element>(
+      // @ts-expect-error
+      <Accordion value={1}>{({ value }: { value: string }) => any}</Accordion>,
+    );
+  });
+});
+
+describe('Accordion', (test) => {
   beforeEach(cleanup);
 
   test.concurrent('Verify supports uncontrolled mode with single expandable item', () => {
