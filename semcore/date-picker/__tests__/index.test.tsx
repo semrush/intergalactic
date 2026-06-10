@@ -23,8 +23,6 @@ const mockDateRangeMaskedInputRefWarning = () => {
       );
 
     if (isDateRangeMaskedInputRefWarning) return;
-
-    originalConsoleError(message, ...args);
   });
 };
 

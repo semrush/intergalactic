@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -36,33 +36,35 @@ describe('Carousel', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Verify keyboard support', () => {
+  test('Verify keyboard support', async () => {
     const spy = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByRole } = render(
       <Carousel data-testid='carousel' onIndexChange={spy}>
         <Items />
       </Carousel>,
     );
 
-    const carousel = getByTestId('carousel');
-    fireEvent.keyDown(carousel, { key: 'ArrowLeft' });
+    const tablist = getByRole('tablist');
+    tablist.focus();
+    await userEvent.keyboard('[ArrowLeft]');
     expect(spy).toHaveBeenCalledWith(1);
-    fireEvent.keyDown(carousel, { key: 'ArrowRight' });
+    await userEvent.keyboard('[ArrowRight]');
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test('Verify control mode with keyboard', () => {
+  test('Verify control mode with keyboard', async () => {
     const spy = vi.fn();
 
-    const { rerender, getByTestId } = render(
+    const { rerender, getByRole } = render(
       <Carousel data-testid='carousel' index={0} onIndexChange={spy}>
         <Items />
       </Carousel>,
     );
 
-    const carousel = getByTestId('carousel');
-    fireEvent.keyDown(carousel, { key: 'ArrowLeft' });
+    const tablist = getByRole('tablist');
+    tablist.focus();
+    await userEvent.keyboard('[ArrowLeft]');
     expect(spy).toHaveBeenCalledWith(1);
 
     rerender(
@@ -70,7 +72,8 @@ describe('Carousel', () => {
         <Items />
       </Carousel>,
     );
-    fireEvent.keyDown(carousel, { key: 'ArrowRight' });
+    getByRole('tablist').focus();
+    await userEvent.keyboard('[ArrowRight]');
     expect(spy).toHaveBeenCalledWith(0);
   });
 });

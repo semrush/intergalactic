@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
@@ -20,7 +20,12 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    await userEvent.click(getByTestId('label').firstElementChild!);
+    const control = getByTestId('label').firstElementChild;
+    if (!(control instanceof HTMLElement)) {
+      throw new Error('Expected switch label to contain a control element');
+    }
+
+    await userEvent.click(control);
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 
@@ -36,7 +41,8 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    fireEvent.keyDown(getByTestId('value'), { key: 'Enter', keyCode: 13 });
+    getByTestId('value').focus();
+    await userEvent.keyboard('[Enter]');
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 });
