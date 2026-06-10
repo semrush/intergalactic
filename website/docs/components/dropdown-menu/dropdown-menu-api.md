@@ -112,6 +112,18 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 <TypesView type="FlexProps" :types={...types} />
 
+## DropdownMenu.StatusItem
+
+Element to display one of statuses: `loading`, `error`, `default`. Use it when you have a list with dynamically loaded items.
+In default status it renders screen reader only with the number of elements found or `nothing found`.
+
+```jsx
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+<DropdownMenu.StatusItem />;
+```
+
+<TypesView type="DropdownStatusItemProps" :types={...types} />
+
 ## Context
 
 Context of the component is available inside the render-function.

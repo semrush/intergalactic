@@ -60,9 +60,12 @@ export type DropdownGroupProps = BoxProps & {
 
 export type StatusItemState = 'loading' | 'default' | 'error';
 
-type DropdownStatusItemProps = {
+export type DropdownStatusItemProps = {
+  /** State to display */
   state?: StatusItemState;
+  /** Count of found items */
   itemsCount: number;
+  /** Custom text content */
   children?: React.ReactNode;
 };
 
