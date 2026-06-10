@@ -259,7 +259,13 @@ jobs:
         id: test
         env:
           CHANGED_COMPONENTS: ${{ needs.defineChangedComponents.outputs.changedComponents }}
-        run: pnpm test run $CHANGED_COMPONENTS -- --allowOnly=false
+        run: |
+          PROJECT_ARGS=()
+          for COMPONENT_NAME in $CHANGED_COMPONENTS; do
+            PROJECT_ARGS+=(--project "@semcore/$COMPONENT_NAME")
+          done
+
+          pnpm test run "${PROJECT_ARGS[@]}" -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
