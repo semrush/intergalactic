@@ -1,5 +1,6 @@
 import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Input from '@semcore/input';
 import Spin from '@semcore/spin';
 import React from 'react';
@@ -10,8 +11,8 @@ import Select from '../../index';
 
 class AutoSuggestRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSAutoSuggest.Component>,
-  [],
-  { value: string },
+  typeof AutoSuggestRoot.enhance,
+  { value: (value: string) => string },
   {},
   NSAutoSuggest.State,
   NSAutoSuggest.DefaultProps
@@ -19,6 +20,8 @@ class AutoSuggestRoot extends Component<
   static defaultProps: NSAutoSuggest.DefaultProps = {
     defaultValue: '',
   };
+
+  static enhance = [uniqueIDEnhancement()] as const;
 
   private abortController: AbortController | undefined;
   private changeDebounce = 0;
@@ -54,7 +57,7 @@ class AutoSuggestRoot extends Component<
         this.setState({ isLoading: true });
       }
 
-      this.changeDebounce = setTimeout(async () => {
+      this.changeDebounce = window.setTimeout(async () => {
         this.handleChangeVisible(true);
 
         if (Array.isArray(suggestions)) {
@@ -103,8 +106,9 @@ class AutoSuggestRoot extends Component<
   };
 
   render() {
-    const { value } = this.asProps;
+    const { value, uid } = this.asProps;
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
+    const id = `${uid}_autosuggest-trigger`;
 
     return (
       <Select
@@ -115,7 +119,7 @@ class AutoSuggestRoot extends Component<
         onHighlightedIndexChange={this.handleChangeHighlightedIndex}
         defaultHighlightedIndex={null}
       >
-        <Select.Trigger tag={Input} onFocus={this.handleFocus} onBlur={this.handleBlur}>
+        <Select.Trigger id={id} tag={Input} onFocus={this.handleFocus} onBlur={this.handleBlur}>
           <Root
             render={Input.Value}
             value={value}
@@ -129,15 +133,25 @@ class AutoSuggestRoot extends Component<
             <Input.Addon tag={Spin} size='l' />
           )}
         </Select.Trigger>
-        {suggestions.length > 0 && (
-          <Select.Menu>
-            {suggestions.map((option) => (
-              <Select.Option value={option} key={option} selected={false} onClick={() => this.handleChangeSelect(option)}>
-                <Highlight highlight={value}>{option}</Highlight>
-              </Select.Option>
-            ))}
-          </Select.Menu>
-        )}
+        <Select.Popper aria-labelledby={id}>
+          {isLoading
+            ? (<div>loading...</div>) /* todo use DD.StatusItem */
+            : (
+                <>
+                  {suggestions.length === 0
+                    ? (value.length > 0 && <div>start typing to see options</div>) /* todo use DD.StatusItem */
+                    : (
+                        <Select.List>
+                          {suggestions.map((option) => (
+                            <Select.Option value={option} key={option} selected={false} onClick={() => this.handleChangeSelect(option)}>
+                              <Highlight highlight={value}>{option}</Highlight>
+                            </Select.Option>
+                          ))}
+                        </Select.List>
+                      )}
+                </>
+              )}
+        </Select.Popper>
       </Select>
     );
   }
