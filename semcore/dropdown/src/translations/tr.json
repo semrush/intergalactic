@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Popover'a gitmek için Tab tuşuna basın"
+  "triggerHint": "Popover'a gitmek için Tab tuşuna basın",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, one {sonuç} other {sonuçlar}} bulundu",
+  "StatusItem.defaultState.nothingFound": "Hiçbir şey bulunamadı",
+  "StatusItem.loadingState": "Yükleniyor...",
+  "StatusItem.errorState": "Bir şeyler ters gitti. Lütfen daha sonra tekrar deneyin."
 }
