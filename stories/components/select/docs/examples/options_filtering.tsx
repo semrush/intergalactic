@@ -26,15 +26,16 @@ const Demo = () => {
             onChange={setFilter}
             aria-describedby={filter ? 'search-result' : undefined}
           />
-          <Select.List hMax='224px'>
-            {options.map(({ value, label }) => (
-              <Select.Option value={value} key={value}>
-                {label}
-              </Select.Option>
-            ))}
-
-            <Select.StatusItem id='search-result' itemsCount={options.length} />
-          </Select.List>
+          {options.length > 0 && (
+            <Select.List hMax='224px'>
+              {options.map(({ value, label }) => (
+                <Select.Option value={value} key={value}>
+                  {label}
+                </Select.Option>
+              ))}
+            </Select.List>
+          )}
+          <Select.StatusItem id='search-result' itemsCount={options.length} />
         </Select.Popper>
       </Select>
     </Flex>

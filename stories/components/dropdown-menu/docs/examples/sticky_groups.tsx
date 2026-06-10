@@ -121,17 +121,18 @@ const Demo = () => {
       <DropdownMenu.Popper aria-label='Select project popover'>
         <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} aria-describedby={searchValue ? 'search-result' : undefined} />
 
-        <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
-          {filteredMenuData.map((group, index) => {
-            return (
-              <DropdownMenu.Group key={index} title={group.title} sticky>
-                {group.projects.map((project) => (<Row key={`${group.title}_${project.title}`} data={{ project, setProject, selectedProject }} />))}
-              </DropdownMenu.Group>
-            );
-          })}
-
-          <DropdownMenu.StatusItem id='search-result' itemsCount={filteredMenuData.length} />
-        </DropdownMenu.List>
+        {filteredMenuData.length > 0 && (
+          <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
+            {filteredMenuData.map((group, index) => {
+              return (
+                <DropdownMenu.Group key={index} title={group.title} sticky>
+                  {group.projects.map((project) => (<Row key={`${group.title}_${project.title}`} data={{ project, setProject, selectedProject }} />))}
+                </DropdownMenu.Group>
+              );
+            })}
+          </DropdownMenu.List>
+        )}
+        <DropdownMenu.StatusItem id='search-result' itemsCount={filteredMenuData.length} />
         <Divider />
         <DropdownMenu.Item
           role='button'
