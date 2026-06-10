@@ -55,6 +55,7 @@ export default defineConfig({
     projects: [
       'semcore/accordion',
       'semcore/add-filter',
+      'semcore/data-table',
       'tools/process-css-unplugin',
     ],
     testTimeout: 60 * 1000,

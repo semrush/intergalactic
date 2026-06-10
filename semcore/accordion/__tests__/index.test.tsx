@@ -1,4 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
@@ -44,6 +45,28 @@ describe('Accordion types', (test) => {
 
 describe('Accordion', (test) => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', ({ expect }) => {
+    const accordion = (
+      <Accordion defaultValue={1}>
+        <Accordion.Item value={1}>
+          <Accordion.Item.Toggle>
+            <Accordion.Item.ToggleButton>
+              Section 1
+            </Accordion.Item.ToggleButton>
+          </Accordion.Item.Toggle>
+          <Accordion.Item.Collapse>
+            This is section 1
+          </Accordion.Item.Collapse>
+        </Accordion.Item>
+      </Accordion>
+    );
+
+    const { container } = render(accordion);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.concurrent('Verify supports uncontrolled mode with single expandable item', () => {
     const spy = vi.fn();
