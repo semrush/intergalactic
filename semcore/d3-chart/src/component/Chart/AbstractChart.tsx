@@ -61,7 +61,7 @@ export abstract class AbstractChart<
 
     this.handleResize = trottle(this.handleResize.bind(this));
 
-    if (canUseDOM()) {
+    if (canUseDOM() && (!props.plotWidth || !props.plotHeight)) {
       this.observer = new ResizeObserver(this.handleResize);
     }
 
@@ -77,8 +77,8 @@ export abstract class AbstractChart<
       dataDefinitions: this.getDefaultDataDefinitions(),
       highlightedLine: -1,
       withTrend: false,
-      plotWidth: props.plotWidth,
-      plotHeight: props.plotHeight,
+      plotWidth: 0,
+      plotHeight: 0,
     } as State;
   }
 
@@ -94,6 +94,14 @@ export abstract class AbstractChart<
 
   public componentWillUnmount(): void {
     this.observer?.disconnect();
+  }
+
+  protected get plotWidth() {
+    return this.asProps.plotWidth ?? this.state.plotWidth;
+  }
+
+  protected get plotHeight() {
+    return this.asProps.plotHeight ?? this.state.plotHeight;
   }
 
   protected getDefaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
@@ -560,7 +568,7 @@ export abstract class AbstractChart<
     const SChart = Root;
     const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip } =
       this.asProps;
-    const { plotWidth, plotHeight } = this.state;
+    const { plotWidth, plotHeight } = this;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
@@ -588,7 +596,7 @@ export abstract class AbstractChart<
   }
 
   private handleResize(entities: ResizeObserverEntry[]) {
-    const { aspect, direction, onResize } = this.asProps;
+    const { aspect, direction, onResize, plotWidth, plotHeight } = this.asProps;
     const chartElement = this.chartRef.current;
 
     if (!chartElement) return;
@@ -622,8 +630,8 @@ export abstract class AbstractChart<
     }
 
     this.setState({
-      plotWidth: width,
-      plotHeight: height,
+      plotWidth: plotWidth ? 0 : width,
+      plotHeight: plotHeight ? 0 : height,
     });
 
     onResize?.([width, height], entities);

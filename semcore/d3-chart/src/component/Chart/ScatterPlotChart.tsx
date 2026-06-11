@@ -43,7 +43,7 @@ class ScatterPlotChartComponent extends AbstractChart<
 
   protected get xScale() {
     const { xScale, marginY = 30, data, groupKey, valueKey } = this.asProps;
-    const { plotWidth } = this.state;
+    const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
@@ -63,7 +63,7 @@ class ScatterPlotChartComponent extends AbstractChart<
 
   protected get yScale(): ScaleLinear<any, any> {
     const { yScale, marginX = 30, valueKey } = this.asProps;
-    const { plotHeight } = this.state;
+    const { plotHeight } = this;
 
     if (yScale) {
       return yScale;

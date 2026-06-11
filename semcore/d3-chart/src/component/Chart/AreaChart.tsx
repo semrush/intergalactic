@@ -31,7 +31,7 @@ class AreaChartComponent extends AbstractChart<
 
   get xScale() {
     const { xScale, marginY = 40, data, groupKey } = this.asProps;
-    const { plotWidth } = this.state;
+    const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
@@ -50,7 +50,7 @@ class AreaChartComponent extends AbstractChart<
 
   get yScale(): ScaleLinear<any, any> {
     const { yScale, marginX = 24, stacked } = this.asProps;
-    const { plotHeight } = this.state;
+    const { plotHeight } = this;
 
     if (yScale) {
       return yScale;

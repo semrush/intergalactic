@@ -217,13 +217,13 @@ class CigaretteChartComponent extends AbstractChart<
   };
 
   get xScale() {
-    const { plotWidth } = this.state;
+    const { plotWidth } = this;
 
     return scaleLinear([0, plotWidth]);
   }
 
   get yScale() {
-    const { plotHeight } = this.state;
+    const { plotHeight } = this;
 
     return scaleLinear([plotHeight, 0]);
   }

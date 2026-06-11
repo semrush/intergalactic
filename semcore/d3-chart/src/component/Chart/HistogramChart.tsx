@@ -38,7 +38,7 @@ class HistogramChartComponent extends AbstractChart<
       data,
       groupKey,
     } = this.asProps;
-    const { plotWidth, plotHeight } = this.state;
+    const { plotWidth, plotHeight } = this;
 
     if (xScale) {
       return xScale;
@@ -68,7 +68,7 @@ class HistogramChartComponent extends AbstractChart<
       invertAxis,
       data,
     } = this.asProps;
-    const { plotWidth, plotHeight } = this.state;
+    const { plotWidth, plotHeight } = this;
 
     let max: number;
 

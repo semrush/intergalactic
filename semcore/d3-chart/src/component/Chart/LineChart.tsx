@@ -31,7 +31,7 @@ class LineChartComponent extends AbstractChart<
 
   protected get xScale() {
     const { xScale, marginY = 30, data, groupKey } = this.asProps;
-    const { plotWidth } = this.state;
+    const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
@@ -50,7 +50,7 @@ class LineChartComponent extends AbstractChart<
 
   protected get yScale(): ScaleLinear<any, any> {
     const { yScale, marginX = 30 } = this.asProps;
-    const { plotHeight } = this.state;
+    const { plotHeight } = this;
 
     if (yScale) {
       return yScale;

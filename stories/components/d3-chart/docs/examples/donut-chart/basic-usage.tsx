@@ -1,4 +1,3 @@
-import { Box } from '@semcore/ui/base-components';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
@@ -6,12 +5,9 @@ import DonutMockData from '../../../__mocks__/donut';
 
 const Demo = () => {
   return (
-    <Box
-      w={450}
-      h={300}
-    >
-      <Chart.Donut data={data} aria-label='Donut chart' />
-    </Box>
+    <div style={{ width: '450px' }}>
+      <Chart.Donut plotWidth={300} plotHeight={300} data={data} aria-label='Donut chart' />
+    </div>
   );
 };
 

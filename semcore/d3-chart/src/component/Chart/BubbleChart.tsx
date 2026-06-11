@@ -73,7 +73,7 @@ class BubbleChartComponent extends AbstractChart<
 
   get xScale() {
     const { xScale, marginY = 30, data } = this.asProps;
-    const { plotWidth } = this.state;
+    const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
@@ -87,7 +87,7 @@ class BubbleChartComponent extends AbstractChart<
 
   get yScale(): ScaleLinear<any, any> {
     const { yScale, marginX = 30, data } = this.asProps;
-    const { plotHeight } = this.state;
+    const { plotHeight } = this;
 
     if (yScale) {
       return yScale;

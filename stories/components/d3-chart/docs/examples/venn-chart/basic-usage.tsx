@@ -6,12 +6,11 @@ import VennMockData from '../../../__mocks__/venn';
 
 const Demo = () => {
   return (
-    <Box
-      w={500}
-      h={300}
-    >
+    <Box w={500}>
       <Chart.Venn
         data={data}
+        plotWidth={300}
+        plotHeight={300}
         legendProps={legendProps}
         aria-label='Venn chart'
       />
