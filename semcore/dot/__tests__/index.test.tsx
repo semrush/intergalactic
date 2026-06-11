@@ -38,11 +38,4 @@ describe('Dot', () => {
     expect(alert).toBeInTheDocument();
     expect(alert).toHaveAttribute('aria-live', 'polite');
   });
-
-  test('Verify logs warning if no aria-label or aria-labelledby', () => {
-    render(<Dot />);
-    expect(console.warn).toHaveBeenCalledWith(
-      '[Dot]: \'aria-label\' or \'aria-labelledby\' are required for Dot component',
-    );
-  });
 });

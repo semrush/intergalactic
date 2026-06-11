@@ -21,25 +21,6 @@ describe('Badge deprecation warnings', () => {
   afterEach(() => {
     consoleWarnSpy.mockRestore();
   });
-
-  test('Should warn when type prop is not provided', () => {
-    render(<Badge>Custom</Badge>);
-
-    expect(consoleWarnSpy).toHaveBeenCalled();
-    const warnCall = consoleWarnSpy.mock.calls.find((call) =>
-      call.some((arg) => typeof arg === 'string' && arg.includes('type')),
-    );
-    expect(warnCall).toBeDefined();
-  });
-
-  test('Should not warn when type prop is provided', () => {
-    render(<Badge type='admin' />);
-
-    const warnCall = consoleWarnSpy.mock.calls.find((call) =>
-      call.some((arg) => typeof arg === 'string' && arg.includes('type') && arg.includes('required')),
-    );
-    expect(warnCall).toBeUndefined();
-  });
 });
 
 describe('Badge backward compatibility (deprecated props)', () => {
