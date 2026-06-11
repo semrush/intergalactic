@@ -10,12 +10,12 @@ const Demo = () => (
       <FilterTrigger.Text aria-hidden>Link to website</FilterTrigger.Text>
       <FilterTrigger.Addon>
         <Counter theme='info'>
-          <AnimatedNumber value={500} delay={1000} formatValue={(x) => Math.round(x).toString()} />
+          <AnimatedNumber value={12} delay={400} formatValue={(x) => Math.round(x).toString()} />
           <ScreenReaderOnly>selected</ScreenReaderOnly>
         </Counter>
       </FilterTrigger.Addon>
     </Dropdown.Trigger>
-    <Dropdown.Popper aria-label='Link to website' p={4}>
+    <Dropdown.Popper aria-label='Advanced filters' p={4}>
       Filter content
     </Dropdown.Popper>
   </Dropdown>

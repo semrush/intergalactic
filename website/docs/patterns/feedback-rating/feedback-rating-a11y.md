@@ -1,6 +1,6 @@
 ---
 title: FeedbackRating
-tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Example('feedback-rating-code')
+tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Examples('feedback-rating-code')
 ---
 
 ## What component has

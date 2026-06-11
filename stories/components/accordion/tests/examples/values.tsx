@@ -20,7 +20,7 @@ const Demo = () => {
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse data-test-id='number'>
-          <Box p='12px 24px 24px'>Section with value = 0 (number)</Box>
+          <Box pt={3} px={6} pb={6}>Section with value = 0 (number)</Box>
         </Accordion.Item.Collapse>
       </Accordion.Item>
 
@@ -32,7 +32,7 @@ const Demo = () => {
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse data-test-id='string'>
-          <Box p='12px 24px 24px'>Section with value = "one" (string)</Box>
+          <Box pt={3} px={6} pb={6}>Section with value = "one" (string)</Box>
         </Accordion.Item.Collapse>
       </Accordion.Item>
     </Accordion>

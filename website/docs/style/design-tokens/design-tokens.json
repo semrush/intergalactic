@@ -2349,17 +2349,41 @@
   },
   {
     "name": "--intergalactic-header-bg",
-    "value": "#382E5E",
+    "value": "oklch(0.97 0.001 180)",
     "components": []
   },
   {
     "name": "--intergalactic-header-border-primary",
-    "value": "#382E5E",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "components": []
   },
   {
     "name": "--intergalactic-header-border-secondary",
-    "value": "rgba(255,255,255, 0.15)",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-page-bg",
+    "value": "oklch(0.97 0.001 180)",
+    "description": "Background fill for the whole product page.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-footer-bg",
+    "value": "oklch(0.97 0.001 180)",
+    "description": "Background fill for the product page footer.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-bg",
+    "value": "oklch(0.97 0.001 180)",
+    "description": "Background fill for the product page sidebar.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-sidebar-nav-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Color for the border of the page sidebar.",
     "components": []
   },
   {

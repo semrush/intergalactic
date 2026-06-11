@@ -10,7 +10,7 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   linePolygon: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Line.Polygon"]');
+    const base = page.locator('[data-ui-name="Radar.Polygon"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
   polygonLine: (page: Page, index?: number) => {
@@ -20,7 +20,7 @@ export const locators = {
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
     text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"]'),
-  tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"]'),
+  tooltip: (page: Page) => page.locator('[data-ui-name="Radar.Tooltip"]'),
 };
 
 /* =====================================================

@@ -1,7 +1,6 @@
 ---
 title: Notice
-a11y: AA
-tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
+tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Examples('notice-code'), Changelog('notice-changelog')
 ---
 
 ## What component has

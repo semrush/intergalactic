@@ -1,6 +1,5 @@
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import LineMockData from '../../../__mocks__/line';
@@ -32,7 +31,7 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Line x='x' y='y' curve={curveCardinal}>
+      <Line x='x' y='y'>
         <Line.Dots display={displayDots} />
       </Line>
     </Plot>

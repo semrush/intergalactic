@@ -33,9 +33,8 @@ const Demo = () => {
         aria-label={`Here is a ${placement}-placed side panel`}
       >
         <Text size={300} tag='p'>
-          Taking the Stage: Trends and Strategies for 2024 and Beyond
+          SidePanel content
         </Text>
-        <Button mt={3}>Read more</Button>
       </SidePanel>
     </React.Fragment>
   );

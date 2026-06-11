@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { AdvancedFilteringControlTest } from './__tests__/advanced_filtering_control.test';
 import { BasicUsageTest } from './__tests__/basic_usage.test';
+import { OptionsFilteringTest } from './__tests__/options_filtering.test';
 import { SortingMultiselectOptionsTest } from './__tests__/sorting_multiselect_options.test';
 import { StickyGroupTest } from './__tests__/sticky_group.test';
 import AdvancedFilteringControlExample from './examples/advanced_filtering_control';
@@ -65,6 +66,7 @@ export const Options: Story = {
 
 export const OptionsFiltering: Story = {
   render: OptionsFilteringExample,
+  play: playWrapper(OptionsFilteringTest),
 };
 
 export const RenderFunction: Story = {

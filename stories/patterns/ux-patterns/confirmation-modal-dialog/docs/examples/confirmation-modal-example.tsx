@@ -12,8 +12,8 @@ const warningBlockStyles = {
   background: 'var(--intergalactic-bg-secondary-critical, #fff0f7)',
   border: '1px solid var(--intergalactic-border-critical, #ffaeb5)',
   borderRadius: 'var(--intergalactic-surface-rounded, 6px)',
-  marginBottom: '24px',
-  padding: '16px',
+  marginBottom: 'var(--intergalactic-spacing-6x, 24px)',
+  padding: 'var(--intergalactic-spacing-4x, 16px)',
 };
 
 type FormValues = {
@@ -85,7 +85,7 @@ const Demo = () => {
   return (
     <>
       <Button onClick={handleOpen}>Open confirmation modal</Button>
-      <Modal visible={visible} onClose={handleClose} w={536}>
+      <Modal visible={visible} onClose={handleClose} w={520}>
         <Modal.Title mb={4}>Delete project?</Modal.Title>
         <Text size={300} mb={4} tag='p'>
           This will
@@ -110,7 +110,7 @@ const Demo = () => {
             <Text size={300} mb={2} tag='label' htmlFor={fieldName}>
               Confirm deletion by typing the project name
               {' '}
-              <Text tag='strong' color='red-500'>
+              <Text tag='strong' color='text-critical'>
                 Test
               </Text>
             </Text>

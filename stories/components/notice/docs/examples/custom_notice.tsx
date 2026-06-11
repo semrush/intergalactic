@@ -18,7 +18,7 @@ const Demo = (props: NoticeProps) => (
       </Notice.Text>
       <Notice.Actions>
         <Button use='primary' size='l'>
-          Got it
+          Got it!
         </Button>
       </Notice.Actions>
     </Notice.Content>

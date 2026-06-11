@@ -20,7 +20,7 @@ const Demo = ({
 
   return (
     <NoData type={type} description={finalDescription} {...rest}>
-      {showChildren && <div style={{ marginTop: '16px' }}>Additional content</div>}
+      {showChildren && <div style={{ marginTop: 'var(--intergalactic-spacing-4x)' }}>Additional content</div>}
     </NoData>
   );
 };

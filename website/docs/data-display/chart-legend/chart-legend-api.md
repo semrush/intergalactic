@@ -1,7 +1,7 @@
 ---
 title: Chart legend
 fileSource: d3-chart
-tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-code'), Changelog('chart-legend-changelog')
+tabs: Design('chart-legend'), A11y('chart-legend-a11y'), API('chart-legend-api'), Examples('chart-legend-code'), Changelog('chart-legend-changelog')
 ---
 
 ## D3 chart

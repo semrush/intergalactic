@@ -578,7 +578,7 @@ describe('Chart.Radar', () => {
       />,
     );
 
-    const radar = queryByAttribute('data-ui-name', container, 'Line');
+    const radar = queryByAttribute('data-ui-name', container, 'Radar');
     expect(radar).toBeTruthy();
 
     // idk, just simulated the way the first and second segments are clicked.
@@ -601,7 +601,7 @@ describe('Chart.Radar', () => {
       />,
     );
 
-    const radar = queryByAttribute('data-ui-name', container, 'Line');
+    const radar = queryByAttribute('data-ui-name', container, 'Radar');
     expect(radar).toBeTruthy();
 
     expect(() => fireEvent.click(radar!, { clientX: 250, clientY: 125 })).not.toThrow();

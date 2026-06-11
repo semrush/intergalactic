@@ -1,4 +1,4 @@
-import { ScreenReaderOnly, Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -26,36 +26,16 @@ const Demo = () => {
             onChange={setFilter}
             aria-describedby={filter ? 'search-result' : undefined}
           />
-          <Select.List hMax='224px'>
-            {options.map(({ value, label }) => (
-              <Select.Option value={value} key={value}>
-                {label}
-              </Select.Option>
-            ))}
-            {options.length
-              ? (
-                  <ScreenReaderOnly id='search-result' aria-hidden='true'>
-                    {options.length}
-                    {' '}
-                    result
-                    {options.length > 1 && 's'}
-                    {' '}
-                    found
-                  </ScreenReaderOnly>
-                )
-              : (
-                  <Text
-                    tag='div'
-                    id='search-result'
-                    key='Nothing'
-                    p='6px 8px'
-                    size={200}
-                    use='secondary'
-                  >
-                    Nothing found
-                  </Text>
-                )}
-          </Select.List>
+          {options.length > 0 && (
+            <Select.List hMax='224px'>
+              {options.map(({ value, label }) => (
+                <Select.Option value={value} key={value}>
+                  {label}
+                </Select.Option>
+              ))}
+            </Select.List>
+          )}
+          <Select.StatusItem id='search-result' itemsCount={options.length} />
         </Select.Popper>
       </Select>
     </Flex>

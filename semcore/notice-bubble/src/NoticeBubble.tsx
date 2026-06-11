@@ -99,12 +99,12 @@ class NoticeBubbleContainerRoot extends Component<
         return sstyled(styles)(
           <PortalForNoticeItem
             key={notice.uid}
-            tag={SView}
             containerNode={containerNode}
             animationDuration={duration}
             styles={styles}
             getI18nText={getI18nText}
             {...notice}
+            tag={SView}
           />,
         );
       });
@@ -158,7 +158,16 @@ class NoticeBubbleContainerRoot extends Component<
   }
 }
 
-const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
+const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTMLDivElement>) => {
+  const { focusLock, ...other } = props;
+  const innerRef = React.useRef<HTMLDivElement | null>(null);
+  useFocusLock(innerRef, false, 'auto', !focusLock, true);
+  const ref = useForkRef(outerRef, innerRef);
+
+  return <Flex ref={ref} {...other} />;
+});
+
+const PortalForNoticeItem = (props: Intergalactic.InternalTypings.EfficientOmit<NoticeBubbleViewItemProps, 'tag'> & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
   // Show content for info notice in previously mounted node with aria-live polite
@@ -169,14 +178,14 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
   }, []);
 
   const SNoticeAriaLiveWrapper = 'div';
-  const Tag = props.tag;
+  const { tag: Tag, ...otherProps } = props;
 
-  if (props.type === 'info') {
+  if (otherProps.type === 'info') {
     return (
       <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-        <Portal nodeToMount={props.containerNode}>
+        <Portal nodeToMount={otherProps.containerNode}>
           <SNoticeAriaLiveWrapper aria-live='polite'>
-            {showContent && <Tag {...props} />}
+            {showContent && <Tag {...otherProps} />}
           </SNoticeAriaLiveWrapper>
         </Portal>
       </ZIndexStackingContextProvider>
@@ -185,8 +194,8 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
 
   return (
     <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-      <Portal nodeToMount={props.containerNode}>
-        <Tag {...props} />
+      <Portal nodeToMount={otherProps.containerNode}>
+        <Tag {...otherProps} />
       </Portal>
     </ZIndexStackingContextProvider>
   );
@@ -283,7 +292,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
   };
 
   render() {
-    const SBubble = Root;
+    const SBubble = FocusLock;
     const SDismiss = Button;
     const SContent = Flex;
     const SMessage = 'div';
@@ -319,6 +328,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeydown}
           role={type === 'warning' ? 'alert' : undefined}
+          focusLock={focusLock}
         >
           <SDismiss
             aria-haspopup={undefined}

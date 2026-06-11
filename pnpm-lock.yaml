@@ -323,10 +323,10 @@ importers:
   semcore/accordion:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       csstype:
         specifier: 3.1.3
@@ -348,22 +348,22 @@ importers:
   semcore/add-filter:
     dependencies:
       '@semcore/base-trigger':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/dropdown':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown-menu
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/select':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -415,6 +415,9 @@ importers:
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../../tools/theme
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
@@ -422,19 +425,19 @@ importers:
   semcore/base-trigger:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/counter':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../counter
       '@semcore/spin':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -453,7 +456,7 @@ importers:
   semcore/breadcrumbs:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -472,16 +475,16 @@ importers:
   semcore/bulk-textarea:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/counter':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../counter
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       dompurify:
         specifier: 3.4.0
@@ -506,13 +509,13 @@ importers:
   semcore/button:
     dependencies:
       '@semcore/link':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../link
       '@semcore/spin':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../spin
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -531,13 +534,13 @@ importers:
   semcore/card:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -556,10 +559,10 @@ importers:
   semcore/carousel:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/modal':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../modal
     devDependencies:
       '@semcore/base-components':
@@ -578,7 +581,7 @@ importers:
   semcore/checkbox:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -594,16 +597,16 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/divider':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
     devDependencies:
       '@semcore/base-components':
@@ -674,13 +677,13 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(typescript@4.9.5)
       '@semcore/checkbox':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../checkbox
       '@semcore/divider':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../divider
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       '@types/d3-shape':
         specifier: 3.1.7
@@ -753,19 +756,19 @@ importers:
   semcore/data-table:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../checkbox
       '@semcore/spin':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
       '@semcore/widget-empty':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../widget-empty
     devDependencies:
       '@semcore/accordion':
@@ -811,31 +814,31 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../checkbox
       '@semcore/divider':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input-mask
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       dayjs:
         specifier: 1.8.36
@@ -884,7 +887,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../card
     devDependencies:
       '@semcore/badge':
@@ -907,6 +910,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/dropdown:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^17.1.0
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -921,13 +928,13 @@ importers:
   semcore/dropdown-menu:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/dropdown':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       classnames:
         specifier: 2.2.6
@@ -955,7 +962,7 @@ importers:
   semcore/ellipsis:
     dependencies:
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
@@ -971,13 +978,13 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/illustration':
         specifier: ^17.0.1
         version: link:../illustration
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -993,40 +1000,40 @@ importers:
   semcore/feature-highlight:
     dependencies:
       '@semcore/badge':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../badge
       '@semcore/base-trigger':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../checkbox
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/notice':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../notice
       '@semcore/pills':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../pills
       '@semcore/radio':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../select
       '@semcore/switch':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../switch
       '@semcore/tab-line':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tab-line
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1042,7 +1049,7 @@ importers:
   semcore/feature-popover:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
     devDependencies:
       '@popperjs/core':
@@ -1070,40 +1077,40 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../checkbox
       '@semcore/illustration':
         specifier: ^17.0.1
         version: link:../illustration
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/link':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../link
       '@semcore/modal':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../modal
       '@semcore/notice':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../notice-bubble
       '@semcore/spin-container':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../spin-container
       '@semcore/textarea':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../textarea
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       final-form:
         specifier: 4.20.7
@@ -1162,13 +1169,13 @@ importers:
   semcore/fullscreen-modal:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/modal':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../modal
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1257,19 +1264,19 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/input-number':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input-number
       '@semcore/spin':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
     devDependencies:
       '@semcore/base-components':
@@ -1303,7 +1310,7 @@ importers:
   semcore/input-mask:
     dependencies:
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       text-mask-core:
         specifier: 5.1.2
@@ -1322,7 +1329,7 @@ importers:
   semcore/input-number:
     dependencies:
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
     devDependencies:
       '@semcore/base-components':
@@ -1338,10 +1345,10 @@ importers:
   semcore/input-tags:
     dependencies:
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/tag':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../tag
     devDependencies:
       '@semcore/base-components':
@@ -1372,10 +1379,10 @@ importers:
   semcore/link:
     dependencies:
       '@semcore/icon':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../icon
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@floating-ui/dom':
@@ -1406,10 +1413,10 @@ importers:
   semcore/modal:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1428,10 +1435,10 @@ importers:
   semcore/notice:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1450,7 +1457,7 @@ importers:
   semcore/notice-bubble:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
     devDependencies:
       '@semcore/base-components':
@@ -1469,19 +1476,19 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/input-number':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input-number
       '@semcore/link':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../link
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1542,7 +1549,7 @@ importers:
   semcore/radio:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1558,28 +1565,28 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../checkbox
       '@semcore/divider':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown-menu
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       classnames:
         specifier: 2.2.6
@@ -1604,10 +1611,10 @@ importers:
   semcore/side-panel:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1662,7 +1669,7 @@ importers:
   semcore/spin-container:
     dependencies:
       '@semcore/spin':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../spin
     devDependencies:
       '@semcore/base-components':
@@ -1690,7 +1697,7 @@ importers:
   semcore/tab-line:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1706,7 +1713,7 @@ importers:
   semcore/tab-panel:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1725,7 +1732,7 @@ importers:
   semcore/tag:
     dependencies:
       '@semcore/typography':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../typography
     devDependencies:
       '@semcore/base-components':
@@ -1759,13 +1766,13 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/input':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/select':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -1814,193 +1821,193 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../accordion
       '@semcore/add-filter':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../add-filter
       '@semcore/badge':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../badge
       '@semcore/base-components':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../base-components
       '@semcore/base-trigger':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../base-trigger
       '@semcore/breadcrumbs':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../bulk-textarea
       '@semcore/button':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/card':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../card
       '@semcore/carousel':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../color-picker
       '@semcore/core':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../core
       '@semcore/counter':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../date-picker
       '@semcore/divider':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../divider
       '@semcore/dot':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../dot
       '@semcore/drag-and-drop':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../ellipsis
       '@semcore/errors':
-        specifier: 17.1.0
+        specifier: ^17.1.0
         version: link:../errors
       '@semcore/feature-highlight':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../feature-highlight
       '@semcore/feature-popover':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: 17.1.0
+        specifier: ^17.1.0
         version: link:../flags
       '@semcore/fullscreen-modal':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../fullscreen-modal
       '@semcore/icon':
-        specifier: ^16.0.0 || ^17.0.1
+        specifier: ^17.2.0
         version: link:../icon
       '@semcore/illustration':
         specifier: ^16.0.0 || ^17.0.1
         version: link:../illustration
       '@semcore/inline-edit':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../inline-input
       '@semcore/input':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../input-mask
       '@semcore/input-number':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../input-tags
       '@semcore/link':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../link
       '@semcore/mini-chart':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../mini-chart
       '@semcore/modal':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../notice-bubble
       '@semcore/pagination':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../pagination
       '@semcore/pills':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../pills
       '@semcore/product-head':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../product-head
       '@semcore/progress-bar':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../radio
       '@semcore/select':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../select
       '@semcore/side-panel':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../skeleton
       '@semcore/slider':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../slider
       '@semcore/spin':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../spin
       '@semcore/spin-container':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../spin-container
       '@semcore/switch':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../switch
       '@semcore/tab-line':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../tab-line
       '@semcore/tab-panel':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../tab-panel
       '@semcore/tag':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../tag
       '@semcore/textarea':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../typography
       '@semcore/widget-empty':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: 17.1.0
+        specifier: ^17.2.0
         version: link:../wizard
       react:
         specifier: 16.8 - 19
@@ -2053,10 +2060,10 @@ importers:
   semcore/wizard:
     dependencies:
       '@semcore/button':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../button
       '@semcore/modal':
-        specifier: ^17.1.0
+        specifier: ^17.2.0
         version: link:../modal
     devDependencies:
       '@semcore/base-components':
@@ -2096,9 +2103,6 @@ importers:
         specifier: 9.22.6
         version: 9.22.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
-      '@semcore/testing-utils':
-        specifier: workspace:*
-        version: link:../tools/testing-utils
       '@types/d3-scale':
         specifier: 3.3.0
         version: 3.3.0
@@ -2128,7 +2132,7 @@ importers:
     devDependencies:
       babel-plugin-tester:
         specifier: 8.0.1
-        version: 8.0.1(@babel/core@7.27.7)
+        version: 8.0.1(@babel/core@7.29.7)
 
   tools/babel-plugin-root:
     dependencies:
@@ -2137,7 +2141,7 @@ importers:
         version: 7.18.6
       '@babel/plugin-syntax-jsx':
         specifier: 7.18.6
-        version: 7.18.6(@babel/core@7.27.7)
+        version: 7.18.6(@babel/core@7.29.7)
 
   tools/babel-plugin-styles:
     dependencies:
@@ -2146,7 +2150,7 @@ importers:
         version: 7.18.6
       '@babel/plugin-syntax-jsx':
         specifier: 7.18.6
-        version: 7.18.6(@babel/core@7.27.7)
+        version: 7.18.6(@babel/core@7.29.7)
       chokidar:
         specifier: 3.5.1
         version: 3.5.1
@@ -2406,10 +2410,10 @@ importers:
         version: 4.9.1
       babel-jest:
         specifier: 29.0.1
-        version: 29.0.1(@babel/core@7.27.7)
+        version: 29.0.1(@babel/core@7.29.7)
       babel-plugin-transform-import-meta:
         specifier: 2.2.0
-        version: 2.2.0(@babel/core@7.27.7)
+        version: 2.2.0(@babel/core@7.29.7)
       dotenv:
         specifier: 16.0.1
         version: 16.0.1
@@ -2429,6 +2433,9 @@ importers:
       '@guidepup/guidepup':
         specifier: 0.24.1
         version: 0.24.1
+      '@semcore/theme':
+        specifier: workspace:*
+        version: link:../theme
       '@types/pixelmatch':
         specifier: 5.2.6
         version: 5.2.6
@@ -2569,7 +2576,7 @@ importers:
         version: 7.54.0(patch_hash=5ea80c984744a8ae88b2ac5d6a6b4bd9793291e90ba98f3c1701c4ba9770fd20)(react@18.3.1)
       react-instantsearch:
         specifier: 6.8.3
-        version: 6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
+        version: 6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
       react-loadable:
         specifier: 5.5.0
         version: 5.5.0(react@18.3.1)
@@ -2606,13 +2613,13 @@ importers:
     devDependencies:
       '@babel/plugin-proposal-class-properties':
         specifier: 7.18.6
-        version: 7.18.6(@babel/core@7.27.7)
+        version: 7.18.6(@babel/core@7.29.7)
       '@babel/plugin-proposal-export-default-from':
         specifier: 7.23.3
-        version: 7.23.3(@babel/core@7.27.7)
+        version: 7.23.3(@babel/core@7.29.7)
       '@babel/plugin-proposal-optional-chaining':
         specifier: 7.18.9
-        version: 7.18.9(@babel/core@7.27.7)
+        version: 7.18.9(@babel/core@7.29.7)
       '@figma/rest-api-spec':
         specifier: ^0.39.0
         version: 0.39.0
@@ -4978,50 +4985,50 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-core@4.57.3':
-    resolution: {integrity: sha512-IvO50vkGydDZwS1e9rz/JXEtCCt9XvqxoGI6FlrVIvVm4/HpygMKW4ETtREWtMTsN5CLJ9FR6GuCduoQPZLBiw==}
+  '@jsonjoy.com/fs-core@4.57.6':
+    resolution: {integrity: sha512-uI++Wx6VkBJqVmkb4ZeExwAVpZiA2Do5NrEtXoDk0Pdvce3ytFXJoviT1sLOj16+qDIMnD5nWPfOhVpnDmRJKg==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-fsa@4.57.3':
-    resolution: {integrity: sha512-JlIDGUWPl7Y6zl+/ISnZuh8z2aMr/xoR66D18zlaVAuL192CvlNJEzOlzp27x4P52HRtDnCSOk6f59vTsmp5vw==}
+  '@jsonjoy.com/fs-fsa@4.57.6':
+    resolution: {integrity: sha512-pKkw/yC5CzSZKhIIUIsH1przOa+K5jGmZIg1sWaSF24JojyrUFbjcQv7QrcGAudriei6HQ6R0BFj+V8NbQinJw==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-node-builtins@4.57.3':
-    resolution: {integrity: sha512-JAI3PqNuY8BR7ovy4h0bADLrqJLIcUauONNZfyTxUnj3Wf3tpTYe39eJ6z7FzYyA+tdMt33VpiQQUikGr3QOBw==}
+  '@jsonjoy.com/fs-node-builtins@4.57.6':
+    resolution: {integrity: sha512-V4DgEFT3Cg5S9fCMOZSCVdTxdJWWLBO0WnAazV7hnCM96u5zXHyW/ubDAfcSVwqjkMJ50W1Y44IXtxRoIwaCVg==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-node-to-fsa@4.57.3':
-    resolution: {integrity: sha512-uZGxyC0zDmcmW5bfHd4YivAZ54BLlbF9G0K5rBaksI/tZdJSGM7/AC+1TY7yvFu0Wc6gUHR7mFwf6SbQ3J1BTQ==}
+  '@jsonjoy.com/fs-node-to-fsa@4.57.6':
+    resolution: {integrity: sha512-+JptNw3iifihxH2rEXrninDzX4FFVW8JD/wPR8GbJPAeL9CQUSblrlumOPB5gZuS7tYRX+PJPLtT7XzKoRhv/Q==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-node-utils@4.57.3':
-    resolution: {integrity: sha512-quCil8AvfcOxob4pn0drGdcQWpkPVgkt9q1+EjeyXXT40/L3l5lvYrr6hR8LmHu0eg+DNNaUwqjLT6Hr7V4sdQ==}
+  '@jsonjoy.com/fs-node-utils@4.57.6':
+    resolution: {integrity: sha512-foyUrfS7WmYEUzqYXSNxmJBcSj04TABrkpFabwO9SCDCpVCfJ+qG+2sk5FjfiflG2n0SDFZDCJ6vYlJAEpxJFg==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-node@4.57.3':
-    resolution: {integrity: sha512-089gZoKvbeOsT2jeBaVKSz91oFXQWFG7a62sMY6gVMHnoWbyGzTb6OVUP/V7G3wLQLJ555BEsHt8SD1nj1dgaQ==}
+  '@jsonjoy.com/fs-node@4.57.6':
+    resolution: {integrity: sha512-Kbn1jdkvDN4F2+BhoB6mMu7NCbhP0bgA5NcI1aJj/Q5UcU+I1JLLW+dEQean33iV4tXv35AzBVKPICnDltBpxw==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-print@4.57.3':
-    resolution: {integrity: sha512-ITwaLZpGIqD9jHndwMvDFZDIvbVzGRsJZDQ5HKln0vyMculu1c1nb7zbEBgY8BVSBZ9S2xO138OWIBGeRsrF3Q==}
+  '@jsonjoy.com/fs-print@4.57.6':
+    resolution: {integrity: sha512-96eAn4Dudtt67LTeuU47yUD+pg9/G/oKpI10zei9ljk3X3WK4lYKc+n3cpaPCAbKPzoyfxl0mXm8f8Y7BOSFXw==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/fs-snapshot@4.57.3':
-    resolution: {integrity: sha512-wdNaG2DxCtvj9lKldAnEV3ycYPEpk+p2cP2lHD1qdxkoQGlWUtQverqvG9KZSkm6BHFha4PP6XRZbpARNfHRxA==}
+  '@jsonjoy.com/fs-snapshot@4.57.6':
+    resolution: {integrity: sha512-V57CMzbOgTzUWGOWQ8GzHQdpJP6JnrYVNCtTBNxVYEnlVRvo4uEJqHhtAT8vhDFrIuJOXLrTL1Fki4h5oI7xxg==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
@@ -8273,8 +8280,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.365:
-    resolution: {integrity: sha512-xfip4u1QF1s+URFqpA6N+OeFpDGpN7VJz1f3MO3bVL0QYBjpGiZ5/Of7kugvM+o8TTqmanUlviHN3c8M9vYWCw==}
+  electron-to-chromium@1.5.366:
+    resolution: {integrity: sha512-OlRuhb688YTCzzU3gXPLn6nGyd+F+53INE1qaKKlu6kETErE8FYsyDh0XqXEU+uBRn0MpCzz2vfNwORhkap8qg==}
 
   emoji-regex-xs@1.0.0:
     resolution: {integrity: sha512-LRlerrMYoIDrT6jgpeZ2YYl/L8EulRTt5hQcYjy5AInh7HWXKimpqx68aknBFpGL2+/IcogTcaydJEgaTmOpDg==}
@@ -10840,8 +10847,8 @@ packages:
   medium-zoom@1.1.0:
     resolution: {integrity: sha512-ewyDsp7k4InCUp3jRmwHBRFGyjBimKps/AJLjRSox+2q/2H4p/PNpQf+pwONWlJiOudkBXtbdmVbFjqyybfTmQ==}
 
-  memfs@4.57.3:
-    resolution: {integrity: sha512-dlvqataP1zUOlfj6pv9wgCSC5pRIooNntXgdLfR7FWlcKi1p8fMfJADtHp/+8Dhu5JFvMHNh7L0QVcuaaBKqqA==}
+  memfs@4.57.6:
+    resolution: {integrity: sha512-WQK+DGjKCnPdpSyJUXphz+COF2uEhhsxQ3VIWBSbzpbbXuch3h4FePMqXrXGdLjsTgo4JFzBFsP6AWd9pVazGw==}
     peerDependencies:
       tslib: '2'
 
@@ -14036,8 +14043,8 @@ packages:
     peerDependencies:
       tslib: ^2
 
-  thread-stream@3.1.0:
-    resolution: {integrity: sha512-OqyPZ9u96VohAyMfJykzmivOrY2wfMSf3C5TtFJVgN+Hm6aj+voFhlK+kZEIv2FBh1X6Xp3DlnCOfEQ3B2J86A==}
+  thread-stream@3.2.0:
+    resolution: {integrity: sha512-zLBvqpwr4Esa0kRjcrzGU6zL25lePWaCLMx0RQFrmteozIfeNdaMLpG5U7PeHzvlFkAWaRKA9/KVW4F60iB+qw==}
 
   throat@5.0.0:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
@@ -15629,6 +15636,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@babel/plugin-proposal-class-properties@7.18.6(@babel/core@7.29.7)':
+    dependencies:
+      '@babel/core': 7.29.7
+      '@babel/helper-create-class-features-plugin': 7.29.7(@babel/core@7.29.7)
+      '@babel/helper-plugin-utils': 7.29.7
+    transitivePeerDependencies:
+      - supports-color
+
   '@babel/plugin-proposal-decorators@7.28.0(@babel/core@7.27.7)':
     dependencies:
       '@babel/core': 7.27.7
@@ -15638,23 +15653,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-proposal-export-default-from@7.23.3(@babel/core@7.27.7)':
+  '@babel/plugin-proposal-export-default-from@7.23.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
-      '@babel/plugin-syntax-export-default-from': 7.29.7(@babel/core@7.27.7)
+      '@babel/plugin-syntax-export-default-from': 7.29.7(@babel/core@7.29.7)
 
   '@babel/plugin-proposal-export-default-from@7.27.1(@babel/core@7.27.7)':
     dependencies:
       '@babel/core': 7.27.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-proposal-optional-chaining@7.18.9(@babel/core@7.27.7)':
+  '@babel/plugin-proposal-optional-chaining@7.18.9(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/helper-skip-transparent-expression-wrappers': 7.29.7
-      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.27.7)
+      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.29.7)
     transitivePeerDependencies:
       - supports-color
 
@@ -15662,24 +15677,24 @@ snapshots:
     dependencies:
       '@babel/core': 7.27.7
 
-  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
   '@babel/plugin-syntax-decorators@7.29.7(@babel/core@7.27.7)':
@@ -15687,9 +15702,9 @@ snapshots:
       '@babel/core': 7.27.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-export-default-from@7.29.7(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-export-default-from@7.29.7(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
   '@babel/plugin-syntax-flow@7.29.7(@babel/core@7.28.4)':
@@ -15707,19 +15722,24 @@ snapshots:
       '@babel/core': 7.27.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-import-attributes@7.29.7(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-jsx@7.18.6(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
+      '@babel/helper-plugin-utils': 7.29.7
+
+  '@babel/plugin-syntax-jsx@7.18.6(@babel/core@7.29.7)':
+    dependencies:
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
   '@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.27.7)':
@@ -15737,44 +15757,44 @@ snapshots:
       '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-private-property-in-object@7.14.5(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-private-property-in-object@7.14.5(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.27.7)':
+  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
 
   '@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.27.7)':
@@ -17525,58 +17545,58 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-core@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-core@4.57.6(tslib@2.8.1)':
     dependencies:
-      '@jsonjoy.com/fs-node-builtins': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-utils': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-builtins': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-utils': 4.57.6(tslib@2.8.1)
       thingies: 2.6.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-fsa@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-fsa@4.57.6(tslib@2.8.1)':
     dependencies:
-      '@jsonjoy.com/fs-core': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-builtins': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-utils': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-core': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-builtins': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-utils': 4.57.6(tslib@2.8.1)
       thingies: 2.6.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-node-builtins@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-node-builtins@4.57.6(tslib@2.8.1)':
     dependencies:
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-node-to-fsa@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-node-to-fsa@4.57.6(tslib@2.8.1)':
     dependencies:
-      '@jsonjoy.com/fs-fsa': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-builtins': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-utils': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-fsa': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-builtins': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-utils': 4.57.6(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-node-utils@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-node-utils@4.57.6(tslib@2.8.1)':
     dependencies:
-      '@jsonjoy.com/fs-node-builtins': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-builtins': 4.57.6(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-node@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-node@4.57.6(tslib@2.8.1)':
     dependencies:
-      '@jsonjoy.com/fs-core': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-builtins': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-utils': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-print': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-snapshot': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-core': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-builtins': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-utils': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-print': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-snapshot': 4.57.6(tslib@2.8.1)
       glob-to-regex.js: 1.2.0(tslib@2.8.1)
       thingies: 2.6.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-print@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-print@4.57.6(tslib@2.8.1)':
     dependencies:
-      '@jsonjoy.com/fs-node-utils': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-utils': 4.57.6(tslib@2.8.1)
       tree-dump: 1.1.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@jsonjoy.com/fs-snapshot@4.57.3(tslib@2.8.1)':
+  '@jsonjoy.com/fs-snapshot@4.57.6(tslib@2.8.1)':
     dependencies:
       '@jsonjoy.com/buffers': 17.67.0(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-utils': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-utils': 4.57.6(tslib@2.8.1)
       '@jsonjoy.com/json-pack': 17.67.0(tslib@2.8.1)
       '@jsonjoy.com/util': 17.67.0(tslib@2.8.1)
       tslib: 2.8.1
@@ -18430,9 +18450,9 @@ snapshots:
 
   '@react-native/assets-registry@0.85.3': {}
 
-  '@react-native/codegen@0.85.3(@babel/core@7.27.7)':
+  '@react-native/codegen@0.85.3(@babel/core@7.29.7)':
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/parser': 7.29.7
       hermes-parser: 0.33.3
       invariant: 2.2.4
@@ -18489,12 +18509,12 @@ snapshots:
 
   '@react-native/normalize-colors@0.85.3': {}
 
-  '@react-native/virtualized-lists@0.85.3(@types/react@18.2.19)(react-native@0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)':
+  '@react-native/virtualized-lists@0.85.3(@types/react@18.2.19)(react-native@0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react: 18.3.1
-      react-native: 0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1)
+      react-native: 0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.2.19
 
@@ -19593,7 +19613,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.48.0)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.15))(terser@5.48.0)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:
@@ -20332,13 +20352,13 @@ snapshots:
 
   b4a@1.8.1: {}
 
-  babel-jest@29.0.1(@babel/core@7.27.7):
+  babel-jest@29.0.1(@babel/core@7.29.7):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@jest/transform': 29.7.0
       '@types/babel__core': 7.20.5
       babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 29.6.3(@babel/core@7.27.7)
+      babel-preset-jest: 29.6.3(@babel/core@7.29.7)
       chalk: 4.1.2
       graceful-fs: 4.2.11
       slash: 3.0.0
@@ -20405,43 +20425,43 @@ snapshots:
     dependencies:
       hermes-parser: 0.33.3
 
-  babel-plugin-tester@8.0.1(@babel/core@7.27.7):
+  babel-plugin-tester@8.0.1(@babel/core@7.29.7):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       lodash.mergewith: 4.6.2
       prettier: 1.19.1
       strip-indent: 3.0.0
 
-  babel-plugin-transform-import-meta@2.2.0(@babel/core@7.27.7):
+  babel-plugin-transform-import-meta@2.2.0(@babel/core@7.29.7):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       '@babel/template': 7.29.7
       tslib: 2.8.1
 
-  babel-preset-current-node-syntax@1.2.0(@babel/core@7.27.7):
+  babel-preset-current-node-syntax@1.2.0(@babel/core@7.29.7):
     dependencies:
-      '@babel/core': 7.27.7
-      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.27.7)
-      '@babel/plugin-syntax-class-static-block': 7.14.5(@babel/core@7.27.7)
-      '@babel/plugin-syntax-import-attributes': 7.29.7(@babel/core@7.27.7)
-      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.27.7)
-      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.27.7)
-      '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.27.7)
-      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.27.7)
+      '@babel/core': 7.29.7
+      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.29.7)
+      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.29.7)
+      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.29.7)
+      '@babel/plugin-syntax-class-static-block': 7.14.5(@babel/core@7.29.7)
+      '@babel/plugin-syntax-import-attributes': 7.29.7(@babel/core@7.29.7)
+      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.29.7)
+      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.29.7)
+      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.29.7)
+      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.29.7)
+      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.29.7)
+      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.29.7)
+      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.29.7)
+      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.29.7)
+      '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.29.7)
+      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.29.7)
 
-  babel-preset-jest@29.6.3(@babel/core@7.27.7):
+  babel-preset-jest@29.6.3(@babel/core@7.29.7):
     dependencies:
-      '@babel/core': 7.27.7
+      '@babel/core': 7.29.7
       babel-plugin-jest-hoist: 29.6.3
-      babel-preset-current-node-syntax: 1.2.0(@babel/core@7.27.7)
+      babel-preset-current-node-syntax: 1.2.0(@babel/core@7.29.7)
 
   bail@2.0.2: {}
 
@@ -20631,7 +20651,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.33
       caniuse-lite: 1.0.30001793
-      electron-to-chromium: 1.5.365
+      electron-to-chromium: 1.5.366
       node-releases: 2.0.47
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
@@ -20639,7 +20659,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.33
       caniuse-lite: 1.0.30001793
-      electron-to-chromium: 1.5.365
+      electron-to-chromium: 1.5.366
       node-releases: 2.0.47
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -21865,7 +21885,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.365: {}
+  electron-to-chromium@1.5.366: {}
 
   emoji-regex-xs@1.0.0: {}
 
@@ -24938,16 +24958,16 @@ snapshots:
 
   medium-zoom@1.1.0: {}
 
-  memfs@4.57.3(tslib@2.8.1):
+  memfs@4.57.6(tslib@2.8.1):
     dependencies:
-      '@jsonjoy.com/fs-core': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-fsa': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-builtins': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-to-fsa': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-node-utils': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-print': 4.57.3(tslib@2.8.1)
-      '@jsonjoy.com/fs-snapshot': 4.57.3(tslib@2.8.1)
+      '@jsonjoy.com/fs-core': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-fsa': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-builtins': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-to-fsa': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-node-utils': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-print': 4.57.6(tslib@2.8.1)
+      '@jsonjoy.com/fs-snapshot': 4.57.6(tslib@2.8.1)
       '@jsonjoy.com/json-pack': 1.21.0(tslib@2.8.1)
       '@jsonjoy.com/util': 1.9.0(tslib@2.8.1)
       glob-to-regex.js: 1.2.0(tslib@2.8.1)
@@ -26006,7 +26026,7 @@ snapshots:
       real-require: 0.2.0
       safe-stable-stringify: 2.5.0
       sonic-boom: 4.2.1
-      thread-stream: 3.1.0
+      thread-stream: 3.2.0
 
   pirates@4.0.7: {}
 
@@ -27300,20 +27320,20 @@ snapshots:
       react-fast-compare: 3.2.2
       react-instantsearch-core: 6.40.4(algoliasearch@4.8.4)(react@18.3.1)
 
-  react-instantsearch-native@6.40.4(algoliasearch@4.8.4)(react-native@0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
+  react-instantsearch-native@6.40.4(algoliasearch@4.8.4)(react-native@0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.27.6
       algoliasearch: 4.8.4
       react: 18.3.1
       react-instantsearch-core: 6.40.4(algoliasearch@4.8.4)(react@18.3.1)
-      react-native: 0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1)
+      react-native: 0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1)
 
-  react-instantsearch@6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
+  react-instantsearch@6.8.3(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react-native@0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.27.6
       react-instantsearch-core: 6.40.4(algoliasearch@4.8.4)(react@18.3.1)
       react-instantsearch-dom: 6.40.4(algoliasearch@4.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-instantsearch-native: 6.40.4(algoliasearch@4.8.4)(react-native@0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
+      react-instantsearch-native: 6.40.4(algoliasearch@4.8.4)(react-native@0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
     transitivePeerDependencies:
       - algoliasearch
       - react
@@ -27351,15 +27371,15 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  react-native@0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1):
+  react-native@0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1):
     dependencies:
       '@react-native/assets-registry': 0.85.3
-      '@react-native/codegen': 0.85.3(@babel/core@7.27.7)
+      '@react-native/codegen': 0.85.3(@babel/core@7.29.7)
       '@react-native/community-cli-plugin': 0.85.3
       '@react-native/gradle-plugin': 0.85.3
       '@react-native/js-polyfills': 0.85.3
       '@react-native/normalize-colors': 0.85.3
-      '@react-native/virtualized-lists': 0.85.3(@types/react@18.2.19)(react-native@0.85.3(@babel/core@7.27.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
+      '@react-native/virtualized-lists': 0.85.3(@types/react@18.2.19)(react-native@0.85.3(@babel/core@7.29.7)(@types/react@18.2.19)(react@18.3.1))(react@18.3.1)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
@@ -28912,7 +28932,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  thread-stream@3.1.0:
+  thread-stream@3.2.0:
     dependencies:
       real-require: 0.2.0
 
@@ -29881,7 +29901,7 @@ snapshots:
   webpack-dev-middleware@7.4.5(tslib@2.8.1)(webpack@5.107.2(esbuild@0.28.0)(lightningcss@1.31.1)(postcss@8.5.14)):
     dependencies:
       colorette: 2.0.20
-      memfs: 4.57.3(tslib@2.8.1)
+      memfs: 4.57.6(tslib@2.8.1)
       mime-types: 3.0.2
       on-finished: 2.4.1
       range-parser: 1.2.1
