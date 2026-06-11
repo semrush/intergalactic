@@ -1,9 +1,4 @@
-import {
-  cleanup,
-  render,
-  fireEvent,
-  act,
-} from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -58,8 +53,7 @@ describe('Popper', () => {
   });
 
   describe('onVisibleChange callback', () => {
-    test('Verify onVisibleChange is called on trigger click', () => {
-      vi.useFakeTimers();
+    test('Verify onVisibleChange is called on trigger click', async () => {
       const onVisibleChange = vi.fn();
 
       const { getByText } = render(
@@ -69,13 +63,9 @@ describe('Popper', () => {
         </Popper>,
       );
 
-      fireEvent.click(getByText('Trigger'));
-      act(() => {
-        vi.advanceTimersByTime(0);
-      });
+      await userEvent.click(getByText('Trigger'));
 
       expect(onVisibleChange).toHaveBeenCalledWith(true, expect.anything());
-      vi.useRealTimers();
     });
   });
 });

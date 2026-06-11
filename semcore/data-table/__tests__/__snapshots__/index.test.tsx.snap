@@ -1,0 +1,163 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Data-table data-ui-name tests > test snap 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": undefined,
+                              "uiName": "Head.Group",
+                            },
+                            {
+                              "children": undefined,
+                              "uiName": "Head.Column",
+                            },
+                            {
+                              "children": undefined,
+                              "uiName": "Head.Column",
+                            },
+                          ],
+                          "uiName": "Box",
+                        },
+                      ],
+                      "uiName": "DataTable.Head",
+                    },
+                    {
+                      "children": undefined,
+                      "uiName": "Box",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": undefined,
+                                  "uiName": "Row.Cell",
+                                },
+                              ],
+                              "uiName": "Box",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": undefined,
+                                  "uiName": "Row.Cell",
+                                },
+                              ],
+                              "uiName": "Box",
+                            },
+                          ],
+                          "uiName": "Body.Row",
+                        },
+                      ],
+                      "uiName": "DataTable.Body",
+                    },
+                  ],
+                  "uiName": "DataTable",
+                },
+              ],
+            },
+          ],
+          "uiName": "ScrollArea.Container",
+        },
+      ],
+      "uiName": "ScrollArea",
+    },
+  ],
+}
+`;
+
+exports[`DataTable > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "Head.Group",
+                            },
+                            {
+                              "children": [],
+                              "uiName": "Head.Column",
+                            },
+                            {
+                              "children": [],
+                              "uiName": "Head.Column",
+                            },
+                          ],
+                          "uiName": "Box",
+                        },
+                      ],
+                      "uiName": "DataTable.Head",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": "Row.Cell",
+                                },
+                              ],
+                              "uiName": "Box",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": "Row.Cell",
+                                },
+                              ],
+                              "uiName": "Box",
+                            },
+                          ],
+                          "uiName": "Body.Row",
+                        },
+                      ],
+                      "uiName": "DataTable.Body",
+                    },
+                  ],
+                  "uiName": "DataTable",
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": "ScrollArea.Container",
+        },
+      ],
+      "uiName": "ScrollArea",
+    },
+  ],
+  "uiName": null,
+}
+`;
