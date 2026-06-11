@@ -9,20 +9,6 @@ describe('Badge Dependency imports', () => {
   runDependencyCheckTests('badge');
 });
 
-describe('Badge deprecation warnings', () => {
-  beforeEach(cleanup);
-
-  let consoleWarnSpy: ReturnType<typeof vi.spyOn<any, any>>;
-
-  beforeEach(() => {
-    consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
-  });
-
-  afterEach(() => {
-    consoleWarnSpy.mockRestore();
-  });
-});
-
 describe('Badge backward compatibility (deprecated props)', () => {
   beforeEach(cleanup);
 
