@@ -1,14 +1,15 @@
 import { Animation, Box, Flex, Portal } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import isNode from '@semcore/core/lib/utils/isNode';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
-import { setFocus, isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
+import { setFocus, isFocusInside, useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import {
   ZIndexStackingContextProvider,
@@ -219,9 +220,13 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     const noticeElement = this.ref.current;
 
     if (noticeElement) {
-      const focusableNodes = getFocusableIn(noticeElement).filter(
-        (node) => node !== this.closeButtonRef.current,
-      );
+      let focusableNodes = getFocusableIn(noticeElement);
+
+      if (lastInteraction.isMouse()) {
+        focusableNodes = focusableNodes.filter(
+          (node) => node !== this.closeButtonRef.current,
+        );
+      }
 
       if (focusableNodes.length > 0) {
         setTimeout(() => setFocus(noticeElement), 0);
@@ -308,6 +313,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
       icon,
       children,
       action,
+      focusLock,
     } = this.props;
 
     return sstyled(styles)(
