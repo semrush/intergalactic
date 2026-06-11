@@ -226,67 +226,116 @@ test.describe('@functional @popper', () => {
     const triggerControlled = page.getByRole('button', { name: 'Controlled', exact: true });
     const triggerUncontrolled = page.getByRole('button', { name: 'Uncontrolled', exact: true });
 
-    const popperControlled = page.locator('[data-popper-placement="right"]');
-    const popperUncontrolled = page.locator('[data-popper-placement="left"]');
+    const attachedPoppers = page.locator('[data-ui-name="Popper.Popper"]', {
+      hasText: 'Attached content',
+    });
+
+    const getOpenPopperOwners = async () => {
+      const controlledBox = await triggerControlled.boundingBox();
+      const uncontrolledBox = await triggerUncontrolled.boundingBox();
+      if (!controlledBox || !uncontrolledBox) return [];
+
+      const controlledCenter = {
+        x: controlledBox.x + controlledBox.width / 2,
+        y: controlledBox.y + controlledBox.height / 2,
+      };
+      const uncontrolledCenter = {
+        x: uncontrolledBox.x + uncontrolledBox.width / 2,
+        y: uncontrolledBox.y + uncontrolledBox.height / 2,
+      };
+
+      const popperBoxes = await attachedPoppers.evaluateAll((nodes) =>
+        nodes.map((node) => {
+          const rect = node.getBoundingClientRect();
+          return {
+            x: rect.x,
+            y: rect.y,
+            width: rect.width,
+            height: rect.height,
+          };
+        }),
+      );
+
+      return popperBoxes.map((box) => {
+        const popperCenter = {
+          x: box.x + box.width / 2,
+          y: box.y + box.height / 2,
+        };
+        const distanceToControlled = Math.hypot(
+          popperCenter.x - controlledCenter.x,
+          popperCenter.y - controlledCenter.y,
+        );
+        const distanceToUncontrolled = Math.hypot(
+          popperCenter.x - uncontrolledCenter.x,
+          popperCenter.y - uncontrolledCenter.y,
+        );
+
+        return distanceToControlled <= distanceToUncontrolled ? 'controlled' : 'uncontrolled';
+      });
+    };
+
+    const expectPoppers = async (expected: { controlled: number; uncontrolled: number }) => {
+      await expect.poll(async () => {
+        const owners = await getOpenPopperOwners();
+        return {
+          controlled: owners.filter((owner) => owner === 'controlled').length,
+          uncontrolled: owners.filter((owner) => owner === 'uncontrolled').length,
+        };
+      }).toEqual(expected);
+    };
+
     await triggerControlled.click();
-    await expect(popperControlled).toHaveCount(1);
+    await expectPoppers({ controlled: 1, uncontrolled: 0 });
     await triggerControlled.click();
-    await expect(popperControlled).toHaveCount(0);
+    await expectPoppers({ controlled: 0, uncontrolled: 0 });
 
     await triggerControlled.click();
     await triggerUncontrolled.click();
-    await expect(popperControlled).toHaveCount(0);
-    await expect(popperUncontrolled).toHaveCount(1);
+    await expectPoppers({ controlled: 0, uncontrolled: 1 });
     await triggerUncontrolled.click();
-    await expect(popperUncontrolled).toHaveCount(0);
+    await expectPoppers({ controlled: 0, uncontrolled: 0 });
     await triggerUncontrolled.click();
-    await expect(popperUncontrolled).toHaveCount(1);
+    await expectPoppers({ controlled: 0, uncontrolled: 1 });
 
     await triggerControlled.click();
-    await expect(popperControlled).toHaveCount(1);
-    await expect(popperUncontrolled).toHaveCount(0);
+    await expectPoppers({ controlled: 1, uncontrolled: 0 });
 
     await page.keyboard.press('Escape');
     await expect(triggerControlled).toBeFocused();
 
-    await expect(popperControlled).toHaveCount(0);
-    await expect(popperUncontrolled).toHaveCount(0);
+    await expectPoppers({ controlled: 0, uncontrolled: 0 });
 
     await triggerUncontrolled.click();
-    await expect(popperUncontrolled).toHaveCount(1);
+    await expectPoppers({ controlled: 0, uncontrolled: 1 });
 
     await page.keyboard.press('Escape');
     await expect(triggerUncontrolled).toBeFocused();
 
-    await expect(popperControlled).toHaveCount(0);
-    await expect(popperUncontrolled).toHaveCount(0);
+    await expectPoppers({ controlled: 0, uncontrolled: 0 });
 
     await triggerControlled.click();
-    await expect(popperControlled).toHaveCount(1);
+    await expectPoppers({ controlled: 1, uncontrolled: 0 });
 
     await triggerControlled.click();
-    await expect(popperControlled).toHaveCount(0);
+    await expectPoppers({ controlled: 0, uncontrolled: 0 });
 
     await page.keyboard.press('Tab');
     await expect(triggerUncontrolled).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await expect(popperUncontrolled).toHaveCount(1);
+    await expectPoppers({ controlled: 0, uncontrolled: 1 });
 
     await page.keyboard.press('Shift+Tab');
     await expect(triggerControlled).toBeFocused();
     await page.keyboard.press('Enter');
-    await expect(popperUncontrolled).toHaveCount(1);
-    await expect(popperControlled).toHaveCount(1);
+    await expectPoppers({ controlled: 1, uncontrolled: 1 });
 
     await page.keyboard.press('Enter');
-    await expect(popperUncontrolled).toHaveCount(1);
-    await expect(popperControlled).toHaveCount(0);
+    await expectPoppers({ controlled: 0, uncontrolled: 1 });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Escape');
-    await expect(popperUncontrolled).toHaveCount(0);
-    await expect(popperControlled).toHaveCount(0);
+    await expectPoppers({ controlled: 0, uncontrolled: 0 });
   });
 
   test('Verify focus when disableEnforceFocus prop enabled', {

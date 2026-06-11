@@ -1,6 +1,6 @@
 ---
 title: Counter
-tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
+tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Examples('counter-code'), Changelog('counter-changelog')
 ---
 
 ## Counter in filters

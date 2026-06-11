@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Premi Tab per andare a Popover"
+  "triggerHint": "Premi Tab per andare a Popover",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, one {risultato} other {risultati}} trovato",
+  "StatusItem.defaultState.nothingFound": "Nessun risultato trovato",
+  "StatusItem.loadingState": "Caricamento...",
+  "StatusItem.errorState": "Si è verificato un errore. Riprova più tardi."
 }

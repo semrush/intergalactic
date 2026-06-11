@@ -35,9 +35,9 @@ export function PaywallMessage() {
         <Box
           p={6}
           wMax={400}
+          bg='page-bg'
+          borderRadius='popper-rounded'
           style={{
-            borderRadius: 'var(--intergalactic-popper-rounded)',
-            backgroundColor: 'var(--intergalactic-bg-primary-neutral)',
             boxShadow: 'var(--intergalactic-box-shadow-popper)',
           }}
         >

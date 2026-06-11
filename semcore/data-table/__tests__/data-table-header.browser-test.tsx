@@ -493,6 +493,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         });
       });
 
+      test('Verify focused unsorted sort icon stays visible after mouse leave', {
+        tag: [TAG.PRIORITY_HIGH,
+          TAG.KEYBOARD,
+          TAG.MOUSE,
+          '@data-table'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
+
+        const button = locators.sortButton(page, 1);
+
+        await page.keyboard.press('Tab');
+        await expect(button).toBeFocused();
+        await expect(button).not.toHaveAttribute('aria-label');
+        await expect(button).toBeVisible();
+
+        await locators.getHeadColumn(page, 1).hover();
+        await page.mouse.move(0, 0);
+
+        await expect(button).toBeFocused();
+        await expect(button).toBeVisible();
+
+        await locators.getHeadColumn(page, 3).focus();
+        await expect(button).toBeHidden();
+      });
+
       test('Verify mouse sorting without changing size', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.MOUSE,
@@ -961,6 +986,32 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           await page.keyboard.press('ArrowRight');
           await expect(locators.getHeadColumn(page, 7)).toBeFocused();
         });
+      });
+
+      test('Verify focused unsorted sort icon in multi level header stays visible after mouse leave', {
+        tag: [TAG.PRIORITY_HIGH,
+          TAG.KEYBOARD,
+          TAG.MOUSE,
+          '@data-table'],
+      }, async ({ page }) => {
+        await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
+
+        const button = locators.sortButton(page, 2);
+
+        await locators.getHeadColumn(page, 2).hover();
+        await expect(button).not.toHaveAttribute('aria-label');
+        await expect(button).toBeVisible();
+
+        await button.focus();
+        await expect(button).toBeFocused();
+
+        await page.mouse.move(0, 0);
+
+        await expect(button).toBeFocused();
+        await expect(button).toBeVisible();
+
+        await locators.getHeadColumn(page, 3).focus();
+        await expect(button).toBeHidden();
       });
 
       test('Verify mouse interactions with sorting', {

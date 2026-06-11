@@ -33,6 +33,10 @@ export const locators = {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  search: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('textbox', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   menu: (page: Page, index?: number) => {
     const base = page.getByRole('menu');
     return typeof index === 'number' ? base.nth(index) : base;
@@ -740,6 +744,33 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page).first().click();
       await expect(locators.item(page).nth(0)).not.toBeVisible();
     });
+  });
+
+  test.describe('StatusItem', () => {
+    const statusItemStory = 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx';
+
+    const openMenu = async (page: Page) => {
+      await locators.button(page, 'Trigger').first().click();
+      await locators.search(page, 'Search').waitFor({ state: 'visible' });
+    };
+
+    for (const size of ['m', 'l'] as const) {
+      test(`Verify nothing-found status appearance with size ${size}`, {
+        tag: [TAG.PRIORITY_MEDIUM, '@dropdown-menu'],
+      }, async ({ page }) => {
+        await loadPage(page, statusItemStory, 'en', { showSearch: true, size });
+
+        await test.step('Open menu and filter with a non-matching query', async () => {
+          await openMenu(page);
+          await locators.search(page, 'Search').fill('zzz');
+          await expect(page.locator('text="Nothing found"')).toBeVisible();
+        });
+
+        await test.step('Verify appearance', async () => {
+          await expect(page).toHaveScreenshot();
+        });
+      });
+    }
   });
 });
 
@@ -1544,6 +1575,111 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify trigger is still focused', async () => {
         await expect(locators.button(page)).toBeFocused();
       });
+
+      await test.step('Verify arrows do not focus disabled items', async () => {
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('ArrowDown');
+        const count = await locators.menuitemradio(page).count();
+        for (let i = 0; i < count; i++) {
+          await expect(locators.menuitemradio(page, i)).not.toBeFocused();
+        }
+        await expect(locators.button(page)).toBeFocused();
+      });
+    });
+
+    test('Verify ArrowUp reaches all enabled selectable items when first items are disabled', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
+        size: 'm',
+        disabledFirstItem: true,
+        disabledSecondItem: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter and skips disabled first items', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 2)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(2)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowUp wraps to the last enabled item', async () => {
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify Enter activates the highlighted enabled item', async () => {
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'hidden' });
+        await expect(locators.button(page)).toBeFocused();
+
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 9)).toHaveAttribute('aria-checked', 'true');
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify repeated ArrowUp reaches all enabled items and skips disabled first items', async () => {
+        for (const index of [8, 7, 6, 5, 4, 3, 2]) {
+          await page.keyboard.press('ArrowUp');
+          await expect(locators.menuitemradio(page, index)).toBeFocused();
+          await expect(locators.itemInGroup(page).nth(index)).toHaveClass(/highlighted/);
+          await expect(locators.menuitemradio(page, 0)).not.toBeFocused();
+          await expect(locators.menuitemradio(page, 1)).not.toBeFocused();
+          await expect(locators.itemInGroup(page).nth(0)).not.toHaveClass(/highlighted/);
+          await expect(locators.itemInGroup(page).nth(1)).not.toHaveClass(/highlighted/);
+        }
+
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 9)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).toHaveClass(/highlighted/);
+      });
+    });
+
+    test('Verify arrows skip disabled last selectable item', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
+        size: 'm',
+        disabledLastItem: true,
+      });
+
+      await test.step('Verify opens by Tab and Enter and focuses first item', async () => {
+        await page.keyboard.press('Tab');
+        await expect(locators.button(page)).toBeFocused();
+        await page.keyboard.press('Enter');
+        await locators.menuitemradio(page, 0).waitFor({ state: 'visible' });
+        await expect(locators.menuitemradio(page, 0)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(0)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowUp skips disabled last item', async () => {
+        await page.keyboard.press('ArrowUp');
+        await expect(locators.menuitemradio(page, 9)).not.toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).not.toHaveClass(/highlighted/);
+        await expect(locators.menuitemradio(page, 8)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(8)).toHaveClass(/highlighted/);
+      });
+
+      await test.step('Verify ArrowDown skips disabled last item and wraps to first item', async () => {
+        await page.keyboard.press('ArrowDown');
+        await expect(locators.menuitemradio(page, 9)).not.toBeFocused();
+        await expect(locators.itemInGroup(page).nth(9)).not.toHaveClass(/highlighted/);
+        await expect(locators.menuitemradio(page, 0)).toBeFocused();
+        await expect(locators.itemInGroup(page).nth(0)).toHaveClass(/highlighted/);
+      });
     });
 
     test('Verify focus skips first disabled item in nested menu', {
@@ -1587,6 +1723,99 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify Tab not moves focus from the menu', async () => {
         await page.keyboard.press('Tab');
         await expect(page.getByRole('menuitem', { name: 'Delete' })).toBeFocused();
+      });
+    });
+  });
+
+  test.describe('StatusItem', () => {
+    const statusItemStory = 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx';
+
+    const openMenu = async (page: Page) => {
+      await locators.button(page, 'Trigger').first().click();
+      await locators.search(page, 'Search').waitFor({ state: 'visible' });
+    };
+
+    test('Verify screen-reader result count when items are found', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.ACCESSIBILITY, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true });
+
+      await test.step('Open menu and filter to matching items', async () => {
+        await openMenu(page);
+        await locators.search(page, 'Search').fill('d');
+      });
+
+      await test.step('Verify result count is exposed to screen readers only', async () => {
+        const status = page.locator('#search-result');
+        await expect(status).toContainText('2 results found');
+        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(page.locator('text="Nothing found"')).toHaveCount(0);
+      });
+    });
+
+    test('Verify visible "Nothing found" when no items match', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true });
+
+      await test.step('Open menu and filter with a non-matching query', async () => {
+        await openMenu(page);
+        await locators.search(page, 'Search').fill('zzz');
+      });
+
+      await test.step('Verify "Nothing found" is visible', async () => {
+        const status = page.locator('#search-result');
+        await expect(status).toBeVisible();
+        await expect(status).toContainText('Nothing found');
+      });
+    });
+
+    test('Verify loading state text is shown', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'loading' });
+
+      await test.step('Open menu', async () => {
+        await openMenu(page);
+      });
+
+      await test.step('Verify loading text', async () => {
+        await expect(page.locator('text="Loading..."')).toBeVisible();
+      });
+    });
+
+    test('Verify error state text is shown', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'error' });
+
+      await test.step('Open menu', async () => {
+        await openMenu(page);
+      });
+
+      await test.step('Verify error text', async () => {
+        await expect(
+          page.locator('text="Something went wrong. Please try again later."'),
+        ).toBeVisible();
+      });
+    });
+
+    test('Verify custom children override the default status text', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', {
+        showSearch: true,
+        customChildren: 'No columns match your search',
+      });
+
+      await test.step('Open menu and filter with a non-matching query', async () => {
+        await openMenu(page);
+        await locators.search(page, 'Search').fill('zzz');
+      });
+
+      await test.step('Verify custom text replaces the default', async () => {
+        await expect(page.locator('text="No columns match your search"')).toBeVisible();
+        await expect(page.locator('text="Nothing found"')).toHaveCount(0);
       });
     });
   });

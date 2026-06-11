@@ -10,7 +10,7 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
-      <RadialTree color='chart-palette-order-9'>
+      <RadialTree color='blue-400'>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />

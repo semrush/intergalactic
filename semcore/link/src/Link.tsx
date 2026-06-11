@@ -1,7 +1,6 @@
-import type { BoxProps } from '@semcore/base-components';
 import { Box, Hint } from '@semcore/base-components';
-import type { Intergalactic, IRootComponentProps } from '@semcore/core';
-import { createComponent, Component, Root, sstyled, CORE_INSTANCE } from '@semcore/core';
+import type { IRootComponentProps } from '@semcore/core';
+import { createComponent, Component, Root, sstyled, CORE_INSTANCE, INHERITED_NAME } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
@@ -56,7 +55,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     const addonWidth = size === undefined || size < 600 ? 20 : 28;
 
     let addonsCount = addons.reduce((acc, addon) => {
-      if (addon.props.tag?.__IS_ICON || addon.props.children?.type?.__IS_ICON) {
+      if (addon.props.tag?.__IS_ICON || addon.props.children?.type?.__IS_ICON || addon.props.children?.type?.[INHERITED_NAME]?.includes('Spin')) {
         acc++;
       }
       return acc;

@@ -86,11 +86,6 @@ export type ScrollBarContext = ScrollBarProps & {
 export type ScrollAreaContainerProps = BoxProps & {
   /** Inner prop */
   $refInner?: React.RefObject<any>;
-
-  focusRingTopOffset?: string;
-  focusRingRightOffset?: string;
-  focusRingBottomOffset?: string;
-  focusRingLeftOffset?: string;
 };
 
 declare const ScrollBar: Intergalactic.Component<'div', ScrollBarProps, ScrollBarContext> & {

@@ -1,7 +1,7 @@
 ---
 title: Flex-box
 fileSource: flex-box
-tabs: Spacing system('box-system-spacing'), API('box-system-api'), Example('box-system-code'), Changelog('box-system-changelog')
+tabs: Spacing system('box-system-spacing'), API('box-system-api'), Examples('box-system-code'), Changelog('box-system-changelog')
 ---
 
 The spacing system helps maintain a vertical and horizontal rhythms in the interface. It makes the interface easier to use by reducing cognitive load. _For example, if there are different indents in the interface everywhere, the brain will try to understand this logic and thereby increase its cognitive load._

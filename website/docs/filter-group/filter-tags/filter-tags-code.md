@@ -1,7 +1,7 @@
 ---
 title: Tags filter
 tabName: Example
-tabs: Design('filter-tags'), Example('filter-tags-code')
+tabs: Design('filter-tags'), Examples('filter-tags-code')
 ---
 
 ## Basic usage

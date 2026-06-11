@@ -2,14 +2,16 @@ import Select from '@semcore/ui/select';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
+import { OnChangeInputSearchNothingFoundTest } from './__tests__/on_change_input_search.test';
 import BasicPropsExample, { defaultProps as BasicProps } from './examples/basic_props_and_trigger_addons';
-import OnChangeInputSearchExample from './examples/on_change_input_search';
+import OnChangeInputSearchExample, { defaultProps as OnChangeInputSearchProps } from './examples/on_change_input_search';
 import OnVisibleExample from './examples/on_visible';
 import OptionsExample, { defaultProps as OptionsProps } from './examples/options_checkbox_group_and_hint';
 import ProgrammaticallyFocusExample from './examples/programmatically_focus';
 import type { defaultProps as SelectWithEllipsisProps } from './examples/select-with-ellipsis';
 import SelectWithEllipsisExample from './examples/select-with-ellipsis';
 import SubcomponentsExample, { defaultProps as SubcomponentsProps } from './examples/subcomponents_trigger_popper_list_search';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Test',
@@ -125,8 +127,22 @@ export const SelectWithEllipsis: StoryObj<typeof SelectWithEllipsisProps> = {
   },
 };
 
-export const OnChangeInputSearch: Story = {
+export const OnChangeInputSearch: StoryObj<typeof OnChangeInputSearchProps> = {
   render: OnChangeInputSearchExample,
+  argTypes: {
+    ...commonArgTypes,
+    state: {
+      control: { type: 'select' },
+      options: ['default', 'loading', 'error'],
+      description: 'Select.StatusItem state',
+    },
+    customChildren: {
+      control: { type: 'text' },
+      description: 'Custom Select.StatusItem text (overrides the default i18n text)',
+    },
+  },
+  args: OnChangeInputSearchProps,
+  play: playWrapper(OnChangeInputSearchNothingFoundTest),
 };
 
 export const ProgrammaticallyFocus: Story = {
@@ -142,13 +158,13 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     disablePortal: { control: { type: 'boolean' } },
 
     // Option 1 - Default option (SelectOptionProps)
-    option1Value: { control: { type: 'text' } },
+    option1Value: { control: { type: 'number' } },
     option1Text: { control: { type: 'text' } },
     option1Disabled: { control: { type: 'boolean' } },
     option1Selected: { control: { type: 'boolean' } },
 
     // Option 2 - Checkbox option (SelectOptionProps + SelectOptionCheckboxProps)
-    option2Value: { control: { type: 'text' } },
+    option2Value: { control: { type: 'number' } },
     option2Text: { control: { type: 'text' } },
     option2Disabled: { control: { type: 'boolean' } },
     option2Selected: { control: { type: 'boolean' } },
@@ -157,7 +173,7 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     option2CheckboxIndeterminate: { control: { type: 'boolean' } },
 
     // Option 3 - Option with hint (SelectOptionProps + SelectOptionCheckboxProps + Hint)
-    option3Value: { control: { type: 'text' } },
+    option3Value: { control: { type: 'number' } },
     option3Text: { control: { type: 'text' } },
     option3Disabled: { control: { type: 'boolean' } },
     option3Selected: { control: { type: 'boolean' } },
@@ -166,7 +182,7 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     option3HintText: { control: { type: 'text' } },
 
     // Option 4 - Simple option (SelectOptionProps)
-    option4Value: { control: { type: 'text' } },
+    option4Value: { control: { type: 'number' } },
     option4Text: { control: { type: 'text' } },
     option4Disabled: { control: { type: 'boolean' } },
     option4Selected: { control: { type: 'boolean' } },
@@ -175,9 +191,9 @@ export const OptionsCheckboxGroupAndHint: StoryObj<typeof OptionsProps> = {
     showGroup: { control: { type: 'boolean' } },
     groupTitle: { control: { type: 'text' } },
     groupSubTitle: { control: { type: 'text' } },
-    groupOption1Value: { control: { type: 'text' } },
+    groupOption1Value: { control: { type: 'number' } },
     groupOption1Text: { control: { type: 'text' } },
-    groupOption2Value: { control: { type: 'text' } },
+    groupOption2Value: { control: { type: 'number' } },
     groupOption2Text: { control: { type: 'text' } },
 
     // Bulk controls

@@ -129,7 +129,7 @@ const Demo = () => {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '500px' }}>
+    <div style={{ padding: 'var(--intergalactic-spacing-5x)', maxWidth: '500px' }}>
       <h2>Mange Tags</h2>
 
       <Flex alignItems='center' justifyContent='space-between'>
@@ -185,7 +185,7 @@ const Demo = () => {
       </DropdownMenu>
 
       {/* Debug info */}
-      <div style={{ marginTop: '20px', fontSize: '14px', color: '#666' }}>
+      <div style={{ marginTop: 'var(--intergalactic-spacing-5x)', fontSize: 'var(--intergalactic-fs-200)', color: 'var(--intergalactic-text-secondary)' }}>
         <p>
           <strong>Current tags:</strong> {JSON.stringify(tags)}
         </p>
