@@ -1,6 +1,6 @@
 ---
 title: Add filter
-tabs: Design('add-filter'), Example('add-filter-code')
+tabs: Design('add-filter'), Examples('add-filter-code')
 ---
 
 ## Description

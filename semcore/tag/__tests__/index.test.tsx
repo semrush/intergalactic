@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
@@ -54,7 +54,7 @@ describe('Tag', () => {
 describe('TagContainer', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify calls onClick', async () => {
+  test.sequential('Verify calls onClick', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <TagContainer>
@@ -65,7 +65,11 @@ describe('TagContainer', () => {
       </TagContainer>,
     );
 
-    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
+    const close = getByTestId('close');
+    await userEvent.tab();
+    expect(close).toHaveFocus();
+    await userEvent.keyboard('[Space>]');
+
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
@@ -81,7 +85,11 @@ describe('TagContainer', () => {
       </TagContainer>,
     );
 
-    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
+    const close = getByTestId('close');
+    await userEvent.tab();
+    expect(close).toHaveFocus();
+    await userEvent.keyboard('[Space>]');
+
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
