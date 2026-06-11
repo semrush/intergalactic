@@ -1,8 +1,8 @@
 import { Error } from '@semcore/ui/widget-empty';
-import type { WidgetErrorProps } from '@semcore/ui/widget-empty';
+import type { NSWidgetEmptyError } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type BasicWidgetErrorProps = WidgetErrorProps & {
+export type BasicWidgetErrorProps = NSWidgetEmptyError.Props & {
   showDescription?: boolean;
   customDescription?: string;
   showChildren?: boolean;
