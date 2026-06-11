@@ -1,6 +1,6 @@
 import { Portal } from '@semcore/base-components';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -33,7 +33,7 @@ describe('SidePanel', () => {
     expect(component.queryByLabelText('Close')).toBeNull();
   });
 
-  test('Verify onClose for Esc keypress', () => {
+  test('Verify onClose for Esc keypress', async () => {
     const spy = vi.fn();
     const component = render(
       <SidePanel visible onClose={spy}>
@@ -41,13 +41,15 @@ describe('SidePanel', () => {
       </SidePanel>,
     );
 
-    const sidebarNode = component.getByText('Content');
+    const closeButton = component.getByLabelText('Close');
+    await userEvent.tab();
+    expect(closeButton).toHaveFocus();
 
-    fireEvent.keyDown(sidebarNode, { key: 'Escape' });
+    await userEvent.keyboard('[Escape]');
     expect(spy).toBeCalledWith('onEscape', expect.any(Object));
   });
 
-  test('Verify onClose for click outside of SidePanel.Panel', () => {
+  test('Verify onClose for click outside of SidePanel.Panel', async () => {
     const spy = vi.fn();
     const component = render(
       <SidePanel visible onClose={spy}>
@@ -58,19 +60,25 @@ describe('SidePanel', () => {
     );
     const overlayNode = component.getByTestId('overlay');
 
-    fireEvent.mouseUp(overlayNode);
+    await userEvent.pointer([
+      { keys: '[MouseLeft>]', target: overlayNode },
+      { keys: '[/MouseLeft]', target: overlayNode },
+    ]);
     expect(spy).toBeCalledWith('onOutsideClick', expect.any(Object));
 
-    fireEvent.mouseUp(document.body);
+    await userEvent.pointer([
+      { keys: '[MouseLeft>]', target: document.body },
+      { keys: '[/MouseLeft]', target: document.body },
+    ]);
     expect(spy).toBeCalledTimes(2);
     expect(spy).toBeCalledWith('onOutsideClick', expect.any(Object));
   });
 
-  test('Verify onClose for Sidebar.Close click', () => {
+  test('Verify onClose for Sidebar.Close click', async () => {
     const spy = vi.fn();
     const component = render(<SidePanel visible closable onClose={spy} />);
     const closeNode = component.queryByLabelText('Close');
-    fireEvent.click(closeNode);
+    await userEvent.click(closeNode);
     expect(spy).toBeCalledWith('onCloseClick', expect.any(Object));
   });
 

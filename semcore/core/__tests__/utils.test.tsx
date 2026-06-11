@@ -16,7 +16,9 @@ import compose from '../src/utils/compose';
 import EventEmitter from '../src/utils/eventEmitter';
 import { BEFORE_BORDER_ID, AFTER_BORDER_ID } from '../src/utils/focus-lock/focusBorders';
 import { isFocusable } from '../src/utils/focus-lock/isFocusable';
+import { getAccessibleName } from '../src/utils/getAccessibleName';
 import { getEventTarget } from '../src/utils/getEventTarget';
+import hasLabels from '../src/utils/hasLabels';
 import getInputProps, { inputProps } from '../src/utils/inputProps';
 import isNode from '../src/utils/isNode';
 import propsForElement, { validAttr } from '../src/utils/propsForElement';
@@ -452,6 +454,89 @@ describe('extractAriaProps', () => {
       __excludeProps: ['title', 'aria-label', 'aria-labelledby', 'aria-describedby'],
       extractedAriaProps: {},
     });
+  });
+});
+
+describe('hasLabels', () => {
+  test('Verify returns false for empty or missing nodes', () => {
+    expect(hasLabels(null)).toBe(false);
+    expect(hasLabels(document.createElement('button'))).toBe(false);
+  });
+
+  test('Verify detects text content', () => {
+    const button = document.createElement('button');
+    button.textContent = 'Open';
+
+    expect(hasLabels(button)).toBe(true);
+  });
+
+  test('Verify detects nested aria-label', () => {
+    const button = document.createElement('button');
+    const icon = document.createElement('span');
+    icon.setAttribute('aria-label', 'Open');
+    button.appendChild(icon);
+
+    expect(hasLabels(button)).toBe(true);
+  });
+
+  test('Verify detects nested aria-labelledby', () => {
+    const button = document.createElement('button');
+    const icon = document.createElement('span');
+    icon.setAttribute('aria-labelledby', 'open-label');
+    button.appendChild(icon);
+
+    expect(hasLabels(button)).toBe(true);
+  });
+
+  test('Verify title is not treated as a visible label', () => {
+    const button = document.createElement('button');
+    button.title = 'Open';
+
+    expect(hasLabels(button)).toBe(false);
+  });
+});
+
+describe('getAccessibleName', () => {
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  test('Verify returns empty string for missing element', () => {
+    expect(getAccessibleName(null)).toBe('');
+  });
+
+  test('Verify prefers aria-labelledby over aria-label and title', () => {
+    document.body.innerHTML = `
+      <span id="label">Labelled name</span>
+      <button aria-labelledby="label" aria-label="Aria name" title="Title name"></button>
+    `;
+
+    expect(getAccessibleName(document.querySelector<HTMLElement>('button'))).toBe(
+      'Labelled name',
+    );
+  });
+
+  test('Verify returns aria-label', () => {
+    const button = document.createElement('button');
+    button.setAttribute('aria-label', 'Aria name');
+
+    expect(getAccessibleName(button)).toBe('Aria name');
+  });
+
+  test('Verify returns associated label text', () => {
+    document.body.innerHTML = `
+      <label for="input">Input name</label>
+      <input id="input" />
+    `;
+
+    expect(getAccessibleName(document.querySelector<HTMLElement>('input'))).toBe('Input name');
+  });
+
+  test('Verify falls back to title', () => {
+    const button = document.createElement('button');
+    button.title = 'Title name';
+
+    expect(getAccessibleName(button)).toBe('Title name');
   });
 });
 

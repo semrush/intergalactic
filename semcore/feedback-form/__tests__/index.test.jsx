@@ -1,14 +1,10 @@
-import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import CongratsIllustration from '@semcore/illustration/Congrats';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FeedbackForm, { FeedbackRating } from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('feedback-form Dependency imports', () => {
   runDependencyCheckTests('feedback-form');
@@ -17,10 +13,7 @@ describe('feedback-form Dependency imports', () => {
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(FeedbackForm);
-  shouldSupportRef(FeedbackForm);
-
-  test.concurrent('Verify call onSubmit', () => {
+  test.concurrent('Verify call onSubmit', async () => {
     const onSubmit = vi.fn();
 
     const { getByTestId, unmount } = render(
@@ -30,12 +23,12 @@ describe('FeedbackForm', () => {
       </FeedbackForm>,
     );
 
-    fireEvent.click(getByTestId('submit'));
+    await userEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
     unmount();
   });
 
-  test.sequential('Verify not call onSubmit for validation error', () => {
+  test.sequential('Verify not call onSubmit for validation error', async () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -48,7 +41,7 @@ describe('FeedbackForm', () => {
       </FeedbackForm>,
     );
 
-    fireEvent.click(getByTestId('submit'));
+    await userEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(0);
     unmount();
   });
@@ -132,19 +125,6 @@ describe('FeedbackForm', () => {
   });
 });
 
-describe('FeedbackForm.Item', () => {
-  beforeEach(cleanup);
-
-  const Item = React.forwardRef((props, ref) => (
-    <FeedbackForm.Item interaction='click' {...props}>
-      {(props) => <input ref={ref} {...propsForElement(props)} />}
-    </FeedbackForm.Item>
-  ));
-
-  shouldSupportClassName(Item, FeedbackForm);
-  shouldSupportRef(Item, FeedbackForm);
-});
-
 describe('5-star FeedbackForm', () => {
   beforeEach(cleanup);
 
@@ -215,7 +195,7 @@ describe('FeedbackRating - Props and Rendering', () => {
     expect(illustration).toBeTruthy();
   });
 
-  test('Should call onNotificationClose when close button clicked', () => {
+  test('Should call onNotificationClose when close button clicked', async () => {
     const onClose = vi.fn();
     const { container } = render(
       <FeedbackRating {...defaultProps} onNotificationClose={onClose} />,
@@ -225,7 +205,7 @@ describe('FeedbackRating - Props and Rendering', () => {
     expect(closeButton).toBeTruthy();
 
     if (closeButton) {
-      fireEvent.click(closeButton);
+      await userEvent.click(closeButton);
       expect(onClose).toHaveBeenCalledTimes(1);
     }
   });

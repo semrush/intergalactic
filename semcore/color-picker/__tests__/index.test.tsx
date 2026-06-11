@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -27,7 +27,7 @@ describe('ColorPicker', () => {
       </div>,
     );
 
-    fireEvent.click(getAllByRole('option')[0]);
+    await userEvent.click(getAllByRole('option')[0]);
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith('#8649E1', expect.anything());
   });
@@ -49,12 +49,11 @@ describe('ColorPicker', () => {
     );
 
     const input = getByTestId('inputColor') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '635472' } });
+    await userEvent.type(input, '635472');
     expect(input.value).toBe('635472');
 
-    fireEvent.focus(input);
     const cancel = getByLabelText('Clear custom color field');
-    fireEvent.click(cancel);
+    await userEvent.click(cancel);
     expect(input.value).toBe('');
   });
 
@@ -77,12 +76,11 @@ describe('ColorPicker', () => {
     );
 
     const input = getByTestId('inputColor') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '635472' } });
+    await userEvent.type(input, '635472');
     expect(input.value).toBe('635472');
 
-    fireEvent.focus(input);
     const confirm = getByLabelText('Add color to the list of custom colors');
-    fireEvent.click(confirm);
+    await userEvent.click(confirm);
 
     expect(input.value).toBe('');
     expect(spy).toBeCalledTimes(1);
@@ -108,17 +106,15 @@ describe('ColorPicker', () => {
     );
 
     const input = getByTestId('inputColor') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '635472' } });
-    fireEvent.focus(input);
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    await userEvent.type(input, '635472');
+    await userEvent.keyboard('[Enter]');
 
     expect(input.value).toBe('');
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test.concurrent('Verify color added with "#" sign in the code color', async () => {
-    vi.useFakeTimers();
+  test.sequential('Verify color added with "#" sign in the code color', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -137,18 +133,13 @@ describe('ColorPicker', () => {
     );
 
     const input = getByTestId('inputColor') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '#635472' } });
-    act(() => {
-      vi.runAllTimers();
-    });
+    await userEvent.type(input, '#635472');
 
     expect(input.value).toBe('#635472');
 
-    fireEvent.focus(input);
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    await userEvent.keyboard('[Enter]');
 
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
-    vi.useRealTimers();
   });
 });
