@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import FocusNextPrevExample from './examples/focus-next-prev';
 import SidebarAsComponentExample, { defaultExampleNoSideBarProps } from './examples/sidebar-as-component';
-import SteppersAndButtonsStatesExample from './examples/steps_and_buttons_states';
+import SteppersAndButtonsStatesExample, { defaultProps as steppersAndButtonsStatesProps } from './examples/steps_and_buttons_states';
 import WithScrollAreaExample from './examples/with-scroll-area';
 import WizardContentExample from './examples/wizard-content';
 
@@ -15,8 +15,14 @@ export default meta;
 
 type Story = StoryObj<typeof Wizard>;
 
-export const SteppersAndButtonsStates: Story = {
+export const SteppersAndButtonsStates: StoryObj<typeof steppersAndButtonsStatesProps> = {
   render: SteppersAndButtonsStatesExample,
+  argTypes: {
+    firstStepTitle: {
+      control: { type: 'text' },
+    },
+  },
+  args: steppersAndButtonsStatesProps,
 };
 
 export const WizardContent: Story = {

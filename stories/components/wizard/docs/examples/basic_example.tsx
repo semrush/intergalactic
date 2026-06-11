@@ -4,7 +4,7 @@ import { Text } from '@semcore/ui/typography';
 import Wizard from '@semcore/ui/wizard';
 import React from 'react';
 
-const steps = [{ title: 'SiteAuditSettingsSiteAuditSettings' }, { title: 'Keywords' }, { title: 'Schedule' }];
+const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
 const Demo = () => {
   const [step, setStep] = React.useState<number>(1);

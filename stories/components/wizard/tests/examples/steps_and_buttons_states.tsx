@@ -18,9 +18,21 @@ const steps = [
   { title: 'Something else' },
 ];
 
-const Demo = () => {
+type StepsAndButtonsStatesProps = {
+  firstStepTitle: string;
+};
+
+export const defaultProps: StepsAndButtonsStatesProps = {
+  firstStepTitle: steps[0].title,
+};
+
+const Demo = ({ firstStepTitle }: StepsAndButtonsStatesProps) => {
   const [step, setStep] = React.useState(1);
   const [visible, setVisible] = React.useState(false);
+  const configurableSteps = [
+    { ...steps[0], title: firstStepTitle },
+    ...steps.slice(1),
+  ];
 
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
@@ -35,17 +47,17 @@ const Demo = () => {
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={handleStepChange(1)} completed>
-            {steps[0].title}
+            {configurableSteps[0].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={2} onActive={handleStepChange(2)} number={1.1}>
-            {steps[1].title}
+            {configurableSteps[1].title}
             <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={1.2}>
             <Text color='text-secondary-invert' fontWeight={400}>
-              {steps[2].title}
+              {configurableSteps[2].title}
             </Text>
             <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               Optional step
@@ -53,39 +65,42 @@ const Demo = () => {
           </Wizard.Stepper>
           <Wizard.Stepper step={4} onActive={handleStepChange(4)} number={1.3}>
             <Text color='text-secondary-invert' fontWeight={400}>
-              {steps[3].title}
+              {configurableSteps[3].title}
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={5} onActive={handleStepChange(5)}>
-            {steps[4].title}
+            {configurableSteps[4].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={6} onActive={handleStepChange(6)}>
-            {steps[5].title}
+            {configurableSteps[5].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={7} onActive={handleStepChange(7)}>
-            {steps[6].title}
+            {configurableSteps[6].title}
             <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={8} onActive={handleStepChange(8)}>
-            {steps[7].title}
+            {configurableSteps[7].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={9} onActive={handleStepChange(9)} disabled>
-            {steps[8].title}
+            {configurableSteps[8].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={10} onActive={handleStepChange(10)} disabled number={8.1}>
-            {steps[9].title}
+            {configurableSteps[9].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={11} onActive={handleStepChange(11)} disabled number={8.1} completed>
-            {steps[10].title}
+            {configurableSteps[10].title}
           </Wizard.Stepper>
         </Wizard.Sidebar>
 
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
-          {steps.map((stepData, index) => (
+          {configurableSteps.map((stepData, index) => (
             <Wizard.Step key={index} step={index + 1}>
-              <Wizard.StepTitle>
+              <Wizard.StepTitle
+                // ellipsis
+              // w={100}
+              >
                 {stepData.title}
               </Wizard.StepTitle>
             </Wizard.Step>
@@ -95,16 +110,16 @@ const Demo = () => {
             {step > 1 && (
               <Wizard.StepBack
                 onActive={handleStepChange(step - 1)}
-                stepName={steps[step - 2].title}
+                stepName={configurableSteps[step - 2].title}
                 disabled={step === 2}
               />
             )}
-            {step !== steps.length - 1 && (
+            {step !== configurableSteps.length - 1 && (
               <Wizard.StepNext
                 ml='auto'
                 onActive={handleStepChange(step + 1)}
-                stepName={steps[step].title}
-                disabled={step === steps.length - 3}
+                stepName={configurableSteps[step].title}
+                disabled={step === configurableSteps.length - 3}
               />
             )}
           </Flex>
@@ -113,5 +128,7 @@ const Demo = () => {
     </>
   );
 };
+
+Demo.defaultProps = defaultProps;
 
 export default Demo;
