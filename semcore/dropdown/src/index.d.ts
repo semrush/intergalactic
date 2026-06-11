@@ -58,6 +58,19 @@ export type DropdownGroupProps = BoxProps & {
   sticky?: boolean;
 };
 
+export type StatusItemState = 'loading' | 'default' | 'error';
+
+export type DropdownStatusItemProps = {
+  /** State to display */
+  state?: StatusItemState;
+  /** Count of found items */
+  itemsCount: number;
+  /** Custom text content */
+  children?: React.ReactNode;
+};
+
+export type StatusItemComponent = Intergalactic.Component<'div', DropdownStatusItemProps>;
+
 declare const Dropdown: Intergalactic.Component<
   'div',
   DropdownProps,
@@ -73,6 +86,7 @@ declare const Dropdown: Intergalactic.Component<
   >;
   Item: Intergalactic.Component<typeof Box>;
   Group: Intergalactic.Component<'div', DropdownGroupProps>;
+  StatusItem: StatusItemComponent;
 };
 
 export default Dropdown;

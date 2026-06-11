@@ -106,21 +106,30 @@ const Demo = (props: ProjectSelectorProps) => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Popper aria-label='Select project popover'>
-        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} />
-
-        <DropdownMenu.VirtualList
-          key={filteredProjects.length === projects.length ? 'virtual-list-stable-key' : normalizedQuery}
-          hMax={listHeight + 41}
-          rowHeight={rowHeight}
-          renderRow={Row}
-          rows={filteredProjects}
-          customData={{
-            setProject: handleSetProject,
-            selected: selectedProject,
-            disabledAll: props.disabledAll,
-            disabledFirstItem: props.disabledFirstItem,
-          }}
+        <InputSearch
+          value={searchValue}
+          onChange={setSearchValue}
+          m={1}
+          autoFocus={false}
+          aria-describedby={searchValue ? 'search-result' : undefined}
         />
+
+        {filteredProjects.length > 0 && (
+          <DropdownMenu.VirtualList
+            key={filteredProjects.length === projects.length ? 'virtual-list-stable-key' : normalizedQuery}
+            hMax={listHeight + 41}
+            rowHeight={rowHeight}
+            renderRow={Row}
+            rows={filteredProjects}
+            customData={{
+              setProject: handleSetProject,
+              selected: selectedProject,
+              disabledAll: props.disabledAll,
+              disabledFirstItem: props.disabledFirstItem,
+            }}
+          />
+        )}
+        <DropdownMenu.StatusItem itemsCount={filteredProjects.length} id='search-result' />
         <Divider />
         <DropdownMenu.Item
           role='button'

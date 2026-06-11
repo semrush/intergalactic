@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Naciśnij Tab, aby przejść do okienka popover"
+  "triggerHint": "Naciśnij Tab, aby przejść do okienka popover",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "Znaleziono {count} {count, plural, one {wynik} few {wyniki} many {wyniki} other {wyników}}",
+  "StatusItem.defaultState.nothingFound": "Niczego nie znaleziono",
+  "StatusItem.loadingState": "Wczytywanie...",
+  "StatusItem.errorState": "Coś poszło nie tak. Spróbuj ponownie później."
 }
