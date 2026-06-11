@@ -10,16 +10,8 @@ export type CigaretteChartData = Record<CigaretteChartDataKey, number | typeof i
 
 export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<CigaretteChartData>,
-  'xScale' | 'yScale' | 'plotWidth' | 'plotHeight'
+  'xScale' | 'yScale'
 > & {
-  /**
-   * Width of plot
-   */
-  plotWidth: number;
-  /**
-   * Height of plot
-   */
-  plotHeight: number;
   /** Title text displayed in the tooltip */
   tooltipTitle?: string;
   /** Controls whether the tooltip shows all data or single item data */
