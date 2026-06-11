@@ -1,7 +1,6 @@
 ---
 title: Modal
-a11y: AA
-tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
+tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Examples('modal-code'), Changelog('modal-changelog')
 ---
 
 ## What component has

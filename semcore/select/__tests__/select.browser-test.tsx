@@ -202,6 +202,29 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
+
+  test.describe('StatusItem', () => {
+    const statusItemStory = 'stories/components/select/tests/examples/on_change_input_search.tsx';
+
+    for (const size of ['m', 'l'] as const) {
+      test(`Verify nothing-found status appearance with size ${size}`, {
+        tag: [TAG.PRIORITY_MEDIUM, '@select'],
+      }, async ({ page }) => {
+        await loadPage(page, statusItemStory, 'en', { size });
+
+        await test.step('Open select and filter with a non-matching query', async () => {
+          await locators.selectTrigger(page).click();
+          await locators.options(page).first().waitFor({ state: 'visible' });
+          await page.keyboard.type('zzz');
+          await expect(page.locator('text="Nothing found"')).toBeVisible();
+        });
+
+        await test.step('Verify appearance', async () => {
+          await expect(page).toHaveScreenshot();
+        });
+      });
+    }
+  });
 });
 
 /* =====================================================
@@ -773,5 +796,95 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await loadPage(page, 'stories/components/select/tests/examples/programmatically_focus.tsx', 'en');
     await locators.button(page, 'Set focus').click();
     await expect(locators.selectTrigger(page)).toBeFocused();
+  });
+
+  test.describe('StatusItem', () => {
+    const statusItemStory = 'stories/components/select/tests/examples/on_change_input_search.tsx';
+
+    test('Verify screen-reader result count when options are found', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, TAG.ACCESSIBILITY, '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en');
+
+      await test.step('Open select and filter to matching options', async () => {
+        await locators.selectTrigger(page).click();
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await page.keyboard.type('grape');
+      });
+
+      await test.step('Verify result count is exposed to screen readers only', async () => {
+        const status = page.locator('#search-result');
+        await expect(status).toContainText('1 result found');
+        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(page.locator('text="Nothing found"')).toHaveCount(0);
+      });
+    });
+
+    test('Verify visible "Nothing found" when no options match', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en');
+
+      await test.step('Open select and filter with a non-matching query', async () => {
+        await locators.selectTrigger(page).click();
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await page.keyboard.type('zzz');
+      });
+
+      await test.step('Verify "Nothing found" is visible', async () => {
+        const status = page.locator('#search-result');
+        await expect(status).toBeVisible();
+        await expect(status).toContainText('Nothing found');
+      });
+    });
+
+    test('Verify loading state text is shown', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { state: 'loading' });
+
+      await test.step('Open select', async () => {
+        await locators.selectTrigger(page).click();
+      });
+
+      await test.step('Verify loading text', async () => {
+        await expect(page.locator('text="Loading..."')).toBeVisible();
+      });
+    });
+
+    test('Verify error state text is shown', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { state: 'error' });
+
+      await test.step('Open select', async () => {
+        await locators.selectTrigger(page).click();
+      });
+
+      await test.step('Verify error text', async () => {
+        await expect(
+          page.locator('text="Something went wrong. Please try again later."'),
+        ).toBeVisible();
+      });
+    });
+
+    test('Verify custom children override the default status text', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@select'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', {
+        customChildren: 'No fruits match your search',
+      });
+
+      await test.step('Open select and filter with a non-matching query', async () => {
+        await locators.selectTrigger(page).click();
+        await locators.options(page).first().waitFor({ state: 'visible' });
+        await page.keyboard.type('zzz');
+      });
+
+      await test.step('Verify custom text replaces the default', async () => {
+        await expect(page.locator('text="No fruits match your search"')).toBeVisible();
+        await expect(page.locator('text="Nothing found"')).toHaveCount(0);
+      });
+    });
   });
 });

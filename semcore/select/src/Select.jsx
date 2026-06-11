@@ -506,6 +506,7 @@ const Select = createComponent(
       },
     ],
     Group: Dropdown.Group,
+    StatusItem: Dropdown.StatusItem,
     Divider,
     InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
     Input: [InputSearchWrapper, InputSearch._______childrenComponents],

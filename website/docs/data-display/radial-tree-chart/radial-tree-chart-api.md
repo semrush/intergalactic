@@ -1,7 +1,7 @@
 ---
 title: Radial Tree chart
 fileSource: d3-chart
-tabs: Design('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-code'), Changelog('radial-tree-chart-changelog')
+tabs: Design('radial-tree-chart'), A11y('radial-tree-chart-a11y'), API('radial-tree-chart-api'), Examples('radial-tree-chart-code'), Changelog('radial-tree-chart-changelog')
 ---
 
 ## D3 chart

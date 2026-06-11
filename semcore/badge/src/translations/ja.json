@@ -3,5 +3,6 @@
   "Badge.Alpha": "alpha",
   "Badge.Beta": "ベータ",
   "Badge.New": "新規",
-  "Badge.Soon": "近日公開"
+  "Badge.Soon": "近日公開",
+  "Badge.Unavailable": "利用不可"
 }

@@ -1,6 +1,6 @@
 ---
 title: Include/Exclude keywords
-tabs: Design('filter-include-exclude'), Example('filter-include-exclude-code')
+tabs: Design('filter-include-exclude'), Examples('filter-include-exclude-code')
 ---
 
 ## Basic usage

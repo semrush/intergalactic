@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tag",
   "description": "Semrush Tag Component",
-  "version": "17.1.0",
+  "version": "17.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,11 +17,11 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/typography": "^17.1.0"
+    "@semcore/typography": "^17.2.0"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.0.2",
-    "@semcore/icon": "^17.0.1"
+    "@semcore/base-components": "^17.2.0",
+    "@semcore/icon": "^17.2.0"
   },
   "repository": {
     "type": "git",

@@ -13,7 +13,6 @@ export const unpluginSemcoreResolve = createUnplugin<{ rootPath: string }>((opts
     return id.includes('/semcore/');
   },
   async load(id) {
-    console.log('load', id);
     const { code } = await loadSemcoreSources(id);
 
     return {

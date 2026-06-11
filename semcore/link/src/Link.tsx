@@ -55,7 +55,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     const addonWidth = size === undefined || size < 600 ? 20 : 28;
 
     let addonsCount = addons.reduce((acc, addon) => {
-      if (addon.props.tag?.__IS_ICON || addon.props.children?.type?.__IS_ICON || addon.props.children?.type?.[INHERITED_NAME].includes('Spin')) {
+      if (addon.props.tag?.__IS_ICON || addon.props.children?.type?.__IS_ICON || addon.props.children?.type?.[INHERITED_NAME]?.includes('Spin')) {
         acc++;
       }
       return acc;
