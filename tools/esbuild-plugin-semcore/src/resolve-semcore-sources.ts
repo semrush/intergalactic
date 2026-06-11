@@ -176,7 +176,7 @@ export function semcoreSourceEsbuildPlugin(rootPath: string): Plugin {
           path: resolvedPath,
         };
       });
-      build.onLoad({ filter: /\/semcore\// }, async ({ path }) => {
+      build.onLoad({ filter: /[/|\\]semcore[/|\\]/ }, async ({ path }) => {
         {
           const extension = path.split('.').pop() ?? '';
           if (extension === 'js') {
