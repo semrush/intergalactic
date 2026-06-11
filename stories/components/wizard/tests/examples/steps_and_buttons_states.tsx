@@ -5,7 +5,7 @@ import Wizard from '@semcore/ui/wizard';
 import React from 'react';
 
 const steps = [
-  { title: 'Personal Info' },
+  { title: 'Personal Info for test long long text' },
   { title: 'Import source' },
   { title: 'Sub step name' },
   { title: 'Sub step name 2' },
@@ -98,8 +98,7 @@ const Demo = ({ firstStepTitle }: StepsAndButtonsStatesProps) => {
           {configurableSteps.map((stepData, index) => (
             <Wizard.Step key={index} step={index + 1}>
               <Wizard.StepTitle
-                // ellipsis
-              // w={100}
+                ellipsis
               >
                 {stepData.title}
               </Wizard.StepTitle>

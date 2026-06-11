@@ -102,6 +102,11 @@ SContent {
   border-radius: 0 var(--intergalactic-modal-rounded, 14px) var(--intergalactic-modal-rounded, 14px)
     0;
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+
+  SWizardStepTitle {
+    display: block;
+    word-break: break-word;
+  }
 }
 SContent[noSidebar] {
   border-radius: var(--intergalactic-modal-rounded, 14px);
@@ -109,8 +114,4 @@ SContent[noSidebar] {
 
 SSidebarMenu {
   display: contents;
-}
-
-SWizardStepTitle {
-  word-break: break-word;
 }
