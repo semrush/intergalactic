@@ -14,16 +14,16 @@ import { logger, processTokens, tokensToCss, tokensToJs } from './utils.ts';
 
 export const writeIfChanged = async (relativePath: string, content: string) => {
   const pathToFile = resolvePath(packageDirname, relativePath);
-  try {
-    const originalContent = await fs.readFile(pathToFile, 'utf-8');
-    if (originalContent.replace(/[\s\n]/g, '') === content.replace(/[\s\n]/g, '')) {
-      return;
-    }
-  } catch (err: unknown) {
-    if (!(err instanceof Error) || !('code' in err) || err.code !== 'ENOENT' || !err.message.startsWith('ENOENT: no such file')) {
-      throw err;
-    }
-  }
+  // try {
+  //   const originalContent = await fs.readFile(pathToFile, 'utf-8');
+  //   if (originalContent.replace(/[\s\n]/g, '') === content.replace(/[\s\n]/g, '')) {
+  //     return;
+  //   }
+  // } catch (err: unknown) {
+  //   if (!(err instanceof Error) || !('code' in err) || err.code !== 'ENOENT' || !err.message.startsWith('ENOENT: no such file')) {
+  //     throw err;
+  //   }
+  // }
   const dirName = dirname(pathToFile);
   await fs.mkdir(dirName, { recursive: true });
   await fs.writeFile(pathToFile, content);
@@ -60,19 +60,21 @@ for (const theme of themes) {
     await writeIfChanged(`lib/highlights-${theme}.js`, tokensToJs(highlightsTokens));
   }
 
-  if (theme === defaultTheme) {
-    const pandaPreset = toPandaPreset(config);
+  if (!process.argv.includes('--watch')) {
+    if (theme === defaultTheme) {
+      const pandaPreset = toPandaPreset(config);
 
-    await writeIfChanged('lib/panda-preset.js', pandaPreset);
-    await writeIfChanged('lib/panda-preset.ts', pandaPreset);
+      await writeIfChanged('lib/panda-preset.js', pandaPreset);
+      await writeIfChanged('lib/panda-preset.ts', pandaPreset);
 
-    const usages = await processStyles();
+      const usages = await processStyles();
 
-    await processTokensToDocs(usages, {
-      basic: baseTokens,
-      semantic: semanticTokens,
-      highlight: highlightsTokens,
-    });
+      await processTokensToDocs(usages, {
+        basic: baseTokens,
+        semantic: semanticTokens,
+        highlight: highlightsTokens,
+      });
+    }
   }
 }
 

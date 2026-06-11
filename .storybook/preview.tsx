@@ -2,7 +2,8 @@ import { PortalProvider } from '@semcore/base-components';
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 
-// import '@semcore/theme/lib/highlights-light.css';
+import '@semcore/theme/lib/light.css';
+import '@semcore/theme/lib/highlights-light.css';
 
 const preview: Preview = {
   parameters: {
@@ -70,8 +71,8 @@ const preview: Preview = {
       if (params.parameters.layout === 'fullscreen') {
         return (
           <>
-            <link rel='stylesheet' href={stylesheet} />
-            <link rel='stylesheet' href={stylesheetHighlight} />
+            {/* <link rel='stylesheet' href={stylesheet} /> */}
+            {/* <link rel='stylesheet' href={stylesheetHighlight} /> */}
             <PortalProvider value={rootRef}>
               <div ref={rootRef}>
                 <Story />
@@ -83,8 +84,8 @@ const preview: Preview = {
 
       return (
         <>
-          <link rel='stylesheet' href={stylesheet} />
-          <link rel='stylesheet' href={stylesheetHighlight} />
+          {/* <link rel='stylesheet' href={stylesheet} /> */}
+          {/* <link rel='stylesheet' href={stylesheetHighlight} /> */}
           <div style={{ display: 'grid', gridTemplateRows: '20px auto 20px' }}>
             <div tabIndex={0} />
             <PortalProvider value={rootRef}>
