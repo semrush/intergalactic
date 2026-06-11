@@ -177,6 +177,17 @@ export function semcoreSourceEsbuildPlugin(rootPath: string): Plugin {
         };
       });
       build.onLoad({ filter: /\/semcore\// }, async ({ path }) => {
+        {
+          const extension = path.split('.').pop() ?? '';
+          if (extension === 'js') {
+            const fallbackPath = `${path.split('.').slice(0, -1).join('.')}.mjs`;
+            try {
+              await fsAccess(fallbackPath);
+              path = fallbackPath;
+            } catch {}
+          }
+        }
+
         const { code } = await loadSemcoreSources(path);
         const extension = path.split('.').pop() ?? 'js';
 
