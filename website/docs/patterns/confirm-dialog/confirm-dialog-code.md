@@ -1,6 +1,6 @@
 ---
 title: Confirmation modal dialog
-tabs: Design('confirm-dialog'), Example('confirm-dialog-code')
+tabs: Design('confirm-dialog'), Examples('confirm-dialog-code')
 ---
 
 ## Delete project confirmation

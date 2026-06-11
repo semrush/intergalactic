@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.0] - 2026-06-05
+
+### Added
+
+- Links to the API and examples in the docs.
+- Calculate `Text` width based on the number of added `Icons` as Addons.
+
 ## [17.1.0] - 2026-05-13
 
 ### Added

@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, userEvent, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { render, userEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
@@ -14,7 +14,7 @@ describe('InputTags', () => {
 
   test('Verify calls onClick', async () => {
     const onClick = vi.fn();
-    const { getByTestId } = render(
+    const { getByRole } = render(
       <InputTags>
         <InputTags.Tag theme='primary' editable data-testid='tag' onClick={onClick}>
           <InputTags.Tag.Text>tag</InputTags.Tag.Text>
@@ -24,9 +24,9 @@ describe('InputTags', () => {
       </InputTags>,
     );
 
-    act(() => {
-      fireEvent.keyDown(getByTestId('tag'), { key: 'Enter' });
-    });
+    await userEvent.tab();
+    expect(getByRole('button', { name: 'tag' })).toHaveFocus();
+    await userEvent.keyboard('[Enter]');
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
@@ -41,13 +41,8 @@ describe('InputTags', () => {
 
     const input = getByRole('textbox');
 
-    await act(() => {
-      fireEvent.paste(input, {
-        clipboardData: {
-          getData: () => 'foo,bar',
-        },
-      } as any);
-    });
+    await userEvent.click(input);
+    await userEvent.paste('foo,bar');
 
     expect(onAppend).toHaveBeenCalledWith(['foo', 'bar'], expect.anything());
   });

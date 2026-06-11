@@ -8,6 +8,5 @@ export enum TAG {
   PRIORITY_LOW = '@priority-low',
   KEYBOARD = '@keyboard',
   MOUSE = '@mouse',
-  VOICEOVER = '@voiceover',
   NVDA = '@nvda',
 }

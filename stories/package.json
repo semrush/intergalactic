@@ -16,7 +16,6 @@
   "devDependencies": {
     "@types/d3-scale": "3.3.0",
     "@types/d3-shape": "3.1.7",
-    "@types/react-virtualized": "9.22.0",
-    "@semcore/testing-utils": "workspace:*"
+    "@types/react-virtualized": "9.22.0"
   }
 }

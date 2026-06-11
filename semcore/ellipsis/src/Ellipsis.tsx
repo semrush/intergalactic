@@ -28,7 +28,7 @@ type AsProps = {
 
 type AsPropsMiddle = {
   text: string;
-  textRef: RefObject<HTMLElement>;
+  textRef: RefObject<HTMLDivElement>;
   tooltip?: boolean;
   styles?: React.CSSProperties;
   containerRect?: { width: number };

@@ -1,7 +1,7 @@
 import EditM from '@semcore/icon/Edit/m';
 import PlusM from '@semcore/icon/MathPlus/m';
 import Settings from '@semcore/icon/Settings/m';
-import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
@@ -121,39 +121,18 @@ const Demo = () => {
       <DropdownMenu.Popper aria-label='Select project popover'>
         <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} aria-describedby={searchValue ? 'search-result' : undefined} />
 
-        <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
-          {filteredMenuData.map((group, index) => {
-            return (
-              <DropdownMenu.Group key={index} title={group.title} sticky>
-                {group.projects.map((project) => (<Row key={`${group.title}_${project.title}`} data={{ project, setProject, selectedProject }} />))}
-              </DropdownMenu.Group>
-            );
-          })}
-
-          {filteredMenuData.length
-            ? (
-                <ScreenReaderOnly id='search-result' aria-hidden='true'>
-                  {filteredMenuData.length}
-                  {' '}
-                  result
-                  {filteredMenuData.length > 1 && 's'}
-                  {' '}
-                  found
-                </ScreenReaderOnly>
-              )
-            : (
-                <Text
-                  tag='div'
-                  id='search-result'
-                  key='Nothing'
-                  p='6px 8px'
-                  size={200}
-                  use='secondary'
-                >
-                  Nothing found
-                </Text>
-              )}
-        </DropdownMenu.List>
+        {filteredMenuData.length > 0 && (
+          <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
+            {filteredMenuData.map((group, index) => {
+              return (
+                <DropdownMenu.Group key={index} title={group.title} sticky>
+                  {group.projects.map((project) => (<Row key={`${group.title}_${project.title}`} data={{ project, setProject, selectedProject }} />))}
+                </DropdownMenu.Group>
+              );
+            })}
+          </DropdownMenu.List>
+        )}
+        <DropdownMenu.StatusItem id='search-result' itemsCount={filteredMenuData.length} />
         <Divider />
         <DropdownMenu.Item
           role='button'

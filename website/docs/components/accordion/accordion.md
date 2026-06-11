@@ -1,7 +1,7 @@
 ---
 title: Accordion
 fileSource: accordion
-tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example('accordion-code'), Changelog('accordion-changelog')
+tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Examples('accordion-code'), Changelog('accordion-changelog')
 ---
 
 ## Description

@@ -1,7 +1,8 @@
 import os from 'os';
 import { resolve as resolvePath } from 'path';
 
-import { unpluginSemcoreResolve } from '@semcore/builder/plugins';
+import { semcoreSourceEsbuildPlugin } from '@semcore/esbuild-plugin-semcore';
+import light from '@semcore/theme/light';
 import esbuild from 'esbuild';
 
 export const e2eStandToHtml = async (
@@ -66,9 +67,7 @@ export const e2eStandToHtml = async (
           }));
         },
       },
-      unpluginSemcoreResolve.esbuild({
-        rootPath: resolvePath(__dirname, '..', '..'),
-      }),
+      semcoreSourceEsbuildPlugin(resolvePath(__dirname, '..', '..')),
     ],
     bundle: true,
     write: false,
@@ -88,6 +87,11 @@ export const e2eStandToHtml = async (
     <html lang="${locale}">
       <head>
         <style>${cssFiles.join('\n')}</style>
+        <style>
+          :root {
+            ${Object.entries(light).map(([key, value]) => `${key}: ${value};`).join('\n')}
+          }
+        </style>
       </head>
       <body>
         <div id="root"></div>

@@ -443,8 +443,8 @@ SText[decoration] {
   text-decoration: var(--decoration);
 }
 
-SText[color] {
-  color: var(--color);
+SText[textColor] {
+  color: var(--textColor);
 }
 
 SText[fontSize] {

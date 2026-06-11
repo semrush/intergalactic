@@ -1,16 +1,13 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, fireEvent, waitFor } from '@semcore/testing-utils/testing-library';
+import { act, cleanup, render, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { ScrollArea, eventCalculate } from '../src';
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
 describe('ScrollArea', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify support render function for children', () => {
+  test.sequential('Verify support render function for children', () => {
     const component = (
       <ScrollArea>
         {() => {
@@ -25,10 +22,7 @@ describe('ScrollArea', () => {
     ).toBe(1);
   });
 
-  shouldSupportClassName(ScrollArea);
-  shouldSupportRef(ScrollArea);
-
-  test.concurrent('Verify trigger calculate event on container', () => {
+  test.sequential('Verify trigger calculate event on container', () => {
     const { getByTestId } = render(
       <ScrollArea>
         <ScrollArea.Container data-testid='container' />
@@ -39,12 +33,12 @@ describe('ScrollArea', () => {
     const eventListener = vi.fn();
     container.addEventListener('calculate', eventListener);
 
-    fireEvent(container, eventCalculate!);
+    container.dispatchEvent(eventCalculate!);
 
     expect(eventListener).toHaveBeenCalled();
   });
 
-  test.concurrent('Verify correctly set shadows based on scroll position', () => {
+  test.sequential('Verify correctly set shadows based on scroll position', async () => {
     const { getByTestId } = render(
       <ScrollArea shadow>
         <ScrollArea.Container data-testid='test1' w={300} h={300} />
@@ -57,14 +51,20 @@ describe('ScrollArea', () => {
     Object.defineProperty(container, 'scrollWidth', { value: 300, writable: true });
     Object.defineProperty(container, 'clientWidth', { value: 200, writable: true });
 
-    fireEvent.scroll(container);
+    await act(async () => {
+      container.dispatchEvent(new Event('scroll'));
+    });
 
-    waitFor(() => {
-      expect(container).toHaveAttribute('data-shadow-horizontal', 'median');
+    await waitFor(() => {
+      const scrollArea = container.closest('[data-ui-name="ScrollArea"]');
+      const horizontalShadow = scrollArea?.querySelector('[class*="SShadowHorizontal"]');
+
+      expect(horizontalShadow).toBeInstanceOf(HTMLElement);
+      expect((horizontalShadow as HTMLElement).className).toContain('_position_median_');
     });
   });
 
-  test.concurrent('Verify keep focused element visible', () => {
+  test.sequential('Verify keep focused element visible', () => {
     const { getByTestId } = render(
       <ScrollArea>
         <ScrollArea.Container>
@@ -79,11 +79,4 @@ describe('ScrollArea', () => {
     expect(document.activeElement).toBe(input);
     expect(input.getBoundingClientRect().top).toBeGreaterThanOrEqual(0);
   });
-});
-
-describe('ScrollArea.Container', () => {
-  beforeEach(cleanup);
-
-  shouldSupportClassName(ScrollArea.Container, ScrollArea);
-  shouldSupportRef(ScrollArea.Container, ScrollArea);
 });

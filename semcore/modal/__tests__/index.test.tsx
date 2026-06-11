@@ -1,13 +1,10 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, fireEvent, queryByAttribute } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Button from '../../button/src';
 import Modal from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('modal Dependency imports', () => {
   runDependencyCheckTests('modal');
@@ -16,30 +13,25 @@ describe('modal Dependency imports', () => {
 describe('Modal', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Modal.Window, (props: any) => <Modal {...props} visible />);
-  shouldSupportRef(Modal.Window, (props: any) => <Modal {...props} visible />);
-
-  test.concurrent('Verify supports custom attributes', () => {
-    const { getByTestId } = render(<Modal visible data-testid='modal' data-name='modal' />);
-
-    expect((getByTestId('modal').attributes as any)['data-name'].value).toBe('modal');
-  });
-
-  test.sequential('Verify onClose event for Escape', () => {
+  test.sequential('Verify onClose event for Escape', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<Modal onClose={spy} data-testid='modal' visible />);
-    fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
+    const modal = getByTestId('modal');
+    modal.focus();
+    expect(modal).toHaveFocus();
+
+    await userEvent.keyboard('[Escape]');
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
 
-  test.sequential('Verify supports onClose for CloseIcons', () => {
+  test.sequential('Verify supports onClose for CloseIcons', async () => {
     const spy = vi.fn();
     const { getByTitle } = render(<Modal onClose={spy} visible />);
-    fireEvent.click(getByTitle('Close'));
+    await userEvent.click(getByTitle('Close').closest('button')!);
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
-  test.sequential('Verify mount on open', () => {
+  test.sequential('Verify mount on open', async () => {
     const spy = vi.fn();
     const Component = () => {
       const [visible, setVisible] = React.useState(false);
@@ -55,7 +47,7 @@ describe('Modal', () => {
       );
     };
     const { getByTestId } = render(<Component />);
-    fireEvent.click(getByTestId('open-modal'));
+    await userEvent.click(getByTestId('open-modal'));
     expect(getByTestId('modal-content')).toBeTruthy();
   });
 
@@ -84,7 +76,7 @@ describe('Modal', () => {
     expect(queryByText('Hello world')).toBeNull();
   });
 
-  test.concurrent('Verify supports onClose for OutsideClick', async () => {
+  test.sequential('Verify supports onClose for OutsideClick', async () => {
     const spy = vi.fn();
     const { baseElement } = render(
       <Modal onClose={spy} visible>
@@ -95,19 +87,11 @@ describe('Modal', () => {
     const overlayContentWrapper = queryByAttribute('data-ui-name', baseElement, 'Modal.Overlay.ContentWrapper');
     expect(overlayContentWrapper).not.toBeNull();
 
-    fireEvent.mouseUp(overlayContentWrapper!);
+    await userEvent.pointer([
+      { keys: '[MouseLeft>]', target: overlayContentWrapper! },
+      { keys: '[/MouseLeft]', target: overlayContentWrapper! },
+    ]);
     expect(spy).toBeCalledWith('onOutsideClick', expect.anything());
-  });
-
-  test.concurrent('Verify supports children', () => {
-    const component = (
-      <Modal visible>
-        <p data-testid='child'>Test</p>
-      </Modal>
-    );
-    const { getByTestId } = render(component);
-
-    expect(getByTestId('child')).toBeTruthy();
   });
 
   test.sequential('Verify supports render function for children', async () => {

@@ -17,7 +17,7 @@ const entry: PlaygroundEntry<BadgeJSXProps> = {
   controls: {
     type: {
       type: 'select',
-      options: ['admin', 'alpha', 'beta', 'new', 'soon'],
+      options: ['admin', 'alpha', 'beta', 'new', 'soon', 'unavailable'],
       displayName: 'Type',
       value: 'new',
     },

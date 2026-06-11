@@ -209,7 +209,12 @@ export class Column<
   };
 
   handleMouseLeave = () => {
-    this.setState({ sortVisible: false });
+    const sortButtonWrapper = this.sortWrapperRef.current;
+    const sortButton = sortButtonWrapper?.children.item(0);
+
+    if (sortButton !== document.activeElement) {
+      this.setState({ sortVisible: false });
+    }
   };
 
   handleBlur = (e: React.FocusEvent<HTMLElement>) => {

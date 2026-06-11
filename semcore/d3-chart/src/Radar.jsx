@@ -118,7 +118,7 @@ export function getLabelOffsetPosition(xDirection, yDirection, width, height) {
 const MINIMUM_OFFSET = 5;
 
 class RadarRoot extends Component {
-  static displayName = 'Line';
+  static displayName = 'Radar';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
 

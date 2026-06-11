@@ -1,6 +1,4 @@
-import { ScreenReaderOnly } from '@semcore/ui/base-components';
 import Select from '@semcore/ui/select';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 let index = 0;
@@ -67,29 +65,7 @@ const Demo = () => {
               );
           })}
 
-          {filteredProjects.length
-            ? (
-                <ScreenReaderOnly id='search-result' aria-hidden='true'>
-                  {filteredProjects.length}
-                  {' '}
-                  result
-                  {filteredProjects.length > 1 && 's'}
-                  {' '}
-                  found
-                </ScreenReaderOnly>
-              )
-            : (
-                <Text
-                  tag='div'
-                  id='search-result'
-                  key='Nothing'
-                  p='6px 8px'
-                  size={200}
-                  use='secondary'
-                >
-                  Nothing found
-                </Text>
-              )}
+          <Select.StatusItem itemsCount={filteredProjects.length} />
         </Select.List>
       </Select.Popper>
     </Select>

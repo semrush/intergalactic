@@ -1,31 +1,32 @@
-import { Box, Col, Row } from '@semcore/ui/base-components';
+import { Box, Col, Row, type BoxProps } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {
-  const styleBox = {
-    border: '3px solid #fff',
-    background: 'rgba(79, 96, 213, 0.5)',
-    padding: '16px',
+  const boxProps: BoxProps = {
+    p: 4,
+    mb: 4,
+    bg: 'bg-primary-advertising',
   };
+
   return (
     <>
       <Row gutter={4}>
         <Col span>
-          <Box style={styleBox} />
+          <Box {...boxProps} />
         </Col>
         <Col span>
-          <Box style={styleBox} />
+          <Box {...boxProps} />
         </Col>
       </Row>
       <Row gutter={4}>
         <Col span>
-          <Box style={styleBox} />
+          <Box {...boxProps} />
         </Col>
         <Col span>
-          <Box style={styleBox} />
+          <Box {...boxProps} />
         </Col>
         <Col span>
-          <Box style={styleBox} />
+          <Box {...boxProps} />
         </Col>
       </Row>
     </>

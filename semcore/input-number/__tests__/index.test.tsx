@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -12,7 +12,17 @@ describe('input-number Dependency imports', () => {
 describe('InputNumber', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify int numbers', () => {
+  const focusInput = async (input: HTMLElement) => {
+    await userEvent.click(input);
+    expect(input).toHaveFocus();
+  };
+
+  const blurInput = async (input: HTMLElement) => {
+    await focusInput(input);
+    await userEvent.tab();
+  };
+
+  test.sequential('Verify int numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -20,11 +30,12 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input1');
-    fireEvent.change(input, { target: { value: '123' } });
-    expect(spy).toBeCalledWith('123', expect.anything());
+    await focusInput(input);
+    await userEvent.keyboard('123');
+    expect(spy).lastCalledWith('123', expect.anything());
   });
 
-  test.sequential('Verify float numbers', () => {
+  test.sequential('Verify float numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -32,8 +43,9 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input2');
-    fireEvent.change(input, { target: { value: '123.4' } });
-    expect(spy).toBeCalledWith('123.4', expect.anything());
+    await focusInput(input);
+    await userEvent.keyboard('123.4');
+    expect(spy).lastCalledWith('123.4', expect.anything());
   });
 
   test.concurrent('Verify format in int numbers', async () => {
@@ -52,7 +64,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,345');
   });
 
-  test.sequential('Verify format in float numbers', () => {
+  test.sequential('Verify format in float numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -61,8 +73,9 @@ describe('InputNumber', () => {
     );
 
     const input = getByTestId('input4') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '12345.4' } });
-    expect(spy).toBeCalledWith('12345.4', expect.anything());
+    await focusInput(input);
+    await userEvent.keyboard('12345.4');
+    expect(spy).lastCalledWith('12345.4', expect.anything());
     expect(input.value).toBe('12,345.4');
   });
 
@@ -156,7 +169,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('0.01');
   });
 
-  test.sequential('Verify correct round float numbers with step less than 1', () => {
+  test.sequential('Verify correct round float numbers with step less than 1', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -164,11 +177,11 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input5');
-    fireEvent.blur(input);
+    await blurInput(input);
     expect(spy).toBeCalledWith('0.3', expect.anything());
   });
 
-  test.sequential('Verify round float numbers with step more than 1', () => {
+  test.sequential('Verify round float numbers with step more than 1', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -176,11 +189,11 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input6');
-    fireEvent.blur(input);
+    await blurInput(input);
     expect(spy).toBeCalledWith('40', expect.anything());
   });
 
-  test.concurrent('Verify not accept letters', () => {
+  test.sequential('Verify not accept letters', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -189,11 +202,12 @@ describe('InputNumber', () => {
     );
 
     const input = getByTestId('input7');
-    fireEvent.change(input, { target: { value: 'YOU SHELL NOT PASS' } });
+    await focusInput(input);
+    await userEvent.keyboard('YOU SHELL NOT PASS');
     expect(spy).not.toBeCalled();
   });
 
-  test.concurrent('Verify not accept value which is bigger than max prop', () => {
+  test.sequential('Verify not accept value which is bigger than max prop', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -201,11 +215,11 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input8');
-    fireEvent.blur(input);
+    await blurInput(input);
     expect(spy).toBeCalledWith('10', expect.anything());
   });
 
-  test.sequential('Verify not accept value which is smaller than min prop', () => {
+  test.sequential('Verify not accept value which is smaller than min prop', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -213,11 +227,11 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input9');
-    fireEvent.blur(input);
+    await blurInput(input);
     expect(spy).toBeCalledWith('200', expect.anything());
   });
 
-  test.concurrent('Verify inputs up/down buttons click', () => {
+  test.concurrent('Verify inputs up/down buttons click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -228,11 +242,11 @@ describe('InputNumber', () => {
     const controls = getByTestId('controls');
 
     const arrowUp = controls.querySelectorAll('button')[0];
-    fireEvent.click(arrowUp);
+    await userEvent.click(arrowUp);
     expect(spy).lastCalledWith('1', expect.anything());
     const arrowDown = controls.querySelectorAll('button')[1];
-    fireEvent.click(arrowDown); // 0
-    fireEvent.click(arrowDown); // -1
+    await userEvent.click(arrowDown);
+    await userEvent.click(arrowDown);
     expect(spy).lastCalledWith('-1', expect.anything());
   });
 

@@ -6,7 +6,7 @@
 import { resolve as resolvePath, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import { unpluginSemcoreResolve } from '@semcore/builder/plugins';
+import { unpluginIcons, unpluginIllustrations, unpluginSemcoreResolve } from '@semcore/builder/plugins';
 import pluginReact from '@vitejs/plugin-react';
 import { createUnplugin } from 'unplugin';
 import { defineConfig } from 'vite';
@@ -21,6 +21,8 @@ export default defineConfig({
       },
     }),
     unpluginSemcoreResolve.vite({ rootPath: rootDir }),
+    unpluginIcons.vite({ rootPath: rootDir }),
+    unpluginIllustrations.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
       name: 'docs-components-resolver',
       async resolveId(id) {

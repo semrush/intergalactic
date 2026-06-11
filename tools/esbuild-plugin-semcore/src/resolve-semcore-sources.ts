@@ -1,6 +1,10 @@
-import { access as fsAccess, stat as fsStat, readdir } from 'fs/promises';
+import { access as fsAccess, stat as fsStat } from 'fs/promises';
 import { exec } from 'node:child_process';
 import { resolve as resolvePath } from 'path';
+
+import type { Loader, Plugin } from 'esbuild';
+
+import { loadSemcoreSources } from './load-semcore-sources.ts';
 
 const fsExists = async (path: string) => {
   try {
@@ -92,7 +96,7 @@ const tryToResolveIndexFile = async (path: string) => {
 };
 
 const rootFiles = ['README.md', 'package.json'];
-const generatedComponents = ['icon', 'ui', 'illustration'];
+const generatedComponents = ['icon', 'ui', 'illustration', 'theme'];
 const outOfSourceDirs = ['style'];
 
 export const resolveSemcoreSources = async (path: string, rootPath: string) => {
@@ -106,7 +110,7 @@ export const resolveSemcoreSources = async (path: string, rootPath: string) => {
     const indexFrom = path.indexOf('/semcore/');
     path = `@semcore/${path.substring(indexFrom + '/semcore/'.length)}`;
   }
-  const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
+  let workspacePath = await tryToResolveWorkspacePath(path, rootPath);
   const componentName = path.split('/')[1];
   const subPath = path.split('/').slice(2).join('/');
   let modifiedSubPath = subPath;
@@ -127,6 +131,9 @@ export const resolveSemcoreSources = async (path: string, rootPath: string) => {
     }
   } else if (componentName === 'icon' || componentName === 'illustration') {
     modifiedSubPath = `lib/${subPath}`;
+  } else if (componentName === 'theme') {
+    workspacePath = workspacePath.split('/').map((item) => item === 'semcore' ? 'tools' : item).join('/');
+    modifiedSubPath = `lib/${subPath}`;
   }
 
   for (const absolutePath of [
@@ -145,3 +152,50 @@ export const resolveSemcoreSources = async (path: string, rootPath: string) => {
 
   throw new Error(`Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}" with "${resolvePath(workspacePath, modifiedSubPath)}" or "${resolvePath(workspacePath, subPath)}").`);
 };
+
+const loaders: Record<string, Loader> = {
+  js: 'js',
+  jsx: 'jsx',
+  ts: 'ts',
+  tsx: 'tsx',
+  mjs: 'js',
+  cjs: 'js',
+  css: 'css',
+  json: 'json',
+};
+
+export function semcoreSourceEsbuildPlugin(rootPath: string): Plugin {
+  return {
+    name: 'semcore-source',
+    setup(build) {
+      build.onResolve({ filter: /^@semcore\// }, async ({ path }) => {
+        if (path.includes('@semcore/theme') || path.endsWith('.md')) return null;
+
+        const resolvedPath = await resolveSemcoreSources(path, rootPath);
+        return {
+          path: resolvedPath,
+        };
+      });
+      build.onLoad({ filter: /[/|\\]semcore[/|\\]/ }, async ({ path }) => {
+        {
+          const extension = path.split('.').pop() ?? '';
+          if (extension === 'js') {
+            const fallbackPath = `${path.split('.').slice(0, -1).join('.')}.mjs`;
+            try {
+              await fsAccess(fallbackPath);
+              path = fallbackPath;
+            } catch {}
+          }
+        }
+
+        const { code } = await loadSemcoreSources(path);
+        const extension = path.split('.').pop() ?? 'js';
+
+        return {
+          contents: code,
+          loader: loaders[extension] ?? 'js',
+        };
+      });
+    },
+  };
+}

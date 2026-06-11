@@ -99,7 +99,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await locators.button(page).nth(4).hover();
@@ -107,7 +107,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot();
@@ -119,6 +119,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
           }
+          await expect(page).toHaveScreenshot();
         });
       }
       if (item.disabled) {
@@ -158,7 +159,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await locators.button(page).nth(0).hover();
@@ -166,7 +167,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot();
@@ -178,6 +179,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
           }
+          await expect(page).toHaveScreenshot();
         });
       }
 
@@ -197,7 +199,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       const hint = page.locator('div[data-ui-name="Hint"]');
       await locators.button(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(100);
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(locators.button(page).first()).toBeFocused();
@@ -212,7 +214,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
@@ -226,8 +228,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+      if (item.disabled || item.loading) {
+        await test.step(`Verify disabled / loading styles`, async () => {
           await expect(page).toHaveScreenshot();
         });
       }
@@ -285,7 +287,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await locators.button(page).nth(4).hover();
@@ -293,7 +295,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot();
@@ -305,6 +307,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
           }
+          await expect(page).toHaveScreenshot();
         });
       }
 
@@ -345,7 +348,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await locators.button(page).nth(0).hover();
@@ -353,7 +356,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot();
@@ -365,6 +368,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
           }
+          await expect(page).toHaveScreenshot();
         });
       }
 
@@ -385,7 +389,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(100);
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(locators.button(page).first()).toBeFocused();
@@ -400,7 +404,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
@@ -414,8 +418,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+      if (item.disabled || item.loading) {
+        await test.step(`Verify disabled / loading styles`, async () => {
           await expect(page).toHaveScreenshot();
         });
       }
@@ -454,7 +458,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       const count = await locators.button(page).count();
 
-      if (!item.loading) {
+      if (!item.loading && !item.loading) {
         await test.step('Verify text paddings and spacing based on content', async () => {
           for (let i = 0; i < count; i++) {
             const button = locators.button(page).nth(i);
@@ -473,7 +477,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await locators.button(page).nth(4).hover();
@@ -481,7 +485,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot();
@@ -493,6 +497,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
           }
+          await expect(page).toHaveScreenshot();
         });
       }
 
@@ -533,7 +538,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await locators.button(page).nth(0).hover();
@@ -541,7 +546,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(page).toHaveScreenshot();
@@ -553,6 +558,7 @@ test.describe(`${TAG.VISUAL} `, () => {
           for (let i = 0; i < count; i++) {
             await expect(locators.button(page).nth(i)).toHaveAttribute('aria-busy', 'true');
           }
+          await expect(page).toHaveScreenshot();
         });
       }
 
@@ -573,7 +579,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page).first().waitFor({ state: 'visible' });
       await page.waitForTimeout(100);
 
-      if (!item.active && !item.disabled) {
+      if (!item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for not active button styles`, async () => {
           await page.keyboard.press('Tab');
           await expect(locators.button(page).first()).toBeFocused();
@@ -588,7 +594,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.active && !item.disabled) {
+      if (item.active && !item.disabled && !item.loading) {
         await test.step(`Verify focus styles for active button styles`, async () => {
           await locators.button(page).nth(1).hover();
           await page.getByText('Hint Button Addon').waitFor({ state: 'visible' });
@@ -602,8 +608,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
       }
 
-      if (item.disabled) {
-        await test.step(`Verify disabled styles`, async () => {
+      if (item.disabled || item.loading) {
+        await test.step(`Verify disabled / loading styles`, async () => {
           await expect(page).toHaveScreenshot();
         });
       }

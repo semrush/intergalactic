@@ -1,6 +1,6 @@
 ---
 title: Custom range filter
-tabs: Design('filter-custom-range'), Example('filter-custom-range-code')
+tabs: Design('filter-custom-range'), Examples('filter-custom-range-code')
 ---
 
 ## Basic usage
