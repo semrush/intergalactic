@@ -5,7 +5,7 @@ import Wizard from '@semcore/ui/wizard';
 import React from 'react';
 
 const steps = [
-  { title: 'Personal Info for test long long text' },
+  { title: 'Personal Info' },
   { title: 'Import source' },
   { title: 'Sub step name' },
   { title: 'Sub step name 2' },
@@ -20,13 +20,15 @@ const steps = [
 
 type StepsAndButtonsStatesProps = {
   firstStepTitle: string;
+  ellipsis: boolean;
 };
 
 export const defaultProps: StepsAndButtonsStatesProps = {
   firstStepTitle: steps[0].title,
+  ellipsis: true,
 };
 
-const Demo = ({ firstStepTitle }: StepsAndButtonsStatesProps) => {
+const Demo = ({ firstStepTitle, ellipsis }: StepsAndButtonsStatesProps) => {
   const [step, setStep] = React.useState(1);
   const [visible, setVisible] = React.useState(false);
   const configurableSteps = [
@@ -98,7 +100,7 @@ const Demo = ({ firstStepTitle }: StepsAndButtonsStatesProps) => {
           {configurableSteps.map((stepData, index) => (
             <Wizard.Step key={index} step={index + 1}>
               <Wizard.StepTitle
-                ellipsis
+                ellipsis={ellipsis}
               >
                 {stepData.title}
               </Wizard.StepTitle>

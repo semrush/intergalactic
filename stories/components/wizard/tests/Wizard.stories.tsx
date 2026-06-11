@@ -21,6 +21,9 @@ export const SteppersAndButtonsStates: StoryObj<typeof steppersAndButtonsStatesP
     firstStepTitle: {
       control: { type: 'text' },
     },
+    ellipsis: {
+      control: { type: 'boolean' },
+    },
   },
   args: steppersAndButtonsStatesProps,
 };
