@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Accordion > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Item.ToggleButton",
+        },
+      ],
+      "uiName": "Item.Toggle",
+    },
+    {
+      "children": [],
+      "uiName": "Item.Collapse",
+    },
+  ],
+  "uiName": null,
+}
+`;

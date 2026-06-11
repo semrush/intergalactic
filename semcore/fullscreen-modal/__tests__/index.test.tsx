@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, screen } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, screen, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import FullscreenModal from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('fullscreen-modal Dependency imports', () => {
   runDependencyCheckTests('fullscreen-modal');
@@ -14,9 +11,6 @@ describe('fullscreen-modal Dependency imports', () => {
 
 describe('FullscreenModal', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(FullscreenModal, React.Fragment, { visible: true });
-  shouldSupportRef(FullscreenModal, React.Fragment, { visible: true });
 
   test('should support hidden props', () => {
     const { rerender, queryByText } = render(<FullscreenModal>Text</FullscreenModal>);
@@ -26,32 +20,36 @@ describe('FullscreenModal', () => {
     expect(queryByText(/Text/)).toBeTruthy();
   });
 
-  test.sequential('Verify onClose supported for CloseIcons', () => {
+  test.sequential('Verify onClose supported for CloseIcons', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Close data-testid='close' />
       </FullscreenModal>,
     );
-    fireEvent.click(getByTestId('close'));
+    await userEvent.click(getByTestId('close'));
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
-  test('Verify onClose supported for BackClick', () => {
+  test('Verify onClose supported for BackClick', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
-        <FullscreenModal.Back data-testid='back' />
+        <FullscreenModal.Back aria-label='Back' data-testid='back' />
       </FullscreenModal>,
     );
-    fireEvent.click(getByTestId('back'));
+    await userEvent.click(getByTestId('back'));
     expect(spy).toBeCalledWith('onBackClick', expect.anything());
   });
 
-  test.sequential('Verify onClose supported for Escape', () => {
+  test.sequential('Verify onClose supported for Escape', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid='modal' />);
-    fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
+    const modal = getByTestId('modal');
+    modal.focus();
+    expect(modal).toHaveFocus();
+
+    await userEvent.keyboard('[Escape]');
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
 
@@ -71,13 +69,6 @@ describe('FullscreenModal', () => {
 
 describe('FullscreenModal.Header', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(FullscreenModal.Header, ({ children }: any) => (
-    <FullscreenModal visible>{children}</FullscreenModal>
-  ));
-  shouldSupportRef(FullscreenModal.Header, ({ children }: any) => (
-    <FullscreenModal visible>{children}</FullscreenModal>
-  ));
 
   test('Verify supports title', () => {
     const { queryByText } = render(

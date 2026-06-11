@@ -1,9 +1,16 @@
-import { ScreenReaderOnly, Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
+import type { StatusItemState } from '@semcore/ui/dropdown';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = () => {
+export type OnChangeInputSearchProps = {
+  state?: StatusItemState;
+  customChildren?: string;
+  size?: 'm' | 'l';
+};
+
+const Demo = ({ state = 'default', customChildren, size = 'm' }: OnChangeInputSearchProps) => {
   const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
     () =>
@@ -18,49 +25,33 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='options-filtering-select'>
+      <Text tag='label' size={200} id='options-filtering-label' htmlFor='options-filtering-select'>
         Fruit
       </Text>
-      <Select placeholder='Select a fruit'>
-        <Select.Trigger id='options-filtering-select' mr='auto' mt={2} />
+      <Select placeholder='Select a fruit' size={size}>
+        <Select.Trigger
+          id='options-filtering-select'
+          aria-labelledby='options-filtering-label'
+          mr='auto'
+          mt={2}
+        />
         <Select.Popper aria-label='Fruits with search'>
           <Select.InputSearch
             value={filter}
-            onChange={(v) => {
-              setFilter(v);
-              console.log('v', v, Date.now());
-            }}
+            onChange={setFilter}
             aria-describedby={filter ? 'search-result' : undefined}
           />
           <Select.List hMax='224px'>
-            {options.map(({ value, label }) => (
-              <Select.Option value={value} key={value}>
-                {label}
-              </Select.Option>
-            ))}
-            {options.length
-              ? (
-                  <ScreenReaderOnly id='search-result' aria-hidden='true'>
-                    {options.length}
-                    {' '}
-                    result
-                    {options.length > 1 && 's'}
-                    {' '}
-                    found
-                  </ScreenReaderOnly>
-                )
-              : (
-                  <Text
-                    tag='div'
-                    id='search-result'
-                    key='Nothing'
-                    p={2}
-                    size={200}
-                    use='secondary'
-                  >
-                    Nothing found
-                  </Text>
-                )}
+            {state === 'default' &&
+              options.map(({ value, label }) => (
+                <Select.Option value={value} key={value}>
+                  {label}
+                </Select.Option>
+              ))}
+
+            <Select.StatusItem itemsCount={options.length} state={state} id='search-result'>
+              {customChildren || undefined}
+            </Select.StatusItem>
           </Select.List>
         </Select.Popper>
       </Select>
@@ -86,6 +77,12 @@ const data = [
   value: item,
 }));
 
-export default Demo;
+export const defaultProps: OnChangeInputSearchProps = {
+  state: 'default',
+  customChildren: '',
+  size: 'm',
+};
 
-export const App = () => <Demo />;
+Demo.defaultProps = defaultProps;
+
+export default Demo;

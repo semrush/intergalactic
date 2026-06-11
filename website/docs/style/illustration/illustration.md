@@ -4,6 +4,18 @@ fileSource: illustration
 tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api'), Examples('illustration-code'), Changelog('illustration-changelog')
 ---
 
+::: tip `@semcore/illustration` is a separate package that needs to be installed manually.
+
+::: code-group
+```sh [pnpm]
+pnpm add @semcore/illustration
+```
+
+```sh [npm]
+npm install @semcore/illustration
+```
+:::
+
 ## Description
 
 **Illustration** is a component for importing illustrations from our library to your project.

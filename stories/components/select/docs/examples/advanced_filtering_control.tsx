@@ -1,4 +1,4 @@
-import { ScreenReaderOnly, Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Select, { InputSearch } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -23,7 +23,7 @@ const Demo = () => {
         <Select.Popper aria-label='Fruit options with search'>
           <InputSearch value={filter} onChange={setFilter}>
             <InputSearch.SearchIcon />
-            <InputSearch.Value aria-describedby={filter ? 'search-result-advanced' : undefined} />
+            <InputSearch.Value aria-describedby={filter ? 'search-result' : undefined} />
             <InputSearch.Clear
               onClick={() => {
                 alert('Clicked on the Clear button');
@@ -31,29 +31,16 @@ const Demo = () => {
               }}
             />
           </InputSearch>
-          <Select.List hMax='224px'>
-            {options.map(({ value, label }) => (
-              <Select.Option value={value} key={value}>
-                {label}
-              </Select.Option>
-            ))}
-            {options.length
-              ? (
-                  <ScreenReaderOnly id='search-result-advanced' aria-hidden='true'>
-                    {options.length}
-                    {' '}
-                    result
-                    {options.length > 1 && 's'}
-                    {' '}
-                    found
-                  </ScreenReaderOnly>
-                )
-              : (
-                  <Select.Option.Hint id='search-result-advanced' key='Nothing'>
-                    Nothing found
-                  </Select.Option.Hint>
-                )}
-          </Select.List>
+          {options.length > 0 && (
+            <Select.List hMax='224px'>
+              {options.map(({ value, label }) => (
+                <Select.Option value={value} key={value}>
+                  {label}
+                </Select.Option>
+              ))}
+            </Select.List>
+          )}
+          <Select.StatusItem itemsCount={options.length} id='search-result' />
         </Select.Popper>
       </Select>
     </Flex>

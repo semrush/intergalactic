@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Nhấn Tab để chuyển đến cửa sổ bật lên"
+  "triggerHint": "Nhấn Tab để chuyển đến cửa sổ bật lên",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, other {kết quả}} đã tìm thấy",
+  "StatusItem.defaultState.nothingFound": "Không tìm thấy gì",
+  "StatusItem.loadingState": "Đang tải...",
+  "StatusItem.errorState": "Đã xảy ra lỗi. Vui lòng thử lại sau."
 }

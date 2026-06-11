@@ -115,5 +115,13 @@ import Select from '@semcore/ui/select';
 
 <TypesView type="NSText.Props" :types={...types} />
 
+## Select.StatusItem
+
+A wrapper over [DropdownMenu.StatusItem](../dropdown-menu/dropdown-menu-api#dropdownmenu-statusitem).
+
+```jsx
+import Select from '@semcore/ui/select';
+<Select.StatusItem />;
+```
 
 <script setup>import { data as types } from '@types.data.ts';</script>
