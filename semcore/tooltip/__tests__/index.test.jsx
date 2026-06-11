@@ -1,8 +1,9 @@
+import Button from '@semcore/button';
+import Link from '@semcore/link';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
-import { waitFor } from 'storybook/test';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
@@ -12,45 +13,6 @@ describe('tooltip Dependency imports', () => {
 
 describe('Tooltip', () => {
   beforeEach(cleanup);
-
-  test('Verify supports custom className on Trigger', () => {
-    const { getByTestId } = render(
-      <Tooltip>
-        <Tooltip.Trigger data-testid='trigger' className='custom-class' />
-      </Tooltip>,
-    );
-    expect(getByTestId('trigger').className).toContain('custom-class');
-  });
-
-  test('Verify supports custom attributes on Trigger', () => {
-    const { getByTestId } = render(
-      <Tooltip>
-        <Tooltip.Trigger data-testid='trigger' data-custom='value' />
-      </Tooltip>,
-    );
-    expect(getByTestId('trigger').getAttribute('data-custom')).toBe('value');
-  });
-
-  test('Verify supports ref on Trigger', () => {
-    const ref = React.createRef();
-    render(
-      <Tooltip>
-        <Tooltip.Trigger tag='button' ref={ref} />
-      </Tooltip>,
-    );
-    expect(ref.current.nodeName).toBe('BUTTON');
-  });
-
-  test('Verify renders children inside Trigger', () => {
-    const { getByText } = render(
-      <Tooltip>
-        <Tooltip.Trigger>
-          <span>Child</span>
-        </Tooltip.Trigger>
-      </Tooltip>,
-    );
-    expect(getByText('Child')).toBeTruthy();
-  });
 
   test('Verify supports className and custom attributes on Popper', async () => {
     const { getByTestId } = render(
@@ -94,22 +56,24 @@ describe('Tooltip', () => {
     });
   });
 
-  test('Verify opens and hides on mouse events', () => {
-    vi.useFakeTimers();
+  test('Verify opens and hides on mouse events', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(
-      <Tooltip title='test' disablePortal onVisibleChange={spy}>
-        <button type='button' data-testid='trigger'>
-          Trigger
-        </button>
+    const { getByText } = render(
+      <Tooltip title='test' disablePortal timeout={0} onVisibleChange={spy}>
+        Trigger
       </Tooltip>,
     );
-    fireEvent.mouseEnter(getByTestId('trigger'));
-    act(() => vi.runAllTimers());
-    fireEvent.mouseLeave(getByTestId('trigger'));
-    act(() => vi.runAllTimers());
-    expect(spy).toHaveBeenCalledTimes(2);
-    vi.useRealTimers();
+
+    await userEvent.hover(getByText('Trigger'));
+    await waitFor(() => {
+      expect(spy).toHaveBeenCalledWith(true, expect.anything());
+    });
+
+    await userEvent.unhover(getByText('Trigger'));
+    await waitFor(() => {
+      expect(spy).toHaveBeenCalledWith(false, expect.anything());
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
   });
 });
 

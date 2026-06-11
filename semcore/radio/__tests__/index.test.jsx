@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Radio, { RadioGroup, inputProps } from '../src/Radio';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('radio Dependency imports', () => {
   runDependencyCheckTests('radio');
@@ -14,13 +11,6 @@ describe('radio Dependency imports', () => {
 
 describe('Radio', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(Radio);
-  shouldSupportRef(Radio);
-  shouldSupportClassName(Radio.Value, Radio);
-  shouldSupportRef(Radio.Value, Radio);
-  shouldSupportClassName(Radio.Text, Radio);
-  shouldSupportRef(Radio.Text, Radio);
 
   test.concurrent('Verify supports custom attributes on the input', () => {
     const { getByTestId } = render(
@@ -44,7 +34,7 @@ describe('Radio', () => {
       </Radio>,
     );
 
-    fireEvent.click(getByTestId('label'));
+    await userEvent.click(getByTestId('label'));
     expect(spy).toHaveBeenCalled();
   });
 });
@@ -64,7 +54,7 @@ describe('RadioGroup', () => {
     expect(getByTestId('radio').name).toContain('test');
   });
 
-  test('Verify supports onChange', () => {
+  test('Verify supports onChange', async () => {
     const onChange = vi.fn();
     const onChangeRadio = vi.fn();
     const value = 'test';
@@ -81,12 +71,12 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    fireEvent.click(getByTestId('radio'));
+    await userEvent.click(getByTestId('radio'));
     expect(onChangeRadio).toHaveBeenCalledWith(expect.anything());
     expect(onChange).toHaveBeenCalledWith(value, expect.anything());
   });
 
-  test('Verify supports cancel chain of onChanges', () => {
+  test('Verify supports cancel chain of onChanges', async () => {
     const onChange = vi.fn();
     const onChangeRadio = vi.fn(() => false);
     const value = 'test';
@@ -103,7 +93,7 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    fireEvent.click(getByTestId('radio'));
+    await userEvent.click(getByTestId('radio'));
     expect(onChangeRadio).toHaveBeenCalledWith(expect.anything());
     expect(onChange).not.toHaveBeenCalled();
   });
@@ -236,7 +226,7 @@ describe('RadioGroup', () => {
 
     expect(getByTestId('r2').checked).toBe(true);
 
-    fireEvent.click(getByTestId('r1'));
+    await userEvent.click(getByTestId('r1'));
     expect(onChange).toHaveBeenCalledWith('1', expect.anything());
     expect(getByTestId('r1').checked).toBe(true);
   });

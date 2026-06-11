@@ -1,6 +1,6 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, afterEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { mockDate, RealDate } from './utils';
@@ -18,14 +18,15 @@ describe('DatePicker', () => {
     global.Date = RealDate;
     cleanup();
   });
+  afterEach(cleanup);
 
-  test('Verify supports onChange with format time 00:00:00:000', () => {
+  test('Verify supports onChange with format time 00:00:00:000', async () => {
     const spy = vi.fn();
     mockDate('2020-02-10T12:00:00.808Z');
 
     const { getByText } = render(<DatePicker onChange={spy} visible />);
 
-    fireEvent.click(getByText('Today'));
+    await userEvent.click(getByText('Today'));
     expect(spy).toBeCalledWith(new Date(new Date().setHours(0, 0, 0, 0)));
   });
 
@@ -38,21 +39,15 @@ describe('DatePicker', () => {
     expect(aprilInstance.getByText('April 2020')).toBeTruthy();
   });
 
-  test('Verify supports set custom displayPeriod after changed value date', () => {
-    vi.useFakeTimers();
+  test('Verify supports set custom displayPeriod after changed value date', async () => {
     const component = (
       <DatePicker defaultVisible defaultDisplayedPeriod='2021-09-10T12:00:00.808Z' />
     );
     const { getByText, getByLabelText } = render(component);
-    fireEvent.click(getByLabelText('Previous month'));
-    // change visible
-    fireEvent.click(getByText('15'));
-    act(() => {
-      vi.runAllTimers();
-    });
+    await userEvent.click(getByLabelText('Previous month'));
+    await userEvent.click(getByText('15'));
     // change visible
     expect(getByText('Aug 15, 2021')).toBeTruthy();
-    vi.useRealTimers();
   });
 });
 
@@ -61,6 +56,7 @@ describe('DateRangePicker', () => {
     global.Date = RealDate;
     cleanup();
   });
+  afterEach(cleanup);
 
   test('Verify pikcer support onChange with format time 00:00:00:000', async () => {
     const spy = vi.fn();
@@ -68,8 +64,8 @@ describe('DateRangePicker', () => {
 
     const { getByText } = render(<DateRangePicker onChange={spy} visible />);
 
-    fireEvent.click(getByText('Last 2 days'));
-    fireEvent.click(getByText('Apply'));
+    await userEvent.click(getByText('Last 2 days'));
+    await userEvent.click(getByText('Apply'));
     const today = new Date(new Date().setHours(0, 0, 0, 0));
     expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
   });
@@ -84,17 +80,14 @@ describe('DateRangePicker', () => {
     expect(getByText('April 2020')).toBeTruthy();
   });
 
-  test('Verify supports set custom displayPeriod after changed value date', () => {
-    vi.useFakeTimers();
+  test('Verify supports set custom displayPeriod after changed value date', async () => {
     const { getByText, getByLabelText } = render(
       <DateRangePicker visible defaultDisplayedPeriod='2021-09-10T12:00:00.808Z' />,
     );
-    fireEvent.click(getByLabelText('Previous month'));
-    // change visible
-    fireEvent.click(getByText('31'));
-    fireEvent.click(getByText('Apply'));
+    await userEvent.click(getByLabelText('Previous month'));
+    await userEvent.click(getByText('31'));
+    await userEvent.click(getByText('Apply'));
     expect(getByText('August 2021')).toBeTruthy();
-    vi.useRealTimers();
   });
 
   test.sequential('Verify not select disabled date from the keyboard', async () => {
@@ -107,7 +100,7 @@ describe('DateRangePicker', () => {
         onPreselectedValueChange={onPreselectedValueChange}
       >
         <DateRangePicker.Trigger />
-        <DateRangePicker.Popper data-testid='dd_popper' />
+        <DateRangePicker.Popper aria-label='Date range picker' data-testid='dd_popper' />
       </DateRangePicker>,
     );
 
@@ -230,7 +223,7 @@ describe('DateRangePicker', () => {
     );
 
     const resetButton = getByText('Reset');
-    fireEvent.click(resetButton);
+    await userEvent.click(resetButton);
 
     expect(onChange).toHaveBeenCalledWith([]);
     expect(onVisibleChange).toHaveBeenCalledWith(false);
@@ -253,13 +246,12 @@ describe('DateRangePicker', () => {
       </DateRangePicker>,
     );
 
-    // Select date range using aria-labels to avoid duplicates
-    fireEvent.click(getByLabelText('Dec 20, 2023'));
-    fireEvent.click(getByLabelText('Dec 25, 2023'));
+    await userEvent.click(getByLabelText('Dec 20, 2023'));
+    await userEvent.click(getByLabelText('Dec 25, 2023'));
 
     // Apply selection
     const applyButton = getByText('Apply');
-    fireEvent.click(applyButton);
+    await userEvent.click(applyButton);
 
     expect(onChange).toHaveBeenCalled();
     expect(onVisibleChange).toHaveBeenCalledWith(false);
@@ -280,12 +272,11 @@ describe('DateRangePicker', () => {
       </DateRangePicker>,
     );
 
-    // Select single date (start date = end date)
-    fireEvent.click(getByLabelText('Dec 20, 2023'));
+    await userEvent.click(getByLabelText('Dec 20, 2023'));
 
     // Apply selection
     const applyButton = getByText('Apply');
-    fireEvent.click(applyButton);
+    await userEvent.click(applyButton);
 
     const callArgs = onChange.mock.calls[0][0];
     expect(callArgs[0]).toEqual(callArgs[1]); // start date equals end date

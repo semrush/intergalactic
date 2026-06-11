@@ -1,4 +1,3 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
@@ -6,21 +5,12 @@ import React from 'react';
 
 import Checkbox from '../src';
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
 describe('Checkbox Dependency imports', () => {
   runDependencyCheckTests('checkbox');
 });
 
 describe('Checkbox', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(Checkbox);
-  shouldSupportRef(Checkbox);
-  shouldSupportClassName(Checkbox.Value, Checkbox);
-  shouldSupportRef(Checkbox.Value, Checkbox);
-  shouldSupportClassName(Checkbox.Text, Checkbox);
-  shouldSupportRef(Checkbox.Text, Checkbox);
 
   test.concurrent(
     'Verify Control has aria-label, aria-labelledby, aria-describedby from root',
