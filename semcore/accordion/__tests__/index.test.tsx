@@ -1,7 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Accordion from '../src';
@@ -10,42 +11,64 @@ describe('Accordion Dependency imports', () => {
   runDependencyCheckTests('accordion');
 });
 
-describe('Accordion', () => {
-  describe('Types', () => {
-    const any: any = null;
-    test('Verify props nesting', () => {
-      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+describe('Accordion types', (test) => {
+  const any: any = null;
+  test('Verify props nesting', () => {
+    const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
 
-      assertType<JSX.Element>(<Accordion tag={Link} href='https://google.com' xProp1={1} />);
-      // @ts-expect-error
-      assertType<JSX.Element>(<Accordion href='https://google.com' />);
-    });
-    test('Verify value&onChange relation', () => {
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => { }} />);
-      // @ts-expect-error
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => { }} />);
-    });
-    test('Verify value&onChange relation with useState', () => {
-      const value: number[] = any;
-      const setValue: React.Dispatch<React.SetStateAction<number[]>> = any;
-
-      assertType<JSX.Element>(<Accordion value={value} onChange={setValue} />);
-    });
-    test('Verify value&children relation', () => {
-      assertType<JSX.Element>(<Accordion value={1}>{(props, handlers) => any}</Accordion>);
-      assertType<JSX.Element>(
-        <Accordion value={1}>{({ value }: { value: number }) => any}</Accordion>,
-      );
-      assertType<JSX.Element>(
-        // @ts-expect-error
-        <Accordion value={1}>{({ value }: { value: string }) => any}</Accordion>,
-      );
-    });
+    assertType<JSX.Element>(<Accordion tag={Link} href='https://google.com' xProp1={1} />);
+    // @ts-expect-error
+    assertType<JSX.Element>(<Accordion href='https://google.com' />);
   });
+  test('Verify value&onChange relation', () => {
+    assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => { }} />);
+    // @ts-expect-error
+    assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => { }} />);
+  });
+  test('Verify value&onChange relation with useState', () => {
+    const value: number[] = any;
+    const setValue: React.Dispatch<React.SetStateAction<number[]>> = any;
 
+    assertType<JSX.Element>(<Accordion value={value} onChange={setValue} />);
+  });
+  test('Verify value&children relation', () => {
+    assertType<JSX.Element>(<Accordion value={1}>{(props, handlers) => any}</Accordion>);
+    assertType<JSX.Element>(
+      <Accordion value={1}>{({ value }: { value: number }) => any}</Accordion>,
+    );
+    assertType<JSX.Element>(
+      // @ts-expect-error
+      <Accordion value={1}>{({ value }: { value: string }) => any}</Accordion>,
+    );
+  });
+});
+
+describe('Accordion', (test) => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify supports uncontrolled mode with single expandable item', () => {
+  test('Verify data-ui-name', ({ expect }) => {
+    const accordion = (
+      <Accordion defaultValue={1}>
+        <Accordion.Item value={1}>
+          <Accordion.Item.Toggle>
+            <Accordion.Item.ToggleButton>
+              Section 1
+            </Accordion.Item.ToggleButton>
+          </Accordion.Item.Toggle>
+          <Accordion.Item.Collapse>
+            This is section 1
+          </Accordion.Item.Collapse>
+        </Accordion.Item>
+      </Accordion>
+    );
+
+    const { container } = render(accordion);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
+
+  test.concurrent('Verify supports uncontrolled mode with single expandable item', async () => {
     const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy} defaultValue={null}>
@@ -58,17 +81,17 @@ describe('Accordion', () => {
       </Accordion>,
     );
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith(1);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(2);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Verify supports controlled mode with single expandable item', () => {
+  test('Verify supports controlled mode with single expandable item', async () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(
@@ -82,7 +105,7 @@ describe('Accordion', () => {
       </Accordion>,
     );
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith(1);
 
     rerender(
@@ -95,7 +118,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(2);
 
     rerender(
@@ -108,11 +131,11 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Verify supports uncontrolled mode with multiple expandable items', () => {
+  test('Verify supports uncontrolled mode with multiple expandable items', async () => {
     const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy}>
@@ -125,20 +148,20 @@ describe('Accordion', () => {
       </Accordion>,
     );
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([1]);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([1, 2]);
 
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([2]);
 
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });
 
-  test('Verify supports controlled mode with multiple expandable items', () => {
+  test('Verify supports controlled mode with multiple expandable items', async () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(
@@ -151,7 +174,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([1]);
 
     rerender(
@@ -164,7 +187,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([1, 2]);
 
     rerender(
@@ -177,7 +200,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 1'));
+    await userEvent.click(getByText('Item 1'));
     expect(spy).toBeCalledWith([2]);
 
     rerender(
@@ -190,7 +213,7 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>,
     );
-    fireEvent.click(getByText('Item 2'));
+    await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });
 });

@@ -50,7 +50,7 @@ async function extractImports(filePath: string, imports: Set<string>) {
 
 export function runDependencyCheckTests(component: string) {
   test(`All @semcore dependencies are imported in: "${component}"`, async () => {
-    const pathToComponent = path.join(process.cwd(), 'semcore', component);
+    const pathToComponent = process.cwd();
     const packageRawData = await fs.readFile(path.join(pathToComponent, 'package.json'), 'utf8');
     const packageData = JSON.parse(packageRawData);
     const definedDependencies = new Set([
