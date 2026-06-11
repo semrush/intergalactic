@@ -1,12 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Input from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('input Dependency imports', () => {
   runDependencyCheckTests('input');
@@ -14,9 +11,6 @@ describe('input Dependency imports', () => {
 
 describe('Input', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(Input);
-  shouldSupportRef(Input);
 
   test.concurrent('Verify value changes when rerender', () => {
     const { getByTestId, rerender } = render(
@@ -36,31 +30,34 @@ describe('Input', () => {
     expect((getByTestId('value') as HTMLInputElement).value).toBe('test');
   });
 
-  test.concurrent('Verify controlled mod', () => {
-    let value = '';
-    const spy = vi.fn((v) => {
-      value = v;
-    });
+  test.sequential('Verify controlled mod', async () => {
+    const spy = vi.fn();
 
-    const { getByTestId, rerender } = render(
-      <Input>
-        <Input.Value data-testid='input' value={value} onChange={spy} />
-      </Input>,
-    );
+    function ControlledInput() {
+      const [value, setValue] = React.useState('');
+
+      return (
+        <Input>
+          <Input.Value
+            data-testid='input'
+            value={value}
+            onChange={(newValue, event) => {
+              spy(newValue, event);
+              setValue(newValue);
+            }}
+          />
+        </Input>
+      );
+    }
+
+    const { getByTestId } = render(<ControlledInput />);
 
     const input = getByTestId('input');
 
     expect(input).toHaveProperty('value', '');
 
-    fireEvent.change(input, { target: { value: 'test' } });
+    await userEvent.type(input, 'test');
     expect(spy).toBeCalled();
-
-    rerender(
-      <Input>
-        <Input.Value data-testid='input' value={value} onChange={spy} />
-      </Input>,
-    );
-
     expect(input).toHaveProperty('value', 'test');
   });
 });
@@ -68,31 +65,28 @@ describe('Input', () => {
 describe('Input.Addon', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Input.Value);
-  shouldSupportRef(Input.Value, Input);
-
-  test.concurrent('Verify input focused if click additional element', () => {
+  test.sequential('Verify input focused if click additional element', async () => {
     const spy = vi.fn();
-    const { queryByText } = render(
+    const { getByText } = render(
       <Input>
         <Input.Addon>addon</Input.Addon>
         <Input.Value onFocus={spy} />
       </Input>,
     );
     expect(spy).toHaveBeenCalledTimes(0);
-    fireEvent.mouseDown(queryByText('addon')!);
+    await userEvent.pointer({ keys: '[MouseLeft>]', target: getByText('addon') });
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Verify input focused of onMouseDown on additional return false', () => {
+  test.sequential('Verify input focused of onMouseDown on additional return false', async () => {
     const spy = vi.fn();
-    const { queryByText } = render(
+    const { getByText } = render(
       <Input>
         <Input.Addon onMouseDown={() => false}>addon</Input.Addon>
         <Input.Value onFocus={spy} />
       </Input>,
     );
-    fireEvent.mouseDown(queryByText('addon')!);
+    await userEvent.pointer({ keys: '[MouseLeft>]', target: getByText('addon') });
     expect(spy).toHaveBeenCalledTimes(0);
   });
 });

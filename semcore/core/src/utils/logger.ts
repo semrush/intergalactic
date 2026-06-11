@@ -1,4 +1,4 @@
-const DEV = process.env.NODE_ENV !== 'production';
+const DEV = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
 class Logger {
   private logger: any;

@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -7,16 +7,23 @@ import { OutsideClick } from '../src';
 describe('OutsideClick', () => {
   beforeEach(cleanup);
 
-  test.concurrent('Verify call onOutsideClick if event outside', () => {
+  const clickPointer = async (target: Element) => {
+    await userEvent.pointer([
+      { keys: '[MouseLeft>]', target },
+      { keys: '[/MouseLeft]', target },
+    ]);
+  };
+
+  test.sequential('Verify call onOutsideClick if event outside', async () => {
     const onOutsideClick = vi.fn();
     render(<OutsideClick onOutsideClick={onOutsideClick} />);
 
-    fireEvent.mouseUp(document.body);
+    await clickPointer(document.body);
 
     expect(onOutsideClick).toBeCalled();
   });
 
-  test.concurrent('Verify excludeRefs with single and multiple elements', () => {
+  test.sequential('Verify excludeRefs with single and multiple elements', async () => {
     const onOutsideClick = vi.fn();
     const outsideRef1 = React.createRef<any>();
     const outsideRef2 = React.createRef<any>();
@@ -38,14 +45,14 @@ describe('OutsideClick', () => {
       </>,
     );
 
-    fireEvent.mouseUp(getByTestId('outside1').childNodes[0]);
-    fireEvent.mouseUp(getByTestId('outside2').childNodes[0]);
-    fireEvent.mouseUp(document.body.childNodes[0]);
+    await clickPointer(getByTestId('outside1'));
+    await clickPointer(getByTestId('outside2'));
+    await clickPointer(document.body);
 
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  test.concurrent('Verify excludeRefs', () => {
+  test.sequential('Verify excludeRefs', async () => {
     const onOutsideClick = vi.fn();
     const outsideRef = React.createRef<any>();
     const { getByTestId } = render(
@@ -57,12 +64,12 @@ describe('OutsideClick', () => {
       </>,
     );
 
-    fireEvent.mouseUp(getByTestId('outside').childNodes[0]);
+    await clickPointer(getByTestId('outside'));
 
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  test.concurrent('Verify excludeRefs node', () => {
+  test.sequential('Verify excludeRefs node', async () => {
     const onOutsideClick = vi.fn();
     render(
       <>
@@ -70,12 +77,12 @@ describe('OutsideClick', () => {
       </>,
     );
 
-    fireEvent.mouseUp(document.body.childNodes[0]);
+    await clickPointer(document.body);
 
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  test.concurrent('Verify calls onOutsideClick by click outside with excludeRefs', () => {
+  test.sequential('Verify calls onOutsideClick by click outside with excludeRefs', async () => {
     const onOutsideClick = vi.fn();
     const outsideRef = React.createRef<any>();
     render(
@@ -89,14 +96,14 @@ describe('OutsideClick', () => {
       </>,
     );
 
-    fireEvent.mouseUp(document.body);
+    await clickPointer(document.body);
 
     expect(onOutsideClick).toBeCalled();
   });
 
-  test.concurrent(
+  test.sequential(
     'Verify does not call onOutsideClick if mousedown inside and mouseup outside',
-    () => {
+    async () => {
       const onOutsideClick = vi.fn();
       const { getByTestId } = render(
         <OutsideClick onOutsideClick={onOutsideClick}>
@@ -104,16 +111,18 @@ describe('OutsideClick', () => {
         </OutsideClick>,
       );
 
-      fireEvent.mouseDown(getByTestId('child'));
-      fireEvent.mouseUp(document.body);
+      await userEvent.pointer([
+        { keys: '[MouseLeft>]', target: getByTestId('child') },
+        { keys: '[/MouseLeft]', target: document.body },
+      ]);
 
       expect(onOutsideClick).not.toBeCalled();
     },
   );
 
-  test.concurrent(
+  test.sequential(
     'Verify does not call onOutsideClick if mousedown outside and mouseup inside',
-    () => {
+    async () => {
       const onOutsideClick = vi.fn();
       const { getByTestId } = render(
         <OutsideClick onOutsideClick={onOutsideClick}>
@@ -121,8 +130,10 @@ describe('OutsideClick', () => {
         </OutsideClick>,
       );
 
-      fireEvent.mouseDown(document.body);
-      fireEvent.mouseUp(getByTestId('child2'));
+      await userEvent.pointer([
+        { keys: '[MouseLeft>]', target: document.body },
+        { keys: '[/MouseLeft]', target: getByTestId('child2') },
+      ]);
 
       expect(onOutsideClick).not.toBeCalled();
     },
