@@ -220,7 +220,7 @@ const [[width, height], setSize] = React.useState([0, 0]);
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/adaptive-chart.tsx';
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/responsive-low-level-chart.tsx';
 </script>
 
 :::
