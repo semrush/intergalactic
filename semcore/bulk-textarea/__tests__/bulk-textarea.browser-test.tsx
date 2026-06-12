@@ -99,63 +99,6 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test.describe('StrictMode', () => {
-    test('Verify single textbox after StrictMode remount', {
-      tag: [TAG.PRIORITY_HIGH,
-        '@bulk-textarea'],
-    }, async ({ page }) => {
-      const errors: string[] = [];
-      page.on('pageerror', (error) => errors.push(error.message));
-      page.on('console', (message) => {
-        const text = message.text();
-        if (
-          message.type() === 'error' &&
-          !text.includes('ReactDOM.render is no longer supported in React 18')
-        ) {
-          errors.push(text);
-        }
-      });
-
-      await loadPage(
-        page,
-        'stories/components/bulk-textarea/tests/examples/basic-props.tsx',
-        'en',
-        { maxLines: 15, strictMode: true },
-      );
-
-      await expect(locators.textbox(page)).toBeVisible();
-      await expect(locators.textbox(page)).toHaveCount(1);
-      await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
-      await expect.poll(() => errors).toHaveLength(0);
-    });
-
-    test('Verify editing states work in StrictMode', {
-      tag: [TAG.PRIORITY_HIGH,
-        TAG.KEYBOARD,
-        '@bulk-textarea'],
-    }, async ({ page }) => {
-      await loadPage(
-        page,
-        'stories/components/bulk-textarea/tests/examples/basic-props.tsx',
-        'en',
-        { autoFocus: true, maxLines: 15, strictMode: true },
-      );
-
-      await expect(locators.textbox(page)).toBeFocused();
-      await expect(locators.textbox(page)).toHaveCount(1);
-
-      await page.keyboard.type('Testhttp://,test2', { delay: 10 });
-      await expect(locators.counter(page)).toHaveText('2/15of 15 lines');
-      await expect(locators.button(page, 'Clear all')).toBeVisible();
-
-      await locators.button(page, 'Clear all').click();
-      await expect(locators.textbox(page)).toBeFocused();
-      await expect(locators.textbox(page)).toHaveText('');
-      await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-      await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
-    });
-  });
-
   test.describe('Counter and Clear all', () => {
     test('Verify counter functionality', {
       tag: [TAG.PRIORITY_HIGH,

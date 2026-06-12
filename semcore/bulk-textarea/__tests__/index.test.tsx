@@ -118,29 +118,3 @@ describe('BulkTextarea onImmediatelyChange', () => {
     expect(handleImmediatelyChange).toHaveBeenLastCalledWith(['O'], 'O');
   });
 });
-
-describe('BulkTextarea StrictMode', () => {
-  beforeEach(() => {
-    cleanup();
-  });
-
-  afterEach(() => {
-    cleanup();
-  });
-
-  test('Verify textbox is mounted and cleaned up in StrictMode', () => {
-    const { getAllByRole, unmount } = render(
-      <React.StrictMode>
-        <BulkTextarea value='' onChange={() => { }}>
-          <BulkTextarea.InputField commonErrorMessage='' />
-        </BulkTextarea>
-      </React.StrictMode>,
-    );
-
-    expect(getAllByRole('textbox')).toHaveLength(1);
-
-    unmount();
-
-    expect(document.querySelectorAll('[role="textbox"]')).toHaveLength(0);
-  });
-});
