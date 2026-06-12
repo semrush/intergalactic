@@ -624,15 +624,15 @@ export const theme: Theme = {
         description: 'Active state of the primary brand colored control.',
       },
       control_primary_advertising_DEFAULT: {
-        value: advertising.at(L_BG_BUTTON),
+        value: gray.at(L_INV_BG_PRIMARY),
         description: 'Background of the advertising primary control.',
       },
       control_primary_advertising_hover: {
-        value: advertising.at(L_BG_BUTTON_HOVER),
+        value: gray.at(L_INV_BG_PRIMARY_HOVER),
         description: 'Hover state of the advertising primary control.',
       },
       control_primary_advertising_active: {
-        value: advertising.at(L_BG_BUTTON_ACTIVE),
+        value: gray.at(L_INV_BG_PRIMARY_ACTIVE),
         description: 'Active (selected) state of the advertising primary control.',
       },
       control_primary_invert_DEFAULT: {
