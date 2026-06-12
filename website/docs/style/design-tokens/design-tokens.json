@@ -1464,7 +1464,7 @@
   },
   {
     "name": "--intergalactic-skeleton-bg",
-    "value": "oklch(0.9 0.002 177)",
+    "value": "oklch(0.94 0.002 180)",
     "description": "Default color for the Skeleton.",
     "components": [
       "skeleton"
@@ -1472,7 +1472,7 @@
   },
   {
     "name": "--intergalactic-skeleton-bg-invert",
-    "value": "oklch(0.3 0.007 140)",
+    "value": "oklch(0.5 0.004 147.4)",
     "description": "Inverted version of the default color for the Skeleton.",
     "components": [
       "skeleton"
@@ -1783,7 +1783,7 @@
   },
   {
     "name": "--intergalactic-overlay-limitation-primary",
-    "value": "oklch(from oklch(0.98 0.001 180) l c h / 0.85)",
+    "value": "oklch(from oklch(0.97 0.001 180) l c h / 0.7)",
     "description": "Use as a primary cover of the content under the messages about limitations.",
     "components": []
   },
@@ -2188,7 +2188,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-16",
-    "value": "oklch(0.74 0.17 170)",
+    "value": "oklch(0.64 0.161 170)",
     "description": "16 color in the default list of colors for charts.",
     "components": []
   },

@@ -1115,7 +1115,7 @@ export const theme: Theme = {
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       overlay_limitation_primary: {
-        value: `oklch(from ${neutral.at(L_BG_SECONDARY)} l c h / 0.85)`,
+        value: `oklch(from ${neutral.at(0.97)} l c h / 0.7)`,
         description: 'Use as a primary cover of the content under the messages about limitations.',
       },
       overlay_limitation_secondary: {
@@ -1359,7 +1359,7 @@ export const theme: Theme = {
         description: '15 color in the default list of colors for charts.',
       },
       chart_palette_order_16: {
-        value: colors.green['300'].value,
+        value: colors.green['400'].value,
         description: '16 color in the default list of colors for charts.',
       },
       chart_palette_order_17: {
