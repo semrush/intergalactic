@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import React, { createRef } from 'react';
@@ -9,11 +10,21 @@ import { InputFH } from '../src/components/input/Input';
 import { NoticeFH } from '../src/components/notice/Notice';
 import { PillsFH } from '../src/components/pills/Pills';
 import { RadioFH } from '../src/components/radio/Radio';
+import { SelectFH } from '../src/components/select/Select';
 import { SwitchFH } from '../src/components/switch/Switch';
 import { TabLineFH } from '../src/components/tab-line/TabLine';
+import { ButtonTriggerFH } from '../src/inner-components/button-trigger/ButtonTrigger';
+import { AnimatedSparkles } from '../src/inner-components/sparkle/AnimatedSparkles';
 import SvgSparkle from '../src/inner-components/sparkle/Sparkle';
 
-describe('SvgSparkle', () => {
+const expectUINameToMatchSnapshot = (component: React.ReactElement) => {
+  const { container } = render(component);
+  const result = extractUIName(container);
+
+  expect(result).toMatchSnapshot();
+};
+
+describe('SvgSparkle', (test) => {
   test('Verify renders an SVG element', () => {
     const { container } = render(<SvgSparkle num={5} index={0} />);
     const svg = container.querySelector('svg');
@@ -37,7 +48,27 @@ const verifyDataTestIds = (container: HTMLElement, ids: string[], texts?: Record
   });
 };
 
-describe('PillsFH', () => {
+describe('BadgeFH', (test) => {
+  test('Verify data-ui-name', () => {
+    expectUINameToMatchSnapshot(<BadgeFH>AI-powered</BadgeFH>);
+  });
+});
+
+describe('PillsFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const pills = (
+      <PillsFH defaultValue={1}>
+        <PillsFH.Item value={1}>One</PillsFH.Item>
+        <PillsFH.HighlightedItem value={2} aria-describedby='pills-aria-desc'>
+          <PillsFH.HighlightedItem.Text>Two</PillsFH.HighlightedItem.Text>
+          <PillsFH.HighlightedItem.Addon>{999}</PillsFH.HighlightedItem.Addon>
+        </PillsFH.HighlightedItem>
+      </PillsFH>
+    );
+
+    expectUINameToMatchSnapshot(pills);
+  });
+
   test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <PillsFH defaultValue={1} data-test-id='PillsFH1'>
@@ -58,7 +89,21 @@ describe('PillsFH', () => {
   });
 });
 
-describe('ButtonFH', () => {
+describe('ButtonFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const button = (
+      <ButtonFH size='l'>
+        <ButtonFH.Addon animatedSparkleCount={5} />
+        <ButtonFH.Text>Button</ButtonFH.Text>
+        <ButtonFH.Addon>
+          <BadgeFH>AI-powered</BadgeFH>
+        </ButtonFH.Addon>
+      </ButtonFH>
+    );
+
+    expectUINameToMatchSnapshot(button);
+  });
+
   test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <ButtonFH size='l' data-test-id='ButtonFH1'>
@@ -77,7 +122,31 @@ describe('ButtonFH', () => {
   });
 });
 
-describe('CheckboxFH', () => {
+describe('ButtonTriggerFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const buttonTrigger = (
+      <ButtonTriggerFH>
+        <ButtonTriggerFH.Addon />
+        <ButtonTriggerFH.Text>Button trigger</ButtonTriggerFH.Text>
+      </ButtonTriggerFH>
+    );
+
+    expectUINameToMatchSnapshot(buttonTrigger);
+  });
+});
+
+describe('CheckboxFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const checkbox = (
+      <CheckboxFH aria-describedby='checkbox-aria-desc'>
+        <CheckboxFH.Value />
+        <CheckboxFH.Text>First option</CheckboxFH.Text>
+      </CheckboxFH>
+    );
+
+    expectUINameToMatchSnapshot(checkbox);
+  });
+
   test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <CheckboxFH aria-describedby='checkbox-aria-desc' data-test-id='test1'>
@@ -92,7 +161,18 @@ describe('CheckboxFH', () => {
   });
 });
 
-describe('InputFH', () => {
+describe('InputFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const input = (
+      <InputFH w={200}>
+        <InputFH.Addon />
+        <InputFH.Value placeholder='Your domain' aria-label='Highlighted input' />
+      </InputFH>
+    );
+
+    expectUINameToMatchSnapshot(input);
+  });
+
   test('Verify allow adding data-test-id everywhere', () => {
     const { container } = render(
       <InputFH w={200} data-test-id='test1'>
@@ -105,7 +185,43 @@ describe('InputFH', () => {
   });
 });
 
-describe('NoticeFH', () => {
+describe('SelectFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const select = (
+      <SelectFH value='one' visible disablePortal>
+        <SelectFH.Trigger>
+          <SelectFH.Trigger.Addon />
+          <SelectFH.Trigger.Text>One</SelectFH.Trigger.Text>
+        </SelectFH.Trigger>
+        <SelectFH.Popper aria-label=''>
+          <SelectFH.Menu>
+            <SelectFH.Option value='one'>One</SelectFH.Option>
+          </SelectFH.Menu>
+        </SelectFH.Popper>
+      </SelectFH>
+    );
+
+    expectUINameToMatchSnapshot(select);
+  });
+});
+
+describe('NoticeFH', (test) => {
+  test.sequential('Verify data-ui-name', () => {
+    const notice = (
+      <NoticeFH closable>
+        <NoticeFH.Label />
+        <NoticeFH.Content>
+          <NoticeFH.Title />
+          <NoticeFH.Text />
+          <NoticeFH.Actions />
+        </NoticeFH.Content>
+        <NoticeFH.Close />
+      </NoticeFH>
+    );
+
+    expectUINameToMatchSnapshot(notice);
+  });
+
   test('Verify render closable notice with data-test-id', () => {
     const { container } = render(
       <NoticeFH closable aria-label='Highlighted notice' data-test-id='test1' text='We have a new feature!' />,
@@ -132,7 +248,7 @@ describe('NoticeFH', () => {
     expect(container.querySelector('[data-testid="label-icon"]')).toBeTruthy();
   });
 
-  test('Should render in advanced mode with subcomponents', () => {
+  test.sequential('Should render in advanced mode with subcomponents', () => {
     const { getByText, container } = render(
       <NoticeFH closable aria-label='Advanced mode notice'>
         <NoticeFH.Label data-testid='custom-label'>
@@ -185,7 +301,18 @@ describe('NoticeFH', () => {
   });
 });
 
-describe('RadioFH', () => {
+describe('RadioFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const radio = (
+      <RadioFH value={1}>
+        <RadioFH.Value />
+        <RadioFH.Text>First option</RadioFH.Text>
+      </RadioFH>
+    );
+
+    expectUINameToMatchSnapshot(radio);
+  });
+
   test('Verify allow adding data-test-id to all subcomponents', () => {
     const { container } = render(
       <RadioFH value={1} data-test-id='radio-1'>
@@ -200,7 +327,18 @@ describe('RadioFH', () => {
   });
 });
 
-describe('SwitchFH', () => {
+describe('SwitchFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const switchFH = (
+      <SwitchFH>
+        <SwitchFH.Value aria-describedby='switch-aria-desc' ml={0} />
+        <SwitchFH.Addon>Medium switch</SwitchFH.Addon>
+      </SwitchFH>
+    );
+
+    expectUINameToMatchSnapshot(switchFH);
+  });
+
   test('Verify allow adding data-test-id to all subcomponents', () => {
     const { container } = render(
       <SwitchFH data-test-id='switchfh'>
@@ -215,7 +353,21 @@ describe('SwitchFH', () => {
   });
 });
 
-describe('TabLineFH', () => {
+describe('TabLineFH', (test) => {
+  test('Verify data-ui-name', () => {
+    const tabLine = (
+      <TabLineFH size='m' aria-label='Tabs with highlighted item' defaultValue={1}>
+        <TabLineFH.Item value={1}>First option</TabLineFH.Item>
+        <TabLineFH.HighlightedItem value={2} aria-describedby='tab-aria-desc'>
+          <TabLineFH.HighlightedItem.Addon animatedSparkleCount={5} />
+          <TabLineFH.HighlightedItem.Text>Second option</TabLineFH.HighlightedItem.Text>
+        </TabLineFH.HighlightedItem>
+      </TabLineFH>
+    );
+
+    expectUINameToMatchSnapshot(tabLine);
+  });
+
   test('Verify allow adding data-test-id to all subcomponents', () => {
     const { container } = render(
       <TabLineFH size='m' aria-label='Tabs with highlighted item' defaultValue={1} data-test-id='tablinefh'>

@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoticeFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "NoticeFH.Label",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "NoticeFH.Title",
+            },
+            {
+              "children": [],
+              "uiName": "NoticeFH.Text",
+            },
+            {
+              "children": [],
+              "uiName": "NoticeFH.Actions",
+            },
+          ],
+          "uiName": "NoticeFH.Content",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Close",
+                    },
+                  ],
+                  "uiName": "Button.Addon",
+                },
+              ],
+              "uiName": "NoticeFH.Close.InnerWrapper",
+            },
+          ],
+          "uiName": "NoticeFH.Close",
+        },
+      ],
+      "uiName": "NoticeFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
