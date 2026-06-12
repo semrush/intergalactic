@@ -106,6 +106,8 @@ SContent {
   SWizardStepTitle {
     display: block;
     word-break: break-word;
+    font-weight: var(--intergalactic-semi-bold, 600);
+    margin-bottom: var(--intergalactic-spacing-5x, 20px);
   }
 }
 SContent[noSidebar] {
