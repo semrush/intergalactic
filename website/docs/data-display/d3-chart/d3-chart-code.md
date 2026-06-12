@@ -165,17 +165,57 @@ To make things easier, ticks can be specified on the `Axis` component itself, an
 
 :::
 
-## Adaptive chart
+## Responsiveness
 
-For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-system-api) and can help you flexibly adjust the chart size.
+High-level chart components (`Chart.Area`, `Chart.Bar`, `Chart.Line`, and others) are responsive by default. They fill their container (`width: 100%`, `height: 100%`) and automatically recalculate plot dimensions when the container size changes.
 
-::: tip
-`ResponsiveContainer` supports the `aspect` property – the aspect ratio between the width and height of a chart.
-:::
+You need to set the container size using [Box properties](/layout/box-system/box-system-api) (`w`, `h`, `aspect`, and others) on the chart itself or on a parent wrapper:
 
 ```jsx
-<ResponsiveContainer aspect={1}> // width = height ...</ResponsiveContainer>
+<Chart.Area
+  w="100%"
+  h={300}
+  groupKey="time"
+  data={data}
+  aria-label="Area chart"
+/>
 ```
+
+Or keep a fixed aspect ratio:
+
+```jsx
+<Chart.Area w="100%" aspect={16 / 9} groupKey="time" data={data} aria-label="Area chart" />
+```
+
+::: tip
+The chart adapts to its **container**, not to the viewport directly. Make sure the parent layout provides a measurable size — especially height. Without it, the chart may collapse to zero height.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/responsive-chart.tsx';
+</script>
+
+:::
+
+### Low-level chart components
+
+When building charts from low-level components (`Plot`, `Line`, `XAxis`, `YAxis`, and others), use `ResponsiveContainer`. It supports all [Box properties](/layout/box-system/box-system-api) and reports size changes via `onResize`:
+
+```jsx
+const [[width, height], setSize] = React.useState([0, 0]);
+
+<ResponsiveContainer w="100%" h={300} onResize={setSize}>
+  <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    ...
+  </Plot>
+</ResponsiveContainer>
+```
+
+::: tip
+`ResponsiveContainer` and high-level charts both support the `aspect` property — the ratio between width and height.
+:::
 
 ::: sandbox
 
