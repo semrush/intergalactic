@@ -20,7 +20,7 @@ const config: PlaywrightTestConfig = {
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://127.0.0.1:6006',
+    // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -54,16 +54,6 @@ const config: PlaywrightTestConfig = {
       use: { ...devices['Desktop Safari'] },
     },
   ],
-
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'pnpm run storybook',
-    url: 'http://127.0.0.1:6006',
-    timeout: 180 * 1000,
-    reuseExistingServer: process.env.CI !== 'true',
-    stdout: 'pipe',
-    stderr: 'pipe',
-  },
 };
 
 export default config;

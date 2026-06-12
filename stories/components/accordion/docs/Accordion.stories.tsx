@@ -43,7 +43,7 @@ export const Basic: StoryObj<typeof BasicExampleProps> = {
     },
   },
   args: BasicExampleProps,
-  // play: playWrapper(BasicUsageTest),
+  play: playWrapper(BasicUsageTest),
 };
 
 export const CustomStyles: Story = {
