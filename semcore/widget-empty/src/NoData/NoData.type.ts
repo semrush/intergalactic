@@ -23,5 +23,7 @@ declare namespace NSWidgetEmptyNoData {
 
 /** @deprecated It will be removed in v18. */
 export type WidgetNoDataProps = NSWidgetEmptyNoData.Props;
+/** @deprecated It will be removed in v18. */
+export type iconNamesWidgetEmpty = TIllustrationNamesWidgetEmpty;
 
 export type { NSWidgetEmptyNoData };
