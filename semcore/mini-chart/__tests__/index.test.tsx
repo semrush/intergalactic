@@ -6,6 +6,13 @@ import React from 'react';
 
 import MiniCharts from '../src';
 
+const expectUINameToMatchSnapshot = (component: React.ReactElement) => {
+  const { container } = render(component);
+  const result = extractUIName(container);
+
+  expect(result).toMatchSnapshot();
+};
+
 describe('mini-chart Dependency imports', () => {
   runDependencyCheckTests('mini-chart');
 });
@@ -14,69 +21,48 @@ describe('MiniCharts', () => {
   beforeEach(cleanup);
 
   test('Verify data-ui-name for ScoreLine', () => {
-    const scoreLine = (
+    const component = (
       <MiniCharts.ScoreLine value={2}>
         <MiniCharts.ScoreLine.Segment value={1} color='chart-palette-order-1' />
       </MiniCharts.ScoreLine>
     );
 
-    const { container } = render(scoreLine);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
+    expectUINameToMatchSnapshot(component);
   });
 
   test('Verify data-ui-name for ScoreDonut', () => {
-    const scoreDonut = <MiniCharts.ScoreDonut value={50} />;
+    const component = <MiniCharts.ScoreDonut value={50} />;
 
-    const { container } = render(scoreDonut);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
+    expectUINameToMatchSnapshot(component);
   });
 
   test('Verify data-ui-name for ScoreSemiDonut', () => {
-    const scoreSemiDonut = <MiniCharts.ScoreSemiDonut value={50} />;
+    const component = <MiniCharts.ScoreSemiDonut value={50} />;
 
-    const { container } = render(scoreSemiDonut);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
+    expectUINameToMatchSnapshot(component);
   });
 
   test('Verify data-ui-name for TrendLine', () => {
-    const trendLine = <MiniCharts.TrendLine data={[15, 70, 20, 85, 20]} />;
+    const component = <MiniCharts.TrendLine data={[15, 70, 20, 85, 20]} />;
 
-    const { container } = render(trendLine);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
+    expectUINameToMatchSnapshot(component);
   });
 
   test('Verify data-ui-name for TrendArea', () => {
-    const trendArea = <MiniCharts.TrendArea data={[15, 70, 20, 85, 20]} />;
+    const component = <MiniCharts.TrendArea data={[15, 70, 20, 85, 20]} />;
 
-    const { container } = render(trendArea);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
+    expectUINameToMatchSnapshot(component);
   });
 
   test('Verify data-ui-name for TrendBar', () => {
-    const trendBar = <MiniCharts.TrendBar data={[{ value: 20 }, { value: 80 }]} />;
+    const component = <MiniCharts.TrendBar data={[{ value: 20 }, { value: 80 }]} />;
 
-    const { container } = render(trendBar);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
+    expectUINameToMatchSnapshot(component);
   });
 
   test('Verify data-ui-name for TrendHistogram', () => {
-    const trendHistogram = <MiniCharts.TrendHistogram data={[{ value: 20 }, { value: 80 }]} />;
+    const component = <MiniCharts.TrendHistogram data={[{ value: 20 }, { value: 80 }]} />;
 
-    const { container } = render(trendHistogram);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
+    expectUINameToMatchSnapshot(component);
   });
 });

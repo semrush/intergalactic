@@ -1,6 +1,6 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { render } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe } from '@semcore/testing-utils/vitest';
+import { expect, describe } from '@semcore/testing-utils/vitest';
 import React, { createRef } from 'react';
 
 import { BadgeFH } from '../src/components/badge/Badge';
@@ -14,7 +14,6 @@ import { SelectFH } from '../src/components/select/Select';
 import { SwitchFH } from '../src/components/switch/Switch';
 import { TabLineFH } from '../src/components/tab-line/TabLine';
 import { ButtonTriggerFH } from '../src/inner-components/button-trigger/ButtonTrigger';
-import { AnimatedSparkles } from '../src/inner-components/sparkle/AnimatedSparkles';
 import SvgSparkle from '../src/inner-components/sparkle/Sparkle';
 
 const expectUINameToMatchSnapshot = (component: React.ReactElement) => {
