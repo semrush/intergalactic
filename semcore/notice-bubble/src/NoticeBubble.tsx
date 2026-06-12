@@ -220,11 +220,12 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     const noticeElement = this.ref.current;
 
     if (noticeElement) {
-      const focusableNodes = getFocusableIn(noticeElement).filter(
+      const allFocusableNodes = getFocusableIn(noticeElement);
+      const focusableNodes = allFocusableNodes.filter(
         (node) => node !== this.closeButtonRef.current,
       );
 
-      if (focusableNodes.length > 0) {
+      if (focusableNodes.length > 0 || (!duration && allFocusableNodes.length > 0)) {
         setTimeout(() => setFocus(noticeElement), 0);
       }
     }
