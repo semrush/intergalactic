@@ -5,6 +5,7 @@ import type { BulkTextareaProps, ErrorItem } from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 
 const validateRow = (line: string, lines: string[]) => {
   let isValid = true;
@@ -55,6 +56,7 @@ type PasteProps = NonNullable<BulkTextareaProps<string>['pasteProps']>;
 
 type ExampleProps = Omit<BulkTextareaProps<string>, 'linesDelimiters'> & {
   autoFocus?: boolean;
+  strictMode?: boolean;
   w?: BoxProps['w'];
   pasteDelimiter?: PasteProps['delimiter'];
   pasteSkipEmptyLines?: boolean;
@@ -75,15 +77,39 @@ export const defaultBulkTextareaProps: ExampleProps = {
   showErrors: undefined,
   validateOn: ['blur'],
   autoFocus: false,
+  strictMode: false,
   pasteDelimiter: pasteDelimiterOptions.newline,
   pasteSkipEmptyLines: true,
   pasteLineProcessing: pasteLineProcessingOptions['remove-http'],
   linesDelimiters: [...linesDelimiterOptions.comma],
 };
 
+const StrictModeRoot = ({ children }: { children: React.ReactNode }) => {
+  const hostRef = React.useRef<HTMLDivElement>(null);
+  const rootRef = React.useRef<ReturnType<typeof createRoot> | null>(null);
+
+  React.useLayoutEffect(() => {
+    if (!hostRef.current) return;
+
+    rootRef.current = createRoot(hostRef.current);
+
+    return () => {
+      rootRef.current?.unmount();
+      rootRef.current = null;
+    };
+  }, []);
+
+  React.useLayoutEffect(() => {
+    rootRef.current?.render(<React.StrictMode>{children}</React.StrictMode>);
+  });
+
+  return <div ref={hostRef} />;
+};
+
 const Demo = (props: Partial<ExampleProps>) => {
   const {
     autoFocus,
+    strictMode,
     pasteDelimiter,
     pasteSkipEmptyLines,
     pasteLineProcessing,
@@ -111,8 +137,8 @@ const Demo = (props: Partial<ExampleProps>) => {
     setShowErrors(true);
   }, [value]);
 
-  return (
-    <Box>
+  const bulkTextarea = (
+    <>
       <Button onClick={handleSubmit}>Validate</Button>
 
       <BulkTextarea
@@ -151,6 +177,12 @@ const Demo = (props: Partial<ExampleProps>) => {
           <BulkTextarea.ClearAll />
         </Flex>
       </BulkTextarea>
+    </>
+  );
+
+  return (
+    <Box>
+      {strictMode ? <StrictModeRoot>{bulkTextarea}</StrictModeRoot> : bulkTextarea}
     </Box>
   );
 };
