@@ -38,7 +38,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@accordion'],
     },
     async ({ page }) => {
-      await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', item);
+      await loadPage(page, 'components-accordion-documentation--basic', 'en', item);
 
       await test.step('Verify active and normal states', async () => {
         await expect(page).toHaveScreenshot();
@@ -120,7 +120,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
+    await loadPage(page, 'components-accordion-documentation--basic', 'en');
+
+    await expect(locators.toggle(page, 0)).toHaveAttribute('tabindex', '0');
 
     await test.step('Verify toggles tabindex', async () => {
       const count = await locators.toggle(page).count();
@@ -199,7 +201,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en');
+    await loadPage(page, 'components-accordion-documentation--basic', 'en');
 
     await test.step('Verify item collapses by click on text', async () => {
       await locators.button(page, 0).click();
@@ -226,7 +228,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@accordion'],
   }, async ({ page, browserName }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
+    await loadPage(page, 'components-accordion-documentation--seo', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(3);
     await page.keyboard.press('Tab');
@@ -249,7 +251,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
+    await loadPage(page, 'components-accordion-documentation--one-section-opening', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(0);
     await page.keyboard.press('Tab');
@@ -273,7 +275,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/one_section_opening.tsx', 'en');
+    await loadPage(page, 'components-accordion-documentation--one-section-opening', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(0);
     await locators.toggle(page, 0).click();
@@ -292,7 +294,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/tests/examples/button-on-toggle.tsx', 'en');
+    await loadPage(page, 'components-accordion-tests--button-on-toggle', 'en');
 
     await expect(locators.collapse(page)).toHaveCount(0);
     await locators.button(page, 0).click();
@@ -314,7 +316,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
+    await loadPage(page, 'components-accordion-tests--values', 'en');
 
     await expect(page.locator('[data-test-id="number"]')).toBeVisible();
     await expect(page.locator('[data-test-id="string"]')).toBeVisible();
@@ -330,7 +332,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/tests/examples/default-values.tsx', 'en');
+    await loadPage(page, 'components-accordion-tests--default-values', 'en');
     await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
   });
 
@@ -340,7 +342,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@accordion'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/accordion/docs/examples/heading_tag.tsx', 'en');
+      await loadPage(page, 'components-accordion-documentation--heading-tag', 'en');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
@@ -359,7 +361,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: false, defaultHeight: 'auto' });
+    await loadPage(page, 'components-accordion-documentation--basic', 'en', { overflowHidden: false, defaultHeight: 'auto' });
 
     await expect(locators.collapse(page, 0)).toBeVisible();
 
@@ -378,7 +380,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { overflowHidden: true, defaultHeight: '100%' });
+    await loadPage(page, 'components-accordion-documentation--basic', 'en', { overflowHidden: true, defaultHeight: '100%' });
 
     await expect(locators.collapse(page, 0)).toBeVisible();
 
@@ -398,7 +400,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@base-components',
       '@animation'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/tests/examples/accordion-collapse-duration.tsx', 'en');
+    await loadPage(page, 'components-accordion-tests--accordion-animation', 'en');
 
     const count = await locators.toggle(page).count();
     for (let i = 0; i < count; i++) {
