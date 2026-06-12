@@ -1,8 +1,8 @@
 import WidgetEmpty from '@semcore/ui/widget-empty';
-import type { WidgetEmptyProps } from '@semcore/ui/widget-empty';
+import type { NSWidgetEmpty } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type CustomIconSizeProps = WidgetEmptyProps & {
+export type CustomIconSizeProps = NSWidgetEmpty.Props & {
   iconWidth?: number;
   iconHeight?: number;
 };

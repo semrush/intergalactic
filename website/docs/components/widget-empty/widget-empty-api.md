@@ -13,7 +13,7 @@ import { NoData } from '@semcore/ui/widget-empty';
 <NoData />;
 ```
 
-<TypesView type="WidgetNoDataProps" :types={...types} />
+<TypesView type="NSWidgetEmptyNoData.Props" :types={...types} />
 
 ## Error
 
@@ -24,7 +24,7 @@ import { Error } from '@semcore/ui/widget-empty';
 <Error />;
 ```
 
-<TypesView type="WidgetErrorProps" :types={...types} />
+<TypesView type="NSWidgetEmptyError.Props" :types={...types} />
 
 ## WidgetEmpty
 
@@ -35,7 +35,7 @@ import WidgetEmpty from '@semcore/ui/widget-empty';
 <WidgetEmpty />;
 ```
 
-<TypesView type="WidgetEmptyProps" :types={...types} />
+<TypesView type="NSWidgetEmpty.Props" :types={...types} />
 
 ## Images
 
