@@ -1,4 +1,5 @@
 import CongratsIllustration from '@semcore/illustration/Congrats';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -12,6 +13,25 @@ describe('feedback-form Dependency imports', () => {
 
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const feedbackForm = (
+      <FeedbackForm onSubmit={() => {}}>
+        <FeedbackForm.Notice theme='warning' />
+        <FeedbackForm.Item name='input'>
+          {({ input }) => <input {...input} />}
+        </FeedbackForm.Item>
+        <FeedbackForm.Success />
+        <FeedbackForm.Cancel />
+        <FeedbackForm.Submit />
+      </FeedbackForm>
+    );
+
+    const { container } = render(feedbackForm);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.concurrent('Verify call onSubmit', async () => {
     const onSubmit = vi.fn();
@@ -170,6 +190,27 @@ describe('FeedbackRating - Props and Rendering', () => {
     initialValues: { rating: 0 },
     errorFeedbackEmail: 'test@example.com',
   };
+
+  test('Verify data-ui-name', () => {
+    const feedbackRating = (
+      <FeedbackRating
+        {...defaultProps}
+        visible
+        rating={3}
+        formConfig={[
+          { key: 'checkbox', label: 'Checkbox option', type: 'checkbox' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]}
+        initialValues={{ rating: 3, checkbox: false, description: '' }}
+        header={<FeedbackRating.Header>Feedback header</FeedbackRating.Header>}
+      />
+    );
+
+    const { container } = render(feedbackRating);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Should render with default props', () => {
     const { getByText } = render(<FeedbackRating {...defaultProps} />);

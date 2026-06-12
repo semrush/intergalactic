@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,21 @@ describe('input-number Dependency imports', () => {
 
 describe('InputNumber', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const inputNumber = (
+      <InputNumber>
+        <InputNumber.Addon />
+        <InputNumber.Value />
+        <InputNumber.Controls />
+      </InputNumber>
+    );
+
+    const { container } = render(inputNumber);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   const focusInput = async (input: HTMLElement) => {
     await userEvent.click(input);
