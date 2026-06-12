@@ -112,10 +112,12 @@ class AutoSuggestRoot extends Component<
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
     const id = `${uid}_autosuggest-trigger`;
 
+    const isVisiblePopper = isVisible && (value === '' || suggestions.length > 0 || isLoading);
+
     return (
       <Select
         interaction='none'
-        visible={isVisible}
+        visible={isVisiblePopper}
         onVisibleChange={this.handleChangeVisible}
         highlightedIndex={highlightedIndex}
         onHighlightedIndexChange={this.handleChangeHighlightedIndex}
