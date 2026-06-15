@@ -241,6 +241,12 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     document.body.removeEventListener('mousemove', this.handleBodyMouseMove);
   }
 
+  isFocusInBubble() {
+    const noticeElement = this.ref.current;
+
+    return noticeElement ? isFocusInside(noticeElement) : false;
+  }
+
   clearTimer() {
     if (this.timer) {
       this.timer.clear();
@@ -276,12 +282,12 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
   };
 
   handleMouseLeave = () => {
-    if (!this.timer) return;
+    if (!this.timer || this.isFocusInBubble()) return;
     this.timer.resume();
   };
 
   handleBodyMouseMove = (event: MouseEvent) => {
-    if (!this.timer?.paused) return;
+    if (!this.timer?.paused || this.isFocusInBubble()) return;
     const rect = this.ref.current?.getBoundingClientRect();
     if (!rect) return;
     const mouseInRect =
