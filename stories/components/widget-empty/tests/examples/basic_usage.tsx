@@ -1,8 +1,8 @@
 import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
-import type { WidgetEmptyProps, iconNamesWidgetEmpty } from '@semcore/ui/widget-empty';
+import type { NSWidgetEmpty, iconNamesWidgetEmpty } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type BasicWidgetEmptyProps = WidgetEmptyProps & {
+export type BasicWidgetEmptyProps = NSWidgetEmpty.Props & {
   iconName?: iconNamesWidgetEmpty;
   showTitle?: boolean;
   showDescription?: boolean;
