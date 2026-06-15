@@ -9,7 +9,7 @@ export function Highlight({ highlight, children }: HighlightProps) {
   let html = children;
   if (highlight) {
     try {
-      const re = new RegExp(highlight.toLowerCase(), 'g');
+      const re = new RegExp(highlight.toLowerCase(), 'ig');
       html = html.replace(
         re,
         `<span style="font-weight: bold; padding: var(--intergalactic-spacing-05x, 2px) 0">${highlight}</span>`,
