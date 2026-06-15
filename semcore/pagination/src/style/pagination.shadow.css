@@ -43,6 +43,14 @@ STotalPagesLabel {
   margin-left: var(--intergalactic-spacing-2x, 8px);
   margin-right: var(--intergalactic-spacing-1x, 4px);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+
+  &[size='l'] {
+    font-size: var(--intergalactic-fs-300, 16px);
+    line-height: var(--intergalactic-lh-300, 150%);
+  }
 }
 
 STotalLastPages {
@@ -75,16 +83,4 @@ SPageInputAddon {
   opacity: 0;
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute;
-}
-
-SLabel,
-STotalPages,
-STotalPagesLabel {
-  font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
-
-  &[size='l'] {
-    font-size: var(--intergalactic-fs-300, 16px);
-    line-height: var(--intergalactic-lh-300, 150%);
-  }
 }
