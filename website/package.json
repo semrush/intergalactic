@@ -75,7 +75,7 @@
     "@types/mdast": "3.0.10",
     "@types/final-form-focus": "1.1.7",
     "convert-layout": "0.11.1",
-    "esbuild": "0.28.0",
+    "esbuild": "0.28.1",
     "esbuild-plugin-alias": "0.2.1",
     "execa": "6.1.0",
     "fast-glob": "3.2.11",
