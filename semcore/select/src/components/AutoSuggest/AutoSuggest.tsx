@@ -146,7 +146,15 @@ class AutoSuggestRoot extends Component<
                     : (
                         <Select.List>
                           {suggestions.map((option) => (
-                            <Select.Option value={option} key={option} selected={false} onClick={() => this.handleChangeSelect(option)}>
+                            <Select.Option
+                              value={option}
+                              key={option}
+                              selected={false}
+                              onClick={() => {
+                                this.handleChangeSelect(option);
+                                return false;
+                              }}
+                            >
                               <Highlight highlight={value}>{option}</Highlight>
                             </Select.Option>
                           ))}

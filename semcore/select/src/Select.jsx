@@ -222,7 +222,7 @@ class RootSelect extends AbstractDropdown {
       'aria-selected': selected ? 'true' : 'false',
       'aria-disabled': props.disabled ? 'true' : 'false',
       'role': 'option',
-      'onClick': this.bindHandlerOptionClick(props.value, index),
+      'onClick': callAllEventHandlers(props.onClick, this.bindHandlerOptionClick(props.value, index)),
       'ref': (node) => this.itemRef(props, index, node),
       size,
     };
