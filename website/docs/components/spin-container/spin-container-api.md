@@ -11,7 +11,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer />;
 ```
 
-<TypesView type="SpinContainerProps" :types={...types} />
+<TypesView type="NSSpinContainer.Props" :types={...types} />
 
 ## SpinContainer.Content
 
