@@ -1,6 +1,16 @@
+import type { Page } from 'playwright';
+
 import { e2eStandToHtml } from '../e2e-stand';
 
-export async function loadPage(page: any, examplePath: string, lang: string, props = {}) {
-  const htmlContent = await e2eStandToHtml(examplePath, lang, props);
+const stands = new Map<string, string>();
+
+export async function loadPage(page: Page, examplePath: string, lang: string, props?: Record<string, unknown>) {
+  const key = `${examplePath}_${lang}_${props ? JSON.stringify(props) : ''}`;
+  const htmlContent = stands.get(key) ?? await e2eStandToHtml(examplePath, lang, props ?? {});
+
+  if (!stands.has(key)) {
+    stands.set(key, htmlContent);
+  }
+
   await page.setContent(htmlContent);
 }

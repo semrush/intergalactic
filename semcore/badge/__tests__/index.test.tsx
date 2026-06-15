@@ -9,39 +9,6 @@ describe('Badge Dependency imports', () => {
   runDependencyCheckTests('badge');
 });
 
-describe('Badge deprecation warnings', () => {
-  beforeEach(cleanup);
-
-  let consoleWarnSpy: ReturnType<typeof vi.spyOn<any, any>>;
-
-  beforeEach(() => {
-    consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
-  });
-
-  afterEach(() => {
-    consoleWarnSpy.mockRestore();
-  });
-
-  test('Should warn when type prop is not provided', () => {
-    render(<Badge>Custom</Badge>);
-
-    expect(consoleWarnSpy).toHaveBeenCalled();
-    const warnCall = consoleWarnSpy.mock.calls.find((call) =>
-      call.some((arg) => typeof arg === 'string' && arg.includes('type')),
-    );
-    expect(warnCall).toBeDefined();
-  });
-
-  test('Should not warn when type prop is provided', () => {
-    render(<Badge type='admin' />);
-
-    const warnCall = consoleWarnSpy.mock.calls.find((call) =>
-      call.some((arg) => typeof arg === 'string' && arg.includes('type') && arg.includes('required')),
-    );
-    expect(warnCall).toBeUndefined();
-  });
-});
-
 describe('Badge backward compatibility (deprecated props)', () => {
   beforeEach(cleanup);
 

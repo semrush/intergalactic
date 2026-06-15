@@ -59,11 +59,7 @@ To preview the website locally, run `pnpm website`. The site will be accessible 
 
 ## Screen reader tests
 
-Ensuring the accessibility of our components is a priority. We conduct automated screen reader tests, focusing on VoiceOver screen reader in Safari on macOS. Here's how to set up and run these tests:
-
-- To set up the environment, execute `pnpm vo-test:setup`.
-- Open  `voiceOver Utility > General` on your mac and enable the setting "Allow VoiceOver to be controlled with AppleScript"
-- Run the tests using the command `pnpm vo-test`.
+We use automated NVDA tests to check screen reader support on Windows. To prepare the environment for the first run, use `pnpm nvda-test:setup`. After setup, run the tests with `pnpm nvda-test`.
 
 ## Caveats
 
