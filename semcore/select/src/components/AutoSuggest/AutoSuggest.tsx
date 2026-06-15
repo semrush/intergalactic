@@ -138,7 +138,7 @@ class AutoSuggestRoot extends Component<
         </Select.Trigger>
         <Select.Popper aria-labelledby={id}>
           {isLoading
-            ? (<Select.StatusItem state='loading' />)
+            ? (<Select.StatusItem state='loading' itemsCount={0} />)
             : (
                 <>
                   {suggestions.length === 0
