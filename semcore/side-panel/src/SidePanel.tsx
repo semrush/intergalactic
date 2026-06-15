@@ -87,7 +87,6 @@ class RootSidePanel extends Component<
     return {
       visible,
       duration,
-      animationsDisabled: undefined,
       disablePreventScroll,
     };
   }
@@ -111,7 +110,6 @@ class RootSidePanel extends Component<
       'onOutsideClick': this.handleOutsideClick,
       'onKeyDown': this.handleSidebarKeyDown,
       'aria-label': ariaLabel,
-      'animationsDisabled': undefined,
       'aria-labelledby': ariaLabelledBy,
     };
   }
