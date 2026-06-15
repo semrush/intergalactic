@@ -25,9 +25,9 @@ const Demo = (props: WizardContentProps) => {
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between' noSidebar={props.noSidebar}>
           {steps.map((s, i) => (
             <Wizard.Step key={s.title} step={i + 1}>
-              <Text size={500} tag='h3'>
+              <Wizard.StepTitle>
                 {s.title}
-              </Text>
+              </Wizard.StepTitle>
             </Wizard.Step>
           ))}
 
