@@ -54,7 +54,7 @@ class AutoSuggestRoot extends Component<
       this.abortController.abort();
     }
 
-    if (value !== this.asProps.value && this.state.openOnChanges) {
+    if (value !== this.asProps.value) {
       const { suggestions } = this.asProps;
 
       if (!Array.isArray(suggestions)) {
@@ -62,8 +62,6 @@ class AutoSuggestRoot extends Component<
       }
 
       this.changeDebounce = window.setTimeout(async () => {
-        this.handleChangeVisible(true);
-
         if (Array.isArray(suggestions)) {
           const filteredSuggestions = value === '' ? [] : suggestions.filter((s) => s.toLowerCase().includes(value.toLowerCase()));
 
@@ -74,6 +72,10 @@ class AutoSuggestRoot extends Component<
 
           const filteredSuggestions = await suggestions(value, abortSignal);
           this.setState({ suggestions: filteredSuggestions, isLoading: false });
+        }
+
+        if (this.state.openOnChanges) {
+          this.handleChangeVisible(true);
         }
       }, 300);
     }
@@ -88,11 +90,18 @@ class AutoSuggestRoot extends Component<
   };
 
   handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!e.key.startsWith('Array')) {
+    if (!e.key.startsWith('Arrow')) {
       this.setState({ highlightedIndex: -1 });
     }
     if (e.key === 'Escape' && this.state.isVisible) {
       this.setState({ openOnChanges: false });
+    }
+    if (e.key === 'ArrowDown' && !this.state.isVisible) {
+      this.setState({ highlightedIndex: 0 });
+    }
+    if (e.key === 'ArrowUp' && !this.state.isVisible) {
+      const { suggestions } = this.state;
+      this.setState({ highlightedIndex: suggestions.length - 1 });
     }
   };
 
@@ -136,7 +145,6 @@ class AutoSuggestRoot extends Component<
         onVisibleChange={this.handleChangeVisible}
         highlightedIndex={highlightedIndex}
         onHighlightedIndexChange={this.handleChangeHighlightedIndex}
-        defaultHighlightedIndex={null}
       >
         <Select.Trigger id={id} tag={Input} onFocus={this.handleFocus} onBlur={this.handleBlur}>
           <Root
