@@ -28,6 +28,9 @@ export const Autosuggest: StoryObj<AutosuggestTestProps> = {
     width: {
       control: { type: 'number', min: 160, step: 20 },
     },
+    withPlaceholder: {
+      control: 'boolean',
+    },
     placeholder: {
       control: 'text',
     },

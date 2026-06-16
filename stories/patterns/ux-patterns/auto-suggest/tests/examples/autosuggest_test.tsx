@@ -5,11 +5,11 @@ import React from 'react';
 
 const suggestions = [
   'Persian',
-  'Maine Coon',
-  'Ragdoll',
-  'Sphynx',
-  'Siamese',
-  'Bengal',
+  '<img src=x onerror="alert(\'test\')">',
+  '<b>cat</b>',
+  'Sphynx/',
+  '[Siamese',
+  'Bengal]',
   'British Shorthair',
   'Abyssinian',
   'Birman',
@@ -32,6 +32,7 @@ export type AutosuggestTestProps = {
   asyncDelay?: number;
   autoFocus?: boolean;
   width?: number;
+  withPlaceholder?: boolean;
   placeholder?: string;
 };
 
@@ -41,6 +42,7 @@ export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
   asyncDelay: 1000,
   autoFocus: false,
   width: 250,
+  withPlaceholder: true,
   placeholder: 'Start typing to see options',
 };
 
@@ -73,6 +75,7 @@ const Demo = (props: AutosuggestTestProps) => {
     asyncDelay,
     autoFocus,
     width,
+    withPlaceholder,
     placeholder,
   } = {
     ...autosuggestTestDefaultProps,
@@ -89,6 +92,8 @@ const Demo = (props: AutosuggestTestProps) => {
     [asyncDelay],
   );
 
+  const placeholderProp = withPlaceholder ? { placeholder } : {};
+
   return (
     <>
       <Text tag='label' size={200} htmlFor='autosuggest'>
@@ -96,13 +101,13 @@ const Demo = (props: AutosuggestTestProps) => {
       </Text>
       <Box mt={2} w={width}>
         <AutoSuggest
-          key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}`}
+          key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}`}
           value={query}
           id='autosuggest'
           onChange={setQuery}
           suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
           autoFocus={autoFocus}
-          placeholder={placeholder}
+          {...placeholderProp}
         />
       </Box>
     </>
