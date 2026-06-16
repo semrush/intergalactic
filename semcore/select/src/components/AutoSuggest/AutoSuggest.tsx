@@ -152,7 +152,6 @@ class AutoSuggestRoot extends Component<
                               selected={false}
                               onClick={() => {
                                 this.handleChangeSelect(option);
-                                return false;
                               }}
                             >
                               <Highlight highlight={value}>{option}</Highlight>

@@ -6,15 +6,49 @@ type HighlightProps = {
 };
 
 export function Highlight({ highlight, children }: HighlightProps) {
-  let html = children;
-  if (highlight) {
-    try {
-      const re = new RegExp(highlight.toLowerCase(), 'ig');
-      html = html.replace(
-        re,
-        `<span style="font-weight: bold; padding: var(--intergalactic-spacing-05x, 2px) 0">${highlight}</span>`,
-      );
-    } catch (e) {}
-  }
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  const ref = React.useRef<HTMLSpanElement>();
+
+  React.useEffect(() => {
+    const child = document.createElement('span');
+
+    if (highlight) {
+      const regexp = new RegExp(highlight.toLowerCase(), 'ig');
+      const results = [...children.matchAll(regexp)];
+
+      let cursor = 0;
+
+      for (const result of results) {
+        const foundStr = result[0];
+        const index = result.index;
+
+        const before = children.slice(cursor, index);
+        const bold = children.slice(index, index + foundStr.length);
+
+        cursor = index + foundStr.length;
+
+        const beforeNode = document.createTextNode(before);
+        const boldNode = document.createElement('strong');
+        boldNode.textContent = bold;
+
+        child.appendChild(beforeNode);
+        child.appendChild(boldNode);
+      }
+
+      if (cursor < children.length) {
+        const after = children.slice(cursor);
+        const afterNode = document.createTextNode(after);
+        child.appendChild(afterNode);
+      }
+    } else {
+      child.textContent = children;
+    }
+
+    ref.current?.appendChild(child);
+
+    return () => {
+      child.remove();
+    };
+  }, [highlight, children]);
+
+  return <span ref={ref} />;
 }
