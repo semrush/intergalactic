@@ -240,7 +240,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
   handleClickClearAll = (e: Event) => {
     this.handlers.showErrors(false);
     this.handlers.errors([]);
-    this.setState({ errorIndex: -1 });
+    this.setState({ errorIndex: -1, isEmptyText: true });
     // @ts-ignore
     this.handlers.value('', e);
     this.handlers.state('normal');

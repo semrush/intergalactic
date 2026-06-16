@@ -87,9 +87,9 @@ const Demo = () => {
             </RadioGroup>
           </Wizard.Step>
           <Wizard.Step step={4}>
-            <Text size={500} tag='h3'>
+            <Wizard.StepTitle>
               Final step
-            </Text>
+            </Wizard.StepTitle>
             <Text tag='p' mt={2}>
               Congratulations on passing all the steps!
             </Text>

@@ -2068,6 +2068,9 @@ importers:
       '@semcore/modal':
         specifier: ^17.2.0
         version: link:../modal
+      '@semcore/typography':
+        specifier: ^17.2.0
+        version: link:../typography
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
