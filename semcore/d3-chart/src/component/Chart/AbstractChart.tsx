@@ -617,14 +617,14 @@ export abstract class AbstractChart<
     }
 
     if (aspect) {
-      const minHeight = cssToIntDefault(computedStyles.getPropertyValue('min-height'));
-      const maxHeight = cssToIntDefault(computedStyles.getPropertyValue('max-height'));
-      height = width * aspect;
+      const minHeight = cssToIntDefault(computedStyles.getPropertyValue('min-height'), -1);
+      const maxHeight = cssToIntDefault(computedStyles.getPropertyValue('max-height'), -1);
+      height = width / aspect;
 
-      if (height < minHeight) {
+      if (minHeight !== -1 && height < minHeight) {
         height = minHeight;
       }
-      if (height > maxHeight) {
+      if (maxHeight !== -1 && height > maxHeight) {
         height = maxHeight;
       }
     }

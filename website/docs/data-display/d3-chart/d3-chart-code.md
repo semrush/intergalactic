@@ -173,18 +173,24 @@ You need to set the container size using [Box properties](/layout/box-system/box
 
 ```jsx
 <Chart.Area
-  w="100%"
+  // w='100%' it is a default value, you can skip it.
   h={300}
-  groupKey="time"
+  groupKey='time'
   data={data}
-  aria-label="Area chart"
+  aria-label='Area chart'
 />
 ```
 
 Or keep a fixed aspect ratio:
 
 ```jsx
-<Chart.Area w="100%" aspect={16 / 9} groupKey="time" data={data} aria-label="Area chart" />
+<Chart.Area
+  hMin={200} 
+  aspect={16 / 9} 
+  groupKey="time" 
+  data={data} 
+  aria-label="Area chart" 
+/>
 ```
 
 ::: tip

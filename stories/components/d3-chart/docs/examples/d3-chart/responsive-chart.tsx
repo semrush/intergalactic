@@ -15,8 +15,8 @@ function formatDate(value: any) {
 const Demo = () => {
   return (
     <Chart.Area
-      w='100%'
-      h={200}
+      hMax={200}
+      aspect={16 / 9}
       groupKey='time'
       data={data}
       tooltipValueFormatter={formatDate}
