@@ -52,7 +52,7 @@ const Demo = () => {
   const [query, setQuery] = React.useState('');
 
   return (
-    <>
+    <Box>
       <Text tag='label' size={200} htmlFor='async-autosuggest'>
         ASYNC Your pet breed
       </Text>
@@ -65,7 +65,6 @@ const Demo = () => {
         />
       </Box>
       <br />
-      <br />
       <Text tag='label' size={200} htmlFor='sync-autosuggest'>
         SYNC Your pet breed
       </Text>
@@ -77,7 +76,7 @@ const Demo = () => {
           suggestions={suggestions}
         />
       </Box>
-    </>
+    </Box>
   );
 };
 
