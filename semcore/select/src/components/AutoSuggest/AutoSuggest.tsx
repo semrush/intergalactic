@@ -22,6 +22,7 @@ class AutoSuggestRoot extends Component<
 > {
   static defaultProps: NSAutoSuggest.DefaultProps = {
     defaultValue: '',
+    placeholder: '',
   };
 
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
@@ -110,11 +111,11 @@ class AutoSuggestRoot extends Component<
   };
 
   handleFocus = () => {
-    const { value } = this.asProps;
+    const { value, statusItemPlaceholder } = this.asProps;
     const { suggestions } = this.state;
     this.setState({
       openOnChanges: true,
-      isVisible: true,
+      isVisible: statusItemPlaceholder === '' ? value !== '' : true,
       suggestions: suggestions.filter((s) => {
         return value !== '' && s.toLowerCase().includes(value.toLowerCase());
       }),
@@ -132,7 +133,7 @@ class AutoSuggestRoot extends Component<
   };
 
   render() {
-    const { value, uid, getI18nText } = this.asProps;
+    const { value, uid, getI18nText, statusItemPlaceholder } = this.asProps;
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
     const id = `${uid}_autosuggest-trigger`;
 
@@ -165,7 +166,11 @@ class AutoSuggestRoot extends Component<
             : (
                 <>
                   {suggestions.length === 0
-                    ? (value.length === 0 && <Select.StatusItem itemsCount={0}>{getI18nText('AutoSuggest.Popper.placeholderText')}</Select.StatusItem>)
+                    ? (value.length === 0 && statusItemPlaceholder !== '' && (
+                        <Select.StatusItem itemsCount={0}>
+                          {statusItemPlaceholder ?? getI18nText('AutoSuggest.Popper.placeholderText')}
+                        </Select.StatusItem>
+                      ))
                     : (
                         <Select.List>
                           {suggestions.map((option) => (

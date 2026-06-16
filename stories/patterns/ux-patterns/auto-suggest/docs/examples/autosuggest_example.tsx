@@ -75,6 +75,7 @@ const Demo = () => {
           id='sync-autosuggest'
           onChange={setQuery2}
           suggestions={suggestions}
+          statusItemPlaceholder=''
         />
       </Box>
     </Box>
