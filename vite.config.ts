@@ -17,14 +17,10 @@ export default defineConfig({
   plugins: [
     pluginReact({
       babel: {
-        presets: [
-          ['@babel/preset-react', { throwIfNamespace: false }],
-          ['@semcore/babel-preset-ui', { cssStyle: { extract: null } }],
-        ],
-        plugins: ['babel-plugin-transform-import-meta'],
+        plugins: ['@babel/plugin-syntax-import-assertions'],
       },
     }),
-    // unpluginSemcoreResolve.vite({ rootPath: rootDir }),
+    unpluginSemcoreResolve.vite({ rootPath: rootDir }),
     unpluginIcons.vite({ rootPath: rootDir }),
     unpluginIllustrations.vite({ rootPath: rootDir }),
     createUnplugin<{}>(() => ({
@@ -36,42 +32,6 @@ export default defineConfig({
       },
     })).vite({}),
   ],
-  resolve: {
-    alias: [
-      {
-        find: /^@semcore\/core\/lib\/utils\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/core/src/utils/$1'),
-      },
-      {
-        find: /^@semcore\/ui\/core\/lib\/utils\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/core/src/utils/$1'),
-      },
-      {
-        find: /^@semcore\/theme\/lib\/(.*)/,
-        replacement: resolvePath(__dirname, 'tools/theme/lib/$1'),
-      },
-      {
-        find: /^@semcore\/theme\/(.*)/,
-        replacement: resolvePath(__dirname, 'tools/theme/lib/$1'),
-      },
-      {
-        find: /^@semcore\/icon\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/icon/lib/$1'),
-      },
-      {
-        find: /^@semcore\/illustration\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/illustration/lib/$1'),
-      },
-      {
-        find: /^@semcore\/ui\/([\w-]*)$/,
-        replacement: resolvePath(__dirname, 'semcore/$1/src'),
-      },
-      {
-        find: /^@semcore\/([\w-]*)$/,
-        replacement: resolvePath(__dirname, 'semcore/$1/src'),
-      },
-    ],
-  },
   build: {
     rollupOptions: {
       external: [
