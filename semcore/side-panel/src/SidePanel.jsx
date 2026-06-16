@@ -134,7 +134,7 @@ class RootSidePanel extends Component {
 function Overlay(props) {
   const SOverlay = Root;
   const overlayRef = React.useRef(null);
-  usePreventScroll(props.visible, props.disablePreventScroll);
+  usePreventScroll(overlayRef, props.visible, props.disablePreventScroll);
   useContextTheme(overlayRef, props.visible);
   const zIndex = useZIndexStacking('z-index-modal');
   return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} zIndex={zIndex} />);

@@ -169,13 +169,16 @@ function Overlay(props) {
   const SOverlay = Root;
   const SOverlayContentWrapper = Flex;
   const { Children, styles, onOutsideClick, visible } = props;
+  const overlayRef = React.useRef(null);
   const overlayContentWrapperRef = React.useRef(null);
-  usePreventScroll(visible, props.disablePreventScroll);
+
+  usePreventScroll(overlayRef, visible, props.disablePreventScroll);
   useContextTheme(overlayContentWrapperRef, visible);
+
   const zIndex = useZIndexStacking('z-index-modal');
 
   return sstyled(styles)(
-    <SOverlay render={FadeInOut} zIndex={zIndex}>
+    <SOverlay render={FadeInOut} zIndex={zIndex} ref={overlayRef}>
       {/* This child component is intended to be private. Since true encapsulation isn't possible in this context, we’re applying the data-ui-name attribute directly as a workaround. */}
       <SOverlayContentWrapper data-ui-name='Modal.Overlay.ContentWrapper' ref={overlayContentWrapperRef}>
         <OutsideClick root={overlayContentWrapperRef} onOutsideClick={onOutsideClick}>

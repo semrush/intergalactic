@@ -30,30 +30,81 @@ function getIntValueFromCss(value: any) {
   return !Number.isNaN(Number(value)) ? Number(value) : Number.parseInt(value, 10);
 }
 
-const scrollPreventers = new Set<string>();
-const lockedBodyStyles = {
-  paddingRight: '',
-  overflow: '',
-  boxSizing: '',
-};
-export default function usePreventScroll(visible = true, disabled = false) {
+const isScrollBarGutterSupported = () => CSS.supports('scrollbar-gutter', 'stable');
+
+const isHTMLScrollable = () => document.documentElement.scrollHeight > document.documentElement.clientHeight;
+
+function setStyleIfDefined<E extends HTMLElement, P extends keyof CSSStyleDeclaration>(el: E, prop: P, value: CSSStyleDeclaration[P] | undefined) {
+  if (value === undefined) return;
+
+  el.style[prop] = value;
+}
+
+const scrollPreventers = new Map<string, {
+  bodyOverflow?: string;
+  bodyPaddingRight?: string;
+  bodyBoxSizing?: string;
+  htmlScrollBarGutter?: string;
+  htmlBgColor?: string;
+}>();
+const overflowValuesToSkip = ['clip', 'hidden'];
+
+export default function usePreventScroll(forElement: React.RefObject<HTMLElement>, visible = true, disabled = false) {
   const scrollbarWidth = React.useMemo(getScrollbarWidth, [getScrollbarWidth]);
   const id = useUID('scroll-preventer-');
 
   React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM() || !visible) return;
-    scrollPreventers.add(id);
+
+    scrollPreventers.set(id, {});
+
     if (scrollPreventers.size > 1) return;
 
-    const { paddingRight } = window.getComputedStyle(document.body);
+    const {
+      overflow: computedBodyOverflow,
+      paddingRight: computedBodyPaddingRight,
+      boxSizing: computedBodyBoxSizing,
+    } = window.getComputedStyle(document.body);
 
-    lockedBodyStyles.paddingRight = document.body.style.paddingRight;
-    lockedBodyStyles.overflow = document.body.style.overflow;
-    lockedBodyStyles.boxSizing = document.body.style.boxSizing;
+    if (overflowValuesToSkip.includes(computedBodyOverflow)) return;
 
-    const intPaddingRight = getIntValueFromCss(paddingRight);
-    let intPaddingRightFromStyle = getIntValueFromCss(document.body.style.paddingRight);
+    const {
+      backgroundColor: computedHTMLBgColor,
+      scrollbarGutter: computedHTMLScrollBarGutter,
+    } = window.getComputedStyle(document.documentElement);
+
+    const {
+      overflow: styleBodyOverflow,
+      paddingRight: styleBodyPaddingRight,
+      boxSizing: styleBodyBoxSizing,
+    } = document.body.style;
+
+    const {
+      scrollbarGutter: styleHTMLScrollBarGutter,
+      backgroundColor: styleHTMLBgColor,
+    } = document.documentElement.style;
+
+    if (isScrollBarGutterSupported() && isHTMLScrollable()) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.scrollbarGutter = 'stable';
+
+      if (forElement.current) {
+        const { backgroundColor } = window.getComputedStyle(forElement.current);
+        document.documentElement.style.backgroundColor = backgroundColor;
+      }
+
+      scrollPreventers.set(id, {
+        bodyOverflow: styleBodyOverflow === '' ? styleBodyOverflow : computedBodyOverflow,
+        htmlScrollBarGutter: styleHTMLScrollBarGutter === '' ? styleHTMLScrollBarGutter : computedHTMLScrollBarGutter,
+        htmlBgColor: styleHTMLBgColor === '' ? styleHTMLBgColor : computedHTMLBgColor,
+      });
+
+      return;
+    }
+
+    const intPaddingRight = getIntValueFromCss(computedBodyPaddingRight);
+    let intPaddingRightFromStyle = getIntValueFromCss(styleBodyPaddingRight);
     // Detected own style for window inside window
     if (intPaddingRightFromStyle !== scrollbarWidth) {
       intPaddingRightFromStyle = 0;
@@ -63,17 +114,33 @@ export default function usePreventScroll(visible = true, disabled = false) {
     document.body.style.paddingRight =
       scrollbarWidth + (intPaddingRight - intPaddingRightFromStyle) + 'px';
     document.body.style.boxSizing = 'border-box';
+
+    scrollPreventers.set(id, {
+      bodyOverflow: styleBodyOverflow === '' ? styleBodyOverflow : computedBodyOverflow,
+      bodyPaddingRight: styleBodyPaddingRight === '' ? styleBodyPaddingRight : computedBodyPaddingRight,
+      bodyBoxSizing: styleBodyBoxSizing === '' ? styleBodyBoxSizing : computedBodyBoxSizing,
+    });
   }, [visible, id, disabled]);
 
   React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM() || !visible) return;
     return () => {
+      const prevValues = scrollPreventers.get(id);
+
       scrollPreventers.delete(id);
+
       if (scrollPreventers.size !== 0) return;
-      document.body.style.overflow = lockedBodyStyles.overflow;
-      document.body.style.paddingRight = lockedBodyStyles.paddingRight;
-      document.body.style.boxSizing = lockedBodyStyles.boxSizing;
+
+      if (!prevValues) return;
+
+      const { bodyOverflow, bodyPaddingRight, bodyBoxSizing, htmlBgColor, htmlScrollBarGutter } = prevValues;
+
+      setStyleIfDefined(document.body, 'overflow', bodyOverflow);
+      setStyleIfDefined(document.body, 'paddingRight', bodyPaddingRight);
+      setStyleIfDefined(document.body, 'boxSizing', bodyBoxSizing);
+      setStyleIfDefined(document.documentElement, 'scrollbarGutter', htmlScrollBarGutter);
+      setStyleIfDefined(document.documentElement, 'backgroundColor', htmlBgColor);
     };
   }, [visible, id, disabled]);
 }
