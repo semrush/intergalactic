@@ -2,6 +2,7 @@ import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
 import Input from '@semcore/input';
 import Spin from '@semcore/spin';
 import React from 'react';
@@ -27,6 +28,7 @@ class AutoSuggestRoot extends Component<
 
   private abortController: AbortController | undefined;
   private changeDebounce = 0;
+  private popperRef = React.createRef<HTMLElement>();
 
   state: NSAutoSuggest.State = {
     isVisible: false,
@@ -104,7 +106,13 @@ class AutoSuggestRoot extends Component<
   };
 
   handleBlur = () => {
-    this.handleChangeVisible(false);
+    setTimeout(() => {
+      const popperElement = this.popperRef.current;
+
+      if (!popperElement || !isFocusInside(popperElement)) {
+        this.handleChangeVisible(false);
+      }
+    });
   };
 
   render() {
@@ -136,7 +144,7 @@ class AutoSuggestRoot extends Component<
             <Input.Addon tag={Spin} size='l' />
           )}
         </Select.Trigger>
-        <Select.Popper aria-labelledby={id}>
+        <Select.Popper aria-labelledby={id} ref={this.popperRef}>
           {isLoading
             ? (<Select.StatusItem state='loading' itemsCount={0} />)
             : (
@@ -150,9 +158,7 @@ class AutoSuggestRoot extends Component<
                               value={option}
                               key={option}
                               selected={false}
-                              onClick={() => {
-                                this.handleChangeSelect(option);
-                              }}
+                              onClick={() => this.handleChangeSelect(option)}
                             >
                               <Highlight highlight={value}>{option}</Highlight>
                             </Select.Option>
