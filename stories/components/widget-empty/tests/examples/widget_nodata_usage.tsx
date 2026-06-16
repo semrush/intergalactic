@@ -1,8 +1,8 @@
 import { NoData } from '@semcore/ui/widget-empty';
-import type { WidgetNoDataProps } from '@semcore/ui/widget-empty';
+import type { NSWidgetEmptyNoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type BasicWidgetNoDataProps = WidgetNoDataProps & {
+export type BasicWidgetNoDataProps = NSWidgetEmptyNoData.Props & {
   showDescription?: boolean;
   customDescription?: string;
   showChildren?: boolean;
