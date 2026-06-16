@@ -28,7 +28,7 @@ class AutoSuggestRoot extends Component<
 
   private abortController: AbortController | undefined;
   private changeDebounce = 0;
-  private popperRef = React.createRef<HTMLElement>();
+  private popperRef = React.createRef<HTMLDivElement>();
 
   state: NSAutoSuggest.State = {
     isVisible: false,

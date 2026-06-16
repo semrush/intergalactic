@@ -6,13 +6,13 @@ type HighlightProps = {
 };
 
 export function Highlight({ highlight, children }: HighlightProps) {
-  const ref = React.useRef<HTMLSpanElement>();
+  const ref = React.useRef<HTMLSpanElement | null>(null);
 
   React.useEffect(() => {
     const child = document.createElement('span');
 
     if (highlight) {
-      const regexp = new RegExp(highlight.toLowerCase(), 'ig');
+      const regexp = new RegExp(RegExp.escape(highlight.toLowerCase()), 'ig');
       const results = [...children.matchAll(regexp)];
 
       let cursor = 0;
