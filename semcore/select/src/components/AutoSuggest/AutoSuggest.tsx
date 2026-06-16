@@ -33,7 +33,7 @@ class AutoSuggestRoot extends Component<
   state: NSAutoSuggest.State = {
     isVisible: false,
     highlightedIndex: -1,
-    suggestions: [],
+    suggestions: Array.isArray(this.props.suggestions) ? this.props.suggestions : [],
     openOnChanges: true,
     isLoading: false,
   };
@@ -65,7 +65,7 @@ class AutoSuggestRoot extends Component<
         this.handleChangeVisible(true);
 
         if (Array.isArray(suggestions)) {
-          const filteredSuggestions = value === '' ? [] : suggestions.filter((breed) => breed.toLowerCase().includes(value.toLowerCase()));
+          const filteredSuggestions = value === '' ? [] : suggestions.filter((s) => s.toLowerCase().includes(value.toLowerCase()));
 
           this.setState({ suggestions: filteredSuggestions });
         } else {
@@ -102,7 +102,14 @@ class AutoSuggestRoot extends Component<
 
   handleFocus = () => {
     const { value } = this.asProps;
-    this.setState({ openOnChanges: true, isVisible: value === '' });
+    const { suggestions } = this.state;
+    this.setState({
+      openOnChanges: true,
+      isVisible: true,
+      suggestions: suggestions.filter((s) => {
+        return value !== '' && s.toLowerCase().includes(value.toLowerCase());
+      }),
+    });
   };
 
   handleBlur = () => {
