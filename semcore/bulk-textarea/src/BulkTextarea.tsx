@@ -134,7 +134,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
           }, 250);
         }
 
-        this.props.onChange?.(value, event);
+        this.handlers.value?.(value, event);
       },
       showErrors,
       validateOn,
