@@ -35,15 +35,6 @@ SLabel:not(:first-child) {
 
 STotalPages {
   align-self: center;
-  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
-
-  font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
-
-  &[size='l'] {
-    font-size: var(--intergalactic-fs-300, 16px);
-    line-height: var(--intergalactic-lh-300, 150%);
-  }
 }
 
 STotalPagesLabel {
