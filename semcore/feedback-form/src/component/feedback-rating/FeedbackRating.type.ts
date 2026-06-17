@@ -39,7 +39,7 @@ declare namespace NSFeedbackFormFeedbackRating {
     /** Text for submit button of form */
     submitText?: string;
     /** Config for form fields */
-    formConfig: FormConfigItem[];
+    formConfig: NSFeedbackFormFeedbackRating.FormConfigItem[];
 
     /** Initial form values including rating */
     initialValues: Record<string, any> & { rating: number };
