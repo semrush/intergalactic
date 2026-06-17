@@ -149,7 +149,7 @@ class AutoSuggestRoot extends Component<
   };
 
   render() {
-    const { value, uid, getI18nText, statusItemPlaceholder } = this.asProps;
+    const { value, uid, getI18nText, statusItemPlaceholder, size } = this.asProps;
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
     const id = `${uid}_autosuggest-trigger`;
 
@@ -164,6 +164,7 @@ class AutoSuggestRoot extends Component<
         onVisibleChange={this.handleChangeVisible}
         highlightedIndex={highlightedIndex}
         onHighlightedIndexChange={this.handleChangeHighlightedIndex}
+        size={size}
       >
         <Select.Trigger id={id} tag={Input} onFocus={this.handleFocus} onBlur={this.handleBlur}>
           <Root
