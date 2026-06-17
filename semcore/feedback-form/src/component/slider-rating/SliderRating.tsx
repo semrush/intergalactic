@@ -1,48 +1,29 @@
-import { Flex, Box, type BoxProps } from '@semcore/base-components';
+import { Flex, Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
+import type { NSFeedbackFormSliderRating } from './SliderRating.type';
 import style from '../../style/slider-rating.shadow.css';
-import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-
-type SliderRatingProps = {
-  value: number;
-  onChange?: (value: number) => void;
-  readonly?: boolean;
-};
-
-type SliderRatingDefaultProps = {
-  i18n: LocalizedMessages;
-  locale: 'en';
-};
 
 type State = {
   hoveredIndex: number;
   clickedIndex: number;
 };
 
-type StarProps = BoxProps & {
-  filled?: boolean;
-};
-
-type SliderRatingComponent = Intergalactic.Component<typeof Flex, SliderRatingProps> & {
-  Star: Intergalactic.Component<typeof Box, StarProps>;
-};
-
 const MIN = 1;
 const MAX = 5;
 
 class SliderRatingRoot extends Component<
-  SliderRatingProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSFeedbackFormSliderRating.Component>,
   typeof SliderRatingRoot.enhance,
   {},
   WithI18nEnhanceProps,
   State,
-  SliderRatingDefaultProps
+  NSFeedbackFormSliderRating.DefaultProps
 > {
   static displayName = 'SliderRating';
   static style = style;
@@ -194,7 +175,7 @@ class SliderRatingRoot extends Component<
   }
 }
 
-function Star(props: StarProps) {
+function Star(props: Intergalactic.InternalTypings.InferChildComponentProps<NSFeedbackFormSliderRating.Star.Component, typeof SliderRatingRoot, 'Star'>) {
   const SStar = Root;
   return sstyled(props.styles)(
     <SStar
@@ -224,7 +205,7 @@ function Star(props: StarProps) {
 Star.displayName = 'Star';
 
 const SliderRating = createComponent<
-  SliderRatingComponent,
+  NSFeedbackFormSliderRating.Component,
   typeof SliderRatingRoot
 >(SliderRatingRoot, {
   Star,

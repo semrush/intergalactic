@@ -1,8 +1,7 @@
 import { Box, Flex } from '@semcore/base-components';
-import type Button from '@semcore/button';
-import type Checkbox from '@semcore/checkbox';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import CheckM from '@semcore/icon/Check/m';
@@ -20,13 +19,7 @@ import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
 
-import type {
-  FeedbackRatingCheckboxProps,
-  FeedbackRatingItemProps,
-  FeedbackRatingProps,
-  FormConfigItem,
-  FeedbackRatingDefaultProps,
-} from './FeedbackRating.type';
+import type { NSFeedbackFormFeedbackRating } from './FeedbackRating.type';
 import style from '../../style/feedback-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import CheckboxButton from '../checkbox-button/CheckboxButton';
@@ -39,19 +32,19 @@ type State = {
 };
 
 class FeedbackRatingRoot extends Component<
-  FeedbackRatingProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSFeedbackFormFeedbackRating.Component>,
   typeof FeedbackRatingRoot.enhance,
   {},
-  {},
+  WithI18nEnhanceProps,
   State,
-  FeedbackRatingDefaultProps
+  NSFeedbackFormFeedbackRating.DefaultProps
 > {
   static displayName = 'FeedbackRatingForm';
   static style = style;
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
-  static defaultProps: FeedbackRatingDefaultProps = {
+  static defaultProps: NSFeedbackFormFeedbackRating.DefaultProps = {
     onSubmit: () => {},
     i18n: localizedMessages,
     locale: 'en',
@@ -122,7 +115,7 @@ class FeedbackRatingRoot extends Component<
       fn(e);
     };
 
-  componentDidUpdate(prevProps: Readonly<FeedbackRatingProps>) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const { status, getI18nText } = this.asProps;
 
     if (prevProps.status !== status) {
@@ -144,7 +137,7 @@ class FeedbackRatingRoot extends Component<
     }
   }
 
-  renderCheckbox = (config: FormConfigItem, index: number) => {
+  renderCheckbox = (config: NSFeedbackFormFeedbackRating.FormConfigItem, index: number) => {
     const initialValue = this.props.initialValues[config.key];
 
     return (
@@ -154,7 +147,7 @@ class FeedbackRatingRoot extends Component<
             {...input}
             id={config.key}
             label={config.label}
-            onChange={(_checked, e) => input.onChange(e)}
+            onChange={(_: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => input.onChange(e)}
             focused={index === 0}
           />
         )}
@@ -162,7 +155,7 @@ class FeedbackRatingRoot extends Component<
     );
   };
 
-  renderTextField = (config: FormConfigItem) => {
+  renderTextField = (config: NSFeedbackFormFeedbackRating.FormConfigItem) => {
     const initialValue = this.props.initialValues[config.key];
 
     const label =
@@ -369,8 +362,6 @@ class FeedbackRatingRoot extends Component<
                         </SemcoreNotice.Label>
                         <SemcoreNotice.Content>
                           {getI18nText('errorMessage', {
-                            // todo: Brauer Ilia - think how to fix type
-                            // @ts-ignore
                             email: (
                               <Link href={`mailto:${errorFeedbackEmail}`}>
                                 {errorFeedbackEmail}
@@ -401,7 +392,9 @@ class FeedbackRatingRoot extends Component<
   }
 }
 
-function Header(props: any) {
+function Header(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSFeedbackFormFeedbackRating.Header.Component, typeof FeedbackRatingRoot, 'Header'>,
+) {
   const { styles } = props;
   const SHeader = Root;
   return sstyled(styles)(
@@ -409,21 +402,13 @@ function Header(props: any) {
   );
 }
 
-type FeedbackRatingComponent = Intergalactic.Component<'form', FeedbackRatingProps, {}, typeof FeedbackRatingRoot.enhance> & {
-  validate: typeof FeedbackRatingRoot.validate;
-  Item: Intergalactic.Component<'div', FeedbackRatingItemProps>;
-  Submit: typeof Button;
-  Checkbox: Intergalactic.Component<typeof Checkbox, FeedbackRatingCheckboxProps>;
-  Header: typeof Text;
-};
-
 /**
  * FeedbackRating
  *
  * {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-api#feedbackform-feedbackrating|API} | {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-code/|Examples}
  */
 const FeedbackRating = createComponent<
-  FeedbackRatingComponent,
+  NSFeedbackFormFeedbackRating.Component,
   typeof FeedbackRatingRoot
 >(FeedbackRatingRoot, {
   Header,

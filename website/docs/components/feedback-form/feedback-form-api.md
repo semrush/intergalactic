@@ -12,7 +12,7 @@ import FeedbackForm from '@semcore/ui/feedback-form';
 <FeedbackForm />;
 ```
 
-<TypesView type="FeedbackFormProps" :types={...types} />
+<TypesView type="NSFeedbackForm.Props" :types={...types} />
 
 ## FeedbackForm.Item
 
