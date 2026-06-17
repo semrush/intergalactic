@@ -176,7 +176,9 @@ class AutoSuggestRoot extends Component<
             autoComplete='off'
           />
           {isLoading && (
-            <Input.Addon tag={Spin} size='l' />
+            <Input.Addon>
+              <Spin size={size === 'l' ? 's' : 'xs'} />
+            </Input.Addon>
           )}
         </Select.Trigger>
         <Select.Popper aria-labelledby={id} ref={this.popperRef}>
