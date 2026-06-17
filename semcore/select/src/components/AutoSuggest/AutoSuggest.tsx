@@ -94,15 +94,31 @@ class AutoSuggestRoot extends Component<
     if (!e.key.startsWith('Arrow')) {
       this.setState({ highlightedIndex: -1 });
     }
-    if (e.key === 'Escape' && this.state.isVisible) {
-      this.setState({ openOnChanges: false });
-    }
-    if (e.key === 'ArrowDown' && !this.state.isVisible) {
-      this.setState({ highlightedIndex: 0 });
-    }
-    if (e.key === 'ArrowUp' && !this.state.isVisible) {
-      const { suggestions } = this.state;
-      this.setState({ highlightedIndex: suggestions.length - 1 });
+
+    const { isVisible, suggestions } = this.state;
+
+    if (isVisible) {
+      if (e.key === 'Escape') {
+        this.setState({ openOnChanges: false });
+      }
+    } else {
+      const { value } = this.asProps;
+      const filteredSuggestions = suggestions.filter((s) => {
+        return value !== '' && s.toLowerCase().includes(value.toLowerCase());
+      });
+
+      if (e.key === 'ArrowDown') {
+        this.setState({
+          suggestions: filteredSuggestions,
+          highlightedIndex: 0,
+        });
+      }
+      if (e.key === 'ArrowUp') {
+        this.setState({
+          suggestions: filteredSuggestions,
+          highlightedIndex: filteredSuggestions.length - 1,
+        });
+      }
     }
   };
 
