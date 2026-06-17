@@ -315,12 +315,13 @@ function Text(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSTag.Text.Component, typeof RootTag, 'Text'>,
 ) {
   const SText = Root;
-  const { styles, tagRef } = props;
+  const { styles, tagRef, ellipsis = true } = props;
 
   return sstyled(styles)(
     <>
       <SText
         render={TypographyText}
+        ellipsis={ellipsis}
         hint:triggerRef={tagRef}
       />
     </>,

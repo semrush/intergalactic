@@ -6,9 +6,9 @@ const Demo = () => {
   return (
     <Flex direction='column' gap={4}>
       <Box>
-        <h3>Tag.Text with ellipsis (boolean)</h3>
+        <h3>Tag.Text with ellipsis (default)</h3>
         <Tag w={120} size='m'>
-          <Tag.Text ellipsis>Long tag text that should be truncated</Tag.Text>
+          <Tag.Text>Long tag text that should be truncated</Tag.Text>
         </Tag>
       </Box>
 
@@ -22,9 +22,9 @@ const Demo = () => {
       </Box>
 
       <Box>
-        <h3>Tag.Text without ellipsis (default)</h3>
+        <h3>Tag.Text with manually disabled ellipsis</h3>
         <Tag w={120} size='m'>
-          <Tag.Text>Long tag text that should be truncated</Tag.Text>
+          <Tag.Text ellipsis={false}>Long tag text that should be truncated</Tag.Text>
         </Tag>
       </Box>
 
