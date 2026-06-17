@@ -83,10 +83,11 @@ class RootSidePanel extends Component<
   }
 
   getOverlayProps() {
-    const { visible, duration, disablePreventScroll } = this.asProps;
+    const { visible, duration, animationsDisabled, disablePreventScroll } = this.asProps;
     return {
       visible,
       duration,
+      animationsDisabled,
       disablePreventScroll,
     };
   }
@@ -97,6 +98,7 @@ class RootSidePanel extends Component<
       visible,
       closable,
       duration,
+      animationsDisabled,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
     } = this.asProps;
@@ -109,6 +111,7 @@ class RootSidePanel extends Component<
       'disableEnforceFocus': !this.isUsedOverlay(),
       'onOutsideClick': this.handleOutsideClick,
       'onKeyDown': this.handleSidebarKeyDown,
+      animationsDisabled,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
     };

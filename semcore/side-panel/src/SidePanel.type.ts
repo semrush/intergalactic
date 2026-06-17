@@ -34,6 +34,8 @@ declare namespace NSSidePanel {
        * @default false
        */
       disablePreventScroll?: boolean;
+      /** Disable animation */
+      animationsDisabled?: boolean;
     };
   type DefaultProps = {
     placement: 'right';
