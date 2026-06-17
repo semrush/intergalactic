@@ -1,0 +1,188 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ColorPicker > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Flex",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "ChevronDown",
+        },
+      ],
+      "uiName": "ColorPicker.Trigger",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "ColorPicker.Item",
+            },
+            {
+              "children": [],
+              "uiName": "ColorPicker.Item",
+            },
+          ],
+          "uiName": "ColorPicker.Colors",
+        },
+        {
+          "children": [],
+          "uiName": "Divider",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "Close",
+                        },
+                      ],
+                      "uiName": "Box",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
+                  ],
+                  "uiName": "PaletteManager.Item",
+                },
+              ],
+              "uiName": "PaletteManager.Colors",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "MathPlus",
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Flex",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Box",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "PaletteManager.InputColor",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [],
+                                          "uiName": null,
+                                        },
+                                      ],
+                                      "uiName": "Check",
+                                    },
+                                  ],
+                                  "uiName": "ButtonLink.Addon",
+                                },
+                              ],
+                              "uiName": "Input.Addon.InnerWrapper",
+                            },
+                          ],
+                          "uiName": "Input.Addon",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [],
+                                          "uiName": null,
+                                        },
+                                      ],
+                                      "uiName": "Close",
+                                    },
+                                  ],
+                                  "uiName": "ButtonLink.Addon",
+                                },
+                              ],
+                              "uiName": "Input.Addon.InnerWrapper",
+                            },
+                          ],
+                          "uiName": "Input.Addon",
+                        },
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Input",
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "ColorPicker.Popper",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+  ],
+  "uiName": null,
+}
+`;

@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,26 @@ describe('color-picker Dependency imports', () => {
 
 describe('ColorPicker', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const colorPicker = (
+      <ColorPicker value='#2BB3FF' disablePortal visible>
+        <ColorPicker.Trigger />
+        <ColorPicker.Popper>
+          <ColorPicker.Colors colors={[null, '#2BB3FF']} />
+          <PaletteManager colors={['#8649E1']}>
+            <PaletteManager.Colors />
+            <PaletteManager.InputColor />
+          </PaletteManager>
+        </ColorPicker.Popper>
+      </ColorPicker>
+    );
+
+    const { container } = render(colorPicker);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.concurrent('Verify call onChange once function when click on item color', async () => {
     const value = '#2BB3FF';
