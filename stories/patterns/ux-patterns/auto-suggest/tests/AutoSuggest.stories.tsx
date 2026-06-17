@@ -34,5 +34,15 @@ export const Autosuggest: StoryObj<AutosuggestTestProps> = {
     placeholder: {
       control: 'text',
     },
+    size: {
+      control: { type: 'radio' },
+      options: ['m', 'l'],
+    },
+    readOnly: {
+      control: 'boolean',
+    },
+    statusItemPlaceholder: {
+      control: 'text',
+    },
   },
 };

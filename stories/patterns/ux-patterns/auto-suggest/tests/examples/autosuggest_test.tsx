@@ -34,6 +34,9 @@ export type AutosuggestTestProps = {
   width?: number;
   withPlaceholder?: boolean;
   placeholder?: string;
+  size?: 'm' | 'l';
+  readOnly?: boolean;
+  statusItemPlaceholder?: string;
 };
 
 export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
@@ -44,6 +47,9 @@ export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
   width: 250,
   withPlaceholder: true,
   placeholder: 'Start typing to see options',
+  size: 'm',
+  readOnly: false,
+  statusItemPlaceholder: 'Start typing to see options',
 };
 
 const fakeFetch = async (query: string, signal: AbortSignal, delay: number): Promise<string[]> => {
@@ -77,6 +83,9 @@ const Demo = (props: AutosuggestTestProps) => {
     width,
     withPlaceholder,
     placeholder,
+    size,
+    readOnly,
+    statusItemPlaceholder,
   } = {
     ...autosuggestTestDefaultProps,
     ...props,
@@ -101,12 +110,15 @@ const Demo = (props: AutosuggestTestProps) => {
       </Text>
       <Box mt={2} w={width}>
         <AutoSuggest
-          key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}`}
+          key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}-${size}-${readOnly}`}
           value={query}
           id='autosuggest'
           onChange={setQuery}
           suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
           autoFocus={autoFocus}
+          size={size}
+          readOnly={readOnly}
+          statusItemPlaceholder={statusItemPlaceholder}
           {...placeholderProp}
         />
       </Box>
