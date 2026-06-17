@@ -1,3 +1,4 @@
+import SearchIcon from '@semcore/icon/search/m';
 import { Box } from '@semcore/ui/base-components';
 import { AutoSuggest } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
@@ -63,6 +64,7 @@ const Demo = () => {
           id='async-autosuggest'
           onChange={setQuery1}
           suggestions={fakeFetch}
+          addonLeft={SearchIcon}
         />
       </Box>
       <br />
@@ -76,6 +78,7 @@ const Demo = () => {
           onChange={setQuery2}
           suggestions={suggestions}
           statusItemPlaceholder=''
+          addonRight={SearchIcon}
         />
       </Box>
     </Box>

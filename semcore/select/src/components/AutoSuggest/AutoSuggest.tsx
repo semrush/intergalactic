@@ -149,13 +149,31 @@ class AutoSuggestRoot extends Component<
   };
 
   render() {
-    const { value, uid, getI18nText, statusItemPlaceholder, size } = this.asProps;
+    const {
+      value,
+      uid,
+      getI18nText,
+      statusItemPlaceholder,
+      size,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+    } = this.asProps;
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
     const id = `${uid}_autosuggest-trigger`;
 
     const isVisiblePopper = isVisible &&
       (value === '' || suggestions.length > 0 || isLoading) &&
       !(value === '' && suggestions.length === 0 && statusItemPlaceholder === '');
+
+    let neigborLocation = undefined;
+
+    if (AddonLeft && AddonRight) {
+      neigborLocation = 'both';
+    } else if (AddonLeft) {
+      neigborLocation = 'left';
+    } else if (AddonRight) {
+      neigborLocation = 'right';
+    }
 
     return (
       <Select
@@ -167,7 +185,15 @@ class AutoSuggestRoot extends Component<
         size={size}
       >
         <Select.Trigger id={id} tag={Input} onFocus={this.handleFocus} onBlur={this.handleBlur}>
+          {AddonLeft
+            ? (
+                <Input.Addon>
+                  <AddonLeft />
+                </Input.Addon>
+              )
+            : null}
           <Root
+            neighborLocation={neigborLocation}
             render={Input.Value}
             value={value}
             role='combobox'
@@ -175,6 +201,13 @@ class AutoSuggestRoot extends Component<
             onKeyDown={this.handleKeyDown}
             autoComplete='off'
           />
+          {AddonRight
+            ? (
+                <Input.Addon>
+                  <AddonRight />
+                </Input.Addon>
+              )
+            : null}
           {isLoading && (
             <Input.Addon>
               <Spin size={size === 'l' ? 's' : 'xs'} />
