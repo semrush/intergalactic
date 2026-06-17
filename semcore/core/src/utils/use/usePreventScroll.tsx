@@ -37,7 +37,7 @@ const lockedBodyStyles = {
   boxSizing: '',
 };
 
-const overflowValuesToSkip = ['clip', 'hidden'];
+const overflowValuesToSkip = new Set<string>(['clip', 'hidden']);
 export default function usePreventScroll(visible = true, disabled = false) {
   const scrollbarWidth = React.useMemo(getScrollbarWidth, [getScrollbarWidth]);
   const id = useUID('scroll-preventer-');
@@ -54,7 +54,7 @@ export default function usePreventScroll(visible = true, disabled = false) {
     lockedBodyStyles.overflow = document.body.style.overflow;
     lockedBodyStyles.boxSizing = document.body.style.boxSizing;
 
-    if (overflowValuesToSkip.includes(overflow)) return;
+    if (overflowValuesToSkip.has(overflow)) return;
 
     const intPaddingRight = getIntValueFromCss(paddingRight);
     let intPaddingRightFromStyle = getIntValueFromCss(document.body.style.paddingRight);
