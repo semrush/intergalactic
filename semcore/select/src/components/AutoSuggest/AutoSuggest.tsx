@@ -95,6 +95,7 @@ class AutoSuggestRoot extends Component<
       this.setState({ highlightedIndex: -1 });
     }
 
+    const { value } = this.asProps;
     const { isVisible, suggestions } = this.state;
 
     if (isVisible) {
@@ -102,7 +103,6 @@ class AutoSuggestRoot extends Component<
         this.setState({ openOnChanges: false });
       }
     } else {
-      const { value } = this.asProps;
       const filteredSuggestions = suggestions.filter((s) => {
         return value !== '' && s.toLowerCase().includes(value.toLowerCase());
       });
@@ -153,7 +153,9 @@ class AutoSuggestRoot extends Component<
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
     const id = `${uid}_autosuggest-trigger`;
 
-    const isVisiblePopper = isVisible && (value === '' || suggestions.length > 0 || isLoading);
+    const isVisiblePopper = isVisible &&
+      (value === '' || suggestions.length > 0 || isLoading) &&
+      !(value === '' && suggestions.length === 0 && statusItemPlaceholder === '');
 
     return (
       <Select
@@ -182,7 +184,7 @@ class AutoSuggestRoot extends Component<
             : (
                 <>
                   {suggestions.length === 0
-                    ? (value.length === 0 && statusItemPlaceholder !== '' && (
+                    ? (value === '' && statusItemPlaceholder !== '' && (
                         <Select.StatusItem itemsCount={0}>
                           {statusItemPlaceholder ?? getI18nText('AutoSuggest.Popper.placeholderText')}
                         </Select.StatusItem>
