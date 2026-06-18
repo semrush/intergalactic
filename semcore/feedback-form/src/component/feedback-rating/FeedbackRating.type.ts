@@ -83,7 +83,13 @@ declare namespace NSFeedbackFormFeedbackRating {
     type Component = typeof Text;
   }
 
+  type Validate = {
+    description: (error: string | Error) => (value?: string) => string | Error | undefined;
+    email: (error: string | Error) => (value?: string) => string | Error | undefined;
+  };
+
   type Component = Intergalactic.Component<'form', Props> & {
+    validate: Validate;
     Item: Item.Component;
     Submit: Submit.Component;
     Checkbox: Checkbox.Component;
