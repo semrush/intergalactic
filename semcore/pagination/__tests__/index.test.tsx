@@ -359,4 +359,45 @@ describe('Pagination.PageInput.Value', () => {
     await userEvent.click(TotalPages);
     expect(InputValue.value).toBe('100');
   });
+
+  test('Verify pressing Enter without changing the value does not call onCurrentPageChange (dirtyCurrentPage undefined guard)', async () => {
+    const spy = vi.fn();
+    const CURRENT_PAGE = 5;
+    const { getByTestId } = render(
+      <Pagination currentPage={CURRENT_PAGE} totalPages={100} onCurrentPageChange={spy}>
+        <Pagination.PageInput>
+          <Pagination.PageInput.Value data-testid='value' />
+        </Pagination.PageInput>
+      </Pagination>,
+    );
+
+    const input = getByTestId('value') as HTMLInputElement;
+
+    input.focus();
+    await userEvent.keyboard('[Enter]');
+
+    expect(spy).not.toHaveBeenCalled();
+    expect(input.value).toBe(CURRENT_PAGE.toString());
+  });
+
+  test('Verify clearing input and blur resets to currentPage without crashing', async () => {
+    const spy = vi.fn();
+    const CURRENT_PAGE = 5;
+    const { getByTestId } = render(
+      <Pagination currentPage={CURRENT_PAGE} totalPages={100} onCurrentPageChange={spy}>
+        <Pagination.PageInput>
+          <Pagination.PageInput.Value data-testid='value' />
+        </Pagination.PageInput>
+      </Pagination>,
+    );
+
+    const input = getByTestId('value') as HTMLInputElement;
+
+    await userEvent.clear(input);
+    await userEvent.keyboard('[Tab]');
+
+    // Blur never reports a page change; value is restored to currentPage
+    expect(spy).not.toHaveBeenCalled();
+    expect(input.value).toBe(CURRENT_PAGE.toString());
+  });
 });
