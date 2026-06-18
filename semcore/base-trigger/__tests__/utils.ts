@@ -51,11 +51,11 @@ export const expectVisibleHintsCount = async (page: Page, count: number): Promis
 
 // Matches the CSS fallback colors after the test bundle normalizes them.
 const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-bg-primary-neutral': 'rgb(255, 255, 255)',
-  '--intergalactic-border-primary': 'rgba(0, 12, 8, 0.161)',
-  '--intergalactic-border-info-active': 'rgb(135, 150, 239)',
-  '--intergalactic-border-success-active': 'rgb(0, 185, 145)',
-  '--intergalactic-border-critical-active': 'rgb(255, 99, 100)',
+  '--intergalactic-bg-primary-neutral': 'oklch(1 0 0)',
+  '--intergalactic-border-primary': 'oklch(0.137 0.026 175.7 / 0.161)',
+  '--intergalactic-border-info-active': 'oklch(0.7 0.131 275.2)',
+  '--intergalactic-border-success-active': 'oklch(0.7 0.166 170)',
+  '--intergalactic-border-critical-active': 'oklch(0.7 0.21 23)',
 };
 
 export const getCssVarColor = async (page: Page, varName: string) => {
