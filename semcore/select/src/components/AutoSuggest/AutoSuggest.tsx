@@ -161,18 +161,20 @@ class AutoSuggestRoot extends Component<
     const { isVisible, highlightedIndex, suggestions, isLoading } = this.state;
     const id = `${uid}_autosuggest-trigger`;
 
+    const startTypingState = value === '' && suggestions.length === 0 && statusItemPlaceholder !== '';
+
     const isVisiblePopper = isVisible &&
       (value === '' || suggestions.length > 0 || isLoading) &&
       !(value === '' && suggestions.length === 0 && statusItemPlaceholder === '');
 
-    let neigborLocation = undefined;
+    let neighborLocation = undefined;
 
     if (AddonLeft && AddonRight) {
-      neigborLocation = 'both';
+      neighborLocation = 'both';
     } else if (AddonLeft) {
-      neigborLocation = 'left';
+      neighborLocation = 'left';
     } else if (AddonRight) {
-      neigborLocation = 'right';
+      neighborLocation = 'right';
     }
 
     return (
@@ -184,7 +186,14 @@ class AutoSuggestRoot extends Component<
         onHighlightedIndexChange={this.handleChangeHighlightedIndex}
         size={size}
       >
-        <Select.Trigger id={id} tag={Input} onFocus={this.handleFocus} onBlur={this.handleBlur}>
+        <Select.Trigger
+          id={id}
+          tag={Input}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          aria-haspopup='listbox'
+          aria-expanded={isVisible && !isLoading && !startTypingState ? 'true' : 'false'}
+        >
           {AddonLeft
             ? (
                 <Input.Addon>
@@ -193,7 +202,7 @@ class AutoSuggestRoot extends Component<
               )
             : null}
           <Root
-            neighborLocation={neigborLocation}
+            neighborLocation={neighborLocation}
             render={Input.Value}
             value={value}
             role='combobox'
@@ -219,12 +228,12 @@ class AutoSuggestRoot extends Component<
             ? (<Select.StatusItem state='loading' itemsCount={0} />)
             : (
                 <>
-                  {suggestions.length === 0
-                    ? (value === '' && statusItemPlaceholder !== '' && (
+                  {startTypingState
+                    ? (
                         <Select.StatusItem itemsCount={0}>
                           {statusItemPlaceholder ?? getI18nText('AutoSuggest.Popper.placeholderText')}
                         </Select.StatusItem>
-                      ))
+                      )
                     : (
                         <Select.List>
                           {suggestions.map((option) => (

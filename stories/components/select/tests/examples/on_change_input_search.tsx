@@ -39,7 +39,6 @@ const Demo = ({ state = 'default', customChildren, size = 'm' }: OnChangeInputSe
           <Select.InputSearch
             value={filter}
             onChange={setFilter}
-            aria-describedby={filter ? 'search-result' : undefined}
           />
           <Select.List hMax='224px'>
             {state === 'default' &&
@@ -49,7 +48,7 @@ const Demo = ({ state = 'default', customChildren, size = 'm' }: OnChangeInputSe
                 </Select.Option>
               ))}
 
-            <Select.StatusItem itemsCount={options.length} state={state} id='search-result'>
+            <Select.StatusItem itemsCount={options.length} state={state}>
               {customChildren || undefined}
             </Select.StatusItem>
           </Select.List>

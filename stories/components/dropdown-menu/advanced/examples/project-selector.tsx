@@ -111,7 +111,6 @@ const Demo = (props: ProjectSelectorProps) => {
           onChange={setSearchValue}
           m={1}
           autoFocus={false}
-          aria-describedby={searchValue ? 'search-result' : undefined}
         />
 
         {filteredProjects.length > 0 && (
@@ -129,7 +128,7 @@ const Demo = (props: ProjectSelectorProps) => {
             }}
           />
         )}
-        <DropdownMenu.StatusItem itemsCount={filteredProjects.length} id='search-result' />
+        <DropdownMenu.StatusItem itemsCount={filteredProjects.length} />
         <Divider />
         <DropdownMenu.Item
           role='button'

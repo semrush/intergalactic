@@ -195,14 +195,11 @@ const Demo = () => {
           <InputSearch
             value={search}
             onChange={setSearch}
-            aria-describedby={search ? 'search-result' : undefined}
           />
           {loading && (<Select.StatusItem itemsCount={0} state='loading' />)}
           {!loading && error && (
-            <Select.StatusItem itemsCount={0} state='error' id='search-result' tag={Flex} direction='column' alignItems='start' gap={1}>
-              <span aria-live='polite' role='status'>
-                {message}
-              </span>
+            <Select.StatusItem itemsCount={0} state='error' tag={Flex} direction='column' alignItems='start' gap={1}>
+              {message}
               <ButtonLink addonLeft={ReloadIcon} onClick={handleReloadClick}>
                 Reload
               </ButtonLink>
