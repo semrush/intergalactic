@@ -64,7 +64,6 @@ const Demo = () => {
           id='async-autosuggest'
           onChange={setQuery1}
           suggestions={fakeFetch}
-          addonLeft={SearchIcon}
         />
       </Box>
       <br />
@@ -78,7 +77,6 @@ const Demo = () => {
           onChange={setQuery2}
           suggestions={suggestions}
           statusItemPlaceholder=''
-          addonRight={SearchIcon}
         />
       </Box>
     </Box>

@@ -44,5 +44,17 @@ export const Autosuggest: StoryObj<AutosuggestTestProps> = {
     statusItemPlaceholder: {
       control: 'text',
     },
+    addonLeft: {
+      control: { type: 'select' },
+      options: ['none', 'icon', 'badge', 'tag'],
+    },
+    addonRight: {
+      control: { type: 'select' },
+      options: ['none', 'icon', 'badge', 'tag'],
+    },
+    button: {
+      control: { type: 'radio' },
+      options: ['none', 'left', 'right', 'both'],
+    },
   },
 };
