@@ -219,10 +219,6 @@ const [[width, height], setSize] = React.useState([0, 0]);
 </ResponsiveContainer>
 ```
 
-::: tip
-`ResponsiveContainer` and high-level charts both support the `aspect` property — the ratio between width and height.
-:::
-
 ::: sandbox
 
 <script lang="tsx">
