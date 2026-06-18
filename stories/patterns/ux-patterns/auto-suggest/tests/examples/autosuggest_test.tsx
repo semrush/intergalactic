@@ -1,7 +1,27 @@
-import { Box } from '@semcore/ui/base-components';
+import SearchL from '@semcore/icon/Search/l';
+import SearchM from '@semcore/icon/Search/m';
+import Badge from '@semcore/ui/badge';
+import { Box, Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
 import { AutoSuggest } from '@semcore/ui/select';
+import Tag from '@semcore/ui/tag';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
+
+type AddonType = 'none' | 'icon' | 'badge' | 'tag';
+
+const buildAddon = (type: AddonType, size: 'm' | 'l'): React.ElementType | undefined => {
+  if (type === 'icon') {
+    return size === 'l' ? SearchL : SearchM;
+  }
+  if (type === 'badge') {
+    return () => <Badge type='new' />;
+  }
+  if (type === 'tag') {
+    return () => <Tag size={size === 'l' ? 'l' : 'm'}>Tag</Tag>;
+  }
+  return undefined;
+};
 
 const suggestions = [
   'Persian',
@@ -37,6 +57,9 @@ export type AutosuggestTestProps = {
   size?: 'm' | 'l';
   readOnly?: boolean;
   statusItemPlaceholder?: string;
+  addonLeft?: AddonType;
+  addonRight?: AddonType;
+  button?: 'none' | 'left' | 'right' | 'both';
 };
 
 export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
@@ -50,6 +73,9 @@ export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
   size: 'm',
   readOnly: false,
   statusItemPlaceholder: 'Start typing to see options',
+  addonLeft: 'none',
+  addonRight: 'none',
+  button: 'none',
 };
 
 const fakeFetch = async (query: string, signal: AbortSignal, delay: number): Promise<string[]> => {
@@ -86,6 +112,9 @@ const Demo = (props: AutosuggestTestProps) => {
     size,
     readOnly,
     statusItemPlaceholder,
+    addonLeft,
+    addonRight,
+    button,
   } = {
     ...autosuggestTestDefaultProps,
     ...props,
@@ -101,27 +130,68 @@ const Demo = (props: AutosuggestTestProps) => {
     [asyncDelay],
   );
 
+  // Memoized so the addon component identity is stable across keystrokes and only
+  // changes when the addon type or input size changes.
+  const addonLeftComponent = React.useMemo(() => buildAddon(addonLeft, size), [addonLeft, size]);
+  const addonRightComponent = React.useMemo(() => buildAddon(addonRight, size), [addonRight, size]);
+
   const placeholderProp = withPlaceholder ? { placeholder } : {};
+
+  let autoSuggestNeighbor: 'left' | 'right' | 'both' | undefined;
+  if (button === 'left') {
+    autoSuggestNeighbor = 'left';
+  } else if (button === 'right') {
+    autoSuggestNeighbor = 'right';
+  } else if (button === 'both') {
+    autoSuggestNeighbor = 'both';
+  }
+
+  const autoSuggestEl = (
+    <AutoSuggest
+      key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}-${size}-${readOnly}-${addonLeft}-${addonRight}-${button}`}
+      value={query}
+      id='autosuggest'
+      onChange={setQuery}
+      suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
+      autoFocus={autoFocus}
+      size={size}
+      readOnly={readOnly}
+      statusItemPlaceholder={statusItemPlaceholder}
+      addonLeft={addonLeftComponent}
+      addonRight={addonRightComponent}
+      neighborLocation={autoSuggestNeighbor}
+      {...placeholderProp}
+    />
+  );
 
   return (
     <>
       <Text tag='label' size={200} htmlFor='autosuggest'>
         Your pet breed
       </Text>
-      <Box mt={2} w={width}>
-        <AutoSuggest
-          key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}-${size}-${readOnly}`}
-          value={query}
-          id='autosuggest'
-          onChange={setQuery}
-          suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
-          autoFocus={autoFocus}
-          size={size}
-          readOnly={readOnly}
-          statusItemPlaceholder={statusItemPlaceholder}
-          {...placeholderProp}
-        />
-      </Box>
+      {button === 'none'
+        ? (
+            <Box mt={2} w={width}>
+              {autoSuggestEl}
+            </Box>
+          )
+        : (
+            <Flex mt={2} w={width}>
+              {(button === 'left' || button === 'both') && (
+                <Button size={size} neighborLocation='right'>
+                  Go
+                </Button>
+              )}
+              <Box flex={1} wMin={0}>
+                {autoSuggestEl}
+              </Box>
+              {(button === 'right' || button === 'both') && (
+                <Button size={size} neighborLocation='left'>
+                  Go
+                </Button>
+              )}
+            </Flex>
+          )}
     </>
   );
 };
