@@ -140,8 +140,8 @@ const preview: Preview = {
   decorators: [
     withStrictMode,
     withTheme,
-    withLayout,
     withPortalProvider,
+    withLayout,
   ],
 };
 
