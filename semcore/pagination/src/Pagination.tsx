@@ -344,7 +344,7 @@ class TotalPages extends Component<
           : (
               <STotalPages
                 render={ButtonLink}
-                size={textSize}
+                use:size={textSize}
                 aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
               />
             )}
