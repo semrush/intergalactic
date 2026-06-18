@@ -2,6 +2,8 @@ import { PortalProvider } from '@semcore/base-components';
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 
+import '@semcore/theme/light.css';
+
 type PreviewDecorator = NonNullable<Preview['decorators']>[number];
 
 type StorybookStory = Parameters<PreviewDecorator>[0];
@@ -50,18 +52,21 @@ const withTheme = (
   Story: StorybookStory,
   params: StorybookDecoratorParams,
 ) => {
-  const stylesheet = params.globals.theme === 'new'
-    ? 'assets/theme/light.css'
-    : 'assets/core/light.css';
+  if (import.meta.hot) {
+    import.meta.hot.on('css-variables-update', (data) => {
+      let styleTag = document.querySelector(`[data-vite-dev-id="${data.file}"]`);
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.setAttribute('data-vite-dev-id', data.file);
+        document.head.appendChild(styleTag);
+      }
 
-  const stylesheetHighlight = params.globals.theme === 'new'
-    ? 'assets/theme/highlights-light.css'
-    : 'assets/core/highlights-light.css';
+      styleTag.innerHTML = data.css;
+    });
+  }
 
   return (
     <>
-      <link rel='stylesheet' href={stylesheet} />
-      <link rel='stylesheet' href={stylesheetHighlight} />
       <Story />
     </>
   );
@@ -109,26 +114,6 @@ const preview: Preview = {
     },
   },
   globalTypes: {
-    theme: {
-      description: 'Theme',
-      toolbar: {
-        title: 'Theme',
-        icon: 'mirror',
-        items: [
-          {
-            value: 'old',
-            icon: 'circle',
-            title: 'Old theme',
-          },
-          {
-            value: 'new',
-            icon: 'circle',
-            title: 'New theme',
-          },
-        ],
-        dynamicTitle: true,
-      },
-    },
     strictMode: {
       description: 'React StrictMode',
       toolbar: {
@@ -150,14 +135,13 @@ const preview: Preview = {
   },
 
   initialGlobals: {
-    theme: 'new',
     strictMode: 'off',
   },
   decorators: [
     withStrictMode,
     withTheme,
-    withLayout,
     withPortalProvider,
+    withLayout,
   ],
 };
 

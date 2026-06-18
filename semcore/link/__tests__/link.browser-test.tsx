@@ -23,8 +23,8 @@ const storyPath = 'stories/components/link/tests/examples/basic_usage.tsx';
 
 // Matches the CSS fallback colors after the test bundle normalizes them.
 const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-text-link': 'rgb(35, 95, 226)',
-  '--intergalactic-text-link-hover-active': 'rgb(33, 89, 215)',
+  '--intergalactic-text-link': 'oklch(0.53 0.21 263)',
+  '--intergalactic-text-link-hover-active': 'oklch(0.51 0.202 263)',
 };
 
 const getCssVarColor = async (page: Page, varName: string) => {

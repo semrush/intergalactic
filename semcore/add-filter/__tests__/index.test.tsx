@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, waitFor, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -20,6 +21,49 @@ describe('AddFilter', (test) => {
       disconnect: () => null,
     });
     window.IntersectionObserver = mockIntersectionObserver;
+  });
+
+  test('Verify data-ui-name', () => {
+    const addFilter = (
+      <AddFilter
+        filterData={{ name: 'John', color: 'blue', keywords: 'growth' }}
+        visibleFilters={['name', 'color', 'keywords']}
+        onClearAll={() => {}}
+      >
+        <AddFilter.Input name='name' displayName='Name'>
+          <AddFilter.Input.Value />
+        </AddFilter.Input>
+
+        <AddFilter.Select
+          name='color'
+          disablePortal
+          visible
+        >
+          <AddFilter.Select.Trigger aria-label='Color' placeholder='Color' />
+          <AddFilter.Select.Menu>
+            <AddFilter.Select.Option value='blue'>Blue</AddFilter.Select.Option>
+          </AddFilter.Select.Menu>
+        </AddFilter.Select>
+
+        <AddFilter.Dropdown
+          name='keywords'
+          disablePortal
+          visible
+        >
+          <AddFilter.Dropdown.Trigger placeholder='Keywords' onClear={() => {}}>
+            Keywords
+          </AddFilter.Dropdown.Trigger>
+          <AddFilter.Dropdown.Popper aria-label='Keywords'>
+            Dropdown content
+          </AddFilter.Dropdown.Popper>
+        </AddFilter.Dropdown>
+      </AddFilter>
+    );
+
+    const { container } = render(addFilter);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
   });
 
   test('should render two menuitems in dropdown with displayName as text', async () => {

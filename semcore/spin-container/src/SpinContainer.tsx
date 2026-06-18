@@ -1,28 +1,43 @@
 import { FadeInOut, Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import Spin from '@semcore/spin';
 import React from 'react';
 
+import type { NSSpinContainer } from './SpinContainer.type';
 import style from './style/spin-container.shadow.css';
 
-class SpinContainerRoot extends Component {
+type State = {
+  inert?: boolean;
+};
+
+class SpinContainerRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSpinContainer.Component>,
+  typeof SpinContainerRoot.enhance,
+  {},
+  {},
+  State,
+  NSSpinContainer.DefaultProps
+> {
   static displayName = 'SpinContainer';
   static style = style;
   static defaultProps = {
     size: 'xxl',
     theme: 'dark',
     duration: 200,
-  };
+  } as const;
 
-  static enhance = [resolveColorEnhance()];
+  static enhance = [resolveColorEnhance()] as const;
 
-  state = {
+  state: State = {
     inert: this.props.loading,
   };
 
-  componentDidUpdate(prevProps) {
+  private inertTimer: ReturnType<typeof setTimeout> | null = null;
+
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const { loading } = this.props;
     if (prevProps.loading !== loading) {
       if (this.inertTimer) {
@@ -85,8 +100,10 @@ class SpinContainerRoot extends Component {
   }
 }
 
-class Overlay extends Component {
-  static defaultProps = ({ size, theme }) => ({
+type OverlayProps = Intergalactic.InternalTypings.InferChildComponentProps<NSSpinContainer.Overlay.Component, typeof SpinContainerRoot, 'Overlay'>;
+
+class Overlay extends Component<OverlayProps> {
+  static defaultProps = ({ size, theme }: OverlayProps) => ({
     children: <Spin size={size} theme={theme} />,
   });
 
@@ -103,7 +120,7 @@ class Overlay extends Component {
   }
 }
 
-function Content(props) {
+function Content(props: Intergalactic.InternalTypings.InferComponentProps<NSSpinContainer.Content.Component>) {
   const SContent = Root;
   const { styles } = props;
   return sstyled(styles)(<SContent render={Box} />);
@@ -114,7 +131,10 @@ function Content(props) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/spin-container/spin-container-api/|API} | {@link https://developer.semrush.com/intergalactic/components/spin-container/spin-container-code/|Examples}
  */
-const SpinContainer = createComponent(SpinContainerRoot, {
+const SpinContainer = createComponent<
+  NSSpinContainer.Component,
+  typeof SpinContainerRoot
+>(SpinContainerRoot, {
   Overlay,
   Content,
 });
