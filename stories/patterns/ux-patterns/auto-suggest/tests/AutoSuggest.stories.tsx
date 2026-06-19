@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AutosuggestCompositionExample, {
+  autosuggestCompositionDefaultProps,
+} from './examples/autosuggest_composition';
+import type { AutosuggestCompositionProps } from './examples/autosuggest_composition';
 import AutosuggestTestExample, { autosuggestTestDefaultProps } from './examples/autosuggest_test';
 import type { AutosuggestTestProps } from './examples/autosuggest_test';
 
@@ -55,6 +59,53 @@ export const Autosuggest: StoryObj<AutosuggestTestProps> = {
     button: {
       control: { type: 'radio' },
       options: ['none', 'left', 'right', 'both'],
+    },
+  },
+};
+
+export const Composition: StoryObj<AutosuggestCompositionProps> = {
+  render: AutosuggestCompositionExample,
+  args: autosuggestCompositionDefaultProps,
+  argTypes: {
+    suggestionsSource: {
+      control: { type: 'radio' },
+      options: ['sync', 'async'],
+    },
+    asyncDelay: {
+      control: { type: 'number', min: 0, step: 100 },
+    },
+    size: {
+      control: { type: 'radio' },
+      options: ['m', 'l'],
+    },
+    width: {
+      control: { type: 'number', min: 160, step: 20 },
+    },
+    popperWidth: {
+      control: { type: 'number', min: 0, step: 20 },
+    },
+    popperMaxHeight: {
+      control: { type: 'number', min: 0, step: 20 },
+    },
+    statusItemPlaceholder: {
+      control: 'text',
+    },
+    addonLeft: {
+      control: { type: 'select' },
+      options: ['none', 'icon', 'badge', 'tag'],
+    },
+    addonRight: {
+      control: { type: 'select' },
+      options: ['none', 'icon', 'badge', 'tag'],
+    },
+    customStartTyping: {
+      control: 'boolean',
+    },
+    customLoadingState: {
+      control: 'boolean',
+    },
+    customSuggestionItem: {
+      control: 'boolean',
     },
   },
 };
