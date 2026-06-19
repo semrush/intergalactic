@@ -185,11 +185,11 @@ Or keep a fixed aspect ratio:
 
 ```jsx
 <Chart.Area
-  hMin={200} 
-  aspect={16 / 9} 
-  groupKey="time" 
-  data={data} 
-  aria-label="Area chart" 
+  hMin={200}
+  aspect={16 / 9}
+  groupKey="time"
+  data={data}
+  aria-label="Area chart"
 />
 ```
 
