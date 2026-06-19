@@ -124,7 +124,7 @@ class AutoSuggestRoot extends Component<
   }
 
   getTriggerValueProps(): NSAutoSuggest.Trigger.Value.InnerProps {
-    const { value, forwardRef, ...props } = this.asProps;
+    const { value, forwardRef, autoComplete, role, onChange, ref, ...props } = this.asProps;
 
     return {
       neighborLocation: this.neighborLocation,

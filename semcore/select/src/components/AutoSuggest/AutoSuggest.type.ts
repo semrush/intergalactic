@@ -72,6 +72,7 @@ declare namespace NSAutoSuggest {
         onChange: (value: string) => void;
         onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
         autoComplete: 'off';
+        ref?: React.RefObject<any>;
       };
 
       type Component = Intergalactic.Component<typeof Input.Value, Props>;
