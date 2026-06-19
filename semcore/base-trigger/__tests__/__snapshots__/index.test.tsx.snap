@@ -1,0 +1,167 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseTrigger > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "BaseTrigger.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "BaseTrigger.Text",
+            },
+          ],
+          "uiName": "BaseTrigger.InnerTriggerWrapper",
+        },
+      ],
+      "uiName": "BaseTrigger",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`ButtonTrigger > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "ButtonTrigger.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "ButtonTrigger.Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronDown",
+                },
+              ],
+              "uiName": "ButtonTrigger.Addon",
+            },
+          ],
+          "uiName": "ButtonTrigger.InnerTriggerWrapper",
+        },
+      ],
+      "uiName": "ButtonTrigger",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`FilterTrigger > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "FilterTrigger.Text",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Box",
+                        },
+                      ],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "FilterTrigger.Counter",
+                },
+              ],
+              "uiName": "FilterTrigger.TriggerButton.InnerTriggerWrapper",
+            },
+          ],
+          "uiName": "FilterTrigger.TriggerButton",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "FilterTrigger.Addon",
+                },
+              ],
+              "uiName": "FilterTrigger.ClearButton.InnerTriggerWrapper",
+            },
+          ],
+          "uiName": "FilterTrigger.ClearButton",
+        },
+      ],
+      "uiName": "FilterTrigger",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`LinkTrigger > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "LinkTrigger.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "LinkTrigger.Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronDown",
+                },
+              ],
+              "uiName": "LinkTrigger.Addon",
+            },
+          ],
+          "uiName": "LinkTrigger.InnerWrapper",
+        },
+      ],
+      "uiName": "LinkTrigger",
+    },
+  ],
+  "uiName": null,
+}
+`;

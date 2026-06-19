@@ -67,10 +67,7 @@ function StylesPlugin({ types: t }, opts) {
 
     const { raw } = tag.quasi.quasis[0].value;
 
-    const { css, messages } = postcss(optionsPostcss).process(raw, {
-      from,
-      // to:
-    });
+    const { css, messages } = postcss(optionsPostcss).process(raw, { from });
     const { tokens, hash } = messages.find((m) => m.plugin === 'postcss-shadow-styles');
 
     const wrapBundlerComments = (node) => {
@@ -157,6 +154,9 @@ function StylesPlugin({ types: t }, opts) {
 
   return {
     inherits: syntaxJsx,
+    pre(file) {
+      file.metadata.styleDependencies = new Set();
+    },
     visitor: {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
@@ -184,7 +184,8 @@ function StylesPlugin({ types: t }, opts) {
           specifiers.forEach((specifier) => {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
-              importProcessing(p, specifier.local.name, cssPath);
+              importProcessing(p, specifier.local.name, cssPath, state);
+              state.file.metadata.styleDependencies.add(source.value);
               p.addComment('leading', `!__reshadow-styles__:"${source.value}"`);
             }
           });

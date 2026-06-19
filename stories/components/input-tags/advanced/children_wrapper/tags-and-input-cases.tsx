@@ -1,4 +1,4 @@
-import { Box } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import InputTags from '@semcore/ui/input-tags';
 import Notice from '@semcore/ui/notice';
 import { Text, List } from '@semcore/ui/typography';
@@ -88,7 +88,7 @@ const Demo = () => {
   };
 
   return (
-    <>
+    <Flex direction='column'>
       <Notice mb={2} theme='success'>
         <Notice.Content>
           <Text size={200} mb={2}>
@@ -187,7 +187,7 @@ const Demo = () => {
           </InputTags>
         </Notice.Content>
       </Notice>
-    </>
+    </Flex>
   );
 };
 

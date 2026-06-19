@@ -9,19 +9,9 @@ describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
 });
 
-HTMLElement.prototype.scrollIntoView = () => { };
-
 describe('Select Trigger', () => {
   beforeEach(() => {
     cleanup();
-
-    const mockIntersectionObserver = vi.fn();
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    });
-    window.IntersectionObserver = mockIntersectionObserver;
   });
 
   test.concurrent(
