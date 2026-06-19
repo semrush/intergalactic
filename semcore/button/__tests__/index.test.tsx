@@ -1,10 +1,11 @@
 import Link from '@semcore/link';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { beforeEach, expect, test, describe, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import Button, { } from '../src';
+import Button, { ButtonLink } from '../src';
 
 describe('Button Dependency imports', () => {
   runDependencyCheckTests('button');
@@ -12,6 +13,20 @@ describe('Button Dependency imports', () => {
 
 describe('Button', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const button = (
+      <Button>
+        <Button.Addon />
+        <Button.Text />
+      </Button>
+    );
+
+    const { container } = render(button);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify supports user click handler', async () => {
     const spy = vi.fn();
@@ -71,5 +86,23 @@ describe('Button', () => {
     const buttonElement = queryByTestId('busy-button');
 
     expect((buttonElement?.attributes as any)['aria-busy'].value).toBe('true');
+  });
+});
+
+describe('ButtonLink', () => {
+  beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const buttonLink = (
+      <ButtonLink>
+        <ButtonLink.Addon />
+        <ButtonLink.Text />
+      </ButtonLink>
+    );
+
+    const { container } = render(buttonLink);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
   });
 });

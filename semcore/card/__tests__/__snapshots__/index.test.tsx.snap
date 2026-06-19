@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Card > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Card.Title",
+            },
+            {
+              "children": [],
+              "uiName": "Card.Description",
+            },
+          ],
+          "uiName": "Card.Header",
+        },
+        {
+          "children": [],
+          "uiName": "Card.Body",
+        },
+      ],
+      "uiName": "Card",
+    },
+  ],
+  "uiName": null,
+}
+`;
