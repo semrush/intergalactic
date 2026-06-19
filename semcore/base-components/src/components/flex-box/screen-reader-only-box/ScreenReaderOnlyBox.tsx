@@ -6,6 +6,7 @@ import Box from '../Box';
 
 type SROnlyType = {
   ariaLive?: boolean;
+  children?: React.ReactNode;
 };
 
 function ScreenReaderOnlyComponent(props: SROnlyType) {
