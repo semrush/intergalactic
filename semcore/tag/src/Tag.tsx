@@ -87,6 +87,14 @@ class RootTag extends Component<
     const isInteractiveView = !disabled && interactive;
     const isInteractive = !disabled && interactive;
 
+    const advancedMode = isAdvanceMode(
+      Children,
+      [
+        'InputTags.Tag.Text.Content',
+      ],
+      true,
+    );
+
     return sstyled(styles)(
       <STag
         render={Box}
@@ -100,7 +108,7 @@ class RootTag extends Component<
         ref={this.tagRef}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-        {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
+        {advancedMode ? <Children /> : addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
         {addonRight ? <Tag.Addon tag={addonRight} /> : null}
       </STag>,
     );

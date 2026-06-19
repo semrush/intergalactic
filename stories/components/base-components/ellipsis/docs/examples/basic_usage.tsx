@@ -5,8 +5,8 @@ const text = 'Intergalactic is a constantly developing system of UI components, 
 
 const Demo = () => {
   return (
-    <Tag w={180}>
-      <Tag.Text ellipsis:cropPosition='middle'>
+    <Tag>
+      <Tag.Text w={180} ellipsis:cropPosition='middle'>
         {text}
       </Tag.Text>
     </Tag>
