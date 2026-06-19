@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import type { AreaChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
@@ -21,13 +22,23 @@ const Demo = (props: AreaChartProps) => {
     console.log('→ Data item:', clickedItem);
     console.log('→ Event:', event);
   };
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
   return (
-    <Chart.Area
-      {...getPropsToChart(props)}
-      aria-label='Area chart'
-      tooltipValueFormatter={formatDate}
-      onClickArea={onClickHandler}
-    />
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
+      <Chart.Area
+        {...chartProps}
+        aria-label='Area chart'
+        tooltipValueFormatter={formatDate}
+        onClickArea={onClickHandler}
+      />
+    </Box>
   );
 };
 

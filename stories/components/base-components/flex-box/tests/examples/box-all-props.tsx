@@ -79,6 +79,8 @@ const Demo = (props: ExampleProps) => {
         bg={props.bg}
         border={props.border}
         borderRadius={props.borderRadius}
+        resize={props.resize}
+        overflow={props.overflow}
         innerOutline={props.innerOutline}
         invertOutline={props.invertOutline}
         inAfterOutline={props.inAfterOutline}
@@ -103,6 +105,9 @@ export const defaultProps: ExampleProps = {
   boxSizing: false,
 
   scaleIndent: 4,
+
+  resize: 'both',
+  overflow: 'auto',
 
   innerOutline: false,
   invertOutline: false,

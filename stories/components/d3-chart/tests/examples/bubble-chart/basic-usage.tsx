@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import type { BubbleChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
@@ -5,7 +6,20 @@ import React from 'react';
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: BubbleChartProps) => {
-  return <Chart.Bubble {...getPropsToChart(props)} aria-label='Bubble chart' />;
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+
+  return (
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
+      <Chart.Bubble {...chartProps} aria-label='Bubble chart' />
+    </Box>
+  );
 };
 
 const data = [
