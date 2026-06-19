@@ -2,6 +2,8 @@ import type { NeighborItemProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
 import Input from '@semcore/input';
@@ -41,7 +43,8 @@ class AutoSuggestRoot extends Component<
 
   private abortController: AbortController | undefined;
   private changeDebounce = 0;
-  private popperRef = React.createRef<HTMLDivElement>();
+  private triggerRef = React.createRef<HTMLElement>();
+  private popperRef = React.createRef<HTMLElement>();
 
   state: NSAutoSuggest.State = {
     isVisible: false,
@@ -60,9 +63,9 @@ class AutoSuggestRoot extends Component<
   }
 
   get id() {
-    const { uid } = this.asProps;
+    const { uid, id } = this.asProps;
 
-    return `${uid}_autosuggest-trigger`;
+    return id ?? `${uid}_autosuggest-trigger`;
   }
 
   get isStartTypingState() {
@@ -111,7 +114,6 @@ class AutoSuggestRoot extends Component<
     const { isLoading } = this.state;
 
     return {
-      'id': this.id,
       'tag': Input,
       'onFocus': this.handleFocus,
       'onBlur': this.handleBlur,
@@ -127,7 +129,7 @@ class AutoSuggestRoot extends Component<
   }
 
   getTriggerValueProps(): NSAutoSuggest.Trigger.Value.InnerProps {
-    const { value, forwardRef, autoComplete, role, onChange, ref, ...props } = this.asProps;
+    const { value, forwardRef, autoComplete, role, onChange, ref, id, ...props } = this.asProps;
 
     return {
       autoComplete: 'off',
@@ -135,7 +137,8 @@ class AutoSuggestRoot extends Component<
       onKeyDown: this.handleKeyDown,
       role: 'combobox',
       value,
-      ref: forwardRef,
+      ref: forkRef(forwardRef, this.triggerRef),
+      id: this.id,
       ...props,
       neighborLocation: this.neighborLocation,
     };
@@ -171,11 +174,15 @@ class AutoSuggestRoot extends Component<
     const { value } = this.asProps;
     const { isLoading, suggestions } = this.state;
 
+    const triggerId = this.triggerRef.current?.id;
+    const triggerElement = triggerId ? document.getElementById(triggerId) : null;
+
     return {
       value,
       isLoading,
       suggestions,
-      isStartTypingState: this.isStartTypingState,
+      'isStartTypingState': this.isStartTypingState,
+      'aria-label': getAccessibleName(triggerElement),
     };
   }
 
@@ -398,8 +405,6 @@ class PopperRoot extends Component<
   };
 
   render() {
-    const { Children } = this.asProps;
-
     return (
       <Root render={Select.Popper} />
     );
@@ -468,4 +473,4 @@ export const AutoSuggest = createComponent<NSAutoSuggest.Component, typeof AutoS
     List: ListRoot,
     SuggestionItem: SuggestionItemRoot,
   }],
-});
+}, { parent: Select });
