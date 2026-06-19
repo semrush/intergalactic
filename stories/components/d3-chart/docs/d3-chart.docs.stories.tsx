@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import A11yFormattingExample from './examples/d3-chart/a11y-formatting';
-import AdaptiveChartExample from './examples/d3-chart/adaptive-chart';
 import AdditionalLinesExample from './examples/d3-chart/additional-lines';
 import AxesExample from './examples/d3-chart/axes';
 import AxesTitlesExample from './examples/d3-chart/axes-titles';
@@ -15,6 +14,8 @@ import LowLevelComponentsUseExample from './examples/d3-chart/low-level-componen
 import PaddingMarginsExample from './examples/d3-chart/paddings-&-margins';
 import PatternFillExample from './examples/d3-chart/pattern-fill';
 import ReferenceLineExample from './examples/d3-chart/reference-line';
+import ResponsiveChartExample from './examples/d3-chart/responsive-chart';
+import ResponsiveLowLevelChartExample from './examples/d3-chart/responsive-low-level-chart';
 import SynchronousChartsExample from './examples/d3-chart/synchronous-charts';
 import TooltipExample from './examples/d3-chart/tooltip';
 import TooltipControlExample from './examples/d3-chart/tooltip-control';
@@ -27,10 +28,6 @@ export default meta;
 
 export const A11yFormatting: StoryObj = {
   render: A11yFormattingExample,
-};
-
-export const AdaptiveChart: StoryObj = {
-  render: AdaptiveChartExample,
 };
 
 export const AdditionalLines: StoryObj = {
@@ -51,10 +48,6 @@ export const AxesValues: StoryObj = {
 
 export const Base: StoryObj = {
   render: BaseExample,
-};
-
-export const Tooltip: StoryObj = {
-  render: TooltipExample,
 };
 
 export const ChartLegend: StoryObj = {
@@ -89,8 +82,20 @@ export const ReferenceLine: StoryObj = {
   render: ReferenceLineExample,
 };
 
+export const ResponsiveChart: StoryObj = {
+  render: ResponsiveChartExample,
+};
+
+export const ResponsiveLowLevelChart: StoryObj = {
+  render: ResponsiveLowLevelChartExample,
+};
+
 export const SynchronousCharts: StoryObj = {
   render: SynchronousChartsExample,
+};
+
+export const Tooltip: StoryObj = {
+  render: TooltipExample,
 };
 
 export const TooltipControl: StoryObj = {
