@@ -19,24 +19,20 @@ import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
 
-import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import style from '../../style/feedback-rating.shadow.css';
 import CheckboxButton from './component/checkbox-button/CheckboxButton';
 import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import SliderRating from './component/slider-rating/SliderRating';
 import { SubmitButton } from './component/submit-button/SubmitButton';
 import type { NSFeedbackRating } from './FeedbackRating.type';
-
-type State = {
-  error: boolean;
-};
+import style from './style/feedback-rating.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class FeedbackRatingRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSFeedbackRating.Component>,
   typeof FeedbackRatingRoot.enhance,
   {},
   WithI18nEnhanceProps,
-  State,
+  NSFeedbackRating.State,
   NSFeedbackRating.DefaultProps
 > {
   static displayName = 'FeedbackRatingForm';
@@ -67,7 +63,7 @@ class FeedbackRatingRoot extends Component<
     },
   };
 
-  state: State = {
+  state: NSFeedbackRating.State = {
     error: false,
   };
 

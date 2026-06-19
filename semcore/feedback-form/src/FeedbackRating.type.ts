@@ -59,6 +59,9 @@ declare namespace NSFeedbackRating {
     Illustration: Props['Illustration'];
     Notice: Props['Notice'];
   };
+  type State = {
+    error: boolean;
+  };
   type FormConfigItem = {
     key: string;
     label: React.ReactNode;
