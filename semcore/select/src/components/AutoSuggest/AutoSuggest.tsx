@@ -282,6 +282,7 @@ class AutoSuggestRoot extends Component<
       suggestions: suggestions.filter((s) => {
         return value !== '' && s.toLowerCase().includes(value.toLowerCase());
       }),
+      highlightedIndex: -1,
     });
   };
 
