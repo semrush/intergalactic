@@ -259,6 +259,34 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
     });
+
+    test('Verify long first step title wraps inside content', {
+      tag: [
+        TAG.PRIORITY_HIGH,
+        '@wizard',
+        '@typography',
+        '@base-components'],
+    },
+    async ({ page }) => {
+      const firstStepTitle = 'PersonalInfovfdnvmdfnbmvfdnbnnmdlymmvdvd'.repeat(3);
+
+      await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en', {
+        firstStepTitle,
+      });
+
+      await locators.button(page).click();
+      await locators.button(page, 'Close').waitFor({ state: 'visible' });
+
+      const title = page.getByRole('heading', { level: 3, name: firstStepTitle });
+      await expect(title).toBeVisible();
+
+      const titleBox = await title.boundingBox();
+      const contentBox = await locators.contentPanel(page).boundingBox();
+
+      expect(titleBox).not.toBeNull();
+      expect(contentBox).not.toBeNull();
+      expect(titleBox!.x + titleBox!.width).toBeLessThanOrEqual(contentBox!.x + contentBox!.width);
+    });
   });
 
   test('Verify WizardContent is not right rounded when noSidebar=false', {

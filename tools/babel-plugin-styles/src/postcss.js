@@ -36,6 +36,7 @@ module.exports = function (options) {
         'color-mod-function': {
           unresolved: 'error',
         },
+        'oklab-function': false,
       },
       ...options.presetEnv,
     }),
