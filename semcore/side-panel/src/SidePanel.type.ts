@@ -84,6 +84,11 @@ declare namespace NSSidePanel {
       BoxProps & {
         /** Callback that is triggered when click outside is occured */
         onOutsideClick?: (e?: React.SyntheticEvent) => void;
+        /**
+          * Forces advanced mode
+          * @deprecated It will be removed in v18.
+        */
+        forcedAdvancedMode?: boolean;
       };
 
     type Component = Intergalactic.Component<'div', Props>;

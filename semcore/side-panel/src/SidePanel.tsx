@@ -158,8 +158,9 @@ function Panel(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSSidePanel.Panel.Component, typeof RootSidePanel, 'Panel'>,
 ) {
   const SPanel = Root;
-  const { Children, styles, visible, closable, placement, onOutsideClick } = props;
+  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } = props;
   const advancedMode =
+    forcedAdvancedMode ||
     isAdvanceMode(Children, [
       SidePanel.Header.displayName,
       SidePanel.Body.displayName,
