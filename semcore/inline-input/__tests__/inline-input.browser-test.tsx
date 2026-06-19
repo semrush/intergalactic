@@ -24,7 +24,7 @@ export const locators = {
 
 // Matches the CSS fallback colors after the test bundle normalizes them.
 const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-bg-primary-neutral': 'rgb(255, 255, 255)',
+  '--intergalactic-bg-primary-neutral': 'oklch(1 0 0)',
 };
 
 const getCssVarColor = async (page: Page, varName: string) => {

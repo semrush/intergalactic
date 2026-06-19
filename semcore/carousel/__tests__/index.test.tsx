@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -19,6 +20,20 @@ const Items = () => (
 
 describe('Carousel', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const carousel = (
+      <Carousel>
+        <Carousel.Item />
+        <Carousel.Item />
+      </Carousel>
+    );
+
+    const { container } = render(carousel);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify control mode', () => {
     const spy = vi.fn();
