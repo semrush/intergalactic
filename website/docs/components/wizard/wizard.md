@@ -45,6 +45,39 @@ max-height: 700px;
 
 ![](static/wizard.png)
 
+### Stepper states
+
+Table: Stepper states
+
+| State    | Appearance example       | Styles                                                                                         |
+| -------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
+| Normal   | ![](static/normal.png)   | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)` |
+| Hover    | ![](static/hover.png)    | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                |
+| Active   | ![](static/active.png)   | `background-color: var(--control-primary-advertising-active)`                                  |
+| Disabled | ![](static/disabled.png) | Use `--disabled-opacity` token.                                                                |
+| Checked  | ![](static/checked.png)  | The number changes to a `Check` icon with M size.
+
+### Optional stepper
+
+If a step is optional, you can add an **"optional"** label to it using the following styles:
+
+```CSS
+<Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
+    optional
+</Text>
+```
+
+Refer to the [example with custom step](/components/wizard/wizard-code#custom-step).
+
+### Footer styles
+
+We recommend:
+
+- Using the `L` size for basic controls
+- Using the following margins
+
+![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500);](static/footer.png)
+
 ### Collapsing panel with steps on screen less than 1060px
 
 When the screen width is below 1060px, the steps panel collapses to 44px and displays only step numbers. Hovering over a step number shows the step name.
