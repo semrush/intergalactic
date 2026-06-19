@@ -124,7 +124,7 @@ class AutoSuggestRoot extends Component<
   }
 
   getTriggerValueProps(): NSAutoSuggest.Trigger.Value.InnerProps {
-    const { value } = this.asProps;
+    const { value, forwardRef, ...props } = this.asProps;
 
     return {
       neighborLocation: this.neighborLocation,
@@ -133,6 +133,8 @@ class AutoSuggestRoot extends Component<
       onKeyDown: this.handleKeyDown,
       role: 'combobox',
       value,
+      ref: forwardRef,
+      ...props,
     };
   }
 

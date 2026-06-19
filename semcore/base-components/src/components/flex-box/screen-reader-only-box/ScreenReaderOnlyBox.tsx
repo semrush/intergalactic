@@ -41,7 +41,7 @@ function ScreenReaderOnlyComponent(props: SROnlyType) {
   );
 };
 
-type ScreenReaderOnlyType = Intergalactic.Component<'span'>;
+type ScreenReaderOnlyType = Intergalactic.Component<'span', SROnlyType>;
 
 export const ScreenReaderOnly = createComponent<
   ScreenReaderOnlyType,
