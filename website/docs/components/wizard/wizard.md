@@ -36,38 +36,28 @@ Component consists of the following:
 
 ## Appearance
 
-### Stepper states
-
-Table: Stepper states
-
-| State    | Appearance example       | Styles                                                                                         |
-| -------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
-| Normal   | ![](static/normal.png)   | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)` |
-| Hover    | ![](static/hover.png)    | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                |
-| Active   | ![](static/active.png)   | `background-color: var(--control-primary-advertising-active)`                                  |
-| Disabled | ![](static/disabled.png) | Use `--disabled-opacity` token.                                                                |
-| Checked  | ![](static/checked.png)  | The number changes to a `Check` icon with M size.                                              |
-
-### Stepper styles
-
-If a `Stepper` has optional text, it should have the following styles:
+By default, Wizard has the following maximum sizes:
 
 ```CSS
-color: var(--intergalactic-text-secondary-invert);
-margin-top: var(--intergalactic-spacing-1x);
+max-width: 980px;
+max-height: 700px;
 ```
 
-### Content area styles
+![](static/wizard.png)
 
-#### Header margin
+### Collapsing panel with steps on screen less than 1060px
 
-![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500); font-weight: 700;](static/header.png)
+When the screen width is below 1060px, the steps panel collapses to 44px and displays only step numbers. Hovering over a step number shows the step name.
 
-#### Footer margins
+![](static/collapsing-stepper.png)
 
-For basic controls use L size.
+### Placement
 
-![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500);](static/footer.png)
+The scroll behavior inside and outside the window, the general rules for content, etc. are the same as for the [Modal component](/components/modal/modal).
+
+Center the Wizard relative to the user's viewport. And leave margins of 40px outside the window.
+
+![](static/paddings.png)
 
 ## Keyboard control
 
@@ -76,37 +66,6 @@ For basic controls use L size.
 - The Wizard can be closed with the `Esc` key.
 
 When the Wizard closes, the focus should return to the page. Refer to [Accessibility](./wizard-a11y) guidelines.
-
-## Wizard in Modal
-
-For the Wizard displayed in a Modal, ensure the following styles:
-
-```CSS
-max-width: 980px;
-max-height: 700px;
-```
-
-![](static/wizard1.png)
-
-![](static/wizard2.png)
-
-### Collapsing panel with steps on screen less than 1060px
-
-Collapse the panel to 44px, leaving only the step numbers. When hovering a step number, show the name of the step.
-
-![](static/collapsing-stepper1.png)
-
-![](static/collapsing-stepper2.png)
-
-### Placement
-
-The scroll behavior inside and outside the window, the general rules for content, etc. are the same as for the [Modal component](/components/modal/modal).
-
-Center the Wizard relative to the user's viewport. And leave margins of 40px outside the window.
-
-![](static/placement.png)
-
-![](static/paddings.png)
 
 ## Usage in UX/UI
 
