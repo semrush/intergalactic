@@ -9,8 +9,8 @@ test.describe(`@d3-chart ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
-  test('adaptive-chart', async ({ page }) => {
-    await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/adaptive-chart.tsx', 'en');
+  test('responsive-low-level-chart', async ({ page }) => {
+    await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/responsive-low-level-chart.tsx', 'en');
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });

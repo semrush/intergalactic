@@ -36,7 +36,7 @@ const Demo = (props: ExampleProps) => {
         <Text tag='label' size={200} htmlFor='date-range-trigger-with-value'>
           With selected range
         </Text>
-        <DateRangePicker value={[new Date('2024-06-15'), new Date('2024-06-25')]} locale={props.locale}>
+        <DateRangePicker value={[new Date(2024, 5, 15), new Date(2024, 5, 25)]} locale={props.locale}>
           <DateRangePicker.Trigger size={props.size} disabled={props.disabled}>
             <DateRangePicker.Trigger.DateRange state={props.state}>
               <DateRangePicker.Trigger.DateRange.Indicator />

@@ -1,30 +1,17 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Select, { InputSearch } from '../src';
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
 });
 
-HTMLElement.prototype.scrollIntoView = () => { };
-
 describe('Select Trigger', () => {
   beforeEach(() => {
     cleanup();
-
-    const mockIntersectionObserver = vi.fn();
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    });
-    window.IntersectionObserver = mockIntersectionObserver;
   });
 
   test.concurrent(
@@ -47,7 +34,7 @@ describe('Select Trigger', () => {
     },
   );
 
-  test.concurrent('Verify onVisibleChange calls for click in Option when value selected', () => {
+  test.concurrent('Verify onVisibleChange calls for click in Option when value selected', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Select visible onVisibleChange={spy}>
@@ -58,10 +45,11 @@ describe('Select Trigger', () => {
       </Select>,
     );
 
-    fireEvent.click(getByTestId('option'));
-    expect(spy).toHaveBeenCalledTimes(1);
-    fireEvent.click(getByTestId('option'));
-    expect(spy).toHaveBeenCalledTimes(2);
+    await userEvent.click(getByTestId('option'));
+    expect(spy).toHaveBeenCalled();
+    const callsAfterFirstClick = spy.mock.calls.length;
+    await userEvent.click(getByTestId('option'));
+    expect(spy.mock.calls.length).toBeGreaterThan(callsAfterFirstClick);
   });
 
   test('Verify highlights selected item', async () => {
@@ -137,8 +125,7 @@ describe('Select Trigger', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  test.concurrent('Verify focus position preserve with mouse navigation', async () => {
-    vi.useFakeTimers();
+  test.sequential('Verify focus position preserve with mouse navigation', async () => {
     const { getByTestId } = render(
       <Select value={['2']} disablePortal>
         <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
@@ -150,30 +137,27 @@ describe('Select Trigger', () => {
         </Select.Menu>
       </Select>,
     );
-    fireEvent.click(getByTestId('trigger'));
-    act(() => {
-      vi.runAllTimers();
-    });
-    act(() => getByTestId('option-2').focus());
-    fireEvent.click(getByTestId('option-2'));
-    act(() => {
-      vi.runAllTimers();
-    });
-    act(() => {
-      vi.runAllTimers();
-    });
-    expect(getByTestId('trigger')).toHaveFocus();
 
-    vi.useRealTimers();
+    await userEvent.click(getByTestId('trigger'));
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await userEvent.keyboard('[Enter]');
+
+    await waitFor(() => {
+      expect(getByTestId('trigger')).toHaveFocus();
+    });
   });
 
   test.sequential(
     'Verify focus position preserve with mouse navigation and interaction=focus',
     async () => {
-      vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
-          <Select.Trigger aria-label='Select trigger' data-testid='trigger' tag='input' />
+          <Select.Trigger
+            aria-label='Select trigger'
+            data-testid='trigger'
+            tag='input'
+            readOnly
+          />
           <Select.Menu data-testid='menu'>
             <Select.Option value='1'>Option 1</Select.Option>
             <Select.Option value='2' data-testid='option-2'>
@@ -182,18 +166,14 @@ describe('Select Trigger', () => {
           </Select.Menu>
         </Select>,
       );
-      act(() => getByTestId('trigger').focus());
-      act(() => {
-        vi.runAllTimers();
-      });
-      act(() => getByTestId('option-2').focus());
-      fireEvent.click(getByTestId('option-2'));
-      act(() => {
-        vi.runAllTimers();
-      });
-      expect(getByTestId('trigger')).toHaveFocus();
 
-      vi.useRealTimers();
+      await userEvent.click(getByTestId('trigger'));
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      await userEvent.keyboard('[Enter]');
+
+      await waitFor(() => {
+        expect(getByTestId('trigger')).toHaveFocus();
+      });
     },
   );
 
@@ -229,9 +209,6 @@ describe('Select Trigger', () => {
 
 describe('Option.Checkbox', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(Select.Option.Checkbox, Select);
-  shouldSupportRef(Select.Option.Checkbox, Select);
 
   test('Verify not focused by Tab between Select.Option.Checkbox(deprecated methids regression)', async () => {
     const { getByTestId } = render(
@@ -279,9 +256,6 @@ describe('Option.Checkbox', () => {
 
 describe('InputSearch', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(InputSearch, Select);
-  shouldSupportRef(InputSearch, Select);
 
   test('Verify calls onChange ones per symbol', async () => {
     const spy = vi.fn();

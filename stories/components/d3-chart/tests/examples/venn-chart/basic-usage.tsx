@@ -1,17 +1,27 @@
+import { Box } from '@semcore/ui/base-components';
 import type { VennChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: VennChartProps) => {
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+
   return (
-    <div style={{ width: '1000px' }}>
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
       <Chart.Venn
-        {...props}
+        {...chartProps}
         aria-label='Venn chart'
       />
-    </div>
+    </Box>
   );
 };
 

@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { describe, test, expect, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
@@ -9,36 +10,16 @@ describe('Badge Dependency imports', () => {
   runDependencyCheckTests('badge');
 });
 
-describe('Badge deprecation warnings', () => {
+describe('Badge', () => {
   beforeEach(cleanup);
 
-  let consoleWarnSpy: ReturnType<typeof vi.spyOn<any, any>>;
+  test('Verify data-ui-name', () => {
+    const badge = <Badge type='new' />;
 
-  beforeEach(() => {
-    consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
-  });
+    const { container } = render(badge);
+    const result = extractUIName(container);
 
-  afterEach(() => {
-    consoleWarnSpy.mockRestore();
-  });
-
-  test('Should warn when type prop is not provided', () => {
-    render(<Badge>Custom</Badge>);
-
-    expect(consoleWarnSpy).toHaveBeenCalled();
-    const warnCall = consoleWarnSpy.mock.calls.find((call) =>
-      call.some((arg) => typeof arg === 'string' && arg.includes('type')),
-    );
-    expect(warnCall).toBeDefined();
-  });
-
-  test('Should not warn when type prop is provided', () => {
-    render(<Badge type='admin' />);
-
-    const warnCall = consoleWarnSpy.mock.calls.find((call) =>
-      call.some((arg) => typeof arg === 'string' && arg.includes('type') && arg.includes('required')),
-    );
-    expect(warnCall).toBeUndefined();
+    expect(result).toMatchSnapshot();
   });
 });
 

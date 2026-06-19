@@ -1,7 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, describe, beforeEach, vi, assertType, afterEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { DataTable } from '../src';
@@ -11,8 +12,32 @@ describe('data-table Dependency imports', () => {
   runDependencyCheckTests('data-table');
 });
 
-describe('DataTable', () => {
-  describe('types', () => {
+describe('DataTable', (test) => {
+  test('Verify data-ui-name', ({ expect }) => {
+    const dataTable = (
+      <DataTable
+        aria-label='Table'
+        data={[{ keyword: 'test', kd: '1' }]}
+        columns={[
+          {
+            name: 'metrics',
+            children: 'Metrics',
+            columns: [
+              { name: 'keyword', children: 'Keyword' },
+              { name: 'kd', children: 'KD' },
+            ],
+          },
+        ]}
+      />
+    );
+
+    const { container } = render(dataTable);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
+
+  describe('types', (test) => {
     const any: any = null;
     test('props nesting', () => {
       const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
@@ -122,7 +147,7 @@ describe('DataTable', () => {
   beforeEach(cleanup);
 });
 
-describe('DataTable.Cell', () => {
+describe('DataTable.Cell', (test) => {
   beforeEach(() => {
     cleanup();
   });

@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
@@ -5,7 +6,7 @@ import VennMockData from '../../../__mocks__/venn';
 
 const Demo = () => {
   return (
-    <div style={{ width: '500px' }}>
+    <Box w={500}>
       <Chart.Venn
         data={data}
         plotWidth={300}
@@ -13,7 +14,7 @@ const Demo = () => {
         legendProps={legendProps}
         aria-label='Venn chart'
       />
-    </div>
+    </Box>
   );
 };
 

@@ -7,11 +7,11 @@ import React from 'react';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (
-    <Flex ref={ref} direction='column' gap={4}>
-      <Text size={500} tag='h3'>
+    <Flex ref={ref} direction='column'>
+      <Wizard.StepTitle>
         Keywords
-      </Text>
-      <Input>
+      </Wizard.StepTitle>
+      <Input mb={4}>
         <Input.Value placeholder='Keyword 1' aria-label='Keyword 1' />
       </Input>
       <Input>
@@ -57,10 +57,10 @@ const Demo = () => {
             }}
           </Wizard.Step>
           <Wizard.Step step={3}>
-            <Text size={500} tag='h3'>
+            <Wizard.StepTitle>
               Final step
-            </Text>
-            <Text tag='p' mt={2}>
+            </Wizard.StepTitle>
+            <Text tag='p'>
               Congratulations on passing all the steps!
             </Text>
           </Wizard.Step>

@@ -3,6 +3,7 @@ import type { ButtonProps } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { ModalProps } from '@semcore/modal';
+import type { Text, NSText } from '@semcore/typography';
 import type React from 'react';
 
 /** Ordered step position from 0 */
@@ -137,6 +138,9 @@ export type WizardDefaultProps = {
   locale: 'en';
 };
 
+// Need this for API page in docs
+export type WizardStepTitleProps = NSText.Props;
+
 export type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -148,6 +152,7 @@ Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps
 export type WizardType = Intergalactic.Component<'div', WizardProps> & {
   Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
   Step: Intergalactic.Component<'div', WizardStepProps>;
+  StepTitle: typeof Text;
   Stepper: IntergalacticWizardStepperComponent;
   Content: Intergalactic.Component<'div', WizardContentProps>;
   StepBack: Intergalactic.Component<'button', WizardStepBackProps>;
