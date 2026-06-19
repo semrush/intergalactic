@@ -19,32 +19,32 @@ import createFocusDecorator from 'final-form-focus';
 import React, { type ReactElement } from 'react';
 import { Field, Form } from 'react-final-form';
 
-import type { NSFeedbackFormFeedbackRating } from './FeedbackRating.type';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import style from '../../style/feedback-rating.shadow.css';
-import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import CheckboxButton from '../checkbox-button/CheckboxButton';
-import { FeedbackItem } from '../feedback-item/FeedbackItem';
-import SliderRating from '../slider-rating/SliderRating';
-import { SubmitButton } from '../submit-button/SubmitButton';
+import CheckboxButton from './component/checkbox-button/CheckboxButton';
+import { FeedbackItem } from './component/feedback-item/FeedbackItem';
+import SliderRating from './component/slider-rating/SliderRating';
+import { SubmitButton } from './component/submit-button/SubmitButton';
+import type { NSFeedbackRating } from './FeedbackRating.type';
 
 type State = {
   error: boolean;
 };
 
 class FeedbackRatingRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSFeedbackFormFeedbackRating.Component>,
+  Intergalactic.InternalTypings.InferComponentProps<NSFeedbackRating.Component>,
   typeof FeedbackRatingRoot.enhance,
   {},
   WithI18nEnhanceProps,
   State,
-  NSFeedbackFormFeedbackRating.DefaultProps
+  NSFeedbackRating.DefaultProps
 > {
   static displayName = 'FeedbackRatingForm';
   static style = style;
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
-  static defaultProps: NSFeedbackFormFeedbackRating.DefaultProps = {
+  static defaultProps: NSFeedbackRating.DefaultProps = {
     onSubmit: () => {},
     i18n: localizedMessages,
     locale: 'en',
@@ -137,7 +137,7 @@ class FeedbackRatingRoot extends Component<
     }
   }
 
-  renderCheckbox = (config: NSFeedbackFormFeedbackRating.FormConfigItem, index: number) => {
+  renderCheckbox = (config: NSFeedbackRating.FormConfigItem, index: number) => {
     const initialValue = this.props.initialValues[config.key];
 
     return (
@@ -155,7 +155,7 @@ class FeedbackRatingRoot extends Component<
     );
   };
 
-  renderTextField = (config: NSFeedbackFormFeedbackRating.FormConfigItem) => {
+  renderTextField = (config: NSFeedbackRating.FormConfigItem) => {
     const initialValue = this.props.initialValues[config.key];
 
     const label =
@@ -393,7 +393,7 @@ class FeedbackRatingRoot extends Component<
 }
 
 function Header(
-  props: Intergalactic.InternalTypings.InferChildComponentProps<NSFeedbackFormFeedbackRating.Header.Component, typeof FeedbackRatingRoot, 'Header'>,
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSFeedbackRating.Header.Component, typeof FeedbackRatingRoot, 'Header'>,
 ) {
   const { styles } = props;
   const SHeader = Root;
@@ -408,7 +408,7 @@ function Header(
  * {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-api#feedbackform-feedbackrating|API} | {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-code/|Examples}
  */
 const FeedbackRating = createComponent<
-  NSFeedbackFormFeedbackRating.Component,
+  NSFeedbackRating.Component,
   typeof FeedbackRatingRoot
 >(FeedbackRatingRoot, {
   Header,

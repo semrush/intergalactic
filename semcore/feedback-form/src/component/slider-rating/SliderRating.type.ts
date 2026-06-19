@@ -3,7 +3,7 @@ import type { Intergalactic } from '@semcore/core';
 
 import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-declare namespace NSFeedbackFormSliderRating {
+declare namespace NSSliderRating {
     type Props = {
       value: number;
       onChange?: (value: number) => void;
@@ -13,9 +13,13 @@ declare namespace NSFeedbackFormSliderRating {
       i18n: LocalizedMessages;
       locale: 'en';
     };
+    type State = {
+      hoveredIndex: number;
+      clickedIndex: number;
+    };
 
     namespace Star {
-        type Props = BoxProps & {
+        type Props = {
           filled?: boolean;
         };
 
@@ -27,4 +31,4 @@ declare namespace NSFeedbackFormSliderRating {
     };
 }
 
-export type { NSFeedbackFormSliderRating };
+export type { NSSliderRating };

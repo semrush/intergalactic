@@ -7,7 +7,7 @@ import Tooltip from '@semcore/tooltip';
 import React from 'react';
 import { Field } from 'react-final-form';
 
-import type { NSFeedbackFormFeedbackItem } from './FeedbackItem.type';
+import type { NSFeedbackItem } from './FeedbackItem.type';
 
 const deafultTooltipPropsList = [
   'title',
@@ -35,7 +35,7 @@ export function FeedbackItem({
   uid,
   tooltipProps: tooltipPropsList = deafultTooltipPropsList,
   ...props
-}: Intergalactic.InternalTypings.InferComponentProps<NSFeedbackFormFeedbackItem.Component> & { tag: Intergalactic.InternalTypings.ComponentTag }) {
+}: Intergalactic.InternalTypings.InferComponentProps<NSFeedbackItem.Component> & { tag: Intergalactic.InternalTypings.ComponentTag }) {
   const tooltipProps = pick(props, tooltipPropsList as (keyof typeof props)[]);
   const lastErrorRef = React.useRef(undefined);
 

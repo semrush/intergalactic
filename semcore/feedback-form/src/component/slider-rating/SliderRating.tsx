@@ -5,32 +5,27 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-import type { NSFeedbackFormSliderRating } from './SliderRating.type';
+import type { NSSliderRating } from './SliderRating.type';
 import style from '../../style/slider-rating.shadow.css';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-
-type State = {
-  hoveredIndex: number;
-  clickedIndex: number;
-};
 
 const MIN = 1;
 const MAX = 5;
 
 class SliderRatingRoot extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSFeedbackFormSliderRating.Component>,
+  Intergalactic.InternalTypings.InferComponentProps<NSSliderRating.Component>,
   typeof SliderRatingRoot.enhance,
   {},
   WithI18nEnhanceProps,
-  State,
-  NSFeedbackFormSliderRating.DefaultProps
+  NSSliderRating.State,
+  NSSliderRating.DefaultProps
 > {
   static displayName = 'SliderRating';
   static style = style;
 
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
-  state: State = {
+  state: NSSliderRating.State = {
     hoveredIndex: -1,
     clickedIndex: -1,
   };
@@ -175,7 +170,7 @@ class SliderRatingRoot extends Component<
   }
 }
 
-function Star(props: Intergalactic.InternalTypings.InferChildComponentProps<NSFeedbackFormSliderRating.Star.Component, typeof SliderRatingRoot, 'Star'>) {
+function Star(props: Intergalactic.InternalTypings.InferChildComponentProps<NSSliderRating.Star.Component, typeof SliderRatingRoot, 'Star'>) {
   const SStar = Root;
   return sstyled(props.styles)(
     <SStar
@@ -205,7 +200,7 @@ function Star(props: Intergalactic.InternalTypings.InferChildComponentProps<NSFe
 Star.displayName = 'Star';
 
 const SliderRating = createComponent<
-  NSFeedbackFormSliderRating.Component,
+  NSSliderRating.Component,
   typeof SliderRatingRoot
 >(SliderRatingRoot, {
   Star,

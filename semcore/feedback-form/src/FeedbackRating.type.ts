@@ -4,12 +4,12 @@ import type Notice from '@semcore/notice';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
-import type { NSFeedbackForm } from '../../FeedbackForm.type';
-import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import type { NSFeedbackFormCheckboxButton } from '../checkbox-button/CheckboxButton.type';
-import type { NSFeedbackFormFeedbackItem } from '../feedback-item/FeedbackItem.type';
-import type { NSFeedbackFormSubmitButton } from '../submit-button/SubmitButton.type';
-declare namespace NSFeedbackFormFeedbackRating {
+import type { NSCheckboxButton } from './component/checkbox-button/CheckboxButton.type';
+import type { NSFeedbackItem } from './component/feedback-item/FeedbackItem.type';
+import type { NSSubmitButton } from './component/submit-button/SubmitButton.type';
+import type { NSFeedbackForm } from './FeedbackForm.type';
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
+declare namespace NSFeedbackRating {
   type Props = Intergalactic.InternalTypings.EfficientOmit<NSFeedbackForm.Props, 'initialValues' | 'loading'> & {
   /** Status of form */
     status: 'default' | 'success' | 'error' | 'loading';
@@ -39,7 +39,7 @@ declare namespace NSFeedbackFormFeedbackRating {
     /** Text for submit button of form */
     submitText?: string;
     /** Config for form fields */
-    formConfig: NSFeedbackFormFeedbackRating.FormConfigItem[];
+    formConfig: NSFeedbackRating.FormConfigItem[];
 
     /** Initial form values including rating */
     initialValues: Record<string, any> & { rating: number };
@@ -68,15 +68,15 @@ declare namespace NSFeedbackFormFeedbackRating {
   };
 
   namespace Item {
-    type Component = NSFeedbackFormFeedbackItem.Component;
+    type Component = NSFeedbackItem.Component;
   }
 
   namespace Submit {
-    type Component = NSFeedbackFormSubmitButton.Component;
+    type Component = NSSubmitButton.Component;
   }
 
   namespace Checkbox {
-    type Component = NSFeedbackFormCheckboxButton.Component;
+    type Component = NSCheckboxButton.Component;
   }
 
   namespace Header {
@@ -97,4 +97,4 @@ declare namespace NSFeedbackFormFeedbackRating {
   };
 }
 
-export type { NSFeedbackFormFeedbackRating };
+export type { NSFeedbackRating };

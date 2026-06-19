@@ -4,8 +4,8 @@ import type { Intergalactic } from '@semcore/core';
 import type { NoticeSmart } from '@semcore/notice';
 import type { FormProps } from 'react-final-form';
 
-import type { NSFeedbackFormFeedbackItem } from './component/feedback-item/FeedbackItem.type';
-import type { NSFeedbackFormSubmitButton } from './component/submit-button/SubmitButton.type';
+import type { NSFeedbackItem } from './component/feedback-item/FeedbackItem.type';
+import type { NSSubmitButton } from './component/submit-button/SubmitButton.type';
 
 declare namespace NSFeedbackForm {
   type Props = Intergalactic.InternalTypings.RemoveIndexSignature<FormProps> & {
@@ -29,7 +29,7 @@ declare namespace NSFeedbackForm {
   };
 
   namespace Item {
-    type Component = NSFeedbackFormFeedbackItem.Component;
+    type Component = NSFeedbackItem.Component;
   }
 
   namespace Success {
@@ -37,7 +37,7 @@ declare namespace NSFeedbackForm {
   }
 
   namespace Submit {
-    type Component = NSFeedbackFormSubmitButton.Component;
+    type Component = NSSubmitButton.Component;
   }
 
   namespace Cancel {

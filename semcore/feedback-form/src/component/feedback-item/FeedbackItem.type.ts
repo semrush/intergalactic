@@ -4,12 +4,13 @@ import type { FieldProps, FieldInputProps, FieldMetaState } from 'react-final-fo
 
 import type { NSFeedbackForm } from '../../FeedbackForm.type';
 
-declare namespace NSFeedbackFormFeedbackItem {
+declare namespace NSFeedbackItem {
   type Props = Intergalactic.InternalTypings.RemoveIndexSignature<FieldProps<any, any>> & TooltipProps & {
     /**
      * Allows to override which passed props will be passed to the Tooltip component.
      */
     tooltipProps?: string[];
+    /** Defines whether to validate item on blur */
     validateOnBlur?: NSFeedbackForm.Props['validateOnBlur'];
   };
   type Ctx = {
@@ -20,4 +21,4 @@ declare namespace NSFeedbackFormFeedbackItem {
   type Component = Intergalactic.Component<'div', Props, Ctx>;
 }
 
-export type { NSFeedbackFormFeedbackItem };
+export type { NSFeedbackItem };
