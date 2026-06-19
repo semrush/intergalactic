@@ -1,4 +1,4 @@
-import type { InputValueProps } from '@semcore/ui/input';
+import type { NSInput } from '@semcore/ui/input';
 import InputTags from '@semcore/ui/input-tags';
 import type { InputTagsProps } from '@semcore/ui/input-tags';
 import React from 'react';
@@ -16,7 +16,7 @@ type AdditionalJSXProps = {
     closable: boolean;
   };
 };
-export type InputTagsJSXProps = JSXProps<InputTagsProps & InputValueProps> & AdditionalJSXProps;
+export type InputTagsJSXProps = JSXProps<InputTagsProps & NSInput.Value.Props> & AdditionalJSXProps;
 
 function getJSX(props: InputTagsJSXProps) {
   return (
