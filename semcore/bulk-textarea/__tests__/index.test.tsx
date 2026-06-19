@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, userEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
 import { describe, test, vi, assertType, expect, afterEach, beforeEach } from '@semcore/testing-utils/vitest';
@@ -16,6 +17,28 @@ describe('BulkTextarea OnChange', () => {
   afterEach(() => {
     cleanup();
   });
+
+  test('Verify data-ui-name', () => {
+    const bulkTextarea = (
+      <BulkTextarea
+        defaultValue='first line'
+        errors={[{ lineIndex: 0, errorMessage: '' }]}
+        showErrors={true}
+        maxLines={10}
+      >
+        <BulkTextarea.Counter />
+        <BulkTextarea.InputField commonErrorMessage='Please enter valid values.' />
+        <BulkTextarea.ErrorsNavigation />
+        <BulkTextarea.ClearAll />
+      </BulkTextarea>
+    );
+
+    const { container } = render(bulkTextarea);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
+
   test('Verify value&onChange relation', () => {
     assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string) => { }} />);
     assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string[]) => { }} />);

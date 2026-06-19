@@ -138,4 +138,32 @@ describe('OutsideClick', () => {
       expect(onOutsideClick).not.toBeCalled();
     },
   );
+
+  test.sequential(
+    'Verify does not throw when ref node is not a DOM Node (e.g. d3-chart virtual trigger without .contains)',
+    async () => {
+      const onOutsideClick = vi.fn();
+      // Reproduces d3-chart Tooltip virtual trigger: a plain object with
+      // getBoundingClientRect but no Node.contains method (see d3-chart/src/Tooltip.jsx).
+      const virtualTrigger = {
+        getBoundingClientRect: () => ({
+          width: 0,
+          height: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        }),
+      } as unknown as HTMLElement;
+
+      render(
+        <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[{ current: virtualTrigger }]}>
+          <div data-testid='child'>test</div>
+        </OutsideClick>,
+      );
+      await clickPointer(document.body);
+
+      expect(onOutsideClick).toBeCalled();
+    },
+  );
 });

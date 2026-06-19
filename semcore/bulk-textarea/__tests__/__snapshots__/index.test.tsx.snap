@@ -1,0 +1,103 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BulkTextarea OnChange > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+                {
+                  "children": [],
+                  "uiName": "Box",
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": "BulkTextarea.Counter",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": "BulkTextarea.InputField",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "ChevronDown",
+                        },
+                      ],
+                      "uiName": "Button.Addon",
+                    },
+                  ],
+                  "uiName": "Button.InnerWrapper",
+                },
+              ],
+              "uiName": "Button",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "ChevronUp",
+                        },
+                      ],
+                      "uiName": "Button.Addon",
+                    },
+                  ],
+                  "uiName": "Button.InnerWrapper",
+                },
+              ],
+              "uiName": "Button",
+            },
+            {
+              "children": [],
+              "uiName": "Text",
+            },
+          ],
+          "uiName": "Flex",
+        },
+      ],
+      "uiName": "BulkTextarea",
+    },
+  ],
+  "uiName": null,
+}
+`;

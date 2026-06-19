@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Divider > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [],
+      "uiName": "Divider",
+    },
+  ],
+  "uiName": null,
+}
+`;

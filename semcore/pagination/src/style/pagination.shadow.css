@@ -27,16 +27,14 @@ SLabel {
 
 SLabel:not(:first-child) {
   margin-left: var(--intergalactic-spacing-4x, 16px);
-}
 
-SLabel[size='l']:not(:first-child) {
-  margin-left: var(--intergalactic-spacing-5x, 20px);
+  &[size='300'] {
+    margin-left: var(--intergalactic-spacing-5x, 20px);
+  }
 }
 
 STotalPages {
   align-self: center;
-  line-height: normal;
-  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
 }
 
 STotalPagesLabel {
@@ -75,16 +73,4 @@ SPageInputAddon {
   opacity: 0;
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute;
-}
-
-SLabel,
-STotalPages,
-STotalPagesLabel {
-  font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
-
-  &[size='l'] {
-    font-size: var(--intergalactic-fs-300, 16px);
-    line-height: var(--intergalactic-lh-300, 150%);
-  }
 }
