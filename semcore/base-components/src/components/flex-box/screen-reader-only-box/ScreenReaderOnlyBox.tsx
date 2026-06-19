@@ -34,7 +34,7 @@ function ScreenReaderOnlyComponent(props: SROnlyType) {
       render={Box}
       tag='span'
       aria-live={ariaLive ? 'polite' : undefined}
-      role={ariaLive ? 'statue' : undefined}
+      role={ariaLive ? 'status' : undefined}
     >
       {content}
     </SScreenReaderOnly>,
