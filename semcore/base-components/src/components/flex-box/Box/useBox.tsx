@@ -167,19 +167,16 @@ export type BoxProps = IStyledProps & {
   children?: React.ReactNode;
   /** Hover cursor */
   hoverCursor?: Property.Cursor;
-  /**
-   * Background
-   */
+  /** Css `background` property */
   bg?: Property.Background | BasicColorKeys | SemanticColorKeys;
-  /**
-   * Border radius
-   */
+  /** Css `border-radius` property */
   borderRadius?: Property.BorderRadius | BorderRadius;
-  /**
-   * Border
-   */
+  /** Css `border` property */
   border?: Property.Border;
-
+  /** Css `resize` property */
+  resize?: Property.Resize;
+  /** Css `overflow` property */
+  overflow?: Property.Overflow;
   /**
    * Old way to add custom style
    * @deprecated
@@ -254,6 +251,8 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number, colorResolv
       getAutoOrScaleIndent(props['px'], scaleIndent),
 
     border: props.border,
+    resize: props.resize,
+    overflow: props.overflow,
     borderRadius: props.borderRadius ? colorResolver(props.borderRadius) : undefined,
     backgroundColor: props.bg ? colorResolver(props.bg) : undefined,
   });
@@ -277,7 +276,9 @@ export default function useBox<T extends BoxProps>(
     bg,
     border,
     borderRadius,
+    resize,
     flex,
+    overflow,
     w,
     h,
     wMin,
@@ -351,6 +352,8 @@ export default function useBox<T extends BoxProps>(
     border,
     borderRadius,
     bg,
+    resize,
+    overflow,
   ]);
 
   const styles = sstyled(style);
