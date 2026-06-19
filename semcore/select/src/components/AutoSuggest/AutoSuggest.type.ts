@@ -60,6 +60,7 @@ declare namespace NSAutoSuggest {
       'isLoading': NSAutoSuggest.State['isLoading'];
       'size': NSAutoSuggest.Props['size'];
       'getI18nText': (str: string) => string;
+      'neighborLocation': NeighborItemProps['neighborLocation'];
     };
 
     namespace Value {

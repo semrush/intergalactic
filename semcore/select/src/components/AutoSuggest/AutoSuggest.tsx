@@ -107,7 +107,7 @@ class AutoSuggestRoot extends Component<
   }
 
   getTriggerProps(): NSAutoSuggest.Trigger.InnerProps {
-    const { size, getI18nText } = this.asProps;
+    const { size, getI18nText, neighborLocation, addonLeft, addonRight } = this.asProps;
     const { isLoading } = this.state;
 
     return {
@@ -120,6 +120,9 @@ class AutoSuggestRoot extends Component<
       isLoading,
       size,
       getI18nText,
+      neighborLocation,
+      addonLeft,
+      addonRight,
     };
   }
 
@@ -127,7 +130,6 @@ class AutoSuggestRoot extends Component<
     const { value, forwardRef, autoComplete, role, onChange, ref, ...props } = this.asProps;
 
     return {
-      neighborLocation: this.neighborLocation,
       autoComplete: 'off',
       onChange: this.handleChange,
       onKeyDown: this.handleKeyDown,
@@ -135,6 +137,7 @@ class AutoSuggestRoot extends Component<
       value,
       ref: forwardRef,
       ...props,
+      neighborLocation: this.neighborLocation,
     };
   }
 
@@ -154,13 +157,13 @@ class AutoSuggestRoot extends Component<
   }
 
   getPopperStartTypingStateProps(): NSAutoSuggest.Popper.StartTypingState.InnerProps {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, statusItemPlaceholder } = this.asProps;
     const { isLoading } = this.state;
 
     return {
       isLoading,
       isStartTypingState: this.isStartTypingState,
-      children: getI18nText('AutoSuggest.Popper.placeholderText'),
+      children: statusItemPlaceholder ?? getI18nText('AutoSuggest.Popper.placeholderText'),
     };
   }
 
@@ -442,11 +445,11 @@ class ListRoot extends Component<
     if (isLoading || isStartTypingState) return null;
 
     return (
-      <Select.List>
+      <Root render={Select.List}>
         {suggestions.map((option) => (
           <Children key={option} />
         ))}
-      </Select.List>
+      </Root>
     );
   }
 }

@@ -183,7 +183,7 @@ const Demo = (props: AutosuggestCompositionProps) => {
           <AutoSuggest.Popper {...popperProps}>
             {loadingStateEl}
             {startTypingStateEl}
-            <AutoSuggest.Popper.List>
+            <AutoSuggest.Popper.List hMax={popperMaxHeight}>
               {suggestionItemEl}
             </AutoSuggest.Popper.List>
           </AutoSuggest.Popper>
