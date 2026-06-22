@@ -418,7 +418,6 @@
     "components": [
       "button",
       "link",
-      "pagination",
       "tab-panel",
       "typography"
     ]
