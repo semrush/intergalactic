@@ -2,6 +2,7 @@ import SearchL from '@semcore/icon/Search/l';
 import SearchM from '@semcore/icon/Search/m';
 import Badge from '@semcore/ui/badge';
 import { Box, Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
 import { AutoSuggest } from '@semcore/ui/select';
 import Spin from '@semcore/ui/spin';
 import Tag from '@semcore/ui/tag';
@@ -63,9 +64,11 @@ export type AutosuggestCompositionProps = {
   width?: number;
   popperWidth?: number;
   popperMaxHeight?: number;
+  placeholder?: string;
   statusItemPlaceholder?: string;
   addonLeft?: AddonType;
   addonRight?: AddonType;
+  neighborLocation?: 'none' | 'left' | 'right' | 'both';
   customStartTyping?: boolean;
   customLoadingState?: boolean;
   customSuggestionItem?: boolean;
@@ -78,9 +81,11 @@ export const autosuggestCompositionDefaultProps: Required<AutosuggestComposition
   width: 320,
   popperWidth: 0,
   popperMaxHeight: 0,
+  placeholder: 'Search...',
   statusItemPlaceholder: 'Start typing to see options',
   addonLeft: 'none',
   addonRight: 'none',
+  neighborLocation: 'none',
   customStartTyping: true,
   customLoadingState: false,
   customSuggestionItem: false,
@@ -94,9 +99,11 @@ const Demo = (props: AutosuggestCompositionProps) => {
     width,
     popperWidth,
     popperMaxHeight,
+    placeholder,
     statusItemPlaceholder,
     addonLeft,
     addonRight,
+    neighborLocation,
     customStartTyping,
     customLoadingState,
     customSuggestionItem,
@@ -105,6 +112,14 @@ const Demo = (props: AutosuggestCompositionProps) => {
     ...props,
   };
   const [query, setQuery] = React.useState('');
+
+  // neighborLocation squares the AutoSuggest corners adjacent to the button(s).
+  let autoSuggestNeighbor: 'left' | 'right' | 'both' | undefined;
+  if (neighborLocation !== 'none') {
+    autoSuggestNeighbor = neighborLocation;
+  }
+  const hasLeftButton = neighborLocation === 'left' || neighborLocation === 'both';
+  const hasRightButton = neighborLocation === 'right' || neighborLocation === 'both';
 
   const getSuggestions = React.useCallback(
     (q: string, signal: AbortSignal) => fakeFetch(q, signal, asyncDelay),
@@ -160,35 +175,61 @@ const Demo = (props: AutosuggestCompositionProps) => {
     );
   }
 
+  const autoSuggestEl = (
+    <AutoSuggest
+      key={`${suggestionsSource}-${size}-${addonLeft}-${addonRight}-${customStartTyping}-${customLoadingState}-${customSuggestionItem}-${neighborLocation}`}
+      id='composition-autosuggest'
+      value={query}
+      onChange={setQuery}
+      suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
+      size={size}
+      placeholder={placeholder}
+      statusItemPlaceholder={statusItemPlaceholder}
+      addonLeft={addonLeftComponent}
+      addonRight={addonRightComponent}
+      neighborLocation={autoSuggestNeighbor}
+    >
+      <AutoSuggest.Trigger>
+        <AutoSuggest.Trigger.Value />
+      </AutoSuggest.Trigger>
+      <AutoSuggest.Popper {...popperProps}>
+        {loadingStateEl}
+        {startTypingStateEl}
+        <AutoSuggest.Popper.List hMax={popperMaxHeight}>
+          {suggestionItemEl}
+        </AutoSuggest.Popper.List>
+      </AutoSuggest.Popper>
+    </AutoSuggest>
+  );
+
   return (
     <Box w={width}>
       <Text tag='label' size={200} htmlFor='composition-autosuggest'>
         Your pet breed
       </Text>
-      <Box mt={2}>
-        <AutoSuggest
-          key={`${suggestionsSource}-${size}-${addonLeft}-${addonRight}-${customStartTyping}-${customLoadingState}-${customSuggestionItem}`}
-          id='composition-autosuggest'
-          value={query}
-          onChange={setQuery}
-          suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
-          size={size}
-          statusItemPlaceholder={statusItemPlaceholder}
-          addonLeft={addonLeftComponent}
-          addonRight={addonRightComponent}
-        >
-          <AutoSuggest.Trigger>
-            <AutoSuggest.Trigger.Value />
-          </AutoSuggest.Trigger>
-          <AutoSuggest.Popper {...popperProps}>
-            {loadingStateEl}
-            {startTypingStateEl}
-            <AutoSuggest.Popper.List hMax={popperMaxHeight}>
-              {suggestionItemEl}
-            </AutoSuggest.Popper.List>
-          </AutoSuggest.Popper>
-        </AutoSuggest>
-      </Box>
+      {neighborLocation === 'none'
+        ? (
+            <Box mt={2}>
+              {autoSuggestEl}
+            </Box>
+          )
+        : (
+            <Flex mt={2}>
+              {hasLeftButton && (
+                <Button size={size} neighborLocation='right'>
+                  Go
+                </Button>
+              )}
+              <Box flex={1} wMin={0}>
+                {autoSuggestEl}
+              </Box>
+              {hasRightButton && (
+                <Button size={size} neighborLocation='left'>
+                  Go
+                </Button>
+              )}
+            </Flex>
+          )}
     </Box>
   );
 };

@@ -13,7 +13,7 @@ const locators = {
   ellipsisHint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
   clear: (page: Page) => page.getByRole('button', { name: 'Clear' }),
   loadingText: (page: Page) => page.getByText('Loading...'),
-  errorText: (page: Page) => page.getByText('Something went wrong.'),
+  errorText: (page: Page) => page.getByText('Something went wrong.').first(),
   clearSearchHint: (page: Page) => page.getByText('Clear search field'),
   optionByName: (page: Page, name: string) => page.getByRole('option', { name }),
   textByContent: (page: Page, text: string) => page.getByText(text),
