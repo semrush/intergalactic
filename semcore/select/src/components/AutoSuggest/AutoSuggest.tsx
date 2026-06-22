@@ -404,7 +404,7 @@ class PopperRoot extends Component<
 
   render() {
     return (
-      <Root render={Select.Menu} />
+      <Root render={Select.Popper} />
     );
   }
 }
@@ -451,9 +451,13 @@ class ListRoot extends Component<
 
     if (isLoading || isStartTypingState) return null;
 
-    return suggestions.map((option) => (
-      <Children key={option} />
-    ));
+    return (
+      <Select.List>
+        {suggestions.map((option) => (
+          <Children key={option} />
+        ))}
+      </Select.List>
+    );
   }
 }
 

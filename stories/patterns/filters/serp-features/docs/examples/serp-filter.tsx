@@ -198,11 +198,11 @@ const Demo = () => {
           />
           {loading && (<Select.StatusItem itemsCount={0} state='loading' />)}
           {!loading && error && (
-            <Flex direction='column' alignItems='start' gap={1}>
+            <Flex direction='column' alignItems='start'>
               <Select.StatusItem itemsCount={0} state='error'>
                 {message}
               </Select.StatusItem>
-              <ButtonLink mx={2} mb={2} addonLeft={ReloadIcon} onClick={handleReloadClick}>
+              <ButtonLink mx={2} mb={2} mt={-1} addonLeft={ReloadIcon} onClick={handleReloadClick}>
                 Reload
               </ButtonLink>
             </Flex>
