@@ -305,23 +305,17 @@ class AutoSuggestRoot extends Component<
   };
 
   render() {
-    const {
-      size,
-      Children,
-    } = this.asProps;
     const { highlightedIndex } = this.state;
 
     return (
-      <Select
+      <Root
+        render={Select}
         interaction='none'
         visible={this.isVisiblePopper}
         onVisibleChange={this.handleChangeVisible}
         highlightedIndex={highlightedIndex}
         onHighlightedIndexChange={this.handleChangeHighlightedIndex}
-        size={size}
-      >
-        <Children />
-      </Select>
+      />
     );
   }
 }
