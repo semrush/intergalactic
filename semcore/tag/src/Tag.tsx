@@ -51,6 +51,7 @@ class RootTag extends Component<
       id: `${id}-text`,
       role: undefined,
       tagRef: this.tagRef,
+      // ellipsis: false,
     };
   }
 
@@ -87,6 +88,7 @@ class RootTag extends Component<
     const isInteractiveView = !disabled && interactive;
     const isInteractive = !disabled && interactive;
 
+    // By default, Tag.Text has an enabled ellipsis, but to use tags inside Input.Tags, we need to wrap the content without an ellipsis.
     const advancedMode = isAdvanceMode(
       Children,
       [
@@ -108,7 +110,7 @@ class RootTag extends Component<
         ref={this.tagRef}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-        {advancedMode ? <Children /> : addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
+        {advancedMode ? <Tag.Text ellipsis={false}><Children /></Tag.Text> : addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
         {addonRight ? <Tag.Addon tag={addonRight} /> : null}
       </STag>,
     );
