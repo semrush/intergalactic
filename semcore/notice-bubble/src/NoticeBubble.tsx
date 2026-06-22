@@ -1,4 +1,4 @@
-import { Animation, Box, Flex, Portal } from '@semcore/base-components';
+import { Animation, Box, Flex, Portal, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
@@ -216,19 +216,6 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     }
 
     this.triggerButtonComponent = document.activeElement;
-
-    const noticeElement = this.ref.current;
-
-    if (noticeElement) {
-      const allFocusableNodes = getFocusableIn(noticeElement);
-      const focusableNodes = allFocusableNodes.filter(
-        (node) => node !== this.closeButtonRef.current,
-      );
-
-      if (focusableNodes.length > 0 || (!duration && allFocusableNodes.length > 0)) {
-        setTimeout(() => setFocus(noticeElement), 0);
-      }
-    }
   }
 
   componentWillUnmount() {
