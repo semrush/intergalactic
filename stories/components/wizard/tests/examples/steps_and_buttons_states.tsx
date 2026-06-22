@@ -1,5 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
 import Wizard from '@semcore/ui/wizard';
 import React from 'react';
@@ -31,6 +32,7 @@ export const defaultProps: StepsAndButtonsStatesProps = {
 const Demo = ({ firstStepTitle, ellipsis }: StepsAndButtonsStatesProps) => {
   const [step, setStep] = React.useState(1);
   const [visible, setVisible] = React.useState(false);
+  const [value, setValue] = React.useState('');
   const configurableSteps = [
     { ...steps[0], title: firstStepTitle },
     ...steps.slice(1),
@@ -54,7 +56,7 @@ const Demo = ({ firstStepTitle, ellipsis }: StepsAndButtonsStatesProps) => {
           <Wizard.Stepper step={2} onActive={handleStepChange(2)} number={1.1}>
             {configurableSteps[1].title}
             <Text color='text-secondary-invert' fontWeight={400} tag='div'>
-              optional
+              {value === '' ? 'Not selected' : value}
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={1.2}>
@@ -99,11 +101,30 @@ const Demo = ({ firstStepTitle, ellipsis }: StepsAndButtonsStatesProps) => {
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           {configurableSteps.map((stepData, index) => (
             <Wizard.Step key={index} step={index + 1}>
-              <Wizard.StepTitle
-                ellipsis={ellipsis}
-              >
-                {stepData.title}
-              </Wizard.StepTitle>
+              {index === 1
+                ? (
+                    <RadioGroup name='radio' value={value} onChange={setValue}>
+                      <Radio mr={2} mb={3}>
+                        <Radio.Value value='Manually' />
+                        <Radio.Text>Manually</Radio.Text>
+                      </Radio>
+                      <Radio mr={2} mb={3}>
+                        <Radio.Value value='From TXT' />
+                        <Radio.Text>From TXT</Radio.Text>
+                      </Radio>
+                      <Radio mr={2} mb={3}>
+                        <Radio.Value value='From CSV' />
+                        <Radio.Text>From CSV</Radio.Text>
+                      </Radio>
+                    </RadioGroup>
+                  )
+                : (
+                    <Wizard.StepTitle
+                      ellipsis={ellipsis}
+                    >
+                      {stepData.title}
+                    </Wizard.StepTitle>
+                  )}
             </Wizard.Step>
           ))}
 
