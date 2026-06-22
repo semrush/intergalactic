@@ -331,10 +331,14 @@ function List({ styles, Children }) {
   const SBar = ScrollAreaComponent.Bar;
   const SScrollContainer = ScrollAreaComponent.Container;
 
+  const preventFocusByClick = React.useCallback((e) => {
+    e.preventDefault();
+  }, []);
+
   return sstyled(styles)(
     <ListBoxContextProvider>
       <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
-        <SScrollContainer tabIndex={-1}>
+        <SScrollContainer tabIndex={-1} onMouseDown={preventFocusByClick}>
           <Children />
         </SScrollContainer>
         <SBar orientation='horizontal' />
