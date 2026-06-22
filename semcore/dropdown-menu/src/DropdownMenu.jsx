@@ -334,7 +334,7 @@ function List({ styles, Children }) {
   return sstyled(styles)(
     <ListBoxContextProvider>
       <SDropdownMenuList render={ScrollAreaComponent} shadow={true} shadowSize={16} shadowTheme='light'>
-        <SScrollContainer tabIndex={undefined}>
+        <SScrollContainer tabIndex={-1}>
           <Children />
         </SScrollContainer>
         <SBar orientation='horizontal' />

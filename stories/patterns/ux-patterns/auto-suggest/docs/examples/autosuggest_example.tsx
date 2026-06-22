@@ -1,4 +1,3 @@
-import SearchIcon from '@semcore/icon/Search/m';
 import { Box } from '@semcore/ui/base-components';
 import { AutoSuggest } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';

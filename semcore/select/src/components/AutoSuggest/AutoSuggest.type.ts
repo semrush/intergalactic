@@ -49,7 +49,6 @@ declare namespace NSAutoSuggest {
     type Props = {};
 
     type InnerProps = {
-      'id': string;
       'tag': typeof Input;
       'onFocus': () => void;
       'onBlur': () => void;
@@ -67,13 +66,14 @@ declare namespace NSAutoSuggest {
       type Props = {};
 
       type InnerProps = {
+        id: string;
         neighborLocation: NeighborItemProps['neighborLocation'];
         value: string;
         role: 'combobox';
         onChange: (value: string) => void;
         onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
         autoComplete: 'off';
-        ref?: React.RefObject<any>;
+        ref?: React.Ref<any>;
       };
 
       type Component = Intergalactic.Component<typeof Input.Value, Props>;
@@ -88,7 +88,7 @@ declare namespace NSAutoSuggest {
 
     type InnerProps = {
       'aria-labelledby': string;
-      'ref': React.RefObject<HTMLDivElement>;
+      'ref': React.RefObject<HTMLElement>;
     };
 
     namespace LoadingState {
@@ -109,10 +109,11 @@ declare namespace NSAutoSuggest {
     }
     namespace List {
       type InnerProps = {
-        value: string;
-        isLoading: boolean;
-        suggestions: Suggestion[];
-        isStartTypingState: boolean;
+        'value': string;
+        'isLoading': boolean;
+        'suggestions': Suggestion[];
+        'isStartTypingState': boolean;
+        'aria-label': string;
       };
 
       type Component = Intergalactic.Component<typeof Select.List>;

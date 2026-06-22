@@ -137,7 +137,7 @@ class AutoSuggestRoot extends Component<
       onKeyDown: this.handleKeyDown,
       role: 'combobox',
       value,
-      ref: forkRef(forwardRef, this.triggerRef),
+      ref: forwardRef ? forkRef(forwardRef, this.triggerRef) : this.triggerRef,
       id: this.id,
       ...props,
       neighborLocation: this.neighborLocation,
@@ -406,7 +406,7 @@ class PopperRoot extends Component<
 
   render() {
     return (
-      <Root render={Select.Popper} />
+      <Root render={Select.Menu} />
     );
   }
 }
@@ -449,13 +449,9 @@ class ListRoot extends Component<
 
     if (isLoading || isStartTypingState) return null;
 
-    return (
-      <Root render={Select.List}>
-        {suggestions.map((option) => (
-          <Children key={option} />
-        ))}
-      </Root>
-    );
+    return suggestions.map((option) => (
+      <Children key={option} />
+    ));
   }
 }
 
@@ -473,4 +469,4 @@ export const AutoSuggest = createComponent<NSAutoSuggest.Component, typeof AutoS
     List: ListRoot,
     SuggestionItem: SuggestionItemRoot,
   }],
-}, { parent: Select });
+});
