@@ -335,10 +335,7 @@ describe('AutoSuggest', () => {
     await userEvent.click(input);
     await userEvent.type(input, 'p');
 
-    expect(spy).toHaveBeenCalled();
-    const lastCall = spy.mock.calls.at(-1)!;
-    expect(lastCall[0]).toBe('p');
-    expect(lastCall[1]).toBeTruthy();
+    expect(spy).toHaveBeenLastCalledWith('p', expect.anything());
   });
 
   test('Verify has no default "Select option" placeholder', () => {

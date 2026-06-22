@@ -202,8 +202,8 @@ class AutoSuggestRoot extends Component<
     };
   }
 
-  handleChange = (value: string) => {
-    this.handlers.value(value);
+  handleChange = (value: string, event: React.SyntheticEvent<HTMLInputElement>) => {
+    this.handlers.value(value, event);
 
     if (this.changeDebounce) {
       clearTimeout(this.changeDebounce);
