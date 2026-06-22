@@ -366,7 +366,7 @@ class TriggerRoot extends Component<
             )
           : null}
         {isLoading && (
-          <Input.Addon>
+          <Input.Addon pr={size === 'l' ? 3 : 2}>
             <Spin size={size === 'l' ? 's' : 'xs'} />
           </Input.Addon>
         )}
