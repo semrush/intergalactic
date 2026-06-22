@@ -1,19 +1,31 @@
+import { Box } from '@semcore/ui/base-components';
 import type { RadarChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { getChartProps } from '../stories_props_helper';
+import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: RadarChartProps) => {
   const onClickHandler = () => {
     console.log('Clicked radar chart');
   };
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+
   return (
-    <Chart.Radar
-      {...props}
-      aria-label='Radar chart'
-      onClickRadar={onClickHandler}
-    />
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
+      <Chart.Radar
+        {...chartProps}
+        aria-label='Radar chart'
+        onClickRadar={onClickHandler}
+      />
+    </Box>
   );
 };
 

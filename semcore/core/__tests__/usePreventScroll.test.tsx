@@ -1,5 +1,5 @@
 import { cleanup, renderHook } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, afterEach, vi } from '@semcore/testing-utils/vitest';
 
 import usePreventScroll from '../src/utils/use/usePreventScroll';
 
@@ -62,6 +62,66 @@ describe('usePreventScroll', () => {
     hook2.unmount();
     expect(document.body.style.overflow).toBe('');
   });
+
+  test.sequential.each(['hidden', 'clip'])(
+    'Verify skips locking when body overflow is already %s',
+    (overflow) => {
+      const spy = vi
+        .spyOn(window, 'getComputedStyle')
+        .mockReturnValue({ paddingRight: '0px', overflow } as CSSStyleDeclaration);
+
+      const { unmount } = renderHook(() => usePreventScroll(true));
+
+      expect(document.body.style.overflow).toBe('');
+      expect(document.body.style.paddingRight).toBe('');
+      expect(document.body.style.boxSizing).toBe('');
+
+      unmount();
+      spy.mockRestore();
+    },
+  );
+
+  test.sequential.each(['hidden', 'clip'])(
+    'Verify preserves pre-existing inline overflow:%s through skip and unmount',
+    (overflow) => {
+      document.body.style.overflow = overflow;
+
+      const spy = vi
+        .spyOn(window, 'getComputedStyle')
+        .mockReturnValue({ paddingRight: '0px', overflow } as CSSStyleDeclaration);
+
+      const { unmount } = renderHook(() => usePreventScroll(true));
+
+      // Nothing should have been changed on mount
+      expect(document.body.style.overflow).toBe(overflow);
+      expect(document.body.style.paddingRight).toBe('');
+      expect(document.body.style.boxSizing).toBe('');
+
+      unmount();
+      spy.mockRestore();
+
+      // Pre-existing inline style must remain intact after unmount
+      expect(document.body.style.overflow).toBe(overflow);
+    },
+  );
+
+  test.sequential.each(['scroll', 'auto', 'visible'])(
+    'Verify does not skip locking when body overflow is %s',
+    (overflow) => {
+      const spy = vi
+        .spyOn(window, 'getComputedStyle')
+        .mockReturnValue({ paddingRight: '0px', overflow } as CSSStyleDeclaration);
+
+      const { unmount } = renderHook(() => usePreventScroll(true));
+
+      // Normal locking should still apply for non-skipped overflow values
+      expect(document.body.style.overflow).toBe('hidden');
+      expect(document.body.style.boxSizing).toBe('border-box');
+
+      unmount();
+      spy.mockRestore();
+    },
+  );
 
   test.sequential('Verify reacts to visible changing from true to false', () => {
     const { rerender, unmount } = renderHook(({ visible }) => usePreventScroll(visible), {
