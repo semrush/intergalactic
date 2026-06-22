@@ -42,7 +42,7 @@ declare namespace NSAutoSuggest {
   };
 
   type Handlers = {
-    value: (value: string) => string;
+    value: null;
   };
 
   namespace Trigger {
@@ -70,7 +70,7 @@ declare namespace NSAutoSuggest {
         neighborLocation: NeighborItemProps['neighborLocation'];
         value: string;
         role: 'combobox';
-        onChange: (value: string) => void;
+        onChange: (value: string, e: React.SyntheticEvent) => void;
         onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
         autoComplete: 'off';
         ref?: React.Ref<any>;
@@ -122,7 +122,7 @@ declare namespace NSAutoSuggest {
       type InnerProps = {
         value: Suggestion;
         selected: false;
-        onClick: () => void;
+        onClick: (e: React.SyntheticEvent) => void;
         children: React.ReactNode;
       };
 

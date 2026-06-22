@@ -56,9 +56,7 @@ class AutoSuggestRoot extends Component<
 
   protected uncontrolledProps() {
     return {
-      value: (value: string) => {
-        return value;
-      },
+      value: null,
     };
   }
 
@@ -195,14 +193,14 @@ class AutoSuggestRoot extends Component<
     return {
       value: option,
       selected: false,
-      onClick: () => this.handleChangeSelect(option),
+      onClick: (e: React.SyntheticEvent) => this.handleChangeSelect(option, e),
       children: (
         <Highlight highlight={value}>{option}</Highlight>
       ),
     };
   }
 
-  handleChange = (value: string, event: React.SyntheticEvent<HTMLInputElement>) => {
+  handleChange = (value: string, event: React.SyntheticEvent) => {
     this.handlers.value(value, event);
 
     if (this.changeDebounce) {
@@ -279,8 +277,8 @@ class AutoSuggestRoot extends Component<
     }
   };
 
-  handleChangeSelect = (value: string) => {
-    this.handlers.value(value);
+  handleChangeSelect = (value: string, e: React.SyntheticEvent) => {
+    this.handlers.value(value, e);
   };
 
   handleFocus = () => {
