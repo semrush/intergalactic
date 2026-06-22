@@ -29,8 +29,7 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-- `NoticeBubble` automatically grabs keyboard focus if there're any interactive elements beside the **Close** button. In this case, when the notice is closed, you have to set focus back on the element that triggered it ([refer to our examples](./notice-bubble-code.md)). If that element doesn't exist anymore, set focus on its parent landmark.
-- Don't trap keyboard focus in the `NoticeBubble`. Users should be able to navigate in and out freely.
+**Don't trap keyboard focus** in the `NoticeBubble`. Users should be able to navigate in and out freely.
 
 ## Other recommendations
 

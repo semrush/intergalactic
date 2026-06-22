@@ -89,9 +89,9 @@ Minimize the number of notifications to prevent banner blindness and irritation 
 
 ### Displaying duration and hiding
 
-- Users can close the notice by clicking on the **Close** button in the upper-right corner.
+- Users can close the notice by clicking on the **Close** button.
 - If there are _no_ interactive elements in the notice beside the **Close** button, hide the notice automatically after 4–10 seconds, depending on the amount of text inside.
-- If there are interactive elements in the notice beside the **Close** button, don't hide the notice until it becomes irrelevant, or the user closes it or interacts with one of its interactive elements.
+- If there are interactive elements in the notice beside the **Close** button, don't hide the notice until the user closes it or interacts with one of its interactive elements.
 - If the notice is closed automatically by a timer, hovering over it (`onMouseEnter`) or focusing (`onFocus`) on interactive elements inside it will reset the timer. The countdown will start again after moving the mouse pointer or focus leaves the notice.
 
 ### Several notices at a time
