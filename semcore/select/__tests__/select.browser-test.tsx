@@ -813,9 +813,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify result count is exposed to screen readers only', async () => {
-        const status = page.locator('#search-result');
+        const status = page.getByRole('status');
         await expect(status).toContainText('1 result found');
-        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(status).toHaveAttribute('aria-live', 'polite');
         await expect(page.locator('text="Nothing found"')).toHaveCount(0);
       });
     });
@@ -832,9 +832,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify "Nothing found" is visible', async () => {
-        const status = page.locator('#search-result');
+        const status = page.getByRole('listbox').getByText('Nothing found').first();
         await expect(status).toBeVisible();
-        await expect(status).toContainText('Nothing found');
       });
     });
 

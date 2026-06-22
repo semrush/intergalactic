@@ -60,6 +60,9 @@ export const Autosuggest: StoryObj<AutosuggestTestProps> = {
       control: { type: 'radio' },
       options: ['none', 'left', 'right', 'both'],
     },
+    onChangeLog: {
+      control: 'boolean',
+    },
   },
 };
 
@@ -97,6 +100,10 @@ export const Composition: StoryObj<AutosuggestCompositionProps> = {
     addonRight: {
       control: { type: 'select' },
       options: ['none', 'icon', 'badge', 'tag'],
+    },
+    neighborLocation: {
+      control: { type: 'radio' },
+      options: ['none', 'left', 'right', 'both'],
     },
     customStartTyping: {
       control: 'boolean',

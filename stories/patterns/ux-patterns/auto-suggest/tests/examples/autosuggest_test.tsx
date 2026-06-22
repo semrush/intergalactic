@@ -60,6 +60,7 @@ export type AutosuggestTestProps = {
   addonLeft?: AddonType;
   addonRight?: AddonType;
   button?: 'none' | 'left' | 'right' | 'both';
+  onChangeLog?: boolean;
 };
 
 export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
@@ -76,6 +77,7 @@ export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
   addonLeft: 'none',
   addonRight: 'none',
   button: 'none',
+  onChangeLog: false,
 };
 
 const fakeFetch = async (query: string, signal: AbortSignal, delay: number): Promise<string[]> => {
@@ -115,6 +117,7 @@ const Demo = (props: AutosuggestTestProps) => {
     addonLeft,
     addonRight,
     button,
+    onChangeLog,
   } = {
     ...autosuggestTestDefaultProps,
     ...props,
@@ -124,6 +127,15 @@ const Demo = (props: AutosuggestTestProps) => {
   React.useEffect(() => {
     setQuery(initialValue);
   }, [initialValue]);
+
+  const handleChange = (value: string, event?: unknown) => {
+    setQuery(value);
+    if (onChangeLog) {
+      // Manual bug check: the second arg should be the change event, but it's
+      // currently `undefined` (onChange regression after the compound extraction).
+      console.log('AutoSuggest onChange → value:', value, '| event:', event);
+    }
+  };
 
   const getSuggestions = React.useCallback(
     (query: string, signal: AbortSignal) => fakeFetch(query, signal, asyncDelay),
@@ -151,7 +163,7 @@ const Demo = (props: AutosuggestTestProps) => {
       key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}-${size}-${readOnly}-${addonLeft}-${addonRight}-${button}`}
       value={query}
       id='autosuggest'
-      onChange={setQuery}
+      onChange={handleChange}
       suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
       autoFocus={autoFocus}
       size={size}

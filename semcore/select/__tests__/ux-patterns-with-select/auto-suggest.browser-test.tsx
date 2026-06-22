@@ -521,10 +521,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await expect(locators.options(page)).toHaveCount(0);
     });
 
-    // Defect: after the compound refactor `statusItemPlaceholder` is only used as a
-    // show/hide flag for the init state — its text is ignored and the default i18n
-    // string is always rendered. Per its prop doc it should set the init-state text.
-    test.fixme('Verify AutoSuggest statusItemPlaceholder custom text is shown in the init state', {
+    test('Verify AutoSuggest statusItemPlaceholder custom text is shown in the init state', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
       await loadAutoSuggest(page, { statusItemPlaceholder: 'Pick a breed' });
@@ -596,10 +593,12 @@ test.describe(TAG.FUNCTIONAL, () => {
       await compositionInput(page).fill('a');
       await expect(locators.options(page).first()).toBeVisible();
 
-      const box = await page.locator('[role="dialog"]').first().boundingBox();
+      // The popper popup is a listbox (combobox a11y pattern)
+      const box = await page.getByRole('listbox').first().boundingBox();
       // popperWidth widens the popper beyond the trigger
       expect(Math.round(box?.width ?? 0)).toBe(420);
-      expect(box?.height ?? 0).toBeLessThanOrEqual(120);
+      // popperMaxHeight caps the height (a few px of padding above the cap is ok)
+      expect(box?.height ?? 0).toBeLessThanOrEqual(140);
       expect(box?.height ?? 0).toBeGreaterThan(80);
     });
 

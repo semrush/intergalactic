@@ -70,6 +70,16 @@ const Demo = (props: SelectBasicProps) => {
     }));
 
   const hasCustomTrigger = showLeftAddon || showRightAddon || showTriggerText;
+  const [value, setValue] = React.useState<number | number[] | null>(multiselect ? [] : null);
+
+  React.useEffect(() => {
+    setValue(multiselect ? [] : null);
+  }, [multiselect]);
+
+  const selectedTriggerText = options
+    .filter((option) => Array.isArray(value) ? value.includes(option.value) : value === option.value)
+    .map((option) => option.label)
+    .join(', ');
 
   return (
     <Flex direction='column'>
@@ -78,56 +88,73 @@ const Demo = (props: SelectBasicProps) => {
           {labelText}
         </Text>
       )}
-      <Select
-        mt={showLabel ? 2 : 0}
-        mr='auto'
-        options={!hasCustomTrigger ? options : undefined}
-        placeholder={placeholder}
-        size={size}
-        disabled={disabled}
-        state={state}
-        multiselect={multiselect}
-        interaction={interaction}
-        scrollToSelected={scrollToSelected}
-        {...restProps}
-      >
-        {hasCustomTrigger
-          ? (
-              <>
-                <Select.Trigger id='configurable-select'>
-                  {showLeftAddon && (
-                    <Select.Trigger.Addon>
-                      {leftAddonContent === 'icon' && <LinkExternalM />}
-                      {leftAddonContent === 'badge' && (
-                        <Badge bg={leftAddonBadgeBg}>{leftAddonBadgeText}</Badge>
-                      )}
-                      {leftAddonContent === 'text' && leftAddonText}
-                    </Select.Trigger.Addon>
-                  )}
-                  {showTriggerText && <Select.Trigger.Text>{triggerText}</Select.Trigger.Text>}
-                  {showRightAddon && (
-                    <Select.Trigger.Addon>
-                      {rightAddonContent === 'icon' && <LinkExternalM />}
-                      {rightAddonContent === 'badge' && (
-                        <Badge bg={rightAddonBadgeBg}>{rightAddonBadgeText}</Badge>
-                      )}
-                      {rightAddonContent === 'text' && rightAddonText}
-                    </Select.Trigger.Addon>
-                  )}
-                </Select.Trigger>
-                <Select.Menu>
-                  {options.map((option) => (
-                    <Select.Option key={option.value} value={option.value}>
-                      {option.children}
-                    </Select.Option>
-                  ))}
-                </Select.Menu>
-              </>
-            )
-          : (
-              <Select.Trigger id='configurable-select' />
-            )}
-      </Select>
+      {hasCustomTrigger
+        ? (
+            <Select
+              value={value}
+              onChange={(value: number | number[] | null) => setValue(value)}
+              size={size}
+              multiselect={multiselect}
+              interaction={interaction}
+              scrollToSelected={scrollToSelected}
+              {...restProps}
+            >
+              <Select.Trigger
+                mt={showLabel ? 2 : 0}
+                mr='auto'
+                id='configurable-select'
+                placeholder={placeholder}
+                size={size}
+                disabled={disabled}
+                state={state}
+              >
+                {showLeftAddon && (
+                  <Select.Trigger.Addon>
+                    {leftAddonContent === 'icon' && <LinkExternalM />}
+                    {leftAddonContent === 'badge' && (
+                      <Badge bg={leftAddonBadgeBg}>{leftAddonBadgeText}</Badge>
+                    )}
+                    {leftAddonContent === 'text' && leftAddonText}
+                  </Select.Trigger.Addon>
+                )}
+                <Select.Trigger.Text>
+                  {showTriggerText ? triggerText : selectedTriggerText}
+                </Select.Trigger.Text>
+                {showRightAddon && (
+                  <Select.Trigger.Addon>
+                    {rightAddonContent === 'icon' && <LinkExternalM />}
+                    {rightAddonContent === 'badge' && (
+                      <Badge bg={rightAddonBadgeBg}>{rightAddonBadgeText}</Badge>
+                    )}
+                    {rightAddonContent === 'text' && rightAddonText}
+                  </Select.Trigger.Addon>
+                )}
+              </Select.Trigger>
+              <Select.Menu>
+                {options.map((option) => (
+                  <Select.Option key={option.value} value={option.value}>
+                    {option.children}
+                  </Select.Option>
+                ))}
+              </Select.Menu>
+            </Select>
+          )
+        : (
+            <Select
+              mt={showLabel ? 2 : 0}
+              mr='auto'
+              id='configurable-select'
+              options={options}
+              placeholder={placeholder}
+              size={size}
+              disabled={disabled}
+              state={state}
+              multiselect={multiselect}
+              interaction={interaction}
+              scrollToSelected={scrollToSelected}
+              {...restProps}
+            />
+          )}
     </Flex>
   );
 };
