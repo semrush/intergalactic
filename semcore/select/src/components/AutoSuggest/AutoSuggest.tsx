@@ -412,15 +412,17 @@ class PopperRoot extends Component<
 function LoadingStateRoot(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSAutoSuggest.Popper.LoadingState.Component, typeof AutoSuggestRoot, 'PopperLoadingState'>,
 ) {
-  const { Children, isLoading } = props;
+  const { Children, isLoading, children } = props;
 
   if (!isLoading) return null;
 
-  return (
-    <Select.StatusItem state='loading' itemsCount={0}>
-      <Children />
-    </Select.StatusItem>
-  );
+  return children === undefined
+    ? (<Select.StatusItem state='loading' itemsCount={0} />)
+    : (
+        <Select.StatusItem state='loading' itemsCount={0}>
+          <Children />
+        </Select.StatusItem>
+      );
 }
 
 function StartTypingStateRoot(
