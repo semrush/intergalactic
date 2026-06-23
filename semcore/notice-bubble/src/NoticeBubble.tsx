@@ -254,18 +254,19 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
   };
 
   handleFocus = () => {
-    if (!this.timer) return;
-    this.timer.pause();
+    this.timer?.pause();
   };
 
   handleBlur = () => {
-    if (!this.timer) return;
-    this.timer.resume();
+    this.timer?.resume();
+  };
+
+  handleClick = () => {
+    this.timer?.pause();
   };
 
   handleMouseEnter = () => {
-    if (!this.timer) return;
-    this.timer.pause();
+    this.timer?.pause();
   };
 
   handleMouseLeave = () => {
@@ -323,6 +324,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeydown}
+          onClick={this.handleClick}
           role={type === 'warning' ? 'alert' : undefined}
           focusLock={focusLock}
         >
