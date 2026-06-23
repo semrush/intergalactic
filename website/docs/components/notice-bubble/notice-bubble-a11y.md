@@ -13,7 +13,7 @@ Table: Keyboard support
 | ------------- | ------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element. After the last focusable element in the dialog, moves focus to the next focusable element outside of the dialog. |
 | <nobr>`Shift + Tab`</nobr> | Moves focus to the previous focusable element. After the first focusable element in the dialog, moves focus to the previous focusable element outside of the dialog. |
-| `Esc`         | Closes the dialog when it's focused or hovered. |
+| `Esc`         | Closes the dialog when focus is within it. |
 
 ### Roles & attributes
 
