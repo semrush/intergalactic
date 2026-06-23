@@ -14,11 +14,6 @@ type BorderRadius = `${keyof Theme['semanticTokens']['radii']}-rounded`;
 
 export type BoxProps = IStyledProps & {
   /**
-   * Custom tag to render
-   * @default div
-   */
-  tag?: Intergalactic.Tag;
-  /**
    * HTML class name attribute
    */
   className?: string;
@@ -258,7 +253,7 @@ function calculateIndentStyles(props: BoxProps, scaleIndent: number, colorResolv
   });
 }
 
-export default function useBox<T extends BoxProps>(
+export default function useBox<T extends BoxProps & { tag?: Intergalactic.Tag }>(
   props: T,
   ref: React.Ref<HTMLElement>,
 ): [React.ElementType | string, any] {
