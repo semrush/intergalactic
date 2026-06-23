@@ -64,7 +64,7 @@ const Demo = (props: ExampleInputTagsProps) => {
               <InputTags.Tag.Addon>
                 <Check />
               </InputTags.Tag.Addon>
-              <InputTags.Tag.Text.Content>Circle addon text and close </InputTags.Tag.Text.Content>
+              <InputTags.Tag.Text.Content>Circle addon text and close</InputTags.Tag.Text.Content>
             </InputTags.Tag.Text>
             <InputTags.Tag.Close />
           </InputTags.Tag>
