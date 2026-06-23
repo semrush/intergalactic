@@ -12,49 +12,71 @@ const meta: Meta = {
 };
 export default meta;
 
+const commonArgs = {
+  suggestionsSource: 'sync',
+  asyncDelay: 1000,
+  size: 'm',
+  statusItemPlaceholder: 'Start typing to see options',
+  addonLeft: 'none',
+  addonRight: 'none',
+} satisfies Pick<
+  AutosuggestTestProps & AutosuggestCompositionProps,
+  'suggestionsSource' | 'asyncDelay' | 'size' | 'statusItemPlaceholder' | 'addonLeft' | 'addonRight'
+>;
+
+const commonArgTypes = {
+  suggestionsSource: {
+    control: { type: 'radio' },
+    options: ['sync', 'async'],
+  },
+  asyncDelay: {
+    control: { type: 'number', min: 0, step: 100 },
+  },
+  width: {
+    control: { type: 'number', min: 160, step: 20 },
+  },
+  placeholder: {
+    control: 'text',
+  },
+  size: {
+    control: { type: 'radio' },
+    options: ['m', 'l'],
+  },
+  statusItemPlaceholder: {
+    control: 'text',
+  },
+  addonLeft: {
+    control: { type: 'select' },
+    options: ['none', 'icon', 'badge', 'tag'],
+  },
+  addonRight: {
+    control: { type: 'select' },
+    options: ['none', 'icon', 'badge', 'tag'],
+  },
+} as const;
+
 export const Autosuggest: StoryObj<AutosuggestTestProps> = {
   render: AutosuggestTestExample,
-  args: autosuggestTestDefaultProps,
+  args: {
+    ...autosuggestTestDefaultProps,
+    ...commonArgs,
+  },
   argTypes: {
-    suggestionsSource: {
-      control: { type: 'radio' },
-      options: ['sync', 'async'],
-    },
+    ...commonArgTypes,
     initialValue: {
       control: 'text',
-    },
-    asyncDelay: {
-      control: { type: 'number', min: 0, step: 100 },
     },
     autoFocus: {
       control: 'boolean',
     },
-    width: {
-      control: { type: 'number', min: 160, step: 20 },
-    },
     withPlaceholder: {
       control: 'boolean',
-    },
-    placeholder: {
-      control: 'text',
-    },
-    size: {
-      control: { type: 'radio' },
-      options: ['m', 'l'],
     },
     readOnly: {
       control: 'boolean',
     },
-    statusItemPlaceholder: {
-      control: 'text',
-    },
-    addonLeft: {
-      control: { type: 'select' },
-      options: ['none', 'icon', 'badge', 'tag'],
-    },
-    addonRight: {
-      control: { type: 'select' },
-      options: ['none', 'icon', 'badge', 'tag'],
+    disabled: {
+      control: 'boolean',
     },
     button: {
       control: { type: 'radio' },
@@ -68,38 +90,17 @@ export const Autosuggest: StoryObj<AutosuggestTestProps> = {
 
 export const Composition: StoryObj<AutosuggestCompositionProps> = {
   render: AutosuggestCompositionExample,
-  args: autosuggestCompositionDefaultProps,
+  args: {
+    ...autosuggestCompositionDefaultProps,
+    ...commonArgs,
+  },
   argTypes: {
-    suggestionsSource: {
-      control: { type: 'radio' },
-      options: ['sync', 'async'],
-    },
-    asyncDelay: {
-      control: { type: 'number', min: 0, step: 100 },
-    },
-    size: {
-      control: { type: 'radio' },
-      options: ['m', 'l'],
-    },
-    width: {
-      control: { type: 'number', min: 160, step: 20 },
-    },
+    ...commonArgTypes,
     popperWidth: {
       control: { type: 'number', min: 0, step: 20 },
     },
     popperMaxHeight: {
       control: { type: 'number', min: 0, step: 20 },
-    },
-    statusItemPlaceholder: {
-      control: 'text',
-    },
-    addonLeft: {
-      control: { type: 'select' },
-      options: ['none', 'icon', 'badge', 'tag'],
-    },
-    addonRight: {
-      control: { type: 'select' },
-      options: ['none', 'icon', 'badge', 'tag'],
     },
     neighborLocation: {
       control: { type: 'radio' },

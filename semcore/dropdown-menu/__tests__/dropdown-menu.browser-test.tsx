@@ -703,7 +703,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(search).toBeFocused();
 
       await page.keyboard.press('Tab');
-      if (browserName == 'firefox') await page.keyboard.press('Tab'); // because in ff one additional focus on the list (bug)
       await expect(locators.item(page).nth(30)).toHaveClass(/highlighted/);
     });
 

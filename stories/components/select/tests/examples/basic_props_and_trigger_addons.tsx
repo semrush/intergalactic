@@ -6,7 +6,12 @@ import type { SelectProps } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-export type SelectBasicProps = SelectProps & {
+type SelectBasicValue = number | number[] | null;
+
+export type SelectBasicProps = Omit<
+  SelectProps<SelectBasicValue>,
+  'value' | 'defaultValue' | 'onChange' | 'options' | 'tag'
+> & {
   labelText?: string;
   showLabel?: boolean;
   optionCount?: number;
@@ -70,7 +75,7 @@ const Demo = (props: SelectBasicProps) => {
     }));
 
   const hasCustomTrigger = showLeftAddon || showRightAddon || showTriggerText;
-  const [value, setValue] = React.useState<number | number[] | null>(multiselect ? [] : null);
+  const [value, setValue] = React.useState<SelectBasicValue>(multiselect ? [] : null);
 
   React.useEffect(() => {
     setValue(multiselect ? [] : null);
@@ -92,7 +97,7 @@ const Demo = (props: SelectBasicProps) => {
         ? (
             <Select
               value={value}
-              onChange={(value: number | number[] | null) => setValue(value)}
+              onChange={setValue}
               size={size}
               multiselect={multiselect}
               interaction={interaction}

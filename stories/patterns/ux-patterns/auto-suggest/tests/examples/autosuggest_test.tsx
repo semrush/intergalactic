@@ -51,6 +51,7 @@ export type AutosuggestTestProps = {
   initialValue?: string;
   asyncDelay?: number;
   autoFocus?: boolean;
+  disabled?: boolean;
   width?: number;
   withPlaceholder?: boolean;
   placeholder?: string;
@@ -78,6 +79,7 @@ export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
   addonRight: 'none',
   button: 'none',
   onChangeLog: false,
+  disabled: false,
 };
 
 const fakeFetch = async (query: string, signal: AbortSignal, delay: number): Promise<string[]> => {
@@ -112,6 +114,7 @@ const Demo = (props: AutosuggestTestProps) => {
     withPlaceholder,
     placeholder,
     size,
+    disabled,
     readOnly,
     statusItemPlaceholder,
     addonLeft,
@@ -131,8 +134,6 @@ const Demo = (props: AutosuggestTestProps) => {
   const handleChange = (value: string, event?: unknown) => {
     setQuery(value);
     if (onChangeLog) {
-      // Manual bug check: the second arg should be the change event, but it's
-      // currently `undefined` (onChange regression after the compound extraction).
       console.log('AutoSuggest onChange → value:', value, '| event:', event);
     }
   };
@@ -142,8 +143,6 @@ const Demo = (props: AutosuggestTestProps) => {
     [asyncDelay],
   );
 
-  // Memoized so the addon component identity is stable across keystrokes and only
-  // changes when the addon type or input size changes.
   const addonLeftComponent = React.useMemo(() => buildAddon(addonLeft, size), [addonLeft, size]);
   const addonRightComponent = React.useMemo(() => buildAddon(addonRight, size), [addonRight, size]);
 
@@ -160,6 +159,7 @@ const Demo = (props: AutosuggestTestProps) => {
 
   const autoSuggestEl = (
     <AutoSuggest
+      disabled={disabled}
       key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}-${size}-${readOnly}-${addonLeft}-${addonRight}-${button}`}
       value={query}
       id='autosuggest'

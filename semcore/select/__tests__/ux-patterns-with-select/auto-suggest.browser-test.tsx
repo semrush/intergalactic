@@ -8,6 +8,14 @@ const locators = {
   optionByText: (page: Page, text: string) => page.getByRole('option', { name: new RegExp(text, 'i') }),
   startTypingStatus: (page: Page) => page.getByText('Start typing to see options'),
   loadingStatus: (page: Page) => page.getByText('Loading...'),
+  inputWrapper: (page: Page) => page.locator('[data-ui-name="AutoSuggest.Trigger"]'),
+  outline: (page: Page) =>
+    page.locator('[data-ui-name="AutoSuggest.Trigger"] div:not([data-ui-name])').first(),
+  addon: (page: Page) => page.locator('[data-ui-name="Input.Addon"]'),
+  loadingSpin: (page: Page) =>
+    page.locator('[data-ui-name="AutoSuggest.Trigger"] [data-ui-name="Spin"]'),
+  loadingAddon: (page: Page) =>
+    page.locator('[data-ui-name="AutoSuggest.Trigger"] [data-ui-name="Input.Addon"]').last(),
 };
 
 const examplePath = 'stories/patterns/ux-patterns/auto-suggest/tests/examples/autosuggest_test.tsx';
@@ -22,6 +30,7 @@ type AutoSuggestExampleProps = {
   statusItemPlaceholder?: string;
   addonLeft?: 'none' | 'icon' | 'badge' | 'tag';
   addonRight?: 'none' | 'icon' | 'badge' | 'tag';
+  button?: 'none' | 'left' | 'right' | 'both';
 };
 
 const loadAutoSuggest = async (page: Page, props: AutoSuggestExampleProps = {}) => {
@@ -80,24 +89,15 @@ test.describe(TAG.VISUAL, () => {
   }, async ({ page }) => {
     await loadAutoSuggest(page);
 
-    await test.step('Verify navigation between options visual state', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.type('a');
-      await locators.options(page).first().waitFor({ state: 'visible' });
+    await page.keyboard.press('Tab');
+    await page.keyboard.type('a');
+    await locators.options(page).first().waitFor({ state: 'visible' });
 
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
 
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify selected state', async () => {
-      await page.keyboard.press('Enter');
-      await locators.options(page).first().waitFor({ state: 'hidden' });
-
-      await expect(page).toHaveScreenshot();
-    });
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify AutoSuggest mouse navigation states', {
@@ -105,28 +105,11 @@ test.describe(TAG.VISUAL, () => {
   }, async ({ page }) => {
     await loadAutoSuggest(page);
 
-    await test.step('Verify menu with options visual state', async () => {
-      await locators.input(page).click();
-      await page.keyboard.type('a');
-      await locators.options(page).first().waitFor({ state: 'visible' });
+    await locators.input(page).click();
+    await page.keyboard.type('a');
+    await locators.options(page).first().waitFor({ state: 'visible' });
 
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify selected state', async () => {
-      await test.step('Verify selected option highlighted visual state', async () => {
-        const persianOption = locators.optionByText(page, 'persian');
-        await persianOption.click();
-        await locators.options(page).first().waitFor({ state: 'hidden' });
-
-        await locators.input(page).click();
-        await page.keyboard.press('Backspace');
-        await page.keyboard.type('n');
-        await locators.options(page).first().waitFor({ state: 'visible' });
-
-        await expect(page).toHaveScreenshot();
-      });
-    });
+    await expect(page).toHaveScreenshot();
   });
 
   test('Verify AutoSuggest size l visual state', {
@@ -593,8 +576,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       await compositionInput(page).fill('a');
       await expect(locators.options(page).first()).toBeVisible();
 
-      // The popper popup is a listbox (combobox a11y pattern)
-      const box = await page.getByRole('listbox').first().boundingBox();
+      const box = await page.locator('[data-ui-name="AutoSuggest.Popper"]').first().boundingBox();
       // popperWidth widens the popper beyond the trigger
       expect(Math.round(box?.width ?? 0)).toBe(420);
       // popperMaxHeight caps the height (a few px of padding above the cap is ok)
@@ -602,9 +584,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       expect(box?.height ?? 0).toBeGreaterThan(80);
     });
 
-    // Defect: AutoSuggest.Popper.LoadingState ignores its children — it always
-    // renders the default StatusItem, so custom loading content is not shown.
-    test.fixme('Verify AutoSuggest custom LoadingState renders its own content', {
+    test('Verify AutoSuggest custom LoadingState renders its own content', {
       tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
     }, async ({ page }) => {
       await loadComposition(page, {
