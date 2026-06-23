@@ -6,7 +6,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
-import InputNumber, { type InputNumberValueProps } from '@semcore/input-number';
+import InputNumber, { type NSInputNumber } from '@semcore/input-number';
 import Spin from '@semcore/spin';
 import type { TooltipProps } from '@semcore/tooltip';
 import React from 'react';
@@ -69,7 +69,7 @@ type ConfirmControlAsProps = ControlAsProps & {
 type CancelControlAsProps = ControlAsProps & {
   onCancel?: OnCancel;
 };
-type NumberValueAsProps = InputNumberValueProps & {
+type NumberValueAsProps = NSInputNumber.Value.Props & {
   increment?: (event: WheelEvent) => void;
   decrement?: (event: WheelEvent) => void;
 };

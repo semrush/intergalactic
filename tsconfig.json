@@ -25,7 +25,7 @@
       "@semcore/ui/*": ["${configDir}/semcore/*/src"],
       "@semcore/*": ["${configDir}/semcore/*/src"],
       "@tools/*": ["${configDir}/tools/*"]
-    }
+    },
   },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
   "include": ["semcore", "tools", "stories", "playground"],
