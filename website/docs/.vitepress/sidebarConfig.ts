@@ -109,10 +109,30 @@ export const sideBarConfig: SidebarConfig = [
           },
         ],
       },
+    ],
+  },
+  {
+    text: 'Content',
+    items: [
       {
-        text: 'Content',
+        link: '/content/content-principles/content-principles',
+        activeMatch: '/content/content-principles/',
+        text: 'Content principles',
+      },
+      {
+        text: 'Style & grammar',
         collapsed: true,
         items: [
+          {
+            link: '/content/voice-and-style/voice-and-style',
+            activeMatch: '/content/voice-and-style/',
+            text: 'Voice and style',
+          },
+          {
+            link: '/content/grammar/grammar',
+            activeMatch: '/content/grammar/',
+            text: 'Grammar',
+          },
           {
             link: '/content/capitalization/capitalization',
             activeMatch: '/content/capitalization/',
@@ -142,6 +162,68 @@ export const sideBarConfig: SidebarConfig = [
             link: '/content/units-of-measurement/units-of-measurement',
             activeMatch: '/content/units-of-measurement/',
             text: 'Units of measurement',
+          },
+        ],
+      },
+      {
+        text: 'UX patterns',
+        collapsed: true,
+        items: [
+          {
+            link: '/content/onboarding/onboarding',
+            activeMatch: '/content/onboarding/',
+            text: 'Onboarding',
+          },
+          {
+            link: '/content/pricing-and-sales/pricing-and-sales',
+            activeMatch: '/content/pricing-and-sales/',
+            text: 'Pricing and sales',
+          },
+          {
+            link: '/content/feedback/feedback',
+            activeMatch: '/content/feedback/',
+            text: 'Feedback',
+          },
+          {
+            link: '/content/system-states/system-states',
+            activeMatch: '/content/system-states/',
+            text: 'System states',
+          },
+          {
+            link: '/content/warnings/warnings',
+            activeMatch: '/content/warnings/',
+            text: 'Warnings',
+          },
+          {
+            link: '/content/errors/errors',
+            activeMatch: '/content/errors/',
+            text: 'Errors',
+          },
+          {
+            link: '/content/lists/lists',
+            activeMatch: '/content/lists/',
+            text: 'Lists',
+          },
+          {
+            link: '/content/modals/modals',
+            activeMatch: '/content/modals/',
+            text: 'Modals',
+          },
+        ],
+      },
+      {
+        text: 'UI elements',
+        collapsed: true,
+        items: [
+          {
+            link: '/content/placeholders/placeholders',
+            activeMatch: '/content/placeholders/',
+            text: 'Placeholders',
+          },
+          {
+            link: '/content/buttons/buttons',
+            activeMatch: '/content/buttons/',
+            text: 'Buttons',
           },
         ],
       },
