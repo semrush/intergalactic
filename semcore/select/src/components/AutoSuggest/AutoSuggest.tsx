@@ -227,7 +227,10 @@ class AutoSuggestRoot extends Component<
           const abortSignal = this.abortController.signal;
 
           const filteredSuggestions = await suggestions(value, abortSignal);
-          this.setState({ suggestions: filteredSuggestions, isLoading: false });
+
+          if (!this.abortController.signal.aborted) {
+            this.setState({ suggestions: filteredSuggestions, isLoading: false });
+          }
         }
 
         if (this.state.openOnChanges) {
@@ -346,7 +349,7 @@ class TriggerRoot extends Component<
       <Root render={Select.Trigger}>
         {AddonLeft
           ? (
-              <Input.Addon>
+              <Input.Addon pl={size === 'l' ? 3 : 2}>
                 <AddonLeft />
               </Input.Addon>
             )
@@ -354,7 +357,7 @@ class TriggerRoot extends Component<
         <Children />
         {AddonRight
           ? (
-              <Input.Addon>
+              <Input.Addon pr={isLoading ? undefined : (size === 'l' ? 3 : 2)}>
                 <AddonRight />
               </Input.Addon>
             )
