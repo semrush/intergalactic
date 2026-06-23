@@ -70,7 +70,7 @@ const Demo = (props: ExampleInputTagsProps) => {
                   background: '#2595e4',
                 }}
               />
-              <InputTags.Tag.Addon w={props.addonWidth}>
+              <InputTags.Tag.Addon>
                 <Check />
               </InputTags.Tag.Addon>
               <InputTags.Tag.Text.Content {...textContentProps}>
