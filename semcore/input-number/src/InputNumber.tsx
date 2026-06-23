@@ -182,19 +182,11 @@ class Value extends Component<
     };
   };
 
-  getDecimalPlaces(value: number): number {
-    if (Number.isInteger(value)) {
-      return 0;
-    }
-
-    const [, decimals = ''] = value.toString().split('.');
-    return decimals.length;
-  }
-
   round(value: number, step: number) {
-    const decimals = step.toString().split('.')[1]?.length ?? 0;
-
-    return Number(value.toFixed(decimals));
+    const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
+    return countDecimals === 0
+      ? value
+      : Number(value.toPrecision(countDecimals));
   }
 
   handleValidation = (event: React.FocusEvent<HTMLInputElement>) => {
