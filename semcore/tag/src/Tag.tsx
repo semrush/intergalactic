@@ -89,13 +89,25 @@ class RootTag extends Component<
     const isInteractive = !disabled && interactive;
 
     // By default, Tag.Text has an enabled ellipsis, but to use tags inside Input.Tags, we need to wrap the content without an ellipsis.
-    const advancedMode = isAdvanceMode(
+    const onlyTextContent = isAdvanceMode(
       Children,
       [
         'InputTags.Tag.Text.Content',
       ],
       true,
     );
+
+    // We shouldn't wrap in text if it has Circle or Addon
+    const hasAddonOrCircle = isAdvanceMode(
+      Children,
+      [
+        'InputTags.Tag.Circle',
+        'InputTags.Tag.Addon',
+      ],
+      true,
+    );
+
+    const advancedMode = onlyTextContent || hasAddonOrCircle;
 
     return sstyled(styles)(
       <STag
@@ -110,11 +122,19 @@ class RootTag extends Component<
         ref={this.tagRef}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-        {advancedMode ? <Tag.Text ellipsis={false}><Children /></Tag.Text> : addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
+        {advancedMode
+          ? (hasAddonOrCircle ? <Children /> : <Tag.Text ellipsis={false}><Children /></Tag.Text>)
+          : addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
         {addonRight ? <Tag.Addon tag={addonRight} /> : null}
       </STag>,
     );
   }
+}
+
+function TagTextNotEllipsis(props: any) {
+  return (
+    <Tag.Text ellipsis={false}>{props.childen}</Tag.Text>
+  );
 }
 
 class RootTagContainer extends Component<
