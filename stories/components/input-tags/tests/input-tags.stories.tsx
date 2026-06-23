@@ -80,6 +80,18 @@ export const TagsWithAddons: StoryObj<typeof defaultPropsEmail> = {
       control: { type: 'select' },
       options: ['gray-500', 'blue-500', 'green-500', 'salad-500', 'orange-500', 'yellow-500', 'grredeen-500', 'pink-500', 'violet-500', 'white-500'],
     },
+    textContentWidth: {
+      control: { type: 'number' },
+    },
+    ellipsis: {
+      control: { type: 'select' },
+      options: ['default', 'enabled', 'disabled'],
+      mapping: {
+        default: undefined,
+        enabled: true,
+        disabled: false,
+      },
+    },
   },
   args: defaultPropsEmail,
 };
