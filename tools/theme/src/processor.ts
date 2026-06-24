@@ -60,19 +60,21 @@ for (const theme of themes) {
     await writeIfChanged(`lib/highlights-${theme}.js`, tokensToJs(highlightsTokens));
   }
 
-  if (theme === defaultTheme) {
-    const pandaPreset = toPandaPreset(config);
+  if (!process.argv.includes('--watch')) {
+    if (theme === defaultTheme) {
+      const pandaPreset = toPandaPreset(config);
 
-    await writeIfChanged('lib/panda-preset.js', pandaPreset);
-    await writeIfChanged('lib/panda-preset.ts', pandaPreset);
+      await writeIfChanged('lib/panda-preset.js', pandaPreset);
+      await writeIfChanged('lib/panda-preset.ts', pandaPreset);
 
-    const usages = await processStyles();
+      const usages = await processStyles();
 
-    await processTokensToDocs(usages, {
-      basic: baseTokens,
-      semantic: semanticTokens,
-      highlight: highlightsTokens,
-    });
+      await processTokensToDocs(usages, {
+        basic: baseTokens,
+        semantic: semanticTokens,
+        highlight: highlightsTokens,
+      });
+    }
   }
 }
 

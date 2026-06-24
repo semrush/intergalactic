@@ -1,7 +1,7 @@
 ---
 title: Spin
 fileSource: spin
-tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Example('spin-code'), Changelog('spin-changelog')
+tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Examples('spin-code'), Changelog('spin-changelog')
 ---
 
 ## Spin
@@ -13,6 +13,6 @@ import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 
-<TypesView type="SpinProps" :types={...types} />
+<TypesView type="NSSpin.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

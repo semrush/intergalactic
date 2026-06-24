@@ -6,19 +6,30 @@ import React from 'react';
 
 // @ts-ignore
 import { Bubble, calculateBubbleDomain } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChart.type';
+import type { BubbleChartData, BubbleChartProps, BubbleChartType, BubbleChartDefaultProps } from './BubbleChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class BubbleChartComponent extends AbstractChart<
   BubbleChartData,
   BubbleChartProps,
-  typeof BubbleChartComponent.enhance
+  typeof BubbleChartComponent.enhance,
+  {},
+  ChartState,
+  BubbleChartDefaultProps
 > {
   static displayName = 'Chart.Bubble';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
 
   protected get dataKeys(): string[] {
     const { data } = this.props;
@@ -61,7 +72,8 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   get xScale() {
-    const { xScale, marginY = 30, plotWidth, data } = this.asProps;
+    const { xScale, marginY = 30, data } = this.asProps;
+    const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
@@ -74,7 +86,8 @@ class BubbleChartComponent extends AbstractChart<
   }
 
   get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30, plotHeight, data } = this.asProps;
+    const { yScale, marginX = 30, data } = this.asProps;
+    const { plotHeight } = this;
 
     if (yScale) {
       return yScale;
@@ -141,4 +154,12 @@ class BubbleChartComponent extends AbstractChart<
   }
 }
 
-export const BubbleChart: BubbleChartType = createComponent(BubbleChartComponent);
+/**
+ * BubbleChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/bubble-chart/bubble-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/bubble-chart/bubble-chart-code/|Examples}
+ */
+export const BubbleChart = createComponent<
+  BubbleChartType,
+  typeof BubbleChartComponent
+>(BubbleChartComponent);

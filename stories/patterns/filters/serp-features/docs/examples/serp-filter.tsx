@@ -67,10 +67,15 @@ const Demo = () => {
     [search],
   );
 
+  const filteredValues = React.useMemo(() => {
+    return options.map((o) => o.value);
+  }, [options]);
+
   const handleChangeVisible = React.useCallback(
     (visible: boolean) => {
       setVisible(visible);
       if (visible === true) {
+        setValue(triggerValue);
         setLoading(true);
         setTimeout(() => {
           setMessage('Loading...');
@@ -83,7 +88,7 @@ const Demo = () => {
         setValue([]);
       }
     },
-    [setLoading, setMessage, setVisible, setValue],
+    [setLoading, setMessage, setVisible, setValue, triggerValue],
   );
 
   const handleReloadClick = React.useCallback(() => {
@@ -96,10 +101,6 @@ const Demo = () => {
       triggerRef.current?.focus();
     }, 1000);
   }, [triggerValue, triggerRef, setLoading, setMessage, setError, setValue]);
-
-  const filteredValues = React.useMemo(() => {
-    return options.map((o) => o.value);
-  }, [options]);
 
   const handleSelectAll = React.useCallback(() => {
     const values = new Set([...value, ...filteredValues]);
@@ -196,17 +197,16 @@ const Demo = () => {
             onChange={setSearch}
             aria-describedby={search ? 'search-result' : undefined}
           />
-          {(loading || error) && (
-            <Flex direction='column' alignItems='start' gap={1} p={2}>
-              <Text size={200} use='secondary' aria-live='polite' role='status'>
+          {loading && (<Select.StatusItem itemsCount={0} state='loading' />)}
+          {!loading && error && (
+            <Select.StatusItem itemsCount={0} state='error' id='search-result' tag={Flex} direction='column' alignItems='start' gap={1}>
+              <span aria-live='polite' role='status'>
                 {message}
-              </Text>
-              {error && !loading && (
-                <ButtonLink addonLeft={ReloadIcon} onClick={handleReloadClick}>
-                  Reload
-                </ButtonLink>
-              )}
-            </Flex>
+              </span>
+              <ButtonLink addonLeft={ReloadIcon} onClick={handleReloadClick}>
+                Reload
+              </ButtonLink>
+            </Select.StatusItem>
           )}
           {!loading && !error && (
             <>
@@ -247,35 +247,12 @@ const Demo = () => {
                           </Select.Option>
                         );
                       })}
-                      {options.length
-                        ? (
-                            <ScreenReaderOnly id='search-result'>
-                              {options.length}
-                              {' '}
-                              result
-                              {options.length > 1 && 's'}
-                              {' '}
-                              found
-                            </ScreenReaderOnly>
-                          )
-                        : (
-                            <Text
-                              tag='div'
-                              key='Nothing'
-                              id='search-result'
-                              use='secondary'
-                              size={200}
-                              p={2}
-                            >
-                              Nothing found
-                            </Text>
-                          )}
                     </ScrollArea.Container>
                     <ScrollArea.Bar orientation='vertical' />
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
+                <Select.StatusItem itemsCount={options.length} />
 
-                {/* <Select.Divider mt={0} role={''} use:aria-orientation={undefined} /> */}
                 {options.length > 0 && (
                   <Select.Option
                     value='%none%'
@@ -288,7 +265,7 @@ const Demo = () => {
                   </Select.Option>
                 )}
               </div>
-              <Box my={3} mx={2}>
+              <Box my={1} mx={2}>
                 <Button use='primary' w='100%' onClick={handleApply} ref={applyButtonRef}>
                   Apply
                 </Button>

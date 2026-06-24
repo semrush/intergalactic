@@ -8,8 +8,8 @@ const Demo = () => {
   return (
     <Flex gap={5}>
       <MailSent height={40} width={40} />
-      <MailSent primaryColor='#ff7ad1' />
-      <Congrats primaryColor='#ff7ad1' secondaryColor='#000' height={140} width={140} />
+      <MailSent primaryColor='illustration-violet' />
+      <Congrats primaryColor='illustration-violet' secondaryColor='gray-800' height={140} width={140} />
     </Flex>
   );
 };

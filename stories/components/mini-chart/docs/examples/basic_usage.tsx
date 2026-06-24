@@ -17,7 +17,7 @@ const Demo = () => {
           value={3}
           w='80px'
           animate={false}
-          color='chart-palette-order-5'
+          color='chart-palette-order-3'
         />
         <br />
         <MiniChart.ScoreLine segments={3} value={2} />
@@ -46,7 +46,7 @@ const Demo = () => {
           data={[20, 50, 80, 65, 33, 12, 15, 18]}
           w='120px'
           h='80px'
-          lastPointColor='chart-palette-order-15'
+          lastPointColor='red-400'
           aria-hidden
         />
         <br />
@@ -55,7 +55,7 @@ const Demo = () => {
           h='40px'
           data={[20, 50, 33, 80]}
           animate={false}
-          lastPointColor='chart-palette-order-2'
+          lastPointColor='red-400'
           aria-hidden
         />
         <br />

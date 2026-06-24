@@ -1,6 +1,6 @@
 ---
 title: Form
-tabs: Design('form'), A11y('form-a11y'), Example('form-code')
+tabs: Design('form'), A11y('form-a11y'), Examples('form-code')
 ---
 
 ## Description
@@ -63,7 +63,7 @@ Table: Margins between inputs
 
 ## Form validation
 
-Find detailed information about form validation in [Validation](/patterns/validation-form/validation-form).
+Find detailed information about form validation in [Validation](/patterns/validation-form/validation-form) guide.
 
 ## Usage in UX/UI
 

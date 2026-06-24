@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { voiceOverTest as voiceOverBase, nvdaTest as nvdaBase } from '@guidepup/playwright';
+import { nvdaTest as nvdaBase } from '@guidepup/playwright';
 import { test as base } from '@playwright/test';
 import { feature, label, story, suite } from 'allure-js-commons';
 import type axe from 'axe-core';
@@ -71,10 +71,6 @@ const test = base.extend<{ testHook: void }>({
   },
 });
 
-const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
-  testHook: [beforeEachTests, { auto: true }],
-});
-
 const nvdaTest = nvdaBase.extend<{ testHook: void; nvdaPageSetup: void }>({
   testHook: [beforeEachTests, { auto: true }],
   nvdaPageSetup: [
@@ -94,6 +90,5 @@ const nvdaTest = nvdaBase.extend<{ testHook: void; nvdaPageSetup: void }>({
 export type { Page };
 // eslint-disable-next-line import/export
 export * from '@playwright/test';
-export * from '@guidepup/playwright';
 // eslint-disable-next-line import/export
-export { AxeBuilder, test, voiceOverTest, nvdaTest };
+export { AxeBuilder, test, nvdaTest };

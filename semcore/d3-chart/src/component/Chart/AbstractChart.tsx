@@ -1,7 +1,11 @@
 import { Flex, Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { Component, Root, sstyled } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
@@ -23,6 +27,9 @@ export type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
   highlightedLine: number;
   withTrend: boolean;
+
+  plotWidth: number;
+  plotHeight: number;
 };
 
 export const NOT_A_VALUE = 'n/a';
@@ -31,16 +38,11 @@ export abstract class AbstractChart<
   Data extends ListData | ObjectData,
   Props extends BaseChartProps<Data>,
   Enhancers extends readonly ((...args: any[]) => any)[] = [],
-  DefaultProps = {},
+  InnerProps = {},
   State extends ChartState = ChartState,
-> extends Component<Props, Enhancers, Readonly<{}>, DefaultProps, State> {
+  DefaultProps extends Intergalactic.InternalTypings.ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
+> extends Component<Props, Enhancers, Readonly<{}>, InnerProps, State, DefaultProps> {
   public static style = style;
-  public static defaultProps: Partial<BaseChartProps<any>> = {
-    direction: 'column',
-    showXAxis: true,
-    showYAxis: true,
-    showTooltip: true,
-  };
 
   /**
    * Padding from the end's of chart to the container (except axis sides)
@@ -49,8 +51,19 @@ export abstract class AbstractChart<
 
   protected dataHints = makeDataHintsContainer();
 
+  protected chartRef = React.createRef<HTMLElement>();
+  protected legendRef = React.createRef<HTMLDivElement>();
+
+  private observer: ResizeObserver | undefined;
+
   constructor(props: Props) {
     super(props);
+
+    this.handleResize = trottle(this.handleResize.bind(this));
+
+    if (canUseDOM() && (!props.plotWidth || !props.plotHeight)) {
+      this.observer = new ResizeObserver(this.handleResize);
+    }
 
     this.setHighlightedLine = this.setHighlightedLine.bind(this);
     this.handleChangeVisible = this.handleChangeVisible.bind(this);
@@ -64,13 +77,31 @@ export abstract class AbstractChart<
       dataDefinitions: this.getDefaultDataDefinitions(),
       highlightedLine: -1,
       withTrend: false,
+      plotWidth: 0,
+      plotHeight: 0,
     } as State;
+  }
+
+  public componentDidMount(): void {
+    this.observer?.observe(this.chartRef.current!);
   }
 
   public componentDidUpdate(prevProps: Props) {
     if (prevProps.data !== this.props.data || prevProps.legendProps !== this.props.legendProps) {
       this.setState({ dataDefinitions: this.getDefaultDataDefinitions() });
     }
+  }
+
+  public componentWillUnmount(): void {
+    this.observer?.disconnect();
+  }
+
+  protected get plotWidth() {
+    return this.asProps.plotWidth ?? this.state.plotWidth;
+  }
+
+  protected get plotHeight() {
+    return this.asProps.plotHeight ?? this.state.plotHeight;
   }
 
   protected getDefaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
@@ -402,7 +433,7 @@ export abstract class AbstractChart<
     };
 
     if (lProps.legendType === 'Table') {
-      return <ChartLegendTable {...(commonLegendProps as LegendTableProps)} />;
+      return <ChartLegendTable {...(commonLegendProps as LegendTableProps)} ref={this.legendRef} />;
     }
 
     if ('withTrend' in lProps) {
@@ -414,10 +445,10 @@ export abstract class AbstractChart<
         onTrendIsVisibleChange: this.handleWithTrendChange,
       };
 
-      return <ChartLegend {...(flexLegendProps as LegendFlexProps)} />;
+      return <ChartLegend {...(flexLegendProps as LegendFlexProps)} ref={this.legendRef} />;
     }
 
-    return <ChartLegend {...(commonLegendProps as LegendFlexProps)} />;
+    return <ChartLegend {...(commonLegendProps as LegendFlexProps)} ref={this.legendRef} />;
   }
 
   protected renderAxis(): React.ReactNode {
@@ -535,13 +566,14 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip } =
+    const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip } =
       this.asProps;
+    const { plotWidth, plotHeight } = this;
 
     const { extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group'>
+      <SChart render={Flex} gap={5} __excludeProps={['data', 'eventEmitter']} role='group' ref={this.chartRef}>
         {this.renderLegend()}
         <Plot
           data={data}
@@ -561,5 +593,47 @@ export abstract class AbstractChart<
         </Plot>
       </SChart>,
     );
+  }
+
+  private handleResize(entities: ResizeObserverEntry[]) {
+    const { aspect, direction, onResize, plotWidth, plotHeight } = this.asProps;
+    const chartElement = this.chartRef.current;
+
+    if (!chartElement) return;
+
+    const legendElement = this.legendRef.current;
+    const computedStyles = window.getComputedStyle(chartElement);
+
+    let width: number = chartElement.clientWidth;
+    let height: number = chartElement.clientHeight;
+
+    if (legendElement) {
+      const gap: number = cssToIntDefault(computedStyles.gap, 0);
+      if (direction?.includes('column')) {
+        height = height - legendElement.clientHeight - gap;
+      } else {
+        width = width - legendElement.clientWidth - gap;
+      }
+    }
+
+    if (aspect) {
+      const minHeight = cssToIntDefault(computedStyles.getPropertyValue('min-height'), -1);
+      const maxHeight = cssToIntDefault(computedStyles.getPropertyValue('max-height'), -1);
+      height = width / aspect;
+
+      if (minHeight !== -1 && height < minHeight) {
+        height = minHeight;
+      }
+      if (maxHeight !== -1 && height > maxHeight) {
+        height = maxHeight;
+      }
+    }
+
+    this.setState({
+      plotWidth: plotWidth ? 0 : width,
+      plotHeight: plotHeight ? 0 : height,
+    });
+
+    onResize?.([width, height], entities);
   }
 }

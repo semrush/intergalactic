@@ -1,7 +1,7 @@
 ---
 title: Notice
 fileSource: notice
-tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
+tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Examples('notice-code'), Changelog('notice-changelog')
 ---
 
 <Playground for="Notice" />
@@ -51,21 +51,6 @@ Table: Notice themes
 | **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. ![](static/warning.png)                                                                                                              |
 | **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. ![](static/danger.png)                                                                                                                              |
 
-## Appearance
-
-### Margins and paddings
-
-If your `Notice` has an icon and/or the **Close** button, add `2px` top and bottom margins to the title, and `4px` margins to the main text to align the elements visually.
-
-![](static/notice-margins.png)
-
-The notice can be used as a standalone component or embedded within other components. _For instance, it can be placed inside dropdowns and modal windows._
-
-The internal paddings of the notice match those of the component it's nested within.
-
-![](static/notice-component.png)
-![](static/notice-component-2.png)
-
 ## Maximum text width
 
 Avoid stretching the text to the full width of the notice, particularly when the notice spans the entire screen width. Fully stretched text is inconvenient to read.
@@ -113,10 +98,6 @@ If the notice only relates to the component, position it at the top or bottom of
 
 ## Interaction
 
-### Displaying
-
-The notice should appear instantaneously without any delays or visual effects. It should be displayed immediately upon the loading of the page or component.
-
 ### Lifespan
 
 Since the notice serves as a temporary notification, it should have a predefined "lifespan." The lifespan can be determined by the following rules:
@@ -134,7 +115,7 @@ Since the notice serves as a temporary notification, it should have a predefined
 
 ### Animation
 
-When hiding, the notice should smoothly fade out with a duration of `250ms`. The page content should transition to fill the space vacated by the notice within `250ms`.
+When hiding, the notice should smoothly fade out with a duration of `200ms`. The page content should transition to fill the space vacated by the notice within `200ms`.
 
 ## Custom notice
 
@@ -168,6 +149,10 @@ Avoid using an advertising notice for an "empty" state on a page or inside a com
 - In certain cases, notices with the same text may have different colors to convey different meanings.
 - Typically, notices are replaced by others based on priority: danger > warning > success > info.
 - Be concise and avoid overshadowing other widgets or report functionalities. Strive to convey the message to users within two lines for notices, and within four lines for notices within blocks or other components.
+
+### Notice for invalid states
+
+For the details on positioning the message, refer to the [Notice](/patterns/validation-form/validation-form#notice-for-invalid-state).
 
 ### Incorrect usage
 

@@ -224,15 +224,13 @@ function Title(props) {
 
 function Back(props) {
   const SBack = Root;
-  const SBackText = ButtonLink.Text;
   const { Children, styles } = props;
 
   return sstyled(styles)(
     <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft}>
-      {/* <ButtonLink.Addon><ArrowLeft /></ButtonLink.Addon> */}
-      <SBackText>
+      <ButtonLink.Text ellipsis>
         <Children />
-      </SBackText>
+      </ButtonLink.Text>
     </SBack>,
   );
 }
@@ -254,6 +252,11 @@ function Header(props) {
   );
 }
 
+/**
+ * SidePanel
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-code/|Examples}
+ */
 const SidePanel = createComponent(RootSidePanel, {
   Overlay,
   Panel,

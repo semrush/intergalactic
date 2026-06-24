@@ -1,7 +1,7 @@
 ---
 title: Select / Multiselect
 fileSource: select
-tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
+tabs: Design('select'), A11y('select-a11y'), API('select-api'), Examples('select-code'), Changelog('select-changelog')
 ---
 
 ## Description
@@ -121,18 +121,6 @@ When the list is loading or data is being fetched, replace the `Chevron` icon wi
 If the list includes a search input, the input automatically receives focus when the dropdown is opened.
 
 As the user enters a value into the input, only the items that match the input should remain in the list. Don’t highlight these items in this case.
-
-### List item states
-
-Table: Select menu item states
-
-| State               | Appearance                        | Tokens                                |
-| ------------------- | --------------------------------- | ------------------------------------- |
-| Default             | ![](static/item-default.png)      | `--dropdown-menu-item`                |
-| Hover               | ![](static/item-hover.png)        | `--dropdown-menu-item-hover`          |
-| Selected            | ![](static/item-active.png)       | `--dropdown-menu-item-selected`       |
-| Selected with hover | ![](static/item-active-hover.png) | `--dropdown-menu-item-selected-hover` |
-| Disabled            | ![](static/item-disabled.png)     | `--disabled-opacity`                  |
 
 ### Pinned item
 

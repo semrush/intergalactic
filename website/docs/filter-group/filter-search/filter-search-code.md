@@ -1,6 +1,6 @@
 ---
 title: Filter Search
-tabs: Design('filter-search'), Example('filter-search-code')
+tabs: Design('filter-search'), Examples('filter-search-code')
 ---
 
 ## Dynamic search

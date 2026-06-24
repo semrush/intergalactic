@@ -1,6 +1,7 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { render, cleanup, waitFor, userEvent } from '@semcore/testing-utils/testing-library';
+import { expect, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import AddFilter from '../src';
@@ -9,7 +10,7 @@ describe('AddFilter Dependency imports', () => {
   runDependencyCheckTests('add-filter');
 });
 
-describe('AddFilter', () => {
+describe('AddFilter', (test) => {
   beforeEach(() => {
     cleanup();
 
@@ -20,6 +21,49 @@ describe('AddFilter', () => {
       disconnect: () => null,
     });
     window.IntersectionObserver = mockIntersectionObserver;
+  });
+
+  test('Verify data-ui-name', () => {
+    const addFilter = (
+      <AddFilter
+        filterData={{ name: 'John', color: 'blue', keywords: 'growth' }}
+        visibleFilters={['name', 'color', 'keywords']}
+        onClearAll={() => {}}
+      >
+        <AddFilter.Input name='name' displayName='Name'>
+          <AddFilter.Input.Value />
+        </AddFilter.Input>
+
+        <AddFilter.Select
+          name='color'
+          disablePortal
+          visible
+        >
+          <AddFilter.Select.Trigger aria-label='Color' placeholder='Color' />
+          <AddFilter.Select.Menu>
+            <AddFilter.Select.Option value='blue'>Blue</AddFilter.Select.Option>
+          </AddFilter.Select.Menu>
+        </AddFilter.Select>
+
+        <AddFilter.Dropdown
+          name='keywords'
+          disablePortal
+          visible
+        >
+          <AddFilter.Dropdown.Trigger placeholder='Keywords' onClear={() => {}}>
+            Keywords
+          </AddFilter.Dropdown.Trigger>
+          <AddFilter.Dropdown.Popper aria-label='Keywords'>
+            Dropdown content
+          </AddFilter.Dropdown.Popper>
+        </AddFilter.Dropdown>
+      </AddFilter>
+    );
+
+    const { container } = render(addFilter);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
   });
 
   test('should render two menuitems in dropdown with displayName as text', async () => {
@@ -34,7 +78,7 @@ describe('AddFilter', () => {
       </AddFilter>,
     );
 
-    fireEvent.click(getByText('Add filter'));
+    await userEvent.click(getByText('Add filter'));
 
     await waitFor(() => {
       expect(queryByText('Name')).toBeInTheDocument();
@@ -54,11 +98,56 @@ describe('AddFilter', () => {
       </AddFilter>,
     );
 
-    fireEvent.click(getByText('Add filter'));
+    await userEvent.click(getByText('Add filter'));
 
     await waitFor(() => {
       expect(getByText('name')).toBeInTheDocument();
       expect(getByText('fullname')).toBeInTheDocument();
+    });
+  });
+
+  test('should open Select and Dropdown filters after mount timer', async () => {
+    const selectVisibleChange = vi.fn();
+    const dropdownVisibleChange = vi.fn();
+
+    const { queryByText, getByText } = render(
+      <>
+        <AddFilter.Select
+          name='color'
+          disablePortal
+          onVisibleChange={selectVisibleChange}
+        >
+          <AddFilter.Select.Trigger aria-label='Color' placeholder='Color' />
+          <AddFilter.Select.Menu>
+            <AddFilter.Select.Option value='blue'>Blue</AddFilter.Select.Option>
+          </AddFilter.Select.Menu>
+        </AddFilter.Select>
+
+        <AddFilter.Dropdown
+          name='keywords'
+          disablePortal
+          onVisibleChange={dropdownVisibleChange}
+        >
+          <AddFilter.Dropdown.Trigger placeholder='Keywords' onClear={() => {}}>
+            Keywords
+          </AddFilter.Dropdown.Trigger>
+          <AddFilter.Dropdown.Popper aria-label='Keywords'>
+            Dropdown content
+          </AddFilter.Dropdown.Popper>
+        </AddFilter.Dropdown>
+      </>,
+    );
+
+    expect(queryByText('Blue')).not.toBeInTheDocument();
+    expect(queryByText('Dropdown content')).not.toBeInTheDocument();
+    expect(selectVisibleChange).not.toHaveBeenCalled();
+    expect(dropdownVisibleChange).not.toHaveBeenCalled();
+
+    await waitFor(() => {
+      expect(selectVisibleChange).toHaveBeenCalledWith(true);
+      expect(dropdownVisibleChange).toHaveBeenCalledWith(true);
+      expect(getByText('Blue')).toBeInTheDocument();
+      expect(getByText('Dropdown content')).toBeInTheDocument();
     });
   });
 });

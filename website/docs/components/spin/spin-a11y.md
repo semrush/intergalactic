@@ -1,8 +1,7 @@
 ---
 title: Spin
 fileSource: spin
-a11y: AA
-tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Example('spin-code'), Changelog('spin-changelog')
+tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Examples('spin-code'), Changelog('spin-changelog')
 ---
 
 ## What component has

@@ -2,15 +2,19 @@ import { Component, type Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 import type { LegendProps } from './BaseLegend.type';
-import { StaticShapes, type LegendItemKey, type LegendItemProps, type ShapeType } from './LegendItem/LegendItem.type';
+import { type LegendItemKey, type LegendItemProps, type ShapeType } from './LegendItem/LegendItem.type';
 import { makeDataHintsHandlers } from '../../a11y/hints';
 
-export abstract class BaseLegend<T extends LegendProps, E extends readonly ((...args: any[]) => any)[] = never[]> extends Component<T, E> {
+export abstract class BaseLegend<
+  P extends LegendProps,
+  E extends readonly ((...args: any[]) => any)[] = never[],
+  DP extends Intergalactic.InternalTypings.ValidDefaultProps<DP, P> = never,
+> extends Component<P, E, never, {}, {}, DP> {
   componentDidMount() {
     this.setHints();
   }
 
-  componentDidUpdate(prevProps: T) {
+  componentDidUpdate(prevProps: P) {
     if (prevProps.items !== this.props.items || prevProps.dataHints !== this.props.dataHints) {
       this.setHints();
     }

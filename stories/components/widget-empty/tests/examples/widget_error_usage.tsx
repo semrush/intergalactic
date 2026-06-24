@@ -1,8 +1,8 @@
 import { Error } from '@semcore/ui/widget-empty';
-import type { WidgetErrorProps } from '@semcore/ui/widget-empty';
+import type { NSWidgetEmptyError } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type BasicWidgetErrorProps = WidgetErrorProps & {
+export type BasicWidgetErrorProps = NSWidgetEmptyError.Props & {
   showDescription?: boolean;
   customDescription?: string;
   showChildren?: boolean;
@@ -19,7 +19,7 @@ const Demo = ({
 
   return (
     <Error description={finalDescription} {...rest}>
-      {showChildren && <div style={{ marginTop: '16px' }}>Additional content</div>}
+      {showChildren && <div style={{ marginTop: 'var(--intergalactic-spacing-4x)' }}>Additional content</div>}
     </Error>
   );
 };

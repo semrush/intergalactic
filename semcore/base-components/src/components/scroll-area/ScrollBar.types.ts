@@ -18,7 +18,7 @@ export type ScrollAreaProps = BoxProps & {
   /** Called every time user scrolls area  */
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   /** Tab index that is being bypassed to the scroll container. */
-  tabIndex?: number | null;
+  tabIndex?: number;
   /**
    * Flag to enable resizing if the parent of ScrollArea is resized
    * @default false
@@ -52,6 +52,16 @@ export type ScrollAreaProps = BoxProps & {
   shadowTheme?: ShadowTheme | { horizontalTop?: ShadowTheme; horizontalBottom?: ShadowTheme; verticalLeft?: ShadowTheme; verticalRight?: ShadowTheme };
 };
 
+export type ScrollAreaDefaultProps = {
+  container: React.RefObject<HTMLElement | null>;
+  inner: React.RefObject<HTMLElement | null>;
+  tabIndex: 0;
+  observeParentSize: false;
+  disableAutofocusToContent: false;
+  shadowSize: 5;
+  shadowTheme: 'dark';
+};
+
 export type ScrollAreaContext = ScrollAreaProps & {
   getContainerProps: PropGetterFn;
   getBarProps: PropGetterFn;
@@ -64,6 +74,11 @@ export type ScrollBarProps = BoxProps & {
   container?: React.RefObject<HTMLElement | null>;
 };
 
+export type ScrollBarDefaultProps = {
+  container: React.RefObject<HTMLElement | null>;
+  children: React.JSX.Element;
+};
+
 export type ScrollBarContext = ScrollBarProps & {
   getSliderProps: PropGetterFn;
 };
@@ -71,11 +86,6 @@ export type ScrollBarContext = ScrollBarProps & {
 export type ScrollAreaContainerProps = BoxProps & {
   /** Inner prop */
   $refInner?: React.RefObject<any>;
-
-  focusRingTopOffset?: string;
-  focusRingRightOffset?: string;
-  focusRingBottomOffset?: string;
-  focusRingLeftOffset?: string;
 };
 
 declare const ScrollBar: Intergalactic.Component<'div', ScrollBarProps, ScrollBarContext> & {

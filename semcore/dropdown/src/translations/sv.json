@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Tryck på Tab för att gå till popover"
+  "triggerHint": "Tryck på Tab för att gå till popover",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, one {resultat} other {resultat}} hittat",
+  "StatusItem.defaultState.nothingFound": "Inget hittades",
+  "StatusItem.loadingState": "Laddar...",
+  "StatusItem.errorState": "Något gick fel. Försök igen senare."
 }

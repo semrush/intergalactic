@@ -1,7 +1,7 @@
 ---
 title: Badge
 fileSource: badge
-tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code'), Changelog('badge-changelog')
+tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Examples('badge-code'), Changelog('badge-changelog')
 ---
 
 <Playground for="Badge" />
@@ -34,7 +34,8 @@ Table: Badge types
 | ![alpha](static/alpha.png) | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it's unstable, and may be changed significantly over time or be disabled. |
 | ![beta](static/beta.png)   | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                 |
 | ![new](static/new.png)     | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                     |
-| ![soon](static/soon.png)   | Can be placed on products and features that aren't yet available and are displayed for collecting feedback.                                                                                                                                                                              |
+| ![soon](static/soon.png)   | Place on products and features that aren't yet available and are displayed for collecting feedback.                                                                                                                                                                              |
+| ![unavailable](static/unavailable.png) | Use for products and features that are unavailable due to legal or other restrictions.|
 
 ### Usage on dark/colored background
 

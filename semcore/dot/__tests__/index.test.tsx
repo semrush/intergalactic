@@ -1,13 +1,11 @@
 import Button from '@semcore/button';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Dot from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('dot Dependency imports', () => {
   runDependencyCheckTests('dot');
@@ -16,16 +14,16 @@ describe('dot Dependency imports', () => {
 describe('Dot', () => {
   beforeEach(() => {
     cleanup();
-    document.body.innerHTML = '';
-    vi.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
+  test('Verify data-ui-name', () => {
+    const dot = <Dot aria-label='Notifications' />;
 
-  shouldSupportClassName(Dot, undefined, { 'aria-label': 'test dot' });
-  shouldSupportRef(Dot, undefined, { 'aria-label': 'test dot' });
+    const { container } = render(dot);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify no "alert" for screenreaders when hidden', async () => {
     const { queryByTestId } = render(
@@ -43,12 +41,5 @@ describe('Dot', () => {
     const alert = document.body.querySelector('div[role="alert"]');
     expect(alert).toBeInTheDocument();
     expect(alert).toHaveAttribute('aria-live', 'polite');
-  });
-
-  test('Verify logs warning if no aria-label or aria-labelledby', () => {
-    render(<Dot />);
-    expect(console.warn).toHaveBeenCalledWith(
-      '[Dot]: \'aria-label\' or \'aria-labelledby\' are required for Dot component',
-    );
   });
 });

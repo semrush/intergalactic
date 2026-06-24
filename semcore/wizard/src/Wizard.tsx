@@ -2,6 +2,7 @@ import { ScreenReaderOnly, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import type { IRootComponentProps, Intergalactic } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -10,6 +11,7 @@ import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
 import CheckM from '@semcore/icon/Check/m';
 import Modal from '@semcore/modal';
+import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './style/wizard.shadow.css';
@@ -25,21 +27,29 @@ import type {
   WizardType,
   WizardStepBackProps,
   WizardStepNextProps,
+  WizardDefaultProps,
 } from './Wizard.types';
 
 type State = {
   highlighted: number;
 };
 
-class WizardRoot extends Component<WizardProps, typeof WizardRoot.enhance, {}, {}, State> {
+class WizardRoot extends Component<
+  WizardProps,
+  typeof WizardRoot.enhance,
+  {},
+  WithI18nEnhanceProps,
+  State,
+  WizardDefaultProps
+> {
   static displayName = 'Wizard';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
   static defaultProps = {
-    step: null,
+    step: 0,
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
   _steps = new Map();
   modalRef = React.createRef<HTMLElement>();
@@ -345,14 +355,32 @@ function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
   );
 }
 
-const Wizard = createComponent(WizardRoot, {
+function StepTitle(props: Intergalactic.InternalTypings.InferChildComponentProps<WizardType, typeof WizardRoot, 'StepTitle'>) {
+  const SWizardStepTitle = Root;
+  const { styles } = props;
+
+  return sstyled(styles)(
+    <SWizardStepTitle render={Text} tag='h3' size={500} />,
+  );
+}
+
+/**
+ * Wizard
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-api/|API} | {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-code/|Examples}
+ */
+const Wizard = createComponent<
+  WizardType,
+  typeof WizardRoot
+>(WizardRoot, {
   Sidebar,
   Content,
   Step,
+  StepTitle,
   Stepper,
   StepBack,
   StepNext,
-}) as WizardType;
+});
 
 export const wrapWizardStepper = <PropsExtending extends {}>(
   wrapper: (

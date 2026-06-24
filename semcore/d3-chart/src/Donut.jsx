@@ -440,6 +440,11 @@ function DonutTooltip(props) {
   return sstyled(props.styles)(<SDonutTooltip render={Tooltip} excludeAnchorProps />);
 };
 
+/**
+ * Donut
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/donut-chart/donut-chart-code/|Examples}
+ */
 const Donut = createElement(DonutRoot, {
   Pie,
   Label,

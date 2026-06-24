@@ -6,11 +6,9 @@ import React from 'react';
 type ProgressBarExampleProps = NSProgressBar.Props;
 const Demo = (props: ProgressBarExampleProps) => {
   return (
-    <Box style={{ backgroundColor: '#191B23' }} h={50}>
-
+    <Box bg='bg-primary-invert' h={50}>
       <ProgressBar tabIndex={0} value={props.value} size={props.size} theme={props.theme} aria-label='Custom theme example' duration={props.duration}>
       </ProgressBar>
-
     </Box>
   );
 };

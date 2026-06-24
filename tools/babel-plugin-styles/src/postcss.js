@@ -1,8 +1,8 @@
 const path = require('node:path');
 
+const cssnano = require('cssnano');
 const postcss = require('postcss');
 const postcssColorMod = require('postcss-color-mod-function');
-const csso = require('postcss-csso');
 const postcssHoverMediaFeature = require('postcss-hover-media-feature');
 const atImport = require('postcss-import-sync2');
 const mixins = require('postcss-mixins');
@@ -36,6 +36,7 @@ module.exports = function (options) {
         'color-mod-function': {
           unresolved: 'error',
         },
+        'oklab-function': false,
       },
       ...options.presetEnv,
     }),
@@ -46,7 +47,7 @@ module.exports = function (options) {
     syncPlugin(postcssColorMod()),
     shadowStyles(options.shadow),
     postcssHoverMediaFeature(),
-    csso,
+    cssnano(),
   ];
   return postcss(processorPlugins);
 };

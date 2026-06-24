@@ -287,4 +287,80 @@ test.describe(`@select ${TAG.ACCESSIBILITY}`, () => {
       });
     });
   });
+
+  test.describe('StatusItem', () => {
+    const statusItemStory = 'stories/components/select/tests/examples/on_change_input_search.tsx';
+
+    test('Result count', async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en');
+
+      await test.step('Default state', async () => {
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+
+      await test.step('Opened select with matching results', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await page.getByRole('option').first().waitFor({ state: 'visible' });
+        await page.keyboard.type('grape');
+
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+    });
+
+    test('Nothing found', async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en');
+
+      await test.step('Default state', async () => {
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+
+      await test.step('Opened select with no matches', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await page.getByRole('option').first().waitFor({ state: 'visible' });
+        await page.keyboard.type('zzz');
+
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+    });
+
+    test('Loading state', async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { state: 'loading' });
+
+      await test.step('Default state', async () => {
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+
+      await test.step('Opened select', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+    });
+
+    test('Error state', async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { state: 'error' });
+
+      await test.step('Default state', async () => {
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+
+      await test.step('Opened select', async () => {
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        const violations = await getAccessibilityViolations({ page });
+        expect(violations).toEqual([]);
+      });
+    });
+  });
 });

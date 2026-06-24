@@ -3,6 +3,9 @@ import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { RefObject } from 'react';
 
+import type { NoticeBubbleManager, NoticeItem } from './NoticeBubbleManager';
+import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
+
 /**
  * @deprecated. Pass noticeBubbleContainer property from window.sm2.getNoticeBubbleContainer()
  */
@@ -17,6 +20,12 @@ export type NoticeBubbleContainerProps = BoxProps &
     /** Specifies the locale for i18n support */
     locale?: string;
   };
+
+export type NoticeBubbleContainerDefaultProps = {
+  manager: NoticeBubbleManagerClass;
+  i18n: LocalizedMessages;
+  locale: 'en';
+};
 
 export type NoticeBubbleViewItemProps = NoticeBubbleProps & {
   containerNode?: HTMLElement;
@@ -42,6 +51,8 @@ export type NoticeBubbleProps = BoxProps & {
    * If enabled, browser focus will be locked in the notice
    * until it's closed. After close focus should return to the element
    * where it was placed before notice appear.
+   *
+   * @deprecated
    */
   focusLock?: boolean;
   /**
@@ -96,6 +107,8 @@ export type NoticeBubbleManagerClass = {
    * Replace last notice (if it is existing)
    */
   replaceLast: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => void;
+  /** Add change listener */
+  addListener: (fn: (items: NoticeItem[]) => void) => (() => void);
 };
 
 export declare const NoticeBubbleContainer: Intergalactic.Component<

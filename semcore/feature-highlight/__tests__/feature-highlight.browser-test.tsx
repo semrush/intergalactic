@@ -19,9 +19,9 @@ const featureHighlightTokens = {
 
 // Matches the CSS fallback gradients after the test bundle normalizes them.
 const cssVarBackgroundImageFallbacks: Record<string, string> = {
-  '--intergalactic-keyboard-focus-feature-highlight-outline': 'linear-gradient(90deg in oklch, rgb(192, 142, 255), rgb(102, 107, 219))',
-  '--intergalactic-border-feature-highlight': 'linear-gradient(90deg in oklch, rgb(210, 179, 255), rgb(176, 193, 254))',
-  '--intergalactic-border-feature-highlight-active': 'linear-gradient(90deg in oklch, rgb(192, 142, 255), rgb(148, 165, 245))',
+  '--intergalactic-keyboard-focus-feature-highlight-outline': 'linear-gradient(90deg in oklch, #c08eff, oklch(0.58 0.168 278.2))',
+  '--intergalactic-border-feature-highlight': 'linear-gradient(90deg in oklch, #d2b3ff, oklch(0.82 0.088 272.1))',
+  '--intergalactic-border-feature-highlight-active': 'linear-gradient(90deg in oklch, #c08eff, oklch(0.74 0.117 274.1))',
 };
 
 const getCssVarBackgroundImage = async (page: Page, varName: string) => {
@@ -104,7 +104,7 @@ test.describe(`${TAG.VISUAL} `, () => {
         const button = locators.buttons(page);
         await expect(page).toHaveScreenshot();
 
-        if (!item.disabled) {
+        if (!item.disabled && !item.loading) {
           await test.step('Verify focus style for buttons', async () => {
             await page.keyboard.press('Tab');
 

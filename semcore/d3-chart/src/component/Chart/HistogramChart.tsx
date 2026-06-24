@@ -5,30 +5,40 @@ import React from 'react';
 
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, type BarProps } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { HistogramChartData, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
+import type { HistogramChartData, HistogramChartDefaultProps, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class HistogramChartComponent extends AbstractChart<
   HistogramChartData,
   HistogramChartProps,
-  typeof HistogramChartComponent.enhance
+  typeof HistogramChartComponent.enhance,
+  {},
+  ChartState,
+  HistogramChartDefaultProps
 > {
   static displayName = 'Chart.Histogram';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
+
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
 
   get xScale() {
     const {
       xScale,
       marginY = 30,
       marginX = 30,
-      plotWidth,
-      plotHeight,
       invertAxis,
       data,
       groupKey,
     } = this.asProps;
+    const { plotWidth, plotHeight } = this;
 
     if (xScale) {
       return xScale;
@@ -55,11 +65,10 @@ class HistogramChartComponent extends AbstractChart<
       yScale,
       marginY = 30,
       marginX = 30,
-      plotHeight,
-      plotWidth,
       invertAxis,
       data,
     } = this.asProps;
+    const { plotWidth, plotHeight } = this;
 
     let max: number;
 
@@ -173,4 +182,12 @@ class HistogramChartComponent extends AbstractChart<
   }
 }
 
-export const HistogramChart: HistogramChartType = createComponent(HistogramChartComponent);
+/**
+ * HistogramChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/histogram-chart/histogram-chart-api/|API}
+ */
+export const HistogramChart = createComponent<
+  HistogramChartType,
+  typeof HistogramChartComponent
+>(HistogramChartComponent);

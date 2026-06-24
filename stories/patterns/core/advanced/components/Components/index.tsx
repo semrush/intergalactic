@@ -4,6 +4,7 @@ import Divider from '@semcore/ui/divider';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
+import { PaywallMessage } from './PaywallMessage';
 import HeadingTagAccordion from '../../../../../components/accordion/docs/examples/heading_tag';
 import NonCompactAccordion from '../../../../../components/accordion/docs/examples/non_compact';
 import BadgeMainTypesExample from '../../../../../components/badge/docs/examples/badge_main_types';
@@ -101,7 +102,7 @@ export function Components() {
           </Card.Body>
         </Card>
 
-        <Flex direction='column' px={4} gap={6} w='100%' aria-labelledby='components-surface-heading'>
+        <Flex direction='column' gap={6} w='100%' aria-labelledby='components-surface-heading'>
           <Text tag='h3' size={400} id='components-surface-heading'>
             Surface
           </Text>
@@ -121,6 +122,8 @@ export function Components() {
             <HeadingTagAccordion />
           </Card.Body>
         </Card>
+
+        <PaywallMessage />
 
         <Box mt={4} w='100%'>
           <WidgetEmpty />

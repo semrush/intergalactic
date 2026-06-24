@@ -12,14 +12,17 @@ import type { NSTabPanel } from './TabPanel.type';
 class TabPanelRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSTabPanel.Component>,
   typeof TabPanelRoot.enhance,
-  NSTabPanel.Handlers
+  NSTabPanel.Handlers,
+  {},
+  {},
+  NSTabPanel.DefaultProps
 > {
   static displayName = 'TabPanel';
   static style = style;
   static defaultProps = {
-    defaultValue: null,
+    defaultValue: 0,
     behavior: 'manual',
-  };
+  } as const;
 
   static enhance = [
     a11yEnhance({
@@ -125,9 +128,17 @@ function Addon(
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
-const TabPanel = createComponent(TabPanelRoot, {
+/**
+ * TabPanel
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/tab-panel/tab-panel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/tab-panel/tab-panel-code/|Examples}
+ */
+const TabPanel = createComponent<
+  NSTabPanel.Component,
+  typeof TabPanelRoot
+>(TabPanelRoot, {
   Item: [TabPanelItem, { Text, Addon }],
-}) as unknown as NSTabPanel.Component;
+});
 
 export const wrapTabPanel = <PropsExtending extends {}>(wrapper: (
   props: Intergalactic.InternalTypings.UntypeRefAndTag<

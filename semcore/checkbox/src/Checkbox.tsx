@@ -18,9 +18,11 @@ type State = {
 
 class CheckboxRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSCheckbox.Component>,
-  never,
+  [],
   {},
-  State
+  {},
+  State,
+  NSCheckbox.DefaultProps
 > {
   static displayName = 'Checkbox';
   static style = style;
@@ -29,7 +31,7 @@ class CheckboxRoot extends Component<
     size: 'm',
     state: 'normal',
     defaultChecked: false,
-  };
+  } as const;
 
   state = {
     hoistedDisabled: undefined,
@@ -113,7 +115,10 @@ class CheckboxRoot extends Component<
 class ValueRoot extends Component<
   Intergalactic.InternalTypings.InferChildComponentProps<NSCheckbox.Value.Component, typeof CheckboxRoot, 'Value'>,
   typeof ValueRoot.enhance,
-  { checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean }
+  NSCheckbox.Value.Handlers,
+  NSCheckbox.Value.InnerProps,
+  {},
+  NSCheckbox.Value.DefaultProps
 > {
   static defaultProps = () => {
     return {
@@ -256,14 +261,25 @@ function Text(props: Intergalactic.InternalTypings.InferChildComponentProps<NSCh
 }
 Text.displayName = 'Text';
 
-const Value = createComponent(ValueRoot, {
+const Value = createComponent<
+  NSCheckbox.Value.Component,
+  typeof ValueRoot
+>(ValueRoot, {
   Control,
   CheckMark,
-}) as NSCheckbox.Value.Component;
+});
 
-const Checkbox = createComponent(CheckboxRoot, {
+/**
+ * Checkbox
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/checkbox/checkbox-api/|API} | {@link https://developer.semrush.com/intergalactic/components/checkbox/checkbox-code/|Examples}
+ */
+const Checkbox = createComponent<
+  NSCheckbox.Component,
+  typeof CheckboxRoot
+>(CheckboxRoot, {
   Text,
   Value,
-}) as NSCheckbox.Component;
+});
 
 export default Checkbox;

@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
@@ -20,4 +21,6 @@ function Slide(props: SlideProps, ref: React.Ref<HTMLDivElement>) {
 
 Slide.displayName = 'Slide';
 
-export default createBaseComponent<'div', SlideProps>(Slide);
+type SlideComponent = Intergalactic.Component<'div', SlideProps>;
+
+export default createBaseComponent<SlideComponent>(Slide);

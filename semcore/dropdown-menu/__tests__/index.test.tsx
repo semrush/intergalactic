@@ -2,7 +2,7 @@ import { Box } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { fireEvent, cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -25,7 +25,7 @@ describe('DropdownMenu', () => {
     window.IntersectionObserver = mockIntersectionObserver;
   });
 
-  test.concurrent('Verify does not trigger visibility change on Space key in input', () => {
+  test.sequential('Verify does not trigger visibility change on Space key in input', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction='focus'>
@@ -34,12 +34,13 @@ describe('DropdownMenu', () => {
     );
 
     const input = getByTestId('input');
-    fireEvent.change(input, { target: { value: ' ' } });
-    fireEvent.keyDown(input, { key: ' ', which: 32, keyCode: 32 });
+    await userEvent.click(input);
+    spy.mockClear();
+    await userEvent.keyboard('[Space]');
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test.concurrent('Verify does not trigger visibility change on Enter key in textarea', () => {
+  test.sequential('Verify does not trigger visibility change on Enter key in textarea', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction='focus'>
@@ -48,7 +49,9 @@ describe('DropdownMenu', () => {
     );
 
     const textarea = getByTestId('textarea');
-    fireEvent.keyDown(textarea, { key: 'Enter', which: 13, keyCode: 13 });
+    await userEvent.click(textarea);
+    spy.mockClear();
+    await userEvent.keyboard('[Enter]');
     expect(spy).not.toHaveBeenCalled();
   });
 

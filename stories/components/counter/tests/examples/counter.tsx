@@ -1,8 +1,8 @@
 import Counter from '@semcore/ui/counter';
-import type { CounterProps } from '@semcore/ui/counter';
+import type { NSCounter } from '@semcore/ui/counter';
 import React from 'react';
 
-const Demo = (props: CounterProps) => {
+const Demo = (props: NSCounter.Props) => {
   return (
     <>
       <Counter size={props.size} theme={props.theme}>
@@ -12,7 +12,7 @@ const Demo = (props: CounterProps) => {
   );
 };
 
-export const defaultProps: CounterProps = {
+export const defaultProps: NSCounter.Props = {
   size: 'm',
   theme: undefined,
 };

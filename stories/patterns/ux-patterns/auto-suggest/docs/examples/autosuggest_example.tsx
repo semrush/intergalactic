@@ -11,7 +11,7 @@ const Highlight = ({ highlight, children }: { highlight: string; children: strin
       const re = new RegExp(highlight.toLowerCase(), 'g');
       html = html.replace(
         re,
-        `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`,
+        `<span style="font-weight: bold; padding: var(--intergalactic-spacing-05x) 0">${highlight}</span>`,
       );
     } catch (e) {}
   }
@@ -128,7 +128,7 @@ const Demo = () => {
           {suggestions.length > 0 && (
             <Select.Menu>
               {suggestions.map((option) => (
-                <Select.Option value={option.value} key={option.value}>
+                <Select.Option value={option.value} key={option.value} selected={false}>
                   <Highlight highlight={query}>{option.title}</Highlight>
                 </Select.Option>
               ))}

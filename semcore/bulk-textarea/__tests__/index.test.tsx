@@ -1,5 +1,6 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, userEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, userEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
 import { describe, test, vi, assertType, expect, afterEach, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -16,6 +17,28 @@ describe('BulkTextarea OnChange', () => {
   afterEach(() => {
     cleanup();
   });
+
+  test('Verify data-ui-name', () => {
+    const bulkTextarea = (
+      <BulkTextarea
+        defaultValue='first line'
+        errors={[{ lineIndex: 0, errorMessage: '' }]}
+        showErrors={true}
+        maxLines={10}
+      >
+        <BulkTextarea.Counter />
+        <BulkTextarea.InputField commonErrorMessage='Please enter valid values.' />
+        <BulkTextarea.ErrorsNavigation />
+        <BulkTextarea.ClearAll />
+      </BulkTextarea>
+    );
+
+    const { container } = render(bulkTextarea);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
+
   test('Verify value&onChange relation', () => {
     assertType<JSX.Element>(<BulkTextarea value='' onChange={(value: string) => { }} />);
     assertType<JSX.Element>(<BulkTextarea value={[]} onChange={(value: string[]) => { }} />);
@@ -35,13 +58,16 @@ describe('BulkTextarea OnChange', () => {
       valueInCb = v;
     });
 
-    const { rerender } = render(
-      <BulkTextarea w={400} value={value} onChange={spy}>
+    const { rerender, getByRole } = render(
+      <BulkTextarea w={400} onChange={spy}>
         <BulkTextarea.InputField commonErrorMessage='' />
       </BulkTextarea>,
     );
 
+    const inputField = getByRole('textbox');
+
     await userEvent.keyboard('[Tab]');
+    inputField.textContent = value;
     await userEvent.keyboard('[Tab]');
 
     expect(spy).toHaveBeenCalledWith(initValue, expect.anything());
@@ -58,6 +84,41 @@ describe('BulkTextarea OnChange', () => {
 
     expect(spy).toHaveBeenCalledWith(changedValue, expect.anything());
     expect(Array.isArray(valueInCb)).toBe(true);
+  });
+
+  test('Verify Clear all clears uncontrolled textarea with empty defaultValue', async () => {
+    const { getByRole, findByRole, queryByRole, container } = render(
+      <BulkTextarea
+        defaultValue=''
+        linesDelimiters={[',']}
+        maxLines={10}
+        validateOn={['paste']}
+        pasteProps={{
+          delimiter: '\n',
+          skipEmptyLines: true,
+          lineProcessing: (line) => line.replace(/http:\/\//, ''),
+        }}
+        lineProcessing={(line) => line.replace(/http:\/\//, '')}
+      >
+        <BulkTextarea.Counter />
+        <BulkTextarea.InputField commonErrorMessage='Please enter correct movie names.' />
+        <BulkTextarea.ErrorsNavigation />
+        <BulkTextarea.ClearAll />
+      </BulkTextarea>,
+    );
+
+    const inputField = getByRole('textbox');
+
+    await userEvent.type(inputField, 'Test');
+    expect(inputField.textContent).not.toBe('');
+
+    await userEvent.click(await findByRole('button', { name: 'Clear all' }));
+
+    expect(inputField.innerHTML).toBe('');
+    await waitFor(() => expect(queryByRole('button', { name: 'Clear all' })).toBeNull());
+    expect(
+      container.querySelector('[data-ui-name="BulkTextarea.Counter"]')?.textContent,
+    ).toContain('0/10');
   });
 });
 

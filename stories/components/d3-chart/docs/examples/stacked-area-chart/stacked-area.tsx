@@ -2,7 +2,6 @@ import { Flex, Box } from '@semcore/ui/base-components';
 import { Plot, XAxis, YAxis, minMax, StackedArea, HoverLine } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear } from 'd3-scale';
-import { curveCardinal } from 'd3-shape';
 import React from 'react';
 
 import StackedAreaMockData from '../../../__mocks__/stacked-area';
@@ -76,13 +75,13 @@ const Demo = () => {
         }}
       </HoverLine.Tooltip>
       <StackedArea x='time'>
-        <StackedArea.Area y='stack1' curve={curveCardinal}>
+        <StackedArea.Area y='stack1'>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack2' curve={curveCardinal}>
+        <StackedArea.Area y='stack2'>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack3' curve={curveCardinal}>
+        <StackedArea.Area y='stack3'>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
       </StackedArea>

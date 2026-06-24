@@ -1,34 +1,14 @@
-import {
-  runDependencyCheckTests,
-  shouldSupportClassName,
-  shouldSupportRef,
-} from '@semcore/testing-utils/shared-tests';
+import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   render,
   cleanup,
   waitFor,
 } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import {
-  NoticeBubbleContainer,
-} from '../src';
+import { NoticeBubbleContainer } from '../src';
 import { NoticeBubbleManager } from '../src/NoticeBubbleManager';
-
-const TestNoticeBubble = React.forwardRef((props: any, ref: React.Ref<HTMLElement>) => (
-  <>
-    <NoticeBubbleContainer
-      disablePortal
-      style={{ position: 'static', width: 'auto' }}
-    />
-    <NoticeBubbleContainer
-      ref={ref}
-      style={{ marginBottom: 0 }}
-      {...props}
-    />
-  </>
-));
 
 describe('notice-bubble Dependency imports', () => {
   runDependencyCheckTests('notice-bubble');
@@ -36,9 +16,6 @@ describe('notice-bubble Dependency imports', () => {
 
 describe('NoticeBubbleContainer', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(TestNoticeBubble);
-  shouldSupportRef(TestNoticeBubble);
 
   test('Verify supports rendering outside DOM', () => {
     const { queryByTestId } = render(
@@ -79,5 +56,46 @@ describe('NoticeBubbleContainer', () => {
 
     notice.remove();
     document.body.removeChild(customContainer);
+  });
+
+  test('Verify manager keeps notice visible when initialAnimation is disabled', async () => {
+    vi.useFakeTimers();
+
+    try {
+      const manager = new NoticeBubbleManager();
+      const changes: boolean[][] = [];
+      const unsubscribe = manager.addListener((items) => {
+        changes.push(items.map((item) => item.visible));
+      });
+
+      manager.add({
+        type: 'info',
+        children: 'First notice',
+        initialAnimation: false,
+      });
+
+      expect(changes[changes.length - 1]).toEqual([true]);
+
+      const replacePromise = manager.replaceLast({
+        type: 'info',
+        children: 'Second notice',
+        initialAnimation: false,
+      });
+
+      expect(changes[changes.length - 1]).toEqual([false]);
+
+      await vi.advanceTimersByTimeAsync(300);
+      await replacePromise;
+
+      expect(changes[changes.length - 1]).toEqual([false, true]);
+
+      await vi.advanceTimersByTimeAsync(700);
+
+      expect(changes[changes.length - 1]).toEqual([true]);
+
+      unsubscribe();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

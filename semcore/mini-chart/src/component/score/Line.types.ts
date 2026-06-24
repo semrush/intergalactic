@@ -47,12 +47,19 @@ type ValuedScoreProps = {
 };
 
 type CustomRenderScoreProps = {
+  value?: never;
+  segments?: never;
+  color?: never;
   children: SegmentComponent[];
 };
 
 export type ScoreLineGaugeProps = BoxProps &
   Intergalactic.InternalTypings.EfficientOmit<CommonScoreProps, 'value' | 'color'> &
   (ValuedScoreProps | CustomRenderScoreProps);
+
+export type ScoreLineGaugeDefaultProps = {
+  animate: true;
+};
 
 export type Enhances = [() => {
   resolveColor: ReturnType<typeof resolveColorEnhance>;

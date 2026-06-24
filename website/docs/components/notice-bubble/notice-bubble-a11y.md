@@ -1,7 +1,6 @@
 ---
 title: NoticeBubble
-a11y: AA
-tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-code'), Changelog('notice-bubble-changelog')
+tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Examples('notice-bubble-code'), Changelog('notice-bubble-changelog')
 ---
 
 ## What component has
@@ -14,7 +13,7 @@ Table: Keyboard support
 | ------------- | ------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element. After the last focusable element in the dialog, moves focus to the next focusable element outside of the dialog. |
 | <nobr>`Shift + Tab`</nobr> | Moves focus to the previous focusable element. After the first focusable element in the dialog, moves focus to the previous focusable element outside of the dialog. |
-| `Esc`         | Closes the dialog. |
+| `Esc`         | Closes the dialog when focus is within it. |
 
 ### Roles & attributes
 
@@ -30,8 +29,7 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-- `NoticeBubble` automatically grabs keyboard focus if there're any interactive elements beside the **Close** button. In this case, when the notice is closed, you have to set focus back on the element that triggered it ([refer to our examples](./notice-bubble-code.md)). If that element doesn't exist anymore, set focus on its parent landmark.
-- Don't trap keyboard focus in the `NoticeBubble`. Users should be able to navigate in and out freely.
+**Don't trap keyboard focus** in the `NoticeBubble`. Users should be able to navigate in and out freely.
 
 ## Other recommendations
 

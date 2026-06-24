@@ -44,6 +44,19 @@ const commonArgTypes = {
   }, disabledAll: {
     control: { type: 'boolean' },
   },
+  showSearch: {
+    control: { type: 'boolean' },
+    description: 'Render the searchable variant with DropdownMenu.StatusItem',
+  },
+  state: {
+    control: { type: 'select' },
+    options: ['default', 'loading', 'error'],
+    description: 'DropdownMenu.StatusItem state (search variant)',
+  },
+  customChildren: {
+    control: { type: 'text' },
+    description: 'Custom DropdownMenu.StatusItem text (overrides the default i18n text)',
+  },
 } as const;
 
 export const WithFocusableTrigger: Story = {
@@ -69,6 +82,12 @@ export const SelectableProps: StoryObj<typeof defaultDropDownSelectablePropsExam
     disabledFirstItem: {
       control: { type: 'boolean' },
     },
+    disabledSecondItem: {
+      control: { type: 'boolean' },
+    },
+    disabledLastItem: {
+      control: { type: 'boolean' },
+    },
   },
   args: defaultDropDownSelectablePropsExample,
 };
@@ -80,6 +99,7 @@ export const MultiselectProps: StoryObj<typeof defaultDropDownMultiselectPropsEx
     disabledFirstItem: {
       control: { type: 'boolean' },
     },
+
   },
   args: defaultDropDownMultiselectPropsExample,
 };

@@ -17,6 +17,9 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   overlayContentWrapper: (page: Page) => page.locator('[data-ui-name="Modal.Overlay.ContentWrapper"]'),
+  dialog: (page: Page, name?: string) => (
+    name ? page.getByRole('dialog', { name }) : page.getByRole('dialog')
+  ),
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
     return typeof index === 'number' ? base.nth(index) : base;
@@ -101,7 +104,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
     await test.step('Open modal and verify custom styles', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Close me!').waitFor({ state: 'visible' });
+      await page.getByRole('heading', { name: 'Customized modal window' }).waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -119,14 +122,16 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
     await test.step('Open second modal and verify both visible', async () => {
       await page.keyboard.press('Tab');
+      await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
     });
 
     await test.step('Close second modal and verify first still visible', async () => {
       await page.keyboard.press('Escape');
-      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
+      await expect(locators.modal(page)).toHaveCount(1);
       await expect(page).toHaveScreenshot();
     });
   });
@@ -408,7 +413,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Tab');
       await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
       await expect(locators.close(page).nth(1)).toBeFocused();
 
       await expect(locators.modal(page)).toHaveCount(2);
@@ -416,6 +421,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify only one modal closed by activating Close', async () => {
       await page.keyboard.press('Enter');
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
       await locators.modal(page, 1).waitFor({ state: 'hidden' });
       await expect(locators.modal(page)).toHaveCount(1);
       await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
@@ -423,11 +429,11 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify only one modal closed by ESC', async () => {
       await page.keyboard.press('Enter');
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
       await expect(locators.close(page).nth(1)).toBeFocused();
 
       await page.keyboard.press('Escape');
-      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
 
       await expect(locators.modal(page)).toHaveCount(1);
       await expect(locators.button(page, 'Open modal', 1)).toBeFocused();
@@ -450,6 +456,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await locators.button(page).click();
       await locators.modal(page).waitFor({ state: 'visible' });
       await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.modal(page)).toHaveAttribute('tabindex', '0');
     });
 
     await test.step('Verify closed by clicking outside modal', async () => {
@@ -469,13 +476,13 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
         await page.mouse.click(modalBox.x + modalBox.width / 2, modalBox.y + modalBox.height / 2);
       }
       await expect(locators.modal(page)).toBeVisible();
+      await expect(locators.modal(page)).toBeFocused();
     });
 
     await test.step('Verify closes by Pressing Escape', async () => {
       await page.keyboard.press('Escape');
       await locators.modal(page).waitFor({ state: 'hidden' });
       await expect(locators.modal(page)).toHaveCount(0);
-      await expect(locators.button(page)).toBeFocused();
     });
   });
 
@@ -489,6 +496,8 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.press('Enter');
       await locators.modal(page).waitFor({ state: 'visible' });
       await expect(locators.modal(page)).toHaveCount(1);
+      await expect(locators.modal(page)).toHaveAttribute('tabindex', '0');
+      await expect(locators.modal(page)).toBeFocused();
     });
 
     await test.step('Verify closes by Pressing Escape', async () => {
@@ -512,7 +521,7 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify 2nd opened', async () => {
       await locators.button(page, 'Open modal', 1).click();
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
 
       await expect(locators.modal(page)).toHaveCount(2);
     });
@@ -522,14 +531,14 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
       if (overlayBox) {
         await page.mouse.click(overlayBox.x + 5, overlayBox.y + 5);
       }
-      await locators.button(page, 'Save changes').waitFor({ state: 'hidden' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'hidden' });
 
       await expect(locators.modal(page)).toHaveCount(1);
     });
 
     await test.step('Verify not closed when clicking inside modal', async () => {
       await locators.button(page, 'Open modal', 1).click();
-      await locators.button(page, 'Save changes').waitFor({ state: 'visible' });
+      await locators.dialog(page, 'Modal window inside a modal window').waitFor({ state: 'visible' });
 
       const modalBox = await locators.modal(page, 1).boundingBox();
       if (modalBox) {
@@ -539,7 +548,11 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify closes by clicking On Buttons', async () => {
-      await locators.button(page, 'Save changes').click();
+      await locators
+        .dialog(page, 'Modal window inside a modal window')
+        .getByRole('button', { name: 'Close' })
+        .last()
+        .click();
       await expect(locators.modal(page)).toHaveCount(1);
     });
   });
@@ -584,6 +597,29 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
   });
 
   test.describe('Modal outside click interaction', () => {
+    test('Verify modal keeps focus when outside click is ignored', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@modal'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/modal/advanced/examples/close_only_esc_or_close_button.tsx', 'en');
+      const dialog = page.getByRole('dialog');
+
+      await test.step('Click outside modal and verify modal keeps focus', async () => {
+        await dialog.waitFor({ state: 'visible' });
+
+        const overlayBox = await locators.overlay(page).boundingBox();
+        expect(overlayBox).toBeTruthy();
+
+        await page.mouse.click(overlayBox!.x + 5, overlayBox!.y + 5);
+        await expect(dialog).toBeVisible();
+        await expect(dialog).toBeFocused();
+      });
+
+      await test.step('Verify modal still closes by Escape', async () => {
+        await page.keyboard.press('Escape');
+        await expect(dialog).toBeHidden();
+      });
+    });
+
     test('Verify click near scrollbar closes modal', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
     }, async ({ page }) => {
@@ -625,6 +661,75 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
         const y = overlayBox!.y + overlayBox!.height / 2;
         await page.mouse.click(x, y);
         await expect(locators.modal(page)).toBeVisible();
+      });
+    });
+  });
+
+  test.describe('Modal body scroll lock', () => {
+    const getBodyInlineStyles = (page: Page) =>
+      page.evaluate(() => ({
+        overflow: document.body.style.overflow,
+        paddingRight: document.body.style.paddingRight,
+        boxSizing: document.body.style.boxSizing,
+      }));
+
+    test('Verify modal does not cause layout shift when body overflow is hidden', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+    }, async ({ page, browserName }) => {
+      test.skip(browserName !== 'chromium', 'Scroll-lock logic is engine-independent; covered by unit tests');
+      await loadPage(page, 'stories/components/modal/advanced/examples/modal_causes_layout_shift.tsx', 'en');
+
+      await test.step('Switch body overflow to hidden', async () => {
+        await locators.button(page, 'Toggle body overflow').click();
+        await expect(page.getByText('Current overflow value: hidden')).toBeVisible();
+      });
+
+      await test.step('Open modal and verify body styles are untouched', async () => {
+        await locators.button(page, 'Open modal').click();
+        await expect(locators.dialog(page)).toBeVisible();
+
+        const styles = await getBodyInlineStyles(page);
+        expect(styles.boxSizing).toBe('');
+        expect(styles.paddingRight).toBe('');
+        expect(styles.overflow).toBe('hidden');
+      });
+
+      await test.step('Close modal and verify body overflow is preserved', async () => {
+        await page.keyboard.press('Escape');
+        await expect(locators.dialog(page)).toBeHidden();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+    });
+
+    test('Verify stacked modals keep body locked until both close', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+    }, async ({ page, browserName }) => {
+      test.skip(browserName !== 'chromium', 'Scroll-lock logic is engine-independent; covered by unit tests');
+      await loadPage(page, 'stories/components/modal/advanced/examples/modal_causes_layout_shift.tsx', 'en');
+
+      await test.step('Open first modal — body gets locked', async () => {
+        await locators.button(page, 'Open modal').click();
+        await expect(locators.modal(page, 0)).toBeVisible();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+
+      await test.step('Open nested modal over the first one', async () => {
+        await locators.button(page, 'Open modal over modal').click();
+        await expect(locators.dialog(page, 'Nested modal')).toBeVisible();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+
+      await test.step('Close nested modal — body stays locked by the first modal', async () => {
+        await locators.button(page, 'Close nested modal').click();
+        await expect(locators.dialog(page, 'Nested modal')).toBeHidden();
+        await expect(locators.modal(page, 0)).toBeVisible();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+
+      await test.step('Close first modal — body is unlocked and restored', async () => {
+        await page.keyboard.press('Escape');
+        await expect(locators.modal(page)).toBeHidden();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('visible');
       });
     });
   });

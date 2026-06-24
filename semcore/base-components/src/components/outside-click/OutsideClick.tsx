@@ -25,6 +25,11 @@ export type OutsideClickProps = {
   root?: React.RefObject<HTMLElement>;
 };
 
+type OutsideClickComponent = Intergalactic.Component<
+  Intergalactic.Tag,
+  OutsideClickProps
+>;
+
 type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEventListenerObject };
 type RootEventsPair = [Element | Document, OutsideClickEvents];
 
@@ -42,7 +47,9 @@ function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
     const eventTarget = getEventTarget(event) as Node | null;
 
     const isTargetEvent = nodesToCheck.some(
-      (node) => mouseDownInside.current || node?.contains(eventTarget),
+      (node) => {
+        return mouseDownInside.current || node?.contains?.(eventTarget);
+      },
     );
 
     if (!isTargetEvent) {
@@ -54,7 +61,9 @@ function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
     const nodesToCheck = [...excludeRefs, nodeRef].map((ref) => ref?.current);
     const eventTarget = getEventTarget(event) as Node | null;
 
-    mouseDownInside.current = nodesToCheck.some((node) => node?.contains(eventTarget));
+    mouseDownInside.current = nodesToCheck.some((node) => {
+      return node?.contains?.(eventTarget);
+    });
   });
 
   const toggleEvents = (status: boolean, outsideRoot: Element | Document | null) => {
@@ -111,7 +120,7 @@ function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
 OutsideClickRoot.displayName = 'OutsideClick';
 OutsideClickRoot.eventsMap = [] as RootEventsPair[];
 
-export const OutsideClick = createComponent(OutsideClickRoot) as Intergalactic.Component<
-  Intergalactic.Tag,
-  OutsideClickProps
->;
+export const OutsideClick = createComponent<
+  OutsideClickComponent,
+  typeof OutsideClickRoot
+>(OutsideClickRoot);

@@ -547,6 +547,11 @@ function ItemHint({ styles }) {
   return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden='true' />);
 }
 
+/**
+ * DropdownMenu
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/dropdown-menu/dropdown-menu-api/|API} | {@link https://developer.semrush.com/intergalactic/components/dropdown-menu/dropdown-menu-code/|Examples}
+ */
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
   {
@@ -558,6 +563,7 @@ const DropdownMenu = createComponent(
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
     Group: Dropdown.Group,
+    StatusItem: Dropdown.StatusItem,
   },
   {
     parent: [Dropdown],

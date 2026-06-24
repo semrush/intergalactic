@@ -1,7 +1,7 @@
 ---
 title: Slider
 fileSource: slider
-tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
+tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Examples('slider-code'), Changelog('slider-changelog')
 ---
 
 ## Slider
@@ -11,7 +11,7 @@ import Slider from '@semcore/ui/slider';
 <Slider />;
 ```
 
-<TypesView type="SliderProps" :types={...types} />
+<TypesView type="NSSlider.Props" :types={...types} />
 
 ## Slider.Bar
 

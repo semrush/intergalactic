@@ -1,4 +1,3 @@
-import { Flex, Box } from '@semcore/base-components';
 import { createComponent } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
@@ -6,21 +5,33 @@ import React from 'react';
 
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
+import type { AreaChartData, AreaChartProps, AreaChartType, AreaChartDefaultProps } from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 class AreaChartComponent extends AbstractChart<
   AreaChartData,
   AreaChartProps,
-  typeof AreaChartComponent.enhance
+  typeof AreaChartComponent.enhance,
+  {},
+  ChartState,
+  AreaChartDefaultProps
 > {
   static displayName = 'Chart.Area';
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
+  static defaultProps = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+  } as const;
+
   get xScale() {
-    const { xScale, marginY = 40, plotWidth, data, groupKey } = this.asProps;
+    const { xScale, marginY = 40, data, groupKey } = this.asProps;
+    const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
@@ -38,7 +49,8 @@ class AreaChartComponent extends AbstractChart<
   }
 
   get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 24, plotHeight, stacked } = this.asProps;
+    const { yScale, marginX = 24, stacked } = this.asProps;
+    const { plotHeight } = this;
 
     if (yScale) {
       return yScale;
@@ -124,4 +136,12 @@ class AreaChartComponent extends AbstractChart<
   }
 }
 
-export const AreaChart: AreaChartType = createComponent(AreaChartComponent);
+/**
+ * AreaChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/area-chart/area-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/area-chart/area-chart-code/|Examples}
+ */
+export const AreaChart = createComponent<
+  AreaChartType,
+  typeof AreaChartComponent
+>(AreaChartComponent);

@@ -1,6 +1,6 @@
 ---
 title: Advanced filters
-tabs: Design('advanced-filters'), Example('advanced-filters-code')
+tabs: Design('advanced-filters'), Examples('advanced-filters-code')
 ---
 
 ## Basic usage

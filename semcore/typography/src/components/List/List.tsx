@@ -9,12 +9,19 @@ import type { NSList } from './List.type';
 import style from '../../style/list.shadow.css';
 import Text from '../Text/Text';
 
-class ListRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSList.Component>> {
+class ListRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSList.Component>,
+  [],
+  {},
+  {},
+  {},
+  NSList.DefaultProps
+> {
   static displayName = 'List';
   static style = style;
   static defaultProps = {
     marker: '•',
-  };
+  } as const;
 
   getItemProps() {
     const { marker } = this.asProps;
@@ -62,8 +69,19 @@ function Content(props: Intergalactic.InternalTypings.InferComponentProps<NSList
 
 Content.displayName = 'Content';
 
-const Item = createComponent(ItemRoot, { Content }) as NSList.Item.Component;
+const Item = createComponent<
+  NSList.Item.Component,
+  typeof ItemRoot
+>(ItemRoot, { Content });
 
-const List = createComponent(ListRoot, { Item }) as NSList.Component;
+/**
+ * List
+ *
+ * {@link https://developer.semrush.com/intergalactic/style/typography/typography-api#list|API} | {@link https://developer.semrush.com/intergalactic/style/typography/typography-code|Examples}
+ */
+const List = createComponent<
+  NSList.Component,
+  typeof ListRoot
+>(ListRoot, { Item });
 
 export default List;

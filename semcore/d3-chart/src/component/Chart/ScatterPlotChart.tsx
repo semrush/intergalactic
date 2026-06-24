@@ -6,10 +6,11 @@ import React from 'react';
 
 // @ts-ignore
 import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
+import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
-import type { BaseChartProps, ListData } from './AbstractChart.type';
 import type {
   ScatterPlotChartData,
+  ScatterPlotChartDefaultProps,
   ScatterPlotChartProps,
   ScatterPlotChartType,
 } from './ScatterPlotChart.type';
@@ -18,16 +19,19 @@ import { localizedMessages } from '../../translations/__intergalactic-dynamic-lo
 class ScatterPlotChartComponent extends AbstractChart<
   ScatterPlotChartData,
   ScatterPlotChartProps,
-  typeof ScatterPlotChartComponent.enhance
+  typeof ScatterPlotChartComponent.enhance,
+  {},
+  ChartState,
+  ScatterPlotChartDefaultProps
 > {
   static displayName = 'Chart.ScatterPlot';
-  public static defaultProps: Partial<BaseChartProps<ListData>> = {
+  public static defaultProps = {
     direction: 'column',
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
     showLegend: false,
-  };
+  } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
@@ -38,7 +42,8 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 
   protected get xScale() {
-    const { xScale, marginY = 30, plotWidth, data, groupKey, valueKey } = this.asProps;
+    const { xScale, marginY = 30, data, groupKey, valueKey } = this.asProps;
+    const { plotWidth } = this;
 
     if (xScale) {
       return xScale;
@@ -57,7 +62,8 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30, plotHeight, valueKey } = this.asProps;
+    const { yScale, marginX = 30, valueKey } = this.asProps;
+    const { plotHeight } = this;
 
     if (yScale) {
       return yScale;
@@ -139,4 +145,12 @@ class ScatterPlotChartComponent extends AbstractChart<
   }
 }
 
-export const ScatterPlotChart: ScatterPlotChartType = createComponent(ScatterPlotChartComponent);
+/**
+ * ScatterPlotChart
+ *
+ * {@link https://developer.semrush.com/intergalactic/data-display/scatterplot-chart/scatterplot-chart-api/|API} | {@link https://developer.semrush.com/intergalactic/data-display/scatterplot-chart/scatterplot-chart-code/|Examples}
+ */
+export const ScatterPlotChart = createComponent<
+  ScatterPlotChartType,
+  typeof ScatterPlotChartComponent
+>(ScatterPlotChartComponent);

@@ -7,6 +7,7 @@ import { hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 import React from 'react';
 
 import { DropdownItem } from './DropdownItem';
+import { StatusItem } from './StatusItem';
 import style from './style/dropdown.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -119,6 +120,13 @@ class DropdownRoot extends Component {
     };
   }
 
+  getStatusItemProps() {
+    const { size } = this.asProps;
+    return {
+      size,
+    };
+  }
+
   render() {
     const { Children, forwardRef, modifiers = [], stretch, ...other } = this.asProps;
 
@@ -191,6 +199,11 @@ function DropdownGroup(props) {
   );
 }
 
+/**
+ * Dropdown
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/dropdown/dropdown-api/|API} | {@link https://developer.semrush.com/intergalactic/components/dropdown/dropdown-code/|Examples}
+ */
 const Dropdown = createComponent(
   DropdownRoot,
   {
@@ -198,6 +211,7 @@ const Dropdown = createComponent(
     Popper: DropdownPopper,
     Item: DropdownItem,
     Group: DropdownGroup,
+    StatusItem,
   },
   {
     parent: Popper,

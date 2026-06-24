@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import CloseOnlyEscOrCloseButtonExample from './examples/close_only_esc_or_close_button.tsx';
+import ModalCausesLayoutShiftExample from './examples/modal_causes_layout_shift.tsx';
 import ModaliFrameExample from './examples/modal_iframe';
 import OpenModalDynamicallyExample from './examples/modal_open_dynamically';
 import ModalPreventFocusExample from './examples/modal_prevent_focus';
@@ -13,6 +15,10 @@ const meta: Meta = {
 };
 
 export default meta;
+
+export const CloseOnlyEscOrCloseButton: StoryObj = {
+  render: CloseOnlyEscOrCloseButtonExample,
+};
 
 export const ModalWithSelect: StoryObj = {
   render: ModalWithSelectExample,
@@ -40,4 +46,8 @@ export const ModalIcon: StoryObj = {
 
 export const OutsideClick: StoryObj = {
   render: OutsideClickExample,
+};
+
+export const ModalCausesLayoutShift: StoryObj = {
+  render: ModalCausesLayoutShiftExample,
 };

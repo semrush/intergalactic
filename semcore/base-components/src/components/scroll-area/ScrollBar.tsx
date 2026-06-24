@@ -3,7 +3,7 @@ import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import React from 'react';
 
 import { Box } from '../flex-box';
-import type { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
+import type { ScrollBar as ScrollBarType, ScrollBarProps, ScrollBarDefaultProps } from './ScrollBar.types';
 import style from './style/scroll-bar.shadow.css';
 
 export const hideScrollBarsFromScreenReadersContext = React.createContext(false);
@@ -35,7 +35,14 @@ type State = {
   visibleScroll: boolean;
 };
 
-class ScrollBarRoot extends Component<ScrollBarProps, typeof ScrollBarRoot.enhance, {}, { container: React.RefObject<HTMLElement> | null }, State> {
+class ScrollBarRoot extends Component<
+  ScrollBarProps,
+  typeof ScrollBarRoot.enhance,
+  {},
+  { container: React.RefObject<HTMLElement | null> },
+  State,
+  ScrollBarDefaultProps
+> {
   static displayName = 'Bar';
 
   static style = style;
@@ -395,8 +402,11 @@ function Slider(props: ScrollBarProps) {
   return sstyled(styles)(<SSlider render={Box} onDragStart={() => false} />);
 }
 
-export const ScrollBar = createComponent(ScrollBarRoot, {
+export const ScrollBar = createComponent<
+  typeof ScrollBarType,
+  typeof ScrollBarRoot
+>(ScrollBarRoot, {
   Slider,
-}) as typeof ScrollBarType;
+});
 
 export { setAriaValues as setAreaValue };

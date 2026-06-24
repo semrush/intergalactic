@@ -50,6 +50,19 @@ export type BulkTextareaProps<T extends string | string[]> = {
   onImmediatelyChange?: InputFieldProps<T>['onImmediatelyChange'];
 };
 
+export type BulkTextareaDefaultProps<T extends string | string[]> = {
+  defaultValue: T;
+  size: 'm';
+  defaultState: 'normal';
+  minRows: 2;
+  maxRows: 10;
+  maxLines: 100;
+  validateOn: BulkTextareaProps<T>['validateOn'];
+  locale: 'en';
+  defaultErrors: BulkTextareaProps<T>['errors'];
+  defaultShowErrors: false;
+};
+
 type BulkTextareaComponent = (<T extends string | string[]>(
   props: Intergalactic.InternalTypings.ComponentProps<
     'div',

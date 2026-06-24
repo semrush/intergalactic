@@ -1,8 +1,8 @@
 import { NoData } from '@semcore/ui/widget-empty';
-import type { WidgetNoDataProps } from '@semcore/ui/widget-empty';
+import type { NSWidgetEmptyNoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-export type BasicWidgetNoDataProps = WidgetNoDataProps & {
+export type BasicWidgetNoDataProps = NSWidgetEmptyNoData.Props & {
   showDescription?: boolean;
   customDescription?: string;
   showChildren?: boolean;
@@ -20,7 +20,7 @@ const Demo = ({
 
   return (
     <NoData type={type} description={finalDescription} {...rest}>
-      {showChildren && <div style={{ marginTop: '16px' }}>Additional content</div>}
+      {showChildren && <div style={{ marginTop: 'var(--intergalactic-spacing-4x)' }}>Additional content</div>}
     </NoData>
   );
 };

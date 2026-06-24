@@ -1,14 +1,15 @@
-import { Animation, Box, Flex, Portal } from '@semcore/base-components';
+import { Animation, Box, Flex, Portal, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import isNode from '@semcore/core/lib/utils/isNode';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
-import { useFocusLock, setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
+import { setFocus, isFocusInside, useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import {
   ZIndexStackingContextProvider,
@@ -18,6 +19,7 @@ import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
 
 import type {
+  NoticeBubbleContainerDefaultProps,
   NoticeBubbleContainerProps,
   NoticeBubbleViewItemProps,
 } from './NoticeBubble.type';
@@ -33,7 +35,14 @@ type State = {
   warnings: NoticeItem[];
 };
 
-class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, typeof NoticeBubbleContainerRoot.enhance, {}, typeof NoticeBubbleContainerRoot.defaultProps, State> {
+class NoticeBubbleContainerRoot extends Component<
+  NoticeBubbleContainerProps,
+  typeof NoticeBubbleContainerRoot.enhance,
+  {},
+  WithI18nEnhanceProps,
+  State,
+  NoticeBubbleContainerDefaultProps
+> {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static enhance = [
@@ -91,12 +100,12 @@ class NoticeBubbleContainerRoot extends Component<NoticeBubbleContainerProps, ty
         return sstyled(styles)(
           <PortalForNoticeItem
             key={notice.uid}
-            tag={SView}
             containerNode={containerNode}
             animationDuration={duration}
             styles={styles}
             getI18nText={getI18nText}
             {...notice}
+            tag={SView}
           />,
         );
       });
@@ -159,7 +168,7 @@ const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTM
   return <Flex ref={ref} {...other} />;
 });
 
-const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
+const PortalForNoticeItem = (props: Intergalactic.InternalTypings.EfficientOmit<NoticeBubbleViewItemProps, 'tag'> & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
   // Show content for info notice in previously mounted node with aria-live polite
@@ -170,14 +179,14 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
   }, []);
 
   const SNoticeAriaLiveWrapper = 'div';
-  const Tag = props.tag;
+  const { tag: Tag, ...otherProps } = props;
 
-  if (props.type === 'info') {
+  if (otherProps.type === 'info') {
     return (
       <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-        <Portal nodeToMount={props.containerNode}>
+        <Portal nodeToMount={otherProps.containerNode}>
           <SNoticeAriaLiveWrapper aria-live='polite'>
-            {showContent && <Tag {...props} />}
+            {showContent && <Tag {...otherProps} />}
           </SNoticeAriaLiveWrapper>
         </Portal>
       </ZIndexStackingContextProvider>
@@ -186,8 +195,8 @@ const PortalForNoticeItem = (props: NoticeBubbleViewItemProps & { containerNode:
 
   return (
     <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-      <Portal nodeToMount={props.containerNode}>
-        <Tag {...props} />
+      <Portal nodeToMount={otherProps.containerNode}>
+        <Tag {...otherProps} />
       </Portal>
     </ZIndexStackingContextProvider>
   );
@@ -197,6 +206,7 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
   timer: Timer | null = null;
   ref = React.createRef<HTMLDivElement>();
   closeButtonRef = React.createRef<HTMLButtonElement>();
+  triggerButtonComponent: Element | null = null;
 
   componentDidMount() {
     const { duration } = this.props;
@@ -205,22 +215,23 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
       document.body.addEventListener('mousemove', this.handleBodyMouseMove);
     }
 
-    const noticeElement = this.ref.current;
-
-    if (noticeElement) {
-      const focusableNodes = getFocusableIn(noticeElement).filter(
-        (node) => node !== this.closeButtonRef.current,
-      );
-
-      if (focusableNodes.length > 0) {
-        setTimeout(() => setFocus(noticeElement), 0);
-      }
-    }
+    this.triggerButtonComponent = document.activeElement;
   }
 
   componentWillUnmount() {
+    const triggerElement = this.triggerButtonComponent;
+    if (this.ref.current && isFocusInside(this.ref.current) && triggerElement instanceof HTMLElement) {
+      setTimeout(() => setFocus(triggerElement), 0);
+    }
+
     this.clearTimer();
     document.body.removeEventListener('mousemove', this.handleBodyMouseMove);
+  }
+
+  isFocusInBubble() {
+    const noticeElement = this.ref.current;
+
+    return noticeElement ? isFocusInside(noticeElement) : false;
   }
 
   clearTimer() {
@@ -242,18 +253,29 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     }
   };
 
+  handleFocus = () => {
+    this.timer?.pause();
+  };
+
+  handleBlur = () => {
+    this.timer?.resume();
+  };
+
+  handleClick = () => {
+    this.timer?.pause();
+  };
+
   handleMouseEnter = () => {
-    if (!this.timer) return;
-    this.timer.pause();
+    this.timer?.pause();
   };
 
   handleMouseLeave = () => {
-    if (!this.timer) return;
+    if (!this.timer || this.isFocusInBubble()) return;
     this.timer.resume();
   };
 
   handleBodyMouseMove = (event: MouseEvent) => {
-    if (!this.timer?.paused) return;
+    if (!this.timer?.paused || this.isFocusInBubble()) return;
     const rect = this.ref.current?.getBoundingClientRect();
     if (!rect) return;
     const mouseInRect =
@@ -288,17 +310,21 @@ class ViewInfo extends Component<NoticeBubbleViewItemProps> {
     return sstyled(styles)(
       <Animation
         initialAnimation={initialAnimation}
-        visible={visible ?? true}
+        visible={visible}
         duration={animationDuration}
         // @ts-ignore
         keyframes={[styles['@enter'], styles['@exit']]}
       >
         <SBubble
+          render={Flex}
           type={type}
           ref={this.ref}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           onKeyDown={this.handleKeydown}
+          onClick={this.handleClick}
           role={type === 'warning' ? 'alert' : undefined}
           focusLock={focusLock}
         >
@@ -347,6 +373,14 @@ class ViewWarning extends ViewInfo {
   };
 }
 
-const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot) as Intergalactic.Component<'div', NoticeBubbleContainerProps>;
+/**
+ * NoticeBubble
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-code/|Examples}
+ */
+const NoticeBubbleContainer = createComponent<
+  Intergalactic.Component<'div', NoticeBubbleContainerProps>,
+  typeof NoticeBubbleContainerRoot
+>(NoticeBubbleContainerRoot);
 
 export default NoticeBubbleContainer;

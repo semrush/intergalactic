@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Button.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "Button.Text",
+            },
+          ],
+          "uiName": "Button.InnerWrapper",
+        },
+      ],
+      "uiName": "Button",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`ButtonLink > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "ButtonLink.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "ButtonLink.Text",
+            },
+          ],
+          "uiName": "ButtonLink.InnerWrapper",
+        },
+      ],
+      "uiName": "ButtonLink",
+    },
+  ],
+  "uiName": null,
+}
+`;

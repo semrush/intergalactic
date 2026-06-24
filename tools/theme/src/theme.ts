@@ -34,6 +34,14 @@ const { green, violet, blue, pink, gray, red, orange, salad, yellow } = baseColo
 
 const SCALE_INDENT = 4;
 
+const RADII: Record<Radii, number> = {
+  'extra-small': 2,
+  'small': 4,
+  'medium': 6,
+  'large': 12,
+  'extra-large': 24,
+};
+
 export const theme: Theme = {
   baseTokens: {
     colors: {
@@ -204,13 +212,10 @@ export const theme: Theme = {
         description: '120px',
       },
     },
-    radii: {
-      'extra-small': { value: '2px' },
-      'small': { value: '4px' },
-      'medium': { value: '6px' },
-      'large': { value: '12px' },
-      'extra-large': { value: '24px' },
-    },
+    radii: Object.entries(RADII).reduce<Record<string, Value>>((acc, [key, value]) => {
+      acc[key] = { value: `${value}px` };
+      return acc;
+    }, {}),
     breakpoints: {
       'extra-small': {
         value: '320px',
@@ -1110,7 +1115,7 @@ export const theme: Theme = {
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       overlay_limitation_primary: {
-        value: neutral.at(L_BG_SECONDARY),
+        value: `oklch(from ${neutral.at(L_BG_SECONDARY)} l c h / 0.85)`,
         description: 'Use as a primary cover of the content under the messages about limitations.',
       },
       overlay_limitation_secondary: {
@@ -1445,9 +1450,21 @@ export const theme: Theme = {
         value: success.opaqueAt(L_BG_LIGHT),
         description: 'Background color for the "Start tracking" date on the X-axis of the chart grid.',
       },
-      header_bg: { value: '#382E5E' },
-      header_border_primary: { value: '#382E5E' },
-      header_border_secondary: { value: 'rgba(255,255,255, 0.15)' },
+      header_bg: { value: '{semanticTokens.colors.page.bg}' },
+      header_border_primary: { value: '{semanticTokens.colors.border.primary}' },
+      header_border_secondary: { value: '{semanticTokens.colors.border.primary}' },
+      page_bg: { value: neutral.at(0.97),
+        description: 'Background fill for the whole product page.',
+      },
+      footer_bg: { value: '{semanticTokens.colors.page.bg}',
+        description: 'Background fill for the product page footer.',
+      },
+      sidebar_nav_bg: { value: '{semanticTokens.colors.page.bg}',
+        description: 'Background fill for the product page sidebar.',
+      },
+      sidebar_nav_border: { value: '{semanticTokens.colors.border.primary}',
+        description: 'Color for the border of the page sidebar.',
+      },
       sidebar_nav_control_hover: {
         value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
         description: 'Sidebar navigation row hover background.',
@@ -1547,47 +1564,47 @@ export const theme: Theme = {
     },
     radii: {
       'addon': {
-        value: '{baseTokens.radii.small}',
+        value: `${RADII.small}px`,
         description: 'Use for rounding addons and small controls like Checkbox.',
       },
       'badge': {
-        value: '{baseTokens.radii.medium}',
+        value: `${RADII.medium}px`,
         description: 'Corner radius for Badge and compact status chips—aligned with small rounded controls.',
       },
       'chart': {
-        value: '{baseTokens.radii.extra-small}',
+        value: `${RADII['extra-small']}px`,
         description: 'Use for rounding big and small charts like bar, histogram and others.',
       },
       'counter': {
-        value: '{baseTokens.radii.large}',
+        value: `${RADII.large}px`,
         description: 'Rounding for counter/numeric capsules used as small indicators.',
       },
       'tag': {
-        value: '{baseTokens.radii.extra-large}',
+        value: `${RADII['extra-large']}px`,
         description: 'Corner radius for Tag (including removable tags) in dense UI.',
       },
       'switch': {
-        value: '{baseTokens.radii.extra-large}',
+        value: `${RADII['extra-large']}px`,
         description: 'Pill-shaped rounding for Switch geometry (full rounded track/thumb pattern).',
       },
       'control': {
-        value: '{baseTokens.radii.medium}',
+        value: `${RADII.medium}px`,
         description: 'Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.',
       },
       'progress-bar': {
-        value: '{baseTokens.radii.medium}',
+        value: `${RADII.medium}px`,
         description: 'Use for rounding bars: ProgressBar, SliderBar, etc.',
       },
       'surface': {
-        value: 'calc({baseTokens.radii.medium} + 2px)',
+        value: `${RADII.medium + 2}px`,
         description: 'Use for rounding surfaces like Card, blocks, widgets, Notice, etc.',
       },
       'popper': {
-        value: '{baseTokens.radii.medium}',
+        value: `${RADII.medium}px`,
         description: 'Use for rounding all kinds of poppers and dropdowns.',
       },
       'modal': {
-        value: 'calc({baseTokens.radii.large} + 2px)',
+        value: `${RADII.large + 2}px`,
         description: 'Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard).',
       },
     },
@@ -2476,8 +2493,16 @@ type SemanticColors = {
       secondary: Value;
     };
   };
+  page: {
+    bg: Value;
+  };
+  footer: {
+    bg: Value;
+  };
   sidebar: {
     nav: {
+      bg: Value;
+      border: Value;
       control: {
         hover: Value;
         active: Value;
@@ -2574,3 +2599,9 @@ type Deprecates = {
   table: { td: { cell: { actions: { accordion: Value } } } };
   keyboard: { focus: { outline: { invert: Value } } };
 };
+
+export type BasicColorKeys = `${keyof BaseTokens['colors']}-${Lightness}`;
+
+type ReplaceUnderscore<T extends string> = T extends `${infer Prefix}_${infer Suffix}` ? `${Prefix}-${ReplaceUnderscore<Suffix>}` : T;
+
+export type SemanticColorKeys = Exclude<ReplaceUnderscore<FlattenPaths<SemanticColors>>, `${string}-DEFAULT`>;

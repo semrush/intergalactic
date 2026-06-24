@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "17.1.0",
+  "version": "17.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
     "clean": "rm -rf ./lib"
   },
   "peerDependencies": {
-    "@semcore/core": "^17.0.1"
+    "@semcore/core": "^17.2.0"
   },
   "repository": {
     "type": "git",

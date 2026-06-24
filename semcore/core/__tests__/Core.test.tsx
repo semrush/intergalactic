@@ -1,11 +1,9 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, HTMLAttributes } from 'react';
 import React from 'react';
 
-const { shouldSupportRef } = sharedTests;
-import type { IRootComponentProps } from '../src';
+import type { IRootComponentProps, Intergalactic } from '../src';
 import { createComponent, createBaseComponent, Component } from '../src';
 import { CORE_COMPONENT } from '../src/core-types/symbols';
 
@@ -66,9 +64,18 @@ type ItemType = { Item: HTMLAttributes<HTMLDivElement> };
 
 function shouldSupportRender(RootComponent: any, typeRootComponent: any) {
   test(`Should support just render ${typeRootComponent}`, () => {
-    const Test = createComponent<'div', CompType>(RootComponent);
+    const Test = createComponent<any, typeof RootComponent>(RootComponent);
     const { getByTestId } = render(<Test data-testid='core'>test</Test>);
     expect(getByTestId('core').innerHTML).toBe('test');
+  });
+}
+
+function assertCoreSupportsRef(Component: any) {
+  test('Should support ref', () => {
+    const ref = React.createRef<HTMLElement>();
+    render(<Component ref={ref} />);
+
+    expect(ref.current?.nodeName).toBe('DIV');
   });
 }
 
@@ -78,11 +85,10 @@ function shouldSupportRenderChildrenRoot(
   description: any,
 ) {
   test(`Should support render children root ${description}`, () => {
-    const Item = createComponent<'div', ItemType['Item']>(ChildrenComponent);
-    const Test = createComponent<'div', CompType, ItemType>(RootComponent, { Item });
+    const Item = createComponent<any, typeof ChildrenComponent>(ChildrenComponent);
+    const Test = createComponent<any, typeof RootComponent>(RootComponent, { Item });
     const { getByTestId } = render(
       <Test>
-        {/* @ts-ignore */}
         <Test.Item data-testid='core'>test</Test.Item>
       </Test>,
     );
@@ -90,15 +96,13 @@ function shouldSupportRenderChildrenRoot(
   });
 }
 
-function shouldSupportChildren(ChildrenComponent: any, typeChildrenComponent: any) {
+function assertCoreRegistersChildren(ChildrenComponent: any, typeChildrenComponent: any) {
   test(`Should support children components ${typeChildrenComponent}`, () => {
-    const Test = createComponent<'div', CompType, ItemType>(RootTestClass, {
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass, {
       Item: ChildrenComponent,
     });
 
-    // @ts-ignore
     expect(Test.Item).not.toBeNull();
-    // @ts-ignore
     expect(Test.Item.displayName).toBe(`${Test.displayName}.Item`);
   });
 }
@@ -111,7 +115,7 @@ function shouldSupportCallEnhance(RootComponent: any, typeRootComponent: any) {
       return props;
     };
     RootComponent.enhance = [enhance];
-    const Test = createComponent(RootComponent);
+    const Test = createComponent<any, typeof RootComponent>(RootComponent);
     render(<Test />);
     expect(spy).toHaveBeenCalledTimes(1);
   });
@@ -129,7 +133,7 @@ function shouldSupportCallEnhanceWithProps(RootComponent: any, typeRootComponent
       return props;
     };
     RootComponent.enhance = [enhance];
-    const Test = createComponent(RootComponent);
+    const Test = createComponent<any, typeof RootComponent>(RootComponent);
     render(<Test {...props} />);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith({
@@ -158,7 +162,7 @@ describe('Core', () => {
     'Root Function inside Root Function',
   );
 
-  shouldSupportRef(createComponent(RootTestClass));
+  assertCoreSupportsRef(createComponent<any, typeof RootTestClass>(RootTestClass));
 
   shouldSupportCallEnhance(RootTestClass, 'Class');
   shouldSupportCallEnhance(RootTestFunc, 'Function');
@@ -166,14 +170,14 @@ describe('Core', () => {
   shouldSupportCallEnhanceWithProps(RootTestClass, 'Class');
   shouldSupportCallEnhanceWithProps(RootTestFunc, 'Function');
 
-  shouldSupportChildren(ChildrenTestClass, 'Class');
-  shouldSupportChildren(ChildrenTestFunc, 'Function');
+  assertCoreRegistersChildren(ChildrenTestClass, 'Class');
+  assertCoreRegistersChildren(ChildrenTestFunc, 'Function');
 
   test('Should support custom props name', () => {
-    const Test = createComponent(RootTestClass);
-    const TestWithChildren = createComponent(RootTestClass, {
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass);
+    const TestWithChildren = createComponent<any, typeof RootTestClass>(RootTestClass, {
       Item: ChildrenTestFunc,
-    }) as any;
+    });
     const { getByTestId } = render(
       <>
         <Test data-testid='test' data-name='test' />
@@ -187,7 +191,7 @@ describe('Core', () => {
   });
 
   test('Should support set data-ui-name', () => {
-    const InheritTest = createComponent(RootTestClass);
+    const InheritTest = createComponent<any, typeof RootTestClass>(RootTestClass);
 
     class TestClass extends Component {
       static displayName = 'TestClass';
@@ -198,7 +202,7 @@ describe('Core', () => {
       }
     }
 
-    const Test = createComponent(TestClass);
+    const Test = createComponent<any, typeof TestClass>(TestClass);
 
     const { queryByTestId } = render(<Test data-testid='test' />);
     expect((queryByTestId('test')?.attributes as any)['data-ui-name'].value).toBe('TestClass');
@@ -222,12 +226,12 @@ describe('Root', () => {
       }
     }
 
-    const Test = createComponent(TestRoot);
+    const Test = createComponent<any, typeof TestRoot>(TestRoot);
     const { queryByTestId } = render(<Test id='test' />);
 
     expect(queryByTestId('root')?.id).toBe('test');
   });
-  test('Should support assign props', () => {
+  test('Should support assign props', async () => {
     class TestRoot extends Component {
       static displayName = 'Test';
 
@@ -252,11 +256,13 @@ describe('Root', () => {
 
     const spyClick = vi.fn();
     const spyRef = vi.fn();
-    const Test = createComponent(TestRoot);
+    const Test = createComponent<any, typeof TestRoot>(TestRoot);
     const { queryByTestId } = render(
       <Test
         id='test'
         className='test'
+        data-contract-value='contract-value'
+        data-test-id='legacy-test-id'
         style={{
           padding: '10px',
           margin: '10px',
@@ -265,10 +271,12 @@ describe('Root', () => {
         ref={(node: any) => spyRef(node)}
       />,
     );
-    fireEvent.click(queryByTestId('root')!);
+    await userEvent.click(queryByTestId('root')!);
 
     expect(queryByTestId('root')!.id).toBe('test');
     expect(queryByTestId('root')!.className).toBe('test root-test');
+    expect(queryByTestId('root')!.getAttribute('data-contract-value')).toBe('contract-value');
+    expect(queryByTestId('root')!.getAttribute('data-test-id')).toBe('legacy-test-id');
     expect(queryByTestId('root')!.style).toMatchObject({
       left: '5px',
       padding: '10px',
@@ -279,6 +287,25 @@ describe('Root', () => {
     expect(spyRef.mock.calls[0][0].nodeName).toBe('DIV');
     expect(spyRef.mock.calls[1][0].nodeName).toBe('DIV');
   });
+
+  test('Should forward disabled prop to interactive root', () => {
+    class TestRoot extends Component {
+      static displayName = 'Test';
+
+      render() {
+        const { Root } = this;
+        return <Root data-testid='root' render='button' />;
+      }
+    }
+
+    const Test = createComponent<
+      Intergalactic.Component<'button', ButtonHTMLAttributes<HTMLButtonElement>>,
+      typeof TestRoot
+    >(TestRoot);
+    const { queryByTestId } = render(<Test disabled />);
+
+    expect((queryByTestId('root') as HTMLButtonElement).disabled).toBe(true);
+  });
 });
 
 describe('Controll/Uncontroll mode', () => {
@@ -288,11 +315,14 @@ describe('Controll/Uncontroll mode', () => {
     class RootTestClass extends Component<
       IRootComponentProps & { value?: number; defaultValue?: number },
       [],
-      { value: null }
+      { value: null },
+      {},
+      {},
+      { defaultValue: 5 }
     > {
       static defaultProps = {
         defaultValue: 5,
-      };
+      } as const;
 
       uncontrolledProps() {
         return { value: null };
@@ -305,23 +335,26 @@ describe('Controll/Uncontroll mode', () => {
       }
     }
 
-    const Test = createComponent(RootTestClass);
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass);
     render(<Test />);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(RootTestClass.defaultProps.defaultValue, expect.anything());
   });
-  test('Should support set everything value and call it in handler uncontroll mode', () => {
+  test('Should support set everything value and call it in handler uncontroll mode', async () => {
     const spy = vi.fn();
 
     class RootTestClass extends Component<
       IRootComponentProps & { value?: any; defaultValue?: any },
       [],
-      { value: any }
+      { value: any },
+      {},
+      {},
+      { defaultValue: '' }
     > {
       static defaultProps = {
         defaultValue: '',
-      };
+      } as const;
 
       uncontrolledProps() {
         return { value: [(e: any) => e.currentTarget.value, (value: any) => spy(value)] };
@@ -333,12 +366,12 @@ describe('Controll/Uncontroll mode', () => {
       }
     }
 
-    const Test = createComponent(RootTestClass);
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass);
     const { getByTestId } = render(<Test data-testid='textarea' />);
     const TextareaDom = getByTestId('textarea');
-    fireEvent.change(TextareaDom, { target: { value: 'test' } });
+    await userEvent.type(TextareaDom, 'test');
 
-    expect(spy).toHaveBeenCalledWith('test');
+    expect(spy).lastCalledWith('test');
   });
 });
 
@@ -368,7 +401,7 @@ describe('Getter props function', () => {
 
     const spy = vi.fn();
 
-    const Test = createComponent(RootTestClass, { Item: ChildrenTestClass }) as any;
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass, { Item: ChildrenTestClass });
     render(
       <Test>
         <Test.Item />
@@ -397,7 +430,7 @@ describe('Getter props function', () => {
     }
 
     const spy = vi.fn();
-    const Test = createComponent(RootTestClass, { Item: ChildrenTestFunc }) as any;
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass, { Item: ChildrenTestFunc });
     render(
       <Test>
         <Test.Item />
@@ -421,17 +454,16 @@ describe('Getter props function', () => {
 
     const spy = vi.fn();
 
-    const Test = createComponent<'div', CompType, ItemType>(RootTestClass, { Item: ChildrenTestFunc });
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass, { Item: ChildrenTestFunc });
     render(
       <Test>
-        {/* @ts-ignore */}
         <Test.Item id='test' />
       </Test>,
     );
     expect(spy).toHaveBeenCalledWith('test');
   });
 
-  test('Should support assign props in getter', () => {
+  test('Should support assign props in getter', async () => {
     class RootTestClass extends Component {
       static displayName = 'Test';
 
@@ -456,7 +488,7 @@ describe('Getter props function', () => {
     const spyClick = vi.fn();
     const spyRef = vi.fn();
 
-    const Test = createComponent(RootTestClass, { Item: ChildrenTestFunc }) as any;
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass, { Item: ChildrenTestFunc });
     const { queryByTestId } = render(
       <Test>
         <Test.Item
@@ -473,7 +505,7 @@ describe('Getter props function', () => {
       </Test>,
     );
 
-    fireEvent.click(queryByTestId('item')!);
+    await userEvent.click(queryByTestId('item')!);
     expect(queryByTestId('item')?.id).toBe('test');
     expect(queryByTestId('item')?.className).toBe('test root-test');
     expect(queryByTestId('item')?.style).toMatchObject({
@@ -503,12 +535,10 @@ describe('Getter props function', () => {
 
     const spy = vi.fn();
 
-    const Test = createComponent<'div', CompType, ItemType>(RootTestClass, { Item: ChildrenTestFunc });
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass, { Item: ChildrenTestFunc });
     render(
       <Test>
-        {/* @ts-ignore */}
         <Test.Item />
-        {/* @ts-ignore */}
         <Test.Item />
       </Test>,
     );
@@ -521,7 +551,7 @@ describe('Getter props function', () => {
 describe('Props from context', () => {
   beforeEach(cleanup);
   test('Should support props forwarding', () => {
-    const Test = createComponent<'div', { custom: string }>(RootTestClass);
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass);
     render(
       <Test custom='test'>
         {(props: any) => {
@@ -533,9 +563,9 @@ describe('Props from context', () => {
   });
 
   test('Should support props forwarding children and not overwrite', () => {
-    const Test = createComponent(RootTestClass, {
+    const Test = createComponent<any, typeof RootTestClass>(RootTestClass, {
       Item: ChildrenTestFunc,
-    }) as any;
+    });
     render(
       <Test custom='test'>
         <Test.Item custom='test-overwrite' custom-child='test'>
@@ -559,9 +589,9 @@ describe('Props from context', () => {
       }
     }
 
-    const Test = createComponent(TestRoot, {
+    const Test = createComponent<any, typeof TestRoot>(TestRoot, {
       Item: [ChildrenTestClass, { Value: ChildrenTestClass }],
-    }) as any;
+    });
 
     const { getByTestId } = render(
       <Test>
@@ -586,11 +616,14 @@ describe('Option "parent"', () => {
     class RootTestParent extends Component<
       IRootComponentProps & { value?: number; defaultValue?: number },
       [],
-      { value: null }
+      { value: null },
+      {},
+      {},
+      { defaultValue: 5 }
     > {
       static defaultProps = {
         defaultValue: 5,
-      };
+      } as const;
 
       uncontrolledProps() {
         return { value: null };
@@ -609,8 +642,8 @@ describe('Option "parent"', () => {
       }
     }
 
-    const TestParent = createComponent(RootTestParent);
-    const Test = createComponent(
+    const TestParent = createComponent<any, typeof RootTestParent>(RootTestParent);
+    const Test = createComponent<any, typeof RootTest>(
       RootTest,
       {},
       {
@@ -648,7 +681,7 @@ describe('Option "parent"', () => {
         }
       }
 
-      return createComponent(ComponentRoot, { Item }, { parent: render });
+      return createComponent<any, typeof ComponentRoot>(ComponentRoot, { Item }, { parent: render });
     }
 
     const First = createMockComponent('First', undefined);
@@ -708,7 +741,7 @@ describe('Option "parent"', () => {
         }
       }
 
-      return createComponent(ComponentRoot, { Item }, { parent: render });
+      return createComponent<any, typeof ComponentRoot>(ComponentRoot, { Item }, { parent: render });
     }
 
     const clickSpy = vi.fn();
@@ -763,19 +796,31 @@ describe('createBaseComponent', () => {
   TestFuncWithRef.displayName = 'TestFuncWithRef';
 
   test('Should support symbol CORE_COMPONENT', () => {
-    const Test = createBaseComponent(TestFuncWithRef);
+    const Test = createBaseComponent<any>(TestFuncWithRef);
     expect(Test[CORE_COMPONENT]).toBe(true);
   });
   test('Should support data-ui-name', () => {
-    const Test = createBaseComponent(TestFuncWithRef);
+    const Test = createBaseComponent<any>(TestFuncWithRef);
     const { getByTestId } = render(<Test data-testid='test' />);
     expect(getByTestId('test').dataset.uiName).toBe(Test.displayName);
   });
 
   test('Should support ref', () => {
-    const Test = createBaseComponent(TestFuncWithRef);
+    const Test = createBaseComponent<any>(TestFuncWithRef);
     const ref = React.createRef<HTMLDivElement>();
     render(<Test ref={ref} />);
     expect(ref.current?.nodeName).toBe('DIV');
+  });
+
+  // UIK-5215: components opted-in via { isIcon: true } expose __IS_ICON
+  // so consumers (e.g. <Link>) can branch on icon-vs-non-icon addons.
+  test('Should set __IS_ICON = true when created with { isIcon: true }', () => {
+    const IconLike = createBaseComponent<any>(TestFuncWithRef, { isIcon: true });
+    expect(IconLike.__IS_ICON).toBe(true);
+  });
+
+  test('Should set __IS_ICON = false by default (no isIcon option)', () => {
+    const Plain = createBaseComponent<any>(TestFuncWithRef);
+    expect(Plain.__IS_ICON).toBe(false);
   });
 });

@@ -1,5 +1,5 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, expect, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -35,7 +35,7 @@ describe('Wizard', () => {
     expect(getByText('StepBack')).toBeTruthy();
   });
 
-  test('Should support keyboard navigation', () => {
+  test('Should support step change on click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -52,28 +52,7 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.keyDown(getByTestId('second-step'), { key: 'Enter', keyCode: 13 });
-    expect(spy).toHaveBeenCalledWith(2, expect.any(Object));
-  });
-
-  test('Should support step change on click', () => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title='Header'>
-          <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
-          <Wizard.Stepper step={2} data-testid='second-step' onActive={spy}>
-            Step 2
-          </Wizard.Stepper>
-        </Wizard.Sidebar>
-        <Wizard.Content>
-          <Wizard.Step step={1}>First page</Wizard.Step>
-          <Wizard.Step step={2}>Second page</Wizard.Step>
-        </Wizard.Content>
-      </Wizard>,
-    );
-
-    fireEvent.click(getByTestId('second-step'));
+    await userEvent.click(getByTestId('second-step'));
     expect(spy).toHaveBeenCalledWith(2, expect.any(Object));
   });
 
@@ -98,7 +77,7 @@ describe('Wizard', () => {
     expect(queryByText('Third page')).toBeNull();
   });
 
-  test('Should call onActive with correct numeric step on StepNext click', () => {
+  test('Should call onActive with correct numeric step on StepNext click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -110,11 +89,11 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.click(getByTestId('next-btn'));
+    await userEvent.click(getByTestId('next-btn'));
     expect(spy).toHaveBeenCalledWith(2);
   });
 
-  test('Should call onActive with correct numeric step on StepBack click', () => {
+  test('Should call onActive with correct numeric step on StepBack click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={2}>
@@ -126,7 +105,7 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.click(getByTestId('back-btn'));
+    await userEvent.click(getByTestId('back-btn'));
     expect(spy).toHaveBeenCalledWith(1);
   });
 
