@@ -172,8 +172,7 @@ class AutoSuggestRoot extends Component<
     const { value } = this.asProps;
     const { isLoading, suggestions } = this.state;
 
-    const triggerId = this.triggerRef.current?.id;
-    const triggerElement = triggerId ? document.getElementById(triggerId) : null;
+    const triggerElement = this.triggerRef.current;
 
     return {
       value,
@@ -451,11 +450,11 @@ class ListRoot extends Component<
     if (isLoading || isStartTypingState) return null;
 
     return (
-      <Select.List>
+      <Root render={Select.List}>
         {suggestions.map((option) => (
           <Children key={option} />
         ))}
-      </Select.List>
+      </Root>
     );
   }
 }
