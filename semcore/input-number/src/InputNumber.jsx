@@ -143,17 +143,28 @@ class Value extends Component {
     };
   };
 
+  get stepPrecision() {
+    const { step } = this.asProps;
+    const [_, decimals] = step.toString().split('.');
+
+    return decimals?.length ?? 0;
+  }
+
+  getNewValue(value) {
+    return value === 0 ? value : value.toFixed(this.stepPrecision);
+  }
+
   round(value, step) {
-    const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
-    return countDecimals === 0
-      ? Number.parseFloat(value)
-      : Number.parseFloat(value).toPrecision(countDecimals);
+    const { stepPrecision } = this;
+
+    return stepPrecision === 0
+      ? value
+      : Number.parseFloat(value).toPrecision(stepPrecision);
   }
 
   handleValidation = (event) => {
     const { value, displayValue, min, max, step } = this.asProps;
     const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
-    const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
 
     if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
@@ -168,9 +179,8 @@ class Value extends Component {
           numberValue -= rounded;
         }
       }
-      const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
 
-      this.handlers.value(String(numberValueRounded), event);
+      this.handlers.value(this.getNewValue(numberValue), event);
     }
   };
 
@@ -423,11 +433,11 @@ class Value extends Component {
       numberValue = Number.parseFloat(value);
     }
 
-    if (!Number.isNaN(numberValue)) {
-      const newValue = numberValue + step <= max ? numberValue + step : max;
+    if (Number.isNaN(numberValue)) return;
 
-      this.handlers.value(newValue.toString(), event);
-    }
+    const nextValue = Math.min(numberValue + step, max);
+
+    this.handlers.value(this.getNewValue(nextValue), event);
   };
 
   stepDown = (event) => {
@@ -441,11 +451,11 @@ class Value extends Component {
       numberValue = Number.parseFloat(value);
     }
 
-    if (!Number.isNaN(numberValue)) {
-      const newValue = numberValue - step >= min ? numberValue - step : min;
+    if (Number.isNaN(numberValue)) return;
 
-      this.handlers.value(newValue.toString(), event);
-    }
+    const nextValue = Math.max(numberValue - step, min);
+
+    this.handlers.value(this.getNewValue(nextValue), event);
   };
 
   render() {

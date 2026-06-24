@@ -193,6 +193,49 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('40', expect.anything());
   });
 
+  test.sequential('Verify typed value keeps decimal count equal to step precision', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input-step-typed' value='' onChange={spy} step={0.01} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input-step-typed') as HTMLInputElement;
+    await focusInput(input);
+    await userEvent.keyboard('0.10');
+
+    expect(spy).lastCalledWith('0.10', expect.anything());
+    expect(input.value).toBe('0.10');
+  });
+
+  test.sequential(
+    'Verify increment/decrement keeps decimal count equal to step precision',
+    async () => {
+      const spy = vi.fn();
+      const { getByTestId } = render(
+        <InputNumber>
+          <InputNumber.Value
+            data-testid='input-step-controls'
+            defaultValue='0.09'
+            onChange={spy}
+            step={0.01}
+          />
+          <InputNumber.Controls data-testid='controls-step' />
+        </InputNumber>,
+      );
+      const controls = getByTestId('controls-step');
+
+      const arrowUp = controls.querySelectorAll('button')[0];
+      await userEvent.click(arrowUp);
+      expect(spy).lastCalledWith('0.10', expect.anything());
+
+      const arrowDown = controls.querySelectorAll('button')[1];
+      await userEvent.click(arrowDown);
+      expect(spy).lastCalledWith('0.09', expect.anything());
+    },
+  );
+
   test.sequential('Verify not accept letters', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
