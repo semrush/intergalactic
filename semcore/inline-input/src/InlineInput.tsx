@@ -1,6 +1,6 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
@@ -243,7 +243,7 @@ class InlineInputBase extends Component<
 
   handleBlur = (event: React.FocusEvent) => {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
-    if (!onBlurBehavior) return;
+    if (!onBlurBehavior || lastInteraction.isKeyboard()) return;
     if (Date.now() - this.lastHandledKeyboardEvent < 250) return;
     if (hasParent(event.relatedTarget, this.rootRef.current!)) return;
 
