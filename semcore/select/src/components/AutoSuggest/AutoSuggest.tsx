@@ -67,10 +67,10 @@ class AutoSuggestRoot extends Component<
   }
 
   get isStartTypingState() {
-    const { statusItemPlaceholder, value } = this.asProps;
-    const { suggestions } = this.state;
+    const { statusItemPlaceholder } = this.asProps;
+    const { suggestions, isVisible } = this.state;
 
-    return value === '' && suggestions.length === 0 && statusItemPlaceholder !== '';
+    return isVisible && suggestions.length === 0 && statusItemPlaceholder !== '';
   }
 
   get isAriaExpanded() {
@@ -84,7 +84,7 @@ class AutoSuggestRoot extends Component<
     const { isVisible, isLoading, suggestions } = this.state;
 
     return isVisible &&
-      (value === '' || suggestions.length > 0 || isLoading) &&
+      (value === '' || suggestions.length > 0 || isLoading || this.changeDebounce) &&
       !(value === '' && suggestions.length === 0 && statusItemPlaceholder === '');
   }
 
@@ -229,7 +229,7 @@ class AutoSuggestRoot extends Component<
           const filteredSuggestions = await suggestions(value, abortSignal);
 
           if (!this.abortController.signal.aborted) {
-            this.setState({ suggestions: filteredSuggestions, isLoading: false });
+            this.setState({ suggestions: filteredSuggestions, isLoading: false, isVisible: filteredSuggestions.length > 0 });
           }
         }
 
