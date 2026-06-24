@@ -189,7 +189,9 @@ It's okay to use a full version if you want to highlight an action:
 
 Writing for a 6th-grade reading level on the Flesch-Kincaid readability scale includes more people. Write with short sentences, use simpler nouns, avoid adverbs and adjectives unless they carry real meaning. Use simple verb tenses (past, present, future) and active voice.
 
+::: tip
 You can check readability using [hemingwayapp.com](https://hemingwayapp.com/).
+:::
 
 ## Consistency
 
