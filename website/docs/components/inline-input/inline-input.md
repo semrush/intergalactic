@@ -80,10 +80,14 @@ In some cases, where space allows and there is a need to show regular buttons, y
 
 InlineInput can take on the same states as a [normal input](/components/input/input), except for the normal, read-only, and disabled states.
 
-- The user has activated a trigger that opens an InlineInput.
-- InlineInput immediately receives focus.
-- The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
-- When focus is lost (for example, the user is distracted by another screen), `onBlur` saves the entered value.
+1. The user has activated a trigger that opens an InlineInput.
+2. InlineInput immediately receives focus.
+3. The user enters data:
+* **When using the keyboard:**
+  * `Save` and `Enter` — save the data.
+  * `Cancel` and `Esc` — discard changes and exit edit mode.
+  * `Tab` and `Shift + Tab` — discard changes and exit edit mode when focus moves outside the InlineInput.
+- **When using the mouse:** losing focus (`onBlur`) saves the data.
 
 ## Usage in UX/UI
 
