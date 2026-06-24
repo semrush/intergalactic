@@ -74,9 +74,9 @@ class AutoSuggestRoot extends Component<
   }
 
   get isAriaExpanded() {
-    const { isVisible, isLoading } = this.state;
+    const { isVisible, isLoading, suggestions } = this.state;
 
-    return isVisible && !isLoading && !this.isStartTypingState;
+    return isVisible && suggestions.length > 0 && !isLoading && !this.isStartTypingState;
   }
 
   get isVisiblePopper() {
@@ -108,7 +108,7 @@ class AutoSuggestRoot extends Component<
   }
 
   getTriggerProps(): NSAutoSuggest.Trigger.InnerProps {
-    const { size, getI18nText, neighborLocation, addonLeft, addonRight } = this.asProps;
+    const { size, getI18nText, neighborLocation, addonLeft, addonRight, uid } = this.asProps;
     const { isLoading } = this.state;
 
     return {
@@ -117,6 +117,7 @@ class AutoSuggestRoot extends Component<
       'onBlur': this.handleBlur,
       'aria-haspopup': 'listbox',
       'aria-expanded': this.isAriaExpanded ? 'true' : 'false',
+      'aria-controls': `igc-${uid}-list`,
       isLoading,
       size,
       getI18nText,

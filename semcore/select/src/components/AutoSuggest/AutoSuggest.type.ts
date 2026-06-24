@@ -54,6 +54,7 @@ declare namespace NSAutoSuggest {
       'onBlur': () => void;
       'aria-haspopup': 'listbox';
       'aria-expanded': 'true' | 'false';
+      'aria-controls': string;
       'addonLeft'?: React.ElementType;
       'addonRight'?: React.ElementType;
       'isLoading': NSAutoSuggest.State['isLoading'];
