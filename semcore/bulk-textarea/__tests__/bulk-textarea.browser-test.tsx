@@ -205,6 +205,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(lineCount).toBe(0);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
       });
+
+      await test.step('Type immediately after clear starts fresh, not append', async () => {
+        await page.keyboard.type('new text', { delay: 20 });
+        await expect(locators.counter(page)).toHaveText('1/15of 15 lines');
+        const lineCount = await locators.contentDiv(page).locator('p').count();
+        await expect(lineCount).toBe(1);
+        await expect(locators.row(page, 0)).toHaveText('new text');
+      });
     });
 
     test('Verify Clear all by keyboard no validation', {
@@ -291,6 +299,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.button(page, 'Next error')).not.toBeVisible();
         await expect(locators.button(page, 'Previous error')).not.toBeVisible();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
+        await expect(locators.contentDiv(page)).not.toHaveAttribute('aria-invalid', 'true');
+        await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
       });
 
       await test.step('Verify validation on clicking outside textbox', async () => {

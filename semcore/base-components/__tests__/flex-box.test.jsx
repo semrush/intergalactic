@@ -1,17 +1,15 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import { Box, Flex } from '../src';
 
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+const SpanTag = function SpanTag(props) {
+  return <span {...props} />;
+};
 
 describe('Flex', () => {
   beforeEach(cleanup);
-
-  shouldSupportClassName(Flex);
-  shouldSupportRef(Flex);
 
   test.concurrent('Verify supports css property', async () => {
     const MAP_CSS = {
@@ -80,28 +78,16 @@ describe('Flex', () => {
 describe('Box', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Box);
-  shouldSupportRef(Box);
-
-  test('Verify \'tag\' prop', () => {
+  test('Verify supports custom tag', () => {
     const { getByTestId } = render(
-      <Box tag='span' data-testid='box'>
-        tag
-      </Box>,
+      <>
+        <Box tag='button' data-testid='button-box' />
+        <Box tag={SpanTag} data-testid='span-box' />
+      </>,
     );
-    expect(getByTestId('box').tagName).toBe('SPAN');
-  });
 
-  test('Verify \'tag\' prop component', () => {
-    const Span = function (props) {
-      return <span {...props} />;
-    };
-    const { getByTestId } = render(
-      <Box tag={Span} data-testid='box'>
-        tag
-      </Box>,
-    );
-    expect(getByTestId('box').tagName).toBe('SPAN');
+    expect(getByTestId('button-box').tagName).toBe('BUTTON');
+    expect(getByTestId('span-box').tagName).toBe('SPAN');
   });
 
   test('Verify clear non html props', () => {
@@ -155,6 +141,8 @@ describe('Box', () => {
       right: { css: 'right', values: ['2px'], tests: [2, '2px'] },
       bottom: { css: 'bottom', values: ['2px'], tests: [2, '2px'] },
       zIndex: { css: 'z-index', values: ['5'], tests: [5] },
+      resize: { css: 'resize', values: ['both'], tests: ['both'] },
+      overflow: { css: 'overflow', values: ['hidden'], tests: ['hidden'] },
     };
     const components = Object.keys(MAP_CSS).map((prop, id) => {
       const { tests } = MAP_CSS[prop];

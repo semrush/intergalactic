@@ -1,11 +1,10 @@
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup } from '@semcore/testing-utils/testing-library';
-import { describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { beforeEach, describe, expect, test } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
 import Card from '../src';
-
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Card Dependency imports', () => {
   runDependencyCheckTests('card');
@@ -14,12 +13,22 @@ describe('Card Dependency imports', () => {
 describe('Card', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Card);
-  shouldSupportRef(Card);
+  test('Verify data-ui-name', () => {
+    const card = (
+      <Card>
+        <Card.Header>
+          <Card.Title>Card title</Card.Title>
+          <Card.Description>Card description</Card.Description>
+        </Card.Header>
+        <Card.Body>
+          Card body
+        </Card.Body>
+      </Card>
+    );
 
-  shouldSupportClassName(Card.Title, Card);
-  shouldSupportRef(Card.Title, Card);
+    const { container } = render(card);
+    const result = extractUIName(container);
 
-  shouldSupportClassName(Card.Description, Card);
-  shouldSupportRef(Card.Description, Card);
+    expect(result).toMatchSnapshot();
+  });
 });

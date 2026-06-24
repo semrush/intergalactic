@@ -44,6 +44,7 @@ const sharedArgTypes = {
 
 const basicPropsArgTypes = {
   ...sharedArgTypes,
+  strictMode: { control: { type: 'boolean' } },
   pasteDelimiter: {
     control: { type: 'select' },
     options: ['newline', 'comma', 'semicolon', 'space', 'undefined'],

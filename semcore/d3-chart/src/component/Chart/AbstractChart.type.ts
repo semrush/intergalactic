@@ -63,12 +63,14 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
   data: T;
   /**
    * Width of plot
+   * @default width is 100% of the parent element.
    */
-  plotWidth: number;
+  plotWidth?: number;
   /**
    * Height of plot
+   * @default height is 100% of the parent element.
    */
-  plotHeight: number;
+  plotHeight?: number;
 
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
@@ -158,6 +160,13 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Flag to show/hide legend
    */
   showLegend?: boolean;
+  /**
+   * Relation between height and width dimensions block.
+   * height = width / aspect, so an aspect could be set as `16 / 9` for example.
+   */
+  aspect?: number;
+  /** Callback which will be called after changing the block size */
+  onResize?: (size: [number, number], entries: ResizeObserverEntry[]) => void;
   /**
    * Props for Legend
    */

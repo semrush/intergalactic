@@ -11,9 +11,9 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
 
 // Matches the CSS fallback colors after the test bundle normalizes them.
 const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-dropdown-menu-item-hover': 'rgba(0, 22, 16, 0.028)',
-  '--intergalactic-dropdown-menu-item-selected': 'rgba(0, 80, 255, 0.077)',
-  '--intergalactic-dropdown-menu-item-selected-hover': 'rgba(0, 77, 255, 0.191)',
+  '--intergalactic-dropdown-menu-item-hover': 'oklch(0.177 0.033 175.6 / 0.028)',
+  '--intergalactic-dropdown-menu-item-selected': 'oklch(0.525 0.265 263 / 0.077)',
+  '--intergalactic-dropdown-menu-item-selected-hover': 'oklch(0.52 0.268 263.2 / 0.191)',
 };
 
 const getCssVarColor = async (page: Page, varName: string) => {
@@ -31,6 +31,10 @@ export const locators = {
 
   button: (page: Page, name?: string, index?: number) => {
     const base = page.getByRole('button', { name });
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  search: (page: Page, name?: string, index?: number) => {
+    const base = page.getByRole('textbox', { name });
     return typeof index === 'number' ? base.nth(index) : base;
   },
   menu: (page: Page, index?: number) => {
@@ -740,6 +744,33 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page).first().click();
       await expect(locators.item(page).nth(0)).not.toBeVisible();
     });
+  });
+
+  test.describe('StatusItem', () => {
+    const statusItemStory = 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx';
+
+    const openMenu = async (page: Page) => {
+      await locators.button(page, 'Trigger').first().click();
+      await locators.search(page, 'Search').waitFor({ state: 'visible' });
+    };
+
+    for (const size of ['m', 'l'] as const) {
+      test(`Verify nothing-found status appearance with size ${size}`, {
+        tag: [TAG.PRIORITY_MEDIUM, '@dropdown-menu'],
+      }, async ({ page }) => {
+        await loadPage(page, statusItemStory, 'en', { showSearch: true, size });
+
+        await test.step('Open menu and filter with a non-matching query', async () => {
+          await openMenu(page);
+          await locators.search(page, 'Search').fill('zzz');
+          await expect(page.locator('text="Nothing found"')).toBeVisible();
+        });
+
+        await test.step('Verify appearance', async () => {
+          await expect(page).toHaveScreenshot();
+        });
+      });
+    }
   });
 });
 
@@ -1692,6 +1723,99 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify Tab not moves focus from the menu', async () => {
         await page.keyboard.press('Tab');
         await expect(page.getByRole('menuitem', { name: 'Delete' })).toBeFocused();
+      });
+    });
+  });
+
+  test.describe('StatusItem', () => {
+    const statusItemStory = 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx';
+
+    const openMenu = async (page: Page) => {
+      await locators.button(page, 'Trigger').first().click();
+      await locators.search(page, 'Search').waitFor({ state: 'visible' });
+    };
+
+    test('Verify screen-reader result count when items are found', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.ACCESSIBILITY, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true });
+
+      await test.step('Open menu and filter to matching items', async () => {
+        await openMenu(page);
+        await locators.search(page, 'Search').fill('d');
+      });
+
+      await test.step('Verify result count is exposed to screen readers only', async () => {
+        const status = page.locator('#search-result');
+        await expect(status).toContainText('2 results found');
+        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(page.locator('text="Nothing found"')).toHaveCount(0);
+      });
+    });
+
+    test('Verify visible "Nothing found" when no items match', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true });
+
+      await test.step('Open menu and filter with a non-matching query', async () => {
+        await openMenu(page);
+        await locators.search(page, 'Search').fill('zzz');
+      });
+
+      await test.step('Verify "Nothing found" is visible', async () => {
+        const status = page.locator('#search-result');
+        await expect(status).toBeVisible();
+        await expect(status).toContainText('Nothing found');
+      });
+    });
+
+    test('Verify loading state text is shown', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'loading' });
+
+      await test.step('Open menu', async () => {
+        await openMenu(page);
+      });
+
+      await test.step('Verify loading text', async () => {
+        await expect(page.locator('text="Loading..."')).toBeVisible();
+      });
+    });
+
+    test('Verify error state text is shown', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'error' });
+
+      await test.step('Open menu', async () => {
+        await openMenu(page);
+      });
+
+      await test.step('Verify error text', async () => {
+        await expect(
+          page.locator('text="Something went wrong. Please try again later."'),
+        ).toBeVisible();
+      });
+    });
+
+    test('Verify custom children override the default status text', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+    }, async ({ page }) => {
+      await loadPage(page, statusItemStory, 'en', {
+        showSearch: true,
+        customChildren: 'No columns match your search',
+      });
+
+      await test.step('Open menu and filter with a non-matching query', async () => {
+        await openMenu(page);
+        await locators.search(page, 'Search').fill('zzz');
+      });
+
+      await test.step('Verify custom text replaces the default', async () => {
+        await expect(page.locator('text="No columns match your search"')).toBeVisible();
+        await expect(page.locator('text="Nothing found"')).toHaveCount(0);
       });
     });
   });

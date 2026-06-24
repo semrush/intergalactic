@@ -47,7 +47,9 @@ function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
     const eventTarget = getEventTarget(event) as Node | null;
 
     const isTargetEvent = nodesToCheck.some(
-      (node) => mouseDownInside.current || node?.contains(eventTarget),
+      (node) => {
+        return mouseDownInside.current || node?.contains?.(eventTarget);
+      },
     );
 
     if (!isTargetEvent) {
@@ -59,7 +61,9 @@ function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
     const nodesToCheck = [...excludeRefs, nodeRef].map((ref) => ref?.current);
     const eventTarget = getEventTarget(event) as Node | null;
 
-    mouseDownInside.current = nodesToCheck.some((node) => node?.contains(eventTarget));
+    mouseDownInside.current = nodesToCheck.some((node) => {
+      return node?.contains?.(eventTarget);
+    });
   });
 
   const toggleEvents = (status: boolean, outsideRoot: Element | Document | null) => {

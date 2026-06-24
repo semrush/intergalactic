@@ -1,32 +1,57 @@
 import { afterEach, expect, test, describe, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
+import { flushSync } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { Animation } from '../src';
 
+let root = null;
+let container = null;
+
+const renderSync = (element) => {
+  container = document.createElement('div');
+  root = createRoot(container);
+
+  document.body.appendChild(container);
+
+  flushSync(() => {
+    root.render(element);
+  });
+
+  return container;
+};
+
 describe('Animation', () => {
   afterEach(() => {
-    cleanup();
+    if (root && container) {
+      flushSync(() => {
+        root.unmount();
+      });
+      container.remove();
+      root = null;
+      container = null;
+    }
+
     vi.restoreAllMocks();
     vi.useRealTimers();
   });
 
   test('Verify not renders when visible is false and preserveNode is false', () => {
-    render(
+    const container = renderSync(
       <Animation visible={false} preserveNode={false}>
         Content
       </Animation>,
     );
-    expect(screen.queryByText('Content')).not.toBeInTheDocument();
+    expect(container.textContent).not.toContain('Content');
   });
 
   test('Verify preserve node when preserveNode is true', () => {
-    render(
+    const container = renderSync(
       <Animation visible={false} preserveNode={true}>
         Content
       </Animation>,
     );
-    expect(screen.getByText('Content')).toBeInTheDocument();
+    expect(container.textContent).toContain('Content');
   });
 
   test('Verify animationsDisabled fallback uses zero timeout', () => {
@@ -34,7 +59,7 @@ describe('Animation', () => {
     const setTimeoutSpy = vi.spyOn(globalThis, 'setTimeout');
     setTimeoutSpy.mockClear();
 
-    render(
+    renderSync(
       <Animation visible={false} preserveNode animationsDisabled>
         Content
       </Animation>,
@@ -50,7 +75,7 @@ describe('Animation', () => {
     const setTimeoutSpy = vi.spyOn(globalThis, 'setTimeout');
     setTimeoutSpy.mockClear();
 
-    render(
+    renderSync(
       <Animation visible={false} preserveNode duration={[300, 200]} delay={[0, 50]}>
         Content
       </Animation>,

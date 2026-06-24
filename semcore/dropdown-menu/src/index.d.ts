@@ -6,6 +6,7 @@ import type {
   DropdownHandlers,
   DropdownTriggerProps,
   DropdownPopperAriaProps,
+  StatusItemComponent,
 } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
 import type { Text } from '@semcore/typography';
@@ -153,6 +154,8 @@ declare const DropdownMenu: Intergalactic.Component<
   };
 
   Group: typeof Dropdown.Group;
+
+  StatusItem: StatusItemComponent;
 
   VirtualList: typeof VirtualList;
 

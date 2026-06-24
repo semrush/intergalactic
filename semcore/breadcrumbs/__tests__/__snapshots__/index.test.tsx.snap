@@ -1,0 +1,88 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Breadcrumbs > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Breadcrumbs.Item",
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronRight",
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Breadcrumbs.Item",
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronRight",
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Breadcrumbs.Item",
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronRight",
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "Breadcrumbs",
+    },
+  ],
+  "uiName": null,
+}
+`;

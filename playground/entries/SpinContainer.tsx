@@ -1,6 +1,6 @@
 import { Flex } from '@semcore/ui/base-components';
 import Input from '@semcore/ui/input';
-import type { SpinContainerProps } from '@semcore/ui/spin-container';
+import type { NSSpinContainer } from '@semcore/ui/spin-container';
 import SpinContainer from '@semcore/ui/spin-container';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -9,7 +9,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type SpinContainerJSXProps = JSXProps<SpinContainerProps>;
+export type SpinContainerJSXProps = JSXProps<NSSpinContainer.Props>;
 
 function getJSX(props: SpinContainerJSXProps) {
   return (

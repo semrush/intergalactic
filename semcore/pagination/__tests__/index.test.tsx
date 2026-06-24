@@ -1,7 +1,7 @@
 import Button, { ButtonLink } from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
@@ -32,7 +32,7 @@ describe('Pagination.FirstPage', () => {
     expect(getByTestId('firstPage')).toHaveProperty('disabled', false);
   });
 
-  test('Verify calls onCurrentPageChange(1) on click', () => {
+  test('Verify calls onCurrentPageChange(1) on click', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -42,7 +42,7 @@ describe('Pagination.FirstPage', () => {
     );
 
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('firstPage'));
+    await userEvent.click(getByTestId('firstPage'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(1);
   });
@@ -69,7 +69,7 @@ describe('Pagination.PrevPage', () => {
     expect((getByTestId('prevPage').attributes as any)['disabled']).toBeUndefined();
   });
 
-  test('Verify calls onCurrentPageChange(currentPage - 1) by one on click', () => {
+  test('Verify calls onCurrentPageChange(currentPage - 1) by one on click', async () => {
     const spy = vi.fn();
     const CURRENT_PAGE = 10;
 
@@ -80,7 +80,7 @@ describe('Pagination.PrevPage', () => {
     );
 
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('firstPage'));
+    await userEvent.click(getByTestId('firstPage'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(CURRENT_PAGE - 1);
   });
@@ -108,7 +108,7 @@ describe('Pagination.NextPage', () => {
     expect((getByTestId('nextPage').attributes as any)['disabled']).toBeUndefined();
   });
 
-  test('Verify Next Page calls onCurrentPageChange(currentPage + 1) by one on click', () => {
+  test('Verify Next Page calls onCurrentPageChange(currentPage + 1) by one on click', async () => {
     const spy = vi.fn();
     const CURRENT_PAGE = 10;
 
@@ -119,7 +119,7 @@ describe('Pagination.NextPage', () => {
     );
 
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('firstPage'));
+    await userEvent.click(getByTestId('firstPage'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(CURRENT_PAGE + 1);
   });
@@ -128,7 +128,7 @@ describe('Pagination.NextPage', () => {
 describe('Pagination.TotalPages', () => {
   beforeEach(cleanup);
 
-  test('Verify Total Pages call onCurrentPageChange(totalPages) on click', () => {
+  test('Verify Total Pages call onCurrentPageChange(totalPages) on click', async () => {
     const spy = vi.fn();
     const totalPages = 100;
     const { getByTestId } = render(
@@ -137,7 +137,7 @@ describe('Pagination.TotalPages', () => {
       </Pagination>,
     );
     expect(spy).toBeCalledTimes(0);
-    fireEvent.click(getByTestId('totalPages'));
+    await userEvent.click(getByTestId('totalPages'));
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(totalPages);
   });
@@ -146,7 +146,12 @@ describe('Pagination.TotalPages', () => {
 describe('Pagination.PageInput.Value', () => {
   beforeEach(cleanup);
 
-  test('Verify currentPage displays correct value and updates on property change', () => {
+  const setInputValue = async (input: HTMLInputElement, value: string) => {
+    await userEvent.clear(input);
+    await userEvent.type(input, value);
+  };
+
+  test('Verify currentPage displays correct value and updates on property change', async () => {
     const CURRENT_PAGE = {
       INITIAL: 10,
       CHANGED: 20,
@@ -160,10 +165,10 @@ describe('Pagination.PageInput.Value', () => {
       </Pagination>,
     );
 
-    fireEvent.change(getByTestId('value') as HTMLInputElement, {
-      target: { value: String(CURRENT_PAGE.INITIAL) },
-    });
-    expect((getByTestId('value') as HTMLInputElement).value).toBe(CURRENT_PAGE.INITIAL.toString());
+    const input = getByTestId('value') as HTMLInputElement;
+
+    await setInputValue(input, String(CURRENT_PAGE.INITIAL));
+    expect(input.value).toBe(CURRENT_PAGE.INITIAL.toString());
 
     rerender(
       <Pagination currentPage={CURRENT_PAGE.CHANGED} totalPages={100}>
@@ -173,10 +178,10 @@ describe('Pagination.PageInput.Value', () => {
       </Pagination>,
     );
 
-    expect((getByTestId('value') as HTMLInputElement).value).toBe(CURRENT_PAGE.CHANGED.toString());
+    expect(input.value).toBe(CURRENT_PAGE.CHANGED.toString());
   });
 
-  test('Verify not calls onCurrentPageChange on input value change', () => {
+  test('Verify not calls onCurrentPageChange on input value change', async () => {
     const spy = vi.fn();
     const CURRENT_PAGE = 10;
     const { getByTestId } = render(
@@ -186,7 +191,8 @@ describe('Pagination.PageInput.Value', () => {
         </Pagination.PageInput>
       </Pagination>,
     );
-    fireEvent.change(getByTestId('value'), { target: { value: '105' } });
+
+    await setInputValue(getByTestId('value') as HTMLInputElement, '105');
     expect(spy).toBeCalledTimes(0);
   });
 
@@ -214,7 +220,7 @@ describe('Pagination.PageInput.Value', () => {
     expect(input.value).toBe('10');
   });
 
-  test('Verify calls onCurrentPageChange on Enter click', () => {
+  test('Verify calls onCurrentPageChange on Enter click', async () => {
     const spy = vi.fn();
     const CURRENT_PAGE = {
       INITIAL: 10,
@@ -230,14 +236,14 @@ describe('Pagination.PageInput.Value', () => {
 
     const input = getByTestId('value');
 
-    fireEvent.change(input, { target: { value: String(CURRENT_PAGE.CHANGED) } });
+    await setInputValue(input as HTMLInputElement, String(CURRENT_PAGE.CHANGED));
     expect(spy).toBeCalledTimes(0);
-    fireEvent.keyDown(input, { key: 'Enter' });
+    await userEvent.keyboard('[Enter]');
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(CURRENT_PAGE.CHANGED);
   });
 
-  test('Verify enter click should call onCurrentPageChange with valid value', () => {
+  test('Verify enter click should call onCurrentPageChange with valid value', async () => {
     const spy = vi.fn();
     const totalPages = 100;
     const currentPage = {
@@ -259,14 +265,14 @@ describe('Pagination.PageInput.Value', () => {
 
     const input = getByTestId('value') as HTMLInputElement;
 
-    fireEvent.change(input, { target: { value: String(currentPage.null) } });
-    fireEvent.keyDown(input, { keyCode: 13, key: 'Enter' });
+    await setInputValue(input, String(currentPage.null));
+    await userEvent.keyboard('[Enter]');
     // because value not changing
     expect(spy).not.toBeCalled();
     expect(input.value).toBe(currentPage.initial.toString());
 
-    fireEvent.change(input, { target: { value: String(currentPage.invalid) } });
-    fireEvent.keyDown(input, { keyCode: 13, key: 'Enter' });
+    await setInputValue(input, String(currentPage.invalid));
+    await userEvent.keyboard('[Enter]');
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(totalPages);
   });
@@ -277,7 +283,13 @@ describe('Pagination.PageInput.Value', () => {
         <Pagination currentPage={1} totalPages={100}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
-            <Pagination.PageInput.Addon data-testid='selectPageButton' tag={ButtonLink} addonLeft={Return} p={0} />
+            <Pagination.PageInput.Addon
+              aria-label='Select page'
+              data-testid='selectPageButton'
+              tag={ButtonLink}
+              addonLeft={Return}
+              p={0}
+            />
           </Pagination.PageInput>
         </Pagination>
         <Button data-testid='testButton'>test button</Button>
@@ -346,5 +358,46 @@ describe('Pagination.PageInput.Value', () => {
 
     await userEvent.click(TotalPages);
     expect(InputValue.value).toBe('100');
+  });
+
+  test('Verify pressing Enter without changing the value does not call onCurrentPageChange (dirtyCurrentPage undefined guard)', async () => {
+    const spy = vi.fn();
+    const CURRENT_PAGE = 5;
+    const { getByTestId } = render(
+      <Pagination currentPage={CURRENT_PAGE} totalPages={100} onCurrentPageChange={spy}>
+        <Pagination.PageInput>
+          <Pagination.PageInput.Value data-testid='value' />
+        </Pagination.PageInput>
+      </Pagination>,
+    );
+
+    const input = getByTestId('value') as HTMLInputElement;
+
+    input.focus();
+    await userEvent.keyboard('[Enter]');
+
+    expect(spy).not.toHaveBeenCalled();
+    expect(input.value).toBe(CURRENT_PAGE.toString());
+  });
+
+  test('Verify clearing input and blur resets to currentPage without crashing', async () => {
+    const spy = vi.fn();
+    const CURRENT_PAGE = 5;
+    const { getByTestId } = render(
+      <Pagination currentPage={CURRENT_PAGE} totalPages={100} onCurrentPageChange={spy}>
+        <Pagination.PageInput>
+          <Pagination.PageInput.Value data-testid='value' />
+        </Pagination.PageInput>
+      </Pagination>,
+    );
+
+    const input = getByTestId('value') as HTMLInputElement;
+
+    await userEvent.clear(input);
+    await userEvent.keyboard('[Tab]');
+
+    // Blur never reports a page change; value is restored to currentPage
+    expect(spy).not.toHaveBeenCalled();
+    expect(input.value).toBe(CURRENT_PAGE.toString());
   });
 });

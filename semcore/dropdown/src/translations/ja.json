@@ -1,3 +1,7 @@
 {
-  "triggerHint": "Tabキーを押してポップオーバーに移動"
+  "triggerHint": "Tabキーを押してポップオーバーに移動",
+  "StatusItem.defaultState.ScreenReaderOnlyText": "{count} {count, plural, other {結果}} 見つかりました",
+  "StatusItem.defaultState.nothingFound": "検索結果なし",
+  "StatusItem.loadingState": "読み込み中...",
+  "StatusItem.errorState": "エラーが発生しました。後で再試行してください。"
 }

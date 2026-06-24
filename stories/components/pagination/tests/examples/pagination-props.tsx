@@ -1,8 +1,8 @@
 import Pagination from '@semcore/ui/pagination';
-import type { PaginationProps } from '@semcore/ui/pagination';
+import type { NSPagination } from '@semcore/ui/pagination';
 import React from 'react';
 
-type PaginationPropsExample = PaginationProps & {};
+type PaginationPropsExample = NSPagination.Props & {};
 
 const Demo = (props: PaginationPropsExample) => {
   const { totalPages, currentPage, onCurrentPageChange, size, locale } = props;

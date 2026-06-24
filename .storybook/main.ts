@@ -13,7 +13,6 @@ const config: StorybookConfig = {
   typescript: {
     // reactDocgen: 'react-docgen-typescript',
   },
-  staticDirs: [{ from: '../semcore/core/src/theme/themes', to: '/assets/core' }, { from: '../tools/theme/lib', to: '/assets/theme' }],
   viteFinal(config) {
     return mergeConfig(config, {
       build: {
