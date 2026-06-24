@@ -51,7 +51,6 @@ class RootTag extends Component<
       id: `${id}-text`,
       role: undefined,
       tagRef: this.tagRef,
-      // ellipsis: false,
     };
   }
 
@@ -129,12 +128,6 @@ class RootTag extends Component<
       </STag>,
     );
   }
-}
-
-function TagTextNotEllipsis(props: any) {
-  return (
-    <Tag.Text ellipsis={false}>{props.childen}</Tag.Text>
-  );
 }
 
 class RootTagContainer extends Component<
