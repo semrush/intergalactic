@@ -1,10 +1,10 @@
 import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
-import type { ModalProps } from '@semcore/ui/modal';
+import type { NSModal } from '@semcore/ui/modal';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type BasicModalProps = ModalProps & {
+type BasicModalProps = NSModal.Props & {
   title?: string;
   content?: string;
   showCloseButton?: boolean;
