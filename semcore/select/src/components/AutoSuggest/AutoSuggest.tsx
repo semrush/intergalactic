@@ -214,7 +214,7 @@ class AutoSuggestRoot extends Component<
       const { suggestions } = this.asProps;
 
       if (!Array.isArray(suggestions)) {
-        this.setState({ isLoading: true });
+        this.setState({ isLoading: true, isVisible: true });
       }
 
       this.changeDebounce = window.setTimeout(async () => {
