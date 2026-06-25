@@ -233,7 +233,6 @@ class Value extends Component<
 
     if (value !== '') {
       const { displayValue } = this.valueParser(value, '', '');
-      // this.handlers.displayValue(displayValue);
       this.setState({ displayValue });
     }
   }
@@ -245,7 +244,6 @@ class Value extends Component<
         prevProps.value,
         prevState.displayValue,
       );
-      // this.handlers.displayValue(displayValue);
       this.setState({ displayValue });
     }
   }
@@ -275,7 +273,6 @@ class Value extends Component<
 
     if (value === '.' || value === '-') {
       this.setState({ displayValue: value });
-      // this.handlers.displayValue(value);
       return false;
     }
 
@@ -286,7 +283,6 @@ class Value extends Component<
     if (value.endsWith('.')) {
       if (value.length > prevValue.length) {
         this.setState({ displayValue: numberFormatter.format(value as `${number}`) + this.separatorDecimal });
-        // this.handlers.displayValue(numberFormatter.format(value) + this.separatorDecimal);
         return false;
       } else {
         this.handlers.value(value.slice(0, -1), event);
@@ -327,7 +323,6 @@ class Value extends Component<
     if (event.key === 'Backspace' && value.endsWith(this.separatorDecimal)) {
       event.preventDefault();
       event.stopPropagation();
-      // this.handlers.displayValue(displayValue.slice(0, -1));
       this.setState({ displayValue: displayValue?.slice(0, -1) });
       return false;
     }

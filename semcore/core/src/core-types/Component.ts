@@ -174,7 +174,7 @@ export namespace Intergalactic {
       Omit<Root, keyof Component> &
       Omit<Component, keyof Root> &
       {
-        [K in keyof Root & keyof Component]: Root[K] & Component[K] extends never
+        [K in keyof Root & keyof Component]: [Root[K] & Component[K]] extends never
           ? Root[K] | Component[K]
           : Root[K] & Component[K];
       };
