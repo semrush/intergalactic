@@ -1,9 +1,9 @@
 import Calendar from '@semcore/icon/Calendar/l';
 import Button from '@semcore/ui/button';
-import Notice, { type NoticeProps } from '@semcore/ui/notice';
+import Notice, { type NSNotice } from '@semcore/ui/notice';
 import React from 'react';
 
-const Demo = (props: NoticeProps) => (
+const Demo = (props: NSNotice.Props) => (
   <Notice aria-label='Custom notice example' {...props}>
     <Notice.Label>
       <Calendar />

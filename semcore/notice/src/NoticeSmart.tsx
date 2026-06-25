@@ -1,15 +1,24 @@
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
 
 import Notice from './Notice';
+import type { NSNoticeSmart } from './NoticeSmart.type';
 
-class NoticeSmart extends Component {
+class NoticeSmart extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSNoticeSmart.Component>,
+  [],
+  {},
+  {},
+  {},
+  NSNoticeSmart.DefaultProps
+> {
   static displayName = 'NoticeSmart';
 
   static defaultProps = {
     theme: 'info',
-  };
+  } as const;
 
   render() {
     const SNoticeSmart = Root;
@@ -34,4 +43,7 @@ class NoticeSmart extends Component {
  *
  * {@link https://developer.semrush.com/intergalactic/components/notice/notice-api#noticesmart|API} | {@link https://developer.semrush.com/intergalactic/components/notice/notice-code/|Examples}
  */
-export default createComponent(NoticeSmart);
+export default createComponent<
+  NSNoticeSmart.Component,
+  typeof NoticeSmart
+>(NoticeSmart);
