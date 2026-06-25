@@ -4,7 +4,7 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const locators = {
   options: (page: Page) => page.getByRole('option'),
-  input: (page: Page) => page.getByLabel('Your pet breed'),
+  input: (page: Page) => page.getByRole('combobox'),
   optionByText: (page: Page, text: string) => page.getByRole('option', { name: new RegExp(text, 'i') }),
   startTypingStatus: (page: Page) => page.getByText('Start typing to see options'),
   loadingStatus: (page: Page) => page.getByText('Loading...'),
@@ -148,7 +148,7 @@ test.describe(TAG.FUNCTIONAL, () => {
 
       await test.step('Verify initial dropdown is shown when empty input is focused', async () => {
         await page.keyboard.press('Tab');
-        await expect(locators.startTypingStatus(page)).toBeVisible();
+        await expect(locators.startTypingStatus(page).nth(1)).toBeVisible();
         await expect(locators.options(page)).toHaveCount(0);
         // The init "Start typing" state is not an expanded listbox of options
         await expect(locators.input(page)).toHaveAttribute('aria-expanded', 'false');
