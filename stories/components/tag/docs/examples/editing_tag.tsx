@@ -17,7 +17,7 @@ const Demo = () => {
     <>
       <InlineEdit editable={editable} onEditableChange={setEditable}>
         <InlineEdit.View tag={Tag} interactive size='l'>
-          <Tag.Text>{value}</Tag.Text>
+          <Tag.Text ellipsis:observeChildrenMutations>{value}</Tag.Text>
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput onConfirm={handleValue} onCancel={resetEditable}>
