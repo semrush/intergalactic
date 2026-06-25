@@ -313,7 +313,7 @@
     }
   },
   "dependencies": {
-    "@formatjs/intl": "3.0.4",
+    "@formatjs/intl": "4.1.13",
     "@phytonmk/nano-css": "5.3.7",
     "classnames": "2.2.6",
     "hoist-non-react-statics": "3.3.2",

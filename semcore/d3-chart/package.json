@@ -17,7 +17,7 @@
     "build": "pnpm semcore-builder --source=js,ts && pnpm vite build"
   },
   "dependencies": {
-    "@formatjs/intl": "2.3.0",
+    "@formatjs/intl": "4.1.13",
     "@semcore/checkbox": "^17.2.0",
     "@semcore/divider": "^17.2.0",
     "@semcore/typography": "^17.2.0",
