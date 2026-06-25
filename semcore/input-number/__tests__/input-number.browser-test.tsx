@@ -197,9 +197,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         } else {
           expectedValue = numericValue;
         }
-        expectedValue = expectedValue.toFixed(stepPrecision);
+
+        if (stepPrecision) {
+          expectedValue = expectedValue.toFixed(stepPrecision);
+        }
+
         await page.locator('label').click();
-        await expect(locators.input(page)).toHaveValue(expectedValue);
+        await expect(locators.input(page)).toHaveValue(expectedValue.toLocaleString());
         await expect(locators.input(page)).toBeFocused();
       });
 
@@ -221,9 +225,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         } else {
           expectedValue = 0 - decrement;
         }
-        expectedValue = expectedValue.toFixed(stepPrecision);
 
-        await expect(locators.input(page)).toHaveValue(expectedValue);
+        if (stepPrecision) {
+          expectedValue = expectedValue.toFixed(stepPrecision);
+        }
+
+        await expect(locators.input(page)).toHaveValue(String(expectedValue));
         await expect(locators.input(page)).toBeFocused();
       });
 
@@ -241,7 +248,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
           expectedValue = numericValue;
         }
 
-        expectedValue = expectedValue.toFixed(stepPrecision);
+        if (stepPrecision) {
+          expectedValue = expectedValue.toFixed(stepPrecision);
+        }
+
         await page.locator('label').click();
         await expect(locators.input(page)).toHaveValue(expectedValue.toLocaleString());
         await expect(locators.input(page)).toBeFocused();
