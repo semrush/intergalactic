@@ -138,6 +138,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
 
+      const [_, decimals] = item.step?.toString().split('.') ?? [];
+      const stepPrecision = decimals?.length ?? 0;
+
       const controls = page.locator('[data-ui-name="InputNumber.Controls"]');
 
       const minAttr = await locators.input(page).getAttribute('min');
@@ -194,8 +197,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         } else {
           expectedValue = numericValue;
         }
+        expectedValue = expectedValue.toFixed(stepPrecision);
         await page.locator('label').click();
-        await expect(locators.input(page)).toHaveValue((expectedValue).toLocaleString());
+        await expect(locators.input(page)).toHaveValue(expectedValue);
         await expect(locators.input(page)).toBeFocused();
       });
 
@@ -217,8 +221,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         } else {
           expectedValue = 0 - decrement;
         }
+        expectedValue = expectedValue.toFixed(stepPrecision);
 
-        await expect(locators.input(page)).toHaveValue(String(expectedValue));
+        await expect(locators.input(page)).toHaveValue(expectedValue);
         await expect(locators.input(page)).toBeFocused();
       });
 
@@ -236,6 +241,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
           expectedValue = numericValue;
         }
 
+        expectedValue = expectedValue.toFixed(stepPrecision);
         await page.locator('label').click();
         await expect(locators.input(page)).toHaveValue(expectedValue.toLocaleString());
         await expect(locators.input(page)).toBeFocused();

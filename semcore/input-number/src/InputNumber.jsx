@@ -150,7 +150,7 @@ class Value extends Component {
     return decimals?.length ?? 0;
   }
 
-  getNewValue(value) {
+  getDisplayValue(value) {
     return value === 0 ? value : value.toFixed(this.stepPrecision);
   }
 
@@ -180,7 +180,7 @@ class Value extends Component {
         }
       }
 
-      this.handlers.value(this.getNewValue(numberValue), event);
+      this.handlers.value(this.getDisplayValue(numberValue), event);
     }
   };
 
@@ -437,7 +437,7 @@ class Value extends Component {
 
     const nextValue = Math.min(numberValue + step, max);
 
-    this.handlers.value(this.getNewValue(nextValue), event);
+    this.handlers.value(this.getDisplayValue(nextValue), event);
   };
 
   stepDown = (event) => {
@@ -455,7 +455,7 @@ class Value extends Component {
 
     const nextValue = Math.max(numberValue - step, min);
 
-    this.handlers.value(this.getNewValue(nextValue), event);
+    this.handlers.value(this.getDisplayValue(nextValue), event);
   };
 
   render() {
