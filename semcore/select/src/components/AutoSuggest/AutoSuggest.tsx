@@ -6,6 +6,7 @@ import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import Input from '@semcore/input';
 import Spin from '@semcore/spin';
 import React from 'react';
@@ -39,7 +40,16 @@ class AutoSuggestRoot extends Component<
     };
   };
 
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
+  static enhance = [
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-popper',
+      fallback: '200',
+      map: (v: string) => Number.parseInt(v, 10).toString(),
+      prop: 'duration',
+    }),
+  ] as const;
 
   private abortController: AbortController | undefined;
   private changeDebounce = 0;
@@ -84,7 +94,7 @@ class AutoSuggestRoot extends Component<
     const { isVisible, isLoading, suggestions } = this.state;
 
     return isVisible &&
-      (value === '' || suggestions.length > 0 || isLoading || this.changeDebounce) &&
+      (value === '' || suggestions.length > 0 || isLoading || (this.changeDebounce && statusItemPlaceholder !== '')) &&
       !(value === '' && suggestions.length === 0 && statusItemPlaceholder === '');
   }
 
@@ -211,7 +221,16 @@ class AutoSuggestRoot extends Component<
     }
 
     if (value !== this.asProps.value) {
-      const { suggestions } = this.asProps;
+      const { suggestions, duration } = this.asProps;
+
+      if (value === '') {
+        this.setState({ isVisible: false });
+
+        setTimeout(() => {
+          this.setState({ suggestions: [] });
+        }, Number(duration)); // wait for closing and then clear suggestions.
+        return;
+      }
 
       if (!Array.isArray(suggestions)) {
         this.setState({ isLoading: true, isVisible: true });
