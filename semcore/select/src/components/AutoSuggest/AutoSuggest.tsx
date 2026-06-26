@@ -224,7 +224,7 @@ class AutoSuggestRoot extends Component<
       const { suggestions, duration } = this.asProps;
 
       if (value === '') {
-        this.setState({ isVisible: false });
+        this.setState({ isVisible: false, isLoading: false });
 
         setTimeout(() => {
           this.setState({ suggestions: [] });
@@ -237,10 +237,12 @@ class AutoSuggestRoot extends Component<
       }
 
       this.changeDebounce = window.setTimeout(async () => {
+        const { openOnChanges } = this.state;
+
         if (Array.isArray(suggestions)) {
           const filteredSuggestions = value === '' ? [] : suggestions.filter((s) => s.toLowerCase().includes(value.toLowerCase()));
 
-          this.setState({ suggestions: filteredSuggestions });
+          this.setState({ suggestions: filteredSuggestions, isVisible: filteredSuggestions.length > 0 && openOnChanges });
         } else {
           this.abortController = new AbortController();
           const abortSignal = this.abortController.signal;
@@ -248,12 +250,8 @@ class AutoSuggestRoot extends Component<
           const filteredSuggestions = await suggestions(value, abortSignal);
 
           if (!this.abortController.signal.aborted) {
-            this.setState({ suggestions: filteredSuggestions, isLoading: false, isVisible: filteredSuggestions.length > 0 });
+            this.setState({ suggestions: filteredSuggestions, isLoading: false, isVisible: filteredSuggestions.length > 0 && openOnChanges });
           }
-        }
-
-        if (this.state.openOnChanges) {
-          this.handleChangeVisible(true);
         }
       }, 300);
     }
