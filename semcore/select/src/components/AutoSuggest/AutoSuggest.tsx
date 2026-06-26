@@ -82,6 +82,7 @@ class AutoSuggestRoot extends Component<
 
         if (!this.abortController.signal.aborted) {
           this.setState({ suggestions: filteredSuggestions, isLoading: false });
+          this.changeDebounce = null;
         }
       });
     }
