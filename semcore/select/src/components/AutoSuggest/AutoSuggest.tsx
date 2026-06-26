@@ -52,7 +52,7 @@ class AutoSuggestRoot extends Component<
   ] as const;
 
   private abortController: AbortController | undefined;
-  private changeDebounce = 0;
+  private changeDebounce: ReturnType<typeof setTimeout> | null = null;
   private triggerRef = React.createRef<HTMLElement>();
   private popperRef = React.createRef<HTMLElement>();
 
@@ -68,6 +68,23 @@ class AutoSuggestRoot extends Component<
     return {
       value: null,
     };
+  }
+
+  componentDidMount(): void {
+    const { value, suggestions } = this.asProps;
+
+    if (value && !Array.isArray(suggestions)) {
+      this.changeDebounce = setTimeout(async () => {
+        this.abortController = new AbortController();
+        const abortSignal = this.abortController.signal;
+
+        const filteredSuggestions = await suggestions(value, abortSignal);
+
+        if (!this.abortController.signal.aborted) {
+          this.setState({ suggestions: filteredSuggestions, isLoading: false });
+        }
+      });
+    }
   }
 
   get id() {
@@ -236,7 +253,7 @@ class AutoSuggestRoot extends Component<
         this.setState({ isLoading: true, isVisible: true });
       }
 
-      this.changeDebounce = window.setTimeout(async () => {
+      this.changeDebounce = setTimeout(async () => {
         const { openOnChanges } = this.state;
 
         if (Array.isArray(suggestions)) {
