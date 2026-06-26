@@ -292,7 +292,7 @@ describe('AutoSuggest', () => {
   });
 
   test('Verify forwards className, data-* to root and ref to a DOM node', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef<HTMLInputElement>();
     render(
       <AutoSuggest
         ref={ref}

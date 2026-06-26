@@ -17,7 +17,7 @@ import type Input from '@semcore/input';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
-import type { NSAutoSuggest } from './components/AutoSuggest/AutoSuggest.type.ts';
+import type { NSAutoSuggest } from './components/AutoSuggest/AutoSuggest.type';
 
 export type SelectInputSearch = InputValueProps & {};
 
@@ -174,7 +174,7 @@ declare const wrapSelect: <PropsExtending extends {}>(
   ) => React.ReactNode,
 ) => IntergalacticSelectComponent<PropsExtending>;
 
-declare const AutoSuggest = NSAutoSuggest.Component;
+declare const AutoSuggest: NSAutoSuggest.Component;
 
 export { InputSearch, wrapSelect, AutoSuggest, NSAutoSuggest };
 export default Select;
