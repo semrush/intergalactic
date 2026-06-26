@@ -12,7 +12,7 @@ SItemContainer {
   height: 26px;
   border-radius: 50%;
   border: 1px solid transparent;
-  outline: none;
+  outline-color: transparent;
   cursor: pointer;
 
   &:hover {
@@ -105,7 +105,7 @@ SPlusButton {
 SDefaultTrigger {
   display: inline-flex;
   align-items: center;
-  outline: none;
+  outline-color: transparent;
   cursor: pointer;
   border: 0;
   background: transparent;

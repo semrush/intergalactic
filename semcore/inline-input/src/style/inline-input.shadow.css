@@ -87,6 +87,7 @@ SUnderline {
   min-height: 1em;
   border: 1px solid transparent;
   border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  outline-color: transparent;
 }
 
 SAddon {
