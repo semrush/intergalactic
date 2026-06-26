@@ -91,3 +91,13 @@ Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 </script>
 
 :::
+
+## Long string tag
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx';
+</script>
+
+:::
