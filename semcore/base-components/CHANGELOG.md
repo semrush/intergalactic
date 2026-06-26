@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.1] - 2026-06-26
+
+### Fixed
+
+- **flex-box**: Outline has a shimmering black color.
+- **popper**: Outline has a shimmering black color.
+- **flex-box**: Removed `tag` prop for `BoxProps`.
+- **outside-click**: Checking `node.contains` because in d3-chart a node may not be an
+HTMLElement.
+- **animation**: Incorrect processing of oklch values.
+- **breakpoints**: Incorrect processing of oklch values.
+- **flex-box**: Incorrect processing of oklch values.
+- **grid**: Incorrect processing of oklch values.
+- **hint**: Incorrect processing of oklch values.
+- **neighbor-location**: Incorrect processing of oklch values.
+- **outside-click**: Incorrect processing of oklch values.
+- **popper**: Incorrect processing of oklch values.
+- **portal**: Incorrect processing of oklch values.
+- **scroll-area**: Incorrect processing of oklch values.
+
 ## [17.2.0] - 2026-06-05
 
 ### Added
