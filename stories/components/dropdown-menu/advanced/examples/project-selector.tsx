@@ -128,7 +128,7 @@ const Demo = (props: ProjectSelectorProps) => {
             }}
           />
         )}
-        <DropdownMenu.StatusItem itemsCount={filteredProjects.length} />
+        {searchValue !== '' && <DropdownMenu.StatusItem itemsCount={filteredProjects.length} />}
         <Divider />
         <DropdownMenu.Item
           role='button'

@@ -40,7 +40,7 @@ const Demo = () => {
               ))}
             </Select.List>
           )}
-          <Select.StatusItem itemsCount={options.length} />
+          {filter !== '' && <Select.StatusItem itemsCount={options.length} />}
         </Select.Popper>
       </Select>
     </Flex>

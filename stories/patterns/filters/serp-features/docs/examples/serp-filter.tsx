@@ -249,7 +249,7 @@ const Demo = () => {
                     <ScrollArea.Bar orientation='vertical' />
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
-                <Select.StatusItem itemsCount={options.length} />
+                {search !== '' && <Select.StatusItem itemsCount={options.length} />}
 
                 {options.length > 0 && (
                   <Select.Option

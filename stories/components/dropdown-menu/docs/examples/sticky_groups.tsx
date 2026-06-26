@@ -132,7 +132,7 @@ const Demo = () => {
             })}
           </DropdownMenu.List>
         )}
-        <DropdownMenu.StatusItem itemsCount={filteredMenuData.length} />
+        {searchValue !== '' && <DropdownMenu.StatusItem itemsCount={filteredMenuData.length} />}
         <Divider />
         <DropdownMenu.Item
           role='button'
