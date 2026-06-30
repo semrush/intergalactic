@@ -1,10 +1,10 @@
 import Badge from '@semcore/ui/badge';
-import type { BadgeProps } from '@semcore/ui/badge';
+import type { NSBadge } from '@semcore/ui/badge';
 import type { BoxProps } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import React from 'react';
 
-type ExampleBadgeProps = BadgeProps & BoxProps;
+type ExampleBadgeProps = NSBadge.Props & BoxProps;
 
 const Demo = (props: ExampleBadgeProps) => {
   return (
