@@ -1,26 +1,19 @@
 import { FilterTrigger } from '@semcore/base-trigger';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import React from 'react';
 
-import type { AddFilterDropdownType, AddFilterItemProps } from '../AddFilter.types';
+import type { RootAddFilterType } from '../AddFilter';
+import type { NSAddFilter } from '../AddFilter.types';
 
-type AsPropsTypeWithHandlers<T> = T & {
-  onClear: () => void;
-  unsetFocusRef: () => void;
-  setFocusRef: (el: HTMLElement) => {};
-};
-
-type DefaultProps = {
-  defaultVisible: false;
-};
 class AddFilterDropdownRoot extends Component<
-  AddFilterItemProps,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAddFilter.Dropdown.Component, RootAddFilterType, 'Dropdown'>,
   [],
-  { visible: null },
+  NSAddFilter.Dropdown.Handlers,
   {},
   {},
-  DefaultProps
+  NSAddFilter.Dropdown.DefaultProps
 > {
   static displayName = 'AddFilterDropdown';
 
@@ -28,7 +21,7 @@ class AddFilterDropdownRoot extends Component<
     defaultVisible: false,
   } as const;
 
-  componentDidMount(): void {
+  componentDidMount() {
     if (this.props.visible === undefined) {
       setTimeout(() => {
         this.handlers.visible(true);
@@ -47,9 +40,7 @@ class AddFilterDropdownRoot extends Component<
   }
 
   getTriggerProps() {
-    const { value, onClear, setFocusRef } = this.asProps as AsPropsTypeWithHandlers<
-      typeof this.asProps
-    >;
+    const { value, onClear, setFocusRef } = this.asProps;
 
     return {
       tag: FilterTrigger,
@@ -61,7 +52,7 @@ class AddFilterDropdownRoot extends Component<
   }
 
   getPopperProps() {
-    const { value, onClear } = this.asProps as AsPropsTypeWithHandlers<typeof this.asProps>;
+    const { value, onClear } = this.asProps;
 
     return {
       onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -81,7 +72,7 @@ class AddFilterDropdownRoot extends Component<
 }
 
 const AddFilterDropdown = createComponent<
-  typeof AddFilterDropdownType,
+  NSAddFilter.Dropdown.Component,
   typeof AddFilterDropdownRoot
 >(AddFilterDropdownRoot, {
   Trigger: Dropdown.Trigger,

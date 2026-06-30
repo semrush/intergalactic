@@ -1,17 +1,15 @@
 import { ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import type { InputValueProps } from '@semcore/input';
 import React from 'react';
 
-import type { AddFilterInputType, AddFilterItemProps } from '../AddFilter.types';
-
-type AsPropsWithOnClear<T> = T & {
-  onClear: () => void;
-  unsetFocusRef: () => void;
-  setFocusRef: (el: HTMLElement) => {};
-};
-class AddFilterInputRoot extends Component<AddFilterItemProps> {
+import type { RootAddFilterType } from '../AddFilter';
+import type { NSAddFilter } from '../AddFilter.types';
+class AddFilterInputRoot extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAddFilter.Input.Component, RootAddFilterType, 'Input'>
+> {
   static displayName = 'AddFilterInput';
 
   componentWillUnmount() {
@@ -19,7 +17,7 @@ class AddFilterInputRoot extends Component<AddFilterItemProps> {
   }
 
   getValueProps(props: InputValueProps) {
-    const { value, onClear, setFocusRef } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
+    const { value, onClear, setFocusRef } = this.asProps;
 
     return {
       ...props,
@@ -39,7 +37,7 @@ class AddFilterInputRoot extends Component<AddFilterItemProps> {
   }
 
   getClearProps() {
-    const { onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
+    const { onClear } = this.asProps;
 
     return {
       onClick: onClear,
@@ -56,7 +54,7 @@ function Clear() {
 }
 
 const AddFilterInput = createComponent<
-  typeof AddFilterInputType,
+  NSAddFilter.Input.Component,
   typeof AddFilterInputRoot
 >(AddFilterInputRoot, {
   Value: Input.Value,
