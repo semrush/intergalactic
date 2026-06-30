@@ -38,7 +38,10 @@ class InputNumber extends Component {
   };
 
   getValueProps() {
-    const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
+    const numberFormatter = new Intl.NumberFormat(this.asProps.locale, {
+      style: 'decimal',
+      maximumFractionDigits: 100,
+    });
 
     return {
       inputRef: this.inputRef,
@@ -154,6 +157,16 @@ class Value extends Component {
     return value === 0 ? value : value.toFixed(this.stepPrecision);
   }
 
+  limitDecimals(value) {
+    const { stepPrecision } = this;
+    if (stepPrecision === 0) return value;
+
+    const dotIndex = value.indexOf('.');
+    if (dotIndex === -1 || value.length - dotIndex - 1 <= stepPrecision) return value;
+
+    return value.slice(0, dotIndex + 1 + stepPrecision);
+  }
+
   round(value, step) {
     const { stepPrecision } = this;
 
@@ -263,7 +276,7 @@ class Value extends Component {
     const digits = /^[0-9.-]+$/.test(value);
 
     if (digits || value === '') {
-      this.handlers.value(value, event);
+      this.handlers.value(this.limitDecimals(value), event);
     }
   };
 

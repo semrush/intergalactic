@@ -209,6 +209,38 @@ describe('InputNumber', () => {
     expect(input.value).toBe('0.10');
   });
 
+  test.sequential('Verify typed fractional digits are limited to step precision', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input-step-limit' value='' onChange={spy} step={0.01} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input-step-limit') as HTMLInputElement;
+    await focusInput(input);
+    await userEvent.keyboard('0.12345');
+
+    expect(input.value).toBe('0.12');
+    expect(spy).lastCalledWith('0.12', expect.anything());
+  });
+
+  test.sequential('Verify typed fractional digits allow as many as step precision', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input-step-allow' value='' onChange={spy} step={0.0001} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input-step-allow') as HTMLInputElement;
+    await focusInput(input);
+    await userEvent.keyboard('0.12345');
+
+    expect(input.value).toBe('0.1234');
+    expect(spy).lastCalledWith('0.1234', expect.anything());
+  });
+
   test.sequential(
     'Verify increment/decrement keeps decimal count equal to step precision',
     async () => {
