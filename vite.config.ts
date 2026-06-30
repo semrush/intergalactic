@@ -38,6 +38,14 @@ export default defineConfig({
       },
     })).vite({}),
   ],
+  resolve: {
+    alias: {
+      '@semcore/spectrum/core': resolvePath(rootDir, 'spectrum', 'src', 'core'),
+      '@semcore/spectrum/button': resolvePath(rootDir, 'spectrum', 'src', 'button'),
+      '@semcore/spectrum/dropdown-menu': resolvePath(rootDir, 'spectrum', 'src', 'dropdown-menu'),
+      '@semcore/spectrum/base-trigger': resolvePath(rootDir, 'spectrum', 'src', 'base-trigger'),
+    },
+  },
   build: {
     rollupOptions: {
       external: [

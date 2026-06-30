@@ -1,0 +1,15 @@
+.filterTrigger.sizeM button {
+  background: rgb(240, 240, 240);
+  border-color:  rgb(240, 240, 240);
+  padding: 0 14px;
+}
+
+.filterTrigger.sizeM.selected button {
+  color: #fff;
+  background: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+}
+
+.filterTrigger.sizeM.selected button [data-ui-name='FilterTrigger.Text'] {
+  color: #fff;
+}

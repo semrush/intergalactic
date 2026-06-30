@@ -23,12 +23,13 @@
       "@semcore/ui/d3-chart": ["${configDir}/semcore/d3-chart"],
       "@semcore/ui/core/lib/*": ["${configDir}/semcore/core/src/*"],
       "@semcore/ui/*": ["${configDir}/semcore/*/src"],
+      "@semcore/spectrum/*": ["${configDir}/spectrum/src/*"],
       "@semcore/*": ["${configDir}/semcore/*/src"],
       "@tools/*": ["${configDir}/tools/*"]
     }
   },
-  "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
-  "include": ["semcore", "tools", "stories", "playground"],
+  "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json", "./spectrum/tsconfig.json"],
+  "include": ["semcore", "tools", "stories", "playground", "spectrum"],
   "exclude": [
     "node_modules",
     "tools/icon-transform-svg/__tests__"
