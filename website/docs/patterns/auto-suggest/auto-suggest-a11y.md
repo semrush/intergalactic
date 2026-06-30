@@ -15,7 +15,7 @@ Table: Keyboard support
 | `Shift + Tab` | Moves focus to the previous focusable element.                                 |
 | `Enter` | **When the menu is closed:** opens the menu. <br>**When the menu is open:** closes the menu. If an option has been highlighted, applies its value to the input.  |
 | `Up Arrow`, <nobr>`Down Arrow`</nobr> | **When the menu is closed:** opens the menu. <br>**When the menu is open:** moves the highlight between the list options. The highlight cycles from the last to the first option and from the first to the last option. |
-| `Esc` | Closes the menu. |
+| `Esc` | Closes the menu. <br>The menu doesn't reopen until the user blurs and focuses it again, or presses `Enter`, `Up Arrow`, or `Down Arrow`. |
 
 ### Roles and attributes
 
