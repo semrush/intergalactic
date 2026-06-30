@@ -94,6 +94,8 @@ Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 
 ## Long string tag
 
+If the text exceeds the tag width, use [Ellipsis](../../utils/ellipsis/ellipsis-code) to truncate it.
+
 ::: sandbox
 
 <script lang="tsx">
