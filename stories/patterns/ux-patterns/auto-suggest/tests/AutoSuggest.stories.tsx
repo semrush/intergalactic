@@ -63,6 +63,10 @@ export const Autosuggest: StoryObj<AutosuggestTestProps> = {
   },
   argTypes: {
     ...commonArgTypes,
+    valueMode: {
+      control: { type: 'radio' },
+      options: ['controlled', 'defaultValue'],
+    },
     initialValue: {
       control: 'text',
     },

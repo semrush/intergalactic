@@ -48,6 +48,7 @@ const suggestions = [
 
 export type AutosuggestTestProps = {
   suggestionsSource?: 'sync' | 'async';
+  valueMode?: 'controlled' | 'defaultValue';
   initialValue?: string;
   asyncDelay?: number;
   autoFocus?: boolean;
@@ -66,6 +67,7 @@ export type AutosuggestTestProps = {
 
 export const autosuggestTestDefaultProps: Required<AutosuggestTestProps> = {
   suggestionsSource: 'sync',
+  valueMode: 'controlled',
   initialValue: '',
   asyncDelay: 1000,
   autoFocus: false,
@@ -107,6 +109,7 @@ const fakeFetch = async (query: string, signal: AbortSignal, delay: number): Pro
 const Demo = (props: AutosuggestTestProps) => {
   const {
     suggestionsSource,
+    valueMode,
     initialValue,
     asyncDelay,
     autoFocus,
@@ -157,11 +160,14 @@ const Demo = (props: AutosuggestTestProps) => {
     autoSuggestNeighbor = 'both';
   }
 
+  const valueProps = valueMode === 'defaultValue'
+    ? { defaultValue: initialValue }
+    : { value: query };
+
   const autoSuggestEl = (
     <AutoSuggest
       disabled={disabled}
-      key={`${suggestionsSource}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}-${size}-${readOnly}-${addonLeft}-${addonRight}-${button}`}
-      value={query}
+      key={`${suggestionsSource}-${valueMode}-${initialValue}-${asyncDelay}-${autoFocus}-${withPlaceholder}-${size}-${readOnly}-${addonLeft}-${addonRight}-${button}`}
       id='autosuggest'
       onChange={handleChange}
       suggestions={suggestionsSource === 'async' ? getSuggestions : suggestions}
@@ -172,6 +178,7 @@ const Demo = (props: AutosuggestTestProps) => {
       addonLeft={addonLeftComponent}
       addonRight={addonRightComponent}
       neighborLocation={autoSuggestNeighbor}
+      {...valueProps}
       {...placeholderProp}
     />
   );

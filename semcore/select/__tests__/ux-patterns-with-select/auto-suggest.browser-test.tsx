@@ -22,6 +22,7 @@ const examplePath = 'stories/patterns/ux-patterns/auto-suggest/tests/examples/au
 
 type AutoSuggestExampleProps = {
   suggestionsSource?: 'sync' | 'async';
+  valueMode?: 'controlled' | 'defaultValue';
   initialValue?: string;
   asyncDelay?: number;
   autoFocus?: boolean;
@@ -202,6 +203,16 @@ test.describe(TAG.FUNCTIONAL, () => {
 
       // On render the input is focused and, since there are matches, the list opens
       await expect(locators.input(page)).toBeFocused();
+      await expectOptionsToMatch(page, 'p');
+    });
+
+    test('Verify AutoSuggest defaultValue mode initializes the input and opens matches on focus', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
+    }, async ({ page }) => {
+      await loadAutoSuggest(page, { valueMode: 'defaultValue', initialValue: 'p', autoFocus: true });
+
+      await expect(locators.input(page)).toBeFocused();
+      await expect(locators.input(page)).toHaveValue('p');
       await expectOptionsToMatch(page, 'p');
     });
 
