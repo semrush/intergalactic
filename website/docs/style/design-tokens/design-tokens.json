@@ -2438,6 +2438,468 @@
     ]
   },
   {
+    "name": "--intergalactic-checkbox-rounded",
+    "value": "6px",
+    "description": "Use for rounding Checkbox.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-pills-rounded",
+    "value": "6px",
+    "description": "Use for rounding Pills.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-switch-bg",
+    "value": "oklch(0.74 0.003 165.2)",
+    "description": "Subtle background of the Switch control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-switch-bg-info-active",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Active background of the Switch control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-switch-bg-success-active",
+    "value": "oklch(0.64 0.161 170)",
+    "description": "Active background of the Switch control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-switch-handle",
+    "value": "#ffffff",
+    "description": "Handle color of the Switch control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-dot-notification-bg",
+    "value": "oklch(0.728 0.188 51.8)",
+    "description": "Background color of the notification Dot.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-dot-notification-text",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Text color of the notification Dot.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tooltip-text",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Text color of the default Tooltip.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tooltip-text-invert",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Text color of the inverted Tooltip.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tab-line-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the TabLine in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tab-line-border-hover",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the TabLine in its hover state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tab-line-border-active",
+    "value": "oklch(0.7 0.131 275.2)",
+    "description": "Border color of the TabLine in its active state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-slider-bar",
+    "value": "oklch(0.96 0.001 180)",
+    "description": "Track background of the Slider.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-slider-bar-hover",
+    "value": "oklch(0.88 0.002 175.6)",
+    "description": "Hover state of the Slider track background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-slider-knob",
+    "value": "#ffffff",
+    "description": "Knob fill color of the Slider.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-slider-knob-border",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Knob border color of the Slider in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-slider-knob-border-hover",
+    "value": "oklch(0.32 0.007 140)",
+    "description": "Knob border color of the Slider in its hover state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-pills-bg",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the Pills in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-pills-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the Pills in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-pills-bg-hover",
+    "value": "oklch(0.98 0.001 180)",
+    "description": "Hover state of the Pills background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-pills-bg-selected",
+    "value": "oklch(0.959 0.021 267.8)",
+    "description": "Background of the selected Pill.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-pills-border-selected",
+    "value": "oklch(0.7 0.131 275.2)",
+    "description": "Border color of the selected Pill.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-text-primary",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Primary text color for form controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-text-secondary",
+    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "description": "Secondary text color for form controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-text-invert",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Inverted primary text color for form controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-select-trigger-normal",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the Select trigger in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-select-trigger-hover",
+    "value": "oklch(0.98 0.001 180)",
+    "description": "Background of the Select trigger in its hover state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-select-trigger-active",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the Select trigger in its active state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spin-bg",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Track color of the Spin loader.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spin-bg-invert",
+    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "description": "Inverted track color of the Spin loader.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-gray",
+    "value": "oklch(0.9 0.002 177)",
+    "description": "Gray fill color for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-illustration-border",
+    "value": "oklch(0.53 0.004 149.6)",
+    "description": "Border color for illustrations.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-success",
+    "value": "oklch(0.74 0.17 170)",
+    "description": "Success data color for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-warning",
+    "value": "oklch(0.74 0.19 53)",
+    "description": "Warning data color for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-critical",
+    "value": "oklch(0.64 0.226 24.5)",
+    "description": "Critical data color for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-wizard-bg",
+    "value": "oklch(1 0 0)",
+    "description": "Main background of the Wizard.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-wizard-sidebar-bg",
+    "value": "oklch(0.64 0.223 299.3)",
+    "description": "Background of the Wizard sidebar.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-wizard-sidebar-control",
+    "value": "oklch(0.64 0.223 299.3)",
+    "description": "Background of the control in the Wizard sidebar in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-wizard-sidebar-control-hover",
+    "value": "oklch(0.6 0.244 297.8)",
+    "description": "Hover state of the control in the Wizard sidebar.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-wizard-sidebar-control-active",
+    "value": "oklch(0.58 0.254 297.1)",
+    "description": "Active state of the control in the Wizard sidebar.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-wizard-sidebar-text-primary",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Primary text color in the Wizard sidebar.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-wizard-sidebar-text-secondary",
+    "value": "oklch(0.997 0.004 165.9 / 0.684)",
+    "description": "Secondary text color in the Wizard sidebar.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-dropdown-menu-item-selected-border",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Border color of the selected item in the DropdownMenu.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-notice-bubble-bg",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Background of the NoticeBubble.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-notice-bubble-bg-critical",
+    "value": "oklch(0.64 0.226 24.5)",
+    "description": "Critical background of the NoticeBubble.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-primary-bg-normal",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the primary Tag in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-primary-bg-hover",
+    "value": "oklch(0.98 0.001 180)",
+    "description": "Hover state of the primary Tag background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-primary-border",
+    "value": "oklch(1 0 0)",
+    "description": "Border color of the primary Tag.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-secondary-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the secondary Tag.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-secondary-border-invert",
+    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "description": "Inverted border color of the secondary Tag.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-additional-normal",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the additional Tag in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-additional-hover-active",
+    "value": "oklch(0.98 0.001 180)",
+    "description": "Hover and active states of the additional Tag background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-additional-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the additional Tag.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-checkbox-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the Checkbox.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-checkbox-button-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the Checkbox button in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-checkbox-button-border-active",
+    "value": "oklch(0.7 0.131 275.2)",
+    "description": "Border color of the Checkbox button in its active state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-checkbox-button-normal",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the Checkbox button in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-checkbox-button-hover",
+    "value": "oklch(0.527 0.264 262.9 / 0.039)",
+    "description": "Hover state of the Checkbox button background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-checkbox-button-active",
+    "value": "oklch(0.524 0.266 263.1 / 0.116)",
+    "description": "Active state of the Checkbox button background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-radio-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the Radio.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-opacity-fader-primary",
+    "value": "0.32",
+    "description": "Primary opacity for content fader overlays.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-opacity-fader-secondary",
+    "value": "0.26",
+    "description": "Secondary opacity for content fader overlays.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-opacity-limit-fader-primary",
+    "value": "0.85",
+    "description": "Primary opacity for limitation fader overlays.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-opacity-limit-fader-secondary",
+    "value": "0.851",
+    "description": "Secondary opacity for limitation fader overlays.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-admin-bg",
+    "value": "oklch(0.58 0.168 278.2)",
+    "description": "Background color of the admin Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-alpha-bg",
+    "value": "oklch(0.64 0.226 24.5)",
+    "description": "Background color of the alpha Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-beta-bg",
+    "value": "oklch(0.64 0.196 47.3)",
+    "description": "Background color of the beta Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-new-bg",
+    "value": "oklch(0.64 0.161 170)",
+    "description": "Background color of the new Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-soon-bg",
+    "value": "oklch(0.64 0.003 157.8)",
+    "description": "Background color of the soon Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-unavailable-bg",
+    "value": "oklch(0.9 0.002 177)",
+    "description": "Background color of the unavailable Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-text-primary",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Primary text color for Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-text-secondary",
+    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "description": "Secondary text color for Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-text-primary-invert",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Inverted primary text color for Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-feature-popover-text",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Text color of the FeaturePopover.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot",
+    "value": "oklch(0.88 0.078 303)",
+    "description": "Color of the outer border of the FeaturePopover.Spot.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-feature-popover-text-neutral",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Neutral text color of the FeaturePopover.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-disabled-opacity",
     "value": "0.4",
     "description": "Use for adding opacity to elements and controls in disabled state.",

@@ -1497,6 +1497,314 @@ export const theme: Theme = {
         value: highlight.at(L_ICON_SECONDARY_HOVER),
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
+      checkbox_rounded: {
+        value: '{semanticTokens.radii.control}',
+        description: 'Use for rounding Checkbox.',
+      },
+      pills_rounded: {
+        value: '{semanticTokens.radii.control}',
+        description: 'Use for rounding Pills.',
+      },
+      switch_bg: {
+        value: '{baseTokens.colors.gray.300}',
+        description: 'Subtle background of the Switch control.',
+      },
+      switch_bg_info_active: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Active background of the Switch control.',
+      },
+      switch_bg_success_active: {
+        value: '{semanticTokens.colors.control_primary_success_DEFAULT}',
+        description: 'Active background of the Switch control.',
+      },
+      switch_handle: {
+        value: '{baseTokens.colors.gray.white}',
+        description: 'Handle color of the Switch control.',
+      },
+      dot_notification_bg: {
+        value: '{semanticTokens.colors.icon_primary_warning_DEFAULT}',
+        description: 'Background color of the notification Dot.',
+      },
+      dot_notification_text: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Text color of the notification Dot.',
+      },
+      tooltip_text: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Text color of the default Tooltip.',
+      },
+      tooltip_text_invert: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Text color of the inverted Tooltip.',
+      },
+      tab_line_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the TabLine in its normal state.',
+      },
+      tab_line_border_hover: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the TabLine in its hover state.',
+      },
+      tab_line_border_active: {
+        value: '{semanticTokens.colors.border_info_active}',
+        description: 'Border color of the TabLine in its active state.',
+      },
+      slider_bar: {
+        value: '{semanticTokens.colors.progress_bar_bg_DEFAULT}',
+        description: 'Track background of the Slider.',
+      },
+      slider_bar_hover: {
+        value: '{semanticTokens.colors.progress_bar_bg_hover}',
+        description: 'Hover state of the Slider track background.',
+      },
+      slider_knob: {
+        value: '{baseTokens.colors.gray.white}',
+        description: 'Knob fill color of the Slider.',
+      },
+      slider_knob_border: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Knob border color of the Slider in its normal state.',
+      },
+      slider_knob_border_hover: {
+        value: '{semanticTokens.colors.control_primary_info_hover}',
+        description: 'Knob border color of the Slider in its hover state.',
+      },
+      pills_bg: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Pills in its normal state.',
+      },
+      pills_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Pills in its normal state.',
+      },
+      pills_bg_hover: {
+        value: '{semanticTokens.colors.bg_secondary_neutral_DEFAULT}',
+        description: 'Hover state of the Pills background.',
+      },
+      pills_bg_selected: {
+        value: '{semanticTokens.colors.bg_secondary_info_DEFAULT}',
+        description: 'Background of the selected Pill.',
+      },
+      pills_border_selected: {
+        value: '{semanticTokens.colors.border_info_active}',
+        description: 'Border color of the selected Pill.',
+      },
+      control_text_primary: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Primary text color for form controls.',
+      },
+      control_text_secondary: {
+        value: '{semanticTokens.colors.text_secondary_DEFAULT}',
+        description: 'Secondary text color for form controls.',
+      },
+      control_text_invert: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Inverted primary text color for form controls.',
+      },
+      control_select_trigger_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Select trigger in its normal state.',
+      },
+      control_select_trigger_hover: {
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
+        description: 'Background of the Select trigger in its hover state.',
+      },
+      control_select_trigger_active: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Select trigger in its active state.',
+      },
+      spin_bg: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Track color of the Spin loader.',
+      },
+      spin_bg_invert: {
+        value: '{semanticTokens.colors.border_primary_invert}',
+        description: 'Inverted track color of the Spin loader.',
+      },
+      illustration_gray: {
+        value: '{baseTokens.colors.gray.100}',
+        description: 'Gray fill color for illustrations.',
+      },
+      illustration_border: {
+        value: '{baseTokens.colors.gray.500}',
+        description: 'Border color for illustrations.',
+      },
+      chart_data_success: {
+        value: '{baseTokens.colors.green.300}',
+        description: 'Success data color for charts.',
+      },
+      chart_data_warning: {
+        value: '{baseTokens.colors.orange.300}',
+        description: 'Warning data color for charts.',
+      },
+      chart_data_critical: {
+        value: '{baseTokens.colors.red.400}',
+        description: 'Critical data color for charts.',
+      },
+      wizard_bg: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Main background of the Wizard.',
+      },
+      wizard_sidebar_bg: {
+        value: '{semanticTokens.colors.control_primary_advertising_DEFAULT}',
+        description: 'Background of the Wizard sidebar.',
+      },
+      wizard_sidebar_control: {
+        value: '{semanticTokens.colors.control_primary_advertising_DEFAULT}',
+        description: 'Background of the control in the Wizard sidebar in its normal state.',
+      },
+      wizard_sidebar_control_hover: {
+        value: '{semanticTokens.colors.control_primary_advertising_hover}',
+        description: 'Hover state of the control in the Wizard sidebar.',
+      },
+      wizard_sidebar_control_active: {
+        value: '{semanticTokens.colors.control_primary_advertising_active}',
+        description: 'Active state of the control in the Wizard sidebar.',
+      },
+      wizard_sidebar_text_primary: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Primary text color in the Wizard sidebar.',
+      },
+      wizard_sidebar_text_secondary: {
+        value: '{semanticTokens.colors.text_secondary_invert}',
+        description: 'Secondary text color in the Wizard sidebar.',
+      },
+      dropdown_menu_item_selected_border: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Border color of the selected item in the DropdownMenu.',
+      },
+      notice_bubble_bg: {
+        value: '{semanticTokens.colors.bg_primary_invert_DEFAULT}',
+        description: 'Background of the NoticeBubble.',
+      },
+      notice_bubble_bg_critical: {
+        value: '{semanticTokens.colors.bg_primary_critical}',
+        description: 'Critical background of the NoticeBubble.',
+      },
+      tag_primary_bg_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the primary Tag in its normal state.',
+      },
+      tag_primary_bg_hover: {
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
+        description: 'Hover state of the primary Tag background.',
+      },
+      tag_primary_border: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Border color of the primary Tag.',
+      },
+      tag_secondary_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the secondary Tag.',
+      },
+      tag_secondary_border_invert: {
+        value: '{semanticTokens.colors.border_secondary_invert}',
+        description: 'Inverted border color of the secondary Tag.',
+      },
+      tag_additional_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the additional Tag in its normal state.',
+      },
+      tag_additional_hover_active: {
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
+        description: 'Hover and active states of the additional Tag background.',
+      },
+      tag_additional_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the additional Tag.',
+      },
+      checkbox_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Checkbox.',
+      },
+      checkbox_button_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Checkbox button in its normal state.',
+      },
+      checkbox_button_border_active: {
+        value: '{semanticTokens.colors.border_info_active}',
+        description: 'Border color of the Checkbox button in its active state.',
+      },
+      checkbox_button_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Checkbox button in its normal state.',
+      },
+      checkbox_button_hover: {
+        value: '{semanticTokens.colors.control_secondary_info_DEFAULT}',
+        description: 'Hover state of the Checkbox button background.',
+      },
+      checkbox_button_active: {
+        value: '{semanticTokens.colors.control_secondary_info_active}',
+        description: 'Active state of the Checkbox button background.',
+      },
+      radio_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Radio.',
+      },
+      opacity_fader_primary: {
+        value: '0.32',
+        description: 'Primary opacity for content fader overlays.',
+      },
+      opacity_fader_secondary: {
+        value: '0.26',
+        description: 'Secondary opacity for content fader overlays.',
+      },
+      opacity_limit_fader_primary: {
+        value: '0.85',
+        description: 'Primary opacity for limitation fader overlays.',
+      },
+      opacity_limit_fader_secondary: {
+        value: '0.851',
+        description: 'Secondary opacity for limitation fader overlays.',
+      },
+      badge_admin_bg: {
+        value: '{baseTokens.colors.blue.400}',
+        description: 'Background color of the admin Badge.',
+      },
+      badge_alpha_bg: {
+        value: '{baseTokens.colors.red.400}',
+        description: 'Background color of the alpha Badge.',
+      },
+      badge_beta_bg: {
+        value: '{baseTokens.colors.orange.400}',
+        description: 'Background color of the beta Badge.',
+      },
+      badge_new_bg: {
+        value: '{baseTokens.colors.green.400}',
+        description: 'Background color of the new Badge.',
+      },
+      badge_soon_bg: {
+        value: '{baseTokens.colors.gray.400}',
+        description: 'Background color of the soon Badge.',
+      },
+      badge_unavailable_bg: {
+        value: '{baseTokens.colors.gray.100}',
+        description: 'Background color of the unavailable Badge.',
+      },
+      badge_text_primary: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Primary text color for Badge.',
+      },
+      badge_text_secondary: {
+        value: '{semanticTokens.colors.text_secondary_DEFAULT}',
+        description: 'Secondary text color for Badge.',
+      },
+      badge_text_primary_invert: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Inverted primary text color for Badge.',
+      },
+      feature_popover_text: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Text color of the FeaturePopover.',
+      },
+      feature_popover_dot: {
+        value: '{semanticTokens.colors.bg_primary_highlight}',
+        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      },
+      feature_popover_text_neutral: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Neutral text color of the FeaturePopover.',
+      },
     },
     opacity: {
       disabled: {
@@ -1767,8 +2075,10 @@ type FlattenPaths<T> = T extends object
     }[keyof T]
   : '';
 
+export type RebrandingColorTokens = Record<'checkbox_rounded' | 'pills_rounded' | 'switch_bg' | 'switch_bg_info_active' | 'switch_bg_success_active' | 'switch_handle' | 'dot_notification_bg' | 'dot_notification_text' | 'tooltip_text' | 'tooltip_text_invert' | 'tab_line_border' | 'tab_line_border_hover' | 'tab_line_border_active' | 'slider_bar' | 'slider_bar_hover' | 'slider_knob' | 'slider_knob_border' | 'slider_knob_border_hover' | 'pills_bg' | 'pills_border' | 'pills_bg_hover' | 'pills_bg_selected' | 'pills_border_selected' | 'control_text_primary' | 'control_text_secondary' | 'control_text_invert' | 'control_select_trigger_normal' | 'control_select_trigger_hover' | 'control_select_trigger_active' | 'spin_bg' | 'spin_bg_invert' | 'illustration_gray' | 'illustration_border' | 'chart_data_success' | 'chart_data_warning' | 'chart_data_critical' | 'wizard_bg' | 'wizard_sidebar_bg' | 'wizard_sidebar_control' | 'wizard_sidebar_control_hover' | 'wizard_sidebar_control_active' | 'wizard_sidebar_text_primary' | 'wizard_sidebar_text_secondary' | 'dropdown_menu_item_selected_border' | 'notice_bubble_bg' | 'notice_bubble_bg_critical' | 'tag_primary_bg_normal' | 'tag_primary_bg_hover' | 'tag_primary_border' | 'tag_secondary_border' | 'tag_secondary_border_invert' | 'tag_additional_normal' | 'tag_additional_hover_active' | 'tag_additional_border' | 'checkbox_border' | 'checkbox_button_border' | 'checkbox_button_border_active' | 'checkbox_button_normal' | 'checkbox_button_hover' | 'checkbox_button_active' | 'radio_border' | 'opacity_fader_primary' | 'opacity_fader_secondary' | 'opacity_limit_fader_primary' | 'opacity_limit_fader_secondary' | 'badge_admin_bg' | 'badge_alpha_bg' | 'badge_beta_bg' | 'badge_new_bg' | 'badge_soon_bg' | 'badge_unavailable_bg' | 'badge_text_primary' | 'badge_text_secondary' | 'badge_text_primary_invert' | 'feature_popover_text' | 'feature_popover_dot' | 'feature_popover_text_neutral', Value>;
+
 export type SemanticTokens = {
-  colors: Record<FlattenPaths<SemanticColors>, Value>;
+  colors: Record<FlattenPaths<SemanticColors>, Value> & RebrandingColorTokens;
   opacity: {
     disabled: Value;
   };
