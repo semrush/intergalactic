@@ -265,6 +265,17 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
+  test('Verify Time Picker inputs has correct aria-invalid value for invalid state', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@time-picker'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/time-picker/docs/examples/different_cases.tsx', 'en', { state: 'invalid' });
+
+    await expect(locators.timeBoxes(page).first()).toHaveAttribute('aria-invalid', 'true');
+    await expect(locators.timeBoxes(page).last()).toHaveAttribute('aria-invalid', 'true');
+  });
+
   test('Verify Time Picker expanded with format mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
