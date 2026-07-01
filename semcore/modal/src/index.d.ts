@@ -1,10 +1,10 @@
-import type { FadeInOutProps, SlideProps, Box, BoxProps, PortalProps } from '@semcore/base-components';
+import type { FadeInOutProps, SlideProps, Box, BoxProps, NSPortal } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
-export type ModalProps = PortalProps &
+export type ModalProps = NSPortal.Props &
   BoxProps &
   FadeInOutProps & {
     /** Duration of animation, ms

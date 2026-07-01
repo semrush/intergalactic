@@ -1,4 +1,4 @@
-import type { PortalProps, BoxProps } from '@semcore/base-components';
+import type { NSPortal, BoxProps } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { RefObject } from 'react';
@@ -9,7 +9,7 @@ import type { LocalizedMessages } from './translations/__intergalactic-dynamic-l
 /**
  * @deprecated. Pass noticeBubbleContainer property from window.sm2.getNoticeBubbleContainer()
  */
-export type NoticeBubbleContainerPortalProps = PortalProps;
+export type NoticeBubbleContainerPortalProps = NSPortal.Props;
 
 export type NoticeBubbleContainerProps = BoxProps &
   NoticeBubbleContainerPortalProps & {

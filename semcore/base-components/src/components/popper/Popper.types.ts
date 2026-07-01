@@ -13,7 +13,7 @@ import type { ScaleProps } from '../animation';
 import type { BoxProps } from '../flex-box';
 import type { NeighborLocationProps } from '../neighbor-location';
 import type { OutsideClickProps } from '../outside-click';
-import type { PortalProps } from '../portal';
+import type { NSPortal } from '../portal';
 
 export type PopperComponent = 'trigger' | 'popper';
 
@@ -27,7 +27,7 @@ export type Modifiers = Options['modifiers'];
 export type Placement = Options['placement'];
 
 export type PopperProps = OutsideClickProps &
-  PortalProps &
+  NSPortal.Props &
   UniqueIDProps &
   Omit<ScaleProps, 'placement' | 'preserveNode'> & {
     /**
@@ -133,7 +133,7 @@ export type InnerPopperTriggerProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export type PopperPopperProps = BoxProps &
-  PortalProps &
+  NSPortal.Props &
   NeighborLocationProps & {
     /**
      * Disabled focus trap, autofocus and focus return

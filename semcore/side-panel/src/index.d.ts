@@ -1,4 +1,4 @@
-import type { FadeInOutProps, SlideProps, Box, BoxProps, Flex, PortalProps } from '@semcore/base-components';
+import type { FadeInOutProps, SlideProps, Box, BoxProps, Flex, NSPortal } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
@@ -12,7 +12,7 @@ export type OnCloseType = (
 
 export type SidePanelPlacement = 'top' | 'left' | 'right' | 'bottom';
 
-export type SidePanelProps = PortalProps &
+export type SidePanelProps = NSPortal.Props &
   BoxProps & {
     /** Animation display duration in ms
      * @default 350

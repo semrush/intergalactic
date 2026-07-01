@@ -9,7 +9,7 @@ import type {
   AnimationProps,
   BoxProps,
   OutsideClickProps,
-  PortalProps,
+  NSPortal,
   Box, PopperContext, PopperPopperProps, Placement, Popper } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
@@ -56,7 +56,7 @@ export type FeaturePopoverContext = PopperContext & {
 };
 
 export type FPPopperProps = OutsideClickProps &
-  PortalProps &
+  NSPortal.Props &
   UniqueIDProps &
   AnimationProps & {
     /**
