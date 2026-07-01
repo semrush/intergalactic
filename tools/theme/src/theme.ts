@@ -571,10 +571,6 @@ export const theme: Theme = {
         value: highlight.at(L_BORDER_ACTIVE),
         description: 'Border color of the second period for the comparison mode in the DatePicker.',
       },
-      control_switch_bg: {
-        value: neutral.at(L_BG_MEDIUM),
-        description: 'Subtle background of the Switch control.',
-      },
       control_primary_info_DEFAULT: {
         value: neutral.at(L_BG_BUTTON_STRONG),
         description: 'Background of the regular primary control.',
@@ -1497,27 +1493,19 @@ export const theme: Theme = {
         value: highlight.at(L_ICON_SECONDARY_HOVER),
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
-      checkbox_rounded: {
-        value: '{semanticTokens.radii.control}',
-        description: 'Use for rounding Checkbox.',
-      },
-      pills_rounded: {
-        value: '{semanticTokens.radii.control}',
-        description: 'Use for rounding Pills.',
-      },
-      switch_bg: {
+      control_switch_bg_DEFAULT: {
         value: '{baseTokens.colors.gray.300}',
         description: 'Subtle background of the Switch control.',
       },
-      switch_bg_info_active: {
+      control_switch_bg_info_active: {
         value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
         description: 'Active background of the Switch control.',
       },
-      switch_bg_success_active: {
+      control_switch_bg_success_active: {
         value: '{semanticTokens.colors.control_primary_success_DEFAULT}',
         description: 'Active background of the Switch control.',
       },
-      switch_handle: {
+      control_switch_handle: {
         value: '{baseTokens.colors.gray.white}',
         description: 'Handle color of the Switch control.',
       },
@@ -1537,7 +1525,7 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.text_primary_invert}',
         description: 'Text color of the inverted Tooltip.',
       },
-      tab_line_border: {
+      tab_line_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the TabLine in its normal state.',
       },
@@ -1549,19 +1537,23 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_info_active}',
         description: 'Border color of the TabLine in its active state.',
       },
-      slider_bar: {
+      slider_bar_DEFAULT: {
         value: '{semanticTokens.colors.progress_bar_bg_DEFAULT}',
-        description: 'Track background of the Slider.',
+        description: 'Background of the Slider bar.',
+      },
+      slider_bar_value: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Filled part of the Slider bar.',
       },
       slider_bar_hover: {
         value: '{semanticTokens.colors.progress_bar_bg_hover}',
-        description: 'Hover state of the Slider track background.',
+        description: 'Hover state of the Slider bar.',
       },
-      slider_knob: {
+      slider_knob_DEFAULT: {
         value: '{baseTokens.colors.gray.white}',
         description: 'Knob fill color of the Slider.',
       },
-      slider_knob_border: {
+      slider_knob_border_DEFAULT: {
         value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
         description: 'Knob border color of the Slider in its normal state.',
       },
@@ -1569,11 +1561,11 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.control_primary_info_hover}',
         description: 'Knob border color of the Slider in its hover state.',
       },
-      pills_bg: {
+      pills_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the Pills in its normal state.',
       },
-      pills_border: {
+      pills_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
       },
@@ -1589,7 +1581,7 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_info_active}',
         description: 'Border color of the selected Pill.',
       },
-      control_text_primary: {
+      control_text_primary_DEFAULT: {
         value: '{semanticTokens.colors.text_primary_DEFAULT}',
         description: 'Primary text color for form controls.',
       },
@@ -1597,7 +1589,11 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.text_secondary_DEFAULT}',
         description: 'Secondary text color for form controls.',
       },
-      control_text_invert: {
+      control_text_tertiary: {
+        value: '{semanticTokens.colors.text_secondary_DEFAULT}',
+        description: 'Tertiary text color for form controls.',
+      },
+      control_text_primary_invert: {
         value: '{semanticTokens.colors.text_primary_invert}',
         description: 'Inverted primary text color for form controls.',
       },
@@ -1613,7 +1609,7 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the Select trigger in its active state.',
       },
-      spin_bg: {
+      spin_bg_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Track color of the Spin loader.',
       },
@@ -1649,7 +1645,7 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.control_primary_advertising_DEFAULT}',
         description: 'Background of the Wizard sidebar.',
       },
-      wizard_sidebar_control: {
+      wizard_sidebar_control_DEFAULT: {
         value: '{semanticTokens.colors.control_primary_advertising_DEFAULT}',
         description: 'Background of the control in the Wizard sidebar in its normal state.',
       },
@@ -1673,7 +1669,7 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
         description: 'Border color of the selected item in the DropdownMenu.',
       },
-      notice_bubble_bg: {
+      notice_bubble_bg_DEFAULT: {
         value: '{semanticTokens.colors.bg_primary_invert_DEFAULT}',
         description: 'Background of the NoticeBubble.',
       },
@@ -1693,7 +1689,7 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Border color of the primary Tag.',
       },
-      tag_secondary_border: {
+      tag_secondary_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the secondary Tag.',
       },
@@ -1717,29 +1713,49 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Checkbox.',
       },
-      checkbox_button_border: {
+      checkbox_bg_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background color of the Checkbox.',
+      },
+      checkbox_bg_selected: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Background color of the checked Checkbox.',
+      },
+      checkbox_button_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Checkbox button in its normal state.',
       },
-      checkbox_button_border_active: {
+      checkbox_button_border_selected: {
         value: '{semanticTokens.colors.border_info_active}',
         description: 'Border color of the Checkbox button in its active state.',
       },
-      checkbox_button_normal: {
+      checkbox_button_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background of the Checkbox button in its normal state.',
+        description: 'Normal state of the Checkbox button background.',
       },
-      checkbox_button_hover: {
+      checkbox_button_bg_hover: {
         value: '{semanticTokens.colors.control_secondary_info_DEFAULT}',
         description: 'Hover state of the Checkbox button background.',
       },
-      checkbox_button_active: {
+      checkbox_button_bg_selected_DEFAULT: {
         value: '{semanticTokens.colors.control_secondary_info_active}',
-        description: 'Active state of the Checkbox button background.',
+        description: 'Selected state of the Checkbox button background.',
+      },
+      checkbox_button_bg_selected_hover: {
+        value: '{semanticTokens.colors.control_secondary_info_active}',
+        description: 'Hover for a selected state of the Checkbox button background.',
       },
       radio_border: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Radio.',
+      },
+      radio_bg_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background color of the Radio.',
+      },
+      radio_bg_selected: {
+        value: '{semanticTokens.colors.control_primary_info}',
+        description: 'Selected state of the Radio background.',
       },
       opacity_fader_primary: {
         value: '0.32',
@@ -1757,31 +1773,35 @@ export const theme: Theme = {
         value: '0.851',
         description: 'Secondary opacity for limitation fader overlays.',
       },
-      badge_admin_bg: {
+      badge_bg_admin: {
         value: '{baseTokens.colors.blue.400}',
         description: 'Background color of the admin Badge.',
       },
-      badge_alpha_bg: {
+      badge_bg_alpha: {
         value: '{baseTokens.colors.red.400}',
         description: 'Background color of the alpha Badge.',
       },
-      badge_beta_bg: {
+      badge_bg_beta: {
         value: '{baseTokens.colors.orange.400}',
         description: 'Background color of the beta Badge.',
       },
-      badge_new_bg: {
+      badge_bg_new: {
         value: '{baseTokens.colors.green.400}',
         description: 'Background color of the new Badge.',
       },
-      badge_soon_bg: {
+      badge_bg_soon: {
         value: '{baseTokens.colors.gray.400}',
         description: 'Background color of the soon Badge.',
       },
-      badge_unavailable_bg: {
+      badge_bg_unavailable: {
         value: '{baseTokens.colors.gray.100}',
         description: 'Background color of the unavailable Badge.',
       },
-      badge_text_primary: {
+      badge_bg_invert: {
+        value: '{baseTokens.colors.gray.white}',
+        description: 'Background color of the inverted Badge.',
+      },
+      badge_text_primary_DEFAULT: {
         value: '{semanticTokens.colors.text_primary_DEFAULT}',
         description: 'Primary text color for Badge.',
       },
@@ -1793,17 +1813,17 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.text_primary_invert}',
         description: 'Inverted primary text color for Badge.',
       },
-      feature_popover_text: {
+      feature_popover_text_DEFAULT: {
         value: '{semanticTokens.colors.text_primary_DEFAULT}',
         description: 'Text color of the FeaturePopover.',
       },
-      feature_popover_dot: {
+      feature_popover_dot_DEFAULT: {
         value: '{semanticTokens.colors.bg_primary_highlight}',
         description: 'Color of the outer border of the FeaturePopover.Spot.',
       },
-      feature_popover_text_neutral: {
+      feature_popover_text_invert: {
         value: '{semanticTokens.colors.text_primary_invert}',
-        description: 'Neutral text color of the FeaturePopover.',
+        description: 'Inverted text color of the FeaturePopover.',
       },
     },
     opacity: {
@@ -1883,6 +1903,10 @@ export const theme: Theme = {
         value: `${RADII['extra-small']}px`,
         description: 'Use for rounding big and small charts like bar, histogram and others.',
       },
+      'checkbox': {
+        value: `${RADII.medium}px`,
+        description: 'Use for rounding Checkbox.',
+      },
       'counter': {
         value: `${RADII.large}px`,
         description: 'Rounding for counter/numeric capsules used as small indicators.',
@@ -1914,6 +1938,10 @@ export const theme: Theme = {
       'modal': {
         value: `${RADII.large + 2}px`,
         description: 'Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard).',
+      },
+      'pills': {
+        value: `${RADII.medium}px`,
+        description: 'Use for rounding Pills.',
       },
     },
     durations: {
@@ -2075,10 +2103,8 @@ type FlattenPaths<T> = T extends object
     }[keyof T]
   : '';
 
-export type RebrandingColorTokens = Record<'checkbox_rounded' | 'pills_rounded' | 'switch_bg' | 'switch_bg_info_active' | 'switch_bg_success_active' | 'switch_handle' | 'dot_notification_bg' | 'dot_notification_text' | 'tooltip_text' | 'tooltip_text_invert' | 'tab_line_border' | 'tab_line_border_hover' | 'tab_line_border_active' | 'slider_bar' | 'slider_bar_hover' | 'slider_knob' | 'slider_knob_border' | 'slider_knob_border_hover' | 'pills_bg' | 'pills_border' | 'pills_bg_hover' | 'pills_bg_selected' | 'pills_border_selected' | 'control_text_primary' | 'control_text_secondary' | 'control_text_invert' | 'control_select_trigger_normal' | 'control_select_trigger_hover' | 'control_select_trigger_active' | 'spin_bg' | 'spin_bg_invert' | 'illustration_gray' | 'illustration_border' | 'chart_data_success' | 'chart_data_warning' | 'chart_data_critical' | 'wizard_bg' | 'wizard_sidebar_bg' | 'wizard_sidebar_control' | 'wizard_sidebar_control_hover' | 'wizard_sidebar_control_active' | 'wizard_sidebar_text_primary' | 'wizard_sidebar_text_secondary' | 'dropdown_menu_item_selected_border' | 'notice_bubble_bg' | 'notice_bubble_bg_critical' | 'tag_primary_bg_normal' | 'tag_primary_bg_hover' | 'tag_primary_border' | 'tag_secondary_border' | 'tag_secondary_border_invert' | 'tag_additional_normal' | 'tag_additional_hover_active' | 'tag_additional_border' | 'checkbox_border' | 'checkbox_button_border' | 'checkbox_button_border_active' | 'checkbox_button_normal' | 'checkbox_button_hover' | 'checkbox_button_active' | 'radio_border' | 'opacity_fader_primary' | 'opacity_fader_secondary' | 'opacity_limit_fader_primary' | 'opacity_limit_fader_secondary' | 'badge_admin_bg' | 'badge_alpha_bg' | 'badge_beta_bg' | 'badge_new_bg' | 'badge_soon_bg' | 'badge_unavailable_bg' | 'badge_text_primary' | 'badge_text_secondary' | 'badge_text_primary_invert' | 'feature_popover_text' | 'feature_popover_dot' | 'feature_popover_text_neutral', Value>;
-
 export type SemanticTokens = {
-  colors: Record<FlattenPaths<SemanticColors>, Value> & RebrandingColorTokens;
+  colors: Record<FlattenPaths<SemanticColors>, Value>;
   opacity: {
     disabled: Value;
   };
@@ -2088,6 +2114,7 @@ export type SemanticTokens = {
     'addon': Value;
     'badge': Value;
     'chart': Value;
+    'checkbox': Value;
     'counter': Value;
     'tag': Value;
     'switch': Value;
@@ -2096,6 +2123,7 @@ export type SemanticTokens = {
     'surface': Value;
     'popper': Value;
     'modal': Value;
+    'pills': Value;
   };
   durations: {
     switch: Value;
@@ -2288,7 +2316,16 @@ type SemanticColors = {
   };
   control: {
     switch: {
-      bg: Value;
+      bg: {
+        DEFAULT: Value;
+        info: {
+          active: Value;
+        };
+        success: {
+          active: Value;
+        };
+      };
+      handle: Value;
     };
     primary: {
       info: {
@@ -2352,6 +2389,21 @@ type SemanticColors = {
       };
       invert: {
         DEFAULT: Value;
+        hover: Value;
+        active: Value;
+      };
+    };
+    text: {
+      primary: {
+        DEFAULT: Value;
+        invert: Value;
+      };
+      secondary: Value;
+      tertiary: Value;
+    };
+    select: {
+      trigger: {
+        normal: Value;
         hover: Value;
         active: Value;
       };
@@ -2441,6 +2493,8 @@ type SemanticColors = {
     blue: Value;
     violet: Value;
     pink: Value;
+    gray: Value;
+    border: Value;
   };
   date: {
     picker: {
@@ -2476,6 +2530,7 @@ type SemanticColors = {
         selected: {
           DEFAULT: Value;
           hover: Value;
+          border: Value;
         };
       };
     };
@@ -2487,6 +2542,7 @@ type SemanticColors = {
         neutral: Value;
       };
       dot: {
+        DEFAULT: Value;
         outer: {
           border: Value;
         };
@@ -2496,6 +2552,10 @@ type SemanticColors = {
             border: Value;
           };
         };
+      };
+      text: {
+        DEFAULT: Value;
+        invert: Value;
       };
     };
   };
@@ -2612,6 +2672,8 @@ type SemanticColors = {
     default: Value;
     warning: Value;
     invert: Value;
+    text: Value;
+    text_invert: Value;
   };
   neighbor: {
     location: {
@@ -2642,6 +2704,11 @@ type SemanticColors = {
   };
   tag: {
     primary: {
+      bg: {
+        normal: Value;
+        hover: Value;
+      };
+      border: Value;
       gray: {
         normal: Value;
         hover: {
@@ -2700,6 +2767,10 @@ type SemanticColors = {
       };
     };
     secondary: {
+      border: {
+        DEFAULT: Value;
+        invert: Value;
+      };
       normal: Value;
       hover: {
         active: Value;
@@ -2715,8 +2786,20 @@ type SemanticColors = {
         text: Value;
       };
     };
+    additional: {
+      normal: Value;
+      hover: {
+        active: Value;
+      };
+      border: Value;
+    };
   };
   chart: {
+    data: {
+      success: Value;
+      warning: Value;
+      critical: Value;
+    };
     palette: {
       order: {
         1: Value;
@@ -2827,11 +2910,130 @@ type SemanticColors = {
       };
     };
   };
+  badge: {
+    bg: {
+      admin: Value;
+      alpha: Value;
+      beta: Value;
+      new: Value;
+      soon: Value;
+      unavailable: Value;
+      invert: Value;
+    };
+    text: {
+      primary: {
+        DEFAULT: Value;
+        invert: Value;
+      };
+      secondary: Value;
+    };
+  };
+  checkbox: {
+    border: Value;
+    bg: {
+      normal: Value;
+      selected: Value;
+    };
+    button: {
+      border: {
+        DEFAULT: Value;
+        selected: Value;
+      };
+      bg: {
+        normal: Value;
+        hover: Value;
+        selected: {
+          DEFAULT: Value;
+          hover: Value;
+        };
+      };
+    };
+  };
+  dot: {
+    notification: {
+      bg: Value;
+      text: Value;
+    };
+  };
+  notice_bubble: {
+    bg: {
+      DEFAULT: Value;
+      critical: Value;
+    };
+  };
+  opacity: {
+    fader: {
+      primary: Value;
+      secondary: Value;
+    };
+    limit_fader: {
+      primary: Value;
+      secondary: Value;
+    };
+  };
+  pills: {
+    bg: {
+      normal: Value;
+      hover: Value;
+      selected: Value;
+    };
+    border: {
+      DEFAULT: Value;
+      selected: Value;
+    };
+  };
+  radio: {
+    border: Value;
+    bg: {
+      normal: Value;
+      selected: Value;
+    };
+  };
+  spin: {
+    bg: {
+      DEFAULT: Value;
+      invert: Value;
+    };
+  };
+  tab_line: {
+    border: {
+      DEFAULT: Value;
+      hover: Value;
+      active: Value;
+    };
+  };
+  wizard: {
+    bg: Value;
+    sidebar: {
+      bg: Value;
+      control: {
+        DEFAULT: Value;
+        hover: Value;
+        active: Value;
+      };
+      text: {
+        primary: Value;
+        secondary: Value;
+      };
+    };
+  };
   slider: {
     rating: {
       normal: Value;
       hover: {
         active: Value;
+      };
+    };
+    bar: {
+      DEFAULT: Value;
+      value: Value;
+      hover: Value;
+    };
+    knob: {
+      DEFAULT: Value;
+      border: {
+        DEFAULT: Value;
+        hover: Value;
       };
     };
   };

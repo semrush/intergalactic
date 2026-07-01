@@ -19,11 +19,11 @@ SSpin {
 }
 
 SSpin[theme='dark'] {
-  fill: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  fill: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* change to --intergalactic-spin-bg */
 }
 
 SSpin[theme='invert'] {
-  fill: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391));
+  fill: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391)); /* change to --intergalactic-spin-bg-invert */
 }
 
 SSpin[centered] {

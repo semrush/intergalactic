@@ -76,7 +76,7 @@ SSwitch[disabled] {
 }
 
 SToggle {
-  background: var(--intergalactic-control-switch-bg, oklch(0.88 0.002 175.6));
+  background: var(--intergalactic-control-switch-bg, oklch(0.74 0.003 165.2)); /* change to --intergalactic-control-switch-bg */
   position: relative;
   color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
   cursor: pointer;
@@ -86,13 +86,13 @@ SToggle {
 }
 
 SToggle[checked][theme='info'] {
-  color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-control-switch-bg-info-active */
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-control-switch-bg-info-active */
 }
 
 SToggle[checked][theme='success'] {
-  color: var(--intergalactic-control-primary-success, oklch(0.64 0.161 170));
-  background-color: var(--intergalactic-control-primary-success, oklch(0.64 0.161 170));
+  color: var(--intergalactic-control-primary-success, oklch(0.64 0.161 170)); /* change to --intergalactic-control-switch-bg-success-active */
+  background-color: var(--intergalactic-control-primary-success, oklch(0.64 0.161 170)); /* change to --intergalactic-control-switch-bg-success-active */
 }
 
 SToggle[checked][theme='custom'] {
@@ -119,7 +119,7 @@ SToggle[neighborLocation='right'] {
 
 SSlider {
   /* margin: 0 var(--intergalactic-spacing-05x, 2px); */
-  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-control-switch-handle */
   transform: translateX(-50%) scaleX(1);
   transition: transform calc(var(--intergalactic-duration-switch, 100) * 1ms) ease-in-out;
   display: flex;

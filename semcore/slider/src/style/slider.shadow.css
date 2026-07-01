@@ -15,11 +15,11 @@ SSlider {
     height: 4px;
     width: 100%;
     border-radius: var(--intergalactic-progress-bar-rounded, 6px);
-    background-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+    background-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07)); /* change to --intergalactic-slider-bar */
   }
 
   &:hover:before {
-    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* change to --intergalactic-slider-bar-hover */
   }
 
   &:active SKnob,
@@ -50,7 +50,7 @@ SBar {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-slider-bar-value */
   cursor: pointer;
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) width ease-in-out;
 }
@@ -62,14 +62,14 @@ SKnob {
   width: 20px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
-  border: 5px solid var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-slider-knob */
+  border: 5px solid var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-slider-knob-border */
   cursor: pointer;
   transform: translate(-50%, -50%);
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) left ease-in-out;
 
   &:hover {
-    border-color: var(--intergalactic-control-primary-info-hover, oklch(0.32 0.007 140));
+    border-color: var(--intergalactic-control-primary-info-hover, oklch(0.32 0.007 140)); /* change to --intergalactic-slider-knob-border-hover */
   }
 }
 

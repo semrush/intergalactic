@@ -48,13 +48,13 @@ SOptionCheckbox[size='l'][selected]::after {
 }
 
 SOptionCheckbox[selected]:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
 }
 
 SOptionCheckbox[indeterminate]:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
 }
 
 SOptionCheckbox[theme]:before {
@@ -76,7 +76,7 @@ SOptionCheckbox[selected] {
 }
 
 SOptionCheckbox[indeterminate]:after {
-  background-color: #ffffff;
+  background-color: #ffffff; /* change to --gray-white */
   background-image: none;
   margin: auto;
   /* disable-tokens-validator */

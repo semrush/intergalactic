@@ -14,7 +14,7 @@ SHighlightedItem {
   }
   &[selected]::after, &:hover:not(:focus-visible)::after {
     opacity: 1;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1)));
+    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))); /* change to --intergalactic-tab-line-border-hover, --intergalactic-tab-line-border-active */
   }
 
   &::before {
@@ -42,5 +42,5 @@ SHighlightedItem {
 }
 
 SHighlightedCaret {
-  background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1)));
+  background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))); /* change to --intergalactic-tab-line-border-active */
 }

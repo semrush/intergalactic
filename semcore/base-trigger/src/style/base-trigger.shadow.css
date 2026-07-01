@@ -19,7 +19,7 @@ SBaseTrigger {
   font-family: inherit;
   cursor: pointer;
 
-  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-control-select-trigger-normal */
 
   font-weight: var(--intergalactic-regular, 400);
   border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
@@ -40,13 +40,13 @@ SBaseTrigger {
   }
 
   &:hover {
-    background-color: var(--intergalactic-bg-primary-neutral-hover, oklch(0.98 0.001 180));
+    background-color: var(--intergalactic-bg-primary-neutral-hover, oklch(0.98 0.001 180)); /* change to --intergalactic-control-select-trigger-hover */
   }
 
   &:active,
   &[active] {
     border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
-    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-control-select-trigger-active */
   }
 }
 
