@@ -270,7 +270,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@time-picker'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/time-picker/docs/examples/different_cases.tsx', 'en', { state: 'invalid' });
+    await loadPage(page, 'stories/components/time-picker/tests/examples/different_cases.tsx', 'en', { state: 'invalid' });
 
     await expect(locators.timeBoxes(page).first()).toHaveAttribute('aria-invalid', 'true');
     await expect(locators.timeBoxes(page).last()).toHaveAttribute('aria-invalid', 'true');
