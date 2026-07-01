@@ -103,7 +103,7 @@ class TimePickerRoot extends Component<
   };
 
   private getCommonPickerInputProps = () => {
-    const { is12Hour, size, disabled } = this.asProps;
+    const { is12Hour, size, disabled, state } = this.asProps;
 
     return {
       size,
@@ -112,6 +112,7 @@ class TimePickerRoot extends Component<
       $onValueChange: this.handleValueChange,
       minutesInputRef: this.minutesInputRef,
       hoursInputRef: this.hoursInputRef,
+      state,
     };
   };
 
