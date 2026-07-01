@@ -130,6 +130,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     { min: undefined, max: 3, step: undefined },
     { min: 2, max: undefined, step: 2 },
     { min: -3, max: 3, step: 1.5 },
+    { min: 0, max: 1, step: 0.01 },
   ];
   variablesInputNumber.forEach((item) => {
     test(`Verify Base example interactions with min= ${item.min} max=${item.max} step=${item.step} `, {
