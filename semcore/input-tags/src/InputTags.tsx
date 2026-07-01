@@ -1,5 +1,5 @@
 import { ScrollArea, Portal, ScreenReaderOnly } from '@semcore/base-components';
-import { type ScrollAreaProps } from '@semcore/base-components';
+import { type NSScrollArea } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -28,7 +28,7 @@ export type InputTagsValueProps = InputValueProps & {};
 export type InputTagsSize = 'l' | 'm';
 
 export type InputTagsProps = Omit<InputProps, 'size'> &
-  ScrollAreaProps & {
+  NSScrollArea.Props & {
     /**
      * Component size
      * @default m

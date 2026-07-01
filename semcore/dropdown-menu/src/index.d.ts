@@ -1,4 +1,4 @@
-import type { Box, BoxProps, FlexProps, Flex, eventInteraction, ScrollAreaProps } from '@semcore/base-components';
+import type { Box, BoxProps, FlexProps, Flex, eventInteraction, NSScrollArea } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type {
   DropdownContext,
@@ -56,7 +56,7 @@ export type DropdownMenuProps = DropdownProps & {
 };
 
 export type DropdownMenuListProps = BoxProps &
-  ScrollAreaProps & {
+  NSScrollArea.Props & {
     /**
      * Size of the menu
      * @default m
