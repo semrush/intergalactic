@@ -75,6 +75,7 @@ SOutline {
   border-radius: var(--intergalactic-control-rounded, 6px);
   z-index: -1;
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  outline-color: transparent;
 }
 
 SAddon {
