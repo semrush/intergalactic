@@ -45,9 +45,9 @@ STagContainerClose {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  border: 1px solid var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-tag-primary-border */
+  border: 1px solid var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-tag-primary-border */
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-tag-primary-bg-normal */
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-tag-primary-bg-normal */
   border-radius: var(--intergalactic-tag-rounded, 24px);
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
@@ -210,7 +210,7 @@ STag[theme="secondary-invert"],
 STagContainerClose[theme="secondary-invert"],
 STag[theme="additional-invert"],
 STagContainerClose[theme="additional-invert"] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* change to--intergalactic-tag-secondary-white-text */
+  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO:--intergalactic-tag-secondary-white-text */
 }
 
 STag[theme="additional"] {

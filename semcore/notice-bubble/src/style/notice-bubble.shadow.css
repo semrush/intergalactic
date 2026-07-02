@@ -12,11 +12,11 @@ SView {
   gap: var(--intergalactic-spacing-2x, 8px);
 
   &[type='info'] {
-    background: var(--intergalactic-bg-primary-invert, oklch(0.23 0.01 140)); /* change to --intergalactic-notice-bubble-bg */
+    background: var(--intergalactic-bg-primary-invert, oklch(0.23 0.01 140)); /* TODO: --intergalactic-notice-bubble-bg */
   }
 
   &[type='warning'] {
-    background: var(--intergalactic-bg-primary-critical, oklch(0.64 0.226 24.5)); /* change to --intergalactic-notice-bubble-bg-critical */
+    background: var(--intergalactic-bg-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: --intergalactic-notice-bubble-bg-critical */
   }
 }
 

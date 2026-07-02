@@ -59,7 +59,7 @@ SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
 
 SCollapseRow[gridArea] > SCellWrapper > SCell:not([withoutBorder]),
 SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([withoutBorder]) {
-  border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.137 0.026 175.7 / 0.161));
+  border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SCollapseRow > SCellWrapper > SCell {

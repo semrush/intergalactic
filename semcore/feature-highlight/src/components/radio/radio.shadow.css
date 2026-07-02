@@ -5,7 +5,7 @@ SHighlightedRadio {
 SHighlightedRadio:not([state="invalid"]) {
   [data-ui-name="Value.RadioMark"] {
     border-radius: 50%;
-    background: var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))); /* change to --intergalactic-radio-border */
+    background: var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))); /* TODO: --intergalactic-radio-border */
   }
 
   [data-ui-name="Value.RadioMark"]::before {
@@ -38,7 +38,7 @@ SHighlightedRadio:not([state="invalid"]) {
     right: 0;
     bottom: 0;
     border-radius: 50%;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-radio-bg-normal */
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-radio-bg-normal */
     top: 50%;
     left: 50%;
     width: calc(100% - 2px);

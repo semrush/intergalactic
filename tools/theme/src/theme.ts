@@ -259,253 +259,209 @@ export const theme: Theme = {
   },
   semanticTokens: {
     colors: {
-      bg_primary_neutral_DEFAULT: {
-        value: neutral.at(L_BG_PRIMARY),
-        description: 'Primary background of the interface which contains the main data and information.',
+      badge_bg_admin: {
+        value: '{baseTokens.colors.blue.400}',
+        description: 'Background color of the admin Badge.',
       },
-      bg_primary_neutral_hover: {
-        value: neutral.at(L_BG_PRIMARY_HOVER),
-        description: 'Hover state of the primary background of the interface which contains the main data and information.',
+      badge_bg_alpha: {
+        value: '{baseTokens.colors.red.400}',
+        description: 'Background color of the alpha Badge.',
       },
-      bg_primary_neutral_active: {
-        value: neutral.at(L_BG_PRIMARY_ACTIVE),
-        description: 'Active (selected) state of the primary background of the interface which contains the main data and information.',
+      badge_bg_beta: {
+        value: '{baseTokens.colors.orange.400}',
+        description: 'Background color of the beta Badge.',
       },
-      bg_primary_info: {
-        value: info.at(L_BG_STRONG),
-        description: 'Accent background of the message with regular information.',
+      badge_bg_invert: {
+        value: '{baseTokens.colors.gray.white}',
+        description: 'Background color of the inverted Badge.',
       },
-      bg_primary_success: {
-        value: success.at(L_BG_STRONG),
-        description: 'Accent background of the message or banner with information about the successful result.',
+      badge_bg_new: {
+        value: '{baseTokens.colors.green.400}',
+        description: 'Background color of the new Badge.',
       },
-      bg_primary_critical: {
-        value: error.at(L_BG_STRONG),
-        description: 'Accent background of a message or a banner with a critical information.',
+      badge_bg_soon: {
+        value: '{baseTokens.colors.gray.400}',
+        description: 'Background color of the soon Badge.',
       },
-      bg_primary_warning: {
-        value: warning.at(0.7),
-        description: 'Accent background of a message or a banner with a warning information.',
+      badge_bg_unavailable: {
+        value: '{baseTokens.colors.gray.100}',
+        description: 'Background color of the unavailable Badge.',
       },
-      bg_primary_highlight: {
-        value: highlight.at(L_BG_MEDIUM),
-        description: 'Accent background of the information you want to highlight.',
+      badge_text_primary_DEFAULT: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Primary text color for Badge.',
       },
-      bg_primary_advertising: {
-        value: advertising.at(L_BG_STRONG),
-        description: 'Accent background for the advertising banners and controls.',
+      badge_text_primary_invert: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Inverted primary text color for Badge.',
       },
-      bg_primary_muted: {
-        value: neutral.at(L_BG_STRONG),
-        description: 'Accented muted background for a message with regular information.',
-      },
-      bg_primary_invert_DEFAULT: {
-        value: neutral.at(L_INV_BG_PRIMARY),
-        description: 'Inverted version of the primary background of the interface that contains the main data and information.',
-      },
-      bg_primary_invert_hover: {
-        value: neutral.at(L_INV_BG_PRIMARY_HOVER),
-        description: 'Hover state for the inverted version of the primary background of the interface that contains the main data and information.',
-      },
-      bg_primary_invert_active: {
-        value: neutral.at(L_INV_BG_PRIMARY_ACTIVE),
-        description: 'Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information.',
-      },
-      bg_secondary_neutral_DEFAULT: {
-        value: neutral.at(L_BG_SECONDARY),
-        description: 'Secondary background of the interface which contains the main data and information.',
-      },
-      bg_secondary_neutral_hover: {
-        value: neutral.at(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the secondary background of the interface which contains the main data and information.',
-      },
-      bg_secondary_neutral_active: {
-        value: neutral.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the secondary background of the interface which contains the main data and information.',
-      },
-      bg_secondary_info_DEFAULT: {
-        value: info.at(L_BG_LIGHT),
-        description: 'Secondary background of a message with regular information.',
-      },
-      bg_secondary_info_hover: {
-        value: info.at(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the secondary background of a message with regular information.',
-      },
-      bg_secondary_info_active: {
-        value: info.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the secondary background of a message with regular information.',
-      },
-      bg_secondary_success_DEFAULT: {
-        value: success.at(L_BG_LIGHT),
-        description: 'Secondary background of the message with success information you want to accent.',
-      },
-      bg_secondary_success_hover: {
-        value: success.at(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the secondary background of the message with success information you want to accent.',
-      },
-      bg_secondary_success_active: {
-        value: success.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the secondary background of the message with success information you want to accent.',
-      },
-      bg_secondary_critical_DEFAULT: {
-        value: error.at(L_BG_LIGHT),
-        description: 'Secondary background of the message with critical information you want to accent.',
-      },
-      bg_secondary_critical_hover: {
-        value: error.at(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the secondary background of the message with critical information you want to accent.',
-      },
-      bg_secondary_critical_active: {
-        value: error.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the secondary background of the message with critical information you want to accent.',
-      },
-      bg_secondary_warning_DEFAULT: {
-        value: warning.at(L_BG_SECONDARY),
-        description: 'Secondary background of the message with warning information you want to accent.',
-      },
-      bg_secondary_warning_hover: {
-        value: warning.at(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the secondary background of the message with warning information you want to accent.',
-      },
-      bg_secondary_warning_active: {
-        value: warning.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the secondary background of the message with critical information you want to accent.',
-      },
-      bg_secondary_highlight_DEFAULT: {
-        value: highlight.at(L_BG_SECONDARY),
-        description: 'Secondary background of the information you want to highlight.',
-      },
-      bg_secondary_highlight_hover: {
-        value: highlight.at(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the secondary background of the information you want to highlight.',
-      },
-      bg_secondary_highlight_active: {
-        value: highlight.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the secondary background of the information you want to highlight.',
-      },
-      bg_secondary_advertising_DEFAULT: {
-        value: advertising.at(L_BG_SECONDARY),
-        description: 'Secondary background for the advertising message you want to accent.',
-      },
-      bg_secondary_advertising_hover: {
-        value: advertising.at(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the secondary background for the advertising message you want to accent.',
-      },
-      bg_secondary_advertising_active: {
-        value: advertising.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the secondary background for the advertising message you want to accent.',
-      },
-      bg_highlight_results: {
-        value: highlight.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Highlighting the search results.',
+      badge_text_secondary: {
+        value: '{semanticTokens.colors.text_secondary_DEFAULT}',
+        description: 'Secondary text color for Badge.',
       },
       bg_highlight_focus: {
         value: focus.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Focusing values in the input.',
       },
-      text_primary_DEFAULT: {
-        value: neutral.opaqueAt(L_TEXT_PRIMARY),
-        description: 'Default body and UI copy; strongest reading emphasis for primary content.',
+      bg_highlight_results: {
+        value: highlight.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Highlighting the search results.',
       },
-      text_primary_invert: {
-        value: neutral.opaqueInvAt(L_INV_TEXT_PRIMARY),
-        description: 'Inverted version of the primary text.',
+      bg_primary_advertising: {
+        value: advertising.at(L_BG_STRONG),
+        description: 'Accent background for the advertising banners and controls.',
       },
-      text_secondary_DEFAULT: {
-        value: neutral.opaqueAt(L_TEXT_SECONDARY),
-        description: 'Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.',
+      bg_primary_critical: {
+        value: error.at(L_BG_STRONG),
+        description: 'Accent background of a message or a banner with a critical information.',
       },
-      text_secondary_invert: {
-        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
-        description: 'Inverted version of the secondary text.',
+      bg_primary_highlight: {
+        value: highlight.at(L_BG_MEDIUM),
+        description: 'Accent background of the information you want to highlight.',
       },
-      text_placeholder: {
-        value: neutral.opaqueAt(L_TEXT_PLACEHOLDER),
-        description: 'Placeholder text color for inputs and fields.',
+      bg_primary_info: {
+        value: info.at(L_BG_STRONG),
+        description: 'Accent background of the message with regular information.',
       },
-      text_success_DEFAULT: {
-        value: success.at(L_TEXT_SECONDARY),
-        description: 'Text associated with success states and data.',
+      bg_primary_invert_DEFAULT: {
+        value: neutral.at(L_INV_BG_PRIMARY),
+        description: 'Inverted version of the primary background of the interface that contains the main data and information.',
       },
-      text_success_hover_active: {
-        value: success.at(L_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states for the text associated with success states and data.',
+      bg_primary_invert_active: {
+        value: neutral.at(L_INV_BG_PRIMARY_ACTIVE),
+        description: 'Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information.',
       },
-      text_critical_DEFAULT: {
-        value: error.at(L_TEXT_SECONDARY),
-        description: 'Text associated with critical states and data.',
+      bg_primary_invert_hover: {
+        value: neutral.at(L_INV_BG_PRIMARY_HOVER),
+        description: 'Hover state for the inverted version of the primary background of the interface that contains the main data and information.',
       },
-      text_critical_hover_active: {
-        value: error.at(L_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states for the text associated with critical states and data.',
+      bg_primary_muted: {
+        value: neutral.at(L_BG_STRONG),
+        description: 'Accented muted background for a message with regular information.',
       },
-      text_link_DEFAULT: {
-        value: link.at(L_TEXT_SECONDARY),
-        description: 'Default interactive link color for unfollowed links.',
+      bg_primary_neutral_DEFAULT: {
+        value: neutral.at(L_BG_PRIMARY),
+        description: 'Primary background of the interface which contains the main data and information.',
       },
-      text_link_hover_active: {
-        value: link.at(L_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states for the link text.',
+      bg_primary_neutral_active: {
+        value: neutral.at(L_BG_PRIMARY_ACTIVE),
+        description: 'Active (selected) state of the primary background of the interface which contains the main data and information.',
       },
-      text_link_invert_DEFAULT: {
-        value: link.at(L_INV_TEXT_SECONDARY),
-        description: 'Inverted version of the link text. Use on dark background only.',
+      bg_primary_neutral_hover: {
+        value: neutral.at(L_BG_PRIMARY_HOVER),
+        description: 'Hover state of the primary background of the interface which contains the main data and information.',
       },
-      text_link_invert_hover: {
-        value: link.at(L_INV_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states of the inverted version of the link text. Use on dark background only.',
+      bg_primary_success: {
+        value: success.at(L_BG_STRONG),
+        description: 'Accent background of the message or banner with information about the successful result.',
       },
-      text_link_visited: {
-        value: violet.at(L_TEXT_SECONDARY),
-        description: 'Visited link state so users can tell visited destinations apart from default links.',
+      bg_primary_warning: {
+        value: warning.at(0.7),
+        description: 'Accent background of a message or a banner with a warning information.',
       },
-      text_hint_DEFAULT: {
-        value: neutral.opaqueAt(L_TEXT_SECONDARY),
-        description: 'Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.',
+      bg_secondary_advertising_DEFAULT: {
+        value: advertising.at(L_BG_SECONDARY),
+        description: 'Secondary background for the advertising message you want to accent.',
       },
-      text_hint_hover_active: {
-        value: neutral.opaqueAt(L_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states of the hint link text.',
+      bg_secondary_advertising_active: {
+        value: advertising.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the secondary background for the advertising message you want to accent.',
       },
-      text_hint_invert_DEFAULT: {
-        value: neutral.at(L_INV_TEXT_SECONDARY),
-        description: 'Inverted version of the hint link text.',
+      bg_secondary_advertising_hover: {
+        value: advertising.at(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the secondary background for the advertising message you want to accent.',
       },
-      text_hint_invert_hover_active: {
-        value: neutral.at(L_INV_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states of the inverted version of the hint link text.',
+      bg_secondary_critical_DEFAULT: {
+        value: error.at(L_BG_LIGHT),
+        description: 'Secondary background of the message with critical information you want to accent.',
       },
-      text_large_secondary: {
-        value: '{semanticTokens.colors.text.secondary}',
-        description: 'Secondary text. Use with font-size ≥20px.',
+      bg_secondary_critical_active: {
+        value: error.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the secondary background of the message with critical information you want to accent.',
       },
-      text_large_info_DEFAULT: {
-        value: info.at(L_TEXT_SECONDARY),
-        description: 'Link text with font-size ≥20px.',
+      bg_secondary_critical_hover: {
+        value: error.at(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the secondary background of the message with critical information you want to accent.',
       },
-      text_large_info_hover_active: {
-        value: info.at(L_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states of the link text with font-size ≥20px.',
+      bg_secondary_highlight_DEFAULT: {
+        value: highlight.at(L_BG_SECONDARY),
+        description: 'Secondary background of the information you want to highlight.',
       },
-      text_large_success_DEFAULT: {
-        value: '{semanticTokens.colors.text.success}',
-        description: 'Text with font-size ≥20px associated with success states and data.',
+      bg_secondary_highlight_active: {
+        value: highlight.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the secondary background of the information you want to highlight.',
       },
-      text_large_success_hover_active: {
-        value: '{semanticTokens.colors.text.success.hover.active}',
-        description: 'Hover and active states of the text with font-size ≥20px associated with success states and data.',
+      bg_secondary_highlight_hover: {
+        value: highlight.at(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the secondary background of the information you want to highlight.',
       },
-      text_large_critical_DEFAULT: {
-        value: '{semanticTokens.colors.text.critical}',
-        description: 'Text with font-size ≥20px associated with critical states and data.',
+      bg_secondary_info_DEFAULT: {
+        value: info.at(L_BG_LIGHT),
+        description: 'Secondary background of a message with regular information.',
       },
-      text_large_critical_hover_active: {
-        value: '{semanticTokens.colors.text.critical.hover.active}',
-        description: 'Hover and active states of the text with font-size ≥20px associated with critical states and data.',
+      bg_secondary_info_active: {
+        value: info.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the secondary background of a message with regular information.',
       },
-      text_advertising: {
-        value: advertising.at(L_TEXT_PRIMARY),
-        description: 'Promotional or sponsored emphasis (ads, marketing callouts)—use sparingly so it stays noticeable.',
+      bg_secondary_info_hover: {
+        value: info.at(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the secondary background of a message with regular information.',
+      },
+      bg_secondary_neutral_DEFAULT: {
+        value: neutral.at(L_BG_SECONDARY),
+        description: 'Secondary background of the interface which contains the main data and information.',
+      },
+      bg_secondary_neutral_active: {
+        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the secondary background of the interface which contains the main data and information.',
+      },
+      bg_secondary_neutral_hover: {
+        value: neutral.at(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the secondary background of the interface which contains the main data and information.',
+      },
+      bg_secondary_success_DEFAULT: {
+        value: success.at(L_BG_LIGHT),
+        description: 'Secondary background of the message with success information you want to accent.',
+      },
+      bg_secondary_success_active: {
+        value: success.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the secondary background of the message with success information you want to accent.',
+      },
+      bg_secondary_success_hover: {
+        value: success.at(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the secondary background of the message with success information you want to accent.',
+      },
+      bg_secondary_warning_DEFAULT: {
+        value: warning.at(L_BG_SECONDARY),
+        description: 'Secondary background of the message with warning information you want to accent.',
+      },
+      bg_secondary_warning_active: {
+        value: warning.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the secondary background of the message with critical information you want to accent.',
+      },
+      bg_secondary_warning_hover: {
+        value: warning.at(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the secondary background of the message with warning information you want to accent.',
+      },
+      border_critical_DEFAULT: {
+        value: error.opaqueAt(L_BORDER_PRIMARY),
+        description: 'Subtle secondary border in the critical message and invalid input field.',
+      },
+      border_critical_active: {
+        value: error.at(L_BORDER_ACTIVE),
+        description: 'Active border in the focused input field with invalid state, and active state of the other components with invalid state.',
+      },
+      border_critical_pattern: {
+        value: 'repeating-linear-gradient(315deg, {semanticTokens.colors.border.critical.active} 0, {semanticTokens.colors.border.critical.active} 1px, transparent 0, transparent 50%)',
+        description: 'Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.',
+      },
+      border_info_DEFAULT: {
+        value: info.opaqueAt(L_BORDER_PRIMARY),
+        description: 'Subtle secondary border in the informational message.',
+      },
+      border_info_active: {
+        value: info.at(L_BORDER_ACTIVE),
+        description: 'Active border in focused input filed.',
       },
       border_primary_DEFAULT: {
         value: neutral.opaqueAt(L_BORDER_PRIMARY),
@@ -523,14 +479,6 @@ export const theme: Theme = {
         value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
         description: 'Inverted version of the neutral secondary border. Use it for borders on the dark or color background.',
       },
-      border_info_DEFAULT: {
-        value: info.opaqueAt(L_BORDER_PRIMARY),
-        description: 'Subtle secondary border in the informational message.',
-      },
-      border_info_active: {
-        value: info.at(L_BORDER_ACTIVE),
-        description: 'Active border in focused input filed.',
-      },
       border_success_DEFAULT: {
         value: success.opaqueAt(L_BORDER_PRIMARY),
         description: 'Subtle secondary border in the successful message and input field.',
@@ -538,18 +486,6 @@ export const theme: Theme = {
       border_success_active: {
         value: success.at(L_BORDER_ACTIVE),
         description: 'Active border in the focused input field with valid state.',
-      },
-      border_critical_DEFAULT: {
-        value: error.opaqueAt(L_BORDER_PRIMARY),
-        description: 'Subtle secondary border in the critical message and invalid input field.',
-      },
-      border_critical_active: {
-        value: error.at(L_BORDER_ACTIVE),
-        description: 'Active border in the focused input field with invalid state, and active state of the other components with invalid state.',
-      },
-      border_critical_pattern: {
-        value: 'repeating-linear-gradient(315deg, {semanticTokens.colors.border.critical.active} 0, {semanticTokens.colors.border.critical.active} 1px, transparent 0, transparent 50%)',
-        description: 'Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.',
       },
       border_warning_DEFAULT: {
         value: warning.opaqueAt(L_BORDER_PRIMARY),
@@ -559,523 +495,9 @@ export const theme: Theme = {
         value: warning.at(L_BORDER_ACTIVE),
         description: 'Active border in components with warning intention.',
       },
-      border_tooltip_invert: {
-        value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
-        description: 'Border of the Tooltip with dark theme.',
-      },
-      border_table_accent: {
-        value: neutral.opaqueAt(L_BORDER_PRIMARY),
-        description: 'Accent borders in the Table: for the accordion in the table and for the header of the secondary table.',
-      },
-      border_date_picker_range_comparison: {
-        value: highlight.at(L_BORDER_ACTIVE),
-        description: 'Border color of the second period for the comparison mode in the DatePicker.',
-      },
-      control_primary_info_DEFAULT: {
-        value: neutral.at(L_BG_BUTTON_STRONG),
-        description: 'Background of the regular primary control.',
-      },
-      control_primary_info_hover: {
-        value: neutral.at(L_BG_BUTTON_STRONG_HOVER),
-        description: 'Hover state of the regular primary control.',
-      },
-      control_primary_info_active: {
-        value: neutral.at(L_BG_BUTTON_STRONG_ACTIVE),
-        description: 'Active (selected) state of the regular primary control.',
-      },
-      control_primary_success_DEFAULT: {
-        value: green.at(L_BG_BUTTON),
-        description: 'Background of the primary control with successful theme.',
-      },
-      control_primary_success_hover: {
-        value: green.at(L_BG_BUTTON_HOVER),
-        description: 'Hover state of the primary control with successful theme.',
-      },
-      control_primary_success_active: {
-        value: green.at(L_BG_BUTTON_ACTIVE),
-        description: 'Active (selected) state of the primary control with successful theme.',
-      },
-      control_primary_critical_DEFAULT: {
-        value: error.at(L_BG_BUTTON),
-        description: 'Background of the primary control with danger theme.',
-      },
-      control_primary_critical_hover: {
-        value: error.at(L_BG_BUTTON_HOVER),
-        description: 'Hover state of the primary control with danger theme.',
-      },
-      control_primary_critical_active: {
-        value: error.at(L_BG_BUTTON_ACTIVE),
-        description: 'Active (selected) state of the primary control with danger theme.',
-      },
-      control_primary_brand_DEFAULT: {
-        value: brand.at(L_BG_BUTTON),
-        description: 'Background of the primary brand colored control.',
-      },
-      control_primary_brand_hover: {
-        value: brand.at(L_BG_BUTTON_HOVER),
-        description: 'Hover state of the primary brand colored control.',
-      },
-      control_primary_brand_active: {
-        value: brand.at(L_BG_BUTTON_ACTIVE),
-        description: 'Active state of the primary brand colored control.',
-      },
-      control_primary_advertising_DEFAULT: {
-        value: advertising.at(L_BG_BUTTON),
-        description: 'Background of the advertising primary control.',
-      },
-      control_primary_advertising_hover: {
-        value: advertising.at(L_BG_BUTTON_HOVER),
-        description: 'Hover state of the advertising primary control.',
-      },
-      control_primary_advertising_active: {
-        value: advertising.at(L_BG_BUTTON_ACTIVE),
-        description: 'Active (selected) state of the advertising primary control.',
-      },
-      control_primary_invert_DEFAULT: {
-        value: neutral.at(L_INV_BG_BUTTON),
-        description: 'Inverted background of the primary control.',
-      },
-      control_primary_invert_hover: {
-        value: neutral.at(L_INV_BG_BUTTON_HOVER),
-        description: 'Hover state of the inverted primary control.',
-      },
-      control_primary_invert_active: {
-        value: neutral.at(L_INV_BG_BUTTON_ACTIVE),
-        description: 'Active (selected) state of the inverted primary control.',
-      },
-      control_secondary_neutral_DEFAULT: {
-        value: neutral.opaqueAt(L_BG_SECONDARY),
-        description: 'Background of the regular secondary control.',
-      },
-      control_secondary_neutral_hover: {
-        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the regular secondary control.',
-      },
-      control_secondary_neutral_active: {
-        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the regular secondary control.',
-      },
-      control_secondary_info_DEFAULT: {
-        value: info.opaqueAt(L_BG_SECONDARY),
-        description: 'Background of the accent secondary control.',
-      },
-      control_secondary_info_hover: {
-        value: info.opaqueAt(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the accent secondary control.',
-      },
-      control_secondary_info_active: {
-        value: info.opaqueAt(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the accent secondary control.',
-      },
-      control_secondary_invert_DEFAULT: {
-        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY),
-        description: 'Background of the inverted version of the secondary control.',
-      },
-      control_secondary_invert_hover: {
-        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
-        description: 'Hover state of the inverted version of the secondary control.',
-      },
-      control_secondary_invert_active: {
-        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the inverted version of the secondary control.',
-      },
-      control_tertiary_neutral_DEFAULT: {
-        value: 'transparent',
-        description: 'Background of the regular tertiary control.',
-      },
-      control_tertiary_neutral_hover: {
-        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the regular tertiary control.',
-      },
-      control_tertiary_neutral_active: {
-        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the regular tertiary control.',
-      },
-      control_tertiary_info_DEFAULT: {
-        value: 'transparent',
-        description: 'Background of the accent and link-lookalike tertiary control.',
-      },
-      control_tertiary_info_hover: {
-        value: info.opaqueAt(L_BG_SECONDARY_HOVER),
-        description: 'Hover state of the accent and link-lookalike tertiary control.',
-      },
-      control_tertiary_info_active: {
-        value: info.opaqueAt(L_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the accent and link-lookalike tertiary control.',
-      },
-      control_tertiary_invert_DEFAULT: {
-        value: 'transparent',
-        description: 'Background of the inverted version of the tertiary control.',
-      },
-      control_tertiary_invert_hover: {
-        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
-        description: 'Hover state of the inverted version of the tertiary control.',
-      },
-      control_tertiary_invert_active: {
-        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE),
-        description: 'Active (selected) state of the inverted version of the tertiary control.',
-      },
-      icon_primary_neutral_DEFAULT: {
-        value: neutral.opaqueAt(L_ICON_PRIMARY),
-        description: 'Default icon weight on normal backgrounds—stronger emphasis than secondary icons.',
-      },
-      icon_primary_neutral_hover_active: {
-        value: neutral.opaqueAt(L_ICON_PRIMARY_HOVER),
-        description: 'Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.',
-      },
-      icon_primary_info_DEFAULT: {
-        value: info.opaqueAt(L_ICON_PRIMARY),
-        description: 'Primary link-lookalike icon.',
-      },
-      icon_primary_info_hover_active: {
-        value: info.opaqueAt(L_ICON_PRIMARY_HOVER),
-        description: 'Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.',
-      },
-      icon_primary_success_DEFAULT: {
-        value: success.opaqueAt(L_ICON_PRIMARY),
-        description: 'Semantic success icon.',
-      },
-      icon_primary_success_hover_active: {
-        value: success.opaqueAt(L_ICON_PRIMARY_HOVER),
-        description: 'Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.',
-      },
-      icon_primary_critical_DEFAULT: {
-        value: error.opaqueAt(L_ICON_PRIMARY),
-        description: 'Semantic error icon.',
-      },
-      icon_primary_critical_hover_active: {
-        value: error.opaqueAt(L_ICON_PRIMARY_HOVER),
-        description: 'Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.',
-      },
-      icon_primary_warning_DEFAULT: {
-        value: warning.opaqueAt(L_ICON_PRIMARY + 0.15),
-        description: 'Semantic warning icon.',
-      },
-      icon_primary_warning_hover_active: {
-        value: warning.opaqueAt(L_ICON_PRIMARY_HOVER),
-        description: 'Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.',
-      },
-      icon_primary_invert_DEFAULT: {
-        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY),
-        description: 'Inverted version of the primary icon.',
-      },
-      icon_primary_invert_hover_active: {
-        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY_HOVER),
-        description: 'Hover and active (selected) states of the inverted version of the primary icon.',
-      },
-      icon_secondary_neutral_DEFAULT: {
-        value: neutral.opaqueAt(L_ICON_SECONDARY),
-        description: 'De-emphasized icons for dense layouts (tables, tertiary actions).',
-      },
-      icon_secondary_neutral_hover_active: {
-        value: neutral.opaqueAt(L_ICON_SECONDARY_HOVER),
-        description: 'Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.',
-      },
-      icon_secondary_info_DEFAULT: {
-        value: info.opaqueAt(L_ICON_SECONDARY),
-        description: 'Secondary link-lookalike icon.',
-      },
-      icon_secondary_info_hover_active: {
-        value: info.at(L_ICON_SECONDARY_HOVER),
-        description: 'Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color.',
-      },
-      icon_secondary_success_DEFAULT: {
-        value: success.opaqueAt(L_ICON_SECONDARY),
-        description: 'Softer success icon for dense UI or inline hints where the surface should stay calm.',
-      },
-      icon_secondary_success_hover_active: {
-        value: success.opaqueAt(L_ICON_SECONDARY_HOVER),
-        description: 'Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.',
-      },
-      icon_secondary_critical_DEFAULT: {
-        value: error.opaqueAt(L_ICON_SECONDARY),
-        description: 'Softer error icon for dense UI or inline hints where the surface should stay calm.',
-      },
-      icon_secondary_critical_hover_active: {
-        value: error.opaqueAt(L_ICON_SECONDARY_HOVER),
-        description: 'Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color.',
-      },
-      icon_secondary_warning_DEFAULT: {
-        value: warning.opaqueAt(L_ICON_SECONDARY),
-        description: 'Softer warning icon for dense UI or inline hints where the surface should stay calm.',
-      },
-      icon_secondary_warning_hover_active: {
-        value: warning.opaqueAt(L_ICON_SECONDARY_HOVER),
-        description: 'Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.',
-      },
-      icon_non_interactive: {
-        value: neutral.opaqueAt(L_ICON_NON_INTERACTIVE),
-        description: 'Color for the default non-interactive icon.',
-      },
-      illustration_red: {
-        value: red.at(0.737),
-        description: '⚠️ Use only for illustrations.',
-      },
-      illustration_orange: {
-        value: orange.at(0.823),
-        description: '⚠️ Use only for illustrations.',
-      },
-      illustration_yellow: {
-        value: yellow.at(0.924),
-        description: '⚠️ Use only for illustrations.',
-      },
-      illustration_salad: {
-        value: salad.at(0.922),
-        description: '⚠️ Use only for illustrations.',
-      },
-      illustration_green: {
-        value: green.at(0.812),
-        description: '⚠️ Use only for illustrations.',
-      },
-      illustration_blue: {
-        value: blue.at(0.84),
-        description: '⚠️ Use only for illustrations.',
-      },
-      illustration_violet: {
-        value: violet.at(0.709),
-        description: '⚠️ Use only for illustrations.',
-      },
-      illustration_pink: {
-        value: pink.at(0.76),
-        description: '⚠️ Use only for illustrations.',
-      },
-      date_picker_cell_DEFAULT: {
-        value: neutral.at(L_BG_PRIMARY),
-        description: 'Default date-picker cell background.',
-      },
-      date_picker_cell_current_DEFAULT: {
-        value: neutral.opaqueAt(L_BORDER_ACTIVE),
-        description: 'Color for marking the cell with the current date, month or year in the date-picker.',
-      },
-      date_picker_cell_current_invert: {
-        value: neutral.opaqueInvAt(L_INV_BORDER_PRIMARY),
-        description: 'Color for marking the active cell with the current date, month or year in the date-picker.',
-      },
-      date_picker_cell_hover: {
-        value: neutral.at(L_BG_PRIMARY_HOVER),
-        description: 'Hover state of the default date-picker cell background.',
-      },
-      date_picker_cell_range_DEFAULT: {
-        value: focus.at(L_BG_SELECTED),
-        description: 'Background for the cell which is included in the date range in the date-picker.',
-      },
-      date_picker_cell_range_hover: {
-        value: focus.at(L_BG_SELECTED_HOVER),
-        description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
-      },
-      date_picker_cell_active_DEFAULT: {
-        value: focus.at(L_BG_BUTTON),
-        description: 'Active (selected) date-picker cell background.',
-      },
-      date_picker_cell_active_hover: {
-        value: focus.at(L_BG_BUTTON_HOVER),
-        description: 'Hover for the active (selected) date-picker cell background.',
-      },
-      date_picker_cell_comparison_active_DEFAULT: {
-        value: highlight.at(L_BG_BUTTON),
-        description: 'Active (selected) date-picker cell background for comparison periods.',
-      },
-      date_picker_cell_comparison_active_hover: {
-        value: highlight.at(L_BG_BUTTON_HOVER),
-        description: 'Hover for the active (selected) date-picker cell background for comparison periods.',
-      },
-      dropdown_menu_item_DEFAULT: {
-        value: neutral.at(L_BG_PRIMARY),
-        description: 'Default background color for the list item in the dropdown-menu.',
-      },
-      dropdown_menu_item_hover: {
-        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
-        description: 'Hover state of the default background color for the list item in the dropdown-menu.',
-      },
-      dropdown_menu_item_selected_DEFAULT: {
-        value: focus.opaqueAt(L_BG_SELECTED),
-        description: 'Active (selected) state of the default background color for the list item in the dropdown-menu.',
-      },
-      dropdown_menu_item_selected_hover: {
-        value: focus.opaqueAt(L_BG_SELECTED_HOVER),
-        description: 'Hover state for the selected state of the default background color for the list item in the dropdown-menu.',
-      },
-      feature_popover_bg_DEFAULT: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_bg_neutral: {
-        value: neutral.at(L_INV_BG_PRIMARY),
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_dot_outer_border: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_dot_neutral_DEFAULT: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_dot_neutral_outer_border: {
-        value: '{semanticTokens.colors.feature.popover.dot.neutral}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-
-      progress_bar_bg_DEFAULT: {
-        value: neutral.at(L_BG_LIGHT),
-        description: 'Background color of the ProgressBar.',
-      },
-      progress_bar_bg_hover: {
-        value: neutral.at(L_BG_MEDIUM),
-        description: 'Hover state of the background color of the ProgressBar.',
-      },
-      progress_bar_bg_invert_DEFAULT: {
-        value: neutral.at(L_INV_BG_LIGHT),
-        description: 'Inverted version of the background color of the ProgressBar.',
-      },
-      progress_bar_bg_invert_hover: {
-        value: neutral.at(L_INV_BG_MEDIUM),
-        description: 'Hover state for the inverted version of the background color of the ProgressBar.',
-      },
-      progress_bar_value_gradient: {
-        value: `linear-gradient(-45deg, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 25%, ${highlight.at(0.74)} 0%, ${highlight.at(0.74)} 50%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 0%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 75%, ${highlight.at(0.74)} 0%)`,
-        description: 'Value with gradient for the ProgressBar.',
-      },
-      progress_bar_value_bg: {
-        value: 'oklch(1 0 0)',
-        description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
-      },
-      progress_bar_pattern_gradient: {
-        value: 'linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, {semanticTokens.colors.progress.bar.bg} 0%, {semanticTokens.colors.progress.bar.bg} 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, {semanticTokens.colors.progress.bar.bg} 0%)',
-        description: 'Null value gradient for the ProgressBar.',
-      },
-
-      skeleton_bg_DEFAULT: {
-        value: neutral.at(L_BG_SKELETON),
-        description: 'Default color for the Skeleton.',
-      },
-      skeleton_bg_invert: {
-        value: neutral.at(L_INV_BG_SKELETON),
-        description: 'Inverted version of the default color for the Skeleton.',
-      },
-      table_th_primary_cell_DEFAULT: {
-        value: neutral.at(L_BG_SECONDARY),
-        description: 'Background of the header cell in the primary Table.',
-      },
-      table_th_primary_cell_hover: {
-        value: neutral.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Background of the hovered header cell in the primary Table.',
-      },
-      table_th_primary_cell_active: {
-        value: neutral.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Background of the active header cell in the primary Table.',
-      },
-      table_th_secondary_cell: {
-        value: neutral.at(L_BG_PRIMARY),
-        description: 'Background of the header cell in the secondary Table.',
-      },
-      table_th_gradient: {
-        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100'].value} 100%)`,
-        description: 'Background gradient for sorting icon that absolute positioned in the table head.',
-      },
-      table_td_cell_DEFAULT: {
-        value: neutral.at(L_BG_PRIMARY),
-        description: 'Background of the default cell in the Table.',
-      },
-      table_td_cell_hover: {
-        value: neutral.at(L_BG_PRIMARY_HOVER),
-        description: 'Background of the default hovered cell in the Table.',
-      },
-      table_td_cell_active: {
-        value: neutral.at(L_BG_PRIMARY_ACTIVE),
-        description: 'Background of the default active cell in the Table.',
-      },
-      table_td_cell_unread: {
-        value: neutral.at(L_BG_SECONDARY),
-        description: 'Background of the unread cell in the Table.',
-      },
-      table_td_cell_accordion: {
-        value: neutral.at(L_BG_PRIMARY),
-        description: 'Background of the cell used for Accordion or actions row, in the Table.',
-      },
-      table_td_cell_selected_DEFAULT: {
-        value: info.at(L_BG_SECONDARY),
-        description: 'Background of the selected cell in the Table.',
-      },
-      table_td_cell_selected_hover: {
-        value: info.at(L_BG_SECONDARY_HOVER),
-        description: 'Background of the hovered selected cell in the Table.',
-      },
-      table_td_cell_selected_active: {
-        value: info.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Background of the active selected cell in the Table.',
-      },
-      table_td_cell_new_DEFAULT: {
-        value: success.at(L_BG_SECONDARY),
-        description: 'Background of the cell with new information in the Table.',
-      },
-      table_td_cell_new_hover: {
-        value: success.at(L_BG_SECONDARY_HOVER),
-        description: 'Background of the hovered cell with new information in the Table.',
-      },
-      table_td_cell_new_active: {
-        value: success.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Background of the active cell with new information in the Table.',
-      },
-      table_td_cell_critical_DEFAULT: {
-        value: error.at(L_BG_SECONDARY),
-        description: 'Background of the cell with critical information in the Table.',
-      },
-      table_td_cell_critical_hover: {
-        value: error.at(L_BG_SECONDARY_HOVER),
-        description: 'Background of the hovered cell with critical information in the Table.',
-      },
-      table_td_cell_critical_active: {
-        value: error.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Background of the active cell with critical information in the Table.',
-      },
-      table_td_cell_warning_DEFAULT: {
-        value: warning.at(L_BG_SECONDARY),
-        description: 'Background of the cell with warning information in the Table.',
-      },
-      table_td_cell_warning_hover: {
-        value: warning.at(L_BG_SECONDARY_HOVER),
-        description: 'Background of the hovered cell with warning information in the Table.',
-      },
-      table_td_cell_warning_active: {
-        value: warning.at(L_BG_SECONDARY_ACTIVE),
-        description: 'Background of the active cell with warning information in the Table.',
-      },
-      brand_primary: {
-        value: violet.at(0.74),
-        description: 'Primary brand accent for logos and branded surfaces.',
-      },
-      brand_secondary: {
-        value: gray.at(0.22),
-        description: 'Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).',
-      },
-      brand_gradient: {
-        value: 'linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%)',
-        description: 'Brand light gradient for branded surfaces.',
-      },
-      brand_pinterest: {
-        value: '#bd081c',
-        description: 'Official Pinterest brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
-      },
-      brand_instagram: {
-        value: '#e4405f',
-        description: 'Official Instagram brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
-      },
-      brand_youtube: {
-        value: '#ff0000',
-        description: 'Official YouTube brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
-      },
       brand_facebook: {
         value: '#1877f2',
         description: 'Official Facebook brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
-      },
-      brand_linkedIn: {
-        value: '#0a66c2',
-        description: 'Official LinkedIn brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
-      },
-      brand_twitter: {
-        value: '#1d9bf0',
-        description: 'Official Twitter brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
       brand_google_blue: { value: '#1a0dab', description: 'Google brand color for the link.' },
       brand_google_green: {
@@ -1086,249 +508,89 @@ export const theme: Theme = {
         value: '#1a73e8',
         description: 'Official Google My Business brand fill for logos and icons in approved placements; follow Google brand guidelines for size and clear space.',
       },
-      keyboard_focus_outline: {
-        value: focus.opaqueAt(L_BORDER_FOCUS),
-        description: 'Color for default keyboard focus outline styles.',
+      brand_gradient: {
+        value: 'linear-gradient(180deg, #DCEEEB 0%, #EEE9FF 100%)',
+        description: 'Brand light gradient for branded surfaces.',
       },
-      keyboard_focus_invalid_outline: {
-        value: error.opaqueAt(L_BORDER_FOCUS),
-        description: 'Color for keyboard focus outline styles for elements with invalid state.',
+      brand_instagram: {
+        value: '#e4405f',
+        description: 'Official Instagram brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
-      keyboard_focus_valid_outline: {
-        value: success.opaqueAt(L_BORDER_FOCUS),
-        description: 'Color for keyboard focus outline styles for elements with valid state.',
+      brand_linkedIn: {
+        value: '#0a66c2',
+        description: 'Official LinkedIn brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
-      keyboard_focus_invert_outline: {
-        value: 'oklch(1 0 0 / 0.7)',
-        description: 'Color for keyboard focus outline styles to use on the dark and color background.',
+      brand_pinterest: {
+        value: '#bd081c',
+        description: 'Official Pinterest brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
-      overlay_primary: {
-        value: neutral.opaqueAt(0.74),
-        description: 'Use for cover the content under the modal dialogs.',
+      brand_primary: {
+        value: violet.at(0.74),
+        description: 'Primary brand accent for logos and branded surfaces.',
       },
-      overlay_secondary: {
-        value: neutral.opaqueAt(0.8),
-        description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
+      brand_secondary: {
+        value: gray.at(0.22),
+        description: 'Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).',
       },
-      overlay_limitation_primary: {
-        value: `oklch(from ${neutral.at(L_BG_SECONDARY)} l c h / 0.85)`,
-        description: 'Use as a primary cover of the content under the messages about limitations.',
+      brand_twitter: {
+        value: '#1d9bf0',
+        description: 'Official Twitter brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
-      overlay_limitation_secondary: {
-        value: 'oklch(1 0 0 / 0.85)',
-        description: 'Use as a secondary cover of the content under the messages about limitations.',
+      brand_youtube: {
+        value: '#ff0000',
+        description: 'Official YouTube brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
-      tooltip_default: {
-        value: neutral.at(L_BG_PRIMARY),
-        description: 'Default Tooltip background.',
+      chart_data_critical: {
+        value: '{baseTokens.colors.red.400}',
+        description: 'Critical data color for charts.',
       },
-      tooltip_warning: {
-        value: error.at(L_BG_LIGHT),
-        description: 'Warning Tooltip background.',
+      chart_data_success: {
+        value: '{baseTokens.colors.green.300}',
+        description: 'Success data color for charts.',
       },
-      tooltip_invert: {
-        value: neutral.at(L_INV_BG_PRIMARY),
-        description: 'Inverted version of the default Tooltip background.',
+      chart_data_warning: {
+        value: '{baseTokens.colors.orange.300}',
+        description: 'Warning data color for charts.',
       },
-      neighbor_location_neutral: {
-        value: 'oklch(1 0 0 / 0.5)',
-        description: 'Neutral border of the components that are combined with neighbor-location property.',
+      chart_grid_bar_chart_base_bg: {
+        value: neutral.at(L_BG_LIGHT),
+        description: 'Default background color of a bar in the BarChart.',
       },
-      neighbor_location_invert: {
-        value: 'oklch(0 0 0 / 0.5)',
-        description: 'Inverted border of the components that are combined with neighbor-location property.',
+      chart_grid_bar_chart_hover: {
+        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
+        description: 'Background color for the hover state of a bar on the chart grid.',
       },
-      scroll_area_shadow_left: {
-        value: `linear-gradient(to right, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
-        description: 'Left-to-right fade shadow for the ScrollArea.',
+      chart_grid_border: {
+        value: '{baseTokens.colors.white}',
+        description: 'Border for distinguishing data sets and chart dots on the chart grid.',
       },
-      scroll_area_shadow_right: {
-        value: `linear-gradient(to left, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
-        description: 'Right-to-left fade shadow for the ScrollArea.',
+      chart_grid_line: {
+        value: neutral.at(L_BORDER_SECONDARY),
+        description: 'Grid and axis guide lines for charts.',
       },
-      scroll_area_shadow_top: {
-        value: `linear-gradient(to bottom, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
-        description: 'Top-to-bottom fade shadow for the ScrollArea.',
+      chart_grid_period_bg: {
+        value: neutral.at(L_BG_LIGHT),
+        description: 'Use for highlighting a period on the chart grid.',
       },
-      scroll_area_shadow_bottom: {
-        value: `linear-gradient(to top, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
-        description: 'Bottom-to-top fade shadow for the ScrollArea.',
+      chart_grid_period_pattern: {
+        value: neutral.at(L_BORDER_SECONDARY),
+        description: 'Stripe color for diagonal pattern background.',
       },
-      scroll_area_dropdown_menu_left: {
-        value: 'linear-gradient(to right, {baseTokens.colors.white} 34.38%, transparent 100%)',
-        description: 'Left-to-right fade shadow for the ScrollArea inside the DropdownMenu.',
+      chart_grid_text_label: {
+        value: neutral.opaqueAt(L_TEXT_SECONDARY),
+        description: 'Text label on the chart grid.',
       },
-      scroll_area_dropdown_menu_right: {
-        value: 'linear-gradient(to left, {baseTokens.colors.white} 34.38%, transparent 100%)',
-        description: 'Right-to-left fade shadow for the ScrollArea inside the DropdownMenu.',
+      chart_grid_x_axis: {
+        value: neutral.at(L_BORDER_PRIMARY),
+        description: 'X-axis line on the chart grid.',
       },
-      scroll_area_dropdown_menu_bottom: {
-        value: 'linear-gradient(to top, {baseTokens.colors.white} 34.38%, transparent 100%)',
-        description: 'Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu.',
-      },
-      scroll_area_dropdown_menu_top: {
-        value: 'linear-gradient(to bottom, {baseTokens.colors.white} 34.38%, transparent 100%)',
-        description: 'Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.',
-      },
-      scroll_bar_background: {
-        value: neutral.opaqueAt(L_BORDER_PRIMARY),
-        description: 'Background color for ScrollBar.',
-      },
-      tag_primary_gray_normal: {
-        value: '#ecedec',
-        description: 'Gray background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.2 opacity on the white background underneath.',
-      },
-      tag_primary_gray_hover_active: {
-        value: '#e2e3e2',
-        description: 'Gray background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.3 opacity on the white background underneath.',
-      },
-      tag_primary_gray_text: {
-        value: '#6a6c6a',
-        description: 'Gray text for the primary gray tag.',
-      },
-      tag_primary_blue_normal: {
-        value: '#e7e5ff',
-        description: 'Blue background color for primary tag. It’s built with CSS filter brightness(150%) that was applied to blue-500 color with 0.2 opacity on the white background underneath.',
-      },
-      tag_primary_blue_hover_active: {
-        value: '#dcd8ff',
-        description: 'Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. ',
-      },
-      tag_primary_blue_text: {
-        value: '#5c53d9',
-        description: 'Blue text for the primary blue tag.',
-      },
-      tag_primary_green_normal: {
-        value: '#ccf4e8',
-        description: 'Green background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.2 opacity on the white background underneath.',
-      },
-      tag_primary_green_hover_active: {
-        value: '#b3eedd',
-        description: 'Green background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.3 opacity on the white background underneath.',
-      },
-      tag_primary_green_text: {
-        value: '#00845f',
-        description: 'Green text for the primary green tag.',
-      },
-      tag_primary_orange_normal: {
-        value: '#ffdecc',
-        description: 'Orange background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.2 opacity on the white background underneath.',
-      },
-      tag_primary_orange_hover_active: {
-        value: '#ffceb3',
-        description: 'Orange background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.3 opacity on the white background underneath.',
-      },
-      tag_primary_orange_text: {
-        value: '#b83c00',
-        description: 'Orange text for the primary orange tag.',
-      },
-      tag_primary_red_normal: {
-        value: '#ffd3d4',
-        description: 'Red background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.2 opacity on the white background underneath.',
-      },
-      tag_primary_red_hover_active: {
-        value: '#ffbdbf',
-        description: 'Red background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.3 opacity on the white background underneath.',
-      },
-      tag_primary_red_text: {
-        value: '#c7161b',
-        description: 'Red text for the primary red tag.',
-      },
-      tag_primary_violet_normal: {
-        value: '#f2d8ff',
-        description: 'Violet background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.2 opacity on the white background underneath.',
-      },
-      tag_primary_violet_hover_active: {
-        value: '#ecc5ff',
-        description: 'Violet background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.3 opacity on the white background underneath.',
-      },
-      tag_primary_violet_text: {
-        value: '#8029ec',
-        description: 'Violet text for the primary violet tag.',
-      },
-      tag_primary_yellow_normal: {
-        value: '#fde5cc',
-        description: 'Yellow background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.2 opacity on the white background underneath.',
-      },
-      tag_primary_yellow_hover_active: {
-        value: '#fcd8b3',
-        description: 'Yellow background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.3 opacity on the white background underneath.',
-      },
-      tag_primary_yellow_text: {
-        value: '#a35400',
-        description: 'Yellow text for the primary yellow tag.',
-      },
-      tag_primary_white_normal: {
-        value: 'rgba(255, 255, 255, 0.15)',
-        description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
-      },
-      tag_primary_white_hover_active: {
-        value: 'rgba(255, 255, 255, 0.3)',
-        description: 'Hover and active (selected) state of the primary white tag.',
-      },
-      tag_primary_white_text: {
-        value: '#ffffff',
-        description: 'White text for the primary white tag.',
-      },
-      tag_secondary_normal: {
-        value: '#ffffff',
-        description: 'Background color for the default secondary tag.',
-      },
-      tag_secondary_hover_active: {
-        value: '#f4f5f5',
-        description: 'Hover and active (selected) states of the background color for the default secondary tag.',
-      },
-      tag_secondary_white_normal: {
-        value: 'rgba(255, 255, 255, 0)',
-        description: 'Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.',
-      },
-      tag_secondary_white_hover_active: {
-        value: 'rgba(255, 255, 255, 0.1)',
-        description: 'Active state of the secondary white tag.',
-      },
-      tag_secondary_white_text: {
-        value: '#ffffff',
-        description: 'White text for the secondary white tag.',
-      },
-      tag_secondary_gray_text: {
-        value: '#6a6c6a',
-        description: 'Gray text for the default secondary tag.',
+      chart_grid_y_accent_hover_line: {
+        value: neutral.at(L_BORDER_PRIMARY),
+        description: 'Accent line for the hover state on the chart grid.',
       },
       chart_palette_order_1: {
         value: colors.blue['400'].value,
         description: '1 color in the default list of colors for charts.',
-      },
-      chart_palette_order_2: {
-        value: colors.green['200'].value,
-        description: '2 color in the default list of colors for charts.',
-      },
-      chart_palette_order_3: {
-        value: colors.violet['300'].value,
-        description: '3 color in the default list of colors for charts.',
-      },
-      chart_palette_order_4: {
-        value: colors.yellow['200'].value,
-        description: '4 color in the default list of colors for charts.',
-      },
-      chart_palette_order_5: {
-        value: colors.red['300'].value,
-        description: '5 color in the default list of colors for charts.',
-      },
-      chart_palette_order_6: {
-        value: colors.blue['200'].value,
-        description: '6 color in the default list of colors for charts.',
-      },
-      chart_palette_order_7: {
-        value: colors.pink['300'].value,
-        description: '7 color in the default list of colors for charts.',
-      },
-      chart_palette_order_8: {
-        value: colors.salad['200'].value,
-        description: '8 color in the default list of colors for charts.',
-      },
-      chart_palette_order_9: {
-        value: colors.blue['500'].value,
-        description: '9 color in the default list of colors for charts.',
       },
       chart_palette_order_10: {
         value: colors.green['300'].value,
@@ -1370,6 +632,10 @@ export const theme: Theme = {
         value: colors.yellow['400'].value,
         description: '19 color in the default list of colors for charts.',
       },
+      chart_palette_order_2: {
+        value: colors.green['200'].value,
+        description: '2 color in the default list of colors for charts.',
+      },
       chart_palette_order_20: {
         value: colors.red['200'].value,
         description: '20 color in the default list of colors for charts.',
@@ -1390,108 +656,241 @@ export const theme: Theme = {
         value: colors.salad['500'].value,
         description: '24 color in the default list of colors for charts.',
       },
-      chart_palette_order_total_amount: {
-        value: colors.gray['400'].value,
-        description: 'Use it to show total value on the chart.',
+      chart_palette_order_3: {
+        value: colors.violet['300'].value,
+        description: '3 color in the default list of colors for charts.',
       },
-      chart_palette_order_other_data: {
-        value: colors.gray['200'].value,
-        description: 'Use it to indicate voids, missing or some other data on the chart.',
+      chart_palette_order_4: {
+        value: colors.yellow['200'].value,
+        description: '4 color in the default list of colors for charts.',
+      },
+      chart_palette_order_5: {
+        value: colors.red['300'].value,
+        description: '5 color in the default list of colors for charts.',
+      },
+      chart_palette_order_6: {
+        value: colors.blue['200'].value,
+        description: '6 color in the default list of colors for charts.',
+      },
+      chart_palette_order_7: {
+        value: colors.pink['300'].value,
+        description: '7 color in the default list of colors for charts.',
+      },
+      chart_palette_order_8: {
+        value: colors.salad['200'].value,
+        description: '8 color in the default list of colors for charts.',
+      },
+      chart_palette_order_9: {
+        value: colors.blue['500'].value,
+        description: '9 color in the default list of colors for charts.',
       },
       chart_palette_order_null: {
         value: colors.gray['100'].value,
         description: 'Use it to show null value on the chart.',
       },
-      chart_grid_line: {
-        value: neutral.at(L_BORDER_SECONDARY),
-        description: 'Grid and axis guide lines for charts.',
+      chart_palette_order_other_data: {
+        value: colors.gray['200'].value,
+        description: 'Use it to indicate voids, missing or some other data on the chart.',
       },
-      chart_grid_x_axis: {
-        value: neutral.at(L_BORDER_PRIMARY),
-        description: 'X-axis line on the chart grid.',
-      },
-      chart_grid_y_accent_hover_line: {
-        value: neutral.at(L_BORDER_PRIMARY),
-        description: 'Accent line for the hover state on the chart grid.',
-      },
-      chart_grid_text_label: {
-        value: neutral.opaqueAt(L_TEXT_SECONDARY),
-        description: 'Text label on the chart grid.',
-      },
-      chart_grid_bar_chart_hover: {
-        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
-        description: 'Background color for the hover state of a bar on the chart grid.',
-      },
-      chart_grid_bar_chart_base_bg: {
-        value: neutral.at(L_BG_LIGHT),
-        description: 'Default background color of a bar in the BarChart.',
-      },
-      chart_grid_period_bg: {
-        value: neutral.at(L_BG_LIGHT),
-        description: 'Use for highlighting a period on the chart grid.',
-      },
-      chart_grid_period_pattern: {
-        value: neutral.at(L_BORDER_SECONDARY),
-        description: 'Stripe color for diagonal pattern background.',
-      },
-      chart_grid_border: {
-        value: '{baseTokens.colors.white}',
-        description: 'Border for distinguishing data sets and chart dots on the chart grid.',
-      },
-      chart_x_axis_accent_period_active: {
-        value: neutral.opaqueAt(L_BG_LIGHT),
-        description: 'Background color for the clickable date on the X-axis of the chart grid.',
+      chart_palette_order_total_amount: {
+        value: colors.gray['400'].value,
+        description: 'Use it to show total value on the chart.',
       },
       chart_x_axis_accent_data_start_tracking: {
         value: success.opaqueAt(L_BG_LIGHT),
         description: 'Background color for the "Start tracking" date on the X-axis of the chart grid.',
       },
-      header_bg: { value: '{semanticTokens.colors.page.bg}' },
-      header_border_primary: { value: '{semanticTokens.colors.border.primary}' },
-      header_border_secondary: { value: '{semanticTokens.colors.border.primary}' },
-      page_bg: { value: neutral.at(0.97),
-        description: 'Background fill for the whole product page.',
+      chart_x_axis_accent_period_active: {
+        value: neutral.opaqueAt(L_BG_LIGHT),
+        description: 'Background color for the clickable date on the X-axis of the chart grid.',
       },
-      footer_bg: { value: '{semanticTokens.colors.page.bg}',
-        description: 'Background fill for the product page footer.',
+      control_checkbox_bg_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background color of the Checkbox.',
       },
-      sidebar_nav_bg: { value: '{semanticTokens.colors.page.bg}',
-        description: 'Background fill for the product page sidebar.',
+      control_checkbox_bg_selected: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Background color of the checked Checkbox.',
       },
-      sidebar_nav_border: { value: '{semanticTokens.colors.border.primary}',
-        description: 'Color for the border of the page sidebar.',
+      control_checkbox_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Checkbox.',
       },
-      sidebar_nav_control_hover: {
-        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
-        description: 'Sidebar navigation row hover background.',
+      control_checkbox_button_bg_hover: {
+        value: '{semanticTokens.colors.control_secondary_info_DEFAULT}',
+        description: 'Hover state of the Checkbox button background.',
       },
-      sidebar_nav_control_active: {
+      control_checkbox_button_bg_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Normal state of the Checkbox button background.',
+      },
+      control_checkbox_button_bg_selected_DEFAULT: {
+        value: '{semanticTokens.colors.control_secondary_info_active}',
+        description: 'Selected state of the Checkbox button background.',
+      },
+      control_checkbox_button_bg_selected_hover: {
+        value: '{semanticTokens.colors.control_secondary_info_active}',
+        description: 'Hover for a selected state of the Checkbox button background.',
+      },
+      control_checkbox_button_border_DEFAULT: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Checkbox button in its normal state.',
+      },
+      control_checkbox_button_border_selected: {
+        value: '{semanticTokens.colors.border_info_active}',
+        description: 'Border color of the Checkbox button in its active state.',
+      },
+      control_primary_advertising_DEFAULT: {
+        value: advertising.at(L_BG_BUTTON),
+        description: 'Background of the advertising primary control.',
+      },
+      control_primary_advertising_active: {
+        value: advertising.at(L_BG_BUTTON_ACTIVE),
+        description: 'Active (selected) state of the advertising primary control.',
+      },
+      control_primary_advertising_hover: {
+        value: advertising.at(L_BG_BUTTON_HOVER),
+        description: 'Hover state of the advertising primary control.',
+      },
+      control_primary_brand_DEFAULT: {
+        value: brand.at(L_BG_BUTTON),
+        description: 'Background of the primary brand colored control.',
+      },
+      control_primary_brand_active: {
+        value: brand.at(L_BG_BUTTON_ACTIVE),
+        description: 'Active state of the primary brand colored control.',
+      },
+      control_primary_brand_hover: {
+        value: brand.at(L_BG_BUTTON_HOVER),
+        description: 'Hover state of the primary brand colored control.',
+      },
+      control_primary_critical_DEFAULT: {
+        value: error.at(L_BG_BUTTON),
+        description: 'Background of the primary control with danger theme.',
+      },
+      control_primary_critical_active: {
+        value: error.at(L_BG_BUTTON_ACTIVE),
+        description: 'Active (selected) state of the primary control with danger theme.',
+      },
+      control_primary_critical_hover: {
+        value: error.at(L_BG_BUTTON_HOVER),
+        description: 'Hover state of the primary control with danger theme.',
+      },
+      control_primary_info_DEFAULT: {
+        value: neutral.at(L_BG_BUTTON_STRONG),
+        description: 'Background of the regular primary control.',
+      },
+      control_primary_info_active: {
+        value: neutral.at(L_BG_BUTTON_STRONG_ACTIVE),
+        description: 'Active (selected) state of the regular primary control.',
+      },
+      control_primary_info_hover: {
+        value: neutral.at(L_BG_BUTTON_STRONG_HOVER),
+        description: 'Hover state of the regular primary control.',
+      },
+      control_primary_invert_DEFAULT: {
+        value: neutral.at(L_INV_BG_BUTTON),
+        description: 'Inverted background of the primary control.',
+      },
+      control_primary_invert_active: {
+        value: neutral.at(L_INV_BG_BUTTON_ACTIVE),
+        description: 'Active (selected) state of the inverted primary control.',
+      },
+      control_primary_invert_hover: {
+        value: neutral.at(L_INV_BG_BUTTON_HOVER),
+        description: 'Hover state of the inverted primary control.',
+      },
+      control_primary_success_DEFAULT: {
+        value: green.at(L_BG_BUTTON),
+        description: 'Background of the primary control with successful theme.',
+      },
+      control_primary_success_active: {
+        value: green.at(L_BG_BUTTON_ACTIVE),
+        description: 'Active (selected) state of the primary control with successful theme.',
+      },
+      control_primary_success_hover: {
+        value: green.at(L_BG_BUTTON_HOVER),
+        description: 'Hover state of the primary control with successful theme.',
+      },
+      control_secondary_info_DEFAULT: {
+        value: info.opaqueAt(L_BG_SECONDARY),
+        description: 'Background of the accent secondary control.',
+      },
+      control_secondary_info_active: {
+        value: info.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the accent secondary control.',
+      },
+      control_secondary_info_hover: {
+        value: info.opaqueAt(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the accent secondary control.',
+      },
+      control_secondary_invert_DEFAULT: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY),
+        description: 'Background of the inverted version of the secondary control.',
+      },
+      control_secondary_invert_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the inverted version of the secondary control.',
+      },
+      control_secondary_invert_hover: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
+        description: 'Hover state of the inverted version of the secondary control.',
+      },
+      control_secondary_neutral_DEFAULT: {
+        value: neutral.opaqueAt(L_BG_SECONDARY),
+        description: 'Background of the regular secondary control.',
+      },
+      control_secondary_neutral_active: {
         value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
-        description: 'Sidebar navigation row active background.',
+        description: 'Active (selected) state of the regular secondary control.',
       },
-      sidebar_nav_control_text_normal: {
-        value: neutral.at(L_TEXT_SECONDARY),
-        description: 'Sidebar navigation label color.',
+      control_secondary_neutral_hover: {
+        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the regular secondary control.',
       },
-      sidebar_nav_control_text_active: {
-        value: neutral.at(L_TEXT_PRIMARY),
-        description: 'Sidebar navigation label color for the active item.',
+      control_select_trigger_active: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Select trigger in its active state.',
       },
-      sidebar_nav_control_icon_normal: {
-        value: neutral.at(L_ICON_PRIMARY),
-        description: 'Sidebar navigation icon color.',
+      control_select_trigger_hover: {
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
+        description: 'Background of the Select trigger in its hover state.',
       },
-      sidebar_nav_control_icon_active: {
-        value: neutral.at(L_ICON_PRIMARY_HOVER),
-        description: 'Sidebar navigation icon color for the active item.',
+      control_select_trigger_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Select trigger in its normal state.',
       },
-      slider_rating_normal: {
-        value: neutral.at(L_ICON_SECONDARY),
-        description: 'Icon color for the SliderRating component in its normal state.',
+      control_slider_bar_DEFAULT: {
+        value: '{semanticTokens.colors.progress_bar_bg_DEFAULT}',
+        description: 'Background of the Slider bar.',
       },
-      slider_rating_hover_active: {
+      control_slider_bar_hover: {
+        value: '{semanticTokens.colors.progress_bar_bg_hover}',
+        description: 'Hover state of the Slider bar.',
+      },
+      control_slider_bar_value: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Filled part of the Slider bar.',
+      },
+      control_slider_knob_DEFAULT: {
+        value: '{baseTokens.colors.gray.white}',
+        description: 'Knob fill color of the Slider.',
+      },
+      control_slider_knob_border_DEFAULT: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Knob border color of the Slider in its normal state.',
+      },
+      control_slider_knob_border_hover: {
+        value: '{semanticTokens.colors.control_primary_info_hover}',
+        description: 'Knob border color of the Slider in its hover state.',
+      },
+      control_slider_rating_hover_active: {
         value: highlight.at(L_ICON_SECONDARY_HOVER),
         description: 'Icon color for the SliderRating component in its hovered and active states.',
+      },
+      control_slider_rating_normal: {
+        value: neutral.at(L_ICON_SECONDARY),
+        description: 'Icon color for the SliderRating component in its normal state.',
       },
       control_switch_bg_DEFAULT: {
         value: '{baseTokens.colors.gray.300}',
@@ -1509,81 +908,49 @@ export const theme: Theme = {
         value: '{baseTokens.colors.gray.white}',
         description: 'Handle color of the Switch control.',
       },
-      dot_notification_bg: {
-        value: '{semanticTokens.colors.icon_primary_warning_DEFAULT}',
-        description: 'Background color of the notification Dot.',
+      control_tertiary_info_DEFAULT: {
+        value: 'transparent',
+        description: 'Background of the accent and link-lookalike tertiary control.',
       },
-      dot_notification_text: {
-        value: '{semanticTokens.colors.text_primary_invert}',
-        description: 'Text color of the notification Dot.',
+      control_tertiary_info_active: {
+        value: info.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the accent and link-lookalike tertiary control.',
       },
-      tooltip_text: {
-        value: '{semanticTokens.colors.text_primary_DEFAULT}',
-        description: 'Text color of the default Tooltip.',
+      control_tertiary_info_hover: {
+        value: info.opaqueAt(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the accent and link-lookalike tertiary control.',
       },
-      tooltip_text_invert: {
-        value: '{semanticTokens.colors.text_primary_invert}',
-        description: 'Text color of the inverted Tooltip.',
+      control_tertiary_invert_DEFAULT: {
+        value: 'transparent',
+        description: 'Background of the inverted version of the tertiary control.',
       },
-      tab_line_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the TabLine in its normal state.',
+      control_tertiary_invert_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the inverted version of the tertiary control.',
       },
-      tab_line_border_hover: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the TabLine in its hover state.',
+      control_tertiary_invert_hover: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
+        description: 'Hover state of the inverted version of the tertiary control.',
       },
-      tab_line_border_active: {
-        value: '{semanticTokens.colors.border_info_active}',
-        description: 'Border color of the TabLine in its active state.',
+      control_tertiary_neutral_DEFAULT: {
+        value: 'transparent',
+        description: 'Background of the regular tertiary control.',
       },
-      slider_bar_DEFAULT: {
-        value: '{semanticTokens.colors.progress_bar_bg_DEFAULT}',
-        description: 'Background of the Slider bar.',
+      control_tertiary_neutral_active: {
+        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        description: 'Active (selected) state of the regular tertiary control.',
       },
-      slider_bar_value: {
-        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
-        description: 'Filled part of the Slider bar.',
-      },
-      slider_bar_hover: {
-        value: '{semanticTokens.colors.progress_bar_bg_hover}',
-        description: 'Hover state of the Slider bar.',
-      },
-      slider_knob_DEFAULT: {
-        value: '{baseTokens.colors.gray.white}',
-        description: 'Knob fill color of the Slider.',
-      },
-      slider_knob_border_DEFAULT: {
-        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
-        description: 'Knob border color of the Slider in its normal state.',
-      },
-      slider_knob_border_hover: {
-        value: '{semanticTokens.colors.control_primary_info_hover}',
-        description: 'Knob border color of the Slider in its hover state.',
-      },
-      pills_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background of the Pills in its normal state.',
-      },
-      pills_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the Pills in its normal state.',
-      },
-      pills_bg_hover: {
-        value: '{semanticTokens.colors.bg_secondary_neutral_DEFAULT}',
-        description: 'Hover state of the Pills background.',
-      },
-      pills_bg_selected: {
-        value: '{semanticTokens.colors.bg_secondary_info_DEFAULT}',
-        description: 'Background of the selected Pill.',
-      },
-      pills_border_selected: {
-        value: '{semanticTokens.colors.border_info_active}',
-        description: 'Border color of the selected Pill.',
+      control_tertiary_neutral_hover: {
+        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
+        description: 'Hover state of the regular tertiary control.',
       },
       control_text_primary_DEFAULT: {
         value: '{semanticTokens.colors.text_primary_DEFAULT}',
         description: 'Primary text color for form controls.',
+      },
+      control_text_primary_invert: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Inverted primary text color for form controls.',
       },
       control_text_secondary: {
         value: '{semanticTokens.colors.text_secondary_DEFAULT}',
@@ -1593,21 +960,434 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.text_secondary_DEFAULT}',
         description: 'Tertiary text color for form controls.',
       },
-      control_text_primary_invert: {
+      date_picker_border_range_comparison: {
+        value: highlight.at(L_BORDER_ACTIVE),
+        description: 'Border color of the second period for the comparison mode in the DatePicker.',
+      },
+      date_picker_cell_DEFAULT: {
+        value: neutral.at(L_BG_PRIMARY),
+        description: 'Default date-picker cell background.',
+      },
+      date_picker_cell_active_DEFAULT: {
+        value: focus.at(L_BG_BUTTON),
+        description: 'Active (selected) date-picker cell background.',
+      },
+      date_picker_cell_active_hover: {
+        value: focus.at(L_BG_BUTTON_HOVER),
+        description: 'Hover for the active (selected) date-picker cell background.',
+      },
+      date_picker_cell_comparison_active_DEFAULT: {
+        value: highlight.at(L_BG_BUTTON),
+        description: 'Active (selected) date-picker cell background for comparison periods.',
+      },
+      date_picker_cell_comparison_active_hover: {
+        value: highlight.at(L_BG_BUTTON_HOVER),
+        description: 'Hover for the active (selected) date-picker cell background for comparison periods.',
+      },
+      date_picker_cell_current_DEFAULT: {
+        value: neutral.opaqueAt(L_BORDER_ACTIVE),
+        description: 'Color for marking the cell with the current date, month or year in the date-picker.',
+      },
+      date_picker_cell_current_invert: {
+        value: neutral.opaqueInvAt(L_INV_BORDER_PRIMARY),
+        description: 'Color for marking the active cell with the current date, month or year in the date-picker.',
+      },
+      date_picker_cell_hover: {
+        value: neutral.at(L_BG_PRIMARY_HOVER),
+        description: 'Hover state of the default date-picker cell background.',
+      },
+      date_picker_cell_range_DEFAULT: {
+        value: focus.at(L_BG_SELECTED),
+        description: 'Background for the cell which is included in the date range in the date-picker.',
+      },
+      date_picker_cell_range_hover: {
+        value: focus.at(L_BG_SELECTED_HOVER),
+        description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
+      },
+      dot_notification_bg: {
+        value: '{semanticTokens.colors.icon_primary_warning_DEFAULT}',
+        description: 'Background color of the notification Dot.',
+      },
+      dot_notification_text: {
         value: '{semanticTokens.colors.text_primary_invert}',
-        description: 'Inverted primary text color for form controls.',
+        description: 'Text color of the notification Dot.',
       },
-      control_select_trigger_normal: {
+      dropdown_menu_item_DEFAULT: {
+        value: neutral.at(L_BG_PRIMARY),
+        description: 'Default background color for the list item in the dropdown-menu.',
+      },
+      dropdown_menu_item_hover: {
+        value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
+        description: 'Hover state of the default background color for the list item in the dropdown-menu.',
+      },
+      dropdown_menu_item_selected_DEFAULT: {
+        value: focus.opaqueAt(L_BG_SELECTED),
+        description: 'Active (selected) state of the default background color for the list item in the dropdown-menu.',
+      },
+      dropdown_menu_item_selected_border: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Border color of the selected item in the DropdownMenu.',
+      },
+      dropdown_menu_item_selected_hover: {
+        value: focus.opaqueAt(L_BG_SELECTED_HOVER),
+        description: 'Hover state for the selected state of the default background color for the list item in the dropdown-menu.',
+      },
+      feature_popover_accent_bg: {
+        value: '{semanticTokens.colors.bg.primary.highlight}',
+        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      },
+      feature_popover_accent_dot_outer_border: {
+        value: '{semanticTokens.colors.bg.primary.highlight}',
+        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      },
+      feature_popover_dot_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_highlight}',
+        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      },
+      feature_popover_dot_neutral_DEFAULT: {
+        value: '{semanticTokens.colors.bg.primary.highlight}',
+        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      },
+      feature_popover_neutral_bg: {
+        value: neutral.at(L_INV_BG_PRIMARY),
+        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      },
+      feature_popover_neutral_dot_outer_border: {
+        value: '{semanticTokens.colors.feature.popover.dot.neutral}',
+        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      },
+
+      feature_popover_text_DEFAULT: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Text color of the FeaturePopover.',
+      },
+      feature_popover_text_invert: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Inverted text color of the FeaturePopover.',
+      },
+      footer_bg: { value: '{semanticTokens.colors.page.bg}',
+        description: 'Background fill for the product page footer.',
+      },
+      header_bg: { value: '{semanticTokens.colors.page.bg}' },
+      header_border_primary: { value: '{semanticTokens.colors.border.primary}' },
+      header_border_secondary: { value: '{semanticTokens.colors.border.primary}' },
+      icon_non_interactive: {
+        value: neutral.opaqueAt(L_ICON_NON_INTERACTIVE),
+        description: 'Color for the default non-interactive icon.',
+      },
+      icon_primary_critical_DEFAULT: {
+        value: error.opaqueAt(L_ICON_PRIMARY),
+        description: 'Semantic error icon.',
+      },
+      icon_primary_critical_hover_active: {
+        value: error.opaqueAt(L_ICON_PRIMARY_HOVER),
+        description: 'Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.',
+      },
+      icon_primary_info_DEFAULT: {
+        value: info.opaqueAt(L_ICON_PRIMARY),
+        description: 'Primary link-lookalike icon.',
+      },
+      icon_primary_info_hover_active: {
+        value: info.opaqueAt(L_ICON_PRIMARY_HOVER),
+        description: 'Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.',
+      },
+      icon_primary_invert_DEFAULT: {
+        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY),
+        description: 'Inverted version of the primary icon.',
+      },
+      icon_primary_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_ICON_PRIMARY_HOVER),
+        description: 'Hover and active (selected) states of the inverted version of the primary icon.',
+      },
+      icon_primary_neutral_DEFAULT: {
+        value: neutral.opaqueAt(L_ICON_PRIMARY),
+        description: 'Default icon weight on normal backgrounds—stronger emphasis than secondary icons.',
+      },
+      icon_primary_neutral_hover_active: {
+        value: neutral.opaqueAt(L_ICON_PRIMARY_HOVER),
+        description: 'Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.',
+      },
+      icon_primary_success_DEFAULT: {
+        value: success.opaqueAt(L_ICON_PRIMARY),
+        description: 'Semantic success icon.',
+      },
+      icon_primary_success_hover_active: {
+        value: success.opaqueAt(L_ICON_PRIMARY_HOVER),
+        description: 'Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.',
+      },
+      icon_primary_warning_DEFAULT: {
+        value: warning.opaqueAt(L_ICON_PRIMARY + 0.15),
+        description: 'Semantic warning icon.',
+      },
+      icon_primary_warning_hover_active: {
+        value: warning.opaqueAt(L_ICON_PRIMARY_HOVER),
+        description: 'Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.',
+      },
+      icon_secondary_critical_DEFAULT: {
+        value: error.opaqueAt(L_ICON_SECONDARY),
+        description: 'Softer error icon for dense UI or inline hints where the surface should stay calm.',
+      },
+      icon_secondary_critical_hover_active: {
+        value: error.opaqueAt(L_ICON_SECONDARY_HOVER),
+        description: 'Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color.',
+      },
+      icon_secondary_info_DEFAULT: {
+        value: info.opaqueAt(L_ICON_SECONDARY),
+        description: 'Secondary link-lookalike icon.',
+      },
+      icon_secondary_info_hover_active: {
+        value: info.at(L_ICON_SECONDARY_HOVER),
+        description: 'Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color.',
+      },
+      icon_secondary_neutral_DEFAULT: {
+        value: neutral.opaqueAt(L_ICON_SECONDARY),
+        description: 'De-emphasized icons for dense layouts (tables, tertiary actions).',
+      },
+      icon_secondary_neutral_hover_active: {
+        value: neutral.opaqueAt(L_ICON_SECONDARY_HOVER),
+        description: 'Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.',
+      },
+      icon_secondary_success_DEFAULT: {
+        value: success.opaqueAt(L_ICON_SECONDARY),
+        description: 'Softer success icon for dense UI or inline hints where the surface should stay calm.',
+      },
+      icon_secondary_success_hover_active: {
+        value: success.opaqueAt(L_ICON_SECONDARY_HOVER),
+        description: 'Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.',
+      },
+      icon_secondary_warning_DEFAULT: {
+        value: warning.opaqueAt(L_ICON_SECONDARY),
+        description: 'Softer warning icon for dense UI or inline hints where the surface should stay calm.',
+      },
+      icon_secondary_warning_hover_active: {
+        value: warning.opaqueAt(L_ICON_SECONDARY_HOVER),
+        description: 'Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.',
+      },
+      illustration_blue: {
+        value: blue.at(0.84),
+        description: '⚠️ Use only for illustrations.',
+      },
+      illustration_border: {
+        value: '{baseTokens.colors.gray.500}',
+        description: 'Border color for illustrations.',
+      },
+      illustration_gray: {
+        value: '{baseTokens.colors.gray.100}',
+        description: 'Gray fill color for illustrations.',
+      },
+      illustration_green: {
+        value: green.at(0.812),
+        description: '⚠️ Use only for illustrations.',
+      },
+      illustration_orange: {
+        value: orange.at(0.823),
+        description: '⚠️ Use only for illustrations.',
+      },
+      illustration_pink: {
+        value: pink.at(0.76),
+        description: '⚠️ Use only for illustrations.',
+      },
+      illustration_red: {
+        value: red.at(0.737),
+        description: '⚠️ Use only for illustrations.',
+      },
+      illustration_salad: {
+        value: salad.at(0.922),
+        description: '⚠️ Use only for illustrations.',
+      },
+      illustration_violet: {
+        value: violet.at(0.709),
+        description: '⚠️ Use only for illustrations.',
+      },
+      illustration_yellow: {
+        value: yellow.at(0.924),
+        description: '⚠️ Use only for illustrations.',
+      },
+      keyboard_focus_invalid_outline: {
+        value: error.opaqueAt(L_BORDER_FOCUS),
+        description: 'Color for keyboard focus outline styles for elements with invalid state.',
+      },
+      keyboard_focus_invert_outline: {
+        value: 'oklch(1 0 0 / 0.7)',
+        description: 'Color for keyboard focus outline styles to use on the dark and color background.',
+      },
+      keyboard_focus_outline: {
+        value: focus.opaqueAt(L_BORDER_FOCUS),
+        description: 'Color for default keyboard focus outline styles.',
+      },
+      keyboard_focus_valid_outline: {
+        value: success.opaqueAt(L_BORDER_FOCUS),
+        description: 'Color for keyboard focus outline styles for elements with valid state.',
+      },
+      neighbor_location_invert: {
+        value: 'oklch(0 0 0 / 0.5)',
+        description: 'Inverted border of the components that are combined with neighbor-location property.',
+      },
+      neighbor_location_neutral: {
+        value: 'oklch(1 0 0 / 0.5)',
+        description: 'Neutral border of the components that are combined with neighbor-location property.',
+      },
+      notice_bubble_bg_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_invert_DEFAULT}',
+        description: 'Background of the NoticeBubble.',
+      },
+      notice_bubble_bg_critical: {
+        value: '{semanticTokens.colors.bg_primary_critical}',
+        description: 'Critical background of the NoticeBubble.',
+      },
+      overlay_limitation_primary: {
+        value: `oklch(from ${neutral.at(L_BG_SECONDARY)} l c h / 0.85)`,
+        description: 'Use as a primary cover of the content under the messages about limitations.',
+      },
+      overlay_limitation_secondary: {
+        value: 'oklch(1 0 0 / 0.85)',
+        description: 'Use as a secondary cover of the content under the messages about limitations.',
+      },
+      overlay_primary: {
+        value: neutral.opaqueAt(0.74),
+        description: 'Use for cover the content under the modal dialogs.',
+      },
+      overlay_secondary: {
+        value: neutral.opaqueAt(0.8),
+        description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
+      },
+      page_bg: { value: neutral.at(0.97),
+        description: 'Background fill for the whole product page.',
+      },
+      pills_bg_hover: {
+        value: '{semanticTokens.colors.bg_secondary_neutral_DEFAULT}',
+        description: 'Hover state of the Pills background.',
+      },
+      pills_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background of the Select trigger in its normal state.',
+        description: 'Background of the Pills in its normal state.',
       },
-      control_select_trigger_hover: {
-        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Background of the Select trigger in its hover state.',
+      pills_bg_selected: {
+        value: '{semanticTokens.colors.bg_secondary_info_DEFAULT}',
+        description: 'Background of the selected Pill.',
       },
-      control_select_trigger_active: {
+      pills_border_DEFAULT: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Pills in its normal state.',
+      },
+      pills_border_selected: {
+        value: '{semanticTokens.colors.border_info_active}',
+        description: 'Border color of the selected Pill.',
+      },
+      progress_bar_bg_DEFAULT: {
+        value: neutral.at(L_BG_LIGHT),
+        description: 'Background color of the ProgressBar.',
+      },
+      progress_bar_bg_hover: {
+        value: neutral.at(L_BG_MEDIUM),
+        description: 'Hover state of the background color of the ProgressBar.',
+      },
+      progress_bar_bg_invert_DEFAULT: {
+        value: neutral.at(L_INV_BG_LIGHT),
+        description: 'Inverted version of the background color of the ProgressBar.',
+      },
+      progress_bar_bg_invert_hover: {
+        value: neutral.at(L_INV_BG_MEDIUM),
+        description: 'Hover state for the inverted version of the background color of the ProgressBar.',
+      },
+      progress_bar_pattern_gradient: {
+        value: 'linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, {semanticTokens.colors.progress.bar.bg} 0%, {semanticTokens.colors.progress.bar.bg} 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, {semanticTokens.colors.progress.bar.bg} 0%)',
+        description: 'Null value gradient for the ProgressBar.',
+      },
+
+      progress_bar_value_bg: {
+        value: 'oklch(1 0 0)',
+        description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
+      },
+      progress_bar_value_gradient: {
+        value: `linear-gradient(-45deg, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 25%, ${highlight.at(0.74)} 0%, ${highlight.at(0.74)} 50%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 0%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 75%, ${highlight.at(0.74)} 0%)`,
+        description: 'Value with gradient for the ProgressBar.',
+      },
+      radio_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background of the Select trigger in its active state.',
+        description: 'Background color of the Radio.',
+      },
+      radio_bg_selected: {
+        value: '{semanticTokens.colors.control_primary_info}',
+        description: 'Selected state of the Radio background.',
+      },
+      radio_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Radio.',
+      },
+      scroll_area_dropdown_menu_bottom: {
+        value: 'linear-gradient(to top, {baseTokens.colors.white} 34.38%, transparent 100%)',
+        description: 'Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu.',
+      },
+      scroll_area_dropdown_menu_left: {
+        value: 'linear-gradient(to right, {baseTokens.colors.white} 34.38%, transparent 100%)',
+        description: 'Left-to-right fade shadow for the ScrollArea inside the DropdownMenu.',
+      },
+      scroll_area_dropdown_menu_right: {
+        value: 'linear-gradient(to left, {baseTokens.colors.white} 34.38%, transparent 100%)',
+        description: 'Right-to-left fade shadow for the ScrollArea inside the DropdownMenu.',
+      },
+      scroll_area_dropdown_menu_top: {
+        value: 'linear-gradient(to bottom, {baseTokens.colors.white} 34.38%, transparent 100%)',
+        description: 'Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.',
+      },
+      scroll_area_shadow_bottom: {
+        value: `linear-gradient(to top, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
+        description: 'Bottom-to-top fade shadow for the ScrollArea.',
+      },
+      scroll_area_shadow_left: {
+        value: `linear-gradient(to right, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
+        description: 'Left-to-right fade shadow for the ScrollArea.',
+      },
+      scroll_area_shadow_right: {
+        value: `linear-gradient(to left, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
+        description: 'Right-to-left fade shadow for the ScrollArea.',
+      },
+      scroll_area_shadow_top: {
+        value: `linear-gradient(to bottom, oklch(from ${colors.gray['800'].value} l c h / 0.08) 20.55%, transparent 100%)`,
+        description: 'Top-to-bottom fade shadow for the ScrollArea.',
+      },
+      scroll_bar_background: {
+        value: neutral.opaqueAt(L_BORDER_PRIMARY),
+        description: 'Background color for ScrollBar.',
+      },
+      sidebar_nav_bg: { value: '{semanticTokens.colors.page.bg}',
+        description: 'Background fill for the product page sidebar.',
+      },
+      sidebar_nav_border: { value: '{semanticTokens.colors.border.primary}',
+        description: 'Color for the border of the page sidebar.',
+      },
+      sidebar_nav_control_active: {
+        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        description: 'Sidebar navigation row active background.',
+      },
+      sidebar_nav_control_hover: {
+        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
+        description: 'Sidebar navigation row hover background.',
+      },
+      sidebar_nav_control_icon_active: {
+        value: neutral.at(L_ICON_PRIMARY_HOVER),
+        description: 'Sidebar navigation icon color for the active item.',
+      },
+      sidebar_nav_control_icon_normal: {
+        value: neutral.at(L_ICON_PRIMARY),
+        description: 'Sidebar navigation icon color.',
+      },
+      sidebar_nav_control_text_active: {
+        value: neutral.at(L_TEXT_PRIMARY),
+        description: 'Sidebar navigation label color for the active item.',
+      },
+      sidebar_nav_control_text_normal: {
+        value: neutral.at(L_TEXT_SECONDARY),
+        description: 'Sidebar navigation label color.',
+      },
+      skeleton_bg_DEFAULT: {
+        value: neutral.at(L_BG_SKELETON),
+        description: 'Default color for the Skeleton.',
+      },
+      skeleton_bg_invert: {
+        value: neutral.at(L_INV_BG_SKELETON),
+        description: 'Inverted version of the default color for the Skeleton.',
       },
       spin_bg_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
@@ -1617,25 +1397,389 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_invert}',
         description: 'Inverted track color of the Spin loader.',
       },
-      illustration_gray: {
-        value: '{baseTokens.colors.gray.100}',
-        description: 'Gray fill color for illustrations.',
+      tab_line_border_DEFAULT: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the TabLine in its normal state.',
       },
-      illustration_border: {
-        value: '{baseTokens.colors.gray.500}',
-        description: 'Border color for illustrations.',
+      tab_line_border_active: {
+        value: '{semanticTokens.colors.border_info_active}',
+        description: 'Border color of the TabLine in its active state.',
       },
-      chart_data_success: {
-        value: '{baseTokens.colors.green.300}',
-        description: 'Success data color for charts.',
+      tab_line_border_hover: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the TabLine in its hover state.',
       },
-      chart_data_warning: {
-        value: '{baseTokens.colors.orange.300}',
-        description: 'Warning data color for charts.',
+      table_border_accent: {
+        value: neutral.opaqueAt(L_BORDER_PRIMARY),
+        description: 'Accent borders in the Table: for the accordion in the table and for the header of the secondary table.',
       },
-      chart_data_critical: {
-        value: '{baseTokens.colors.red.400}',
-        description: 'Critical data color for charts.',
+      table_td_cell_DEFAULT: {
+        value: neutral.at(L_BG_PRIMARY),
+        description: 'Background of the default cell in the Table.',
+      },
+      table_td_cell_accordion: {
+        value: neutral.at(L_BG_PRIMARY),
+        description: 'Background of the cell used for Accordion or actions row, in the Table.',
+      },
+      table_td_cell_active: {
+        value: neutral.at(L_BG_PRIMARY_ACTIVE),
+        description: 'Background of the default active cell in the Table.',
+      },
+      table_td_cell_critical_DEFAULT: {
+        value: error.at(L_BG_SECONDARY),
+        description: 'Background of the cell with critical information in the Table.',
+      },
+      table_td_cell_critical_active: {
+        value: error.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Background of the active cell with critical information in the Table.',
+      },
+      table_td_cell_critical_hover: {
+        value: error.at(L_BG_SECONDARY_HOVER),
+        description: 'Background of the hovered cell with critical information in the Table.',
+      },
+      table_td_cell_hover: {
+        value: neutral.at(L_BG_PRIMARY_HOVER),
+        description: 'Background of the default hovered cell in the Table.',
+      },
+      table_td_cell_new_DEFAULT: {
+        value: success.at(L_BG_SECONDARY),
+        description: 'Background of the cell with new information in the Table.',
+      },
+      table_td_cell_new_active: {
+        value: success.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Background of the active cell with new information in the Table.',
+      },
+      table_td_cell_new_hover: {
+        value: success.at(L_BG_SECONDARY_HOVER),
+        description: 'Background of the hovered cell with new information in the Table.',
+      },
+      table_td_cell_selected_DEFAULT: {
+        value: info.at(L_BG_SECONDARY),
+        description: 'Background of the selected cell in the Table.',
+      },
+      table_td_cell_selected_active: {
+        value: info.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Background of the active selected cell in the Table.',
+      },
+      table_td_cell_selected_hover: {
+        value: info.at(L_BG_SECONDARY_HOVER),
+        description: 'Background of the hovered selected cell in the Table.',
+      },
+      table_td_cell_unread: {
+        value: neutral.at(L_BG_SECONDARY),
+        description: 'Background of the unread cell in the Table.',
+      },
+      table_td_cell_warning_DEFAULT: {
+        value: warning.at(L_BG_SECONDARY),
+        description: 'Background of the cell with warning information in the Table.',
+      },
+      table_td_cell_warning_active: {
+        value: warning.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Background of the active cell with warning information in the Table.',
+      },
+      table_td_cell_warning_hover: {
+        value: warning.at(L_BG_SECONDARY_HOVER),
+        description: 'Background of the hovered cell with warning information in the Table.',
+      },
+      table_th_gradient: {
+        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100'].value} 100%)`,
+        description: 'Background gradient for sorting icon that absolute positioned in the table head.',
+      },
+      table_th_primary_cell_DEFAULT: {
+        value: neutral.at(L_BG_SECONDARY),
+        description: 'Background of the header cell in the primary Table.',
+      },
+      table_th_primary_cell_active: {
+        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Background of the active header cell in the primary Table.',
+      },
+      table_th_primary_cell_hover: {
+        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Background of the hovered header cell in the primary Table.',
+      },
+      table_th_secondary_cell: {
+        value: neutral.at(L_BG_PRIMARY),
+        description: 'Background of the header cell in the secondary Table.',
+      },
+      tag_additional_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the additional Tag.',
+      },
+      tag_additional_hover_active: {
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
+        description: 'Hover and active states of the additional Tag background.',
+      },
+      tag_additional_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the additional Tag in its normal state.',
+      },
+      tag_primary_bg_hover: {
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
+        description: 'Hover state of the primary Tag background.',
+      },
+      tag_primary_bg_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the primary Tag in its normal state.',
+      },
+      tag_primary_blue_hover_active: {
+        value: '#dcd8ff',
+        description: 'Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. ',
+      },
+      tag_primary_blue_normal: {
+        value: '#e7e5ff',
+        description: 'Blue background color for primary tag. It’s built with CSS filter brightness(150%) that was applied to blue-500 color with 0.2 opacity on the white background underneath.',
+      },
+      tag_primary_blue_text: {
+        value: '#5c53d9',
+        description: 'Blue text for the primary blue tag.',
+      },
+      tag_primary_border: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Border color of the primary Tag.',
+      },
+      tag_primary_gray_hover_active: {
+        value: '#e2e3e2',
+        description: 'Gray background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.3 opacity on the white background underneath.',
+      },
+      tag_primary_gray_normal: {
+        value: '#ecedec',
+        description: 'Gray background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.2 opacity on the white background underneath.',
+      },
+      tag_primary_gray_text: {
+        value: '#6a6c6a',
+        description: 'Gray text for the primary gray tag.',
+      },
+      tag_primary_green_hover_active: {
+        value: '#b3eedd',
+        description: 'Green background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.3 opacity on the white background underneath.',
+      },
+      tag_primary_green_normal: {
+        value: '#ccf4e8',
+        description: 'Green background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.2 opacity on the white background underneath.',
+      },
+      tag_primary_green_text: {
+        value: '#00845f',
+        description: 'Green text for the primary green tag.',
+      },
+      tag_primary_orange_hover_active: {
+        value: '#ffceb3',
+        description: 'Orange background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.3 opacity on the white background underneath.',
+      },
+      tag_primary_orange_normal: {
+        value: '#ffdecc',
+        description: 'Orange background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.2 opacity on the white background underneath.',
+      },
+      tag_primary_orange_text: {
+        value: '#b83c00',
+        description: 'Orange text for the primary orange tag.',
+      },
+      tag_primary_red_hover_active: {
+        value: '#ffbdbf',
+        description: 'Red background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.3 opacity on the white background underneath.',
+      },
+      tag_primary_red_normal: {
+        value: '#ffd3d4',
+        description: 'Red background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.2 opacity on the white background underneath.',
+      },
+      tag_primary_red_text: {
+        value: '#c7161b',
+        description: 'Red text for the primary red tag.',
+      },
+      tag_primary_violet_hover_active: {
+        value: '#ecc5ff',
+        description: 'Violet background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.3 opacity on the white background underneath.',
+      },
+      tag_primary_violet_normal: {
+        value: '#f2d8ff',
+        description: 'Violet background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.2 opacity on the white background underneath.',
+      },
+      tag_primary_violet_text: {
+        value: '#8029ec',
+        description: 'Violet text for the primary violet tag.',
+      },
+      tag_primary_white_hover_active: {
+        value: 'rgba(255, 255, 255, 0.3)',
+        description: 'Hover and active (selected) state of the primary white tag.',
+      },
+      tag_primary_white_normal: {
+        value: 'rgba(255, 255, 255, 0.15)',
+        description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
+      },
+      tag_primary_white_text: {
+        value: '#ffffff',
+        description: 'White text for the primary white tag.',
+      },
+      tag_primary_yellow_hover_active: {
+        value: '#fcd8b3',
+        description: 'Yellow background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.3 opacity on the white background underneath.',
+      },
+      tag_primary_yellow_normal: {
+        value: '#fde5cc',
+        description: 'Yellow background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.2 opacity on the white background underneath.',
+      },
+      tag_primary_yellow_text: {
+        value: '#a35400',
+        description: 'Yellow text for the primary yellow tag.',
+      },
+      tag_secondary_border_DEFAULT: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the secondary Tag.',
+      },
+      tag_secondary_border_invert: {
+        value: '{semanticTokens.colors.border_secondary_invert}',
+        description: 'Inverted border color of the secondary Tag.',
+      },
+      tag_secondary_gray_text: {
+        value: '#6a6c6a',
+        description: 'Gray text for the default secondary tag.',
+      },
+      tag_secondary_hover_active: {
+        value: '#f4f5f5',
+        description: 'Hover and active (selected) states of the background color for the default secondary tag.',
+      },
+      tag_secondary_normal: {
+        value: '#ffffff',
+        description: 'Background color for the default secondary tag.',
+      },
+      tag_secondary_white_hover_active: {
+        value: 'rgba(255, 255, 255, 0.1)',
+        description: 'Active state of the secondary white tag.',
+      },
+      tag_secondary_white_normal: {
+        value: 'rgba(255, 255, 255, 0)',
+        description: 'Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.',
+      },
+      tag_secondary_white_text: {
+        value: '#ffffff',
+        description: 'White text for the secondary white tag.',
+      },
+      text_advertising: {
+        value: advertising.at(L_TEXT_PRIMARY),
+        description: 'Promotional or sponsored emphasis (ads, marketing callouts)—use sparingly so it stays noticeable.',
+      },
+      text_critical_DEFAULT: {
+        value: error.at(L_TEXT_SECONDARY),
+        description: 'Text associated with critical states and data.',
+      },
+      text_critical_hover_active: {
+        value: error.at(L_TEXT_SECONDARY_HOVER),
+        description: 'Hover and active states for the text associated with critical states and data.',
+      },
+      text_hint_DEFAULT: {
+        value: neutral.opaqueAt(L_TEXT_SECONDARY),
+        description: 'Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.',
+      },
+      text_hint_hover_active: {
+        value: neutral.opaqueAt(L_TEXT_SECONDARY_HOVER),
+        description: 'Hover and active states of the hint link text.',
+      },
+      text_hint_invert_DEFAULT: {
+        value: neutral.at(L_INV_TEXT_SECONDARY),
+        description: 'Inverted version of the hint link text.',
+      },
+      text_hint_invert_hover_active: {
+        value: neutral.at(L_INV_TEXT_SECONDARY_HOVER),
+        description: 'Hover and active states of the inverted version of the hint link text.',
+      },
+      text_large_critical_DEFAULT: {
+        value: '{semanticTokens.colors.text.critical}',
+        description: 'Text with font-size ≥20px associated with critical states and data.',
+      },
+      text_large_critical_hover_active: {
+        value: '{semanticTokens.colors.text.critical.hover.active}',
+        description: 'Hover and active states of the text with font-size ≥20px associated with critical states and data.',
+      },
+      text_large_info_DEFAULT: {
+        value: info.at(L_TEXT_SECONDARY),
+        description: 'Link text with font-size ≥20px.',
+      },
+      text_large_info_hover_active: {
+        value: info.at(L_TEXT_SECONDARY_HOVER),
+        description: 'Hover and active states of the link text with font-size ≥20px.',
+      },
+      text_large_secondary: {
+        value: '{semanticTokens.colors.text.secondary}',
+        description: 'Secondary text. Use with font-size ≥20px.',
+      },
+      text_large_success_DEFAULT: {
+        value: '{semanticTokens.colors.text.success}',
+        description: 'Text with font-size ≥20px associated with success states and data.',
+      },
+      text_large_success_hover_active: {
+        value: '{semanticTokens.colors.text.success.hover.active}',
+        description: 'Hover and active states of the text with font-size ≥20px associated with success states and data.',
+      },
+      text_link_DEFAULT: {
+        value: link.at(L_TEXT_SECONDARY),
+        description: 'Default interactive link color for unfollowed links.',
+      },
+      text_link_hover_active: {
+        value: link.at(L_TEXT_SECONDARY_HOVER),
+        description: 'Hover and active states for the link text.',
+      },
+      text_link_invert_DEFAULT: {
+        value: link.at(L_INV_TEXT_SECONDARY),
+        description: 'Inverted version of the link text. Use on dark background only.',
+      },
+      text_link_invert_hover: {
+        value: link.at(L_INV_TEXT_SECONDARY_HOVER),
+        description: 'Hover and active states of the inverted version of the link text. Use on dark background only.',
+      },
+      text_link_visited: {
+        value: violet.at(L_TEXT_SECONDARY),
+        description: 'Visited link state so users can tell visited destinations apart from default links.',
+      },
+      text_placeholder: {
+        value: neutral.opaqueAt(L_TEXT_PLACEHOLDER),
+        description: 'Placeholder text color for inputs and fields.',
+      },
+      text_primary_DEFAULT: {
+        value: neutral.opaqueAt(L_TEXT_PRIMARY),
+        description: 'Default body and UI copy; strongest reading emphasis for primary content.',
+      },
+      text_primary_invert: {
+        value: neutral.opaqueInvAt(L_INV_TEXT_PRIMARY),
+        description: 'Inverted version of the primary text.',
+      },
+      text_secondary_DEFAULT: {
+        value: neutral.opaqueAt(L_TEXT_SECONDARY),
+        description: 'Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.',
+      },
+      text_secondary_invert: {
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
+        description: 'Inverted version of the secondary text.',
+      },
+      text_success_DEFAULT: {
+        value: success.at(L_TEXT_SECONDARY),
+        description: 'Text associated with success states and data.',
+      },
+      text_success_hover_active: {
+        value: success.at(L_TEXT_SECONDARY_HOVER),
+        description: 'Hover and active states for the text associated with success states and data.',
+      },
+      tooltip_bg_default: {
+        value: neutral.at(L_BG_PRIMARY),
+        description: 'Default Tooltip background.',
+      },
+      tooltip_bg_invert: {
+        value: neutral.at(L_INV_BG_PRIMARY),
+        description: 'Inverted version of the default Tooltip background.',
+      },
+      tooltip_bg_warning: {
+        value: error.at(L_BG_LIGHT),
+        description: 'Warning Tooltip background.',
+      },
+      tooltip_border_invert: {
+        value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
+        description: 'Border of the Tooltip with dark theme.',
+      },
+      tooltip_text: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Text color of the default Tooltip.',
+      },
+      tooltip_text_invert: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Text color of the inverted Tooltip.',
       },
       wizard_bg: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
@@ -1649,13 +1793,13 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.control_primary_advertising_DEFAULT}',
         description: 'Background of the control in the Wizard sidebar in its normal state.',
       },
-      wizard_sidebar_control_hover: {
-        value: '{semanticTokens.colors.control_primary_advertising_hover}',
-        description: 'Hover state of the control in the Wizard sidebar.',
-      },
       wizard_sidebar_control_active: {
         value: '{semanticTokens.colors.control_primary_advertising_active}',
         description: 'Active state of the control in the Wizard sidebar.',
+      },
+      wizard_sidebar_control_hover: {
+        value: '{semanticTokens.colors.control_primary_advertising_hover}',
+        description: 'Hover state of the control in the Wizard sidebar.',
       },
       wizard_sidebar_text_primary: {
         value: '{semanticTokens.colors.text_primary_invert}',
@@ -1664,166 +1808,6 @@ export const theme: Theme = {
       wizard_sidebar_text_secondary: {
         value: '{semanticTokens.colors.text_secondary_invert}',
         description: 'Secondary text color in the Wizard sidebar.',
-      },
-      dropdown_menu_item_selected_border: {
-        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
-        description: 'Border color of the selected item in the DropdownMenu.',
-      },
-      notice_bubble_bg_DEFAULT: {
-        value: '{semanticTokens.colors.bg_primary_invert_DEFAULT}',
-        description: 'Background of the NoticeBubble.',
-      },
-      notice_bubble_bg_critical: {
-        value: '{semanticTokens.colors.bg_primary_critical}',
-        description: 'Critical background of the NoticeBubble.',
-      },
-      tag_primary_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background of the primary Tag in its normal state.',
-      },
-      tag_primary_bg_hover: {
-        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Hover state of the primary Tag background.',
-      },
-      tag_primary_border: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Border color of the primary Tag.',
-      },
-      tag_secondary_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the secondary Tag.',
-      },
-      tag_secondary_border_invert: {
-        value: '{semanticTokens.colors.border_secondary_invert}',
-        description: 'Inverted border color of the secondary Tag.',
-      },
-      tag_additional_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background of the additional Tag in its normal state.',
-      },
-      tag_additional_hover_active: {
-        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Hover and active states of the additional Tag background.',
-      },
-      tag_additional_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the additional Tag.',
-      },
-      checkbox_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the Checkbox.',
-      },
-      checkbox_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background color of the Checkbox.',
-      },
-      checkbox_bg_selected: {
-        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
-        description: 'Background color of the checked Checkbox.',
-      },
-      checkbox_button_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the Checkbox button in its normal state.',
-      },
-      checkbox_button_border_selected: {
-        value: '{semanticTokens.colors.border_info_active}',
-        description: 'Border color of the Checkbox button in its active state.',
-      },
-      checkbox_button_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Normal state of the Checkbox button background.',
-      },
-      checkbox_button_bg_hover: {
-        value: '{semanticTokens.colors.control_secondary_info_DEFAULT}',
-        description: 'Hover state of the Checkbox button background.',
-      },
-      checkbox_button_bg_selected_DEFAULT: {
-        value: '{semanticTokens.colors.control_secondary_info_active}',
-        description: 'Selected state of the Checkbox button background.',
-      },
-      checkbox_button_bg_selected_hover: {
-        value: '{semanticTokens.colors.control_secondary_info_active}',
-        description: 'Hover for a selected state of the Checkbox button background.',
-      },
-      radio_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the Radio.',
-      },
-      radio_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background color of the Radio.',
-      },
-      radio_bg_selected: {
-        value: '{semanticTokens.colors.control_primary_info}',
-        description: 'Selected state of the Radio background.',
-      },
-      opacity_fader_primary: {
-        value: '0.32',
-        description: 'Primary opacity for content fader overlays.',
-      },
-      opacity_fader_secondary: {
-        value: '0.26',
-        description: 'Secondary opacity for content fader overlays.',
-      },
-      opacity_limit_fader_primary: {
-        value: '0.85',
-        description: 'Primary opacity for limitation fader overlays.',
-      },
-      opacity_limit_fader_secondary: {
-        value: '0.851',
-        description: 'Secondary opacity for limitation fader overlays.',
-      },
-      badge_bg_admin: {
-        value: '{baseTokens.colors.blue.400}',
-        description: 'Background color of the admin Badge.',
-      },
-      badge_bg_alpha: {
-        value: '{baseTokens.colors.red.400}',
-        description: 'Background color of the alpha Badge.',
-      },
-      badge_bg_beta: {
-        value: '{baseTokens.colors.orange.400}',
-        description: 'Background color of the beta Badge.',
-      },
-      badge_bg_new: {
-        value: '{baseTokens.colors.green.400}',
-        description: 'Background color of the new Badge.',
-      },
-      badge_bg_soon: {
-        value: '{baseTokens.colors.gray.400}',
-        description: 'Background color of the soon Badge.',
-      },
-      badge_bg_unavailable: {
-        value: '{baseTokens.colors.gray.100}',
-        description: 'Background color of the unavailable Badge.',
-      },
-      badge_bg_invert: {
-        value: '{baseTokens.colors.gray.white}',
-        description: 'Background color of the inverted Badge.',
-      },
-      badge_text_primary_DEFAULT: {
-        value: '{semanticTokens.colors.text_primary_DEFAULT}',
-        description: 'Primary text color for Badge.',
-      },
-      badge_text_secondary: {
-        value: '{semanticTokens.colors.text_secondary_DEFAULT}',
-        description: 'Secondary text color for Badge.',
-      },
-      badge_text_primary_invert: {
-        value: '{semanticTokens.colors.text_primary_invert}',
-        description: 'Inverted primary text color for Badge.',
-      },
-      feature_popover_text_DEFAULT: {
-        value: '{semanticTokens.colors.text_primary_DEFAULT}',
-        description: 'Text color of the FeaturePopover.',
-      },
-      feature_popover_dot_DEFAULT: {
-        value: '{semanticTokens.colors.bg_primary_highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_text_invert: {
-        value: '{semanticTokens.colors.text_primary_invert}',
-        description: 'Inverted text color of the FeaturePopover.',
       },
     },
     opacity: {
@@ -1907,21 +1891,25 @@ export const theme: Theme = {
         value: `${RADII.medium}px`,
         description: 'Use for rounding Checkbox.',
       },
+      'control': {
+        value: `${RADII.medium}px`,
+        description: 'Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.',
+      },
       'counter': {
         value: `${RADII.large}px`,
         description: 'Rounding for counter/numeric capsules used as small indicators.',
       },
-      'tag': {
-        value: `${RADII['extra-large']}px`,
-        description: 'Corner radius for Tag (including removable tags) in dense UI.',
+      'modal': {
+        value: `${RADII.large + 2}px`,
+        description: 'Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard).',
       },
-      'switch': {
-        value: `${RADII['extra-large']}px`,
-        description: 'Pill-shaped rounding for Switch geometry (full rounded track/thumb pattern).',
-      },
-      'control': {
+      'pills': {
         value: `${RADII.medium}px`,
-        description: 'Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.',
+        description: 'Use for rounding Pills.',
+      },
+      'popper': {
+        value: `${RADII.medium}px`,
+        description: 'Use for rounding all kinds of poppers and dropdowns.',
       },
       'progress-bar': {
         value: `${RADII.medium}px`,
@@ -1931,17 +1919,13 @@ export const theme: Theme = {
         value: `${RADII.medium + 2}px`,
         description: 'Use for rounding surfaces like Card, blocks, widgets, Notice, etc.',
       },
-      'popper': {
-        value: `${RADII.medium}px`,
-        description: 'Use for rounding all kinds of poppers and dropdowns.',
+      'switch': {
+        value: `${RADII['extra-large']}px`,
+        description: 'Pill-shaped rounding for Switch geometry (full rounded track/thumb pattern).',
       },
-      'modal': {
-        value: `${RADII.large + 2}px`,
-        description: 'Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard).',
-      },
-      'pills': {
-        value: `${RADII.medium}px`,
-        description: 'Use for rounding Pills.',
+      'tag': {
+        value: `${RADII['extra-large']}px`,
+        description: 'Corner radius for Tag (including removable tags) in dense UI.',
       },
     },
     durations: {
@@ -2300,19 +2284,6 @@ type SemanticColors = {
       DEFAULT: Value;
       active: Value;
     };
-    tooltip: {
-      invert: Value;
-    };
-    table: {
-      accent: Value;
-    };
-    date: {
-      picker: {
-        range: {
-          comparison: Value;
-        };
-      };
-    };
   };
   control: {
     switch: {
@@ -2326,6 +2297,47 @@ type SemanticColors = {
         };
       };
       handle: Value;
+    };
+    slider: {
+      bar: {
+        DEFAULT: Value;
+        value: Value;
+        hover: Value;
+      };
+      knob: {
+        DEFAULT: Value;
+        border: {
+          DEFAULT: Value;
+          hover: Value;
+        };
+      };
+    };
+    slider_rating: {
+      normal: Value;
+      hover: {
+        active: Value;
+      };
+    };
+    checkbox: {
+      border: Value;
+      bg: {
+        normal: Value;
+        selected: Value;
+      };
+      button: {
+        border: {
+          DEFAULT: Value;
+          selected: Value;
+        };
+        bg: {
+          normal: Value;
+          hover: Value;
+          selected: {
+            DEFAULT: Value;
+            hover: Value;
+          };
+        };
+      };
     };
     primary: {
       info: {
@@ -2520,6 +2532,11 @@ type SemanticColors = {
           };
         };
       };
+      border: {
+        range: {
+          comparison: Value;
+        };
+      };
     };
   };
   dropdown: {
@@ -2537,20 +2554,26 @@ type SemanticColors = {
   };
   feature: {
     popover: {
-      bg: {
-        DEFAULT: Value;
-        neutral: Value;
-      };
-      dot: {
-        DEFAULT: Value;
-        outer: {
-          border: Value;
-        };
-        neutral: {
-          DEFAULT: Value;
+      accent: {
+        bg: Value;
+        dot: {
           outer: {
             border: Value;
           };
+        };
+      };
+      neutral: {
+        bg: Value;
+        dot: {
+          outer: {
+            border: Value;
+          };
+        };
+      };
+      dot: {
+        DEFAULT: Value;
+        neutral: {
+          DEFAULT: Value;
         };
       };
       text: {
@@ -2585,6 +2608,9 @@ type SemanticColors = {
     };
   };
   table: {
+    border: {
+      accent: Value;
+    };
     th: {
       primary: {
         cell: {
@@ -2669,11 +2695,16 @@ type SemanticColors = {
     };
   };
   tooltip: {
-    default: Value;
-    warning: Value;
-    invert: Value;
+    bg: {
+      default: Value;
+      warning: Value;
+      invert: Value;
+    };
     text: Value;
     text_invert: Value;
+    border: {
+      invert: Value;
+    };
   };
   neighbor: {
     location: {
@@ -2928,27 +2959,6 @@ type SemanticColors = {
       secondary: Value;
     };
   };
-  checkbox: {
-    border: Value;
-    bg: {
-      normal: Value;
-      selected: Value;
-    };
-    button: {
-      border: {
-        DEFAULT: Value;
-        selected: Value;
-      };
-      bg: {
-        normal: Value;
-        hover: Value;
-        selected: {
-          DEFAULT: Value;
-          hover: Value;
-        };
-      };
-    };
-  };
   dot: {
     notification: {
       bg: Value;
@@ -2959,16 +2969,6 @@ type SemanticColors = {
     bg: {
       DEFAULT: Value;
       critical: Value;
-    };
-  };
-  opacity: {
-    fader: {
-      primary: Value;
-      secondary: Value;
-    };
-    limit_fader: {
-      primary: Value;
-      secondary: Value;
     };
   };
   pills: {
@@ -3014,26 +3014,6 @@ type SemanticColors = {
       text: {
         primary: Value;
         secondary: Value;
-      };
-    };
-  };
-  slider: {
-    rating: {
-      normal: Value;
-      hover: {
-        active: Value;
-      };
-    };
-    bar: {
-      DEFAULT: Value;
-      value: Value;
-      hover: Value;
-    };
-    knob: {
-      DEFAULT: Value;
-      border: {
-        DEFAULT: Value;
-        hover: Value;
       };
     };
   };

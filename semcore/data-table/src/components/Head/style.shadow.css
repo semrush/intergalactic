@@ -130,7 +130,7 @@ SColumn[use='primary'] {
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
-  border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.137 0.026 175.7 / 0.161));
+  border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.137 0.026 175.7 / 0.161));
   background-color: var(--intergalactic-table-th-secondary-cell, oklch(1 0 0));
 
   SSortWrapper::before {

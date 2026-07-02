@@ -8,7 +8,7 @@ const Demo = () => (
     <Tooltip.Trigger tag={ButtonLink}>Colored tooltip</Tooltip.Trigger>
     <Tooltip.Popper
       arrowBgColor='bg-primary-advertising'
-      arrowShadowColor='border-tooltip-invert'
+      arrowShadowColor='tooltip-border-invert'
       p={0}
     >
       <Box
@@ -16,7 +16,7 @@ const Demo = () => (
           background: 'var(--intergalactic-bg-primary-advertising)',
           color: 'var(--intergalactic-text-primary-invert)',
           borderRadius: 'var(--intergalactic-popper-rounded)',
-          borderColor: 'var(--intergalactic-border-tooltip-invert)',
+          borderColor: 'var(--intergalactic-tooltip-border-invert)',
         }}
         p={3}
       >

@@ -57,7 +57,7 @@ SDropdownPopper {
 
   SDropdownItem[selected]:not(SDropdownItem[isMenuItemCheckbox]) {
     background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.525 0.265 263 / 0.077));
-    box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)) inset; /* change to --intergalactic-dropdown-menu-item-selected-border */
+    box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)) inset; /* TODO: --intergalactic-dropdown-menu-item-selected-border */
 
     &:hover {
       background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.52 0.268 263.2 / 0.191));

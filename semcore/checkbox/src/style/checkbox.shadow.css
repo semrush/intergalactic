@@ -44,9 +44,9 @@ SCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* change to --intergalactic-checkbox-bg */
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-checkbox-bg */
     border: 1px solid;
-    border-radius: var(--intergalactic-addon-rounded, 4px); /* change to --intergalactic-checkbox-rounded */
+    border-radius: var(--intergalactic-addon-rounded, 4px); /* TODO: --intergalactic-checkbox-rounded */
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
     outline-color: transparent;
   }
@@ -64,11 +64,11 @@ SCheckbox {
   }
 
   &[state='normal']:before {
-    border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* change to --intergalactic-checkbox-border */
+    border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-checkbox-border */
   }
 
   &[state='normal']:focus-visible:before {
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* change to ...? do we need this? checkbox get focus outline from Box and these color is rewritten */
+    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: ...? do we need this? checkbox get focus outline from Box and these color is rewritten */
   }
 }
 
@@ -106,19 +106,19 @@ SText[size='m'] {
 
 SControl[checked]~SCheckbox[state='normal']:before,
 SControl[checked]~SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
 }
 
 SControl[indeterminate]~SCheckbox[state='normal']:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* change to --intergalactic-checkbox-bg-selected */
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
 }
 
 SCheckbox[state='invalid'],
 SControl[checked]~SCheckbox[state='invalid'] {
   &:before {
-    border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23)); /* change to ...? not sure if we need to add special vars for invalid checkbox */
+    border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23)); /* TODO: ...? not sure if we need to add special vars for invalid checkbox */
   }
 }
 
@@ -139,13 +139,13 @@ SControl[disabled] ~ SCheckbox[state='invalid'] > SInvalidPattern {
 
 SControl[checked]~SCheckbox {
   &[state='invalid']:before {
-    background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* change to ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
-    border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* change to ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
+    background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
+    border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
   }
 }
 
 SControl[indeterminate]~SCheckbox:after {
-  background-color: #ffffff; /* change to --gray-white? */
+  background-color: #ffffff; /* TODO: --gray-white? */
   margin: auto;
   /* disable-tokens-validator */
   border-radius: 1px;
@@ -162,8 +162,8 @@ SControl[indeterminate]~SCheckbox[size='m']:after {
 }
 
 SControl[indeterminate]~SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* change to ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
-  border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* change to ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
+  background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
+  border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
 }
 
 SCheckbox[checked][theme][state='normal']:before {
