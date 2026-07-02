@@ -2049,6 +2049,28 @@ export const theme: Theme = {
     },
     table: { td: { cell: { actions: { accordion: { value: '{semanticTokens.colors.table_td_cell_accordion}' } } } } },
     keyboard: { focus: { outline: { invert: { value: '{semanticTokens.colors.keyboard_focus_invert_outline}' } } } },
+    border: {
+      tooltip: { invert: { value: '{semanticTokens.colors.tooltip_border_invert}' } },
+      table: { accent: { value: '{semanticTokens.colors.table_border_accent}' } },
+      date: { picker: { range: { comparison: { value: '{semanticTokens.colors.date_picker_border_range_comparison}' } } } },
+    },
+    tooltip: {
+      default: { value: '{semanticTokens.colors.tooltip_bg_default}' },
+      invert: { value: '{semanticTokens.colors.tooltip_bg_invert}' },
+      warning: { value: '{semanticTokens.colors.tooltip_bg_warning}' },
+    },
+    feature: {
+      popover: {
+        bg: {
+          DEFAULT: { value: '{semanticTokens.colors.feature_popover_accent_bg}' },
+          neutral: { value: '{semanticTokens.colors.feature_popover_neutral_bg}' },
+        },
+        dot: {
+          outer: { border: { value: '{semanticTokens.colors.feature_popover_accent_dot_outer_border}' } },
+          neutral: { outer: { border: { value: '{semanticTokens.colors.feature_popover_neutral_dot_outer_border}' } } },
+        },
+      },
+    },
   },
 };
 
@@ -3090,6 +3112,25 @@ type Deprecates = {
   blue: { 400: Value; 500: Value };
   table: { td: { cell: { actions: { accordion: Value } } } };
   keyboard: { focus: { outline: { invert: Value } } };
+  border: {
+    tooltip: { invert: Value };
+    table: { accent: Value };
+    date: { picker: { range: { comparison: Value } } };
+  };
+  tooltip: {
+    default: Value;
+    invert: Value;
+    warning: Value;
+  };
+  feature: {
+    popover: {
+      bg: { DEFAULT: Value; neutral: Value };
+      dot: {
+        outer: { border: Value };
+        neutral: { outer: { border: Value } };
+      };
+    };
+  };
 };
 
 export type BasicColorKeys = `${keyof BaseTokens['colors']}-${Lightness}`;
