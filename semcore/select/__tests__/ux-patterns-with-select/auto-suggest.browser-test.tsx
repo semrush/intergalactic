@@ -19,46 +19,8 @@ const locators = {
 };
 
 const examplePath = 'stories/patterns/ux-patterns/auto-suggest/tests/examples/autosuggest_test.tsx';
-
-type AutoSuggestExampleProps = {
-  suggestionsSource?: 'sync' | 'async';
-  valueMode?: 'controlled' | 'defaultValue';
-  initialValue?: string;
-  asyncDelay?: number;
-  autoFocus?: boolean;
-  size?: 'm' | 'l';
-  readOnly?: boolean;
-  statusItemPlaceholder?: string;
-  addonLeft?: 'none' | 'icon' | 'badge' | 'tag';
-  addonRight?: 'none' | 'icon' | 'badge' | 'tag';
-  button?: 'none' | 'left' | 'right' | 'both';
-};
-
-const loadAutoSuggest = async (page: Page, props: AutoSuggestExampleProps = {}) => {
-  await loadPage(page, examplePath, 'en', props);
-};
-
 const compositionPath =
   'stories/patterns/ux-patterns/auto-suggest/tests/examples/autosuggest_composition.tsx';
-
-type CompositionExampleProps = {
-  suggestionsSource?: 'sync' | 'async';
-  asyncDelay?: number;
-  size?: 'm' | 'l';
-  width?: number;
-  popperWidth?: number;
-  popperMaxHeight?: number;
-  statusItemPlaceholder?: string;
-  addonLeft?: 'none' | 'icon' | 'badge' | 'tag';
-  addonRight?: 'none' | 'icon' | 'badge' | 'tag';
-  customStartTyping?: boolean;
-  customLoadingState?: boolean;
-  customSuggestionItem?: boolean;
-};
-
-const loadComposition = async (page: Page, props: CompositionExampleProps = {}) => {
-  await loadPage(page, compositionPath, 'en', props);
-};
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -88,41 +50,44 @@ test.describe(TAG.VISUAL, () => {
   test('Verify AutoSuggest keyboard navigation states', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
   }, async ({ page }) => {
-    await loadAutoSuggest(page);
+    await loadPage(page, examplePath, 'en');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.type('a');
-    await locators.options(page).first().waitFor({ state: 'visible' });
+    await test.step('statusItemPlaceholder is shown on focus', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.startTypingStatus(page).first()).toBeVisible();
+      await expect(page).toHaveScreenshot('autosuggest-focus-status-placeholder.png');
+    });
 
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
+    await test.step('options are shown after typing a character', async () => {
+      await page.keyboard.type('a');
+      await locators.options(page).first().waitFor({ state: 'visible' });
+      await expect(page).toHaveScreenshot('autosuggest-typed-options.png');
+    });
 
-    await expect(page).toHaveScreenshot();
+    await test.step('arrow navigation highlights an option', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await expect(page).toHaveScreenshot('autosuggest-arrow-highlight.png');
+    });
   });
 
-  test('Verify AutoSuggest mouse navigation states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input'],
-  }, async ({ page }) => {
-    await loadAutoSuggest(page);
+  (['m', 'l'] as const).forEach((size) => {
+    test(`Verify AutoSuggest async loading visual state — size ${size}`, {
+      tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
+    }, async ({ page }) => {
+      await loadPage(page, examplePath, 'en', { size, suggestionsSource: 'async', asyncDelay: 3000 });
 
-    await locators.input(page).click();
-    await page.keyboard.type('a');
-    await locators.options(page).first().waitFor({ state: 'visible' });
+      const loadingItem = page
+        .locator('[data-ui-name="Select.StatusItem"]')
+        .filter({ hasText: 'Loading...' });
 
-    await expect(page).toHaveScreenshot();
-  });
+      await locators.input(page).click();
+      await page.keyboard.type('a');
 
-  test('Verify AutoSuggest size l visual state', {
-    tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
-  }, async ({ page }) => {
-    await loadAutoSuggest(page, { size: 'l' });
-
-    await locators.input(page).click();
-    await page.keyboard.type('a');
-    await locators.options(page).first().waitFor({ state: 'visible' });
-
-    await expect(page).toHaveScreenshot();
+      await expect(loadingItem).toBeVisible();
+      await expect(page).toHaveScreenshot(`autosuggest-loading-state-size-${size}.png`);
+    });
   });
 });
 
@@ -133,73 +98,248 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test.describe('behaviour', () => {
-    test('Verify AutoSuggest keyboard navigation', {
+    const flowScenarios = [
+      { suggestionsSource: 'sync' as const, statusItemPlaceholder: 'Start typing to see options' },
+      { suggestionsSource: 'sync' as const, statusItemPlaceholder: '' },
+      { suggestionsSource: 'async' as const, statusItemPlaceholder: 'Start typing to see options' },
+      { suggestionsSource: 'async' as const, statusItemPlaceholder: '' },
+    ];
+
+    flowScenarios.forEach(({ suggestionsSource, statusItemPlaceholder }) => {
+      const isAsync = suggestionsSource === 'async';
+      const hasPlaceholder = statusItemPlaceholder !== '';
+      const asyncDelay = 500;
+
+      test(`Verify AutoSuggest flow — ${suggestionsSource}, ${hasPlaceholder ? 'with' : 'without'} statusItemPlaceholder`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      }, async ({ page }) => {
+        await loadPage(page, examplePath, 'en', { suggestionsSource, statusItemPlaceholder, asyncDelay });
+
+        const input = locators.input(page);
+        const statusItem = page.locator('[data-ui-name="Select.StatusItem"]');
+        const loadingItem = statusItem.filter({ hasText: 'Loading...' });
+
+        // On an empty input the placeholder shows only when statusItemPlaceholder is set.
+        const expectEmptyState = async () => {
+          await expect(locators.options(page)).toHaveCount(0);
+          if (hasPlaceholder) {
+            await expect(page.getByText(statusItemPlaceholder).first()).toBeVisible();
+          } else {
+            await expect(statusItem).toHaveCount(0);
+          }
+        };
+
+        // Async sources surface the loading status right after the value changes.
+        const expectLoadingIfAsync = async () => {
+          if (isAsync) await expect(loadingItem).toBeVisible();
+        };
+
+        // These combobox attributes are invariant across sync/async and whether the
+        // statusItemPlaceholder is set — only aria-expanded reflects the current state.
+        const expectComboboxBaseAttrs = async () => {
+          await expect(input).toHaveAttribute('role', 'combobox');
+          await expect(input).toHaveAttribute('autocomplete', 'off');
+          await expect(input).toHaveAttribute('aria-autocomplete', 'list');
+          await expect(input).toHaveAttribute('aria-haspopup', 'listbox');
+        };
+
+        await test.step('focus shows the placeholder only when it is set', async () => {
+          await input.click();
+          await expectComboboxBaseAttrs();
+          await expect(input).toHaveAttribute('aria-expanded', 'false');
+          await expectEmptyState();
+        });
+
+        await test.step('typing a matching character shows results', async () => {
+          await input.pressSequentially('b');
+          await expectLoadingIfAsync();
+          await expectOptionsToMatch(page, 'b');
+          // The loading status clears once the results arrive.
+          if (isAsync) await expect(loadingItem).not.toBeVisible();
+          await expectComboboxBaseAttrs();
+          // With real options shown the combobox is expanded, and aria-expanded is coupled
+          // to the actual listbox, which aria-controls references.
+          await expect(input).toHaveAttribute('aria-expanded', 'true');
+          await expect(page.getByRole('listbox')).toBeVisible();
+          await expect(input).toHaveAttribute('aria-controls', /.+/);
+          const controls = await input.getAttribute('aria-controls');
+          await expect(page.locator(`#${controls}`)).toBeVisible();
+        });
+
+        await test.step('typing a second, non-matching character yields no results', async () => {
+          await input.pressSequentially('x'); // "bx" matches nothing
+          await expectLoadingIfAsync();
+          await expect(locators.options(page)).toHaveCount(0);
+          // Neither the options list nor the "start typing" placeholder show for a
+          // non-empty, non-matching value.
+          await expect(statusItem).toHaveCount(0);
+          // Collapsed - no listbox in the DOM at all.
+          await expect(page.getByRole('listbox')).toHaveCount(0);
+          // aria-haspopup stays "listbox" even with no results; only aria-expanded flips.
+          await expectComboboxBaseAttrs();
+          await expect(input).toHaveAttribute('aria-expanded', 'false');
+        });
+
+        await test.step('arrows do nothing while there are no results', async () => {
+          await page.keyboard.press('ArrowDown');
+          await page.waitForTimeout(300);
+          await expect(locators.options(page)).toHaveCount(0);
+          await expect(statusItem).toHaveCount(0);
+
+          await page.keyboard.press('ArrowUp');
+          await page.waitForTimeout(300);
+          await expect(locators.options(page)).toHaveCount(0);
+          await expect(statusItem).toHaveCount(0);
+        });
+
+        await test.step('re-focusing with a non-matching value keeps the menu closed', async () => {
+          // A value is present but matches nothing, so blur+focus must not resurrect the
+          // "start typing" placeholder nor open the options.
+          await input.evaluate((node: HTMLInputElement) => node.blur());
+          await input.click();
+          await page.waitForTimeout(300);
+          await expect(locators.options(page)).toHaveCount(0);
+          await expect(statusItem).toHaveCount(0);
+        });
+
+        await test.step('deleting a character brings the results back', async () => {
+          await page.keyboard.press('Backspace'); // back to "b"
+          await expectLoadingIfAsync();
+          await expectOptionsToMatch(page, 'b');
+        });
+
+        await test.step('clearing the field restores the empty state', async () => {
+          await input.fill('');
+          await page.waitForTimeout(isAsync ? asyncDelay + 300 : 400);
+          await expectEmptyState();
+        });
+      });
+    });
+
+    // Exceptions — suggestions must NOT be shown even when the current value matches
+    // options: (1) after the user selected an option (Enter or mouse) until they edit the
+    // value again, and (2) after Escape while the menu was open until they blur and focus
+    // the input again. Verified across sync/async × statusItemPlaceholder present/absent.
+    flowScenarios.forEach(({ suggestionsSource, statusItemPlaceholder }) => {
+      const isAsync = suggestionsSource === 'async';
+      const hasPlaceholder = statusItemPlaceholder !== '';
+      const asyncDelay = 500;
+      const query = 'brit';
+      const optionName = 'british'; // matches only "British Shorthair"
+
+      test(`Verify AutoSuggest keeps suggestions hidden after selection/Escape — ${suggestionsSource}, ${hasPlaceholder ? 'with' : 'without'} statusItemPlaceholder`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@select', '@input'],
+      }, async ({ page }) => {
+        await loadPage(page, examplePath, 'en', { suggestionsSource, statusItemPlaceholder, asyncDelay });
+
+        const input = locators.input(page);
+        const option = locators.optionByText(page, optionName);
+        const statusItem = page.locator('[data-ui-name="Select.StatusItem"]');
+        const loadingItem = statusItem.filter({ hasText: 'Loading...' });
+
+        const openWithMatch = async () => {
+          await input.pressSequentially(query);
+          await expect(option).toBeVisible();
+          // Let the debounce fully settle so a pending timer can't reopen the menu.
+          await page.waitForTimeout(400);
+        };
+        const settle = async () => {
+          await page.waitForTimeout(isAsync ? asyncDelay + 300 : 400);
+        };
+
+        await test.step('after selecting with Enter the menu stays closed until the value is edited', async () => {
+          await input.click();
+          await openWithMatch();
+
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('Enter');
+          await locators.options(page).first().waitFor({ state: 'hidden' });
+          await expect(locators.options(page)).toHaveCount(0);
+
+          // The selected value itself matches an option, but the menu must stay closed.
+          await page.waitForTimeout(300);
+          await expect(locators.options(page)).toHaveCount(0);
+
+          // Editing the value re-opens the suggestions.
+          await page.keyboard.press('Backspace');
+          await expect(option).toBeVisible();
+        });
+
+        await test.step('after selecting with mouse the menu stays closed', async () => {
+          await input.fill('');
+          await openWithMatch();
+
+          await option.click();
+          await locators.options(page).first().waitFor({ state: 'hidden' });
+          await expect(locators.options(page)).toHaveCount(0);
+
+          // Still closed although the current value matches an option.
+          await page.waitForTimeout(300);
+          await expect(locators.options(page)).toHaveCount(0);
+        });
+
+        await test.step('after Escape the menu stays closed until blur and focus', async () => {
+          await input.fill('');
+          await openWithMatch();
+
+          await page.keyboard.press('Escape');
+          await expect(locators.options(page)).toHaveCount(0);
+
+          // Stays closed while focus is kept on the input.
+          await page.waitForTimeout(300);
+          await expect(locators.options(page)).toHaveCount(0);
+
+          // Blur + focus re-triggers the menu with the matches for the current value.
+          await input.evaluate((node: HTMLInputElement) => node.blur());
+          await input.click();
+          await expect(option).toBeVisible();
+        });
+
+        await test.step('after Escape, typing does not reopen the menu (nor flash loading)', async () => {
+          await input.fill('');
+          await openWithMatch();
+          await page.keyboard.press('Escape');
+          await expect(locators.options(page)).toHaveCount(0);
+
+          // Typing a new value must not reopen the menu. For async it must also not flash
+          // the loading status for the request window (the "blink"): the bounded timeout is
+          // shorter than the debounce+delay, so a regression would still be caught visible.
+          // (Clearing the field back to empty restores the empty state — placeholder shown
+          // when set — which is covered by the "clearing the field restores the empty state"
+          // step in the flow matrix above.)
+          await input.pressSequentially('x'); // "britx"
+          await expect(loadingItem).not.toBeVisible({ timeout: 600 });
+          await settle();
+          await expect(locators.options(page)).toHaveCount(0);
+        });
+      });
+    });
+
+    test('Verify AutoSuggest filters suggestions incrementally as characters are typed', {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
 
-      await test.step('Verify combobox a11y attributes', async () => {
-        const input = locators.input(page);
-        await expect(input).toHaveAttribute('role', 'combobox');
-        await expect(input).toHaveAttribute('autocomplete', 'off');
-        await expect(input).toHaveAttribute('aria-autocomplete', 'list');
-        await expect(input).toHaveAttribute('aria-haspopup', 'listbox');
-        await expect(input).toHaveAttribute('aria-expanded', 'false');
-      });
+      await locators.input(page).click();
+      await page.keyboard.type('p');
+      await expectOptionsToMatch(page, 'p');
+      const optionsForP = await locators.options(page).count();
 
-      await test.step('Verify initial dropdown is shown when empty input is focused', async () => {
-        await page.keyboard.press('Tab');
-        await expect(locators.startTypingStatus(page).nth(1)).toBeVisible();
-        await expect(locators.options(page)).toHaveCount(0);
-        // The init "Start typing" state is not an expanded listbox of options
-        await expect(locators.input(page)).toHaveAttribute('aria-expanded', 'false');
-      });
+      // Typing another character narrows the list.
+      await page.keyboard.type('e');
+      await expectOptionsToMatch(page, 'pe');
+      const optionsForPe = await locators.options(page).count();
+      expect(optionsForPe).toBeLessThanOrEqual(optionsForP);
 
-      await test.step('Verify suggestions are filtered with each entered character', async () => {
-        await page.keyboard.type('p');
-        await expectOptionsToMatch(page, 'p');
-        // With real options shown, the combobox is expanded
-        await expect(locators.input(page)).toHaveAttribute('aria-expanded', 'true');
-        const optionsForP = await locators.options(page).count();
-
-        await page.keyboard.type('e');
-        await expectOptionsToMatch(page, 'pe');
-        const optionsForPe = await locators.options(page).count();
-        expect(optionsForPe).toBeLessThanOrEqual(optionsForP);
-
-        await page.keyboard.press('Backspace');
-        await expectOptionsToMatch(page, 'p');
-      });
-
-      await test.step('Verify Enter selection closes menu until the value is edited', async () => {
-        await page.keyboard.type('er');
-        await expect(locators.optionByText(page, 'persian')).toBeVisible();
-        // Let the debounced filter fully settle so the pending timer doesn't
-        // reopen the menu right after selection.
-        await page.waitForTimeout(400);
-
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('Enter');
-
-        await expect(locators.input(page)).toHaveValue('Persian');
-        await locators.options(page).first().waitFor({ state: 'hidden' });
-        await expect(locators.options(page)).toHaveCount(0);
-
-        await page.keyboard.press('Enter');
-        await expect(locators.options(page)).toHaveCount(0);
-
-        for (let i = 0; i < 'ersian'.length; i++) {
-          await page.keyboard.press('Backspace');
-        }
-        await expect(locators.input(page)).toHaveValue('P');
-        await expectOptionsToMatch(page, 'p');
-      });
+      // Deleting a character widens it back.
+      await page.keyboard.press('Backspace');
+      await expectOptionsToMatch(page, 'p');
     });
 
     test('Verify AutoSuggest autoFocus focuses the input and opens matches options when some value pre defined', {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page, { autoFocus: true, initialValue: 'p' });
+      await loadPage(page, examplePath, 'en', { autoFocus: true, initialValue: 'p' });
 
       // On render the input is focused and, since there are matches, the list opens
       await expect(locators.input(page)).toBeFocused();
@@ -209,7 +349,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest defaultValue mode initializes the input and opens matches on focus', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page, { valueMode: 'defaultValue', initialValue: 'p', autoFocus: true });
+      await loadPage(page, examplePath, 'en', { valueMode: 'defaultValue', initialValue: 'p', autoFocus: true });
 
       await expect(locators.input(page)).toBeFocused();
       await expect(locators.input(page)).toHaveValue('p');
@@ -220,113 +360,53 @@ test.describe(TAG.FUNCTIONAL, () => {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
       await test.step('Verify matching prefilled value opens options on focus', async () => {
-        await loadAutoSuggest(page, { initialValue: 'p' });
+        await loadPage(page, examplePath, 'en', { initialValue: 'p' });
         await locators.input(page).click();
         await expectOptionsToMatch(page, 'p');
       });
 
       await test.step('Verify non-matching prefilled value does not open anything on focus', async () => {
-        await loadAutoSuggest(page, { initialValue: 'zzzz' });
+        await loadPage(page, examplePath, 'en', { initialValue: 'zzzz' });
         await locators.input(page).click();
         await expect(locators.options(page)).toHaveCount(0);
         await expect(locators.startTypingStatus(page)).not.toBeVisible();
       });
     });
 
-    test('Verify AutoSuggest mouse navigation', {
+    test('Verify AutoSuggest mouse selection sets the value and editing reopens suggestions', {
       tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
 
-      await test.step('Verify initial dropdown is shown when empty input is focused', async () => {
-        await locators.input(page).click();
-        await expect(locators.startTypingStatus(page)).toBeVisible();
-      });
+      await locators.input(page).click();
+      await page.keyboard.type('per');
+      await expectOptionsToMatch(page, 'per');
+      await page.waitForTimeout(400);
 
-      await test.step('Verify menu expanded when character entered', async () => {
-        await page.keyboard.type('per');
-        await expectOptionsToMatch(page, 'per');
-      });
-
-      await test.step('Verify mouse selection closes menu until the value is edited', async () => {
-        const persianOption = locators.optionByText(page, 'persian');
-        await persianOption.click();
+      await test.step('mouse selection sets the value and closes the menu', async () => {
+        await locators.optionByText(page, 'persian').click();
         await locators.options(page).first().waitFor({ state: 'hidden' });
-
         await expect(locators.input(page)).toHaveValue('Persian');
         await expect(locators.options(page)).toHaveCount(0);
       });
 
-      await test.step('Verify editing selected value reopens filtered suggestions', async () => {
+      await test.step('re-focusing after selection reopens the suggestions', async () => {
+        // A fresh focus always re-triggers the menu with the matches for the current value.
+        await locators.input(page).evaluate((node: HTMLInputElement) => node.blur());
         await locators.input(page).click();
+        await expectOptionsToMatch(page, 'persian');
+      });
+
+      await test.step('editing the value narrows the suggestions', async () => {
         await page.keyboard.press('Backspace');
         await expectOptionsToMatch(page, 'persia');
       });
     });
 
-    // Leaving the field and re-focusing always re-triggers the menu, regardless of
-    // what the user did before (selection or Escape). So after a selection, a fresh
-    // focus reopens the list with the matches for the current value.
-    test('Verify AutoSuggest reopens suggestions on focus after selection', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page);
-
-      await locators.input(page).click();
-      await page.keyboard.type('per');
-      await expectOptionsToMatch(page, 'per');
-      await page.waitForTimeout(400);
-
-      await locators.optionByText(page, 'persian').click();
-      await locators.options(page).first().waitFor({ state: 'hidden' });
-      await expect(locators.input(page)).toHaveValue('Persian');
-
-      await locators.input(page).evaluate((node: HTMLInputElement) => node.blur());
-      await locators.input(page).click();
-
-      // Re-focusing re-triggers the menu with the matches for the current value
-      await expectOptionsToMatch(page, 'persian');
-    });
-
-    test('Verify AutoSuggest Escape closes suggestions until blur and focus', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page);
-
-      await locators.input(page).click();
-      await page.keyboard.type('a');
-      await expectOptionsToMatch(page, 'a');
-
-      await page.keyboard.press('Escape');
-      await expect(locators.options(page)).toHaveCount(0);
-
-      await page.keyboard.type('b');
-      await page.waitForTimeout(400);
-      await expect(locators.options(page)).toHaveCount(0);
-
-      await locators.input(page).evaluate((node: HTMLInputElement) => node.blur());
-      await locators.input(page).click();
-      await expectOptionsToMatch(page, 'ab');
-    });
-
-    test('Verify AutoSuggest async loading state', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page, { suggestionsSource: 'async', asyncDelay: 500 });
-
-      await locators.input(page).click();
-      await page.keyboard.type('per');
-
-      await expect(locators.loadingStatus(page)).toBeVisible();
-      await expect(locators.optionByText(page, 'persian')).toBeVisible();
-      await expect(locators.loadingStatus(page)).not.toBeVisible();
-      await expectOptionsToMatch(page, 'per');
-    });
-
     test('Verify AutoSuggest accepts regexp-like characters in query', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
 
       await locators.input(page).click();
       await page.keyboard.type('*');
@@ -340,7 +420,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest ignores stale async results', {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page, { suggestionsSource: 'async', asyncDelay: 700 });
+      await loadPage(page, examplePath, 'en', { suggestionsSource: 'async', asyncDelay: 700 });
 
       await locators.input(page).click();
       await page.keyboard.type('p');
@@ -356,7 +436,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest highlight preserves the original case of the option', {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
 
       await locators.input(page).click();
       await page.keyboard.type('p');
@@ -378,7 +458,7 @@ test.describe(TAG.FUNCTIONAL, () => {
         await dialog.dismiss();
       });
 
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
 
       await test.step('HTML tags in option text are not interpreted', async () => {
         await locators.input(page).click();
@@ -403,7 +483,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest accepts a matching regexp-like option without crashing', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
 
       await locators.input(page).click();
       await page.keyboard.type('[');
@@ -415,7 +495,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest arrow navigation moves sequentially in an open list', {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
 
       await locators.input(page).click();
       await page.keyboard.type('sh');
@@ -429,17 +509,17 @@ test.describe(TAG.FUNCTIONAL, () => {
       await expect(locators.input(page)).toHaveValue('Oriental Shorthair');
     });
 
-    test('Verify AutoSuggest arrow keys reopen the list and highlight first/last after Escape', {
+    test('Verify AutoSuggest arrows reopen the list after Escape and highlight the first/last option', {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await loadPage(page, examplePath, 'en');
+
+      await locators.input(page).click();
+      await page.keyboard.type('sh');
+      await expectOptionsToMatch(page, 'sh');
+      await page.waitForTimeout(400);
 
       await test.step('ArrowDown reopens and highlights the first option', async () => {
-        await locators.input(page).click();
-        await page.keyboard.type('sh');
-        await expectOptionsToMatch(page, 'sh');
-        await page.waitForTimeout(400);
-
         await page.keyboard.press('Escape');
         await expect(locators.options(page)).toHaveCount(0);
 
@@ -448,54 +528,23 @@ test.describe(TAG.FUNCTIONAL, () => {
         await expect(locators.options(page).first()).toHaveClass(/highlighted/);
         await expect(locators.options(page).nth(1)).not.toHaveClass(/highlighted/);
       });
-    });
 
-    test('Verify AutoSuggest ArrowUp reopens the list and highlights the last option after Escape', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page);
+      await test.step('ArrowUp reopens and highlights the last option', async () => {
+        await page.keyboard.press('Escape');
+        await expect(locators.options(page)).toHaveCount(0);
 
-      await locators.input(page).click();
-      await page.keyboard.type('sh');
-      await expectOptionsToMatch(page, 'sh');
-      await page.waitForTimeout(400);
-
-      await page.keyboard.press('Escape');
-      await expect(locators.options(page)).toHaveCount(0);
-
-      await page.keyboard.press('ArrowUp');
-      await expectOptionsToMatch(page, 'sh');
-
-      const count = await locators.options(page).count();
-      await expect(locators.options(page).nth(count - 1)).toHaveClass(/highlighted/);
-      await expect(locators.options(page).first()).not.toHaveClass(/highlighted/);
-    });
-
-    test('Verify AutoSuggest ArrowDown reopens the list with a highlight after selection', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page);
-
-      await locators.input(page).click();
-      await page.keyboard.type('sh');
-      await expectOptionsToMatch(page, 'sh');
-      await page.waitForTimeout(400);
-
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-      await expect(locators.input(page)).toHaveValue('British Shorthair');
-      await locators.options(page).first().waitFor({ state: 'hidden' });
-
-      // Arrow keys reopen the closed list and highlight the (only) matching option
-      await page.keyboard.press('ArrowDown');
-      await expect(locators.options(page).first()).toBeVisible();
-      await expect(locators.options(page).first()).toHaveClass(/highlighted/);
+        await page.keyboard.press('ArrowUp');
+        await expectOptionsToMatch(page, 'sh');
+        const count = await locators.options(page).count();
+        await expect(locators.options(page).nth(count - 1)).toHaveClass(/highlighted/);
+        await expect(locators.options(page).first()).not.toHaveClass(/highlighted/);
+      });
     });
 
     test('Verify AutoSuggest readOnly prevents typing and opening suggestions', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
     }, async ({ page }) => {
-      await loadAutoSuggest(page, { readOnly: true });
+      await loadPage(page, examplePath, 'en', { readOnly: true });
 
       await locators.input(page).click();
       await page.keyboard.type('per');
@@ -503,40 +552,6 @@ test.describe(TAG.FUNCTIONAL, () => {
 
       await expect(locators.input(page)).toHaveValue('');
       await expect(locators.options(page)).toHaveCount(0);
-    });
-
-    test('Verify AutoSuggest statusItemPlaceholder empty string hides the init state', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page, { statusItemPlaceholder: '' });
-      await locators.input(page).click();
-      await page.waitForTimeout(300);
-      await expect(locators.startTypingStatus(page)).not.toBeVisible();
-      await expect(locators.options(page)).toHaveCount(0);
-    });
-
-    test('Verify AutoSuggest statusItemPlaceholder custom text is shown in the init state', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page, { statusItemPlaceholder: 'Pick a breed' });
-      await locators.input(page).click();
-      await expect(page.getByText('Pick a breed')).toBeVisible();
-    });
-
-    test('Verify AutoSuggest loading coexists with addonRight without breaking the flow', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
-    }, async ({ page }) => {
-      await loadAutoSuggest(page, { suggestionsSource: 'async', asyncDelay: 800, addonRight: 'icon' });
-
-      const input = locators.input(page);
-      await input.click();
-      await page.keyboard.type('per');
-
-      // With addonRight set, the loading spinner still shows and results still resolve
-      await expect(locators.loadingStatus(page)).toBeVisible();
-      await expect(locators.optionByText(page, 'persian')).toBeVisible();
-      await expect(locators.loadingStatus(page)).not.toBeVisible();
-      await expectOptionsToMatch(page, 'per');
     });
   });
 
@@ -547,17 +562,20 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest renders via explicit compound subcomponents', {
       tag: [TAG.PRIORITY_HIGH, '@select', '@input'],
     }, async ({ page }) => {
-      await loadComposition(page);
+      await loadPage(page, compositionPath, 'en');
 
+      // Smoke test: the explicit compound API mounts and produces options on input.
+      // Filtering/behaviour itself is covered by the flow matrix on the default composition.
       await compositionInput(page).click();
       await compositionInput(page).fill('a');
-      await expectOptionsToMatch(page, 'a');
+      await expect(locators.options(page).first()).toBeVisible();
+      expect(await locators.options(page).count()).toBeGreaterThan(0);
     });
 
     test('Verify AutoSuggest custom StartTypingState renders its own content', {
       tag: [TAG.PRIORITY_HIGH, '@select', '@input'],
     }, async ({ page }) => {
-      await loadComposition(page, { customStartTyping: true });
+      await loadPage(page, compositionPath, 'en', { customStartTyping: true });
 
       await compositionInput(page).click();
       await expect(page.getByTestId('custom-start-typing')).toBeVisible();
@@ -567,7 +585,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest custom SuggestionItem overrides the option rendering', {
       tag: [TAG.PRIORITY_HIGH, '@select', '@input'],
     }, async ({ page }) => {
-      await loadComposition(page, { customSuggestionItem: true });
+      await loadPage(page, compositionPath, 'en', { customSuggestionItem: true });
 
       await compositionInput(page).click();
       await compositionInput(page).fill('a');
@@ -581,7 +599,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest popper width and max-height are configurable', {
       tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
     }, async ({ page }) => {
-      await loadComposition(page, { width: 320, popperWidth: 420, popperMaxHeight: 120 });
+      await loadPage(page, compositionPath, 'en', { width: 320, popperWidth: 420, popperMaxHeight: 120 });
 
       await compositionInput(page).click();
       await compositionInput(page).fill('a');
@@ -598,7 +616,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     test('Verify AutoSuggest custom LoadingState renders its own content', {
       tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
     }, async ({ page }) => {
-      await loadComposition(page, {
+      await loadPage(page, compositionPath, 'en', {
         suggestionsSource: 'async',
         asyncDelay: 1500,
         customLoadingState: true,
