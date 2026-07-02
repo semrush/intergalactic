@@ -3,28 +3,7 @@ import { AutoSuggest } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const suggestions = [
-  'persian',
-  'maine coon',
-  'ragdoll',
-  'sphynx',
-  'siamese',
-  'bengal',
-  'british shorthair',
-  'abyssinian',
-  'birman',
-  'oriental shorthair',
-  'scottish fold',
-  'devon rex',
-  'norwegian forest',
-  'siberian',
-  'russian blue',
-  'savannah',
-  'american shorthair',
-  'exotic shorthair',
-  'ragamuffin',
-  'balinese',
-];
+import { suggestions } from './autosuggest_sync_example.tsx';
 
 const fakeFetch = async (query: string, signal: AbortSignal): Promise<string[]> => {
   if (!query) return [];
@@ -49,8 +28,7 @@ const fakeFetch = async (query: string, signal: AbortSignal): Promise<string[]> 
 };
 
 const Demo = () => {
-  const [query1, setQuery1] = React.useState('');
-  const [query2, setQuery2] = React.useState('');
+  const [query, setQuery] = React.useState('');
 
   return (
     <Box>
@@ -59,23 +37,10 @@ const Demo = () => {
       </Text>
       <Box mt={2} w={300}>
         <AutoSuggest
-          value={query1}
+          value={query}
           id='async-autosuggest'
-          onChange={setQuery1}
+          onChange={setQuery}
           suggestions={fakeFetch}
-        />
-      </Box>
-      <br />
-      <Text tag='label' size={200} htmlFor='sync-autosuggest'>
-        SYNC Your pet breed
-      </Text>
-      <Box mt={2} w={300}>
-        <AutoSuggest
-          value={query2}
-          id='sync-autosuggest'
-          onChange={setQuery2}
-          suggestions={suggestions}
-          statusItemPlaceholder=''
         />
       </Box>
     </Box>

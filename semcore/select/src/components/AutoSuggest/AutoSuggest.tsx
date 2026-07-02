@@ -95,10 +95,9 @@ class AutoSuggestRoot extends Component<
   }
 
   get isStartTypingState() {
-    const { statusItemPlaceholder } = this.asProps;
-    const { suggestions, isVisible } = this.state;
+    const { statusItemPlaceholder, value } = this.asProps;
 
-    return isVisible && suggestions.length === 0 && statusItemPlaceholder !== '';
+    return value === '' && statusItemPlaceholder !== '';
   }
 
   get isAriaExpanded() {
@@ -111,9 +110,7 @@ class AutoSuggestRoot extends Component<
     const { value, statusItemPlaceholder } = this.asProps;
     const { isVisible, isLoading, suggestions } = this.state;
 
-    return isVisible &&
-      (value === '' || suggestions.length > 0 || isLoading || (this.changeDebounce && statusItemPlaceholder !== '')) &&
-      !(value === '' && suggestions.length === 0 && statusItemPlaceholder === '');
+    return isVisible && (suggestions.length > 0 || isLoading || this.isStartTypingState);
   }
 
   get neighborLocation(): NeighborItemProps['neighborLocation'] {
