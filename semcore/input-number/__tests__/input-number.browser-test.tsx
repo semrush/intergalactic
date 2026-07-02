@@ -227,7 +227,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
           expectedValue = 0 - decrement;
         }
 
-        if (stepPrecision) {
+        // A zero result is displayed without a fractional part, mirroring the component's getDisplayValue.
+        if (stepPrecision && expectedValue !== 0) {
           expectedValue = expectedValue.toFixed(stepPrecision);
         }
 
@@ -249,7 +250,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
           expectedValue = numericValue;
         }
 
-        if (stepPrecision) {
+        // A zero result is displayed without a fractional part, mirroring the component's getDisplayValue.
+        if (stepPrecision && expectedValue !== 0) {
           expectedValue = expectedValue.toFixed(stepPrecision);
         }
 
