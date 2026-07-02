@@ -309,6 +309,14 @@ class AutoSuggestRoot extends Component<
           highlightedIndex: filteredSuggestions.length - 1,
         });
       }
+      if (e.key === 'Enter') {
+        this.setState({
+          suggestions: filteredSuggestions,
+          highlightedIndex: -1,
+          isVisible: true,
+          openOnChanges: true,
+        });
+      }
     }
   };
 
