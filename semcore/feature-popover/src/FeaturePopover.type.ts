@@ -8,7 +8,7 @@ import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/
 import type {
   AnimationProps,
   BoxProps,
-  OutsideClickProps,
+  NSOutsideClick,
   NSPortal,
   NSPopper,
   Box,
@@ -57,7 +57,7 @@ export type FeaturePopoverContext = NSPopper.Ctx & {
   getSpotProps: PropGetterFn;
 };
 
-export type FPPopperProps = OutsideClickProps &
+export type FPPopperProps = NSOutsideClick.Props &
   NSPortal.Props &
   UniqueIDProps &
   AnimationProps & {

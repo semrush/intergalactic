@@ -1,4 +1,4 @@
-import { createComponent, type Intergalactic, type IRootComponentProps } from '@semcore/core';
+import { createComponent, type Intergalactic } from '@semcore/core';
 import { getEventTarget } from '@semcore/core/lib/utils/getEventTarget';
 import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import ownerDocument from '@semcore/core/lib/utils/ownerDocument';
@@ -6,35 +6,13 @@ import { useForkRef } from '@semcore/core/lib/utils/ref';
 import useEventCallback from '@semcore/core/lib/utils/use/useEventCallback';
 import React, { cloneElement } from 'react';
 
-export type OutsideClickProps = {
-  /**
-   * Function called on click outside the component from excludeRefs
-   * @default () => {}
-   */
-  onOutsideClick?: (e?: React.SyntheticEvent) => void;
-
-  /**
-   * List of refs that will not trigger `onOutsideClick` when clicked
-   * @default []
-   */
-  excludeRefs?: Array<React.RefObject<HTMLElement>>;
-
-  /** Root element
-   * @default document
-   *  */
-  root?: React.RefObject<HTMLElement>;
-};
-
-type OutsideClickComponent = Intergalactic.Component<
-  Intergalactic.Tag,
-  OutsideClickProps
->;
+import type { NSOutsideClick } from './OutsideClick.type';
 
 type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEventListenerObject };
 type RootEventsPair = [Element | Document, OutsideClickEvents];
 
 const noop = () => {};
-function OutsideClickRoot(props: OutsideClickProps & IRootComponentProps) {
+function OutsideClickRoot(props: Intergalactic.InternalTypings.InferComponentProps<NSOutsideClick.Component>) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
   const nodeRef = React.useRef<Node | null>(null);
@@ -121,6 +99,6 @@ OutsideClickRoot.displayName = 'OutsideClick';
 OutsideClickRoot.eventsMap = [] as RootEventsPair[];
 
 export const OutsideClick = createComponent<
-  OutsideClickComponent,
+  NSOutsideClick.Component,
   typeof OutsideClickRoot
 >(OutsideClickRoot);

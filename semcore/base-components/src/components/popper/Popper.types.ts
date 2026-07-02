@@ -12,7 +12,7 @@ import type { DOMAttributes } from 'react';
 import type { ScaleProps } from '../animation';
 import type { BoxProps } from '../flex-box';
 import type { NeighborLocationProps } from '../neighbor-location';
-import type { OutsideClickProps } from '../outside-click';
+import type { NSOutsideClick } from '../outside-click';
 import type { NSPortal } from '../portal';
 
 declare namespace NSPopper {
@@ -24,7 +24,7 @@ declare namespace NSPopper {
     trigger: [Array<keyof DOMAttributes<unknown>>, Array<keyof DOMAttributes<unknown>>];
     popper: [Array<keyof DOMAttributes<unknown>>, Array<keyof DOMAttributes<unknown>>];
   };
-  type Props = OutsideClickProps &
+  type Props = NSOutsideClick.Props &
     NSPortal.Props &
     UniqueIDProps &
     Omit<ScaleProps, 'placement' | 'preserveNode'> & {
