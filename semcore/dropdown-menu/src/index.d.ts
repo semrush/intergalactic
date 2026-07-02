@@ -1,4 +1,4 @@
-import type { Box, BoxProps, FlexProps, Flex, eventInteraction, NSScrollArea } from '@semcore/base-components';
+import type { Box, BoxProps, FlexProps, Flex, NSPopper, NSScrollArea } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type {
   DropdownContext,
@@ -160,7 +160,7 @@ declare const DropdownMenu: Intergalactic.Component<
   VirtualList: typeof VirtualList;
 
   selectedIndexContext: React.Context<number>;
-  nestedMenuInteraction: eventInteraction;
+  nestedMenuInteraction: NSPopper.EventInteraction;
 };
 
 export default DropdownMenu;

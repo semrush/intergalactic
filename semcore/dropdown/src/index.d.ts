@@ -1,15 +1,8 @@
-import type { Box, BoxProps,
-  Popper,
-  PopperContext,
-  PopperProps,
-  PopperHandlers,
-  PopperTriggerProps,
-  PopperPopperProps,
-} from '@semcore/base-components';
+import type { Box, BoxProps, NSPopper } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type React from 'react';
 
-export type DropdownProps = PopperProps & {
+export type DropdownProps = NSPopper.Props & {
   /**
    * Modifier responsible for the size of the pop-up window:
    * `fixed` - a pop-up window of the same size as trigger;
@@ -22,13 +15,13 @@ export type DropdownProps = PopperProps & {
   locale?: string;
 };
 
-export type DropdownContext = PopperContext & {
+export type DropdownContext = NSPopper.Ctx & {
   getGroupProps: PropGetterFn;
 };
 
-export type DropdownHandlers = PopperHandlers & {};
+export type DropdownHandlers = NSPopper.Handlers & {};
 
-export type DropdownTriggerProps = PopperTriggerProps;
+export type DropdownTriggerProps = NSPopper.Trigger.Props;
 
 /**
  * DropdownPopper must have an accessible name (aria-dialog-name).
@@ -40,7 +33,7 @@ export type DropdownPopperAriaProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-export type DropdownPopperProps = PopperPopperProps &
+export type DropdownPopperProps = NSPopper.Popper.Props &
   DropdownPopperAriaProps & {
     /**
      * Popper in Dropdown should have role `dialog`.
@@ -77,12 +70,12 @@ declare const Dropdown: Intergalactic.Component<
   DropdownContext,
   [handlers: DropdownHandlers]
 > & {
-  Trigger: typeof Popper.Trigger;
+  Trigger: NSPopper.Trigger.Component;
   Popper: Intergalactic.Component<
     'div',
     DropdownPopperProps,
-    PopperContext,
-    [handlers: PopperHandlers]
+    NSPopper.Ctx,
+    [handlers: NSPopper.Handlers]
   >;
   Item: Intergalactic.Component<typeof Box>;
   Group: Intergalactic.Component<'div', DropdownGroupProps>;

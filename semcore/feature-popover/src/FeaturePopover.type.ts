@@ -10,7 +10,9 @@ import type {
   BoxProps,
   OutsideClickProps,
   NSPortal,
-  Box, PopperContext, PopperPopperProps, Placement, Popper } from '@semcore/base-components';
+  NSPopper,
+  Box,
+} from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type React from 'react';
@@ -26,7 +28,7 @@ type AriaProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-export type FeaturePopoverPopperProps = PopperPopperProps & {
+export type FeaturePopoverPopperProps = NSPopper.Popper.Props & {
   /**
    * The property responsible for the visibility of the closing icon
    * @default false
@@ -51,7 +53,7 @@ export type FeaturePopoverPopperInnerProps = {
   autofocus: boolean;
 };
 
-export type FeaturePopoverContext = PopperContext & {
+export type FeaturePopoverContext = NSPopper.Ctx & {
   getSpotProps: PropGetterFn;
 };
 
@@ -106,7 +108,7 @@ export type FeaturePopoverProps = FPPopperProps & {
    * The position of the popper relative to the trigger that called it.
    * @default auto
    */
-  placement?: Placement;
+  placement?: NSPopper.Placement;
   /**
    * The theme of FeaturePopover
    * @default accent
@@ -135,7 +137,7 @@ export type FeaturePopoverSpotProps = {
 };
 
 export type FeaturePopoverComponent = Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
-  Trigger: Intergalactic.Component<typeof Popper.Trigger, FeaturePopoverTriggerProps>;
+  Trigger: Intergalactic.Component<NSPopper.Trigger.Component, FeaturePopoverTriggerProps>;
   Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
   Spot: Intergalactic.Component<typeof Box, FeaturePopoverSpotProps>;
 };

@@ -13,7 +13,7 @@ import { Popper } from '@semcore/ui/base-components';
 <Popper />;
 ```
 
-<TypesView type="PopperProps" :types={...types} />
+<TypesView type="NSPopper.Props" :types={...types} />
 
 ## Popper.Trigger
 
@@ -24,7 +24,7 @@ import { Popper } from '@semcore/ui/base-components';
 <Popper.Trigger />;
 ```
 
-<TypesView type="PopperTriggerProps" :types={...types} />
+<TypesView type="NSPopper.Trigger.Props" :types={...types} />
 
 ## Popper.Popper
 
@@ -35,6 +35,6 @@ import { Popper } from '@semcore/ui/base-components';
 <Popper.Popper />;
 ```
 
-<TypesView type="PopperPopperProps" :types={...types} />
+<TypesView type="NSPopper.Popper.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

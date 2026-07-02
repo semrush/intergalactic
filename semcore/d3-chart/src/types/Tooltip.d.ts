@@ -1,4 +1,4 @@
-import type { Popper, Box, BoxProps, PopperProps, PopperTriggerProps } from '@semcore/base-components';
+import type { Box, BoxProps, NSPopper } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
@@ -7,8 +7,8 @@ import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface ITooltipChartProps extends TooltipChartProps, UnknownProperties {}
-export type TooltipChartProps = PopperProps &
-  PopperTriggerProps &
+export type TooltipChartProps = NSPopper.Props &
+  NSPopper.Trigger.Props &
   Context & {
     /** Field name from `data` array item for the XAxis */
     x?: string;
@@ -31,8 +31,8 @@ export type TooltipChartContext = {
 };
 
 export type TooltipTypeBase = {
-  Trigger: typeof Popper.Trigger;
-  Popper: typeof Popper.Popper;
+  Trigger: NSPopper.Trigger.Component;
+  Popper: NSPopper.Popper.Component;
   Title: typeof Box;
   Dot: IntergalacticD3Component<'div', BoxProps & { color?: string }, TooltipChartContext>;
   Footer: typeof Box;

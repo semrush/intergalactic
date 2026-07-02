@@ -1,6 +1,6 @@
 import FileExport from '@semcore/icon/FileExport/m';
 import { Flex, Box } from '@semcore/ui/base-components';
-import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/base-components';
+import type { NSPopper } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
@@ -8,7 +8,13 @@ import type { FeaturePopoverPopperProps, FeaturePopoverProps } from '@semcore/ui
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleProps = FeaturePopoverProps & FeaturePopoverPopperProps & PopperProps & PopperTriggerProps & PopperPopperProps;
+type ExampleProps =
+  & FeaturePopoverProps
+  & FeaturePopoverPopperProps
+  & NSPopper.Props
+  & NSPopper.Trigger.Props
+  & NSPopper.Popper.Props;
+
 const Demo = (props: ExampleProps) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);

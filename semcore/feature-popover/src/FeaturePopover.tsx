@@ -1,4 +1,4 @@
-import type { PopperProps } from '@semcore/base-components';
+import type { NSPopper } from '@semcore/base-components';
 import { Box, Popper, Animation } from '@semcore/base-components';
 import Button from '@semcore/button';
 import type { IRootComponentProps } from '@semcore/core';
@@ -49,7 +49,7 @@ const enhance = [
 ] as const;
 
 type FeaturePopoverInternalProps = {
-  interaction?: PopperProps['interaction'];
+  interaction?: NSPopper.Props['interaction'];
 };
 
 class FeaturePopover extends Component<

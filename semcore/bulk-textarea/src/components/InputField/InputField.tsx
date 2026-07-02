@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import type { PopperContext } from '@semcore/base-components';
+import type { NSPopper } from '@semcore/base-components';
 import { Component, sstyled, Root } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -53,8 +53,8 @@ class InputField<T extends string | string[]> extends Component<
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
 
-  popper: PopperContext['popper'] | null = null;
-  setPopperTrigger: PopperContext['setTrigger'] | null = null;
+  popper: NSPopper.Ctx['popper'] | null = null;
+  setPopperTrigger: NSPopper.Ctx['setTrigger'] | null = null;
 
   errorByInteraction: 'keyboard' | 'mouse' | null = null;
 
