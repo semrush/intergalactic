@@ -1,7 +1,7 @@
 import type {
   BoxProps,
   EllipsisSettings,
-  SimpleHintPopperProps,
+  NSHint,
   Ellipsis as EllipsisInstance,
 } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
@@ -57,7 +57,7 @@ declare namespace NSText {
     hint?: boolean;
   } & {
     /** Settings for a hint with full text (cropped by ellipsis) */
-    [K in keyof SimpleHintPopperProps as `hint:${string & K}`]?: SimpleHintPopperProps[K];
+    [K in keyof NSHint.Props as `hint:${string & K}`]?: NSHint.Props[K];
   };
 
   type EllipsisProps = {

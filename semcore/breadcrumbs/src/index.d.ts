@@ -1,4 +1,4 @@
-import type { EllipsisSettings, SimpleHintPopperProps, BoxProps } from '@semcore/base-components';
+import type { EllipsisSettings, BoxProps } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 

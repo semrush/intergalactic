@@ -1,4 +1,4 @@
-import type { BoxProps, NSNeighborLocation, SimpleHintPopperProps } from '@semcore/base-components';
+import type { BoxProps, NSNeighborLocation, NSHint } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
@@ -19,7 +19,7 @@ export type ButtonProps = BoxProps &
    * Placement for hint
    * @default top
    */
-    hintPlacement?: SimpleHintPopperProps['placement'];
+    hintPlacement?: NSHint.Props['placement'];
 
     /** Button size.
    * @default `m`
