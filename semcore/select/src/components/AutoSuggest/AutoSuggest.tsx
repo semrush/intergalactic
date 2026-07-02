@@ -95,9 +95,10 @@ class AutoSuggestRoot extends Component<
   }
 
   get isStartTypingState() {
+    const { suggestions } = this.state;
     const { statusItemPlaceholder, value } = this.asProps;
 
-    return value === '' && statusItemPlaceholder !== '';
+    return value === '' && statusItemPlaceholder !== '' && suggestions.length === 0;
   }
 
   get isAriaExpanded() {
@@ -107,7 +108,6 @@ class AutoSuggestRoot extends Component<
   }
 
   get isVisiblePopper() {
-    const { value, statusItemPlaceholder } = this.asProps;
     const { isVisible, isLoading, suggestions } = this.state;
 
     return isVisible && (suggestions.length > 0 || isLoading || this.isStartTypingState);
@@ -247,7 +247,7 @@ class AutoSuggestRoot extends Component<
         return;
       }
 
-      if (!Array.isArray(suggestions)) {
+      if (!Array.isArray(suggestions) && this.state.openOnChanges) {
         this.setState({ isLoading: true, isVisible: true });
       }
 

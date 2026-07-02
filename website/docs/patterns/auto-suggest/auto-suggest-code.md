@@ -1,6 +1,6 @@
 ---
 title: AutoSuggest
-tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Examples('auto-suggest-code')
+tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), API('auto-suggest-api'), Examples('auto-suggest-code'), Changelog('auto-suggest-changelog')
 ---
 
 ## Combobox
@@ -18,12 +18,22 @@ To implement the Combobox pattern, you will need the following:
 
 :::
 
-## AutoSuggest
+## AutoSuggest with async suggestions
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
+  export Demo from 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_async_example.tsx';
+</script>
+
+:::
+
+## AutoSuggest with prepeared list of suggestions
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_sync_example.tsx';
 </script>
 
 :::
