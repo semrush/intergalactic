@@ -133,14 +133,5 @@ export type ScrollBarDefaultProps = NSScrollArea.Bar.DefaultProps;
 export type ScrollBarContext = NSScrollArea.Bar.Ctx;
 /** @deprecated It will be removed in v18. */
 export type ScrollAreaContainerProps = NSScrollArea.Container.Props;
-/** @deprecated It will be removed in v18. */
-declare const ScrollBar: NSScrollArea.Bar.Component;
-/** @deprecated It will be removed in v18. */
-declare const ScrollArea: NSScrollArea.Component;
-
-declare const eventCalculate: Event;
-declare const hideScrollBarsFromScreenReadersContext: React.Context<boolean>;
-
-export { eventCalculate, hideScrollBarsFromScreenReadersContext, ScrollBar, ScrollArea };
 
 export type { NSScrollArea };

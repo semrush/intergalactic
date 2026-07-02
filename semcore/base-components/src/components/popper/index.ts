@@ -8,7 +8,7 @@ import type {
   PopperPopperProps,
   eventInteraction,
   NSPopper,
-} from './Popper.types';
+} from './Popper.type';
 
 export { Popper, isInputTriggerTag };
 

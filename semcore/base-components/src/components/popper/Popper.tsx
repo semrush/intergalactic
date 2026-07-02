@@ -35,7 +35,7 @@ import { NeighborLocation } from '../neighbor-location';
 import { OutsideClick } from '../outside-click';
 import { Portal, PortalProvider } from '../portal';
 import createPopper from './createPopper';
-import type { NSPopper } from './Popper.types';
+import type { NSPopper } from './Popper.type';
 import style from './style/popper.shadow.css';
 
 function isObject(obj: unknown) {

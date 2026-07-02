@@ -1,12 +1,12 @@
-import type { BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
+import type { BoxProps, NSNeighborLocation } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type React from 'react';
 
 export type InputSize = 'm' | 'l';
 
 export type InputProps = BoxProps &
-  NeighborItemProps &
-  NeighborLocationProps & {
+  NSNeighborLocation.Detect.Props &
+  NSNeighborLocation.Props & {
     /**
      * Sets the input and addons to the disabled state
      * */
@@ -24,7 +24,7 @@ export type InputProps = BoxProps &
   };
 
 export type InputValueProps = BoxProps &
-  NeighborItemProps & {
+  NSNeighborLocation.Detect.Props & {
     /**
      * Input value
      */
@@ -57,7 +57,7 @@ export type InputValueProps = BoxProps &
     autoFocus?: boolean;
   };
 
-export type InputAddonProps = BoxProps & NeighborItemProps;
+export type InputAddonProps = BoxProps & NSNeighborLocation.Detect.Props;
 
 export type InputCtx = {
   getValueProps: PropGetterFn;

@@ -1,4 +1,4 @@
-import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
+import type { Box, BoxProps, NSNeighborLocation } from '@semcore/base-components';
 import type { ButtonLinkProps, ButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
@@ -7,7 +7,7 @@ import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type BaseTriggerProps = BoxProps &
-  NeighborItemProps &
+  NSNeighborLocation.Detect.Props &
   WithAnimatedSizeEnhanceProps & {
     /**
      * Trigger size

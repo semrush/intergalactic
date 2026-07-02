@@ -11,7 +11,7 @@ import type { DOMAttributes } from 'react';
 
 import type { ScaleProps } from '../animation';
 import type { BoxProps } from '../flex-box';
-import type { NeighborLocationProps } from '../neighbor-location';
+import type { NSNeighborLocation } from '../neighbor-location';
 import type { NSOutsideClick } from '../outside-click';
 import type { NSPortal } from '../portal';
 
@@ -146,7 +146,7 @@ declare namespace NSPopper {
   namespace Popper {
     type Props = BoxProps &
       NSPortal.Props &
-      NeighborLocationProps & {
+      NSNeighborLocation.Props & {
         /**
          * Disabled focus trap, autofocus and focus return
          */
@@ -199,9 +199,5 @@ export type InnerPopperPopperProps = NSPopper.Popper.InnerProps;
 export type PopperContext = NSPopper.Ctx;
 /** @deprecated It will be removed in v18. */
 export type PopperHandlers = NSPopper.Handlers;
-
-declare const Popper: NSPopper.Component;
-
-export { Popper };
 
 export type { NSPopper };

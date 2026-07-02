@@ -1,10 +1,10 @@
-import type { BoxProps, NeighborItemProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type { BoxProps, NSNeighborLocation, SimpleHintPopperProps } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 export type ButtonProps = BoxProps &
-  NeighborItemProps & {
+  NSNeighborLocation.Detect.Props & {
   /** Button activity state */
     active?: boolean;
     /** Disabled button state */
