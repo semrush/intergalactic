@@ -239,7 +239,7 @@ class AutoSuggestRoot extends Component<
       const { suggestions, duration } = this.asProps;
 
       if (value === '') {
-        this.setState({ isVisible: false, isLoading: false });
+        this.setState({ isLoading: false });
 
         setTimeout(() => {
           this.setState({ suggestions: [] });
