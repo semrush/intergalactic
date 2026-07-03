@@ -1,5 +1,5 @@
 import { FadeInOut, Box } from '@semcore/base-components';
-import type { FadeInOutProps, NSBox } from '@semcore/base-components';
+import type { NSAnimation, NSBox } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -198,8 +198,8 @@ type InlineEditDefaultProps = {
   i18n: LocalizedMessages;
   locale: 'en';
 };
-type InlineEditViewProps = NSBox.Props & FadeInOutProps & {};
-type InlineEditEditProps = NSBox.Props & FadeInOutProps & {};
+type InlineEditViewProps = NSBox.Props & NSAnimation.FadeInOut.Props & {};
+type InlineEditEditProps = NSBox.Props & NSAnimation.FadeInOut.Props & {};
 
 type InputCtx = {
   getViewProps: PropGetterFn;

@@ -4,10 +4,10 @@ import { useForkRef } from '@semcore/core/lib/utils/ref';
 import React from 'react';
 
 import Animation from './Animation';
-import type { ScaleProps } from './Animation.types';
+import type { NSAnimation } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
-function Scale(props: ScaleProps, ref: React.Ref<HTMLDivElement>) {
+function Scale(props: Intergalactic.InternalTypings.InferComponentProps<NSAnimation.Scale.Component>, ref: React.Ref<HTMLDivElement>) {
   const [placement, setPlacement] = React.useState(props.placement ?? '');
   const keyframesKey = React.useMemo(() => {
     if (placement.startsWith('left')) return 'scale-left';
@@ -34,6 +34,8 @@ function Scale(props: ScaleProps, ref: React.Ref<HTMLDivElement>) {
 
   return sstyled(style)(
     <Animation
+      // `ref` is overriden by spread props.
+      // @ts-ignore
       ref={forkedRef}
       {...props}
       keyframes={[style[`@${keyframesKey}-in`], style[`@${keyframesKey}-out`]]}
@@ -43,6 +45,4 @@ function Scale(props: ScaleProps, ref: React.Ref<HTMLDivElement>) {
 
 Scale.displayName = 'Scale';
 
-type ScaleComponent = Intergalactic.Component<'div', ScaleProps>;
-
-export default createBaseComponent<ScaleComponent>(Scale);
+export default createBaseComponent<NSAnimation.Scale.Component>(Scale);

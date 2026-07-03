@@ -1,4 +1,4 @@
-import type { FadeInOutProps, SlideProps, NSBox, NSFlex, NSPortal } from '@semcore/base-components';
+import type { NSAnimation, NSBox, NSFlex, NSPortal } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
@@ -43,9 +43,9 @@ export type SidePanelProps = NSPortal.Props &
     disablePreventScroll?: boolean;
   };
 
-export type SidePanelOverlayProps = FadeInOutProps & NSBox.Props & {};
+export type SidePanelOverlayProps = NSAnimation.FadeInOut.Props & NSBox.Props & {};
 
-export type SidePanelPanelProps = SlideProps &
+export type SidePanelPanelProps = NSAnimation.Slide.Props &
   NSBox.Props & {
     /** Callback that is triggered when click outside is occured */
     onOutsideClick?: (e?: React.SyntheticEvent) => void;

@@ -3,14 +3,16 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
 import Animation from './Animation';
-import type { TransformProps } from './Animation.types';
+import type { NSAnimation } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
-function Transform(props: TransformProps, ref: React.Ref<HTMLDivElement>) {
+function Transform(props: Intergalactic.InternalTypings.InferComponentProps<NSAnimation.Transform.Component>, ref: React.Ref<HTMLDivElement>) {
   const { transform = [], ...other } = props;
 
   return sstyled(style)(
     <Animation
+      // `ref` is overriden by spread props.
+      // @ts-ignore
       ref={ref}
       {...other}
       transformStart={transform[0]}
@@ -22,5 +24,4 @@ function Transform(props: TransformProps, ref: React.Ref<HTMLDivElement>) {
 
 Transform.displayName = 'Transform';
 
-type TransformComponent = Intergalactic.Component<'div', TransformProps>;
-export default createBaseComponent<TransformComponent>(Transform);
+export default createBaseComponent<NSAnimation.Transform.Component>(Transform);

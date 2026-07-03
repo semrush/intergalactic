@@ -4,13 +4,14 @@ import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
 import Animation from './Animation';
-import type { CollapseProps } from './Animation.types';
+import type { NSAnimation } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
 function Collapse(
-  { onAnimationStart, onAnimationEnd, overflowHidden = true, defaultHeight = 'auto', ...props }: CollapseProps,
+  props: Intergalactic.InternalTypings.InferComponentProps<NSAnimation.Collapse.Component>,
   ref: React.Ref<HTMLDivElement>,
 ) {
+  const { onAnimationStart, onAnimationEnd, overflowHidden = true, defaultHeight = 'auto', ...restProps } = props;
   const SCollapse = Animation;
   const overflowRef = React.useRef('initial');
   const innerRef = React.useRef<HTMLDivElement>(null);
@@ -18,16 +19,16 @@ function Collapse(
 
   useEnhancedEffect(() => {
     if (!innerRef.current) return;
-    if (props.visible) innerRef.current.style.height = `${0}px`;
-    if (!props.visible) innerRef.current.style.height = `${innerRef.current.scrollHeight}px`;
-    if (props.visible) innerRef.current.style.animationFillMode = 'none';
-    if (!props.visible) innerRef.current.style.animationFillMode = 'both';
-  }, [props.visible]);
+    if (restProps.visible) innerRef.current.style.height = `${0}px`;
+    if (!restProps.visible) innerRef.current.style.height = `${innerRef.current.scrollHeight}px`;
+    if (restProps.visible) innerRef.current.style.animationFillMode = 'none';
+    if (!restProps.visible) innerRef.current.style.animationFillMode = 'both';
+  }, [restProps.visible]);
 
   useEnhancedEffect(() => {
     if (!innerRef.current) return;
-    if (props.visible) innerRef.current.style.height = defaultHeight;
-    if (!props.visible) innerRef.current.style.height = `${0}px`;
+    if (restProps.visible) innerRef.current.style.height = defaultHeight;
+    if (!restProps.visible) innerRef.current.style.height = `${0}px`;
   }, []);
 
   const handleAnimationStart = React.useCallback(
@@ -39,14 +40,14 @@ function Collapse(
         event.currentTarget.style.overflow = 'clip';
       }
 
-      if (props.visible) event.currentTarget.style.height = `${event.currentTarget.scrollHeight}px`;
-      if (!props.visible) event.currentTarget.style.height = `${0}px`;
+      if (restProps.visible) event.currentTarget.style.height = `${event.currentTarget.scrollHeight}px`;
+      if (!restProps.visible) event.currentTarget.style.height = `${0}px`;
     },
-    [props.visible],
+    [restProps.visible],
   );
 
-  const visibleRef = React.useRef(props.visible);
-  visibleRef.current = props.visible;
+  const visibleRef = React.useRef(restProps.visible);
+  visibleRef.current = restProps.visible;
   const handleAnimationEnd = React.useCallback((event: React.AnimationEvent<HTMLDivElement>) => {
     if (event.currentTarget !== event.target) return;
     if (onAnimationEnd) onAnimationEnd(event);
@@ -64,8 +65,10 @@ function Collapse(
 
   return sstyled(style)(
     <SCollapse
+      // `ref` is overriden by spread props.
+      // @ts-ignore
       ref={forkedRef}
-      {...props}
+      {...restProps}
       onAnimationStart={handleAnimationStart}
       onAnimationEnd={handleAnimationEnd}
       keyframes={[style['@collapse-enter'], style['@collapse-exit']]}
@@ -76,6 +79,4 @@ function Collapse(
 
 Collapse.displayName = 'Collapse';
 
-type CollapseComponent = Intergalactic.Component<'div', CollapseProps>;
-
-export default createBaseComponent<CollapseComponent>(Collapse);
+export default createBaseComponent<NSAnimation.Collapse.Component>(Collapse);

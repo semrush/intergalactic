@@ -1,4 +1,4 @@
-import type { FadeInOutProps, SlideProps, NSBox, NSPortal } from '@semcore/base-components';
+import type { NSAnimation, NSBox, NSPortal } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
@@ -6,7 +6,7 @@ import type React from 'react';
 
 export type ModalProps = NSPortal.Props &
   NSBox.Props &
-  FadeInOutProps & {
+  NSAnimation.FadeInOut.Props & {
     /** Duration of animation, ms
      * @default 200
      */
@@ -35,7 +35,7 @@ export type ModalProps = NSPortal.Props &
     ghost?: boolean;
   };
 
-export type WindowProps = NSBox.Props & SlideProps & {};
+export type WindowProps = NSBox.Props & NSAnimation.Slide.Props & {};
 
 export type ModalContext = {
   getOverlayProps: PropGetterFn;

@@ -1,4 +1,4 @@
-import type { FadeInOutProps, NSBox } from '@semcore/base-components';
+import type { NSAnimation, NSBox } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
@@ -6,7 +6,7 @@ import type { Text } from '@semcore/typography';
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
 
 export type NoticeProps = NSBox.Props &
-  FadeInOutProps & {
+  NSAnimation.FadeInOut.Props & {
     /** Property for managing visibility of Notice */
     hidden?: boolean;
     /**

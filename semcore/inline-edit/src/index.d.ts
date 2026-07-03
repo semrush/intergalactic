@@ -1,4 +1,4 @@
-import type { FadeInOutProps, NSBox } from '@semcore/base-components';
+import type { NSAnimation, NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 export type InlineEditProps = NSBox.Props & {
@@ -22,9 +22,9 @@ export type InlineEditProps = NSBox.Props & {
   locale?: string;
 };
 
-export type InlineEditViewProps = NSBox.Props & FadeInOutProps & {};
+export type InlineEditViewProps = NSBox.Props & NSAnimation.FadeInOut.Props & {};
 
-export type InlineEditEditProps = NSBox.Props & FadeInOutProps & {};
+export type InlineEditEditProps = NSBox.Props & NSAnimation.FadeInOut.Props & {};
 
 type InputCtx = {
   getViewProps: PropGetterFn;

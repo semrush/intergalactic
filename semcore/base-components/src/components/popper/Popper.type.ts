@@ -9,7 +9,7 @@ import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type { DOMAttributes } from 'react';
 
-import type { ScaleProps } from '../animation';
+import type { NSAnimation } from '../animation';
 import type { NSBox } from '../flex-box';
 import type { NSNeighborLocation } from '../neighbor-location';
 import type { NSOutsideClick } from '../outside-click';
@@ -27,7 +27,7 @@ declare namespace NSPopper {
   type Props = NSOutsideClick.Props &
     NSPortal.Props &
     UniqueIDProps &
-    Omit<ScaleProps, 'placement' | 'preserveNode'> & {
+    Omit<NSAnimation.Scale.Props, 'placement' | 'preserveNode'> & {
       /**
        * Popper can have different positioning options
        * @default absolute

@@ -1,4 +1,4 @@
-import type { FadeInOutProps, NSBox } from '@semcore/base-components';
+import type { NSAnimation, NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSSpin } from '@semcore/spin';
 
@@ -28,7 +28,7 @@ declare namespace NSSpinContainer {
   };
 
   namespace Content {
-    type Props = NSBox.Props & FadeInOutProps;
+    type Props = NSBox.Props & NSAnimation.FadeInOut.Props;
 
     type Component = Intergalactic.Component<'div', Props>;
   }

@@ -5,7 +5,7 @@ import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
 import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/types';
-import type { AnimationProps, NSBox, NSOutsideClick, NSPortal, NSPopper } from '@semcore/base-components';
+import type { NSAnimation, NSBox, NSOutsideClick, NSPortal, NSPopper } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type React from 'react';
@@ -53,7 +53,7 @@ export type FeaturePopoverContext = NSPopper.Ctx & {
 export type FPPopperProps = NSOutsideClick.Props &
   NSPortal.Props &
   UniqueIDProps &
-  AnimationProps & {
+  NSAnimation.Props & {
     /**
      * Popper can have different positioning options
      * @default absolute
