@@ -243,9 +243,16 @@ class InlineInputBase extends Component<
 
   handleBlur = (event: React.FocusEvent) => {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
-    if (!onBlurBehavior || (lastInteraction.isKeyboard() && !lastInteraction.isTab)) return;
+    if (!onBlurBehavior) return;
     if (Date.now() - this.lastHandledKeyboardEvent < 250) return;
     if (hasParent(event.relatedTarget, this.rootRef.current!)) return;
+
+    if (lastInteraction.isKeyboard()) {
+      if (lastInteraction.isTab) {
+        onCancel?.(this.initValue, event);
+      }
+      return;
+    }
 
     if (this.lastMouseDownPosition && this.rootRef.current) {
       const { x, y } = this.lastMouseDownPosition;
