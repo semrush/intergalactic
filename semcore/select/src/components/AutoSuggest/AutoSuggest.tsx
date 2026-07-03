@@ -285,14 +285,15 @@ class AutoSuggestRoot extends Component<
       this.setState({ highlightedIndex: -1 });
     }
 
+    if (e.key === 'Escape') {
+      this.setState({ openOnChanges: false, isLoading: false });
+      this.abortController?.abort();
+    }
+
     const { value } = this.asProps;
     const { isVisible, suggestions } = this.state;
 
-    if (isVisible) {
-      if (e.key === 'Escape') {
-        this.setState({ openOnChanges: false });
-      }
-    } else {
+    if (!isVisible) {
       const filteredSuggestions = suggestions.filter((s) => {
         return value !== '' && s.toLowerCase().includes(value.toLowerCase());
       });
