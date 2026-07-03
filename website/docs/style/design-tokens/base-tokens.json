@@ -837,5 +837,45 @@
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",
     "value": "oklch(1 0 0 / 0.7)"
+  },
+  {
+    "name": "--intergalactic-border-tooltip-invert",
+    "value": "oklch(0.995 0.008 145.9 / 0.369)"
+  },
+  {
+    "name": "--intergalactic-border-table-accent",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+  },
+  {
+    "name": "--intergalactic-border-date-picker-range-comparison",
+    "value": "oklch(0.7 0.191 301.5)"
+  },
+  {
+    "name": "--intergalactic-tooltip-default",
+    "value": "oklch(1 0 0)"
+  },
+  {
+    "name": "--intergalactic-tooltip-invert",
+    "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-tooltip-warning",
+    "value": "oklch(0.958 0.029 5.7)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-bg",
+    "value": "oklch(0.88 0.078 303)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-bg-neutral",
+    "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot-outer-border",
+    "value": "oklch(0.88 0.078 303)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
+    "value": "oklch(0.88 0.078 303)"
   }
 ]

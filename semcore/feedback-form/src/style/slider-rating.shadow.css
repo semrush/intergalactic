@@ -19,10 +19,10 @@ SStar[filled]:active {
 }
 
 SStar path {
-  fill: var(--intergalactic-control-slider-rating-normal, oklch(0.7 0.003 162.2));
-}
+  fill: var(--intergalactic-slider-rating-normal, undefined);
+} /* TODO: --intergalactic-control-slider-rating-normal */
 
 SStar[filled] path {
   stroke-width: 0;
-  fill: var(--intergalactic-control-slider-rating-hover-active, oklch(0.66 0.212 300.1));
+  fill: var(--intergalactic-slider-rating-hover-active, undefined); /* TODO: --intergalactic-control-slider-rating-hover-active */
 }

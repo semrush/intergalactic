@@ -1190,17 +1190,13 @@
     "name": "--intergalactic-control-slider-rating-hover-active",
     "value": "oklch(0.66 0.212 300.1)",
     "description": "Icon color for the SliderRating component in its hovered and active states.",
-    "components": [
-      "feedback-form"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-slider-rating-normal",
     "value": "oklch(0.7 0.003 162.2)",
     "description": "Icon color for the SliderRating component in its normal state.",
-    "components": [
-      "feedback-form"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-switch-bg",
@@ -1466,17 +1462,13 @@
     "name": "--intergalactic-feature-popover-accent-bg",
     "value": "oklch(0.88 0.078 303)",
     "description": "Color of the outer border of the FeaturePopover.Spot.",
-    "components": [
-      "feature-popover"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-feature-popover-accent-dot-outer-border",
     "value": "oklch(0.88 0.078 303)",
     "description": "Color of the outer border of the FeaturePopover.Spot.",
-    "components": [
-      "feature-popover"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-feature-popover-dot",
@@ -1496,17 +1488,13 @@
     "name": "--intergalactic-feature-popover-neutral-bg",
     "value": "oklch(0.23 0.01 140)",
     "description": "Color of the outer border of the FeaturePopover.Spot.",
-    "components": [
-      "feature-popover"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
     "value": "oklch(0.88 0.078 303)",
     "description": "Color of the outer border of the FeaturePopover.Spot.",
-    "components": [
-      "feature-popover"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-feature-popover-text",
@@ -2160,9 +2148,7 @@
     "name": "--intergalactic-table-border-accent",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table.",
-    "components": [
-      "data-table"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-table-td-cell",
@@ -2821,35 +2807,25 @@
     "name": "--intergalactic-tooltip-bg-default",
     "value": "oklch(1 0 0)",
     "description": "Default Tooltip background.",
-    "components": [
-      "tooltip"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-tooltip-bg-invert",
     "value": "oklch(0.23 0.01 140)",
     "description": "Inverted version of the default Tooltip background.",
-    "components": [
-      "base-components",
-      "tooltip"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-tooltip-bg-warning",
     "value": "oklch(0.958 0.029 5.7)",
     "description": "Warning Tooltip background.",
-    "components": [
-      "tooltip"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
     "value": "oklch(0.995 0.008 145.9 / 0.369)",
     "description": "Border of the Tooltip with dark theme.",
-    "components": [
-      "base-components",
-      "tooltip"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-tooltip-text",

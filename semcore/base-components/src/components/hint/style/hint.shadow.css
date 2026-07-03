@@ -8,8 +8,8 @@ SHintPopper {
   opacity: 0;
   pointer-events: none;
 
-  background: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 140));
-  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.995 0.008 145.9 / 0.369));
+  background: var(--intergalactic-tooltip-invert, oklch(0.23 0.01 140)); /* TODO: --intergalactic-tooltip-bg-invert */
+  border: 1px solid var(--intergalactic-border-tooltip-invert, oklch(0.995 0.008 145.9 / 0.369)); /* TODO: --intergalactic-tooltip-border-invert */
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-2x, 8px);
   border-radius: var(--intergalactic-rounded-small, 4px);

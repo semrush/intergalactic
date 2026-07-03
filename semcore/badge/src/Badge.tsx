@@ -91,7 +91,7 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
 
     if (type === 'unavailable' && !inverted) {
       return resolveColor('--intergalactic-text-secondary');
-    } // change to --intergalactic-badge-text-secondary
+    } // TODO: --intergalactic-badge-text-secondary
 
     return undefined;
   }
@@ -102,27 +102,27 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
 
     if (inverted) {
       return resolveColor('--gray-white');
-    } // change to --intergalactic-badge-bg-invert
+    } // TODO: --intergalactic-badge-bg-invert
 
     switch (type) {
       case 'admin': {
         return resolveColor('--blue-400');
-      } // change to --intergalactic-badge-bg-admin
+      } // TODO: --intergalactic-badge-bg-admin
       case 'alpha': {
         return resolveColor('--red-400');
-      } // change to --intergalactic-badge-bg-alpha
+      } // TODO: --intergalactic-badge-bg-alpha
       case 'beta': {
         return resolveColor('--orange-400');
-      } // change to --intergalactic-badge-bg-beta
+      } // TODO: --intergalactic-badge-bg-beta
       case 'new': {
         return resolveColor('--green-400');
-      } // change to --intergalactic-badge-bg-new
+      } // TODO: --intergalactic-badge-bg-new
       case 'soon': {
         return resolveColor('--gray-400');
-      } // change to --intergalactic-badge-bg-soon
+      } // TODO: --intergalactic-badge-bg-soon
       case 'unavailable': {
         return resolveColor('--gray-100');
-      } // change to --intergalactic-badge-bg-unavailable
+      } // TODO: --intergalactic-badge-bg-unavailable
       default: {
         const t: never = type;
         throw new Error(`Type can't be "${t}"`);
