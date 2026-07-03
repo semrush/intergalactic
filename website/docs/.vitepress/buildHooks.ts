@@ -140,12 +140,12 @@ const transformHtml: UserConfig<DefaultTheme.Config>['transformHtml'] = async (
       objectID: objectId++,
       title: metadata?.title ?? pageData.title,
       content: metadata?.title ?? pageData.title,
-      type: 'content',
+      type: hierarchy.lvl1 ? 'lvl1' : 'lvl0',
       url:
         BASE_URL +
         pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-      heading: false,
-      hierarchy: { lvl0: hierarchy.lvl0, lvl1: hierarchy.lvl1 },
+      heading: true,
+      hierarchy: { ...hierarchy },
       changelogPage: pageData.relativePath.includes('changelog'),
       designPage: tab?.title === 'Design',
       lang: 'en-US',
