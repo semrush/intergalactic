@@ -48,6 +48,7 @@ const searchObjects: {
   heading: boolean;
   changelogPage: boolean;
   designPage: boolean;
+  examplesPage: boolean;
   lang: string;
   hierarchy: {};
 }[] = [];
@@ -131,6 +132,7 @@ const transformHtml: UserConfig<DefaultTheme.Config>['transformHtml'] = async (
           hierarchy: { ...hierarchy },
           changelogPage: pageData.relativePath.includes('changelog'),
           designPage: tab?.title === 'Design',
+          examplesPage: pageData.relativePath.includes('code'),
           lang: 'en-US',
         });
       }
@@ -148,6 +150,7 @@ const transformHtml: UserConfig<DefaultTheme.Config>['transformHtml'] = async (
       hierarchy: { ...hierarchy },
       changelogPage: pageData.relativePath.includes('changelog'),
       designPage: tab?.title === 'Design',
+      examplesPage: pageData.relativePath.includes('code'),
       lang: 'en-US',
     });
   }
