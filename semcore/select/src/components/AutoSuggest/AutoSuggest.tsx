@@ -242,7 +242,9 @@ class AutoSuggestRoot extends Component<
         this.setState({ isLoading: false });
 
         setTimeout(() => {
-          this.setState({ suggestions: [], isVisible: true });
+          if (document.activeElement === this.triggerRef.current) {
+            this.setState({ suggestions: [], isVisible: true });
+          }
         }, Number(duration)); // wait for closing and then clear suggestions.
         return;
       }
