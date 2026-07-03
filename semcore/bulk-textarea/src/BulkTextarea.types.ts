@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 
@@ -67,12 +67,12 @@ type BulkTextareaComponent = (<T extends string | string[]>(
   props: Intergalactic.InternalTypings.ComponentProps<
     'div',
     'div',
-    BoxProps & BulkTextareaProps<T>
+    NSBox.Props & BulkTextareaProps<T>
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
 Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', {}>;
 
-export type BulkTextareaInputFieldProps<T extends string | string[] = string | string[]> = BoxProps & {
+export type BulkTextareaInputFieldProps<T extends string | string[] = string | string[]> = NSBox.Props & {
   /**
    * Unique id
    */

@@ -1,4 +1,4 @@
-import type { Box, BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -12,7 +12,7 @@ type DNDAriaProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-export type DragAndDropProps = BoxProps & {
+export type DragAndDropProps = NSBox.Props & {
   /**
    * Controlled drag and drop handler
    */
@@ -35,7 +35,7 @@ export type DragAndDropDefaultProps = {
   locale: 'en';
 };
 
-export type DraggableProps = BoxProps & {
+export type DraggableProps = NSBox.Props & {
   /** Placement of visual drag-and-drop marker
    * @default right
    * */
@@ -63,7 +63,7 @@ export type DragAndDropContext = {
   getDroppableProps: PropGetterFn;
 };
 
-export type DropZoneProps = BoxProps &
+export type DropZoneProps = NSBox.Props &
   DNDAriaProps & {
     /**
      * Used for add zoneName in a11y hints
@@ -77,5 +77,5 @@ export type DragAndDropComponent = Intergalactic.Component<
   DragAndDropContext
 > & {
   Draggable: Intergalactic.Component<'div', DraggableProps & DNDAriaProps>;
-  DropZone: Intergalactic.Component<typeof Box, DropZoneProps>;
+  DropZone: Intergalactic.Component<NSBox.Component, DropZoneProps>;
 };

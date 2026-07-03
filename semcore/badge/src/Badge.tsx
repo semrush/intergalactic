@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
@@ -13,13 +13,13 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon' | 'unavailable';
 
 export type BadgeMargins = {
-  m?: BoxProps['m'];
-  ml?: BoxProps['ml'];
-  mt?: BoxProps['mt'];
-  mr?: BoxProps['mr'];
-  mb?: BoxProps['mb'];
-  mx?: BoxProps['mx'];
-  my?: BoxProps['my'];
+  m?: NSBox.Props['m'];
+  ml?: NSBox.Props['ml'];
+  mt?: NSBox.Props['mt'];
+  mr?: NSBox.Props['mr'];
+  mb?: NSBox.Props['mb'];
+  mx?: NSBox.Props['mx'];
+  my?: NSBox.Props['my'];
 };
 
 export type BadgeProps = BadgeMargins & {

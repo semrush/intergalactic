@@ -1,4 +1,5 @@
-import { FadeInOut, type FadeInOutProps, Box, type BoxProps } from '@semcore/base-components';
+import { FadeInOut, Box } from '@semcore/base-components';
+import type { FadeInOutProps, NSBox } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -185,7 +186,7 @@ function View(props: AsProps) {
   ) as React.ReactElement;
 }
 
-type InlineEditProps = BoxProps & {
+type InlineEditProps = NSBox.Props & {
   editable?: boolean;
   onEditableChange?: (editable: boolean, event?: React.SyntheticEvent) => void;
   defaultEditable?: boolean;
@@ -197,8 +198,8 @@ type InlineEditDefaultProps = {
   i18n: LocalizedMessages;
   locale: 'en';
 };
-type InlineEditViewProps = BoxProps & FadeInOutProps & {};
-type InlineEditEditProps = BoxProps & FadeInOutProps & {};
+type InlineEditViewProps = NSBox.Props & FadeInOutProps & {};
+type InlineEditEditProps = NSBox.Props & FadeInOutProps & {};
 
 type InputCtx = {
   getViewProps: PropGetterFn;

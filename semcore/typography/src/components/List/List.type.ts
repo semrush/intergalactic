@@ -1,4 +1,4 @@
-import type { Flex, FlexProps } from '@semcore/base-components';
+import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
@@ -22,8 +22,8 @@ declare namespace NSList {
     };
 
     namespace Content {
-      type Props = FlexProps;
-      type Component = Intergalactic.Component<typeof Flex, Props>;
+      type Props = NSFlex.Props;
+      type Component = Intergalactic.Component<NSFlex.Component, Props>;
     }
 
     type Component = Intergalactic.Component<'li', Props> & {

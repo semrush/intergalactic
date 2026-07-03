@@ -1,8 +1,8 @@
-import type { EllipsisSettings, BoxProps } from '@semcore/base-components';
+import type { EllipsisSettings, NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 
-export type BreadcrumbsProps = BoxProps & {
+export type BreadcrumbsProps = NSBox.Props & {
   /**
    * Links divider
    * */
@@ -11,7 +11,7 @@ export type BreadcrumbsProps = BoxProps & {
   locale?: string;
 };
 
-export type BreadcrumbsItemProps = BoxProps & {
+export type BreadcrumbsItemProps = NSBox.Props & {
   /** The property is responsible for the activity of the element */
   active?: boolean;
   /** Specifies the locale for i18n support */

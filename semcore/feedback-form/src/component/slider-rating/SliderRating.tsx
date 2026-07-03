@@ -1,4 +1,5 @@
-import { Flex, Box, type BoxProps } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
+import { Flex, Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -25,12 +26,12 @@ type State = {
   clickedIndex: number;
 };
 
-type StarProps = BoxProps & {
+type StarProps = NSBox.Props & {
   filled?: boolean;
 };
 
-type SliderRatingComponent = Intergalactic.Component<typeof Flex, SliderRatingProps> & {
-  Star: Intergalactic.Component<typeof Box, StarProps>;
+type SliderRatingComponent = Intergalactic.Component<NSFlex.Component, SliderRatingProps> & {
+  Star: Intergalactic.Component<NSBox.Component, StarProps>;
 };
 
 const MIN = 1;

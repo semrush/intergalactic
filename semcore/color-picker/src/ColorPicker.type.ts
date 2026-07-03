@@ -1,4 +1,4 @@
-import type { BoxProps, NSPopper } from '@semcore/base-components';
+import type { NSBox, NSPopper } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { DropdownProps } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
@@ -62,7 +62,7 @@ declare namespace NSColorPicker {
   }
 
   namespace Colors {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /**
        * Array of color items
        */

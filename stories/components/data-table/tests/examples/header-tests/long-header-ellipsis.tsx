@@ -1,6 +1,6 @@
 import AmazonM from '@semcore/icon/color/Amazon/m';
 import WhatsAppM from '@semcore/icon/color/WhatsApp/m';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
@@ -16,7 +16,7 @@ export type LongHeaderEllipsisProps = {
   withScrollBar?: boolean;
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   top?: number;
-} & BoxProps;
+} & NSBox.Props;
 const columns = [
   {
     name: 'keyword', gtcWidth: '65px', sortable: true,

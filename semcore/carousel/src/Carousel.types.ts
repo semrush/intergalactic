@@ -1,9 +1,9 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic, IRootComponentProps } from '@semcore/core';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type CarouselProps = BoxProps & {
+export type CarouselProps = NSBox.Props & {
   /** Index active item */
   index?: number;
   /**
@@ -53,7 +53,7 @@ export type CarouselItem = {
   node: HTMLElement;
 };
 
-export type CarouselItemProps = BoxProps & {
+export type CarouselItemProps = NSBox.Props & {
   /** Flag for css cursor
    * @private
    */
@@ -100,20 +100,20 @@ export type CarouselState = {
 };
 
 export type CarouselButtonProps = IRootComponentProps &
-  BoxProps & {
+  NSBox.Props & {
     label?: string;
     inverted?: boolean;
     tabIndex?: number;
   };
 
 export type CarouselIndicatorsProps = IRootComponentProps &
-  BoxProps & {
+  NSBox.Props & {
     items?: CarouselItem[];
     inverted?: boolean;
   };
 
 export type CarouselIndicatorProps = IRootComponentProps &
-  Omit<BoxProps, 'position'> & {
+  Omit<NSBox.Props, 'position'> & {
     active?: boolean;
     onClick?: () => void;
     inverted?: boolean;
@@ -124,8 +124,8 @@ declare const CarouselType: Intergalactic.Component<
   CarouselProps,
   CarouselContext & CarouselState
 > & {
-  Container: Intergalactic.Component<'div', BoxProps>;
-  ContentBox: Intergalactic.Component<'div', BoxProps>;
+  Container: Intergalactic.Component<'div', NSBox.Props>;
+  ContentBox: Intergalactic.Component<'div', NSBox.Props>;
   Indicators: Intergalactic.Component<'div', CarouselIndicatorsProps, CarouselState>;
   Indicator: Intergalactic.Component<'div', CarouselIndicatorProps>;
   Item: Intergalactic.Component<'div', CarouselItemProps>;

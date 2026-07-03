@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/ui/base-components';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
 import type { BulkTextareaProps, ErrorItem } from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
@@ -55,7 +55,7 @@ type PasteProps = NonNullable<BulkTextareaProps<string>['pasteProps']>;
 
 type ExampleProps = Omit<BulkTextareaProps<string>, 'linesDelimiters'> & {
   autoFocus?: boolean;
-  w?: BoxProps['w'];
+  w?: NSBox.Props['w'];
   pasteDelimiter?: PasteProps['delimiter'];
   pasteSkipEmptyLines?: boolean;
   pasteLineProcessing?: PasteProps['lineProcessing'];

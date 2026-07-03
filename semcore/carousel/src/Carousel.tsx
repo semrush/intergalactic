@@ -1,5 +1,5 @@
 import { createBreakpoints, Box, Flex } from '@semcore/base-components';
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -600,7 +600,7 @@ class CarouselRoot extends Component<
   }
 }
 
-function Container(props: BoxProps & { duration?: number }) {
+function Container(props: NSBox.Props & { duration?: number }) {
   const SContainer = Root;
   const { styles, duration } = props;
 
@@ -609,7 +609,7 @@ function Container(props: BoxProps & { duration?: number }) {
   );
 }
 
-function ContentBox(props: BoxProps) {
+function ContentBox(props: NSBox.Props) {
   const SContentBox = Root;
   const { styles } = props;
 

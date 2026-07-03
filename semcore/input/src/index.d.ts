@@ -1,10 +1,10 @@
-import type { BoxProps, NSNeighborLocation } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type React from 'react';
 
 export type InputSize = 'm' | 'l';
 
-export type InputProps = BoxProps &
+export type InputProps = NSBox.Props &
   NSNeighborLocation.Detect.Props &
   NSNeighborLocation.Props & {
     /**
@@ -23,7 +23,7 @@ export type InputProps = BoxProps &
     state?: 'normal' | 'invalid' | 'valid';
   };
 
-export type InputValueProps = BoxProps &
+export type InputValueProps = NSBox.Props &
   NSNeighborLocation.Detect.Props & {
     /**
      * Input value
@@ -57,7 +57,7 @@ export type InputValueProps = BoxProps &
     autoFocus?: boolean;
   };
 
-export type InputAddonProps = BoxProps & NSNeighborLocation.Detect.Props;
+export type InputAddonProps = NSBox.Props & NSNeighborLocation.Detect.Props;
 
 export type InputCtx = {
   getValueProps: PropGetterFn;

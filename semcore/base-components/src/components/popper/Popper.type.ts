@@ -10,7 +10,7 @@ import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type { DOMAttributes } from 'react';
 
 import type { ScaleProps } from '../animation';
-import type { BoxProps } from '../flex-box';
+import type { NSBox } from '../flex-box';
 import type { NSNeighborLocation } from '../neighbor-location';
 import type { NSOutsideClick } from '../outside-click';
 import type { NSPortal } from '../portal';
@@ -124,7 +124,7 @@ declare namespace NSPopper {
   };
 
   namespace Trigger {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /**
        * Disabled focus trap, autofocus and focus return
        */
@@ -144,7 +144,7 @@ declare namespace NSPopper {
   }
 
   namespace Popper {
-    type Props = BoxProps &
+    type Props = NSBox.Props &
       NSPortal.Props &
       NSNeighborLocation.Props & {
         /**

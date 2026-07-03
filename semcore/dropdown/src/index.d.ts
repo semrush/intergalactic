@@ -1,4 +1,4 @@
-import type { Box, BoxProps, NSPopper } from '@semcore/base-components';
+import type { NSBox, NSPopper } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type React from 'react';
 
@@ -42,7 +42,7 @@ export type DropdownPopperProps = NSPopper.Popper.Props &
     role?: 'dialog';
   };
 
-export type DropdownGroupProps = BoxProps & {
+export type DropdownGroupProps = NSBox.Props & {
   /** Title for group of dropdown menu items */
   title: React.ReactNode;
   /** Subtitle for group of dropdown menu items */
@@ -77,7 +77,7 @@ declare const Dropdown: Intergalactic.Component<
     NSPopper.Ctx,
     [handlers: NSPopper.Handlers]
   >;
-  Item: Intergalactic.Component<typeof Box>;
+  Item: Intergalactic.Component<NSBox.Component>;
   Group: Intergalactic.Component<'div', DropdownGroupProps>;
   StatusItem: StatusItemComponent;
 };

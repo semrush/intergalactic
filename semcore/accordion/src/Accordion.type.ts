@@ -1,4 +1,4 @@
-import type { BoxProps, FlexProps, Flex } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 import type { Property } from 'csstype';
@@ -6,7 +6,7 @@ import type { Property } from 'csstype';
 declare namespace NSAccordion {
   // TODO: It looks like the value isn't accurate. Revise and align it with the component's logic.
   type Value = null | number | string | Array<number | string | null>;
-  type Props<V extends NSAccordion.Value = NSAccordion.Value> = FlexProps & {
+  type Props<V extends NSAccordion.Value = NSAccordion.Value> = NSFlex.Props & {
   /** Value for the active tab. Can be set as stroke, number, null or as array.
    * @type NSAccordion.Value
    * */
@@ -59,17 +59,17 @@ declare namespace NSAccordion {
       selected?: boolean;
     };
     namespace Toggle {
-      type Props = BoxProps & {
+      type Props = NSBox.Props & {
         tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
       };
       type Component = Intergalactic.Component<typeof Text, Props>;
     }
     namespace ToggleButton {
       type Props = {};
-      type Component = Intergalactic.Component<typeof Flex, Props>;
+      type Component = Intergalactic.Component<NSFlex.Component, Props>;
     }
     namespace Chevron {
-      type Props = BoxProps & {
+      type Props = NSBox.Props & {
         /**
          * Chevron size
          * @default m
@@ -81,7 +81,7 @@ declare namespace NSAccordion {
     }
 
     namespace Collapse {
-      type Props = BoxProps & {
+      type Props = NSBox.Props & {
         /** Animation titles */
         keyframes?: [string, string];
         /** Enables animation on first rendering

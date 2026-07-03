@@ -1,10 +1,10 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { ButtonLinkComponent } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { InputNumberControlsProps } from '@semcore/input-number';
 import type React from 'react';
 
-export type InlineInputProps = BoxProps & {
+export type InlineInputProps = NSBox.Props & {
   /**
    * Visual state of inline input
    * @default normal
@@ -43,9 +43,9 @@ export type InlineInputProps = BoxProps & {
   locale?: string;
 };
 
-export type InlineInputAddonProps = BoxProps & {};
+export type InlineInputAddonProps = NSBox.Props & {};
 
-export type InlineInputValueProps = BoxProps & {
+export type InlineInputValueProps = NSBox.Props & {
   /**
    * id attribute of input tag
    */
@@ -76,7 +76,7 @@ export type InlineInputValueProps = BoxProps & {
   placeholder?: string;
 };
 
-export type InlineInputConfirmControlProps = BoxProps & {
+export type InlineInputConfirmControlProps = NSBox.Props & {
   /**
    * Text of tooltip
    * @default Confirm
@@ -89,7 +89,7 @@ export type InlineInputConfirmControlProps = BoxProps & {
   icon?: React.FC;
 };
 
-export type InlineInputCancelControlProps = BoxProps & {
+export type InlineInputCancelControlProps = NSBox.Props & {
   /**
    * Text of tooltip
    * @default Cancel

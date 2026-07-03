@@ -1,10 +1,10 @@
-import type { Box, BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { Text, NSText } from '@semcore/typography';
 import type React from 'react';
 
 declare namespace NSCard {
-  type Props = BoxProps;
+  type Props = NSBox.Props;
 
   namespace Title {
     type Props = NSText.Props & {
@@ -29,11 +29,11 @@ declare namespace NSCard {
   }
 
   namespace Header {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   namespace Body {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   type Component = Intergalactic.Component<'div', Props> & {

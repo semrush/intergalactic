@@ -1,9 +1,9 @@
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
-import type { BoxProps, FlexProps } from '../flex-box';
+import type { NSBox, NSFlex } from '../flex-box';
 
 declare namespace NSGrid {
-  type Props = FlexProps & {
+  type Props = NSFlex.Props & {
     /**
      * Gutter between columns
      * @default 0
@@ -18,7 +18,7 @@ declare namespace NSGrid {
   };
 
   namespace Col {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** Column size */
       span?: number | boolean | Array<number | boolean>;
       /** Column size on device with 1184px screen width and less */

@@ -1,4 +1,4 @@
-import type { Box, BoxProps, NSPopper } from '@semcore/base-components';
+import type { NSBox, NSPopper } from '@semcore/base-components';
 import type { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
@@ -33,13 +33,13 @@ export type TooltipChartContext = {
 export type TooltipTypeBase = {
   Trigger: NSPopper.Trigger.Component;
   Popper: NSPopper.Popper.Component;
-  Title: typeof Box;
-  Dot: IntergalacticD3Component<'div', BoxProps & { color?: string }, TooltipChartContext>;
-  Footer: typeof Box;
+  Title: NSBox.Component;
+  Dot: IntergalacticD3Component<'div', NSBox.Props & { color?: string }, TooltipChartContext>;
+  Footer: NSBox.Component;
 };
 
 export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
-  Tag extends Intergalactic.Tag = typeof Box,
+  Tag extends Intergalactic.Tag = NSBox.Component,
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,

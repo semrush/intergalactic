@@ -1,10 +1,10 @@
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
-import type { Box, BoxProps } from '../flex-box';
+import type { NSBox } from '../flex-box';
 
 declare namespace NSScrollArea {
   type ShadowTheme = 'dark' | 'light';
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /** Shadow display on container */
     shadow?: boolean;
     /** Scroll direction */
@@ -76,7 +76,7 @@ declare namespace NSScrollArea {
   };
 
   namespace Bar {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** The direction of the scroll that can be calculated automatically  */
       orientation?: 'horizontal' | 'vertical';
       /** Reference to the scrollable container element */
@@ -94,7 +94,7 @@ declare namespace NSScrollArea {
     };
 
     namespace Slider {
-      type Component = typeof Box;
+      type Component = NSBox.Component;
     }
 
     type Component = Intergalactic.Component<'div', Props, Ctx> & {
@@ -103,7 +103,7 @@ declare namespace NSScrollArea {
   }
 
   namespace Container {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** Inner prop */
       $refInner?: React.RefObject<any>;
     };

@@ -1,5 +1,5 @@
 import type {
-  BoxProps,
+  NSBox,
   EllipsisSettings,
   NSHint,
   Ellipsis as EllipsisInstance,
@@ -68,7 +68,7 @@ declare namespace NSText {
     [K in keyof EllipsisSettings as `ellipsis:${string & K}`]?: EllipsisSettings[K];
   };
 
-  type Props = BoxProps & NSText.BaseProps &
+  type Props = NSBox.Props & NSText.BaseProps &
     (
       | {
         /** Enable formatting/styling for all nested HTML tags with our default styles for them */

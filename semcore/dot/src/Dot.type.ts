@@ -1,8 +1,8 @@
-import type { AnimationProps, BoxProps } from '@semcore/base-components';
+import type { AnimationProps, NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 declare namespace NSDot {
-  type Props = BoxProps & AnimationProps & {
+  type Props = NSBox.Props & AnimationProps & {
     /** Size of the dot
      * @default m
      */

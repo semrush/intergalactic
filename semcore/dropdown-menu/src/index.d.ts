@@ -1,4 +1,4 @@
-import type { Box, BoxProps, FlexProps, Flex, NSPopper, NSScrollArea } from '@semcore/base-components';
+import type { NSBox, NSFlex, NSPopper, NSScrollArea } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type {
   DropdownContext,
@@ -55,7 +55,7 @@ export type DropdownMenuProps = DropdownProps & {
   itemsCount?: number;
 };
 
-export type DropdownMenuListProps = BoxProps &
+export type DropdownMenuListProps = NSBox.Props &
   NSScrollArea.Props & {
     /**
      * Size of the menu
@@ -66,7 +66,7 @@ export type DropdownMenuListProps = BoxProps &
 
 export type DropdownMenuMenuProps = DropdownMenuListProps & {};
 
-export type DropdownMenuItemProps = FlexProps & {
+export type DropdownMenuItemProps = NSFlex.Props & {
   /**
    * Enables selected state. For selectable dropdowns only.
    */
@@ -130,7 +130,7 @@ declare const DropdownMenu: Intergalactic.Component<
     [handlers: DropdownMenuHandlers]
   >;
   Actions: Intergalactic.Component<
-    typeof Flex,
+    NSFlex.Component,
     DropdownMenuListProps,
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
@@ -147,10 +147,10 @@ declare const DropdownMenu: Intergalactic.Component<
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
   > & {
-    Addon: typeof Box;
-    Content: typeof Flex;
+    Addon: NSBox.Component;
+    Content: NSFlex.Component;
     Text: typeof Text;
-    Hint: typeof Flex;
+    Hint: NSFlex.Component;
   };
 
   Group: typeof Dropdown.Group;

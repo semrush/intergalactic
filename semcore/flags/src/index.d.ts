@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
 
 export declare const iso2Name: Record<FlagsIso2, string>;
@@ -313,7 +313,7 @@ export declare const nameWithoutIso: {
   WALES: string;
 };
 
-export type FlagsProps = BoxProps & {
+export type FlagsProps = NSBox.Props & {
   /** URL before css file with a sprite
    * @default `//static.semrush.com/intergalactic/flags/${version package}`
    */

@@ -1,4 +1,4 @@
-import type { BoxProps, FlexProps } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 
 import type { LegendItem, LegendItemKey, ShapeType } from './LegendItem/LegendItem.type';
 import type { DataStructureHints } from '../../a11y/hints';
@@ -7,7 +7,7 @@ import type { AriaNameProps } from '../Chart/AbstractChart.type';
 
 export type LSize = 'm' | 'l';
 
-export type BaseChartLegendProps = FlexProps &
+export type BaseChartLegendProps = NSFlex.Props &
   AriaNameProps & {
     /**
      * Size for legend items
@@ -29,7 +29,7 @@ export type BaseChartLegendProps = FlexProps &
     dataHints?: DataStructureHints;
   };
 
-export type LegendProps = BoxProps &
+export type LegendProps = NSBox.Props &
   BaseChartLegendProps & {
     /**
      * Legend items

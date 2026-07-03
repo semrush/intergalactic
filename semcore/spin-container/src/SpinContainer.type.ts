@@ -1,9 +1,9 @@
-import type { FadeInOutProps, BoxProps } from '@semcore/base-components';
+import type { FadeInOutProps, NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSSpin } from '@semcore/spin';
 
 declare namespace NSSpinContainer {
-  type Props = BoxProps &
+  type Props = NSBox.Props &
     NSSpin.Props & {
       /**
        * Color of container spinner; you can use your own color
@@ -28,13 +28,13 @@ declare namespace NSSpinContainer {
   };
 
   namespace Content {
-    type Props = BoxProps & FadeInOutProps;
+    type Props = NSBox.Props & FadeInOutProps;
 
     type Component = Intergalactic.Component<'div', Props>;
   }
 
   namespace Overlay {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /**
        * Css background; you can use your own color
        */

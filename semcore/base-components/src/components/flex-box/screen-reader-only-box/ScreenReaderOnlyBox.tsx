@@ -1,8 +1,9 @@
-import { createComponent, sstyled, Root, type Intergalactic } from '@semcore/core';
+import { createComponent, sstyled, Root } from '@semcore/core';
 import React from 'react';
 
 import style from './screenReaderOnlyBox.shadow.css';
-import Box from '../Box';
+import type { NSScreenReaderOnly } from './ScreenReaderOnlyBox.type';
+import Box from '../Box/Box';
 
 function ScreenReaderOnlyComponent() {
   const SScreenReaderOnly = Root;
@@ -10,10 +11,8 @@ function ScreenReaderOnlyComponent() {
   return sstyled(style)(<SScreenReaderOnly render={Box} tag='span' />);
 };
 
-type ScreenReaderOnlyType = Intergalactic.Component<'span'>;
-
 export const ScreenReaderOnly = createComponent<
-  ScreenReaderOnlyType,
+  NSScreenReaderOnly.Component,
   typeof ScreenReaderOnlyComponent
 >(ScreenReaderOnlyComponent);
 

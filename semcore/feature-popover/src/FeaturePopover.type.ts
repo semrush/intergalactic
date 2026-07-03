@@ -5,14 +5,7 @@ import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
 import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/types';
-import type {
-  AnimationProps,
-  BoxProps,
-  NSOutsideClick,
-  NSPortal,
-  NSPopper,
-  Box,
-} from '@semcore/base-components';
+import type { AnimationProps, NSBox, NSOutsideClick, NSPortal, NSPopper } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type React from 'react';
@@ -127,7 +120,7 @@ export type FeaturePopoverDefaultProps = {
   theme: 'accent';
 };
 
-export type FeaturePopoverTriggerProps = BoxProps & {
+export type FeaturePopoverTriggerProps = NSBox.Props & {
   theme?: FeaturePopoverProps['theme'];
 };
 
@@ -139,5 +132,5 @@ export type FeaturePopoverSpotProps = {
 export type FeaturePopoverComponent = Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
   Trigger: Intergalactic.Component<NSPopper.Trigger.Component, FeaturePopoverTriggerProps>;
   Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
-  Spot: Intergalactic.Component<typeof Box, FeaturePopoverSpotProps>;
+  Spot: Intergalactic.Component<NSBox.Component, FeaturePopoverSpotProps>;
 };

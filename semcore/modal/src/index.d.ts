@@ -1,11 +1,11 @@
-import type { FadeInOutProps, SlideProps, Box, BoxProps, NSPortal } from '@semcore/base-components';
+import type { FadeInOutProps, SlideProps, NSBox, NSPortal } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 export type ModalProps = NSPortal.Props &
-  BoxProps &
+  NSBox.Props &
   FadeInOutProps & {
     /** Duration of animation, ms
      * @default 200
@@ -35,7 +35,7 @@ export type ModalProps = NSPortal.Props &
     ghost?: boolean;
   };
 
-export type WindowProps = BoxProps & SlideProps & {};
+export type WindowProps = NSBox.Props & SlideProps & {};
 
 export type ModalContext = {
   getOverlayProps: PropGetterFn;
@@ -45,7 +45,7 @@ export type ModalContext = {
 
 declare const Modal: Intergalactic.Component<'div', ModalProps, ModalContext> & {
   Window: Intergalactic.Component<'div', WindowProps>;
-  Overlay: typeof Box;
+  Overlay: NSBox.Component;
   Close: typeof Button;
   Title: Intergalactic.Component<'div', NSText.Props>;
 };

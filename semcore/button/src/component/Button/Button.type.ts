@@ -1,9 +1,9 @@
-import type { BoxProps, NSNeighborLocation, NSHint } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation, NSHint } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
-export type ButtonProps = BoxProps &
+export type ButtonProps = NSBox.Props &
   NSNeighborLocation.Detect.Props & {
   /** Button activity state */
     active?: boolean;
@@ -42,7 +42,7 @@ export type ButtonDefaultProps = {
 
 export type ButtonTextProps = NSText.Props;
 
-export type ButtonAddonProps = BoxProps;
+export type ButtonAddonProps = NSBox.Props;
 
 export type ButtonContext = {
   getTextProps: PropGetterFn;

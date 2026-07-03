@@ -1,11 +1,11 @@
-import type { FadeInOutProps, Box, BoxProps } from '@semcore/base-components';
+import type { FadeInOutProps, NSBox } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
 
-export type NoticeProps = BoxProps &
+export type NoticeProps = NSBox.Props &
   FadeInOutProps & {
     /** Property for managing visibility of Notice */
     hidden?: boolean;
@@ -22,7 +22,7 @@ export type NoticeProps = BoxProps &
     locale?: string;
   };
 
-export type NoticeLabelProps = BoxProps & {
+export type NoticeLabelProps = NSBox.Props & {
   theme?: NoticeTheme;
 };
 
@@ -60,8 +60,8 @@ export type NoticeSmartProps = NoticeProps & {
 
 declare const Notice: Intergalactic.Component<'div', NoticeProps, NoticeContext> & {
   Label: Intergalactic.Component<'div', NoticeLabelProps>;
-  Actions: typeof Box;
-  Content: typeof Box;
+  Actions: NSBox.Component;
+  Content: NSBox.Component;
   Title: typeof Text;
   Text: typeof Text;
   Close: typeof Button;

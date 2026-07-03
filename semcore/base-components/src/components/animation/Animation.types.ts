@@ -1,6 +1,6 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 
-import type { BoxProps } from '../flex-box';
+import type { NSBox } from '../flex-box';
 
 type CssTimingFunction =
   | 'ease'
@@ -11,7 +11,7 @@ type CssTimingFunction =
   | 'step-start'
   | 'step-end';
 
-export type AnimationProps = BoxProps & {
+export type AnimationProps = NSBox.Props & {
   /** The property is responsible for the visibility of the element */
   visible?: boolean;
   /** Animation duration in ms

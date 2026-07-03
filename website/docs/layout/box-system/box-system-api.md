@@ -13,7 +13,7 @@ import { Box } from '@semcore/ui/base-components';
 <Box />;
 ```
 
-<TypesView type="BoxProps" :types={...types} />
+<TypesView type="NSBox.Props" :types={...types} />
 
 ## Flex
 
@@ -24,6 +24,6 @@ import { Flex } from '@semcore/ui/base-components';
 <Flex />;
 ```
 
-<TypesView type="FlexProps" :types={...types} />
+<TypesView type="NSFlex.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

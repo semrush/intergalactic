@@ -1,4 +1,4 @@
-import type { FlexProps } from '@semcore/base-components';
+import type { NSFlex } from '@semcore/base-components';
 import type { FilterTrigger } from '@semcore/base-trigger';
 import type { ButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
@@ -58,7 +58,7 @@ declare const AddFilterDropdownType: Intergalactic.Component<
 };
 
 export type FilterData = Record<string, any>;
-export type AddFilterProps = FlexProps & {
+export type AddFilterProps = NSFlex.Props & {
   /**
    * Action to perform on `Clear filters` button click.
    */

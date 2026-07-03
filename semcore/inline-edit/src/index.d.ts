@@ -1,7 +1,7 @@
-import type { FadeInOutProps, BoxProps } from '@semcore/base-components';
+import type { FadeInOutProps, NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
-export type InlineEditProps = BoxProps & {
+export type InlineEditProps = NSBox.Props & {
   /**
    * Determines which children should be displayed
    */
@@ -22,9 +22,9 @@ export type InlineEditProps = BoxProps & {
   locale?: string;
 };
 
-export type InlineEditViewProps = BoxProps & FadeInOutProps & {};
+export type InlineEditViewProps = NSBox.Props & FadeInOutProps & {};
 
-export type InlineEditEditProps = BoxProps & FadeInOutProps & {};
+export type InlineEditEditProps = NSBox.Props & FadeInOutProps & {};
 
 type InputCtx = {
   getViewProps: PropGetterFn;

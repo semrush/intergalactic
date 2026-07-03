@@ -1,8 +1,8 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 declare namespace NSCounter {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /** Counter theme or custom color */
     theme?: 'warning' | 'danger' | 'info' | string;
 
