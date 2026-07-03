@@ -7,7 +7,10 @@ const locators = {
   input: (page: Page) => page.getByRole('combobox'),
   optionByText: (page: Page, text: string) => page.getByRole('option', { name: new RegExp(text, 'i') }),
   startTypingStatus: (page: Page) => page.getByText('Start typing to see options'),
-  loadingStatus: (page: Page) => page.getByText('Loading...'),
+  // Scope to the visible status item: the SR-only role="status" live region also carries
+  // the "Loading..." text (data-ui-name="Box"), so a bare getByText would match 2 elements.
+  loadingStatus: (page: Page) =>
+    page.locator('[data-ui-name="Select.StatusItem"]').filter({ hasText: 'Loading...' }),
   inputWrapper: (page: Page) => page.locator('[data-ui-name="AutoSuggest.Trigger"]'),
   outline: (page: Page) =>
     page.locator('[data-ui-name="AutoSuggest.Trigger"] div:not([data-ui-name])').first(),
@@ -311,6 +314,36 @@ test.describe(TAG.FUNCTIONAL, () => {
           await expect(loadingItem).not.toBeVisible({ timeout: 600 });
           await settle();
           await expect(locators.options(page)).toHaveCount(0);
+        });
+
+        // Enter reopens a closed menu (same effect as re-focusing): it must work whether the
+        // menu was closed by selecting an item or by pressing Escape.
+        await test.step('pressing Enter reopens the closed menu (after selection and after Escape)', async () => {
+          // Reset to a clean focused state: the previous step leaves the menu "escaped"
+          // (openOnChanges disabled), and a plain fill() on an already-focused input would
+          // not re-enable typing-to-open. A real blur+focus re-triggers handleFocus.
+          await input.evaluate((node: HTMLInputElement) => node.blur());
+          await input.click();
+          await input.fill('');
+          await openWithMatch();
+
+          await test.step('closed by selecting an item', async () => {
+            await page.keyboard.press('ArrowDown');
+            await page.keyboard.press('Enter'); // selects the option → menu closes
+            await locators.options(page).first().waitFor({ state: 'hidden' });
+            await expect(locators.options(page)).toHaveCount(0);
+
+            await page.keyboard.press('Enter'); // Enter reopens the closed menu
+            await expect(option).toBeVisible();
+          });
+
+          await test.step('closed by pressing Escape', async () => {
+            await page.keyboard.press('Escape');
+            await expect(locators.options(page)).toHaveCount(0);
+
+            await page.keyboard.press('Enter'); // Enter reopens the closed menu
+            await expect(option).toBeVisible();
+          });
         });
       });
     });
