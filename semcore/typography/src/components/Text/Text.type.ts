@@ -1,6 +1,6 @@
 import type {
   NSBox,
-  EllipsisSettings,
+  NSEllipsis,
   NSHint,
   Ellipsis as EllipsisInstance,
 } from '@semcore/base-components';
@@ -65,7 +65,7 @@ declare namespace NSText {
     ellipsis?: boolean | EllipsisInstance;
   } & {
     /** Settings for an Ellipsis */
-    [K in keyof EllipsisSettings as `ellipsis:${string & K}`]?: EllipsisSettings[K];
+    [K in keyof NSEllipsis.Settings as `ellipsis:${string & K}`]?: NSEllipsis.Settings[K];
   };
 
   type Props = NSBox.Props & NSText.BaseProps &
