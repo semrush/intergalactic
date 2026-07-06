@@ -18,6 +18,7 @@ import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 export type SelectInputSearch = NSInput.Value.Props & {};
+import type { NSAutoSuggest } from './components/AutoSuggest/AutoSuggest.type';
 
 export type OptionValue = string | number;
 export type SelectValue = string | number | Array<string | number> | null;
@@ -172,5 +173,7 @@ declare const wrapSelect: <PropsExtending extends {}>(
   ) => React.ReactNode,
 ) => IntergalacticSelectComponent<PropsExtending>;
 
-export { InputSearch, wrapSelect };
+declare const AutoSuggest: NSAutoSuggest.Component;
+
+export { InputSearch, wrapSelect, AutoSuggest, NSAutoSuggest };
 export default Select;

@@ -703,7 +703,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(search).toBeFocused();
 
       await page.keyboard.press('Tab');
-      if (browserName == 'firefox') await page.keyboard.press('Tab'); // because in ff one additional focus on the list (bug)
       await expect(locators.item(page).nth(30)).toHaveClass(/highlighted/);
     });
 
@@ -1746,9 +1745,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify result count is exposed to screen readers only', async () => {
-        const status = page.locator('#search-result');
+        const status = page.getByRole('status');
         await expect(status).toContainText('2 results found');
-        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(status).toHaveAttribute('aria-live', 'polite');
         await expect(page.locator('text="Nothing found"')).toHaveCount(0);
       });
     });
