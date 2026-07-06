@@ -702,7 +702,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await locators.label(page).click();
       await locators.options(page).first().waitFor({ state: 'visible' });
       await page.keyboard.type('test');
-      await expect(page.locator('text="Nothing found"')).toBeVisible();
+      await expect(page.getByText('Nothing found')).toBeVisible();
       await expect(locators.options(page)).toHaveCount(0);
       await expect(clear).toBeVisible();
     });
