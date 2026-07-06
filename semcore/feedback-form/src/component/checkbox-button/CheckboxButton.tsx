@@ -3,10 +3,10 @@ import Checkbox from '@semcore/checkbox';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
+import type { NSCheckboxButton } from './CheckboxButton.type';
 import style from '../../style/checkbox-button.shadow.css';
-import type { FeedbackRatingCheckboxComponent, FeedbackRatingCheckboxProps } from '../feedback-rating/FeedbackRating.type';
 
-class CheckboxButtonRoot extends Component<FeedbackRatingCheckboxProps> {
+class CheckboxButtonRoot extends Component<NSCheckboxButton.Props> {
   static style = style;
 
   checkboxRef = React.createRef<HTMLInputElement>();
@@ -37,7 +37,7 @@ class CheckboxButtonRoot extends Component<FeedbackRatingCheckboxProps> {
 }
 
 const CheckboxButton = createComponent<
-  FeedbackRatingCheckboxComponent,
+  NSCheckboxButton.Component,
   typeof CheckboxButtonRoot
 >(CheckboxButtonRoot);
 
