@@ -1,5 +1,5 @@
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { InputProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 
 import type { NSColorPicker } from './ColorPicker.type';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -45,7 +45,7 @@ declare namespace NSPaletteManager {
   }
 
   namespace InputColor {
-    type Props = InputProps & {
+    type Props = NSInput.Props & {
       /**
        * Text value of input
        */

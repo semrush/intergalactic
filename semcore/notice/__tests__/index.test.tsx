@@ -64,8 +64,8 @@ describe('NoticeSmart', () => {
     const { container } = render(
       <NoticeSmart text='Content' closable onClose={onClose} />,
     );
-    const closeBtn = container.querySelector('[data-ui-name="Notice.Close"]');
-    closeBtn.click();
+    const closeBtn = container.querySelector<HTMLElement>('[data-ui-name="Notice.Close"]');
+    closeBtn?.click();
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 

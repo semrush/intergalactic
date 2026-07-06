@@ -1,6 +1,8 @@
 import { FadeInOut, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import logger from '@semcore/core/lib/utils/logger';
@@ -9,14 +11,22 @@ import CloseIconM from '@semcore/icon/Close/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import type { NSNotice } from './Notice.type';
 import style from './style/notice.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-function isCustomTheme(theme) {
+function isCustomTheme(theme: string) {
   return !['danger', 'warning', 'success', 'info', 'muted'].includes(theme);
 }
 
-class RootNotice extends Component {
+class RootNotice extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSNotice.Component>,
+  typeof RootNotice.enhance,
+  {},
+  WithI18nEnhanceProps,
+  {},
+  NSNotice.DefaultProps
+> {
   static displayName = 'Notice';
   static style = style;
   static enhance = [
@@ -24,27 +34,30 @@ class RootNotice extends Component {
     cssVariableEnhance({
       variable: '--intergalactic-duration-popper',
       fallback: '200',
+      // TODO: Types are incompatible. For some reason string type isn't recognized as a valid value.
+      // Leave it with ts-ignore annotation.
+      // @ts-ignore
       map: Number.parseInt,
       prop: 'duration',
     }),
     resolveColorEnhance(),
-  ];
+  ] as const;
 
   static defaultProps = {
     theme: 'info',
     i18n: localizedMessages,
     locale: 'en',
-  };
+  } as const;
 
-  ref = React.createRef();
+  ref = React.createRef<HTMLDivElement>();
 
   componentDidMount() {
     if (
       this.ref.current &&
       process.env.NODE_ENV !== 'production' &&
-      !['muted', 'danger'].includes(this.props.theme)
+      !['muted', 'danger'].includes(this.props.theme ?? '')
     ) {
-      const hasTitle = (node) => {
+      const hasTitle = (node: HTMLDivElement) => {
         if (node.hasAttribute('aria-label')) return true;
         if (node.hasAttribute('aria-labelledby')) return true;
         if (node.hasAttribute('title')) return true;
@@ -84,7 +97,7 @@ class RootNotice extends Component {
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
-    let ariaLabel = getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification');
+    let ariaLabel: string | undefined = getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification');
 
     if (theme === 'muted') {
       ariaLabel = undefined;
@@ -108,34 +121,52 @@ class RootNotice extends Component {
   }
 }
 
-function Label({ styles, theme, resolveColor }) {
+function Label(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSNotice.Label.Component, typeof RootNotice, 'Label'>,
+) {
+  const { styles, theme, resolveColor } = props;
   const SLabel = Root;
   const useTheme = isCustomTheme(theme) ? 'custom' : theme;
   const color = resolveColor(theme);
   return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} color={color} />);
 }
 
-function Title({ styles }) {
+function Title(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Title.Component>,
+) {
+  const { styles } = props;
   const STitle = Root;
   return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight='bold' />);
 }
 
-function NoticeText({ styles }) {
+function NoticeText(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Text.Component>,
+) {
+  const { styles } = props;
   const SText = Root;
   return sstyled(styles)(<SText render={Text} tag='div' />);
 }
 
-function Actions({ styles }) {
+function Actions(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Actions.Component>,
+) {
+  const { styles } = props;
   const SActions = Root;
   return sstyled(styles)(<SActions render={Box} />);
 }
 
-function Content({ styles }) {
+function Content(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Content.Component>,
+) {
+  const { styles } = props;
   const SContent = Root;
   return sstyled(styles)(<SContent render={Box} />);
 }
 
-function Close({ styles, getI18nText }) {
+function Close(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSNotice.Close.Component, typeof RootNotice, 'Close'>,
+) {
+  const { styles, getI18nText } = props;
   const SCloseIcon = Root;
   return sstyled(styles)(
     <SCloseIcon
@@ -153,7 +184,10 @@ function Close({ styles, getI18nText }) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/notice/notice-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice/notice-code/|Examples}
  */
-const Notice = createComponent(RootNotice, {
+const Notice = createComponent<
+  NSNotice.Component,
+  typeof RootNotice
+>(RootNotice, {
   Label,
   Title: Title,
   Text: NoticeText,

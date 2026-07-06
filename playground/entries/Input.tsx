@@ -2,7 +2,7 @@ import ArrowRightM from '@semcore/icon/ArrowRight/m';
 import CheckM from '@semcore/icon/Check/m';
 import { ButtonLink } from '@semcore/ui/button';
 import Input from '@semcore/ui/input';
-import type { InputProps } from '@semcore/ui/input';
+import type { NSInput } from '@semcore/ui/input';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';
@@ -14,7 +14,7 @@ type AdditionalJSXProps = {
   after: boolean;
   readOnly: boolean;
 };
-export type InputJSXProps = JSXProps<InputProps> & AdditionalJSXProps;
+export type InputJSXProps = JSXProps<NSInput.Props> & AdditionalJSXProps;
 
 function getJSX(props: InputJSXProps) {
   return (
