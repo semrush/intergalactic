@@ -3,6 +3,7 @@ import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
+import type { FieldRenderProps } from 'react-final-form';
 
 import FeedbackForm, { FeedbackRating } from '../src';
 
@@ -18,7 +19,9 @@ describe('FeedbackForm', () => {
 
     const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit}>
-        <FeedbackForm.Item name='input'>{({ input }) => <input {...input} />}</FeedbackForm.Item>
+        <FeedbackForm.Item name='input'>
+          {({ input }: FieldRenderProps<string>) => <input {...input} />}
+        </FeedbackForm.Item>
         <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
     );
@@ -29,13 +32,13 @@ describe('FeedbackForm', () => {
   });
 
   test.sequential('Verify not call onSubmit for validation error', async () => {
-    const required = (value) => (value ? undefined : 'Required');
+    const required = (value: string) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
     const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit}>
         <FeedbackForm.Item name='input' validate={required}>
-          {({ input }) => <input {...input} />}
+          {({ input }: FieldRenderProps<string>) => <input {...input} />}
         </FeedbackForm.Item>
         <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
@@ -47,13 +50,13 @@ describe('FeedbackForm', () => {
   });
 
   test('Verify validationOnBlur=true (default behavior)', async () => {
-    const required = (value) => (value ? undefined : 'Required');
+    const required = (value: string) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
     const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit}>
         <FeedbackForm.Item name='description' validate={required}>
-          {({ input, meta }) => <input data-testid='input' {...input} />}
+          {({ input }: FieldRenderProps<string>) => <input data-testid='input' {...input} />}
         </FeedbackForm.Item>
         <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
@@ -63,18 +66,18 @@ describe('FeedbackForm', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
-    expect(Input.attributes.state.value).toBe('invalid');
+    expect(Input.getAttribute('state')).toBe('invalid');
     unmount();
   });
 
   test('Verify validationOnBlur=false', async () => {
-    const required = (value) => (value ? undefined : 'Required');
+    const required = (value: string) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
     const { getByTestId, unmount } = render(
       <FeedbackForm onSubmit={onSubmit} validateOnBlur={false}>
         <FeedbackForm.Item name='description' validate={required}>
-          {({ input, meta }) => <input data-testid='input' {...input} />}
+          {({ input }: FieldRenderProps<string>) => <input data-testid='input' {...input} />}
         </FeedbackForm.Item>
         <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
@@ -84,15 +87,15 @@ describe('FeedbackForm', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
-    expect(Input.attributes.state.value).toBe('normal');
+    expect(Input.getAttribute('state')).toBe('normal');
 
     await userEvent.keyboard('[Enter]');
-    expect(Input.attributes.state.value).toBe('invalid');
+    expect(Input.getAttribute('state')).toBe('invalid');
     unmount();
   });
 
   test('Verify Escape bubbles from controlled invalid item tooltip', async () => {
-    const required = (value) => (value ? undefined : 'Required');
+    const required = (value: string) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
     const onKeyDown = vi.fn();
 
@@ -129,16 +132,23 @@ describe('5-star FeedbackForm', () => {
   beforeEach(cleanup);
 
   test('Verify no submit if invalid', async () => {
-    const required = (value) => (value ? undefined : 'Required');
+    const required = (value: string) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
     const { getByText, unmount } = render(
       <FeedbackRating
-        initialValues={{ input: '' }}
+        initialValues={{ input: '', rating: 0 }}
         onSubmit={onSubmit}
         formConfig={[{ key: 'input', label: 'test input', type: 'input', validate: required }]}
         visible
         rating={3}
+        status='default'
+        notificationVisible={false}
+        notificationText=''
+        onNotificationClose={vi.fn()}
+        onVisibleChange={vi.fn()}
+        header='Feedback'
+        errorFeedbackEmail='test@example.com'
       />,
     );
 
@@ -157,7 +167,7 @@ describe('FeedbackRating - Props and Rendering', () => {
   beforeEach(cleanup);
 
   const defaultProps = {
-    status: 'default',
+    status: 'default' as const,
     notificationVisible: true,
     notificationText: 'Test notification',
     rating: 0,

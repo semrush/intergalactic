@@ -11,7 +11,7 @@ import Modal from '@semcore/ui/modal';
 <Modal />;
 ```
 
-<TypesView type="ModalProps" :types={...types} />
+<TypesView type="NSModal.Props" :types={...types} />
 
 ## Modal.Overlay
 

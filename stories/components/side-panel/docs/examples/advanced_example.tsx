@@ -1,9 +1,9 @@
 import Button from '@semcore/ui/button';
 import SidePanel from '@semcore/ui/side-panel';
-import type { SidePanelProps } from '@semcore/ui/side-panel';
+import type { NSSidePanel } from '@semcore/ui/side-panel';
 import React from 'react';
 
-const Demo = (props: SidePanelProps) => {
+const Demo = (props: NSSidePanel.Props) => {
   const [visible, setVisible] = React.useState(false);
 
   return (
@@ -31,7 +31,7 @@ const Demo = (props: SidePanelProps) => {
   );
 };
 
-export const defaultProps: SidePanelProps = {
+export const defaultProps: NSSidePanel.Props = {
   placement: undefined,
   closable: undefined,
   disablePreventScroll: undefined,

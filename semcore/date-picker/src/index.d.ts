@@ -9,7 +9,7 @@ import type { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/co
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type Divider from '@semcore/divider';
 import type { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
-import type { InputProps, InputValueProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 import type Input from '@semcore/input';
 import type { InputMaskValueProps } from '@semcore/input-mask';
 import type { TooltipProps } from '@semcore/tooltip';
@@ -272,7 +272,7 @@ export type DatePickerHandlers = {
   visible: (index: boolean) => void;
 };
 
-export type BaseInputTriggerProps = InputProps &
+export type BaseInputTriggerProps = NSInput.Props &
   TooltipProps & {
     /**
      * Date input placeholder characters
@@ -313,7 +313,7 @@ declare const InputTrigger: Intergalactic.Component<
 > & {
   Addon: typeof Input.Addon;
   Value: typeof Input.Value;
-  SingleDateInput: Intergalactic.Component<'div', InputProps & SingleDateInputProps> & {
+  SingleDateInput: Intergalactic.Component<'div', NSInput.Props & SingleDateInputProps> & {
     Indicator: typeof Input.Addon;
     MaskedInput: Intergalactic.Component<'input', InputMaskValueProps & DatePickerMaskedInputProps>;
   };
@@ -325,7 +325,7 @@ declare const RangeInputTrigger: Intergalactic.Component<
 > & {
   Addon: typeof Input.Addon;
   Value: typeof Input.Value;
-  DateRange: Intergalactic.Component<'div', InputValueProps & DateRangeProps> & {
+  DateRange: Intergalactic.Component<'div', NSInput.Value.Props & DateRangeProps> & {
     Indicator: typeof Input.Addon;
     RangeSep: typeof Input.Addon;
     FromMaskedInput: Intergalactic.Component<

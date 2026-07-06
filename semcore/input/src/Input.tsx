@@ -1,22 +1,31 @@
 import { NeighborLocation, Box, InvalidStateBox } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import React from 'react';
 
+import type { NSInput } from './Input.type';
 import style from './style/input.shadow.css';
 
-class Input extends Component {
+class Input extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSInput.Component>,
+  [],
+  {},
+  {},
+  {},
+  NSInput.DefaultProps
+> {
   static displayName = 'Input';
 
   static defaultProps = {
     size: 'm',
     state: 'normal',
-  };
+  } as const;
 
   static style = style;
 
-  inputRef = React.createRef();
+  inputRef = React.createRef<HTMLInputElement>();
 
-  handleMouseDownAddon = (event) => {
+  handleMouseDownAddon = (event: React.MouseEvent) => {
     event.preventDefault();
     this.inputRef.current?.focus();
   };
@@ -106,12 +115,19 @@ class Input extends Component {
   }
 }
 
-class Value extends Component {
+class Value extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSInput.Value.Component, typeof Input, 'Value'>,
+  [],
+  NSInput.Value.Handlers,
+  {},
+  {},
+  NSInput.Value.DefaultProps
+> {
   static defaultProps = {
     defaultValue: '',
   };
 
-  inputRef = React.createRef();
+  inputRef = React.createRef<HTMLInputElement>();
 
   componentDidMount() {
     if (this.asProps.autoFocus) {
@@ -123,7 +139,7 @@ class Value extends Component {
 
   uncontrolledProps() {
     return {
-      value: (e) => e.target.value,
+      value: (e: React.ChangeEvent<HTMLInputElement>) => e.target.value,
     };
   }
 
@@ -151,7 +167,9 @@ class Value extends Component {
   }
 }
 
-function Addon(props) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInput.Addon.Component, typeof Input, 'Addon'>,
+) {
   const SAddon = Root;
   const { Children, styles, neighborLocation } = props;
   return (
@@ -171,7 +189,10 @@ function Addon(props) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/input/input-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input/input-code/|Examples}
  */
-export default createComponent(Input, {
+export default createComponent<
+  NSInput.Component,
+  typeof Input
+>(Input, {
   Addon,
   Value,
 });
