@@ -13,6 +13,6 @@ import Textarea from '@semcore/ui/textarea';
 <Textarea />;
 ```
 
-<TypesView type="TextareaProps" :types={...types} />
+<TypesView type="NSTextarea.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

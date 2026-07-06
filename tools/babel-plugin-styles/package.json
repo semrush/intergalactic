@@ -15,7 +15,7 @@
     "css-selector-tokenizer": "0.7.3",
     "find-package-json": "1.2.0",
     "fs-extra": "9.1.0",
-    "postcss": "8.4.33",
+    "postcss": "8.5.15",
     "postcss-color-mod-function": "3.0.3",
     "postcss-hover-media-feature": "^1.0.2",
     "postcss-import-sync2": "1.2.0",

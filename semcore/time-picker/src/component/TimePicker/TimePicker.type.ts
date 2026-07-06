@@ -1,10 +1,10 @@
 import type { Box } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { InputProps, InputValueProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 
 import type { TimePickerFormatProps } from '../PickerFormat/PickerFormat.type';
 
-export type TimePickerProps = Omit<InputProps, 'size'> & {
+export type TimePickerProps = Omit<NSInput.Props, 'size'> & {
   /** Time in the hh:mm format */
   value?: string;
   /** Default value if `value` property is not provided */
@@ -36,7 +36,7 @@ export type TimePickerSeparatorProps = {
   disabled?: boolean;
 };
 
-export type TimePickerItemProps = InputValueProps & {
+export type TimePickerItemProps = NSInput.Value.Props & {
   /** Step for changing of the values in the dropdown list */
   step?: number;
 };

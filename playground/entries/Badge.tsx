@@ -1,4 +1,4 @@
-import type { BadgeProps } from '@semcore/ui/badge';
+import type { NSBadge } from '@semcore/ui/badge';
 import Badge from '@semcore/ui/badge';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type BadgeJSXProps = JSXProps<BadgeProps>;
+export type BadgeJSXProps = JSXProps<NSBadge.Props>;
 
 function getJSX({ handleControlChange, ...badgeProps }: BadgeJSXProps) {
   return <Badge {...badgeProps} />;
