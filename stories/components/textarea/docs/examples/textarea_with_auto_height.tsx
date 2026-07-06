@@ -1,10 +1,10 @@
 import { Box } from '@semcore/ui/base-components';
-import type { TextareaProps } from '@semcore/ui/textarea';
+import type { NSTextarea } from '@semcore/ui/textarea';
 import Textarea from '@semcore/ui/textarea';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleTextareaProps = TextareaProps & { placeholder: string; disabled: boolean; readOnly: boolean; autoFocus: boolean };
+type ExampleTextareaProps = NSTextarea.Props & { placeholder: string; disabled: boolean; readOnly: boolean; autoFocus: boolean };
 
 const Demo = (props: ExampleTextareaProps) => {
   return (

@@ -1,4 +1,4 @@
-import type { TextareaProps } from '@semcore/ui/textarea';
+import type { NSTextarea } from '@semcore/ui/textarea';
 import Textarea from '@semcore/ui/textarea';
 import React from 'react';
 
@@ -12,7 +12,7 @@ type AdditionalJSXProps = {
   min: number;
   max: number;
 };
-export type TextareaJSXProps = JSXProps<TextareaProps> & AdditionalJSXProps;
+export type TextareaJSXProps = JSXProps<NSTextarea.Props> & AdditionalJSXProps;
 
 function getJSX(props: TextareaJSXProps) {
   return (

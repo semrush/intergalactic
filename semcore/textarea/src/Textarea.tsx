@@ -1,4 +1,5 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
@@ -6,8 +7,16 @@ import rafTrottle from '@semcore/core/lib/utils/rafTrottle';
 import React from 'react';
 
 import style from './style/textarea.shadow.css';
+import type { NSTextarea } from './Textarea.type';
 
-class Textarea extends Component {
+class Textarea extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTextarea.Component>,
+  [],
+  NSTextarea.Handlers,
+  {},
+  {},
+  NSTextarea.DefaultProps
+> {
   static displayName = 'Textarea';
   static defaultProps = {
     size: 'm',
@@ -15,16 +24,16 @@ class Textarea extends Component {
     resize: 'none',
     minRows: 2,
     defaultValue: '',
-  };
+  } as const;
 
   static style = style;
 
-  node = null;
+  node: HTMLTextAreaElement | null = null;
 
-  uncontrolledProps() {
+  uncontrolledProps(): NSTextarea.Handlers {
     return {
       value: [
-        (e) => e.target.value,
+        (e: React.ChangeEvent<HTMLTextAreaElement>) => e.target.value,
         () => {
           this.calculateRows();
         },
@@ -32,7 +41,7 @@ class Textarea extends Component {
     };
   }
 
-  setRef = (node) => {
+  setRef = (node: typeof this.node) => {
     if (!node) return;
     this.node = node;
   };
@@ -53,7 +62,7 @@ class Textarea extends Component {
     if (!node || !canUseDOM() || rows || !(minRows || maxRows)) return;
 
     const previousRows = node.rows;
-    const clonnedNode = node.cloneNode(true);
+    const clonnedNode = node.cloneNode(true) as HTMLTextAreaElement;
     const computedStyle = window.getComputedStyle(node);
 
     for (let i = 0; i < computedStyle.length; i++) {
@@ -86,7 +95,7 @@ class Textarea extends Component {
     if (computed <= minRows) {
       node.rows = minRows;
     }
-    if (computed >= maxRows) {
+    if (maxRows !== undefined && computed >= maxRows) {
       node.rows = maxRows;
     }
     if (
@@ -114,7 +123,7 @@ class Textarea extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const { minRows, maxRows, value } = this.asProps;
     if (
       prevProps.minRows !== minRows ||
@@ -142,4 +151,7 @@ class Textarea extends Component {
  *
  * {@link https://developer.semrush.com/intergalactic/components/textarea/textarea-api/|API} | {@link https://developer.semrush.com/intergalactic/components/textarea/textarea-code/|Examples}
  */
-export default createComponent(Textarea);
+export default createComponent<
+  NSTextarea.Component,
+  typeof Textarea
+>(Textarea);
