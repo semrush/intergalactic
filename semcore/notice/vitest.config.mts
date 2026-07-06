@@ -10,7 +10,6 @@ export default defineConfig({
   test: {
     include: [
       '__tests__/**/*.test.tsx',
-      '__tests__/**/*.test.jsx',
     ],
     environment: 'jsdom',
     setupFiles: [resolvePath(__dirname, '../../tools/testing-utils/setupTests')],

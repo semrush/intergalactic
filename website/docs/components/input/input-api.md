@@ -13,7 +13,7 @@ import Input from '@semcore/ui/input';
 <Input />;
 ```
 
-<TypesView type="InputProps" :types={...types} />
+<TypesView type="NSInput.Props" :types={...types} />
 
 ## Input.Value
 
@@ -24,7 +24,7 @@ import Input from '@semcore/ui/input';
 <Input.Value />;
 ```
 
-<TypesView type="InputValueProps" :types={...types} />
+<TypesView type="NSInput.Value.Props" :types={...types} />
 
 ## Input.Addon
 
@@ -37,6 +37,6 @@ import Input from '@semcore/ui/input';
 <Input.Addon />;
 ```
 
-<TypesView type="InputAddonProps" :types={...types} />
+<TypesView type="NSInput.Addon.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
