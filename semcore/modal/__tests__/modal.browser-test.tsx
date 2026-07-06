@@ -233,6 +233,55 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
+  test('Verify onClose fires with correct trigger for each close method', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/tests/examples/basic_usage.tsx', 'en');
+
+    // The story logs `console.log('Modal onClose', { trigger, type })` inside onClose.
+    // We run the closing action and wait for that console event, then read its payload.
+    const getClosePayload = async (action: () => Promise<void>) => {
+      const [msg] = await Promise.all([
+        page.waitForEvent('console', (m) => m.text().includes('Modal onClose')),
+        action(),
+      ]);
+      return (await msg.args()[1].jsonValue()) as { trigger: string; type?: string };
+    };
+
+    await test.step('Verify onClose fires with onCloseClick when close button clicked', async () => {
+      await locators.button(page, 'Open modal').click();
+      await locators.close(page).waitFor({ state: 'visible' });
+
+      const payload = await getClosePayload(() => locators.close(page).click());
+      expect(payload.trigger).toBe('onCloseClick');
+      await expect(locators.modal(page)).toHaveCount(0);
+    });
+
+    await test.step('Verify onClose fires with onEscape when Escape is pressed', async () => {
+      await locators.button(page, 'Open modal').click();
+      await locators.close(page).waitFor({ state: 'visible' });
+
+      const payload = await getClosePayload(() => page.keyboard.press('Escape'));
+      expect(payload.trigger).toBe('onEscape');
+      await expect(locators.modal(page)).toHaveCount(0);
+    });
+
+    await test.step('Verify onClose fires with onOutsideClick when overlay is clicked', async () => {
+      await locators.button(page, 'Open modal').click();
+      await locators.close(page).waitFor({ state: 'visible' });
+
+      const overlayBox = await locators.overlay(page).boundingBox();
+      expect(overlayBox).toBeTruthy();
+
+      // e is now optional in the typed onClose signature — trigger must still be correct.
+      const payload = await getClosePayload(() =>
+        page.mouse.click(overlayBox!.x + 5, overlayBox!.y + 5),
+      );
+      expect(payload.trigger).toBe('onOutsideClick');
+      await expect(locators.modal(page)).toHaveCount(0);
+    });
+  });
+
   test('Verify Closable modal keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@modal'],
   }, async ({ page }) => {

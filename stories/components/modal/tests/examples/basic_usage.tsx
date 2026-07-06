@@ -26,7 +26,10 @@ const Demo = (props: BasicModalProps) => {
 
   const [visible, setVisible] = React.useState(false);
   const handleOpen = React.useCallback(() => setVisible(true), []);
-  const handleClose = React.useCallback(() => setVisible(false), []);
+  const handleClose = React.useCallback<NonNullable<NSModal.Props['onClose']>>((trigger, e) => {
+    console.log('Modal onClose', { trigger, type: e?.type });
+    setVisible(false);
+  }, []);
   const modalTabIndex = !closable && !showCloseButton ? 0 : undefined;
 
   return (
@@ -49,7 +52,7 @@ const Demo = (props: BasicModalProps) => {
           {content}
         </Text>
         {showCloseButton && (
-          <Button use='primary' theme='success' size='l' onClick={handleClose}>
+          <Button use='primary' theme='success' size='l' onClick={() => setVisible(false)}>
             Close
           </Button>
         )}
