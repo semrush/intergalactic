@@ -206,12 +206,12 @@ class Value extends Component<
     return value.slice(0, dotIndex + 1 + stepPrecision);
   }
 
-  round(value: string) {
+  round(value: number): number {
     const { stepPrecision } = this;
 
     return stepPrecision === 0
       ? value
-      : Number.parseFloat(value).toPrecision(stepPrecision);
+      : Number(value.toPrecision(stepPrecision));
   }
 
   handleValidation = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -224,7 +224,7 @@ class Value extends Component<
       this.handlers.value('', event);
     } else {
       let numberValue = parseValueWithMinMax(Number.parseFloat(parsedValue), min, max);
-      const rounded = this.round(numberValue % step, step);
+      const rounded = this.round(numberValue % step);
       if (rounded !== 0) {
         if (rounded >= step / 2) {
           numberValue += step - rounded;
