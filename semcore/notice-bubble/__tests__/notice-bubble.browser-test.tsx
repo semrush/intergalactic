@@ -20,8 +20,7 @@ export const locators = {
  * =====================================================
  */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
-  test(
-    'Verify Notice with interactive inside keyboard interactions when focusLock = undefined',
+  test('Verify Notice with interactive inside keyboard interactions when focusLock = undefined',
     {
       tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
     },
@@ -33,22 +32,28 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
       const noticeBubbleContainer = page.locator('[data-ui-name="NoticeBubbleContainer"]');
 
-      await test.step('Verify close button focused and hint shown when notice opened by keyboard', async () => {
+      await test.step('Verify focus stays on the trigger when notice opened by keyboard', async () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'visible' });
+        // Notice no longer steals focus on open — focus stays on the trigger.
+        await expect(buttonTrigger).toBeFocused();
+        await expect(noticeBubbleContainer).toHaveAttribute('role', 'region');
+        await expect(noticeBubbleContainer).toHaveAttribute('aria-label', 'Notifications');
+        await expect(noticeBubbleContainer.locator('div').first()).toHaveAttribute('aria-live', 'polite');
+      });
+
+      await test.step('Verify TAB moves focus into the notice ', async () => {
+        await page.keyboard.press('Tab');
         await expect(locators.closeButton(page)).toBeFocused();
         await locators.closeHint(page).waitFor({ state: 'visible' });
         await page.waitForFunction(() => {
           const el = document.querySelector('[data-ui-name="Hint"]');
           return el && getComputedStyle(el).opacity === '1';
         });
-        await expect(noticeBubbleContainer).toHaveAttribute('role', 'region');
-        await expect(noticeBubbleContainer).toHaveAttribute('aria-label', 'Notifications');
-        await expect(noticeBubbleContainer.locator('div').first()).toHaveAttribute('aria-live', 'polite');
       });
 
-      await test.step('Verify focus goes to the next focusable element inside motice by TAB', async () => {
+      await test.step('Verify focus goes to the next focusable element inside notice by TAB', async () => {
         await page.keyboard.press('Tab');
         await expect(locators.link(page)).toBeFocused();
         await page.keyboard.press('Shift+Tab');
@@ -64,6 +69,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify focus returns to the trigger be Escape', async () => {
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'visible' });
+        // Focus stays on the trigger on open — Tab into the notice to interact.
+        await page.keyboard.press('Tab');
+        await expect(locators.closeButton(page)).toBeFocused();
         await locators.closeHint(page).waitFor({ state: 'visible' });
         await page.waitForFunction(() => {
           const el = document.querySelector('[data-ui-name="Hint"]');
@@ -76,36 +84,33 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(buttonTrigger).toBeFocused();
       });
 
-      await test.step('Verify shift tab returns focus to the trigger and 2 notices can appear', async () => {
+      await test.step('Verify multiple notices can be opened and focus stays on the trigger', async () => {
         await page.keyboard.press('Enter');
         await locators.closeButton(page).waitFor({ state: 'visible' });
-        await locators.closeHint(page).waitFor({ state: 'visible' });
-        await page.waitForFunction(() => {
-          const el = document.querySelector('[data-ui-name="Hint"]');
-          return el && getComputedStyle(el).opacity === '1';
-        });
-        await page.keyboard.press('Shift+Tab');
-        await locators.closeHint(page).waitFor({ state: 'hidden' });
         await expect(buttonTrigger).toBeFocused();
         await page.keyboard.press('Enter');
-        await locators.closeHint(page).first().waitFor({ state: 'visible' });
-        await page.waitForFunction(() => {
-          const el = document.querySelector('[data-ui-name="Hint"]');
-          return el && getComputedStyle(el).opacity === '1';
-        });
-
+        await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
         await expect(locators.closeButton(page)).toHaveCount(2);
-
-        await expect(locators.closeButton(page).nth(1)).toBeFocused();
+        await expect(buttonTrigger).toBeFocused();
       });
 
       if (browserName === 'firefox') return; // works unstable in playwright ff browser
-      await test.step('Verify focus cat go outside the notice because focusLock is undefined', async () => {
+      await test.step('Verify focus is not trapped and can move between notices and out because focusLock is undefined', async () => {
+        // Focus is on the trigger. Tab progresses through both notices without being trapped in either.
         await page.keyboard.press('Tab');
+        await expect(locators.closeButton(page).nth(0)).toBeFocused();
         await page.keyboard.press('Tab');
+        await expect(locators.link(page).nth(0)).toBeFocused();
         await page.keyboard.press('Tab');
+        // Focus moved into the second notice — proves it is not trapped within the first one.
+        await expect(locators.closeButton(page).nth(1)).toBeFocused();
+        await page.keyboard.press('Tab');
+        await expect(locators.link(page).nth(1)).toBeFocused();
+        await page.keyboard.press('Tab');
+        // Focus has left both notices entirely.
         await expect(locators.closeButton(page).nth(0)).not.toBeFocused();
         await expect(locators.closeButton(page).nth(1)).not.toBeFocused();
+        await expect(locators.link(page).nth(0)).not.toBeFocused();
         await expect(locators.link(page).nth(1)).not.toBeFocused();
         await expect(locators.closeButton(page).nth(1)).toBeVisible();
       });
@@ -120,10 +125,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
 
-    await test.step('Verify close button focused and hint shown when notice opened by keyboard', async () => {
+    await test.step('Verify focus stays on the trigger when notice opened by keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
+      // Notice no longer steals focus on open — focus stays on the trigger.
+      await expect(buttonTrigger).toBeFocused();
+    });
+
+    await test.step('Verify TAB moves focus into the notice to the close button and shows hint', async () => {
+      await page.keyboard.press('Tab');
       await expect(locators.closeButton(page)).toBeFocused();
       await locators.closeHint(page).waitFor({ state: 'visible' });
       await page.waitForFunction(() => {
@@ -153,6 +164,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await test.step('Verify focus returns to the trigger be Escape', async () => {
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
+      // Focus stays on the trigger on open — Tab into the notice to interact.
       await page.keyboard.press('Tab');
       await page.keyboard.press('Escape');
       await page.keyboard.press('Escape');
@@ -161,7 +173,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test('Verify Notice with interactiove inside mouse interactions', {
+  test('Verify Notice with interactive inside mouse interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
@@ -183,10 +195,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.closeButton(page)).toHaveCount(2);
     });
 
-    await test.step('Verify focus returns to the trigger be Escape', async () => {
-      await page.keyboard.press('Escape');
-      await locators.closeButton(page).nth(1).waitFor({ state: 'hidden' });
-      await expect(buttonTrigger).toBeFocused();
+    await test.step('Verify notice closes by clicking the close button', async () => {
+      // Opened by mouse, focus stays on the trigger, so Escape cannot reach the notice — close via the button.
+      await locators.closeButton(page).nth(1).click();
       await expect(locators.closeButton(page)).toHaveCount(1);
     });
   });
@@ -270,6 +281,71 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(locators.closeButton(page)).toHaveCount(1);
       await new Promise((resolve) => setTimeout(resolve, 150));
       await expect(locators.closeButton(page)).toHaveCount(0);
+    });
+  });
+
+  test('Verify auto-close timer pauses on keyboard focus and resumes on blur', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
+      initialAnimation: false,
+      duration: 1000,
+      type: 'info',
+      focusLock: false,
+    });
+
+    const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+
+    await test.step('Verify timer pauses when keyboard focus enters the notice', async () => {
+      await page.keyboard.press('Tab');
+      await expect(locators.closeButton(page)).toBeFocused();
+      // Wait longer than the duration — the notice must stay open because the timer is paused.
+      await new Promise((resolve) => setTimeout(resolve, 1300));
+      await expect(locators.closeButton(page)).toBeVisible();
+    });
+
+    await test.step('Verify timer resumes when focus leaves the notice and it auto-closes', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await expect(buttonTrigger).toBeFocused();
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
+      await expect(buttonTrigger).toBeFocused();
+    });
+  });
+
+  test('Verify timer stays paused on mouse leave while keyboard focus is inside the notice', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@notice-bubble'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
+      initialAnimation: false,
+      duration: 1000,
+      type: 'info',
+      focusLock: false,
+    });
+
+    const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
+
+    await buttonTrigger.click();
+    await locators.closeButton(page).waitFor({ state: 'visible' });
+
+    await test.step('Hover the notice and move keyboard focus inside it', async () => {
+      await locators.closeButton(page).hover();
+      await page.keyboard.press('Tab');
+      await expect(locators.closeButton(page)).toBeFocused();
+    });
+
+    await test.step('Verify moving the mouse away keeps the timer paused because focus is inside', async () => {
+      await page.mouse.move(0, 0);
+      await new Promise((resolve) => setTimeout(resolve, 1300));
+      await expect(locators.closeButton(page)).toBeVisible();
+    });
+
+    await test.step('Verify the timer resumes once focus leaves the notice', async () => {
+      await page.keyboard.press('Shift+Tab');
+      await locators.closeButton(page).waitFor({ state: 'hidden' });
     });
   });
 
@@ -402,22 +478,25 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
     const container = page.locator('#notice-bubble-container');
     const notices = container.locator('[aria-live="polite"]');
+    const buttonBasic = locators.buttonTrigger(page, 'Show basic notice');
+    const buttonSuccess = locators.buttonTrigger(page, 'Show success notice');
 
     await test.step('Open first notice with keyboard', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await locators.closeButton(page).waitFor({ state: 'visible' });
       await expect(notices).toHaveCount(1);
+      // Notice no longer steals focus on open — focus stays on the trigger.
+      await expect(buttonBasic).toBeFocused();
     });
 
-    await test.step('Tab to second button and open second notice', async () => {
-      await page.keyboard.press('Enter');
-      await locators.closeButton(page).waitFor({ state: 'hidden' });
-
+    await test.step('Tab to the second manager button and open its notice', async () => {
       await page.keyboard.press('Tab');
+      await expect(buttonSuccess).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.closeButton(page).waitFor({ state: 'visible' });
-      await expect(notices).toHaveCount(1);
+      await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
+      await expect(notices).toHaveCount(2);
+      await expect(buttonSuccess).toBeFocused();
     });
   });
 
@@ -465,7 +544,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Basic notice', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -473,17 +552,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       focusLock: undefined,
     });
 
-    const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
-
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
     await page.keyboard.press('Shift+Tab');
     await locators.closeHint(page).waitFor({ state: 'hidden' });
     await page.keyboard.press('Enter');
-    await locators.closeHint(page).first().waitFor({ state: 'visible' });
+    await locators.closeButton(page).nth(1).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -499,6 +578,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await page.keyboard.press('Tab');
@@ -539,6 +620,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await page.waitForFunction(() => {
@@ -594,6 +677,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
@@ -610,6 +695,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await page.keyboard.press('Tab');
@@ -618,6 +705,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
     await page.waitForSelector('text="Try again"');
     await page.keyboard.press('Tab');
+    await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
   });
 
@@ -668,6 +756,8 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();

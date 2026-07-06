@@ -251,7 +251,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify Feature Popper closed by clicking on trigger', async () => {
       await locators.button(page, 'Export').click();
-      await locators.featurePopoverPopper(page).waitFor({ state: 'visible' });
+      await locators.featurePopoverPopper(page).waitFor({ state: 'hidden' });
       await expect(locators.featurePopoverPopper(page)).toHaveCount(0);
     });
   });

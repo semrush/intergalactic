@@ -18,6 +18,7 @@ class Timer {
   }
 
   pause() {
+    if (this.paused) return;
     if (this.timerId) {
       clearTimeout(this.timerId);
     }

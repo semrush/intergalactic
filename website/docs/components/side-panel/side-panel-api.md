@@ -11,7 +11,7 @@ import SidePanel from '@semcore/ui/side-panel';
 <SidePanel />;
 ```
 
-<TypesView type="SidePanelProps" :types={...types} />
+<TypesView type="NSSidePanel.Props" :types={...types} />
 
 ## SidePanel.Overlay
 
@@ -31,7 +31,7 @@ import SidePanel from '@semcore/ui/side-panel';
 
 This is a wrap over [Box](/layout/box-system/box-system-api#box) and `FocusLock`.
 
-<TypesView type="SidePanelPanelProps" :types={...types} />
+<TypesView type="NSSidePanel.Panel.Props" :types={...types} />
 
 ## SidePanel.Close
 

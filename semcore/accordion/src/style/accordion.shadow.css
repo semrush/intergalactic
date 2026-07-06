@@ -3,7 +3,6 @@ SItemToggle {
   align-items: center;
   position: relative;
   cursor: pointer;
-  outline: 0;
 }
 
 SItemToggle[use][use] {
