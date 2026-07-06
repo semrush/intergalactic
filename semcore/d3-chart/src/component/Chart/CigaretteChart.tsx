@@ -57,6 +57,7 @@ class CigaretteChartComponent extends AbstractChart<
       plotHeight: invertAxis && !props.plotHeight ? 28 : props.plotHeight,
       showPercentValueInTooltip: false,
       minimalBarWidth: DEFAULT_MINIMAL_BAR_WIDTH,
+      direction: invertAxis ? 'column' : 'row',
     } as const;
   };
 
@@ -147,7 +148,8 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   private computeCigaretteItems() {
-    const { plotWidth, plotHeight, data, invertAxis, minimalBarWidth } = this.asProps;
+    const { data, invertAxis, minimalBarWidth } = this.asProps;
+    const { plotWidth, plotHeight } = this;
 
     const dataDefinitions = invertAxis
       ? this.activeDataDefinitions
@@ -214,21 +216,22 @@ class CigaretteChartComponent extends AbstractChart<
   };
 
   get xScale() {
-    const { plotWidth } = this.asProps;
+    const { plotWidth } = this;
 
     return scaleLinear([0, plotWidth]);
   }
 
   get yScale() {
-    const { plotHeight } = this.asProps;
+    const { plotHeight } = this;
 
     return scaleLinear([plotHeight, 0]);
   }
 
   renderChart() {
-    const { invertAxis, data, uid, duration, patterns, plotHeight, plotWidth, onClick } =
+    const { invertAxis, data, uid, duration, patterns, onClick } =
       this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
+    const { plotWidth, plotHeight } = this;
 
     this.offset = 0;
 
@@ -415,13 +418,13 @@ class CigaretteChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig } = this.asProps;
-
+    const { styles, data, patterns, direction, invertAxis, a11yAltTextConfig } = this.asProps;
+    const { plotWidth, plotHeight } = this;
     const header = this.renderHeader();
 
     if (invertAxis) {
       return sstyled(styles)(
-        <SChart render={Flex} gap={6} direction='column' __excludeProps={['onClick', 'data']}>
+        <SChart render={Flex} gap={6} direction={direction} __excludeProps={['onClick', 'data']} ref={this.chartRef}>
           <Flex direction='column'>
             {header}
             <Plot
@@ -446,7 +449,7 @@ class CigaretteChartComponent extends AbstractChart<
     }
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']}>
+      <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']} ref={this.chartRef}>
         <Plot
           ref={this.plotRef}
           data={data}

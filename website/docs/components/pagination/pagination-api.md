@@ -46,7 +46,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput.Value />;
 ```
 
-<TypesView type="InputValueProps" :types={...types} />
+<TypesView type="NSInput.Value.Props" :types={...types} />
 
 ## Pagination.PrevPage
 

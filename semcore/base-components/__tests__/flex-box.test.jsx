@@ -141,6 +141,8 @@ describe('Box', () => {
       right: { css: 'right', values: ['2px'], tests: [2, '2px'] },
       bottom: { css: 'bottom', values: ['2px'], tests: [2, '2px'] },
       zIndex: { css: 'z-index', values: ['5'], tests: [5] },
+      resize: { css: 'resize', values: ['both'], tests: ['both'] },
+      overflow: { css: 'overflow', values: ['hidden'], tests: ['hidden'] },
     };
     const components = Object.keys(MAP_CSS).map((prop, id) => {
       const { tests } = MAP_CSS[prop];

@@ -267,12 +267,11 @@ class BarChartComponent extends AbstractChart<
     const {
       marginY = 40,
       marginX = 24,
-      plotWidth,
-      plotHeight,
       invertAxis,
       data,
       groupKey,
     } = this.asProps;
+    const { plotWidth, plotHeight } = this;
 
     const testItem = data[0][groupKey];
     const range = invertAxis
@@ -291,7 +290,8 @@ class BarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 40, marginX = 24, plotWidth, plotHeight, invertAxis, type } = this.asProps;
+    const { marginY = 40, marginX = 24, invertAxis, type } = this.asProps;
+    const { plotWidth, plotHeight } = this;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);
 

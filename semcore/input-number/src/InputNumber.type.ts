@@ -1,5 +1,5 @@
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
-import type { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 import type React from 'react';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -7,7 +7,7 @@ import type { LocalizedMessages } from './translations/__intergalactic-dynamic-l
 declare namespace NSInputNumber {
   type Value = string;
   type Size = 'm' | 'l';
-  type Props = InputProps & {
+  type Props = NSInput.Props & {
     /** Input size
      * @default m
      * */
@@ -29,7 +29,7 @@ declare namespace NSInputNumber {
   };
 
   namespace Value {
-    type Props = InputValueProps & {
+    type Props = NSInput.Value.Props & {
       /** Minimum value
        * @default Number.MIN_SAFE_INTEGER
        */
@@ -65,7 +65,7 @@ declare namespace NSInputNumber {
   }
 
   namespace Controls {
-    type Props = InputAddonProps & {
+    type Props = NSInput.Addon.Props & {
       /** Always displays controls (steppers)
        * @default false
        */
@@ -76,7 +76,7 @@ declare namespace NSInputNumber {
   }
 
   namespace Addon {
-    type Component = Intergalactic.Component<'div', InputAddonProps>;
+    type Component = Intergalactic.Component<'div', NSInput.Addon.Props>;
   }
 
   type Component = Intergalactic.Component<'div', Props, Ctx> & {

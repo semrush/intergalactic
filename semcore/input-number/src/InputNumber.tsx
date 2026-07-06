@@ -63,7 +63,10 @@ class InputNumber extends Component<
   };
 
   getValueProps() {
-    const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
+    const numberFormatter = new Intl.NumberFormat(this.asProps.locale, {
+      style: 'decimal',
+      maximumFractionDigits: 100,
+    });
 
     return {
       inputRef: this.inputRef,
@@ -182,18 +185,39 @@ class Value extends Component<
     };
   };
 
-  round(value: number, step: number) {
-    const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
-    return countDecimals === 0
+  get stepPrecision() {
+    const { step } = this.asProps;
+    const [_, decimals] = step?.toString().split('.') ?? [];
+
+    return decimals?.length ?? 0;
+  }
+
+  getDisplayValue(value: number) {
+    return value === 0 ? value : value.toFixed(this.stepPrecision);
+  }
+
+  limitDecimals(value: string) {
+    const { stepPrecision } = this;
+    if (stepPrecision === 0) return value;
+
+    const dotIndex = value.indexOf('.');
+    if (dotIndex === -1 || value.length - dotIndex - 1 <= stepPrecision) return value;
+
+    return value.slice(0, dotIndex + 1 + stepPrecision);
+  }
+
+  round(value: string) {
+    const { stepPrecision } = this;
+
+    return stepPrecision === 0
       ? value
-      : Number(value.toPrecision(countDecimals));
+      : Number.parseFloat(value).toPrecision(stepPrecision);
   }
 
   handleValidation = (event: React.FocusEvent<HTMLInputElement>) => {
     const { value, min, max, step } = this.asProps;
     const { displayValue } = this.state;
     const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
-    const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
 
     if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
@@ -208,9 +232,8 @@ class Value extends Component<
           numberValue -= rounded;
         }
       }
-      const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
 
-      this.handlers.value(String(numberValueRounded), event);
+      this.handlers.value(this.getDisplayValue(numberValue), event);
     }
   };
 
@@ -293,7 +316,7 @@ class Value extends Component<
     const digits = /^[0-9.-]+$/.test(value);
 
     if (digits || value === '') {
-      this.handlers.value(value, event);
+      this.handlers.value(this.limitDecimals(value), event);
     }
   };
 
@@ -465,11 +488,11 @@ class Value extends Component<
       numberValue = Number.parseFloat(value);
     }
 
-    if (!Number.isNaN(numberValue)) {
-      const newValue = numberValue + step <= max ? numberValue + step : max;
+    if (Number.isNaN(numberValue)) return;
 
-      this.handlers.value(newValue.toString(), event);
-    }
+    const nextValue = Math.min(numberValue + step, max);
+
+    this.handlers.value(this.getDisplayValue(nextValue), event);
   };
 
   stepDown = (event: StepEvent) => {
@@ -483,11 +506,11 @@ class Value extends Component<
       numberValue = Number.parseFloat(value);
     }
 
-    if (!Number.isNaN(numberValue)) {
-      const newValue = numberValue - step >= min ? numberValue - step : min;
+    if (Number.isNaN(numberValue)) return;
 
-      this.handlers.value(newValue.toString(), event);
-    }
+    const nextValue = Math.max(numberValue - step, min);
+
+    this.handlers.value(this.getDisplayValue(nextValue), event);
   };
 
   render() {

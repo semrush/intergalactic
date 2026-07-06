@@ -3,7 +3,7 @@ import React from 'react';
 
 import useBox, { type BoxProps } from './useBox';
 
-function Box(props: any, ref: any) {
+function Box(props: BoxProps, ref: React.Ref<HTMLElement>) {
   const [Tag, boxProps] = useBox(props, ref);
   if (Array.isArray(Tag)) {
     const [FirstTag, htmlTag] = Tag;
