@@ -835,7 +835,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify "Nothing found" is visible', async () => {
-        const status = page.getByRole('listbox').getByText('Nothing found').first();
+        const status = page
+          .locator('[data-ui-name="Select.StatusItem"]')
+          .filter({ hasText: 'Nothing found' });
         await expect(status).toBeVisible();
       });
     });
