@@ -1,11 +1,11 @@
 import Button from '@semcore/ui/button';
 import Select from '@semcore/ui/select';
-import type { SidePanelPlacement } from '@semcore/ui/side-panel';
+import type { NSSidePanel } from '@semcore/ui/side-panel';
 import SidePanel from '@semcore/ui/side-panel';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
+const placements: NSSidePanel.Placement[] = ['left', 'right', 'bottom'];
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

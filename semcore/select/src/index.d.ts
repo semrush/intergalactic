@@ -12,12 +12,12 @@ import type {
   DropdownMenuTriggerProps,
 } from '@semcore/dropdown-menu';
 import type DropdownMenu from '@semcore/dropdown-menu';
-import type { InputValueProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 import type Input from '@semcore/input';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
-export type SelectInputSearch = InputValueProps & {};
+export type SelectInputSearch = NSInput.Value.Props & {};
 
 export type OptionValue = string | number;
 export type SelectValue = string | number | Array<string | number> | null;
