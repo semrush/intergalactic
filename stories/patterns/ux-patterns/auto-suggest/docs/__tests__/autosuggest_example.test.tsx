@@ -3,9 +3,10 @@ import { expect, userEvent, within } from 'storybook/test';
 export async function AutoSuggestTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
-  // The example sets no `placeholder` (defaults to ''); inputs are associated with
-  // their labels via htmlFor/id. Use the sync input for a deterministic assertion.
-  const input = canvas.getByLabelText('SYNC Your pet breed');
+  // Shared across the sync and async stories, which have different labels
+  // ("SYNC..." / "ASYNC..."). Each story renders a single AutoSuggest, so the
+  // combobox input is unambiguous by role.
+  const input = canvas.getByRole('combobox');
 
   await userEvent.click(input);
   await userEvent.type(input, 'a');

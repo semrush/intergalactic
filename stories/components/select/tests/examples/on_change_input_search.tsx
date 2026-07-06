@@ -40,18 +40,18 @@ const Demo = ({ state = 'default', customChildren, size = 'm' }: OnChangeInputSe
             value={filter}
             onChange={setFilter}
           />
-          <Select.List hMax='224px'>
-            {state === 'default' &&
-              options.map(({ value, label }) => (
+          {state === 'default' && options.length > 0 && (
+            <Select.List hMax='224px'>
+              {options.map(({ value, label }) => (
                 <Select.Option value={value} key={value}>
                   {label}
                 </Select.Option>
               ))}
-
-            <Select.StatusItem itemsCount={options.length} state={state}>
-              {customChildren || undefined}
-            </Select.StatusItem>
-          </Select.List>
+            </Select.List>
+          )}
+          <Select.StatusItem itemsCount={options.length} state={state}>
+            {customChildren || undefined}
+          </Select.StatusItem>
         </Select.Popper>
       </Select>
     </Flex>
