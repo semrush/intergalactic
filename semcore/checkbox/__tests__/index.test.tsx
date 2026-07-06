@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,23 @@ describe('Checkbox Dependency imports', () => {
 
 describe('Checkbox', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const checkbox = (
+      <Checkbox>
+        <Checkbox.Value>
+          <Checkbox.Value.Control />
+          <Checkbox.Value.CheckMark />
+        </Checkbox.Value>
+        <Checkbox.Text />
+      </Checkbox>
+    );
+
+    const { container } = render(checkbox);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.concurrent(
     'Verify Control has aria-label, aria-labelledby, aria-describedby from root',
