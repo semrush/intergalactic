@@ -53,40 +53,40 @@ Only use title case for:
 
 Capitalize the full name when referring to a specific Semrush tool. Use lowercase when referring to the functionality generically.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Run Site Audit to check for errors.
     </template>
     <template #do>
         Run a site audit to check for errors.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### "Toolkit"
 
 Capitalize "Toolkit" only when it's part of an official product name. Otherwise use lowercase.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Site Audit is part of the SEO toolkit. It catches critical errors on your site. There are lots more features in this Toolkit too.
     </template>
     <template #do>
         Site Audit is part of the SEO Toolkit. It catches critical errors on your site. There are lots more features in this toolkit too.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### "Report" and "tool"
 
 Do not capitalize "report" or "tool" unless they are part of an official product name.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Organic Positions Report
     </template>
     <template #do>
         Organic Positions report
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 | Element | Case |
 | --- | --- |
@@ -111,14 +111,14 @@ Do not capitalize "report" or "tool" unless they are part of an official product
 
 Always use the Oxford comma, or serial comma, for a series of items.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Semrush offers clear pricing, easy setup and actionable dashboards built for marketers who move fast.
     </template>
     <template #do>
         Semrush offers clear pricing, easy setup, and actionable dashboards built for marketers who move fast.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Periods
 
@@ -137,7 +137,7 @@ Omit in:
 - "clean" designs where there are no other elements with periods
 - buttons
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>5. If the error persists, contact us</p>
         <p>Click the edit button next to "Billing information".</p>
@@ -150,7 +150,7 @@ Omit in:
         <p>Position → Pos.</p>
         <p>[Cookie Policy]</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Semicolons
 
@@ -169,7 +169,7 @@ Good examples:
 
 Only use them when quoting someone's words or referring to a file or asset name. Use curly ("") marks. Don't use quotes when directly referring to interface elements.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Search for "small business websites."</p>
         <p>Switch to the "Overview" tab.</p>
@@ -178,7 +178,7 @@ Only use them when quoting someone's words or referring to a file or asset name.
         <p>Search for “small business websites.”</p>
         <p>Switch to the Overview tab.</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Apostrophe
 
@@ -188,46 +188,46 @@ Only use them when quoting someone's words or referring to a file or asset name.
 
 Use the curly style, just like for the quotation marks.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         What's new
     </template>
     <template #do>
         What’s new
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Em dashes
 
 Use sparingly in place of a comma or colon. Include a space before and after the em dash.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         It makes us sound like Semrush—regardless of who the person behind the communication is.
     </template>
     <template #do>
         It makes us sound like Semrush — regardless of who the person behind the communication is.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Parentheses
 
 The only acceptable use of parentheses in UI elements is short supplementary information. To decide whether the information is supplementary or primary, read your text without the part in the parentheses. If it loses its original meaning, the information you consider additional is in fact primary and it should not be in parentheses. If the text keeps the meaning you intend — consider removing the parentheses.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Upgrade your plan (to track more prompts)
     </template>
     <template #do>
         Cmd+C (Mac), Ctrl+C (Win)
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Ampersand
 
 Avoid. If there's enough space — always use "and". If used, enclose in spaces.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Plans&Pricing</p>
         <p>Questions & Answers</p>
@@ -236,26 +236,26 @@ Avoid. If there's enough space — always use "and". If used, enclose in spaces.
         <p>Plans & Pricing</p>
         <p>Questions and Answers</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Number sign
 
 Omit the space after the sign.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         # 1, # 3–6
     </template>
     <template #do>
         #1, #3–6
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Percent sign
 
 In a column name, use at the end of the name preceded by a space. Omit the space before the percent sign (Exception: German, French, Swedish languages).
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>%Traffic</p>
         <p>156 %</p>
@@ -264,7 +264,7 @@ In a column name, use at the end of the name preceded by a space. Omit the space
         <p>Traffic %</p>
         <p>156%</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Minus and plus signs
 
@@ -277,7 +277,7 @@ In a column name, use at the end of the name preceded by a space. Omit the space
 - Use to show changes in metrics.
 - If you can't use the minus character for some reason, use the en dash.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>190 + countries</p>
         <p>−45%</p>
@@ -286,33 +286,33 @@ In a column name, use at the end of the name preceded by a space. Omit the space
         <p>190+ countries</p>
         <p>-45%</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Slash
 
 Omit the spaces around the sign.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         24 / 7 competitor tracking
     </template>
     <template #do>
         24/7 competitor tracking
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Multiplication sign
 
 Avoid using the "x" letter.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         1080 x 1920 px
     </template>
     <template #do>
         1080 × 1920 px
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Emojis
 

@@ -8,6 +8,7 @@ import { h, onMounted, watch, nextTick } from 'vue';
 import DevportalLogo from './DevportalLogo.vue';
 import DocFooter from './DocFooter.vue';
 import DosDonts from './DosDonts.vue';
+import DosDontsCopy from './DosDontsCopy.vue';
 import LegacyEmailsView from './LegacyEmailsView.vue';
 import Page404 from './Page404.vue';
 import PageTopTabs from './PageTopTabs.vue';
@@ -31,6 +32,7 @@ export default {
     app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
     app.component('DosDonts', DosDonts);
+    app.component('DosDontsCopy', DosDontsCopy);
     app.component('Playground', Playground);
   },
   setup() {

@@ -18,7 +18,7 @@ When writing an onboarding or what's new message, think about:
 
 ## Onboarding example
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Title: Get the most out of Semrush</p>
         <p>Body: We've put together a few steps to help you get started with the platform and make the most of its features.</p>
@@ -29,11 +29,11 @@ When writing an onboarding or what's new message, think about:
         <p>Body: Complete a few steps to set up your workspace and start turning data into decisions.</p>
         <p>Button: [Start setup]</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## What's new example
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Title: Google Analytics 4 integration is now available</p>
         <p>Body: You can now connect your GA4 account to Semrush to access your analytics and SEO data.</p>
@@ -42,4 +42,4 @@ When writing an onboarding or what's new message, think about:
         <p>Title: Your GA4 data in Semrush</p>
         <p>Body: Connect Google Analytics 4 to see traffic and ranking data side by side.</p>
     </template>
-</DosDonts>
+</DosDontsCopy>

@@ -14,31 +14,31 @@ Usually, this type of message prevents users from doing what they do, and they'r
 
 ### Upsell
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Upgrade to Pro to get access to 100+ integrations.
     </template>
     <template #do>
         Upgrade to Pro to analyze data from 100+ sources in one report.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 Good example: Your first 7 days are on us. Then $X/mo.
 
 ### Limits
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
-        You've run out of [product]. Upgrade to Pro to unlock more keywords, data, and room to grow.
-    </template>
-    <template #do>
         You've reached the limit. Upgrade to access more features.
     </template>
-</DosDonts>
+    <template #do>
+        You've run out of [product]. Upgrade to Pro to unlock more keywords, data, and room to grow.
+    </template>
+</DosDontsCopy>
 
 ### Downgrade
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Your subscription plan has been downgraded</p>
         <p>30 out of your 55 projects will be deleted on June 14, 2026. To continue working with them, renew your subscription. Please be aware that after removal your projects cannot be restored.</p>
@@ -49,4 +49,4 @@ Good example: Your first 7 days are on us. Then $X/mo.
         <p>Data outside the new limits is unavailable and will be permanently deleted on June 14, 2026. Upgrade your subscription to keep your data.</p>
         <p>[Upgrade plan]</p>
     </template>
-</DosDonts>
+</DosDontsCopy>

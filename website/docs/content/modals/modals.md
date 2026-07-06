@@ -15,23 +15,23 @@ A simple modal is a short "sentence." It only contains a title, a body, and one 
 - Never start with "Are you sure" — get straight to the point.
 - Don't replace action words or terms with synonyms.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Are you sure you want to delete the file?
     </template>
     <template #do>
         Delete file?
     </template>
-</DosDonts>
+</DosDontsCopy>
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Delete file? It cannot be restored. [Remove]
     </template>
     <template #do>
         Delete file? It cannot be restored. [Delete]
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Complex windows
 

@@ -20,20 +20,20 @@ Regardless of the design component or message length, the most comprehensive err
 
 This should be the first part of the message, like in a headline (if the UI element allows). Be sure to communicate the general outcome of the error. Use plain language and focus on what it means to the user.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Operation failed
     </template>
     <template #do>
         Couldn't send the invitation
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### The cause
 
 It's helpful to have an explanation of why something happened — it can increase the user's understanding of the issue.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Cannot connect to server</p>
         <p>Something went wrong</p>
@@ -42,20 +42,20 @@ It's helpful to have an explanation of why something happened — it can increas
         <p>No Internet connection</p>
         <p>You're offline</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### How to fix it
 
 This part tells the user what they can do about it. Offer a step-by-step resolution in the most simple and actionable way. If there's nothing for them to do, then explain what the product is doing. Offer a path forward within the error state itself, such as a "Try again" or "Go back" button. Linking to a help article can be useful, but only if that article is specific and descriptive to the error's use case.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Please try again later.
     </template>
     <template #do>
         Make sure you have admin rights to access this project.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Main principles
 
@@ -92,22 +92,22 @@ Use "please" and "sorry" only when:
 
 ### Critical
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Attention! You must enter your domain!
     </template>
     <template #do>
         Enter a valid website, e.g., example.com
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Non-critical
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Don't miss opportunities — finish setting up your account now.
     </template>
     <template #do>
         Couldn't create an account, but don't worry — we saved your settings.
     </template>
-</DosDonts>
+</DosDontsCopy>

@@ -10,7 +10,7 @@ How to ask users for their opinion without sounding like a survey form.
 
 Move away from formal wording that feels lifeless. Keep it simple and friendly â€” write like a person, not a system. Avoid survey-speak ("evaluate," "rate your experience") in favor of plain, human phrasing.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Please evaluate your experience with EyeOn.</p>
         <p>Tell us your suggestion or report an issue.</p>
@@ -19,4 +19,4 @@ Move away from formal wording that feels lifeless. Keep it simple and friendly â
         <p>How satisfied are you with EyeOn?</p>
         <p>Got any ideas or complaints?</p>
     </template>
-</DosDonts>
+</DosDontsCopy>

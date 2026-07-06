@@ -12,7 +12,7 @@ Rules for punctuation, capitalization, and structure.
 - Use numbered lists for a sequence of actions.
 - Use parallel structure in lists.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>1. Fill in the form</p>
         <p>2. Then it should be sent for review.</p>
@@ -21,4 +21,4 @@ Rules for punctuation, capitalization, and structure.
         <p>1. Fill in the form.</p>
         <p>2. Send it for review.</p>
     </template>
-</DosDonts>
+</DosDontsCopy>

@@ -31,33 +31,33 @@ Use active voice in most cases and use passive voice sparingly.
 
 In an active sentence, it's clear who's doing what. The actor is the subject, and the subject of the sentence is doing something.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         You were invited to a workspace by John Smith.
     </template>
     <template #do>
         John Smith invited you to a workspace.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Passive voice
 
 At times, active voice can sound too harshly or keep focus on something that's less important in the context. In these cases, switch to passive voice. This separates the actor from the action to soften a sentence.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         We declined your payment.
     </template>
     <template #do>
         Your payment has been declined.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Avoid passive voice by reframing the focus
 
 You can usually reframe a message to focus on the object, or on the actions someone could take, as another way to avoid passive voice.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>An error was made.</p>
         <p>We couldn't find any data.</p>
@@ -66,7 +66,7 @@ You can usually reframe a message to focus on the object, or on the actions some
         <p>Something went wrong.</p>
         <p>Nothing found.</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Spelling
 
@@ -95,14 +95,14 @@ Use first person (me, I, my) only in these situations:
 - When additional sensitivity is necessary, or to indicate privacy.
 - When there's a legal need to use first person to ask for consent.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         You agree to the terms of service.
     </template>
     <template #do>
         I agree to the terms of service.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 Sometimes it's okay to use "we" or "us" to mean "Semrush":
 
@@ -167,14 +167,14 @@ Good example: We saw a large traffic spike in January 2023.
 
 - Do not add ordinals (st, th, nd) to dates.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Join us on March 10th, 2025, for our webinar.
     </template>
     <template #do>
         Join us on March 10, 2025, for our webinar.
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Time
 
@@ -208,14 +208,14 @@ Use uppercase and no period in:
 - radio buttons
 - menu items
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         [Export to .PDF]
     </template>
     <template #do>
         [Export to PDF]
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 Use lowercase and specify a noun in full sentences in:
 
@@ -223,11 +223,11 @@ Use lowercase and specify a noun in full sentences in:
 - notices
 - tooltips
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Save your file in the pdf file format.
     </template>
     <template #do>
         Save your file in the .pdf file format.
     </template>
-</DosDonts>
+</DosDontsCopy>

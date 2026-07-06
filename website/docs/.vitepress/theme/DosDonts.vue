@@ -2,21 +2,17 @@
   <table class="dosdonts">
     <thead>
       <tr>
-        <th scope="col">Don't</th>
+        <th scope="col">Don’t</th>
         <th scope="col">Do</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>
-          <div class="dosdonts-cell">
-            <slot name="dont"></slot>
-          </div>
+          <slot name="dont"></slot>
         </td>
         <td>
-          <div class="dosdonts-cell">
-            <slot name="do"></slot>
-          </div>
+          <slot name="do"></slot>
         </td>
       </tr>
     </tbody>
@@ -82,30 +78,25 @@
 }
 
 .vp-doc table.dosdonts td {
-  padding: 0;
+  padding: var(--intergalactic-spacing-6x, 24px) var(--intergalactic-spacing-10x, 40px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
-}
-
-.vp-doc table.dosdonts .dosdonts-cell {
-  padding: var(--intergalactic-spacing-6x, 24px) var(--intergalactic-spacing-10x, 40px);
-  text-align: center;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-.vp-doc table.dosdonts .dosdonts-cell > * {
+.vp-doc table.dosdonts td > * {
   width: 100%;
   max-width: 100%;
   text-align: center;
 }
 
-.vp-doc table.dosdonts .dosdonts-cell p {
+.vp-doc table.dosdonts td p {
   margin-top: 0;
   margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
-.vp-doc table.dosdonts .dosdonts-cell p:last-child {
+.vp-doc table.dosdonts td p:last-child {
   margin-bottom: 0;
 }
 </style>

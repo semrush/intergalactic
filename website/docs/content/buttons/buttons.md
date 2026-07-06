@@ -19,14 +19,14 @@ The button should feel like a start of a new action and kind of a forward motion
 
 ALWAYS match the button to the title.
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Title "Explore more keywords for your topic" + button "Start"
     </template>
     <template #do>
         Title "Explore more keywords for your topic" + button "Explore keywords"
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 - Mostly use verb + noun format (e.g., "Save document" not just "Save"). Always consider context: it can be "Export all data" if there are multiple options to choose from AND "Export data" when it's just one option.
 - Clearly indicate the result of clicking the button.
@@ -35,14 +35,14 @@ ALWAYS match the button to the title.
 - Try to keep the text under 3 words.
 - Avoid vague labels like "Submit" or "Click here".
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         Submit (too vague — doesn't indicate what happens next)
     </template>
     <template #do>
         Save changes (Edit profile flow — indicates content will be preserved)
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 Good example: Create account (Registration flow — clear outcome for the user)
 

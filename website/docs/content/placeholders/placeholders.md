@@ -12,7 +12,7 @@ The role of a placeholder is to provide a hint. A good placeholder:
 - Clarifies what needs to be entered
 - Provides an accurate example
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>Label: Email address</p>
         <p>Placeholder: Enter email</p>
@@ -21,7 +21,7 @@ The role of a placeholder is to provide a hint. A good placeholder:
         <p>Label: Email address</p>
         <p>Placeholder: example@mail.com</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Usage
 
