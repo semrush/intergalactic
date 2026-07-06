@@ -192,8 +192,8 @@ class Value extends Component<
     return decimals?.length ?? 0;
   }
 
-  getDisplayValue(value: number) {
-    return value === 0 ? value : value.toFixed(this.stepPrecision);
+  getDisplayValue(value: number): string {
+    return value === 0 ? `${value}` : value.toFixed(this.stepPrecision);
   }
 
   limitDecimals(value: string) {
