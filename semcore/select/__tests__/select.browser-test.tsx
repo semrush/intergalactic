@@ -700,9 +700,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify nothing found state', async () => {
       await locators.label(page).click();
+      await expect(inputLocaltor).toBeFocused();
       await locators.options(page).first().waitFor({ state: 'visible' });
       await page.keyboard.type('test');
-      await expect(page.getByText('Nothing found')).toBeVisible();
+      await expect(
+        page.locator('[data-ui-name="Select.StatusItem"]').filter({ hasText: 'Nothing found' }),
+      ).toBeVisible();
       await expect(locators.options(page)).toHaveCount(0);
       await expect(clear).toBeVisible();
     });
