@@ -14,6 +14,8 @@ export type SidePanelDemoProps = {
   withFooter?: boolean;
   backText?: string;
   backWMax?: number;
+  animationsDisabled?: boolean;
+  forcedAdvancedMode?: boolean;
 };
 
 export const defaultSidePanelDemoProps: SidePanelDemoProps = {
@@ -24,6 +26,8 @@ export const defaultSidePanelDemoProps: SidePanelDemoProps = {
   withTooltipInBody: false,
   withFooter: false,
   backText: 'Go to Tool Name',
+  animationsDisabled: false,
+  forcedAdvancedMode: false,
 };
 
 const Demo = (props: SidePanelDemoProps) => {
@@ -68,8 +72,19 @@ const Demo = (props: SidePanelDemoProps) => {
   return (
     <>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
-      <SidePanel visible={visible} onClose={() => setVisible(false)} aria-label='My side panel'>
-        {props.withClose ? <SidePanel.Panel>{content}</SidePanel.Panel> : content}
+      <SidePanel
+        visible={visible}
+        onClose={() => setVisible(false)}
+        animationsDisabled={props.animationsDisabled}
+        aria-label='My side panel'
+      >
+        {props.withClose || props.forcedAdvancedMode
+          ? (
+              <SidePanel.Panel forcedAdvancedMode={props.forcedAdvancedMode}>
+                {content}
+              </SidePanel.Panel>
+            )
+          : content}
       </SidePanel>
     </>
   );
