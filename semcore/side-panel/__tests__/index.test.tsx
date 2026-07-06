@@ -77,7 +77,7 @@ describe('SidePanel', () => {
   test('Verify onClose for Sidebar.Close click', async () => {
     const spy = vi.fn();
     const component = render(<SidePanel visible closable onClose={spy} />);
-    const closeNode = component.queryByLabelText('Close');
+    const closeNode = component.getByLabelText('Close');
     await userEvent.click(closeNode);
     expect(spy).toBeCalledWith('onCloseClick', expect.any(Object));
   });
@@ -106,7 +106,7 @@ describe('SidePanel', () => {
   });
 
   test.concurrent('Verify ignorePortalsStacking prop', async () => {
-    const component = render(
+    render(
       <Portal>
         <SidePanel visible data-testid='inP'>
           Content in portal
