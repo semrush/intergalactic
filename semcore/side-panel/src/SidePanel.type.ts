@@ -34,7 +34,10 @@ declare namespace NSSidePanel {
        * @default false
        */
       disablePreventScroll?: boolean;
-      /** Disable animation */
+      /**
+        * Disable animation
+        * @deprecated
+      */
       animationsDisabled?: boolean;
     };
   type DefaultProps = {
