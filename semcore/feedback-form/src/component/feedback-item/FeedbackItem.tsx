@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import { assignProps } from '@semcore/core';
 import pick from '@semcore/core/lib/utils/pick';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
@@ -5,6 +6,8 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Tooltip from '@semcore/tooltip';
 import React from 'react';
 import { Field } from 'react-final-form';
+
+import type { NSFeedbackItem } from './FeedbackItem.type';
 
 const deafultTooltipPropsList = [
   'title',
@@ -32,8 +35,8 @@ export function FeedbackItem({
   uid,
   tooltipProps: tooltipPropsList = deafultTooltipPropsList,
   ...props
-}: any) {
-  const tooltipProps = pick(props, tooltipPropsList);
+}: Intergalactic.InternalTypings.InferComponentProps<NSFeedbackItem.Component> & { tag: Intergalactic.InternalTypings.ComponentTag }) {
+  const tooltipProps = pick(props, tooltipPropsList as (keyof typeof props)[]);
   const lastErrorRef = React.useRef(undefined);
 
   return (
@@ -57,6 +60,7 @@ export function FeedbackItem({
         if (meta?.error) lastErrorRef.current = meta.error;
 
         return (
+          // @ts-ignore
           <Tooltip
             visible={errorState && meta.active}
             theme='warning'

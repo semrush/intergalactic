@@ -1,5 +1,6 @@
 import { Box } from '@semcore/base-components';
 import Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { NoticeSmart } from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
@@ -9,9 +10,17 @@ import { Field, Form } from 'react-final-form';
 
 import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import { SubmitButton } from './component/submit-button/SubmitButton';
+import type { NSFeedbackForm } from './FeedbackForm.type';
 import style from './style/feedback-form.shadow.css';
 
-class FeedbackForm extends Component {
+class FeedbackForm extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSFeedbackForm.Component>,
+  [],
+  {},
+  {},
+  {},
+  NSFeedbackForm.DefaultProps
+> {
   static displayName = 'FeedbackForm';
   static style = style;
   static FinalForm = {
@@ -24,14 +33,14 @@ class FeedbackForm extends Component {
   };
 
   static validate = {
-    description: (error) => (value = '') => {
+    description: (error: string) => (value = '') => {
       const words = value.split(/\s+/);
       const symbols = words.join(' ');
       if (symbols.length < 10 || words.length < 3) {
         return error;
       }
     },
-    email: (error) => (value = '') => {
+    email: (error: string) => (value = '') => {
       if (!/.+@.+\..+/i.test(String(value).toLowerCase())) {
         return error;
       }
@@ -79,7 +88,7 @@ class FeedbackForm extends Component {
   }
 }
 
-function Success(props) {
+function Success(props: Intergalactic.InternalTypings.InferComponentProps<NSFeedbackForm.Success.Component>) {
   const { Children, styles } = props;
   const SSuccess = Root;
   const SEmail = 'div';
@@ -96,16 +105,16 @@ function Success(props) {
 // because it is used without a wrapper
 Success.style = style;
 
-function Cancel(props) {
+function Cancel(props: Intergalactic.InternalTypings.InferComponentProps<NSFeedbackForm.Cancel.Component>) {
   const { styles } = props;
   const SCancel = Root;
   return sstyled(styles)(<SCancel render={Button} type='reset' use='secondary' theme='muted' />);
 }
 
-function Notice(props) {
-  const { styles, theme = 'muted', use = 'secondary' } = props;
+function Notice(props: Intergalactic.InternalTypings.InferComponentProps<NSFeedbackForm.Notice.Component>) {
+  const { styles, theme = 'muted' } = props;
   const SNotice = Root;
-  return sstyled(styles)(<SNotice render={NoticeSmart} use:theme={theme} use:use={use} />);
+  return sstyled(styles)(<SNotice render={NoticeSmart} use:theme={theme} />);
 }
 
 /**
@@ -113,7 +122,10 @@ function Notice(props) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-api/|API} | {@link https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-code/|Examples}
  */
-export default createComponent(FeedbackForm, {
+export default createComponent<
+  NSFeedbackForm.Component,
+  typeof FeedbackForm
+>(FeedbackForm, {
   Item: FeedbackItem,
   Success,
   Submit: SubmitButton,

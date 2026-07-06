@@ -12,7 +12,7 @@ import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Input, { type InputProps, type InputValueProps } from '@semcore/input';
+import Input, { type NSInput } from '@semcore/input';
 import React from 'react';
 import * as mask from 'text-mask-core';
 
@@ -24,7 +24,7 @@ export type InputMaskAliases = {
   [s: string]: RegExp;
 };
 
-export type InputMaskValueProps = InputValueProps & {
+export type InputMaskValueProps = NSInput.Value.Props & {
   /**
    * Mask for entering text
    */
@@ -85,7 +85,7 @@ type InputMaskCtx = {
   getValueProps: PropGetterFn;
 };
 
-type InputMaskComponent = Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
+type InputMaskComponent = Intergalactic.Component<'div', NSInput.Props, InputMaskCtx> & {
   Value: Intergalactic.Component<'input', InputMaskValueProps>;
   Addon: typeof Input.Addon;
 };
@@ -106,7 +106,7 @@ export function getAfterPositionValue(value: string, mask: any = ''): number {
   return afterPotionValue;
 }
 
-class InputMask extends Component<InputProps> {
+class InputMask extends Component<NSInput.Props> {
   static displayName = 'InputMask';
   static style = style;
 
