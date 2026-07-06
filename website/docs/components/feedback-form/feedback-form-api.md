@@ -62,4 +62,4 @@ import FeedbackRating from '@semcore/ui/feedback-form';
 <FeedbackForm.FeedbackRatingProps />;
 ```
 
-<TypesView type="NSFeedbackFormFeedbackRating.Props" :types={...types} />
+<TypesView type="NSFeedbackRating.Props" :types={...types} />
