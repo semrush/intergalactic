@@ -120,6 +120,9 @@ declare namespace NSPopper {
     setPopper: (ref: HTMLElement) => void;
   };
   type Handlers = {
+    visible: (visible: boolean) => void;
+  };
+  type Uncontrolled = {
     visible: null;
   };
 

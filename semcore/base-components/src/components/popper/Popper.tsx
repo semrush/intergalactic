@@ -84,7 +84,7 @@ const MODIFIERS_OPTIONS = [
 class PopperRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSPopper.Component>,
   typeof PopperRoot.enhance,
-  NSPopper.Handlers,
+  NSPopper.Uncontrolled,
   {},
   {},
   NSPopper.DefaultProps
