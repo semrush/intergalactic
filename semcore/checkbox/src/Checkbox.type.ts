@@ -47,7 +47,10 @@ declare namespace NSCheckbox {
     type Handlers = {
       checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
     };
-    type Props = FlexProps;
+    type Props = FlexProps & {
+      /** Callback when the value changes */
+      onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+    };
     type InnerProps = {
       includeInputProps: string[];
     };

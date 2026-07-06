@@ -73,3 +73,8 @@ vi.stubGlobal('requestIdleCallback', vi.fn((callback: IdleRequestCallback) => wi
 )));
 
 vi.stubGlobal('cancelIdleCallback', vi.fn((handle: number) => window.clearTimeout(handle)));
+
+Object.defineProperty(window.HTMLElement.prototype, 'scrollIntoView', {
+  writable: true,
+  value: vi.fn(),
+});

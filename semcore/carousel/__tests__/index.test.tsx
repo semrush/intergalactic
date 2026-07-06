@@ -1,6 +1,7 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, afterEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Carousel from '../src';
@@ -18,7 +19,21 @@ const Items = () => (
 );
 
 describe('Carousel', () => {
-  beforeEach(cleanup);
+  afterEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const carousel = (
+      <Carousel>
+        <Carousel.Item />
+        <Carousel.Item />
+      </Carousel>
+    );
+
+    const { container } = render(carousel);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify control mode', () => {
     const spy = vi.fn();
@@ -79,7 +94,7 @@ describe('Carousel', () => {
 });
 
 describe('Carousel.Indicators', () => {
-  beforeEach(cleanup);
+  afterEach(cleanup);
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
@@ -148,7 +163,7 @@ describe('Carousel.Indicators', () => {
 });
 
 describe('Carousel.Prev', () => {
-  beforeEach(cleanup);
+  afterEach(cleanup);
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();
@@ -195,7 +210,7 @@ describe('Carousel.Prev', () => {
 });
 
 describe('Carousel.Next', () => {
-  beforeEach(cleanup);
+  afterEach(cleanup);
 
   test('Verify call onIndexChange after click', async () => {
     const spy = vi.fn();

@@ -134,7 +134,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
           }, 250);
         }
 
-        this.props.onChange?.(value, event);
+        this.handlers.value?.(value, event);
       },
       showErrors,
       validateOn,
@@ -246,8 +246,8 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
     this.handlers.state('normal');
 
     const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
+
     if (textarea instanceof HTMLDivElement) {
-      textarea.innerHTML = '';
       textarea.focus();
     }
   };

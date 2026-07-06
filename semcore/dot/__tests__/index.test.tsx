@@ -1,7 +1,8 @@
 import Button from '@semcore/button';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
-import { expect, test, describe, beforeEach, vi, afterEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import Dot from '../src';
@@ -13,12 +14,15 @@ describe('dot Dependency imports', () => {
 describe('Dot', () => {
   beforeEach(() => {
     cleanup();
-    document.body.innerHTML = '';
-    vi.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
-  afterEach(() => {
-    vi.restoreAllMocks();
+  test('Verify data-ui-name', () => {
+    const dot = <Dot aria-label='Notifications' />;
+
+    const { container } = render(dot);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
   });
 
   test('Verify no "alert" for screenreaders when hidden', async () => {

@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import type { DonutChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
@@ -5,13 +6,22 @@ import React from 'react';
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
 const Demo = (props: DonutChartProps) => {
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+
   return (
-    <div style={{ width: '650px' }}>
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
       <Chart.Donut
-        {...getPropsToChart(props)}
+        {...chartProps}
         aria-label='Donut chart'
       />
-    </div>
+    </Box>
   );
 };
 

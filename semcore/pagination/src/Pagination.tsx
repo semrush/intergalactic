@@ -1,5 +1,6 @@
 import { Flex, ScreenReaderOnly, Hint } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -8,29 +9,39 @@ import InputNumber from '@semcore/input-number';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import type { NSPagination } from './Pagination.type';
 import style from './style/pagination.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class PaginationRoot extends Component {
+type State = {
+  dirtyCurrentPage: NSPagination.Props['currentPage'];
+};
+
+class PaginationRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSPagination.Component>,
+  typeof PaginationRoot.enhance,
+  NSPagination.Handlers,
+  {},
+  State,
+  NSPagination.DefaultProps
+> {
   static displayName = 'Pagination';
 
-  static defaultProps = () => {
-    return {
-      defaultCurrentPage: 1,
-      defaultTotalPages: 1,
-      i18n: localizedMessages,
-      locale: 'en',
-      size: 'm',
-    };
-  };
+  static defaultProps = {
+    defaultCurrentPage: 1,
+    defaultTotalPages: 1,
+    i18n: localizedMessages,
+    locale: 'en',
+    size: 'm',
+  } as const;
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
-  nextPageButtonRef = React.createRef();
-  prevPageButtonRef = React.createRef();
+  nextPageButtonRef = React.createRef<HTMLButtonElement>();
+  prevPageButtonRef = React.createRef<HTMLButtonElement>();
 
-  state = {
+  state: State = {
     // Crutch, so as not to take out `dirtyCurrentPage` in props
     dirtyCurrentPage: undefined,
   };
@@ -44,7 +55,7 @@ class PaginationRoot extends Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     if (prevProps.currentPage !== undefined && prevProps.currentPage !== this.asProps.currentPage) {
       this.setState({ dirtyCurrentPage: undefined });
     }
@@ -56,13 +67,13 @@ class PaginationRoot extends Component {
     return `pagination-input-${uid}`;
   }
 
-  returnLostFocusTo = (ref) => {
+  returnLostFocusTo = (ref: React.RefObject<HTMLButtonElement>) => {
     requestAnimationFrame(() => {
       ref.current?.focus();
     });
   };
 
-  handlePageChange = (currentPage) => {
+  handlePageChange = (currentPage?: number) => {
     currentPage = Number(currentPage);
     if (Number.isNaN(currentPage)) {
       return;
@@ -71,7 +82,7 @@ class PaginationRoot extends Component {
     this.setState({ dirtyCurrentPage: undefined });
   };
 
-  handlePageValueChange = (value) => {
+  handlePageValueChange = (value: NSPagination.Props['currentPage']) => {
     const { dirtyCurrentPage } = this.state;
     if (Number.isNaN(Number(value))) {
       value = dirtyCurrentPage;
@@ -91,11 +102,14 @@ class PaginationRoot extends Component {
   getDirtyCurrentPage = () => {
     const { dirtyCurrentPage } = this.state;
     const { totalPages } = this.asProps;
+
+    if (dirtyCurrentPage === undefined) return dirtyCurrentPage;
+
     const finalValue = dirtyCurrentPage > totalPages ? totalPages : dirtyCurrentPage;
     return finalValue <= 0 ? 1 : finalValue;
   };
 
-  handlePageInputKeyDown = (event) => {
+  handlePageInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key !== 'Enter') return;
     const dirtyCurrentPage = this.getDirtyCurrentPage();
     this.handlePageChange(dirtyCurrentPage);
@@ -256,11 +270,13 @@ class PaginationRoot extends Component {
   }
 }
 
-class FirstPage extends Component {
-  buttonRef = React.createRef();
+class FirstPage extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSPagination.FirstPage.Component, typeof PaginationRoot, 'FirstPage'>
+> {
+  buttonRef = React.createRef<HTMLButtonElement>();
 
   render() {
-    const { getI18nText, Children, children, disabled } = this.asProps;
+    const { getI18nText, Children, children } = this.asProps;
     const hintContent = getI18nText('firstPage');
     const isAdvanced = children !== undefined;
 
@@ -277,8 +293,9 @@ class FirstPage extends Component {
   }
 }
 
-class PrevPage extends Component {
-  static defaultProps = (props) => ({
+type PrevPageProps = Intergalactic.InternalTypings.InferChildComponentProps<NSPagination.PrevPage.Component, typeof PaginationRoot, 'PrevPage'>;
+class PrevPage extends Component<PrevPageProps> {
+  static defaultProps = (props: PrevPageProps) => ({
     children: props.getI18nText('prevPageLabel'),
   });
 
@@ -287,8 +304,10 @@ class PrevPage extends Component {
     return sstyled(this.asProps.styles)(<SPrevPage render={Button} />);
   }
 }
-class NextPage extends Component {
-  static defaultProps = (props) => ({
+
+type NextPageProps = Intergalactic.InternalTypings.InferChildComponentProps<NSPagination.NextPage.Component, typeof PaginationRoot, 'NextPage'>;
+class NextPage extends Component<NextPageProps> {
+  static defaultProps = (props: NextPageProps) => ({
     children: props.getI18nText('nextPageLabel'),
   });
 
@@ -298,20 +317,24 @@ class NextPage extends Component {
   }
 }
 
-class TotalPages extends Component {
+class TotalPages extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSPagination.TotalPages.Component, typeof PaginationRoot, 'TotalPages'>
+> {
   render() {
     const STotalPages = Root;
     const STotalPagesLabel = Text;
     const STotalLastPages = Text;
-    const { styles, getI18nText, totalPages, isLastOrSingle, children, ...other } = this.asProps;
-    const textSize = other.size === 'l' ? '300' : '200';
+    const { styles, getI18nText, totalPages, isLastOrSingle, children, size, ...other } = this.asProps;
+    const textSize = size === 'l' ? 300 : 200;
     return sstyled(styles)(
       <>
         <STotalPagesLabel size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
         {isLastOrSingle
           ? (
+              // @ts-ignore
               <STotalLastPages
                 size={textSize}
+                // @ts-expect-error
                 aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
                 {...other}
               >
@@ -321,6 +344,7 @@ class TotalPages extends Component {
           : (
               <STotalPages
                 render={ButtonLink}
+                use:size={textSize}
                 aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
               />
             )}
@@ -329,7 +353,13 @@ class TotalPages extends Component {
   }
 }
 
-function PageInputValue(props) {
+function PageInputValue(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSPagination.PageInput.Value.Component,
+    typeof PaginationRoot,
+    'PageInputValue'
+  >,
+) {
   const SPageInputValue = Root;
 
   return sstyled(props.styles)(
@@ -342,22 +372,32 @@ function PageInputValue(props) {
   );
 }
 
-function PageInputAddon(props) {
+function PageInputAddon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSPagination.PageInput.Addon.Component,
+    typeof PaginationRoot,
+    'PageInputAddon'
+  >,
+) {
   const SPageInputAddon = Root;
   return sstyled(props.styles)(<SPageInputAddon render={InputNumber.Addon} />);
 }
 
-class PageInput extends Component {
-  static enhance = [uniqueIDEnhancement()];
+class PageInput extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSPagination.PageInput.Component, typeof PaginationRoot, 'PageInput'>,
+  typeof PageInput.enhance
+> {
+  static enhance = [uniqueIDEnhancement()] as const;
 
   render() {
     const SPageInput = Root;
     const SLabel = Text;
     const { Children, getI18nText, styles, locale, size, paginationInputId } = this.asProps;
+    const textSize = size === 'l' ? 300 : 200;
 
     return sstyled(styles)(
       <>
-        <SLabel tag='label' htmlFor={paginationInputId} size={size}>
+        <SLabel tag='label' htmlFor={paginationInputId} size={textSize}>
           {getI18nText('pageInputLabel')}
         </SLabel>
         <SPageInput
@@ -383,7 +423,10 @@ class PageInput extends Component {
  *
  * {@link https://developer.semrush.com/intergalactic/components/pagination/pagination-api/|API} | {@link https://developer.semrush.com/intergalactic/components/pagination/pagination-code/|Examples}
  */
-const Pagination = createComponent(PaginationRoot, {
+const Pagination = createComponent<
+  NSPagination.Component,
+  typeof PaginationRoot
+>(PaginationRoot, {
   PrevPage,
   NextPage,
   FirstPage,

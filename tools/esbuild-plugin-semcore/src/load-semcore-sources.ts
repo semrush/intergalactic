@@ -20,11 +20,14 @@ const babelTransform = async (contents: string, path: string, isEsm?: true) => {
       },
       (error: Error | null, result: any) => {
         if (error) reject(error);
-        else resolve(result?.code);
+        else {
+          resolve({ code: result?.code ?? '', metadata: result?.metadata ?? new Set() });
+        }
       },
     ),
   );
-  return code as string;
+
+  return code as { code: string; metadata: { styleDependencies: Set<string> } };
 };
 
 const supportedExtensions = ['ts', 'js', 'tsx', 'jsx'];
@@ -54,12 +57,15 @@ export const loadSemcoreSources = async (path: string, isEsm?: true) => {
   if (excludeFilter?.test(path) || !supportedExtensions.includes(extension)) {
     return {
       code: sourceContents,
+      dependencies: [],
     };
   }
 
-  const code = await babelTransform(sourceContents, path, isEsm);
+  const { code, metadata } = await babelTransform(sourceContents, path, isEsm);
+  const dependencies = Array.from(metadata.styleDependencies) ?? [];
 
   return {
     code,
+    dependencies,
   };
 };

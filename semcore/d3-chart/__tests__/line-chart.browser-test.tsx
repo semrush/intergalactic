@@ -468,4 +468,90 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(nullLine).toHaveAttribute('aria-hidden', 'true');
     });
   });
+
+  /* -----------------------------------------------------
+  Responsiveness — high-level Chart.* are now responsive by default.
+  plotWidth/plotHeight are optional: when omitted the chart fills its parent
+  and auto-derives the plot size. `aspect` sets height = width / aspect,
+  `hMin`/`hMax` clamp it, `onResize` reports the measured size. We assert on
+  the svg[data-ui-name="Plot"] width/height attributes (the plot size actually
+  used) plus the story's data-testid="responsive-size" readout.
+  ----------------------------------------------------- */
+  test.describe('responsiveness', () => {
+    const STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
+
+    const readPlotSize = async (page: Page) => {
+      const plot = locators.plot(page).first();
+      await plot.waitFor({ state: 'visible' });
+      const width = Number(await plot.getAttribute('width'));
+      const height = Number(await plot.getAttribute('height'));
+      return { width, height };
+    };
+
+    test('Verify chart auto-sizes to its container and aspect derives the height', {
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive'],
+    }, async ({ page }) => {
+      await test.step('Without plotWidth/plotHeight the Plot renders with a measured (non-zero) size', async () => {
+        // useExplicitPlotWidth is false by default - chart receives no plotWidth/plotHeight.
+        await loadPage(page, STORY, 'en');
+        await page.waitForTimeout(500);
+
+        const { width, height } = await readPlotSize(page);
+        expect(width).toBeGreaterThan(0);
+        expect(height).toBeGreaterThan(0);
+      });
+
+      await test.step('With aspect the Plot height equals width / aspect, and onResize reports the size', async () => {
+        await loadPage(page, STORY, 'en', { aspect: 2 });
+        await page.waitForTimeout(500);
+
+        const { width, height } = await readPlotSize(page);
+        expect(width).toBeGreaterThan(0);
+        expect(Math.abs(height - width / 2)).toBeLessThanOrEqual(2);
+
+        await expect(page.getByTestId('responsive-size')).toHaveText(
+          /Measured plot size: [1-9]\d* x [1-9]\d*/,
+        );
+      });
+    });
+
+    test('Verify hMin clamps the aspect-derived height to the minimum', {
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive'],
+    }, async ({ page }) => {
+      // aspect 10 -> computed height (~width/10) is well below 120, so hMin must clamp it
+      await loadPage(page, STORY, 'en', { aspect: 10, hMin: 120 });
+      await page.waitForTimeout(500);
+
+      await test.step('Plot height is clamped up to hMin', async () => {
+        const { height } = await readPlotSize(page);
+        expect(Math.abs(height - 120)).toBeLessThanOrEqual(1);
+      });
+    });
+
+    test('Verify hMax clamps the aspect-derived height to the maximum', {
+      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@responsive'],
+    }, async ({ page }) => {
+      // aspect 0.5 -> computed height (~2*width) is well above 180, so hMax must clamp it
+      await loadPage(page, STORY, 'en', { aspect: 0.5, hMax: 180 });
+      await page.waitForTimeout(500);
+
+      await test.step('Plot height is clamped down to hMax', async () => {
+        const { height } = await readPlotSize(page);
+        expect(Math.abs(height - 180)).toBeLessThanOrEqual(1);
+      });
+    });
+
+    test('Verify explicit plotWidth takes priority over container measurement', {
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive'],
+    }, async ({ page }) => {
+      // useExplicitPlotWidth passes plotWidth straight to the chart; the 500px Box is ignored for width
+      await loadPage(page, STORY, 'en', { useExplicitPlotWidth: true, plotWidth: 250 });
+      await page.waitForTimeout(500);
+
+      await test.step('Plot width equals the explicit plotWidth, not the container width', async () => {
+        const { width } = await readPlotSize(page);
+        expect(width).toBe(250);
+      });
+    });
+  });
 });

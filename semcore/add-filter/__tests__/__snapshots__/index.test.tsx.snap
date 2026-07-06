@@ -1,0 +1,175 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AddFilter > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "AddFilterInput.Value",
+            },
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "AddFilter.Input",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "FilterTrigger.Text",
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "FilterTrigger.TriggerButton.InnerTriggerWrapper",
+                },
+              ],
+              "uiName": "FilterTrigger.TriggerButton",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "FilterTrigger.Addon",
+                    },
+                  ],
+                  "uiName": "FilterTrigger.ClearButton.InnerTriggerWrapper",
+                },
+              ],
+              "uiName": "FilterTrigger.ClearButton",
+            },
+          ],
+          "uiName": "AddFilterSelect.Trigger",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "AddFilterSelect.Option",
+                        },
+                      ],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ScrollArea.Container",
+                },
+              ],
+              "uiName": "AddFilterSelect.Menu",
+            },
+          ],
+          "uiName": "Select.Popper",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "FilterTrigger.Text",
+                    },
+                  ],
+                  "uiName": "FilterTrigger.TriggerButton.InnerTriggerWrapper",
+                },
+              ],
+              "uiName": "FilterTrigger.TriggerButton",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "FilterTrigger.Addon",
+                    },
+                  ],
+                  "uiName": "FilterTrigger.ClearButton.InnerTriggerWrapper",
+                },
+              ],
+              "uiName": "FilterTrigger.ClearButton",
+            },
+          ],
+          "uiName": "AddFilterDropdown.Trigger",
+        },
+        {
+          "children": [],
+          "uiName": null,
+        },
+        {
+          "children": [],
+          "uiName": "AddFilterDropdown.Popper",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Close",
+                    },
+                  ],
+                  "uiName": "Button.Addon",
+                },
+                {
+                  "children": [],
+                  "uiName": "Button.Text",
+                },
+              ],
+              "uiName": "Button.InnerWrapper",
+            },
+          ],
+          "uiName": "Button",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+        {
+          "children": [],
+          "uiName": null,
+        },
+      ],
+      "uiName": "AddFilter",
+    },
+  ],
+  "uiName": null,
+}
+`;
