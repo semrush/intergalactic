@@ -1,5 +1,6 @@
 import { FadeInOut, Slide, Flex, Box, OutsideClick, PortalProvider, Portal } from '@semcore/base-components';
 import Button, { ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -18,42 +19,53 @@ import CloseIcon from '@semcore/icon/Close/l';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
+import type { NSSidePanel } from './SidePanel.type';
 import style from './style/side-panel.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootSidePanel extends Component {
+class RootSidePanel extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Component>,
+  typeof RootSidePanel.enhance,
+  {},
+  {},
+  {},
+  NSSidePanel.DefaultProps
+> {
   static displayName = 'SidePanel';
   static style = style;
   static enhance = [
     cssVariableEnhance({
       variable: '--intergalactic-duration-modal',
       fallback: '200',
+      // TODO: Types are incompatible. For some reason string type doesn't recognized as a valid value.
+      // Leave it with ts-ignore annotation.
+      // @ts-ignore
       map: Number.parseInt,
       prop: 'duration',
     }),
     i18nEnhance(localizedMessages),
-  ];
+  ] as const;
 
   static defaultProps = {
     placement: 'right',
     closable: true,
     disablePreventScroll: false,
-  };
+  } as const;
 
-  sidebarRef = React.createRef();
+  sidebarRef = React.createRef<HTMLDivElement>();
 
-  handleSidebarKeyDown = (e) => {
+  handleSidebarKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Escape') {
       e.stopPropagation();
       fire(this, 'onClose', 'onEscape', e);
     }
   };
 
-  handleIconCloseClick = (e) => {
+  handleIconCloseClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     fire(this, 'onClose', 'onCloseClick', e);
   };
 
-  handleOutsideClick = (e) => {
+  handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
     fire(this, 'onClose', 'onOutsideClick', e);
   };
 
@@ -131,7 +143,9 @@ class RootSidePanel extends Component {
   }
 }
 
-function Overlay(props) {
+function Overlay(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSidePanel.Overlay.Component, typeof RootSidePanel, 'Overlay'>,
+) {
   const SOverlay = Root;
   const overlayRef = React.useRef(null);
   usePreventScroll(props.visible, props.disablePreventScroll);
@@ -140,10 +154,11 @@ function Overlay(props) {
   return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} zIndex={zIndex} />);
 }
 
-function Panel(props) {
+function Panel(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSidePanel.Panel.Component, typeof RootSidePanel, 'Panel'>,
+) {
   const SPanel = Root;
-  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } =
-    props;
+  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } = props;
   const advancedMode =
     forcedAdvancedMode ||
     isAdvanceMode(Children, [
@@ -161,7 +176,7 @@ function Panel(props) {
   logger.warn(
     !hasLabel,
     '\'aria-label\' or \'aria-labelledby\' are required for SidePanel component',
-    props['data-ui-name'] || Panel.displayName,
+    props['data-ui-name'],
   );
 
   return sstyled(styles)(
@@ -195,12 +210,17 @@ function Panel(props) {
   );
 }
 
-function Footer(props) {
+function Footer(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Footer.Component>,
+) {
   const SFooter = Root;
   return sstyled(props.styles)(<SFooter render={Flex} tag='footer' />);
 }
 
-function Close({ styles, children: hasChildren, Children, getI18nText }) {
+function Close(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSidePanel.Close.Component, typeof RootSidePanel, 'Close'>,
+) {
+  const { styles, children: hasChildren, Children, getI18nText } = props;
   const SClose = Root;
   return sstyled(styles)(
     <SClose
@@ -217,12 +237,16 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
   );
 }
 
-function Title(props) {
+function Title(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Title.Component>,
+) {
   const STitle = Root;
   return sstyled(props.styles)(<STitle render={Text} tag='h6' size={300} bold ellipsis />);
 }
 
-function Back(props) {
+function Back(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Back.Component>,
+) {
   const SBack = Root;
   const { Children, styles } = props;
 
@@ -235,13 +259,17 @@ function Back(props) {
   );
 }
 
-function Body(props) {
+function Body(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Body.Component>,
+) {
   const SBody = Root;
 
   return sstyled(props.styles)(<SBody render={Box} />);
 }
 
-function Header(props) {
+function Header(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Header.Component>,
+) {
   const SHeader = Root;
   const { Children, styles, title } = props;
   return sstyled(styles)(
@@ -257,7 +285,10 @@ function Header(props) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-code/|Examples}
  */
-const SidePanel = createComponent(RootSidePanel, {
+const SidePanel = createComponent<
+  NSSidePanel.Component,
+  typeof RootSidePanel
+>(RootSidePanel, {
   Overlay,
   Panel,
   Close,
