@@ -103,6 +103,14 @@ export const BoxAllPropsConfigurable: StoryObj<typeof BoxAllProps> = {
       control: { type: 'select' },
       options: borderRadiusOptions,
     },
+    resize: {
+      control: { type: 'select' },
+      options: ['none', 'both', 'horizontal', 'vertical'],
+    },
+    overflow: {
+      control: { type: 'select' },
+      options: ['visible', 'hidden', 'scroll', 'auto'],
+    },
     innerOutline: { control: { type: 'boolean' } },
     invertOutline: { control: { type: 'boolean' } },
     inAfterOutline: { control: { type: 'boolean' } },

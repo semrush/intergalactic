@@ -26,6 +26,11 @@ export const Lines: StoryObj = {
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    aspect: { control: { type: 'number', min: 0, max: 2, step: 0.1 } },
+    hMin: { control: { type: 'number', min: 0, max: 600, step: 10 } },
+    hMax: { control: { type: 'number', min: 0, max: 600, step: 10 } },
+    useExplicitPlotWidth: { control: 'boolean' },
+  }),
   args: BasicUsageProps,
 };

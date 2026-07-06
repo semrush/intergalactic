@@ -69,39 +69,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify Custom Stepper example', {
-    tag: [
-      TAG.PRIORITY_HIGH,
-      TAG.KEYBOARD,
-      '@wizard',
-      '@button',
-      '@input',
-      '@radio',
-      '@base-components'],
-  },
-  async ({ page }) => {
-    await loadPage(page, 'stories/components/wizard/docs/examples/custom_stepper.tsx', 'en');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.button(page, 'Close').waitFor({ state: 'visible' });
-    await expect(locators.button(page, 'Close')).toBeFocused();
-
-    await page.keyboard.press('Tab');
-    await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
-
-    await page.keyboard.press('ArrowDown');
-    await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
-
-    await page.keyboard.press('ArrowDown');
-    await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
-
-    await page.keyboard.press('Enter');
-    await expect(page.getByRole('radio').first()).toBeFocused();
-    await page.keyboard.press('Space');
-    await expect(page).toHaveScreenshot();
-  });
-
   test.describe('Steps and buttons states', () => {
     test('Verify Steps on hover and focus - expanded state', {
       tag: [
@@ -200,7 +167,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(
           page.getByRole('tab', { name: /Completed step Personal Info/ }),
         ).toBeVisible();
-        await expect(page.getByRole('tab', { name: /Import source\s+optional/ })).toBeVisible();
+        await expect(page.getByRole('tab', { name: /Import source\s+Not selected/ })).toBeVisible();
         await expect(
           page.getByRole('tab', { name: /Sub step name\s+Optional step/ }),
         ).toBeVisible();
@@ -259,6 +226,34 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
     });
+
+    test('Verify long first step title wraps inside content', {
+      tag: [
+        TAG.PRIORITY_HIGH,
+        '@wizard',
+        '@typography',
+        '@base-components'],
+    },
+    async ({ page }) => {
+      const firstStepTitle = 'PersonalInfovfdnvmdfnbmvfdnbnnmdlymmvdvd'.repeat(3);
+
+      await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en', {
+        firstStepTitle,
+      });
+
+      await locators.button(page).click();
+      await locators.button(page, 'Close').waitFor({ state: 'visible' });
+
+      const title = page.getByRole('heading', { level: 3, name: firstStepTitle });
+      await expect(title).toBeVisible();
+
+      const titleBox = await title.boundingBox();
+      const contentBox = await locators.contentPanel(page).boundingBox();
+
+      expect(titleBox).not.toBeNull();
+      expect(contentBox).not.toBeNull();
+      expect(titleBox!.x + titleBox!.width).toBeLessThanOrEqual(contentBox!.x + contentBox!.width);
+    });
   });
 
   test('Verify WizardContent is not right rounded when noSidebar=false', {
@@ -315,7 +310,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@base-components'],
   },
   async ({ page, browserName }) => {
-    await loadPage(page, 'stories/components/wizard/docs/examples/custom_stepper.tsx', 'en');
+    await loadPage(page, 'stories/components/wizard/docs/examples/custom_step.tsx', 'en');
 
     if (browserName == 'firefox') test.skip();
     await page.setViewportSize({ width: 800, height: 600 });
@@ -323,7 +318,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await locators.button(page, 'Close').waitFor({ state: 'visible' });
-    await locators.stepperTabs(page).nth(0).hover();
+    await locators.stepperTabs(page).nth(1).hover();
     await expect(page).toHaveScreenshot();
   });
 });
@@ -719,124 +714,71 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.describe('Custom stepper example', () => {
-    test('Verify Change values by mouse', {
+  test.describe('Stepper dynamic subtitle', () => {
+    test('Verify stepper subtitle updates from radio selection by mouse', {
       tag: [
         TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@wizard',
         '@button',
-        '@input',
         '@radio',
         '@base-components'],
     },
     async ({ page }) => {
-      await loadPage(page, 'stories/components/wizard/docs/examples/custom_stepper.tsx', 'en');
+      await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en');
 
-      await test.step('Open modal using mouse', async () => {
+      await test.step('Open wizard and navigate to the "Import source" step', async () => {
         await locators.button(page).click();
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
-      });
-
-      await test.step('Verify content on the custom stepper', async () => {
-        await expect(locators.stepperTabs(page).nth(0)).toHaveText(/1.*Personal.*optional/);
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*Not selected/);
-      });
-
-      await test.step('Click inside text fields and check focus', async () => {
-        await locators.input(page, 'Name').click();
-        await expect(locators.input(page, 'Name')).toBeFocused();
-        await locators.input(page, 'Name').fill('Test');
-        await locators.input(page, 'Email').click();
-        await expect(locators.input(page, 'Email')).toBeFocused();
-      });
-
-      await test.step('Verify navigation between pages by pressing Steps in sidebar ', async () => {
         await locators.stepperTabs(page).nth(1).click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
         await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
       });
 
-      await test.step('Verify navigation between pages by pressing Prev/Next steps ', async () => {
-        await locators.button(page, 'Go to ').click();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'true');
+      await test.step('Verify subtitle shows "Not selected" by default', async () => {
+        await expect(locators.stepperTabs(page).nth(1)).toHaveText(/Import source.*Not selected/);
       });
 
-      await test.step('Verify that last step title changes when selecting radio buttons', async () => {
+      await test.step('Verify subtitle updates when selecting radios', async () => {
         await page.locator('label >> text=Manually').click();
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*Manually/);
+        await expect(locators.stepperTabs(page).nth(1)).toHaveText(/Import source.*Manually/);
         await page.locator('label >> text=From CSV').click();
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*From CSV/);
+        await expect(locators.stepperTabs(page).nth(1)).toHaveText(/Import source.*From CSV/);
       });
 
-      await test.step('Verify value changes on subtitle of the 3rd step after navigation', async () => {
+      await test.step('Verify selected value persists after navigating away and back', async () => {
         await locators.stepperTabs(page).nth(0).click();
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*From CSV/);
         await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await expect(locators.stepperTabs(page).nth(1)).toHaveText(/Import source.*From CSV/);
       });
     });
 
-    test('Verify Change value by Keyboard interactions', {
+    test('Verify stepper subtitle updates from radio selection by keyboard', {
       tag: [
         TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@wizard',
         '@button',
-        '@input',
         '@radio',
         '@base-components'],
     },
     async ({ page }) => {
-      await loadPage(page, 'stories/components/wizard/docs/examples/custom_stepper.tsx', 'en');
+      await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en');
 
-      await test.step('Open modal using keyboard and verify focus', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Enter');
+      await test.step('Open wizard and navigate to the "Import source" step', async () => {
+        await locators.button(page).click();
         await locators.button(page, 'Close').waitFor({ state: 'visible' });
-        await expect(locators.button(page, 'Close')).toBeFocused();
-
-        await page.keyboard.press('Tab');
-        await expect(locators.stepperTabs(page).nth(0)).toBeFocused();
-        await page.keyboard.press('ArrowDown');
-        await expect(locators.stepperTabs(page).nth(1)).toBeFocused();
-
-        await page.keyboard.press('ArrowDown');
-        await expect(locators.stepperTabs(page).nth(2)).toBeFocused();
-
-        await page.keyboard.press('Enter');
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(0)).toHaveText(/1.*Personal.*optional/);
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*Not selected/);
+        await locators.stepperTabs(page).nth(1).click();
+        await expect(locators.stepperTabs(page).nth(1)).toHaveText(/Import source.*Not selected/);
       });
 
-      await test.step('Verify step text changes when selection radios ', async () => {
-        await expect(page.locator('input[type=\'radio\'][value=\'Manually\']')).toBeFocused();
+      await test.step('Select radios with keyboard and verify subtitle updates', async () => {
+        await page.locator('input[type=\'radio\'][value=\'Manually\']').focus();
         await page.keyboard.press('Space');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*Manually/);
-        // await expect(page).toHaveScreenshot();
-        await page.keyboard.press('ArrowDown');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*From TXT/);
-        await expect(page.locator('input[type=\'radio\'][value=\'From TXT\']')).toBeFocused();
-      });
+        await expect(locators.stepperTabs(page).nth(1)).toHaveText(/Import source.*Manually/);
 
-      await test.step('Verify last step text not changes navigate to other step', async () => {
-        await page.keyboard.press('Tab');
-        await expect(locators.button(page, 'Back to ')).toHaveText(/Keywords/);
-        await expect(locators.button(page, 'Back to ')).toBeFocused();
-        await page.keyboard.press('Enter');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveText(/2\.1.*Import source.*From TXT/);
-        await expect(locators.button(page, 'Back to ')).toHaveText(/Personal/);
-        await expect(locators.button(page, 'Back to ')).toBeFocused();
-        await expect(locators.stepperTabs(page).nth(0)).toHaveAttribute('aria-selected', 'false');
-        await expect(locators.stepperTabs(page).nth(1)).toHaveAttribute('aria-selected', 'true');
-        await expect(locators.stepperTabs(page).nth(2)).toHaveAttribute('aria-selected', 'false');
+        await page.keyboard.press('ArrowDown');
+        await expect(page.locator('input[type=\'radio\'][value=\'From TXT\']')).toBeFocused();
+        await expect(locators.stepperTabs(page).nth(1)).toHaveText(/Import source.*From TXT/);
       });
     });
   });

@@ -1,6 +1,5 @@
 SPopper {
   padding: var(--intergalactic-spacing-4x, 16px);
-  outline: 0;
 
   &::-moz-focus-inner {
     border: none;

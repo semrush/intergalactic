@@ -229,7 +229,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify chart looks good on small resolutions', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/adaptive-chart.tsx', 'en');
+      await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/responsive-low-level-chart.tsx', 'en');
 
       await page.setViewportSize({ width: 768, height: 1024 });
       await page.waitForTimeout(500);

@@ -104,7 +104,8 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
   }
 
   private get categoryScale() {
-    const { marginY = 40, plotHeight, data, y } = this.asProps;
+    const { marginY = 40, data, y } = this.asProps;
+    const { plotHeight } = this;
 
     return scaleBand()
       .range([plotHeight - marginY, marginY])
@@ -114,7 +115,8 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 0, plotWidth } = this.asProps;
+    const { marginY = 0 } = this.asProps;
+    const { plotWidth } = this;
 
     const sum = [...super.flatValues.values()].reduce((acc, d) => acc + d, 0);
 

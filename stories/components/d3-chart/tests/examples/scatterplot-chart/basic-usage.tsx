@@ -1,3 +1,4 @@
+import { Box } from '@semcore/ui/base-components';
 import type { ScatterPlotChartProps } from '@semcore/ui/d3-chart';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
@@ -8,12 +9,23 @@ const Demo = (props: ScatterPlotChartProps) => {
   const onClickHandler = () => {
     console.log('Clicked scatterplot item');
   };
+  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+
   return (
-    <Chart.ScatterPlot
-      {...getPropsToChart(props)}
-      aria-label='ScatterPlot chart'
-      onClickScatterItem={onClickHandler}
-    />
+    <Box
+      border='1px solid #ddd'
+      borderRadius='surface-rounded'
+      resize='both'
+      w={plotWidth}
+      h={plotHeight}
+      overflow='auto'
+    >
+      <Chart.ScatterPlot
+        {...chartProps}
+        aria-label='ScatterPlot chart'
+        onClickScatterItem={onClickHandler}
+      />
+    </Box>
   );
 };
 
