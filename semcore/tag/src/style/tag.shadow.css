@@ -170,7 +170,7 @@ STag[theme="secondary"],
 STagContainerClose[theme="secondary"],
 STag[theme="additional"],
 STagContainerClose[theme="additional"] {
-  /* chenge to ...? secondary: change to --intergalactic-tag-secondary-border; additional: change to --intergalactic-tag-additional-normal */
+  /* chenge to ...? secondary: change to --intergalactic-tag-secondary-border; additional: change to --intergalactic-tag-additional-bg-normal */
   &::before {
     opacity: 0.01;
   }

@@ -1501,17 +1501,17 @@ export const theme: Theme = {
         value: neutral.at(L_BG_PRIMARY),
         description: 'Background of the header cell in the secondary Table.',
       },
-      tag_additional_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the additional Tag.',
-      },
-      tag_additional_hover_active: {
+      tag_additional_bg_hover_active: {
         value: '{semanticTokens.colors.bg_primary_neutral_hover}',
         description: 'Hover and active states of the additional Tag background.',
       },
-      tag_additional_normal: {
+      tag_additional_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the additional Tag in its normal state.',
+      },
+      tag_additional_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the additional Tag.',
       },
       tag_primary_bg_hover: {
         value: '{semanticTokens.colors.bg_primary_neutral_hover}',
@@ -2878,9 +2878,11 @@ type SemanticColors = {
       };
     };
     additional: {
-      normal: Value;
-      hover: {
-        active: Value;
+      bg: {
+        normal: Value;
+        hover: {
+          active: Value;
+        };
       };
       border: Value;
     };
