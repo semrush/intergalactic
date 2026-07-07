@@ -6,8 +6,8 @@ SPills {
   border-radius: var(--intergalactic-control-rounded, 6px); /* TODO: --intergalactic-pills-rounded */
 
   SPill[selected] {
-    background: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039)); /* TODO: --intergalactic-pills-bg-selected */
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: --intergalactic-pills-border-selected */
+    background: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039)); /* TODO: --intergalactic-control-pills-bg-selected */
+    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: --intergalactic-control-pills-border-selected */
     z-index: 3;
   }
   SPill:focus-visible, SPill[selected] {
@@ -39,8 +39,8 @@ SPill {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
-  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-pills-bg-normal */
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-pills-border */
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-pills-bg-normal */
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-pills-border */
   border-radius: var(--intergalactic-control-rounded, 6px); /* TODO: --intergalactic-pills-rounded */
 
   &::-moz-focus-inner {
@@ -54,7 +54,7 @@ SPill {
   }
 
   &:hover {
-    background: var(--intergalactic-bg-primary-neutral-hover, oklch(0.98 0.001 180)); /* TODO: --intergalactic-pills-bg-hover */
+    background: var(--intergalactic-bg-primary-neutral-hover, oklch(0.98 0.001 180)); /* TODO: --intergalactic-control-pills-bg-hover */
   }
 }
 

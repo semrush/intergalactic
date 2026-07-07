@@ -15,11 +15,11 @@ SSlider {
     height: 4px;
     width: 100%;
     border-radius: var(--intergalactic-progress-bar-rounded, 6px);
-    background-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07)); /* TODO: --intergalactic-control-slider-bar */
+    background-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07)); /* TODO: --intergalactic-control-slider-bar-bg */
   }
 
   &:hover:before {
-    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-slider-bar-hover */
+    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-slider-bar-bg-hover */
   }
 
   &:active SKnob,
@@ -50,7 +50,7 @@ SBar {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-slider-bar-value */
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-slider-bar-value-bg */
   cursor: pointer;
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) width ease-in-out;
 }
@@ -62,7 +62,7 @@ SKnob {
   width: 20px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-slider-knob */
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-slider-knob-bg */
   border: 5px solid var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-slider-knob-border */
   cursor: pointer;
   transform: translate(-50%, -50%);

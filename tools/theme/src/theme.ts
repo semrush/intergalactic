@@ -260,15 +260,15 @@ export const theme: Theme = {
   semanticTokens: {
     colors: {
       badge_bg_admin: {
-        value: '{baseTokens.colors.blue.400}',
+        value: colors.blue['400'].value,
         description: 'Background color of the admin Badge.',
       },
       badge_bg_alpha: {
-        value: '{baseTokens.colors.red.400}',
+        value: colors.red['400'].value,
         description: 'Background color of the alpha Badge.',
       },
       badge_bg_beta: {
-        value: '{baseTokens.colors.orange.400}',
+        value: colors.orange['400'].value,
         description: 'Background color of the beta Badge.',
       },
       badge_bg_invert: {
@@ -276,15 +276,15 @@ export const theme: Theme = {
         description: 'Background color of the inverted Badge.',
       },
       badge_bg_new: {
-        value: '{baseTokens.colors.green.400}',
+        value: colors.green['400'].value,
         description: 'Background color of the new Badge.',
       },
       badge_bg_soon: {
-        value: '{baseTokens.colors.gray.400}',
+        value: colors.gray['400'].value,
         description: 'Background color of the soon Badge.',
       },
       badge_bg_unavailable: {
-        value: '{baseTokens.colors.gray.100}',
+        value: colors.gray['100'].value,
         description: 'Background color of the unavailable Badge.',
       },
       badge_text_primary_DEFAULT: {
@@ -541,15 +541,15 @@ export const theme: Theme = {
         description: 'Official YouTube brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
       chart_data_critical: {
-        value: '{baseTokens.colors.red.400}',
+        value: colors.red['400'].value,
         description: 'Critical data color for charts.',
       },
       chart_data_success: {
-        value: '{baseTokens.colors.green.300}',
+        value: colors.green['300'].value,
         description: 'Success data color for charts.',
       },
       chart_data_warning: {
-        value: '{baseTokens.colors.orange.300}',
+        value: colors.orange['300'].value,
         description: 'Warning data color for charts.',
       },
       chart_grid_bar_chart_base_bg: {
@@ -561,7 +561,7 @@ export const theme: Theme = {
         description: 'Background color for the hover state of a bar on the chart grid.',
       },
       chart_grid_border: {
-        value: '{baseTokens.colors.white}',
+        value: '{baseTokens.colors.gray.white}',
         description: 'Border for distinguishing data sets and chart dots on the chart grid.',
       },
       chart_grid_line: {
@@ -860,19 +860,19 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the Select trigger in its normal state.',
       },
-      control_slider_bar_DEFAULT: {
+      control_slider_bar_bg_DEFAULT: {
         value: '{semanticTokens.colors.progress_bar_bg_DEFAULT}',
         description: 'Background of the Slider bar.',
       },
-      control_slider_bar_hover: {
+      control_slider_bar_bg_hover: {
         value: '{semanticTokens.colors.progress_bar_bg_hover}',
         description: 'Hover state of the Slider bar.',
       },
-      control_slider_bar_value: {
+      control_slider_bar_value_bg: {
         value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
         description: 'Filled part of the Slider bar.',
       },
-      control_slider_knob_DEFAULT: {
+      control_slider_knob_bg_DEFAULT: {
         value: '{baseTokens.colors.gray.white}',
         description: 'Knob fill color of the Slider.',
       },
@@ -893,7 +893,7 @@ export const theme: Theme = {
         description: 'Icon color for the SliderRating component in its normal state.',
       },
       control_switch_bg_DEFAULT: {
-        value: '{baseTokens.colors.gray.300}',
+        value: colors.gray['300'].value,
         description: 'Subtle background of the Switch control.',
       },
       control_switch_bg_info_active: {
@@ -1004,13 +1004,13 @@ export const theme: Theme = {
         value: focus.at(L_BG_SELECTED_HOVER),
         description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
       },
-      dot_notification_bg: {
+      dot_bg: {
         value: '{semanticTokens.colors.icon_primary_warning_DEFAULT}',
-        description: 'Background color of the notification Dot.',
+        description: 'Background color of the Dot.',
       },
-      dot_notification_text: {
+      dot_text: {
         value: '{semanticTokens.colors.text_primary_invert}',
-        description: 'Text color of the notification Dot.',
+        description: 'Text color of the Dot.',
       },
       dropdown_menu_item_DEFAULT: {
         value: neutral.at(L_BG_PRIMARY),
@@ -1168,11 +1168,11 @@ export const theme: Theme = {
         description: '⚠️ Use only for illustrations.',
       },
       illustration_border: {
-        value: '{baseTokens.colors.gray.500}',
+        value: colors.gray['500'].value,
         description: 'Border color for illustrations.',
       },
       illustration_gray: {
-        value: '{baseTokens.colors.gray.100}',
+        value: colors.gray['100'].value,
         description: 'Gray fill color for illustrations.',
       },
       illustration_green: {
@@ -1254,23 +1254,23 @@ export const theme: Theme = {
       page_bg: { value: neutral.at(0.97),
         description: 'Background fill for the whole product page.',
       },
-      pills_bg_hover: {
+      control_pills_bg_hover: {
         value: '{semanticTokens.colors.bg_secondary_neutral_DEFAULT}',
         description: 'Hover state of the Pills background.',
       },
-      pills_bg_normal: {
+      control_pills_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the Pills in its normal state.',
       },
-      pills_bg_selected: {
+      control_pills_bg_selected: {
         value: '{semanticTokens.colors.bg_secondary_info_DEFAULT}',
         description: 'Background of the selected Pill.',
       },
-      pills_border_DEFAULT: {
+      control_pills_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
       },
-      pills_border_selected: {
+      control_pills_border_selected: {
         value: '{semanticTokens.colors.border_info_active}',
         description: 'Border color of the selected Pill.',
       },
@@ -1397,15 +1397,15 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_invert}',
         description: 'Inverted track color of the Spin loader.',
       },
-      tab_line_border_DEFAULT: {
+      control_tab_line_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the TabLine in its normal state.',
       },
-      tab_line_border_active: {
+      control_tab_line_border_active: {
         value: '{semanticTokens.colors.border_info_active}',
         description: 'Border color of the TabLine in its active state.',
       },
-      tab_line_border_hover: {
+      control_tab_line_border_hover: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the TabLine in its hover state.',
       },
@@ -2071,6 +2071,18 @@ export const theme: Theme = {
         },
       },
     },
+    slider: {
+      rating: {
+        normal: { value: '{semanticTokens.colors.control_slider_rating_normal}' },
+        hover: { active: { value: '{semanticTokens.colors.control_slider_rating_hover_active}' } },
+      },
+    },
+    dot: {
+      notification: {
+        bg: { value: '{semanticTokens.colors.dot_bg}' },
+        text: { value: '{semanticTokens.colors.dot_text}' },
+      },
+    },
   },
 };
 
@@ -2322,12 +2334,18 @@ type SemanticColors = {
     };
     slider: {
       bar: {
-        DEFAULT: Value;
-        value: Value;
-        hover: Value;
+        bg: {
+          DEFAULT: Value;
+          hover: Value;
+        };
+        value: {
+          bg: Value;
+        };
       };
       knob: {
-        DEFAULT: Value;
+        bg: {
+          DEFAULT: Value;
+        };
         border: {
           DEFAULT: Value;
           hover: Value;
@@ -2438,6 +2456,24 @@ type SemanticColors = {
     select: {
       trigger: {
         normal: Value;
+        hover: Value;
+        active: Value;
+      };
+    };
+    pills: {
+      bg: {
+        normal: Value;
+        hover: Value;
+        selected: Value;
+      };
+      border: {
+        DEFAULT: Value;
+        selected: Value;
+      };
+    };
+    tab_line: {
+      border: {
+        DEFAULT: Value;
         hover: Value;
         active: Value;
       };
@@ -2982,26 +3018,13 @@ type SemanticColors = {
     };
   };
   dot: {
-    notification: {
-      bg: Value;
-      text: Value;
-    };
+    bg: Value;
+    text: Value;
   };
   notice_bubble: {
     bg: {
       DEFAULT: Value;
       critical: Value;
-    };
-  };
-  pills: {
-    bg: {
-      normal: Value;
-      hover: Value;
-      selected: Value;
-    };
-    border: {
-      DEFAULT: Value;
-      selected: Value;
     };
   };
   radio: {
@@ -3015,13 +3038,6 @@ type SemanticColors = {
     bg: {
       DEFAULT: Value;
       invert: Value;
-    };
-  };
-  tab_line: {
-    border: {
-      DEFAULT: Value;
-      hover: Value;
-      active: Value;
     };
   };
   wizard: {
@@ -3129,6 +3145,18 @@ type Deprecates = {
         outer: { border: Value };
         neutral: { outer: { border: Value } };
       };
+    };
+  };
+  slider: {
+    rating: {
+      normal: Value;
+      hover: { active: Value };
+    };
+  };
+  dot: {
+    notification: {
+      bg: Value;
+      text: Value;
     };
   };
 };

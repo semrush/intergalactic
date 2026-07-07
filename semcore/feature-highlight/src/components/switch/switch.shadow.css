@@ -26,7 +26,7 @@ SToggle {
 }
 
 SToggle[checked] {
-  color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-switch-bg-info-active */
+  color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
   background-image: var(--intergalactic-control-primary-feature-highlight, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1)));
 }
 

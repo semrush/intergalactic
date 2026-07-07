@@ -44,7 +44,7 @@ SCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-checkbox-bg */
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-checkbox-bg-normal */
     border: 1px solid;
     border-radius: var(--intergalactic-addon-rounded, 4px); /* TODO: --intergalactic-checkbox-rounded */
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
