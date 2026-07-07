@@ -884,13 +884,13 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.control_primary_info_hover}',
         description: 'Knob border color of the Slider in its hover state.',
       },
-      control_slider_rating_hover_active: {
-        value: highlight.at(L_ICON_SECONDARY_HOVER),
-        description: 'Icon color for the SliderRating component in its hovered and active states.',
-      },
-      control_slider_rating_normal: {
+      control_slider_rating_icon_DEFAULT: {
         value: neutral.at(L_ICON_SECONDARY),
         description: 'Icon color for the SliderRating component in its normal state.',
+      },
+      control_slider_rating_icon_hover_active: {
+        value: highlight.at(L_ICON_SECONDARY_HOVER),
+        description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
       control_switch_bg_DEFAULT: {
         value: colors.gray['300'].value,
@@ -1227,13 +1227,13 @@ export const theme: Theme = {
         value: 'oklch(1 0 0 / 0.5)',
         description: 'Neutral border of the components that are combined with neighbor-location property.',
       },
-      notice_bubble_bg_DEFAULT: {
-        value: '{semanticTokens.colors.bg_primary_invert_DEFAULT}',
-        description: 'Background of the NoticeBubble.',
-      },
       notice_bubble_bg_critical: {
         value: '{semanticTokens.colors.bg_primary_critical}',
         description: 'Critical background of the NoticeBubble.',
+      },
+      notice_bubble_bg_info: {
+        value: '{semanticTokens.colors.bg_primary_invert_DEFAULT}',
+        description: 'Background of the NoticeBubble.',
       },
       overlay_limitation_primary: {
         value: `oklch(from ${neutral.at(L_BG_SECONDARY)} l c h / 0.85)`,
@@ -2073,8 +2073,8 @@ export const theme: Theme = {
     },
     slider: {
       rating: {
-        normal: { value: '{semanticTokens.colors.control_slider_rating_normal}' },
-        hover: { active: { value: '{semanticTokens.colors.control_slider_rating_hover_active}' } },
+        normal: { value: '{semanticTokens.colors.control_slider_rating_icon_DEFAULT}' },
+        hover: { active: { value: '{semanticTokens.colors.control_slider_rating_icon_hover_active}' } },
       },
     },
     dot: {
@@ -2353,9 +2353,11 @@ type SemanticColors = {
       };
     };
     slider_rating: {
-      normal: Value;
-      hover: {
-        active: Value;
+      icon: {
+        DEFAULT: Value;
+        hover: {
+          active: Value;
+        };
       };
     };
     checkbox: {
@@ -3023,8 +3025,8 @@ type SemanticColors = {
   };
   notice_bubble: {
     bg: {
-      DEFAULT: Value;
       critical: Value;
+      info: Value;
     };
   };
   radio: {
