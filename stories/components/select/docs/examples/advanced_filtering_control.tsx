@@ -23,7 +23,7 @@ const Demo = () => {
         <Select.Popper aria-label='Fruit options with search'>
           <InputSearch value={filter} onChange={setFilter}>
             <InputSearch.SearchIcon />
-            <InputSearch.Value aria-describedby={filter ? 'search-result' : undefined} />
+            <InputSearch.Value />
             <InputSearch.Clear
               onClick={() => {
                 alert('Clicked on the Clear button');
@@ -40,7 +40,7 @@ const Demo = () => {
               ))}
             </Select.List>
           )}
-          <Select.StatusItem itemsCount={options.length} id='search-result' />
+          {filter !== '' && <Select.StatusItem itemsCount={options.length} />}
         </Select.Popper>
       </Select>
     </Flex>

@@ -2,7 +2,7 @@ import { ButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import type { InputValueProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 import React from 'react';
 
 import type { RootAddFilterType } from '../AddFilter';
@@ -16,7 +16,7 @@ class AddFilterInputRoot extends Component<
     this.asProps.onUnmount?.();
   }
 
-  getValueProps(props: InputValueProps) {
+  getValueProps(props: NSInput.Value.Props) {
     const { value, onClear, setFocusRef } = this.asProps;
 
     return {

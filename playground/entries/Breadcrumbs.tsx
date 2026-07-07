@@ -1,4 +1,4 @@
-import type { BreadcrumbsItemProps } from '@semcore/ui/breadcrumbs';
+import type { NSBreadcrumbs } from '@semcore/ui/breadcrumbs';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type BreadcrumbsJSXProps = JSXProps<BreadcrumbsItemProps>;
+export type BreadcrumbsJSXProps = JSXProps<NSBreadcrumbs.Item.Props>;
 
 function getJSX({ handleControlChange, ...breadcrumbsItemProps }: BreadcrumbsJSXProps) {
   return (
