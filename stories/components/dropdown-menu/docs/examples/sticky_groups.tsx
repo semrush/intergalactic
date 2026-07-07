@@ -119,7 +119,7 @@ const Demo = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Popper aria-label='Select project popover'>
-        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} aria-describedby={searchValue ? 'search-result' : undefined} />
+        <InputSearch value={searchValue} onChange={setSearchValue} m={1} autoFocus={false} />
 
         {filteredMenuData.length > 0 && (
           <DropdownMenu.List hMax={listHeight + 41} topOffset={36} shadowSize={5} shadowTheme={{ horizontalTop: 'dark', horizontalBottom: 'light' }}>
@@ -132,7 +132,7 @@ const Demo = () => {
             })}
           </DropdownMenu.List>
         )}
-        <DropdownMenu.StatusItem id='search-result' itemsCount={filteredMenuData.length} />
+        {searchValue !== '' && <DropdownMenu.StatusItem itemsCount={filteredMenuData.length} />}
         <Divider />
         <DropdownMenu.Item
           role='button'

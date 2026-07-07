@@ -540,6 +540,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await loadPage(page, 'stories/components/time-picker/docs/examples/expanded_access_to_all_the_components.tsx', 'en');
     const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
 
+    const formatValueInit = (await formatButton.textContent())?.trim();
+    expect(formatValueInit).toBe('AM');
     await test.step('Verify Format can be changed by keyboard when nothing entered', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -550,10 +552,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     await test.step('Verify Format can be changed by mouse', async () => {
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
       await formatButton.click();
       const formatValue = (await formatButton.textContent())?.trim();
       expect(formatValue).toBe('AM');

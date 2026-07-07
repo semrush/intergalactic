@@ -24,7 +24,6 @@ const Demo = () => {
           <Select.InputSearch
             value={filter}
             onChange={setFilter}
-            aria-describedby={filter ? 'search-result' : undefined}
           />
           {options.length > 0 && (
             <Select.List hMax='224px'>
@@ -35,7 +34,7 @@ const Demo = () => {
               ))}
             </Select.List>
           )}
-          <Select.StatusItem id='search-result' itemsCount={options.length} />
+          {filter !== '' && <Select.StatusItem itemsCount={options.length} />}
         </Select.Popper>
       </Select>
     </Flex>

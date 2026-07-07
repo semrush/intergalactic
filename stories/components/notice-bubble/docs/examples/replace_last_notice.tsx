@@ -1,4 +1,5 @@
 import Button from '@semcore/ui/button';
+import { lastInteraction } from '@semcore/ui/core';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import React from 'react';
 
@@ -8,6 +9,8 @@ let counter = 0;
 const manager = new NoticeBubbleManager();
 
 const Demo = (props: ReplaceLastNoticeBubbleProps) => {
+  const openButtonRef = React.useRef<HTMLButtonElement>(null);
+
   const handleClick = () => {
     counter++;
 
@@ -17,12 +20,21 @@ const Demo = (props: ReplaceLastNoticeBubbleProps) => {
       duration: props.duration,
       type: props.type,
       focusLock: props.focusLock,
+      onClose: () => {
+        if (lastInteraction.isKeyboard()) {
+          setTimeout(() => {
+            openButtonRef.current?.focus();
+          }, 300);
+        }
+      },
     });
   };
 
   return (
     <>
-      <Button onClick={handleClick}>Show basic notice</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>
+        Show basic notice
+      </Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

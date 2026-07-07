@@ -73,22 +73,23 @@ const Demo = (props: DropDownPropsExample) => {
             onChange={setSearch}
             aria-describedby={search ? 'search-result' : undefined}
           />
-          <DropdownMenu.List>
-            {state === 'default' &&
-              filteredItems.map((item) => (
+          {state === 'default' && filteredItems.length > 0 && (
+            <DropdownMenu.List>
+              {filteredItems.map((item) => (
                 <DropdownMenu.Item key={item.id} size={size} selected={item.selected} disabled={item.disabled}>
                   {item.label}
                 </DropdownMenu.Item>
               ))}
+            </DropdownMenu.List>
+          )}
 
-            <DropdownMenu.StatusItem
-              itemsCount={filteredItems.length}
-              state={state}
-              id='search-result'
-            >
-              {customChildren || undefined}
-            </DropdownMenu.StatusItem>
-          </DropdownMenu.List>
+          <DropdownMenu.StatusItem
+            itemsCount={filteredItems.length}
+            state={state}
+            id='search-result'
+          >
+            {customChildren || undefined}
+          </DropdownMenu.StatusItem>
         </DropdownMenu.Popper>
       </DropdownMenu>
     );

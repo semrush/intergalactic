@@ -434,7 +434,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     await test.step('Verify spin is shown on Enter', async () => {
+      // The Edit region is wrapped in FadeInOut and stays mounted for its exit
+      // animation (~200ms) after closing. Reopening before it unmounts skips the
+      // input's autoFocus (no remount), leaving focus on the view. Wait for the
+      // previous edit to fully close so reopening focuses the input, then save.
+      await assertEditModeClosed(page);
       await page.keyboard.press('Enter');
+      await expect(page.locator('[aria-label="Article title"]')).toBeFocused({ timeout: 2000 });
       await page.keyboard.press('Enter');
       await expect(locators.spin(page)).toBeVisible({ timeout: 1500 });
     });
