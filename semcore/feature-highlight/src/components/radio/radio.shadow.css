@@ -39,6 +39,7 @@ SHighlightedRadio:not([state="invalid"]) {
     bottom: 0;
     border-radius: 50%;
     background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+    top: 50%;
     left: 50%;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
