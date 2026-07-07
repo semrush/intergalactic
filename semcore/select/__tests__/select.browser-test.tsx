@@ -700,9 +700,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify nothing found state', async () => {
       await locators.label(page).click();
+      await expect(inputLocaltor).toBeFocused();
       await locators.options(page).first().waitFor({ state: 'visible' });
       await page.keyboard.type('test');
-      await expect(page.locator('text="Nothing found"')).toBeVisible();
+      await expect(
+        page.locator('[data-ui-name="Select.StatusItem"]').filter({ hasText: 'Nothing found' }),
+      ).toBeVisible();
       await expect(locators.options(page)).toHaveCount(0);
       await expect(clear).toBeVisible();
     });
@@ -813,9 +816,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify result count is exposed to screen readers only', async () => {
-        const status = page.locator('#search-result');
+        const status = page.getByRole('status');
         await expect(status).toContainText('1 result found');
-        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(status).toHaveAttribute('aria-live', 'polite');
         await expect(page.locator('text="Nothing found"')).toHaveCount(0);
       });
     });
@@ -832,9 +835,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify "Nothing found" is visible', async () => {
-        const status = page.locator('#search-result');
+        const status = page
+          .locator('[data-ui-name="Select.StatusItem"]')
+          .filter({ hasText: 'Nothing found' });
         await expect(status).toBeVisible();
-        await expect(status).toContainText('Nothing found');
       });
     });
 

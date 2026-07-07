@@ -1,0 +1,520 @@
+import type { NeighborItemProps } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
+import { Component, createComponent, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import Input from '@semcore/input';
+import Spin from '@semcore/spin';
+import React from 'react';
+
+import type { NSAutoSuggest } from './AutoSuggest.type';
+import { Highlight } from './Highlight';
+// todo Brauer Ilia: change to ../../Select after rewriting to ts
+import Select from '../../index';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+
+class AutoSuggestRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSAutoSuggest.Component>,
+  typeof AutoSuggestRoot.enhance,
+  NSAutoSuggest.Handlers,
+  {},
+  NSAutoSuggest.State,
+  NSAutoSuggest.DefaultProps
+> {
+  static displayName = 'AutoSuggest';
+
+  static defaultProps = (): NSAutoSuggest.DefaultProps => {
+    return {
+      defaultValue: '',
+      placeholder: '',
+      children: (
+        <>
+          <AutoSuggest.Trigger />
+          <AutoSuggest.Popper />
+        </>
+      ),
+    };
+  };
+
+  static enhance = [
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-popper',
+      fallback: '200',
+      map: (v: string) => Number.parseInt(v, 10).toString(),
+      prop: 'duration',
+    }),
+  ] as const;
+
+  private abortController: AbortController | undefined;
+  private changeDebounce: ReturnType<typeof setTimeout> | null = null;
+  private triggerRef = React.createRef<HTMLElement>();
+  private popperRef = React.createRef<HTMLElement>();
+
+  state: NSAutoSuggest.State = {
+    isVisible: false,
+    highlightedIndex: -1,
+    suggestions: Array.isArray(this.props.suggestions) ? this.props.suggestions : [],
+    openOnChanges: true,
+    isLoading: false,
+  };
+
+  protected uncontrolledProps() {
+    return {
+      value: null,
+    };
+  }
+
+  componentDidMount(): void {
+    const { value, suggestions } = this.asProps;
+
+    if (value && !Array.isArray(suggestions)) {
+      this.changeDebounce = setTimeout(async () => {
+        this.abortController = new AbortController();
+        const abortSignal = this.abortController.signal;
+
+        const filteredSuggestions = await suggestions(value, abortSignal);
+
+        if (!this.abortController.signal.aborted) {
+          this.setState({ suggestions: filteredSuggestions, isLoading: false });
+          this.changeDebounce = null;
+        }
+      });
+    }
+  }
+
+  get id() {
+    const { uid, id } = this.asProps;
+
+    return id ?? `${uid}_autosuggest-trigger`;
+  }
+
+  get isStartTypingState() {
+    const { suggestions } = this.state;
+    const { statusItemPlaceholder, value } = this.asProps;
+
+    return value === '' && statusItemPlaceholder !== '' && suggestions.length === 0;
+  }
+
+  get isAriaExpanded() {
+    const { isVisible, isLoading, suggestions } = this.state;
+
+    return isVisible && suggestions.length > 0 && !isLoading && !this.isStartTypingState;
+  }
+
+  get isVisiblePopper() {
+    const { isVisible, isLoading, suggestions } = this.state;
+
+    return isVisible && (suggestions.length > 0 || isLoading || this.isStartTypingState);
+  }
+
+  get neighborLocation(): NeighborItemProps['neighborLocation'] {
+    const {
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+    } = this.asProps;
+
+    let neighborLocation: NeighborItemProps['neighborLocation'] = undefined;
+
+    if (AddonLeft && AddonRight) {
+      neighborLocation = 'both';
+    } else if (AddonLeft) {
+      neighborLocation = 'left';
+    } else if (AddonRight) {
+      neighborLocation = 'right';
+    }
+
+    return neighborLocation;
+  }
+
+  getTriggerProps(): NSAutoSuggest.Trigger.InnerProps {
+    const { size, getI18nText, neighborLocation, addonLeft, addonRight, uid } = this.asProps;
+    const { isLoading } = this.state;
+
+    return {
+      'tag': Input,
+      'onFocus': this.handleFocus,
+      'onBlur': this.handleBlur,
+      'aria-haspopup': 'listbox',
+      'aria-expanded': this.isAriaExpanded ? 'true' : 'false',
+      'aria-controls': `igc-${uid}-list`,
+      isLoading,
+      size,
+      getI18nText,
+      neighborLocation,
+      addonLeft,
+      addonRight,
+    };
+  }
+
+  getTriggerValueProps(): NSAutoSuggest.Trigger.Value.InnerProps {
+    const { value, forwardRef, autoComplete, role, onChange, ref, id, ...props } = this.asProps;
+
+    return {
+      autoComplete: 'off',
+      onChange: this.handleChange,
+      onKeyDown: this.handleKeyDown,
+      role: 'combobox',
+      value,
+      ref: forwardRef ? forkRef(forwardRef, this.triggerRef) : this.triggerRef,
+      id: this.id,
+      ...props,
+      neighborLocation: this.neighborLocation,
+    };
+  }
+
+  getPopperProps(): NSAutoSuggest.Popper.InnerProps {
+    return {
+      'aria-labelledby': this.id,
+      'ref': this.popperRef,
+    };
+  }
+
+  getPopperLoadingStateProps(): NSAutoSuggest.Popper.LoadingState.InnerProps {
+    const { isLoading } = this.state;
+
+    return {
+      isLoading,
+    };
+  }
+
+  getPopperStartTypingStateProps(): NSAutoSuggest.Popper.StartTypingState.InnerProps {
+    const { getI18nText, statusItemPlaceholder } = this.asProps;
+    const { isLoading } = this.state;
+
+    return {
+      isLoading,
+      isStartTypingState: this.isStartTypingState,
+      children: statusItemPlaceholder ?? getI18nText('AutoSuggest.Popper.placeholderText'),
+    };
+  }
+
+  getPopperListProps(): NSAutoSuggest.Popper.List.InnerProps {
+    const { value } = this.asProps;
+    const { isLoading, suggestions } = this.state;
+
+    const triggerElement = this.triggerRef.current;
+
+    return {
+      value,
+      isLoading,
+      suggestions,
+      'isStartTypingState': this.isStartTypingState,
+      'aria-label': getAccessibleName(triggerElement),
+    };
+  }
+
+  getPopperSuggestionItemProps(_: never, index: number): NSAutoSuggest.Popper.SuggestionItem.InnerProps {
+    const { suggestions } = this.state;
+    const { value } = this.asProps;
+
+    const option = suggestions[index];
+
+    return {
+      value: option,
+      selected: false,
+      onClick: (e: React.SyntheticEvent) => this.handleChangeSelect(option, e),
+      children: (
+        <Highlight highlight={value}>{option}</Highlight>
+      ),
+    };
+  }
+
+  handleChange = (value: string, event: React.SyntheticEvent) => {
+    this.handlers.value(value, event);
+
+    if (this.changeDebounce) {
+      clearTimeout(this.changeDebounce);
+    }
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+
+    if (value !== this.asProps.value) {
+      const { suggestions, duration } = this.asProps;
+
+      if (value === '') {
+        this.setState({ isLoading: false });
+
+        setTimeout(() => {
+          if (document.activeElement === this.triggerRef.current) {
+            this.setState({ suggestions: [], isVisible: true });
+          }
+        }, Number(duration)); // wait for closing and then clear suggestions.
+        return;
+      }
+
+      if (!Array.isArray(suggestions) && this.state.openOnChanges) {
+        this.setState({ isLoading: true, isVisible: true });
+      }
+
+      this.changeDebounce = setTimeout(async () => {
+        const { openOnChanges } = this.state;
+
+        if (Array.isArray(suggestions)) {
+          const filteredSuggestions = value === '' ? [] : suggestions.filter((s) => s.toLowerCase().includes(value.toLowerCase()));
+
+          this.setState({ suggestions: filteredSuggestions, isVisible: filteredSuggestions.length > 0 && openOnChanges });
+        } else {
+          this.abortController = new AbortController();
+          const abortSignal = this.abortController.signal;
+
+          const filteredSuggestions = await suggestions(value, abortSignal);
+
+          if (!this.abortController.signal.aborted) {
+            this.setState({ suggestions: filteredSuggestions, isLoading: false, isVisible: filteredSuggestions.length > 0 && openOnChanges });
+          }
+        }
+      }, 300);
+    }
+  };
+
+  handleChangeVisible = (isVisible: boolean) => {
+    this.setState({ isVisible });
+  };
+
+  handleChangeHighlightedIndex = (index: number | null) => {
+    this.setState({ highlightedIndex: index ?? -1 });
+  };
+
+  handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!e.key.startsWith('Arrow')) {
+      this.setState({ highlightedIndex: -1 });
+    }
+
+    if (e.key === 'Escape') {
+      this.setState({ openOnChanges: false, isLoading: false });
+      this.abortController?.abort();
+    }
+
+    const { value } = this.asProps;
+    const { isVisible, suggestions } = this.state;
+
+    if (!isVisible) {
+      const filteredSuggestions = suggestions.filter((s) => {
+        return value !== '' && s.toLowerCase().includes(value.toLowerCase());
+      });
+
+      if (e.key === 'ArrowDown') {
+        this.setState({
+          suggestions: filteredSuggestions,
+          highlightedIndex: 0,
+        });
+      }
+      if (e.key === 'ArrowUp') {
+        this.setState({
+          suggestions: filteredSuggestions,
+          highlightedIndex: filteredSuggestions.length - 1,
+        });
+      }
+      if (e.key === 'Enter') {
+        this.setState({
+          suggestions: filteredSuggestions,
+          highlightedIndex: -1,
+          isVisible: true,
+          openOnChanges: true,
+        });
+      }
+    }
+  };
+
+  handleChangeSelect = (value: string, e: React.SyntheticEvent) => {
+    this.handlers.value(value, e);
+  };
+
+  handleFocus = () => {
+    const { value, statusItemPlaceholder } = this.asProps;
+    const { suggestions } = this.state;
+    this.setState({
+      openOnChanges: true,
+      isVisible: statusItemPlaceholder === '' ? value !== '' : true,
+      suggestions: suggestions.filter((s) => {
+        return value !== '' && s.toLowerCase().includes(value.toLowerCase());
+      }),
+      highlightedIndex: -1,
+    });
+  };
+
+  handleBlur = () => {
+    setTimeout(() => {
+      const popperElement = this.popperRef.current;
+
+      if (!popperElement || !isFocusInside(popperElement)) {
+        this.handleChangeVisible(false);
+      }
+    });
+  };
+
+  render() {
+    const { highlightedIndex } = this.state;
+
+    return (
+      <Root
+        render={Select}
+        interaction='none'
+        visible={this.isVisiblePopper}
+        onVisibleChange={this.handleChangeVisible}
+        highlightedIndex={highlightedIndex}
+        onHighlightedIndexChange={this.handleChangeHighlightedIndex}
+      />
+    );
+  }
+}
+
+class TriggerRoot extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAutoSuggest.Trigger.Component, typeof AutoSuggestRoot, 'Trigger'>
+> {
+  static displayName = 'Trigger';
+
+  static defaultProps = () => {
+    return {
+      children: (
+        <AutoSuggest.Trigger.Value />
+      ),
+    };
+  };
+
+  render() {
+    const {
+      isLoading,
+      size,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+      Children,
+    } = this.asProps;
+
+    return (
+      <Root render={Select.Trigger}>
+        {AddonLeft
+          ? (
+              <Input.Addon pl={size === 'l' ? 3 : 2}>
+                <AddonLeft />
+              </Input.Addon>
+            )
+          : null}
+        <Children />
+        {AddonRight
+          ? (
+              <Input.Addon pr={isLoading ? undefined : (size === 'l' ? 3 : 2)}>
+                <AddonRight />
+              </Input.Addon>
+            )
+          : null}
+        {isLoading && (
+          <Input.Addon pr={size === 'l' ? 3 : 2}>
+            <Spin size={size === 'l' ? 's' : 'xs'} />
+          </Input.Addon>
+        )}
+      </Root>
+    );
+  }
+}
+
+class ValueRoot extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAutoSuggest.Trigger.Value.Component, typeof AutoSuggestRoot, 'TriggerValue'>
+> {
+  static displayName = 'Value';
+
+  render() {
+    return (
+      <Root render={Input.Value} />
+    );
+  }
+}
+
+class PopperRoot extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAutoSuggest.Popper.Component, typeof AutoSuggestRoot, 'Popper'>
+> {
+  static defaultProps = () => {
+    return {
+      children: (
+        <>
+          <AutoSuggest.Popper.LoadingState itemsCount={0} />
+          <AutoSuggest.Popper.StartTypingState itemsCount={0} />
+          <AutoSuggest.Popper.List />
+        </>
+      ),
+    };
+  };
+
+  render() {
+    return (
+      <Root render={Select.Popper} />
+    );
+  }
+}
+
+function LoadingStateRoot(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSAutoSuggest.Popper.LoadingState.Component, typeof AutoSuggestRoot, 'PopperLoadingState'>,
+) {
+  const { Children, isLoading, children } = props;
+
+  if (!isLoading) return null;
+
+  return children === undefined
+    ? (<Select.StatusItem state='loading' itemsCount={0} />)
+    : (
+        <Select.StatusItem state='loading' itemsCount={0}>
+          <Children />
+        </Select.StatusItem>
+      );
+}
+
+function StartTypingStateRoot(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSAutoSuggest.Popper.StartTypingState.Component, typeof AutoSuggestRoot, 'PopperStartTypingState'>,
+) {
+  const { Children, isLoading, isStartTypingState } = props;
+
+  if (isLoading || !isStartTypingState) return null;
+
+  return (
+    <Select.StatusItem itemsCount={0}>
+      <Children />
+    </Select.StatusItem>
+  );
+}
+
+class ListRoot extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAutoSuggest.Popper.List.Component, typeof AutoSuggestRoot, 'PopperList'>
+> {
+  static defaultProps = () => {
+    return {
+      children: (<AutoSuggest.Popper.SuggestionItem itemsCount={0} />),
+    };
+  };
+
+  render() {
+    const { suggestions, isLoading, isStartTypingState, Children } = this.asProps;
+
+    if (isLoading || isStartTypingState) return null;
+
+    return (
+      <Root render={Select.List}>
+        {suggestions.map((option) => (
+          <Children key={option} />
+        ))}
+      </Root>
+    );
+  }
+}
+
+function SuggestionItemRoot() {
+  return (
+    <Root render={Select.Option} />
+  );
+}
+
+export const AutoSuggest = createComponent<NSAutoSuggest.Component, typeof AutoSuggestRoot>(AutoSuggestRoot, {
+  Trigger: [TriggerRoot, { Value: ValueRoot }],
+  Popper: [PopperRoot, {
+    LoadingState: LoadingStateRoot,
+    StartTypingState: StartTypingStateRoot,
+    List: ListRoot,
+    SuggestionItem: SuggestionItemRoot,
+  }],
+});

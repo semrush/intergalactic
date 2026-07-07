@@ -1,9 +1,9 @@
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, screen, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
-import Select, { InputSearch } from '../src';
+import Select, { AutoSuggest, InputSearch } from '../src';
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
@@ -273,5 +273,75 @@ describe('InputSearch', () => {
     await new Promise((resolve) => setTimeout(resolve, 200));
     expect(spy).toHaveBeenCalledTimes(4);
     unmount();
+  });
+});
+
+describe('AutoSuggest', () => {
+  const BREEDS = ['Persian', 'British Shorthair', 'Sphynx', 'Bengal'];
+
+  beforeEach(() => {
+    cleanup();
+
+    const mockIntersectionObserver = vi.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+  });
+
+  test('Verify forwards className, data-* to root and ref to a DOM node', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    render(
+      <AutoSuggest
+        ref={ref}
+        value=''
+        suggestions={BREEDS}
+        className='my-autosuggest'
+        data-testid='as-root'
+      />,
+    );
+
+    const root = screen.getByTestId('as-root');
+    expect(root).toBeInTheDocument();
+    expect(root.className).toContain('my-autosuggest');
+    expect(ref.current).toBeInstanceOf(HTMLElement);
+  });
+
+  test('Verify uses defaultValue in uncontrolled mode', () => {
+    render(<AutoSuggest defaultValue='p' suggestions={BREEDS} />);
+    expect((screen.getByRole('combobox') as HTMLInputElement).value).toBe('p');
+  });
+
+  test('Verify calls onChange with (value, event) while typing', async () => {
+    const spy = vi.fn();
+    const Wrapper = () => {
+      const [value, setValue] = React.useState('');
+      return (
+        <AutoSuggest
+          value={value}
+          onChange={(next: string, event: unknown) => {
+            setValue(next);
+            spy(next, event);
+          }}
+          suggestions={BREEDS}
+        />
+      );
+    };
+    render(<Wrapper />);
+
+    const input = screen.getByRole('combobox');
+    await userEvent.click(input);
+    await userEvent.type(input, 'p');
+
+    expect(spy).toHaveBeenLastCalledWith('p', expect.anything());
+  });
+
+  test('Verify has no default "Select option" placeholder', () => {
+    render(<AutoSuggest value='' suggestions={BREEDS} />);
+
+    const input = screen.getByRole('combobox');
+    expect(input.getAttribute('placeholder') ?? '').not.toBe('Select option');
   });
 });

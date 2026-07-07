@@ -2,6 +2,7 @@ import canUseDOM from './utils/canUseDOM';
 
 class LastInteractionType {
   private lastFocusSource: 'mouse' | 'keyboard' | 'none' = 'none';
+  private lastKeyboardKey: string = '';
 
   constructor() {
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -25,12 +26,17 @@ class LastInteractionType {
     return this.lastFocusSource === 'mouse';
   }
 
+  public get isTab(): boolean {
+    return this.isKeyboard() && this.lastKeyboardKey === 'tab';
+  }
+
   private handleMouseDown() {
     this.lastFocusSource = 'mouse';
   }
 
-  private handleKeyDown() {
+  private handleKeyDown(e: KeyboardEvent) {
     this.lastFocusSource = 'keyboard';
+    this.lastKeyboardKey = e.key.toLowerCase();
   }
 }
 

@@ -33,16 +33,21 @@ class StatusItemRoot extends Component<
   renderText(text: string, children: React.ReactNode) {
     const { size } = this.asProps;
     return (
-      <Root
-        render={Text}
-        tag='div'
-        key='StatusItem'
-        p={size === 'l' ? 3 : 2}
-        use:size={size === 'l' ? 300 : 200}
-        use='secondary'
-      >
-        {children ?? text}
-      </Root>
+      <>
+        <Root
+          render={Text}
+          tag='div'
+          key='StatusItem'
+          p={size === 'l' ? 3 : 2}
+          use:size={size === 'l' ? 300 : 200}
+          use='secondary'
+        >
+          {children ?? text}
+        </Root>
+        <ScreenReaderOnly ariaLive={true}>
+          {children ?? text}
+        </ScreenReaderOnly>
+      </>
     );
   }
 
@@ -61,7 +66,7 @@ class StatusItemRoot extends Component<
           return this.renderText(getI18nText('StatusItem.defaultState.nothingFound'), children);
         } else {
           return (
-            <ScreenReaderOnly id='search-result' aria-hidden='true'>
+            <ScreenReaderOnly ariaLive={true}>
               {children ?? getI18nText('StatusItem.defaultState.ScreenReaderOnlyText', { count: itemsCount })}
             </ScreenReaderOnly>
           );

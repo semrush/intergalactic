@@ -1,11 +1,11 @@
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
-import type { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 import type React from 'react';
 
 export type InputNumberValue = string;
 export type InputNumberSize = 'm' | 'l';
 
-export type InputNumberProps = InputProps & {
+export type InputNumberProps = NSInput.Props & {
   /** Input size
    * @default m
    * */
@@ -16,7 +16,7 @@ export type InputNumberProps = InputProps & {
   locale?: string;
 };
 
-export type InputNumberValueProps = InputValueProps & {
+export type InputNumberValueProps = NSInput.Value.Props & {
   /** Minimum value
    * @default Number.MIN_SAFE_INTEGER
    */
@@ -35,7 +35,7 @@ export type InputNumberValueProps = InputValueProps & {
   onChange?: (value: InputNumberValue, event?: React.SyntheticEvent<HTMLInputElement>) => void;
 };
 
-export type InputNumberControlsProps = InputAddonProps & {
+export type InputNumberControlsProps = NSInput.Addon.Props & {
   /** Always displays controls (steppers)
    * @default false
    */
@@ -51,7 +51,7 @@ export type InputNumberCtx = {
 declare const InputNumber: Intergalactic.Component<'div', InputNumberProps, InputNumberCtx> & {
   Value: Intergalactic.Component<'input', InputNumberValueProps>;
   Controls: Intergalactic.Component<'div', InputNumberControlsProps>;
-  Addon: Intergalactic.Component<'div', InputAddonProps>;
+  Addon: Intergalactic.Component<'div', NSInput.Addon.Props>;
 };
 
 export default InputNumber;
