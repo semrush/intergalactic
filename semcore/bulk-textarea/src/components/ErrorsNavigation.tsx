@@ -1,25 +1,21 @@
 import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import type { Intergalactic } from '@semcore/core';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import ChevronUpM from '@semcore/icon/ChevronUp/m';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-export type ErrorsNavigationProps = {
-  errorIndex: number;
-  onPrevError: () => void;
-  onNextError: () => void;
-  errorsCount: number;
-  size: 'm' | 'l';
-  showErrors: boolean;
-  getI18nText: ReturnType<typeof useI18n>;
-  disabled: boolean;
-  nextButtonRef: React.RefObject<HTMLButtonElement>;
-  prevButtonRef: React.RefObject<HTMLButtonElement>;
-};
+import type { BulkTextareaRootType } from '../BulkTextarea';
+import type { NSBulktextarea } from '../BulkTextarea.types';
 
-export function ErrorsNavigation(props: ErrorsNavigationProps) {
+export function ErrorsNavigation(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSBulktextarea.ErrorsNavigation.Component,
+    BulkTextareaRootType,
+    'ErrorsNavigation'
+  >,
+) {
   const {
     errorIndex,
     errorsCount,
@@ -27,9 +23,12 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
     onNextError,
     size,
     showErrors,
+    // ?
     getI18nText,
     disabled,
+    // ?
     nextButtonRef,
+    // ?
     prevButtonRef,
   } = props;
   return (

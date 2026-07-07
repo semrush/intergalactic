@@ -1,40 +1,28 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-import type { BulkTextareaType, BulkTextareaProps, BulkTextareaDefaultProps } from './BulkTextarea.types';
+import type { NSBulktextarea } from './BulkTextarea.types';
 import { ClearAll } from './components/ClearAll';
 import { Counter } from './components/Counter';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
-import { InputField, type InputFieldProps } from './components/InputField/InputField';
+import { InputField } from './components/InputField/InputField';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-type State<T extends string | string[]> = {
-  linesCount: number;
-  isEmptyText: boolean;
-  errorIndex: number;
-  highlightErrorIndex: boolean;
-  prevError?: InputFieldProps<T>['errors'][number];
-};
-
 class BulkTextareaRoot<T extends string | string[]> extends Component<
-  BulkTextareaProps<T>,
+  Intergalactic.InternalTypings.InferComponentProps<NSBulktextarea.Component<T>>,
   typeof BulkTextareaRoot.enhance,
-  {
-    value: null;
-    state: null;
-    showErrors: null;
-    errors: null;
-  },
+  NSBulktextarea.Uncontrolled,
   WithI18nEnhanceProps,
-  State<T>,
-  BulkTextareaDefaultProps<T>
+  NSBulktextarea.State<T>,
+  NSBulktextarea.DefaultProps<T>
 > {
   static displayName = 'BulkTextarea';
-  static defaultProps: BulkTextareaDefaultProps<string | string[]> = {
+  static defaultProps: NSBulktextarea.DefaultProps<string | string[]> = {
     defaultValue: '',
     size: 'm',
     defaultState: 'normal',
@@ -55,7 +43,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
   prevButtonRef = React.createRef<HTMLButtonElement>();
   counterRef = React.createRef<HTMLDivElement>();
 
-  state: State<T> = {
+  state: NSBulktextarea.State<T> = {
     linesCount: 0,
     isEmptyText: true,
     errorIndex: -1,
@@ -140,7 +128,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       validateOn,
       lineValidation: lineValidation,
       errors,
-      onErrorsChange: (newErrors: InputFieldProps<T>['errors']) => {
+      onErrorsChange: (newErrors: NSBulktextarea.InputField.ErrorItem[]) => {
         const prevError = newErrors.length === 0 ? errors[0] : undefined;
         this.handlers.errors(newErrors);
         this.setState({ prevError });
@@ -282,13 +270,15 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
   }
 }
 
+export type BulkTextareaRootType = typeof BulkTextareaRoot;
+
 /**
  * BulkTextarea
  *
  * {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-api/|API} | {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-code/|Examples}
  */
 const BulkTextarea = (<T extends string | string[]>() =>
-  createComponent<BulkTextareaType<T>, typeof BulkTextareaRoot>(BulkTextareaRoot, {
+  createComponent<NSBulktextarea.Component<T>, BulkTextareaRootType>(BulkTextareaRoot, {
     InputField,
     Counter,
     ClearAll,

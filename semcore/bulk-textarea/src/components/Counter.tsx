@@ -1,17 +1,20 @@
 import { ScreenReaderOnly } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { Root } from '@semcore/core';
-import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
-import CounterKit, { type NSCounter } from '@semcore/counter';
+import CounterKit from '@semcore/counter';
 import React from 'react';
 
-export type CounterProps = {
-  theme: NSCounter.Props['theme'];
-  linesCount: number;
-  maxLines: number;
-  getI18nText: ReturnType<typeof useI18n>;
-};
+import type { BulkTextareaRootType } from '../BulkTextarea';
+import type { NSBulktextarea } from '../BulkTextarea.types';
 
-export function Counter(props: CounterProps) {
+export function Counter(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSBulktextarea.Counter.Component,
+    BulkTextareaRootType,
+    'Counter'
+  >,
+) {
+  // ?
   const { theme, linesCount, maxLines, getI18nText } = props;
 
   return (

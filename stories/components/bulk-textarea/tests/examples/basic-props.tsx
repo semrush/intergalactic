@@ -1,7 +1,7 @@
 import { Box, Flex } from '@semcore/ui/base-components';
 import type { BoxProps } from '@semcore/ui/base-components';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
-import type { BulkTextareaProps, ErrorItem } from '@semcore/ui/bulk-textarea';
+import type { NSBulktextarea } from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -51,15 +51,15 @@ export const linesDelimiterOptions = {
   'undefined': undefined,
 } as const;
 
-type PasteProps = NonNullable<BulkTextareaProps<string>['pasteProps']>;
+type PasteProps = NonNullable<NSBulktextarea.Props<string>['pasteProps']>;
 
-type ExampleProps = Omit<BulkTextareaProps<string>, 'linesDelimiters'> & {
+type ExampleProps = Omit<NSBulktextarea.Props<string>, 'linesDelimiters'> & {
   autoFocus?: boolean;
   w?: BoxProps['w'];
   pasteDelimiter?: PasteProps['delimiter'];
   pasteSkipEmptyLines?: boolean;
   pasteLineProcessing?: PasteProps['lineProcessing'];
-  linesDelimiters?: BulkTextareaProps<string>['linesDelimiters'];
+  linesDelimiters?: NSBulktextarea.Props<string>['linesDelimiters'];
 };
 
 export const defaultBulkTextareaProps: ExampleProps = {
@@ -94,11 +94,11 @@ const Demo = (props: Partial<ExampleProps>) => {
   } = { ...defaultBulkTextareaProps, ...props };
 
   const [value, setValue] = React.useState('');
-  const [errors, setErrors] = React.useState<ErrorItem[]>([]);
+  const [errors, setErrors] = React.useState<NSBulktextarea.InputField.ErrorItem[]>([]);
   const [showErrors, setShowErrors] = React.useState(false);
 
   const handleSubmit = React.useCallback(() => {
-    const newErrors: ErrorItem[] = [];
+    const newErrors: NSBulktextarea.InputField.ErrorItem[] = [];
     const rows = value.split('\n');
     rows.forEach((line, index) => {
       const { isValid, errorMessage } = validateRow(line, rows);
