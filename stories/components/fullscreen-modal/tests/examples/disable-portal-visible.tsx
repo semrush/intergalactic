@@ -2,8 +2,6 @@ import FullscreenModal from '@semcore/ui/fullscreen-modal';
 import React from 'react';
 
 const Demo = () => {
-  const [visible, setVisible] = React.useState(false);
-
   return (
     <div style={{ width: '785px', height: '600px' }}>
       <FullscreenModal disablePortal visible>

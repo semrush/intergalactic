@@ -12,7 +12,7 @@ import FeedbackForm from '@semcore/ui/feedback-form';
 <FeedbackForm />;
 ```
 
-<TypesView type="FeedbackFormProps" :types={...types} />
+<TypesView type="NSFeedbackForm.Props" :types={...types} />
 
 ## FeedbackForm.Item
 
@@ -62,4 +62,4 @@ import FeedbackRating from '@semcore/ui/feedback-form';
 <FeedbackForm.FeedbackRatingProps />;
 ```
 
-<TypesView type="FeedbackRatingProps" :types={...types} />
+<TypesView type="NSFeedbackRating.Props" :types={...types} />

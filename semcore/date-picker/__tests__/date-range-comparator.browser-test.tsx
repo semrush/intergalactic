@@ -116,6 +116,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         TAG.MOUSE,
         '@date-picker'],
     }, async ({ page }) => {
+      await page.clock.setFixedTime(new Date('2024-01-15T12:00:00'));
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator_advanced_use.tsx', 'en');
 
       const from = page.locator('[data-ui-name="DateRangeComparator.ValueDateRange"]').first();

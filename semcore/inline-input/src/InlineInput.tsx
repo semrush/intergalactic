@@ -1,6 +1,6 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
-import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
@@ -64,6 +64,7 @@ type ControlAsProps = {
 };
 type ConfirmControlAsProps = ControlAsProps & {
   onConfirm?: OnConfirm;
+  onCancel?: OnCancel;
   inputRef?: React.RefObject<HTMLInputElement>;
 };
 type CancelControlAsProps = ControlAsProps & {
@@ -163,6 +164,7 @@ class InlineInputBase extends Component<
       inputRef: this.inputRef,
       loading,
       onConfirm: this.handleConfirm,
+      onCancel: this.handleCancel,
       getI18nText,
     };
   }
@@ -245,6 +247,13 @@ class InlineInputBase extends Component<
     if (Date.now() - this.lastHandledKeyboardEvent < 250) return;
     if (hasParent(event.relatedTarget, this.rootRef.current!)) return;
 
+    if (lastInteraction.isKeyboard()) {
+      if (lastInteraction.isTab) {
+        onCancel?.(this.initValue, event);
+      }
+      return;
+    }
+
     if (this.lastMouseDownPosition && this.rootRef.current) {
       const { x, y } = this.lastMouseDownPosition;
       const rect = this.rootRef.current.getBoundingClientRect();
@@ -324,7 +333,7 @@ function Addon(props: AddonAsProps) {
 
 function ConfirmControl(props: ConfirmControlAsProps) {
   const SAddon = Root;
-  const { Children, children: hasChildren, inputRef } = props;
+  const { Children, children: hasChildren, inputRef, onCancel } = props;
   const title = props.title ?? props.getI18nText('confirm');
 
   const handleConfirm = React.useCallback(
@@ -340,6 +349,11 @@ function ConfirmControl(props: ConfirmControlAsProps) {
         event.preventDefault();
         event.stopPropagation();
         handleConfirm(event);
+      }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        onCancel?.(inputRef?.current?.value ?? '', event);
       }
     },
     [handleConfirm],
@@ -388,7 +402,7 @@ function CancelControl(props: CancelControlAsProps) {
 
   const handleKeydown = React.useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter' || event.key === ' ') {
+      if (event.key === 'Enter' || event.key === ' ' || event.key === 'Escape') {
         event.preventDefault();
         event.stopPropagation();
         handleCancel(event);

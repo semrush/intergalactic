@@ -1,7 +1,7 @@
 import { ButtonLink } from '@semcore/button';
 import { createComponent, Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import type { InputValueProps } from '@semcore/input';
+import type { NSInput } from '@semcore/input';
 import React from 'react';
 
 import type { AddFilterInputType, AddFilterItemProps } from '../AddFilter.types';
@@ -18,7 +18,7 @@ class AddFilterInputRoot extends Component<AddFilterItemProps> {
     this.asProps.onUnmount?.();
   }
 
-  getValueProps(props: InputValueProps) {
+  getValueProps(props: NSInput.Value.Props) {
     const { value, onClear, setFocusRef } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 
     return {
