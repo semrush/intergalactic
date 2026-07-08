@@ -271,11 +271,11 @@ Add alt text only if the image brings additional value to the rest of the conten
 
 ### Age
 
-Avoid ageist terms. When age context is needed, describe it neutrally. See the Glossary.
+Avoid ageist terms. When age context is needed, describe it neutrally. See the [Glossary](/content/glossary/glossary).
 
 ### Race and ethnicity
 
-Default to the generally accepted descriptors "person of color," "POC," or "BIPOC". See the Glossary.
+Default to the generally accepted descriptors "person of color," "POC," or "BIPOC". See the [Glossary](/content/glossary/glossary).
 
 ### Words and phrases to avoid
 

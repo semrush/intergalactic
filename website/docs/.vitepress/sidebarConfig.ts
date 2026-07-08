@@ -226,6 +226,11 @@ export const sideBarConfig: SidebarConfig = [
               },
             ],
           },
+          {
+            link: '/content/glossary/glossary',
+            activeMatch: '/content/glossary/',
+            text: 'Glossary',
+          },
         ],
       },
     ],

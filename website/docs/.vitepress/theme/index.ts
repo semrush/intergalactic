@@ -9,6 +9,7 @@ import DevportalLogo from './DevportalLogo.vue';
 import DocFooter from './DocFooter.vue';
 import DosDonts from './DosDonts.vue';
 import DosDontsCopy from './DosDontsCopy.vue';
+import GlossaryTable from './GlossaryTable.vue';
 import LegacyEmailsView from './LegacyEmailsView.vue';
 import Page404 from './Page404.vue';
 import PageTopTabs from './PageTopTabs.vue';
@@ -33,6 +34,7 @@ export default {
     app.component('TypesView', TypesView);
     app.component('DosDonts', DosDonts);
     app.component('DosDontsCopy', DosDontsCopy);
+    app.component('GlossaryTable', GlossaryTable);
     app.component('Playground', Playground);
   },
   setup() {
