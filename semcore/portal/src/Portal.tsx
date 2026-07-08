@@ -21,8 +21,13 @@ const PortalContext = register.get(
   React.createContext<NodeByRef>((canUseDOM() ? document.body : null) as any),
 );
 
+const RootPortalContext = React.createContext<NodeByRef>(
+  canUseDOM() ? document.body : () => ({ current: null }),
+);
+
 function Portal(props: PortalProps & { Children: React.FC }) {
   const { Children, disablePortal, ignorePortalsStacking, onMount } = props;
+  const rootContainer = React.useContext(RootPortalContext);
   const container = React.useContext(PortalContext);
   const [mountNode, setMountNode] = React.useState<Element | null>(null);
 
@@ -30,7 +35,7 @@ function Portal(props: PortalProps & { Children: React.FC }) {
     if (disablePortal) return;
     onMount?.(true);
     if (ignorePortalsStacking) {
-      setMountNode(canUseDOM() ? document.body : null);
+      setMountNode(getNodeByRef(rootContainer));
       return;
     }
     setMountNode(getNodeByRef(container));
@@ -45,6 +50,7 @@ function Portal(props: PortalProps & { Children: React.FC }) {
 
 Portal.displayName = 'Portal';
 
+const { Provider: RootPortalProvider } = RootPortalContext;
 const { Provider: PortalProvider } = PortalContext;
-export { PortalProvider };
+export { PortalProvider, RootPortalProvider };
 export default createComponent(Portal) as Intergalactic.Component<Intergalactic.Tag, PortalProps>;

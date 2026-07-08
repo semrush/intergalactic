@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.43.0] - 2026-07-08
+
+### Added
+
+- `RootPortalProvider` for override `body` as a container for portals with `ignorePortalStacking` flag.
+
 ## [3.42.0] - 2026-05-06
 
 ### Changed
