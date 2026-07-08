@@ -1,40 +1,65 @@
+import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { forkRef } from '@semcore/core/lib/utils/ref';
 import Input from '@semcore/input';
 import React from 'react';
 
 import { DecrementIcon, IncrementIcon } from './buttons';
+import type { NSInputNumber } from './InputNumber.type';
 import style from './style/input-number.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
+/** Events that can trigger a value step (buttons, keyboard arrows, mouse wheel). */
+type StepEvent =
+  | React.MouseEvent
+  | React.KeyboardEvent
+  | WheelEvent;
+
+/**
+ * The input DOM node whose native `stepUp`/`stepDown` methods are replaced at runtime
+ * (see `Value.componentDidMount`) with event-aware versions.
+ */
+type InputElement = Omit<HTMLInputElement, 'stepUp' | 'stepDown'> & {
+  stepUp: (event: StepEvent) => void;
+  stepDown: (event: StepEvent) => void;
+};
+
 export function parseValueWithMinMax(
-  value,
+  value: number,
   min = Number.MIN_SAFE_INTEGER,
   max = Number.MAX_SAFE_INTEGER,
 ) {
   return Math.max(min, Math.min(max, value));
 }
 
-class InputNumber extends Component {
+class InputNumber extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSInputNumber.Component>,
+  typeof InputNumber.enhance,
+  {},
+  WithI18nEnhanceProps,
+  {},
+  NSInputNumber.DefaultProps
+> {
   static displayName = 'InputNumber';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     size: 'm',
     i18n: localizedMessages,
     locale: 'en',
+  } as const;
+
+  inputRef = React.createRef<InputElement>();
+
+  increment = (event: React.MouseEvent) => {
+    (this.inputRef.current)?.stepUp?.(event);
   };
 
-  inputRef = React.createRef();
-
-  increment = (event) => {
-    this.inputRef.current?.stepUp?.(event);
-  };
-
-  decrement = (event) => {
-    this.inputRef.current?.stepDown?.(event);
+  decrement = (event: React.MouseEvent) => {
+    (this.inputRef.current)?.stepDown?.(event);
   };
 
   getValueProps() {
@@ -52,9 +77,8 @@ class InputNumber extends Component {
   }
 
   getControlsProps() {
-    const { size, getI18nText } = this.asProps;
+    const { getI18nText } = this.asProps;
     return {
-      size,
       increment: this.increment,
       decrement: this.decrement,
       getI18nText,
@@ -67,33 +91,44 @@ class InputNumber extends Component {
   }
 }
 
-class Value extends Component {
+class Value extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSInputNumber.Value.Component, typeof InputNumber, 'Value'>,
+  [],
+  NSInputNumber.Value.Handlers,
+  {},
+  NSInputNumber.Value.State,
+  NSInputNumber.Value.DefaultProps
+> {
   static style = style;
   static defaultProps = {
     defaultValue: '',
     defaultDisplayValue: '',
     step: 1,
+  } as const;
+
+  state: NSInputNumber.Value.State = {
+    displayValue: '',
   };
 
-  valueInputRef = React.createRef();
+  valueInputRef = React.createRef<HTMLInputElement>();
 
-  cursorPosition = -1;
+  cursorPosition: number | null = -1;
 
-  uncontrolledProps() {
+  uncontrolledProps(): NSInputNumber.Value.Handlers {
     return {
-      displayValue: null,
       value: [
         null,
         (newValue) => {
-          const { value: prevValue, displayValue: prevDisplayValue } = this.asProps;
+          const { displayValue: prevDisplayValue } = this.state;
+          const { value: prevValue } = this.asProps;
 
           const { parsedValue, displayValue } = this.valueParser(
-            newValue,
+            newValue ?? '',
             prevValue,
             prevDisplayValue,
           );
 
-          this.handlers.displayValue(displayValue);
+          this.setState({ displayValue });
 
           return parsedValue;
         },
@@ -113,13 +148,17 @@ class Value extends Component {
     return numberFormatter.format(1111).replace(/\d/g, '');
   }
 
-  getFormattedValue = (value) => {
+  getFormattedValue = (value: string) => {
     return value
       .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
       .replace(this.separatorDecimal, '.');
   };
 
-  valueParser = (value, prevValue, prevDisplayValue) => {
+  valueParser = (
+    value: typeof this.asProps['value'],
+    prevValue: typeof this.asProps['value'],
+    prevDisplayValue: NSInputNumber.Value.State['displayValue'],
+  ) => {
     const { numberFormatter } = this.props;
 
     const stringNumber = this.getFormattedValue(String(value));
@@ -135,9 +174,9 @@ class Value extends Component {
 
     if (/\.[0-9]*0$/.test(stringNumber)) {
       const [int, decimal] = stringNumber.split(this.separatorDecimal);
-      displayValue = numberFormatter.format(int) + this.separatorDecimal + decimal;
+      displayValue = numberFormatter.format(+int) + this.separatorDecimal + decimal;
     } else if (stringNumber !== '') {
-      displayValue = numberFormatter.format(stringNumber);
+      displayValue = numberFormatter.format(+stringNumber);
     }
 
     return {
@@ -148,16 +187,16 @@ class Value extends Component {
 
   get stepPrecision() {
     const { step } = this.asProps;
-    const [_, decimals] = step.toString().split('.');
+    const [_, decimals] = step?.toString().split('.') ?? [];
 
     return decimals?.length ?? 0;
   }
 
-  getDisplayValue(value) {
-    return value === 0 ? value : value.toFixed(this.stepPrecision);
+  getDisplayValue(value: number): string {
+    return value === 0 ? `${value}` : value.toFixed(this.stepPrecision);
   }
 
-  limitDecimals(value) {
+  limitDecimals(value: string) {
     const { stepPrecision } = this;
     if (stepPrecision === 0) return value;
 
@@ -167,16 +206,17 @@ class Value extends Component {
     return value.slice(0, dotIndex + 1 + stepPrecision);
   }
 
-  round(value, step) {
+  round(value: number): number {
     const { stepPrecision } = this;
 
     return stepPrecision === 0
       ? value
-      : Number.parseFloat(value).toPrecision(stepPrecision);
+      : Number(value.toPrecision(stepPrecision));
   }
 
-  handleValidation = (event) => {
-    const { value, displayValue, min, max, step } = this.asProps;
+  handleValidation = (event: React.FocusEvent<HTMLInputElement>) => {
+    const { value, min, max, step } = this.asProps;
+    const { displayValue } = this.state;
     const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
 
     if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
@@ -184,7 +224,7 @@ class Value extends Component {
       this.handlers.value('', event);
     } else {
       let numberValue = parseValueWithMinMax(Number.parseFloat(parsedValue), min, max);
-      const rounded = this.round(numberValue % step, step);
+      const rounded = this.round(numberValue % step);
       if (rounded !== 0) {
         if (rounded >= step / 2) {
           numberValue += step - rounded;
@@ -216,18 +256,18 @@ class Value extends Component {
 
     if (value !== '') {
       const { displayValue } = this.valueParser(value, '', '');
-      this.handlers.displayValue(displayValue);
+      this.setState({ displayValue });
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state) {
     if (prevProps.value !== this.props.value) {
       const { displayValue } = this.valueParser(
-        this.props.value,
+        this.props.value ?? '',
         prevProps.value,
-        prevProps.displayValue,
+        prevState.displayValue,
       );
-      this.handlers.displayValue(displayValue);
+      this.setState({ displayValue });
     }
   }
 
@@ -235,27 +275,27 @@ class Value extends Component {
     this.valueInputRef.current?.removeEventListener('wheel', this.onWheel);
   }
 
-  onWheel = (event) => {
+  onWheel = (event: WheelEvent) => {
     callAllEventHandlers(this.asProps.onWheel, this.handleWheel)(event);
   };
 
-  handleWheel = (event) => {
+  handleWheel = (event: WheelEvent) => {
     if (event.target !== this.valueInputRef.current) return;
     if (document.activeElement !== this.valueInputRef.current) return;
     event.preventDefault();
-    if (event.wheelDelta > 0) {
+    if (event.deltaY < 0) {
       this.stepUp(event);
-    } else if (event.wheelDelta < 0) {
+    } else if (event.deltaY > 0) {
       this.stepDown(event);
     }
   };
 
-  handleChange = (event) => {
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = this.getFormattedValue(event.currentTarget.value);
     const { numberFormatter, value: prevValue } = this.asProps;
 
     if (value === '.' || value === '-') {
-      this.handlers.displayValue(value);
+      this.setState({ displayValue: value });
       return false;
     }
 
@@ -265,7 +305,7 @@ class Value extends Component {
 
     if (value.endsWith('.')) {
       if (value.length > prevValue.length) {
-        this.handlers.displayValue(numberFormatter.format(value) + this.separatorDecimal);
+        this.setState({ displayValue: numberFormatter.format(value as `${number}`) + this.separatorDecimal });
         return false;
       } else {
         this.handlers.value(value.slice(0, -1), event);
@@ -280,17 +320,17 @@ class Value extends Component {
     }
   };
 
-  handleKeyUp = (event) => {
+  handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Shift') {
       this.cursorPosition = -1;
     }
   };
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const element = event.currentTarget;
     const value = element.value;
     const length = value.length;
-    const { displayValue } = this.asProps;
+    const { displayValue } = this.state;
 
     if (event.key === '.' || event.key === ',') {
       // for the first decimal separator we should replace both ',' and '.' to '.' because of how js convert strings to numbers (with ',' it will be Number.NaN)
@@ -306,7 +346,7 @@ class Value extends Component {
     if (event.key === 'Backspace' && value.endsWith(this.separatorDecimal)) {
       event.preventDefault();
       event.stopPropagation();
-      this.handlers.displayValue(displayValue.slice(0, -1));
+      this.setState({ displayValue: displayValue?.slice(0, -1) });
       return false;
     }
 
@@ -316,7 +356,7 @@ class Value extends Component {
         event.key === this.separatorDecimal ||
         ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key))
     ) {
-      const afterSelection = value.slice(element.selectionEnd);
+      const afterSelection = value.slice(element.selectionEnd ?? undefined);
 
       requestAnimationFrame(() => {
         const newValue = this.state.displayValue;
@@ -362,8 +402,11 @@ class Value extends Component {
     }
   };
 
-  moveSelectionLeft = (element, cursorIndex) => {
+  moveSelectionLeft = (element: React.KeyboardEvent<HTMLInputElement>['currentTarget'], cursorIndex: number) => {
+    if (element.selectionStart === null) return;
+
     const value = element.value;
+
     const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
 
     const cursorPosition =
@@ -376,11 +419,12 @@ class Value extends Component {
       element.setSelectionRange(cursorPosition, cursorPosition);
     } else {
       if (
+        this.cursorPosition &&
         element.selectionStart <= this.cursorPosition &&
         element.selectionEnd === this.cursorPosition
       ) {
         element.setSelectionRange(cursorPosition, element.selectionEnd);
-      } else {
+      } else if (element.selectionEnd !== null) {
         element.setSelectionRange(
           element.selectionStart,
           value[element.selectionEnd - cursorIndex] === this.separatorThousands
@@ -391,7 +435,9 @@ class Value extends Component {
     }
   };
 
-  moveSelectionRight = (element, cursorIndex) => {
+  moveSelectionRight = (element: React.KeyboardEvent<HTMLInputElement>['currentTarget'], cursorIndex: number) => {
+    if (element.selectionEnd === null) return;
+
     const value = element.value;
     const nextPosition = element.selectionEnd + 1;
 
@@ -405,11 +451,12 @@ class Value extends Component {
       element.setSelectionRange(cursorPosition, cursorPosition);
     } else {
       if (
+        this.cursorPosition &&
         element.selectionEnd >= this.cursorPosition &&
         element.selectionStart === this.cursorPosition
       ) {
         element.setSelectionRange(element.selectionStart, cursorPosition);
-      } else {
+      } else if (element.selectionStart !== null) {
         element.setSelectionRange(
           value[element.selectionStart] === this.separatorThousands
             ? element.selectionStart + cursorIndex
@@ -420,21 +467,16 @@ class Value extends Component {
     }
   };
 
-  handleClick = (event) => {
-    const element = event.target;
+  handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
+    const element = event.currentTarget;
     const value = element.value;
 
-    if (value[element.selectionStart - 1] === this.separatorThousands) {
-      element.setSelectionRange(element.selectionStart - 1, element.selectionEnd - 1);
+    if (element.selectionStart !== null && value[element.selectionStart - 1] === this.separatorThousands) {
+      element.setSelectionRange(element.selectionStart - 1, element.selectionEnd! - 1);
     }
   };
 
-  handleBlur = (event) => {
-    this.cursorPosition = -1;
-    this.handleValidation(event);
-  };
-
-  stepUp = (event) => {
+  stepUp = (event: StepEvent) => {
     const { max = Number.MAX_SAFE_INTEGER, min, step, value } = this.asProps;
 
     let numberValue;
@@ -453,7 +495,7 @@ class Value extends Component {
     this.handlers.value(this.getDisplayValue(nextValue), event);
   };
 
-  stepDown = (event) => {
+  stepDown = (event: StepEvent) => {
     const { max, min = Number.MIN_SAFE_INTEGER, step, value } = this.asProps;
 
     let numberValue;
@@ -473,7 +515,8 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
-    const { styles, min, max, step, forwardRef, inputRef, displayValue } = this.asProps;
+    const { styles, min, max, step, forwardRef, inputRef } = this.asProps;
+    const { displayValue } = this.state;
 
     return sstyled(styles)(
       <>
@@ -485,7 +528,7 @@ class Value extends Component {
           onKeyDown={this.handleKeyDown}
           onKeyUp={this.handleKeyUp}
           onClick={this.handleClick}
-          use:ref={forkRef(this.valueInputRef, inputRef, forwardRef)}
+          use:ref={forkRef(this.valueInputRef, inputRef, forwardRef ?? null)}
           use:value={displayValue}
           inputMode={Number.isInteger(step) ? 'numeric' : 'decimal'}
           min={min}
@@ -497,8 +540,10 @@ class Value extends Component {
   }
 }
 
-function Controls(props) {
-  const { Children, increment, decrement, size, styles, getI18nText } = props;
+function Controls(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInputNumber.Controls.Component, typeof InputNumber, 'Controls'>,
+) {
+  const { Children, increment, decrement, styles, getI18nText } = props;
   const SControls = Root;
   const SUp = 'button';
   const SDown = 'button';
@@ -509,7 +554,6 @@ function Controls(props) {
         onClick={increment}
         tabIndex={-1}
         type='button'
-        size={size}
         aria-label={getI18nText('increment')}
       >
         <IncrementIcon />
@@ -518,7 +562,6 @@ function Controls(props) {
         onClick={decrement}
         tabIndex={-1}
         type='button'
-        size={size}
         aria-label={getI18nText('decrement')}
       >
         <DecrementIcon />
@@ -534,7 +577,10 @@ Controls.style = style;
  *
  * {@link https://developer.semrush.com/intergalactic/components/input-number/input-number-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-number/input-number-code/|Examples}
  */
-export default createComponent(InputNumber, {
+export default createComponent<
+  NSInputNumber.Component,
+  typeof InputNumber
+>(InputNumber, {
   Value,
   Controls,
   Addon: Input.Addon,

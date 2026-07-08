@@ -23,7 +23,7 @@ describe('Radio', () => {
       </Radio>,
     );
 
-    expect(getByTestId('input').attributes['name'].value).toBe('radio');
+    expect((getByTestId('input') as HTMLInputElement).name).toBe('radio');
   });
 
   test('Verify state  changes to "checked" by click on label', async () => {
@@ -51,7 +51,7 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect(getByTestId('radio').name).toContain('test');
+    expect((getByTestId('radio') as HTMLInputElement).name).toContain('test');
   });
 
   test('Verify supports onChange', async () => {
@@ -116,8 +116,8 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect(getByTestId('radio').checked).toBeTruthy();
-    expect(getByTestId('radioSecond').checked).toBeFalsy();
+    expect((getByTestId('radio') as HTMLInputElement).checked).toBeTruthy();
+    expect((getByTestId('radioSecond') as HTMLInputElement).checked).toBeFalsy();
   });
 
   test.concurrent('Verify supports initial value in Radio', () => {
@@ -136,8 +136,8 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect(getByTestId('radioControl').checked).toBeFalsy();
-    expect(getByTestId('radioControlSecond').checked).toBeTruthy();
+    expect((getByTestId('radioControl') as HTMLInputElement).checked).toBeFalsy();
+    expect((getByTestId('radioControlSecond') as HTMLInputElement).checked).toBeTruthy();
   });
 
   test('Verify supports disabled prop', async () => {
@@ -224,11 +224,11 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect(getByTestId('r2').checked).toBe(true);
+    expect((getByTestId('r2') as HTMLInputElement).checked).toBe(true);
 
     await userEvent.click(getByTestId('r1'));
     expect(onChange).toHaveBeenCalledWith('1', expect.anything());
-    expect(getByTestId('r1').checked).toBe(true);
+    expect((getByTestId('r1') as HTMLInputElement).checked).toBe(true);
   });
 
   test('Verify disabled priority: group vs item', () => {
@@ -253,7 +253,9 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect(getByTestId('rFalse').disabled).toBe(false);
-    expect(getByTestId('rGroupDisabled').disabled).toBe(true);
+    expect((getByTestId('rFalse') as HTMLInputElement).disabled).toBe(false);
+    expect((getByTestId('rGroupDisabled') as HTMLInputElement).disabled).toBe(true);
+
+    spyWarn.mockRestore();
   });
 });

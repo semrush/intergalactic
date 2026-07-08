@@ -341,7 +341,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       }
     });
 
-    await test.step('Verify onBlurBehavior-cancel', async () => {
+    // Leaving the field with Tab/Shift+Tab always discards changes (onCancel),
+    // regardless of onBlurBehavior. onBlurBehavior governs mouse blur only.
+    await test.step('Tab leaving onBlurBehavior="cancel" discards (onCancel)', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
@@ -352,34 +354,42 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       const cancelLogs = logs.filter((log) => log.includes('Cancel'));
       expect(cancelLogs.length).toBe(1);
 
+      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
+      expect(confirmLogs.length).toBe(0);
+
       const onChangeLogs = logs.filter((log) => log.includes('Change'));
       expect(onChangeLogs.length).toBe(0);
     });
 
-    await test.step('Verify onBlurBehavior-confirm', async () => {
+    await test.step('Tab leaving onBlurBehavior="confirm" also discards (onCancel), never confirms', async () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
 
       await page.waitForTimeout(100);
 
+      // Tab discards regardless of onBlurBehavior -> a second Cancel, still no Confirm.
+      const cancelLogs = logs.filter((log) => log.includes('Cancel'));
+      expect(cancelLogs.length).toBe(2);
+
       const confirmLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(confirmLogs.length).toBe(1);
+      expect(confirmLogs.length).toBe(0);
 
       const onChangeLogs = logs.filter((log) => log.includes('Change'));
       expect(onChangeLogs.length).toBe(0);
     });
 
-    await test.step('Verify onBlurBehavior-none', async () => {
+    await test.step('Shift+Tab leaving onBlurBehavior="none" still discards (onCancel)', async () => {
       await page.keyboard.press('Shift+Tab');
 
       await page.waitForTimeout(100);
 
-      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
-      expect(confirmLogs.length).toBe(1);
-
+      // Tab discard is unconditional, so even "none" fires onCancel on Tab.
       const cancelLogs = logs.filter((log) => log.includes('Cancel'));
-      expect(cancelLogs.length).toBe(1);
+      expect(cancelLogs.length).toBe(3);
+
+      const confirmLogs = logs.filter((log) => log.includes('Confirm'));
+      expect(confirmLogs.length).toBe(0);
 
       const onChangeLogs = logs.filter((log) => log.includes('Change'));
       expect(onChangeLogs.length).toBe(0);
@@ -667,6 +677,38 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       await decrement.click();
       await expect(locators.valueNumber(page)).toHaveAttribute('value', '102');
     });
+  });
+
+  test('Verify Number-only input with showControls changes value by mouse and keyboard', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@inline-input',
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en');
+
+    const numberInlineInput = page.locator('[data-testid="addons"] [data-ui-name="InlineInput"]').last();
+    const value = numberInlineInput.locator('[data-ui-name="InlineInput.NumberValue"]');
+    const controls = numberInlineInput.locator('[data-ui-name="InlineInput.NumberControls"]');
+    const increment = numberInlineInput.getByLabel('increment');
+    const decrement = numberInlineInput.getByLabel('decrement');
+
+    await expect(value).toHaveAttribute('value', '100');
+    await expect(controls).toBeVisible();
+
+    await increment.click();
+    await expect(value).toBeFocused();
+    await expect(value).toHaveAttribute('value', '101');
+
+    await page.keyboard.press('ArrowUp');
+    await expect(value).toHaveAttribute('value', '102');
+
+    await decrement.click();
+    await expect(value).toHaveAttribute('value', '101');
+
+    await page.keyboard.press('ArrowDown');
+    await expect(value).toHaveAttribute('value', '100');
   });
 
   test('Verify Number-only input keyboard interactions', {
