@@ -94,11 +94,11 @@ const Demo = (props: Partial<ExampleProps>) => {
   } = { ...defaultBulkTextareaProps, ...props };
 
   const [value, setValue] = React.useState('');
-  const [errors, setErrors] = React.useState<NSBulktextarea.InputField.ErrorItem[]>([]);
+  const [errors, setErrors] = React.useState<NSBulktextarea.ErrorItem[]>([]);
   const [showErrors, setShowErrors] = React.useState(false);
 
   const handleSubmit = React.useCallback(() => {
-    const newErrors: NSBulktextarea.InputField.ErrorItem[] = [];
+    const newErrors: NSBulktextarea.ErrorItem[] = [];
     const rows = value.split('\n');
     rows.forEach((line, index) => {
       const { isValid, errorMessage } = validateRow(line, rows);

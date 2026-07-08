@@ -36,11 +36,11 @@ declare namespace NSBulktextarea {
     /** Function to process individual lines during input */
     lineProcessing?: NSBulktextarea.InputField.Props<T>['lineProcessing'];
     /** List of errors */
-    errors?: Array<NSBulktextarea.InputField.ErrorItem>;
+    errors?: Array<NSBulktextarea.ErrorItem>;
     /** Defines whether to show errors or not */
     showErrors?: boolean;
     /** Internal */
-    onErrorsChange?: (errors: NSBulktextarea.InputField.ErrorItem[]) => void;
+    onErrorsChange?: (errors: NSBulktextarea.ErrorItem[]) => void;
     /** Internal */
     onShowErrorsChange?: (showErrors: boolean) => void;
     /** Internal */
@@ -63,13 +63,18 @@ declare namespace NSBulktextarea {
     isEmptyText: boolean;
     errorIndex: number;
     highlightErrorIndex: boolean;
-    prevError?: NSBulktextarea.InputField.ErrorItem;
+    prevError?: NSBulktextarea.ErrorItem;
   };
   type Uncontrolled = {
     value: null;
     state: null;
     showErrors: null;
     errors: null;
+  };
+  type ErrorItem = {
+    lineIndex: number;
+    lineNode?: Node;
+    errorMessage: string;
   };
 
   namespace InputField {
@@ -166,7 +171,17 @@ declare namespace NSBulktextarea {
        */
       lineProcessing?: (line: string, lines: string[]) => string;
     };
-    type Uncontrolled = {
+    type DefaultProps = {
+      defaultValue: '';
+      size: 'm';
+      state: 'normal';
+      minRows: 2;
+      maxRows: 10;
+      defaultShowErrors: false;
+      defaultErrorIndex: -1;
+      defaultLinesCount: 0;
+    };
+    type Handlers = {
       value: null;
       linesCount: null;
       errorIndex: null;
@@ -175,11 +190,6 @@ declare namespace NSBulktextarea {
       keyboardLineIndex: number;
       mouseLineIndex: number;
       visibleErrorPopper: boolean;
-    };
-    type ErrorItem = {
-      lineIndex: number;
-      lineNode?: Node;
-      errorMessage: string;
     };
 
     type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>>;
@@ -238,6 +248,6 @@ export type BulkTextareaInputFieldProps<T extends string | string[] = string | s
 /** @deprecated It will be removed in v18. */
 export type BulkTextareaType<T extends string | string[]> = NSBulktextarea.Component<T>;
 /** @deprecated It will be removed in v18. */
-export type ErrorItem = NSBulktextarea.InputField.ErrorItem;
+export type ErrorItem = NSBulktextarea.ErrorItem;
 
 export type { NSBulktextarea };

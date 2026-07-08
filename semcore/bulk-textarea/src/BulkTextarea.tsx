@@ -128,7 +128,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       validateOn,
       lineValidation: lineValidation,
       errors,
-      onErrorsChange: (newErrors: NSBulktextarea.InputField.ErrorItem[]) => {
+      onErrorsChange: (newErrors: NSBulktextarea.ErrorItem[]) => {
         const prevError = newErrors.length === 0 ? errors[0] : undefined;
         this.handlers.errors(newErrors);
         this.setState({ prevError });

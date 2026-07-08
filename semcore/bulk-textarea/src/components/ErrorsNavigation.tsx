@@ -23,12 +23,9 @@ export function ErrorsNavigation(
     onNextError,
     size,
     showErrors,
-    // ?
     getI18nText,
     disabled,
-    // ?
     nextButtonRef,
-    // ?
     prevButtonRef,
   } = props;
   return (

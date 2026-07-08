@@ -22,11 +22,11 @@ const validateRow = (row: string, rows: string[]) => {
 
 const Demo = (props: NSBulktextarea.Props<any>) => {
   const [value, setValue] = React.useState('');
-  const [errors, setErrors] = React.useState<NSBulktextarea.InputField.ErrorItem[]>([]);
+  const [errors, setErrors] = React.useState<NSBulktextarea.ErrorItem[]>([]);
   const [showErrors, setShowErrors] = React.useState(false);
 
   const handleSubmit = React.useCallback(() => {
-    const errors: NSBulktextarea.InputField.ErrorItem[] = [];
+    const errors: NSBulktextarea.ErrorItem[] = [];
     const rows = value.split('\n');
     rows.forEach((line, index) => {
       const { isValid, errorMessage } = validateRow(line, rows);

@@ -14,7 +14,6 @@ export function Counter(
     'Counter'
   >,
 ) {
-  // ?
   const { theme, linesCount, maxLines, getI18nText } = props;
 
   return (

@@ -17,9 +17,10 @@ type Props<T extends string | string[]> = Intergalactic.InternalTypings.InferChi
 class InputField<T extends string | string[]> extends Component<
   Props<T>,
   typeof InputField.enhance,
-  NSBulktextarea.InputField.Uncontrolled,
+  NSBulktextarea.InputField.Handlers,
   {},
-  NSBulktextarea.InputField.State
+  NSBulktextarea.InputField.State,
+  NSBulktextarea.InputField.DefaultProps
 > {
   static displayName = 'Textarea';
   static style = style;
@@ -153,8 +154,8 @@ class InputField<T extends string | string[]> extends Component<
 
     if (prevProps.showErrors !== showErrors || prevProps.errors !== errors) {
       if (showErrors) {
-        const errorsMap = new Map<number, NSBulktextarea.InputField.ErrorItem>();
-        errors.forEach((error: NSBulktextarea.InputField.ErrorItem) => {
+        const errorsMap = new Map<number, NSBulktextarea.ErrorItem>();
+        errors.forEach((error: NSBulktextarea.ErrorItem) => {
           errorsMap.set(error.lineIndex, error);
         });
 
@@ -261,7 +262,7 @@ class InputField<T extends string | string[]> extends Component<
         : this.errorByInteraction === 'mouse'
           ? mouseLineIndex
           : -1;
-    let errorItem: NSBulktextarea.InputField.ErrorItem | undefined = errors[errorIndex];
+    let errorItem: NSBulktextarea.ErrorItem | undefined = errors[errorIndex];
 
     if (currentLineIndex !== -1) {
       errorItem = errors.find((e) => e?.lineIndex === currentLineIndex);
@@ -932,7 +933,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private recalculateErrors(): void {
-    const errors: NSBulktextarea.InputField.ErrorItem[] = [];
+    const errors: NSBulktextarea.ErrorItem[] = [];
 
     this.textarea.childNodes.forEach((node, index) => {
       if (node instanceof HTMLParagraphElement && node.getAttribute('aria-invalid') === 'true') {
@@ -1085,7 +1086,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private handleChangeErrorIndex(errorIndex: number): void {
-    const error: NSBulktextarea.InputField.ErrorItem | undefined = this.asProps.errors[errorIndex];
+    const error: NSBulktextarea.ErrorItem | undefined = this.asProps.errors[errorIndex];
     const childNodes = this.textarea.childNodes;
 
     const node = error ? error.lineNode ?? childNodes.item(error.lineIndex) : null;
