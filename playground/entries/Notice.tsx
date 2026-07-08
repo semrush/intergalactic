@@ -1,6 +1,6 @@
 import QuestionAltM from '@semcore/icon/Question/m';
 import Button from '@semcore/ui/button';
-import type { NoticeProps } from '@semcore/ui/notice';
+import type { NSNotice } from '@semcore/ui/notice';
 import Notice from '@semcore/ui/notice';
 import React, { useState } from 'react';
 
@@ -15,7 +15,7 @@ type AdditionalJSXProps = {
   message: string;
   actions: boolean;
 };
-export type NoticeJSXProps = JSXProps<NoticeProps> & AdditionalJSXProps;
+export type NoticeJSXProps = JSXProps<NSNotice.Props> & AdditionalJSXProps;
 
 function getJSX(props: NoticeJSXProps) {
   const [isHidden, setIsHidden] = useState(false);

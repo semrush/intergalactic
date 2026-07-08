@@ -1,27 +1,20 @@
 import { FilterTrigger } from '@semcore/base-trigger';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root } from '@semcore/core';
-import Select, { type SelectProps } from '@semcore/select';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import Select from '@semcore/select';
 import React from 'react';
 
-import type { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
-
-type AsPropsWithOnClear<T> = T & {
-  onClear: () => void;
-  unsetFocusRef: () => void;
-  setFocusRef: (el: HTMLElement) => {};
-};
-
-type DefaultProps = {
-  defaultVisible: false;
-};
+import type { RootAddFilterType } from '../AddFilter';
+import type { NSAddFilter } from '../AddFilter.types';
 
 class AddFilterSelectRoot extends Component<
-  SelectProps & AddFilterItemProps,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSAddFilter.Select.Component, RootAddFilterType, 'Select'>,
   [],
-  { visible: null },
+  NSAddFilter.Select.Handlers,
+  WithI18nEnhanceProps,
   {},
-  {},
-  DefaultProps
+  NSAddFilter.Select.DefaultProps
 > {
   static displayName = 'AddFilterSelect';
 
@@ -29,7 +22,7 @@ class AddFilterSelectRoot extends Component<
     defaultVisible: false,
   } as const;
 
-  componentDidMount(): void {
+  componentDidMount() {
     if (this.props.visible === undefined) {
       setTimeout(() => {
         this.handlers.visible(true);
@@ -48,12 +41,12 @@ class AddFilterSelectRoot extends Component<
   }
 
   isValueEmpty() {
-    const { value, multiselect } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
+    const { value, multiselect } = this.asProps;
     return multiselect && Array.isArray(value) ? !value?.length : !value;
   }
 
   getTriggerProps() {
-    const { onClear, setFocusRef } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
+    const { onClear, setFocusRef } = this.asProps;
 
     return {
       tag: FilterTrigger,
@@ -82,8 +75,8 @@ class AddFilterSelectRoot extends Component<
   }
 }
 
-const AddFilterSelect: typeof AddFilterSelectType = createComponent<
-  typeof AddFilterSelectType,
+const AddFilterSelect = createComponent<
+  NSAddFilter.Select.Component,
   typeof AddFilterSelectRoot
 >(AddFilterSelectRoot, {
   Trigger: Select.Trigger,

@@ -1,9 +1,9 @@
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { InputFH, BadgeFH } from '@semcore/ui/feature-highlight';
-import type { InputProps } from '@semcore/ui/input';
+import type { NSInput } from '@semcore/ui/input';
 import React from 'react';
 
-export type InputFHAdvancedProps = InputProps & {
+export type InputFHAdvancedProps = NSInput.Props & {
   placeholder?: string;
   showBadge?: boolean;
   badgeText?: string;

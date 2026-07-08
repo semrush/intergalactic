@@ -130,6 +130,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     { min: undefined, max: 3, step: undefined },
     { min: 2, max: undefined, step: 2 },
     { min: -3, max: 3, step: 1.5 },
+    { min: 0, max: 1, step: 0.01 },
   ];
   variablesInputNumber.forEach((item) => {
     test(`Verify Base example interactions with min= ${item.min} max=${item.max} step=${item.step} `, {
@@ -137,6 +138,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         '@input-number'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
+
+      const [_, decimals] = item.step?.toString().split('.') ?? [];
+      const stepPrecision = decimals?.length ?? 0;
 
       const controls = page.locator('[data-ui-name="InputNumber.Controls"]');
 
@@ -194,8 +198,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         } else {
           expectedValue = numericValue;
         }
+
+        if (stepPrecision) {
+          expectedValue = expectedValue.toFixed(stepPrecision);
+        }
+
         await page.locator('label').click();
-        await expect(locators.input(page)).toHaveValue((expectedValue).toLocaleString());
+        await expect(locators.input(page)).toHaveValue(expectedValue.toLocaleString());
         await expect(locators.input(page)).toBeFocused();
       });
 
@@ -218,6 +227,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
           expectedValue = 0 - decrement;
         }
 
+        // A zero result is displayed without a fractional part, mirroring the component's getDisplayValue.
+        if (stepPrecision && expectedValue !== 0) {
+          expectedValue = expectedValue.toFixed(stepPrecision);
+        }
+
         await expect(locators.input(page)).toHaveValue(String(expectedValue));
         await expect(locators.input(page)).toBeFocused();
       });
@@ -236,6 +250,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
           expectedValue = numericValue;
         }
 
+        // A zero result is displayed without a fractional part, mirroring the component's getDisplayValue.
+        if (stepPrecision && expectedValue !== 0) {
+          expectedValue = expectedValue.toFixed(stepPrecision);
+        }
+
         await page.locator('label').click();
         await expect(locators.input(page)).toHaveValue(expectedValue.toLocaleString());
         await expect(locators.input(page)).toBeFocused();
@@ -248,6 +267,55 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         await expect(locators.input(page)).toHaveAttribute('value', '9');
       });
     });
+  });
+
+  test('Verify focused wheel changes value with decimal step and respects boundaries', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', {
+      max: 1,
+      min: 0,
+      step: 0.25,
+    });
+
+    const input = locators.input(page);
+
+    await input.click();
+    await input.fill('0.50');
+    await input.hover();
+
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('0.75');
+
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('1.00');
+
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('1.00');
+
+    await page.mouse.wheel(0, 100);
+    await expect(input).toHaveValue('0.75');
+
+    await input.fill('0.25');
+    await page.evaluate(() => {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
+    await expect(input).not.toBeFocused();
+
+    await input.hover();
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('0.25');
+
+    await input.click();
+    await page.mouse.wheel(0, 100);
+    await expect(input).toHaveValue('0');
+
+    await page.mouse.wheel(0, 100);
+    await expect(input).toHaveValue('0');
   });
 
   test('Verify keyboard interactions with custom appearance', {

@@ -4,13 +4,13 @@ import Button from '@semcore/ui/button';
 import { DataTable, type DataTableProps } from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
 import Modal from '@semcore/ui/modal';
-import type { ModalProps } from '@semcore/ui/modal';
+import type { NSModal } from '@semcore/ui/modal';
 import Tag from '@semcore/ui/tag';
 import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type BasicModalProps = ModalProps & {
+type BasicModalProps = NSModal.Props & {
   title?: string;
   content?: string;
   showCloseButton?: boolean;

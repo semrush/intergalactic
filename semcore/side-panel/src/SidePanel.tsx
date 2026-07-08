@@ -1,0 +1,302 @@
+import { FadeInOut, Slide, Flex, Box, OutsideClick, PortalProvider, Portal } from '@semcore/base-components';
+import Button, { ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import fire from '@semcore/core/lib/utils/fire';
+import logger from '@semcore/core/lib/utils/logger';
+import { useContextTheme } from '@semcore/core/lib/utils/ThemeProvider';
+import { useFocusLock } from '@semcore/core/lib/utils/use/useFocusLock';
+import usePreventScroll from '@semcore/core/lib/utils/use/usePreventScroll';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import {
+  ZIndexStackingContextProvider,
+  useZIndexStacking,
+} from '@semcore/core/lib/utils/zIndexStacking';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import CloseIcon from '@semcore/icon/Close/l';
+import { Text } from '@semcore/typography';
+import React from 'react';
+
+import type { NSSidePanel } from './SidePanel.type';
+import style from './style/side-panel.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+
+class RootSidePanel extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Component>,
+  typeof RootSidePanel.enhance,
+  {},
+  {},
+  {},
+  NSSidePanel.DefaultProps
+> {
+  static displayName = 'SidePanel';
+  static style = style;
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-modal',
+      fallback: '200',
+      // TODO: Types are incompatible. For some reason string type doesn't recognized as a valid value.
+      // Leave it with ts-ignore annotation.
+      // @ts-ignore
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+    i18nEnhance(localizedMessages),
+  ] as const;
+
+  static defaultProps = {
+    placement: 'right',
+    closable: true,
+    disablePreventScroll: false,
+  } as const;
+
+  sidebarRef = React.createRef<HTMLDivElement>();
+
+  handleSidebarKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape') {
+      e.stopPropagation();
+      fire(this, 'onClose', 'onEscape', e);
+    }
+  };
+
+  handleIconCloseClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    fire(this, 'onClose', 'onCloseClick', e);
+  };
+
+  handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    fire(this, 'onClose', 'onOutsideClick', e);
+  };
+
+  isAdvanceMode() {
+    return isAdvanceMode(this.asProps.Children, [
+      SidePanel.Overlay.displayName,
+      SidePanel.Panel.displayName,
+    ]);
+  }
+
+  isUsedOverlay() {
+    return (
+      !this.isAdvanceMode() || isAdvanceMode(this.asProps.Children, [SidePanel.Overlay.displayName])
+    );
+  }
+
+  getOverlayProps() {
+    const { visible, duration, animationsDisabled, disablePreventScroll } = this.asProps;
+    return {
+      visible,
+      duration,
+      animationsDisabled,
+      disablePreventScroll,
+    };
+  }
+
+  getPanelProps() {
+    const {
+      placement,
+      visible,
+      closable,
+      duration,
+      animationsDisabled,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+    } = this.asProps;
+
+    return {
+      visible,
+      placement,
+      closable,
+      'duration': duration + duration / 2,
+      'disableEnforceFocus': !this.isUsedOverlay(),
+      'onOutsideClick': this.handleOutsideClick,
+      'onKeyDown': this.handleSidebarKeyDown,
+      animationsDisabled,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+    };
+  }
+
+  getCloseProps() {
+    return {
+      onClick: this.handleIconCloseClick,
+      getI18nText: this.asProps.getI18nText,
+    };
+  }
+
+  render() {
+    const { Children, disablePortal, ignorePortalsStacking } = this.asProps;
+
+    return (
+      <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
+        {this.isAdvanceMode()
+          ? (
+              <Children />
+            )
+          : (
+              <SidePanel.Overlay>
+                <Root render={SidePanel.Panel} />
+              </SidePanel.Overlay>
+            )}
+      </Portal>
+    );
+  }
+}
+
+function Overlay(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSidePanel.Overlay.Component, typeof RootSidePanel, 'Overlay'>,
+) {
+  const SOverlay = Root;
+  const overlayRef = React.useRef(null);
+  usePreventScroll(props.visible, props.disablePreventScroll);
+  useContextTheme(overlayRef, props.visible);
+  const zIndex = useZIndexStacking('z-index-modal');
+  return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} zIndex={zIndex} />);
+}
+
+function Panel(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSidePanel.Panel.Component, typeof RootSidePanel, 'Panel'>,
+) {
+  const SPanel = Root;
+  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } = props;
+  const advancedMode =
+    forcedAdvancedMode ||
+    isAdvanceMode(Children, [
+      SidePanel.Header.displayName,
+      SidePanel.Body.displayName,
+      SidePanel.Footer.displayName,
+    ]);
+
+  const sidebarRef = React.useRef(null);
+
+  useFocusLock(sidebarRef, true, 'auto', !visible, true);
+
+  const hasLabel = Boolean(props['aria-label'] || props['aria-labelledby']);
+
+  logger.warn(
+    !hasLabel,
+    '\'aria-label\' or \'aria-labelledby\' are required for SidePanel component',
+    props['data-ui-name'],
+  );
+
+  return sstyled(styles)(
+    <>
+      {visible && <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[sidebarRef]} />}
+      <SPanel
+        render={Slide}
+        visible={visible}
+        initialAnimation={true}
+        slideOrigin={placement}
+        ref={sidebarRef}
+        role='dialog'
+        aria-modal='true'
+      >
+        <ZIndexStackingContextProvider designToken='z-index-modal'>
+          <PortalProvider value={sidebarRef}>
+            {closable && <SidePanel.Close />}
+            {advancedMode
+              ? (
+                  <Children />
+                )
+              : (
+                  <SidePanel.Body>
+                    <Children />
+                  </SidePanel.Body>
+                )}
+          </PortalProvider>
+        </ZIndexStackingContextProvider>
+      </SPanel>
+    </>,
+  );
+}
+
+function Footer(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Footer.Component>,
+) {
+  const SFooter = Root;
+  return sstyled(props.styles)(<SFooter render={Flex} tag='footer' />);
+}
+
+function Close(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSidePanel.Close.Component, typeof RootSidePanel, 'Close'>,
+) {
+  const { styles, children: hasChildren, Children, getI18nText } = props;
+  const SClose = Root;
+  return sstyled(styles)(
+    <SClose
+      render={Button}
+      aria-label={getI18nText('close')}
+      use='tertiary'
+      theme='muted'
+      size='l'
+      addonLeft={hasChildren ? undefined : CloseIcon}
+      data-hide-focus-hover-popper='true'
+    >
+      {hasChildren ? <Children /> : undefined}
+    </SClose>,
+  );
+}
+
+function Title(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Title.Component>,
+) {
+  const STitle = Root;
+  return sstyled(props.styles)(<STitle render={Text} tag='h6' size={300} bold ellipsis />);
+}
+
+function Back(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Back.Component>,
+) {
+  const SBack = Root;
+  const { Children, styles } = props;
+
+  return sstyled(styles)(
+    <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft}>
+      <ButtonLink.Text ellipsis>
+        <Children />
+      </ButtonLink.Text>
+    </SBack>,
+  );
+}
+
+function Body(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Body.Component>,
+) {
+  const SBody = Root;
+
+  return sstyled(props.styles)(<SBody render={Box} />);
+}
+
+function Header(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Header.Component>,
+) {
+  const SHeader = Root;
+  const { Children, styles, title } = props;
+  return sstyled(styles)(
+    <SHeader render={Box} tag='header'>
+      {title && <SidePanel.Title children={title} />}
+      <Children />
+    </SHeader>,
+  );
+}
+
+/**
+ * SidePanel
+ *
+ * {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/side-panel/side-panel-code/|Examples}
+ */
+const SidePanel = createComponent<
+  NSSidePanel.Component,
+  typeof RootSidePanel
+>(RootSidePanel, {
+  Overlay,
+  Panel,
+  Close,
+  Header,
+  Footer,
+  Body,
+  Back,
+  Title,
+});
+
+export default SidePanel;
