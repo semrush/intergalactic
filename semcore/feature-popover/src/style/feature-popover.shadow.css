@@ -9,11 +9,11 @@ SFeaturePopover {
   position: relative;
 
   &[theme='accent'] {
-    background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-accent-bg */
+    background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-bg-accent */
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-feature-popover-text */
   }
   &[theme='neutral'] {
-    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140)); /* TODO: --intergalactic-feature-popover-neutral-bg */
+    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140)); /* TODO: --intergalactic-feature-popover-bg-neutral */
     color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-feature-popover-text-invert */
   }
 }
@@ -94,18 +94,18 @@ SSpot {
 
   &[theme='accent'] {
     &::before {
-      background-color: var(--intergalactic-feature-popover-dot-outer-border, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-accent-dot-outer-border */
+      background-color: var(--intergalactic-feature-popover-dot-outer-border, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-outer-border-accent */
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-accent-bg */
+      background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-accent */
     }
   }
   &[theme='neutral'] {
     &::before {
-      background-color: var(--intergalactic-feature-popover-dot-neutral-outer-border, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-neutral-dot-outer-border */
+      background-color: var(--intergalactic-feature-popover-dot-neutral-outer-border, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-outer-border-neutral */
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-dot-neutral, oklch(0.88 0.078 303));
+      background-color: var(--intergalactic-feature-popover-dot-neutral, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-neutral */
     }
   }
 }

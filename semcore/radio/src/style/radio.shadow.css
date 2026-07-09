@@ -33,7 +33,7 @@ SValue {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-radio-bg-normal */
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-radio-bg-normal */
     border: 1px solid;
     border-radius: 50%;
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
@@ -51,7 +51,7 @@ SValue {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-radio-bg-normal */
+    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-radio-bg-normal */
   }
 }
 
@@ -83,7 +83,7 @@ SValue[size='l'] {
 }
 
 SValue[state='normal']::before {
-  border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-radio-border */
+  border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-radio-border */
 }
 
 SValue[state='invalid']::before {
@@ -112,8 +112,8 @@ SControl:focus-visible+SValue[state='normal']::before {
 
 SControl:checked~SValue::before,
 SControl:checked:focus-visible~SValue::before {
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-radio-bg-selected */
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-radio-bg-selected */
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-radio-bg-selected */
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-radio-bg-selected */
 }
 
 SControl:focus-visible+SValue[state='invalid']::before {
@@ -143,6 +143,6 @@ SInvalidPattern {
     border-radius: 50%;
     background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.7 0.21 23) 0, oklch(0.7 0.21 23) 1px, transparent 0, transparent 50%));
     background-size: 6px 6px;
-    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-radio-bg-normal */
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-radio-bg-normal */
   }
 }

@@ -903,6 +903,24 @@
     "components": []
   },
   {
+    "name": "--intergalactic-control-radio-bg-normal",
+    "value": "oklch(1 0 0)",
+    "description": "Background color of the Radio.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-radio-bg-selected",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Selected state of the Radio background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-radio-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the Radio.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-control-primary-advertising",
     "value": "oklch(0.64 0.223 299.3)",
     "description": "Background of the advertising primary control.",
@@ -1459,41 +1477,43 @@
     ]
   },
   {
-    "name": "--intergalactic-feature-popover-accent-bg",
+    "name": "--intergalactic-feature-popover-bg-accent",
     "value": "oklch(0.88 0.078 303)",
-    "description": "Color of the outer border of the FeaturePopover.Spot.",
+    "description": "Background of the FeaturePopover with accent theme.",
     "components": []
   },
   {
-    "name": "--intergalactic-feature-popover-accent-dot-outer-border",
-    "value": "oklch(0.88 0.078 303)",
-    "description": "Color of the outer border of the FeaturePopover.Spot.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-feature-popover-dot",
-    "value": "oklch(0.88 0.078 303)",
-    "description": "Color of the outer border of the FeaturePopover.Spot.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-feature-popover-dot-neutral",
-    "value": "oklch(0.88 0.078 303)",
-    "description": "Color of the outer border of the FeaturePopover.Spot.",
+    "name": "--intergalactic-feature-popover-bg-neutral",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Background of the FeaturePopover with neutral theme.",
     "components": [
       "feature-popover"
     ]
   },
   {
-    "name": "--intergalactic-feature-popover-neutral-bg",
-    "value": "oklch(0.23 0.01 140)",
-    "description": "Color of the outer border of the FeaturePopover.Spot.",
+    "name": "--intergalactic-feature-popover-dot-accent",
+    "value": "oklch(0.88 0.078 303)",
+    "description": "Fill color of the FeaturePopover.Spot with accent theme.",
     "components": []
   },
   {
-    "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
+    "name": "--intergalactic-feature-popover-dot-neutral",
     "value": "oklch(0.88 0.078 303)",
-    "description": "Color of the outer border of the FeaturePopover.Spot.",
+    "description": "Fill color of the FeaturePopover.Spot with neutral theme.",
+    "components": [
+      "feature-popover"
+    ]
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot-outer-border-accent",
+    "value": "oklch(0.88 0.078 303)",
+    "description": "Outer border color of the FeaturePopover.Spot with accent theme.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot-outer-border-neutral",
+    "value": "oklch(0.88 0.078 303)",
+    "description": "Outer border color of the FeaturePopover.Spot with neutral theme.",
     "components": []
   },
   {
@@ -1957,24 +1977,6 @@
     "components": [
       "progress-bar"
     ]
-  },
-  {
-    "name": "--intergalactic-radio-bg-normal",
-    "value": "oklch(1 0 0)",
-    "description": "Background color of the Radio.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-radio-bg-selected",
-    "value": "oklch(0.23 0.01 140)",
-    "description": "Selected state of the Radio background.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-radio-border",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
-    "description": "Border color of the Radio.",
-    "components": []
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-bottom",

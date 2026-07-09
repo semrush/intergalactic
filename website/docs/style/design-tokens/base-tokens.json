@@ -871,11 +871,35 @@
     "value": "oklch(0.23 0.01 140)"
   },
   {
+    "name": "--intergalactic-feature-popover-dot",
+    "value": "oklch(0.88 0.078 303)"
+  },
+  {
     "name": "--intergalactic-feature-popover-dot-outer-border",
     "value": "oklch(0.88 0.078 303)"
   },
   {
+    "name": "--intergalactic-feature-popover-dot-neutral",
+    "value": "oklch(0.88 0.078 303)"
+  },
+  {
     "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
+    "value": "oklch(0.88 0.078 303)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-accent-bg",
+    "value": "oklch(0.88 0.078 303)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-accent-dot-outer-border",
+    "value": "oklch(0.88 0.078 303)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-neutral-bg",
+    "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
     "value": "oklch(0.88 0.078 303)"
   },
   {
@@ -893,5 +917,17 @@
   {
     "name": "--intergalactic-dot-notification-text",
     "value": "oklch(0.999 0.001 180 / 0.949)"
+  },
+  {
+    "name": "--intergalactic-radio-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+  },
+  {
+    "name": "--intergalactic-radio-bg-normal",
+    "value": "oklch(1 0 0)"
+  },
+  {
+    "name": "--intergalactic-radio-bg-selected",
+    "value": "oklch(0.23 0.01 140)"
   }
 ]

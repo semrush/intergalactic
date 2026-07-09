@@ -7,7 +7,7 @@ SWizard {
 }
 
 SSidebar {
-  background: var(--intergalactic-control-primary-advertising, oklch(0.23 0.01 140)); /* TODO: --intergalactic-wizard-sidebar-bg */
+  background: var(--intergalactic-control-primary-advertising, oklch(0.64 0.223 299.3)); /* TODO: --intergalactic-wizard-sidebar-bg */
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-wizard-sidebar-text-primary */
   font-weight: var(--intergalactic-bold, 700);
   font-size: var(--intergalactic-fs-300, 16px);
@@ -38,11 +38,11 @@ SSidebar {
     }
 
     &:hover {
-      background: var(--intergalactic-control-primary-advertising-hover, oklch(0.36 0.005 140)); /* TODO: --intergalactic-wizard-sidebar-control-hover */
+      background: var(--intergalactic-control-primary-advertising-hover, oklch(0.6 0.244 297.8)); /* TODO: --intergalactic-wizard-sidebar-control-hover */
       z-index: 2;
     }
     &[active] {
-      background: var(--intergalactic-control-primary-advertising-active, oklch(0.4 0.004 140)); /* TODO: --intergalactic-wizard-sidebar-control-active */
+      background: var(--intergalactic-control-primary-advertising-active, oklch(0.58 0.254 297.1)); /* TODO: --intergalactic-wizard-sidebar-control-active */
     }
     &:disabled,
     &[disabled] {
@@ -63,7 +63,7 @@ SSidebar {
         overflow: auto;
       }
       &[active]:hover SStepDescription {
-        background: var(--intergalactic-control-primary-advertising-active, oklch(0.4 0.004 140)); /* TODO: --intergalactic-wizard-sidebar-control-active */
+        background: var(--intergalactic-control-primary-advertising-active, oklch(0.58 0.254 297.1)); /* TODO: --intergalactic-wizard-sidebar-control-active */
       }
     }
   }

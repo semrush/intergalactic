@@ -740,6 +740,18 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_info_active}',
         description: 'Border color of the Checkbox button in its active state.',
       },
+      control_radio_bg_normal: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background color of the Radio.',
+      },
+      control_radio_bg_selected: {
+        value: '{semanticTokens.colors.control_primary_info}',
+        description: 'Selected state of the Radio background.',
+      },
+      control_radio_border: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the Radio.',
+      },
       control_primary_advertising_DEFAULT: {
         value: advertising.at(L_BG_BUTTON),
         description: 'Background of the advertising primary control.',
@@ -1032,29 +1044,29 @@ export const theme: Theme = {
         value: focus.opaqueAt(L_BG_SELECTED_HOVER),
         description: 'Hover state for the selected state of the default background color for the list item in the dropdown-menu.',
       },
-      feature_popover_accent_bg: {
+      feature_popover_bg_accent: {
         value: '{semanticTokens.colors.bg.primary.highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
+        description: 'Background of the FeaturePopover with accent theme.',
       },
-      feature_popover_accent_dot_outer_border: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_dot_DEFAULT: {
-        value: '{semanticTokens.colors.bg_primary_highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_dot_neutral_DEFAULT: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
-      },
-      feature_popover_neutral_bg: {
+      feature_popover_bg_neutral: {
         value: neutral.at(L_INV_BG_PRIMARY),
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
+        description: 'Background of the FeaturePopover with neutral theme.',
       },
-      feature_popover_neutral_dot_outer_border: {
-        value: '{semanticTokens.colors.feature.popover.dot.neutral}',
-        description: 'Color of the outer border of the FeaturePopover.Spot.',
+      feature_popover_dot_accent: {
+        value: '{semanticTokens.colors.bg_primary_highlight}',
+        description: 'Fill color of the FeaturePopover.Spot with accent theme.',
+      },
+      feature_popover_dot_neutral: {
+        value: '{semanticTokens.colors.bg.primary.highlight}',
+        description: 'Fill color of the FeaturePopover.Spot with neutral theme.',
+      },
+      feature_popover_dot_outer_border_accent: {
+        value: '{semanticTokens.colors.bg.primary.highlight}',
+        description: 'Outer border color of the FeaturePopover.Spot with accent theme.',
+      },
+      feature_popover_dot_outer_border_neutral: {
+        value: '{semanticTokens.colors.feature_popover_dot_neutral}',
+        description: 'Outer border color of the FeaturePopover.Spot with neutral theme.',
       },
 
       feature_popover_text_DEFAULT: {
@@ -1302,18 +1314,6 @@ export const theme: Theme = {
       progress_bar_value_gradient: {
         value: `linear-gradient(-45deg, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 25%, ${highlight.at(0.74)} 0%, ${highlight.at(0.74)} 50%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 0%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 75%, ${highlight.at(0.74)} 0%)`,
         description: 'Value with gradient for the ProgressBar.',
-      },
-      radio_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
-        description: 'Background color of the Radio.',
-      },
-      radio_bg_selected: {
-        value: '{semanticTokens.colors.control_primary_info}',
-        description: 'Selected state of the Radio background.',
-      },
-      radio_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
-        description: 'Border color of the Radio.',
       },
       scroll_area_dropdown_menu_bottom: {
         value: 'linear-gradient(to top, {baseTokens.colors.white} 34.38%, transparent 100%)',
@@ -2062,12 +2062,24 @@ export const theme: Theme = {
     feature: {
       popover: {
         bg: {
-          DEFAULT: { value: '{semanticTokens.colors.feature_popover_accent_bg}' },
-          neutral: { value: '{semanticTokens.colors.feature_popover_neutral_bg}' },
+          DEFAULT: { value: '{semanticTokens.colors.feature_popover_bg_accent}' },
+          neutral: { value: '{semanticTokens.colors.feature_popover_bg_neutral}' },
         },
         dot: {
-          outer: { border: { value: '{semanticTokens.colors.feature_popover_accent_dot_outer_border}' } },
-          neutral: { outer: { border: { value: '{semanticTokens.colors.feature_popover_neutral_dot_outer_border}' } } },
+          DEFAULT: { value: '{semanticTokens.colors.feature_popover_dot_accent}' },
+          outer: { border: { value: '{semanticTokens.colors.feature_popover_dot_outer_border_accent}' } },
+          neutral: {
+            DEFAULT: { value: '{semanticTokens.colors.feature_popover_dot_neutral}' },
+            outer: { border: { value: '{semanticTokens.colors.feature_popover_dot_outer_border_neutral}' } },
+          },
+        },
+        accent: {
+          bg: { value: '{semanticTokens.colors.feature_popover_bg_accent}' },
+          dot: { outer: { border: { value: '{semanticTokens.colors.feature_popover_dot_outer_border_accent}' } } },
+        },
+        neutral: {
+          bg: { value: '{semanticTokens.colors.feature_popover_bg_neutral}' },
+          dot: { outer: { border: { value: '{semanticTokens.colors.feature_popover_dot_outer_border_neutral}' } } },
         },
       },
     },
@@ -2081,6 +2093,13 @@ export const theme: Theme = {
       notification: {
         bg: { value: '{semanticTokens.colors.dot_bg}' },
         text: { value: '{semanticTokens.colors.dot_text}' },
+      },
+    },
+    radio: {
+      border: { value: '{semanticTokens.colors.control_radio_border}' },
+      bg: {
+        normal: { value: '{semanticTokens.colors.control_radio_bg_normal}' },
+        selected: { value: '{semanticTokens.colors.control_radio_bg_selected}' },
       },
     },
   },
@@ -2381,6 +2400,13 @@ type SemanticColors = {
         };
       };
     };
+    radio: {
+      border: Value;
+      bg: {
+        normal: Value;
+        selected: Value;
+      };
+    };
     primary: {
       info: {
         DEFAULT: Value;
@@ -2614,26 +2640,16 @@ type SemanticColors = {
   };
   feature: {
     popover: {
-      accent: {
-        bg: Value;
-        dot: {
-          outer: {
-            border: Value;
-          };
-        };
-      };
-      neutral: {
-        bg: Value;
-        dot: {
-          outer: {
-            border: Value;
-          };
-        };
+      bg: {
+        accent: Value;
+        neutral: Value;
       };
       dot: {
-        DEFAULT: Value;
-        neutral: {
-          DEFAULT: Value;
+        accent: Value;
+        neutral: Value;
+        outer_border: {
+          accent: Value;
+          neutral: Value;
         };
       };
       text: {
@@ -3031,13 +3047,6 @@ type SemanticColors = {
       info: Value;
     };
   };
-  radio: {
-    border: Value;
-    bg: {
-      normal: Value;
-      selected: Value;
-    };
-  };
   spin: {
     bg: {
       DEFAULT: Value;
@@ -3146,8 +3155,17 @@ type Deprecates = {
     popover: {
       bg: { DEFAULT: Value; neutral: Value };
       dot: {
+        DEFAULT: Value;
         outer: { border: Value };
-        neutral: { outer: { border: Value } };
+        neutral: { DEFAULT: Value; outer: { border: Value } };
+      };
+      accent: {
+        bg: Value;
+        dot: { outer: { border: Value } };
+      };
+      neutral: {
+        bg: Value;
+        dot: { outer: { border: Value } };
       };
     };
   };
@@ -3161,6 +3179,13 @@ type Deprecates = {
     notification: {
       bg: Value;
       text: Value;
+    };
+  };
+  radio: {
+    border: Value;
+    bg: {
+      normal: Value;
+      selected: Value;
     };
   };
 };
