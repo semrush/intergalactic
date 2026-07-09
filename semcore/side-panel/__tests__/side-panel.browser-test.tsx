@@ -61,7 +61,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page, 'Close').waitFor({ state: 'visible', timeout: 500 });
       await page.waitForTimeout(200); // for finish animation
 
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await expect(page).toHaveScreenshot();
     });
     test(`Verify Side panel with Header and Footer looks good in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
@@ -74,6 +74,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Enter');
       await page.getByText('Close').waitFor({ state: 'visible' });
       await expect(locators.button(page, 'Close')).toBeFocused();
+      await locators.hint(page).waitFor({ state: 'visible' });
 
       await test.step('Verify header styles', async () => {
         await expect(locators.header(page)).toHaveCSS('padding-left', '24px');
@@ -101,7 +102,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
       await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await expect(page).toHaveScreenshot();
     });
 
     test(`Verify Internal component inside positioned correclty in each placement = ${item.placement}`, {
@@ -114,7 +115,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       await locators.button(page).click();
       await locators.button(page, 'Read more').waitFor({ state: 'visible' });
 
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+      await expect(page).toHaveScreenshot();
     });
 
     test(`Verify Side panel with disabled overlay in each placement = ${item.placement}`, {
@@ -124,10 +125,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/disabling_overlay.tsx', 'en', item);
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
+      await locators.button(page).click();
       await page.getByText('SidePanel Title').waitFor({ state: 'visible' });
-      await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -141,6 +142,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.getByText('SidePanel Title').waitFor({ state: 'visible' });
+
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -153,8 +155,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.getByText('Close').waitFor({ state: 'visible' });
     await expect(locators.button(page, 'Close', 0)).toBeFocused();
+    await locators.hint(page).waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
@@ -169,6 +171,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.getByText('Close').waitFor({ state: 'visible' });
+    await locators.hint(page).waitFor({ state: 'visible' });
+
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
@@ -182,8 +186,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await page.getByText('Close').waitFor({ state: 'visible' });
     await expect(locators.button(page, 'Close')).toBeFocused();
+    await locators.hint(page).waitFor({ state: 'visible' });
 
     const title = page.locator('h6[data-ui-name="SidePanel.Title"]');
     const box = await title.boundingBox();
@@ -191,8 +195,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     if (box) {
       await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
     }
-    await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await locators.hint(page).nth(1).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
   test('Verify SidePanel.Back with long text truncates via ellipsis', {

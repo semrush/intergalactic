@@ -10,7 +10,7 @@ tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api')
 import InputNumber from '@semcore/ui/input-number';
 ```
 
-<TypesView type="InputNumberProps" :types={...types} />
+<TypesView type="NSInputNumber.Props" :types={...types} />
 
 ## InputNumber.Value
 
@@ -19,7 +19,7 @@ import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Value />;
 ```
 
-<TypesView type="InputNumberValueProps" :types={...types} />
+<TypesView type="NSInputNumber.Value.Props" :types={...types} />
 
 ## InputNumber.Controls
 
@@ -28,7 +28,7 @@ import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Controls />;
 ```
 
-<TypesView type="InputNumberControlsProps" :types={...types} />
+<TypesView type="NSInputNumber.Controls.Props" :types={...types} />
 
 ## InputNumber.Addon
 

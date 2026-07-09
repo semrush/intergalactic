@@ -269,6 +269,55 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
+  test('Verify focused wheel changes value with decimal step and respects boundaries', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.MOUSE,
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', {
+      max: 1,
+      min: 0,
+      step: 0.25,
+    });
+
+    const input = locators.input(page);
+
+    await input.click();
+    await input.fill('0.50');
+    await input.hover();
+
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('0.75');
+
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('1.00');
+
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('1.00');
+
+    await page.mouse.wheel(0, 100);
+    await expect(input).toHaveValue('0.75');
+
+    await input.fill('0.25');
+    await page.evaluate(() => {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
+    await expect(input).not.toBeFocused();
+
+    await input.hover();
+    await page.mouse.wheel(0, -100);
+    await expect(input).toHaveValue('0.25');
+
+    await input.click();
+    await page.mouse.wheel(0, 100);
+    await expect(input).toHaveValue('0');
+
+    await page.mouse.wheel(0, 100);
+    await expect(input).toHaveValue('0');
+  });
+
   test('Verify keyboard interactions with custom appearance', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,

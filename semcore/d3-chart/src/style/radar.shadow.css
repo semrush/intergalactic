@@ -47,7 +47,7 @@ SPolygon[pattern][color] {
 
 SPolygonDot {
   stroke-width: 2px;
-  stroke: var(--intergalactic-chart-grid-border, #fff);
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   r: 6px;
   fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
 }

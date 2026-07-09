@@ -679,6 +679,38 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
   });
 
+  test('Verify Number-only input with showControls changes value by mouse and keyboard', {
+    tag: [TAG.PRIORITY_MEDIUM,
+      TAG.KEYBOARD,
+      TAG.MOUSE,
+      '@inline-input',
+      '@input-number'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en');
+
+    const numberInlineInput = page.locator('[data-testid="addons"] [data-ui-name="InlineInput"]').last();
+    const value = numberInlineInput.locator('[data-ui-name="InlineInput.NumberValue"]');
+    const controls = numberInlineInput.locator('[data-ui-name="InlineInput.NumberControls"]');
+    const increment = numberInlineInput.getByLabel('increment');
+    const decrement = numberInlineInput.getByLabel('decrement');
+
+    await expect(value).toHaveAttribute('value', '100');
+    await expect(controls).toBeVisible();
+
+    await increment.click();
+    await expect(value).toBeFocused();
+    await expect(value).toHaveAttribute('value', '101');
+
+    await page.keyboard.press('ArrowUp');
+    await expect(value).toHaveAttribute('value', '102');
+
+    await decrement.click();
+    await expect(value).toHaveAttribute('value', '101');
+
+    await page.keyboard.press('ArrowDown');
+    await expect(value).toHaveAttribute('value', '100');
+  });
+
   test('Verify Number-only input keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,

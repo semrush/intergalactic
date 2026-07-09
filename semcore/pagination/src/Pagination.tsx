@@ -334,7 +334,6 @@ class TotalPages extends Component<
               // @ts-ignore
               <STotalLastPages
                 size={textSize}
-                // @ts-expect-error
                 aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
                 {...other}
               >

@@ -1,11 +1,13 @@
 import InputNumber from '@semcore/ui/input-number';
-import type { InputNumberProps, InputNumberValueProps, InputNumberControlsProps } from '@semcore/ui/input-number';
+import type { NSInputNumber } from '@semcore/ui/input-number';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type baseExampleType = InputNumberProps &
-  InputNumberValueProps &
-  InputNumberControlsProps & { disabledValue?: boolean; logChanges?: boolean };
+type BaseExampleType =
+  & NSInputNumber.Props
+  & NSInputNumber.Value.Props
+  & NSInputNumber.Controls.Props
+  & { disabledValue?: boolean; logChanges?: boolean };
 
 // Decimal precision derived from `step`, mirroring InputNumber's internal `stepPrecision`.
 const getStepPrecision = (step?: number) => {
@@ -13,7 +15,7 @@ const getStepPrecision = (step?: number) => {
   return decimals?.length ?? 0;
 };
 
-const Demo = (props: baseExampleType) => {
+const Demo = (props: BaseExampleType) => {
   const stepPrecision = getStepPrecision(props.step);
   const [lastValue, setLastValue] = React.useState<string | null>(null);
 
@@ -68,7 +70,7 @@ const Demo = (props: baseExampleType) => {
   );
 };
 
-export const defaultProps: baseExampleType = {
+export const defaultProps: BaseExampleType = {
   size: 'm',
   state: 'normal',
   locale: undefined,

@@ -180,18 +180,14 @@ export namespace Intergalactic {
           : never;
     };
 
-    type MergeChildProps<Root, Component> = {
-      [K in keyof Root | keyof Component]:
-      K extends keyof Root
-        ? K extends keyof Component
-          ? Root[K] & Component[K] extends never
-            ? Root[K] | Component[K]
-            : Root[K] & Component[K]
-          : Root[K]
-        : K extends keyof Component
-          ? Component[K]
-          : never
-    };
+    type MergeChildProps<Root, Component> =
+      Omit<Root, keyof Component> &
+      Omit<Component, keyof Root> &
+      {
+        [K in keyof Root & keyof Component]: [Root[K] & Component[K]] extends [never]
+          ? Root[K] | Component[K]
+          : Root[K] & Component[K];
+      };
 
     type InferPropsFromRoot<
       Root extends new (...args: any) => any,
