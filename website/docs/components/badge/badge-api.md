@@ -10,6 +10,6 @@ import Badge from '@semcore/ui/badge';
 <Badge />;
 ```
 
-<TypesView type="BadgeProps" :types={...types} />
+<TypesView type="NSBadge.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

@@ -9,7 +9,7 @@ export default defineConfig({
   resolve: vitestResolve,
   test: {
     include: [
-      '__tests__/**/*.test.jsx',
+      '__tests__/**/*.test.tsx',
     ],
     environment: 'jsdom',
     setupFiles: [resolvePath(__dirname, '../../tools/testing-utils/setupTests')],

@@ -51,7 +51,6 @@ const Demo = (props: DropDownPropsExample) => {
             autoFocus={isVisible}
             value={search}
             onChange={setSearch}
-            aria-describedby={search ? 'search-result' : undefined}
           />
           <DropdownMenu.List hMax='180px'>
             {props.state !== 'loading' && props.state !== 'error' && (
@@ -75,7 +74,6 @@ const Demo = (props: DropDownPropsExample) => {
             <DropdownMenu.StatusItem
               itemsCount={filteredItems.length}
               state={props.state}
-              id='search-result'
             >
               {props.customChildren || undefined}
             </DropdownMenu.StatusItem>

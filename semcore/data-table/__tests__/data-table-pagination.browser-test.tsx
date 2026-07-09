@@ -25,7 +25,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.getByRole('option', { name: '8' }).click();
 
     await test.step('Focus 3rd row cell on 1st page  ', async () => {
-      for (let i = 0; i < 5; i++) await page.keyboard.press('Shift+Tab');
+      for (let i = 0; i < 4; i++) await page.keyboard.press('Shift+Tab');
       await expect(page.getByRole('gridcell', { name: '1 ebay buy' })).toBeFocused();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');

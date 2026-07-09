@@ -312,10 +312,10 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, typeof
   }
 
   componentDidUpdate(prevProps: AbstractDDProps) {
-    const { visible } = this.asProps;
+    const { visible, interaction } = this.asProps;
     const visibilityChanged = visible !== prevProps.visible;
 
-    if (visibilityChanged && !visible) {
+    if (visibilityChanged && !visible && interaction !== 'none') {
       this.handlers.highlightedIndex(this.props.defaultHighlightedIndex);
       this.prevHighlightedIndex = null;
       this.highlightedItem = null;
