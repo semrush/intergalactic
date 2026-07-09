@@ -498,7 +498,7 @@ jobs:
         if: steps.axe-testing.outcome != 'success'
         run: exit 1
   nvda-tests:
-    runs-on: windows-latest
+    runs-on: windows-2025
     needs: [ build, defineChangedComponents ]
     if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     steps:
@@ -532,7 +532,7 @@ jobs:
       - name: Install Playwright Firefox
         run: pnpm exec playwright install firefox
       - name: NVDA setup
-        uses: guidepup/setup-action
+        uses: guidepup/setup-action@0.12.0
       - name: NVDA testing
         id: nvda-testing
         env:
