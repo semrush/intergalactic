@@ -139,8 +139,9 @@ export namespace Intergalactic {
   > =
     | ((props: MergeProps<Context, Props>, ...args: AdditionalContext) => RenderingResult)
     | InternalTypings.ReturnResult;
-  type ComponentBasicProps<Tag extends InternalTypings.ComponentTag> = {
+  type ComponentBasicProps<Tag extends InternalTypings.ComponentTag, Instance = never> = {
     ref?: React.Ref<InternalTypings.ComponentHtmlElement<Tag> | null>;
+    instanceRef?: [Instance] extends [never] ? never : React.RefObject<Instance>;
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
     __excludeProps?: string[];
   };
@@ -282,6 +283,7 @@ export namespace Intergalactic {
       Props,
       Context = never,
       AdditionalContext extends Readonly<any[]> = never[],
+      Instance = never,
     > = {
       tag?: Tag;
       children?: ComponentChildren<
@@ -290,7 +292,7 @@ export namespace Intergalactic {
         ReturnResult,
         AdditionalContext
       >;
-    } & ComponentBasicProps<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag> &
+    } & ComponentBasicProps<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag, Instance> &
     MergeProps<
       EfficientOmit<Props, 'tag' | 'children'>,
       MergeProps<ComponentPropsNesting<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag>, ComponentPropsNesting<BaseTag>>
@@ -360,11 +362,12 @@ export namespace Intergalactic {
     BaseProps = {},
     Context = {},
     AdditionalContext extends Readonly<any[]> = never[],
+    Instance = never,
   > = (<
     Tag extends InternalTypings.ComponentTag | [InternalTypings.ComponentTag, keyof JSX.IntrinsicElements] = BaseTag,
     Props extends BaseProps = BaseProps,
   >(
-    props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
+    props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext, Instance>,
   ) => InternalTypings.ComponentRenderingResults) &
   InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;
   export type Tag = InternalTypings.ComponentTag;
