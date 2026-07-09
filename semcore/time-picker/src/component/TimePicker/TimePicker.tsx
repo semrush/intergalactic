@@ -70,6 +70,8 @@ class TimePickerRoot extends Component<
   readonly entity = new TimePickerEntity(this.props.value ?? this.props.defaultValue, this.props.is12Hour);
 
   onPropsChange(changedProps: TimePickerProps) {
+    // eslint-disable-next-line no-console
+    console.log('test');
     const { value, is12Hour } = changedProps;
 
     if (value !== undefined) {
