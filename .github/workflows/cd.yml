@@ -563,6 +563,8 @@ jobs:
 
             Write-Host "NVDA executable exists: $nvdaExe"
           }
+
+          node -e "console.log(require('@guidepup/guidepup/package.json').version)"
       - name: NVDA testing
         id: nvda-testing
         env:
