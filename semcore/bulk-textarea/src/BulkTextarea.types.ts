@@ -58,14 +58,14 @@ declare namespace NSBulktextarea {
     defaultErrors: NSBulktextarea.Props<T>['errors'];
     defaultShowErrors: false;
   };
-  type State<T extends string | string[]> = {
+  type State = {
     linesCount: number;
     isEmptyText: boolean;
     errorIndex: number;
     highlightErrorIndex: boolean;
     prevError?: NSBulktextarea.ErrorItem;
   };
-  type Uncontrolled = {
+  type Handlers = {
     value: null;
     state: null;
     showErrors: null;

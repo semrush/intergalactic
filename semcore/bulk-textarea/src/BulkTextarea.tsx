@@ -16,9 +16,9 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 class BulkTextareaRoot<T extends string | string[]> extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSBulktextarea.Component<T>>,
   typeof BulkTextareaRoot.enhance,
-  NSBulktextarea.Uncontrolled,
+  NSBulktextarea.Handlers,
   WithI18nEnhanceProps,
-  NSBulktextarea.State<T>,
+  NSBulktextarea.State,
   NSBulktextarea.DefaultProps<T>
 > {
   static displayName = 'BulkTextarea';
@@ -43,7 +43,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
   prevButtonRef = React.createRef<HTMLButtonElement>();
   counterRef = React.createRef<HTMLDivElement>();
 
-  state: NSBulktextarea.State<T> = {
+  state: NSBulktextarea.State = {
     linesCount: 0,
     isEmptyText: true,
     errorIndex: -1,
