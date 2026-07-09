@@ -15,7 +15,8 @@ SInputField>ol {
   font-family: inherit;
 
   &:empty::before {
-    content: '1. ' attr(placeholder);
+    content: '1. Keyword - broad match \n - exact match';
+    display: block;
     color: var(--intergalactic-text-placeholder, oklch(0.098 0.023 157.4 / 0.457));
     position: absolute;
   }

@@ -21,13 +21,13 @@ class InputField<T extends string | string[]> extends Component<
   {},
   NSBulktextarea.InputField.State,
   NSBulktextarea.InputField.DefaultProps
-> {
+> implements NSBulktextarea.InputField.Instance {
   static displayName = 'Textarea';
   static style = style;
 
   static enhance = [uniqueIDEnhancement()] as const;
 
-  static defaultProps = {
+  static defaultProps: NSBulktextarea.InputField.DefaultProps = {
     defaultValue: '',
     size: 'm',
     state: 'normal',
@@ -36,7 +36,8 @@ class InputField<T extends string | string[]> extends Component<
     defaultShowErrors: false,
     defaultErrorIndex: -1,
     defaultLinesCount: 0,
-  };
+    focusBehavior: 'end',
+  } as const;
 
   delimiter = '\n';
   skipEmptyLines = true;
@@ -44,7 +45,7 @@ class InputField<T extends string | string[]> extends Component<
   spaceLineValue = '&nbsp;';
 
   containerRef = React.createRef<HTMLDivElement>();
-  textarea: HTMLDivElement;
+  textarea: HTMLOListElement;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -94,7 +95,7 @@ class InputField<T extends string | string[]> extends Component<
     });
   }
 
-  uncontrolledProps() {
+  protected uncontrolledProps() {
     return {
       value: null,
       linesCount: null,
@@ -102,7 +103,7 @@ class InputField<T extends string | string[]> extends Component<
     };
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     const { autoFocus, disabled } = this.asProps;
 
     this.textarea = this.createContentEditableElement(this.asProps);
@@ -128,7 +129,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state): void {
+  public componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state): void {
     const {
       value,
       errors,
@@ -235,25 +236,25 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     this.removeEventListeners(this.textarea);
     this.containerRef.current?.removeChild(this.textarea);
 
     this.observer.disconnect();
   }
 
-  get isDisabled(): boolean {
+  private get isDisabled(): boolean {
     const { disabled, readonly } = this.asProps;
 
     return Boolean(disabled || readonly);
   }
 
-  get popperDescribedId() {
+  private get popperDescribedId() {
     const { uid } = this.asProps;
     return `bulk-textarea-${uid}-popper-describedby`;
   }
 
-  get errorMessage() {
+  private get errorMessage() {
     const { errors, errorIndex, commonErrorMessage, prevError } = this.asProps;
     const { mouseLineIndex, keyboardLineIndex } = this.state;
     const currentLineIndex =
@@ -285,7 +286,7 @@ class InputField<T extends string | string[]> extends Component<
     };
   }
 
-  createContentEditableElement(props: Props<T>) {
+  private createContentEditableElement(props: Props<T>) {
     const textarea = document.createElement('ol');
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
@@ -320,7 +321,7 @@ class InputField<T extends string | string[]> extends Component<
     return textarea;
   }
 
-  handleValueOutChange() {
+  private handleValueOutChange() {
     const { value, onChangeLinesCount } = this.props;
 
     if (value === '' || value === undefined) {
@@ -336,7 +337,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleScroll(): void {
+  private handleScroll(): void {
     if (this.scrollingTimeout) {
       clearTimeout(this.scrollingTimeout);
     }
@@ -348,7 +349,7 @@ class InputField<T extends string | string[]> extends Component<
     }, 50);
   }
 
-  handleMouseDown(event: MouseEvent): void {
+  private handleMouseDown(event: MouseEvent): void {
     const element = event.target;
 
     if (element instanceof HTMLElement) {
@@ -359,7 +360,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleMouseMove(event: MouseEvent): void {
+  private handleMouseMove(event: MouseEvent): void {
     this.errorByInteraction = 'mouse';
     const element = event.target;
 
@@ -375,7 +376,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleMouseLeave(): void {
+  private handleMouseLeave(): void {
     if (this.changeTriggerTimeout) {
       clearTimeout(this.changeTriggerTimeout);
     }
@@ -391,7 +392,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handlePaste(event: ClipboardEvent) {
+  private handlePaste(event: ClipboardEvent) {
     event.preventDefault();
     const { validateOn } = this.asProps;
     const value = event.clipboardData?.getData('text/plain');
@@ -480,7 +481,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleChange(event: Event) {
+  private handleChange(event: Event) {
     const target = event.target;
     if (target instanceof HTMLOListElement && event instanceof InputEvent) {
       const nodes = this.textarea.childNodes;
@@ -604,18 +605,63 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handleFocus() {
+  public focus() {
+    this.textarea?.focus();
+  }
+
+  private handleFocus() {
     this.isFocusing = true;
     this.errorByInteraction = 'keyboard';
+    const { showErrors, focusBehavior = 'end' } = this.asProps;
 
-    if (this.asProps.showErrors) {
+    if (showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
     } else {
       this.toggleErrorsPopper('keyboardLineIndex', this.textarea);
     }
+
+    // const firstLi = this.textarea.firstChild;
+    // const lastLi = this.textarea.lastChild;
+    //
+    // switch (focusBehavior) {
+    //   case 'end': {
+    //     const text = lastLi?.firstChild;
+    //
+    //     if (text instanceof Text) {
+    //       this.setSelection(text, text.length, text.length);
+    //     }
+    //     break;
+    //   }
+    //   case 'new-line': {
+    //     if (lastLi instanceof HTMLLIElement) {
+    //       if (lastLi.textContent?.trim() !== '') {
+    //         const row = document.createElement('li');
+    //         row.innerHTML = this.emptyLineValue;
+    //
+    //         this.addNewRow(lastLi, row);
+    //       } else {
+    //         const text = lastLi.firstChild;
+    //         if (text instanceof Text) {
+    //           this.setSelection(text, text.length, text.length);
+    //         }
+    //       }
+    //     }
+    //     break;
+    //   }
+    //   case 'start': {
+    //     if (firstLi instanceof HTMLLIElement) {
+    //       this.setSelection(firstLi, 0, 0);
+    //     }
+    //     break;
+    //   }
+    //   default: {
+    //     const neverFocusBehavior: never = focusBehavior;
+    //     throw new Error(`Handle ${neverFocusBehavior} focus behavior.`);
+    //   }
+    // }
   }
 
-  handleBlur(event: Event) {
+  private handleBlur(event: Event) {
     this.isFocusing = false;
     this.setState({ visibleErrorPopper: false });
 
@@ -635,7 +681,7 @@ class InputField<T extends string | string[]> extends Component<
     }, 200);
   }
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown(event: KeyboardEvent) {
     this.errorByInteraction = 'keyboard';
     const { linesDelimiters } = this.asProps;
 
@@ -684,26 +730,7 @@ class InputField<T extends string | string[]> extends Component<
           } else {
             row.innerHTML = this.emptyLineValue;
           }
-          currentNode.after(row);
-
-          this.setSelection(row, 0, 0);
-
-          this.validateLine(currentNode);
-          this.validateLine(row);
-          if (currentNode.previousSibling) {
-            this.validateLine(currentNode.previousSibling);
-          }
-          this.setErrorIndex(row);
-
-          if (row.textContent?.trim() !== '') {
-            this.recalculateLinesCount();
-          }
-
-          setTimeout(() => {
-            this.recalculateErrors();
-          }, 0);
-
-          this.toggleErrorsPopperByKeyboard(0);
+          this.addNewRow(currentNode, row);
         }
       }
     } else if (
@@ -850,7 +877,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  render() {
+  public render() {
     const SInputField = Root;
     const { styles, showErrors } = this.asProps;
     const { visibleErrorPopper } = this.state;
@@ -893,8 +920,31 @@ class InputField<T extends string | string[]> extends Component<
     );
   }
 
-  private prepareNodesForPaste(value: string | string[]): HTMLParagraphElement[] {
-    const listOfNodes: HTMLParagraphElement[] = [];
+  private addNewRow(currentNode: HTMLLIElement, row: HTMLLIElement) {
+    currentNode.after(row);
+
+    this.setSelection(row, 0, 0);
+
+    this.validateLine(currentNode);
+    this.validateLine(row);
+    if (currentNode.previousSibling) {
+      this.validateLine(currentNode.previousSibling);
+    }
+    this.setErrorIndex(row);
+
+    if (row.textContent?.trim() !== '') {
+      this.recalculateLinesCount();
+    }
+
+    setTimeout(() => {
+      this.recalculateErrors();
+    }, 0);
+
+    this.toggleErrorsPopperByKeyboard(0);
+  }
+
+  private prepareNodesForPaste(value: string | string[]): HTMLLIElement[] {
+    const listOfNodes: HTMLLIElement[] = [];
     const { pasteProps } = this.asProps;
     const lineProcessing =
       pasteProps?.lineProcessing ??
@@ -1022,7 +1072,7 @@ class InputField<T extends string | string[]> extends Component<
     key: Exclude<keyof NSBulktextarea.InputField.State, 'visibleErrorPopper'>,
     target?: unknown, timer?: number,
   ) {
-    if (target instanceof HTMLDivElement || target instanceof HTMLLIElement) {
+    if (target instanceof HTMLOListElement || target instanceof HTMLLIElement) {
       if (this.changeTriggerTimeout) {
         clearTimeout(this.changeTriggerTimeout);
       }
@@ -1159,7 +1209,7 @@ class InputField<T extends string | string[]> extends Component<
     return rowNode ?? null;
   }
 
-  private handleCursorMovement(currentNode: HTMLParagraphElement, event: KeyboardEvent): void {
+  private handleCursorMovement(currentNode: HTMLLIElement, event: KeyboardEvent): void {
     let nextNode: ChildNode | null = null;
 
     switch (event.key) {

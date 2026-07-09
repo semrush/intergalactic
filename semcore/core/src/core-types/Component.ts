@@ -1,10 +1,11 @@
 import type React from 'react';
-import { type
-AllHTMLAttributes, type
-ForwardRefExoticComponent,
-PureComponent, type
-ReactNode, type
-RefObject,
+import {
+  type AllHTMLAttributes,
+  type ForwardRefExoticComponent,
+  type MutableRefObject,
+  PureComponent,
+  type ReactNode,
+  type RefObject,
 } from 'react';
 
 import type { CORE_COMPONENT } from './symbols';
@@ -74,7 +75,7 @@ export interface IComponent<
   defaultProps?: DP | ((props: P) => DP) | (() => DP);
 }
 export abstract class Component<
-  Props = {},
+  Props extends { instanceRef?: MutableRefObject<any> } = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
   Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
@@ -82,6 +83,14 @@ export abstract class Component<
   DefaultProps extends Intergalactic.InternalTypings.ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
 > extends PureComponent<Props, State> {
   protected __defaultProps: DefaultProps = {} as DefaultProps;
+
+  protected constructor(props: Props) {
+    super(props);
+
+    if (props.instanceRef) {
+      props.instanceRef.current = this;
+    }
+  }
 
   protected uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
     // @ts-ignore. This is a default value. Should be defined in related classes.

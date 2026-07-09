@@ -170,6 +170,17 @@ declare namespace NSBulktextarea {
        * Function for process line after it was blurred
        */
       lineProcessing?: (line: string, lines: string[]) => string;
+
+      /**
+       * Ref to a contenteditable element.
+       */
+      inputRef?: React.MutableRefObject<HTMLOListElement>;
+
+      /**
+       * Controls cursor behavior when the editor receives focus.
+       * @default end
+       */
+      focusBehavior?: 'end' | 'new-line' | 'start';
     };
     type DefaultProps = {
       defaultValue: '';
@@ -180,6 +191,7 @@ declare namespace NSBulktextarea {
       defaultShowErrors: false;
       defaultErrorIndex: -1;
       defaultLinesCount: 0;
+      focusBehavior: 'end';
     };
     type Handlers = {
       value: null;
@@ -192,7 +204,13 @@ declare namespace NSBulktextarea {
       visibleErrorPopper: boolean;
     };
 
-    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>>;
+    interface Instance {
+      focus(options?: {
+        createNewLine?: boolean;
+      }): void;
+    }
+
+    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>, {}, [], Instance>;
   }
 
   namespace Counter {
