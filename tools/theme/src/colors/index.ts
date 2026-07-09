@@ -186,7 +186,7 @@ export const L_BG_LIGHT = 0.96;
 export const L_BG_MEDIUM = 0.88; // Midlight?
 export const L_BG_STRONG = 0.64; // Heavy? Dark?
 
-export const L_BG_SKELETON = 0.9;
+export const L_BG_SKELETON = 0.94;
 
 /** Button bg         | ⚠️ APCA 60+ under white */
 export const L_BG_BUTTON = 0.64;
@@ -238,7 +238,7 @@ export const L_INV_BG_SECONDARY_HOVER = 0.26;
 export const L_INV_BG_SECONDARY_ACTIVE = 0.3;
 
 /** Skeleton bg */
-export const L_INV_BG_SKELETON = 0.3;
+export const L_INV_BG_SKELETON = 0.5;
 
 /** Button bg         | ⚠️ APCA 60+ under white */
 export const L_INV_BG_BUTTON = 1;
