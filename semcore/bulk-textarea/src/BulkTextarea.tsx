@@ -234,6 +234,14 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       this.handlers.showErrors(false);
       this.handlers.errors([]);
       this.handlers.state('normal');
+
+      if (document.activeElement === this.clearAllButtonRef.current) {
+        const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
+
+        if (textarea instanceof HTMLDivElement) {
+          textarea.focus();
+        }
+      }
     }
   };
 
@@ -241,15 +249,9 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
     this.handlers.showErrors(false);
     this.handlers.errors([]);
     this.setState({ errorIndex: -1 });
-    // @ts-ignore
-    this.handlers.value('', e);
+    // @ts-ignore (we should set right type of value depending on the type of value passed)
+    this.handlers.value(typeof this.asProps.value === 'string' ? '' : [], e);
     this.handlers.state('normal');
-
-    const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
-
-    if (textarea instanceof HTMLDivElement) {
-      textarea.focus();
-    }
   };
 
   handleChangeErrorIndex = (amount: number) => () => {
