@@ -498,7 +498,7 @@ jobs:
         if: steps.axe-testing.outcome != 'success'
         run: exit 1
   nvda-tests:
-    runs-on: windows-2025
+    runs-on: windows-latest
     needs: [ build, defineChangedComponents ]
     if: ${{ needs.defineChangedComponents.outputs.changedComponents != '' }}
     steps:
@@ -533,38 +533,6 @@ jobs:
         run: pnpm exec playwright install firefox
       - name: NVDA setup
         uses: guidepup/setup-action@0.21.0
-      - name: Debug Guidepup NVDA registry
-        shell: pwsh
-        run: |
-          $key = "HKCU:\Software\Guidepup\Nvda"
-
-          if (!(Test-Path $key)) {
-            Write-Error "Registry key does not exist: $key"
-            exit 1
-          }
-
-          $props = Get-ItemProperty -Path $key
-          $values = $props.PSObject.Properties | Where-Object { $_.Name -like "guidepup_nvda_*" }
-
-          if (!$values) {
-            Write-Error "No guidepup_nvda_* values found under $key"
-            exit 1
-          }
-
-          $values | ForEach-Object {
-            Write-Host "$($_.Name) = $($_.Value)"
-
-            $nvdaExe = Join-Path $_.Value "nvda.exe"
-
-            if (!(Test-Path $nvdaExe)) {
-              Write-Error "NVDA executable missing: $nvdaExe"
-              exit 1
-            }
-
-            Write-Host "NVDA executable exists: $nvdaExe"
-          }
-
-          node -e "console.log(require('@guidepup/guidepup/package.json').version)"
       - name: NVDA testing
         id: nvda-testing
         env:
