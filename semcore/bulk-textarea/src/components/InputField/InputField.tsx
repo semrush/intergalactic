@@ -638,7 +638,9 @@ class InputField<T extends string | string[]> extends Component<
     onBlur(valueToChange as T, event);
 
     setTimeout(() => {
-      this.setState({ keyboardLineIndex: -1 });
+      if (document.activeElement !== this.textarea) {
+        this.setState({ keyboardLineIndex: -1 });
+      }
     }, 200);
   }
 
