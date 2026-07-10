@@ -45,6 +45,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             hintPlacement='bottom'
             disabled={disabled}
             ref={nextButtonRef}
+            size={size}
           />
           <Button
             onClick={onPrevError}
@@ -55,6 +56,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             hintPlacement='bottom'
             disabled={disabled}
             ref={prevButtonRef}
+            size={size}
           />
           <Text size={size === 'l' ? 300 : 200} color='text-critical' ml={1} disabled={disabled}>
             {errorIndex === -1
