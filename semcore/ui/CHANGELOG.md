@@ -1,3 +1,89 @@
+## [17.4.0] - 2026-07-10
+
+### @semcore/side-panel
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSSidePanel` namespace.
+
+### @semcore/input
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSInput` namespace.
+
+### @semcore/feedback-form
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSFeedbackForm` namespace.
+
+### @semcore/modal
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSModal` namespace.
+
+### @semcore/notice
+
+- **Fixed** Rewrite componenst to TS. Deprecate atomic types. Atomic types are
+part of `NSNotice/NSNoticeSmart` namespaces.
+
+### @semcore/carousel
+
+- **Fixed** Focus was lost after zooming out.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSBreadcrumbs` namespace.
+
+### @semcore/time-picker
+
+- **Fixed** Incorrect `aria-invalid` for invalid state.
+- **Fixed** React warning about readonly input without onChange.
+
+### @semcore/badge
+
+- **Fixed** Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSBadge` namespace.
+
+### @semcore/textarea
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSTextarea` namespace.
+
+### @semcore/select
+
+- **Added** `AutoSuggest` component.
+
+### @semcore/inline-input
+
+- **Fixed** Pressing the `Escape` on buttons worked as if it were submitting
+changes.
+- **Changed** The `onBlurBehavior` function will no longer work when interacting
+with the keyboard.
+
+### @semcore/add-filter
+
+- **Fixed** Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSAddFilter` namespace.
+
+### @semcore/input-number
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSInputNumber` namespace.
+- **Fixed** Aligned typed, incremented, and decremented value precision with the
+configured step precision.
+
+### @semcore/wizard
+
+- **Changed** Left Sidebar color.
+
+### @semcore/skeleton
+
+- **Changed** Fill color.
+
+### @semcore/dropdown-menu
+
+- **Fixed** `preventFocusByClick` handler - skip draggable elements.
+
 ## [17.3.0] - 2026-06-26
 
 ### @semcore/wizard

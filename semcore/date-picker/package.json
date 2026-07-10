@@ -21,7 +21,7 @@
     "@semcore/button": "^17.2.1",
     "@semcore/divider": "^17.2.1",
     "@semcore/dropdown": "^17.3.0",
-    "@semcore/input": "^17.2.1",
+    "@semcore/input": "^17.2.2",
     "@semcore/input-mask": "^17.2.1",
     "@semcore/typography": "^17.2.1",
     "@semcore/checkbox": "^17.2.1",
