@@ -867,19 +867,11 @@
     "value": "oklch(0.88 0.078 303)"
   },
   {
-    "name": "--intergalactic-feature-popover-bg-neutral",
-    "value": "oklch(0.23 0.01 140)"
-  },
-  {
     "name": "--intergalactic-feature-popover-dot",
     "value": "oklch(0.88 0.078 303)"
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
-    "value": "oklch(0.88 0.078 303)"
-  },
-  {
-    "name": "--intergalactic-feature-popover-dot-neutral",
     "value": "oklch(0.88 0.078 303)"
   },
   {

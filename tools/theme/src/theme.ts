@@ -2063,13 +2063,11 @@ export const theme: Theme = {
       popover: {
         bg: {
           DEFAULT: { value: '{semanticTokens.colors.feature_popover_bg_accent}' },
-          neutral: { value: '{semanticTokens.colors.feature_popover_bg_neutral}' },
         },
         dot: {
           DEFAULT: { value: '{semanticTokens.colors.feature_popover_dot_accent}' },
           outer: { border: { value: '{semanticTokens.colors.feature_popover_dot_outer_border_accent}' } },
           neutral: {
-            DEFAULT: { value: '{semanticTokens.colors.feature_popover_dot_neutral}' },
             outer: { border: { value: '{semanticTokens.colors.feature_popover_dot_outer_border_neutral}' } },
           },
         },
@@ -3153,11 +3151,11 @@ type Deprecates = {
   };
   feature: {
     popover: {
-      bg: { DEFAULT: Value; neutral: Value };
+      bg: { DEFAULT: Value };
       dot: {
         DEFAULT: Value;
         outer: { border: Value };
-        neutral: { DEFAULT: Value; outer: { border: Value } };
+        neutral: { outer: { border: Value } };
       };
       accent: {
         bg: Value;
