@@ -680,9 +680,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(lineCount).toBe(2);
         await expect(locators.counter(page)).toHaveText('1/10of 10 lines');
 
-        const firstLineText = await locators.row(page, 0).textContent();
-
-        expect(firstLineText).not.toMatch(/^http:\/\//);
+        await expect(locators.row(page, 0)).not.toHaveText(/^http:\/\//);
 
         await locators.button(page, 'Clear all').click();
         await page.waitForTimeout(100);
