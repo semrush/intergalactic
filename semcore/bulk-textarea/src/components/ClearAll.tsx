@@ -1,11 +1,18 @@
 import Button from '@semcore/button';
-import { type IRootComponentProps, Root, sstyled } from '@semcore/core';
-import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
+import type { Intergalactic } from '@semcore/core';
+import { Root, sstyled } from '@semcore/core';
 import CloseM from '@semcore/icon/Close/m';
 import React from 'react';
 
+import type { BulkTextareaRootType } from '../BulkTextarea';
+import type { NSBulktextarea } from '../BulkTextarea.types';
+
 export function ClearAll(
-  props: IRootComponentProps & { isHidden: boolean; getI18nText: ReturnType<typeof useI18n> },
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSBulktextarea.ClearAll.Component,
+    BulkTextareaRootType,
+    'ClearAll'
+  >,
 ) {
   const SButton = Root;
   return (
