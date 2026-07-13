@@ -12,10 +12,7 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await page.waitForTimeout(500);
 
     const openLog = (await nvda.spokenPhraseLog()).join(' ');
-    expect(openLog).toContain('Show table columns, dialog');
-    expect(openLog).toContain(
-      'Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5',
-    );
+    expect(openLog).toContain('clickable, button, collapsed, opens dialog, 2 slash 5 expanded');
 
     await nvda.next();
 

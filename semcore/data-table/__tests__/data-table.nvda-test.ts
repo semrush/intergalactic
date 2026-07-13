@@ -8,15 +8,15 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
 
     await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable, table, with 10 rows and 5 columns, row 1, column 2, clickable, Keyword');
+    expect(await nvda.itemText()).toBe('clickable, table, with 10 rows and 5 columns, row 1, column 1, clickable, Keyword');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('column 3, clickable, KD percent');
+    expect(await nvda.itemText()).toContain('column 2, clickable, KD percent');
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('column 4, clickable, CPC');
+    expect(await nvda.itemText()).toContain('column 3, clickable, CPC');
 
     await nvda.next();
 
@@ -24,6 +24,6 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('column 4, clickable, Volume');
+    expect(await nvda.itemText()).toContain('column 5, clickable, Volume');
   });
 });

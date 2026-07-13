@@ -41,7 +41,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       expect(await nvda.itemText()).toContain('Color, list');
 
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Gray, 2 of 9');
+      expect(await nvda.itemText()).toContain('Green, 3 of 9');
     });
   });
 
@@ -54,7 +54,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Navigate to LinkTrigger and verify announcement', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('clickable, combo box, collapsed, Select option');
+      expect(await nvda.itemText()).toContain('clickable, combo box, collapsed, opens list, Select option');
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
