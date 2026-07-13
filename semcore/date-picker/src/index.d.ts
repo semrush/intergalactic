@@ -2,7 +2,7 @@ import type { Flex, Box, BoxProps } from '@semcore/base-components';
 import type Popper from '@semcore/base-components';
 import type { BaseTriggerProps } from '@semcore/base-trigger';
 import type BaseTrigger from '@semcore/base-trigger';
-import type { ButtonProps } from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type Button from '@semcore/button';
 import type Checkbox from '@semcore/checkbox';
 import type { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
@@ -222,7 +222,7 @@ WithI18nEnhanceProps & {
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
-  periods?: (ButtonProps & { value: Date[] })[];
+  periods?: (NSButton.Props & { value: Date[] })[];
 };
 
 export type DateRangePickerPeriodProps = BoxProps & {
@@ -247,7 +247,7 @@ export type DateRangePickerPeriodProps = BoxProps & {
    * [{value: [new Date(), new Date()], children: "Today"}]
    * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
    * */
-  periods?: (ButtonProps & { value: Date[] })[];
+  periods?: (NSButton.Props & { value: Date[] })[];
 };
 
 export type DatePickerContext = {
@@ -353,8 +353,8 @@ declare const DatePicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DatePickerProps, DatePickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   Today: typeof Box;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
@@ -387,12 +387,12 @@ declare const DateRangePicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   Period: Intergalactic.Component<'div', DateRangePickerPeriodProps>;
-  Apply: typeof Button;
-  Reset: typeof Button;
+  Apply: NSButton.Component;
+  Reset: NSButton.Component;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
@@ -422,8 +422,8 @@ declare const MonthPicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
@@ -455,12 +455,12 @@ declare const MonthRangePicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   Period: Intergalactic.Component<'div', DateRangePickerPeriodProps>;
-  Apply: typeof Button;
-  Reset: typeof Button;
+  Apply: NSButton.Component;
+  Reset: NSButton.Component;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
@@ -573,7 +573,7 @@ WithI18nEnhanceProps & {
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
-  periods?: (ButtonProps & { value: Date[] })[];
+  periods?: (NSButton.Props & { value: Date[] })[];
 };
 
 export type DateRangeComparatorContext = {
@@ -607,11 +607,11 @@ declare const DateRangeComparator: Intergalactic.Component<
 > & {
   Popper: typeof Popper.Popper;
   Header: typeof Flex;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
-  Apply: typeof Button;
-  Reset: typeof Button;
+  Apply: NSButton.Component;
+  Reset: NSButton.Component;
 
   CalendarHeader: typeof Box;
   Title: typeof Box;

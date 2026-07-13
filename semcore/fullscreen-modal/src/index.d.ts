@@ -1,5 +1,5 @@
 import type { Flex, Box, BoxProps } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSModal } from '@semcore/modal';
 import type { Text } from '@semcore/typography';
@@ -31,7 +31,7 @@ declare const FullscreenModal: Intergalactic.Component<
 > & {
   Header: Intergalactic.Component<'div', FullscreenModalHeaderProps>;
   Footer: typeof Flex;
-  Close: typeof Button;
+  Close: NSButton.Component;
   Back: typeof Box;
   Body: typeof Box;
   Section: typeof Box;

@@ -1,5 +1,5 @@
 import type { BoxProps } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 
 import type { CounterProps } from './components/Counter';
@@ -159,6 +159,6 @@ export type BulkTextareaType<T extends string | string[]> = BulkTextareaComponen
     BulkTextareaInputFieldProps<T>
   >;
   Counter: Intergalactic.Component<'div', Partial<CounterProps>>;
-  ClearAll: typeof Button;
+  ClearAll: NSButton.Component;
   ErrorsNavigation: Intergalactic.Component<'div', Partial<ErrorsNavigationProps>>;
 };

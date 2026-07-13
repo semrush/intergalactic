@@ -2,7 +2,7 @@ import ArrowRightL from '@semcore/icon/ArrowRight/l';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
 import CheckL from '@semcore/icon/Check/l';
 import CheckM from '@semcore/icon/Check/m';
-import type { ButtonProps } from '@semcore/ui/button';
+import type { NSButton } from '@semcore/ui/button';
 import type { NSText } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -49,7 +49,7 @@ const SizeToIconMap = {
   },
 };
 
-const renderIcon = (position: 'before' | 'after', size: NSText.Props['size'] | ButtonProps['size']) => {
+const renderIcon = (position: 'before' | 'after', size: NSText.Props['size'] | NSButton.Props['size']) => {
   if (!size) return null;
 
   return SizeToIconMap[size][position] ?? null;

@@ -1,32 +1,28 @@
 import { NeighborLocation, Box, Hint } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { Component, CORE_INSTANCE, createComponent, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
+import Spin from '@semcore/spin';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { ButtonProps, ButtonAddonProps, ButtonTextProps, ButtonComponent, ButtonDefaultProps } from './Button.type';
-import SpinButton from './SpinButton';
+import type { NSButton } from './Button.type';
+import { BUTTON_SIZE_TO_SPIN_SIZE } from './mappers/BUTTON_SIZE_TO_SPIN_SIZE';
+import { BUTTON_USE_TO_DEFAULT_THEME } from './mappers/BUTTON_USE_TO_DEFAULT_THEME';
 
-export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
-  primary: 'info',
-  secondary: 'muted',
-  tertiary: 'info',
-};
-
-type State = {
-  ariaLabelledByContent: null | string;
-};
+/** @deprecated It will be removed in v18. */
+export const MAP_USE_DEFAULT_THEME = BUTTON_USE_TO_DEFAULT_THEME;
 
 export class RootButton extends Component<
-  ButtonProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSButton.Component>,
   [],
   never,
   {},
-  State,
-  ButtonDefaultProps
+  NSButton.State,
+  NSButton.DefaultProps
 > {
   static displayName = 'Button';
   static style = style;
@@ -37,7 +33,7 @@ export class RootButton extends Component<
 
   containerRef = React.createRef<HTMLButtonElement>();
 
-  state: State = {
+  state: NSButton.State = {
     ariaLabelledByContent: null,
   };
 
@@ -81,7 +77,7 @@ export class RootButton extends Component<
     const {
       styles,
       use,
-      theme = typeof use === 'string' && MAP_USE_DEFAULT_THEME[use],
+      theme = typeof use === 'string' && BUTTON_USE_TO_DEFAULT_THEME[use],
       loading,
       disabled = loading,
       size,
@@ -143,7 +139,11 @@ export class RootButton extends Component<
                 </SInner>
                 {loading && (
                   <SSpin tag='span'>
-                    <SpinButton centered size={size} theme={useTheme} />
+                    <Spin
+                      size={BUTTON_SIZE_TO_SPIN_SIZE[size]}
+                      theme={useTheme || undefined}
+                      centered
+                    />
                   </SSpin>
                 )}
               </SButton>
@@ -164,12 +164,12 @@ export class RootButton extends Component<
   }
 }
 
-function ButtonText(props: ButtonTextProps) {
+function ButtonText(props: Intergalactic.InternalTypings.InferChildComponentProps<NSButton.Text.Component, typeof RootButton, 'Text'>) {
   const SText = Root;
   return sstyled(props.styles)(<SText render={Text} />);
 }
 
-function Addon(props: ButtonAddonProps) {
+function Addon(props: Intergalactic.InternalTypings.InferChildComponentProps<NSButton.Text.Component, typeof RootButton, 'Addon'>) {
   const SAddon = Root;
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
@@ -180,7 +180,7 @@ function Addon(props: ButtonAddonProps) {
  * {@link https://developer.semrush.com/intergalactic/components/button/button-api/|API} | {@link https://developer.semrush.com/intergalactic/components/button/button-code/|Examples}
  */
 const Button = createComponent<
-  ButtonComponent,
+  NSButton.Component,
   typeof RootButton
 >(RootButton, {
   Text: ButtonText,

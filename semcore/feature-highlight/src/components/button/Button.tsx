@@ -1,4 +1,4 @@
-import type { ButtonProps } from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import Button from '@semcore/button';
 import { createComponent, Root, sstyled, Component, type IRootNodeProps } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
@@ -14,8 +14,8 @@ import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkle
  * the final component interface. Because of that, this implementation relies on the current approach.
  * Public props are `ButtonProps`.
 */
-type HighlightedButtonProps = Omit<ButtonProps, 'theme'> & {
-  theme?: ButtonProps['theme'] | 'highlighted';
+type HighlightedButtonProps = Omit<NSButton.Props, 'theme'> & {
+  theme?: NSButton.Props['theme'] | 'highlighted';
 };
 
 class ButtonFHRoot extends Component<

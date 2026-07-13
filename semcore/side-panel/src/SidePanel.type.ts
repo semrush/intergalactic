@@ -1,5 +1,5 @@
 import type { FadeInOutProps, SlideProps, Box, BoxProps, Flex, PortalProps } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
@@ -98,7 +98,7 @@ declare namespace NSSidePanel {
   }
 
   namespace Close {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   type Component = Intergalactic.Component<'div', Props, Ctx> & {
