@@ -17,7 +17,7 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/input": "^17.2.1",
+    "@semcore/input": "^17.2.2",
     "text-mask-core": "5.1.2"
   },
   "peerDependencies": {

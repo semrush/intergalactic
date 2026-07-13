@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.4.0] - 2026-07-10
+
+### Added
+
+- `AutoSuggest` component.
+
 ## [17.3.0] - 2026-06-26
 
 ### Fixed
