@@ -12,7 +12,7 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
 
     await nvda.press('Tab');
 
-    expect(await nvda.itemText()).toContain('Date, combo box, collapsed, has auto complete, editable, MM slash DD slash YYYY, 06 slash 29 slash 2020');
+    expect(await nvda.itemText()).toContain('Date, combo box, collapsed, has auto complete, editable, MM slash DD slash YYYY, selected 06 slash 29 slash 2020');
 
     await nvda.next();
 

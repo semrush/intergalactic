@@ -38,8 +38,10 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       await page.waitForTimeout(500);
       await nvda.next();
       await nvda.next();
+      expect(await nvda.itemText()).toContain('Color, list');
 
-      expect(await nvda.itemText()).toContain('Color, list. Gray, 2 of 9');
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Gray, 2 of 9');
     });
   });
 
@@ -60,7 +62,9 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       await page.waitForTimeout(500);
       await nvda.next();
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Device:, list. Mobile, 2 of 3');
+      expect(await nvda.itemText()).toContain('Device:, list');
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Mobile, 2 of 3');
     });
   });
 });

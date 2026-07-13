@@ -13,7 +13,7 @@ test.describe(`@time-picker ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toBe('clickable, Start time Select, grouping, Hours, combo box, collapsed, has auto complete, editable, 00');
+    expect(await nvda.itemText()).toBe('clickable, Start time Select, grouping, Hours, combo box, collapsed, has auto complete, editable, opens list, 00');
 
     await nvda.next();
 

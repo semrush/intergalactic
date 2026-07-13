@@ -13,7 +13,7 @@ test.describe(`@color-picker ${TAG.NVDA}`, () => {
     await nvda.interact();
     await nvda.press('Enter');
 
-    expect(await nvda.itemText()).toBe('Color field, current color is number 666bdb, combo box, collapsed');
+    expect(await nvda.itemText()).toBe('Color field, current color is number 666bdb, combo box, collapsed, opens dialog');
     await nvda.press('Enter');
 
     expect(await nvda.itemText()).toContain('expanded. Colors palette, dialog. clickable, Preset colors, list');

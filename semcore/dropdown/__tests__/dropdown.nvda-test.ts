@@ -9,7 +9,7 @@ test.describe(`@dropdown ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('clickable, button, collapsed, sub Menu, About export');
+    expect(await nvda.itemText()).toContain('clickable, button, collapsed, opens dialog, About export');
 
     await nvda.interact();
     await nvda.press('Enter');

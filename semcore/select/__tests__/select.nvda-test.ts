@@ -20,7 +20,7 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
       await nvda.next();
       const firstOption = await nvda.itemText();
-      expect(firstOption).toContain('expanded');
+      expect(firstOption).toContain('Basic select, list');
     });
 
     await test.step('Navigate through options', async () => {
@@ -50,7 +50,7 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
       await nvda.next();
       const firstOption = await nvda.itemText();
-      expect(firstOption).toContain('expanded');
+      expect(firstOption).toContain('Multiselect, list');
     });
 
     await test.step('Navigate through options', async () => {
