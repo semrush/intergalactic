@@ -204,37 +204,37 @@ class InputField<T extends string | string[]> extends Component<
 
     const { keyboardLineIndex } = this.state;
 
-    if (prevState.keyboardLineIndex !== -1 && prevState.keyboardLineIndex !== keyboardLineIndex) {
-      if (lineProcessing) {
-        const lines = this.getValues();
-        const newValue = lineProcessing(lines[prevState.keyboardLineIndex] ?? '', lines);
-        const newValueTextNode = document.createTextNode(newValue);
-        const paragraph = this.textarea.childNodes.item(prevState.keyboardLineIndex);
-
-        if (paragraph instanceof HTMLParagraphElement) {
-          if (newValue === '') {
-            paragraph.innerHTML = this.emptyLineValue;
-          } else {
-            paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
-          }
-        }
-
-        this.validateLine(paragraph);
-
-        setTimeout(() => {
-          const newNode = this.textarea.childNodes.item(keyboardLineIndex);
-          if (newNode) {
-            this.setErrorIndex(newNode);
-          }
-        }, 0); // need this timeout to update errorIndex to the new (usually empty) line
-      }
-
-      if (!showErrors) {
-        this.recalculateErrors();
-      }
-      this.recalculateLinesCount();
-      this.asProps.onChangeLineIndex();
-    }
+    // if (prevState.keyboardLineIndex !== -1 && prevState.keyboardLineIndex !== keyboardLineIndex) {
+    //   if (lineProcessing) {
+    //     const lines = this.getValues();
+    //     const newValue = lineProcessing(lines[prevState.keyboardLineIndex] ?? '', lines);
+    //     const newValueTextNode = document.createTextNode(newValue);
+    //     const paragraph = this.textarea.childNodes.item(prevState.keyboardLineIndex);
+    //
+    //     if (paragraph instanceof HTMLParagraphElement) {
+    //       if (newValue === '') {
+    //         paragraph.innerHTML = this.emptyLineValue;
+    //       } else {
+    //         paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
+    //       }
+    //     }
+    //
+    //     this.validateLine(paragraph);
+    //
+    //     setTimeout(() => {
+    //       const newNode = this.textarea.childNodes.item(keyboardLineIndex);
+    //       if (newNode) {
+    //         this.setErrorIndex(newNode);
+    //       }
+    //     }, 0); // need this timeout to update errorIndex to the new (usually empty) line
+    //   }
+    //
+    //   if (!showErrors) {
+    //     this.recalculateErrors();
+    //   }
+    //   this.recalculateLinesCount();
+    //   this.asProps.onChangeLineIndex();
+    // }
   }
 
   componentWillUnmount() {
@@ -679,6 +679,10 @@ class InputField<T extends string | string[]> extends Component<
   //
     const currentNode = this.getNodeFromSelection();
 
+    if (event.key === 'Tab' && currentNode instanceof HTMLParagraphElement) {
+      this.validateLine(currentNode);
+    }
+
     if (
       event.key === 'ArrowDown' ||
       event.key === 'ArrowUp' ||
@@ -951,11 +955,10 @@ class InputField<T extends string | string[]> extends Component<
       document.getSelection()?.setPosition(row, 0);
 
       this.validateLine(parent);
-      this.validateLine(row);
-
-      if (parent.previousSibling) {
-        this.validateLine(parent.previousSibling);
+      if (newLineText !== '') {
+        this.validateLine(row);
       }
+
       this.setErrorIndex(row);
 
       setTimeout(() => {
@@ -1314,18 +1317,22 @@ class InputField<T extends string | string[]> extends Component<
         nextNode = currentNode.nextSibling;
         break;
       case 'ArrowLeft': {
-        if (currentNode.textContent === this.getEmptyParagraph().textContent) {
+        if (currentNode.textContent === this.emptyLineValueJs) {
           event.preventDefault();
           nextNode = currentNode.previousSibling;
         }
         break;
       }
       case 'ArrowRight': {
-        if (currentNode.textContent === this.getEmptyParagraph().textContent) {
+        if (currentNode.textContent === this.emptyLineValueJs) {
           event.preventDefault();
           nextNode = currentNode.nextSibling;
         }
       }
+    }
+
+    if (nextNode !== currentNode) {
+      this.validateLine(currentNode);
     }
 
     if (nextNode instanceof HTMLParagraphElement) {
