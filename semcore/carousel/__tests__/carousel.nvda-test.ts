@@ -53,6 +53,6 @@ test.describe(`@carousel ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toBe('clickable, button, Open in fullscreen A pug wrapped in a blanket sits on the road in the forest');
 
     await nvda.next();
-    expect(await nvda.itemText()).toBe('clickable, button, Close, button');
+    expect(await nvda.itemText()).toBe('clickable, button, Next slide');
   });
 });

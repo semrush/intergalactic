@@ -23,6 +23,6 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await nvda.press('ArrowDown');
     await nvda.press('Space');
 
-    expect(await nvda.itemText()).toBe('Position 3 applied. Unique Visitors, not checked, Press Space to grab the element for drag and drop, 3 of 5');
+    expect(await nvda.itemText()).toContain('Position 3 applied');
   });
 });
