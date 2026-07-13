@@ -49,6 +49,7 @@ class InputField<T extends string | string[]> extends Component<
   delimiter = '\n';
   skipEmptyLines = true;
   emptyLineValue = '&#xfeff;';
+  emptyLineValueJs = '\uFEFF';
   spaceLineValue = '&nbsp;';
 
   containerRef = React.createRef<HTMLDivElement>();
@@ -489,59 +490,9 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   handleChange(event: InputEvent) {
-    const target = event.target;
-
     switch (event.inputType) {
       case 'insertText': {
-        event.preventDefault();
-
-        if (!event.data) {
-          logger.warn(`No data in insertText event: `, event);
-          return;
-        }
-
-        const nodes = this.textarea.childNodes;
-
-        if (nodes.length === 0) {
-          const firstRow = document.createElement('p');
-          const text = document.createTextNode(event.data);
-          firstRow.append(text);
-          this.textarea.append(firstRow);
-
-          document.getSelection()?.setPosition(firstRow, event.data.length);
-        } else {
-          const staticRange: StaticRange | undefined = event.getTargetRanges()?.[0];
-
-          const startElement = staticRange.startContainer;
-          const endElement = staticRange.endContainer;
-
-          if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLParagraphElement)) {
-            const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${event.data}${endElement.textContent.slice(staticRange.endOffset)}`;
-
-            startElement.textContent = resultText;
-
-            document.getSelection()?.setPosition(startElement, staticRange.startOffset + 1);
-
-            if (startElement !== endElement) {
-              let forClear = false;
-              for (const node of nodes) {
-                if (forClear) {
-                  this.textarea.removeChild(node);
-                }
-
-                if (node === (endElement instanceof HTMLParagraphElement ? endElement : endElement.parentElement)) {
-                  forClear = false;
-                  break;
-                }
-
-                if (node === startElement.parentElement) {
-                  forClear = true;
-                }
-              }
-            }
-          }
-        }
-
+        this.insertText(event);
         break;
       }
       case 'insertFromPaste': {
@@ -549,24 +500,16 @@ class InputField<T extends string | string[]> extends Component<
         break;
       }
       case 'insertParagraph': {
-        event.preventDefault();
-
-        const staticRange: StaticRange | undefined = event.getTargetRanges()?.[0];
-        if (staticRange?.startContainer instanceof Text) {
-          const row = document.createElement('p');
-          row.innerHTML = this.emptyLineValue;
-
-          staticRange.startContainer.parentElement?.after(row);
-
-          document.getSelection()?.setPosition(row, 0);
-        }
-
+        this.insertParagraph(event);
         break;
       }
+      case 'deleteContentForward':
       case 'deleteContentBackward': {
+        this.deleteText(event);
         break;
       }
       case 'deleteByCut': {
+        this.deleteText(event);
         break;
       }
       case 'historyUndo': {
@@ -580,128 +523,130 @@ class InputField<T extends string | string[]> extends Component<
       }
     }
 
+    this.recalculateLinesCount();
+
     return;
 
-    if (target instanceof HTMLDivElement && event instanceof InputEvent) {
-      const nodes = this.textarea.childNodes;
-      const firstNode = nodes.item(0);
-      const secondNode = nodes.item(1);
-      const selection = document.getSelection();
-
-      if (firstNode instanceof Text) {
-        const nodeText = firstNode.textContent ?? '';
-        const firstRow = document.createElement('p');
-        const text = document.createTextNode(nodeText);
-        firstRow.append(text);
-        firstNode.replaceWith(firstRow);
-
-        selection?.setPosition(firstRow, nodeText.length);
-      } else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
-        this.textarea.textContent = '';
-        this.setState({ keyboardLineIndex: 0 });
-      } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
-        if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
-          this.textarea.textContent = '';
-          this.setState({ keyboardLineIndex: 0 });
-        }
-      }
-
-      let maxDeep = 10;
-      let rowNode = selection?.focusNode;
-
-      while (rowNode?.parentNode !== this.textarea && maxDeep > 0) {
-        rowNode = rowNode?.parentNode;
-        maxDeep--;
-      }
-
-      if (rowNode instanceof HTMLParagraphElement) {
-        const childNodes = rowNode.childNodes;
-        const textContent = rowNode.textContent ?? '';
-
-        if (childNodes.length > 1) {
-          const offset = childNodes.item(0).textContent?.length;
-
-          rowNode.textContent = textContent;
-
-          if (offset) {
-            this.setSelection(rowNode.childNodes.item(0), offset, offset);
-          }
-        }
-
-        if (textContent.length > 0) {
-          const firstSymbol = textContent.at(0);
-          const lastSymbol = textContent.at(textContent.length - 1);
-
-          if (
-            firstSymbol === this.getEmptyParagraph().textContent ||
-            lastSymbol === this.getEmptyParagraph().textContent
-          ) {
-            let offset: number | null = null;
-            if (firstSymbol === this.getEmptyParagraph().textContent) {
-              rowNode.textContent = textContent.substring(1);
-              offset =
-                event.inputType === 'deleteContentBackward' ||
-                event.inputType === 'deleteContentForward'
-                  ? 0
-                  : rowNode.textContent.length;
-            } else if (lastSymbol === this.getEmptyParagraph().textContent) {
-              rowNode.textContent = textContent.substring(0, textContent.length - 1);
-              offset = rowNode.textContent.length;
-            }
-
-            if (offset) {
-              this.setSelection(rowNode.childNodes.item(0), offset, offset);
-            }
-          }
-        } else if (childNodes.length === 1 && childNodes[0] instanceof HTMLBRElement) {
-          rowNode.innerHTML = this.emptyLineValue;
-        }
-
-        const { errors, showErrors } = this.asProps;
-        const isValid = this.validateLine(rowNode);
-        this.recalculateErrors();
-        this.setErrorIndex(rowNode);
-
-        if (!isValid && showErrors) {
-          this.toggleErrorsPopper('keyboardLineIndex', rowNode, 0);
-        }
-
-        const trigger =
-          !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode)
-            ? rowNode
-            : this.textarea;
-
-        if (showErrors && this.popper?.current?.state.elements.reference !== trigger) {
-          if (this.shouldChangePopperTrigger(trigger)) {
-            this.setPopperTrigger?.(trigger);
-          } else {
-            this.setState({ visibleErrorPopper: false });
-          }
-        }
-      } else if (rowNode === null) {
-        this.setPopperTrigger?.(this.textarea);
-
-        if (selection?.focusNode === this.textarea && this.textarea.childNodes.length > 1) {
-          const nodeIndex = selection.focusOffset;
-          const emptyParagraph = this.textarea.childNodes.item(nodeIndex - 1);
-          const emptyBr = this.textarea.childNodes.item(nodeIndex);
-
-          this.textarea.removeChild(emptyBr);
-
-          if (emptyParagraph instanceof HTMLParagraphElement) {
-            emptyParagraph.innerHTML = this.emptyLineValue;
-          }
-
-          if (emptyParagraph) {
-            this.setSelection(emptyParagraph, 0, 0);
-          }
-        } else {
-          this.setSelection(this.textarea, 0, 0);
-        }
-      }
-
-      this.recalculateLinesCount();
-    }
+    // if (target instanceof HTMLDivElement && event instanceof InputEvent) {
+    //   const nodes = this.textarea.childNodes;
+    //   const firstNode = nodes.item(0);
+    //   const secondNode = nodes.item(1);
+    //   const selection = document.getSelection();
+    //
+    //   if (firstNode instanceof Text) {
+    //     const nodeText = firstNode.textContent ?? '';
+    //     const firstRow = document.createElement('p');
+    //     const text = document.createTextNode(nodeText);
+    //     firstRow.append(text);
+    //     firstNode.replaceWith(firstRow);
+    //
+    //     selection?.setPosition(firstRow, nodeText.length);
+    //   } else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
+    //     this.textarea.textContent = '';
+    //     this.setState({ keyboardLineIndex: 0 });
+    //   } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
+    //     if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
+    //       this.textarea.textContent = '';
+    //       this.setState({ keyboardLineIndex: 0 });
+    //     }
+    //   }
+    //
+    //   let maxDeep = 10;
+    //   let rowNode = selection?.focusNode;
+    //
+    //   while (rowNode?.parentNode !== this.textarea && maxDeep > 0) {
+    //     rowNode = rowNode?.parentNode;
+    //     maxDeep--;
+    //   }
+    //
+    //   if (rowNode instanceof HTMLParagraphElement) {
+    //     const childNodes = rowNode.childNodes;
+    //     const textContent = rowNode.textContent ?? '';
+    //
+    //     if (childNodes.length > 1) {
+    //       const offset = childNodes.item(0).textContent?.length;
+    //
+    //       rowNode.textContent = textContent;
+    //
+    //       if (offset) {
+    //         this.setSelection(rowNode.childNodes.item(0), offset, offset);
+    //       }
+    //     }
+    //
+    //     if (textContent.length > 0) {
+    //       const firstSymbol = textContent.at(0);
+    //       const lastSymbol = textContent.at(textContent.length - 1);
+    //
+    //       if (
+    //         firstSymbol === this.getEmptyParagraph().textContent ||
+    //         lastSymbol === this.getEmptyParagraph().textContent
+    //       ) {
+    //         let offset: number | null = null;
+    //         if (firstSymbol === this.getEmptyParagraph().textContent) {
+    //           rowNode.textContent = textContent.substring(1);
+    //           offset =
+    //             event.inputType === 'deleteContentBackward' ||
+    //             event.inputType === 'deleteContentForward'
+    //               ? 0
+    //               : rowNode.textContent.length;
+    //         } else if (lastSymbol === this.getEmptyParagraph().textContent) {
+    //           rowNode.textContent = textContent.substring(0, textContent.length - 1);
+    //           offset = rowNode.textContent.length;
+    //         }
+    //
+    //         if (offset) {
+    //           this.setSelection(rowNode.childNodes.item(0), offset, offset);
+    //         }
+    //       }
+    //     } else if (childNodes.length === 1 && childNodes[0] instanceof HTMLBRElement) {
+    //       rowNode.innerHTML = this.emptyLineValue;
+    //     }
+    //
+    //     const { errors, showErrors } = this.asProps;
+    //     const isValid = this.validateLine(rowNode);
+    //     this.recalculateErrors();
+    //     this.setErrorIndex(rowNode);
+    //
+    //     if (!isValid && showErrors) {
+    //       this.toggleErrorsPopper('keyboardLineIndex', rowNode, 0);
+    //     }
+    //
+    //     const trigger =
+    //       !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode)
+    //         ? rowNode
+    //         : this.textarea;
+    //
+    //     if (showErrors && this.popper?.current?.state.elements.reference !== trigger) {
+    //       if (this.shouldChangePopperTrigger(trigger)) {
+    //         this.setPopperTrigger?.(trigger);
+    //       } else {
+    //         this.setState({ visibleErrorPopper: false });
+    //       }
+    //     }
+    //   } else if (rowNode === null) {
+    //     this.setPopperTrigger?.(this.textarea);
+    //
+    //     if (selection?.focusNode === this.textarea && this.textarea.childNodes.length > 1) {
+    //       const nodeIndex = selection.focusOffset;
+    //       const emptyParagraph = this.textarea.childNodes.item(nodeIndex - 1);
+    //       const emptyBr = this.textarea.childNodes.item(nodeIndex);
+    //
+    //       this.textarea.removeChild(emptyBr);
+    //
+    //       if (emptyParagraph instanceof HTMLParagraphElement) {
+    //         emptyParagraph.innerHTML = this.emptyLineValue;
+    //       }
+    //
+    //       if (emptyParagraph) {
+    //         this.setSelection(emptyParagraph, 0, 0);
+    //       }
+    //     } else {
+    //       this.setSelection(this.textarea, 0, 0);
+    //     }
+    //   }
+    //
+    //   this.recalculateLinesCount();
+    // }
   }
 
   handleFocus() {
@@ -739,83 +684,19 @@ class InputField<T extends string | string[]> extends Component<
   //   this.errorByInteraction = 'keyboard';
   //   const { linesDelimiters } = this.asProps;
   //
-  //   const currentNode = this.getNodeFromSelection();
-  //
-  //   if (event.key === 'Enter' || linesDelimiters?.includes(event.key)) {
-  //     if (currentNode === this.textarea) {
-  //       event.preventDefault();
-  //     }
-  //     if (currentNode instanceof HTMLParagraphElement) {
-  //       const currentRowValue = currentNode.textContent?.trim();
-  //
-  //       if (!currentRowValue) {
-  //         event.preventDefault();
-  //       } else {
-  //         event.preventDefault();
-  //         const selection = document.getSelection();
-  //         const selectionNode =
-  //           selection?.focusNode instanceof Text
-  //             ? selection.focusNode
-  //             : selection?.focusNode?.childNodes.item(0);
-  //         const selectionOffset = selection?.focusOffset;
-  //
-  //         let newRowValue = '';
-  //
-  //         if (
-  //           selectionNode instanceof Text &&
-  //           selectionOffset !== undefined &&
-  //           selectionOffset !== selectionNode.textContent?.length
-  //         ) {
-  //           newRowValue =
-  //             selectionNode.textContent?.substring(selectionOffset) ?? this.emptyLineValue;
-  //
-  //           if (selectionNode.textContent) {
-  //             selectionNode.textContent = selectionNode.textContent.substring(0, selectionOffset);
-  //           }
-  //         }
-  //
-  //         if (currentNode.textContent?.trim() === '') {
-  //           currentNode.innerHTML = this.emptyLineValue;
-  //         }
-  //
-  //         const row = document.createElement('p');
-  //         if (newRowValue) {
-  //           row.textContent = newRowValue;
-  //         } else {
-  //           row.innerHTML = this.emptyLineValue;
-  //         }
-  //         currentNode.after(row);
-  //
-  //         this.setSelection(row, 0, 0);
-  //
-  //         this.validateLine(currentNode);
-  //         this.validateLine(row);
-  //         if (currentNode.previousSibling) {
-  //           this.validateLine(currentNode.previousSibling);
-  //         }
-  //         this.setErrorIndex(row);
-  //
-  //         if (row.textContent?.trim() !== '') {
-  //           this.recalculateLinesCount();
-  //         }
-  //
-  //         setTimeout(() => {
-  //           this.recalculateErrors();
-  //         }, 0);
-  //
-  //         this.toggleErrorsPopperByKeyboard(0);
-  //       }
-  //     }
-  //   } else if (
-  //     event.key === 'ArrowDown' ||
-  //     event.key === 'ArrowUp' ||
-  //     event.key === 'ArrowLeft' ||
-  //     event.key === 'ArrowRight'
-  //   ) {
-  //     if (currentNode instanceof HTMLParagraphElement) {
-  //       this.handleCursorMovement(currentNode, event);
-  //     }
-  //     this.toggleErrorsPopperByKeyboard(200);
+    const currentNode = this.getNodeFromSelection();
+
+    if (
+      event.key === 'ArrowDown' ||
+      event.key === 'ArrowUp' ||
+      event.key === 'ArrowLeft' ||
+      event.key === 'ArrowRight'
+    ) {
+      if (currentNode instanceof HTMLParagraphElement) {
+        this.handleCursorMovement(currentNode, event);
+      }
+      this.toggleErrorsPopperByKeyboard(200);
+    }
   //   } else if (this.isDeleteKey(event) && currentNode instanceof HTMLParagraphElement) {
   //     if (currentNode.textContent?.trim() === '' && !this.isRangeSelection()) {
   //       // Backspace on empty row
@@ -993,6 +874,174 @@ class InputField<T extends string | string[]> extends Component<
     );
   }
 
+  private insertText(event: InputEvent) {
+    event.preventDefault();
+
+    const data = event.data;
+    const staticRange = event.getTargetRanges()?.[0];
+
+    if (!data) {
+      logger.warn(true, `No data in insertText event: `, event);
+      return;
+    }
+
+    if (!staticRange) {
+      logger.warn(true, `No staticRange in event: `, event);
+      return;
+    }
+
+    const nodes = this.textarea.childNodes;
+
+    if (nodes.length === 0) {
+      const firstRow = document.createElement('p');
+      const text = document.createTextNode(data);
+      firstRow.append(text);
+      this.textarea.append(firstRow);
+
+      document.getSelection()?.setPosition(firstRow, data.length);
+    } else {
+      const startElement = staticRange.startContainer;
+      const endElement = staticRange.endContainer;
+
+      if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLParagraphElement)) {
+        const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${data}${endElement.textContent.slice(staticRange.endOffset)}`;
+
+        // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
+        startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
+
+        document.getSelection()?.setPosition(startElement, staticRange.startOffset + 1);
+
+        if (startElement !== endElement) {
+          this.clearNodes(startElement, endElement);
+        }
+      }
+    }
+  }
+
+  private insertParagraph(event: InputEvent) {
+    event.preventDefault();
+
+    const staticRange = event.getTargetRanges()?.[0];
+
+    if (!staticRange) {
+      logger.warn(true, `No staticRange in event: `, event);
+      return;
+    }
+
+    let startElement = staticRange.startContainer;
+    const endElement = staticRange.endContainer;
+    const parent = startElement.parentElement;
+
+    if (startElement instanceof Text && endElement instanceof Text && parent) {
+      const currentLineText = startElement.textContent.slice(0, staticRange.startOffset);
+      const newLineText = endElement.textContent.slice(staticRange.endOffset);
+
+      startElement.textContent = currentLineText;
+      if (startElement.textContent === '') {
+        parent.innerHTML = this.emptyLineValue;
+        startElement = parent.childNodes.item(0);
+      }
+
+      if (startElement !== endElement && endElement.parentElement) {
+        this.clearNodes(startElement, endElement);
+      }
+
+      const row = document.createElement('p');
+      if (newLineText === '') {
+        row.innerHTML = this.emptyLineValue;
+      } else {
+        row.textContent = newLineText;
+      }
+
+      parent.after(row);
+
+      document.getSelection()?.setPosition(row, 0);
+
+      this.validateLine(parent);
+      this.validateLine(row);
+
+      if (parent.previousSibling) {
+        this.validateLine(parent.previousSibling);
+      }
+      this.setErrorIndex(row);
+
+      setTimeout(() => {
+        this.recalculateErrors();
+      }, 0);
+
+      this.toggleErrorsPopperByKeyboard(0);
+    } else {
+      logger.warn(true, `Not texts in start/end`, { startElement, endElement });
+    }
+  }
+
+  private deleteText(event: InputEvent) {
+    event.preventDefault();
+    const staticRange = event.getTargetRanges()?.[0];
+
+    if (!staticRange) {
+      logger.warn(true, `No staticRange in event: `, event);
+      return;
+    }
+
+    let startElement = staticRange.startContainer;
+    const endElement = staticRange.endContainer;
+    const parent = startElement.parentElement;
+
+    if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLParagraphElement) && parent) {
+      const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(staticRange.endOffset)}`;
+
+      const next = parent.nextSibling;
+      if (resultText === '' && event.inputType === 'deleteContentForward' && endElement.textContent === this.emptyLineValueJs && next) {
+        this.textarea.removeChild(parent);
+        document.getSelection()?.setPosition(next, 0);
+      } else {
+        if (resultText === '') {
+          parent.innerHTML = this.emptyLineValue;
+          startElement = parent.childNodes.item(0);
+        } else {
+          startElement.textContent = resultText;
+        }
+
+        document.getSelection()?.setPosition(startElement, staticRange.startOffset);
+      }
+
+      this.validateLine(parent);
+      if (startElement !== endElement && endElement.parentElement) {
+        this.clearNodes(startElement, endElement);
+        this.validateLine(endElement);
+      }
+
+      this.setErrorIndex(parent);
+
+      setTimeout(() => {
+        this.recalculateErrors();
+      }, 0);
+
+      this.toggleErrorsPopperByKeyboard(0);
+    }
+  }
+
+  private clearNodes(startElement: Node, endElement: Node) {
+    const nodes = [...this.textarea.childNodes];
+
+    let forClear = false;
+    for (const node of nodes) {
+      if (forClear) {
+        this.textarea.removeChild(node);
+      }
+
+      if (node === (endElement instanceof HTMLParagraphElement ? endElement : endElement.parentElement)) {
+        forClear = false;
+        break;
+      }
+
+      if (node === startElement.parentElement) {
+        forClear = true;
+      }
+    }
+  }
+
   private prepareNodesForPaste(value: string | string[]): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
@@ -1063,7 +1112,7 @@ class InputField<T extends string | string[]> extends Component<
           node.dataset.overMaxRows = 'false';
 
           if (
-            node.textContent !== this.getEmptyParagraph().textContent &&
+            node.textContent !== this.emptyLineValueJs &&
             node.textContent !== ''
           ) {
             lines++;
@@ -1312,10 +1361,6 @@ class InputField<T extends string | string[]> extends Component<
       });
 
     this.handlers.errorIndex(errorIndex);
-  }
-
-  private isDeleteKey(event: KeyboardEvent): boolean {
-    return event.key === 'Backspace' || (event.key === 'x' && (event.ctrlKey || event.metaKey));
   }
 
   private getEmptyParagraph() {
