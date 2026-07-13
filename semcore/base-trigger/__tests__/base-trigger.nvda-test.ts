@@ -64,7 +64,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       await nvda.next();
       expect(await nvda.itemText()).toContain('Device:, list');
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Mobile, 2 of 3');
+      expect(await nvda.itemText()).toContain('Tablet, 3 of 3');
     });
   });
 });

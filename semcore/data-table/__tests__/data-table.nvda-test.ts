@@ -20,7 +20,7 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('column 4, clickable, empty');
+    expect(await nvda.itemText()).toContain('column 4, clickable, Empty');
 
     await nvda.next();
 

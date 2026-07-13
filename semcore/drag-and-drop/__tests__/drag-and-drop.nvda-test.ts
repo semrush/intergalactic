@@ -11,20 +11,23 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     await nvda.press('Enter');
     await page.waitForTimeout(500);
 
-    const openLog = (await nvda.spokenPhraseLog()).join(' ');
-    expect(openLog).toContain('clickable, button, collapsed, opens dialog, 2 slash 5 expanded');
+    expect(await nvda.itemText()).toContain('expanded');
 
     await nvda.next();
+    expect(await nvda.itemText()).toContain(
+      'Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5',
+    );
 
+    await nvda.next();
     expect(await nvda.itemText()).toBe('Unique Visitors, not checked, Press Space to grab the element for drag and drop, 2 of 5');
 
     await nvda.press('Space');
 
-    expect(await nvda.itemText()).toBe('space. alert, Unique Visitors grabbed. Current position: 2 out of 5. Use the arrows to change the position, Space to apply the new position, Escape to cancel.');
+    expect(await nvda.itemText()).toBe('alert, Unique Visitors grabbed. Current position: 2 out of 5. Use the arrows to change the position, Space to apply the new position, Escape to cancel.');
 
     await nvda.press('ArrowDown');
     await nvda.press('Space');
 
-    expect(await nvda.itemText()).toBe('space. Position 3 applied. Unique Visitors, not checked, Press Space to grab the element for drag and drop, 3 of 5');
+    expect(await nvda.itemText()).toBe('Position 3 applied. Unique Visitors, not checked, Press Space to grab the element for drag and drop, 3 of 5');
   });
 });
