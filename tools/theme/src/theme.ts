@@ -905,7 +905,7 @@ export const theme: Theme = {
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
       control_switch_bg_DEFAULT: {
-        value: colors.gray['300'].value,
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Subtle background of the Switch control.',
       },
       control_switch_bg_info_active: {
