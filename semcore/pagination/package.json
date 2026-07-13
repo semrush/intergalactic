@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@semcore/button": "^17.2.1",
-    "@semcore/input-number": "^17.2.1",
-    "@semcore/input": "^17.2.1",
+    "@semcore/input-number": "^17.2.2",
+    "@semcore/input": "^17.2.2",
     "@semcore/link": "^17.2.1",
     "@semcore/typography": "^17.2.1"
   },

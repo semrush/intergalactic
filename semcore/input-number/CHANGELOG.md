@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.2] - 2026-07-10
+
+### Fixed
+
+- Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSInputNumber` namespace.
+- Aligned typed, incremented, and decremented value precision with the
+configured step precision.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

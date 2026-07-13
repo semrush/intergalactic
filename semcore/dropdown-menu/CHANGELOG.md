@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.1] - 2026-07-10
+
+### Fixed
+
+- `preventFocusByClick` handler - skip draggable elements.
+
 ## [17.3.0] - 2026-06-26
 
 ### Fixed
