@@ -18,6 +18,9 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('expanded');
 
     await nvda.next();
+    expect(await nvda.itemText()).toContain('June 2020');
+
+    await nvda.next();
 
     expect(await nvda.itemText()).toContain('button, Next month');
 
