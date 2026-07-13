@@ -1,6 +1,6 @@
 import { Box, Flex } from '@semcore/ui/base-components';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
-import type { BulkTextareaProps } from '@semcore/ui/bulk-textarea';
+import type { NSBulktextarea } from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -27,7 +27,7 @@ const lineProcessing = (line: string) => {
   return line.replace(/http:\/\//, '');
 };
 
-const Demo = (props: BulkTextareaProps<string>) => {
+const Demo = (props: NSBulktextarea.Props<string>) => {
   const [value, setValue] = React.useState('');
   const [errors, setErrors] = React.useState<any[]>([]);
 
@@ -97,7 +97,7 @@ const Demo = (props: BulkTextareaProps<string>) => {
   );
 };
 
-export const defaultProps: BulkTextareaProps<string> = {
+export const defaultProps: NSBulktextarea.Props<string> = {
   showErrors: true,
   readonly: false,
   disabled: false,
