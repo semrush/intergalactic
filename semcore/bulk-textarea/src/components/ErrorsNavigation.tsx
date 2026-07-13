@@ -53,6 +53,7 @@ export function ErrorsNavigation(
             disabled={disabled}
             ref={prevButtonRef}
             size={size}
+            ml={1}
           />
           <Text size={size === 'l' ? 300 : 200} color='text-critical' ml={1} disabled={disabled}>
             {errorIndex === -1
