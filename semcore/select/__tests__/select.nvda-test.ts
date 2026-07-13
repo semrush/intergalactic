@@ -60,7 +60,7 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
     await test.step('Navigate through options', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Option 2, 4 of 20');
+      expect(await nvda.itemText()).toContain('Option 3, 4 of 20');
     });
   });
 

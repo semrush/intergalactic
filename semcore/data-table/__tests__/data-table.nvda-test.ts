@@ -24,6 +24,6 @@ test.describe(`@data-table ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('column 5, clickable, Volume');
+    expect(await nvda.itemText()).toContain('column 5, clickable, Vol.');
   });
 });

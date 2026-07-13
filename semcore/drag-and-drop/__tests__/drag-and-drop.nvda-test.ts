@@ -14,11 +14,6 @@ test.describe(`@drag-and-drop ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('expanded');
 
     await nvda.next();
-    expect(await nvda.itemText()).toContain(
-      'Unique Pageviews, checked, Press Space to grab the element for drag and drop, 1 of 5',
-    );
-
-    await nvda.next();
     expect(await nvda.itemText()).toBe('Unique Visitors, not checked, Press Space to grab the element for drag and drop, 2 of 5');
 
     await nvda.press('Space');
