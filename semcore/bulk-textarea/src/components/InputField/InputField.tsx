@@ -213,7 +213,11 @@ class InputField<T extends string | string[]> extends Component<
 
         if (paragraph instanceof HTMLParagraphElement) {
           if (newValue === '') {
-            paragraph.innerHTML = this.emptyLineValue;
+            if (lines.length === 1) {
+              this.textarea.textContent = '';
+            } else {
+              paragraph.innerHTML = this.emptyLineValue;
+            }
           } else {
             paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
           }
@@ -667,7 +671,9 @@ class InputField<T extends string | string[]> extends Component<
     onBlur(valueToChange as T, event);
 
     setTimeout(() => {
-      this.setState({ keyboardLineIndex: -1 });
+      if (document.activeElement !== this.textarea) {
+        this.setState({ keyboardLineIndex: -1 });
+      }
     }, 200);
   }
 
