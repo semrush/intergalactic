@@ -675,6 +675,58 @@
     ]
   },
   {
+    "name": "--intergalactic-chart-palette-order-2",
+    "value": "oklch(0.82 0.15 170)",
+    "description": "2 color in the default list of colors for charts.",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-3",
+    "value": "oklch(0.74 0.17 303)",
+    "description": "3 color in the default list of colors for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-4",
+    "value": "oklch(0.82 0.18 80)",
+    "description": "4 color in the default list of colors for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-5",
+    "value": "oklch(0.74 0.19 22)",
+    "description": "5 color in the default list of colors for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-6",
+    "value": "oklch(0.82 0.088 272.1)",
+    "description": "6 color in the default list of colors for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-7",
+    "value": "oklch(0.74 0.225 330)",
+    "description": "7 color in the default list of colors for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-8",
+    "value": "oklch(0.82 0.19 143)",
+    "description": "8 color in the default list of colors for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-9",
+    "value": "oklch(0.53 0.157 279.2)",
+    "description": "9 color in the default list of colors for charts.",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
     "name": "--intergalactic-chart-palette-order-10",
     "value": "oklch(0.74 0.17 170)",
     "description": "10 color in the default list of colors for charts.",
@@ -735,14 +787,6 @@
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-2",
-    "value": "oklch(0.82 0.15 170)",
-    "description": "2 color in the default list of colors for charts.",
-    "components": [
-      "d3-chart"
-    ]
-  },
-  {
     "name": "--intergalactic-chart-palette-order-20",
     "value": "oklch(0.82 0.13 20)",
     "description": "20 color in the default list of colors for charts.",
@@ -771,50 +815,6 @@
     "value": "oklch(0.53 0.189 147)",
     "description": "24 color in the default list of colors for charts.",
     "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-3",
-    "value": "oklch(0.74 0.17 303)",
-    "description": "3 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-4",
-    "value": "oklch(0.82 0.18 80)",
-    "description": "4 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-5",
-    "value": "oklch(0.74 0.19 22)",
-    "description": "5 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-6",
-    "value": "oklch(0.82 0.088 272.1)",
-    "description": "6 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-7",
-    "value": "oklch(0.74 0.225 330)",
-    "description": "7 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-8",
-    "value": "oklch(0.82 0.19 143)",
-    "description": "8 color in the default list of colors for charts.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.53 0.157 279.2)",
-    "description": "9 color in the default list of colors for charts.",
-    "components": [
-      "d3-chart"
-    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-null",
@@ -922,24 +922,24 @@
   },
   {
     "name": "--intergalactic-control-primary-advertising",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Background of the advertising primary control.",
     "components": [
       "wizard"
     ]
   },
   {
-    "name": "--intergalactic-control-primary-advertising-active",
-    "value": "oklch(0.58 0.254 297.1)",
-    "description": "Active (selected) state of the advertising primary control.",
+    "name": "--intergalactic-control-primary-advertising-hover",
+    "value": "oklch(0.36 0.005 140)",
+    "description": "Hover state of the advertising primary control.",
     "components": [
       "wizard"
     ]
   },
   {
-    "name": "--intergalactic-control-primary-advertising-hover",
-    "value": "oklch(0.6 0.244 297.8)",
-    "description": "Hover state of the advertising primary control.",
+    "name": "--intergalactic-control-primary-advertising-active",
+    "value": "oklch(0.4 0.004 140)",
+    "description": "Active (selected) state of the advertising primary control.",
     "components": [
       "wizard"
     ]
@@ -2849,25 +2849,25 @@
   },
   {
     "name": "--intergalactic-wizard-sidebar-bg",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Background of the Wizard sidebar.",
     "components": []
   },
   {
     "name": "--intergalactic-wizard-sidebar-control",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Background of the control in the Wizard sidebar in its normal state.",
     "components": []
   },
   {
     "name": "--intergalactic-wizard-sidebar-control-active",
-    "value": "oklch(0.58 0.254 297.1)",
+    "value": "oklch(0.4 0.004 140)",
     "description": "Active state of the control in the Wizard sidebar.",
     "components": []
   },
   {
     "name": "--intergalactic-wizard-sidebar-control-hover",
-    "value": "oklch(0.6 0.244 297.8)",
+    "value": "oklch(0.36 0.005 140)",
     "description": "Hover state of the control in the Wizard sidebar.",
     "components": []
   },

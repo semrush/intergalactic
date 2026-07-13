@@ -592,6 +592,38 @@ export const theme: Theme = {
         value: colors.blue['400'].value,
         description: '1 color in the default list of colors for charts.',
       },
+      chart_palette_order_2: {
+        value: colors.green['200'].value,
+        description: '2 color in the default list of colors for charts.',
+      },
+      chart_palette_order_3: {
+        value: colors.violet['300'].value,
+        description: '3 color in the default list of colors for charts.',
+      },
+      chart_palette_order_4: {
+        value: colors.yellow['200'].value,
+        description: '4 color in the default list of colors for charts.',
+      },
+      chart_palette_order_5: {
+        value: colors.red['300'].value,
+        description: '5 color in the default list of colors for charts.',
+      },
+      chart_palette_order_6: {
+        value: colors.blue['200'].value,
+        description: '6 color in the default list of colors for charts.',
+      },
+      chart_palette_order_7: {
+        value: colors.pink['300'].value,
+        description: '7 color in the default list of colors for charts.',
+      },
+      chart_palette_order_8: {
+        value: colors.salad['200'].value,
+        description: '8 color in the default list of colors for charts.',
+      },
+      chart_palette_order_9: {
+        value: colors.blue['500'].value,
+        description: '9 color in the default list of colors for charts.',
+      },
       chart_palette_order_10: {
         value: colors.green['300'].value,
         description: '10 color in the default list of colors for charts.',
@@ -632,10 +664,6 @@ export const theme: Theme = {
         value: colors.yellow['400'].value,
         description: '19 color in the default list of colors for charts.',
       },
-      chart_palette_order_2: {
-        value: colors.green['200'].value,
-        description: '2 color in the default list of colors for charts.',
-      },
       chart_palette_order_20: {
         value: colors.red['200'].value,
         description: '20 color in the default list of colors for charts.',
@@ -655,34 +683,6 @@ export const theme: Theme = {
       chart_palette_order_24: {
         value: colors.salad['500'].value,
         description: '24 color in the default list of colors for charts.',
-      },
-      chart_palette_order_3: {
-        value: colors.violet['300'].value,
-        description: '3 color in the default list of colors for charts.',
-      },
-      chart_palette_order_4: {
-        value: colors.yellow['200'].value,
-        description: '4 color in the default list of colors for charts.',
-      },
-      chart_palette_order_5: {
-        value: colors.red['300'].value,
-        description: '5 color in the default list of colors for charts.',
-      },
-      chart_palette_order_6: {
-        value: colors.blue['200'].value,
-        description: '6 color in the default list of colors for charts.',
-      },
-      chart_palette_order_7: {
-        value: colors.pink['300'].value,
-        description: '7 color in the default list of colors for charts.',
-      },
-      chart_palette_order_8: {
-        value: colors.salad['200'].value,
-        description: '8 color in the default list of colors for charts.',
-      },
-      chart_palette_order_9: {
-        value: colors.blue['500'].value,
-        description: '9 color in the default list of colors for charts.',
       },
       chart_palette_order_null: {
         value: colors.gray['100'].value,
@@ -753,16 +753,16 @@ export const theme: Theme = {
         description: 'Border color of the Radio.',
       },
       control_primary_advertising_DEFAULT: {
-        value: advertising.at(L_BG_BUTTON),
+        value: gray.at(L_INV_BG_PRIMARY),
         description: 'Background of the advertising primary control.',
       },
-      control_primary_advertising_active: {
-        value: advertising.at(L_BG_BUTTON_ACTIVE),
-        description: 'Active (selected) state of the advertising primary control.',
-      },
       control_primary_advertising_hover: {
-        value: advertising.at(L_BG_BUTTON_HOVER),
+        value: gray.at(L_INV_BG_PRIMARY_HOVER),
         description: 'Hover state of the advertising primary control.',
+      },
+      control_primary_advertising_active: {
+        value: gray.at(L_INV_BG_PRIMARY_ACTIVE),
+        description: 'Active (selected) state of the advertising primary control.',
       },
       control_primary_brand_DEFAULT: {
         value: brand.at(L_BG_BUTTON),
