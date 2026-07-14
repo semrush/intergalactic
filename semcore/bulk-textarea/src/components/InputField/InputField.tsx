@@ -226,9 +226,9 @@ class InputField<T extends string | string[]> extends Component<
           } else {
             paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
           }
-        }
 
-        this.validateLine(paragraph);
+          this.validateLine(paragraph);
+        }
 
         setTimeout(() => {
           const newNode = this.textarea.childNodes.item(keyboardLineIndex);
@@ -577,6 +577,9 @@ class InputField<T extends string | string[]> extends Component<
       this.textarea.append(firstRow);
 
       document.getSelection()?.setPosition(firstRow, data.length);
+
+      this.validateLine(firstRow);
+      this.setErrorIndex(firstRow);
     } else {
       const [startElement, endElement] = this.getRangeTextNodes(staticRange);
       const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${data}${endElement.textContent.slice(staticRange.endOffset)}`;
@@ -586,10 +589,21 @@ class InputField<T extends string | string[]> extends Component<
 
       document.getSelection()?.setPosition(startElement, staticRange.startOffset + 1);
 
+      if (startElement.parentElement instanceof HTMLLIElement) {
+        this.validateLine(startElement.parentElement);
+        this.setErrorIndex(startElement.parentElement);
+      }
+
       if (startElement !== endElement) {
         this.clearNodes(startElement, endElement);
       }
     }
+
+    setTimeout(() => {
+      this.recalculateErrors();
+    }, 0);
+
+    this.toggleErrorsPopperByKeyboard(0);
   }
 
   private insertParagraph(event: InputEvent) {
@@ -608,7 +622,7 @@ class InputField<T extends string | string[]> extends Component<
     const endElement = nodes[1];
     const parent = startElement.parentElement;
 
-    if (parent) {
+    if (parent instanceof HTMLLIElement) {
       const currentLineText = startElement.textContent.slice(0, staticRange.startOffset);
       const newLineText = endElement.textContent.slice(staticRange.endOffset);
 
@@ -638,7 +652,7 @@ class InputField<T extends string | string[]> extends Component<
         this.validateLine(row);
       }
 
-      this.setErrorIndex(row);
+      this.setErrorIndex(parent);
 
       setTimeout(() => {
         this.recalculateErrors();
@@ -665,7 +679,7 @@ class InputField<T extends string | string[]> extends Component<
     const endElement = nodes[1];
     const parent = startElement.parentElement;
 
-    if (parent) {
+    if (parent instanceof HTMLLIElement) {
       const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(staticRange.endOffset)}`;
 
       const next = parent.nextSibling;
@@ -686,7 +700,6 @@ class InputField<T extends string | string[]> extends Component<
       this.validateLine(parent);
       if (startElement !== endElement && endElement.parentElement) {
         this.clearNodes(startElement, endElement);
-        this.validateLine(endElement);
       }
 
       if (resultText === '' && this.textarea.childNodes.length <= 1) {
@@ -1098,9 +1111,9 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  private validateLine(node: Node): boolean {
+  private validateLine(node: HTMLLIElement): boolean {
     const { lineValidation } = this.asProps;
-    if (lineValidation && node instanceof HTMLElement) {
+    if (lineValidation) {
       const { isValid, errorMessage } = lineValidation(node.textContent ?? '', this.getValues());
 
       if (!isValid) {
