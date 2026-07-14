@@ -1,8 +1,8 @@
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
-import type { BreadcrumbsItemProps } from '@semcore/ui/breadcrumbs';
+import type { NSBreadcrumbs } from '@semcore/ui/breadcrumbs';
 import React from 'react';
 
-const Demo = (props: BreadcrumbsItemProps) => (
+const Demo = (props: NSBreadcrumbs.Item.Props) => (
   <Breadcrumbs w={600}>
     <Breadcrumbs.Item active={false} href='#' role='link'>
       Ellipsis
@@ -14,7 +14,7 @@ const Demo = (props: BreadcrumbsItemProps) => (
   </Breadcrumbs>
 );
 
-export const breadcrumbsEllipsisExampleProps: BreadcrumbsItemProps = {
+export const breadcrumbsEllipsisExampleProps: NSBreadcrumbs.Item.Props = {
   active: true,
 };
 Demo.defaultProps = breadcrumbsEllipsisExampleProps;

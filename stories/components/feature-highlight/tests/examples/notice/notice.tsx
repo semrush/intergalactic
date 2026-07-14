@@ -2,11 +2,11 @@ import SummaryAI from '@semcore/icon/SummaryAI/m';
 import MailSent from '@semcore/illustration/MailSent';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonFH, NoticeFH } from '@semcore/ui/feature-highlight';
-import type { NoticeProps } from '@semcore/ui/notice';
+import type { NSNotice } from '@semcore/ui/notice';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-export type NoticeFHAdvancedProps = NoticeProps & {
+export type NoticeFHAdvancedProps = NSNotice.Props & {
   noticeText?: string;
   showTitle?: boolean;
   titleText?: string;

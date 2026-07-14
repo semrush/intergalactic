@@ -624,15 +624,15 @@ export const theme: Theme = {
         description: 'Active state of the primary brand colored control.',
       },
       control_primary_advertising_DEFAULT: {
-        value: advertising.at(L_BG_BUTTON),
+        value: gray.at(L_INV_BG_PRIMARY),
         description: 'Background of the advertising primary control.',
       },
       control_primary_advertising_hover: {
-        value: advertising.at(L_BG_BUTTON_HOVER),
+        value: gray.at(L_INV_BG_PRIMARY_HOVER),
         description: 'Hover state of the advertising primary control.',
       },
       control_primary_advertising_active: {
-        value: advertising.at(L_BG_BUTTON_ACTIVE),
+        value: gray.at(L_INV_BG_PRIMARY_ACTIVE),
         description: 'Active (selected) state of the advertising primary control.',
       },
       control_primary_invert_DEFAULT: {
@@ -1115,7 +1115,7 @@ export const theme: Theme = {
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       overlay_limitation_primary: {
-        value: `oklch(from ${neutral.at(L_BG_SECONDARY)} l c h / 0.85)`,
+        value: `oklch(from ${neutral.at(0.97)} l c h / 0.7)`,
         description: 'Use as a primary cover of the content under the messages about limitations.',
       },
       overlay_limitation_secondary: {
@@ -1359,7 +1359,7 @@ export const theme: Theme = {
         description: '15 color in the default list of colors for charts.',
       },
       chart_palette_order_16: {
-        value: colors.green['300'].value,
+        value: colors.green['400'].value,
         description: '16 color in the default list of colors for charts.',
       },
       chart_palette_order_17: {

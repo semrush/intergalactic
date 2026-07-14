@@ -2,11 +2,11 @@ import ShowYesM from '@semcore/icon/ShowYes/m';
 import type { NSBox } from '@semcore/ui/base-components';
 import { Flex, NeighborLocation } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
-import type { InputProps, InputValueProps } from '@semcore/ui/input';
+import type { NSInput } from '@semcore/ui/input';
 import Input from '@semcore/ui/input';
 import React from 'react';
 
-type WithNeighborLocationExampleProps = InputProps & InputValueProps & NSBox.Props;
+type WithNeighborLocationExampleProps = NSInput.Props & NSInput.Value.Props & NSBox.Props;
 const Demo = (props: WithNeighborLocationExampleProps) => {
   return (
     <>

@@ -2,12 +2,12 @@ import Search from '@semcore/icon/Search/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import type { NSBox } from '@semcore/ui/base-components';
-import type { InputProps, InputValueProps } from '@semcore/ui/input';
+import type { NSInput } from '@semcore/ui/input';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type BaseExampleProps = InputProps & InputValueProps & NSBox.Props;
+type BaseExampleProps = NSInput.Props & NSInput.Value.Props & NSBox.Props;
 const Demo = (props: BaseExampleProps) => {
   return (
     <Flex direction='row' gap={2} data-testid='wrap'>

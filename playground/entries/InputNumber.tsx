@@ -1,4 +1,4 @@
-import type { InputNumberProps, InputNumberValueProps, InputNumberControlsProps } from '@semcore/ui/input-number';
+import type { NSInputNumber } from '@semcore/ui/input-number';
 import InputNumber from '@semcore/ui/input-number';
 import React from 'react';
 
@@ -6,7 +6,11 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type InputNumberJSXProps = JSXProps<InputNumberProps & InputNumberValueProps & InputNumberControlsProps>;
+export type InputNumberJSXProps = JSXProps<
+  NSInputNumber.Props &
+  NSInputNumber.Value.Props &
+  NSInputNumber.Controls.Props
+>;
 
 function getJSX(props: InputNumberJSXProps) {
   return (

@@ -7,6 +7,7 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import logger from '@semcore/core/lib/utils/logger';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import ChevronLeft from '@semcore/icon/ChevronLeft/l';
 import ChevronRight from '@semcore/icon/ChevronRight/l';
 import Modal from '@semcore/modal';
@@ -356,6 +357,14 @@ class CarouselRoot extends Component<
       () => {
         if (this.state.isOpenZoom) {
           this.transformContainer();
+        } else {
+          setTimeout(() => {
+            const itemElement = this.refCarousel.current?.querySelector('[role="tabpanel"][tabIndex="0"]');
+
+            if (itemElement instanceof HTMLElement) {
+              setFocus(itemElement);
+            }
+          });
         }
       },
     );

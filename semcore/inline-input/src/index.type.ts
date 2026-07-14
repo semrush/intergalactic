@@ -1,7 +1,7 @@
 import type { NSBox } from '@semcore/base-components';
 import type { ButtonLinkComponent } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { InputNumberControlsProps } from '@semcore/input-number';
+import type { NSInputNumber } from '@semcore/input-number';
 import type React from 'react';
 
 export type InlineInputProps = NSBox.Props & {
@@ -123,5 +123,5 @@ export type InlineInputComponent = Intergalactic.Component<'div', InlineInputPro
     InlineInputProps
   >;
   NumberValue: Intergalactic.Component<'div', {}, InlineInputProps>;
-  NumberControls: Intergalactic.Component<'div', InputNumberControlsProps, InlineInputProps>;
+  NumberControls: Intergalactic.Component<'div', NSInputNumber.Controls.Props, InlineInputProps>;
 };

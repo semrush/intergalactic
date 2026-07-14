@@ -1,5 +1,6 @@
 import { Flex, ScreenReaderOnly } from '@semcore/base-components';
 import Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -10,39 +11,27 @@ import MathPlusM from '@semcore/icon/MathPlus/m';
 import type { SelectProps } from '@semcore/select';
 import React from 'react';
 
-import type { AddFilterType, AddFilterProps, AddFilterItemProps, AddFilterKey, AddFilterDefaultProps } from './AddFilter.types';
+import type { NSAddFilter } from './AddFilter.types';
 import AddFilterDropdown from './components/AddFilterDropdown';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterSelect from './components/AddFilterSelect';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-type SelectItemProps = SelectProps & AddFilterItemProps;
-
 type AddFilterDropdownOption = { label: string; value: string };
 type AddFilterDropdownMenuProps = {
   options: AddFilterDropdownOption[];
-  toggleFieldVisibility: (name: AddFilterKey, status: boolean) => void;
-  visibleFilters: AddFilterKey[];
+  toggleFieldVisibility: (name: NSAddFilter.Key, status: boolean) => void;
+  visibleFilters: NSAddFilter.Key[];
   getI18nText: (key: string) => string;
-};
-
-type ClearAllFiltersButtonProps = {
-  hasFilterData: boolean;
-  clearAll: () => void;
-  getI18nText: (key: string) => string;
-};
-
-type AddFilterState = {
-  clearFiltersMessage: string;
 };
 
 class RootAddFilter extends Component<
-  AddFilterProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSAddFilter.Component>,
   typeof RootAddFilter.enhance,
-  { visibleFilters: null },
+  NSAddFilter.Handlers,
   WithI18nEnhanceProps,
-  AddFilterState,
-  AddFilterDefaultProps
+  NSAddFilter.State,
+  NSAddFilter.DefaultProps
 > {
   addFilterTrigger = React.createRef<HTMLButtonElement>();
   filtersFocusMap: Map<string | undefined, HTMLElement> = new Map();
@@ -52,7 +41,7 @@ class RootAddFilter extends Component<
   static displayName = 'AddFilter';
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
-  static defaultProps: AddFilterDefaultProps = {
+  static defaultProps: NSAddFilter.DefaultProps = {
     i18n: localizedMessages,
     locale: 'en',
     defaultVisibleFilters: [],
@@ -66,13 +55,13 @@ class RootAddFilter extends Component<
   static getDefaultAddDropdownOptions = (children: React.ReactNode) => {
     const [filters] = RootAddFilter.getFilterPatternItems(children);
 
-    return filters.map(({ props }: { props: AddFilterItemProps }) => {
+    return filters.map(({ props }: { props: NSAddFilter.ItemProps }) => {
       const { name, displayName } = props;
       return { label: displayName ?? name, value: name };
     });
   };
 
-  constructor(props: AddFilterProps) {
+  constructor(props: NSAddFilter.Props) {
     super(props);
 
     this.state = {
@@ -109,13 +98,13 @@ class RootAddFilter extends Component<
     }, 20);
   }
 
-  getVisibleFilters(allFilters: React.ReactElement<AddFilterItemProps>[]) {
+  getVisibleFilters(allFilters: React.ReactElement<NSAddFilter.ItemProps>[]) {
     return this.asProps.visibleFilters.map((name) => {
       return allFilters.find(({ props }) => props.name === name);
     });
   }
 
-  getItemCommonProps(props: AddFilterItemProps) {
+  getItemCommonProps(props: NSAddFilter.ItemProps) {
     const { name } = props;
     const { filterData } = this.asProps;
 
@@ -132,11 +121,11 @@ class RootAddFilter extends Component<
     };
   }
 
-  getInputProps(props: AddFilterItemProps) {
+  getInputProps(props: NSAddFilter.ItemProps) {
     return this.getItemCommonProps(props);
   }
 
-  getDropdownAndSelectProps(props: AddFilterItemProps, isEmpty: () => boolean) {
+  getDropdownAndSelectProps(props: NSAddFilter.ItemProps, isEmpty: () => boolean) {
     const { setFocusRef, value, onClear } = this.getItemCommonProps(props);
     return {
       value,
@@ -155,7 +144,7 @@ class RootAddFilter extends Component<
     };
   }
 
-  getSelectProps(props: SelectItemProps) {
+  getSelectProps(props: NSAddFilter.Select.Props) {
     const isEmpty = () => {
       const { multiselect } = props;
       const { value } = this.getItemCommonProps(props);
@@ -165,7 +154,7 @@ class RootAddFilter extends Component<
     return this.getDropdownAndSelectProps(props, isEmpty);
   }
 
-  getDropdownProps(props: AddFilterItemProps) {
+  getDropdownProps(props: NSAddFilter.ItemProps) {
     const isEmpty = () => {
       const { value } = this.getItemCommonProps(props);
       return value == null;
@@ -237,18 +226,23 @@ class RootAddFilter extends Component<
   }
 
   render() {
-    const { Children } = this.asProps;
+    const { Children, filterData, getI18nText } = this.asProps;
     const [filters, persistentFilters] = RootAddFilter.getFilterPatternItems(Children);
     const VisibleFilteredChildren = this.getVisibleFilters(filters);
 
     const filtersSelectionDropdown = this.getFilterSelectionMenuProps();
-    const clearAllFiltersProps = this.getClearAllFiltersProps();
+    const hasFilterData = Object.values(filterData).filter((value) => (Array.isArray(value) ? value?.length : value)).length > 0;
+
     return (
       <Root render={Flex} gap={2} flexWrap>
         {persistentFilters}
         {VisibleFilteredChildren}
         <AddFilterDropdownMenu {...filtersSelectionDropdown} />
-        <ClearAllFilters {...clearAllFiltersProps} />
+        {hasFilterData && (
+          <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={() => this.clearAll()}>
+            {getI18nText('AddFilter.Button.Text')}
+          </Button>
+        )}
 
         <ScreenReaderOnly aria-live='polite' role='status'>
           {this.state.clearFiltersMessage}
@@ -296,15 +290,7 @@ const AddFilterDropdownMenu = React.forwardRef<HTMLButtonElement, AddFilterDropd
   },
 );
 
-function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFiltersButtonProps) {
-  return hasFilterData
-    ? (
-        <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
-          {getI18nText('AddFilter.Button.Text')}
-        </Button>
-      )
-    : null;
-}
+export type RootAddFilterType = typeof RootAddFilter;
 
 /**
  * AddFilter
@@ -312,8 +298,8 @@ function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFilte
  * {@link https://developer.semrush.com/intergalactic/filter-group/add-filter/add-filter-code|Examples}
  */
 const AddFilter = createComponent<
-  AddFilterType,
-  typeof RootAddFilter
+  NSAddFilter.Component,
+  RootAddFilterType
 >(RootAddFilter, {
   Select: AddFilterSelect,
   Input: AddFilterInput,

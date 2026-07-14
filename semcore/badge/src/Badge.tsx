@@ -1,4 +1,3 @@
-import type { NSBox } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
@@ -7,52 +6,14 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import logger from '@semcore/core/lib/utils/logger';
 import React from 'react';
 
+import type { NSBadge } from './Badge.type';
 import style from './style/badge.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type BadgeType = 'admin' | 'alpha' | 'beta' | 'new' | 'soon' | 'unavailable';
-
-export type BadgeMargins = {
-  m?: NSBox.Props['m'];
-  ml?: NSBox.Props['ml'];
-  mt?: NSBox.Props['mt'];
-  mr?: NSBox.Props['mr'];
-  mb?: NSBox.Props['mb'];
-  mx?: NSBox.Props['mx'];
-  my?: NSBox.Props['my'];
-};
-
-export type BadgeProps = BadgeMargins & {
-  /**
-   * Type of badge.
-   */
-  type?: BadgeType;
-  /**
-   * Flag to render inverted badge.
-   */
-  inverted?: boolean;
-
-  /**
-   * @deprecated. Use just type with predefined texts. You should not use badge with custom text inside.
-   */
-  children?: any;
-
-  /** Fill color
-   * @deprecated. Use just type property.
-   * @default gray-400
-   * */
-  bg?: 'mist' | 'cyan' | 'red' | 'orange' | 'green' | 'white' | string;
-
-  /** Text color
-   * @deprecated. Use just type property.
-   * @default white
-   * */
-  color?: 'white' | 'gray20' | string;
-};
-
-type BadgeComponent = Intergalactic.Component<'span', BadgeProps>;
-
-class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
+class RootBadge extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSBadge.Component>,
+  typeof RootBadge.enhance
+> {
   static displayName = 'Badge';
   static style = style;
   static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)] as const;
@@ -78,7 +39,7 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
     );
   }
 
-  private typedChildren(type: BadgeType): string {
+  private typedChildren(type: NSBadge.Type): string {
     const { getI18nText } = this.asProps;
 
     const badgeName = type[0].toUpperCase() + type.slice(1);
@@ -137,6 +98,6 @@ class RootBadge extends Component<BadgeProps, typeof RootBadge.enhance> {
  * {@link https://developer.semrush.com/intergalactic/components/badge/badge-api/|API} | {@link https://developer.semrush.com/intergalactic/components/badge/badge-code/|Examples}
  */
 export const Badge = createComponent<
-  BadgeComponent,
+  NSBadge.Component,
   typeof RootBadge
 >(RootBadge);

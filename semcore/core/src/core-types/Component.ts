@@ -152,6 +152,16 @@ export namespace Intergalactic {
   /** @private */
   // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
+    export type RemoveIndexSignature<T> = {
+      [K in keyof T as string extends K
+        ? never
+        : number extends K
+          ? never
+          : symbol extends K
+            ? never
+            : K]: T[K];
+    };
+
     type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
 
     export type ValidDefaultProps<DefaultProps, MergedProps> = {
@@ -170,18 +180,14 @@ export namespace Intergalactic {
           : never;
     };
 
-    type MergeChildProps<Root, Component> = {
-      [K in keyof Root | keyof Component]:
-      K extends keyof Root
-        ? K extends keyof Component
-          ? Root[K] & Component[K] extends never
-            ? Root[K] | Component[K]
-            : Root[K] & Component[K]
-          : Root[K]
-        : K extends keyof Component
-          ? Component[K]
-          : never
-    };
+    type MergeChildProps<Root, Component> =
+      Omit<Root, keyof Component> &
+      Omit<Component, keyof Root> &
+      {
+        [K in keyof Root & keyof Component]: [Root[K] & Component[K]] extends [never]
+          ? Root[K] | Component[K]
+          : Root[K] & Component[K];
+      };
 
     type InferPropsFromRoot<
       Root extends new (...args: any) => any,

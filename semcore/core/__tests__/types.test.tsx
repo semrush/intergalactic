@@ -28,6 +28,31 @@ describe('Core types', () => {
     // @ts-expect-error
     assertType<JSX.Element>(<Button tag={Link} xProp1={1} />);
   });
+  test('Child props same-key never collision falls back to union', () => {
+    class RootWithValue {
+      getValueProps() {
+        return {
+          rootOnly: 'root-only' as const,
+          shared: 'root' as const,
+        };
+      }
+    }
+    const ChildWithCollision = (_props: { childOnly: 'child'; shared: number }) => null;
+
+    type ChildProps = Intergalactic.InternalTypings.InferChildComponentProps<
+      typeof ChildWithCollision,
+      typeof RootWithValue,
+      'Value'
+    >;
+
+    assertType<ChildProps['rootOnly']>('root-only');
+    assertType<ChildProps['childOnly']>('child');
+    assertType<ChildProps['shared']>('root');
+    assertType<ChildProps['shared']>(1);
+
+    // @ts-expect-error
+    assertType<ChildProps['shared']>(false);
+  });
   test('Context', () => {
     const Button: Intergalactic.Component<'button', { xProp1: 1 }, { xContextProp2: 2 }> = any;
 

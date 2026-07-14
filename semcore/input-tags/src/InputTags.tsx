@@ -1,5 +1,5 @@
 import { ScrollArea, Portal, ScreenReaderOnly } from '@semcore/base-components';
-import { type NSScrollArea } from '@semcore/base-components';
+import type { NSScrollArea } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -15,7 +15,7 @@ import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponen
 import fire from '@semcore/core/lib/utils/fire';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Input, { type InputProps, type InputValueProps } from '@semcore/input';
+import Input, { type NSInput } from '@semcore/input';
 import Tag, { type NSTag, TagContainer } from '@semcore/tag';
 import React from 'react';
 
@@ -23,11 +23,11 @@ import style from './style/input-tag.shadow.css';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type InputTagsValueProps = InputValueProps & {};
+export type InputTagsValueProps = NSInput.Value.Props & {};
 
 export type InputTagsSize = 'l' | 'm';
 
-export type InputTagsProps = Omit<InputProps, 'size'> &
+export type InputTagsProps = Omit<NSInput.Props, 'size'> &
   NSScrollArea.Props & {
     /**
      * Component size

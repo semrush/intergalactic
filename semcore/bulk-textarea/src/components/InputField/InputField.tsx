@@ -1,5 +1,6 @@
 import { Box } from '@semcore/base-components';
 import type { NSPopper } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { Component, sstyled, Root } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -8,26 +9,18 @@ import DOMPurify from 'dompurify';
 import React from 'react';
 
 import style from './inputField.shadow.css';
-import type { InputFieldProps, ErrorItem } from './InputField.types';
+import type { BulkTextareaRootType } from '../../BulkTextarea';
+import type { NSBulktextarea } from '../../BulkTextarea.types';
 
-type IndexKeys = 'keyboardLineIndex' | 'mouseLineIndex';
-
-type State = {
-  [key in IndexKeys]: number;
-} & {
-  visibleErrorPopper: boolean;
-};
+type Props<T extends string | string[]> = Intergalactic.InternalTypings.InferChildComponentProps<NSBulktextarea.InputField.Component<T>, BulkTextareaRootType, 'InputField'>;
 
 class InputField<T extends string | string[]> extends Component<
-  InputFieldProps<T>,
+  Props<T>,
   typeof InputField.enhance,
-  {
-    value: null;
-    linesCount: null;
-    errorIndex: null;
-  },
+  NSBulktextarea.InputField.Handlers,
   {},
-  State
+  NSBulktextarea.InputField.State,
+  NSBulktextarea.InputField.DefaultProps
 > {
   static displayName = 'Textarea';
   static style = style;
@@ -76,7 +69,7 @@ class InputField<T extends string | string[]> extends Component<
     mouseLineIndex: -1,
   };
 
-  constructor(props: InputFieldProps<T>) {
+  constructor(props: Props<T>) {
     super(props);
 
     this.handlePaste = this.handlePaste.bind(this);
@@ -92,7 +85,7 @@ class InputField<T extends string | string[]> extends Component<
 
     this.textarea = this.createContentEditableElement(props);
 
-    this.observer = new MutationObserver((mutationsList, observer) => {
+    this.observer = new MutationObserver((mutationsList) => {
       for (const mutation of mutationsList) {
         if (mutation.type === 'characterData' || mutation.type === 'childList') {
           this.props.onImmediatelyChange?.(this.getValues(), this.textarea.textContent ?? '');
@@ -135,7 +128,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  componentDidUpdate(prevProps: InputFieldProps<T>, prevState: State): void {
+  componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state): void {
     const {
       value,
       errors,
@@ -153,7 +146,7 @@ class InputField<T extends string | string[]> extends Component<
       if (
         typeof value === 'string'
           ? value !== currentValue
-          : value.join(this.delimiter) !== currentValue
+          : value?.join(this.delimiter) !== currentValue
       ) {
         this.handleValueOutChange();
       }
@@ -161,8 +154,8 @@ class InputField<T extends string | string[]> extends Component<
 
     if (prevProps.showErrors !== showErrors || prevProps.errors !== errors) {
       if (showErrors) {
-        const errorsMap = new Map<number, ErrorItem>();
-        errors.forEach((error: ErrorItem) => {
+        const errorsMap = new Map<number, NSBulktextarea.ErrorItem>();
+        errors.forEach((error: NSBulktextarea.ErrorItem) => {
           errorsMap.set(error.lineIndex, error);
         });
 
@@ -238,7 +231,7 @@ class InputField<T extends string | string[]> extends Component<
         this.recalculateErrors();
       }
       this.recalculateLinesCount();
-      this.asProps.onChangeLineIndex(keyboardLineIndex);
+      this.asProps.onChangeLineIndex();
     }
   }
 
@@ -269,7 +262,7 @@ class InputField<T extends string | string[]> extends Component<
         : this.errorByInteraction === 'mouse'
           ? mouseLineIndex
           : -1;
-    let errorItem: ErrorItem | undefined = errors[errorIndex];
+    let errorItem: NSBulktextarea.ErrorItem | undefined = errors[errorIndex];
 
     if (currentLineIndex !== -1) {
       errorItem = errors.find((e) => e?.lineIndex === currentLineIndex);
@@ -292,7 +285,7 @@ class InputField<T extends string | string[]> extends Component<
     };
   }
 
-  createContentEditableElement(props: InputFieldProps<T>) {
+  createContentEditableElement(props: Props<T>) {
     const textarea = document.createElement('div');
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
@@ -330,7 +323,7 @@ class InputField<T extends string | string[]> extends Component<
   handleValueOutChange() {
     const { value, onChangeLinesCount } = this.props;
 
-    if (value === '') {
+    if (value === '' || value === undefined) {
       this.textarea.textContent = '';
       onChangeLinesCount(0);
     } else {
@@ -940,7 +933,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private recalculateErrors(): void {
-    const errors: ErrorItem[] = [];
+    const errors: NSBulktextarea.ErrorItem[] = [];
 
     this.textarea.childNodes.forEach((node, index) => {
       if (node instanceof HTMLParagraphElement && node.getAttribute('aria-invalid') === 'true') {
@@ -1025,7 +1018,10 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  private toggleErrorsPopper(key: IndexKeys, target?: unknown, timer?: number) {
+  private toggleErrorsPopper(
+    key: Exclude<keyof NSBulktextarea.InputField.State, 'visibleErrorPopper'>,
+    target?: unknown, timer?: number,
+  ) {
     if (target instanceof HTMLDivElement || target instanceof HTMLParagraphElement) {
       if (this.changeTriggerTimeout) {
         clearTimeout(this.changeTriggerTimeout);
@@ -1047,7 +1043,7 @@ class InputField<T extends string | string[]> extends Component<
         if (targetElement instanceof HTMLElement) {
           this.setState(
             (prevState) => {
-              const newState: State = {
+              const newState: NSBulktextarea.InputField.State = {
                 visibleErrorPopper:
                   this.isFocusing && Boolean(this.asProps.commonErrorMessage) ? true : isInvalidRow,
                 mouseLineIndex: prevState.mouseLineIndex,
@@ -1090,7 +1086,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private handleChangeErrorIndex(errorIndex: number): void {
-    const error: ErrorItem | undefined = this.asProps.errors[errorIndex];
+    const error: NSBulktextarea.ErrorItem | undefined = this.asProps.errors[errorIndex];
     const childNodes = this.textarea.childNodes;
 
     const node = error ? error.lineNode ?? childNodes.item(error.lineIndex) : null;
@@ -1302,4 +1298,3 @@ class InputField<T extends string | string[]> extends Component<
 }
 
 export { InputField };
-export type { InputFieldProps, ErrorItem };

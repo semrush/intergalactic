@@ -1,10 +1,10 @@
 import type { NSBox, NSFlex } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { ModalProps } from '@semcore/modal';
+import type { NSModal } from '@semcore/modal';
 import type { Text } from '@semcore/typography';
 
-export type FullscreenModalProps = ModalProps & {
+export type FullscreenModalProps = NSModal.Props & {
   /** Function that is invoked when hiding a component */
   onClose?: (
     trigger: 'onBackClick' | 'onCloseClick' | 'onEscape' | 'onOutsideClick',

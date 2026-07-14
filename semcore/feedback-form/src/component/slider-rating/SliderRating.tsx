@@ -1,4 +1,3 @@
-import type { NSBox, NSFlex } from '@semcore/base-components';
 import { Flex, Box } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled, type Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -6,51 +5,27 @@ import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
+import type { NSSliderRating } from './SliderRating.type';
 import style from '../../style/slider-rating.shadow.css';
-import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-
-type SliderRatingProps = {
-  value: number;
-  onChange?: (value: number) => void;
-  readonly?: boolean;
-};
-
-type SliderRatingDefaultProps = {
-  i18n: LocalizedMessages;
-  locale: 'en';
-};
-
-type State = {
-  hoveredIndex: number;
-  clickedIndex: number;
-};
-
-type StarProps = NSBox.Props & {
-  filled?: boolean;
-};
-
-type SliderRatingComponent = Intergalactic.Component<NSFlex.Component, SliderRatingProps> & {
-  Star: Intergalactic.Component<NSBox.Component, StarProps>;
-};
 
 const MIN = 1;
 const MAX = 5;
 
 class SliderRatingRoot extends Component<
-  SliderRatingProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSSliderRating.Component>,
   typeof SliderRatingRoot.enhance,
   {},
   WithI18nEnhanceProps,
-  State,
-  SliderRatingDefaultProps
+  NSSliderRating.State,
+  NSSliderRating.DefaultProps
 > {
   static displayName = 'SliderRating';
   static style = style;
 
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 
-  state: State = {
+  state: NSSliderRating.State = {
     hoveredIndex: -1,
     clickedIndex: -1,
   };
@@ -195,7 +170,7 @@ class SliderRatingRoot extends Component<
   }
 }
 
-function Star(props: StarProps) {
+function Star(props: Intergalactic.InternalTypings.InferChildComponentProps<NSSliderRating.Star.Component, typeof SliderRatingRoot, 'Star'>) {
   const SStar = Root;
   return sstyled(props.styles)(
     <SStar
@@ -225,7 +200,7 @@ function Star(props: StarProps) {
 Star.displayName = 'Star';
 
 const SliderRating = createComponent<
-  SliderRatingComponent,
+  NSSliderRating.Component,
   typeof SliderRatingRoot
 >(SliderRatingRoot, {
   Star,

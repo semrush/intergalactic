@@ -357,13 +357,13 @@ importers:
         specifier: ^17.3.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^17.3.0
+        specifier: ^17.3.1
         version: link:../dropdown-menu
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/select':
-        specifier: ^17.3.0
+        specifier: ^17.4.0
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -562,7 +562,7 @@ importers:
         specifier: ^17.2.1
         version: link:../button
       '@semcore/modal':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../modal
     devDependencies:
       '@semcore/base-components':
@@ -606,7 +606,7 @@ importers:
         specifier: ^17.3.0
         version: link:../dropdown
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
     devDependencies:
       '@semcore/base-components':
@@ -829,7 +829,7 @@ importers:
         specifier: ^17.3.0
         version: link:../dropdown
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/input-mask':
         specifier: ^17.2.1
@@ -1000,7 +1000,7 @@ importers:
   semcore/feature-highlight:
     dependencies:
       '@semcore/badge':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../badge
       '@semcore/base-trigger':
         specifier: ^17.2.1
@@ -1012,10 +1012,10 @@ importers:
         specifier: ^17.2.1
         version: link:../checkbox
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/notice':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../notice
       '@semcore/pills':
         specifier: ^17.2.1
@@ -1024,7 +1024,7 @@ importers:
         specifier: ^17.2.1
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.3.0
+        specifier: ^17.4.0
         version: link:../select
       '@semcore/switch':
         specifier: ^17.2.1
@@ -1086,16 +1086,16 @@ importers:
         specifier: ^17.0.1
         version: link:../illustration
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/link':
         specifier: ^17.2.1
         version: link:../link
       '@semcore/modal':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../modal
       '@semcore/notice':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: ^17.2.1
@@ -1104,7 +1104,7 @@ importers:
         specifier: ^17.2.1
         version: link:../spin-container
       '@semcore/textarea':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../textarea
       '@semcore/tooltip':
         specifier: ^17.2.1
@@ -1172,7 +1172,7 @@ importers:
         specifier: ^17.2.1
         version: link:../button
       '@semcore/modal':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../modal
       '@semcore/typography':
         specifier: ^17.2.1
@@ -1267,10 +1267,10 @@ importers:
         specifier: ^17.2.1
         version: link:../button
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/input-number':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input-number
       '@semcore/spin':
         specifier: ^17.2.1
@@ -1310,7 +1310,7 @@ importers:
   semcore/input-mask:
     dependencies:
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       text-mask-core:
         specifier: 5.1.2
@@ -1329,7 +1329,7 @@ importers:
   semcore/input-number:
     dependencies:
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
     devDependencies:
       '@semcore/base-components':
@@ -1345,7 +1345,7 @@ importers:
   semcore/input-tags:
     dependencies:
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/tag':
         specifier: ^17.2.1
@@ -1479,10 +1479,10 @@ importers:
         specifier: ^17.2.1
         version: link:../button
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/input-number':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input-number
       '@semcore/link':
         specifier: ^17.2.1
@@ -1580,11 +1580,14 @@ importers:
         specifier: ^17.3.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^17.3.0
+        specifier: ^17.3.1
         version: link:../dropdown-menu
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
+      '@semcore/spin':
+        specifier: ^17.2.1
+        version: link:../spin
       '@semcore/typography':
         specifier: ^17.2.1
         version: link:../typography
@@ -1769,10 +1772,10 @@ importers:
         specifier: ^17.2.1
         version: link:../button
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/select':
-        specifier: ^17.3.0
+        specifier: ^17.4.0
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -1824,10 +1827,10 @@ importers:
         specifier: ^17.2.1
         version: link:../accordion
       '@semcore/add-filter':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../add-filter
       '@semcore/badge':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../badge
       '@semcore/base-components':
         specifier: ^17.2.1
@@ -1836,7 +1839,7 @@ importers:
         specifier: ^17.2.1
         version: link:../base-trigger
       '@semcore/breadcrumbs':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
         specifier: ^17.2.1
@@ -1848,7 +1851,7 @@ importers:
         specifier: ^17.2.1
         version: link:../card
       '@semcore/carousel':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../carousel
       '@semcore/checkbox':
         specifier: ^17.2.1
@@ -1884,7 +1887,7 @@ importers:
         specifier: ^17.3.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: ^17.3.0
+        specifier: ^17.3.1
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: ^17.2.1
@@ -1899,13 +1902,13 @@ importers:
         specifier: ^17.2.1
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../feedback-form
       '@semcore/flags':
         specifier: ^17.1.1
         version: link:../flags
       '@semcore/fullscreen-modal':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../fullscreen-modal
       '@semcore/icon':
         specifier: ^17.2.0
@@ -1917,16 +1920,16 @@ importers:
         specifier: ^17.2.1
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../inline-input
       '@semcore/input':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input
       '@semcore/input-mask':
         specifier: ^17.2.1
         version: link:../input-mask
       '@semcore/input-number':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../input-number
       '@semcore/input-tags':
         specifier: ^17.2.1
@@ -1938,10 +1941,10 @@ importers:
         specifier: ^17.2.1
         version: link:../mini-chart
       '@semcore/modal':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../modal
       '@semcore/notice':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: ^17.2.1
@@ -1962,13 +1965,13 @@ importers:
         specifier: ^17.2.1
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.3.0
+        specifier: ^17.4.0
         version: link:../select
       '@semcore/side-panel':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../skeleton
       '@semcore/slider':
         specifier: ^17.2.1
@@ -1992,10 +1995,10 @@ importers:
         specifier: ^17.2.1
         version: link:../tag
       '@semcore/textarea':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: ^17.2.1
@@ -2007,7 +2010,7 @@ importers:
         specifier: ^17.2.1
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: ^17.3.0
+        specifier: ^17.3.1
         version: link:../wizard
       react:
         specifier: 16.8 - 19
@@ -2063,7 +2066,7 @@ importers:
         specifier: ^17.2.1
         version: link:../button
       '@semcore/modal':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../modal
       '@semcore/typography':
         specifier: ^17.2.1

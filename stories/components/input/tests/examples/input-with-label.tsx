@@ -3,7 +3,7 @@ import type { NSBox } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import Counter from '@semcore/ui/counter';
 import Input from '@semcore/ui/input';
-import type { InputProps, InputValueProps } from '@semcore/ui/input';
+import type { NSInput } from '@semcore/ui/input';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -16,7 +16,7 @@ const options = Array(6)
     children: `Option ${index}`,
   }));
 
-type WithLabelExampleProps = InputProps & InputValueProps & NSBox.Props;
+type WithLabelExampleProps = NSInput.Props & NSInput.Value.Props & NSBox.Props;
 const Demo = (props: WithLabelExampleProps) => {
   return (
     <Flex direction='row' gap={2} data-testid='wrap'>
