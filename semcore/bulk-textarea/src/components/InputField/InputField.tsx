@@ -78,6 +78,7 @@ class InputField<T extends string | string[]> extends Component<
   constructor(props: Props<T>) {
     super(props);
 
+    this.handlePaste = this.handlePaste.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
@@ -403,6 +404,10 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
+  handlePaste(event: ClipboardEvent) {
+    this.insertFromPaste(event);
+  }
+
   handleChange(event: InputEvent) {
     this.history.push(this.createHistoryState());
     switch (event.inputType) {
@@ -411,8 +416,8 @@ class InputField<T extends string | string[]> extends Component<
         break;
       }
       case 'insertFromPaste': {
-        this.insertFromPaste(event);
-        break;
+        // handled by 'paste' event
+        return;
       }
       case 'insertParagraph': {
         this.insertParagraph(event);
@@ -741,10 +746,11 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  private insertFromPaste(event: InputEvent) {
+  private insertFromPaste(event: ClipboardEvent) {
     event.preventDefault();
     const { validateOn } = this.asProps;
-    const value = event.dataTransfer?.getData('text/plain');
+    const value = event.clipboardData?.getData('text/plain');
+
     const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
 
     if (listOfNodes.length === 0) return;
@@ -1229,6 +1235,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private addEventListeners(textarea: HTMLElement) {
+    textarea.addEventListener('paste', this.handlePaste);
     textarea.addEventListener('beforeinput', this.handleChange);
     textarea.addEventListener('focus', this.handleFocus);
     textarea.addEventListener('blur', this.handleBlur);
@@ -1242,6 +1249,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private removeEventListeners(textarea: HTMLElement) {
+    textarea.removeEventListener('paste', this.handlePaste);
     textarea.removeEventListener('beforeinput', this.handleChange);
     textarea.removeEventListener('focus', this.handleFocus);
     textarea.removeEventListener('blur', this.handleBlur);
