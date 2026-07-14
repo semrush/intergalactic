@@ -7,7 +7,7 @@ SPills {
 
   SPill[selected] {
     background: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039)); /* TODO: --intergalactic-control-pills-bg-selected */
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: --intergalactic-control-pills-border-selected */
+    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: --intergalactic-box-shadow-pills-item-selected */
     z-index: 3;
   }
   SPill:focus-visible, SPill[selected] {
@@ -81,8 +81,8 @@ SAddon {
 }
 
 SPill[size='m'] {
-  height: var(--intergalactic-form-control-m, 28px);
-  min-width: var(--intergalactic-form-control-m, 28px);
+  height: var(--intergalactic-form-control-m, 32px);
+  min-width: var(--intergalactic-form-control-m, 32px);
   font-size: var(--intergalactic-fs-200, 14px);
 
   & SText {
@@ -107,8 +107,8 @@ SPill[size='m'] {
 }
 
 SPill[size='l'] {
-  height: var(--intergalactic-form-control-l, 40px);
-  min-width: var(--intergalactic-form-control-l, 40px);
+  height: var(--intergalactic-form-control-l, 44px);
+  min-width: var(--intergalactic-form-control-l, 44px);
   font-size: var(--intergalactic-fs-300, 16px);
 
   & SText {

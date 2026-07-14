@@ -921,5 +921,21 @@
   {
     "name": "--intergalactic-radio-bg-selected",
     "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-text-link",
+    "value": "oklch(0.1 0.03 137 / 0.899)"
+  },
+  {
+    "name": "--intergalactic-text-link-hover-active",
+    "value": "oklch(0.1 0.03 137 / 0.899)"
+  },
+  {
+    "name": "--intergalactic-text-link-invert",
+    "value": "oklch(0.999 0.001 180 / 0.949)"
+  },
+  {
+    "name": "--intergalactic-text-link-invert-hover",
+    "value": "oklch(0.999 0.001 180 / 0.949)"
   }
 ]

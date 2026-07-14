@@ -88,8 +88,8 @@ SPlusButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: var(--intergalactic-form-control-m, 32px);
+  height: var(--intergalactic-form-control-m, 32px);
   border-radius: 50%;
   cursor: pointer;
 

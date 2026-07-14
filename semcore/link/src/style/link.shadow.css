@@ -1,7 +1,7 @@
 SLink {
   display: inline;
   align-items: center;
-  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+  color: var(--intergalactic-text-link, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary */
   position: relative;
   cursor: pointer;
   text-decoration: none;
@@ -17,7 +17,7 @@ SLink {
   &[active],
   &:hover,
   &:active {
-    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
+    color: var(--intergalactic-text-link-hover-active, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary-hover-active */
 
     & SText {
       text-decoration-color: currentColor;
@@ -26,7 +26,7 @@ SLink {
 
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--intergalactic-text-link-visited, oklch(0.53 0.26 296));
+    color: var(--intergalactic-text-link-visited, oklch(0.23 0.113 296));
   }
 }
 

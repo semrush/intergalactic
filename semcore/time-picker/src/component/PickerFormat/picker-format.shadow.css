@@ -35,7 +35,7 @@ SPickerFormat {
 }
 
 SPickerFormat[size='m'] {
-  height: var(--intergalactic-form-control-m, 28px);
+  height: var(--intergalactic-form-control-m, 32px);
   font-size: var(--intergalactic-fs-200, 14px);
   /* disable-tokens-validator */
   margin: 0 -1px 0 0;
@@ -45,7 +45,7 @@ SPickerFormat[size='m'] {
 }
 
 SPickerFormat[size='l'] {
-  height: var(--intergalactic-form-control-l, 40px);
+  height: var(--intergalactic-form-control-l, 44px);
   font-size: var(--intergalactic-fs-300, 16px);
   margin: 0 -1px 0 0;
   & SPickerFormatText {
