@@ -9,7 +9,7 @@ function FadeInOut(props: Intergalactic.InternalTypings.InferComponentProps<NSAn
   return sstyled(style)(
     <Animation
       // `ref` is overriden by spread props.
-      // @ts-ignore
+      // @ts-expect-error
       ref={ref}
       {...props}
       keyframes={[style['@fade-in-out-enter'], style['@fade-in-out-exit']]}

@@ -12,7 +12,7 @@ function Transform(props: Intergalactic.InternalTypings.InferComponentProps<NSAn
   return sstyled(style)(
     <Animation
       // `ref` is overriden by spread props.
-      // @ts-ignore
+      // @ts-expect-error
       ref={ref}
       {...other}
       transformStart={transform[0]}

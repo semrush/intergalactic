@@ -66,7 +66,7 @@ function Collapse(
   return sstyled(style)(
     <SCollapse
       // `ref` is overriden by spread props.
-      // @ts-ignore
+      // @ts-expect-error
       ref={forkedRef}
       {...restProps}
       onAnimationStart={handleAnimationStart}

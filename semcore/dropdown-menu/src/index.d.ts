@@ -9,7 +9,7 @@ import type {
   StatusItemComponent,
 } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
-import type { Text } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 import type { VirtualList, RenderRowProps } from './components/VirtualList';
 
@@ -149,7 +149,7 @@ declare const DropdownMenu: Intergalactic.Component<
   > & {
     Addon: NSBox.Component;
     Content: NSFlex.Component;
-    Text: typeof Text;
+    Text: NSText.Component;
     Hint: NSFlex.Component;
   };
 

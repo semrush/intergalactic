@@ -613,8 +613,8 @@ function Trigger(
     if (!active) return;
     return () => {
       setTimeout(() => {
-        if (activeRef.current) return;
-        if (popperRef.current === null || !isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
+        if (activeRef.current || popperRef.current === null) return;
+        if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
         if (!lastInteraction.isKeyboard()) return;
 
         if (triggerRef.current) {

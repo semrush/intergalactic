@@ -10,7 +10,7 @@ function Slide(props: Intergalactic.InternalTypings.InferComponentProps<NSAnimat
   return sstyled(style)(
     <Animation
       // `ref` is overriden by spread props.
-      // @ts-ignore
+      // @ts-expect-error
       ref={ref}
       {...props}
       keyframes={[

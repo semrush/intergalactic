@@ -35,7 +35,7 @@ function Scale(props: Intergalactic.InternalTypings.InferComponentProps<NSAnimat
   return sstyled(style)(
     <Animation
       // `ref` is overriden by spread props.
-      // @ts-ignore
+      // @ts-expect-error
       ref={forkedRef}
       {...props}
       keyframes={[style[`@${keyframesKey}-in`], style[`@${keyframesKey}-out`]]}
