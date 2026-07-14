@@ -81,17 +81,17 @@ const Demo = (props: ExampleProps) => {
 };
 
 export const defaultProps: ExampleProps = {
-  autoFocus: true,
-  placement: undefined,
-  timeout: undefined,
-  disablePortal: true,
-  explicitTriggerSet: false,
-  popperMargin: undefined,
-  closeIcon: true,
-  duration: undefined,
-  theme: 'accent',
-  disableEnforceFocus: true,
-
+  'autoFocus': true,
+  'placement': undefined,
+  'timeout': undefined,
+  'disablePortal': true,
+  'explicitTriggerSet': false,
+  'popperMargin': undefined,
+  'closeIcon': true,
+  'duration': undefined,
+  'theme': 'accent',
+  'disableEnforceFocus': true,
+  'aria-label': 'label',
 };
 
 Demo.defaultProps = defaultProps;
