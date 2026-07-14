@@ -13,6 +13,7 @@ SInputField>ol {
   word-wrap: break-word;
   word-break: break-word;
   font-family: inherit;
+  margin: 0;
 
   &:empty::before {
     content: '1. ' attr(placeholder);
