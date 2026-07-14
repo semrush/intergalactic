@@ -1,4 +1,5 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -7,56 +8,31 @@ import uniqueIDEnhance from '@semcore/core/lib/utils/uniqueID';
 import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
-import type { DragAndDropComponent, DragAndDropProps, DropZoneProps, DragAndDropDefaultProps } from './DragAndDrop.type';
+import type { NSDragAndDrop } from './DragAndDrop.type';
 import style from './style/drag-and-drop.shadow.css';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-type AttachDetails = {
-  index: number;
-  children: React.ReactNode;
-  node: HTMLElement;
-  id: string;
-  draggingAllowed: boolean;
-  isDropZone?: boolean;
-  zoneName?: string;
-};
 
 const noop: (...args: any[]) => any = () => {
   /* do nothing */
 };
 const DragAndDropContext = React.createContext<{
-  attach: (details: AttachDetails) => void;
+  attach: (details: NSDragAndDrop.AttachDetails) => void;
   detach: (index: number) => void;
 }>({
       attach: noop,
       detach: noop,
     });
 
-type State = {
-  items: Array<Omit<AttachDetails, 'index'> | undefined>;
-  dragging: null | {
-    index: number;
-    initialItemsRects: Array<{ x: number; y: number; width: number; height: number } | undefined>;
-    placeholder: HTMLElement | null;
-  };
-  dragOver: number | null;
-  hideHoverEffect: boolean;
-  a11yHint: string | null;
-  keyboardDraggingIndex: number | null;
-  animatedScaling: number | null;
-  reversedScaling: boolean;
-};
-
 type A11yHintKeys = keyof LocalizedMessages['en'];
 
 class DragAndDropRoot extends Component<
-  DragAndDropProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSDragAndDrop.Component>,
   typeof DragAndDropRoot.enhance,
   {},
   WithI18nEnhanceProps,
-  State,
-  DragAndDropDefaultProps
+  NSDragAndDrop.State,
+  NSDragAndDrop.DefaultProps
 > {
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()] as const;
@@ -67,7 +43,7 @@ class DragAndDropRoot extends Component<
 
   static style = style;
 
-  state: State = {
+  state: NSDragAndDrop.State = {
     items: [],
     dragging: null,
     dragOver: null,
@@ -126,7 +102,7 @@ class DragAndDropRoot extends Component<
     const yOffset = this.asProps.scrollableContainerRef?.current?.scrollTop ?? 0;
     const xOffset = this.asProps.scrollableContainerRef?.current?.scrollLeft ?? 0;
 
-    this.setState((prevState: State) => ({
+    this.setState((prevState: NSDragAndDrop.State) => ({
       dragging: {
         index,
         initialItemsRects: prevState.items.map((item) => {
@@ -259,7 +235,11 @@ class DragAndDropRoot extends Component<
       }
 
       const fromNode = items[dragging.index];
-      if (fromNode) {
+      if (
+        fromNode &&
+        fromNode.id !== undefined &&
+        currentItem.id !== undefined
+      ) {
         onDnD({
           fromId: fromNode.id,
           fromIndex: dragging.index,
@@ -501,8 +481,8 @@ class DragAndDropRoot extends Component<
     }
   };
 
-  attach = ({ index, children, node, id, draggingAllowed, zoneName, isDropZone }: AttachDetails) => {
-    this.setState((prevState: State) => {
+  attach = ({ index, children, node, id, draggingAllowed, zoneName, isDropZone }: NSDragAndDrop.AttachDetails) => {
+    this.setState((prevState: NSDragAndDrop.State) => {
       if (prevState.items[index]?.children === children && prevState.items[index]?.node === node) return prevState;
       const { items } = prevState;
       items[index] = { children, node, id, draggingAllowed, zoneName, isDropZone };
@@ -511,7 +491,7 @@ class DragAndDropRoot extends Component<
   };
 
   detach = (index: number) => {
-    this.setState((prevState: State) => {
+    this.setState((prevState: NSDragAndDrop.State) => {
       if (!prevState.items[index]) return prevState;
       const { items } = prevState;
       items[index] = undefined;
@@ -554,7 +534,7 @@ class DragAndDropRoot extends Component<
     document.removeEventListener('keydown', this.handlePageKeyDown, { capture: true });
   }
 
-  componentDidUpdate(prevProps: DragAndDropProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     if (prevProps.customFocus !== this.asProps.customFocus) {
       const itemIndex = this.getCustomFocusItemIndex(this.asProps.customFocus);
       if (this.state.items[itemIndex!]) this.handleItemFocus();
@@ -585,7 +565,18 @@ class DragAndDropRoot extends Component<
   }
 }
 
-function Draggable(props: any) {
+function Draggable(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSDragAndDrop.Draggable.Component,
+    typeof DragAndDropRoot,
+    'Draggable'
+  > & {
+    // Passed from DropZone.
+    noDrag?: boolean;
+    // Passed from DropZone.
+    isDropZone?: boolean;
+  },
+) {
   const SDraggable = Root;
   const ref = React.useRef();
   const { attach, detach } = React.useContext(DragAndDropContext);
@@ -601,9 +592,10 @@ function Draggable(props: any) {
     isDropZone = false,
     uid,
     isCustomFocus = false,
-    keyboardFocused,
   } = props;
+
   const resolvedChildren = React.useMemo(
+    // @ts-expect-error
     () => (typeof children === 'function' ? children(props) : children),
     [children, props],
   );
@@ -629,7 +621,7 @@ function Draggable(props: any) {
       placement={placement}
       role='group'
       aria-describedby={`describe-draggable-${uid}`}
-      use:keyboardFocused={isCustomFocus ? false : keyboardFocused}
+      use:keyboardFocused={isCustomFocus || false}
       tabIndex={0}
     >
       <Children />
@@ -698,7 +690,9 @@ const findNextRectangleIndex = <
   return rectangles.indexOf(candidate!);
 };
 
-function DropZone(props: DropZoneProps) {
+function DropZone(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSDragAndDrop.DropZone.Component>,
+) {
   const SDropZone = Root;
   const { styles } = props;
 
@@ -713,7 +707,7 @@ function DropZone(props: DropZoneProps) {
  * {@link https://developer.semrush.com/intergalactic/components/drag-and-drop/drag-and-drop-api/|API} | {@link https://developer.semrush.com/intergalactic/components/drag-and-drop/drag-and-drop-code/|Examples}
  */
 const DragAndDrop = createComponent<
-  DragAndDropComponent,
+  NSDragAndDrop.Component,
   typeof DragAndDropRoot
 >(DragAndDropRoot, {
   Draggable,
