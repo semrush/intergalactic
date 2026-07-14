@@ -4,11 +4,11 @@ import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcor
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
-import type { FeaturePopoverPopperProps, FeaturePopoverProps } from '@semcore/ui/feature-popover';
+import type { NSFeaturePopover } from '@semcore/ui/feature-popover';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleProps = FeaturePopoverProps & FeaturePopoverPopperProps & PopperProps & PopperTriggerProps & PopperPopperProps;
+type ExampleProps = NSFeaturePopover.Props & NSFeaturePopover.Popper.Props & PopperProps & PopperTriggerProps & PopperPopperProps;
 const Demo = (props: ExampleProps) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);

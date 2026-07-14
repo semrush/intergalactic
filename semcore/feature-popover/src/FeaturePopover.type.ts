@@ -10,132 +10,165 @@ import type {
   BoxProps,
   OutsideClickProps,
   PortalProps,
-  Box, PopperContext, PopperPopperProps, Placement, Popper } from '@semcore/base-components';
+  Box,
+  PopperProps,
+  PopperContext,
+  PopperPopperProps,
+  Placement,
+  Popper,
+} from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type React from 'react';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-/**
- * Popper must have an accessible names (aria-group-name).
- */
-type AriaProps = Intergalactic.RequireAtLeastOne<{
-  'aria-label'?: string;
-  'aria-labelledby'?: string;
-  'title'?: string;
-}>;
+declare namespace NSFeaturePopover {
+  type Props = OutsideClickProps &
+    PortalProps &
+    UniqueIDProps &
+    AnimationProps & {
+      /**
+       * Popper can have different positioning options
+       * @default absolute
+       */
+      strategy?: PositioningStrategy;
+      /**
+       * Modifiers for popper.js
+       */
+      modifiers?: Array<Partial<Modifier<any, any>>>;
+      /** Timer to show and hide the popper */
+      timeout?: number | [number, number];
+      /** PopperJS modifier settings for popper indent */
+      offset?: Partial<OptionsOffset> | number | [number, number];
+      /** PopperJS modifier settings for finding borders */
+      preventOverflow?: Partial<OptionsPreventOverflow>;
+      /** PopperJS modifier settings responsible for the arrow */
+      arrow?: Partial<OptionsArrow>;
+      /** PopperJS modifier settings responsible for turning the popper when there is not enough space */
+      flip?: Partial<OptionsFlip>;
+      /** PopperJS modifier settings for applying styles */
+      computeStyles?: Partial<OptionsComputeStyles>;
+      /** PopperJS modifier settings responsible for subscribing to global events */
+      eventListeners?: Partial<OptionsEventListeners>;
+      /** @ignore */
+      onFirstUpdate?: Options['onFirstUpdate'];
+      /**
+       * Flag for disable Popover (if true, it will close Popper and it will not respond to handlers)
+       * @default false
+       */
+      disabled?: boolean;
+      /**
+       * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
+       */
+      explicitTriggerSet?: boolean;
 
-export type FeaturePopoverPopperProps = PopperPopperProps & {
-  /**
-   * The property responsible for the visibility of the closing icon
-   * @default false
-   */
-  closeIcon?: boolean;
-  /** Animation display duration in `ms`
-   * @default 200
-   */
-  duration?: number;
-  /** Specifies the locale for i18n support */
-  locale?: string;
-};
+      popperMargin?: number;
 
-export type FeaturePopoverPopperInnerProps = {
-  theme: FeaturePopoverProps['theme'];
-
-  visible: boolean;
-
-  $onCloseClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
-  animationsDisabled: boolean;
-  getI18nText: (message: string, opts?: Record<string, unknown>) => string;
-  autofocus: boolean;
-};
-
-export type FeaturePopoverContext = PopperContext & {
-  getSpotProps: PropGetterFn;
-};
-
-export type FPPopperProps = OutsideClickProps &
-  PortalProps &
-  UniqueIDProps &
-  AnimationProps & {
-    /**
-     * Popper can have different positioning options
-     * @default absolute
-     */
-    strategy?: PositioningStrategy;
-    /**
-     * Modifiers for popper.js
-     */
-    modifiers?: Array<Partial<Modifier<any, any>>>;
-    /** Timer to show and hide the popper */
-    timeout?: number | [number, number];
-    /** PopperJS modifier settings for popper indent */
-    offset?: Partial<OptionsOffset> | number | [number, number];
-    /** PopperJS modifier settings for finding borders */
-    preventOverflow?: Partial<OptionsPreventOverflow>;
-    /** PopperJS modifier settings responsible for the arrow */
-    arrow?: Partial<OptionsArrow>;
-    /** PopperJS modifier settings responsible for turning the popper when there is not enough space */
-    flip?: Partial<OptionsFlip>;
-    /** PopperJS modifier settings for applying styles */
-    computeStyles?: Partial<OptionsComputeStyles>;
-    /** PopperJS modifier settings responsible for subscribing to global events */
-    eventListeners?: Partial<OptionsEventListeners>;
-    /** @ignore */
-    onFirstUpdate?: Options['onFirstUpdate'];
-    /**
-     * Flag for disable Popover (if true, it will close Popper and it will not respond to handlers)
-     * @default false
-     */
-    disabled?: boolean;
-    /**
-     * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
-     */
-    explicitTriggerSet?: boolean;
-
-    popperMargin?: number;
+      /** Popper visibility value */
+      visible?: boolean;
+      /** Function called when visibility changes */
+      onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
+      /**
+       * The position of the popper relative to the trigger that called it.
+       * @default auto
+       */
+      placement?: Placement;
+      /**
+       * The theme of FeaturePopover
+       * @default accent
+       */
+      theme?: 'accent' | 'neutral';
+    };
+  type DefaultProps = {
+    offset: NSFeaturePopover.Props['offset'];
+    placement: 'bottom-start';
+    defaultVisible: false;
+    onOutsideClick: () => void;
+    interaction: 'none';
+    i18n: LocalizedMessages;
+    locale: 'en';
+    theme: 'accent';
+  };
+  type InternalProps = WithI18nEnhanceProps & {
+    interaction?: PopperProps['interaction'];
+  };
+  type Handlers = {
+    visible: null;
+  };
+  type Ctx = PopperContext & {
+    getSpotProps: PropGetterFn;
   };
 
-export type FeaturePopoverProps = FPPopperProps & {
-  /** Popper visibility value */
-  visible?: boolean;
-  /** Function called when visibility changes */
-  onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
-  /**
-   * The position of the popper relative to the trigger that called it.
-   * @default auto
-   */
-  placement?: Placement;
-  /**
-   * The theme of FeaturePopover
-   * @default accent
-   */
-  theme?: 'accent' | 'neutral';
-};
+  namespace Trigger {
+    type Props = BoxProps & {
+      theme?: NSFeaturePopover.Props['theme'];
+    };
 
-export type FeaturePopoverDefaultProps = {
-  offset: FPPopperProps['offset'];
-  placement: 'bottom-start';
-  defaultVisible: false;
-  onOutsideClick: () => void;
-  interaction: 'none';
-  i18n: LocalizedMessages;
-  locale: 'en';
-  theme: 'accent';
-};
+    type Component = Intergalactic.Component<typeof Popper.Trigger, Props>;
+  }
 
-export type FeaturePopoverTriggerProps = BoxProps & {
-  theme?: FeaturePopoverProps['theme'];
-};
+  namespace Popper {
+    type Props = PopperPopperProps &
+      /**
+       * Popper must have an accessible names (aria-group-name).
+       */
+      Intergalactic.RequireAtLeastOne<{
+        'aria-label'?: string;
+        'aria-labelledby'?: string;
+        'title'?: string;
+      }> & {
+        /**
+         * The property responsible for the visibility of the closing icon
+         * @default false
+         */
+        closeIcon?: boolean;
+        /** Animation display duration in `ms`
+         * @default 200
+         */
+        duration?: number;
+        /** Specifies the locale for i18n support */
+        locale?: string;
+        /**
+         * Disable animation
+         * @deprecated
+         */
+        animationsDisabled?: boolean;
+      };
 
-export type FeaturePopoverSpotProps = {
-  visible?: boolean;
-  theme?: FeaturePopoverProps['theme'];
-};
+    type Component = Intergalactic.Component<'div', Props>;
+  }
 
-export type FeaturePopoverComponent = Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
-  Trigger: Intergalactic.Component<typeof Popper.Trigger, FeaturePopoverTriggerProps>;
-  Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
-  Spot: Intergalactic.Component<typeof Box, FeaturePopoverSpotProps>;
-};
+  namespace Spot {
+    type Props = {
+      visible?: boolean;
+      theme?: NSFeaturePopover.Props['theme'];
+    };
+
+    type Component = Intergalactic.Component<typeof Box, Props>;
+  }
+
+  type Component = Intergalactic.Component<'div', Props, Ctx> & {
+    Trigger: Trigger.Component;
+    Popper: Popper.Component;
+    Spot: Spot.Component;
+  };
+}
+
+/** @deprecated It will be removed in v18. */
+export type FeaturePopoverPopperProps = NSFeaturePopover.Popper.Props;
+/** @deprecated It will be removed in v18. */
+export type FeaturePopoverContext = NSFeaturePopover.Ctx;
+/** @deprecated It will be removed in v18. */
+export type FeaturePopoverProps = NSFeaturePopover.Props;
+/** @deprecated It will be removed in v18. */
+export type FeaturePopoverDefaultProps = NSFeaturePopover.DefaultProps;
+/** @deprecated It will be removed in v18. */
+export type FeaturePopoverTriggerProps = NSFeaturePopover.Trigger.Props;
+/** @deprecated It will be removed in v18. */
+export type FeaturePopoverSpotProps = NSFeaturePopover.Spot.Props;
+/** @deprecated It will be removed in v18. */
+export type FeaturePopoverComponent = NSFeaturePopover.Component;
+
+export type { NSFeaturePopover };
