@@ -8,7 +8,10 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Tooltip from '@semcore/tooltip';
 import DOMPurify from 'dompurify';
 import React from 'react';
+import { extractComponentSectionObject } from 'storybook/internal/docs-tools';
 
+import type { HistoryState } from './History';
+import { History } from './History';
 import style from './inputField.shadow.css';
 import type { BulkTextareaRootType } from '../../BulkTextarea';
 import type { NSBulktextarea } from '../../BulkTextarea.types';
@@ -65,6 +68,8 @@ class InputField<T extends string | string[]> extends Component<
 
   observer: MutationObserver;
 
+  history: History = new History();
+
   state = {
     visibleErrorPopper: false,
     keyboardLineIndex: -1,
@@ -105,12 +110,12 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   componentDidMount() {
-    const { autoFocus, disabled } = this.asProps;
+    const { value, autoFocus, disabled } = this.asProps;
 
     this.textarea = this.createContentEditableElement(this.asProps);
     this.containerRef.current?.append(this.textarea);
 
-    this.handleValueOutChange();
+    this.handleValueOutChange(value);
 
     const config = {
       childList: true,
@@ -150,7 +155,7 @@ class InputField<T extends string | string[]> extends Component<
           ? value !== currentValue
           : value?.join(this.delimiter) !== currentValue
       ) {
-        this.handleValueOutChange();
+        this.handleValueOutChange(value);
       }
     }
 
@@ -324,8 +329,8 @@ class InputField<T extends string | string[]> extends Component<
     return textarea;
   }
 
-  handleValueOutChange() {
-    const { value, onChangeLinesCount } = this.props;
+  handleValueOutChange(value?: string | string[]) {
+    const { onChangeLinesCount } = this.props;
 
     if (value === '' || value === undefined) {
       this.textarea.textContent = '';
@@ -485,6 +490,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   handleChange(event: InputEvent) {
+    this.history?.push(this.transformToHistory());
     switch (event.inputType) {
       case 'insertText': {
         this.insertText(event);
@@ -499,18 +505,9 @@ class InputField<T extends string | string[]> extends Component<
         break;
       }
       case 'deleteContentForward':
-      case 'deleteContentBackward': {
-        this.deleteText(event);
-        break;
-      }
+      case 'deleteContentBackward':
       case 'deleteByCut': {
         this.deleteText(event);
-        break;
-      }
-      case 'historyUndo': {
-        break;
-      }
-      case 'historyRedo': {
         break;
       }
       default: {
@@ -521,127 +518,6 @@ class InputField<T extends string | string[]> extends Component<
     this.recalculateLinesCount();
 
     return;
-
-    // if (target instanceof HTMLDivElement && event instanceof InputEvent) {
-    //   const nodes = this.textarea.childNodes;
-    //   const firstNode = nodes.item(0);
-    //   const secondNode = nodes.item(1);
-    //   const selection = document.getSelection();
-    //
-    //   if (firstNode instanceof Text) {
-    //     const nodeText = firstNode.textContent ?? '';
-    //     const firstRow = document.createElement('p');
-    //     const text = document.createTextNode(nodeText);
-    //     firstRow.append(text);
-    //     firstNode.replaceWith(firstRow);
-    //
-    //     selection?.setPosition(firstRow, nodeText.length);
-    //   } else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
-    //     this.textarea.textContent = '';
-    //     this.setState({ keyboardLineIndex: 0 });
-    //   } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
-    //     if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
-    //       this.textarea.textContent = '';
-    //       this.setState({ keyboardLineIndex: 0 });
-    //     }
-    //   }
-    //
-    //   let maxDeep = 10;
-    //   let rowNode = selection?.focusNode;
-    //
-    //   while (rowNode?.parentNode !== this.textarea && maxDeep > 0) {
-    //     rowNode = rowNode?.parentNode;
-    //     maxDeep--;
-    //   }
-    //
-    //   if (rowNode instanceof HTMLParagraphElement) {
-    //     const childNodes = rowNode.childNodes;
-    //     const textContent = rowNode.textContent ?? '';
-    //
-    //     if (childNodes.length > 1) {
-    //       const offset = childNodes.item(0).textContent?.length;
-    //
-    //       rowNode.textContent = textContent;
-    //
-    //       if (offset) {
-    //         this.setSelection(rowNode.childNodes.item(0), offset, offset);
-    //       }
-    //     }
-    //
-    //     if (textContent.length > 0) {
-    //       const firstSymbol = textContent.at(0);
-    //       const lastSymbol = textContent.at(textContent.length - 1);
-    //
-    //       if (
-    //         firstSymbol === this.getEmptyParagraph().textContent ||
-    //         lastSymbol === this.getEmptyParagraph().textContent
-    //       ) {
-    //         let offset: number | null = null;
-    //         if (firstSymbol === this.getEmptyParagraph().textContent) {
-    //           rowNode.textContent = textContent.substring(1);
-    //           offset =
-    //             event.inputType === 'deleteContentBackward' ||
-    //             event.inputType === 'deleteContentForward'
-    //               ? 0
-    //               : rowNode.textContent.length;
-    //         } else if (lastSymbol === this.getEmptyParagraph().textContent) {
-    //           rowNode.textContent = textContent.substring(0, textContent.length - 1);
-    //           offset = rowNode.textContent.length;
-    //         }
-    //
-    //         if (offset) {
-    //           this.setSelection(rowNode.childNodes.item(0), offset, offset);
-    //         }
-    //       }
-    //     } else if (childNodes.length === 1 && childNodes[0] instanceof HTMLBRElement) {
-    //       rowNode.innerHTML = this.emptyLineValue;
-    //     }
-    //
-    //     const { errors, showErrors } = this.asProps;
-    //     const isValid = this.validateLine(rowNode);
-    //     this.recalculateErrors();
-    //     this.setErrorIndex(rowNode);
-    //
-    //     if (!isValid && showErrors) {
-    //       this.toggleErrorsPopper('keyboardLineIndex', rowNode, 0);
-    //     }
-    //
-    //     const trigger =
-    //       !isValid || (isValid && errors.length === 1 && errors[0].lineNode === rowNode)
-    //         ? rowNode
-    //         : this.textarea;
-    //
-    //     if (showErrors && this.popper?.current?.state.elements.reference !== trigger) {
-    //       if (this.shouldChangePopperTrigger(trigger)) {
-    //         this.setPopperTrigger?.(trigger);
-    //       } else {
-    //         this.setState({ visibleErrorPopper: false });
-    //       }
-    //     }
-    //   } else if (rowNode === null) {
-    //     this.setPopperTrigger?.(this.textarea);
-    //
-    //     if (selection?.focusNode === this.textarea && this.textarea.childNodes.length > 1) {
-    //       const nodeIndex = selection.focusOffset;
-    //       const emptyParagraph = this.textarea.childNodes.item(nodeIndex - 1);
-    //       const emptyBr = this.textarea.childNodes.item(nodeIndex);
-    //
-    //       this.textarea.removeChild(emptyBr);
-    //
-    //       if (emptyParagraph instanceof HTMLParagraphElement) {
-    //         emptyParagraph.innerHTML = this.emptyLineValue;
-    //       }
-    //
-    //       if (emptyParagraph) {
-    //         this.setSelection(emptyParagraph, 0, 0);
-    //       }
-    //     } else {
-    //       this.setSelection(this.textarea, 0, 0);
-    //     }
-    //   }
-    //
-    //   this.recalculateLinesCount();
-    // }
   }
 
   handleFocus() {
@@ -678,9 +554,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   handleKeyDown(event: KeyboardEvent) {
-  //   this.errorByInteraction = 'keyboard';
-  //   const { linesDelimiters } = this.asProps;
-  //
+    this.errorByInteraction = 'keyboard';
     const currentNode = this.getNodeFromSelection();
 
     if (event.key === 'Tab' && currentNode instanceof HTMLParagraphElement) {
@@ -698,138 +572,24 @@ class InputField<T extends string | string[]> extends Component<
       }
       this.toggleErrorsPopperByKeyboard(200);
     }
-  //   } else if (this.isDeleteKey(event) && currentNode instanceof HTMLParagraphElement) {
-  //     if (currentNode.textContent?.trim() === '' && !this.isRangeSelection()) {
-  //       // Backspace on empty row
-  //       const prevNode = currentNode.previousSibling;
-  //       if (prevNode instanceof HTMLParagraphElement) {
-  //         event.preventDefault();
-  //         this.textarea.removeChild(currentNode);
-  //         this.toggleErrorsPopperByKeyboard(0);
-  //
-  //         if (
-  //           prevNode.textContent?.trim() === '' &&
-  //           prevNode.previousSibling === null &&
-  //           this.textarea.childNodes.length === 1
-  //         ) {
-  //           this.textarea.textContent = '';
-  //           this.setSelection(this.textarea, 0, 0);
-  //         } else {
-  //           if (prevNode instanceof HTMLParagraphElement) {
-  //             const text = prevNode.childNodes.item(0);
-  //             const offset = text.textContent?.length ?? 0;
-  //             this.setSelection(text, offset, offset);
-  //           } else {
-  //             // eslint-disable-next-line no-console
-  //             console.warn('incorrect prevNode type', prevNode);
-  //           }
-  //         }
-  //
-  //         setTimeout(() => {
-  //           this.recalculateErrors();
-  //         }, 0);
-  //
-  //         this.toggleErrorsPopperByKeyboard(0);
-  //       }
-  //     } else if (this.isRangeSelection()) {
-  //       const selection = document.getSelection();
-  //
-  //       const direction = this.getSelectionDirection();
-  //       const anchorElement =
-  //         direction === 'backward' ? selection?.focusNode : selection?.anchorNode;
-  //       const focusElement =
-  //         direction === 'backward' ? selection?.anchorNode : selection?.focusNode;
-  //       const anchorOffset =
-  //         direction === 'backward' ? selection?.focusOffset : selection?.anchorOffset;
-  //       const focusOffset =
-  //         direction === 'backward' ? selection?.anchorOffset : selection?.focusOffset;
-  //
-  //       // Backspace on selected full row
-  //       if (
-  //         anchorElement === focusElement &&
-  //         anchorOffset === 0 &&
-  //         ((focusElement === currentNode && focusOffset === 1) ||
-  //           focusOffset === currentNode.textContent?.length)
-  //       ) {
-  //         event.preventDefault();
-  //
-  //         const anchorParagraph = anchorElement?.parentElement;
-  //         const focusParagraph = focusElement?.parentElement;
-  //         const childNodes = this.textarea.childNodes;
-  //         if (
-  //           anchorParagraph === childNodes.item(0) &&
-  //           focusParagraph === childNodes.item(childNodes.length - 1)
-  //         ) {
-  //           this.textarea.textContent = '';
-  //           this.setSelection(this.textarea, 0, 0);
-  //         } else {
-  //           currentNode.innerHTML = this.emptyLineValue;
-  //           this.validateLine(currentNode);
-  //         }
-  //
-  //         this.setErrorIndex(currentNode);
-  //         this.recalculateLinesCount();
-  //
-  //         setTimeout(() => {
-  //           this.recalculateErrors();
-  //         }, 0);
-  //
-  //         this.toggleErrorsPopperByKeyboard(0);
-  //       } else if (
-  //         focusElement !== anchorElement &&
-  //         focusElement instanceof Text &&
-  //         anchorElement instanceof Text &&
-  //         focusElement?.textContent === focusElement?.parentNode?.textContent &&
-  //         anchorElement?.textContent === anchorElement?.parentNode?.textContent &&
-  //         anchorOffset === 0 &&
-  //         focusOffset === focusElement?.parentNode?.textContent?.length
-  //       ) { // Backspace on selected few full rows
-  //         event.preventDefault();
-  //
-  //         const paragraphs = Array.from(this.textarea.children);
-  //         const anchorParagraph = anchorElement.parentElement;
-  //         const focusParagraph = focusElement.parentElement;
-  //         const childNodes = this.textarea.childNodes;
-  //
-  //         if (
-  //           anchorParagraph === childNodes.item(0) &&
-  //           focusParagraph === childNodes.item(childNodes.length - 1)
-  //         ) {
-  //           this.textarea.textContent = '';
-  //           this.setSelection(this.textarea, 0, 0);
-  //         } else {
-  //           let isCleaning = false;
-  //
-  //           for (const paragraph of paragraphs) {
-  //             if (paragraph === anchorParagraph || isCleaning) {
-  //               isCleaning = true;
-  //
-  //               if (paragraph === focusParagraph) {
-  //                 focusParagraph.innerHTML = this.emptyLineValue;
-  //                 this.setSelection(focusParagraph, 0, 0);
-  //                 break;
-  //               } else {
-  //                 this.textarea.removeChild(paragraph);
-  //               }
-  //             }
-  //           }
-  //
-  //           this.validateLine(currentNode);
-  //         }
-  //
-  //         this.setErrorIndex(currentNode);
-  //         this.recalculateLinesCount();
-  //
-  //         setTimeout(() => {
-  //           this.recalculateErrors();
-  //         }, 0);
-  //
-  //         this.toggleErrorsPopperByKeyboard(0);
-  //       }
-  //     }
-  //   } else if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
-  //     // event.preventDefault();
-  //   }
+
+    // undo
+    if (event.key === 'z' && !event.shiftKey && (event.ctrlKey || event.metaKey)) {
+      const data = this.history?.undo(this.transformToHistory());
+
+      if (data) {
+        this.transformFromHistory(data);
+      }
+    }
+
+    // redo
+    if (((event.key === 'z' && event.shiftKey) || event.key === 'y') && (event.ctrlKey || event.metaKey)) {
+      const data = this.history?.redo(this.transformToHistory());
+
+      if (data) {
+        this.transformFromHistory(data);
+      }
+    }
   }
 
   render() {
@@ -1042,6 +802,61 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
+  private transformToHistory(): HistoryState {
+    const { errors } = this.asProps;
+    const lines: string[] = [];
+    const historySelection = {
+      startLine: -1,
+      startOffset: -1,
+      endLine: -1,
+      endOffset: -1,
+    };
+
+    const selection = document.getSelection();
+    const direction = this.getSelectionDirection();
+    const anchorElement = direction === 'backward' ? selection?.focusNode : selection?.anchorNode;
+    const focusElement = direction === 'backward' ? selection?.anchorNode : selection?.focusNode;
+    const anchorOffset = direction === 'backward' ? selection?.focusOffset : selection?.anchorOffset;
+    const focusOffset = direction === 'backward' ? selection?.anchorOffset : selection?.focusOffset;
+
+    this.textarea.childNodes.forEach((node, index) => {
+      if (node.textContent === this.emptyLineValueJs) {
+        lines.push('');
+      } else {
+        lines.push(node.textContent ?? '');
+      }
+      if ((node === anchorElement || node === anchorElement?.parentElement) && anchorOffset !== undefined) {
+        historySelection.startLine = index;
+        historySelection.startOffset = anchorOffset;
+      }
+      if ((node === focusElement || node === focusElement?.parentElement) && focusOffset !== undefined) {
+        historySelection.endLine = index;
+        historySelection.endOffset = focusOffset;
+      }
+    });
+
+    const historyState: HistoryState = {
+      lines,
+      selection: historySelection,
+      errors,
+    };
+
+    return historyState;
+  }
+
+  private transformFromHistory(historyState: HistoryState): void {
+    this.handleValueOutChange(historyState.lines.map((l) => l === '' ? this.emptyLineValueJs : l));
+
+    const { startLine, startOffset, endLine, endOffset } = historyState.selection;
+    const nodes = this.textarea.childNodes;
+    const startNode = nodes.item(startLine)?.firstChild;
+    const endNode = nodes.item(endLine)?.firstChild;
+
+    if (startNode && endNode) {
+      this.setSelection([startNode, endNode], startOffset, endOffset, 'nearest');
+    }
+  }
+
   private prepareNodesForPaste(value: string | string[]): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
@@ -1133,7 +948,7 @@ class InputField<T extends string | string[]> extends Component<
   private getValues(): string[] {
     const values: string[] = [];
     this.textarea.childNodes.forEach((node) => {
-      if (node.textContent?.trim() === '') {
+      if (node.textContent === this.emptyLineValueJs) {
         values.push('');
       } else {
         values.push(node.textContent ?? '');
@@ -1275,15 +1090,16 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private setSelection(
-    node: Node,
+    node: Node | [Node, Node],
     start: number,
     end: number,
     scrollType: 'center' | 'nearest' = 'center',
   ): void {
     const selection = document.getSelection();
     const range = document.createRange();
-    range.setStart(node, start);
-    range.setEnd(node, end);
+    const [startNode, endNode] = Array.isArray(node) ? node : [node, node];
+    range.setStart(startNode, start);
+    range.setEnd(endNode, end);
 
     selection?.removeAllRanges();
     selection?.addRange(range);
@@ -1366,16 +1182,7 @@ class InputField<T extends string | string[]> extends Component<
     this.handlers.errorIndex(errorIndex);
   }
 
-  private getEmptyParagraph() {
-    const element = document.createElement('p');
-
-    element.innerHTML = this.emptyLineValue;
-
-    return element;
-  }
-
   private addEventListeners(textarea: HTMLElement) {
-    // textarea.addEventListener('paste', this.handlePaste);
     textarea.addEventListener('beforeinput', this.handleChange);
     textarea.addEventListener('focus', this.handleFocus);
     textarea.addEventListener('blur', this.handleBlur);
@@ -1389,7 +1196,6 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private removeEventListeners(textarea: HTMLElement) {
-    // textarea.removeEventListener('paste', this.handlePaste);
     textarea.removeEventListener('beforeinput', this.handleChange);
     textarea.removeEventListener('focus', this.handleFocus);
     textarea.removeEventListener('blur', this.handleBlur);
@@ -1411,15 +1217,6 @@ class InputField<T extends string | string[]> extends Component<
         this.setSelection(node, 0, node.childNodes.length);
       }
     }
-  }
-
-  private isRangeSelection(): boolean {
-    const selection = document.getSelection();
-
-    return (
-      selection?.focusNode !== selection?.anchorNode ||
-      selection?.focusOffset !== selection?.anchorOffset
-    );
   }
 
   private getSelectionDirection(): 'forward' | 'backward' | null {
