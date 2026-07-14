@@ -578,20 +578,16 @@ class InputField<T extends string | string[]> extends Component<
 
       document.getSelection()?.setPosition(firstRow, data.length);
     } else {
-      const startElement = staticRange.startContainer;
-      const endElement = staticRange.endContainer;
+      const [startElement, endElement] = this.getRangeTextNodes(staticRange);
+      const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${data}${endElement.textContent.slice(staticRange.endOffset)}`;
 
-      if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLLIElement)) {
-        const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${data}${endElement.textContent.slice(staticRange.endOffset)}`;
+      // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
+      startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
 
-        // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
-        startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
+      document.getSelection()?.setPosition(startElement, staticRange.startOffset + 1);
 
-        document.getSelection()?.setPosition(startElement, staticRange.startOffset + 1);
-
-        if (startElement !== endElement) {
-          this.clearNodes(startElement, endElement);
-        }
+      if (startElement !== endElement) {
+        this.clearNodes(startElement, endElement);
       }
     }
   }
@@ -606,18 +602,20 @@ class InputField<T extends string | string[]> extends Component<
       return;
     }
 
-    let startElement = staticRange.startContainer;
-    const endElement = staticRange.endContainer;
+    const nodes = this.getRangeTextNodes(staticRange);
+
+    let startElement = nodes[0];
+    const endElement = nodes[1];
     const parent = startElement.parentElement;
 
-    if (startElement instanceof Text && endElement instanceof Text && parent) {
+    if (parent) {
       const currentLineText = startElement.textContent.slice(0, staticRange.startOffset);
       const newLineText = endElement.textContent.slice(staticRange.endOffset);
 
       startElement.textContent = currentLineText;
       if (startElement.textContent === '') {
         parent.innerHTML = this.emptyLineValue;
-        startElement = parent.childNodes.item(0);
+        startElement = parent.childNodes.item(0) as Text;
       }
 
       if (startElement !== endElement && endElement.parentElement) {
@@ -661,11 +659,13 @@ class InputField<T extends string | string[]> extends Component<
       return;
     }
 
-    let startElement = staticRange.startContainer;
-    const endElement = staticRange.endContainer;
+    const nodes = this.getRangeTextNodes(staticRange);
+
+    let startElement = nodes[0];
+    const endElement = nodes[1];
     const parent = startElement.parentElement;
 
-    if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLLIElement) && parent) {
+    if (parent) {
       const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(staticRange.endOffset)}`;
 
       const next = parent.nextSibling;
@@ -675,7 +675,7 @@ class InputField<T extends string | string[]> extends Component<
       } else {
         if (resultText === '') {
           parent.innerHTML = this.emptyLineValue;
-          startElement = parent.childNodes.item(0);
+          startElement = parent.childNodes.item(0) as Text;
         } else {
           startElement.textContent = resultText;
         }
@@ -700,7 +700,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private clearNodes(startElement: Node, endElement: Node) {
-    const nodes = [...this.textarea.childNodes];
+    const nodes = Array.from(this.textarea.childNodes);
 
     let forClear = false;
     for (const node of nodes) {
@@ -806,6 +806,26 @@ class InputField<T extends string | string[]> extends Component<
     if (validateOn.includes('paste') || this.asProps.showErrors) {
       this.recalculateErrors();
     }
+  }
+
+  private getRangeTextNodes(range: StaticRange): [Text, Text] {
+    const startElement = this.getTextNode(range.startContainer);
+    const endElement = this.getTextNode(range.endContainer);
+
+    return [startElement, endElement];
+  }
+
+  private getTextNode(node: Node): Text {
+    if (node instanceof Text) {
+      return node;
+    }
+    if (node instanceof HTMLLIElement) {
+      const text = node.firstChild;
+      if (text instanceof Text) {
+        return text;
+      }
+    }
+    throw new Error(`Unknown node element "${node}"`);
   }
 
   private createHistoryState(): HistoryState {
