@@ -2662,19 +2662,25 @@
     "name": "--intergalactic-text-link-primary",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Default primary link color.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-primary-hover-active",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Hover and active states for the primary link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-primary-underline",
-    "value": "oklch(0.74 0.003 165.2)",
+    "value": "oklch(0.86 0.002 174.1)",
     "description": "Underline color for the primary link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-primary-invert",

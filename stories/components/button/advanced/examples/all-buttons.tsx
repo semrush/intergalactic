@@ -33,10 +33,10 @@ function ButtonLinkRow({ use = 'primary', size = 300 }: ButtonLinkRowProps) {
   return (
     <Flex gap={2} alignItems='center' flexWrap>
       <ButtonLink use={use} size={size}>
-        Default
+        Default link
       </ButtonLink>
       <ButtonLink use={use} size={size} disabled>
-        Disabled
+        Disabled link
       </ButtonLink>
     </Flex>
   );

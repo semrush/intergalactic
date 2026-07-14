@@ -201,7 +201,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                         {item.label}
                       </Text>
                       <Flex alignItems='baseline' gap={1} mt={1}>
-                        <Link size={500} fontWeight='bold' color='text-large-info' href='https://semrush.com' target='_blank'>
+                        <Link size={500} fontWeight='bold' href='https://semrush.com' target='_blank'>
                           {item.value}
                         </Link>
                         <Text size={100} color={item.deltaColor} noWrap>
@@ -253,7 +253,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                         {item.label}
                       </Text>
                       <Flex alignItems='baseline' gap={1} mt={1}>
-                        <Link size={500} fontWeight='bold' color='text-large-info' href='https://semrush.com' target='_blank'>
+                        <Link size={500} fontWeight='bold' href='https://semrush.com' target='_blank'>
                           {item.value}
                         </Link>
                         <Text size={100} color={item.deltaColor} noWrap>

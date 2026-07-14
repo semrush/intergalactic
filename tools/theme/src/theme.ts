@@ -1724,7 +1724,7 @@ export const theme: Theme = {
         description: 'Hover and active states for the primary link.',
       },
       text_link_primary_underline: {
-        value: neutral.at(0.74),
+        value: neutral.at(0.86),
         description: 'Underline color for the primary link.',
       },
       text_link_primary_invert_DEFAULT: {
