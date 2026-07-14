@@ -568,6 +568,11 @@ class InputField<T extends string | string[]> extends Component<
       return;
     }
 
+    if (this.asProps.linesDelimiters?.includes(data)) {
+      this.insertParagraph(event);
+      return;
+    }
+
     const nodes = this.textarea.childNodes;
 
     if (nodes.length === 0) {
