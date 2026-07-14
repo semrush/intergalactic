@@ -5,16 +5,9 @@ export type HistorySelection = {
   endOffset: number;
 };
 
-type ErrorItem = {
-  lineIndex: number;
-  lineNode?: Node;
-  errorMessage: string;
-};
-
 export type HistoryState = {
   lines: string[];
   selection: HistorySelection;
-  errors: ErrorItem[];
 };
 
 const DEFAULT_MAX_LENGTH = 100;

@@ -133,6 +133,8 @@ class InputField<T extends string | string[]> extends Component<
       */
       setTimeout(() => this.textarea.focus(), 10);
     }
+
+    this.history.push(this.createHistoryState());
   }
 
   componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state): void {
@@ -490,7 +492,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   handleChange(event: InputEvent) {
-    this.history?.push(this.transformToHistory());
+    this.history.push(this.createHistoryState());
     switch (event.inputType) {
       case 'insertText': {
         this.insertText(event);
@@ -575,19 +577,19 @@ class InputField<T extends string | string[]> extends Component<
 
     // undo
     if (event.key === 'z' && !event.shiftKey && (event.ctrlKey || event.metaKey)) {
-      const data = this.history?.undo(this.transformToHistory());
+      const data = this.history.undo(this.createHistoryState());
 
       if (data) {
-        this.transformFromHistory(data);
+        this.restoreHistoryState(data);
       }
     }
 
     // redo
     if (((event.key === 'z' && event.shiftKey) || event.key === 'y') && (event.ctrlKey || event.metaKey)) {
-      const data = this.history?.redo(this.transformToHistory());
+      const data = this.history.redo(this.createHistoryState());
 
       if (data) {
-        this.transformFromHistory(data);
+        this.restoreHistoryState(data);
       }
     }
   }
@@ -802,8 +804,7 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  private transformToHistory(): HistoryState {
-    const { errors } = this.asProps;
+  private createHistoryState(): HistoryState {
     const lines: string[] = [];
     const historySelection = {
       startLine: -1,
@@ -838,13 +839,12 @@ class InputField<T extends string | string[]> extends Component<
     const historyState: HistoryState = {
       lines,
       selection: historySelection,
-      errors,
     };
 
     return historyState;
   }
 
-  private transformFromHistory(historyState: HistoryState): void {
+  private restoreHistoryState(historyState: HistoryState): void {
     this.handleValueOutChange(historyState.lines.map((l) => l === '' ? this.emptyLineValueJs : l));
 
     const { startLine, startOffset, endLine, endOffset } = historyState.selection;
