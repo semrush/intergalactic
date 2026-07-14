@@ -631,7 +631,7 @@ class InputField<T extends string | string[]> extends Component<
 
       parent.after(row);
 
-      document.getSelection()?.setPosition(row, 0);
+      this.setSelection(row, 0, 0);
 
       this.validateLine(parent);
       if (newLineText !== '') {
