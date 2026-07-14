@@ -8,7 +8,6 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Tooltip from '@semcore/tooltip';
 import DOMPurify from 'dompurify';
 import React from 'react';
-import { extractComponentSectionObject } from 'storybook/internal/docs-tools';
 
 import type { HistoryState } from './History';
 import { History } from './History';
@@ -79,7 +78,6 @@ class InputField<T extends string | string[]> extends Component<
   constructor(props: Props<T>) {
     super(props);
 
-    this.handlePaste = this.handlePaste.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
@@ -402,95 +400,6 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  handlePaste(event: InputEvent) {
-    event.preventDefault();
-    const { validateOn } = this.asProps;
-    const value = event.dataTransfer?.getData('text/plain');
-    const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
-
-    if (listOfNodes.length === 0) return;
-
-    const selection = document.getSelection();
-
-    if (selection?.anchorNode && selection?.focusNode) {
-      const anchorOffset = selection.anchorOffset;
-      const focusOffset = selection.focusOffset;
-      const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
-      const direction = this.getSelectionDirection();
-
-      const anchorElement = direction === 'forward' ? selection.anchorNode : selection.focusNode;
-      const focusElement = direction === 'forward' ? selection.focusNode : selection.anchorNode;
-      const fromOffset = direction === 'forward' ? anchorOffset : focusOffset;
-      const toOffset = direction === 'forward' ? focusOffset : anchorOffset;
-      const anchorNode =
-        anchorElement instanceof Text ? anchorElement.parentElement : anchorElement;
-      const focusNode = focusElement instanceof Text ? focusElement.parentElement : focusElement;
-
-      let textNode: ChildNode | null = null;
-      let position: number | null = null;
-
-      if (focusElement === this.textarea) {
-        this.textarea.replaceChildren(...listOfNodes);
-
-        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
-        textNode = lastNodeToInsert.childNodes.item(0);
-        position = (lastNodeToInsert.textContent ?? '').length;
-      } else if (
-        focusNode instanceof HTMLParagraphElement &&
-        anchorNode instanceof HTMLParagraphElement
-      ) {
-        const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
-        const after = focusNode?.textContent?.substring(toOffset) ?? '';
-
-        const noEmptyLineBefore = before.trim() === '' ? '' : before;
-        const noEmptyLineAfter = after.trim() === '' ? '' : after;
-
-        selection.deleteFromDocument();
-
-        if (documentPosition !== 0) {
-          this.textarea.removeChild(focusNode);
-        }
-
-        const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
-        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
-
-        anchorNode.textContent = noEmptyLineBefore + (firstNodeToInsert?.textContent ?? '');
-
-        anchorNode.after(...listOfNodes);
-
-        if (lastNodeToInsert) {
-          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + noEmptyLineAfter;
-          textNode = lastNodeToInsert.childNodes.item(0);
-          position = (lastNodeToInsert.textContent ?? '').length;
-
-          this.validateLine(lastNodeToInsert);
-          this.setErrorIndex(lastNodeToInsert);
-        } else {
-          position = (anchorNode.textContent ?? '').length;
-          anchorNode.textContent = (anchorNode.textContent ?? '') + noEmptyLineAfter;
-          textNode = anchorNode.childNodes.item(0);
-
-          this.validateLine(anchorNode);
-          this.setErrorIndex(anchorNode);
-        }
-      }
-
-      if (textNode instanceof Text) {
-        this.setSelection(textNode, position ?? 1, position ?? 1);
-        this.toggleErrorsPopper('keyboardLineIndex', textNode.parentNode);
-      } else {
-        // eslint-disable-next-line no-console
-        console.warn('incorrect child type', textNode, textNode?.parentNode);
-      }
-    }
-
-    this.recalculateLinesCount();
-
-    if (validateOn.includes('paste') || this.asProps.showErrors) {
-      this.recalculateErrors();
-    }
-  }
-
   handleChange(event: InputEvent) {
     this.history.push(this.createHistoryState());
     switch (event.inputType) {
@@ -499,7 +408,7 @@ class InputField<T extends string | string[]> extends Component<
         break;
       }
       case 'insertFromPaste': {
-        this.handlePaste(event);
+        this.insertFromPaste(event);
         break;
       }
       case 'insertParagraph': {
@@ -513,7 +422,7 @@ class InputField<T extends string | string[]> extends Component<
         break;
       }
       default: {
-        logger.warn(true, `Unknown input type "${event.inputType}"`);
+        logger.warn(true, `Unknown input type "${event.inputType}"`, event);
       }
     }
 
@@ -575,7 +484,6 @@ class InputField<T extends string | string[]> extends Component<
       this.toggleErrorsPopperByKeyboard(200);
     }
 
-    // undo
     if (event.key === 'z' && !event.shiftKey && (event.ctrlKey || event.metaKey)) {
       const data = this.history.undo(this.createHistoryState());
 
@@ -584,7 +492,6 @@ class InputField<T extends string | string[]> extends Component<
       }
     }
 
-    // redo
     if (((event.key === 'z' && event.shiftKey) || event.key === 'y') && (event.ctrlKey || event.metaKey)) {
       const data = this.history.redo(this.createHistoryState());
 
@@ -801,6 +708,95 @@ class InputField<T extends string | string[]> extends Component<
       if (node === startElement.parentElement) {
         forClear = true;
       }
+    }
+  }
+
+  private insertFromPaste(event: InputEvent) {
+    event.preventDefault();
+    const { validateOn } = this.asProps;
+    const value = event.dataTransfer?.getData('text/plain');
+    const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
+
+    if (listOfNodes.length === 0) return;
+
+    const selection = document.getSelection();
+
+    if (selection?.anchorNode && selection?.focusNode) {
+      const anchorOffset = selection.anchorOffset;
+      const focusOffset = selection.focusOffset;
+      const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
+      const direction = this.getSelectionDirection();
+
+      const anchorElement = direction === 'forward' ? selection.anchorNode : selection.focusNode;
+      const focusElement = direction === 'forward' ? selection.focusNode : selection.anchorNode;
+      const fromOffset = direction === 'forward' ? anchorOffset : focusOffset;
+      const toOffset = direction === 'forward' ? focusOffset : anchorOffset;
+      const anchorNode =
+        anchorElement instanceof Text ? anchorElement.parentElement : anchorElement;
+      const focusNode = focusElement instanceof Text ? focusElement.parentElement : focusElement;
+
+      let textNode: ChildNode | null = null;
+      let position: number | null = null;
+
+      if (focusElement === this.textarea) {
+        this.textarea.replaceChildren(...listOfNodes);
+
+        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+        textNode = lastNodeToInsert.childNodes.item(0);
+        position = (lastNodeToInsert.textContent ?? '').length;
+      } else if (
+        focusNode instanceof HTMLParagraphElement &&
+        anchorNode instanceof HTMLParagraphElement
+      ) {
+        const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
+        const after = focusNode?.textContent?.substring(toOffset) ?? '';
+
+        const noEmptyLineBefore = before.trim() === '' ? '' : before;
+        const noEmptyLineAfter = after.trim() === '' ? '' : after;
+
+        selection.deleteFromDocument();
+
+        if (documentPosition !== 0) {
+          this.textarea.removeChild(focusNode);
+        }
+
+        const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
+        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+
+        anchorNode.textContent = noEmptyLineBefore + (firstNodeToInsert?.textContent ?? '');
+
+        anchorNode.after(...listOfNodes);
+
+        if (lastNodeToInsert) {
+          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + noEmptyLineAfter;
+          textNode = lastNodeToInsert.childNodes.item(0);
+          position = (lastNodeToInsert.textContent ?? '').length;
+
+          this.validateLine(lastNodeToInsert);
+          this.setErrorIndex(lastNodeToInsert);
+        } else {
+          position = (anchorNode.textContent ?? '').length;
+          anchorNode.textContent = (anchorNode.textContent ?? '') + noEmptyLineAfter;
+          textNode = anchorNode.childNodes.item(0);
+
+          this.validateLine(anchorNode);
+          this.setErrorIndex(anchorNode);
+        }
+      }
+
+      if (textNode instanceof Text) {
+        this.setSelection(textNode, position ?? 1, position ?? 1);
+        this.toggleErrorsPopper('keyboardLineIndex', textNode.parentNode);
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('incorrect child type', textNode, textNode?.parentNode);
+      }
+    }
+
+    this.recalculateLinesCount();
+
+    if (validateOn.includes('paste') || this.asProps.showErrors) {
+      this.recalculateErrors();
     }
   }
 

@@ -26,6 +26,17 @@ export const locators = {
 
 };
 
+const keyboardModifier = process.platform === 'darwin' ? 'Meta' : 'Control';
+const pressUndo = async (page: Page) => {
+  await page.keyboard.press(`${keyboardModifier}+Z`);
+};
+const pressRedo = async (page: Page) => {
+  await page.keyboard.press(`${keyboardModifier}+Shift+Z`);
+};
+const pressRedoAlternative = async (page: Page) => {
+  await page.keyboard.press(`${keyboardModifier}+Y`);
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -259,6 +270,141 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(lineCount).toBe(0);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
       });
+    });
+  });
+
+  test.describe('Undo and redo', () => {
+    test('Verify text undo, redo and redo reset after new input', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await locators.textbox(page).click();
+      await page.keyboard.type('abc', { delay: 10 });
+      await expect(locators.row(page, 0)).toHaveText('abc');
+
+      await pressUndo(page);
+      await expect(locators.row(page, 0)).toHaveText('ab');
+
+      await pressRedo(page);
+      await expect(locators.row(page, 0)).toHaveText('abc');
+
+      await pressUndo(page);
+      await expect(locators.row(page, 0)).toHaveText('ab');
+
+      await pressRedoAlternative(page);
+      await expect(locators.row(page, 0)).toHaveText('abc');
+
+      await pressUndo(page);
+      await expect(locators.row(page, 0)).toHaveText('ab');
+
+      await page.keyboard.type('d', { delay: 10 });
+      await expect(locators.row(page, 0)).toHaveText('abd');
+
+      await pressRedo(page);
+      await expect(locators.row(page, 0)).toHaveText('abd');
+    });
+
+    test('Verify undo and redo restore paragraph insertion with empty line', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await locators.textbox(page).click();
+      await page.keyboard.type('one', { delay: 10 });
+      await page.keyboard.press('Enter');
+
+      await expect(locators.contentDiv(page).locator('p')).toHaveCount(2);
+      await expect(locators.row(page, 0)).toHaveText('one');
+      expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
+
+      await page.keyboard.type('two', { delay: 10 });
+      expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('two');
+
+      await pressUndo(page);
+      await pressUndo(page);
+      await pressUndo(page);
+      expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
+
+      await pressUndo(page);
+      await expect(locators.contentDiv(page).locator('p')).toHaveCount(1);
+      await expect(locators.row(page, 0)).toHaveText('one');
+
+      await pressRedo(page);
+      await expect(locators.contentDiv(page).locator('p')).toHaveCount(2);
+      await expect(locators.row(page, 0)).toHaveText('one');
+      expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
+    });
+
+    test('Verify undo restores caret position', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await locators.textbox(page).click();
+      await page.keyboard.type('abc', { delay: 10 });
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.type('X', { delay: 10 });
+      await expect(locators.row(page, 0)).toHaveText('aXbc');
+
+      await pressUndo(page);
+      await expect(locators.row(page, 0)).toHaveText('abc');
+
+      const selection = await page.evaluate(() => {
+        const selection = document.getSelection();
+        const anchorNode = selection?.anchorNode;
+        const anchorElement = anchorNode instanceof Text ? anchorNode.parentElement : anchorNode;
+
+        return {
+          lineIndex: Array.from(document.querySelectorAll('[contenteditable="true"] p')).indexOf(anchorElement as HTMLParagraphElement),
+          offset: selection?.anchorOffset,
+        };
+      });
+
+      expect(selection).toEqual({ lineIndex: 0, offset: 1 });
+    });
+
+    test('Verify undo restores value before paste', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await locators.textbox(page).click();
+      await locators.textbox(page).evaluate((node, text) => {
+        const dataTransfer = new DataTransfer();
+        dataTransfer.setData('text/plain', text);
+        const event = new InputEvent('beforeinput', {
+          bubbles: true,
+          cancelable: true,
+          inputType: 'insertFromPaste',
+          dataTransfer,
+        });
+
+        node.dispatchEvent(event);
+      }, 'first\nsecond\nthird');
+
+      await expect(locators.contentDiv(page).locator('p')).toHaveCount(3);
+      await expect(locators.row(page, 0)).toHaveText('first');
+      await expect(locators.row(page, 1)).toHaveText('second');
+      await expect(locators.row(page, 2)).toHaveText('third');
+
+      await pressUndo(page);
+      await expect(locators.contentDiv(page).locator('p')).toHaveCount(0);
+
+      await pressRedo(page);
+      await expect(locators.contentDiv(page).locator('p')).toHaveCount(3);
+      await expect(locators.row(page, 0)).toHaveText('first');
+      await expect(locators.row(page, 1)).toHaveText('second');
+      await expect(locators.row(page, 2)).toHaveText('third');
     });
   });
 
