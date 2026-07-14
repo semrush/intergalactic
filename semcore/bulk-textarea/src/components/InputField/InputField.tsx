@@ -297,7 +297,6 @@ class InputField<T extends string | string[]> extends Component<
   createContentEditableElement(props: Props<T>) {
     const textarea = document.createElement('div');
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
-    textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
 
     if (props.id) {
