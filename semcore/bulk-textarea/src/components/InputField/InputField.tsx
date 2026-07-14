@@ -326,6 +326,10 @@ class InputField<T extends string | string[]> extends Component<
       textarea.addEventListener('keydown', this.handleSelectAll.bind(this));
     }
 
+    if (props.inputRef) {
+      props.inputRef.current = textarea;
+    }
+
     return textarea;
   }
 
@@ -439,6 +443,11 @@ class InputField<T extends string | string[]> extends Component<
       this.toggleErrorsPopperByKeyboard(150);
     } else {
       this.toggleErrorsPopper('keyboardLineIndex', this.textarea);
+    }
+
+    const lastRow = this.textarea.lastChild?.firstChild;
+    if (lastRow instanceof Text) {
+      this.setSelection(lastRow, lastRow.length, lastRow.length);
     }
   }
 

@@ -170,6 +170,10 @@ declare namespace NSBulktextarea {
        * Function for process line after it was blurred
        */
       lineProcessing?: (line: string, lines: string[]) => string;
+      /**
+       * Ref to a contenteditable element.
+       */
+      inputRef?: React.MutableRefObject<HTMLOListElement>;
     };
     type DefaultProps = {
       defaultValue: '';
