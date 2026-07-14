@@ -22,7 +22,7 @@ SCap {
 }
 
 SCap[pattern] {
-  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  stroke: var(--intergalactic-chart-grid-border, #fff);
   stroke-width: 1px;
 }
 
