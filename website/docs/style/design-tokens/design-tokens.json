@@ -1086,7 +1086,6 @@
     "description": "Background of the accent secondary control.",
     "components": [
       "base-trigger",
-      "button",
       "pills"
     ]
   },
@@ -1095,8 +1094,7 @@
     "value": "oklch(0.524 0.266 263.1 / 0.116)",
     "description": "Active (selected) state of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "button"
+      "base-trigger"
     ]
   },
   {
@@ -1104,8 +1102,7 @@
     "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Hover state of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "button"
+      "base-trigger"
     ]
   },
   {

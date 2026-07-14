@@ -174,23 +174,6 @@ SButton[theme='secondary-muted'] {
   }
 }
 
-/* Remove this theme */
-SButton[theme='secondary-info'] {
-  background-color: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039));
-  color: var(--intergalactic-text-link, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-accent */
-
-  &:hover {
-    color: var(--intergalactic-text-link, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-accent */
-    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.525 0.265 263 / 0.077));
-  }
-
-  &:active,
-  &[active] {
-    color: var(--intergalactic-text-link, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-accent */
-    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.524 0.266 263.1 / 0.116));
-  }
-}
-
 SButton[theme='secondary-invert'] {
   color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-color: var(--intergalactic-control-secondary-invert, oklch(0.969 0.057 140 / 0.118));
