@@ -1224,7 +1224,7 @@
   },
   {
     "name": "--intergalactic-control-switch-bg",
-    "value": "oklch(0.74 0.003 165.2)",
+    "value": "oklch(0.88 0.002 175.6)",
     "description": "Subtle background of the Switch control.",
     "components": [
       "switch"
