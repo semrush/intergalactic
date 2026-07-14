@@ -445,7 +445,7 @@ class InputField<T extends string | string[]> extends Component<
     }
 
     const lastRow = this.textarea.lastChild?.firstChild;
-    if (lastRow instanceof Text) {
+    if (lastRow instanceof Text && this.asProps.errorIndex === -1) {
       this.setSelection(lastRow, lastRow.length, lastRow.length);
     }
   }
