@@ -235,11 +235,7 @@ class DragAndDropRoot extends Component<
       }
 
       const fromNode = items[dragging.index];
-      if (
-        fromNode &&
-        fromNode.id !== undefined &&
-        currentItem.id !== undefined
-      ) {
+      if (fromNode) {
         onDnD({
           fromId: fromNode.id,
           fromIndex: dragging.index,

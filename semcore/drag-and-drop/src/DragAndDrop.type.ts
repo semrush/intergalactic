@@ -9,7 +9,7 @@ declare namespace NSDragAndDrop {
       /**
        * Controlled drag and drop handler
        */
-      onDnD: (dndData: { fromIndex: number; fromId: string; toIndex: number; toId: string }) => void;
+      onDnD: (dndData: { fromIndex: number; fromId: NSDragAndDrop.AttachDetails['id']; toIndex: number; toId: NSDragAndDrop.AttachDetails['id'] }) => void;
       /**
        * Index of id that indicates item that is currently under the user focus in case of real browser focus cannot be used.
        * When provided, drag and drop listens to whole page keyboard events. Doesn't provide `onCustomFocusChange` callback.
