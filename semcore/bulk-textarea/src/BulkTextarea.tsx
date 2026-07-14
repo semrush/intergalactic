@@ -224,7 +224,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       this.handlers.state('normal');
 
       if (document.activeElement === this.clearAllButtonRef.current) {
-        const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
+        const textarea = this.inputFieldRef.current?.querySelector('[contenteditable="true"]');
 
         if (textarea instanceof HTMLOListElement) {
           textarea.focus();
