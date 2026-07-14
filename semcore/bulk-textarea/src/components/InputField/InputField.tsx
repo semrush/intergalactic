@@ -47,8 +47,8 @@ class InputField<T extends string | string[]> extends Component<
   emptyLineValueJs = '\uFEFF';
   spaceLineValue = '&nbsp;';
 
-  containerRef = React.createRef<HTMLDivElement>();
-  textarea: HTMLDivElement;
+  containerRef = React.createRef<HTMLOListElement>();
+  textarea: HTMLOListElement;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -167,7 +167,7 @@ class InputField<T extends string | string[]> extends Component<
         });
 
         this.textarea.childNodes.forEach((node, index) => {
-          if (node instanceof HTMLParagraphElement) {
+          if (node instanceof HTMLLIElement) {
             const errorItem = errorsMap.get(index);
             if (errorItem) {
               node.setAttribute('aria-invalid', 'true');
@@ -216,7 +216,7 @@ class InputField<T extends string | string[]> extends Component<
         const newValueTextNode = document.createTextNode(newValue);
         const paragraph = this.textarea.childNodes.item(prevState.keyboardLineIndex);
 
-        if (paragraph instanceof HTMLParagraphElement) {
+        if (paragraph instanceof HTMLLIElement) {
           if (newValue === '') {
             if (lines.length === 1) {
               this.textarea.textContent = '';
@@ -295,7 +295,7 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   createContentEditableElement(props: Props<T>) {
-    const textarea = document.createElement('div');
+    const textarea = document.createElement('ol');
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('classname', 'editable');
 
@@ -476,7 +476,7 @@ class InputField<T extends string | string[]> extends Component<
     this.errorByInteraction = 'keyboard';
     const currentNode = this.getNodeFromSelection();
 
-    if (event.key === 'Tab' && currentNode instanceof HTMLParagraphElement) {
+    if (event.key === 'Tab' && currentNode instanceof HTMLLIElement) {
       this.validateLine(currentNode);
     }
 
@@ -486,7 +486,7 @@ class InputField<T extends string | string[]> extends Component<
       event.key === 'ArrowLeft' ||
       event.key === 'ArrowRight'
     ) {
-      if (currentNode instanceof HTMLParagraphElement) {
+      if (currentNode instanceof HTMLLIElement) {
         this.handleCursorMovement(currentNode, event);
       }
       this.toggleErrorsPopperByKeyboard(200);
@@ -571,7 +571,7 @@ class InputField<T extends string | string[]> extends Component<
     const nodes = this.textarea.childNodes;
 
     if (nodes.length === 0) {
-      const firstRow = document.createElement('p');
+      const firstRow = document.createElement('li');
       const text = document.createTextNode(data);
       firstRow.append(text);
       this.textarea.append(firstRow);
@@ -581,7 +581,7 @@ class InputField<T extends string | string[]> extends Component<
       const startElement = staticRange.startContainer;
       const endElement = staticRange.endContainer;
 
-      if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLParagraphElement)) {
+      if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLLIElement)) {
         const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${data}${endElement.textContent.slice(staticRange.endOffset)}`;
 
         // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
@@ -624,7 +624,7 @@ class InputField<T extends string | string[]> extends Component<
         this.clearNodes(startElement, endElement);
       }
 
-      const row = document.createElement('p');
+      const row = document.createElement('li');
       if (newLineText === '') {
         row.innerHTML = this.emptyLineValue;
       } else {
@@ -665,7 +665,7 @@ class InputField<T extends string | string[]> extends Component<
     const endElement = staticRange.endContainer;
     const parent = startElement.parentElement;
 
-    if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLParagraphElement) && parent) {
+    if (startElement instanceof Text && (endElement instanceof Text || endElement instanceof HTMLLIElement) && parent) {
       const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(staticRange.endOffset)}`;
 
       const next = parent.nextSibling;
@@ -708,7 +708,7 @@ class InputField<T extends string | string[]> extends Component<
         this.textarea.removeChild(node);
       }
 
-      if (node === (endElement instanceof HTMLParagraphElement ? endElement : endElement.parentElement)) {
+      if (node === (endElement instanceof HTMLLIElement ? endElement : endElement.parentElement)) {
         forClear = false;
         break;
       }
@@ -753,8 +753,8 @@ class InputField<T extends string | string[]> extends Component<
         textNode = lastNodeToInsert.childNodes.item(0);
         position = (lastNodeToInsert.textContent ?? '').length;
       } else if (
-        focusNode instanceof HTMLParagraphElement &&
-        anchorNode instanceof HTMLParagraphElement
+        focusNode instanceof HTMLLIElement &&
+        anchorNode instanceof HTMLLIElement
       ) {
         const before = anchorNode?.textContent?.substring(0, fromOffset) ?? '';
         const after = focusNode?.textContent?.substring(toOffset) ?? '';
@@ -861,8 +861,8 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  private prepareNodesForPaste(value: string | string[]): HTMLParagraphElement[] {
-    const listOfNodes: HTMLParagraphElement[] = [];
+  private prepareNodesForPaste(value: string | string[]): HTMLLIElement[] {
+    const listOfNodes: HTMLLIElement[] = [];
     const { pasteProps } = this.asProps;
     const lineProcessing =
       pasteProps?.lineProcessing ??
@@ -878,7 +878,7 @@ class InputField<T extends string | string[]> extends Component<
       const preparedLine = lineProcessing(line, index, lines.length);
 
       if ((preparedLine === '' && skipEmptyLines === false) || preparedLine !== '') {
-        const node = document.createElement('p');
+        const node = document.createElement('li');
 
         if (preparedLine === '') {
           node.innerHTML = this.emptyLineValue;
@@ -904,7 +904,7 @@ class InputField<T extends string | string[]> extends Component<
     const errors: NSBulktextarea.ErrorItem[] = [];
 
     this.textarea.childNodes.forEach((node, index) => {
-      if (node instanceof HTMLParagraphElement && node.getAttribute('aria-invalid') === 'true') {
+      if (node instanceof HTMLLIElement && node.getAttribute('aria-invalid') === 'true') {
         const errorItem = {
           errorMessage: node.dataset.errormessage ?? '',
           lineNode: node,
@@ -927,7 +927,7 @@ class InputField<T extends string | string[]> extends Component<
       const { maxLines, linesCount } = this.asProps;
 
       this.textarea.childNodes.forEach((node) => {
-        if (node instanceof HTMLParagraphElement) {
+        if (node instanceof HTMLLIElement) {
           node.dataset.overMaxRows = 'false';
 
           if (
@@ -990,7 +990,7 @@ class InputField<T extends string | string[]> extends Component<
     key: Exclude<keyof NSBulktextarea.InputField.State, 'visibleErrorPopper'>,
     target?: unknown, timer?: number,
   ) {
-    if (target instanceof HTMLDivElement || target instanceof HTMLParagraphElement) {
+    if (target instanceof HTMLOListElement || target instanceof HTMLLIElement) {
       if (this.changeTriggerTimeout) {
         clearTimeout(this.changeTriggerTimeout);
       }
@@ -1001,7 +1001,7 @@ class InputField<T extends string | string[]> extends Component<
         let lineIndex = -1;
         let isInvalidRow = false;
 
-        if (targetElement instanceof HTMLParagraphElement) {
+        if (targetElement instanceof HTMLLIElement) {
           isInvalidRow = targetElement.getAttribute('aria-invalid') === 'true';
           lineIndex = Array.from(this.textarea.childNodes).indexOf(targetElement);
         } else if (targetElement === this.textarea) {
@@ -1060,7 +1060,7 @@ class InputField<T extends string | string[]> extends Component<
     const node = error ? error.lineNode ?? childNodes.item(error.lineIndex) : null;
     const selection = document.getSelection();
 
-    if (selection && node instanceof HTMLParagraphElement) {
+    if (selection && node instanceof HTMLLIElement) {
       this.setState({ visibleErrorPopper: false });
 
       setTimeout(() => {
@@ -1128,7 +1128,7 @@ class InputField<T extends string | string[]> extends Component<
     return rowNode ?? null;
   }
 
-  private handleCursorMovement(currentNode: HTMLParagraphElement, event: KeyboardEvent): void {
+  private handleCursorMovement(currentNode: HTMLLIElement, event: KeyboardEvent): void {
     let nextNode: ChildNode | null = null;
 
     switch (event.key) {
@@ -1155,7 +1155,7 @@ class InputField<T extends string | string[]> extends Component<
       }
     }
 
-    if (nextNode instanceof HTMLParagraphElement) {
+    if (nextNode instanceof HTMLLIElement) {
       const selection = document.getSelection();
       const firstNode = nextNode.childNodes.item(0);
       const nodeToSetSelection = firstNode instanceof Text ? firstNode : nextNode;

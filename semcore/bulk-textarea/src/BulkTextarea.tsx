@@ -37,11 +37,11 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
-  inputFieldRef = React.createRef<HTMLDivElement>();
+  inputFieldRef = React.createRef<HTMLOListElement>();
   clearAllButtonRef = React.createRef<HTMLButtonElement>();
   nextButtonRef = React.createRef<HTMLButtonElement>();
   prevButtonRef = React.createRef<HTMLButtonElement>();
-  counterRef = React.createRef<HTMLDivElement>();
+  counterRef = React.createRef<HTMLOListElement>();
 
   state: NSBulktextarea.State = {
     linesCount: 0,
@@ -226,7 +226,7 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       if (document.activeElement === this.clearAllButtonRef.current) {
         const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
 
-        if (textarea instanceof HTMLDivElement) {
+        if (textarea instanceof HTMLOListElement) {
           textarea.focus();
         }
       }
