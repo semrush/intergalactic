@@ -689,6 +689,10 @@ class InputField<T extends string | string[]> extends Component<
         this.validateLine(endElement);
       }
 
+      if (resultText === '') {
+        this.textarea.innerHTML = '';
+      }
+
       this.setErrorIndex(parent);
 
       setTimeout(() => {
