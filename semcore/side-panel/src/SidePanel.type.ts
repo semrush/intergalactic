@@ -77,7 +77,7 @@ declare namespace NSSidePanel {
   }
 
   namespace Overlay {
-    type Props = NSAnimation.FadeInOut.Props & NSBox.Propss;
+    type Props = NSAnimation.FadeInOut.Props & NSBox.Props;
 
     type Component = Intergalactic.Component<'div', Props>;
   }
