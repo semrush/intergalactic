@@ -689,7 +689,7 @@ class InputField<T extends string | string[]> extends Component<
         this.validateLine(endElement);
       }
 
-      if (resultText === '') {
+      if (resultText === '' && this.textarea.childNodes.length <= 1) {
         this.textarea.innerHTML = '';
       }
 
