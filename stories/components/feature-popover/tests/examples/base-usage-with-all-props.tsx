@@ -9,7 +9,7 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleProps = NSFeaturePopover.Props & NSFeaturePopover.Popper.Props & PopperProps & PopperTriggerProps & PopperPopperProps;
-const Demo = (props: ExampleProps) => {
+const Demo: React.FC<ExampleProps> = (props) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 

@@ -20,7 +20,6 @@ import type {
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import type React from 'react';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
