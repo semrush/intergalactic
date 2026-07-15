@@ -951,7 +951,7 @@ class InputField<T extends string | string[]> extends Component<
       if ((preparedLine === '' && skipEmptyLines === false) || preparedLine !== '') {
         const node = document.createElement('li');
 
-        if (preparedLine === '') {
+        if (preparedLine === '' || preparedLine === this.emptyLineValueJs) {
           node.innerHTML = this.emptyLineValue;
         } else if (preparedLine.trim() === '') {
           const allSpacesRegExp = new RegExp('\\s', 'g');
