@@ -1107,7 +1107,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert",
-    "value": "oklch(0.969 0.057 140 / 0.118)",
+    "value": "oklch(0.98 0.036 140 / 0.164)",
     "description": "Background of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1115,7 +1115,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert-active",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.988 0.021 140 / 0.222)",
     "description": "Active (selected) state of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1123,7 +1123,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert-hover",
-    "value": "oklch(0.976 0.043 140 / 0.145)",
+    "value": "oklch(0.986 0.025 140 / 0.203)",
     "description": "Hover state of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1279,7 +1279,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-invert-active",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.988 0.021 140 / 0.222)",
     "description": "Active (selected) state of the inverted version of the tertiary control.",
     "components": [
       "button"
@@ -1287,7 +1287,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-invert-hover",
-    "value": "oklch(0.976 0.043 140 / 0.145)",
+    "value": "oklch(0.986 0.025 140 / 0.203)",
     "description": "Hover state of the inverted version of the tertiary control.",
     "components": [
       "button"
@@ -2477,13 +2477,13 @@
   },
   {
     "name": "--intergalactic-tag-primary-white-hover-active",
-    "value": "rgba(255, 255, 255, 0.3)",
+    "value": "oklch(0.98 0.001 180)",
     "description": "Hover and active (selected) state of the primary white tag.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-white-normal",
-    "value": "rgba(255, 255, 255, 0.15)",
+    "value": "oklch(1 0 0)",
     "description": "Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.",
     "components": [
       "tag"

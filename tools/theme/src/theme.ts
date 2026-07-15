@@ -1604,11 +1604,11 @@ export const theme: Theme = {
         description: 'Violet text for the primary violet tag.',
       },
       tag_primary_white_hover_active: {
-        value: 'rgba(255, 255, 255, 0.3)',
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
         description: 'Hover and active (selected) state of the primary white tag.',
       },
       tag_primary_white_normal: {
-        value: 'rgba(255, 255, 255, 0.15)',
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
       },
       tag_primary_white_text: {
