@@ -15,41 +15,34 @@ SInputField>ol {
   font-family: inherit;
   margin: 0;
 
+  list-style-type: none;
+  counter-reset: list-counter;
+
   &:empty::before {
     content: '1. ' attr(placeholder);
     color: var(--intergalactic-text-placeholder, oklch(0.098 0.023 157.4 / 0.457));
     position: absolute;
   }
 
-  &:nth-child(even) {
-    color: red;
-    counter-increment: row;
-    margin-bottom: var(--intergalactic-spacing-1x, 4px);
-    position: relative;
-    word-break: break-all;
-
-    &::before {
-      content: counter(row) '.';
-      display: inline-block;
-      white-space: nowrap;
-      text-align: right;
-      color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-      margin-right: var(--intergalactic-spacing-1x, 4px);
-    }
-  }
-
   >li {
-    margin: 0 0 var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-4x, 16px);
+    counter-increment: list-counter;
+    margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     position: relative;
     word-break: break-all;
     white-space: pre-wrap;
-    padding: 0 var(--intergalactic-spacing-5x, 20px) 0 0;
+    padding: 0 var(--intergalactic-spacing-5x, 20px) 0 var(--intergalactic-spacing-4x, 16px);
 
     &:last-of-type {
       margin-bottom: 0;
     }
 
-    &::marker {
+    &::before {
+      content: counter(list-counter) ".";
+      position: absolute;
+      left: 0;
+      white-space: nowrap;
+      display: inline-block;
+
       text-align: right;
       color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
       margin-right: var(--intergalactic-spacing-1x, 4px);
@@ -64,47 +57,47 @@ SInputField>ol {
 
   &:has(li:nth-child(n + 10)) {
     >li {
-      margin-left: var(--intergalactic-spacing-6x, 24px);
+      padding-left: var(--intergalactic-spacing-6x, 24px);
     }
 
     >li:nth-child(-n + 9)::before {
-      margin-left: var(--intergalactic-spacing-2x, 8px);
+      padding-left: var(--intergalactic-spacing-2x, 8px);
     }
   }
 
   &:has(li:nth-child(n + 100)) {
     >li {
-      margin-left: var(--intergalactic-spacing-8x, 32px);
+      padding-left: var(--intergalactic-spacing-8x, 32px);
     }
 
     >li:nth-child(-n + 9)::before {
-      margin-left: var(--intergalactic-spacing-4x, 16px);
+      padding-left: var(--intergalactic-spacing-4x, 16px);
     }
 
     >li:nth-child(n + 10)::before {
-      margin-left: var(--intergalactic-spacing-2x, 8px);
+      padding-left: var(--intergalactic-spacing-2x, 8px);
     }
 
     >li:nth-child(n + 100)::before {
-      margin-left: 0;
+      padding-left: 0;
     }
   }
 
   &:has(li:nth-child(n + 1000)) {
     > li {
-      margin-left: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-1x, 4px));
+      padding-left: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-1x, 4px));
     }
     > li:nth-child(-n + 9)::before {
-      margin-left: var(--intergalactic-spacing-6x, 24px);
+      padding-left: var(--intergalactic-spacing-6x, 24px);
     }
     > li:nth-child(n + 10)::before {
-      margin-left: var(--intergalactic-spacing-4x, 16px);
+      padding-left: var(--intergalactic-spacing-4x, 16px);
     }
     > li:nth-child(n + 100)::before {
-      margin-left: var(--intergalactic-spacing-2x, 8px);
+      padding-left: var(--intergalactic-spacing-2x, 8px);
     }
     > li:nth-child(n + 1000)::before {
-      margin-left: 0;
+      padding-left: 0;
     }
   }
 }
