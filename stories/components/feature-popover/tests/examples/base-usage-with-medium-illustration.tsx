@@ -10,7 +10,7 @@ import React from 'react';
 
 type ExampleProps = NSFeaturePopover.Popper.Props & PopperProps & PopperTriggerProps & PopperPopperProps;
 
-const Demo: ((props: ExampleProps) => React.ReactNode) & { defaultProps: ExampleProps } = (props) => {
+const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: ExampleProps } = (props) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 
