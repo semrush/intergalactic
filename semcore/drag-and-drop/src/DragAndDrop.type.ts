@@ -85,6 +85,10 @@ declare namespace NSDragAndDrop {
          * Flag for disable keyboardFocused style form DnD.Draggable element
          */
         isCustomFocus?: boolean;
+        /**
+          * Disable drag ability
+        */
+        noDrag?: boolean;
       };
 
     type Component = Intergalactic.Component<'div', Props>;

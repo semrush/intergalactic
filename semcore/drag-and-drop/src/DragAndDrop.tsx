@@ -568,8 +568,6 @@ function Draggable(
     'Draggable'
   > & {
     // Passed from DropZone.
-    noDrag?: boolean;
-    // Passed from DropZone.
     isDropZone?: boolean;
   },
 ) {
@@ -617,7 +615,7 @@ function Draggable(
       placement={placement}
       role='group'
       aria-describedby={`describe-draggable-${uid}`}
-      use:keyboardFocused={isCustomFocus || false}
+      use:keyboardFocused={isCustomFocus || undefined}
       tabIndex={0}
     >
       <Children />
