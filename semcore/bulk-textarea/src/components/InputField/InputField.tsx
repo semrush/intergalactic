@@ -690,7 +690,11 @@ class InputField<T extends string | string[]> extends Component<
     const parent = startElement.parentElement;
 
     if (parent instanceof HTMLLIElement) {
-      const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(staticRange.endOffset)}`;
+      let resultText = '';
+
+      if (!(staticRange.startContainer instanceof HTMLOListElement) && !(staticRange.endContainer instanceof HTMLOListElement)) {
+        resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(staticRange.endOffset)}`;
+      }
 
       const next = parent.nextSibling;
       if (resultText === '' && event.inputType === 'deleteContentForward' && endElement.textContent === this.emptyLineValueJs && next) {
@@ -704,7 +708,7 @@ class InputField<T extends string | string[]> extends Component<
           startElement.textContent = resultText;
         }
 
-        document.getSelection()?.setPosition(startElement, staticRange.startOffset);
+        document.getSelection()?.setPosition(startElement, staticRange.startContainer instanceof HTMLOListElement ? 0 : staticRange.startOffset);
       }
 
       this.validateLine(parent);
@@ -837,21 +841,40 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private getRangeTextNodes(range: StaticRange): [Text, Text] {
-    const startElement = this.getTextNode(range.startContainer);
-    const endElement = this.getTextNode(range.endContainer);
+    const startElement = this.getTextNode(range, 'start');
+    const endElement = this.getTextNode(range, 'end');
 
     return [startElement, endElement];
   }
 
-  private getTextNode(node: Node): Text {
+  private getTextNode(range: StaticRange, type: 'start' | 'end'): Text {
+    const node = this.getNode(range, type);
+
     if (node instanceof Text) {
       return node;
+    }
+    if (node instanceof HTMLOListElement) {
+      const item = this.textarea.childNodes.item(type === 'start' ? range.startOffset : range.endOffset - 1);
+      const text = item.firstChild;
+
+      if (text instanceof Text) {
+        return text;
+      }
     }
     if (node instanceof HTMLLIElement) {
       const text = node.firstChild;
       if (text instanceof Text) {
         return text;
       }
+    }
+    throw new Error(`Unknown node element "${node}"`);
+  }
+
+  private getNode(range: StaticRange, type: 'start' | 'end'): Text | HTMLLIElement | HTMLOListElement {
+    const node = type === 'start' ? range.startContainer : range.endContainer;
+
+    if (node instanceof Text || node instanceof HTMLLIElement || node instanceof HTMLOListElement) {
+      return node;
     }
     throw new Error(`Unknown node element "${node}"`);
   }
