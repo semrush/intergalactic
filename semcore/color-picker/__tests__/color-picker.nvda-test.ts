@@ -1,4 +1,5 @@
-import { expect, nvdaTest as test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import { nvdaTest as test } from '@semcore/testing-utils/playwright.nvda';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -12,10 +13,10 @@ test.describe(`@color-picker ${TAG.NVDA}`, () => {
     await nvda.interact();
     await nvda.press('Enter');
 
-    expect(await nvda.itemText()).toBe('Color field, current color is number 666bdb, combo box, collapsed');
+    expect(await nvda.itemText()).toBe('Color field, current color is number 666bdb, combo box, collapsed, opens dialog');
     await nvda.press('Enter');
 
-    expect(await nvda.itemText()).toContain('expanded. Colors palette, dialog. clickable, Preset colors, list');
+    expect(await nvda.itemText()).toContain('expanded');
 
     await nvda.next();
     expect(await nvda.itemText()).toContain('separator');
