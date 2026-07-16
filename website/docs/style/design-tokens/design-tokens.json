@@ -3070,6 +3070,30 @@
     ]
   },
   {
+    "name": "--intergalactic-content-inset-inline",
+    "value": "12px",
+    "description": "Horizontal inset for content inside controls and surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-content-gap-small",
+    "value": "4px",
+    "description": "Small gap between content elements inside controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-content-gap-medium",
+    "value": "6px",
+    "description": "Medium gap between content elements inside controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-content-gap-large",
+    "value": "8px",
+    "description": "Large gap between content elements inside controls.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-addon-rounded",
     "value": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
