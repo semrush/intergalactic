@@ -636,7 +636,7 @@ class InputField<T extends string | string[]> extends Component<
     // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
     startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
 
-    document.getSelection()?.setPosition(startElement, range.startOffset + 1);
+    this.setSelection(startElement, range.startOffset + 1, range.startOffset + 1);
 
     if (startElement.parentElement instanceof HTMLLIElement) {
       this.validateLine(startElement.parentElement);
@@ -1189,7 +1189,7 @@ class InputField<T extends string | string[]> extends Component<
     selection?.removeAllRanges();
     selection?.addRange(range);
 
-    const nodeToScroll = node instanceof Text ? node.parentNode : node;
+    const nodeToScroll = endNode instanceof Text ? endNode.parentNode : endNode;
 
     if (nodeToScroll instanceof HTMLElement) {
       nodeToScroll.scrollIntoView({
