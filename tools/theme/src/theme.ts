@@ -1904,6 +1904,24 @@ export const theme: Theme = {
         description: 'Large size of the controls.',
       },
     },
+    spacings: {
+      content_inset_inline: {
+        value: `${SCALE_INDENT * 3}px`,
+        description: 'Horizontal inset for content inside controls and surfaces.',
+      },
+      content_gap_small: {
+        value: `${SCALE_INDENT}px`,
+        description: 'Small gap between content elements inside controls.',
+      },
+      content_gap_medium: {
+        value: `${SCALE_INDENT * 1.5}px`,
+        description: 'Medium gap between content elements inside controls.',
+      },
+      content_gap_large: {
+        value: `${SCALE_INDENT * 2}px`,
+        description: 'Large gap between content elements inside controls.',
+      },
+    },
     radii: {
       'addon': {
         value: `${RADII.small}px`,
@@ -2185,6 +2203,12 @@ export type SemanticTokens = {
   };
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
+  spacings: {
+    content_inset_inline: Value;
+    content_gap_small: Value;
+    content_gap_medium: Value;
+    content_gap_large: Value;
+  };
   radii: {
     'addon': Value;
     'badge': Value;
