@@ -141,8 +141,6 @@ class InputField<T extends string | string[]> extends Component<
       */
       setTimeout(() => this.textarea.focus(), 10);
     }
-
-    this.history.push(this.createHistoryState());
   }
 
   componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state): void {
@@ -950,7 +948,11 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private restoreHistoryState(historyState: HistoryState): void {
-    this.handleValueOutChange(historyState.lines.map((l) => l === '' ? this.emptyLineValueJs : l));
+    const isEmptyValue = historyState.lines.length === 1 && historyState.lines[0] === '';
+    const newValue = isEmptyValue
+      ? ''
+      : historyState.lines.map((l) => l === '' ? this.emptyLineValueJs : l);
+    this.handleValueOutChange(newValue);
 
     const { startLine, startOffset, endLine, endOffset } = historyState.selection;
     const nodes = this.textarea.childNodes;
