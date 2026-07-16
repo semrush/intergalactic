@@ -182,7 +182,7 @@ class InputField<T extends string | string[]> extends Component<
               node.dataset.errormessage = errorItem.errorMessage;
             } else {
               node.removeAttribute('aria-invalid');
-              node.dataset.errormessage = undefined;
+              delete node.dataset.errormessage;
             }
           }
         });
@@ -1187,7 +1187,7 @@ class InputField<T extends string | string[]> extends Component<
         node.dataset.errormessage = errorMessage;
       } else {
         node.removeAttribute('aria-invalid');
-        node.dataset.errormessage = undefined;
+        delete node.dataset.errormessage;
       }
 
       return isValid;
