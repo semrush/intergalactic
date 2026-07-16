@@ -3,7 +3,7 @@ import React from 'react';
 import type { NSAnimatedSparklesFH } from './AnimatedSparkles.type';
 import Sparkle from './Sparkle';
 
-export function AnimatedSparkles(props: NSAnimatedSparklesFH.Props) {
+export function AnimatedSparkles(props: NSAnimatedSparklesFH.Props & { show: boolean }) {
   const { count, curve, show, top, left } = props;
 
   return show && count !== undefined && [...new Array(count)].map((_, index) => {
