@@ -3,16 +3,19 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+const TEXTBOX_SELECTOR = 'ol[contenteditable="true"]';
+const ROW_SELECTOR = `${TEXTBOX_SELECTOR} li`;
+
 export const locators = {
   button: (page: Page, name?: string): Locator => page.getByRole('button', { name }),
-  textbox: (page: Page): Locator => page.getByRole('textbox'),
+  textbox: (page: Page): Locator => page.locator(TEXTBOX_SELECTOR),
   counter: (page: Page): Locator => page.locator(
     '[data-ui-name="BulkTextarea.Counter"]',
   ),
 
-  row: (page: Page, index: number): Locator =>
-    page.locator('div[contenteditable="true"] p').nth(index),
-  contentDiv: (page: Page): Locator => page.locator('[contenteditable="true"]'),
+  rows: (page: Page): Locator => page.locator(ROW_SELECTOR),
+  row: (page: Page, index: number): Locator => page.locator(ROW_SELECTOR).nth(index),
+  contentDiv: (page: Page): Locator => page.locator(TEXTBOX_SELECTOR),
   assertive: (page: Page): Locator => page.locator('[aria-live="assertive"]'),
   tooltip: (page: Page, text?: string): Locator => {
     const base = page.locator('[data-ui-name="Tooltip.Popper"]');
@@ -27,14 +30,16 @@ export const locators = {
 };
 
 const keyboardModifier = process.platform === 'darwin' ? 'Meta' : 'Control';
+// NOTE: keys must be lowercase. Playwright delivers `press('Meta+Z')` as `event.key === 'Z'`,
+// but the component checks `event.key === 'z'`, so an uppercase letter never triggers undo/redo.
 const pressUndo = async (page: Page) => {
-  await page.keyboard.press(`${keyboardModifier}+Z`);
+  await page.keyboard.press(`${keyboardModifier}+z`);
 };
 const pressRedo = async (page: Page) => {
-  await page.keyboard.press(`${keyboardModifier}+Shift+Z`);
+  await page.keyboard.press(`${keyboardModifier}+Shift+z`);
 };
 const pressRedoAlternative = async (page: Page) => {
-  await page.keyboard.press(`${keyboardModifier}+Y`);
+  await page.keyboard.press(`${keyboardModifier}+y`);
 };
 
 /* =====================================================
@@ -198,7 +203,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.textbox(page).press('Backspace');
         await locators.textbox(page).press('Backspace');
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(0);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
       });
@@ -212,7 +217,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.button(page, 'Clear all').click();
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(0);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
       });
@@ -220,7 +225,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Type immediately after clear starts fresh, not append', async () => {
         await page.keyboard.type('new text', { delay: 20 });
         await expect(locators.counter(page)).toHaveText('1/15of 15 lines');
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(1);
         await expect(locators.row(page, 0)).toHaveText('new text');
       });
@@ -243,7 +248,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(0);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
       });
@@ -266,7 +271,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Enter');
         await expect(locators.textbox(page)).toBeFocused();
         await expect(locators.button(page, 'Clear all')).not.toBeVisible();
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(0);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
       });
@@ -318,7 +323,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await page.keyboard.type('one', { delay: 10 });
       await page.keyboard.press('Enter');
 
-      await expect(locators.contentDiv(page).locator('p')).toHaveCount(2);
+      await expect(locators.rows(page)).toHaveCount(2);
       await expect(locators.row(page, 0)).toHaveText('one');
       expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
 
@@ -331,11 +336,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
 
       await pressUndo(page);
-      await expect(locators.contentDiv(page).locator('p')).toHaveCount(1);
+      await expect(locators.rows(page)).toHaveCount(1);
       await expect(locators.row(page, 0)).toHaveText('one');
 
       await pressRedo(page);
-      await expect(locators.contentDiv(page).locator('p')).toHaveCount(2);
+      await expect(locators.rows(page)).toHaveCount(2);
       await expect(locators.row(page, 0)).toHaveText('one');
       expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
     });
@@ -363,12 +368,39 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const anchorElement = anchorNode instanceof Text ? anchorNode.parentElement : anchorNode;
 
         return {
-          lineIndex: Array.from(document.querySelectorAll('[contenteditable="true"] p')).indexOf(anchorElement as HTMLParagraphElement),
+          lineIndex: Array.from(document.querySelectorAll('[contenteditable="true"] li')).indexOf(anchorElement as HTMLLIElement),
           offset: selection?.anchorOffset,
         };
       });
 
       expect(selection).toEqual({ lineIndex: 0, offset: 1 });
+    });
+
+    test('Verify undo with lineProcessing does not restore caret outside text node', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      const pageErrors: string[] = [];
+      page.on('pageerror', (error) => pageErrors.push(error.message));
+
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15, pasteSkipEmptyLines: false });
+
+      await test.step('Type value that lineProcessing turns into an empty row on undo', async () => {
+        await locators.textbox(page).click();
+        await page.keyboard.type('http://a', { delay: 10 });
+        await expect(locators.row(page, 0)).toHaveText('http://a');
+      });
+
+      await test.step('Undo does not throw IndexSizeError while restoring selection', async () => {
+        await pressUndo(page);
+        await page.waitForTimeout(100);
+
+        const selectionErrors = pageErrors.filter((message) => {
+          return message.includes('IndexSizeError') || message.includes('Failed to execute \'setStart\'');
+        });
+        expect(selectionErrors).toEqual([]);
+      });
     });
 
     test('Verify undo restores value before paste', {
@@ -380,31 +412,144 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await locators.textbox(page).click();
       await locators.textbox(page).evaluate((node, text) => {
-        const dataTransfer = new DataTransfer();
-        dataTransfer.setData('text/plain', text);
-        const event = new InputEvent('beforeinput', {
-          bubbles: true,
-          cancelable: true,
-          inputType: 'insertFromPaste',
-          dataTransfer,
-        });
-
+        const event = new Event('paste', { bubbles: true, cancelable: true });
+        (event as any).clipboardData = {
+          getData: (type: string) => (type === 'text/plain' ? text : ''),
+          types: ['text/plain'],
+        };
         node.dispatchEvent(event);
       }, 'first\nsecond\nthird');
 
-      await expect(locators.contentDiv(page).locator('p')).toHaveCount(3);
+      await expect(locators.rows(page)).toHaveCount(3);
       await expect(locators.row(page, 0)).toHaveText('first');
       await expect(locators.row(page, 1)).toHaveText('second');
       await expect(locators.row(page, 2)).toHaveText('third');
 
       await pressUndo(page);
-      await expect(locators.contentDiv(page).locator('p')).toHaveCount(0);
+      await expect(locators.rows(page)).toHaveCount(0);
 
       await pressRedo(page);
-      await expect(locators.contentDiv(page).locator('p')).toHaveCount(3);
+      await expect(locators.rows(page)).toHaveCount(3);
       await expect(locators.row(page, 0)).toHaveText('first');
       await expect(locators.row(page, 1)).toHaveText('second');
       await expect(locators.row(page, 2)).toHaveText('third');
+    });
+
+    test('Verify undo and redo after Backspace', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await locators.textbox(page).click();
+      await page.keyboard.type('abc', { delay: 10 });
+      await page.keyboard.press('Backspace');
+      await expect(locators.row(page, 0)).toHaveText('ab');
+
+      await pressUndo(page);
+      await expect(locators.row(page, 0)).toHaveText('abc');
+
+      await pressRedo(page);
+      await expect(locators.row(page, 0)).toHaveText('ab');
+    });
+
+    test('Verify undo and redo after Delete (forward)', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await locators.textbox(page).click();
+      await page.keyboard.type('abc', { delay: 10 });
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('Delete');
+      await expect(locators.row(page, 0)).toHaveText('bc');
+
+      await pressUndo(page);
+      await expect(locators.row(page, 0)).toHaveText('abc');
+
+      await pressRedo(page);
+      await expect(locators.row(page, 0)).toHaveText('bc');
+    });
+
+    test('Verify undo restores a range selection, not just the caret', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await locators.textbox(page).click();
+      await page.keyboard.type('abcdef', { delay: 10 });
+      // move caret after "ab" (from the end), then select "cd"
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('Shift+ArrowRight');
+      await page.keyboard.press('Shift+ArrowRight');
+      await page.keyboard.press('Delete');
+      await expect(locators.row(page, 0)).toHaveText('abef');
+
+      await pressUndo(page);
+      await expect(locators.row(page, 0)).toHaveText('abcdef');
+
+      const selection = await page.evaluate(() => {
+        const selection = document.getSelection();
+
+        return {
+          anchorOffset: selection?.anchorOffset,
+          focusOffset: selection?.focusOffset,
+          isCollapsed: selection?.isCollapsed,
+        };
+      });
+
+      expect(selection).toEqual({ anchorOffset: 2, focusOffset: 4, isCollapsed: false });
+    });
+  });
+
+  test.describe('Keyboard navigation', () => {
+    test('Verify Home and first character on empty row stay in current row', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
+
+      await test.step('Create an empty second row', async () => {
+        await locators.textbox(page).click();
+        await page.keyboard.type('one', { delay: 10 });
+        await page.keyboard.press('Enter');
+        await expect(locators.rows(page)).toHaveCount(2);
+        expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
+      });
+
+      await test.step('Home keeps caret on the empty row', async () => {
+        await page.keyboard.press('Home');
+        const selection = await page.evaluate(() => {
+          const rows = Array.from(document.querySelectorAll('ol[contenteditable="true"] li'));
+          const selection = document.getSelection();
+          const focusElement = selection?.focusNode instanceof Text
+            ? selection.focusNode.parentElement
+            : selection?.focusNode;
+
+          return {
+            lineIndex: rows.indexOf(focusElement as HTMLLIElement),
+            offset: selection?.focusOffset,
+          };
+        });
+
+        expect(selection.lineIndex).toBe(1);
+      });
+
+      await test.step('Typing first character into empty row does not drop it', async () => {
+        await page.keyboard.type('x', { delay: 10 });
+        await expect(locators.row(page, 1)).toHaveText('x');
+      });
     });
   });
 
@@ -484,15 +629,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await expect(locators.errorMessage(page, '3 errors')).toBeVisible();
       });
-
-      // works instable in playwright
-      // await test.step('Verify focus order when validation starts', async () => {
-      // await expect(locators.button(page, 'Next error')).toBeFocused();
-      // await page.keyboard.press('Tab');
-      // await expect(locators.button(page, 'Previous error')).toBeFocused();
-      // await page.keyboard.press('Tab');
-      // await expect(locators.button(page, 'Clear all')).toBeFocused();
-      // });
     });
 
     test('Verify Validation on BlurLine', {
@@ -610,14 +746,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify enter delimiter works', async () => {
         const text = 'Zoom in \nSecond line\n3 line\n4 line\n5 line';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.textbox(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(5);
       });
       await test.step('Verify comma delimiter works', async () => {
         await page.keyboard.press('Enter');
         const text = 'Zoom in ,Second line,3 line,4 line,5 line';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(10);
         await expect(locators.counter(page)).toHaveText('10/15of 15 lines');
         await locators.button(page, 'Clear all').click();
@@ -629,7 +765,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.textbox(page).click();
         await page.keyboard.type('http://', { delay: 10 });
         await page.keyboard.press('Enter');
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(2);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
         await page.keyboard.press('Backspace');
@@ -640,7 +776,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.type('http://Test', { delay: 100 });
         await page.keyboard.press('Space');
         await page.keyboard.press('Enter');
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(2);
         await expect(locators.counter(page)).toHaveText('1/15of 15 lines');
 
@@ -793,14 +929,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await test.step('Verify enter delimiter works', async () => {
         const text = 'Zoom in \nSecond row\n3 row\n4 row\n5 row';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.textbox(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         await expect(lineCount).toBe(5);
       });
       await test.step('Verify comma delimiter works', async () => {
         await page.keyboard.press('Enter');
         const text = 'Zoom in ,Second row,3 row,4 row,5 row';
         await page.keyboard.type(text, { delay: 10 });
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         expect(lineCount).toBe(10);
         await expect(locators.counter(page)).toHaveText('10/10of 10 linesLimit reached');
         await locators.button(page, 'Clear all').click();
@@ -812,7 +948,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.textbox(page).click();
         await page.keyboard.type('http://', { delay: 10 });
         await page.keyboard.press('Enter');
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         expect(lineCount).toBe(2);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
         await page.keyboard.press('Backspace');
@@ -822,7 +958,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.type('http://Test', { delay: 100 });
         await page.keyboard.press('Space');
         await page.keyboard.press('Enter');
-        const lineCount = await locators.contentDiv(page).locator('p').count();
+        const lineCount = await locators.rows(page).count();
         expect(lineCount).toBe(2);
         await expect(locators.counter(page)).toHaveText('1/10of 10 lines');
 
@@ -837,7 +973,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.waitForTimeout(100);
         await page.keyboard.type('Testhttp://', { delay: 100 });
         await page.keyboard.press('Enter');
-        const firstLine = await page.locator('div[contenteditable="true"] p').first();
+        const firstLine = await page.locator('ol[contenteditable="true"] li').first();
         const firstLineText = await firstLine.textContent();
         expect(firstLineText).not.toMatch(/^http:\/\//);
       });
@@ -1067,11 +1203,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.waitForTimeout(100);
 
-        await expect(locators.row(page, 0)).toHaveAttribute('data-errormessage', 'undefined');
+        await expect(locators.row(page, 0)).not.toHaveAttribute('data-errormessage');
         await expect(locators.row(page, 1)).toHaveAttribute(
           'data-errormessage',
           'Please remove invalid charsets from the movie name.',
         );
+        await expect(locators.row(page, 2)).not.toHaveAttribute('data-errormessage');
         await locators.row(page, 2).hover();
         await page.waitForTimeout(100);
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
@@ -1204,7 +1341,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.textbox(page).nth(1).click();
       await page.waitForTimeout(100);
       await expect(locators.textbox(page).nth(1)).not.toBeEmpty();
-      const paragraphs = locators.textbox(page).nth(1).locator('p');
+      const paragraphs = locators.textbox(page).nth(1).locator('li');
       await expect(paragraphs).toHaveCount(3);
       await expect(paragraphs.first()).toHaveText(/^#1\/3:/);
       await expect(paragraphs.nth(1)).toHaveText(/^#2\/3:/);
@@ -1224,7 +1361,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const text = 'Zoom in[] \nSecond \n //[third';
       await page.keyboard.type(text, { delay: 20 });
 
-      const paragraphs = locators.textbox(page).locator('p');
+      const paragraphs = locators.rows(page);
       await locators.button(page, 'validate').click();
 
       await expect(paragraphs.first()).toHaveAttribute('aria-invalid', 'true');
