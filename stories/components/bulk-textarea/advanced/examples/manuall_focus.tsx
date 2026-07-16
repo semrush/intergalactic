@@ -27,13 +27,20 @@ const lineProcessing = (line: string) => {
   return line.replace(/http:\/\//, '');
 };
 
+async function setFocus(inputFieldInstance: NSBulktextarea.InputField.Instance) {
+  const newLine = await inputFieldInstance.addLine('');
+  inputFieldInstance.focus(newLine, 0);
+}
+
 const Demo = () => {
-  const inputFieldRef = React.useRef<HTMLOListElement | null>(null);
+  const inputFieldRef = React.useRef<NSBulktextarea.InputField.Instance | null>(null);
   const [values, setValues] = React.useState(['first value']);
   const [isLimitExceeded, setIsLimitExceeded] = React.useState(false);
 
   React.useEffect(() => {
-    inputFieldRef.current?.focus();
+    if (inputFieldRef.current) {
+      setFocus(inputFieldRef.current);
+    }
   }, []);
 
   return (
@@ -69,7 +76,7 @@ const Demo = () => {
           <BulkTextarea.Counter />
         </Flex>
         <BulkTextarea.InputField
-          inputRef={inputFieldRef}
+          instanceRef={inputFieldRef}
           state={isLimitExceeded ? 'invalid' : 'normal'}
           commonErrorMessage={isLimitExceeded ? 'Error' : ''}
           aria-labelledby='keywords-label'

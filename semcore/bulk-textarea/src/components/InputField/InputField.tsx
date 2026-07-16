@@ -31,7 +31,7 @@ class InputField<T extends string | string[]> extends Component<
   {},
   NSBulktextarea.InputField.State,
   NSBulktextarea.InputField.DefaultProps
-> {
+> implements NSBulktextarea.InputField.Instance {
   static displayName = 'Textarea';
   static style = style;
 
@@ -335,11 +335,36 @@ class InputField<T extends string | string[]> extends Component<
       textarea.addEventListener('keydown', this.handleSelectAll.bind(this));
     }
 
-    if (props.inputRef) {
-      props.inputRef.current = textarea;
-    }
-
     return textarea;
+  }
+
+  public focus(node?: HTMLLIElement, offset?: number | [number, number]) {
+    this.textarea.focus();
+
+    if (node && offset !== undefined) {
+      const startOffset = Array.isArray(offset) ? offset[0] : offset;
+      const endOffset = Array.isArray(offset) ? offset[1] : offset;
+
+      this.setSelection(node, startOffset, endOffset);
+    }
+  }
+
+  public async addLine(value: string): Promise<HTMLLIElement> {
+    return new Promise((resolve) => {
+      const row = document.createElement('li');
+      if (value === '') {
+        row.innerHTML = this.emptyLineValue;
+      } else {
+        row.textContent = value;
+      }
+      const lastRow = this.textarea.lastChild;
+      if (lastRow instanceof HTMLLIElement) {
+        lastRow.after(row);
+      } else {
+        this.textarea.append(row);
+      }
+      resolve(row);
+    });
   }
 
   handleValueOutChange(value?: string | string[]) {
@@ -519,11 +544,6 @@ class InputField<T extends string | string[]> extends Component<
       this.toggleErrorsPopperByKeyboard(150);
     } else {
       this.toggleErrorsPopper('keyboardLineIndex', this.textarea);
-    }
-
-    const lastRow = this.textarea.lastChild?.firstChild;
-    if (lastRow instanceof Text && this.asProps.errorIndex === -1) {
-      this.setSelection(lastRow, lastRow.length, lastRow.length);
     }
   }
 

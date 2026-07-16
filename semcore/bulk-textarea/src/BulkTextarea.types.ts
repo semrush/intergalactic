@@ -170,10 +170,6 @@ declare namespace NSBulktextarea {
        * Function for process line after it was blurred
        */
       lineProcessing?: (line: string, lines: string[]) => string;
-      /**
-       * Ref to a contenteditable element.
-       */
-      inputRef?: React.MutableRefObject<HTMLOListElement>;
     };
     type DefaultProps = {
       defaultValue: '';
@@ -195,8 +191,13 @@ declare namespace NSBulktextarea {
       mouseLineIndex: number;
       visibleErrorPopper: boolean;
     };
+    interface Instance {
+      focus(): void;
+      focus(node: HTMLLIElement, offset: number | [number, number]): void;
+      addLine(value: string): Promise<HTMLLIElement>;
+    }
 
-    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>>;
+    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>, {}, [], Instance>;
   }
 
   namespace Counter {
