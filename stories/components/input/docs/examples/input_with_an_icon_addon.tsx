@@ -1,3 +1,4 @@
+import SearchM from '@semcore/icon/Search/m';
 import { Box } from '@semcore/ui/base-components';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
@@ -12,9 +13,7 @@ const Demo = () => {
       <Box mt={2} mb={4}>
         <Input size='l' w={300}>
           <Input.Addon>
-            <Text color='text-secondary' id='prefix-l'>
-              Permanent text:
-            </Text>
+            <SearchM />
           </Input.Addon>
           <Input.Value
             placeholder='Placeholder'
@@ -29,9 +28,7 @@ const Demo = () => {
       <Box mt={2}>
         <Input size='m' w={300}>
           <Input.Addon>
-            <Text color='text-secondary' id='prefix-m'>
-              Permanent text:
-            </Text>
+            <SearchM />
           </Input.Addon>
           <Input.Value
             placeholder='Placeholder'

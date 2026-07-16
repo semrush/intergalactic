@@ -102,16 +102,14 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
-SAddon[size='m']:not(SButton) {
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
-}
-
+SAddon[size='m'][neighborLocation='right']:not(SButton),
 SAddon[size='l'][neighborLocation='right']:not(SButton) {
-  padding: 0 var(--intergalactic-spacing-2x, 8px) 0 var(--intergalactic-spacing-3x, 12px);
+  padding: 0 var(--intergalactic-spacing-1x, 4px) 0 var(--intergalactic-spacing-3x, 12px);
 }
 
+SAddon[size='m'][neighborLocation='left']:not(SButton),
 SAddon[size='l'][neighborLocation='left']:not(SButton) {
-  padding: 0 var(--intergalactic-spacing-3x, 12px) 0 var(--intergalactic-spacing-2x, 8px);
+  padding: 0 var(--intergalactic-spacing-3x, 12px) 0 var(--intergalactic-spacing-1x, 4px);
 }
 
 SInput SAddon:nth-last-child(2) {
@@ -119,7 +117,7 @@ SInput SAddon:nth-last-child(2) {
 }
 
 SValue[size='m'] {
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
 }
 
 SValue[size='l'] {
