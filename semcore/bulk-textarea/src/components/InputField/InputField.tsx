@@ -17,6 +17,13 @@ import type { NSBulktextarea } from '../../BulkTextarea.types';
 
 type Props<T extends string | string[]> = Intergalactic.InternalTypings.InferChildComponentProps<NSBulktextarea.InputField.Component<T>, BulkTextareaRootType, 'InputField'>;
 
+type InputEventRange = {
+  startElement: Text;
+  endElement: Text;
+  startOffset: number;
+  endOffset: number;
+};
+
 class InputField<T extends string | string[]> extends Component<
   Props<T>,
   typeof InputField.enhance,
@@ -80,6 +87,8 @@ class InputField<T extends string | string[]> extends Component<
 
     this.handlePaste = this.handlePaste.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCompositionTextStart = this.handleCompositionTextStart.bind(this);
+    this.handleCompositionTextEnd = this.handleCompositionTextEnd.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -409,31 +418,93 @@ class InputField<T extends string | string[]> extends Component<
     this.insertFromPaste(event);
   }
 
-  handleChange(event: InputEvent) {
+  handleCompositionTextStart() {
     this.history.push(this.createHistoryState());
+  }
+
+  handleCompositionTextEnd(event: CompositionEvent) {
+    event.preventDefault();
+
+    const selection = document.getSelection();
+    const liElement = selection?.focusNode?.parentElement;
+
+    if (selection && liElement instanceof HTMLLIElement) {
+      const offset = selection.focusOffset;
+      liElement.textContent = (liElement.textContent ?? '')
+        .split('')
+        .filter((s) => s !== this.emptyLineValueJs)
+        .join('');
+
+      selection.setPosition(liElement.firstChild, offset);
+    }
+
+    setTimeout(() => {
+      this.recalculateErrors();
+    }, 0);
+
+    this.toggleErrorsPopperByKeyboard(0);
+
+    this.recalculateLinesCount();
+  }
+
+  handleChange(event: InputEvent) {
+    event.preventDefault();
+
+    const data = event.data ?? '';
+    const staticRange = event.getTargetRanges()?.[0];
+    if (!staticRange) {
+      logger.warn(true, `No staticRange in event: `, event);
+      return;
+    }
+
+    const [startElement, endElement] = this.getRangeTextNodes(staticRange);
+    const range: InputEventRange = {
+      startElement,
+      endElement,
+      startOffset: staticRange.startOffset,
+      endOffset: staticRange.endOffset,
+    };
+
     switch (event.inputType) {
       case 'insertText': {
-        this.insertText(event);
+        this.history.push(this.createHistoryState());
+        if (this.asProps.linesDelimiters?.includes(data)) {
+          this.insertParagraph(range);
+          return;
+        }
+
+        this.insertText(data, range);
         break;
       }
+      case 'insertCompositionText':
+      case 'historyUndo':
+      case 'historyRedo':
       case 'insertFromPaste': {
-        // handled by 'paste' event
+        // handled by native events
         return;
       }
       case 'insertParagraph': {
-        this.insertParagraph(event);
+        this.history.push(this.createHistoryState());
+        this.insertParagraph(range);
         break;
       }
       case 'deleteContentForward':
       case 'deleteContentBackward':
       case 'deleteByCut': {
-        this.deleteText(event);
+        this.history.push(this.createHistoryState());
+        this.deleteText(range, event.inputType);
         break;
       }
       default: {
         logger.warn(true, `Unknown input type "${event.inputType}"`, event);
       }
     }
+
+    setTimeout(() => {
+      this.recalculateErrors();
+    }, 0);
+
+    this.toggleErrorsPopperByKeyboard(0);
 
     this.recalculateLinesCount();
 
@@ -558,84 +629,33 @@ class InputField<T extends string | string[]> extends Component<
     );
   }
 
-  private insertText(event: InputEvent) {
-    event.preventDefault();
+  private insertText(data: string, range: InputEventRange) {
+    const { startElement, endElement } = range;
+    const resultText = `${startElement.textContent.slice(0, range.startOffset)}${data}${endElement.textContent.slice(range.endOffset)}`;
 
-    const data = event.data;
-    const staticRange = event.getTargetRanges()?.[0];
+    // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
+    startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
 
-    if (!data) {
-      logger.warn(true, `No data in insertText event: `, event);
-      return;
+    document.getSelection()?.setPosition(startElement, range.startOffset + 1);
+
+    if (startElement.parentElement instanceof HTMLLIElement) {
+      this.validateLine(startElement.parentElement);
+      this.setErrorIndex(startElement.parentElement);
     }
 
-    if (!staticRange) {
-      logger.warn(true, `No staticRange in event: `, event);
-      return;
+    if (startElement !== endElement) {
+      this.clearNodes(startElement, endElement);
     }
-
-    if (this.asProps.linesDelimiters?.includes(data)) {
-      this.insertParagraph(event);
-      return;
-    }
-
-    const nodes = this.textarea.childNodes;
-
-    if (nodes.length === 0) {
-      const firstRow = document.createElement('li');
-      const text = document.createTextNode(data);
-      firstRow.append(text);
-      this.textarea.append(firstRow);
-
-      document.getSelection()?.setPosition(firstRow, data.length);
-
-      this.validateLine(firstRow);
-      this.setErrorIndex(firstRow);
-    } else {
-      const [startElement, endElement] = this.getRangeTextNodes(staticRange);
-      const resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${data}${endElement.textContent.slice(staticRange.endOffset)}`;
-
-      // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
-      startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
-
-      document.getSelection()?.setPosition(startElement, staticRange.startOffset + 1);
-
-      if (startElement.parentElement instanceof HTMLLIElement) {
-        this.validateLine(startElement.parentElement);
-        this.setErrorIndex(startElement.parentElement);
-      }
-
-      if (startElement !== endElement) {
-        this.clearNodes(startElement, endElement);
-      }
-    }
-
-    setTimeout(() => {
-      this.recalculateErrors();
-    }, 0);
-
-    this.toggleErrorsPopperByKeyboard(0);
   }
 
-  private insertParagraph(event: InputEvent) {
-    event.preventDefault();
-
-    const staticRange = event.getTargetRanges()?.[0];
-
-    if (!staticRange) {
-      logger.warn(true, `No staticRange in event: `, event);
-      return;
-    }
-
-    const nodes = this.getRangeTextNodes(staticRange);
-
-    let startElement = nodes[0];
-    const endElement = nodes[1];
+  private insertParagraph(range: InputEventRange) {
+    let startElement = range.startElement;
+    const endElement = range.endElement;
     const parent = startElement.parentElement;
 
     if (parent instanceof HTMLLIElement) {
-      const currentLineText = startElement.textContent.slice(0, staticRange.startOffset);
-      const newLineText = endElement.textContent.slice(staticRange.endOffset);
+      const currentLineText = startElement.textContent.slice(0, range.startOffset);
+      const newLineText = endElement.textContent.slice(range.endOffset);
 
       startElement.textContent = currentLineText;
       if (startElement.textContent === '') {
@@ -664,41 +684,25 @@ class InputField<T extends string | string[]> extends Component<
       }
 
       this.setErrorIndex(parent);
-
-      setTimeout(() => {
-        this.recalculateErrors();
-      }, 0);
-
-      this.toggleErrorsPopperByKeyboard(0);
     } else {
       logger.warn(true, `Not texts in start/end`, { startElement, endElement });
     }
   }
 
-  private deleteText(event: InputEvent) {
-    event.preventDefault();
-    const staticRange = event.getTargetRanges()?.[0];
-
-    if (!staticRange) {
-      logger.warn(true, `No staticRange in event: `, event);
-      return;
-    }
-
-    const nodes = this.getRangeTextNodes(staticRange);
-
-    let startElement = nodes[0];
-    const endElement = nodes[1];
+  private deleteText(range: InputEventRange, inputType: string) {
+    let startElement = range.startElement;
+    const endElement = range.endElement;
     const parent = startElement.parentElement;
 
     if (parent instanceof HTMLLIElement) {
       let resultText = '';
 
-      if (!(staticRange.startContainer instanceof HTMLOListElement) && !(staticRange.endContainer instanceof HTMLOListElement)) {
-        resultText = `${startElement.textContent.slice(0, staticRange.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(staticRange.endOffset)}`;
+      if (!(range.startElement instanceof HTMLOListElement) && !(range.endElement instanceof HTMLOListElement)) {
+        resultText = `${startElement.textContent.slice(0, range.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(range.endOffset)}`;
       }
 
       const next = parent.nextSibling;
-      if (resultText === '' && event.inputType === 'deleteContentForward' && endElement.textContent === this.emptyLineValueJs && next) {
+      if (resultText === '' && inputType === 'deleteContentForward' && endElement.textContent === this.emptyLineValueJs && next) {
         this.textarea.removeChild(parent);
         document.getSelection()?.setPosition(next, 0);
       } else {
@@ -709,7 +713,7 @@ class InputField<T extends string | string[]> extends Component<
           startElement.textContent = resultText;
         }
 
-        document.getSelection()?.setPosition(startElement, staticRange.startContainer instanceof HTMLOListElement ? 0 : staticRange.startOffset);
+        document.getSelection()?.setPosition(startElement, range.startElement instanceof HTMLOListElement ? 0 : range.startOffset);
       }
 
       this.validateLine(parent);
@@ -722,12 +726,6 @@ class InputField<T extends string | string[]> extends Component<
       }
 
       this.setErrorIndex(parent);
-
-      setTimeout(() => {
-        this.recalculateErrors();
-      }, 0);
-
-      this.toggleErrorsPopperByKeyboard(0);
     }
   }
 
@@ -855,7 +853,18 @@ class InputField<T extends string | string[]> extends Component<
       return node;
     }
     if (node instanceof HTMLOListElement) {
-      const item = this.textarea.childNodes.item(type === 'start' ? range.startOffset : range.endOffset - 1);
+      const children = this.textarea.childNodes;
+      const item = children.item(type === 'start' ? range.startOffset : Math.max(0, range.endOffset - 1));
+
+      if (!item) {
+        const node = document.createElement('li');
+        const text = document.createTextNode(this.emptyLineValueJs);
+        node.append(text);
+        this.textarea.append(node);
+
+        return text;
+      }
+
       const text = item.firstChild;
 
       if (text instanceof Text) {
@@ -1261,6 +1270,8 @@ class InputField<T extends string | string[]> extends Component<
   private addEventListeners(textarea: HTMLElement) {
     textarea.addEventListener('paste', this.handlePaste);
     textarea.addEventListener('beforeinput', this.handleChange);
+    textarea.addEventListener('compositionstart', this.handleCompositionTextStart);
+    textarea.addEventListener('compositionend', this.handleCompositionTextEnd);
     textarea.addEventListener('focus', this.handleFocus);
     textarea.addEventListener('blur', this.handleBlur);
     textarea.addEventListener('keydown', this.handleKeyDown);
@@ -1275,6 +1286,8 @@ class InputField<T extends string | string[]> extends Component<
   private removeEventListeners(textarea: HTMLElement) {
     textarea.removeEventListener('paste', this.handlePaste);
     textarea.removeEventListener('beforeinput', this.handleChange);
+    textarea.removeEventListener('compositionstart', this.handleCompositionTextStart);
+    textarea.removeEventListener('compositionend', this.handleCompositionTextEnd);
     textarea.removeEventListener('focus', this.handleFocus);
     textarea.removeEventListener('blur', this.handleBlur);
     textarea.removeEventListener('keydown', this.handleKeyDown);
