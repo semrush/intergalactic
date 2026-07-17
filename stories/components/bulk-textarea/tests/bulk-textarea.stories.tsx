@@ -61,6 +61,11 @@ const basicPropsArgTypes = {
     options: ['enter', 'comma', 'semicolon', 'space', 'enter-and-comma', 'undefined'],
     mapping: linesDelimiterOptions,
   },
+  lineProcessing: {
+    control: { type: 'select' },
+    options: ['undefined', 'remove-http', 'trim'],
+    mapping: pasteLineProcessingOptions,
+  },
 } as const;
 
 export const BasicProps: StoryObj = {
@@ -71,6 +76,7 @@ export const BasicProps: StoryObj = {
     pasteDelimiter: 'newline',
     pasteLineProcessing: 'remove-http',
     linesDelimiters: 'comma',
+    lineProcessing: 'remove-http',
   },
 };
 

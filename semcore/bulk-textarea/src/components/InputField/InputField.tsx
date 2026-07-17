@@ -237,14 +237,14 @@ class InputField<T extends string | string[]> extends Component<
 
           this.validateLine(paragraph);
         }
-
-        setTimeout(() => {
-          const newNode = this.textarea.childNodes.item(keyboardLineIndex);
-          if (newNode) {
-            this.setErrorIndex(newNode);
-          }
-        }, 0); // need this timeout to update errorIndex to the new (usually empty) line
       }
+
+      setTimeout(() => {
+        const newNode = this.textarea.childNodes.item(keyboardLineIndex);
+        if (newNode) {
+          this.setErrorIndex(newNode);
+        }
+      }, 0); // need this timeout to update errorIndex to the new (usually empty) line
 
       this.recalculateErrors();
       this.recalculateLinesCount();
