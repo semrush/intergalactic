@@ -1,4 +1,5 @@
-import { expect, nvdaTest as test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import { nvdaTest as test } from '@semcore/testing-utils/playwright.nvda';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -15,6 +16,6 @@ test.describe(`@switch ${TAG.NVDA}`, () => {
 
     await nvda.press('Enter');
     await page.waitForTimeout(300);
-    expect(await nvda.itemText()).toContain('checked');
+    expect(await nvda.itemText()).toContain('on');
   });
 });

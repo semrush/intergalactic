@@ -1,5 +1,4 @@
 import AxeBuilder from '@axe-core/playwright';
-import { nvdaTest as nvdaBase } from '@guidepup/playwright';
 import { test as base } from '@playwright/test';
 import { feature, label, story, suite } from 'allure-js-commons';
 import type axe from 'axe-core';
@@ -33,7 +32,7 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
 };
 
 // eslint-disable-next-line no-empty-pattern
-const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
+export const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
   const filePathParts = testInfo.file.split('/');
 
   let component = 'unknown-component';
@@ -71,24 +70,8 @@ const test = base.extend<{ testHook: void }>({
   },
 });
 
-const nvdaTest = nvdaBase.extend<{ testHook: void; nvdaPageSetup: void }>({
-  testHook: [beforeEachTests, { auto: true }],
-  nvdaPageSetup: [
-    async ({ page, nvda }, use) => {
-      const originalSetContent = page.setContent.bind(page);
-      page.setContent = async (html: string, options?: any) => {
-        await originalSetContent(html, options);
-        await page.waitForSelector('#root:not(:empty)', { timeout: 5000 });
-        // await nvda.navigateToWebContent();
-      };
-      await use();
-    },
-    { auto: true },
-  ],
-});
-
 export type { Page };
 // eslint-disable-next-line import/export
 export * from '@playwright/test';
 // eslint-disable-next-line import/export
-export { AxeBuilder, test, nvdaTest };
+export { AxeBuilder, test };
