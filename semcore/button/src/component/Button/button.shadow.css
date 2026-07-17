@@ -54,10 +54,20 @@ SButton[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
+SButton[size='m']:has(SAddon:only-child) {
+  width: var(--intergalactic-form-control-m, 32px);
+  min-width: var(--intergalactic-form-control-m, 32px);
+}
+
 SButton[size='l'] {
   height: var(--intergalactic-form-control-l, 44px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
+}
+
+SButton[size='l']:has(SAddon:only-child) {
+  width: var(--intergalactic-form-control-l, 44px);
+  min-width: var(--intergalactic-form-control-l, 44px);
 }
 
 SButton[theme='primary-info'] {
@@ -305,8 +315,8 @@ SText {
 }
 
 SText[size='m'] {
-  margin-left: var(--intergalactic-content-gap-medium, 4px);
-  margin-right: var(--intergalactic-content-gap-medium, 4px);
+  margin-left: var(--intergalactic-content-gap-medium, 6px);
+  margin-right: var(--intergalactic-content-gap-medium, 6px);
   line-height: var(--intergalactic-lh-200, 142%);
 
   &:only-child {
@@ -324,8 +334,8 @@ SText[size='m'] {
 }
 
 SText[size='l'] {
-  margin-left: var(--intergalactic-content-gap-medium, 4px);
-  margin-right: var(--intergalactic-content-gap-medium, 4px);
+  margin-left: var(--intergalactic-content-gap-medium, 6px);
+  margin-right: var(--intergalactic-content-gap-medium, 6px);
   line-height: var(--intergalactic-lh-300, 150%);
 
   &:only-child {

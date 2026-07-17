@@ -149,7 +149,6 @@
       "dropdown",
       "feature-highlight",
       "fullscreen-modal",
-      "inline-input",
       "input",
       "modal",
       "pills",
@@ -396,7 +395,6 @@
       "checkbox",
       "color-picker",
       "feedback-form",
-      "inline-input",
       "input",
       "input-tags",
       "pills",
@@ -421,7 +419,6 @@
       "dropdown",
       "feedback-form",
       "fullscreen-modal",
-      "inline-input",
       "input",
       "pills",
       "radio",
@@ -1134,7 +1131,8 @@
     "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Background of the regular secondary control.",
     "components": [
-      "button"
+      "button",
+      "inline-input"
     ]
   },
   {
@@ -3073,7 +3071,10 @@
     "name": "--intergalactic-content-inset-inline",
     "value": "12px",
     "description": "Horizontal inset for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "button",
+      "input"
+    ]
   },
   {
     "name": "--intergalactic-content-gap-small",
@@ -3085,13 +3086,18 @@
     "name": "--intergalactic-content-gap-medium",
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "button",
+      "input"
+    ]
   },
   {
     "name": "--intergalactic-content-gap-large",
     "value": "8px",
     "description": "Large gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-addon-rounded",
@@ -3139,6 +3145,7 @@
       "date-picker",
       "dropdown-menu",
       "feature-highlight",
+      "inline-input",
       "input",
       "pills",
       "select",

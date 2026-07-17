@@ -9,7 +9,8 @@ SPickerFormat {
   line-height: normal;
   text-decoration: none;
   align-items: center;
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border: none;
+  border-left: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   border-radius: 0 var(--intergalactic-control-rounded, 6px)
     var(--intergalactic-control-rounded, 6px) 0;
   box-shadow: none;
@@ -35,19 +36,18 @@ SPickerFormat {
 }
 
 SPickerFormat[size='m'] {
-  height: var(--intergalactic-form-control-m, 32px);
+  width: 40px;
+  height: calc(var(--intergalactic-form-control-m, 32px) - 2px);
   font-size: var(--intergalactic-fs-200, 14px);
-  /* disable-tokens-validator */
-  margin: 0 -1px 0 0;
   & SPickerFormatText {
     margin: 0 var(--intergalactic-spacing-2x, 8px);
   }
 }
 
 SPickerFormat[size='l'] {
-  height: var(--intergalactic-form-control-l, 44px);
+  width: 52px;
+  height: calc(var(--intergalactic-form-control-l, 44px) - 2px);
   font-size: var(--intergalactic-fs-300, 16px);
-  margin: 0 -1px 0 0;
   & SPickerFormatText {
     margin: 0 var(--intergalactic-spacing-3x, 12px);
   }

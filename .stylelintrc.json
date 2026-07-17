@@ -9,7 +9,8 @@
       {
         "ignoreProperties": [
           "vertical-anchor",
-          "animation-timeline"
+          "animation-timeline",
+          "field-sizing"
         ]
       }
     ],
