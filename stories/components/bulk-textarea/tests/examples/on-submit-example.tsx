@@ -1,5 +1,5 @@
 import { Box, Flex } from '@semcore/ui/base-components';
-import type { BulkTextareaProps, ErrorItem } from '@semcore/ui/bulk-textarea';
+import type { NSBulktextarea } from '@semcore/ui/bulk-textarea';
 import BulkTextarea from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
@@ -20,13 +20,13 @@ const validateRow = (row: string, rows: string[]) => {
   };
 };
 
-const Demo = (props: BulkTextareaProps<any>) => {
+const Demo = (props: NSBulktextarea.Props<any>) => {
   const [value, setValue] = React.useState('');
-  const [errors, setErrors] = React.useState<ErrorItem[]>([]);
+  const [errors, setErrors] = React.useState<NSBulktextarea.ErrorItem[]>([]);
   const [showErrors, setShowErrors] = React.useState(false);
 
   const handleSubmit = React.useCallback(() => {
-    const errors: ErrorItem[] = [];
+    const errors: NSBulktextarea.ErrorItem[] = [];
     const rows = value.split('\n');
     rows.forEach((line, index) => {
       const { isValid, errorMessage } = validateRow(line, rows);
