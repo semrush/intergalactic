@@ -55,7 +55,7 @@ const Demo = () => {
         linesDelimiters={[',']}
         readonly={false}
         disabled={false}
-        placeholder={'Keyword - broad match &#10; [Keyword] - exact match'}
+        placeholder={['Keyword - broad match', '[Keyword] - exact match']}
         minRows={4}
         maxRows={4}
         validateOn={['blurLine']}

@@ -84,9 +84,9 @@ declare namespace NSBulktextarea {
        */
       id?: string;
       /**
-       * Placeholder for field
+       * Placeholder for field. For multiline placeholder use an array of strings
        */
-      placeholder?: string;
+      placeholder?: string | string[];
       /**
        * String to render in textarea. OnChanging value, it will go throw paste pipeline
        */

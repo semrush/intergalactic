@@ -311,7 +311,7 @@ class InputField<T extends string | string[]> extends Component<
       textarea.setAttribute('id', props.id);
     }
     if (props.placeholder) {
-      textarea.setAttribute('placeholder', props.placeholder);
+      textarea.dataset.placeholder = Array.isArray(props.placeholder) ? props.placeholder.join('\n') : props.placeholder;
     }
     const { extractedAriaProps } = extractAriaProps(props);
     for (const key in extractedAriaProps) {
