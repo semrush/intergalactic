@@ -75,12 +75,12 @@ test.describe(`${TAG.VISUAL} `, () => {
         if (await m_size.count() > 0) {
           const tabLinesCount = await locators.tabLines(page).count();
           for (let i = 0; i < tabLinesCount; i++) {
-            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '28px');
+            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '32px');
           }
         } else if (await l_size.count() > 0) {
           const tabLinesCount = await locators.tabLines(page).count();
           for (let i = 0; i < tabLinesCount; i++) {
-            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '40px');
+            await expect(locators.tabLines(page).nth(i)).toHaveCSS('height', '44px');
           }
         }
       });
