@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["semcore", "tools", "playground"],
+  "exclude": [
+    "node_modules",
+    "tools/icon-transform-svg/__tests__",
+    "__tests__"
+  ]
+}

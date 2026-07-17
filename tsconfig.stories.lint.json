@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["stories", "semcore/**/__tests__"],
+  "exclude": [
+    "node_modules",
+    "tools/icon-transform-svg/__tests__"
+  ]
+}
