@@ -1904,7 +1904,7 @@ export const theme: Theme = {
         description: 'Large size of the controls.',
       },
     },
-    spacings: {
+    spacing: {
       content_inset_inline: {
         value: `${SCALE_INDENT * 3}px`,
         description: 'Horizontal inset for content inside controls and surfaces.',
@@ -2203,7 +2203,7 @@ export type SemanticTokens = {
   };
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
-  spacings: {
+  spacing: {
     content_inset_inline: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
