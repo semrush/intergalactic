@@ -3073,7 +3073,9 @@
     "name": "--intergalactic-content-inset-inline",
     "value": "12px",
     "description": "Horizontal inset for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-content-gap-small",
@@ -3085,13 +3087,17 @@
     "name": "--intergalactic-content-gap-medium",
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-content-gap-large",
     "value": "8px",
     "description": "Large gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-addon-rounded",

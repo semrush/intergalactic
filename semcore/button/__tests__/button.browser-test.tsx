@@ -91,8 +91,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -151,8 +151,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -279,8 +279,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -340,8 +340,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -469,8 +469,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -530,8 +530,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
