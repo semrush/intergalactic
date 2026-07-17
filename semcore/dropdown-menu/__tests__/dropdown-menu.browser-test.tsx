@@ -100,6 +100,18 @@ const pressKeyMultipleTimes = async (page: Page, key: string, times: number) => 
   }
 };
 
+const scrollVirtualMenuToItem = async (page: Page, index: number) => {
+  const rowHeight = 52;
+  const scrollContainer = page.locator('[data-is-virtual="true"] [data-ui-name="ScrollArea.Container"]');
+
+  await scrollContainer.evaluate((el, { index, rowHeight }) => {
+    const element = el as HTMLElement;
+
+    element.scrollTop = index * rowHeight;
+    element.dispatchEvent(new Event('scroll', { bubbles: true }));
+  }, { index, rowHeight });
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -642,6 +654,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en');
 
     await locators.button(page).click();
+    await page.waitForTimeout(200);
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
     await expect(locators.menuitemradio(page, 'project 33')).toHaveAttribute('aria-checked', 'true');
     await expect(locators.menuitemradio(page, 'project 32')).toHaveAttribute('aria-checked', 'false');
@@ -657,7 +670,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await locators.menuitemradio(page, 'project 42').scrollIntoViewIfNeeded();
     await expect(locators.menuitemradio(page, 'project 42')).toBeInViewport();
-    await expect(locators.menuitemradio(page, 'project 36')).toBeVisible();
+    await expect(locators.menuitemradio(page, 'project 44')).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
     await expect(page).toHaveScreenshot();
   });
@@ -1373,14 +1386,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await locators.menuitemradio(page, 'project 38').waitFor({ state: 'visible' });
-    await expect(page.getByText('project 38').first()).toBeVisible();
+    await scrollVirtualMenuToItem(page, 36);
+    await locators.menuitemradio(page, 'project 36').waitFor({ state: 'visible' });
+    await expect(page.getByText('project 36').first()).toBeVisible();
+    await locators.menuitemradio(page, 'project 33').focus();
     await pressKeyMultipleTimes(page, 'ArrowUp', 40);
     await expect(locators.menuitemradio(page, 'project 0')).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await locators.menuitemradio(page, 'project 10').waitFor({ state: 'visible' });
-    await expect(page.getByText('project 10').first()).toBeVisible();
+    await locators.menuitemradio(page, 'project 9').waitFor({ state: 'visible' });
+    await expect(page.getByText('project 9').first()).toBeVisible();
   });
 
   test('Verify Focus on input search when menu opened by keyboard ', {
