@@ -84,7 +84,7 @@ export abstract class Component<
 > extends PureComponent<Props, State> {
   protected __defaultProps: DefaultProps = {} as DefaultProps;
 
-  protected constructor(props: Props) {
+  constructor(props: Props) {
     super(props);
 
     if (props.instanceRef) {
