@@ -17,7 +17,7 @@ const meta: Meta = {
 
 export default meta;
 
-const chartPaletteOptions = Array.from({ length: 15 }, (_, i) => `chart-palette-order-${i + 2}`);
+const chartPaletteOptions = Array.from({ length: 24 }, (_, i) => `chart-palette-order-${i + 1}`);
 
 const baseControls = {
   loading: { control: 'boolean' },

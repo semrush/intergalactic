@@ -182,20 +182,35 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@ellipsis',
       '@tooltip'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { ellipsisTitle: true, withTooltipInBody: true, withFooter: true });
+    const titleText = 'Heading 6, 16px Heading 6, 16px';
+
+    await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', {
+      ellipsisTitle: true,
+      withTooltipInBody: true,
+      withFooter: true,
+      animationsDisabled: true,
+    });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await expect(locators.button(page, 'Close')).toBeFocused();
-    await locators.hint(page).waitFor({ state: 'visible' });
+    await locators.hint(page).filter({ hasText: 'Close' }).waitFor({ state: 'visible' });
 
-    const title = page.locator('h6[data-ui-name="SidePanel.Title"]');
-    const box = await title.boundingBox();
+    const title = locators.title(page);
+    await expect(title).toHaveText(titleText);
+    await expect.poll(async () => {
+      return title.evaluate((el) => el.scrollWidth > el.clientWidth);
+    }).toBe(true);
 
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    }
-    await locators.hint(page).nth(1).waitFor({ state: 'visible' });
+    await title.hover();
+    await locators.hint(page).filter({ hasText: titleText }).waitFor({ state: 'visible' });
+    await page.waitForFunction((expectedText) => {
+      const titleHint = Array.from(document.querySelectorAll<HTMLElement>('[data-ui-name="Hint"]'))
+        .find((hint) => hint.textContent?.includes(expectedText));
+
+      return titleHint && getComputedStyle(titleHint).opacity === '1';
+    }, titleText);
+    await expect(locators.hint(page)).toHaveCount(2);
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
   });
 
