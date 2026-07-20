@@ -223,6 +223,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Type immediately after clear starts fresh, not append', async () => {
+        await page.waitForTimeout(300);
+        await locators.textbox(page).click();
         await page.keyboard.type('new text', { delay: 20 });
         await expect(locators.counter(page)).toHaveText('1/15of 15 lines');
         const lineCount = await locators.rows(page).count();
