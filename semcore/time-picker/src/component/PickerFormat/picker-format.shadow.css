@@ -9,6 +9,7 @@ SPickerFormat {
   line-height: normal;
   text-decoration: none;
   align-items: center;
+  justify-content: center;
   border: none;
   border-radius: 0 calc(var(--intergalactic-control-rounded, 6px) - 1px)
     calc(var(--intergalactic-control-rounded, 6px) - 1px) 0; /* For smooth input and button border alignment */
@@ -47,7 +48,7 @@ SPickerFormat {
 }
 
 SPickerFormat[size='m'] {
-  width: 40px;
+  width: 46px;
   height: calc(var(--intergalactic-form-control-m, 32px) - 2px);
   font-size: var(--intergalactic-fs-200, 14px);
 
@@ -56,12 +57,12 @@ SPickerFormat[size='m'] {
   }
 
   & SPickerFormatText {
-    margin: 0 var(--intergalactic-spacing-2x, 8px);
+    margin: 0 var(--intergalactic-content-inset-inline, 12px);
   }
 }
 
 SPickerFormat[size='l'] {
-  width: 52px;
+  width: 49px;
   height: calc(var(--intergalactic-form-control-l, 44px) - 2px);
   font-size: var(--intergalactic-fs-300, 16px);
 
@@ -70,7 +71,7 @@ SPickerFormat[size='l'] {
   }
 
   & SPickerFormatText {
-    margin: 0 var(--intergalactic-spacing-3x, 12px);
+    margin: 0 var(--intergalactic-content-inset-inline, 12px);
   }
 }
 

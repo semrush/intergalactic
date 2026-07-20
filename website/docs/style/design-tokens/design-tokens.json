@@ -3073,7 +3073,8 @@
     "description": "Horizontal inset for content inside controls and surfaces.",
     "components": [
       "button",
-      "input"
+      "input",
+      "time-picker"
     ]
   },
   {
