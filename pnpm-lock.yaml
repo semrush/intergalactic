@@ -75,9 +75,12 @@ importers:
       '@eslint/js':
         specifier: 9.27.0
         version: 9.27.0
+      '@guidepup/guidepup':
+        specifier: ^0.28.1
+        version: 0.28.1
       '@guidepup/playwright':
-        specifier: 0.15.0
-        version: 0.15.0(@guidepup/guidepup@0.24.1)(@playwright/test@1.58.2)
+        specifier: 0.17.0
+        version: 0.17.0(@guidepup/guidepup@0.28.1)(@playwright/test@1.58.2)
       '@jridgewell/set-array':
         specifier: 1.1.2
         version: 1.1.2
@@ -4642,10 +4645,13 @@ packages:
   '@guidepup/guidepup@0.24.1':
     resolution: {integrity: sha512-L33QKSzeceTOq/DaxAhEkM6fEbJmzkOF2K0U6AsN0zuzy1T4/2LVsLG9f9IPge70T6XgUF7fsCzYotVo4FNk/A==}
 
-  '@guidepup/playwright@0.15.0':
-    resolution: {integrity: sha512-HT1stSr8TMw3PDfHjzs5fum1xNwcss5Z4X34My9rgr/Gke1x/pBb46T/Yac1lzC3JVN7LXQbTorbgK33qMsiTA==}
+  '@guidepup/guidepup@0.28.1':
+    resolution: {integrity: sha512-z0v8cuEU4w8wwKAg/C1YpxdQKMz+mu54aOnNYfzGRDEiw7JE0vHFCfLzG3TUU1qbaI1bqtCKtfsEXb3dbsXCQw==}
+
+  '@guidepup/playwright@0.17.0':
+    resolution: {integrity: sha512-bG9ejx9wXM/LbneuXZHp3bbh6zN66wsXJRl2K04bPnGQoQiLqlGwNuKuqQquDg7kRT2XziNddbOk72vdw1j9qg==}
     peerDependencies:
-      '@guidepup/guidepup': '>=0.22.1'
+      '@guidepup/guidepup': '>=0.27.0'
       '@playwright/test': ^1.57.0
 
   '@hono/node-server@1.19.14':
@@ -17208,9 +17214,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@guidepup/playwright@0.15.0(@guidepup/guidepup@0.24.1)(@playwright/test@1.58.2)':
+  '@guidepup/guidepup@0.28.1':
     dependencies:
-      '@guidepup/guidepup': 0.24.1
+      regedit: 5.1.2
+      semver: 7.7.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@guidepup/playwright@0.17.0(@guidepup/guidepup@0.28.1)(@playwright/test@1.58.2)':
+    dependencies:
+      '@guidepup/guidepup': 0.28.1
       '@playwright/test': 1.58.2
 
   '@hono/node-server@1.19.14(hono@4.12.23)':
@@ -22730,7 +22743,7 @@ snapshots:
 
   extract-zip@2.0.1:
     dependencies:
-      debug: 4.3.4
+      debug: 4.4.3
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -23229,7 +23242,7 @@ snapshots:
     dependencies:
       basic-ftp: 5.3.1
       data-uri-to-buffer: 6.0.2
-      debug: 4.3.4
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
@@ -25796,7 +25809,7 @@ snapshots:
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.4
-      debug: 4.3.4
+      debug: 4.4.3
       get-uri: 6.0.5
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
@@ -27012,7 +27025,7 @@ snapshots:
   proxy-agent@6.3.0:
     dependencies:
       agent-base: 7.1.4
-      debug: 4.3.4
+      debug: 4.4.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       lru-cache: 7.18.3
@@ -27025,7 +27038,7 @@ snapshots:
   proxy-agent@6.3.1:
     dependencies:
       agent-base: 7.1.4
-      debug: 4.3.4
+      debug: 4.4.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       lru-cache: 7.18.3
@@ -28158,7 +28171,7 @@ snapshots:
   socks-proxy-agent@8.0.5:
     dependencies:
       agent-base: 7.1.4
-      debug: 4.3.4
+      debug: 4.4.3
       socks: 2.8.9
     transitivePeerDependencies:
       - supports-color

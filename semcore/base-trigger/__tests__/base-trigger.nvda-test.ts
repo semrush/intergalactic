@@ -1,4 +1,5 @@
-import { expect, nvdaTest as test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import { nvdaTest as test } from '@semcore/testing-utils/playwright.nvda';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -37,8 +38,10 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       await page.waitForTimeout(500);
       await nvda.next();
       await nvda.next();
+      expect(await nvda.itemText()).toContain('Color, list');
 
-      expect(await nvda.itemText()).toContain('Color, list. Gray, 2 of 9');
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Green, 3 of 9');
     });
   });
 
@@ -51,7 +54,7 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
 
     await test.step('Navigate to LinkTrigger and verify announcement', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('clickable, combo box, collapsed, Select option');
+      expect(await nvda.itemText()).toContain('clickable, combo box, collapsed, opens list, Select option');
     });
 
     await test.step('Activate LinkTrigger and verify menu opens', async () => {
@@ -59,7 +62,9 @@ test.describe(`@base-trigger ${TAG.NVDA}`, () => {
       await page.waitForTimeout(500);
       await nvda.next();
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Device:, list. Mobile, 2 of 3');
+      expect(await nvda.itemText()).toContain('Device:, list');
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Tablet, 3 of 3');
     });
   });
 });
