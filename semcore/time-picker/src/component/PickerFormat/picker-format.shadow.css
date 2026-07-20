@@ -10,9 +10,8 @@ SPickerFormat {
   text-decoration: none;
   align-items: center;
   border: none;
-  border-left: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-  border-radius: 0 var(--intergalactic-control-rounded, 6px)
-    var(--intergalactic-control-rounded, 6px) 0;
+  border-radius: 0 calc(var(--intergalactic-control-rounded, 6px) - 1px)
+    calc(var(--intergalactic-control-rounded, 6px) - 1px) 0; /* For smooth input and button border alignment */
   box-shadow: none;
   cursor: pointer;
   box-sizing: border-box;
@@ -21,17 +20,29 @@ SPickerFormat {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-  background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
+  background-color: var(--intergalactic-control-tertiary-neutral, transparent);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out; /* TODO: Sync with animationin FilterTrigger */
+    pointer-events: none;
+  }
 
   &:hover {
     color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-    background-color: var(--intergalactic-bg-secondary-neutral-hover, oklch(0.96 0.001 180));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.176 0.033 175.6 / 0.056));
   }
 
   &:active,
   &[active] {
     color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.94 0.002 180));
+    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.176 0.033 175.7 / 0.084));
   }
 }
 
@@ -39,6 +50,11 @@ SPickerFormat[size='m'] {
   width: 40px;
   height: calc(var(--intergalactic-form-control-m, 32px) - 2px);
   font-size: var(--intergalactic-fs-200, 14px);
+
+  &::before {
+    height: 18px;
+  }
+
   & SPickerFormatText {
     margin: 0 var(--intergalactic-spacing-2x, 8px);
   }
@@ -48,14 +64,24 @@ SPickerFormat[size='l'] {
   width: 52px;
   height: calc(var(--intergalactic-form-control-l, 44px) - 2px);
   font-size: var(--intergalactic-fs-300, 16px);
+
+  &::before {
+    height: 28px;
+  }
+
   & SPickerFormatText {
     margin: 0 var(--intergalactic-spacing-3x, 12px);
   }
+}
+
+SPickerFormat:hover::before,
+SPickerFormat:active::before,
+SPickerFormat[active]::before {
+  height: 100%;
 }
 
 SPickerFormat[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.4);
   cursor: default;
   pointer-events: none;
-  border-color: transparent transparent transparent var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
