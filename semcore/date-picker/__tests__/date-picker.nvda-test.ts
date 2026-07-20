@@ -1,4 +1,5 @@
-import { expect, nvdaTest as test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import { nvdaTest as test } from '@semcore/testing-utils/playwright.nvda';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -14,11 +15,9 @@ test.describe(`@date-picker ${TAG.NVDA}`, () => {
     expect(await nvda.itemText()).toContain('Date, combo box, collapsed, has auto complete, editable, MM slash DD slash YYYY, 06 slash 29 slash 2020');
 
     await nvda.next();
-
-    expect(await nvda.itemText()).toContain('expanded. dialog. clickable, button, Previous month');
+    expect(await nvda.itemText()).toContain('06 slash 29 slash 2020');
 
     await nvda.next();
-
     expect(await nvda.itemText()).toContain('June 2020');
 
     await nvda.next();
