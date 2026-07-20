@@ -5,7 +5,8 @@ import type {
 import {
   colors, semanticColors, baseColors, L_BG_PRIMARY, L_BG_PRIMARY_HOVER,
   L_BG_BUTTON,
-  L_BG_BUTTON_ACTIVE, L_BG_BUTTON_HOVER, L_BG_BUTTON_STRONG, L_BG_BUTTON_STRONG_ACTIVE, L_BG_BUTTON_STRONG_HOVER,
+  L_BG_BUTTON_ACTIVE, L_BG_BUTTON_HOVER, L_BG_BUTTON_STRONG, L_BG_BUTTON_STRONG_ACTIVE, L_BG_BUTTON_STRONG_HOVER, L_BG_BUTTON_BRAND, L_BG_BUTTON_BRAND_ACTIVE, L_BG_BUTTON_BRAND_HOVER,
+  L_BG_BUTTON_SECONDARY, L_BG_BUTTON_SECONDARY_ACTIVE, L_BG_BUTTON_SECONDARY_HOVER,
   L_BG_LIGHT,
   L_BG_MEDIUM,
   L_BG_PRIMARY_ACTIVE,
@@ -27,9 +28,10 @@ import {
   L_TEXT_PLACEHOLDER,
   L_TEXT_PRIMARY,
   L_TEXT_SECONDARY, L_TEXT_SECONDARY_HOVER,
+  L_TEXT_ACCENT,
 } from './colors/index.ts';
 
-const { neutral, brand, error, advertising, focus, highlight, info, link, success, warning } = semanticColors;
+const { neutral, brand, error, advertising, focus, highlight, info, success, warning } = semanticColors;
 const { green, violet, blue, pink, gray, red, orange, salad, yellow } = baseColors;
 
 const SCALE_INDENT = 4;
@@ -716,6 +718,10 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Checkbox.',
       },
+      control_checkbox_checkmark: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Color of the checkmark.',
+      },
       control_checkbox_button_bg_hover: {
         value: '{semanticTokens.colors.control_secondary_info_DEFAULT}',
         description: 'Hover state of the Checkbox button background.',
@@ -765,15 +771,15 @@ export const theme: Theme = {
         description: 'Active (selected) state of the advertising primary control.',
       },
       control_primary_brand_DEFAULT: {
-        value: brand.at(L_BG_BUTTON),
+        value: brand.at(L_BG_BUTTON_BRAND),
         description: 'Background of the primary brand colored control.',
       },
       control_primary_brand_active: {
-        value: brand.at(L_BG_BUTTON_ACTIVE),
+        value: brand.at(L_BG_BUTTON_BRAND_ACTIVE),
         description: 'Active state of the primary brand colored control.',
       },
       control_primary_brand_hover: {
-        value: brand.at(L_BG_BUTTON_HOVER),
+        value: brand.at(L_BG_BUTTON_BRAND_HOVER),
         description: 'Hover state of the primary brand colored control.',
       },
       control_primary_critical_DEFAULT: {
@@ -849,15 +855,15 @@ export const theme: Theme = {
         description: 'Hover state of the inverted version of the secondary control.',
       },
       control_secondary_neutral_DEFAULT: {
-        value: neutral.opaqueAt(L_BG_SECONDARY),
+        value: neutral.opaqueAt(L_BG_BUTTON_SECONDARY),
         description: 'Background of the regular secondary control.',
       },
       control_secondary_neutral_active: {
-        value: neutral.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        value: neutral.opaqueAt(L_BG_BUTTON_SECONDARY_ACTIVE),
         description: 'Active (selected) state of the regular secondary control.',
       },
       control_secondary_neutral_hover: {
-        value: neutral.opaqueAt(L_BG_SECONDARY_HOVER),
+        value: neutral.opaqueAt(L_BG_BUTTON_SECONDARY_HOVER),
         description: 'Hover state of the regular secondary control.',
       },
       control_select_trigger_active: {
@@ -964,9 +970,13 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.text_primary_invert}',
         description: 'Inverted primary text color for form controls.',
       },
-      control_text_secondary: {
+      control_text_secondary_DEFAULT: {
         value: '{semanticTokens.colors.text_secondary_DEFAULT}',
         description: 'Secondary text color for form controls.',
+      },
+      control_text_secondary_invert: {
+        value: '{semanticTokens.colors.text_secondary_invert}',
+        description: 'Inverted secondary text color for form controls.',
       },
       control_text_tertiary: {
         value: '{semanticTokens.colors.text_secondary_DEFAULT}',
@@ -1036,7 +1046,7 @@ export const theme: Theme = {
         value: focus.opaqueAt(L_BG_SELECTED),
         description: 'Active (selected) state of the default background color for the list item in the dropdown-menu.',
       },
-      dropdown_menu_item_selected_border: {
+      dropdown_menu_item_selected_box_shadow: {
         value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
         description: 'Border color of the selected item in the DropdownMenu.',
       },
@@ -1267,24 +1277,20 @@ export const theme: Theme = {
         description: 'Background fill for the whole product page.',
       },
       control_pills_bg_hover: {
-        value: '{semanticTokens.colors.bg_secondary_neutral_DEFAULT}',
+        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
         description: 'Hover state of the Pills background.',
       },
       control_pills_bg_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
         description: 'Background of the Pills in its normal state.',
       },
       control_pills_bg_selected: {
-        value: '{semanticTokens.colors.bg_secondary_info_DEFAULT}',
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the selected Pill.',
       },
       control_pills_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
-      },
-      control_pills_border_selected: {
-        value: '{semanticTokens.colors.border_info_active}',
-        description: 'Border color of the selected Pill.',
       },
       progress_bar_bg_DEFAULT: {
         value: neutral.at(L_BG_LIGHT),
@@ -1598,11 +1604,11 @@ export const theme: Theme = {
         description: 'Violet text for the primary violet tag.',
       },
       tag_primary_white_hover_active: {
-        value: 'rgba(255, 255, 255, 0.3)',
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
         description: 'Hover and active (selected) state of the primary white tag.',
       },
       tag_primary_white_normal: {
-        value: 'rgba(255, 255, 255, 0.15)',
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
       },
       tag_primary_white_text: {
@@ -1682,19 +1688,19 @@ export const theme: Theme = {
         description: 'Hover and active states of the inverted version of the hint link text.',
       },
       text_large_critical_DEFAULT: {
-        value: '{semanticTokens.colors.text.critical}',
+        value: error.at(L_TEXT_ACCENT),
         description: 'Text with font-size ≥20px associated with critical states and data.',
       },
       text_large_critical_hover_active: {
-        value: '{semanticTokens.colors.text.critical.hover.active}',
+        value: error.at(L_TEXT_ACCENT),
         description: 'Hover and active states of the text with font-size ≥20px associated with critical states and data.',
       },
       text_large_info_DEFAULT: {
-        value: info.at(L_TEXT_SECONDARY),
+        value: info.at(L_TEXT_ACCENT),
         description: 'Link text with font-size ≥20px.',
       },
       text_large_info_hover_active: {
-        value: info.at(L_TEXT_SECONDARY_HOVER),
+        value: info.at(L_TEXT_ACCENT),
         description: 'Hover and active states of the link text with font-size ≥20px.',
       },
       text_large_secondary: {
@@ -1702,31 +1708,51 @@ export const theme: Theme = {
         description: 'Secondary text. Use with font-size ≥20px.',
       },
       text_large_success_DEFAULT: {
-        value: '{semanticTokens.colors.text.success}',
+        value: success.at(L_TEXT_ACCENT),
         description: 'Text with font-size ≥20px associated with success states and data.',
       },
       text_large_success_hover_active: {
-        value: '{semanticTokens.colors.text.success.hover.active}',
+        value: success.at(L_TEXT_ACCENT),
         description: 'Hover and active states of the text with font-size ≥20px associated with success states and data.',
       },
-      text_link_DEFAULT: {
-        value: link.at(L_TEXT_SECONDARY),
-        description: 'Default interactive link color for unfollowed links.',
+      text_link_primary_DEFAULT: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Default primary link color.',
       },
-      text_link_hover_active: {
-        value: link.at(L_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states for the link text.',
+      text_link_primary_hover_active: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Hover and active states for the primary link.',
       },
-      text_link_invert_DEFAULT: {
-        value: link.at(L_INV_TEXT_SECONDARY),
-        description: 'Inverted version of the link text. Use on dark background only.',
+      text_link_primary_underline: {
+        value: neutral.at(0.86),
+        description: 'Underline color for the primary link.',
       },
-      text_link_invert_hover: {
-        value: link.at(L_INV_TEXT_SECONDARY_HOVER),
-        description: 'Hover and active states of the inverted version of the link text. Use on dark background only.',
+      text_link_primary_invert_DEFAULT: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Inverted version of the primary link. Use on dark and colored sbackground only.',
+      },
+      text_link_primary_invert_hover_active: {
+        value: '{semanticTokens.colors.text_primary_invert}',
+        description: 'Hover and active states of the inverted version of the primary link. Use on dark and colored backgrounds only.',
+      },
+      text_link_secondary_DEFAULT: {
+        value: '{semanticTokens.colors.text_secondary_DEFAULT}',
+        description: 'Default secondary link color.',
+      },
+      text_link_secondary_hover_active: {
+        value: '{semanticTokens.colors.text_secondary_DEFAULT}',
+        description: 'Hover and active states for the secondary link.',
+      },
+      text_link_accent_DEFAULT: {
+        value: info.at(L_TEXT_ACCENT),
+        description: 'Default accent link color.',
+      },
+      text_link_accent_hover_active: {
+        value: info.at(L_TEXT_ACCENT),
+        description: 'Hover and active states for the accent link.',
       },
       text_link_visited: {
-        value: violet.at(L_TEXT_SECONDARY),
+        value: violet.at(L_TEXT_PRIMARY),
         description: 'Visited link state so users can tell visited destinations apart from default links.',
       },
       text_placeholder: {
@@ -1825,6 +1851,10 @@ export const theme: Theme = {
         value: `3px 3px 10px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Hover state for the shadow of the Card with hover state.',
       },
+      box_shadow_pills_item_selected: {
+        value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
+        description: 'Shadow of the selected Pills item.',
+      },
       box_shadow_dnd: {
         value: `3px 3px 30px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Shadow for show that element are being drag-and-drop.',
@@ -1862,16 +1892,34 @@ export const theme: Theme = {
     },
     sizes: {
       form_control_s: {
-        value: `${SCALE_INDENT * 5}px`,
+        value: `${SCALE_INDENT * 6}px`,
         description: 'Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions.',
       },
       form_control_m: {
-        value: `${SCALE_INDENT * 7}px`,
+        value: `${SCALE_INDENT * 8}px`,
         description: 'Default size of the controls.',
       },
       form_control_l: {
-        value: `${SCALE_INDENT * 10}px`,
+        value: `${SCALE_INDENT * 11}px`,
         description: 'Large size of the controls.',
+      },
+    },
+    spacing: {
+      content_inset_inline: {
+        value: `${SCALE_INDENT * 3}px`,
+        description: 'Horizontal inset for content inside controls and surfaces.',
+      },
+      content_gap_small: {
+        value: `${SCALE_INDENT}px`,
+        description: 'Small gap between content elements inside controls.',
+      },
+      content_gap_medium: {
+        value: `${SCALE_INDENT * 1.5}px`,
+        description: 'Medium gap between content elements inside controls.',
+      },
+      content_gap_large: {
+        value: `${SCALE_INDENT * 2}px`,
+        description: 'Large gap between content elements inside controls.',
       },
     },
     radii: {
@@ -2100,6 +2148,16 @@ export const theme: Theme = {
         selected: { value: '{semanticTokens.colors.control_radio_bg_selected}' },
       },
     },
+    text: {
+      link: {
+        DEFAULT: { value: '{semanticTokens.colors.text_link_primary_DEFAULT}' },
+        hover: { active: { value: '{semanticTokens.colors.text_link_primary_hover_active}' } },
+        invert: {
+          DEFAULT: { value: '{semanticTokens.colors.text_link_primary_invert_DEFAULT}' },
+          hover: { value: '{semanticTokens.colors.text_link_primary_invert_hover_active}' },
+        },
+      },
+    },
   },
 };
 
@@ -2145,6 +2203,12 @@ export type SemanticTokens = {
   };
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
+  spacing: {
+    content_inset_inline: Value;
+    content_gap_small: Value;
+    content_gap_medium: Value;
+    content_gap_large: Value;
+  };
   radii: {
     'addon': Value;
     'badge': Value;
@@ -2264,16 +2328,33 @@ type SemanticColors = {
       };
     };
     link: {
-      DEFAULT: Value;
-      hover: {
+      primary: {
+        DEFAULT: Value;
+      };
+      primary_hover: {
         active: Value;
       };
-      invert: {
+      primary_underline: Value;
+      primary_invert: {
         DEFAULT: Value;
-        hover: Value;
       };
-      visited: Value;
+      primary_invert_hover: {
+        active: Value;
+      };
+      secondary: {
+        DEFAULT: Value;
+      };
+      secondary_hover: {
+        active: Value;
+      };
+      accent: {
+        DEFAULT: Value;
+      };
+      accent_hover: {
+        active: Value;
+      };
     };
+    link_visited: Value;
     hint: {
       DEFAULT: Value;
       hover: {
@@ -2379,6 +2460,7 @@ type SemanticColors = {
     };
     checkbox: {
       border: Value;
+      checkmark: Value;
       bg: {
         normal: Value;
         selected: Value;
@@ -2476,7 +2558,10 @@ type SemanticColors = {
         DEFAULT: Value;
         invert: Value;
       };
-      secondary: Value;
+      secondary: {
+        DEFAULT: Value;
+        invert: Value;
+      };
       tertiary: Value;
     };
     select: {
@@ -2494,7 +2579,6 @@ type SemanticColors = {
       };
       border: {
         DEFAULT: Value;
-        selected: Value;
       };
     };
     tab_line: {
@@ -2631,7 +2715,7 @@ type SemanticColors = {
         selected: {
           DEFAULT: Value;
           hover: Value;
-          border: Value;
+          box_shadow: Value;
         };
       };
     };
@@ -3075,6 +3159,11 @@ type SemanticShadows = {
         DEFAULT: Value;
         hover: Value;
       };
+      pills: {
+        item: {
+          selected: Value;
+        };
+      };
       dnd: Value;
       modal: Value;
       popper: Value;
@@ -3184,6 +3273,16 @@ type Deprecates = {
     bg: {
       normal: Value;
       selected: Value;
+    };
+  };
+  text: {
+    link: {
+      DEFAULT: Value;
+      hover: { active: Value };
+      invert: {
+        DEFAULT: Value;
+        hover: Value;
+      };
     };
   };
 };

@@ -66,7 +66,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.size == 'm') {
         await test.step('Verify m styles ', async () => {
           for (let i = 0; i < count; i++) {
-            await expect(locators.input(page).nth(i)).toHaveCSS('height', '26px');
+            await expect(locators.input(page).nth(i)).toHaveCSS('height', '30px');
           }
         });
       }
@@ -74,7 +74,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       if (item.size == 'l') {
         await test.step('Verify l styles ', async () => {
           for (let i = 0; i < count; i++) {
-            await expect(locators.input(page).nth(i)).toHaveCSS('height', '38px');
+            await expect(locators.input(page).nth(i)).toHaveCSS('height', '42px');
           }
         });
       }

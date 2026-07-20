@@ -867,6 +867,12 @@
     "components": []
   },
   {
+    "name": "--intergalactic-control-checkbox-checkmark",
+    "value": "oklch(1 0 0)",
+    "description": "Color of the checkmark.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-control-checkbox-button-bg-hover",
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Hover state of the Checkbox button background.",
@@ -946,7 +952,7 @@
   },
   {
     "name": "--intergalactic-control-primary-brand",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Background of the primary brand colored control.",
     "components": [
       "button"
@@ -954,7 +960,7 @@
   },
   {
     "name": "--intergalactic-control-primary-brand-active",
-    "value": "oklch(0.58 0.254 297.1)",
+    "value": "oklch(0.7 0.191 301.5)",
     "description": "Active state of the primary brand colored control.",
     "components": [
       "button"
@@ -962,7 +968,7 @@
   },
   {
     "name": "--intergalactic-control-primary-brand-hover",
-    "value": "oklch(0.6 0.244 297.8)",
+    "value": "oklch(0.72 0.181 302.3)",
     "description": "Hover state of the primary brand colored control.",
     "components": [
       "button"
@@ -1080,7 +1086,6 @@
     "description": "Background of the accent secondary control.",
     "components": [
       "base-trigger",
-      "button",
       "pills"
     ]
   },
@@ -1089,8 +1094,7 @@
     "value": "oklch(0.524 0.266 263.1 / 0.116)",
     "description": "Active (selected) state of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "button"
+      "base-trigger"
     ]
   },
   {
@@ -1098,13 +1102,12 @@
     "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Hover state of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "button"
+      "base-trigger"
     ]
   },
   {
     "name": "--intergalactic-control-secondary-invert",
-    "value": "oklch(0.969 0.057 140 / 0.118)",
+    "value": "oklch(0.98 0.036 140 / 0.164)",
     "description": "Background of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1112,7 +1115,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert-active",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.988 0.021 140 / 0.222)",
     "description": "Active (selected) state of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1120,7 +1123,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert-hover",
-    "value": "oklch(0.976 0.043 140 / 0.145)",
+    "value": "oklch(0.986 0.025 140 / 0.203)",
     "description": "Hover state of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1128,7 +1131,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
-    "value": "oklch(0.177 0.033 175.6 / 0.028)",
+    "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Background of the regular secondary control.",
     "components": [
       "button"
@@ -1136,7 +1139,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral-active",
-    "value": "oklch(0.176 0.033 175.7 / 0.084)",
+    "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
       "button"
@@ -1144,7 +1147,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
-    "value": "oklch(0.176 0.033 175.6 / 0.056)",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Hover state of the regular secondary control.",
     "components": [
       "button"
@@ -1276,7 +1279,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-invert-active",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.988 0.021 140 / 0.222)",
     "description": "Active (selected) state of the inverted version of the tertiary control.",
     "components": [
       "button"
@@ -1284,7 +1287,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-invert-hover",
-    "value": "oklch(0.976 0.043 140 / 0.145)",
+    "value": "oklch(0.986 0.025 140 / 0.203)",
     "description": "Hover state of the inverted version of the tertiary control.",
     "components": [
       "button"
@@ -1320,18 +1323,30 @@
     "name": "--intergalactic-control-text-primary",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Primary text color for form controls.",
-    "components": []
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-text-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted primary text color for form controls.",
-    "components": []
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-text-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Secondary text color for form controls.",
+    "components": [
+      "button"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-text-secondary-invert",
+    "value": "oklch(0.997 0.004 165.9 / 0.684)",
+    "description": "Inverted secondary text color for form controls.",
     "components": []
   },
   {
@@ -1462,7 +1477,7 @@
     ]
   },
   {
-    "name": "--intergalactic-dropdown-menu-item-selected-border",
+    "name": "--intergalactic-dropdown-menu-item-selected-box-shadow",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the selected item in the DropdownMenu.",
     "components": []
@@ -1898,19 +1913,19 @@
   },
   {
     "name": "--intergalactic-control-pills-bg-hover",
-    "value": "oklch(0.98 0.001 180)",
+    "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Hover state of the Pills background.",
     "components": []
   },
   {
     "name": "--intergalactic-control-pills-bg-normal",
-    "value": "oklch(1 0 0)",
+    "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Background of the Pills in its normal state.",
     "components": []
   },
   {
     "name": "--intergalactic-control-pills-bg-selected",
-    "value": "oklch(0.959 0.021 267.8)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the selected Pill.",
     "components": []
   },
@@ -1918,12 +1933,6 @@
     "name": "--intergalactic-control-pills-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Pills in its normal state.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-control-pills-border-selected",
-    "value": "oklch(0.7 0.131 275.2)",
-    "description": "Border color of the selected Pill.",
     "components": []
   },
   {
@@ -2468,13 +2477,13 @@
   },
   {
     "name": "--intergalactic-tag-primary-white-hover-active",
-    "value": "rgba(255, 255, 255, 0.3)",
+    "value": "oklch(0.98 0.001 180)",
     "description": "Hover and active (selected) state of the primary white tag.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-white-normal",
-    "value": "rgba(255, 255, 255, 0.15)",
+    "value": "oklch(1 0 0)",
     "description": "Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.",
     "components": [
       "tag"
@@ -2602,19 +2611,19 @@
   },
   {
     "name": "--intergalactic-text-large-critical",
-    "value": "oklch(0.53 0.206 27.3)",
+    "value": "oklch(0.6 0.219 25.5)",
     "description": "Text with font-size ≥20px associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-critical-hover-active",
-    "value": "oklch(0.51 0.202 27.8)",
+    "value": "oklch(0.6 0.219 25.5)",
     "description": "Hover and active states of the text with font-size ≥20px associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-info",
-    "value": "oklch(0.53 0.157 279.2)",
+    "value": "oklch(0.6 0.166 277.7)",
     "description": "Link text with font-size ≥20px.",
     "components": [
       "d3-chart"
@@ -2622,7 +2631,7 @@
   },
   {
     "name": "--intergalactic-text-large-info-hover-active",
-    "value": "oklch(0.51 0.152 279.7)",
+    "value": "oklch(0.6 0.166 277.7)",
     "description": "Hover and active states of the link text with font-size ≥20px.",
     "components": []
   },
@@ -2636,55 +2645,81 @@
   },
   {
     "name": "--intergalactic-text-large-success",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.6 0.155 170)",
     "description": "Text with font-size ≥20px associated with success states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-success-hover-active",
-    "value": "oklch(0.51 0.137 170)",
+    "value": "oklch(0.6 0.155 170)",
     "description": "Hover and active states of the text with font-size ≥20px associated with success states and data.",
     "components": []
   },
   {
-    "name": "--intergalactic-text-link",
-    "value": "oklch(0.53 0.21 263)",
-    "description": "Default interactive link color for unfollowed links.",
+    "name": "--intergalactic-text-link-primary",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Default primary link color.",
     "components": [
-      "button",
-      "link",
-      "tab-panel",
-      "typography"
+      "link"
     ]
   },
   {
-    "name": "--intergalactic-text-link-hover-active",
-    "value": "oklch(0.51 0.202 263)",
-    "description": "Hover and active states for the link text.",
+    "name": "--intergalactic-text-link-primary-hover-active",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Hover and active states for the primary link.",
     "components": [
-      "button",
-      "link",
-      "tab-panel",
-      "typography"
+      "link"
     ]
   },
   {
-    "name": "--intergalactic-text-link-invert",
-    "value": "oklch(0.75 0.125 265.3)",
-    "description": "Inverted version of the link text. Use on dark background only.",
+    "name": "--intergalactic-text-link-primary-underline",
+    "value": "oklch(0.86 0.002 174.1)",
+    "description": "Underline color for the primary link.",
     "components": [
-      "notice-bubble"
+      "link"
     ]
   },
   {
-    "name": "--intergalactic-text-link-invert-hover",
-    "value": "oklch(0.85 0.075 265.9)",
-    "description": "Hover and active states of the inverted version of the link text. Use on dark background only.",
+    "name": "--intergalactic-text-link-primary-invert",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Inverted version of the primary link. Use on dark and colored sbackground only.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-text-link-primary-invert-hover-active",
+    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "description": "Hover and active states of the inverted version of the primary link. Use on dark and colored backgrounds only.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-text-link-secondary",
+    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "description": "Default secondary link color.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-text-link-secondary-hover-active",
+    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "description": "Hover and active states for the secondary link.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-text-link-accent",
+    "value": "oklch(0.6 0.166 277.7)",
+    "description": "Default accent link color.",
+    "components": [
+      "button"
+    ]
+  },
+  {
+    "name": "--intergalactic-text-link-accent-hover-active",
+    "value": "oklch(0.6 0.166 277.7)",
+    "description": "Hover and active states for the accent link.",
     "components": []
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.53 0.26 296)",
+    "value": "oklch(0.23 0.113 296)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -2714,7 +2749,6 @@
       "base-trigger",
       "breadcrumbs",
       "bulk-textarea",
-      "button",
       "card",
       "checkbox",
       "d3-chart",
@@ -2751,7 +2785,6 @@
     "components": [
       "badge",
       "base-components",
-      "button",
       "date-picker",
       "dot",
       "feature-highlight",
@@ -2769,7 +2802,6 @@
     "components": [
       "breadcrumbs",
       "bulk-textarea",
-      "button",
       "card",
       "counter",
       "d3-chart",
@@ -2928,6 +2960,12 @@
     "components": []
   },
   {
+    "name": "--intergalactic-box-shadow-pills-item-selected",
+    "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
+    "description": "Shadow of the selected Pills item.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-box-shadow-dnd",
     "value": "3px 3px 30px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow for show that element are being drag-and-drop.",
@@ -2995,7 +3033,7 @@
   },
   {
     "name": "--intergalactic-form-control-s",
-    "value": "20px",
+    "value": "24px",
     "description": "Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions.",
     "components": [
       "button"
@@ -3003,27 +3041,62 @@
   },
   {
     "name": "--intergalactic-form-control-m",
-    "value": "28px",
+    "value": "32px",
     "description": "Default size of the controls.",
     "components": [
+      "base-trigger",
       "button",
+      "color-picker",
       "input",
       "input-tags",
       "notice",
       "pills",
+      "tab-line",
       "time-picker"
     ]
   },
   {
     "name": "--intergalactic-form-control-l",
-    "value": "40px",
+    "value": "44px",
     "description": "Large size of the controls.",
     "components": [
+      "base-trigger",
       "button",
       "input",
       "input-tags",
       "pills",
+      "tab-line",
       "time-picker"
+    ]
+  },
+  {
+    "name": "--intergalactic-content-inset-inline",
+    "value": "12px",
+    "description": "Horizontal inset for content inside controls and surfaces.",
+    "components": [
+      "button"
+    ]
+  },
+  {
+    "name": "--intergalactic-content-gap-small",
+    "value": "4px",
+    "description": "Small gap between content elements inside controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-content-gap-medium",
+    "value": "6px",
+    "description": "Medium gap between content elements inside controls.",
+    "components": [
+      "button"
+    ]
+  },
+  {
+    "name": "--intergalactic-content-gap-large",
+    "value": "8px",
+    "description": "Large gap between content elements inside controls.",
+    "components": [
+      "button"
     ]
   },
   {

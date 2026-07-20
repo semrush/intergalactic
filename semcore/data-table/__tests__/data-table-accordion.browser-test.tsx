@@ -99,6 +99,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en', { h: '100%' });
 
       await page.keyboard.press('Tab');
+      await expect(locators.toggle(page).nth(0)).toBeFocused();
+
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
       await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
@@ -107,6 +109,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowUp');
+      await expect(locators.toggle(page).nth(0)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();

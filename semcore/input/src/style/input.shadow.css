@@ -128,12 +128,12 @@ SValue[size='l'] {
 
 SInput[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  height: var(--intergalactic-form-control-m, 28px);
+  height: var(--intergalactic-form-control-m, 32px);
 }
 
 SInput[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  height: var(--intergalactic-form-control-l, 40px);
+  height: var(--intergalactic-form-control-l, 44px);
 }
 
 SInput:has(SValue:focus-visible) {

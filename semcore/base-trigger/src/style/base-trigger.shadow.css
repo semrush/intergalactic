@@ -91,8 +91,8 @@ SBaseAddon {
 }
 
 SBaseTrigger[size='m'] {
-  min-width: 26px;
-  height: 28px;
+  min-width: var(--intergalactic-form-control-m, 32px);
+  height: var(--intergalactic-form-control-m, 32px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   padding: 0 var(--intergalactic-spacing-2x, 8px);
   font-size: var(--intergalactic-fs-200, 14px);
@@ -114,8 +114,8 @@ SBaseTrigger[size='m'] {
 }
 
 SBaseTrigger[size='l'] {
-  min-width: 32px;
-  height: 40px;
+  min-width: var(--intergalactic-form-control-l, 44px);
+  height: var(--intergalactic-form-control-l, 44px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   padding: 0 var(--intergalactic-spacing-3x, 12px);
   font-size: var(--intergalactic-fs-300, 16px);

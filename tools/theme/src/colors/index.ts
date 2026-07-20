@@ -110,7 +110,6 @@ export const semanticColors = {
   error: baseColors.red,
   warning: baseColors.orange,
   info: baseColors.blue,
-  link: baseColors['blue-indigo'],
   focus: baseColors.blue,
   advertising: baseColors.violet,
   highlight: baseColors.violet,
@@ -193,10 +192,20 @@ export const L_BG_BUTTON = 0.64;
 export const L_BG_BUTTON_HOVER = 0.6;
 export const L_BG_BUTTON_ACTIVE = 0.58;
 
+/** Button brand bg         | ⚠️ APCA 60+ under white */
+export const L_BG_BUTTON_BRAND = 0.74;
+export const L_BG_BUTTON_BRAND_HOVER = 0.72;
+export const L_BG_BUTTON_BRAND_ACTIVE = 0.7;
+
 /** Button strong bg         | ⚠️ APCA 60+ under white */
 export const L_BG_BUTTON_STRONG = 0.23;
 export const L_BG_BUTTON_STRONG_HOVER = 0.32;
 export const L_BG_BUTTON_STRONG_ACTIVE = 0;
+
+/** Button secondary bg         | ⚠️ APCA 60+ under white */
+export const L_BG_BUTTON_SECONDARY = 0.95;
+export const L_BG_BUTTON_SECONDARY_HOVER = 0.93;
+export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.91;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
 export const L_TEXT_PRIMARY = 0.23;
@@ -205,6 +214,9 @@ export const L_TEXT_SECONDARY = 0.53;
 export const L_TEXT_SECONDARY_HOVER = 0.51;
 /** Text placeholder  | ⚠️ APCA 30+ on secondary bg */
 export const L_TEXT_PLACEHOLDER = 0.64;
+
+/** Text accent colors */
+export const L_TEXT_ACCENT = 0.6;
 
 // ICONS. Need lighter levels than text, cause they are too thick now.
 /** Icon primary    | ⚠️ APCA 45+ on secondary bg */
@@ -233,9 +245,9 @@ export const L_INV_BG_PRIMARY_HOVER = 0.36;
 export const L_INV_BG_PRIMARY_ACTIVE = 0.4;
 
 /** Secondary bg */
-export const L_INV_BG_SECONDARY = 0.23;
-export const L_INV_BG_SECONDARY_HOVER = 0.26;
-export const L_INV_BG_SECONDARY_ACTIVE = 0.3;
+export const L_INV_BG_SECONDARY = 0.28;
+export const L_INV_BG_SECONDARY_HOVER = 0.32;
+export const L_INV_BG_SECONDARY_ACTIVE = 0.34;
 
 /** Skeleton bg */
 export const L_INV_BG_SKELETON = 0.5;

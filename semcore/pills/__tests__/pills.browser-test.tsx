@@ -53,7 +53,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
           const count = await locators.pillsItem(page).count();
           for (let i = 0; i < count; i++)
-            await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '28px');
+            await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '32px');
         } else if ((await locators.sizeL(page).count()) > 0) {
           await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Addon"]').first()).toHaveCSS('margin-left', '12px');
           await expect(locators.pillsItem(page).nth(0).locator('[data-ui-name="Pills.Item.Addon"]').nth(1)).toHaveCSS('margin-right', '12px');
@@ -65,7 +65,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           await expect(locators.pillsItemText(page).nth(1)).toHaveCSS('margin-right', '12px');
           const count = await locators.pillsItem(page).count();
           for (let i = 0; i < count; i++)
-            await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '40px');
+            await expect(locators.pillsItem(page).nth(i)).toHaveCSS('height', '44px');
         }
       });
     });

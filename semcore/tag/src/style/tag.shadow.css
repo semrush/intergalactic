@@ -201,7 +201,7 @@ STag[theme="primary-invert"],
 STagContainerClose[theme="primary-invert"] {
   background-color: var(
     --intergalactic-tag-primary-white-normal,
-    rgba(255, 255, 255, 0.15)
+    oklch(1 0 0)
   );
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
 }

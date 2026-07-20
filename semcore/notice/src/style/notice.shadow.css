@@ -86,7 +86,7 @@ SActions {
 }
 
 SLabel {
-  min-height: var(--intergalactic-form-control-m, 28px);
+  min-height: var(--intergalactic-form-control-m, 32px);
   height: fit-content;
   margin-right: var(--intergalactic-spacing-2x, 8px);
   display: inline-flex;

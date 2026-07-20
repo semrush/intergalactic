@@ -104,12 +104,12 @@ SAddon {
 }
 
 STabLineItem[size='m'] {
-  height: 28px;
+  height: var(--intergalactic-form-control-m, 32px);
   min-width: 18px;
 }
 
 STabLineItem[size='l'] {
-  height: 40px;
+  height: var(--intergalactic-form-control-l, 44px);
   min-width: 26px;
 }
 

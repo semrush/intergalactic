@@ -41,13 +41,13 @@ SInputTags>div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 }
 
 SInputTags[size='m'] {
-  min-height: var(--intergalactic-form-control-m, 28px);
+  min-height: var(--intergalactic-form-control-m, 32px);
   height: auto;
   padding: 0 calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) 0 var(--intergalactic-spacing-1x, 4px);
 }
 
 SInputTags[size='l'] {
-  min-height: var(--intergalactic-form-control-l, 40px);
+  min-height: var(--intergalactic-form-control-l, 44px);
   height: auto;
   padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px)) 0 var(--intergalactic-spacing-2x, 8px);
 }
@@ -68,11 +68,11 @@ STagContainer[editable] {
 }
 
 SInputTags[size='m'] SValue {
-  height: calc(var(--intergalactic-form-control-m, 28px) - var(--intergalactic-spacing-1x, 4px));
+  height: calc(var(--intergalactic-form-control-m, 32px) - var(--intergalactic-spacing-1x, 4px));
 }
 
 SInputTags[size='l'] SValue {
-  height: calc(var(--intergalactic-form-control-l, 40px) - var(--intergalactic-spacing-1x, 4px));
+  height: calc(var(--intergalactic-form-control-l, 44px) - var(--intergalactic-spacing-1x, 4px));
 }
 
 SValue {
