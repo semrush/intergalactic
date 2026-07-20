@@ -646,7 +646,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await firstRowCheckbox.click();
         await locators.collapse(page).waitFor({ state: 'visible' });
         for (let row = 2; row <= 3; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedHoverBg });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedBg });
         }
       });
 
