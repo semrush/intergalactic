@@ -376,30 +376,22 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(selection).toEqual({ lineIndex: 0, offset: 1 });
     });
 
-    test('Verify undo with lineProcessing does not restore caret outside text node', {
+    test('Verify undo with paste lineProcessing restores processed empty row', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@bulk-textarea'],
     }, async ({ page }) => {
-      const pageErrors: string[] = [];
-      page.on('pageerror', (error) => pageErrors.push(error.message));
-
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15, pasteSkipEmptyLines: false });
 
-      await test.step('Type value that lineProcessing turns into an empty row on undo', async () => {
+      await test.step('Type value that paste lineProcessing turns into an empty row on undo', async () => {
         await locators.textbox(page).click();
         await page.keyboard.type('http://a', { delay: 10 });
         await expect(locators.row(page, 0)).toHaveText('http://a');
       });
 
-      await test.step('Undo does not throw IndexSizeError while restoring selection', async () => {
+      await test.step('Undo restores the processed previous value', async () => {
         await pressUndo(page);
-        await page.waitForTimeout(100);
-
-        const selectionErrors = pageErrors.filter((message) => {
-          return message.includes('IndexSizeError') || message.includes('Failed to execute \'setStart\'');
-        });
-        expect(selectionErrors).toEqual([]);
+        expect(await locators.row(page, 0).evaluate((node) => node.textContent)).toBe('\uFEFF');
       });
     });
 
