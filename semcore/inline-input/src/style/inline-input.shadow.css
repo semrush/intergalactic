@@ -143,6 +143,7 @@ SInlineInput:not(:focus-within):not([loading]) [data-ui-name='InlineInput.Cancel
 }
 
 SUnderline:has(input:focus-visible) {
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-radius: var(--intergalactic-control-rounded, 6px);
   @mixin focus-outline-mixin 4px;
 }
