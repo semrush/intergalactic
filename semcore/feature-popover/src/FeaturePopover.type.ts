@@ -24,62 +24,22 @@ import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 declare namespace NSFeaturePopover {
-  type Props = OutsideClickProps &
-    PortalProps &
-    UniqueIDProps &
-    AnimationProps & {
-      /**
-       * Popper can have different positioning options
-       * @default absolute
-       */
-      strategy?: PositioningStrategy;
-      /**
-       * Modifiers for popper.js
-       */
-      modifiers?: Array<Partial<Modifier<any, any>>>;
-      /** Timer to show and hide the popper */
-      timeout?: number | [number, number];
-      /** PopperJS modifier settings for popper indent */
-      offset?: Partial<OptionsOffset> | number | [number, number];
-      /** PopperJS modifier settings for finding borders */
-      preventOverflow?: Partial<OptionsPreventOverflow>;
-      /** PopperJS modifier settings responsible for the arrow */
-      arrow?: Partial<OptionsArrow>;
-      /** PopperJS modifier settings responsible for turning the popper when there is not enough space */
-      flip?: Partial<OptionsFlip>;
-      /** PopperJS modifier settings for applying styles */
-      computeStyles?: Partial<OptionsComputeStyles>;
-      /** PopperJS modifier settings responsible for subscribing to global events */
-      eventListeners?: Partial<OptionsEventListeners>;
-      /** @ignore */
-      onFirstUpdate?: Options['onFirstUpdate'];
-      /**
-       * Flag for disable Popover (if true, it will close Popper and it will not respond to handlers)
-       * @default false
-       */
-      disabled?: boolean;
-      /**
-       * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
-       */
-      explicitTriggerSet?: boolean;
-
-      popperMargin?: number;
-
-      /** Popper visibility value */
-      visible?: boolean;
-      /** Function called when visibility changes */
-      onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
-      /**
-       * The position of the popper relative to the trigger that called it.
-       * @default auto
-       */
-      placement?: Placement;
-      /**
-       * The theme of FeaturePopover
-       * @default accent
-       */
-      theme?: 'accent' | 'neutral';
-    };
+  type Props = FPPopperProps & {
+    /** Popper visibility value */
+    visible?: boolean;
+    /** Function called when visibility changes */
+    onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
+    /**
+      * The position of the popper relative to the trigger that called it.
+      * @default auto
+      */
+    placement?: Placement;
+    /**
+      * The theme of FeaturePopover
+      * @default accent
+      */
+    theme?: 'accent' | 'neutral';
+  };
   type DefaultProps = {
     offset: NSFeaturePopover.Props['offset'];
     placement: 'bottom-start';
@@ -154,6 +114,50 @@ declare namespace NSFeaturePopover {
     Spot: Spot.Component;
   };
 }
+
+// Re-think it since looks like those props aren't needed for the Root component.
+/** @deprecated It will be removed in v18. */
+export type FPPopperProps = OutsideClickProps &
+  PortalProps &
+  UniqueIDProps &
+  AnimationProps & {
+    /**
+     * Popper can have different positioning options
+     * @default absolute
+     */
+    strategy?: PositioningStrategy;
+    /**
+     * Modifiers for popper.js
+     */
+    modifiers?: Array<Partial<Modifier<any, any>>>;
+    /** Timer to show and hide the popper */
+    timeout?: number | [number, number];
+    /** PopperJS modifier settings for popper indent */
+    offset?: Partial<OptionsOffset> | number | [number, number];
+    /** PopperJS modifier settings for finding borders */
+    preventOverflow?: Partial<OptionsPreventOverflow>;
+    /** PopperJS modifier settings responsible for the arrow */
+    arrow?: Partial<OptionsArrow>;
+    /** PopperJS modifier settings responsible for turning the popper when there is not enough space */
+    flip?: Partial<OptionsFlip>;
+    /** PopperJS modifier settings for applying styles */
+    computeStyles?: Partial<OptionsComputeStyles>;
+    /** PopperJS modifier settings responsible for subscribing to global events */
+    eventListeners?: Partial<OptionsEventListeners>;
+    /** @ignore */
+    onFirstUpdate?: Options['onFirstUpdate'];
+    /**
+     * Flag for disable Popover (if true, it will close Popper and it will not respond to handlers)
+     * @default false
+     */
+    disabled?: boolean;
+    /**
+     * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
+     */
+    explicitTriggerSet?: boolean;
+
+    popperMargin?: number;
+  };
 
 /** @deprecated It will be removed in v18. */
 export type FeaturePopoverPopperProps = NSFeaturePopover.Popper.Props;
