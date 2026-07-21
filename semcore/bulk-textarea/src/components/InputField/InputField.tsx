@@ -449,16 +449,32 @@ class InputField<T extends string | string[]> extends Component<
     event.preventDefault();
 
     const selection = document.getSelection();
-    const liElement = selection?.focusNode?.parentElement;
 
-    if (selection && liElement instanceof HTMLLIElement) {
-      const offset = selection.focusOffset;
-      liElement.textContent = (liElement.textContent ?? '')
-        .split('')
-        .filter((s) => s !== this.emptyLineValueJs)
-        .join('');
+    // FF
+    if (selection?.focusNode === this.textarea) {
+      const liElement = this.textarea.firstChild;
 
-      selection.setPosition(liElement.firstChild, offset);
+      if (selection && liElement instanceof HTMLLIElement) {
+        const offset = selection.focusOffset;
+        liElement.textContent = (liElement.textContent ?? '')
+          .split('')
+          .filter((s) => s !== this.emptyLineValueJs)
+          .join('') + event.data;
+
+        selection.setPosition(liElement.firstChild, offset + event.data.length);
+      }
+    } else {
+      const liElement = selection?.focusNode?.parentElement;
+
+      if (selection && liElement instanceof HTMLLIElement) {
+        const offset = selection.focusOffset;
+        liElement.textContent = (liElement.textContent ?? '')
+          .split('')
+          .filter((s) => s !== this.emptyLineValueJs)
+          .join('');
+
+        selection.setPosition(liElement.firstChild, offset);
+      }
     }
 
     setTimeout(() => {
