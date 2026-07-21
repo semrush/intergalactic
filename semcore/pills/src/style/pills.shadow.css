@@ -1,7 +1,6 @@
 SPills {
   position: relative;
   display: inline-flex;
-  align-items: center;
   padding: var(--intergalactic-spacing-05x, 2px);
   min-height: var(--intergalactic-form-control-m, 32px);
   border-radius: var(--intergalactic-pills-rounded, 6px);
@@ -53,13 +52,12 @@ SPill {
   align-items: center;
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
 
-  height: 28px;
   min-width: 28px;
   padding: 0 var(--intergalactic-spacing-content-inset-inline, 12px);
-
-  border: 1px solid transparent;
-  border-left: 3px solid transparent;
-  border-right: 3px solid transparent;
+  
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px 3px;
   border-radius: var(--intergalactic-rounded-small, 4px);
 
   background-color: transparent;
@@ -91,14 +89,12 @@ SPill {
   }
 
   &[size='l'] {
-    height: 40px;
     min-width: 40px;
   }
 }
 
 SPillContainer {
   display: inline-flex;
-  align-items: center;
 
   &:has(SPill[aria-checked='true'], SPill[aria-selected='true']) {
     SPillSeparator {
@@ -114,6 +110,8 @@ SPillContainer {
 }
 
 SPillSeparator {
+  align-self: center;
+
   width: 1px;
   height: 18px;
   background-color: var(--intergalactic-control-pills-border, oklch(0.137 0.026 175.7 / 0.161));
@@ -145,12 +143,10 @@ SSegmentIndicator {
 }
 
 SText {
-  z-index: 1;
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
 SAddon {
-  z-index: 1;
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   display: inline-flex;
   align-items: center;

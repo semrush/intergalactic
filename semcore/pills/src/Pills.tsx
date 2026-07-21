@@ -36,7 +36,7 @@ class RootPills extends Component<
   currentSelectedIndex: number | null = null;
 
   rootRef: React.MutableRefObject<HTMLDivElement | null> = React.createRef();
-  pills: Array<HTMLButtonElement> = [];
+  pills: Array<HTMLButtonElement | null> = [];
   segmentIndicatorRef: React.MutableRefObject<HTMLSpanElement | null> = React.createRef();
 
   ro: ResizeObserver | null = null;
@@ -114,6 +114,8 @@ class RootPills extends Component<
     if (!this.ro) return;
 
     for (const pill of this.pills) {
+      if (!pill) continue;
+
       this.ro.observe(pill);
     }
   }
@@ -138,7 +140,7 @@ class RootPills extends Component<
       tabIndex: isSelected ? 0 : -1,
       onClick: this.bindHandlerClick(props.value),
       onKeyDown: this.bindHandleKeyDown(props.value),
-      ref: (node: HTMLButtonElement) => {
+      ref: (node: HTMLButtonElement | null) => {
         this.pills[index] = node;
       },
     };
@@ -161,12 +163,12 @@ class RootPills extends Component<
         use:tabIndex={value !== null ? -1 : 0}
         ref={this.rootRef}
       >
-        <Children />
         <SSegmentIndicator
           tag='span'
           ref={this.segmentIndicatorRef}
           aria-hidden
         />
+        <Children />
       </SPills>,
     );
   }

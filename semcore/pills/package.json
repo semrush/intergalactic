@@ -16,9 +16,11 @@
     "import": "./lib/esm/index.mjs",
     "require": "./lib/cjs/index.js"
   },
-  "peerDependencies": {
-    "@semcore/base-components": "^17.2.1",
+  "dependencies": {
     "@semcore/typography": "^17.2.1"
+  },
+  "peerDependencies": {
+    "@semcore/base-components": "^17.2.1"
   },
   "repository": {
     "type": "git",
