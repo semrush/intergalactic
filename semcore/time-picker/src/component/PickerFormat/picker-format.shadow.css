@@ -14,7 +14,6 @@ SPickerFormat {
   border-radius: 0 calc(var(--intergalactic-control-rounded, 6px) - 1px)
     calc(var(--intergalactic-control-rounded, 6px) - 1px) 0; /* For smooth input and button border alignment */
   box-shadow: none;
-  cursor: pointer;
   box-sizing: border-box;
   overflow: visible;
   user-select: none;
@@ -32,10 +31,10 @@ SPickerFormat {
     width: 1px;
     background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
     transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out; /* TODO: Sync with animationin FilterTrigger */
-    pointer-events: none;
   }
 
   &:hover {
+    cursor: pointer;
     color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
     background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.176 0.033 175.6 / 0.056));
   }
@@ -55,10 +54,6 @@ SPickerFormat[size='m'] {
   &::before {
     height: 18px;
   }
-
-  & SPickerFormatText {
-    margin: 0 var(--intergalactic-content-inset-inline, 12px);
-  }
 }
 
 SPickerFormat[size='l'] {
@@ -68,10 +63,6 @@ SPickerFormat[size='l'] {
 
   &::before {
     height: 28px;
-  }
-
-  & SPickerFormatText {
-    margin: 0 var(--intergalactic-content-inset-inline, 12px);
   }
 }
 
@@ -83,6 +74,4 @@ SPickerFormat[active]::before {
 
 SPickerFormat[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.4);
-  cursor: default;
-  pointer-events: none;
 }
