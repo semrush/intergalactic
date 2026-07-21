@@ -762,7 +762,11 @@ class InputField<T extends string | string[]> extends Component<
           document.getSelection()?.setPosition(next, 0);
         } else if (inputType === 'deleteContentBackward' && prev) {
           if (startElement === endElement) {
-            document.getSelection()?.setPosition(prev, 0);
+            if (prev.textContent === this.emptyLineValueJs) {
+              document.getSelection()?.setPosition(prev, 0);
+            } else {
+              document.getSelection()?.setPosition(prev, 1);
+            }
             this.textarea.removeChild(parent);
           } else {
             document.getSelection()?.setPosition(startElement, 0);
