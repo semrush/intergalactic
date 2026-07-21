@@ -939,11 +939,27 @@ class InputField<T extends string | string[]> extends Component<
         historySelection.startLine = index;
         historySelection.startOffset = anchorOffset;
       }
+      // for FF
+      if (anchorElement === this.textarea && anchorOffset === index) {
+        historySelection.startLine = index;
+        historySelection.startOffset = 0;
+      }
       if ((node === focusElement || node === focusElement?.parentElement) && focusOffset !== undefined) {
         historySelection.endLine = index;
         historySelection.endOffset = focusOffset;
       }
+      // for FF
+      if (focusElement === this.textarea && focusOffset === index) {
+        historySelection.endLine = index;
+        historySelection.endOffset = node.textContent?.length ?? 0;
+      }
     });
+
+    // for FF
+    if (focusElement === this.textarea && focusOffset !== undefined && focusOffset === this.textarea.childNodes.length) {
+      historySelection.endLine = this.textarea.childNodes.length - 1;
+      historySelection.endOffset = this.textarea.lastChild?.textContent?.length ?? 0;
+    }
 
     const historyState: HistoryState = {
       lines,
