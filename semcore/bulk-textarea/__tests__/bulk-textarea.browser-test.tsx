@@ -324,6 +324,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.textbox(page).click();
       await page.keyboard.type('one', { delay: 10 });
       await page.keyboard.press('Enter');
+      // let post-Enter state settle (history push, setErrorIndex, deferred recalculateErrors)
+      await page.waitForTimeout(100);
 
       await expect(locators.rows(page)).toHaveCount(2);
       await expect(locators.row(page, 0)).toHaveText('one');
@@ -763,20 +765,20 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(lineCount).toBe(2);
         await expect(locators.counter(page)).toHaveText('0/15of 15 lines');
         await page.keyboard.press('Backspace');
+        await expect(locators.rows(page)).toHaveCount(0);
       });
 
       await test.step('Verify Line Processing works in 1st row when data in the begin', async () => {
+        await locators.textbox(page).click();
         await page.waitForTimeout(100);
         await page.keyboard.type('http://Test', { delay: 100 });
         await page.keyboard.press('Space');
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
-        const lineCount = await locators.rows(page).count();
-        await expect(lineCount).toBe(2);
+        await expect(locators.rows(page)).toHaveCount(2);
         await expect(locators.counter(page)).toHaveText('1/15of 15 lines');
 
-        const firstLineText = await locators.row(page, 0).textContent();
-
-        expect(firstLineText).not.toMatch(/^http:\/\//);
+        await expect(locators.row(page, 0)).not.toHaveText(/^http:\/\//);
 
         await locators.button(page, 'Clear all').click();
         await page.waitForTimeout(100);
@@ -805,6 +807,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
         await locators.textbox(page).press('[');
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
         await page.waitForTimeout(200);
         await page.keyboard.press('Tab');
@@ -819,6 +822,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify validation on clicking outside textbox', async () => {
         await locators.textbox(page).press('[');
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
         await page.waitForTimeout(200);
         const boxBoundingBox = await locators.boxLocator(page).boundingBox();
@@ -946,14 +950,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         expect(lineCount).toBe(2);
         await expect(locators.counter(page)).toHaveText('0/10of 10 lines');
         await page.keyboard.press('Backspace');
+        await expect(locators.rows(page)).toHaveCount(0);
       });
       await test.step('Verify rows Processing works in 1st row when data in the begin', async () => {
+        await locators.textbox(page).click();
         await page.waitForTimeout(100);
         await page.keyboard.type('http://Test', { delay: 100 });
         await page.keyboard.press('Space');
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
-        const lineCount = await locators.rows(page).count();
-        expect(lineCount).toBe(2);
+        await expect(locators.rows(page)).toHaveCount(2);
         await expect(locators.counter(page)).toHaveText('1/10of 10 lines');
 
         await expect(locators.row(page, 0)).not.toHaveText(/^http:\/\//);
