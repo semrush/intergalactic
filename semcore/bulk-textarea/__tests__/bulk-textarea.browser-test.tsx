@@ -508,6 +508,38 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify instanceRef adds an empty row and sets its caret', {
+    tag: [TAG.PRIORITY_HIGH,
+      TAG.KEYBOARD,
+      '@bulk-textarea'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/bulk-textarea/advanced/examples/manuall_focus.tsx', 'en');
+
+    await test.step('Add an empty row and focus its caret on mount', async () => {
+      await expect(locators.rows(page)).toHaveCount(2);
+      await expect(locators.row(page, 0)).toHaveText('first value');
+      expect(await locators.row(page, 1).evaluate((node) => node.textContent)).toBe('\uFEFF');
+      await expect(locators.textbox(page)).toBeFocused();
+
+      const selection = await page.evaluate(() => {
+        const selection = document.getSelection();
+        const anchorElement = selection?.anchorNode instanceof Text
+          ? selection.anchorNode.parentElement
+          : selection?.anchorNode;
+
+        return {
+          anchorLineIndex: Array.from(document.querySelectorAll('ol[contenteditable="true"] li')).indexOf(anchorElement as HTMLLIElement),
+          anchorOffset: selection?.anchorOffset,
+        };
+      });
+
+      expect(selection).toEqual({
+        anchorLineIndex: 1,
+        anchorOffset: 0,
+      });
+    });
+  });
+
   test.describe('Keyboard navigation', () => {
     test('Verify Home and first character on empty row stay in current row', {
       tag: [TAG.PRIORITY_HIGH,
