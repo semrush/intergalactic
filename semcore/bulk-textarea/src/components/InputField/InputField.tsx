@@ -676,13 +676,19 @@ class InputField<T extends string | string[]> extends Component<
   }
 
   private insertText(data: string, range: InputEventRange) {
-    const { startElement, endElement } = range;
-    const resultText = `${startElement.textContent.slice(0, range.startOffset)}${data}${endElement.textContent.slice(range.endOffset)}`;
+    const { startElement, endElement, startOffset, endOffset } = range;
 
-    // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
-    startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
+    if (startElement === endElement && startOffset === endOffset && startElement.textContent === this.emptyLineValueJs) {
+      startElement.textContent = data;
+      this.setSelection(startElement, data.length, data.length);
+    } else {
+      const resultText = `${startElement.textContent.slice(0, range.startOffset)}${data}${endElement.textContent.slice(range.endOffset)}`;
 
-    this.setSelection(startElement, range.startOffset + 1, range.startOffset + 1);
+      // we need to clear empty value in the line node, because this is unnecessary symbol in the next calculations
+      startElement.textContent = startElement.textContent === this.emptyLineValueJs ? resultText.slice(0, -1) : resultText;
+
+      this.setSelection(startElement, range.startOffset + 1, range.startOffset + 1);
+    }
 
     if (startElement.parentElement instanceof HTMLLIElement) {
       this.validateLine(startElement.parentElement);
@@ -755,7 +761,12 @@ class InputField<T extends string | string[]> extends Component<
           this.textarea.removeChild(parent);
           document.getSelection()?.setPosition(next, 0);
         } else if (inputType === 'deleteContentBackward' && prev) {
-          document.getSelection()?.setPosition(startElement, 0);
+          if (startElement === endElement) {
+            document.getSelection()?.setPosition(prev, 0);
+            this.textarea.removeChild(parent);
+          } else {
+            document.getSelection()?.setPosition(startElement, 0);
+          }
         }
       } else {
         if (resultText === '') {
