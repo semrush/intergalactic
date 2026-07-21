@@ -716,13 +716,19 @@ class InputField<T extends string | string[]> extends Component<
       let resultText = '';
 
       if (!(range.startElement instanceof HTMLOListElement) && !(range.endElement instanceof HTMLOListElement)) {
-        resultText = `${startElement.textContent.slice(0, range.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(range.endOffset)}`;
+        resultText = `${startElement.textContent === this.emptyLineValueJs ? '' : startElement.textContent.slice(0, range.startOffset)}${endElement.textContent === this.emptyLineValueJs ? '' : endElement.textContent.slice(range.endOffset)}`;
       }
 
-      const next = parent.nextSibling;
-      if (resultText === '' && inputType === 'deleteContentForward' && endElement.textContent === this.emptyLineValueJs && next) {
-        this.textarea.removeChild(parent);
-        document.getSelection()?.setPosition(next, 0);
+      if (resultText === '' && endElement.textContent === this.emptyLineValueJs) {
+        const next = parent.nextSibling;
+        const prev = parent.previousSibling;
+
+        if (inputType === 'deleteContentForward' && next) {
+          this.textarea.removeChild(parent);
+          document.getSelection()?.setPosition(next, 0);
+        } else if (inputType === 'deleteContentBackward' && prev) {
+          document.getSelection()?.setPosition(startElement, 0);
+        }
       } else {
         if (resultText === '') {
           parent.innerHTML = this.emptyLineValue;
