@@ -450,9 +450,15 @@ class InputField<T extends string | string[]> extends Component<
 
     const selection = document.getSelection();
 
-    // FF
+    // FF and Safari
     if (selection?.focusNode === this.textarea) {
-      const liElement = this.textarea.firstChild;
+      const nodes = this.textarea.childNodes;
+
+      const liElement = nodes.length === 1
+        ? nodes.item(0)
+        : nodes.length === 2
+          ? nodes.item(1)
+          : null;
 
       if (selection && liElement instanceof HTMLLIElement) {
         const offset = selection.focusOffset;
@@ -462,6 +468,10 @@ class InputField<T extends string | string[]> extends Component<
           .join('') + event.data;
 
         selection.setPosition(liElement.firstChild, offset + event.data.length);
+
+        if (nodes.item(0) instanceof HTMLBRElement) {
+          this.textarea.removeChild(nodes.item(0));
+        }
       }
     } else {
       const liElement = selection?.focusNode?.parentElement;
@@ -505,6 +515,7 @@ class InputField<T extends string | string[]> extends Component<
     };
 
     switch (event.inputType) {
+      case 'insertFromComposition':
       case 'insertText': {
         this.history.push(this.createHistoryState());
         if (this.asProps.linesDelimiters?.includes(data)) {
@@ -516,6 +527,7 @@ class InputField<T extends string | string[]> extends Component<
         break;
       }
       case 'insertCompositionText':
+      case 'deleteCompositionText':
       case 'historyUndo':
       case 'historyRedo':
       case 'insertFromPaste': {
