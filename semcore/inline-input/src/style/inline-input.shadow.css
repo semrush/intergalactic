@@ -105,10 +105,6 @@ SUnderline {
   transition-property: background-color;
 }
 
-/* SInlineInput:hover:not(:focus-within):not([disabled]) {
-  cursor: pointer;
-} */
-
 SInlineInput:hover:not(:focus-within):not([disabled]) SUnderline {
   background-color: var(--intergalactic-control-secondary-neutral, oklch(0.176 0.033 175.7 / 0.07));
 }
