@@ -41,7 +41,7 @@ SLineSegmentItem:last-child {
 SLineSegmentItem {
   height: 8px;
   background: transparent;
-  border-right-color: var(--intergalactic-chart-grid-border, #fff);
+  border-right-color: var(--intergalactic-chart-grid-border, #ffffff);
   border-right-style: solid;
   border-right-width: 1px;
   box-sizing: content-box;
