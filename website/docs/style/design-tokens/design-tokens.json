@@ -3082,7 +3082,9 @@
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "inline-input"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-medium",
