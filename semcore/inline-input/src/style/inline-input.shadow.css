@@ -13,7 +13,6 @@ SInlineInput {
 
   SConfirmIcon:not([color]) {
     color: var(--intergalactic-icon-secondary-success, oklch(0.711 0.146 166.9));
-    cursor: pointer;
   }
 
   SConfirmIcon:not([color]):hover {
@@ -22,7 +21,6 @@ SInlineInput {
 
   SCancelIcon:not([color]) {
     color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
-    cursor: pointer;
   }
 
   SCancelIcon:not([color]):hover {
@@ -30,10 +28,9 @@ SInlineInput {
   }
 
   SValue {
-    /* hack for firefox */
-    min-width: 0;
+    field-sizing: content;
+    width: auto;
 
-    width: 100%;
     height: 100%;
     padding: 0 var(--intergalactic-spacing-1x, 4px);
     border: none;
@@ -76,13 +73,6 @@ SInlineInput {
   }
 }
 
-@supports (field-sizing: content) {
-  SValue {
-    field-sizing: content;
-    width: auto;
-  }
-}
-
 SInlineInput[disabled] {
   cursor: default;
   pointer-events: none;
@@ -109,11 +99,8 @@ SInlineInput:hover:not(:focus-within):not([disabled]) SUnderline {
   background-color: var(--intergalactic-control-secondary-neutral, oklch(0.176 0.033 175.7 / 0.07));
 }
 
+SInlineInput:hover:not(:focus-within):not([disabled]) SAddon,
 SInlineInput:hover:not(:focus-within):not([disabled]) SValue {
-  cursor: pointer;
-}
-
-SInlineInput:hover:not(:focus-within):not([disabled]) SAddon {
   cursor: pointer;
 }
 
