@@ -532,7 +532,7 @@ jobs:
       - name: Install Playwright Firefox
         run: pnpm exec playwright install firefox
       - name: NVDA setup
-        run: pnpm nvda-test:setup
+        uses: guidepup/setup-action@0.21.0
       - name: NVDA testing
         id: nvda-testing
         env:

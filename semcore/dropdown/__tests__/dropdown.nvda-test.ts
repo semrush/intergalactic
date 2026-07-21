@@ -1,4 +1,5 @@
-import { expect, nvdaTest as test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import { nvdaTest as test } from '@semcore/testing-utils/playwright.nvda';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -8,7 +9,7 @@ test.describe(`@dropdown ${TAG.NVDA}`, () => {
 
     await nvda.next();
 
-    expect(await nvda.itemText()).toContain('clickable, button, collapsed, sub Menu, About export');
+    expect(await nvda.itemText()).toContain('clickable, button, collapsed, opens dialog, About export');
 
     await nvda.interact();
     await nvda.press('Enter');
