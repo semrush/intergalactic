@@ -5,7 +5,7 @@ export const unpluginSemcoreResolve = createUnplugin<{ rootPath: string }>((opts
   name: 'semcore-resolve',
 
   async resolveId(id) {
-    if (!id.includes('@semcore') || id.includes('@semcore/theme')) return null;
+    if (!id.includes('@semcore') || id.includes('@semcore/theme') || id.includes('@semcore/spectrum')) return null;
     if (id.endsWith('.md')) return null;
     return await resolveSemcoreSources(id, opts.rootPath);
   },

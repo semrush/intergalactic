@@ -2088,6 +2088,33 @@ importers:
         specifier: workspace:*
         version: link:../../tools/testing-utils
 
+  spectrum:
+    dependencies:
+      '@semcore/base-trigger':
+        specifier: ^17.2.1
+        version: link:../semcore/base-trigger
+      '@semcore/button':
+        specifier: ^17.2.1
+        version: link:../semcore/button
+      '@semcore/core':
+        specifier: ^17.2.1
+        version: link:../semcore/core
+      '@semcore/dropdown-menu':
+        specifier: ^17.3.0
+        version: link:../semcore/dropdown-menu
+      '@semcore/icon':
+        specifier: ^17.2.0
+        version: link:../semcore/icon
+      '@semcore/illustration':
+        specifier: ^16.0.0 || ^17.0.1
+        version: link:../semcore/illustration
+      react:
+        specifier: 16.8 - 19
+        version: 18.3.1
+      react-dom:
+        specifier: 16.8 - 19
+        version: 18.3.1(react@18.3.1)
+
   stories:
     dependencies:
       '@storybook/icons':
@@ -19556,7 +19583,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.15))(terser@5.48.0)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.48.0)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:

@@ -1,0 +1,23 @@
+.button.size {
+  border-width: 2px;
+  border-radius: 16px;
+}
+
+.button.outline {
+  background: transparent;
+}
+
+.button.primaryOutline {
+  color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+}
+.button.primaryOutline:hover {
+  color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background: var(--intergalactic-control-secondary-neutral-hover,
+  oklch(0.176 0.033 175.6 / 0.056));
+}
+
+.button.accent {
+  color: #fff;
+  background-color: #3b63fb;
+}

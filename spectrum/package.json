@@ -1,0 +1,34 @@
+{
+  "name": "@semcore/spectrum",
+  "version": "17.3.0",
+  "description": "Semrush design system package with adobe skin.",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "pnpm vite build && tsgo --emitDeclarationOnly"
+  },
+  "dependencies": {
+    "@semcore/core": "^17.2.1",
+    "@semcore/base-trigger": "^17.2.1",
+    "@semcore/button": "^17.2.1",
+    "@semcore/dropdown-menu": "^17.3.0"
+  },
+  "peerDependencies": {
+    "react": "16.8 - 19",
+    "react-dom": "16.8 - 19",
+    "@semcore/icon": "^17.2.0",
+    "@semcore/illustration": "^16.0.0 || ^17.0.1"
+  },
+  "devDependencies": {
+    "@semcore/core": "workspace:*",
+    "@semcore/base-trigger": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/dropdown-menu": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/spectrum"
+  }
+}
