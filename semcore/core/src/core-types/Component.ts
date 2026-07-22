@@ -74,8 +74,9 @@ export interface IComponent<
   new (...args: any[]): C;
   defaultProps?: DP | ((props: P) => DP) | (() => DP);
 }
+
 export abstract class Component<
-  Props extends { instanceRef?: MutableRefObject<any> } = {},
+  Props extends (object & { instanceRef?: MutableRefObject<any> }) = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
   Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
