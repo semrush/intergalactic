@@ -1087,7 +1087,8 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.text_primary_invert}',
         description: 'Inverted text color of the FeaturePopover.',
       },
-      footer_bg: { value: '{semanticTokens.colors.page.bg}',
+      footer_bg: {
+        value: '{semanticTokens.colors.page.bg}',
         description: 'Background fill for the product page footer.',
       },
       header_bg: { value: '{semanticTokens.colors.page.bg}' },
@@ -1273,7 +1274,8 @@ export const theme: Theme = {
         value: neutral.opaqueAt(0.8),
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
-      page_bg: { value: neutral.at(0.97),
+      page_bg: {
+        value: neutral.at(0.97),
         description: 'Background fill for the whole product page.',
       },
       control_pills_bg_hover: {
@@ -1357,10 +1359,12 @@ export const theme: Theme = {
         value: neutral.opaqueAt(L_BORDER_PRIMARY),
         description: 'Background color for ScrollBar.',
       },
-      sidebar_nav_bg: { value: '{semanticTokens.colors.page.bg}',
+      sidebar_nav_bg: {
+        value: '{semanticTokens.colors.page.bg}',
         description: 'Background fill for the product page sidebar.',
       },
-      sidebar_nav_border: { value: '{semanticTokens.colors.border.primary}',
+      sidebar_nav_border: {
+        value: '{semanticTokens.colors.border.primary}',
         description: 'Color for the border of the page sidebar.',
       },
       sidebar_nav_control_active: {
@@ -1892,7 +1896,7 @@ export const theme: Theme = {
     },
     sizes: {
       form_control_s: {
-        value: `${SCALE_INDENT * 6}px`,
+        value: `${SCALE_INDENT * 5}px`,
         description: 'Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions.',
       },
       form_control_m: {
