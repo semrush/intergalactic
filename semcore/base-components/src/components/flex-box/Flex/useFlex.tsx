@@ -1,6 +1,6 @@
 import { sstyled } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { getAutoOrScaleIndent, removeUndefinedKeys } from '@semcore/core/lib/utils/indentStyles';
-import type { Intergalactic } from '@semcore/core/src';
 import cn from 'classnames';
 import type { Properties } from 'csstype';
 import React from 'react';
