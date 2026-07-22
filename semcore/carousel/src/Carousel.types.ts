@@ -62,38 +62,64 @@ declare namespace NSCarousel {
     node: HTMLElement;
   };
 
-export type CarouselItemProps = NSBox.Props & {
-  /** Flag for css cursor
-   * @private
-   */
-  zoomIn?: boolean;
-  /** Flag for css cursor
-   * @private
-   */
-  zoomOut?: boolean;
+  namespace Container {
+    type Component = Intergalactic.Component<'div', NSBox.Props>;
+  }
 
-  /** Function to add item to list in Carousel
+  namespace ContentBox {
+    type Component = Intergalactic.Component<'div', NSBox.Props>;
+  }
+
+  namespace Indicators {
+    type Props = NSBox.Props & {
+      items?: NSCarousel.Item[];
+      inverted?: boolean;
+    };
+    type Component = Intergalactic.Component<'div', Props, State>;
+  }
+
+  namespace Indicator {
+    type Props = Omit<NSBox.Props, 'position'> & {
+      active?: boolean;
+      onClick?: () => void;
+      inverted?: boolean;
+    };
+    type Component = Intergalactic.Component<'div', Props>;
+  }
+
+  namespace Item {
+    type Props = NSBox.Props & {
+      /** Flag for css cursor
        * @private
        */
-  toggleItem?: (item: NSCarousel.Item, toRemove?: boolean) => void;
-
-  /** Index of item in carousel */
-  index?: number;
-
-  uid?: string;
-
-  /** Flag - is current item shown now */
-  current?: boolean;
-
-  /** Handler for show item in modal window
+      zoomIn?: boolean;
+      /** Flag for css cursor
        * @private
        */
-  onToggleZoomModal?: () => void;
+      zoomOut?: boolean;
 
-  /** Value for transform item
+      /** Function to add item to list in Carousel
        * @private
        */
-  transform?: number;
+      toggleItem?: (item: NSCarousel.Item, toRemove?: boolean) => void;
+
+      /** Index of item in carousel */
+      index?: number;
+
+      uid?: string;
+
+      /** Flag - is current item shown now */
+      current?: boolean;
+
+      /** Handler for show item in modal window
+       * @private
+       */
+      onToggleZoomModal?: () => void;
+
+      /** Value for transform item
+       * @private
+       */
+      transform?: number;
 
       /**
        * Flag data zoomed
