@@ -159,6 +159,10 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
         traverse({ node: config.semanticTokens[key], path: [], prefix, postfix: '-opacity', groupKey: 'semanticTokens' });
         break;
       }
+      case 'spacing': {
+        traverse({ node: config.semanticTokens[key], path: [], prefix: `${prefix}-spacing`, groupKey: 'semanticTokens' });
+        break;
+      }
       default: {
         traverse({ node: config.semanticTokens[key], path: [], prefix, groupKey: 'semanticTokens' });
       }

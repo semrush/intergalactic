@@ -3070,7 +3070,7 @@
     ]
   },
   {
-    "name": "--intergalactic-content-inset-inline",
+    "name": "--intergalactic-spacing-content-inset-inline",
     "value": "12px",
     "description": "Horizontal inset for content inside controls and surfaces.",
     "components": [
@@ -3078,13 +3078,13 @@
     ]
   },
   {
-    "name": "--intergalactic-content-gap-small",
+    "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
     "components": []
   },
   {
-    "name": "--intergalactic-content-gap-medium",
+    "name": "--intergalactic-spacing-content-gap-medium",
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
     "components": [
@@ -3092,7 +3092,7 @@
     ]
   },
   {
-    "name": "--intergalactic-content-gap-large",
+    "name": "--intergalactic-spacing-content-gap-large",
     "value": "8px",
     "description": "Large gap between content elements inside controls.",
     "components": [
