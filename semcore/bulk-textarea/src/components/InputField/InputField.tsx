@@ -506,12 +506,13 @@ class InputField<T extends string | string[]> extends Component<
       return;
     }
 
-    const [startElement, endElement] = this.getRangeTextNodes(staticRange);
+    const [start, end] = this.getRangeTextNodes(staticRange);
+
     const range: InputEventRange = {
-      startElement,
-      endElement,
-      startOffset: staticRange.startOffset,
-      endOffset: staticRange.endOffset,
+      startElement: start[0],
+      endElement: end[0],
+      startOffset: start[1],
+      endOffset: end[1],
     };
 
     switch (event.inputType) {
@@ -906,18 +907,18 @@ class InputField<T extends string | string[]> extends Component<
     }
   }
 
-  private getRangeTextNodes(range: StaticRange): [Text, Text] {
-    const startElement = this.getTextNode(range, 'start');
-    const endElement = this.getTextNode(range, 'end');
+  private getRangeTextNodes(range: StaticRange): [[Text, number], [Text, number]] {
+    const start = this.getTextNodeAndOffset(range, 'start');
+    const end = this.getTextNodeAndOffset(range, 'end');
 
-    return [startElement, endElement];
+    return [start, end];
   }
 
-  private getTextNode(range: StaticRange, type: 'start' | 'end'): Text {
+  private getTextNodeAndOffset(range: StaticRange, type: 'start' | 'end'): [Text, number] {
     const node = this.getNode(range, type);
 
     if (node instanceof Text) {
-      return node;
+      return [node, type === 'start' ? range.startOffset : range.endOffset];
     }
     if (node instanceof HTMLOListElement) {
       const children = this.textarea.childNodes;
@@ -929,19 +930,19 @@ class InputField<T extends string | string[]> extends Component<
         node.append(text);
         this.textarea.append(node);
 
-        return text;
+        return [text, 0];
       }
 
       const text = item.firstChild;
 
       if (text instanceof Text) {
-        return text;
+        return [text, type === 'start' ? 0 : text.textContent.trim().length];
       }
     }
     if (node instanceof HTMLLIElement) {
       const text = node.firstChild;
       if (text instanceof Text) {
-        return text;
+        return [text, type === 'start' ? range.startOffset : range.endOffset];
       }
     }
     throw new Error(`Unknown node element "${node}"`);
