@@ -191,7 +191,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify too many lines tooltip', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea'],
+        '@bulk-textarea',
+        '@base-components',
+        '@flex-box',
+        '@tooltip',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/advanced/examples/manuall_focus.tsx', 'en');
 
@@ -536,7 +540,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify instanceRef adds an empty row and sets its caret', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@bulk-textarea'],
+      '@bulk-textarea',
+      '@base-components',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/bulk-textarea/advanced/examples/manuall_focus.tsx', 'en');
 
@@ -1355,7 +1363,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Errors counter works when handleChange added rows', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@bulk-textarea'],
+        '@bulk-textarea',
+        '@base-components',
+        '@flex-box',
+        '@side-panel',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/with-new-value-on-handleChange.tsx', 'en');
       await page.waitForTimeout(100);
