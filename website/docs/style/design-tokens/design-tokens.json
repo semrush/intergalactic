@@ -3032,7 +3032,7 @@
   },
   {
     "name": "--intergalactic-form-control-s",
-    "value": "24px",
+    "value": "20px",
     "description": "Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions.",
     "components": [
       "button"

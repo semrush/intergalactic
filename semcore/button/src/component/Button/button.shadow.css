@@ -43,8 +43,8 @@ SButton[disabled] {
 }
 
 SButton[size='s'] {
-  width: var(--intergalactic-form-control-s, 24px);
-  height: var(--intergalactic-form-control-s, 24px);
+  width: var(--intergalactic-form-control-s, 20px);
+  height: var(--intergalactic-form-control-s, 20px);
   border-radius: var(--intergalactic-addon-rounded, 4px);
 }
 
