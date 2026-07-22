@@ -773,6 +773,36 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
+    test('Verify Validation on Paste', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', {
+        maxLines: 15,
+        validateOn: ['paste'],
+      });
+
+      await locators.textbox(page).click();
+      await locators.textbox(page).evaluate((node, text) => {
+        const event = new Event('paste', { bubbles: true, cancelable: true });
+        (event as any).clipboardData = {
+          getData: (type: string) => (type === 'text/plain' ? text : ''),
+          types: ['text/plain'],
+        };
+        node.dispatchEvent(event);
+      }, 'invalid[] value');
+
+      await expect(locators.row(page, 0)).toHaveAttribute(
+        'data-errormessage',
+        'Please remove one error value',
+      );
+      await expect(locators.textbox(page)).toHaveAttribute('aria-invalid', 'true');
+      await expect(locators.errorMessage(page, '1 error')).toBeVisible();
+      await expect(locators.button(page, 'Next error')).toBeVisible();
+      await expect(locators.button(page, 'Previous error')).toBeVisible();
+    });
+
     test('Verify Validation on Submit', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
