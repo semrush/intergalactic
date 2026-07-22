@@ -188,6 +188,31 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
+    test('Verify too many lines tooltip', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.KEYBOARD,
+        '@bulk-textarea'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/bulk-textarea/advanced/examples/manuall_focus.tsx', 'en');
+
+      await test.step('Show tooltip after exceeding the maximum number of lines', async () => {
+        await expect(locators.textbox(page)).toBeFocused();
+
+        await page.keyboard.type('second');
+        await page.keyboard.press('Enter');
+        await page.keyboard.type('third');
+        await page.keyboard.press('Enter');
+        await page.keyboard.type('fourth');
+        await page.keyboard.press('Enter');
+        await page.keyboard.type('fifth');
+
+        await expect(locators.rows(page)).toHaveCount(5);
+        await expect(locators.counter(page)).toContainText('5/4');
+        await expect(locators.counter(page)).toContainText('Limit exceeded');
+        await expect(page.getByRole('tooltip', { name: 'Too much lines' })).toBeVisible();
+      });
+    });
+
     test('Verify Clear all by mouse when no validation', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
@@ -1025,7 +1050,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await page.keyboard.press('Tab');
         const text =
           'Zoom in \nSecond row\n3 row\n4[] row\n5 row\n6 ]]row\n7 row\n8 row\n9 row\n10 row\n11[[row\n12 row\n13 row';
-        await page.keyboard.type(text, { delay: 20 });
+        await page.keyboard.type(text, { delay: 30 });
         await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
         await page.waitForTimeout(100);
