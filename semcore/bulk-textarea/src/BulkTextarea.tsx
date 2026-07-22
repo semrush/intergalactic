@@ -37,11 +37,11 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
-  inputFieldRef = React.createRef<HTMLDivElement>();
+  inputFieldRef = React.createRef<HTMLOListElement>();
   clearAllButtonRef = React.createRef<HTMLButtonElement>();
   nextButtonRef = React.createRef<HTMLButtonElement>();
   prevButtonRef = React.createRef<HTMLButtonElement>();
-  counterRef = React.createRef<HTMLDivElement>();
+  counterRef = React.createRef<HTMLOListElement>();
 
   state: NSBulktextarea.State = {
     linesCount: 0,
@@ -123,6 +123,11 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
         }
 
         this.handlers.value?.(value, event);
+      },
+      onPaste: () => {
+        if (validateOn?.includes('paste')) {
+          this.handlers.showErrors(true);
+        }
       },
       showErrors,
       validateOn,
@@ -222,6 +227,14 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       this.handlers.showErrors(false);
       this.handlers.errors([]);
       this.handlers.state('normal');
+
+      if (document.activeElement === this.clearAllButtonRef.current) {
+        const textarea = this.inputFieldRef.current?.querySelector('[contenteditable="true"]');
+
+        if (textarea instanceof HTMLOListElement) {
+          textarea.focus();
+        }
+      }
     }
   };
 
@@ -229,15 +242,9 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
     this.handlers.showErrors(false);
     this.handlers.errors([]);
     this.setState({ errorIndex: -1 });
-    // @ts-ignore
-    this.handlers.value('', e);
+    // @ts-ignore (we should set right type of value depending on the type of value passed)
+    this.handlers.value(typeof this.asProps.value === 'string' ? '' : [], e);
     this.handlers.state('normal');
-
-    const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
-
-    if (textarea instanceof HTMLDivElement) {
-      textarea.focus();
-    }
   };
 
   handleChangeErrorIndex = (amount: number) => () => {
