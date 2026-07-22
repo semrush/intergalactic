@@ -95,6 +95,12 @@ declare namespace NSBulktextarea {
        * This component doesn't have default onChange callback, because we think that you need only the result after every changes/fixes
        */
       onBlur?: (value: T, e: Event) => void;
+
+      /**
+       * Callback to enable display errors after pasting for `on-paste` validation.
+       * @internal
+       */
+      onPaste?: () => void;
       /**
        * Size of component
        * @default m

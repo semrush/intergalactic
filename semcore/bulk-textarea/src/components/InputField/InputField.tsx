@@ -439,6 +439,7 @@ class InputField<T extends string | string[]> extends Component<
   handlePaste(event: ClipboardEvent) {
     this.history.push(this.createHistoryState());
     this.insertFromPaste(event);
+    this.asProps.onPaste();
   }
 
   handleCompositionTextStart() {

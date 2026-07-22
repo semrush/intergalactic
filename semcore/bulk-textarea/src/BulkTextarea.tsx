@@ -124,6 +124,11 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
         this.handlers.value?.(value, event);
       },
+      onPaste: () => {
+        if (validateOn?.includes('paste')) {
+          this.handlers.showErrors(true);
+        }
+      },
       showErrors,
       validateOn,
       lineValidation: lineValidation,
