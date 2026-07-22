@@ -36,7 +36,7 @@ class RootPills extends Component<
   currentSelectedIndex: number | null = null;
 
   rootRef: React.MutableRefObject<HTMLDivElement | null> = React.createRef();
-  pills: Array<HTMLButtonElement | null> = [];
+  pills: Array<HTMLButtonElement> = [];
   segmentIndicatorRef: React.MutableRefObject<HTMLSpanElement | null> = React.createRef();
 
   ro: ResizeObserver | null = null;
@@ -68,6 +68,20 @@ class RootPills extends Component<
     return {
       value: null,
     };
+  }
+
+  componentDidUpdate() {
+    this.updateSegmentIndicator();
+  }
+
+  componentDidMount() {
+    this.updateSegmentIndicator();
+
+    if (!this.ro) return;
+
+    for (const pill of this.pills) {
+      this.ro.observe(pill);
+    }
   }
 
   updateSegmentIndicator() {
@@ -108,18 +122,6 @@ class RootPills extends Component<
     }
   };
 
-  componentDidMount(): void {
-    this.updateSegmentIndicator();
-
-    if (!this.ro) return;
-
-    for (const pill of this.pills) {
-      if (!pill) continue;
-
-      this.ro.observe(pill);
-    }
-  }
-
   getItemProps(props: NSPills.Pill.Props, index: number) {
     const { value, size, disabled, behavior } = this.asProps;
     const isSelected = value === props.value;
@@ -141,13 +143,11 @@ class RootPills extends Component<
       onClick: this.bindHandlerClick(props.value),
       onKeyDown: this.bindHandleKeyDown(props.value),
       ref: (node: HTMLButtonElement | null) => {
+        if (node === null) return;
+
         this.pills[index] = node;
       },
     };
-  }
-
-  componentDidUpdate() {
-    this.updateSegmentIndicator();
   }
 
   render() {
