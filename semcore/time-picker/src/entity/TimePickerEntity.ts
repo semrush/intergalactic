@@ -96,7 +96,7 @@ class TimePickerEntity {
 
     if (Number.isNaN(numberHours)) return 'AM';
 
-    return numberHours <= 12 && numberHours > 0 ? 'AM' : 'PM';
+    return numberHours < 12 ? 'AM' : 'PM';
   }
 }
 

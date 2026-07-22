@@ -45,7 +45,7 @@ describe('TimePickerEntity', () => {
 
       expect(entity.hours).toBe('12');
       expect(entity.minutes).toBe('00');
-      expect(entity.meridiem).toBe('PM');
+      expect(entity.meridiem).toBe('AM');
     });
 
     it('should format hours 1-11 AM correctly', () => {
@@ -58,7 +58,7 @@ describe('TimePickerEntity', () => {
       const entity = new TimePickerEntity('12:00', true);
 
       expect(entity.hours).toBe('12');
-      expect(entity.meridiem).toBe('AM');
+      expect(entity.meridiem).toBe('PM');
     });
 
     it('should format hours 13-23 as 1-11 PM', () => {
@@ -81,7 +81,7 @@ describe('TimePickerEntity', () => {
       const entity = new TimePickerEntity('0:00');
 
       expect(entity.hours).toBe('00');
-      expect(entity.meridiem).toBe('PM');
+      expect(entity.meridiem).toBe('AM');
     });
 
     it('should not handle meridiem in 24-hour format', () => {
@@ -105,7 +105,7 @@ describe('TimePickerEntity', () => {
       const entity = new TimePickerEntity('12:00');
 
       expect(entity.hours).toBe('12');
-      expect(entity.meridiem).toBe('AM');
+      expect(entity.meridiem).toBe('PM');
     });
 
     it('should keep AM hours unchanged (except 12)', () => {
@@ -157,14 +157,13 @@ describe('TimePickerEntity', () => {
     });
 
     it('should handle midnight (12 AM) conversion', () => {
-      const entity = new TimePickerEntity('12:00', true);
+      const entity = new TimePickerEntity('00:00', true);
 
       expect(entity.toString()).toBe('00:00');
     });
 
     it('should handle noon (12 PM) conversion', () => {
       const entity = new TimePickerEntity('12:00', true);
-      entity.toggleMeridiem();
 
       expect(entity.toString()).toBe('12:00');
     });
