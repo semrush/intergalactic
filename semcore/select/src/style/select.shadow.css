@@ -81,11 +81,14 @@ SOptionCheckbox[indeterminate]:after {
   margin: auto;
   /* disable-tokens-validator */
   border-radius: 1px;
-  width: 8px;
-  height: 2px;
 }
 
 SOptionCheckbox[indeterminate][size='l']:after {
   width: 12px;
+  height: 2px;
+}
+
+SOptionCheckbox[indeterminate][size='m']:after {
+  width: 8px;
   height: 2px;
 }
