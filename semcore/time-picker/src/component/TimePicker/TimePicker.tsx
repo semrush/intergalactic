@@ -75,6 +75,7 @@ class TimePickerRoot extends Component<
     if (value !== undefined) {
       const [hours = '', minutes = ''] = value.split(':');
 
+      this.entity.setMeridiemFromHours(hours);
       this.entity.hours = hours;
       this.entity.minutes = minutes;
     }
@@ -91,13 +92,7 @@ class TimePickerRoot extends Component<
   }
 
   handleValueChange = (value: string, field: TimePickerField, event: React.SyntheticEvent) => {
-    // need to temporarily store current meridiem and then set it back after changes from input
-    const meridiem = this.entity.meridiem;
     this.entity[field] = value;
-
-    if (meridiem !== this.entity.meridiem) {
-      this.entity.toggleMeridiem();
-    }
 
     this.handlers.value(this.entity.toString(), event);
   };

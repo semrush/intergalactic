@@ -36,7 +36,6 @@ class TimePickerEntity {
 
   set hours(newHours) {
     this._hours = newHours;
-    this._meridiem = this.meridiemFromHours(newHours);
   }
 
   set minutes(newMinutes) {
@@ -89,6 +88,10 @@ class TimePickerEntity {
     const hours = this._is12Hour ? this.formatHoursTo24(this.hours) : this.hours;
 
     return `${hours}:${this.minutes}`;
+  }
+
+  setMeridiemFromHours(hours: string): void {
+    this._meridiem = this.meridiemFromHours(hours);
   }
 
   private meridiemFromHours(hours: string): TimePickerMeridiem {
