@@ -37,18 +37,11 @@ const Demo = () => {
             <DropdownMenu.Item onClick={handleClick}>CSV</DropdownMenu.Item>
             <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
           </DropdownMenu.List>
-          <Notice
+          <DropdownMenu.Notice
             aria-labelledby='export-notice-title'
             theme='warning'
-            style={{
-              padding: 'var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px)',
-              borderWidth: 0,
-              borderTopWidth: '1px',
-              borderRadius:
-                '0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)',
-            }}
           >
-            <Notice.Content>
+            <DropdownMenu.Notice.Content>
               <Text tag='strong' mb={1} style={{ display: 'block' }} id='export-notice-title'>
                 Export failed
               </Text>
@@ -59,8 +52,8 @@ const Demo = () => {
                   feedback@semrush.com
                 </Link>
               </Text>
-            </Notice.Content>
-          </Notice>
+            </DropdownMenu.Notice.Content>
+          </DropdownMenu.Notice>
         </SpinContainer>
       </DropdownMenu.Popper>
     </DropdownMenu>

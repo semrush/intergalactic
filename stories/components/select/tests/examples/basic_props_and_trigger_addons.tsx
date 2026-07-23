@@ -32,6 +32,10 @@ export type SelectBasicProps = Omit<
   showTriggerText?: boolean;
   triggerText?: string;
   size?: 'm' | 'l';
+
+  // option addon props
+  showOptionLeftAddon?: boolean;
+  showOptionRightAddon?: boolean;
 };
 
 const Demo = (props: SelectBasicProps) => {
@@ -63,6 +67,10 @@ const Demo = (props: SelectBasicProps) => {
     triggerText = 'Trigger',
     showTriggerText = false,
 
+    // option addon
+    showOptionLeftAddon = false,
+    showOptionRightAddon = false,
+
     ...restProps
   } = props;
 
@@ -74,7 +82,7 @@ const Demo = (props: SelectBasicProps) => {
       children: `Option ${index}`,
     }));
 
-  const hasCustomTrigger = showLeftAddon || showRightAddon || showTriggerText;
+  const hasCustomTriggerOrOption = showLeftAddon || showRightAddon || showTriggerText || showOptionLeftAddon || showOptionRightAddon;
   const [value, setValue] = React.useState<SelectBasicValue>(multiselect ? [] : null);
 
   React.useEffect(() => {
@@ -93,7 +101,7 @@ const Demo = (props: SelectBasicProps) => {
           {labelText}
         </Text>
       )}
-      {hasCustomTrigger
+      {hasCustomTriggerOrOption
         ? (
             <Select
               value={value}
@@ -138,7 +146,9 @@ const Demo = (props: SelectBasicProps) => {
               <Select.Menu>
                 {options.map((option) => (
                   <Select.Option key={option.value} value={option.value}>
-                    {option.children}
+                    {showOptionLeftAddon && <Select.Option.Addon><LinkExternalM /></Select.Option.Addon>}
+                    <Select.Option.Text>{option.children}</Select.Option.Text>
+                    {showOptionRightAddon && <Select.Option.Addon><LinkExternalM /></Select.Option.Addon>}
                   </Select.Option>
                 ))}
               </Select.Menu>

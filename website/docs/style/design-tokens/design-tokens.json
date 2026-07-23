@@ -137,7 +137,6 @@
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
       "base-components",
-      "base-trigger",
       "bulk-textarea",
       "card",
       "checkbox",
@@ -153,7 +152,6 @@
       "input",
       "modal",
       "radio",
-      "select",
       "side-panel",
       "slider",
       "switch",
@@ -175,7 +173,8 @@
     "value": "oklch(0.98 0.001 180)",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
     "components": [
-      "base-trigger"
+      "base-trigger",
+      "pills"
     ]
   },
   {
@@ -421,7 +420,6 @@
       "inline-input",
       "input",
       "radio",
-      "select",
       "side-panel",
       "slider",
       "spin",
@@ -848,25 +846,33 @@
     "name": "--intergalactic-control-checkbox-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background color of the Checkbox.",
-    "components": []
+    "components": [
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-bg-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background color of the checked Checkbox.",
-    "components": []
+    "components": [
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Checkbox.",
-    "components": []
+    "components": [
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-checkmark",
     "value": "oklch(1 0 0)",
     "description": "Color of the checkmark.",
-    "components": []
+    "components": [
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-button-bg-hover",
@@ -1005,7 +1011,6 @@
       "dropdown",
       "feature-highlight",
       "radio",
-      "select",
       "slider",
       "switch"
     ]
@@ -1152,19 +1157,25 @@
     "name": "--intergalactic-control-select-trigger-active",
     "value": "oklch(1 0 0)",
     "description": "Background of the Select trigger in its active state.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-control-select-trigger-hover",
     "value": "oklch(0.98 0.001 180)",
     "description": "Background of the Select trigger in its hover state.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-control-select-trigger-normal",
     "value": "oklch(1 0 0)",
     "description": "Background of the Select trigger in its normal state.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-bg",
@@ -1475,7 +1486,9 @@
     "name": "--intergalactic-dropdown-menu-item-selected-box-shadow",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the selected item in the DropdownMenu.",
-    "components": []
+    "components": [
+      "dropdown"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
@@ -1563,7 +1576,9 @@
     "name": "--intergalactic-icon-non-interactive",
     "value": "oklch(0.094 0.024 153.9 / 0.503)",
     "description": "Color for the default non-interactive icon.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-critical",
@@ -1613,7 +1628,6 @@
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
       "accordion",
-      "base-trigger",
       "carousel",
       "drag-and-drop",
       "feature-highlight",
@@ -3050,6 +3064,7 @@
       "base-trigger",
       "button",
       "color-picker",
+      "dropdown",
       "input",
       "input-tags",
       "notice",
@@ -3068,6 +3083,7 @@
       "input",
       "input-tags",
       "pills",
+      "select",
       "tab-line",
       "time-picker"
     ]
@@ -3077,7 +3093,9 @@
     "value": "12px",
     "description": "Horizontal inset for content inside controls and surfaces.",
     "components": [
+      "base-trigger",
       "button",
+      "dropdown",
       "pills"
     ]
   },
@@ -3085,15 +3103,21 @@
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-medium",
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
     "components": [
+      "base-trigger",
       "button",
-      "pills"
+      "dropdown",
+      "dropdown-menu",
+      "pills",
+      "select"
     ]
   },
   {
@@ -3101,7 +3125,9 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls.",
     "components": [
-      "button"
+      "button",
+      "dropdown",
+      "select"
     ]
   },
   {

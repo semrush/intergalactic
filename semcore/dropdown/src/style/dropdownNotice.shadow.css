@@ -1,0 +1,9 @@
+SDropdownNotice {
+  padding-top: var(--intergalactic-spacing-content-inset-inline, 12px);
+  padding-bottom: var(--intergalactic-spacing-content-inset-inline, 12px);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

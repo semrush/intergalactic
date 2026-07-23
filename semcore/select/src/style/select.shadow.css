@@ -1,6 +1,6 @@
 SOptionCheckbox {
   margin-top: var(--intergalactic-spacing-05x, 2px);
-  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
   margin-bottom: auto;
   position: relative;
   flex-shrink: 0;
@@ -12,14 +12,13 @@ SOptionCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
-    border: 1px solid;
+    background: var(--intergalactic-control-checkbox-bg-normal, oklch(1 0 0));
+    border: 1px solid var(--intergalactic-control-checkbox-border, oklch(0.137 0.026 175.7 / 0.161));
     border-radius: var(--intergalactic-addon-rounded, 4px);
-    border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 
-  width: 16px;
-  height: 16px;
+  width: var(--intergalactic-spacing-4x, 16px);
+  height: var(--intergalactic-spacing-4x, 16px);
 }
 
 SOptionCheckbox::after {
@@ -35,26 +34,27 @@ SOptionCheckbox::after {
 }
 
 SOptionCheckbox[selected]::after {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4=');
 }
 
 SOptionCheckbox[size='l'] {
-  width: 20px;
-  height: 20px;
+  width: var(--intergalactic-spacing-5x, 20px);
+  height: var(--intergalactic-spacing-5x, 20px);
+  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SOptionCheckbox[size='l'][selected]::after {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');
 }
 
 SOptionCheckbox[selected]:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
 }
 
 SOptionCheckbox[indeterminate]:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
 }
 
 SOptionCheckbox[theme]:before {
@@ -76,7 +76,7 @@ SOptionCheckbox[selected] {
 }
 
 SOptionCheckbox[indeterminate]:after {
-  background-color: #ffffff; /* TODO: --gray-white */
+  background-color: var(--intergalactic-control-checkbox-checkmark, oklch(1 0 0));
   background-image: none;
   margin: auto;
   /* disable-tokens-validator */
@@ -84,11 +84,13 @@ SOptionCheckbox[indeterminate]:after {
 }
 
 SOptionCheckbox[indeterminate][size='l']:after {
-  width: 12px;
-  height: 2px;
+  width: var(--intergalactic-spacing-3x, 12px);
+  /* disable-tokens-validator */
+  height: 1.5px; /* TODO: --intergalactic-icon-stroke-width (?) */
 }
 
 SOptionCheckbox[indeterminate][size='m']:after {
-  width: 8px;
-  height: 2px;
+  width: var(--intergalactic-spacing-2x, 8px);
+  /* disable-tokens-validator */
+  height: 1.5px; /* TODO: --intergalactic-icon-stroke-width (?) */
 }

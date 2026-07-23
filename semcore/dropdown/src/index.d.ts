@@ -7,6 +7,8 @@ import type { Box, BoxProps,
   PopperPopperProps,
 } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
+import type { NSNotice } from '@semcore/notice';
+import type Notice from '@semcore/notice';
 import type React from 'react';
 
 export type DropdownProps = PopperProps & {
@@ -71,6 +73,9 @@ export type DropdownStatusItemProps = {
 
 export type StatusItemComponent = Intergalactic.Component<'div', DropdownStatusItemProps>;
 
+export type DropdownNoticeProps = NSNotice.Props;
+export type DropdownNoticeComponent = Intergalactic.Component<typeof Notice, DropdownNoticeProps>;
+
 declare const Dropdown: Intergalactic.Component<
   'div',
   DropdownProps,
@@ -87,6 +92,7 @@ declare const Dropdown: Intergalactic.Component<
   Item: Intergalactic.Component<typeof Box>;
   Group: Intergalactic.Component<'div', DropdownGroupProps>;
   StatusItem: StatusItemComponent;
+  DropdownNotice: DropdownNoticeComponent;
 };
 
 export default Dropdown;

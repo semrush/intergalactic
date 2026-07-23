@@ -101,6 +101,14 @@ export const BasicPropsAndTriggerAddons: StoryObj<typeof BasicProps> = {
     showTriggerText: {
       control: { type: 'boolean' },
     },
+
+    // option addon props
+    showOptionLeftAddon: {
+      control: { type: 'boolean' },
+    },
+    showOptionRightAddon: {
+      control: { type: 'boolean' },
+    },
   },
   args: BasicProps,
 };
