@@ -256,7 +256,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
       const formatValue = (await formatButton.textContent())?.trim();
 
-      expect(formatValue).toBe('AM');
+      expect(formatValue).toBe('PM');
     });
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
@@ -456,7 +456,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
       const formatValue = (await formatButton.nth(1).textContent())?.trim();
 
-      expect(formatValue).toBe('AM');
+      expect(formatValue).toBe('PM');
     });
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
