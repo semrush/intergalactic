@@ -23,16 +23,9 @@ const Demo = () => (
             </Select.Option>
           ))}
         </Select.List>
-        {/* TODO: remove styles and replace with new dropdown notice */}
-        <Notice
-          p='var(--intergalactic-spacing-content-inset-inline)'
-          borderRadius='0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)'
-          style={{
-            borderWidth: '1px 0 0 0',
-          }}
-        >
-          <Notice.Content aria-live='polite'>Woooop, it's simple magic!</Notice.Content>
-        </Notice>
+        <Select.Notice>
+          <Select.Notice.Content aria-live='polite'>Woooop, it's simple magic!</Select.Notice.Content>
+        </Select.Notice>
       </Select.Popper>
     </Select>
   </Flex>

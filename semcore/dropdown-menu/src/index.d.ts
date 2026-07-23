@@ -154,8 +154,8 @@ declare const DropdownMenu: Intergalactic.Component<
   };
 
   Group: typeof Dropdown.Group;
-
   StatusItem: StatusItemComponent;
+  Notice: DropdownNoticeComponent;
 
   VirtualList: typeof VirtualList;
 

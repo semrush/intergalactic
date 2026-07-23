@@ -2,7 +2,6 @@ import FileExportM from '@semcore/icon/FileExport/m';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Modal from '@semcore/ui/modal';
-import Notice from '@semcore/ui/notice';
 import SpinContainer from '@semcore/ui/spin-container';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -41,13 +40,13 @@ const Demo = () => {
               <DropdownMenu.Item onClick={handleClick}>CSV</DropdownMenu.Item>
               <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
             </DropdownMenu.List>
-            <Notice theme='warning'>
-              <Notice.Content>
+            <DropdownMenu.Notice theme='warning'>
+              <DropdownMenu.Notice.Content>
                 <Button onClick={handleOpen} use='primary'>
                   Open modal
                 </Button>
-              </Notice.Content>
-            </Notice>
+              </DropdownMenu.Notice.Content>
+            </DropdownMenu.Notice>
           </SpinContainer>
         </DropdownMenu.Popper>
       </DropdownMenu>

@@ -37,17 +37,11 @@ const Demo = () => {
             <DropdownMenu.Item onClick={handleClick}>CSV</DropdownMenu.Item>
             <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
           </DropdownMenu.List>
-          <Notice
+          <DropdownMenu.Notice
             aria-labelledby='export-notice-title'
             theme='warning'
-            p={3}
-            // TODO: remove styles and replace with new dropdown notice
-            borderRadius='0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)'
-            style={{
-              borderWidth: '1px 0 0 0',
-            }}
           >
-            <Notice.Content>
+            <DropdownMenu.Notice.Content>
               <Text tag='strong' mb={1} style={{ display: 'block' }} id='export-notice-title'>
                 Export failed
               </Text>
@@ -58,8 +52,8 @@ const Demo = () => {
                   feedback@semrush.com
                 </Link>
               </Text>
-            </Notice.Content>
-          </Notice>
+            </DropdownMenu.Notice.Content>
+          </DropdownMenu.Notice>
         </SpinContainer>
       </DropdownMenu.Popper>
     </DropdownMenu>
