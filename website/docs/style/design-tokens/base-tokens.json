@@ -840,7 +840,7 @@
   },
   {
     "name": "--intergalactic-border-tooltip-invert",
-    "value": "oklch(0.951 0.094 140.3 / 0.014)"
+    "value": "oklch(0.974 0.047 140 / 0.136)"
   },
   {
     "name": "--intergalactic-border-table-accent",

@@ -1,6 +1,7 @@
 import InputTags from '@semcore/ui/input-tags';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AllSizesExample from './examples/all-sizes';
 import EnteringAndEditingTagsExample, { defaultProps as enteringAndEditingTagsProps } from './examples/entering_and_editing_tags';
 import TagsWithAddonsExample, { defaultPropsEmail } from './examples/tags-with-addons';
 
@@ -10,6 +11,11 @@ const meta: Meta<typeof InputTags> = {
 };
 
 export default meta;
+
+export const AllSizes: StoryObj = {
+  name: 'All sizes',
+  render: AllSizesExample,
+};
 
 export const EnteringAndEditingTags: StoryObj<typeof enteringAndEditingTagsProps> = {
   render: EnteringAndEditingTagsExample,
