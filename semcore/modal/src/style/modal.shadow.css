@@ -30,6 +30,7 @@ SWindow {
     position: absolute;
     right: var(--intergalactic-spacing-2x, 8px);
     top: var(--intergalactic-spacing-2x, 8px);
+    width: var(--intergalactic-form-control-l, 44px);
   }
   SClose[ghost] {
     right: 0;
