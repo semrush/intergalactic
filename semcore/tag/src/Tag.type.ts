@@ -8,7 +8,7 @@ import type { LocalizedMessages } from './translations/__intergalactic-dynamic-l
 
 declare namespace NSTag {
   type Size = 'xl' | 'l' | 'm';
-  type Theme = 'primary' | 'secondary' | 'additional';
+  type Theme = 'primary' | 'secondary' | 'additional' | 'primary-invert' | 'secondary-invert' | 'additional-invert';
   type Use = 'primary' | 'secondary';
   type Ctx = Props & {
     getCloseProps?: PropGetterFn;

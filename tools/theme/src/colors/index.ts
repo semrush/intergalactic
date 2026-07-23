@@ -240,14 +240,14 @@ export const L_BORDER_FOCUS = 0.7;
 // Invert levels
 
 /** Primary bg */
-export const L_INV_BG_PRIMARY = 0.23;
-export const L_INV_BG_PRIMARY_HOVER = 0.36;
-export const L_INV_BG_PRIMARY_ACTIVE = 0.4;
+export const L_INV_BG_PRIMARY = 0.21;
+export const L_INV_BG_PRIMARY_HOVER = 0.32;
+export const L_INV_BG_PRIMARY_ACTIVE = 0.36;
 
 /** Secondary bg */
-export const L_INV_BG_SECONDARY = 0.28;
-export const L_INV_BG_SECONDARY_HOVER = 0.32;
-export const L_INV_BG_SECONDARY_ACTIVE = 0.34;
+export const L_INV_BG_SECONDARY = 0.23;
+export const L_INV_BG_SECONDARY_HOVER = 0.28;
+export const L_INV_BG_SECONDARY_ACTIVE = 0.32;
 
 /** Skeleton bg */
 export const L_INV_BG_SKELETON = 0.5;
@@ -274,4 +274,4 @@ export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
 export const L_INV_BORDER_PRIMARY = 0.5; // inputs, buttons, table header
 /** Border secondary */
-export const L_INV_BORDER_SECONDARY = 0.48;
+export const L_INV_BORDER_SECONDARY = 0.25;

@@ -105,7 +105,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-invert",
-    "value": "oklch(0.23 0.01 140)",
+    "value": "oklch(0.21 0.01 140)",
     "description": "Inverted version of the primary background of the interface that contains the main data and information.",
     "components": [
       "notice-bubble"
@@ -113,7 +113,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-invert-active",
-    "value": "oklch(0.4 0.004 140)",
+    "value": "oklch(0.36 0.005 140)",
     "description": "Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information.",
     "components": [
       "drag-and-drop"
@@ -121,7 +121,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-invert-hover",
-    "value": "oklch(0.36 0.005 140)",
+    "value": "oklch(0.32 0.007 140)",
     "description": "Hover state for the inverted version of the primary background of the interface that contains the main data and information.",
     "components": []
   },
@@ -158,7 +158,6 @@
       "side-panel",
       "slider",
       "switch",
-      "tag",
       "textarea",
       "wizard"
     ]
@@ -175,10 +174,7 @@
     "name": "--intergalactic-bg-primary-neutral-hover",
     "value": "oklch(0.98 0.001 180)",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
-    "components": [
-      "base-trigger",
-      "pills"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-success",
@@ -458,7 +454,7 @@
   },
   {
     "name": "--intergalactic-border-secondary-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.951 0.094 140.3 / 0.014)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
   },
@@ -923,7 +919,7 @@
   },
   {
     "name": "--intergalactic-control-primary-advertising",
-    "value": "oklch(0.23 0.01 140)",
+    "value": "oklch(0.21 0.01 140)",
     "description": "Background of the advertising primary control.",
     "components": [
       "wizard"
@@ -931,7 +927,7 @@
   },
   {
     "name": "--intergalactic-control-primary-advertising-hover",
-    "value": "oklch(0.36 0.005 140)",
+    "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the advertising primary control.",
     "components": [
       "wizard"
@@ -939,7 +935,7 @@
   },
   {
     "name": "--intergalactic-control-primary-advertising-active",
-    "value": "oklch(0.4 0.004 140)",
+    "value": "oklch(0.36 0.005 140)",
     "description": "Active (selected) state of the advertising primary control.",
     "components": [
       "wizard"
@@ -1102,7 +1098,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert",
-    "value": "oklch(0.98 0.036 140 / 0.164)",
+    "value": "oklch(0.969 0.057 140 / 0.118)",
     "description": "Background of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1110,7 +1106,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert-active",
-    "value": "oklch(0.988 0.021 140 / 0.222)",
+    "value": "oklch(0.986 0.025 140 / 0.203)",
     "description": "Active (selected) state of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1118,7 +1114,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-invert-hover",
-    "value": "oklch(0.986 0.025 140 / 0.203)",
+    "value": "oklch(0.98 0.036 140 / 0.164)",
     "description": "Hover state of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1217,7 +1213,7 @@
   },
   {
     "name": "--intergalactic-control-switch-bg",
-    "value": "oklch(0.88 0.002 175.6)",
+    "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Subtle background of the Switch control.",
     "components": [
       "switch"
@@ -1275,7 +1271,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-invert-active",
-    "value": "oklch(0.988 0.021 140 / 0.222)",
+    "value": "oklch(0.986 0.025 140 / 0.203)",
     "description": "Active (selected) state of the inverted version of the tertiary control.",
     "components": [
       "button"
@@ -1283,7 +1279,7 @@
   },
   {
     "name": "--intergalactic-control-tertiary-invert-hover",
-    "value": "oklch(0.986 0.025 140 / 0.203)",
+    "value": "oklch(0.98 0.036 140 / 0.164)",
     "description": "Hover state of the inverted version of the tertiary control.",
     "components": [
       "button"
@@ -1498,7 +1494,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-bg-neutral",
-    "value": "oklch(0.23 0.01 140)",
+    "value": "oklch(0.21 0.01 140)",
     "description": "Background of the FeaturePopover with neutral theme.",
     "components": [
       "feature-popover"
@@ -1867,7 +1863,7 @@
   },
   {
     "name": "--intergalactic-notice-bubble-bg-info",
-    "value": "oklch(0.23 0.01 140)",
+    "value": "oklch(0.21 0.01 140)",
     "description": "Background of the NoticeBubble.",
     "components": []
   },
@@ -2358,7 +2354,9 @@
     "name": "--intergalactic-tag-primary-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background of the primary Tag in its normal state.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-blue-hover-active",
@@ -2382,7 +2380,9 @@
     "name": "--intergalactic-tag-primary-border",
     "value": "oklch(1 0 0)",
     "description": "Border color of the primary Tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-gray-hover-active",
@@ -2476,13 +2476,15 @@
   },
   {
     "name": "--intergalactic-tag-primary-white-hover-active",
-    "value": "oklch(0.98 0.001 180)",
+    "value": "oklch(0.986 0.025 140 / 0.203)",
     "description": "Hover and active (selected) state of the primary white tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-white-normal",
-    "value": "oklch(1 0 0)",
+    "value": "oklch(0.965 0.065 140 / 0.1)",
     "description": "Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.",
     "components": [
       "tag"
@@ -2514,51 +2516,67 @@
   },
   {
     "name": "--intergalactic-tag-secondary-border",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Border color of the secondary Tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-border-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.951 0.094 140.3 / 0.014)",
     "description": "Inverted border color of the secondary Tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-gray-text",
     "value": "#6a6c6a",
     "description": "Gray text for the default secondary tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-hover-active",
     "value": "#f4f5f5",
     "description": "Hover and active (selected) states of the background color for the default secondary tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-normal",
     "value": "#ffffff",
     "description": "Background color for the default secondary tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-white-hover-active",
-    "value": "rgba(255, 255, 255, 0.1)",
+    "value": "oklch(0.98 0.036 140 / 0.164)",
     "description": "Active state of the secondary white tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-white-normal",
-    "value": "rgba(255, 255, 255, 0)",
+    "value": "transparent",
     "description": "Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-white-text",
-    "value": "#ffffff",
+    "value": "oklch(0.997 0.004 165.9 / 0.684)",
     "description": "White text for the secondary white tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-text-advertising",
@@ -2844,7 +2862,7 @@
   },
   {
     "name": "--intergalactic-tooltip-bg-invert",
-    "value": "oklch(0.23 0.01 140)",
+    "value": "oklch(0.21 0.01 140)",
     "description": "Inverted version of the default Tooltip background.",
     "components": []
   },
@@ -2856,7 +2874,7 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.951 0.094 140.3 / 0.014)",
     "description": "Border of the Tooltip with dark theme.",
     "components": []
   },
@@ -2880,25 +2898,25 @@
   },
   {
     "name": "--intergalactic-wizard-sidebar-bg",
-    "value": "oklch(0.23 0.01 140)",
+    "value": "oklch(0.21 0.01 140)",
     "description": "Background of the Wizard sidebar.",
     "components": []
   },
   {
     "name": "--intergalactic-wizard-sidebar-control",
-    "value": "oklch(0.23 0.01 140)",
+    "value": "oklch(0.21 0.01 140)",
     "description": "Background of the control in the Wizard sidebar in its normal state.",
     "components": []
   },
   {
     "name": "--intergalactic-wizard-sidebar-control-active",
-    "value": "oklch(0.4 0.004 140)",
+    "value": "oklch(0.36 0.005 140)",
     "description": "Active state of the control in the Wizard sidebar.",
     "components": []
   },
   {
     "name": "--intergalactic-wizard-sidebar-control-hover",
-    "value": "oklch(0.36 0.005 140)",
+    "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the control in the Wizard sidebar.",
     "components": []
   },
@@ -3083,7 +3101,9 @@
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
     "components": [
-      "inline-input"
+      "dropdown-menu",
+      "inline-input",
+      "tag"
     ]
   },
   {
@@ -3100,7 +3120,10 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls.",
     "components": [
-      "button"
+      "button",
+      "dropdown",
+      "select",
+      "tag"
     ]
   },
   {
