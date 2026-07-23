@@ -815,6 +815,16 @@
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
   },
   {
+    "name": "--intergalactic-timing-fast",
+    "value": "cubic-bezier(0.5, 0, 0, 1.26)",
+    "description": "Should be used for fast animation timing function"
+  },
+  {
+    "name": "--intergalactic-timing-medium",
+    "value": "cubic-bezier(0.5, 0, 0, 1.13)",
+    "description": "Should be used for medium animation timing function"
+  },
+  {
     "name": "--intergalactic-violet-400",
     "value": "oklch(0.64 0.223 299.3)"
   },

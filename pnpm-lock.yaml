@@ -1508,6 +1508,10 @@ importers:
         version: link:../../tools/testing-utils
 
   semcore/pills:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^17.2.1
+        version: link:../typography
     devDependencies:
       '@semcore/badge':
         specifier: workspace:*

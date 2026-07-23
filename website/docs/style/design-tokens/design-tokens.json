@@ -152,7 +152,6 @@
       "inline-input",
       "input",
       "modal",
-      "pills",
       "radio",
       "select",
       "side-panel",
@@ -176,8 +175,7 @@
     "value": "oklch(0.98 0.001 180)",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
     "components": [
-      "base-trigger",
-      "pills"
+      "base-trigger"
     ]
   },
   {
@@ -399,7 +397,6 @@
       "inline-input",
       "input",
       "input-tags",
-      "pills",
       "radio",
       "tab-line",
       "textarea"
@@ -423,7 +420,6 @@
       "fullscreen-modal",
       "inline-input",
       "input",
-      "pills",
       "radio",
       "select",
       "side-panel",
@@ -1085,8 +1081,7 @@
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "pills"
+      "base-trigger"
     ]
   },
   {
@@ -1915,25 +1910,33 @@
     "name": "--intergalactic-control-pills-bg-hover",
     "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Hover state of the Pills background.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-bg-normal",
     "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Background of the Pills in its normal state.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-bg-selected",
     "value": "oklch(1 0 0)",
     "description": "Background of the selected Pill.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Pills in its normal state.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg",
@@ -3074,7 +3077,8 @@
     "value": "12px",
     "description": "Horizontal inset for content inside controls and surfaces.",
     "components": [
-      "button"
+      "button",
+      "pills"
     ]
   },
   {
@@ -3088,7 +3092,8 @@
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
     "components": [
-      "button"
+      "button",
+      "pills"
     ]
   },
   {
@@ -3146,7 +3151,6 @@
       "dropdown-menu",
       "feature-highlight",
       "input",
-      "pills",
       "select",
       "tab-panel",
       "textarea",
@@ -3176,7 +3180,9 @@
     "name": "--intergalactic-pills-rounded",
     "value": "6px",
     "description": "Use for rounding Pills.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-popper-rounded",

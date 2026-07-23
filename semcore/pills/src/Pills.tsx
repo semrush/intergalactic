@@ -1,15 +1,21 @@
-import { NeighborLocation, Box, useNeighborLocationDetect } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { Text as SemcoreText } from '@semcore/typography';
 import React from 'react';
 
 import type { NSPills } from './Pills.type';
 import style from './style/pills.shadow.css';
 
+const TRANSITION_SLOW_THRESHOLD = 1;
+
+type RootProps = Intergalactic.InternalTypings.InferComponentProps<NSPills.Component>;
 class RootPills extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSPills.Component>,
+  RootProps,
   typeof RootPills.enhance,
   NSPills.Handlers,
   {},
@@ -18,13 +24,22 @@ class RootPills extends Component<
 > {
   static displayName = 'Pills';
   static style = style;
-  static defaultProps = ({ behavior }: Intergalactic.InternalTypings.InferComponentProps<NSPills.Component>) => ({
+  static defaultProps = ({ behavior }: RootProps) => ({
     size: 'm',
     defaultValue: null,
     behavior: behavior ?? 'auto',
   } as const);
 
   itemValues: Array<NSPills.Pill.Props['value']> = [];
+
+  lastSelectedIndex: number | null = null;
+  currentSelectedIndex: number | null = null;
+
+  rootRef: React.MutableRefObject<HTMLDivElement | null> = React.createRef();
+  pills: Array<HTMLButtonElement> = [];
+  segmentIndicatorRef: React.MutableRefObject<HTMLSpanElement | null> = React.createRef();
+
+  ro: ResizeObserver | null = null;
 
   static enhance = [a11yEnhance({
     onNeighborChange: (neighborElement, props) => {
@@ -42,10 +57,58 @@ class RootPills extends Component<
     },
   })] as const;
 
+  constructor(props: RootProps) {
+    super(props);
+    if (canUseDOM()) {
+      this.ro = new ResizeObserver(trottle(() => this.updateSegmentIndicator()));
+    }
+  }
+
   uncontrolledProps() {
     return {
       value: null,
     };
+  }
+
+  componentDidUpdate() {
+    this.updateSegmentIndicator();
+  }
+
+  componentDidMount() {
+    this.updateSegmentIndicator();
+
+    if (!this.ro) return;
+
+    for (const pill of this.pills) {
+      this.ro.observe(pill);
+    }
+  }
+
+  updateSegmentIndicator() {
+    if (this.currentSelectedIndex === null) return;
+
+    const root = this.rootRef?.current;
+    const pill = this.pills[this.currentSelectedIndex];
+    const indicator = this.segmentIndicatorRef?.current;
+
+    if (!pill || !root || !indicator) return;
+
+    const pillRect = pill.getBoundingClientRect();
+    const rootRect = root.getBoundingClientRect();
+
+    const speed = this.lastSelectedIndex === null
+      ? '--transition-slow'
+      : Math.abs(this.currentSelectedIndex - this.lastSelectedIndex) > TRANSITION_SLOW_THRESHOLD
+        ? '--transition-slow'
+        : '--transition-fast';
+    const left = pillRect.left - rootRect.left;
+    const width = pillRect.width;
+    const height = pillRect.height;
+
+    indicator.style.setProperty('--global-speed', `var(${speed})`);
+    indicator.style.setProperty('--global-left', `${left}px`);
+    indicator.style.setProperty('--global-width', `${width}px`);
+    indicator.style.setProperty('--global-height', `${height}px`);
   }
 
   bindHandlerClick = (value: NSPills.Pill.Props['value']) => (e: React.MouseEvent) => {
@@ -65,6 +128,11 @@ class RootPills extends Component<
 
     this.itemValues[index] = props.value;
 
+    if (isSelected) {
+      this.lastSelectedIndex = this.currentSelectedIndex;
+      this.currentSelectedIndex = index;
+    }
+
     return {
       index: index,
       size,
@@ -74,12 +142,18 @@ class RootPills extends Component<
       tabIndex: isSelected ? 0 : -1,
       onClick: this.bindHandlerClick(props.value),
       onKeyDown: this.bindHandleKeyDown(props.value),
+      ref: (node: HTMLButtonElement | null) => {
+        if (node === null) return;
+
+        this.pills[index] = node;
+      },
     };
   }
 
   render() {
     const SPills = Root;
-    const { Children, styles, controlsLength, disabled, behavior, value } = this.asProps;
+    const SSegmentIndicator = Box;
+    const { Children, styles, disabled, behavior, value } = this.asProps;
 
     return sstyled(styles)(
       <SPills
@@ -87,10 +161,14 @@ class RootPills extends Component<
         role={behavior === 'auto' ? 'radiogroup' : 'tablist'}
         aria-disabled={disabled}
         use:tabIndex={value !== null ? -1 : 0}
+        ref={this.rootRef}
       >
-        <NeighborLocation controlsLength={controlsLength}>
-          <Children />
-        </NeighborLocation>
+        <SSegmentIndicator
+          tag='span'
+          ref={this.segmentIndicatorRef}
+          aria-hidden
+        />
+        <Children />
       </SPills>,
     );
   }
@@ -98,8 +176,9 @@ class RootPills extends Component<
 
 function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPills.Pill.Component, typeof RootPills, 'Item'>) {
   const SPill = Root;
-  const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
-  const neighborLocation = useNeighborLocationDetect(index);
+  const SPillContainer = Box;
+  const SPillSeparator = Box;
+  const { Children, styles, addonLeft, addonRight, selected, disabled, behavior, size } = props;
 
   const roleAreaProps = {
     'role': behavior === 'auto' ? 'radio' : 'tab',
@@ -108,25 +187,31 @@ function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPi
   };
 
   return sstyled(styles)(
-    <SPill
-      render={Box}
-      tag='button'
-      type='button'
-      tabIndex={0}
-      neighborLocation={neighborLocation}
-      aria-disabled={disabled}
-      {...roleAreaProps}
-    >
-      {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
-      {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
-      {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}
-    </SPill>,
+    <SPillContainer>
+      <SPill
+        render={Box}
+        tag='button'
+        type='button'
+        tabIndex={0}
+        aria-disabled={disabled}
+        {...roleAreaProps}
+      >
+        {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
+        {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
+        {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}
+      </SPill>
+      <SPillSeparator
+        // @ts-ignore
+        size={size}
+        aria-hidden
+      />
+    </SPillContainer>,
   );
 }
 
 function Text(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Text.Component>) {
   const SText = Root;
-  return sstyled(props.styles)(<SText render={Box} tag='span' />);
+  return sstyled(props.styles)(<SText render={SemcoreText} size={200} />);
 }
 
 function Addon(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Addon.Component>) {

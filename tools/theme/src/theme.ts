@@ -258,6 +258,16 @@ export const theme: Theme = {
         description: 'Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)',
       },
     },
+    timing: {
+      fast: {
+        value: 'cubic-bezier(0.5, 0, 0, 1.26)',
+        description: 'Should be used for fast animation timing function',
+      },
+      medium: {
+        value: 'cubic-bezier(0.5, 0, 0, 1.13)',
+        description: 'Should be used for medium animation timing function',
+      },
+    },
   },
   semanticTokens: {
     colors: {
@@ -2172,6 +2182,7 @@ type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '2
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
+type Timing = 'fast' | 'medium';
 
 type Value<T = string> = {
   value: T;
@@ -2189,6 +2200,7 @@ export type BaseTokens = {
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
+  timing: Record<Timing, Value>;
 };
 
 type FlattenPaths<T> = T extends object
