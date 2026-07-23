@@ -448,7 +448,7 @@
   },
   {
     "name": "--intergalactic-border-secondary-invert",
-    "value": "oklch(0.951 0.094 140.3 / 0.014)",
+    "value": "oklch(0.974 0.047 140 / 0.136)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
   },
@@ -2359,7 +2359,9 @@
     "name": "--intergalactic-tag-additional-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the additional Tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-bg-hover",
@@ -2541,7 +2543,7 @@
   },
   {
     "name": "--intergalactic-tag-secondary-border-invert",
-    "value": "oklch(0.951 0.094 140.3 / 0.014)",
+    "value": "oklch(0.974 0.047 140 / 0.136)",
     "description": "Inverted border color of the secondary Tag.",
     "components": [
       "tag"
@@ -2891,7 +2893,7 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.951 0.094 140.3 / 0.014)",
+    "value": "oklch(0.974 0.047 140 / 0.136)",
     "description": "Border of the Tooltip with dark theme.",
     "components": []
   },

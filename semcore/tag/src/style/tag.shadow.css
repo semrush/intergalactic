@@ -189,7 +189,7 @@ STagContainerClose[theme="additional"] {
 STag[theme="additional"],
 STagContainerClose[theme="additional"] {
   border-style: dashed;
-  border-color: var(--intergalactic-tag-additional-border, oklch(0.176 0.033 175.7 / 0.07));
+  border-color: var(--intergalactic-tag-additional-border, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 STag[theme="primary-invert"],
@@ -211,7 +211,7 @@ STag[theme="additional-invert"],
 STagContainerClose[theme="additional-invert"] {
   background-color: var(--intergalactic-tag-secondary-white-normal, transparent);
   color: var(--intergalactic-tag-secondary-white-text, oklch(0.997 0.004 165.9 / 0.684));
-  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.951 0.094 140.3 / 0.014));
+  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.974 0.047 140 / 0.136));
 
   &::before,
   &::after {
