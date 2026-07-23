@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.3] - 2026-07-23
+
+### Fixed
+
+- Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSCarousel` namespace.
+
 ## [17.2.2] - 2026-07-10
 
 ### Fixed
