@@ -40,13 +40,13 @@ test.describe(`${TAG.VISUAL} `, () => {
 
         if (classAttr?.includes('_size_m_')) {
           for (let i = 0; i < 2; i++) {
-            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-left', '8px');
-            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-right', '8px');
+            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-left', '12px');
+            await expect(locators.timeBoxes(page).nth(i)).toHaveCSS('margin-right', '12px');
           }
         } else if (classAttr?.includes('_size_l_')) {
           await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-left', '12px');
-          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-right', '8px');
-          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-left', '8px');
+          await expect(locators.timeBoxes(page).nth(0)).toHaveCSS('margin-right', '12px');
+          await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-left', '12px');
           await expect(locators.timeBoxes(page).nth(1)).toHaveCSS('margin-right', '12px');
         }
       },

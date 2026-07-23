@@ -83,8 +83,8 @@ test.describe(`${TAG.VISUAL}`, () => {
           await expect(calendar).toHaveAttribute('width', '16');
           await expect(calendar).toHaveAttribute('height', '16');
           await checkStyle(calendar, {
-            paddingLeft: '8px',
-            paddingRight: '8px',
+            paddingLeft: '12px',
+            paddingRight: '6px',
           });
         }
       });
