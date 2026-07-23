@@ -256,7 +256,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
       const formatValue = (await formatButton.textContent())?.trim();
 
-      expect(formatValue).toBe('PM');
+      expect(formatValue).toBe('AM');
     });
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
@@ -456,7 +456,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       const formatButton = page.locator('[data-ui-name="TimePicker.Format"] span');
       const formatValue = (await formatButton.nth(1).textContent())?.trim();
 
-      expect(formatValue).toBe('PM');
+      expect(formatValue).toBe('AM');
     });
 
     await test.step('Verify Shift Tab moves to the prev focusable element', async () => {
@@ -779,14 +779,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.timeBoxes(page).nth(1)).toHaveValue('30');
 
     const meridiem = await page.locator('[data-ui-name="TimePicker.Format"] span').first().textContent();
-    expect(meridiem?.trim()).toBe('AM'); // bug
+    expect(meridiem?.trim()).toBe('PM');
 
     await locators.timeBoxes(page).nth(1).fill('45');
     await locators.timeBoxes(page).nth(1).evaluate((node) => (node as HTMLInputElement).blur());
 
     await expect.poll(() => {
       return consoleMessages.find((msg) => msg.startsWith('Returned value:')) ?? '';
-    }).toContain('Returned value: 02:45');
+    }).toContain('Returned value: 14:45');
   });
 
   test('Verify 12-hour mode should infer PM after external controlled value updates', {
@@ -807,6 +807,6 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await expect(locators.timeBoxes(page).nth(1)).toHaveValue('30');
 
     const meridiem = await page.locator('[data-ui-name="TimePicker.Format"] span').first().textContent();
-    expect(meridiem?.trim()).toBe('AM'); // bug
+    expect(meridiem?.trim()).toBe('PM');
   });
 });
