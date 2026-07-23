@@ -2,29 +2,32 @@ import { Box, Hint } from '@semcore/base-components';
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE, INHERITED_NAME } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
+import LinkExternalAltM from '@semcore/icon/LinkExternalAlt/m';
 import type { NSText } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import type { LinkComponent, LinkProps } from './Link.types';
+import type { NSLink } from './Link.types';
 import style from './style/link.shadow.css';
 
-type State = {
-  ariaLabelledByContent: string;
-};
-
-class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, State> {
+class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {}, NSLink.State, NSLink.DefaultProps> {
   static displayName = 'Link';
 
   static style = style;
   static enhance = [resolveColorEnhance()] as const;
+
+  static defaultProps = {
+    use: 'primary',
+  } as const;
+
   containerRef = React.createRef<HTMLElement | null>();
 
-  state: State = {
+  state: NSLink.State = {
     ariaLabelledByContent: '',
   };
 
@@ -74,6 +77,23 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
     };
   }
 
+  private isExternalLink() {
+    const { children, href } = this.asProps;
+    const link = typeof children === 'string' && children.startsWith('http') ? children : href;
+
+    if (!link?.startsWith('http')) {
+      return false;
+    }
+
+    if (canUseDOM()) {
+      const linkUrl = new URL(link, window.location.origin);
+
+      return linkUrl.host !== window.location.host;
+    }
+
+    return false;
+  }
+
   render() {
     const {
       styles,
@@ -108,11 +128,12 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
           use:href={disabled ? undefined : href}
           visually-disabled={disabled}
           render={Text}
-          text-color={resolveColor(color)}
+          // text-color={resolveColor(color)}
           tag='a'
           ref={this.containerRef}
           __excludeProps={excludeProps}
           aria-label={showHint ? hintContent : undefined}
+          isExternal={this.isExternalLink()}
         >
           <SInner
             tag='span'
@@ -125,7 +146,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
                   </Link.Addon>
                 )
               : null}
-            {addonTextChildren(Children, Link.Text, Link.Addon)}
+            {this.isExternalLink() ? (<Link.Text>{Children.origin}<LinkExternalAltM width={10} height={10} /></Link.Text>) : addonTextChildren(Children, Link.Text, Link.Addon)}
             {AddonRight
               ? (
                   <Link.Addon>
@@ -166,7 +187,7 @@ function Addon(props: IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/link/link-api/|API} | {@link https://developer.semrush.com/intergalactic/components/link/link-code/|Examples}
  */
-const Link = createComponent<LinkComponent, typeof RootLink>(RootLink, {
+const Link = createComponent<NSLink.Component, typeof RootLink>(RootLink, {
   Text: LinkText,
   Addon,
 });

@@ -2593,7 +2593,6 @@
     "value": "oklch(0.086 0.026 145.8 / 0.605)",
     "description": "Hover and active states of the hint link text.",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2660,6 +2659,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Default primary link color.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2668,6 +2668,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Hover and active states for the primary link.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2695,27 +2696,34 @@
     "name": "--intergalactic-text-link-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Default secondary link color.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Hover and active states for the secondary link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-accent",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Default accent link color.",
     "components": [
-      "button"
+      "button",
+      "link"
     ]
   },
   {
     "name": "--intergalactic-text-link-accent-hover-active",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Hover and active states for the accent link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-visited",

@@ -4,40 +4,73 @@ import type Icon from '@semcore/icon';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
-export type LinkProps = BoxProps & NSText.BaseProps & {
-  /**
-   * CSS property of the display link (inline|inline-block)
-   * @default false
-   * @deprecated. You should use default inline-flex for all cases.
-   */
-  inline?: boolean;
-  /**
-   * Sets the link to the disabled state
-   */
-  disabled?: boolean;
-  /**
-   * Sets the link to the active state
-   */
-  active?: boolean;
-  /** This flag enables highlighting of the visited link
-   */
-  enableVisited?: boolean;
-  /** The text will not be moved to a new line
-   * @default false
-   */
-  noWrap?: boolean;
-  /** Left addon tag */
-  addonLeft?: typeof Icon | React.ElementType;
-  /** Right addon tag */
-  addonRight?: typeof Icon | React.ElementType;
-  /**
-   * The position of the popper relative to the trigger that called it.
-   * @default top
-   */
-  hintPlacement?: SimpleHintPopperProps['placement'];
-};
+type NoHttp<T extends string> = T extends `http${string}` ? never : T;
 
-export type LinkComponent = Intergalactic.Component<'a', LinkProps> & {
-  Text: Intergalactic.Component<'span', NSText.Props>;
-  Addon: Intergalactic.Component<'span', BoxProps>;
+declare namespace NSLink {
+  type Use = 'primary' | 'secondary' | 'accent';
+  type CommonProps = BoxProps & Intergalactic.InternalTypings.EfficientOmit<NSText.BaseProps, 'use'> & {
+    /**
+     * Type of Link.
+     * Primary - Black. The vast majority of links. Tables with URLs and keywords, metrics in the summary.
+     * Secondary - Gray. Links such as 'Learn more', 'Show more', secondary information, opening hints.
+     * Accent - Blue. Use ONLY for action links within the texts. Limits, prompts indicating what to do, and options in the controls.
+     *
+     * @default 'primary'.
+     */
+    use?: Use;
+    /**
+     * Sets the link to the disabled state
+     */
+    disabled?: boolean;
+    /**
+     * Sets the link to the active state
+     */
+    active?: boolean;
+    /** This flag enables highlighting of the visited link
+     */
+    enableVisited?: boolean;
+    /** The text will not be moved to a new line
+     * @default false
+     */
+    noWrap?: boolean;
+    /**
+     * The position of the popper relative to the trigger that called it.
+     * @default top
+     */
+    hintPlacement?: SimpleHintPopperProps['placement'];
+  };
+
+  type InternalProps = CommonProps & {
+    /** Left addon tag */
+    addonLeft?: typeof Icon | React.ElementType;
+    /** Right addon tag */
+    addonRight?: typeof Icon | React.ElementType;
+  };
+
+  type ExternalProps = CommonProps;
+
+  type Props = InternalProps | ExternalProps;
+
+  type State = {
+    ariaLabelledByContent: string;
+  };
+
+  type DefaultProps = {
+    use: 'primary';
+  };
+
+  type Component = Intergalactic.Component<'a', Props> & {
+    Text: Intergalactic.Component<'span', NSText.Props>;
+    Addon: Intergalactic.Component<'span', BoxProps>;
+  };
+}
+
+/** @deprecated It will be removed in v18. */
+export type LinkProps = NSLink.InternalProps;
+
+/** @deprecated It will be removed in v18. */
+export type LinkComponent = NSLink.Component;
+
+export {
+  NSLink,
 };
