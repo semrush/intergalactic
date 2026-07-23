@@ -28,6 +28,11 @@ SDropdownPopper {
     }
   }
 
+  SDropdownItem[size='l'] SDropdownItem:is(button) {
+    width: var(--intergalactic-spacing-6x, 24px);
+    height: var(--intergalactic-spacing-6x, 24px);
+  }
+
   SDropdownItem[isMenuItemCheckbox] {
 
     &::before,
