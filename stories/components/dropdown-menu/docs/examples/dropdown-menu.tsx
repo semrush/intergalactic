@@ -40,12 +40,11 @@ const Demo = () => {
           <Notice
             aria-labelledby='export-notice-title'
             theme='warning'
+            p={3}
+            // TODO: remove styles and replace with new dropdown notice
+            borderRadius='0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)'
             style={{
-              padding: 'var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px)',
-              borderWidth: 0,
-              borderTopWidth: '1px',
-              borderRadius:
-                '0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)',
+              borderWidth: '1px 0 0 0',
             }}
           >
             <Notice.Content>

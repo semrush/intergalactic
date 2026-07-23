@@ -14,13 +14,13 @@ SDropdownPopper {
     text-decoration: none;
     box-sizing: border-box;
     cursor: pointer;
-    width: 100%;
     text-align: left;
     line-height: normal;
     outline: none;
   }
-
+  
   SDropdownItem:not(button) {
+    width: 100%;
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
     &:hover {
@@ -36,7 +36,7 @@ SDropdownPopper {
       position: absolute;
       border: 1px solid;
       border-radius: var(--intergalactic-addon-rounded, 4px);
-      box-sizing: content-box;
+      box-sizing: border-box;
     }
 
     &::before {
@@ -51,13 +51,20 @@ SDropdownPopper {
       background-position: center center;
       background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
       border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+    }
+    
+    &[selected][size='m']::after {
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4=');
+    }
+
+    &[selected][size='l']::after {
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');
     }
   }
 
   SDropdownItem[selected]:not(SDropdownItem[isMenuItemCheckbox]) {
     background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.525 0.265 263 / 0.077));
-    box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)) inset; /* TODO: --intergalactic-dropdown-menu-item-selected-border */
+    box-shadow: 2px 0px 0px 0px var(--intergalactic-dropdown-menu-item-selected-box-shadow, oklch(0.23 0.01 140)) inset;
 
     &:hover {
       background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.52 0.268 263.2 / 0.191));
@@ -87,18 +94,19 @@ SDropdownPopper {
   SDropdownItem[size='l'] {
     font-size: var(--intergalactic-fs-300, 16px);
     line-height: var(--intergalactic-lh-300, 150%);
-    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
-    min-height: 40px;
+    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-content-inset-inline, 12px);
+    min-height: var(--intergalactic-spacing-10x, 40px);
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+      padding-left: calc(var(--intergalactic-spacing-content-inset-inline, 12px) + var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-content-gap-large, 8px));
+      /* padding before + checkbox + padding after */
 
       &::before,
       &::after {
-        width: 20px;
-        height: 20px;
-        top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-        left: var(--intergalactic-spacing-3x, 12px);
+        width: var(--intergalactic-spacing-5x, 20px);
+        height: var(--intergalactic-spacing-5x, 20px);
+        top: calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
+        left: var(--intergalactic-spacing-content-inset-inline, 12px);
       }
     }
   }
@@ -106,18 +114,19 @@ SDropdownPopper {
   SDropdownItem[size='m'] {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
-    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-2x, 8px);
-    min-height: 32px;
+    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-content-inset-inline, 12px);
+    min-height: var(--intergalactic-form-control-m, 32px);
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+      padding-left: calc(var(--intergalactic-spacing-content-inset-inline, 12px) + var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-content-gap-medium, 6px));
+      /* padding before + checkbox + padding after */
 
       &::before,
       &::after {
-        width: 16px;
-        height: 16px;
-        top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-        left: var(--intergalactic-spacing-2x, 8px);
+        width: var(--intergalactic-spacing-4x, 16px);
+        height: var(--intergalactic-spacing-4x, 16px);
+        top: var(--intergalactic-spacing-2x, 8px);
+        left: var(--intergalactic-spacing-content-inset-inline, 12px);
       }
     }
   }

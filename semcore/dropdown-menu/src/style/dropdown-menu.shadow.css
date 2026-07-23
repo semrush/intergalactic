@@ -1,5 +1,5 @@
 SDropdownMenuList {
-  max-height: 240px;
+  max-height: 246px;
   padding: var(--intergalactic-spacing-1x, 4px) 0;
   position: relative;
   min-height: 26px;
@@ -29,6 +29,10 @@ SDropdownMenuList {
   }
 }
 
+SDropdownMenuList[size='l'] {
+  max-height: 306px;
+}
+
 SDropdownMenuItemContainer {
   SItemContent:focus-visible {
     outline: none;
@@ -42,11 +46,13 @@ SDropdownMenuItemContainer[nesting-trigger] {
 SDropdownMenuItemAddon,
 SItemContentText {
   display: inline-flex; /* todo: Brauer Ilia - why? should be changed to inline/inline-block for SItemContentText */
-  margin-left: var(--intergalactic-spacing-1x, 4px);
-  margin-right: var(--intergalactic-spacing-1x, 4px);
+
+  margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 
   &:first-child {
     margin-left: 0;
+    margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
   }
 
   &:last-child {
