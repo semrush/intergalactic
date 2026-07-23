@@ -279,8 +279,7 @@
       "drag-and-drop",
       "input",
       "notice",
-      "textarea",
-      "time-picker"
+      "textarea"
     ]
   },
   {
@@ -288,8 +287,7 @@
     "value": "oklch(0.94 0.002 180)",
     "description": "Active (selected) state of the secondary background of the interface which contains the main data and information.",
     "components": [
-      "flags",
-      "time-picker"
+      "flags"
     ]
   },
   {
@@ -297,8 +295,7 @@
     "value": "oklch(0.96 0.001 180)",
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
     "components": [
-      "accordion",
-      "time-picker"
+      "accordion"
     ]
   },
   {
@@ -393,7 +390,6 @@
       "checkbox",
       "color-picker",
       "feedback-form",
-      "inline-input",
       "input",
       "input-tags",
       "radio",
@@ -417,7 +413,6 @@
       "dropdown",
       "feedback-form",
       "fullscreen-modal",
-      "inline-input",
       "input",
       "radio",
       "side-panel",
@@ -1134,7 +1129,8 @@
     "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Background of the regular secondary control.",
     "components": [
-      "button"
+      "button",
+      "inline-input"
     ]
   },
   {
@@ -1304,7 +1300,8 @@
     "value": "transparent",
     "description": "Background of the regular tertiary control.",
     "components": [
-      "button"
+      "button",
+      "time-picker"
     ]
   },
   {
@@ -1313,7 +1310,8 @@
     "description": "Active (selected) state of the regular tertiary control.",
     "components": [
       "button",
-      "color-picker"
+      "color-picker",
+      "time-picker"
     ]
   },
   {
@@ -1322,7 +1320,8 @@
     "description": "Hover state of the regular tertiary control.",
     "components": [
       "button",
-      "color-picker"
+      "color-picker",
+      "time-picker"
     ]
   },
   {
@@ -3096,7 +3095,9 @@
       "base-trigger",
       "button",
       "dropdown",
-      "pills"
+      "input",
+      "pills",
+      "time-picker"
     ]
   },
   {
@@ -3104,7 +3105,8 @@
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
     "components": [
-      "dropdown-menu"
+      "dropdown-menu",
+      "inline-input"
     ]
   },
   {
@@ -3116,6 +3118,7 @@
       "button",
       "dropdown",
       "dropdown-menu",
+      "input",
       "pills",
       "select"
     ]
@@ -3176,6 +3179,8 @@
       "date-picker",
       "dropdown-menu",
       "feature-highlight",
+      "inline-edit",
+      "inline-input",
       "input",
       "select",
       "tab-panel",
