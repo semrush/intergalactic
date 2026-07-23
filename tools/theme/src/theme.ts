@@ -921,7 +921,7 @@ export const theme: Theme = {
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
       control_switch_bg_DEFAULT: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
         description: 'Subtle background of the Switch control.',
       },
       control_switch_bg_info_active: {
@@ -1618,11 +1618,11 @@ export const theme: Theme = {
         description: 'Violet text for the primary violet tag.',
       },
       tag_primary_white_hover_active: {
-        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
+        value: neutral.opaqueInvAt(L_INV_BG_PRIMARY_HOVER),
         description: 'Hover and active (selected) state of the primary white tag.',
       },
       tag_primary_white_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        value: neutral.opaqueInvAt(L_INV_BG_PRIMARY),
         description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
       },
       tag_primary_white_text: {
@@ -1642,7 +1642,7 @@ export const theme: Theme = {
         description: 'Yellow text for the primary yellow tag.',
       },
       tag_secondary_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: '{semanticTokens.colors.border_secondary_DEFAULT}',
         description: 'Border color of the secondary Tag.',
       },
       tag_secondary_border_invert: {
@@ -1662,15 +1662,15 @@ export const theme: Theme = {
         description: 'Background color for the default secondary tag.',
       },
       tag_secondary_white_hover_active: {
-        value: 'rgba(255, 255, 255, 0.1)',
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
         description: 'Active state of the secondary white tag.',
       },
       tag_secondary_white_normal: {
-        value: 'rgba(255, 255, 255, 0)',
+        value: 'transparent',
         description: 'Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.',
       },
       tag_secondary_white_text: {
-        value: '#ffffff',
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
         description: 'White text for the secondary white tag.',
       },
       text_advertising: {

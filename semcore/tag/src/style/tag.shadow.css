@@ -45,12 +45,12 @@ STagContainerClose {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  border: 1px solid var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-tag-primary-border */
+  border: 1px solid var(--intergalactic-tag-primary-border, oklch(1 0 0));
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-tag-primary-bg-normal */
+  background-color: var(--intergalactic-tag-primary-bg-normal, oklch(1 0 0));
   border-radius: var(--intergalactic-tag-rounded, 24px);
-  padding-left: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-1x, 4px);
+  padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
   font-family: inherit;
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
@@ -135,7 +135,7 @@ STag[size="xl"],
 STagContainerClose[size="xl"] {
   height: 40px;
   min-width: 40px;
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
+  padding: 0 var(--intergalactic-spacing-content-gap-large, 8px);
 
   & SText {
     font-size: var(--intergalactic-fs-300, 16px);
@@ -170,59 +170,70 @@ STag[theme="secondary"],
 STagContainerClose[theme="secondary"],
 STag[theme="additional"],
 STagContainerClose[theme="additional"] {
-  /* chenge to ...? secondary: change to --intergalactic-tag-secondary-border; additional: change to --intergalactic-tag-additional-bg-normal */
-  &::before {
-    opacity: 0.01;
+  color: var(--intergalactic-tag-secondary-gray-text, #6a6c6a);
+  background-color: var(--intergalactic-tag-secondary-normal, #ffffff);
+  border-color: var(--intergalactic-tag-secondary-border, oklch(0.176 0.033 175.7 / 0.07));
+
+  &::before,
+  &::after {
+    display: none;
   }
 
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    &:before {
-      opacity: 0.1;
-    }
+    background-color: var(--intergalactic-tag-secondary-hover-active, #f4f5f5);
   }
 }
 
-STag[theme="secondary"],
-STagContainerClose[theme="secondary"],
 STag[theme="additional"],
-STagContainerClose[theme="additional"],
-STag[theme="secondary-invert"],
-STagContainerClose[theme="secondary-invert"],
-STag[theme="additional-invert"],
-STagContainerClose[theme="additional-invert"] {
-  &::after {
-    opacity: 0.5;
-  }
+STagContainerClose[theme="additional"] {
+  border-style: dashed;
+  border-color: var(--intergalactic-tag-additional-border, oklch(0.176 0.033 175.7 / 0.07));
 }
 
 STag[theme="primary-invert"],
 STagContainerClose[theme="primary-invert"] {
-  background-color: var(
-    --intergalactic-tag-primary-white-normal,
-    oklch(1 0 0)
-  );
+  background-color: var(--intergalactic-tag-primary-white-normal, oklch(0.965 0.065 140 / 0.1));
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  border-color: transparent;
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-primary-white-hover-active, oklch(0.986 0.025 140 / 0.203));
+  }
 }
 
 STag[theme="secondary-invert"],
 STagContainerClose[theme="secondary-invert"],
 STag[theme="additional-invert"],
 STagContainerClose[theme="additional-invert"] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO:--intergalactic-tag-secondary-white-text */
+  background-color: var(--intergalactic-tag-secondary-white-normal, transparent);
+  color: var(--intergalactic-tag-secondary-white-text, oklch(0.997 0.004 165.9 / 0.684));
+  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.951 0.094 140.3 / 0.014));
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-secondary-white-hover-active, oklch(0.98 0.036 140 / 0.164));
+  }
 }
 
-STag[theme="additional"] {
-  &::after {
-    border-style: dashed;
-  }
+STag[theme="additional-invert"],
+STagContainerClose[theme="additional-invert"] {
+  border-style: dashed;
 }
 
 SText {
   display: flex;
-  padding-left: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-1x, 4px);
+  padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
   position: relative;
 }
 
@@ -257,6 +268,20 @@ STagContainer {
   position: relative;
   align-items: center;
   justify-content: center;
+
+  STag[theme="secondary"]:not(:last-child),
+  STag[theme="additional"]:not(:last-child),
+  STag[theme="secondary-invert"]:not(:last-child),
+  STag[theme="additional-invert"]:not(:last-child) {
+    border-right: 0;
+  }
+
+  STagContainerClose[theme="secondary"],
+  STagContainerClose[theme="additional"],
+  STagContainerClose[theme="secondary-invert"],
+  STagContainerClose[theme="additional-invert"] {
+    border-left: 0;
+  }
 
   STag,
   SAddon {
@@ -319,7 +344,7 @@ STagContainer {
 
     svg {
       padding-left: 0;
-      padding-right: var(--intergalactic-spacing-1x, 4px);
+      padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
     }
 
     svg path {
@@ -333,8 +358,8 @@ STagContainer {
 
   STagContainerClose[size="xl"] {
     svg {
-      padding-left: var(--intergalactic-spacing-1x, 4px);
-      padding-right: var(--intergalactic-spacing-2x, 8px);
+      padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
+      padding-right: var(--intergalactic-spacing-content-gap-large, 8px);
     }
   }
 }
