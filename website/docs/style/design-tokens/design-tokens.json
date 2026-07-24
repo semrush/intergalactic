@@ -3180,7 +3180,6 @@
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
     "components": [
-<<<<<<< HEAD
       "base-trigger",
       "button",
       "dropdown",
@@ -3188,10 +3187,6 @@
       "input",
       "pills",
       "select"
-=======
-      "button",
-      "input"
->>>>>>> origin/UIK-5351/add-more-variables-to-theme
     ]
   },
   {

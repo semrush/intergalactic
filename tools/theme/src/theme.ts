@@ -1550,7 +1550,7 @@ export const theme: Theme = {
         description: 'Text color for the additional tag on dark backgrounds.',
       },
       tag_additional_border_invert: {
-        value: '{semanticTokens.colors.border_secondary_invert}',
+        value: '{semanticTokens.colors.border_primary_invert}',
         description: 'Inverted border color of the additional Tag.',
       },
       tag_primary_bg_hover_active: {
