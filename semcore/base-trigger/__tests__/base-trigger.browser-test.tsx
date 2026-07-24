@@ -32,7 +32,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@base-trigger'],
+        '@base-trigger',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base.tsx', 'en', item);
 
@@ -92,7 +94,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify With addons case size=${item.size} disabled=${item.disabled}  state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@base-trigger'],
+        '@base-trigger',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-addons.tsx', 'en', item);
 
@@ -166,7 +170,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@base-components',
-        '@neighbor-location'],
+        '@neighbor-location',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/neighbor-location.tsx', 'en', item);
 
@@ -239,7 +244,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@dropdown',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/with-select-and-dd-menu.tsx', 'en', item);
 
@@ -337,7 +344,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@dropdown',
       '@select',
       '@divider',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
@@ -368,7 +378,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@dropdown',
       '@select',
       '@divider',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 
@@ -396,7 +409,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@dropdown',
       '@select',
       '@divider',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/tests/examples/base-trigger/base-trigger.tsx', 'en');
 

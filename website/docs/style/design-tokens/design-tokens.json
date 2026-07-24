@@ -282,8 +282,7 @@
       "drag-and-drop",
       "input",
       "notice",
-      "textarea",
-      "time-picker"
+      "textarea"
     ]
   },
   {
@@ -291,8 +290,7 @@
     "value": "oklch(0.94 0.002 180)",
     "description": "Active (selected) state of the secondary background of the interface which contains the main data and information.",
     "components": [
-      "flags",
-      "time-picker"
+      "flags"
     ]
   },
   {
@@ -300,8 +298,7 @@
     "value": "oklch(0.96 0.001 180)",
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
     "components": [
-      "accordion",
-      "time-picker"
+      "accordion"
     ]
   },
   {
@@ -396,7 +393,6 @@
       "checkbox",
       "color-picker",
       "feedback-form",
-      "inline-input",
       "input",
       "input-tags",
       "pills",
@@ -421,7 +417,6 @@
       "dropdown",
       "feedback-form",
       "fullscreen-modal",
-      "inline-input",
       "input",
       "pills",
       "radio",
@@ -1134,7 +1129,8 @@
     "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Background of the regular secondary control.",
     "components": [
-      "button"
+      "button",
+      "inline-input"
     ]
   },
   {
@@ -1298,7 +1294,8 @@
     "value": "transparent",
     "description": "Background of the regular tertiary control.",
     "components": [
-      "button"
+      "button",
+      "time-picker"
     ]
   },
   {
@@ -1307,7 +1304,8 @@
     "description": "Active (selected) state of the regular tertiary control.",
     "components": [
       "button",
-      "color-picker"
+      "color-picker",
+      "time-picker"
     ]
   },
   {
@@ -1316,7 +1314,8 @@
     "description": "Hover state of the regular tertiary control.",
     "components": [
       "button",
-      "color-picker"
+      "color-picker",
+      "time-picker"
     ]
   },
   {
@@ -3074,21 +3073,26 @@
     "value": "12px",
     "description": "Horizontal inset for content inside controls and surfaces.",
     "components": [
-      "button"
+      "button",
+      "input",
+      "time-picker"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "inline-input"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-medium",
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
     "components": [
-      "button"
+      "button",
+      "input"
     ]
   },
   {
@@ -3145,6 +3149,8 @@
       "date-picker",
       "dropdown-menu",
       "feature-highlight",
+      "inline-edit",
+      "inline-input",
       "input",
       "pills",
       "select",
