@@ -13,7 +13,7 @@ SFeaturePopover {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-feature-popover-text */
   }
   &[theme='neutral'] {
-    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140)); /* TODO: --intergalactic-feature-popover-bg-neutral */
+    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.21 0.01 140)); /* TODO: --intergalactic-feature-popover-bg-neutral */
     color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-feature-popover-text-invert */
   }
 }

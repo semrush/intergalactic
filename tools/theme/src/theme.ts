@@ -1523,9 +1523,29 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the additional Tag.',
       },
-      tag_primary_bg_hover: {
+      tag_additional_text: {
+        value: '#6a6c6a',
+        description: 'Text color for the additional tag.',
+      },
+      tag_additional_bg_invert_normal: {
+        value: 'transparent',
+        description: 'Additional tag on bold or dark backgrounds—minimal fill in the normal state.',
+      },
+      tag_additional_bg_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
+        description: 'Hover and active states of the additional tag on dark backgrounds.',
+      },
+      tag_additional_text_invert: {
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
+        description: 'Text color for the additional tag on dark backgrounds.',
+      },
+      tag_additional_border_invert: {
+        value: '{semanticTokens.colors.border_secondary_invert}',
+        description: 'Inverted border color of the additional Tag.',
+      },
+      tag_primary_bg_hover_active: {
         value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Hover state of the primary Tag background.',
+        description: 'Hover and active states of the primary Tag background.',
       },
       tag_primary_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
@@ -1607,17 +1627,17 @@ export const theme: Theme = {
         value: '#8029ec',
         description: 'Violet text for the primary violet tag.',
       },
-      tag_primary_white_hover_active: {
+      tag_primary_bg_invert_hover_active: {
         value: neutral.opaqueInvAt(L_INV_BG_PRIMARY_HOVER),
-        description: 'Hover and active (selected) state of the primary white tag.',
+        description: 'Hover and active states of the primary tag on dark backgrounds.',
       },
-      tag_primary_white_normal: {
+      tag_primary_bg_invert_normal: {
         value: neutral.opaqueInvAt(L_INV_BG_PRIMARY),
         description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
       },
-      tag_primary_white_text: {
+      tag_primary_text_invert: {
         value: '#ffffff',
-        description: 'White text for the primary white tag.',
+        description: 'Text color for the primary tag on dark backgrounds.',
       },
       tag_primary_yellow_hover_active: {
         value: '#fcd8b3',
@@ -1639,29 +1659,29 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_secondary_invert}',
         description: 'Inverted border color of the secondary Tag.',
       },
-      tag_secondary_gray_text: {
+      tag_secondary_text: {
         value: '#6a6c6a',
-        description: 'Gray text for the default secondary tag.',
+        description: 'Text color for the default secondary tag.',
       },
-      tag_secondary_hover_active: {
+      tag_secondary_bg_hover_active: {
         value: '#f4f5f5',
         description: 'Hover and active (selected) states of the background color for the default secondary tag.',
       },
-      tag_secondary_normal: {
+      tag_secondary_bg_normal: {
         value: '#ffffff',
         description: 'Background color for the default secondary tag.',
       },
-      tag_secondary_white_hover_active: {
+      tag_secondary_bg_invert_hover_active: {
         value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
-        description: 'Active state of the secondary white tag.',
+        description: 'Hover and active states of the secondary tag on dark backgrounds.',
       },
-      tag_secondary_white_normal: {
+      tag_secondary_bg_invert_normal: {
         value: 'transparent',
         description: 'Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.',
       },
-      tag_secondary_white_text: {
+      tag_secondary_text_invert: {
         value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
-        description: 'White text for the secondary white tag.',
+        description: 'Text color for the secondary tag on dark backgrounds.',
       },
       text_advertising: {
         value: advertising.at(L_TEXT_PRIMARY),
@@ -2899,9 +2919,18 @@ type SemanticColors = {
     primary: {
       bg: {
         normal: Value;
-        hover: Value;
+        hover: {
+          active: Value;
+        };
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
       border: Value;
+      text_invert: Value;
       gray: {
         normal: Value;
         hover: {
@@ -2951,32 +2980,25 @@ type SemanticColors = {
         };
         text: Value;
       };
-      white: {
-        normal: Value;
-        hover: {
-          active: Value;
-        };
-        text: Value;
-      };
     };
     secondary: {
       border: {
         DEFAULT: Value;
         invert: Value;
       };
-      normal: Value;
-      hover: {
-        active: Value;
-      };
-      white: {
+      text: Value;
+      text_invert: Value;
+      bg: {
         normal: Value;
         hover: {
           active: Value;
         };
-        text: Value;
-      };
-      gray: {
-        text: Value;
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
     };
     additional: {
@@ -2985,8 +3007,17 @@ type SemanticColors = {
         hover: {
           active: Value;
         };
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
       border: Value;
+      border_invert: Value;
+      text: Value;
+      text_invert: Value;
     };
   };
   chart: {
