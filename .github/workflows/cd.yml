@@ -168,6 +168,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
+            semcore/*/tsconfig.tsbuildinfo
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
