@@ -14,7 +14,7 @@ import {
   L_BG_SECONDARY_ACTIVE,
   L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
   L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
+  L_BORDER_FOCUS, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_BORDER_PRIMARY_DIMMED, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
   L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
   L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
@@ -1520,7 +1520,7 @@ export const theme: Theme = {
         description: 'Background of the additional Tag in its normal state.',
       },
       tag_additional_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: neutral.at(L_BORDER_PRIMARY_DIMMED),
         description: 'Border color of the additional Tag.',
       },
       tag_additional_text: {
@@ -1652,7 +1652,7 @@ export const theme: Theme = {
         description: 'Yellow text for the primary yellow tag.',
       },
       tag_secondary_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_secondary_DEFAULT}',
+        value: neutral.at(L_BORDER_PRIMARY_DIMMED),
         description: 'Border color of the secondary Tag.',
       },
       tag_secondary_border_invert: {
