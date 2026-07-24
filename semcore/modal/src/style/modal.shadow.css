@@ -18,7 +18,7 @@ SWindow {
     line-height: var(--intergalactic-lh-500, 117%);
     font-weight: var(--intergalactic-semi-bold, 600);
     margin-bottom: var(--intergalactic-spacing-2x, 8px);
-    margin-right: var(--intergalactic-spacing-4x, 16px);
+    margin-right: var(--intergalactic-spacing-8x, 32px);
   }
 
   STitle[color] {
