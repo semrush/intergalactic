@@ -3158,8 +3158,13 @@
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
     "components": [
+      "base-trigger",
       "button",
-      "input"
+      "dropdown",
+      "dropdown-menu",
+      "input",
+      "pills",
+      "select"
     ]
   },
   {
