@@ -1,18 +1,19 @@
 import type { BoxProps, SimpleHintPopperProps } from '@semcore/base-components';
-import type { Intergalactic, IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type Icon from '@semcore/icon';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
-type NoHttp<T extends string> = T extends `http${string}` ? never : T;
-
 declare namespace NSLink {
   type Use = 'primary' | 'secondary' | 'accent';
-  type CommonProps = BoxProps & Intergalactic.InternalTypings.EfficientOmit<NSText.BaseProps, 'use'> & {
+  type Props = BoxProps & Intergalactic.InternalTypings.EfficientOmit<NSText.BaseProps, 'use'> & {
     /**
      * Type of Link.
+     *
      * Primary - Black. The vast majority of links. Tables with URLs and keywords, metrics in the summary.
+     *
      * Secondary - Gray. Links such as 'Learn more', 'Show more', secondary information, opening hints.
+     *
      * Accent - Blue. Use ONLY for action links within the texts. Limits, prompts indicating what to do, and options in the controls.
      *
      * @default 'primary'.
@@ -38,18 +39,13 @@ declare namespace NSLink {
      * @default top
      */
     hintPlacement?: SimpleHintPopperProps['placement'];
-  };
-
-  type InternalProps = CommonProps & {
     /** Left addon tag */
     addonLeft?: typeof Icon | React.ElementType;
     /** Right addon tag */
     addonRight?: typeof Icon | React.ElementType;
+    /** Flag to mark a link as external. Use it in SSR. */
+    isExternal?: boolean;
   };
-
-  type ExternalProps = CommonProps;
-
-  type Props = InternalProps | ExternalProps;
 
   type State = {
     ariaLabelledByContent: string;
@@ -66,7 +62,7 @@ declare namespace NSLink {
 }
 
 /** @deprecated It will be removed in v18. */
-export type LinkProps = NSLink.InternalProps;
+export type LinkProps = NSLink.Props;
 
 /** @deprecated It will be removed in v18. */
 export type LinkComponent = NSLink.Component;

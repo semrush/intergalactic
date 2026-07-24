@@ -78,7 +78,10 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
   }
 
   private isExternalLink() {
-    const { children, href } = this.asProps;
+    const { children, href, isExternal } = this.asProps;
+
+    if (isExternal !== undefined) return isExternal;
+
     const link = typeof children === 'string' && children.startsWith('http') ? children : href;
 
     if (!link?.startsWith('http')) {
@@ -116,6 +119,8 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
     const showHint = children === undefined || title;
 
+    const isExternal = this.isExternalLink();
+
     const excludeProps = ['title', 'aria-disabled'];
     if (!this.asProps['use:disabled']) {
       excludeProps.push('disabled');
@@ -128,12 +133,13 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
           use:href={disabled ? undefined : href}
           visually-disabled={disabled}
           render={Text}
-          // text-color={resolveColor(color)}
+          text-color={resolveColor(color)}
           tag='a'
+          target={isExternal ? '_blank' : undefined}
           ref={this.containerRef}
           __excludeProps={excludeProps}
           aria-label={showHint ? hintContent : undefined}
-          isExternal={this.isExternalLink()}
+          isExternal={isExternal}
         >
           <SInner
             tag='span'
