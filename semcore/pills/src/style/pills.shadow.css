@@ -30,10 +30,10 @@ SPills {
   }
 
   --transition-fast:
-    left calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
-    width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
-    top calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
-    height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12));
+    left calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    width calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    top calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    height calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12));
 
   --transition-slow:
     left calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09)),
@@ -51,13 +51,10 @@ SPill {
   justify-content: center;
   align-items: center;
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
-
-  min-width: 28px;
   padding: 0 var(--intergalactic-spacing-content-inset-inline, 12px);
   
   border-style: solid;
   border-color: transparent;
-  border-width: 1px 3px;
   border-radius: var(--intergalactic-rounded-small, 4px);
 
   background-color: transparent;
@@ -88,8 +85,14 @@ SPill {
     }
   }
 
+  &[size='m'] {
+    min-width: calc(var(--intergalactic-form-control-m, 32px) - var(--intergalactic-spacing-1x, 4px));
+    border-width: 2px 3px;
+  }
+
   &[size='l'] {
-    min-width: 40px;
+    min-width: calc(var(--intergalactic-form-control-l, 44px) - var(--intergalactic-spacing-1x, 4px));
+    border-width: 3px 3px;
   }
 }
 
@@ -139,7 +142,7 @@ SSegmentIndicator {
 
   background: var(--intergalactic-control-pills-bg-selected, oklch(1 0 0));
   box-shadow: 0 0 1px 0 rgba(0, 21, 16, 0.07), 0 1px 3px 0 rgba(0, 21, 16, 0.07);
-  border-radius: var(--intergalactic-pills-rounded, 6px);
+  border-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SText {
