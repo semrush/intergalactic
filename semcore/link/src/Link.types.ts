@@ -10,11 +10,11 @@ declare namespace NSLink {
     /**
      * Type of Link.
      *
-     * Primary - Black. The vast majority of links. Tables with URLs and keywords, metrics in the summary.
+     * Primary. The vast majority of links. Tables with URLs and keywords, metrics in the summary.
      *
-     * Secondary - Gray. Links such as 'Learn more', 'Show more', secondary information, opening hints.
+     * Secondary. Links such as 'Learn more', 'Show more', secondary information, opening hints.
      *
-     * Accent - Blue. Use ONLY for action links within the texts. Limits, prompts indicating what to do, and options in the controls.
+     * Accent. Use ONLY for action links within the texts. Limits, prompts indicating what to do, and options in the controls.
      *
      * @default 'primary'.
      */
