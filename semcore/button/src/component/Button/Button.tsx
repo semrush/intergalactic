@@ -141,7 +141,7 @@ export class RootButton extends Component<
                   <SSpin tag='span'>
                     <Spin
                       size={BUTTON_SIZE_TO_SPIN_SIZE[size]}
-                      theme={useTheme || undefined}
+                      theme='currentColor'
                       centered
                     />
                   </SSpin>
