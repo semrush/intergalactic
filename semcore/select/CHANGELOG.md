@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.4.1] - 2026-07-24
+
+### Fixed
+
+- indeterminate state had incorrect appearance when Select size was
+undefined
+
 ## [17.4.0] - 2026-07-10
 
 ### Added
