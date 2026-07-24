@@ -30,16 +30,16 @@ SPills {
   }
 
   --transition-fast:
-    left calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.26)),
-    width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.26)),
-    top calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.26)),
-    height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.26));
+    left calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    top calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12));
 
   --transition-slow:
-    left calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.13)),
-    width calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.13)),
-    top calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.13)),
-    height calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.13));
+    left calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    width calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    top calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    height calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09));
 }
 
 SPill {

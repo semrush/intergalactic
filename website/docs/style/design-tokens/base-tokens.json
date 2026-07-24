@@ -816,12 +816,12 @@
   },
   {
     "name": "--intergalactic-timing-fast",
-    "value": "cubic-bezier(0.5, 0, 0, 1.26)",
+    "value": "cubic-bezier(0.5, 0, 0, 1.12)",
     "description": "Should be used for fast animation timing function"
   },
   {
     "name": "--intergalactic-timing-medium",
-    "value": "cubic-bezier(0.5, 0, 0, 1.13)",
+    "value": "cubic-bezier(0.5, 0, 0, 1.09)",
     "description": "Should be used for medium animation timing function"
   },
   {

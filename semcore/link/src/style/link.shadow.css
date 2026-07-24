@@ -8,6 +8,7 @@ SLink {
   -webkit-tap-highlight-color: transparent;
   background: none;
   transition: color 0.15s ease-in-out;
+  border-radius: 2px;
 
   &::-moz-focus-inner {
     border: none;
