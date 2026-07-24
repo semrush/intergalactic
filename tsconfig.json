@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "paths": {
       "@semcore/illustration/*": ["./semcore/illustration/lib/*"],
       "@semcore/illustration": ["./semcore/illustration"],
