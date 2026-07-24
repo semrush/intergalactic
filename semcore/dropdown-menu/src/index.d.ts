@@ -7,6 +7,7 @@ import type {
   DropdownTriggerProps,
   DropdownPopperAriaProps,
   StatusItemComponent,
+  DropdownNoticeComponent,
 } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
 import type { Text } from '@semcore/typography';

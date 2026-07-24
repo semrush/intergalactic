@@ -92,7 +92,7 @@ declare const Dropdown: Intergalactic.Component<
   Item: Intergalactic.Component<typeof Box>;
   Group: Intergalactic.Component<'div', DropdownGroupProps>;
   StatusItem: StatusItemComponent;
-  DropdownNotice: DropdownNoticeComponent;
+  Notice: DropdownNoticeComponent;
 };
 
 export default Dropdown;
