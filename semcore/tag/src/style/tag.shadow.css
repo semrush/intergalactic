@@ -167,11 +167,9 @@ STagContainer[theme="primary"] SAddon {
 }
 
 STag[theme="secondary"],
-STagContainerClose[theme="secondary"],
-STag[theme="additional"],
-STagContainerClose[theme="additional"] {
-  color: var(--intergalactic-tag-secondary-gray-text, #6a6c6a);
-  background-color: var(--intergalactic-tag-secondary-normal, #ffffff);
+STagContainerClose[theme="secondary"] {
+  color: var(--intergalactic-tag-secondary-text, #6a6c6a);
+  background-color: var(--intergalactic-tag-secondary-bg-normal, #ffffff);
   border-color: var(--intergalactic-tag-secondary-border, oklch(0.176 0.033 175.7 / 0.07));
 
   &::before,
@@ -182,35 +180,46 @@ STagContainerClose[theme="additional"] {
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-secondary-hover-active, #f4f5f5);
+    background-color: var(--intergalactic-tag-secondary-bg-hover-active, #f4f5f5);
   }
 }
 
 STag[theme="additional"],
 STagContainerClose[theme="additional"] {
-  border-style: dashed;
+  color: var(--intergalactic-tag-additional-text, #6a6c6a);
+  background-color: var(--intergalactic-tag-additional-bg-normal, oklch(1 0 0));
   border-color: var(--intergalactic-tag-additional-border, oklch(0.137 0.026 175.7 / 0.161));
+  border-style: dashed;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-additional-bg-hover-active, oklch(0.98 0.001 180));
+  }
 }
 
 STag[theme="primary-invert"],
 STagContainerClose[theme="primary-invert"] {
-  background-color: var(--intergalactic-tag-primary-white-normal, oklch(0.965 0.065 140 / 0.1));
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  background-color: var(--intergalactic-tag-primary-bg-invert-normal, oklch(0.965 0.065 140 / 0.1));
+  color: var(--intergalactic-tag-primary-text-invert, #ffffff);
   border-color: transparent;
 
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-primary-white-hover-active, oklch(0.986 0.025 140 / 0.203));
+    background-color: var(--intergalactic-tag-primary-bg-invert-hover-active, oklch(0.986 0.025 140 / 0.203));
   }
 }
 
 STag[theme="secondary-invert"],
-STagContainerClose[theme="secondary-invert"],
-STag[theme="additional-invert"],
-STagContainerClose[theme="additional-invert"] {
-  background-color: var(--intergalactic-tag-secondary-white-normal, transparent);
-  color: var(--intergalactic-tag-secondary-white-text, oklch(0.997 0.004 165.9 / 0.684));
+STagContainerClose[theme="secondary-invert"] {
+  background-color: var(--intergalactic-tag-secondary-bg-invert-normal, transparent);
+  color: var(--intergalactic-tag-secondary-text-invert, oklch(0.997 0.004 165.9 / 0.684));
   border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.974 0.047 140 / 0.136));
 
   &::before,
@@ -221,13 +230,27 @@ STagContainerClose[theme="additional-invert"] {
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-secondary-white-hover-active, oklch(0.98 0.036 140 / 0.164));
+    background-color: var(--intergalactic-tag-secondary-bg-invert-hover-active, oklch(0.98 0.036 140 / 0.164));
   }
 }
 
 STag[theme="additional-invert"],
 STagContainerClose[theme="additional-invert"] {
+  background-color: var(--intergalactic-tag-additional-bg-invert-normal, transparent);
+  color: var(--intergalactic-tag-additional-text-invert, oklch(0.997 0.004 165.9 / 0.684));
+  border-color: var(--intergalactic-tag-additional-border-invert, oklch(0.995 0.008 147.4 / 0.391));
   border-style: dashed;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-additional-bg-invert-hover-active, oklch(0.98 0.036 140 / 0.164));
+  }
 }
 
 SText {
