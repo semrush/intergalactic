@@ -19,6 +19,14 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     text: {
       control: { type: 'text' },
     },
+    use: {
+      control: { type: 'select' },
+      options: [
+        'primary',
+        'secondary',
+        'accent',
+      ],
+    },
     href: {
       control: { type: 'text' },
     },

@@ -31,6 +31,7 @@ type BasicLinkProps = LinkProps & {
 const Demo = (props: BasicLinkProps) => {
   const {
     text = 'Link example',
+    use,
     showAddonLeft = false,
     showAddonRight = false,
     disabled,
@@ -103,6 +104,7 @@ const Demo = (props: BasicLinkProps) => {
   return (
     <Text tag='div' size={size} style={containerW ? { width: containerW } : undefined}>
       <Link
+        use={use}
         href={href}
         size={size}
         disabled={disabled}
@@ -130,6 +132,7 @@ const Demo = (props: BasicLinkProps) => {
 
       {`${numSize} `}
       <Link
+        use={use}
         href={href}
         size={size}
         disabled={disabled}
@@ -155,6 +158,7 @@ const Demo = (props: BasicLinkProps) => {
 export const defaultProps: BasicLinkProps = {
   text: 'Link example',
   href: '#',
+  use: 'primary',
   size: 300,
   showAddonLeft: false,
   showAddonRight: false,
