@@ -86,7 +86,7 @@
     "@types/react": "18.2.19",
     "@types/react-dom": "18.3.7",
     "@vitejs/plugin-react": "5.2.0",
-    "@vitest/browser": "3.2.4",
+    "@vitest/browser": "3.2.7",
     "@vitest/ui": "3.2.4",
     "@workspace/types": "workspace:*",
     "allure-commandline": "2.34.0",
