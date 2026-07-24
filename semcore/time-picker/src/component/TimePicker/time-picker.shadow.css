@@ -22,6 +22,7 @@ STimePicker {
 STimePicker[disabled] {
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   cursor: default;
+  pointer-events: none;
 }
 
 STimePickerSeparator {
@@ -30,5 +31,4 @@ STimePickerSeparator {
 
 STimePickerSeparator[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.4);
-  pointer-events: none;
 }

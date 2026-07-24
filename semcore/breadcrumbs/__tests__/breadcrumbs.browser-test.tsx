@@ -8,9 +8,9 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify links and icons styles', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @breadcrumbs,
-        @ellipsis`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@breadcrumbs',
+      '@ellipsis'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
@@ -116,7 +116,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify ellipsis in the middle and last item is active=${item.active}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@breadcrumbs',
-        '@ellipis'],
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
       await page.waitForTimeout(200); // wait for finish ellipsis calculation

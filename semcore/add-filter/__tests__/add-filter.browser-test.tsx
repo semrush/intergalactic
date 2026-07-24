@@ -75,7 +75,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@base-trigger',
       '@button',
       '@input',
-      '@select'],
+      '@select',
+      '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -102,7 +103,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@base-trigger',
       '@button',
       '@input',
-      '@select'],
+      '@select',
+      '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -130,7 +132,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@input',
       '@radio',
       '@textarea',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -167,7 +173,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@input',
       '@radio',
       '@textarea',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -187,7 +197,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@input-number',
-      '@divider'],
+      '@divider',
+      '@base-components',
+      '@flex-box',
+      '@neighbor-location',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -205,7 +220,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@input-number',
-      '@divider'],
+      '@divider',
+      '@base-components',
+      '@flex-box',
+      '@neighbor-location',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -238,7 +258,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@input',
       '@radio',
       '@textarea',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -260,7 +284,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@input-number',
-      '@divider'],
+      '@divider',
+      '@base-components',
+      '@flex-box',
+      '@neighbor-location',
+      '@button-link',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -297,7 +326,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@base-trigger',
         '@button',
         '@input',
-        '@select'],
+        '@select',
+        '@button-link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -340,7 +370,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@base-trigger',
         '@button',
         '@input',
-        '@select'],
+        '@select',
+        '@button-link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/docs/examples/add-filter-basic.tsx', 'en');
 
@@ -373,7 +404,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -446,7 +481,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -569,7 +608,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -613,7 +656,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -696,7 +743,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -741,7 +792,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -773,7 +828,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -822,7 +882,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -859,7 +924,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -901,7 +971,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -930,7 +1005,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -961,7 +1041,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@input',
         '@input-number',
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box',
+        '@neighbor-location',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter-complex-selects.tsx', 'en');
 
@@ -985,7 +1070,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@input',
         '@radio',
         '@textarea',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/add-filter.tsx', 'en');
 
@@ -1020,7 +1109,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@add-filter',
         '@base-trigger',
         '@d3-chart',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@cigarette-chart'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/add-filter/advanced/examples/controlled_add_filter.tsx', 'en');
 

@@ -4,7 +4,7 @@ import React from 'react';
 const Example = () => {
   return (
     <div>
-      <InlineInput w={200}>
+      <InlineInput>
         <InlineInput.Addon htmlFor='number-example' tag='label'>
           Number:
         </InlineInput.Addon>
