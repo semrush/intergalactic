@@ -1179,7 +1179,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
-    "value": "oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Background of the regular secondary control.",
     "components": [
       "button",
@@ -1188,7 +1188,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral-active",
-    "value": "oklch(0.151 0.028 176.1 / 0.123)",
+    "value": "oklch(0.145 0.027 176.1 / 0.135)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
       "button"
@@ -1196,7 +1196,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
-    "value": "oklch(0.166 0.031 175.8 / 0.097)",
+    "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the regular secondary control.",
     "components": [
       "button"
@@ -1270,7 +1270,7 @@
   },
   {
     "name": "--intergalactic-control-switch-bg",
-    "value": "oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Subtle background of the Switch control.",
     "components": [
       "switch"
@@ -1423,7 +1423,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active",
-    "value": "oklch(0.23 0.089 285.4)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Active (selected) date-picker cell background.",
     "components": [
       "date-picker"
@@ -1431,7 +1431,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active-hover",
-    "value": "oklch(0.32 0.109 283.6)",
+    "value": "oklch(0.32 0.007 140)",
     "description": "Hover for the active (selected) date-picker cell background.",
     "components": [
       "date-picker"
@@ -1965,13 +1965,13 @@
   },
   {
     "name": "--intergalactic-control-pills-bg-hover",
-    "value": "oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the Pills background.",
     "components": []
   },
   {
     "name": "--intergalactic-control-pills-bg-normal",
-    "value": "oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Background of the Pills in its normal state.",
     "components": []
   },

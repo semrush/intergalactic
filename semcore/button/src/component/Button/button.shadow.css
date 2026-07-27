@@ -168,18 +168,18 @@ SButton[theme='primary-invert'] {
 
 SButton[theme='secondary-muted'] {
   color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
-  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.176 0.033 175.7 / 0.07));
+  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.166 0.031 175.8 / 0.097));
 
   &:hover {
     background-color: var(--intergalactic-control-secondary-neutral-hover,
-    oklch(0.166 0.031 175.8 / 0.097));
+    oklch(0.151 0.028 176.1 / 0.123));
     color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   &:active,
   &[active] {
     background-color: var(--intergalactic-control-secondary-neutral-active,
-    oklch(0.151 0.028 176.1 / 0.123));
+    oklch(0.145 0.027 176.1 / 0.135));
     color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 }

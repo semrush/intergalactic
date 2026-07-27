@@ -203,9 +203,9 @@ export const L_BG_BUTTON_STRONG_HOVER = 0.32;
 export const L_BG_BUTTON_STRONG_ACTIVE = 0;
 
 /** Button secondary bg         | ⚠️ APCA 60+ under white */
-export const L_BG_BUTTON_SECONDARY = 0.95;
-export const L_BG_BUTTON_SECONDARY_HOVER = 0.93;
-export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.91;
+export const L_BG_BUTTON_SECONDARY = 0.93;
+export const L_BG_BUTTON_SECONDARY_HOVER = 0.91;
+export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.9;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
 export const L_TEXT_PRIMARY = 0.23;

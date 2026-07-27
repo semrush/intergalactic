@@ -73,7 +73,7 @@ SRangeIndicator {
 }
 
 SRangeIndicator[range='value'] {
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.089 285.4));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.01 140));
 }
 
 SRangeIndicator[range='compare'] {
