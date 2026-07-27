@@ -26,7 +26,7 @@ SBaseTrigger {
 
   border-radius: var(--intergalactic-control-rounded, 6px);
   padding: 0 var(--intergalactic-spacing-content-inset-inline, 12px);
-  
+
   &::-moz-focus-inner {
     border: none;
     padding: 0;
@@ -144,10 +144,7 @@ SBaseTrigger[state='invalid'] {
   }
 }
 
-SInvalidPattern[size='m'] {
-  margin-left: calc(-1 * var(--intergalactic-spacing-2x, 8px));
-}
-
+SInvalidPattern[size='m'],
 SInvalidPattern[size='l'] {
   margin-left: calc(-1 * var(--intergalactic-spacing-3x, 12px));
 }
