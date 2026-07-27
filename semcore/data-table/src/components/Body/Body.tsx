@@ -395,6 +395,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             innerOutline
             // @ts-ignore
             headerHeight={`${this.getSpinnerTopOffset()}px`}
+            containerHeight={`${tableContainerRef.current?.clientHeight ?? 0}px`}
             tabIndex={-1}
             ref={spinnerRef}
             role='row'

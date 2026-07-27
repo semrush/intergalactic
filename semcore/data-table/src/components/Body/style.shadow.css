@@ -270,11 +270,9 @@ SCellWrapper[fixed] {
 }
 
 SSpinContainer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: sticky;
   top: 0;
+  grid-area: 2 / 1 / 20 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,8 +283,8 @@ SSpinContainer {
     z-index: 15;
   }
 
-  &[headerHeight] {
-    top: var(--headerHeight);
+  &[headerHeight][containerHeight] {
+    min-height: min(100vh, calc(var(--containerHeight) - var(--headerHeight)));
   }
 }
 
