@@ -91,7 +91,7 @@
   },
   {
     "name": "--intergalactic-badge-bg-invert",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.969 0.057 140 / 0.118)",
     "description": "Background color of the inverted Badge.",
     "components": []
   },
