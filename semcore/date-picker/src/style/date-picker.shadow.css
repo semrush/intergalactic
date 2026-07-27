@@ -73,11 +73,11 @@ SRangeIndicator {
 }
 
 SRangeIndicator[range='value'] {
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.64 0.152 276.7));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.089 285.4));
 }
 
 SRangeIndicator[range='compare'] {
-  background-color: var(--intergalactic-date-picker-cell-comparison-active, oklch(0.64 0.223 299.3));
+  background-color: var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1));
 }
 
 SRangeIndicator[disabled] {

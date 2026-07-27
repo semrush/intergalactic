@@ -133,15 +133,15 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify SVG dimensions and paddings', async () => {
         const svg = locators.monthRangePickerTrigger(page).locator('svg');
         await checkStyle(svg, {
-          paddingLeft: '8px',
-          paddingRight: '8px',
+          paddingLeft: '12px',
+          paddingRight: '6px',
         });
         await expect(svg).toHaveAttribute('width', '16');
         await expect(svg).toHaveAttribute('height', '16');
       });
 
       await test.step('Verify trigger separator padding', async () => {
-        await checkStyle(separator, { paddingRight: '8px' });
+        await checkStyle(separator, { paddingRight: '12px' });
       });
 
       await test.step('Verify disabled date style', async () => {

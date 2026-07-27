@@ -69,21 +69,21 @@ class RootBadge extends Component<
     switch (type) {
       case 'admin': {
         return resolveColor('--blue-400');
-      } // TODO: --intergalactic-badge-bg-admin
+      } // TODO: --intergalactic-badge-accent-admin
       case 'alpha': {
         return resolveColor('--red-400');
-      } // TODO: --intergalactic-badge-bg-alpha
+      } // TODO: --intergalactic-badge-accent-alpha
       case 'beta': {
-        return resolveColor('--orange-400');
-      } // TODO: --intergalactic-badge-bg-beta
+        return resolveColor('--yellow-300');
+      } // TODO: --intergalactic-badge-accent-beta
       case 'new': {
-        return resolveColor('--green-400');
-      } // TODO: --intergalactic-badge-bg-new
+        return resolveColor('--green-300');
+      } // TODO: --intergalactic-badge-accent-new
       case 'soon': {
         return resolveColor('--gray-400');
-      } // TODO: --intergalactic-badge-bg-soon
+      } // TODO: --intergalactic-badge-accent-soon
       case 'unavailable': {
-        return resolveColor('--gray-100');
+        return resolveColor('--gray-50');
       } // TODO: --intergalactic-badge-bg-unavailable
       default: {
         const t: never = type;

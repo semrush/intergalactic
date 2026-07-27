@@ -54,11 +54,21 @@ SButton[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
+SButton[size='m']:has(SAddon:only-child) {
+  width: var(--intergalactic-form-control-m, 32px);
+  min-width: var(--intergalactic-form-control-m, 32px);
+}
+
 SButton[size='l'] {
   height: var(--intergalactic-form-control-l, 44px);
   min-width: var(--intergalactic-form-control-l, 44px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
+}
+
+SButton[size='l']:has(SAddon:only-child) {
+  width: var(--intergalactic-form-control-l, 44px);
+  min-width: var(--intergalactic-form-control-l, 44px);
 }
 
 SButton[theme='primary-info'] {
@@ -177,7 +187,7 @@ SButton[theme='secondary-muted'] {
 
 SButton[theme='secondary-invert'] {
   color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  background-color: var(--intergalactic-control-secondary-invert, oklch(0.98 0.036 140 / 0.164));
+  background-color: var(--intergalactic-control-secondary-invert, oklch(0.983 0.03 140 / 0.183));
 
   &:hover {
     color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
