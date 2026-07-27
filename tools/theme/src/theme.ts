@@ -1037,11 +1037,11 @@ export const theme: Theme = {
         description: 'Default date-picker cell background.',
       },
       date_picker_cell_active_DEFAULT: {
-        value: info.at(L_BG_BUTTON_STRONG),
+        value: neutral.at(L_BG_BUTTON_STRONG),
         description: 'Active (selected) date-picker cell background.',
       },
       date_picker_cell_active_hover: {
-        value: info.at(L_BG_BUTTON_STRONG_HOVER),
+        value: neutral.at(L_BG_BUTTON_STRONG_HOVER),
         description: 'Hover for the active (selected) date-picker cell background.',
       },
       date_picker_cell_comparison_active_DEFAULT: {

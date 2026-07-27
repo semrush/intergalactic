@@ -1424,7 +1424,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active",
-    "value": "oklch(0.23 0.089 285.4)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Active (selected) date-picker cell background.",
     "components": [
       "date-picker"
@@ -1432,7 +1432,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active-hover",
-    "value": "oklch(0.32 0.109 283.6)",
+    "value": "oklch(0.32 0.007 140)",
     "description": "Hover for the active (selected) date-picker cell background.",
     "components": [
       "date-picker"

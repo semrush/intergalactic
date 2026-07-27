@@ -121,7 +121,7 @@ SCalendarUnit[highlighted] {
 
 SCalendarUnit[startSelected] {
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.089 285.4));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.01 140));
 
   &:not([highlighted]) {
     border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
@@ -132,12 +132,12 @@ SCalendarUnit[startSelected] {
 
   &:hover {
     color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-date-picker-cell-active-hover, oklch(0.32 0.109 283.6));
+    background-color: var(--intergalactic-date-picker-cell-active-hover, oklch(0.32 0.007 140));
   }
 }
 
 SCalendarUnit[endSelected] {
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.089 285.4));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.01 140));
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
 
   &:not([highlighted]) {
@@ -149,7 +149,7 @@ SCalendarUnit[endSelected] {
 
   &:hover {
     color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-date-picker-cell-active-hover, oklch(0.32 0.109 283.6));
+    background-color: var(--intergalactic-date-picker-cell-active-hover, oklch(0.32 0.007 140));
   }
 }
 
