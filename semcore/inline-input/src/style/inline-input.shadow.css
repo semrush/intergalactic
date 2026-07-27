@@ -1,20 +1,17 @@
 SInlineInput {
   display: inline-flex;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   height: 100%;
   align-items: center;
   position: relative;
-  z-index: 0;
   vertical-align: middle;
   /* disable-tokens-validator */
   padding: 1px;
   box-sizing: border-box;
 
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
-
   SConfirmIcon:not([color]) {
     color: var(--intergalactic-icon-secondary-success, oklch(0.711 0.146 166.9));
-    cursor: pointer;
   }
 
   SConfirmIcon:not([color]):hover {
@@ -23,7 +20,6 @@ SInlineInput {
 
   SCancelIcon:not([color]) {
     color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
-    cursor: pointer;
   }
 
   SCancelIcon:not([color]):hover {
@@ -31,12 +27,13 @@ SInlineInput {
   }
 
   SValue {
-    /* hack for firefox */
+    flex: 0 1 auto;
     min-width: 0;
+    max-width: 100%;
+    width: auto;
 
-    width: 100%;
     height: 100%;
-    padding: 0 var(--intergalactic-spacing-1x, 4px);
+    padding: var(--intergalactic-spacing-1x, 4px);
     border: none;
     box-sizing: border-box;
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
@@ -46,6 +43,11 @@ SInlineInput {
     font-family: inherit;
     background: transparent;
     min-height: 1em;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    text-underline-offset: 17%;
 
     &:focus, &:focus-visible {
       outline: none;
@@ -79,15 +81,26 @@ SInlineInput[disabled] {
 
 SUnderline {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  flex-grow: 1;
+  min-width: 0;
   width: 100%;
   height: 100%;
   min-height: 1em;
   border: 1px solid transparent;
-  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border-radius: var(--intergalactic-control-rounded, 6px);
   outline-color: transparent;
+  transition-duration: calc(var(--intergalactic-duration-extra-fast, 100) * 1ms);
+  transition-timing-function: ease-in-out;
+  transition-property: background-color;
+}
+
+SInlineInput:hover:not(:focus-within):not([disabled]) SUnderline {
+  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.166 0.031 175.8 / 0.097));
+}
+
+SInlineInput:hover:not(:focus-within):not([disabled]) SAddon,
+SInlineInput:hover:not(:focus-within):not([disabled]) SValue {
+  cursor: pointer;
 }
 
 SAddon {
@@ -97,7 +110,7 @@ SAddon {
   flex: 0 0 auto;
   height: 100%;
   color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
-  padding: 0 var(--intergalactic-spacing-1x, 4px);
+  padding: 0 var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SAddon[disabled] {
@@ -106,38 +119,49 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
-SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
-  @mixin focus-outline-mixin;
+[data-ui-name='InlineInput.CancelControl'] {
+  padding-left: 0;
 }
 
-SInlineInput[state='valid'] SUnderline {
-  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
+SInlineInput:not(:focus-within):not([loading]) [data-ui-name='InlineInput.ConfirmControl'],
+SInlineInput:not(:focus-within):not([loading]) [data-ui-name='InlineInput.CancelControl'] {
+  display: none;
+}
+
+SUnderline:has(input:focus-visible) {
+  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+  @mixin focus-outline-mixin {
+    outline-offset: 0;
+    transition-property: outline-color, outline-width;
+  }
 }
 
 SInlineInput[state='valid'] SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
-  @mixin focus-outline-mixin;
   outline-color: var(--intergalactic-keyboard-focus-valid-outline, oklch(0.711 0.146 166.9));
 }
 
-SInlineInput[state='invalid'] SUnderline {
-  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
+SInlineInput[state='invalid'] SUnderline:has(input:focus-visible) {
+  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
 }
 
-SInlineInput[state='invalid'] SUnderline:has(input:focus-visible) {
-  border-bottom-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
-  @mixin focus-outline-mixin;
-  outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
+SInlineInput[state='valid'] SValue {
+  text-decoration-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
+}
+
+SInlineInput[state='invalid'] SValue {
+  text-decoration-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
+}
+
+SInlineInput[state]:focus-within SValue {
+  text-decoration-color: transparent;
 }
 
 SValue:focus~SControls {
   display: flex;
 }
 
-SInvalidPattern {
-  margin-left: -1px;
-  margin-top: -1px;
-  border-radius: 0;
-  height: calc(100% - 3px);
+@supports (field-sizing: content) {
+  SValue {
+    field-sizing: content;
+  }
 }
