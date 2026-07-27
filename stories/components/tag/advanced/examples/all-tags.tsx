@@ -22,34 +22,30 @@ export default function AllTags() {
     <Flex direction='column' gap={4}>
       {SIZES.map((size) => (
         <Flex key={`themes-${size}`} gap={2} flexWrap alignItems='center'>
-          <Tag size={size}>
-            <Tag.Text>Primary</Tag.Text>
-          </Tag>
-          <Tag theme='secondary' size={size}>
-            <Tag.Text>Secondary</Tag.Text>
-          </Tag>
-          <Tag disabled size={size}>
-            <Tag.Text>Disabled</Tag.Text>
-          </Tag>
+          <Tag size={size}>Primary</Tag>
+          <Tag theme='secondary' size={size}>Secondary</Tag>
+          <Tag disabled size={size}>Disabled</Tag>
         </Flex>
       ))}
       {SIZES.map((size) => (
         <Flex key={`themes-interactive-${size}`} gap={2} flexWrap alignItems='center'>
-          <TagContainer size={size} interactive>
+          <TagContainer size={size} interactive onClick={console.log}>
             <TagContainer.Tag>
               <TagContainer.Tag.Text>Primary interactive</TagContainer.Tag.Text>
             </TagContainer.Tag>
             <TagContainer.Close />
           </TagContainer>
-          <TagContainer theme='secondary' size={size} interactive>
+          <TagContainer theme='secondary' size={size} interactive onClick={console.log}>
             <TagContainer.Tag>
               <TagContainer.Tag.Text>Secondary interactive</TagContainer.Tag.Text>
             </TagContainer.Tag>
             <TagContainer.Close />
           </TagContainer>
-          <Tag theme='additional' size={size} addonLeft={MathPlusM} interactive onClick={console.log}>
-            <Tag.Text>Additional interactive</Tag.Text>
-          </Tag>
+          <TagContainer theme='additional' size={size} interactive onClick={console.log}>
+            <TagContainer.Tag addonLeft={MathPlusM}>
+              <TagContainer.Tag.Text>Secondary interactive</TagContainer.Tag.Text>
+            </TagContainer.Tag>
+          </TagContainer>
         </Flex>
       ))}
       <Box
@@ -62,37 +58,33 @@ export default function AllTags() {
         <Flex direction='column' gap={4}>
           {SIZES.map((size) => (
             <Flex key={`themes-invert-${size}`} gap={2} flexWrap alignItems='center'>
-              <Tag size={size} theme='primary-invert'>
+              <Tag size={size} theme='primary' invert>
                 <Tag.Text>Primary invert</Tag.Text>
               </Tag>
-              <Tag theme='secondary-invert' size={size}>
+              <Tag theme='secondary' invert size={size}>
                 <Tag.Text>Secondary invert</Tag.Text>
               </Tag>
             </Flex>
           ))}
           {SIZES.map((size) => (
             <Flex key={`themes-invert-interactive-${size}`} gap={2} flexWrap alignItems='center'>
-              <TagContainer theme='primary-invert' size={size} interactive>
+              <TagContainer theme='primary' invert size={size} interactive onClick={console.log}>
                 <TagContainer.Tag>
                   <TagContainer.Tag.Text>Primary invert interactive</TagContainer.Tag.Text>
                 </TagContainer.Tag>
                 <TagContainer.Close />
               </TagContainer>
-              <TagContainer theme='secondary-invert' size={size} interactive>
+              <TagContainer theme='secondary' invert size={size} interactive onClick={console.log}>
                 <TagContainer.Tag>
                   <TagContainer.Tag.Text>Secondary invert interactive</TagContainer.Tag.Text>
                 </TagContainer.Tag>
                 <TagContainer.Close />
               </TagContainer>
-              <Tag
-                theme='additional-invert'
-                size={size}
-                addonLeft={MathPlusM}
-                interactive
-                onClick={console.log}
-              >
-                <Tag.Text>Additional invert interactive</Tag.Text>
-              </Tag>
+              <TagContainer theme='additional' invert size={size} interactive onClick={console.log}>
+                <TagContainer.Tag addonLeft={MathPlusM}>
+                  <TagContainer.Tag.Text>Additional invert interactive</TagContainer.Tag.Text>
+                </TagContainer.Tag>
+              </TagContainer>
             </Flex>
           ))}
         </Flex>
@@ -101,7 +93,7 @@ export default function AllTags() {
         <Flex key={size} gap={2} flexWrap alignItems='center'>
           {COLORS.map((color) => (
             <Tag key={`${size}-${color}`} theme='primary' color={`${color}-500`} size={size}>
-              <Tag.Text>{color}</Tag.Text>
+              {color}
             </Tag>
           ))}
         </Flex>

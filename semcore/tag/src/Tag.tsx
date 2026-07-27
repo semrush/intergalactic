@@ -69,6 +69,16 @@ class RootTag extends Component<
     }
   };
 
+  resolvedTheme() {
+    const { theme, invert } = this.asProps;
+
+    if (invert === true) {
+      return `${theme}-invert`;
+    }
+
+    return theme;
+  }
+
   render() {
     const STag = Root;
     const {
@@ -82,6 +92,7 @@ class RootTag extends Component<
       resolveColor,
       id: outerId,
       uid,
+      theme,
     } = this.asProps;
     const id = outerId || `igc-${uid}-tag`;
     const isInteractiveView = !disabled && interactive;
@@ -93,7 +104,8 @@ class RootTag extends Component<
         id={id}
         use:interactive={isInteractive}
         use:interactiveView={isInteractiveView}
-        tag-color={resolveColor(color)}
+        use:theme={this.resolvedTheme()}
+        tag-color={theme === 'primary' ? resolveColor(color) : undefined}
         onKeyDown={this.handleKeyDown}
         use:tabIndex={isInteractive ? 0 : -1}
         role={isInteractive ? 'button' : undefined}
