@@ -957,7 +957,7 @@ export const theme: Theme = {
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
       control_switch_bg_DEFAULT: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
         description: 'Subtle background of the Switch control.',
       },
       control_switch_bg_info_active: {
@@ -1325,7 +1325,7 @@ export const theme: Theme = {
         description: 'Background fill for the whole product page.',
       },
       control_pills_bg_hover: {
-        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
+        value: '{semanticTokens.colors.control_secondary_neutral_hover}',
         description: 'Hover state of the Pills background.',
       },
       control_pills_bg_normal: {
