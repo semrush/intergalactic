@@ -165,6 +165,7 @@ class RootTagContainer extends Component<
       addonLeft,
       addonRight,
       active,
+      invert,
     } = this.asProps;
     const id = outerId || `igc-${uid}-tag`;
 
@@ -180,6 +181,7 @@ class RootTagContainer extends Component<
       addonLeft,
       addonRight,
       active,
+      invert,
     };
   }
 
@@ -210,13 +212,23 @@ class RootTagContainer extends Component<
     return {
       disabled,
       size,
-      theme,
+      'theme': this.resolvedTheme(),
       color,
       'id': `${id}-clear`,
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
       resolveColor,
     };
+  }
+
+  resolvedTheme() {
+    const { theme, invert } = this.asProps;
+
+    if (invert === true) {
+      return `${theme}-invert`;
+    }
+
+    return theme;
   }
 
   render() {
