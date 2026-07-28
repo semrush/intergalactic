@@ -3121,14 +3121,38 @@
     ]
   },
   {
-    "name": "--intergalactic-spacing-content-inset-inline",
+    "name": "--intergalactic-spacing-content-padding-small",
+    "value": "8px",
+    "description": "Small padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-medium",
     "value": "12px",
-    "description": "Horizontal inset for content inside controls and surfaces.",
+    "description": "Medium horizontal padding for content inside controls and surfaces.",
     "components": [
       "button",
       "input",
       "time-picker"
     ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-large",
+    "value": "16px",
+    "description": "Large padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-xlarge",
+    "value": "20px",
+    "description": "Extra large padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-xxlarge",
+    "value": "40px",
+    "description": "Extra extra large padding for content inside controls and surfaces.",
+    "components": []
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
