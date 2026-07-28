@@ -1901,11 +1901,7 @@ export const theme: Theme = {
         value: `3px 3px 10px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Hover state for the shadow of the Card with hover state.',
       },
-      box_shadow_pills_item_selected: {
-        value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
-        description: 'Shadow of the selected Pills item.',
-      },
-      box_shadow_switch_slider: {
+      box_shadow_control_elevated: {
         value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Shadow of the Switch toggle.',
       },
@@ -3228,13 +3224,8 @@ type SemanticShadows = {
         DEFAULT: Value;
         hover: Value;
       };
-      pills: {
-        item: {
-          selected: Value;
-        };
-      };
-      switch: {
-        slider: Value;
+      control: {
+        elevated: Value;
       };
       dnd: Value;
       modal: Value;
