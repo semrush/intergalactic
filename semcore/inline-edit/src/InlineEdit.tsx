@@ -142,7 +142,7 @@ function Edit(
       exiting={!visible}
       ref={ref}
     />,
-  ) as React.ReactElement;
+  );
 }
 
 function View(
@@ -176,7 +176,7 @@ function View(
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handleKeyDown}
     />,
-  ) as React.ReactElement;
+  );
 }
 
 /**
