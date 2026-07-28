@@ -24,6 +24,7 @@ export function PaywallMessage() {
         right={0}
         bottom={0}
         left={0}
+        m='-16px'
         direction='column'
         alignItems='center'
         py={10}
@@ -35,7 +36,7 @@ export function PaywallMessage() {
         <Box
           p={6}
           wMax={400}
-          bg='page-bg'
+          bg='bg-primary-neutral'
           borderRadius='popper-rounded'
           style={{
             boxShadow: 'var(--intergalactic-box-shadow-popper)',

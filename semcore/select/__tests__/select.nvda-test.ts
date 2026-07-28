@@ -1,4 +1,5 @@
-import { expect, nvdaTest as test } from '@semcore/testing-utils/playwright';
+import { expect } from '@semcore/testing-utils/playwright';
+import { nvdaTest as test } from '@semcore/testing-utils/playwright.nvda';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
@@ -19,17 +20,17 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
       await nvda.next();
       const firstOption = await nvda.itemText();
-      expect(firstOption).toContain('expanded');
+      expect(firstOption).toContain('Basic select, list');
     });
 
     await test.step('Navigate through options', async () => {
       await nvda.next();
-      expect(await nvda.itemText()).toContain('Basic select, list. Option 1, 2 of 6');
+      expect(await nvda.itemText()).toContain('Option 2, 3 of 6');
     });
 
     await test.step('Navigate backwards through options', async () => {
       await nvda.previous();
-      expect(await nvda.itemText()).toContain('Option 0, 1 of 6');
+      expect(await nvda.itemText()).toContain('Option 1, 2 of 6');
     });
   });
 
@@ -49,17 +50,17 @@ test.describe(`@select ${TAG.NVDA}`, () => {
 
       await nvda.next();
       const firstOption = await nvda.itemText();
-      expect(firstOption).toContain('expanded');
-    });
-
-    await test.step('Navigate through options', async () => {
-      await nvda.next();
-      expect(await nvda.itemText()).toContain('Multiselect, list. Option 1, 2 of 20');
+      expect(firstOption).toContain('Multiselect, list');
     });
 
     await test.step('Navigate through options', async () => {
       await nvda.next();
       expect(await nvda.itemText()).toContain('Option 2, 3 of 20');
+    });
+
+    await test.step('Navigate through options', async () => {
+      await nvda.next();
+      expect(await nvda.itemText()).toContain('Option 3, 4 of 20');
     });
   });
 

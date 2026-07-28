@@ -1,7 +1,7 @@
 {
   "name": "@semcore/select",
   "description": "Semrush Select Component",
-  "version": "17.3.0",
+  "version": "17.4.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -21,8 +21,8 @@
     "@semcore/checkbox": "^17.2.1",
     "@semcore/divider": "^17.2.1",
     "@semcore/dropdown": "^17.3.0",
-    "@semcore/dropdown-menu": "^17.3.0",
-    "@semcore/input": "^17.2.1",
+    "@semcore/dropdown-menu": "^17.3.1",
+    "@semcore/input": "^17.2.2",
     "@semcore/spin": "^17.2.1",
     "@semcore/typography": "^17.2.1",
     "classnames": "2.2.6"

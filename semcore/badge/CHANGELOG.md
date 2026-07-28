@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.2] - 2026-07-10
+
+### Fixed
+
+- Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSBadge` namespace.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

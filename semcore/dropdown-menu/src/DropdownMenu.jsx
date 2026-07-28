@@ -332,7 +332,9 @@ function List({ styles, Children }) {
   const SScrollContainer = ScrollAreaComponent.Container;
 
   const preventFocusByClick = React.useCallback((e) => {
-    e.preventDefault();
+    if (!e.target.draggable) {
+      e.preventDefault();
+    }
   }, []);
 
   return sstyled(styles)(

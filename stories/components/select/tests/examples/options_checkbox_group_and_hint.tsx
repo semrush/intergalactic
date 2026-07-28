@@ -7,6 +7,7 @@ import React from 'react';
 export type SelectAdvancedConfigProps = SelectProps & {
   // Main Select props
   size?: 'm' | 'l';
+  omitSize?: boolean;
   labelText?: string;
   showLabel?: boolean;
   triggerPlaceholder?: string;
@@ -62,6 +63,7 @@ const Demo = (props: SelectAdvancedConfigProps) => {
     showLabel = true,
     triggerPlaceholder = 'Select an option',
     size = 'm',
+    omitSize = false,
     disabled = undefined,
     state = undefined,
     visible = undefined,
@@ -120,7 +122,7 @@ const Demo = (props: SelectAdvancedConfigProps) => {
         </Text>
       )}
       <Select
-        size={size}
+        {...(!omitSize ? { size } : {})}
         disabled={disabled}
         state={state}
         visible={visible}
@@ -209,6 +211,7 @@ export const defaultProps: SelectAdvancedConfigProps = {
   showLabel: true,
   triggerPlaceholder: 'Select an option',
   size: 'm',
+  omitSize: false,
   disabled: undefined,
   state: undefined,
 

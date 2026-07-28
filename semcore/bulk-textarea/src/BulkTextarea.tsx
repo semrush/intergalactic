@@ -1,40 +1,28 @@
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, lastInteraction } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-import type { BulkTextareaType, BulkTextareaProps, BulkTextareaDefaultProps } from './BulkTextarea.types';
+import type { NSBulktextarea } from './BulkTextarea.types';
 import { ClearAll } from './components/ClearAll';
 import { Counter } from './components/Counter';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
-import { InputField, type InputFieldProps } from './components/InputField/InputField';
+import { InputField } from './components/InputField/InputField';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-type State<T extends string | string[]> = {
-  linesCount: number;
-  isEmptyText: boolean;
-  errorIndex: number;
-  highlightErrorIndex: boolean;
-  prevError?: InputFieldProps<T>['errors'][number];
-};
-
 class BulkTextareaRoot<T extends string | string[]> extends Component<
-  BulkTextareaProps<T>,
+  Intergalactic.InternalTypings.InferComponentProps<NSBulktextarea.Component<T>>,
   typeof BulkTextareaRoot.enhance,
-  {
-    value: null;
-    state: null;
-    showErrors: null;
-    errors: null;
-  },
+  NSBulktextarea.Handlers,
   WithI18nEnhanceProps,
-  State<T>,
-  BulkTextareaDefaultProps<T>
+  NSBulktextarea.State,
+  NSBulktextarea.DefaultProps<T>
 > {
   static displayName = 'BulkTextarea';
-  static defaultProps: BulkTextareaDefaultProps<string | string[]> = {
+  static defaultProps: NSBulktextarea.DefaultProps<string | string[]> = {
     defaultValue: '',
     size: 'm',
     defaultState: 'normal',
@@ -49,13 +37,13 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
-  inputFieldRef = React.createRef<HTMLDivElement>();
+  inputFieldRef = React.createRef<HTMLOListElement>();
   clearAllButtonRef = React.createRef<HTMLButtonElement>();
   nextButtonRef = React.createRef<HTMLButtonElement>();
   prevButtonRef = React.createRef<HTMLButtonElement>();
-  counterRef = React.createRef<HTMLDivElement>();
+  counterRef = React.createRef<HTMLOListElement>();
 
-  state: State<T> = {
+  state: NSBulktextarea.State = {
     linesCount: 0,
     isEmptyText: true,
     errorIndex: -1,
@@ -136,11 +124,16 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
 
         this.handlers.value?.(value, event);
       },
+      onPaste: () => {
+        if (validateOn?.includes('paste')) {
+          this.handlers.showErrors(true);
+        }
+      },
       showErrors,
       validateOn,
       lineValidation: lineValidation,
       errors,
-      onErrorsChange: (newErrors: InputFieldProps<T>['errors']) => {
+      onErrorsChange: (newErrors: NSBulktextarea.ErrorItem[]) => {
         const prevError = newErrors.length === 0 ? errors[0] : undefined;
         this.handlers.errors(newErrors);
         this.setState({ prevError });
@@ -234,6 +227,14 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
       this.handlers.showErrors(false);
       this.handlers.errors([]);
       this.handlers.state('normal');
+
+      if (document.activeElement === this.clearAllButtonRef.current) {
+        const textarea = this.inputFieldRef.current?.querySelector('[contenteditable="true"]');
+
+        if (textarea instanceof HTMLOListElement) {
+          textarea.focus();
+        }
+      }
     }
   };
 
@@ -241,15 +242,9 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
     this.handlers.showErrors(false);
     this.handlers.errors([]);
     this.setState({ errorIndex: -1 });
-    // @ts-ignore
-    this.handlers.value('', e);
+    // @ts-ignore (we should set right type of value depending on the type of value passed)
+    this.handlers.value(typeof this.asProps.value === 'string' ? '' : [], e);
     this.handlers.state('normal');
-
-    const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
-
-    if (textarea instanceof HTMLDivElement) {
-      textarea.focus();
-    }
   };
 
   handleChangeErrorIndex = (amount: number) => () => {
@@ -282,13 +277,15 @@ class BulkTextareaRoot<T extends string | string[]> extends Component<
   }
 }
 
+export type BulkTextareaRootType = typeof BulkTextareaRoot;
+
 /**
  * BulkTextarea
  *
  * {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-api/|API} | {@link https://developer.semrush.com/intergalactic/components/bulk-textarea/bulk-textarea-code/|Examples}
  */
 const BulkTextarea = (<T extends string | string[]>() =>
-  createComponent<BulkTextareaType<T>, typeof BulkTextareaRoot>(BulkTextareaRoot, {
+  createComponent<NSBulktextarea.Component<T>, BulkTextareaRootType>(BulkTextareaRoot, {
     InputField,
     Counter,
     ClearAll,

@@ -2,6 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0] - 2026-07-09
+
+### Fixed
+
+- values for: `overlay-limitation-primary` (now refers to page bg),
+`skeleton` variables (made a little bit lighter), values from
+`control-primary-advertising` variables changed from violet to gray
+(used in Wizard), `chart-palette-order-16` (to `green-400`).
+- Radii variables.
+
+### Added
+
+- New `page-bg`, `footer-bg`, `sidebar-nav-bg` and `sidebar-nav-border`
+variables.
+
+### Changed
+
+- Values for `header-bg`, `header-border-primary` and
+`header-border-secondary` variables.
+- Added export for types.
+- Value of the `overlay-limitation-primary` variable: added 0.85
+opacity.
+
 ## [2.2.0] - 2026-06-26
 
 ### Added
