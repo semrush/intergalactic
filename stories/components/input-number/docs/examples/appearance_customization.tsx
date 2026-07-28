@@ -20,7 +20,7 @@ const Demo = () => {
       <Text tag='label' htmlFor='alternative-example' size={200}>
         Members count
       </Text>
-      <Flex w={100} mt={2}>
+      <Flex w={120} mt={2}>
         <Button onClick={decrement} title='Decrease by 10' neighborLocation='right'>
           -
         </Button>
@@ -32,6 +32,7 @@ const Demo = () => {
             value={value}
             onChange={setValue}
             id='alternative-example'
+            style={{ borderLeft: '1px solid var(--intergalactic-border-primary)', marginLeft: '-1px' }}
           />
         </InputNumber>
         <Button onClick={increment} title='Increase by 10' neighborLocation='left'>

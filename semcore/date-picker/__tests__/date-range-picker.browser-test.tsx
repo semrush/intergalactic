@@ -155,14 +155,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify svg dimensions', async () => {
         const svg = locators.dateRangePickerTrigger(page, 4).locator('svg');
-        await checkStyle(svg, { paddingLeft: '8px', paddingRight: '8px' });
+        await checkStyle(svg, { paddingLeft: '12px', paddingRight: '6px' });
         await expect(svg).toHaveAttribute('width', '16');
         await expect(svg).toHaveAttribute('height', '16');
       });
 
       await test.step('Verify trigger separator padding', async () => {
         const separator = page.locator('[data-ui-name="DateRange.RangeSep"]').nth(1);
-        await checkStyle(separator, { paddingRight: '8px' });
+        await checkStyle(separator, { paddingRight: '12px' });
       });
 
       await test.step('Enter dates and open popper', async () => {

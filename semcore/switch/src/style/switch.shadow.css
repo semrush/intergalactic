@@ -76,7 +76,7 @@ SSwitch[disabled] {
 }
 
 SToggle {
-  background: var(--intergalactic-control-switch-bg, oklch(0.88 0.002 175.6)); /* TODO: --intergalactic-control-switch-bg */
+  background: var(--intergalactic-control-switch-bg, oklch(0.166 0.031 175.8 / 0.097));
   position: relative;
   color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
   cursor: pointer;
