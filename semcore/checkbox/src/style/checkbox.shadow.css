@@ -9,7 +9,7 @@ SLabel {
   }
 
   SText {
-    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-left: var(--intergalactic-spacing-1x, 4px);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
     &[disabled] {
@@ -44,9 +44,9 @@ SCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-checkbox-bg-normal */
+    background: var(--intergalactic-control-checkbox-bg-normal, oklch(1 0 0));
     border: 1px solid;
-    border-radius: var(--intergalactic-addon-rounded, 4px); /* TODO: --intergalactic-checkbox-rounded */
+    border-radius: var(--intergalactic-checkbox-rounded, 4px);
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
     outline-color: transparent;
   }
@@ -54,7 +54,7 @@ SCheckbox {
   &::after {
     content: '';
     position: absolute;
-    top: 1px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -64,11 +64,7 @@ SCheckbox {
   }
 
   &[state='normal']:before {
-    border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-checkbox-border */
-  }
-
-  &[state='normal']:focus-visible:before {
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: ...? do we need this? checkbox get focus outline from Box and these color is rewritten */
+    border-color: var(--intergalactic-control-checkbox-border, oklch(0.137 0.026 175.7 / 0.161));
   }
 }
 
@@ -78,7 +74,7 @@ SCheckbox[size='l'] {
   height: 20px;
 
   &[checked]::after {
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSI5IiB2aWV3Qm94PSIwIDAgMTMgOSIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTExLjU1IDAuNzVMNC40NTQzOSA3Ljg0NTYxTDAuNzUgNC4xNDEyMiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K');
   }
 }
 
@@ -88,7 +84,7 @@ SCheckbox[size='m'] {
   height: 16px;
 
   &[checked]::after {
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgMTEgOCIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTkuMzcxMzIgMC43NUwzLjcwNzExIDYuNDE0MjFMMC43NSAzLjQ1NzExIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=');
   }
 }
 
@@ -103,16 +99,15 @@ SText[size='m'] {
   line-height: var(--intergalactic-lh-200, 142%);
 }
 
-
 SControl[checked]~SCheckbox[state='normal']:before,
 SControl[checked]~SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
 }
 
 SControl[indeterminate]~SCheckbox[state='normal']:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-checkbox-bg-selected */
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
 }
 
 SCheckbox[state='invalid'],
@@ -137,33 +132,27 @@ SControl[disabled] ~ SCheckbox[state='invalid'] > SInvalidPattern {
   cursor: default;
 }
 
-SControl[checked]~SCheckbox {
-  &[state='invalid']:before {
-    background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
-    border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
-  }
+SControl[checked]~SCheckbox[state='invalid']:before,
+SControl[indeterminate]~SCheckbox[state='invalid']:before {
+  background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
+  border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
 }
 
 SControl[indeterminate]~SCheckbox:after {
-  background-color: #ffffff; /* TODO: --gray-white? */
+  background-color: var(--intergalactic-control-checkbox-checkmark, oklch(1 0 0));
   margin: auto;
   /* disable-tokens-validator */
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 SControl[indeterminate]~SCheckbox[size='l']:after {
   width: 12px;
-  height: 2px;
+  height: 1.5px;
 }
 
 SControl[indeterminate]~SCheckbox[size='m']:after {
   width: 8px;
-  height: 2px;
-}
-
-SControl[indeterminate]~SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
-  border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5)); /* TODO: ...? not sure if we need to add separate vars for invalid checkbox and radio inputs*/
+  height: 1.5px;
 }
 
 SCheckbox[checked][theme][state='normal']:before {

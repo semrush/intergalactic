@@ -1986,7 +1986,7 @@ export const theme: Theme = {
         description: 'Use for rounding big and small charts like bar, histogram and others.',
       },
       'checkbox': {
-        value: `${RADII.medium}px`,
+        value: `${RADII.small}px`,
         description: 'Use for rounding Checkbox.',
       },
       'control': {
