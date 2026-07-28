@@ -3121,6 +3121,12 @@
     ]
   },
   {
+    "name": "--intergalactic-spacing-content-padding-xsmall",
+    "value": "4px",
+    "description": "Extra small padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
@@ -3129,7 +3135,7 @@
   {
     "name": "--intergalactic-spacing-content-padding-medium",
     "value": "12px",
-    "description": "Medium horizontal padding for content inside controls and surfaces.",
+    "description": "Medium padding for content inside controls and surfaces.",
     "components": [
       "button",
       "input",
@@ -3151,7 +3157,7 @@
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
     "value": "40px",
-    "description": "Extra extra large padding for content inside controls and surfaces.",
+    "description": "2x large padding for content inside controls and surfaces.",
     "components": []
   },
   {
