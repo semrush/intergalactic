@@ -20,12 +20,12 @@ const Demo = () => {
         borderRadius='surface-rounded'
       >
         <Flex gap={2} alignItems='flex-start'>
-          <Badge type='admin' inverted />
-          <Badge type='alpha' inverted />
-          <Badge type='beta' inverted />
-          <Badge type='new' inverted />
-          <Badge type='soon' inverted />
-          <Badge type='unavailable' inverted />
+          <Badge type='admin' invert />
+          <Badge type='alpha' invert />
+          <Badge type='beta' invert />
+          <Badge type='new' invert />
+          <Badge type='soon' invert />
+          <Badge type='unavailable' invert />
         </Flex>
       </Box>
       <Flex ml={4} gap={2} alignItems='flex-start'>

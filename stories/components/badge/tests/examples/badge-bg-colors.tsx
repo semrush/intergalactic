@@ -10,7 +10,7 @@ const Demo = (props: ExampleBadgeProps) => {
   return (
     <Flex gap={2}>
       <Badge
-        inverted={props.inverted}
+        invert={props.invert}
         type={props.type}
         bg={props.bg}
         color={props.color}
@@ -37,7 +37,7 @@ export const defaultExampleBadgeProps: ExampleBadgeProps = {
   h: undefined,
   pt: undefined,
   m: undefined,
-  inverted: undefined,
+  invert: undefined,
 };
 
 Demo.defaultProps = defaultExampleBadgeProps;

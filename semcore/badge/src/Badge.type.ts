@@ -38,6 +38,11 @@ declare namespace NSBadge {
     /**
      * Flag to render inverted badge.
      */
+    invert?: true;
+    /**
+     * Flag to render inverted badge.
+     * @deprecated use invert instead.
+     */
     inverted?: true;
     accent?: never | false;
   } | {
@@ -46,6 +51,7 @@ declare namespace NSBadge {
      */
     accent?: true;
     inverted?: never | false;
+    invert?: never | false;
   });
 
   type Component = Intergalactic.Component<'span', Props>;

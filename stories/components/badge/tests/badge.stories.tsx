@@ -16,7 +16,7 @@ export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
   render: BadgeBgExample,
   argTypes: {
     type: { control: 'select', options: ['admin', 'alpha', 'beta', 'new', 'soon', 'unavailable'] },
-    inverted: { control: 'boolean' },
+    invert: { control: 'boolean' },
     bg: {
       control: { type: 'select' },
       options: ['mist', 'cyan', 'red', 'orange', 'green', 'white', 'violet-400'],
@@ -37,7 +37,6 @@ export const BadgeBg: StoryObj<typeof defaultExampleBadgeProps> = {
     m: {
       control: { type: 'number' },
     },
-
   },
   args: defaultExampleBadgeProps,
 };

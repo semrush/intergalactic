@@ -49,12 +49,12 @@ const Demo = () => {
             <Badge type='unavailable' />
           </Flex>
           <Flex gap={2} mt={2} p={4} bg='bg-primary-invert'>
-            <Badge type='admin' inverted />
-            <Badge type='alpha' inverted />
-            <Badge type='beta' inverted />
-            <Badge type='new' inverted />
-            <Badge type='soon' inverted />
-            <Badge type='unavailable' inverted />
+            <Badge type='admin' invert />
+            <Badge type='alpha' invert />
+            <Badge type='beta' invert />
+            <Badge type='new' invert />
+            <Badge type='soon' invert />
+            <Badge type='unavailable' invert />
           </Flex>
         </Box>
       </I18nProvider>

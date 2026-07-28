@@ -50,9 +50,9 @@ class RootBadge extends Component<
 
   private resolveTextColor(): string | undefined {
     // todo Brauer Ilia - removed default 'soon' type in 19th major
-    const { type = 'soon', inverted, resolveColor, accent } = this.asProps;
+    const { type = 'soon', inverted, invert, resolveColor, accent } = this.asProps;
 
-    if (inverted || accent) {
+    if ((inverted ?? invert) || accent) {
       return undefined;
     }
 
@@ -82,9 +82,9 @@ class RootBadge extends Component<
 
   private resolveBg(): string {
     // todo Brauer Ilia - removed default 'soon' type in 19th major
-    const { type = 'soon', inverted, resolveColor, accent } = this.asProps;
+    const { type = 'soon', inverted, invert, resolveColor, accent } = this.asProps;
 
-    if (inverted) {
+    if (inverted ?? invert) {
       return resolveColor('--intergalactic-badge-bg-invert');
     }
 
