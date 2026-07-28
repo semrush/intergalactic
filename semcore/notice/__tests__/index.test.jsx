@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,25 @@ describe('notice Dependency imports', () => {
 
 describe('Notice', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const notice = (
+      <Notice>
+        <Notice.Label>Label</Notice.Label>
+        <Notice.Content>
+          <Notice.Title>Title</Notice.Title>
+          <Notice.Text>Text</Notice.Text>
+          <Notice.Actions>Actions</Notice.Actions>
+        </Notice.Content>
+        <Notice.Close />
+      </Notice>
+    );
+
+    const { container } = render(notice);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify supports custom close icon', () => {
     const component = (
@@ -50,6 +70,17 @@ describe('Notice', () => {
 
 describe('NoticeSmart', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const noticeSmart = (
+      <NoticeSmart label='Label' title='Title' text='Text' actions='Actions' closable />
+    );
+
+    const { container } = render(noticeSmart);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify renders title and text from props', () => {
     const { container } = render(
