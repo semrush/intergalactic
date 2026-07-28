@@ -1,11 +1,11 @@
 SPickerInput[size='m'] {
   width: 19px;
-  margin: 0 var(--intergalactic-spacing-content-inset-inline, 12px);
+  margin: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
   padding: 0;
 }
 
 SPickerInput[size='l'] {
   width: 21px;
-  margin: 0 var(--intergalactic-spacing-content-inset-inline, 12px);
+  margin: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
   padding: 0;
 }
