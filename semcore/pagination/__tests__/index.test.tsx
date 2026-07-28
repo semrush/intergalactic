@@ -1,5 +1,6 @@
 import Button, { ButtonLink } from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -9,6 +10,30 @@ import Pagination from '../src';
 
 describe('pagination Dependency imports', () => {
   runDependencyCheckTests('pagination');
+});
+
+describe('Pagination', () => {
+  beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const pagination = (
+      <Pagination currentPage={2} totalPages={10}>
+        <Pagination.FirstPage>First page</Pagination.FirstPage>
+        <Pagination.PrevPage />
+        <Pagination.NextPage />
+        <Pagination.PageInput>
+          <Pagination.PageInput.Value />
+          <Pagination.PageInput.Addon />
+        </Pagination.PageInput>
+        <Pagination.TotalPages />
+      </Pagination>
+    );
+
+    const { container } = render(pagination);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 });
 
 describe('Pagination.FirstPage', () => {
