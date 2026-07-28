@@ -2827,7 +2827,6 @@
       "tab-panel",
       "textarea",
       "time-picker",
-      "tooltip",
       "typography"
     ]
   },
@@ -2837,14 +2836,12 @@
     "description": "Inverted version of the primary text.",
     "components": [
       "badge",
-      "base-components",
       "date-picker",
       "dot",
       "feature-highlight",
       "feature-popover",
       "notice-bubble",
       "tag",
-      "tooltip",
       "wizard"
     ]
   },
@@ -2894,37 +2891,52 @@
     "name": "--intergalactic-tooltip-bg-default",
     "value": "oklch(1 0 0)",
     "description": "Default Tooltip background.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-bg-invert",
     "value": "oklch(0.23 0.01 140)",
     "description": "Inverted version of the default Tooltip background.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-bg-warning",
     "value": "oklch(0.958 0.029 5.7)",
     "description": "Warning Tooltip background.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
     "value": "oklch(0.995 0.008 145.9 / 0.369)",
     "description": "Border of the Tooltip with dark theme.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the default Tooltip.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-text-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Text color of the inverted Tooltip.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-wizard-bg",
@@ -3126,13 +3138,17 @@
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "base-components"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "base-components"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-medium",
@@ -3141,7 +3157,8 @@
     "components": [
       "button",
       "input",
-      "time-picker"
+      "time-picker",
+      "tooltip"
     ]
   },
   {

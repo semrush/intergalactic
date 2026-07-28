@@ -1,6 +1,6 @@
 STooltip {
   position: relative;
-  padding: var(--intergalactic-spacing-content-inset-inline, 12px);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
   color: var(--intergalactic-tooltip-text, oklch(0.1 0.03 137 / 0.899));
@@ -15,7 +15,7 @@ STooltip {
 
 /* stylelint-disable-next-line no-duplicate-selectors */
 STooltip {
-  background-color: var(--intergalactic-tooltip-bg-default, oklch(1 0 0)); /* TODO: --intergalactic-tooltip-bg-default */
+  background-color: var(--intergalactic-tooltip-bg-default, oklch(1 0 0));
   border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 }
 
@@ -47,15 +47,15 @@ SArrow {
 
   /* stylelint-disable-next-line no-duplicate-selectors */
   &:before {
-    border-color: var(--intergalactic-tooltip-default, oklch(1 0 0)); /* TODO: --intergalactic-tooltip-bg-default */
+    border-color: var(--intergalactic-tooltip-bg-default, oklch(1 0 0));
   }
 }
 
 SArrow[theme='invert'] {
-  border-color: var(--intergalactic-border-tooltip-invert, oklch(0.995 0.008 145.9 / 0.369)); /* TODO: --intergalactic-tooltip-border-invert */
+  border-color: var(--intergalactic-tooltip-border-invert, oklch(0.995 0.008 145.9 / 0.369));
 
   &::before {
-    border-color: var(--intergalactic-tooltip-invert, oklch(0.23 0.01 140)); /* TODO: --intergalactic-tooltip-bg-invert */
+    border-color: var(--intergalactic-tooltip-border-invert, oklch(0.995 0.008 145.9 / 0.369));
   }
 }
 
@@ -63,7 +63,7 @@ SArrow[theme='warning'] {
   border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 
   &::before {
-    border-color: var(--intergalactic-tooltip-warning, oklch(0.958 0.029 5.7)); /* TODO: --intergalactic-tooltip-bg-warning */
+    border-color: var(--intergalactic-tooltip-bg-warning, oklch(0.958 0.029 5.7));
   }
 }
 
