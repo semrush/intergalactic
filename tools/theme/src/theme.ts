@@ -1955,9 +1955,13 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content_inset_inline: {
+      content_padding_medium: {
         value: `${SCALE_INDENT * 3}px`,
-        description: 'Horizontal inset for content inside controls and surfaces.',
+        description: 'Medium horizontal padding for content inside controls and surfaces.',
+      },
+      content_padding_large: {
+        value: `${SCALE_INDENT * 4}px`,
+        description: 'Large padding for content inside controls and surfaces.',
       },
       content_gap_small: {
         value: `${SCALE_INDENT}px`,
@@ -2256,7 +2260,8 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content_inset_inline: Value;
+    content_padding_medium: Value;
+    content_padding_large: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
     content_gap_large: Value;
