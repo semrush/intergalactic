@@ -18,9 +18,10 @@ SBadge[bg] {
   background-color: var(--bg);
 }
 
-SBadge[inverted] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-} /* TODO: --intergalactic-badge-text-primary-invert */
+SBadge[inverted],
+SBadge[accent] {
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+}
 
 SBadge[color] {
   color: var(--color);

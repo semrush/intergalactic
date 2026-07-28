@@ -105,7 +105,9 @@
     "name": "--intergalactic-badge-text-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted primary text color for Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-text-secondary",
@@ -2797,7 +2799,6 @@
     "description": "Default body and UI copy; strongest reading emphasis for primary content.",
     "components": [
       "accordion",
-      "badge",
       "base-components",
       "base-trigger",
       "breadcrumbs",

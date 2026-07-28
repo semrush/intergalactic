@@ -17,10 +17,6 @@ declare namespace NSBadge {
      * Type of badge.
      */
     type?: NSBadge.Type;
-    /**
-     * Flag to render inverted badge.
-     */
-    inverted?: boolean;
 
     /**
      * @deprecated. Use just type with predefined texts. You should not use badge with custom text inside.
@@ -38,16 +34,28 @@ declare namespace NSBadge {
      * @default white
      * */
     color?: 'white' | 'gray20' | string;
-  };
+  } & ({
+    /**
+     * Flag to render inverted badge.
+     */
+    inverted?: true;
+    accent?: never | false;
+  } | {
+    /**
+     * Flag to render accent badge.
+     */
+    accent?: true;
+    inverted?: never | false;
+  });
 
   type Component = Intergalactic.Component<'span', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BadgeType = NSBadge.Type;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BadgeMargins = NSBadge.Margins;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BadgeProps = NSBadge.Props;
 
 export type { NSBadge };

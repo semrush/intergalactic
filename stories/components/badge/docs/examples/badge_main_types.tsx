@@ -4,8 +4,8 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <Flex gap={8} alignItems='flex-start' direction='column'>
-      <Flex gap={2} alignItems='flex-start'>
+    <Flex gap={4} alignItems='flex-start' direction='column'>
+      <Flex ml={4} gap={2} alignItems='flex-start'>
         <Badge type='admin' />
         <Badge type='alpha' />
         <Badge type='beta' />
@@ -28,6 +28,14 @@ const Demo = () => {
           <Badge type='unavailable' inverted />
         </Flex>
       </Box>
+      <Flex ml={4} gap={2} alignItems='flex-start'>
+        <Badge type='admin' accent />
+        <Badge type='alpha' accent />
+        <Badge type='beta' accent />
+        <Badge type='new' accent />
+        <Badge type='soon' accent />
+        <Badge type='unavailable' accent />
+      </Flex>
     </Flex>
   );
 };
