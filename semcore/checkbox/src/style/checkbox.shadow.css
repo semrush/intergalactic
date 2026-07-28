@@ -9,7 +9,7 @@ SLabel {
   }
 
   SText {
-    margin-left: var(--intergalactic-spacing-1x, 4px);
+    margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
     &[disabled] {

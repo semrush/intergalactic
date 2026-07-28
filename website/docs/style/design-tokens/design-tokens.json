@@ -3163,6 +3163,7 @@
     "description": "Medium gap between content elements inside controls.",
     "components": [
       "button",
+      "checkbox",
       "input",
       "radio"
     ]
