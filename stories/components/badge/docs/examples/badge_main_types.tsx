@@ -34,7 +34,6 @@ const Demo = () => {
         <Badge type='beta' accent />
         <Badge type='new' accent />
         <Badge type='soon' accent />
-        <Badge type='unavailable' accent />
       </Flex>
     </Flex>
   );

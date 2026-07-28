@@ -31,7 +31,7 @@
   },
   {
     "name": "--intergalactic-badge-light-admin",
-    "value": "oklch(0.969 0.016 267.7)",
+    "value": "oklch(0.898 0.054 268.3)",
     "description": "Light background color of the admin Badge.",
     "components": []
   },
@@ -79,7 +79,7 @@
   },
   {
     "name": "--intergalactic-badge-light-new-text",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.64 0.161 170)",
     "description": "Text color for the new Badge with light background.",
     "components": []
   },
@@ -97,7 +97,7 @@
   },
   {
     "name": "--intergalactic-badge-bg-unavailable",
-    "value": "oklch(0.9 0.002 177)",
+    "value": "oklch(0.97 0.001 180)",
     "description": "Background color of the unavailable Badge.",
     "components": []
   },
@@ -2837,7 +2837,6 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary text.",
     "components": [
-      "badge",
       "base-components",
       "date-picker",
       "dot",

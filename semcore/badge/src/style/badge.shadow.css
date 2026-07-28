@@ -1,17 +1,18 @@
 SBadge {
   display: inline-block;
   box-sizing: border-box;
-  height: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-fs-200, 14px);
+  height: 16px;
+  align-content: center;
   padding: 0 var(--intergalactic-spacing-1x, 4px);
   border-radius: var(--intergalactic-badge-rounded, 4px);
   white-space: nowrap;
-  font-size: var(--intergalactic-fs-50, 10px);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: 8px;
   font-weight: var(--intergalactic-medium, 500);
   letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-badge-text-primary-invert */
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
 }
 
 SBadge[bg] {
