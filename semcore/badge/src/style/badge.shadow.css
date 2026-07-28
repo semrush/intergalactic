@@ -4,7 +4,7 @@ SBadge {
   height: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-fs-200, 14px);
   padding: 0 var(--intergalactic-spacing-1x, 4px);
-  border-radius: var(--intergalactic-badge-rounded, 6px);
+  border-radius: var(--intergalactic-badge-rounded, 4px);
   white-space: nowrap;
   font-size: var(--intergalactic-fs-50, 10px);
   font-weight: var(--intergalactic-medium, 500);
@@ -20,7 +20,7 @@ SBadge[bg] {
 
 SBadge[inverted] {
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-} /* TODO: --intergalactic-badge-text-primary */
+} /* TODO: --intergalactic-badge-text-primary-invert */
 
 SBadge[color] {
   color: var(--color);

@@ -25,7 +25,7 @@ SBaseTrigger {
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   border-radius: var(--intergalactic-control-rounded, 6px);
-  padding: 0 var(--intergalactic-spacing-content-inset-inline, 12px);
+  padding: 0 var(--intergalactic-spacing-content-inset-inline, undefined);
 
   &::-moz-focus-inner {
     border: none;
