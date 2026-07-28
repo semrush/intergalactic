@@ -4,7 +4,7 @@ SWindow {
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   box-sizing: border-box;
   margin: auto;
-  padding: var(--intergalactic-spacing-10x, 40px);
+  padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   box-shadow: var(--intergalactic-box-shadow-modal, 0px 1px 5px 0px oklch(0.176 0.033 175.7 / 0.07));
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
@@ -28,8 +28,8 @@ SWindow {
   SClose {
     display: inline-flex;
     position: absolute;
-    right: var(--intergalactic-spacing-2x, 8px);
-    top: var(--intergalactic-spacing-2x, 8px);
+    right: var(--intergalactic-spacing-content-padding-small, 8px);
+    top: var(--intergalactic-spacing-content-padding-small, 8px);
     width: var(--intergalactic-form-control-l, 44px);
   }
   SClose[ghost] {
@@ -48,7 +48,7 @@ SOverlayContentWrapper {
   flex: 1;
   max-width: 100%;
   box-sizing: border-box;
-  padding: var(--intergalactic-spacing-10x, 40px);
+  padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
 }
 
 SOverlay {
@@ -77,6 +77,6 @@ SOverlay {
   }
 
   SOverlayContentWrapper {
-    padding: var(--intergalactic-spacing-3x, 12px);
+    padding: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 }
