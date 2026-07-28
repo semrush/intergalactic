@@ -206,7 +206,6 @@
       "input",
       "modal",
       "pills",
-      "radio",
       "select",
       "side-panel",
       "slider",
@@ -448,7 +447,6 @@
       "input",
       "input-tags",
       "pills",
-      "radio",
       "tab-line",
       "textarea"
     ]
@@ -470,7 +468,6 @@
       "fullscreen-modal",
       "input",
       "pills",
-      "radio",
       "select",
       "side-panel",
       "slider",
@@ -966,19 +963,25 @@
     "name": "--intergalactic-control-radio-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background color of the Radio.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-radio-bg-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Selected state of the Radio background.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-radio-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Radio.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising",
@@ -1061,7 +1064,6 @@
       "button",
       "dropdown",
       "feature-highlight",
-      "radio",
       "select",
       "slider",
       "switch"
@@ -3150,7 +3152,8 @@
     "description": "Medium gap between content elements inside controls.",
     "components": [
       "button",
-      "input"
+      "input",
+      "radio"
     ]
   },
   {
