@@ -3200,7 +3200,9 @@
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "input-tags"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-medium",
