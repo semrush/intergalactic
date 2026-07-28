@@ -271,37 +271,73 @@ export const theme: Theme = {
   },
   semanticTokens: {
     colors: {
-      badge_bg_admin: {
+      badge_accent_admin: {
         value: colors.blue['400'].value,
         description: 'Background color of the admin Badge.',
       },
-      badge_bg_alpha: {
+      badge_accent_alpha: {
         value: colors.red['400'].value,
         description: 'Background color of the alpha Badge.',
       },
-      badge_bg_beta: {
-        value: colors.orange['400'].value,
+      badge_accent_beta: {
+        value: colors.yellow['300'].value,
         description: 'Background color of the beta Badge.',
       },
-      badge_bg_invert: {
-        value: '{baseTokens.colors.gray.white}',
-        description: 'Background color of the inverted Badge.',
-      },
-      badge_bg_new: {
-        value: colors.green['400'].value,
+      badge_accent_new: {
+        value: colors.green['300'].value,
         description: 'Background color of the new Badge.',
       },
-      badge_bg_soon: {
+      badge_accent_soon: {
         value: colors.gray['400'].value,
         description: 'Background color of the soon Badge.',
+      },
+      badge_light_admin: {
+        value: colors.blue['50'].value,
+        description: 'Light background color of the admin Badge.',
+      },
+      badge_light_alpha: {
+        value: colors.red['100'].value,
+        description: 'Light background color of the alpha Badge.',
+      },
+      badge_light_beta: {
+        value: colors.yellow['100'].value,
+        description: 'Light background color of the beta Badge.',
+      },
+      badge_light_new: {
+        value: colors.green['100'].value,
+        description: 'Light background color of the new Badge.',
+      },
+      badge_light_soon: {
+        value: colors.gray['100'].value,
+        description: 'Light background color of the soon Badge.',
+      },
+      badge_light_admin_text: {
+        value: colors.blue['400'].value,
+        description: 'Text color for the admin Badge with light background.',
+      },
+      badge_light_alpha_text: {
+        value: colors.red['400'].value,
+        description: 'Text color for the alpha Badge with light background.',
+      },
+      badge_light_beta_text: {
+        value: colors.yellow['400'].value,
+        description: 'Text color for the beta Badge with light background.',
+      },
+      badge_light_new_text: {
+        value: colors.green['500'].value,
+        description: 'Text color for the new Badge with light background.',
+      },
+      badge_light_soon_text: {
+        value: colors.gray['600'].value,
+        description: 'Text color for the soon Badge with light background.',
+      },
+      badge_bg_invert: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY),
+        description: 'Background color of the inverted Badge.',
       },
       badge_bg_unavailable: {
         value: colors.gray['100'].value,
         description: 'Background color of the unavailable Badge.',
-      },
-      badge_text_primary_DEFAULT: {
-        value: '{semanticTokens.colors.text_primary_DEFAULT}',
-        description: 'Primary text color for Badge.',
       },
       badge_text_primary_invert: {
         value: '{semanticTokens.colors.text_primary_invert}',
@@ -921,7 +957,7 @@ export const theme: Theme = {
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
       control_switch_bg_DEFAULT: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
         description: 'Subtle background of the Switch control.',
       },
       control_switch_bg_info_active: {
@@ -993,7 +1029,7 @@ export const theme: Theme = {
         description: 'Tertiary text color for form controls.',
       },
       date_picker_border_range_comparison: {
-        value: highlight.at(L_BORDER_ACTIVE),
+        value: colors.blue['300'].value,
         description: 'Border color of the second period for the comparison mode in the DatePicker.',
       },
       date_picker_cell_DEFAULT: {
@@ -1001,19 +1037,19 @@ export const theme: Theme = {
         description: 'Default date-picker cell background.',
       },
       date_picker_cell_active_DEFAULT: {
-        value: focus.at(L_BG_BUTTON),
+        value: neutral.at(L_BG_BUTTON_STRONG),
         description: 'Active (selected) date-picker cell background.',
       },
       date_picker_cell_active_hover: {
-        value: focus.at(L_BG_BUTTON_HOVER),
+        value: neutral.at(L_BG_BUTTON_STRONG_HOVER),
         description: 'Hover for the active (selected) date-picker cell background.',
       },
       date_picker_cell_comparison_active_DEFAULT: {
-        value: highlight.at(L_BG_BUTTON),
+        value: colors.blue['300'].value,
         description: 'Active (selected) date-picker cell background for comparison periods.',
       },
       date_picker_cell_comparison_active_hover: {
-        value: highlight.at(L_BG_BUTTON_HOVER),
+        value: colors.blue['400'].value,
         description: 'Hover for the active (selected) date-picker cell background for comparison periods.',
       },
       date_picker_cell_current_DEFAULT: {
@@ -1029,11 +1065,11 @@ export const theme: Theme = {
         description: 'Hover state of the default date-picker cell background.',
       },
       date_picker_cell_range_DEFAULT: {
-        value: focus.at(L_BG_SELECTED),
+        value: neutral.at(L_BG_SELECTED),
         description: 'Background for the cell which is included in the date range in the date-picker.',
       },
       date_picker_cell_range_hover: {
-        value: focus.at(L_BG_SELECTED_HOVER),
+        value: neutral.at(L_BG_SELECTED_HOVER),
         description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
       },
       dot_bg: {
@@ -1289,7 +1325,7 @@ export const theme: Theme = {
         description: 'Background fill for the whole product page.',
       },
       control_pills_bg_hover: {
-        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
+        value: '{semanticTokens.colors.control_secondary_neutral_hover}',
         description: 'Hover state of the Pills background.',
       },
       control_pills_bg_normal: {
@@ -1919,9 +1955,29 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content_inset_inline: {
+      content_padding_xsmall: {
+        value: `${SCALE_INDENT}px`,
+        description: 'Extra small padding for content inside controls and surfaces.',
+      },
+      content_padding_small: {
+        value: `${SCALE_INDENT * 2}px`,
+        description: 'Small padding for content inside controls and surfaces.',
+      },
+      content_padding_medium: {
         value: `${SCALE_INDENT * 3}px`,
-        description: 'Horizontal inset for content inside controls and surfaces.',
+        description: 'Medium padding for content inside controls and surfaces.',
+      },
+      content_padding_large: {
+        value: `${SCALE_INDENT * 4}px`,
+        description: 'Large padding for content inside controls and surfaces.',
+      },
+      content_padding_xlarge: {
+        value: `${SCALE_INDENT * 5}px`,
+        description: 'Extra large padding for content inside controls and surfaces.',
+      },
+      content_padding_xxlarge: {
+        value: `${SCALE_INDENT * 10}px`,
+        description: '2x large padding for content inside controls and surfaces.',
       },
       content_gap_small: {
         value: `${SCALE_INDENT}px`,
@@ -1942,7 +1998,7 @@ export const theme: Theme = {
         description: 'Use for rounding addons and small controls like Checkbox.',
       },
       'badge': {
-        value: `${RADII.medium}px`,
+        value: `${RADII.small}px`,
         description: 'Corner radius for Badge and compact status chips—aligned with small rounded controls.',
       },
       'chart': {
@@ -2220,7 +2276,12 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content_inset_inline: Value;
+    content_padding_xsmall: Value;
+    content_padding_small: Value;
+    content_padding_medium: Value;
+    content_padding_large: Value;
+    content_padding_xlarge: Value;
+    content_padding_xxlarge: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
     content_gap_large: Value;
@@ -3118,18 +3179,31 @@ type SemanticColors = {
     };
   };
   badge: {
-    bg: {
+    accent: {
       admin: Value;
       alpha: Value;
       beta: Value;
       new: Value;
       soon: Value;
-      unavailable: Value;
+    };
+    light: {
+      admin: Value;
+      alpha: Value;
+      beta: Value;
+      new: Value;
+      soon: Value;
+      admin_text: Value;
+      alpha_text: Value;
+      beta_text: Value;
+      new_text: Value;
+      soon_text: Value;
+    };
+    bg: {
       invert: Value;
+      unavailable: Value;
     };
     text: {
       primary: {
-        DEFAULT: Value;
         invert: Value;
       };
       secondary: Value;
