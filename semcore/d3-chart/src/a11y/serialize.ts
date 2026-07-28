@@ -5,7 +5,7 @@ import type { AnalyzedData, ClusterNode, ComparisonNode, GeneralTrendNode, Trend
 import { getIntl, type Intl } from './intl';
 
 const formatLimitedSizeList = (
-  items: unknown[],
+  items: string[],
   intl: Intl,
   maxFinalStringLength = 100,
   includeEllipsis = true,
@@ -287,7 +287,12 @@ export const serialize = (
           );
     const entitiesList = biggestClusters.map((clusterInsight) => {
       const labels = formatLimitedSizeList(
-        clusterInsight.labels.map((label) => titlesFormatter?.(label as string) ?? label),
+        clusterInsight.labels.reduce<string[]>((acc, label) => {
+          if (typeof label === 'string') {
+            acc.push(titlesFormatter?.(label) ?? label);
+          }
+          return acc;
+        }, []),
         intl,
         maxListSymbols,
       );

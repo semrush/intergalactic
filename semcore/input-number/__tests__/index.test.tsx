@@ -38,6 +38,145 @@ describe('InputNumber', () => {
     await userEvent.tab();
   };
 
+  test.sequential('Verify controlled value keeps incomplete decimal separators before value update', async () => {
+    for (const separator of ['.', ',']) {
+      const spy = vi.fn();
+      const ControlledInput = () => {
+        const [value, setValue] = React.useState('');
+
+        return (
+          <InputNumber>
+            <InputNumber.Value
+              data-testid='controlled-input'
+              value={value}
+              onChange={(nextValue, event) => {
+                spy(nextValue, event);
+                setValue(nextValue ?? '');
+              }}
+            />
+          </InputNumber>
+        );
+      };
+
+      const { getByTestId, unmount } = render(<ControlledInput />);
+      const input = getByTestId('controlled-input') as HTMLInputElement;
+
+      await focusInput(input);
+      await userEvent.keyboard(separator);
+      expect(input.value).toBe('.');
+      expect(spy).not.toBeCalled();
+
+      await userEvent.keyboard('5');
+      expect(spy).lastCalledWith('.5', expect.anything());
+      expect(input.value).toBe('0.5');
+
+      unmount();
+    }
+  });
+
+  test.sequential('Verify controlled value keeps minus and handles backspace on pending decimal separator', async () => {
+    const minusSpy = vi.fn();
+    const ControlledMinusInput = () => {
+      const [value, setValue] = React.useState('');
+
+      return (
+        <InputNumber>
+          <InputNumber.Value
+            data-testid='controlled-minus-input'
+            value={value}
+            onChange={(nextValue, event) => {
+              minusSpy(nextValue, event);
+              setValue(nextValue ?? '');
+            }}
+          />
+        </InputNumber>
+      );
+    };
+
+    const { getByTestId, unmount } = render(<ControlledMinusInput />);
+    const minusInput = getByTestId('controlled-minus-input') as HTMLInputElement;
+
+    await focusInput(minusInput);
+    await userEvent.keyboard('-');
+    expect(minusInput.value).toBe('-');
+    expect(minusSpy).not.toBeCalled();
+
+    await userEvent.keyboard('2');
+    expect(minusSpy).lastCalledWith('-2', expect.anything());
+    expect(minusInput.value).toBe('-2');
+
+    unmount();
+
+    const decimalSpy = vi.fn();
+    const ControlledDecimalInput = () => {
+      const [value, setValue] = React.useState('');
+
+      return (
+        <InputNumber>
+          <InputNumber.Value
+            data-testid='controlled-decimal-input'
+            value={value}
+            onChange={(nextValue, event) => {
+              decimalSpy(nextValue, event);
+              setValue(nextValue ?? '');
+            }}
+          />
+        </InputNumber>
+      );
+    };
+
+    const { getByTestId: getDecimalByTestId } = render(<ControlledDecimalInput />);
+    const decimalInput = getDecimalByTestId('controlled-decimal-input') as HTMLInputElement;
+
+    await focusInput(decimalInput);
+    await userEvent.keyboard('1.');
+    expect(decimalSpy).toBeCalledTimes(1);
+    expect(decimalSpy).lastCalledWith('1', expect.anything());
+    expect(decimalInput.value).toBe('1.');
+
+    await userEvent.keyboard('[Backspace]');
+    expect(decimalSpy).toBeCalledTimes(1);
+    expect(decimalInput.value).toBe('1');
+  });
+
+  test.sequential('Verify controlled value validates display value on blur', async () => {
+    const spy = vi.fn();
+    const ControlledInput = () => {
+      const [value, setValue] = React.useState('');
+
+      return (
+        <>
+          <InputNumber>
+            <InputNumber.Value
+              data-testid='controlled-validation-input'
+              max={1}
+              min={0}
+              step={0.25}
+              value={value}
+              onChange={(nextValue, event) => {
+                spy(nextValue, event);
+                setValue(nextValue ?? '');
+              }}
+            />
+          </InputNumber>
+          <button type='button'>Outside</button>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ControlledInput />);
+    const input = getByTestId('controlled-validation-input') as HTMLInputElement;
+
+    await focusInput(input);
+    await userEvent.keyboard('2.2');
+    expect(spy).lastCalledWith('2.2', expect.anything());
+    expect(input.value).toBe('2.2');
+
+    await userEvent.tab();
+    expect(spy).lastCalledWith('1.00', expect.anything());
+    expect(input.value).toBe('1.00');
+  });
+
   test.sequential('Verify int numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -208,6 +347,81 @@ describe('InputNumber', () => {
     await blurInput(input);
     expect(spy).toBeCalledWith('40', expect.anything());
   });
+
+  test.sequential('Verify typed value keeps decimal count equal to step precision', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input-step-typed' value='' onChange={spy} step={0.01} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input-step-typed') as HTMLInputElement;
+    await focusInput(input);
+    await userEvent.keyboard('0.10');
+
+    expect(spy).lastCalledWith('0.10', expect.anything());
+    expect(input.value).toBe('0.10');
+  });
+
+  test.sequential('Verify typed fractional digits are limited to step precision', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input-step-limit' value='' onChange={spy} step={0.01} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input-step-limit') as HTMLInputElement;
+    await focusInput(input);
+    await userEvent.keyboard('0.12345');
+
+    expect(input.value).toBe('0.12');
+    expect(spy).lastCalledWith('0.12', expect.anything());
+  });
+
+  test.sequential('Verify typed fractional digits allow as many as step precision', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input-step-allow' value='' onChange={spy} step={0.0001} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input-step-allow') as HTMLInputElement;
+    await focusInput(input);
+    await userEvent.keyboard('0.12345');
+
+    expect(input.value).toBe('0.1234');
+    expect(spy).lastCalledWith('0.1234', expect.anything());
+  });
+
+  test.sequential(
+    'Verify increment/decrement keeps decimal count equal to step precision',
+    async () => {
+      const spy = vi.fn();
+      const { getByTestId } = render(
+        <InputNumber>
+          <InputNumber.Value
+            data-testid='input-step-controls'
+            defaultValue='0.09'
+            onChange={spy}
+            step={0.01}
+          />
+          <InputNumber.Controls data-testid='controls-step' />
+        </InputNumber>,
+      );
+      const controls = getByTestId('controls-step');
+
+      const arrowUp = controls.querySelectorAll('button')[0];
+      await userEvent.click(arrowUp);
+      expect(spy).lastCalledWith('0.10', expect.anything());
+
+      const arrowDown = controls.querySelectorAll('button')[1];
+      await userEvent.click(arrowDown);
+      expect(spy).lastCalledWith('0.09', expect.anything());
+    },
+  );
 
   test.sequential('Verify not accept letters', async () => {
     const spy = vi.fn();

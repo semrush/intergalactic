@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.0] - 2026-06-26
+
+### Fixed
+
+- Outdated dependecies.
+- Incorrect processing of oklch values.
+- Incorrect data-ui-name in Radar.Tooltip component.
+
+### Added
+
+- Responsive container for all charts by default.
+
 ## [17.2.0] - 2026-06-05
 
 ### Added

@@ -75,6 +75,7 @@ class TimePickerRoot extends Component<
     if (value !== undefined) {
       const [hours = '', minutes = ''] = value.split(':');
 
+      this.entity.setMeridiemFromHours(hours);
       this.entity.hours = hours;
       this.entity.minutes = minutes;
     }
@@ -103,7 +104,7 @@ class TimePickerRoot extends Component<
   };
 
   private getCommonPickerInputProps = () => {
-    const { is12Hour, size, disabled } = this.asProps;
+    const { is12Hour, size, disabled, state } = this.asProps;
 
     return {
       size,
@@ -112,6 +113,7 @@ class TimePickerRoot extends Component<
       $onValueChange: this.handleValueChange,
       minutesInputRef: this.minutesInputRef,
       hoursInputRef: this.hoursInputRef,
+      state,
     };
   };
 
@@ -170,7 +172,7 @@ class TimePickerRoot extends Component<
         <STimePicker render={Input} role='group' aria-label={label} __excludeProps={['value', 'id']}>
           <Children />
         </STimePicker>
-        <ScreenReaderOnly tag='input' tabIndex={-1} id={id} aria-hidden={true} value={`${time} ${meridiem}`} />
+        <ScreenReaderOnly tag='input' tabIndex={-1} id={id} aria-hidden={true} value={`${time} ${meridiem}`} readOnly />
       </>,
     );
   }

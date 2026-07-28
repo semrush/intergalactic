@@ -1,13 +1,15 @@
+import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root, sstyled, CONTEXT_COMPONENT } from '@semcore/core';
-import type { NSRadio } from '@semcore/radio';
 import Radio, { RadioGroup } from '@semcore/radio';
 import React from 'react';
 
 import style from './radio.shadow.css';
-import type { HighlightedRadioComponent } from './Radio.type';
+import type { NSRadioFH } from './Radio.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class RadioFHRoot extends Component<NSRadio.Props> {
+class RadioFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSRadioFH.Component>
+> {
   static displayName = 'RadioFH';
   static style = style;
   // @ts-ignore
@@ -71,7 +73,7 @@ class RadioFHRoot extends Component<NSRadio.Props> {
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#radio|Docs}
  */
 export const RadioFH = createComponent<
-  HighlightedRadioComponent,
+  NSRadioFH.Component,
   typeof RadioFHRoot
 >(RadioFHRoot, {
   Text: Radio.Text,

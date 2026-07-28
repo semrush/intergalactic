@@ -1,3 +1,7 @@
+SBox {
+  outline-color: transparent;
+}
+
 SBox[inAfterOutline='false']:focus-visible {
   z-index: 1;
   @mixin focus-outline-mixin;

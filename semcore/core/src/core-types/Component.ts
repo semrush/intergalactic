@@ -1,10 +1,11 @@
 import type React from 'react';
-import { type
-AllHTMLAttributes, type
-ForwardRefExoticComponent,
-PureComponent, type
-ReactNode, type
-RefObject,
+import {
+  type AllHTMLAttributes,
+  type ForwardRefExoticComponent,
+  type MutableRefObject,
+  PureComponent,
+  type ReactNode,
+  type RefObject,
 } from 'react';
 
 import type { CORE_COMPONENT } from './symbols';
@@ -73,8 +74,9 @@ export interface IComponent<
   new (...args: any[]): C;
   defaultProps?: DP | ((props: P) => DP) | (() => DP);
 }
+
 export abstract class Component<
-  Props = {},
+  Props extends (object & { instanceRef?: MutableRefObject<any> }) = {},
   Enhance extends readonly ((...args: any[]) => any)[] = [],
   Uncontrolled extends Readonly<{ [key in keyof Props]?: UncontrolledPropValue<Props[key]> }> = never,
   InnerProps = {},
@@ -82,6 +84,14 @@ export abstract class Component<
   DefaultProps extends Intergalactic.InternalTypings.ValidDefaultProps<DefaultProps, Props & InnerProps> = never,
 > extends PureComponent<Props, State> {
   protected __defaultProps: DefaultProps = {} as DefaultProps;
+
+  constructor(props: Props) {
+    super(props);
+
+    if (props.instanceRef) {
+      props.instanceRef.current = this;
+    }
+  }
 
   protected uncontrolledProps(): [Uncontrolled] extends [never] ? never : Uncontrolled {
     // @ts-ignore. This is a default value. Should be defined in related classes.
@@ -139,8 +149,9 @@ export namespace Intergalactic {
   > =
     | ((props: MergeProps<Context, Props>, ...args: AdditionalContext) => RenderingResult)
     | InternalTypings.ReturnResult;
-  type ComponentBasicProps<Tag extends InternalTypings.ComponentTag> = {
+  type ComponentBasicProps<Tag extends InternalTypings.ComponentTag, Instance = never> = {
     ref?: React.Ref<InternalTypings.ComponentHtmlElement<Tag> | null>;
+    instanceRef?: [Instance] extends [never] ? never : React.RefObject<Instance>;
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
     __excludeProps?: string[];
   };
@@ -152,6 +163,16 @@ export namespace Intergalactic {
   /** @private */
   // eslint-disable-next-line @typescript-eslint/no-namespace
   export namespace InternalTypings {
+    export type RemoveIndexSignature<T> = {
+      [K in keyof T as string extends K
+        ? never
+        : number extends K
+          ? never
+          : symbol extends K
+            ? never
+            : K]: T[K];
+    };
+
     type StripDefaultPrefix<K> = K extends `default${infer Rest}` ? Uncapitalize<Rest> : K;
 
     export type ValidDefaultProps<DefaultProps, MergedProps> = {
@@ -170,18 +191,14 @@ export namespace Intergalactic {
           : never;
     };
 
-    type MergeChildProps<Root, Component> = {
-      [K in keyof Root | keyof Component]:
-      K extends keyof Root
-        ? K extends keyof Component
-          ? Root[K] & Component[K] extends never
-            ? Root[K] | Component[K]
-            : Root[K] & Component[K]
-          : Root[K]
-        : K extends keyof Component
-          ? Component[K]
-          : never
-    };
+    type MergeChildProps<Root, Component> =
+      Omit<Root, keyof Component> &
+      Omit<Component, keyof Root> &
+      {
+        [K in keyof Root & keyof Component]: [Root[K] & Component[K]] extends [never]
+          ? Root[K] | Component[K]
+          : Root[K] & Component[K];
+      };
 
     type InferPropsFromRoot<
       Root extends new (...args: any) => any,
@@ -272,6 +289,7 @@ export namespace Intergalactic {
       Props,
       Context = never,
       AdditionalContext extends Readonly<any[]> = never[],
+      Instance = never,
     > = {
       tag?: Tag;
       children?: ComponentChildren<
@@ -280,7 +298,7 @@ export namespace Intergalactic {
         ReturnResult,
         AdditionalContext
       >;
-    } & ComponentBasicProps<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag> &
+    } & ComponentBasicProps<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag, Instance> &
     MergeProps<
       EfficientOmit<Props, 'tag' | 'children'>,
       MergeProps<ComponentPropsNesting<Tag extends [ComponentTag, keyof JSX.IntrinsicElements] ? Tag[0] : Tag>, ComponentPropsNesting<BaseTag>>
@@ -350,11 +368,12 @@ export namespace Intergalactic {
     BaseProps = {},
     Context = {},
     AdditionalContext extends Readonly<any[]> = never[],
+    Instance = never,
   > = (<
     Tag extends InternalTypings.ComponentTag | [InternalTypings.ComponentTag, keyof JSX.IntrinsicElements] = BaseTag,
     Props extends BaseProps = BaseProps,
   >(
-    props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
+    props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext, Instance>,
   ) => InternalTypings.ComponentRenderingResults) &
   InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;
   export type Tag = InternalTypings.ComponentTag;

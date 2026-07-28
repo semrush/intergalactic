@@ -1,136 +1,181 @@
 import type { BoxProps } from '@semcore/base-components';
-import type { PropGetterFn, Intergalactic, IRootComponentProps } from '@semcore/core';
+import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type CarouselProps = BoxProps & {
-  /** Index active item */
-  index?: number;
-  /**
-   * Index of the active item selected by default
-   * @default 0
-   */
-  defaultIndex?: number;
-  /**  Called when the selection is changed */
-  onIndexChange?: (index: number) => void;
-  /** Animation duration
-   * @default 300 */
-  duration?: number;
-  /** Disables infinite items change in the carousel
-   * @default false */
-  bounded?: boolean;
-  /** Internal */
-  step?: number;
-  /** Specifies the locale for i18n support */
-  locale?: string;
-  /** Enable zoom feature for carousel items */
-  zoom?: boolean;
-  /** Width for items in zooming modal */
-  zoomWidth?: number;
-  /** Type of indicators */
-  indicators?: 'default' | 'hide' | 'preview';
-};
-
-export type CarouselDefaultProps = {
-  defaultIndex: 0;
-  duration: 350;
-  step: 100;
-  bounded: false;
-  i18n: LocalizedMessages;
-  locale: 'en';
-  indicators: 'default';
-};
-
-export type CarouselContext = {
-  getContainerProps: PropGetterFn;
-  getItemProps: PropGetterFn;
-  getPrevProps: PropGetterFn;
-  getNextProps: PropGetterFn;
-  getIndicatorsProps: PropGetterFn;
-};
-
-export type CarouselItem = {
-  node: HTMLElement;
-};
-
-export type CarouselItemProps = BoxProps & {
-  /** Flag for css cursor
-   * @private
-   */
-  zoomIn?: boolean;
-  /** Flag for css cursor
-   * @private
-   */
-  zoomOut?: boolean;
-
-  /** Function to add item to list in Carousel
-   * @private
-   */
-  toggleItem?: (item: CarouselItem, toRemove?: boolean) => void;
-
-  /** Index of item in carousel */
-  index?: number;
-
-  uid?: string;
-
-  /** Flag - is current item shown now */
-  current?: boolean;
-
-  /** Handler for show item in modal window
-   * @private
-   */
-  onToggleZoomModal?: () => void;
-
-  /** Value for transform item
-   * @private
-   */
-  transform?: number;
-
-  /**
-   * Flag data zoomed
-   * @private
-   */
-  isOpenZoom?: boolean;
-};
-
-export type CarouselState = {
-  isOpenZoom: boolean;
-  selectedIndex: number;
-  items: CarouselItem[];
-};
-
-export type CarouselButtonProps = IRootComponentProps &
-  BoxProps & {
-    label?: string;
-    inverted?: boolean;
-    tabIndex?: number;
+declare namespace NSCarousel {
+  type Props = BoxProps & {
+    /** Index active item */
+    index?: number;
+    /**
+     * Index of the active item selected by default
+     * @default 0
+     */
+    defaultIndex?: number;
+    /**  Called when the selection is changed */
+    onIndexChange?: (index: number) => void;
+    /** Animation duration
+     * @default 300 */
+    duration?: number;
+    /** Disables infinite items change in the carousel
+     * @default false */
+    bounded?: boolean;
+    /** Internal */
+    step?: number;
+    /** Specifies the locale for i18n support */
+    locale?: string;
+    /** Enable zoom feature for carousel items */
+    zoom?: boolean;
+    /** Width for items in zooming modal */
+    zoomWidth?: number;
+    /** Type of indicators */
+    indicators?: 'default' | 'hide' | 'preview';
+  };
+  type DefaultProps = {
+    defaultIndex: 0;
+    duration: 350;
+    step: 100;
+    bounded: false;
+    i18n: LocalizedMessages;
+    locale: 'en';
+    indicators: 'default';
+  };
+  type State = {
+    isOpenZoom: boolean;
+    selectedIndex: number;
+    items: NSCarousel.Item[];
+  };
+  type Ctx = {
+    getContainerProps: PropGetterFn;
+    getItemProps: PropGetterFn;
+    getPrevProps: PropGetterFn;
+    getNextProps: PropGetterFn;
+    getIndicatorsProps: PropGetterFn;
+  };
+  type Handlers = {
+    index: [
+      null,
+      (index: NSCarousel.Props['index']) => void,
+    ];
+  };
+  type Item = {
+    node: HTMLElement;
   };
 
-export type CarouselIndicatorsProps = IRootComponentProps &
-  BoxProps & {
-    items?: CarouselItem[];
-    inverted?: boolean;
+  namespace Container {
+    type Component = Intergalactic.Component<'div', BoxProps>;
+  }
+
+  namespace ContentBox {
+    type Component = Intergalactic.Component<'div', BoxProps>;
+  }
+
+  namespace Indicators {
+    type Props = BoxProps & {
+      items?: NSCarousel.Item[];
+      inverted?: boolean;
+    };
+    type Component = Intergalactic.Component<'div', Props, State>;
+  }
+
+  namespace Indicator {
+    type Props = Omit<BoxProps, 'position'> & {
+      active?: boolean;
+      onClick?: () => void;
+      inverted?: boolean;
+    };
+    type Component = Intergalactic.Component<'div', Props>;
+  }
+
+  namespace Item {
+    type Props = BoxProps & {
+      /** Flag for css cursor
+       * @private
+       */
+      zoomIn?: boolean;
+      /** Flag for css cursor
+       * @private
+       */
+      zoomOut?: boolean;
+
+      /** Function to add item to list in Carousel
+       * @private
+       */
+      toggleItem?: (item: NSCarousel.Item, toRemove?: boolean) => void;
+
+      /** Index of item in carousel */
+      index?: number;
+
+      uid?: string;
+
+      /** Flag - is current item shown now */
+      current?: boolean;
+
+      /** Handler for show item in modal window
+       * @private
+       */
+      onToggleZoomModal?: () => void;
+
+      /** Value for transform item
+       * @private
+       */
+      transform?: number;
+
+      /**
+       * Flag data zoomed
+       * @private
+       */
+      isOpenZoom?: boolean;
+    };
+    type Component = Intergalactic.Component<'div', Props>;
+  }
+
+  namespace Prev {
+    type Props = BoxProps & {
+      label?: string;
+      inverted?: boolean;
+      tabIndex?: number;
+    };
+    type Component = Intergalactic.Component<'div', Props>;
+  }
+
+  namespace Next {
+    type Props = BoxProps & {
+      label?: string;
+      inverted?: boolean;
+      tabIndex?: number;
+    };
+    type Component = Intergalactic.Component<'div', Props>;
+  }
+
+  type Component = Intergalactic.Component<'div', Props, Ctx & State> & {
+    Container: Container.Component;
+    ContentBox: ContentBox.Component;
+    Indicators: Indicators.Component;
+    Indicator: Indicator.Component;
+    Item: Item.Component;
+    Prev: Prev.Component;
+    Next: Next.Component;
   };
+}
 
-export type CarouselIndicatorProps = IRootComponentProps &
-  Omit<BoxProps, 'position'> & {
-    active?: boolean;
-    onClick?: () => void;
-    inverted?: boolean;
-  } & CarouselItem;
+/** @deprecated It will be removed in v18. */
+export type CarouselProps = NSCarousel.Props;
+/** @deprecated It will be removed in v18. */
+export type CarouselDefaultProps = NSCarousel.DefaultProps;
+/** @deprecated It will be removed in v18. */
+export type CarouselContext = NSCarousel.Ctx;
+/** @deprecated It will be removed in v18. */
+export type CarouselItem = NSCarousel.Item;
+/** @deprecated It will be removed in v18. */
+export type CarouselItemProps = NSCarousel.Item.Props;
+/** @deprecated It will be removed in v18. */
+export type CarouselState = NSCarousel.State;
+/** @deprecated It will be removed in v18. */
+export type CarouselButtonProps = NSCarousel.Prev.Props;
+/** @deprecated It will be removed in v18. */
+export type CarouselIndicatorsProps = NSCarousel.Indicators.Props;
+/** @deprecated It will be removed in v18. */
+export type CarouselIndicatorProps = NSCarousel.Indicator.Props;
 
-declare const CarouselType: Intergalactic.Component<
-  'div',
-  CarouselProps,
-  CarouselContext & CarouselState
-> & {
-  Container: Intergalactic.Component<'div', BoxProps>;
-  ContentBox: Intergalactic.Component<'div', BoxProps>;
-  Indicators: Intergalactic.Component<'div', CarouselIndicatorsProps, CarouselState>;
-  Indicator: Intergalactic.Component<'div', CarouselIndicatorProps>;
-  Item: Intergalactic.Component<'div', CarouselItemProps>;
-  Prev: Intergalactic.Component<'div', CarouselButtonProps>;
-  Next: Intergalactic.Component<'div', CarouselButtonProps>;
-};
-
-export default CarouselType;
+export type { NSCarousel };

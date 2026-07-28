@@ -1,4 +1,4 @@
-import type { PaginationProps } from '@semcore/ui/pagination';
+import type { NSPagination } from '@semcore/ui/pagination';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type PaginationJSXProps = JSXProps<PaginationProps>;
+export type PaginationJSXProps = JSXProps<NSPagination.Props>;
 
 function getJSX({ handleControlChange, ...paginationProps }: PaginationJSXProps) {
   return <Pagination onCurrentPageChange={(value) => handleControlChange?.('currentPage', value)} {...paginationProps} />;

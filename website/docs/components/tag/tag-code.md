@@ -91,3 +91,15 @@ Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 </script>
 
 :::
+
+## Long string tag
+
+If the text exceeds the tag width, use [Ellipsis](../../utils/ellipsis/ellipsis-code) to truncate it.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx';
+</script>
+
+:::

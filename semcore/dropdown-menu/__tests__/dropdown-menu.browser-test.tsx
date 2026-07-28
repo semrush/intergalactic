@@ -11,9 +11,9 @@ const checkStyles = async (element: any, styles: Record<string, string>) => {
 
 // Matches the CSS fallback colors after the test bundle normalizes them.
 const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-dropdown-menu-item-hover': 'rgba(0, 22, 16, 0.028)',
-  '--intergalactic-dropdown-menu-item-selected': 'rgba(0, 80, 255, 0.077)',
-  '--intergalactic-dropdown-menu-item-selected-hover': 'rgba(0, 77, 255, 0.191)',
+  '--intergalactic-dropdown-menu-item-hover': 'oklch(0.177 0.033 175.6 / 0.028)',
+  '--intergalactic-dropdown-menu-item-selected': 'oklch(0.525 0.265 263 / 0.077)',
+  '--intergalactic-dropdown-menu-item-selected-hover': 'oklch(0.52 0.268 263.2 / 0.191)',
 };
 
 const getCssVarColor = async (page: Page, varName: string) => {
@@ -703,7 +703,6 @@ test.describe(`${TAG.VISUAL} `, () => {
       await expect(search).toBeFocused();
 
       await page.keyboard.press('Tab');
-      if (browserName == 'firefox') await page.keyboard.press('Tab'); // because in ff one additional focus on the list (bug)
       await expect(locators.item(page).nth(30)).toHaveClass(/highlighted/);
     });
 
@@ -1746,9 +1745,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify result count is exposed to screen readers only', async () => {
-        const status = page.locator('#search-result');
+        const status = page.getByRole('status');
         await expect(status).toContainText('2 results found');
-        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(status).toHaveAttribute('aria-live', 'polite');
         await expect(page.locator('text="Nothing found"')).toHaveCount(0);
       });
     });

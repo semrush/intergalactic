@@ -1,3 +1,417 @@
+## [17.4.1] - 2026-07-24
+
+### @semcore/carousel
+
+- **Fixed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSCarousel` namespace.
+
+### @semcore/feature-highlight
+
+- **Changed** Refactor component types.
+
+### @semcore/feature-popover
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSFeaturePopover` namespace.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Non-working keyboard interactions.
+- **Fixed** `ErrorsNavigation` buttons didn't change the size following parent.
+- **Changed** Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSBulktextarea` namespace.
+
+### @semcore/select
+
+- **Fixed** indeterminate state had incorrect appearance when Select size was
+undefined
+
+### @semcore/time-picker
+
+- **Fixed** Incorrect initialization of the meridian.
+
+## [17.4.0] - 2026-07-10
+
+### @semcore/side-panel
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSSidePanel` namespace.
+
+### @semcore/input
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSInput` namespace.
+
+### @semcore/feedback-form
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSFeedbackForm` namespace.
+
+### @semcore/modal
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSModal` namespace.
+
+### @semcore/notice
+
+- **Fixed** Rewrite componenst to TS. Deprecate atomic types. Atomic types are
+part of `NSNotice/NSNoticeSmart` namespaces.
+
+### @semcore/carousel
+
+- **Fixed** Focus was lost after zooming out.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSBreadcrumbs` namespace.
+
+### @semcore/time-picker
+
+- **Fixed** Incorrect `aria-invalid` for invalid state.
+- **Fixed** React warning about readonly input without onChange.
+
+### @semcore/badge
+
+- **Fixed** Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSBadge` namespace.
+
+### @semcore/textarea
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSTextarea` namespace.
+
+### @semcore/select
+
+- **Added** `AutoSuggest` component.
+
+### @semcore/inline-input
+
+- **Fixed** Pressing the `Escape` on buttons worked as if it were submitting
+changes.
+- **Changed** The `onBlurBehavior` function will no longer work when interacting
+with the keyboard.
+
+### @semcore/add-filter
+
+- **Fixed** Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSAddFilter` namespace.
+
+### @semcore/input-number
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSInputNumber` namespace.
+- **Fixed** Aligned typed, incremented, and decremented value precision with the
+configured step precision.
+
+### @semcore/wizard
+
+- **Changed** Left Sidebar color.
+
+### @semcore/skeleton
+
+- **Changed** Fill color.
+
+### @semcore/dropdown-menu
+
+- **Fixed** `preventFocusByClick` handler - skip draggable elements.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** More specific css-selectors.
+
+## [17.3.0] - 2026-06-26
+
+### @semcore/wizard
+
+- **Fixed** Incorrect processing of oklch values.
+- **Added** New `StepTitle` component.
+
+### @semcore/widget-empty
+
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSWidgetEmpty/NSWidgetEmptyNoData/NSWidgetEmptyError` namespaces.
+
+### @semcore/typography
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/tooltip
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/time-picker
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/textarea
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/tag
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/tab-panel
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/tab-line
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/switch
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/spin-container
+
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSSpinContainer` namespace.
+
+### @semcore/spin
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/slider
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/skeleton
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/side-panel
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/select
+
+- **Fixed** Incorrect processing of oklch values.
+- **Added** New `StatusItem` component.
+
+### @semcore/progress-bar
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/product-head
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/pills
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/notice
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/modal
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/mini-chart
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/link
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/input-tags
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/input-number
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/input-mask
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/inline-edit
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/flags
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/feature-popover
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/feature-highlight
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/errors
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/ellipsis
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Incorrect processing of oklch values.
+- **Added** New `StatusItem` component.
+
+### @semcore/dropdown
+
+- **Fixed** Incorrect processing of oklch values.
+- **Added** New `StatusItem` component.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/dot
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/divider
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/data-table
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/counter
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/carousel
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/card
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/button
+
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** `Loading` didn't force `disabled`.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/base-trigger
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/badge
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/add-filter
+
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/pagination
+
+- **Fixed** Rewrite component to TS. Deprecate atomic types. Atomic types are part
+of `NSPagination` namespace.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/notice-bubble
+
+- **Fixed** Bubble disappeared on a timer when interacting with it via the
+keyboard.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/d3-chart
+
+- **Fixed** Outdated dependecies.
+- **Added** Responsive container for all charts by default.
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** Incorrect data-ui-name in Radar.Tooltip component.
+
+### @semcore/core
+
+- **Fixed** Outdated dependecies.
+- **Fixed** Update `usePreventScroll` to handle `hidden` and `clip` overflow
+values on `body`.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/radio
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/input
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/inline-input
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** Incorrect work in StrictMode.
+
+### @semcore/feedback-form
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/base-components
+
+- **Fixed** **flex-box**: Outline has a shimmering black color.
+- **Fixed** **popper**: Outline has a shimmering black color.
+- **Fixed** **flex-box**: Removed `tag` prop for `BoxProps`.
+- **Fixed** **outside-click**: Checking `node.contains` because in d3-chart a node may not be an
+HTMLElement.
+- **Fixed** **animation**: Incorrect processing of oklch values.
+- **Fixed** **breakpoints**: Incorrect processing of oklch values.
+- **Fixed** **flex-box**: Incorrect processing of oklch values.
+- **Fixed** **grid**: Incorrect processing of oklch values.
+- **Fixed** **hint**: Incorrect processing of oklch values.
+- **Fixed** **neighbor-location**: Incorrect processing of oklch values.
+- **Fixed** **outside-click**: Incorrect processing of oklch values.
+- **Fixed** **popper**: Incorrect processing of oklch values.
+- **Fixed** **portal**: Incorrect processing of oklch values.
+- **Fixed** **scroll-area**: Incorrect processing of oklch values.
+
+### @semcore/date-picker
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/color-picker
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+
+### @semcore/checkbox
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+- **Fixed** `onChange` prop typing for `Checkbox.Value`.
+
+### @semcore/accordion
+
+- **Fixed** Outline has a shimmering black color.
+- **Fixed** Incorrect processing of oklch values.
+
 ## [17.2.0] - 2026-06-05
 
 ### @semcore/icon

@@ -5,6 +5,7 @@ import {
   render,
   userEvent,
   screen,
+  waitFor,
 } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import React from 'react';
@@ -31,16 +32,19 @@ describe('Dropdown.StatusItem', () => {
   test('Verify renders screen reader result count', () => {
     render(<Dropdown.StatusItem id='search-result' itemsCount={2} />);
 
-    const status = screen.getByText('2 results found');
-    expect(status).toBeInTheDocument();
-    expect(status).toHaveAttribute('id', 'search-result');
-    expect(status).toHaveAttribute('aria-hidden', 'true');
+    waitFor(() => {
+      const status = screen.getByRole('status', { name: '2 results found' });
+      expect(status).toBeInTheDocument();
+      expect(status).toHaveAttribute('aria-live', 'polite');
+    });
   });
 
   test('Verify renders singular result count', () => {
     render(<Dropdown.StatusItem id='search-result' itemsCount={1} />);
 
-    expect(screen.getByText('1 result found')).toBeInTheDocument();
+    waitFor(() => {
+      expect(screen.getByRole('status', { name: '1 result found' })).toBeInTheDocument();
+    });
   });
 
   test('Verify renders loading and error states', () => {

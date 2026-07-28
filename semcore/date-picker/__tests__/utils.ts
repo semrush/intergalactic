@@ -57,11 +57,11 @@ type ColorProperty = 'backgroundColor' | 'borderColor' | 'color';
 
 // Matches the CSS fallback colors after the test bundle normalizes them.
 const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-control-primary-info': 'rgb(26, 30, 26)',
-  '--intergalactic-date-picker-cell': 'rgb(255, 255, 255)',
-  '--intergalactic-date-picker-cell-active': 'rgb(118, 128, 231)',
-  '--intergalactic-text-primary': 'rgba(1, 5, 0, 0.899)',
-  '--intergalactic-text-primary-invert': 'rgba(254, 255, 255, 0.949)',
+  '--intergalactic-control-primary-info': 'oklch(0.23 0.01 140)',
+  '--intergalactic-date-picker-cell': 'oklch(1 0 0)',
+  '--intergalactic-date-picker-cell-active': 'oklch(0.64 0.152 276.7)',
+  '--intergalactic-text-primary': 'oklch(0.1 0.03 137 / 0.899)',
+  '--intergalactic-text-primary-invert': 'oklch(0.999 0.001 180 / 0.949)',
 };
 
 export const getCssVarColor = async (

@@ -12,7 +12,7 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs />;
 ```
 
-<TypesView type="BreadcrumbsProps" :types={...types} />
+<TypesView type="NSBreadcrumbs.Props" :types={...types} />
 
 ## Breadcrumbs.Item
 
@@ -23,6 +23,6 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs.Item />;
 ```
 
-<TypesView type="BreadcrumbsItemProps" :types={...types} />
+<TypesView type="NSBreadcrumbs.Item.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

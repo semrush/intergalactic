@@ -32,59 +32,56 @@ describe('InlineInput', () => {
   });
 
   test.sequential('Verify blur behavior', async () => {
-    const spyCancel = vi.fn();
-    const spyConfirm = vi.fn();
-    const spyNone = vi.fn();
-    const spyUndefined = vi.fn();
+    // Leaving the field with Tab always discards changes (calls onCancel),
+    // regardless of onBlurBehavior. onBlurBehavior governs mouse blur only.
+    const spyCancelOnCancelInput = vi.fn();
+    const spyConfirmOnCancelInput = vi.fn();
+    const spyConfirmOnConfirmInput = vi.fn();
+    const spyCancelOnConfirmInput = vi.fn();
 
     const { getByTestId } = render(
       <>
-        <InlineInput data-testid='behavior-cancel' onBlurBehavior='cancel' onCancel={spyCancel}>
-          <InlineInput.Value />
-        </InlineInput>
-        <InlineInput data-testid='behavior-confirm' onBlurBehavior='confirm' onConfirm={spyConfirm}>
-          <InlineInput.Value />
-        </InlineInput>
-        <InlineInput data-testid='behavior-none' onBlurBehavior='none' onConfirm={spyNone}>
+        <InlineInput
+          data-testid='behavior-cancel'
+          onBlurBehavior='cancel'
+          onCancel={spyCancelOnCancelInput}
+          onConfirm={spyConfirmOnCancelInput}
+        >
           <InlineInput.Value />
         </InlineInput>
         <InlineInput
-          data-testid='behavior-undefined'
-          onBlurBehavior={undefined}
-          onConfirm={spyUndefined}
+          data-testid='behavior-confirm'
+          onBlurBehavior='confirm'
+          onConfirm={spyConfirmOnConfirmInput}
+          onCancel={spyCancelOnConfirmInput}
         >
           <InlineInput.Value />
         </InlineInput>
       </>,
     );
 
-    expect(spyCancel).toHaveBeenCalledTimes(0);
-    expect(spyConfirm).toHaveBeenCalledTimes(0);
-    expect(spyNone).toHaveBeenCalledTimes(0);
-    expect(spyUndefined).toHaveBeenCalledTimes(0);
+    expect(spyCancelOnCancelInput).toHaveBeenCalledTimes(0);
+    expect(spyConfirmOnConfirmInput).toHaveBeenCalledTimes(0);
 
-    const blurInlineInput = async (testId: string) => {
+    const tabOut = async (testId: string) => {
       const input = getByTestId(testId).querySelector('input');
       if (!(input instanceof HTMLInputElement)) {
         throw new Error(`Expected ${testId} to contain an input element`);
       }
 
-      await userEvent.click(input);
+      input.focus();
       await userEvent.tab();
     };
 
-    await blurInlineInput('behavior-cancel');
-    await waitFor(() => expect(spyCancel).toHaveBeenCalledTimes(1));
+    // onBlurBehavior='cancel' + Tab -> discards (onCancel), never onConfirm.
+    await tabOut('behavior-cancel');
+    await waitFor(() => expect(spyCancelOnCancelInput).toHaveBeenCalledTimes(1));
+    expect(spyConfirmOnCancelInput).toHaveBeenCalledTimes(0);
 
-    await blurInlineInput('behavior-confirm');
-    await waitFor(() => expect(spyConfirm).toHaveBeenCalledTimes(1));
-
-    // onBlurBehavior='none' must never trigger a callback; the undefined case
-    // below settles afterwards, proving enough ticks elapsed for any handler to run.
-    await blurInlineInput('behavior-none');
-    await blurInlineInput('behavior-undefined');
-    await waitFor(() => expect(spyUndefined).toHaveBeenCalledTimes(1));
-    expect(spyNone).toHaveBeenCalledTimes(0);
+    // onBlurBehavior='confirm' + Tab -> still discards (onCancel), NOT onConfirm.
+    await tabOut('behavior-confirm');
+    await waitFor(() => expect(spyCancelOnConfirmInput).toHaveBeenCalledTimes(1));
+    expect(spyConfirmOnConfirmInput).toHaveBeenCalledTimes(0);
   });
 
   test.concurrent('Verify onConfirm behaviour', async () => {

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/stacked-bar-chart/basic-usage';
 import StackBarPropsExample, { defaultProps as StackBarPropsDefaultProps } from './examples/stacked-bar-chart/stack-bar-props-cases';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Stacked-Bar-Chart',
@@ -29,4 +31,12 @@ export const StackBarProps: StoryObj = {
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
   },
   args: StackBarPropsDefaultProps,
+};
+
+export const BasicUsage = {
+  render: BasicUsageExample,
+  argTypes: getChartArgTypes({
+    type: { control: 'select', options: ['stack', 'group'] },
+  }),
+  args: BasicUsageProps,
 };

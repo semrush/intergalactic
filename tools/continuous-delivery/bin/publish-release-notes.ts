@@ -19,6 +19,5 @@ if (!versionTag) {
 }
 
 const releaseChangelog = await Changelog.getRelease(versionTag);
-const lastVersionChangelogs = releaseChangelog.slice(0, 1);
 
-await publishReleaseNotes(versionTag, lastVersionChangelogs);
+await publishReleaseNotes(versionTag, releaseChangelog);

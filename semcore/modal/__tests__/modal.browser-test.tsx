@@ -233,6 +233,55 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
+  test('Verify onClose fires with correct trigger for each close method', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@modal'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/modal/tests/examples/basic_usage.tsx', 'en');
+
+    // The story logs `console.log('Modal onClose', { trigger, type })` inside onClose.
+    // We run the closing action and wait for that console event, then read its payload.
+    const getClosePayload = async (action: () => Promise<void>) => {
+      const [msg] = await Promise.all([
+        page.waitForEvent('console', (m) => m.text().includes('Modal onClose')),
+        action(),
+      ]);
+      return (await msg.args()[1].jsonValue()) as { trigger: string; type?: string };
+    };
+
+    await test.step('Verify onClose fires with onCloseClick when close button clicked', async () => {
+      await locators.button(page, 'Open modal').click();
+      await locators.close(page).waitFor({ state: 'visible' });
+
+      const payload = await getClosePayload(() => locators.close(page).click());
+      expect(payload.trigger).toBe('onCloseClick');
+      await expect(locators.modal(page)).toHaveCount(0);
+    });
+
+    await test.step('Verify onClose fires with onEscape when Escape is pressed', async () => {
+      await locators.button(page, 'Open modal').click();
+      await locators.close(page).waitFor({ state: 'visible' });
+
+      const payload = await getClosePayload(() => page.keyboard.press('Escape'));
+      expect(payload.trigger).toBe('onEscape');
+      await expect(locators.modal(page)).toHaveCount(0);
+    });
+
+    await test.step('Verify onClose fires with onOutsideClick when overlay is clicked', async () => {
+      await locators.button(page, 'Open modal').click();
+      await locators.close(page).waitFor({ state: 'visible' });
+
+      const overlayBox = await locators.overlay(page).boundingBox();
+      expect(overlayBox).toBeTruthy();
+
+      // e is now optional in the typed onClose signature — trigger must still be correct.
+      const payload = await getClosePayload(() =>
+        page.mouse.click(overlayBox!.x + 5, overlayBox!.y + 5),
+      );
+      expect(payload.trigger).toBe('onOutsideClick');
+      await expect(locators.modal(page)).toHaveCount(0);
+    });
+  });
+
   test('Verify Closable modal keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@modal'],
   }, async ({ page }) => {
@@ -661,6 +710,75 @@ test.describe(`@modal ${TAG.FUNCTIONAL}`, () => {
         const y = overlayBox!.y + overlayBox!.height / 2;
         await page.mouse.click(x, y);
         await expect(locators.modal(page)).toBeVisible();
+      });
+    });
+  });
+
+  test.describe('Modal body scroll lock', () => {
+    const getBodyInlineStyles = (page: Page) =>
+      page.evaluate(() => ({
+        overflow: document.body.style.overflow,
+        paddingRight: document.body.style.paddingRight,
+        boxSizing: document.body.style.boxSizing,
+      }));
+
+    test('Verify modal does not cause layout shift when body overflow is hidden', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+    }, async ({ page, browserName }) => {
+      test.skip(browserName !== 'chromium', 'Scroll-lock logic is engine-independent; covered by unit tests');
+      await loadPage(page, 'stories/components/modal/advanced/examples/modal_causes_layout_shift.tsx', 'en');
+
+      await test.step('Switch body overflow to hidden', async () => {
+        await locators.button(page, 'Toggle body overflow').click();
+        await expect(page.getByText('Current overflow value: hidden')).toBeVisible();
+      });
+
+      await test.step('Open modal and verify body styles are untouched', async () => {
+        await locators.button(page, 'Open modal').click();
+        await expect(locators.dialog(page)).toBeVisible();
+
+        const styles = await getBodyInlineStyles(page);
+        expect(styles.boxSizing).toBe('');
+        expect(styles.paddingRight).toBe('');
+        expect(styles.overflow).toBe('hidden');
+      });
+
+      await test.step('Close modal and verify body overflow is preserved', async () => {
+        await page.keyboard.press('Escape');
+        await expect(locators.dialog(page)).toBeHidden();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+    });
+
+    test('Verify stacked modals keep body locked until both close', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@modal'],
+    }, async ({ page, browserName }) => {
+      test.skip(browserName !== 'chromium', 'Scroll-lock logic is engine-independent; covered by unit tests');
+      await loadPage(page, 'stories/components/modal/advanced/examples/modal_causes_layout_shift.tsx', 'en');
+
+      await test.step('Open first modal — body gets locked', async () => {
+        await locators.button(page, 'Open modal').click();
+        await expect(locators.modal(page, 0)).toBeVisible();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+
+      await test.step('Open nested modal over the first one', async () => {
+        await locators.button(page, 'Open modal over modal').click();
+        await expect(locators.dialog(page, 'Nested modal')).toBeVisible();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+
+      await test.step('Close nested modal — body stays locked by the first modal', async () => {
+        await locators.button(page, 'Close nested modal').click();
+        await expect(locators.dialog(page, 'Nested modal')).toBeHidden();
+        await expect(locators.modal(page, 0)).toBeVisible();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('hidden');
+      });
+
+      await test.step('Close first modal — body is unlocked and restored', async () => {
+        await page.keyboard.press('Escape');
+        await expect(locators.modal(page)).toBeHidden();
+        expect((await getBodyInlineStyles(page)).overflow).toBe('visible');
       });
     });
   });

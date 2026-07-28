@@ -2,6 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.4.1] - 2026-07-24
+
+### Fixed
+
+- indeterminate state had incorrect appearance when Select size was
+undefined
+
+## [17.4.0] - 2026-07-10
+
+### Added
+
+- `AutoSuggest` component.
+
+## [17.3.0] - 2026-06-26
+
+### Fixed
+
+- Incorrect processing of oklch values.
+
+### Added
+
+- New `StatusItem` component.
+
 ## [17.2.0] - 2026-06-05
 
 ### Added

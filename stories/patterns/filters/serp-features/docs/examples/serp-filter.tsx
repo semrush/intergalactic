@@ -1,9 +1,8 @@
 import ReloadIcon from '@semcore/icon/Reload/m';
-import { Flex, Box, ScreenReaderOnly, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/ui/base-components';
+import { Flex, Box, ScrollArea, hideScrollBarsFromScreenReadersContext } from '@semcore/ui/base-components';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import Select, { InputSearch } from '@semcore/ui/select';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const serpFeatures = [
@@ -195,18 +194,17 @@ const Demo = () => {
           <InputSearch
             value={search}
             onChange={setSearch}
-            aria-describedby={search ? 'search-result' : undefined}
           />
           {loading && (<Select.StatusItem itemsCount={0} state='loading' />)}
           {!loading && error && (
-            <Select.StatusItem itemsCount={0} state='error' id='search-result' tag={Flex} direction='column' alignItems='start' gap={1}>
-              <span aria-live='polite' role='status'>
+            <Flex direction='column' alignItems='start'>
+              <Select.StatusItem itemsCount={0} state='error'>
                 {message}
-              </span>
-              <ButtonLink addonLeft={ReloadIcon} onClick={handleReloadClick}>
+              </Select.StatusItem>
+              <ButtonLink mx={2} mb={2} mt={-1} addonLeft={ReloadIcon} onClick={handleReloadClick}>
                 Reload
               </ButtonLink>
-            </Select.StatusItem>
+            </Flex>
           )}
           {!loading && !error && (
             <>
@@ -251,7 +249,7 @@ const Demo = () => {
                     <ScrollArea.Bar orientation='vertical' />
                   </ScrollArea>
                 </hideScrollBarsFromScreenReadersContext.Provider>
-                <Select.StatusItem itemsCount={options.length} />
+                {search !== '' && <Select.StatusItem itemsCount={options.length} />}
 
                 {options.length > 0 && (
                   <Select.Option

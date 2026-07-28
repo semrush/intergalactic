@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.2] - 2026-07-10
+
+### Fixed
+
+- Pressing the `Escape` on buttons worked as if it were submitting
+changes.
+
+### Changed
+
+- The `onBlurBehavior` function will no longer work when interacting
+with the keyboard.
+
+## [17.2.1] - 2026-06-26
+
+### Fixed
+
+- Outline has a shimmering black color.
+- Incorrect processing of oklch values.
+
 ## [17.2.0] - 2026-06-05
 
 ### Added

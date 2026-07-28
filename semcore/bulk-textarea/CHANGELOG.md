@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.2] - 2026-07-24
+
+### Fixed
+
+- Non-working keyboard interactions.
+- `ErrorsNavigation` buttons didn't change the size following parent.
+
+### Changed
+
+- Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSBulktextarea` namespace.
+
+## [17.2.1] - 2026-06-26
+
+### Fixed
+
+- Outline has a shimmering black color.
+- Incorrect processing of oklch values.
+- Incorrect work in StrictMode.
+
 ## [17.2.0] - 2026-06-05
 
 ### Added

@@ -10,7 +10,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination />;
 ```
 
-<TypesView type="PaginationProps" :types={...types} />
+<TypesView type="NSPagination.Props" :types={...types} />
 
 ## Pagination.FirstPage
 
@@ -37,7 +37,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput />;
 ```
 
-<TypesView type="PageInputProps" :types={...types} />
+<TypesView type="NSPagination.PageInput.Props" :types={...types} />
 
 ## Pagination.PageInput.Value
 
@@ -46,7 +46,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput.Value />;
 ```
 
-<TypesView type="InputValueProps" :types={...types} />
+<TypesView type="NSInput.Value.Props" :types={...types} />
 
 ## Pagination.PrevPage
 
@@ -64,6 +64,6 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.TotalPages />;
 ```
 
-<TypesView type="TotalPagesProps" :types={...types} />
+<TypesView type="NSPagination.TotalPages.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

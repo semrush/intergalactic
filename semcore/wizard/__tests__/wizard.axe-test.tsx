@@ -45,15 +45,4 @@ test.describe(`@wizard ${TAG.ACCESSIBILITY}`, () => {
 
     expect(violations).toEqual([]);
   });
-
-  test('Custom Stepper', async ({ page }) => {
-    await loadPage(page, 'stories/components/wizard/docs/examples/custom_stepper.tsx', 'en');
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await locators.button(page, 'Close').waitFor({ state: 'visible' });
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
 });

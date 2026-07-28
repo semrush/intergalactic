@@ -93,6 +93,33 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
+  test('Verify indeterminate checkbox has default size when Select size is omitted', {
+    tag: [TAG.PRIORITY_HIGH, '@select', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/select/tests/examples/options_checkbox_group_and_hint.tsx', 'en', {
+      omitSize: true,
+      showLabel: false,
+      option2ShowCheckbox: false,
+      option3ShowCheckbox: true,
+      option3CheckboxIndeterminate: true,
+      showGroup: false,
+    });
+
+    await locators.selectTrigger(page).click();
+    await locators.options(page).first().waitFor({ state: 'visible' });
+
+    const checkbox = page.locator('[data-ui-name="Select.Option.Checkbox"]');
+    await expect(checkbox).toHaveCount(1);
+    await expect(checkbox).toHaveCSS('width', '16px');
+    await expect(checkbox).toHaveCSS('height', '16px');
+
+    const indicatorSize = await checkbox.evaluate((element) => {
+      const style = window.getComputedStyle(element, '::after');
+      return { width: style.width, height: style.height };
+    });
+    expect(indicatorSize).toEqual({ width: '8px', height: '2px' });
+  });
+
   const subcomponentsConfigVariables = [
     // Test trigger size and state variations
     { description: 'trigger M normal, list M, no search', triggerSize: 'm', triggerState: 'normal', triggerDisabled: false, triggerLoading: false, listSize: 'm', showInputSearch: false },
@@ -700,9 +727,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
     await test.step('Verify nothing found state', async () => {
       await locators.label(page).click();
+      await expect(inputLocaltor).toBeFocused();
       await locators.options(page).first().waitFor({ state: 'visible' });
       await page.keyboard.type('test');
-      await expect(page.locator('text="Nothing found"')).toBeVisible();
+      await expect(
+        page.locator('[data-ui-name="Select.StatusItem"]').filter({ hasText: 'Nothing found' }),
+      ).toBeVisible();
       await expect(locators.options(page)).toHaveCount(0);
       await expect(clear).toBeVisible();
     });
@@ -813,9 +843,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify result count is exposed to screen readers only', async () => {
-        const status = page.locator('#search-result');
+        const status = page.getByRole('status');
         await expect(status).toContainText('1 result found');
-        await expect(status).toHaveAttribute('aria-hidden', 'true');
+        await expect(status).toHaveAttribute('aria-live', 'polite');
         await expect(page.locator('text="Nothing found"')).toHaveCount(0);
       });
     });
@@ -832,9 +862,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       });
 
       await test.step('Verify "Nothing found" is visible', async () => {
-        const status = page.locator('#search-result');
+        const status = page
+          .locator('[data-ui-name="Select.StatusItem"]')
+          .filter({ hasText: 'Nothing found' });
         await expect(status).toBeVisible();
-        await expect(status).toContainText('Nothing found');
       });
     });
 

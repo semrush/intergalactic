@@ -1,7 +1,7 @@
 {
   "name": "@semcore/modal",
   "description": "Semrush Modal Component",
-  "version": "17.2.0",
+  "version": "17.2.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js && pnpm vite build"
+    "build": "pnpm semcore-builder && pnpm vite build"
   },
   "exports": {
     "types": "./lib/types/index.d.ts",
@@ -17,11 +17,11 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "^17.2.0",
-    "@semcore/typography": "^17.2.0"
+    "@semcore/button": "^17.2.1",
+    "@semcore/typography": "^17.2.1"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.0",
+    "@semcore/base-components": "^17.2.1",
     "@semcore/icon": "^17.2.0"
   },
   "repository": {

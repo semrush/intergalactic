@@ -1,11 +1,11 @@
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
-import type { BreadcrumbsItemProps } from '@semcore/ui/breadcrumbs';
+import type { NSBreadcrumbs } from '@semcore/ui/breadcrumbs';
 import React from 'react';
 
 type BreadcrumbsExampleProps = {
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
-} & BreadcrumbsItemProps;
+} & NSBreadcrumbs.Item.Props;
 
 const Demo = (props: BreadcrumbsExampleProps) => (
   <>
