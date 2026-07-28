@@ -320,16 +320,16 @@ SText[size='m'] {
   line-height: var(--intergalactic-lh-200, 142%);
 
   &:only-child {
-    margin-left: var(--intergalactic-spacing-content-inset-inline, 12px);
-    margin-right: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:first-child {
-    margin-left: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:last-child {
-    margin-right: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 }
 
@@ -339,16 +339,16 @@ SText[size='l'] {
   line-height: var(--intergalactic-lh-300, 150%);
 
   &:only-child {
-    margin-left: var(--intergalactic-spacing-content-inset-inline, 12px);
-    margin-right: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:first-child {
-    margin-left: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:last-child {
-    margin-right: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 }
 
@@ -361,11 +361,11 @@ SAddon {
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:only-child {
@@ -376,15 +376,15 @@ SAddon[size='m'] {
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:only-child {
-    margin-left: var(--intergalactic-spacing-content-inset-inline, 12px);
-    margin-right: var(--intergalactic-spacing-content-inset-inline, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 }
