@@ -1,7 +1,5 @@
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import type { CellRenderProps } from '@semcore/ui/data-table';
-import { DataTable } from '@semcore/ui/data-table';
-import Link from '@semcore/ui/link';
+import { LinkAction, DataTable } from '@semcore/ui/data-table';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
@@ -78,27 +76,18 @@ export default function Demo() {
 
   const renderCell = React.useMemo(() => (props: CellRenderProps<any, any>) => {
     if (props.columnName === 'url' && Boolean(columnElement)) {
-      const pageUrl = props.value?.toString?.() ?? '';
+      const url = props.value.toString();
+
       return (
-        <Link
-          href={pageUrl}
-          target='_blank'
-          color='text-primary'
-          rel='noopener noreferrer'
-          wMin={0}
-        >
-          <Link.Text
-            wMin={0}
-            ellipsis:cropPosition='middle'
-            ellipsis:containerElement={columnElement}
-            ellipsis:recalculateContainerWidth={recalculateContainerWidth}
-          >
-            {removeProtocol(pageUrl)}
-          </Link.Text>
-          <Link.Addon>
-            <LinkExternalM color='icon-secondary-neutral' />
-          </Link.Addon>
-        </Link>
+        <LinkAction
+          displayHref={removeProtocol(url)}
+          externalHref={url}
+          internalAction={() => console.log('here we are')}
+
+          ellipsis:cropPosition='middle'
+          ellipsis:containerElement={columnElement}
+          ellipsis:recalculateContainerWidth={recalculateContainerWidth}
+        />
       );
     }
     return props.defaultRender();

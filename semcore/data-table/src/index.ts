@@ -13,6 +13,7 @@ import type {
   ColumnGroupConfig,
   ColumnItemConfig,
 } from './components/DataTable/DataTable.types';
+import { LinkAction } from './components/LinkAction/LinkAction.tsx';
 import { SelectableRows } from './store/SelectableRows';
 
 const wrapDataTable = <PropsExtending extends {}>(
@@ -32,6 +33,7 @@ export {
   ROW_GROUP,
   wrapDataTable,
   SelectableRows,
+  LinkAction,
 };
 export type {
   DataTableSort,
