@@ -3140,20 +3140,27 @@
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "dropdown",
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "dropdown"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-medium",
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "base-trigger",
       "button",
+      "dropdown",
       "input",
       "time-picker"
     ]
@@ -3181,6 +3188,7 @@
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
     "components": [
+      "base-trigger",
       "dropdown-menu",
       "inline-input"
     ]

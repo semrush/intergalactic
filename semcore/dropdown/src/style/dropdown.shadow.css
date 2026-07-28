@@ -99,19 +99,19 @@ SDropdownPopper {
   SDropdownItem[size='l'] {
     font-size: var(--intergalactic-fs-300, 16px);
     line-height: var(--intergalactic-lh-300, 150%);
-    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-content-inset-inline, undefined);
+    padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px);
     min-height: var(--intergalactic-spacing-10x, 40px);
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-content-inset-inline, undefined) + var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-content-gap-large, 8px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-content-gap-large, 8px));
       /* padding before + checkbox + padding after */
 
       &::before,
       &::after {
         width: var(--intergalactic-spacing-5x, 20px);
         height: var(--intergalactic-spacing-5x, 20px);
-        top: calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
-        left: var(--intergalactic-spacing-content-inset-inline, undefined);
+        top: calc(var(--intergalactic-spacing-content-padding-small, 8px) + var(--intergalactic-spacing-05x, 2px));
+        left: var(--intergalactic-spacing-content-padding-medium, 12px);
       }
     }
   }
@@ -119,19 +119,19 @@ SDropdownPopper {
   SDropdownItem[size='m'] {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
-    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-content-inset-inline, undefined);
+    padding: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-content-padding-medium, 12px);
     min-height: var(--intergalactic-form-control-m, 32px);
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-content-inset-inline, undefined) + var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-content-gap-medium, 6px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-content-gap-medium, 6px));
       /* padding before + checkbox + padding after */
 
       &::before,
       &::after {
         width: var(--intergalactic-spacing-4x, 16px);
         height: var(--intergalactic-spacing-4x, 16px);
-        top: var(--intergalactic-spacing-2x, 8px);
-        left: var(--intergalactic-spacing-content-inset-inline, undefined);
+        top: var(--intergalactic-spacing-content-padding-small, 8px);
+        left: var(--intergalactic-spacing-content-padding-medium, 12px);
       }
     }
   }

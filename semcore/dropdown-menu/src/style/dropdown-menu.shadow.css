@@ -1,6 +1,6 @@
 SDropdownMenuList {
   max-height: 246px;
-  padding: var(--intergalactic-spacing-1x, 4px) 0;
+  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) 0;
   position: relative;
   min-height: 26px;
   min-width: 32px;
