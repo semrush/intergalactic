@@ -209,7 +209,6 @@
       "select",
       "side-panel",
       "slider",
-      "switch",
       "tag",
       "textarea",
       "wizard"
@@ -1065,8 +1064,7 @@
       "dropdown",
       "feature-highlight",
       "select",
-      "slider",
-      "switch"
+      "slider"
     ]
   },
   {
@@ -1115,8 +1113,7 @@
     "value": "oklch(0.64 0.161 170)",
     "description": "Background of the primary control with successful theme.",
     "components": [
-      "button",
-      "switch"
+      "button"
     ]
   },
   {
@@ -1287,19 +1284,25 @@
     "name": "--intergalactic-control-switch-bg-info-active",
     "value": "oklch(0.23 0.01 140)",
     "description": "Active background of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-bg-success-active",
     "value": "oklch(0.64 0.161 170)",
     "description": "Active background of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-handle",
     "value": "#ffffff",
     "description": "Handle color of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info",
@@ -3023,6 +3026,14 @@
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow of the selected Pills item.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-box-shadow-switch-slider",
+    "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
+    "description": "Shadow of the Switch toggle.",
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-dnd",

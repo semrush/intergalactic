@@ -13,36 +13,36 @@ SSwitch[size] {
 }
 
 SSwitch[size='m'] {
-  font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
-
-  & SToggle {
-    width: 20px;
-    height: 12px;
-    min-width: 20px;
-  }
-
-  & SSlider {
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
-  }
-}
-
-SSwitch[size='l'] {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 
   & SToggle {
-    height: 20px;
+    width: 28px;
+    height: 16px;
+    min-width: 28px;
+  }
+
+  & SSlider {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+}
+
+SSwitch[size='l'] {
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+
+  & SToggle {
     width: 36px;
+    height: 20px;
     min-width: 36px;
   }
 
   & SSlider {
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
   }
 }
 
@@ -57,9 +57,9 @@ SSwitch[size='xl'] {
   }
 
   & SSlider {
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
   }
 }
 
@@ -86,13 +86,13 @@ SToggle {
 }
 
 SToggle[checked][theme='info'] {
-  color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-switch-bg-info-active */
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-switch-bg-info-active */
+  color: var(--intergalactic-control-switch-bg-info-active, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-switch-bg-info-active, oklch(0.23 0.01 140));
 }
 
 SToggle[checked][theme='success'] {
-  color: var(--intergalactic-control-primary-success, oklch(0.64 0.161 170)); /* TODO: --intergalactic-control-switch-bg-success-active */
-  background-color: var(--intergalactic-control-primary-success, oklch(0.64 0.161 170)); /* TODO: --intergalactic-control-switch-bg-success-active */
+  color: var(--intergalactic-control-switch-bg-success-active, oklch(0.64 0.161 170));
+  background-color: var(--intergalactic-control-switch-bg-success-active, oklch(0.64 0.161 170));
 }
 
 SToggle[checked][theme='custom'] {
@@ -118,13 +118,13 @@ SToggle[neighborLocation='right'] {
 }
 
 SSlider {
-  /* margin: 0 var(--intergalactic-spacing-05x, 2px); */
-  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-switch-handle */
+  background: var(--intergalactic-control-switch-handle, #ffffff);
   transform: translateX(-50%) scaleX(1);
   transition: transform calc(var(--intergalactic-duration-switch, 100) * 1ms) ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  box-shadow: var(--intergalactic-box-shadow-switch-slider, 0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07));
 
   &[checked] {
     transform: translateX(50%) scaleX(1);

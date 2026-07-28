@@ -1905,6 +1905,10 @@ export const theme: Theme = {
         value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Shadow of the selected Pills item.',
       },
+      box_shadow_switch_slider: {
+        value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
+        description: 'Shadow of the Switch toggle.',
+      },
       box_shadow_dnd: {
         value: `3px 3px 30px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Shadow for show that element are being drag-and-drop.',
@@ -3228,6 +3232,9 @@ type SemanticShadows = {
         item: {
           selected: Value;
         };
+      };
+      switch: {
+        slider: Value;
       };
       dnd: Value;
       modal: Value;
