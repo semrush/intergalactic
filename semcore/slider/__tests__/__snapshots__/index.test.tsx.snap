@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Slider > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Slider.Bar",
+        },
+        {
+          "children": [],
+          "uiName": "Slider.Knob",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Slider.Item",
+            },
+          ],
+          "uiName": "Slider.Options",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "Slider",
+    },
+  ],
+  "uiName": null,
+}
+`;
