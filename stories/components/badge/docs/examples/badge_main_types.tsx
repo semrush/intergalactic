@@ -29,11 +29,12 @@ const Demo = () => {
         </Flex>
       </Box>
       <Flex ml={4} gap={2} alignItems='flex-start'>
-        <Badge type='admin' accent />
-        <Badge type='alpha' accent />
-        <Badge type='beta' accent />
-        <Badge type='new' accent />
-        <Badge type='soon' accent />
+        <Badge type='admin' light />
+        <Badge type='alpha' light />
+        <Badge type='beta' light />
+        <Badge type='new' light />
+        <Badge type='soon' light />
+        <Badge type='unavailable' light />
       </Flex>
     </Flex>
   );

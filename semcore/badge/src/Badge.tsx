@@ -50,39 +50,43 @@ class RootBadge extends Component<
 
   private resolveTextColor(): string | undefined {
     // todo Brauer Ilia - removed default 'soon' type in 19th major
-    const { type = 'soon', inverted, invert, resolveColor, accent } = this.asProps;
+    const { type = 'soon', resolveColor, light, invert, inverted } = this.asProps;
 
-    if ((inverted ?? invert) || accent) {
-      return undefined;
+    if (light) {
+      switch (type) {
+        case 'admin': {
+          return resolveColor('--intergalactic-badge-light-admin-text');
+        }
+        case 'alpha': {
+          return resolveColor('--intergalactic-badge-light-alpha-text');
+        }
+        case 'beta': {
+          return resolveColor('--intergalactic-badge-light-beta-text');
+        }
+        case 'new': {
+          return resolveColor('--intergalactic-badge-light-new-text');
+        }
+        case 'soon':
+        case 'unavailable': {
+          return resolveColor('--intergalactic-badge-light-soon-text');
+        }
+        default: {
+          const t: never = type;
+          throw new Error(`Type can't be "${t}"`);
+        }
+      }
     }
 
-    switch (type) {
-      case 'admin': {
-        return resolveColor('--intergalactic-badge-light-admin-text');
-      }
-      case 'alpha': {
-        return resolveColor('--intergalactic-badge-light-alpha-text');
-      }
-      case 'beta': {
-        return resolveColor('--intergalactic-badge-light-beta-text');
-      }
-      case 'new': {
-        return resolveColor('--intergalactic-badge-light-new-text');
-      }
-      case 'soon':
-      case 'unavailable': {
-        return resolveColor('--intergalactic-badge-light-soon-text');
-      }
-      default: {
-        const t: never = type;
-        throw new Error(`Type can't be "${t}"`);
-      }
+    if (type === 'unavailable' && !(invert ?? inverted)) {
+      return resolveColor('--intergalactic-badge-light-soon-text');
     }
+
+    return undefined;
   }
 
   private resolveBg(): string {
     // todo Brauer Ilia - removed default 'soon' type in 19th major
-    const { type = 'soon', inverted, invert, resolveColor, accent } = this.asProps;
+    const { type = 'soon', inverted, invert, resolveColor, light } = this.asProps;
 
     if (inverted ?? invert) {
       return resolveColor('--intergalactic-badge-bg-invert');
@@ -90,19 +94,19 @@ class RootBadge extends Component<
 
     switch (type) {
       case 'admin': {
-        return accent ? resolveColor('--intergalactic-badge-accent-admin') : resolveColor('--intergalactic-badge-light-admin');
+        return !light ? resolveColor('--intergalactic-badge-accent-admin') : resolveColor('--intergalactic-badge-light-admin');
       }
       case 'alpha': {
-        return accent ? resolveColor('--intergalactic-badge-accent-alpha') : resolveColor('--intergalactic-badge-light-alpha');
+        return !light ? resolveColor('--intergalactic-badge-accent-alpha') : resolveColor('--intergalactic-badge-light-alpha');
       }
       case 'beta': {
-        return accent ? resolveColor('--intergalactic-badge-accent-beta') : resolveColor('--intergalactic-badge-light-beta');
+        return !light ? resolveColor('--intergalactic-badge-accent-beta') : resolveColor('--intergalactic-badge-light-beta');
       }
       case 'new': {
-        return accent ? resolveColor('--intergalactic-badge-accent-new') : resolveColor('--intergalactic-badge-light-new');
+        return !light ? resolveColor('--intergalactic-badge-accent-new') : resolveColor('--intergalactic-badge-light-new');
       }
       case 'soon': {
-        return accent ? resolveColor('--intergalactic-badge-accent-soon') : resolveColor('--intergalactic-badge-light-soon');
+        return !light ? resolveColor('--intergalactic-badge-accent-soon') : resolveColor('--intergalactic-badge-light-soon');
       }
       case 'unavailable': {
         return resolveColor('--intergalactic-badge-bg-unavailable');

@@ -44,12 +44,15 @@ declare namespace NSBadge {
      * @deprecated use invert instead.
      */
     inverted?: true;
-    accent?: never | false;
+    light?: never | false;
   } | {
     /**
-     * Flag to render accent badge.
+     * Flag to render light badge.
      */
-    accent?: true;
+    light?: true;
+    /**
+     * @deprecated use invert instead.
+     */
     inverted?: never | false;
     invert?: never | false;
   });
