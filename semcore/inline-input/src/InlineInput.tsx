@@ -1,89 +1,19 @@
 import { Box, InvalidStateBox } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
-import InputNumber, { type NSInputNumber } from '@semcore/input-number';
+import InputNumber from '@semcore/input-number';
 import Spin from '@semcore/spin';
-import type { TooltipProps } from '@semcore/tooltip';
 import React from 'react';
 
-import type { InlineInputComponent } from './index.type';
+import type { NSInlineInput } from './InlineInput.type';
 import style from './style/inline-input.shadow.css';
-import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-type OnConfirm = (
-  value: string,
-  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
-) => void;
-type OnCancel = (
-  prevValue: string,
-  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
-) => void;
-type RootAsProps = {
-  state?: 'normal' | 'valid' | 'invalid';
-  loading?: boolean;
-  disabled?: boolean;
-  onConfirm?: OnConfirm;
-  onCancel?: OnCancel;
-  value?: string;
-  defaultValue?: string;
-  autoFocus?: boolean;
-  placeholder?: string;
-  onChange?: (value: string, event: React.ChangeEvent) => void;
-  onBlur?: (event: React.FocusEvent) => void;
-  onFocus?: (event: React.FocusEvent) => void;
-  onBlurBehavior?: 'cancel' | 'confirm';
-  styles?: React.CSSProperties;
-  Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-  locale?: string;
-};
-
-type AddonAsProps = {
-  styles?: React.CSSProperties;
-  Children: React.FC;
-};
-
-type ControlAsProps = {
-  Children: React.FC;
-  children: React.ReactNode;
-  styles?: React.CSSProperties;
-  title?: string;
-  $tooltipsProps?: TooltipProps;
-  loading?: boolean;
-  disabled?: boolean;
-  onCancel?: OnCancel;
-  value?: string;
-  icon?: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-type ConfirmControlAsProps = ControlAsProps & {
-  onConfirm?: OnConfirm;
-  onCancel?: OnCancel;
-  inputRef?: React.RefObject<HTMLInputElement>;
-};
-type CancelControlAsProps = ControlAsProps & {
-  onCancel?: OnCancel;
-};
-type NumberValueAsProps = NSInputNumber.Value.Props & {
-  increment?: (event: WheelEvent) => void;
-  decrement?: (event: WheelEvent) => void;
-};
-type NumberControlsAsProps = ControlAsProps & {
-  increment?: (event: React.SyntheticEvent) => void;
-  decrement?: (event: React.SyntheticEvent) => void;
-};
-type DefaultProps = {
-  state: 'normal';
-  onBlurBehavior: 'confirm';
-  i18n: LocalizedMessages;
-  locale: 'en';
-};
 
 const pointInsideOfRect = ({
   x,
@@ -98,16 +28,16 @@ const pointInsideOfRect = ({
 };
 
 class InlineInputBase extends Component<
-  RootAsProps,
-  [],
+  Intergalactic.InternalTypings.InferComponentProps<NSInlineInput.Component>,
+  typeof InlineInputBase.enhance,
   {},
   WithI18nEnhanceProps,
   {},
-  DefaultProps
+  NSInlineInput.DefaultProps
 > {
   static displayName = 'InlineInput';
 
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     state: 'normal',
     onBlurBehavior: 'confirm',
@@ -140,7 +70,7 @@ class InlineInputBase extends Component<
     document.body.addEventListener('keydown', this.handleDocumentKeyDown);
   }
 
-  componentDidUpdate(prevProps: Readonly<RootAsProps>): void {
+  componentDidUpdate(prevProps: typeof this.asProps): void {
     if (prevProps.disabled !== this.asProps.disabled) {
       this.updateInert();
     }
@@ -308,8 +238,13 @@ class InlineInputBase extends Component<
   }
 }
 
-class Value extends Component<RootAsProps, [], { value: any }> {
-  static defaultProps = {
+class Value extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSInlineInput.Value.Component, typeof InlineInputBase, 'Value'>,
+  [],
+  // TODO:
+  NSInlineInput.Value.Handlers
+> {
+  static defaultProps: NSInlineInput.Value.DefaultProps = {
     defaultValue: '',
   };
 
@@ -326,12 +261,16 @@ class Value extends Component<RootAsProps, [], { value: any }> {
   }
 }
 
-function Addon(props: AddonAsProps) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInlineInput.Addon.Component, typeof InlineInputBase, 'Addon'>,
+) {
   const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} />) as React.ReactElement;
+  return sstyled(props.styles)(<SAddon render={Box} />);
 }
 
-function ConfirmControl(props: ConfirmControlAsProps) {
+function ConfirmControl(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInlineInput.ConfirmControl.Component, typeof InlineInputBase, 'ConfirmControl'>,
+) {
   const SAddon = Root;
   const { Children, children: hasChildren, inputRef, onCancel } = props;
   const title = props.title ?? props.getI18nText('confirm');
@@ -362,7 +301,7 @@ function ConfirmControl(props: ConfirmControlAsProps) {
   if (props.loading) {
     return sstyled(props.styles)(
       <SAddon render={Box}>{hasChildren ? <Children /> : <Spin size='xs' />}</SAddon>,
-    ) as React.ReactElement;
+    );
   }
 
   const sstyles = sstyled(props.styles);
@@ -376,7 +315,7 @@ function ConfirmControl(props: ConfirmControlAsProps) {
           )
         : (
             <ButtonLink
-              addonLeft={(props.icon as any) ?? CheckM}
+              addonLeft={props.icon ?? CheckM}
               use='secondary'
               onClick={handleConfirm}
               className={sConfirmIconStyles.className}
@@ -385,10 +324,12 @@ function ConfirmControl(props: ConfirmControlAsProps) {
             />
           )}
     </SAddon>,
-  ) as React.ReactElement;
+  );
 }
 
-function CancelControl(props: CancelControlAsProps) {
+function CancelControl(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInlineInput.CancelControl.Component, typeof InlineInputBase, 'CancelControl'>,
+) {
   const SAddon = Root;
   const { Children, children: hasChildren } = props;
   const title = props.title ?? props.getI18nText('discard');
@@ -414,7 +355,7 @@ function CancelControl(props: CancelControlAsProps) {
   if (props.disabled) {
     return sstyled(props.styles)(
       <SAddon render={Box}>{hasChildren ? <Children /> : <CloseM />}</SAddon>,
-    ) as React.ReactElement;
+    );
   }
 
   const sstyles = sstyled(props.styles);
@@ -429,7 +370,7 @@ function CancelControl(props: CancelControlAsProps) {
         : (
             <ButtonLink
               use='secondary'
-              addonLeft={(props.icon as any) ?? CloseM}
+              addonLeft={props.icon ?? CloseM}
               onClick={handleCancel}
               className={sCancelIconStyles.className}
               style={sCancelIconStyles.style}
@@ -437,21 +378,25 @@ function CancelControl(props: CancelControlAsProps) {
             />
           )}
     </SAddon>,
-  ) as React.ReactElement;
+  );
 }
 
-function NumberValue(props: NumberValueAsProps) {
+function NumberValue(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInlineInput.NumberValue.Component, typeof InlineInputBase, 'NumberValue'>,
+) {
   const SValue = Root;
 
-  return sstyled(props.styles)(<SValue render={InputNumber.Value} />) as React.ReactElement;
+  return sstyled(props.styles)(<SValue render={InputNumber.Value} />);
 };
 
-function NumberControls(props: NumberControlsAsProps) {
+function NumberControls(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInlineInput.NumberControls.Component, typeof InlineInputBase, 'NumberControls'>,
+) {
   const SControls = Root;
 
   return sstyled(props.styles)(
     <SControls render={InputNumber.Controls} tag={InlineInput.Addon} />,
-  ) as React.ReactElement;
+  );
 }
 
 /**
@@ -460,7 +405,7 @@ function NumberControls(props: NumberControlsAsProps) {
  * {@link https://developer.semrush.com/intergalactic/components/inline-input/inline-input-api/|API} | {@link https://developer.semrush.com/intergalactic/components/inline-input/inline-input-code/|Examples}
  */
 const InlineInput = createComponent<
-  InlineInputComponent,
+  NSInlineInput.Component,
   typeof InlineInputBase
 >(InlineInputBase, {
   Addon,
