@@ -21,6 +21,11 @@ const entry: PlaygroundEntry<BadgeJSXProps> = {
       displayName: 'Type',
       value: 'new',
     },
+    light: {
+      type: 'boolean',
+      displayName: 'Light',
+      value: false,
+    },
     invert: {
       type: 'boolean',
       displayName: 'Invert',
