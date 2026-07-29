@@ -6,6 +6,7 @@ import DefaultLogInFormExample from './examples/default-log-in-form';
 import HorizontalFormExample from './examples/horizontal-form';
 import InputTagsAndSelectExample from './examples/inputtags-and-select';
 import RadioAndSelectExample from './examples/radio-and-select';
+import VerticalFormExample from './examples/vertical-form';
 import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {
@@ -31,6 +32,10 @@ export const InputTagsAndSelect: StoryObj = {
 
 export const HorizontalForm: StoryObj = {
   render: HorizontalFormExample,
+};
+
+export const VerticalForm: StoryObj = {
+  render: VerticalFormExample,
 };
 
 export default meta;

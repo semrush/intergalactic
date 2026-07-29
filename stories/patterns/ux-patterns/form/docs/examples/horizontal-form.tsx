@@ -1,4 +1,5 @@
 import { Flex } from '@semcore/ui/base-components';
+import BulkTextarea from '@semcore/ui/bulk-textarea';
 import Button from '@semcore/ui/button';
 import Flag, { iso2Name } from '@semcore/ui/flags';
 import Input from '@semcore/ui/input';
@@ -11,12 +12,14 @@ type FormValues = {
   country: string;
   tags: string[];
   comment: string;
+  bulkComment: string;
 };
 
 const defaultValues: FormValues = {
   country: '',
   tags: ['Tag name', 'Tag name'],
   comment: '',
+  bulkComment: '',
 };
 
 type HorizontalFormRowProps = {
@@ -120,6 +123,22 @@ const HorizontalFormRow = ({ size }: HorizontalFormRowProps) => {
         name='comment'
       />
 
+      <Controller
+        render={({ field }) => (
+          <BulkTextarea
+            {...field}
+            size={size}
+            minRows={2}
+            flex='1 1 0'
+            placeholder='Placeholder'
+          >
+            <BulkTextarea.InputField aria-label='Bulk comment' />
+          </BulkTextarea>
+        )}
+        control={control}
+        name='bulkComment'
+      />
+
       <Button type='submit' use='primary' theme='info' size={size} flex='0 0 auto'>
         Primary button
       </Button>
@@ -128,7 +147,7 @@ const HorizontalFormRow = ({ size }: HorizontalFormRowProps) => {
 };
 
 const Demo = () => (
-  <Flex direction='column' gap={4} w='60%'>
+  <Flex direction='column' gap={4} w='100%'>
     <HorizontalFormRow size='m' />
     <HorizontalFormRow size='l' />
   </Flex>

@@ -3196,13 +3196,16 @@
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "bulk-textarea"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
+      "bulk-textarea",
       "input-tags"
     ]
   },
@@ -3211,6 +3214,7 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "bulk-textarea",
       "button",
       "input",
       "textarea",
@@ -3221,13 +3225,17 @@
     "name": "--intergalactic-spacing-content-padding-large",
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "bulk-textarea"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xlarge",
     "value": "20px",
     "description": "Extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "bulk-textarea"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3240,6 +3248,7 @@
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
     "components": [
+      "bulk-textarea",
       "inline-input",
       "tag"
     ]
