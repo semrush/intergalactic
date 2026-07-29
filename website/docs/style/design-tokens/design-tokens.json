@@ -3173,6 +3173,7 @@
       "notice",
       "pills",
       "tab-line",
+      "textarea",
       "time-picker"
     ]
   },
@@ -3187,6 +3188,7 @@
       "input-tags",
       "pills",
       "tab-line",
+      "textarea",
       "time-picker"
     ]
   },
@@ -3211,6 +3213,7 @@
     "components": [
       "button",
       "input",
+      "textarea",
       "time-picker"
     ]
   },
