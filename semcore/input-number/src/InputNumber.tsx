@@ -36,8 +36,8 @@ export function parseValueWithMinMax(
   return Math.max(min, Math.min(max, value));
 }
 
-class InputNumber<V extends NSInputNumber.Value | NSInputNumber.ValueNumber> extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSInputNumber.Component<V>>,
+class InputNumber extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSInputNumber.Component>,
   typeof InputNumber.enhance,
   {},
   WithI18nEnhanceProps,
@@ -93,10 +93,10 @@ class InputNumber<V extends NSInputNumber.Value | NSInputNumber.ValueNumber> ext
 }
 
 @propsObserver(['value'])
-class Value<V extends NSInputNumber.Value | NSInputNumber.ValueNumber> extends Component<
-    Intergalactic.InternalTypings.InferChildComponentProps<NSInputNumber.Value.Component<V>, typeof InputNumber, 'Value'>,
+class Value extends Component<
+    Intergalactic.InternalTypings.InferChildComponentProps<NSInputNumber.Value.Component, typeof InputNumber, 'Value'>,
     [],
-    NSInputNumber.Value.Handlers<V>,
+    NSInputNumber.Value.Handlers,
     {},
     NSInputNumber.Value.State,
     NSInputNumber.Value.DefaultProps
@@ -118,7 +118,7 @@ class Value<V extends NSInputNumber.Value | NSInputNumber.ValueNumber> extends C
 
   cursorPosition: number | null = -1;
 
-  uncontrolledProps(): NSInputNumber.Value.Handlers<V> {
+  uncontrolledProps(): NSInputNumber.Value.Handlers {
     return {
       value: [
         null,
@@ -529,16 +529,16 @@ class Value<V extends NSInputNumber.Value | NSInputNumber.ValueNumber> extends C
     this.handlers.value(this.processedValue(this.getDisplayValue(nextValue)), event);
   };
 
-  processedValue(value: string): NSInputNumber.CalculatedValue<V> {
+  processedValue(value: string): NSInputNumber.Value | NSInputNumber.ValueNumber {
     if (this.valueType === 'string') {
-      return value as NSInputNumber.CalculatedValue<V>;
+      return value;
     }
 
     if (value === '') {
-      return null as NSInputNumber.CalculatedValue<V>;
+      return null;
     }
 
-    return Number(value) as NSInputNumber.CalculatedValue<V>;
+    return Number(value);
   }
 
   render() {
@@ -606,7 +606,7 @@ Controls.style = style;
  * {@link https://developer.semrush.com/intergalactic/components/input-number/input-number-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-number/input-number-code/|Examples}
  */
 export default createComponent<
-  NSInputNumber.Component<string | number | null>,
+  NSInputNumber.Component,
   typeof InputNumber
 >(InputNumber, {
   Value,

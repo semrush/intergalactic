@@ -56,14 +56,23 @@ declare namespace NSInputNumber {
     type State = {
       displayValue: NSInputNumber.Value;
     };
-    type Handlers<V extends Value | ValueNumber> = {
+    type Handlers = {
       value: [
         null,
-        (value: Props<V>['value'], event: React.SyntheticEvent | WheelEvent) => void,
+        (value: Value | ValueNumber | undefined, event: React.SyntheticEvent | WheelEvent) => void,
       ];
     };
 
-    type Component<V extends Value | ValueNumber> = Intergalactic.Component<'input', Props<V>>;
+    type Component = (<
+      V extends Value | ValueNumber,
+      Tag extends Intergalactic.Tag = 'input',
+    >(
+      props: Intergalactic.InternalTypings.EfficientOmit<
+        Intergalactic.InternalTypings.ComponentProps<Tag, 'input', Props<V>>,
+        'tag' | 'children'
+      >
+    ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+    Intergalactic.InternalTypings.ComponentAdditive<'input', 'input', Props<any>>;
   }
 
   namespace Controls {
@@ -81,8 +90,8 @@ declare namespace NSInputNumber {
     type Component = Intergalactic.Component<'div', NSInput.Addon.Props>;
   }
 
-  type Component<V extends Value | ValueNumber> = Intergalactic.Component<'div', Props, Ctx> & {
-    Value: Value.Component<V>;
+  type Component = Intergalactic.Component<'div', Props, Ctx> & {
+    Value: Value.Component;
     Controls: Controls.Component;
     Addon: Addon.Component;
   };

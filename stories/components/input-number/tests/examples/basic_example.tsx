@@ -5,7 +5,7 @@ import React from 'react';
 
 type BaseExampleType =
   & NSInputNumber.Props
-  & NSInputNumber.Value.Props
+  & NSInputNumber.Value.Props<NSInputNumber.ValueNumber>
   & NSInputNumber.Controls.Props
   & { disabledValue?: boolean; logChanges?: boolean };
 
@@ -17,9 +17,9 @@ const getStepPrecision = (step?: number) => {
 
 const Demo = (props: BaseExampleType) => {
   const stepPrecision = getStepPrecision(props.step);
-  const [lastValue, setLastValue] = React.useState<string | null>(null);
+  const [lastValue, setLastValue] = React.useState<NSInputNumber.ValueNumber>(null);
 
-  const handleChange = (value: string, _event?: React.SyntheticEvent<HTMLInputElement>) => {
+  const handleChange = (value: NSInputNumber.ValueNumber, _event?: React.SyntheticEvent<HTMLInputElement>) => {
     setLastValue(value);
 
     if (props.logChanges) {
@@ -38,7 +38,7 @@ const Demo = (props: BaseExampleType) => {
         disabled={props.disabled}
         locale={props.locale}
       >
-        <InputNumber.Value
+        <InputNumber.Value<NSInputNumber.ValueNumber>
           disabled={props.disabledValue}
           max={props.max}
           min={props.min}
