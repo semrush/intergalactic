@@ -3142,9 +3142,7 @@
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
-    "components": [
-      "card"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
@@ -3158,6 +3156,7 @@
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
       "button",
+      "card",
       "input",
       "time-picker"
     ]

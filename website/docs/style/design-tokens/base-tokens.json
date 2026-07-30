@@ -824,12 +824,12 @@
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
   },
   {
-    "name": "--intergalactic-easing-fast",
+    "name": "--intergalactic-easings-fast",
     "value": "cubic-bezier(0.5, 0, 0, 1.12)",
     "description": "Should be used for fast animation timing function"
   },
   {
-    "name": "--intergalactic-easing-medium",
+    "name": "--intergalactic-easings-medium",
     "value": "cubic-bezier(0.5, 0, 0, 1.09)",
     "description": "Should be used for medium animation timing function"
   },

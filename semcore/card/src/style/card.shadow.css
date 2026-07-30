@@ -10,7 +10,7 @@ SCard {
     font-size: var(--intergalactic-fs-350, 18px);
     line-height: var(--intergalactic-lh-350, 150%);
     font-weight: var(--intergalactic-semi-bold, 600);
-    margin-right: var(--intergalactic-spacing-1x, 4px);
+    margin: 0 var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-1x, 4px) 0;
   }
 
   SInfoTrigger {
@@ -21,7 +21,7 @@ SCard {
 
   SDescription {
     display: block;
-    margin: var(--intergalactic-spacing-1x, 4px) 0;
+    margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
     color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
@@ -29,7 +29,7 @@ SCard {
 
   SHeader {
     padding-top: var(--intergalactic-spacing-content-padding-xlarge, 20px);
-    padding-bottom: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+    padding-bottom: var(--intergalactic-spacing-content-padding-medium, 12px);
     padding-left: var(--intergalactic-spacing-content-padding-xlarge, 20px);
     padding-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
   }
