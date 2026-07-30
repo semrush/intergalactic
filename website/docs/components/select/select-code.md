@@ -85,12 +85,12 @@ These components serve as wrappers over the corresponding components of the [Dro
 - `Select.List` is a component for the option list with the [ScrollArea](/components/scroll-area/scroll-area) inside.
 - `Select.Menu` is a wrapper over `Select.Popper` and `Select.List`, and all props are passed to `Select.List`.
 
-This example shows how to insert a [Notice](/components/notice/notice) in the Select dropdown window.
+This example shows how to add `Select.Notice`, based on the [Notice](/components/notice/notice) component, to the Select dropdown window.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/select/docs/examples/dropdownmenu_customization.tsx';
+  export Demo from 'stories/components/select/docs/examples/menu_customization.tsx';
 </script>
 
 :::

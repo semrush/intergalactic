@@ -2,7 +2,6 @@ import FileExportM from '@semcore/icon/FileExport/m';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Link from '@semcore/ui/link';
-import Notice from '@semcore/ui/notice';
 import SpinContainer from '@semcore/ui/spin-container';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

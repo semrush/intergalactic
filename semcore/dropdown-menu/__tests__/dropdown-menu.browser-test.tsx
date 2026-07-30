@@ -410,7 +410,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify padding between item badge', async () => {
       const ItemAddon = locators.itemInGroup(page).nth(4).locator('[data-ui-name="DropdownMenu.Item.Text"]');
       await checkStyles(ItemAddon, {
-        'margin-right': '4px',
+        'margin-right': '6px',
       });
     });
 

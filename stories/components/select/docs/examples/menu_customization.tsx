@@ -1,5 +1,4 @@
 import { Flex } from '@semcore/ui/base-components';
-import Notice from '@semcore/ui/notice';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -23,7 +22,7 @@ const Demo = () => (
             </Select.Option>
           ))}
         </Select.List>
-        <Select.Notice>
+        <Select.Notice px={3}>
           <Select.Notice.Content aria-live='polite'>Woooop, it's simple magic!</Select.Notice.Content>
         </Select.Notice>
       </Select.Popper>

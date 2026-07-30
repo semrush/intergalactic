@@ -148,7 +148,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify select with notice without focusable elements', {
     tag: [TAG.PRIORITY_MEDIUM, '@select'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/select/docs/examples/dropdownmenu_customization.tsx', 'en');
+    await loadPage(page, 'stories/components/select/docs/examples/menu_customization.tsx', 'en');
 
     await locators.label(page).click();
     await expect(locators.list(page)).toBeVisible();
