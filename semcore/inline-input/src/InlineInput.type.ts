@@ -157,17 +157,17 @@ declare namespace NSInlineInput {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineInputProps = NSInlineInput.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineInputAddonProps = NSInlineInput.Addon.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineInputValueProps = NSInlineInput.Value.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineInputConfirmControlProps = NSInlineInput.ConfirmControl.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineInputCancelControlProps = NSInlineInput.CancelControl.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineInputComponent = NSInlineInput.Component;
 
 export type { NSInlineInput };
