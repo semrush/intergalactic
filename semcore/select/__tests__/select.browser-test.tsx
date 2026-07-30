@@ -43,7 +43,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   pairwiseVariables.forEach((props) => {
     test(`Verify select basic props and addons: ${props.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@badge'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/basic_props_and_trigger_addons.tsx', 'en', props);
 
@@ -78,7 +78,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   optionsConfigVariables.forEach((props) => {
     test(`Verify select options: ${props.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@checkbox'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@checkbox', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/options_checkbox_group_and_hint.tsx', 'en', props);
 
@@ -135,7 +135,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify select with Search nothing found state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/options_filtering.tsx', 'en');
     await locators.selectTrigger(page).click();
@@ -146,7 +146,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify select with notice without focusable elements', {
-    tag: [TAG.PRIORITY_MEDIUM, '@select'],
+    tag: [TAG.PRIORITY_MEDIUM, '@select', '@base-components', '@flex-box', '@notice', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/dropdownmenu_customization.tsx', 'en');
 
@@ -208,7 +208,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     for (const size of ['m', 'l'] as const) {
       test(`Verify nothing-found status appearance with size ${size}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@select'],
+        tag: [TAG.PRIORITY_MEDIUM, '@select', '@base-components', '@flex-box', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, statusItemStory, 'en', { size });
 
@@ -234,7 +234,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   ===================================================== */
 test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify trigger customization mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@base-trigger', '@button-trigger', '@link-trigger', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/trigger_customization.tsx', 'en');
 
@@ -276,7 +276,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify trigger customization keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@base-trigger', '@button-trigger', '@link-trigger', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/trigger_customization.tsx', 'en');
 
@@ -308,7 +308,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify basic usage mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
@@ -353,7 +353,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify basic usage keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
@@ -426,7 +426,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify ArrowUp reaches all enabled options when first options are disabled', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/tests/examples/options_checkbox_group_and_hint.tsx', 'en', {
       option1Disabled: true,
@@ -488,7 +488,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify custom selected label', {
-    tag: [TAG.PRIORITY_MEDIUM, '@select'],
+    tag: [TAG.PRIORITY_MEDIUM, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/custom_selected_label.tsx', 'en');
 
@@ -503,7 +503,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify Controlled Mode mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/controlled_and_uncontrolled_modes.tsx', 'en');
 
@@ -531,7 +531,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify Controlled Mode keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/controlled_and_uncontrolled_modes.tsx', 'en');
 
@@ -571,7 +571,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify keyboard interactions when select with Search', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/options_filtering.tsx', 'en');
     const inputLocaltor = await page.locator('input');
@@ -671,7 +671,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify mouse interactions when select with Search', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/options_filtering.tsx', 'en');
     const inputLocaltor = await page.locator('input');
@@ -726,7 +726,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify advances filtering control custom behavior', {
-    tag: [TAG.PRIORITY_MEDIUM, '@select'],
+    tag: [TAG.PRIORITY_MEDIUM, '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/advanced_filtering_control.tsx', 'en');
 
@@ -750,7 +750,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   interactionVariables.forEach((item) => {
     test(`Verify select with interaction = ${item.interaction}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/basic_props_and_trigger_addons.tsx', 'en', item);
 
@@ -794,7 +794,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify that select could be focused programmatically', {
-    tag: [TAG.PRIORITY_MEDIUM, '@select'],
+    tag: [TAG.PRIORITY_MEDIUM, '@select', '@base-components', '@flex-box', '@button', '@tooltip', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/tests/examples/programmatically_focus.tsx', 'en');
     await locators.button(page, 'Set focus').click();
@@ -805,7 +805,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     const statusItemStory = 'stories/components/select/tests/examples/on_change_input_search.tsx';
 
     test('Verify screen-reader result count when options are found', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, TAG.ACCESSIBILITY, '@select'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, TAG.ACCESSIBILITY, '@select', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en');
 
@@ -824,7 +824,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     test('Verify visible "Nothing found" when no options match', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@select'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en');
 
@@ -843,7 +843,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     test('Verify loading state text is shown', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@select'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { state: 'loading' });
 
@@ -857,7 +857,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     test('Verify error state text is shown', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@select'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { state: 'error' });
 
@@ -873,7 +873,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     });
 
     test('Verify custom children override the default status text', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@select'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', {
         customChildren: 'No fruits match your search',

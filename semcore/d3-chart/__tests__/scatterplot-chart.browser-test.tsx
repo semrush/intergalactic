@@ -70,7 +70,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars, index) => {
     test(`Verify scatterplot chart with config ${index + 1} (${vars.description})`, {
-      tag: [TAG.PRIORITY_HIGH, '@scatterplot-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -99,7 +99,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify scatterplot with colors and numbers', {
-    tag: [TAG.PRIORITY_MEDIUM, '@scatterplot-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@scatterplot-chart', '@d3-chart', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -115,7 +115,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill focus styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@scatterplot-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@scatterplot-chart', '@d3-chart', '@chart-legend'],
   }, async ({ page, browserName }) => {
     if (browserName === 'webkit') return;
 
@@ -142,7 +142,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify onClickScatterItem callback', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@scatterplot-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@scatterplot-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     const messages: string[] = [];
     page.on('console', (msg) => {
