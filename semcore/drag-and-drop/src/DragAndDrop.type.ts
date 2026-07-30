@@ -112,17 +112,17 @@ declare namespace NSDragAndDrop {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DragAndDropProps = NSDragAndDrop.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DragAndDropDefaultProps = NSDragAndDrop.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DraggableProps = NSDragAndDrop.Draggable.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DragAndDropContext = NSDragAndDrop.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DropZoneProps = NSDragAndDrop.DropZone.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DragAndDropComponent = NSDragAndDrop.Component;
 
 export type { NSDragAndDrop };
