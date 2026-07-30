@@ -4,17 +4,13 @@ import type { NSPopper } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
-import type { FeaturePopoverPopperProps } from '@semcore/ui/feature-popover';
+import type { NSFeaturePopover } from '@semcore/ui/feature-popover';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleProps =
-  & FeaturePopoverPopperProps
-  & NSPopper.Props
-  & NSPopper.Trigger.Props
-  & NSPopper.Popper.Props;
+type ExampleProps = NSFeaturePopover.Popper.Props & NSPopper.Props & NSPopper.Trigger.Props & NSPopper.Popper.Props;
 
-const Demo = (props: ExampleProps) => {
+const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: ExampleProps } = (props) => {
   const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible: boolean) => () => setVisible(visible);
 
@@ -78,13 +74,14 @@ const Demo = (props: ExampleProps) => {
 };
 
 export const defaultProps: ExampleProps = {
-  placement: undefined,
-  visible: true,
-  timeout: undefined,
-  explicitTriggerSet: false,
-  popperMargin: undefined,
-  closeIcon: true,
-  duration: undefined,
+  'placement': undefined,
+  'visible': true,
+  'timeout': undefined,
+  'explicitTriggerSet': false,
+  'popperMargin': undefined,
+  'closeIcon': true,
+  'duration': undefined,
+  'aria-label': 'label',
 };
 
 Demo.defaultProps = defaultProps;

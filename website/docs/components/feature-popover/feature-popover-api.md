@@ -13,7 +13,7 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
-<TypesView type="FeaturePopoverProps" :types={...types} />
+<TypesView type="NSFeaturePopover.Props" :types={...types} />
 
 ## FeaturePopover.Trigger
 
@@ -33,7 +33,7 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
-<TypesView type="FeaturePopoverPopperProps" :types={...types} />
+<TypesView type="NSFeaturePopover.Popper.Props" :types={...types} />
 
 ## FeaturePopover.Spot
 

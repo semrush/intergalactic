@@ -1,6 +1,7 @@
 import { createBreakpoints, Box, Flex } from '@semcore/base-components';
 import type { NSBox } from '@semcore/base-components';
 import Button from '@semcore/button';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -13,18 +14,7 @@ import ChevronRight from '@semcore/icon/ChevronRight/l';
 import Modal from '@semcore/modal';
 import React from 'react';
 
-import type CarouselType from './Carousel.types';
-import type {
-  CarouselProps,
-  CarouselState,
-  CarouselContext,
-  CarouselItem,
-  CarouselItemProps,
-  CarouselButtonProps,
-  CarouselIndicatorsProps,
-  CarouselIndicatorProps,
-  CarouselDefaultProps,
-} from './Carousel.types';
+import type { NSCarousel } from './Carousel.types';
 import style from './style/carousel.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -39,12 +29,12 @@ const BreakPoints = createBreakpoints(media);
 const isSmallScreen = (index?: number) => index === 1;
 
 class CarouselRoot extends Component<
-  CarouselProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSCarousel.Component>,
   typeof enhance,
-  { index: any },
-  CarouselContext & WithI18nEnhanceProps,
-  CarouselState,
-  CarouselDefaultProps
+  NSCarousel.Handlers,
+  WithI18nEnhanceProps,
+  NSCarousel.State,
+  NSCarousel.DefaultProps
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -66,7 +56,7 @@ class CarouselRoot extends Component<
   refModalContainer = React.createRef<HTMLElement>();
   _touchStartCoord = -1;
 
-  constructor(props: CarouselProps) {
+  constructor(props: NSCarousel.Props) {
     super(props);
     this.isControlled = props.index !== undefined;
     this.state = {
@@ -76,11 +66,11 @@ class CarouselRoot extends Component<
     };
   }
 
-  uncontrolledProps() {
+  uncontrolledProps(): NSCarousel.Handlers {
     return {
       index: [
         null,
-        (_index: number) => {
+        () => {
           this.refCarousel.current?.blur();
           setTimeout(() => {
             this.refCarousel.current?.focus();
@@ -119,7 +109,7 @@ class CarouselRoot extends Component<
     );
   }
 
-  componentDidUpdate(prevProps: CarouselProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const { index } = this.asProps;
     if (prevProps.index !== index && this.isControlled && index !== undefined) {
       this.setState({ selectedIndex: index }, () => this.transformContainer());
@@ -169,7 +159,7 @@ class CarouselRoot extends Component<
     }
   };
 
-  toggleItem = (item: CarouselItem, removeItem = false) => {
+  toggleItem = (item: NSCarousel.Item, removeItem = false) => {
     this.setState((prevState) => {
       const newItems = removeItem
         ? prevState.items.filter((element) => element.node !== item.node)
@@ -331,7 +321,7 @@ class CarouselRoot extends Component<
     };
   }
 
-  getItemProps(_props: CarouselItemProps, index: number) {
+  getItemProps(_props: NSCarousel.Item.Props, index: number) {
     const { zoom } = this.asProps;
     const isCurrent = this.isSelected(index);
 
@@ -609,7 +599,9 @@ class CarouselRoot extends Component<
   }
 }
 
-function Container(props: NSBox.Props & { duration?: number }) {
+function Container(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSCarousel.Container.Component, typeof CarouselRoot, 'Container'>,
+) {
   const SContainer = Root;
   const { styles, duration } = props;
 
@@ -618,14 +610,16 @@ function Container(props: NSBox.Props & { duration?: number }) {
   );
 }
 
-function ContentBox(props: NSBox.Props) {
+function ContentBox(props: Intergalactic.InternalTypings.InferComponentProps<NSCarousel.ContentBox.Component>) {
   const SContentBox = Root;
   const { styles } = props;
 
   return sstyled(styles)(<SContentBox render={Box} />);
 }
 
-class Item extends Component<CarouselItemProps> {
+class Item extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSCarousel.Item.Component, typeof CarouselRoot, 'Item'>
+> {
   refItem = React.createRef<HTMLElement>();
 
   componentDidMount() {
@@ -650,7 +644,7 @@ class Item extends Component<CarouselItemProps> {
     }
   }
 
-  componentDidUpdate(prevProps: CarouselItemProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const transform = this.props.transform;
     const refItem = this.refItem.current;
 
@@ -679,7 +673,9 @@ class Item extends Component<CarouselItemProps> {
   }
 }
 
-function Prev(props: CarouselButtonProps) {
+function Prev(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSCarousel.Prev.Component, typeof CarouselRoot, 'Prev'>,
+) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SPrev = Root;
   const SPrevButton = Button;
@@ -704,7 +700,9 @@ function Prev(props: CarouselButtonProps) {
   );
 };
 
-function Next(props: CarouselButtonProps) {
+function Next(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSCarousel.Next.Component, typeof CarouselRoot, 'Next'>,
+) {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SNext = Root;
   const SNextButton = Button;
@@ -729,7 +727,10 @@ function Next(props: CarouselButtonProps) {
   );
 };
 
-function Indicators({ items, styles, Children, inverted }: CarouselIndicatorsProps) {
+function Indicators(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSCarousel.Indicators.Component, typeof CarouselRoot, 'Indicators'>,
+) {
+  const { items, styles, Children, inverted } = props;
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
@@ -740,14 +741,17 @@ function Indicators({ items, styles, Children, inverted }: CarouselIndicatorsPro
   }
   return sstyled(styles)(
     <SIndicators render={Box} invertOutline={inverted}>
-      {items?.map((item: CarouselItem, index: number) => (
+      {items?.map((item: NSCarousel.Item, index: number) => (
         <Carousel.Indicator key={index} {...item} inverted={inverted} />
       ))}
     </SIndicators>,
   );
 };
 
-function Indicator({ styles, Children }: CarouselIndicatorProps) {
+function Indicator(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSCarousel.Indicator.Component, typeof CarouselRoot, 'Indicator'>,
+) {
+  const { styles, Children } = props;
   const SIndicator = Root;
   return sstyled(styles)(
     <SIndicator render={Box}>
@@ -762,7 +766,7 @@ function Indicator({ styles, Children }: CarouselIndicatorProps) {
  * {@link https://developer.semrush.com/intergalactic/components/carousel/carousel-api/|API} | {@link https://developer.semrush.com/intergalactic/components/carousel/carousel-code/|Examples}
  */
 const Carousel = createComponent<
-  typeof CarouselType,
+  NSCarousel.Component,
   typeof CarouselRoot
 >(CarouselRoot, {
   Container,

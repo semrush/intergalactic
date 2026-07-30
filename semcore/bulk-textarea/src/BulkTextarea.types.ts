@@ -84,9 +84,9 @@ declare namespace NSBulktextarea {
        */
       id?: string;
       /**
-       * Placeholder for field
+       * Placeholder for field. For multiline placeholder use an array of strings
        */
-      placeholder?: string;
+      placeholder?: string | string[];
       /**
        * String to render in textarea. OnChanging value, it will go throw paste pipeline
        */
@@ -95,6 +95,12 @@ declare namespace NSBulktextarea {
        * This component doesn't have default onChange callback, because we think that you need only the result after every changes/fixes
        */
       onBlur?: (value: T, e: Event) => void;
+
+      /**
+       * Callback to enable display errors after pasting for `on-paste` validation.
+       * @internal
+       */
+      onPaste?: () => void;
       /**
        * Size of component
        * @default m
@@ -191,8 +197,13 @@ declare namespace NSBulktextarea {
       mouseLineIndex: number;
       visibleErrorPopper: boolean;
     };
+    interface Instance {
+      focus(): void;
+      focus(node: HTMLLIElement, offset: number | [number, number]): void;
+      addLine(value: string): Promise<HTMLLIElement>;
+    }
 
-    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>>;
+    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>, {}, [], Instance>;
   }
 
   namespace Counter {

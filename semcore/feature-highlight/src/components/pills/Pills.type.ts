@@ -1,17 +1,32 @@
 import type { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type Pills from '@semcore/pills';
-import type { PillProps } from '@semcore/pills';
+import type { NSPills } from '@semcore/pills';
 
-export type HighlightedItemAddonProps = {
-  animatedSparkleCount?: number;
-};
+declare namespace NSPillsFH {
+  namespace HighlightedItem {
+    type Props = NSPills.Props;
 
-export type HighlightedPillItemComponent = Intergalactic.Component<'div', PillProps> & {
-  Text: typeof Box;
-  Addon: Intergalactic.Component<'div', HighlightedItemAddonProps>;
-};
+    namespace Text {
+      type Component = typeof Box;
+    }
 
-export type HighlightedPillComponent = typeof Pills & {
-  HighlightedItem: HighlightedPillItemComponent;
-};
+    namespace Addon {
+      type Props = {
+        animatedSparkleCount?: number;
+      };
+
+      type Component = Intergalactic.Component<'div', Props>;
+    }
+
+    type Component = Intergalactic.Component<'button', Props> & {
+      Text: Text.Component;
+      Addon: Addon.Component;
+    };
+  }
+
+  type Component = NSPills.Component & {
+    HighlightedItem: HighlightedItem.Component;
+  };
+}
+
+export type { NSPillsFH };
