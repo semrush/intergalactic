@@ -85,21 +85,21 @@ declare namespace NSCheckbox {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxSize = NSCheckbox.Size;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxState = NSCheckbox.State;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxProps = NSCheckbox.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxValueProps = NSCheckbox.Value.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxValueControlProps = NSCheckbox.Value.Control.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxValueCheckMarkProps = NSCheckbox.Value.Mark.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxContext = NSCheckbox.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxTextProps = NSCheckbox.Text.Props;
 
 export type { NSCheckbox };

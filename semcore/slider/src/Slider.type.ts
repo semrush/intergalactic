@@ -93,9 +93,9 @@ declare namespace NSSlider {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SliderOption<V extends NSSlider.Value> = NSSlider.Option<V>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SliderProps<V extends NSSlider.Value = NSSlider.Value> = NSSlider.Props<V>;
 
 export type { NSSlider };
