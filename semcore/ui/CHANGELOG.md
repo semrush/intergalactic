@@ -1,3 +1,35 @@
+## [17.4.1] - 2026-07-24
+
+### @semcore/carousel
+
+- **Fixed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSCarousel` namespace.
+
+### @semcore/feature-highlight
+
+- **Changed** Refactor component types.
+
+### @semcore/feature-popover
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSFeaturePopover` namespace.
+
+### @semcore/bulk-textarea
+
+- **Fixed** Non-working keyboard interactions.
+- **Fixed** `ErrorsNavigation` buttons didn't change the size following parent.
+- **Changed** Refactor component's types. Deprecated atomic types. Atomic types are
+part of `NSBulktextarea` namespace.
+
+### @semcore/select
+
+- **Fixed** indeterminate state had incorrect appearance when Select size was
+undefined
+
+### @semcore/time-picker
+
+- **Fixed** Incorrect initialization of the meridian.
+
 ## [17.4.0] - 2026-07-10
 
 ### @semcore/side-panel

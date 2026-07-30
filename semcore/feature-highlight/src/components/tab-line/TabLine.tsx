@@ -1,14 +1,16 @@
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import TabLine from '@semcore/tab-line';
 import React from 'react';
 
 import style from './tabLine.shadow.css';
-import type { HighlightedTabLineComponent, HighlightedTabLineItemComponent } from './TabLine.type';
+import type { NSTabLineFH } from './TabLine.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class TabLineFHRoot extends Component {
+class TabLineFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTabLineFH.Component>
+> {
   static displayName = 'TabLineFH';
   static style = style;
 
@@ -17,7 +19,9 @@ class TabLineFHRoot extends Component {
   }
 }
 
-class HighlightedItemRoot extends Component {
+class HighlightedItemRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSTabLineFH.HighlightedItem.Component>
+> {
   static displayName = 'HighlightedItem';
   static style = style;
 
@@ -25,7 +29,7 @@ class HighlightedItemRoot extends Component {
     clicked: false,
   };
 
-  handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+  handleClick(e: React.MouseEvent<HTMLDivElement>) {
     const { onClick } = this.asProps;
 
     onClick?.(e);
@@ -48,7 +52,13 @@ class HighlightedItemRoot extends Component {
   }
 }
 
-function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boolean } & IRootComponentProps) {
+function HighlightedAddon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSTabLineFH.HighlightedItem.Addon.Component,
+    typeof HighlightedItemRoot,
+    'Addon'
+  >,
+) {
   const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
 
   return (
@@ -65,7 +75,7 @@ function HighlightedAddon(props: { animatedSparkleCount?: number; clicked: boole
   );
 }
 
-const HighlightedItem = createComponent<HighlightedTabLineItemComponent, typeof HighlightedItemRoot>(
+const HighlightedItem = createComponent<NSTabLineFH.HighlightedItem.Component, typeof HighlightedItemRoot>(
   HighlightedItemRoot,
   { Text: TabLine.Item.Text, Addon: HighlightedAddon },
 );
@@ -75,7 +85,7 @@ const HighlightedItem = createComponent<HighlightedTabLineItemComponent, typeof 
  *
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#tabline|Docs}
  */
-export const TabLineFH = createComponent<HighlightedTabLineComponent, typeof TabLineFHRoot>(TabLineFHRoot, {
+export const TabLineFH = createComponent<NSTabLineFH.Component, typeof TabLineFHRoot>(TabLineFHRoot, {
   Item: [TabLine.Item, { Text: TabLine.Item.Text, Addon: TabLine.Item.Addon }],
   HighlightedItem,
 });

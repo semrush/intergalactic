@@ -2,7 +2,7 @@ import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
 import Badge from '@semcore/ui/badge';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import TabPanel from '@semcore/ui/tab-panel';
 import type { NSTabPanel } from '@semcore/ui/tab-panel';
@@ -10,7 +10,7 @@ import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type TabPanelDefProps = NSTabPanel.Props & BoxProps & NSTabPanel.Item.Props & {
+type TabPanelDefProps = NSTabPanel.Props & NSBox.Props & NSTabPanel.Item.Props & {
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;

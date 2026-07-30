@@ -97,6 +97,33 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
   });
 
+  test('Verify indeterminate checkbox has default size when Select size is omitted', {
+    tag: [TAG.PRIORITY_HIGH, '@select', '@checkbox'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/select/tests/examples/options_checkbox_group_and_hint.tsx', 'en', {
+      omitSize: true,
+      showLabel: false,
+      option2ShowCheckbox: false,
+      option3ShowCheckbox: true,
+      option3CheckboxIndeterminate: true,
+      showGroup: false,
+    });
+
+    await locators.selectTrigger(page).click();
+    await locators.options(page).first().waitFor({ state: 'visible' });
+
+    const checkbox = page.locator('[data-ui-name="Select.Option.Checkbox"]');
+    await expect(checkbox).toHaveCount(1);
+    await expect(checkbox).toHaveCSS('width', '16px');
+    await expect(checkbox).toHaveCSS('height', '16px');
+
+    const indicatorSize = await checkbox.evaluate((element) => {
+      const style = window.getComputedStyle(element, '::after');
+      return { width: style.width, height: style.height };
+    });
+    expect(indicatorSize).toEqual({ width: '8px', height: '2px' });
+  });
+
   const subcomponentsConfigVariables = [
     // Test trigger size and state variations
     { description: 'trigger M normal, list M, no search', triggerSize: 'm', triggerState: 'normal', triggerDisabled: false, triggerLoading: false, listSize: 'm', showInputSearch: false },

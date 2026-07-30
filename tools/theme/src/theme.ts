@@ -14,7 +14,7 @@ import {
   L_BG_SECONDARY_ACTIVE,
   L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
   L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
+  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
   L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
   L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
@@ -1340,6 +1340,18 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
       },
+      control_presets_bg_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Presets items.',
+      },
+      control_presets_border_selected: {
+        value: neutral.at(L_BORDER_STRONG),
+        description: 'Border color of the selected Preset item.',
+      },
+      control_presets_border_hover: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the hovered Preset item.',
+      },
       progress_bar_bg_DEFAULT: {
         value: neutral.at(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
@@ -2656,6 +2668,15 @@ type SemanticColors = {
       };
       border: {
         DEFAULT: Value;
+      };
+    };
+    presets: {
+      bg: {
+        DEFAULT: Value;
+      };
+      border: {
+        selected: Value;
+        hover: Value;
       };
     };
     tab_line: {

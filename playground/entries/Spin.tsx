@@ -1,4 +1,4 @@
-import type { FlexProps } from '@semcore/ui/base-components';
+import type { NSFlex } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import type { NSSpin } from '@semcore/ui/spin';
 import Spin from '@semcore/ui/spin';
@@ -38,7 +38,7 @@ const textSize: { [key in SpinJSXProps['size']]: NSText.Props['size'] } = {
   xxl: 200,
 };
 
-const textPlacement: { [key in SpinJSXProps['textPlacement']]: FlexProps['direction'] } = {
+const textPlacement: { [key in SpinJSXProps['textPlacement']]: NSFlex.Props['direction'] } = {
   right: 'row',
   bottom: 'column',
 };

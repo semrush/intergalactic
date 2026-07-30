@@ -229,10 +229,9 @@ class RootSelect extends AbstractDropdown {
   }
 
   getOptionCheckboxProps() {
-    const { size, resolveColor } = this.asProps;
+    const { resolveColor } = this.asProps;
 
     return {
-      size,
       resolveColor,
     };
   }

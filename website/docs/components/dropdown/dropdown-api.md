@@ -28,7 +28,7 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Trigger />;
 ```
 
-<TypesView type="PopperTriggerProps" :types={...types} />
+<TypesView type="NSPopper.Trigger.Props" :types={...types} />
 
 ## Dropdown.Popper
 
@@ -39,6 +39,8 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Popper />;
 ```
 
+<TypesView type="NSPopper.Popper.Props" :types={...types} />
+
 ## Dropdown.Notice
 
 A wrapper over [Notice](../notice/notice).
@@ -48,6 +50,6 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Notice />;
 ```
 
-<TypesView type="PopperPopperProps" :types={...types} />
+<TypesView type="NSPopper.Popper.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

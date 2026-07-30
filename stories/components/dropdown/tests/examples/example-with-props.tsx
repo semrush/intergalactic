@@ -1,6 +1,6 @@
 import FileExportM from '@semcore/icon/FileExport/m';
 import InfoM from '@semcore/icon/Info/m';
-import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/base-components';
+import type { NSPopper } from '@semcore/ui/base-components';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
@@ -10,18 +10,23 @@ import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type DropdownExampleProps = PopperPopperProps & PopperTriggerProps & PopperProps & DropdownProps & {
-  autofocus?: boolean;
-  showNotice?: boolean;
-  noticeTheme?: NSNotice.Theme;
-  noticeHidden?: boolean;
-  showNoticeLabel?: boolean;
-  noticeTitle?: string;
-  noticeText?: string;
-  showNoticeActions?: boolean;
-  noticeActionText?: string;
-  showNoticeClose?: boolean;
-};
+type DropdownExampleProps =
+  & NSPopper.Popper.Props
+  & NSPopper.Trigger.Props
+  & NSPopper.Props
+  & DropdownProps
+  & {
+    autofocus?: boolean;
+    showNotice?: boolean;
+    noticeTheme?: NSNotice.Theme;
+    noticeHidden?: boolean;
+    showNoticeLabel?: boolean;
+    noticeTitle?: string;
+    noticeText?: string;
+    showNoticeActions?: boolean;
+    noticeActionText?: string;
+    showNoticeClose?: boolean;
+  };
 const Demo = (props: DropdownExampleProps) => (
   <Flex p={30}>
     <Dropdown

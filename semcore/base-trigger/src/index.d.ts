@@ -1,4 +1,4 @@
-import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { ButtonLinkProps, ButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { WithAnimatedSizeEnhanceProps } from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
@@ -6,8 +6,8 @@ import type { NSCounter } from '@semcore/counter';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
-export type BaseTriggerProps = BoxProps &
-  NeighborItemProps &
+export type BaseTriggerProps = NSBox.Props &
+  NSNeighborLocation.Detect.Props &
   WithAnimatedSizeEnhanceProps & {
     /**
      * Trigger size
@@ -73,7 +73,7 @@ export type FilterTriggerCounterProps = {
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
   Text: typeof Text;
-  Addon: typeof Box;
+  Addon: NSBox.Component;
 };
 
 declare const ButtonTrigger: Intergalactic.Component<'div', ButtonTriggerProps> & {
