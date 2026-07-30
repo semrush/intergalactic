@@ -40,7 +40,7 @@ const Demo = () => {
               <DropdownMenu.Item onClick={handleClick}>CSV</DropdownMenu.Item>
               <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
             </DropdownMenu.List>
-            <DropdownMenu.Notice theme='warning'>
+            <DropdownMenu.Notice px={3} theme='warning'>
               <DropdownMenu.Notice.Content>
                 <Button onClick={handleOpen} use='primary'>
                   Open modal
