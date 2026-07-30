@@ -1,5 +1,5 @@
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import { type EllipsisSettings } from '@semcore/ui/base-components';
+import type { NSEllipsis } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
@@ -11,7 +11,7 @@ type WithTableLinkProps = NSModal.Props & {
   title?: string;
   content?: string;
   showCloseButton?: boolean;
-  ellipsis?: true | EllipsisSettings;
+  ellipsis?: true | NSEllipsis.Settings;
 };
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
@@ -131,7 +131,7 @@ const Demo = (props: WithTableLinkProps) => {
   //   }
   // }, []);
   //
-  // const ellipsisSettings: EllipsisSettings = React.useMemo(() => {
+  // const ellipsisSettings: NSEllipsis.Settings = React.useMemo(() => {
   //   return {
   //     cropPosition: 'end',
   //     containerElement: columnElement,

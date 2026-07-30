@@ -1,4 +1,3 @@
-import type { EllipsisSettings } from '@semcore/ui/base-components';
 import type { DataTableData } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';

@@ -1,4 +1,5 @@
-import { Box, type BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, type Intergalactic, Root, sstyled } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import findComponent, { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -40,7 +41,7 @@ type AsPropsMiddle = {
   tag?: React.ElementType;
 };
 
-type EllipsisProps = BoxProps &
+type EllipsisProps = NSBox.Props &
   Partial<TooltipProps> & {
     /**
      * Rows count in multiline Ellipsis
@@ -79,7 +80,7 @@ type DefaultProps = {
 };
 
 type EllipsisComponent = Intergalactic.Component<'div', EllipsisProps> & {
-  Content: typeof Box;
+  Content: NSBox.Component;
   Popper: typeof Tooltip.Popper;
 };
 

@@ -1,14 +1,16 @@
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import isNode from '@semcore/core/lib/utils/isNode';
-import type { NSNoticeSmart } from '@semcore/notice';
 import Notice from '@semcore/notice';
 import React from 'react';
 
 import style from './notice.shadow.css';
-import type { HighlightedNoticeComponent } from './Notice.type';
+import type { NSNoticeFH } from './Notice.type';
 
-class NoticeFHRoot extends Component<NSNoticeSmart.Props> {
+class NoticeFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSNoticeFH.Component>
+> {
   static displayName = 'NoticeFH';
   static style = style;
 
@@ -63,7 +65,7 @@ class NoticeFHRoot extends Component<NSNoticeSmart.Props> {
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#notice|Docs}
  */
 export const NoticeFH = createComponent<
-  HighlightedNoticeComponent,
+  NSNoticeFH.Component,
   typeof NoticeFHRoot
 >(NoticeFHRoot, {
   Label: Notice.Label,

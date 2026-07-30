@@ -1,9 +1,11 @@
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, sstyled, Component, Root } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import React from 'react';
 
 import { Box } from '../flex-box';
-import type { ScrollBar as ScrollBarType, ScrollBarProps, ScrollBarDefaultProps } from './ScrollBar.types';
+import type { ScrollAreaRootType } from './ScrollArea';
+import type { NSScrollArea } from './ScrollArea.type';
 import style from './style/scroll-bar.shadow.css';
 
 export const hideScrollBarsFromScreenReadersContext = React.createContext(false);
@@ -31,17 +33,13 @@ const setAriaValues = (
   }
 };
 
-type State = {
-  visibleScroll: boolean;
-};
-
 class ScrollBarRoot extends Component<
-  ScrollBarProps,
+  Intergalactic.InternalTypings.InferChildComponentProps<NSScrollArea.Bar.Component, ScrollAreaRootType, 'Bar'>,
   typeof ScrollBarRoot.enhance,
   {},
   { container: React.RefObject<HTMLElement | null> },
-  State,
-  ScrollBarDefaultProps
+  NSScrollArea.Bar.State,
+  NSScrollArea.Bar.DefaultProps
 > {
   static displayName = 'Bar';
 
@@ -68,7 +66,7 @@ class ScrollBarRoot extends Component<
   _scroll = { left: 0, top: 0 };
   _mouse = { pageX: 0, pageY: 0 };
 
-  state: State = {
+  state: NSScrollArea.Bar.State = {
     visibleScroll: false,
   };
 
@@ -317,7 +315,7 @@ class ScrollBarRoot extends Component<
     this.subscribe(this.$container);
   }
 
-  componentDidUpdate(prevProps: ScrollBarProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     if (prevProps.container !== this.props.container && prevProps.container === null) {
       this.subscribe(this.$container);
     }
@@ -395,7 +393,9 @@ class ScrollBarRoot extends Component<
   }
 }
 
-function Slider(props: ScrollBarProps) {
+function Slider(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSScrollArea.Bar.Component, typeof ScrollBarRoot, 'Slider'>,
+) {
   const { styles } = props;
   const SSlider = Root;
 
@@ -403,7 +403,7 @@ function Slider(props: ScrollBarProps) {
 }
 
 export const ScrollBar = createComponent<
-  typeof ScrollBarType,
+  NSScrollArea.Bar.Component,
   typeof ScrollBarRoot
 >(ScrollBarRoot, {
   Slider,

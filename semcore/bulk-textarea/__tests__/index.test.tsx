@@ -1,10 +1,45 @@
 import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { render, userEvent, cleanup, waitFor } from '@semcore/testing-utils/testing-library';
+import { render, userEvent, cleanup, waitFor, fireEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, vi, assertType, expect, afterEach, beforeEach } from '@semcore/testing-utils/vitest';
 import React from 'react';
 
 import BulkTextarea from '../src';
+
+const insertText = (element: HTMLElement, text: string) => {
+  const range = document.createRange();
+  range.selectNodeContents(element);
+  range.collapse(false);
+
+  const event = new InputEvent('beforeinput', {
+    bubbles: true,
+    cancelable: true,
+    data: text,
+    inputType: 'insertText',
+  });
+
+  Object.defineProperty(event, 'getTargetRanges', {
+    value: () => [range],
+  });
+
+  fireEvent(element, event);
+};
+
+const typeText = async (element: HTMLElement, text: string) => {
+  const descriptor = Object.getOwnPropertyDescriptor(InputEvent.prototype, 'getTargetRanges');
+  Object.defineProperty(InputEvent.prototype, 'getTargetRanges', {
+    configurable: true,
+    value: () => {
+      const selection = window.getSelection();
+      return selection?.rangeCount ? [selection.getRangeAt(0)] : [];
+    },
+  });
+
+  await userEvent.type(element, text);
+
+  if (descriptor) Object.defineProperty(InputEvent.prototype, 'getTargetRanges', descriptor);
+  else delete (InputEvent.prototype as Partial<InputEvent>).getTargetRanges;
+};
 
 describe('BulkTextarea Dependency imports', () => {
   runDependencyCheckTests('bulk-textarea');
@@ -64,7 +99,7 @@ describe('BulkTextarea OnChange', () => {
       </BulkTextarea>,
     );
 
-    const inputField = getByRole('textbox');
+    const inputField = getByRole('list');
 
     await userEvent.keyboard('[Tab]');
     inputField.textContent = value;
@@ -107,14 +142,14 @@ describe('BulkTextarea OnChange', () => {
       </BulkTextarea>,
     );
 
-    const inputField = getByRole('textbox');
+    const inputField = getByRole('list');
 
-    await userEvent.type(inputField, 'Test');
-    expect(inputField.textContent).not.toBe('');
+    await typeText(inputField, 'Test');
+    await waitFor(() => expect(inputField.textContent).not.toBe(''));
 
     await userEvent.click(await findByRole('button', { name: 'Clear all' }));
 
-    expect(inputField.innerHTML).toBe('');
+    await waitFor(() => expect(inputField.innerHTML).toBe(''));
     await waitFor(() => expect(queryByRole('button', { name: 'Clear all' })).toBeNull());
     expect(
       container.querySelector('[data-ui-name="BulkTextarea.Counter"]')?.textContent,
@@ -131,9 +166,9 @@ describe('BulkTextarea onImmediatelyChange', () => {
       </BulkTextarea>,
     );
 
-    const inputField = getByRole('textbox');
+    const inputField = getByRole('list');
 
-    await userEvent.type(inputField, 'O');
-    expect(handleImmediatelyChange).toHaveBeenLastCalledWith(['O'], 'O');
+    insertText(inputField, 'O');
+    await waitFor(() => expect(handleImmediatelyChange).toHaveBeenLastCalledWith(['O'], 'O'));
   });
 });

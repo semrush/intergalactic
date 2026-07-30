@@ -2,7 +2,7 @@ import type { Intergalactic } from '@semcore/core';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
 import type { CSSProperties } from 'react';
 
-import type { Events, EllipsisSettings, TruncateOptions } from './Ellipsis.types';
+import type { NSEllipsis } from './Ellipsis.types';
 import { ellipsisManager, isSafari } from './EllipsisManager';
 import { Scheduler } from './Scheduler';
 import { textMeasurer } from './TextMeasurer';
@@ -12,12 +12,12 @@ import { textMeasurer } from './TextMeasurer';
  *
  * {@link https://developer.semrush.com/intergalactic/utils/ellipsis/ellipsis-code|Examples}
  */
-export class Ellipsis extends EventEmitter<Events> {
+export class Ellipsis extends EventEmitter<NSEllipsis.Events> {
   public readonly element: HTMLElement;
   public readonly containerElement: HTMLElement | undefined;
   public textContent: string;
 
-  private readonly settings: Intergalactic.InternalTypings.PartialRequired<EllipsisSettings, 'cropPosition' | 'maxLine'>;
+  private readonly settings: Intergalactic.InternalTypings.PartialRequired<NSEllipsis.Settings, 'cropPosition' | 'maxLine'>;
 
   public readonly scheduler = new Scheduler();
 
@@ -29,7 +29,7 @@ export class Ellipsis extends EventEmitter<Events> {
   private requiredTo = -1;
   private stylesForRequired: CSSProperties | string | null = null;
 
-  constructor(element: HTMLElement, props: EllipsisSettings) {
+  constructor(element: HTMLElement, props: NSEllipsis.Settings) {
     super();
 
     this.containerElement = props.containerElement;
@@ -77,7 +77,7 @@ export class Ellipsis extends EventEmitter<Events> {
     return this.settings.observeChildrenMutations;
   }
 
-  public getTruncateSize(options?: TruncateOptions): [number, number] {
+  public getTruncateSize(options?: NSEllipsis.TruncateOptions): [number, number] {
     const text = options?.text ?? this.textContent;
     const containerWidth = options?.containerWidth ?? this.getContainerWidth();
     const font = options?.font ?? this.getFont();

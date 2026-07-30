@@ -1,17 +1,18 @@
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
 import { Box, Flex } from '../flex-box';
-import type { RowProps, ColProps, RowType, GridContext, RowDefaultProps } from './Grid.types';
+import type { NSGrid } from './Grid.type';
 import style from './style/grid.shadow.css';
 
 class RowRoot extends Component<
-  RowProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSGrid.Component>,
   [],
   {},
-  GridContext,
   {},
-  RowDefaultProps
+  {},
+  NSGrid.DefaultProps
 > {
   static displayName = 'Row';
   static style = style;
@@ -35,7 +36,9 @@ class RowRoot extends Component<
 
 const excludeProps = ['span'];
 
-function Col(props: ColProps) {
+function Col(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSGrid.Col.Component, typeof RowRoot, 'Col'>,
+) {
   const SCol = Root;
   const { styles, gutter } = props;
   let { span, md, sm, xs, offset, mdOffset, smOffset, xsOffset } = props;
@@ -76,7 +79,7 @@ function Col(props: ColProps) {
 }
 
 const Row = createComponent<
-  RowType,
+  NSGrid.Component,
   typeof RowRoot
 >(RowRoot, { Col });
 

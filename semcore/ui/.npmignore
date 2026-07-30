@@ -3,6 +3,7 @@ __tests__
 components.json
 generate.js
 tsconfig.json
+tsconfig.tsbuildinfo
 clear.ts
 generate-reexports.ts
 update-dependencies.ts
