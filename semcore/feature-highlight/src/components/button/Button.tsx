@@ -1,30 +1,27 @@
-import type { NSButton } from '@semcore/button';
 import Button from '@semcore/button';
-import { createComponent, Root, sstyled, Component, type IRootNodeProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 
 import style from './button.shadow.css';
-import type { HighLightedButtonAddonProps, HighlightedButtonComponent, HighlightedButtonDefaultProps } from './Button.type';
+import type { NSButtonFH } from './Button.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-/*
- * `highlighted` is an internal-only value and cannot be represented in the public prop type.
- * During composition the `highlighted` prop is intentionally stripped, so it never reaches
- * the final component interface. Because of that, this implementation relies on the current approach.
- * Public props are `ButtonProps`.
-*/
-type HighlightedButtonProps = Omit<NSButton.Props, 'theme'> & {
-  theme?: NSButton.Props['theme'] | 'highlighted';
-};
-
 class ButtonFHRoot extends Component<
-  HighlightedButtonProps,
+  /*
+   * `highlighted` is an internal-only value and cannot be represented in the public prop type.
+   * During composition the `highlighted` prop is intentionally stripped, so it never reaches
+   * the final component interface. Because of that, this implementation relies on the current approach.
+   * Public props are `ButtonProps`.
+   */
+  // TODO: Probably, `theme` prop should be deleted from public API?
+  Omit<Intergalactic.InternalTypings.InferComponentProps<NSButtonFH.Component>, 'theme'>,
   [],
   {},
+  NSButtonFH.InnerProps,
   {},
-  {},
-  HighlightedButtonDefaultProps
+  NSButtonFH.DefaultProps
 > {
   static displayName = 'ButtonFH';
   static style = style;
@@ -56,19 +53,19 @@ class ButtonFHRoot extends Component<
   render() {
     const { styles } = this.asProps;
     const SHighlightedButton = Root;
-    return sstyled(styles)(
-      <SHighlightedButton render={Button} use:onClick={this.handleClick.bind(this)} />,
-    );
+    return sstyled(styles)(<SHighlightedButton render={Button} use:onClick={this.handleClick.bind(this)} />);
   }
 }
 
-function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean } & IRootNodeProps) {
+function HighlightAddon(props: Intergalactic.InternalTypings.InferChildComponentProps<NSButtonFH.Addon.Component, typeof ButtonFHRoot, 'Addon'>) {
   const SAddon = Root;
   const { clicked, animatedSparkleCount, Children, children: hasChildren } = props;
   return sstyled(props.styles)(
     <SAddon render={Button.Addon}>
       {hasChildren
-        ? (<Children />)
+        ? (
+            <Children />
+          )
         : (
             <>
               <SummaryAI />
@@ -84,10 +81,7 @@ function HighlightAddon(props: HighLightedButtonAddonProps & { clicked: boolean 
  *
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#button|Docs}
  */
-export const ButtonFH = createComponent<
-  HighlightedButtonComponent,
-  typeof ButtonFHRoot
->(ButtonFHRoot, {
+export const ButtonFH = createComponent<NSButtonFH.Component, typeof ButtonFHRoot>(ButtonFHRoot, {
   Addon: HighlightAddon,
   Text: Button.Text,
 });

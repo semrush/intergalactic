@@ -10,51 +10,113 @@ import type {
   BoxProps,
   OutsideClickProps,
   PortalProps,
-  Box, PopperContext, PopperPopperProps, Placement, Popper } from '@semcore/base-components';
+  Box,
+  PopperProps,
+  PopperContext,
+  PopperPopperProps,
+  Placement,
+  Popper,
+} from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
+import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
-import type React from 'react';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-/**
- * Popper must have an accessible names (aria-group-name).
- */
-type AriaProps = Intergalactic.RequireAtLeastOne<{
-  'aria-label'?: string;
-  'aria-labelledby'?: string;
-  'title'?: string;
-}>;
+declare namespace NSFeaturePopover {
+  type Props = FPPopperProps & {
+    /** Popper visibility value */
+    visible?: boolean;
+    /** Function called when visibility changes */
+    onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
+    /**
+      * The position of the popper relative to the trigger that called it.
+      * @default auto
+      */
+    placement?: Placement;
+    /**
+      * The theme of FeaturePopover
+      * @default accent
+      */
+    theme?: 'accent' | 'neutral';
+  };
+  type DefaultProps = {
+    offset: NSFeaturePopover.Props['offset'];
+    placement: 'bottom-start';
+    defaultVisible: false;
+    onOutsideClick: () => void;
+    interaction: 'none';
+    i18n: LocalizedMessages;
+    locale: 'en';
+    theme: 'accent';
+  };
+  type InternalProps = WithI18nEnhanceProps & {
+    interaction?: PopperProps['interaction'];
+  };
+  type Handlers = {
+    visible: null;
+  };
+  type Ctx = PopperContext & {
+    getSpotProps: PropGetterFn;
+  };
 
-export type FeaturePopoverPopperProps = PopperPopperProps & {
-  /**
-   * The property responsible for the visibility of the closing icon
-   * @default false
-   */
-  closeIcon?: boolean;
-  /** Animation display duration in `ms`
-   * @default 200
-   */
-  duration?: number;
-  /** Specifies the locale for i18n support */
-  locale?: string;
-};
+  namespace Trigger {
+    type Props = BoxProps & {
+      theme?: NSFeaturePopover.Props['theme'];
+    };
 
-export type FeaturePopoverPopperInnerProps = {
-  theme: FeaturePopoverProps['theme'];
+    type Component = Intergalactic.Component<typeof Popper.Trigger, Props>;
+  }
 
-  visible: boolean;
+  namespace Popper {
+    type Props = PopperPopperProps &
+      /**
+       * Popper must have an accessible names (aria-group-name).
+       */
+      Intergalactic.RequireAtLeastOne<{
+        'aria-label'?: string;
+        'aria-labelledby'?: string;
+        'title'?: string;
+      }> & {
+        /**
+         * The property responsible for the visibility of the closing icon
+         * @default false
+         */
+        closeIcon?: boolean;
+        /** Animation display duration in `ms`
+         * @default 200
+         */
+        duration?: number;
+        /** Specifies the locale for i18n support */
+        locale?: string;
+        /**
+         * Disable animation
+         * @deprecated
+         */
+        animationsDisabled?: boolean;
+      };
 
-  $onCloseClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
-  animationsDisabled: boolean;
-  getI18nText: (message: string, opts?: Record<string, unknown>) => string;
-  autofocus: boolean;
-};
+    type Component = Intergalactic.Component<'div', Props>;
+  }
 
-export type FeaturePopoverContext = PopperContext & {
-  getSpotProps: PropGetterFn;
-};
+  namespace Spot {
+    type Props = {
+      visible?: boolean;
+      theme?: NSFeaturePopover.Props['theme'];
+    };
 
+    type Component = Intergalactic.Component<typeof Box, Props>;
+  }
+
+  type Component = Intergalactic.Component<'div', Props, Ctx> & {
+    Trigger: Trigger.Component;
+    Popper: Popper.Component;
+    Spot: Spot.Component;
+  };
+}
+
+// Re-think it since looks like those props aren't needed for the Root component.
+/** @deprecated It will be removed in v19. */
 export type FPPopperProps = OutsideClickProps &
   PortalProps &
   UniqueIDProps &
@@ -97,45 +159,19 @@ export type FPPopperProps = OutsideClickProps &
     popperMargin?: number;
   };
 
-export type FeaturePopoverProps = FPPopperProps & {
-  /** Popper visibility value */
-  visible?: boolean;
-  /** Function called when visibility changes */
-  onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
-  /**
-   * The position of the popper relative to the trigger that called it.
-   * @default auto
-   */
-  placement?: Placement;
-  /**
-   * The theme of FeaturePopover
-   * @default accent
-   */
-  theme?: 'accent' | 'neutral';
-};
+/** @deprecated It will be removed in v19. */
+export type FeaturePopoverPopperProps = NSFeaturePopover.Popper.Props;
+/** @deprecated It will be removed in v19. */
+export type FeaturePopoverContext = NSFeaturePopover.Ctx;
+/** @deprecated It will be removed in v19. */
+export type FeaturePopoverProps = NSFeaturePopover.Props;
+/** @deprecated It will be removed in v19. */
+export type FeaturePopoverDefaultProps = NSFeaturePopover.DefaultProps;
+/** @deprecated It will be removed in v19. */
+export type FeaturePopoverTriggerProps = NSFeaturePopover.Trigger.Props;
+/** @deprecated It will be removed in v19. */
+export type FeaturePopoverSpotProps = NSFeaturePopover.Spot.Props;
+/** @deprecated It will be removed in v19. */
+export type FeaturePopoverComponent = NSFeaturePopover.Component;
 
-export type FeaturePopoverDefaultProps = {
-  offset: FPPopperProps['offset'];
-  placement: 'bottom-start';
-  defaultVisible: false;
-  onOutsideClick: () => void;
-  interaction: 'none';
-  i18n: LocalizedMessages;
-  locale: 'en';
-  theme: 'accent';
-};
-
-export type FeaturePopoverTriggerProps = BoxProps & {
-  theme?: FeaturePopoverProps['theme'];
-};
-
-export type FeaturePopoverSpotProps = {
-  visible?: boolean;
-  theme?: FeaturePopoverProps['theme'];
-};
-
-export type FeaturePopoverComponent = Intergalactic.Component<'div', FeaturePopoverProps, FeaturePopoverContext> & {
-  Trigger: Intergalactic.Component<typeof Popper.Trigger, FeaturePopoverTriggerProps>;
-  Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps & AriaProps>;
-  Spot: Intergalactic.Component<typeof Box, FeaturePopoverSpotProps>;
-};
+export type { NSFeaturePopover };

@@ -36,11 +36,11 @@ declare namespace NSList {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ListItemProps = NSList.Item.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ListItemContentProps = NSList.Item.Content.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ListProps = NSList.Props;
 
 export type { NSList };

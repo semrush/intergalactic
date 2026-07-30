@@ -53,13 +53,13 @@ declare namespace NSSpinContainer {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SpinContainerProps = NSSpinContainer.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SpinContainerContext = NSSpinContainer.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SpinOverlayProps = NSSpinContainer.Content.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SpinContainerOverlayProps = NSSpinContainer.Overlay.Props;
 
 export type { NSSpinContainer };

@@ -43,11 +43,11 @@ declare namespace NSBadge {
   type Component = Intergalactic.Component<'span', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BadgeType = NSBadge.Type;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BadgeMargins = NSBadge.Margins;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BadgeProps = NSBadge.Props;
 
 export type { NSBadge };

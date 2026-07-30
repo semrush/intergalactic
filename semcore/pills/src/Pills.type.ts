@@ -87,15 +87,15 @@ declare namespace NSPills {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsValue = NSPills.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsProps<T extends PillsValue = PillsValue> = NSPills.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillProps = NSPills.Pill.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsContext = NSPills.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsHandlers = NSPills.Handlers;
 
 export type { NSPills };

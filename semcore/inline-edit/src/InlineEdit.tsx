@@ -1,11 +1,10 @@
-import { FadeInOut, type FadeInOutProps, Box, type BoxProps } from '@semcore/base-components';
+import { FadeInOut, Box } from '@semcore/base-components';
 import {
   createComponent,
   Component,
   sstyled,
   Root,
   type Intergalactic,
-  type PropGetterFn,
 } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -14,26 +13,17 @@ import reactToText from '@semcore/core/lib/utils/reactToText';
 import { useCssVariable } from '@semcore/core/lib/utils/useCssVariable';
 import React from 'react';
 
+import type { NSInlineEdit } from './InlineEdit.type';
 import style from './style/inline-edit.shadow.css';
-import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-type AsProps = {
-  Children: React.FC;
-  defaultEditable?: boolean;
-  editable?: boolean;
-  onEdit?: () => void;
-  styles?: React.CSSProperties;
-  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
-};
-
 class InlineEdit extends Component<
-  AsProps,
-  [],
-  { editable: null },
+  Intergalactic.InternalTypings.InferComponentProps<NSInlineEdit.Component>,
+  typeof InlineEdit.enhance,
+  NSInlineEdit.Handlers,
   WithI18nEnhanceProps,
   {},
-  InlineEditDefaultProps
+  NSInlineEdit.DefaultProps
 > {
   static displayName = 'InlineEdit';
 
@@ -90,7 +80,7 @@ class InlineEdit extends Component<
     this.handlers.editable(true);
   }
 
-  componentDidUpdate(prevProps: AsProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const { editable } = this.props;
     if (prevProps.editable !== editable && editable === false) {
       setTimeout(() => {
@@ -133,7 +123,9 @@ const useHidden = (visible: boolean) => {
   return hidden;
 };
 
-function Edit(props: AsProps) {
+function Edit(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInlineEdit.Edit.Component, typeof InlineEdit, 'Edit'>,
+) {
   const visible = props.editable;
   const SEdit = Root;
   const ref = React.useRef();
@@ -150,10 +142,12 @@ function Edit(props: AsProps) {
       exiting={!visible}
       ref={ref}
     />,
-  ) as React.ReactElement;
+  );
 }
 
-function View(props: AsProps) {
+function View(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInlineEdit.View.Component, typeof InlineEdit, 'View'>,
+) {
   const visible = !props.editable;
   const SView = Root;
 
@@ -178,37 +172,12 @@ function View(props: AsProps) {
       tabIndex={0}
       role='button'
       aria-hidden={hidden ? 'true' : undefined}
-      aria-label={`${props.getI18nText('tapToEdit')}: ${textContent}`}
+      aria-label={`${props.getI18nText?.('tapToEdit')}: ${textContent}`}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handleKeyDown}
     />,
-  ) as React.ReactElement;
+  );
 }
-
-type InlineEditProps = BoxProps & {
-  editable?: boolean;
-  onEditableChange?: (editable: boolean, event?: React.SyntheticEvent) => void;
-  defaultEditable?: boolean;
-  onEdit?: () => void;
-  locale?: string;
-};
-type InlineEditDefaultProps = {
-  defaultEditable: false;
-  i18n: LocalizedMessages;
-  locale: 'en';
-};
-type InlineEditViewProps = BoxProps & FadeInOutProps & {};
-type InlineEditEditProps = BoxProps & FadeInOutProps & {};
-
-type InputCtx = {
-  getViewProps: PropGetterFn;
-  getEditProps: PropGetterFn;
-};
-
-type InlineEditComponent = Intergalactic.Component<'div', InlineEditProps, InputCtx> & {
-  View: Intergalactic.Component<'div', InlineEditViewProps, InlineEditProps>;
-  Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
-};
 
 /**
  * InlineEdit
@@ -216,7 +185,7 @@ type InlineEditComponent = Intergalactic.Component<'div', InlineEditProps, Input
  * {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-api/|API} | {@link https://developer.semrush.com/intergalactic/components/inline-edit/inline-edit-code/|Examples}
  */
 export default createComponent<
-  InlineEditComponent,
+  NSInlineEdit.Component,
   typeof InlineEdit
 >(InlineEdit, {
   Edit,

@@ -84,9 +84,9 @@ declare namespace NSBulktextarea {
        */
       id?: string;
       /**
-       * Placeholder for field
+       * Placeholder for field. For multiline placeholder use an array of strings
        */
-      placeholder?: string;
+      placeholder?: string | string[];
       /**
        * String to render in textarea. OnChanging value, it will go throw paste pipeline
        */
@@ -95,6 +95,12 @@ declare namespace NSBulktextarea {
        * This component doesn't have default onChange callback, because we think that you need only the result after every changes/fixes
        */
       onBlur?: (value: T, e: Event) => void;
+
+      /**
+       * Callback to enable display errors after pasting for `on-paste` validation.
+       * @internal
+       */
+      onPaste?: () => void;
       /**
        * Size of component
        * @default m
@@ -191,8 +197,13 @@ declare namespace NSBulktextarea {
       mouseLineIndex: number;
       visibleErrorPopper: boolean;
     };
+    interface Instance {
+      focus(): void;
+      focus(node: HTMLLIElement, offset: number | [number, number]): void;
+      addLine(value: string): Promise<HTMLLIElement>;
+    }
 
-    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>>;
+    type Component<T extends string | string[] = string | string[]> = Intergalactic.Component<'div', Props<T>, {}, [], Instance>;
   }
 
   namespace Counter {
@@ -238,16 +249,16 @@ declare namespace NSBulktextarea {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaProps<T extends string | string[]> = NSBulktextarea.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaDefaultProps<T extends string | string[]> = NSBulktextarea.DefaultProps<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaInputFieldProps<T extends string | string[] = string | string[]> =
   NSBulktextarea.InputField.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaType<T extends string | string[]> = NSBulktextarea.Component<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ErrorItem = NSBulktextarea.ErrorItem;
 
 export type { NSBulktextarea };

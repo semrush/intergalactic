@@ -44,9 +44,9 @@ declare namespace NSCard {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CardProps = NSCard.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TitleProps = NSCard.Title.Props;
 
 export type { NSCard };

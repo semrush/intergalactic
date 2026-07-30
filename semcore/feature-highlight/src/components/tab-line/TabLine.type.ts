@@ -1,10 +1,24 @@
 import type { Intergalactic } from '@semcore/core';
-import type TabLine from '@semcore/tab-line';
+import type { NSTabLine } from '@semcore/tab-line';
 
-export type HighlightedTabLineItemComponent = typeof TabLine.Item & {
-  Addon: Intergalactic.Component<'div', { animatedSparkleCount?: number }>;
-};
+declare namespace NSTabLineFH {
+  namespace HighlightedItem {
+    namespace Addon {
+      type Props = {
+        animatedSparkleCount?: number;
+      };
 
-export type HighlightedTabLineComponent = typeof TabLine & {
-  HighlightedItem: HighlightedTabLineItemComponent;
-};
+      type Component = Intergalactic.Component<'div', Props>;
+    }
+
+    type Component = NSTabLine.Item.Component & {
+      Addon: Addon.Component;
+    };
+  }
+
+  type Component = NSTabLine.Component & {
+    HighlightedItem: HighlightedItem.Component;
+  };
+}
+
+export type { NSTabLineFH };

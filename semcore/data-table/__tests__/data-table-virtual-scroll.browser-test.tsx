@@ -215,6 +215,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Tab');
     for (let i = 0; i < 100; i++) {
       await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(20);
     }
     await page.waitForTimeout(500);
     await expect(locators.getCell(page, 101, 1)).toBeVisible();
