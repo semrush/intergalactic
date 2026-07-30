@@ -151,6 +151,9 @@ export namespace Intergalactic {
     | InternalTypings.ReturnResult;
   type ComponentBasicProps<Tag extends InternalTypings.ComponentTag, Instance = never> = {
     ref?: React.Ref<InternalTypings.ComponentHtmlElement<Tag> | null>;
+    /**
+     * Ref to an instance of a class component.
+     */
     instanceRef?: [Instance] extends [never] ? never : React.RefObject<Instance>;
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
     __excludeProps?: string[];
