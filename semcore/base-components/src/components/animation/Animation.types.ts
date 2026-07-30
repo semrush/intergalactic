@@ -80,9 +80,9 @@ declare namespace NSAnimation {
        */
       defaultHeight?: 'auto' | '100%';
 
-      /** @deprecated It will be removed in v18. */
+      /** @deprecated It will be removed in v19. */
       onAnimationStart?: React.AnimationEventHandler;
-      /** @deprecated It will be removed in v18. */
+      /** @deprecated It will be removed in v19. */
       onAnimationEnd?: React.AnimationEventHandler;
     };
 
@@ -137,19 +137,19 @@ declare namespace NSAnimation {
   type Component = Intergalactic.Component<'div', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AnimationProps = NSAnimation.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AnimationDefaultProps = NSAnimation.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CollapseProps = NSAnimation.Collapse.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FadeInOutProps = NSAnimation.FadeInOut.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TransformProps = NSAnimation.Transform.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScaleProps = NSAnimation.Scale.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SlideProps = NSAnimation.Slide.Props;
 
 export type { NSAnimation };

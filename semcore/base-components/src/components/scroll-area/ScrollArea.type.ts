@@ -117,21 +117,21 @@ declare namespace NSScrollArea {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ShadowTheme = NSScrollArea.ShadowTheme;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScrollAreaProps = NSScrollArea.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScrollAreaDefaultProps = NSScrollArea.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScrollAreaContext = NSScrollArea.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScrollBarProps = NSScrollArea.Bar.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScrollBarDefaultProps = NSScrollArea.Bar.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScrollBarContext = NSScrollArea.Bar.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ScrollAreaContainerProps = NSScrollArea.Container.Props;
 
 export type { NSScrollArea };

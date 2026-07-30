@@ -15,7 +15,7 @@ declare namespace NSPortal {
     type Component = Intergalactic.Component<Intergalactic.Tag, Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PortalProps = NSPortal.Props;
 
 export type { NSPortal };

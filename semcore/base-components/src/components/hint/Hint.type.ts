@@ -57,7 +57,7 @@ declare namespace NSHint {
   type Component = Intergalactic.Component<'div', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SimpleHintPopperProps = NSHint.Props;
 
 export type { NSHint };

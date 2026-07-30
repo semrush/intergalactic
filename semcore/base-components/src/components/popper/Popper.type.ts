@@ -176,31 +176,31 @@ declare namespace NSPopper {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PopperComponent = NSPopper.PopperComponent;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type eventInteraction = NSPopper.EventInteraction;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type Strategy = NSPopper.Strategy;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type Modifiers = NSPopper.Modifiers;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type Placement = NSPopper.Placement;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PopperProps = NSPopper.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PopperDefaultProps = NSPopper.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PopperTriggerProps = NSPopper.Trigger.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InnerPopperTriggerProps = NSPopper.Trigger.InnerProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PopperPopperProps = NSPopper.Popper.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InnerPopperPopperProps = NSPopper.Popper.InnerProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PopperContext = NSPopper.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PopperHandlers = NSPopper.Handlers;
 
 export type { NSPopper };

@@ -47,15 +47,15 @@ declare namespace NSGrid {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ColProps = NSGrid.Col.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RowProps = NSGrid.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RowDefaultProps = NSGrid.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type GridContext = NSGrid.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RowType = NSGrid.Component;
 
 export type { NSGrid };

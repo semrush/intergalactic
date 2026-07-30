@@ -21,11 +21,11 @@ declare namespace NSNeighborLocation {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type NeighborLocationUnion = NSNeighborLocation.Union;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type NeighborLocationProps = NSNeighborLocation.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type NeighborItemProps = NSNeighborLocation.Detect.Props;
 
 export type { NSNeighborLocation };

@@ -57,7 +57,7 @@ declare namespace NSEllipsis {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type EllipsisSettings = NSEllipsis.Settings;
 
 export type { NSEllipsis };
