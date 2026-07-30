@@ -12,7 +12,7 @@ import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit />;
 ```
 
-<TypesView type="InlineEditProps" :types={...types} />
+<TypesView type="NSInlineEdit.Props" :types={...types} />
 
 ## InlineEdit.View
 
