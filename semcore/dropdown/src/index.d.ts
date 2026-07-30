@@ -7,7 +7,6 @@ import type { Box, BoxProps,
   PopperPopperProps,
 } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
-import type { NSNotice } from '@semcore/notice';
 import type Notice from '@semcore/notice';
 import type React from 'react';
 
@@ -73,8 +72,7 @@ export type DropdownStatusItemProps = {
 
 export type StatusItemComponent = Intergalactic.Component<'div', DropdownStatusItemProps>;
 
-export type DropdownNoticeProps = NSNotice.Props;
-export type DropdownNoticeComponent = Intergalactic.Component<typeof Notice, DropdownNoticeProps>;
+export type DropdownNoticeComponent = typeof Notice;
 
 declare const Dropdown: Intergalactic.Component<
   'div',
