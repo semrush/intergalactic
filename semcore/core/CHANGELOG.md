@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.0] - 2026-07-30
+
+### Added
+
+- `instanceRef` property to all class components.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed
