@@ -313,13 +313,14 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, neighborLocation, ...otherProps } =
+    const { value = [], locale, onDisplayedPeriodChange, ariaHasPopup, showError: _showError, neighborLocation, ...otherProps } =
       this.asProps;
 
     return assignProps(
       {
         'ref': this.fromRef,
-        'date': value?.[0],
+        'dates': value,
+        'dateIndex': 0,
         'onDateChange': this.handleFromChange,
         'onKeyDown': this.handleFromKeydown,
         locale,
@@ -335,7 +336,7 @@ class DateRangeRoot extends Component {
 
   getToMaskedInputProps() {
     const {
-      value,
+      value = [],
       locale,
       onDisplayedPeriodChange,
       ariaHasPopup,
@@ -351,7 +352,8 @@ class DateRangeRoot extends Component {
     return assignProps(
       {
         'ref': this.toRef,
-        'date': value?.[1],
+        'dates': value,
+        'dateIndex': 1,
         'onDateChange': this.handleToChange,
         'onKeyDown': this.handleToKeydown,
         locale,
@@ -485,7 +487,8 @@ function RangeSep(props) {
 }
 
 function MaskedInput({
-  date: outerValue,
+  dates,
+  dateIndex,
   onDateChange,
   onDisplayedPeriodChange,
   locale,
@@ -507,6 +510,7 @@ function MaskedInput({
   Root: _root,
   ...otherProps
 }) {
+  const outerValue = dates[dateIndex];
   const ref = React.useRef();
   const [width, setWidth] = React.useState(undefined);
 
@@ -799,16 +803,75 @@ function MaskedInput({
     const validDate = outerDate && outerDate instanceof Date && !Number.isNaN(outerDate.getTime());
     if (!validDate) return null;
 
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    let secondDate = dateIndex === 0 ? dates[1] : dates[0];
+    if (typeof secondDate === 'number' || typeof secondDate === 'string') {
+      secondDate = new Date(secondDate);
+    }
+
+    const validSecondDate = secondDate && secondDate instanceof Date && !Number.isNaN(secondDate.getTime());
+    if (!validSecondDate) {
+      return new Intl.DateTimeFormat(locale, {
+        year: allowedParts.year ? 'numeric' : undefined,
+        month: allowedParts.month ? 'short' : undefined,
+        day: allowedParts.day ? 'numeric' : undefined,
+      }).format(outerDate);
+    }
+
+    const isSameYear = outerDate.getFullYear() === secondDate.getFullYear();
+    const isSameYearAsCurrent = isSameYear && outerDate.getFullYear() === currentYear;
+    const isSameMonth = outerDate.getMonth() === secondDate.getMonth();
+
+    if (isSameYearAsCurrent) {
+      if (isSameMonth) {
+        return new Intl.DateTimeFormat(locale, {
+          year: undefined,
+          month: allowedParts.month && dateIndex === 0 ? 'short' : undefined,
+          day: allowedParts.day ? 'numeric' : undefined,
+        }).format(outerDate);
+      } else {
+        return new Intl.DateTimeFormat(locale, {
+          year: undefined,
+          month: allowedParts.month ? 'short' : undefined,
+          day: allowedParts.day ? 'numeric' : undefined,
+        }).format(outerDate);
+      }
+    } else if (isSameYear) {
+      if (isSameMonth) {
+        return new Intl.DateTimeFormat(locale, {
+          year: allowedParts.year && dateIndex === 1 ? 'numeric' : undefined,
+          month: allowedParts.month && dateIndex === 0 ? 'short' : undefined,
+          day: allowedParts.day ? 'numeric' : undefined,
+        }).format(outerDate);
+      } else {
+        return new Intl.DateTimeFormat(locale, {
+          year: allowedParts.year && dateIndex === 1 ? 'numeric' : undefined,
+          month: allowedParts.month ? 'short' : undefined,
+          day: allowedParts.day ? 'numeric' : undefined,
+        }).format(outerDate);
+      }
+    }
+
     return new Intl.DateTimeFormat(locale, {
       year: allowedParts.year ? 'numeric' : undefined,
       month: allowedParts.month ? 'short' : undefined,
       day: allowedParts.day ? 'numeric' : undefined,
     }).format(outerDate);
-  }, [outerValue, locale, allowedParts]);
+  }, [outerValue, locale, allowedParts, dateIndex, dates]);
+
+  const [innerFocused, setInnerFocused] = React.useState(false);
+  const focused = containerFocused ?? innerFocused;
 
   useEnhancedEffect(() => {
     if (!ref.current) return;
-    const stringsToMeasure = humanizedDate ? [humanizedDate, mask] : [mask];
+    const stringsToMeasure = focused
+      ? [value ?? mask]
+      : humanizedDate
+        ? [humanizedDate]
+        : [mask];
+
     const widths = [];
     const measureSpan = document.createElement('span');
     const computedStyle = window.getComputedStyle(ref.current);
@@ -836,7 +899,7 @@ function MaskedInput({
     measureSpan.remove();
     const maxWidth = Math.max(...widths);
     setWidth(maxWidth);
-  }, [locale, humanizedDate, allowedParts, mask]);
+  }, [locale, humanizedDate, allowedParts, mask, focused, value]);
 
   const SHumanizedDate = 'div';
   const handleInputRef = React.useCallback(
@@ -850,8 +913,6 @@ function MaskedInput({
   );
 
   const [appliedWidth, setAppliedWidth] = React.useState(width);
-  const [innerFocused, setInnerFocused] = React.useState(false);
-  const focused = containerFocused ?? innerFocused;
   const handleFocus = React.useCallback((event) => {
     otherProps.onFocus?.(event);
     setInnerFocused(true);
@@ -861,7 +922,6 @@ function MaskedInput({
     setInnerFocused(false);
   }, []);
   useEnhancedEffect(() => {
-    if (focused) return;
     setAppliedWidth(width);
   }, [width, focused]);
 
