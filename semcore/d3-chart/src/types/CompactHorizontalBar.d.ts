@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 
 import type { BackgroundProps } from './Bar';
 import type { Context } from './context';
@@ -33,17 +33,17 @@ type BarContext = {
   index: number;
 };
 
-export type CompactHorizontalBarHoverProps = BoxProps;
+export type CompactHorizontalBarHoverProps = NSBox.Props;
 type Hover = IntergalacticD3Component<'rect', CompactHorizontalBarHoverProps, Context>;
-export type CompactHorizontalBarAnnotationProps = BoxProps;
+export type CompactHorizontalBarAnnotationProps = NSBox.Props;
 type Annotation = IntergalacticD3Component<
   'foreignObject',
   CompactHorizontalBarAnnotationProps,
   Context & BarContext
 >;
-export type CompactHorizontalBarLabelProps = BoxProps;
+export type CompactHorizontalBarLabelProps = NSBox.Props;
 type Label = IntergalacticD3Component<'div', CompactHorizontalBarLabelProps, Context & BarContext>;
-export type CompactHorizontalBarPercentProps = BoxProps;
+export type CompactHorizontalBarPercentProps = NSBox.Props;
 export type CompactHorizontalBarPercentContext = {
   formatted: string;
   percent: number;
@@ -53,7 +53,7 @@ type Percent = IntergalacticD3Component<
   CompactHorizontalBarPercentProps,
   Context & CompactHorizontalBarPercentContext
 >;
-export type CompactHorizontalBarValueProps = BoxProps;
+export type CompactHorizontalBarValueProps = NSBox.Props;
 export type CompactHorizontalBarValueContext = { formatted: string; value: number } & BarContext;
 type Value = IntergalacticD3Component<
   'div',
@@ -62,9 +62,9 @@ type Value = IntergalacticD3Component<
 >;
 export type CompactHorizontalBarBarProps = {};
 type Bar = IntergalacticD3Component<'g', CompactHorizontalBarBarProps, Context & BarContext>;
-export type CompactHorizontalBarBackgroundProps = BoxProps;
+export type CompactHorizontalBarBackgroundProps = NSBox.Props;
 type Background = IntergalacticD3Component<'rect', BackgroundProps, Context & BarContext>;
-export type CompactHorizontalBarFillProps = BoxProps & {
+export type CompactHorizontalBarFillProps = NSBox.Props & {
   patterns?: PatternsConfig;
   color?: string;
   transparent?: boolean;

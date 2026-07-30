@@ -1,11 +1,14 @@
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Root, Component } from '@semcore/core';
 import Select from '@semcore/select';
 import React from 'react';
 
+import type { NSSelectFH } from './Select.type';
 import { ButtonTriggerFH } from '../../inner-components/button-trigger/ButtonTrigger';
 
-class SelectFHRoot extends Component {
+class SelectFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSelectFH.Component>
+> {
   static displayName = 'SelectFH';
 
   render() {
@@ -15,7 +18,9 @@ class SelectFHRoot extends Component {
   }
 }
 
-function Trigger(props: IRootComponentProps) {
+function Trigger(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSelectFH.Trigger.Component>,
+) {
   const { Children, children: hasChildren } = props;
 
   return (
@@ -37,8 +42,8 @@ function Trigger(props: IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#select|Docs}
  */
-export const SelectFH: typeof Select = createComponent<
-  typeof Select,
+export const SelectFH = createComponent<
+  NSSelectFH.Component,
   typeof SelectFHRoot
 >(SelectFHRoot, {
   Trigger: [Trigger, {

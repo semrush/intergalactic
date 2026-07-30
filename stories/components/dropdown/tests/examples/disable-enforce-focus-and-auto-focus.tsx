@@ -1,5 +1,5 @@
 import FileExportM from '@semcore/icon/FileExport/m';
-import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/base-components';
+import type { NSPopper } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
 import type { DropdownProps } from '@semcore/ui/dropdown';
@@ -7,7 +7,11 @@ import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type DisableEnforceAndAutoFocusExampleProps = PopperPopperProps & PopperTriggerProps & PopperProps & DropdownProps;
+type DisableEnforceAndAutoFocusExampleProps =
+  & NSPopper.Popper.Props
+  & NSPopper.Trigger.Props
+  & NSPopper.Props
+  & DropdownProps;
 
 const Demo = (props: DisableEnforceAndAutoFocusExampleProps) => (
   <>

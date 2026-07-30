@@ -14,7 +14,7 @@ import {
   L_BG_SECONDARY_ACTIVE,
   L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
   L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
+  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
   L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
   L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
@@ -265,7 +265,7 @@ export const theme: Theme = {
         description: 'Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)',
       },
     },
-    timing: {
+    easings: {
       fast: {
         value: 'cubic-bezier(0.5, 0, 0, 1.12)',
         description: 'Should be used for fast animation timing function',
@@ -1347,6 +1347,18 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
       },
+      control_presets_bg_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Presets items.',
+      },
+      control_presets_border_selected: {
+        value: neutral.at(L_BORDER_STRONG),
+        description: 'Border color of the selected Preset item.',
+      },
+      control_presets_border_hover: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the hovered Preset item.',
+      },
       progress_bar_bg_DEFAULT: {
         value: neutral.at(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
@@ -2245,7 +2257,7 @@ type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '2
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
-type Timing = 'fast' | 'medium';
+type Easings = 'fast' | 'medium';
 
 type Value<T = string> = {
   value: T;
@@ -2263,7 +2275,7 @@ export type BaseTokens = {
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
-  timing: Record<Timing, Value>;
+  easings: Record<Easings, Value>;
 };
 
 type FlattenPaths<T> = T extends object
@@ -2663,6 +2675,15 @@ type SemanticColors = {
       };
       border: {
         DEFAULT: Value;
+      };
+    };
+    presets: {
+      bg: {
+        DEFAULT: Value;
+      };
+      border: {
+        selected: Value;
+        hover: Value;
       };
     };
     tab_line: {

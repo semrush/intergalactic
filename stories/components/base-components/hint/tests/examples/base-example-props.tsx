@@ -1,10 +1,10 @@
 import FileExportM from '@semcore/icon/FileExport/m';
 import { Hint } from '@semcore/ui/base-components';
-import type { SimpleHintPopperProps } from '@semcore/ui/base-components';
+import type { NSHint } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import React from 'react';
 
-const Demo = (props: Partial<SimpleHintPopperProps>) => {
+const Demo = (props: Partial<NSHint.Props>) => {
   const ref = React.useRef<HTMLButtonElement | null>(null);
 
   return (
@@ -29,7 +29,7 @@ const Demo = (props: Partial<SimpleHintPopperProps>) => {
   );
 };
 
-export const defaultProps: Partial<SimpleHintPopperProps> = {
+export const defaultProps: Partial<NSHint.Props> = {
   placement: undefined,
   timeout: undefined,
   visible: undefined,
