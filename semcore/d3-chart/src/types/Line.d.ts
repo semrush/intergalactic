@@ -1,4 +1,4 @@
-import type { FadeInOutProps } from '@semcore/base-components';
+import type { NSAnimation } from '@semcore/base-components';
 import type { UnknownProperties } from '@semcore/core';
 import type { CurveFactory } from 'd3-shape';
 
@@ -34,7 +34,7 @@ export type LineProps = Context & {
 /** @deprecated */
 export interface ILineDotsProps extends LineDotsProps, UnknownProperties {}
 export type LineDotsProps = Context &
-  Omit<FadeInOutProps, 'display'> & {
+  Omit<NSAnimation.FadeInOut.Props, 'display'> & {
     /** Show dots */
     display?: boolean | ((index: number, active: boolean, single: boolean) => boolean);
     /** Hide property */

@@ -2,9 +2,8 @@ import { createComponent, sstyled, Root } from '@semcore/core';
 import React from 'react';
 
 import style from './invalidStateBox.shadow.css';
-import Box from '../Box';
-
-type InvalidStatePatternComponent = typeof Box;
+import type { NSInvalidStateBox } from './InvalidStateBox.type';
+import Box from '../Box/Box';
 
 function InvalidStatePatternRoot() {
   const SPattern = Root;
@@ -13,7 +12,7 @@ function InvalidStatePatternRoot() {
 };
 
 export const InvalidStateBox = createComponent<
-  InvalidStatePatternComponent,
+  NSInvalidStateBox.Component,
   typeof InvalidStatePatternRoot
 >(InvalidStatePatternRoot);
 

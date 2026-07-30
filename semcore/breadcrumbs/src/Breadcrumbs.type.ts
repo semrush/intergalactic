@@ -1,11 +1,11 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 declare namespace NSBreadcrumbs {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /**
      * Links divider
      * */
@@ -23,7 +23,7 @@ declare namespace NSBreadcrumbs {
   };
 
   namespace Item {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** The property is responsible for the activity of the element */
       active?: boolean;
       /** Specifies the locale for i18n support */

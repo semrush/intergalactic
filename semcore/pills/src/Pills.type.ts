@@ -1,11 +1,11 @@
-import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
 declare namespace NSPills {
   // TODO: It looks like the value isn't accurate. Revise and align it with the component's logic.
   type Value = string | number | boolean | null;
-  type Props<T extends NSPills.Value = NSPills.Value> = NeighborLocationProps & BoxProps & {
+  type Props<T extends NSPills.Value = NSPills.Value> = NSNeighborLocation.Props & NSBox.Props & {
     /** Pills size */
     size?: 'l' | 'm';
     /** Disabled state */
@@ -42,7 +42,7 @@ declare namespace NSPills {
     behavior: Props['behavior'];
   };
   namespace Pill {
-    type Props = BoxProps & NeighborItemProps & {
+    type Props = NSBox.Props & NSNeighborLocation.Detect.Props & {
       /** Pill value */
       value?: NSPills.Value;
       /** Disabled state */
@@ -55,10 +55,10 @@ declare namespace NSPills {
       addonRight?: React.ElementType;
     };
     namespace Text {
-      type Component = typeof Box;
+      type Component = NSBox.Component;
     }
     namespace Addon {
-      type Component = typeof Box;
+      type Component = NSBox.Component;
     }
 
     type Component = Intergalactic.Component<'button', Props, [handlers: Handlers]>;

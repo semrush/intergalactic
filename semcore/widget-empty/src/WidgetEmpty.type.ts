@@ -1,8 +1,8 @@
-import type { Box, FlexProps } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 declare namespace NSWidgetEmpty {
-    type Props = FlexProps & {
+    type Props = NSFlex.Props & {
       /**
        * URL before the icon or the whole component
        */
@@ -10,11 +10,11 @@ declare namespace NSWidgetEmpty {
     };
 
     namespace Title {
-        type Component = typeof Box;
+        type Component = NSBox.Component;
     }
 
     namespace Description {
-        type Component = typeof Box;
+        type Component = NSBox.Component;
     }
 
     type Component = Intergalactic.Component<'div', Props> & {

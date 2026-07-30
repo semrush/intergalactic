@@ -1,4 +1,4 @@
-import type { FadeInOutProps } from '@semcore/base-components';
+import type { NSAnimation } from '@semcore/base-components';
 import type { UnknownProperties } from '@semcore/core';
 
 import type { Context } from './context';
@@ -9,7 +9,7 @@ import type { TooltipType } from './Tooltip';
 /** @deprecated */
 export interface IVennProps extends VennProps, UnknownProperties {}
 export type VennProps = Context &
-  FadeInOutProps & {
+  NSAnimation.FadeInOut.Props & {
     /**
      * Rotate sets in the chart
      * @default Math.PI / 2
@@ -55,7 +55,7 @@ export type CircleProps = Context & {
 /** @deprecated */
 export interface IIntersectionProps extends IntersectionProps, UnknownProperties {}
 export type IntersectionProps = Context &
-  FadeInOutProps & {
+  NSAnimation.FadeInOut.Props & {
     /**
      * Name of the field in the data
      * */

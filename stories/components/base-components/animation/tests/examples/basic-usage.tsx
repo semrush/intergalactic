@@ -1,11 +1,11 @@
-import type { AnimationProps } from '@semcore/ui/base-components';
+import type { NSAnimation } from '@semcore/ui/base-components';
 import { Flex, Animation, FadeInOut, Transform } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import React from 'react';
 
 import stylePopper from './basic-usage.module.css';
 
-const Demo = (props: AnimationProps) => {
+const Demo = (props: NSAnimation.Props) => {
   return (
     <>
       <Flex columnGap={2} scaleIndent={10} pb={4}>
@@ -54,7 +54,7 @@ const Demo = (props: AnimationProps) => {
   );
 };
 
-export const defaultAnimationProps: AnimationProps = {
+export const defaultAnimationProps: NSAnimation.Props = {
   visible: true,
   duration: 500,
   initialAnimation: true,

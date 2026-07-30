@@ -4,3 +4,5 @@ coverage
 __tests__
 .publishrc
 src
+tsconfig.json
+tsconfig.tsbuildinfo
