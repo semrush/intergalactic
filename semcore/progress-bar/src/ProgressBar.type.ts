@@ -51,11 +51,11 @@ declare namespace NSProgressBar {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ProgressBarProps = NSProgressBar.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ValueProps = NSProgressBar.Value.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ProgressBarCxt = NSProgressBar.Ctx;
 
 export type { NSProgressBar };

@@ -43,11 +43,11 @@ declare namespace NSBreadcrumbs {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BreadcrumbsProps = NSBreadcrumbs.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BreadcrumbsItemProps = NSBreadcrumbs.Item.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BreadcrumbsContext = NSBreadcrumbs.Ctx;
 
 export type { NSBreadcrumbs };

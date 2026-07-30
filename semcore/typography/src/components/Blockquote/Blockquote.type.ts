@@ -10,7 +10,7 @@ declare namespace NSBlockquote {
   type Component = Intergalactic.Component<'blockquote', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BlockquoteProps = NSBlockquote.Props;
 
 export type { NSBlockquote };

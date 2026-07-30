@@ -25,7 +25,7 @@ declare namespace NSDot {
   type Component = Intergalactic.Component<'div', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DotProps = NSDot.Props;
 
 export type { NSDot };

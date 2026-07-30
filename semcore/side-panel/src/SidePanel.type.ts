@@ -89,7 +89,7 @@ declare namespace NSSidePanel {
         onOutsideClick?: (e?: React.SyntheticEvent) => void;
         /**
           * Forces advanced mode
-          * @deprecated It will be removed in v18.
+          * @deprecated It will be removed in v19.
         */
         forcedAdvancedMode?: boolean;
       };
@@ -113,21 +113,21 @@ declare namespace NSSidePanel {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelProps = NSSidePanel.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelContext = NSSidePanel.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelHeaderProps = NSSidePanel.Header.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelOverlayProps = NSSidePanel.Overlay.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelPanelProps = NSSidePanel.Panel.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelPlacement = NSSidePanel.Placement;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type OnCloseTriggerType = 'onOutsideClick' | 'onEscape' | 'onCloseClick';
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type OnCloseType = (
   trigger: OnCloseTriggerType,
   e?: React.MouseEvent | React.KeyboardEvent,

@@ -86,15 +86,15 @@ declare namespace NSText {
   type Component = Intergalactic.Component<'span', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TextHintProps = NSText.HintProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TextEllipsisProps = NSText.EllipsisProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BaseTextProps = NSText.BaseProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TextProps = NSText.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TextComponent = NSText.Component;
 
 export type { NSText };

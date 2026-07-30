@@ -55,11 +55,11 @@ declare namespace NSSkeleton {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SkeletonProps = NSSkeleton.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SkeletonCtx = NSSkeleton.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SkeletonTextProps = NSSkeleton.Text.Props;
 
 export type { NSSkeleton };

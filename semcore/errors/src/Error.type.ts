@@ -37,11 +37,11 @@ declare namespace NSErrors {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ErrorsProps = NSErrors.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ErrorsContext = NSErrors.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type IconNamesErrors = NSErrors.IconName;
 
 export type { NSErrors };

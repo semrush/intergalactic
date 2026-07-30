@@ -143,23 +143,23 @@ declare namespace NSAccordion {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionValue = NSAccordion.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionProps<V extends AccordionValue = AccordionValue> = NSAccordion.Props<V>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionContext = NSAccordion.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionHandlers = NSAccordion.Handlers;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionItemProps = NSAccordion.Item.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionItemContext = NSAccordion.Item.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionItemToggleProps = NSAccordion.Item.Toggle.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ChevronItemProps = NSAccordion.Item.Chevron.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type AccordionCollapseProps = NSAccordion.Item.Collapse.Props;
 
 export type { NSAccordion };

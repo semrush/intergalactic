@@ -105,7 +105,7 @@ declare namespace NSFeaturePopover {
 }
 
 // Re-think it since looks like those props aren't needed for the Root component.
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FPPopperProps = NSOutsideClick.Props &
   NSPortal.Props &
   UniqueIDProps &
@@ -148,19 +148,19 @@ export type FPPopperProps = NSOutsideClick.Props &
     popperMargin?: number;
   };
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverPopperProps = NSFeaturePopover.Popper.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverContext = NSFeaturePopover.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverProps = NSFeaturePopover.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverDefaultProps = NSFeaturePopover.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverTriggerProps = NSFeaturePopover.Trigger.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverSpotProps = NSFeaturePopover.Spot.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverComponent = NSFeaturePopover.Component;
 
 export type { NSFeaturePopover };

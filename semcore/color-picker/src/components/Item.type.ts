@@ -1,7 +1,7 @@
 import type { NSBox } from '@semcore/base-components';
 
 /** TODO: revise component structure */
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ItemProps = NSBox.Props & {
   /**
    * Color item in hexadecimal format.

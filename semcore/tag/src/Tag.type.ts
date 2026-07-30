@@ -97,21 +97,21 @@ declare namespace NSTag {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagSize = NSTag.Size;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagTheme = NSTag.Theme;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagUse = NSTag.Use;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagProps = NSTag.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagCloseProps = NSTag.Close.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagContext = NSTag.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagAddonProps = NSTag.Addon.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagTextProps = NSTag.Text.Props;
 
 export type { NSTag };

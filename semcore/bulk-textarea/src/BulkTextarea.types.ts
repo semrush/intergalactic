@@ -249,16 +249,16 @@ declare namespace NSBulktextarea {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaProps<T extends string | string[]> = NSBulktextarea.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaDefaultProps<T extends string | string[]> = NSBulktextarea.DefaultProps<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaInputFieldProps<T extends string | string[] = string | string[]> =
   NSBulktextarea.InputField.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type BulkTextareaType<T extends string | string[]> = NSBulktextarea.Component<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ErrorItem = NSBulktextarea.ErrorItem;
 
 export type { NSBulktextarea };
