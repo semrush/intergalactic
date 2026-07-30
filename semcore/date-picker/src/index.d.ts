@@ -11,7 +11,7 @@ import type Divider from '@semcore/divider';
 import type { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
 import type { NSInput } from '@semcore/input';
 import type Input from '@semcore/input';
-import type { InputMaskValueProps } from '@semcore/input-mask';
+import type { NSInputMask } from '@semcore/input-mask';
 import type { TooltipProps } from '@semcore/tooltip';
 import type dayjs from 'dayjs';
 import type { ChangeEvent } from 'react';
@@ -315,7 +315,7 @@ declare const InputTrigger: Intergalactic.Component<
   Value: typeof Input.Value;
   SingleDateInput: Intergalactic.Component<'div', NSInput.Props & SingleDateInputProps> & {
     Indicator: typeof Input.Addon;
-    MaskedInput: Intergalactic.Component<'input', InputMaskValueProps & DatePickerMaskedInputProps>;
+    MaskedInput: Intergalactic.Component<'input', NSInputMask.Value.Props & DatePickerMaskedInputProps>;
   };
 };
 
@@ -330,11 +330,11 @@ declare const RangeInputTrigger: Intergalactic.Component<
     RangeSep: typeof Input.Addon;
     FromMaskedInput: Intergalactic.Component<
       'input',
-      InputMaskValueProps & DatePickerMaskedInputProps
+      NSInputMask.Value.Props & DatePickerMaskedInputProps
     >;
     ToMaskedInput: Intergalactic.Component<
       'input',
-      InputMaskValueProps & DatePickerMaskedInputProps
+      NSInputMask.Value.Props & DatePickerMaskedInputProps
     >;
   };
 };
