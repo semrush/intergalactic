@@ -54,6 +54,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
         await locators.selectTrigger(page).click();
         await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.menu(page)).toHaveCSS(
+          'max-height',
+          props.size === 'l' ? '306px' : '246px',
+        );
         await expect(page).toHaveScreenshot();
       } else {
         await expect(page).toHaveScreenshot();

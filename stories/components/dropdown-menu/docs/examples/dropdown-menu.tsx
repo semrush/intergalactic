@@ -39,6 +39,7 @@ const Demo = () => {
           <DropdownMenu.Notice
             aria-labelledby='export-notice-title'
             theme='warning'
+            px={3}
           >
             <DropdownMenu.Notice.Content>
               <Text tag='strong' mb={1} style={{ display: 'block' }} id='export-notice-title'>
