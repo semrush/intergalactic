@@ -241,7 +241,6 @@ class InlineInputBase extends Component<
 class Value extends Component<
   Intergalactic.InternalTypings.InferChildComponentProps<NSInlineInput.Value.Component, typeof InlineInputBase, 'Value'>,
   [],
-  // TODO:
   NSInlineInput.Value.Handlers
 > {
   static defaultProps: NSInlineInput.Value.DefaultProps = {
