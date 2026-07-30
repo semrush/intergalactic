@@ -91,7 +91,7 @@ SValue[state='normal']::before {
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23)); /* TODO: ...? not sure if we need to add special vars for invalid radio */
+  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 }
 
 SControl {
@@ -120,7 +120,7 @@ SControl:checked:focus-visible~SValue::before {
 }
 
 SControl:focus-visible+SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23)); /* TODO: ...? not sure if we need to add special vars for invalid radio */
+  border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
   @mixin focus-outline-mixin;
   outline-color: var(--intergalactic-keyboard-focus-invalid-outline, oklch(0.628 0.257 28.9 / 0.652));
 }
