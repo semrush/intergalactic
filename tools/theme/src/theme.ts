@@ -14,7 +14,7 @@ import {
   L_BG_SECONDARY_ACTIVE,
   L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
   L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
+  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
   L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
   L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
@@ -258,7 +258,7 @@ export const theme: Theme = {
         description: 'Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)',
       },
     },
-    timing: {
+    easings: {
       fast: {
         value: 'cubic-bezier(0.5, 0, 0, 1.12)',
         description: 'Should be used for fast animation timing function',
@@ -1348,6 +1348,18 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
       },
+      control_presets_bg_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Presets items.',
+      },
+      control_presets_border_selected: {
+        value: neutral.at(L_BORDER_STRONG),
+        description: 'Border color of the selected Preset item.',
+      },
+      control_presets_border_hover: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the hovered Preset item.',
+      },
       progress_bar_bg_DEFAULT: {
         value: neutral.at(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
@@ -1963,9 +1975,29 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content_inset_inline: {
+      content_padding_xsmall: {
+        value: `${SCALE_INDENT}px`,
+        description: 'Extra small padding for content inside controls and surfaces.',
+      },
+      content_padding_small: {
+        value: `${SCALE_INDENT * 2}px`,
+        description: 'Small padding for content inside controls and surfaces.',
+      },
+      content_padding_medium: {
         value: `${SCALE_INDENT * 3}px`,
-        description: 'Horizontal inset for content inside controls and surfaces.',
+        description: 'Medium padding for content inside controls and surfaces.',
+      },
+      content_padding_large: {
+        value: `${SCALE_INDENT * 4}px`,
+        description: 'Large padding for content inside controls and surfaces.',
+      },
+      content_padding_xlarge: {
+        value: `${SCALE_INDENT * 5}px`,
+        description: 'Extra large padding for content inside controls and surfaces.',
+      },
+      content_padding_xxlarge: {
+        value: `${SCALE_INDENT * 10}px`,
+        description: '2x large padding for content inside controls and surfaces.',
       },
       content_gap_small: {
         value: `${SCALE_INDENT}px`,
@@ -2226,8 +2258,8 @@ type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '2
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
-type Timing = 'fast' | 'medium';
 type Assets = 'checkmark-m' | 'checkmark-l';
+type Easings = 'fast' | 'medium';
 
 type Value<T = string> = {
   value: T;
@@ -2245,8 +2277,8 @@ export type BaseTokens = {
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
-  timing: Record<Timing, Value>;
   assets: Record<Assets, Value>;
+  easings: Record<Easings, Value>;
 };
 
 type FlattenPaths<T> = T extends object
@@ -2266,7 +2298,12 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content_inset_inline: Value;
+    content_padding_xsmall: Value;
+    content_padding_small: Value;
+    content_padding_medium: Value;
+    content_padding_large: Value;
+    content_padding_xlarge: Value;
+    content_padding_xxlarge: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
     content_gap_large: Value;
@@ -2641,6 +2678,15 @@ type SemanticColors = {
       };
       border: {
         DEFAULT: Value;
+      };
+    };
+    presets: {
+      bg: {
+        DEFAULT: Value;
+      };
+      border: {
+        selected: Value;
+        hover: Value;
       };
     };
     tab_line: {
