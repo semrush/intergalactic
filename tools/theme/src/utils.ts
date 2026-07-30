@@ -143,6 +143,10 @@ export function processTokens(config: Theme, prefix: string): ProcessedTokens {
         traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-timing`, groupKey: 'baseTokens' });
         break;
       }
+      case 'assets': {
+        traverse({ node: config.baseTokens[key], path: [], prefix: `${prefix}-assets`, groupKey: 'baseTokens' });
+        break;
+      }
       default: {
         const k: never = key;
         throw new Error(`Please, handle key ${k}`);

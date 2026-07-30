@@ -4,6 +4,9 @@ SSwitch {
   align-items: center;
   position: relative;
   user-select: none;
+
+  --global-slider-width: 0;
+  --global-toggle-padding: 0;
 }
 
 SSwitch[size] {
@@ -23,9 +26,8 @@ SSwitch[size='m'] {
   }
 
   & SSlider {
-    width: 11px;
+    --global-slider-width: 11px;
     height: 11px;
-    border-radius: 50%;
   }
 }
 
@@ -40,9 +42,8 @@ SSwitch[size='l'] {
   }
 
   & SSlider {
-    width: 14px;
+    --global-slider-width: 14px;
     height: 14px;
-    border-radius: 50%;
   }
 }
 
@@ -57,9 +58,8 @@ SSwitch[size='xl'] {
   }
 
   & SSlider {
-    width: 18px;
+    --global-slider-width: 18px;
     height: 18px;
-    border-radius: 50%;
   }
 }
 
@@ -82,7 +82,12 @@ SToggle {
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+
+  --global-toggle-padding: 3px;
+
+  &[size='m'] {
+    --global-toggle-padding: 2.5px;
+  }
 }
 
 SToggle[checked][theme='info'] {
@@ -118,26 +123,37 @@ SToggle[neighborLocation='right'] {
 }
 
 SSlider {
-  background: var(--intergalactic-control-switch-handle, #ffffff);
-  transform: translateX(-50%) scaleX(1);
-  transition: transform calc(var(--intergalactic-duration-switch, 100) * 1ms) ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background: var(--intergalactic-control-switch-handle, #ffffff);
+  transition:
+    transform,
+    left,
+    calc(var(--intergalactic-duration-switch, 100) * 1ms)
+    ease-in-out;
   box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07));
+  border-radius: 50%;
+  
+
+  position: absolute;
+  width: var(--global-slider-width);
+  left: var(--global-toggle-padding);
+  transform: scaleX(1);
 
   &[checked] {
-    transform: translateX(50%) scaleX(1);
+    left: calc(100% - var(--global-slider-width) - var(--global-toggle-padding));
+    transform: scaleX(1);
   }
 
   pointer-events: none;
 }
 
 SToggle[active] SSlider {
-  transform: translateX(-50%) scaleX(1.15) translateX(1px);
+  transform: scaleX(1.15) translateX(1px);
 
   &[checked] {
-    transform: translateX(50%) scaleX(1.15) translateX(-1px);
+    transform: scaleX(1.15) translateX(-1px);
   }
 }
 

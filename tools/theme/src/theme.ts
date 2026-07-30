@@ -268,6 +268,14 @@ export const theme: Theme = {
         description: 'Should be used for medium animation timing function',
       },
     },
+    assets: {
+      'checkmark-m': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4=")',
+      },
+      'checkmark-l': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==")',
+      },
+    },
   },
   semanticTokens: {
     colors: {
@@ -2219,6 +2227,7 @@ type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
 type Timing = 'fast' | 'medium';
+type Assets = 'checkmark-m' | 'checkmark-l';
 
 type Value<T = string> = {
   value: T;
@@ -2237,6 +2246,7 @@ export type BaseTokens = {
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
   timing: Record<Timing, Value>;
+  assets: Record<Assets, Value>;
 };
 
 type FlattenPaths<T> = T extends object
