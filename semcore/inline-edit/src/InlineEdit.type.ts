@@ -55,11 +55,11 @@ declare namespace NSInlineEdit {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineEditProps = NSInlineEdit.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineEditViewProps = NSInlineEdit.View.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InlineEditEditProps = NSInlineEdit.Edit.Props;
 
 export type { NSInlineEdit };
