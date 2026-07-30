@@ -61,13 +61,13 @@ declare namespace NSSwitch {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SwitchTheme = NSSwitch.Theme;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SwitchProps = NSSwitch.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SwitchValueProps = NSSwitch.Value.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SwitchAddonProps = NSSwitch.Addon.Props;
 
 export type { NSSwitch };

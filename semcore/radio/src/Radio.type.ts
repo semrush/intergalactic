@@ -98,23 +98,23 @@ declare namespace NSRadio {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioSize = NSRadio.Size;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioState = NSRadio.State;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioValue = NSRadio.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioProps = NSRadio.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioGroupProps<T extends RadioValue = RadioValue> = NSRadio.Group.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioValueProps = NSRadio.Value.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioCtx = NSRadio.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioValueControlProps = NSRadio.Value.Control.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type RadioValueMarkProps = NSRadio.Value.Mark.Props;
 
 export type { NSRadio };

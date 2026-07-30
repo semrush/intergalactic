@@ -79,11 +79,11 @@ declare namespace NSColorPicker {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ColorsProps = NSColorPicker.Colors.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ColorPickerProps = NSColorPicker.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ColorPickerHandlers = NSColorPicker.Handlers;
 
 export type { NSColorPicker };

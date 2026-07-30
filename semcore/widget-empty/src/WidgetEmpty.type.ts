@@ -23,7 +23,7 @@ declare namespace NSWidgetEmpty {
     };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type WidgetEmptyProps = NSWidgetEmpty.Props;
 
 export type { NSWidgetEmpty };

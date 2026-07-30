@@ -82,15 +82,15 @@ declare namespace NSTabPanel {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelValue = NSTabPanel.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelProps<T extends NSTabPanel.Value = NSTabPanel.Value> = NSTabPanel.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelItemProps = NSTabPanel.Item.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelContext = NSTabPanel.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelHandlers = NSTabPanel.Handlers;
 
 export type { NSTabPanel };

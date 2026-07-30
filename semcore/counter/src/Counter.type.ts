@@ -17,7 +17,7 @@ declare namespace NSCounter {
   type Component = Intergalactic.Component<'div', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CounterProps = NSCounter.Props;
 
 export type { NSCounter };
