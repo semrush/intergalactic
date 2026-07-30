@@ -13,7 +13,7 @@ import type { NSButton } from './Button.type';
 import { BUTTON_SIZE_TO_SPIN_SIZE } from './mappers/BUTTON_SIZE_TO_SPIN_SIZE';
 import { BUTTON_USE_TO_DEFAULT_THEME } from './mappers/BUTTON_USE_TO_DEFAULT_THEME';
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export const MAP_USE_DEFAULT_THEME = BUTTON_USE_TO_DEFAULT_THEME;
 
 export class RootButton extends Component<

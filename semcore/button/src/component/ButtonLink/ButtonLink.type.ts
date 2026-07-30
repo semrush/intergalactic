@@ -36,15 +36,15 @@ declare namespace NSButtonLink {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ButtonLinkProps = NSButtonLink.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ButtonLinkDefaultProps = NSButtonLink.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ButtonLinkTextProps = NSButtonLink.Text.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ButtonLinkAddonProps = NSButtonLink.Addon.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ButtonLinkComponent = NSButtonLink.Component;
 
 export type { NSButtonLink };
