@@ -1,4 +1,4 @@
-import type { BoxProps, NeighborItemProps, SimpleHintPopperProps } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation, NSHint } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
@@ -7,8 +7,8 @@ declare namespace NSButton {
   type Size = 'l' | 'm';
   type Theme = 'info' | 'success' | 'brand' | 'danger' | 'muted' | 'invert';
   type Use = 'primary' | 'secondary' | 'tertiary';
-  type Props = BoxProps &
-    NeighborItemProps & {
+  type Props = NSBox.Props &
+    NSNeighborLocation.Detect.Props & {
       /** Button activity state */
       active?: boolean;
       /** Disabled button state */
@@ -23,7 +23,7 @@ declare namespace NSButton {
        * Placement for hint
        * @default top
        */
-      hintPlacement?: SimpleHintPopperProps['placement'];
+      hintPlacement?: NSHint.Props['placement'];
 
       /** Button size.
        * @default `m`
@@ -57,7 +57,7 @@ declare namespace NSButton {
   }
 
   namespace Addon {
-    type Props = BoxProps;
+    type Props = NSBox.Props;
 
     type Component = Intergalactic.Component<'span', Props>;
   }

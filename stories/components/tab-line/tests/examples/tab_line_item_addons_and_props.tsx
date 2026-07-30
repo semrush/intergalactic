@@ -2,14 +2,14 @@ import FacebookM from '@semcore/icon/Facebook/m';
 import InstagramM from '@semcore/icon/Instagram/m';
 import TwitterM from '@semcore/icon/Twitter/m';
 import Badge from '@semcore/ui/badge';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import Counter from '@semcore/ui/counter';
 import TabLine from '@semcore/ui/tab-line';
 import type { NSTabLine } from '@semcore/ui/tab-line';
 import { Text, type NSText } from '@semcore/ui/typography';
 import React from 'react';
 
-type TabLineDefProps = NSTabLine.Props & BoxProps & NSTabLine.Item.Props & {
+type TabLineDefProps = NSTabLine.Props & NSBox.Props & NSTabLine.Item.Props & {
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;

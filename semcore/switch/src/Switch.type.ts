@@ -1,4 +1,4 @@
-import type { BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
@@ -8,8 +8,8 @@ declare namespace NSSwitch {
     getAddonProps: PropGetterFn;
     getValueProps: PropGetterFn;
   };
-  type Props = BoxProps &
-    NeighborLocationProps & {
+  type Props = NSBox.Props &
+    NSNeighborLocation.Props & {
       /** Switch size
        * @default m
        */
@@ -27,8 +27,8 @@ declare namespace NSSwitch {
   };
 
   namespace Value {
-    type Props = BoxProps &
-      NeighborItemProps & {
+    type Props = NSBox.Props &
+      NSNeighborLocation.Detect.Props & {
         /** Handler on change */
         onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
         /** Control state  */
@@ -51,7 +51,7 @@ declare namespace NSSwitch {
   }
 
   namespace Addon {
-    type Props = BoxProps & NeighborItemProps;
+    type Props = NSBox.Props & NSNeighborLocation.Detect.Props;
     type Component = Intergalactic.Component<'div', Props>;
   }
 

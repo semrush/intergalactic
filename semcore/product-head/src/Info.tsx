@@ -1,4 +1,5 @@
-import { Box, type BoxProps } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -11,18 +12,18 @@ import React from 'react';
 
 import style from './style/info.shadow.css';
 
-export type InfoItemProps = BoxProps & {
+export type InfoItemProps = NSBox.Props & {
   /** A label content that appears before the main item content */
   label?: React.ReactNode;
 };
 
-type InfoComponent = typeof Box & {
+type InfoComponent = NSBox.Component & {
   Item: Intergalactic.Component<'div', InfoItemProps> & {
-    Label: typeof Box;
+    Label: NSBox.Component;
   };
 };
 
-class InfoRoot extends Component<BoxProps> {
+class InfoRoot extends Component<NSBox.Props> {
   static displayName = 'Info';
   static style = style;
 

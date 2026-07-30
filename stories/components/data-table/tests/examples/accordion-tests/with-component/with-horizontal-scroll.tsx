@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import type { DataTableData, DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { NoData } from '@semcore/ui/widget-empty';
@@ -12,7 +12,7 @@ type AccordionWithHorizontalScrollProps = {
   defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
 };
 
-export type AccordionWithHorizontalScrollExampleProps = AccordionWithHorizontalScrollProps & BoxProps;
+export type AccordionWithHorizontalScrollExampleProps = AccordionWithHorizontalScrollProps & NSBox.Props;
 
 const Demo = (props: AccordionWithHorizontalScrollExampleProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);

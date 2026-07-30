@@ -1,7 +1,4 @@
 {
-  "compilerOptions": {
-    "strict": true
-  },
   "extends": "../../tsconfig.json",
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
   "compilerOptions": {

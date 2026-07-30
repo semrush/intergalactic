@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { LinkProps } from '@semcore/link';
 import type { NSText } from '@semcore/typography';
@@ -25,7 +25,7 @@ declare namespace NSButtonLink {
   }
 
   namespace Addon {
-    type Props = BoxProps;
+    type Props = NSBox.Props;
 
     type Component = Intergalactic.Component<'span', Props>;
   }

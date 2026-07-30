@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { NSButton } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
@@ -18,7 +18,7 @@ export type WizardProps = NSModal.Props & {
   locale?: string;
 };
 
-export type WizardSidebarProps = BoxProps & {
+export type WizardSidebarProps = NSBox.Props & {
   /**
    * Sidebar title
    */
@@ -30,7 +30,7 @@ export type WizardSidebarProps = BoxProps & {
   id?: string;
 };
 
-export type WizardStepProps = BoxProps & {
+export type WizardStepProps = NSBox.Props & {
   /**
    * Ordered step position from 0
    */
@@ -46,7 +46,7 @@ export type WizardStepProps = BoxProps & {
   active?: boolean;
 };
 
-export type WizardStepperProps = BoxProps & {
+export type WizardStepperProps = NSBox.Props & {
   /**
    * Ordered step position from 0
    */
@@ -87,7 +87,7 @@ export type WizardStepperProps = BoxProps & {
   focusPrev?: () => void;
 };
 
-export type WizardContentProps = BoxProps & {
+export type WizardContentProps = NSBox.Props & {
   /**
    * Renders wizard content container with border-radius on the left side
    */

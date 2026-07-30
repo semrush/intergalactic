@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { NSButton } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { NSCounter } from '@semcore/counter';
@@ -78,7 +78,7 @@ declare namespace NSBulktextarea {
   };
 
   namespace InputField {
-    type Props<T extends string | string[] = string | string[]> = BoxProps & {
+    type Props<T extends string | string[] = string | string[]> = NSBox.Props & {
       /**
        * Unique id
        */
@@ -237,7 +237,7 @@ declare namespace NSBulktextarea {
   }
 
   type RootComponent = (<T extends string | string[]>(
-    props: Intergalactic.InternalTypings.ComponentProps<'div', 'div', BoxProps & NSBulktextarea.Props<T>>,
+    props: Intergalactic.InternalTypings.ComponentProps<'div', 'div', NSBox.Props & NSBulktextarea.Props<T>>,
   ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', {}>;
 

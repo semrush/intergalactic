@@ -1,4 +1,4 @@
-import { type EllipsisSettings, Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';

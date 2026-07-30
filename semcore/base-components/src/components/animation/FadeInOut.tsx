@@ -2,12 +2,14 @@ import { sstyled, createBaseComponent, type Intergalactic } from '@semcore/core'
 import React from 'react';
 
 import Animation from './Animation';
-import type { FadeInOutProps } from './Animation.types';
+import type { NSAnimation } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
-function FadeInOut(props: FadeInOutProps, ref: React.Ref<HTMLDivElement>) {
+function FadeInOut(props: Intergalactic.InternalTypings.InferComponentProps<NSAnimation.FadeInOut.Component>, ref: React.Ref<HTMLDivElement>) {
   return sstyled(style)(
     <Animation
+      // `ref` is overriden by spread props.
+      // @ts-expect-error
       ref={ref}
       {...props}
       keyframes={[style['@fade-in-out-enter'], style['@fade-in-out-exit']]}
@@ -17,6 +19,4 @@ function FadeInOut(props: FadeInOutProps, ref: React.Ref<HTMLDivElement>) {
 
 FadeInOut.displayName = 'FadeInOut';
 
-type FadeInOutComponent = Intergalactic.Component<'div', FadeInOutProps>;
-
-export default createBaseComponent<FadeInOutComponent>(FadeInOut);
+export default createBaseComponent<NSAnimation.FadeInOut.Component>(FadeInOut);

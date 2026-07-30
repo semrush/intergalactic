@@ -1,4 +1,4 @@
-import type { Flex, BoxProps } from '@semcore/base-components';
+import type { NSFlex, NSBox } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 
@@ -6,7 +6,7 @@ declare namespace NSRadio {
   type Size = 'm' | 'l';
   type State = 'normal' | 'invalid';
   type Value = string | number | boolean;
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /** Radio item value **/
     value?: NSRadio.Value;
     /** Radio item checked flag **/
@@ -36,7 +36,7 @@ declare namespace NSRadio {
     type Handlers = {
       checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
     };
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** List of elements that can be put on a hidden input */
       includeInputProps?: string[];
     };
@@ -88,9 +88,9 @@ declare namespace NSRadio {
       defaultValue: '';
     };
     type Component<PropsExtending = {}> = (<V extends Value, Tag extends Intergalactic.Tag = 'div'>(
-      props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, Props<V>> & PropsExtending,
+      props: Intergalactic.InternalTypings.ComponentProps<Tag, NSFlex.Component, Props<V>> & PropsExtending,
     ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-    Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, Props>;
+    Intergalactic.InternalTypings.ComponentAdditive<'div', NSFlex.Component, Props>;
   }
   type Component = Intergalactic.Component<'label', Props, Ctx> & {
     Value: Value.Component;

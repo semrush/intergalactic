@@ -1,8 +1,8 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 declare namespace NSProgressBar {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /**
      * Progress bar theme
      * @default invert
@@ -32,7 +32,7 @@ declare namespace NSProgressBar {
   };
 
   namespace Value {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** Controls the size of the value bar */
       size?: 's' | 'm' | 'l';
       /** Progress value */

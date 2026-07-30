@@ -1,4 +1,4 @@
 import { OutsideClick } from './OutsideClick';
-import type { OutsideClickProps } from './OutsideClick';
+import type { OutsideClickProps, NSOutsideClick } from './OutsideClick.type';
 
-export { OutsideClick, type OutsideClickProps };
+export { OutsideClick, type OutsideClickProps, NSOutsideClick };
