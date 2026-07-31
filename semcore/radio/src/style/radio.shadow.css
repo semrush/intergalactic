@@ -8,8 +8,10 @@ SRadio {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
-  SText[size='l'] {
-    margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+  &[size='l'] {
+    SText {
+      margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+    }
   }
 
   SText[color] {
