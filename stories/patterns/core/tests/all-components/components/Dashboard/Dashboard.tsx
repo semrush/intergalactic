@@ -169,7 +169,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
           </Flex>
         </Flex>
 
-        <Flex gap={4} mb={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+        <Flex gap={2} mb={2} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
           <Card tag='section' style={{ ...cardSectionStyle('1 1 calc(50% - 8px)'), minWidth: 'min(100%, 360px)' }}>
             <Card.Body>
               <Flex gap={6} w='100%'>
@@ -268,8 +268,8 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
           </Card>
         </Flex>
 
-        <Flex direction='column' gap={4} mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
-          <Flex gap={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+        <Flex direction='column' gap={2} mb={2} style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Flex gap={2} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
             <Card tag='section' style={cardSectionStyle('4 1 calc(33.333% - 11px)')}>
               <Card.Header>
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
@@ -366,7 +366,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
             </Card>
           </Flex>
 
-          <Flex gap={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Flex gap={2} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
             <Card tag='section' style={cardSectionStyle('3 1 calc(33.333% - 11px)')}>
               <Card.Header>
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
@@ -458,7 +458,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
             </Card>
           </Flex>
 
-          <Flex gap={4} flexWrap alignItems='stretch' style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Flex gap={2} flexWrap alignItems='stretch' style={{ width: '100%', boxSizing: 'border-box' }}>
             <Card
               tag='section'
               style={{
@@ -600,7 +600,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
           </Flex>
         </Flex>
 
-        <Flex gap={4} flexWrap alignItems='stretch' mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
+        <Flex gap={2} flexWrap alignItems='stretch' mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
           <Card
             tag='section'
             style={{
