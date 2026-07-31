@@ -867,7 +867,7 @@ function MaskedInput({
   useEnhancedEffect(() => {
     if (!ref.current) return;
     const stringsToMeasure = focused
-      ? [value ?? mask]
+      ? [value ?? mask, mask]
       : humanizedDate
         ? [humanizedDate]
         : [mask];
