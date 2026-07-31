@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type Tooltip from '@semcore/tooltip';
 import type * as React from 'react';
@@ -42,7 +42,7 @@ export type DataTableData = DataRowItem[];
 
 export type DTUse = 'primary' | 'secondary';
 
-export type Sizes = Partial<Pick<BoxProps, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>>;
+export type Sizes = Partial<Pick<NSBox.Props, 'w' | 'wMax' | 'wMin' | 'h' | 'hMax' | 'hMin'>>;
 
 export type DataTableProps<
   Data extends DataTableData,

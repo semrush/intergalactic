@@ -14,7 +14,7 @@ import {
   L_BG_SECONDARY_ACTIVE,
   L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
   L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
+  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
   L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
   L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
@@ -80,6 +80,9 @@ export const theme: Theme = {
       300: {
         value: '16px',
       },
+      350: {
+        value: '18px',
+      },
       400: {
         value: '20px',
       },
@@ -108,6 +111,10 @@ export const theme: Theme = {
       300: {
         value: '150%',
         description: 'Use with font-size-300.',
+      },
+      350: {
+        value: '150%',
+        description: 'Use with font-size-350.',
       },
       400: {
         value: '120%',
@@ -258,7 +265,7 @@ export const theme: Theme = {
         description: 'Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)',
       },
     },
-    timing: {
+    easings: {
       fast: {
         value: 'cubic-bezier(0.5, 0, 0, 1.12)',
         description: 'Should be used for fast animation timing function',
@@ -266,6 +273,14 @@ export const theme: Theme = {
       medium: {
         value: 'cubic-bezier(0.5, 0, 0, 1.09)',
         description: 'Should be used for medium animation timing function',
+      },
+    },
+    assets: {
+      'checkmark-m': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4=")',
+      },
+      'checkmark-l': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==")',
       },
     },
   },
@@ -1340,6 +1355,18 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
       },
+      control_presets_bg_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Presets items.',
+      },
+      control_presets_border_selected: {
+        value: neutral.at(L_BORDER_STRONG),
+        description: 'Border color of the selected Preset item.',
+      },
+      control_presets_border_hover: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the hovered Preset item.',
+      },
       progress_bar_bg_DEFAULT: {
         value: neutral.at(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
@@ -1901,9 +1928,9 @@ export const theme: Theme = {
         value: `3px 3px 10px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Hover state for the shadow of the Card with hover state.',
       },
-      box_shadow_pills_item_selected: {
+      box_shadow_control_elevated: {
         value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
-        description: 'Shadow of the selected Pills item.',
+        description: 'Shadow of the Switch toggle.',
       },
       box_shadow_dnd: {
         value: `3px 3px 30px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
@@ -2006,7 +2033,7 @@ export const theme: Theme = {
         description: 'Use for rounding big and small charts like bar, histogram and others.',
       },
       'checkbox': {
-        value: `${RADII.medium}px`,
+        value: `${RADII.small}px`,
         description: 'Use for rounding Checkbox.',
       },
       'control': {
@@ -2231,14 +2258,15 @@ export const theme: Theme = {
   },
 };
 
-type FontSize = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
-type LineHeight = '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
+type FontSize = '50' | '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
+type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
 type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
-type Timing = 'fast' | 'medium';
+type Assets = 'checkmark-m' | 'checkmark-l';
+type Easings = 'fast' | 'medium';
 
 type Value<T = string> = {
   value: T;
@@ -2256,7 +2284,8 @@ export type BaseTokens = {
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
-  timing: Record<Timing, Value>;
+  assets: Record<Assets, Value>;
+  easings: Record<Easings, Value>;
 };
 
 type FlattenPaths<T> = T extends object
@@ -2656,6 +2685,15 @@ type SemanticColors = {
       };
       border: {
         DEFAULT: Value;
+      };
+    };
+    presets: {
+      bg: {
+        DEFAULT: Value;
+      };
+      border: {
+        selected: Value;
+        hover: Value;
       };
     };
     tab_line: {
@@ -3249,10 +3287,8 @@ type SemanticShadows = {
         DEFAULT: Value;
         hover: Value;
       };
-      pills: {
-        item: {
-          selected: Value;
-        };
+      control: {
+        elevated: Value;
       };
       dnd: Value;
       modal: Value;

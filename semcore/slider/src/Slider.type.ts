@@ -1,4 +1,4 @@
-import type { Box, BoxProps, FlexProps } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type React from 'react';
 
@@ -16,7 +16,7 @@ declare namespace NSSlider {
     value: V;
     label: React.ReactNode;
   };
-  type Props<V extends NSSlider.Value = NSSlider.Value> = BoxProps & {
+  type Props<V extends NSSlider.Value = NSSlider.Value> = NSBox.Props & {
     /** Numeric value
      */
     value?: V;
@@ -57,13 +57,13 @@ declare namespace NSSlider {
   };
 
   namespace Knob {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
   namespace Bar {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
   namespace Options {
-    type Props = FlexProps;
+    type Props = NSFlex.Props;
     type Component = Intergalactic.Component<
       'div',
       Props,
@@ -72,7 +72,7 @@ declare namespace NSSlider {
     >;
   }
   namespace Item {
-    type Props = BoxProps;
+    type Props = NSBox.Props;
     type Component = Intergalactic.Component<'div', Props, NSSlider.Ctx, [handlers: NSSlider.Handlers]>;
   }
 
@@ -93,9 +93,9 @@ declare namespace NSSlider {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SliderOption<V extends NSSlider.Value> = NSSlider.Option<V>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SliderProps<V extends NSSlider.Value = NSSlider.Value> = NSSlider.Props<V>;
 
 export type { NSSlider };

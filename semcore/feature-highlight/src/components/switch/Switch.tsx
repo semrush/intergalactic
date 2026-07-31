@@ -1,14 +1,15 @@
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
-import type { NSSwitch } from '@semcore/switch';
 import Switch from '@semcore/switch';
 import React from 'react';
 
 import style from './switch.shadow.css';
-import type { HighlightedSwitchComponent } from './Switch.type';
+import type { NSSwitchFH } from './Switch.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class SwitchFHRoot extends Component<NSSwitch.Props> {
+class SwitchFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSSwitchFH.Component>
+> {
   static displayName = 'SwitchFH';
   static style = style;
 
@@ -47,7 +48,9 @@ class SwitchFHRoot extends Component<NSSwitch.Props> {
   }
 }
 
-function Value(props: IRootComponentProps & { onChange: () => void }) {
+function Value(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSSwitchFH.Value.Component, typeof SwitchFHRoot, 'Value'>,
+) {
   const SToggle = Root;
 
   return sstyled(props.styles)(<SToggle render={Switch.Value} onChange={props.onChange} />);
@@ -59,7 +62,7 @@ function Value(props: IRootComponentProps & { onChange: () => void }) {
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#switch|Docs}
  */
 export const SwitchFH = createComponent<
-  HighlightedSwitchComponent,
+  NSSwitchFH.Component,
   typeof SwitchFHRoot
 >(SwitchFHRoot, {
   Addon: Switch.Addon,

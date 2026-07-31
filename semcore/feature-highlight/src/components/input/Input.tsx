@@ -1,12 +1,13 @@
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Input from '@semcore/input';
 import React from 'react';
 
 import style from './input.shadow.css';
+import type { NSInputFH } from './Input.type';
 
-class InputFHRoot extends Component {
+class InputFHRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSInputFH.Component>> {
   static displayName = 'InputFH';
   static style = style;
 
@@ -18,7 +19,7 @@ class InputFHRoot extends Component {
   }
 }
 
-function HighlightAddon(props: IRootComponentProps) {
+function HighlightAddon(props: Intergalactic.InternalTypings.InferComponentProps<NSInputFH.Addon.Component>) {
   const { Children, children: hasChildren } = props;
   return (
     <Root render={Input.Addon}>
