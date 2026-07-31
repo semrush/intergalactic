@@ -1,8 +1,8 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 declare namespace NSDivider {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /**
      * Type of the divider
      * @default primary
@@ -26,7 +26,7 @@ declare namespace NSDivider {
   type Component = Intergalactic.Component<'div', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DividerProps = NSDivider.Props;
 
 export type { NSDivider };

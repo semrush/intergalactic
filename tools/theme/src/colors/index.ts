@@ -236,14 +236,16 @@ export const L_BORDER_SECONDARY = 0.95; // notice borders, divider, cell borders
 export const L_BORDER_ACTIVE = 0.7; // focused inputs, active states of pills and base-trigger
 /** Border focus      | ⚠️ APCA 30 on secondary bg */
 export const L_BORDER_FOCUS = 0.7;
+/** Border strong         | ⚠️ APCA 60+ under white */
+export const L_BORDER_STRONG = 0.23; // selected presets items
 
 // =============================================================================
 // Invert levels
 
 /** Primary bg */
-export const L_INV_BG_PRIMARY = 0.21;
-export const L_INV_BG_PRIMARY_HOVER = 0.32;
-export const L_INV_BG_PRIMARY_ACTIVE = 0.36;
+export const L_INV_BG_PRIMARY = 0.23; // + selected Presets item
+export const L_INV_BG_PRIMARY_HOVER = 0.36;
+export const L_INV_BG_PRIMARY_ACTIVE = 0.4;
 
 /** Secondary bg */
 export const L_INV_BG_SECONDARY = 0.23;

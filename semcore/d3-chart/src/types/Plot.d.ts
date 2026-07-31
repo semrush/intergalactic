@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
 
 import type { DataStructureHints } from './a11y/hints';
@@ -9,7 +9,7 @@ import type { PlotEventEmitter } from './utils';
 /** @deprecated */
 export interface IPlotProps extends PlotProps, UnknownProperties {}
 export type PlotProps = Context &
-  BoxProps & {
+  NSBox.Props & {
     /** Width of the svg element
      * @default 0 */
     width?: number;

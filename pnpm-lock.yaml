@@ -366,7 +366,7 @@ importers:
         specifier: ^17.2.2
         version: link:../input
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -1027,7 +1027,7 @@ importers:
         specifier: ^17.2.1
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
       '@semcore/switch':
         specifier: ^17.2.1
@@ -1778,7 +1778,7 @@ importers:
         specifier: ^17.2.2
         version: link:../input
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -1845,7 +1845,7 @@ importers:
         specifier: ^17.2.2
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../bulk-textarea
       '@semcore/button':
         specifier: ^17.2.1
@@ -1854,7 +1854,7 @@ importers:
         specifier: ^17.2.1
         version: link:../card
       '@semcore/carousel':
-        specifier: ^17.2.2
+        specifier: ^17.2.3
         version: link:../carousel
       '@semcore/checkbox':
         specifier: ^17.2.1
@@ -1863,7 +1863,7 @@ importers:
         specifier: ^17.2.1
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^17.2.1
+        specifier: ^17.3.0
         version: link:../core
       '@semcore/counter':
         specifier: ^17.2.1
@@ -1899,10 +1899,10 @@ importers:
         specifier: ^17.1.1
         version: link:../errors
       '@semcore/feature-highlight':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../feature-highlight
       '@semcore/feature-popover':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../feature-popover
       '@semcore/feedback-form':
         specifier: ^17.2.2
@@ -1968,7 +1968,7 @@ importers:
         specifier: ^17.2.1
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
       '@semcore/side-panel':
         specifier: ^17.2.2
@@ -2001,7 +2001,7 @@ importers:
         specifier: ^17.2.2
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: ^17.2.2
+        specifier: ^17.2.3
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: ^17.2.1

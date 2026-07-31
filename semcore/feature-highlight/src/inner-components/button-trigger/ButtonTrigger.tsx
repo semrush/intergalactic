@@ -1,13 +1,15 @@
 import { ButtonTrigger } from '@semcore/base-trigger';
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import React from 'react';
 
 import style from './buttonTrigger.shadow.css';
-import type { HighlightedButtonTriggerComponent } from './ButtonTrigger.type';
+import type { NSButtonTriggerFH } from './ButtonTrigger.type';
 
-class ButtonTriggerFHRoot extends Component {
+class ButtonTriggerFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSButtonTriggerFH.Component>
+> {
   static displayName = 'ButtonTriggerFH';
   static style = style;
 
@@ -20,7 +22,9 @@ class ButtonTriggerFHRoot extends Component {
   }
 }
 
-function Addon(props: IRootComponentProps) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSButtonTriggerFH.Addon.Component>,
+) {
   const SAddon = Root;
   const { Children, children: hasChildren } = props;
   return sstyled(props.styles)(
@@ -35,7 +39,7 @@ function Addon(props: IRootComponentProps) {
 }
 
 export const ButtonTriggerFH = createComponent<
-  HighlightedButtonTriggerComponent,
+  NSButtonTriggerFH.Component,
   typeof ButtonTriggerFHRoot
 >(ButtonTriggerFHRoot, {
   Text: ButtonTrigger.Text,

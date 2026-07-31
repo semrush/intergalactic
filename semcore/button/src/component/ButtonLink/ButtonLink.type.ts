@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { LinkProps } from '@semcore/link';
 import type { NSText } from '@semcore/typography';
@@ -20,7 +20,7 @@ export type ButtonLinkDefaultProps = {
 
 export type ButtonLinkTextProps = NSText.Props;
 
-export type ButtonLinkAddonProps = BoxProps;
+export type ButtonLinkAddonProps = NSBox.Props;
 
 export type ButtonLinkChildren = {
   Text: Intergalactic.Component<'span', ButtonLinkTextProps>;

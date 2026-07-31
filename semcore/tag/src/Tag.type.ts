@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { IconProps } from '@semcore/icon';
 import type { NSText } from '@semcore/typography';
@@ -13,7 +13,7 @@ declare namespace NSTag {
   type Ctx = Props & {
     getCloseProps?: PropGetterFn;
   };
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /** Value responsible for tag availability
      */
     disabled?: boolean;
@@ -64,12 +64,12 @@ declare namespace NSTag {
   }
 
   namespace Addon {
-    type Props = BoxProps;
+    type Props = NSBox.Props;
     type Component = Intergalactic.Component<'div', Props>;
   }
 
   namespace Circle {
-    type Props = BoxProps;
+    type Props = NSBox.Props;
     type Component = Intergalactic.Component<'div', Props>;
   }
 
@@ -107,21 +107,21 @@ declare namespace NSTag {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagSize = NSTag.Size;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagTheme = NSTag.Theme;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagUse = NSTag.Use;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagProps = NSTag.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagCloseProps = NSTag.Close.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagContext = NSTag.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagAddonProps = NSTag.Addon.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TagTextProps = NSTag.Text.Props;
 
 export type { NSTag };

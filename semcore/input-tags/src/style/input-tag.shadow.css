@@ -43,13 +43,13 @@ SInputTags>div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 SInputTags[size='m'] {
   min-height: var(--intergalactic-form-control-m, 32px);
   height: auto;
-  padding: 0 calc(var(--intergalactic-spacing-content-padding-small, 8px) + 2px) 0 var(--intergalactic-spacing-content-padding-small, 8px);
+  padding: var(--intergalactic-content-padding-xsmall, undefined) var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SInputTags[size='l'] {
   min-height: var(--intergalactic-form-control-l, 44px);
   height: auto;
-  padding: 0 calc(var(--intergalactic-spacing-content-padding-small, 8px) + 2px) 0 var(--intergalactic-spacing-content-padding-small, 8px);
+  padding: calc(var(--intergalactic-content-padding-xsmall, undefined) + 2px) var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
@@ -59,8 +59,12 @@ SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
   }
 }
 
-STagContainer {
-  margin: var(--intergalactic-spacing-05x, 2px);
+STagContainer[size='m'] {
+  margin: 0 var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-1x, 4px) 0;
+}
+
+STagContainer[size='l'] {
+  margin: 0 var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-1x, 4px) 0;
 }
 
 STagContainer[editable] {

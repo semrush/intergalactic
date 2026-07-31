@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
@@ -13,7 +13,7 @@ export type ScrollInTableProps = {
   withScrollBar?: boolean;
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   multiLevel?: boolean;
-} & BoxProps;
+} & NSBox.Props;
 
 const flatColumns = [
   { name: 'keyword', children: 'Keyword' },
