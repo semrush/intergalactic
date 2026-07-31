@@ -43,13 +43,13 @@ SInputTags>div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 SInputTags[size='m'] {
   min-height: var(--intergalactic-form-control-m, 32px);
   height: auto;
-  padding: var(--intergalactic-content-padding-xsmall, undefined) var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SInputTags[size='l'] {
   min-height: var(--intergalactic-form-control-l, 44px);
   height: auto;
-  padding: calc(var(--intergalactic-content-padding-xsmall, undefined) + 2px) var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + 2px) var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SInputTags STag:focus-visible, SInputTags STagContainerClose:focus-visible {
