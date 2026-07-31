@@ -139,9 +139,10 @@ class RadioRoot extends Component<Intergalactic.InternalTypings.InferComponentPr
   render() {
     const SRadio = Root;
     const { styles, Children, children: hasChildren } = this.asProps;
+    const { size } = this.context;
 
     return sstyled(styles)(
-      <SRadio render={Box} tag='label' __excludeProps={['onChange', 'label', 'disabled']}>
+      <SRadio render={Box} tag='label' size={size} __excludeProps={['onChange', 'label', 'disabled']}>
         {hasChildren
           ? (
               <Children />

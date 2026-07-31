@@ -268,6 +268,14 @@ export const theme: Theme = {
         description: 'Should be used for medium animation timing function',
       },
     },
+    assets: {
+      'checkmark-m': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4=")',
+      },
+      'checkmark-l': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==")',
+      },
+    },
   },
   semanticTokens: {
     colors: {
@@ -1933,9 +1941,9 @@ export const theme: Theme = {
         value: `3px 3px 10px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Hover state for the shadow of the Card with hover state.',
       },
-      box_shadow_pills_item_selected: {
+      box_shadow_control_elevated: {
         value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
-        description: 'Shadow of the selected Pills item.',
+        description: 'Shadow of the Switch toggle.',
       },
       box_shadow_dnd: {
         value: `3px 3px 30px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
@@ -2038,7 +2046,7 @@ export const theme: Theme = {
         description: 'Use for rounding big and small charts like bar, histogram and others.',
       },
       'checkbox': {
-        value: `${RADII.medium}px`,
+        value: `${RADII.small}px`,
         description: 'Use for rounding Checkbox.',
       },
       'control': {
@@ -2270,6 +2278,7 @@ type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '2
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
+type Assets = 'checkmark-m' | 'checkmark-l';
 type Easings = 'fast' | 'medium';
 
 type Value<T = string> = {
@@ -2288,6 +2297,7 @@ export type BaseTokens = {
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
+  assets: Record<Assets, Value>;
   easings: Record<Easings, Value>;
 };
 
@@ -3301,10 +3311,8 @@ type SemanticShadows = {
         DEFAULT: Value;
         hover: Value;
       };
-      pills: {
-        item: {
-          selected: Value;
-        };
+      control: {
+        elevated: Value;
       };
       dnd: Value;
       modal: Value;
