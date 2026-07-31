@@ -88,13 +88,13 @@ declare namespace NSPaletteManager {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PaletteManagerProps = NSPaletteManager.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PaletteManagerHandlers = NSPaletteManager.Handlers;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ColorsCustomProps = NSPaletteManager.Colors.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputColorProps = NSPaletteManager.InputColor.Props;
 
 export type { NSPaletteManager };

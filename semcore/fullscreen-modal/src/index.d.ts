@@ -1,4 +1,4 @@
-import type { Flex, Box, BoxProps } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSModal } from '@semcore/modal';
@@ -12,7 +12,7 @@ export type FullscreenModalProps = NSModal.Props & {
   ) => void;
 };
 
-export type FullscreenModalHeaderProps = BoxProps & {
+export type FullscreenModalHeaderProps = NSBox.Props & {
   /** Title content displayed in the modal header */
   title?: React.ReactNode;
   /** Description text that appears alongside the title */
@@ -30,11 +30,11 @@ declare const FullscreenModal: Intergalactic.Component<
   FullscreenModalContext
 > & {
   Header: Intergalactic.Component<'div', FullscreenModalHeaderProps>;
-  Footer: typeof Flex;
+  Footer: NSFlex.Component;
   Close: typeof Button;
-  Back: typeof Box;
-  Body: typeof Box;
-  Section: typeof Box;
+  Back: NSBox.Component;
+  Body: NSBox.Component;
+  Section: NSBox.Component;
   Title: typeof Text;
   Description: typeof Text;
 };

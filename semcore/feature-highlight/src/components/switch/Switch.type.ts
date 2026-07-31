@@ -1,8 +1,23 @@
 import type { Intergalactic } from '@semcore/core';
-import type Switch from '@semcore/switch';
+import type { NSSwitch } from '@semcore/switch';
 
-import type { AnimatedSparklesProps } from '../../inner-components/sparkle/AnimatedSparkles';
+import type { NSAnimatedSparklesFH } from '../../inner-components/sparkle/AnimatedSparkles.type';
 
-export type HighlightedSwitchComponent = typeof Switch & {
-  AnimatedSparkles: Intergalactic.Component<'div', AnimatedSparklesProps>;
-};
+declare namespace NSSwitchFH {
+  namespace Value {
+    type Component = NSSwitch.Value.Component;
+  }
+  namespace AnimatedSparkles {
+    type Props = NSAnimatedSparklesFH.Props;
+
+    type Component = Intergalactic.Component<'div', Props>;
+  }
+
+  type Component = NSSwitch.Component & {
+    Value: Value.Component;
+    AnimatedSparkles: AnimatedSparkles.Component;
+  };
+
+}
+
+export type { NSSwitchFH };

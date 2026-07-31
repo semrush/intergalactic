@@ -1,4 +1,3 @@
-import type { BoxProps } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';

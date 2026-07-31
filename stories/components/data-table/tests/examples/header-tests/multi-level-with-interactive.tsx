@@ -1,6 +1,6 @@
 import InfoM from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
@@ -22,7 +22,7 @@ export type MultiLevelInteractiveProps = {
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   top?: number;
 
-} & BoxProps;
+} & NSBox.Props;
 
 const options = Array(6)
   .fill('')

@@ -1,4 +1,4 @@
-import type { Flex, FlexProps } from '@semcore/base-components';
+import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 import type { LegendProps } from '../BaseLegend.type';
@@ -32,13 +32,13 @@ type SuffixProps = {
 
 type AddonProps = ({ withTrend?: never } & SuffixProps) | ({ suffix?: never } & TrendProps);
 
-export type LegendFlexProps = LegendProps & AddonProps & FlexProps;
+export type LegendFlexProps = LegendProps & AddonProps & NSFlex.Props;
 
 export type LegendFlexDefaultProps = {
   direction: 'row';
   children: React.JSX.Element;
 };
 
-export type LegendFlexType = Intergalactic.Component<typeof Flex, LegendFlexProps> & {
+export type LegendFlexType = Intergalactic.Component<NSFlex.Component, LegendFlexProps> & {
   LegendItem: LegendItemType;
 };

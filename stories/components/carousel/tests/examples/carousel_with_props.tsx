@@ -1,6 +1,6 @@
 import { Box } from '@semcore/ui/base-components';
 import Carousel from '@semcore/ui/carousel';
-import type { CarouselProps } from '@semcore/ui/carousel';
+import type { NSCarousel } from '@semcore/ui/carousel';
 import React from 'react';
 
 const images = [
@@ -16,7 +16,7 @@ const altTexts = [
 const width = 600;
 const imageWidth = width - 75;
 
-const Demo = (props: CarouselProps) => (
+const Demo = (props: NSCarousel.Props) => (
   <Box w={width}>
     <Carousel
       w={width}
@@ -44,7 +44,7 @@ const Demo = (props: CarouselProps) => (
     </Carousel>
   </Box>
 );
-export const defaultProps: CarouselProps = {
+export const defaultProps: NSCarousel.Props = {
   bounded: undefined,
   zoom: true,
   zoomWidth: 1000,
