@@ -80,6 +80,9 @@ export const theme: Theme = {
       300: {
         value: '16px',
       },
+      350: {
+        value: '18px',
+      },
       400: {
         value: '20px',
       },
@@ -108,6 +111,10 @@ export const theme: Theme = {
       300: {
         value: '150%',
         description: 'Use with font-size-300.',
+      },
+      350: {
+        value: '150%',
+        description: 'Use with font-size-350.',
       },
       400: {
         value: '120%',
@@ -2251,8 +2258,8 @@ export const theme: Theme = {
   },
 };
 
-type FontSize = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
-type LineHeight = '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
+type FontSize = '50' | '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
+type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
 type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
