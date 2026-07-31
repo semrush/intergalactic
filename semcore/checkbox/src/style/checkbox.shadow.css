@@ -150,13 +150,13 @@ SControl[indeterminate]~SCheckbox:after {
 }
 
 SControl[indeterminate]~SCheckbox[size='l']:after {
-  width: var(--intergalactic-spacing-3x, 12px);
+  width: 12px;
   /* disable-tokens-validator */
   height: 1.5px;
 }
 
 SControl[indeterminate]~SCheckbox[size='m']:after {
-  width: var(--intergalactic-spacing-2x, 8px);
+  width: 8px;
   /* disable-tokens-validator */
   height: 1.5px;
 }
