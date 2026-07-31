@@ -57,7 +57,7 @@ declare namespace NSFeedbackForm {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeedbackFormProps = NSFeedbackForm.Props;
 
 export type { NSFeedbackForm };

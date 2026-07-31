@@ -1,9 +1,10 @@
 import { createBaseComponent, type Intergalactic } from '@semcore/core';
 import React from 'react';
 
-import useBox, { type BoxProps } from './useBox';
+import type { NSBox } from './Box.type';
+import useBox from './useBox';
 
-function Box(props: BoxProps, ref: React.Ref<HTMLElement>) {
+function Box(props: Intergalactic.InternalTypings.InferComponentProps<NSBox.Component>, ref: React.Ref<HTMLElement>) {
   const [Tag, boxProps] = useBox(props, ref);
   if (Array.isArray(Tag)) {
     const [FirstTag, htmlTag] = Tag;
@@ -15,11 +16,9 @@ function Box(props: BoxProps, ref: React.Ref<HTMLElement>) {
 
 Box.displayName = 'Box';
 
-type BoxComponent = Intergalactic.Component<'div', BoxProps>;
-
 /**
  * Box
  *
  * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|API}
  */
-export default createBaseComponent<BoxComponent>(Box);
+export default createBaseComponent<NSBox.Component>(Box);

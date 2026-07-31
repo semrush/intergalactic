@@ -1988,6 +1988,24 @@
     "components": []
   },
   {
+    "name": "--intergalactic-control-presets-bg",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the Presets items.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-presets-border-selected",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Border color of the selected Preset item.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-presets-border-hover",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the hovered Preset item.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-progress-bar-bg",
     "value": "oklch(0.96 0.001 180)",
     "description": "Background color of the ProgressBar.",
@@ -3185,6 +3203,7 @@
       "button",
       "input",
       "input-tags",
+      "modal",
       "pills",
       "tab-line",
       "time-picker"
@@ -3200,7 +3219,9 @@
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-medium",
@@ -3209,7 +3230,7 @@
     "components": [
       "button",
       "input",
-      "input-tags",
+      "modal",
       "time-picker"
     ]
   },
@@ -3229,7 +3250,9 @@
     "name": "--intergalactic-spacing-content-padding-xxlarge",
     "value": "40px",
     "description": "2x large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",

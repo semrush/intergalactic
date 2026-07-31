@@ -1,13 +1,15 @@
-import type { NSCheckbox } from '@semcore/checkbox';
 import Checkbox from '@semcore/checkbox';
+import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
 import React from 'react';
 
 import style from './checkbox.shadow.css';
-import type { HighlightedCheckboxComponent } from './Checkbox.type';
+import type { NSCheckboxFH } from './Checkbox.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class CheckboxFHRoot extends Component<NSCheckbox.Props> {
+class CheckboxFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSCheckboxFH.Component>
+> {
   static displayName = 'CheckboxFH';
   static style = style;
 
@@ -60,7 +62,7 @@ class CheckboxFHRoot extends Component<NSCheckbox.Props> {
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#checkbox|Docs}
  */
 export const CheckboxFH = createComponent<
-  HighlightedCheckboxComponent,
+  NSCheckboxFH.Component,
  typeof CheckboxFHRoot
 >(CheckboxFHRoot, {
   Text: Checkbox.Text,

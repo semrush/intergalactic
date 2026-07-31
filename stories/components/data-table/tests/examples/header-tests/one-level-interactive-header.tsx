@@ -1,7 +1,7 @@
 import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import { Flex } from '@semcore/ui/base-components';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import Checkbox from '@semcore/ui/checkbox';
 import { DataTable, SelectableRows } from '@semcore/ui/data-table';
@@ -23,7 +23,7 @@ export type OneLevelInteractiveExampleProps = {
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   top?: number;
 
-} & BoxProps;
+} & NSBox.Props;
 
 const columns: DataTableProps<typeof data, any, any>['columns'] = [
 

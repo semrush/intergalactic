@@ -7,6 +7,21 @@ import React from 'react';
 type baseExampleProps = TimePickerProps & TimePickerItemProps;
 
 const Demo = (props: baseExampleProps) => {
+  const [value, setValue] = React.useState(props.value);
+
+  React.useEffect(() => {
+    setValue(props.value);
+  }, [props.value]);
+
+  const timeValueProps = props.value !== undefined
+    ? {
+        value,
+        onChange: (newValue: string) => setValue(newValue),
+      }
+    : props.defaultValue !== undefined
+      ? { defaultValue: props.defaultValue }
+      : {};
+
   return (
     <>
       <Text tag='label' htmlFor='time-picker' size={200}>
@@ -18,8 +33,7 @@ const Demo = (props: baseExampleProps) => {
           is12Hour={false}
           disabled={props.disabled}
           state={props.state}
-          {...(props.value !== undefined && { value: props.value })}
-          {...(props.defaultValue !== undefined && { defaultValue: props.defaultValue })}
+          {...timeValueProps}
 
           locale={props.locale}
           id='time-picker'
@@ -46,8 +60,7 @@ const Demo = (props: baseExampleProps) => {
           is12Hour={props.is12Hour}
           disabled={props.disabled}
           state={props.state}
-          {...(props.value !== undefined && { value: props.value })}
-          {...(props.defaultValue !== undefined && { defaultValue: props.defaultValue })}
+          {...timeValueProps}
 
           locale={props.locale}
           id='time-picker'
@@ -63,8 +76,7 @@ const Demo = (props: baseExampleProps) => {
           is12Hour={props.is12Hour}
           disabled={props.disabled}
           state={props.state}
-          {...(props.value !== undefined && { value: props.value })}
-          {...(props.defaultValue !== undefined && { defaultValue: props.defaultValue })}
+          {...timeValueProps}
           locale={props.locale}
           id='time-picker'
         >
@@ -89,8 +101,7 @@ const Demo = (props: baseExampleProps) => {
           is12Hour={props.is12Hour}
           disabled={props.disabled}
           state={props.state}
-          {...(props.value !== undefined && { value: props.value })}
-          {...(props.defaultValue !== undefined && { defaultValue: props.defaultValue })}
+          {...timeValueProps}
           locale={props.locale}
           id='time-picker'
         >
@@ -117,8 +128,7 @@ const Demo = (props: baseExampleProps) => {
           is12Hour={props.is12Hour}
           disabled={props.disabled}
           state={props.state}
-          {...(props.value !== undefined && { value: props.value })}
-          {...(props.defaultValue !== undefined && { defaultValue: props.defaultValue })}
+          {...timeValueProps}
           locale={props.locale}
           id='time-picker'
         >
@@ -139,8 +149,7 @@ const Demo = (props: baseExampleProps) => {
           is12Hour={props.is12Hour}
           disabled={props.disabled}
           state={props.state}
-          {...(props.value !== undefined && { value: props.value })}
-          {...(props.defaultValue !== undefined && { defaultValue: props.defaultValue })}
+          {...timeValueProps}
           locale={props.locale}
           id='time-picker'
         >

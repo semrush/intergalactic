@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { UnknownProperties } from '@semcore/core';
 import type { CurveFactory } from 'd3-shape';
 
@@ -121,7 +121,7 @@ export type RadialPolygonDotsProps = {
 
 /** @deprecated */
 export interface IRadarHoverProps extends RadarHoverProps, UnknownProperties {}
-export type RadarHoverProps = BoxProps & Context & {};
+export type RadarHoverProps = NSBox.Props & Context & {};
 
 declare const Radar: IntergalacticD3Component<'g', RadarProps, Context> & {
   Axis: IntergalacticD3Component<'path', RadarAxisProps, Context> & {

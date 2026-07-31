@@ -79,7 +79,7 @@ By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pa
 
 ::: tip
 For the correct type mapping in the TC, you must also pass the interface.
-`<NeighborLocation<FlexProps> tag={Flex} w={200}/>`
+`<NeighborLocation<NSFlex.Props> tag={Flex} w={200}/>`
 :::
 
 ::: sandbox
