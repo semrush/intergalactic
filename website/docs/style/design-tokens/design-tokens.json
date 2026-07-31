@@ -3135,6 +3135,7 @@
       "button",
       "input",
       "input-tags",
+      "modal",
       "pills",
       "tab-line",
       "time-picker"
@@ -3150,7 +3151,9 @@
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-medium",
@@ -3159,6 +3162,7 @@
     "components": [
       "button",
       "input",
+      "modal",
       "time-picker"
     ]
   },
@@ -3178,7 +3182,9 @@
     "name": "--intergalactic-spacing-content-padding-xxlarge",
     "value": "40px",
     "description": "2x large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
