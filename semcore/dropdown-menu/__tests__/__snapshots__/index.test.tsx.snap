@@ -106,6 +106,10 @@ exports[`DropdownMenu > Verify data-ui-name 1`] = `
                       "children": [],
                       "uiName": "DropdownMenu.StatusItem",
                     },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
                   ],
                   "uiName": null,
                 },

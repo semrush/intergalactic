@@ -106,3 +106,110 @@ exports[`Carousel > Verify data-ui-name 1`] = `
   "uiName": null,
 }
 `;
+
+exports[`Carousel > Verify data-ui-name 2`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "ChevronLeft",
+                            },
+                          ],
+                          "uiName": "Button.Addon",
+                        },
+                      ],
+                      "uiName": "Button.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "Button",
+                },
+              ],
+              "uiName": "Carousel.Prev",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Carousel.Item",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Carousel.Item",
+                    },
+                  ],
+                  "uiName": "Carousel.Container",
+                },
+              ],
+              "uiName": "Carousel.ContentBox",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "ChevronRight",
+                            },
+                          ],
+                          "uiName": "Button.Addon",
+                        },
+                      ],
+                      "uiName": "Button.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "Button",
+                },
+              ],
+              "uiName": "Carousel.Next",
+            },
+          ],
+          "uiName": "Flex",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Carousel.Indicator",
+            },
+            {
+              "children": [],
+              "uiName": "Carousel.Indicator",
+            },
+          ],
+          "uiName": "Carousel.Indicators",
+        },
+      ],
+      "uiName": "Carousel",
+    },
+  ],
+  "uiName": null,
+}
+`;
