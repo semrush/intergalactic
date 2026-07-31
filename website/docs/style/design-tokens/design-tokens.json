@@ -394,7 +394,7 @@
   },
   {
     "name": "--intergalactic-border-critical",
-    "value": "oklch(0.628 0.257 28.1 / 0.243)",
+    "value": "oklch(0.63 0.255 24.3 / 0.104)",
     "description": "Subtle secondary border in the critical message and invalid input field.",
     "components": [
       "notice"
@@ -428,7 +428,7 @@
   },
   {
     "name": "--intergalactic-border-info",
-    "value": "oklch(0.51 0.274 263.6 / 0.222)",
+    "value": "oklch(0.524 0.265 263 / 0.096)",
     "description": "Subtle secondary border in the informational message.",
     "components": [
       "notice"
@@ -511,7 +511,7 @@
   },
   {
     "name": "--intergalactic-border-success",
-    "value": "oklch(0.818 0.171 165.4 / 0.531)",
+    "value": "oklch(0.874 0.177 168.2 / 0.25)",
     "description": "Subtle secondary border in the successful message and input field.",
     "components": [
       "notice"
@@ -531,7 +531,7 @@
   },
   {
     "name": "--intergalactic-border-warning",
-    "value": "oklch(0.77 0.174 64.1 / 0.543)",
+    "value": "oklch(0.806 0.17 74.5 / 0.241)",
     "description": "Subtle secondary border in the warning message.",
     "components": [
       "notice"
