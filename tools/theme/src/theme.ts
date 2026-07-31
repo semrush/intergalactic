@@ -14,7 +14,7 @@ import {
   L_BG_SECONDARY_ACTIVE,
   L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
   L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
+  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_PRIMARY_DIMMED, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
   L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
   L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
@@ -507,7 +507,7 @@ export const theme: Theme = {
         description: 'Hover state of the secondary background of the message with warning information you want to accent.',
       },
       border_critical_DEFAULT: {
-        value: error.opaqueAt(L_BORDER_PRIMARY),
+        value: error.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the critical message and invalid input field.',
       },
       border_critical_active: {
@@ -519,7 +519,7 @@ export const theme: Theme = {
         description: 'Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.',
       },
       border_info_DEFAULT: {
-        value: info.opaqueAt(L_BORDER_PRIMARY),
+        value: info.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the informational message.',
       },
       border_info_active: {
@@ -543,7 +543,7 @@ export const theme: Theme = {
         description: 'Inverted version of the neutral secondary border. Use it for borders on the dark or color background.',
       },
       border_success_DEFAULT: {
-        value: success.opaqueAt(L_BORDER_PRIMARY),
+        value: success.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the successful message and input field.',
       },
       border_success_active: {
@@ -551,7 +551,7 @@ export const theme: Theme = {
         description: 'Active border in the focused input field with valid state.',
       },
       border_warning_DEFAULT: {
-        value: warning.opaqueAt(L_BORDER_PRIMARY),
+        value: warning.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the warning message.',
       },
       border_warning_active: {
