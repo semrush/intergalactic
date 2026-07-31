@@ -1,9 +1,9 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 declare namespace NSSpin {
   type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /** Spinner size
      * @default m
      **/

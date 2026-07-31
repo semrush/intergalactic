@@ -27,7 +27,7 @@ declare namespace NSPageError {
   type Component = Intergalactic.Component<'div', Props & NSErrors.Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PageErrorProps = NSPageError.Props;
 
 export type { NSPageError };

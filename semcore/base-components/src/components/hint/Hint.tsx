@@ -1,74 +1,18 @@
 import { computePosition, flip, offset, shift, type Placement } from '@floating-ui/dom';
-import { createComponent, Root, sstyled, Component, lastInteraction } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
+import { createComponent, Root, sstyled, Component, lastInteraction } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { zIndexStackingEnhance } from '@semcore/core/lib/utils/zIndexStacking';
-import type { DataType } from 'csstype';
 import React from 'react';
 
 import { Middleware } from './Middleware';
 import keyframes from '../animation/style/keyframes.shadow.css';
 import { Box } from '../flex-box';
 import { Portal } from '../portal';
+import type { NSHint } from './Hint.type';
 import styles from './style/hint.shadow.css';
-
-type Handlers = {
-  visible: null;
-};
-
-export type SimpleHintPopperProps = {
-  /** Ref to the trigger element */
-  triggerRef: React.RefObject<HTMLElement | null>;
-  /**
-   * The position of the popper relative to the trigger that called it.
-   * @default top
-   */
-  placement?: Placement;
-  /**
-   * Timer to show and hide the popper
-   * @default [500, 500]
-   */
-  timeout?: DefaultProps['timeout'];
-  /**
-   * Hint content.
-   * Better to use here some short text.
-   * */
-  children: React.ReactNode;
-
-  /** Popper visibility value */
-  visible?: boolean;
-  /** Default popper visibility
-   * @default false */
-  defaultVisible?: boolean;
-  /** Function called when visibility changes */
-  onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
-  /**
-   * Set ignore for portal stacking
-   * @default true
-   */
-  ignorePortalsStacking?: boolean;
-};
-
-type InnerProps = {
-  timingFunction: DataType.EasingFunction;
-};
-
-type DefaultProps = {
-  defaultVisible?: boolean;
-  timeout: number | [number, number];
-  timingFunction: DataType.EasingFunction;
-  placement?: Placement;
-  ignorePortalsStacking?: boolean;
-};
-
-type State = {
-  innerVisible: boolean | null;
-  calculatedPlacement?: Placement;
-};
-
-type SimpleHintPopperComponent = Intergalactic.Component<'div', SimpleHintPopperProps>;
 
 const enhances = [
   zIndexStackingEnhance('z-index-tooltip'),
@@ -99,12 +43,12 @@ function propToArray(prop: number | [number, number]): [number, number] {
 const keyframesMap = new Map<Placement, string>();
 
 class HintPopperRoot extends Component<
-  SimpleHintPopperProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSHint.Component>,
   typeof enhances,
-  Handlers,
-  InnerProps,
-  State,
-  DefaultProps
+  NSHint.Handlers,
+  NSHint.InnerProps,
+  NSHint.State,
+  NSHint.DefaultProps
 > {
   public readonly hintRef = React.createRef<HTMLElement>();
 
@@ -115,7 +59,7 @@ class HintPopperRoot extends Component<
 
   static enhance = enhances;
 
-  static defaultProps: DefaultProps = {
+  static defaultProps: NSHint.DefaultProps = {
     defaultVisible: false,
     timeout: [500, 500],
     timingFunction: 'ease-out',
@@ -123,7 +67,7 @@ class HintPopperRoot extends Component<
     ignorePortalsStacking: true,
   };
 
-  constructor(props: SimpleHintPopperProps) {
+  constructor(props: NSHint.Props) {
     super(props);
 
     this.handleFocus = this.handleFocus.bind(this);
@@ -161,7 +105,7 @@ class HintPopperRoot extends Component<
     }
   }
 
-  componentDidUpdate(prevProps: SimpleHintPopperProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     if (prevProps.visible !== this.props.visible) {
       requestAnimationFrame(() => {
         const trigger = this.props.triggerRef.current;
@@ -387,6 +331,6 @@ class HintPopperRoot extends Component<
  * {@link https://developer.semrush.com/intergalactic/utils/hint/hint-api|API} | {@link https://developer.semrush.com/intergalactic/utils/hint/hint-code|Examples}
  */
 export const Hint = createComponent<
-  SimpleHintPopperComponent,
+  NSHint.Component,
   typeof HintPopperRoot
 >(HintPopperRoot);

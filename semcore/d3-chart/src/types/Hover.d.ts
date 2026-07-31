@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { UnknownProperties, ReturnEl } from '@semcore/core';
 import type React from 'react';
 
@@ -31,7 +31,7 @@ type HoverTooltip = (<X, Y>(
     }) => { children: ReturnEl };
     /** Flag for hide line on hovered value */
     hideHoverLine?: boolean | ((xIndex: number | null, yIndex: number | null) => boolean);
-  } & Omit<BoxProps, 'children'>,
+  } & Omit<NSBox.Props, 'children'>,
 ) => ReturnEl) &
 TooltipTypeBase;
 

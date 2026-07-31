@@ -1,130 +1,155 @@
-import type { UnknownProperties, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 
-import type { BoxProps } from '../flex-box';
+import type { NSBox } from '../flex-box';
 
-type CssTimingFunction =
-  | 'ease'
-  | 'ease-in'
-  | 'ease-out'
-  | 'ease-in-out'
-  | 'linear'
-  | 'step-start'
-  | 'step-end';
+declare namespace NSAnimation {
+  type TimingFunction = 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | 'step-start' | 'step-end';
+  type StartCb = (duration: number) => void;
+  type EndCb = () => void;
+  type Props = NSBox.Props & {
+    /** The property is responsible for the visibility of the element */
+    visible?: boolean;
+    /** Animation duration in ms
+     * @default 0
+     */
+    duration?: number | [number, number];
+    /** Animation delay in ms
+     * @default 0
+     */
+    delay?: number | [number, number];
+    /** Animation titles */
+    keyframes?: [string, string];
+    /** If it set to `true`, animated node is persisted in dom even if `visible=false`   */
+    preserveNode?: boolean;
+    /** Enables animation on first rendering
+     * @default false
+     */
+    initialAnimation?: boolean;
+    /**
+     * @default ease-out
+     */
+    timingFunction?: NSAnimation.TimingFunction;
+    /**
+     * @default false
+     */
+    animationsDisabled?: boolean;
 
-export type AnimationProps = BoxProps & {
-  /** The property is responsible for the visibility of the element */
-  visible?: boolean;
-  /** Animation duration in ms
-   * @default 0
-   */
-  duration?: number | [number, number];
-  /** Animation delay in ms
-   * @default 0
-   */
-  delay?: number | [number, number];
-  /** Animation titles */
-  keyframes?: [string, string];
-  /** If it set to `true`, animated node is persisted in dom even if `visible=false`   */
-  preserveNode?: boolean;
-  /** Enables animation on first rendering
-   * @default false
-   */
-  initialAnimation?: boolean;
-  /**
-   * @default ease-out
-   */
-  timingFunction?: CssTimingFunction;
-  /**
-   * @default false
-   */
-  animationsDisabled?: boolean;
+    /** Animation effects
+     * @default undefined
+     * @internal
+     */
+    transformStart?: string;
+    /** Animation effects
+     * @default undefined
+     * @internal
+     */
+    transformEnd?: string;
+  };
+  type DefaultProps = {
+    visible: false;
+    duration: 0;
+    delay: 0;
+    keyframes: AnimationProps['keyframes'];
+    initialAnimation: false;
+    timingFunction: 'ease-out';
+    animationsDisabled: false;
+  };
+  type State = {
+    animationRunning: boolean;
+    render: NSAnimation.Props['visible'] | NSAnimation.Props['preserveNode'];
+    wasInvisible: NSAnimation.Props['visible'];
+  };
+  type Ctx<AnimationStartCb = NSAnimation.StartCb, AnimationEndCb = NSAnimation.EndCb> = {
+    onAnimationStart: (callback: AnimationStartCb) => NSAnimation.EndCb;
+    onAnimationEnd: (callback: AnimationEndCb) => NSAnimation.EndCb;
+    onAnimationStartSubscribers: Array<AnimationStartCb>;
+    onAnimationEndSubscribers: Array<AnimationEndCb>;
+  };
 
-  /** Animation effects
-   * @default undefined
-   * @internal
-   */
-  transformStart?: string;
-  /** Animation effects
-   * @default undefined
-   * @internal
-   */
-  transformEnd?: string;
-};
+  namespace Collapse {
+    type Props = NSAnimation.Props & {
+      /**
+       * Add overflow=clip when passing animation
+       * @default true
+       * */
+      overflowHidden?: boolean;
 
-export type AnimationDefaultProps = {
-  visible: false;
-  duration: 0;
-  delay: 0;
-  keyframes: AnimationProps['keyframes'];
-  initialAnimation: false;
-  timingFunction: 'ease-out';
-  animationsDisabled: false;
-};
+      /**
+       * Value for height after animation
+       * @default auto
+       */
+      defaultHeight?: 'auto' | '100%';
 
-export type CollapseProps = AnimationProps & {
-  /**
-   * Add overflow=clip when passing animation
-   * @default true
-   * */
-  overflowHidden?: boolean;
+      /** @deprecated It will be removed in v19. */
+      onAnimationStart?: React.AnimationEventHandler;
+      /** @deprecated It will be removed in v19. */
+      onAnimationEnd?: React.AnimationEventHandler;
+    };
 
-  /**
-   * Value for height after animation
-   * @default auto
-   */
-  defaultHeight?: 'auto' | '100%';
+    type Component = Intergalactic.Component<'div', Props>;
+  }
 
-  /** @deprecated It will be removed in v18. */
-  onAnimationStart?: React.AnimationEventHandler;
-  /** @deprecated It will be removed in v18. */
-  onAnimationEnd?: React.AnimationEventHandler;
-};
+  namespace FadeInOut {
+    type Props = NSAnimation.Props;
 
-export type FadeInOutProps = AnimationProps & {};
+    type Component = Intergalactic.Component<'div', Props>;
+  }
 
-export type TransformProps = AnimationProps & {
-  /** Animation effects
-   * @default []
-   */
-  transform?: [string, string];
-};
+  namespace Transform {
+    type Props = NSAnimation.Props & {
+      /** Animation effects
+       * @default []
+       */
+      transform?: [string, string];
+    };
 
-export type ScaleProps = AnimationProps & {
-  /** Placement of appearing block
-   */
-  placement?:
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
-};
+    type Component = Intergalactic.Component<'div', Props>;
+  }
 
-export type SlideProps = AnimationProps & {
-  /** Direction from which slide animation will be performed
-   */
-  slideOrigin?: 'top' | 'bottom' | 'left' | 'right';
-};
+  namespace Scale {
+    type Props = NSAnimation.Props & {
+      /** Placement of appearing block
+       */
+      placement?:
+        | 'top-start'
+        | 'top-end'
+        | 'bottom-start'
+        | 'bottom-end'
+        | 'right-start'
+        | 'right-end'
+        | 'left-start'
+        | 'left-end';
+    };
 
-type DisposeSubscription = () => void;
+    type Component = Intergalactic.Component<'div', Props>;
+  }
 
-export type AnimationContext<
-  AnimationStartCb = (duration: number) => void,
-  AnimationEndCb = () => void,
-> = {
-  onAnimationStart: (callback: AnimationStartCb) => DisposeSubscription;
-  onAnimationEnd: (callback: AnimationEndCb) => DisposeSubscription;
-  onAnimationStartSubscribers: Array<AnimationStartCb>;
-  onAnimationEndSubscribers: Array<AnimationEndCb>;
-};
+  namespace Slide {
+    type Props = NSAnimation.Props & {
+      /** Direction from which slide animation will be performed
+       */
+      slideOrigin?: 'top' | 'bottom' | 'left' | 'right';
+    };
 
-export type animationContext = React.Context<AnimationContext>;
-export type Animation = Intergalactic.Component<'div', AnimationProps>;
-export type Collapse = Intergalactic.Component<'div', CollapseProps>;
-export type FadeInOut = Intergalactic.Component<'div', FadeInOutProps>;
-export type Transform = Intergalactic.Component<'div', TransformProps>;
-export type Scale = Intergalactic.Component<'div', ScaleProps>;
-export type Slide = Intergalactic.Component<'div', SlideProps>;
+    type Component = Intergalactic.Component<'div', Props>;
+  }
+
+  type Component = Intergalactic.Component<'div', Props>;
+}
+
+/** @deprecated It will be removed in v19. */
+export type AnimationProps = NSAnimation.Props;
+/** @deprecated It will be removed in v19. */
+export type AnimationDefaultProps = NSAnimation.DefaultProps;
+/** @deprecated It will be removed in v19. */
+export type CollapseProps = NSAnimation.Collapse.Props;
+/** @deprecated It will be removed in v19. */
+export type FadeInOutProps = NSAnimation.FadeInOut.Props;
+/** @deprecated It will be removed in v19. */
+export type TransformProps = NSAnimation.Transform.Props;
+/** @deprecated It will be removed in v19. */
+export type ScaleProps = NSAnimation.Scale.Props;
+/** @deprecated It will be removed in v19. */
+export type SlideProps = NSAnimation.Slide.Props;
+
+export type { NSAnimation };
