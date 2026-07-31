@@ -1,5 +1,5 @@
 import AmazonM from '@semcore/icon/color/Amazon/m';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
@@ -16,7 +16,7 @@ export type MultiLevelNonInteractiveProps = {
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   top?: number;
 
-} & BoxProps;
+} & NSBox.Props;
 
 const columns = [
   { name: 'other', children: 'Other' },

@@ -1,4 +1,5 @@
-import { createComponent, sstyled, Component, Root, type IRootComponentProps, lastInteraction } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, sstyled, Component, Root, lastInteraction } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
@@ -7,13 +8,8 @@ import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React, { type ForwardedRef } from 'react';
 
 import { Box } from '../flex-box';
+import type { NSScrollArea } from './ScrollArea.type';
 import { setAreaValue, ScrollBar } from './ScrollBar';
-import type {
-  ScrollAreaProps,
-  ScrollArea as ScrollAreaType,
-  ScrollAreaContainerProps,
-  ScrollAreaDefaultProps,
-} from './ScrollBar.types';
 import style from './style/scroll-area.shadow.css';
 
 let eventCalculate: Event | undefined = undefined;
@@ -21,46 +17,42 @@ if (typeof window !== 'undefined') {
   eventCalculate = new Event('calculate');
 }
 
-const BoxWithoutPosition = React.forwardRef(
-  ({ position, ...props }: any, ref: ForwardedRef<HTMLElement>) => <Box ref={ref} {...props} />,
-);
-
-type State = {
-  shadowHorizontal: boolean | string;
-  shadowVertical: boolean | string;
-};
+const BoxWithoutPosition = React.forwardRef(({ position, ...props }: any, ref: ForwardedRef<HTMLElement>) => (
+  <Box ref={ref} {...props} />
+));
 
 const DEFAULT_SHADOW_THEME = 'dark';
 
 class ScrollAreaRoot extends Component<
-  ScrollAreaProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSScrollArea.Component>,
   typeof ScrollAreaRoot.enhance,
   {},
   {},
-  State,
-  ScrollAreaDefaultProps
+  NSScrollArea.State,
+  NSScrollArea.DefaultProps
 > {
   static displayName = 'ScrollArea';
 
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
 
-  static defaultProps = () => ({
-    container: React.createRef<HTMLElement | null>(),
-    inner: React.createRef<HTMLElement | null>(),
-    tabIndex: 0,
-    observeParentSize: false,
-    disableAutofocusToContent: false,
-    shadowSize: 5,
-    shadowTheme: DEFAULT_SHADOW_THEME,
-  } as const);
+  static defaultProps = () =>
+    ({
+      container: React.createRef<HTMLElement | null>(),
+      inner: React.createRef<HTMLElement | null>(),
+      tabIndex: 0,
+      observeParentSize: false,
+      disableAutofocusToContent: false,
+      shadowSize: 5,
+      shadowTheme: DEFAULT_SHADOW_THEME,
+    }) as const;
 
   hasAutoFocusToContent = false;
 
   $wrapper: HTMLElement | null = null;
   observer: ResizeObserver | null = null;
-  horizontalBarRef = React.createRef<HTMLElement>();
-  verticalBarRef = React.createRef<HTMLElement>();
+  horizontalBarRef: React.MutableRefObject<HTMLElement | null> = React.createRef();
+  verticalBarRef: React.MutableRefObject<HTMLElement | null> = React.createRef();
 
   get $container(): HTMLElement | null {
     const element = this.asProps.container.current;
@@ -74,12 +66,12 @@ class ScrollAreaRoot extends Component<
     return element;
   }
 
-  state: State = {
+  state: NSScrollArea.State = {
     shadowHorizontal: false,
     shadowVertical: false,
   };
 
-  constructor(props: ScrollAreaProps) {
+  constructor(props: NSScrollArea.Props) {
     super(props);
 
     if (canUseDOM()) {
@@ -235,7 +227,7 @@ class ScrollAreaRoot extends Component<
     }, 0);
   };
 
-  toggleShadow = (scroll: number, maxScroll: number, orientation: keyof State) => {
+  toggleShadow = (scroll: number, maxScroll: number, orientation: keyof NSScrollArea.State) => {
     const roundedScroll = Math.round(scroll);
     const roundedMaxScroll = Math.round(maxScroll);
     let shadow = '';
@@ -259,8 +251,7 @@ class ScrollAreaRoot extends Component<
   setShadowContainer = () => {
     if (!this.asProps.shadow || !this.$container || !this.$wrapper) return;
 
-    const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
-      this.$container;
+    const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } = this.$container;
     const maxScrollRight = scrollWidth - clientWidth;
     const maxScrollBottom = scrollHeight - clientHeight;
 
@@ -279,8 +270,7 @@ class ScrollAreaRoot extends Component<
   }
 
   getBarProps() {
-    const { container, orientation, uid, leftOffset, rightOffset, topOffset, bottomOffset } =
-      this.asProps;
+    const { container, orientation, uid, leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
 
     return {
       container,
@@ -314,7 +304,7 @@ class ScrollAreaRoot extends Component<
     }
   }
 
-  componentDidUpdate(prevProps: ScrollAreaProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     this.calculate();
 
     const { disableAutofocusToContent } = this.asProps;
@@ -415,7 +405,9 @@ class ScrollAreaRoot extends Component<
   }
 }
 
-function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
+function ContainerRoot(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSScrollArea.Container.Component, typeof ScrollAreaRoot, 'Container'>,
+) {
   const SContainer = Root;
   const {
     Children,
@@ -443,14 +435,16 @@ function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
   );
 }
 
+export type ScrollAreaRootType = typeof ScrollAreaRoot;
+
 /**
  * ScrollArea
  *
  * {@link https://developer.semrush.com/intergalactic/components/scroll-area/scroll-area-api|API} | {@link https://developer.semrush.com/intergalactic/components/scroll-area/scroll-area-code|Examples}
  */
 const ScrollArea = createComponent<
-  typeof ScrollAreaType,
-  typeof ScrollAreaRoot
+  NSScrollArea.Component,
+  ScrollAreaRootType
 >(ScrollAreaRoot, {
   Container: ContainerRoot,
   Bar: ScrollBar,

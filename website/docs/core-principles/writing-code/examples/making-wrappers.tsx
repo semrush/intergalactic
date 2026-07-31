@@ -1,9 +1,10 @@
+import type { NSButton } from '@semcore/ui/button';
 import Button from '@semcore/ui/button';
 import { wrapIntergalacticComponent } from '@semcore/ui/core';
 import React from 'react';
 
 const AlertButton = wrapIntergalacticComponent<
-  typeof Button,
+  NSButton.Component,
   {
     handle: ('click' | 'hover')[];
     message: string;

@@ -8,6 +8,6 @@ tabs: Design('portal'), API('portal-api'), Changelog('portal-changelog')
 import { Portal, PortalProvider } from '@semcore/ui/base-components';
 ```
 
-<TypesView type="PortalProps" :types={...types} />
+<TypesView type="NSPortal.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

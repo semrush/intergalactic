@@ -1,10 +1,10 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 declare namespace NSCarousel {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /** Index active item */
     index?: number;
     /**
@@ -63,15 +63,15 @@ declare namespace NSCarousel {
   };
 
   namespace Container {
-    type Component = Intergalactic.Component<'div', BoxProps>;
+    type Component = Intergalactic.Component<'div', NSBox.Props>;
   }
 
   namespace ContentBox {
-    type Component = Intergalactic.Component<'div', BoxProps>;
+    type Component = Intergalactic.Component<'div', NSBox.Props>;
   }
 
   namespace Indicators {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       items?: NSCarousel.Item[];
       inverted?: boolean;
     };
@@ -79,7 +79,7 @@ declare namespace NSCarousel {
   }
 
   namespace Indicator {
-    type Props = Omit<BoxProps, 'position'> & {
+    type Props = Omit<NSBox.Props, 'position'> & {
       active?: boolean;
       onClick?: () => void;
       inverted?: boolean;
@@ -88,7 +88,7 @@ declare namespace NSCarousel {
   }
 
   namespace Item {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** Flag for css cursor
        * @private
        */
@@ -131,7 +131,7 @@ declare namespace NSCarousel {
   }
 
   namespace Prev {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       label?: string;
       inverted?: boolean;
       tabIndex?: number;
@@ -140,7 +140,7 @@ declare namespace NSCarousel {
   }
 
   namespace Next {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       label?: string;
       inverted?: boolean;
       tabIndex?: number;
