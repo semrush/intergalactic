@@ -1,10 +1,10 @@
-import type { Box, FlexProps } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { TIllustrationNamesErrors } from '@semcore/illustration';
 import type React from 'react';
 
 declare namespace NSErrors {
-  type Props = FlexProps & {
+  type Props = NSFlex.Props & {
     /**
      * Error icon
      * Icon as a string is a URL to an image.
@@ -19,15 +19,15 @@ declare namespace NSErrors {
   type IconName = TIllustrationNamesErrors;
 
   namespace Title {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   namespace Description {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   namespace Controls {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   type Component = Intergalactic.Component<'div', Props, Ctx> & {
@@ -37,11 +37,11 @@ declare namespace NSErrors {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ErrorsProps = NSErrors.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type ErrorsContext = NSErrors.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type IconNamesErrors = NSErrors.IconName;
 
 export type { NSErrors };

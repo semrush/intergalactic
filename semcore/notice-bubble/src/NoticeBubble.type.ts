@@ -1,17 +1,17 @@
-import type { PortalProps, BoxProps } from '@semcore/base-components';
+import type { NSPortal, NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { RefObject } from 'react';
 
-import type { NoticeBubbleManager, NoticeItem } from './NoticeBubbleManager';
+import type { NoticeItem } from './NoticeBubbleManager';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 /**
  * @deprecated. Pass noticeBubbleContainer property from window.sm2.getNoticeBubbleContainer()
  */
-export type NoticeBubbleContainerPortalProps = PortalProps;
+export type NoticeBubbleContainerPortalProps = NSPortal.Props;
 
-export type NoticeBubbleContainerProps = BoxProps &
+export type NoticeBubbleContainerProps = NSBox.Props &
   NoticeBubbleContainerPortalProps & {
     /** Ref to mount bubbles in. You should use element form window.sm2.getNoticeBubbleContainer() */
     containerNode?: HTMLElement | null;
@@ -34,7 +34,7 @@ export type NoticeBubbleViewItemProps = NoticeBubbleProps & {
   styles: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement> | undefined;
 };
 
-export type NoticeBubbleProps = BoxProps & {
+export type NoticeBubbleProps = NSBox.Props & {
   /** Notice type */
   type?: 'info' | 'warning';
   /**

@@ -97,17 +97,17 @@ declare namespace NSInputNumber {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberValue = NSInputNumber.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberSize = NSInputNumber.Size;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberProps = NSInputNumber.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberValueProps = NSInputNumber.Value.Props<string>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberControlsProps = NSInputNumber.Controls.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberCtx = NSInputNumber.Ctx;
 
 export type { NSInputNumber };

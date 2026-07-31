@@ -10,7 +10,7 @@ declare namespace NSSkeletonDonutChart {
     type Component = Intergalactic.Component<'svg', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type DonutChartSkeletonProps = NSSkeletonDonutChart.Props;
 
 export type { NSSkeletonDonutChart };

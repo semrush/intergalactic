@@ -1,5 +1,5 @@
-import type { DragAndDropProps, DropZoneProps } from './DragAndDrop.type';
+import type { DragAndDropProps, DropZoneProps, NSDragAndDrop } from './DragAndDrop.type';
 
 export { default } from './DragAndDrop';
 
-export type { DragAndDropProps, DropZoneProps };
+export type { DragAndDropProps, DropZoneProps, NSDragAndDrop };

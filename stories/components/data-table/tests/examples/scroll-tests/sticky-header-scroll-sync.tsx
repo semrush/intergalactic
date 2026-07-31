@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableData } from '@semcore/ui/data-table';
@@ -12,7 +12,7 @@ export type StickyHeaderScrollSyncProps = {
   limitEnabled?: boolean;
   rowsLimit?: number;
   columnsLimit?: number;
-} & BoxProps;
+} & NSBox.Props;
 
 const flatColumns = [
   { name: 'keyword', children: 'Keyword', gtcWidth: '200px' },

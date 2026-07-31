@@ -1,11 +1,11 @@
-import type { Box, BoxProps, FlexProps } from '@semcore/base-components';
+import type { Box, NSBox, NSFlex } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 
 declare namespace NSCheckbox {
   type Size = 'm' | 'l';
   type State = 'normal' | 'invalid';
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /** Callback when the value changes */
     onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
     /** Controls the checked state of the checkbox (controlled mode) */
@@ -47,7 +47,7 @@ declare namespace NSCheckbox {
     type Handlers = {
       checked: (e: React.ChangeEvent<HTMLInputElement>) => boolean;
     };
-    type Props = FlexProps & {
+    type Props = NSFlex.Props & {
       /** Callback when the value changes */
       onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
     };
@@ -85,21 +85,21 @@ declare namespace NSCheckbox {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxSize = NSCheckbox.Size;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxState = NSCheckbox.State;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxProps = NSCheckbox.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxValueProps = NSCheckbox.Value.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxValueControlProps = NSCheckbox.Value.Control.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxValueCheckMarkProps = NSCheckbox.Value.Mark.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxContext = NSCheckbox.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type CheckboxTextProps = NSCheckbox.Text.Props;
 
 export type { NSCheckbox };
