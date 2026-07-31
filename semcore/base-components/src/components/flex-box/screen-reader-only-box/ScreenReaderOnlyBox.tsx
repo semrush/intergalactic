@@ -1,17 +1,15 @@
-import { createComponent, sstyled, Root, type Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, sstyled, Root } from '@semcore/core';
 import React from 'react';
 
 import style from './screenReaderOnlyBox.shadow.css';
-import Box from '../Box';
+import type { NSScreenReaderOnly } from './ScreenReaderOnlyBox.type';
+import Box from '../Box/Box';
 
-type SROnlyType = {
-  ariaLive?: boolean;
-  children?: React.ReactNode;
-};
-
-function ScreenReaderOnlyComponent(props: SROnlyType) {
+function ScreenReaderOnlyComponent(props: Intergalactic.InternalTypings.InferComponentProps<NSScreenReaderOnly.Component>) {
   const SScreenReaderOnly = Root;
-  const { ariaLive, children } = props;
+  // have to cast it to component's props since children type is mixed with `Component`'s types.
+  const { ariaLive, children } = props as NSScreenReaderOnly.Props;
   const [content, setContent] = React.useState(ariaLive ? null : children);
 
   React.useEffect(() => {
@@ -41,10 +39,8 @@ function ScreenReaderOnlyComponent(props: SROnlyType) {
   );
 };
 
-type ScreenReaderOnlyType = Intergalactic.Component<'span', SROnlyType>;
-
 export const ScreenReaderOnly = createComponent<
-  ScreenReaderOnlyType,
+  NSScreenReaderOnly.Component,
   typeof ScreenReaderOnlyComponent
 >(ScreenReaderOnlyComponent);
 

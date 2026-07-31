@@ -1,10 +1,10 @@
-import type { Box, BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 
 declare namespace NSTabPanel {
   type Value = string | number | boolean;
-  type Props<V extends NSTabPanel.Value = NSTabPanel.Value> = BoxProps & {
+  type Props<V extends NSTabPanel.Value = NSTabPanel.Value> = NSBox.Props & {
     /** Is invoked when changing the selection */
     onChange?:
       | ((value: V, e?: React.SyntheticEvent<HTMLButtonElement>) => void)
@@ -35,7 +35,7 @@ declare namespace NSTabPanel {
   };
 
   namespace Item {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /** Makes a tab selected. This property is determined automatically depending on the value. */
       selected?: boolean;
       /** Disabled state */
@@ -54,7 +54,7 @@ declare namespace NSTabPanel {
     }
 
     namespace Addon {
-        type Component = typeof Box;
+        type Component = NSBox.Component;
     }
 
     type Component = Intergalactic.Component<'div', Props, {}, [handlers: NSTabPanel.Handlers]> & {
@@ -82,15 +82,15 @@ declare namespace NSTabPanel {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelValue = NSTabPanel.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelProps<T extends NSTabPanel.Value = NSTabPanel.Value> = NSTabPanel.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelItemProps = NSTabPanel.Item.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelContext = NSTabPanel.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type TabPanelHandlers = NSTabPanel.Handlers;
 
 export type { NSTabPanel };

@@ -3,28 +3,18 @@ import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-export type PortalProps = {
-  /** Disables children rendering in React portal */
-  disablePortal?: boolean;
-  /** Disabled attaching portals to the parent portals and enabling attaching directly to document.body */
-  ignorePortalsStacking?: boolean;
-  /** Called when portal mount state changes */
-  onMount?: (mounted: boolean) => void;
-  /** Manually set node to mount portal content */
-  nodeToMount?: HTMLElement;
-};
+import type { NSPortal } from './Portal.type';
 
 type PortalContextType = React.RefObject<HTMLElement | null> | HTMLElement | null;
 
-type PortalComponent = Intergalactic.Component<Intergalactic.Tag, PortalProps>;
-
 const PortalContext = register.get(
   'portal-context',
-
   React.createContext<PortalContextType>(canUseDOM() ? document.body : null),
 );
 
-function Portal(props: PortalProps & { Children: React.FC }) {
+function Portal(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSPortal.Component>,
+) {
   const { Children, disablePortal, ignorePortalsStacking, onMount, nodeToMount } = props;
   const container = React.useContext(PortalContext);
   const [mountNode, setMountNode] = React.useState<Element | null>(null);
@@ -61,6 +51,6 @@ export { PortalProvider, PortalContext };
  * {@link https://developer.semrush.com/intergalactic/utils/portal/portal-api|API}
  */
 export default createComponent<
-  PortalComponent,
+  NSPortal.Component,
   typeof Portal
 >(Portal);

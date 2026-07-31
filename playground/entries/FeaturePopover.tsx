@@ -1,5 +1,5 @@
 import Button from '@semcore/ui/button';
-import type { FeaturePopoverProps as FeaturePopoverComponentProps } from '@semcore/ui/feature-popover';
+import type { NSFeaturePopover } from '@semcore/ui/feature-popover';
 import FeaturePopover from '@semcore/ui/feature-popover';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -8,7 +8,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-type FeaturePopoverProps = FeaturePopoverComponentProps & {
+type FeaturePopoverProps = NSFeaturePopover.Props & {
   closeIcon: boolean;
 };
 export type FeaturePopoverJSXProps = JSXProps<FeaturePopoverProps>;

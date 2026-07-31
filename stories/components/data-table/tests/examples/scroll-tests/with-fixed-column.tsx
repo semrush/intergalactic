@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import React from 'react';
@@ -12,7 +12,7 @@ export type WithFixedColumnProps = {
   withScrollBar?: boolean;
   sideIndents?: DataTableProps<typeof data, any, any>['sideIndents'];
   multiLevel?: boolean;
-} & BoxProps;
+} & NSBox.Props;
 
 const oneLevelColumns = [
   { name: 'keyword', children: 'Keyword', fixed: 'left' as const, gtcWidth: '150px' },

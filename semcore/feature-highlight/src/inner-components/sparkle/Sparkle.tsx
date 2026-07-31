@@ -3,17 +3,13 @@ import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import type { Ref } from 'react';
 import React from 'react';
 
+import type { NSSparkleFH } from './Sparkle.type';
 import styles from './style/sparkle.shadow.css';
 
-type SparkleProps = {
-  index: number;
-  num: number;
-  curve?: number;
-  top?: string;
-  left?: string;
-};
-
-function SvgSparkle(props: SparkleProps, ref: Ref<SVGSVGElement>) {
+function SvgSparkle(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSSparkleFH.Component>,
+  ref: Ref<SVGSVGElement>,
+) {
   const SSparkle = Root;
   const { num, index, curve, left } = props;
   const rand = Math.floor(Math.random() * 50);
@@ -44,6 +40,4 @@ function SvgSparkle(props: SparkleProps, ref: Ref<SVGSVGElement>) {
   );
 }
 
-type SparkleComponent = Intergalactic.Component<'svg', SparkleProps>;
-
-export default createBaseComponent<SparkleComponent>(SvgSparkle);
+export default createBaseComponent<NSSparkleFH.Component>(SvgSparkle);

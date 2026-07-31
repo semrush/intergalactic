@@ -3,7 +3,7 @@ import type { TimePickerMeridiem } from '../component/TimePicker/TimePicker.type
 class TimePickerEntity {
   private _hours: string = '';
   private _minutes: string = '';
-  private _is12Hour: boolean;
+  private _is12Hour: boolean = false;
   private _meridiem: TimePickerMeridiem = 'AM';
 
   constructor(
@@ -15,6 +15,7 @@ class TimePickerEntity {
     this._is12Hour = is12Hour;
     this._hours = hours;
     this._minutes = minutes;
+    this._meridiem = this.meridiemFromHours(hours);
   }
 
   get meridiem() {
@@ -87,6 +88,18 @@ class TimePickerEntity {
     const hours = this._is12Hour ? this.formatHoursTo24(this.hours) : this.hours;
 
     return `${hours}:${this.minutes}`;
+  }
+
+  setMeridiemFromHours(hours: string): void {
+    this._meridiem = this.meridiemFromHours(hours);
+  }
+
+  private meridiemFromHours(hours: string): TimePickerMeridiem {
+    const numberHours = Number.parseInt(hours, 10);
+
+    if (Number.isNaN(numberHours)) return 'AM';
+
+    return numberHours < 12 ? 'AM' : 'PM';
   }
 }
 

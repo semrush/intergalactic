@@ -1,4 +1,4 @@
-import type { Box, BoxProps, FlexProps, Flex, eventInteraction, ScrollAreaProps } from '@semcore/base-components';
+import type { NSBox, NSFlex, NSPopper, NSScrollArea } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type {
   DropdownContext,
@@ -9,7 +9,7 @@ import type {
   StatusItemComponent,
 } from '@semcore/dropdown';
 import type Dropdown from '@semcore/dropdown';
-import type { Text } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 import type { VirtualList, RenderRowProps } from './components/VirtualList';
 
@@ -55,8 +55,8 @@ export type DropdownMenuProps = DropdownProps & {
   itemsCount?: number;
 };
 
-export type DropdownMenuListProps = BoxProps &
-  ScrollAreaProps & {
+export type DropdownMenuListProps = NSBox.Props &
+  NSScrollArea.Props & {
     /**
      * Size of the menu
      * @default m
@@ -66,7 +66,7 @@ export type DropdownMenuListProps = BoxProps &
 
 export type DropdownMenuMenuProps = DropdownMenuListProps & {};
 
-export type DropdownMenuItemProps = FlexProps & {
+export type DropdownMenuItemProps = NSFlex.Props & {
   /**
    * Enables selected state. For selectable dropdowns only.
    */
@@ -130,7 +130,7 @@ declare const DropdownMenu: Intergalactic.Component<
     [handlers: DropdownMenuHandlers]
   >;
   Actions: Intergalactic.Component<
-    typeof Flex,
+    NSFlex.Component,
     DropdownMenuListProps,
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
@@ -147,10 +147,10 @@ declare const DropdownMenu: Intergalactic.Component<
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
   > & {
-    Addon: typeof Box;
-    Content: typeof Flex;
-    Text: typeof Text;
-    Hint: typeof Flex;
+    Addon: NSBox.Component;
+    Content: NSFlex.Component;
+    Text: NSText.Component;
+    Hint: NSFlex.Component;
   };
 
   Group: typeof Dropdown.Group;
@@ -160,7 +160,7 @@ declare const DropdownMenu: Intergalactic.Component<
   VirtualList: typeof VirtualList;
 
   selectedIndexContext: React.Context<number>;
-  nestedMenuInteraction: eventInteraction;
+  nestedMenuInteraction: NSPopper.EventInteraction;
 };
 
 export default DropdownMenu;

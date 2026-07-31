@@ -10,7 +10,7 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel />;
 ```
 
-<TypesView type="CarouselProps" :types={...types} />
+<TypesView type="NSCarousel.Props" :types={...types} />
 
 ## Carousel.Container
 

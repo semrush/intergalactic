@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import type { DataTableSort } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
@@ -9,7 +9,7 @@ export type StickyHeaderSortingProps = {
   withScrollBar?: boolean;
   fixedFirstColumn?: boolean;
   fixedLastColumn?: boolean;
-} & BoxProps;
+} & NSBox.Props;
 
 type ColumnName = keyof (typeof data)[0];
 

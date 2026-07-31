@@ -13,7 +13,7 @@ import DnD from '@semcore/ui/drag-and-drop';
 <DnD />;
 ```
 
-<TypesView type="DragAndDropProps" :types={...types} />
+<TypesView type="NSDragAndDrop.Props" :types={...types} />
 
 ## DnD.Draggable
 
@@ -26,7 +26,7 @@ import DnD from '@semcore/ui/drag-and-drop';
 </DnD>
 ```
 
-<TypesView type="DraggableProps" :types={...types} />
+<TypesView type="NSDragAndDrop.Draggable.Props" :types={...types} />
 
 ## DnD.DropZone
 
@@ -39,6 +39,6 @@ import DnD from '@semcore/ui/drag-and-drop';
 </DnD>
 ```
 
-<TypesView type="DropZoneProps" :types={...types} />
+<TypesView type="NSDragAndDrop.DropZone.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
