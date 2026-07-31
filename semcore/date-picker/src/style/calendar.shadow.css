@@ -55,7 +55,7 @@ SCalendarUnit {
   background-color: var(--intergalactic-date-picker-cell, oklch(1 0 0));
 
   align-items: center;
-  border-radius: var(--intergalactic-control-rounded, 6px);
+  border-radius: var(--intergalactic-rounded-small, 4px);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
@@ -82,7 +82,7 @@ SCalendarUnit[today] {
     display: block;
     top: 1px;
     left: 1px;
-    border-radius: var(--intergalactic-control-rounded, 6px);
+    border-radius: var(--intergalactic-rounded-small, 4px);
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     box-sizing: border-box;
