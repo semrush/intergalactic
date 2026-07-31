@@ -6,10 +6,6 @@ SCard {
   border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 
   STitle {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-    font-size: var(--intergalactic-fs-350, 18px);
-    line-height: var(--intergalactic-lh-350, 150%);
-    font-weight: var(--intergalactic-semi-bold, 600);
     margin: 0 var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-1x, 4px) 0;
   }
 
