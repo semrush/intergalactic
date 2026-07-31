@@ -125,7 +125,7 @@ SToggle[neighborLocation='right'] {
 SSlider {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   background: var(--intergalactic-control-switch-handle, #ffffff);
   transition:
     transform,
