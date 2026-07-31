@@ -205,8 +205,6 @@
       "inline-input",
       "input",
       "modal",
-      "radio",
-      "pills",
       "select",
       "side-panel",
       "slider",
@@ -445,8 +443,6 @@
       "feedback-form",
       "input",
       "input-tags",
-      "radio",
-      "pills",
       "tab-line",
       "textarea"
     ]
@@ -467,8 +463,6 @@
       "feedback-form",
       "fullscreen-modal",
       "input",
-      "radio",
-      "pills",
       "select",
       "side-panel",
       "slider",
@@ -3053,6 +3047,7 @@
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow of the Switch toggle.",
     "components": [
+      "pills",
       "switch"
     ]
   },
@@ -3182,8 +3177,8 @@
     "components": [
       "button",
       "input",
-      "pills",
       "modal",
+      "pills",
       "time-picker"
     ]
   },
@@ -3223,8 +3218,8 @@
       "button",
       "checkbox",
       "input",
-      "radio",
-      "pills"
+      "pills",
+      "radio"
     ]
   },
   {

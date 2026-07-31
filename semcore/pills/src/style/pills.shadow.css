@@ -30,16 +30,16 @@ SPills {
   }
 
   --transition-fast:
-    left calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
-    width calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
-    top calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12)),
-    height calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-timing-fast, cubic-bezier(0.5, 0, 0, 1.12));
+    left calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    width calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    top calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12)),
+    height calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12));
 
   --transition-slow:
-    left calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09)),
-    width calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09)),
-    top calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09)),
-    height calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-timing-medium, cubic-bezier(0.5, 0, 0, 1.09));
+    left calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-easings-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    width calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-easings-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    top calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-easings-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    height calc(var(--intergalactic-duration-medium, 300) * 1ms) var(--intergalactic-easings-medium, cubic-bezier(0.5, 0, 0, 1.09));
 }
 
 SPill {
@@ -141,7 +141,7 @@ SSegmentIndicator {
   transition: var(--global-speed);
 
   background: var(--intergalactic-control-pills-bg-selected, oklch(1 0 0));
-  box-shadow: 0 0 1px 0 rgba(0, 21, 16, 0.07), 0 1px 3px 0 rgba(0, 21, 16, 0.07);
+  box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07));
   border-radius: var(--intergalactic-rounded-small, 4px);
 }
 
