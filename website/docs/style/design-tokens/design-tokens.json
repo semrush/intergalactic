@@ -3097,9 +3097,7 @@
     "name": "--intergalactic-box-shadow-card",
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Default shadow of the Card.",
-    "components": [
-      "card"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-box-shadow-card-hover",
@@ -3247,6 +3245,7 @@
     "components": [
       "bulk-textarea",
       "button",
+      "card",
       "input",
       "input-tags",
       "modal",
@@ -3268,6 +3267,7 @@
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea"
+      "card"
     ]
   },
   {
