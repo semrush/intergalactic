@@ -1,3 +1,9 @@
+## [17.5.0] - 2026-07-30
+
+### @semcore/core
+
+- **Added** `instanceRef` property to all class components.
+
 ## [17.4.1] - 2026-07-24
 
 ### @semcore/carousel
