@@ -1,4 +1,4 @@
-import type { Flex, Box, BoxProps } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 import type { LocalizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -23,10 +23,10 @@ declare namespace NSSliderRating {
           filled?: boolean;
         };
 
-        type Component = Intergalactic.Component<typeof Box, Props>;
+        type Component = Intergalactic.Component<NSBox.Component, Props>;
     }
 
-    type Component = Intergalactic.Component<typeof Flex, Props> & {
+    type Component = Intergalactic.Component<NSFlex.Component, Props> & {
       Star: Star.Component;
     };
 }

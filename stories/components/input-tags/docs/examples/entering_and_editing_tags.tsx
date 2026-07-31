@@ -1,4 +1,4 @@
-import { Flex, type EllipsisSettings } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import type { InputTagsProps, InputTagsValueProps } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';

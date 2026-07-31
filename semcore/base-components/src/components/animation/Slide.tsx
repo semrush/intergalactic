@@ -3,12 +3,14 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import React from 'react';
 
 import Animation from './Animation';
-import type { SlideProps } from './Animation.types';
+import type { NSAnimation } from './Animation.types';
 import style from './style/keyframes.shadow.css';
 
-function Slide(props: SlideProps, ref: React.Ref<HTMLDivElement>) {
+function Slide(props: Intergalactic.InternalTypings.InferComponentProps<NSAnimation.Slide.Component>, ref: React.Ref<HTMLDivElement>) {
   return sstyled(style)(
     <Animation
+      // `ref` is overriden by spread props.
+      // @ts-expect-error
       ref={ref}
       {...props}
       keyframes={[
@@ -21,6 +23,4 @@ function Slide(props: SlideProps, ref: React.Ref<HTMLDivElement>) {
 
 Slide.displayName = 'Slide';
 
-type SlideComponent = Intergalactic.Component<'div', SlideProps>;
-
-export default createBaseComponent<SlideComponent>(Slide);
+export default createBaseComponent<NSAnimation.Slide.Component>(Slide);

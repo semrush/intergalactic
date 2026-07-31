@@ -16,7 +16,7 @@ const locators = {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify Input Phone keyboard interaction', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@button-link', '@input-mask', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/input-phone/docs/examples/known_country_and_number_format.tsx', 'en');
 
@@ -43,7 +43,7 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify Input Phone Functionality', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@button-link', '@input-mask', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/input-phone/docs/examples/known_country_and_number_format.tsx', 'en');
 

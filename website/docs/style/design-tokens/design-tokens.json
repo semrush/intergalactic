@@ -194,7 +194,6 @@
       "base-trigger",
       "bulk-textarea",
       "card",
-      "checkbox",
       "color-picker",
       "counter",
       "d3-chart",
@@ -207,10 +206,10 @@
       "input",
       "modal",
       "radio",
+      "pills",
       "select",
       "side-panel",
       "slider",
-      "switch",
       "tag",
       "textarea",
       "wizard"
@@ -442,12 +441,12 @@
     "components": [
       "base-trigger",
       "bulk-textarea",
-      "checkbox",
       "color-picker",
       "feedback-form",
       "input",
       "input-tags",
       "radio",
+      "pills",
       "tab-line",
       "textarea"
     ]
@@ -460,7 +459,6 @@
       "base-trigger",
       "bulk-textarea",
       "button",
-      "checkbox",
       "counter",
       "d3-chart",
       "date-picker",
@@ -470,6 +468,7 @@
       "fullscreen-modal",
       "input",
       "radio",
+      "pills",
       "select",
       "side-panel",
       "slider",
@@ -897,25 +896,33 @@
     "name": "--intergalactic-control-checkbox-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background color of the Checkbox.",
-    "components": []
+    "components": [
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-bg-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background color of the checked Checkbox.",
-    "components": []
+    "components": [
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Checkbox.",
-    "components": []
+    "components": [
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-checkmark",
     "value": "oklch(1 0 0)",
     "description": "Color of the checkmark.",
-    "components": []
+    "components": [
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-button-bg-hover",
@@ -957,19 +964,25 @@
     "name": "--intergalactic-control-radio-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background color of the Radio.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-radio-bg-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Selected state of the Radio background.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-radio-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Radio.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising",
@@ -1050,13 +1063,10 @@
     "description": "Background of the regular primary control.",
     "components": [
       "button",
-      "checkbox",
       "dropdown",
       "feature-highlight",
-      "radio",
       "select",
-      "slider",
-      "switch"
+      "slider"
     ]
   },
   {
@@ -1105,8 +1115,7 @@
     "value": "oklch(0.64 0.161 170)",
     "description": "Background of the primary control with successful theme.",
     "components": [
-      "button",
-      "switch"
+      "button"
     ]
   },
   {
@@ -1276,19 +1285,25 @@
     "name": "--intergalactic-control-switch-bg-info-active",
     "value": "oklch(0.23 0.01 140)",
     "description": "Active background of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-bg-success-active",
     "value": "oklch(0.64 0.161 170)",
     "description": "Active background of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-handle",
     "value": "#ffffff",
     "description": "Handle color of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info",
@@ -3034,10 +3049,12 @@
     "components": []
   },
   {
-    "name": "--intergalactic-box-shadow-pills-item-selected",
+    "name": "--intergalactic-box-shadow-control-elevated",
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
-    "description": "Shadow of the selected Pills item.",
-    "components": []
+    "description": "Shadow of the Switch toggle.",
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-dnd",
@@ -3138,6 +3155,7 @@
       "button",
       "input",
       "input-tags",
+      "modal",
       "pills",
       "tab-line",
       "time-picker"
@@ -3153,7 +3171,9 @@
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-medium",
@@ -3163,6 +3183,7 @@
       "button",
       "input",
       "pills",
+      "modal",
       "time-picker"
     ]
   },
@@ -3182,7 +3203,9 @@
     "name": "--intergalactic-spacing-content-padding-xxlarge",
     "value": "40px",
     "description": "2x large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
@@ -3198,7 +3221,9 @@
     "description": "Medium gap between content elements inside controls.",
     "components": [
       "button",
+      "checkbox",
       "input",
+      "radio",
       "pills"
     ]
   },
@@ -3207,7 +3232,9 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls.",
     "components": [
-      "button"
+      "button",
+      "checkbox",
+      "radio"
     ]
   },
   {
@@ -3216,7 +3243,6 @@
     "description": "Use for rounding addons and small controls like Checkbox.",
     "components": [
       "button",
-      "checkbox",
       "dropdown",
       "feature-highlight",
       "select"
@@ -3240,9 +3266,11 @@
   },
   {
     "name": "--intergalactic-checkbox-rounded",
-    "value": "6px",
+    "value": "4px",
     "description": "Use for rounding Checkbox.",
-    "components": []
+    "components": [
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-rounded",

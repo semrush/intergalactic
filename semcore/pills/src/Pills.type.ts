@@ -1,4 +1,4 @@
-import type { Box, BoxProps, NeighborItemProps } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
@@ -6,7 +6,7 @@ import type React from 'react';
 declare namespace NSPills {
   // TODO: It looks like the value isn't accurate. Revise and align it with the component's logic.
   type Value = string | number | boolean | null;
-  type Props<T extends NSPills.Value = NSPills.Value> = BoxProps & {
+  type Props<T extends NSPills.Value = NSPills.Value> = NSBox.Props & {
     /** Pills size */
     size?: 'l' | 'm';
     /** Disabled state */
@@ -43,7 +43,7 @@ declare namespace NSPills {
     behavior: Props['behavior'];
   };
   namespace Pill {
-    type Props = BoxProps & NeighborItemProps & {
+    type Props = NSBox.Props & NSNeighborLocation.Detect.Props & {
       /** Pill value */
       value?: NSPills.Value;
       /** Disabled state */
@@ -59,7 +59,7 @@ declare namespace NSPills {
       type Component = NSText.Component;
     }
     namespace Addon {
-      type Component = typeof Box;
+      type Component = NSBox.Component;
     }
 
     type Component = Intergalactic.Component<'button', Props, [handlers: Handlers]>;
@@ -88,15 +88,15 @@ declare namespace NSPills {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsValue = NSPills.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsProps<T extends PillsValue = PillsValue> = NSPills.Props<T>;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillProps = NSPills.Pill.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsContext = NSPills.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type PillsHandlers = NSPills.Handlers;
 
 export type { NSPills };

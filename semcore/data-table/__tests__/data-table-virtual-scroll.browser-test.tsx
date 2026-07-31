@@ -41,7 +41,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Mouse scroll when cells have different height', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@data-table'],
+      '@data-table',
+      '@button-link',
+      '@button',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/header-content.tsx', 'en');
 
@@ -142,7 +146,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard interactions with accordion and chart inside', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@data-table'],
+      '@data-table',
+      '@d3-chart',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx', 'en');
 
@@ -185,7 +191,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse interactions with accordion and chart inside', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@data-table'],
+      '@data-table',
+      '@d3-chart',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx', 'en');
 
@@ -215,6 +223,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await page.keyboard.press('Tab');
     for (let i = 0; i < 100; i++) {
       await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(20);
     }
     await page.waitForTimeout(500);
     await expect(locators.getCell(page, 101, 1)).toBeVisible();

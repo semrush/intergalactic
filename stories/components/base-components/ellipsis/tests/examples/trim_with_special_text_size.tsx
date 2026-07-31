@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import type { NSText } from '@semcore/ui/typography';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -6,7 +6,7 @@ import React from 'react';
 type TextExampleProps = {
   ellipsis?: NSText.EllipsisProps;
   size: NSText.Props['size'];
-  w: BoxProps['w'];
+  w: NSBox.Props['w'];
   hintProps?: false;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
 };

@@ -27,6 +27,8 @@ process.chdir(babelPresetPackagePath);
 
 const makeCommand: Record<string, (...args: any[]) => string> = {
   CLEANUP: () => `${workingDir}/lib`,
+  // TODO: Remove it when the project migrate to incremental TS build
+  CLEANUP_TS_BUILD_INFO: () => `${workingDir}/tsconfig.tsbuildinfo`,
   TYPES: (output: string) =>
     `tsc --emitDeclarationOnly --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
   COPY_TYPES: (output: string) =>
@@ -64,6 +66,8 @@ const MAP_BABEL_ENV: Record<string, string> = {
 console.log(`running builder from dir ${workingDir}\n`);
 
 await rm(makeCommand.CLEANUP(), { recursive: true, force: true }).catch((err) => {});
+// TODO: Remove it when the project migrate to incremental TS build
+await rm(makeCommand.CLEANUP_TS_BUILD_INFO(), { force: true }).catch((err) => {});
 
 if (process.platform === 'win32') process.exit(0);
 
