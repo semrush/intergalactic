@@ -1,9 +1,4 @@
-import type {
-  PopperContext,
-  PopperProps,
-  PopperTriggerProps,
-  eventInteraction,
-} from '@semcore/base-components';
+import type { NSPopper } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type React from 'react';
 
@@ -12,8 +7,8 @@ export type ArrowCustom = {
   arrowShadowColor?: string;
 };
 
-export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperProps, 'interaction'> &
-  PopperTriggerProps & {
+export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<NSPopper.Props, 'interaction'> &
+  NSPopper.Trigger.Props & {
     /**
      * Tooltip text
      */
@@ -30,25 +25,25 @@ export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperPro
      * Focus interaction means that popper will be shown on mouse or keyboard focus.
      * @default hover
      */
-    interaction?: 'hover' | 'click' | 'focus' | 'none' | eventInteraction;
+    interaction?: 'hover' | 'click' | 'focus' | 'none' | NSPopper.EventInteraction;
   };
 
-export type TooltipTriggerContext = PopperContext & {
+export type TooltipTriggerContext = NSPopper.Ctx & {
   popperId?: string;
 };
 
-export type TooltipContext = PopperContext & {};
+export type TooltipContext = NSPopper.Ctx & {};
 
 declare const Tooltip: Intergalactic.Component<'div', TooltipProps, TooltipContext> & {
-  Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
+  Trigger: Intergalactic.Component<'div', NSPopper.Trigger.Props, TooltipTriggerContext>;
   Popper: Intergalactic.Component<'div', TooltipProps & ArrowCustom, TooltipContext>;
 };
 
 export type TooltipHintProps = Intergalactic.InternalTypings.EfficientOmit<
-  PopperProps,
+  NSPopper.Props,
   'interaction'
 > &
-PopperTriggerProps & {
+NSPopper.Trigger.Props & {
   /**
      * Tooltip text
      */
@@ -65,15 +60,15 @@ export type TooltipHintPopperProps = Intergalactic.InternalTypings.EfficientOmit
 >;
 
 declare const Hint: Intergalactic.Component<'div', TooltipHintProps, TooltipTriggerContext> & {
-  Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
+  Trigger: Intergalactic.Component<'div', NSPopper.Trigger.Props, TooltipTriggerContext>;
   Popper: Intergalactic.Component<'div', TooltipHintPopperProps & ArrowCustom, TooltipContext>;
 };
 
 export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmit<
-  PopperProps,
+  NSPopper.Props,
   'interaction'
 > &
-PopperTriggerProps & {
+NSPopper.Trigger.Props & {
   /**
      * Tooltip theme. You can use the default themes or create your own
      * @default default
@@ -113,7 +108,7 @@ declare const DescriptionTooltip: Intergalactic.Component<
   DescriptionTooltipProps,
   TooltipTriggerContext
 > & {
-  Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
+  Trigger: Intergalactic.Component<'div', NSPopper.Trigger.Props, TooltipTriggerContext>;
   Popper: Intergalactic.Component<'div', DescriptionTooltipPopperProps, TooltipContext>;
 };
 

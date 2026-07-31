@@ -1,4 +1,5 @@
-import { Box, type BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import {
   createComponent,
   Component,
@@ -11,13 +12,13 @@ import React from 'react';
 
 import style from './style/title.shadow.css';
 
-export type HeaderTitleProps = BoxProps & {
+export type HeaderTitleProps = NSBox.Props & {
   /** A tool name that appears as part of the header title */
   toolName?: React.ReactNode;
 };
 
 type HeaderTitleComponent = Intergalactic.Component<'h1', HeaderTitleProps> & {
-  Tool: typeof Box;
+  Tool: NSBox.Component;
 };
 
 class TitleRoot extends Component<HeaderTitleProps> {

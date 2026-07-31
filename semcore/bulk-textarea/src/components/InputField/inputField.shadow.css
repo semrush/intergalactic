@@ -1,4 +1,4 @@
-SInputField>div {
+SInputField>ol {
   box-sizing: content-box;
   outline-color: transparent;
   border-radius: var(--intergalactic-control-rounded, 6px);
@@ -13,33 +13,22 @@ SInputField>div {
   word-wrap: break-word;
   word-break: break-word;
   font-family: inherit;
+  margin: 0;
+
+  list-style-type: none;
+  counter-reset: list-counter;
 
   &:empty::before {
-    content: '1. ' attr(placeholder);
+    content: '1. ' attr(data-placeholder);
     color: var(--intergalactic-text-placeholder, oklch(0.098 0.023 157.4 / 0.457));
     position: absolute;
+    white-space: pre-wrap;
+    padding-left: var(--intergalactic-spacing-4x, 16px);
+    text-indent: calc(-1 * var(--intergalactic-spacing-4x, 16px));
   }
 
-  &:nth-child(even) {
-    color: red;
-    counter-increment: row;
-    margin-bottom: var(--intergalactic-spacing-1x, 4px);
-    position: relative;
-    word-break: break-all;
-
-    &::before {
-      content: counter(row) '.';
-      display: inline-block;
-      white-space: nowrap;
-      text-align: right;
-      color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-      margin-right: var(--intergalactic-spacing-1x, 4px);
-    }
-  }
-
-  >p {
-    counter-increment: row;
-    /*display: inline-block;*/
+  >li {
+    counter-increment: list-counter;
     margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     position: relative;
     word-break: break-all;
@@ -50,16 +39,18 @@ SInputField>div {
       margin-bottom: 0;
     }
 
-    &:not(:empty)::before {
-      content: counter(row) '.';
-      display: inline-block;
+    &::before {
+      content: counter(list-counter) ".";
+      position: absolute;
+      left: 0;
       white-space: nowrap;
+      display: inline-block;
+
       text-align: right;
       color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
       margin-right: var(--intergalactic-spacing-1x, 4px);
-
-      position: absolute;
-      left: 0;
+      font-variant-numeric: normal;
+      font-weight: 300;
     }
 
     &[data-over-max-rows='true'] {
@@ -67,61 +58,61 @@ SInputField>div {
     }
   }
 
-  &:has(p:nth-child(n + 10)) {
-    >p {
+  &:has(li:nth-child(n + 10)) {
+    >li {
       padding-left: var(--intergalactic-spacing-6x, 24px);
     }
 
-    >p:nth-child(-n + 9)::before {
+    >li:nth-child(-n + 9)::before {
       padding-left: var(--intergalactic-spacing-2x, 8px);
     }
   }
 
-  &:has(p:nth-child(n + 100)) {
-    >p {
+  &:has(li:nth-child(n + 100)) {
+    >li {
       padding-left: var(--intergalactic-spacing-8x, 32px);
     }
 
-    >p:nth-child(-n + 9)::before {
+    >li:nth-child(-n + 9)::before {
       padding-left: var(--intergalactic-spacing-4x, 16px);
     }
 
-    >p:nth-child(n + 10)::before {
+    >li:nth-child(n + 10)::before {
       padding-left: var(--intergalactic-spacing-2x, 8px);
     }
 
-    >p:nth-child(n + 100)::before {
+    >li:nth-child(n + 100)::before {
       padding-left: 0;
     }
   }
 
-  &:has(p:nth-child(n + 1000)) {
-    > p {
+  &:has(li:nth-child(n + 1000)) {
+    > li {
       padding-left: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-1x, 4px));
     }
-    > p:nth-child(-n + 9)::before {
+    > li:nth-child(-n + 9)::before {
       padding-left: var(--intergalactic-spacing-6x, 24px);
     }
-    > p:nth-child(n + 10)::before {
+    > li:nth-child(n + 10)::before {
       padding-left: var(--intergalactic-spacing-4x, 16px);
     }
-    > p:nth-child(n + 100)::before {
+    > li:nth-child(n + 100)::before {
       padding-left: var(--intergalactic-spacing-2x, 8px);
     }
-    > p:nth-child(n + 1000)::before {
+    > li:nth-child(n + 1000)::before {
       padding-left: 0;
     }
   }
 }
 
-SInputField[showErrors]>div[aria-invalid]>p[aria-invalid]:after {
+SInputField[showErrors]>ol[aria-invalid]>li[aria-invalid]:after {
   content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZDEwMDJmIj48cGF0aCBkPSJNNyA2aDJ2NEg3VjZabTIgN3YtMkg3djJoMloiLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMTUyIDEuMTcyYy43MTktMS41NjMgMi45NzctMS41NjMgMy42OTYgMGw2LjA0MyAxMy4xNDFjLjM2My43OTEtLjIyNSAxLjY4Ny0xLjEwOSAxLjY4N0gxLjIxOGMtLjg4NCAwLTEuNDcyLS44OTYtMS4xMDktMS42ODdMNi4xNTIgMS4xNzJabTcuMzc0IDEyLjgzN0w4IDEuOTkgMi40NzQgMTQuMDFoMTEuMDUyWiIvPjwvc3ZnPgo=");
   position: absolute;
   right: 0;
   top: var(--intergalactic-spacing-05x, 2px);
 }
 
-SInputField[size='m']>div {
+SInputField[size='m']>ol {
   padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-4x, 16px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
@@ -134,12 +125,12 @@ SInputField[size='m']>div {
     padding-left: var(--intergalactic-spacing-8x, 32px);
 
     &::before {
-      left: var(--intergalactic-spacing-4x, 16px);
+      left: calc(var(--intergalactic-spacing-4x, 16px) + 1px);
     }
   }
 }
 
-SInputField[size='l']>div {
+SInputField[size='l']>ol {
   padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-4x, 16px);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
@@ -157,7 +148,7 @@ SInputField[size='l']>div {
 }
 
 
-SInputField[state='normal']:not([disabled])>div {
+SInputField[state='normal']:not([disabled])>ol {
   &:focus {
     border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
     @mixin focus-outline-mixin {
@@ -167,7 +158,7 @@ SInputField[state='normal']:not([disabled])>div {
   }
 }
 
-SInputField[state='valid']>div {
+SInputField[state='valid']>ol {
   border-color: var(--intergalactic-border-success-active, oklch(0.7 0.166 170));
 
   &:focus {
@@ -180,7 +171,7 @@ SInputField[state='valid']>div {
   }
 }
 
-SInputField[state='invalid']>div {
+SInputField[state='invalid']>ol {
   border-color: var(--intergalactic-border-critical-active, oklch(0.7 0.21 23));
 
   &:focus {
@@ -200,10 +191,10 @@ SInputField[state='invalid']>div {
   background-repeat: repeat-y;
 }
 
-SInputField[readonly]>div {
+SInputField[readonly]>ol {
   background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
 }
 
-SInputField[disabled]>div {
+SInputField[disabled]>ol {
   opacity: var(--intergalactic-disabled-opacity, 0.4);
 }

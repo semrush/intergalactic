@@ -1,4 +1,4 @@
-import type { Flex, Box, BoxProps } from '@semcore/base-components';
+import type { NSFlex, NSBox } from '@semcore/base-components';
 import type Popper from '@semcore/base-components';
 import type { BaseTriggerProps } from '@semcore/base-trigger';
 import type BaseTrigger from '@semcore/base-trigger';
@@ -25,7 +25,7 @@ export type DateConstructorParams = string | number | Date;
  * */
 export type DisabledDates = (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
 
-export type CalendarProps = BoxProps & {
+export type CalendarProps = NSBox.Props & {
   /**
    * Locale for displaying the days of a week and months, to be transferred to `Intl`
    * @default en
@@ -64,7 +64,7 @@ export type CalendarMonthsContext = {
   months: CalendarUnitProps[];
 };
 
-export type CalendarUnitProps = BoxProps & {
+export type CalendarUnitProps = NSBox.Props & {
   /** Indicates if the calendar unit is part of a selected date range */
   selected?: boolean;
   /** Marks units from previous/next months that appear in the current month view */
@@ -225,7 +225,7 @@ WithI18nEnhanceProps & {
   periods?: (ButtonProps & { value: Date[] })[];
 };
 
-export type DateRangePickerPeriodProps = BoxProps & {
+export type DateRangePickerPeriodProps = NSBox.Props & {
   /**
    * Current selected period
    * */
@@ -351,12 +351,12 @@ declare const DatePicker: Intergalactic.Component<
   };
   Trigger: typeof InputTrigger;
   Popper: typeof Popper.Popper;
-  Header: typeof Box;
+  Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DatePickerProps, DatePickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
-  Today: typeof Box;
+  Today: NSBox.Component;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
@@ -385,7 +385,7 @@ declare const DateRangePicker: Intergalactic.Component<
   };
   Trigger: typeof RangeInputTrigger;
   Popper: typeof Popper.Popper;
-  Header: typeof Box;
+  Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
@@ -420,7 +420,7 @@ declare const MonthPicker: Intergalactic.Component<
   };
   Trigger: typeof InputTrigger;
   Popper: typeof Popper.Popper;
-  Header: typeof Box;
+  Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
@@ -453,7 +453,7 @@ declare const MonthRangePicker: Intergalactic.Component<
   };
   Trigger: typeof RangeInputTrigger;
   Popper: typeof Popper.Popper;
-  Header: typeof Box;
+  Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
@@ -606,15 +606,15 @@ declare const DateRangeComparator: Intergalactic.Component<
   DateRangeComparatorContext & CalendarDaysContext
 > & {
   Popper: typeof Popper.Popper;
-  Header: typeof Flex;
+  Header: NSFlex.Component;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
   Apply: typeof Button;
   Reset: typeof Button;
 
-  CalendarHeader: typeof Box;
-  Title: typeof Box;
+  CalendarHeader: NSBox.Component;
+  Title: NSBox.Component;
 
   Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
@@ -623,15 +623,15 @@ declare const DateRangeComparator: Intergalactic.Component<
   ValueDateRange: Intergalactic.Component<'div', InputTriggerProps>;
   CompareToggle: typeof Checkbox;
   CompareDateRange: Intergalactic.Component<'div', InputTriggerProps>;
-  Body: typeof Flex;
-  RangeCalendar: typeof Flex;
-  Periods: typeof Flex & {
+  Body: NSFlex.Component;
+  RangeCalendar: NSFlex.Component;
+  Periods: NSFlex.Component & {
     Divider: typeof Divider;
-    Column: typeof Flex;
-    Options: typeof Flex;
-    Controls: typeof Flex;
+    Column: NSFlex.Component;
+    Options: NSFlex.Component;
+    Controls: NSFlex.Component;
   };
-  Footer: typeof Flex;
+  Footer: NSFlex.Component;
 };
 
 declare const MonthDateRangeComparator: typeof DateRangeComparator;

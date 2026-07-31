@@ -17,7 +17,7 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/select": "^17.4.0",
+    "@semcore/select": "^17.4.1",
     "@semcore/button": "^17.2.1",
     "@semcore/dropdown-menu": "^17.3.1",
     "@semcore/dropdown": "^17.3.0",

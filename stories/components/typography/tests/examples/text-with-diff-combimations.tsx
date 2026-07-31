@@ -1,9 +1,9 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import type { NSText } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleProps = NSText.Props & BoxProps & { formatTags: boolean };
+type ExampleProps = NSText.Props & NSBox.Props & { formatTags: boolean };
 
 type DemoComponent = ((props: ExampleProps) => React.ReactElement) & { defaultProps?: Partial<ExampleProps> };
 

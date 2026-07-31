@@ -1,8 +1,8 @@
 import { Box } from '@semcore/ui/base-components';
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import React from 'react';
 
-type ExampleProps = BoxProps & {
+type ExampleProps = NSBox.Props & {
   tag?: React.ElementType;
   focusRingTopOffset?: string;
   focusRingRightOffset?: string;

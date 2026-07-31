@@ -1,9 +1,9 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { Box, Col, Row } from '@semcore/ui/base-components';
 import React from 'react';
 
 const Demo = () => {
-  const boxProps: BoxProps = {
+  const boxProps: NSBox.Props = {
     p: 4,
     mb: 2,
     bg: 'bg-primary-advertising',

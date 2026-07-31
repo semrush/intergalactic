@@ -75,6 +75,7 @@ class TimePickerRoot extends Component<
     if (value !== undefined) {
       const [hours = '', minutes = ''] = value.split(':');
 
+      this.entity.setMeridiemFromHours(hours);
       this.entity.hours = hours;
       this.entity.minutes = minutes;
     }
