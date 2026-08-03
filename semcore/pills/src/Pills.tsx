@@ -84,6 +84,10 @@ class RootPills extends Component<
     }
   }
 
+  componentWillUnmount() {
+    this.ro?.disconnect();
+  }
+
   updateSegmentIndicator() {
     if (this.currentSelectedIndex === null) return;
 

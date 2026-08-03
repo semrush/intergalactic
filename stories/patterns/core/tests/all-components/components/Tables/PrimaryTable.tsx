@@ -15,7 +15,7 @@ import Pills from '@semcore/ui/pills';
 import ProgressBar from '@semcore/ui/progress-bar';
 import SidePanel from '@semcore/ui/side-panel';
 import { Text } from '@semcore/ui/typography';
-import React, { useState } from 'react';
+import React, { useDeferredValue, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 import { BeforeTablesControls } from './BeforeTablesControls';
@@ -250,8 +250,9 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [pillValue, setPillValue] = React.useState<PillValue>('default');
+  const defferedPillValue = React.useDeferredValue(pillValue);
   const tableDemoState: TableDemoState =
-    pillValue === 'pageError' || pillValue === 'progress' ? 'default' : pillValue;
+    defferedPillValue === 'pageError' || defferedPillValue === 'progress' ? 'default' : defferedPillValue;
   const [nameFilter, setNameFilter] = React.useState('');
   const [debouncedNameFilter, setDebouncedNameFilter] = React.useState('');
   const [sidePanelOpen, setSidePanelOpen] = React.useState(false);
@@ -399,7 +400,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
   }, [columns, setColumns]);
 
   const mainTableContent =
-    pillValue === 'pageError'
+    defferedPillValue === 'pageError'
       ? (
           <Box w='100%'>
             <PageError />
@@ -490,7 +491,7 @@ export default function PrimaryTable({ onPageErrorChange }: PrimaryTableProps = 
         </Flex>
 
         <Flex gap={3} alignItems='center'>
-          {pillValue === 'progress' && (
+          {defferedPillValue === 'progress' && (
             <ProgressBar
               tabIndex={0}
               value={65}
