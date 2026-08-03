@@ -1,11 +1,11 @@
 import type { NSText } from '@semcore/typography';
 import Button from '@semcore/ui/button';
-import type { ButtonProps } from '@semcore/ui/button';
+import type { NSButton } from '@semcore/ui/button';
 import React from 'react';
 
 import { themeFor } from '../themeUtils';
 
-type ButtonEllipsisProps = ButtonProps & {
+type ButtonEllipsisProps = NSButton.Props & {
   ellipsis?: NSText.EllipsisProps;
   w?: number | string;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';

@@ -1,4 +1,4 @@
-import type { ButtonLinkProps, ButtonProps } from '@semcore/ui/button';
+import type { NSButton, NSButtonLink } from '@semcore/ui/button';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import React from 'react';
 
@@ -13,8 +13,8 @@ type AdditionalJSXProps<Component> = {
   beforeIcon: boolean;
   afterIcon: boolean;
 };
-type ButtonComponentJSXProps = JSXProps<ButtonProps> & AdditionalJSXProps<'Button'>;
-type ButtonLinkComponentJSXProps = JSXProps<ButtonLinkProps> & AdditionalJSXProps<'ButtonLink'>;
+type ButtonComponentJSXProps = JSXProps<NSButton.Props> & AdditionalJSXProps<'Button'>;
+type ButtonLinkComponentJSXProps = JSXProps<NSButtonLink.Props> & AdditionalJSXProps<'ButtonLink'>;
 
 export type ButtonJSXProps = ButtonComponentJSXProps | ButtonLinkComponentJSXProps;
 

@@ -12,7 +12,7 @@ import Button from '@semcore/ui/button';
 <Button />;
 ```
 
-<TypesView type="ButtonProps" :types={...types} />
+<TypesView type="NSButton.Props" :types={...types} />
 
 ## Button.Addon
 
@@ -43,6 +43,6 @@ import { ButtonLink } from '@semcore/ui/button';
 <Button />;
 ```
 
-<TypesView type="ButtonLinkProps" :types={...types} />
+<TypesView type="NSButtonLink.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
