@@ -50,6 +50,4 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Notice />;
 ```
 
-<TypesView type="NSPopper.Popper.Props" :types={...types} />
-
 <script setup>import { data as types } from '@types.data.ts';</script>
