@@ -21,9 +21,9 @@ declare namespace NSWidgetEmptyNoData {
     type Component = Intergalactic.Component<'div', Props>;
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type WidgetNoDataProps = NSWidgetEmptyNoData.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type iconNamesWidgetEmpty = TIllustrationNamesWidgetEmpty;
 
 export type { NSWidgetEmptyNoData };

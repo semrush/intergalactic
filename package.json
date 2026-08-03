@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "pnpm storybook",
     "start": "pnpm storybook",
+    "watch-semcore": "tsc -b semcore --emitDeclarationOnly --watch",
     "build": "pnpm run clean && pnpm --filter @semcore/theme run build && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/base-components run build && pnpm --filter @semcore/dropdown run build && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/base-components --filter !@semcore/illustration --filter !@semcore/dropdown --filter !@semcore/ui run build",
     "process-theme": "pnpm --filter @semcore/theme build",
     "install-n-test": "pnpm install && pnpm test",
@@ -28,7 +29,9 @@
     "clean:illustration": "pnpm --filter @semcore/illustration run clean",
     "format": "biome format ./semcore ./tools ./website ./stories ./.ci --config-path . --write",
     "lint:es": "npx eslint",
-    "lint:ts": "tsc --noEmit && cd website && tsc --noEmit",
+    "lint:ts": "pnpm lint:ts:semcore && tsc --noEmit && pnpm lint:ts:website",
+    "lint:ts:semcore": "tsc -b semcore --emitDeclarationOnly --verbose",
+    "lint:ts:website": "cd website && tsc --noEmit",
     "lint:css": "stylelint **/*.css",
     "lint:docs": "vale README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md tools/*/README.md tools/*/CHANGELOG.md website/docs",
     "prepare": "husky install",

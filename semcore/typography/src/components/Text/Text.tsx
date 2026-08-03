@@ -1,4 +1,5 @@
-import { Ellipsis, Hint, Box, type EllipsisSettings } from '@semcore/base-components';
+import type { NSEllipsis } from '@semcore/base-components';
+import { Ellipsis, Hint, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, sstyled, Component, createComponent } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -40,7 +41,7 @@ class TextRoot extends Component<
   }
 
   componentDidUpdate(prevProps: NSText.EllipsisProps) {
-    const ellipsisKeys: Array<keyof EllipsisSettings> = [
+    const ellipsisKeys: Array<keyof NSEllipsis.Settings> = [
       'cropPosition',
       'maxLine',
       'lastRequiredSymbols',

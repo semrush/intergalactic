@@ -133,10 +133,10 @@ export default createBaseComponent(${illustration})
     `;
 
     const typesDeclaration = `
-import { BoxProps } from '@semcore/base-components';
+import { NSBox } from '@semcore/base-components';
 import { Intergalactic } from '@semcore/core';
 
-type IllustrationProps = BoxProps & {
+type IllustrationProps = NSBox.Props & {
     /**
      * Main color of the illustration
      **/

@@ -1,6 +1,6 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
-import type { DataTableSort, DataTableData, DataTableProps } from '@semcore/ui/data-table';
+import type { DataTableSort, DataTableProps } from '@semcore/ui/data-table';
 import React from 'react';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
@@ -16,7 +16,7 @@ type BaseExampleProps = {
   top?: number;
 };
 
-export type OneLevelHeaderSortingProps = BaseExampleProps & BoxProps;
+export type OneLevelHeaderSortingProps = BaseExampleProps & NSBox.Props;
 
 const Demo = (props: OneLevelHeaderSortingProps) => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
