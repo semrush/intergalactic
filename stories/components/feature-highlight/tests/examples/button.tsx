@@ -1,11 +1,11 @@
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import type { NSText } from '@semcore/typography';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
-import type { ButtonProps } from '@semcore/ui/button';
+import type { NSButton } from '@semcore/ui/button';
 import { ButtonFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import React from 'react';
 
-export type ButtonFHAdvancedProps = ButtonProps & {
+export type ButtonFHAdvancedProps = NSButton.Props & {
   buttonText?: string;
   showBadge?: boolean;
   badgeText?: string;

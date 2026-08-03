@@ -2,7 +2,7 @@ import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
 import { ButtonLink } from '@semcore/ui/button';
-import type { ButtonLinkProps } from '@semcore/ui/button';
+import type { NSButtonLink } from '@semcore/ui/button';
 import Counter, { type NSCounter } from '@semcore/ui/counter';
 import Spin, { type NSSpin } from '@semcore/ui/spin';
 import type { NSText } from '@semcore/ui/typography';
@@ -11,7 +11,7 @@ import React from 'react';
 
 type AddonType = 'icon' | 'badge' | 'counter' | 'spin';
 
-type BasicButtonLinkProps = ButtonLinkProps & {
+type BasicButtonLinkProps = NSButtonLink.Props & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
