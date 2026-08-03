@@ -278,6 +278,7 @@ SSpinContainer {
   justify-content: center;
   background-color: var(--intergalactic-overlay-limitation-secondary, oklch(1 0 0 / 0.85));
   z-index: 15;
+  min-height: 100vh;
 
   &:focus-visible {
     z-index: 15;
