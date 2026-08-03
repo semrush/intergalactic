@@ -56,6 +56,14 @@ const Demo = () => {
             <Badge type='soon' invert />
             <Badge type='unavailable' invert />
           </Flex>
+          <Flex gap={2} mt={2} p={4} alignItems='flex-start'>
+            <Badge type='admin' light />
+            <Badge type='alpha' light />
+            <Badge type='beta' light />
+            <Badge type='new' light />
+            <Badge type='soon' light />
+            <Badge type='unavailable' light />
+          </Flex>
         </Box>
       </I18nProvider>
     </div>
