@@ -64,7 +64,7 @@ declare namespace NSInputNumber {
     };
 
     type Component = (<
-      V extends Value | ValueNumber,
+      V extends Value | ValueNumber = Value,
       Tag extends Intergalactic.Tag = 'input',
     >(
       props: Intergalactic.InternalTypings.EfficientOmit<
