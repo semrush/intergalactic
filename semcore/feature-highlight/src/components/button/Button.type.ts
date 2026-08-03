@@ -1,23 +1,23 @@
-import type { ButtonAddonProps, ButtonComponent, ButtonProps } from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 
 declare namespace NSButtonFH {
   type InnerProps = {
-    theme?: ButtonProps['theme'] | 'highlighted';
+    theme?: NSButton.Props['theme'] | 'highlighted';
   };
   type DefaultProps = {
     theme: 'highlighted';
   };
 
   namespace Addon {
-    type Props = ButtonAddonProps & {
+    type Props = NSButton.Addon.Props & {
       animatedSparkleCount?: number;
     };
 
     type Component = Intergalactic.Component<'div', Props>;
   }
 
-  type Component = ButtonComponent & {
+  type Component = NSButton.Component & {
     Addon: Addon.Component;
   };
 }
