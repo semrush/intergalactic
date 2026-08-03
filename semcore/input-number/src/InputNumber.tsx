@@ -332,7 +332,16 @@ class Value extends Component<
     const digits = /^[0-9.-]+$/.test(value);
 
     if (digits || value === '') {
-      this.handlers.value(this.processedValue(this.limitDecimals(value)), event);
+      const newValue = this.limitDecimals(value);
+      this.handlers.value(this.processedValue(newValue), event);
+      if (newValue === prevValue) {
+        const { displayValue } = this.valueParser(
+          newValue ?? '',
+          prevValue,
+          this.state.displayValue,
+        );
+        this.setState({ displayValue });
+      }
     }
   };
 
