@@ -80,6 +80,8 @@ export const locators = {
   },
   popper: (page: Page) =>
     page.locator('[data-ui-name="DropdownMenu.Popper"]'),
+  list: (page: Page) =>
+    page.locator('[data-ui-name="DropdownMenu.List"]'),
   hint: (page: Page) =>
     page.locator('[data-ui-name="Hint"]'),
   actions: (page: Page) =>
@@ -201,6 +203,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
 
       await expect(page).toHaveScreenshot();
+      await expect(locators.list(page).first()).toHaveCSS(
+        'max-height',
+        item.size === 'l' ? '306px' : '246px',
+      );
 
       if (item.size == 'm') {
         await test.step('Verify styles of M size', async () => {
@@ -430,7 +436,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify padding between item badge', async () => {
       const ItemAddon = locators.itemInGroup(page).nth(4).locator('[data-ui-name="DropdownMenu.Item.Text"]');
       await checkStyles(ItemAddon, {
-        'margin-right': '4px',
+        'margin-right': '6px',
       });
     });
 
