@@ -170,7 +170,7 @@ STag[theme="secondary"],
 STagContainerClose[theme="secondary"] {
   color: var(--intergalactic-tag-secondary-text, #6a6c6a);
   background-color: var(--intergalactic-tag-secondary-bg-normal, #ffffff);
-  border-color: var(--intergalactic-tag-secondary-border, oklch(0.91 0.002 177.8));
+  border-color: var(--intergalactic-tag-secondary-border, oklch(0.95 0.002 180));
 
   &::before,
   &::after {
@@ -188,7 +188,7 @@ STag[theme="additional"],
 STagContainerClose[theme="additional"] {
   color: var(--intergalactic-tag-additional-text, #6a6c6a);
   background-color: var(--intergalactic-tag-additional-bg-normal, oklch(1 0 0));
-  border-color: var(--intergalactic-tag-additional-border, oklch(0.91 0.002 177.8));
+  border-color: var(--intergalactic-tag-additional-border, oklch(0.95 0.002 180));
   border-style: dashed;
 
   &::before,
@@ -205,14 +205,14 @@ STagContainerClose[theme="additional"] {
 
 STag[theme="primary-invert"],
 STagContainerClose[theme="primary-invert"] {
-  background-color: var(--intergalactic-tag-primary-bg-invert-normal, oklch(0.965 0.065 140 / 0.1));
+  background-color: var(--intergalactic-tag-primary-bg-invert-normal, oklch(0.969 0.057 140 / 0.118));
   color: var(--intergalactic-tag-primary-text-invert, #ffffff);
   border-color: transparent;
 
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-primary-bg-invert-hover-active, oklch(0.986 0.025 140 / 0.203));
+    background-color: var(--intergalactic-tag-primary-bg-invert-hover-active, oklch(0.99 0.017 140 / 0.242));
   }
 }
 

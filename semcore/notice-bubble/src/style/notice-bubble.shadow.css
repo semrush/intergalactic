@@ -12,7 +12,7 @@ SView {
   gap: var(--intergalactic-spacing-2x, 8px);
 
   &[type='info'] {
-    background: var(--intergalactic-bg-primary-invert, oklch(0.21 0.01 140)); /* TODO: --intergalactic-notice-bubble-bg-info */
+    background: var(--intergalactic-bg-primary-invert, oklch(0.23 0.01 140)); /* TODO: --intergalactic-notice-bubble-bg-info */
   }
 
   &[type='warning'] {
