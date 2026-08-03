@@ -1221,7 +1221,9 @@ class InputField<T extends string | string[]> extends Component<
 
   private toggleAriaInvalid(showErrors: boolean, errorsLength: number): void {
     if (showErrors && errorsLength > 0) {
-      this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+      if (this.asProps.commonErrorMessage) {
+        this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+      }
       this.textarea.setAttribute('aria-invalid', 'true');
     } else {
       this.textarea.removeAttribute('aria-invalid');
