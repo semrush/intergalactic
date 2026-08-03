@@ -121,7 +121,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       const style = window.getComputedStyle(element, '::after');
       return { width: style.width, height: style.height };
     });
-    expect(indicatorSize).toEqual({ width: '8px', height: '2px' });
+    expect(indicatorSize).toEqual({ width: '8px', height: '1.5px' });
   });
 
   const subcomponentsConfigVariables = [
