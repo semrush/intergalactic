@@ -1,5 +1,5 @@
 import type { NSAnimation, NSBox, NSPortal } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
@@ -66,7 +66,7 @@ declare namespace NSModal {
     }
 
     namespace Close {
-        type Component = typeof Button;
+        type Component = NSButton.Component;
     }
 
     namespace Title {

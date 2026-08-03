@@ -1,17 +1,18 @@
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, sstyled, Root, Component } from '@semcore/core';
 import Link from '@semcore/link';
 import React from 'react';
 
 import style from './buttonLink.shadow.css';
-import type { ButtonLinkComponent, ButtonLinkDefaultProps, ButtonLinkProps } from './ButtonLink.type';
+import type { NSButtonLink } from './ButtonLink.type';
 
 class RootButtonLink extends Component<
-  ButtonLinkProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSButtonLink.Component>,
   [],
   {},
   {},
   {},
-  ButtonLinkDefaultProps
+  NSButtonLink.DefaultProps
 > {
   static displayName = 'ButtonLink';
   static style = style;
@@ -41,7 +42,7 @@ class RootButtonLink extends Component<
  *
  * {@link https://developer.semrush.com/intergalactic/components/button/button-api/|API} | {@link https://developer.semrush.com/intergalactic/components/button/button-code/|Examples}
  */
-export const ButtonLink = createComponent<ButtonLinkComponent, typeof RootButtonLink>(
+export const ButtonLink = createComponent<NSButtonLink.Component, typeof RootButtonLink>(
   RootButtonLink,
   {
     Text: Link.Text,

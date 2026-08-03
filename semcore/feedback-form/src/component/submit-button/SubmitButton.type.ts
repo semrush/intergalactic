@@ -1,7 +1,7 @@
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 
 declare namespace NSSubmitButton {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
 }
 
 export type { NSSubmitButton };
