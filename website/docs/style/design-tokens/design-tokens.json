@@ -3185,8 +3185,8 @@
     "components": [
       "base-trigger",
       "button",
-      "dropdown",
       "card",
+      "dropdown",
       "input",
       "modal",
       "time-picker"

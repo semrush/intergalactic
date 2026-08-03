@@ -17,8 +17,8 @@ SOptionCheckbox {
     border-radius: var(--intergalactic-addon-rounded, 4px);
   }
 
-  width: var(--intergalactic-spacing-4x, 16px);
-  height: var(--intergalactic-spacing-4x, 16px);
+  width: 16px;
+  height: 16px;
 }
 
 SOptionCheckbox::after {
@@ -38,8 +38,8 @@ SOptionCheckbox[selected]::after {
 }
 
 SOptionCheckbox[size='l'] {
-  width: var(--intergalactic-spacing-5x, 20px);
-  height: var(--intergalactic-spacing-5x, 20px);
+  width: 20px;
+  height: 20px;
   margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
