@@ -8,7 +8,6 @@ SBaseTrigger {
   white-space: nowrap;
   user-select: none;
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
   box-shadow: none;
   text-decoration: none;
@@ -19,11 +18,14 @@ SBaseTrigger {
   font-family: inherit;
   cursor: pointer;
 
-  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-select-trigger-normal */
+  background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
 
   font-weight: var(--intergalactic-regular, 400);
   border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+
+  border-radius: var(--intergalactic-control-rounded, 6px);
+  padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
 
   &::-moz-focus-inner {
     border: none;
@@ -40,13 +42,13 @@ SBaseTrigger {
   }
 
   &:hover {
-    background-color: var(--intergalactic-bg-primary-neutral-hover, oklch(0.98 0.001 180)); /* TODO: --intergalactic-control-select-trigger-hover */
+    background-color: var(--intergalactic-control-select-trigger-hover, oklch(0.98 0.001 180));
   }
 
   &:active,
   &[active] {
     border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
-    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-select-trigger-active */
+    background-color: var(--intergalactic-control-select-trigger-active, oklch(1 0 0));
   }
 }
 
@@ -61,6 +63,7 @@ SInner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
   height: 100%;
   width: 100%;
 }
@@ -68,11 +71,9 @@ SInner {
 SText {
   display: inline;
   /* disable-tokens-validator */
-  padding: 1px 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: var(--intergalactic-lh-200, 142%);
   flex-grow: 1;
   text-align: left;
 }
@@ -83,57 +84,25 @@ SAddon {
   justify-content: center;
   flex-shrink: 0;
   pointer-events: none;
-}
 
-SBaseAddon {
-  width: 12px;
-  height: 12px;
+  &:only-child {
+    margin-left: calc(-1 * var(--intergalactic-spacing-content-gap-small, 4px));
+    margin-right: calc(-1 * var(--intergalactic-spacing-content-gap-small, 4px));
+  }
 }
 
 SBaseTrigger[size='m'] {
   min-width: var(--intergalactic-form-control-m, 32px);
   height: var(--intergalactic-form-control-m, 32px);
-  border-radius: var(--intergalactic-control-rounded, 6px);
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
   font-size: var(--intergalactic-fs-200, 14px);
-
-  & SAddon {
-    &:not(:only-child):first-child {
-      margin-right: var(--intergalactic-spacing-2x, 8px);
-    }
-
-    &:not(:only-child):last-child {
-      margin-left: var(--intergalactic-spacing-2x, 8px);
-    }
-
-    &:only-child {
-      margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-      margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    }
-  }
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 
 SBaseTrigger[size='l'] {
   min-width: var(--intergalactic-form-control-l, 44px);
   height: var(--intergalactic-form-control-l, 44px);
-  border-radius: var(--intergalactic-control-rounded, 6px);
-  padding: 0 var(--intergalactic-spacing-3x, 12px);
   font-size: var(--intergalactic-fs-300, 16px);
-
-  & SAddon {
-    &:not(:only-child):first-child {
-      margin-right: var(--intergalactic-spacing-2x, 8px);
-    }
-
-    &:not(:only-child):last-child {
-      margin-left: var(--intergalactic-spacing-2x, 8px);
-    }
-
-    &:only-child {
-      margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-      margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    }
-  }
+  line-height: var(--intergalactic-lh-300, 150%);
 }
 
 SBaseTrigger[neighborLocation='right'] {
@@ -175,10 +144,7 @@ SBaseTrigger[state='invalid'] {
   }
 }
 
-SInvalidPattern[size='m'] {
-  margin-left: calc(-1 * var(--intergalactic-spacing-2x, 8px));
-}
-
+SInvalidPattern[size='m'],
 SInvalidPattern[size='l'] {
-  margin-left: calc(-1 * var(--intergalactic-spacing-3x, 12px));
+  margin-left: calc(-1 * var(--intergalactic-spacing-content-padding-medium, 12px));
 }
