@@ -10,7 +10,7 @@ const Demo = () => {
   return (
     <DropdownMenu selectable multiselect>
       <DropdownMenu.Trigger tag={Button}>Explore menu items</DropdownMenu.Trigger>
-      <DropdownMenu.Menu hMax='180px'>
+      <DropdownMenu.Menu hMax={236}>
         <DropdownMenu.Group title='List heading' subTitle='Subtitle'>
           {menuItems.map((_, index) => (
             <DropdownMenu.Item

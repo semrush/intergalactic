@@ -54,6 +54,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
         await locators.selectTrigger(page).click();
         await locators.options(page).first().waitFor({ state: 'visible' });
+        await expect(locators.menu(page)).toHaveCSS(
+          'max-height',
+          props.size === 'l' ? '306px' : '246px',
+        );
         await expect(page).toHaveScreenshot();
       } else {
         await expect(page).toHaveScreenshot();
@@ -117,7 +121,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       const style = window.getComputedStyle(element, '::after');
       return { width: style.width, height: style.height };
     });
-    expect(indicatorSize).toEqual({ width: '8px', height: '2px' });
+    expect(indicatorSize).toEqual({ width: '8px', height: '1.5px' });
   });
 
   const subcomponentsConfigVariables = [
@@ -175,7 +179,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify select with notice without focusable elements', {
     tag: [TAG.PRIORITY_MEDIUM, '@select', '@base-components', '@flex-box', '@notice', '@typography'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/select/docs/examples/dropdownmenu_customization.tsx', 'en');
+    await loadPage(page, 'stories/components/select/docs/examples/menu_customization.tsx', 'en');
 
     await locators.label(page).click();
     await expect(locators.list(page)).toBeVisible();
