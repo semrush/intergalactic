@@ -1,6 +1,6 @@
 SButtonAddon {
-  width: var(--intergalactic-spacing-3x, 12px);
-  height: var(--intergalactic-spacing-3x, 12px);
+  width: 12px;
+  height: 12px;
   color: var(--intergalactic-icon-non-interactive, oklch(0.094 0.024 153.9 / 0.503));
   position: relative;
   left: var(--intergalactic-spacing-05x, 2px);

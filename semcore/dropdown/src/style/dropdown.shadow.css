@@ -29,8 +29,8 @@ SDropdownPopper {
   }
 
   SDropdownItem[size='l'] SDropdownItem:is(button) {
-    width: var(--intergalactic-spacing-6x, 24px);
-    height: var(--intergalactic-spacing-6x, 24px);
+    width: 24px;
+    height: 24px;
   }
 
   SDropdownItem[isMenuItemCheckbox] {
@@ -100,7 +100,7 @@ SDropdownPopper {
     font-size: var(--intergalactic-fs-300, 16px);
     line-height: var(--intergalactic-lh-300, 150%);
     padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px);
-    min-height: var(--intergalactic-spacing-10x, 40px);
+    min-height: 40px;
 
     &[isMenuItemCheckbox] {
       padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + var(--intergalactic-spacing-5x, 20px) + var(--intergalactic-spacing-content-gap-large, 8px));
@@ -120,7 +120,7 @@ SDropdownPopper {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
     padding: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-content-padding-medium, 12px);
-    min-height: var(--intergalactic-form-control-m, 32px);
+    min-height: 32px;
 
     &[isMenuItemCheckbox] {
       padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-content-gap-medium, 6px));
