@@ -2,7 +2,7 @@ import { ButtonLink } from '@semcore/ui/button';
 import React from 'react';
 
 const Demo = () => {
-  const sizes = [100, 200, 300, 400, 500, 600, 700, 800] as const;
+  const sizes = [100, 200, 300, 350, 400, 500, 600, 700, 800] as const;
   const w = [100, 150, 250];
   // const str = 'Ẩn bộ lọc và chế độ xem';
   // const str = 'Ocultar filtros y tipo de vista';
