@@ -3162,6 +3162,12 @@
     ]
   },
   {
+    "name": "--intergalactic-spacing-content-padding-xxsmall",
+    "value": "2px",
+    "description": "Tiny padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
@@ -3169,6 +3175,12 @@
       "dropdown",
       "dropdown-menu"
     ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-xsmall-extended",
+    "value": "6px",
+    "description": "Extended extra small padding for content inside controls and surfaces.",
+    "components": []
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
