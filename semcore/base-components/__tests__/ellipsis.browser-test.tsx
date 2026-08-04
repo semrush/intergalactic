@@ -27,6 +27,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 }, size: 100 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 7 }, size: 200 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 300 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 350 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 400 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 500 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 600 },

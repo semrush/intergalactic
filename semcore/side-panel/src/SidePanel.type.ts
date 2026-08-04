@@ -1,13 +1,13 @@
-import type { FadeInOutProps, SlideProps, Box, BoxProps, Flex, PortalProps } from '@semcore/base-components';
+import type { NSAnimation, NSBox, NSFlex, NSPortal } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
 declare namespace NSSidePanel {
-  type Props = PortalProps &
-    BoxProps & {
-      /** Animation display duration in ms
+  type Props = NSPortal.Props &
+    NSBox.Props & {
+    /** Animation display duration in ms
        * @default 350
        */
       duration?: number;
@@ -53,7 +53,7 @@ declare namespace NSSidePanel {
   type Placement = 'top' | 'left' | 'right' | 'bottom';
 
   namespace Header {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       title?: React.ReactNode;
     };
 
@@ -61,15 +61,15 @@ declare namespace NSSidePanel {
   }
 
   namespace Back {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   namespace Body {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   namespace Footer {
-    type Component = typeof Flex;
+    type Component = NSFlex.Component;
   }
 
   namespace Title {
@@ -77,19 +77,19 @@ declare namespace NSSidePanel {
   }
 
   namespace Overlay {
-    type Props = FadeInOutProps & BoxProps;
+    type Props = NSAnimation.FadeInOut.Props & NSBox.Props;
 
     type Component = Intergalactic.Component<'div', Props>;
   }
 
   namespace Panel {
-    type Props = SlideProps &
-      BoxProps & {
+    type Props = NSAnimation.Slide.Props &
+      NSBox.Props & {
         /** Callback that is triggered when click outside is occured */
         onOutsideClick?: (e?: React.SyntheticEvent) => void;
         /**
           * Forces advanced mode
-          * @deprecated It will be removed in v18.
+          * @deprecated It will be removed in v19.
         */
         forcedAdvancedMode?: boolean;
       };
@@ -113,21 +113,21 @@ declare namespace NSSidePanel {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelProps = NSSidePanel.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelContext = NSSidePanel.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelHeaderProps = NSSidePanel.Header.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelOverlayProps = NSSidePanel.Overlay.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelPanelProps = NSSidePanel.Panel.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SidePanelPlacement = NSSidePanel.Placement;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type OnCloseTriggerType = 'onOutsideClick' | 'onEscape' | 'onCloseClick';
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type OnCloseType = (
   trigger: OnCloseTriggerType,
   e?: React.MouseEvent | React.KeyboardEvent,

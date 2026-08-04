@@ -1,5 +1,5 @@
 import { Box } from '@semcore/ui/base-components';
-import type { Placement } from '@semcore/ui/base-components';
+import type { NSPopper } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Tooltip from '@semcore/ui/tooltip';
 import React from 'react';
@@ -13,7 +13,7 @@ const styleBox = {
 };
 
 const Demo = () => {
-  const placements: Placement[] = [
+  const placements: NSPopper.Placement[] = [
     'top-start',
     'top',
     'top-end',

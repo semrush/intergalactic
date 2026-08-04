@@ -366,7 +366,7 @@ importers:
         specifier: ^17.2.2
         version: link:../input
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -914,6 +914,9 @@ importers:
 
   semcore/dropdown:
     dependencies:
+      '@semcore/notice':
+        specifier: ^17.2.2
+        version: link:../notice
       '@semcore/typography':
         specifier: ^17.2.1
         version: link:../typography
@@ -1027,7 +1030,7 @@ importers:
         specifier: ^17.2.1
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
       '@semcore/switch':
         specifier: ^17.2.1
@@ -1778,7 +1781,7 @@ importers:
         specifier: ^17.2.2
         version: link:../input
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
     devDependencies:
       '@semcore/base-components':
@@ -1845,7 +1848,7 @@ importers:
         specifier: ^17.2.2
         version: link:../breadcrumbs
       '@semcore/bulk-textarea':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../bulk-textarea
       '@semcore/button':
         specifier: ^17.2.1
@@ -1854,7 +1857,7 @@ importers:
         specifier: ^17.2.1
         version: link:../card
       '@semcore/carousel':
-        specifier: ^17.2.2
+        specifier: ^17.2.3
         version: link:../carousel
       '@semcore/checkbox':
         specifier: ^17.2.1
@@ -1863,7 +1866,7 @@ importers:
         specifier: ^17.2.1
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^17.2.1
+        specifier: ^17.3.0
         version: link:../core
       '@semcore/counter':
         specifier: ^17.2.1
@@ -1899,10 +1902,10 @@ importers:
         specifier: ^17.1.1
         version: link:../errors
       '@semcore/feature-highlight':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../feature-highlight
       '@semcore/feature-popover':
-        specifier: ^17.2.1
+        specifier: ^17.2.2
         version: link:../feature-popover
       '@semcore/feedback-form':
         specifier: ^17.2.2
@@ -1968,7 +1971,7 @@ importers:
         specifier: ^17.2.1
         version: link:../radio
       '@semcore/select':
-        specifier: ^17.4.0
+        specifier: ^17.4.1
         version: link:../select
       '@semcore/side-panel':
         specifier: ^17.2.2
@@ -2001,7 +2004,7 @@ importers:
         specifier: ^17.2.2
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: ^17.2.2
+        specifier: ^17.2.3
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: ^17.2.1
@@ -19556,7 +19559,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.15))(terser@5.48.0)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.48.0)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:

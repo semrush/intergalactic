@@ -203,9 +203,9 @@ export const L_BG_BUTTON_STRONG_HOVER = 0.32;
 export const L_BG_BUTTON_STRONG_ACTIVE = 0;
 
 /** Button secondary bg         | ⚠️ APCA 60+ under white */
-export const L_BG_BUTTON_SECONDARY = 0.95;
-export const L_BG_BUTTON_SECONDARY_HOVER = 0.93;
-export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.91;
+export const L_BG_BUTTON_SECONDARY = 0.93;
+export const L_BG_BUTTON_SECONDARY_HOVER = 0.91;
+export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.9;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
 export const L_TEXT_PRIMARY = 0.23;
@@ -229,23 +229,26 @@ export const L_ICON_SECONDARY_HOVER = 0.66; // Delete with minor
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
 export const L_BORDER_PRIMARY = 0.88; // inputs, buttons, table header, tab-line, divider
+export const L_BORDER_PRIMARY_DIMMED = 0.95; // for dimmed borders with opacity (notice, tag)
 /** Border secondary */
-export const L_BORDER_SECONDARY = 0.95; // notice borders, divider, cell borders, card header
+export const L_BORDER_SECONDARY = 0.95; // divider, cell borders, card header
 /** Border active */
 export const L_BORDER_ACTIVE = 0.7; // focused inputs, active states of pills and base-trigger
 /** Border focus      | ⚠️ APCA 30 on secondary bg */
 export const L_BORDER_FOCUS = 0.7;
+/** Border strong         | ⚠️ APCA 60+ under white */
+export const L_BORDER_STRONG = 0.23; // selected presets items
 
 // =============================================================================
 // Invert levels
 
 /** Primary bg */
-export const L_INV_BG_PRIMARY = 0.23;
+export const L_INV_BG_PRIMARY = 0.23; // + selected Presets item
 export const L_INV_BG_PRIMARY_HOVER = 0.36;
 export const L_INV_BG_PRIMARY_ACTIVE = 0.4;
 
 /** Secondary bg */
-export const L_INV_BG_SECONDARY = 0.28;
+export const L_INV_BG_SECONDARY = 0.3;
 export const L_INV_BG_SECONDARY_HOVER = 0.32;
 export const L_INV_BG_SECONDARY_ACTIVE = 0.34;
 

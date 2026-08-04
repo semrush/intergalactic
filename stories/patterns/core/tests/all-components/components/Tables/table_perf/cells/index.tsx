@@ -1,5 +1,4 @@
 import CopyM from '@semcore/icon/Copy/m';
-import type { EllipsisSettings } from '@semcore/ui/base-components';
 import { Box, Flex } from '@semcore/ui/base-components';
 import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
@@ -13,7 +12,7 @@ import {
 } from 'react';
 import { FormattedNumber, FormattedDate, FormattedTime, defineMessage, useIntl } from 'react-intl';
 
-import PaymentOperationType from './op_type';
+import { EditableOperationType } from './op_type';
 import PaymentStatus from './payment_status';
 
 type Timeout = ReturnType<typeof setTimeout>;
@@ -124,7 +123,7 @@ const CopyCell = ({ value, cellProps, headerRef, cropPosition = 'middle', handle
 const StatusCell = ({ value }: any) => <PaymentStatus status={value} />;
 
 const OperationType = ({ value }: any) => (
-  <PaymentOperationType operationType={value} />
+  <EditableOperationType operationType={value} />
 );
 
 const Money = ({ value, row }: any) => {

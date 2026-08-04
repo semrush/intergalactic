@@ -1,23 +1,18 @@
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, sstyled, Root, Component } from '@semcore/core';
 import contextEnhance from '@semcore/core/lib/utils/enhances/contextEnhance';
 import React from 'react';
 
 import { Box } from '../flex-box';
-import type { AnimationContext, AnimationProps, Animation as AnimationComponent, AnimationDefaultProps } from './Animation.types';
+import type { NSAnimation } from './Animation.types';
 import style from './style/animate.shadow.css';
-
-type State = {
-  animationRunning: boolean;
-  render: AnimationProps['visible'] | AnimationProps['preserveNode'];
-  wasInvisible: AnimationProps['visible'];
-};
 
 function propToArray(prop: any) {
   return Array.isArray(prop) ? prop : [prop, prop];
 }
 
 const makeAnimationContextValue = () => {
-  const context: AnimationContext = {
+  const context: NSAnimation.Ctx = {
     onAnimationStartSubscribers: [],
     onAnimationStart: (callback) => {
       context.onAnimationStartSubscribers.push(callback);
@@ -31,19 +26,19 @@ const makeAnimationContextValue = () => {
   };
   return context;
 };
-export const animationContext = React.createContext<AnimationContext | null>(null);
+export const animationContext = React.createContext<NSAnimation.Ctx | null>(null);
 
 class Animation extends Component<
-  AnimationProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSAnimation.Component>,
   typeof Animation.enhance,
   {},
-  { parentAnimationContext: AnimationContext },
-  State,
-  AnimationDefaultProps
+  { parentAnimationContext: NSAnimation.Ctx },
+  NSAnimation.State,
+  NSAnimation.DefaultProps
 > {
   static displayName = 'Animation';
   static style = style;
-  static defaultProps: AnimationDefaultProps = {
+  static defaultProps: NSAnimation.DefaultProps = {
     visible: false,
     duration: 0,
     delay: 0,
@@ -55,7 +50,7 @@ class Animation extends Component<
 
   static enhance = [contextEnhance(animationContext, 'parentAnimationContext')];
 
-  static getDerivedStateFromProps(props: AnimationProps, state: State) {
+  static getDerivedStateFromProps(props: NSAnimation.Props, state: NSAnimation.State) {
     const wasInvisible = state.wasInvisible || !props.visible;
     if (props.visible || props.preserveNode || state.wasInvisible !== wasInvisible) {
       return { render: true, wasInvisible };
@@ -63,7 +58,7 @@ class Animation extends Component<
     return state;
   }
 
-  state: State = {
+  state: NSAnimation.State = {
     animationRunning: false,
     render: this.props.visible || this.props.preserveNode,
     wasInvisible: !this.props.visible,
@@ -116,7 +111,7 @@ class Animation extends Component<
     this.animationEventFallback();
   }
 
-  componentDidUpdate(prevProps: AnimationProps, prevState: State) {
+  componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state) {
     if (prevProps.visible !== this.props.visible || prevState.render !== this.state.render) {
       this.animationEventFallback();
     }
@@ -162,4 +157,4 @@ class Animation extends Component<
   }
 }
 
-export default createComponent<AnimationComponent, typeof Animation>(Animation);
+export default createComponent<NSAnimation.Component, typeof Animation>(Animation);

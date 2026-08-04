@@ -18,15 +18,15 @@ SBaseTrigger {
   font-family: inherit;
   cursor: pointer;
 
-  background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-select-trigger-normal */
 
   font-weight: var(--intergalactic-regular, 400);
   border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   border-radius: var(--intergalactic-control-rounded, 6px);
-  padding: 0 var(--intergalactic-spacing-content-inset-inline, 12px);
-  
+  padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
+
   &::-moz-focus-inner {
     border: none;
     padding: 0;
@@ -86,8 +86,8 @@ SAddon {
   pointer-events: none;
 
   &:only-child {
-    margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+    margin-left: calc(-1 * var(--intergalactic-spacing-content-gap-small, 4px));
+    margin-right: calc(-1 * var(--intergalactic-spacing-content-gap-small, 4px));
   }
 }
 
@@ -144,10 +144,7 @@ SBaseTrigger[state='invalid'] {
   }
 }
 
-SInvalidPattern[size='m'] {
-  margin-left: calc(-1 * var(--intergalactic-spacing-2x, 8px));
-}
-
+SInvalidPattern[size='m'],
 SInvalidPattern[size='l'] {
-  margin-left: calc(-1 * var(--intergalactic-spacing-3x, 12px));
+  margin-left: calc(-1 * var(--intergalactic-spacing-content-padding-medium, 12px));
 }

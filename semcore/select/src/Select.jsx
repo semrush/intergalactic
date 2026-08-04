@@ -229,10 +229,9 @@ class RootSelect extends AbstractDropdown {
   }
 
   getOptionCheckboxProps() {
-    const { size, resolveColor } = this.asProps;
+    const { resolveColor } = this.asProps;
 
     return {
-      size,
       resolveColor,
     };
   }
@@ -510,6 +509,7 @@ const Select = createComponent(
     Divider,
     InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
     Input: [InputSearchWrapper, InputSearch._______childrenComponents],
+    Notice: Dropdown.Notice,
   },
   { parent: DropdownMenu, context: selectContext },
 );

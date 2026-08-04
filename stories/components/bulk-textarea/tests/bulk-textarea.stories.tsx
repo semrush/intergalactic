@@ -8,9 +8,6 @@ import BasicPropsExample, {
   pasteLineProcessingOptions,
 } from './examples/basic-props';
 import BlurLineExample from './examples/blurLine-base-example';
-import ControlledAndNotControlledErrorsExample, {
-  defaultProps as controlledAndNotControlledProps,
-} from './examples/controlled-and-not-controlled-errors';
 import ControlledErrorsExample from './examples/controlled-errors';
 import EmptyValueInPasteExample from './examples/empty-value-in-paste';
 import EncodeOnchangeArrayExample from './examples/encode-onchange-array';
@@ -61,6 +58,11 @@ const basicPropsArgTypes = {
     options: ['enter', 'comma', 'semicolon', 'space', 'enter-and-comma', 'undefined'],
     mapping: linesDelimiterOptions,
   },
+  lineProcessing: {
+    control: { type: 'select' },
+    options: ['undefined', 'remove-http', 'trim'],
+    mapping: pasteLineProcessingOptions,
+  },
 } as const;
 
 export const BasicProps: StoryObj = {
@@ -71,17 +73,12 @@ export const BasicProps: StoryObj = {
     pasteDelimiter: 'newline',
     pasteLineProcessing: 'remove-http',
     linesDelimiters: 'comma',
+    lineProcessing: 'remove-http',
   },
 };
 
 export const ControlledErrors: StoryObj = {
   render: ControlledErrorsExample,
-};
-
-export const ControlledAndNotControlledErrors: StoryObj = {
-  render: ControlledAndNotControlledErrorsExample,
-  argTypes: sharedArgTypes,
-  args: controlledAndNotControlledProps,
 };
 
 export const EncodeOnchangeArray: StoryObj = {

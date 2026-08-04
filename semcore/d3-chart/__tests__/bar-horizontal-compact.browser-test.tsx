@@ -60,7 +60,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars, index) => {
     test(`Verify bar horizontal compact with config ${index + 1} (${vars.description})`, {
-      tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -87,7 +87,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify advanced usage of bar horizontal compact', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -109,7 +109,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify bar horizontal compact with links', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@bar-horizontal-compact', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box', '@link', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -138,7 +138,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify bar elements aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-horizontal-compact', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,

@@ -1,14 +1,32 @@
 import FileExportM from '@semcore/icon/FileExport/m';
-import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/base-components';
-import { Flex } from '@semcore/ui/base-components';
+import InfoM from '@semcore/icon/Info/m';
+import type { NSPopper } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
 import type { DropdownProps } from '@semcore/ui/dropdown';
+import type { NSNotice } from '@semcore/ui/notice';
 import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type DropdownExampleProps = PopperPopperProps & PopperTriggerProps & PopperProps & DropdownProps & { autofocus?: boolean };
+type DropdownExampleProps =
+  & NSPopper.Popper.Props
+  & NSPopper.Trigger.Props
+  & NSPopper.Props
+  & DropdownProps
+  & {
+    autofocus?: boolean;
+    showNotice?: boolean;
+    noticeTheme?: NSNotice.Theme;
+    noticeHidden?: boolean;
+    showNoticeLabel?: boolean;
+    noticeTitle?: string;
+    noticeText?: string;
+    showNoticeActions?: boolean;
+    noticeActionText?: string;
+    showNoticeClose?: boolean;
+  };
 const Demo = (props: DropdownExampleProps) => (
   <Flex p={30}>
     <Dropdown
@@ -36,20 +54,45 @@ const Demo = (props: DropdownExampleProps) => (
         Dropdown Props
       </Dropdown.Trigger>
       <Dropdown.Popper
-        p={4}
         wMax={260}
         aria-labelledby='dropdown-basic'
         disableEnforceFocus={props.disableEnforceFocus}
       >
-        <Text size={200}>
-          Hello there! I'm Dropdown's content
-        </Text>
-        <Tooltip
-          title='Default tooltip contains short text explaining something about the trigger'
-          tag={Button}
-          aria-label='Export to PDF'
-          addonLeft={FileExportM}
-        />
+        <Box p={4}>
+          <Text size={200}>
+            Hello there! I'm Dropdown's content
+          </Text>
+          <Tooltip
+            title='Default tooltip contains short text explaining something about the trigger'
+            tag={Button}
+            aria-label='Export to PDF'
+            addonLeft={FileExportM}
+          />
+        </Box>
+        {props.showNotice && (
+          <Dropdown.Notice
+            theme={props.noticeTheme}
+            hidden={props.noticeHidden}
+          >
+            {props.showNoticeLabel && (
+              <Dropdown.Notice.Label>
+                <InfoM />
+              </Dropdown.Notice.Label>
+            )}
+            <Dropdown.Notice.Content>
+              {props.noticeTitle && (
+                <Dropdown.Notice.Title>{props.noticeTitle}</Dropdown.Notice.Title>
+              )}
+              {props.noticeText && <Dropdown.Notice.Text>{props.noticeText}</Dropdown.Notice.Text>}
+              {props.showNoticeActions && (
+                <Dropdown.Notice.Actions>
+                  <Button use='primary'>{props.noticeActionText}</Button>
+                </Dropdown.Notice.Actions>
+              )}
+            </Dropdown.Notice.Content>
+            {props.showNoticeClose && <Dropdown.Notice.Close />}
+          </Dropdown.Notice>
+        )}
       </Dropdown.Popper>
     </Dropdown>
 
@@ -70,6 +113,15 @@ export const defaultDropdownExampleProps: DropdownExampleProps = {
   explicitTriggerSet: undefined,
   cursorAnchoring: undefined,
   popperMargin: undefined,
+  showNotice: false,
+  noticeTheme: 'info',
+  noticeHidden: false,
+  showNoticeLabel: false,
+  noticeTitle: 'Notice title',
+  noticeText: 'Additional information related to the dropdown content.',
+  showNoticeActions: true,
+  noticeActionText: 'Action',
+  showNoticeClose: false,
 };
 
 Demo.defaultProps = defaultDropdownExampleProps;

@@ -1,50 +1,104 @@
 [
   {
-    "name": "--intergalactic-badge-bg-admin",
+    "name": "--intergalactic-badge-accent-admin",
     "value": "oklch(0.58 0.168 278.2)",
     "description": "Background color of the admin Badge.",
     "components": []
   },
   {
-    "name": "--intergalactic-badge-bg-alpha",
+    "name": "--intergalactic-badge-accent-alpha",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Background color of the alpha Badge.",
     "components": []
   },
   {
-    "name": "--intergalactic-badge-bg-beta",
-    "value": "oklch(0.64 0.196 47.3)",
+    "name": "--intergalactic-badge-accent-beta",
+    "value": "oklch(0.74 0.17 72)",
     "description": "Background color of the beta Badge.",
     "components": []
   },
   {
-    "name": "--intergalactic-badge-bg-invert",
-    "value": "#ffffff",
-    "description": "Background color of the inverted Badge.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-badge-bg-new",
-    "value": "oklch(0.64 0.161 170)",
+    "name": "--intergalactic-badge-accent-new",
+    "value": "oklch(0.74 0.17 170)",
     "description": "Background color of the new Badge.",
     "components": []
   },
   {
-    "name": "--intergalactic-badge-bg-soon",
+    "name": "--intergalactic-badge-accent-soon",
     "value": "oklch(0.64 0.003 157.8)",
     "description": "Background color of the soon Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-admin",
+    "value": "oklch(0.969 0.016 267.7)",
+    "description": "Light background color of the admin Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-alpha",
+    "value": "oklch(0.899 0.069 12.9)",
+    "description": "Light background color of the alpha Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-beta",
+    "value": "oklch(0.9 0.13 92)",
+    "description": "Light background color of the beta Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-new",
+    "value": "oklch(0.9 0.11 175)",
+    "description": "Light background color of the new Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-soon",
+    "value": "oklch(0.9 0.002 177)",
+    "description": "Light background color of the soon Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-admin-text",
+    "value": "oklch(0.58 0.168 278.2)",
+    "description": "Text color for the admin Badge with light background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-alpha-text",
+    "value": "oklch(0.64 0.226 24.5)",
+    "description": "Text color for the alpha Badge with light background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-beta-text",
+    "value": "oklch(0.64 0.16 64)",
+    "description": "Text color for the beta Badge with light background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-new-text",
+    "value": "oklch(0.53 0.142 170)",
+    "description": "Text color for the new Badge with light background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-light-soon-text",
+    "value": "oklch(0.46 0.004 144.4)",
+    "description": "Text color for the soon Badge with light background.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-bg-invert",
+    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "description": "Background color of the inverted Badge.",
     "components": []
   },
   {
     "name": "--intergalactic-badge-bg-unavailable",
     "value": "oklch(0.9 0.002 177)",
     "description": "Background color of the unavailable Badge.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-badge-text-primary",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
-    "description": "Primary text color for Badge.",
     "components": []
   },
   {
@@ -140,7 +194,6 @@
       "base-trigger",
       "bulk-textarea",
       "card",
-      "checkbox",
       "color-picker",
       "counter",
       "d3-chart",
@@ -153,11 +206,8 @@
       "input",
       "modal",
       "pills",
-      "radio",
-      "select",
       "side-panel",
       "slider",
-      "switch",
       "tag",
       "textarea",
       "wizard"
@@ -176,7 +226,6 @@
     "value": "oklch(0.98 0.001 180)",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
     "components": [
-      "base-trigger",
       "pills"
     ]
   },
@@ -282,8 +331,7 @@
       "drag-and-drop",
       "input",
       "notice",
-      "textarea",
-      "time-picker"
+      "textarea"
     ]
   },
   {
@@ -291,8 +339,7 @@
     "value": "oklch(0.94 0.002 180)",
     "description": "Active (selected) state of the secondary background of the interface which contains the main data and information.",
     "components": [
-      "flags",
-      "time-picker"
+      "flags"
     ]
   },
   {
@@ -300,8 +347,7 @@
     "value": "oklch(0.96 0.001 180)",
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
     "components": [
-      "accordion",
-      "time-picker"
+      "accordion"
     ]
   },
   {
@@ -346,7 +392,7 @@
   },
   {
     "name": "--intergalactic-border-critical",
-    "value": "oklch(0.628 0.257 28.1 / 0.243)",
+    "value": "oklch(0.63 0.255 24.3 / 0.104)",
     "description": "Subtle secondary border in the critical message and invalid input field.",
     "components": [
       "notice"
@@ -380,7 +426,7 @@
   },
   {
     "name": "--intergalactic-border-info",
-    "value": "oklch(0.51 0.274 263.6 / 0.222)",
+    "value": "oklch(0.524 0.265 263 / 0.096)",
     "description": "Subtle secondary border in the informational message.",
     "components": [
       "notice"
@@ -393,14 +439,11 @@
     "components": [
       "base-trigger",
       "bulk-textarea",
-      "checkbox",
       "color-picker",
       "feedback-form",
-      "inline-input",
       "input",
       "input-tags",
       "pills",
-      "radio",
       "tab-line",
       "textarea"
     ]
@@ -413,7 +456,6 @@
       "base-trigger",
       "bulk-textarea",
       "button",
-      "checkbox",
       "counter",
       "d3-chart",
       "date-picker",
@@ -421,11 +463,8 @@
       "dropdown",
       "feedback-form",
       "fullscreen-modal",
-      "inline-input",
       "input",
       "pills",
-      "radio",
-      "select",
       "side-panel",
       "slider",
       "spin",
@@ -469,7 +508,7 @@
   },
   {
     "name": "--intergalactic-border-success",
-    "value": "oklch(0.818 0.171 165.4 / 0.531)",
+    "value": "oklch(0.874 0.177 168.2 / 0.25)",
     "description": "Subtle secondary border in the successful message and input field.",
     "components": [
       "notice"
@@ -489,7 +528,7 @@
   },
   {
     "name": "--intergalactic-border-warning",
-    "value": "oklch(0.77 0.174 64.1 / 0.543)",
+    "value": "oklch(0.806 0.17 74.5 / 0.241)",
     "description": "Subtle secondary border in the warning message.",
     "components": [
       "notice"
@@ -852,25 +891,37 @@
     "name": "--intergalactic-control-checkbox-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background color of the Checkbox.",
-    "components": []
+    "components": [
+      "checkbox",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-bg-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background color of the checked Checkbox.",
-    "components": []
+    "components": [
+      "checkbox",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Checkbox.",
-    "components": []
+    "components": [
+      "checkbox",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-checkmark",
     "value": "oklch(1 0 0)",
     "description": "Color of the checkmark.",
-    "components": []
+    "components": [
+      "checkbox",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-button-bg-hover",
@@ -912,19 +963,25 @@
     "name": "--intergalactic-control-radio-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background color of the Radio.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-radio-bg-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Selected state of the Radio background.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-radio-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Radio.",
-    "components": []
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising",
@@ -1005,13 +1062,9 @@
     "description": "Background of the regular primary control.",
     "components": [
       "button",
-      "checkbox",
       "dropdown",
       "feature-highlight",
-      "radio",
-      "select",
-      "slider",
-      "switch"
+      "slider"
     ]
   },
   {
@@ -1060,8 +1113,7 @@
     "value": "oklch(0.64 0.161 170)",
     "description": "Background of the primary control with successful theme.",
     "components": [
-      "button",
-      "switch"
+      "button"
     ]
   },
   {
@@ -1085,7 +1137,6 @@
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
     "components": [
-      "base-trigger",
       "pills"
     ]
   },
@@ -1093,21 +1144,17 @@
     "name": "--intergalactic-control-secondary-info-active",
     "value": "oklch(0.524 0.266 263.1 / 0.116)",
     "description": "Active (selected) state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
     "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Hover state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-invert",
-    "value": "oklch(0.98 0.036 140 / 0.164)",
+    "value": "oklch(0.983 0.03 140 / 0.183)",
     "description": "Background of the inverted version of the secondary control.",
     "components": [
       "button"
@@ -1131,15 +1178,16 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
-    "value": "oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Background of the regular secondary control.",
     "components": [
-      "button"
+      "button",
+      "inline-input"
     ]
   },
   {
     "name": "--intergalactic-control-secondary-neutral-active",
-    "value": "oklch(0.151 0.028 176.1 / 0.123)",
+    "value": "oklch(0.145 0.027 176.1 / 0.135)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
       "button"
@@ -1147,7 +1195,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
-    "value": "oklch(0.166 0.031 175.8 / 0.097)",
+    "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the regular secondary control.",
     "components": [
       "button"
@@ -1157,13 +1205,17 @@
     "name": "--intergalactic-control-select-trigger-active",
     "value": "oklch(1 0 0)",
     "description": "Background of the Select trigger in its active state.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-control-select-trigger-hover",
     "value": "oklch(0.98 0.001 180)",
     "description": "Background of the Select trigger in its hover state.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-control-select-trigger-normal",
@@ -1221,7 +1273,7 @@
   },
   {
     "name": "--intergalactic-control-switch-bg",
-    "value": "oklch(0.88 0.002 175.6)",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Subtle background of the Switch control.",
     "components": [
       "switch"
@@ -1231,19 +1283,25 @@
     "name": "--intergalactic-control-switch-bg-info-active",
     "value": "oklch(0.23 0.01 140)",
     "description": "Active background of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-bg-success-active",
     "value": "oklch(0.64 0.161 170)",
     "description": "Active background of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-handle",
     "value": "#ffffff",
     "description": "Handle color of the Switch control.",
-    "components": []
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info",
@@ -1298,7 +1356,8 @@
     "value": "transparent",
     "description": "Background of the regular tertiary control.",
     "components": [
-      "button"
+      "button",
+      "time-picker"
     ]
   },
   {
@@ -1307,7 +1366,8 @@
     "description": "Active (selected) state of the regular tertiary control.",
     "components": [
       "button",
-      "color-picker"
+      "color-picker",
+      "time-picker"
     ]
   },
   {
@@ -1316,7 +1376,8 @@
     "description": "Hover state of the regular tertiary control.",
     "components": [
       "button",
-      "color-picker"
+      "color-picker",
+      "time-picker"
     ]
   },
   {
@@ -1357,7 +1418,7 @@
   },
   {
     "name": "--intergalactic-date-picker-border-range-comparison",
-    "value": "oklch(0.7 0.191 301.5)",
+    "value": "oklch(0.74 0.117 274.1)",
     "description": "Border color of the second period for the comparison mode in the DatePicker.",
     "components": []
   },
@@ -1371,7 +1432,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active",
-    "value": "oklch(0.64 0.152 276.7)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Active (selected) date-picker cell background.",
     "components": [
       "date-picker"
@@ -1379,7 +1440,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-active-hover",
-    "value": "oklch(0.6 0.166 277.7)",
+    "value": "oklch(0.32 0.007 140)",
     "description": "Hover for the active (selected) date-picker cell background.",
     "components": [
       "date-picker"
@@ -1387,7 +1448,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-comparison-active",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.74 0.117 274.1)",
     "description": "Active (selected) date-picker cell background for comparison periods.",
     "components": [
       "date-picker"
@@ -1395,7 +1456,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-comparison-active-hover",
-    "value": "oklch(0.6 0.244 297.8)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "Hover for the active (selected) date-picker cell background for comparison periods.",
     "components": [
       "date-picker"
@@ -1425,7 +1486,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-range",
-    "value": "oklch(0.959 0.021 267.8)",
+    "value": "oklch(0.96 0.001 180)",
     "description": "Background for the cell which is included in the date range in the date-picker.",
     "components": [
       "date-picker"
@@ -1433,7 +1494,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-range-hover",
-    "value": "oklch(0.898 0.054 268.3)",
+    "value": "oklch(0.9 0.002 177)",
     "description": "Hover state of the background for the cell which is included in the date range in the date-picker.",
     "components": [
       "date-picker"
@@ -1480,7 +1541,9 @@
     "name": "--intergalactic-dropdown-menu-item-selected-box-shadow",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the selected item in the DropdownMenu.",
-    "components": []
+    "components": [
+      "dropdown"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
@@ -1568,7 +1631,9 @@
     "name": "--intergalactic-icon-non-interactive",
     "value": "oklch(0.094 0.024 153.9 / 0.503)",
     "description": "Color for the default non-interactive icon.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-critical",
@@ -1618,7 +1683,6 @@
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
       "accordion",
-      "base-trigger",
       "carousel",
       "drag-and-drop",
       "feature-highlight",
@@ -1913,13 +1977,13 @@
   },
   {
     "name": "--intergalactic-control-pills-bg-hover",
-    "value": "oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the Pills background.",
     "components": []
   },
   {
     "name": "--intergalactic-control-pills-bg-normal",
-    "value": "oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Background of the Pills in its normal state.",
     "components": []
   },
@@ -1933,6 +1997,24 @@
     "name": "--intergalactic-control-pills-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Pills in its normal state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-presets-bg",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the Presets items.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-presets-border-selected",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Border color of the selected Preset item.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-presets-border-hover",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Border color of the hovered Preset item.",
     "components": []
   },
   {
@@ -2949,9 +3031,7 @@
     "name": "--intergalactic-box-shadow-card",
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Default shadow of the Card.",
-    "components": [
-      "card"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-box-shadow-card-hover",
@@ -2960,10 +3040,12 @@
     "components": []
   },
   {
-    "name": "--intergalactic-box-shadow-pills-item-selected",
+    "name": "--intergalactic-box-shadow-control-elevated",
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
-    "description": "Shadow of the selected Pills item.",
-    "components": []
+    "description": "Shadow of the Switch toggle.",
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-dnd",
@@ -3064,31 +3146,89 @@
       "button",
       "input",
       "input-tags",
+      "modal",
       "pills",
       "tab-line",
       "time-picker"
     ]
   },
   {
-    "name": "--intergalactic-spacing-content-inset-inline",
-    "value": "12px",
-    "description": "Horizontal inset for content inside controls and surfaces.",
+    "name": "--intergalactic-spacing-content-padding-xsmall",
+    "value": "4px",
+    "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
-      "button"
+      "dropdown",
+      "dropdown-menu"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-small",
+    "value": "8px",
+    "description": "Small padding for content inside controls and surfaces.",
+    "components": [
+      "dropdown",
+      "modal"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-medium",
+    "value": "12px",
+    "description": "Medium padding for content inside controls and surfaces.",
+    "components": [
+      "base-trigger",
+      "button",
+      "card",
+      "dropdown",
+      "input",
+      "modal",
+      "time-picker"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-large",
+    "value": "16px",
+    "description": "Large padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-xlarge",
+    "value": "20px",
+    "description": "Extra large padding for content inside controls and surfaces.",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-xxlarge",
+    "value": "40px",
+    "description": "2x large padding for content inside controls and surfaces.",
+    "components": [
+      "modal"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls.",
-    "components": []
+    "components": [
+      "base-trigger",
+      "dropdown-menu",
+      "inline-input"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-medium",
     "value": "6px",
     "description": "Medium gap between content elements inside controls.",
     "components": [
-      "button"
+      "base-trigger",
+      "button",
+      "checkbox",
+      "dropdown",
+      "dropdown-menu",
+      "input",
+      "radio",
+      "select"
     ]
   },
   {
@@ -3096,7 +3236,11 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls.",
     "components": [
-      "button"
+      "button",
+      "checkbox",
+      "dropdown",
+      "radio",
+      "select"
     ]
   },
   {
@@ -3105,7 +3249,6 @@
     "description": "Use for rounding addons and small controls like Checkbox.",
     "components": [
       "button",
-      "checkbox",
       "dropdown",
       "feature-highlight",
       "select"
@@ -3113,7 +3256,7 @@
   },
   {
     "name": "--intergalactic-badge-rounded",
-    "value": "6px",
+    "value": "4px",
     "description": "Corner radius for Badge and compact status chips—aligned with small rounded controls.",
     "components": [
       "badge"
@@ -3129,9 +3272,11 @@
   },
   {
     "name": "--intergalactic-checkbox-rounded",
-    "value": "6px",
+    "value": "4px",
     "description": "Use for rounding Checkbox.",
-    "components": []
+    "components": [
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-rounded",
@@ -3145,6 +3290,8 @@
       "date-picker",
       "dropdown-menu",
       "feature-highlight",
+      "inline-edit",
+      "inline-input",
       "input",
       "pills",
       "select",

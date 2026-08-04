@@ -1,4 +1,4 @@
-import type { FlexProps } from '@semcore/base-components';
+import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type Icon from '@semcore/icon';
 import type React from 'react';
@@ -56,7 +56,7 @@ export type AriaNameProps = Intergalactic.RequireAtLeastOne<{
   'title'?: string;
 }>;
 
-export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
+export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   /**
    * Chart data. For all charts except Donut(Pie), Radar and Venn should be an Array
    */

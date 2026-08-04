@@ -77,7 +77,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item.Content />;
 ```
 
-<TypesView type="FlexProps" :types={...types} />
+<TypesView type="NSFlex.Props" :types={...types} />
 
 ## DropdownMenu.Item.Text
 
@@ -110,7 +110,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item.Hint />;
 ```
 
-<TypesView type="FlexProps" :types={...types} />
+<TypesView type="NSFlex.Props" :types={...types} />
 
 ## DropdownMenu.StatusItem
 
@@ -123,6 +123,15 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 ```
 
 <TypesView type="DropdownStatusItemProps" :types={...types} />
+
+## DropdownMenu.Notice
+
+A wrapper over [Dropdown.Notice](../dropdown/dropdown-api#dropdown-notice).
+
+```jsx
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+<DropdownMenu.Notice />;
+```
 
 ## Context
 

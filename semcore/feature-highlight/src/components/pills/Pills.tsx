@@ -1,14 +1,16 @@
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, Root, Component, sstyled } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import Pills from '@semcore/pills';
 import React from 'react';
 
 import style from './pills.shadow.css';
-import type { HighlightedItemAddonProps, HighlightedPillComponent, HighlightedPillItemComponent } from './Pills.type';
+import type { NSPillsFH } from './Pills.type';
 import { AnimatedSparkles } from '../../inner-components/sparkle/AnimatedSparkles';
 
-class PillsFHRoot extends Component {
+class PillsFHRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSPillsFH.Component>
+> {
   static displayName = 'PillsFH';
   static style = style;
 
@@ -17,7 +19,9 @@ class PillsFHRoot extends Component {
   }
 }
 
-class HighlightedItemRoot extends Component {
+class HighlightedItemRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSPillsFH.HighlightedItem.Component>
+> {
   static displayName = 'HighlightedItem';
   static style = style;
 
@@ -48,7 +52,11 @@ class HighlightedItemRoot extends Component {
   }
 }
 
-function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: boolean } & IRootComponentProps) {
+function HighlightedItemAddon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSPillsFH.HighlightedItem.Addon.Component, typeof HighlightedItemRoot, 'Addon'
+  >,
+) {
   const { clicked, animatedSparkleCount, Children, children } = props;
   return (
     <Root render={Pills.Item.Addon}>
@@ -65,7 +73,7 @@ function HighlightedItemAddon(props: HighlightedItemAddonProps & { clicked: bool
 }
 
 const HighlightedItem = createComponent<
-  HighlightedPillItemComponent,
+  NSPillsFH.HighlightedItem.Component,
   typeof HighlightedItemRoot
 >(HighlightedItemRoot, {
   Text: Pills.Item.Text,
@@ -78,7 +86,7 @@ const HighlightedItem = createComponent<
  * {@link https://developer.semrush.com/intergalactic/patterns/feature-highlight/feature-highlight#pills|Docs}
  */
 export const PillsFH = createComponent<
-  HighlightedPillComponent,
+  NSPillsFH.Component,
   typeof PillsFHRoot
 >(PillsFHRoot, {
   Item: Pills.Item,

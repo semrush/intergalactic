@@ -14,7 +14,7 @@ import {
   L_BG_SECONDARY_ACTIVE,
   L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
   L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_PRIMARY, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
+  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_PRIMARY_DIMMED, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
   L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
   L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
@@ -80,6 +80,9 @@ export const theme: Theme = {
       300: {
         value: '16px',
       },
+      350: {
+        value: '18px',
+      },
       400: {
         value: '20px',
       },
@@ -108,6 +111,10 @@ export const theme: Theme = {
       300: {
         value: '150%',
         description: 'Use with font-size-300.',
+      },
+      350: {
+        value: '150%',
+        description: 'Use with font-size-350.',
       },
       400: {
         value: '120%',
@@ -258,40 +265,94 @@ export const theme: Theme = {
         description: 'Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)',
       },
     },
+    easings: {
+      fast: {
+        value: 'cubic-bezier(0.5, 0, 0, 1.12)',
+        description: 'Should be used for fast animation timing function',
+      },
+      medium: {
+        value: 'cubic-bezier(0.5, 0, 0, 1.09)',
+        description: 'Should be used for medium animation timing function',
+      },
+    },
+    assets: {
+      'checkmark-m': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4=")',
+      },
+      'checkmark-l': {
+        value: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==")',
+      },
+    },
   },
   semanticTokens: {
     colors: {
-      badge_bg_admin: {
+      badge_accent_admin: {
         value: colors.blue['400'].value,
         description: 'Background color of the admin Badge.',
       },
-      badge_bg_alpha: {
+      badge_accent_alpha: {
         value: colors.red['400'].value,
         description: 'Background color of the alpha Badge.',
       },
-      badge_bg_beta: {
-        value: colors.orange['400'].value,
+      badge_accent_beta: {
+        value: colors.yellow['300'].value,
         description: 'Background color of the beta Badge.',
       },
-      badge_bg_invert: {
-        value: '{baseTokens.colors.gray.white}',
-        description: 'Background color of the inverted Badge.',
-      },
-      badge_bg_new: {
-        value: colors.green['400'].value,
+      badge_accent_new: {
+        value: colors.green['300'].value,
         description: 'Background color of the new Badge.',
       },
-      badge_bg_soon: {
+      badge_accent_soon: {
         value: colors.gray['400'].value,
         description: 'Background color of the soon Badge.',
+      },
+      badge_light_admin: {
+        value: colors.blue['50'].value,
+        description: 'Light background color of the admin Badge.',
+      },
+      badge_light_alpha: {
+        value: colors.red['100'].value,
+        description: 'Light background color of the alpha Badge.',
+      },
+      badge_light_beta: {
+        value: colors.yellow['100'].value,
+        description: 'Light background color of the beta Badge.',
+      },
+      badge_light_new: {
+        value: colors.green['100'].value,
+        description: 'Light background color of the new Badge.',
+      },
+      badge_light_soon: {
+        value: colors.gray['100'].value,
+        description: 'Light background color of the soon Badge.',
+      },
+      badge_light_admin_text: {
+        value: colors.blue['400'].value,
+        description: 'Text color for the admin Badge with light background.',
+      },
+      badge_light_alpha_text: {
+        value: colors.red['400'].value,
+        description: 'Text color for the alpha Badge with light background.',
+      },
+      badge_light_beta_text: {
+        value: colors.yellow['400'].value,
+        description: 'Text color for the beta Badge with light background.',
+      },
+      badge_light_new_text: {
+        value: colors.green['500'].value,
+        description: 'Text color for the new Badge with light background.',
+      },
+      badge_light_soon_text: {
+        value: colors.gray['600'].value,
+        description: 'Text color for the soon Badge with light background.',
+      },
+      badge_bg_invert: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY),
+        description: 'Background color of the inverted Badge.',
       },
       badge_bg_unavailable: {
         value: colors.gray['100'].value,
         description: 'Background color of the unavailable Badge.',
-      },
-      badge_text_primary_DEFAULT: {
-        value: '{semanticTokens.colors.text_primary_DEFAULT}',
-        description: 'Primary text color for Badge.',
       },
       badge_text_primary_invert: {
         value: '{semanticTokens.colors.text_primary_invert}',
@@ -446,7 +507,7 @@ export const theme: Theme = {
         description: 'Hover state of the secondary background of the message with warning information you want to accent.',
       },
       border_critical_DEFAULT: {
-        value: error.opaqueAt(L_BORDER_PRIMARY),
+        value: error.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the critical message and invalid input field.',
       },
       border_critical_active: {
@@ -458,7 +519,7 @@ export const theme: Theme = {
         description: 'Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.',
       },
       border_info_DEFAULT: {
-        value: info.opaqueAt(L_BORDER_PRIMARY),
+        value: info.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the informational message.',
       },
       border_info_active: {
@@ -482,7 +543,7 @@ export const theme: Theme = {
         description: 'Inverted version of the neutral secondary border. Use it for borders on the dark or color background.',
       },
       border_success_DEFAULT: {
-        value: success.opaqueAt(L_BORDER_PRIMARY),
+        value: success.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the successful message and input field.',
       },
       border_success_active: {
@@ -490,7 +551,7 @@ export const theme: Theme = {
         description: 'Active border in the focused input field with valid state.',
       },
       border_warning_DEFAULT: {
-        value: warning.opaqueAt(L_BORDER_PRIMARY),
+        value: warning.opaqueAt(L_BORDER_PRIMARY_DIMMED),
         description: 'Subtle secondary border in the warning message.',
       },
       border_warning_active: {
@@ -911,7 +972,7 @@ export const theme: Theme = {
         description: 'Icon color for the SliderRating component in its hovered and active states.',
       },
       control_switch_bg_DEFAULT: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
         description: 'Subtle background of the Switch control.',
       },
       control_switch_bg_info_active: {
@@ -983,7 +1044,7 @@ export const theme: Theme = {
         description: 'Tertiary text color for form controls.',
       },
       date_picker_border_range_comparison: {
-        value: highlight.at(L_BORDER_ACTIVE),
+        value: colors.blue['300'].value,
         description: 'Border color of the second period for the comparison mode in the DatePicker.',
       },
       date_picker_cell_DEFAULT: {
@@ -991,19 +1052,19 @@ export const theme: Theme = {
         description: 'Default date-picker cell background.',
       },
       date_picker_cell_active_DEFAULT: {
-        value: focus.at(L_BG_BUTTON),
+        value: neutral.at(L_BG_BUTTON_STRONG),
         description: 'Active (selected) date-picker cell background.',
       },
       date_picker_cell_active_hover: {
-        value: focus.at(L_BG_BUTTON_HOVER),
+        value: neutral.at(L_BG_BUTTON_STRONG_HOVER),
         description: 'Hover for the active (selected) date-picker cell background.',
       },
       date_picker_cell_comparison_active_DEFAULT: {
-        value: highlight.at(L_BG_BUTTON),
+        value: colors.blue['300'].value,
         description: 'Active (selected) date-picker cell background for comparison periods.',
       },
       date_picker_cell_comparison_active_hover: {
-        value: highlight.at(L_BG_BUTTON_HOVER),
+        value: colors.blue['400'].value,
         description: 'Hover for the active (selected) date-picker cell background for comparison periods.',
       },
       date_picker_cell_current_DEFAULT: {
@@ -1019,11 +1080,11 @@ export const theme: Theme = {
         description: 'Hover state of the default date-picker cell background.',
       },
       date_picker_cell_range_DEFAULT: {
-        value: focus.at(L_BG_SELECTED),
+        value: neutral.at(L_BG_SELECTED),
         description: 'Background for the cell which is included in the date range in the date-picker.',
       },
       date_picker_cell_range_hover: {
-        value: focus.at(L_BG_SELECTED_HOVER),
+        value: neutral.at(L_BG_SELECTED_HOVER),
         description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
       },
       dot_bg: {
@@ -1279,7 +1340,7 @@ export const theme: Theme = {
         description: 'Background fill for the whole product page.',
       },
       control_pills_bg_hover: {
-        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
+        value: '{semanticTokens.colors.control_secondary_neutral_hover}',
         description: 'Hover state of the Pills background.',
       },
       control_pills_bg_normal: {
@@ -1293,6 +1354,18 @@ export const theme: Theme = {
       control_pills_border_DEFAULT: {
         value: '{semanticTokens.colors.border_primary_DEFAULT}',
         description: 'Border color of the Pills in its normal state.',
+      },
+      control_presets_bg_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        description: 'Background of the Presets items.',
+      },
+      control_presets_border_selected: {
+        value: neutral.at(L_BORDER_STRONG),
+        description: 'Border color of the selected Preset item.',
+      },
+      control_presets_border_hover: {
+        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
         value: neutral.at(L_BG_LIGHT),
@@ -1855,9 +1928,9 @@ export const theme: Theme = {
         value: `3px 3px 10px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Hover state for the shadow of the Card with hover state.',
       },
-      box_shadow_pills_item_selected: {
+      box_shadow_control_elevated: {
         value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
-        description: 'Shadow of the selected Pills item.',
+        description: 'Shadow of the Switch toggle.',
       },
       box_shadow_dnd: {
         value: `3px 3px 30px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
@@ -1909,9 +1982,29 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content_inset_inline: {
+      content_padding_xsmall: {
+        value: `${SCALE_INDENT}px`,
+        description: 'Extra small padding for content inside controls and surfaces.',
+      },
+      content_padding_small: {
+        value: `${SCALE_INDENT * 2}px`,
+        description: 'Small padding for content inside controls and surfaces.',
+      },
+      content_padding_medium: {
         value: `${SCALE_INDENT * 3}px`,
-        description: 'Horizontal inset for content inside controls and surfaces.',
+        description: 'Medium padding for content inside controls and surfaces.',
+      },
+      content_padding_large: {
+        value: `${SCALE_INDENT * 4}px`,
+        description: 'Large padding for content inside controls and surfaces.',
+      },
+      content_padding_xlarge: {
+        value: `${SCALE_INDENT * 5}px`,
+        description: 'Extra large padding for content inside controls and surfaces.',
+      },
+      content_padding_xxlarge: {
+        value: `${SCALE_INDENT * 10}px`,
+        description: '2x large padding for content inside controls and surfaces.',
       },
       content_gap_small: {
         value: `${SCALE_INDENT}px`,
@@ -1932,7 +2025,7 @@ export const theme: Theme = {
         description: 'Use for rounding addons and small controls like Checkbox.',
       },
       'badge': {
-        value: `${RADII.medium}px`,
+        value: `${RADII.small}px`,
         description: 'Corner radius for Badge and compact status chips—aligned with small rounded controls.',
       },
       'chart': {
@@ -1940,7 +2033,7 @@ export const theme: Theme = {
         description: 'Use for rounding big and small charts like bar, histogram and others.',
       },
       'checkbox': {
-        value: `${RADII.medium}px`,
+        value: `${RADII.small}px`,
         description: 'Use for rounding Checkbox.',
       },
       'control': {
@@ -2165,13 +2258,15 @@ export const theme: Theme = {
   },
 };
 
-type FontSize = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
-type LineHeight = '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800';
+type FontSize = '50' | '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
+type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
 type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
+type Assets = 'checkmark-m' | 'checkmark-l';
+type Easings = 'fast' | 'medium';
 
 type Value<T = string> = {
   value: T;
@@ -2189,6 +2284,8 @@ export type BaseTokens = {
   radii: Record<Radii, Value>;
   breakpoints: Record<Breakpoints, Value>;
   durations: Record<Durations, Value>;
+  assets: Record<Assets, Value>;
+  easings: Record<Easings, Value>;
 };
 
 type FlattenPaths<T> = T extends object
@@ -2208,7 +2305,12 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content_inset_inline: Value;
+    content_padding_xsmall: Value;
+    content_padding_small: Value;
+    content_padding_medium: Value;
+    content_padding_large: Value;
+    content_padding_xlarge: Value;
+    content_padding_xxlarge: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
     content_gap_large: Value;
@@ -2583,6 +2685,15 @@ type SemanticColors = {
       };
       border: {
         DEFAULT: Value;
+      };
+    };
+    presets: {
+      bg: {
+        DEFAULT: Value;
+      };
+      border: {
+        selected: Value;
+        hover: Value;
       };
     };
     tab_line: {
@@ -3106,18 +3217,31 @@ type SemanticColors = {
     };
   };
   badge: {
-    bg: {
+    accent: {
       admin: Value;
       alpha: Value;
       beta: Value;
       new: Value;
       soon: Value;
-      unavailable: Value;
+    };
+    light: {
+      admin: Value;
+      alpha: Value;
+      beta: Value;
+      new: Value;
+      soon: Value;
+      admin_text: Value;
+      alpha_text: Value;
+      beta_text: Value;
+      new_text: Value;
+      soon_text: Value;
+    };
+    bg: {
       invert: Value;
+      unavailable: Value;
     };
     text: {
       primary: {
-        DEFAULT: Value;
         invert: Value;
       };
       secondary: Value;
@@ -3163,10 +3287,8 @@ type SemanticShadows = {
         DEFAULT: Value;
         hover: Value;
       };
-      pills: {
-        item: {
-          selected: Value;
-        };
+      control: {
+        elevated: Value;
       };
       dnd: Value;
       modal: Value;
