@@ -2002,9 +2002,17 @@ export const theme: Theme = {
       },
     },
     spacing: {
+      content_padding_xxsmall: {
+        value: `${SCALE_INDENT / 2}px`,
+        description: 'Tiny padding for content inside controls and surfaces.',
+      },
       content_padding_xsmall: {
         value: `${SCALE_INDENT}px`,
         description: 'Extra small padding for content inside controls and surfaces.',
+      },
+      content_padding_xsmall_extended: {
+        value: `${SCALE_INDENT * 1.5}px`,
+        description: 'Extended extra small padding for content inside controls and surfaces.',
       },
       content_padding_small: {
         value: `${SCALE_INDENT * 2}px`,
@@ -2325,7 +2333,9 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
+    content_padding_xxsmall: Value;
     content_padding_xsmall: Value;
+    content_padding_xsmall_extended: Value;
     content_padding_small: Value;
     content_padding_medium: Value;
     content_padding_large: Value;
