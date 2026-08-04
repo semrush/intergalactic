@@ -1510,13 +1510,17 @@
     "name": "--intergalactic-dot-bg",
     "value": "oklch(0.728 0.188 51.8)",
     "description": "Background color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dot-text",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Text color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
@@ -1726,7 +1730,6 @@
     "value": "oklch(0.728 0.188 51.8)",
     "description": "Semantic warning icon.",
     "components": [
-      "dot",
       "notice"
     ]
   },
@@ -2874,7 +2877,6 @@
       "badge",
       "base-components",
       "date-picker",
-      "dot",
       "feature-highlight",
       "feature-popover",
       "notice-bubble",
@@ -3162,13 +3164,16 @@
     "name": "--intergalactic-spacing-content-padding-xxsmall",
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
+      "counter",
       "dropdown",
       "dropdown-menu"
     ]
@@ -3177,7 +3182,9 @@
     "name": "--intergalactic-spacing-content-padding-xsmall-extended",
     "value": "6px",
     "description": "Extended extra small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
