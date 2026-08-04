@@ -270,21 +270,21 @@ SCellWrapper[fixed] {
 }
 
 SSpinContainer {
-  position: sticky;
-  top: 0;
   grid-area: 2 / 1 / 20 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--intergalactic-overlay-limitation-secondary, oklch(1 0 0 / 0.85));
   z-index: 15;
-  min-height: 100vh;
+  min-height: 100%;
 
   &:focus-visible {
     z-index: 15;
   }
 
   &[headerHeight][containerHeight] {
+    position: sticky;
+    top: 0;
     min-height: min(100vh, calc(var(--containerHeight) - var(--headerHeight)));
   }
 }
