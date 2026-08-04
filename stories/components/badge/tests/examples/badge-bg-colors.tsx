@@ -4,13 +4,19 @@ import type { NSBox } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import React from 'react';
 
-type ExampleBadgeProps = NSBadge.Props & NSBox.Props;
+export type ExampleBadgeProps = Omit<NSBadge.Props, 'invert' | 'inverted' | 'light'> &
+  NSBox.Props & {
+    invert?: boolean;
+    light?: boolean;
+  };
 
 const Demo = (props: ExampleBadgeProps) => {
+  const variant = props.light ? { light: true as const } : { invert: props.invert || undefined };
+
   return (
     <Flex gap={2}>
       <Badge
-        invert={props.invert}
+        {...variant}
         type={props.type}
         bg={props.bg}
         color={props.color}
@@ -38,6 +44,7 @@ export const defaultExampleBadgeProps: ExampleBadgeProps = {
   pt: undefined,
   m: undefined,
   invert: undefined,
+  light: undefined,
 };
 
 Demo.defaultProps = defaultExampleBadgeProps;
