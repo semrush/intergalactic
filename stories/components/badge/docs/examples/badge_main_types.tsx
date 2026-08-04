@@ -11,7 +11,6 @@ const Demo = () => {
         <Badge type='beta' />
         <Badge type='new' />
         <Badge type='soon' />
-        <Badge type='unavailable' />
       </Flex>
       <Box
         p={4}
