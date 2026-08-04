@@ -1092,7 +1092,7 @@ export const theme: Theme = {
         description: 'Background color of the Dot.',
       },
       dot_text: {
-        value: '{semanticTokens.colors.text_primary_invert}',
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
         description: 'Text color of the Dot.',
       },
       dropdown_menu_item_DEFAULT: {
@@ -2238,12 +2238,6 @@ export const theme: Theme = {
       rating: {
         normal: { value: '{semanticTokens.colors.control_slider_rating_icon_DEFAULT}' },
         hover: { active: { value: '{semanticTokens.colors.control_slider_rating_icon_hover_active}' } },
-      },
-    },
-    dot: {
-      notification: {
-        bg: { value: '{semanticTokens.colors.dot_bg}' },
-        text: { value: '{semanticTokens.colors.dot_text}' },
       },
     },
     radio: {
@@ -3396,12 +3390,6 @@ type Deprecates = {
     rating: {
       normal: Value;
       hover: { active: Value };
-    };
-  };
-  dot: {
-    notification: {
-      bg: Value;
-      text: Value;
     };
   };
   radio: {

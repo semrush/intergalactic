@@ -1514,7 +1514,7 @@
   },
   {
     "name": "--intergalactic-dot-text",
-    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the Dot.",
     "components": []
   },
