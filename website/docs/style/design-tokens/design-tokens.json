@@ -204,8 +204,6 @@
       "inline-input",
       "input",
       "modal",
-      "select",
-      "pills",
       "side-panel",
       "slider",
       "tag",
@@ -225,10 +223,7 @@
     "name": "--intergalactic-bg-primary-neutral-hover",
     "value": "oklch(0.98 0.001 180)",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
-    "components": [
-      "base-trigger"
-      "pills"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-success",
@@ -464,8 +459,6 @@
       "feedback-form",
       "fullscreen-modal",
       "input",
-      "select",
-      "pills",
       "side-panel",
       "slider",
       "spin",
