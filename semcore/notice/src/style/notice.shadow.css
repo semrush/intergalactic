@@ -82,13 +82,13 @@ SContent {
 
 SActions {
   flex-shrink: 0;
-  margin-top: var(--intergalactic-spacing-3x, 12px);
+  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
 SLabel {
   min-height: var(--intergalactic-form-control-m, 32px);
   height: fit-content;
-  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-content-padding-small, 8px);
   display: inline-flex;
   align-items: center;
 }
@@ -128,11 +128,10 @@ SNotice[theme='custom'] {
 }
 
 STitle {
-  margin-top: var(--intergalactic-spacing-05x, 2px);
-  margin-bottom: var(--intergalactic-spacing-05x, 2px);
+  margin-top: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) / 2);
 }
 
 SText {
-  margin-top: var(--intergalactic-spacing-1x, 4px);
-  margin-bottom: var(--intergalactic-spacing-1x, 4px);
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  margin-bottom: var(--intergalactic-spacing-content-padding-xsmall, 4px);
 }
