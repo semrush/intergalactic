@@ -20,16 +20,22 @@ const Demo = (props: PillExampleProps) => {
       </Text>
       <Pills mt={2} value={choice} onChange={setChoice} aria-labelledby='pills-basic-usage' size={props.size} disabled={props.disabled} behavior={props.behavior}>
         <Pills.Item value='like'>
-          <Pills.Item.Addon tag={ThumbUpM} />
+          <Pills.Item.Addon>
+            <ThumbUpM />
+          </Pills.Item.Addon>
           <Pills.Item.Text>Like</Pills.Item.Text>
-          <Pills.Item.Addon tag={ThumbUpM} />
+          <Pills.Item.Addon>
+            <ThumbUpM />
+          </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item value={null}>Don't care</Pills.Item>
         <Pills.Item value='dislike' addonLeft={ThumbDownM}>
           <Pills.Item.Text>Dislike</Pills.Item.Text>
         </Pills.Item>
         <Pills.Item value={1}>
-          <Pills.Item.Addon tag={Globe} />
+          <Pills.Item.Addon>
+            <Globe />
+          </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item value={2}>
           <Pills.Item.Text>Badge</Pills.Item.Text>

@@ -1,7 +1,7 @@
 SPills {
   position: relative;
   display: inline-flex;
-  padding: var(--intergalactic-spacing-05x, 2px);
+  padding: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
   min-height: var(--intergalactic-form-control-m, 32px);
   border-radius: var(--intergalactic-pills-rounded, 6px);
   background: var(--intergalactic-control-pills-bg-normal, oklch(0.166 0.031 175.8 / 0.097));
@@ -86,12 +86,12 @@ SPill {
   }
 
   &[size='m'] {
-    min-width: calc(var(--intergalactic-form-control-m, 32px) - var(--intergalactic-spacing-1x, 4px));
+    min-width: calc(var(--intergalactic-form-control-m, 32px) - var(--intergalactic-spacing-content-padding-xsmall, 4px));
     border-width: 2px 3px;
   }
 
   &[size='l'] {
-    min-width: calc(var(--intergalactic-form-control-l, 44px) - var(--intergalactic-spacing-1x, 4px));
+    min-width: calc(var(--intergalactic-form-control-l, 44px) - var(--intergalactic-spacing-content-padding-xsmall, 4px));
     border-width: 3px 3px;
   }
 }
