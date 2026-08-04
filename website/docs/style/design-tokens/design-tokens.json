@@ -3165,7 +3165,9 @@
     "name": "--intergalactic-spacing-content-padding-xxsmall",
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xsmall",
@@ -3173,7 +3175,8 @@
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
       "dropdown",
-      "dropdown-menu"
+      "dropdown-menu",
+      "pills"
     ]
   },
   {
