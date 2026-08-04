@@ -883,7 +883,7 @@
   },
   {
     "name": "--intergalactic-tooltip-invert",
-    "value": "oklch(0.21 0.01 140)"
+    "value": "oklch(0.23 0.01 140)"
   },
   {
     "name": "--intergalactic-tooltip-warning",
@@ -915,7 +915,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-neutral-bg",
-    "value": "oklch(0.21 0.01 140)"
+    "value": "oklch(0.23 0.01 140)"
   },
   {
     "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
