@@ -76,12 +76,6 @@ class RootPills extends Component<
 
   componentDidMount() {
     this.updateSegmentIndicator();
-
-    if (!this.ro) return;
-
-    for (const pill of this.pills) {
-      this.ro.observe(pill);
-    }
   }
 
   componentWillUnmount() {
@@ -147,9 +141,17 @@ class RootPills extends Component<
       onClick: this.bindHandlerClick(props.value),
       onKeyDown: this.bindHandleKeyDown(props.value),
       ref: (node: HTMLButtonElement | null) => {
+        const prevPill = this.pills[index];
+
+        if (prevPill) {
+          this.ro?.unobserve(prevPill);
+        }
+
         if (node === null) return;
 
         this.pills[index] = node;
+
+        this.ro?.observe(node);
       },
     };
   }
