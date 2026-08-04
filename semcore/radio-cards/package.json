@@ -1,0 +1,32 @@
+{
+  "name": "@semcore/radio-cards",
+  "description": "Semrush Radio Cards Component",
+  "version": "17.2.1",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder && pnpm vite build"
+  },
+  "exports": {
+    "types": "./lib/types/index.d.ts",
+    "import": "./lib/esm/index.mjs",
+    "require": "./lib/cjs/index.js"
+  },
+  "dependencies": {
+    "@semcore/typography": "^17.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/radio-cards"
+  },
+  "devDependencies": {
+    "@semcore/core": "workspace:*",
+    "@semcore/base-components": "workspace:*",
+    "@semcore/testing-utils": "workspace:*"
+  }
+}

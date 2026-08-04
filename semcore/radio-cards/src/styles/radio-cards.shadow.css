@@ -1,0 +1,35 @@
+SRadioCards {
+  gap: var(--intergalactic-spacing-content-gap-large);
+}
+
+SRadioItem {
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: var(--intergalactic-spacing-content-gap-small);
+  padding: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-5x);
+  align-items: flex-start;
+
+  border-radius: var(--intergalactic-pills-rounded);
+  background: var(--intergalactic-control-presets-bg);
+  box-shadow: var(--intergalactic-box-shadow-control-elevated);
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid var(--intergalactic-control-presets-border-hover);
+  }
+
+  &[aria-checked='true'] {
+    border: 1px solid var(--intergalactic-control-presets-border-selected);
+  }
+
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: var(--intergalactic-disabled-opacity);
+  }
+}
+
+SRadioItemHeader {
+  align-items: center;
+  gap: var(--intergalactic-spacing-content-gap-medium);
+}

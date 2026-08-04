@@ -1568,6 +1568,22 @@ importers:
         specifier: workspace:*
         version: link:../../tools/testing-utils
 
+  semcore/radio-cards:
+    dependencies:
+      '@semcore/typography':
+        specifier: ^17.2.1
+        version: link:../typography
+    devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
+      '@semcore/core':
+        specifier: workspace:*
+        version: link:../core
+      '@semcore/testing-utils':
+        specifier: workspace:*
+        version: link:../../tools/testing-utils
+
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
