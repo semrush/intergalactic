@@ -1124,11 +1124,11 @@ export const theme: Theme = {
         description: 'Background of the FeaturePopover with neutral theme.',
       },
       feature_popover_dot_accent: {
-        value: '{semanticTokens.colors.bg_primary_highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with accent theme.',
       },
       feature_popover_dot_neutral: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with neutral theme.',
       },
       feature_popover_dot_outer_border_accent: {
