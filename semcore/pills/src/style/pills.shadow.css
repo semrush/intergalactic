@@ -62,7 +62,7 @@ SPill {
   &:hover {
     &[aria-checked='false'],
     &[aria-selected='false'] {
-      :after {
+      &::after {
         content: '';
         display: block;
         position: absolute;

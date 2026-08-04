@@ -154,6 +154,14 @@ class RootPills extends Component<
     };
   }
 
+  getItemTextProps() {
+    const { size } = this.asProps;
+
+    return {
+      size: size === 'm' ? 200 : 300,
+    };
+  }
+
   render() {
     const SPills = Root;
     const SSegmentIndicator = Box;
@@ -215,7 +223,7 @@ function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPi
 
 function Text(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Text.Component>) {
   const SText = Root;
-  return sstyled(props.styles)(<SText render={SemcoreText} size={200} />);
+  return sstyled(props.styles)(<SText render={SemcoreText} />);
 }
 
 function Addon(props: Intergalactic.InternalTypings.InferComponentProps<NSPills.Pill.Addon.Component>) {
