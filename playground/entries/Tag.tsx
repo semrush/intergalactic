@@ -1,4 +1,5 @@
 import EditM from '@semcore/icon/Edit/m';
+import { Flex } from '@semcore/ui/base-components';
 import type { NSTag } from '@semcore/ui/tag';
 import { TagContainer } from '@semcore/ui/tag';
 import React from 'react';
@@ -17,28 +18,31 @@ export type TagJSXProps = JSXProps<NSTag.Props> & AdditionalJSXProps;
 
 function getJSX(props: TagJSXProps) {
   return (
-    <TagContainer
-      interactive={props.interactive}
-      theme={props.theme}
-      size={props.size}
-      disabled={props.disabled}
-      {...(props.color && { color: props.color })}
-    >
-      <TagContainer.Tag active={props.active}>
-        {props.addon === 'Circle' && (
-          <TagContainer.Tag.Circle>
-            <img src='https://picsum.photos/id/1025/28/28' />
-          </TagContainer.Tag.Circle>
-        )}
-        {props.addon === 'Icon' && (
-          <TagContainer.Tag.Addon>
-            <EditM />
-          </TagContainer.Tag.Addon>
-        )}
-        <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
-      </TagContainer.Tag>
-      {props.closeIcon && <TagContainer.Close />}
-    </TagContainer>
+    <Flex w='100%' py={8} alignItems='center' justifyContent='center' bg={props.invert ? 'black' : 'white'}>
+      <TagContainer
+        interactive={props.interactive}
+        theme={props.theme}
+        size={props.size}
+        disabled={props.disabled}
+        invert={props.invert}
+        {...(props.color && { color: props.color })}
+      >
+        <TagContainer.Tag active={props.active}>
+          {props.addon === 'Circle' && (
+            <TagContainer.Tag.Circle>
+              <img src='https://picsum.photos/id/1025/28/28' />
+            </TagContainer.Tag.Circle>
+          )}
+          {props.addon === 'Icon' && (
+            <TagContainer.Tag.Addon>
+              <EditM />
+            </TagContainer.Tag.Addon>
+          )}
+          <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
+        </TagContainer.Tag>
+        {props.closeIcon && <TagContainer.Close />}
+      </TagContainer>
+    </Flex>
   );
 }
 
@@ -86,6 +90,11 @@ const entry: PlaygroundEntry<TagJSXProps> = {
       type: 'boolean',
       value: false,
       displayName: 'Active',
+    },
+    invert: {
+      type: 'boolean',
+      value: false,
+      displayName: 'Invert',
     },
     disabled: {
       type: 'boolean',
