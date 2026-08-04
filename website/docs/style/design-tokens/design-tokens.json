@@ -3217,6 +3217,12 @@
     ]
   },
   {
+    "name": "--intergalactic-spacing-content-padding-xlarge-extended",
+    "value": "24px",
+    "description": "Extended extra large padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
     "value": "40px",
     "description": "2x large padding for content inside controls and surfaces.",
@@ -3260,6 +3266,18 @@
       "radio",
       "select"
     ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xlarge",
+    "value": "12px",
+    "description": "Extra large gap between content elements inside controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxlarge",
+    "value": "16px",
+    "description": "2x large gap between content elements inside controls.",
+    "components": []
   },
   {
     "name": "--intergalactic-addon-rounded",

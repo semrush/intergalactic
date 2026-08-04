@@ -2010,6 +2010,10 @@ export const theme: Theme = {
         value: `${SCALE_INDENT * 5}px`,
         description: 'Extra large padding for content inside controls and surfaces.',
       },
+      content_padding_xlarge_extended: {
+        value: `${SCALE_INDENT * 6}px`,
+        description: 'Extended extra large padding for content inside controls and surfaces.',
+      },
       content_padding_xxlarge: {
         value: `${SCALE_INDENT * 10}px`,
         description: '2x large padding for content inside controls and surfaces.',
@@ -2025,6 +2029,14 @@ export const theme: Theme = {
       content_gap_large: {
         value: `${SCALE_INDENT * 2}px`,
         description: 'Large gap between content elements inside controls.',
+      },
+      content_gap_xlarge: {
+        value: `${SCALE_INDENT * 3}px`,
+        description: 'Extra large gap between content elements inside controls.',
+      },
+      content_gap_xxlarge: {
+        value: `${SCALE_INDENT * 4}px`,
+        description: '2x large gap between content elements inside controls.',
       },
     },
     radii: {
@@ -2314,10 +2326,13 @@ export type SemanticTokens = {
     content_padding_medium: Value;
     content_padding_large: Value;
     content_padding_xlarge: Value;
+    content_padding_xlarge_extended: Value;
     content_padding_xxlarge: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
     content_gap_large: Value;
+    content_gap_xlarge: Value;
+    content_gap_xxlarge: Value;
   };
   radii: {
     'addon': Value;
