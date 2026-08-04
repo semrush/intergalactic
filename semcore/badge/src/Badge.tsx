@@ -3,7 +3,6 @@ import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import logger from '@semcore/core/lib/utils/logger';
 import React from 'react';
 
 import type { NSBadge } from './Badge.type';
@@ -18,23 +17,15 @@ class RootBadge extends Component<
   static style = style;
   static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)] as const;
 
-  componentDidMount() {
-    logger.warn(
-      !this.asProps.type,
-      `'type' will be required property in the next major release. Set it please.`,
-      this.asProps['data-ui-name'] || RootBadge.displayName,
-    );
-  }
-
   render() {
     const SBadge = Root;
-    const { styles, color, bg, resolveColor, type, children } = this.asProps;
-    const resolvedBg = bg ? resolveColor(bg) : this.resolveBg();
-    const resolvedColor = color ? resolveColor(color) : this.resolveTextColor();
+    const { styles, type } = this.asProps;
+    const resolvedBg = this.resolveBg();
+    const resolvedColor = this.resolveTextColor();
 
     return sstyled(styles)(
       <SBadge render={Box} tag='span' use:color={resolvedColor} use:bg={resolvedBg}>
-        {type !== undefined ? this.typedChildren(type) : children}
+        {this.typedChildren(type)}
       </SBadge>,
     );
   }
@@ -48,8 +39,7 @@ class RootBadge extends Component<
   }
 
   private resolveTextColor(): string | undefined {
-    // todo Brauer Ilia - removed default 'soon' type in 19th major
-    const { type = 'soon', resolveColor, light, invert, inverted } = this.asProps;
+    const { type, resolveColor, light, invert, inverted } = this.asProps;
 
     if (light) {
       switch (type) {
@@ -84,8 +74,7 @@ class RootBadge extends Component<
   }
 
   private resolveBg(): string {
-    // todo Brauer Ilia - removed default 'soon' type in 19th major
-    const { type = 'soon', inverted, invert, resolveColor, light } = this.asProps;
+    const { type, inverted, invert, resolveColor, light } = this.asProps;
 
     if (inverted ?? invert) {
       return resolveColor('--intergalactic-badge-bg-invert');

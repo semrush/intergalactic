@@ -12,29 +12,7 @@ declare namespace NSBadge {
     mx?: BoxProps['mx'];
     my?: BoxProps['my'];
   };
-  type Props = NSBadge.Margins & {
-    /**
-     * Type of badge.
-     */
-    type?: NSBadge.Type;
-
-    /**
-     * @deprecated. Use just type with predefined texts. You should not use badge with custom text inside.
-     */
-    children?: any;
-
-    /** Fill color
-     * @deprecated. Use just type property.
-     * @default gray-400
-     * */
-    bg?: 'mist' | 'cyan' | 'red' | 'orange' | 'green' | 'white' | string;
-
-    /** Text color
-     * @deprecated. Use just type property.
-     * @default white
-     * */
-    color?: 'white' | 'gray20' | string;
-  } & ({
+  type Props = NSBadge.Margins & ({
     /**
      * Flag to render inverted badge.
      */
@@ -55,7 +33,12 @@ declare namespace NSBadge {
      */
     inverted?: never | false;
     invert?: never | false;
-  });
+  }) & {
+    /**
+     * Type of badge.
+     */
+    type: NSBadge.Type;
+  };
 
   type Component = Intergalactic.Component<'span', Props>;
 }
