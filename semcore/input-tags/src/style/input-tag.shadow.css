@@ -63,6 +63,10 @@ STagContainer[size='l'] {
   margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
 }
 
+STagContainer[size='xl'] {
+  margin: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-05x, 2px) 0;
+}
+
 STagContainer[editable] {
   cursor: pointer;
 }
