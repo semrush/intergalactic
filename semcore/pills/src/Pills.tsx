@@ -71,6 +71,7 @@ class RootPills extends Component<
   }
 
   componentDidUpdate() {
+    this.updateSelectedIndexes();
     this.updateSegmentIndicator();
   }
 
@@ -82,14 +83,32 @@ class RootPills extends Component<
     this.ro?.disconnect();
   }
 
-  updateSegmentIndicator() {
+  updateSelectedIndexes() {
     if (this.currentSelectedIndex === null) return;
+    if (this.currentSelectedIndex <= this.pills.length - 1) return;
+
+    this.currentSelectedIndex = null;
+    this.lastSelectedIndex = null;
+  }
+
+  updateSegmentIndicator() {
+    const indicator = this.segmentIndicatorRef?.current;
+
+    if (!indicator) return;
+
+    if (this.currentSelectedIndex === null) {
+      indicator.style.removeProperty('--global-speed');
+      indicator.style.removeProperty('--global-left');
+      indicator.style.removeProperty('--global-width');
+      indicator.style.removeProperty('--global-height');
+
+      return;
+    };
 
     const root = this.rootRef?.current;
     const pill = this.pills[this.currentSelectedIndex];
-    const indicator = this.segmentIndicatorRef?.current;
 
-    if (!pill || !root || !indicator) return;
+    if (!pill || !root) return;
 
     const pillRect = pill.getBoundingClientRect();
     const rootRect = root.getBoundingClientRect();
@@ -147,7 +166,10 @@ class RootPills extends Component<
           this.ro?.unobserve(prevPill);
         }
 
-        if (node === null) return;
+        if (node === null) {
+          this.pills = this.pills.filter((_, pillIndex) => pillIndex !== index);
+          return;
+        };
 
         this.pills[index] = node;
 
