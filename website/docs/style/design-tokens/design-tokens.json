@@ -2009,19 +2009,25 @@
     "name": "--intergalactic-control-presets-bg",
     "value": "oklch(1 0 0)",
     "description": "Background of the Presets items.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-border-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the selected Preset item.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-border-hover",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the hovered Preset item.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg",
@@ -3022,6 +3028,7 @@
       "link",
       "pills",
       "radio",
+      "radio-cards",
       "slider",
       "switch",
       "tab-line",
@@ -3050,6 +3057,7 @@
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow of the Switch toggle.",
     "components": [
+      "radio-cards",
       "switch"
     ]
   },
@@ -3219,7 +3227,8 @@
     "components": [
       "base-trigger",
       "dropdown-menu",
-      "inline-input"
+      "inline-input",
+      "radio-cards"
     ]
   },
   {
@@ -3234,6 +3243,7 @@
       "dropdown-menu",
       "input",
       "radio",
+      "radio-cards",
       "select"
     ]
   },
@@ -3246,6 +3256,7 @@
       "checkbox",
       "dropdown",
       "radio",
+      "radio-cards",
       "select"
     ]
   },
@@ -3329,7 +3340,9 @@
     "name": "--intergalactic-pills-rounded",
     "value": "6px",
     "description": "Use for rounding Pills.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-popper-rounded",

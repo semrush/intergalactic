@@ -5,11 +5,16 @@ import type { NSText } from '@semcore/typography';
 declare namespace NSRadioCards {
   type Value = string;
   type Props = NSFlex.Props & Intergalactic.RequireAtLeastOne<{
+    /** Accessible name for the radio group. */
     'aria-label'?: string;
+    /** References an element that labels the radio group. */
     'aria-labelledby'?: string;
   }> & {
+    /** Currently selected radio card value. */
     value?: NSRadioCards.Value;
+    /** Called when the selected radio card changes. */
     onChange?: (value: NSRadioCards.Value, event?: React.SyntheticEvent<HTMLButtonElement>) => void;
+    /** Disables the entire radio group and all radio cards. */
     disabled?: boolean;
   };
   type DefaultProps = {
@@ -21,10 +26,15 @@ declare namespace NSRadioCards {
 
   namespace Item {
     type Props = NSFlex.Props & {
+      /** Disables radio card. */
       disabled?: boolean;
+      /** Optional icon displayed before the content. */
       iconAddon?: React.ReactNode;
+      /** Unique value associated with the radio card. */
       value: NSRadioCards.Value;
+      /** Additional text displayed in the header. */
       textAddon?: string;
+      /** Description displayed below the header. */
       description?: string;
     };
 

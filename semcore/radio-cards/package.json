@@ -1,7 +1,7 @@
 {
   "name": "@semcore/radio-cards",
-  "description": "Semrush Radio Cards Component",
-  "version": "17.2.1",
+  "description": "Semrush RadioCards Component",
+  "version": "18.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

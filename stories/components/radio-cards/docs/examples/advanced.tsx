@@ -28,13 +28,13 @@ const Demo = () => {
             <Spin />
           </RadioCards.Item.Header.LeftAddon>
           <RadioCards.Item.Header.Text>
-            You can pass anything being in advanced mode!
+            Configuration...🤤
           </RadioCards.Item.Header.Text>
           <RadioCards.Item.Header.RightAddon>
             <TagContainer interactive={false}>
               <TagContainer.Tag active={false}>
                 <Tag.Text>
-                  Even Tags!
+                  Tags!
                 </Tag.Text>
               </TagContainer.Tag>
             </TagContainer>
