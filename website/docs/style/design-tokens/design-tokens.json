@@ -2949,7 +2949,7 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.48 0.004 145.9)",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
@@ -3181,8 +3181,7 @@
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
-      "base-components"
-    ]
+      "base-components",
       "dropdown",
       "dropdown-menu"
     ]
@@ -3198,7 +3197,7 @@
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
-      "base-components"
+      "base-components",
       "dropdown",
       "modal"
     ]
@@ -3213,10 +3212,9 @@
       "card",
       "dropdown",
       "input",
+      "modal",
       "time-picker",
       "tooltip"
-      "modal",
-      "time-picker"
     ]
   },
   {
