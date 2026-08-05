@@ -214,7 +214,7 @@ function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPi
   const SPill = Root;
   const SPillContainer = Box;
   const SPillSeparator = Box;
-  const { Children, styles, addonLeft: AddonLeft, addonRight: AddonRight, selected, disabled, behavior, size } = props;
+  const { Children, styles, addonLeft, addonRight, selected, disabled, behavior, size } = props;
 
   const roleAreaProps = {
     'role': behavior === 'auto' ? 'radio' : 'tab',
@@ -232,9 +232,9 @@ function Pill(props: Intergalactic.InternalTypings.InferChildComponentProps<NSPi
         aria-disabled={disabled}
         {...roleAreaProps}
       >
-        {AddonLeft ? <Pills.Item.Addon><AddonLeft /></Pills.Item.Addon> : null}
+        {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
-        {AddonRight ? <Pills.Item.Addon><AddonRight /></Pills.Item.Addon> : null}
+        {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}
       </SPill>
       <SPillSeparator
         // @ts-ignore
