@@ -32,7 +32,7 @@ export const EnteringAndEditingTags: StoryObj<typeof enteringAndEditingTagsProps
     },
     state: {
       control: { type: 'select' },
-      options: ['normal', 'invalid', 'valid'],
+      options: ['normal', 'invalid', 'additional'],
     },
     editable: {
       control: { type: 'boolean' },
@@ -74,7 +74,7 @@ export const TagsWithAddons: StoryObj<typeof defaultPropsEmail> = {
     },
     theme: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'valid'],
+      options: ['primary', 'secondary', 'additional'],
     },
     color: {
       control: { type: 'select' },

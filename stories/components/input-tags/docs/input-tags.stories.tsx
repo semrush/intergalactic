@@ -27,7 +27,7 @@ export const WrappingEmailInTag: StoryObj<typeof defaultPropsEmail> = {
     },
     theme: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'valid'],
+      options: ['primary', 'secondary', 'additional'],
     },
   },
   args: defaultPropsEmail,
