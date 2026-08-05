@@ -1873,7 +1873,7 @@ export const theme: Theme = {
         description: 'Warning Tooltip background.',
       },
       tooltip_border_invert: {
-        value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
+        value: neutral.at(L_INV_BORDER_SECONDARY),
         description: 'Border of the Tooltip with dark theme.',
       },
       tooltip_text: {
