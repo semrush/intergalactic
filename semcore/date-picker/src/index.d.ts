@@ -2,8 +2,7 @@ import type { NSFlex, NSBox } from '@semcore/base-components';
 import type Popper from '@semcore/base-components';
 import type { BaseTriggerProps } from '@semcore/base-trigger';
 import type BaseTrigger from '@semcore/base-trigger';
-import type { ButtonProps } from '@semcore/button';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type Checkbox from '@semcore/checkbox';
 import type { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -222,7 +221,7 @@ WithI18nEnhanceProps & {
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
-  periods?: (ButtonProps & { value: Date[] })[];
+  periods?: (NSButton.Props & { value: Date[] })[];
 };
 
 export type DateRangePickerPeriodProps = NSBox.Props & {
@@ -247,7 +246,7 @@ export type DateRangePickerPeriodProps = NSBox.Props & {
    * [{value: [new Date(), new Date()], children: "Today"}]
    * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
    * */
-  periods?: (ButtonProps & { value: Date[] })[];
+  periods?: (NSButton.Props & { value: Date[] })[];
 };
 
 export type DatePickerContext = {
@@ -353,8 +352,8 @@ declare const DatePicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DatePickerProps, DatePickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   Today: NSBox.Component;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
@@ -387,12 +386,12 @@ declare const DateRangePicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   Period: Intergalactic.Component<'div', DateRangePickerPeriodProps>;
-  Apply: typeof Button;
-  Reset: typeof Button;
+  Apply: NSButton.Component;
+  Reset: NSButton.Component;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
@@ -422,8 +421,8 @@ declare const MonthPicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
@@ -455,12 +454,12 @@ declare const MonthRangePicker: Intergalactic.Component<
   Popper: typeof Popper.Popper;
   Header: NSBox.Component;
   Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
   Period: Intergalactic.Component<'div', DateRangePickerPeriodProps>;
-  Apply: typeof Button;
-  Reset: typeof Button;
+  Apply: NSButton.Component;
+  Reset: NSButton.Component;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
@@ -573,7 +572,7 @@ WithI18nEnhanceProps & {
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
-  periods?: (ButtonProps & { value: Date[] })[];
+  periods?: (NSButton.Props & { value: Date[] })[];
 };
 
 export type DateRangeComparatorContext = {
@@ -607,11 +606,11 @@ declare const DateRangeComparator: Intergalactic.Component<
 > & {
   Popper: typeof Popper.Popper;
   Header: NSFlex.Component;
-  Prev: typeof Button;
-  Next: typeof Button;
+  Prev: NSButton.Component;
+  Next: NSButton.Component;
   Calendar: typeof Calendar;
-  Apply: typeof Button;
-  Reset: typeof Button;
+  Apply: NSButton.Component;
+  Reset: NSButton.Component;
 
   CalendarHeader: NSBox.Component;
   Title: NSBox.Component;

@@ -1,13 +1,13 @@
 import VideoListM from '@semcore/icon/VideoList/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import type { ButtonProps } from '@semcore/ui/button';
+import type { NSButton } from '@semcore/ui/button';
 import Tooltip, { Hint } from '@semcore/ui/tooltip';
 import React from 'react';
 
 import { themeFor } from '../themeUtils';
 
-type ExampleProps = Exclude<ButtonProps, 'theme' | 'use'> & { style?: any; theme: string };
+type ExampleProps = Exclude<NSButton.Props, 'theme' | 'use'> & { style?: any; theme: string };
 const Demo = (props: ExampleProps) => {
   const theme = themeFor(props);
 
