@@ -285,7 +285,7 @@ SSpinContainer {
   &[headerHeight][containerHeight] {
     position: sticky;
     top: 0;
-    min-height: min(100vh, calc(var(--containerHeight) - var(--headerHeight)));
+    height: min(100vh, calc(var(--containerHeight) - var(--headerHeight)));
   }
 }
 
