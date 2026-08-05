@@ -1508,7 +1508,7 @@
   },
   {
     "name": "--intergalactic-dot-bg",
-    "value": "oklch(0.728 0.188 51.8)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Background color of the Dot.",
     "components": [
       "dot"
