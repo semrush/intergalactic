@@ -5,7 +5,7 @@ SDot {
   font-size: var(--intergalactic-fs-50, 10px);
   line-height: normal;
   background-color: var(--intergalactic-dot-bg, oklch(0.728 0.188 51.8));
-  color: var(--intergalactic-dot-text, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-dot-text, oklch(0.1 0.03 137 / 0.899));
   box-sizing: border-box;
   z-index: 1;
   border-radius: 100%;
