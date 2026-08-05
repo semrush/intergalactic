@@ -17,15 +17,18 @@ type AdditionalJSXProps = {
 export type TagJSXProps = JSXProps<NSTag.Props> & AdditionalJSXProps;
 
 function getJSX(props: TagJSXProps) {
+  const tagProps = props.color
+    ? { theme: props.theme, color: props.color }
+    : { theme: 'primary' } as const;
+
   return (
     <Flex w='100%' py={8} alignItems='center' justifyContent='center' bg={props.invert ? 'black' : 'white'}>
       <TagContainer
         interactive={props.interactive}
-        theme={props.theme}
         size={props.size}
         disabled={props.disabled}
         invert={props.invert}
-        {...(props.color && { color: props.color })}
+        {...tagProps}
       >
         <TagContainer.Tag active={props.active}>
           {props.addon === 'Circle' && (
