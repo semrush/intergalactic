@@ -6,7 +6,7 @@ SRadioItem {
   flex-direction: column;
   flex: 1 0 0;
   gap: var(--intergalactic-spacing-content-gap-small, 4px);
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-5x, 20px);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
   align-items: flex-start;
 
   border-radius: var(--intergalactic-pills-rounded, 6px);
