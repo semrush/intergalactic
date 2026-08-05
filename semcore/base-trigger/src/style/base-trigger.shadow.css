@@ -18,7 +18,7 @@ SBaseTrigger {
   font-family: inherit;
   cursor: pointer;
 
-  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-select-trigger-normal */
+  background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
 
   font-weight: var(--intergalactic-regular, 400);
   border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
