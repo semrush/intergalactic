@@ -118,7 +118,7 @@ function Item(
                 {value && <RadioCards.Item.Header.Text>{value}</RadioCards.Item.Header.Text>}
                 {textAddon && (
                   <RadioCards.Item.Header.RightAddon>
-                    <SemcoreText size={300} use='secondary'>
+                    <SemcoreText size={300}>
                       {textAddon}
                     </SemcoreText>
                   </RadioCards.Item.Header.RightAddon>
@@ -138,16 +138,22 @@ function Header(props: Intergalactic.InternalTypings.InferComponentProps<NSRadio
   return sstyled(styles)(<SRadioItemHeader render={Flex} />);
 }
 
-function LeftAddon() {
+function LeftAddon(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Item.Header.LeftAddon.Component>,
+) {
   const SItemHeaderAddon = Root;
+  const { styles } = props;
 
-  return <SItemHeaderAddon render={Flex} />;
+  return sstyled(styles)(<SItemHeaderAddon render={Flex} />);
 }
 
-function RightAddon() {
+function RightAddon(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Item.Header.RightAddon.Component>,
+) {
   const SItemHeaderAddon = Root;
+  const { styles } = props;
 
-  return <SItemHeaderAddon render={Flex} />;
+  return sstyled(styles)(<SItemHeaderAddon render={Flex} />);
 }
 
 function Text() {

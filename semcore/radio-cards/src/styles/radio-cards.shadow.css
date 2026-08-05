@@ -33,3 +33,7 @@ SRadioItemHeader {
   align-items: center;
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
 }
+
+SItemHeaderAddon {
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+}
