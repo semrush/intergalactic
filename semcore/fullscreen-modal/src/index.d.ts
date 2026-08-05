@@ -1,8 +1,8 @@
 import type { NSBox, NSFlex } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSModal } from '@semcore/modal';
-import type { Text } from '@semcore/typography';
+import type { NSText } from '@semcore/typography';
 
 export type FullscreenModalProps = NSModal.Props & {
   /** Function that is invoked when hiding a component */
@@ -31,12 +31,12 @@ declare const FullscreenModal: Intergalactic.Component<
 > & {
   Header: Intergalactic.Component<'div', FullscreenModalHeaderProps>;
   Footer: NSFlex.Component;
-  Close: typeof Button;
+  Close: NSButton.Component;
   Back: NSBox.Component;
   Body: NSBox.Component;
   Section: NSBox.Component;
-  Title: typeof Text;
-  Description: typeof Text;
+  Title: NSText.Component;
+  Description: NSText.Component;
 };
 
 export default FullscreenModal;
