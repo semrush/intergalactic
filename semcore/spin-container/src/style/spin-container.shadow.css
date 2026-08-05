@@ -22,7 +22,7 @@ SOverlay {
   left: 0;
 }
 
-SOverlay[theme='invert'] {
+SOverlay[theme='invert'], SOverlay[invert] {
   background-color: var(--intergalactic-overlay-secondary, oklch(0.118 0.023 170.1 / 0.262));
 }
 

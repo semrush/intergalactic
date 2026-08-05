@@ -21,26 +21,26 @@ class Demo extends React.PureComponent {
         </Flex>
 
         <Flex>
-          <SpinContainer background='blanchedalmond' loading theme='dark'>
+          <SpinContainer background='blanchedalmond' loading>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
 
           </SpinContainer>
-          <SpinContainer background='#3eeb4c' loading theme='dark'>
+          <SpinContainer background='#3eeb4c' loading>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
             <SpinContainer.Overlay>Dark theme overlay</SpinContainer.Overlay>
           </SpinContainer>
-          <SpinContainer background='dark-violet' loading theme='dark'>
+          <SpinContainer background='dark-violet' loading>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
           </SpinContainer>
         </Flex>
         <Flex>
-          <SpinContainer background='blanchedalmond' loading theme='invert'>
+          <SpinContainer background='blanchedalmond' loading invert>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
           </SpinContainer>
-          <SpinContainer background='#3eeb4c' loading theme='invert'>
+          <SpinContainer background='#3eeb4c' loading invert>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
           </SpinContainer>
-          <SpinContainer background='blue' loading theme='invert'>
+          <SpinContainer background='blue' loading invert>
             <SpinContainer.Overlay>Invert theme overlay</SpinContainer.Overlay>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
           </SpinContainer>

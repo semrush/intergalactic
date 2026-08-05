@@ -10,6 +10,7 @@ declare namespace NSSpin {
     size?: NSSpin.Size;
     /** Spinner theme. There are several default themes or you can use your own color
      * @default dark
+     * @deprecated. Use invert property
      **/
     theme?: 'dark' | 'invert' | string;
     /** Whether the spinner should be in the center of the parent.
@@ -19,10 +20,14 @@ declare namespace NSSpin {
     centered?: boolean;
     /** Specifies the locale for i18n support */
     locale?: string;
+    /**
+     * Flag for render the Spin in the dark theme.
+     */
+    invert?: boolean;
   };
   type DefaultProps = {
     size: 'm';
-    theme: 'dark';
+    theme: 'dark' | undefined;
   };
 
   type Component = Intergalactic.Component<'div', Props>;

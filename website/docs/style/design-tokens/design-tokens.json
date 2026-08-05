@@ -466,7 +466,6 @@
       "pills",
       "side-panel",
       "slider",
-      "spin",
       "tab-line",
       "tab-panel",
       "textarea",
@@ -479,8 +478,7 @@
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
-      "divider",
-      "spin"
+      "divider"
     ]
   },
   {
@@ -2217,13 +2215,17 @@
     "name": "--intergalactic-spin-bg",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-spin-bg-invert",
     "value": "oklch(0.995 0.008 147.4 / 0.391)",
     "description": "Inverted track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border",

@@ -12,7 +12,6 @@ class Demo extends React.PureComponent {
           background={undefined}
           p='3px'
           size='xxl'
-          theme='dark'
         >
           <Flex
             direction='column'

@@ -16,6 +16,7 @@ declare namespace NSSkeleton {
     /**
      * Skeleton theme
      * @default invert
+     * @deprecated. Use invert flag instead.
      */
     theme?: 'dark' | 'invert';
     /** Specifies the locale for i18n support */
@@ -25,6 +26,10 @@ declare namespace NSSkeleton {
      * @default false
      */
     observeParentSize?: boolean;
+    /**
+     * Flag for render the Skeleton in the dark theme.
+     */
+    invert?: boolean;
   };
   type Ctx = {
     gradientUrl: string;
