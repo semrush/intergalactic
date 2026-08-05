@@ -116,11 +116,11 @@ SPillSeparator {
   align-self: center;
 
   width: 1px;
-  height: var(--intergalactic-spacing-4x, 16px);
+  height: calc(100% - var(--intergalactic-spacing-content-padding-xsmall-extended, 6px) * 2);
   background-color: var(--intergalactic-control-pills-border, oklch(0.137 0.026 175.7 / 0.161));
-
+  
   &[size='l'] {
-    height: var(--intergalactic-spacing-6x, 24px);
+    height: calc(100% - var(--intergalactic-spacing-content-padding-small, 8px) * 2);
   }
 }
 
