@@ -1516,7 +1516,7 @@
   },
   {
     "name": "--intergalactic-dot-text",
-    "value": "oklch(0.999 0.001 180 / 0.949)",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the Dot.",
     "components": []
   },
@@ -3159,6 +3159,12 @@
     ]
   },
   {
+    "name": "--intergalactic-spacing-content-padding-xxsmall",
+    "value": "2px",
+    "description": "Tiny padding for content inside controls and surfaces.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
@@ -3166,6 +3172,12 @@
       "dropdown",
       "dropdown-menu"
     ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-xsmall-extended",
+    "value": "6px",
+    "description": "Extended extra small padding for content inside controls and surfaces.",
+    "components": []
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
@@ -3203,6 +3215,12 @@
     "components": [
       "card"
     ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-padding-xlarge-extended",
+    "value": "24px",
+    "description": "Extended extra large padding for content inside controls and surfaces.",
+    "components": []
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3248,6 +3266,18 @@
       "radio",
       "select"
     ]
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xlarge",
+    "value": "12px",
+    "description": "Extra large gap between content elements inside controls.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxlarge",
+    "value": "16px",
+    "description": "2x large gap between content elements inside controls.",
+    "components": []
   },
   {
     "name": "--intergalactic-addon-rounded",

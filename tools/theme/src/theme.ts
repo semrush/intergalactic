@@ -1092,7 +1092,7 @@ export const theme: Theme = {
         description: 'Background color of the Dot.',
       },
       dot_text: {
-        value: '{semanticTokens.colors.text_primary_invert}',
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
         description: 'Text color of the Dot.',
       },
       dropdown_menu_item_DEFAULT: {
@@ -1982,9 +1982,17 @@ export const theme: Theme = {
       },
     },
     spacing: {
+      content_padding_xxsmall: {
+        value: `${SCALE_INDENT / 2}px`,
+        description: 'Tiny padding for content inside controls and surfaces.',
+      },
       content_padding_xsmall: {
         value: `${SCALE_INDENT}px`,
         description: 'Extra small padding for content inside controls and surfaces.',
+      },
+      content_padding_xsmall_extended: {
+        value: `${SCALE_INDENT * 1.5}px`,
+        description: 'Extended extra small padding for content inside controls and surfaces.',
       },
       content_padding_small: {
         value: `${SCALE_INDENT * 2}px`,
@@ -2002,6 +2010,10 @@ export const theme: Theme = {
         value: `${SCALE_INDENT * 5}px`,
         description: 'Extra large padding for content inside controls and surfaces.',
       },
+      content_padding_xlarge_extended: {
+        value: `${SCALE_INDENT * 6}px`,
+        description: 'Extended extra large padding for content inside controls and surfaces.',
+      },
       content_padding_xxlarge: {
         value: `${SCALE_INDENT * 10}px`,
         description: '2x large padding for content inside controls and surfaces.',
@@ -2017,6 +2029,14 @@ export const theme: Theme = {
       content_gap_large: {
         value: `${SCALE_INDENT * 2}px`,
         description: 'Large gap between content elements inside controls.',
+      },
+      content_gap_xlarge: {
+        value: `${SCALE_INDENT * 3}px`,
+        description: 'Extra large gap between content elements inside controls.',
+      },
+      content_gap_xxlarge: {
+        value: `${SCALE_INDENT * 4}px`,
+        description: '2x large gap between content elements inside controls.',
       },
     },
     radii: {
@@ -2232,12 +2252,6 @@ export const theme: Theme = {
         hover: { active: { value: '{semanticTokens.colors.control_slider_rating_icon_hover_active}' } },
       },
     },
-    dot: {
-      notification: {
-        bg: { value: '{semanticTokens.colors.dot_bg}' },
-        text: { value: '{semanticTokens.colors.dot_text}' },
-      },
-    },
     radio: {
       border: { value: '{semanticTokens.colors.control_radio_border}' },
       bg: {
@@ -2305,15 +2319,20 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
+    content_padding_xxsmall: Value;
     content_padding_xsmall: Value;
+    content_padding_xsmall_extended: Value;
     content_padding_small: Value;
     content_padding_medium: Value;
     content_padding_large: Value;
     content_padding_xlarge: Value;
+    content_padding_xlarge_extended: Value;
     content_padding_xxlarge: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
     content_gap_large: Value;
+    content_gap_xlarge: Value;
+    content_gap_xxlarge: Value;
   };
   radii: {
     'addon': Value;
@@ -3386,12 +3405,6 @@ type Deprecates = {
     rating: {
       normal: Value;
       hover: { active: Value };
-    };
-  };
-  dot: {
-    notification: {
-      bg: Value;
-      text: Value;
     };
   };
   radio: {
