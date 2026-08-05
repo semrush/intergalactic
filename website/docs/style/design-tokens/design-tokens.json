@@ -3,103 +3,137 @@
     "name": "--intergalactic-badge-accent-admin",
     "value": "oklch(0.58 0.168 278.2)",
     "description": "Background color of the admin Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-alpha",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Background color of the alpha Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-beta",
     "value": "oklch(0.74 0.17 72)",
     "description": "Background color of the beta Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-new",
     "value": "oklch(0.74 0.17 170)",
     "description": "Background color of the new Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-soon",
     "value": "oklch(0.64 0.003 157.8)",
     "description": "Background color of the soon Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-admin",
     "value": "oklch(0.898 0.054 268.3)",
     "description": "Light background color of the admin Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-alpha",
     "value": "oklch(0.899 0.069 12.9)",
     "description": "Light background color of the alpha Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-beta",
     "value": "oklch(0.9 0.13 92)",
     "description": "Light background color of the beta Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-new",
     "value": "oklch(0.9 0.11 175)",
     "description": "Light background color of the new Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-soon",
     "value": "oklch(0.9 0.002 177)",
     "description": "Light background color of the soon Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-admin-text",
     "value": "oklch(0.58 0.168 278.2)",
     "description": "Text color for the admin Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-alpha-text",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Text color for the alpha Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-beta-text",
     "value": "oklch(0.64 0.16 64)",
     "description": "Text color for the beta Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-new-text",
     "value": "oklch(0.64 0.161 170)",
     "description": "Text color for the new Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-soon-text",
     "value": "oklch(0.46 0.004 144.4)",
     "description": "Text color for the soon Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-bg-invert",
     "value": "oklch(0.983 0.03 140 / 0.183)",
     "description": "Background color of the inverted Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-bg-unavailable",
     "value": "oklch(0.97 0.001 180)",
     "description": "Background color of the unavailable Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-text-primary-invert",
@@ -114,7 +148,9 @@
     "name": "--intergalactic-badge-text-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Secondary text color for Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-bg-highlight-focus",

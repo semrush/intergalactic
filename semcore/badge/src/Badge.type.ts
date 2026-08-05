@@ -12,32 +12,20 @@ declare namespace NSBadge {
     mx?: BoxProps['mx'];
     my?: BoxProps['my'];
   };
-  type Props = NSBadge.Margins & ({
-    /**
-     * Flag to render inverted badge.
-     */
-    invert?: true;
-    /**
-     * Flag to render inverted badge.
-     * @deprecated use invert instead.
-     */
-    inverted?: true;
-    light?: never | false;
-  } | {
-    /**
-     * Flag to render light badge.
-     */
-    light?: true;
-    /**
-     * @deprecated use invert instead.
-     */
-    inverted?: never | false;
-    invert?: never | false;
-  }) & {
+  type Theme = 'default' | 'light' | 'invert';
+  type Props = NSBadge.Margins & {
     /**
      * Type of badge.
      */
     type: NSBadge.Type;
+    /**
+     * Theme of badge.
+     */
+    theme?: Theme;
+  };
+
+  type DefaultProps = {
+    theme: 'default';
   };
 
   type Component = Intergalactic.Component<'span', Props>;

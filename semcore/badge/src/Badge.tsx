@@ -11,20 +11,25 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootBadge extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSBadge.Component>,
-  typeof RootBadge.enhance
+  typeof RootBadge.enhance,
+  never,
+  {},
+  {},
+  NSBadge.DefaultProps
 > {
   static displayName = 'Badge';
   static style = style;
   static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)] as const;
+  static defaultProps: NSBadge.DefaultProps = {
+    theme: 'default',
+  };
 
   render() {
     const SBadge = Root;
     const { styles, type } = this.asProps;
-    const resolvedBg = this.resolveBg();
-    const resolvedColor = this.resolveTextColor();
 
     return sstyled(styles)(
-      <SBadge render={Box} tag='span' use:color={resolvedColor} use:bg={resolvedBg}>
+      <SBadge render={Box} tag='span'>
         {this.typedChildren(type)}
       </SBadge>,
     );
@@ -36,74 +41,6 @@ class RootBadge extends Component<
     const badgeName = type[0].toUpperCase() + type.slice(1);
 
     return getI18nText(`Badge.${badgeName}`);
-  }
-
-  private resolveTextColor(): string | undefined {
-    const { type, resolveColor, light, invert, inverted } = this.asProps;
-
-    if (light) {
-      switch (type) {
-        case 'admin': {
-          return resolveColor('--intergalactic-badge-light-admin-text');
-        }
-        case 'alpha': {
-          return resolveColor('--intergalactic-badge-light-alpha-text');
-        }
-        case 'beta': {
-          return resolveColor('--intergalactic-badge-light-beta-text');
-        }
-        case 'new': {
-          return resolveColor('--intergalactic-badge-light-new-text');
-        }
-        case 'soon':
-        case 'unavailable': {
-          return resolveColor('--intergalactic-badge-light-soon-text');
-        }
-        default: {
-          const t: never = type;
-          throw new Error(`Type can't be "${t}"`);
-        }
-      }
-    }
-
-    if (type === 'unavailable' && !(invert ?? inverted)) {
-      return resolveColor('--intergalactic-badge-light-soon-text');
-    }
-
-    return undefined;
-  }
-
-  private resolveBg(): string {
-    const { type, inverted, invert, resolveColor, light } = this.asProps;
-
-    if (inverted ?? invert) {
-      return resolveColor('--intergalactic-badge-bg-invert');
-    }
-
-    switch (type) {
-      case 'admin': {
-        return !light ? resolveColor('--intergalactic-badge-accent-admin') : resolveColor('--intergalactic-badge-light-admin');
-      }
-      case 'alpha': {
-        return !light ? resolveColor('--intergalactic-badge-accent-alpha') : resolveColor('--intergalactic-badge-light-alpha');
-      }
-      case 'beta': {
-        return !light ? resolveColor('--intergalactic-badge-accent-beta') : resolveColor('--intergalactic-badge-light-beta');
-      }
-      case 'new': {
-        return !light ? resolveColor('--intergalactic-badge-accent-new') : resolveColor('--intergalactic-badge-light-new');
-      }
-      case 'soon': {
-        return !light ? resolveColor('--intergalactic-badge-accent-soon') : resolveColor('--intergalactic-badge-light-soon');
-      }
-      case 'unavailable': {
-        return resolveColor('--intergalactic-badge-bg-unavailable');
-      }
-      default: {
-        const t: never = type;
-        throw new Error(`Type can't be "${t}"`);
-      }
-    }
   }
 }
 
