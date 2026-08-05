@@ -1456,6 +1456,9 @@ importers:
       '@semcore/icon':
         specifier: workspace:*
         version: link:../icon
+      '@semcore/illustration':
+        specifier: workspace:*
+        version: link:../illustration
       '@semcore/testing-utils':
         specifier: workspace:*
         version: link:../../tools/testing-utils

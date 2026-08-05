@@ -3137,7 +3137,6 @@
       "color-picker",
       "input",
       "input-tags",
-      "notice",
       "pills",
       "tab-line",
       "time-picker"
@@ -3164,7 +3163,8 @@
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
       "dropdown",
-      "dropdown-menu"
+      "dropdown-menu",
+      "notice"
     ]
   },
   {
@@ -3173,7 +3173,8 @@
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
       "dropdown",
-      "modal"
+      "modal",
+      "notice"
     ]
   },
   {
@@ -3194,14 +3195,17 @@
     "name": "--intergalactic-spacing-content-padding-large",
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xlarge",
     "value": "20px",
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
-      "card"
+      "card",
+      "notice"
     ]
   },
   {
@@ -3245,6 +3249,7 @@
       "button",
       "checkbox",
       "dropdown",
+      "notice",
       "radio",
       "select"
     ]

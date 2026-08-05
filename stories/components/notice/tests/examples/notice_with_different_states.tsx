@@ -20,15 +20,12 @@ const NoticeSmokeDemo = () => {
       </Notice>
 
       {/* 2. Full Featured Notice */}
-      <Notice theme='success' aria-label='Success Notice'>
-        <Notice.Label>
-          <ThumbUpM />
-        </Notice.Label>
+      <Notice theme='success' aria-label='Success Notice' icon={<ThumbUpM />}>
         <Notice.Content>
           <Notice.Title>Success!</Notice.Title>
           <Notice.Text>Everything worked just fine.</Notice.Text>
           <Notice.Actions>
-            <Button use='primary' theme='success' mr={2}>Okay</Button>
+            <Button use='primary' theme='success'>Okay</Button>
             <Button>Cancel</Button>
           </Notice.Actions>
         </Notice.Content>
@@ -44,10 +41,7 @@ const NoticeSmokeDemo = () => {
       </Notice>
 
       {/* 4. Icon + Text only */}
-      <Notice theme='danger'>
-        <Notice.Label>
-          <AlertM />
-        </Notice.Label>
+      <Notice theme='danger' icon={<AlertM />}>
         <Notice.Content>
           <Notice.Text>Something went wrong.</Notice.Text>
         </Notice.Content>

@@ -1,10 +1,12 @@
+import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import { createComponent, Component, Root } from '@semcore/core';
+import { sstyled, createComponent, Component, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
 
 import Notice from './Notice';
 import type { NSNoticeSmart } from './NoticeSmart.type';
+import style from './style/notice.shadow.css';
 
 class NoticeSmart extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSNoticeSmart.Component>,
@@ -15,17 +17,21 @@ class NoticeSmart extends Component<
   NSNoticeSmart.DefaultProps
 > {
   static displayName = 'NoticeSmart';
-
+  static style = style;
   static defaultProps = {
     theme: 'info',
   } as const;
 
   render() {
     const SNoticeSmart = Root;
-    const { label, title, actions, closable, onClose, text } = this.asProps;
+    const SIcon = Box;
+    const SIllustration = Box;
+    const { label, title, actions, closable, onClose, text, icon, illustration, styles, theme } = this.asProps;
 
-    return (
+    return sstyled(styles)(
       <SNoticeSmart render={Notice} __excludeProps={['title']}>
+        {icon !== undefined && (<SIcon theme={theme}>{icon}</SIcon>)}
+        {illustration !== undefined && (<SIllustration>{illustration}</SIllustration>)}
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
           {isNode(title) && <Notice.Title>{title}</Notice.Title>}
@@ -33,7 +39,7 @@ class NoticeSmart extends Component<
           {isNode(actions) && <Notice.Actions>{actions}</Notice.Actions>}
         </Notice.Content>
         {closable && <Notice.Close onClick={onClose} />}
-      </SNoticeSmart>
+      </SNoticeSmart>,
     );
   }
 }

@@ -1,7 +1,8 @@
 import type { NSAnimation, NSBox } from '@semcore/base-components';
 import type Button from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type { Text } from '@semcore/typography';
+import type Icon from '@semcore/icon';
+import type { IllustrationProps } from '@semcore/illustration';
 
 import type { LocalizedMessaged } from './translations/__intergalactic-dynamic-locales';
 
@@ -22,7 +23,11 @@ declare namespace NSNotice {
       duration?: number;
       /** Specifies the locale for i18n support */
       locale?: string;
-    };
+    } & ({
+      icon?: typeof Icon;
+    } | {
+      illustration?: React.ElementType<IllustrationProps>;
+    });
   type DefaultProps = {
     theme: 'info';
     i18n: LocalizedMessaged;
@@ -61,6 +66,9 @@ declare namespace NSNotice {
   }
 
   type Component = Intergalactic.Component<'div', Props, Ctx> & {
+    /**
+     * @deprecated. Use icon or illustration props instead.
+     */
     Label: Label.Component;
     Actions: Actions.Component;
     Content: Content.Component;

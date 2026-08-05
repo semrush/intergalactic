@@ -93,7 +93,9 @@ class RootNotice extends Component<
 
   render() {
     const SNotice = Root;
-    const { Children, styles, hidden, theme, resolveColor, getI18nText } = this.asProps;
+    const SIcon = Box;
+    const SIllustration = Box;
+    const { Children, styles, hidden, theme, resolveColor, getI18nText, icon, illustration } = this.asProps;
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
@@ -115,6 +117,11 @@ class RootNotice extends Component<
         aria-label={ariaLabel}
         ref={this.ref}
       >
+        {icon !== undefined && (
+          // @ts-expect-error we use theme in css-only
+          <SIcon theme={useTheme}>{icon}</SIcon>
+        )}
+        {illustration !== undefined && (<SIllustration>{illustration}</SIllustration>)}
         <Children />
       </SNotice>,
     );

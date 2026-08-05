@@ -1,6 +1,6 @@
 SNotice {
   display: flex;
-  padding: var(--intergalactic-spacing-4x, 16px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   box-sizing: border-box;
@@ -8,6 +8,7 @@ SNotice {
   border-width: 1px;
   border-radius: var(--intergalactic-surface-rounded, 8px);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SNotice[theme='info'] {
@@ -82,44 +83,59 @@ SContent {
 
 SActions {
   flex-shrink: 0;
+  display: flex;
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
   margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
 SLabel {
-  min-height: var(--intergalactic-form-control-m, 32px);
   height: fit-content;
-  margin-right: var(--intergalactic-spacing-content-padding-small, 8px);
   display: inline-flex;
   align-items: center;
+  margin-top: 6px;
 }
 
-SLabel[theme='info'] {
+SIcon {
+  height: fit-content;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+SIllustration {
+  height: fit-content;
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+}
+
+SLabel[theme='info'], SIcon[theme='info'] {
   color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
-SLabel[theme='danger'] {
+SLabel[theme='danger'], SIcon[theme='danger'] {
   color: var(--intergalactic-icon-primary-critical, oklch(0.552 0.226 28.7 / 0.848));
 }
 
-SLabel[theme='warning'] {
+SLabel[theme='warning'], SIcon[theme='warning'] {
   color: var(--intergalactic-icon-primary-warning, oklch(0.728 0.188 51.8));
 }
 
-SLabel[theme='success'] {
+SLabel[theme='success'], SIcon[theme='success'] {
   color: var(--intergalactic-icon-primary-success, oklch(0.595 0.124 165.4));
 }
 
-SLabel[theme='muted'] {
+SLabel[theme='muted'], SIcon[theme='muted'] {
   color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
-SLabel[theme='custom'] {
+SLabel[theme='custom'], SIcon[theme='custom'] {
   color: var(--color);
 }
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-left: var(--intergalactic-spacing-4x, 16px);
+  margin-left: var(--intergalactic-spacing-content-padding-large, 16px);
 }
 
 SNotice[theme='custom'] {
