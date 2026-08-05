@@ -154,6 +154,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     // main coverage
     { bold: true, italic: false, size: 200, use: 'primary' },
     { bold: false, italic: true, size: 300 },
+    { size: 350 },
     { semibold: true, lowercase: true, size: 400 },
     { semibold: false, medium: true, size: 500 },
     { underline: true, lineThrough: false, size: 600 },

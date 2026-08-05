@@ -77,6 +77,43 @@ export const ExampleWithProps: StoryObj<typeof defaultDropdownExampleProps> = {
       control: { type: 'select' },
       options: [true, false, undefined],
     },
+    showNotice: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice' },
+    },
+    noticeTheme: {
+      control: { type: 'select' },
+      options: ['info', 'muted', 'warning', 'danger', 'success'],
+      table: { category: 'Notice props' },
+    },
+    noticeHidden: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice props' },
+    },
+    showNoticeLabel: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice content' },
+    },
+    noticeTitle: {
+      control: { type: 'text' },
+      table: { category: 'Notice content' },
+    },
+    noticeText: {
+      control: { type: 'text' },
+      table: { category: 'Notice content' },
+    },
+    showNoticeActions: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice content' },
+    },
+    noticeActionText: {
+      control: { type: 'text' },
+      table: { category: 'Notice content' },
+    },
+    showNoticeClose: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice content' },
+    },
   },
   args: defaultDropdownExampleProps,
 };

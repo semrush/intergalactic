@@ -1,10 +1,10 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { Property } from 'csstype';
 import type { SyntheticEvent } from 'react';
 
 declare namespace NSTextarea {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /**
      * Text value of textarea
      */

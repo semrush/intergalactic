@@ -1,12 +1,12 @@
-import type { Box, BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 declare namespace NSTabLine {
   type Value = string | number | boolean;
-  type Props<T extends NSTabLine.Value = NSTabLine.Value> = BoxProps &
-    NeighborLocationProps & {
+  type Props<T extends NSTabLine.Value = NSTabLine.Value> = NSBox.Props &
+    NSNeighborLocation.Props & {
       /** TabLine size
        * @default m
        * */
@@ -49,8 +49,8 @@ declare namespace NSTabLine {
   };
 
   namespace Item {
-    type Props = BoxProps &
-      NeighborItemProps & {
+    type Props = NSBox.Props &
+      NSNeighborLocation.Detect.Props & {
         /** Makes a tab selected. This property is determined automatically depending on the value. */
         selected?: boolean;
         /** Disabled state  */
@@ -69,7 +69,7 @@ declare namespace NSTabLine {
     }
 
     namespace Addon {
-        type Component = typeof Box;
+        type Component = NSBox.Component;
     }
 
     type Component = Intergalactic.Component<'div', Props, {}, [handlers: NSTabLine.Handlers]> & {

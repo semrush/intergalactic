@@ -3,7 +3,7 @@ import { Flex, Box, ScreenReaderOnly } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import FeaturePopover from '@semcore/ui/feature-popover';
-import type { FeaturePopoverProps } from '@semcore/ui/feature-popover';
+import type { NSFeaturePopover } from '@semcore/ui/feature-popover';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -107,7 +107,7 @@ Demo.defaultProps = defaultProps;
 
 export type FeaturePopoverExampleProps = {
   closeIcon: boolean;
-  theme: FeaturePopoverProps['theme'];
+  theme: NSFeaturePopover.Props['theme'];
 };
 
 export default Demo;

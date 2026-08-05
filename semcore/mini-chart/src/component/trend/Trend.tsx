@@ -1,9 +1,9 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Component } from '@semcore/core';
 import React from 'react';
 
-export type CommonTrendProps = BoxProps & {
+export type CommonTrendProps = NSBox.Props & {
   /**
    * Flag to enable animate of charts
    * @default true

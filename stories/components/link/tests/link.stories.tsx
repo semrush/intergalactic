@@ -32,7 +32,7 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     },
     size: {
       control: { type: 'select' },
-      options: [100, 200, 300, 400, 500, 600, 700, 800],
+      options: [100, 200, 300, 350, 400, 500, 600, 700, 800],
     },
     disabled: {
       control: { type: 'boolean' },

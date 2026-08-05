@@ -23,7 +23,7 @@ const validateRow = (line: string, lines: string[]) => {
 
 const lineProcessing = (line: string) => {
   console.log(encodeURI(line));
-  return line.replace(/http:\/\//, '').trim();
+  return line.replace(/http:\/\//, '');
 };
 
 const Demo = () => {

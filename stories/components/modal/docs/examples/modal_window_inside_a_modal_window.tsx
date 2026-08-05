@@ -30,7 +30,7 @@ const Demo = () => {
         <Text size={300} mb={3} tag='p'>
           Use this example for the cases when you need to open one more window inside the other modal window.
         </Text>
-        <Button size='l' use='primary' theme='brand' onClick={handleSecondClose}>
+        <Button size='l' use='secondary' onClick={handleSecondClose}>
           Close
         </Button>
       </Modal>

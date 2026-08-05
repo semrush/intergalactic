@@ -1,9 +1,9 @@
-import type { BoxProps, Flex } from '@semcore/base-components';
+import type { NSBox, NSFlex } from '@semcore/base-components';
 import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps, LinkTriggerProps } from '@semcore/base-trigger';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type Divider from '@semcore/divider';
 import type Dropdown from '@semcore/dropdown';
-import type { StatusItemComponent } from '@semcore/dropdown';
+import type { StatusItemComponent, DropdownNoticeComponent } from '@semcore/dropdown';
 import type {
   DropdownMenuContext,
   DropdownMenuItemProps,
@@ -92,7 +92,7 @@ export type SelectOptionProps = DropdownMenuItemProps & {
   value: string | number;
 };
 
-export type SelectOptionCheckboxProps = BoxProps & {
+export type SelectOptionCheckboxProps = NSBox.Props & {
   /** Checkbox theme */
   theme?: string;
   /** Visual indeterminate state */
@@ -155,13 +155,14 @@ declare const Select: IntergalacticSelectComponent & {
   > & {
     Addon: typeof DropdownMenu.Item.Addon;
     Checkbox: Intergalactic.Component<'div', SelectOptionCheckboxProps>;
-    Content: typeof Flex;
+    Content: NSFlex.Component;
     Text: typeof Text;
-    Hint: typeof Flex;
+    Hint: NSFlex.Component;
   };
   Divider: typeof Divider;
   InputSearch: typeof InputSearch;
   Input: typeof InputSearch;
+  Notice: DropdownNoticeComponent;
 };
 
 declare const wrapSelect: <PropsExtending extends {}>(

@@ -117,7 +117,7 @@ test.describe(`@select ${TAG.ACCESSIBILITY}`, () => {
     });
 
     test('Menu Customization With Notice', async ({ page }) => {
-      await loadPage(page, 'stories/components/select/docs/examples/dropdownmenu_customization.tsx', 'en');
+      await loadPage(page, 'stories/components/select/docs/examples/menu_customization.tsx', 'en');
 
       await test.step('Default state', async () => {
         const violations = await getAccessibilityViolations({ page });
