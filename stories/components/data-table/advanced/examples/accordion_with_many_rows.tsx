@@ -1,4 +1,4 @@
-import type { EllipsisSettings } from '@semcore/ui/base-components';
+import type { NSEllipsis } from '@semcore/ui/base-components';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
@@ -13,7 +13,7 @@ export type TableInTableProps = {
   >['onAccordionToggle'];
   accordionDuration?: DataTableProps<typeof data, any, any>['accordionDuration'];
   accordionAnimationRows?: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
-  cropPosition?: EllipsisSettings['cropPosition'];
+  cropPosition?: NSEllipsis.Settings['cropPosition'];
   hintProps?: false;
 };
 

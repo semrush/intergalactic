@@ -1,4 +1,5 @@
-import { Box, type BoxProps } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
@@ -10,7 +11,7 @@ import style from './donut.shadow.css';
 import type { CommonScoreProps } from './Score';
 import { ScoreDonutUtils } from '../../utils/ScoreDonutUtils';
 
-export type ScoreDonutProps = BoxProps & CommonScoreProps;
+export type ScoreDonutProps = NSBox.Props & CommonScoreProps;
 
 type ScoreDonutDefaultProps = {
   animate: true;

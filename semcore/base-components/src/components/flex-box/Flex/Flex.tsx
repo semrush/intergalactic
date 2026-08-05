@@ -1,20 +1,19 @@
 import { createBaseComponent, type Intergalactic } from '@semcore/core';
 import React from 'react';
 
-import useFlex, { type FlexProps } from './useFlex';
+import type { NSFlex } from './Flex.type';
+import useFlex from './useFlex';
 
-function Flex(props: any, ref: any) {
+function Flex(props: Intergalactic.InternalTypings.InferComponentProps<NSFlex.Component>, ref: React.Ref<HTMLElement>) {
   const [Tag, flexProps] = useFlex(props, ref);
   return <Tag {...flexProps} />;
 }
 
 Flex.displayName = 'Flex';
 
-type FlexComponent = Intergalactic.Component<'div', FlexProps>;
-
 /**
  * Flex
  *
  * {@link https://developer.semrush.com/intergalactic/layout/box-system/box-system-api|API}
  */
-export default createBaseComponent<FlexComponent>(Flex);
+export default createBaseComponent<NSFlex.Component>(Flex);

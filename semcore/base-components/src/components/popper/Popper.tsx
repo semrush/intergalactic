@@ -1,8 +1,8 @@
 import type { Instance, Modifier } from '@popperjs/core/lib/types';
+import type { Intergalactic } from '@semcore/core';
 import {
   createComponent,
   Component,
-  type IRootComponentProps,
   Root,
   sstyled,
   lastInteraction,
@@ -35,23 +35,14 @@ import { NeighborLocation } from '../neighbor-location';
 import { OutsideClick } from '../outside-click';
 import { Portal, PortalProvider } from '../portal';
 import createPopper from './createPopper';
-import type {
-  InnerPopperPopperProps,
-  InnerPopperTriggerProps,
-  Popper as PopperType,
-  PopperComponent,
-  PopperPopperProps,
-  PopperProps,
-  PopperTriggerProps,
-  PopperDefaultProps,
-} from './Popper.types';
+import type { NSPopper } from './Popper.type';
 import style from './style/popper.shadow.css';
 
-function isObject(obj: any) {
+function isObject(obj: unknown) {
   return typeof obj === 'object' && !Array.isArray(obj);
 }
 
-function someArray(arr1: any[], arr2: any[]) {
+function someArray(arr1: unknown[], arr2: unknown[]) {
   return arr1.filter(function (i) {
     return arr2.indexOf(i) !== -1;
   });
@@ -91,18 +82,18 @@ const MODIFIERS_OPTIONS = [
 ] as const;
 
 class PopperRoot extends Component<
-  PopperProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSPopper.Component>,
   typeof PopperRoot.enhance,
-  { visible: null },
+  NSPopper.Uncontrolled,
   {},
   {},
-  PopperDefaultProps
+  NSPopper.DefaultProps
 > {
   static displayName = 'Popper';
 
   static style = style;
 
-  static defaultProps: PopperDefaultProps = {
+  static defaultProps: NSPopper.DefaultProps = {
     defaultVisible: false,
     placement: 'auto',
     modifiers: [],
@@ -161,7 +152,7 @@ class PopperRoot extends Component<
   timer = 0;
   timerMultiTrigger = 0;
 
-  constructor(props: PopperProps) {
+  constructor(props: NSPopper.Props) {
     super(props);
     if (canUseDOM()) {
       this.observer = new ResizeObserver(() => {
@@ -290,7 +281,7 @@ class PopperRoot extends Component<
     }
   }
 
-  componentDidUpdate(prevProps: PopperProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const popperProps = [
       'strategy',
       'placement',
@@ -325,8 +316,8 @@ class PopperRoot extends Component<
   }
 
   handlersFromInteraction(
-    interaction: PopperProps['interaction'],
-    component: PopperComponent,
+    interaction: NSPopper.Props['interaction'],
+    component: NSPopper.PopperComponent,
     visible: boolean,
   ) {
     const eventInteraction =
@@ -338,13 +329,13 @@ class PopperRoot extends Component<
     const crossEvents = someArray(showEvents, hideEvents);
     const handlers: Record<any, any> = {};
 
-    showEvents.forEach((action: any) => {
+    showEvents.forEach((action) => {
       handlers[action] = this.bindHandlerChangeVisibleWithTimer(true, component, action);
     });
-    hideEvents.forEach((action: any) => {
+    hideEvents.forEach((action) => {
       handlers[action] = this.bindHandlerChangeVisibleWithTimer(false, component, action);
     });
-    crossEvents.forEach((action) => {
+    crossEvents.forEach((action: any) => {
       handlers[action] = visible
         ? this.bindHandlerChangeVisibleWithTimer(false, component, action)
         : this.bindHandlerChangeVisibleWithTimer(true, component, action);
@@ -352,7 +343,7 @@ class PopperRoot extends Component<
     return handlers;
   }
 
-  makeKeyDownHandler = (component: PopperComponent) => (e: React.KeyboardEvent) => {
+  makeKeyDownHandler = (component: NSPopper.PopperComponent) => (e: React.KeyboardEvent) => {
     const { visible } = this.asProps;
     if (visible && e.key === 'Escape') {
       e.stopPropagation();
@@ -363,12 +354,12 @@ class PopperRoot extends Component<
 
   bindHandlerKeyDown = (
     onKeyDown: (event: React.KeyboardEvent) => void | false,
-    component: PopperComponent,
+    component: NSPopper.PopperComponent,
   ) => callAllEventHandlers(onKeyDown, this.makeKeyDownHandler(component));
 
   lastPopperClick = 0;
   bindHandlerChangeVisibleWithTimer =
-    (visible: boolean, component?: PopperComponent, action?: any) => (e: React.SyntheticEvent) => {
+    (visible: boolean, component?: NSPopper.PopperComponent, action?: any) => (e: React.SyntheticEvent) => {
       const trigger = this.triggerRef.current;
       if (
         component === 'trigger' &&
@@ -505,6 +496,7 @@ class PopperRoot extends Component<
       'trigger',
       Boolean(visible),
     );
+
     return {
       ref: explicitTriggerSet ? undefined : this.createTriggerRef,
       active: visible,
@@ -601,7 +593,9 @@ class PopperRoot extends Component<
   }
 }
 
-function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTriggerProps) {
+function Trigger(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSPopper.Trigger.Component, typeof PopperRoot, 'Trigger'> & NSPopper.Trigger.InnerProps,
+) {
   const STrigger = Root;
   const { Children, onKeyboardFocus, highlighted, active, popperRef, forwardRef } = props;
 
@@ -619,7 +613,7 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
     if (!active) return;
     return () => {
       setTimeout(() => {
-        if (activeRef.current) return;
+        if (activeRef.current || popperRef.current === null) return;
         if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
         if (!lastInteraction.isKeyboard()) return;
 
@@ -645,7 +639,9 @@ function Trigger(props: PopperTriggerProps & IRootComponentProps & InnerPopperTr
   );
 }
 
-function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopperPopperProps) {
+function PopperPopper(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSPopper.Popper.Component, typeof PopperRoot, 'Popper'> & NSPopper.Popper.InnerProps,
+) {
   const SPopper = Root;
   const {
     Children,
@@ -793,7 +789,7 @@ function PopperPopper(props: PopperPopperProps & IRootComponentProps & InnerPopp
  * {@link https://developer.semrush.com/intergalactic/utils/popper/popper-api|API}
  */
 export const Popper = createComponent<
-  typeof PopperType,
+  NSPopper.Component,
   typeof PopperRoot
 >(PopperRoot, {
   Trigger,

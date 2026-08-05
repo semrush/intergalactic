@@ -1863,7 +1863,7 @@ importers:
         specifier: ^17.2.1
         version: link:../color-picker
       '@semcore/core':
-        specifier: ^17.2.1
+        specifier: ^17.3.0
         version: link:../core
       '@semcore/counter':
         specifier: ^17.2.1

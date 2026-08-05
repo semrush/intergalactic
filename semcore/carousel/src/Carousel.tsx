@@ -1,5 +1,5 @@
 import { createBreakpoints, Box, Flex } from '@semcore/base-components';
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import Button from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';

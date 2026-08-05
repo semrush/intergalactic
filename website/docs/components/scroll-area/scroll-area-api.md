@@ -11,7 +11,7 @@ import { ScrollArea } from '@semcore/ui/base-components';
 <ScrollArea />;
 ```
 
-<TypesView type="ScrollAreaProps" :types={...types} />
+<TypesView type="NSScrollArea.Props" :types={...types} />
 
 ## ScrollArea.Container
 
@@ -29,7 +29,7 @@ import { ScrollArea } from '@semcore/ui/base-components';
 <ScrollArea.Bar />;
 ```
 
-<TypesView type="ScrollBarProps" :types={...types} />
+<TypesView type="NSScrollArea.Bar.Props" :types={...types} />
 
 ## ScrollArea.Bar.Slider
 

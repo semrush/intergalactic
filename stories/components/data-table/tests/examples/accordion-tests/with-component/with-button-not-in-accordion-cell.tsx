@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
 import type { DataTableData, DataTableProps } from '@semcore/ui/data-table';
@@ -14,7 +14,7 @@ export type AccordionWithButtonExampleProps = {
   loading?: DataTableProps<typeof data, any, any>['loading'];
 
   defaultGridTemplateColumnWidth?: DataTableProps<typeof data, any, any>['defaultGridTemplateColumnWidth'];
-} & BoxProps;
+} & NSBox.Props;
 
 const Demo = (props: AccordionWithButtonExampleProps) => {
   return (
