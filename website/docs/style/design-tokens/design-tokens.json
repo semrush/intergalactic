@@ -3233,7 +3233,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
-    "description": "Small gap between content elements inside controls.",
+    "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
       "dropdown-menu",
@@ -3243,7 +3243,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-medium",
     "value": "6px",
-    "description": "Medium gap between content elements inside controls.",
+    "description": "Medium gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
       "button",
@@ -3258,7 +3258,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-large",
     "value": "8px",
-    "description": "Large gap between content elements inside controls.",
+    "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
       "button",
       "checkbox",
@@ -3270,13 +3270,25 @@
   {
     "name": "--intergalactic-spacing-content-gap-xlarge",
     "value": "12px",
-    "description": "Extra large gap between content elements inside controls.",
+    "description": "Extra large gap between elements, rows, or columns.",
     "components": []
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge",
     "value": "16px",
-    "description": "2x large gap between content elements inside controls.",
+    "description": "2x large gap between elements, rows, or columns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxlarge-extended",
+    "value": "20px",
+    "description": "Extended 2x large gap between elements, rows, or columns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxxlarge",
+    "value": "24px",
+    "description": "3x large gap between elements, rows, or columns.",
     "components": []
   },
   {
