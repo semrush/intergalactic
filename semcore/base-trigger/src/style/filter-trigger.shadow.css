@@ -30,12 +30,22 @@ STrigger {
       height: 100%;
     }
   }
+
+  &:focus-visible {
+    outline: none;
+    border: none;
+  }
 }
 
 SClear {
   border: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+
+  &:focus-visible {
+    outline: none;
+    border: none;
+  }
 }
 
 SWrapper {
