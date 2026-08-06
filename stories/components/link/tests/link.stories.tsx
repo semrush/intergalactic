@@ -28,7 +28,23 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
       ],
     },
     href: {
-      control: { type: 'text' },
+      control: { type: 'select' },
+      options: [
+        '#',
+        '/relative',
+        'https://other.example.com/page',
+        'mailto:test@example.com',
+      ],
+      description: 'Presets covering each branch of the external-link auto-detection',
+    },
+    isExternal: {
+      control: { type: 'boolean' },
+      description: 'Marks the link external explicitly, bypassing host-based auto-detection',
+    },
+    childrenMode: {
+      control: { type: 'inline-radio' },
+      options: ['slot', 'string'],
+      description: 'Wrap text in Link.Text, or pass it as a bare string child',
     },
     size: {
       control: { type: 'select' },

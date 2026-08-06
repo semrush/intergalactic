@@ -14,9 +14,16 @@ type BasicLinkProps = LinkProps & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
-  showAddonLeftLink2?: boolean;
-  showAddonRightLink2?: boolean;
   href?: string;
+  /** Marks the link as external explicitly, bypassing host-based auto-detection. */
+  isExternal?: boolean;
+  /**
+   * How the link text is passed down.
+   * 'slot' wraps it in `<Link.Text>` (the default, and what most consumers do);
+   * 'string' passes a bare string child, the only way to exercise the
+   * children-based branch of the external-link auto-detection.
+   */
+  childrenMode?: 'slot' | 'string';
   title?: string;
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
@@ -39,6 +46,8 @@ const Demo = (props: BasicLinkProps) => {
     enableVisited,
     noWrap,
     href = '#',
+    isExternal,
+    childrenMode = 'slot',
     size = 300,
     color,
     w,
@@ -106,6 +115,7 @@ const Demo = (props: BasicLinkProps) => {
       <Link
         use={use}
         href={href}
+        isExternal={isExternal}
         size={size}
         disabled={disabled}
         active={active}
@@ -119,14 +129,18 @@ const Demo = (props: BasicLinkProps) => {
         addonRight={propAddonRight}
       >
         {renderAddon(showAddonLeft, addonLeftType)}
-        <Link.Text
-          size={size}
-          {...(ellipsisW !== undefined && { w: ellipsisW })}
-          {...ellipsis}
-          hint:placement={hintPlacement}
-        >
-          {text}
-        </Link.Text>
+        {childrenMode === 'string'
+          ? text
+          : (
+              <Link.Text
+                size={size}
+                {...(ellipsisW !== undefined && { w: ellipsisW })}
+                {...ellipsis}
+                hint:placement={hintPlacement}
+              >
+                {text}
+              </Link.Text>
+            )}
         {renderAddon(showAddonRight, addonRightType)}
       </Link>
 
@@ -134,6 +148,7 @@ const Demo = (props: BasicLinkProps) => {
       <Link
         use={use}
         href={href}
+        isExternal={isExternal}
         size={size}
         disabled={disabled}
         active={active}
@@ -146,9 +161,7 @@ const Demo = (props: BasicLinkProps) => {
         addonRight={propAddonRight}
       >
         {renderAddon(showAddonLeft, addonLeftType)}
-        <Link.Text size={size}>
-          {text}
-        </Link.Text>
+        {childrenMode === 'string' ? text : <Link.Text size={size}>{text}</Link.Text>}
         {renderAddon(showAddonRight, addonRightType)}
       </Link>
     </Text>
