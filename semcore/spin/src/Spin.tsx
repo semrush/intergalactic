@@ -27,24 +27,57 @@ class RootSpin extends Component<
     } as const;
   };
 
+  get sizeAndStroke(): [number, number] {
+    const { size } = this.asProps;
+
+    switch (size) {
+      case 'xs' : {
+        return [16, 2];
+      }
+      case 's': {
+        return [20, 2.5];
+      }
+      case 'm': {
+        return [24, 3];
+      }
+      case 'l': {
+        return [32, 3.5];
+      }
+      case 'xl': {
+        return [48, 4];
+      }
+      case 'xxl': {
+        return [72, 5];
+      }
+      default: {
+        const s: never = size;
+        throw new Error(`Handle size "${s}"`);
+      }
+    }
+  }
+
   render() {
     const SSpin = Root;
     const SCircle = 'circle';
     const { Children, styles, theme, resolveColor, getI18nText } = this.asProps;
+    const [sizeNumber, strokeWidth] = this.sizeAndStroke;
+    const radius = (sizeNumber - strokeWidth) / 2;
     return sstyled(styles)(
       <SSpin
         render={Box}
         tag='svg'
-        viewBox='0 0 100 100'
+        width={sizeNumber}
+        height={sizeNumber}
         use:theme={resolveColor(theme)}
         role='img'
         aria-label={getI18nText('loading')}
       >
         <SCircle
-          cx='50'
-          cy='50'
-          r='46'
+          cx={sizeNumber / 2}
+          cy={sizeNumber / 2}
+          r={radius}
           fill='none'
+          strokeWidth={strokeWidth}
           strokeLinecap='round'
         />
         <Children />

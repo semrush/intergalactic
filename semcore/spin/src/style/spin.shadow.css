@@ -57,60 +57,6 @@ SSpin[centered] {
   margin: auto;
 }
 
-SSpin[size='xs'] {
-  width: 16px;
-  height: 16px;
-
-  SCircle {
-    stroke-width: 2px;
-  }
-}
-
-SSpin[size='s'] {
-  width: 20px;
-  height: 20px;
-
-  SCircle {
-    stroke-width: 2.5px;
-  }
-}
-
-SSpin[size='m'] {
-  width: 24px;
-  height: 24px;
-
-  SCircle {
-    stroke-width: 3px;
-  }
-}
-
-SSpin[size='l'] {
-  width: 32px;
-  height: 32px;
-
-  SCircle {
-    stroke-width: 3.5px;
-  }
-}
-
-SSpin[size='xl'] {
-  width: 48px;
-  height: 48px;
-
-  SCircle {
-    stroke-width: 4px;
-  }
-}
-
-SSpin[size='xxl'] {
-  width: 72px;
-  height: 72px;
-
-  SCircle {
-    stroke-width: 5px;
-  }
-}
-
 @media (prefers-reduced-motion) {
   SSpin, SCircle {
     animation-name: none;
