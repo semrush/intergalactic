@@ -28,6 +28,8 @@ STrigger {
 
   &:focus-visible {
     outline: none;
+  }
+  &:focus-visible:not([empty]) {
     border: none;
   }
 }
