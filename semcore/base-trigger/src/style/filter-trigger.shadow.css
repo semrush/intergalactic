@@ -31,6 +31,10 @@ STrigger {
         height: 100%;
       }
     }
+
+    &[disabled] {
+      opacity: 1;
+    }
   }
 
   &:focus-visible {
@@ -48,9 +52,13 @@ SClear {
     outline: none;
     border: none;
   }
+
+  &[disabled] {
+    opacity: 1;
+  }
 }
 
-SWrapper:hover STrigger[role="combobox"]:not([empty]) {
+SWrapper:hover:not(:has([disabled])) STrigger[role="combobox"]:not([empty]) {
   &[size='m']::before,
   &[size='l']::before {
     height: 100%;
@@ -71,5 +79,9 @@ SWrapper {
   &[empty]:focus-within {
     border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
     background-color: var(--intergalactic-control-select-trigger-active, oklch(1 0 0));
+  }
+
+  &[disabled] {
+    opacity: var(--intergalactic-disabled-opacity, 0.4);
   }
 }
