@@ -1,5 +1,5 @@
 import { Box, Hint } from '@semcore/base-components';
-import type { IRootComponentProps } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE, INHERITED_NAME } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
@@ -10,21 +10,23 @@ import type { NSText } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
-import type { LinkComponent, LinkProps } from './Link.types';
+import type { NSLink } from './Link.types';
 import style from './style/link.shadow.css';
 
-type State = {
-  ariaLabelledByContent: string;
-};
-
-class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, State> {
+class RootLink extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSLink.Component>,
+  typeof RootLink.enhance,
+  never,
+  {},
+  NSLink.State
+> {
   static displayName = 'Link';
 
   static style = style;
   static enhance = [resolveColorEnhance()] as const;
   containerRef = React.createRef<HTMLElement | null>();
 
-  state: State = {
+  state: NSLink.State = {
     ariaLabelledByContent: '',
   };
 
@@ -41,7 +43,7 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
       setTimeout(() => {
         this.setState({
           ariaLabelledByContent:
-            document.getElementById(this.asProps['aria-labelledby'])?.textContent ?? '',
+            document.getElementById(this.asProps['aria-labelledby'] ?? '')?.textContent ?? '',
         });
       }, 0);
     }
@@ -149,13 +151,17 @@ class RootLink extends Component<LinkProps, typeof RootLink.enhance, never, {}, 
   }
 }
 
-function LinkText(props: IRootComponentProps) {
+function LinkText(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSLink.Text.Component, typeof RootLink, 'Text'>,
+) {
   const SText = Root;
   const { styles } = props;
   return sstyled(styles)(<SText render={Text} />);
 }
 
-function Addon(props: IRootComponentProps) {
+function Addon(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSLink.Addon.Component, typeof RootLink, 'Addon'>,
+) {
   const SAddon = Root;
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
@@ -166,7 +172,7 @@ function Addon(props: IRootComponentProps) {
  *
  * {@link https://developer.semrush.com/intergalactic/components/link/link-api/|API} | {@link https://developer.semrush.com/intergalactic/components/link/link-code/|Examples}
  */
-const Link = createComponent<LinkComponent, typeof RootLink>(RootLink, {
+const Link = createComponent<NSLink.Component, typeof RootLink>(RootLink, {
   Text: LinkText,
   Addon,
 });
