@@ -1130,10 +1130,7 @@
     "name": "--intergalactic-control-secondary-info",
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
-    "components": [
-      "pills"
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-active",

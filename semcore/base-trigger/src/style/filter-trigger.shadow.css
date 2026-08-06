@@ -1,5 +1,4 @@
 STrigger {
-  border: none;
   position: relative;
 
   &[role="combobox"]:not([empty]) {
@@ -36,22 +35,11 @@ STrigger {
       opacity: 1;
     }
   }
-
-  &:focus-visible {
-    outline: none;
-    border: none;
-  }
 }
 
 SClear {
-  border: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-
-  &:focus-visible {
-    outline: none;
-    border: none;
-  }
 
   &[disabled] {
     opacity: 1;
@@ -83,5 +71,22 @@ SWrapper {
 
   &[disabled] {
     opacity: var(--intergalactic-disabled-opacity, 0.4);
+  }
+
+  STrigger,
+  SClear {
+    border: none;
+
+    &[size='m'] {
+      height: 30px;
+    }
+    &[size='l'] {
+      height: 30px;
+    }
+
+    &:focus-visible {
+      outline-offset: 3px;
+      border: none;
+    }
   }
 }
