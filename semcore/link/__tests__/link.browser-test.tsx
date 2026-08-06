@@ -54,7 +54,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(` ${TAG.VISUAL}`, () => {
   // Section 1: Size * addon position * ellipsis * addonType * color * merged rotation
-  const sizes = [100, 200, 300, 400, 500, 600, 700, 800];
+  const sizes = [100, 200, 300, 400, 500, 600, 700, 800, 350];
   const addonTypes = ['icon', 'badge', 'counter', 'spin'];
 
   const addonCombos = [

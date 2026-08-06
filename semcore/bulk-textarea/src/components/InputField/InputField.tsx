@@ -641,7 +641,11 @@ class InputField<T extends string | string[]> extends Component<
 
     const { errorMessage, isCommonError } = this.errorMessage;
     const visibleErrorTooltip =
-      showErrors && visibleErrorPopper && Boolean(errorMessage) && !this.isDisabled;
+      Boolean(this.textarea.textContent) &&
+      showErrors &&
+      visibleErrorPopper &&
+      Boolean(errorMessage) &&
+      !this.isDisabled;
 
     const { __excludeProps } = extractAriaProps(this.asProps);
 
@@ -665,7 +669,9 @@ class InputField<T extends string | string[]> extends Component<
               this.popper = popper;
             }
 
-            return <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>;
+            return (Boolean(this.textarea.textContent) && Boolean(errorMessage))
+              ? <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>
+              : null;
           }}
         </Tooltip>
         <SInputField
@@ -1215,7 +1221,9 @@ class InputField<T extends string | string[]> extends Component<
 
   private toggleAriaInvalid(showErrors: boolean, errorsLength: number): void {
     if (showErrors && errorsLength > 0) {
-      this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+      if (this.asProps.commonErrorMessage) {
+        this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+      }
       this.textarea.setAttribute('aria-invalid', 'true');
     } else {
       this.textarea.removeAttribute('aria-invalid');

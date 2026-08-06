@@ -101,6 +101,54 @@ export const BasicPropsAndTriggerAddons: StoryObj<typeof BasicProps> = {
     showTriggerText: {
       control: { type: 'boolean' },
     },
+
+    // option addon props
+    showOptionLeftAddon: {
+      control: { type: 'boolean' },
+    },
+    showOptionRightAddon: {
+      control: { type: 'boolean' },
+    },
+
+    // Notice props
+    showNotice: {
+      control: { type: 'boolean' },
+      description: 'Render Select.Notice below the list',
+      table: { category: 'Notice' },
+    },
+    noticeTheme: {
+      control: { type: 'select' },
+      options: ['info', 'muted', 'warning', 'danger', 'success'],
+      table: { category: 'Notice props' },
+    },
+    noticeHidden: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice props' },
+    },
+    showNoticeLabel: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice content' },
+    },
+    noticeTitle: {
+      control: { type: 'text' },
+      table: { category: 'Notice content' },
+    },
+    noticeText: {
+      control: { type: 'text' },
+      table: { category: 'Notice content' },
+    },
+    showNoticeActions: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice content' },
+    },
+    noticeActionText: {
+      control: { type: 'text' },
+      table: { category: 'Notice content' },
+    },
+    showNoticeClose: {
+      control: { type: 'boolean' },
+      table: { category: 'Notice content' },
+    },
   },
   args: BasicProps,
 };

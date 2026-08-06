@@ -1,9 +1,12 @@
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 import Button from '@semcore/ui/button';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
+import DropdownMenu, { type DropdownMenuProps } from '@semcore/ui/dropdown-menu';
 import React from 'react';
 
 const Demo = () => {
+  const nestedOffset: DropdownMenuProps['offset'] = [-11, 17];
+  const nestedTimeout: DropdownMenuProps['timeout'] = [0, 300];
+
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger tag={Button}>Explore nested menus</DropdownMenu.Trigger>
@@ -15,8 +18,8 @@ const Demo = () => {
           <DropdownMenu
             placement='right-start'
             interaction={DropdownMenu.nestedMenuInteraction}
-            timeout={[0, 300]}
-            offset={[-11, 12]}
+            timeout={nestedTimeout}
+            offset={nestedOffset}
           >
             <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
               Item 4
@@ -27,8 +30,8 @@ const Demo = () => {
                 <DropdownMenu
                   placement='right-start'
                   interaction={DropdownMenu.nestedMenuInteraction}
-                  timeout={[0, 300]}
-                  offset={[-11, 12]}
+                  timeout={nestedTimeout}
+                  offset={nestedOffset}
                 >
                   <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                     Item 4.1
@@ -48,8 +51,8 @@ const Demo = () => {
                 <DropdownMenu
                   placement='right-start'
                   interaction={DropdownMenu.nestedMenuInteraction}
-                  timeout={[0, 300]}
-                  offset={[-11, 12]}
+                  timeout={nestedTimeout}
+                  offset={nestedOffset}
                 >
                   <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                     Item 4.2
@@ -63,8 +66,8 @@ const Demo = () => {
                       <DropdownMenu
                         placement='right-start'
                         interaction={DropdownMenu.nestedMenuInteraction}
-                        timeout={[0, 300]}
-                        offset={[-11, 12]}
+                        timeout={nestedTimeout}
+                        offset={nestedOffset}
                       >
                         <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                           Item 4.2.1

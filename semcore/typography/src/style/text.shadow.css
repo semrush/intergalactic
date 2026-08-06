@@ -376,6 +376,11 @@ SText[size='300'] {
   }
 }
 
+SText[size='350'] {
+  font-size: var(--intergalactic-fs-350, 18px);
+  line-height: var(--intergalactic-lh-350, 150%);
+}
+
 SText[size='400'] {
   font-size: var(--intergalactic-fs-400, 20px);
   line-height: var(--intergalactic-lh-400, 120%);

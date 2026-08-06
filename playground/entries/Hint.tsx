@@ -1,13 +1,13 @@
 import FileExportM from '@semcore/icon/FileExport/m';
 import Button from '@semcore/ui/button';
-import type { ButtonProps } from '@semcore/ui/button';
+import type { NSButton } from '@semcore/ui/button';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type HintJSXProps = JSXProps<ButtonProps> & Pick<HTMLButtonElement, 'title'>;
+export type HintJSXProps = JSXProps<NSButton.Props> & Pick<HTMLButtonElement, 'title'>;
 
 function getJSX({ handleControlChange, ...props }: HintJSXProps) {
   return (

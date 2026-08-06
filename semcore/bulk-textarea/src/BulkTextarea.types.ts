@@ -1,5 +1,5 @@
 import type { NSBox } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { NSCounter } from '@semcore/counter';
 
@@ -217,7 +217,7 @@ declare namespace NSBulktextarea {
   }
 
   namespace ClearAll {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace ErrorsNavigation {
