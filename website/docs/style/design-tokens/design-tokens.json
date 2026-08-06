@@ -191,7 +191,6 @@
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
       "base-components",
-      "base-trigger",
       "bulk-textarea",
       "card",
       "color-picker",
@@ -1221,7 +1220,9 @@
     "name": "--intergalactic-control-select-trigger-normal",
     "value": "oklch(1 0 0)",
     "description": "Background of the Select trigger in its normal state.",
-    "components": []
+    "components": [
+      "base-trigger"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-bg",

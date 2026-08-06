@@ -56,4 +56,10 @@ SWrapper {
   &:focus {
     outline: none;
   }
+
+  &:active,
+  &[active] {
+    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+    background-color: var(--intergalactic-control-select-trigger-active, oklch(1 0 0));
+  }
 }
