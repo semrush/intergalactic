@@ -124,9 +124,9 @@ SCalendarUnit[startSelected] {
   background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.01 140));
 
   &:not([highlighted]) {
-    border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
+    border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
     border-bottom-right-radius: 0;
-    border-top-left-radius: var(--intergalactic-control-rounded, 6px);
+    border-top-left-radius: var(--intergalactic-rounded-small, 4px);
     border-top-right-radius: 0;
   }
 
@@ -142,9 +142,9 @@ SCalendarUnit[endSelected] {
 
   &:not([highlighted]) {
     border-bottom-left-radius: 0;
-    border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
+    border-bottom-right-radius: var(--intergalactic-rounded-small, 4px);
     border-top-left-radius: 0;
-    border-top-right-radius: var(--intergalactic-control-rounded, 6px);
+    border-top-right-radius: var(--intergalactic-rounded-small, 4px);
   }
 
   &:hover {
@@ -154,31 +154,31 @@ SCalendarUnit[endSelected] {
 }
 
 SCalendarUnit[startHighlighted]:not([selected]) {
-  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
+  border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
   border-bottom-right-radius: 0;
-  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-left-radius: var(--intergalactic-rounded-small, 4px);
   border-top-right-radius: 0;
 }
 
 SCalendarUnit[endHighlighted]:not([selected]) {
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
+  border-bottom-right-radius: var(--intergalactic-rounded-small, 4px);
   border-top-left-radius: 0;
-  border-top-right-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-right-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SCalendarUnit[startHighlighted]SCalendarUnit[endHighlighted] {
-  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
-  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-top-right-radius: var(--intergalactic-control-rounded, 6px);
+  border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
+  border-bottom-right-radius: var(--intergalactic-rounded-small, 4px);
+  border-top-left-radius: var(--intergalactic-rounded-small, 4px);
+  border-top-right-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SCalendarUnit[startSelected]SCalendarUnit[endSelected] {
-  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
-  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-top-right-radius: var(--intergalactic-control-rounded, 6px);
+  border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
+  border-bottom-right-radius: var(--intergalactic-rounded-small, 4px);
+  border-top-left-radius: var(--intergalactic-rounded-small, 4px);
+  border-top-right-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SCalendarUnit[compareHighlighted] {
@@ -208,23 +208,23 @@ SCalendarUnit[compareEnd] {
 }
 
 SCalendarUnit[compareStartHighlighted] {
-  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-left-radius: var(--intergalactic-rounded-small, 4px);
+  border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SCalendarUnit[compareEndHighlighted] {
-  border-top-right-radius: var(--intergalactic-control-rounded, 6px);
-  border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-right-radius: var(--intergalactic-rounded-small, 4px);
+  border-bottom-right-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SCalendarUnit[compareStart]:not([compareHighlighted]) {
-  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-left-radius: var(--intergalactic-rounded-small, 4px);
+  border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SCalendarUnit[compareEnd]:not([compareHighlighted]) {
-  border-top-right-radius: var(--intergalactic-control-rounded, 6px);
-  border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-right-radius: var(--intergalactic-rounded-small, 4px);
+  border-bottom-right-radius: var(--intergalactic-rounded-small, 4px);
 }
 
 SCalendarUnit[outdated] {
