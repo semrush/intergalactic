@@ -1,5 +1,4 @@
 import { Box } from '@semcore/base-components';
-import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, assignProps } from '@semcore/core';
 import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
@@ -7,24 +6,17 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import React from 'react';
 
-import style from './donut.shadow.css';
-import type { CommonScoreProps } from './Score';
+import style from '../../styles/donut.shadow.css';
+import type { NSMiniChart } from '../../types';
 import { ScoreDonutUtils } from '../../utils/ScoreDonutUtils';
 
-export type ScoreDonutProps = NSBox.Props & CommonScoreProps;
-
-type ScoreDonutDefaultProps = {
-  animate: true;
-};
-
-type ScoreDonutComponent = Intergalactic.Component<'svg', ScoreDonutProps, {}, typeof DonutRoot.enhance>;
 class DonutRoot extends Component<
-  ScoreDonutProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSMiniChart.Score.Donut.Component>,
   typeof DonutRoot.enhance,
   {},
   {},
   {},
-  ScoreDonutDefaultProps
+  NSMiniChart.Score.Donut.DefaultProps
 > {
   static enhance = [
     cssVariableEnhance({
@@ -134,7 +126,7 @@ class DonutRoot extends Component<
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
 export const ScoreDonut = createComponent<
-  ScoreDonutComponent,
+  NSMiniChart.Score.Donut.Component,
   typeof DonutRoot
 >(DonutRoot);
 
@@ -146,7 +138,7 @@ ScoreDonut.displayName = 'MiniChart.ScoreDonut';
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
 export const ScoreSemiDonut = createComponent<
-  ScoreDonutComponent,
+  NSMiniChart.Score.Donut.Component,
   typeof DonutRoot
 >(
   DonutRoot,
@@ -155,7 +147,7 @@ export const ScoreSemiDonut = createComponent<
     enhancements: [
       () => {
         return {
-          wrapperProps: (props: ScoreDonutProps) => {
+          wrapperProps: (props: NSMiniChart.Score.Donut.Props) => {
             return assignProps(props, { isSemiDonut: true });
           },
         };

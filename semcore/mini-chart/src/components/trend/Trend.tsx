@@ -1,34 +1,14 @@
-import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Component } from '@semcore/core';
 import React from 'react';
 
-export type CommonTrendProps = NSBox.Props & {
-  /**
-   * Flag to enable animate of charts
-   * @default true
-   */
-  animate?: boolean;
-
-  /**
-   * Flag to enable skeleton
-   * @default false
-   */
-  loading?: boolean;
-
-  /**
-   * Data for chart
-   */
-  data: any[];
-};
-
-type CommonTrendState = { width: number; height: number };
+import type { NSMiniChart } from '../../types';
 
 export abstract class Trend<
-  P extends CommonTrendProps,
+  P extends Record<string, any>,
   E extends readonly ((...args: any[]) => any)[],
   DP extends Intergalactic.InternalTypings.ValidDefaultProps<DP, P> = never,
-> extends Component<P, E, Readonly<{}>, {}, CommonTrendState, DP> {
+> extends Component<P, E, Readonly<{}>, {}, NSMiniChart.Trend.CommonState, DP> {
   state = {
     width: 200,
     height: 100,
