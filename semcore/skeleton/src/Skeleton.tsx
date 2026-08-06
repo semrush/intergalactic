@@ -10,11 +10,6 @@ import type { NSSkeleton } from './Skeleton.type';
 import style from './style/skeleton.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-const MAP_COLOR_THEME = {
-  dark: 'rgba(255, 255, 255, 0.3)',
-  invert: 'rgba(224, 225, 233, 0.8)',
-};
-
 class SkeletonRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.RenderComponent>,
   typeof SkeletonRoot.enhance,
@@ -98,16 +93,6 @@ class SkeletonSVG extends Component<
     if (target && svg) {
       svg.setAttribute('width', '100%');
     }
-  }
-
-  setContext() {
-    const { theme } = this.asProps;
-
-    if (!theme) return {};
-
-    return {
-      gradientUrl: MAP_COLOR_THEME[theme],
-    };
   }
 
   render() {

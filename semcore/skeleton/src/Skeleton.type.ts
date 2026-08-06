@@ -31,9 +31,6 @@ declare namespace NSSkeleton {
      */
     invert?: boolean;
   };
-  type Ctx = {
-    gradientUrl: string;
-  };
 
   type DefaultProps = {
     theme?: 'invert';
