@@ -1,4 +1,5 @@
-import type { Intergalactic, createComponent, sstyled, Root, Component, type IRootComponentProps } from '@semcore/core';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
+import { createComponent, sstyled, Root, Component } from '@semcore/core';
 import Link from '@semcore/link';
 import React from 'react';
 
