@@ -24,6 +24,13 @@ STrigger {
     &[size='l']::before {
       height: 28px;
     }
+
+    &[active], &:active {
+      background-color: var(--intergalactic-control-select-trigger-hover, oklch(0.98 0.001 180));
+      &::before {
+        height: 100%;
+      }
+    }
   }
 
   &:focus-visible {
@@ -61,8 +68,8 @@ SWrapper {
     outline: none;
   }
 
-  &:active,
-  &[active] {
+  &[empty]:active,
+  &[empty][active] {
     border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
     background-color: var(--intergalactic-control-select-trigger-active, oklch(1 0 0));
   }
