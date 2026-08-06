@@ -1547,15 +1547,19 @@
   },
   {
     "name": "--intergalactic-dot-bg",
-    "value": "oklch(0.728 0.188 51.8)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Background color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dot-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
@@ -1765,7 +1769,6 @@
     "value": "oklch(0.728 0.188 51.8)",
     "description": "Semantic warning icon.",
     "components": [
-      "dot",
       "notice"
     ]
   },
@@ -2900,7 +2903,6 @@
       "tab-panel",
       "textarea",
       "time-picker",
-      "tooltip",
       "typography"
     ]
   },
@@ -2909,14 +2911,11 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary text.",
     "components": [
-      "base-components",
       "date-picker",
-      "dot",
       "feature-highlight",
       "feature-popover",
       "notice-bubble",
       "tag",
-      "tooltip",
       "wizard"
     ]
   },
@@ -2966,37 +2965,52 @@
     "name": "--intergalactic-tooltip-bg-default",
     "value": "oklch(1 0 0)",
     "description": "Default Tooltip background.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-bg-invert",
     "value": "oklch(0.23 0.01 140)",
     "description": "Inverted version of the default Tooltip background.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-bg-warning",
     "value": "oklch(0.958 0.029 5.7)",
     "description": "Warning Tooltip background.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.48 0.004 145.9)",
     "description": "Border of the Tooltip with dark theme.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the default Tooltip.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-text-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Text color of the inverted Tooltip.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-wizard-bg",
@@ -3199,13 +3213,17 @@
     "name": "--intergalactic-spacing-content-padding-xxsmall",
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
+      "counter",
       "dropdown",
       "dropdown-menu"
     ]
@@ -3214,13 +3232,16 @@
     "name": "--intergalactic-spacing-content-padding-xsmall-extended",
     "value": "6px",
     "description": "Extended extra small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
       "dropdown",
       "modal"
     ]
@@ -3236,7 +3257,8 @@
       "dropdown",
       "input",
       "modal",
-      "time-picker"
+      "time-picker",
+      "tooltip"
     ]
   },
   {
@@ -3270,7 +3292,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
-    "description": "Small gap between content elements inside controls.",
+    "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
       "dropdown-menu",
@@ -3280,7 +3302,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-medium",
     "value": "6px",
-    "description": "Medium gap between content elements inside controls.",
+    "description": "Medium gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
       "button",
@@ -3295,7 +3317,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-large",
     "value": "8px",
-    "description": "Large gap between content elements inside controls.",
+    "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
       "button",
       "checkbox",
@@ -3307,13 +3329,25 @@
   {
     "name": "--intergalactic-spacing-content-gap-xlarge",
     "value": "12px",
-    "description": "Extra large gap between content elements inside controls.",
+    "description": "Extra large gap between elements, rows, or columns.",
     "components": []
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge",
     "value": "16px",
-    "description": "2x large gap between content elements inside controls.",
+    "description": "2x large gap between elements, rows, or columns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxlarge-extended",
+    "value": "20px",
+    "description": "Extended 2x large gap between elements, rows, or columns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxxlarge",
+    "value": "24px",
+    "description": "3x large gap between elements, rows, or columns.",
     "components": []
   },
   {
