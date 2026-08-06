@@ -21,15 +21,11 @@ const entry: PlaygroundEntry<BadgeJSXProps> = {
       displayName: 'Type',
       value: 'new',
     },
-    light: {
-      type: 'boolean',
-      displayName: 'Light',
-      value: false,
-    },
-    invert: {
-      type: 'boolean',
-      displayName: 'Invert',
-      value: false,
+    theme: {
+      type: 'select',
+      options: ['default', 'light', 'invert'],
+      displayName: 'Theme',
+      value: 'default',
     },
   },
   link: createGithubLink('badge'),

@@ -46,23 +46,22 @@ const Demo = () => {
             <Badge type='beta' />
             <Badge type='new' />
             <Badge type='soon' />
-            <Badge type='unavailable' />
           </Flex>
           <Flex gap={2} mt={2} p={4} bg='bg-primary-invert'>
-            <Badge type='admin' invert />
-            <Badge type='alpha' invert />
-            <Badge type='beta' invert />
-            <Badge type='new' invert />
-            <Badge type='soon' invert />
-            <Badge type='unavailable' invert />
+            <Badge type='admin' theme='invert' />
+            <Badge type='alpha' theme='invert' />
+            <Badge type='beta' theme='invert' />
+            <Badge type='new' theme='invert' />
+            <Badge type='soon' theme='invert' />
+            <Badge type='unavailable' theme='invert' />
           </Flex>
           <Flex gap={2} mt={2} p={4} alignItems='flex-start'>
-            <Badge type='admin' light />
-            <Badge type='alpha' light />
-            <Badge type='beta' light />
-            <Badge type='new' light />
-            <Badge type='soon' light />
-            <Badge type='unavailable' light />
+            <Badge type='admin' theme='light' />
+            <Badge type='alpha' theme='light' />
+            <Badge type='beta' theme='light' />
+            <Badge type='new' theme='light' />
+            <Badge type='soon' theme='light' />
+            <Badge type='unavailable' theme='light' />
           </Flex>
         </Box>
       </I18nProvider>
