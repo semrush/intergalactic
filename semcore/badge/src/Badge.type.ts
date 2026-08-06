@@ -21,7 +21,7 @@ declare namespace NSBadge {
     /**
      * Theme of badge.
      */
-    theme?: Theme;
+    theme?: NSBadge.Theme;
   };
 
   type DefaultProps = {
