@@ -24,11 +24,6 @@ STrigger {
     &[size='l']::before {
       height: 28px;
     }
-
-    &:hover::before,
-    &:active::before {
-      height: 100%;
-    }
   }
 
   &:focus-visible {
@@ -45,6 +40,13 @@ SClear {
   &:focus-visible {
     outline: none;
     border: none;
+  }
+}
+
+SWrapper:hover STrigger[role="combobox"]:not([empty]) {
+  &[size='m']::before,
+  &[size='l']::before {
+    height: 100%;
   }
 }
 
