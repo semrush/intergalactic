@@ -282,11 +282,11 @@ SSpinContainer {
     z-index: 15;
   }
 
-  &[headerHeight][containerHeight] {
+  &[headerHeight] {
     position: sticky;
     top: 0;
-    height: min(100vh, calc(var(--containerHeight) - var(--headerHeight)));
-    min-height: min(100vh, calc(var(--containerHeight) - var(--headerHeight)));
+    height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
+    min-height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
   }
 }
 
