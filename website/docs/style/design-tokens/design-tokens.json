@@ -2949,7 +2949,6 @@
       "feature-highlight",
       "feature-popover",
       "notice-bubble",
-      "tag",
       "wizard"
     ]
   },
@@ -3022,7 +3021,7 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.48 0.004 145.9)",
+    "value": "oklch(0.25 0.009 140)",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
@@ -3250,6 +3249,7 @@
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
       "counter",
+      "input-tags",
       "pills"
     ]
   },
@@ -3262,6 +3262,7 @@
       "counter",
       "dropdown",
       "dropdown-menu",
+      "input-tags",
       "pills"
     ]
   },
