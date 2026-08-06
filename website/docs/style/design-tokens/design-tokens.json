@@ -1502,15 +1502,19 @@
   },
   {
     "name": "--intergalactic-dot-bg",
-    "value": "oklch(0.728 0.188 51.8)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Background color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dot-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
@@ -1720,7 +1724,6 @@
     "value": "oklch(0.728 0.188 51.8)",
     "description": "Semantic warning icon.",
     "components": [
-      "dot",
       "notice"
     ]
   },
@@ -2874,7 +2877,6 @@
     "components": [
       "badge",
       "date-picker",
-      "dot",
       "feature-highlight",
       "feature-popover",
       "notice-bubble",
@@ -3178,6 +3180,7 @@
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
+      "counter",
       "pills"
     ]
   },
@@ -3187,6 +3190,7 @@
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
       "base-components",
+      "counter",
       "dropdown",
       "dropdown-menu",
       "pills"
@@ -3197,6 +3201,7 @@
     "value": "6px",
     "description": "Extended extra small padding for content inside controls and surfaces.",
     "components": [
+      "counter",
       "pills"
     ]
   },

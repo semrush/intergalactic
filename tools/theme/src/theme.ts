@@ -1088,7 +1088,7 @@ export const theme: Theme = {
         description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
       },
       dot_bg: {
-        value: '{semanticTokens.colors.icon_primary_warning_DEFAULT}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Background color of the Dot.',
       },
       dot_text: {
