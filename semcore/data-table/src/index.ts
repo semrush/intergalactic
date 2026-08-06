@@ -13,7 +13,7 @@ import type {
   ColumnGroupConfig,
   ColumnItemConfig,
 } from './components/DataTable/DataTable.types';
-import { LinkAction } from './components/LinkAction/LinkAction.tsx';
+import { LinkAction } from './components/LinkAction/LinkAction';
 import { SelectableRows } from './store/SelectableRows';
 
 const wrapDataTable = <PropsExtending extends {}>(
