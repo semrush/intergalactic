@@ -2,14 +2,14 @@ SBubble,
 SView {
   position: relative;
   margin-bottom: var(--intergalactic-spacing-content-gap-xlarge, 12px);
-  padding: var(--intergalactic-spacing-content-padding-large, 12px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
   padding-right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   width: 100%;
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
   box-sizing: border-box;
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  gap: var(--intergalactic-spacing-content-gap-medium, 8px);
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
   &[type='info'] {
     background: var(--intergalactic-notice-bubble-bg-info, oklch(0.23 0.01 140));
@@ -27,8 +27,8 @@ SContent {
 }
 
 SMessage {
-  font-size: var(--intergalactic-fs-300, 14px);
-  line-height: var(--intergalactic-lh-300, 142%);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 
 SDismiss {
