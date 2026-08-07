@@ -277,4 +277,4 @@ export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
 export const L_INV_BORDER_PRIMARY = 0.5; // inputs, buttons, table header
 /** Border secondary */
-export const L_INV_BORDER_SECONDARY = 0.25;
+export const L_INV_BORDER_SECONDARY = 0.35;
