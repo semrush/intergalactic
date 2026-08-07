@@ -1195,7 +1195,7 @@
   },
   {
     "name": "--intergalactic-control-select-trigger-active",
-    "value": "oklch(1 0 0)",
+    "value": "oklch(0.97 0.001 180)",
     "description": "Background of the Select trigger in its active state.",
     "components": [
       "base-trigger"
