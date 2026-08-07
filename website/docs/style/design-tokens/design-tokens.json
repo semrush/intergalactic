@@ -178,8 +178,7 @@
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Accent background of a message or a banner with a critical information.",
     "components": [
-      "counter",
-      "notice-bubble"
+      "counter"
     ]
   },
   {
@@ -200,9 +199,7 @@
     "name": "--intergalactic-bg-primary-invert",
     "value": "oklch(0.23 0.01 140)",
     "description": "Inverted version of the primary background of the interface that contains the main data and information.",
-    "components": [
-      "notice-bubble"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-invert-active",
@@ -1982,13 +1979,17 @@
     "name": "--intergalactic-notice-bubble-bg-critical",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Critical background of the NoticeBubble.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-notice-bubble-bg-info",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the NoticeBubble.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-overlay-limitation-primary",
@@ -3228,6 +3229,7 @@
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
       "counter",
+      "notice-bubble",
       "pills"
     ]
   },
@@ -3284,7 +3286,8 @@
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
-      "feature-popover"
+      "feature-popover",
+      "notice-bubble"
     ]
   },
   {
@@ -3307,7 +3310,8 @@
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
       "feature-popover",
-      "modal"
+      "modal",
+      "notice-bubble"
     ]
   },
   {
@@ -3344,6 +3348,7 @@
       "button",
       "checkbox",
       "dropdown",
+      "notice-bubble",
       "radio",
       "select"
     ]
@@ -3352,7 +3357,9 @@
     "name": "--intergalactic-spacing-content-gap-xlarge",
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge",
