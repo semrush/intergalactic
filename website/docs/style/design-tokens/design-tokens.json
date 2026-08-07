@@ -3218,8 +3218,8 @@
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
-      "notice-bubble"
       "counter",
+      "notice-bubble",
       "pills"
     ]
   },
