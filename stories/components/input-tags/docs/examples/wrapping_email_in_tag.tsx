@@ -49,7 +49,7 @@ const Demo = (props: InputTagsTagProps) => {
       </Text>
       <InputTags mt={2} onAppend={handleAppendTags} onRemove={handleRemoveTag}>
         {tags.map((tag, idx) => {
-          const tagProps = props.theme === 'primary'
+          const tagProps = (props.theme === 'primary' || props.theme === undefined)
             ? { theme: props.theme, color: isValidEmail(tag) ? 'green-500' : 'red-500' }
             : { theme: props.theme };
 
