@@ -1615,7 +1615,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Fill color of the FeaturePopover.Spot with accent theme.",
     "components": [
       "feature-popover"
@@ -1623,7 +1623,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Fill color of the FeaturePopover.Spot with neutral theme.",
     "components": [
       "feature-popover"
@@ -1639,7 +1639,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border-neutral",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Outer border color of the FeaturePopover.Spot with neutral theme.",
     "components": [
       "feature-popover"

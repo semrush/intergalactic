@@ -97,15 +97,15 @@ SSpot {
       background-color: var(--intergalactic-feature-popover-dot-outer-border-accent, oklch(0.88 0.078 303));
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-dot-accent, oklch(0.88 0.078 303));
+      background-color: var(--intergalactic-feature-popover-dot-accent, oklch(0.74 0.17 303));
     }
   }
   &[theme='neutral'] {
     &::before {
-      background-color: var(--intergalactic-feature-popover-dot-outer-border-neutral, oklch(0.88 0.078 303));
+      background-color: var(--intergalactic-feature-popover-dot-outer-border-neutral, oklch(0.74 0.17 303));
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-dot-neutral, oklch(0.88 0.078 303));
+      background-color: var(--intergalactic-feature-popover-dot-neutral, oklch(0.74 0.17 303));
     }
   }
 }
