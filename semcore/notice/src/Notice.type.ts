@@ -3,6 +3,7 @@ import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type Icon from '@semcore/icon';
 import type { IllustrationProps } from '@semcore/illustration';
+import type { NSText } from '@semcore/typography';
 
 import type { LocalizedMessaged } from './translations/__intergalactic-dynamic-locales';
 
@@ -54,11 +55,11 @@ declare namespace NSNotice {
   }
 
   namespace Title {
-    type Component = typeof Text;
+    type Component = NSText.Component;
   }
 
   namespace Text {
-    type Component = typeof Text;
+    type Component = NSText.Component;
   }
 
   namespace Close {
