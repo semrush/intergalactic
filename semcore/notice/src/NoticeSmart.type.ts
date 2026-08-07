@@ -35,7 +35,9 @@ declare namespace NSNoticeSmart {
     onClose?: (event: React.SyntheticEvent) => void;
   } & ({
     icon?: typeof Icon;
+    illustration?: never;
   } | {
+    icon?: never;
     illustration?: React.ElementType<IllustrationProps>;
   });
   type DefaultProps = {
