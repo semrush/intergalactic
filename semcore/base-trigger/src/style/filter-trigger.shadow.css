@@ -81,7 +81,7 @@ SWrapper {
       height: 30px;
     }
     &[size='l'] {
-      height: 30px;
+      height: 42px;
     }
 
     &:focus-visible {
