@@ -1,7 +1,8 @@
 SCalendar {
   display: flex;
   flex-direction: column;
-  border-radius: var(--intergalactic-surface-rounded, 8px);
+  border-radius: var(--intergalactic-rounded-small, 4px);
+  gap: var(--intergalactic-spacing-content-gap-small, 4px);
 
   SCalendarUnit:focus-visible {
     outline: none;
@@ -12,11 +13,12 @@ SGridDays {
   display: grid;
   grid-template-columns: repeat(7, minmax(32px, auto));
   grid-template-rows: repeat(auto-fit, minmax(32px, auto));
+  grid-row-gap: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SGridMonths {
   display: grid;
-  grid-row-gap: var(--intergalactic-spacing-2x, 8px);
+  grid-row-gap: var(--intergalactic-spacing-content-gap-large, 8px);
   grid-template-columns: repeat(3, minmax(60px, auto));
   grid-template-rows: repeat(4, minmax(32px, auto));
 }
@@ -67,7 +69,6 @@ SCalendarUnit {
   transition: border-radius 0.15s 0.15s;
   outline: none;
   margin: 0;
-  margin-top: 4px;
 
   &:hover {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
@@ -243,7 +244,7 @@ SCalendar:focus {
   }
 
   &:not(&:has(SCalendarUnit[highlighted])) {
-    border-radius: var(--intergalactic-surface-rounded, 8px);
+    border-radius: var(--intergalactic-rounded-small, 4px);
   }
 }
 
