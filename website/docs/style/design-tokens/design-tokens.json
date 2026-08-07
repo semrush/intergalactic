@@ -3,115 +3,154 @@
     "name": "--intergalactic-badge-accent-admin",
     "value": "oklch(0.58 0.168 278.2)",
     "description": "Background color of the admin Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-alpha",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Background color of the alpha Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-beta",
     "value": "oklch(0.74 0.17 72)",
     "description": "Background color of the beta Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-new",
     "value": "oklch(0.74 0.17 170)",
     "description": "Background color of the new Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-soon",
     "value": "oklch(0.64 0.003 157.8)",
     "description": "Background color of the soon Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-admin",
-    "value": "oklch(0.969 0.016 267.7)",
+    "value": "oklch(0.898 0.054 268.3)",
     "description": "Light background color of the admin Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-alpha",
     "value": "oklch(0.899 0.069 12.9)",
     "description": "Light background color of the alpha Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-beta",
     "value": "oklch(0.9 0.13 92)",
     "description": "Light background color of the beta Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-new",
     "value": "oklch(0.9 0.11 175)",
     "description": "Light background color of the new Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-soon",
     "value": "oklch(0.9 0.002 177)",
     "description": "Light background color of the soon Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-admin-text",
     "value": "oklch(0.58 0.168 278.2)",
     "description": "Text color for the admin Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-alpha-text",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Text color for the alpha Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-beta-text",
     "value": "oklch(0.64 0.16 64)",
     "description": "Text color for the beta Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-new-text",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.64 0.161 170)",
     "description": "Text color for the new Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-soon-text",
     "value": "oklch(0.46 0.004 144.4)",
     "description": "Text color for the soon Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-bg-invert",
     "value": "oklch(0.983 0.03 140 / 0.183)",
     "description": "Background color of the inverted Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-bg-unavailable",
-    "value": "oklch(0.9 0.002 177)",
+    "value": "oklch(0.97 0.001 180)",
     "description": "Background color of the unavailable Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-text-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted primary text color for Badge.",
-    "components": []
+    "components": [
+      "badge",
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-badge-text-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Secondary text color for Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-bg-highlight-focus",
@@ -204,7 +243,6 @@
       "inline-input",
       "input",
       "modal",
-      "pills",
       "side-panel",
       "slider",
       "tag",
@@ -224,9 +262,7 @@
     "name": "--intergalactic-bg-primary-neutral-hover",
     "value": "oklch(0.98 0.001 180)",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
-    "components": [
-      "pills"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-success",
@@ -442,7 +478,6 @@
       "feedback-form",
       "input",
       "input-tags",
-      "pills",
       "tab-line",
       "textarea"
     ]
@@ -463,7 +498,6 @@
       "feedback-form",
       "fullscreen-modal",
       "input",
-      "pills",
       "side-panel",
       "slider",
       "spin",
@@ -1136,8 +1170,7 @@
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "pills"
+      "base-trigger"
     ]
   },
   {
@@ -1508,15 +1541,19 @@
   },
   {
     "name": "--intergalactic-dot-bg",
-    "value": "oklch(0.728 0.188 51.8)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Background color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dot-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
@@ -1738,7 +1775,6 @@
     "value": "oklch(0.728 0.188 51.8)",
     "description": "Semantic warning icon.",
     "components": [
-      "dot",
       "notice"
     ]
   },
@@ -1997,25 +2033,33 @@
     "name": "--intergalactic-control-pills-bg-hover",
     "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the Pills background.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-bg-normal",
     "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Background of the Pills in its normal state.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-bg-selected",
     "value": "oklch(1 0 0)",
     "description": "Background of the selected Pill.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Pills in its normal state.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-bg",
@@ -2844,7 +2888,6 @@
     "description": "Default body and UI copy; strongest reading emphasis for primary content.",
     "components": [
       "accordion",
-      "badge",
       "base-components",
       "base-trigger",
       "breadcrumbs",
@@ -2873,7 +2916,6 @@
       "tab-panel",
       "textarea",
       "time-picker",
-      "tooltip",
       "typography"
     ]
   },
@@ -2882,14 +2924,10 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary text.",
     "components": [
-      "badge",
-      "base-components",
       "date-picker",
-      "dot",
       "feature-highlight",
       "notice-bubble",
       "tag",
-      "tooltip",
       "wizard"
     ]
   },
@@ -2939,37 +2977,52 @@
     "name": "--intergalactic-tooltip-bg-default",
     "value": "oklch(1 0 0)",
     "description": "Default Tooltip background.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-bg-invert",
     "value": "oklch(0.23 0.01 140)",
     "description": "Inverted version of the default Tooltip background.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-bg-warning",
     "value": "oklch(0.958 0.029 5.7)",
     "description": "Warning Tooltip background.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.48 0.004 145.9)",
     "description": "Border of the Tooltip with dark theme.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the default Tooltip.",
-    "components": []
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-text-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Text color of the inverted Tooltip.",
-    "components": []
+    "components": [
+      "base-components",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-wizard-bg",
@@ -3060,6 +3113,7 @@
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow of the Switch toggle.",
     "components": [
+      "pills",
       "switch"
     ]
   },
@@ -3172,30 +3226,41 @@
     "name": "--intergalactic-spacing-content-padding-xxsmall",
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xsmall",
     "value": "4px",
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
+      "counter",
       "dropdown",
-      "dropdown-menu"
+      "dropdown-menu",
+      "pills"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xsmall-extended",
     "value": "6px",
     "description": "Extended extra small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
       "dropdown",
-      "modal"
+      "modal",
+      "pills"
     ]
   },
   {
@@ -3209,7 +3274,9 @@
       "dropdown",
       "input",
       "modal",
-      "time-picker"
+      "pills",
+      "time-picker",
+      "tooltip"
     ]
   },
   {
@@ -3246,7 +3313,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
-    "description": "Small gap between content elements inside controls.",
+    "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
       "dropdown-menu",
@@ -3256,7 +3323,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-medium",
     "value": "6px",
-    "description": "Medium gap between content elements inside controls.",
+    "description": "Medium gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
       "button",
@@ -3264,6 +3331,7 @@
       "dropdown",
       "dropdown-menu",
       "input",
+      "pills",
       "radio",
       "select"
     ]
@@ -3271,7 +3339,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-large",
     "value": "8px",
-    "description": "Large gap between content elements inside controls.",
+    "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
       "button",
       "checkbox",
@@ -3283,13 +3351,25 @@
   {
     "name": "--intergalactic-spacing-content-gap-xlarge",
     "value": "12px",
-    "description": "Extra large gap between content elements inside controls.",
+    "description": "Extra large gap between elements, rows, or columns.",
     "components": []
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge",
     "value": "16px",
-    "description": "2x large gap between content elements inside controls.",
+    "description": "2x large gap between elements, rows, or columns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxlarge-extended",
+    "value": "20px",
+    "description": "Extended 2x large gap between elements, rows, or columns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-content-gap-xxxlarge",
+    "value": "24px",
+    "description": "3x large gap between elements, rows, or columns.",
     "components": []
   },
   {
@@ -3308,7 +3388,8 @@
     "value": "4px",
     "description": "Corner radius for Badge and compact status chips—aligned with small rounded controls.",
     "components": [
-      "badge"
+      "badge",
+      "feature-highlight"
     ]
   },
   {
@@ -3342,7 +3423,6 @@
       "inline-edit",
       "inline-input",
       "input",
-      "pills",
       "select",
       "tab-panel",
       "textarea",
@@ -3372,7 +3452,9 @@
     "name": "--intergalactic-pills-rounded",
     "value": "6px",
     "description": "Use for rounding Pills.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-popper-rounded",
