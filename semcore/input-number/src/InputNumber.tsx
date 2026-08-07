@@ -316,7 +316,16 @@ class Value extends Component<
     const digits = /^[0-9.-]+$/.test(value);
 
     if (digits || value === '') {
-      this.handlers.value(this.limitDecimals(value), event);
+      const newValue = this.limitDecimals(value);
+      this.handlers.value(newValue, event);
+      if (newValue === prevValue) {
+        const { displayValue } = this.valueParser(
+          newValue ?? '',
+          prevValue,
+          this.state.displayValue,
+        );
+        this.setState({ displayValue });
+      }
     }
   };
 
@@ -357,7 +366,6 @@ class Value extends Component<
         ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key))
     ) {
       const afterSelection = value.slice(element.selectionEnd ?? undefined);
-
       requestAnimationFrame(() => {
         const newValue = this.state.displayValue;
         const index = newValue.lastIndexOf(afterSelection);
