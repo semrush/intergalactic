@@ -3349,8 +3349,8 @@
       "button",
       "checkbox",
       "dropdown",
-      "pagination",
       "notice-bubble",
+      "pagination",
       "radio",
       "select"
     ]
@@ -3360,8 +3360,8 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "notice-bubble",
       "pagination"
-      "notice-bubble"
     ]
   },
   {
