@@ -2,7 +2,6 @@ import { Flex, NeighborLocation } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
-import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
 import { Text as SemcoreText } from '@semcore/typography';
 import React from 'react';
 
@@ -91,13 +90,12 @@ function Item(
   >,
 ) {
   const SRadioItem = Root;
-  const { Children, styles, iconAddon, value, textAddon, description, disabled, checked } = props;
+  const SRadioItemHeader = Flex;
+  const SRadioItemHeaderLeftAddon = Flex;
+  const SRadioItemHeaderRightAddon = SemcoreText;
+  const { Children, styles, iconAddon, text, textAddon, description, disabled, checked, children } = props;
 
-  const advancedMode = isAdvanceMode(
-    Children,
-    [RadioCards.Item.Header.displayName, RadioCards.Item.Description.displayName],
-    true,
-  );
+  const isAdvancedMode = children !== undefined;
 
   return sstyled(styles)(
     <SRadioItem
@@ -107,82 +105,30 @@ function Item(
       aria-disabled={disabled}
       aria-checked={checked}
     >
-      {advancedMode
+      {isAdvancedMode
         ? (
             <Children />
           )
         : (
             <>
-              <RadioCards.Item.Header>
-                {iconAddon && <RadioCards.Item.Header.LeftAddon>{iconAddon}</RadioCards.Item.Header.LeftAddon>}
-                {value && <RadioCards.Item.Header.Text>{value}</RadioCards.Item.Header.Text>}
+              <SRadioItemHeader>
+                {iconAddon && <SRadioItemHeaderLeftAddon>{iconAddon}</SRadioItemHeaderLeftAddon>}
+                {text && <SemcoreText size={300} use='primary'>{text}</SemcoreText>}
                 {textAddon && (
-                  <RadioCards.Item.Header.RightAddon>
-                    <SemcoreText size={300}>
-                      {textAddon}
-                    </SemcoreText>
-                  </RadioCards.Item.Header.RightAddon>
+                  <SRadioItemHeaderRightAddon size={300}>
+                    {textAddon}
+                  </SRadioItemHeaderRightAddon>
                 )}
-              </RadioCards.Item.Header>
-              {description && <RadioCards.Item.Description>{description}</RadioCards.Item.Description>}
+              </SRadioItemHeader>
+              {description && <SemcoreText size={200} use='secondary'>{description}</SemcoreText>}
             </>
           )}
     </SRadioItem>,
   );
 }
 
-function Header(props: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Item.Header.Component>) {
-  const SRadioItemHeader = Root;
-  const { styles } = props;
-
-  return sstyled(styles)(<SRadioItemHeader render={Flex} />);
-}
-
-function LeftAddon(
-  props: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Item.Header.LeftAddon.Component>,
-) {
-  const SItemHeaderAddon = Root;
-  const { styles } = props;
-
-  return sstyled(styles)(<SItemHeaderAddon render={Flex} />);
-}
-
-function RightAddon(
-  props: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Item.Header.RightAddon.Component>,
-) {
-  const SItemHeaderAddon = Root;
-  const { styles } = props;
-
-  return sstyled(styles)(<SItemHeaderAddon render={Flex} />);
-}
-
-function Text() {
-  const SItemHeaderText = Root;
-
-  return <SItemHeaderText render={SemcoreText} size={300} use='primary' />;
-}
-
-function Description() {
-  const SItemDescription = Root;
-
-  return <SItemDescription render={SemcoreText} size={200} use='secondary' />;
-}
-
 const RadioCards = createComponent<NSRadioCards.Component, typeof RadioCardsRoot>(RadioCardsRoot, {
-  Item: [
-    Item,
-    {
-      Header: [
-        Header,
-        {
-          LeftAddon,
-          Text,
-          RightAddon,
-        },
-      ],
-      Description,
-    },
-  ],
+  Item,
 });
 
 export default RadioCards;

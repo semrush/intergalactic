@@ -30,6 +30,8 @@ declare namespace NSRadioCards {
       disabled?: boolean;
       /** Optional icon displayed before the content. */
       iconAddon?: React.ReactNode;
+      /** Optional text displayed in the header. */
+      text?: string;
       /** Unique value associated with the radio card. */
       value: NSRadioCards.Value;
       /** Additional text displayed in the header. */
@@ -38,34 +40,7 @@ declare namespace NSRadioCards {
       description?: string;
     };
 
-    namespace Header {
-      namespace LeftAddon {
-        type Component = NSFlex.Component;
-      }
-
-      namespace Text {
-        type Component = NSText.Component;
-      }
-
-      namespace RightAddon {
-        type Component = NSFlex.Component;
-      }
-
-      type Component = NSFlex.Component & {
-        LeftAddon: LeftAddon.Component;
-        Text: Text.Component;
-        RightAddon: RightAddon.Component;
-      };
-    }
-
-    namespace Description {
-      type Component = NSText.Component;
-    }
-
-    type Component = Intergalactic.Component<'div', Props> & {
-      Header: Header.Component;
-      Description: Description.Component;
-    };
+    type Component = Intergalactic.Component<'button', Props>;
   }
 
   type Component = Intergalactic.Component<'div', Props> & {
