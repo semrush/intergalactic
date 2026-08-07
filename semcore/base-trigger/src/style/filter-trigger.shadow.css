@@ -67,6 +67,10 @@ SWrapper {
   &[empty]:focus-within {
     border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
     background-color: var(--intergalactic-control-select-trigger-active, oklch(0.97 0.001 180));
+
+    STrigger {
+      background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
+    }
   }
 
   &[disabled] {
@@ -87,10 +91,6 @@ SWrapper {
     &:focus-visible {
       outline-offset: 3px;
       border: none;
-    }
-
-    &[empty] {
-      background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
     }
   }
 }
