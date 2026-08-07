@@ -18,21 +18,21 @@ SCounter[size='s'] {
   height: 16px;
   min-width: 16px;
   font-size: var(--intergalactic-fs-50, 10px);
-  padding: var(--intergalactic-spacing-1x, 4px);
+  padding: var(--intergalactic-spacing-content-padding-xsmall, 4px);
 }
 
 SCounter[size='m'] {
   height: 20px;
   min-width: 20px;
   font-size: var(--intergalactic-fs-100, 12px);
-  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
+  padding: var(--intergalactic-spacing-content-padding-xxsmall, 2px) var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }
 
 SCounter[size='l'] {
   height: 24px;
   min-width: 24px;
   font-size: var(--intergalactic-fs-200, 14px);
-  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
+  padding: var(--intergalactic-spacing-content-padding-xxsmall, 2px) var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }
 
 SCounter[theme] {

@@ -7,6 +7,7 @@ import { hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
 import React from 'react';
 
 import { DropdownItem } from './DropdownItem';
+import { DropdownNotice } from './Notice';
 import { StatusItem } from './StatusItem';
 import style from './style/dropdown.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -212,6 +213,7 @@ const Dropdown = createComponent(
     Item: DropdownItem,
     Group: DropdownGroup,
     StatusItem,
+    Notice: DropdownNotice,
   },
   {
     parent: Popper,

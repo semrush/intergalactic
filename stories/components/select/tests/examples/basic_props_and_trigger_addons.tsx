@@ -1,6 +1,9 @@
+import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Badge from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
+import Button from '@semcore/ui/button';
+import type { NSNotice } from '@semcore/ui/notice';
 import Select from '@semcore/ui/select';
 import type { SelectProps } from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
@@ -32,6 +35,21 @@ export type SelectBasicProps = Omit<
   showTriggerText?: boolean;
   triggerText?: string;
   size?: 'm' | 'l';
+
+  // option addon props
+  showOptionLeftAddon?: boolean;
+  showOptionRightAddon?: boolean;
+
+  // Notice props
+  showNotice?: boolean;
+  noticeTheme?: NSNotice.Theme;
+  noticeHidden?: boolean;
+  showNoticeLabel?: boolean;
+  noticeTitle?: string;
+  noticeText?: string;
+  showNoticeActions?: boolean;
+  noticeActionText?: string;
+  showNoticeClose?: boolean;
 };
 
 const Demo = (props: SelectBasicProps) => {
@@ -63,6 +81,21 @@ const Demo = (props: SelectBasicProps) => {
     triggerText = 'Trigger',
     showTriggerText = false,
 
+    // option addon
+    showOptionLeftAddon = false,
+    showOptionRightAddon = false,
+
+    // Notice
+    showNotice = false,
+    noticeTheme = 'info',
+    noticeHidden = false,
+    showNoticeLabel = true,
+    noticeTitle = 'Notice title',
+    noticeText = 'Additional information related to the available options.',
+    showNoticeActions = true,
+    noticeActionText = 'Action',
+    showNoticeClose = false,
+
     ...restProps
   } = props;
 
@@ -74,7 +107,7 @@ const Demo = (props: SelectBasicProps) => {
       children: `Option ${index}`,
     }));
 
-  const hasCustomTrigger = showLeftAddon || showRightAddon || showTriggerText;
+  const hasCustomTriggerOrOption = showLeftAddon || showRightAddon || showTriggerText || showOptionLeftAddon || showOptionRightAddon || showNotice;
   const [value, setValue] = React.useState<SelectBasicValue>(multiselect ? [] : null);
 
   React.useEffect(() => {
@@ -86,6 +119,37 @@ const Demo = (props: SelectBasicProps) => {
     .map((option) => option.label)
     .join(', ');
 
+  const renderOptions = () => options.map((option) => (
+    <Select.Option key={option.value} value={option.value}>
+      {showOptionLeftAddon && <Select.Option.Addon><LinkExternalM /></Select.Option.Addon>}
+      <Select.Option.Text>{option.children}</Select.Option.Text>
+      {showOptionRightAddon && <Select.Option.Addon><LinkExternalM /></Select.Option.Addon>}
+    </Select.Option>
+  ));
+
+  const renderNotice = () => (
+    <Select.Notice
+      theme={noticeTheme}
+      hidden={noticeHidden}
+    >
+      {showNoticeLabel && (
+        <Select.Notice.Label>
+          <InfoM />
+        </Select.Notice.Label>
+      )}
+      <Select.Notice.Content>
+        {noticeTitle && <Select.Notice.Title>{noticeTitle}</Select.Notice.Title>}
+        {noticeText && <Select.Notice.Text>{noticeText}</Select.Notice.Text>}
+        {showNoticeActions && (
+          <Select.Notice.Actions>
+            <Button use='primary'>{noticeActionText}</Button>
+          </Select.Notice.Actions>
+        )}
+      </Select.Notice.Content>
+      {showNoticeClose && <Select.Notice.Close />}
+    </Select.Notice>
+  );
+
   return (
     <Flex direction='column'>
       {showLabel && (
@@ -93,7 +157,7 @@ const Demo = (props: SelectBasicProps) => {
           {labelText}
         </Text>
       )}
-      {hasCustomTrigger
+      {hasCustomTriggerOrOption
         ? (
             <Select
               value={value}
@@ -135,13 +199,14 @@ const Demo = (props: SelectBasicProps) => {
                   </Select.Trigger.Addon>
                 )}
               </Select.Trigger>
-              <Select.Menu>
-                {options.map((option) => (
-                  <Select.Option key={option.value} value={option.value}>
-                    {option.children}
-                  </Select.Option>
-                ))}
-              </Select.Menu>
+              {showNotice
+                ? (
+                    <Select.Popper aria-label='Select options with notice'>
+                      <Select.List>{renderOptions()}</Select.List>
+                      {renderNotice()}
+                    </Select.Popper>
+                  )
+                : <Select.Menu>{renderOptions()}</Select.Menu>}
             </Select>
           )
         : (
@@ -191,6 +256,17 @@ export const defaultProps: SelectBasicProps = {
 
   triggerText: 'Trigger',
   showTriggerText: false,
+
+  // Notice
+  showNotice: false,
+  noticeTheme: 'info',
+  noticeHidden: false,
+  showNoticeLabel: false,
+  noticeTitle: 'Notice title',
+  noticeText: 'Additional information related to the available options.',
+  showNoticeActions: true,
+  noticeActionText: 'Action',
+  showNoticeClose: false,
 };
 
 Demo.defaultProps = defaultProps;
