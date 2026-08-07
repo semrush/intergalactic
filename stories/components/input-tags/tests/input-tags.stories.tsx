@@ -11,7 +11,7 @@ const meta: Meta<typeof InputTags> = {
 
 export default meta;
 
-export const EnteringAndEditingTags: StoryObj<typeof enteringAndEditingTagsProps> = {
+export const EnteringAndEditingTags: StoryObj<any> = {
   render: EnteringAndEditingTagsExample,
   argTypes: {
     size: {
@@ -59,7 +59,7 @@ export const EnteringAndEditingTags: StoryObj<typeof enteringAndEditingTagsProps
   args: enteringAndEditingTagsProps,
 };
 
-export const TagsWithAddons: StoryObj<typeof defaultPropsEmail> = {
+export const TagsWithAddons: StoryObj<any> = {
   render: TagsWithAddonsExample,
   argTypes: {
     size: {

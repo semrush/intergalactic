@@ -12,7 +12,7 @@ const meta: Meta<typeof InputTags> = {
 
 export default meta;
 
-export const WrappingEmailInTag: StoryObj<typeof defaultPropsEmail> = {
+export const WrappingEmailInTag: StoryObj<any> = {
   render: WrappingEmailInTagExample,
   argTypes: {
     size: {
