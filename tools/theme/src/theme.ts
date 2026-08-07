@@ -69,7 +69,7 @@ export const theme: Theme = {
       50: {
         value: '10px',
         description: 'Use only for text in Badge component.',
-      },
+      }, /* TODO: remove */
       100: {
         value: '12px',
         description: 'Use this font-size with caution for text in some additional messages. Always check its contrast and readability.',
@@ -307,7 +307,7 @@ export const theme: Theme = {
         description: 'Background color of the soon Badge.',
       },
       badge_light_admin: {
-        value: colors.blue['50'].value,
+        value: colors.blue['100'].value,
         description: 'Light background color of the admin Badge.',
       },
       badge_light_alpha: {
@@ -339,7 +339,7 @@ export const theme: Theme = {
         description: 'Text color for the beta Badge with light background.',
       },
       badge_light_new_text: {
-        value: colors.green['500'].value,
+        value: colors.green['400'].value,
         description: 'Text color for the new Badge with light background.',
       },
       badge_light_soon_text: {
@@ -351,7 +351,7 @@ export const theme: Theme = {
         description: 'Background color of the inverted Badge.',
       },
       badge_bg_unavailable: {
-        value: colors.gray['100'].value,
+        value: colors.gray['50'].value,
         description: 'Background color of the unavailable Badge.',
       },
       badge_text_primary_invert: {
@@ -1124,11 +1124,11 @@ export const theme: Theme = {
         description: 'Background of the FeaturePopover with neutral theme.',
       },
       feature_popover_dot_accent: {
-        value: '{semanticTokens.colors.bg_primary_highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with accent theme.',
       },
       feature_popover_dot_neutral: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with neutral theme.',
       },
       feature_popover_dot_outer_border_accent: {
