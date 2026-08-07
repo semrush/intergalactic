@@ -6,5 +6,8 @@ SIcon {
   fill: currentColor;
   flex-shrink: 0;
   outline: none;
-  color: var(--color);
+
+  &[color] {
+    color: var(--color);
+  }
 }

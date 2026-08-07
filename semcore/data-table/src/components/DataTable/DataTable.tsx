@@ -174,6 +174,7 @@ class DataTableRoot<
       requestAnimationFrame(() => {
         this.forceUpdate();
         this.calculateVerticalShadow();
+        this.calculateContainerHeight();
       });
     }
 
@@ -228,6 +229,14 @@ class DataTableRoot<
       if (currentHeaderHeight && currentHeaderHeight !== newHeaderHeight) {
         this.forceUpdate();
       }
+    }
+  }
+
+  calculateContainerHeight() {
+    const scrollArea = this.scrollAreaRef.current;
+    const table = this.tableContainerRef.current;
+    if (scrollArea && table) {
+      scrollArea.style.setProperty('--global-table-height', `${table.offsetHeight}px`);
     }
   }
 
@@ -892,6 +901,7 @@ class DataTableRoot<
     this.containerResizeEndTimeoutId = setTimeout(() => {
       this.calculateVerticalShadow();
       this.calculateStickyHeaderAnimation();
+      this.calculateContainerHeight();
     }, 0);
 
     this.asProps.onResize?.(entries, observer);
