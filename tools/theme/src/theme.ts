@@ -69,7 +69,7 @@ export const theme: Theme = {
       50: {
         value: '10px',
         description: 'Use only for text in Badge component.',
-      },
+      }, /* TODO: remove */
       100: {
         value: '12px',
         description: 'Use this font-size with caution for text in some additional messages. Always check its contrast and readability.',
@@ -307,7 +307,7 @@ export const theme: Theme = {
         description: 'Background color of the soon Badge.',
       },
       badge_light_admin: {
-        value: colors.blue['50'].value,
+        value: colors.blue['100'].value,
         description: 'Light background color of the admin Badge.',
       },
       badge_light_alpha: {
@@ -339,7 +339,7 @@ export const theme: Theme = {
         description: 'Text color for the beta Badge with light background.',
       },
       badge_light_new_text: {
-        value: colors.green['500'].value,
+        value: colors.green['400'].value,
         description: 'Text color for the new Badge with light background.',
       },
       badge_light_soon_text: {
@@ -351,7 +351,7 @@ export const theme: Theme = {
         description: 'Background color of the inverted Badge.',
       },
       badge_bg_unavailable: {
-        value: colors.gray['100'].value,
+        value: colors.gray['50'].value,
         description: 'Background color of the unavailable Badge.',
       },
       badge_text_primary_invert: {
@@ -1088,7 +1088,7 @@ export const theme: Theme = {
         description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
       },
       dot_bg: {
-        value: '{semanticTokens.colors.icon_primary_warning_DEFAULT}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Background color of the Dot.',
       },
       dot_text: {
@@ -1873,7 +1873,7 @@ export const theme: Theme = {
         description: 'Warning Tooltip background.',
       },
       tooltip_border_invert: {
-        value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
+        value: neutral.at(L_INV_BORDER_SECONDARY),
         description: 'Border of the Tooltip with dark theme.',
       },
       tooltip_text: {
@@ -2020,23 +2020,31 @@ export const theme: Theme = {
       },
       content_gap_small: {
         value: `${SCALE_INDENT}px`,
-        description: 'Small gap between content elements inside controls.',
+        description: 'Small gap between content elements inside controls, rows, or columns.',
       },
       content_gap_medium: {
         value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Medium gap between content elements inside controls.',
+        description: 'Medium gap between content elements inside controls, rows, or columns.',
       },
       content_gap_large: {
         value: `${SCALE_INDENT * 2}px`,
-        description: 'Large gap between content elements inside controls.',
+        description: 'Large gap between content elements inside controls, rows, or columns.',
       },
       content_gap_xlarge: {
         value: `${SCALE_INDENT * 3}px`,
-        description: 'Extra large gap between content elements inside controls.',
+        description: 'Extra large gap between elements, rows, or columns.',
       },
       content_gap_xxlarge: {
         value: `${SCALE_INDENT * 4}px`,
-        description: '2x large gap between content elements inside controls.',
+        description: '2x large gap between elements, rows, or columns.',
+      },
+      content_gap_xxlarge_extended: {
+        value: `${SCALE_INDENT * 5}px`,
+        description: 'Extended 2x large gap between elements, rows, or columns.',
+      },
+      content_gap_xxxlarge: {
+        value: `${SCALE_INDENT * 6}px`,
+        description: '3x large gap between elements, rows, or columns.',
       },
     },
     radii: {
@@ -2333,6 +2341,8 @@ export type SemanticTokens = {
     content_gap_large: Value;
     content_gap_xlarge: Value;
     content_gap_xxlarge: Value;
+    content_gap_xxlarge_extended: Value;
+    content_gap_xxxlarge: Value;
   };
   radii: {
     'addon': Value;

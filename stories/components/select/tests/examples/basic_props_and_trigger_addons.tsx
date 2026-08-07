@@ -1,6 +1,7 @@
 import InfoM from '@semcore/icon/Info/m';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
 import Badge from '@semcore/ui/badge';
+import type { NSBadge } from '@semcore/ui/badge';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import type { NSNotice } from '@semcore/ui/notice';
@@ -23,14 +24,12 @@ export type SelectBasicProps = Omit<
   showLeftAddon?: boolean;
   leftAddonContent?: 'icon' | 'badge' | 'text';
   leftAddonText?: string;
-  leftAddonBadgeText?: string;
-  leftAddonBadgeBg?: string;
+  leftAddonBadgeType?: NSBadge.Type;
 
   showRightAddon?: boolean;
   rightAddonContent?: 'icon' | 'badge' | 'text';
   rightAddonText?: string;
-  rightAddonBadgeText?: string;
-  rightAddonBadgeBg?: string;
+  rightAddonBadgeType?: NSBadge.Type;
 
   showTriggerText?: boolean;
   triggerText?: string;
@@ -69,14 +68,12 @@ const Demo = (props: SelectBasicProps) => {
     showLeftAddon = false,
     leftAddonContent = 'icon',
     leftAddonText = 'Left',
-    leftAddonBadgeText = 'alpha',
-    leftAddonBadgeBg = 'red-400',
+    leftAddonBadgeType = 'alpha',
 
     showRightAddon = false,
     rightAddonContent = 'badge',
     rightAddonText = 'Right',
-    rightAddonBadgeText = 'beta',
-    rightAddonBadgeBg = 'blue-400',
+    rightAddonBadgeType = 'beta',
 
     triggerText = 'Trigger',
     showTriggerText = false,
@@ -181,7 +178,7 @@ const Demo = (props: SelectBasicProps) => {
                   <Select.Trigger.Addon>
                     {leftAddonContent === 'icon' && <LinkExternalM />}
                     {leftAddonContent === 'badge' && (
-                      <Badge bg={leftAddonBadgeBg}>{leftAddonBadgeText}</Badge>
+                      <Badge type={leftAddonBadgeType} />
                     )}
                     {leftAddonContent === 'text' && leftAddonText}
                   </Select.Trigger.Addon>
@@ -193,7 +190,7 @@ const Demo = (props: SelectBasicProps) => {
                   <Select.Trigger.Addon>
                     {rightAddonContent === 'icon' && <LinkExternalM />}
                     {rightAddonContent === 'badge' && (
-                      <Badge bg={rightAddonBadgeBg}>{rightAddonBadgeText}</Badge>
+                      <Badge type={rightAddonBadgeType} />
                     )}
                     {rightAddonContent === 'text' && rightAddonText}
                   </Select.Trigger.Addon>
@@ -245,14 +242,12 @@ export const defaultProps: SelectBasicProps = {
   showLeftAddon: false,
   leftAddonContent: 'icon',
   leftAddonText: 'Left',
-  leftAddonBadgeText: 'alpha',
-  leftAddonBadgeBg: 'red-400',
+  leftAddonBadgeType: 'alpha',
 
   showRightAddon: false,
   rightAddonContent: 'badge',
   rightAddonText: 'Right',
-  rightAddonBadgeText: 'beta',
-  rightAddonBadgeBg: 'blue-400',
+  rightAddonBadgeType: 'beta',
 
   triggerText: 'Trigger',
   showTriggerText: false,

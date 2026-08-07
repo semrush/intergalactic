@@ -58,7 +58,7 @@ const Demo = (props: TabPanelDefProps) => {
           </TabPanel.Item.Addon>
           <TabPanel.Item.Text w={props.w} {...props.ellipsis}>Instagram Instagram</TabPanel.Item.Text>
           <TabPanel.Item.Addon>
-            <Badge type='new'>new</Badge>
+            <Badge type='new' />
           </TabPanel.Item.Addon>
         </TabPanel.Item>
         <TabPanel.Item
