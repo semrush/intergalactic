@@ -1598,7 +1598,9 @@
     "name": "--intergalactic-feature-popover-bg-accent",
     "value": "oklch(0.88 0.078 303)",
     "description": "Background of the FeaturePopover with accent theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-bg-neutral",
@@ -1610,13 +1612,15 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Fill color of the FeaturePopover.Spot with accent theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Fill color of the FeaturePopover.Spot with neutral theme.",
     "components": [
       "feature-popover"
@@ -1626,25 +1630,33 @@
     "name": "--intergalactic-feature-popover-dot-outer-border-accent",
     "value": "oklch(0.88 0.078 303)",
     "description": "Outer border color of the FeaturePopover.Spot with accent theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border-neutral",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Outer border color of the FeaturePopover.Spot with neutral theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the FeaturePopover.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-text-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted text color of the FeaturePopover.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-footer-bg",
@@ -2889,7 +2901,6 @@
       "dropdown",
       "dropdown-menu",
       "errors",
-      "feature-popover",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -2916,7 +2927,6 @@
     "components": [
       "date-picker",
       "feature-highlight",
-      "feature-popover",
       "notice-bubble",
       "tag",
       "wizard"
@@ -3277,6 +3287,7 @@
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
       "notice-bubble"
+      "feature-popover"
     ]
   },
   {
@@ -3298,8 +3309,9 @@
     "value": "40px",
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
-      "modal",
       "notice-bubble"
+      "feature-popover",
+      "modal"
     ]
   },
   {
