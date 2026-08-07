@@ -88,5 +88,9 @@ SWrapper {
       outline-offset: 3px;
       border: none;
     }
+
+    &[empty] {
+      background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
+    }
   }
 }
