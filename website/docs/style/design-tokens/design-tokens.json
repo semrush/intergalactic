@@ -3286,8 +3286,8 @@
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
+      "feature-popover",
       "notice-bubble"
-      "feature-popover"
     ]
   },
   {
@@ -3309,9 +3309,9 @@
     "value": "40px",
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
-      "notice-bubble"
       "feature-popover",
-      "modal"
+      "modal",
+      "notice-bubble"
     ]
   },
   {
