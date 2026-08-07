@@ -17,8 +17,9 @@ STabPanelItem {
   position: relative;
   bottom: -1px;
   display: inline-flex;
+  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
   min-width: 0;
-  height: 32px;
+  height: var(--intergalactic-form-control-m, 32px);
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   border: 1px solid transparent;
   border-bottom: none;
@@ -29,7 +30,7 @@ STabPanelItem {
   touch-action: manipulation;
   user-select: none;
   box-sizing: border-box;
-  padding: 0;
+  padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
   padding-bottom: 1px;
   margin: 0;
   box-shadow: none;
@@ -76,38 +77,18 @@ STabPanelItem[disabled] {
 }
 
 STabPanelItem[selected] {
-  color: var(--intergalactic-text-link, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary */
+  color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary */
   border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   flex-shrink: 0;
-
-  &:hover {
-    color: var(--intergalactic-text-link-hover-active, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary-hover-active */
-  }
+  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
 
   &::after {
     border-bottom: none;
   }
 }
 
-SText {
-  margin: auto var(--intergalactic-spacing-2x, 8px);
-}
-
 SAddon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-SAddon:not(:only-child):first-child {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
-}
-
-SAddon:not(:only-child):last-child {
-  margin-right: var(--intergalactic-spacing-2x, 8px);
-}
-
-SAddon:only-child {
-  margin-right: var(--intergalactic-spacing-2x, 8px);
-  margin-left: var(--intergalactic-spacing-2x, 8px);
 }

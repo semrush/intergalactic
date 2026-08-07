@@ -1485,7 +1485,7 @@ export const theme: Theme = {
         description: 'Border color of the TabLine in its normal state.',
       },
       control_tab_line_border_active: {
-        value: '{semanticTokens.colors.border_info_active}',
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
         description: 'Border color of the TabLine in its active state.',
       },
       control_tab_line_border_hover: {

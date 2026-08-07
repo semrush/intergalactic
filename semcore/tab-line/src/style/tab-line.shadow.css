@@ -3,10 +3,17 @@ STabLine {
   display: flex;
   width: 100%;
   max-width: 100%;
+
+  &[size='m'] {
+    gap: var(--intergalactic-spacing-content-gap-xxlarge, 16px);
+  }
+  &[size='l'] {
+    gap: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
+  }
 }
 
 STabLine[underlined] {
-  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-tab-line-border */
+  border-bottom: 1px solid var(--intergalactic-control-tab-line-border, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 STabLineItem {
@@ -24,7 +31,6 @@ STabLineItem {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   overflow: visible;
-  /*outline: 0;*/
   text-align: center;
   vertical-align: middle;
   font-family: inherit;
@@ -32,7 +38,7 @@ STabLineItem {
   border: none;
   background: transparent;
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  margin-right: var(--intergalactic-spacing-4x, 16px);
+  gap: var(--intergalactic-spacinig-content-gap-medium, undefined);
   font-weight: var(--intergalactic-medium, 500);
 
   &::-moz-focus-inner {
@@ -61,20 +67,14 @@ STabLineItem {
   }
 
   &:hover::before {
-    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-tab-line-border-hover */
+    bottom: 0;
+    height: 2px;
+    background-color: var(--intergalactic-control-tab-line-border-hover, oklch(0.137 0.026 175.7 / 0.161));
   }
 
   &[selected]::after {
     transition-delay: calc(var(--intergalactic-duration-control, 200) * 1ms);
-    background-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: --intergalactic-control-tab-line-border-active */
-  }
-
-  & SText:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-2x, 8px);
-  }
-
-  & SAddon:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-2x, 8px);
+    background-color: var(--intergalactic-control-tab-line-border-active, oklch(0.23 0.01 140));
   }
 }
 
@@ -82,7 +82,7 @@ SCaret {
   position: absolute;
   bottom: -1px;
   height: 3px;
-  background: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: --intergalactic-control-tab-line-border-active */
+  background: var(--intergalactic-control-tab-line-border-active, oklch(0.23 0.01 140));
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
 }
 
