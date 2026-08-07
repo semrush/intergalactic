@@ -1,20 +1,20 @@
 SFeaturePopover {
-  padding-top: var(--intergalactic-spacing-4x, 16px);
-  padding-right: var(--intergalactic-spacing-10x, 40px);
-  padding-bottom: var(--intergalactic-spacing-4x, 16px);
-  padding-left: var(--intergalactic-spacing-4x, 16px);
+  padding-top: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding-right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+  padding-bottom: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding-left: var(--intergalactic-spacing-content-padding-large, 16px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
   box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
   position: relative;
 
   &[theme='accent'] {
-    background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-bg-accent */
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-feature-popover-text */
+    background-color: var(--intergalactic-feature-popover-bg-accent, oklch(0.88 0.078 303));
+    color: var(--intergalactic-feature-popover-text, oklch(0.1 0.03 137 / 0.899));
   }
   &[theme='neutral'] {
-    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140)); /* TODO: --intergalactic-feature-popover-bg-neutral */
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-feature-popover-text-invert */
+    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140));
+    color: var(--intergalactic-feature-popover-text-invert, oklch(0.999 0.001 180 / 0.949));
   }
 }
 
@@ -94,18 +94,18 @@ SSpot {
 
   &[theme='accent'] {
     &::before {
-      background-color: var(--intergalactic-feature-popover-dot-outer-border, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-outer-border-accent */
+      background-color: var(--intergalactic-feature-popover-dot-outer-border-accent, oklch(0.88 0.078 303));
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-bg, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-accent */
+      background-color: var(--intergalactic-feature-popover-dot-accent, oklch(0.74 0.17 303));
     }
   }
   &[theme='neutral'] {
     &::before {
-      background-color: var(--intergalactic-feature-popover-dot-neutral-outer-border, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-outer-border-neutral */
+      background-color: var(--intergalactic-feature-popover-dot-outer-border-neutral, oklch(0.74 0.17 303));
     }
     &::after {
-      background-color: var(--intergalactic-feature-popover-dot-neutral, oklch(0.88 0.078 303)); /* TODO: --intergalactic-feature-popover-dot-neutral */
+      background-color: var(--intergalactic-feature-popover-dot-neutral, oklch(0.74 0.17 303));
     }
   }
 }
