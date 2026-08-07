@@ -40,10 +40,12 @@ class RootLink extends Component<
     }
 
     if (this.asProps['aria-labelledby']) {
+      const ariaLabelledBy = this.asProps['aria-labelledby'];
+
       setTimeout(() => {
         this.setState({
           ariaLabelledByContent:
-            document.getElementById(this.asProps['aria-labelledby'] ?? '')?.textContent ?? '',
+            document.getElementById(ariaLabelledBy)?.textContent ?? '',
         });
       }, 0);
     }
