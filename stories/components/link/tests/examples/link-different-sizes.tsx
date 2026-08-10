@@ -8,8 +8,6 @@ import Spin, { type NSSpin } from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const EXTERNAL_HREF = 'https://developer.semrush.com/intergalactic/components/link/link-api';
-
 const sizes = [
   800,
   700,
@@ -22,26 +20,18 @@ const sizes = [
   100,
 ] as const;
 
+type AddonType = 'icon' | 'badge' | 'counter' | 'spin' | 'none';
+
 type LinkSizesProps = {
-  addonLeft: 'icon' | 'badge' | 'counter' | 'spin';
-  addonRight: 'icon' | 'badge' | 'counter' | 'spin';
+  addonLeft: AddonType;
+  addonRight: AddonType;
   ellipsis: boolean;
   active: boolean;
+  use: 'primary' | 'secondary' | 'accent';
+  href: string;
 };
 
-const renderAddon = (
-  addon: LinkSizesProps['addonLeft'],
-  size: (typeof sizes)[number],
-  options: { skipBadge?: boolean; skipIcon?: boolean },
-) => {
-  if (options.skipBadge && addon === 'badge') {
-    return null;
-  }
-
-  if (options.skipIcon && addon === 'icon') {
-    return null;
-  }
-
+const renderAddon = (addon: AddonType, size: (typeof sizes)[number]) => {
   let spinSize: NSSpin.Size = 'm';
   if (size <= 200) {
     spinSize = 'xs';
@@ -56,85 +46,47 @@ const renderAddon = (
     counterSize = 'm';
   }
 
-  if (addon === 'icon') {
-    return (
-      <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>
-    );
+  switch (addon) {
+    case 'icon':
+      return <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>;
+    case 'badge':
+      return <Link.Addon><Badge type='new' /></Link.Addon>;
+    case 'counter':
+      return <Link.Addon><Counter size={counterSize}>17</Counter></Link.Addon>;
+    case 'spin':
+      return <Link.Addon><Spin size={spinSize} /></Link.Addon>;
+    default:
+      return null;
   }
-
-  if (addon === 'badge') {
-    return (
-      <Link.Addon>
-        <Badge type='new' />
-      </Link.Addon>
-    );
-  }
-
-  if (addon === 'counter') {
-    return (
-      <Link.Addon>
-        <Counter size={counterSize}>
-          17
-        </Counter>
-      </Link.Addon>
-    );
-  }
-
-  if (addon === 'spin') {
-    return (
-      <Link.Addon>
-        <Spin size={spinSize} />
-      </Link.Addon>
-    );
-  }
-
-  return null;
 };
 
 const Demo = (props: LinkSizesProps) => {
   const w = 150;
   const text = 'The quick brown fox jumps over the lazy dog';
 
-  const renderLinks = (
-    external: boolean,
-    options?: { ellipsis?: boolean; skipBadge?: boolean; skipIcon?: boolean },
-  ) => {
-    const ellipsis = options?.ellipsis ?? props.ellipsis;
-    const skipBadge = options?.skipBadge ?? external;
-    const skipIcon = options?.skipIcon ?? false;
-
-    return sizes.map((size) => (
-      <Text
-        key={`${external ? 'external' : 'default'}-${ellipsis ? 'ellipsis' : 'no-ellipsis'}-${size}`}
-        tag='div'
-        size={size}
-        mb={4}
-      >
-        {`${size} `}
-        <Link
-          href={external ? EXTERNAL_HREF : '#'}
-          mr={4}
-          active={props.active}
-          size={size}
-        >
-          {renderAddon(props.addonLeft, size, { skipBadge, skipIcon })}
-          <Link.Text
-            w={ellipsis ? size < 600 ? w : w * 2 : undefined}
-            ellipsis={ellipsis ? true : undefined}
-          >
-            {text}
-          </Link.Text>
-          {renderAddon(props.addonRight, size, { skipBadge, skipIcon })}
-        </Link>
-      </Text>
-    ));
-  };
-
   return (
     <Flex direction='column'>
-      {renderLinks(false)}
-      {renderLinks(true)}
-      {renderLinks(true, { ellipsis: false, skipIcon: true })}
+      {sizes.map((size) => (
+        <Text key={size} tag='div' size={size} mb={4}>
+          {`${size} `}
+          <Link
+            href={props.href}
+            use={props.use}
+            mr={4}
+            active={props.active}
+            size={size}
+          >
+            {renderAddon(props.addonLeft, size)}
+            <Link.Text
+              w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
+              ellipsis={props.ellipsis ? true : undefined}
+            >
+              {text}
+            </Link.Text>
+            {renderAddon(props.addonRight, size)}
+          </Link>
+        </Text>
+      ))}
     </Flex>
   );
 };
@@ -144,6 +96,8 @@ export const defaultLinksizesProps: LinkSizesProps = {
   addonRight: 'badge',
   ellipsis: true,
   active: false,
+  use: 'primary',
+  href: '#',
 };
 
 Demo.defaultProps = defaultLinksizesProps;

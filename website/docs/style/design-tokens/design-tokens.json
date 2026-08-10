@@ -3401,8 +3401,8 @@
       "base-trigger",
       "dropdown-menu",
       "inline-input",
-      "link"
-      "pagination"
+      "link",
+      "pagination",
       "tag"
     ]
   },

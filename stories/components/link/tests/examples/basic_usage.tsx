@@ -29,8 +29,12 @@ type BasicLinkProps = LinkProps & {
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
-  merged?: boolean;
-  addonPassMethod?: 'slot' | 'prop';
+  /**
+   * How an icon addon is composed:
+   * 'children' renders `<Link.Addon><IconAddon /></Link.Addon>`,
+   * 'tag' renders `<Link.Addon tag={IconAddon} />`.
+   */
+  addonPassMethod?: 'children' | 'tag';
   w?: number;
   containerW?: number;
 };
@@ -56,8 +60,7 @@ const Demo = (props: BasicLinkProps) => {
     hintPlacement,
     addonLeftType = 'icon',
     addonRightType = 'icon',
-    merged = false,
-    addonPassMethod = 'slot',
+    addonPassMethod = 'children',
     containerW,
   } = props;
 
@@ -90,18 +93,11 @@ const Demo = (props: BasicLinkProps) => {
         return <Link.Addon><Spin size={spinSize} /></Link.Addon>;
       case 'icon':
       default:
-        if (addonPassMethod === 'prop') return null;
-        if (merged) return <Link.Addon tag={IconAddon} />;
-        return <Link.Addon><IconAddon /></Link.Addon>;
+        return addonPassMethod === 'tag'
+          ? <Link.Addon tag={IconAddon} />
+          : <Link.Addon><IconAddon /></Link.Addon>;
     }
   };
-
-  const propAddonLeft = addonPassMethod === 'prop' && showAddonLeft && addonLeftType === 'icon'
-    ? IconAddon
-    : undefined;
-  const propAddonRight = addonPassMethod === 'prop' && showAddonRight && addonRightType === 'icon'
-    ? IconAddon
-    : undefined;
 
   const ellipsisW = ellipsis && !containerW ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 
@@ -125,8 +121,6 @@ const Demo = (props: BasicLinkProps) => {
         title={title}
         w={noWrap ? w : undefined}
         display={linkDisplayValue}
-        addonLeft={propAddonLeft}
-        addonRight={propAddonRight}
       >
         {renderAddon(showAddonLeft, addonLeftType)}
         {childrenMode === 'string'
@@ -157,8 +151,6 @@ const Demo = (props: BasicLinkProps) => {
         color={color}
         title={title}
         w={noWrap ? w : undefined}
-        addonLeft={propAddonLeft}
-        addonRight={propAddonRight}
       >
         {renderAddon(showAddonLeft, addonLeftType)}
         {childrenMode === 'string' ? text : <Link.Text size={size}>{text}</Link.Text>}
@@ -178,8 +170,7 @@ export const defaultProps: BasicLinkProps = {
 
   addonLeftType: 'icon',
   addonRightType: 'icon',
-  merged: false,
-  addonPassMethod: 'slot',
+  addonPassMethod: 'children',
   ellipsis: {
     ellipsis: true,
   },
