@@ -3,115 +3,154 @@
     "name": "--intergalactic-badge-accent-admin",
     "value": "oklch(0.58 0.168 278.2)",
     "description": "Background color of the admin Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-alpha",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Background color of the alpha Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-beta",
     "value": "oklch(0.74 0.17 72)",
     "description": "Background color of the beta Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-new",
     "value": "oklch(0.74 0.17 170)",
     "description": "Background color of the new Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-accent-soon",
     "value": "oklch(0.64 0.003 157.8)",
     "description": "Background color of the soon Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-admin",
-    "value": "oklch(0.969 0.016 267.7)",
+    "value": "oklch(0.898 0.054 268.3)",
     "description": "Light background color of the admin Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-alpha",
     "value": "oklch(0.899 0.069 12.9)",
     "description": "Light background color of the alpha Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-beta",
     "value": "oklch(0.9 0.13 92)",
     "description": "Light background color of the beta Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-new",
     "value": "oklch(0.9 0.11 175)",
     "description": "Light background color of the new Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-soon",
     "value": "oklch(0.9 0.002 177)",
     "description": "Light background color of the soon Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-admin-text",
     "value": "oklch(0.58 0.168 278.2)",
     "description": "Text color for the admin Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-alpha-text",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Text color for the alpha Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-beta-text",
     "value": "oklch(0.64 0.16 64)",
     "description": "Text color for the beta Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-new-text",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.64 0.161 170)",
     "description": "Text color for the new Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-light-soon-text",
     "value": "oklch(0.46 0.004 144.4)",
     "description": "Text color for the soon Badge with light background.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-bg-invert",
     "value": "oklch(0.983 0.03 140 / 0.183)",
     "description": "Background color of the inverted Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-bg-unavailable",
-    "value": "oklch(0.9 0.002 177)",
+    "value": "oklch(0.97 0.001 180)",
     "description": "Background color of the unavailable Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-badge-text-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted primary text color for Badge.",
-    "components": []
+    "components": [
+      "badge",
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-badge-text-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Secondary text color for Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-bg-highlight-focus",
@@ -139,8 +178,7 @@
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Accent background of a message or a banner with a critical information.",
     "components": [
-      "counter",
-      "notice-bubble"
+      "counter"
     ]
   },
   {
@@ -161,9 +199,7 @@
     "name": "--intergalactic-bg-primary-invert",
     "value": "oklch(0.23 0.01 140)",
     "description": "Inverted version of the primary background of the interface that contains the main data and information.",
-    "components": [
-      "notice-bubble"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-invert-active",
@@ -204,7 +240,6 @@
       "inline-input",
       "input",
       "modal",
-      "pills",
       "side-panel",
       "slider",
       "tag",
@@ -224,9 +259,7 @@
     "name": "--intergalactic-bg-primary-neutral-hover",
     "value": "oklch(0.98 0.001 180)",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
-    "components": [
-      "pills"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-success",
@@ -442,7 +475,6 @@
       "feedback-form",
       "input",
       "input-tags",
-      "pills",
       "tab-line",
       "textarea"
     ]
@@ -463,7 +495,6 @@
       "feedback-form",
       "fullscreen-modal",
       "input",
-      "pills",
       "side-panel",
       "slider",
       "spin",
@@ -501,7 +532,7 @@
   },
   {
     "name": "--intergalactic-border-secondary-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.989 0.019 140 / 0.232)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
   },
@@ -1136,8 +1167,7 @@
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "pills"
+      "base-trigger"
     ]
   },
   {
@@ -1231,13 +1261,13 @@
   },
   {
     "name": "--intergalactic-control-slider-bar-bg",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background of the Slider bar.",
     "components": []
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
-    "value": "oklch(0.88 0.002 175.6)",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Hover state of the Slider bar.",
     "components": []
   },
@@ -1508,15 +1538,19 @@
   },
   {
     "name": "--intergalactic-dot-bg",
-    "value": "oklch(0.728 0.188 51.8)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Background color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dot-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the Dot.",
-    "components": []
+    "components": [
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
@@ -1564,7 +1598,9 @@
     "name": "--intergalactic-feature-popover-bg-accent",
     "value": "oklch(0.88 0.078 303)",
     "description": "Background of the FeaturePopover with accent theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-bg-neutral",
@@ -1576,13 +1612,15 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Fill color of the FeaturePopover.Spot with accent theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Fill color of the FeaturePopover.Spot with neutral theme.",
     "components": [
       "feature-popover"
@@ -1592,25 +1630,33 @@
     "name": "--intergalactic-feature-popover-dot-outer-border-accent",
     "value": "oklch(0.88 0.078 303)",
     "description": "Outer border color of the FeaturePopover.Spot with accent theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border-neutral",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "Outer border color of the FeaturePopover.Spot with neutral theme.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text color of the FeaturePopover.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-text-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted text color of the FeaturePopover.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-footer-bg",
@@ -1726,7 +1772,6 @@
     "value": "oklch(0.728 0.188 51.8)",
     "description": "Semantic warning icon.",
     "components": [
-      "dot",
       "notice"
     ]
   },
@@ -1934,13 +1979,17 @@
     "name": "--intergalactic-notice-bubble-bg-critical",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Critical background of the NoticeBubble.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-notice-bubble-bg-info",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the NoticeBubble.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-overlay-limitation-primary",
@@ -1985,25 +2034,33 @@
     "name": "--intergalactic-control-pills-bg-hover",
     "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the Pills background.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-bg-normal",
     "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Background of the Pills in its normal state.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-bg-selected",
     "value": "oklch(1 0 0)",
     "description": "Background of the selected Pill.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-pills-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Pills in its normal state.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-bg",
@@ -2025,7 +2082,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2033,13 +2090,13 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
-    "value": "oklch(0.88 0.002 175.6)",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Hover state of the background color of the ProgressBar.",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert",
-    "value": "oklch(0.45 0.004 143.7)",
+    "value": "oklch(0.983 0.03 140 / 0.183)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2047,13 +2104,13 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert-hover",
-    "value": "oklch(0.56 0.003 151.9)",
+    "value": "oklch(0.995 0.008 147.4 / 0.391)",
     "description": "Hover state for the inverted version of the background color of the ProgressBar.",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
-    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.96 0.001 180) 0%, oklch(0.96 0.001 180) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.96 0.001 180) 0%)",
+    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.176 0.033 175.6 / 0.056) 0%, oklch(0.176 0.033 175.6 / 0.056) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.176 0.033 175.6 / 0.056) 0%)",
     "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2069,7 +2126,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-value-gradient",
-    "value": "linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 0%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 75%, oklch(0.74 0.17 303) 0%)",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 75%, oklch(0.22 0.01 140) 0%)",
     "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2609,7 +2666,7 @@
   },
   {
     "name": "--intergalactic-tag-secondary-border-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.989 0.019 140 / 0.232)",
     "description": "Inverted border color of the secondary Tag.",
     "components": []
   },
@@ -2840,7 +2897,6 @@
     "description": "Default body and UI copy; strongest reading emphasis for primary content.",
     "components": [
       "accordion",
-      "badge",
       "base-components",
       "base-trigger",
       "breadcrumbs",
@@ -2853,7 +2909,6 @@
       "dropdown",
       "dropdown-menu",
       "errors",
-      "feature-popover",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -2878,11 +2933,8 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary text.",
     "components": [
-      "badge",
       "date-picker",
-      "dot",
       "feature-highlight",
-      "feature-popover",
       "notice-bubble",
       "tag",
       "wizard"
@@ -2957,7 +3009,7 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.48 0.004 145.9)",
+    "value": "oklch(0.35 0.006 140)",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
@@ -3070,6 +3122,7 @@
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow of the Switch toggle.",
     "components": [
+      "pills",
       "switch"
     ]
   },
@@ -3182,7 +3235,11 @@
     "name": "--intergalactic-spacing-content-padding-xxsmall",
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter",
+      "notice-bubble",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xsmall",
@@ -3190,15 +3247,20 @@
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
       "base-components",
+      "counter",
       "dropdown",
-      "dropdown-menu"
+      "dropdown-menu",
+      "pills"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xsmall-extended",
     "value": "6px",
     "description": "Extended extra small padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "counter",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-small",
@@ -3207,7 +3269,8 @@
     "components": [
       "base-components",
       "dropdown",
-      "modal"
+      "modal",
+      "pills"
     ]
   },
   {
@@ -3221,6 +3284,7 @@
       "dropdown",
       "input",
       "modal",
+      "pills",
       "time-picker",
       "tooltip"
     ]
@@ -3229,7 +3293,10 @@
     "name": "--intergalactic-spacing-content-padding-large",
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "feature-popover",
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xlarge",
@@ -3250,7 +3317,9 @@
     "value": "40px",
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
-      "modal"
+      "feature-popover",
+      "modal",
+      "notice-bubble"
     ]
   },
   {
@@ -3274,6 +3343,7 @@
       "dropdown",
       "dropdown-menu",
       "input",
+      "pills",
       "radio",
       "select"
     ]
@@ -3286,6 +3356,7 @@
       "button",
       "checkbox",
       "dropdown",
+      "notice-bubble",
       "radio",
       "select"
     ]
@@ -3294,7 +3365,9 @@
     "name": "--intergalactic-spacing-content-gap-xlarge",
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge",
@@ -3330,7 +3403,8 @@
     "value": "4px",
     "description": "Corner radius for Badge and compact status chips—aligned with small rounded controls.",
     "components": [
-      "badge"
+      "badge",
+      "feature-highlight"
     ]
   },
   {
@@ -3364,7 +3438,6 @@
       "inline-edit",
       "inline-input",
       "input",
-      "pills",
       "select",
       "tab-panel",
       "textarea",
@@ -3394,7 +3467,9 @@
     "name": "--intergalactic-pills-rounded",
     "value": "6px",
     "description": "Use for rounding Pills.",
-    "components": []
+    "components": [
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-popper-rounded",
