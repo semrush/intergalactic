@@ -15,7 +15,7 @@ SItemToggle[use][use='primary'] {
   margin-bottom: var(--intergalactic-spacing-05x, 2px);
 }
 SItemToggle[use][use='primary']:hover {
-  background-color: var(--intergalactic-bg-secondary-neutral-hover, oklch(0.96 0.001 180));
+  background-color: var(--intergalactic-bg-secondary-neutral-hover, oklch(0.97 0.001 180));
 }
 
 SItemToggle[disabled] {

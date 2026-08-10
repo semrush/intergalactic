@@ -168,13 +168,13 @@ export const colors = colorNames.reduce<Record<Colors, typeof initLightnessMap>>
 
 /** Primary bg */
 export const L_BG_PRIMARY = 1;
-export const L_BG_PRIMARY_HOVER = 0.98;
-export const L_BG_PRIMARY_ACTIVE = 0.97;
+export const L_BG_PRIMARY_HOVER = 0.97;
+export const L_BG_PRIMARY_ACTIVE = 0.96;
 
 /** Secondary bg */
 export const L_BG_SECONDARY = 0.98;
-export const L_BG_SECONDARY_HOVER = 0.96;
-export const L_BG_SECONDARY_ACTIVE = 0.94;
+export const L_BG_SECONDARY_HOVER = 0.97;
+export const L_BG_SECONDARY_ACTIVE = 0.96;
 
 /** Selected bg */
 export const L_BG_SELECTED = 0.96;
@@ -248,9 +248,9 @@ export const L_INV_BG_PRIMARY_HOVER = 0.36;
 export const L_INV_BG_PRIMARY_ACTIVE = 0.4;
 
 /** Secondary bg */
-export const L_INV_BG_SECONDARY = 0.3;
-export const L_INV_BG_SECONDARY_HOVER = 0.32;
-export const L_INV_BG_SECONDARY_ACTIVE = 0.34;
+export const L_INV_BG_SECONDARY = 0.23;
+export const L_INV_BG_SECONDARY_HOVER = 0.28;
+export const L_INV_BG_SECONDARY_ACTIVE = 0.32;
 
 /** Skeleton bg */
 export const L_INV_BG_SKELETON = 0.5;

@@ -24,7 +24,7 @@ SDropdownPopper {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item-hover, oklch(0.177 0.033 175.6 / 0.028));
+      background-color: var(--intergalactic-dropdown-menu-item-hover, oklch(0.177 0.033 175.6 / 0.042));
     }
   }
 
