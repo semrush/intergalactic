@@ -328,7 +328,7 @@ class TotalPages extends Component<
     const textSize = size === 'l' ? 300 : 200;
     return sstyled(styles)(
       <>
-        <STotalPagesLabel size={textSize} use='secondary'>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
+        <STotalPagesLabel size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
         {isLastOrSingle
           ? (
               // @ts-ignore
@@ -344,6 +344,7 @@ class TotalPages extends Component<
               <STotalPages
                 render={ButtonLink}
                 use:size={textSize}
+                use='secondary'
                 aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
               />
             )}
