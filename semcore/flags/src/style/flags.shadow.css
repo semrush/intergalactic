@@ -12,7 +12,7 @@ SFlags {
     display: block;
     width: 14px;
     height: 11px;
-    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.94 0.002 180));
+    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.96 0.001 180));
     z-index: -1;
   }
 }
@@ -21,7 +21,7 @@ SFlags[data-capital-letters] {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: var(--intergalactic-bg-primary-neutral-active, oklch(0.97 0.001 180));
+  background: var(--intergalactic-bg-primary-neutral-active, oklch(0.96 0.001 180));
 
   &::before {
     content: attr(data-capital-letters);

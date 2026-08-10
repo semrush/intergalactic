@@ -4,12 +4,12 @@ SFilterTrigger[selected] {
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   &:hover {
-    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.525 0.265 263 / 0.077));
+    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.526 0.264 263 / 0.058));
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.524 0.266 263.1 / 0.116));
+    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.525 0.265 263 / 0.077));
   }
 }
 

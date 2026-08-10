@@ -94,11 +94,11 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.176 0.033 175.6 / 0.056));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.177 0.033 175.6 / 0.042));
   }
 
   &:active {
-    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.176 0.033 175.7 / 0.084));
+    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.176 0.033 175.6 / 0.056));
   }
 }
 

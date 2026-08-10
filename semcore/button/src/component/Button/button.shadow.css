@@ -207,13 +207,13 @@ SButton[theme='tertiary-info'] {
 
   &:hover {
     color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
-    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.525 0.265 263 / 0.077));
+    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.526 0.264 263 / 0.058));
   }
 
   &:active,
   &[active] {
     color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
-    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.524 0.266 263.1 / 0.116));
+    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.525 0.265 263 / 0.077));
   }
 }
 
@@ -222,14 +222,14 @@ SButton[theme='tertiary-muted'] {
   background-color: var(--intergalactic-control-tertiary-neutral, transparent);
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.176 0.033 175.6 / 0.056));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.177 0.033 175.6 / 0.042));
     color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   &:active,
   &[active] {
     background-color: var(--intergalactic-control-tertiary-neutral-active,
-    oklch(0.176 0.033 175.7 / 0.084));
+    oklch(0.176 0.033 175.6 / 0.056));
     color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 }
