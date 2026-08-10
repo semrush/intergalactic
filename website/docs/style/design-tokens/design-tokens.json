@@ -3393,6 +3393,7 @@
       "base-trigger",
       "dropdown-menu",
       "inline-input",
+      "pagination"
       "tag"
     ]
   },
@@ -3421,6 +3422,7 @@
       "checkbox",
       "dropdown",
       "notice-bubble",
+      "pagination",
       "radio",
       "select",
       "tag"
@@ -3431,20 +3433,25 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
-      "notice-bubble"
+      "notice-bubble",
+      "pagination"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge",
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "pagination"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge-extended",
     "value": "20px",
     "description": "Extended 2x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "pagination"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
