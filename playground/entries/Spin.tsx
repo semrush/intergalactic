@@ -20,9 +20,9 @@ type AdditionalJSXProps = {
 };
 export type SpinJSXProps = JSXProps<NSSpin.Props> & AdditionalJSXProps;
 
-const margins = {
-  xs: 1,
-  s: 1,
+const gaps = {
+  xs: 1.5,
+  s: 1.5,
   m: 2,
   l: 2,
   xl: 4,
@@ -32,10 +32,10 @@ const margins = {
 const textSize: { [key in SpinJSXProps['size']]: NSText.Props['size'] } = {
   xs: 200,
   s: 200,
-  m: 300,
+  m: 200,
   l: 300,
-  xl: 200,
-  xxl: 200,
+  xl: 300,
+  xxl: 300,
 };
 
 const textPlacement: { [key in SpinJSXProps['textPlacement']]: NSFlex.Props['direction'] } = {
@@ -46,7 +46,7 @@ const textPlacement: { [key in SpinJSXProps['textPlacement']]: NSFlex.Props['dir
 function getJSX(props: SpinJSXProps) {
   return props.text.length
     ? (
-        <Flex alignItems='center' gap={margins[props.size]} direction={textPlacement[props.textPlacement]}>
+        <Flex alignItems='center' gap={gaps[props.size]} direction={textPlacement[props.textPlacement]}>
           <Spin size={props.size} theme={props.theme} />
           <Text size={textSize[props.size]} color='text-secondary'>
             {props.text}

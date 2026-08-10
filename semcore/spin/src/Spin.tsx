@@ -79,6 +79,7 @@ class RootSpin extends Component<
           fill='none'
           strokeWidth={strokeWidth}
           strokeLinecap='round'
+          pathLength={100}
         />
         <Children />
       </SSpin>,

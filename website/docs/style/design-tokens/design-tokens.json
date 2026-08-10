@@ -2213,7 +2213,7 @@
   },
   {
     "name": "--intergalactic-spin-bg",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.104 0.023 162.3 / 0.385)",
     "description": "Track color of the Spin loader.",
     "components": [
       "spin"

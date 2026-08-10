@@ -6,18 +6,18 @@
 
 @keyframes stretch {
   0% {
-    stroke-dasharray: 20 269;
+    stroke-dasharray: 1 99;
     stroke-dashoffset: 0;
   }
 
   50% {
-    stroke-dasharray: 120 169;
-    stroke-dashoffset: -45;
+    stroke-dasharray: 90 10;
+    stroke-dashoffset: -5;
   }
 
   100% {
-    stroke-dasharray: 20 269;
-    stroke-dashoffset: -289;
+    stroke-dasharray: 1 99;
+    stroke-dashoffset: -100;
   }
 }
 
@@ -33,8 +33,6 @@ SSpin {
 }
 
 SCircle {
-  stroke-dasharray: 20 269;
-  stroke-dashoffset: 0;
   animation-name: stretch;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -46,7 +44,7 @@ SSpin[theme] SCircle {
 }
 
 SSpin[theme='dark'] SCircle {
-  stroke: var(--intergalactic-spin-bg, oklch(0.137 0.026 175.7 / 0.161));
+  stroke: var(--intergalactic-spin-bg, oklch(0.104 0.023 162.3 / 0.385));
 }
 
 SSpin[theme='invert'], SSpin[invert] {
