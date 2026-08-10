@@ -1,16 +1,17 @@
-import { Box, type BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import React from 'react';
 
 import style from './style/product-head.shadow.css';
 
-type HeaderComponent = typeof Box & {
-  Buttons: typeof Box;
-  Links: typeof Box;
-  Row: typeof Box;
+type HeaderComponent = NSBox.Component & {
+  Buttons: NSBox.Component;
+  Links: NSBox.Component;
+  Row: NSBox.Component;
 };
 
-class HeaderRoot extends Component<BoxProps> {
+class HeaderRoot extends Component<NSBox.Props> {
   static displayName = 'ProductHead';
   static style = style;
 

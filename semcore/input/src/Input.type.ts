@@ -1,13 +1,13 @@
-import type { BoxProps, NeighborItemProps, NeighborLocationProps } from '@semcore/base-components';
+import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type React from 'react';
 
 declare namespace NSInput {
   type Size = 'm' | 'l';
-  type Props = BoxProps &
-    NeighborItemProps &
-    NeighborLocationProps & {
-      /**
+  type Props = NSBox.Props &
+    NSNeighborLocation.Detect.Props &
+    NSNeighborLocation.Props & {
+    /**
        * Sets the input and addons to the disabled state
        * */
       disabled?: boolean;
@@ -32,8 +32,8 @@ declare namespace NSInput {
   };
 
   namespace Value {
-    type Props = BoxProps &
-      NeighborItemProps & {
+    type Props = NSBox.Props &
+      NSNeighborLocation.Detect.Props & {
         /**
          * Input value
          */
@@ -76,7 +76,7 @@ declare namespace NSInput {
   }
 
   namespace Addon {
-    type Props = BoxProps & NeighborItemProps;
+    type Props = NSBox.Props & NSNeighborLocation.Detect.Props;
 
     type Component = Intergalactic.Component<'div', Props>;
   }

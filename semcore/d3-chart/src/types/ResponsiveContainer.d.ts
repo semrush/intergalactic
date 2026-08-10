@@ -1,11 +1,11 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { UnknownProperties } from '@semcore/core';
 
 import type { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IResponsiveContainerProps extends ResponsiveContainerProps, UnknownProperties {}
-export type ResponsiveContainerProps = BoxProps & {
+export type ResponsiveContainerProps = NSBox.Props & {
   /** Relation between height and width dimensions block */
   aspect?: number;
   /** Callback which will be called after changing the block size */

@@ -1,8 +1,8 @@
 import { ScrollArea, Box, Flex } from '@semcore/ui/base-components';
-import type { ScrollAreaProps } from '@semcore/ui/base-components';
+import type { NSScrollArea } from '@semcore/ui/base-components';
 import React from 'react';
 
-export type ScrollAreaExampleProps = ScrollAreaProps & {
+export type ScrollAreaExampleProps = NSScrollArea.Props & {
   shadow?: boolean;
   orientation?: 'horizontal' | 'vertical';
   topOffset?: number;

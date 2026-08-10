@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/ui/base-components';
+import type { NSBox } from '@semcore/ui/base-components';
 import { DataTable, ACCORDION } from '@semcore/ui/data-table';
 import type { DataTableProps } from '@semcore/ui/data-table';
 import { Text } from '@semcore/ui/typography';
@@ -11,7 +11,7 @@ type TableProps = {
   accordionAnimationRows: DataTableProps<typeof data, any, any>['accordionAnimationRows'];
 };
 
-export type AccordionDurationProps = TableProps & BoxProps;
+export type AccordionDurationProps = TableProps & NSBox.Props;
 
 const WidgetEmpty = () => {
   return (

@@ -553,4 +553,30 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('', expect.anything());
     expect(spy).toBeCalledTimes(4);
   });
+
+  test('Verify displaying the same negative value after backspace', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value defaultValue='0' onChange={spy} data-testid='input-number-value' />
+      </InputNumber>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+
+    await userEvent.keyboard('-');
+    expect(spy).not.toBeCalled();
+    expect(getByTestId('input-number-value').getAttribute('value')).toBe('-');
+
+    await userEvent.keyboard('1');
+    expect(spy).lastCalledWith('-1', expect.anything());
+
+    await userEvent.keyboard('[Backspace]');
+    expect(spy).toBeCalledTimes(1);
+    expect(getByTestId('input-number-value').getAttribute('value')).toBe('-');
+
+    await userEvent.keyboard('1');
+    expect(spy).toBeCalledTimes(1);
+    expect(getByTestId('input-number-value').getAttribute('value')).toBe('-1');
+  });
 });

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "lib": ["dom", "ESNext"],
+    "jsx": "react",
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": false,
+    "sourceMap": true,
+    "importHelpers": false,
+    "noEmitHelpers": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "types": ["node", "vitest", "@workspace/types/deps", "@workspace/types/globals", "@workspace/types/styles", "@workspace/types/vite"],
+  },
+}

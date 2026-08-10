@@ -28,8 +28,11 @@ export const EmptyStateSortable: Story = {
   render: EmptyStateSortableExample,
 };
 
-export const LoadingWithScrollAndButton: Story = {
+export const LoadingWithScrollAndButton: StoryObj<{ h: number }> = {
   render: LoadingWithScrollAndButtonExample,
+  argTypes: {
+    h: { type: 'number' },
+  },
 };
 
 export const LoadingPagination: Story = {

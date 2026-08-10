@@ -1,9 +1,9 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
 
 declare namespace NSSkeleton {
-  type Props = BoxProps & UniqueIDProps & {
+  type Props = NSBox.Props & UniqueIDProps & {
     /**
      *  Skeleton visibility control property
      */
@@ -36,7 +36,7 @@ declare namespace NSSkeleton {
   };
 
   namespace Text {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       // TODO: It looks like it should be number (def. not a string...)
       /**
        * Number of items to be returned
@@ -55,11 +55,11 @@ declare namespace NSSkeleton {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SkeletonProps = NSSkeleton.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SkeletonCtx = NSSkeleton.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type SkeletonTextProps = NSSkeleton.Text.Props;
 
 export type { NSSkeleton };

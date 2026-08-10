@@ -1,5 +1,5 @@
-import type { BoxProps } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSBox } from '@semcore/base-components';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type { InputProps } from '@semcore/input';
@@ -9,7 +9,7 @@ import type { NSText } from '@semcore/typography';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 declare namespace NSPagination {
-  type Props = BoxProps &
+  type Props = NSBox.Props &
     WithI18nEnhanceProps & {
       /**
        * Total number of pages
@@ -54,15 +54,15 @@ declare namespace NSPagination {
   };
 
   namespace PrevPage {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace NextPage {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace FirstPage {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace TotalPages {

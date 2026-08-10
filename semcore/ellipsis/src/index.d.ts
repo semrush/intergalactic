@@ -1,10 +1,10 @@
-import type { Box, BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { UnknownProperties, Intergalactic } from '@semcore/core';
 import type { TooltipProps } from '@semcore/tooltip';
 import type Tooltip from '@semcore/tooltip';
 import type { RefObject } from 'react';
 
-export type EllipsisProps = BoxProps &
+export type EllipsisProps = NSBox.Props &
   Partial<TooltipProps> & {
     /**
      * Rows count in multiline Ellipsis.
@@ -44,7 +44,7 @@ declare const useResizeObserver: (
  * @deprecated. Use Text with ellipsis property for @semcore/typography.
  */
 declare const Ellipsis: Intergalactic.Component<'div', EllipsisProps> & {
-  Content: typeof Box;
+  Content: NSBox.Component;
   Popper: typeof Tooltip.Popper;
 };
 

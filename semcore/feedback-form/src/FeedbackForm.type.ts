@@ -1,5 +1,5 @@
 import type { Box } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { NoticeSmart } from '@semcore/notice';
 import type { FormProps } from 'react-final-form';
@@ -41,7 +41,7 @@ declare namespace NSFeedbackForm {
   }
 
   namespace Cancel {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace Notice {
@@ -57,7 +57,7 @@ declare namespace NSFeedbackForm {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeedbackFormProps = NSFeedbackForm.Props;
 
 export type { NSFeedbackForm };
