@@ -24,6 +24,7 @@ SInputField>ol {
     position: absolute;
     white-space: pre-wrap;
     padding-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+    padding-right: var(--intergalactic-spacing-content-padding-large, 16px);
     text-indent: calc(-1 * var(--intergalactic-spacing-content-padding-medium, 12px));
   }
 
