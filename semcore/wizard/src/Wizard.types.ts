@@ -1,5 +1,5 @@
 import type { NSBox } from '@semcore/base-components';
-import type { ButtonProps } from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type { useI18n } from '@semcore/core/lib/utils/enhances/WithI18n';
 import type { NSModal } from '@semcore/modal';
@@ -94,7 +94,7 @@ export type WizardContentProps = NSBox.Props & {
   noSidebar?: boolean;
 };
 
-export type WizardStepBackProps = ButtonProps & {
+export type WizardStepBackProps = NSButton.Props & {
   /** Callback invoked when navigating to the previous step */
   onActive?:
     | ((step: WizardStep, e?: React.SyntheticEvent<HTMLElement>) => void)
@@ -113,7 +113,7 @@ export type WizardStepBackProps = ButtonProps & {
    */
   getI18nText?: ReturnType<typeof useI18n>;
 };
-export type WizardStepNextProps = ButtonProps & {
+export type WizardStepNextProps = NSButton.Props & {
   /** Callback invoked when navigating to the next step */
   onActive?:
     | ((step: WizardStep, e?: React.SyntheticEvent<HTMLElement>) => void)

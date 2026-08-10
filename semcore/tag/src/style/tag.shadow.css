@@ -220,7 +220,7 @@ STag[theme="secondary-invert"],
 STagContainerClose[theme="secondary-invert"] {
   background-color: var(--intergalactic-tag-secondary-bg-invert-normal, transparent);
   color: var(--intergalactic-tag-secondary-text-invert, oklch(0.997 0.004 165.9 / 0.684));
-  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.974 0.047 140 / 0.136));
+  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.989 0.019 140 / 0.232));
 
   &::before,
   &::after {

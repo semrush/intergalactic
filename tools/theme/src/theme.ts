@@ -105,7 +105,7 @@ export const theme: Theme = {
       50: {
         value: '10px',
         description: 'Use only for text in Badge component.',
-      },
+      }, /* TODO: remove */
       100: {
         value: '12px',
         description: 'Use this font-size with caution for text in some additional messages. Always check its contrast and readability.',
@@ -343,7 +343,7 @@ export const theme: Theme = {
         description: 'Background color of the soon Badge.',
       },
       badge_light_admin: {
-        value: colors.blue['50'].value,
+        value: colors.blue['100'].value,
         description: 'Light background color of the admin Badge.',
       },
       badge_light_alpha: {
@@ -375,7 +375,7 @@ export const theme: Theme = {
         description: 'Text color for the beta Badge with light background.',
       },
       badge_light_new_text: {
-        value: colors.green['500'].value,
+        value: colors.green['400'].value,
         description: 'Text color for the new Badge with light background.',
       },
       badge_light_soon_text: {
@@ -387,7 +387,7 @@ export const theme: Theme = {
         description: 'Background color of the inverted Badge.',
       },
       badge_bg_unavailable: {
-        value: colors.gray['100'].value,
+        value: colors.gray['50'].value,
         description: 'Background color of the unavailable Badge.',
       },
       badge_text_primary_invert: {
@@ -1124,11 +1124,11 @@ export const theme: Theme = {
         description: 'Hover state of the background for the cell which is included in the date range in the date-picker.',
       },
       dot_bg: {
-        value: '{semanticTokens.colors.icon_primary_warning_DEFAULT}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Background color of the Dot.',
       },
       dot_text: {
-        value: '{semanticTokens.colors.text_primary_invert}',
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
         description: 'Text color of the Dot.',
       },
       dropdown_menu_item_DEFAULT: {
@@ -1160,11 +1160,11 @@ export const theme: Theme = {
         description: 'Background of the FeaturePopover with neutral theme.',
       },
       feature_popover_dot_accent: {
-        value: '{semanticTokens.colors.bg_primary_highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with accent theme.',
       },
       feature_popover_dot_neutral: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with neutral theme.',
       },
       feature_popover_dot_outer_border_accent: {
@@ -1404,19 +1404,19 @@ export const theme: Theme = {
         description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
-        value: neutral.at(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Hover state of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_DEFAULT: {
-        value: neutral.at(L_INV_BG_LIGHT),
+        value: neutral.opaqueInvAt(L_INV_BG_LIGHT),
         description: 'Inverted version of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_hover: {
-        value: neutral.at(L_INV_BG_MEDIUM),
+        value: neutral.opaqueInvAt(L_INV_BG_MEDIUM),
         description: 'Hover state for the inverted version of the background color of the ProgressBar.',
       },
       progress_bar_pattern_gradient: {
@@ -1429,7 +1429,7 @@ export const theme: Theme = {
         description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
       },
       progress_bar_value_gradient: {
-        value: `linear-gradient(-45deg, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 25%, ${highlight.at(0.74)} 0%, ${highlight.at(0.74)} 50%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 0%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 75%, ${highlight.at(0.74)} 0%)`,
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 75%, {semanticTokens.colors.brand.secondary} 0%)',
         description: 'Value with gradient for the ProgressBar.',
       },
       scroll_area_dropdown_menu_bottom: {
@@ -1929,7 +1929,7 @@ export const theme: Theme = {
         description: 'Warning Tooltip background.',
       },
       tooltip_border_invert: {
-        value: neutral.opaqueInvAt(L_INV_BORDER_SECONDARY),
+        value: neutral.at(L_INV_BORDER_SECONDARY),
         description: 'Border of the Tooltip with dark theme.',
       },
       tooltip_text: {
@@ -2038,9 +2038,17 @@ export const theme: Theme = {
       },
     },
     spacing: {
+      content_padding_xxsmall: {
+        value: `${SCALE_INDENT / 2}px`,
+        description: 'Tiny padding for content inside controls and surfaces.',
+      },
       content_padding_xsmall: {
         value: `${SCALE_INDENT}px`,
         description: 'Extra small padding for content inside controls and surfaces.',
+      },
+      content_padding_xsmall_extended: {
+        value: `${SCALE_INDENT * 1.5}px`,
+        description: 'Extended extra small padding for content inside controls and surfaces.',
       },
       content_padding_small: {
         value: `${SCALE_INDENT * 2}px`,
@@ -2058,21 +2066,41 @@ export const theme: Theme = {
         value: `${SCALE_INDENT * 5}px`,
         description: 'Extra large padding for content inside controls and surfaces.',
       },
+      content_padding_xlarge_extended: {
+        value: `${SCALE_INDENT * 6}px`,
+        description: 'Extended extra large padding for content inside controls and surfaces.',
+      },
       content_padding_xxlarge: {
         value: `${SCALE_INDENT * 10}px`,
         description: '2x large padding for content inside controls and surfaces.',
       },
       content_gap_small: {
         value: `${SCALE_INDENT}px`,
-        description: 'Small gap between content elements inside controls.',
+        description: 'Small gap between content elements inside controls, rows, or columns.',
       },
       content_gap_medium: {
         value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Medium gap between content elements inside controls.',
+        description: 'Medium gap between content elements inside controls, rows, or columns.',
       },
       content_gap_large: {
         value: `${SCALE_INDENT * 2}px`,
-        description: 'Large gap between content elements inside controls.',
+        description: 'Large gap between content elements inside controls, rows, or columns.',
+      },
+      content_gap_xlarge: {
+        value: `${SCALE_INDENT * 3}px`,
+        description: 'Extra large gap between elements, rows, or columns.',
+      },
+      content_gap_xxlarge: {
+        value: `${SCALE_INDENT * 4}px`,
+        description: '2x large gap between elements, rows, or columns.',
+      },
+      content_gap_xxlarge_extended: {
+        value: `${SCALE_INDENT * 5}px`,
+        description: 'Extended 2x large gap between elements, rows, or columns.',
+      },
+      content_gap_xxxlarge: {
+        value: `${SCALE_INDENT * 6}px`,
+        description: '3x large gap between elements, rows, or columns.',
       },
     },
     radii: {
@@ -2288,12 +2316,6 @@ export const theme: Theme = {
         hover: { active: { value: '{semanticTokens.colors.control_slider_rating_icon_hover_active}' } },
       },
     },
-    dot: {
-      notification: {
-        bg: { value: '{semanticTokens.colors.dot_bg}' },
-        text: { value: '{semanticTokens.colors.dot_text}' },
-      },
-    },
     radio: {
       border: { value: '{semanticTokens.colors.control_radio_border}' },
       bg: {
@@ -2362,15 +2384,22 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
+    content_padding_xxsmall: Value;
     content_padding_xsmall: Value;
+    content_padding_xsmall_extended: Value;
     content_padding_small: Value;
     content_padding_medium: Value;
     content_padding_large: Value;
     content_padding_xlarge: Value;
+    content_padding_xlarge_extended: Value;
     content_padding_xxlarge: Value;
     content_gap_small: Value;
     content_gap_medium: Value;
     content_gap_large: Value;
+    content_gap_xlarge: Value;
+    content_gap_xxlarge: Value;
+    content_gap_xxlarge_extended: Value;
+    content_gap_xxxlarge: Value;
   };
   radii: {
     'addon': Value;
@@ -3454,12 +3483,6 @@ type Deprecates = {
     rating: {
       normal: Value;
       hover: { active: Value };
-    };
-  };
-  dot: {
-    notification: {
-      bg: Value;
-      text: Value;
     };
   };
   radio: {

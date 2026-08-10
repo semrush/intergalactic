@@ -867,7 +867,7 @@
   },
   {
     "name": "--intergalactic-border-tooltip-invert",
-    "value": "oklch(0.974 0.047 140 / 0.136)"
+    "value": "oklch(0.35 0.006 140)"
   },
   {
     "name": "--intergalactic-border-table-accent",
@@ -895,7 +895,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.74 0.17 303)"
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
@@ -903,7 +903,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.74 0.17 303)"
   },
   {
     "name": "--intergalactic-feature-popover-accent-bg",
@@ -919,7 +919,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.74 0.17 303)"
   },
   {
     "name": "--intergalactic-slider-rating-normal",
@@ -928,14 +928,6 @@
   {
     "name": "--intergalactic-slider-rating-hover-active",
     "value": "oklch(0.66 0.212 300.1)"
-  },
-  {
-    "name": "--intergalactic-dot-notification-bg",
-    "value": "oklch(0.728 0.188 51.8)"
-  },
-  {
-    "name": "--intergalactic-dot-notification-text",
-    "value": "oklch(0.999 0.001 180 / 0.949)"
   },
   {
     "name": "--intergalactic-radio-border",
