@@ -32,9 +32,13 @@ type LinkSizesProps = {
 const renderAddon = (
   addon: LinkSizesProps['addonLeft'],
   size: (typeof sizes)[number],
-  options: { skipBadge?: boolean },
+  options: { skipBadge?: boolean; skipIcon?: boolean },
 ) => {
   if (options.skipBadge && addon === 'badge') {
+    return null;
+  }
+
+  if (options.skipIcon && addon === 'icon') {
     return null;
   }
 
@@ -91,31 +95,46 @@ const Demo = (props: LinkSizesProps) => {
   const w = 150;
   const text = 'The quick brown fox jumps over the lazy dog';
 
-  const renderLinks = (external: boolean) => sizes.map((size) => (
-    <Text key={`${external ? 'external' : 'default'}-${size}`} tag='div' size={size} mb={4}>
-      {`${size} `}
-      <Link
-        href={external ? EXTERNAL_HREF : '#'}
-        mr={4}
-        active={props.active}
+  const renderLinks = (
+    external: boolean,
+    options?: { ellipsis?: boolean; skipBadge?: boolean; skipIcon?: boolean },
+  ) => {
+    const ellipsis = options?.ellipsis ?? props.ellipsis;
+    const skipBadge = options?.skipBadge ?? external;
+    const skipIcon = options?.skipIcon ?? false;
+
+    return sizes.map((size) => (
+      <Text
+        key={`${external ? 'external' : 'default'}-${ellipsis ? 'ellipsis' : 'no-ellipsis'}-${size}`}
+        tag='div'
         size={size}
+        mb={4}
       >
-        {renderAddon(props.addonLeft, size, { skipBadge: external })}
-        <Link.Text
-          w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
-          ellipsis={props.ellipsis ? true : undefined}
+        {`${size} `}
+        <Link
+          href={external ? EXTERNAL_HREF : '#'}
+          mr={4}
+          active={props.active}
+          size={size}
         >
-          {text}
-        </Link.Text>
-        {renderAddon(props.addonRight, size, { skipBadge: external })}
-      </Link>
-    </Text>
-  ));
+          {renderAddon(props.addonLeft, size, { skipBadge, skipIcon })}
+          <Link.Text
+            w={ellipsis ? size < 600 ? w : w * 2 : undefined}
+            ellipsis={ellipsis ? true : undefined}
+          >
+            {text}
+          </Link.Text>
+          {renderAddon(props.addonRight, size, { skipBadge, skipIcon })}
+        </Link>
+      </Text>
+    ));
+  };
 
   return (
     <Flex direction='column'>
       {renderLinks(false)}
       {renderLinks(true)}
+      {renderLinks(true, { ellipsis: false, skipIcon: true })}
     </Flex>
   );
 };

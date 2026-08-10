@@ -3329,7 +3329,8 @@
     "components": [
       "base-trigger",
       "dropdown-menu",
-      "inline-input"
+      "inline-input",
+      "link"
     ]
   },
   {
