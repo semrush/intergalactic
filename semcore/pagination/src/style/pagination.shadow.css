@@ -4,20 +4,20 @@ SPagination {
 }
 
 SPagination[withGap] {
-  gap: var(--intergalactic-spacing-4x, 16px);
+  gap: var(--intergalactic-spacing-content-gap-xxlarge, 16px);
 
   &[size='l'] {
-    gap: var(--intergalactic-spacing-5x, 20px);
+    gap: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
   }
 }
 
 SNextPage,
 SPrevPage {
   align-self: center;
-  margin-left: var(--intergalactic-spacing-2x, 8px);
+  margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
 
   &[size='l'] {
-    margin-left: var(--intergalactic-spacing-3x, 12px);
+    margin-left: var(--intergalactic-spacing-content-gap-xlarge, 12px);
   }
 }
 
@@ -26,10 +26,10 @@ SLabel {
 }
 
 SLabel:not(:first-child) {
-  margin-left: var(--intergalactic-spacing-4x, 16px);
+  margin-left: var(--intergalactic-spacing-content-gap-xxlarge, 16px);
 
   &[size='300'] {
-    margin-left: var(--intergalactic-spacing-5x, 20px);
+    margin-left: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
   }
 }
 
@@ -38,8 +38,8 @@ STotalPages {
 }
 
 STotalPagesLabel {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
-  margin-right: var(--intergalactic-spacing-1x, 4px);
+  margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
@@ -56,11 +56,11 @@ STotalLastPages {
 
 SPageInput {
   max-width: 68px;
-  margin-left: var(--intergalactic-spacing-1x, 4px);
+  margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SPageInput[size='l'] {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
+  margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SPageInput:focus-within SPageInputAddon {
