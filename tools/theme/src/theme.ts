@@ -69,7 +69,7 @@ export const theme: Theme = {
       50: {
         value: '10px',
         description: 'Use only for text in Badge component.',
-      },
+      }, /* TODO: remove */
       100: {
         value: '12px',
         description: 'Use this font-size with caution for text in some additional messages. Always check its contrast and readability.',
@@ -307,7 +307,7 @@ export const theme: Theme = {
         description: 'Background color of the soon Badge.',
       },
       badge_light_admin: {
-        value: colors.blue['50'].value,
+        value: colors.blue['100'].value,
         description: 'Light background color of the admin Badge.',
       },
       badge_light_alpha: {
@@ -339,7 +339,7 @@ export const theme: Theme = {
         description: 'Text color for the beta Badge with light background.',
       },
       badge_light_new_text: {
-        value: colors.green['500'].value,
+        value: colors.green['400'].value,
         description: 'Text color for the new Badge with light background.',
       },
       badge_light_soon_text: {
@@ -351,7 +351,7 @@ export const theme: Theme = {
         description: 'Background color of the inverted Badge.',
       },
       badge_bg_unavailable: {
-        value: colors.gray['100'].value,
+        value: colors.gray['50'].value,
         description: 'Background color of the unavailable Badge.',
       },
       badge_text_primary_invert: {
@@ -1124,11 +1124,11 @@ export const theme: Theme = {
         description: 'Background of the FeaturePopover with neutral theme.',
       },
       feature_popover_dot_accent: {
-        value: '{semanticTokens.colors.bg_primary_highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with accent theme.',
       },
       feature_popover_dot_neutral: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with neutral theme.',
       },
       feature_popover_dot_outer_border_accent: {
@@ -1368,19 +1368,19 @@ export const theme: Theme = {
         description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
-        value: neutral.at(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Hover state of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_DEFAULT: {
-        value: neutral.at(L_INV_BG_LIGHT),
+        value: neutral.opaqueInvAt(L_INV_BG_LIGHT),
         description: 'Inverted version of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_hover: {
-        value: neutral.at(L_INV_BG_MEDIUM),
+        value: neutral.opaqueInvAt(L_INV_BG_MEDIUM),
         description: 'Hover state for the inverted version of the background color of the ProgressBar.',
       },
       progress_bar_pattern_gradient: {
@@ -1393,7 +1393,7 @@ export const theme: Theme = {
         description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
       },
       progress_bar_value_gradient: {
-        value: `linear-gradient(-45deg, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 25%, ${highlight.at(0.74)} 0%, ${highlight.at(0.74)} 50%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 0%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 75%, ${highlight.at(0.74)} 0%)`,
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 75%, {semanticTokens.colors.brand.secondary} 0%)',
         description: 'Value with gradient for the ProgressBar.',
       },
       scroll_area_dropdown_menu_bottom: {
@@ -1593,12 +1593,32 @@ export const theme: Theme = {
         description: 'Background of the additional Tag in its normal state.',
       },
       tag_additional_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: neutral.at(L_BORDER_PRIMARY_DIMMED),
         description: 'Border color of the additional Tag.',
       },
-      tag_primary_bg_hover: {
+      tag_additional_text: {
+        value: '#6a6c6a',
+        description: 'Text color for the additional tag.',
+      },
+      tag_additional_bg_invert_normal: {
+        value: 'transparent',
+        description: 'Additional tag on bold or dark backgrounds—minimal fill in the normal state.',
+      },
+      tag_additional_bg_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
+        description: 'Hover and active states of the additional tag on dark backgrounds.',
+      },
+      tag_additional_text_invert: {
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
+        description: 'Text color for the additional tag on dark backgrounds.',
+      },
+      tag_additional_border_invert: {
+        value: '{semanticTokens.colors.border_primary_invert}',
+        description: 'Inverted border color of the additional Tag.',
+      },
+      tag_primary_bg_hover_active: {
         value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Hover state of the primary Tag background.',
+        description: 'Hover and active states of the primary Tag background.',
       },
       tag_primary_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
@@ -1680,17 +1700,17 @@ export const theme: Theme = {
         value: '#8029ec',
         description: 'Violet text for the primary violet tag.',
       },
-      tag_primary_white_hover_active: {
-        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Hover and active (selected) state of the primary white tag.',
+      tag_primary_bg_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_PRIMARY_HOVER),
+        description: 'Hover and active states of the primary tag on dark backgrounds.',
       },
-      tag_primary_white_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+      tag_primary_bg_invert_normal: {
+        value: neutral.opaqueInvAt(L_INV_BG_PRIMARY),
         description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
       },
-      tag_primary_white_text: {
+      tag_primary_text_invert: {
         value: '#ffffff',
-        description: 'White text for the primary white tag.',
+        description: 'Text color for the primary tag on dark backgrounds.',
       },
       tag_primary_yellow_hover_active: {
         value: '#fcd8b3',
@@ -1705,36 +1725,36 @@ export const theme: Theme = {
         description: 'Yellow text for the primary yellow tag.',
       },
       tag_secondary_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: neutral.at(L_BORDER_PRIMARY_DIMMED),
         description: 'Border color of the secondary Tag.',
       },
       tag_secondary_border_invert: {
         value: '{semanticTokens.colors.border_secondary_invert}',
         description: 'Inverted border color of the secondary Tag.',
       },
-      tag_secondary_gray_text: {
+      tag_secondary_text: {
         value: '#6a6c6a',
-        description: 'Gray text for the default secondary tag.',
+        description: 'Text color for the default secondary tag.',
       },
-      tag_secondary_hover_active: {
+      tag_secondary_bg_hover_active: {
         value: '#f4f5f5',
         description: 'Hover and active (selected) states of the background color for the default secondary tag.',
       },
-      tag_secondary_normal: {
+      tag_secondary_bg_normal: {
         value: '#ffffff',
         description: 'Background color for the default secondary tag.',
       },
-      tag_secondary_white_hover_active: {
-        value: 'rgba(255, 255, 255, 0.1)',
-        description: 'Active state of the secondary white tag.',
+      tag_secondary_bg_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
+        description: 'Hover and active states of the secondary tag on dark backgrounds.',
       },
-      tag_secondary_white_normal: {
-        value: 'rgba(255, 255, 255, 0)',
+      tag_secondary_bg_invert_normal: {
+        value: 'transparent',
         description: 'Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.',
       },
-      tag_secondary_white_text: {
-        value: '#ffffff',
-        description: 'White text for the secondary white tag.',
+      tag_secondary_text_invert: {
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
+        description: 'Text color for the secondary tag on dark backgrounds.',
       },
       text_advertising: {
         value: advertising.at(L_TEXT_PRIMARY),
@@ -3039,9 +3059,18 @@ type SemanticColors = {
     primary: {
       bg: {
         normal: Value;
-        hover: Value;
+        hover: {
+          active: Value;
+        };
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
       border: Value;
+      text_invert: Value;
       gray: {
         normal: Value;
         hover: {
@@ -3091,32 +3120,25 @@ type SemanticColors = {
         };
         text: Value;
       };
-      white: {
-        normal: Value;
-        hover: {
-          active: Value;
-        };
-        text: Value;
-      };
     };
     secondary: {
       border: {
         DEFAULT: Value;
         invert: Value;
       };
-      normal: Value;
-      hover: {
-        active: Value;
-      };
-      white: {
+      text: Value;
+      text_invert: Value;
+      bg: {
         normal: Value;
         hover: {
           active: Value;
         };
-        text: Value;
-      };
-      gray: {
-        text: Value;
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
     };
     additional: {
@@ -3125,8 +3147,17 @@ type SemanticColors = {
         hover: {
           active: Value;
         };
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
       border: Value;
+      border_invert: Value;
+      text: Value;
+      text_invert: Value;
     };
   };
   chart: {
