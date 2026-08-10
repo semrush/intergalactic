@@ -98,6 +98,7 @@ const Demo = (props: LinkSizesProps) => {
         href={external ? EXTERNAL_HREF : '#'}
         mr={4}
         active={props.active}
+        size={size}
       >
         {renderAddon(props.addonLeft, size, { skipBadge: external })}
         <Link.Text

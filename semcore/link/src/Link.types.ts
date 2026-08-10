@@ -53,7 +53,6 @@ declare namespace NSLink {
 
   type DefaultProps = {
     use: 'primary';
-    size: 300;
   };
 
   type Component = Intergalactic.Component<'a', Props> & {

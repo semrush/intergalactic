@@ -30,7 +30,6 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
 
   static defaultProps = {
     use: 'primary',
-    size: 300,
   } as const;
 
   containerRef = React.createRef<HTMLElement | null>();
@@ -59,7 +58,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
   }
 
   getTextProps(): NSText.Props {
-    const { addonLeft, addonRight, size, Children } = this.asProps;
+    const { addonLeft, addonRight, size = 300, Children } = this.asProps;
     const Component = this[CORE_INSTANCE];
 
     const addons = findAllComponents(Children, [Component.Addon.displayName]);
@@ -140,7 +139,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
       hintPlacement,
       uid,
       getI18nText,
-      size,
+      size = 300,
     } = this.asProps;
 
     const Link = this[CORE_INSTANCE];
