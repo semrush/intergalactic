@@ -30,6 +30,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
 
   static defaultProps = {
     use: 'primary',
+    size: 300,
   } as const;
 
   containerRef = React.createRef<HTMLElement | null>();
@@ -78,9 +79,28 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
       addonsCount++;
     }
 
+    const width = this.isExternalLink()
+      ? `calc(100% - ${addonWidth * addonsCount + 2 + this.externalIconSizeMap[size]}px)`
+      : `calc(100% - ${addonWidth * addonsCount}px)`;
+
     return {
       'hint:triggerRef': this.containerRef,
-      'w': `calc(100% - ${addonWidth * addonsCount}px)`,
+      'w': width,
+    };
+  }
+
+  private get externalIconSizeMap(): Record<Exclude<NSLink.Props['size'], undefined>, number> {
+    // this is 0.6em for sizes
+    return {
+      100: 7,
+      200: 8,
+      300: 10,
+      350: 11,
+      400: 12,
+      500: 14,
+      600: 19,
+      700: 22,
+      800: 29,
     };
   }
 
@@ -120,6 +140,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
       hintPlacement,
       uid,
       getI18nText,
+      size,
     } = this.asProps;
 
     const Link = this[CORE_INSTANCE];
@@ -166,7 +187,12 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
               : null}
             {
               (isExternal && Children.origin)
-                ? (<Link.Text>{Children.origin}<LinkExternalAltM width='0.6em' height='0.6em' ml='2px' /></Link.Text>)
+                ? (
+                    <>
+                      <Link.Text>{Children.origin}</Link.Text>
+                      <LinkExternalAltM width={this.externalIconSizeMap[size]} height={this.externalIconSizeMap[size]} ml='2px' />
+                    </>
+                  )
                 : addonTextChildren(Children, Link.Text, Link.Addon)
             }
             {AddonRight
