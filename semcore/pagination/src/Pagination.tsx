@@ -328,7 +328,7 @@ class TotalPages extends Component<
     const textSize = size === 'l' ? 300 : 200;
     return sstyled(styles)(
       <>
-        <STotalPagesLabel size={textSize}>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
+        <STotalPagesLabel size={textSize} use='secondary'>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
         {isLastOrSingle
           ? (
               // @ts-ignore
