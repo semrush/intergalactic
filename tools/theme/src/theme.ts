@@ -1368,19 +1368,19 @@ export const theme: Theme = {
         description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
-        value: neutral.at(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Hover state of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_DEFAULT: {
-        value: neutral.at(L_INV_BG_LIGHT),
+        value: neutral.opaqueInvAt(L_INV_BG_LIGHT),
         description: 'Inverted version of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_hover: {
-        value: neutral.at(L_INV_BG_MEDIUM),
+        value: neutral.opaqueInvAt(L_INV_BG_MEDIUM),
         description: 'Hover state for the inverted version of the background color of the ProgressBar.',
       },
       progress_bar_pattern_gradient: {
@@ -1393,7 +1393,7 @@ export const theme: Theme = {
         description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
       },
       progress_bar_value_gradient: {
-        value: `linear-gradient(-45deg, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 25%, ${highlight.at(0.74)} 0%, ${highlight.at(0.74)} 50%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 0%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 75%, ${highlight.at(0.74)} 0%)`,
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 75%, {semanticTokens.colors.brand.secondary} 0%)',
         description: 'Value with gradient for the ProgressBar.',
       },
       scroll_area_dropdown_menu_bottom: {

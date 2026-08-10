@@ -178,8 +178,7 @@
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Accent background of a message or a banner with a critical information.",
     "components": [
-      "counter",
-      "notice-bubble"
+      "counter"
     ]
   },
   {
@@ -200,9 +199,7 @@
     "name": "--intergalactic-bg-primary-invert",
     "value": "oklch(0.23 0.01 140)",
     "description": "Inverted version of the primary background of the interface that contains the main data and information.",
-    "components": [
-      "notice-bubble"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-bg-primary-invert-active",
@@ -535,7 +532,7 @@
   },
   {
     "name": "--intergalactic-border-secondary-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.989 0.019 140 / 0.232)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
   },
@@ -1264,13 +1261,13 @@
   },
   {
     "name": "--intergalactic-control-slider-bar-bg",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background of the Slider bar.",
     "components": []
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
-    "value": "oklch(0.88 0.002 175.6)",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Hover state of the Slider bar.",
     "components": []
   },
@@ -1982,13 +1979,17 @@
     "name": "--intergalactic-notice-bubble-bg-critical",
     "value": "oklch(0.64 0.226 24.5)",
     "description": "Critical background of the NoticeBubble.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-notice-bubble-bg-info",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the NoticeBubble.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-overlay-limitation-primary",
@@ -2081,7 +2082,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2089,13 +2090,13 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
-    "value": "oklch(0.88 0.002 175.6)",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Hover state of the background color of the ProgressBar.",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert",
-    "value": "oklch(0.45 0.004 143.7)",
+    "value": "oklch(0.983 0.03 140 / 0.183)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2103,13 +2104,13 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert-hover",
-    "value": "oklch(0.56 0.003 151.9)",
+    "value": "oklch(0.995 0.008 147.4 / 0.391)",
     "description": "Hover state for the inverted version of the background color of the ProgressBar.",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
-    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.96 0.001 180) 0%, oklch(0.96 0.001 180) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.96 0.001 180) 0%)",
+    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.176 0.033 175.6 / 0.056) 0%, oklch(0.176 0.033 175.6 / 0.056) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.176 0.033 175.6 / 0.056) 0%)",
     "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2125,7 +2126,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-value-gradient",
-    "value": "linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 0%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 75%, oklch(0.74 0.17 303) 0%)",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 75%, oklch(0.22 0.01 140) 0%)",
     "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2665,7 +2666,7 @@
   },
   {
     "name": "--intergalactic-tag-secondary-border-invert",
-    "value": "oklch(0.995 0.008 145.9 / 0.369)",
+    "value": "oklch(0.989 0.019 140 / 0.232)",
     "description": "Inverted border color of the secondary Tag.",
     "components": []
   },
@@ -3000,7 +3001,7 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.48 0.004 145.9)",
+    "value": "oklch(0.35 0.006 140)",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
@@ -3227,6 +3228,7 @@
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
       "counter",
+      "notice-bubble",
       "pills"
     ]
   },
@@ -3286,7 +3288,8 @@
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
       "feature-popover",
-      "notice"
+      "notice",
+      "notice-bubble"
     ]
   },
   {
@@ -3310,7 +3313,8 @@
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
       "feature-popover",
-      "modal"
+      "modal",
+      "notice-bubble"
     ]
   },
   {
@@ -3348,6 +3352,7 @@
       "checkbox",
       "dropdown",
       "notice",
+      "notice-bubble",
       "radio",
       "select"
     ]
@@ -3356,7 +3361,9 @@
     "name": "--intergalactic-spacing-content-gap-xlarge",
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxlarge",

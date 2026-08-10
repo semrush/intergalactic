@@ -261,8 +261,8 @@ export const L_INV_BG_BUTTON_HOVER = 0.96;
 export const L_INV_BG_BUTTON_ACTIVE = 0.94;
 
 /** Background levels */
-export const L_INV_BG_LIGHT = 0.45;
-export const L_INV_BG_MEDIUM = 0.56;
+export const L_INV_BG_LIGHT = 0.3;
+export const L_INV_BG_MEDIUM = 0.5;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
 export const L_INV_TEXT_PRIMARY = 0.96;
@@ -277,4 +277,4 @@ export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
 export const L_INV_BORDER_PRIMARY = 0.5; // inputs, buttons, table header
 /** Border secondary */
-export const L_INV_BORDER_SECONDARY = 0.48;
+export const L_INV_BORDER_SECONDARY = 0.35;
