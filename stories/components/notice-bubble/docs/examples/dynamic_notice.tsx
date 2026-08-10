@@ -20,7 +20,7 @@ const Demo = (props: DynamicNoticeBubbleProps) => {
     notice = await notice.update({
       icon: undefined,
       children: (
-        <Flex justifyContent='center' alignItems='center' gap={1.5}>
+        <Flex alignItems='center' gap={1.5}>
           <Spin size='xs' theme='invert' />
           Loading...
         </Flex>
