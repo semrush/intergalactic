@@ -7,7 +7,7 @@ type BaseExampleType =
   & NSInputNumber.Props
   & NSInputNumber.Value.Props<NSInputNumber.ValueNumber>
   & NSInputNumber.Controls.Props
-  & { disabledValue?: boolean; logChanges?: boolean };
+  & { disabledValue?: boolean; logChanges?: boolean; controlled?: boolean };
 
 // Decimal precision derived from `step`, mirroring InputNumber's internal `stepPrecision`.
 const getStepPrecision = (step?: number) => {
@@ -18,14 +18,29 @@ const getStepPrecision = (step?: number) => {
 const Demo = (props: BaseExampleType) => {
   const stepPrecision = getStepPrecision(props.step);
   const [lastValue, setLastValue] = React.useState<NSInputNumber.ValueNumber>(null);
+  const [changed, setChanged] = React.useState(false);
+  // Feeds onChange back into `value` so the input becomes genuinely controlled.
+  // Off by default: browser tests rely on `value` staying pinned to the passed prop.
+  const [controlledValue, setControlledValue] = React.useState<NSInputNumber.ValueNumber>(props.value ?? null);
+
+  React.useEffect(() => {
+    setControlledValue(props.value ?? null);
+  }, [props.value]);
 
   const handleChange = (value: NSInputNumber.ValueNumber, _event?: React.SyntheticEvent<HTMLInputElement>) => {
     setLastValue(value);
+    setChanged(true);
+
+    if (props.controlled) {
+      setControlledValue(value);
+    }
 
     if (props.logChanges) {
-      console.log('[InputNumber] onChange:', value, '| step precision:', stepPrecision);
+      console.log('[InputNumber] onChange:', value, `(${typeof value})`, '| step precision:', stepPrecision);
     }
   };
+
+  const debugVisible = props.logChanges || props.controlled;
 
   return (
     <>
@@ -43,7 +58,7 @@ const Demo = (props: BaseExampleType) => {
           max={props.max}
           min={props.min}
           step={props.step}
-          value={props.value}
+          value={props.controlled ? controlledValue : props.value}
           readOnly={props.readOnly}
           placeholder={props.placeholder}
           onChange={handleChange}
@@ -51,17 +66,21 @@ const Demo = (props: BaseExampleType) => {
         />
         <InputNumber.Controls showControls={props.showControls} />
       </InputNumber>
-      {props.logChanges && (
+      {debugVisible && (
         <Text tag='div' size={200} mt={2} color='text-secondary'>
           Decimal step precision:
           {' '}
           {stepPrecision}
-          {lastValue !== null && (
+          {changed && (
             <>
               {' '}
               · last onChange value:
               {' '}
-              {lastValue}
+              <b data-testid='last-value'>{JSON.stringify(lastValue)}</b>
+              {' '}
+              · type:
+              {' '}
+              <b data-testid='last-value-type'>{typeof lastValue}</b>
             </>
           )}
         </Text>
@@ -84,6 +103,7 @@ export const defaultProps: BaseExampleType = {
   placeholder: undefined,
   readOnly: undefined,
   logChanges: false,
+  controlled: false,
 };
 
 Demo.defaultProps = defaultProps;
