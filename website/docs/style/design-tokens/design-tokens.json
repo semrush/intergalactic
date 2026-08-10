@@ -3310,6 +3310,7 @@
     "description": "Extra small padding for content inside controls and surfaces.",
     "components": [
       "base-components",
+      "bulk-textarea",
       "counter",
       "dropdown",
       "dropdown-menu",
@@ -3332,6 +3333,7 @@
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
       "base-components",
+      "bulk-textarea",
       "dropdown",
       "modal",
       "pills"
@@ -3343,6 +3345,7 @@
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "button",
       "card",
       "dropdown",
@@ -3350,6 +3353,7 @@
       "input-tags",
       "modal",
       "pills",
+      "textarea",
       "time-picker",
       "tooltip"
     ]
@@ -3359,6 +3363,7 @@
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
+      "bulk-textarea",
       "feature-popover",
       "notice-bubble"
     ]
@@ -3394,9 +3399,10 @@
     "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
+      "bulk-textarea",
       "dropdown-menu",
       "inline-input",
-      "pagination"
+      "pagination",
       "tag"
     ]
   },
