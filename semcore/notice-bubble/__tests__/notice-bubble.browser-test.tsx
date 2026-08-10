@@ -584,10 +584,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await locators.closeHint(page).waitFor({ state: 'visible' });
+    await page.waitForFunction(() => {
+      const el = document.querySelector('[data-ui-name="Hint"]');
+      return el && getComputedStyle(el).opacity === '1';
+    });
     await expect(page).toHaveScreenshot();
   });
 

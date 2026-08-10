@@ -45,12 +45,12 @@ STagContainerClose {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  border: 1px solid var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-tag-primary-border */
+  border: 1px solid var(--intergalactic-tag-primary-border, oklch(1 0 0));
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-tag-primary-bg-normal */
+  background-color: var(--intergalactic-tag-primary-bg-normal, oklch(1 0 0));
   border-radius: var(--intergalactic-tag-rounded, 24px);
-  padding-left: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-1x, 4px);
+  padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
   font-family: inherit;
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
@@ -135,7 +135,7 @@ STag[size="xl"],
 STagContainerClose[size="xl"] {
   height: 40px;
   min-width: 40px;
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
+  padding: 0 var(--intergalactic-spacing-content-gap-large, 8px);
 
   & SText {
     font-size: var(--intergalactic-fs-300, 16px);
@@ -167,62 +167,96 @@ STagContainer[theme="primary"] SAddon {
 }
 
 STag[theme="secondary"],
-STagContainerClose[theme="secondary"],
-STag[theme="additional"],
-STagContainerClose[theme="additional"] {
-  /* chenge to ...? secondary: change to --intergalactic-tag-secondary-border; additional: change to --intergalactic-tag-additional-bg-normal */
-  &::before {
-    opacity: 0.01;
+STagContainerClose[theme="secondary"] {
+  color: var(--intergalactic-tag-secondary-text, #6a6c6a);
+  background-color: var(--intergalactic-tag-secondary-bg-normal, #ffffff);
+  border-color: var(--intergalactic-tag-secondary-border, oklch(0.95 0.002 180));
+
+  &::before,
+  &::after {
+    display: none;
   }
 
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    &:before {
-      opacity: 0.1;
-    }
+    background-color: var(--intergalactic-tag-secondary-bg-hover-active, #f4f5f5);
   }
 }
 
-STag[theme="secondary"],
-STagContainerClose[theme="secondary"],
 STag[theme="additional"],
-STagContainerClose[theme="additional"],
-STag[theme="secondary-invert"],
-STagContainerClose[theme="secondary-invert"],
-STag[theme="additional-invert"],
-STagContainerClose[theme="additional-invert"] {
+STagContainerClose[theme="additional"] {
+  color: var(--intergalactic-tag-additional-text, #6a6c6a);
+  background-color: var(--intergalactic-tag-additional-bg-normal, oklch(1 0 0));
+  border-color: var(--intergalactic-tag-additional-border, oklch(0.95 0.002 180));
+  border-style: dashed;
+
+  &::before,
   &::after {
-    opacity: 0.5;
+    display: none;
+  }
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-additional-bg-hover-active, oklch(0.98 0.001 180));
   }
 }
 
 STag[theme="primary-invert"],
 STagContainerClose[theme="primary-invert"] {
-  background-color: var(
-    --intergalactic-tag-primary-white-normal,
-    oklch(1 0 0)
-  );
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  background-color: var(--intergalactic-tag-primary-bg-invert-normal, oklch(0.969 0.057 140 / 0.118));
+  color: var(--intergalactic-tag-primary-text-invert, #ffffff);
+  border-color: transparent;
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-primary-bg-invert-hover-active, oklch(0.99 0.017 140 / 0.242));
+  }
 }
 
 STag[theme="secondary-invert"],
-STagContainerClose[theme="secondary-invert"],
-STag[theme="additional-invert"],
-STagContainerClose[theme="additional-invert"] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO:--intergalactic-tag-secondary-white-text */
+STagContainerClose[theme="secondary-invert"] {
+  background-color: var(--intergalactic-tag-secondary-bg-invert-normal, transparent);
+  color: var(--intergalactic-tag-secondary-text-invert, oklch(0.997 0.004 165.9 / 0.684));
+  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.989 0.019 140 / 0.232));
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-secondary-bg-invert-hover-active, oklch(0.98 0.036 140 / 0.164));
+  }
 }
 
-STag[theme="additional"] {
+STag[theme="additional-invert"],
+STagContainerClose[theme="additional-invert"] {
+  background-color: var(--intergalactic-tag-additional-bg-invert-normal, transparent);
+  color: var(--intergalactic-tag-additional-text-invert, oklch(0.997 0.004 165.9 / 0.684));
+  border-color: var(--intergalactic-tag-additional-border-invert, oklch(0.995 0.008 147.4 / 0.391));
+  border-style: dashed;
+
+  &::before,
   &::after {
-    border-style: dashed;
+    display: none;
+  }
+
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
+  &[active] {
+    background-color: var(--intergalactic-tag-additional-bg-invert-hover-active, oklch(0.98 0.036 140 / 0.164));
   }
 }
 
 SText {
   display: flex;
-  padding-left: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-1x, 4px);
+  padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
   position: relative;
 }
 
@@ -257,6 +291,20 @@ STagContainer {
   position: relative;
   align-items: center;
   justify-content: center;
+
+  STag[theme="secondary"]:not(:last-child),
+  STag[theme="additional"]:not(:last-child),
+  STag[theme="secondary-invert"]:not(:last-child),
+  STag[theme="additional-invert"]:not(:last-child) {
+    border-right: 0;
+  }
+
+  STagContainerClose[theme="secondary"],
+  STagContainerClose[theme="additional"],
+  STagContainerClose[theme="secondary-invert"],
+  STagContainerClose[theme="additional-invert"] {
+    border-left: 0;
+  }
 
   STag,
   SAddon {
@@ -319,7 +367,7 @@ STagContainer {
 
     svg {
       padding-left: 0;
-      padding-right: var(--intergalactic-spacing-1x, 4px);
+      padding-right: var(--intergalactic-spacing-content-gap-small, 4px);
     }
 
     svg path {
@@ -333,8 +381,8 @@ STagContainer {
 
   STagContainerClose[size="xl"] {
     svg {
-      padding-left: var(--intergalactic-spacing-1x, 4px);
-      padding-right: var(--intergalactic-spacing-2x, 8px);
+      padding-left: var(--intergalactic-spacing-content-gap-small, 4px);
+      padding-right: var(--intergalactic-spacing-content-gap-large, 8px);
     }
   }
 }
