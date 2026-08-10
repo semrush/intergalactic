@@ -72,7 +72,7 @@ SCalendarUnit {
 
   &:hover {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-    background-color: var(--intergalactic-date-picker-cell-hover, oklch(0.98 0.001 180));
+    background-color: var(--intergalactic-date-picker-cell-hover, oklch(0.97 0.001 180));
   }
 }
 
