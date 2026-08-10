@@ -108,7 +108,7 @@ class Value extends Component<
     step: 1,
   } as const;
 
-  valueType: 'string' | 'number' = typeof this.props.value === 'number' ? 'number' : 'string';
+  valueType: 'string' | 'number' = (typeof this.props.value === 'number' || this.props.value === null) ? 'number' : 'string';
 
   state: NSInputNumber.Value.State = {
     displayValue: '',
@@ -156,7 +156,7 @@ class Value extends Component<
     const { value } = changedProps;
 
     if (value !== undefined) {
-      if (typeof value === 'number') {
+      if (typeof value === 'number' || value === null) {
         this.valueType = 'number';
       } else {
         this.valueType = 'string';
