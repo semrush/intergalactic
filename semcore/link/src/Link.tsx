@@ -1,12 +1,14 @@
-import { Box, Hint } from '@semcore/base-components';
+import { Box, Hint, ScreenReaderOnly } from '@semcore/base-components';
 import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE, INHERITED_NAME } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import LinkExternalAltM from '@semcore/icon/LinkExternalAlt/m';
 import type { NSText } from '@semcore/typography';
 import { Text } from '@semcore/typography';
@@ -14,12 +16,17 @@ import React from 'react';
 
 import type { NSLink } from './Link.types';
 import style from './style/link.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {}, NSLink.State, NSLink.DefaultProps> {
   static displayName = 'Link';
 
   static style = style;
-  static enhance = [resolveColorEnhance()] as const;
+  static enhance = [
+    resolveColorEnhance(),
+    i18nEnhance(localizedMessages),
+    uniqueIDEnhancement(),
+  ] as const;
 
   static defaultProps = {
     use: 'primary',
@@ -111,6 +118,8 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
       title,
       'aria-label': ariaLabel,
       hintPlacement,
+      uid,
+      getI18nText,
     } = this.asProps;
 
     const Link = this[CORE_INSTANCE];
@@ -126,6 +135,8 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
       excludeProps.push('disabled');
     }
 
+    const describedByExternalId = `igc-${uid}-external-link-describedby`;
+
     return sstyled(styles)(
       <>
         <SLink
@@ -140,6 +151,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
           __excludeProps={excludeProps}
           aria-label={showHint ? hintContent : undefined}
           isExternal={isExternal}
+          aria-describedby={isExternal ? describedByExternalId : undefined}
         >
           <SInner
             tag='span'
@@ -153,7 +165,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                 )
               : null}
             {
-              (this.isExternalLink() && Children.origin)
+              (isExternal && Children.origin)
                 ? (<Link.Text>{Children.origin}<LinkExternalAltM width='0.6em' height='0.6em' ml='2px' /></Link.Text>)
                 : addonTextChildren(Children, Link.Text, Link.Addon)
             }
@@ -164,6 +176,11 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                   </Link.Addon>
                 )
               : null}
+            {isExternal && (
+              <ScreenReaderOnly aria-hidden={true} id={describedByExternalId}>
+                {getI18nText('Link.external:aria-describedby')}
+              </ScreenReaderOnly>
+            )}
           </SInner>
         </SLink>
         {showHint && (
