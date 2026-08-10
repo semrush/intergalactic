@@ -316,6 +316,9 @@ function InputTagContainer(
 
   return sstyled(props.styles)(
     <STag
+      /** @deprecated It will be removed in v19. */
+      // @ts-ignore
+      data-value={props.value}
       render={TagContainer}
       tag='li'
       onKeyDown={onKeyDown}
