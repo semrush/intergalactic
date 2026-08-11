@@ -64,21 +64,25 @@ SWrapper {
     border-radius: var(--intergalactic-control-rounded, 6px);
     inset: 0;
     z-index: 1;
-  }
-
-  &:focus {
-    outline: none;
+    pointer-events: none;
   }
 
   &[empty]:active,
   &[empty][active],
   &[empty]:focus-within {
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
     background-color: var(--intergalactic-control-select-trigger-active, oklch(0.97 0.001 180));
 
     STrigger {
       background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
     }
+
+    &::after {
+      border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+    }
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &[disabled] {
