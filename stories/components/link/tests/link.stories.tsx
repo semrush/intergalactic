@@ -16,6 +16,8 @@ const sharedArgTypes = {
       '#',
       '/relative',
       'https://developer.semrush.com/intergalactic/components/link/link-api',
+      'HTTPS://developer.semrush.com/intergalactic/components/link/link-api',
+
       'mailto:test@example.com',
     ],
     description: 'The https:// preset makes the link external: target=_blank, the icon and the new-tab announcement',
@@ -85,7 +87,7 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     childrenMode: {
       control: { type: 'inline-radio' },
       options: ['slot', 'string'],
-      description: 'Wrap text in Link.Text, or pass it as a bare string child',
+      description: 'Wrap text in Link.Text, or pass it as a bare string child. Ignored while an addon is shown — addons require Link.Text',
     },
     enableVisited: { control: { type: 'boolean' } },
     noWrap: { control: { type: 'boolean' } },
@@ -102,7 +104,7 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     addonPassMethod: {
       control: { type: 'inline-radio' },
       options: ['children', 'tag'],
-      description: 'Compose the icon addon as <Link.Addon><Icon /></Link.Addon> or <Link.Addon tag={Icon} />',
+      description: 'Pass the icon addon as <Link.Addon><Icon /></Link.Addon> or as the addonLeft / addonRight prop. Badge, counter and spin always stay children',
     },
     ellipsis: ellipsisArgType,
   },

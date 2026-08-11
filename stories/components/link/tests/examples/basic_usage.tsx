@@ -22,6 +22,7 @@ type BasicLinkProps = LinkProps & {
    * 'slot' wraps it in `<Link.Text>` (the default, and what most consumers do);
    * 'string' passes a bare string child, the only way to exercise the
    * children-based branch of the external-link auto-detection.
+   * Ignored while an addon is shown — an addon requires the text to live in `<Link.Text>`.
    */
   childrenMode?: 'slot' | 'string';
   title?: string;
@@ -30,9 +31,11 @@ type BasicLinkProps = LinkProps & {
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
   /**
-   * How an icon addon is composed:
+   * How an icon addon reaches the Link:
    * 'children' renders `<Link.Addon><IconAddon /></Link.Addon>`,
-   * 'tag' renders `<Link.Addon tag={IconAddon} />`.
+   * 'tag' hands it over as the `addonLeft` / `addonRight` prop.
+   * Only icons can go through the props — they take a component, so badge, counter and
+   * spin always stay children.
    */
   addonPassMethod?: 'children' | 'tag';
   w?: number;
@@ -81,9 +84,7 @@ const Demo = (props: BasicLinkProps) => {
     counterSize = 'm';
   }
 
-  const renderAddon = (show: boolean, type: AddonType) => {
-    if (!show) return null;
-
+  const renderAddon = (type: AddonType) => {
     switch (type) {
       case 'badge':
         return <Link.Addon><Badge type='new' /></Link.Addon>;
@@ -93,11 +94,42 @@ const Demo = (props: BasicLinkProps) => {
         return <Link.Addon><Spin size={spinSize} /></Link.Addon>;
       case 'icon':
       default:
-        return addonPassMethod === 'tag'
-          ? <Link.Addon tag={IconAddon} />
-          : <Link.Addon><IconAddon /></Link.Addon>;
+        return <Link.Addon><IconAddon /></Link.Addon>;
     }
   };
+
+  // Only an icon can travel through addonLeft/addonRight — the props take a component.
+  const passesAsTag = (show: boolean, type: AddonType) =>
+    show && addonPassMethod === 'tag' && type === 'icon';
+
+  const addonLeftProp = passesAsTag(showAddonLeft, addonLeftType) ? IconAddon : undefined;
+  const addonRightProp = passesAsTag(showAddonRight, addonRightType) ? IconAddon : undefined;
+
+  /**
+   * Builds the Link with only the slots that are switched on.
+   *
+   * Writing the three slots as JSX would hand Link an array of `[null, text, null]` even
+   * with both addons off, and an array reads differently from a lone child — the
+   * external-link icon detection looks for a single `Link.Text`. Spreading a filtered
+   * list through createElement keeps an addon-free link a one-child link.
+   */
+  const renderLink = (linkProps: Record<string, unknown>, textNode: React.ReactNode) => {
+    const nodes = [
+      showAddonLeft && !addonLeftProp ? renderAddon(addonLeftType) : null,
+      textNode,
+      showAddonRight && !addonRightProp ? renderAddon(addonRightType) : null,
+    ].filter(Boolean);
+
+    return React.createElement(
+      Link,
+      { ...linkProps, addonLeft: addonLeftProp, addonRight: addonRightProp },
+      ...nodes,
+    );
+  };
+
+  // string child next to <Link.Addon> is not a supported composition — with addons
+  // the text always has to be wrapped in <Link.Text>, so the slot wins over childrenMode.
+  const asString = childrenMode === 'string' && !showAddonLeft && !showAddonRight;
 
   const ellipsisW = ellipsis && !containerW ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 
@@ -106,24 +138,25 @@ const Demo = (props: BasicLinkProps) => {
     linkDisplayValue = 'inline-block';
   }
 
+  const sharedLinkProps = {
+    use,
+    href,
+    isExternal,
+    size,
+    disabled,
+    active,
+    enableVisited,
+    noWrap,
+    color,
+    title,
+    w: noWrap ? w : undefined,
+  };
+
   return (
     <Text tag='div' size={size} style={containerW ? { width: containerW } : undefined}>
-      <Link
-        use={use}
-        href={href}
-        isExternal={isExternal}
-        size={size}
-        disabled={disabled}
-        active={active}
-        enableVisited={enableVisited}
-        noWrap={noWrap}
-        color={color}
-        title={title}
-        w={noWrap ? w : undefined}
-        display={linkDisplayValue}
-      >
-        {renderAddon(showAddonLeft, addonLeftType)}
-        {childrenMode === 'string'
+      {renderLink(
+        { ...sharedLinkProps, display: linkDisplayValue },
+        asString
           ? text
           : (
               <Link.Text
@@ -134,28 +167,14 @@ const Demo = (props: BasicLinkProps) => {
               >
                 {text}
               </Link.Text>
-            )}
-        {renderAddon(showAddonRight, addonRightType)}
-      </Link>
+            ),
+      )}
 
       {`${numSize} `}
-      <Link
-        use={use}
-        href={href}
-        isExternal={isExternal}
-        size={size}
-        disabled={disabled}
-        active={active}
-        enableVisited={enableVisited}
-        noWrap={noWrap}
-        color={color}
-        title={title}
-        w={noWrap ? w : undefined}
-      >
-        {renderAddon(showAddonLeft, addonLeftType)}
-        {childrenMode === 'string' ? text : <Link.Text size={size}>{text}</Link.Text>}
-        {renderAddon(showAddonRight, addonRightType)}
-      </Link>
+      {renderLink(
+        sharedLinkProps,
+        asString ? text : <Link.Text size={size}>{text}</Link.Text>,
+      )}
     </Text>
   );
 };
