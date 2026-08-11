@@ -42,7 +42,7 @@ SBaseTrigger {
   }
 
   &:hover {
-    background-color: var(--intergalactic-control-select-trigger-hover, oklch(0.98 0.001 180));
+    background-color: var(--intergalactic-control-select-trigger-hover, oklch(0.97 0.001 180));
   }
 
   &:active,

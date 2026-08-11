@@ -199,7 +199,7 @@ STagContainerClose[theme="additional"] {
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-additional-bg-hover-active, oklch(0.98 0.001 180));
+    background-color: var(--intergalactic-tag-additional-bg-hover-active, oklch(0.97 0.001 180));
   }
 }
 
