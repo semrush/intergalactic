@@ -108,7 +108,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
 
     if (isExternal !== undefined) return isExternal;
 
-    const link = typeof children === 'string' ? children : href;
+    const link = (typeof children === 'string' && this.isUrl(children)) ? children : href;
 
     if (!this.isUrl(link)) {
       return false;
@@ -124,7 +124,19 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
   }
 
   private isUrl(value?: string): boolean {
-    return value?.startsWith('//') ?? value?.toLowerCase().startsWith('http') ?? false;
+    return value?.startsWith('//') || value?.toLowerCase().startsWith('http') || false;
+  }
+
+  private isUrlInChildrenText(children: unknown) {
+    if (
+      React.isValidElement(children) && typeof children.type !== 'string' && 'displayName' in children.type && children.type.displayName === 'Link.Text' &&
+      children.props && typeof children.props === 'object' && 'children' in children.props && typeof children.props.children === 'string'
+    ) {
+      const textValue = children.props.children;
+      return this.isUrl(textValue);
+    }
+
+    return false;
   }
 
   render() {
@@ -189,7 +201,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                 )
               : null}
             {addonTextChildren(Children, Link.Text, Link.Addon)}
-            {(isExternal && Children.origin && (typeof Children.origin === 'string' ? !this.isUrl(Children.origin) : true)) && (
+            {(isExternal && Children.origin && (typeof Children.origin === 'string' ? !this.isUrl(Children.origin) : this.isUrlInChildrenText(Children.origin))) && (
               <LinkExternalAltM width={this.externalIconSizeMap[size]} height={this.externalIconSizeMap[size]} ml='2px' />
             )}
             {AddonRight
