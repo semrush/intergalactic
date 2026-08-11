@@ -507,7 +507,7 @@ class Value extends Component<
     let numberValue;
 
     // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
-    if (value === '') {
+    if (value === '' || value === null) {
       numberValue = min ?? 0;
     } else {
       numberValue = Number.parseFloat(value);
@@ -525,7 +525,7 @@ class Value extends Component<
 
     let numberValue;
 
-    if (value === '') {
+    if (value === '' || value === null) {
       numberValue = max ?? 0;
     } else {
       numberValue = Number.parseFloat(value);
