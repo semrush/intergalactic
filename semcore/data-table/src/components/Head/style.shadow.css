@@ -68,7 +68,7 @@ SGroup[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
 
   &:has(~ SColumn[visibleSort]) {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.94 0.002 180));
+    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180));
   }
 }
 SGroup[use='secondary'] {
@@ -91,13 +91,13 @@ SColumn[use='primary'] {
   SSortWrapper::before {
     background: linear-gradient(
       270deg,
-      var(--intergalactic-table-th-primary-cell-hover, oklch(0.94 0.002 180)) 67.5%,
+      var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180)) 67.5%,
       rgba(224, 225, 233, 0) 105%
     );
   }
 
   &[visibleSort] {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.94 0.002 180));
+    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180));
 
     SSortWrapper {
       flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
