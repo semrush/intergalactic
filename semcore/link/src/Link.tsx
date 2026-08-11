@@ -125,9 +125,15 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     }
 
     if (canUseDOM()) {
-      const linkUrl = new URL(link, window.location.origin);
+      try {
+        const linkUrl = new URL(link, window.location.origin);
 
-      return linkUrl.host !== window.location.host;
+        return linkUrl.host !== window.location.host;
+      } catch (e: unknown) {
+        if (e instanceof Error && e.message.includes('Invalid base URL')) {
+          return true;
+        }
+      }
     }
 
     return false;
