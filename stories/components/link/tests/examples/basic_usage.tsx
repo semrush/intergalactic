@@ -25,6 +25,13 @@ type BasicLinkProps = LinkProps & {
    * Ignored while an addon is shown — an addon requires the text to live in `<Link.Text>`.
    */
   childrenMode?: 'slot' | 'string';
+  /**
+   * Whether the slot mode appends `<Link.ExternalIcon />` on an external href.
+   * Turning it off is the pre-ExternalIcon composition every existing consumer still has,
+   * and it is how you see getTextProps() reserve room for an icon that never renders.
+   * Has no effect in string mode, where Link injects the icon itself.
+   */
+  showExternalIcon?: boolean;
   title?: string;
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
@@ -55,6 +62,7 @@ const Demo = (props: BasicLinkProps) => {
     href = '#',
     isExternal,
     childrenMode = 'slot',
+    showExternalIcon = true,
     size = 300,
     color,
     w,
@@ -105,19 +113,36 @@ const Demo = (props: BasicLinkProps) => {
   const addonLeftProp = passesAsTag(showAddonLeft, addonLeftType) ? IconAddon : undefined;
   const addonRightProp = passesAsTag(showAddonRight, addonRightType) ? IconAddon : undefined;
 
+  // string child next to <Link.Addon> is not a supported composition — with addons
+  // the text always has to be wrapped in <Link.Text>, so the slot wins over childrenMode.
+  const asString = childrenMode === 'string' && !showAddonLeft && !showAddonRight;
+
+  /**
+   * Link injects the external icon on its own only for a plain string child that is not
+   * already a URL. Every other composition is the consumer's job, so the slot mode has to
+   * append `<Link.ExternalIcon />` the way the docs examples do. The icon takes its size
+   * from the parent through getExternalIconProps(), so it needs no props here.
+   *
+   * `isUrl` mirrors the component's own check. Same-host absolute URLs would read as
+   * external here and not in the component, but none of the story's href presets is
+   * same-host, so the story never hits that gap.
+   */
+  const isUrl = (value: string) => value.startsWith('//') || value.toLowerCase().startsWith('http');
+  const needsExternalIcon = showExternalIcon && !asString && (isExternal ?? isUrl(href));
+
   /**
    * Builds the Link with only the slots that are switched on.
    *
-   * Writing the three slots as JSX would hand Link an array of `[null, text, null]` even
-   * with both addons off, and an array reads differently from a lone child — the
-   * external-link icon detection looks for a single `Link.Text`. Spreading a filtered
-   * list through createElement keeps an addon-free link a one-child link.
+   * Writing the slots as JSX would hand Link an array of `[null, text, null]` even with
+   * both addons off, and an array reads differently from a lone child. Spreading a
+   * filtered list through createElement keeps an addon-free link a one-child link.
    */
   const renderLink = (linkProps: Record<string, unknown>, textNode: React.ReactNode) => {
     const nodes = [
       showAddonLeft && !addonLeftProp ? renderAddon(addonLeftType) : null,
       textNode,
       showAddonRight && !addonRightProp ? renderAddon(addonRightType) : null,
+      needsExternalIcon ? <Link.ExternalIcon /> : null,
     ].filter(Boolean);
 
     return React.createElement(
@@ -126,10 +151,6 @@ const Demo = (props: BasicLinkProps) => {
       ...nodes,
     );
   };
-
-  // string child next to <Link.Addon> is not a supported composition — with addons
-  // the text always has to be wrapped in <Link.Text>, so the slot wins over childrenMode.
-  const asString = childrenMode === 'string' && !showAddonLeft && !showAddonRight;
 
   const ellipsisW = ellipsis && !containerW ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 

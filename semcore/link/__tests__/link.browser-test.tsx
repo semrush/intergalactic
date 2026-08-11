@@ -20,6 +20,7 @@ export const locators = {
 };
 
 const storyPath = 'stories/components/link/tests/examples/basic_usage.tsx';
+const hintStoryPath = 'stories/components/link/tests/examples/link-hint.tsx';
 /** Stacks all 9 sizes in one render, so a single screenshot covers the whole size sweep. */
 const sizesStoryPath = 'stories/components/link/tests/examples/link-different-sizes.tsx';
 
@@ -507,30 +508,32 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
     test(`Verify hint placement: ${hintPlacement}`, {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@link'],
     }, async ({ page }) => {
-      await loadPage(page, storyPath, 'en', { hintPlacement, size: 300, w: 120 });
-      await page.waitForTimeout(200);
+      await loadPage(page, hintStoryPath, 'en', { hintPlacement, count: 1 });
+      await page.locator('body').evaluate((body) => {
+        body.style.padding = '200px';
+      });
 
       await locators.link(page).first().hover();
       await settleHint(page);
       await expect(locators.hint(page).first()).toBeVisible();
 
-      const hint = (await locators.hint(page).first().boundingBox())!;
-      const link = (await locators.link(page).first().boundingBox())!;
+      await expect.poll(async () => {
+        const hint = await locators.hint(page).first().boundingBox();
+        const link = await locators.link(page).first().boundingBox();
 
-      switch (hintPlacement) {
-        case 'top':
-          expect(hint.y + hint.height).toBeLessThanOrEqual(link.y + 1);
-          break;
-        case 'bottom':
-          expect(hint.y).toBeGreaterThanOrEqual(link.y + link.height - 1);
-          break;
-        case 'left':
-          expect(hint.x + hint.width).toBeLessThanOrEqual(link.x + 1);
-          break;
-        case 'right':
-          expect(hint.x).toBeGreaterThanOrEqual(link.x + link.width - 1);
-          break;
-      }
+        if (!hint || !link) return false;
+
+        switch (hintPlacement) {
+          case 'top':
+            return hint.y + hint.height <= link.y + 1;
+          case 'bottom':
+            return hint.y >= link.y + link.height - 1;
+          case 'left':
+            return hint.x + hint.width <= link.x + 1;
+          case 'right':
+            return hint.x >= link.x + link.width - 1;
+        }
+      }).toBe(true);
     });
   });
 });

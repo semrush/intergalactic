@@ -64,8 +64,14 @@ const ellipsisArgType = {
     'cropPosition:end': { 'ellipsis:cropPosition': 'end' },
     'cropPosition:end maxLine:2': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 2 },
     'cropPosition:end maxLine:6': { 'ellipsis:cropPosition': 'end', 'ellipsis:maxLine': 6 },
-    'cropPosition:middle lastRequiredSymbols:3': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 3 },
-    'cropPosition:middle lastRequiredSymbols:0': { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 0 },
+    'cropPosition:middle lastRequiredSymbols:3': {
+      'ellipsis:cropPosition': 'middle',
+      'ellipsis:lastRequiredSymbols': 3,
+    },
+    'cropPosition:middle lastRequiredSymbols:0': {
+      'ellipsis:cropPosition': 'middle',
+      'ellipsis:lastRequiredSymbols': 0,
+    },
   },
 } as const;
 
@@ -87,7 +93,13 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     childrenMode: {
       control: { type: 'inline-radio' },
       options: ['slot', 'string'],
-      description: 'Wrap text in Link.Text, or pass it as a bare string child. Ignored while an addon is shown — addons require Link.Text',
+      description:
+        'Wrap text in Link.Text, or pass it as a bare string child. Ignored while an addon is shown — addons require Link.Text',
+    },
+    showExternalIcon: {
+      control: { type: 'boolean' },
+      description:
+        'Appends Link.ExternalIcon in slot mode on an external href. Turn it off to see the width still reserved for a missing icon',
     },
     enableVisited: { control: { type: 'boolean' } },
     noWrap: { control: { type: 'boolean' } },
@@ -104,7 +116,8 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
     addonPassMethod: {
       control: { type: 'inline-radio' },
       options: ['children', 'tag'],
-      description: 'Pass the icon addon as <Link.Addon><Icon /></Link.Addon> or as the addonLeft / addonRight prop. Badge, counter and spin always stay children',
+      description:
+        'Pass the icon addon as <Link.Addon><Icon /></Link.Addon> or as the addonLeft / addonRight prop. Badge, counter and spin always stay children',
     },
     ellipsis: ellipsisArgType,
   },

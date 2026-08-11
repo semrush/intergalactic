@@ -64,6 +64,11 @@ const Demo = (props: LinkSizesProps) => {
   const w = 150;
   const text = 'The quick brown fox jumps over the lazy dog';
 
+  // Link only injects the external icon for a plain string child. These links wrap their
+  // text in Link.Text, so the icon is added explicitly — that is also what gives the nine
+  // sizes of getExternalIconProps() their coverage.
+  const isExternal = props.href.startsWith('//') || props.href.toLowerCase().startsWith('http');
+
   return (
     <Flex direction='column'>
       {sizes.map((size) => (
@@ -84,6 +89,7 @@ const Demo = (props: LinkSizesProps) => {
               {text}
             </Link.Text>
             {renderAddon(props.addonRight, size)}
+            {isExternal && <Link.ExternalIcon />}
           </Link>
         </Text>
       ))}
