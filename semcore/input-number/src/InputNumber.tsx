@@ -320,7 +320,7 @@ class Value extends Component<
     }
 
     if (value.endsWith('.')) {
-      if (value.length > prevValue.length) {
+      if (value.length > prevValue.toString().length) {
         this.setState({ displayValue: numberFormatter.format(value as `${number}`) + this.separatorDecimal });
         return false;
       } else {
