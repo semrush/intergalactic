@@ -97,11 +97,11 @@ SAddon {
 
 SLink SAddon {
   &:not(:only-child):first-child {
-    margin-right: var(--intergalactic-spacing-1x, 4px);
+    margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
   }
 
   &:not(:only-child):last-child {
-    margin-left: var(--intergalactic-spacing-1x, 4px);
+    margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
   }
 }
 
