@@ -183,17 +183,44 @@ SCalendarUnit[startSelected]SCalendarUnit[endSelected] {
 }
 
 SCalendarUnit[compareHighlighted] {
-  border-top: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1));
-  border-bottom: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1));
+  border-top: 0;
+  border-bottom: 0;
   border-radius: 0;
   transition: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-image:
+      linear-gradient(to right, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%),
+      linear-gradient(to right, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%),
+      linear-gradient(to bottom, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%),
+      linear-gradient(to bottom, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%);
+    background-repeat: repeat-x;
+    background-size: 8px 2px, 8px 2px, 0 0, 0 0;
+    background-position: top left, bottom left, top 1px left, top 1px right;
+  }
 }
 
 
 SCalendarUnit[compareStartHighlighted],
 SCalendarUnit[compareEndHighlighted] {
-  border-left: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1));
-  border-right: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1));
+  border-left: 0;
+  border-right: 0;
+
+  &::after {
+    background-size: 8px 2px, 8px 2px, 2px 8px, 2px 8px;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  }
+}
+
+SCalendarUnit[compareStartHighlighted]::after {
+  background-position: top left 3px, bottom left 3px, top 1px left, top 1px right;
 }
 
 SCalendarUnit[compareStart],
@@ -208,12 +235,14 @@ SCalendarUnit[compareEnd] {
   }
 }
 
-SCalendarUnit[compareStartHighlighted] {
+SCalendarUnit[compareStartHighlighted],
+SCalendarUnit[compareStartHighlighted]::after {
   border-top-left-radius: var(--intergalactic-rounded-small, 4px);
   border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
 }
 
-SCalendarUnit[compareEndHighlighted] {
+SCalendarUnit[compareEndHighlighted],
+SCalendarUnit[compareEndHighlighted]::after {
   border-top-right-radius: var(--intergalactic-rounded-small, 4px);
   border-bottom-right-radius: var(--intergalactic-rounded-small, 4px);
 }
