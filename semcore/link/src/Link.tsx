@@ -108,9 +108,9 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
 
     if (isExternal !== undefined) return isExternal;
 
-    const link = typeof children === 'string' && children.startsWith('http') ? children : href;
+    const link = typeof children === 'string' ? children : href;
 
-    if (!link?.startsWith('http')) {
+    if (!this.isUrl(link)) {
       return false;
     }
 
@@ -121,6 +121,10 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     }
 
     return false;
+  }
+
+  private isUrl(value?: string): boolean {
+    return value?.startsWith('//') ?? value?.toLowerCase().startsWith('http') ?? false;
   }
 
   render() {
@@ -185,7 +189,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                 )
               : null}
             {addonTextChildren(Children, Link.Text, Link.Addon)}
-            {(isExternal && Children.origin && (typeof Children.origin === 'string' ? !Children.origin.startsWith('http') : true)) && (
+            {(isExternal && Children.origin && (typeof Children.origin === 'string' ? !this.isUrl(Children.origin) : true)) && (
               <LinkExternalAltM width={this.externalIconSizeMap[size]} height={this.externalIconSizeMap[size]} ml='2px' />
             )}
             {AddonRight
