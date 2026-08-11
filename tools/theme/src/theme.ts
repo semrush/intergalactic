@@ -265,18 +265,26 @@ export const theme: Theme = {
       'extra-small': {
         value: '320px',
         description: 'Extra small screens (small phones).',
-      },
+      }, // TODO: remove?
       'small': {
         value: '768px',
-        description: 'Small screens (phones and small tablets).',
+        description: 'Switch to mobile layout behavior.',
       },
       'medium': {
-        value: '1200px',
-        description: 'Medium screens (tablets and small laptops).',
+        value: '1280px',
+        description: 'Desktop layout. Sidebar expands',
       },
       'large': {
         value: '1920px',
         description: 'Large screens (tablets and laptops).',
+      }, // TODO: remove?
+      'layout-compact': {
+        value: '1200px',
+        description: 'Low and medium density interfaces.',
+      },
+      'layout-data-heavy': {
+        value: '1500px',
+        description: 'High density interfaces.',
       },
     },
     durations: {
@@ -2038,69 +2046,87 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content_padding_xxsmall: {
-        value: `${SCALE_INDENT / 2}px`,
-        description: 'Tiny padding for content inside controls and surfaces.',
+      content: {
+        padding: {
+          xxsmall: {
+            value: `${SCALE_INDENT / 2}px`,
+            description: 'Tiny padding for content inside controls and surfaces.',
+          },
+          xsmall: {
+            value: `${SCALE_INDENT}px`,
+            description: 'Extra small padding for content inside controls and surfaces.',
+          },
+          xsmall_extended: {
+            value: `${SCALE_INDENT * 1.5}px`,
+            description: 'Extended extra small padding for content inside controls and surfaces.',
+          },
+          small: {
+            value: `${SCALE_INDENT * 2}px`,
+            description: 'Small padding for content inside controls and surfaces.',
+          },
+          medium: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Medium padding for content inside controls and surfaces.',
+          },
+          large: {
+            value: `${SCALE_INDENT * 4}px`,
+            description: 'Large padding for content inside controls and surfaces.',
+          },
+          xlarge: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Extra large padding for content inside controls and surfaces.',
+          },
+          xlarge_extended: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: 'Extended extra large padding for content inside controls and surfaces.',
+          },
+          xxlarge: {
+            value: `${SCALE_INDENT * 10}px`,
+            description: '2x large padding for content inside controls and surfaces.',
+          },
+        },
+        gap: {
+          small: {
+            value: `${SCALE_INDENT}px`,
+            description: 'Small gap between content elements inside controls, rows, or columns.',
+          },
+          medium: {
+            value: `${SCALE_INDENT * 1.5}px`,
+            description: 'Medium gap between content elements inside controls, rows, or columns.',
+          },
+          large: {
+            value: `${SCALE_INDENT * 2}px`,
+            description: 'Large gap between content elements inside controls, rows, or columns.',
+          },
+          xlarge: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Extra large gap between elements, rows, or columns.',
+          },
+          xxlarge: {
+            value: `${SCALE_INDENT * 4}px`,
+            description: '2x large gap between elements, rows, or columns.',
+          },
+          xxlarge_extended: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Extended 2x large gap between elements, rows, or columns.',
+          },
+          xxxlarge: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: '3x large gap between elements, rows, or columns.',
+          },
+        },
       },
-      content_padding_xsmall: {
-        value: `${SCALE_INDENT}px`,
-        description: 'Extra small padding for content inside controls and surfaces.',
-      },
-      content_padding_xsmall_extended: {
-        value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Extended extra small padding for content inside controls and surfaces.',
-      },
-      content_padding_small: {
-        value: `${SCALE_INDENT * 2}px`,
-        description: 'Small padding for content inside controls and surfaces.',
-      },
-      content_padding_medium: {
-        value: `${SCALE_INDENT * 3}px`,
-        description: 'Medium padding for content inside controls and surfaces.',
-      },
-      content_padding_large: {
-        value: `${SCALE_INDENT * 4}px`,
-        description: 'Large padding for content inside controls and surfaces.',
-      },
-      content_padding_xlarge: {
-        value: `${SCALE_INDENT * 5}px`,
-        description: 'Extra large padding for content inside controls and surfaces.',
-      },
-      content_padding_xlarge_extended: {
-        value: `${SCALE_INDENT * 6}px`,
-        description: 'Extended extra large padding for content inside controls and surfaces.',
-      },
-      content_padding_xxlarge: {
-        value: `${SCALE_INDENT * 10}px`,
-        description: '2x large padding for content inside controls and surfaces.',
-      },
-      content_gap_small: {
-        value: `${SCALE_INDENT}px`,
-        description: 'Small gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_medium: {
-        value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Medium gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_large: {
-        value: `${SCALE_INDENT * 2}px`,
-        description: 'Large gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_xlarge: {
-        value: `${SCALE_INDENT * 3}px`,
-        description: 'Extra large gap between elements, rows, or columns.',
-      },
-      content_gap_xxlarge: {
-        value: `${SCALE_INDENT * 4}px`,
-        description: '2x large gap between elements, rows, or columns.',
-      },
-      content_gap_xxlarge_extended: {
-        value: `${SCALE_INDENT * 5}px`,
-        description: 'Extended 2x large gap between elements, rows, or columns.',
-      },
-      content_gap_xxxlarge: {
-        value: `${SCALE_INDENT * 6}px`,
-        description: '3x large gap between elements, rows, or columns.',
+      layout: {
+        padding: {
+          desktop: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: 'Padding for layout on desktop.',
+          },
+          mobile: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Padding for layout on mobile.',
+          },
+        },
       },
     },
     radii: {
@@ -2341,7 +2367,7 @@ type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' 
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
 type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
+type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large' | 'layout-compact' | 'layout-data-heavy';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
 type Assets = 'checkmark-m' | 'checkmark-l';
 type Easings = 'fast' | 'medium';
@@ -2384,22 +2410,34 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content_padding_xxsmall: Value;
-    content_padding_xsmall: Value;
-    content_padding_xsmall_extended: Value;
-    content_padding_small: Value;
-    content_padding_medium: Value;
-    content_padding_large: Value;
-    content_padding_xlarge: Value;
-    content_padding_xlarge_extended: Value;
-    content_padding_xxlarge: Value;
-    content_gap_small: Value;
-    content_gap_medium: Value;
-    content_gap_large: Value;
-    content_gap_xlarge: Value;
-    content_gap_xxlarge: Value;
-    content_gap_xxlarge_extended: Value;
-    content_gap_xxxlarge: Value;
+    content: {
+      padding: {
+        xxsmall: Value;
+        xsmall: Value;
+        xsmall_extended: Value;
+        small: Value;
+        medium: Value;
+        large: Value;
+        xlarge: Value;
+        xlarge_extended: Value;
+        xxlarge: Value;
+      };
+      gap: {
+        small: Value;
+        medium: Value;
+        large: Value;
+        xlarge: Value;
+        xxlarge: Value;
+        xxlarge_extended: Value;
+        xxxlarge: Value;
+      };
+    };
+    layout: {
+      padding: {
+        desktop: Value;
+        mobile: Value;
+      };
+    };
   };
   radii: {
     'addon': Value;

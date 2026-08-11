@@ -3471,6 +3471,18 @@
     "components": []
   },
   {
+    "name": "--intergalactic-spacing-layout-padding-desktop",
+    "value": "24px",
+    "description": "Padding for layout on desktop.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-layout-padding-mobile",
+    "value": "20px",
+    "description": "Padding for layout on mobile.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-addon-rounded",
     "value": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
