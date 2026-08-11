@@ -134,9 +134,11 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     ) {
       const textValue = children.props.children;
       return this.isUrl(textValue);
+    } else if (typeof children === 'string') {
+      return this.isUrl(children);
     }
 
-    return false;
+    return undefined;
   }
 
   render() {
@@ -201,7 +203,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                 )
               : null}
             {addonTextChildren(Children, Link.Text, Link.Addon)}
-            {(isExternal && Children.origin && (typeof Children.origin === 'string' ? !this.isUrl(Children.origin) : this.isUrlInChildrenText(Children.origin))) && (
+            {(isExternal && Children.origin && this.isUrlInChildrenText(Children.origin) === false) && (
               <LinkExternalAltM width={this.externalIconSizeMap[size]} height={this.externalIconSizeMap[size]} ml='2px' />
             )}
             {AddonRight
