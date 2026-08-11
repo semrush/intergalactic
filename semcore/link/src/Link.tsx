@@ -189,7 +189,9 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                 ? (
                     <>
                       <Link.Text>{Children.origin}</Link.Text>
-                      <LinkExternalAltM width={this.externalIconSizeMap[size]} height={this.externalIconSizeMap[size]} ml='2px' />
+                      {(typeof Children.origin === 'string' && !Children.origin.startsWith('http')) && (
+                        <LinkExternalAltM width={this.externalIconSizeMap[size]} height={this.externalIconSizeMap[size]} ml='2px' />
+                      )}
                     </>
                   )
                 : addonTextChildren(Children, Link.Text, Link.Addon)
