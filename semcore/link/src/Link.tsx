@@ -88,6 +88,16 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     };
   }
 
+  getExternalIconProps() {
+    const { size = 300 } = this.asProps;
+
+    return {
+      width: this.externalIconSizeMap[size],
+      height: this.externalIconSizeMap[size],
+      ml: '2px',
+    };
+  }
+
   private get externalIconSizeMap(): Record<Exclude<NSLink.Props['size'], undefined>, number> {
     // this is 0.6em for sizes
     return {
@@ -123,22 +133,8 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     return false;
   }
 
-  private isUrl(value?: string): boolean {
-    return value?.startsWith('//') || value?.toLowerCase().startsWith('http') || false;
-  }
-
-  private isUrlInChildrenText(children: unknown) {
-    if (
-      React.isValidElement(children) && typeof children.type !== 'string' && 'displayName' in children.type && children.type.displayName === 'Link.Text' &&
-      children.props && typeof children.props === 'object' && 'children' in children.props && typeof children.props.children === 'string'
-    ) {
-      const textValue = children.props.children;
-      return this.isUrl(textValue);
-    } else if (typeof children === 'string') {
-      return this.isUrl(children);
-    }
-
-    return undefined;
+  private isUrl(value: string): boolean {
+    return value.startsWith('//') || value.toLowerCase().startsWith('http');
   }
 
   render() {
@@ -157,7 +153,6 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
       hintPlacement,
       uid,
       getI18nText,
-      size = 300,
     } = this.asProps;
 
     const Link = this[CORE_INSTANCE];
@@ -203,8 +198,8 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                 )
               : null}
             {addonTextChildren(Children, Link.Text, Link.Addon)}
-            {(isExternal && Children.origin && this.isUrlInChildrenText(Children.origin) === false) && (
-              <LinkExternalAltM width={this.externalIconSizeMap[size]} height={this.externalIconSizeMap[size]} ml='2px' />
+            {isExternal && typeof Children.origin === 'string' && !this.isUrl(Children.origin) && (
+              <Link.ExternalIcon />
             )}
             {AddonRight
               ? (
@@ -246,6 +241,12 @@ function Addon(props: IRootComponentProps) {
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
+function ExternalIcon(props: IRootComponentProps) {
+  const SExternalIcon = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SExternalIcon render={LinkExternalAltM} />);
+}
+
 /**
  * Link
  *
@@ -254,6 +255,7 @@ function Addon(props: IRootComponentProps) {
 const Link = createComponent<NSLink.Component, typeof RootLink>(RootLink, {
   Text: LinkText,
   Addon,
+  ExternalIcon,
 });
 
 export default Link;

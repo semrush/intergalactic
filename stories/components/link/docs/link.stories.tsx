@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import AllStatesExample from './examples/all_states';
 import ColorLinksExample from './examples/color_links';
+import ExternalLinksExample from './examples/external_links';
 import LinkAddonExample from './examples/link_addon';
 import LinkAsButtonExample from './examples/link_as_button';
 import LinkDisabledExample from './examples/link_disabled';
@@ -48,4 +49,8 @@ export const LinkWithoutText: Story = {
 
 export const LinkWithEllipsis: Story = {
   render: LinkWithEllipsisExample,
+};
+
+export const ExternalLinks: Story = {
+  render: ExternalLinksExample,
 };

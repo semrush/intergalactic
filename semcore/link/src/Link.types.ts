@@ -58,6 +58,7 @@ declare namespace NSLink {
   type Component = Intergalactic.Component<'a', Props> & {
     Text: Intergalactic.Component<'span', NSText.Props>;
     Addon: Intergalactic.Component<'span', BoxProps>;
+    ExternalIcon: typeof Icon;
   };
 }
 
