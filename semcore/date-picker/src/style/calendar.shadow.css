@@ -183,9 +183,7 @@ SCalendarUnit[startSelected]SCalendarUnit[endSelected] {
 }
 
 SCalendarUnit[compareHighlighted] {
-  border-top: 0;
-  border-bottom: 0;
-  border-radius: 0;
+  border: none;
   transition: none;
 
   &::after {
@@ -197,13 +195,13 @@ SCalendarUnit[compareHighlighted] {
     bottom: 0;
 
     background-image:
-      linear-gradient(to right, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%),
-      linear-gradient(to right, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%),
-      linear-gradient(to bottom, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%),
-      linear-gradient(to bottom, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 70%, transparent 30%);
+      linear-gradient(to right, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 50%, transparent 50%),
+      linear-gradient(to right, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 50%, transparent 50%),
+      linear-gradient(to bottom, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 50%, transparent 50%),
+      linear-gradient(to bottom, var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1)) 50%, transparent 50%);
     background-repeat: repeat-x;
-    background-size: 8px 2px, 8px 2px, 0 0, 0 0;
-    background-position: top left, bottom left, top 1px left, top 1px right;
+    background-size: 10.8px 2px, 10.8px 2px, 0 0, 0 0;
+    background-position: top left -2.9px, bottom left -2.9px, top -2.9px left, top -2.9px right;
   }
 }
 
@@ -214,13 +212,9 @@ SCalendarUnit[compareEndHighlighted] {
   border-right: 0;
 
   &::after {
-    background-size: 8px 2px, 8px 2px, 2px 8px, 2px 8px;
+    background-size: 10.8px 2px, 10.8px 2px, 2px 10.8px, 2px 10.8px;
     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   }
-}
-
-SCalendarUnit[compareStartHighlighted]::after {
-  background-position: top left 3px, bottom left 3px, top 1px left, top 1px right;
 }
 
 SCalendarUnit[compareStart],
