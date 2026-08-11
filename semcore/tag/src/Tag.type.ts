@@ -27,8 +27,10 @@ declare namespace NSTag {
      * @default primary
      */
     theme?: NSTag.Theme;
-    /** Tag color text */
-    color?: string;
+    /**
+     * Flag for invert the tag to display in a dark theme or on a dark background.
+     */
+    invert?: boolean;
     /** Tag size
      * @default m
      */
@@ -39,7 +41,15 @@ declare namespace NSTag {
     addonRight?: React.ElementType;
     /** Specifies the locale for i18n support */
     locale?: string;
-  };
+  } & ({
+    theme?: 'primary';
+    /** Tag color text */
+    color?: string;
+  } | {
+    theme?: 'secondary' | 'additional';
+    /** Tag color text */
+    color?: never;
+  });
   type DefaultProps = {
     theme: 'primary';
     color: 'gray-500';
