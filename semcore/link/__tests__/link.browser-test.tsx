@@ -24,7 +24,17 @@ const hintStoryPath = 'stories/components/link/tests/examples/link-hint.tsx';
 /** Stacks all 9 sizes in one render, so a single screenshot covers the whole size sweep. */
 const sizesStoryPath = 'stories/components/link/tests/examples/link-different-sizes.tsx';
 
+const APP_ORIGIN = 'https://app.example.test';
 const EXTERNAL_HREF = 'https://developer.semrush.com/intergalactic/components/link/link-api';
+
+const loadPageWithOrigin = async (page: Page, props: Record<string, unknown>) => {
+  await page.route(`${APP_ORIGIN}/**`, (route) => route.fulfill({
+    contentType: 'text/html',
+    body: '<!doctype html>',
+  }));
+  await page.goto(`${APP_ORIGIN}/`);
+  await loadPage(page, storyPath, 'en', props);
+};
 
 /**
  * Resolves a design token to the exact string the current engine reports.
@@ -430,7 +440,7 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
       // sits after Link.Text, so a correct reservation is also what keeps it from
       // overflowing a narrow cell — no separate containment test needed.
       desc: 'room reserved for the external icon',
-      props: { href: EXTERNAL_HREF, showAddonLeft: true, addonLeftType: 'icon' },
+      props: { href: EXTERNAL_HREF, isExternal: true, showAddonLeft: true, addonLeftType: 'icon' },
       width: 'calc(100% - 32px)',
       addonIndex: 0,
     },
@@ -478,7 +488,7 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
     test(`Verify external link detection: ${desc}`, {
       tag: [TAG.PRIORITY_HIGH, '@link'],
     }, async ({ page }) => {
-      await loadPage(page, storyPath, 'en', { ...props, ellipsis: { ellipsis: false } });
+      await loadPageWithOrigin(page, { ...props, ellipsis: { ellipsis: false } });
       const link = locators.link(page).first();
 
       if (external) {
@@ -492,7 +502,7 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
   test('Verify external link detection from string children', {
     tag: [TAG.PRIORITY_HIGH, '@link'],
   }, async ({ page }) => {
-    await loadPage(page, storyPath, 'en', {
+    await loadPageWithOrigin(page, {
       childrenMode: 'string',
       text: 'https://other.example.com/page',
       href: '/relative',
