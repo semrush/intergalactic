@@ -93,7 +93,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         const cell = locators.cells(page, 2);
         await checkStyle(cell, {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
@@ -110,7 +110,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           .locator('[data-ui-name="CalendarMonths.Unit"][class*="Selected"]')
           .nth(0);
         await checkStyle(selectedCell, {
-          margin: '4px 0px 0px',
+          margin: '0px',
           width: '60px',
           height: '32px',
         });
