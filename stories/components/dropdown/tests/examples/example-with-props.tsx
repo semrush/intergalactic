@@ -1,5 +1,5 @@
 import FileExportM from '@semcore/icon/FileExport/m';
-import type { PopperProps, PopperTriggerProps, PopperPopperProps } from '@semcore/ui/base-components';
+import type { NSPopper } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Dropdown from '@semcore/ui/dropdown';
@@ -8,7 +8,13 @@ import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type DropdownExampleProps = PopperPopperProps & PopperTriggerProps & PopperProps & DropdownProps & { autofocus?: boolean };
+type DropdownExampleProps =
+  & NSPopper.Popper.Props
+  & NSPopper.Trigger.Props
+  & NSPopper.Props
+  & DropdownProps
+  & { autofocus?: boolean };
+
 const Demo = (props: DropdownExampleProps) => (
   <Flex p={30}>
     <Dropdown

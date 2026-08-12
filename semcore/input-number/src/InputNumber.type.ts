@@ -6,6 +6,8 @@ import type { LocalizedMessages } from './translations/__intergalactic-dynamic-l
 
 declare namespace NSInputNumber {
   type Value = string;
+  type ValueNumber = number | null;
+  type CalculatedValue<V> = V extends Value ? Value : ValueNumber;
   type Size = 'm' | 'l';
   type Props = NSInput.Props & {
     /** Input size
@@ -29,7 +31,7 @@ declare namespace NSInputNumber {
   };
 
   namespace Value {
-    type Props = NSInput.Value.Props & {
+    type Props<V extends Value | ValueNumber> = Intergalactic.InternalTypings.EfficientOmit<NSInput.Value.Props, 'value' | 'onChange'> & {
       /** Minimum value
        * @default Number.MIN_SAFE_INTEGER
        */
@@ -43,9 +45,9 @@ declare namespace NSInputNumber {
        */
       step?: number;
       /** Numeric value */
-      value?: NSInputNumber.Value;
+      value?: CalculatedValue<V>;
       /** Called when the input value changes, it returns its current value in numeric format */
-      onChange?: (value: NSInputNumber.Value, event?: React.SyntheticEvent<HTMLInputElement>) => void;
+      onChange?: (value: CalculatedValue<V>, event?: React.SyntheticEvent<HTMLInputElement>) => void;
     };
     type DefaultProps = {
       defaultValue: '';
@@ -57,11 +59,20 @@ declare namespace NSInputNumber {
     type Handlers = {
       value: [
         null,
-        (value: Props['value'], event: React.SyntheticEvent | WheelEvent) => void,
+        (value: Value | ValueNumber | undefined, event: React.SyntheticEvent | WheelEvent) => void,
       ];
     };
 
-    type Component = Intergalactic.Component<'input', Props>;
+    type Component = (<
+      V extends Value | ValueNumber = Value,
+      Tag extends Intergalactic.Tag = 'input',
+    >(
+      props: Intergalactic.InternalTypings.EfficientOmit<
+        Intergalactic.InternalTypings.ComponentProps<Tag, 'input', Props<V>>,
+        'tag' | 'children'
+      >
+    ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+    Intergalactic.InternalTypings.ComponentAdditive<'input', 'input', Props<any>>;
   }
 
   namespace Controls {
@@ -86,17 +97,17 @@ declare namespace NSInputNumber {
   };
 }
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberValue = NSInputNumber.Value;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberSize = NSInputNumber.Size;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberProps = NSInputNumber.Props;
-/** @deprecated It will be removed in v18. */
-export type InputNumberValueProps = NSInputNumber.Value.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
+export type InputNumberValueProps = NSInputNumber.Value.Props<string>;
+/** @deprecated It will be removed in v19. */
 export type InputNumberControlsProps = NSInputNumber.Controls.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type InputNumberCtx = NSInputNumber.Ctx;
 
 export type { NSInputNumber };

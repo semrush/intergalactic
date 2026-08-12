@@ -1,5 +1,5 @@
-import type { FadeInOutProps, Box, BoxProps } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSAnimation, NSBox } from '@semcore/base-components';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { Text } from '@semcore/typography';
 
@@ -7,9 +7,9 @@ import type { LocalizedMessaged } from './translations/__intergalactic-dynamic-l
 
 declare namespace NSNotice {
   type Theme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
-  type Props = BoxProps &
-    FadeInOutProps & {
-      /** Property for managing visibility of Notice */
+  type Props = NSBox.Props &
+    NSAnimation.FadeInOut.Props & {
+    /** Property for managing visibility of Notice */
       hidden?: boolean;
       /**
        * Notice theme
@@ -33,7 +33,7 @@ declare namespace NSNotice {
   };
 
   namespace Label {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       theme?: NSNotice.Theme;
     };
 
@@ -41,11 +41,11 @@ declare namespace NSNotice {
   }
 
   namespace Actions {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   namespace Content {
-    type Component = typeof Box;
+    type Component = NSBox.Component;
   }
 
   namespace Title {
@@ -57,7 +57,7 @@ declare namespace NSNotice {
   }
 
   namespace Close {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   type Component = Intergalactic.Component<'div', Props, Ctx> & {

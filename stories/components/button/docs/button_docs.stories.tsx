@@ -1,3 +1,4 @@
+import type { NSButton } from '@semcore/ui/button';
 import Button from '@semcore/ui/button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -9,13 +10,13 @@ import ButtonWithIconExample from './examples/button_with_icon';
 import ButtonLoadingExample from './examples/button_with_loading';
 import { playWrapper } from '../../../utils/playWrapper';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<NSButton.Component> = {
   title: 'Components/Button/Documentation',
   component: Button,
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<NSButton.Component>;
 
 export const Addons: Story = {
   render: AddonsExample,

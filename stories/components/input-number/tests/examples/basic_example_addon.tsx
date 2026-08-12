@@ -3,7 +3,7 @@ import type { NSInputNumber } from '@semcore/ui/input-number';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type baseExampleAddonType = NSInputNumber.Props & NSInputNumber.Value.Props & NSInputNumber.Controls.Props & { disabledValue?: boolean };
+type baseExampleAddonType = NSInputNumber.Props & NSInputNumber.Value.Props<string> & NSInputNumber.Controls.Props & { disabledValue?: boolean };
 const Demo = (props: baseExampleAddonType) => {
   return (
     <>

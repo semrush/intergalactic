@@ -1,6 +1,6 @@
-import type { FlexProps } from '@semcore/base-components';
+import type { NSFlex } from '@semcore/base-components';
 import type { FilterTrigger } from '@semcore/base-trigger';
-import type { ButtonLink } from '@semcore/button';
+import type { NSButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import type Dropdown from '@semcore/dropdown';
 import type { DropdownTriggerProps } from '@semcore/dropdown';
@@ -13,7 +13,7 @@ import type { LocalizedMessages } from './translations/__intergalactic-dynamic-l
 declare namespace NSAddFilter {
   type Key = string;
   type Data = Record<string, any>;
-  type Props = FlexProps & {
+  type Props = NSFlex.Props & {
   /**
    * Action to perform on `Clear filters` button click.
    */
@@ -116,7 +116,7 @@ declare namespace NSAddFilter {
     }
 
     namespace Clear {
-      type Component = typeof ButtonLink;
+      type Component = NSButtonLink.Component;
     }
 
     type Component = Intergalactic.Component<typeof Input, NSAddFilter.ItemProps> & {

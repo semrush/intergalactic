@@ -5,18 +5,7 @@ import type { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import type { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import type { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
 import type { Modifier, Options, PositioningStrategy } from '@popperjs/core/lib/types';
-import type {
-  AnimationProps,
-  BoxProps,
-  OutsideClickProps,
-  PortalProps,
-  Box,
-  PopperProps,
-  PopperContext,
-  PopperPopperProps,
-  Placement,
-  Popper,
-} from '@semcore/base-components';
+import type { NSAnimation, NSBox, NSOutsideClick, NSPortal, NSPopper } from '@semcore/base-components';
 import type { Intergalactic, PropGetterFn } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type { UniqueIDProps } from '@semcore/core/lib/utils/uniqueID';
@@ -33,7 +22,7 @@ declare namespace NSFeaturePopover {
       * The position of the popper relative to the trigger that called it.
       * @default auto
       */
-    placement?: Placement;
+    placement?: NSPopper.Placement;
     /**
       * The theme of FeaturePopover
       * @default accent
@@ -51,25 +40,25 @@ declare namespace NSFeaturePopover {
     theme: 'accent';
   };
   type InternalProps = WithI18nEnhanceProps & {
-    interaction?: PopperProps['interaction'];
+    interaction?: NSPopper.Props['interaction'];
   };
   type Handlers = {
     visible: null;
   };
-  type Ctx = PopperContext & {
+  type Ctx = NSPopper.Ctx & {
     getSpotProps: PropGetterFn;
   };
 
   namespace Trigger {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       theme?: NSFeaturePopover.Props['theme'];
     };
 
-    type Component = Intergalactic.Component<typeof Popper.Trigger, Props>;
+    type Component = Intergalactic.Component<NSPopper.Trigger.Component, Props>;
   }
 
   namespace Popper {
-    type Props = PopperPopperProps &
+    type Props = NSPopper.Popper.Props &
       /**
        * Popper must have an accessible names (aria-group-name).
        */
@@ -105,7 +94,7 @@ declare namespace NSFeaturePopover {
       theme?: NSFeaturePopover.Props['theme'];
     };
 
-    type Component = Intergalactic.Component<typeof Box, Props>;
+    type Component = Intergalactic.Component<NSBox.Component, Props>;
   }
 
   type Component = Intergalactic.Component<'div', Props, Ctx> & {
@@ -116,11 +105,11 @@ declare namespace NSFeaturePopover {
 }
 
 // Re-think it since looks like those props aren't needed for the Root component.
-/** @deprecated It will be removed in v18. */
-export type FPPopperProps = OutsideClickProps &
-  PortalProps &
+/** @deprecated It will be removed in v19. */
+export type FPPopperProps = NSOutsideClick.Props &
+  NSPortal.Props &
   UniqueIDProps &
-  AnimationProps & {
+  NSAnimation.Props & {
     /**
      * Popper can have different positioning options
      * @default absolute
@@ -159,19 +148,19 @@ export type FPPopperProps = OutsideClickProps &
     popperMargin?: number;
   };
 
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverPopperProps = NSFeaturePopover.Popper.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverContext = NSFeaturePopover.Ctx;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverProps = NSFeaturePopover.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverDefaultProps = NSFeaturePopover.DefaultProps;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverTriggerProps = NSFeaturePopover.Trigger.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverSpotProps = NSFeaturePopover.Spot.Props;
-/** @deprecated It will be removed in v18. */
+/** @deprecated It will be removed in v19. */
 export type FeaturePopoverComponent = NSFeaturePopover.Component;
 
 export type { NSFeaturePopover };

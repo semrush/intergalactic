@@ -1,5 +1,5 @@
-import type { FadeInOutProps, SlideProps, Box, BoxProps, PortalProps } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSAnimation, NSBox, NSPortal } from '@semcore/base-components';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSText } from '@semcore/typography';
 import type React from 'react';
@@ -7,9 +7,9 @@ import type React from 'react';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 declare namespace NSModal {
-    type Props = PortalProps &
-      BoxProps &
-      FadeInOutProps & {
+    type Props = NSPortal.Props &
+      NSBox.Props &
+      NSAnimation.FadeInOut.Props & {
         /** Duration of animation, ms
          * @default 200
          */
@@ -56,17 +56,17 @@ declare namespace NSModal {
     };
 
     namespace Window {
-        type Props = BoxProps & SlideProps;
+        type Props = NSBox.Props & NSAnimation.Slide.Props;
 
         type Component = Intergalactic.Component<'div', Props>;
     }
 
     namespace Overlay {
-        type Component = typeof Box;
+        type Component = NSBox.Component;
     }
 
     namespace Close {
-        type Component = typeof Button;
+        type Component = NSButton.Component;
     }
 
     namespace Title {

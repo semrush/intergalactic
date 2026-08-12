@@ -1,4 +1,4 @@
-import type { BoxProps } from '@semcore/base-components';
+import type { NSBox } from '@semcore/base-components';
 import type { ButtonLinkComponent } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { NSInputNumber } from '@semcore/input-number';
@@ -7,7 +7,7 @@ import type React from 'react';
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 declare namespace NSInlineInput {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /**
      * Visual state of inline input
      * @default normal
@@ -53,13 +53,13 @@ declare namespace NSInlineInput {
   };
 
   namespace Addon {
-    type Props = BoxProps;
+    type Props = NSBox.Props;
 
     type Component = Intergalactic.Component<'div', Props>;
   }
 
   namespace Value {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /**
        * id attribute of input tag
        */
@@ -100,7 +100,7 @@ declare namespace NSInlineInput {
   }
 
   namespace ConfirmControl {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /**
        * Text of tooltip
        * @default Confirm
@@ -117,7 +117,7 @@ declare namespace NSInlineInput {
   }
 
   namespace CancelControl {
-    type Props = BoxProps & {
+    type Props = NSBox.Props & {
       /**
        * Text of tooltip
        * @default Cancel

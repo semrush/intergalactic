@@ -3,7 +3,7 @@ import Button from '@semcore/ui/button';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
-const Demo = (): any => {
+const Demo = (props: { h?: number }): any => {
   const [loading, setLoading] = React.useState(true);
   const [message, setMessage] = React.useState('');
 
@@ -23,6 +23,9 @@ const Demo = (): any => {
 
   return (
     <>
+      <Button onClick={toggleLoading} mt={3}>
+        {loading ? 'Stop loading' : 'Start loading'}
+      </Button>
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
@@ -30,7 +33,7 @@ const Demo = (): any => {
         data={data}
         aria-label='Loading using SpinContainer'
         loading={loading}
-        h={150}
+        h={props.h === 0 ? undefined : props.h}
         columns={[
           { name: 'keyword', children: 'Keyword' },
           { name: 'kd', children: 'KD,%' },
@@ -38,14 +41,11 @@ const Demo = (): any => {
           { name: 'vol', children: 'Vol.' },
         ]}
       />
-      <Button onClick={toggleLoading} mt={3}>
-        {loading ? 'Stop loading' : 'Start loading'}
-      </Button>
     </>
   );
 };
 
-const data = [
+const dataTest = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -77,5 +77,9 @@ const data = [
     vol: '21,644,290',
   },
 ];
+
+const data = new Array(200).fill(null).map((_, index) => {
+  return dataTest[index % 4];
+});
 
 export default Demo;

@@ -1,0 +1,205 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "incremental": true,
+
+    "outDir": "${configDir}/lib/types",
+    "tsBuildInfoFile": "${configDir}/tsconfig.tsbuildinfo"
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./accordion"
+    },
+    {
+      "path": "./add-filter"
+    },
+    {
+      "path": "./badge"
+    },
+    {
+      "path": "./base-components"
+    },
+    {
+      "path": "./base-trigger"
+    },
+    {
+      "path": "./breadcrumbs"
+    },
+    {
+      "path": "./bulk-textarea"
+    },
+    {
+      "path": "./button"
+    },
+    {
+      "path": "./card"
+    },
+    {
+      "path": "./carousel"
+    },
+    {
+      "path": "./checkbox"
+    },
+    {
+      "path": "./color-picker"
+    },
+    {
+      "path": "./core"
+    },
+    {
+      "path": "./counter"
+    },
+    {
+      "path": "./d3-chart"
+    },
+    {
+      "path": "./data-table"
+    },
+    {
+      "path": "./date-picker"
+    },
+    {
+      "path": "./divider"
+    },
+    {
+      "path": "./dot"
+    },
+    {
+      "path": "./drag-and-drop"
+    },
+    {
+      "path": "./dropdown"
+    },
+    {
+      "path": "./dropdown-menu"
+    },
+    {
+      "path": "./ellipsis"
+    },
+    {
+      "path": "./errors"
+    },
+    {
+      "path": "./feature-highlight"
+    },
+    {
+      "path": "./feature-popover"
+    },
+    {
+      "path": "./feedback-form"
+    },
+    {
+      "path": "./flags"
+    },
+    {
+      "path": "./fullscreen-modal"
+    },
+    {
+      "path": "./icon"
+    },
+    {
+      "path": "./inline-edit"
+    },
+    {
+      "path": "./inline-input"
+    },
+    {
+      "path": "./input"
+    },
+    {
+      "path": "./input-mask"
+    },
+    {
+      "path": "./input-number"
+    },
+    {
+      "path": "./input-tags"
+    },
+    {
+      "path": "./link"
+    },
+    {
+      "path": "./mini-chart"
+    },
+    {
+      "path": "./modal"
+    },
+    {
+      "path": "./notice"
+    },
+    {
+      "path": "./notice-bubble"
+    },
+    {
+      "path": "./pagination"
+    },
+    {
+      "path": "./pills"
+    },
+    {
+      "path": "./product-head"
+    },
+    {
+      "path": "./progress-bar"
+    },
+    {
+      "path": "./radio"
+    },
+    {
+      "path": "./select"
+    },
+    {
+      "path": "./side-panel"
+    },
+    {
+      "path": "./skeleton"
+    },
+    {
+      "path": "./slider"
+    },
+    {
+      "path": "./spin"
+    },
+    {
+      "path": "./spin-container"
+    },
+    {
+      "path": "./switch"
+    },
+    {
+      "path": "./tab-line"
+    },
+    {
+      "path": "./tab-panel"
+    },
+    {
+      "path": "./tag"
+    },
+    {
+      "path": "./textarea"
+    },
+    {
+      "path": "./time-picker"
+    },
+    {
+      "path": "./tooltip"
+    },
+    {
+      "path": "./typography"
+    },
+    {
+      "path": "./ui"
+    },
+    {
+      "path": "./widget-empty"
+    },
+    {
+      "path": "./wizard"
+    },
+    {
+      "path": "../tools/theme"
+    }
+  ]
+}
