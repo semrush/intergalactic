@@ -99,7 +99,7 @@ export type InputTagsSize = NSInputTags.Size;
 /** @deprecated It will be removed in v19. */
 export type InputTagsProps = NSInputTags.Props;
 /** @deprecated It will be removed in v19. */
-export type InputTagsDefaultProps = NSInput.DefaultProps;
+export type InputTagsDefaultProps = NSInputTags.DefaultProps;
 /** @deprecated It will be removed in v19. */
 export type InputTagsContext = NSInputTags.Ctx;
 /** @deprecated It will be removed in v19. */
