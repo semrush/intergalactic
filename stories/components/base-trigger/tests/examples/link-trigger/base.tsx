@@ -36,6 +36,9 @@ const Demo = (props: BasicLinktriggerProps) => {
     loading,
     hintProps,
     active,
+    use,
+    empty,
+    placeholder,
     size = 300,
     w,
     ellipsis,
@@ -95,9 +98,12 @@ const Demo = (props: BasicLinktriggerProps) => {
     <Text tag='div' size={size}>
       <LinkTrigger
         size={size}
+        use={use}
         disabled={disabled}
         active={active}
         loading={loading}
+        empty={empty}
+        placeholder={placeholder}
         color={props.color}
         display={displayValue}
         mr={4}
@@ -117,9 +123,12 @@ const Demo = (props: BasicLinktriggerProps) => {
       {`${numSize} `}
       <LinkTrigger
         size={size}
+        use={use}
         loading={loading}
         disabled={disabled}
         active={active}
+        empty={empty}
+        placeholder={placeholder}
         color={props.color}
       >
         {renderAddon(showAddonLeft, addonLeftType)}
