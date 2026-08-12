@@ -56,6 +56,7 @@ SWrapper:hover:not(:has([disabled])) STrigger[role="combobox"]:not([empty]) {
 SWrapper {
   display: inline-flex;
   position: relative;
+  border-radius: var(--intergalactic-control-rounded, 6px);
 
   &::after {
     content: '';
