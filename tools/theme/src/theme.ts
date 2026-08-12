@@ -3,31 +3,67 @@ import type {
   Lightness,
 } from './colors/index.ts';
 import {
-  colors, semanticColors, baseColors, L_BG_PRIMARY, L_BG_PRIMARY_HOVER,
+  colors,
+  semanticColors,
+  baseColors,
+  L_BG_PRIMARY,
+  L_BG_PRIMARY_HOVER,
   L_BG_BUTTON,
-  L_BG_BUTTON_ACTIVE, L_BG_BUTTON_HOVER, L_BG_BUTTON_STRONG, L_BG_BUTTON_STRONG_ACTIVE, L_BG_BUTTON_STRONG_HOVER, L_BG_BUTTON_BRAND, L_BG_BUTTON_BRAND_ACTIVE, L_BG_BUTTON_BRAND_HOVER,
-  L_BG_BUTTON_SECONDARY, L_BG_BUTTON_SECONDARY_ACTIVE, L_BG_BUTTON_SECONDARY_HOVER,
+  L_BG_BUTTON_ACTIVE,
+  L_BG_BUTTON_HOVER,
+  L_BG_BUTTON_STRONG,
+  L_BG_BUTTON_STRONG_ACTIVE,
+  L_BG_BUTTON_STRONG_HOVER,
+  L_BG_BUTTON_BRAND,
+  L_BG_BUTTON_BRAND_ACTIVE,
+  L_BG_BUTTON_BRAND_HOVER,
+  L_BG_BUTTON_SECONDARY,
+  L_BG_BUTTON_SECONDARY_ACTIVE,
+  L_BG_BUTTON_SECONDARY_HOVER,
   L_BG_LIGHT,
   L_BG_MEDIUM,
   L_BG_PRIMARY_ACTIVE,
   L_BG_SECONDARY,
   L_BG_SECONDARY_ACTIVE,
-  L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
-  L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_PRIMARY_DIMMED, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
-  L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
-  L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
+  L_BG_SECONDARY_HOVER,
+  L_BG_SELECTED,
+  L_BG_SELECTED_HOVER,
+  L_BG_SKELETON,
+  L_BG_STRONG,
+  L_BORDER_ACTIVE,
+  L_BORDER_FOCUS,
+  L_BORDER_STRONG,
+  L_BORDER_PRIMARY,
+  L_BORDER_PRIMARY_DIMMED,
+  L_BORDER_SECONDARY,
+  L_ICON_NON_INTERACTIVE,
+  L_ICON_PRIMARY,
+  L_ICON_PRIMARY_HOVER,
+  L_ICON_SECONDARY,
+  L_ICON_SECONDARY_HOVER,
+  L_INV_BG_BUTTON,
+  L_INV_BG_BUTTON_ACTIVE,
+  L_INV_BG_BUTTON_HOVER,
+  L_INV_BG_LIGHT,
+  L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
   L_INV_BG_PRIMARY_ACTIVE,
-  L_INV_BG_PRIMARY_HOVER, L_INV_BG_SECONDARY,
-  L_INV_BG_SECONDARY_ACTIVE, L_INV_BG_SECONDARY_HOVER,
-  L_INV_BG_SKELETON, L_INV_BORDER_PRIMARY, L_INV_BORDER_SECONDARY, L_INV_ICON_PRIMARY,
+  L_INV_BG_PRIMARY_HOVER,
+  L_INV_BG_SECONDARY,
+  L_INV_BG_SECONDARY_ACTIVE,
+  L_INV_BG_SECONDARY_HOVER,
+  L_INV_BG_SKELETON,
+  L_INV_BORDER_PRIMARY,
+  L_INV_BORDER_SECONDARY,
+  L_INV_ICON_PRIMARY,
   L_INV_ICON_PRIMARY_HOVER,
   L_INV_TEXT_PRIMARY,
-  L_INV_TEXT_SECONDARY, L_INV_TEXT_SECONDARY_HOVER,
+  L_INV_TEXT_SECONDARY,
+  L_INV_TEXT_SECONDARY_HOVER,
   L_TEXT_PLACEHOLDER,
   L_TEXT_PRIMARY,
-  L_TEXT_SECONDARY, L_TEXT_SECONDARY_HOVER,
+  L_TEXT_SECONDARY,
+  L_TEXT_SECONDARY_HOVER,
   L_TEXT_ACCENT,
 } from './colors/index.ts';
 
@@ -229,18 +265,26 @@ export const theme: Theme = {
       'extra-small': {
         value: '320px',
         description: 'Extra small screens (small phones).',
-      },
+      }, // TODO: remove?
       'small': {
         value: '768px',
-        description: 'Small screens (phones and small tablets).',
+        description: 'Switch to mobile layout behavior.',
       },
       'medium': {
-        value: '1200px',
-        description: 'Medium screens (tablets and small laptops).',
+        value: '1280px',
+        description: 'Desktop layout. Sidebar expands',
       },
       'large': {
         value: '1920px',
         description: 'Large screens (tablets and laptops).',
+      }, // TODO: remove?
+      'layout-compact': {
+        value: '1200px',
+        description: 'Low and medium density interfaces.',
+      },
+      'layout-data-heavy': {
+        value: '1500px',
+        description: 'High density interfaces.',
       },
     },
     durations: {
@@ -1124,11 +1168,11 @@ export const theme: Theme = {
         description: 'Background of the FeaturePopover with neutral theme.',
       },
       feature_popover_dot_accent: {
-        value: '{semanticTokens.colors.bg_primary_highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with accent theme.',
       },
       feature_popover_dot_neutral: {
-        value: '{semanticTokens.colors.bg.primary.highlight}',
+        value: '{semanticTokens.colors.brand_primary}',
         description: 'Fill color of the FeaturePopover.Spot with neutral theme.',
       },
       feature_popover_dot_outer_border_accent: {
@@ -1368,19 +1412,19 @@ export const theme: Theme = {
         description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
-        value: neutral.at(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_LIGHT),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
-        value: neutral.at(L_BG_MEDIUM),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Hover state of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_DEFAULT: {
-        value: neutral.at(L_INV_BG_LIGHT),
+        value: neutral.opaqueInvAt(L_INV_BG_LIGHT),
         description: 'Inverted version of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_hover: {
-        value: neutral.at(L_INV_BG_MEDIUM),
+        value: neutral.opaqueInvAt(L_INV_BG_MEDIUM),
         description: 'Hover state for the inverted version of the background color of the ProgressBar.',
       },
       progress_bar_pattern_gradient: {
@@ -1393,7 +1437,7 @@ export const theme: Theme = {
         description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
       },
       progress_bar_value_gradient: {
-        value: `linear-gradient(-45deg, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 25%, ${highlight.at(0.74)} 0%, ${highlight.at(0.74)} 50%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 0%, oklch(from ${highlight.at(0.74)} calc(l - 0.05) c h) 75%, ${highlight.at(0.74)} 0%)`,
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 75%, {semanticTokens.colors.brand.secondary} 0%)',
         description: 'Value with gradient for the ProgressBar.',
       },
       scroll_area_dropdown_menu_bottom: {
@@ -1593,12 +1637,32 @@ export const theme: Theme = {
         description: 'Background of the additional Tag in its normal state.',
       },
       tag_additional_border: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: neutral.at(L_BORDER_PRIMARY_DIMMED),
         description: 'Border color of the additional Tag.',
       },
-      tag_primary_bg_hover: {
+      tag_additional_text: {
+        value: '#6a6c6a',
+        description: 'Text color for the additional tag.',
+      },
+      tag_additional_bg_invert_normal: {
+        value: 'transparent',
+        description: 'Additional tag on bold or dark backgrounds—minimal fill in the normal state.',
+      },
+      tag_additional_bg_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
+        description: 'Hover and active states of the additional tag on dark backgrounds.',
+      },
+      tag_additional_text_invert: {
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
+        description: 'Text color for the additional tag on dark backgrounds.',
+      },
+      tag_additional_border_invert: {
+        value: '{semanticTokens.colors.border_primary_invert}',
+        description: 'Inverted border color of the additional Tag.',
+      },
+      tag_primary_bg_hover_active: {
         value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Hover state of the primary Tag background.',
+        description: 'Hover and active states of the primary Tag background.',
       },
       tag_primary_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
@@ -1680,17 +1744,17 @@ export const theme: Theme = {
         value: '#8029ec',
         description: 'Violet text for the primary violet tag.',
       },
-      tag_primary_white_hover_active: {
-        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
-        description: 'Hover and active (selected) state of the primary white tag.',
+      tag_primary_bg_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_PRIMARY_HOVER),
+        description: 'Hover and active states of the primary tag on dark backgrounds.',
       },
-      tag_primary_white_normal: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+      tag_primary_bg_invert_normal: {
+        value: neutral.opaqueInvAt(L_INV_BG_PRIMARY),
         description: 'Primary tag on bold or dark backgrounds—translucent fill for contrast in the normal state.',
       },
-      tag_primary_white_text: {
+      tag_primary_text_invert: {
         value: '#ffffff',
-        description: 'White text for the primary white tag.',
+        description: 'Text color for the primary tag on dark backgrounds.',
       },
       tag_primary_yellow_hover_active: {
         value: '#fcd8b3',
@@ -1705,36 +1769,36 @@ export const theme: Theme = {
         description: 'Yellow text for the primary yellow tag.',
       },
       tag_secondary_border_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: neutral.at(L_BORDER_PRIMARY_DIMMED),
         description: 'Border color of the secondary Tag.',
       },
       tag_secondary_border_invert: {
         value: '{semanticTokens.colors.border_secondary_invert}',
         description: 'Inverted border color of the secondary Tag.',
       },
-      tag_secondary_gray_text: {
+      tag_secondary_text: {
         value: '#6a6c6a',
-        description: 'Gray text for the default secondary tag.',
+        description: 'Text color for the default secondary tag.',
       },
-      tag_secondary_hover_active: {
+      tag_secondary_bg_hover_active: {
         value: '#f4f5f5',
         description: 'Hover and active (selected) states of the background color for the default secondary tag.',
       },
-      tag_secondary_normal: {
+      tag_secondary_bg_normal: {
         value: '#ffffff',
         description: 'Background color for the default secondary tag.',
       },
-      tag_secondary_white_hover_active: {
-        value: 'rgba(255, 255, 255, 0.1)',
-        description: 'Active state of the secondary white tag.',
+      tag_secondary_bg_invert_hover_active: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY_HOVER),
+        description: 'Hover and active states of the secondary tag on dark backgrounds.',
       },
-      tag_secondary_white_normal: {
-        value: 'rgba(255, 255, 255, 0)',
+      tag_secondary_bg_invert_normal: {
+        value: 'transparent',
         description: 'Secondary/outline tag on bold or dark backgrounds—minimal fill in the normal state.',
       },
-      tag_secondary_white_text: {
-        value: '#ffffff',
-        description: 'White text for the secondary white tag.',
+      tag_secondary_text_invert: {
+        value: neutral.opaqueInvAt(L_INV_TEXT_SECONDARY),
+        description: 'Text color for the secondary tag on dark backgrounds.',
       },
       text_advertising: {
         value: advertising.at(L_TEXT_PRIMARY),
@@ -1982,69 +2046,87 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content_padding_xxsmall: {
-        value: `${SCALE_INDENT / 2}px`,
-        description: 'Tiny padding for content inside controls and surfaces.',
+      content: {
+        padding: {
+          xxsmall: {
+            value: `${SCALE_INDENT / 2}px`,
+            description: 'Tiny padding for content inside controls and surfaces.',
+          },
+          xsmall: {
+            value: `${SCALE_INDENT}px`,
+            description: 'Extra small padding for content inside controls and surfaces.',
+          },
+          xsmall_extended: {
+            value: `${SCALE_INDENT * 1.5}px`,
+            description: 'Extended extra small padding for content inside controls and surfaces.',
+          },
+          small: {
+            value: `${SCALE_INDENT * 2}px`,
+            description: 'Small padding for content inside controls and surfaces.',
+          },
+          medium: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Medium padding for content inside controls and surfaces.',
+          },
+          large: {
+            value: `${SCALE_INDENT * 4}px`,
+            description: 'Large padding for content inside controls and surfaces.',
+          },
+          xlarge: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Extra large padding for content inside controls and surfaces.',
+          },
+          xlarge_extended: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: 'Extended extra large padding for content inside controls and surfaces.',
+          },
+          xxlarge: {
+            value: `${SCALE_INDENT * 10}px`,
+            description: '2x large padding for content inside controls and surfaces.',
+          },
+        },
+        gap: {
+          small: {
+            value: `${SCALE_INDENT}px`,
+            description: 'Small gap between content elements inside controls, rows, or columns.',
+          },
+          medium: {
+            value: `${SCALE_INDENT * 1.5}px`,
+            description: 'Medium gap between content elements inside controls, rows, or columns.',
+          },
+          large: {
+            value: `${SCALE_INDENT * 2}px`,
+            description: 'Large gap between content elements inside controls, rows, or columns.',
+          },
+          xlarge: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Extra large gap between elements, rows, or columns.',
+          },
+          xxlarge: {
+            value: `${SCALE_INDENT * 4}px`,
+            description: '2x large gap between elements, rows, or columns.',
+          },
+          xxlarge_extended: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Extended 2x large gap between elements, rows, or columns.',
+          },
+          xxxlarge: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: '3x large gap between elements, rows, or columns.',
+          },
+        },
       },
-      content_padding_xsmall: {
-        value: `${SCALE_INDENT}px`,
-        description: 'Extra small padding for content inside controls and surfaces.',
-      },
-      content_padding_xsmall_extended: {
-        value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Extended extra small padding for content inside controls and surfaces.',
-      },
-      content_padding_small: {
-        value: `${SCALE_INDENT * 2}px`,
-        description: 'Small padding for content inside controls and surfaces.',
-      },
-      content_padding_medium: {
-        value: `${SCALE_INDENT * 3}px`,
-        description: 'Medium padding for content inside controls and surfaces.',
-      },
-      content_padding_large: {
-        value: `${SCALE_INDENT * 4}px`,
-        description: 'Large padding for content inside controls and surfaces.',
-      },
-      content_padding_xlarge: {
-        value: `${SCALE_INDENT * 5}px`,
-        description: 'Extra large padding for content inside controls and surfaces.',
-      },
-      content_padding_xlarge_extended: {
-        value: `${SCALE_INDENT * 6}px`,
-        description: 'Extended extra large padding for content inside controls and surfaces.',
-      },
-      content_padding_xxlarge: {
-        value: `${SCALE_INDENT * 10}px`,
-        description: '2x large padding for content inside controls and surfaces.',
-      },
-      content_gap_small: {
-        value: `${SCALE_INDENT}px`,
-        description: 'Small gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_medium: {
-        value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Medium gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_large: {
-        value: `${SCALE_INDENT * 2}px`,
-        description: 'Large gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_xlarge: {
-        value: `${SCALE_INDENT * 3}px`,
-        description: 'Extra large gap between elements, rows, or columns.',
-      },
-      content_gap_xxlarge: {
-        value: `${SCALE_INDENT * 4}px`,
-        description: '2x large gap between elements, rows, or columns.',
-      },
-      content_gap_xxlarge_extended: {
-        value: `${SCALE_INDENT * 5}px`,
-        description: 'Extended 2x large gap between elements, rows, or columns.',
-      },
-      content_gap_xxxlarge: {
-        value: `${SCALE_INDENT * 6}px`,
-        description: '3x large gap between elements, rows, or columns.',
+      layout: {
+        padding: {
+          desktop: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: 'Padding for layout on desktop.',
+          },
+          mobile: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Padding for layout on mobile.',
+          },
+        },
       },
     },
     radii: {
@@ -2285,7 +2367,7 @@ type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' 
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
 type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
+type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large' | 'layout-compact' | 'layout-data-heavy';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
 type Assets = 'checkmark-m' | 'checkmark-l';
 type Easings = 'fast' | 'medium';
@@ -2311,11 +2393,12 @@ export type BaseTokens = {
 };
 
 type FlattenPaths<T> = T extends object
-  ? { [K in keyof T]-?: K extends string | number
-      ? T[K] extends Value
-        ? K
-        : `${K}_${FlattenPaths<T[K]>}`
-      : never
+  ? {
+      [K in keyof T]-?: K extends string | number
+        ? T[K] extends Value
+          ? K
+          : `${K}_${FlattenPaths<T[K]>}`
+        : never
     }[keyof T]
   : '';
 
@@ -2327,22 +2410,34 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content_padding_xxsmall: Value;
-    content_padding_xsmall: Value;
-    content_padding_xsmall_extended: Value;
-    content_padding_small: Value;
-    content_padding_medium: Value;
-    content_padding_large: Value;
-    content_padding_xlarge: Value;
-    content_padding_xlarge_extended: Value;
-    content_padding_xxlarge: Value;
-    content_gap_small: Value;
-    content_gap_medium: Value;
-    content_gap_large: Value;
-    content_gap_xlarge: Value;
-    content_gap_xxlarge: Value;
-    content_gap_xxlarge_extended: Value;
-    content_gap_xxxlarge: Value;
+    content: {
+      padding: {
+        xxsmall: Value;
+        xsmall: Value;
+        xsmall_extended: Value;
+        small: Value;
+        medium: Value;
+        large: Value;
+        xlarge: Value;
+        xlarge_extended: Value;
+        xxlarge: Value;
+      };
+      gap: {
+        small: Value;
+        medium: Value;
+        large: Value;
+        xlarge: Value;
+        xxlarge: Value;
+        xxlarge_extended: Value;
+        xxxlarge: Value;
+      };
+    };
+    layout: {
+      padding: {
+        desktop: Value;
+        mobile: Value;
+      };
+    };
   };
   radii: {
     'addon': Value;
@@ -3039,9 +3134,18 @@ type SemanticColors = {
     primary: {
       bg: {
         normal: Value;
-        hover: Value;
+        hover: {
+          active: Value;
+        };
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
       border: Value;
+      text_invert: Value;
       gray: {
         normal: Value;
         hover: {
@@ -3091,32 +3195,25 @@ type SemanticColors = {
         };
         text: Value;
       };
-      white: {
-        normal: Value;
-        hover: {
-          active: Value;
-        };
-        text: Value;
-      };
     };
     secondary: {
       border: {
         DEFAULT: Value;
         invert: Value;
       };
-      normal: Value;
-      hover: {
-        active: Value;
-      };
-      white: {
+      text: Value;
+      text_invert: Value;
+      bg: {
         normal: Value;
         hover: {
           active: Value;
         };
-        text: Value;
-      };
-      gray: {
-        text: Value;
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
     };
     additional: {
@@ -3125,8 +3222,17 @@ type SemanticColors = {
         hover: {
           active: Value;
         };
+        invert: {
+          normal: Value;
+          hover: {
+            active: Value;
+          };
+        };
       };
       border: Value;
+      border_invert: Value;
+      text: Value;
+      text_invert: Value;
     };
   };
   chart: {
