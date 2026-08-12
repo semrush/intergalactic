@@ -1825,7 +1825,6 @@
     "value": "oklch(0.1 0.023 159.1 / 0.433)",
     "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
     "components": [
-      "data-table",
       "inline-input",
       "input",
       "input-number"
@@ -2302,7 +2301,15 @@
   {
     "name": "--intergalactic-table-border-accent",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
-    "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table.",
+    "description": "Accent borders in the table, e.g. for the accordion.",
+    "components": [
+      "data-table"
+    ]
+  },
+  {
+    "name": "--intergalactic-table-border-accordion-accent",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Accent left border for the table.",
     "components": []
   },
   {
@@ -2441,13 +2448,13 @@
   },
   {
     "name": "--intergalactic-table-th-gradient",
-    "value": "linear-gradient(to right, transparent 0%, oklch(0.9 0.002 177) 100%)",
+    "value": "linear-gradient(to right, transparent 0%, #ffffff 100%)",
     "description": "Background gradient for sorting icon that absolute positioned in the table head.",
     "components": []
   },
   {
     "name": "--intergalactic-table-th-primary-cell",
-    "value": "oklch(0.98 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the header cell in the primary Table.",
     "components": [
       "data-table"
@@ -2455,17 +2462,17 @@
   },
   {
     "name": "--intergalactic-table-th-primary-cell-active",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the active header cell in the primary Table.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-table-th-primary-cell-hover",
-    "value": "oklch(0.96 0.001 180)",
-    "description": "Background of the hovered header cell in the primary Table.",
     "components": [
       "data-table"
     ]
+  },
+  {
+    "name": "--intergalactic-table-th-primary-cell-hover",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the hovered header cell in the primary Table.",
+    "components": []
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
@@ -3010,6 +3017,7 @@
       "card",
       "counter",
       "d3-chart",
+      "data-table",
       "date-picker",
       "dropdown",
       "dropdown-menu",
@@ -3299,6 +3307,7 @@
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
       "counter",
+      "data-table",
       "input-tags",
       "notice-bubble",
       "pills"
@@ -3312,6 +3321,7 @@
       "base-components",
       "bulk-textarea",
       "counter",
+      "data-table",
       "dropdown",
       "dropdown-menu",
       "input-tags",
@@ -3334,6 +3344,7 @@
     "components": [
       "base-components",
       "bulk-textarea",
+      "data-table",
       "dropdown",
       "modal",
       "pills"
@@ -3348,6 +3359,7 @@
       "bulk-textarea",
       "button",
       "card",
+      "data-table",
       "dropdown",
       "input",
       "input-tags",
@@ -3364,6 +3376,7 @@
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea",
+      "data-table",
       "feature-popover",
       "notice-bubble"
     ]
@@ -3374,7 +3387,8 @@
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea",
-      "card"
+      "card",
+      "data-table"
     ]
   },
   {
@@ -3394,12 +3408,21 @@
     ]
   },
   {
+    "name": "--intergalactic-spacing-content-gap-xsmall",
+    "value": "2px",
+    "description": "Extra small gap between content elements inside controls, rows, or columns.",
+    "components": [
+      "data-table"
+    ]
+  },
+  {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
       "base-trigger",
       "bulk-textarea",
+      "data-table",
       "date-picker",
       "dropdown-menu",
       "inline-input",
@@ -3430,6 +3453,7 @@
     "components": [
       "button",
       "checkbox",
+      "data-table",
       "date-picker",
       "dropdown",
       "notice-bubble",
@@ -3444,6 +3468,7 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "data-table",
       "notice-bubble",
       "pagination"
     ]

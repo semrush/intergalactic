@@ -1538,7 +1538,11 @@ export const theme: Theme = {
       },
       table_border_accent: {
         value: neutral.opaqueAt(L_BORDER_PRIMARY),
-        description: 'Accent borders in the Table: for the accordion in the table and for the header of the secondary table.',
+        description: 'Accent borders in the table, e.g. for the accordion.',
+      },
+      table_border_accordion_accent: {
+        value: '{semanticTokens.colors.dropdown_menu_item_selected_box_shadow}',
+        description: 'Accent left border for the table.',
       },
       table_td_cell_DEFAULT: {
         value: neutral.at(L_BG_PRIMARY),
@@ -1609,19 +1613,19 @@ export const theme: Theme = {
         description: 'Background of the hovered cell with warning information in the Table.',
       },
       table_th_gradient: {
-        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100'].value} 100%)`,
+        value: 'linear-gradient(to right, transparent 0%, {baseTokens.colors.gray.white} 100%)',
         description: 'Background gradient for sorting icon that absolute positioned in the table head.',
       },
       table_th_primary_cell_DEFAULT: {
-        value: neutral.at(L_BG_SECONDARY),
+        value: neutral.at(L_BG_PRIMARY),
         description: 'Background of the header cell in the primary Table.',
       },
       table_th_primary_cell_active: {
-        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        value: neutral.at(L_BG_PRIMARY),
         description: 'Background of the active header cell in the primary Table.',
       },
       table_th_primary_cell_hover: {
-        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        value: neutral.at(L_BG_PRIMARY),
         description: 'Background of the hovered header cell in the primary Table.',
       },
       table_th_secondary_cell: {
@@ -2086,6 +2090,10 @@ export const theme: Theme = {
           },
         },
         gap: {
+          xsmall: {
+            value: `${SCALE_INDENT / 2}px`,
+            description: 'Extra small gap between content elements inside controls, rows, or columns.',
+          },
           small: {
             value: `${SCALE_INDENT}px`,
             description: 'Small gap between content elements inside controls, rows, or columns.',
@@ -2423,6 +2431,7 @@ export type SemanticTokens = {
         xxlarge: Value;
       };
       gap: {
+        xsmall: Value;
         small: Value;
         medium: Value;
         large: Value;
@@ -3007,6 +3016,9 @@ type SemanticColors = {
   table: {
     border: {
       accent: Value;
+      accordion: {
+        accent: Value;
+      };
     };
     th: {
       primary: {
