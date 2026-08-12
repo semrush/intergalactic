@@ -2,10 +2,10 @@ import Check from '@semcore/icon/Check/m';
 import Edit from '@semcore/icon/Edit/m';
 import { Box, Flex } from '@semcore/ui/base-components';
 import InputTags from '@semcore/ui/input-tags';
-import type { InputTagsTagProps } from '@semcore/ui/input-tags';
+import type { NSInputTags } from '@semcore/ui/input-tags';
 import React from 'react';
 
-type ExampleInputTagsProps = InputTagsTagProps;
+type ExampleInputTagsProps = NSInputTags.Tag.Props;
 
 const Demo = (props: ExampleInputTagsProps) => {
   return (
