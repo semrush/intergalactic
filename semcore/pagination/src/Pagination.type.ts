@@ -1,5 +1,5 @@
 import type { NSBox } from '@semcore/base-components';
-import type Button from '@semcore/button';
+import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import type { InputProps } from '@semcore/input';
@@ -54,15 +54,15 @@ declare namespace NSPagination {
   };
 
   namespace PrevPage {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace NextPage {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace FirstPage {
-    type Component = typeof Button;
+    type Component = NSButton.Component;
   }
 
   namespace TotalPages {

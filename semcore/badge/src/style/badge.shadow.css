@@ -1,27 +1,75 @@
 SBadge {
   display: inline-block;
   box-sizing: border-box;
-  height: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-fs-200, 14px);
+  height: 16px;
+  align-content: center;
   padding: 0 var(--intergalactic-spacing-1x, 4px);
   border-radius: var(--intergalactic-badge-rounded, 4px);
   white-space: nowrap;
-  font-size: var(--intergalactic-fs-50, 10px);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: 8px;
   font-weight: var(--intergalactic-medium, 500);
   letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-badge-text-primary-invert */
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
 }
 
-SBadge[bg] {
-  background-color: var(--bg);
+SBadge[theme='default'] {
+  &[type='admin'] {
+    background-color: var(--intergalactic-badge-accent-admin, oklch(0.58 0.168 278.2));
+  }
+
+  &[type='alpha'] {
+    background-color: var(--intergalactic-badge-accent-alpha, oklch(0.64 0.226 24.5));
+  }
+
+  &[type='beta'] {
+    background-color: var(--intergalactic-badge-accent-beta, oklch(0.74 0.17 72));
+  }
+
+  &[type='new'] {
+    background-color: var(--intergalactic-badge-accent-new, oklch(0.74 0.17 170));
+  }
+
+  &[type='soon'] {
+    background-color: var(--intergalactic-badge-accent-soon, oklch(0.64 0.003 157.8));
+  }
+
+  &[type='unavailable'] {
+    color: var(--intergalactic-badge-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.001 180));
+  }
 }
 
-SBadge[inverted] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-} /* TODO: --intergalactic-badge-text-primary-invert */
+SBadge[theme='invert'] {
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  background-color: var(--intergalactic-badge-bg-invert, oklch(0.969 0.057 140 / 0.118));
+}
 
-SBadge[color] {
-  color: var(--color);
+SBadge[theme='light'] {
+  &[type='admin'] {
+    color: var(--intergalactic-badge-light-admin-text, oklch(0.58 0.168 278.2));
+    background-color: var(--intergalactic-badge-light-admin, oklch(0.898 0.054 268.3));
+  }
+  &[type='alpha'] {
+    color: var(--intergalactic-badge-light-alpha-text, oklch(0.64 0.226 24.5));
+    background-color: var(--intergalactic-badge-light-alpha, oklch(0.899 0.069 12.9));
+  }
+  &[type='beta'] {
+    color: var(--intergalactic-badge-light-beta-text, oklch(0.64 0.16 64));
+    background-color: var(--intergalactic-badge-light-beta, oklch(0.9 0.13 92));
+  }
+  &[type='new'] {
+    color: var(--intergalactic-badge-light-new-text, oklch(0.64 0.161 170));
+    background-color: var(--intergalactic-badge-light-new, oklch(0.9 0.11 175));
+  }
+  &[type='soon'] {
+    color: var(--intergalactic-badge-light-soon-text, oklch(0.46 0.004 144.4));
+    background-color: var(--intergalactic-badge-light-soon, oklch(0.9 0.002 177));
+  }
+  &[type='unavailable'] {
+    color: var(--intergalactic-badge-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.001 180));
+  }
 }
