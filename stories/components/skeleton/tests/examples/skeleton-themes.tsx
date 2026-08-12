@@ -18,7 +18,7 @@ const Demo = (props: ExampleProps) => {
 };
 
 export const defaultProps: ExampleProps = {
-  theme: 'dark',
+  theme: 'invert',
   duration: 0,
   amount: undefined,
   w: '60%',

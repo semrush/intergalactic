@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Skeleton>;
 const commonArgTypes = {
   placement: {
     theme: { type: 'select' },
-    options: ['dark', 'invert'],
+    options: ['default', 'invert'],
   },
   amount: {
     control: { type: 'number' },

@@ -15,10 +15,9 @@ declare namespace NSSkeleton {
     duration?: string | number;
     /**
      * Skeleton theme
-     * @default invert
-     * @deprecated. Use invert flag instead.
+     * @default default
      */
-    theme?: 'dark' | 'invert';
+    theme?: 'default' | 'invert';
     /** Specifies the locale for i18n support */
     locale?: string;
     /**
@@ -26,14 +25,10 @@ declare namespace NSSkeleton {
      * @default false
      */
     observeParentSize?: boolean;
-    /**
-     * Flag for render the Skeleton in the dark theme.
-     */
-    invert?: boolean;
   };
 
   type DefaultProps = {
-    theme?: 'invert';
+    theme: 'default';
     duration: 2000;
   };
 
@@ -50,17 +45,15 @@ declare namespace NSSkeleton {
     type Component = Intergalactic.Component<'rect', Props>;
   }
 
-  type RenderComponent = Intergalactic.Component<'div', Props, Ctx>;
+  type RenderComponent = Intergalactic.Component<'div', Props>;
 
-  type Component = Intergalactic.Component<'svg', Props, Ctx> & {
+  type Component = Intergalactic.Component<'svg', Props> & {
     Text: Text.Component;
   };
 }
 
 /** @deprecated It will be removed in v19. */
 export type SkeletonProps = NSSkeleton.Props;
-/** @deprecated It will be removed in v19. */
-export type SkeletonCtx = NSSkeleton.Ctx;
 /** @deprecated It will be removed in v19. */
 export type SkeletonTextProps = NSSkeleton.Text.Props;
 

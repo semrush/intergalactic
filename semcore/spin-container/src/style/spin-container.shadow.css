@@ -22,11 +22,11 @@ SOverlay {
   left: 0;
 }
 
-SOverlay[theme='invert'], SOverlay[invert] {
+SOverlay[theme='invert'] {
   background-color: var(--intergalactic-overlay-secondary, oklch(0.118 0.023 170.1 / 0.262));
 }
 
-SOverlay[theme='dark'] {
+SOverlay[theme='default'], SOverlay[theme='dark'] {
   background-color: var(--intergalactic-overlay-limitation-secondary, oklch(1 0 0 / 0.85));
 }
 

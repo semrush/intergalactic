@@ -56,12 +56,10 @@ class SkeletonSVG extends Component<
   static enhance = [uniqueIDEnhancement()];
   static style = style;
 
-  static defaultProps = (props: Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.Component>) => {
-    return {
-      theme: props.invert ? undefined : 'invert',
-      duration: 2000,
-    } as const;
-  };
+  static defaultProps = {
+    theme: 'default',
+    duration: 2000,
+  } as const;
 
   svgRef = React.createRef<SVGElement>();
   private observer: ResizeObserver | null = null;

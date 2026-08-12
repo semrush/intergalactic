@@ -20,12 +20,10 @@ class RootSpin extends Component<
   static displayName = 'Spin';
   static style = style;
   static enhance = [resolveColorEnhance(), i18nEnhance(localizedMessages)] as const;
-  static defaultProps = (props: Intergalactic.InternalTypings.InferComponentProps<NSSpin.Component>) => {
-    return {
-      size: 'm',
-      theme: props.invert ? undefined : 'dark',
-    } as const;
-  };
+  static defaultProps = {
+    size: 'm',
+    theme: 'default',
+  } as const;
 
   get sizeAndStroke(): [number, number] {
     const { size } = this.asProps;

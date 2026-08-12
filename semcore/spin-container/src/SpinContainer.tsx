@@ -23,13 +23,11 @@ class SpinContainerRoot extends Component<
 > {
   static displayName = 'SpinContainer';
   static style = style;
-  static defaultProps = (props: Intergalactic.InternalTypings.InferComponentProps<NSSpinContainer.Component>) => {
-    return {
-      size: 'xxl',
-      theme: props.invert ? undefined : 'dark',
-      duration: 200,
-    } as const;
-  };
+  static defaultProps = {
+    size: 'xxl',
+    theme: 'default',
+    duration: 200,
+  } as const;
 
   static enhance = [resolveColorEnhance()] as const;
 
@@ -106,18 +104,18 @@ class SpinContainerRoot extends Component<
 type OverlayProps = Intergalactic.InternalTypings.InferChildComponentProps<NSSpinContainer.Overlay.Component, typeof SpinContainerRoot, 'Overlay'>;
 
 class Overlay extends Component<OverlayProps> {
-  static defaultProps = ({ size, theme, invert }: OverlayProps) => ({
-    children: <Spin size={size} theme={theme} invert={invert} />,
+  static defaultProps = ({ size, theme }: OverlayProps) => ({
+    children: <Spin size={size} theme={theme} />,
   });
 
   render() {
     const SOverlay = Root;
-    const { styles, theme, invert, background, loading, duration, resolveColor } = this.asProps;
+    const { styles, theme, background, loading, duration, resolveColor } = this.asProps;
     const useTheme = background ? 'custom' : theme;
 
     return sstyled(styles)(
       <FadeInOut visible={loading} duration={duration}>
-        <SOverlay render={Box} use:theme={useTheme} invert={invert} use:background={resolveColor(background)} />
+        <SOverlay render={Box} use:theme={useTheme} use:background={resolveColor(background)} />
       </FadeInOut>,
     );
   }
