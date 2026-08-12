@@ -55,7 +55,7 @@ class SpinContainerRoot extends Component<
   }
 
   getOverlayProps() {
-    const { loading, background, duration, size, theme, resolveColor, invert } = this.asProps;
+    const { loading, background, duration, size, theme, resolveColor } = this.asProps;
     return {
       background,
       // for Animated
@@ -65,7 +65,6 @@ class SpinContainerRoot extends Component<
       size,
       theme,
       resolveColor,
-      invert,
     };
   }
 

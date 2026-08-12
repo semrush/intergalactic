@@ -35,27 +35,27 @@ class Demo extends React.PureComponent {
         </Flex>
 
         <Flex h={150}>
-          <SpinContainer invert loading size='xs'>
+          <SpinContainer theme='invert' loading size='xs'>
             <Text>Hello world</Text>
           </SpinContainer>
 
-          <SpinContainer invert loading size='s'>
+          <SpinContainer theme='invert' loading size='s'>
             <Text>Hello world</Text>
           </SpinContainer>
 
-          <SpinContainer invert loading size='m'>
+          <SpinContainer theme='invert' loading size='m'>
             <Text>Hello world</Text>
           </SpinContainer>
 
-          <SpinContainer invert loading size='l'>
+          <SpinContainer theme='invert' loading size='l'>
             <Text>Hello world</Text>
           </SpinContainer>
 
-          <SpinContainer invert loading size='xl'>
+          <SpinContainer theme='invert' loading size='xl'>
             <Text>Hello world</Text>
           </SpinContainer>
 
-          <SpinContainer invert loading size='xxl'>
+          <SpinContainer theme='invert' loading size='xxl'>
             <Text h={250}>Hello world</Text>
           </SpinContainer>
 

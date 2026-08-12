@@ -24,7 +24,7 @@ SSkeletonSVG[theme='default'] {
   fill: var(--intergalactic-skeleton-bg, oklch(0.94 0.002 180));
 }
 
-SSkeletonSVG[theme='invert'], SSkeletonSVG[invert] {
+SSkeletonSVG[theme='invert'] {
   fill: var(--intergalactic-skeleton-bg-invert, oklch(0.5 0.004 147.4));
 }
 

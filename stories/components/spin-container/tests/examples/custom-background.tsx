@@ -34,13 +34,13 @@ class Demo extends React.PureComponent {
           </SpinContainer>
         </Flex>
         <Flex>
-          <SpinContainer background='blanchedalmond' loading invert>
+          <SpinContainer background='blanchedalmond' loading theme='invert'>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
           </SpinContainer>
-          <SpinContainer background='#3eeb4c' loading invert>
+          <SpinContainer background='#3eeb4c' loading theme='invert'>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
           </SpinContainer>
-          <SpinContainer background='blue' loading invert>
+          <SpinContainer background='blue' loading theme='invert'>
             <SpinContainer.Overlay>Invert theme overlay</SpinContainer.Overlay>
             <div style={{ width: 200, height: 200 }}>Hello world</div>
           </SpinContainer>
