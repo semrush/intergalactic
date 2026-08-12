@@ -70,7 +70,7 @@ SWrapper {
 
   &[empty]:active,
   &[empty][active],
-  &[empty]:focus-within {
+  &[empty]:has(STrigger:focus-visible) {
     background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
 
     STrigger {
