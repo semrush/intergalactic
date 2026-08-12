@@ -73,11 +73,9 @@ export const BasicPropsAndTriggerAddons: StoryObj<typeof BasicProps> = {
     leftAddonText: {
       control: { type: 'text' },
     },
-    leftAddonBadgeText: {
-      control: { type: 'text' },
-    },
-    leftAddonBadgeBg: {
-      control: { type: 'text' },
+    leftAddonBadgeType: {
+      control: { type: 'select' },
+      options: ['admin', 'alpha', 'beta', 'new', 'soon', 'unavailable'],
     },
     showRightAddon: {
       control: { type: 'boolean' },
@@ -89,11 +87,9 @@ export const BasicPropsAndTriggerAddons: StoryObj<typeof BasicProps> = {
     rightAddonText: {
       control: { type: 'text' },
     },
-    rightAddonBadgeText: {
-      control: { type: 'text' },
-    },
-    rightAddonBadgeBg: {
-      control: { type: 'text' },
+    rightAddonBadgeType: {
+      control: { type: 'select' },
+      options: ['admin', 'alpha', 'beta', 'new', 'soon', 'unavailable'],
     },
     triggerText: {
       control: { type: 'text' },
