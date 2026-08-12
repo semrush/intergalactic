@@ -153,8 +153,7 @@ const TimeCell = ({ value }: any) => {
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
 
-const UrlLinkCell = ({ value, headerRef }: { value: string; headerRef: HTMLElement | null }) => {
-  const triggerRef = useRef<HTMLAnchorElement | null>(null);
+const UrlLinkCell = ({ value, headerRef }: any) => {
   const pageUrl = value?.toString?.() || '';
 
   if (!pageUrl || pageUrl === 'n/a') {
@@ -166,10 +165,7 @@ const UrlLinkCell = ({ value, headerRef }: { value: string; headerRef: HTMLEleme
       href={pageUrl}
       target='_blank'
       rel='noopener noreferrer'
-      color='text-primary'
       wMin={0}
-      ref={triggerRef}
-      onClick={(event) => event.stopPropagation()}
     >
       <Link.Text
         wMin={0}
@@ -177,7 +173,6 @@ const UrlLinkCell = ({ value, headerRef }: { value: string; headerRef: HTMLEleme
         ellipsis:cropPosition='middle'
         ellipsis:containerElement={headerRef ?? undefined}
         ellipsis:recalculateContainerWidth={(width: number) => width - 26}
-        hint:triggerRef={triggerRef}
       >
         {removeProtocol(pageUrl)}
       </Link.Text>
