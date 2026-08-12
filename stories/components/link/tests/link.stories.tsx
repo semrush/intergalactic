@@ -96,11 +96,6 @@ export const BasicUsage: StoryObj<typeof BasicUsageProps> = {
       description:
         'Wrap text in Link.Text, or pass it as a bare string child. Ignored while an addon is shown — addons require Link.Text',
     },
-    showExternalIcon: {
-      control: { type: 'boolean' },
-      description:
-        'Appends Link.ExternalIcon in slot mode on an external href. Turn it off to see the width still reserved for a missing icon',
-    },
     enableVisited: { control: { type: 'boolean' } },
     noWrap: { control: { type: 'boolean' } },
     color: { control: { type: 'text' } },

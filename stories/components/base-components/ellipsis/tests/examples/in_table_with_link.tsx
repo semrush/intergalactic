@@ -26,6 +26,11 @@ const data = [{
   cpc: '$0',
   url: 'n/a',
 }, {
+  keyword: 'ebay buy no url',
+  kd: '-',
+  cpc: '$0',
+  url: undefined,
+}, {
   keyword: 'ebay buy',
   kd: '75.89',
   cpc: '$0',
@@ -40,7 +45,18 @@ const data = [{
 const pageLimit = 10;
 const recalculateContainerWidth = (width: number) => width - 20;
 
-export default function Demo() {
+type TableLinkProps = {
+  /** Text size of the URL cell. LinkAction passes it on to Link.Text only, so the
+   * external icon stays 14px whatever you pick here. */
+  size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
+};
+
+export const defaultProps: TableLinkProps = {
+  size: 300,
+};
+
+export default function Demo(props: TableLinkProps) {
+  const { size = 300 } = props;
   const [currentPage, setCurrentPage] = React.useState(0);
 
   const urlRef = React.useRef(null);
@@ -76,13 +92,14 @@ export default function Demo() {
 
   const renderCell = React.useMemo(() => (props: CellRenderProps<any, any>) => {
     if (props.columnName === 'url' && Boolean(columnElement)) {
-      const url = props.value.toString();
+      const url = props.row.url as string | null | undefined;
 
       return (
         <LinkAction
-          displayHref={removeProtocol(url)}
-          externalHref={url}
+          displayHref={url ? removeProtocol(url) : ''}
+          externalHref={url as string}
           internalAction={() => console.log('here we are')}
+          size={size}
 
           ellipsis:cropPosition='middle'
           ellipsis:containerElement={columnElement}
@@ -91,7 +108,7 @@ export default function Demo() {
       );
     }
     return props.defaultRender();
-  }, [columnElement]);
+  }, [columnElement, size]);
 
   const tableData = [];
   let index = 0;
@@ -102,7 +119,7 @@ export default function Demo() {
       return {
         ...item,
         keyword: `${index} ${item.keyword}`,
-        url: `${item.url}#${index}`,
+        url: item.url == null ? item.url : `${item.url}#${index}`,
       };
     }));
   }

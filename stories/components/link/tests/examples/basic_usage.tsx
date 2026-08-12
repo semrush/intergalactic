@@ -25,13 +25,6 @@ type BasicLinkProps = LinkProps & {
    * Ignored while an addon is shown — an addon requires the text to live in `<Link.Text>`.
    */
   childrenMode?: 'slot' | 'string';
-  /**
-   * Whether the slot mode appends `<Link.ExternalIcon />` on an external href.
-   * Turning it off is the pre-ExternalIcon composition every existing consumer still has,
-   * and it is how you see getTextProps() reserve room for an icon that never renders.
-   * Has no effect in string mode, where Link injects the icon itself.
-   */
-  showExternalIcon?: boolean;
   title?: string;
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
@@ -62,7 +55,6 @@ const Demo = (props: BasicLinkProps) => {
     href = '#',
     isExternal,
     childrenMode = 'slot',
-    showExternalIcon = true,
     size = 300,
     color,
     w,
@@ -128,7 +120,7 @@ const Demo = (props: BasicLinkProps) => {
    * same-host, so the story never hits that gap.
    */
   const isUrl = (value: string) => value.startsWith('//') || value.toLowerCase().startsWith('http');
-  const needsExternalIcon = showExternalIcon && !asString && (isExternal ?? isUrl(href));
+  const needsExternalIcon = !asString && (isExternal ?? isUrl(href));
 
   /**
    * Builds the Link with only the slots that are switched on.
