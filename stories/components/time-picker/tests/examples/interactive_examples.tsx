@@ -1,12 +1,11 @@
 import { Box } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
-import Select from '@semcore/ui/select';
 import TimePicker from '@semcore/ui/time-picker';
-import type { TimePickerProps, TimePickerItemProps } from '@semcore/ui/time-picker';
+import type { NSTimePicker } from '@semcore/ui/time-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type InteractiveExampleProps = TimePickerProps & TimePickerItemProps & {
+type InteractiveExampleProps = NSTimePicker.Props & NSTimePicker.FieldProps & {
   showOnChange?: boolean;
   showValidation?: boolean;
   showLocaleSwitch?: boolean;
