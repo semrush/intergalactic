@@ -70,7 +70,7 @@ type ConfirmControlAsProps = ControlAsProps & {
 type CancelControlAsProps = ControlAsProps & {
   onCancel?: OnCancel;
 };
-type NumberValueAsProps = NSInputNumber.Value.Props & {
+type NumberValueAsProps = NSInputNumber.Value.Props<any> & {
   increment?: (event: WheelEvent) => void;
   decrement?: (event: WheelEvent) => void;
 };
