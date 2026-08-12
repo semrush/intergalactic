@@ -226,7 +226,6 @@
     "value": "oklch(1 0 0)",
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
-      "base-components",
       "bulk-textarea",
       "card",
       "color-picker",
