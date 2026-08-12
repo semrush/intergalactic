@@ -3400,6 +3400,7 @@
     "components": [
       "base-trigger",
       "bulk-textarea",
+      "date-picker",
       "dropdown-menu",
       "inline-input",
       "pagination",
@@ -3429,6 +3430,7 @@
     "components": [
       "button",
       "checkbox",
+      "date-picker",
       "dropdown",
       "notice-bubble",
       "pagination",
@@ -3525,7 +3527,6 @@
       "base-trigger",
       "bulk-textarea",
       "button",
-      "date-picker",
       "dropdown-menu",
       "feature-highlight",
       "inline-edit",
@@ -3595,7 +3596,6 @@
       "card",
       "carousel",
       "d3-chart",
-      "date-picker",
       "feedback-form",
       "notice"
     ]
