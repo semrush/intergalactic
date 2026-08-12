@@ -179,14 +179,14 @@ test.describe(`${TAG.VISUAL}`, () => {
           locator: locators.cells(page, 0),
           expectedStyles: {
             ...defaultCellStyles,
-            margin: '4px 0px 0px',
+            margin: '0px',
           },
         },
         {
           locator: locators.cells(page, 10),
           expectedStyles: {
             ...defaultCellStyles,
-            margin: '4px 0px 0px',
+            margin: '0px',
           },
         },
       ];
@@ -208,7 +208,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
         const cell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
-        await checkStyle(cell.nth(1), { margin: '4px 0px 0px', width: '32px', height: '32px' });
+        await checkStyle(cell.nth(1), { margin: '0px', width: '32px', height: '32px' });
       });
 
       await test.step('Verify style for Apply picker button', async () => {
