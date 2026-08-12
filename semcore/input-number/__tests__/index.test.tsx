@@ -4,6 +4,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import React from 'react';
 
 import InputNumber from '../src';
+import type { NSInputNumber } from '../src';
 
 describe('input-number Dependency imports', () => {
   runDependencyCheckTests('input-number');
@@ -578,5 +579,263 @@ describe('InputNumber', () => {
     await userEvent.keyboard('1');
     expect(spy).toBeCalledTimes(1);
     expect(getByTestId('input-number-value').getAttribute('value')).toBe('-1');
+  });
+});
+
+describe('InputNumber.Value numeric value type', () => {
+  beforeEach(cleanup);
+
+  const ControlledNumber = ({
+    spy,
+    initialValue = 0,
+    ...props
+  }: {
+    spy: (value: NSInputNumber.ValueNumber, event?: React.SyntheticEvent<HTMLInputElement>) => void;
+    initialValue?: NSInputNumber.ValueNumber;
+    min?: number;
+    max?: number;
+    step?: number;
+  }) => {
+    const [value, setValue] = React.useState<NSInputNumber.ValueNumber>(initialValue);
+
+    return (
+      <InputNumber>
+        <InputNumber.Value<NSInputNumber.ValueNumber>
+          data-testid='numeric-input'
+          value={value}
+          onChange={(nextValue, event) => {
+            spy(nextValue, event);
+            setValue(nextValue);
+          }}
+          {...props}
+        />
+        <InputNumber.Controls data-testid='numeric-controls' />
+      </InputNumber>
+    );
+  };
+
+  test.sequential('Verify onChange returns a number when value is controlled as number', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} />);
+    const input = getByTestId('numeric-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.keyboard('12');
+
+    expect(spy).lastCalledWith(12, expect.anything());
+    expect(typeof spy.mock.lastCall?.[0]).toBe('number');
+  });
+
+  test.sequential('Verify up/down controls return numbers in numeric mode', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={0} />);
+    const controls = getByTestId('numeric-controls');
+
+    const arrowUp = controls.querySelectorAll('button')[0];
+    await userEvent.click(arrowUp);
+    expect(spy).lastCalledWith(1, expect.anything());
+
+    const arrowDown = controls.querySelectorAll('button')[1];
+    await userEvent.click(arrowDown);
+    await userEvent.click(arrowDown);
+    expect(spy).lastCalledWith(-1, expect.anything());
+  });
+
+  test.sequential('Verify min/max clamping on blur returns numbers in numeric mode', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={199} min={200} />);
+    const input = getByTestId('numeric-input');
+
+    await userEvent.click(input);
+    await userEvent.tab();
+
+    expect(spy).lastCalledWith(200, expect.anything());
+  });
+
+  test.sequential('Verify onChange still returns a string when value is controlled as string', async () => {
+    const spy = vi.fn();
+    const StringControlled = () => {
+      const [value, setValue] = React.useState('0');
+
+      return (
+        <InputNumber>
+          <InputNumber.Value
+            data-testid='string-input'
+            value={value}
+            onChange={(nextValue, event) => {
+              spy(nextValue, event);
+              setValue(nextValue ?? '');
+            }}
+          />
+        </InputNumber>
+      );
+    };
+
+    const { getByTestId } = render(<StringControlled />);
+    const input = getByTestId('string-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.clear(input);
+    await userEvent.keyboard('12');
+
+    expect(spy).lastCalledWith('12', expect.anything());
+    expect(typeof spy.mock.lastCall?.[0]).toBe('string');
+  });
+
+  test.sequential('Verify onChange payload type follows value prop type switched at runtime', async () => {
+    const spy = vi.fn();
+    const SwitchingInput = ({ numeric }: { numeric: boolean }) => (
+      <InputNumber>
+        <InputNumber.Value<any>
+          data-testid='switching-input'
+          value={numeric ? 1 : '1'}
+          onChange={spy}
+        />
+      </InputNumber>
+    );
+
+    const { getByTestId, rerender } = render(<SwitchingInput numeric />);
+    const input = getByTestId('switching-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.keyboard('2');
+    expect(spy).lastCalledWith(12, expect.anything());
+
+    rerender(<SwitchingInput numeric={false} />);
+
+    await userEvent.click(input);
+    await userEvent.keyboard('3');
+    expect(spy).lastCalledWith('13', expect.anything());
+    expect(typeof spy.mock.lastCall?.[0]).toBe('string');
+
+    rerender(<SwitchingInput numeric />);
+
+    await userEvent.click(input);
+    await userEvent.keyboard('4');
+    expect(spy).lastCalledWith(14, expect.anything());
+    expect(typeof spy.mock.lastCall?.[0]).toBe('number');
+  });
+
+  test.sequential('Verify onChange keeps returning numbers after the value was cleared to null', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={5} />);
+    const input = getByTestId('numeric-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.clear(input);
+    expect(spy).lastCalledWith(null, expect.anything());
+
+    await userEvent.keyboard('3');
+    expect(spy).lastCalledWith(3, expect.anything());
+  });
+
+  test.sequential('Verify onChange returns numbers when the value starts as null', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={null} />);
+    const input = getByTestId('numeric-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.keyboard('7');
+
+    expect(spy).lastCalledWith(7, expect.anything());
+  });
+
+  test.sequential('Verify pasting into an empty numeric input does not throw', async () => {
+    const spy = vi.fn();
+    const errors: string[] = [];
+    const originalError = console.error;
+    console.error = (...args: unknown[]) => {
+      errors.push(String(args[0]));
+    };
+
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={null} step={0.1} />);
+    const input = getByTestId('numeric-input') as HTMLInputElement;
+    await userEvent.click(input);
+    // A pasted value ending with a separator is the case that used to read `null.length`.
+    await userEvent.paste('1.');
+
+    console.error = originalError;
+    expect(errors.some((error) => error.includes('reading \'length\''))).toBe(false);
+    // Unlike string mode, which keeps the pending `1.`, an empty numeric input drops the separator:
+    // with `prevValue === null` there is no length to compare against, so the value is committed.
+    expect(spy).lastCalledWith(1, expect.anything());
+  });
+
+  test.sequential('Verify up/down controls work on an empty numeric input', async () => {
+    const upSpy = vi.fn();
+    const up = render(<ControlledNumber spy={upSpy} initialValue={null} />);
+    await userEvent.click(up.getByTestId('numeric-controls').querySelectorAll('button')[0]);
+    expect(upSpy).lastCalledWith(1, expect.anything());
+    cleanup();
+
+    const downSpy = vi.fn();
+    const down = render(<ControlledNumber spy={downSpy} initialValue={null} />);
+    await userEvent.click(down.getByTestId('numeric-controls').querySelectorAll('button')[1]);
+    expect(downSpy).lastCalledWith(-1, expect.anything());
+  });
+
+  test.sequential('Verify decimal separator can be typed after a digit in numeric mode', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={1} step={0.1} />);
+    const input = getByTestId('numeric-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.keyboard('.');
+    expect(input.value).toBe('1.');
+
+    await userEvent.keyboard('5');
+    expect(input.value).toBe('1.5');
+    expect(spy).lastCalledWith(1.5, expect.anything());
+  });
+
+  // The separator is compared against `prevValue.toString().length`, so a thousands-separated
+  // display value must survive the round trip back into a number.
+  test.sequential('Verify decimal separator can be typed after a formatted numeric value', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={12345} step={0.1} />);
+    const input = getByTestId('numeric-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.keyboard('.5');
+
+    expect(input.value).toBe('12,345.5');
+    expect(spy).lastCalledWith(12345.5, expect.anything());
+  });
+
+  test.sequential('Verify decimal separator typed as the first character is accepted in numeric mode', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={null} step={0.1} />);
+    const input = getByTestId('numeric-input') as HTMLInputElement;
+
+    await userEvent.click(input);
+    await userEvent.keyboard('.5');
+
+    expect(input.value).toBe('0.5');
+    expect(spy).lastCalledWith(0.5, expect.anything());
+  });
+
+  test.sequential('Verify controls produce fractional values in numeric mode', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(<ControlledNumber spy={spy} initialValue={1} step={0.1} />);
+    const controls = getByTestId('numeric-controls');
+
+    await userEvent.click(controls.querySelectorAll('button')[0]);
+
+    expect(spy).lastCalledWith(1.1, expect.anything());
+  });
+
+  test.sequential('Verify uncontrolled input without value prop stays in string mode', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='uncontrolled-input' defaultValue='0' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('uncontrolled-input');
+    await userEvent.click(input);
+    await userEvent.keyboard('7');
+
+    expect(typeof spy.mock.lastCall?.[0]).toBe('string');
   });
 });
