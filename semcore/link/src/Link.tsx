@@ -117,6 +117,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     const { children, href, isExternal } = this.asProps;
 
     if (isExternal !== undefined) return isExternal;
+    if (href === undefined) return false;
 
     const link = (typeof children === 'string' && this.isUrl(children)) ? children : href;
 
