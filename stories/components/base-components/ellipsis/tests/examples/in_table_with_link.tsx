@@ -46,8 +46,6 @@ const pageLimit = 10;
 const recalculateContainerWidth = (width: number) => width - 20;
 
 type TableLinkProps = {
-  /** Text size of the URL cell. LinkAction passes it on to Link.Text only, so the
-   * external icon stays 14px whatever you pick here. */
   size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
 };
 
