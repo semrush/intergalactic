@@ -3365,6 +3365,7 @@
     "components": [
       "bulk-textarea",
       "feature-popover",
+      "fullscreen-modal",
       "notice-bubble"
     ]
   },
@@ -3381,7 +3382,9 @@
     "name": "--intergalactic-spacing-content-padding-xlarge-extended",
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "fullscreen-modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3389,6 +3392,7 @@
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
       "feature-popover",
+      "fullscreen-modal",
       "modal",
       "notice-bubble"
     ]
@@ -3432,6 +3436,7 @@
       "checkbox",
       "date-picker",
       "dropdown",
+      "fullscreen-modal",
       "notice-bubble",
       "pagination",
       "radio",
