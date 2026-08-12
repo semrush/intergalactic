@@ -280,6 +280,10 @@ export type BaseInputTriggerProps = NSInput.Props &
     placeholders?: { year: string; month: string; day: string };
     locale?: string;
     onDisplayedPeriodChange?: (date: Date) => void;
+    /**
+     * Flag to display a compact view of date.
+     */
+    compact?: boolean;
   };
 export type InputTriggerProps = BaseInputTriggerProps & {
   value?: Date;
