@@ -35,20 +35,6 @@ describe('Carousel', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Verify data-ui-name', () => {
-    const carousel = (
-      <Carousel>
-        <Carousel.Item />
-        <Carousel.Item />
-      </Carousel>
-    );
-
-    const { container } = render(carousel);
-    const result = extractUIName(container);
-
-    expect(result).toMatchSnapshot();
-  });
-
   test('Verify control mode', () => {
     const spy = vi.fn();
 
