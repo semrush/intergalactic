@@ -4,6 +4,7 @@ import type {
   NoticeBubbleInfoProps,
   NoticeBubbleWarningProps,
   AddedNoticeMeta,
+  NSNoticeBubble,
 } from './NoticeBubble.type';
 import { default as noticeBubbleDefaultManager } from './NoticeBubbleManager';
 
@@ -18,4 +19,5 @@ export type {
   NoticeBubbleInfoProps,
   NoticeBubbleWarningProps,
   AddedNoticeMeta,
+  NSNoticeBubble,
 };

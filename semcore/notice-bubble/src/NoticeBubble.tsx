@@ -1,11 +1,10 @@
-import { Animation, Box, Flex, Portal, ScreenReaderOnly } from '@semcore/base-components';
+import { Animation, Box, Flex, Portal } from '@semcore/base-components';
 import Button from '@semcore/button';
-import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import fire from '@semcore/core/lib/utils/fire';
-import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import isNode from '@semcore/core/lib/utils/isNode';
 import { useForkRef } from '@semcore/core/lib/utils/ref';
 import { contextThemeEnhance } from '@semcore/core/lib/utils/ThemeProvider';
@@ -18,30 +17,19 @@ import {
 import CloseIcon from '@semcore/icon/Close/m';
 import React from 'react';
 
-import type {
-  NoticeBubbleContainerDefaultProps,
-  NoticeBubbleContainerProps,
-  NoticeBubbleViewItemProps,
-} from './NoticeBubble.type';
-import type { NoticeItem } from './NoticeBubbleManager';
+import type { NSNoticeBubble } from './NoticeBubble.type';
 import manager from './NoticeBubbleManager';
 import style from './style/notice-bubble.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { Timer } from './utils';
 
-type State = {
-  notices: NoticeItem[];
-  infos: NoticeItem[];
-  warnings: NoticeItem[];
-};
-
 class NoticeBubbleContainerRoot extends Component<
-  NoticeBubbleContainerProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSNoticeBubble.Container.Component>,
   typeof NoticeBubbleContainerRoot.enhance,
   {},
   WithI18nEnhanceProps,
-  State,
-  NoticeBubbleContainerDefaultProps
+  NSNoticeBubble.Container.State,
+  NSNoticeBubble.Container.DefaultProps
 > {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
@@ -65,7 +53,7 @@ class NoticeBubbleContainerRoot extends Component<
 
   _unsubscribe: (() => void) | null = null;
 
-  state: State = {
+  state: NSNoticeBubble.Container.State = {
     notices: [],
     infos: [],
     warnings: [],
@@ -81,7 +69,7 @@ class NoticeBubbleContainerRoot extends Component<
     }
   };
 
-  handleChange = (notices: NoticeItem[]) => {
+  handleChange = (notices: NSNoticeBubble.Item[]) => {
     this.setState({ notices });
     this.forceUpdate(); // need this, because somehow this component doesn't rerender event if the notices are different
   };
@@ -168,7 +156,7 @@ const FocusLock = React.forwardRef((props: any, outerRef: React.ForwardedRef<HTM
   return <Flex ref={ref} {...other} />;
 });
 
-const PortalForNoticeItem = (props: Intergalactic.InternalTypings.EfficientOmit<NoticeBubbleViewItemProps, 'tag'> & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
+const PortalForNoticeItem = (props: Intergalactic.InternalTypings.EfficientOmit<NSNoticeBubble.ViewItemProps, 'tag'> & { containerNode: HTMLElement; tag: typeof ViewInfo }) => {
   const [showContent, setShowContent] = React.useState(false);
 
   // Show content for info notice in previously mounted node with aria-live polite
@@ -202,7 +190,7 @@ const PortalForNoticeItem = (props: Intergalactic.InternalTypings.EfficientOmit<
   );
 };
 
-class ViewInfo extends Component<NoticeBubbleViewItemProps> {
+class ViewInfo extends Component<NSNoticeBubble.ViewItemProps> {
   timer: Timer | null = null;
   ref = React.createRef<HTMLDivElement>();
   closeButtonRef = React.createRef<HTMLButtonElement>();
@@ -379,7 +367,7 @@ class ViewWarning extends ViewInfo {
  * {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-api/|API} | {@link https://developer.semrush.com/intergalactic/components/notice-bubble/notice-bubble-code/|Examples}
  */
 const NoticeBubbleContainer = createComponent<
-  Intergalactic.Component<'div', NoticeBubbleContainerProps>,
+  NSNoticeBubble.Container.Component,
   typeof NoticeBubbleContainerRoot
 >(NoticeBubbleContainerRoot);
 
