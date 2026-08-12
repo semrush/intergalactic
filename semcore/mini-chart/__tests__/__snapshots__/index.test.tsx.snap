@@ -1,0 +1,265 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MiniCharts > Verify data-ui-name for ScoreDonut 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "MiniChart.ScoreDonut",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`MiniCharts > Verify data-ui-name for ScoreLine 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "ScoreLine.Segment",
+            },
+          ],
+          "uiName": "Flex",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "MiniChart.ScoreLine",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`MiniCharts > Verify data-ui-name for ScoreSemiDonut 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "MiniChart.ScoreSemiDonut",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`MiniCharts > Verify data-ui-name for TrendArea 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "MiniChart.TrendArea",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`MiniCharts > Verify data-ui-name for TrendBar 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "MiniChart.TrendBar",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`MiniCharts > Verify data-ui-name for TrendHistogram 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "MiniChart.TrendHistogram",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`MiniCharts > Verify data-ui-name for TrendLine 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "MiniChart.TrendLine",
+    },
+  ],
+  "uiName": null,
+}
+`;

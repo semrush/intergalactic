@@ -1,4 +1,5 @@
 import { Portal } from '@semcore/base-components';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -12,6 +13,27 @@ describe('side-panel Dependency imports', () => {
 
 describe('SidePanel', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const sidePanel = (
+      <SidePanel visible disablePortal animationsDisabled closable={false}>
+        <SidePanel.Overlay>
+          <SidePanel.Panel>
+            <SidePanel.Header>
+              <SidePanel.Back>Back</SidePanel.Back>
+              <SidePanel.Title>Title</SidePanel.Title>
+              <SidePanel.Close>Close</SidePanel.Close>
+            </SidePanel.Header>
+            <SidePanel.Body>Body</SidePanel.Body>
+            <SidePanel.Footer>Footer</SidePanel.Footer>
+          </SidePanel.Panel>
+        </SidePanel.Overlay>
+      </SidePanel>
+    );
+
+    const { container } = render(sidePanel);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test('Verify visible property', () => {
     const component = render(<SidePanel>Content</SidePanel>);

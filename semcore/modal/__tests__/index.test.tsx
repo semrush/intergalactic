@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -12,6 +13,24 @@ describe('modal Dependency imports', () => {
 
 describe('Modal', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const modal = (
+      <Modal visible disablePortal animationsDisabled closable={false}>
+        <Modal.Overlay>
+          <Modal.Window>
+            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Close>Close</Modal.Close>
+          </Modal.Window>
+        </Modal.Overlay>
+      </Modal>
+    );
+
+    const { container } = render(modal);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.sequential('Verify onClose event for Escape', async () => {
     const spy = vi.fn();

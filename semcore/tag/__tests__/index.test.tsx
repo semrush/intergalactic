@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,19 @@ describe('tag Dependency imports', () => {
 
 describe('Tag', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const tag = (
+      <Tag>
+        <Tag.Circle />
+        <Tag.Addon />
+        <Tag.Text>Tag</Tag.Text>
+      </Tag>
+    );
+
+    const { container } = render(tag);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test('Verify works as Button from keyboard', async () => {
     const onClick = vi.fn();
@@ -53,6 +67,24 @@ describe('Tag', () => {
 
 describe('TagContainer', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const tagContainer = (
+      <TagContainer>
+        <TagContainer.Circle />
+        <TagContainer.Addon />
+        <TagContainer.Tag>
+          <TagContainer.Tag.Circle />
+          <TagContainer.Tag.Addon />
+          <TagContainer.Tag.Text>Tag</TagContainer.Tag.Text>
+        </TagContainer.Tag>
+        <TagContainer.Close />
+      </TagContainer>
+    );
+
+    const { container } = render(tagContainer);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test.sequential('Verify calls onClick', async () => {
     const onClick = vi.fn();

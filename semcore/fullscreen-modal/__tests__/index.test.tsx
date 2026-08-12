@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, screen, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,27 @@ describe('fullscreen-modal Dependency imports', () => {
 
 describe('FullscreenModal', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const fullscreenModal = (
+      <FullscreenModal visible disablePortal closable>
+        <FullscreenModal.Back>Back</FullscreenModal.Back>
+        <FullscreenModal.Header>
+          <FullscreenModal.Title>Modal title</FullscreenModal.Title>
+          <FullscreenModal.Description>Modal description</FullscreenModal.Description>
+        </FullscreenModal.Header>
+        <FullscreenModal.Body>
+          <FullscreenModal.Section>Modal content</FullscreenModal.Section>
+        </FullscreenModal.Body>
+        <FullscreenModal.Footer>Modal footer</FullscreenModal.Footer>
+      </FullscreenModal>
+    );
+
+    const { container } = render(fullscreenModal);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('should support hidden props', () => {
     const { rerender, queryByText } = render(<FullscreenModal>Text</FullscreenModal>);
