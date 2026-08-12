@@ -9,14 +9,6 @@ const sharedArgTypes = {
     control: { type: 'select' },
     options: [100, 200, 300, 350, 400, 500, 600, 700, 800, undefined],
   },
-  // LinkTrigger has no `use` of its own — it inherits ButtonLink's default ('primary')
-  // and forwards the value down to Link, so this control drives the whole cascade.
-  // 'accent' is intentionally absent: NSButtonLink.Props narrows `use` to
-  // primary | secondary, and SButtonLink has no [use='accent'] rule.
-  use: {
-    control: { type: 'select' },
-    options: ['primary', 'secondary'],
-  },
   active: { control: { type: 'boolean' } },
   empty: { control: { type: 'boolean' } },
   placeholder: { control: { type: 'text' } },
