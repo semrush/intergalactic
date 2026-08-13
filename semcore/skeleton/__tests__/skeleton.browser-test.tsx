@@ -201,10 +201,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify theme changes the color of chart skeletons', {
     tag: [TAG.PRIORITY_HIGH, '@skeleton'],
   }, async ({ page }) => {
-    // KNOWN BUG: the chart background
-    // stays --intergalactic-skeleton-bg for any theme
-    test.fail();
-
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
     const defaultBackground = await computed(locators.chartSkeleton(page, 1), 'background-color');
 
