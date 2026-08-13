@@ -14,14 +14,14 @@ STrigger {
       transform: translateY(-50%);
       width: 1px;
       background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-      transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out; /* TODO: Sync with animationin FilterTrigger */
+      transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out;
     }
 
     &[size='m']::before {
-      height: 18px;
+      height: 16px;
     }
     &[size='l']::before {
-      height: 28px;
+      height: 24px;
     }
 
     &[active], &:active {
