@@ -92,6 +92,14 @@ export default function Demo(props: TableLinkProps) {
     if (props.columnName === 'url' && Boolean(columnElement)) {
       const url = props.row.url as string | null | undefined;
 
+      if (!url) {
+        return null;
+      }
+
+      if (!url.startsWith('http')) {
+        return url;
+      }
+
       return (
         <LinkAction
           displayHref={url ? removeProtocol(url) : ''}

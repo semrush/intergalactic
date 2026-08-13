@@ -22,6 +22,7 @@
     "@semcore/spin": "^17.2.1",
     "@semcore/tooltip": "^17.2.1",
     "@semcore/link": "^17.2.1",
+    "@semcore/divider": "^17.2.1",
     "@semcore/widget-empty": "^17.2.1"
   },
   "devDependencies": {
