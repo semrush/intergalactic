@@ -7,7 +7,7 @@ declare namespace NSSpin {
    */
   type DeprecatedTheme = 'dark' | string;
   type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
-  type Props = NSBox.Props & {
+  type Props = Pick<NSBox.Props, 'm' | 'mb' | 'ml' | 'mr' | 'mt' | 'mx' | 'my'> & {
     /** Spinner size
      * @default m
      **/
