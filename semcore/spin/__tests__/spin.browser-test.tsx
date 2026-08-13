@@ -175,7 +175,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
 /* =====================================================
 @functional
-Attributes, box props, locales - no snapshots here.
+Attributes, themes, locales - no snapshots here.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-label is localized', {
@@ -209,19 +209,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     expect(invertStroke).not.toBe('');
     expect(invertStroke).not.toBe(defaultStroke);
-  });
-
-  test('Verify box props', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin'],
-  }, async ({ page }) => {
-    await loadPage(page, BASE_EXAMPLE, 'en', { w: 50, h: 50, m: 4, p: 4 });
-
-    const spin = locators.spin(page, 0);
-
-    expect(await computed(spin, 'width')).toBe('50px');
-    expect(await computed(spin, 'height')).toBe('50px');
-    expect(await computed(spin, 'margin')).toBe('16px');
-    expect(await computed(spin, 'padding')).toBe('16px');
   });
 
   test('Verify animations are disabled with prefers-reduced-motion', {

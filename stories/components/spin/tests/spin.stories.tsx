@@ -30,10 +30,8 @@ const spinArgTypes = {
     options: ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'sv', 'tr', 'vi', 'zh'],
     description: 'Locale of the aria-label text',
   },
-  w: { control: { type: 'number' }, description: 'Box prop: width override' },
-  h: { control: { type: 'number' }, description: 'Box prop: height override' },
-  m: { control: { type: 'number' }, description: 'Box prop: margin' },
-  p: { control: { type: 'number' }, description: 'Box prop: padding' },
+  m: { control: { type: 'number' }, description: 'Margin — the only Box props Spin accepts' },
+  mt: { control: { type: 'number' }, description: 'Margin top' },
 } as const;
 
 export const SpinBase: StoryObj<typeof defaultSpinProps> = {
