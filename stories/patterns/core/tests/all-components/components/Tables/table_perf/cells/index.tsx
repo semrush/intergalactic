@@ -172,10 +172,11 @@ const UrlLinkCell = ({ value, headerRef }: any) => {
         ellipsis={Boolean(headerRef)}
         ellipsis:cropPosition='middle'
         ellipsis:containerElement={headerRef ?? undefined}
-        ellipsis:recalculateContainerWidth={(width: number) => width - 26}
+        ellipsis:recalculateContainerWidth={(width: number) => width - 16}
       >
         {removeProtocol(pageUrl)}
       </Link.Text>
+      <Link.ExternalIcon />
     </Link>
   );
 };

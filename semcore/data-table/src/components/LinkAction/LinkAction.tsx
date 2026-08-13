@@ -1,3 +1,4 @@
+import { Flex } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import Divider from '@semcore/divider';
 import LinkExternalM from '@semcore/icon/LinkExternal/m';
@@ -17,8 +18,8 @@ export class LinkAction extends React.PureComponent<IProps> {
     return (
       <>
         {typeof internalAction === 'string'
-          ? (<Link href={internalAction}><Link.Text {...textProps}>{displayHref}</Link.Text></Link>)
-          : (<ButtonLink onClick={internalAction}><ButtonLink.Text {...textProps}>{displayHref}</ButtonLink.Text></ButtonLink>)}
+          ? (<Link href={internalAction} wMin={0}><Link.Text {...textProps}>{displayHref}</Link.Text></Link>)
+          : (<ButtonLink onClick={internalAction} wMin={0}><ButtonLink.Text {...textProps}>{displayHref}</ButtonLink.Text></ButtonLink>)}
         <Divider orientation='vertical' mx={1} hMin={0} my={1} />
         <Link
           size={textProps.size}
@@ -26,6 +27,7 @@ export class LinkAction extends React.PureComponent<IProps> {
           color='--gray-400'
           addonLeft={LinkExternalM}
           aria-label={externalHref}
+          flex={1}
         />
       </>
     );
