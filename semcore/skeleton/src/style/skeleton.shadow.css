@@ -20,6 +20,14 @@ SSkeleton {
   }
 }
 
+SSkeleton[theme='default'] {
+  background-color: var(--intergalactic-skeleton-bg, oklch(0.94 0.002 180));
+}
+
+SSkeleton[theme='invert'] {
+  background-color: var(--intergalactic-skeleton-bg-invert, oklch(0.5 0.004 147.4));
+}
+
 SSkeletonSVG[theme='default'] {
   fill: var(--intergalactic-skeleton-bg, oklch(0.94 0.002 180));
 }
