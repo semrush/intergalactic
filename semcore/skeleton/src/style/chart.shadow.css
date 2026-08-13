@@ -5,6 +5,10 @@ SChartSkeleton {
   background-color: var(--intergalactic-skeleton-bg, oklch(0.94 0.002 180));
 }
 
+SChartSkeleton[theme='invert'] {
+  background-color: var(--intergalactic-skeleton-bg-invert, oklch(0.5 0.004 147.4));
+}
+
 SChartSkeleton[bgPosition] {
   mask-position: var(--bgPosition);
 }
