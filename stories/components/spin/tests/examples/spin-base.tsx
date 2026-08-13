@@ -7,18 +7,16 @@ import React from 'react';
 type ExampleProps = NSSpin.Props & { style?: any };
 
 const Demo = (props: ExampleProps) => {
-  const { size, theme, centered, locale, w, h, m, p } = props;
+  const { size, theme, centered, locale, m, mt } = props;
 
-  // Box props are left out entirely when not set, so the component keeps its own defaults.
+  // Spin accepts only margins from Box props; they are left out entirely when not set.
   const spinProps = {
     size,
     theme,
     centered,
     locale,
-    ...(w !== undefined && { w }),
-    ...(h !== undefined && { h }),
     ...(m !== undefined && { m }),
-    ...(p !== undefined && { p }),
+    ...(mt !== undefined && { mt }),
   };
 
   return (
