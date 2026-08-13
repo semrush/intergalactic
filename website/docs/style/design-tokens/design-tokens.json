@@ -226,7 +226,6 @@
     "value": "oklch(1 0 0)",
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
-      "base-components",
       "bulk-textarea",
       "card",
       "color-picker",
@@ -1165,25 +1164,19 @@
     "name": "--intergalactic-control-secondary-info",
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-active",
     "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Active (selected) state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
     "value": "oklch(0.526 0.264 263 / 0.058)",
     "description": "Hover state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-invert",
@@ -1236,7 +1229,7 @@
   },
   {
     "name": "--intergalactic-control-select-trigger-active",
-    "value": "oklch(1 0 0)",
+    "value": "oklch(0.96 0.001 180)",
     "description": "Background of the Select trigger in its active state.",
     "components": [
       "base-trigger"
