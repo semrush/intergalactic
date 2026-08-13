@@ -1,4 +1,6 @@
 {
   "confirm": "保存",
-  "discard": "取消"
+  "discard": "取消",
+  "increment": "增量",
+  "decrement": "减量"
 }
