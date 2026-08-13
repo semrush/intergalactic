@@ -694,11 +694,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Loading state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
+    test.setTimeout(60000);
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
+      loadingDuration: 10000,
     });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -710,7 +712,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Enter');
     await page.locator('[data-ui-name="Spin"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
-    await page.waitForSelector('text="Try again"');
+    await page.waitForSelector('text="Try again"', { timeout: 30000 });
     await page.keyboard.press('Tab');
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();

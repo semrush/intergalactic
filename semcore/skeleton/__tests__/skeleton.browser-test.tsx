@@ -202,11 +202,16 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH, '@skeleton'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
-    const defaultBackground = await computed(locators.chartSkeleton(page, 1), 'background-color');
+    const defaultChart = locators.chart(page, 'LineChartSkeleton').getByRole('img');
+    await expect(defaultChart).toBeVisible();
+    const defaultBackground = await computed(defaultChart, 'background-color');
 
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
-    const invertBackground = await computed(locators.chartSkeleton(page, 1), 'background-color');
+    const invertChart = locators.chart(page, 'LineChartSkeleton').getByRole('img');
+    await expect(invertChart).toBeVisible();
+    const invertBackground = await computed(invertChart, 'background-color');
 
+    expect(defaultBackground).not.toBe('');
     expect(invertBackground).not.toBe(defaultBackground);
   });
 
