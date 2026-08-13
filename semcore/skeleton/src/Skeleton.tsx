@@ -22,6 +22,7 @@ class SkeletonRoot extends Component<
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
+    theme: 'default',
     duration: 2000,
   } as const;
 
