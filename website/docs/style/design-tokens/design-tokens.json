@@ -226,7 +226,6 @@
     "value": "oklch(1 0 0)",
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
-      "base-components",
       "bulk-textarea",
       "card",
       "color-picker",
@@ -1165,25 +1164,19 @@
     "name": "--intergalactic-control-secondary-info",
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-active",
     "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Active (selected) state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
     "value": "oklch(0.526 0.264 263 / 0.058)",
     "description": "Hover state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-invert",
@@ -1236,7 +1229,7 @@
   },
   {
     "name": "--intergalactic-control-select-trigger-active",
-    "value": "oklch(1 0 0)",
+    "value": "oklch(0.96 0.001 180)",
     "description": "Background of the Select trigger in its active state.",
     "components": [
       "base-trigger"
@@ -3408,6 +3401,7 @@
     "components": [
       "base-trigger",
       "bulk-textarea",
+      "date-picker",
       "dropdown-menu",
       "inline-input",
       "link",
@@ -3438,6 +3432,7 @@
     "components": [
       "button",
       "checkbox",
+      "date-picker",
       "dropdown",
       "notice-bubble",
       "pagination",
@@ -3475,6 +3470,18 @@
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
     "value": "24px",
     "description": "3x large gap between elements, rows, or columns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-layout-padding-desktop",
+    "value": "24px",
+    "description": "Padding for layout on desktop.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-spacing-layout-padding-mobile",
+    "value": "20px",
+    "description": "Padding for layout on mobile.",
     "components": []
   },
   {
@@ -3522,7 +3529,6 @@
       "base-trigger",
       "bulk-textarea",
       "button",
-      "date-picker",
       "dropdown-menu",
       "feature-highlight",
       "inline-edit",
@@ -3592,7 +3598,6 @@
       "card",
       "carousel",
       "d3-chart",
-      "date-picker",
       "feedback-form",
       "notice"
     ]
