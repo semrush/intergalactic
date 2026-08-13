@@ -49,12 +49,7 @@ type TableLinkProps = {
   size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
 };
 
-export const defaultProps: TableLinkProps = {
-  size: 300,
-};
-
 export default function Demo(props: TableLinkProps) {
-  const { size = 300 } = props;
   const [currentPage, setCurrentPage] = React.useState(0);
 
   const urlRef = React.useRef(null);
@@ -105,7 +100,6 @@ export default function Demo(props: TableLinkProps) {
           displayHref={url ? removeProtocol(url) : ''}
           externalHref={url as string}
           internalAction={() => console.log('here we are')}
-          size={size}
 
           ellipsis:cropPosition='middle'
           ellipsis:containerElement={columnElement}
@@ -114,7 +108,7 @@ export default function Demo(props: TableLinkProps) {
       );
     }
     return props.defaultRender();
-  }, [columnElement, size]);
+  }, [columnElement]);
 
   const tableData = [];
   let index = 0;

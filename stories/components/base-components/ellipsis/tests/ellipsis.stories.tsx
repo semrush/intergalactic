@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import AdvancedFeaturesDemoExample from './examples/advanced_features_demo';
 import AsyncInitExample from './examples/async_init';
 import CopyFullTextExample from './examples/copy_full_text';
-import TableLinkExample, { defaultProps as TableLinkProps } from './examples/in_table_with_link';
+import TableLinkExample from './examples/in_table_with_link';
 import LinkExample, { defaultProps as LinkExampleProps } from './examples/link_with_ellipsis';
 import ObserveChildrenMutationsExample from './examples/observe_children_mutations';
 import TextExample from './examples/text_cases';
@@ -53,16 +53,8 @@ const commonArgTypes = {
   },
 } as const;
 
-export const TableLink: StoryObj<typeof TableLinkProps> = {
+export const TableLink = {
   render: TableLinkExample,
-  argTypes: {
-    size: {
-      control: { type: 'select' },
-      options: [100, 200, 300, 350, 400, 500, 600, 700, 800],
-      description: 'Text size of the URL cell. LinkAction forwards it to Link.Text only, so the external icon stays 14px',
-    },
-  },
-  args: TableLinkProps,
 };
 
 export const Link: StoryObj<typeof LinkExampleProps> = {
