@@ -1,108 +1,246 @@
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
+
+const BASE_EXAMPLE = 'stories/components/skeleton/tests/examples/chart-skeletons.tsx';
+
+/** every chart skeleton rendered by the example, in DOM order */
+const CHARTS = [
+  'LineChartSkeleton',
+  'AreaChartSkeleton',
+  'BarChartSkeleton',
+  'HistogramChartSkeleton',
+  'CompactHorizontalBarChartSkeleton',
+  'DonutChartSkeleton',
+  'ScatterPlotChartSkeleton',
+  'BubbleChartSkeleton',
+  'VennChartSkeleton',
+  'RadialTreeChartSkeleton',
+] as const;
 
 export const locators = {
   skeleton: (page: Page, index?: number) => {
     const base = page.locator('[data-ui-name="SkeletonSVG"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  button: (page: Page, index?: number) => {
-    const base = page.locator('[data-ui-name="Button"]');
+  chartSkeleton: (page: Page, index?: number) => {
+    const base = page.locator('[data-ui-name="Skeleton"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  // areas of the example, so every screenshot is scoped to its own skeleton
+  area: (page: Page, testId: string) => page.locator(`[data-testid="${testId}"]`),
+  chart: (page: Page, name: string) => page.locator(`[data-testid="chart-${name}"]`),
 };
+
+const computed = (locator: Locator, property: string) =>
+  locator.evaluate((el, prop) => getComputedStyle(el).getPropertyValue(prop), property);
 
 /* =====================================================
 @visual
-Visual states, hover and focus styles, paddings, margins, and snapshots.
+Visual states and snapshots.
+Every snapshot is taken from a [data-testid] area, never from the whole page.
+The pulse animation is frozen with duration=0 to keep screenshots stable.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
-  test('Verify text initial loading styles', {
+  test('Verify every chart skeleton pattern', {
     tag: [TAG.PRIORITY_HIGH, '@skeleton'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/skeleton/docs/examples/text_initial_loading.tsx', 'en');
+    await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0 });
 
-    await locators.skeleton(page).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    for (const name of CHARTS) {
+      await test.step(`Verify ${name}`, async () => {
+        const chart = locators.chart(page, name);
 
-    await expect(locators.skeleton(page)).toHaveAttribute('preserveAspectRatio', 'none');
-
-    const styleAttr = await locators.skeleton(page).getAttribute('style');
-    expect(styleAttr).toContain('2000ms');
-
-    await locators.button(page).click();
-    await expect(locators.skeleton(page)).not.toBeVisible();
-  });
-
-  test('Verify skeleton for charts', {
-    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/skeleton/docs/examples/skeleton_examples_for_charts.tsx', 'en');
-
-    const card = page.locator('[data-ui-name="Card"]');
-    const count = await card.count();
-
-    for (let i = 0; i < count; i++) {
-      const currentCard = card.nth(i);
-      const title = await currentCard.locator('[data-ui-name="Card.Title"]').textContent();
-
-      await currentCard.scrollIntoViewIfNeeded();
-      await expect(currentCard).toBeVisible();
-
-      const clip = await currentCard.boundingBox();
-      if (!clip) {
-        throw new Error(`Card "${title}" is not available for screenshot`);
-      }
-
-      await expect(page).toHaveScreenshot(`${title}.png`, { clip });
+        await chart.scrollIntoViewIfNeeded();
+        await expect(chart).toBeVisible();
+        await expect(chart).toHaveScreenshot(`${name}.png`);
+      });
     }
   });
 
-  const themeVariables = [
-    { theme: 'dark', amount: 1, duration: 0 },
-    { theme: 'invert', amount: 1, duration: 0 },
-    { theme: 'dark', amount: 3, duration: 0 },
-    { theme: 'invert', amount: 5, width: '60%', duration: 0 },
-  ];
-  themeVariables.forEach((item) => {
+  test('Verify type=monotone for Line and Area', {
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0, type: 'monotone' });
+
+    await expect(locators.chart(page, 'LineChartSkeleton')).toHaveScreenshot(
+      'LineChartSkeleton-monotone.png',
+    );
+    await expect(locators.chart(page, 'AreaChartSkeleton')).toHaveScreenshot(
+      'AreaChartSkeleton-monotone.png',
+    );
+  });
+
+  test('Verify layout=vertical for Bar and Histogram', {
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0, layout: 'vertical' });
+
+    await expect(locators.chart(page, 'BarChartSkeleton')).toHaveScreenshot(
+      'BarChartSkeleton-vertical.png',
+    );
+    await expect(locators.chart(page, 'HistogramChartSkeleton')).toHaveScreenshot(
+      'HistogramChartSkeleton-vertical.png',
+    );
+  });
+
+  test('Verify halfsize donut', {
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0, halfsize: true });
+
+    await expect(locators.chart(page, 'DonutChartSkeleton')).toHaveScreenshot(
+      'DonutChartSkeleton-halfsize.png',
+    );
+  });
+
+  const textCases = [
+    { theme: 'default', amount: 1, textWidth: '60%' },
+    { theme: 'invert', amount: 1, textWidth: '60%' },
+    { theme: 'default', amount: 3, textWidth: '100%' },
+    { theme: 'invert', amount: 5, textWidth: '30%' },
+  ] as const;
+
+  textCases.forEach((item) => {
     test(`Verify theme=${item.theme}, amount=${item.amount}`, {
       tag: [TAG.PRIORITY_HIGH, '@skeleton'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/skeleton/tests/examples/skeleton-themes.tsx', 'en', item);
-
-      await test.step('Verify skeleton visibility', async () => {
-        await expect(locators.skeleton(page, 0)).toBeVisible();
+      await loadPage(page, BASE_EXAMPLE, 'en', {
+        ...item,
+        duration: 0,
+        invertedBackground: item.theme === 'invert',
       });
 
-      await test.step('Verify screenshot', async () => {
-        await expect(page).toHaveScreenshot();
-      });
+      await expect(locators.skeleton(page, 0)).toBeVisible();
+      await expect(locators.area(page, 'plain-skeleton')).toHaveScreenshot();
     });
   });
 
-  test('Verify observeParentSize prop styles', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  test('Verify chart skeletons on inverted background', {
+    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/skeleton/tests/examples/observe-parent-size.tsx', 'en');
+    await loadPage(page, BASE_EXAMPLE, 'en', {
+      duration: 0,
+      theme: 'invert',
+      invertedBackground: true,
+    });
 
-    const styleAttr = await locators.skeleton(page, 1).getAttribute('style');
-    await expect(locators.skeleton(page, 0)).toHaveAttribute('width', '100%');
-    expect(styleAttr).toContain('300px');
+    await expect(locators.area(page, 'chart-skeletons')).toHaveScreenshot();
+  });
+});
 
-    await locators.button(page).click();
-    await page.waitForTimeout(100);
-    await expect(locators.skeleton(page, 0)).toHaveAttribute('width', '100%');
-    expect(styleAttr).toContain('300px');
-    await expect(page).toHaveScreenshot();
+/* =====================================================
+@functional
+Attributes, props forwarding, locales and resizing - no snapshots here.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify root attributes', {
+    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en');
+
+    const skeleton = locators.skeleton(page, 0);
+
+    await expect(skeleton).toBeVisible();
+    await expect(skeleton).toHaveAttribute('role', 'img');
+    await expect(skeleton).toHaveAttribute('aria-label', 'Loading…');
+    await expect(skeleton).toHaveAttribute('preserveAspectRatio', 'none');
   });
 
-  test('Verify usage with other elements styles', {
+  test('Verify duration prop drives the pulse animation', {
     tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/skeleton/docs/examples/usage_with_other_elements.tsx', 'en');
+    await loadPage(page, BASE_EXAMPLE, 'en', { duration: 500 });
 
-    await expect(page).toHaveScreenshot();
+    const skeleton = locators.skeleton(page, 0);
+
+    expect(await skeleton.getAttribute('style')).toContain('500ms');
+    expect(await computed(skeleton, 'animation-duration')).toBe('0.5s');
+  });
+
+  test('Verify hidden prop renders nothing', {
+    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { hidden: true });
+
+    await expect(locators.skeleton(page)).toHaveCount(0);
+    await expect(locators.chartSkeleton(page)).toHaveCount(0);
+  });
+
+  test('Verify aria-label is localized', {
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'de', { locale: 'de' });
+
+    expect(await locators.skeleton(page, 0).getAttribute('aria-label')).not.toBe('Loading…');
+  });
+
+  test('Verify Skeleton.Text amount renders the requested number of lines', {
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { amount: 4 });
+
+    // 4 lines from the first Skeleton.Text plus a single line from the second one
+    await expect(locators.area(page, 'plain-skeleton').locator('rect[rx="4"]')).toHaveCount(5);
+  });
+
+  test('Verify theme changes the fill of Skeleton', {
+    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
+    const defaultFill = await computed(locators.skeleton(page, 0), 'fill');
+
+    await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
+    const invertFill = await computed(locators.skeleton(page, 0), 'fill');
+
+    expect(defaultFill).not.toBe('');
+    expect(invertFill).not.toBe(defaultFill);
+  });
+
+  test('Verify theme changes the color of chart skeletons', {
+    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+  }, async ({ page }) => {
+    // KNOWN BUG: the chart background
+    // stays --intergalactic-skeleton-bg for any theme
+    test.fail();
+
+    await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
+    const defaultBackground = await computed(locators.chartSkeleton(page, 1), 'background-color');
+
+    await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
+    const invertBackground = await computed(locators.chartSkeleton(page, 1), 'background-color');
+
+    expect(invertBackground).not.toBe(defaultBackground);
+  });
+
+  test('Verify observeParentSize follows the parent width', {
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { observeParentSize: true, parentWidth: 200 });
+
+    const skeleton = locators.skeleton(page, 0);
+    await expect(skeleton).toHaveAttribute('width', '100%');
+
+    const narrow = (await skeleton.boundingBox())!.width;
+
+    await locators.area(page, 'skeleton-parent').evaluate((el) => {
+      (el as HTMLElement).style.width = '600px';
+    });
+
+    await expect(async () => {
+      const wide = (await skeleton.boundingBox())!.width;
+      expect(wide).toBeGreaterThan(narrow);
+    }).toPass();
+
+    await expect(skeleton).toHaveAttribute('width', '100%');
+  });
+
+  test('Verify w prop pins the skeleton width regardless of the parent', {
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+  }, async ({ page }) => {
+    await loadPage(page, BASE_EXAMPLE, 'en', { w: 300, parentWidth: 200 });
+
+    expect(await computed(locators.skeleton(page, 0), 'width')).toBe('300px');
   });
 });
