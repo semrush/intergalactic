@@ -1,22 +1,100 @@
-SFilterTrigger[selected] {
-  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
-  background-color: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039));
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+STrigger {
+  position: relative;
 
-  &:hover {
-    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.526 0.264 263 / 0.058));
+  &[role="combobox"]:not([empty]) {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+      transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out;
+    }
+
+    &[size='m']::before {
+      height: 16px;
+    }
+    &[size='l']::before {
+      height: 24px;
+    }
+
+    &[active], &:active {
+      &::before {
+        height: calc(100% - 2px);
+      }
+    }
+
+    &[disabled] {
+      opacity: 1;
+    }
   }
+}
 
-  &:active,
-  &[active] {
-    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.525 0.265 263 / 0.077));
+SClear {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &[disabled] {
+    opacity: 1;
+  }
+}
+
+SWrapper:hover:not(:has([disabled])) STrigger[role="combobox"]:not([empty]) {
+  &[size='m']::before,
+  &[size='l']::before {
+    height: calc(100% - 2px);
   }
 }
 
 SWrapper {
   display: inline-flex;
+  position: relative;
+  border-radius: var(--intergalactic-control-rounded, 6px);
+
+  &::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border-radius: var(--intergalactic-control-rounded, 6px);
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &[empty]:active,
+  &[empty][active],
+  &[empty]:has(STrigger:focus-visible) {
+    background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
+
+    STrigger {
+      background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
+    }
+
+    &::after {
+      border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+    }
+  }
 
   &:focus {
     outline: none;
+  }
+
+  &[disabled] {
+    opacity: var(--intergalactic-disabled-opacity, 0.4);
+  }
+
+  STrigger,
+  SClear {
+    border: none;
+
+    &[active], &:active {
+      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
+    }
   }
 }

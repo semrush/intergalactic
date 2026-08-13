@@ -972,7 +972,7 @@ export const theme: Theme = {
         description: 'Hover state of the regular secondary control.',
       },
       control_select_trigger_active: {
-        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
+        value: '{semanticTokens.colors.bg_primary_neutral_active}',
         description: 'Background of the Select trigger in its active state.',
       },
       control_select_trigger_hover: {
