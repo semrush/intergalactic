@@ -25,7 +25,6 @@ STrigger {
     }
 
     &[active], &:active {
-      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
       &::before {
         height: calc(100% - 2px);
       }
@@ -93,5 +92,9 @@ SWrapper {
   STrigger,
   SClear {
     border: none;
+
+    &[active], &:active {
+      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
+    }
   }
 }
