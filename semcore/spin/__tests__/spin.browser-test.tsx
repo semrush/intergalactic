@@ -239,8 +239,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await expect(svg).toHaveAttribute('role', 'img');
       await expect(svg).toHaveAttribute('aria-label', 'Loading…');
       // default size m: geometry comes from width/height attributes
-      await expect(svg).toHaveAttribute('width', '24');
-      await expect(svg).toHaveAttribute('height', '24');
+      await expect(svg).toHaveAttribute('width', '20');
+      await expect(svg).toHaveAttribute('height', '20');
     });
 
     await test.step('Verify spin hides after button click', async () => {
