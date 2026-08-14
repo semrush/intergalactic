@@ -87,7 +87,7 @@ SIndicator {
   display: block;
   width: 12px;
   height: 12px;
-  background-color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+  background-color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
   opacity: var(--intergalactic-disabled-opacity, 0.4);
   object-fit: cover;
   transition: ease-in-out opacity 0.1s;
