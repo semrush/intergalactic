@@ -4,7 +4,7 @@ SScrollBar {
 }
 
 SScrollBar[orientation='vertical'] {
-  top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
   right: 0;
   width: 8px;
   height: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-content-padding-small, 8px));
@@ -12,6 +12,7 @@ SScrollBar[orientation='vertical'] {
 }
 
 SScrollBar[orientation='horizontal'] {
+  margin-left: var(--intergalactic-spacing-content-padding-xsmall, 4px);
   bottom: 0;
   height: 12px;
   align-items: center;
