@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductHead > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Title.Tool",
+                },
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": "Title",
+            },
+            {
+              "children": [],
+              "uiName": "ProductHead.Buttons",
+            },
+            {
+              "children": [],
+              "uiName": "ProductHead.Links",
+            },
+          ],
+          "uiName": "ProductHead.Row",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Info.Item.Label",
+                    },
+                  ],
+                  "uiName": "Info.Item",
+                },
+              ],
+              "uiName": "Info",
+            },
+          ],
+          "uiName": "ProductHead.Row",
+        },
+      ],
+      "uiName": "ProductHead",
+    },
+  ],
+  "uiName": null,
+}
+`;

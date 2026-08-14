@@ -1,5 +1,4 @@
 import { FadeInOut, Box } from '@semcore/base-components';
-import type { NSAnimation, NSBox } from '@semcore/base-components';
 import {
   createComponent,
   Component,

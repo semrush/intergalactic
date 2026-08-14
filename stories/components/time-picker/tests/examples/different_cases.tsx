@@ -1,10 +1,10 @@
 import { Box } from '@semcore/ui/base-components';
 import TimePicker from '@semcore/ui/time-picker';
-import type { TimePickerProps, TimePickerItemProps } from '@semcore/ui/time-picker';
+import type { NSTimePicker } from '@semcore/ui/time-picker';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type baseExampleProps = TimePickerProps & TimePickerItemProps;
+type baseExampleProps = NSTimePicker.Props & NSTimePicker.FieldProps;
 
 const Demo = (props: baseExampleProps) => {
   const [value, setValue] = React.useState(props.value);

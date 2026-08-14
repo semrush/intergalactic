@@ -1,5 +1,5 @@
 import InlineInput from '@semcore/ui/inline-input';
-import type { InlineInputProps, InlineInputValueProps } from '@semcore/ui/inline-input';
+import type { NSInlineInput } from '@semcore/ui/inline-input';
 import React from 'react';
 
 const BasicUsage = ({
@@ -8,7 +8,7 @@ const BasicUsage = ({
   state,
   autoFocus,
   defaultValue = 'John Doe',
-}: InlineInputProps & InlineInputValueProps): JSX.Element => {
+}: NSInlineInput.Props & NSInlineInput.Value.Props): JSX.Element => {
   return (
     <InlineInput
       onBlurBehavior='cancel'
@@ -29,7 +29,7 @@ const BasicUsage = ({
   );
 };
 
-export const basicUsageDefaultProps: InlineInputProps & InlineInputValueProps = {
+export const basicUsageDefaultProps: NSInlineInput.Props & NSInlineInput.Value.Props = {
   disabled: false,
   loading: undefined,
   state: undefined,

@@ -10,7 +10,7 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 import InputTags from '@semcore/ui/input-tags';
 ```
 
-<TypesView type="InputTagsProps" :types={...types} />
+<TypesView type="NSInputTags.Props" :types={...types} />
 
 ## InputTags.Value
 
@@ -19,7 +19,7 @@ import InputTags from '@semcore/ui/input-tags';
 <InputTags.Value />;
 ```
 
-<TypesView type="InputTagsValueProps" :types={...types} />
+<TypesView type="NSInputTags.Value.Props" :types={...types} />
 
 ## InputTags.Tag
 
@@ -30,7 +30,7 @@ import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag />;
 ```
 
-<TypesView type="InputTagsTagProps" :types={...types} />
+<TypesView type="NSInputTags.Tag.Props" :types={...types} />
 
 ## InputTags.Tag.Addon
 
