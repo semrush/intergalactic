@@ -1,6 +1,8 @@
+import ButtonLink from '@semcore/button';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import { Flex } from '@semcore/ui/base-components';
 import { DataTable, LinkAction } from '@semcore/ui/data-table';
+import IconM from '@semcore/ui/icon/Cards/m';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -99,12 +101,12 @@ export function SecondaryTable() {
           }
 
           return (
-            <LinkAction
-              externalHref={pageUrl}
-              displayHref={removeProtocol(pageUrl)}
-              internalAction={() => console.log('clicked')}
-              ellipsis:cropPosition='middle'
-            />
+            <LinkAction>
+              <Link href={pageUrl}>
+                {removeProtocol(pageUrl)}
+              </Link>
+              <ButtonLink addonLeft={IconM} use='tertiary' theme='muted' />
+            </LinkAction>
           );
         }
 

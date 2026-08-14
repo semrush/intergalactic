@@ -1,34 +1,20 @@
-import { Flex } from '@semcore/base-components';
-import { ButtonLink } from '@semcore/button';
+import type { NSButtonLink } from '@semcore/button';
 import Divider from '@semcore/divider';
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
-import Link from '@semcore/link';
-import type { NSText } from '@semcore/typography';
+import type { NSLink } from '@semcore/link';
 import React from 'react';
 
-interface IProps extends NSText.BaseProps, NSText.EllipsisProps, NSText.HintProps {
-  displayHref: string;
-  externalHref: string;
-  internalAction: string | (() => void);
+interface IProps {
+  children: [NSLink.Componet, NSButtonLink.Component];
 }
 
 export class LinkAction extends React.PureComponent<IProps> {
   render(): React.ReactNode {
-    const { displayHref, externalHref, internalAction, ...textProps } = this.props;
+    const { children: [Link, ButtonLink] } = this.props;
     return (
       <>
-        {typeof internalAction === 'string'
-          ? (<Link href={internalAction} wMin={0}><Link.Text {...textProps}>{displayHref}</Link.Text></Link>)
-          : (<ButtonLink onClick={internalAction} wMin={0}><ButtonLink.Text {...textProps}>{displayHref}</ButtonLink.Text></ButtonLink>)}
+        {Link}
         <Divider orientation='vertical' mx={1} hMin={0} my={1} />
-        <Link
-          size={textProps.size}
-          href={externalHref}
-          color='--gray-400'
-          addonLeft={LinkExternalM}
-          aria-label={externalHref}
-          flex={1}
-        />
+        {ButtonLink}
       </>
     );
   }

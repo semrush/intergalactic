@@ -1,5 +1,8 @@
+import ButtonLink from '@semcore/ui/button';
 import type { CellRenderProps } from '@semcore/ui/data-table';
 import { LinkAction, DataTable } from '@semcore/ui/data-table';
+import IconM from '@semcore/ui/icon/Cards/m';
+import Link from '@semcore/ui/link';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
@@ -43,7 +46,7 @@ const data = [{
 }];
 
 const pageLimit = 10;
-const recalculateContainerWidth = (width: number) => width - 20;
+const recalculateContainerWidth = (width: number) => width - 35;
 
 type TableLinkProps = {
   size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
@@ -96,15 +99,18 @@ export default function Demo(props: TableLinkProps) {
       }
 
       return (
-        <LinkAction
-          displayHref={url ? removeProtocol(url) : ''}
-          externalHref={url as string}
-          internalAction={() => console.log('here we are')}
-
-          ellipsis:cropPosition='middle'
-          ellipsis:containerElement={columnElement}
-          ellipsis:recalculateContainerWidth={recalculateContainerWidth}
-        />
+        <LinkAction>
+          <Link href={url}>
+            <Link.Text
+              ellipsis:cropPosition='middle'
+              ellipsis:containerElement={columnElement}
+              ellipsis:recalculateContainerWidth={recalculateContainerWidth}
+            >
+              {removeProtocol(url)}
+            </Link.Text>
+          </Link>
+          <ButtonLink addonLeft={IconM} use='tertiary' theme='muted' />
+        </LinkAction>
       );
     }
     return props.defaultRender();
