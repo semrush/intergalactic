@@ -2,10 +2,10 @@ import Check from '@semcore/icon/Check/m';
 import Edit from '@semcore/icon/Edit/m';
 import { Flex } from '@semcore/ui/base-components';
 import InputTags from '@semcore/ui/input-tags';
-import type { InputTagsTagProps } from '@semcore/ui/input-tags';
+import type { NSInputTags } from '@semcore/ui/input-tags';
 import React from 'react';
 
-const Demo = (props: InputTagsTagProps) => {
+const Demo = (props: NSInputTags.Tag.Props) => {
   const tagProps = props.color
     ? ({ theme: 'primary', color: props.color } as const)
     : { theme: props.theme };
@@ -99,14 +99,12 @@ const Demo = (props: InputTagsTagProps) => {
   );
 };
 
-export const defaultPropsEmail: InputTagsTagProps = {
+export const defaultPropsEmail: NSInputTags.Tag.Props = {
   size: 'l',
-  // theme: 'primary',
   disabled: undefined,
   addonRight: undefined,
   addonLeft: undefined,
   interactive: undefined,
-  // color: 'gray-500',
 };
 
 Demo.defaultProps = defaultPropsEmail;

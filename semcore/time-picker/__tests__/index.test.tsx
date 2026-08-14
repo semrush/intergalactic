@@ -1,10 +1,30 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
-import { describe, it, expect } from '@semcore/testing-utils/vitest';
+import { render } from '@semcore/testing-utils/testing-library';
+import { describe, it, expect, test } from '@semcore/testing-utils/vitest';
+import React from 'react';
 
+import TimePicker from '../src';
 import TimePickerEntity from '../src/entity/TimePickerEntity';
 
 describe('time-picker Dependency imports', () => {
   runDependencyCheckTests('time-picker');
+});
+
+describe('TimePicker', () => {
+  test('Verify data-ui-name', () => {
+    const timePicker = (
+      <TimePicker value='12:30' is12Hour>
+        <TimePicker.Hours />
+        <TimePicker.Separator />
+        <TimePicker.Minutes />
+        <TimePicker.Format />
+      </TimePicker>
+    );
+
+    const { container } = render(timePicker);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 });
 
 describe('TimePickerEntity', () => {

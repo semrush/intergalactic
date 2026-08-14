@@ -183,7 +183,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-highlight",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Accent background of the information you want to highlight.",
     "components": []
   },
@@ -226,7 +226,6 @@
     "value": "oklch(1 0 0)",
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
-      "base-components",
       "bulk-textarea",
       "card",
       "color-picker",
@@ -504,7 +503,7 @@
   },
   {
     "name": "--intergalactic-border-primary-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
@@ -1163,25 +1162,19 @@
     "name": "--intergalactic-control-secondary-info",
     "value": "oklch(0.527 0.264 262.9 / 0.039)",
     "description": "Background of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-active",
     "value": "oklch(0.525 0.265 263 / 0.077)",
     "description": "Active (selected) state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
     "value": "oklch(0.526 0.264 263 / 0.058)",
     "description": "Hover state of the accent secondary control.",
-    "components": [
-      "base-trigger"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-invert",
@@ -1234,7 +1227,7 @@
   },
   {
     "name": "--intergalactic-control-select-trigger-active",
-    "value": "oklch(1 0 0)",
+    "value": "oklch(0.96 0.001 180)",
     "description": "Background of the Select trigger in its active state.",
     "components": [
       "base-trigger"
@@ -1258,13 +1251,13 @@
   },
   {
     "name": "--intergalactic-control-slider-bar-bg",
-    "value": "oklch(0.176 0.033 175.6 / 0.056)",
+    "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background of the Slider bar.",
     "components": []
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the Slider bar.",
     "components": []
   },
@@ -1505,7 +1498,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
   },
@@ -1593,7 +1586,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-bg-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Background of the FeaturePopover with accent theme.",
     "components": [
       "feature-popover"
@@ -1625,7 +1618,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Outer border color of the FeaturePopover.Spot with accent theme.",
     "components": [
       "feature-popover"
@@ -2079,7 +2072,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg",
-    "value": "oklch(0.176 0.033 175.6 / 0.056)",
+    "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2087,13 +2080,13 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the background color of the ProgressBar.",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.987 0.023 140 / 0.212)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2107,7 +2100,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
-    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.176 0.033 175.6 / 0.056) 0%, oklch(0.176 0.033 175.6 / 0.056) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.176 0.033 175.6 / 0.056) 0%)",
+    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.157 0.029 176 / 0.11) 0%)",
     "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2277,7 +2270,7 @@
   },
   {
     "name": "--intergalactic-spin-bg-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Inverted track color of the Spin loader.",
     "components": [
       "spin"
@@ -2535,7 +2528,7 @@
   },
   {
     "name": "--intergalactic-tag-additional-border-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Inverted border color of the additional Tag.",
     "components": [
       "tag"

@@ -1,10 +1,10 @@
-import type { FadeInOutProps, BoxProps } from '@semcore/base-components';
+import type { NSAnimation, NSBox } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 
 import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 declare namespace NSInlineEdit {
-  type Props = BoxProps & {
+  type Props = NSBox.Props & {
     /**
    * Determines which children should be displayed
    */
@@ -38,13 +38,13 @@ declare namespace NSInlineEdit {
   };
 
   namespace View {
-    type Props = BoxProps & FadeInOutProps;
+    type Props = NSBox.Props & NSAnimation.FadeInOut.Props;
 
     type Component = Intergalactic.Component<'div', Props>;
   }
 
   namespace Edit {
-    type Props = BoxProps & FadeInOutProps;
+    type Props = NSBox.Props & NSAnimation.FadeInOut.Props;
 
     type Component = Intergalactic.Component<'div', Props>;
   }

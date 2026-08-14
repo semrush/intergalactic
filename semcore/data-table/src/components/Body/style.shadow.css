@@ -270,23 +270,23 @@ SCellWrapper[fixed] {
 }
 
 SSpinContainer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
+  grid-area: 2 / 1 / 20 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--intergalactic-overlay-limitation-secondary, oklch(1 0 0 / 0.85));
   z-index: 15;
+  min-height: 100%;
 
   &:focus-visible {
     z-index: 15;
   }
 
   &[headerHeight] {
-    top: var(--headerHeight);
+    position: sticky;
+    top: 0;
+    height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
+    min-height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
   }
 }
 

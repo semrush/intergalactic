@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DragAndDrop > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "DragAndDrop.Draggable",
+        },
+        {
+          "children": [],
+          "uiName": "DragAndDrop.Draggable",
+        },
+        {
+          "children": [],
+          "uiName": "DragAndDrop.DropZone",
+        },
+      ],
+      "uiName": "DragAndDrop",
+    },
+    {
+      "children": [],
+      "uiName": "Box",
+    },
+  ],
+  "uiName": null,
+}
+`;

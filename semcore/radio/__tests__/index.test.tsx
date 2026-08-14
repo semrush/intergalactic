@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,25 @@ describe('radio Dependency imports', () => {
 
 describe('Radio', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const radio = (
+      <RadioGroup value='1'>
+        <Radio value='1'>
+          <Radio.Value>
+            <Radio.Value.Control />
+            <Radio.Value.RadioMark />
+          </Radio.Value>
+          <Radio.Text>Label</Radio.Text>
+        </Radio>
+      </RadioGroup>
+    );
+
+    const { container } = render(radio);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.concurrent('Verify supports custom attributes on the input', () => {
     const { getByTestId } = render(
