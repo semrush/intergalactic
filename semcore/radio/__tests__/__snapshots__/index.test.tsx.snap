@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Radio > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Radio.Value",
+            },
+            {
+              "children": [],
+              "uiName": "Value.RadioMark",
+            },
+            {
+              "children": [],
+              "uiName": "Radio.Text",
+            },
+          ],
+          "uiName": "Radio",
+        },
+      ],
+      "uiName": "RadioGroup",
+    },
+  ],
+  "uiName": null,
+}
+`;

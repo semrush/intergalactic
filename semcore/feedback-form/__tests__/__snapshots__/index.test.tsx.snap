@@ -1,0 +1,234 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FeedbackForm > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Notice.Content",
+                    },
+                  ],
+                  "uiName": "FeedbackForm.Notice",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "FeedbackForm.Item",
+                    },
+                  ],
+                  "uiName": "Tooltip.Trigger",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "FeedbackForm.Success",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "FeedbackForm.Cancel.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "FeedbackForm.Cancel",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "FeedbackForm.Submit.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "FeedbackForm.Submit",
+                },
+              ],
+              "uiName": "FeedbackForm",
+            },
+          ],
+          "uiName": "SpinContainer.Content",
+        },
+      ],
+      "uiName": "SpinContainer",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`FeedbackRating - Props and Rendering > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "Feedback",
+                },
+              ],
+              "uiName": "Notice.Label",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Text",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "SliderRating.Star",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "SliderRating.Star",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "SliderRating.Star",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "SliderRating.Star",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "SliderRating.Star",
+                            },
+                          ],
+                          "uiName": "SliderRating",
+                        },
+                      ],
+                      "uiName": "Notice.Actions",
+                    },
+                  ],
+                  "uiName": "Notice.Text",
+                },
+              ],
+              "uiName": "Notice.Content",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "Close",
+                        },
+                      ],
+                      "uiName": "Button.Addon",
+                    },
+                  ],
+                  "uiName": "Notice.Close.InnerWrapper",
+                },
+              ],
+              "uiName": "Notice.Close",
+            },
+          ],
+          "uiName": "Notice",
+        },
+      ],
+      "uiName": "FeedbackRatingForm",
+    },
+  ],
+  "uiName": null,
+}
+`;

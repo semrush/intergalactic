@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DescriptionTooltip > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [],
+      "uiName": "DescriptionTooltip.Trigger",
+    },
+    {
+      "children": [],
+      "uiName": "Box",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`Hint > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [],
+      "uiName": "Hint.Trigger",
+    },
+    {
+      "children": [],
+      "uiName": "Box",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`Tooltip > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [],
+      "uiName": "Tooltip.Trigger",
+    },
+    {
+      "children": [],
+      "uiName": "Box",
+    },
+  ],
+  "uiName": null,
+}
+`;
