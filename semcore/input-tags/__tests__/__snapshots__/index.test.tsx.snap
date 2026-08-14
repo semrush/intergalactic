@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputTags > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "InputTags.Tag.Circle",
+                            },
+                          ],
+                          "uiName": "Box",
+                        },
+                        {
+                          "children": [],
+                          "uiName": "InputTags.Tag.Addon",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": "InputTags.Tag.Text.Content",
+                                },
+                              ],
+                              "uiName": "Tag.Text",
+                            },
+                          ],
+                          "uiName": "InputTags.Tag.Text",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "Close",
+                            },
+                          ],
+                          "uiName": "InputTags.Tag.Close",
+                        },
+                      ],
+                      "uiName": "InputTags.Tag",
+                    },
+                  ],
+                  "uiName": null,
+                },
+                {
+                  "children": [],
+                  "uiName": "InputTags.Value",
+                },
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": "ScrollArea.Container",
+        },
+      ],
+      "uiName": "InputTags",
+    },
+  ],
+  "uiName": null,
+}
+`;

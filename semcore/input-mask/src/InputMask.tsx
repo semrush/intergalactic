@@ -1,12 +1,6 @@
 import { NeighborLocation, Box, Flex, ScreenReaderOnly } from '@semcore/base-components';
-import {
-  createComponent,
-  Component,
-  sstyled,
-  Root,
-  type PropGetterFn,
-  type Intergalactic,
-} from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import fire from '@semcore/core/lib/utils/fire';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
@@ -16,79 +10,8 @@ import Input, { type NSInput } from '@semcore/input';
 import React from 'react';
 import * as mask from 'text-mask-core';
 
+import type { NSInputMask } from './InputMask.type';
 import style from './style/input-mask.shadow.css';
-
-export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
-
-export type InputMaskAliases = {
-  [s: string]: RegExp;
-};
-
-export type InputMaskValueProps = NSInput.Value.Props & {
-  /**
-   * Mask for entering text
-   */
-  mask?: string | boolean | IInputMaskAsFn;
-  /**
-   * The property for visibility of the mask
-   * @default false
-   */
-  hideMask?: boolean;
-  /**
-   * This function allows you to change the input value before it is displayed on the screen.
-   */
-  pipe?: (
-    conformedValue: string,
-    config: {
-      rawValue: string;
-    },
-  ) => string | false | { value: string; indexesOfPipedChars: number[] };
-  /** Internal */
-  keepCharPositions?: boolean;
-  /**
-   * The aliases object for the mask values. The key is the symbol used in the mask,
-   * and the value is the regular expression that this symbol must match
-   * @default {'9': /\d/, 'a': /[a-zA-Zа-яА-Я]/, '*': /[\da-zA-Zа-яА-Я]/}
-   */
-  aliases?: InputMaskAliases;
-  /**
-   * Event that is called when the input value fully matches the mask
-   */
-  onSuccess?: (value: string) => void;
-  /**
-   * A field that explains the mask for blind users
-   * */
-  title?: string;
-
-  /** Specifies which props to pass to input element */
-  includeInputProps?: string[];
-
-  /**
-   * Field for describe which symbols will use as mask
-   * @default `{_: true}`
-   */
-  maskOnlySymbols?: Record<string, boolean>;
-
-  /**
-   * Overrids width of the input field
-   */
-  inputW?: string | number;
-
-  /**
-   * Aria role for input
-   */
-  inputRole?: string;
-};
-
-type InputMaskCtx = {
-  getInputProps: PropGetterFn;
-  getValueProps: PropGetterFn;
-};
-
-type InputMaskComponent = Intergalactic.Component<'div', NSInput.Props, InputMaskCtx> & {
-  Value: Intergalactic.Component<'input', InputMaskValueProps>;
-  Addon: typeof Input.Addon;
-};
 
 const { createTextMaskInputElement } = mask;
 
@@ -106,7 +29,9 @@ export function getAfterPositionValue(value: string, mask: any = ''): number {
   return afterPotionValue;
 }
 
-class InputMask extends Component<NSInput.Props> {
+class InputMask extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSInputMask.Component>
+> {
   static displayName = 'InputMask';
   static style = style;
 
@@ -115,8 +40,12 @@ class InputMask extends Component<NSInput.Props> {
   }
 }
 
-class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value: Array<(value?: string) => string> }> {
-  static defaultProps = {
+class Value extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSInputMask.Value.Component>,
+  typeof Value.enhance,
+  NSInputMask.Value.Handlers
+> {
+  static defaultProps: NSInputMask.Value.DefaultProps = {
     includeInputProps: inputProps,
     defaultValue: '',
     hideMask: false,
@@ -138,16 +67,7 @@ class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value
   textMaskCoreInstance: any = undefined;
   usedMask: any = undefined;
   prevConfirmedValue: any = undefined;
-  state: {
-    lastConformed:
-      | {
-        all: string;
-        userInput: string;
-        maskOnly: string;
-      }
-      | undefined;
-    maskWidth: number | undefined;
-  } = {
+  state: NSInputMask.Value.State = {
     lastConformed: undefined,
     maskWidth: undefined,
   };
@@ -159,7 +79,7 @@ class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value
     });
   }
 
-  componentDidUpdate(prevProps: any) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const maskConfigProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'] as const;
     const maskConfigChanged = maskConfigProps.some(
       (prop) => this.asProps[prop] !== prevProps[prop],
@@ -403,7 +323,7 @@ class Value extends Component<InputMaskValueProps, typeof Value.enhance, { value
  *
  * {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-mask/input-mask-code/|Examples}
  */
-export default createComponent<InputMaskComponent, typeof InputMask>(InputMask, {
+export default createComponent<NSInputMask.Component, typeof InputMask>(InputMask, {
   Value,
   Addon: Input.Addon,
 });

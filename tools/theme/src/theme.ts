@@ -1412,11 +1412,11 @@ export const theme: Theme = {
         description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
-        value: neutral.opaqueAt(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
-        value: neutral.opaqueAt(L_BG_MEDIUM),
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Hover state of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_DEFAULT: {

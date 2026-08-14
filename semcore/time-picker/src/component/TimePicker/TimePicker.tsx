@@ -1,4 +1,5 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import reactive from '@semcore/core/lib/decorators/reactive';
@@ -7,13 +8,7 @@ import Input from '@semcore/input';
 import React from 'react';
 
 import style from './time-picker.shadow.css';
-import type {
-  TimePickerComponent,
-  TimePickerProps,
-  TimePickerField,
-  TimePickerSeparatorProps,
-  TimePickerDefaultProps,
-} from './TimePicker.type';
+import type { NSTimePicker } from './TimePicker.type';
 import TimePickerEntity from '../../entity/TimePickerEntity';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 import Format from '../PickerFormat/PickerFormat';
@@ -21,18 +16,18 @@ import { Hours, Minutes } from '../PickerInput/PickerInput';
 
 @propsObserver(['value', 'is12Hour'])
 class TimePickerRoot extends Component<
-    TimePickerProps,
+    Intergalactic.InternalTypings.InferComponentProps<NSTimePicker.Component>,
   typeof TimePickerRoot.enhance,
   { value: null },
   {},
   {},
-  TimePickerDefaultProps
+  NSTimePicker.DefaultProps
   > {
   static displayName = 'TimePicker';
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)] as const;
 
-  static defaultProps = ({ is12Hour }: TimePickerProps) => ({
+  static defaultProps = ({ is12Hour }: Intergalactic.InternalTypings.InferComponentProps<NSTimePicker.Component>) => ({
     defaultValue: '',
     size: 'm',
     children: (
@@ -69,7 +64,7 @@ class TimePickerRoot extends Component<
   })
   readonly entity = new TimePickerEntity(this.props.value ?? this.props.defaultValue, this.props.is12Hour);
 
-  onPropsChange(changedProps: TimePickerProps) {
+  onPropsChange(changedProps: Intergalactic.InternalTypings.InferComponentProps<NSTimePicker.Component>) {
     const { value, is12Hour } = changedProps;
 
     if (value !== undefined) {
@@ -91,7 +86,7 @@ class TimePickerRoot extends Component<
     };
   }
 
-  handleValueChange = (value: string, field: TimePickerField, event: React.SyntheticEvent) => {
+  handleValueChange = (value: string, field: NSTimePicker.Field, event: React.SyntheticEvent) => {
     this.entity[field] = value;
 
     this.handlers.value(this.entity.toString(), event);
@@ -177,7 +172,9 @@ class TimePickerRoot extends Component<
     );
   }
 }
-class Separator extends Component<TimePickerSeparatorProps> {
+class Separator extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSTimePicker.Separator.Component, typeof TimePickerRoot, 'Separator'>
+> {
   static defaultProps = {
     children: ':',
   };
@@ -195,14 +192,16 @@ class Separator extends Component<TimePickerSeparatorProps> {
   }
 }
 
+export type TimePickerRootType = typeof TimePickerRoot;
+
 /**
  * TimePicker
  *
  * {@link https://developer.semrush.com/intergalactic/components/time-picker/time-picker-api/|API} | {@link https://developer.semrush.com/intergalactic/components/time-picker/time-picker-code/|Examples}
  */
 const TimePicker = createComponent<
-  TimePickerComponent,
-  typeof TimePickerRoot
+  NSTimePicker.Component,
+  TimePickerRootType
 >(TimePickerRoot, {
   Hours,
   Minutes,

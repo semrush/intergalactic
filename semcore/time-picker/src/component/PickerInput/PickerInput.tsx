@@ -6,7 +6,12 @@ import React from 'react';
 
 import style from './picker-input.shadow.css';
 import type { PickerInputMinMax, PickerInputProps } from './PickerInput.type';
-import type { TimePickerField } from '../TimePicker/TimePicker.type';
+import type { NSTimePicker } from '../TimePicker/TimePicker.type';
+
+type State = {
+  dirtyValue?: string;
+  visible: boolean;
+};
 
 function getOptions(minMax: PickerInputMinMax, step = 1) {
   const [min, max] = minMax;
@@ -25,11 +30,6 @@ function getOptions(minMax: PickerInputMinMax, step = 1) {
   });
 }
 
-type State = {
-  dirtyValue?: string;
-  visible: boolean;
-};
-
 abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {}, State> {
   static style = style;
   static defaultProps = (_: PickerInputProps) => ({
@@ -44,7 +44,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
 
   inputRef = React.createRef();
 
-  abstract get field(): TimePickerField;
+  abstract get field(): NSTimePicker.Field;
   abstract get minMax(): PickerInputMinMax;
   abstract handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void;
 
@@ -132,7 +132,7 @@ class Hours extends AbstractPickerInput {
     ml: props.size === 'l' ? 3 : undefined,
   });
 
-  get field(): TimePickerField {
+  get field(): NSTimePicker.Field {
     return 'hours';
   }
 
@@ -182,7 +182,7 @@ class Minutes extends AbstractPickerInput {
     mr: props.size === 'l' ? 3 : undefined,
   });
 
-  get field(): TimePickerField {
+  get field(): NSTimePicker.Field {
     return 'minutes';
   }
 

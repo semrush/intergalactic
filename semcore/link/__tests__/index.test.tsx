@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,20 @@ describe('link Dependency imports', () => {
 
 describe('Link', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const link = (
+      <Link href='#'>
+        <Link.Addon />
+        <Link.Text />
+      </Link>
+    );
+
+    const { container } = render(link);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify not use ', () => {
     const { getByTestId } = render(

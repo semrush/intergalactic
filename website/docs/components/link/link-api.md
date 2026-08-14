@@ -12,7 +12,7 @@ import Link from '@semcore/ui/link';
 <Link />;
 ```
 
-<TypesView type="LinkProps" :types={...types} />
+<TypesView type="NSLink.Props" :types={...types} />
 
 ## Link.Addon
 

@@ -1,6 +1,7 @@
 import { Box } from '@semcore/base-components';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -15,14 +16,37 @@ describe('dropdown-menu Dependency imports', () => {
 describe('DropdownMenu', () => {
   beforeEach(() => {
     cleanup();
+  });
 
-    const mockIntersectionObserver = vi.fn();
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    });
-    window.IntersectionObserver = mockIntersectionObserver;
+  test('Verify data-ui-name', () => {
+    const dropdownMenu = (
+      <DropdownMenu visible disablePortal>
+        <DropdownMenu.Trigger tag={ButtonTrigger}>
+          Trigger
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Group title='Group title'>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item>
+              <DropdownMenu.Item.Content>
+                <DropdownMenu.Item.Addon>Before</DropdownMenu.Item.Addon>
+                <DropdownMenu.Item.Text>Item 2</DropdownMenu.Item.Text>
+              </DropdownMenu.Item.Content>
+              <DropdownMenu.Item.Hint>Hint text</DropdownMenu.Item.Hint>
+            </DropdownMenu.Item>
+          </DropdownMenu.Group>
+          <DropdownMenu.Actions>
+            <Button>Apply</Button>
+          </DropdownMenu.Actions>
+          <DropdownMenu.StatusItem id='search-result' itemsCount={0} />
+        </DropdownMenu.Menu>
+      </DropdownMenu>
+    );
+
+    const { container } = render(dropdownMenu);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
   });
 
   test.sequential('Verify does not trigger visibility change on Space key in input', async () => {

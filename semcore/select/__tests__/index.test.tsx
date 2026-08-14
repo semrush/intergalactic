@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, screen, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -7,6 +8,45 @@ import Select, { AutoSuggest, InputSearch } from '../src';
 
 describe('select Dependency imports', () => {
   runDependencyCheckTests('select');
+});
+
+describe('Select', () => {
+  beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const select = (
+      <Select visible disablePortal animationsDisabled multiselect value={[1]}>
+        <Select.Trigger>
+          <Select.Trigger.Addon />
+          <Select.Trigger.Text>Trigger</Select.Trigger.Text>
+        </Select.Trigger>
+        <Select.Menu>
+          <Select.InputSearch>
+            <Select.InputSearch.SearchIcon />
+            <Select.InputSearch.Value />
+            <Select.InputSearch.Clear />
+          </Select.InputSearch>
+          <Select.Group title='Group'>
+            <Select.Option value={1}>
+              <Select.Option.Content>
+                <Select.Option.Checkbox />
+                <Select.Option.Addon />
+                <Select.Option.Text>Option</Select.Option.Text>
+              </Select.Option.Content>
+              <Select.Option.Hint>Hint</Select.Option.Hint>
+            </Select.Option>
+          </Select.Group>
+          <Select.Divider />
+          <Select.StatusItem itemsCount={0}>Status</Select.StatusItem>
+        </Select.Menu>
+      </Select>
+    );
+
+    const { container } = render(select);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 });
 
 describe('Select Trigger', () => {

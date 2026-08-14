@@ -1,4 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
@@ -28,6 +29,20 @@ describe('TabPanel', () => {
   });
 
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const tabPanel = (
+      <TabPanel value={1}>
+        <TabPanel.Item value={1}>
+          <TabPanel.Item.Addon />
+          <TabPanel.Item.Text>Item</TabPanel.Item.Text>
+        </TabPanel.Item>
+      </TabPanel>
+    );
+
+    const { container } = render(tabPanel);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test('Verify supports onChange callback', async () => {
     const spyChange = vi.fn();

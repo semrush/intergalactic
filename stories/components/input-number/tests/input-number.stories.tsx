@@ -57,6 +57,9 @@ export const Basic: StoryObj<typeof baseExampleProps> = {
     logChanges: {
       control: { type: 'boolean' },
     },
+    controlled: {
+      control: { type: 'boolean' },
+    },
   },
   args: baseExampleProps,
 };

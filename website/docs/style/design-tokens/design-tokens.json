@@ -183,7 +183,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-highlight",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Accent background of the information you want to highlight.",
     "components": []
   },
@@ -504,7 +504,7 @@
   },
   {
     "name": "--intergalactic-border-primary-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
@@ -1253,13 +1253,13 @@
   },
   {
     "name": "--intergalactic-control-slider-bar-bg",
-    "value": "oklch(0.176 0.033 175.6 / 0.056)",
+    "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background of the Slider bar.",
     "components": []
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the Slider bar.",
     "components": []
   },
@@ -1500,7 +1500,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
   },
@@ -1588,7 +1588,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-bg-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Background of the FeaturePopover with accent theme.",
     "components": [
       "feature-popover"
@@ -1620,7 +1620,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Outer border color of the FeaturePopover.Spot with accent theme.",
     "components": [
       "feature-popover"
@@ -2074,7 +2074,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg",
-    "value": "oklch(0.176 0.033 175.6 / 0.056)",
+    "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2082,13 +2082,13 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the background color of the ProgressBar.",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.987 0.023 140 / 0.212)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2102,7 +2102,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
-    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.176 0.033 175.6 / 0.056) 0%, oklch(0.176 0.033 175.6 / 0.056) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.176 0.033 175.6 / 0.056) 0%)",
+    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.157 0.029 176 / 0.11) 0%)",
     "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2270,7 +2270,7 @@
   },
   {
     "name": "--intergalactic-spin-bg-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Inverted track color of the Spin loader.",
     "components": []
   },
@@ -2526,7 +2526,7 @@
   },
   {
     "name": "--intergalactic-tag-additional-border-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.996 0.007 151.1 / 0.447)",
     "description": "Inverted border color of the additional Tag.",
     "components": [
       "tag"

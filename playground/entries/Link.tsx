@@ -1,4 +1,4 @@
-import type { LinkProps } from '@semcore/ui/link';
+import type { NSLink } from '@semcore/ui/link';
 import Link from '@semcore/ui/link';
 import React from 'react';
 
@@ -11,7 +11,7 @@ type AdditionalJSXProps = {
   beforeIcon: boolean;
   afterIcon: boolean;
 };
-export type LinkJSXProps = JSXProps<LinkProps> & AdditionalJSXProps;
+export type LinkJSXProps = JSXProps<NSLink.Props> & AdditionalJSXProps;
 
 function getJSX(props: LinkJSXProps) {
   return (

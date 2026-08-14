@@ -901,7 +901,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-bg",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-dot",
@@ -909,7 +909,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
@@ -917,11 +917,11 @@
   },
   {
     "name": "--intergalactic-feature-popover-accent-bg",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-accent-dot-outer-border",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-neutral-bg",
