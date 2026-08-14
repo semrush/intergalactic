@@ -10,27 +10,27 @@ import React from 'react';
 const Demo = () => {
   return (
     <RadioCards aria-label='Radio cards'>
-      <RadioCards.Item value='Icons everywhere!'>
-        <Flex gap={1}>
+      <RadioCards.Item value='custom-layout'>
+        <Flex alignItems='center' gap='var(--intergalactic-spacing-content-gap-medium, 6px)'>
           <FileExport />
-          <Text>Icons everywhere!</Text>
+          <Text size={300} use='primary'>Custom layout</Text>
           <Info />
         </Flex>
-        <Text>Help!</Text>
+        <Text size={200} use='secondary'>Combine any addons and content</Text>
       </RadioCards.Item>
-      <RadioCards.Item value='You can pass anything being in advanced mode!'>
-        <Flex gap={1}>
+      <RadioCards.Item value='loading-state'>
+        <Flex alignItems='center' gap='var(--intergalactic-spacing-content-gap-medium, 6px)'>
           <Spin />
-          <Text>Configuration...🤤</Text>
+          <Text size={300} use='primary'>Loading state</Text>
           <TagContainer interactive={false}>
             <TagContainer.Tag active={false}>
               <Tag.Text>
-                Tags!
+                One
               </Tag.Text>
             </TagContainer.Tag>
           </TagContainer>
         </Flex>
-        <Text>Help!</Text>
+        <Text size={200} use='secondary'>Any children are supported</Text>
       </RadioCards.Item>
     </RadioCards>
   );
