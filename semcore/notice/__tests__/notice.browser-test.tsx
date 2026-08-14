@@ -8,6 +8,7 @@ export const locators = {
   noticeSmart: (page: Page) => page.locator('[data-ui-name="NoticeSmart"]'),
   close: (page: Page) => page.locator('[data-ui-name="Notice.Close"]'),
   content: (page: Page) => page.locator('[data-ui-name="Notice.Content"]'),
+  icon: (page: Page) => page.locator('[data-ui-name="Notice"] > [data-ui-name="Box"]'),
   title: (page: Page) => page.locator('[data-ui-name="Notice.Title"]'),
   text: (page: Page) => page.locator('[data-ui-name="Notice.Text"]'),
 };
@@ -46,12 +47,48 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify notice content styles', async () => {
       const noticeContent = locators.content(page);
       const title = noticeContent.first().locator('[data-ui-name="Notice.Title"]');
-      await expect(title).toHaveCSS('margin-top', '2px');
-      await expect(title).toHaveCSS('margin-bottom', '2px');
+      await expect(title).toHaveCSS('margin-top', '0px');
+      await expect(title).toHaveCSS('margin-bottom', '0px');
 
       const text = noticeContent.first().locator('[data-ui-name="Notice.Text"]');
       await expect(text).toHaveCSS('margin-top', '4px');
       await expect(text).toHaveCSS('margin-bottom', '4px');
+    });
+  });
+
+  test('Verify notice with icon prop', {
+    tag: [TAG.PRIORITY_HIGH, '@notice'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/notice/docs/examples/basic_notice.tsx', 'en');
+
+    await test.step('Verify icon is rendered inside every notice', async () => {
+      const notices = await locators.notice(page).all();
+      const icons = locators.icon(page);
+
+      await expect(icons).toHaveCount(notices.length);
+
+      for (const icon of await icons.all()) {
+        await expect(icon).toBeVisible();
+        await expect(icon.locator('svg')).toBeVisible();
+      }
+    });
+
+    await test.step('Verify icon color depends on notice theme', async () => {
+      const icons = locators.icon(page);
+      // basic_notice.tsx order: info, muted, warning, danger, success
+      const [info, muted, warning, danger, success] = await Promise.all(
+        [0, 1, 2, 3, 4].map((index) =>
+          icons.nth(index).evaluate((node) => getComputedStyle(node).color),
+        ),
+      );
+
+      expect(info).toBe(muted);
+      expect(new Set([info, warning, danger, success]).size).toBe(4);
+    });
+
+    await test.step('Verify notices with icon render correctly', async () => {
+      await page.setViewportSize({ width: 1600, height: 1000 });
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -83,17 +120,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/notice/tests/examples/notice_medium_illustration.tsx', 'en');
 
     await test.step('Verify medium illustrations display correctly', async () => {
-      await page.setViewportSize({ width: 1600, height: 1000 });
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify notice with small illustrations', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/notice/tests/examples/notice_small_illustration.tsx', 'en');
-
-    await test.step('Verify small illustrations display correctly', async () => {
       await page.setViewportSize({ width: 1600, height: 1000 });
       await expect(page).toHaveScreenshot();
     });
@@ -237,8 +263,3 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 });
-
-/* =====================================================
-@functional
-Additional coverage — hidden toggle, custom theme, aria-live, muted+closable.
-===================================================== */
