@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, userEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,29 @@ describe('input-tags Dependency imports', () => {
 
 describe('InputTags', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const inputTags = (
+      <InputTags>
+        <InputTags.TagsContainer>
+          <InputTags.Tag theme='primary' editable>
+            <InputTags.Tag.Circle />
+            <InputTags.Tag.Addon />
+            <InputTags.Tag.Text>
+              <InputTags.Tag.Text.Content />
+            </InputTags.Tag.Text>
+            <InputTags.Tag.Close />
+          </InputTags.Tag>
+        </InputTags.TagsContainer>
+        <InputTags.Value aria-label='input with tags' value='' />
+      </InputTags>
+    );
+
+    const { container } = render(inputTags);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify calls onClick', async () => {
     const onClick = vi.fn();

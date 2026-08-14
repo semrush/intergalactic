@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Typography > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [],
+      "uiName": "Text",
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": null,
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "Blockquote",
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [],
+              "uiName": "Item.Content",
+            },
+          ],
+          "uiName": "List.Item",
+        },
+      ],
+      "uiName": "List",
+    },
+  ],
+  "uiName": null,
+}
+`;

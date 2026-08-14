@@ -1,10 +1,10 @@
-import type { TimePickerMeridiem } from '../component/TimePicker/TimePicker.type';
+import type { NSTimePicker } from '../component/TimePicker/TimePicker.type';
 
 class TimePickerEntity {
   private _hours: string = '';
   private _minutes: string = '';
   private _is12Hour: boolean = false;
-  private _meridiem: TimePickerMeridiem = 'AM';
+  private _meridiem: NSTimePicker.Meridiem = 'AM';
 
   constructor(
     value: string = ':', // should be in the format 'HH:mm'
@@ -94,7 +94,7 @@ class TimePickerEntity {
     this._meridiem = this.meridiemFromHours(hours);
   }
 
-  private meridiemFromHours(hours: string): TimePickerMeridiem {
+  private meridiemFromHours(hours: string): NSTimePicker.Meridiem {
     const numberHours = Number.parseInt(hours, 10);
 
     if (Number.isNaN(numberHours)) return 'AM';

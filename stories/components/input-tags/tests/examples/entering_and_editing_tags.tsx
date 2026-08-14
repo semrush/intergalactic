@@ -1,10 +1,10 @@
 import { Flex } from '@semcore/ui/base-components';
-import type { InputTagsProps, InputTagsValueProps, InputTagsTagProps } from '@semcore/ui/input-tags';
+import type { NSInputTags } from '@semcore/ui/input-tags';
 import InputTags from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleInputTagsProps = InputTagsProps & InputTagsValueProps & InputTagsTagProps & {
+type ExampleInputTagsProps = NSInputTags.Props & NSInputTags.Value.Props & NSInputTags.Tag.Props & {
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   hintProps?: false;
 };

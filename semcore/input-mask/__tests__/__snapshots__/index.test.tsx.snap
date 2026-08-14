@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputMask > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Badge",
+            },
+          ],
+          "uiName": "InputMask.Addon",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": "Box",
+            },
+            {
+              "children": [],
+              "uiName": "InputMask.Value",
+            },
+          ],
+          "uiName": "Flex",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+        {
+          "children": [],
+          "uiName": null,
+        },
+      ],
+      "uiName": "InputMask",
+    },
+  ],
+  "uiName": null,
+}
+`;

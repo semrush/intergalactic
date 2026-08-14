@@ -23,13 +23,15 @@ STextarea {
 }
 
 STextarea[size='m'] {
-  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-2x, 8px);
+  min-height: var(--intergalactic-form-control-m, 32px);
+  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-content-padding-medium, 12px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 }
 
 STextarea[size='l'] {
-  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+  min-height: var(--intergalactic-form-control-l, 44px);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-content-padding-medium, 12px);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
 }

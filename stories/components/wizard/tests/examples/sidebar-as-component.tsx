@@ -2,14 +2,14 @@ import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import Wizard from '@semcore/ui/wizard';
-import type { WizardContentProps } from '@semcore/ui/wizard';
+import type { NSWizard } from '@semcore/ui/wizard';
 import React from 'react';
 
 import { WizardSidebar } from './components/WizardSidebar';
 
 const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
-const Demo = (props: WizardContentProps) => {
+const Demo = (props: NSWizard.Content.Props) => {
   const [step, setStep] = React.useState<number>(1);
   const [visible, setVisible] = React.useState(false);
 
@@ -52,7 +52,7 @@ const Demo = (props: WizardContentProps) => {
   );
 };
 
-export const defaultExampleNoSideBarProps: WizardContentProps = {
+export const defaultExampleNoSideBarProps: NSWizard.Content.Props = {
   noSidebar: false,
 };
 

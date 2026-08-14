@@ -10,11 +10,11 @@ tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), E
 import Timepicker from '@semcore/ui/time-picker';
 ```
 
-<TypesView type="TimePickerProps" :types={...types} />
+<TypesView type="NSTimePicker.Props" :types={...types} />
 
 ## TimePicker.Hours, TimePicker.Minutes
 
-<TypesView type="TimePickerItemProps" :types={...types} />
+<TypesView type="NSTimePicker.FieldProps" :types={...types} />
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
@@ -26,7 +26,7 @@ import Timepicker from '@semcore/ui/time-picker';
 
 ## TimePicker.Format
 
-<TypesView type="TimePickerFormatProps" :types={...types} />
+<TypesView type="NSTimePicker.Format.Props" :types={...types} />
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';

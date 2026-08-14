@@ -1,4 +1,4 @@
-import type { TimePickerProps } from '@semcore/ui/time-picker';
+import type { NSTimePicker } from '@semcore/ui/time-picker';
 import Timepicker from '@semcore/ui/time-picker';
 import React, { useState } from 'react';
 
@@ -6,7 +6,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type TimePickerJSXProps = JSXProps<TimePickerProps>;
+export type TimePickerJSXProps = JSXProps<NSTimePicker.Props>;
 
 const d = new Date();
 
