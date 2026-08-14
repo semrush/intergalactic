@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Link external children composition > Verify Link.Addon children stay siblings of Link.Text in external mode 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Link.Addon",
+        },
+        {
+          "children": [],
+          "uiName": "Link.Addon",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "Link.InnerWrapper",
+    },
+  ],
+  "uiName": "Link",
+}
+`;
+
+exports[`Link external children composition > Verify neither documented external-link shape double-wraps Link.Text > Link.Text with explicit Link.ExternalIcon 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Link.Text",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Link.ExternalIcon",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "Link.InnerWrapper",
+    },
+  ],
+  "uiName": "Link",
+}
+`;
+
+exports[`Link external children composition > Verify neither documented external-link shape double-wraps Link.Text > string child, icon injected 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Link.Text",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Link.ExternalIcon",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "Link.InnerWrapper",
+    },
+  ],
+  "uiName": "Link",
+}
+`;
