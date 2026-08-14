@@ -215,13 +215,13 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
                   </Link.Addon>
                 )
               : null}
-            {isExternal && (
-              <ScreenReaderOnly aria-hidden={true} id={describedByExternalId}>
-                {getI18nText('Link.external:aria-describedby')}
-              </ScreenReaderOnly>
-            )}
           </SInner>
         </SLink>
+        {isExternal && (
+          <ScreenReaderOnly aria-hidden={true} id={describedByExternalId}>
+            {getI18nText('Link.external:aria-describedby')}
+          </ScreenReaderOnly>
+        )}
         {showHint && (
           <Hint
             triggerRef={this.containerRef}
