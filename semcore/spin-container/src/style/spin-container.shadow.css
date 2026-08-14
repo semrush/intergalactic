@@ -23,7 +23,7 @@ SOverlay {
 }
 
 SOverlay[theme='invert'] {
-  background-color: var(--intergalactic-overlay-secondary, oklch(0.118 0.023 170.1 / 0.262));
+  background-color: var(--intergalactic-overlay-primary, oklch(0.109 0.023 165.5 / 0.337));
 }
 
 SOverlay[theme='default'], SOverlay[theme='dark'] {
