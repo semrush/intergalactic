@@ -3368,10 +3368,9 @@
     "value": "20px",
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
+      "bulk-textarea",
       "card",
       "notice"
-      "bulk-textarea",
-      "card"
     ]
   },
   {
