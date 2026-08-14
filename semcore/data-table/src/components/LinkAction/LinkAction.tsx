@@ -4,17 +4,17 @@ import type { NSLink } from '@semcore/link';
 import React from 'react';
 
 interface IProps {
-  children: [NSLink.Componet, NSButtonLink.Component];
+  children: [ReturnType<NSLink.Component>, ...Array<ReturnType<NSButtonLink.Component> | ReturnType<NSLink.Component>>];
 }
 
 export class LinkAction extends React.PureComponent<IProps> {
   render(): React.ReactNode {
-    const { children: [Link, ButtonLink] } = this.props;
+    const { children: [Link, ...Actions] } = this.props;
     return (
       <>
         {Link}
         <Divider orientation='vertical' mx={1} hMin={0} my={1} />
-        {ButtonLink}
+        {Actions}
       </>
     );
   }
