@@ -2792,7 +2792,8 @@
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart"
+      "d3-chart",
+      "typography"
     ]
   },
   {
@@ -2867,7 +2868,8 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Default primary link color.",
     "components": [
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2875,7 +2877,8 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Hover and active states for the primary link.",
     "components": [
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2926,7 +2929,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.23 0.113 296)",
+    "value": "oklch(0.53 0.26 296)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -3294,7 +3297,8 @@
       "counter",
       "input-tags",
       "notice-bubble",
-      "pills"
+      "pills",
+      "typography"
     ]
   },
   {
@@ -3358,7 +3362,8 @@
     "components": [
       "bulk-textarea",
       "feature-popover",
-      "notice-bubble"
+      "notice-bubble",
+      "typography"
     ]
   },
   {
@@ -3367,14 +3372,17 @@
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea",
-      "card"
+      "card",
+      "typography"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xlarge-extended",
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3389,8 +3397,10 @@
   {
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
-    "description": "Small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "description": "Extra small gap between content elements inside controls, rows, or columns.",
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
@@ -3403,7 +3413,8 @@
       "dropdown-menu",
       "inline-input",
       "pagination",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -3435,7 +3446,8 @@
       "pagination",
       "radio",
       "select",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -3444,7 +3456,8 @@
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "typography"
     ]
   },
   {
@@ -3452,7 +3465,8 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "typography"
     ]
   },
   {
@@ -3460,14 +3474,17 @@
     "value": "20px",
     "description": "Extended 2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "typography"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
     "value": "24px",
     "description": "3x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-layout-padding-desktop",

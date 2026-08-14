@@ -27,7 +27,7 @@ SLink {
 
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--intergalactic-text-link-visited, oklch(0.23 0.113 296));
+    color: var(--intergalactic-text-link-visited, oklch(0.53 0.26 296));
   }
 }
 

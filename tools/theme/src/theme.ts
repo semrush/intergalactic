@@ -1893,7 +1893,7 @@ export const theme: Theme = {
         description: 'Hover and active states for the accent link.',
       },
       text_link_visited: {
-        value: violet.at(L_TEXT_PRIMARY),
+        value: violet.at(L_TEXT_SECONDARY),
         description: 'Visited link state so users can tell visited destinations apart from default links.',
       },
       text_placeholder: {

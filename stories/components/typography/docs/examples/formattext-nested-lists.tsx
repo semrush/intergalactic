@@ -7,13 +7,34 @@ type ExampleProps = {
 
 const Demo = (props: ExampleProps) => (
   <Text formatTags={props.formatTags}>
-    <ol start={1}>
+    <ol>
       <li>List item one</li>
       <li>
-        List item two with subitems:
+        List item two with nested ordered list:
+        <ol>
+          <li>Level 2 item</li>
+          <li>
+            Level 2 item with nested list:
+            <ol>
+              <li>Level 3 item</li>
+              <li>Level 3 item</li>
+              <li>Level 3 item</li>
+            </ol>
+          </li>
+          <li>Level 2 item</li>
+        </ol>
+      </li>
+      <li>
+        List item three with nested unordered list:
         <ul>
-          <li>Subitem 1</li>
-          <li>Subitem 2</li>
+          <li>Unordered subitem</li>
+          <li>
+            Unordered subitem with nested list:
+            <ul>
+              <li>Deep unordered subitem</li>
+              <li>Deep unordered subitem</li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li>Final list item</li>
