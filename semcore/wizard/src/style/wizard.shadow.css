@@ -7,27 +7,28 @@ SWizard {
 }
 
 SSidebar {
-  background: var(--intergalactic-control-primary-advertising, oklch(0.23 0.01 140)); /* TODO: --intergalactic-wizard-sidebar-bg */
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-wizard-sidebar-text-primary */
+  background: var(--intergalactic-wizard-sidebar-bg, oklch(0.23 0.01 140));
+  color: var(--intergalactic-wizard-sidebar-text-primary, oklch(0.999 0.001 180 / 0.949));
   font-weight: var(--intergalactic-bold, 700);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
-  padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px) var(--intergalactic-spacing-content-padding-small, 8px);
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border-radius: var(--intergalactic-modal-rounded, 14px) 0 0
-    var(--intergalactic-modal-rounded, 14px);
+  border-radius: var(--intergalactic-modal-rounded, 14px) 0 0 var(--intergalactic-modal-rounded, 14px);
   @media (max-width: 1060px) {
-    width: 56px;
+    width: 44px;
   }
 
   SStepper {
     display: flex;
-    gap: var(--intergalactic-spacing-1x, 4px);
+    box-sizing: border-box;
+    min-height: 36px;
+    gap: var(--intergalactic-spacing-content-gap-small, 4px);
     font-size: var(--intergalactic-fs-200, 14px);
     border-radius: var(--intergalactic-control-rounded, 6px);
-    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+    padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px);
     cursor: pointer;
     position: relative;
     overflow: auto;
@@ -38,22 +39,25 @@ SSidebar {
     }
 
     &:hover {
-      background: var(--intergalactic-control-primary-advertising-hover, oklch(0.36 0.005 140)); /* TODO: --intergalactic-wizard-sidebar-control-hover */
+      background: var(--intergalactic-wizard-sidebar-control-hover, oklch(0.36 0.005 140));
       z-index: 2;
     }
     &[active] {
-      background: var(--intergalactic-control-primary-advertising-active, oklch(0.4 0.004 140)); /* TODO: --intergalactic-wizard-sidebar-control-active */
+      background: var(--intergalactic-wizard-sidebar-control-active, oklch(0.4 0.004 140));
     }
     &:disabled,
     &[disabled] {
       opacity: var(--intergalactic-disabled-opacity, 0.4);
       cursor: default;
-      pointer-events: none; /* Disable interactions */
+      pointer-events: none;
     }
 
     @media (max-width: 1060px) {
-      padding: var(--intergalactic-spacing-2x, 8px);
+      padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xsmall, 4px);
+
       &:hover {
+        display: flex;
+        padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xsmall, 4px);
         width: max-content;
         max-width: 220px;
       }
@@ -63,7 +67,7 @@ SSidebar {
         overflow: auto;
       }
       &[active]:hover SStepDescription {
-        background: var(--intergalactic-control-primary-advertising-active, oklch(0.4 0.004 140)); /* TODO: --intergalactic-wizard-sidebar-control-active */
+        background: var(--intergalactic-wizard-sidebar-control-active, oklch(0.4 0.004 140));
       }
     }
   }
@@ -71,7 +75,8 @@ SSidebar {
 
 SSidebarHeader {
   font-size: var(--intergalactic-fs-300, 16px);
-  margin: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px);
+  margin: 0;
+  padding: 0 var(--intergalactic-spacing-content-padding-xlarge, 20px) var(--intergalactic-spacing-content-padding-large, 16px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
   @media (max-width: 1060px) {
     display: none;
   }
@@ -81,11 +86,10 @@ SStepNumber {
   display: inline-block;
   min-width: 20px;
   text-align: center;
-}
 
-SCompleted {
-  /* disable-tokens-validator */
-  margin-top: 1px;
+  &:has(svg) {
+    line-height: normal;
+  }
 }
 
 SStepDescription {
@@ -95,13 +99,16 @@ SStepDescription {
   }
 }
 
+SCompleted {
+  margin-bottom: -1px;
+}
+
 SContent {
-  padding: var(--intergalactic-spacing-10x, 40px);
+  padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   overflow: hidden;
   flex: 1;
-  border-radius: 0 var(--intergalactic-modal-rounded, 14px) var(--intergalactic-modal-rounded, 14px)
-    0;
-  background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-wizard-bg */
+  border-radius: 0 var(--intergalactic-modal-rounded, 14px) var(--intergalactic-modal-rounded, 14px) 0;
+  background: var(--intergalactic-wizard-bg, oklch(1 0 0));
 
   SWizardStepTitle {
     display: block;

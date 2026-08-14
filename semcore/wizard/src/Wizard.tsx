@@ -322,6 +322,7 @@ function StepBack(props: Required<WizardStepBackProps> & IRootComponentProps) {
     <SStepBack
       render={Button}
       use='tertiary'
+      theme='muted'
       size='l'
       onClick={handleClick}
       aria-label={getI18nText('backButton', { buttonName: stepName })}
@@ -343,6 +344,7 @@ function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
     <SStepNext
       render={Button}
       use='tertiary'
+      theme='muted'
       size='l'
       onClick={handleClick}
       aria-label={getI18nText('nextButton', { buttonName: stepName })}
