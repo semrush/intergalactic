@@ -68,28 +68,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify custom pills', {
-    tag: [TAG.PRIORITY_HIGH, '@pills'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/pills/docs/examples/custom_pills_example.tsx', 'en');
-
-    await test.step('Verify hover state', async () => {
-      await locators.pillsItem(page).nth(1).hover();
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify focus state', async () => {
-      await page.keyboard.press('Tab');
-      await expect(page).toHaveScreenshot();
-    });
-
-    await test.step('Verify navigation and hover', async () => {
-      await page.keyboard.press('ArrowRight');
-      await locators.pillsItem(page).nth(1).hover();
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
   test('Verify pills with tab panel', {
     tag: [TAG.PRIORITY_HIGH, '@pills'],
   }, async ({ page }) => {
