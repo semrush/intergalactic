@@ -3308,7 +3308,8 @@
       "dropdown",
       "dropdown-menu",
       "input-tags",
-      "pills"
+      "pills",
+      "side-panel"
     ]
   },
   {
@@ -3329,7 +3330,8 @@
       "bulk-textarea",
       "dropdown",
       "modal",
-      "pills"
+      "pills",
+      "side-panel"
     ]
   },
   {
@@ -3358,7 +3360,8 @@
     "components": [
       "bulk-textarea",
       "feature-popover",
-      "notice-bubble"
+      "notice-bubble",
+      "side-panel"
     ]
   },
   {
@@ -3374,7 +3377,9 @@
     "name": "--intergalactic-spacing-content-padding-xlarge-extended",
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3438,7 +3443,8 @@
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "side-panel"
     ]
   },
   {

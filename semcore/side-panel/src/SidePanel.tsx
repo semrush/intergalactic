@@ -248,14 +248,10 @@ function Back(
   props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Back.Component>,
 ) {
   const SBack = Root;
-  const { Children, styles } = props;
+  const { styles } = props;
 
   return sstyled(styles)(
-    <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft}>
-      <ButtonLink.Text ellipsis>
-        <Children />
-      </ButtonLink.Text>
-    </SBack>,
+    <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft} />,
   );
 }
 
@@ -273,7 +269,7 @@ function Header(
   const SHeader = Root;
   const { Children, styles, title } = props;
   return sstyled(styles)(
-    <SHeader render={Box} tag='header'>
+    <SHeader render={Flex} tag='header'>
       {title && <SidePanel.Title children={title} />}
       <Children />
     </SHeader>,
