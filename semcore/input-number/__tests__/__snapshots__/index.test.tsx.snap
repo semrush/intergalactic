@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputNumber > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "InputNumber.Addon",
+        },
+        {
+          "children": [],
+          "uiName": "InputNumber.Value",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": "InputNumber.Controls",
+        },
+        {
+          "children": [],
+          "uiName": null,
+        },
+      ],
+      "uiName": "InputNumber",
+    },
+  ],
+  "uiName": null,
+}
+`;

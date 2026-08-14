@@ -1,12 +1,34 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import * as React from 'react';
 
-import { List } from '../src';
+import { Blockquote, List, Text } from '../src';
 
 describe('typography Dependency imports', () => {
   runDependencyCheckTests('typography');
+});
+
+describe('Typography', () => {
+  beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const typography = (
+      <>
+        <Text>Text</Text>
+        <Blockquote author='Author'>Quote</Blockquote>
+        <List>
+          <List.Item>
+            <List.Item.Content>Item</List.Item.Content>
+          </List.Item>
+        </List>
+      </>
+    );
+
+    const { container } = render(typography);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 });
 
 describe('List', () => {

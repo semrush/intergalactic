@@ -1,0 +1,440 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BadgeFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [],
+      "uiName": "BadgeFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`ButtonFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "SummaryAI",
+                },
+              ],
+              "uiName": "ButtonFH.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "ButtonFH.Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "BadgeFH",
+                },
+              ],
+              "uiName": "ButtonFH.Addon",
+            },
+          ],
+          "uiName": "ButtonFH.InnerWrapper",
+        },
+      ],
+      "uiName": "ButtonFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`ButtonTriggerFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "SummaryAI",
+                },
+              ],
+              "uiName": "ButtonTriggerFH.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "ButtonTriggerFH.Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronDown",
+                },
+              ],
+              "uiName": "ButtonTrigger.Addon",
+            },
+          ],
+          "uiName": "ButtonTriggerFH.InnerTriggerWrapper",
+        },
+      ],
+      "uiName": "ButtonTriggerFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`CheckboxFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "CheckboxFH.Value",
+        },
+        {
+          "children": [],
+          "uiName": "Value.CheckMark",
+        },
+        {
+          "children": [],
+          "uiName": "CheckboxFH.Text",
+        },
+      ],
+      "uiName": "CheckboxFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`InputFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": "SummaryAI",
+            },
+          ],
+          "uiName": "InputFH.Addon",
+        },
+        {
+          "children": [],
+          "uiName": "InputFH.Value",
+        },
+        {
+          "children": [],
+          "uiName": null,
+        },
+      ],
+      "uiName": "InputFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`NoticeFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "NoticeFH.Label",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "NoticeFH.Title",
+            },
+            {
+              "children": [],
+              "uiName": "NoticeFH.Text",
+            },
+            {
+              "children": [],
+              "uiName": "NoticeFH.Actions",
+            },
+          ],
+          "uiName": "NoticeFH.Content",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Close",
+                    },
+                  ],
+                  "uiName": "Button.Addon",
+                },
+              ],
+              "uiName": "NoticeFH.Close.InnerWrapper",
+            },
+          ],
+          "uiName": "NoticeFH.Close",
+        },
+      ],
+      "uiName": "NoticeFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`PillsFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Pills.Item.Text",
+            },
+          ],
+          "uiName": "PillsFH.Item",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "HighlightedItem.Text",
+            },
+            {
+              "children": [],
+              "uiName": "HighlightedItem.Addon",
+            },
+          ],
+          "uiName": "PillsFH.HighlightedItem",
+        },
+      ],
+      "uiName": "PillsFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`RadioFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "RadioFH.Value",
+        },
+        {
+          "children": [],
+          "uiName": "Value.RadioMark",
+        },
+        {
+          "children": [],
+          "uiName": "RadioFH.Text",
+        },
+      ],
+      "uiName": "RadioFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`SelectFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "SummaryAI",
+                },
+              ],
+              "uiName": "SelectFH.Trigger.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "SelectFH.Trigger.Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronDown",
+                },
+              ],
+              "uiName": "ButtonTrigger.Addon",
+            },
+          ],
+          "uiName": "SelectFH.Trigger.InnerTriggerWrapper",
+        },
+      ],
+      "uiName": "SelectFH.Trigger",
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "SelectFH.Option",
+                        },
+                      ],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ScrollArea.Container",
+                },
+              ],
+              "uiName": "SelectFH.Menu",
+            },
+          ],
+          "uiName": "Select.Popper",
+        },
+      ],
+      "uiName": "SelectFH.Popper",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`SwitchFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "SwitchFH.Value",
+            },
+            {
+              "children": [],
+              "uiName": "Box",
+            },
+          ],
+          "uiName": "Box",
+        },
+        {
+          "children": [],
+          "uiName": "SwitchFH.Addon",
+        },
+      ],
+      "uiName": "SwitchFH",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`TabLineFH > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "TabLine.Item.Text",
+            },
+          ],
+          "uiName": "TabLineFH.Item",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "SummaryAI",
+                },
+              ],
+              "uiName": "HighlightedItem.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "HighlightedItem.Text",
+            },
+          ],
+          "uiName": "TabLineFH.HighlightedItem",
+        },
+      ],
+      "uiName": "TabLineFH",
+    },
+  ],
+  "uiName": null,
+}
+`;

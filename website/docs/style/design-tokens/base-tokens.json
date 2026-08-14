@@ -786,17 +786,27 @@
   {
     "name": "--intergalactic-screen-small",
     "value": "768px",
-    "description": "Small screens (phones and small tablets)."
+    "description": "Switch to mobile layout behavior."
   },
   {
     "name": "--intergalactic-screen-medium",
-    "value": "1200px",
-    "description": "Medium screens (tablets and small laptops)."
+    "value": "1280px",
+    "description": "Desktop layout. Sidebar expands"
   },
   {
     "name": "--intergalactic-screen-large",
     "value": "1920px",
     "description": "Large screens (tablets and laptops)."
+  },
+  {
+    "name": "--intergalactic-screen-layout-compact",
+    "value": "1200px",
+    "description": "Low and medium density interfaces."
+  },
+  {
+    "name": "--intergalactic-screen-layout-data-heavy",
+    "value": "1500px",
+    "description": "High density interfaces."
   },
   {
     "name": "--intergalactic-duration-extra-slow",
@@ -891,7 +901,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-bg",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-dot",
@@ -899,7 +909,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
@@ -907,11 +917,11 @@
   },
   {
     "name": "--intergalactic-feature-popover-accent-bg",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-accent-dot-outer-border",
-    "value": "oklch(0.88 0.078 303)"
+    "value": "oklch(0.92 0.052 303.1)"
   },
   {
     "name": "--intergalactic-feature-popover-neutral-bg",

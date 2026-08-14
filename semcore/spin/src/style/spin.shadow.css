@@ -23,7 +23,7 @@ SSpin[theme='dark'] {
 }
 
 SSpin[theme='invert'] {
-  fill: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391)); /* TODO: --intergalactic-spin-bg-invert */
+  fill: var(--intergalactic-border-primary-invert, oklch(0.996 0.007 151.1 / 0.447)); /* TODO: --intergalactic-spin-bg-invert */
 }
 
 SSpin[centered] {

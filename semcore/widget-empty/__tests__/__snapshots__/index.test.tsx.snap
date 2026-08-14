@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WidgetEmpty > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "WidgetEmpty.Title",
+        },
+        {
+          "children": [],
+          "uiName": "WidgetEmpty.Description",
+        },
+      ],
+      "uiName": "WidgetEmpty",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`WidgetError > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+        {
+          "children": [],
+          "uiName": "WidgetEmpty.Title",
+        },
+        {
+          "children": [],
+          "uiName": "WidgetEmpty.Description",
+        },
+      ],
+      "uiName": "WidgetError",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`WidgetNoData > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+        {
+          "children": [],
+          "uiName": "WidgetEmpty.Title",
+        },
+        {
+          "children": [],
+          "uiName": "WidgetEmpty.Description",
+        },
+      ],
+      "uiName": "WidgetNoData",
+    },
+  ],
+  "uiName": null,
+}
+`;

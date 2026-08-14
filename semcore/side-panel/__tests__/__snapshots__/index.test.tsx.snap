@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SidePanel > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": null,
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "ArrowLeft",
+                            },
+                          ],
+                          "uiName": "Link.Addon",
+                        },
+                        {
+                          "children": [],
+                          "uiName": "ButtonLink.Text",
+                        },
+                      ],
+                      "uiName": "SidePanel.Back.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "SidePanel.Back",
+                },
+                {
+                  "children": [],
+                  "uiName": "SidePanel.Title",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Button.Text",
+                        },
+                      ],
+                      "uiName": "SidePanel.Close.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "SidePanel.Close",
+                },
+              ],
+              "uiName": "SidePanel.Header",
+            },
+            {
+              "children": [],
+              "uiName": "SidePanel.Body",
+            },
+            {
+              "children": [],
+              "uiName": "SidePanel.Footer",
+            },
+          ],
+          "uiName": "SidePanel.Panel",
+        },
+        {
+          "children": [],
+          "uiName": null,
+        },
+      ],
+      "uiName": "SidePanel.Overlay",
+    },
+  ],
+  "uiName": null,
+}
+`;
