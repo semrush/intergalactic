@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,20 @@ describe('pills Dependency imports', () => {
 
 describe('RadioCards', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const radioCards = (
+      <RadioCards aria-label='Radio cards' value='1'>
+        <RadioCards.Item value='1' text='1' />
+        <RadioCards.Item value='2' text='2' />
+      </RadioCards>
+    );
+
+    const { container } = render(radioCards);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('calls onChange with selected value', async () => {
     const onChange = vi.fn();
