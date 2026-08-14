@@ -221,12 +221,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await loadPage(page, 'stories/components/data-table/docs/examples/virtual-scroll-in-table-different-height.tsx', 'en');
 
     await page.keyboard.press('Tab');
-    for (let i = 0; i < 100; i++) {
+
+    const focusedRow = page.locator('[role="row"]:has(:focus)');
+
+    for (let i = 0; i < 300 && (await focusedRow.getAttribute('aria-rowindex')) !== '101'; i++) {
       await page.keyboard.press('ArrowDown');
-      await page.waitForTimeout(20);
     }
-    await page.waitForTimeout(500);
-    await expect(locators.getCell(page, 101, 1)).toBeVisible();
-    await expect(page.getByText('#101')).toBeVisible();
+
+    await expect(focusedRow).toHaveAttribute('aria-rowindex', '101');
+    await expect(focusedRow).toContainText('#100');
   });
 });

@@ -1,5 +1,7 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
+  act,
   render,
   cleanup,
   waitFor,
@@ -16,6 +18,34 @@ describe('notice-bubble Dependency imports', () => {
 
 describe('NoticeBubbleContainer', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', async () => {
+    const manager = new NoticeBubbleManager();
+    const { container, getByText } = render(
+      <NoticeBubbleContainer disablePortal manager={manager} />,
+    );
+
+    manager.add({
+      type: 'warning',
+      children: 'Warning notice',
+      action: 'Warning action',
+      duration: 0,
+      initialAnimation: false,
+    });
+    manager.add({
+      type: 'info',
+      children: 'Info notice',
+      action: 'Info action',
+      duration: 0,
+      initialAnimation: false,
+    });
+
+    await waitFor(() => expect(getByText('Info notice')).toBeInTheDocument());
+
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test('Verify supports rendering outside DOM', () => {
     const { queryByTestId } = render(

@@ -1,30 +1,17 @@
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
-import type { RefObject } from 'react';
 import React from 'react';
 
-import type {
-  NoticeBubbleManagerClass,
-  NoticeBubbleInfoProps,
-  NoticeBubbleWarningProps,
-  AddedNoticeMeta,
-} from './NoticeBubble.type';
+import type { NSNoticeBubble } from './NoticeBubble.type';
 
 const EVENT_NAME = 'CHANGE';
 
-export type NoticeItem = (NoticeBubbleInfoProps | NoticeBubbleWarningProps) & {
-  uid: number;
-  visible: boolean;
-  forwardRef: RefObject<HTMLElement>;
-  onClose: () => void;
-};
-
-class NoticeBubbleManager implements NoticeBubbleManagerClass {
-  private items: NoticeItem[] = [];
+class NoticeBubbleManager implements NSNoticeBubble.Manager {
+  private items: NSNoticeBubble.Item[] = [];
   private emitter = new EventEmitter();
   private counter = 0;
 
-  public addListener(fn: (items: NoticeItem[]) => void): () => void {
+  public addListener(fn: (items: NSNoticeBubble.Item[]) => void): () => void {
     return this.emitter.subscribe(EVENT_NAME, fn);
   }
 
@@ -32,7 +19,7 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
     this.emitter.emit(EVENT_NAME, this.items);
   }
 
-  public add(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): AddedNoticeMeta {
+  public add(props: NSNoticeBubble.Info.Props | NSNoticeBubble.Warning.Props): NSNoticeBubble.Meta {
     const uid = this.counter++;
     const ref = React.createRef<HTMLElement>();
 
@@ -56,7 +43,7 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
     };
   }
 
-  public replace(uid: number, props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): Promise<AddedNoticeMeta> {
+  public replace(uid: number, props: NSNoticeBubble.Info.Props | NSNoticeBubble.Warning.Props): Promise<NSNoticeBubble.Meta> {
     this.remove(uid);
 
     return new Promise((resolve) => {
@@ -66,7 +53,7 @@ class NoticeBubbleManager implements NoticeBubbleManagerClass {
     });
   }
 
-  public replaceLast(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): Promise<AddedNoticeMeta> {
+  public replaceLast(props: NSNoticeBubble.Info.Props | NSNoticeBubble.Warning.Props): Promise<NSNoticeBubble.Meta> {
     const item = this.items[this.items.length - 1];
 
     if (item?.visible) {

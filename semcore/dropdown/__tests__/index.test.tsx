@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import {
   cleanup,
@@ -79,6 +80,22 @@ describe('Dropdown', () => {
       disconnect: () => null,
     });
     window.IntersectionObserver = mockIntersectionObserver;
+  });
+
+  test('Verify data-ui-name', () => {
+    const dropdown = (
+      <Dropdown visible disablePortal>
+        <Dropdown.Trigger>
+          Trigger
+        </Dropdown.Trigger>
+        <Dropdown.Popper aria-label='Dropdown popper description' />
+      </Dropdown>
+    );
+
+    const { container } = render(dropdown);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
   });
 
   test('Verify not open popper by keyboard enter if interaction none', async () => {
