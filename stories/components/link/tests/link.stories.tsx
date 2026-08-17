@@ -124,7 +124,7 @@ export const LinkDifferentSizes: StoryObj<typeof defaultLinksizesProps> = {
     },
     addonRight: {
       control: { type: 'select' },
-      options: ['icon', 'badge', 'counter', 'spin'],
+      options: ['icon', 'badge', 'counter', 'spin', 'tag'],
     },
   },
 };

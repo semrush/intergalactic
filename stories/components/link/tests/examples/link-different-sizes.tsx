@@ -4,6 +4,7 @@ import Badge from '@semcore/ui/badge';
 import Counter, { type NSCounter } from '@semcore/ui/counter';
 import Link from '@semcore/ui/link';
 import Spin, { type NSSpin } from '@semcore/ui/spin';
+import Tag from '@semcore/ui/tag';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -93,6 +94,11 @@ const Demo = (props: LinkSizesProps) => {
                   <Spin size={spinSize} />
                 </Link.Addon>
               )}
+              {props.addonRight === 'tag' && (
+                <Link.Addon>
+                  <Tag size='m'>Tag</Tag>
+                </Link.Addon>
+              )}
             </Link>
 
           </Text>
@@ -103,8 +109,8 @@ const Demo = (props: LinkSizesProps) => {
 };
 
 type LinkSizesProps = {
-  addonLeft: 'icon' | 'badge' | 'counter' | 'spin';
-  addonRight: 'icon' | 'badge' | 'counter' | 'spin';
+  addonLeft: 'icon' | 'spin';
+  addonRight: 'icon' | 'badge' | 'counter' | 'spin' | 'tag';
   ellipsis: boolean;
   active: boolean;
 };
