@@ -3390,6 +3390,12 @@
     ]
   },
   {
+    "name": "--intergalactic-spacing-content-gap-xsmall",
+    "value": "2px",
+    "description": "Small gap between content elements inside controls, rows, or columns.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls, rows, or columns.",
