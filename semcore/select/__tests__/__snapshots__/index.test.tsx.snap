@@ -1,0 +1,172 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Select > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Select.Trigger.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "Select.Trigger.Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronDown",
+                },
+              ],
+              "uiName": "ButtonTrigger.Addon",
+            },
+          ],
+          "uiName": "Select.Trigger.InnerTriggerWrapper",
+        },
+      ],
+      "uiName": "Select.Trigger",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "Search",
+                            },
+                          ],
+                          "uiName": "Select.InputSearch.SearchIcon",
+                        },
+                        {
+                          "children": [],
+                          "uiName": "Select.InputSearch.Value",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [],
+                                          "uiName": null,
+                                        },
+                                      ],
+                                      "uiName": "Close",
+                                    },
+                                  ],
+                                  "uiName": "Link.Addon",
+                                },
+                              ],
+                              "uiName": "Select.InputSearch.Clear.InnerWrapper",
+                            },
+                          ],
+                          "uiName": "Select.InputSearch.Clear",
+                        },
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Input",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Flex",
+                        },
+                      ],
+                      "uiName": "Dropdown.Item",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": "Select.Option.Checkbox",
+                                },
+                                {
+                                  "children": [],
+                                  "uiName": "Select.Option.Addon",
+                                },
+                                {
+                                  "children": [],
+                                  "uiName": "Select.Option.Text",
+                                },
+                              ],
+                              "uiName": "Select.Option.Content",
+                            },
+                            {
+                              "children": [],
+                              "uiName": "Select.Option.Hint",
+                            },
+                          ],
+                          "uiName": "Select.Option",
+                        },
+                      ],
+                      "uiName": "Select.Group",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Select.Divider",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Select.StatusItem",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": "ScrollArea.Container",
+            },
+          ],
+          "uiName": "Select.Menu",
+        },
+      ],
+      "uiName": "Select.Popper",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+  ],
+  "uiName": null,
+}
+`;

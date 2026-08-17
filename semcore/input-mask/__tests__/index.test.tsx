@@ -1,3 +1,5 @@
+import Badge from '@semcore/badge';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
@@ -11,6 +13,20 @@ describe('input-mask Dependency imports', () => {
 
 describe('InputMask', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const inputMask = (
+      <InputMask>
+        <InputMask.Addon><Badge type='beta' /></InputMask.Addon>
+        <InputMask.Value mask='99 99' />
+      </InputMask>
+    );
+
+    const { container } = render(inputMask);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.sequential('Should renders correctly', async () => {
     const Component = ({ value = '' }) => (

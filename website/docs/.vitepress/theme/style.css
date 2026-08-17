@@ -393,6 +393,7 @@
 .footer-logo-img {
   display: inline;
   margin-right: 12px;
+  border-radius: 0;
 }
 
 /* Links in the header and left sidebar */

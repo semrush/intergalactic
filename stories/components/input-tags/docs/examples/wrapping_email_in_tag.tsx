@@ -1,13 +1,13 @@
 import { Flex } from '@semcore/ui/base-components';
 import InputTags from '@semcore/ui/input-tags';
-import type { InputTagsTagProps } from '@semcore/ui/input-tags';
+import type { NSInputTags } from '@semcore/ui/input-tags';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 
 const defaultTags = ['bob@email.com', 'alice@domain.net', 'mary@website.com', 'steve@company.com'];
-type ExampleInputTagsProps = InputTagsTagProps;
+type ExampleInputTagsProps = NSInputTags.Tag.Props;
 
 const Demo = (props: ExampleInputTagsProps) => {
   const [tags, setTags] = React.useState(defaultTags);

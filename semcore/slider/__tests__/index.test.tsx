@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,21 @@ describe('slider Dependency imports', () => {
 
 describe('Slider', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const slider = (
+      <Slider value='medium' options={[{ value: 'medium', label: 'Medium' }]}>
+        <Slider.Bar />
+        <Slider.Knob />
+        <Slider.Options>
+          <Slider.Item />
+        </Slider.Options>
+      </Slider>
+    );
+
+    const { container } = render(slider);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   const focusSlider = async (slider: HTMLElement) => {
     await userEvent.tab();

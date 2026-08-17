@@ -1,6 +1,6 @@
-import type { InlineInputProps, InlineInputValueProps } from './index.type';
 import InlineInputBase from './InlineInput';
+import type { InlineInputProps, InlineInputValueProps, NSInlineInput } from './InlineInput.type';
 
 export default InlineInputBase;
 
-export type { InlineInputProps, InlineInputValueProps };
+export type { InlineInputProps, InlineInputValueProps, NSInlineInput };

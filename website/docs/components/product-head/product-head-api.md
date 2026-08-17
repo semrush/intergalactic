@@ -49,7 +49,7 @@ import { Title } from '@semcore/ui/product-head';
 <Title />;
 ```
 
-<TypesView type="HeaderTitleProps" :types={...types} />
+<TypesView type="NSProductHeadTitle.Props" :types={...types} />
 
 ## Info
 
@@ -69,6 +69,6 @@ import { Info } from '@semcore/ui/product-head';
 <Info.Item />;
 ```
 
-<TypesView type="InfoItemProps" :types={...types} />
+<TypesView type="NSProductHeadInfo.Item.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
