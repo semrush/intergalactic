@@ -27,7 +27,7 @@ SLinks {
   justify-content: flex-end;
   margin-left: var(--intergalactic-spacing-2x, 8px);
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 
   & > *:not(:first-child) {
     margin-left: var(--intergalactic-spacing-5x, 20px);

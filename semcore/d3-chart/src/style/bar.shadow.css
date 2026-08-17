@@ -44,13 +44,13 @@ SBarLabel {
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   margin-right: auto;
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
 SBarPercent {
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   margin-right: var(--intergalactic-spacing-2x, 8px);
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
 SBarValue {
   min-width: 52px;
@@ -58,7 +58,7 @@ SBarValue {
   justify-content: flex-end;
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   text-align: right;
 }
 SCompactHorizontalBarHoverRect {

@@ -151,7 +151,7 @@ SCell {
   display: flex;
   height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   box-sizing: border-box;
   border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));

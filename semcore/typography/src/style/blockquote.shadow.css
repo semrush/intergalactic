@@ -3,7 +3,7 @@ SBlockquote {
   display: flex;
   font-style: italic;
   font-size: var(--intergalactic-fs-400, 20px);
-  line-height: var(--intergalactic-lh-400, 120%);
+  line-height: var(--intergalactic-lh-400, 1.2);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
@@ -24,5 +24,5 @@ SAuthor {
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   font-style: normal;
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 }
