@@ -47,7 +47,7 @@ const Demo = () => {
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={handleStepChange(3)}>
             {steps[2].title}
-            <Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
+            <Text color='wizard-sidebar-text-secondary' fontWeight={400} mt={1} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
