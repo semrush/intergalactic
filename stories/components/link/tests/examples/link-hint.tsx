@@ -42,13 +42,18 @@ const Demo = (props: LinkHintProps) => {
     count = 3,
   } = props;
 
-  // `color` and `use` collide: SLink[text-color] sits below the [use] blocks in
-  // link.shadow.css with equal specificity, so a custom color always wins and the `use`
-  // control would look broken. Picking a `use` therefore drops the color.
   const resolvedColor = theme ? undefined : color;
 
+  // theme='invert' paints the link almost white for use on dark surfaces, so without a
+  // dark background here it would be invisible against the default page.
+  const inverted = theme === 'invert';
+
   return (
-    <>
+    <Flex
+      direction='column'
+      bg={inverted ? 'bg-primary-invert' : undefined}
+      p={inverted ? 4 : undefined}
+    >
       {Array.from({ length: count }, (_, index) => (
         <Flex key={index} columnGap={2} mb={4}>
           <Text ellipsis={true} w={200}>{text}</Text>
@@ -69,7 +74,7 @@ const Demo = (props: LinkHintProps) => {
           </Link>
         </Flex>
       ))}
-    </>
+    </Flex>
   );
 };
 

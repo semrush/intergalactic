@@ -109,7 +109,7 @@ export default function Demo(props: TableLinkProps) {
               {removeProtocol(url)}
             </Link.Text>
           </Link>
-          <ButtonLink addonLeft={IconM} use='tertiary' theme='muted' />
+          <ButtonLink addonLeft={IconM} use='tertiary' theme='muted' title='Open in new tab' />
         </LinkAction>
       );
     }

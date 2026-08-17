@@ -69,8 +69,16 @@ const Demo = (props: LinkSizesProps) => {
   // sizes of getExternalIconProps() their coverage.
   const isExternal = props.href.startsWith('//') || props.href.toLowerCase().startsWith('http');
 
+  // theme='invert' paints the link almost white for use on dark surfaces, so without a
+  // dark background here it would be invisible against the default page.
+  const inverted = props.theme === 'invert';
+
   return (
-    <Flex direction='column'>
+    <Flex
+      direction='column'
+      bg={inverted ? 'bg-primary-invert' : undefined}
+      p={inverted ? 4 : undefined}
+    >
       {sizes.map((size) => (
         <Text key={size} tag='div' size={size} mb={4}>
           {`${size} `}

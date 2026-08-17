@@ -90,20 +90,23 @@ Pairwise tables.
 
 - SIZE_SWEEP runs on link-different-sizes.tsx, which stacks all 9 sizes in a single render.
   `size` therefore costs one screenshot instead of nine and drops out of the combinatorics.
-  This is where `use` and external links get their size coverage, including the 9 entries
-  of `externalIconSizeMap`.
+  This is where `theme` and external links get their size coverage, including the 9 entries
+  of `externalIconSizeMap`. The story paints a dark background under theme='invert', whose
+  near-white link colour is otherwise invisible.
 - DETAIL_MATRIX runs on basic_usage.tsx and carries only what the sizes story cannot
   express: ellipsis crop variants, per-side addon types, addonPassMethod, `color` and the
   disabled state. `size` is cut to the 300/600 boundary, where the icon addon and
   `addonWidth` switch (20px -> 28px).
 ===================================================== */
 const ADDONS = ['none', 'icon', 'badge', 'counter', 'spin'] as const;
-const USES = ['primary', 'secondary', 'accent'] as const;
+const THEMES = ['default', 'light', 'accent', 'invert'] as const;
 
+// 25 rows over 4 themes: 25 % 4 === 1, so the stride visits every theme and pairs it with
+// a different addon combination each time round.
 const SIZE_SWEEP = Array.from({ length: 25 }, (_, i) => ({
   addonLeft: ADDONS[Math.floor(i / 5)],
   addonRight: ADDONS[i % 5],
-  use: USES[i % 3],
+  theme: THEMES[i % 4],
   external: i % 2 === 1,
   ellipsis: Math.floor(i / 2) % 2 === 0,
   active: Math.floor(i / 3) % 2 === 1,
@@ -117,11 +120,11 @@ type DetailRow = {
   /* only the <600 / >=600 boundary */
   size: 300 | 600;
   state: 'default' | 'active' | 'disabled';
-  use: 'primary' | 'secondary' | 'accent';
+  theme: 'default' | 'light' | 'accent' | 'invert';
   /* null unless the addon is an icon */
   passMethod: 'children' | 'tag' | null;
   external: boolean;
-  /* only alongside use='primary' - a color prop overrides the [use] block */
+  /* only alongside theme='default' - a color prop overrides the [theme] block */
   color: 'text-critical' | null;
 };
 
@@ -129,42 +132,42 @@ type DetailRow = {
   All-pairs over the 9 columns above under three constraints:
     addonType is set exactly when addons !== 'none'
     passMethod is set exactly when addonType === 'icon'
-    color is set only when use === 'primary'
+    color is set only when theme === 'default'
  */
 const DETAIL_MATRIX: DetailRow[] = [
-  { ellipsis: 'off', addons: 'none', addonType: null, size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'true', addons: 'left', addonType: 'icon', size: 600, state: 'active', use: 'primary', passMethod: 'children', external: true, color: 'text-critical' },
-  { ellipsis: 'middle', addons: 'right', addonType: 'icon', size: 300, state: 'disabled', use: 'secondary', passMethod: 'tag', external: true, color: null },
-  { ellipsis: 'middleLast2', addons: 'both', addonType: 'badge', size: 600, state: 'active', use: 'accent', passMethod: null, external: false, color: null },
-  { ellipsis: 'endMaxLine2', addons: 'right', addonType: 'counter', size: 600, state: 'disabled', use: 'primary', passMethod: null, external: false, color: 'text-critical' },
-  { ellipsis: 'endMaxLine2', addons: 'left', addonType: 'spin', size: 300, state: 'default', use: 'accent', passMethod: null, external: true, color: null },
-  { ellipsis: 'true', addons: 'both', addonType: 'icon', size: 300, state: 'default', use: 'secondary', passMethod: 'children', external: false, color: null },
-  { ellipsis: 'middle', addons: 'both', addonType: 'spin', size: 600, state: 'default', use: 'primary', passMethod: null, external: false, color: 'text-critical' },
-  { ellipsis: 'off', addons: 'none', addonType: null, size: 600, state: 'active', use: 'secondary', passMethod: null, external: true, color: null },
-  { ellipsis: 'middleLast2', addons: 'left', addonType: 'icon', size: 300, state: 'default', use: 'primary', passMethod: 'tag', external: false, color: 'text-critical' },
-  { ellipsis: 'off', addons: 'both', addonType: 'icon', size: 600, state: 'disabled', use: 'accent', passMethod: 'tag', external: true, color: null },
-  { ellipsis: 'true', addons: 'right', addonType: 'counter', size: 300, state: 'active', use: 'accent', passMethod: null, external: true, color: null },
-  { ellipsis: 'off', addons: 'left', addonType: 'badge', size: 300, state: 'disabled', use: 'primary', passMethod: null, external: true, color: 'text-critical' },
-  { ellipsis: 'middleLast2', addons: 'none', addonType: null, size: 300, state: 'disabled', use: 'primary', passMethod: null, external: true, color: 'text-critical' },
-  { ellipsis: 'middle', addons: 'none', addonType: null, size: 300, state: 'active', use: 'accent', passMethod: null, external: false, color: null },
-  { ellipsis: 'middle', addons: 'left', addonType: 'counter', size: 300, state: 'default', use: 'secondary', passMethod: null, external: false, color: null },
-  { ellipsis: 'middleLast2', addons: 'right', addonType: 'badge', size: 300, state: 'default', use: 'secondary', passMethod: null, external: false, color: null },
-  { ellipsis: 'endMaxLine2', addons: 'both', addonType: 'icon', size: 300, state: 'active', use: 'secondary', passMethod: 'tag', external: false, color: null },
-  { ellipsis: 'off', addons: 'right', addonType: 'icon', size: 300, state: 'disabled', use: 'accent', passMethod: 'children', external: false, color: null },
-  { ellipsis: 'true', addons: 'right', addonType: 'spin', size: 300, state: 'disabled', use: 'secondary', passMethod: null, external: false, color: null },
-  { ellipsis: 'off', addons: 'left', addonType: 'spin', size: 300, state: 'active', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'off', addons: 'both', addonType: 'counter', size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'true', addons: 'none', addonType: null, size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'endMaxLine2', addons: 'none', addonType: null, size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'true', addons: 'left', addonType: 'icon', size: 300, state: 'default', use: 'primary', passMethod: 'tag', external: false, color: null },
-  { ellipsis: 'true', addons: 'left', addonType: 'badge', size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'middle', addons: 'left', addonType: 'icon', size: 300, state: 'default', use: 'primary', passMethod: 'children', external: false, color: null },
-  { ellipsis: 'middle', addons: 'left', addonType: 'badge', size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'middleLast2', addons: 'left', addonType: 'icon', size: 300, state: 'default', use: 'primary', passMethod: 'children', external: false, color: null },
-  { ellipsis: 'middleLast2', addons: 'left', addonType: 'counter', size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'middleLast2', addons: 'left', addonType: 'spin', size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
-  { ellipsis: 'endMaxLine2', addons: 'left', addonType: 'icon', size: 300, state: 'default', use: 'primary', passMethod: 'children', external: false, color: null },
-  { ellipsis: 'endMaxLine2', addons: 'left', addonType: 'badge', size: 300, state: 'default', use: 'primary', passMethod: null, external: false, color: null },
+  { ellipsis: 'off', addons: 'none', addonType: null, size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'true', addons: 'left', addonType: 'icon', size: 600, state: 'active', theme: 'default', passMethod: 'children', external: true, color: 'text-critical' },
+  { ellipsis: 'middle', addons: 'right', addonType: 'icon', size: 300, state: 'disabled', theme: 'invert', passMethod: 'tag', external: true, color: null },
+  { ellipsis: 'middleLast2', addons: 'both', addonType: 'badge', size: 600, state: 'active', theme: 'invert', passMethod: null, external: false, color: null },
+  { ellipsis: 'endMaxLine2', addons: 'right', addonType: 'counter', size: 600, state: 'disabled', theme: 'default', passMethod: null, external: false, color: 'text-critical' },
+  { ellipsis: 'endMaxLine2', addons: 'left', addonType: 'spin', size: 300, state: 'default', theme: 'accent', passMethod: null, external: true, color: null },
+  { ellipsis: 'true', addons: 'both', addonType: 'icon', size: 300, state: 'default', theme: 'invert', passMethod: 'children', external: false, color: null },
+  { ellipsis: 'middle', addons: 'both', addonType: 'spin', size: 600, state: 'default', theme: 'default', passMethod: null, external: false, color: 'text-critical' },
+  { ellipsis: 'off', addons: 'none', addonType: null, size: 600, state: 'active', theme: 'light', passMethod: null, external: true, color: null },
+  { ellipsis: 'middleLast2', addons: 'left', addonType: 'icon', size: 300, state: 'default', theme: 'default', passMethod: 'tag', external: false, color: 'text-critical' },
+  { ellipsis: 'off', addons: 'both', addonType: 'icon', size: 600, state: 'disabled', theme: 'accent', passMethod: 'tag', external: true, color: null },
+  { ellipsis: 'true', addons: 'right', addonType: 'counter', size: 300, state: 'active', theme: 'accent', passMethod: null, external: true, color: null },
+  { ellipsis: 'off', addons: 'left', addonType: 'badge', size: 300, state: 'disabled', theme: 'default', passMethod: null, external: true, color: 'text-critical' },
+  { ellipsis: 'middleLast2', addons: 'none', addonType: null, size: 300, state: 'disabled', theme: 'default', passMethod: null, external: true, color: 'text-critical' },
+  { ellipsis: 'middle', addons: 'none', addonType: null, size: 300, state: 'active', theme: 'accent', passMethod: null, external: false, color: null },
+  { ellipsis: 'middle', addons: 'left', addonType: 'counter', size: 300, state: 'default', theme: 'light', passMethod: null, external: false, color: null },
+  { ellipsis: 'middleLast2', addons: 'right', addonType: 'badge', size: 300, state: 'default', theme: 'light', passMethod: null, external: false, color: null },
+  { ellipsis: 'endMaxLine2', addons: 'both', addonType: 'icon', size: 300, state: 'active', theme: 'light', passMethod: 'tag', external: false, color: null },
+  { ellipsis: 'off', addons: 'right', addonType: 'icon', size: 300, state: 'disabled', theme: 'invert', passMethod: 'children', external: false, color: null },
+  { ellipsis: 'true', addons: 'right', addonType: 'spin', size: 300, state: 'disabled', theme: 'light', passMethod: null, external: false, color: null },
+  { ellipsis: 'off', addons: 'left', addonType: 'spin', size: 300, state: 'active', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'off', addons: 'both', addonType: 'counter', size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'true', addons: 'none', addonType: null, size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'endMaxLine2', addons: 'none', addonType: null, size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'true', addons: 'left', addonType: 'icon', size: 300, state: 'default', theme: 'default', passMethod: 'tag', external: false, color: null },
+  { ellipsis: 'true', addons: 'left', addonType: 'badge', size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'middle', addons: 'left', addonType: 'icon', size: 300, state: 'default', theme: 'default', passMethod: 'children', external: false, color: null },
+  { ellipsis: 'middle', addons: 'left', addonType: 'badge', size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'middleLast2', addons: 'left', addonType: 'icon', size: 300, state: 'default', theme: 'default', passMethod: 'children', external: false, color: null },
+  { ellipsis: 'middleLast2', addons: 'left', addonType: 'counter', size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'middleLast2', addons: 'left', addonType: 'spin', size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
+  { ellipsis: 'endMaxLine2', addons: 'left', addonType: 'icon', size: 300, state: 'default', theme: 'default', passMethod: 'children', external: false, color: null },
+  { ellipsis: 'endMaxLine2', addons: 'left', addonType: 'badge', size: 300, state: 'default', theme: 'default', passMethod: null, external: false, color: null },
 ];
 
 const ELLIPSIS_VARS: Record<DetailRow['ellipsis'], Record<string, unknown>> = {
@@ -187,7 +190,7 @@ const detailTestName = (row: DetailRow) => [
   `ellipsis=${row.ellipsis}`,
   `size=${row.size}`,
   `state=${row.state}`,
-  `use=${row.use}`,
+  `theme=${row.theme}`,
   `href=${row.external ? 'external' : 'internal'}`,
   row.color ? `color=${row.color}` : null,
 ].filter(Boolean).join(' ');
@@ -198,7 +201,7 @@ const detailProps = (row: DetailRow) => {
 
   return {
     size: row.size,
-    use: row.use,
+    theme: row.theme,
     text: longText,
     href: row.external ? EXTERNAL_HREF : '#',
     ellipsis: ELLIPSIS_VARS[row.ellipsis],
@@ -219,14 +222,14 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(` ${TAG.VISUAL}`, () => {
   // Section 1: the whole size sweep — one screenshot per row covers all 9 sizes
-  SIZE_SWEEP.forEach(({ addonLeft, addonRight, use, external, ellipsis, active }) => {
+  SIZE_SWEEP.forEach(({ addonLeft, addonRight, theme, external, ellipsis, active }) => {
     // Every column is spelled out, including the off values: a snapshot filename has to
     // say what was rendered on its own, and an omitted flag reads as "not applicable"
     // rather than "switched off".
     const name = [
       `addonLeft=${addonLeft}`,
       `addonRight=${addonRight}`,
-      `use=${use}`,
+      `theme=${theme}`,
       `href=${external ? 'external' : 'internal'}`,
       `ellipsis=${ellipsis ? 'on' : 'off'}`,
       `state=${active ? 'active' : 'default'}`,
@@ -238,7 +241,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       await loadPage(page, sizesStoryPath, 'en', {
         addonLeft,
         addonRight,
-        use,
+        theme,
         ellipsis,
         active,
         href: external ? EXTERNAL_HREF : '#',

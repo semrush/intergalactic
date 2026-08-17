@@ -165,8 +165,18 @@ const Demo = (props: BasicLinkProps) => {
     w: noWrap ? w : undefined,
   };
 
+  // theme='invert' paints the link almost white for use on dark surfaces, so without a
+  // dark background here it would be invisible against the default page.
+  const inverted = theme === 'invert';
+
   return (
-    <Text tag='div' size={size} style={containerW ? { width: containerW } : undefined}>
+    <Text
+      tag='div'
+      size={size}
+      bg={inverted ? 'bg-primary-invert' : undefined}
+      p={inverted ? 4 : undefined}
+      style={containerW ? { width: containerW } : undefined}
+    >
       {renderLink(
         { ...sharedLinkProps, display: linkDisplayValue },
         asString

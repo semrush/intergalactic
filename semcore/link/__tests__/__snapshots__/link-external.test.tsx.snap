@@ -13,10 +13,6 @@ exports[`Link external children composition > Verify Link.Addon children stay si
           "children": [],
           "uiName": "Link.Addon",
         },
-        {
-          "children": [],
-          "uiName": "Box",
-        },
       ],
       "uiName": "Link.InnerWrapper",
     },
@@ -43,10 +39,6 @@ exports[`Link external children composition > Verify neither documented external
           ],
           "uiName": "Link.ExternalIcon",
         },
-        {
-          "children": [],
-          "uiName": "Box",
-        },
       ],
       "uiName": "Link.InnerWrapper",
     },
@@ -72,10 +64,6 @@ exports[`Link external children composition > Verify neither documented external
             },
           ],
           "uiName": "Link.ExternalIcon",
-        },
-        {
-          "children": [],
-          "uiName": "Box",
         },
       ],
       "uiName": "Link.InnerWrapper",
