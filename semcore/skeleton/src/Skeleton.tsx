@@ -130,6 +130,7 @@ function Text(
       {[...Array(amountLine)].map((_el, index) =>
         sstyled(styles)(
           <SText
+            fill='#fff'
             tag='rect'
             rx='4'
             ry='4'
