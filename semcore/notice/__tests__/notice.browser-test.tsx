@@ -3,12 +3,15 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
+const SMART_STORY = 'stories/components/notice/tests/examples/noticesmart_full_props.tsx';
+
 export const locators = {
   notice: (page: Page) => page.locator('[data-ui-name="Notice"]'),
   noticeSmart: (page: Page) => page.locator('[data-ui-name="NoticeSmart"]'),
   close: (page: Page) => page.locator('[data-ui-name="Notice.Close"]'),
   content: (page: Page) => page.locator('[data-ui-name="Notice.Content"]'),
-  icon: (page: Page) => page.locator('[data-ui-name="Notice"] > [data-ui-name="Box"]'),
+  icon: (page: Page) =>
+    page.locator('[data-ui-name="Notice"] > [data-ui-name="Box"], [data-ui-name="NoticeSmart"] > [data-ui-name="Box"]'),
   title: (page: Page) => page.locator('[data-ui-name="Notice.Title"]'),
   text: (page: Page) => page.locator('[data-ui-name="Notice.Text"]'),
 };
@@ -92,13 +95,37 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test('Verify different pairs of sub-components', {
+  test('Verify NoticeSmart media variations', {
     tag: [TAG.PRIORITY_HIGH, '@notice'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/notice/tests/examples/notice_with_different_states.tsx', 'en');
+    for (const media of ['none', 'icon', 'illustration']) {
+      await test.step(`Verify NoticeSmart with media set to ${media}`, async () => {
+        await loadPage(page, SMART_STORY, 'en', { media });
+        await expect(page).toHaveScreenshot();
+      });
+    }
+  });
 
-    await test.step('Verify all notice states render correctly', async () => {
-      await page.setViewportSize({ width: 1600, height: 1200 });
+  test('Verify NoticeSmart content combinations', {
+    tag: [TAG.PRIORITY_HIGH, '@notice'],
+  }, async ({ page }) => {
+    await test.step('Verify NoticeSmart without title', async () => {
+      await loadPage(page, SMART_STORY, 'en', { title: '' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify NoticeSmart without text', async () => {
+      await loadPage(page, SMART_STORY, 'en', { text: '' });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify NoticeSmart without actions and close button', async () => {
+      await loadPage(page, SMART_STORY, 'en', { withActions: false, closable: false });
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify NoticeSmart in narrow container wraps text', async () => {
+      await loadPage(page, SMART_STORY, 'en', { w: 320 });
       await expect(page).toHaveScreenshot();
     });
   });
@@ -109,17 +136,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await loadPage(page, 'stories/components/notice/tests/examples/notice_big_illustration.tsx', 'en');
 
     await test.step('Verify big illustrations display correctly', async () => {
-      await page.setViewportSize({ width: 1600, height: 1000 });
-      await expect(page).toHaveScreenshot();
-    });
-  });
-
-  test('Verify notice with medium illustrations', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
-  }, async ({ page }) => {
-    await loadPage(page, 'stories/components/notice/tests/examples/notice_medium_illustration.tsx', 'en');
-
-    await test.step('Verify medium illustrations display correctly', async () => {
       await page.setViewportSize({ width: 1600, height: 1000 });
       await expect(page).toHaveScreenshot();
     });
@@ -180,40 +196,115 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  test.describe(`Notice `, () => {
-    test('Verify hidden prop toggle shows and hides notice', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice'],
+  test.describe(`NoticeSmart `, () => {
+    test('Verify hidden prop hides notice', {
+      tag: [TAG.PRIORITY_HIGH, '@notice'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/notice/tests/examples/notice_with_different_states.tsx', 'en');
-
-      await test.step('Verify notice is initially hidden', async () => {
-        await expect(page.getByLabel('Toggleable notice')).not.toBeVisible();
+      await test.step('Verify notice is visible by default', async () => {
+        await loadPage(page, SMART_STORY, 'en');
+        await expect(page.getByTestId('smart-configurable')).toBeVisible();
       });
 
-      await test.step('Verify notice becomes visible on toggle', async () => {
-        await page.getByTestId('toggle-btn').click();
-        await expect(page.getByLabel('Toggleable notice')).toBeVisible();
-      });
-
-      await test.step('Verify notice hides again on toggle', async () => {
-        await page.getByTestId('toggle-btn').click();
-        await expect(page.getByLabel('Toggleable notice')).not.toBeVisible();
+      await test.step('Verify notice is not visible with hidden prop', async () => {
+        await loadPage(page, SMART_STORY, 'en', { hidden: true });
+        await expect(page.getByTestId('smart-configurable')).not.toBeVisible();
       });
     });
 
-    test('Verify aria-live attribute passthrough', {
+    test('Verify closable prop and closing by click', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice'],
+    }, async ({ page }) => {
+      await test.step('Verify close button is absent when closable is false', async () => {
+        await loadPage(page, SMART_STORY, 'en', { closable: false });
+        await expect(locators.close(page)).toHaveCount(0);
+      });
+
+      await test.step('Verify notice closes on close button click', async () => {
+        await loadPage(page, SMART_STORY, 'en');
+        await locators.close(page).click();
+        await expect(page.getByTestId('smart-configurable')).not.toBeVisible();
+      });
+    });
+
+    test('Verify close button is reachable by keyboard', {
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice'],
+    }, async ({ page }) => {
+      await loadPage(page, SMART_STORY, 'en');
+
+      await test.step('Verify Tab moves focus to actions and then to close button', async () => {
+        await page.keyboard.press('Tab');
+        await expect(page.getByRole('button', { name: 'Learn more' })).toBeFocused();
+
+        await page.keyboard.press('Tab');
+        await expect(page.getByRole('button', { name: 'Dismiss' })).toBeFocused();
+
+        await page.keyboard.press('Tab');
+        await expect(locators.close(page)).toBeFocused();
+      });
+
+      await test.step('Verify notice closes on Enter', async () => {
+        await page.keyboard.press('Enter');
+        await expect(page.getByTestId('smart-configurable')).not.toBeVisible();
+      });
+    });
+
+    test('Verify actions are rendered only when passed', {
       tag: [TAG.PRIORITY_HIGH, '@notice'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/notice/tests/examples/notice_with_different_states.tsx', 'en');
+      await test.step('Verify actions are present by default', async () => {
+        await loadPage(page, SMART_STORY, 'en');
+        await expect(page.getByRole('button', { name: 'Learn more' })).toBeVisible();
+      });
 
-      await test.step('Verify aria-live is set on notice', async () => {
-        const liveNotice = page.getByLabel('Live notice');
-        await expect(liveNotice).toHaveAttribute('aria-live', 'polite');
+      await test.step('Verify actions are absent when not passed', async () => {
+        await loadPage(page, SMART_STORY, 'en', { withActions: false });
+        await expect(page.getByRole('button', { name: 'Learn more' })).toHaveCount(0);
+      });
+    });
+
+    test('Verify title and text are rendered only when passed', {
+      tag: [TAG.PRIORITY_HIGH, '@notice'],
+    }, async ({ page }) => {
+      await test.step('Verify title and text are present by default', async () => {
+        await loadPage(page, SMART_STORY, 'en');
+        await expect(locators.title(page)).toHaveCount(1);
+        await expect(locators.text(page)).toHaveCount(1);
+      });
+
+      await test.step('Verify title is absent when empty', async () => {
+        await loadPage(page, SMART_STORY, 'en', { title: '' });
+        await expect(locators.title(page)).toHaveCount(0);
+        await expect(locators.text(page)).toHaveCount(1);
+      });
+
+      await test.step('Verify text is absent when empty', async () => {
+        await loadPage(page, SMART_STORY, 'en', { text: '' });
+        await expect(locators.title(page)).toHaveCount(1);
+        await expect(locators.text(page)).toHaveCount(0);
+      });
+    });
+
+    test('Verify media element is rendered according to media prop', {
+      tag: [TAG.PRIORITY_HIGH, '@notice'],
+    }, async ({ page }) => {
+      await test.step('Verify only one media element is rendered for icon', async () => {
+        await loadPage(page, SMART_STORY, 'en', { media: 'icon' });
+        await expect(locators.icon(page)).toHaveCount(1);
+      });
+
+      await test.step('Verify only one media element is rendered for illustration', async () => {
+        await loadPage(page, SMART_STORY, 'en', { media: 'illustration' });
+        await expect(locators.icon(page)).toHaveCount(1);
+      });
+
+      await test.step('Verify no media element is rendered for none', async () => {
+        await loadPage(page, SMART_STORY, 'en', { media: 'none' });
+        await expect(locators.icon(page)).toHaveCount(0);
       });
     });
   });
 
-  test.describe(`NoticeSmart `, () => {
+  test.describe(`NoticeSmart docs example `, () => {
     test('Verify NoticeSmart roles and attributes', {
       tag: [TAG.PRIORITY_HIGH, '@notice'],
     }, async ({ page }) => {
@@ -240,26 +331,34 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       });
     });
+  });
 
-    test('Verify NoticeSmart interactions', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@notice'],
+  test.describe(`Notice illustrations `, () => {
+    test('Verify medium illustrations keep their default size and stay left of the content', {
+      tag: [TAG.PRIORITY_HIGH, '@notice'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
+      await loadPage(page, 'stories/components/notice/tests/examples/notice_medium_illustration.tsx', 'en');
 
-      await test.step('Verify keyboard navigation to close button', async () => {
-        const closes = locators.close(page);
-        await page.keyboard.press('Tab');
-        await expect(closes.first()).toBeFocused();
+      const notices = locators.notice(page);
+      const noticesCount = await notices.count();
+
+      await test.step('Verify every notice renders a single illustration', async () => {
+        await expect(locators.icon(page)).toHaveCount(noticesCount);
       });
 
-      await test.step('Verify notices close on Enter and click', async () => {
-        await page.keyboard.press('Enter');
-        await expect(page.getByLabel('New tool announcement')).not.toBeVisible();
+      for (let index = 0; index < noticesCount; index++) {
+        await test.step(`Verify illustration ${index + 1} size and position`, async () => {
+          const illustration = locators.icon(page).nth(index);
+          const illustrationBox = await illustration.locator('svg').boundingBox();
+          const contentBox = await locators.content(page).nth(index).boundingBox();
 
-        await locators.close(page).first().click();
-        await expect(page.getByLabel('New feature announcement')).not.toBeVisible();
-        await expect(page.locator('[data-ui-name="Notice.Label"][color="muted"]')).not.toBeVisible();
-      });
+          // Illustrations render at their own default size, the component does not resize them
+          expect(illustrationBox?.width).toBeCloseTo(80, 3);
+          expect(illustrationBox?.height).toBeCloseTo(80, 3);
+
+          expect(illustrationBox!.x + illustrationBox!.width).toBeLessThanOrEqual(contentBox!.x);
+        });
+      }
     });
   });
 });
