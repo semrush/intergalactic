@@ -18,7 +18,7 @@ SScrollBar[orientation='horizontal'] {
   bottom: 0;
   height: 12px;
   align-items: center;
-  width: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-content-padding-small, 8px));
+  width: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-content-padding-medium, 12px));
 }
 
 SSlider {
