@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Dropdown > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [],
+      "uiName": "Dropdown.Trigger",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+    {
+      "children": [],
+      "uiName": "Dropdown.Popper",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+  ],
+  "uiName": null,
+}
+`;

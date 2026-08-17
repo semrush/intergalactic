@@ -1,12 +1,17 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
 import style from './picker-format.shadow.css';
-import type { TimePickerFormatProps, TimePickerFormatPropsInternal } from './PickerFormat.type';
+import type { TimePickerRootType } from '../TimePicker/TimePicker';
+import type { NSTimePicker } from '../TimePicker/TimePicker.type';
 
-class TimePickerFormat extends Component<TimePickerFormatProps, typeof TimePickerFormat.enhance, {}, TimePickerFormatPropsInternal> {
+class TimePickerFormat extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSTimePicker.Format.Component, TimePickerRootType, 'Format'>,
+ typeof TimePickerFormat.enhance
+> {
   static style = style;
   static enhance = [uniqueIDEnhancement()] as const;
 

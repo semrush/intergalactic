@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PillGroup > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Pills.Item.Addon",
+                },
+                {
+                  "children": [],
+                  "uiName": "Pills.Item.Text",
+                },
+              ],
+              "uiName": "Pills.Item",
+            },
+            {
+              "children": [],
+              "uiName": "Box",
+            },
+          ],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "Pills",
+    },
+  ],
+  "uiName": null,
+}
+`;
