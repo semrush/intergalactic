@@ -3,31 +3,67 @@ import type {
   Lightness,
 } from './colors/index.ts';
 import {
-  colors, semanticColors, baseColors, L_BG_PRIMARY, L_BG_PRIMARY_HOVER,
+  colors,
+  semanticColors,
+  baseColors,
+  L_BG_PRIMARY,
+  L_BG_PRIMARY_HOVER,
   L_BG_BUTTON,
-  L_BG_BUTTON_ACTIVE, L_BG_BUTTON_HOVER, L_BG_BUTTON_STRONG, L_BG_BUTTON_STRONG_ACTIVE, L_BG_BUTTON_STRONG_HOVER, L_BG_BUTTON_BRAND, L_BG_BUTTON_BRAND_ACTIVE, L_BG_BUTTON_BRAND_HOVER,
-  L_BG_BUTTON_SECONDARY, L_BG_BUTTON_SECONDARY_ACTIVE, L_BG_BUTTON_SECONDARY_HOVER,
+  L_BG_BUTTON_ACTIVE,
+  L_BG_BUTTON_HOVER,
+  L_BG_BUTTON_STRONG,
+  L_BG_BUTTON_STRONG_ACTIVE,
+  L_BG_BUTTON_STRONG_HOVER,
+  L_BG_BUTTON_BRAND,
+  L_BG_BUTTON_BRAND_ACTIVE,
+  L_BG_BUTTON_BRAND_HOVER,
+  L_BG_BUTTON_SECONDARY,
+  L_BG_BUTTON_SECONDARY_ACTIVE,
+  L_BG_BUTTON_SECONDARY_HOVER,
   L_BG_LIGHT,
   L_BG_MEDIUM,
   L_BG_PRIMARY_ACTIVE,
   L_BG_SECONDARY,
   L_BG_SECONDARY_ACTIVE,
-  L_BG_SECONDARY_HOVER, L_BG_SELECTED, L_BG_SELECTED_HOVER, L_BG_SKELETON,
-  L_BG_STRONG, L_BORDER_ACTIVE,
-  L_BORDER_FOCUS, L_BORDER_STRONG, L_BORDER_PRIMARY, L_BORDER_PRIMARY_DIMMED, L_BORDER_SECONDARY, L_ICON_NON_INTERACTIVE, L_ICON_PRIMARY,
-  L_ICON_PRIMARY_HOVER, L_ICON_SECONDARY, L_ICON_SECONDARY_HOVER, L_INV_BG_BUTTON,
-  L_INV_BG_BUTTON_ACTIVE, L_INV_BG_BUTTON_HOVER, L_INV_BG_LIGHT, L_INV_BG_MEDIUM,
+  L_BG_SECONDARY_HOVER,
+  L_BG_SELECTED,
+  L_BG_SELECTED_HOVER,
+  L_BG_SKELETON,
+  L_BG_STRONG,
+  L_BORDER_ACTIVE,
+  L_BORDER_FOCUS,
+  L_BORDER_STRONG,
+  L_BORDER_PRIMARY,
+  L_BORDER_PRIMARY_DIMMED,
+  L_BORDER_SECONDARY,
+  L_ICON_NON_INTERACTIVE,
+  L_ICON_PRIMARY,
+  L_ICON_PRIMARY_HOVER,
+  L_ICON_SECONDARY,
+  L_ICON_SECONDARY_HOVER,
+  L_INV_BG_BUTTON,
+  L_INV_BG_BUTTON_ACTIVE,
+  L_INV_BG_BUTTON_HOVER,
+  L_INV_BG_LIGHT,
+  L_INV_BG_MEDIUM,
   L_INV_BG_PRIMARY,
   L_INV_BG_PRIMARY_ACTIVE,
-  L_INV_BG_PRIMARY_HOVER, L_INV_BG_SECONDARY,
-  L_INV_BG_SECONDARY_ACTIVE, L_INV_BG_SECONDARY_HOVER,
-  L_INV_BG_SKELETON, L_INV_BORDER_PRIMARY, L_INV_BORDER_SECONDARY, L_INV_ICON_PRIMARY,
+  L_INV_BG_PRIMARY_HOVER,
+  L_INV_BG_SECONDARY,
+  L_INV_BG_SECONDARY_ACTIVE,
+  L_INV_BG_SECONDARY_HOVER,
+  L_INV_BG_SKELETON,
+  L_INV_BORDER_PRIMARY,
+  L_INV_BORDER_SECONDARY,
+  L_INV_ICON_PRIMARY,
   L_INV_ICON_PRIMARY_HOVER,
   L_INV_TEXT_PRIMARY,
-  L_INV_TEXT_SECONDARY, L_INV_TEXT_SECONDARY_HOVER,
+  L_INV_TEXT_SECONDARY,
+  L_INV_TEXT_SECONDARY_HOVER,
   L_TEXT_PLACEHOLDER,
   L_TEXT_PRIMARY,
-  L_TEXT_SECONDARY, L_TEXT_SECONDARY_HOVER,
+  L_TEXT_SECONDARY,
+  L_TEXT_SECONDARY_HOVER,
   L_TEXT_ACCENT,
 } from './colors/index.ts';
 
@@ -229,18 +265,26 @@ export const theme: Theme = {
       'extra-small': {
         value: '320px',
         description: 'Extra small screens (small phones).',
-      },
+      }, // TODO: remove?
       'small': {
         value: '768px',
-        description: 'Small screens (phones and small tablets).',
+        description: 'Switch to mobile layout behavior.',
       },
       'medium': {
-        value: '1200px',
-        description: 'Medium screens (tablets and small laptops).',
+        value: '1280px',
+        description: 'Desktop layout. Sidebar expands',
       },
       'large': {
         value: '1920px',
         description: 'Large screens (tablets and laptops).',
+      }, // TODO: remove?
+      'layout-compact': {
+        value: '1200px',
+        description: 'Low and medium density interfaces.',
+      },
+      'layout-data-heavy': {
+        value: '1500px',
+        description: 'High density interfaces.',
       },
     },
     durations: {
@@ -1368,11 +1412,11 @@ export const theme: Theme = {
         description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
-        value: neutral.opaqueAt(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
-        value: neutral.opaqueAt(L_BG_MEDIUM),
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Hover state of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_DEFAULT: {
@@ -2002,69 +2046,91 @@ export const theme: Theme = {
       },
     },
     spacing: {
-      content_padding_xxsmall: {
-        value: `${SCALE_INDENT / 2}px`,
-        description: 'Tiny padding for content inside controls and surfaces.',
+      content: {
+        padding: {
+          xxsmall: {
+            value: `${SCALE_INDENT / 2}px`,
+            description: 'Tiny padding for content inside controls and surfaces.',
+          },
+          xsmall: {
+            value: `${SCALE_INDENT}px`,
+            description: 'Extra small padding for content inside controls and surfaces.',
+          },
+          xsmall_extended: {
+            value: `${SCALE_INDENT * 1.5}px`,
+            description: 'Extended extra small padding for content inside controls and surfaces.',
+          },
+          small: {
+            value: `${SCALE_INDENT * 2}px`,
+            description: 'Small padding for content inside controls and surfaces.',
+          },
+          medium: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Medium padding for content inside controls and surfaces.',
+          },
+          large: {
+            value: `${SCALE_INDENT * 4}px`,
+            description: 'Large padding for content inside controls and surfaces.',
+          },
+          xlarge: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Extra large padding for content inside controls and surfaces.',
+          },
+          xlarge_extended: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: 'Extended extra large padding for content inside controls and surfaces.',
+          },
+          xxlarge: {
+            value: `${SCALE_INDENT * 10}px`,
+            description: '2x large padding for content inside controls and surfaces.',
+          },
+        },
+        gap: {
+          xsmall: {
+            value: `${SCALE_INDENT / 2}px`,
+            description: 'Extra small gap between content elements inside controls, rows, or columns.',
+          },
+          small: {
+            value: `${SCALE_INDENT}px`,
+            description: 'Small gap between content elements inside controls, rows, or columns.',
+          },
+          medium: {
+            value: `${SCALE_INDENT * 1.5}px`,
+            description: 'Medium gap between content elements inside controls, rows, or columns.',
+          },
+          large: {
+            value: `${SCALE_INDENT * 2}px`,
+            description: 'Large gap between content elements inside controls, rows, or columns.',
+          },
+          xlarge: {
+            value: `${SCALE_INDENT * 3}px`,
+            description: 'Extra large gap between elements, rows, or columns.',
+          },
+          xxlarge: {
+            value: `${SCALE_INDENT * 4}px`,
+            description: '2x large gap between elements, rows, or columns.',
+          },
+          xxlarge_extended: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Extended 2x large gap between elements, rows, or columns.',
+          },
+          xxxlarge: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: '3x large gap between elements, rows, or columns.',
+          },
+        },
       },
-      content_padding_xsmall: {
-        value: `${SCALE_INDENT}px`,
-        description: 'Extra small padding for content inside controls and surfaces.',
-      },
-      content_padding_xsmall_extended: {
-        value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Extended extra small padding for content inside controls and surfaces.',
-      },
-      content_padding_small: {
-        value: `${SCALE_INDENT * 2}px`,
-        description: 'Small padding for content inside controls and surfaces.',
-      },
-      content_padding_medium: {
-        value: `${SCALE_INDENT * 3}px`,
-        description: 'Medium padding for content inside controls and surfaces.',
-      },
-      content_padding_large: {
-        value: `${SCALE_INDENT * 4}px`,
-        description: 'Large padding for content inside controls and surfaces.',
-      },
-      content_padding_xlarge: {
-        value: `${SCALE_INDENT * 5}px`,
-        description: 'Extra large padding for content inside controls and surfaces.',
-      },
-      content_padding_xlarge_extended: {
-        value: `${SCALE_INDENT * 6}px`,
-        description: 'Extended extra large padding for content inside controls and surfaces.',
-      },
-      content_padding_xxlarge: {
-        value: `${SCALE_INDENT * 10}px`,
-        description: '2x large padding for content inside controls and surfaces.',
-      },
-      content_gap_small: {
-        value: `${SCALE_INDENT}px`,
-        description: 'Small gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_medium: {
-        value: `${SCALE_INDENT * 1.5}px`,
-        description: 'Medium gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_large: {
-        value: `${SCALE_INDENT * 2}px`,
-        description: 'Large gap between content elements inside controls, rows, or columns.',
-      },
-      content_gap_xlarge: {
-        value: `${SCALE_INDENT * 3}px`,
-        description: 'Extra large gap between elements, rows, or columns.',
-      },
-      content_gap_xxlarge: {
-        value: `${SCALE_INDENT * 4}px`,
-        description: '2x large gap between elements, rows, or columns.',
-      },
-      content_gap_xxlarge_extended: {
-        value: `${SCALE_INDENT * 5}px`,
-        description: 'Extended 2x large gap between elements, rows, or columns.',
-      },
-      content_gap_xxxlarge: {
-        value: `${SCALE_INDENT * 6}px`,
-        description: '3x large gap between elements, rows, or columns.',
+      layout: {
+        padding: {
+          desktop: {
+            value: `${SCALE_INDENT * 6}px`,
+            description: 'Padding for layout on desktop.',
+          },
+          mobile: {
+            value: `${SCALE_INDENT * 5}px`,
+            description: 'Padding for layout on mobile.',
+          },
+        },
       },
     },
     radii: {
@@ -2305,7 +2371,7 @@ type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' 
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
 type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large';
+type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large' | 'layout-compact' | 'layout-data-heavy';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';
 type Assets = 'checkmark-m' | 'checkmark-l';
 type Easings = 'fast' | 'medium';
@@ -2331,11 +2397,12 @@ export type BaseTokens = {
 };
 
 type FlattenPaths<T> = T extends object
-  ? { [K in keyof T]-?: K extends string | number
-      ? T[K] extends Value
-        ? K
-        : `${K}_${FlattenPaths<T[K]>}`
-      : never
+  ? {
+      [K in keyof T]-?: K extends string | number
+        ? T[K] extends Value
+          ? K
+          : `${K}_${FlattenPaths<T[K]>}`
+        : never
     }[keyof T]
   : '';
 
@@ -2347,22 +2414,35 @@ export type SemanticTokens = {
   shadows: Record<FlattenPaths<SemanticShadows>, Value>;
   sizes: Record<`form_control_${'s' | 'm' | 'l'}`, Value>;
   spacing: {
-    content_padding_xxsmall: Value;
-    content_padding_xsmall: Value;
-    content_padding_xsmall_extended: Value;
-    content_padding_small: Value;
-    content_padding_medium: Value;
-    content_padding_large: Value;
-    content_padding_xlarge: Value;
-    content_padding_xlarge_extended: Value;
-    content_padding_xxlarge: Value;
-    content_gap_small: Value;
-    content_gap_medium: Value;
-    content_gap_large: Value;
-    content_gap_xlarge: Value;
-    content_gap_xxlarge: Value;
-    content_gap_xxlarge_extended: Value;
-    content_gap_xxxlarge: Value;
+    content: {
+      padding: {
+        xxsmall: Value;
+        xsmall: Value;
+        xsmall_extended: Value;
+        small: Value;
+        medium: Value;
+        large: Value;
+        xlarge: Value;
+        xlarge_extended: Value;
+        xxlarge: Value;
+      };
+      gap: {
+        xsmall: Value;
+        small: Value;
+        medium: Value;
+        large: Value;
+        xlarge: Value;
+        xxlarge: Value;
+        xxlarge_extended: Value;
+        xxxlarge: Value;
+      };
+    };
+    layout: {
+      padding: {
+        desktop: Value;
+        mobile: Value;
+      };
+    };
   };
   radii: {
     'addon': Value;

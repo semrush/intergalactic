@@ -1,27 +1,13 @@
-import type { NSBox } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
-import {
-  createComponent,
-  Component,
-  sstyled,
-  Root,
-  type Intergalactic,
-} from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
 
 import style from './style/title.shadow.css';
+import type { NSProductHeadTitle } from './Title.type';
 
-export type HeaderTitleProps = NSBox.Props & {
-  /** A tool name that appears as part of the header title */
-  toolName?: React.ReactNode;
-};
-
-type HeaderTitleComponent = Intergalactic.Component<'h1', HeaderTitleProps> & {
-  Tool: NSBox.Component;
-};
-
-class TitleRoot extends Component<HeaderTitleProps> {
+class TitleRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSProductHeadTitle.Component>> {
   static displayName = 'Title';
   static style = style;
 
@@ -40,15 +26,12 @@ class TitleRoot extends Component<HeaderTitleProps> {
   }
 }
 
-function Tool(props: any) {
+function Tool(props: Intergalactic.InternalTypings.InferComponentProps<NSProductHeadTitle.Tool.Component>) {
   const STool = Root;
   return sstyled(props.styles)(<STool render={Box} />);
 }
 
-const Title = createComponent<
-  HeaderTitleComponent,
-  typeof TitleRoot
->(TitleRoot, {
+const Title = createComponent<NSProductHeadTitle.Component, typeof TitleRoot>(TitleRoot, {
   Tool,
 });
 

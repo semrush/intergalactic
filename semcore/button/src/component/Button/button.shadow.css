@@ -21,6 +21,7 @@ SButton {
   -webkit-tap-highlight-color: transparent;
   font-weight: var(--intergalactic-medium, 500);
   color: var(--intergalactic-control-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  min-width: fit-content;
 
   &::-moz-focus-inner {
     padding: 0;
@@ -49,7 +50,6 @@ SButton[size='s'] {
 
 SButton[size='m'] {
   height: var(--intergalactic-form-control-m, 32px);
-  min-width: var(--intergalactic-form-control-m, 32px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-200, 14px);
 }
@@ -61,7 +61,6 @@ SButton[size='m']:has(SAddon:only-child) {
 
 SButton[size='l'] {
   height: var(--intergalactic-form-control-l, 44px);
-  min-width: var(--intergalactic-form-control-l, 44px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
@@ -208,13 +207,13 @@ SButton[theme='tertiary-info'] {
 
   &:hover {
     color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
-    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.525 0.265 263 / 0.077));
+    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.526 0.264 263 / 0.058));
   }
 
   &:active,
   &[active] {
     color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
-    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.524 0.266 263.1 / 0.116));
+    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.525 0.265 263 / 0.077));
   }
 }
 
@@ -223,14 +222,14 @@ SButton[theme='tertiary-muted'] {
   background-color: var(--intergalactic-control-tertiary-neutral, transparent);
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.176 0.033 175.6 / 0.056));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.177 0.033 175.6 / 0.042));
     color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   &:active,
   &[active] {
     background-color: var(--intergalactic-control-tertiary-neutral-active,
-    oklch(0.176 0.033 175.7 / 0.084));
+    oklch(0.176 0.033 175.6 / 0.056));
     color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 }
@@ -270,7 +269,7 @@ SButton[neighborLocation='left'] {
   position: relative;
 
   &:after {
-    background-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391));
+    background-color: var(--intergalactic-border-primary-invert, oklch(0.996 0.007 151.1 / 0.447));
   } /* TODO: need to add a new variables for neighbor location borders based on the final UI */
 
   &[theme='secondary-muted'] {

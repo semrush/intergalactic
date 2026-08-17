@@ -150,14 +150,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await checkStyle(locators.cells(page, 0), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
       await test.step('Verify available date style', async () => {
         await checkStyle(locators.cells(page, 2), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
@@ -175,7 +175,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify selected date style', async () => {
         await checkStyle(selectedCells.nth(0), {
-          margin: '4px 0px 0px',
+          margin: '0px',
           width: '60px',
           height: '32px',
         });

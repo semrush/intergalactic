@@ -1,0 +1,83 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Tag > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Tag.Circle",
+        },
+        {
+          "children": [],
+          "uiName": "Tag.Addon",
+        },
+        {
+          "children": [],
+          "uiName": "Tag.Text",
+        },
+      ],
+      "uiName": "Tag",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`TagContainer > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "TagContainer.Circle",
+            },
+          ],
+          "uiName": "Box",
+        },
+        {
+          "children": [],
+          "uiName": "TagContainer.Addon",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Tag.Circle",
+            },
+            {
+              "children": [],
+              "uiName": "Tag.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "Tag.Text",
+            },
+          ],
+          "uiName": "TagContainer.Tag",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": "Close",
+            },
+          ],
+          "uiName": "TagContainer.Close",
+        },
+      ],
+      "uiName": "TagContainer",
+    },
+  ],
+  "uiName": null,
+}
+`;

@@ -14,20 +14,19 @@ STrigger {
       transform: translateY(-50%);
       width: 1px;
       background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-      transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out; /* TODO: Sync with animationin FilterTrigger */
+      transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out;
     }
 
     &[size='m']::before {
-      height: 18px;
+      height: 16px;
     }
     &[size='l']::before {
-      height: 28px;
+      height: 24px;
     }
 
     &[active], &:active {
-      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.97 0.001 180));
       &::before {
-        height: 100%;
+        height: calc(100% - 2px);
       }
     }
 
@@ -49,24 +48,41 @@ SClear {
 SWrapper:hover:not(:has([disabled])) STrigger[role="combobox"]:not([empty]) {
   &[size='m']::before,
   &[size='l']::before {
-    height: 100%;
+    height: calc(100% - 2px);
   }
 }
 
 SWrapper {
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-  border-radius: var(--intergalactic-control-rounded, 6px);
   display: inline-flex;
+  position: relative;
+  border-radius: var(--intergalactic-control-rounded, 6px);
 
-  &:focus {
-    outline: none;
+  &::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border-radius: var(--intergalactic-control-rounded, 6px);
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
   }
 
   &[empty]:active,
   &[empty][active],
-  &[empty]:focus-within {
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
-    background-color: var(--intergalactic-control-select-trigger-active, oklch(0.97 0.001 180));
+  &[empty]:has(STrigger:focus-visible) {
+    background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
+
+    STrigger {
+      background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
+    }
+
+    &::after {
+      border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+    }
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &[disabled] {
@@ -77,16 +93,8 @@ SWrapper {
   SClear {
     border: none;
 
-    &[size='m'] {
-      height: 30px;
-    }
-    &[size='l'] {
-      height: 42px;
-    }
-
-    &:focus-visible {
-      outline-offset: 3px;
-      border: none;
+    &[active], &:active {
+      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
     }
   }
 }

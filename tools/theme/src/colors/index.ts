@@ -168,13 +168,13 @@ export const colors = colorNames.reduce<Record<Colors, typeof initLightnessMap>>
 
 /** Primary bg */
 export const L_BG_PRIMARY = 1;
-export const L_BG_PRIMARY_HOVER = 0.98;
-export const L_BG_PRIMARY_ACTIVE = 0.97;
+export const L_BG_PRIMARY_HOVER = 0.97;
+export const L_BG_PRIMARY_ACTIVE = 0.96;
 
 /** Secondary bg */
 export const L_BG_SECONDARY = 0.98;
-export const L_BG_SECONDARY_HOVER = 0.96;
-export const L_BG_SECONDARY_ACTIVE = 0.94;
+export const L_BG_SECONDARY_HOVER = 0.97;
+export const L_BG_SECONDARY_ACTIVE = 0.96;
 
 /** Selected bg */
 export const L_BG_SELECTED = 0.96;
@@ -182,7 +182,7 @@ export const L_BG_SELECTED_HOVER = 0.9;
 
 /** Background levels */
 export const L_BG_LIGHT = 0.96;
-export const L_BG_MEDIUM = 0.88; // Midlight?
+export const L_BG_MEDIUM = 0.92; // Midlight?
 export const L_BG_STRONG = 0.64; // Heavy? Dark?
 
 export const L_BG_SKELETON = 0.94;
@@ -261,7 +261,7 @@ export const L_INV_BG_BUTTON_HOVER = 0.96;
 export const L_INV_BG_BUTTON_ACTIVE = 0.94;
 
 /** Background levels */
-export const L_INV_BG_LIGHT = 0.3;
+export const L_INV_BG_LIGHT = 0.33;
 export const L_INV_BG_MEDIUM = 0.5;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
@@ -275,6 +275,6 @@ export const L_INV_ICON_PRIMARY = 0.85;
 export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
-export const L_INV_BORDER_PRIMARY = 0.5; // inputs, buttons, table header
+export const L_INV_BORDER_PRIMARY = 0.55; // inputs, buttons, spin
 /** Border secondary */
 export const L_INV_BORDER_SECONDARY = 0.35;

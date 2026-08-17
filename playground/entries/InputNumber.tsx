@@ -8,7 +8,7 @@ import createGithubLink from '../utils/createGHLink';
 
 export type InputNumberJSXProps = JSXProps<
   NSInputNumber.Props &
-  NSInputNumber.Value.Props &
+  NSInputNumber.Value.Props<any> &
   NSInputNumber.Controls.Props
 >;
 
