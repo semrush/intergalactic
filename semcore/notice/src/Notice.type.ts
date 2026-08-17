@@ -26,7 +26,9 @@ declare namespace NSNotice {
       locale?: string;
     } & ({
       icon?: typeof Icon;
+      illustration?: never;
     } | {
+      icon?: never;
       illustration?: React.ElementType<IllustrationProps>;
     });
   type DefaultProps = {
