@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,11 @@ describe('textarea Dependency imports', () => {
 
 describe('Textarea', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const { container } = render(<Textarea />);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test('Verify supports onChange callback', async () => {
     const spyChange = vi.fn();

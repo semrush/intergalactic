@@ -1,13 +1,10 @@
 import { ScrollArea, Portal, ScreenReaderOnly } from '@semcore/base-components';
-import type { NSScrollArea } from '@semcore/base-components';
 import {
   createComponent,
   Component,
   sstyled,
   Root,
-  type PropGetterFn,
   type Intergalactic,
-  type IRootComponentProps,
 } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -15,74 +12,21 @@ import { extractFrom, isAdvanceMode } from '@semcore/core/lib/utils/findComponen
 import fire from '@semcore/core/lib/utils/fire';
 import { getAccessibleName } from '@semcore/core/lib/utils/getAccessibleName';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
-import Input, { type NSInput } from '@semcore/input';
-import Tag, { type NSTag, TagContainer } from '@semcore/tag';
+import Input from '@semcore/input';
+import Tag, { TagContainer } from '@semcore/tag';
 import React from 'react';
 
+import type { NSInputTags } from './InputTags.type';
 import style from './style/input-tag.shadow.css';
-import type { LocalizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-export type InputTagsValueProps = NSInput.Value.Props & {};
-
-export type InputTagsSize = 'l' | 'm';
-
-export type InputTagsProps = Omit<NSInput.Props, 'size'> &
-  NSScrollArea.Props & {
-    /**
-     * Component size
-     * @default m
-     */
-    size?: InputTagsSize;
-    /** Event is called when tags need to be added */
-    onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
-    /** Event is called when tags need to be removed  */
-    onRemove?: (event: React.KeyboardEvent | React.MouseEvent) => void;
-    /** List delimiter of tags. Don't forget to add 'Enter' and 'Tab' to hande corresponding hotkeys.
-     * @default [',', ';', '|', 'Enter', 'Tab']
-     * */
-    delimiters?: string[];
-    /** Specifies the locale for i18n support */
-    locale?: string;
-  };
-
-export type InputTagsDefaultProps = {
-  size: 'm';
-  delimiters: InputTagsProps['delimiters'];
-  i18n: LocalizedMessages;
-  locale: 'en';
-};
-
-export type InputTagsTagProps = NSTag.Props & {
-  /** Property enabling the ability to remove a tag on click */
-  editable?: boolean;
-};
-
-export type InputTagsContext = InputTagsProps & {
-  getValueProps: PropGetterFn;
-  getTagProps: PropGetterFn;
-};
-
-export type InputTagsComponent = Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
-  Value: typeof Input.Value;
-  TagsContainer: Intergalactic.Component<'ul'>;
-  Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: Intergalactic.Component<'div', NSTag.Props, NSTag.Ctx> & {
-      Content: Intergalactic.Component<'div', NSTag.Text.Props>;
-    };
-    Close: typeof TagContainer.Close;
-    Addon: typeof Tag.Addon;
-    Circle: typeof Tag.Circle;
-  };
-};
-
 class InputTagsRoot extends Component<
-  InputTagsProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSInputTags.Component>,
   typeof InputTagsRoot.enhance,
   {},
   WithI18nEnhanceProps,
   {},
-  InputTagsDefaultProps
+  NSInputTags.DefaultProps
 > {
   static displayName = 'InputTags';
   static style = style;
@@ -188,7 +132,7 @@ class InputTagsRoot extends Component<
     }
   };
 
-  onTagClick = (event: React.MouseEvent) => {
+  onTagClick = (event: React.MouseEvent | React.KeyboardEvent) => {
     fire(this, 'onRemove', event);
   };
 
@@ -278,7 +222,9 @@ class InputTagsRoot extends Component<
   }
 }
 
-class Value extends Component<InputTagsValueProps> {
+class Value extends Component<
+  Intergalactic.InternalTypings.InferChildComponentProps<NSInputTags.Value.Component, typeof InputTagsRoot, 'Value'>
+> {
   private _spacer = React.createRef<HTMLDivElement>();
 
   state = {
@@ -289,7 +235,7 @@ class Value extends Component<InputTagsValueProps> {
     this.updateInputStyles(this.asProps.value!);
   }
 
-  componentDidUpdate(prevProps: any) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     const { value, placeholder } = this.asProps;
     if (value !== prevProps.value || placeholder !== prevProps.placeholder) {
       this.updateInputStyles(value!);
@@ -333,11 +279,14 @@ class Value extends Component<InputTagsValueProps> {
   }
 }
 
-function InputTagsContainer({
-  Children,
-  tagsContainerAriaLabel,
-  styles,
-}: IRootComponentProps & { tagsContainerAriaLabel: string }) {
+function InputTagsContainer(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<
+    NSInputTags.TagsContainer.Component,
+    typeof InputTagsRoot,
+    'TagsContainer'
+  >,
+) {
+  const { Children, tagsContainerAriaLabel, styles } = props;
   const SListAriaWrapper = 'ul';
 
   return sstyled(styles)(
@@ -347,7 +296,9 @@ function InputTagsContainer({
   );
 }
 
-function InputTagContainer(props: any) {
+function InputTagContainer(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInputTags.Tag.Component, typeof InputTagsRoot, 'Tag'>,
+) {
   const STag = Root;
 
   const onKeyDown = React.useCallback(
@@ -365,6 +316,8 @@ function InputTagContainer(props: any) {
 
   return sstyled(props.styles)(
     <STag
+      /** @deprecated It will be removed in v19. */
+      // @ts-ignore
       data-value={props.value}
       render={TagContainer}
       tag='li'
@@ -373,7 +326,9 @@ function InputTagContainer(props: any) {
     />,
   );
 }
-function InputTagContainerTag(props: any) {
+function InputTagContainerTag(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSInputTags.Tag.Text.Component, typeof InputTagsRoot, 'TagText'>,
+) {
   const STag = Root;
   const { getI18nText } = props;
 
@@ -402,11 +357,15 @@ function InputTagContainerTag(props: any) {
   );
 }
 
-function TagContainerTextContent(props: IRootComponentProps) {
+function TagContainerTextContent(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSInputTags.Tag.Text.Content.Component>,
+) {
   return sstyled(props.styles)(<Root render={Tag.Text} />);
 }
 
-function TagCloseButton(props: IRootComponentProps) {
+function TagCloseButton(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSInputTags.Tag.Close.Component>,
+) {
   const STagContainerClose = Root;
   return sstyled(props.styles)(<STagContainerClose render={TagContainer.Close} />);
 }
@@ -417,7 +376,7 @@ function TagCloseButton(props: IRootComponentProps) {
  * {@link https://developer.semrush.com/intergalactic/components/input-tags/input-tags-api/|API} | {@link https://developer.semrush.com/intergalactic/components/input-tags/input-tags-code/|Examples}
  */
 const InputTags = createComponent<
-  InputTagsComponent,
+  NSInputTags.Component,
   typeof InputTagsRoot
 >(InputTagsRoot, {
   Value,

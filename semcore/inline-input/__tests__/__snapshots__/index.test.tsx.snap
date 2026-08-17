@@ -1,0 +1,85 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InlineInput > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "InlineInput.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "InlineInput.Value",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "Check",
+                            },
+                          ],
+                          "uiName": "Link.Addon",
+                        },
+                      ],
+                      "uiName": "ButtonLink.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "ButtonLink",
+                },
+              ],
+              "uiName": "InlineInput.ConfirmControl",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "Close",
+                            },
+                          ],
+                          "uiName": "Link.Addon",
+                        },
+                      ],
+                      "uiName": "ButtonLink.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "ButtonLink",
+                },
+              ],
+              "uiName": "InlineInput.CancelControl",
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "InlineInput",
+    },
+  ],
+  "uiName": null,
+}
+`;

@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SpinContainer > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "SpinContainer.Content",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "Spin",
+                },
+              ],
+              "uiName": "SpinContainer.Overlay",
+            },
+          ],
+          "uiName": "FadeInOut",
+        },
+      ],
+      "uiName": "SpinContainer",
+    },
+  ],
+  "uiName": null,
+}
+`;

@@ -1,0 +1,132 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DropdownMenu > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "ButtonTrigger.Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "ChevronDown",
+                },
+              ],
+              "uiName": "ButtonTrigger.Addon",
+            },
+          ],
+          "uiName": "DropdownMenu.Trigger.InnerTriggerWrapper",
+        },
+      ],
+      "uiName": "DropdownMenu.Trigger",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Flex",
+                        },
+                      ],
+                      "uiName": "Dropdown.Item",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "DropdownMenu.Item",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": "DropdownMenu.Item.Addon",
+                                },
+                                {
+                                  "children": [],
+                                  "uiName": "DropdownMenu.Item.Text",
+                                },
+                              ],
+                              "uiName": "DropdownMenu.Item.Content",
+                            },
+                            {
+                              "children": [],
+                              "uiName": "DropdownMenu.Item.Hint",
+                            },
+                          ],
+                          "uiName": "DropdownMenu.Item",
+                        },
+                      ],
+                      "uiName": "DropdownMenu.Group",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": "Button.Text",
+                                },
+                              ],
+                              "uiName": "Button.InnerWrapper",
+                            },
+                          ],
+                          "uiName": "Button",
+                        },
+                      ],
+                      "uiName": "DropdownMenu.Actions",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "DropdownMenu.StatusItem",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "Box",
+                    },
+                  ],
+                  "uiName": null,
+                },
+              ],
+              "uiName": "ScrollArea.Container",
+            },
+          ],
+          "uiName": "DropdownMenu.Menu",
+        },
+      ],
+      "uiName": "DropdownMenu.Popper",
+    },
+    {
+      "children": [],
+      "uiName": null,
+    },
+  ],
+  "uiName": null,
+}
+`;

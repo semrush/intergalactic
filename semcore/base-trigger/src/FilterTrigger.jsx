@@ -1,4 +1,4 @@
-import { NeighborLocation, Box, ScreenReaderOnly, Hint } from '@semcore/base-components';
+import { Box, ScreenReaderOnly, Hint } from '@semcore/base-components';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
@@ -144,20 +144,18 @@ class RootFilterTrigger extends Component {
         use:aria-label={undefined}
         use:aria-labelledby={undefined}
       >
-        <NeighborLocation>
-          {advancedMode
-            ? (
-                <Children />
-              )
-            : (
-                <>
-                  <FilterTrigger.TriggerButton>
-                    <Children />
-                  </FilterTrigger.TriggerButton>
-                  {!empty && <FilterTrigger.ClearButton />}
-                </>
-              )}
-        </NeighborLocation>
+        {advancedMode
+          ? (
+              <Children />
+            )
+          : (
+              <>
+                <FilterTrigger.TriggerButton>
+                  <Children />
+                </FilterTrigger.TriggerButton>
+                {!empty && <FilterTrigger.ClearButton />}
+              </>
+            )}
       </SWrapper>,
     );
   }
@@ -168,11 +166,11 @@ class TriggerButton extends Component {
   static style = style;
 
   render() {
-    const SFilterTrigger = Root;
+    const STrigger = Root;
     const { Children, styles, empty, triggerRef } = this.asProps;
 
     return sstyled(styles)(
-      <SFilterTrigger
+      <STrigger
         render={BaseTrigger}
         use:role='combobox'
         w='100%'
@@ -188,7 +186,7 @@ class TriggerButton extends Component {
           empty,
         )}
         {empty && <FilterTrigger.Addon tag={ChevronDown} />}
-      </SFilterTrigger>,
+      </STrigger>,
     );
   }
 }
@@ -200,7 +198,7 @@ class ClearButton extends Component {
   triggerRef = React.createRef();
 
   render() {
-    const SFilterTrigger = Root;
+    const SClear = Root;
     const {
       styles,
       empty,
@@ -215,7 +213,7 @@ class ClearButton extends Component {
 
     return sstyled(styles)(
       <>
-        <SFilterTrigger
+        <SClear
           ref={this.triggerRef}
           render={BaseTrigger}
           size={size}
@@ -226,7 +224,7 @@ class ClearButton extends Component {
           __excludeProps={['title']}
         >
           <FilterTrigger.Addon tag={Close} />
-        </SFilterTrigger>
+        </SClear>
 
         <Hint triggerRef={this.triggerRef}>{title ?? ariaLabel ?? getI18nText('clear')}</Hint>
       </>,

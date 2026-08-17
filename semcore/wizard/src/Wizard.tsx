@@ -1,7 +1,7 @@
 import { ScreenReaderOnly, Box } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
-import type { IRootComponentProps, Intergalactic } from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import findComponent from '@semcore/core/lib/utils/findComponent';
@@ -16,31 +16,19 @@ import React from 'react';
 
 import style from './style/wizard.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import type {
-  WizardStep,
-  WizardProps,
-  WizardStepProps,
-  WizardStepperProps,
-  WizardSidebarProps,
-  WizardContentProps,
-  IntergalacticWizardStepperComponent,
-  WizardType,
-  WizardStepBackProps,
-  WizardStepNextProps,
-  WizardDefaultProps,
-} from './Wizard.types';
+import type { NSWizard } from './Wizard.types';
 
 type State = {
   highlighted: number;
 };
 
 class WizardRoot extends Component<
-  WizardProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSWizard.Component>,
   typeof WizardRoot.enhance,
   {},
   WithI18nEnhanceProps,
-  State,
-  WizardDefaultProps
+  NSWizard.State,
+  NSWizard.DefaultProps
 > {
   static displayName = 'Wizard';
   static style = style;
@@ -61,7 +49,7 @@ class WizardRoot extends Component<
     highlighted: this.props.step,
   };
 
-  getStepId(step: WizardStep): string {
+  getStepId(step: NSWizard.Step): string {
     return `${this.asProps.uid}-step-${step}`;
   }
 
@@ -69,19 +57,19 @@ class WizardRoot extends Component<
     return `${this.asProps.uid}-title`;
   }
 
-  getStepperId(step: WizardStep): string {
+  getStepperId(step: NSWizard.Step): string {
     const { uid } = this.asProps;
 
     return `${uid}-stepper-${step}`;
   }
 
-  getContentId(step: WizardStep): string {
+  getContentId(step: NSWizard.Step): string {
     const { uid } = this.asProps;
 
     return `${uid}-content-${step}`;
   }
 
-  getStepProps(props: WizardStepProps) {
+  getStepProps(props: NSWizard.Step.Props) {
     return {
       steps: this._steps,
       active: props.step === this.asProps.step,
@@ -148,7 +136,7 @@ class WizardRoot extends Component<
     }, 0);
   };
 
-  getStepperProps(props: WizardStepperProps, i: number) {
+  getStepperProps(props: NSWizard.Stepper.Props, i: number) {
     let number = i + 1;
     if (this._steps.has(props.step)) {
       const step = this._steps.get(props.step);
@@ -178,7 +166,7 @@ class WizardRoot extends Component<
     };
   }
 
-  componentDidUpdate(prevProps: WizardProps) {
+  componentDidUpdate(prevProps: typeof this.asProps) {
     if (prevProps.step === this.asProps.step) return;
 
     this.setState({ highlighted: this.asProps.step });
@@ -209,7 +197,9 @@ class WizardRoot extends Component<
   }
 }
 
-function Sidebar(props: WizardSidebarProps & IRootComponentProps) {
+function Sidebar(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSWizard.Sidebar.Component, typeof WizardRoot, 'Sidebar'>,
+) {
   const { Children, styles, title, id } = props;
   const SSidebar = Root;
   const SSidebarHeader = 'h2';
@@ -225,7 +215,9 @@ function Sidebar(props: WizardSidebarProps & IRootComponentProps) {
   );
 }
 
-function Step(props: IRootComponentProps & WizardStepProps) {
+function Step(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSWizard.Step.Component, typeof WizardRoot, 'Step'>,
+) {
   const SStep = Root;
   const { Children, styles, active } = props;
   if (active) {
@@ -238,7 +230,9 @@ function Step(props: IRootComponentProps & WizardStepProps) {
   return null;
 }
 
-function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
+function Stepper(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSWizard.Stepper.Component, typeof WizardRoot, 'Stepper'>,
+) {
   const {
     Children,
     styles,
@@ -299,7 +293,7 @@ function Stepper(props: Required<WizardStepperProps> & IRootComponentProps) {
   );
 }
 
-function Content(props: WizardContentProps & IRootComponentProps) {
+function Content(props: Intergalactic.InternalTypings.InferChildComponentProps<NSWizard.Content.Component, typeof WizardRoot, 'Content'>) {
   const { Children, styles } = props;
   const SContent = Root;
   return sstyled(styles)(
@@ -312,7 +306,9 @@ function Content(props: WizardContentProps & IRootComponentProps) {
   );
 }
 
-function StepBack(props: Required<WizardStepBackProps> & IRootComponentProps) {
+function StepBack(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSWizard.StepBack.Component, typeof WizardRoot, 'StepBack'>,
+) {
   const SStepBack = Root;
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
@@ -334,7 +330,9 @@ function StepBack(props: Required<WizardStepBackProps> & IRootComponentProps) {
     </SStepBack>,
   );
 }
-function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
+function StepNext(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSWizard.StepNext.Component, typeof WizardRoot, 'StepNext'>,
+) {
   const SStepNext = Root;
   const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
@@ -357,7 +355,9 @@ function StepNext(props: Required<WizardStepNextProps> & IRootComponentProps) {
   );
 }
 
-function StepTitle(props: Intergalactic.InternalTypings.InferChildComponentProps<WizardType, typeof WizardRoot, 'StepTitle'>) {
+function StepTitle(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSWizard.StepTitle.Component, typeof WizardRoot, 'StepTitle'>,
+) {
   const SWizardStepTitle = Root;
   const { styles } = props;
 
@@ -372,7 +372,7 @@ function StepTitle(props: Intergalactic.InternalTypings.InferChildComponentProps
  * {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-api/|API} | {@link https://developer.semrush.com/intergalactic/components/wizard/wizard-code/|Examples}
  */
 const Wizard = createComponent<
-  WizardType,
+  NSWizard.Component,
   typeof WizardRoot
 >(WizardRoot, {
   Sidebar,
@@ -387,10 +387,10 @@ const Wizard = createComponent<
 export const wrapWizardStepper = <PropsExtending extends {}>(
   wrapper: (
     props: Intergalactic.InternalTypings.UntypeRefAndTag<
-      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticWizardStepperComponent>
+      Intergalactic.InternalTypings.ComponentPropsNesting<NSWizard.Stepper.Component>
     > &
     PropsExtending,
   ) => React.ReactNode,
-) => wrapper as IntergalacticWizardStepperComponent<PropsExtending>;
+) => wrapper as NSWizard.Stepper.Component<PropsExtending>;
 
 export default Wizard;

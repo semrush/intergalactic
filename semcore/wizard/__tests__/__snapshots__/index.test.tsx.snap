@@ -1,0 +1,133 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Wizard > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "Box",
+                            },
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "Wizard.Stepper",
+                        },
+                      ],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "Wizard.Sidebar",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Wizard.StepTitle",
+                        },
+                      ],
+                      "uiName": "Wizard.Step",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [],
+                                      "uiName": null,
+                                    },
+                                  ],
+                                  "uiName": "ArrowLeft",
+                                },
+                              ],
+                              "uiName": "Button.Addon",
+                            },
+                            {
+                              "children": [],
+                              "uiName": "Button.Text",
+                            },
+                          ],
+                          "uiName": "Wizard.StepBack.InnerWrapper",
+                        },
+                      ],
+                      "uiName": "Wizard.StepBack",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "Button.Text",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [],
+                                      "uiName": null,
+                                    },
+                                  ],
+                                  "uiName": "ArrowRight",
+                                },
+                              ],
+                              "uiName": "Button.Addon",
+                            },
+                          ],
+                          "uiName": "Wizard.StepNext.InnerWrapper",
+                        },
+                      ],
+                      "uiName": "Wizard.StepNext",
+                    },
+                  ],
+                  "uiName": "Wizard.Content",
+                },
+              ],
+              "uiName": "Wizard",
+            },
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Modal.Overlay.ContentWrapper",
+        },
+      ],
+      "uiName": "Modal.Overlay",
+    },
+  ],
+  "uiName": null,
+}
+`;
