@@ -26,7 +26,7 @@ class NoticeSmart extends Component<
     const { label, title, actions, closable, onClose, text, styles } = this.asProps;
 
     return sstyled(styles)(
-      <SNoticeSmart render={Notice} __excludeProps={['title']}>
+      <SNoticeSmart render={Notice} __excludeProps={['title', 'icon', 'illustration']}>
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
           {isNode(title) && <Notice.Title>{title}</Notice.Title>}

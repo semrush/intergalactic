@@ -116,6 +116,7 @@ class RootNotice extends Component<
         role={role}
         aria-label={ariaLabel}
         ref={this.ref}
+        __excludeProps={['icon', 'illustration']}
       >
         {icon !== undefined && (
           // @ts-expect-error we use theme in css-only
