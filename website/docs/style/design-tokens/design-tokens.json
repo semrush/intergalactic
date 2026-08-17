@@ -3469,7 +3469,8 @@
     "value": "20px",
     "description": "Extended 2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "wizard"
     ]
   },
   {

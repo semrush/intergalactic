@@ -114,7 +114,7 @@ SContent {
     display: block;
     word-break: break-word;
     font-weight: var(--intergalactic-semi-bold, 600);
-    margin-bottom: var(--intergalactic-spacing-5x, 20px);
+    margin-bottom: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
   }
 }
 SContent[noSidebar] {
