@@ -2002,7 +2002,8 @@
     "description": "Use for cover the content under the modal dialogs.",
     "components": [
       "modal",
-      "side-panel"
+      "side-panel",
+      "spin-container"
     ]
   },
   {
@@ -2010,8 +2011,7 @@
     "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
     "components": [
-      "modal",
-      "spin-container"
+      "modal"
     ]
   },
   {
