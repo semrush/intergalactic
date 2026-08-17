@@ -4,6 +4,7 @@ import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type Icon from '@semcore/icon';
 import type { IllustrationProps } from '@semcore/illustration';
 import type { NSText } from '@semcore/typography';
+import { ReactElement } from 'react';
 
 import type { LocalizedMessaged } from './translations/__intergalactic-dynamic-locales';
 
@@ -29,7 +30,7 @@ declare namespace NSNotice {
       illustration?: never;
     } | {
       icon?: never;
-      illustration?: React.ElementType<IllustrationProps>;
+      illustration?: React.ReactElement<IllustrationProps>;
     });
   type DefaultProps = {
     theme: 'info';
