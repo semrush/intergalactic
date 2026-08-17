@@ -2086,6 +2086,10 @@ export const theme: Theme = {
           },
         },
         gap: {
+          xsmall: {
+            value: `${SCALE_INDENT / 2}px`,
+            description: 'Extra small gap between content elements inside controls, rows, or columns.',
+          },
           small: {
             value: `${SCALE_INDENT}px`,
             description: 'Small gap between content elements inside controls, rows, or columns.',
@@ -2423,6 +2427,7 @@ export type SemanticTokens = {
         xxlarge: Value;
       };
       gap: {
+        xsmall: Value;
         small: Value;
         medium: Value;
         large: Value;
