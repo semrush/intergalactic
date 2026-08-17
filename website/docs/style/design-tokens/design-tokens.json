@@ -3337,6 +3337,7 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
