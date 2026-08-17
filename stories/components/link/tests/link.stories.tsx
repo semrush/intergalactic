@@ -6,9 +6,9 @@ import LinkDifferentSizesExample, { defaultLinksizesProps } from './examples/lin
 import LinkHintExample, { defaultLinkHintProps } from './examples/link-hint';
 
 const sharedArgTypes = {
-  use: {
+  theme: {
     control: { type: 'select' },
-    options: ['primary', 'secondary', 'accent'],
+    options: ['default', 'light', 'accent', 'invert'],
   },
   href: {
     control: { type: 'select' },

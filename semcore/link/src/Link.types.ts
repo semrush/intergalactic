@@ -5,8 +5,14 @@ import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 declare namespace NSLink {
-  type Use = 'primary' | 'secondary' | 'accent';
+  type Theme = 'default' | 'light' | 'accent' | 'invert';
   type Props = NSBox.Props & Intergalactic.InternalTypings.EfficientOmit<NSText.BaseProps, 'use'> & {
+
+    /**
+     * @deprecated. Use `theme` instead.
+     */
+    use?: 'primary' | 'secondary';
+
     /**
      * Type of Link.
      *
@@ -16,9 +22,11 @@ declare namespace NSLink {
      *
      * Accent. Use ONLY for action links within the texts. Limits, prompts indicating what to do, and options in the controls.
      *
+     * Invert. Use on dark backgrounds.
+     *
      * @default 'primary'.
      */
-    use?: Use;
+    theme?: Theme;
     /**
    * Sets the link to the disabled state
    */
@@ -51,11 +59,16 @@ declare namespace NSLink {
   };
 
   type DefaultProps = {
-    use: 'primary';
+    theme: 'default';
   };
 
   namespace Text {
-    type Props = NSText.Props;
+    type Props = Intergalactic.InternalTypings.EfficientOmit<NSText.BaseProps, 'use'> & {
+      /**
+       * @deprecated. Use `theme` on the root level.
+       */
+      use?: 'primary' | 'secondary';
+    };
 
     type Component = Intergalactic.Component<'span', Props>;
   }

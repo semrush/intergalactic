@@ -29,7 +29,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
   ] as const;
 
   static defaultProps = {
-    use: 'primary',
+    theme: 'primary',
   } as const;
 
   containerRef = React.createRef<HTMLElement | null>();
@@ -144,6 +144,18 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
     return value.startsWith('//') || value.toLowerCase().startsWith('http');
   }
 
+  private get themeFallback(): NSLink.Props['theme'] {
+    const { use, theme } = this.asProps;
+
+    if (use === 'primary') {
+      return 'default';
+    } else if (use === 'secondary') {
+      return 'light';
+    }
+
+    return theme;
+  }
+
   render() {
     const {
       styles,
@@ -184,6 +196,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
           use:href={disabled ? undefined : href}
           visually-disabled={disabled}
           render={Text}
+          use:theme={this.themeFallback}
           text-color={resolveColor(color)}
           tag='a'
           target={isExternal ? '_blank' : undefined}

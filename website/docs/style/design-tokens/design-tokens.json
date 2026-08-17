@@ -2899,13 +2899,17 @@
     "name": "--intergalactic-text-link-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary link. Use on dark and colored sbackground only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-primary-invert-hover-active",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Hover and active states of the inverted version of the primary link. Use on dark and colored backgrounds only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary",

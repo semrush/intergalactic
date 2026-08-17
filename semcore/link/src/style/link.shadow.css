@@ -19,7 +19,7 @@ SLink {
     color: var(--intergalactic-text-link-visited, oklch(0.23 0.113 296));
   }
 
-  &[use='primary'] {
+  &[theme='default'] {
     color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
 
     & SText {
@@ -36,7 +36,7 @@ SLink {
       }
     }
   }
-  &[use='secondary'] {
+  &[theme='light'] {
     color: var(--intergalactic-text-link-secondary, oklch(0.088 0.026 147.7 / 0.583));
 
     & SText {
@@ -53,7 +53,7 @@ SLink {
       }
     }
   }
-  &[use='accent'] {
+  &[theme='accent'] {
     color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
 
     & SText {
@@ -64,6 +64,23 @@ SLink {
     &:hover,
     &:active {
       color: var(--intergalactic-text-link-accent-hover-active, oklch(0.6 0.166 277.7));
+
+      & SText {
+        text-decoration-color: currentColor;
+      }
+    }
+  }
+  &[theme='invert'] {
+    color: var(--intergalactic-text-link-primary-invert, oklch(0.999 0.001 180 / 0.949));
+
+    & SText {
+      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.002 174.1));
+    }
+
+    &[active],
+    &:hover,
+    &:active {
+      color: var(--intergalactic-text-link-primary-invert-hover-active, oklch(0.999 0.001 180 / 0.949));
 
       & SText {
         text-decoration-color: currentColor;

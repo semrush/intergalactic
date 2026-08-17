@@ -45,7 +45,7 @@ type BasicLinkProps = NSLink.Props & {
 const Demo = (props: BasicLinkProps) => {
   const {
     text = 'Link example',
-    use,
+    theme,
     showAddonLeft = false,
     showAddonRight = false,
     disabled,
@@ -152,7 +152,7 @@ const Demo = (props: BasicLinkProps) => {
   }
 
   const sharedLinkProps = {
-    use,
+    theme,
     href,
     isExternal,
     size,
@@ -195,7 +195,7 @@ const Demo = (props: BasicLinkProps) => {
 export const defaultProps: BasicLinkProps = {
   text: 'Link example',
   href: '#',
-  use: 'primary',
+  theme: 'default',
   size: 300,
   showAddonLeft: false,
   showAddonRight: false,

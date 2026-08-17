@@ -27,7 +27,7 @@ type LinkSizesProps = {
   addonRight: AddonType;
   ellipsis: boolean;
   active: boolean;
-  use: 'primary' | 'secondary' | 'accent';
+  theme: 'default' | 'light' | 'accent' | 'invert';
   href: string;
 };
 
@@ -76,7 +76,7 @@ const Demo = (props: LinkSizesProps) => {
           {`${size} `}
           <Link
             href={props.href}
-            use={props.use}
+            theme={props.theme}
             mr={4}
             active={props.active}
             size={size}
@@ -102,7 +102,7 @@ export const defaultLinksizesProps: LinkSizesProps = {
   addonRight: 'badge',
   ellipsis: true,
   active: false,
-  use: 'primary',
+  theme: 'default',
   href: '#',
 };
 

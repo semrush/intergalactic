@@ -15,8 +15,8 @@ type LinkHintProps = {
   /** An external href adds target=_blank, the external icon and the new-tab announcement. */
   href?: string;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
-  /** Picking a `use` drops `color`, since a custom color would override it. */
-  use?: 'primary' | 'secondary' | 'accent';
+  /** Picking a `theme` drops `color`, since a custom color would override it. */
+  theme?: 'default' | 'light' | 'accent' | 'invert';
   /** Ignored while `use` is set. */
   color?: string;
   size?: LinkProps['size'];
@@ -34,7 +34,7 @@ const Demo = (props: LinkHintProps) => {
     showText = false,
     href = '#',
     hintPlacement,
-    use,
+    theme,
     color = 'gray-300',
     size,
     disabled,
@@ -45,7 +45,7 @@ const Demo = (props: LinkHintProps) => {
   // `color` and `use` collide: SLink[text-color] sits below the [use] blocks in
   // link.shadow.css with equal specificity, so a custom color always wins and the `use`
   // control would look broken. Picking a `use` therefore drops the color.
-  const resolvedColor = use ? undefined : color;
+  const resolvedColor = theme ? undefined : color;
 
   return (
     <>
@@ -55,7 +55,7 @@ const Demo = (props: LinkHintProps) => {
           <Link
             href={href}
             addonLeft={VideoListL}
-            use={use}
+            theme={theme}
             color={resolvedColor}
             size={size}
             disabled={disabled}
