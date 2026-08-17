@@ -1,4 +1,3 @@
-import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { sstyled, createComponent, Component, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
@@ -24,14 +23,10 @@ class NoticeSmart extends Component<
 
   render() {
     const SNoticeSmart = Root;
-    const SIcon = Box;
-    const SIllustration = Box;
-    const { label, title, actions, closable, onClose, text, icon, illustration, styles, theme } = this.asProps;
+    const { label, title, actions, closable, onClose, text, styles } = this.asProps;
 
     return sstyled(styles)(
       <SNoticeSmart render={Notice} __excludeProps={['title']}>
-        {icon !== undefined && (<SIcon theme={theme}>{icon}</SIcon>)}
-        {illustration !== undefined && (<SIllustration>{illustration}</SIllustration>)}
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
           {isNode(title) && <Notice.Title>{title}</Notice.Title>}
