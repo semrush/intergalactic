@@ -3337,6 +3337,7 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
@@ -3389,7 +3390,7 @@
   {
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
-    "description": "Small gap between content elements inside controls, rows, or columns.",
+    "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": []
   },
   {
