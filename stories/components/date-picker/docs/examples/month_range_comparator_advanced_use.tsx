@@ -50,7 +50,7 @@ const Demo = () => {
             aria-labelledby='month-notice-title'
             theme='warning'
             style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
-            icon={WarningIcon}
+            icon={<WarningIcon />}
           >
             <Dropdown.Notice.Content>
               <Flex mb={1}>
