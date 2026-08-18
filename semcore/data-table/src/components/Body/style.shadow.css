@@ -19,22 +19,22 @@ SBody[compact] {
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)) - var(--global-border-padding));
+    padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
   }
 
   SRow {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)) - var(--global-border-padding));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
     }
   }
   SRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)) - var(--global-border-padding));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
     }
   }
   SCollapseRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)) - var(--global-border-padding));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
     }
   }
 
@@ -50,6 +50,17 @@ SRow[gridArea], SCellWrapper[gridArea], SCollapseRow[gridArea] {
 SCellWrapper {
   height: 100%;
   overflow: hidden;
+  position: relative;
+
+  &:has(> SCell[withAccordion][data-aria-level][expanded])::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
+    }
 }
 
 SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
@@ -148,7 +159,6 @@ SRow:has([data-row-selector="true"] input:checked) > SCellWrapper > SCell {
 }
 
 SCell {
-  --global-border-padding: 0px;
   display: flex;
   height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
@@ -182,17 +192,12 @@ SCell {
     border-bottom: none;
   }
 
-  &[withAccordion][data-aria-level][expanded] {
-    --global-border-padding: 2px;
-    border-left: 2px solid var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
-  }
-
   &[use='primary'] {
     padding: var(--intergalactic-spacing-content-padding-medium, 12px);
     min-height: 45px;
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)) - var(--global-border-padding));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
@@ -201,7 +206,7 @@ SCell {
     min-height: 37px;
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)) - var(--global-border-padding));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
@@ -304,7 +309,7 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
     padding-left: var(--intergalactic-spacing-content-padding-xlarge, 20px);
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)) - var(--global-border-padding));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
@@ -313,9 +318,17 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   }
 }
 
-SRow[isAccordionRow] SCellWrapper:first-child SCell,
+SRow[isAccordionRow] SCellWrapper:first-child,
 SCollapseRow {
-  border-left: 2px solid var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
+  &::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
+  }
 }
 
 
