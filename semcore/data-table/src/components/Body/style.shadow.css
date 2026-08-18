@@ -318,9 +318,13 @@ SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   }
 }
 
+SCollapseRow {
+  position: relative;
+}
+
 SRow[isAccordionRow] SCellWrapper:first-child,
 SCollapseRow {
-  &::before {
+  &::after {
     position: absolute;
     content: '';
     left: 0;
