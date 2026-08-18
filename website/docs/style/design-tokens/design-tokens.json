@@ -504,7 +504,7 @@
   },
   {
     "name": "--intergalactic-border-accent",
-    "value": "oklch(0.7 0.003 162.2)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Accent border for the active and selected states..",
     "components": []
   },

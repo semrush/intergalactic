@@ -575,7 +575,7 @@ export const theme: Theme = {
         description: 'Default stroke for interactive controls and structured surfaces.',
       },
       border_accent_DEFAULT: {
-        value: neutral.at(L_BORDER_ACTIVE),
+        value: neutral.at(L_BORDER_STRONG),
         description: 'Accent border for the active and selected states..',
       },
       border_primary_invert: {
@@ -1156,7 +1156,7 @@ export const theme: Theme = {
         description: 'Active (selected) state of the default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_selected_box_shadow: {
-        value: neutral.at(L_BORDER_STRONG),
+        value: '{semanticTokens.colors.border_accent_DEFAULT}',
         description: 'Border color of the selected item in the DropdownMenu.',
       },
       dropdown_menu_item_selected_hover: {
@@ -1408,7 +1408,7 @@ export const theme: Theme = {
         description: 'Background of the Presets items.',
       },
       control_presets_border_selected: {
-        value: neutral.at(L_BORDER_STRONG),
+        value: '{semanticTokens.colors.border_accent_DEFAULT}',
         description: 'Border color of the selected Preset item.',
       },
       control_presets_border_hover: {
@@ -1533,7 +1533,7 @@ export const theme: Theme = {
         description: 'Border color of the TabLine in its normal state.',
       },
       control_tab_line_border_active: {
-        value: neutral.at(L_BORDER_STRONG),
+        value: '{semanticTokens.colors.border_accent_DEFAULT}',
         description: 'Border color of the TabLine in its active state.',
       },
       control_tab_line_border_hover: {
