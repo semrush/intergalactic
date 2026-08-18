@@ -3,6 +3,7 @@ import type React from 'react';
 
 /** @ts-ignore */
 import { getStyles as reshadowGetStyles } from './reshadow-core';
+import { validAttr } from '../utils/propsForElement';
 
 const RESHADOW_ID = '__reshadow__';
 
@@ -68,12 +69,12 @@ function merge(s1 = {}, s2 = {}) {
   }, Object.assign({}, s1));
 }
 
-function getClassAndVars(styles: any, name: any, props: any) {
+function getClassAndVars(styles: [key: string, value: unknown][], name: any, props: any) {
   function getPropValue(key: any, props: any) {
     return props[`use:${key}`] ?? props[key];
   }
 
-  return Object.entries(styles).reduce(
+  return styles.reduce(
     (acc, [key, value]) => {
       if (key.startsWith('--')) {
         // @ts-ignore
@@ -128,7 +129,8 @@ function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
   // @ts-ignore
   return {
     cn(name, props) {
-      const [classes, style] = getClassAndVars(reshadowToShadow(styles), name, props);
+      const shadowStyles = Object.entries(reshadowToShadow(styles));
+      const [classes, style] = getClassAndVars(shadowStyles, name, props);
 
       if (Object.keys(classes).length) {
         props.className = cn(props.className, classes);
@@ -137,6 +139,16 @@ function sstyled(styles = {}): ((ReactNode: any) => React.ReactNode) & {
       if (Object.keys(style).length) {
         props.style = Object.assign(style, props.style);
       }
+
+      shadowStyles.forEach(([key]) => {
+        if (!key.startsWith('--')) {
+          const compareKey = key.split('=')[0];
+
+          if (!validAttr(compareKey)) {
+            delete props[compareKey];
+          }
+        }
+      });
 
       return props;
     },

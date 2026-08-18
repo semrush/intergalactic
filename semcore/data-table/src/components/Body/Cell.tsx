@@ -62,7 +62,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
   };
 
   render() {
-    const SCellWrapper = Box;
+    const SCellWrapper = 'div';
     const SCell = Root;
     const {
       Children,
