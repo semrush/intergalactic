@@ -237,7 +237,7 @@ export const L_BORDER_ACTIVE = 0.7; // focused inputs, active states of pills an
 /** Border focus      | ⚠️ APCA 30 on secondary bg */
 export const L_BORDER_FOCUS = 0.7;
 /** Border strong         | ⚠️ APCA 60+ under white */
-export const L_BORDER_STRONG = 0.23; // selected presets items
+export const L_BORDER_STRONG = 0.23; // tab-line, accordions, radio-cards, selected items
 
 // =============================================================================
 // Invert levels

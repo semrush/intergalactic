@@ -1,9 +1,23 @@
 @keyframes spin-rotate {
-  from {
-    transform: rotate(0deg);
-  }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 1 99;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90 10;
+    stroke-dashoffset: -5;
+  }
+
+  100% {
+    stroke-dasharray: 1 99;
+    stroke-dashoffset: -100;
   }
 }
 
@@ -14,54 +28,35 @@ SSpin {
   animation-name: spin-rotate;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-  animation-duration: 0.75s;
+  animation-duration: 2s;
   fill: var(--theme);
 }
 
-SSpin[theme='dark'] {
-  fill: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-spin-bg */
+SCircle {
+  animation-name: stretch;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+SSpin[theme] SCircle {
+  stroke: var(--theme);
+}
+
+SSpin[theme='default'] SCircle, SSpin[theme='dark'] SCircle {
+  stroke: var(--intergalactic-spin-bg, oklch(0.104 0.023 162.3 / 0.385));
 }
 
 SSpin[theme='invert'] {
-  fill: var(--intergalactic-border-primary-invert, oklch(0.996 0.007 151.1 / 0.447)); /* TODO: --intergalactic-spin-bg-invert */
+  stroke: var(--intergalactic-spin-bg-invert, oklch(0.996 0.007 151.1 / 0.447));
 }
 
 SSpin[centered] {
   margin: auto;
 }
 
-SSpin[size='xs'] {
-  width: 16px;
-  height: 16px;
-}
-
-SSpin[size='s'] {
-  width: 20px;
-  height: 20px;
-}
-
-SSpin[size='m'] {
-  width: 24px;
-  height: 24px;
-}
-
-SSpin[size='l'] {
-  width: 32px;
-  height: 32px;
-}
-
-SSpin[size='xl'] {
-  width: 48px;
-  height: 48px;
-}
-
-SSpin[size='xxl'] {
-  width: 72px;
-  height: 72px;
-}
-
 @media (prefers-reduced-motion) {
-  SSpin {
+  SSpin, SCircle {
     animation-name: none;
   }
 }
