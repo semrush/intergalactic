@@ -29,7 +29,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
   ] as const;
 
   static defaultProps = {
-    theme: 'primary',
+    theme: 'default',
   } as const;
 
   containerRef = React.createRef<HTMLElement | null>();
