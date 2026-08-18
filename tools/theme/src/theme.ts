@@ -1521,7 +1521,7 @@ export const theme: Theme = {
         description: 'Inverted version of the default color for the Skeleton.',
       },
       spin_bg_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: '{semanticTokens.colors.icon_secondary_neutral}',
         description: 'Track color of the Spin loader.',
       },
       spin_bg_invert: {

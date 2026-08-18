@@ -2,16 +2,20 @@ import type { NSBox } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 
 declare namespace NSSpin {
+  /**
+   * @deprecated. Dark and custom themes are deprecated. Use default theme instead of dark.
+   */
+  type DeprecatedTheme = 'dark' | string;
   type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
-  type Props = NSBox.Props & {
+  type Props = Pick<NSBox.Props, 'm' | 'mb' | 'ml' | 'mr' | 'mt' | 'mx' | 'my'> & {
     /** Spinner size
      * @default m
      **/
     size?: NSSpin.Size;
-    /** Spinner theme. There are several default themes or you can use your own color
-     * @default dark
+    /** Spinner theme. Your own color is deprecated, use only `default` or `invert`.
+     * @default default
      **/
-    theme?: 'dark' | 'invert' | string;
+    theme?: DeprecatedTheme | 'default' | 'invert';
     /** Whether the spinner should be in the center of the parent.
      * This works for a nested spinner in flex,
      * otherwise only horizontal alignment will occur.
@@ -22,7 +26,7 @@ declare namespace NSSpin {
   };
   type DefaultProps = {
     size: 'm';
-    theme: 'dark';
+    theme: 'default';
   };
 
   type Component = Intergalactic.Component<'div', Props>;

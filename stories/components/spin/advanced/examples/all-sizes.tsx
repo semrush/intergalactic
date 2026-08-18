@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function AllSizes() {
   return (
-    <Flex gap={8} alignItems='flex-start'>
+    <Flex gap={8} alignItems='flex-start' data-testid='spin-all-sizes'>
       <Flex direction='column' gap={6}>
         <Flex gap={8} flexWrap alignItems='center'>
           <Spin size='xs' />
