@@ -3428,6 +3428,7 @@
       "pills",
       "radio",
       "select",
+      "tab-line",
       "tab-panel"
     ]
   },
