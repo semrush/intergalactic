@@ -333,7 +333,7 @@ export class Column<
             <SSortButton
               aria-label={ariaSortValue}
               size={100}
-              use={isSorted ? 'primary' : 'secondary'}
+              use='primary'
               onClick={this.handleSortClick}
             >
               <SSortButton.Addon tag={SSortIcon} />

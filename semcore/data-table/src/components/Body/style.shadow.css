@@ -53,14 +53,14 @@ SCellWrapper {
   position: relative;
 
   &:has(> SCell[withAccordion][data-aria-level][expanded])::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background-color: var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
-    }
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
+  }
 }
 
 SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
