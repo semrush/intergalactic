@@ -231,7 +231,6 @@
       "color-picker",
       "counter",
       "d3-chart",
-      "data-table",
       "drag-and-drop",
       "dropdown",
       "feature-highlight",
@@ -2311,7 +2310,9 @@
     "name": "--intergalactic-table-td-cell",
     "value": "oklch(1 0 0)",
     "description": "Background of the default cell in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-accordion",
