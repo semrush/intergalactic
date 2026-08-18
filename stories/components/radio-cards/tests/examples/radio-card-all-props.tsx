@@ -12,6 +12,7 @@ type ExampleProps = NSRadioCards.Props & {
   textAddon?: string;
   description?: string;
   showIconAddon?: boolean;
+  dot?: string;
 };
 
 const Demo = (props: ExampleProps) => {
@@ -24,6 +25,7 @@ const Demo = (props: ExampleProps) => {
     description = 'Restore these backlinks first',
     showIconAddon = true,
     'aria-label': ariaLabel = 'Radio cards',
+    dot,
   } = props;
 
   const [selected, setSelected] = React.useState(value);
@@ -44,6 +46,7 @@ const Demo = (props: ExampleProps) => {
           value='1'
           text='All'
           textAddon='~90,000,000'
+          dot={dot}
         />
         <RadioCards.Item
           value='2'

@@ -3,6 +3,7 @@ SRadioCards {
 }
 
 SRadioItem {
+  position: relative;
   flex-direction: column;
   flex: 1 0 0;
   gap: var(--intergalactic-spacing-content-gap-small, 4px);
@@ -30,11 +31,18 @@ SRadioItem {
 }
 
 SRadioItemHeader {
-  align-items: center;
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
 }
 
 SRadioItemHeaderLeftAddon,
 SRadioItemHeaderRightAddon {
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+}
+
+SRadioItemHeaderLeftAddon {
+  transform: translateY(4px);
+}
+
+SRadioItemDescription {
+  text-align: left;
 }

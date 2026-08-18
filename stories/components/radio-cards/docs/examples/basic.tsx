@@ -1,10 +1,12 @@
 import Fire from '@semcore/icon/Fire/m';
 import RadioCards from '@semcore/ui/radio-cards';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Demo = () => {
+  const [value, setValue] = useState('all');
+
   return (
-    <RadioCards aria-label='Radio cards' value='all'>
+    <RadioCards aria-label='Radio cards' value={value} onChange={setValue}>
       <RadioCards.Item value='all' text='All' textAddon='~90,000,000' />
       <RadioCards.Item
         value='best'

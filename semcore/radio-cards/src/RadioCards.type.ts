@@ -1,6 +1,5 @@
 import type { NSFlex } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
-import type { NSText } from '@semcore/typography';
 
 declare namespace NSRadioCards {
   type Value = string;
@@ -38,6 +37,8 @@ declare namespace NSRadioCards {
       textAddon?: string;
       /** Description displayed below the header. */
       description?: string;
+      /** Shows a dot indicator with the specified accessible label. */
+      dot?: string;
     };
 
     type Component = Intergalactic.Component<'button', Props>;

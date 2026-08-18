@@ -46,6 +46,10 @@ export const RadioCardAllProps: StoryObj<typeof defaultRadioCardsProps> = {
       control: { type: 'boolean' },
       description: 'Toggles iconAddon on the 4th card (RadioCards.Item iconAddon prop)',
     },
+    'dot': {
+      control: { type: 'text' },
+      description: 'Accessible name for Dot (RadioCards.Item dot prop)',
+    },
   },
   args: defaultRadioCardsProps,
 };

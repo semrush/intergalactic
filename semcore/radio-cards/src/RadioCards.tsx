@@ -2,11 +2,14 @@ import { Flex, NeighborLocation } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import Dot from '@semcore/dot';
 import { Text as SemcoreText } from '@semcore/typography';
 import React from 'react';
 
 import type { NSRadioCards } from './RadioCards.type';
 import style from './styles/radio-cards.shadow.css';
+
+const DEFAULT_VALUE = '';
 
 class RadioCardsRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Component>,
@@ -34,12 +37,12 @@ class RadioCardsRoot extends Component<
   })] as const;
 
   static defaultProps = {
-    defaultValue: '',
+    defaultValue: DEFAULT_VALUE,
   } as const;
 
   uncontrolledProps() {
     return {
-      value: '',
+      value: DEFAULT_VALUE,
     };
   }
 
@@ -55,25 +58,35 @@ class RadioCardsRoot extends Component<
     }
   };
 
-  getItemProps({ value: itemValue }: NSRadioCards.Item.Props) {
+  getTabIndexFor(index: number, condition: boolean) {
+    const { value } = this.asProps;
+
+    if (index === 0 && value === DEFAULT_VALUE) {
+      return 0;
+    }
+
+    return condition ? 0 : -1;
+  }
+
+  getItemProps({ value: itemValue }: NSRadioCards.Item.Props, index: number) {
     const { value, disabled } = this.asProps;
     const isChecked = value === itemValue;
 
     return {
-      tabIndex: isChecked ? 0 : -1,
+      tabIndex: this.getTabIndexFor(index, isChecked),
       checked: isChecked,
       disabled,
       onClick: this.handleClick(itemValue),
-      onKeyDown: this.handleClick(itemValue),
+      onKeyDown: this.handleKeyDown(itemValue),
     };
   }
 
   render() {
     const SRadioCards = Root;
-    const { Children, styles, value, disabled } = this.asProps;
+    const { Children, styles, disabled } = this.asProps;
 
     return sstyled(styles)(
-      <SRadioCards render={Flex} role='radiogroup' use:tabIndex={value !== '' ? -1 : 0} aria-disabled={disabled}>
+      <SRadioCards render={Flex} role='radiogroup' aria-disabled={disabled}>
         <NeighborLocation>
           <Children />
         </NeighborLocation>
@@ -93,7 +106,8 @@ function Item(
   const SRadioItemHeader = Flex;
   const SRadioItemHeaderLeftAddon = Flex;
   const SRadioItemHeaderRightAddon = SemcoreText;
-  const { Children, styles, iconAddon, text, textAddon, description, disabled, checked, children } = props;
+  const SRadioItemDescription = SemcoreText;
+  const { Children, styles, iconAddon, text, textAddon, description, disabled, checked, dot, children } = props;
 
   const isAdvancedMode = children !== undefined;
 
@@ -120,7 +134,8 @@ function Item(
                   </SRadioItemHeaderRightAddon>
                 )}
               </SRadioItemHeader>
-              {description && <SemcoreText size={200} use='secondary'>{description}</SemcoreText>}
+              {description && <SRadioItemDescription size={200} use='secondary'>{description}</SRadioItemDescription>}
+              {dot && <Dot up size='l' aria-label={dot} />}
             </>
           )}
     </SRadioItem>,

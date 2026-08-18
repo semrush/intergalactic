@@ -1,6 +1,7 @@
 import FileExport from '@semcore/icon/FileExport/m';
 import Info from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
+import Dot from '@semcore/ui/dot';
 import RadioCards from '@semcore/ui/radio-cards';
 import Spin from '@semcore/ui/spin';
 import Tag, { TagContainer } from '@semcore/ui/tag';
@@ -17,6 +18,7 @@ const Demo = () => {
           <Info />
         </Flex>
         <Text size={200} use='secondary'>Combine any addons and content</Text>
+        <Dot up size='l' aria-label='New'>12</Dot>
       </RadioCards.Item>
       <RadioCards.Item value='loading-state'>
         <Flex alignItems='center' gap='var(--intergalactic-spacing-content-gap-medium, 6px)'>
