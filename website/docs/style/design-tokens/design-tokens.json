@@ -3407,7 +3407,9 @@
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
