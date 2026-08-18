@@ -1,9 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/theme.ts",
+    "src/colors/**/*.ts"
+  ],
   "compilerOptions": {
-    "lib": ["ESNext"],
-    "rootDir": "./",
-    "allowImportingTsExtensions": true
+    "lib": [
+      "ESNext"
+    ],
+    "rootDir": "./src",
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./lib",
   }
 }
