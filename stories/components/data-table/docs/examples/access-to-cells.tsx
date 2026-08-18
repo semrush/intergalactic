@@ -22,6 +22,7 @@ const Demo = () => {
             <LinkAction>
               <Link href={href} isExternal={false}>{props.value}</Link>
               <ButtonLink
+                title='Open in a new tab'
                 onClick={() => {
                   alert(`Click row
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
