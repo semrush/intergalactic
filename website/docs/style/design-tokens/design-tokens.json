@@ -632,9 +632,7 @@
     "name": "--intergalactic-brand-secondary",
     "value": "oklch(0.22 0.01 140)",
     "description": "Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).",
-    "components": [
-      "accordion"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-brand-twitter",

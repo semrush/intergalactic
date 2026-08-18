@@ -67,7 +67,7 @@ SItemToggle[use][use='secondary'] {
   padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xxsmall, 2px);
 }
 SItemToggle[use][use='secondary']:has(SItemChevron[selected]) + * {
-  border-left: 2px solid var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
+  border-left: 2px solid var(--intergalactic-border-accent, oklch(0.23 0.01 140));
 }
 
 SItemToggle[disabled] {
@@ -92,7 +92,7 @@ SItemToggle[use][use='secondary'] SItemChevron {
 
 SItemChevron {
   transform: rotate(0deg);
-  transition: calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12));
+  transition: transform calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12));
   fill: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
   &[selected] {
