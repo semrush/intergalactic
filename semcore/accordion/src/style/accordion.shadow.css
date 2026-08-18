@@ -76,13 +76,21 @@ SItemToggle[disabled] {
 }
 
 SItemToggle[use][use='primary'] SItemChevron {
-  order: 1;
-  margin-left: auto;
-  margin-right: 0;
+  position: absolute;
+  top: 50%;
+  right: var(--intergalactic-spacing-content-padding-large, 16px);
+  flex-shrink: 0;
+  transform: translateY(-50%) rotate(0deg);
+}
+SItemToggle[use][use='primary'] SItemChevron[selected] {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+SItemToggle[use][use='secondary'] SItemChevron {
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SItemChevron {
-  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
   transform: rotate(0deg);
   transition: calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12));
   fill: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));

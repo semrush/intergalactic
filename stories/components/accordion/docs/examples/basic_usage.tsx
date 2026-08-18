@@ -15,14 +15,14 @@ const Demo = (props: ExampleAccordionProps) => {
         <Accordion.Item value={index} key={index} disabled={index === 2}>
           <Accordion.Item.Toggle pb={2} w={props.w} h={props.h}>
             <Accordion.Item.ToggleButton>
-              <Accordion.Item.Chevron mr={2} />
+              <Accordion.Item.Chevron />
               Section
               {' '}
               {index + 1}
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse overflowHidden={props.overflowHidden} defaultHeight={props.defaultHeight}>
-            <Box pt={3} px={6} pb={6}>{`This is section ${index + 1}`}</Box>
+            <Box pt={3} px={5} pb={6}>{`This is section ${index + 1}`}</Box>
           </Accordion.Item.Collapse>
         </Accordion.Item>
       ))}

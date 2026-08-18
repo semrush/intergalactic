@@ -505,7 +505,9 @@
     "name": "--intergalactic-border-accent",
     "value": "oklch(0.23 0.01 140)",
     "description": "Accent border for the active and selected states..",
-    "components": []
+    "components": [
+      "accordion"
+    ]
   },
   {
     "name": "--intergalactic-border-primary-invert",
@@ -630,7 +632,9 @@
     "name": "--intergalactic-brand-secondary",
     "value": "oklch(0.22 0.01 140)",
     "description": "Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).",
-    "components": []
+    "components": [
+      "accordion"
+    ]
   },
   {
     "name": "--intergalactic-brand-twitter",
@@ -1730,7 +1734,6 @@
     "value": "oklch(0.092 0.024 152.2 / 0.526)",
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
-      "accordion",
       "carousel",
       "drag-and-drop",
       "feature-highlight",
@@ -3299,6 +3302,7 @@
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "counter",
       "input-tags",
       "notice-bubble",
@@ -3333,6 +3337,7 @@
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "base-components",
       "bulk-textarea",
       "dropdown",
@@ -3365,6 +3370,7 @@
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "feature-popover",
       "notice-bubble"
@@ -3375,6 +3381,7 @@
     "value": "20px",
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "card"
     ]
@@ -3399,13 +3406,16 @@
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "components": [
+      "accordion"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "base-trigger",
       "bulk-textarea",
       "date-picker",
@@ -3601,6 +3611,7 @@
     "value": "8px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
     "components": [
+      "accordion",
       "card",
       "carousel",
       "d3-chart",

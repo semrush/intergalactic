@@ -6,7 +6,7 @@ import React from 'react';
 
 import { PaywallMessage } from './PaywallMessage';
 import HeadingTagAccordion from '../../../../../components/accordion/docs/examples/heading_tag';
-import NonCompactAccordion from '../../../../../components/accordion/docs/examples/non_compact';
+import PrimaryAccordion from '../../../../../components/accordion/docs/examples/primary_accordion';
 import BadgeMainTypesExample from '../../../../../components/badge/docs/examples/badge_main_types';
 import BreadcrumbsUsageExample from '../../../../../components/breadcrumbs/docs/examples/usage_example';
 import ButtonAllButtons from '../../../../../components/button/advanced/examples/all-buttons';
@@ -115,7 +115,7 @@ export function Components() {
             <Card.Title tag='h3'>FAQ</Card.Title>
           </Card.Header>
           <Card.Body tag={Flex} direction='column'>
-            <NonCompactAccordion />
+            <PrimaryAccordion />
             <Text size={300} my={3} semibold>
               Accordion with heading tag
             </Text>

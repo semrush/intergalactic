@@ -11,7 +11,7 @@ const Demo = () => {
         <Accordion.Item value={11}>
           <Accordion.Item.Toggle pb={2}>
             <Accordion.Item.ToggleButton>
-              <Accordion.Item.Chevron mr={2} />
+              <Accordion.Item.Chevron />
               Duration 500
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
@@ -37,7 +37,7 @@ const Demo = () => {
             }}
           >
             <Accordion.Item.ToggleButton>
-              <Accordion.Item.Chevron mr={2} />
+              <Accordion.Item.Chevron />
               Duration 500 Delay 500
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
@@ -50,7 +50,7 @@ const Demo = () => {
         <Accordion.Item value={2}>
           <Accordion.Item.Toggle pb={2}>
             <Accordion.Item.ToggleButton>
-              <Accordion.Item.Chevron mr={2} />
+              <Accordion.Item.Chevron />
               Duration 0
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
@@ -63,7 +63,7 @@ const Demo = () => {
         <Accordion.Item value={3}>
           <Accordion.Item.Toggle pb={2}>
             <Accordion.Item.ToggleButton>
-              <Accordion.Item.Chevron mr={2} />
+              <Accordion.Item.Chevron />
               Default
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
