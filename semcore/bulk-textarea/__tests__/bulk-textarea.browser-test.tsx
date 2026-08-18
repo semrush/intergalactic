@@ -1097,6 +1097,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(locators.row(page, 10)).toHaveAttribute('data-errormessage', 'Please fix this value = another error');
         await locators.row(page, 10).hover();
+        await page.waitForTimeout(100);
         await locators.tooltip(page, 'Please fix this value = another error').waitFor({ state: 'visible' });
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
         await expect(locators.textbox(page)).not.toBeFocused();
