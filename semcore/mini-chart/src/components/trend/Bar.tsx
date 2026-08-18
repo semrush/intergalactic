@@ -5,34 +5,15 @@ import { extractAriaProps } from '@semcore/core/lib/utils/ariaProps';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import { Trend, type CommonTrendProps } from './Trend';
-import style from '../skeleton/skeleton.shadow.css';
+import { Trend } from './Trend';
+import style from '../../styles/skeleton.shadow.css';
+import type { NSMiniChart } from '../../types';
 
-type BarItem = {
-  /**
-   * Value
-   */
-  value: number;
-  /**
-   * Color of value
-   */
-  color?: string;
-};
-
-export type TrendBarProps = CommonTrendProps & {
-  /**
-   * Data to bar chart
-   */
-  data: BarItem[];
-};
-
-type TrendBarComponent = Intergalactic.Component<'svg', TrendBarProps, {}, typeof TrendBarRoot.enhance>;
-
-type TrendBarDefaultProps = {
-  animate: true;
-};
-
-class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance, TrendBarDefaultProps> {
+class TrendBarRoot extends Trend<
+  Intergalactic.InternalTypings.InferComponentProps<NSMiniChart.Trend.Bar.Component>,
+  typeof TrendBarRoot.enhance,
+  NSMiniChart.Trend.Bar.DefaultProps
+> {
   static enhance = [resolveColorEnhance()] as const;
 
   static style = style;
@@ -41,11 +22,11 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance, Tre
     animate: true,
   } as const;
 
-  get defaultData(): BarItem[] {
+  get defaultData(): NSMiniChart.Trend.Bar.Item[] {
     return [{ value: 20 }, { value: 80 }, { value: 45 }, { value: 10 }];
   }
 
-  get data(): BarItem[] {
+  get data(): NSMiniChart.Trend.Bar.Item[] {
     const { data, loading } = this.asProps;
 
     if (loading) {
@@ -108,7 +89,7 @@ class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance, Tre
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
 export const TrendBar = createComponent<
-  TrendBarComponent,
+  NSMiniChart.Trend.Bar.Component,
   typeof TrendBarRoot
 >(TrendBarRoot);
 
@@ -120,7 +101,7 @@ TrendBar.displayName = 'MiniChart.TrendBar';
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
 export const TrendHistogram = createComponent<
-  TrendBarComponent,
+  NSMiniChart.Trend.Bar.Component,
   typeof TrendBarRoot
 >(
   TrendBarRoot,
@@ -129,7 +110,7 @@ export const TrendHistogram = createComponent<
     enhancements: [
       () => {
         return {
-          wrapperProps: (props: TrendBarProps) => {
+          wrapperProps: (props: NSMiniChart.Trend.Bar.Props) => {
             return assignProps(props, { isHistogram: true });
           },
         };

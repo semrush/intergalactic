@@ -6,38 +6,15 @@ import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEn
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import React from 'react';
 
-import { Trend, type CommonTrendProps } from './Trend';
-import style from '../skeleton/skeleton.shadow.css';
+import { Trend } from './Trend';
+import style from '../../styles/skeleton.shadow.css';
+import type { NSMiniChart } from '../../types';
 
-export type TrendLineProps = CommonTrendProps & {
-  /**
-   * List of values
-   */
-  data: number[];
-
-  /**
-   * Color of line
-   */
-  color?: string;
-
-  /**
-   * Color of last point in chart
-   */
-  lastPointColor?: string;
-
-  /**
-   * Radius for last point item
-   */
-  lastPointRadius?: number;
-};
-
-type TrendLineComponent = Intergalactic.Component<'svg', TrendLineProps, {}, typeof TrendLineRoot.enhance>;
-
-type TrendLineDefaultProps = {
-  animate: true;
-};
-
-class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance, TrendLineDefaultProps> {
+class TrendLineRoot extends Trend<
+  Intergalactic.InternalTypings.InferComponentProps<NSMiniChart.Trend.Line.Component>,
+  typeof TrendLineRoot.enhance,
+  NSMiniChart.Trend.Line.DefaultProps
+> {
   static enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
 
   static style = style;
@@ -155,7 +132,7 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance, 
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendLine = createComponent<TrendLineComponent, typeof TrendLineRoot>(TrendLineRoot);
+export const TrendLine = createComponent<NSMiniChart.Trend.Line.Component, typeof TrendLineRoot>(TrendLineRoot);
 
 TrendLine.displayName = 'MiniChart.TrendLine';
 
@@ -164,14 +141,14 @@ TrendLine.displayName = 'MiniChart.TrendLine';
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendArea = createComponent<TrendLineComponent, typeof TrendLineRoot>(
+export const TrendArea = createComponent<NSMiniChart.Trend.Line.Component, typeof TrendLineRoot>(
   TrendLineRoot,
   {},
   {
     enhancements: [
       () => {
         return {
-          wrapperProps: (props: TrendLineProps) => {
+          wrapperProps: (props: NSMiniChart.Trend.Line.Props) => {
             return assignProps(props, { withArea: true });
           },
         };

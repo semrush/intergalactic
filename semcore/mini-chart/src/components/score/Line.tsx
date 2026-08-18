@@ -1,24 +1,19 @@
 import { Box, Flex } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import React from 'react';
 
-import style from './line.shadow.css';
-import type {
-  ScoreLineComponent,
-  ScoreLineGaugeProps,
-  SegmentProps,
-  InnerSegmentProps,
-  ScoreLineGaugeDefaultProps,
-} from './Line.types';
+import style from '../../styles/line.shadow.css';
+import type { NSMiniChart } from '../../types';
 
 class LineRoot extends Component<
-  ScoreLineGaugeProps,
+  Intergalactic.InternalTypings.InferComponentProps<NSMiniChart.Score.Line.Component>,
   typeof LineRoot.enhance,
   {},
   {},
   {},
-  ScoreLineGaugeDefaultProps
+  NSMiniChart.Score.Line.DefaultProps
 > {
   static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
@@ -29,12 +24,12 @@ class LineRoot extends Component<
     animate: true,
   } as const;
 
-  getSegmentProps(segmentProps: SegmentProps) {
+  getSegmentProps(segmentProps: NSMiniChart.Score.Line.Segment.Props) {
     const { children, resolveColor } = this.asProps;
 
     let sum = 0;
     React.Children.forEach(children, (child) => {
-      if (React.isValidElement<SegmentProps>(child)) {
+      if (React.isValidElement<NSMiniChart.Score.Line.Segment.Props>(child)) {
         sum = sum + child.props.value;
       }
     });
@@ -76,6 +71,8 @@ class LineRoot extends Component<
       );
     }
 
+    if (value === undefined) return null;
+
     const { segments } = this.asProps;
 
     const SegmentItems = [];
@@ -112,15 +109,14 @@ class LineRoot extends Component<
   }
 }
 
-function Segment(props: InnerSegmentProps) {
-  const { styles, value } = props;
+function Segment(
+  props: Intergalactic.InternalTypings.InferChildComponentProps<NSMiniChart.Score.Line.Segment.Component, typeof LineRoot, 'Segment'>,
+) {
+  const { styles } = props;
   const SLineSegmentItem = Root;
-
-  if (!value) return null;
 
   return sstyled(styles)(<SLineSegmentItem render={Box} />);
 }
-Segment.displayName = 'Segment';
 
 /**
  * MiniCharts.ScoreLine
@@ -128,8 +124,10 @@ Segment.displayName = 'Segment';
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
 export const ScoreLine = createComponent<
-  ScoreLineComponent,
+  NSMiniChart.Score.Line.Component,
   typeof LineRoot
 >(LineRoot, { Segment });
 
+// Since the Intergalactic.Component was unfolded to plain component structure.
+// @ts-ignore
 ScoreLine.displayName = 'MiniChart.ScoreLine';
