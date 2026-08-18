@@ -100,7 +100,7 @@ SStepDescription {
 }
 
 SCompleted {
-  margin-bottom: -1px;
+  transform: translateY(1px);
 }
 
 SContent {
