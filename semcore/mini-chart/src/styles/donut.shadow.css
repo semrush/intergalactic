@@ -1,4 +1,4 @@
-@import '../skeleton/skeleton.shadow.css';
+@import './skeleton.shadow.css';
 
 SDonutContainer[semi] {
   g {
