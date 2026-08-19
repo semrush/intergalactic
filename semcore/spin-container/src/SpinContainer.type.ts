@@ -20,7 +20,7 @@ declare namespace NSSpinContainer {
     };
   type DefaultProps = {
     size: 'xxl';
-    theme: 'dark';
+    theme: 'default';
     duration: 200;
   };
   type Ctx = {
