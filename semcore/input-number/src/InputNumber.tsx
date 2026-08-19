@@ -149,7 +149,7 @@ class Value extends Component<
   get separatorThousands() {
     const { numberFormatter } = this.props;
 
-    return numberFormatter.format(1111).replace(/\d/g, '');
+    return numberFormatter.format(11111).replace(/\d/g, '');
   }
 
   onPropsChange(changedProps: { value?: string | number | null }) {

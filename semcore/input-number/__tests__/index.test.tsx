@@ -251,6 +251,28 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,345.99');
   });
 
+  test.sequential('Verify Spanish locale decimal separator', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber locale='es'>
+        <InputNumber.Value data-testid='input3344' value='' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input3344') as HTMLInputElement;
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('1000');
+
+    expect(spy).lastCalledWith('1000', expect.anything());
+    expect(input.value).toBe('1000');
+
+    // in Spanish thousand's separator starts from ten-thousandths instead of thousandths.
+    await userEvent.keyboard('00');
+
+    expect(spy).lastCalledWith('100000', expect.anything());
+    expect(input.value).toBe('100.000');
+  });
+
   test.sequential('Verify format in hundredths fractions numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
