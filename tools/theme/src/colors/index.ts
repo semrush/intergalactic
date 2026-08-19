@@ -275,6 +275,6 @@ export const L_INV_ICON_PRIMARY = 0.85;
 export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
-export const L_INV_BORDER_PRIMARY = 0.55; // inputs, buttons, spin
+export const L_INV_BORDER_PRIMARY = 0.46; // inputs, buttons, spin
 /** Border secondary */
 export const L_INV_BORDER_SECONDARY = 0.35;

@@ -1525,7 +1525,7 @@ export const theme: Theme = {
         description: 'Track color of the Spin loader.',
       },
       spin_bg_invert: {
-        value: '{semanticTokens.colors.border_primary_invert}',
+        value: '{semanticTokens.colors.icon_primary_invert}',
         description: 'Inverted track color of the Spin loader.',
       },
       control_tab_line_border_DEFAULT: {
