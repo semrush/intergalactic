@@ -52,7 +52,7 @@ SCellWrapper {
   overflow: hidden;
   position: relative;
 
-  &:has(> SCell[withAccordion][data-aria-level][expanded])::before {
+  &:has(> SCell[withAccordion][expanded]):first-child::before {
     content: '';
     position: absolute;
     left: 0;

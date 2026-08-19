@@ -533,7 +533,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   row={row}
                   rowIndex={rowIndex}
                   gridRowIndex={gridRowIndex}
-                  expanded={expanded}
+                  expanded={expanded || expandedForAnimation}
                   isAccordionRow={isAccordionRow}
                   isCellHidden={isCellHidden}
                   withAccordion={withAccordion}
