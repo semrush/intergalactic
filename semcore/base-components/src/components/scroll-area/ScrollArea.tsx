@@ -100,6 +100,7 @@ class ScrollAreaRoot extends Component<
     const { wMax, hMax, observeParentSize } = this.asProps;
     const size = { width: '', height: '' };
     if (!this.$container || !this.$wrapper) return size;
+    if (!wMax && !hMax) return size;
     const { scrollWidth, scrollHeight } = this.$container;
     const style = window.getComputedStyle(this.$wrapper);
     const parent = this.$wrapper.parentElement;
