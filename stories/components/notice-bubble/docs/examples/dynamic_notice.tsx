@@ -3,7 +3,7 @@ import WarningM from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { lastInteraction } from '@semcore/ui/core';
-import type { AddedNoticeMeta } from '@semcore/ui/notice-bubble';
+import type { NSNoticeBubble } from '@semcore/ui/notice-bubble';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
 import Spin from '@semcore/ui/spin';
 import React from 'react';
@@ -11,7 +11,7 @@ type DynamicNoticeBubbleProps = { initialAnimation: boolean; duration: number; t
 
 const manager = new NoticeBubbleManager();
 
-let notice: AddedNoticeMeta | null = null;
+let notice: NSNoticeBubble.Meta | null = null;
 
 const Demo = (props: DynamicNoticeBubbleProps) => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
@@ -20,7 +20,7 @@ const Demo = (props: DynamicNoticeBubbleProps) => {
     notice = await notice.update({
       icon: undefined,
       children: (
-        <Flex justifyContent='center' gap={1}>
+        <Flex alignItems='center' gap={1.5}>
           <Spin size='xs' theme='invert' />
           Loading...
         </Flex>

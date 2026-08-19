@@ -574,6 +574,10 @@ export const theme: Theme = {
         value: neutral.opaqueAt(L_BORDER_PRIMARY),
         description: 'Default stroke for interactive controls and structured surfaces.',
       },
+      border_accent_DEFAULT: {
+        value: neutral.at(L_BORDER_STRONG),
+        description: 'Accent border for the active and selected states..',
+      },
       border_primary_invert: {
         value: neutral.opaqueInvAt(L_INV_BORDER_PRIMARY),
         description: 'Inverted version of the neutral primary border. Use it for borders on the dark or color background.',
@@ -1152,7 +1156,7 @@ export const theme: Theme = {
         description: 'Active (selected) state of the default background color for the list item in the dropdown-menu.',
       },
       dropdown_menu_item_selected_box_shadow: {
-        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        value: '{semanticTokens.colors.border_accent_DEFAULT}',
         description: 'Border color of the selected item in the DropdownMenu.',
       },
       dropdown_menu_item_selected_hover: {
@@ -1404,7 +1408,7 @@ export const theme: Theme = {
         description: 'Background of the Presets items.',
       },
       control_presets_border_selected: {
-        value: neutral.at(L_BORDER_STRONG),
+        value: '{semanticTokens.colors.border_accent_DEFAULT}',
         description: 'Border color of the selected Preset item.',
       },
       control_presets_border_hover: {
@@ -1412,11 +1416,11 @@ export const theme: Theme = {
         description: 'Border color of the hovered Preset item.',
       },
       progress_bar_bg_DEFAULT: {
-        value: neutral.opaqueAt(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
-        value: neutral.opaqueAt(L_BG_MEDIUM),
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Hover state of the background color of the ProgressBar.',
       },
       progress_bar_bg_invert_DEFAULT: {
@@ -1437,7 +1441,7 @@ export const theme: Theme = {
         description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
       },
       progress_bar_value_gradient: {
-        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.88) 75%, {semanticTokens.colors.brand.secondary} 0%)',
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 75%, {semanticTokens.colors.brand.secondary} 0%)',
         description: 'Value with gradient for the ProgressBar.',
       },
       scroll_area_dropdown_menu_bottom: {
@@ -1517,7 +1521,7 @@ export const theme: Theme = {
         description: 'Inverted version of the default color for the Skeleton.',
       },
       spin_bg_DEFAULT: {
-        value: '{semanticTokens.colors.border_primary_DEFAULT}',
+        value: '{semanticTokens.colors.icon_secondary_neutral}',
         description: 'Track color of the Spin loader.',
       },
       spin_bg_invert: {
@@ -1529,7 +1533,7 @@ export const theme: Theme = {
         description: 'Border color of the TabLine in its normal state.',
       },
       control_tab_line_border_active: {
-        value: '{semanticTokens.colors.border_info_active}',
+        value: '{semanticTokens.colors.border_accent_DEFAULT}',
         description: 'Border color of the TabLine in its active state.',
       },
       control_tab_line_border_hover: {
@@ -2086,6 +2090,10 @@ export const theme: Theme = {
           },
         },
         gap: {
+          xsmall: {
+            value: `${SCALE_INDENT / 2}px`,
+            description: 'Extra small gap between content elements inside controls, rows, or columns.',
+          },
           small: {
             value: `${SCALE_INDENT}px`,
             description: 'Small gap between content elements inside controls, rows, or columns.',
@@ -2423,6 +2431,7 @@ export type SemanticTokens = {
         xxlarge: Value;
       };
       gap: {
+        xsmall: Value;
         small: Value;
         medium: Value;
         large: Value;
@@ -2628,6 +2637,9 @@ type SemanticColors = {
     secondary: {
       DEFAULT: Value;
       invert: Value;
+    };
+    accent: {
+      DEFAULT: Value;
     };
     info: {
       DEFAULT: Value;

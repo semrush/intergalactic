@@ -1,0 +1,117 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Notice > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Notice.Label",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Notice.Title",
+            },
+            {
+              "children": [],
+              "uiName": "Notice.Text",
+            },
+            {
+              "children": [],
+              "uiName": "Notice.Actions",
+            },
+          ],
+          "uiName": "Notice.Content",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Close",
+                    },
+                  ],
+                  "uiName": "Button.Addon",
+                },
+              ],
+              "uiName": "Notice.Close.InnerWrapper",
+            },
+          ],
+          "uiName": "Notice.Close",
+        },
+      ],
+      "uiName": "Notice",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`NoticeSmart > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Notice.Label",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Notice.Title",
+            },
+            {
+              "children": [],
+              "uiName": "Notice.Text",
+            },
+            {
+              "children": [],
+              "uiName": "Notice.Actions",
+            },
+          ],
+          "uiName": "Notice.Content",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Close",
+                    },
+                  ],
+                  "uiName": "Button.Addon",
+                },
+              ],
+              "uiName": "Notice.Close.InnerWrapper",
+            },
+          ],
+          "uiName": "Notice.Close",
+        },
+      ],
+      "uiName": "NoticeSmart",
+    },
+  ],
+  "uiName": null,
+}
+`;

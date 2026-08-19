@@ -1,5 +1,6 @@
 import Button from '@semcore/button';
 import Link from '@semcore/link';
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -13,6 +14,18 @@ describe('tooltip Dependency imports', () => {
 
 describe('Tooltip', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const tooltip = (
+      <Tooltip visible disablePortal>
+        <Tooltip.Trigger>Trigger</Tooltip.Trigger>
+        <Tooltip.Popper>Content</Tooltip.Popper>
+      </Tooltip>
+    );
+
+    const { container } = render(tooltip);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test('Verify supports className and custom attributes on Popper', async () => {
     const { getByTestId } = render(
@@ -80,6 +93,18 @@ describe('Tooltip', () => {
 // smoke for Hint и DescriptionTooltip
 
 describe('Hint', () => {
+  test('Verify data-ui-name', () => {
+    const hint = (
+      <Hint visible disablePortal>
+        <Hint.Trigger>Trigger</Hint.Trigger>
+        <Hint.Popper>Content</Hint.Popper>
+      </Hint>
+    );
+
+    const { container } = render(hint);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
+
   test('Verify supports ref', () => {
     const ref = React.createRef();
     render(<Hint ref={ref} tag='button' title='hint' />);
@@ -100,6 +125,18 @@ describe('Hint', () => {
 });
 
 describe('DescriptionTooltip', () => {
+  test('Verify data-ui-name', () => {
+    const descriptionTooltip = (
+      <DescriptionTooltip visible disablePortal>
+        <DescriptionTooltip.Trigger>Trigger</DescriptionTooltip.Trigger>
+        <DescriptionTooltip.Popper>Content</DescriptionTooltip.Popper>
+      </DescriptionTooltip>
+    );
+
+    const { container } = render(descriptionTooltip);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
+
   test('Verify supports ref', () => {
     const ref = React.createRef();
     render(<DescriptionTooltip ref={ref} tag='button' title='desc' />);

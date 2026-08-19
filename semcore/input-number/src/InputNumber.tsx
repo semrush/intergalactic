@@ -1,5 +1,6 @@
 import type { Intergalactic } from '@semcore/core';
 import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
@@ -91,20 +92,23 @@ class InputNumber extends Component<
   }
 }
 
+@propsObserver(['value'])
 class Value extends Component<
-  Intergalactic.InternalTypings.InferChildComponentProps<NSInputNumber.Value.Component, typeof InputNumber, 'Value'>,
-  [],
-  NSInputNumber.Value.Handlers,
-  {},
-  NSInputNumber.Value.State,
-  NSInputNumber.Value.DefaultProps
-> {
+    Intergalactic.InternalTypings.InferChildComponentProps<NSInputNumber.Value.Component, typeof InputNumber, 'Value'>,
+    [],
+    NSInputNumber.Value.Handlers,
+    {},
+    NSInputNumber.Value.State,
+    NSInputNumber.Value.DefaultProps
+  > {
   static style = style;
   static defaultProps = {
     defaultValue: '',
     defaultDisplayValue: '',
     step: 1,
   } as const;
+
+  valueType: 'string' | 'number' = (typeof this.props.value === 'number' || this.props.value === null) ? 'number' : 'string';
 
   state: NSInputNumber.Value.State = {
     displayValue: '',
@@ -148,6 +152,18 @@ class Value extends Component<
     return numberFormatter.format(1111).replace(/\d/g, '');
   }
 
+  onPropsChange(changedProps: { value?: string | number | null }) {
+    const { value } = changedProps;
+
+    if (value !== undefined) {
+      if (typeof value === 'number' || value === null) {
+        this.valueType = 'number';
+      } else {
+        this.valueType = 'string';
+      }
+    }
+  }
+
   getFormattedValue = (value: string) => {
     return value
       .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
@@ -155,8 +171,8 @@ class Value extends Component<
   };
 
   valueParser = (
-    value: typeof this.asProps['value'],
-    prevValue: typeof this.asProps['value'],
+    value: string | number,
+    prevValue: string,
     prevDisplayValue: NSInputNumber.Value.State['displayValue'],
   ) => {
     const { numberFormatter } = this.props;
@@ -221,7 +237,7 @@ class Value extends Component<
 
     if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
-      this.handlers.value('', event);
+      this.handlers.value(this.processedValue(''), event);
     } else {
       let numberValue = parseValueWithMinMax(Number.parseFloat(parsedValue), min, max);
       const rounded = this.round(numberValue % step);
@@ -233,7 +249,7 @@ class Value extends Component<
         }
       }
 
-      this.handlers.value(this.getDisplayValue(numberValue), event);
+      this.handlers.value(this.processedValue(this.getDisplayValue(numberValue)), event);
     }
   };
 
@@ -304,11 +320,11 @@ class Value extends Component<
     }
 
     if (value.endsWith('.')) {
-      if (value.length > prevValue.length) {
+      if (prevValue !== null && value.length > prevValue.toString().length) {
         this.setState({ displayValue: numberFormatter.format(value as `${number}`) + this.separatorDecimal });
         return false;
       } else {
-        this.handlers.value(value.slice(0, -1), event);
+        this.handlers.value(this.processedValue(value.slice(0, -1)), event);
         return false;
       }
     }
@@ -317,7 +333,7 @@ class Value extends Component<
 
     if (digits || value === '') {
       const newValue = this.limitDecimals(value);
-      this.handlers.value(newValue, event);
+      this.handlers.value(this.processedValue(newValue), event);
       if (newValue === prevValue) {
         const { displayValue } = this.valueParser(
           newValue ?? '',
@@ -366,6 +382,7 @@ class Value extends Component<
         ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key))
     ) {
       const afterSelection = value.slice(element.selectionEnd ?? undefined);
+
       requestAnimationFrame(() => {
         const newValue = this.state.displayValue;
         const index = newValue.lastIndexOf(afterSelection);
@@ -490,7 +507,7 @@ class Value extends Component<
     let numberValue;
 
     // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
-    if (value === '') {
+    if (value === '' || value === null) {
       numberValue = min ?? 0;
     } else {
       numberValue = Number.parseFloat(value);
@@ -500,7 +517,7 @@ class Value extends Component<
 
     const nextValue = Math.min(numberValue + step, max);
 
-    this.handlers.value(this.getDisplayValue(nextValue), event);
+    this.handlers.value(this.processedValue(this.getDisplayValue(nextValue)), event);
   };
 
   stepDown = (event: StepEvent) => {
@@ -508,7 +525,7 @@ class Value extends Component<
 
     let numberValue;
 
-    if (value === '') {
+    if (value === '' || value === null) {
       numberValue = max ?? 0;
     } else {
       numberValue = Number.parseFloat(value);
@@ -518,8 +535,20 @@ class Value extends Component<
 
     const nextValue = Math.max(numberValue - step, min);
 
-    this.handlers.value(this.getDisplayValue(nextValue), event);
+    this.handlers.value(this.processedValue(this.getDisplayValue(nextValue)), event);
   };
+
+  processedValue(value: string): NSInputNumber.Value | NSInputNumber.ValueNumber {
+    if (this.valueType === 'string') {
+      return value;
+    }
+
+    if (value === '') {
+      return null;
+    }
+
+    return Number(value);
+  }
 
   render() {
     const SValue = Root;

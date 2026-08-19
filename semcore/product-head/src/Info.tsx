@@ -1,29 +1,13 @@
 import { Box } from '@semcore/base-components';
-import type { NSBox } from '@semcore/base-components';
-import {
-  createComponent,
-  Component,
-  sstyled,
-  Root,
-  type Intergalactic,
-} from '@semcore/core';
+import type { Intergalactic } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import isNode from '@semcore/core/lib/utils/isNode';
 import React from 'react';
 
+import type { NSProductHeadInfo } from './Info.type';
 import style from './style/info.shadow.css';
 
-export type InfoItemProps = NSBox.Props & {
-  /** A label content that appears before the main item content */
-  label?: React.ReactNode;
-};
-
-type InfoComponent = NSBox.Component & {
-  Item: Intergalactic.Component<'div', InfoItemProps> & {
-    Label: NSBox.Component;
-  };
-};
-
-class InfoRoot extends Component<NSBox.Props> {
+class InfoRoot extends Component<Intergalactic.InternalTypings.InferComponentProps<NSProductHeadInfo.Component>> {
   static displayName = 'Info';
   static style = style;
 
@@ -33,7 +17,7 @@ class InfoRoot extends Component<NSBox.Props> {
   }
 }
 
-function Item(props: any) {
+function Item(props: Intergalactic.InternalTypings.InferComponentProps<NSProductHeadInfo.Item.Component>) {
   const SItem = Root;
   const { Children, styles, label } = props;
   return sstyled(styles)(
@@ -44,15 +28,12 @@ function Item(props: any) {
   );
 }
 
-function Label(props: any) {
+function Label(props: Intergalactic.InternalTypings.InferComponentProps<NSProductHeadInfo.Item.Label.Component>) {
   const SLabel = Root;
   return sstyled(props.styles)(<SLabel render={Box} />);
 }
 
-const Info = createComponent<
-  InfoComponent,
-  typeof InfoRoot
->(InfoRoot, {
+const Info = createComponent<NSProductHeadInfo.Component, typeof InfoRoot>(InfoRoot, {
   Item: [
     Item,
     {
