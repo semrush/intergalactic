@@ -29,7 +29,7 @@
     "clean:illustration": "pnpm --filter @semcore/illustration run clean",
     "format": "biome format ./semcore ./tools ./website ./stories ./.ci --config-path . --write",
     "lint:es": "npx eslint",
-    "lint:ts": "pnpm lint:ts:semcore && tsc --noEmit && pnpm lint:ts:website",
+    "lint:ts": "NODE_OPTIONS=--max-old-space-size=8192 pnpm lint:ts:semcore && tsc --noEmit && pnpm lint:ts:website",
     "lint:ts:semcore": "tsc -b semcore --emitDeclarationOnly --verbose",
     "lint:ts:website": "cd website && tsc --noEmit",
     "lint:css": "stylelint **/*.css",
