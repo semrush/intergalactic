@@ -495,20 +495,24 @@
       "input",
       "side-panel",
       "slider",
-      "spin",
       "tab-panel",
       "textarea",
       "time-picker"
     ]
   },
   {
+    "name": "--intergalactic-border-accent",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Accent border for the active and selected states..",
+    "components": []
+  },
+  {
     "name": "--intergalactic-border-primary-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
-      "divider",
-      "spin"
+      "divider"
     ]
   },
   {
@@ -1499,7 +1503,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
   },
@@ -2003,7 +2007,8 @@
     "description": "Use for cover the content under the modal dialogs.",
     "components": [
       "modal",
-      "side-panel"
+      "side-panel",
+      "spin-container"
     ]
   },
   {
@@ -2011,8 +2016,7 @@
     "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
     "components": [
-      "modal",
-      "spin-container"
+      "modal"
     ]
   },
   {
@@ -2117,7 +2121,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-value-gradient",
-    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 75%, oklch(0.22 0.01 140) 0%)",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 75%, oklch(0.22 0.01 140) 0%)",
     "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2263,15 +2267,19 @@
   },
   {
     "name": "--intergalactic-spin-bg",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.104 0.023 162.3 / 0.385)",
     "description": "Track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-spin-bg-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.998 0.003 173.3 / 0.808)",
     "description": "Inverted track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border",
@@ -2531,7 +2539,7 @@
   },
   {
     "name": "--intergalactic-tag-additional-border-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Inverted border color of the additional Tag.",
     "components": [
       "tag"
@@ -3344,6 +3352,7 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
