@@ -40,6 +40,12 @@ class RadioCardsRoot extends Component<
     defaultValue: DEFAULT_VALUE,
   } as const;
 
+  private firstNonDisabledItemIdx: number | null = null;
+
+  componentDidUpdate() {
+    this.firstNonDisabledItemIdx = null;
+  }
+
   uncontrolledProps() {
     return {
       value: DEFAULT_VALUE,
@@ -58,22 +64,31 @@ class RadioCardsRoot extends Component<
     }
   };
 
-  getTabIndexFor(index: number, condition: boolean) {
-    const { value } = this.asProps;
+  getTabIndex({ props, index }: { props: NSRadioCards.Item.Props; index: number }) {
+    const { value, disabled: rootDisabled } = this.asProps;
+    const { value: itemValue, disabled: itemDisabled } = props;
+    const isChecked = value === itemValue;
 
-    if (index === 0 && value === DEFAULT_VALUE) {
+    if (rootDisabled) return -1;
+
+    if (this.firstNonDisabledItemIdx === null && !itemDisabled) {
+      this.firstNonDisabledItemIdx = index;
+    }
+
+    if (index === this.firstNonDisabledItemIdx && value === DEFAULT_VALUE) {
       return 0;
     }
 
-    return condition ? 0 : -1;
+    return isChecked ? 0 : -1;
   }
 
-  getItemProps({ value: itemValue }: NSRadioCards.Item.Props, index: number) {
+  getItemProps(props: NSRadioCards.Item.Props, index: number) {
+    const { value: itemValue } = props;
     const { value, disabled } = this.asProps;
     const isChecked = value === itemValue;
 
     return {
-      tabIndex: this.getTabIndexFor(index, isChecked),
+      tabIndex: this.getTabIndex({ props, index }),
       checked: isChecked,
       disabled,
       onClick: this.handleClick(itemValue),
