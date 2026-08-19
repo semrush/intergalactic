@@ -237,6 +237,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rows,
       renderCellOverlay,
       selectedRows,
+      hasGroups,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -394,6 +395,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           <SSpinContainer
             innerOutline
             // @ts-ignore
+            hasGroups={hasGroups}
             headerHeight={`${this.getSpinnerTopOffset()}px`}
             tabIndex={-1}
             ref={spinnerRef}

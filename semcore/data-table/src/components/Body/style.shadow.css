@@ -284,9 +284,13 @@ SSpinContainer {
 
   &[headerHeight] {
     position: sticky;
-    top: 0;
+    top: var(--headerHeight);
     height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
     min-height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
+  }
+
+  &[hasGroups] {
+    grid-area: 3 / 1 / 20 / 5;
   }
 }
 
