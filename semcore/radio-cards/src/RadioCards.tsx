@@ -105,6 +105,7 @@ function Item(
   const SRadioItem = Root;
   const SRadioItemHeader = Flex;
   const SRadioItemHeaderLeftAddon = Flex;
+  const SRadioItemHeaderText = SemcoreText;
   const SRadioItemHeaderRightAddon = SemcoreText;
   const SRadioItemDescription = SemcoreText;
   const { Children, styles, iconAddon, text, textAddon, description, disabled, checked, dot, children } = props;
@@ -127,7 +128,7 @@ function Item(
             <>
               <SRadioItemHeader>
                 {iconAddon && <SRadioItemHeaderLeftAddon>{iconAddon}</SRadioItemHeaderLeftAddon>}
-                {text && <SemcoreText size={300} use='primary'>{text}</SemcoreText>}
+                {text && <SRadioItemHeaderText size={300} use='primary'>{text}</SRadioItemHeaderText>}
                 {textAddon && (
                   <SRadioItemHeaderRightAddon size={300}>
                     {textAddon}

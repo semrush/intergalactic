@@ -34,6 +34,11 @@ SRadioItemHeader {
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
 }
 
+SRadioItemHeaderText,
+SRadioItemDescription {
+  text-align: left;
+}
+
 SRadioItemHeaderLeftAddon,
 SRadioItemHeaderRightAddon {
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
@@ -41,8 +46,4 @@ SRadioItemHeaderRightAddon {
 
 SRadioItemHeaderLeftAddon {
   transform: translateY(4px);
-}
-
-SRadioItemDescription {
-  text-align: left;
 }
