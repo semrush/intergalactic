@@ -6,6 +6,7 @@ import React from 'react';
 
 import InputNumber from '../src';
 import type { NSInputNumber } from '../src';
+import { localizedMessages } from '../src/translations/__intergalactic-dynamic-locales';
 
 describe('input-number Dependency imports', () => {
   runDependencyCheckTests('input-number');
@@ -178,64 +179,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('1.00');
   });
 
-  test.sequential('Verify int numbers', async () => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <InputNumber>
-        <InputNumber.Value data-testid='input1' value='' onChange={spy} />
-      </InputNumber>,
-    );
-    const input = getByTestId('input1');
-    await focusInput(input);
-    await userEvent.keyboard('123');
-    expect(spy).lastCalledWith('123', expect.anything());
-  });
-
-  test.sequential('Verify float numbers', async () => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <InputNumber>
-        <InputNumber.Value data-testid='input2' value='' onChange={spy} />
-      </InputNumber>,
-    );
-    const input = getByTestId('input2');
-    await focusInput(input);
-    await userEvent.keyboard('123.4');
-    expect(spy).lastCalledWith('123.4', expect.anything());
-  });
-
-  test.concurrent('Verify format in int numbers', async () => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <InputNumber>
-        <InputNumber.Value data-testid='input3' value='' onChange={spy} />
-      </InputNumber>,
-    );
-
-    const input = getByTestId('input3') as HTMLInputElement;
-    await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('12345');
-
-    expect(spy).lastCalledWith('12345', expect.anything());
-    expect(input.value).toBe('12,345');
-  });
-
-  test.sequential('Verify format in float numbers', async () => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <InputNumber>
-        <InputNumber.Value data-testid='input4' value='' onChange={spy} />
-      </InputNumber>,
-    );
-
-    const input = getByTestId('input4') as HTMLInputElement;
-    await focusInput(input);
-    await userEvent.keyboard('12345.4');
-    expect(spy).lastCalledWith('12345.4', expect.anything());
-    expect(input.value).toBe('12,345.4');
-  });
-
-  test.sequential('Verify not locale decimal separator', async () => {
+  test.sequential('Verify English locale accepts comma as an alternative decimal separator', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -251,27 +195,97 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,345.99');
   });
 
-  test.sequential('Verify Spanish locale decimal separator', async () => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <InputNumber locale='es'>
-        <InputNumber.Value data-testid='input3344' value='' onChange={spy} />
-      </InputNumber>,
-    );
+  const localeGroups = [
+    {
+      locales: ['en', 'ja', 'ko', 'zh'],
+      thousandsSeparator: ',',
+      decimalSeparator: '.',
+      groupFourDigitNumbers: true,
+    },
+    {
+      locales: ['de', 'nl', 'pt', 'tr', 'vi'],
+      thousandsSeparator: '.',
+      decimalSeparator: ',',
+      groupFourDigitNumbers: true,
+    },
+    {
+      locales: ['es', 'it'],
+      thousandsSeparator: '.',
+      decimalSeparator: ',',
+      groupFourDigitNumbers: false,
+    },
+    {
+      locales: ['fr'],
+      thousandsSeparator: '\u202F',
+      decimalSeparator: ',',
+      groupFourDigitNumbers: true,
+    },
+    {
+      locales: ['sv'],
+      thousandsSeparator: '\u00A0',
+      decimalSeparator: ',',
+      groupFourDigitNumbers: true,
+    },
+    {
+      locales: ['pl'],
+      thousandsSeparator: '\u00A0',
+      decimalSeparator: ',',
+      groupFourDigitNumbers: false,
+    },
+  ];
 
-    const input = getByTestId('input3344') as HTMLInputElement;
-    await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('1000');
+  test('Verify locale separator cases cover every supported locale', () => {
+    const testedLocales = localeGroups.flatMap(({ locales }) => locales).sort();
+    const supportedLocales = Object.keys(localizedMessages).sort();
 
-    expect(spy).lastCalledWith('1000', expect.anything());
-    expect(input.value).toBe('1000');
-
-    // in Spanish thousand's separator starts from ten-thousandths instead of thousandths.
-    await userEvent.keyboard('00');
-
-    expect(spy).lastCalledWith('100000', expect.anything());
-    expect(input.value).toBe('100.000');
+    expect(testedLocales).toEqual(supportedLocales);
   });
+
+  for (const {
+    locales,
+    thousandsSeparator,
+    decimalSeparator,
+    groupFourDigitNumbers,
+  } of localeGroups) {
+    for (const locale of locales) {
+      test.sequential(`Verify locale=${locale} thousands and decimal separators`, async () => {
+        const spy = vi.fn();
+        const { getByTestId } = render(
+          <InputNumber locale={locale}>
+            <InputNumber.Value data-testid='localized-input' value='' onChange={spy} />
+          </InputNumber>,
+        );
+        const input = getByTestId('localized-input') as HTMLInputElement;
+
+        await focusInput(input);
+        await userEvent.keyboard('1000');
+
+        const expectedFourDigitValue = groupFourDigitNumbers
+          ? `1${thousandsSeparator}000`
+          : '1000';
+        expect(input.value, `Unexpected four-digit grouping for locale "${locale}"`)
+          .toBe(expectedFourDigitValue);
+
+        await userEvent.keyboard('0');
+
+        expect(input.value, `Unexpected five-digit grouping for locale "${locale}"`)
+          .toBe(`10${thousandsSeparator}000`);
+
+        await userEvent.keyboard('0');
+
+        expect(spy).lastCalledWith('100000', expect.anything());
+        expect(input.value, `Unexpected thousands separator for locale "${locale}"`)
+          .toBe(`100${thousandsSeparator}000`);
+
+        await userEvent.keyboard(`${decimalSeparator}99`);
+
+        expect(spy.mock.lastCall?.[0], `Unexpected parsed value for locale "${locale}"`)
+          .toBe('100000.99');
+        expect(input.value, `Unexpected decimal separator for locale "${locale}"`)
+          .toBe(`100${thousandsSeparator}000${decimalSeparator}99`);
+      });
+    }
+  }
 
   test.sequential('Verify format in hundredths fractions numbers', async () => {
     const spy = vi.fn();
