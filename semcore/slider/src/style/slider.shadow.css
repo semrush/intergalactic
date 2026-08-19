@@ -3,7 +3,7 @@ SSlider {
   width: 140px;
   box-sizing: border-box;
   cursor: pointer;
-  padding-top: var(--intergalactic-spacing-5x, 20px);
+  padding: var(--intergalactic-spacing-5x, 20px) 0 0 0;
   border: none;
   background-color: transparent;
 
@@ -15,14 +15,13 @@ SSlider {
     height: 4px;
     width: 100%;
     border-radius: var(--intergalactic-progress-bar-rounded, 6px);
-    background-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07)); /* TODO: --intergalactic-control-slider-bar-bg */
+    background-color: var(--intergalactic-control-slider-bar-bg, oklch(0.157 0.029 176 / 0.11));
   }
 
   &:hover:before {
-    background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-slider-bar-bg-hover */
+    background-color: var(--intergalactic-control-slider-bar-bg-hover, oklch(0.92 0.002 178.5));
   }
 
-  &:active SKnob,
   &:focus-visible SKnob {
     @mixin focus-outline-mixin {
       transition-property: outline-color, outline-width, outline-offset, left;
@@ -50,7 +49,7 @@ SBar {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-slider-bar-value-bg */
+  background-color: var(--intergalactic-control-slider-bar-value-bg, oklch(0.23 0.01 140));
   cursor: pointer;
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) width ease-in-out;
 }
@@ -62,14 +61,17 @@ SKnob {
   width: 20px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0)); /* TODO: --intergalactic-control-slider-knob-bg */
-  border: 5px solid var(--intergalactic-control-primary-info, oklch(0.23 0.01 140)); /* TODO: --intergalactic-control-slider-knob-border */
+  background-color: var(--intergalactic-control-slider-knob-bg, #ffffff);
+  border: 5px solid var(--intergalactic-control-slider-knob-border, oklch(0.23 0.01 140));
   cursor: pointer;
   transform: translate(-50%, -50%);
-  transition: calc(var(--intergalactic-duration-control, 200) * 1ms) left ease-in-out;
+  transition-duration: calc(var(--intergalactic-duration-control, 200) * 1ms);
+  transition-property: left, transform;
+  transition-timing-function: ease-in-out;
 
   &:hover {
-    border-color: var(--intergalactic-control-primary-info-hover, oklch(0.32 0.007 140)); /* TODO: --intergalactic-control-slider-knob-border-hover */
+    border-color: var(--intergalactic-control-slider-knob-border-hover, oklch(0.32 0.007 140));
+    transform: translate(-50%, -50%) scale(1.2);
   }
 }
 
@@ -80,7 +82,6 @@ SInput {
 }
 
 SSliderOptions {
-  padding-top: var(--intergalactic-spacing-05x, 2px);
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   font-size: var(--intergalactic-fs-200, 14px);
   font-weight: var(--intergalactic-regular, 400);
