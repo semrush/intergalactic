@@ -1322,6 +1322,9 @@ importers:
         specifier: 5.1.2
         version: 5.1.2
     devDependencies:
+      '@semcore/badge':
+        specifier: workspace:*
+        version: link:../badge
       '@semcore/base-components':
         specifier: workspace:*
         version: link:../base-components

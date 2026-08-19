@@ -12,7 +12,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput />;
 ```
 
-<TypesView type="InlineInputProps" :types={...types} />
+<TypesView type="NSInlineInput.Props" :types={...types} />
 
 ## InlineInput.Value
 
@@ -23,7 +23,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.Value />;
 ```
 
-<TypesView type="InlineInputValueProps" :types={...types} />
+<TypesView type="NSInlineInput.Value.Props" :types={...types} />
 
 ## InlineInput.Addon
 
@@ -47,7 +47,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.ConfirmControl />;
 ```
 
-<TypesView type="InlineInputConfirmControlProps" :types={...types} />
+<TypesView type="NSInlineInput.ConfirmControl.Props" :types={...types} />
 
 ## InlineInput.CancelControl
 
@@ -58,6 +58,6 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.CancelControl />;
 ```
 
-<TypesView type="InlineInputCancelControlProps" :types={...types} />
+<TypesView type="NSInlineInput.CancelControl.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

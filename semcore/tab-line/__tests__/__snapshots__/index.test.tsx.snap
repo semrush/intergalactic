@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TabLine > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "TabLine.Item.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "TabLine.Item.Text",
+            },
+          ],
+          "uiName": "TabLine.Item",
+        },
+      ],
+      "uiName": "TabLine",
+    },
+  ],
+  "uiName": null,
+}
+`;

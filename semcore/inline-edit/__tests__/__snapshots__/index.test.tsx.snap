@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InlineEdit > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "InlineEdit.View",
+        },
+      ],
+      "uiName": "InlineEdit",
+    },
+  ],
+  "uiName": null,
+}
+`;

@@ -1,4 +1,4 @@
-import type { LinkProps } from './Link.types';
+import type { LinkProps, NSLink } from './Link.types';
 
 export { default } from './Link';
-export type { LinkProps };
+export type { LinkProps, NSLink };

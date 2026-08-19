@@ -182,7 +182,7 @@ export const L_BG_SELECTED_HOVER = 0.9;
 
 /** Background levels */
 export const L_BG_LIGHT = 0.96;
-export const L_BG_MEDIUM = 0.88; // Midlight?
+export const L_BG_MEDIUM = 0.92; // Midlight?
 export const L_BG_STRONG = 0.64; // Heavy? Dark?
 
 export const L_BG_SKELETON = 0.94;
@@ -237,7 +237,7 @@ export const L_BORDER_ACTIVE = 0.7; // focused inputs, active states of pills an
 /** Border focus      | ⚠️ APCA 30 on secondary bg */
 export const L_BORDER_FOCUS = 0.7;
 /** Border strong         | ⚠️ APCA 60+ under white */
-export const L_BORDER_STRONG = 0.23; // selected presets items
+export const L_BORDER_STRONG = 0.23; // tab-line, accordions, radio-cards, selected items
 
 // =============================================================================
 // Invert levels
@@ -261,7 +261,7 @@ export const L_INV_BG_BUTTON_HOVER = 0.96;
 export const L_INV_BG_BUTTON_ACTIVE = 0.94;
 
 /** Background levels */
-export const L_INV_BG_LIGHT = 0.3;
+export const L_INV_BG_LIGHT = 0.33;
 export const L_INV_BG_MEDIUM = 0.5;
 
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
@@ -275,6 +275,6 @@ export const L_INV_ICON_PRIMARY = 0.85;
 export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
-export const L_INV_BORDER_PRIMARY = 0.5; // inputs, buttons, table header
+export const L_INV_BORDER_PRIMARY = 0.55; // inputs, buttons, spin
 /** Border secondary */
 export const L_INV_BORDER_SECONDARY = 0.35;

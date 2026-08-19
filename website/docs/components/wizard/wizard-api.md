@@ -10,7 +10,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard />;
 ```
 
-<TypesView type="WizardProps" :types={...types} />
+<TypesView type="NSWizard.Props" :types={...types} />
 
 ## Wizard.Sidebar
 
@@ -19,7 +19,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.Sidebar />;
 ```
 
-<TypesView type="WizardSidebarProps" :types={...types} />
+<TypesView type="NSWizard.Sidebar.Props" :types={...types} />
 
 ## Wizard.Stepper
 
@@ -28,7 +28,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.Stepper />;
 ```
 
-<TypesView type="WizardStepperProps" :types={...types} />
+<TypesView type="NSWizard.Stepper.Props" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
 
@@ -39,7 +39,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.Step />;
 ```
 
-<TypesView type="WizardStepProps" :types={...types} />
+<TypesView type="NSWizard.Step.Props" :types={...types} />
 
 ## Wizard.StepTitle
 
@@ -48,7 +48,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.StepTitle />;
 ```
 
-<TypesView type="WizardStepTitleProps" :types={...types} />
+<TypesView type="NSWizard.StepTitle.Props" :types={...types} />
 
 ## Wizard.Content
 
@@ -57,7 +57,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.Content />;
 ```
 
-<TypesView type="WizardContentProps" :types={...types} />
+<TypesView type="NSWizard.Content.Props" :types={...types} />
 
 ## Wizard.StepBack
 
@@ -66,7 +66,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.StepBack />;
 ```
 
-<TypesView type="WizardStepBackProps" :types={...types} />
+<TypesView type="NSWizard.StepBack.Props" :types={...types} />
 
 ## Wizard.StepNext
 
@@ -75,4 +75,4 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.StepNext />;
 ```
 
-<TypesView type="WizardStepNextProps" :types={...types} />
+<TypesView type="NSWizard.StepNext.Props" :types={...types} />

@@ -1,0 +1,110 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FullscreenModal > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "Close",
+                            },
+                          ],
+                          "uiName": "Button.Addon",
+                        },
+                      ],
+                      "uiName": "FullscreenModal.Close.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "FullscreenModal.Close",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "ArrowLeft",
+                            },
+                          ],
+                          "uiName": "Link.Addon",
+                        },
+                        {
+                          "children": [],
+                          "uiName": "ButtonLink.Text",
+                        },
+                      ],
+                      "uiName": "FullscreenModal.Back.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "FullscreenModal.Back",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "FullscreenModal.Title",
+                    },
+                    {
+                      "children": [],
+                      "uiName": "FullscreenModal.Description",
+                    },
+                  ],
+                  "uiName": "FullscreenModal.Header",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "FullscreenModal.Section",
+                    },
+                  ],
+                  "uiName": "FullscreenModal.Body",
+                },
+                {
+                  "children": [],
+                  "uiName": "FullscreenModal.Footer",
+                },
+              ],
+              "uiName": "FullscreenModal",
+            },
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Modal.Overlay.ContentWrapper",
+        },
+      ],
+      "uiName": "Modal.Overlay",
+    },
+  ],
+  "uiName": null,
+}
+`;

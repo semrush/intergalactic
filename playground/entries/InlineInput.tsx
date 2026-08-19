@@ -1,12 +1,12 @@
 import InlineInput from '@semcore/ui/inline-input';
-import type { InlineInputProps } from '@semcore/ui/inline-input';
+import type { NSInlineInput } from '@semcore/ui/inline-input';
 import React from 'react';
 
 import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type InlineInputJSXProps = JSXProps<InlineInputProps>;
+export type InlineInputJSXProps = JSXProps<NSInlineInput.Props>;
 
 function getJSX({ handleControlChange, ...inlineInputProps }: InlineInputJSXProps) {
   return (
