@@ -1440,8 +1440,12 @@ export const theme: Theme = {
         value: 'oklch(1 0 0)',
         description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
       },
-      progress_bar_value_gradient: {
+      progress_bar_value_gradient_DEFAULT: {
         value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 75%, {semanticTokens.colors.brand.secondary} 0%)',
+        description: 'Value with gradient for the ProgressBar.',
+      },
+      progress_bar_value_gradient_invert: {
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.primary} l c h / 0.78) 25%, {semanticTokens.colors.brand.primary} 0%, {semanticTokens.colors.brand.primary} 50%, oklch(from {semanticTokens.colors.brand.primary} l c h / 0.78) 0%, oklch(from {semanticTokens.colors.brand.primary} l c h / 0.78) 75%, {semanticTokens.colors.brand.primary} 0%)',
         description: 'Value with gradient for the ProgressBar.',
       },
       scroll_area_dropdown_menu_bottom: {
@@ -3002,7 +3006,10 @@ type SemanticColors = {
         };
       };
       value: {
-        gradient: Value;
+        gradient: {
+          DEFAULT: Value;
+          invert: Value;
+        };
         bg: Value;
       };
       pattern: {

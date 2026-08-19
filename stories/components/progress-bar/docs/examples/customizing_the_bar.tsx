@@ -14,7 +14,7 @@ const Demo = (props: ProgressBarExampleProps) => {
 export const defaultProps: ProgressBarExampleProps = {
   size: 'm',
   value: 60,
-  theme: 'progress-bar-bg',
+  theme: 'default',
   duration: undefined,
 };
 

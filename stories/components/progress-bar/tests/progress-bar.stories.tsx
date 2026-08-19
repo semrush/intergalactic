@@ -24,7 +24,7 @@ const commonArgTypes = {
   },
   theme: {
     control: { type: 'select' },
-    options: ['invert', 'dark', 'violet-100'],
+    options: ['default', 'invert', 'violet-100'],
   },
 } as const;
 

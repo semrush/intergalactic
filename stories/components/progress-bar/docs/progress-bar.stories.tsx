@@ -25,7 +25,7 @@ export const CustomizingTheBar: StoryObj<typeof CustomizingTheBarProps> = {
     },
     theme: {
       control: { type: 'select' },
-      options: ['invert', 'dark', 'violet-100'],
+      options: ['default', 'invert', 'violet-100'],
     },
     value: {
       control: { type: 'number' },

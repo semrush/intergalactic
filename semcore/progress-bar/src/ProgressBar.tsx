@@ -10,7 +10,7 @@ import style from './style/progress-bar.shadow.css';
 function isCustomTheme(theme?: string) {
   if (!theme) return false;
 
-  return !['dark', 'invert'].includes(theme);
+  return !['default', 'invert'].includes(theme);
 }
 
 class ProgressBarRoot extends Component<
@@ -27,7 +27,7 @@ class ProgressBarRoot extends Component<
   static defaultProps = () => ({
     duration: 1000,
     size: 'm',
-    theme: 'invert',
+    theme: 'default',
     children: <ProgressBar.Value />,
   } as const);
 
@@ -50,7 +50,7 @@ class ProgressBarRoot extends Component<
       <SProgressBar
         render={Box}
         use:theme={useTheme}
-        use:animation={!value}
+        use:animation={value === undefined}
         use:duration={`${duration}ms`}
         colorBg={resolveColor(theme)}
         role='progressbar'

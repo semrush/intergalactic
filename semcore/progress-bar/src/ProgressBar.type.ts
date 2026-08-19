@@ -5,9 +5,9 @@ declare namespace NSProgressBar {
   type Props = NSBox.Props & {
     /**
      * Progress bar theme
-     * @default invert
+     * @default default
      */
-    theme?: 'dark' | 'invert' | string;
+    theme?: 'default' | 'invert' | string;
     /**
      * Progress bar size
      * @default m
@@ -23,7 +23,7 @@ declare namespace NSProgressBar {
   type DefaultProps = {
     duration: 1000;
     size: 'm';
-    theme: 'invert';
+    theme: 'default';
     children: React.ReactNode;
   };
 
