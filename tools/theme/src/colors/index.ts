@@ -237,7 +237,7 @@ export const L_BORDER_ACTIVE = 0.7; // focused inputs, active states of pills an
 /** Border focus      | ⚠️ APCA 30 on secondary bg */
 export const L_BORDER_FOCUS = 0.7;
 /** Border strong         | ⚠️ APCA 60+ under white */
-export const L_BORDER_STRONG = 0.23; // selected presets items
+export const L_BORDER_STRONG = 0.23; // tab-line, accordions, radio-cards, selected items
 
 // =============================================================================
 // Invert levels
@@ -275,6 +275,6 @@ export const L_INV_ICON_PRIMARY = 0.85;
 export const L_INV_ICON_PRIMARY_HOVER = 0.8;
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
-export const L_INV_BORDER_PRIMARY = 0.55; // inputs, buttons, spin
+export const L_INV_BORDER_PRIMARY = 0.46; // inputs, buttons, spin
 /** Border secondary */
 export const L_INV_BORDER_SECONDARY = 0.35;
