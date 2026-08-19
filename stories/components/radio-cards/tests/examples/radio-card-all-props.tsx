@@ -7,25 +7,25 @@ import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 type ExampleProps = NSRadioCards.Props & {
-  itemDisabled?: boolean;
+  disabledCard?: 'none' | '1' | '2' | '3' | '4';
   text?: string;
   textAddon?: string;
   description?: string;
   showIconAddon?: boolean;
-  dot?: string;
+  dot?: boolean;
 };
 
 const Demo = (props: ExampleProps) => {
   const {
     value,
     disabled,
-    itemDisabled = false,
+    disabledCard = 'none',
     text = 'Lost and Vital',
     textAddon = '24',
     description = 'Restore these backlinks first',
     showIconAddon = true,
     'aria-label': ariaLabel = 'Radio cards',
-    dot,
+    dot = false,
   } = props;
 
   const [selected, setSelected] = React.useState(value);
@@ -46,7 +46,8 @@ const Demo = (props: ExampleProps) => {
           value='1'
           text='All'
           textAddon='~90,000,000'
-          dot={dot}
+          dot={dot ? 'New' : undefined}
+          disabled={disabledCard === '1'}
         />
         <RadioCards.Item
           value='2'
@@ -54,13 +55,14 @@ const Demo = (props: ExampleProps) => {
           textAddon='300'
           description='Most valuable backlinks'
           iconAddon={<Fire />}
+          disabled={disabledCard === '2'}
         />
         <RadioCards.Item
           value='3'
           text='Top New'
           textAddon='100'
           description='Recently acquired backlinks'
-          disabled={itemDisabled}
+          disabled={disabledCard === '3'}
         />
         <RadioCards.Item
           value='4'
@@ -68,6 +70,7 @@ const Demo = (props: ExampleProps) => {
           textAddon={textAddon}
           description={description}
           iconAddon={showIconAddon ? <ThumbUp /> : undefined}
+          disabled={disabledCard === '4'}
         />
       </RadioCards>
       <Text size={200} use='secondary'>Selected value: {selected || '(none)'}</Text>
@@ -79,11 +82,12 @@ export const defaultRadioCardsProps: ExampleProps = {
   'aria-label': 'Radio cards',
   'value': '2',
   'disabled': false,
-  'itemDisabled': true,
+  'disabledCard': '3',
   'text': 'Lost and Vital',
   'textAddon': '24',
   'description': 'Restore these backlinks first',
   'showIconAddon': true,
+  'dot': false,
 };
 
 Demo.defaultProps = defaultRadioCardsProps;

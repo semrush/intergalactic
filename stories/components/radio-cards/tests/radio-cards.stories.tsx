@@ -26,9 +26,10 @@ export const RadioCardAllProps: StoryObj<typeof defaultRadioCardsProps> = {
       control: { type: 'boolean' },
       description: 'Disables the entire radio group and all radio cards',
     },
-    'itemDisabled': {
-      control: { type: 'boolean' },
-      description: 'Disables only "Top New" to demonstrate item-level disabled',
+    'disabledCard': {
+      control: { type: 'select' },
+      options: ['none', '1', '2', '3', '4'],
+      description: 'Disables the card with this value, to demonstrate item-level disabled (RadioCards.Item disabled prop)',
     },
     'text': {
       control: { type: 'text' },
@@ -48,7 +49,7 @@ export const RadioCardAllProps: StoryObj<typeof defaultRadioCardsProps> = {
     },
     'dot': {
       control: { type: 'boolean' },
-      description: 'Accessible name for Dot (RadioCards.Item dot prop)',
+      description: 'Shows a Dot indicator with the "New" label on the 1st card (RadioCards.Item dot prop)',
     },
   },
   args: defaultRadioCardsProps,
