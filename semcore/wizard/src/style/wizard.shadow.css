@@ -11,7 +11,6 @@ SSidebar {
   color: var(--intergalactic-wizard-sidebar-text-primary, oklch(0.999 0.001 180 / 0.949));
   font-weight: var(--intergalactic-bold, 700);
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
   padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px) var(--intergalactic-spacing-content-padding-small, 8px);
   max-width: 220px;
   flex-shrink: 0;
@@ -32,7 +31,6 @@ SSidebar {
     cursor: pointer;
     position: relative;
     overflow: auto;
-    line-height: var(--intergalactic-lh-200, 142%);
 
     &:focus-visible {
       outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));
@@ -86,10 +84,6 @@ SStepNumber {
   display: inline-block;
   min-width: 20px;
   text-align: center;
-
-  &:has(svg) {
-    line-height: normal;
-  }
 }
 
 SStepDescription {
@@ -100,7 +94,7 @@ SStepDescription {
 }
 
 SCompleted {
-  transform: translateY(2px);
+  transform: translateY(1px);
 }
 
 SContent {
