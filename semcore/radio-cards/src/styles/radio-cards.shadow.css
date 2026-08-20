@@ -41,7 +41,7 @@ SRadioItemDescription {
 
 SRadioItemHeaderLeftAddon {
   transform: translateY(4px);
-  color: var(--intergalactic-icon-primary-neutral);
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
 
