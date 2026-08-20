@@ -2880,8 +2880,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Default primary link color.",
     "components": [
-      "link",
-      "tab-panel"
+      "link"
     ]
   },
   {

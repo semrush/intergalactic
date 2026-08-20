@@ -29,8 +29,7 @@ Component consists of the following:
 
 ### Sizes
 
-- The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
-- Addons before and after the text have a margin of 8px.
+TabLine has 2 sizes: M and L.
 
 Table: TabLine sizes and margins
 
