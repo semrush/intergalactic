@@ -21,7 +21,6 @@ SSidebar {
   }
 
   SStepper {
-    display: flex;
     box-sizing: border-box;
     min-height: 36px;
     gap: var(--intergalactic-spacing-content-gap-small, 4px);
@@ -84,17 +83,20 @@ SStepNumber {
   display: inline-block;
   min-width: 20px;
   text-align: center;
+
+  &:has(svg) {
+    align-self: end;
+  }
 }
 
 SStepDescription {
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-content-gap-small, 4px);
+
   overflow-wrap: anywhere;
   @media (max-width: 1060px) {
     display: none;
   }
-}
-
-SCompleted {
-  transform: translateY(1px);
 }
 
 SContent {
