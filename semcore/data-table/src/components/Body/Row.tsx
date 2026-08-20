@@ -1,6 +1,7 @@
 import { Box, Collapse } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
@@ -27,6 +28,7 @@ type DefaultProps = {
   'aria-level': undefined;
 };
 
+@propsObserver(['columns'])
 export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   DataTableRowProps<Data, UniqKeyType>,
   [],
@@ -45,6 +47,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private cellName: string = '';
   private closeAccordionTimeout = 0;
   private openAccordionTimeout = 0;
+  private readonly cellStyle = new Map<string, React.CSSProperties>();
 
   rowElementRef = React.createRef<HTMLDivElement>();
 
@@ -58,6 +61,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     super(props);
 
     this.handleClickRow = this.handleClickRow.bind(this);
+
+    this.recalculateCellStyle();
   }
 
   componentDidMount() {
@@ -77,6 +82,31 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentWillUnmount() {
     this.asProps.componentRef?.(null);
+  }
+
+  onPropsChange(changedProps: Record<string, unknown>) {
+    if ('columns' in changedProps) {
+      this.recalculateCellStyle();
+    }
+  }
+
+  recalculateCellStyle() {
+    const { columns, getFixedStyle } = this.props;
+
+    columns.forEach((column) => {
+      if (column.fixed) {
+        const styles: React.CSSProperties = {};
+        this.cellStyle.set(column.name, styles);
+
+        const [name, value] = getFixedStyle(column);
+
+        if (name !== undefined && value !== undefined) {
+          styles[name] = value;
+        }
+      } else {
+        this.cellStyle.delete(column.name);
+      }
+    });
   }
 
   setAccordion() {
@@ -267,7 +297,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       tableRef,
       onCellClick,
       rawData,
-      shadowVertical,
       flatRows,
       variant,
       isAccordionRow,
@@ -313,7 +342,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       children: props?.children ?? defaultRender(),
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
-      shadowVertical,
       withoutBorder,
       theme,
     };
@@ -575,7 +603,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 accordionRowIndex={accordionRowIndex}
                 rows={rows}
                 aria-hidden={isCellHidden}
-                style={style}
+                style={this.cellStyle.get(column.name)}
+                shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
               />
             );

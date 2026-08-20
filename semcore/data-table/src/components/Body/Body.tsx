@@ -115,7 +115,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       gridTemplateAreas,
       gridTemplateColumns,
       expandedRows,
-      columns,
       onExpandRow,
       loading,
       hasGroups,
@@ -128,7 +127,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       sideIndents,
       selectedRows,
       onSelectRow,
-      getFixedStyle,
       accordionDuration,
       accordionAnimationRows,
       getI18nText,
@@ -156,7 +154,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       uid,
       gridTemplateAreas,
       gridTemplateColumns,
-      columns,
       rowIndex: index,
       gridRowIndex,
       rows,
@@ -168,7 +165,6 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       inert: loading ? '' : undefined,
       scrollAreaRef,
       sideIndents: sideIndentsValue,
-      getFixedStyle,
       mergedRow: props.mergedRow,
       accordionDuration,
       accordionAnimationRows,
@@ -237,6 +233,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       rows,
       renderCellOverlay,
       selectedRows,
+      getFixedStyle,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -360,7 +357,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
-        {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
+        {emptyRow && <Body.Row row={emptyRow} isNonInteractive columns={columns} getFixedStyle={getFixedStyle} />}
         {needMarginTop && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
@@ -376,6 +373,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 rowIndex={index}
                 handleRef={this.handleRef}
                 handleComponentRef={this.handleComponentRef}
+                getFixedStyle={getFixedStyle}
               />
             );
           }
@@ -386,6 +384,8 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
               row={row}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
               componentRef={this.handleComponentRef(row)}
+              columns={columns}
+              getFixedStyle={getFixedStyle}
             />
           );
         })}

@@ -21,6 +21,7 @@ const columns = [
 
 type TableProps = {
   selectedRows: SelectableRows<string>;
+  handleSelectRows: any;
   tableRef: React.Ref<HTMLDivElement>;
 
   sideIndents?: 'wide';
@@ -41,7 +42,7 @@ export const Table = (props: TableProps) => {
         aria-label='Table example with selectable rows'
         defaultGridTemplateColumnWidth='auto'
         selectedRows={props.selectedRows}
-        // onSelectedRowsChange={props.handleChangeSelectedRows}
+        onSelectedRowsChange={props.handleSelectRows}
         ref={props.tableRef}
         sideIndents={props.sideIndents}
         loading={props.loading}

@@ -20,13 +20,13 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
   rowIndex: number;
   handleRef: (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => void;
   handleComponentRef: (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => void;
-
+  getFixedStyle: DataTableRowProps<Data, UniqKeyType>['getFixedStyle'];
 };
 
 export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.PureComponent<RowGroupProps<Data, UniqKeyType>> {
   render() {
     const SRowGroup = Box;
-    const { rows, selectedRows, columns, startIndex, rowIndex } = this.props;
+    const { rows, selectedRows, columns, startIndex, rowIndex, getFixedStyle } = this.props;
 
     const groupUniqKey = rows[0][UNIQ_ROW_KEY];
 
@@ -50,6 +50,8 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
             row: item,
             mergedRow: i > 0 ? true : false,
             componentRef: this.props.handleComponentRef(item),
+            columns,
+            getFixedStyle,
           };
 
           return (

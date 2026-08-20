@@ -48,6 +48,12 @@ export type DataTableRowProps<Data extends DataTableData, UniqKeyType> = {
   accordionIndex?: number;
 
   theme?: Theme;
+
+  columns: DTColumn[];
+
+  getFixedStyle: (
+    cell: Pick<DTColumn, 'name' | 'fixed'>,
+  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
 };
 
 export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.IntrinsicElements['div'] & {
@@ -57,7 +63,6 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
    */
   mergedRow?: boolean;
 
-  columns: DTColumn[];
   row: DTRow<UniqKeyType> | DTRow<UniqKeyType>[];
   rows: DTRows<UniqKeyType>;
   flatRows: DTRow<UniqKeyType>[];
@@ -86,9 +91,6 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   uid: string;
   sideIndents?: 'wide';
-  getFixedStyle: (
-    cell: Pick<DTColumn, 'name' | 'fixed'>,
-  ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];
 
   renderCell?: (props: CellRenderProps<Data[number], UniqKeyType>) => React.ReactNode | Record<string, any>;
   getI18nText: (key: string) => string;
