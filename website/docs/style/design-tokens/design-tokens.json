@@ -1732,7 +1732,6 @@
     "components": [
       "accordion",
       "carousel",
-      "drag-and-drop",
       "feature-highlight",
       "notice",
       "typography"
@@ -1810,6 +1809,7 @@
     "components": [
       "breadcrumbs",
       "carousel",
+      "drag-and-drop",
       "inline-input",
       "input",
       "input-number",
