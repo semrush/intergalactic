@@ -39,11 +39,12 @@ SRadioItemDescription {
   text-align: left;
 }
 
-SRadioItemHeaderLeftAddon,
-SRadioItemHeaderRightAddon {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-}
-
 SRadioItemHeaderLeftAddon {
   transform: translateY(4px);
+  color: var(--intergalactic-icon-primary-neutral);
+}
+
+
+SRadioItemHeaderRightAddon {
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
 }
