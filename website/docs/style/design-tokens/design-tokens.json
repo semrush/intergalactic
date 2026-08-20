@@ -3033,7 +3033,6 @@
       "dropdown",
       "dropdown-menu",
       "flags",
-      "fullscreen-modal",
       "pills",
       "slider",
       "switch",
@@ -3369,6 +3368,7 @@
       "button",
       "card",
       "dropdown",
+      "fullscreen-modal",
       "input",
       "input-tags",
       "modal",
@@ -3476,6 +3476,7 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "fullscreen-modal",
       "notice-bubble",
       "pagination"
     ]

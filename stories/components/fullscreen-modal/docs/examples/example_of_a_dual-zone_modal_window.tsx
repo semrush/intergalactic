@@ -53,12 +53,7 @@ const Demo = () => {
             </List>
           </FullscreenModal.Section>
         </FullscreenModal.Body>
-        <FullscreenModal.Footer
-          justifyContent='center'
-          alignItems='center'
-          gap={3}
-          py={3}
-        >
+        <FullscreenModal.Footer>
           <Button size='l' use='primary'>
             Submit
           </Button>
