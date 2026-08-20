@@ -59,7 +59,7 @@ const Demo = () => {
           gap={3}
           py={3}
         >
-          <Button size='l' theme='success' use='primary'>
+          <Button size='l' use='primary'>
             Submit
           </Button>
           <Button size='l'>
