@@ -9,8 +9,6 @@ SWizard {
 SSidebar {
   background: var(--intergalactic-wizard-sidebar-bg, oklch(0.23 0.01 140));
   color: var(--intergalactic-wizard-sidebar-text-primary, oklch(0.999 0.001 180 / 0.949));
-  font-weight: var(--intergalactic-bold, 700);
-  font-size: var(--intergalactic-fs-300, 16px);
   padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px) var(--intergalactic-spacing-content-padding-small, 8px);
   max-width: 220px;
   flex-shrink: 0;
@@ -24,12 +22,15 @@ SSidebar {
     box-sizing: border-box;
     min-height: 36px;
     gap: var(--intergalactic-spacing-content-gap-small, 4px);
-    font-size: var(--intergalactic-fs-200, 14px);
     border-radius: var(--intergalactic-control-rounded, 6px);
     padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-medium, 12px);
     cursor: pointer;
     position: relative;
     overflow: auto;
+
+    font-size: var(--intergalactic-fs-200); 
+    font-weight: var(--intergalactic-bold);
+    line-height: var(--intergalactic-lh-200, 142%);
 
     &:focus-visible {
       outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));
@@ -81,11 +82,12 @@ SSidebarHeader {
 
 SStepNumber {
   display: inline-block;
-  min-width: 20px;
+  flex-basis: 20px;
   text-align: center;
 
-  &:has(svg) {
-    align-self: end;
+  SCompleteIcon {
+    vertical-align: text-bottom;
+    transform: translateY(-1px);
   }
 }
 

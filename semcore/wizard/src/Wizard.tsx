@@ -248,6 +248,7 @@ function Stepper(
   const SStepper = Root;
   const SStepNumber = 'span';
   const SStepDescription = Flex;
+  const SCompleteIcon = CheckM;
 
   const handlerClick = React.useCallback(
     (e: React.SyntheticEvent<HTMLElement>) => {
@@ -284,7 +285,7 @@ function Stepper(
     >
       {completed && <ScreenReaderOnly>{getI18nText('completedStep')}</ScreenReaderOnly>}
       <ScreenReaderOnly><Children /></ScreenReaderOnly>
-      <SStepNumber aria-hidden='true'>{completed ? <CheckM /> : number}</SStepNumber>
+      <SStepNumber aria-hidden='true'>{completed ? <SCompleteIcon /> : number}</SStepNumber>
       <SStepDescription aria-hidden='true'>
         <Children />
       </SStepDescription>
