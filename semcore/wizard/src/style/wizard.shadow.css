@@ -88,10 +88,6 @@ SStepNumber {
   SCompleteIcon {
     vertical-align: text-bottom;
     transform: translateY(-1px);
-
-    @media (max-width: 1060px) {
-      transform: none;
-    }
   }
 }
 
