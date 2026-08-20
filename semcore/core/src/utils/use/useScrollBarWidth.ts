@@ -1,39 +1,66 @@
-import { useEffect, useState, useRef } from 'react';
+import { useSyncExternalStore } from 'react';
+
+type Dimension = 'vertical' | 'horizontal';
+
+const state: Record<Dimension, number> = { vertical: 0, horizontal: 0 };
+const listeners = new Set<() => void>();
+
+let rafId: number | null = null;
+let inited = false;
+
+function measureAndNotifyIfNeeded() {
+  if (!window.visualViewport) return;
+
+  const nextVertical = window.innerWidth - window.visualViewport.width;
+  const nextHorizontal = window.innerHeight - window.visualViewport.height;
+
+  if (nextVertical === state.vertical && nextHorizontal === state.horizontal) return;
+
+  state.vertical = nextVertical;
+  state.horizontal = nextHorizontal;
+
+  listeners.forEach((l) => l());
+}
+
+function handleResize() {
+  if (rafId !== null) return;
+
+  rafId = requestAnimationFrame(() => {
+    measureAndNotifyIfNeeded();
+    rafId = null;
+  });
+}
+
+function init() {
+  if (inited) return;
+
+  inited = true;
+
+  measureAndNotifyIfNeeded();
+
+  window.addEventListener('resize', handleResize);
+}
+
+function subscribe(onStoreChange: () => void) {
+  init();
+
+  listeners.add(onStoreChange);
+
+  return () => {
+    listeners.delete(onStoreChange);
+
+    if (listeners.size === 0) {
+      window.removeEventListener('resize', handleResize);
+    }
+  };
+}
 
 export function useScrollBarWidth(vertical = true): number {
-  const [scrollBarWidth, setScrollBarWidth] = useState(0);
-  const af = useRef<number | null>(null);
+  const dim: Dimension = vertical ? 'vertical' : 'horizontal';
 
-  useEffect(() => {
-    const calculateScrollBar = () => {
-      if (!window.visualViewport) return;
-
-      if (!vertical) {
-        setScrollBarWidth(window.innerHeight - window.visualViewport.height);
-        return;
-      }
-
-      setScrollBarWidth(window.innerWidth - window.visualViewport.width);
-    };
-
-    const handleResize = () => {
-      // to handle resize 1 time per frame
-      if (af.current !== null) return;
-
-      af.current = requestAnimationFrame(() => {
-        calculateScrollBar();
-        af.current = null;
-      });
-    };
-
-    calculateScrollBar();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      if (af.current !== null) cancelAnimationFrame(af.current);
-    };
-  }, []);
-
-  return scrollBarWidth;
+  return useSyncExternalStore(
+    subscribe,
+    () => state[dim],
+    () => 0,
+  );
 }
