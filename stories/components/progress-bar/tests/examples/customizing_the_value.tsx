@@ -8,7 +8,7 @@ const Demo = (props: ProgressBarExampleProps) => {
   return (
     <Box>
 
-      <ProgressBar tabIndex={0} aria-label='Custom theme example'>
+      <ProgressBar tabIndex={0} aria-label='Custom theme example' size={props.size}>
         <ProgressBar.Value value={props.value} size={props.size} theme={props.theme} duration={props.duration} />
       </ProgressBar>
 

@@ -15,16 +15,21 @@ const commonArgTypes = {
   size: {
     control: { type: 'select' },
     options: ['s', 'm', 'l'],
+    description: 'Height and border-radius of the bar',
   },
   value: {
     control: { type: 'number' },
+    description: 'Progress as a percentage. Omit it to get the indeterminate animated bar',
   },
   duration: {
     control: { type: 'number' },
+    description: 'Animation/transition duration in ms',
   },
   theme: {
     control: { type: 'select' },
-    options: ['default', 'invert', 'violet-100'],
+    options: ['default', 'invert', 'violet-100', 'brand-secondary'],
+    description:
+      'Built-in themes are `default` (light backgrounds) and `invert` (dark backgrounds). Any other value falls through to the custom-theme path and is resolved as a color token.',
   },
 } as const;
 

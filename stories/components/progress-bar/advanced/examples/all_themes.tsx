@@ -28,21 +28,21 @@ export default function AllThemes() {
             <ProgressBar
               theme='invert'
               value={0}
-              aria-label='Progress 0%, dark theme on dark background'
+              aria-label='Progress 0%, invert theme on dark background'
             />
           </Box>
           <Box w={240}>
             <ProgressBar
               theme='invert'
               value={40}
-              aria-label='Progress 40%, dark theme on dark background'
+              aria-label='Progress 40%, invert theme on dark background'
             />
           </Box>
           <Box w={240}>
             <ProgressBar
               theme='invert'
               value={100}
-              aria-label='Progress 100%, dark theme on dark background'
+              aria-label='Progress 100%, invert theme on dark background'
             />
           </Box>
         </Flex>
