@@ -70,6 +70,7 @@ STabLineItem {
     bottom: 0;
     height: 2px;
     background-color: var(--intergalactic-control-tab-line-border-hover, oklch(0.137 0.026 175.7 / 0.161));
+    transition-duration: calc(var(--intergalactic-duration-extra-fast, 100) * 1ms);
   }
 
   &[selected]::after {

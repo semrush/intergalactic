@@ -77,7 +77,7 @@ STabPanelItem[disabled] {
 }
 
 STabPanelItem[selected] {
-  color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary */
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   flex-shrink: 0;
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
