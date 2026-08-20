@@ -82,7 +82,7 @@ SSidebarHeader {
 
 SStepNumber {
   display: inline-block;
-  flex-basis: 20px;
+  min-width: 20px;
   text-align: center;
 
   SCompleteIcon {
