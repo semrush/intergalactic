@@ -28,8 +28,8 @@ SSidebar {
     position: relative;
     overflow: auto;
 
-    font-size: var(--intergalactic-fs-200); 
-    font-weight: var(--intergalactic-bold);
+    font-size: var(--intergalactic-fs-200, 14px); 
+    font-weight: var(--intergalactic-bold, 700);
     line-height: var(--intergalactic-lh-200, 142%);
 
     &:focus-visible {
@@ -88,6 +88,10 @@ SStepNumber {
   SCompleteIcon {
     vertical-align: text-bottom;
     transform: translateY(-1px);
+
+    @media (max-width: 1060px) {
+      transform: none;
+    }
   }
 }
 
