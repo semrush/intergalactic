@@ -167,7 +167,8 @@ class Value extends Component<
   getFormattedValue = (value: string) => {
     return value
       .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
-      .replace(this.separatorDecimal, '.');
+      .replace(this.separatorDecimal, '.')
+      .replace(new RegExp('\\.\\.', 'g'), '.');
   };
 
   valueParser = (
@@ -176,8 +177,7 @@ class Value extends Component<
     prevDisplayValue: NSInputNumber.Value.State['displayValue'],
   ) => {
     const { numberFormatter } = this.props;
-
-    const stringNumber = this.getFormattedValue(String(value));
+    const stringNumber = String(value);
 
     if (Number.isNaN(Number(stringNumber))) {
       return {
@@ -189,7 +189,7 @@ class Value extends Component<
     let displayValue = '';
 
     if (/\.[0-9]*0$/.test(stringNumber)) {
-      const [int, decimal] = stringNumber.split(this.separatorDecimal);
+      const [int, decimal] = stringNumber.split('.');
       displayValue = numberFormatter.format(+int) + this.separatorDecimal + decimal;
     } else if (stringNumber !== '') {
       displayValue = numberFormatter.format(+stringNumber);
