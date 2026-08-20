@@ -224,7 +224,7 @@ export const L_ICON_NON_INTERACTIVE = 0.6;
 export const L_ICON_PRIMARY = 0.58;
 export const L_ICON_PRIMARY_HOVER = 0.53; // Delete with minor
 /** Icon secondary    | ⚠️ APCA 30+ on secondary bg */
-export const L_ICON_SECONDARY = 0.7;
+export const L_ICON_SECONDARY = 0.8;
 export const L_ICON_SECONDARY_HOVER = 0.66; // Delete with minor
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
@@ -273,6 +273,9 @@ export const L_INV_TEXT_SECONDARY_HOVER = 0.85;
 /** Icon primary    | ⚠️ APCA 60+ on secondary bg */
 export const L_INV_ICON_PRIMARY = 0.85;
 export const L_INV_ICON_PRIMARY_HOVER = 0.8;
+
+/** Icon secondary    | ⚠️ APCA 60+ on primary bg */
+export const L_INV_ICON_SECONDARY = 0.45;
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
 export const L_INV_BORDER_PRIMARY = 0.46; // inputs, buttons, spin

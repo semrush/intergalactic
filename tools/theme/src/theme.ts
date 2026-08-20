@@ -57,6 +57,7 @@ import {
   L_INV_BORDER_SECONDARY,
   L_INV_ICON_PRIMARY,
   L_INV_ICON_PRIMARY_HOVER,
+  L_INV_ICON_SECONDARY,
   L_INV_TEXT_PRIMARY,
   L_INV_TEXT_SECONDARY,
   L_INV_TEXT_SECONDARY_HOVER,
@@ -1294,6 +1295,10 @@ export const theme: Theme = {
       icon_secondary_warning_hover_active: {
         value: warning.opaqueAt(L_ICON_SECONDARY_HOVER),
         description: 'Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.',
+      },
+      icon_secondary_invert_DEFAULT: {
+        value: neutral.opaqueInvAt(L_INV_ICON_SECONDARY),
+        description: 'Softer inverted icon for dense UI or inline hints where the surface should stay calm.',
       },
       illustration_blue: {
         value: blue.at(0.84),
@@ -2909,6 +2914,9 @@ type SemanticColors = {
         hover: {
           active: Value;
         };
+      };
+      invert: {
+        DEFAULT: Value;
       };
     };
     non: {

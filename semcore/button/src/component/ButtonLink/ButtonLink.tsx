@@ -1,4 +1,4 @@
-import type { Intergalactic } from '@semcore/core';
+import type { Intergalactic, IRootComponentProps } from '@semcore/core';
 import { createComponent, sstyled, Root, Component } from '@semcore/core';
 import Link from '@semcore/link';
 import React from 'react';
@@ -37,6 +37,12 @@ class RootButtonLink extends Component<
   }
 }
 
+function Text(props: IRootComponentProps) {
+  const SText = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SText render={Link.Text} />);
+}
+
 /**
  * ButtonLink
  *
@@ -45,7 +51,7 @@ class RootButtonLink extends Component<
 export const ButtonLink = createComponent<NSButtonLink.Component, typeof RootButtonLink>(
   RootButtonLink,
   {
-    Text: Link.Text,
+    Text,
     Addon: Link.Addon,
   },
   {

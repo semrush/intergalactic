@@ -764,6 +764,12 @@ importers:
       '@semcore/checkbox':
         specifier: ^17.2.1
         version: link:../checkbox
+      '@semcore/divider':
+        specifier: ^17.2.1
+        version: link:../divider
+      '@semcore/link':
+        specifier: ^17.2.1
+        version: link:../link
       '@semcore/spin':
         specifier: ^17.2.1
         version: link:../spin
@@ -783,9 +789,6 @@ importers:
       '@semcore/base-trigger':
         specifier: workspace:*
         version: link:../base-trigger
-      '@semcore/divider':
-        specifier: workspace:*
-        version: link:../divider
       '@semcore/dropdown-menu':
         specifier: workspace:*
         version: link:../dropdown-menu
