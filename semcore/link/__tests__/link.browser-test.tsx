@@ -75,6 +75,32 @@ const settleHint = async (page: Page) => {
   });
 };
 
+/**
+ * Waits until the ellipsis Hint is fully painted, and fails if it never opens.
+ */
+const waitForHint = async (page: Page) => {
+  await expect(locators.hint(page).first()).toBeVisible();
+
+  await page.waitForFunction(() => {
+    const el = document.querySelector('[data-ui-name="Hint"]');
+    if (!el) return false;
+    if (getComputedStyle(el).opacity !== '1') return false;
+    if (el.getAnimations?.().some((animation) => animation.playState === 'running')) return false;
+
+    const { x, y, width, height } = el.getBoundingClientRect();
+    const previous = (window as any).__hintRect;
+    (window as any).__hintRect = { x, y, width, height };
+
+    if (!previous) return false;
+
+    return previous.x === x && previous.y === y && previous.width === width && previous.height === height;
+  });
+
+  await page.evaluate(() => {
+    delete (window as any).__hintRect;
+  });
+};
+
 async function getTextClip(page: Page) {
   const clip = (await page.locator('[data-ui-name="Text"]').boundingBox())!;
   clip.x -= 100;
@@ -265,7 +291,15 @@ test.describe(` ${TAG.VISUAL}`, () => {
       if (row.state === 'default') {
         await page.keyboard.press('Tab');
         await expect(locators.link(page).first()).toBeFocused();
-        await settleHint(page);
+
+        // The hint is part of the expected picture wherever the text gets cropped, so it
+        // is asserted rather than tolerated: `ellipsis: 'off'` leaves the text whole and
+        // must stay hintless, every other variant has to open one before the shot.
+        if (row.ellipsis === 'off') {
+          await expect(locators.hint(page)).toHaveCount(0);
+        } else {
+          await waitForHint(page);
+        }
       }
 
       await expect(page).toHaveScreenshot({ clip: await getTextClip(page) });
