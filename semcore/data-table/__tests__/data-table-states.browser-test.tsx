@@ -258,13 +258,12 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
-
+      await page.keyboard.press('Enter');
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
       await expect(page).toHaveScreenshot();
 
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
       await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
       await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
     });

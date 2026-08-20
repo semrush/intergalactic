@@ -1,0 +1,50 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Modal > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Modal.Title",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": "Button.Text",
+                        },
+                      ],
+                      "uiName": "Modal.Close.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "Modal.Close",
+                },
+              ],
+              "uiName": "Modal.Window",
+            },
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Modal.Overlay.ContentWrapper",
+        },
+      ],
+      "uiName": "Modal.Overlay",
+    },
+  ],
+  "uiName": null,
+}
+`;

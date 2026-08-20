@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent, waitFor } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,24 @@ describe('inline-input Dependency imports', () => {
 
 describe('InlineInput', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const inlineInput = (
+      <>
+        <InlineInput>
+          <InlineInput.Addon />
+          <InlineInput.Value />
+          <InlineInput.ConfirmControl />
+          <InlineInput.CancelControl />
+        </InlineInput>
+      </>
+    );
+
+    const { container } = render(inlineInput);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.sequential('Verify blur behavior', async () => {
     // Leaving the field with Tab always discards changes (calls onCancel),

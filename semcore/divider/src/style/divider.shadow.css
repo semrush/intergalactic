@@ -10,7 +10,7 @@ SDivider[use='primary']SDivider[theme='default'] {
   background: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
 SDivider[use='primary']SDivider[theme='invert'] {
-  background-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391));
+  background-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.009 144.4 / 0.347));
   opacity: 0.2;
 }
 
@@ -34,7 +34,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='defau
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='invert'] {
   background-image: linear-gradient(
     to right,
-    var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391)) 3px,
+    var(--intergalactic-border-primary-invert, oklch(0.995 0.009 144.4 / 0.347)) 3px,
     transparent 1px
   );
   opacity: 0.2;
@@ -61,7 +61,7 @@ SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='invert'] {
   background-image: linear-gradient(
     to bottom,
-    var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391)) 3px,
+    var(--intergalactic-border-primary-invert, oklch(0.995 0.009 144.4 / 0.347)) 3px,
     transparent 1px
   );
   opacity: 0.2;

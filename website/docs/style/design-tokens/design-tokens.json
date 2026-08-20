@@ -183,7 +183,7 @@
   },
   {
     "name": "--intergalactic-bg-primary-highlight",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Accent background of the information you want to highlight.",
     "components": []
   },
@@ -495,7 +495,6 @@
       "input",
       "side-panel",
       "slider",
-      "spin",
       "tab-line",
       "tab-panel",
       "textarea",
@@ -503,13 +502,18 @@
     ]
   },
   {
+    "name": "--intergalactic-border-accent",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Accent border for the active and selected states..",
+    "components": []
+  },
+  {
     "name": "--intergalactic-border-primary-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
-      "divider",
-      "spin"
+      "divider"
     ]
   },
   {
@@ -1253,13 +1257,13 @@
   },
   {
     "name": "--intergalactic-control-slider-bar-bg",
-    "value": "oklch(0.176 0.033 175.6 / 0.056)",
+    "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background of the Slider bar.",
     "components": []
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the Slider bar.",
     "components": []
   },
@@ -1289,7 +1293,7 @@
   },
   {
     "name": "--intergalactic-control-slider-rating-icon",
-    "value": "oklch(0.7 0.003 162.2)",
+    "value": "oklch(0.8 0.003 169.6)",
     "description": "Icon color for the SliderRating component in its normal state.",
     "components": []
   },
@@ -1500,7 +1504,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
   },
@@ -1588,7 +1592,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-bg-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Background of the FeaturePopover with accent theme.",
     "components": [
       "feature-popover"
@@ -1620,7 +1624,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border-accent",
-    "value": "oklch(0.88 0.078 303)",
+    "value": "oklch(0.92 0.052 303.1)",
     "description": "Outer border color of the FeaturePopover.Spot with accent theme.",
     "components": [
       "feature-popover"
@@ -1728,7 +1732,6 @@
     "components": [
       "accordion",
       "carousel",
-      "drag-and-drop",
       "feature-highlight",
       "notice",
       "typography"
@@ -1777,7 +1780,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-critical",
-    "value": "oklch(0.628 0.257 28.9 / 0.652)",
+    "value": "oklch(0.628 0.258 29.2 / 0.415)",
     "description": "Softer error icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
@@ -1789,7 +1792,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-info",
-    "value": "oklch(0.424 0.269 264.2 / 0.469)",
+    "value": "oklch(0.475 0.281 264.1 / 0.339)",
     "description": "Secondary link-lookalike icon.",
     "components": []
   },
@@ -1801,11 +1804,12 @@
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
-    "value": "oklch(0.104 0.023 162.3 / 0.385)",
+    "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "De-emphasized icons for dense layouts (tables, tertiary actions).",
     "components": [
       "breadcrumbs",
       "carousel",
+      "drag-and-drop",
       "inline-input",
       "input",
       "input-number",
@@ -1826,7 +1830,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-success",
-    "value": "oklch(0.711 0.146 166.9)",
+    "value": "oklch(0.787 0.16 167.8 / 0.898)",
     "description": "Softer success icon for dense UI or inline hints where the surface should stay calm.",
     "components": [
       "inline-input"
@@ -1842,7 +1846,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-warning",
-    "value": "oklch(0.701 0.191 48.1)",
+    "value": "oklch(0.735 0.184 53.9 / 0.757)",
     "description": "Softer warning icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
@@ -1850,6 +1854,12 @@
     "name": "--intergalactic-icon-secondary-warning-hover-active",
     "value": "oklch(0.662 0.193 43.7)",
     "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-icon-secondary-invert",
+    "value": "oklch(0.994 0.009 143.7 / 0.336)",
+    "description": "Softer inverted icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
   {
@@ -2004,7 +2014,8 @@
     "description": "Use for cover the content under the modal dialogs.",
     "components": [
       "modal",
-      "side-panel"
+      "side-panel",
+      "spin-container"
     ]
   },
   {
@@ -2012,8 +2023,7 @@
     "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
     "components": [
-      "modal",
-      "spin-container"
+      "modal"
     ]
   },
   {
@@ -2074,7 +2084,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg",
-    "value": "oklch(0.176 0.033 175.6 / 0.056)",
+    "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2082,13 +2092,13 @@
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the background color of the ProgressBar.",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert",
-    "value": "oklch(0.983 0.03 140 / 0.183)",
+    "value": "oklch(0.987 0.023 140 / 0.212)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2102,7 +2112,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
-    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.176 0.033 175.6 / 0.056) 0%, oklch(0.176 0.033 175.6 / 0.056) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.176 0.033 175.6 / 0.056) 0%)",
+    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.157 0.029 176 / 0.11) 0%)",
     "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2118,7 +2128,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-value-gradient",
-    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 75%, oklch(0.22 0.01 140) 0%)",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 75%, oklch(0.22 0.01 140) 0%)",
     "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2264,15 +2274,19 @@
   },
   {
     "name": "--intergalactic-spin-bg",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "Track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-spin-bg-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.998 0.003 173.3 / 0.808)",
     "description": "Inverted track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border",
@@ -2282,7 +2296,7 @@
   },
   {
     "name": "--intergalactic-control-tab-line-border-active",
-    "value": "oklch(0.7 0.131 275.2)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the TabLine in its active state.",
     "components": []
   },
@@ -2526,7 +2540,7 @@
   },
   {
     "name": "--intergalactic-tag-additional-border-invert",
-    "value": "oklch(0.995 0.008 147.4 / 0.391)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Inverted border color of the additional Tag.",
     "components": [
       "tag"
@@ -2800,7 +2814,6 @@
     "value": "oklch(0.086 0.026 145.8 / 0.605)",
     "description": "Hover and active states of the hint link text.",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2867,6 +2880,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Default primary link color.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2875,6 +2889,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Hover and active states for the primary link.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2890,39 +2905,50 @@
     "name": "--intergalactic-text-link-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary link. Use on dark and colored sbackground only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-primary-invert-hover-active",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Hover and active states of the inverted version of the primary link. Use on dark and colored backgrounds only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Default secondary link color.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Hover and active states for the secondary link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-accent",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Default accent link color.",
     "components": [
-      "button"
+      "button",
+      "link"
     ]
   },
   {
     "name": "--intergalactic-text-link-accent-hover-active",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Hover and active states for the accent link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-visited",
@@ -3339,6 +3365,7 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
@@ -3392,6 +3419,12 @@
     ]
   },
   {
+    "name": "--intergalactic-spacing-content-gap-xsmall",
+    "value": "2px",
+    "description": "Extra small gap between content elements inside controls, rows, or columns.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-spacing-content-gap-small",
     "value": "4px",
     "description": "Small gap between content elements inside controls, rows, or columns.",
@@ -3401,6 +3434,7 @@
       "date-picker",
       "dropdown-menu",
       "inline-input",
+      "link",
       "pagination",
       "tag"
     ]

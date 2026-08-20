@@ -238,7 +238,7 @@ STag[theme="additional-invert"],
 STagContainerClose[theme="additional-invert"] {
   background-color: var(--intergalactic-tag-additional-bg-invert-normal, transparent);
   color: var(--intergalactic-tag-additional-text-invert, oklch(0.997 0.004 165.9 / 0.684));
-  border-color: var(--intergalactic-tag-additional-border-invert, oklch(0.995 0.008 147.4 / 0.391));
+  border-color: var(--intergalactic-tag-additional-border-invert, oklch(0.995 0.009 144.4 / 0.347));
   border-style: dashed;
 
   &::before,

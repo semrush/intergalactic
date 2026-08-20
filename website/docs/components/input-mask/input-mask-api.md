@@ -23,7 +23,7 @@ import InputMask from '@semcore/ui/input-mask';
 <InputMask.Value />;
 ```
 
-<TypesView type="InputMaskValueProps" :types={...types} />
+<TypesView type="NSInputMask.Value.Props" :types={...types} />
 
 ## InputMask.Addon
 

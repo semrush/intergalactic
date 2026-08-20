@@ -1,23 +1,13 @@
+import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
-type ScoreLineColor =
-  | 'chart-palette-order-2'
-  | 'chart-palette-order-3'
-  | 'chart-palette-order-4'
-  | 'chart-palette-order-5'
-  | 'chart-palette-order-6'
-  | 'chart-palette-order-7'
-  | 'chart-palette-order-8'
-  | 'chart-palette-order-9'
-  | 'chart-palette-order-10'
-  | 'chart-palette-order-11'
-  | 'chart-palette-order-12'
-  | 'chart-palette-order-13'
-  | 'chart-palette-order-14'
-  | 'chart-palette-order-15'
-  | 'chart-palette-order-16';
 
-type scoreLineProps = { value1: number; value2: number; loading?: boolean; color1?: ScoreLineColor; color2?: ScoreLineColor; animate?: boolean; baseBgColor?: ScoreLineColor };
+type ScoreLineProps = NSMiniChart.Score.Line.Props & {
+  value1: NSMiniChart.Score.Line.Props['value'];
+  value2: NSMiniChart.Score.Line.Props['value'];
+  color1: NSMiniChart.Score.Line.Props['color'];
+  color2: NSMiniChart.Score.Line.Props['color'];
+};
 
 const Demo = ({
   value1 = 70,
@@ -28,7 +18,7 @@ const Demo = ({
   color1 = 'chart-palette-order-7',
   color2 = 'chart-palette-order-10',
 
-}: scoreLineProps) => {
+}: ScoreLineProps) => {
   return (
     <>
       <MiniChart.ScoreLine w='100px' animate={animate} loading={loading} baseBgColor={baseBgColor}>
@@ -46,5 +36,5 @@ const Demo = ({
     </>
   );
 };
-export type { scoreLineProps };
+export type { ScoreLineProps };
 export default Demo;

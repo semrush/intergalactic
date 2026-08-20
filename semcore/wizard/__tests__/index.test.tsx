@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { describe, test, expect, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,27 @@ describe('wizard Dependency imports', () => {
 
 describe('Wizard', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const wizard = (
+      <Wizard disablePortal visible step={1} closable={false}>
+        <Wizard.Sidebar title='Wizard title'>
+          <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
+        </Wizard.Sidebar>
+        <Wizard.Content>
+          <Wizard.Step step={1}>
+            <Wizard.StepTitle>Step title</Wizard.StepTitle>
+            Step content
+          </Wizard.Step>
+          <Wizard.StepBack>Back</Wizard.StepBack>
+          <Wizard.StepNext>Next</Wizard.StepNext>
+        </Wizard.Content>
+      </Wizard>
+    );
+
+    const { container } = render(wizard);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test('Should support sidebar and content', async () => {
     const { getByText, getByRole } = render(

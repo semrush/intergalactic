@@ -1,0 +1,103 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoticeBubbleContainer > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": null,
+                            },
+                          ],
+                          "uiName": "Button.Addon",
+                        },
+                      ],
+                      "uiName": "Button.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "Button",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                    {
+                      "children": [],
+                      "uiName": null,
+                    },
+                  ],
+                  "uiName": "Flex",
+                },
+              ],
+              "uiName": "Flex",
+            },
+          ],
+          "uiName": "Animation",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "Button.Addon",
+                            },
+                          ],
+                          "uiName": "Button.InnerWrapper",
+                        },
+                      ],
+                      "uiName": "Button",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                        {
+                          "children": [],
+                          "uiName": null,
+                        },
+                      ],
+                      "uiName": "Flex",
+                    },
+                  ],
+                  "uiName": "Flex",
+                },
+              ],
+              "uiName": "Animation",
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "NoticeBubbleContainer",
+    },
+  ],
+  "uiName": null,
+}
+`;

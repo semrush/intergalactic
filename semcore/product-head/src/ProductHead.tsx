@@ -1,17 +1,13 @@
-import type { NSBox } from '@semcore/base-components';
 import { Box } from '@semcore/base-components';
+import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import React from 'react';
 
+import type { NSProductHead } from './ProductHead.type';
 import style from './style/product-head.shadow.css';
-
-type HeaderComponent = NSBox.Component & {
-  Buttons: NSBox.Component;
-  Links: NSBox.Component;
-  Row: NSBox.Component;
-};
-
-class HeaderRoot extends Component<NSBox.Props> {
+class HeaderRoot extends Component<
+  Intergalactic.InternalTypings.InferComponentProps<NSProductHead.Component>
+> {
   static displayName = 'ProductHead';
   static style = style;
 
@@ -21,17 +17,23 @@ class HeaderRoot extends Component<NSBox.Props> {
   }
 }
 
-function Buttons(props: any) {
+function Buttons(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSProductHead.Buttons.Component>,
+) {
   const SButtons = Root;
   return sstyled(props.styles)(<SButtons render={Box} />);
 }
 
-function Links(props: any) {
+function Links(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSProductHead.Links.Component>,
+) {
   const SLinks = Root;
   return sstyled(props.styles)(<SLinks render={Box} />);
 }
 
-function Row(props: any) {
+function Row(
+  props: Intergalactic.InternalTypings.InferComponentProps<NSProductHead.Row.Component>,
+) {
   const SRow = Root;
   return sstyled(props.styles)(<SRow render={Box} />);
 }
@@ -42,7 +44,7 @@ function Row(props: any) {
  * {@link https://developer.semrush.com/intergalactic/components/product-head/product-head-api/|API} | {@link https://developer.semrush.com/intergalactic/components/product-head/product-head-code/|Examples}
  */
 const Header = createComponent<
-  HeaderComponent,
+  NSProductHead.Component,
   typeof HeaderRoot
 >(HeaderRoot, {
   Buttons,

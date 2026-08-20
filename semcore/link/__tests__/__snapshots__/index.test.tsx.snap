@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Link > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Link.Addon",
+            },
+            {
+              "children": [],
+              "uiName": "Link.Text",
+            },
+          ],
+          "uiName": "Link.InnerWrapper",
+        },
+      ],
+      "uiName": "Link",
+    },
+  ],
+  "uiName": null,
+}
+`;
