@@ -8,7 +8,7 @@ const listeners = new Set<() => void>();
 let rafId: number | null = null;
 let inited = false;
 
-function measureAndNotifyIfNeeded() {
+function measure() {
   if (!window.visualViewport) return;
 
   const nextVertical = window.innerWidth - window.visualViewport.width;
@@ -26,7 +26,7 @@ function handleResize() {
   if (rafId !== null) return;
 
   rafId = requestAnimationFrame(() => {
-    measureAndNotifyIfNeeded();
+    measure();
     rafId = null;
   });
 }
@@ -36,7 +36,7 @@ function init() {
 
   inited = true;
 
-  measureAndNotifyIfNeeded();
+  measure();
 
   window.addEventListener('resize', handleResize);
 }
