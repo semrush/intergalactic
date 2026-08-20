@@ -85,7 +85,7 @@ SAddon {
   flex: 0 0 auto;
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
   height: 100%;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
 }
 
 SAddon[interactive] {

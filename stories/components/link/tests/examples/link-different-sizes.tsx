@@ -1,112 +1,108 @@
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
+import { Flex } from '@semcore/ui/base-components';
 import Counter, { type NSCounter } from '@semcore/ui/counter';
 import Link from '@semcore/ui/link';
 import Spin, { type NSSpin } from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const Demo = (props: LinkSizesProps) => {
-  const w = 150;
-  const sizes = [
-    800,
-    700,
-    600,
-    500,
-    400,
-    350,
-    300,
-    200,
-    100,
-  ] as const;
-  const text = 'The quick brown fox jumps over the lazy dog';
+const sizes = [
+  800,
+  700,
+  600,
+  500,
+  400,
+  350,
+  300,
+  200,
+  100,
+] as const;
 
-  return (
-    <>
-      {sizes.map((size) => {
-        let spinSize: NSSpin.Size = 'm';
-        if (size <= 200) {
-          spinSize = 'xs';
-        } else if (size <= 500) {
-          spinSize = 's';
-        }
-
-        let counterSize: NSCounter.Props['size'];
-        if (size >= 600) {
-          counterSize = 'l';
-        } else if (size >= 300) {
-          counterSize = 'm';
-        }
-
-        return (
-          <Text key={size} tag='div' size={size} mb={4}>
-            {`${size} `}
-            <Link
-              href='#'
-              mr={4}
-              active={props.active}
-            >
-              {props.addonLeft === 'icon' && (
-                <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>
-              )}
-              {props.addonLeft === 'badge' && (
-                <Link.Addon>
-                  <Badge type='new' />
-                </Link.Addon>
-              )}
-              {props.addonLeft === 'counter' && (
-                <Link.Addon>
-                  <Counter size={counterSize}>
-                    17
-                  </Counter>
-                </Link.Addon>
-              )}
-              {props.addonLeft === 'spin' && (
-                <Link.Addon>
-                  <Spin size={spinSize} />
-                </Link.Addon>
-              )}
-              <Link.Text
-                w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
-                ellipsis={props.ellipsis ? true : undefined}
-              >
-                {text}
-              </Link.Text>
-              {props.addonRight === 'icon' && (
-                <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>
-              )}
-              {props.addonRight === 'badge' && (
-                <Link.Addon>
-                  <Badge type='new' />
-                </Link.Addon>
-              )}
-              {props.addonRight === 'counter' && (
-                <Link.Addon>
-                  <Counter size={counterSize}>
-                    17
-                  </Counter>
-                </Link.Addon>
-              )}
-              {props.addonRight === 'spin' && (
-                <Link.Addon>
-                  <Spin size={spinSize} />
-                </Link.Addon>
-              )}
-            </Link>
-
-          </Text>
-        );
-      })}
-    </>
-  );
-};
+type AddonType = 'icon' | 'badge' | 'counter' | 'spin' | 'none';
 
 type LinkSizesProps = {
-  addonLeft: 'icon' | 'badge' | 'counter' | 'spin';
-  addonRight: 'icon' | 'badge' | 'counter' | 'spin';
+  addonLeft: AddonType;
+  addonRight: AddonType;
   ellipsis: boolean;
   active: boolean;
+  theme: 'default' | 'light' | 'accent' | 'invert';
+  href: string;
+};
+
+const renderAddon = (addon: AddonType, size: (typeof sizes)[number]) => {
+  let spinSize: NSSpin.Size = 'm';
+  if (size <= 200) {
+    spinSize = 'xs';
+  } else if (size <= 500) {
+    spinSize = 's';
+  }
+
+  let counterSize: NSCounter.Props['size'];
+  if (size >= 600) {
+    counterSize = 'l';
+  } else if (size >= 300) {
+    counterSize = 'm';
+  }
+
+  switch (addon) {
+    case 'icon':
+      return <Link.Addon>{size < 600 ? <MathPlusAltM /> : <MathPlusAltL />}</Link.Addon>;
+    case 'badge':
+      return <Link.Addon><Badge type='new' /></Link.Addon>;
+    case 'counter':
+      return <Link.Addon><Counter size={counterSize}>17</Counter></Link.Addon>;
+    case 'spin':
+      return <Link.Addon><Spin size={spinSize} /></Link.Addon>;
+    default:
+      return null;
+  }
+};
+
+const Demo = (props: LinkSizesProps) => {
+  const w = 150;
+  const text = 'The quick brown fox jumps over the lazy dog';
+
+  // Link only injects the external icon for a plain string child. These links wrap their
+  // text in Link.Text, so the icon is added explicitly — that is also what gives the nine
+  // sizes of getExternalIconProps() their coverage.
+  const isExternal = props.href.startsWith('//') || props.href.toLowerCase().startsWith('http');
+
+  // theme='invert' paints the link almost white for use on dark surfaces, so without a
+  // dark background here it would be invisible against the default page.
+  const inverted = props.theme === 'invert';
+
+  return (
+    <Flex
+      direction='column'
+      bg={inverted ? 'bg-primary-invert' : undefined}
+      p={inverted ? 4 : undefined}
+    >
+      {sizes.map((size) => (
+        <Text key={size} tag='div' size={size} mb={4}>
+          {`${size} `}
+          <Link
+            href={props.href}
+            theme={props.theme}
+            mr={4}
+            active={props.active}
+            size={size}
+          >
+            {renderAddon(props.addonLeft, size)}
+            <Link.Text
+              w={props.ellipsis ? size < 600 ? w : w * 2 : undefined}
+              ellipsis={props.ellipsis ? true : undefined}
+            >
+              {text}
+            </Link.Text>
+            {renderAddon(props.addonRight, size)}
+            {isExternal && <Link.ExternalIcon />}
+          </Link>
+        </Text>
+      ))}
+    </Flex>
+  );
 };
 
 export const defaultLinksizesProps: LinkSizesProps = {
@@ -114,6 +110,8 @@ export const defaultLinksizesProps: LinkSizesProps = {
   addonRight: 'badge',
   ellipsis: true,
   active: false,
+  theme: 'default',
+  href: '#',
 };
 
 Demo.defaultProps = defaultLinksizesProps;
