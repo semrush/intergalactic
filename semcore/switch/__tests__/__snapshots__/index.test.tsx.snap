@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Switch > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [],
+          "uiName": "Switch.Addon",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Switch.Value",
+            },
+            {
+              "children": [],
+              "uiName": "Box",
+            },
+          ],
+          "uiName": "Box",
+        },
+        {
+          "children": [],
+          "uiName": "Switch.Addon",
+        },
+      ],
+      "uiName": "Switch",
+    },
+  ],
+  "uiName": null,
+}
+`;

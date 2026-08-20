@@ -1,0 +1,99 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Pagination > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Button.Text",
+                },
+              ],
+              "uiName": "Pagination.FirstPage.InnerWrapper",
+            },
+          ],
+          "uiName": "Pagination.FirstPage",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Button.Text",
+                },
+              ],
+              "uiName": "Pagination.PrevPage.InnerWrapper",
+            },
+          ],
+          "uiName": "Pagination.PrevPage",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Button.Text",
+                },
+              ],
+              "uiName": "Pagination.NextPage.InnerWrapper",
+            },
+          ],
+          "uiName": "Pagination.NextPage",
+        },
+        {
+          "children": [],
+          "uiName": "Text",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": "Pagination.PageInput.Value",
+            },
+            {
+              "children": [],
+              "uiName": "Pagination.PageInput.Addon",
+            },
+            {
+              "children": [],
+              "uiName": null,
+            },
+          ],
+          "uiName": "Pagination.PageInput",
+        },
+        {
+          "children": [],
+          "uiName": "Text",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Link.Text",
+                },
+              ],
+              "uiName": "Pagination.TotalPages.InnerWrapper",
+            },
+          ],
+          "uiName": "Pagination.TotalPages",
+        },
+        {
+          "children": [],
+          "uiName": "Box",
+        },
+      ],
+      "uiName": "Pagination",
+    },
+  ],
+  "uiName": null,
+}
+`;

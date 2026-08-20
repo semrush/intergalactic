@@ -16,8 +16,7 @@ This component demonstrates the loading and response to user actions in the inte
 
 ## Appearance
 
-- The [Spin](/components/spin/spin) is consistently positioned in the center of the SpinContainer.
-- To create an overlay under the SpinContainer, use the `--overlay-limitation-secondary token`.
+[Spin](/components/spin/spin) is consistently centered within SpinContainer.
 
 ![](static/spincontainer-dropdown.png)
 

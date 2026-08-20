@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,20 @@ describe('input Dependency imports', () => {
 
 describe('Input', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const input = (
+      <Input>
+        <Input.Addon />
+        <Input.Value />
+      </Input>
+    );
+
+    const { container } = render(input);
+    const result = extractUIName(container);
+
+    expect(result).toMatchSnapshot();
+  });
 
   test.concurrent('Verify value changes when rerender', () => {
     const { getByTestId, rerender } = render(

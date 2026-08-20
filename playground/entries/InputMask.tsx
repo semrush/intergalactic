@@ -1,5 +1,5 @@
 import type { NSInput } from '@semcore/ui/input';
-import type { InputMaskValueProps } from '@semcore/ui/input-mask';
+import type { NSInputMask } from '@semcore/ui/input-mask';
 import InputMask from '@semcore/ui/input-mask';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import type { JSXProps } from '../types/JSXProps';
 import type { PlaygroundEntry } from '../types/Playground';
 import createGithubLink from '../utils/createGHLink';
 
-export type InputMaskJSXProps = JSXProps<NSInput.Props & InputMaskValueProps>;
+export type InputMaskJSXProps = JSXProps<NSInput.Props & NSInputMask.Value.Props>;
 
 function getJSX(props: InputMaskJSXProps) {
   return (

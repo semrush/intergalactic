@@ -21,7 +21,7 @@ async function getTextClip(page: Page) {
 Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(` ${TAG.VISUAL}`, () => {
-  // Section 1: Size × addon position × ellipsis × addonType × color × use rotation
+  // Section 1: Size × addon position × ellipsis × addonType × color rotation
   const sizes = [100, 200, 300, 400, 500, 600, 700, 800, 350];
   const longText = 'The quick brown fox jumps over the lazy dog and even more text to ensure truncation';
   const addonTypes = ['icon', 'badge', 'counter', 'tag'];

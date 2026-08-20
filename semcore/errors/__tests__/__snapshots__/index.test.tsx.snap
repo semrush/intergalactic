@@ -1,0 +1,104 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Error > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Error.Title",
+                },
+                {
+                  "children": [],
+                  "uiName": "Error.Description",
+                },
+                {
+                  "children": [],
+                  "uiName": "Error.Controls",
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "Error",
+    },
+  ],
+  "uiName": null,
+}
+`;
+
+exports[`PageError > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Error.Title",
+                },
+                {
+                  "children": [],
+                  "uiName": "Error.Description",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "Button.Text",
+                            },
+                          ],
+                          "uiName": "Button.InnerWrapper",
+                        },
+                      ],
+                      "uiName": "Button",
+                    },
+                  ],
+                  "uiName": "Error.Controls",
+                },
+              ],
+              "uiName": null,
+            },
+          ],
+          "uiName": null,
+        },
+      ],
+      "uiName": "PageError",
+    },
+  ],
+  "uiName": null,
+}
+`;

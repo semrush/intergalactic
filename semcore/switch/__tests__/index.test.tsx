@@ -1,3 +1,4 @@
+import { extractUIName } from '@semcore/testing-utils/shared/extractUINameTree.ts';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
@@ -11,6 +12,19 @@ describe('switch Dependency imports', () => {
 
 describe('Switch', () => {
   beforeEach(cleanup);
+
+  test('Verify data-ui-name', () => {
+    const switchComponent = (
+      <Switch>
+        <Switch.Addon>Before</Switch.Addon>
+        <Switch.Value />
+        <Switch.Addon>After</Switch.Addon>
+      </Switch>
+    );
+
+    const { container } = render(switchComponent);
+    expect(extractUIName(container)).toMatchSnapshot();
+  });
 
   test('Verify supports onChange callback', async () => {
     const spy = vi.fn();
