@@ -238,6 +238,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       renderCellOverlay,
       selectedRows,
       hasGroups,
+      scrollBarInstanceRef,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -397,6 +398,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             // @ts-ignore
             hasGroups={hasGroups}
             headerHeight={`${this.getSpinnerTopOffset()}px`}
+            tableInnerVerticalScroll={scrollBarInstanceRef.current?.isScrollVisible}
             tabIndex={-1}
             ref={spinnerRef}
             role='row'

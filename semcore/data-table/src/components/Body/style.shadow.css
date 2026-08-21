@@ -270,7 +270,7 @@ SCellWrapper[fixed] {
 }
 
 SSpinContainer {
-  grid-area: 2 / 1 / 20 / 5;
+  grid-area: 2 / 1 / 20 / -1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -284,13 +284,19 @@ SSpinContainer {
 
   &[headerHeight] {
     position: sticky;
-    top: var(--headerHeight);
+    top: 0;
     height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
     min-height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
+    max-width: 100vw;
+    left: 0;
+  }
+
+  &[tableInnerVerticalScroll][headerHeight] {
+    top: var(--headerHeight);
   }
 
   &[hasGroups] {
-    grid-area: 3 / 1 / 20 / 5;
+    grid-area: 3 / 1 / 20 / -1;
   }
 }
 
