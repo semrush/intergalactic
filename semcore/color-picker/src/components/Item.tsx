@@ -47,9 +47,7 @@ export default function Item(props: ItemAsProps) {
       <SItemContainer
         render={Box}
         interaction={interaction}
-        selected={selected}
-        value={value}
-        displayLabel={displayLabel}
+        use:value={value?.startsWith('--') ? `var(${value})` : value}
         role='option'
         aria-selected={selected}
         ref={triggerRef}

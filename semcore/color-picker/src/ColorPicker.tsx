@@ -15,17 +15,17 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 const defaultColors = [
   null,
-  '#008ff8', // --blue-400
-  '#00c192', // --green-300
-  '#c695ff', // --violet-300
-  '#fdc23c', // --yellow-200
-  '#ff8786', // --red-300
-  '#8ecdff', // --blue-200
-  '#f67cf2', // --pink-300
-  '#66c030', // --salad-300
-  '#006dca', // --blue-500
-  '#59ddaa', // --green-200
-  '#ab6cfe', // --violet-400
+  '--blue-400',
+  '--green-300',
+  '--violet-300',
+  '--yellow-200',
+  '--red-300',
+  '--blue-200',
+  '--pink-300',
+  '--salad-300',
+  '--blue-500',
+  '--green-200',
+  '--violet-400',
 ];
 
 class ColorPickerRoot extends Component<
@@ -158,11 +158,12 @@ const DefaultTrigger = React.forwardRef(function (
   const { styles, value } = props;
   const SDefaultTrigger = Root;
   const STriggerCircle = Flex;
+  const SChevronDownM = ChevronDownM;
 
   return sstyled(styles)(
     <SDefaultTrigger render={Box} tag='button' tabIndex={0} ref={ref}>
       <STriggerCircle justifyContent='center' alignItems='center' data-value={value} />
-      <ChevronDownM tabIndex={undefined} color='gray-800' />
+      <SChevronDownM tabIndex={undefined} />
     </SDefaultTrigger>,
   );
 });
