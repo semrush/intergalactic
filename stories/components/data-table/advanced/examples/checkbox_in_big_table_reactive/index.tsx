@@ -16,15 +16,14 @@ type CheckboxExampleProps = {
   compact?: boolean;
 };
 
-// const selectedRows = new SelectableRows<string>();
+const selectedRows = new SelectableRows<string>();
 
 const Demo = (props: CheckboxExampleProps) => {
-  const [selectedRows, setSelectedRows] = React.useState([]);
-  // const { count: selectedRowsDisplay } = useSelectedRowsCount(selectedRows);
+  const { count: selectedRowsDisplay } = useSelectedRowsCount(selectedRows);
   const tableRef = React.useRef<HTMLDivElement>(null);
 
   const handleDeselectAll = () => {
-    // selectedRows.clearAll();
+    selectedRows.clearAll();
     tableRef.current?.focus();
   };
 
@@ -57,19 +56,18 @@ const Demo = (props: CheckboxExampleProps) => {
                 'var(--intergalactic-bg-primary-neutral, #ffffff)',
           }}
         >
-          {/* <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} /> */}
-          {/* <Text size={200}> */}
-          {/*  Selected rows: <Text bold>{selectedRowsDisplay}</Text> */}
-          {/* </Text> */}
-          {/* {selectedRowsDisplay > 0 && ( */}
-          {/*  <Button use='tertiary' onClick={handleDeselectAll}> */}
-          {/*    Deselect all */}
-          {/*  </Button> */}
-          {/* )} */}
+          <ScreenReaderSelectedAllAnnouncement selectedRows={selectedRows} />
+          <Text size={200}>
+            Selected rows: <Text bold>{selectedRowsDisplay}</Text>
+          </Text>
+          {selectedRowsDisplay > 0 && (
+            <Button use='tertiary' onClick={handleDeselectAll}>
+              Deselect all
+            </Button>
+          )}
         </Flex>
         <Table
           selectedRows={selectedRows}
-          handleSelectRows={setSelectedRows}
           tableRef={tableRef}
           loading={props.loading}
           compact={props.compact}

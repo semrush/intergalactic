@@ -82,6 +82,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentWillUnmount() {
     this.asProps.componentRef?.(null);
+
+    this.cellStyle.clear();
   }
 
   onPropsChange(changedProps: Record<string, unknown>) {
