@@ -117,7 +117,7 @@ class DataTableRoot<
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   private scrollAreaRef = React.createRef<HTMLDivElement>();
-  private scrollBarInstanceRef = React.createRef<React.RefObject<NSScrollArea.Bar.Instance>>();
+  private scrollBarInstanceRef = React.createRef<NSScrollArea.Bar.Instance>();
 
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
