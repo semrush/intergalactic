@@ -312,10 +312,7 @@ describe('InputNumber', () => {
 
   for (const { locales, thousandsSeparator } of localeGroups) {
     for (const locale of locales) {
-      const corruptedOnBlur = thousandsSeparator === '.';
-      const testBlur = corruptedOnBlur ? test.sequential.fails : test.sequential;
-
-      testBlur(`Verify locale=${locale} keeps the typed value after blur`, async () => {
+      test.sequential(`Verify locale=${locale} keeps the typed value after blur`, async () => {
         const spy = vi.fn();
         const { getByTestId } = render(<ControlledLocalized spy={spy} locale={locale} />);
         const input = getByTestId('localized-blur-input') as HTMLInputElement;
