@@ -1,8 +1,6 @@
-import ButtonLink from '@semcore/ui/button';
 import type { CellRenderProps } from '@semcore/ui/data-table';
 import { LinkAction, DataTable } from '@semcore/ui/data-table';
 import IconM from '@semcore/ui/icon/Cards/m';
-import Link from '@semcore/ui/link';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 
@@ -46,7 +44,7 @@ const data = [{
 }];
 
 const pageLimit = 10;
-const recalculateContainerWidth = (width: number) => width - 35;
+const recalculateContainerWidth = (width: number) => width - 37;
 
 type TableLinkProps = {
   size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
@@ -99,18 +97,22 @@ export default function Demo(props: TableLinkProps) {
       }
 
       return (
-        <LinkAction>
-          <Link href={url}>
-            <Link.Text
-              ellipsis:cropPosition='middle'
-              ellipsis:containerElement={columnElement}
-              ellipsis:recalculateContainerWidth={recalculateContainerWidth}
-            >
-              {removeProtocol(url)}
-            </Link.Text>
-          </Link>
-          <ButtonLink addonLeft={IconM} use='tertiary' theme='muted' title='Open in new tab' />
-        </LinkAction>
+        <LinkAction
+          link={{
+            href: url,
+            text: removeProtocol(url),
+            ellipsisSettings: {
+              cropPosition: 'middle',
+              containerElement: columnElement,
+              recalculateContainerWidth: recalculateContainerWidth,
+            },
+          }}
+          actions={[{
+            title: 'Open in new tab',
+            icon: IconM,
+            onClick: () => null,
+          }]}
+        />
       );
     }
     return props.defaultRender();
