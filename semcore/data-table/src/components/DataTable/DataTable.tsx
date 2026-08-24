@@ -137,7 +137,7 @@ class DataTableRoot<
     gridTemplateAreas: [],
   };
 
-  private headerNodesMap = new Map();
+  private headerNodesMap = new Map<string, HTMLElement>();
 
   private selectedRowsContainer: ISelectedRows<UniqKeyType>;
   private lastSelectedRowKey: UniqKeyType | undefined;
@@ -350,6 +350,7 @@ class DataTableRoot<
       scrollDirection: this.scrollDirection,
       isDataEmpty: this.isDataEmpty,
       withAnimation: this.withAnimation && this.scrollDirection === 'horizontal' && !this.isDataEmpty,
+      headerNodesMap: this.headerNodesMap,
     };
   }
 
@@ -1034,29 +1035,6 @@ class DataTableRoot<
     if (!this.headerRef.current) {
       return [0, 0];
     }
-
-    const setToMap = (element: HTMLElement) => {
-      if (element.getAttribute('name') && element.dataset.uiName === 'Head.Column') {
-        const name = element.getAttribute('name');
-        if (name) {
-          this.headerNodesMap.set(name, element);
-        }
-      }
-    };
-
-    this.headerRef.current.childNodes.forEach((node) => {
-      if (node instanceof HTMLElement) {
-        if (node.classList.value.includes('SGroupContainer')) {
-          node.childNodes.forEach((columnNode) => {
-            if (columnNode instanceof HTMLElement) {
-              setToMap(columnNode);
-            }
-          });
-        } else {
-          setToMap(node);
-        }
-      }
-    });
 
     return this.columns.reduce(
       (acc, column) => {

@@ -29,14 +29,14 @@ type DefaultProps = {
 };
 
 @propsObserver(['columns'])
-export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
-  DataTableRowProps<Data, UniqKeyType>,
-  [],
-  {},
-  RowPropsInner<Data, UniqKeyType>,
-  State<UniqKeyType>,
-  DefaultProps
-> {
+class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
+    DataTableRowProps<Data, UniqKeyType>,
+    [],
+    {},
+    RowPropsInner<Data, UniqKeyType>,
+    State<UniqKeyType>,
+    DefaultProps
+  > {
   static displayName = 'Row';
   static style = style;
 
@@ -703,6 +703,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
 type RowComponent = DataTableRowType & {
   Cell: any;
+};
+
+export type {
+  RowRoot,
 };
 
 export const Row = createComponent<

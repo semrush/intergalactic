@@ -68,4 +68,6 @@ export type HeadPropsInner<
   isDataEmpty: boolean;
 
   withAnimation: boolean;
+
+  headerNodesMap: Map<string, HTMLElement>;
 };

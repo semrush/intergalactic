@@ -64,7 +64,13 @@ export class Column<
   };
 
   componentDidMount() {
-    const { parent, sticky, changeSortSize, name, sort, scrollDirection } = this.asProps;
+    const { parent, sticky, changeSortSize, name, sort, scrollDirection, headerNodesMap } = this.asProps;
+    const columnElement = this.columnRef.current;
+    const columnName = columnElement?.getAttribute('name');
+
+    if (columnElement && columnName) {
+      headerNodesMap.set(columnName, columnElement);
+    }
 
     if (parent && sticky && scrollDirection !== 'horizontal') {
       const columnElement = this.columnRef.current;

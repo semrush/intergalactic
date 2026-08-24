@@ -100,4 +100,5 @@ export type ColumnPropsInner<
   onClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: 'horizontal' | 'vertical' | 'both';
+  headerNodesMap: Map<string, HTMLElement>;
 };
