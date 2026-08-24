@@ -2,7 +2,7 @@ import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import type { NSProgressBar } from './ProgressBar.type';
 import style from './style/progress-bar.shadow.css';
@@ -73,12 +73,24 @@ function Value(
   const { styles, value, theme, duration, resolveColor } = props;
   const width = `${value}%`;
 
+  const [stopAnimation, setStopAnimation] = React.useState(value === 100);
+
+  const handleTransitionEnd = React.useCallback(() => {
+    if (value === 100) {
+      setTimeout(() => {
+        setStopAnimation(true);
+      });
+    }
+  }, [value]);
+
   return sstyled(styles)(
     <SValue
       render={Box}
       use:width={width}
       use:duration={`${duration}ms`}
       colorBg={resolveColor(theme)}
+      onTransitionEnd={handleTransitionEnd}
+      stopAnimation={stopAnimation}
     />,
   );
 }

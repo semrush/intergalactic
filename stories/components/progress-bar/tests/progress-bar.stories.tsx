@@ -27,9 +27,9 @@ const commonArgTypes = {
   },
   theme: {
     control: { type: 'select' },
-    options: ['default', 'invert', 'violet-100', 'brand-secondary'],
+    options: ['violet-dusty-500', 'pink-400', 'violet-100', 'brand-secondary'],
     description:
-      'Built-in themes are `default` (light backgrounds) and `invert` (dark backgrounds). Any other value falls through to the custom-theme path and is resolved as a color token.',
+      'The value is resolved as a color token.',
   },
 } as const;
 

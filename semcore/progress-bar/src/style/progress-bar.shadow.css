@@ -19,9 +19,12 @@ SValue {
   width: var(--width);
   animation-duration: var(--duration);
   transition-duration: var(--duration);
-}
 
-SValue[theme] {
+  &[stopAnimation] {
+    animation-name: none;
+  }
+}
+SProgressBar[theme] SValue[colorBg] {
   background-color: var(--colorBg);
   background-image: var(--colorBg);
 }
