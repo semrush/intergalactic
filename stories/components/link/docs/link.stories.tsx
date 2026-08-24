@@ -1,7 +1,9 @@
 import Link from '@semcore/ui/link';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import AllStatesExample from './examples/all_states';
 import ColorLinksExample from './examples/color_links';
+import ExternalLinksExample from './examples/external_links';
 import LinkAddonExample from './examples/link_addon';
 import LinkAsButtonExample from './examples/link_as_button';
 import LinkDisabledExample from './examples/link_disabled';
@@ -16,6 +18,10 @@ const meta: Meta<typeof Link> = {
 
 export default meta;
 type Story = StoryObj<typeof Link>;
+
+export const AllStates: Story = {
+  render: AllStatesExample,
+};
 
 export const ColorLinks: Story = {
   render: ColorLinksExample,
@@ -43,4 +49,8 @@ export const LinkWithoutText: Story = {
 
 export const LinkWithEllipsis: Story = {
   render: LinkWithEllipsisExample,
+};
+
+export const ExternalLinks: Story = {
+  render: ExternalLinksExample,
 };

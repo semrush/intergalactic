@@ -55,20 +55,20 @@ const Demo = ({ firstStepTitle, ellipsis }: StepsAndButtonsStatesProps) => {
           </Wizard.Stepper>
           <Wizard.Stepper step={2} onActive={handleStepChange(2)} number={1.1}>
             {configurableSteps[1].title}
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='wizard-sidebar-text-secondary' fontWeight={400} tag='div'>
               {value === '' ? 'Not selected' : value}
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={handleStepChange(3)} number={1.2}>
-            <Text color='text-secondary-invert' fontWeight={400}>
+            <Text color='wizard-sidebar-text-secondary' fontWeight={400}>
               {configurableSteps[2].title}
             </Text>
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='wizard-sidebar-text-secondary' fontWeight={400} tag='div'>
               Optional step
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={4} onActive={handleStepChange(4)} number={1.3}>
-            <Text color='text-secondary-invert' fontWeight={400}>
+            <Text color='wizard-sidebar-text-secondary' fontWeight={400}>
               {configurableSteps[3].title}
             </Text>
           </Wizard.Stepper>
@@ -80,7 +80,7 @@ const Demo = ({ firstStepTitle, ellipsis }: StepsAndButtonsStatesProps) => {
           </Wizard.Stepper>
           <Wizard.Stepper step={7} onActive={handleStepChange(7)}>
             {configurableSteps[6].title}
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='wizard-sidebar-text-secondary' fontWeight={400} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>

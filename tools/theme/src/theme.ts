@@ -57,6 +57,7 @@ import {
   L_INV_BORDER_SECONDARY,
   L_INV_ICON_PRIMARY,
   L_INV_ICON_PRIMARY_HOVER,
+  L_INV_ICON_SECONDARY,
   L_INV_TEXT_PRIMARY,
   L_INV_TEXT_SECONDARY,
   L_INV_TEXT_SECONDARY_HOVER,
@@ -1295,6 +1296,10 @@ export const theme: Theme = {
         value: warning.opaqueAt(L_ICON_SECONDARY_HOVER),
         description: 'Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.',
       },
+      icon_secondary_invert_DEFAULT: {
+        value: neutral.opaqueInvAt(L_INV_ICON_SECONDARY),
+        description: 'Softer inverted icon for dense UI or inline hints where the surface should stay calm.',
+      },
       illustration_blue: {
         value: blue.at(0.84),
         description: '⚠️ Use only for illustrations.',
@@ -1525,7 +1530,7 @@ export const theme: Theme = {
         description: 'Track color of the Spin loader.',
       },
       spin_bg_invert: {
-        value: '{semanticTokens.colors.border_primary_invert}',
+        value: '{semanticTokens.colors.icon_primary_invert}',
         description: 'Inverted track color of the Spin loader.',
       },
       control_tab_line_border_DEFAULT: {
@@ -2909,6 +2914,9 @@ type SemanticColors = {
         hover: {
           active: Value;
         };
+      };
+      invert: {
+        DEFAULT: Value;
       };
     };
     non: {

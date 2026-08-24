@@ -36,6 +36,8 @@ const Demo = (props: BasicLinktriggerProps) => {
     loading,
     hintProps,
     active,
+    empty,
+    placeholder,
     size = 300,
     w,
     ellipsis,
@@ -98,6 +100,8 @@ const Demo = (props: BasicLinktriggerProps) => {
         disabled={disabled}
         active={active}
         loading={loading}
+        empty={empty}
+        placeholder={placeholder}
         color={props.color}
         display={displayValue}
         mr={4}
@@ -120,6 +124,8 @@ const Demo = (props: BasicLinktriggerProps) => {
         loading={loading}
         disabled={disabled}
         active={active}
+        empty={empty}
+        placeholder={placeholder}
         color={props.color}
       >
         {renderAddon(showAddonLeft, addonLeftType)}

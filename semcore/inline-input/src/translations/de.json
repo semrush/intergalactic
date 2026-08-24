@@ -1,4 +1,6 @@
 {
   "confirm": "Speichern",
-  "discard": "Abbrechen"
+  "discard": "Abbrechen",
+  "increment": "Zahl erhöhen",
+  "decrement": "Zahl verringern"
 }
