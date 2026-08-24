@@ -1086,7 +1086,7 @@ importers:
         specifier: ^17.2.1
         version: link:../checkbox
       '@semcore/illustration':
-        specifier: ^17.0.1
+        specifier: ^17.0.2
         version: link:../illustration
       '@semcore/input':
         specifier: ^17.2.2
@@ -1115,15 +1115,6 @@ importers:
       '@semcore/typography':
         specifier: ^17.2.1
         version: link:../typography
-      final-form:
-        specifier: 4.20.7
-        version: 4.20.7
-      final-form-focus:
-        specifier: 1.1.2
-        version: 1.1.2(final-form@4.20.7)
-      react-final-form:
-        specifier: 6.5.9
-        version: 6.5.9(final-form@4.20.7)(react@18.3.1)
     devDependencies:
       '@semcore/base-components':
         specifier: workspace:*
@@ -1140,6 +1131,15 @@ importers:
       '@types/final-form-focus':
         specifier: 1.1.7
         version: 1.1.7
+      final-form:
+        specifier: 4.20.7
+        version: 4.20.7
+      final-form-focus:
+        specifier: 1.1.2
+        version: 1.1.2(final-form@4.20.7)
+      react-final-form:
+        specifier: 6.5.9
+        version: 6.5.9(final-form@4.20.7)(react@18.3.1)
 
   semcore/flags:
     dependencies:
