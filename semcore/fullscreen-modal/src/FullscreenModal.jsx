@@ -123,11 +123,7 @@ function Close(props) {
   const SClose = Root;
   const { getI18nText } = props;
   return sstyled(props.styles)(
-    <SClose render={Button} use='tertiary' size='l' theme='muted' aria-label={getI18nText('close')}>
-      <Button.Addon>
-        <CloseIcon title={getI18nText('close')} />
-      </Button.Addon>
-    </SClose>,
+    <SClose render={Button} use='tertiary' size='l' theme='muted' aria-label={getI18nText('close')} addonLeft={CloseIcon} />,
   );
 }
 
