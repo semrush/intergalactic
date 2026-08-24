@@ -61,13 +61,13 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     super(props);
 
     this.handleClickRow = this.handleClickRow.bind(this);
-
-    this.recalculateCellStyle();
   }
 
   componentDidMount() {
     const { componentRef } = this.asProps;
     componentRef?.(this);
+
+    this.recalculateCellStyle();
 
     this.setAccordion();
   }
@@ -93,7 +93,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   recalculateCellStyle() {
-    const { columns, getFixedStyle } = this.props;
+    const { columns, getFixedStyle } = this.asProps;
 
     columns.forEach((column) => {
       if (column.fixed) {

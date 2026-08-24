@@ -54,6 +54,8 @@ class HeadRoot<
   componentWillUnmount() {
     this.unsubscribeSelectAll?.();
     this.unsubscribeSetIndeterminate?.();
+
+    this.columnStyle.clear();
   }
 
   onPropsChange(changedProps: Record<string, unknown>) {
