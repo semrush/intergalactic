@@ -1,4 +1,6 @@
 {
   "confirm": "Save",
-  "discard": "Cancel"
+  "discard": "Cancel",
+  "increment": "Increment number",
+  "decrement": "Decrement number"
 }
