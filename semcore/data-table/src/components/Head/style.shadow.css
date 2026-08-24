@@ -62,6 +62,11 @@ SGroup {
   justify-content: center;
   text-align: center;
   background-color: var(--intergalactic-table-th-primary-cell, oklch(1 0 0));
+
+  &[isSorted] {
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    font-weight: var(--intergalactic-bold, 700);
+  }
 }
 
 SGroup[use='primary'] {
