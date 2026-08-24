@@ -287,6 +287,57 @@ describe('InputNumber', () => {
     }
   }
 
+  const ControlledLocalized = ({
+    spy,
+    locale,
+  }: {
+    spy: (value: string, event?: React.SyntheticEvent<HTMLInputElement>) => void;
+    locale: string;
+  }) => {
+    const [value, setValue] = React.useState('');
+
+    return (
+      <InputNumber locale={locale}>
+        <InputNumber.Value
+          data-testid='localized-blur-input'
+          value={value}
+          onChange={(nextValue, event) => {
+            spy(nextValue, event);
+            setValue(nextValue);
+          }}
+        />
+      </InputNumber>
+    );
+  };
+
+  for (const { locales, thousandsSeparator } of localeGroups) {
+    for (const locale of locales) {
+      const corruptedOnBlur = thousandsSeparator === '.';
+      const testBlur = corruptedOnBlur ? test.sequential.fails : test.sequential;
+
+      testBlur(`Verify locale=${locale} keeps the typed value after blur`, async () => {
+        const spy = vi.fn();
+        const { getByTestId } = render(<ControlledLocalized spy={spy} locale={locale} />);
+        const input = getByTestId('localized-blur-input') as HTMLInputElement;
+
+        await focusInput(input);
+        await userEvent.keyboard('100000');
+
+        expect(spy.mock.lastCall?.[0], `Unexpected parsed value before blur for locale "${locale}"`)
+          .toBe('100000');
+        expect(input.value, `Unexpected display value before blur for locale "${locale}"`)
+          .toBe(`100${thousandsSeparator}000`);
+
+        await userEvent.tab();
+
+        expect(spy.mock.lastCall?.[0], `Parsed value corrupted on blur for locale "${locale}"`)
+          .toBe('100000');
+        expect(input.value, `Display value corrupted on blur for locale "${locale}"`)
+          .toBe(`100${thousandsSeparator}000`);
+      });
+    }
+  }
+
   test.sequential('Verify format in hundredths fractions numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
