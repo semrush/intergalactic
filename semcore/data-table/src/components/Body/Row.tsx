@@ -606,6 +606,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             duration={accordionDuration ?? 200}
             sideIndents={sideIndents}
             data-filled-columns={filledColumns}
+
+            position='sticky'
+            left={0}
+            w={scrollAreaRef.current?.clientWidth}
           >
             <SCell
               aria-colindex={1}

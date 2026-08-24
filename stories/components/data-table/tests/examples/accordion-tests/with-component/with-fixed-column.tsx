@@ -55,7 +55,6 @@ const Demo = (props: AccordionWithFixedColumnProps) => {
             style: {
               position: 'sticky',
               top: `${headerHeight}px`,
-              zIndex: props.column.fixed ? 12 : 10,
             },
           };
         }
