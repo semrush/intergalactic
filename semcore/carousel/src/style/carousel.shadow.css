@@ -15,7 +15,7 @@ SModalBox,
 SIndicator {
   position: relative;
   overflow: hidden;
-  border-radius: var(--intergalactic-surface-rounded, 8px);
+  border-radius: var(--intergalactic-carousel-item-rounded, 14px);
 }
 
 SContentBox:has(SItem:focus-visible)::after {
@@ -29,7 +29,7 @@ SContentBox:has(SItem:focus-visible)::after {
 
 SImageBoxContainer {
   position: relative;
-  border-radius: var(--intergalactic-surface-rounded, 8px);
+  border-radius: var(--intergalactic-carousel-item-preview-rounded, 14px);
 
   &:has(SItem:focus-visible)::after {
     border-radius: inherit;
@@ -56,7 +56,7 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: var(--intergalactic-surface-rounded, 8px);
+  border-radius: var(--intergalactic-carousel-item-rounded, 14px);
   overflow: hidden;
   outline: none;
 
@@ -76,38 +76,59 @@ SItem[zoomOut] {
 SIndicators {
   display: flex;
   justify-content: center;
-  margin: var(--intergalactic-spacing-4x, 16px) 4px 4px 4px;
+  margin: var(--intergalactic-spacing-content-gap-xxlarge, 16px) var(--intergalactic-spacing-content-gap-small, 4px) var(--intergalactic-spacing-content-gap-small, 4px) var(--intergalactic-spacing-content-gap-small, 4px);
   outline: none;
   position: relative;
 }
 
 SIndicator {
-  margin: 0 calc(0.5 * var(--intergalactic-spacing-3x, 12px));
+  margin: 0 calc(0.5 * var(--intergalactic-spacing-content-gap-xlarge, 12px));
   cursor: pointer;
   display: block;
+  flex-shrink: 0;
   width: 12px;
   height: 12px;
-  background-color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
-  opacity: var(--intergalactic-disabled-opacity, 0.4);
+  background-color: var(--intergalactic-control-carousel-indicator, oklch(0.23 0.01 140));
+  border-radius: var(--intergalactic-carousel-indicator-rounded, 8px);
+  opacity: 0.25;
   object-fit: cover;
-  transition: ease-in-out opacity 0.1s;
+  transition:
+    width calc(var(--intergalactic-duration-control, 200) * 1ms) var(--intergalactic-easings-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    opacity calc(var(--intergalactic-duration-control, 200) * 1ms) var(--intergalactic-easings-medium, cubic-bezier(0.5, 0, 0, 1.09)),
+    background-color calc(var(--intergalactic-duration-control, 200) * 1ms) var(--intergalactic-easings-medium, cubic-bezier(0.5, 0, 0, 1.09));
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &[active] {
+    width: 24px;
+    background-color: var(--intergalactic-control-carousel-indicator-active, oklch(0.23 0.01 140));
+    opacity: 1;
+  }
 }
 
 SIndicator[aria-roledescription="slide"] {
   width: 100px;
   height: 100px;
-}
 
-SIndicator:hover {
-  opacity: calc(2 * var(--intergalactic-disabled-opacity, 0.4));
-}
-
-SIndicator[active] {
-  opacity: 1;
+  &[active] {
+    width: 100px;
+  }
 }
 
 SIndicator[inverted] {
-  background-color: var(--intergalactic-icon-primary-invert, oklch(0.998 0.003 173.3 / 0.808));
+  background-color: var(--intergalactic-control-carousel-indicator-invert, oklch(1 0 0));
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &[active] {
+    background-color: var(--intergalactic-control-carousel-indicator-active, oklch(0.23 0.01 140));
+    opacity: 1;
+  }
 }
 
 SPrev,
@@ -120,17 +141,17 @@ SNext {
 
   SPrevButton span:has(> svg:only-child),
   SNextButton span:has(> svg:only-child) {
-    margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
-    margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-left: calc(2 * var(--intergalactic-spacing-content-gap-small, 4px) - 1px);
+    margin-right: calc(2 * var(--intergalactic-spacing-content-gap-small, 4px) - 1px);
   }
 }
 
 SPrev {
-  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SNext {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
+  margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SPrev[disabled],
@@ -142,6 +163,10 @@ SNext[disabled] {
 
 @media (prefers-reduced-motion) {
   SContainer {
+    transition: none;
+  }
+
+  SIndicator {
     transition: none;
   }
 }
