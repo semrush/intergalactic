@@ -44,7 +44,7 @@ const data = [{
 }];
 
 const pageLimit = 10;
-const recalculateContainerWidth = (width: number) => width - 37;
+const recalculateContainerWidth = (width: number) => width - 65;
 
 type TableLinkProps = {
   size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
@@ -108,6 +108,10 @@ export default function Demo(props: TableLinkProps) {
             },
           }}
           actions={[{
+            title: 'Open in new tab',
+            icon: IconM,
+            href: '#',
+          }, {
             title: 'Open in new tab',
             icon: IconM,
             onClick: () => null,
