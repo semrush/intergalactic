@@ -60,7 +60,13 @@ export const dataOverflow = {
   Z: 3,
 };
 
-const Demo = ({ enableMinimalBarWidth = true, plotWidth, plotHeight, ...props }: CigaretteChartProps & { enableMinimalBarWidth?: boolean }) => {
+const Demo = ({
+  enableMinimalBarWidth = true,
+  plotWidth,
+  plotHeight,
+  tooltipTitle,
+  ...props
+}: CigaretteChartProps & { enableMinimalBarWidth?: boolean }) => {
   return (
     <Box
       border='1px solid #ddd'
@@ -72,6 +78,7 @@ const Demo = ({ enableMinimalBarWidth = true, plotWidth, plotHeight, ...props }:
     >
       <Chart.Cigarette
         {...props}
+        tooltipTitle={tooltipTitle}
         minimalBarWidth={enableMinimalBarWidth ? props.minimalBarWidth : undefined}
         aria-label='Cigarette chart'
       />

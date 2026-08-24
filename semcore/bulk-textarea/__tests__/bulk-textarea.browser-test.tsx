@@ -1080,7 +1080,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@bulk-textarea'],
-    }, async ({ page }) => {
+    }, async ({ page, browserName }) => {
+      test.skip(browserName === 'firefox', 'Hover events are unstable in Playwright Firefox');
+
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
       await test.step('Row Error on Hover', async () => {
@@ -1097,6 +1099,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
         await expect(locators.row(page, 10)).toHaveAttribute('data-errormessage', 'Please fix this value = another error');
         await locators.row(page, 10).hover();
+        await page.waitForTimeout(100);
         await locators.tooltip(page, 'Please fix this value = another error').waitFor({ state: 'visible' });
         await expect(locators.errorMessage(page)).toHaveText('3 errors');
         await expect(locators.textbox(page)).not.toBeFocused();

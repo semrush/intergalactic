@@ -24,4 +24,9 @@ describe('Textarea', () => {
     await userEvent.type(getByTestId('textarea'), 'text');
     expect(spyChange).lastCalledWith('text', expect.any(Object));
   });
+
+  test('Verify aria-invalid attribute for invalid state should be true', async () => {
+    const { getByTestId } = render(<Textarea data-testid='textarea' state='invalid' />);
+    expect(getByTestId('textarea')).toHaveAttribute('aria-invalid', 'true');
+  });
 });
