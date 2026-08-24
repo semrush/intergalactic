@@ -324,7 +324,7 @@ SCollapseRow {
 
 SRow[isAccordionRow] SCellWrapper:first-child,
 SCollapseRow {
-  &::after {
+  &::before {
     position: absolute;
     content: '';
     left: 0;
