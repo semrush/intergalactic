@@ -119,7 +119,6 @@ class HeadRoot<
       shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
       style: this.columnStyle.get(props.name),
       scrollDirection,
-      // top: top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
     };
   }
 

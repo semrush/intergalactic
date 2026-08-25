@@ -580,16 +580,6 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               return null;
             }
 
-            const style: React.CSSProperties = {};
-
-            if (column.fixed) {
-              const [name, value] = getFixedStyle(column);
-
-              if (name !== undefined && value !== undefined) {
-                style[name] = value;
-              }
-            }
-
             return (
               <Row.Cell
                 key={`${uid}_${rowUniqKey}_${index}`}

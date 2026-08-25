@@ -97,6 +97,15 @@ export class Column<
     }
   }
 
+  componentWillUnmount(): void {
+    const columnElement = this.columnRef.current;
+    const columnName = columnElement?.getAttribute('name');
+
+    if (columnName) {
+      this.asProps.headerNodesMap.delete(columnName);
+    }
+  }
+
   changeTemplateColumnBySort() {
     const { tableRef, gridTemplateColumns, columnIndex, sort, name } = this.asProps;
 
