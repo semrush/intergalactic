@@ -174,7 +174,7 @@ class HeadRoot<
       'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
       scrollDirection,
       headerNodesMap,
-      // 'top': top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
+      'top': top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
     };
   }
 
