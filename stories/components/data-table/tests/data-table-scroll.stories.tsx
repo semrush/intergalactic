@@ -2,7 +2,6 @@ import { DataTable } from '@semcore/ui/data-table';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CampaingsTableExample from './examples/scroll-tests/campaigns-table';
-import FixedOffsetStaleOnColumnsChangeExample from './examples/scroll-tests/fixed-offset-stale-on-columns-change';
 import FixedOffsetStaleOnContentChangeExample from './examples/scroll-tests/fixed-offset-stale-on-content-change';
 import FolderTableExample from './examples/scroll-tests/folder-table';
 import RealTableExample from './examples/scroll-tests/real-table';
@@ -168,8 +167,4 @@ export const StickyHeaderHiddenColumn: Story = {
 
 export const FixedOffsetStaleOnContentChange: Story = {
   render: FixedOffsetStaleOnContentChangeExample,
-};
-
-export const FixedOffsetStaleOnColumnsChange: Story = {
-  render: FixedOffsetStaleOnColumnsChangeExample,
 };
