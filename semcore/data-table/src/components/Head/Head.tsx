@@ -68,7 +68,7 @@ class HeadRoot<
   }
 
   recalculateColumnStyle() {
-    const { treeColumns, getFixedStyle } = this.asProps;
+    const { treeColumns, getFixedStyle, selectedRows } = this.asProps;
 
     const setForColumn = (column: DTColumn) => {
       const isParentContainer = (column: DTColumn): column is (Omit<DTColumn, 'columns'> & { columns: DTColumn[] }) => {
@@ -96,8 +96,12 @@ class HeadRoot<
       }
     };
 
-    treeColumns.forEach((column) => {
+    treeColumns.forEach((column, index) => {
       setForColumn(column);
+
+      if (selectedRows && index === 0 && column.fixed) {
+        this.columnStyle.set(SELECT_ALL, { left: 0 });
+      }
     });
   }
 
