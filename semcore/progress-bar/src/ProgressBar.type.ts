@@ -7,7 +7,7 @@ declare namespace NSProgressBar {
      * Progress bar theme
      * @default default
      */
-    theme?: 'default' | 'invert' | string;
+    theme?: 'default' | 'invert' | 'brand' | string;
     /**
      * Progress bar size
      * @default m

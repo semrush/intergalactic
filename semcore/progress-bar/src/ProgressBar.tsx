@@ -2,7 +2,7 @@ import { Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import type { NSProgressBar } from './ProgressBar.type';
 import style from './style/progress-bar.shadow.css';
@@ -10,7 +10,7 @@ import style from './style/progress-bar.shadow.css';
 function isCustomTheme(theme?: string) {
   if (!theme) return false;
 
-  return !['default', 'invert'].includes(theme);
+  return !['default', 'invert', 'brand'].includes(theme);
 }
 
 class ProgressBarRoot extends Component<
@@ -79,6 +79,10 @@ function Value(
     if (value === 100) {
       setTimeout(() => {
         setStopAnimation(true);
+      });
+    } else {
+      setTimeout(() => {
+        setStopAnimation(false);
       });
     }
   }, [value]);

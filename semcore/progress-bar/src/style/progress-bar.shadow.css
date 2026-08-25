@@ -87,6 +87,15 @@ SProgressBar[theme='invert'] {
   }
 }
 
+SProgressBar[theme='brand'] {
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.157 0.029 176 / 0.11));
+
+  SValue {
+    background-image: var(--intergalactic-progress-bar-value-gradient-invert,
+    linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 75%, oklch(0.74 0.17 303) 0%));
+  }
+}
+
 SProgressBar[theme='custom'] {
   background-color: var(--colorBg);
   background-image: var(--colorBg);
