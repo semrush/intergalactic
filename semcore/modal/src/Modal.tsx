@@ -222,7 +222,7 @@ function Close(
           )
         : (
             <Button.Addon ml='7px' mr='7px'>
-              <CloseIcon title={getI18nText('close')} />
+              <CloseIcon />
             </Button.Addon>
           )}
     </SClose>,
