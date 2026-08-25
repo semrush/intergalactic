@@ -1080,7 +1080,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@bulk-textarea'],
-    }, async ({ page }) => {
+    }, async ({ page, browserName }) => {
+      test.skip(browserName === 'firefox', 'Hover events are unstable in Playwright Firefox');
+
       await loadPage(page, 'stories/components/bulk-textarea/tests/examples/basic-props.tsx', 'en', { maxLines: 15 });
 
       await test.step('Row Error on Hover', async () => {
