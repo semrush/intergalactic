@@ -70,6 +70,7 @@ export const ScrollWithStickyAndTopTopHeaderProps: StoryObj<typeof ScrollTopHead
   render: ScrollWithStickyAndTopTopHeaderPropsExample,
   argTypes: {
     loading: { control: 'boolean' },
+    grouped: { control: 'boolean' },
   },
   args: ScrollTopHeaderProps,
 };
