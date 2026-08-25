@@ -124,17 +124,15 @@ class Value extends Component<
         null,
         (newValue) => {
           const { displayValue: prevDisplayValue } = this.state;
-          const { value: prevValue } = this.asProps;
 
-          const { parsedValue, displayValue } = this.valueParser(
+          const displayValue = this.getDisplayValue(
             newValue ?? '',
-            prevValue,
             prevDisplayValue,
           );
 
           this.setState({ displayValue });
 
-          return parsedValue;
+          return String(newValue);
         },
       ],
     };
@@ -171,34 +169,27 @@ class Value extends Component<
       .replace(new RegExp('\\.\\.', 'g'), '.');
   };
 
-  valueParser = (
+  getDisplayValue = (
     value: string | number,
-    prevValue: string,
     prevDisplayValue: NSInputNumber.Value.State['displayValue'],
   ) => {
     const { numberFormatter } = this.props;
     const stringNumber = String(value);
 
     if (Number.isNaN(Number(stringNumber))) {
-      return {
-        parsedValue: prevValue,
-        displayValue: prevDisplayValue,
-      };
+      return prevDisplayValue;
     }
 
     let displayValue = '';
 
     if (/\.[0-9]*0$/.test(stringNumber)) {
-      const [int, decimal] = stringNumber.split('.');
+      const [int, decimal] = stringNumber.split(this.separatorDecimal);
       displayValue = numberFormatter.format(+int) + this.separatorDecimal + decimal;
     } else if (stringNumber !== '') {
       displayValue = numberFormatter.format(+stringNumber);
     }
 
-    return {
-      parsedValue: stringNumber,
-      displayValue: displayValue,
-    };
+    return displayValue;
   };
 
   get stepPrecision() {
@@ -208,7 +199,7 @@ class Value extends Component<
     return decimals?.length ?? 0;
   }
 
-  getDisplayValue(value: number): string {
+  getStringValue(value: number): string {
     return value === 0 ? `${value}` : value.toFixed(this.stepPrecision);
   }
 
@@ -232,8 +223,7 @@ class Value extends Component<
 
   handleValidation = (event: React.FocusEvent<HTMLInputElement>) => {
     const { value, min, max, step } = this.asProps;
-    const { displayValue } = this.state;
-    const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
+    const parsedValue = this.getFormattedValue(event.currentTarget.value);
 
     if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
@@ -249,7 +239,7 @@ class Value extends Component<
         }
       }
 
-      this.handlers.value(this.processedValue(this.getDisplayValue(numberValue)), event);
+      this.handlers.value(this.processedValue(this.getStringValue(numberValue)), event);
     }
   };
 
@@ -271,16 +261,15 @@ class Value extends Component<
     }
 
     if (value !== '') {
-      const { displayValue } = this.valueParser(value, '', '');
+      const displayValue = this.getDisplayValue(value, '');
       this.setState({ displayValue });
     }
   }
 
   componentDidUpdate(prevProps: typeof this.asProps, prevState: typeof this.state) {
     if (prevProps.value !== this.props.value) {
-      const { displayValue } = this.valueParser(
+      const displayValue = this.getDisplayValue(
         this.props.value ?? '',
-        prevProps.value,
         prevState.displayValue,
       );
       this.setState({ displayValue });
@@ -335,9 +324,8 @@ class Value extends Component<
       const newValue = this.limitDecimals(value);
       this.handlers.value(this.processedValue(newValue), event);
       if (newValue === prevValue) {
-        const { displayValue } = this.valueParser(
+        const displayValue = this.getDisplayValue(
           newValue ?? '',
-          prevValue,
           this.state.displayValue,
         );
         this.setState({ displayValue });
@@ -517,7 +505,7 @@ class Value extends Component<
 
     const nextValue = Math.min(numberValue + step, max);
 
-    this.handlers.value(this.processedValue(this.getDisplayValue(nextValue)), event);
+    this.handlers.value(this.processedValue(this.getStringValue(nextValue)), event);
   };
 
   stepDown = (event: StepEvent) => {
@@ -535,7 +523,7 @@ class Value extends Component<
 
     const nextValue = Math.max(numberValue - step, min);
 
-    this.handlers.value(this.processedValue(this.getDisplayValue(nextValue)), event);
+    this.handlers.value(this.processedValue(this.getStringValue(nextValue)), event);
   };
 
   processedValue(value: string): NSInputNumber.Value | NSInputNumber.ValueNumber {
