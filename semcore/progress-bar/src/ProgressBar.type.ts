@@ -39,7 +39,10 @@ declare namespace NSProgressBar {
       value?: number;
       /** Animation diration in milliseconds for transitions */
       duration?: number;
-      /** Color theme */
+      /**
+       * Color theme
+       * @deprecated. Use only predefined themes.
+       */
       theme?: string;
     };
 
