@@ -1,7 +1,7 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
-import propsObserver from '@semcore/core/lib/decorators/reactive';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import type Tooltip from '@semcore/tooltip';
 import React from 'react';
 
@@ -60,7 +60,9 @@ class HeadRoot<
 
   onPropsChange(changedProps: Record<string, unknown>) {
     if ('treeColumns' in changedProps) {
-      this.recalculateColumnStyle();
+      requestAnimationFrame(() => {
+        this.recalculateColumnStyle();
+      });
     }
   }
 

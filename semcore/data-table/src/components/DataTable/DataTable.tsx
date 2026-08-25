@@ -20,7 +20,7 @@ import type {
   DataTableType,
   ColumnGroupConfig,
   ColumnItemConfig,
-  DataRowItem,
+  DataRowItem, ColumnsConfig,
 } from './DataTable.types';
 import { ScrollBars } from './ScrollBars';
 import type { ISelectedRows } from '../../store/SelectableRows';
@@ -55,6 +55,7 @@ type State<
   selectAllMessage: string;
   shadowVertical: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   expandedRows: Set<UniqKeyType>;
+  scrollOffset: [number, number];
 };
 
 type DefaultProps = {
@@ -110,6 +111,7 @@ class DataTableRoot<
 
   private columns: DTColumn[] = [];
   private treeColumns: DTColumn[] = [];
+  private tmpColumns: ColumnsConfig = [];
   private hasGroups = false;
   private hasFixedColumn = false;
 
@@ -137,7 +139,7 @@ class DataTableRoot<
     gridTemplateAreas: [],
   };
 
-  private headerNodesMap = new Map<string, HTMLElement>();
+  private headerNodesMap = new Map<string, React.RefObject<HTMLDivElement>>();
 
   private selectedRowsContainer: ISelectedRows<UniqKeyType>;
   private lastSelectedRowKey: UniqKeyType | undefined;
@@ -166,13 +168,16 @@ class DataTableRoot<
     selectAllMessage: '',
     shadowVertical: '',
     expandedRows: new Set<UniqKeyType>(),
+    scrollOffset: [0, 0],
   };
 
   componentDidMount() {
     const { headerProps, loading } = this.asProps;
     if ((headerProps?.sticky && !headerProps.h) || loading || this.hasFixedColumn) {
       requestAnimationFrame(() => {
-        this.forceUpdate();
+        this.setState({
+          scrollOffset: this.getScrollOffsetValue(),
+        });
         this.calculateVerticalShadow();
         this.calculateContainerHeight();
       });
@@ -190,11 +195,11 @@ class DataTableRoot<
   componentDidUpdate(prevProps: any) {
     const { data, selectedRows, columns } = this.asProps;
     if (prevProps.columns !== columns) {
-      const cols = this.calculateColumnsFromConfig();
-      this.columns = cols[0];
-      this.treeColumns = cols[1];
-
-      this.forceUpdate();
+      setTimeout(() => {
+        this.setState({
+          scrollOffset: this.getScrollOffsetValue(),
+        });
+      });
     }
     if (prevProps.data !== data || prevProps.columns !== columns) {
       if (this.hasFixedColumn) {
@@ -321,6 +326,10 @@ class DataTableRoot<
     } = this.asProps;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
+
+    const cols = this.calculateColumnsFromConfig();
+    this.columns = cols[0];
+    this.treeColumns = cols[1];
 
     const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
@@ -928,7 +937,7 @@ class DataTableRoot<
       data,
     } = this.asProps;
 
-    const [offsetLeftSum, offsetRightSum] = this.getScrollOffsetValue();
+    const [offsetLeftSum, offsetRightSum] = this.state.scrollOffset;
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
 
     const headerHeight = headerProps?.h || this.getHeaderHeight();
@@ -1031,7 +1040,7 @@ class DataTableRoot<
     );
   }
 
-  private getScrollOffsetValue = () => {
+  private getScrollOffsetValue = (): [number, number] => {
     if (!this.headerRef.current) {
       return [0, 0];
     }
@@ -1039,10 +1048,10 @@ class DataTableRoot<
     return this.columns.reduce(
       (acc, column) => {
         if (column.fixed === 'left') {
-          acc[0] += this.headerNodesMap.get(column.name)?.getBoundingClientRect().width ?? 0;
+          acc[0] += this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0;
         }
         if (column.fixed === 'right') {
-          acc[1] += this.headerNodesMap.get(column.name)?.getBoundingClientRect().width ?? 0;
+          acc[1] += this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0;
         }
         return acc;
       },
@@ -1078,7 +1087,7 @@ class DataTableRoot<
     if (columnsFixed.length < 1) return [side, 0];
 
     const sum = columnsFixed.reduce(
-      (acc, column) => acc + this.headerNodesMap.get(column.name)?.getBoundingClientRect().width,
+      (acc, column) => acc + (this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0),
       0,
     );
     return [side, `${sum}px`];
@@ -1086,6 +1095,12 @@ class DataTableRoot<
 
   private calculateColumnsFromConfig(): [DTColumn[], DTColumn[]] {
     const { columns, data, selectedRows } = this.props;
+
+    if (this.tmpColumns === columns) {
+      return [this.columns, this.treeColumns];
+    }
+
+    this.tmpColumns = columns;
 
     this.hasGroups = columns.some((column) => {
       return 'columns' in column && column.columns.some((col) => {

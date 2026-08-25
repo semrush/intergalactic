@@ -88,7 +88,10 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   onPropsChange(changedProps: Record<string, unknown>) {
     if ('columns' in changedProps) {
-      this.recalculateCellStyle();
+      requestAnimationFrame(() => {
+        this.recalculateCellStyle();
+        this.forceUpdate();
+      });
     }
   }
 

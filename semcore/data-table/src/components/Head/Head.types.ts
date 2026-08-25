@@ -1,3 +1,5 @@
+import type * as React from 'react';
+
 import type { ColumnPropsInner, DTColumn } from './Column.types';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import type { BodyPropsInner } from '../Body/Body.types';
@@ -69,5 +71,5 @@ export type HeadPropsInner<
 
   withAnimation: boolean;
 
-  headerNodesMap: Map<string, HTMLElement>;
+  headerNodesMap: Map<string, React.RefObject<HTMLDivElement>>;
 };

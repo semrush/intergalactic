@@ -69,7 +69,7 @@ export class Column<
     const columnName = columnElement?.getAttribute('name');
 
     if (columnElement && columnName) {
-      headerNodesMap.set(columnName, columnElement);
+      headerNodesMap.set(columnName, this.columnRef);
     }
 
     if (parent && sticky && scrollDirection !== 'horizontal') {
