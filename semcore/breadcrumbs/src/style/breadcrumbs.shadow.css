@@ -3,13 +3,13 @@ SBreadcrumbs {
   align-items: center;
   padding: 0;
   margin: 0;
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
   SListContainer {
     display: contents;
     list-style: none;
 
     SSeparator {
-      margin: 0 var(--intergalactic-spacing-2x, 8px);
       color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
       display: flex;
 
