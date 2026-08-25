@@ -1,4 +1,6 @@
 {
   "confirm": "保存",
-  "discard": "取り消す"
+  "discard": "取り消す",
+  "increment": "上昇番号",
+  "decrement": "下降番号"
 }

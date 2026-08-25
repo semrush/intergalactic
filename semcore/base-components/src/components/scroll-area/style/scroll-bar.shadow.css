@@ -4,18 +4,21 @@ SScrollBar {
 }
 
 SScrollBar[orientation='vertical'] {
-  top: var(--intergalactic-spacing-1x, 4px);
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  top: 0;
   right: 0;
   width: 8px;
-  height: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-2x, 8px));
+  height: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-content-padding-small, 8px));
   justify-content: center;
 }
 
 SScrollBar[orientation='horizontal'] {
+  margin-left: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  left: 0;
   bottom: 0;
   height: 12px;
   align-items: center;
-  width: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-2x, 8px));
+  width: calc(100% - var(--offsetSum) - var(--intergalactic-spacing-content-padding-medium, 12px));
 }
 
 SSlider {
@@ -23,6 +26,6 @@ SSlider {
   width: 6px;
   height: 6px;
   /* disable-tokens-validator */
-  border-radius: 4px;
+  border-radius: var(--intergalactic-rounded-small, 6px);
   background-color: var(--intergalactic-scroll-bar-background, oklch(0.137 0.026 175.7 / 0.161));
 }

@@ -241,8 +241,8 @@
       "modal",
       "side-panel",
       "slider",
-      "textarea",
-      "wizard"
+      "tab-panel",
+      "textarea"
     ]
   },
   {
@@ -473,7 +473,6 @@
       "feedback-form",
       "input",
       "input-tags",
-      "tab-line",
       "textarea"
     ]
   },
@@ -495,21 +494,24 @@
       "input",
       "side-panel",
       "slider",
-      "spin",
-      "tab-line",
       "tab-panel",
       "textarea",
       "time-picker"
     ]
   },
   {
+    "name": "--intergalactic-border-accent",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Accent border for the active and selected states..",
+    "components": []
+  },
+  {
     "name": "--intergalactic-border-primary-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
-      "divider",
-      "spin"
+      "divider"
     ]
   },
   {
@@ -1015,25 +1017,19 @@
     "name": "--intergalactic-control-primary-advertising",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-advertising-hover",
     "value": "oklch(0.36 0.005 140)",
     "description": "Hover state of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-advertising-active",
     "value": "oklch(0.4 0.004 140)",
     "description": "Active (selected) state of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-brand",
@@ -1289,7 +1285,7 @@
   },
   {
     "name": "--intergalactic-control-slider-rating-icon",
-    "value": "oklch(0.7 0.003 162.2)",
+    "value": "oklch(0.8 0.003 169.6)",
     "description": "Icon color for the SliderRating component in its normal state.",
     "components": []
   },
@@ -1500,7 +1496,7 @@
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
   },
@@ -1728,7 +1724,6 @@
     "components": [
       "accordion",
       "carousel",
-      "drag-and-drop",
       "feature-highlight",
       "notice",
       "typography"
@@ -1777,7 +1772,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-critical",
-    "value": "oklch(0.628 0.257 28.9 / 0.652)",
+    "value": "oklch(0.628 0.258 29.2 / 0.415)",
     "description": "Softer error icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
@@ -1789,7 +1784,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-info",
-    "value": "oklch(0.424 0.269 264.2 / 0.469)",
+    "value": "oklch(0.475 0.281 264.1 / 0.339)",
     "description": "Secondary link-lookalike icon.",
     "components": []
   },
@@ -1801,11 +1796,12 @@
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
-    "value": "oklch(0.104 0.023 162.3 / 0.385)",
+    "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "De-emphasized icons for dense layouts (tables, tertiary actions).",
     "components": [
       "breadcrumbs",
       "carousel",
+      "drag-and-drop",
       "inline-input",
       "input",
       "input-number",
@@ -1826,7 +1822,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-success",
-    "value": "oklch(0.711 0.146 166.9)",
+    "value": "oklch(0.787 0.16 167.8 / 0.898)",
     "description": "Softer success icon for dense UI or inline hints where the surface should stay calm.",
     "components": [
       "inline-input"
@@ -1842,7 +1838,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-warning",
-    "value": "oklch(0.701 0.191 48.1)",
+    "value": "oklch(0.735 0.184 53.9 / 0.757)",
     "description": "Softer warning icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
@@ -1850,6 +1846,12 @@
     "name": "--intergalactic-icon-secondary-warning-hover-active",
     "value": "oklch(0.662 0.193 43.7)",
     "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-icon-secondary-invert",
+    "value": "oklch(0.994 0.009 143.7 / 0.336)",
+    "description": "Softer inverted icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
   {
@@ -2004,7 +2006,8 @@
     "description": "Use for cover the content under the modal dialogs.",
     "components": [
       "modal",
-      "side-panel"
+      "side-panel",
+      "spin-container"
     ]
   },
   {
@@ -2012,8 +2015,7 @@
     "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
     "components": [
-      "modal",
-      "spin-container"
+      "modal"
     ]
   },
   {
@@ -2118,7 +2120,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-value-gradient",
-    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.88) 75%, oklch(0.22 0.01 140) 0%)",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 75%, oklch(0.22 0.01 140) 0%)",
     "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2264,33 +2266,43 @@
   },
   {
     "name": "--intergalactic-spin-bg",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "Track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-spin-bg-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.998 0.003 173.3 / 0.808)",
     "description": "Inverted track color of the Spin loader.",
-    "components": []
+    "components": [
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its normal state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-active",
-    "value": "oklch(0.7 0.131 275.2)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the TabLine in its active state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-hover",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its hover state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-table-border-accent",
@@ -2526,7 +2538,7 @@
   },
   {
     "name": "--intergalactic-tag-additional-border-invert",
-    "value": "oklch(0.996 0.007 151.1 / 0.447)",
+    "value": "oklch(0.995 0.009 144.4 / 0.347)",
     "description": "Inverted border color of the additional Tag.",
     "components": [
       "tag"
@@ -2800,7 +2812,6 @@
     "value": "oklch(0.086 0.026 145.8 / 0.605)",
     "description": "Hover and active states of the hint link text.",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2867,6 +2878,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Default primary link color.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2875,6 +2887,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Hover and active states for the primary link.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2890,39 +2903,50 @@
     "name": "--intergalactic-text-link-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary link. Use on dark and colored sbackground only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-primary-invert-hover-active",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Hover and active states of the inverted version of the primary link. Use on dark and colored backgrounds only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Default secondary link color.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Hover and active states for the secondary link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-accent",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Default accent link color.",
     "components": [
-      "button"
+      "button",
+      "link"
     ]
   },
   {
     "name": "--intergalactic-text-link-accent-hover-active",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Hover and active states for the accent link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-visited",
@@ -2989,8 +3013,7 @@
     "components": [
       "date-picker",
       "feature-highlight",
-      "notice-bubble",
-      "wizard"
+      "notice-bubble"
     ]
   },
   {
@@ -3090,13 +3113,17 @@
     "name": "--intergalactic-wizard-bg",
     "value": "oklch(1 0 0)",
     "description": "Main background of the Wizard.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-bg",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-control",
@@ -3108,19 +3135,25 @@
     "name": "--intergalactic-wizard-sidebar-control-active",
     "value": "oklch(0.4 0.004 140)",
     "description": "Active state of the control in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-control-hover",
     "value": "oklch(0.36 0.005 140)",
     "description": "Hover state of the control in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-text-primary",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Primary text color in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-text-secondary",
@@ -3265,6 +3298,7 @@
       "input-tags",
       "pills",
       "tab-line",
+      "tab-panel",
       "textarea",
       "time-picker"
     ]
@@ -3308,7 +3342,8 @@
       "dropdown-menu",
       "input-tags",
       "notice",
-      "pills"
+      "pills",
+      "wizard"
     ]
   },
   {
@@ -3330,7 +3365,8 @@
       "dropdown",
       "modal",
       "notice",
-      "pills"
+      "pills",
+      "wizard"
     ]
   },
   {
@@ -3338,6 +3374,7 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
@@ -3347,9 +3384,11 @@
       "input-tags",
       "modal",
       "pills",
+      "tab-panel",
       "textarea",
       "time-picker",
-      "tooltip"
+      "tooltip",
+      "wizard"
     ]
   },
   {
@@ -3360,7 +3399,8 @@
       "bulk-textarea",
       "feature-popover",
       "notice",
-      "notice-bubble"
+      "notice-bubble",
+      "wizard"
     ]
   },
   {
@@ -3370,7 +3410,8 @@
     "components": [
       "bulk-textarea",
       "card",
-      "notice"
+      "notice",
+      "wizard"
     ]
   },
   {
@@ -3386,7 +3427,8 @@
     "components": [
       "feature-popover",
       "modal",
-      "notice-bubble"
+      "notice-bubble",
+      "wizard"
     ]
   },
   {
@@ -3405,8 +3447,10 @@
       "date-picker",
       "dropdown-menu",
       "inline-input",
+      "link",
       "pagination",
-      "tag"
+      "tag",
+      "wizard"
     ]
   },
   {
@@ -3422,7 +3466,9 @@
       "input",
       "pills",
       "radio",
-      "select"
+      "select",
+      "tab-line",
+      "tab-panel"
     ]
   },
   {
@@ -3456,7 +3502,8 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "tab-line"
     ]
   },
   {
@@ -3464,7 +3511,9 @@
     "value": "20px",
     "description": "Extended 2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "tab-line",
+      "wizard"
     ]
   },
   {

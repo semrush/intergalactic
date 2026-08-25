@@ -48,8 +48,8 @@ const entry: PlaygroundEntry<SpinContainerJSXProps> = {
     },
     theme: {
       type: 'inline-radio',
-      value: 'dark',
-      options: ['dark', 'invert'],
+      value: 'default',
+      options: ['default', 'invert'],
       displayName: 'Theme',
     },
     size: {

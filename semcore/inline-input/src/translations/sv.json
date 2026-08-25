@@ -1,4 +1,6 @@
 {
   "confirm": "Spara",
-  "discard": "Avbryt"
+  "discard": "Avbryt",
+  "increment": "Ökning av antal",
+  "decrement": "Minskning av antal"
 }

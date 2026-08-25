@@ -218,7 +218,6 @@ const Demo = (demoProps: AccordionInTableProps) => {
         loading={demoProps.loading}
         data={data}
         aria-label='Accordion inside table'
-        h='100%'
         defaultGridTemplateColumnWidth='1fr'
         columns={cols}
         renderCell={(props) => {
