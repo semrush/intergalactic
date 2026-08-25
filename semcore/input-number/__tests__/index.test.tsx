@@ -335,6 +335,86 @@ describe('InputNumber', () => {
     }
   }
 
+  const trailingZeroCases = [
+    { value: '1.50', integerPart: '1', fraction: '50' },
+    { value: '1.0', integerPart: '1', fraction: '0' },
+    { value: '0.500', integerPart: '0', fraction: '500' },
+    { value: '12345.10', integerPart: '12|345', fraction: '10' },
+  ];
+
+  for (const { locales, thousandsSeparator, decimalSeparator } of localeGroups) {
+    for (const locale of locales) {
+      test.sequential(
+        `Verify locale=${locale} keeps trailing zeros of a controlled decimal value`,
+        () => {
+          for (const { value, integerPart, fraction } of trailingZeroCases) {
+            const { getByTestId, unmount } = render(
+              <InputNumber locale={locale}>
+                <InputNumber.Value data-testid='trailing-zero-input' value={value} />
+              </InputNumber>,
+            );
+            const input = getByTestId('trailing-zero-input') as HTMLInputElement;
+
+            const expectedValue =
+              integerPart.replace('|', thousandsSeparator) + decimalSeparator + fraction;
+
+            expect(
+              input.value,
+              `Unexpected display value for value="${value}" in locale "${locale}"`,
+            ).toBe(expectedValue);
+
+            unmount();
+          }
+        },
+      );
+    }
+  }
+
+  for (const {
+    locales,
+    thousandsSeparator,
+    decimalSeparator,
+    groupFourDigitNumbers,
+  } of localeGroups) {
+    for (const locale of locales) {
+      test.sequential(
+        `Verify locale=${locale} keeps a trailing zero typed into the fractional part`,
+        async () => {
+          const spy = vi.fn();
+          const { getByTestId } = render(
+            <InputNumber locale={locale}>
+              <InputNumber.Value data-testid='trailing-zero-typed' value='' onChange={spy} />
+            </InputNumber>,
+          );
+          const input = getByTestId('trailing-zero-typed') as HTMLInputElement;
+
+          const expectedIntegerPart = groupFourDigitNumbers
+            ? `1${thousandsSeparator}234`
+            : '1234';
+
+          await focusInput(input);
+          await userEvent.keyboard(`1234${decimalSeparator}5`);
+
+          expect(
+            input.value,
+            `Unexpected display value before the trailing zero for locale "${locale}"`,
+          ).toBe(`${expectedIntegerPart}${decimalSeparator}5`);
+
+          await userEvent.keyboard('0');
+
+          expect(
+            spy.mock.lastCall?.[0],
+            `Unexpected parsed value for locale "${locale}"`,
+          ).toBe('1234.50');
+          expect(
+            input.value,
+            `Trailing zero corrupted the display value for locale "${locale}"`,
+          ).toBe(`${expectedIntegerPart}${decimalSeparator}50`);
+        },
+      );
+    }
+  }
+
   test.sequential('Verify format in hundredths fractions numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
