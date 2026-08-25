@@ -50,11 +50,11 @@ export const CustomizingTheValue: StoryObj<typeof CustomizingTheValueProps> = {
   render: CustomizingTheValueExample,
   argTypes: {
     ...commonArgTypes,
-    // ProgressBar.Value has no built-in themes — its `theme` is always a color token
     theme: {
       control: { type: 'select' },
-      options: COLOR_TOKENS,
-      description: 'The value is resolved as a color token.',
+      options: [...BUILT_IN_THEMES, ...COLOR_TOKENS],
+      description:
+        'Deprecated on ProgressBar.Value — use only predefined themes. A built-in theme name is not a color token, so the value falls back to the gradient of the root theme; a color token paints the value with that color.',
     },
   },
   args: CustomizingTheValueProps,
