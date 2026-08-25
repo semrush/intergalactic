@@ -3353,6 +3353,7 @@
       "base-components",
       "bulk-textarea",
       "dropdown",
+      "fullscreen-modal",
       "modal",
       "pills"
     ]

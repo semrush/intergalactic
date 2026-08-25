@@ -17,15 +17,15 @@ SFullscreenOverlay {
 
   SClose {
     position: absolute;
-    top: 17px;
-    right: 24px;
+    top: var(--intergalactic-spacing-content-padding-large, 16px);
+    right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   }
 
   SBack {
     cursor: pointer;
     position: absolute;
     z-index: 1;
-    top: 8px;
+    top: var(--intergalactic-spacing-content-padding-small, 8px);
     left: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   }
 
@@ -37,7 +37,7 @@ SFullscreenOverlay {
   STitle {
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 117%);
-    font-weight: var(--intergalactic-bold, 700);
+    font-weight: var(--intergalactic-semi-bold, 600);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
