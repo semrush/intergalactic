@@ -16,7 +16,7 @@ import type { DTRow } from '../Body/Row.types';
 import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
-@propsObserver(['treeColumns'])
+@propsObserver(['treeColumns', 'rows'])
 class HeadRoot<
   Data extends DataTableData,
   UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
@@ -59,9 +59,10 @@ class HeadRoot<
   }
 
   onPropsChange(changedProps: Record<string, unknown>) {
-    if ('treeColumns' in changedProps) {
+    if ('treeColumns' in changedProps || 'rows' in changedProps) {
       requestAnimationFrame(() => {
         this.recalculateColumnStyle();
+        this.forceUpdate();
       });
     }
   }

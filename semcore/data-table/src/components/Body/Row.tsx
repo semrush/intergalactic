@@ -28,7 +28,7 @@ type DefaultProps = {
   'aria-level': undefined;
 };
 
-@propsObserver(['columns'])
+@propsObserver(['columns', 'row'])
 class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     DataTableRowProps<Data, UniqKeyType>,
     [],
@@ -87,7 +87,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   onPropsChange(changedProps: Record<string, unknown>) {
-    if ('columns' in changedProps) {
+    if ('columns' in changedProps || 'row' in changedProps) {
       requestAnimationFrame(() => {
         this.recalculateCellStyle();
         this.forceUpdate();

@@ -44,6 +44,7 @@ export type HeadPropsInner<
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
   treeColumns: DTColumn[];
+  rows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
   compact: boolean;
   sort?: DataTableProps<Data, UniqKey, UniqKeyType>['sort'];
   onSortChange?: DataTableProps<Data, UniqKey, UniqKeyType>['onSortChange'];

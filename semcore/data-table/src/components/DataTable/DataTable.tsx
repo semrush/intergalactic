@@ -1,5 +1,6 @@
 import { Box, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
@@ -69,6 +70,7 @@ type DefaultProps = {
   accordionDuration: 200;
 };
 
+@propsObserver(['data', 'columns'])
 class DataTableRoot<
   Data extends DataTableData,
   UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
@@ -194,17 +196,16 @@ class DataTableRoot<
 
   componentDidUpdate(prevProps: any) {
     const { data, selectedRows, columns } = this.asProps;
-    if (prevProps.columns !== columns) {
+
+    if (prevProps.data !== data || prevProps.columns !== columns) {
+      if (this.hasFixedColumn) {
+        this.calculateVerticalShadow();
+      }
       setTimeout(() => {
         this.setState({
           scrollOffset: this.getScrollOffsetValue(),
         });
       });
-    }
-    if (prevProps.data !== data || prevProps.columns !== columns) {
-      if (this.hasFixedColumn) {
-        this.calculateVerticalShadow();
-      }
     }
     if (prevProps.selectedRows !== selectedRows && selectedRows !== undefined && !Array.isArray(selectedRows)) {
       this.selectedRowsContainer = selectedRows;
@@ -217,6 +218,19 @@ class DataTableRoot<
     }
 
     this.state.expandedRows?.clear();
+  }
+
+  onPropsChange(changedProps: Record<string, unknown>) {
+    if ('columns' in changedProps) {
+      const cols = this.calculateColumnsFromConfig();
+      this.columns = cols[0];
+      this.treeColumns = cols[1];
+    }
+
+    if ('data' in changedProps) {
+      this.calculatedRows = this.getRows();
+      this.flatRows = this.calculatedRows.flat();
+    }
   }
 
   calculateStickyHeaderAnimation() {
@@ -327,16 +341,13 @@ class DataTableRoot<
     const { gridTemplateColumns, gridTemplateAreas } = this.gridSettings;
     const { shadowVertical } = this.state;
 
-    const cols = this.calculateColumnsFromConfig();
-    this.columns = cols[0];
-    this.treeColumns = cols[1];
-
     const sideIndentsValue = variant === 'card' ? 'wide' : sideIndents;
 
     return {
       ...headerProps,
       columns: this.columns,
       treeColumns: this.treeColumns,
+      rows: this.calculatedRows,
       use,
       tableRef: this.tableRef,
       compact: Boolean(compact),
@@ -394,8 +405,8 @@ class DataTableRoot<
       accordionAnimationRows,
       accordionMode,
       columns: this.columns,
-      rows: this.getRows(),
-      flatRows: this.getFlatRows(),
+      rows: this.calculatedRows,
+      flatRows: this.flatRows,
       use,
       compact: Boolean(compact),
       gridTemplateColumns,
