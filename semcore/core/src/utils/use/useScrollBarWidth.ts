@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Dimension = 'vertical' | 'horizontal';
 
@@ -42,9 +42,9 @@ function init() {
 }
 
 function subscribe(onStoreChange: () => void) {
-  init();
-
   listeners.add(onStoreChange);
+
+  init();
 
   return () => {
     listeners.delete(onStoreChange);
@@ -57,10 +57,18 @@ function subscribe(onStoreChange: () => void) {
 
 export function useScrollBarWidth(vertical = true): number {
   const dim: Dimension = vertical ? 'vertical' : 'horizontal';
+  const [value, setValue] = useState(() => state[dim]);
+  const dimRef = useRef(dim);
 
-  return useSyncExternalStore(
-    subscribe,
-    () => state[dim],
-    () => 0,
-  );
+  dimRef.current = dim;
+
+  useEffect(() => {
+    const onChange = () => setValue(state[dimRef.current]);
+
+    onChange();
+
+    return subscribe(onChange);
+  }, []);
+
+  return value;
 }
