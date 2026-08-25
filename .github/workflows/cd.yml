@@ -122,7 +122,10 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-            semcore/*/tsconfig.tsbuildinfo
+            semcore/**/tsconfig.json
+            semcore/**/tsconfig.tsbuildinfo
+            tools/theme/tsconfig.json
+            tools/theme/tsconfig.tsbuildinfo
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
@@ -168,12 +171,17 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-            semcore/*/tsconfig.tsbuildinfo
+            semcore/**/tsconfig.json
+            semcore/**/tsconfig.tsbuildinfo
+            tools/theme/tsconfig.json
+            tools/theme/tsconfig.tsbuildinfo
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
+      - name: Generate re-exports
+        run: pnpm --filter @semcore/ui generate-reexport
       - name: Lint
         run: pnpm lint
   get-changed-files:
@@ -252,7 +260,10 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-            semcore/*/tsconfig.tsbuildinfo
+            semcore/**/tsconfig.json
+            semcore/**/tsconfig.tsbuildinfo
+            tools/theme/tsconfig.json
+            tools/theme/tsconfig.tsbuildinfo
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Install dependencies
@@ -330,7 +341,10 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-            semcore/*/tsconfig.tsbuildinfo
+            semcore/**/tsconfig.json
+            semcore/**/tsconfig.tsbuildinfo
+            tools/theme/tsconfig.json
+            tools/theme/tsconfig.tsbuildinfo
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Build basic packages
@@ -406,7 +420,10 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-            semcore/*/tsconfig.tsbuildinfo
+            semcore/**/tsconfig.json
+            semcore/**/tsconfig.tsbuildinfo
+            tools/theme/tsconfig.json
+            tools/theme/tsconfig.tsbuildinfo
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
       - name: Build basic packages
         if: steps.cache-build.outputs.cache-hit != 'true'
@@ -476,7 +493,10 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-            semcore/*/tsconfig.tsbuildinfo
+            semcore/**/tsconfig.json
+            semcore/**/tsconfig.tsbuildinfo
+            tools/theme/tsconfig.json
+            tools/theme/tsconfig.tsbuildinfo
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-6
           enableCrossOsArchive: true
       - name: Build basic packages
