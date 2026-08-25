@@ -1,6 +1,7 @@
-import LinkExternalM from '@semcore/icon/LinkExternal/m';
+import ButtonLink from '@semcore/ui/button';
 import type { CellRenderProps } from '@semcore/ui/data-table';
-import { DataTable } from '@semcore/ui/data-table';
+import { LinkAction, DataTable } from '@semcore/ui/data-table';
+import IconM from '@semcore/ui/icon/Cards/m';
 import Link from '@semcore/ui/link';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
@@ -28,6 +29,11 @@ const data = [{
   cpc: '$0',
   url: 'n/a',
 }, {
+  keyword: 'ebay buy no url',
+  kd: '-',
+  cpc: '$0',
+  url: undefined,
+}, {
   keyword: 'ebay buy',
   kd: '75.89',
   cpc: '$0',
@@ -40,9 +46,13 @@ const data = [{
 }];
 
 const pageLimit = 10;
-const recalculateContainerWidth = (width: number) => width - 20;
+const recalculateContainerWidth = (width: number) => width - 35;
 
-export default function Demo() {
+type TableLinkProps = {
+  size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
+};
+
+export default function Demo(props: TableLinkProps) {
   const [currentPage, setCurrentPage] = React.useState(0);
 
   const urlRef = React.useRef(null);
@@ -78,27 +88,29 @@ export default function Demo() {
 
   const renderCell = React.useMemo(() => (props: CellRenderProps<any, any>) => {
     if (props.columnName === 'url' && Boolean(columnElement)) {
-      const pageUrl = props.value?.toString?.() ?? '';
+      const url = props.row.url as string | null | undefined;
+
+      if (!url) {
+        return null;
+      }
+
+      if (!url.startsWith('http')) {
+        return url;
+      }
+
       return (
-        <Link
-          href={pageUrl}
-          target='_blank'
-          color='text-primary'
-          rel='noopener noreferrer'
-          wMin={0}
-        >
-          <Link.Text
-            wMin={0}
-            ellipsis:cropPosition='middle'
-            ellipsis:containerElement={columnElement}
-            ellipsis:recalculateContainerWidth={recalculateContainerWidth}
-          >
-            {removeProtocol(pageUrl)}
-          </Link.Text>
-          <Link.Addon>
-            <LinkExternalM color='icon-secondary-neutral' />
-          </Link.Addon>
-        </Link>
+        <LinkAction>
+          <Link href={url}>
+            <Link.Text
+              ellipsis:cropPosition='middle'
+              ellipsis:containerElement={columnElement}
+              ellipsis:recalculateContainerWidth={recalculateContainerWidth}
+            >
+              {removeProtocol(url)}
+            </Link.Text>
+          </Link>
+          <ButtonLink addonLeft={IconM} use='tertiary' theme='muted' title='Open in new tab' />
+        </LinkAction>
       );
     }
     return props.defaultRender();
@@ -113,7 +125,7 @@ export default function Demo() {
       return {
         ...item,
         keyword: `${index} ${item.keyword}`,
-        url: `${item.url}#${index}`,
+        url: item.url == null ? item.url : `${item.url}#${index}`,
       };
     }));
   }

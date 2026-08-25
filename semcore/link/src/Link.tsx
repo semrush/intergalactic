@@ -1,29 +1,37 @@
-import { Box, Hint } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
+import { Box, Hint, ScreenReaderOnly } from '@semcore/base-components';
+import type { IRootComponentProps } from '@semcore/core';
 import { createComponent, Component, Root, sstyled, CORE_INSTANCE, INHERITED_NAME } from '@semcore/core';
 import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { findAllComponents } from '@semcore/core/lib/utils/findComponent';
 import hasLabels from '@semcore/core/lib/utils/hasLabels';
 import logger from '@semcore/core/lib/utils/logger';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import LinkExternalAltM from '@semcore/icon/LinkExternalAlt/m';
 import type { NSText } from '@semcore/typography';
 import { Text } from '@semcore/typography';
 import React from 'react';
 
 import type { NSLink } from './Link.types';
 import style from './style/link.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-class RootLink extends Component<
-  Intergalactic.InternalTypings.InferComponentProps<NSLink.Component>,
-  typeof RootLink.enhance,
-  never,
-  {},
-  NSLink.State
-> {
+class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {}, NSLink.State, NSLink.DefaultProps> {
   static displayName = 'Link';
 
   static style = style;
-  static enhance = [resolveColorEnhance()] as const;
+  static enhance = [
+    resolveColorEnhance(),
+    i18nEnhance(localizedMessages),
+    uniqueIDEnhancement(),
+  ] as const;
+
+  static defaultProps = {
+    theme: 'default',
+  } as const;
+
   containerRef = React.createRef<HTMLElement | null>();
 
   state: NSLink.State = {
@@ -40,19 +48,17 @@ class RootLink extends Component<
     }
 
     if (this.asProps['aria-labelledby']) {
-      const ariaLabelledBy = this.asProps['aria-labelledby'];
-
       setTimeout(() => {
         this.setState({
           ariaLabelledByContent:
-            document.getElementById(ariaLabelledBy)?.textContent ?? '',
+            document.getElementById(this.asProps['aria-labelledby'])?.textContent ?? '',
         });
       }, 0);
     }
   }
 
   getTextProps(): NSText.Props {
-    const { addonLeft, addonRight, size, Children } = this.asProps;
+    const { addonLeft, addonRight, size = 300, Children } = this.asProps;
     const Component = this[CORE_INSTANCE];
 
     const addons = findAllComponents(Children, [Component.Addon.displayName]);
@@ -72,10 +78,82 @@ class RootLink extends Component<
       addonsCount++;
     }
 
+    const width = this.isExternalLink()
+      ? `calc(100% - ${addonWidth * addonsCount + 2 + this.externalIconSizeMap[size]}px)`
+      : `calc(100% - ${addonWidth * addonsCount}px)`;
+
     return {
       'hint:triggerRef': this.containerRef,
-      'w': `calc(100% - ${addonWidth * addonsCount}px)`,
+      'w': width,
     };
+  }
+
+  getExternalIconProps() {
+    const { size = 300 } = this.asProps;
+
+    return {
+      width: this.externalIconSizeMap[size],
+      height: this.externalIconSizeMap[size],
+      ml: '2px',
+    };
+  }
+
+  private get externalIconSizeMap(): Record<Exclude<NSLink.Props['size'], undefined>, number> {
+    // this is 0.6em for sizes
+    return {
+      100: 7,
+      200: 8,
+      300: 10,
+      350: 11,
+      400: 12,
+      500: 14,
+      600: 19,
+      700: 22,
+      800: 29,
+    };
+  }
+
+  private isExternalLink() {
+    const { children, href, isExternal } = this.asProps;
+
+    if (isExternal !== undefined) return isExternal;
+    if (href === undefined) return false;
+
+    const link = (typeof children === 'string' && this.isUrl(children)) ? children : href;
+
+    if (!this.isUrl(link)) {
+      return false;
+    }
+
+    if (canUseDOM()) {
+      try {
+        const linkUrl = new URL(link, window.location.origin);
+
+        return linkUrl.host !== window.location.host;
+      } catch (e: unknown) {
+        if (e instanceof Error && e.message.includes('Invalid base URL')) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  private isUrl(value: string): boolean {
+    return value.startsWith('//') || value.toLowerCase().startsWith('http');
+  }
+
+  private get themeFallback(): NSLink.Props['theme'] {
+    const { use, theme } = this.asProps;
+
+    if (use === 'primary') {
+      return 'default';
+    } else if (use === 'secondary') {
+      return 'light';
+    }
+
+    return theme;
   }
 
   render() {
@@ -92,6 +170,8 @@ class RootLink extends Component<
       title,
       'aria-label': ariaLabel,
       hintPlacement,
+      uid,
+      getI18nText,
     } = this.asProps;
 
     const Link = this[CORE_INSTANCE];
@@ -100,10 +180,14 @@ class RootLink extends Component<
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
     const showHint = children === undefined || title;
 
+    const isExternal = this.isExternalLink();
+
     const excludeProps = ['title', 'aria-disabled'];
     if (!this.asProps['use:disabled']) {
       excludeProps.push('disabled');
     }
+
+    const describedByExternalId = `igc-${uid}-external-link-describedby`;
 
     return sstyled(styles)(
       <>
@@ -112,11 +196,15 @@ class RootLink extends Component<
           use:href={disabled ? undefined : href}
           visually-disabled={disabled}
           render={Text}
+          use:theme={this.themeFallback}
           text-color={resolveColor(color)}
           tag='a'
+          target={isExternal ? '_blank' : undefined}
           ref={this.containerRef}
           __excludeProps={excludeProps}
           aria-label={showHint ? hintContent : undefined}
+          isExternal={isExternal}
+          aria-describedby={isExternal ? describedByExternalId : undefined}
         >
           <SInner
             tag='span'
@@ -130,6 +218,9 @@ class RootLink extends Component<
                 )
               : null}
             {addonTextChildren(Children, Link.Text, Link.Addon)}
+            {isExternal && typeof Children.origin === 'string' && !this.isUrl(Children.origin) && (
+              <Link.ExternalIcon />
+            )}
             {AddonRight
               ? (
                   <Link.Addon>
@@ -139,6 +230,11 @@ class RootLink extends Component<
               : null}
           </SInner>
         </SLink>
+        {isExternal && (
+          <ScreenReaderOnly aria-hidden={true} id={describedByExternalId}>
+            {getI18nText('Link.external:aria-describedby')}
+          </ScreenReaderOnly>
+        )}
         {showHint && (
           <Hint
             triggerRef={this.containerRef}
@@ -153,20 +249,22 @@ class RootLink extends Component<
   }
 }
 
-function LinkText(
-  props: Intergalactic.InternalTypings.InferChildComponentProps<NSLink.Text.Component, typeof RootLink, 'Text'>,
-) {
+function LinkText(props: IRootComponentProps) {
   const SText = Root;
   const { styles } = props;
   return sstyled(styles)(<SText render={Text} />);
 }
 
-function Addon(
-  props: Intergalactic.InternalTypings.InferChildComponentProps<NSLink.Addon.Component, typeof RootLink, 'Addon'>,
-) {
+function Addon(props: IRootComponentProps) {
   const SAddon = Root;
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} tag='span' />);
+}
+
+function ExternalIcon(props: IRootComponentProps) {
+  const SExternalIcon = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SExternalIcon render={LinkExternalAltM} />);
 }
 
 /**
@@ -177,6 +275,7 @@ function Addon(
 const Link = createComponent<NSLink.Component, typeof RootLink>(RootLink, {
   Text: LinkText,
   Addon,
+  ExternalIcon,
 });
 
 export default Link;
