@@ -49,21 +49,27 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
 
     await test.step('Verify tab panel styles', async () => {
-      const countText = await locators.text(page).count();
-      for (let i = 0; i < countText; i++) {
-        await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '8px');
-        await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '8px');
+      const countTabs = await locators.tabPanels(page).count();
+      for (let i = 0; i < countTabs; i++) {
+        // Spacing between an addon and the text comes from the tab gap
+        await expect(locators.tabPanels(page).nth(i)).toHaveCSS('column-gap', '6px');
+        // Space around the tab content comes from its own padding
+        await expect(locators.tabPanels(page).nth(i)).toHaveCSS('padding-left', '12px');
+        await expect(locators.tabPanels(page).nth(i)).toHaveCSS('padding-right', '12px');
       }
 
-      await expect(locators.addons(page).nth(0)).toHaveCSS('margin-left', '8px');
-      await expect(locators.addons(page).nth(2)).toHaveCSS('margin-left', '8px');
-      await expect(locators.addons(page).nth(4)).toHaveCSS('margin-left', '8px');
-      await expect(locators.addons(page).nth(7)).toHaveCSS('margin-left', '8px');
+      // Per-child margins were replaced by the gap and padding above and must not come back
+      const countText = await locators.text(page).count();
+      for (let i = 0; i < countText; i++) {
+        await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '0px');
+        await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '0px');
+      }
 
-      await expect(locators.addons(page).nth(1)).toHaveCSS('margin-right', '8px');
-      await expect(locators.addons(page).nth(3)).toHaveCSS('margin-right', '8px');
-      await expect(locators.addons(page).nth(5)).toHaveCSS('margin-right', '8px');
-      await expect(locators.addons(page).nth(6)).toHaveCSS('margin-right', '8px');
+      const countAddons = await locators.addons(page).count();
+      for (let i = 0; i < countAddons; i++) {
+        await expect(locators.addons(page).nth(i)).toHaveCSS('margin-right', '0px');
+        await expect(locators.addons(page).nth(i)).toHaveCSS('margin-left', '0px');
+      }
     });
   });
 

@@ -241,6 +241,7 @@
       "modal",
       "side-panel",
       "slider",
+      "tab-panel",
       "textarea"
     ]
   },
@@ -472,7 +473,6 @@
       "feedback-form",
       "input",
       "input-tags",
-      "tab-line",
       "textarea"
     ]
   },
@@ -494,7 +494,6 @@
       "input",
       "side-panel",
       "slider",
-      "tab-line",
       "tab-panel",
       "textarea",
       "time-picker"
@@ -2306,19 +2305,25 @@
     "name": "--intergalactic-control-tab-line-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its normal state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-active",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the TabLine in its active state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-hover",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its hover state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-table-border-accent",
@@ -3315,6 +3320,7 @@
       "notice",
       "pills",
       "tab-line",
+      "tab-panel",
       "textarea",
       "time-picker"
     ]
@@ -3398,6 +3404,7 @@
       "input-tags",
       "modal",
       "pills",
+      "tab-panel",
       "textarea",
       "time-picker",
       "tooltip",
@@ -3478,7 +3485,9 @@
       "input",
       "pills",
       "radio",
-      "select"
+      "select",
+      "tab-line",
+      "tab-panel"
     ]
   },
   {
@@ -3514,7 +3523,8 @@
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
       "carousel",
-      "pagination"
+      "pagination",
+      "tab-line"
     ]
   },
   {
@@ -3523,6 +3533,7 @@
     "description": "Extended 2x large gap between elements, rows, or columns.",
     "components": [
       "pagination",
+      "tab-line",
       "wizard"
     ]
   },
