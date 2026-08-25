@@ -1,8 +1,8 @@
 import type { Intergalactic } from '@semcore/core';
-import type { NSNotice } from '@semcore/notice';
+import type { NSNotice, NSNoticeSmart } from '@semcore/notice';
 
 declare namespace NSNoticeFH {
-  type Props = NSNotice.Props;
+  type Props = NSNotice.Props & NSNoticeSmart.Props;
 
   namespace Label {
     type Component = NSNotice.Label.Component;
