@@ -10,6 +10,16 @@ tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Examples('
 
 For detailed information about keyboard support for the Input, refer to the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input-and-textarea).
 
+### Roles and attributes
+
+The following list describes roles and attributes that the component already has.
+
+Table: Roles and attributes
+
+| Component | Role / Attribute | Usage |
+| --- | --- | --- |
+| `Textarea` | `aria-invalid="false/true"` | Is set to `true` when `state="invalid"` is provided; otherwise `false`. |
+
 ## Considerations for developers
 
 - Keep it simple - not all browsers correctly expose multiple labels that are linked to the same form element.

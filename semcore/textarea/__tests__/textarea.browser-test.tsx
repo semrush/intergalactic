@@ -100,32 +100,27 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en');
+    const getNumberOfLines = () => locators.textarea(page).evaluate((el) => {
+      const computed = window.getComputedStyle(el);
+      const lineHeight = parseFloat(computed.lineHeight);
 
-    await test.step('Verify textarea focused when perssing TAB', async () => {
+      return Math.round(el.scrollHeight / lineHeight);
+    });
+
+    await test.step('Verify textarea focused when pressing TAB', async () => {
       await page.keyboard.press('Tab');
       await expect(locators.textarea(page)).toBeFocused();
     });
 
-    await test.step('Verify ampunf of lines update when enetring text', async () => {
+    await test.step('Verify amount of lines updates when entering text', async () => {
       const text =
         'Zoom in on product categories to understand how each site segment drives \nconversions.\nSecond row\n4 row\n5 row\n6 row\n7 row\n8 row\n9 row\n10 row\n11 row';
       await page.keyboard.type(text, { delay: 10 });
 
-      const { scrollHeight, lineHeight } = await locators.textarea(page).evaluate((el) => {
-        const computed = window.getComputedStyle(el);
-        const lh = parseFloat(computed.lineHeight);
-        return {
-          scrollHeight: el.scrollHeight,
-          lineHeight: lh,
-        };
-      });
-
-      const numberOfLines = Math.round(scrollHeight / lineHeight);
-
-      expect(numberOfLines).toBe(11);
+      await expect.poll(getNumberOfLines).toBe(11);
     });
 
-    await test.step('Verify ampunf of lines update when removing all text', async () => {
+    await test.step('Verify amount of lines updates when removing all text', async () => {
       if (platform() === 'darwin') {
         await page.keyboard.press('Meta+A');
       } else {
@@ -133,17 +128,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       }
       await page.keyboard.press('Backspace');
 
-      const { scrollHeight, lineHeight } = await locators.textarea(page).evaluate((el) => {
-        const computed = window.getComputedStyle(el);
-        const lh = parseFloat(computed.lineHeight);
-        return {
-          scrollHeight: el.scrollHeight,
-          lineHeight: lh,
-        };
-      });
-
-      const numberOfLines = Math.round(scrollHeight / lineHeight);
-      expect(numberOfLines).toBe(2);
+      await expect.poll(getNumberOfLines).toBe(2);
     });
   });
 });

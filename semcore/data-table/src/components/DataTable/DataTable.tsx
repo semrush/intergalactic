@@ -1,3 +1,4 @@
+import type { NSScrollArea } from '@semcore/base-components';
 import { Box, ScrollArea } from '@semcore/base-components';
 import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import propsObserver from '@semcore/core/lib/decorators/propsObserver';
@@ -120,6 +121,7 @@ class DataTableRoot<
   private focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   private scrollAreaRef = React.createRef<HTMLDivElement>();
+  private scrollBarInstanceRef = React.createRef<NSScrollArea.Bar.Instance>();
 
   private tableContainerRef = React.createRef<HTMLDivElement>();
   private tableRef = React.createRef<HTMLDivElement>();
@@ -441,6 +443,7 @@ class DataTableRoot<
       limit,
       variant,
       totalRows,
+      scrollBarInstanceRef: this.scrollBarInstanceRef,
     };
   }
 
@@ -1039,6 +1042,7 @@ class DataTableRoot<
           topOffset={topOffset}
           withHeaderScrollBar={headerProps?.withScrollBar}
           withAnimation={this.withAnimation}
+          scrollBarInstanceRef={this.scrollBarInstanceRef}
         />
 
         {selectedRows !== undefined && !Array.isArray(selectedRows) && (
