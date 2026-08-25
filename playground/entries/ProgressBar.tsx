@@ -24,7 +24,7 @@ const entry: PlaygroundEntry<NSProgressBar.Props> = {
     theme: {
       type: 'select',
       value: 'default',
-      options: ['default', 'invert'],
+      options: ['default', 'invert', 'brand'],
       displayName: 'Theme',
     },
     duration: {

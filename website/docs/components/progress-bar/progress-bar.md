@@ -38,7 +38,7 @@ Table: ProgressBar sizes and styles
 
 ### Themes
 
-ProgressBar offers two themes: `default` and `invert`, which are suitable for light and dark/colored backgrounds respectively. Each theme colors the value with its own gradient token to indicate progress.
+ProgressBar offers three themes: `default` and `brand` for light backgrounds, and `invert` for dark/colored ones. Each theme colors the value with its own gradient token to indicate progress.
 
 Table: ProgressBar themes
 
@@ -46,6 +46,9 @@ Table: ProgressBar themes
 | ------- | -------------------------- | -------------------------- | --------------------------------------- |
 | Default | ![](static/size-l.png)     | `--progress-bar-bg`        | `--progress-bar-value-gradient`         |
 | Invert  | ![](static/dark-theme.png) | `--progress-bar-bg-invert` | `--progress-bar-value-gradient-invert`  |
+| Brand   | —                          | `--progress-bar-bg`        | `--progress-bar-value-gradient-invert`  |
+
+`brand` shares the light background of `default` but fills the value with the brand color, so use it when the progress itself should be accented.
 
 Passing any other value to `theme` is treated as a custom color token and is resolved as the bar's color.
 
