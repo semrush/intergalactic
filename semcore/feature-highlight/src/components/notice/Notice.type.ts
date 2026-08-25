@@ -1,32 +1,31 @@
 import type { Intergalactic } from '@semcore/core';
-import type { NSNoticeSmart } from '@semcore/notice';
-import type Notice from '@semcore/notice';
+import type { NSNotice } from '@semcore/notice';
 
 declare namespace NSNoticeFH {
-  type Props = NSNoticeSmart.Props;
+  type Props = NSNotice.Props;
 
   namespace Label {
-    type Component = typeof Notice['Label'];
+    type Component = NSNotice.Label.Component;
   }
 
   namespace Actions {
-    type Component = typeof Notice['Actions'];
+    type Component = NSNotice.Actions.Component;
   }
 
   namespace Content {
-    type Component = typeof Notice['Content'];
+    type Component = NSNotice.Content.Component;
   }
 
   namespace Title {
-    type Component = typeof Notice['Title'];
+    type Component = NSNotice.Title.Component;
   }
 
   namespace Text {
-    type Component = typeof Notice['Text'];
+    type Component = NSNotice.Text.Component;
   }
 
   namespace Close {
-    type Component = typeof Notice['Close'];
+    type Component = NSNotice.Close.Component;
   }
 
   type Component = Intergalactic.Component<'div', Props> & {

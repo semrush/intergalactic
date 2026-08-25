@@ -1,5 +1,5 @@
 import type { Intergalactic } from '@semcore/core';
-import type Icon from '@semcore/icon';
+import type { IconProps } from '@semcore/icon';
 import type { IllustrationProps } from '@semcore/illustration';
 
 import type { NSNotice } from './Notice.type';
@@ -34,7 +34,7 @@ declare namespace NSNoticeSmart {
      */
     onClose?: (event: React.SyntheticEvent) => void;
   } & ({
-    icon?: typeof Icon;
+    icon?: React.ReactElement<IconProps>;
     illustration?: never;
   } | {
     icon?: never;

@@ -1,10 +1,9 @@
 import type { NSAnimation, NSBox } from '@semcore/base-components';
 import type { NSButton } from '@semcore/button';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
-import type Icon from '@semcore/icon';
+import type { IconProps } from '@semcore/icon';
 import type { IllustrationProps } from '@semcore/illustration';
 import type { NSText } from '@semcore/typography';
-import { ReactElement } from 'react';
 
 import type { LocalizedMessaged } from './translations/__intergalactic-dynamic-locales';
 
@@ -26,7 +25,7 @@ declare namespace NSNotice {
       /** Specifies the locale for i18n support */
       locale?: string;
     } & ({
-      icon?: typeof Icon;
+      icon?: React.ReactElement<IconProps>;
       illustration?: never;
     } | {
       icon?: never;
