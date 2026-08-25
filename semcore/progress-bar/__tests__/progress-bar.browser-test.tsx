@@ -4,7 +4,6 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 const BAR_EXAMPLE = 'stories/components/progress-bar/tests/examples/customizing_the_bar_with_background.tsx';
-const VALUE_EXAMPLE = 'stories/components/progress-bar/tests/examples/customizing_the_value.tsx';
 
 /** The example is mounted into `#root`, so snapshots are scoped to it instead of the whole viewport. */
 const stand = (page: Page) => page.locator('#root');
@@ -23,11 +22,16 @@ const barMatrix = BAR_THEMES.flatMap((theme) =>
 );
 
 /**
- * `theme` on ProgressBar.Value is deprecated ("Use only predefined themes"), so it
- * gets a single regression guard instead of a matrix — just enough to catch the
- * deprecated path breaking before it is removed.
+ * `theme` on ProgressBar.Value is deprecated ("Use only predefined themes") and accepts
+ * a color token only, so it gets a single regression guard instead of a matrix — just
+ * enough to catch the deprecated path breaking before it is removed.
  */
-const deprecatedValueTheme = { theme: 'violet-100', size: 'm', value: 99 } as const;
+const deprecatedValueTheme = {
+  theme: 'default',
+  size: 'm',
+  value: 99,
+  valueTheme: 'violet-100',
+} as const;
 
 /* =====================================================
 @visual
@@ -49,10 +53,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test(`Verify progress bar value customization with value=${deprecatedValueTheme.value}, size=${deprecatedValueTheme.size}, theme=${deprecatedValueTheme.theme}`, {
+  test(`Verify progress bar value customization with value=${deprecatedValueTheme.value}, size=${deprecatedValueTheme.size}, valueTheme=${deprecatedValueTheme.valueTheme}`, {
     tag: [TAG.PRIORITY_MEDIUM, '@progress-bar'],
   }, async ({ page }) => {
-    await loadPage(page, VALUE_EXAMPLE, 'en', deprecatedValueTheme);
+    await loadPage(page, BAR_EXAMPLE, 'en', deprecatedValueTheme);
 
     await test.step('Verify progress bar value visual with keyboard focus', async () => {
       await page.keyboard.press('Tab');

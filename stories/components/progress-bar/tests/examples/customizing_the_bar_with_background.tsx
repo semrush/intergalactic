@@ -4,7 +4,9 @@ import type { NSProgressBar } from '@semcore/ui/progress-bar';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ProgressBarExampleProps = NSProgressBar.Props;
+type ProgressBarExampleProps = NSProgressBar.Props & {
+  valueTheme?: string;
+};
 
 const BACKGROUNDS = [
   { bg: 'bg-primary-neutral', textColor: 'text-primary', label: 'Light background' },
@@ -12,7 +14,8 @@ const BACKGROUNDS = [
 ] as const;
 
 const Demo = (props: ProgressBarExampleProps) => {
-  const { theme, size, value, duration } = props;
+  const { theme, size, value, duration, valueTheme } = props;
+  const valueProps = valueTheme ? { theme: valueTheme } : {};
 
   return (
     <Flex direction='column' gap={6} w='100%'>
@@ -20,7 +23,13 @@ const Demo = (props: ProgressBarExampleProps) => {
         <Box key={background.bg} bg={background.bg} p={5}>
           <Flex direction='column' gap={4} w='100%'>
             <Text size={200} color={background.textColor}>
-              {background.label} — theme={String(theme)}, size={String(size)}
+              {background.label}
+              {' '}
+              — theme=
+              {String(theme)}
+              , size=
+              {String(size)}
+              {valueTheme ? `, value theme=${valueTheme}` : ''}
             </Text>
 
             <Flex direction='column' gap={2} w='100%'>
@@ -34,7 +43,9 @@ const Demo = (props: ProgressBarExampleProps) => {
                 value={value}
                 duration={duration}
                 aria-label={`Progress ${value}% on ${background.label}`}
-              />
+              >
+                <ProgressBar.Value {...valueProps} />
+              </ProgressBar>
             </Flex>
 
             <Flex direction='column' gap={2} w='100%'>
@@ -60,7 +71,9 @@ const Demo = (props: ProgressBarExampleProps) => {
                 value={100}
                 duration={duration}
                 aria-label={`Progress 100% on ${background.label}`}
-              />
+              >
+                <ProgressBar.Value {...valueProps} />
+              </ProgressBar>
             </Flex>
 
             <Flex direction='column' gap={2} w='100%'>

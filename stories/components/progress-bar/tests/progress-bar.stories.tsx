@@ -2,7 +2,6 @@ import ProgressBar from '@semcore/ui/progress-bar';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomizingTheBarExample, { defaultProps as CustomizingTheBarProps } from './examples/customizing_the_bar_with_background';
-import CustomizingTheValueExample, { defaultProps as CustomizingTheValueProps } from './examples/customizing_the_value';
 
 const meta: Meta<typeof ProgressBar> = {
   title: 'Components/ProgressBar/Tests',
@@ -16,46 +15,36 @@ const BUILT_IN_THEMES = ['default', 'invert', 'brand'];
 /** Colors used to exercise the custom-theme path. */
 const COLOR_TOKENS = ['violet-dusty-500', 'pink-400', 'violet-100', 'brand-secondary'];
 
-const commonArgTypes = {
-  size: {
-    control: { type: 'select' },
-    options: ['s', 'm', 'l'],
-    description: 'Height and border-radius of the bar',
-  },
-  value: {
-    control: { type: 'number' },
-    description: 'Progress as a percentage. Omit it to get the indeterminate animated bar',
-  },
-  duration: {
-    control: { type: 'number' },
-    description: 'Animation/transition duration in ms',
-  },
-} as const;
-
 export const CustomizingTheBar: StoryObj<typeof CustomizingTheBarProps> = {
   render: CustomizingTheBarExample,
   argTypes: {
-    ...commonArgTypes,
+    size: {
+      control: { type: 'select' },
+      options: ['s', 'm', 'l'],
+      description: 'Height and border-radius of the bar',
+    },
+    value: {
+      control: { type: 'number' },
+      description: 'Progress as a percentage. Omit it to get the indeterminate animated bar',
+    },
+    duration: {
+      control: { type: 'number' },
+      description: 'Animation/transition duration in ms',
+    },
     theme: {
       control: { type: 'select' },
       options: [...BUILT_IN_THEMES, ...COLOR_TOKENS],
       description:
         'Built-in themes are `default`, `invert` and `brand`. Any other value falls through to the custom-theme path and is resolved as a color token.',
     },
-  },
-  args: CustomizingTheBarProps,
-};
-
-export const CustomizingTheValue: StoryObj<typeof CustomizingTheValueProps> = {
-  render: CustomizingTheValueExample,
-  argTypes: {
-    ...commonArgTypes,
-    theme: {
+    valueTheme: {
       control: { type: 'select' },
-      options: [...BUILT_IN_THEMES, ...COLOR_TOKENS],
+      // only custom colors: a built-in theme name is not a color token, so it would
+      // leave ProgressBar.Value without a color
+      options: [undefined, ...COLOR_TOKENS],
       description:
-        'Deprecated on ProgressBar.Value — use only predefined themes. A built-in theme name is not a color token, so the value falls back to the gradient of the root theme; a color token paints the value with that color.',
+        'Color token passed to `ProgressBar.Value`. Custom colors only. Deprecated on the component itself — prefer the root `theme`.',
     },
   },
-  args: CustomizingTheValueProps,
+  args: CustomizingTheBarProps,
 };
