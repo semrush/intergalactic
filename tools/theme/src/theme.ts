@@ -527,6 +527,10 @@ export const theme: Theme = {
         value: neutral.at(L_BG_SECONDARY_HOVER),
         description: 'Hover state of the secondary background of the interface which contains the main data and information.',
       },
+      bg_secondary_invert: {
+        value: neutral.opaqueInvAt(L_INV_BG_SECONDARY),
+        description: 'Inverted version of the secondary background of the interface which contains the main data and information.',
+      },
       bg_secondary_success_DEFAULT: {
         value: success.at(L_BG_LIGHT),
         description: 'Secondary background of the message with success information you want to accent.',
@@ -2547,6 +2551,7 @@ type SemanticColors = {
         hover: Value;
         active: Value;
       };
+      invert: Value;
     };
     highlight: {
       results: Value;
