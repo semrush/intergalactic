@@ -183,7 +183,7 @@ class Value extends Component<
     let displayValue = '';
 
     if (/\.[0-9]*0$/.test(stringNumber)) {
-      const [int, decimal] = stringNumber.split(this.separatorDecimal);
+      const [int, decimal] = stringNumber.split('.');
       displayValue = numberFormatter.format(+int) + this.separatorDecimal + decimal;
     } else if (stringNumber !== '') {
       displayValue = numberFormatter.format(+stringNumber);
