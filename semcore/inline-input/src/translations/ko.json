@@ -1,4 +1,6 @@
 {
   "confirm": "저장",
-  "discard": "취소"
+  "discard": "취소",
+  "increment": "더 큰 숫자 입력",
+  "decrement": "더 작은 숫자 입력"
 }
