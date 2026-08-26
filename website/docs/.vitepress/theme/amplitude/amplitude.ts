@@ -80,8 +80,8 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
     if (link?.getAttribute('href')?.includes('/style/design-tokens/design-tokens')) {
       return logEvent('card_tokens:click');
     }
-    if (link?.getAttribute('href')?.includes('/core-principles/a11y/a11y')) {
-      return logEvent('card_a11y:click');
+    if (link?.getAttribute('href')?.includes('/content/content-principles/content-principles')) {
+      return logEvent('card_content:click');
     }
   }
   if (node.classList.contains('intergalactic-logo')) {
