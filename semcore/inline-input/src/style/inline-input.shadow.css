@@ -11,7 +11,7 @@ SInlineInput {
   box-sizing: border-box;
 
   SConfirmIcon:not([color]) {
-    color: var(--intergalactic-icon-secondary-success, oklch(0.711 0.146 166.9));
+    color: var(--intergalactic-icon-secondary-success, oklch(0.787 0.16 167.8 / 0.898));
   }
 
   SConfirmIcon:not([color]):hover {
@@ -19,7 +19,7 @@ SInlineInput {
   }
 
   SCancelIcon:not([color]) {
-    color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+    color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
   }
 
   SCancelIcon:not([color]):hover {
@@ -109,7 +109,7 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
   padding: 0 var(--intergalactic-spacing-content-gap-small, 4px);
 }
 

@@ -319,6 +319,15 @@ importers:
         specifier: ^1.29.2
         version: 1.29.2
     devDependencies:
+      '@semcore/icon':
+        specifier: workspace:*
+        version: link:../semcore/icon
+      '@semcore/illustration':
+        specifier: workspace:*
+        version: link:../semcore/illustration
+      '@semcore/ui':
+        specifier: workspace:*
+        version: link:../semcore/ui
       '@types/d3-shape':
         specifier: ^3.1.7
         version: 3.1.7
@@ -764,6 +773,12 @@ importers:
       '@semcore/checkbox':
         specifier: ^17.2.1
         version: link:../checkbox
+      '@semcore/divider':
+        specifier: ^17.2.1
+        version: link:../divider
+      '@semcore/link':
+        specifier: ^17.2.1
+        version: link:../link
       '@semcore/spin':
         specifier: ^17.2.1
         version: link:../spin
@@ -783,9 +798,6 @@ importers:
       '@semcore/base-trigger':
         specifier: workspace:*
         version: link:../base-trigger
-      '@semcore/divider':
-        specifier: workspace:*
-        version: link:../divider
       '@semcore/dropdown-menu':
         specifier: workspace:*
         version: link:../dropdown-menu
@@ -2122,6 +2134,15 @@ importers:
         specifier: 9.22.6
         version: 9.22.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@semcore/icon':
+        specifier: workspace:*
+        version: link:../semcore/icon
+      '@semcore/illustration':
+        specifier: workspace:*
+        version: link:../semcore/illustration
+      '@semcore/ui':
+        specifier: workspace:*
+        version: link:../semcore/ui
       '@types/d3-scale':
         specifier: 3.3.0
         version: 3.3.0
@@ -19566,7 +19587,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.14))(terser@5.48.0)(yaml@2.8.3)
+      vitest: 3.2.4(@types/debug@4.1.13)(@types/node@25.5.2)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@9.20.3)(jsdom@22.1.0)(lightningcss@1.31.1)(sass@1.100.0)(sugarss@5.0.1(postcss@8.5.15))(terser@5.48.0)(yaml@2.8.3)
 
   '@vitest/utils@3.2.4':
     dependencies:

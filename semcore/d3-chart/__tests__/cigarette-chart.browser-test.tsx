@@ -181,6 +181,27 @@ Keyboard and mouse interactions - no snapshots here.
 We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify custom tooltip title', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    const tooltipTitle = 'Custom cigarette tooltip title';
+
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+      'en',
+      { tooltipTitle, tooltipViewType: 'all' },
+    );
+
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+    await locators.plot(page).first().locator('path').nth(2).hover();
+
+    const tooltip = locators.tooltip(page);
+    await expect(tooltip).toBeVisible();
+    await expect(tooltip.getByText(tooltipTitle, { exact: true })).toBeVisible();
+  });
+
   test('Verify items attributes', {
     tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
   }, async ({ page }) => {

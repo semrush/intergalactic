@@ -1,4 +1,6 @@
 {
   "confirm": "Kaydet",
-  "discard": "İptal et"
+  "discard": "İptal et",
+  "increment": "Sayıyı artır",
+  "decrement": "Sayıyı azalt"
 }
