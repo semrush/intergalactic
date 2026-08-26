@@ -26,6 +26,7 @@ import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
 import FeedbackRatingFormExample
   from '../../../../../ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 import PrimaryTable from '../Tables/PrimaryTable';
+import { SecondaryTable } from '../Tables/SecondaryTable';
 
 export type DashboardProps = {
   showPrimaryTableFooter?: boolean;
@@ -680,6 +681,14 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
 
         {showPrimaryTableFooter && (
           <Box mt={8} w='100%'>
+            <Card w='100%' mb={4}>
+              <Card.Header>
+                <Card.Title tag='h3'>Keywords</Card.Title>
+              </Card.Header>
+              <Card.Body p={0} pb={1}>
+                <SecondaryTable />
+              </Card.Body>
+            </Card>
             <PrimaryTable />
           </Box>
         )}

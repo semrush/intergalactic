@@ -58,7 +58,7 @@ SText {
         display: inline-block;
         position: absolute;
         left: 0;
-        color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+        color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
         font-family: Georgia, Times, 'Times New Roman', serif;
       }
 

@@ -269,7 +269,7 @@ SButton[neighborLocation='left'] {
   position: relative;
 
   &:after {
-    background-color: var(--intergalactic-border-primary-invert, oklch(0.996 0.007 151.1 / 0.447));
+    background-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.009 144.4 / 0.347));
   } /* TODO: need to add a new variables for neighbor location borders based on the final UI */
 
   &[theme='secondary-muted'] {

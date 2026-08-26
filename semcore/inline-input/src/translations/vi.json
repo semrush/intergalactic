@@ -1,4 +1,6 @@
 {
   "confirm": "Lưu",
-  "discard": "Hủy"
+  "discard": "Hủy",
+  "increment": "Tăng số",
+  "decrement": "Giảm số"
 }

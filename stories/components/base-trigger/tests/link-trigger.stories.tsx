@@ -14,7 +14,6 @@ const sharedArgTypes = {
   placeholder: { control: { type: 'text' } },
   disabled: { control: { type: 'boolean' } },
   loading: { control: { type: 'boolean' } },
-  chevron: { control: { type: 'boolean' } },
   color: {
     control: { type: 'select' },
     options: ['violet', 'blue', 'text-success', undefined],

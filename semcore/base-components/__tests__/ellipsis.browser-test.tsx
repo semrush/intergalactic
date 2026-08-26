@@ -5,6 +5,11 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
   link: (page: Page) => page.getByRole('link'),
+  linkText: (page: Page) => {
+    const link = locators.link(page);
+
+    return link.locator('[data-ui-name="Link.Text"]');
+  },
   text: (page: Page) => page.locator('[data-ui-name="Text"]'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
@@ -238,7 +243,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/async_init.tsx', 'en');
 
-    const textElement = locators.link(page);
+    const textElement = locators.linkText(page);
     await expect(textElement).toHaveText('');
 
     await expect(textElement).toHaveText(link, { timeout: 1000 });
