@@ -159,10 +159,11 @@ const DefaultTrigger = React.forwardRef(function (
   const SDefaultTrigger = Root;
   const STriggerCircle = Flex;
   const SChevronDownM = ChevronDownM;
+  const dataValue = value === null ? null : `var(${value})`;
 
   return sstyled(styles)(
     <SDefaultTrigger render={Box} tag='button' tabIndex={0} ref={ref}>
-      <STriggerCircle justifyContent='center' alignItems='center' data-value={value} />
+      <STriggerCircle justifyContent='center' alignItems='center' data-value={dataValue} />
       <SChevronDownM tabIndex={undefined} />
     </SDefaultTrigger>,
   );
