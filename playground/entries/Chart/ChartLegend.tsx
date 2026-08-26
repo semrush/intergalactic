@@ -1,6 +1,6 @@
-import type { Intergalactic } from '@semcore/core';
 import type { IconProps } from '@semcore/icon';
 import DesktopIcon from '@semcore/icon/Desktop/m';
+import type { Intergalactic } from '@semcore/ui/core';
 import type { LegendFlexProps, LegendItem } from '@semcore/ui/d3-chart';
 import { ChartLegend } from '@semcore/ui/d3-chart';
 import React from 'react';
