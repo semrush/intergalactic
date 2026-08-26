@@ -1,3 +1,4 @@
+import type { NSScrollArea } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import type * as React from 'react';
 
@@ -96,6 +97,7 @@ export type BodyPropsInner<Data extends DataTableData, UniqKeyType> = DataTableB
   variant?: DataTableProps<any, any, any>['variant'];
   totalRows?: number;
   accordionAnimationRows: RowPropsInner<Data, UniqKeyType>['accordionAnimationRows'];
+  scrollBarInstanceRef: React.RefObject<NSScrollArea.Bar.Instance>;
 };
 
 export type DataTableBodyType = (<

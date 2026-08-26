@@ -241,8 +241,8 @@
       "modal",
       "side-panel",
       "slider",
-      "textarea",
-      "wizard"
+      "tab-panel",
+      "textarea"
     ]
   },
   {
@@ -473,7 +473,6 @@
       "feedback-form",
       "input",
       "input-tags",
-      "tab-line",
       "textarea"
     ]
   },
@@ -496,7 +495,6 @@
       "input",
       "side-panel",
       "slider",
-      "tab-line",
       "tab-panel",
       "textarea",
       "time-picker"
@@ -1020,25 +1018,19 @@
     "name": "--intergalactic-control-primary-advertising",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-advertising-hover",
     "value": "oklch(0.36 0.005 140)",
     "description": "Hover state of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-advertising-active",
     "value": "oklch(0.4 0.004 140)",
     "description": "Active (selected) state of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-brand",
@@ -2293,19 +2285,25 @@
     "name": "--intergalactic-control-tab-line-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its normal state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-active",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the TabLine in its active state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-hover",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its hover state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-table-border-accent",
@@ -3017,8 +3015,7 @@
     "components": [
       "date-picker",
       "feature-highlight",
-      "notice-bubble",
-      "wizard"
+      "notice-bubble"
     ]
   },
   {
@@ -3118,13 +3115,17 @@
     "name": "--intergalactic-wizard-bg",
     "value": "oklch(1 0 0)",
     "description": "Main background of the Wizard.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-bg",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-control",
@@ -3136,19 +3137,25 @@
     "name": "--intergalactic-wizard-sidebar-control-active",
     "value": "oklch(0.4 0.004 140)",
     "description": "Active state of the control in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-control-hover",
     "value": "oklch(0.36 0.005 140)",
     "description": "Hover state of the control in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-text-primary",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Primary text color in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-text-secondary",
@@ -3294,6 +3301,7 @@
       "notice",
       "pills",
       "tab-line",
+      "tab-panel",
       "textarea",
       "time-picker"
     ]
@@ -3336,7 +3344,8 @@
       "dropdown",
       "dropdown-menu",
       "input-tags",
-      "pills"
+      "pills",
+      "wizard"
     ]
   },
   {
@@ -3357,7 +3366,8 @@
       "bulk-textarea",
       "dropdown",
       "modal",
-      "pills"
+      "pills",
+      "wizard"
     ]
   },
   {
@@ -3375,9 +3385,11 @@
       "input-tags",
       "modal",
       "pills",
+      "tab-panel",
       "textarea",
       "time-picker",
-      "tooltip"
+      "tooltip",
+      "wizard"
     ]
   },
   {
@@ -3388,7 +3400,8 @@
       "bulk-textarea",
       "color-picker",
       "feature-popover",
-      "notice-bubble"
+      "notice-bubble",
+      "wizard"
     ]
   },
   {
@@ -3397,7 +3410,8 @@
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea",
-      "card"
+      "card",
+      "wizard"
     ]
   },
   {
@@ -3413,7 +3427,8 @@
     "components": [
       "feature-popover",
       "modal",
-      "notice-bubble"
+      "notice-bubble",
+      "wizard"
     ]
   },
   {
@@ -3436,7 +3451,8 @@
       "inline-input",
       "link",
       "pagination",
-      "tag"
+      "tag",
+      "wizard"
     ]
   },
   {
@@ -3453,7 +3469,9 @@
       "input",
       "pills",
       "radio",
-      "select"
+      "select",
+      "tab-line",
+      "tab-panel"
     ]
   },
   {
@@ -3461,6 +3479,7 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
+      "breadcrumbs",
       "button",
       "checkbox",
       "date-picker",
@@ -3487,7 +3506,8 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "tab-line"
     ]
   },
   {
@@ -3495,7 +3515,9 @@
     "value": "20px",
     "description": "Extended 2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "tab-line",
+      "wizard"
     ]
   },
   {

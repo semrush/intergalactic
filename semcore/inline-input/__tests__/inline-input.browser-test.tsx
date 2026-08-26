@@ -623,8 +623,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await loadPage(page, 'stories/components/inline-input/docs/examples/number-only_input.tsx', 'en');
 
     const save = locators.inlineInput(page).locator('[data-ui-name="InlineInput.ConfirmControl"]');
-    const increment = page.locator('[aria-label="increment"]');
-    const decrement = page.locator('[aria-label="decrement"]');
+    const increment = page.locator('[aria-label="Increment number"]');
+    const decrement = page.locator('[aria-label="Decrement number"]');
 
     await test.step('Verify input focues when clicking on addon', async () => {
       await expect(locators.valueNumber(page)).toHaveAttribute('value', '100');
