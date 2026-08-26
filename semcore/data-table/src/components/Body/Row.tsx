@@ -28,7 +28,11 @@ type DefaultProps = {
   'aria-level': undefined;
 };
 
-@propsObserver(['columns', 'row'])
+@propsObserver([
+  // @ts-expect-error columns is an internal property, and we can't see it in types
+  'columns',
+  'row',
+])
 class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     DataTableRowProps<Data, UniqKeyType>,
     [],

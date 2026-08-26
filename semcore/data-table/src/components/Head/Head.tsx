@@ -16,6 +16,7 @@ import type { DTRow } from '../Body/Row.types';
 import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
+// @ts-expect-error treeColumns and rows are internal properties, and we can't see them in types
 @propsObserver(['treeColumns', 'rows'])
 class HeadRoot<
   Data extends DataTableData,
