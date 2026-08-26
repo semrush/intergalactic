@@ -3476,6 +3476,7 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
+      "breadcrumbs",
       "button",
       "checkbox",
       "date-picker",
