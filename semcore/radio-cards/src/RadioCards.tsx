@@ -1,4 +1,4 @@
-import { Flex, NeighborLocation } from '@semcore/base-components';
+import { Box, Flex, NeighborLocation } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
 import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
@@ -120,6 +120,7 @@ function Item(
   const SRadioItem = Root;
   const SRadioItemHeader = Flex;
   const SRadioItemHeaderLeftAddon = Flex;
+  const SRadioItemHeaderInnerContainer = Box;
   const SRadioItemHeaderText = SemcoreText;
   const SRadioItemHeaderRightAddon = SemcoreText;
   const SRadioItemDescription = SemcoreText;
@@ -143,12 +144,14 @@ function Item(
             <>
               <SRadioItemHeader>
                 {iconAddon && <SRadioItemHeaderLeftAddon>{iconAddon}</SRadioItemHeaderLeftAddon>}
-                {text && <SRadioItemHeaderText size={300} use='primary'>{text}</SRadioItemHeaderText>}
-                {textAddon && (
-                  <SRadioItemHeaderRightAddon size={300}>
-                    {textAddon}
-                  </SRadioItemHeaderRightAddon>
-                )}
+                <SRadioItemHeaderInnerContainer>
+                  {text && <SRadioItemHeaderText size={300} use='primary'>{text}</SRadioItemHeaderText>}
+                  {textAddon && (
+                    <SRadioItemHeaderRightAddon size={300}>
+                      {textAddon}
+                    </SRadioItemHeaderRightAddon>
+                  )}
+                </SRadioItemHeaderInnerContainer>
               </SRadioItemHeader>
               {description && <SRadioItemDescription size={200} use='secondary'>{description}</SRadioItemDescription>}
               {dot && <Dot up size='l' aria-label={dot} />}
