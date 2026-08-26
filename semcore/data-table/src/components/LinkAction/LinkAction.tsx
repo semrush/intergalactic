@@ -3,7 +3,6 @@ import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
 import type Icon from '@semcore/icon';
-import type { NSLink } from '@semcore/link';
 import Link from '@semcore/link';
 import React from 'react';
 
@@ -31,8 +30,6 @@ interface IProps {
 }
 
 export class LinkAction extends React.PureComponent<IProps> {
-  private linkInstanceRef = React.createRef<NSLink.Instance>();
-
   private renderAction(action: IAction) {
     if ('href' in action) {
       return (
@@ -92,7 +89,7 @@ export class LinkAction extends React.PureComponent<IProps> {
     }, {});
     return (
       <Flex flexWrap={!link.ellipsisSettings}>
-        <Link href={link.href} instanceRef={this.linkInstanceRef}>
+        <Link href={link.href}>
           <Link.Text {...ellipsisProps}>
             {link.text}
           </Link.Text>
