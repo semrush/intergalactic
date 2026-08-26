@@ -3343,7 +3343,7 @@
       "dropdown-menu",
       "input-tags",
       "pills",
-      "side-panel"
+      "side-panel",
       "wizard"
     ]
   },
@@ -3366,7 +3366,7 @@
       "dropdown",
       "modal",
       "pills",
-      "side-panel"
+      "side-panel",
       "wizard"
     ]
   },
@@ -3400,7 +3400,7 @@
       "bulk-textarea",
       "feature-popover",
       "notice-bubble",
-      "side-panel"
+      "side-panel",
       "wizard"
     ]
   },
