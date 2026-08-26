@@ -1,3 +1,122 @@
+## [17.6.0] - 2026-08-26
+
+### @semcore/drag-and-drop
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSDragAndDrop` namespace.
+
+### @semcore/inline-edit
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSInlineEdit` namespace.
+
+### @semcore/ellipsis
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSEllipsis` namespace.
+
+### @semcore/base-components
+
+- **Changed** **animation**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSAnimation` namespace.
+- **Changed** **flex-box**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSBox/NSFlex/NSInvalidStateBox/NSScreenReaderOnly` namespaces.
+- **Changed** **grid**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSGrid` namespace.
+- **Changed** **hint**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSHint` namespace.
+- **Changed** **neighbor-location**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSNeighborLocation` namespace.
+- **Changed** **outside-click**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSOutsideClick` namespace.
+- **Changed** **popper**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSPopper` namespace.
+- **Changed** **portal**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSPortal` namespace.
+- **Changed** **scroll-area**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSScrollArea` namespace.
+
+### @semcore/button
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSButton/NSButtonLink` namespaces.
+
+### @semcore/bulk-textarea
+
+- **Fixed** How NVDA announces errors without a common error message.
+- **Fixed** Tooltip flashing when fixing an error or clearing a textarea.
+
+### @semcore/input-mask
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSInputMask` namespace.
+
+### @semcore/link
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSLink` namespace.
+
+### @semcore/input-number
+
+- **Added** `Number` as possible type for value.
+- **Fixed** Display the value corresponding to the current one after backspace for
+negative numbers.
+
+### @semcore/product-head
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSProductHead/NSProductHeadTitle/NSProductHeadInfo` namespaces.
+
+### @semcore/notice-bubble
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSNoticeBubble` namespace.
+
+### @semcore/input-tags
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSInputTags` namespace.
+
+### @semcore/wizard
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSWizard` namespace.
+
+### @semcore/time-picker
+
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSTimePicker` namespace.
+
+### @semcore/d3-chart
+
+- **Fixed** The cigarette tooltip displayed hardcoded text instead of the value
+from the props.
+
+### @semcore/inline-input
+
+- **Added** Missing translation for `InlineInput.NumberControls`.
+- **Changed** Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSInlineInput` namespace.
+
+### @semcore/textarea
+
+- **Fixed** The aria-disabled attribute for the disabled state was missing.
+
+### @semcore/core
+
+- **Fixed** Performance regression for `useScrollBarWidth` hook.
+
+### @semcore/data-table
+
+- **Fixed** Unnecessary rerenders for dataTable cells.
+- **Fixed** Loading spinner for grouped headers and scroll inside table.
+- **Fixed** Incorrect cells colors with expanded accordions.
+- **Fixed** Position for loading spinner.
+
+### @semcore/feedback-form
+
+- **Fixed** Incorrect illustration color.
+
 ## [17.5.0] - 2026-07-30
 
 ### @semcore/core

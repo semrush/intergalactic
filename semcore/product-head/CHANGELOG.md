@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.2] - 2026-08-26
+
+### Changed
+
+- Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSProductHead/NSProductHeadTitle/NSProductHeadInfo` namespaces.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed

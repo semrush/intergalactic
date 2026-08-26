@@ -1,7 +1,7 @@
 {
   "name": "@semcore/inline-edit",
   "description": "Semrush Input Component",
-  "version": "17.2.1",
+  "version": "17.2.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -22,7 +22,7 @@
     "@semcore/testing-utils": "workspace:*"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1"
+    "@semcore/base-components": "^17.2.2"
   },
   "repository": {
     "type": "git",

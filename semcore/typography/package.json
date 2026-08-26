@@ -18,7 +18,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1",
+    "@semcore/base-components": "^17.2.2",
     "@semcore/icon": "^17.2.0"
   },
   "repository": {

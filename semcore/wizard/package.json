@@ -1,7 +1,7 @@
 {
   "name": "@semcore/wizard",
   "description": "Semrush Wizard Component",
-  "version": "17.3.1",
+  "version": "17.3.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,12 +17,12 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "^17.2.1",
+    "@semcore/button": "^17.2.2",
     "@semcore/modal": "^17.2.2",
     "@semcore/typography": "^17.2.1"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1",
+    "@semcore/base-components": "^17.2.2",
     "@semcore/icon": "^17.2.0"
   },
   "repository": {

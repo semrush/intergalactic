@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@semcore/base-trigger": "^17.2.1",
-    "@semcore/button": "^17.2.1",
+    "@semcore/button": "^17.2.2",
     "@semcore/checkbox": "^17.2.1",
     "@semcore/divider": "^17.2.1",
     "@semcore/dropdown": "^17.3.0",
@@ -28,7 +28,7 @@
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1",
+    "@semcore/base-components": "^17.2.2",
     "@semcore/icon": "^17.2.0"
   },
   "repository": {
