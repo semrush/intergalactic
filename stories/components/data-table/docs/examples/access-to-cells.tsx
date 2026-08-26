@@ -1,6 +1,5 @@
 import CalendarIconM from '@semcore/icon/CalendarCheck/m';
-import Link from '@semcore/link';
-import { ButtonLink } from '@semcore/ui/button';
+import type { CellRenderProps } from '@semcore/ui/data-table';
 import { DataTable, LinkAction } from '@semcore/ui/data-table';
 import React from 'react';
 
@@ -15,23 +14,23 @@ const Demo = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.' },
       ]}
-      renderCell={(props) => {
+      renderCell={(props: CellRenderProps<any, any>) => {
         if (props.dataKey === 'keyword') {
           const href = `https://${props.rawData[props.dataKey]}`;
           return (
-            <LinkAction>
-              <Link href={href} isExternal={false}>{props.value}</Link>
-              <ButtonLink
-                title='Open in a new tab'
-                onClick={() => {
+            <LinkAction
+              link={{ href, text: String(props.value) }}
+              actions={{
+                title: 'Open in a new tab',
+                icon: CalendarIconM,
+                onClick: () => {
                   alert(`Click row
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(props.row, null, '  ')};
                   index: ${props.rowIndex};`);
-                }}
-                addonLeft={CalendarIconM}
-              />
-            </LinkAction>
+                },
+              }}
+            />
           );
         }
 
