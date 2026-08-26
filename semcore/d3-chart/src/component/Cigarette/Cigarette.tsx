@@ -21,6 +21,10 @@ class CigaretteBarRoot extends Component<any, [], { hovered: boolean }> {
 
   refElement = React.createRef<SVGPathElement>();
 
+  componentDidMount(): void {
+    this.forceUpdate();
+  }
+
   uncontrolledProps() {
     return {
       hovered: false,
@@ -57,7 +61,7 @@ class CigaretteBarRoot extends Component<any, [], { hovered: boolean }> {
     }
   };
 
-  getRect() {
+  getPath() {
     const { x, y, width, height, r: radius, direction, index, hovered } = this.asProps;
 
     let xV = x;
@@ -76,18 +80,33 @@ class CigaretteBarRoot extends Component<any, [], { hovered: boolean }> {
     }
 
     if (radius) {
+      const hasPrev = Boolean(this.refElement.current?.previousSibling);
+      const hasNext = Boolean(this.refElement.current?.nextSibling);
+
       if (direction === 'horizontal') {
-        if (index === 0) {
-          return roundedPath(xV, yV, widthV, heightV, radius, true, false, true, false);
-        } else {
-          return roundedPath(xV, yV, widthV, heightV, radius, false, true, false, true);
-        }
+        return roundedPath(
+          xV,
+          yV,
+          widthV,
+          heightV,
+          radius,
+          !hasPrev,
+          !hasNext,
+          !hasPrev,
+          !hasNext,
+        );
       } else {
-        if (index === 0) {
-          return roundedPath(xV, yV, widthV, heightV, radius, true, true, false, false);
-        } else {
-          return roundedPath(xV, yV, widthV, heightV, radius, false, false, true, true);
-        }
+        return roundedPath(
+          xV,
+          yV,
+          widthV,
+          heightV,
+          radius,
+          !hasPrev,
+          !hasPrev,
+          !hasNext,
+          !hasNext,
+        );
       }
     }
 
@@ -113,7 +132,7 @@ class CigaretteBarRoot extends Component<any, [], { hovered: boolean }> {
       patterns,
     } = this.asProps;
 
-    const dSvg = this.getRect();
+    const dSvg = this.getPath();
 
     return (
       <React.Fragment key={`horizontal-bar-${index}`}>

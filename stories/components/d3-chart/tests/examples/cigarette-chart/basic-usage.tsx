@@ -60,6 +60,16 @@ export const dataOverflow = {
   Z: 3,
 };
 
+export const dataFirstEmpty = {
+  X: 0,
+  Y: 2,
+};
+
+export const dataEmpty = {
+  X: 0,
+  Y: 0,
+};
+
 const Demo = ({
   enableMinimalBarWidth = true,
   plotWidth,
