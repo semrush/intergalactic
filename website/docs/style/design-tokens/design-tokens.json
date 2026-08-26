@@ -381,6 +381,12 @@
     ]
   },
   {
+    "name": "--intergalactic-bg-secondary-invert",
+    "value": "oklch(0.969 0.057 140 / 0.118)",
+    "description": "Inverted version of the secondary background of the interface which contains the main data and information.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-bg-secondary-success",
     "value": "oklch(0.96 0.057 179.7)",
     "description": "Secondary background of the message with success information you want to accent.",
@@ -3030,7 +3036,6 @@
       "dropdown",
       "dropdown-menu",
       "flags",
-      "fullscreen-modal",
       "pills",
       "slider",
       "switch",
@@ -3363,6 +3368,7 @@
       "base-components",
       "bulk-textarea",
       "dropdown",
+      "fullscreen-modal",
       "modal",
       "pills",
       "wizard"
@@ -3379,6 +3385,7 @@
       "button",
       "card",
       "dropdown",
+      "fullscreen-modal",
       "input",
       "input-tags",
       "modal",
@@ -3397,6 +3404,7 @@
     "components": [
       "bulk-textarea",
       "feature-popover",
+      "fullscreen-modal",
       "notice-bubble",
       "wizard"
     ]
@@ -3415,7 +3423,9 @@
     "name": "--intergalactic-spacing-content-padding-xlarge-extended",
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "fullscreen-modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3423,6 +3433,7 @@
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
       "feature-popover",
+      "fullscreen-modal",
       "modal",
       "notice-bubble",
       "wizard"
@@ -3478,6 +3489,7 @@
       "checkbox",
       "date-picker",
       "dropdown",
+      "fullscreen-modal",
       "notice-bubble",
       "pagination",
       "radio",
@@ -3490,6 +3502,7 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "fullscreen-modal",
       "notice-bubble",
       "pagination"
     ]

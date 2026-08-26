@@ -138,7 +138,7 @@ function Title(props) {
 
 function Description(props) {
   const SDescription = Root;
-  return sstyled(props.styles)(<SDescription render={Text} tag='p' />);
+  return sstyled(props.styles)(<SDescription render={Text} tag='p' size={200} use='secondary' />);
 }
 
 function Back(props) {
@@ -146,7 +146,7 @@ function Back(props) {
   const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={ButtonLink} color='text-hint' size={200} addonLeft={ArrowLeft}>
+    <SBack render={ButtonLink} use='secondary' size={200} addonLeft={ArrowLeft}>
       <ButtonLink.Text ellipsis>
         <Children />
       </ButtonLink.Text>
