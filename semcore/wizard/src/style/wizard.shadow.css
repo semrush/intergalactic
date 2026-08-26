@@ -27,10 +27,9 @@ SSidebar {
     cursor: pointer;
     position: relative;
     overflow: auto;
-
-    font-size: var(--intergalactic-fs-200, 14px); 
+    font-size: var(--intergalactic-fs-200, 14px);
     font-weight: var(--intergalactic-bold, 700);
-    line-height: var(--intergalactic-lh-200, 142%);
+    line-height: var(--intergalactic-lh-200, 1.4286);
 
     &:focus-visible {
       outline-color: var(--intergalactic-keyboard-focus-invert-outline, oklch(1 0 0 / 0.7));

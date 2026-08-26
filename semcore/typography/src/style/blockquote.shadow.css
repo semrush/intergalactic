@@ -3,13 +3,13 @@ SBlockquote {
   display: flex;
   font-style: italic;
   font-size: var(--intergalactic-fs-400, 20px);
-  line-height: var(--intergalactic-lh-400, 120%);
+  line-height: var(--intergalactic-lh-400, 1.2);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 }
 
 SDoubleQuotation {
   position: relative;
-  margin-right: var(--intergalactic-spacing-5x, 20px);
+  margin-right: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
   font-family: 'Times New Roman', serif;
   font-style: normal;
   /* disable-tokens-validator */
@@ -20,9 +20,9 @@ SDoubleQuotation {
 
 SAuthor {
   display: block;
-  margin-top: var(--intergalactic-spacing-4x, 16px);
+  margin-top: var(--intergalactic-spacing-content-gap-xxlarge, 16px);
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   font-style: normal;
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 }

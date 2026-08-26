@@ -6,7 +6,7 @@ SText {
 
     & abbr {
       color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-      text-decoration: underline dashed var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+      text-decoration: underline dashed var(--intergalactic-text-hint, oklch(0.088 0.026 147.7 / 0.583));
 
       &:active,
       &:hover,
@@ -22,7 +22,7 @@ SText {
       background: none;
       outline: none;
       text-decoration: none;
-      color: var(--intergalactic-text-link, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary */
+      color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
       border-bottom-width: 1px;
       border-bottom-style: solid;
       border-color: transparent;
@@ -31,8 +31,8 @@ SText {
       &:hover {
         outline: none;
         text-decoration: none;
-        color: var(--intergalactic-text-link-hover-active, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary-hover-active */
-        border-color: var(--intergalactic-text-link-hover-active, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary-hover-active */
+        color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
+        border-color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
       }
 
       &:focus {
@@ -50,7 +50,7 @@ SText {
       /* disable-tokens-validator */
       padding-left: 51px;
       font-size: var(--intergalactic-fs-400, 20px);
-      line-height: var(--intergalactic-lh-400, 120%);
+      line-height: var(--intergalactic-lh-400, 1.2);
       font-style: italic;
 
       &:before {
@@ -68,13 +68,13 @@ SText {
         margin-top: var(--intergalactic-spacing-4x, 16px);
         color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
         font-size: var(--intergalactic-fs-300, 16px);
-        line-height: var(--intergalactic-lh-300, 150%);
+        line-height: var(--intergalactic-lh-300, 1.5);
       }
     }
 
     & ol:not(ol[start], ol[reversed], ol[type]),
     & ul:not(ul[start], ul[reversed], ul[type]) {
-      margin: var(--intergalactic-spacing-2x, 8px) 0;
+      margin: var(--intergalactic-spacing-content-gap-large, 8px) 0;
       padding: 0;
       list-style: none;
       position: relative;
@@ -88,7 +88,7 @@ SText {
       }
 
       & li:not(SText) + li:not(SText) {
-        margin: var(--intergalactic-spacing-2x, 8px) 0 0 0;
+        margin: var(--intergalactic-spacing-content-gap-large, 8px) 0 0 0;
       }
     }
 
@@ -108,14 +108,14 @@ SText {
 
     & ol:not(ol[start], ol[reversed], ol[type]):has(+ p),
     & ul:not(ul[start], ul[reversed], ul[type]):has(+ p) {
-      margin-bottom: var(--intergalactic-spacing-4x, 16px);
+      margin-bottom: var(--intergalactic-spacing-content-gap-xxlarge, 16px);
     }
 
     & h1 {
       font-size: var(--intergalactic-fs-800, 48px);
-      line-height: var(--intergalactic-lh-800, 117%);
+      line-height: var(--intergalactic-lh-800, 1.16667);
       font-weight: var(--intergalactic-semi-bold, 600);
-      margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px) 0;
 
       &:only-child {
         margin-bottom: 0;
@@ -124,9 +124,9 @@ SText {
 
     & h2 {
       font-size: var(--intergalactic-fs-700, 36px);
-      line-height: var(--intergalactic-lh-700, 110%);
+      line-height: var(--intergalactic-lh-700, 1.1112);
       font-weight: var(--intergalactic-semi-bold, 600);
-      margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-xxlarge, 16px) 0;
 
       &:only-child {
         margin-bottom: 0;
@@ -135,9 +135,9 @@ SText {
 
     & h3 {
       font-size: var(--intergalactic-fs-600, 32px);
-      line-height: var(--intergalactic-lh-600, 125%);
+      line-height: var(--intergalactic-lh-600, 1.25);
       font-weight: var(--intergalactic-semi-bold, 600);
-      margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-xlarge, 12px) 0;
 
       &:only-child {
         margin-bottom: 0;
@@ -146,9 +146,9 @@ SText {
 
     & h4 {
       font-size: var(--intergalactic-fs-500, 24px);
-      line-height: var(--intergalactic-lh-500, 117%);
+      line-height: var(--intergalactic-lh-500, 1.1667);
       font-weight: var(--intergalactic-semi-bold, 600);
-      margin: 0 0 var(--intergalactic-spacing-3x, 12px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-xlarge, 12px) 0;
 
       &:only-child {
         margin-bottom: 0;
@@ -157,9 +157,9 @@ SText {
 
     & h5 {
       font-size: var(--intergalactic-fs-400, 20px);
-      line-height: var(--intergalactic-lh-400, 120%);
+      line-height: var(--intergalactic-lh-400, 1.2);
       font-weight: var(--intergalactic-semi-bold, 600);
-      margin: 0 0 var(--intergalactic-spacing-2x, 8px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-large, 8px) 0;
 
       &:only-child {
         margin-bottom: 0;
@@ -168,9 +168,9 @@ SText {
 
     & h6 {
       font-size: var(--intergalactic-fs-300, 16px);
-      line-height: var(--intergalactic-lh-300, 150%);
+      line-height: var(--intergalactic-lh-300, 1.5);
       font-weight: var(--intergalactic-bold, 700);
-      margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-small, 4px) 0;
 
       &:only-child {
         margin-bottom: 0;
@@ -193,11 +193,11 @@ SText {
     & p,
     & li {
       font-size: var(--intergalactic-fs-200, 14px);
-      line-height: var(--intergalactic-lh-200, 142%);
+      line-height: var(--intergalactic-lh-200, 1.4286);
     }
 
     & p {
-      margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-xxlarge, 16px) 0;
 
       &:last-child {
         margin-bottom: 0;
@@ -205,15 +205,15 @@ SText {
     }
 
     & li {
-      padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-gap-xxlarge, 16px) + var(--intergalactic-spacing-content-gap-xsmall, 2px));
     }
 
     & ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-gap-xxxlarge, 24px) + var(--intergalactic-spacing-content-gap-xsmall, 2px));
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-gap-xxxlarge, 24px) + var(--intergalactic-spacing-content-gap-xxlarge, 16px));
     }
 
     & ul li:before {
@@ -221,8 +221,8 @@ SText {
       height: 4px;
       border-radius: 50%;
       /* disable-tokens-validator */
-      margin-top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-      margin-left: var(--intergalactic-spacing-05x, 2px);
+      margin-top: calc(var(--intergalactic-spacing-content-gap-large, 8px) - 1px);
+      margin-left: var(--intergalactic-spacing-content-gap-xsmall, 2px);
     }
   }
 }
@@ -254,17 +254,17 @@ SText[ellipsis] {
 
 SText[size='100'] {
   font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-100, 1.3334);
 
   &[formatTags] {
     & p,
     & li {
       font-size: var(--intergalactic-fs-100, 12px);
-      line-height: var(--intergalactic-lh-100, 133%);
+      line-height: var(--intergalactic-lh-100, 1.3334);
     }
 
     & p {
-      margin: 0 0 calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px)) 0;
+      margin: 0 0 calc(var(--intergalactic-spacing-content-gap-xxlarge, 16px) + var(--intergalactic-spacing-content-gap-xsmall, 2px)) 0;
 
       &:last-child {
         margin-bottom: 0;
@@ -272,40 +272,40 @@ SText[size='100'] {
     }
 
     & li {
-      padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px));
     }
 
     & ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px));
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xlarge, 20px));
     }
 
     & ul li:before {
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      margin-top: var(--intergalactic-spacing-2x, 8px);
-      margin-left: var(--intergalactic-spacing-05x, 2px);
+      margin-top: var(--intergalactic-spacing-content-gap-large, 8px);
+      margin-left: var(--intergalactic-spacing-content-gap-xsmall, 2px);
     }
   }
 }
 
 SText[size='200'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 
   &[formatTags] {
     & p,
     & li {
       font-size: var(--intergalactic-fs-200, 14px);
-      line-height: var(--intergalactic-lh-200, 142%);
+      line-height: var(--intergalactic-lh-200, 1.4286);
     }
 
     & p {
-      margin: 0 0 var(--intergalactic-spacing-3x, 12px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-xlarge, 12px) 0;
 
       &:last-child {
         margin-bottom: 0;
@@ -313,15 +313,15 @@ SText[size='200'] {
     }
 
     & li {
-      padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px));
     }
 
     & ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px));
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xlarge, 20px));
     }
 
     & ul li:before {
@@ -329,25 +329,25 @@ SText[size='200'] {
       height: 4px;
       border-radius: 50%;
       /* disable-tokens-validator */
-      margin-top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-      margin-left: var(--intergalactic-spacing-05x, 2px);
+      margin-top: calc(var(--intergalactic-spacing-content-gap-large, 8px) - 1px);
+      margin-left: var(--intergalactic-spacing-content-gap-xsmall, 2px);
     }
   }
 }
 
 SText[size='300'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 
   &[formatTags] {
     & p,
     & li {
       font-size: var(--intergalactic-fs-300, 16px);
-      line-height: var(--intergalactic-lh-300, 150%);
+      line-height: var(--intergalactic-lh-300, 1.5);
     }
 
     & p {
-      margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
+      margin: 0 0 var(--intergalactic-spacing-content-gap-xxlarge, 16px) 0;
 
       &:last-child {
         margin-bottom: 0;
@@ -355,55 +355,55 @@ SText[size='300'] {
     }
 
     & li {
-      padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px));
     }
 
     & ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px));
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xlarge, 20px));
     }
 
     & ul li:before {
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      margin-top: calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
-      margin-left: var(--intergalactic-spacing-05x, 2px);
+      margin-top: calc(var(--intergalactic-spacing-content-gap-large, 8px) + var(--intergalactic-spacing-content-gap-xsmall, 2px));
+      margin-left: var(--intergalactic-spacing-content-gap-xsmall, 2px);
     }
   }
 }
 
 SText[size='350'] {
   font-size: var(--intergalactic-fs-350, 18px);
-  line-height: var(--intergalactic-lh-350, 150%);
+  line-height: var(--intergalactic-lh-350, 1.3334);
 }
 
 SText[size='400'] {
   font-size: var(--intergalactic-fs-400, 20px);
-  line-height: var(--intergalactic-lh-400, 120%);
+  line-height: var(--intergalactic-lh-400, 1.2);
 }
 
 SText[size='500'] {
   font-size: var(--intergalactic-fs-500, 24px);
-  line-height: var(--intergalactic-lh-500, 117%);
+  line-height: var(--intergalactic-lh-500, 1.1667);
 }
 
 SText[size='600'] {
   font-size: var(--intergalactic-fs-600, 32px);
-  line-height: var(--intergalactic-lh-600, 125%);
+  line-height: var(--intergalactic-lh-600, 1.25);
 }
 
 SText[size='700'] {
   font-size: var(--intergalactic-fs-700, 36px);
-  line-height: var(--intergalactic-lh-700, 110%);
+  line-height: var(--intergalactic-lh-700, 1.1112);
 }
 
 SText[size='800'] {
   font-size: var(--intergalactic-fs-800, 48px);
-  line-height: var(--intergalactic-lh-800, 117%);
+  line-height: var(--intergalactic-lh-800, 1.16667);
 }
 
 SText[noWrap] {

@@ -37,14 +37,14 @@ SFullscreenOverlay {
 
   STitle {
     font-size: var(--intergalactic-fs-500, 24px);
-    line-height: var(--intergalactic-lh-500, 117%);
+    line-height: var(--intergalactic-lh-500, 1.1667);
     font-weight: var(--intergalactic-bold, 700);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   SDescription {
     font-size: var(--intergalactic-fs-100, 12px);
-    line-height: var(--intergalactic-lh-100, 133%);
+    line-height: var(--intergalactic-lh-100, 1.3334);
     color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   }
 

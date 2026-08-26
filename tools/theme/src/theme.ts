@@ -138,39 +138,39 @@ export const theme: Theme = {
     },
     lineHeights: {
       100: {
-        value: '133%',
+        value: '1.3334',
         description: 'Use with font-size-100.',
       },
       200: {
-        value: '142%',
+        value: '1.4286',
         description: 'Use with font-size-200.',
       },
       300: {
-        value: '150%',
+        value: '1.5',
         description: 'Use with font-size-300.',
       },
       350: {
-        value: '150%',
+        value: '1.3334',
         description: 'Use with font-size-350.',
       },
       400: {
-        value: '120%',
+        value: '1.2',
         description: 'Use with font-size-400.',
       },
       500: {
-        value: '117%',
+        value: '1.1667',
         description: 'Use with font-size-500.',
       },
       600: {
-        value: '125%',
+        value: '1.25',
         description: 'Use with font-size-600.',
       },
       700: {
-        value: '110%',
+        value: '1.1112',
         description: 'Use with font-size-700.',
       },
       800: {
-        value: '117%',
+        value: '1.16667',
         description: 'Use with font-size-800.',
       },
     },
@@ -1902,7 +1902,7 @@ export const theme: Theme = {
         description: 'Hover and active states for the accent link.',
       },
       text_link_visited: {
-        value: violet.at(L_TEXT_PRIMARY),
+        value: violet.at(L_TEXT_SECONDARY),
         description: 'Visited link state so users can tell visited destinations apart from default links.',
       },
       text_placeholder: {

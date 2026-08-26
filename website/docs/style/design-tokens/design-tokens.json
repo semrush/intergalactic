@@ -2804,7 +2804,8 @@
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart"
+      "d3-chart",
+      "typography"
     ]
   },
   {
@@ -2879,7 +2880,8 @@
     "description": "Default primary link color.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2888,7 +2890,8 @@
     "description": "Hover and active states for the primary link.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2950,7 +2953,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.23 0.113 296)",
+    "value": "oklch(0.53 0.26 296)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -3328,7 +3331,8 @@
       "counter",
       "input-tags",
       "notice-bubble",
-      "pills"
+      "pills",
+      "typography"
     ]
   },
   {
@@ -3398,6 +3402,7 @@
       "bulk-textarea",
       "feature-popover",
       "notice-bubble",
+      "typography",
       "wizard"
     ]
   },
@@ -3408,6 +3413,7 @@
     "components": [
       "bulk-textarea",
       "card",
+      "typography",
       "wizard"
     ]
   },
@@ -3415,7 +3421,9 @@
     "name": "--intergalactic-spacing-content-padding-xlarge-extended",
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3432,7 +3440,9 @@
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
@@ -3447,6 +3457,7 @@
       "link",
       "pagination",
       "tag",
+      "typography",
       "wizard"
     ]
   },
@@ -3482,7 +3493,8 @@
       "pagination",
       "radio",
       "select",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -3491,7 +3503,8 @@
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "typography"
     ]
   },
   {
@@ -3500,7 +3513,8 @@
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
       "pagination",
-      "tab-line"
+      "tab-line",
+      "typography"
     ]
   },
   {
@@ -3510,6 +3524,7 @@
     "components": [
       "pagination",
       "tab-line",
+      "typography",
       "wizard"
     ]
   },
@@ -3517,7 +3532,9 @@
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
     "value": "24px",
     "description": "3x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-layout-padding-desktop",

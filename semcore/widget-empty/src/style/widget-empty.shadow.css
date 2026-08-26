@@ -15,7 +15,7 @@ STitle {
   text-align: center;
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
   font-weight: var(--intergalactic-bold, 700);
 }
 
@@ -23,7 +23,7 @@ SDescription {
   text-align: center;
   text-wrap: balance;
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   max-width: 400px;
 }

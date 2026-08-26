@@ -28,7 +28,7 @@ SContent {
 
 SMessage {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
 
 SDismiss {

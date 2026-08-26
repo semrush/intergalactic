@@ -620,47 +620,47 @@
   },
   {
     "name": "--intergalactic-lh-100",
-    "value": "133%",
+    "value": "1.3334",
     "description": "Use with font-size-100."
   },
   {
     "name": "--intergalactic-lh-200",
-    "value": "142%",
+    "value": "1.4286",
     "description": "Use with font-size-200."
   },
   {
     "name": "--intergalactic-lh-300",
-    "value": "150%",
+    "value": "1.5",
     "description": "Use with font-size-300."
   },
   {
     "name": "--intergalactic-lh-350",
-    "value": "150%",
+    "value": "1.3334",
     "description": "Use with font-size-350."
   },
   {
     "name": "--intergalactic-lh-400",
-    "value": "120%",
+    "value": "1.2",
     "description": "Use with font-size-400."
   },
   {
     "name": "--intergalactic-lh-500",
-    "value": "117%",
+    "value": "1.1667",
     "description": "Use with font-size-500."
   },
   {
     "name": "--intergalactic-lh-600",
-    "value": "125%",
+    "value": "1.25",
     "description": "Use with font-size-600."
   },
   {
     "name": "--intergalactic-lh-700",
-    "value": "110%",
+    "value": "1.1112",
     "description": "Use with font-size-700."
   },
   {
     "name": "--intergalactic-lh-800",
-    "value": "117%",
+    "value": "1.16667",
     "description": "Use with font-size-800."
   },
   {
