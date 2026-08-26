@@ -41,7 +41,6 @@ export const Table = (props: TableProps) => {
         aria-label='Table example with selectable rows'
         defaultGridTemplateColumnWidth='auto'
         selectedRows={props.selectedRows}
-        // onSelectedRowsChange={props.handleChangeSelectedRows}
         ref={props.tableRef}
         sideIndents={props.sideIndents}
         loading={props.loading}

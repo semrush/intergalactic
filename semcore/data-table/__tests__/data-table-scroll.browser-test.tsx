@@ -53,12 +53,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (item.sticky) {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         }
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(0));
-          await checkScrolled(scrollBar.nth(1));
-        } else {
-          await checkScrolled(scrollBar.nth(0));
-        }
+        await checkScrolled(scrollBar.nth(0));
       });
     });
   });
@@ -76,11 +71,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(200);
-
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(1));
-        } else
-          await checkScrolled(scrollBar.nth(0));
+        await checkScrolled(scrollBar.nth(0));
       });
 
       await test.step('Verify vertical scroll', async () => {

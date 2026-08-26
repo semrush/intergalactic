@@ -1,11 +1,12 @@
 import { Box, ScreenReaderOnly } from '@semcore/base-components';
 import Checkbox from '@semcore/checkbox';
 import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import type Tooltip from '@semcore/tooltip';
 import React from 'react';
 
 import { Column } from './Column';
-import type { DataTableColumnProps } from './Column.types';
+import type { DataTableColumnProps, DTColumn } from './Column.types';
 import { Group } from './Group';
 import type { DataTableGroupProps } from './Group.type';
 import type { DataTableHeadProps, HeadPropsInner } from './Head.types';
@@ -15,6 +16,8 @@ import type { DTRow } from '../Body/Row.types';
 import { DataTable, type ROW_GROUP, SELECT_ALL, UNIQ_ROW_KEY } from '../DataTable/DataTable';
 import type { DataTableData } from '../DataTable/DataTable.types';
 
+// @ts-expect-error treeColumns and rows are internal properties, and we can't see them in types
+@propsObserver(['treeColumns', 'rows'])
 class HeadRoot<
   Data extends DataTableData,
   UniqKey extends (Data[number] extends { [ROW_GROUP]: DataTableData } ? keyof Data[number][typeof ROW_GROUP][number] : keyof Data[number]),
@@ -28,11 +31,15 @@ class HeadRoot<
   static displayName = 'Head';
   static style = style;
 
+  private readonly columnStyle = new Map<string, React.CSSProperties>();
+
   private unsubscribeSelectAll: undefined | (() => void) = undefined;
   private unsubscribeSetIndeterminate: undefined | (() => void) = undefined;
 
   componentDidMount() {
     const { selectedRows } = this.asProps;
+
+    this.recalculateColumnStyle();
 
     if (selectedRows && !Array.isArray(selectedRows)) {
       this.unsubscribeSelectAll = selectedRows.on(SelectableRows.SELECT_ALL_EVENT, () => {
@@ -48,6 +55,55 @@ class HeadRoot<
   componentWillUnmount() {
     this.unsubscribeSelectAll?.();
     this.unsubscribeSetIndeterminate?.();
+
+    this.columnStyle.clear();
+  }
+
+  onPropsChange(changedProps: Record<string, unknown>) {
+    if ('treeColumns' in changedProps || 'rows' in changedProps) {
+      requestAnimationFrame(() => {
+        this.recalculateColumnStyle();
+        this.forceUpdate();
+      });
+    }
+  }
+
+  recalculateColumnStyle() {
+    const { treeColumns, getFixedStyle, selectedRows } = this.asProps;
+
+    const setForColumn = (column: DTColumn) => {
+      const isParentContainer = (column: DTColumn): column is (Omit<DTColumn, 'columns'> & { columns: DTColumn[] }) => {
+        return Boolean('columns' in column && column.columns);
+      };
+
+      if (isParentContainer(column)) {
+        column.name = column.columns.map((column) => column.name).join('/');
+      }
+
+      if (column.fixed) {
+        const styles: React.CSSProperties = {};
+        this.columnStyle.set(column.name, styles);
+
+        const [name, value] = getFixedStyle(column);
+        if (name !== undefined && value !== undefined) {
+          styles[name] = value;
+        }
+
+        if (isParentContainer(column)) {
+          column.columns.forEach((column) => setForColumn(column));
+        }
+      } else {
+        this.columnStyle.delete(column.name);
+      }
+    };
+
+    treeColumns.forEach((column, index) => {
+      setForColumn(column);
+
+      if (selectedRows && index === 0 && column.fixed) {
+        this.columnStyle.set(SELECT_ALL, { left: 0 });
+      }
+    });
   }
 
   sortableColumnDescribeId() {
@@ -56,30 +112,12 @@ class HeadRoot<
   }
 
   getGroupProps(props: any, index: number) {
-    const { fixed, columns } = props;
+    const { columns } = props;
     const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection } = this.asProps;
     const groupColumns = columns ?? [];
 
     const firstColumn = groupColumns[0];
     const lastColumn = groupColumns[groupColumns.length - 1];
-
-    const style: any = {};
-
-    if (fixed === 'left' && firstColumn) {
-      const [name, value] = getFixedStyle({ name: firstColumn.name, fixed: 'left' });
-      if (name !== undefined && value !== undefined) {
-        style[name] = value;
-      }
-    }
-    if (fixed === 'right' && lastColumn) {
-      const [name, value] = getFixedStyle({ name: lastColumn.name, fixed: 'right' });
-      if (name !== undefined && value !== undefined) {
-        style[name] = value;
-      }
-    }
-    if (top && scrollDirection !== 'horizontal') {
-      style.top = `${top}px`;
-    }
 
     return {
       use,
@@ -87,8 +125,9 @@ class HeadRoot<
       withConfig: children === undefined,
       getFixedStyle,
       shadowVertical: (firstColumn.showShadowVertical || lastColumn.showShadowVertical) ? shadowVertical : undefined,
-      style,
+      style: this.columnStyle.get(props.name),
       scrollDirection,
+      top: top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
     };
   }
 
@@ -105,10 +144,10 @@ class HeadRoot<
       top,
       selectedRows,
       h,
-      getFixedStyle,
       onCellClick,
       shadowVertical,
       scrollDirection,
+      headerNodesMap,
     } = this.asProps;
     const column = columns[index];
 
@@ -116,21 +155,10 @@ class HeadRoot<
       column.fixed = 'left';
     }
 
-    const [name, value] = getFixedStyle(column);
-    const style: any = {};
-
-    if (top && scrollDirection !== 'horizontal') {
-      style.top = `${top}px`;
-    }
-
-    if (name !== undefined && value !== undefined) {
-      style[name] = value;
-    }
-
     return {
       use,
       'aria-colindex': index + 1,
-      style,
+      'style': this.columnStyle.get(column.name),
       'gridArea': column.gridArea,
       'fixed': column.fixed,
       sticky,
@@ -147,6 +175,8 @@ class HeadRoot<
       'onClick': onCellClick,
       'shadowVertical': column.showShadowVertical ? shadowVertical : undefined,
       scrollDirection,
+      headerNodesMap,
+      'top': top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
     };
   }
 

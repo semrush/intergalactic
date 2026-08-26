@@ -86,6 +86,7 @@ export type RowPropsInner<Data extends DataTableData, UniqKeyType> = JSX.Intrins
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   uid: string;
   sideIndents?: 'wide';
+
   getFixedStyle: (
     cell: Pick<DTColumn, 'name' | 'fixed'>,
   ) => [side: 'left' | 'right', style: string | number] | [side: undefined, style: undefined];

@@ -1,6 +1,7 @@
 import { Box, Collapse } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import { Component, Root, sstyled, createComponent } from '@semcore/core';
+import propsObserver from '@semcore/core/lib/decorators/propsObserver';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { isInteractiveElement } from '@semcore/core/lib/utils/isInteractiveElement';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
@@ -27,14 +28,19 @@ type DefaultProps = {
   'aria-level': undefined;
 };
 
-export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
-  DataTableRowProps<Data, UniqKeyType>,
-  [],
-  {},
-  RowPropsInner<Data, UniqKeyType>,
-  State<UniqKeyType>,
-  DefaultProps
-> {
+@propsObserver([
+  // @ts-expect-error columns is an internal property, and we can't see it in types
+  'columns',
+  'row',
+])
+class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
+    DataTableRowProps<Data, UniqKeyType>,
+    [],
+    {},
+    RowPropsInner<Data, UniqKeyType>,
+    State<UniqKeyType>,
+    DefaultProps
+  > {
   static displayName = 'Row';
   static style = style;
 
@@ -45,6 +51,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   private cellName: string = '';
   private closeAccordionTimeout = 0;
   private openAccordionTimeout = 0;
+  private readonly cellStyle = new Map<string, React.CSSProperties>();
 
   rowElementRef = React.createRef<HTMLDivElement>();
 
@@ -64,6 +71,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     const { componentRef } = this.asProps;
     componentRef?.(this);
 
+    this.recalculateCellStyle();
+
     this.setAccordion();
   }
 
@@ -77,6 +86,36 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
   componentWillUnmount() {
     this.asProps.componentRef?.(null);
+
+    this.cellStyle.clear();
+  }
+
+  onPropsChange(changedProps: Record<string, unknown>) {
+    if ('columns' in changedProps || 'row' in changedProps) {
+      requestAnimationFrame(() => {
+        this.recalculateCellStyle();
+        this.forceUpdate();
+      });
+    }
+  }
+
+  recalculateCellStyle() {
+    const { columns, getFixedStyle } = this.asProps;
+
+    columns.forEach((column) => {
+      if (column.fixed) {
+        const styles: React.CSSProperties = {};
+        this.cellStyle.set(column.name, styles);
+
+        const [name, value] = getFixedStyle(column);
+
+        if (name !== undefined && value !== undefined) {
+          styles[name] = value;
+        }
+      } else {
+        this.cellStyle.delete(column.name);
+      }
+    });
   }
 
   setAccordion() {
@@ -267,7 +306,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       tableRef,
       onCellClick,
       rawData,
-      shadowVertical,
       flatRows,
       variant,
       isAccordionRow,
@@ -313,7 +351,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       children: props?.children ?? defaultRender(),
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
-      shadowVertical,
       withoutBorder,
       theme,
     };
@@ -550,16 +587,6 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               return null;
             }
 
-            const style: React.CSSProperties = {};
-
-            if (column.fixed) {
-              const [name, value] = getFixedStyle(column);
-
-              if (name !== undefined && value !== undefined) {
-                style[name] = value;
-              }
-            }
-
             return (
               <Row.Cell
                 key={`${uid}_${rowUniqKey}_${index}`}
@@ -575,7 +602,8 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 accordionRowIndex={accordionRowIndex}
                 rows={rows}
                 aria-hidden={isCellHidden}
-                style={style}
+                style={this.cellStyle.get(column.name)}
+                shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
               />
             );
@@ -672,6 +700,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
 type RowComponent = DataTableRowType & {
   Cell: any;
+};
+
+export type {
+  RowRoot,
 };
 
 export const Row = createComponent<

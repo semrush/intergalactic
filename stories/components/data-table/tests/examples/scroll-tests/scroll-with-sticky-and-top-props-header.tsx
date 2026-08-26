@@ -2,7 +2,30 @@ import { Box } from '@semcore/ui/base-components';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
-export type ExampleDataTableProps = { loading: boolean };
+export type ExampleDataTableProps = {
+  loading: boolean;
+  grouped: boolean;
+};
+
+const flatColumns = [
+  { name: 'keyword', children: 'Keyword' },
+  { name: 'kd', children: 'KD,%' },
+  { name: 'cpc', children: 'CPC' },
+  { name: 'vol', children: 'Vol.' },
+];
+
+const groupedColumns = [
+  { name: 'keyword', children: 'Keyword' },
+  {
+    name: 'metrics',
+    children: 'Metrics',
+    columns: [
+      { name: 'kd', children: 'KD,%' },
+      { name: 'cpc', children: 'CPC' },
+      { name: 'vol', children: 'Vol.' },
+    ],
+  },
+];
 
 const Demo = (props: ExampleDataTableProps) => {
   return (
@@ -18,12 +41,7 @@ const Demo = (props: ExampleDataTableProps) => {
           sticky: true,
           top: 100,
         }}
-        columns={[
-          { name: 'keyword', children: 'Keyword' },
-          { name: 'kd', children: 'KD,%' },
-          { name: 'cpc', children: 'CPC' },
-          { name: 'vol', children: 'Vol.' },
-        ]}
+        columns={props.grouped ? groupedColumns : flatColumns}
       />
       <Box h={100} style={{ background: 'red' }} />
     </Box>
@@ -215,6 +233,7 @@ const data = [
 
 export const defaultProps: ExampleDataTableProps = {
   loading: false,
+  grouped: false,
 };
 
 Demo.defaultProps = defaultProps;

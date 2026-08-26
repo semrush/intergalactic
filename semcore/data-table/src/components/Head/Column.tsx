@@ -64,7 +64,13 @@ export class Column<
   };
 
   componentDidMount() {
-    const { parent, sticky, changeSortSize, name, sort, scrollDirection } = this.asProps;
+    const { parent, sticky, changeSortSize, name, sort, scrollDirection, headerNodesMap } = this.asProps;
+    const columnElement = this.columnRef.current;
+    const columnName = columnElement?.getAttribute('name');
+
+    if (columnElement && columnName) {
+      headerNodesMap.set(columnName, this.columnRef);
+    }
 
     if (parent && sticky && scrollDirection !== 'horizontal') {
       const columnElement = this.columnRef.current;
@@ -88,6 +94,15 @@ export class Column<
       prevProps.sort?.[0] !== this.asProps.sort?.[0]
     ) {
       this.changeTemplateColumnBySort();
+    }
+  }
+
+  componentWillUnmount(): void {
+    const columnElement = this.columnRef.current;
+    const columnName = columnElement?.getAttribute('name');
+
+    if (columnName) {
+      this.asProps.headerNodesMap.delete(columnName);
     }
   }
 

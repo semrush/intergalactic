@@ -1,3 +1,5 @@
+import type * as React from 'react';
+
 import type { ColumnPropsInner, DTColumn } from './Column.types';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import type { BodyPropsInner } from '../Body/Body.types';
@@ -42,6 +44,7 @@ export type HeadPropsInner<
   tableRef: React.RefObject<HTMLElement>;
   columns: DTColumn[];
   treeColumns: DTColumn[];
+  rows: Array<DTRow<UniqKeyType> | DTRow<UniqKeyType>[]>;
   compact: boolean;
   sort?: DataTableProps<Data, UniqKey, UniqKeyType>['sort'];
   onSortChange?: DataTableProps<Data, UniqKey, UniqKeyType>['onSortChange'];
@@ -68,4 +71,6 @@ export type HeadPropsInner<
   isDataEmpty: boolean;
 
   withAnimation: boolean;
+
+  headerNodesMap: Map<string, React.RefObject<HTMLDivElement>>;
 };

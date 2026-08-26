@@ -20,7 +20,6 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
   rowIndex: number;
   handleRef: (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => void;
   handleComponentRef: (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => void;
-
 };
 
 export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.PureComponent<RowGroupProps<Data, UniqKeyType>> {
