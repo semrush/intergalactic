@@ -159,7 +159,7 @@ const DefaultTrigger = React.forwardRef(function (
   const SDefaultTrigger = Root;
   const STriggerCircle = Flex;
   const SChevronDownM = ChevronDownM;
-  const dataValue = value === null ? null : `var(${value})`;
+  const dataValue = value?.startsWith('--') ? `var(${value})` : value;
 
   return sstyled(styles)(
     <SDefaultTrigger render={Box} tag='button' tabIndex={0} ref={ref}>
