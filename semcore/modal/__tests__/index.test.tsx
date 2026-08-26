@@ -45,8 +45,8 @@ describe('Modal', () => {
 
   test.sequential('Verify supports onClose for CloseIcons', async () => {
     const spy = vi.fn();
-    const { getByTitle } = render(<Modal onClose={spy} visible />);
-    await userEvent.click(getByTitle('Close').closest('button')!);
+    const { getByRole } = render(<Modal onClose={spy} visible />);
+    await userEvent.click(getByRole('button', { name: 'Close' }));
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 

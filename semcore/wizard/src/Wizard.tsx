@@ -1,4 +1,4 @@
-import { ScreenReaderOnly, Box } from '@semcore/base-components';
+import { ScreenReaderOnly, Box, Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
 import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import type { Intergalactic } from '@semcore/core';
@@ -247,8 +247,8 @@ function Stepper(
   } = props;
   const SStepper = Root;
   const SStepNumber = 'span';
-  const SStepDescription = 'span';
-  const SCompleted = CheckM;
+  const SStepDescription = Flex;
+  const SCompleteIcon = CheckM;
 
   const handlerClick = React.useCallback(
     (e: React.SyntheticEvent<HTMLElement>) => {
@@ -277,7 +277,7 @@ function Stepper(
 
   return sstyled(styles)(
     <SStepper
-      render={Box}
+      render={Flex}
       role='tab'
       tabIndex={disabled ? undefined : 0}
       onClick={handlerClick}
@@ -285,7 +285,7 @@ function Stepper(
     >
       {completed && <ScreenReaderOnly>{getI18nText('completedStep')}</ScreenReaderOnly>}
       <ScreenReaderOnly><Children /></ScreenReaderOnly>
-      <SStepNumber aria-hidden='true'>{completed ? <SCompleted /> : number}</SStepNumber>
+      <SStepNumber aria-hidden='true'>{completed ? <SCompleteIcon /> : number}</SStepNumber>
       <SStepDescription aria-hidden='true'>
         <Children />
       </SStepDescription>
@@ -318,6 +318,7 @@ function StepBack(
     <SStepBack
       render={Button}
       use='tertiary'
+      theme='muted'
       size='l'
       onClick={handleClick}
       aria-label={getI18nText('backButton', { buttonName: stepName })}
@@ -341,6 +342,7 @@ function StepNext(
     <SStepNext
       render={Button}
       use='tertiary'
+      theme='muted'
       size='l'
       onClick={handleClick}
       aria-label={getI18nText('nextButton', { buttonName: stepName })}

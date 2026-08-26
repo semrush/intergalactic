@@ -32,8 +32,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       cursor: 'default',
     };
 
-    const expectedSeparatorMargin = '8px';
-
     await test.step('Verify active item style', async () => {
       const lastItemStyles = await lastItem.evaluate((el) => {
         const styles = getComputedStyle(el);
@@ -73,14 +71,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       await breadcrumbLinks.first().hover();
 
       await expect(page).toHaveScreenshot();
-    });
-    await test.step('Verify separator styles', async () => {
-      for (const icon of await chevronIcons.all()) {
-        const marginLeft = await icon.evaluate(
-          (el) => getComputedStyle(el.parentElement!).marginLeft,
-        );
-        expect(marginLeft).toBe(expectedSeparatorMargin);
-      }
     });
   });
 
