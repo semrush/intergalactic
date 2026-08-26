@@ -46,11 +46,93 @@ const data = [{
 const pageLimit = 10;
 const recalculateContainerWidth = (width: number) => width - 65;
 
-type TableLinkProps = {
-  size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
+/** Which string goes into `link.text`. */
+export type TextPreset =
+  | 'urlWithoutProtocol'
+  | 'fullUrl'
+  | 'short'
+  | 'longWithSpaces'
+  | 'longWithoutSpaces'
+  | 'startsWithHttp'
+  | 'custom';
+
+/** Which string goes into `link.href`. */
+export type HrefPreset = 'external' | 'sameOrigin' | 'relative';
+
+export type TableLinkProps = {
+  /**
+   * Text rendered inside the link.
+   *
+   * `urlWithoutProtocol` — the realistic table case (protocol stripped).
+   * `fullUrl` — keeps the protocol, so `text` itself looks like a URL.
+   * `startsWithHttp` — plain words that merely begin with "http".
+   * `custom` — free text from the `customText` control.
+   */
+  textPreset?: TextPreset;
+  /** Used only when `textPreset` is `custom`. */
+  customText?: string;
+  /**
+   * Target of the link.
+   *
+   * `external` — the row URL (another host).
+   * `sameOrigin` — absolute URL on the current host.
+   * `relative` — internal path, no host at all.
+   */
+  hrefPreset?: HrefPreset;
+  /** Where Ellipsis puts the dots. */
+  cropPosition?: 'middle' | 'end';
+  /** Render Ellipsis at all. Turning it off makes `LinkAction` wrap instead of truncate. */
+  withEllipsis?: boolean;
+  /** How many actions sit next to the link. `1` passes an object, `2` passes a tuple. */
+  actionsCount?: 1 | 2;
+  /** Give both actions the same `title`, to check that keys stay unique. */
+  duplicateActionTitles?: boolean;
 };
 
-export default function Demo(props: TableLinkProps) {
+const LONG_WITH_SPACES = 'a very long link label that has plenty of spaces so it can wrap and be truncated in several different ways';
+const LONG_WITHOUT_SPACES = 'averylonglinklabelwithoutanyspacesatallsothereisnoopportunitytowrapitonwordboundaries';
+
+const buildText = (url: string, textPreset: TextPreset, customText: string) => {
+  switch (textPreset) {
+    case 'fullUrl':
+      return url;
+    case 'short':
+      return 'link';
+    case 'longWithSpaces':
+      return LONG_WITH_SPACES;
+    case 'longWithoutSpaces':
+      return LONG_WITHOUT_SPACES;
+    case 'startsWithHttp':
+      return 'httpie tutorial for beginners';
+    case 'custom':
+      return customText;
+    case 'urlWithoutProtocol':
+    default:
+      return removeProtocol(url);
+  }
+};
+
+const buildHref = (url: string, hrefPreset: HrefPreset) => {
+  switch (hrefPreset) {
+    case 'sameOrigin':
+      return `${window.location.origin}/internal/page`;
+    case 'relative':
+      return '/internal/page';
+    case 'external':
+    default:
+      return url;
+  }
+};
+
+export default function Demo({
+  textPreset = 'urlWithoutProtocol',
+  customText = 'Set any text you like here',
+  hrefPreset = 'external',
+  cropPosition = 'middle',
+  withEllipsis = true,
+  actionsCount = 2,
+  duplicateActionTitles = false,
+}: TableLinkProps) {
   const [currentPage, setCurrentPage] = React.useState(0);
 
   const urlRef = React.useRef(null);
@@ -84,9 +166,24 @@ export default function Demo(props: TableLinkProps) {
     }];
   }, []);
 
-  const renderCell = React.useMemo(() => (props: CellRenderProps<any, any>) => {
-    if (props.columnName === 'url' && Boolean(columnElement)) {
-      const url = props.row.url as string | null | undefined;
+  const buildActions = React.useCallback(() => {
+    const first = {
+      title: 'Open in new tab',
+      icon: IconM,
+      href: '#',
+    } as const;
+    const second = {
+      title: duplicateActionTitles ? 'Open in new tab' : 'Analyze this URL',
+      icon: IconM,
+      onClick: () => null,
+    } as const;
+
+    return actionsCount === 1 ? first : [first, second] as [typeof first, typeof second];
+  }, [actionsCount, duplicateActionTitles]);
+
+  const renderCell = React.useMemo(() => (cellProps: CellRenderProps<any, any>) => {
+    if (cellProps.columnName === 'url' && Boolean(columnElement)) {
+      const url = cellProps.row.url as string | null | undefined;
 
       if (!url) {
         return null;
@@ -99,28 +196,22 @@ export default function Demo(props: TableLinkProps) {
       return (
         <LinkAction
           link={{
-            href: url,
-            text: removeProtocol(url),
-            ellipsisSettings: {
-              cropPosition: 'middle',
-              containerElement: columnElement,
-              recalculateContainerWidth: recalculateContainerWidth,
-            },
+            href: buildHref(url, hrefPreset),
+            text: buildText(url, textPreset, customText),
+            ellipsisSettings: withEllipsis
+              ? {
+                  cropPosition,
+                  containerElement: columnElement,
+                  recalculateContainerWidth,
+                }
+              : undefined,
           }}
-          actions={[{
-            title: 'Open in new tab',
-            icon: IconM,
-            href: '#',
-          }, {
-            title: 'Open in new tab',
-            icon: IconM,
-            onClick: () => null,
-          }]}
+          actions={buildActions()}
         />
       );
     }
-    return props.defaultRender();
-  }, [columnElement]);
+    return cellProps.defaultRender();
+  }, [columnElement, textPreset, customText, hrefPreset, cropPosition, withEllipsis, buildActions]);
 
   const tableData = [];
   let index = 0;
@@ -154,3 +245,15 @@ export default function Demo(props: TableLinkProps) {
     </>
   );
 }
+
+export const defaultProps: TableLinkProps = {
+  textPreset: 'urlWithoutProtocol',
+  customText: 'Set any text you like here',
+  hrefPreset: 'external',
+  cropPosition: 'middle',
+  withEllipsis: true,
+  actionsCount: 2,
+  duplicateActionTitles: false,
+};
+
+Demo.defaultProps = defaultProps;
