@@ -381,6 +381,12 @@
     ]
   },
   {
+    "name": "--intergalactic-bg-secondary-invert",
+    "value": "oklch(0.969 0.057 140 / 0.118)",
+    "description": "Inverted version of the secondary background of the interface which contains the main data and information.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-bg-secondary-success",
     "value": "oklch(0.96 0.057 179.7)",
     "description": "Secondary background of the message with success information you want to accent.",
