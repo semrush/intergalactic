@@ -1,8 +1,8 @@
-import ButtonLink from '@semcore/button';
+import IconM from '@semcore/icon/Cards/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import { Flex } from '@semcore/ui/base-components';
+import ButtonLink from '@semcore/ui/button';
 import { DataTable, LinkAction } from '@semcore/ui/data-table';
-import IconM from '@semcore/ui/icon/Cards/m';
 import Link from '@semcore/ui/link';
 import React from 'react';
 

@@ -97,7 +97,11 @@ declare namespace NSScrollArea {
       type Component = NSBox.Component;
     }
 
-    type Component = Intergalactic.Component<'div', Props, Ctx> & {
+    interface Instance {
+      get isScrollVisible(): boolean;
+    }
+
+    type Component = Intergalactic.Component<'div', Props, Ctx, [], Instance> & {
       Slider: Slider.Component;
     };
   }
