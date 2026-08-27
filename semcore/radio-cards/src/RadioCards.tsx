@@ -1,7 +1,6 @@
 import { Box, Flex, NeighborLocation } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
-import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
 import Dot from '@semcore/dot';
 import { Text as SemcoreText } from '@semcore/typography';
 import React from 'react';
@@ -13,7 +12,7 @@ const DEFAULT_VALUE = '';
 
 class RadioCardsRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Component>,
-  typeof RadioCardsRoot.enhance,
+  [],
   NSRadioCards.Handlers,
   {},
   {},
@@ -22,29 +21,9 @@ class RadioCardsRoot extends Component<
   static displayName = 'RadioCards';
   static style = style;
 
-  static enhance = [a11yEnhance({
-    onNeighborChange: (neighborElement) => {
-      if (neighborElement) {
-        neighborElement.focus();
-        neighborElement.click();
-      }
-    },
-    childSelector: () => {
-      const selector: [string, string] = ['role', 'radio'];
-
-      return selector;
-    },
-  })] as const;
-
-  static defaultProps = {
-    defaultValue: DEFAULT_VALUE,
-  } as const;
-
-  private firstNonDisabledItemIdx: number | null = null;
-
-  componentDidUpdate() {
-    this.firstNonDisabledItemIdx = null;
-  }
+  static defaultProps = ({ defaultValue }: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Component>) => ({
+    defaultValue: defaultValue ?? DEFAULT_VALUE,
+  });
 
   uncontrolledProps() {
     return {
@@ -52,47 +31,19 @@ class RadioCardsRoot extends Component<
     };
   }
 
-  handleClick = (value: NSRadioCards.Value) => (e: React.MouseEvent) => {
+  handleOnChange = (value: NSRadioCards.Value) => (e: React.ChangeEvent<HTMLInputElement>) => {
     this.handlers.value(value, e);
   };
 
-  handleKeyDown = (value: NSRadioCards.Value) => (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-
-      this.handlers.value(value, e);
-    }
-  };
-
-  getTabIndex({ props, index }: { props: NSRadioCards.Item.Props; index: number }) {
-    const { value, disabled: rootDisabled } = this.asProps;
-    const { value: itemValue, disabled: itemDisabled } = props;
-    const isChecked = value === itemValue;
-
-    if (rootDisabled) return -1;
-
-    if (this.firstNonDisabledItemIdx === null && !itemDisabled) {
-      this.firstNonDisabledItemIdx = index;
-    }
-
-    if (index === this.firstNonDisabledItemIdx && value === DEFAULT_VALUE) {
-      return 0;
-    }
-
-    return isChecked ? 0 : -1;
-  }
-
-  getItemProps(props: NSRadioCards.Item.Props, index: number) {
+  getItemProps(props: NSRadioCards.Item.Props) {
     const { value: itemValue } = props;
-    const { value, disabled } = this.asProps;
-    const isChecked = value === itemValue;
+    const { value, disabled, name } = this.asProps;
 
     return {
-      tabIndex: this.getTabIndex({ props, index }),
-      checked: isChecked,
       disabled,
-      onClick: this.handleClick(itemValue),
-      onKeyDown: this.handleKeyDown(itemValue),
+      checked: value === itemValue,
+      onChange: this.handleOnChange(itemValue),
+      name: name,
     };
   }
 
@@ -101,7 +52,17 @@ class RadioCardsRoot extends Component<
     const { Children, styles, disabled } = this.asProps;
 
     return sstyled(styles)(
-      <SRadioCards render={Flex} role='radiogroup' aria-disabled={disabled}>
+      <SRadioCards
+        render={Flex}
+        role='radiogroup'
+        aria-disabled={disabled}
+        /*
+          Need to exclude to prevent a call on the bubbling phase from the inner control.
+          This handler is created implicitly by `uncontrolledProps` and added to `.asProps`.
+          All props are applied to the Root element by default.
+        */
+        __excludeProps={['onChange']}
+      >
         <NeighborLocation>
           <Children />
         </NeighborLocation>
@@ -118,24 +79,33 @@ function Item(
   >,
 ) {
   const SRadioItem = Root;
+  const SRadioItemControl = 'input';
   const SRadioItemHeader = Flex;
   const SRadioItemHeaderLeftAddon = Flex;
   const SRadioItemHeaderInnerContainer = Box;
   const SRadioItemHeaderText = SemcoreText;
   const SRadioItemHeaderRightAddon = SemcoreText;
   const SRadioItemDescription = SemcoreText;
-  const { Children, styles, iconAddon, text, textAddon, description, disabled, checked, dot, children } = props;
+  const {
+    Children,
+    styles,
+    iconAddon,
+    text,
+    textAddon,
+    description,
+    disabled,
+    checked,
+    dot,
+    children,
+    onChange,
+    name,
+  } = props;
 
   const isAdvancedMode = children !== undefined;
 
   return sstyled(styles)(
-    <SRadioItem
-      render={Flex}
-      tag='button'
-      role='radio'
-      aria-disabled={disabled}
-      aria-checked={checked}
-    >
+    <SRadioItem render={Flex} tag='label' __excludeProps={['tabIndex', 'disabled', 'checked', 'onChange', 'name']}>
+      <SRadioItemControl type='radio' disabled={disabled} checked={checked} onChange={onChange} name={name} />
       {isAdvancedMode
         ? (
             <Children />
@@ -143,17 +113,21 @@ function Item(
         : (
             <>
               <SRadioItemHeader>
-                {iconAddon && <SRadioItemHeaderLeftAddon>{iconAddon}</SRadioItemHeaderLeftAddon>}
+                {iconAddon && <SRadioItemHeaderLeftAddon aria-hidden>{iconAddon}</SRadioItemHeaderLeftAddon>}
                 <SRadioItemHeaderInnerContainer>
-                  {text && <SRadioItemHeaderText size={300} use='primary'>{text}</SRadioItemHeaderText>}
-                  {textAddon && (
-                    <SRadioItemHeaderRightAddon size={300}>
-                      {textAddon}
-                    </SRadioItemHeaderRightAddon>
+                  {text && (
+                    <SRadioItemHeaderText size={300} use='primary'>
+                      {text}
+                    </SRadioItemHeaderText>
                   )}
+                  {textAddon && <SRadioItemHeaderRightAddon size={300}>{textAddon}</SRadioItemHeaderRightAddon>}
                 </SRadioItemHeaderInnerContainer>
               </SRadioItemHeader>
-              {description && <SRadioItemDescription size={200} use='secondary'>{description}</SRadioItemDescription>}
+              {description && (
+                <SRadioItemDescription size={200} use='secondary'>
+                  {description}
+                </SRadioItemDescription>
+              )}
               {dot && <Dot up size='l' aria-label={dot} />}
             </>
           )}

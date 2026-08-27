@@ -20,14 +20,26 @@ SRadioItem {
     border: 1px solid var(--intergalactic-control-presets-border-hover, oklch(0.137 0.026 175.7 / 0.161));
   }
 
-  &[aria-checked='true'] {
+  &:has(SRadioItemControl[checked]) {
     border: 1px solid var(--intergalactic-control-presets-border-selected, oklch(0.23 0.01 140));
   }
 
-  &[aria-disabled='true'] {
+  &:has(SRadioItemControl[disabled]) {
     pointer-events: none;
     opacity: var(--intergalactic-disabled-opacity, 0.4);
   }
+
+  &:has(:focus-visible) {
+    @mixin focus-outline-mixin;
+  }
+}
+
+SRadioItemControl {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0)
 }
 
 SRadioItemHeader {

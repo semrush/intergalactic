@@ -6,7 +6,7 @@ const Demo = () => {
   const [value, setValue] = useState('all');
 
   return (
-    <RadioCards aria-label='Radio cards' value={value} onChange={setValue}>
+    <RadioCards aria-label='Radio cards' name='radio-cards' value={value} onChange={setValue}>
       <RadioCards.Item value='all' text='All' textAddon='~90,000,000' />
       <RadioCards.Item
         value='best'

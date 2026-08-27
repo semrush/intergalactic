@@ -10,7 +10,7 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <RadioCards aria-label='Radio cards'>
+    <RadioCards aria-label='Radio cards' name='radio-cards' defaultValue='loading-state'>
       <RadioCards.Item value='custom-layout'>
         <Flex alignItems='center' gap='var(--intergalactic-spacing-content-gap-medium, 6px)'>
           <FileExport />

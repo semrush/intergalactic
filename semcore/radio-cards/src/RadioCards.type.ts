@@ -9,15 +9,19 @@ declare namespace NSRadioCards {
     /** References an element that labels the radio group. */
     'aria-labelledby'?: string;
   }> & {
+    /** Radio cards group name. */
+    name: string;
+    /** Default selected radio card value. */
+    defaultValue?: NSRadioCards.Value;
     /** Currently selected radio card value. */
     value?: NSRadioCards.Value;
     /** Called when the selected radio card changes. */
-    onChange?: (value: NSRadioCards.Value, event?: React.SyntheticEvent<HTMLButtonElement>) => void;
+    onChange?: (value: NSRadioCards.Value, event?: React.SyntheticEvent<HTMLInputElement>) => void;
     /** Disables the entire radio group and all radio cards. */
     disabled?: boolean;
   };
   type DefaultProps = {
-    defaultValue: '';
+    defaultValue: NSRadioCards.Value;
   };
   type Handlers = {
     value: NSRadioCards.Value;

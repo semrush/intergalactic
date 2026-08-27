@@ -41,7 +41,7 @@ const Demo = (props: ExampleProps) => {
 
   return (
     <Flex direction='column' gap={4}>
-      <RadioCards aria-label={ariaLabel} value={selected} disabled={disabled} onChange={handleChange}>
+      <RadioCards aria-label={ariaLabel} name='radio-cards' value={selected} disabled={disabled} onChange={handleChange}>
         <RadioCards.Item
           value='1'
           text='All'
@@ -88,6 +88,7 @@ export const defaultRadioCardsProps: ExampleProps = {
   'description': 'Restore these backlinks first',
   'showIconAddon': true,
   'dot': false,
+  'name': 'radio-cards',
 };
 
 Demo.defaultProps = defaultRadioCardsProps;
