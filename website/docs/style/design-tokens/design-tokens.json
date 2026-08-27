@@ -3427,8 +3427,8 @@
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
     "components": [
+      "fullscreen-modal",
       "side-panel"
-      "fullscreen-modal"
     ]
   },
   {

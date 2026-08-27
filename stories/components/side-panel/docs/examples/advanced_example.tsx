@@ -1,4 +1,5 @@
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import { Flex } from '@semcore/ui/base-components';
 import Button, { ButtonLink } from '@semcore/ui/button';
 import SidePanel from '@semcore/ui/side-panel';
 import type { NSSidePanel } from '@semcore/ui/side-panel';
@@ -19,8 +20,8 @@ const Demo = (props: NSSidePanel.Props) => {
         disablePreventScroll={props.disablePreventScroll}
       >
         <SidePanel.Header>
-          <SidePanel.Title ellipsis={false}>
-            <ButtonLink color='text-hint' size={100} addonLeft={ArrowLeft} mr={2} />
+          <SidePanel.Title ellipsis={false} tag={Flex} alignItems='start'>
+            <ButtonLink use='secondary' size={300} addonLeft={ArrowLeft} mr={2} title='Back to {Step}' />
             SidePanel title
           </SidePanel.Title>
         </SidePanel.Header>
