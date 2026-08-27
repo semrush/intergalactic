@@ -2,7 +2,7 @@
 
 SPie {
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
 }
 
 SPie[color] {

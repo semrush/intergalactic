@@ -742,7 +742,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-1",
-    "value": "oklch(0.58 0.168 278.2)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "1 color in the default list of colors for charts.",
     "components": [
       "d3-chart",
@@ -751,7 +751,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-2",
-    "value": "oklch(0.82 0.15 170)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "2 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -759,43 +759,43 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-3",
-    "value": "oklch(0.74 0.17 303)",
+    "value": "oklch(0.82 0.15 170)",
     "description": "3 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-4",
-    "value": "oklch(0.82 0.18 80)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "4 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-5",
-    "value": "oklch(0.74 0.19 22)",
+    "value": "oklch(0.82 0.18 80)",
     "description": "5 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-6",
-    "value": "oklch(0.82 0.088 272.1)",
+    "value": "oklch(0.74 0.19 22)",
     "description": "6 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-7",
-    "value": "oklch(0.74 0.225 330)",
+    "value": "oklch(0.82 0.088 272.1)",
     "description": "7 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-8",
-    "value": "oklch(0.82 0.19 143)",
+    "value": "oklch(0.82 0.029 187.5)",
     "description": "8 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.53 0.157 279.2)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -803,91 +803,91 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-10",
-    "value": "oklch(0.74 0.17 170)",
+    "value": "oklch(0.64 0.161 170)",
     "description": "10 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-11",
-    "value": "oklch(0.74 0.17 72)",
+    "value": "oklch(0.64 0.223 299.3)",
     "description": "11 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-12",
-    "value": "oklch(0.82 0.18 330)",
+    "value": "oklch(0.74 0.036 189.2)",
     "description": "12 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-13",
-    "value": "oklch(0.64 0.22 147)",
+    "value": "oklch(0.53 0.138 59.9)",
     "description": "13 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-14",
-    "value": "oklch(0.82 0.118 303)",
+    "value": "oklch(0.64 0.226 24.5)",
     "description": "14 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-15",
-    "value": "oklch(0.64 0.226 24.5)",
+    "value": "oklch(0.74 0.117 274.1)",
     "description": "15 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-16",
-    "value": "oklch(0.64 0.161 170)",
+    "value": "oklch(0.74 0.17 170)",
     "description": "16 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-17",
-    "value": "oklch(0.82 0.088 272.1)",
+    "value": "oklch(0.82 0.118 303)",
     "description": "17 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-18",
-    "value": "oklch(0.74 0.23 146)",
+    "value": "oklch(0.74 0.17 72)",
     "description": "18 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-19",
-    "value": "oklch(0.64 0.16 64)",
+    "value": "oklch(0.53 0.206 27.3)",
     "description": "19 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-20",
-    "value": "oklch(0.82 0.13 20)",
+    "value": "oklch(0.64 0.035 189.3)",
     "description": "20 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-21",
-    "value": "oklch(0.53 0.138 59.9)",
+    "value": "oklch(0.46 0.141 280.7)",
     "description": "21 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-22",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.53 0.142 170)",
     "description": "22 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-23",
-    "value": "oklch(0.64 0.262 330)",
+    "value": "oklch(0.53 0.26 296)",
     "description": "23 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-24",
-    "value": "oklch(0.53 0.189 147)",
+    "value": "oklch(0.64 0.16 64)",
     "description": "24 color in the default list of colors for charts.",
     "components": []
   },
