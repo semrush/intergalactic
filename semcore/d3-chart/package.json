@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "17.3.0",
+  "version": "17.3.1",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -34,8 +34,8 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1",
-    "@semcore/icon": "^17.2.0"
+    "@semcore/base-components": "^17.2.2",
+    "@semcore/icon": "^17.2.1"
   },
   "repository": {
     "type": "git",

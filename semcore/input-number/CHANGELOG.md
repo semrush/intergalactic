@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.0] - 2026-08-27
+
+### Added
+
+- `Number` as possible type for value.
+
+### Fixed
+
+- Display the value corresponding to the current one after backspace for
+negative numbers.
+
 ## [17.2.2] - 2026-07-10
 
 ### Fixed

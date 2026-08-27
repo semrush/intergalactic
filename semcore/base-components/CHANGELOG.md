@@ -2,6 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.2] - 2026-08-27
+
+### Changed
+
+- **animation**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSAnimation` namespace.
+- **flex-box**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSBox/NSFlex/NSInvalidStateBox/NSScreenReaderOnly` namespaces.
+- **grid**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSGrid` namespace.
+- **hint**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSHint` namespace.
+- **neighbor-location**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSNeighborLocation` namespace.
+- **outside-click**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSOutsideClick` namespace.
+- **popper**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSPopper` namespace.
+- **portal**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSPortal` namespace.
+- **scroll-area**: Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSScrollArea` namespace.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed
