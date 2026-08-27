@@ -1,7 +1,7 @@
-import type { NSText } from '@semcore/typography';
 import { Flex, ScreenReaderOnly } from '@semcore/ui/base-components';
 import { TabLineFH, BadgeFH } from '@semcore/ui/feature-highlight';
 import type { NSTabLine } from '@semcore/ui/tab-line';
+import type { NSText } from '@semcore/ui/typography';
 import React from 'react';
 
 export type TabLineFHAdvancedProps = NSTabLine.Props & {

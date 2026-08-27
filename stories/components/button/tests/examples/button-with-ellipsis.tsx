@@ -1,6 +1,6 @@
-import type { NSText } from '@semcore/typography';
 import Button from '@semcore/ui/button';
 import type { NSButton } from '@semcore/ui/button';
+import type { NSText } from '@semcore/ui/typography';
 import React from 'react';
 
 import { themeFor } from '../themeUtils';

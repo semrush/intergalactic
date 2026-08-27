@@ -1,6 +1,6 @@
-import { ButtonLink } from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import { Flex } from '@semcore/ui/base-components';
+import { ButtonLink } from '@semcore/ui/button';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';
 

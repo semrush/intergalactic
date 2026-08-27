@@ -319,6 +319,15 @@ importers:
         specifier: ^1.29.2
         version: 1.29.2
     devDependencies:
+      '@semcore/icon':
+        specifier: workspace:*
+        version: link:../semcore/icon
+      '@semcore/illustration':
+        specifier: workspace:*
+        version: link:../semcore/illustration
+      '@semcore/ui':
+        specifier: workspace:*
+        version: link:../semcore/ui
       '@types/d3-shape':
         specifier: ^3.1.7
         version: 3.1.7
@@ -2144,6 +2153,15 @@ importers:
         specifier: 9.22.6
         version: 9.22.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@semcore/icon':
+        specifier: workspace:*
+        version: link:../semcore/icon
+      '@semcore/illustration':
+        specifier: workspace:*
+        version: link:../semcore/illustration
+      '@semcore/ui':
+        specifier: workspace:*
+        version: link:../semcore/ui
       '@types/d3-scale':
         specifier: 3.3.0
         version: 3.3.0
