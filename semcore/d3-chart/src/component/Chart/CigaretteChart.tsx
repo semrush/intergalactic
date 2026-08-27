@@ -250,8 +250,6 @@ class CigaretteChartComponent extends AbstractChart<
     const items = this.computeCigaretteItems();
 
     if (this.isNoData) {
-      const item = items[0];
-
       const height = invertAxis ? plotHeight - DEFAULT_GAP * 2 : plotWidth - DEFAULT_GAP * 2;
       const width = Math.max(0, (invertAxis ? plotWidth : plotHeight));
       const y = 0;
@@ -260,23 +258,24 @@ class CigaretteChartComponent extends AbstractChart<
 
       return (
         <>
-          <Cigarette
-            key={item.id}
-            dataKey={item.id}
-            index={0}
-            y={invertAxis ? y : x}
-            x={invertAxis ? x : y}
-            width={invertAxis ? width : height}
-            height={invertAxis ? height : width}
-            uid={uid}
-            hide={!item.checked}
-            duration={duration}
-            r={r}
-            color='--intergalactic-chart-palette-order-null'
-            patterns={patterns}
-            direction={invertAxis ? 'horizontal' : 'vertical'}
-            hovered={false}
-          />
+          <g>
+            <Cigarette
+              key='empty_cigarette'
+              index={0}
+              y={invertAxis ? y : x}
+              x={invertAxis ? x : y}
+              width={invertAxis ? width : height}
+              height={invertAxis ? height : width}
+              uid={uid}
+              hide={false}
+              duration={duration}
+              r={r}
+              color='--intergalactic-chart-palette-order-null'
+              patterns={patterns}
+              direction={invertAxis ? 'horizontal' : 'vertical'}
+              hovered={false}
+            />
+          </g>
         </>
       );
     }
