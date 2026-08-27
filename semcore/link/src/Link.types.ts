@@ -6,7 +6,7 @@ import type React from 'react';
 
 declare namespace NSLink {
   type Theme = 'default' | 'light' | 'accent' | 'invert';
-  type Props = NSBox.Props & Intergalactic.InternalTypings.EfficientOmit<NSText.BaseProps, 'use'> & {
+  type Props = NSBox.Props & Intergalactic.InternalTypings.EfficientOmit<NSText.Props, 'use'> & {
 
     /**
      * @deprecated. Use `theme` instead.
@@ -65,7 +65,7 @@ declare namespace NSLink {
   };
 
   namespace Text {
-    type Props = Intergalactic.InternalTypings.EfficientOmit<NSText.BaseProps, 'use'> & {
+    type Props = Intergalactic.InternalTypings.EfficientOmit<NSText.Props, 'use'> & {
       /**
        * @deprecated. Use `theme` on the root level.
        */
