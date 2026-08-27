@@ -252,7 +252,7 @@ class CigaretteChartComponent extends AbstractChart<
     if (this.isNoData) {
       const height = invertAxis ? plotHeight - DEFAULT_GAP * 2 : plotWidth - DEFAULT_GAP * 2;
       const width = Math.max(0, (invertAxis ? plotWidth : plotHeight));
-      const y = 0;
+      const y = DEFAULT_GAP;
       const x = 0;
       const r = height < 28 ? 2 : 4;
 

@@ -9,8 +9,7 @@ const data: Record<string, number | typeof interpolateValue> = {
   Cats: 3524,
   Dogs: interpolateValue,
   Capybaras: 6135,
-  // @ts-ignore
-  Hamsters: null,
+  Hamsters: 0,
   Birds: 1823,
 };
 
