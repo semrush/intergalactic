@@ -21,11 +21,11 @@
     "@semcore/spin": "^17.2.1",
     "@semcore/tooltip": "^17.2.1",
     "@semcore/typography": "^17.2.1",
-    "@semcore/button": "^17.2.1"
+    "@semcore/button": "^17.2.2"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1",
-    "@semcore/icon": "^17.2.0"
+    "@semcore/base-components": "^17.2.2",
+    "@semcore/icon": "^17.2.1"
   },
   "repository": {
     "type": "git",

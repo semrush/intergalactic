@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.3] - 2026-08-27
+
+### Fixed
+
+- How NVDA announces errors without a common error message.
+- Tooltip flashing when fixing an error or clearing a textarea.
+
 ## [17.2.2] - 2026-07-24
 
 ### Fixed

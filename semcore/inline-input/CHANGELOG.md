@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.0] - 2026-08-27
+
+### Added
+
+- Missing translation for `InlineInput.NumberControls`.
+
+### Changed
+
+- Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSInlineInput` namespace.
+
 ## [17.2.2] - 2026-07-10
 
 ### Fixed
