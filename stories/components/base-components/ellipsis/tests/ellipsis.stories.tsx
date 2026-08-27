@@ -68,11 +68,12 @@ export const TableLink: StoryObj<typeof TableLinkExampleProps> = {
     hrefPreset: {
       control: { type: 'select' },
       options: ['external', 'sameOrigin', 'relative'],
-      description: 'Link target: another host, the current host, or an internal path.',
+      description: 'Link target: another host, the current host, or an internal path. `sameOrigin` also switches the URL-derived text presets to the current origin.',
     },
     cropPosition: {
       control: { type: 'select' },
       options: ['middle', 'end'],
+      description: 'Where the dots go. `end` currently pushes the divider and the actions out of the cell — Ellipsis rewrites the text only for `middle`.',
     },
     withEllipsis: {
       control: { type: 'boolean' },
@@ -82,10 +83,6 @@ export const TableLink: StoryObj<typeof TableLinkExampleProps> = {
       control: { type: 'inline-radio' },
       options: [1, 2],
       description: '`1` passes a single action object, `2` passes a tuple.',
-    },
-    duplicateActionTitles: {
-      control: { type: 'boolean' },
-      description: 'Give both actions the same title, to check that React keys stay unique.',
     },
   },
   args: TableLinkExampleProps,

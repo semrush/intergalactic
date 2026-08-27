@@ -67,6 +67,9 @@ export type TableLinkProps = {
    * `fullUrl` — keeps the protocol, so `text` itself looks like a URL.
    * `startsWithHttp` — plain words that merely begin with "http".
    * `custom` — free text from the `customText` control.
+   *
+   * The first two follow `hrefPreset`: with `sameOrigin` they show a same-host URL.
+   * The rest are plain labels and stay the same whatever the href is.
    */
   textPreset?: TextPreset;
   /** Used only when `textPreset` is `custom`. */
@@ -75,27 +78,52 @@ export type TableLinkProps = {
    * Target of the link.
    *
    * `external` — the row URL (another host).
-   * `sameOrigin` — absolute URL on the current host.
-   * `relative` — internal path, no host at all.
+   * `sameOrigin` — absolute URL on the current host; the URL-derived text presets switch
+   * to the same origin as well, with a query and a hash so text and target still differ.
+   * `relative` — internal path, no host at all. Text keeps pointing at the row URL, which
+   * is what makes `fullUrl` + `relative` the mismatched pair worth looking at.
    */
   hrefPreset?: HrefPreset;
-  /** Where Ellipsis puts the dots. */
+  /**
+   * Where Ellipsis puts the dots.
+   *
+   * `end` currently leaves the divider and the actions outside the cell: Ellipsis only
+   * rewrites the text for `middle`, and nothing constrains the text box for the CSS-only
+   * `end` path, so the text takes the whole cell.
+   */
   cropPosition?: 'middle' | 'end';
   /** Render Ellipsis at all. Turning it off makes `LinkAction` wrap instead of truncate. */
   withEllipsis?: boolean;
   /** How many actions sit next to the link. `1` passes an object, `2` passes a tuple. */
   actionsCount?: 1 | 2;
-  /** Give both actions the same `title`, to check that keys stay unique. */
-  duplicateActionTitles?: boolean;
 };
 
 const LONG_WITH_SPACES = 'a very long link label that has plenty of spaces so it can wrap and be truncated in several different ways';
 const LONG_WITHOUT_SPACES = 'averylonglinklabelwithoutanyspacesatallsothereisnoopportunitytowrapitonwordboundaries';
 
-const buildText = (url: string, textPreset: TextPreset, customText: string) => {
+const INTERNAL_PATH = '/internal/page';
+
+/**
+ * Same origin as the `sameOrigin` href, but with a query and a hash on top, so the text is
+ * recognisably the same page without being byte-identical to the target. The row id keeps
+ * the rows distinct from each other, the way the external preset does with its `#N`.
+ */
+const buildSameOriginUrl = (url: string) => {
+  const rowId = url.split('#')[1] ?? '';
+
+  return `${window.location.origin}${INTERNAL_PATH}?utm_source=data-table&row=${rowId}#summary`;
+};
+
+/**
+ * The two URL-derived presets follow the actual target, so picking `sameOrigin` shows a
+ * same-host URL in the cell too. The remaining presets are plain labels and ignore the href.
+ */
+const buildText = (url: string, textPreset: TextPreset, customText: string, hrefPreset: HrefPreset) => {
+  const source = hrefPreset === 'sameOrigin' ? buildSameOriginUrl(url) : url;
+
   switch (textPreset) {
     case 'fullUrl':
-      return url;
+      return source;
     case 'short':
       return 'link';
     case 'longWithSpaces':
@@ -108,16 +136,16 @@ const buildText = (url: string, textPreset: TextPreset, customText: string) => {
       return customText;
     case 'urlWithoutProtocol':
     default:
-      return removeProtocol(url);
+      return removeProtocol(source);
   }
 };
 
 const buildHref = (url: string, hrefPreset: HrefPreset) => {
   switch (hrefPreset) {
     case 'sameOrigin':
-      return `${window.location.origin}/internal/page`;
+      return `${window.location.origin}${INTERNAL_PATH}`;
     case 'relative':
-      return '/internal/page';
+      return INTERNAL_PATH;
     case 'external':
     default:
       return url;
@@ -131,7 +159,6 @@ export default function Demo({
   cropPosition = 'middle',
   withEllipsis = true,
   actionsCount = 2,
-  duplicateActionTitles = false,
 }: TableLinkProps) {
   const [currentPage, setCurrentPage] = React.useState(0);
 
@@ -173,13 +200,13 @@ export default function Demo({
       href: '#',
     } as const;
     const second = {
-      title: duplicateActionTitles ? 'Open in new tab' : 'Analyze this URL',
+      title: 'Analyze this URL',
       icon: IconM,
       onClick: () => null,
     } as const;
 
     return actionsCount === 1 ? first : [first, second] as [typeof first, typeof second];
-  }, [actionsCount, duplicateActionTitles]);
+  }, [actionsCount]);
 
   const renderCell = React.useMemo(() => (cellProps: CellRenderProps<any, any>) => {
     if (cellProps.columnName === 'url' && Boolean(columnElement)) {
@@ -197,7 +224,7 @@ export default function Demo({
         <LinkAction
           link={{
             href: buildHref(url, hrefPreset),
-            text: buildText(url, textPreset, customText),
+            text: buildText(url, textPreset, customText, hrefPreset),
             ellipsisSettings: withEllipsis
               ? {
                   cropPosition,
@@ -253,7 +280,6 @@ export const defaultProps: TableLinkProps = {
   cropPosition: 'middle',
   withEllipsis: true,
   actionsCount: 2,
-  duplicateActionTitles: false,
 };
 
 Demo.defaultProps = defaultProps;
