@@ -11,6 +11,8 @@ import BasicUsageExample, {
   dataFirstEmpty,
   dataLastZero,
   dataEmpty,
+  dataNA,
+
 } from './examples/cigarette-chart/basic-usage';
 import { getChartArgTypes } from './examples/stories_props_helper';
 const dataVariations = {
@@ -21,6 +23,7 @@ const dataVariations = {
   withZero: dataWithZero,
   allTiny: dataAllTiny,
   overflow: dataOverflow,
+  dataNA: dataNA,
   firstEmpty: dataFirstEmpty,
   lastZero: dataLastZero,
   empty: dataEmpty,

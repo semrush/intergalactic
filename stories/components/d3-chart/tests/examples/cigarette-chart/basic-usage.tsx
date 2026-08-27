@@ -66,6 +66,13 @@ export const dataFirstEmpty = {
   Y: 2,
 };
 
+// All n/a
+export const dataNA = {
+  Dogs: interpolateValue,
+  Cats: interpolateValue,
+
+};
+
 // Zero at the last position — the rounded right/bottom corner must belong to the last visible bar
 export const dataLastZero = {
   X: 3,
