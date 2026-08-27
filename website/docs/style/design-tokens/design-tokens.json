@@ -240,7 +240,6 @@
       "input",
       "modal",
       "side-panel",
-      "slider",
       "tab-panel",
       "textarea"
     ]
@@ -499,7 +498,6 @@
       "fullscreen-modal",
       "input",
       "side-panel",
-      "slider",
       "tab-panel",
       "textarea",
       "time-picker"
@@ -532,7 +530,6 @@
       "date-picker",
       "dropdown",
       "notice",
-      "slider",
       "tooltip"
     ]
   },
@@ -1093,8 +1090,7 @@
     "components": [
       "button",
       "dropdown",
-      "feature-highlight",
-      "slider"
+      "feature-highlight"
     ]
   },
   {
@@ -1110,8 +1106,7 @@
     "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the regular primary control.",
     "components": [
-      "button",
-      "slider"
+      "button"
     ]
   },
   {
@@ -1257,37 +1252,49 @@
     "name": "--intergalactic-control-slider-bar-bg",
     "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
     "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-value-bg",
     "value": "oklch(0.23 0.01 140)",
     "description": "Filled part of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-bg",
     "value": "#ffffff",
     "description": "Knob fill color of the Slider.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-border",
     "value": "oklch(0.23 0.01 140)",
     "description": "Knob border color of the Slider in its normal state.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-border-hover",
     "value": "oklch(0.32 0.007 140)",
     "description": "Knob border color of the Slider in its hover state.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-rating-icon",
