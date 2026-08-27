@@ -9,6 +9,7 @@ import BasicUsageExample, {
   dataTinyValue,
   dataWithZero,
   dataFirstEmpty,
+  dataLastZero,
   dataEmpty,
 } from './examples/cigarette-chart/basic-usage';
 import { getChartArgTypes } from './examples/stories_props_helper';
@@ -21,6 +22,7 @@ const dataVariations = {
   allTiny: dataAllTiny,
   overflow: dataOverflow,
   firstEmpty: dataFirstEmpty,
+  lastZero: dataLastZero,
   empty: dataEmpty,
 };
 const meta: Meta = {
