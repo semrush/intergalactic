@@ -44,7 +44,7 @@ SSpin[theme] SCircle {
 }
 
 SSpin[theme='default'] SCircle, SSpin[theme='dark'] SCircle {
-  stroke: var(--intergalactic-spin-bg, oklch(0.104 0.023 162.3 / 0.385));
+  stroke: var(--intergalactic-spin-bg, oklch(0.118 0.023 170.1 / 0.262));
 }
 
 SSpin[theme='invert'] {

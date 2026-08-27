@@ -240,8 +240,8 @@
       "modal",
       "side-panel",
       "slider",
-      "textarea",
-      "wizard"
+      "tab-panel",
+      "textarea"
     ]
   },
   {
@@ -380,6 +380,12 @@
     ]
   },
   {
+    "name": "--intergalactic-bg-secondary-invert",
+    "value": "oklch(0.969 0.057 140 / 0.118)",
+    "description": "Inverted version of the secondary background of the interface which contains the main data and information.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-bg-secondary-success",
     "value": "oklch(0.96 0.057 179.7)",
     "description": "Secondary background of the message with success information you want to accent.",
@@ -472,7 +478,6 @@
       "feedback-form",
       "input",
       "input-tags",
-      "tab-line",
       "textarea"
     ]
   },
@@ -495,7 +500,6 @@
       "input",
       "side-panel",
       "slider",
-      "tab-line",
       "tab-panel",
       "textarea",
       "time-picker"
@@ -740,7 +744,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-1",
-    "value": "oklch(0.58 0.168 278.2)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "1 color in the default list of colors for charts.",
     "components": [
       "d3-chart",
@@ -749,7 +753,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-2",
-    "value": "oklch(0.82 0.15 170)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "2 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -757,43 +761,43 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-3",
-    "value": "oklch(0.74 0.17 303)",
+    "value": "oklch(0.82 0.15 170)",
     "description": "3 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-4",
-    "value": "oklch(0.82 0.18 80)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "4 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-5",
-    "value": "oklch(0.74 0.19 22)",
+    "value": "oklch(0.82 0.18 80)",
     "description": "5 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-6",
-    "value": "oklch(0.82 0.088 272.1)",
+    "value": "oklch(0.74 0.19 22)",
     "description": "6 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-7",
-    "value": "oklch(0.74 0.225 330)",
+    "value": "oklch(0.82 0.088 272.1)",
     "description": "7 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-8",
-    "value": "oklch(0.82 0.19 143)",
+    "value": "oklch(0.82 0.029 187.5)",
     "description": "8 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.53 0.157 279.2)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -801,91 +805,91 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-10",
-    "value": "oklch(0.74 0.17 170)",
+    "value": "oklch(0.64 0.161 170)",
     "description": "10 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-11",
-    "value": "oklch(0.74 0.17 72)",
+    "value": "oklch(0.64 0.223 299.3)",
     "description": "11 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-12",
-    "value": "oklch(0.82 0.18 330)",
+    "value": "oklch(0.74 0.036 189.2)",
     "description": "12 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-13",
-    "value": "oklch(0.64 0.22 147)",
+    "value": "oklch(0.53 0.138 59.9)",
     "description": "13 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-14",
-    "value": "oklch(0.82 0.118 303)",
+    "value": "oklch(0.64 0.226 24.5)",
     "description": "14 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-15",
-    "value": "oklch(0.64 0.226 24.5)",
+    "value": "oklch(0.74 0.117 274.1)",
     "description": "15 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-16",
-    "value": "oklch(0.64 0.161 170)",
+    "value": "oklch(0.74 0.17 170)",
     "description": "16 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-17",
-    "value": "oklch(0.82 0.088 272.1)",
+    "value": "oklch(0.82 0.118 303)",
     "description": "17 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-18",
-    "value": "oklch(0.74 0.23 146)",
+    "value": "oklch(0.74 0.17 72)",
     "description": "18 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-19",
-    "value": "oklch(0.64 0.16 64)",
+    "value": "oklch(0.53 0.206 27.3)",
     "description": "19 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-20",
-    "value": "oklch(0.82 0.13 20)",
+    "value": "oklch(0.64 0.035 189.3)",
     "description": "20 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-21",
-    "value": "oklch(0.53 0.138 59.9)",
+    "value": "oklch(0.46 0.141 280.7)",
     "description": "21 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-22",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.53 0.142 170)",
     "description": "22 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-23",
-    "value": "oklch(0.64 0.262 330)",
+    "value": "oklch(0.53 0.26 296)",
     "description": "23 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-24",
-    "value": "oklch(0.53 0.189 147)",
+    "value": "oklch(0.64 0.16 64)",
     "description": "24 color in the default list of colors for charts.",
     "components": []
   },
@@ -1021,25 +1025,19 @@
     "name": "--intergalactic-control-primary-advertising",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-advertising-hover",
     "value": "oklch(0.36 0.005 140)",
     "description": "Hover state of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-advertising-active",
     "value": "oklch(0.4 0.004 140)",
     "description": "Active (selected) state of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-brand",
@@ -1295,7 +1293,7 @@
   },
   {
     "name": "--intergalactic-control-slider-rating-icon",
-    "value": "oklch(0.7 0.003 162.2)",
+    "value": "oklch(0.8 0.003 169.6)",
     "description": "Icon color for the SliderRating component in its normal state.",
     "components": []
   },
@@ -1734,7 +1732,6 @@
     "components": [
       "accordion",
       "carousel",
-      "drag-and-drop",
       "feature-highlight",
       "notice",
       "typography"
@@ -1783,7 +1780,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-critical",
-    "value": "oklch(0.628 0.257 28.9 / 0.652)",
+    "value": "oklch(0.628 0.258 29.2 / 0.415)",
     "description": "Softer error icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
@@ -1795,7 +1792,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-info",
-    "value": "oklch(0.424 0.269 264.2 / 0.469)",
+    "value": "oklch(0.475 0.281 264.1 / 0.339)",
     "description": "Secondary link-lookalike icon.",
     "components": []
   },
@@ -1807,11 +1804,12 @@
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
-    "value": "oklch(0.104 0.023 162.3 / 0.385)",
+    "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "De-emphasized icons for dense layouts (tables, tertiary actions).",
     "components": [
       "breadcrumbs",
       "carousel",
+      "drag-and-drop",
       "inline-input",
       "input",
       "input-number",
@@ -1831,7 +1829,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-success",
-    "value": "oklch(0.711 0.146 166.9)",
+    "value": "oklch(0.787 0.16 167.8 / 0.898)",
     "description": "Softer success icon for dense UI or inline hints where the surface should stay calm.",
     "components": [
       "inline-input"
@@ -1847,7 +1845,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-warning",
-    "value": "oklch(0.701 0.191 48.1)",
+    "value": "oklch(0.735 0.184 53.9 / 0.757)",
     "description": "Softer warning icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
@@ -1855,6 +1853,12 @@
     "name": "--intergalactic-icon-secondary-warning-hover-active",
     "value": "oklch(0.662 0.193 43.7)",
     "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-icon-secondary-invert",
+    "value": "oklch(0.994 0.009 143.7 / 0.336)",
+    "description": "Softer inverted icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
   {
@@ -2269,7 +2273,7 @@
   },
   {
     "name": "--intergalactic-spin-bg",
-    "value": "oklch(0.104 0.023 162.3 / 0.385)",
+    "value": "oklch(0.118 0.023 170.1 / 0.262)",
     "description": "Track color of the Spin loader.",
     "components": [
       "spin"
@@ -2287,19 +2291,25 @@
     "name": "--intergalactic-control-tab-line-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its normal state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-active",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the TabLine in its active state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-control-tab-line-border-hover",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the TabLine in its hover state.",
-    "components": []
+    "components": [
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-table-border-accent",
@@ -2819,7 +2829,6 @@
     "value": "oklch(0.086 0.026 145.8 / 0.605)",
     "description": "Hover and active states of the hint link text.",
     "components": [
-      "button",
       "typography"
     ]
   },
@@ -2886,6 +2895,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Default primary link color.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2894,6 +2904,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Hover and active states for the primary link.",
     "components": [
+      "button",
       "link"
     ]
   },
@@ -2909,39 +2920,50 @@
     "name": "--intergalactic-text-link-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary link. Use on dark and colored sbackground only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-primary-invert-hover-active",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Hover and active states of the inverted version of the primary link. Use on dark and colored backgrounds only.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Default secondary link color.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Hover and active states for the secondary link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-accent",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Default accent link color.",
     "components": [
-      "button"
+      "button",
+      "link"
     ]
   },
   {
     "name": "--intergalactic-text-link-accent-hover-active",
     "value": "oklch(0.6 0.166 277.7)",
     "description": "Hover and active states for the accent link.",
-    "components": []
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-link-visited",
@@ -3008,8 +3030,7 @@
     "components": [
       "date-picker",
       "feature-highlight",
-      "notice-bubble",
-      "wizard"
+      "notice-bubble"
     ]
   },
   {
@@ -3027,7 +3048,6 @@
       "dropdown",
       "dropdown-menu",
       "flags",
-      "fullscreen-modal",
       "pills",
       "slider",
       "switch",
@@ -3110,13 +3130,17 @@
     "name": "--intergalactic-wizard-bg",
     "value": "oklch(1 0 0)",
     "description": "Main background of the Wizard.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-bg",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-control",
@@ -3128,19 +3152,25 @@
     "name": "--intergalactic-wizard-sidebar-control-active",
     "value": "oklch(0.4 0.004 140)",
     "description": "Active state of the control in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-control-hover",
     "value": "oklch(0.36 0.005 140)",
     "description": "Hover state of the control in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-text-primary",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Primary text color in the Wizard sidebar.",
-    "components": []
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-wizard-sidebar-text-secondary",
@@ -3286,6 +3316,7 @@
       "notice",
       "pills",
       "tab-line",
+      "tab-panel",
       "textarea",
       "time-picker"
     ]
@@ -3330,7 +3361,8 @@
       "dropdown",
       "dropdown-menu",
       "input-tags",
-      "pills"
+      "pills",
+      "wizard"
     ]
   },
   {
@@ -3351,8 +3383,10 @@
       "bulk-textarea",
       "data-table",
       "dropdown",
+      "fullscreen-modal",
       "modal",
-      "pills"
+      "pills",
+      "wizard"
     ]
   },
   {
@@ -3367,13 +3401,16 @@
       "card",
       "data-table",
       "dropdown",
+      "fullscreen-modal",
       "input",
       "input-tags",
       "modal",
       "pills",
+      "tab-panel",
       "textarea",
       "time-picker",
-      "tooltip"
+      "tooltip",
+      "wizard"
     ]
   },
   {
@@ -3384,7 +3421,9 @@
       "bulk-textarea",
       "data-table",
       "feature-popover",
-      "notice-bubble"
+      "fullscreen-modal",
+      "notice-bubble",
+      "wizard"
     ]
   },
   {
@@ -3394,14 +3433,17 @@
     "components": [
       "bulk-textarea",
       "card",
-      "data-table"
+      "data-table",
+      "wizard"
     ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xlarge-extended",
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "fullscreen-modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3409,8 +3451,10 @@
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
       "feature-popover",
+      "fullscreen-modal",
       "modal",
-      "notice-bubble"
+      "notice-bubble",
+      "wizard"
     ]
   },
   {
@@ -3432,8 +3476,10 @@
       "date-picker",
       "dropdown-menu",
       "inline-input",
+      "link",
       "pagination",
-      "tag"
+      "tag",
+      "wizard"
     ]
   },
   {
@@ -3449,7 +3495,9 @@
       "input",
       "pills",
       "radio",
-      "select"
+      "select",
+      "tab-line",
+      "tab-panel"
     ]
   },
   {
@@ -3457,11 +3505,13 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
+      "breadcrumbs",
       "button",
       "checkbox",
       "data-table",
       "date-picker",
       "dropdown",
+      "fullscreen-modal",
       "notice-bubble",
       "pagination",
       "radio",
@@ -3475,6 +3525,7 @@
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
       "data-table",
+      "fullscreen-modal",
       "notice-bubble",
       "pagination"
     ]
@@ -3484,7 +3535,8 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "tab-line"
     ]
   },
   {
@@ -3492,7 +3544,9 @@
     "value": "20px",
     "description": "Extended 2x large gap between elements, rows, or columns.",
     "components": [
-      "pagination"
+      "pagination",
+      "tab-line",
+      "wizard"
     ]
   },
   {

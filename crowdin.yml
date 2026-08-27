@@ -120,15 +120,7 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
-    "source": "/semcore/notice/src/translations/en.json",
-    "translation": "/%original_path%/%two_letters_code%.json",
-  },
-  {
-    "source": "/semcore/notice-bubble/src/translations/en.json",
-    "translation": "/%original_path%/%two_letters_code%.json",
-  },
-  {
-    "source": "/semcore/notice-global/src/translations/en.json",
+    "source": "/semcore/link/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {

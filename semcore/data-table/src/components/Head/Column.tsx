@@ -17,7 +17,7 @@ import { handleFocusCell, handleKeydownFocusCell } from '../../enhancers/focusab
 import type { ROW_GROUP } from '../DataTable/DataTable';
 import type { DataTableData, SortDirection } from '../DataTable/DataTable.types';
 
-const SORTING_ICON: { [key in SortDirection]: React.FC<React.SVGProps<SVGSVGElement>> } = {
+const SORTING_ICON: { [key in SortDirection]: typeof SortAsc | typeof SortDesc } = {
   desc: SortDesc,
   asc: SortAsc,
 } as const;

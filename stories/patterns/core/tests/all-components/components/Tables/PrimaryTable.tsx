@@ -20,7 +20,7 @@ import { IntlProvider } from 'react-intl';
 
 import { BeforeTablesControls } from './BeforeTablesControls';
 import PrimaryTableAddFilter from './PrimaryTableAddFilter';
-import { CopyCell, Currency, DateCell, Money, OperationType, StatusCell, TimeCell } from './table_perf/cells';
+import { CopyCell, Currency, DateCell, Money, OperationType, StatusCell, TimeCell, UrlLinkCell } from './table_perf/cells';
 import { SelectedRowsInfo } from './table_perf/SelectedRowsInfo';
 import Table, { type TableDemoState } from './table_perf/table_perf';
 import AdvancedFilter from '../../../../../filters/advanced-filters/docs/examples/filters-with-filter-conditions';
@@ -37,6 +37,19 @@ const COLUMNS_CONFIG = [
     ref: (node: HTMLElement | null) => {
       if (node) {
         refsMap.name = node;
+      }
+    },
+    fixed: 'left' as const,
+  },
+  {
+    id: 'url',
+    defaultActive: true,
+    copyHandle: false,
+    Component: UrlLinkCell,
+    wMin: 200,
+    ref: (node: HTMLElement | null) => {
+      if (node) {
+        refsMap.url = node;
       }
     },
     fixed: 'left' as const,
@@ -218,7 +231,7 @@ const componentsMap = Object.fromEntries(
 
 const cols = COLUMNS_CONFIG.map((c) => ({
   name: c.id,
-  children: c.id,
+  children: c.id === 'url' ? 'URL' : c.id,
   gtcWidth: c.wMin ? `minmax(${c.wMin}px, 1fr)` : 'max-content',
   ref: c.ref,
   fixed: c.fixed,

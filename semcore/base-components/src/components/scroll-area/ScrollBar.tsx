@@ -40,7 +40,7 @@ class ScrollBarRoot extends Component<
   { container: React.RefObject<HTMLElement | null> },
   NSScrollArea.Bar.State,
   NSScrollArea.Bar.DefaultProps
-> {
+> implements NSScrollArea.Bar.Instance {
   static displayName = 'Bar';
 
   static style = style;
@@ -69,6 +69,10 @@ class ScrollBarRoot extends Component<
   state: NSScrollArea.Bar.State = {
     visibleScroll: false,
   };
+
+  public get isScrollVisible(): boolean {
+    return this.state.visibleScroll;
+  }
 
   get $container(): Element | null {
     return this.asProps.container.current;
