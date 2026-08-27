@@ -50,7 +50,7 @@ class ProgressBarRoot extends Component<
       <SProgressBar
         render={Box}
         use:theme={useTheme}
-        use:animation={value === undefined}
+        use:animation={!value}
         use:duration={`${duration}ms`}
         colorBg={resolveColor(theme)}
         role='progressbar'
