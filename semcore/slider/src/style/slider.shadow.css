@@ -69,7 +69,7 @@ SKnob {
   transition-property: left, transform;
   transition-timing-function: ease-in-out;
 
-  &:hover {
+  &:hover, &:active {
     border-color: var(--intergalactic-control-slider-knob-border-hover, oklch(0.32 0.007 140));
     transform: translate(-50%, -50%) scale(1.2);
   }
