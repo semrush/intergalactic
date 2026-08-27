@@ -84,17 +84,8 @@ export type TableLinkProps = {
    * is what makes `fullUrl` + `relative` the mismatched pair worth looking at.
    */
   hrefPreset?: HrefPreset;
-  /**
-   * Where Ellipsis puts the dots.
-   *
-   * `end` currently leaves the divider and the actions outside the cell: Ellipsis only
-   * rewrites the text for `middle`, and nothing constrains the text box for the CSS-only
-   * `end` path, so the text takes the whole cell.
-   */
   cropPosition?: 'middle' | 'end';
-  /** Render Ellipsis at all. Turning it off makes `LinkAction` wrap instead of truncate. */
   withEllipsis?: boolean;
-  /** How many actions sit next to the link. `1` passes an object, `2` passes a tuple. */
   actionsCount?: 1 | 2;
 };
 
@@ -114,10 +105,6 @@ const buildSameOriginUrl = (url: string) => {
   return `${window.location.origin}${INTERNAL_PATH}?utm_source=data-table&row=${rowId}#summary`;
 };
 
-/**
- * The two URL-derived presets follow the actual target, so picking `sameOrigin` shows a
- * same-host URL in the cell too. The remaining presets are plain labels and ignore the href.
- */
 const buildText = (url: string, textPreset: TextPreset, customText: string, hrefPreset: HrefPreset) => {
   const source = hrefPreset === 'sameOrigin' ? buildSameOriginUrl(url) : url;
 
@@ -266,7 +253,7 @@ export default function Demo({
       <Pagination
         totalPages={Math.ceil(tableData.length / pageLimit)}
         currentPage={currentPage + 1}
-        onCurrentPageChange={(page) => setCurrentPage(page - 1)}
+        onCurrentPageChange={(page: number) => setCurrentPage(page - 1)}
         mt={2}
       />
     </>
