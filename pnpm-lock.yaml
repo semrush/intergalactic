@@ -2008,6 +2008,9 @@ importers:
       '@semcore/radio':
         specifier: ^17.2.1
         version: link:../radio
+      '@semcore/radio-cards':
+        specifier: ^18.0.0
+        version: link:../radio-cards
       '@semcore/select':
         specifier: ^17.4.1
         version: link:../select
