@@ -1,39 +1,74 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+type Dimension = 'vertical' | 'horizontal';
+
+const state: Record<Dimension, number> = { vertical: 0, horizontal: 0 };
+const listeners = new Set<() => void>();
+
+let rafId: number | null = null;
+let inited = false;
+
+function measure() {
+  if (!window.visualViewport) return;
+
+  const nextVertical = window.innerWidth - window.visualViewport.width;
+  const nextHorizontal = window.innerHeight - window.visualViewport.height;
+
+  if (nextVertical === state.vertical && nextHorizontal === state.horizontal) return;
+
+  state.vertical = nextVertical;
+  state.horizontal = nextHorizontal;
+
+  listeners.forEach((l) => l());
+}
+
+function handleResize() {
+  if (rafId !== null) return;
+
+  rafId = requestAnimationFrame(() => {
+    measure();
+    rafId = null;
+  });
+}
+
+function init() {
+  if (inited) return;
+
+  inited = true;
+
+  measure();
+
+  window.addEventListener('resize', handleResize);
+}
+
+function subscribe(onStoreChange: () => void) {
+  listeners.add(onStoreChange);
+
+  init();
+
+  return () => {
+    listeners.delete(onStoreChange);
+
+    if (listeners.size === 0) {
+      window.removeEventListener('resize', handleResize);
+    }
+  };
+}
 
 export function useScrollBarWidth(vertical = true): number {
-  const [scrollBarWidth, setScrollBarWidth] = useState(0);
-  const af = useRef<number | null>(null);
+  const dim: Dimension = vertical ? 'vertical' : 'horizontal';
+  const [value, setValue] = useState(() => state[dim]);
+  const dimRef = useRef(dim);
+
+  dimRef.current = dim;
 
   useEffect(() => {
-    const calculateScrollBar = () => {
-      if (!window.visualViewport) return;
+    const onChange = () => setValue(state[dimRef.current]);
 
-      if (!vertical) {
-        setScrollBarWidth(window.innerHeight - window.visualViewport.height);
-        return;
-      }
+    onChange();
 
-      setScrollBarWidth(window.innerWidth - window.visualViewport.width);
-    };
-
-    const handleResize = () => {
-      // to handle resize 1 time per frame
-      if (af.current !== null) return;
-
-      af.current = requestAnimationFrame(() => {
-        calculateScrollBar();
-        af.current = null;
-      });
-    };
-
-    calculateScrollBar();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      if (af.current !== null) cancelAnimationFrame(af.current);
-    };
+    return subscribe(onChange);
   }, []);
 
-  return scrollBarWidth;
+  return value;
 }
