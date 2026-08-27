@@ -634,9 +634,7 @@
     "name": "--intergalactic-brand-secondary",
     "value": "oklch(0.22 0.01 140)",
     "description": "Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).",
-    "components": [
-      "data-table"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-brand-twitter",
@@ -2323,7 +2321,9 @@
     "name": "--intergalactic-table-border-accordion-accent",
     "value": "oklch(0.23 0.01 140)",
     "description": "Accent left border for the table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell",

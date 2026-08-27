@@ -60,7 +60,7 @@ SCellWrapper {
     bottom: 0;
     width: 2px;
     z-index: 20;
-    background-color: var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
+    background-color: var(--intergalactic-table-border-accordion-accent, oklch(0.23 0.01 140));
   }
 }
 
@@ -343,7 +343,7 @@ SCollapseRow {
     bottom: 0;
     width: 2px;
     z-index: 20;
-    background-color: var(--intergalactic-brand-secondary, oklch(0.22 0.01 140));
+    background-color: var(--intergalactic-table-border-accordion-accent, oklch(0.23 0.01 140));
   }
 }
 
