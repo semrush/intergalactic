@@ -306,7 +306,7 @@ class CigaretteChartComponent extends AbstractChart<
 
             return (
               <Cigarette
-                key={item.id}
+                key={`${item.id}_${index}_${items.length}`}
                 dataKey={item.id}
                 index={index}
                 y={invertAxis ? y : x}
