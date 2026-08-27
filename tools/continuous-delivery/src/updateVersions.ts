@@ -47,20 +47,20 @@ export const updateVersions = async (versionPatches: VersionPatch[]) => {
         setVersions[packageFile.name],
       );
     }
-    // const depsType = packageFile.name !== '@semcore/ui' ? ['dependencies', 'peerDependencies'] : ['dependencies'];
-    // for (const dependenciesType of depsType) {
-    for (const dependency in packageFile.dependencies) {
-      if (
-        setVersions[dependency] &&
-        !semver.satisfies(setVersions[dependency], packageFile.dependencies[dependency])
-      ) {
-        packageFile.dependencies[dependency] = carefulVersionUpdate(
-          packageFile.dependencies[dependency],
-          setVersions[dependency],
-        );
+    const depsType = packageFile.name !== '@semcore/ui' ? ['dependencies', 'peerDependencies'] : ['dependencies'];
+    for (const dependenciesType of depsType) {
+      for (const dependency in packageFile[dependenciesType]) {
+        if (
+          setVersions[dependency] &&
+          !semver.satisfies(setVersions[dependency], packageFile[dependenciesType][dependency])
+        ) {
+          packageFile[dependenciesType][dependency] = carefulVersionUpdate(
+            packageFile[dependenciesType][dependency],
+            setVersions[dependency],
+          );
+        }
       }
     }
-    // }
   }
   await Promise.all(
     versionPatches.map((patch, index) =>
