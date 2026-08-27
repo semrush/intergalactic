@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.2] - 2026-08-27
+
+### Fixed
+
+- Unnecessary rerenders for dataTable cells.
+- Loading spinner for grouped headers and scroll inside table.
+- Incorrect cells colors with expanded accordions.
+- Position for loading spinner.
+
 ## [17.2.1] - 2026-06-26
 
 ### Fixed
