@@ -173,6 +173,36 @@ test.describe(`${TAG.VISUAL}`, () => {
       });
     });
   });
+
+  test('Verify empty state', {
+    tag: [TAG.PRIORITY_MEDIUM, '@cigarette-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await test.step('Verify horizontal empty state', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { X: 0, Y: 0 }, duration: 0 },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify vertical empty state', async () => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+        'en',
+        { data: { X: 0, Y: 0 }, duration: 0, invertAxis: false },
+      );
+
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+      await page.waitForTimeout(300);
+      await expect(page).toHaveScreenshot();
+    });
+  });
 });
 
 /* =====================================================
@@ -301,7 +331,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(Math.max(...widths) - Math.min(...widths)).toBeLessThan(0.001);
   });
 
-  test('Verify zero value present in DOM but has zero width', {
+  test('Verify zero value not in DOM', {
     tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
@@ -313,10 +343,47 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await locators.plot(page).first().waitFor({ state: 'visible' });
     await page.waitForTimeout(300);
-    await expect(locators.barItem(page)).toHaveCount(3);
+    await expect(locators.barItem(page)).toHaveCount(2);
+  });
 
-    const width = Number(await locators.barItem(page, 1).getAttribute('width'));
-    expect(width).toBeLessThan(1);
+  test('Verify empty state when all values are zero', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/cigarette-chart/basic-usage.tsx',
+      'en',
+      { data: { X: 0, Y: 0 }, duration: 0 },
+    );
+
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(300);
+
+    await test.step('Verify a single placeholder bar replaces all data bars', async () => {
+      await expect(locators.barItem(page)).toHaveCount(1);
+    });
+
+    await test.step('Verify the placeholder uses the null palette color', async () => {
+      await expect(locators.barItem(page, 0)).toHaveAttribute(
+        'color',
+        '--intergalactic-chart-palette-order-null',
+      );
+    });
+
+    await test.step('Verify the placeholder is visible and fully rounded', async () => {
+      const width = Number(await locators.barItem(page, 0).getAttribute('width'));
+      expect(width).toBeGreaterThan(0);
+
+      // a standalone placeholder has no neighbours, so all four corners are rounded
+      const d = (await locators.barItem(page, 0).getAttribute('d')) ?? '';
+      expect((d.match(/a/g) ?? []).length).toBe(4);
+    });
+
+    await test.step('Verify no tooltip is shown in the empty state', async () => {
+      await locators.barItem(page, 0).hover();
+      await page.waitForTimeout(300);
+      await expect(locators.tooltip(page)).toHaveCount(0);
+    });
   });
 
   test('Verify all tiny values get minimalBarWidth without donors', {

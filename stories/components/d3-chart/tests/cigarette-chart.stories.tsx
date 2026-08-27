@@ -1,6 +1,19 @@
 import type { Meta } from '@storybook/react-vite';
 
-import BasicUsageExample, { defaultProps as basicUsageProps, dataAllTiny, dataEqual, dataMultipleTiny, dataOverflow, dataTinyValue, dataWithZero } from './examples/cigarette-chart/basic-usage';
+import BasicUsageExample, {
+  defaultProps as basicUsageProps,
+  dataAllTiny,
+  dataEqual,
+  dataMultipleTiny,
+  dataOverflow,
+  dataTinyValue,
+  dataWithZero,
+  dataFirstEmpty,
+  dataLastZero,
+  dataEmpty,
+  dataNA,
+
+} from './examples/cigarette-chart/basic-usage';
 import { getChartArgTypes } from './examples/stories_props_helper';
 const dataVariations = {
   default: basicUsageProps.data,
@@ -10,6 +23,10 @@ const dataVariations = {
   withZero: dataWithZero,
   allTiny: dataAllTiny,
   overflow: dataOverflow,
+  dataNA: dataNA,
+  firstEmpty: dataFirstEmpty,
+  lastZero: dataLastZero,
+  empty: dataEmpty,
 };
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/Cigarette-Chart',
