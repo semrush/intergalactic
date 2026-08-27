@@ -69,7 +69,7 @@ import {
 } from './colors/index.ts';
 
 const { neutral, brand, error, advertising, focus, highlight, info, success, warning } = semanticColors;
-const { green, violet, blue, pink, gray, red, orange, salad, yellow } = baseColors;
+const { green, violet, blue, pink, gray, red, orange, salad, yellow, mint } = baseColors;
 
 const SCALE_INDENT = 4;
 
@@ -705,99 +705,99 @@ export const theme: Theme = {
         description: 'Accent line for the hover state on the chart grid.',
       },
       chart_palette_order_1: {
-        value: colors.blue['400'].value,
+        value: colors.gray['800'].value,
         description: '1 color in the default list of colors for charts.',
       },
       chart_palette_order_2: {
-        value: colors.green['200'].value,
+        value: colors.blue['400'].value,
         description: '2 color in the default list of colors for charts.',
       },
       chart_palette_order_3: {
-        value: colors.violet['300'].value,
+        value: colors.green['200'].value,
         description: '3 color in the default list of colors for charts.',
       },
       chart_palette_order_4: {
-        value: colors.yellow['200'].value,
+        value: colors.violet['300'].value,
         description: '4 color in the default list of colors for charts.',
       },
       chart_palette_order_5: {
-        value: colors.red['300'].value,
+        value: colors.yellow['200'].value,
         description: '5 color in the default list of colors for charts.',
       },
       chart_palette_order_6: {
-        value: colors.blue['200'].value,
+        value: colors.red['300'].value,
         description: '6 color in the default list of colors for charts.',
       },
       chart_palette_order_7: {
-        value: colors.pink['300'].value,
+        value: colors.blue['200'].value,
         description: '7 color in the default list of colors for charts.',
       },
       chart_palette_order_8: {
-        value: colors.salad['200'].value,
+        value: colors.mint['200'].value,
         description: '8 color in the default list of colors for charts.',
-      },
+      }, // stopped here
       chart_palette_order_9: {
-        value: colors.blue['500'].value,
+        value: colors.blue['400'].value,
         description: '9 color in the default list of colors for charts.',
       },
       chart_palette_order_10: {
-        value: colors.green['300'].value,
+        value: colors.green['400'].value,
         description: '10 color in the default list of colors for charts.',
       },
       chart_palette_order_11: {
-        value: colors.yellow['300'].value,
+        value: colors.violet['400'].value,
         description: '11 color in the default list of colors for charts.',
       },
       chart_palette_order_12: {
-        value: colors.pink['200'].value,
+        value: colors.mint['300'].value,
         description: '12 color in the default list of colors for charts.',
       },
       chart_palette_order_13: {
-        value: colors.salad['400'].value,
+        value: colors.yellow['500'].value,
         description: '13 color in the default list of colors for charts.',
       },
       chart_palette_order_14: {
-        value: colors.violet['200'].value,
+        value: colors.red['400'].value,
         description: '14 color in the default list of colors for charts.',
       },
       chart_palette_order_15: {
-        value: colors.red['400'].value,
+        value: colors.blue['300'].value,
         description: '15 color in the default list of colors for charts.',
       },
       chart_palette_order_16: {
-        value: colors.green['400'].value,
+        value: colors.green['300'].value,
         description: '16 color in the default list of colors for charts.',
       },
       chart_palette_order_17: {
-        value: colors.blue['200'].value,
+        value: colors.violet['200'].value,
         description: '17 color in the default list of colors for charts.',
       },
       chart_palette_order_18: {
-        value: colors.salad['300'].value,
+        value: colors.yellow['300'].value,
         description: '18 color in the default list of colors for charts.',
       },
       chart_palette_order_19: {
-        value: colors.yellow['400'].value,
+        value: colors.red['500'].value,
         description: '19 color in the default list of colors for charts.',
       },
       chart_palette_order_20: {
-        value: colors.red['200'].value,
+        value: colors.mint['400'].value,
         description: '20 color in the default list of colors for charts.',
       },
       chart_palette_order_21: {
-        value: colors.yellow['500'].value,
+        value: colors.blue['600'].value,
         description: '21 color in the default list of colors for charts.',
       },
       chart_palette_order_22: {
-        value: colors.violet['400'].value,
+        value: colors.green['500'].value,
         description: '22 color in the default list of colors for charts.',
       },
       chart_palette_order_23: {
-        value: colors.pink['400'].value,
+        value: colors.violet['500'].value,
         description: '23 color in the default list of colors for charts.',
       },
       chart_palette_order_24: {
-        value: colors.salad['500'].value,
+        value: colors.yellow['400'].value,
         description: '24 color in the default list of colors for charts.',
       },
       chart_palette_order_null: {
