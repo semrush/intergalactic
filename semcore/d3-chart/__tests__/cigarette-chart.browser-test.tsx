@@ -301,7 +301,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(Math.max(...widths) - Math.min(...widths)).toBeLessThan(0.001);
   });
 
-  test('Verify zero value present in DOM but has zero width', {
+  test('Verify zero value not in DOM', {
     tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
   }, async ({ page }) => {
     await loadPage(
@@ -313,10 +313,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await locators.plot(page).first().waitFor({ state: 'visible' });
     await page.waitForTimeout(300);
-    await expect(locators.barItem(page)).toHaveCount(3);
-
-    const width = Number(await locators.barItem(page, 1).getAttribute('width'));
-    expect(width).toBeLessThan(1);
+    await expect(locators.barItem(page)).toHaveCount(2);
   });
 
   test('Verify all tiny values get minimalBarWidth without donors', {
