@@ -15,7 +15,7 @@ type ExampleProps = NSRadioCards.Props & {
   dot?: boolean;
 };
 
-const Demo = (props: ExampleProps) => {
+const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: ExampleProps } = (props: ExampleProps) => {
   const {
     value,
     disabled,
