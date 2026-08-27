@@ -61,8 +61,7 @@ export class LinkAction extends React.PureComponent<IProps> {
 
   private renderActions(actions: IAction[]) {
     return (
-      <Flex gap={1} display='inline-flex' alignItems='flex-start' mt='2px'>
-        <Divider orientation='vertical' mx={1} mt={1} hMin={0} hMax={12} display='block' />
+      <Flex gap={1} display='inline-flex' alignItems='flex-start'>
         {actions.map((action) => this.renderAction(action))}
       </Flex>
     );
@@ -99,14 +98,17 @@ export class LinkAction extends React.PureComponent<IProps> {
       return acc;
     }, {});
     return (
-      <Box display={ellipsisProps ? 'flex' : 'inline'}>
+      <Box display={link.ellipsisSettings ? 'flex' : 'inline'}>
         <Link href={link.href}>
           <Link.Text {...ellipsisProps}>
             {link.text}
           </Link.Text>
           {this.isExternalLink(link.href, link.text) && <Link.ExternalIcon />}
         </Link>
-        {Array.isArray(actions) ? this.renderActions(actions) : this.renderAction(actions)}
+        <Flex display='inline-flex' alignItems='center'>
+          <Divider orientation='vertical' mx={1} my={1} hMin={0} />
+          {Array.isArray(actions) ? this.renderActions(actions) : this.renderAction(actions)}
+        </Flex>
       </Box>
     );
   }
