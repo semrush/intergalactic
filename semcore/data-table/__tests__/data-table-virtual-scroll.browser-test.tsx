@@ -45,7 +45,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/header-content.tsx', 'en');
 
-    const dataTable = page.locator('[data-ui-name="Body.Row"]');
+    const dataTable = page.locator('[data-ui-name="Row"]');
     await dataTable.first().hover();
     await page.mouse.wheel(0, 600);
     await page.waitForTimeout(1000);
@@ -69,7 +69,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   const firstRenderedRowIndex = (page: Parameters<typeof locators.dataTable>[0]) =>
     page
-      .locator('[data-ui-name="Body.Row"]')
+      .locator('[data-ui-name="Row"]')
       .first()
       .evaluate((el) => parseInt(el.getAttribute('aria-rowindex') ?? '0', 10));
 
@@ -80,7 +80,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const grid = locators.dataTable(page);
     await expect(grid).toHaveAttribute('aria-rowcount', '500');
-    const count = await page.locator('[data-ui-name="Body.Row"]').count();
+    const count = await page.locator('[data-ui-name="Row"]').count();
     expect(count).toBeLessThan(500);
   });
 
@@ -121,7 +121,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     expect(gridTemplateRows).toBe('');
 
     await expect(grid).toHaveAttribute('aria-rowcount', '500');
-    const count = await page.locator('[data-ui-name="Body.Row"]').count();
+    const count = await page.locator('[data-ui-name="Row"]').count();
     expect(count).toBeLessThan(500);
   });
 
