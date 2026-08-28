@@ -105,7 +105,7 @@ export class LinkAction extends React.PureComponent<IProps> {
           </Link.Text>
           {this.isExternalLink(link.href, link.text) && <Link.ExternalIcon />}
         </Link>
-        <Flex display='inline-flex' alignItems='center'>
+        <Flex display='inline-flex' alignItems='center' hMax={20}>
           <Divider orientation='vertical' mx={1} my={1} hMin={0} />
           {Array.isArray(actions) ? this.renderActions(actions) : this.renderAction(actions)}
         </Flex>
