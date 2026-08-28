@@ -93,14 +93,14 @@ SLabel {
   height: fit-content;
   display: inline-flex;
   align-items: center;
-  margin-top: 6px;
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }
 
 SIcon {
   height: fit-content;
   display: inline-flex;
   align-items: center;
-  margin-top: 6px;
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }
 
 SIllustration {
@@ -145,7 +145,7 @@ SNotice[theme='custom'] {
 }
 
 STitle {
-  margin-top: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) / 2);
+  margin-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
 }
 
 SText {
