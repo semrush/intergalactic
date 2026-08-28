@@ -109,7 +109,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     });
   };
 
-  getPropsToRow(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): DataTableRowProps<Data, UniqKeyType> {
+  getPropsToRow = (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): DataTableRowProps<Data, UniqKeyType> => {
     const {
       use,
       gridTemplateAreas,
@@ -190,7 +190,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       limit,
       hasGroups,
     };
-  }
+  };
 
   getSpinnerTopOffset = () => {
     const { headerHeight: propsHeaderHeight, tableContainerRef, stickyHeader } = this.asProps;

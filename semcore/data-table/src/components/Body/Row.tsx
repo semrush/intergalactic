@@ -331,15 +331,6 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       return React.isValidElement(value) ? value : value?.toString();
     };
 
-    let withoutBorder = props.row[IS_EMPTY_DATA_ROW];
-
-    if (variant === 'card') {
-      const isLastRow = flatRows.length === props.rowIndex + 1;
-      const isLastAccordionRow = props.accordionRowIndex !== undefined ? props.accordionRowIndex + 1 === props.rows.length : true;
-
-      withoutBorder = isLastRow && isLastAccordionRow;
-    }
-
     const extraProps: Record<string, any> = {
       use,
       virtualScroll: Boolean(virtualScroll),
@@ -347,7 +338,6 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       children: props?.children ?? defaultRender(),
       onClick: onCellClick,
       flatRows: this.asProps.flatRows,
-      withoutBorder,
       theme,
     };
 
@@ -399,10 +389,6 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               !this.state.expandedForAnimation;
 
       extraProps.expanded = expanded;
-
-      if (expanded) {
-        extraProps.withoutBorder = false;
-      }
 
       const row = props.row;
       const rowIndex = props.rowIndex;
@@ -485,6 +471,15 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
       onCellClick,
       onSelectRow,
       theme,
+      gridTemplateAreas,
+      gridTemplateColumns,
+      onExpandRow,
+      onBackFromAccordion,
+      getI18nText,
+      rowsHeightMap,
+      setRowHeight,
+      componentsMap,
+      calculateAriaRowIndex,
     } = this.asProps;
 
     const { expandedForAnimation, accordionRows, accordionComponent } = this.state;
@@ -519,6 +514,15 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
       return acc;
     }, 0);
+
+    let withoutBorder = row[IS_EMPTY_DATA_ROW];
+
+    if (variant === 'card' && (accordionType !== 'row' || (!expanded && !expandedForAnimation))) {
+      const isLastRow = flatRows.length === rowIndex + 1;
+      const isLastAccordionRow = accordionRowIndex !== undefined ? accordionRowIndex + 1 === rows.length : true;
+
+      withoutBorder = isLastRow && isLastAccordionRow;
+    }
 
     return sstyled(styles)(
       <>
@@ -601,6 +605,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 style={this.cellStyle.get(column.name)}
                 shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
                 data-aria-level={index === 0 ? ariaLevel : undefined}
+                withoutBorder={withoutBorder}
               />
             );
           })}
@@ -646,6 +651,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
               column={{ name: ACCORDION }}
               w='100%'
               onKeyDown={this.handleBackFromAccordion}
+              withoutBorder={withoutBorder}
             >
               {accordionComponent}
             </SCell>
@@ -676,6 +682,19 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             renderCell={renderCell}
             sideIndents={sideIndents}
             onCellClick={onCellClick}
+            gridTemplateAreas={gridTemplateAreas}
+            gridTemplateColumns={gridTemplateColumns}
+            scrollAreaRef={scrollAreaRef}
+            onExpandRow={onExpandRow}
+            uid={uid}
+            onBackFromAccordion={onBackFromAccordion}
+            getI18nText={getI18nText}
+            expandedRows={expandedRows}
+            rowsHeightMap={rowsHeightMap}
+            setRowHeight={setRowHeight}
+            componentsMap={componentsMap}
+            calculateAriaRowIndex={calculateAriaRowIndex}
+            hasGroups={hasGroups}
           />
         )}
       </>,
