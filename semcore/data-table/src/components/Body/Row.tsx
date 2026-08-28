@@ -11,7 +11,7 @@ import { Cell } from './Cell';
 import type { DataTableCellProps } from './Cell.types';
 import { LimitOverlay } from './LimitOverlay';
 import { MergedColumnsCell, MergedRowsCell } from './MergedCells';
-import type { DataTableRowProps, DataTableRowType, DTRow, DTRows, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, DataTableRowType, DTRow, DTRows } from './Row.types';
 import style from './style.shadow.css';
 import { AccordionRows } from '../AccordionRows/AccordionRows';
 import { ACCORDION, IS_EMPTY_DATA_ROW, ROW_GROUP, ROW_INDEX, UNIQ_ROW_KEY } from '../DataTable/DataTable';
@@ -28,16 +28,12 @@ type DefaultProps = {
   'aria-level': undefined;
 };
 
-@propsObserver([
-  // @ts-expect-error columns is an internal property, and we can't see it in types
-  'columns',
-  'row',
-])
+@propsObserver(['columns', 'row'])
 class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     DataTableRowProps<Data, UniqKeyType>,
     [],
     {},
-    RowPropsInner<Data, UniqKeyType>,
+    {},
     State<UniqKeyType>,
     DefaultProps
   > {
@@ -65,13 +61,13 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     super(props);
 
     this.handleClickRow = this.handleClickRow.bind(this);
+
+    this.recalculateCellStyle();
   }
 
   componentDidMount() {
     const { componentRef } = this.asProps;
     componentRef?.(this);
-
-    this.recalculateCellStyle();
 
     this.setAccordion();
   }
@@ -100,7 +96,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
   }
 
   recalculateCellStyle() {
-    const { columns, getFixedStyle } = this.asProps;
+    const { columns, getFixedStyle } = this.props;
 
     columns.forEach((column) => {
       if (column.fixed) {

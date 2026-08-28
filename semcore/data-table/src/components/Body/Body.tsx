@@ -9,7 +9,7 @@ import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Bo
 import { MergedColumnsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import { Row } from './Row';
-import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, DTRow } from './Row.types';
 import { RowGroup } from './RowGroup';
 import style from './style.shadow.css';
 import {
@@ -109,7 +109,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     });
   };
 
-  getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<Data, UniqKeyType> {
+  getPropsToRow(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): DataTableRowProps<Data, UniqKeyType> {
     const {
       use,
       gridTemplateAreas,
@@ -341,11 +341,11 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const rowMarginTop = this.rowsHeightMap.get(this.startIndex - 1)?.[1];
     const needMarginTop = typeof virtualScroll === 'boolean' || (virtualScroll && !('rowHeight' in virtualScroll));
 
-    let emptyRow: DTRow<string> | null = null;
+    let emptyRow: DTRow<UniqKeyType> | null = null;
 
     if (rowsToRender.length === 0) {
       emptyRow = {
-        [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [UNIQ_ROW_KEY]: `${uid}_empty_data` as UniqKeyType,
         [IS_EMPTY_DATA_ROW]: true,
         [ROW_INDEX]: 0,
         [GRID_ROW_INDEX]: 0,
@@ -362,7 +362,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
-        {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
+        {emptyRow && <Row {...this.getPropsToRow({ row: emptyRow })} isNonInteractive />}
         {needMarginTop && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
@@ -378,14 +378,15 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 rowIndex={index}
                 handleRef={this.handleRef}
                 handleComponentRef={this.handleComponentRef}
+                getPropsToRow={this.getPropsToRow}
               />
             );
           }
 
           return (
-            <Body.Row
+            <Row
               key={row[UNIQ_ROW_KEY]?.toString()}
-              row={row}
+              {...this.getPropsToRow({ row })}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
               componentRef={this.handleComponentRef(row)}
             />
@@ -430,13 +431,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 }
 
-type BodyComponent = DataTableBodyType & {
-  Row: DataTableRowType;
-};
+type BodyComponent = DataTableBodyType;
 
 export const Body = createComponent<
   BodyComponent,
   typeof BodyRoot
->(BodyRoot, {
-  Row,
-});
+>(BodyRoot);
