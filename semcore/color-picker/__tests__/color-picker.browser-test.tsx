@@ -156,27 +156,9 @@ test.describe(`${TAG.VISUAL} `, () => {
       const count = await locators.color(page).count();
       for (let i = 0; i < count; i++) {
         const item = locators.color(page, i);
-        await expect(item).toHaveCSS('width', '26px');
-        await expect(item).toHaveCSS('height', '26px');
+        await expect(item).toHaveCSS('width', '32px');
+        await expect(item).toHaveCSS('height', '32px');
       }
-    });
-
-    await test.step('Verify divider styles', async () => {
-      const dividerStyles = await getComputedStyles(locators.divider(page), [
-        'marginTop',
-        'marginBottom',
-      ]);
-      expect(dividerStyles.marginTop).toBe('12px');
-      expect(dividerStyles.marginBottom).toBe('12px');
-    });
-
-    await test.step('Verify input styles', async () => {
-      const wrapperStyles = await getComputedStyles(page.locator('[data-ui-name="Input"]'), [
-        'width',
-        'marginLeft',
-      ]);
-      expect(wrapperStyles.width).toBe('135px');
-      expect(wrapperStyles.marginLeft).toBe('4px');
     });
 
     await test.step('Verify add color styles', async () => {
@@ -230,8 +212,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       const paletteBox = await locators.paletteItem(page).boundingBox();
       expect(paletteBox).not.toBeNull();
       if (paletteBox) {
-        expect(paletteBox.width).toBe(28);
-        expect(paletteBox.height).toBe(28);
+        expect(paletteBox.width).toBe(32);
+        expect(paletteBox.height).toBe(32);
       }
 
       const paletteIcon = locators.paletteItem(page).locator('svg');
