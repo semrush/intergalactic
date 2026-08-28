@@ -42,12 +42,14 @@ export default function Item(props: ItemAsProps) {
     }
   }, []);
 
+  const colorValue = value?.startsWith('--') ? `var(${value})` : value;
+
   return sstyled(styles)(
     <>
       <SItemContainer
         render={Box}
         interaction={interaction}
-        use:value={value?.startsWith('--') ? `var(${value})` : value}
+        use:value={colorValue}
         role='option'
         aria-selected={selected}
         ref={triggerRef}
@@ -57,7 +59,7 @@ export default function Item(props: ItemAsProps) {
         timeout={[250, 50]}
         tabIndex={0}
       >
-        {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
+        {displayLabel && <SLabel data-value={colorValue || '#6C6E79'}>A</SLabel>}
         <Children />
         {editable && (
           <>
