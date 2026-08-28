@@ -32,7 +32,7 @@ function getJSX(props: NoticeJSXProps) {
         {props.title || props.label || props.closable ? <Notice.Text>{props.message}</Notice.Text> : props.message}
         {props.actions && (
           <Notice.Actions>
-            <Button use='primary' theme='success'>
+            <Button use='primary'>
               Wow, so cool!
             </Button>
             <Button use='tertiary'>
