@@ -186,6 +186,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
 
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown'); // the keyword column is sortable, so the initial focus is in the header
         await page.keyboard.press('Enter');
         await locators.collapse(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
@@ -554,6 +555,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await new Promise((resolve) => setTimeout(resolve, 1000)); // need this for AccordionRows grid calculations after rendering
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown'); // the keyword column is sortable, so the initial focus is in the header
         await page.keyboard.press('Enter');
         await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
