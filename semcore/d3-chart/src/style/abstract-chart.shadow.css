@@ -7,7 +7,7 @@ SChart {
 
 STooltipChildrenWrapper {
   display: grid;
-  column-gap: var(--intergalactic-spacing-2x, 8px);
+  column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
   &[columnsCount='2'] {
     grid-template-columns: auto minmax(28px, max-content);

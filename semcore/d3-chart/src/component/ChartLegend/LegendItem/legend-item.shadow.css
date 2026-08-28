@@ -13,7 +13,7 @@ SLegendItem[disabled]:hover {
 
 SPointShape[color] {
   background-color: var(--color);
-  margin-right: 8px;
+  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
   flex-shrink: 0;
 }
 
@@ -21,14 +21,14 @@ SPointShape[shape='Circle'][size='l'] {
   width: 16px;
   height: 16px;
   border-radius: 8px;
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SPointShape[shape='Circle'][size='m'] {
   width: 12px;
   height: 12px;
   border-radius: 6px;
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SPointShape[shape='Line'][size='l'] {
@@ -61,20 +61,20 @@ SPointShape[shape='Square'][size='m'] {
 
 SPointShape[shape='Pattern'] {
   background-color: transparent;
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SIcon {
   line-height: 0;
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SIcon[size='l'] {
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SIcon[size='m'] {
-  margin-top: 2px;
+  margin-top: var(--intergalactic-spacing-content-gap-xsmall, 2px);
 }
 
 SLabel {
@@ -97,7 +97,7 @@ SCount[size='m'] {
 
 SAdditionalLabel,
 SCount {
-  margin-left: 4px;
+  margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SAdditionalLabel {
@@ -113,7 +113,7 @@ SAdditionalLabel::before {
   height: 4px;
   width: 4px;
   border-radius: 2px;
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
 SAdditionalLabel[size='l']::before {

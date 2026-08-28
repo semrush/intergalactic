@@ -2005,6 +2005,10 @@ export const theme: Theme = {
         value: `3px 3px 10px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Hover state for the shadow of the Card with hover state.',
       },
+      box_shadow_chart_dot_elevated: {
+        value: `0px 0px 2px 0px ${neutral.opaqueAt(L_BORDER_PRIMARY)}, 0px 1px 2px 0px ${neutral.opaqueAt(L_BORDER_PRIMARY)}`,
+        description: 'Shadow of the elevated chart dot.',
+      },
       box_shadow_control_elevated: {
         value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Shadow of the Switch toggle.',
@@ -3446,6 +3450,11 @@ type SemanticShadows = {
       card: {
         DEFAULT: Value;
         hover: Value;
+      };
+      chart: {
+        dot: {
+          elevated: Value;
+        };
       };
       control: {
         elevated: Value;

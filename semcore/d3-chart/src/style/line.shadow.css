@@ -2,7 +2,7 @@
 
 SLine {
   fill: transparent;
-  stroke-width: 3;
+  stroke-width: 2;
   stroke: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
   transition-property: d;
   transition-duration: var(--duration);

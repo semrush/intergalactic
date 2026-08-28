@@ -4,8 +4,8 @@ SLegendTable[columns-count] {
   grid-template-columns: auto 0.2fr;
   align-items: center;
   height: fit-content;
-  grid-column-gap: 16px;
-  grid-row-gap: 8px;
+  grid-column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  grid-row-gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SColumnItem[size='l'] {

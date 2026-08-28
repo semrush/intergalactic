@@ -357,7 +357,6 @@
     "components": [
       "accordion",
       "bulk-textarea",
-      "d3-chart",
       "drag-and-drop",
       "input",
       "notice",
@@ -384,7 +383,9 @@
     "name": "--intergalactic-bg-secondary-invert",
     "value": "oklch(0.969 0.057 140 / 0.118)",
     "description": "Inverted version of the secondary background of the interface which contains the main data and information.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-success",
@@ -3017,6 +3018,7 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary text.",
     "components": [
+      "d3-chart",
       "date-picker",
       "feature-highlight",
       "notice-bubble"
@@ -3049,7 +3051,9 @@
     "name": "--intergalactic-text-secondary-invert",
     "value": "oklch(0.997 0.004 165.9 / 0.684)",
     "description": "Inverted version of the secondary text.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-text-success",
@@ -3077,6 +3081,7 @@
     "description": "Inverted version of the default Tooltip background.",
     "components": [
       "base-components",
+      "d3-chart",
       "tooltip"
     ]
   },
@@ -3094,6 +3099,7 @@
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
+      "d3-chart",
       "tooltip"
     ]
   },
@@ -3207,6 +3213,14 @@
     "value": "3px 3px 10px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Hover state for the shadow of the Card with hover state.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-box-shadow-chart-dot-elevated",
+    "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
+    "description": "Shadow of the elevated chart dot.",
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-control-elevated",
@@ -3344,6 +3358,7 @@
       "base-components",
       "bulk-textarea",
       "counter",
+      "d3-chart",
       "dropdown",
       "dropdown-menu",
       "input-tags",
@@ -3384,6 +3399,7 @@
       "bulk-textarea",
       "button",
       "card",
+      "d3-chart",
       "dropdown",
       "fullscreen-modal",
       "input",
@@ -3443,7 +3459,9 @@
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
@@ -3452,6 +3470,7 @@
     "components": [
       "base-trigger",
       "bulk-textarea",
+      "d3-chart",
       "date-picker",
       "dropdown-menu",
       "inline-input",
@@ -3487,6 +3506,7 @@
       "breadcrumbs",
       "button",
       "checkbox",
+      "d3-chart",
       "date-picker",
       "dropdown",
       "fullscreen-modal",
@@ -3502,6 +3522,7 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "d3-chart",
       "fullscreen-modal",
       "notice-bubble",
       "pagination"
@@ -3512,6 +3533,7 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
+      "d3-chart",
       "pagination",
       "tab-line"
     ]
