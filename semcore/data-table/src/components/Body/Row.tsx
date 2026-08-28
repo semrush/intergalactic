@@ -609,7 +609,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
 
             position='sticky'
             left={0}
-            w={scrollAreaRef.current?.clientWidth}
+            wMax={scrollAreaRef.current?.clientWidth}
           >
             <SCell
               aria-colindex={1}
