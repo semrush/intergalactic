@@ -4,7 +4,7 @@ import Notice, { type NSNotice } from '@semcore/ui/notice';
 import React from 'react';
 
 const Demo = (props: NSNotice.Props) => (
-  <Notice aria-label='Custom notice example' {...props} icon={<Calendar />}>
+  <Notice aria-label='Custom notice example' {...props} icon={<Calendar />} illustration={undefined}>
     <Notice.Content>
       <Notice.Title size={400}>
         Strategize your next move with daily and weekly traffic data
