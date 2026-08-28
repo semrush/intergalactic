@@ -45,7 +45,6 @@ SItemContainer[selected] {
 SItemContainer[displayLabel] {
   &::after {
     background: var(--value);
-    opacity: 0.15;
   }
 }
 
