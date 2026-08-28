@@ -98,8 +98,8 @@ export class LinkAction extends React.PureComponent<IProps> {
       return acc;
     }, {});
     return (
-      <Box display={link.ellipsisSettings ? 'flex' : 'inline'}>
-        <Link href={link.href}>
+      <Box display={link.ellipsisSettings ? 'flex' : 'inline'} overflow='hidden'>
+        <Link href={link.href} display={link.ellipsisSettings ? 'block' : 'inline'} overflow='hidden'>
           <Link.Text {...ellipsisProps}>
             {link.text}
           </Link.Text>
