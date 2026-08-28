@@ -86,21 +86,21 @@ SActions {
   display: flex;
   align-items: center;
   gap: var(--intergalactic-spacing-content-gap-large, 8px);
-  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
+  margin-top: var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 SLabel {
   height: fit-content;
   display: inline-flex;
   align-items: center;
-  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
 SIcon {
   height: fit-content;
   display: inline-flex;
   align-items: center;
-  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
 SIllustration {
@@ -136,10 +136,10 @@ SCloseIcon {
 }
 
 STitle {
-  margin-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
 }
 
 SText {
-  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
-  margin-bottom: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  margin-bottom: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }

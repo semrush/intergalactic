@@ -3340,7 +3340,6 @@
     "components": [
       "counter",
       "input-tags",
-      "notice",
       "notice-bubble",
       "pills"
     ]
@@ -3401,6 +3400,7 @@
       "input",
       "input-tags",
       "modal",
+      "notice",
       "pills",
       "tab-panel",
       "textarea",

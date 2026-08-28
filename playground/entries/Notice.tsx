@@ -35,7 +35,7 @@ function getJSX(props: NoticeJSXProps) {
             <Button use='primary' theme='success'>
               Wow, so cool!
             </Button>
-            <Button use='tertiary' ml={2}>
+            <Button use='tertiary'>
               Don't think so
             </Button>
           </Notice.Actions>
