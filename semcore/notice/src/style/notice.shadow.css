@@ -130,18 +130,9 @@ SLabel[theme='muted'], SIcon[theme='muted'] {
   color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
-SLabel[theme='custom'], SIcon[theme='custom'] {
-  color: var(--color);
-}
-
 SCloseIcon {
   flex-shrink: 0;
   margin-left: var(--intergalactic-spacing-content-padding-large, 16px);
-}
-
-SNotice[theme='custom'] {
-  background-color: var(--backgroundColor);
-  border-color: var(--backgroundColor);
 }
 
 STitle {
