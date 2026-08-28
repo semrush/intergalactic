@@ -1441,7 +1441,7 @@ export const theme: Theme = {
         description: 'Hover state for the inverted version of the background color of the ProgressBar.',
       },
       progress_bar_pattern_gradient: {
-        value: 'linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, {semanticTokens.colors.progress.bar.bg} 0%, {semanticTokens.colors.progress.bar.bg} 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, {semanticTokens.colors.progress.bar.bg} 0%)',
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.progress.bar.bg} l c h / 0.18) 25%, {semanticTokens.colors.progress.bar.bg} 0%, {semanticTokens.colors.progress.bar.bg} 50%, oklch(from {semanticTokens.colors.progress.bar.bg} l c h / 0.18) 0%, oklch(from {semanticTokens.colors.progress.bar.bg} l c h / 0.18) 75%, {semanticTokens.colors.progress.bar.bg} 0%)',
         description: 'Null value gradient for the ProgressBar.',
       },
 
