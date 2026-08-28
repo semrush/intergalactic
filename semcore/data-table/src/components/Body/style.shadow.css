@@ -19,22 +19,22 @@ SBody[compact] {
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
   }
 
   SRow {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
   SRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
   SCollapseRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xsmall, 4px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
