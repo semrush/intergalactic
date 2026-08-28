@@ -67,6 +67,10 @@ SProgressBar[animation] {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-duration: var(--duration);
+  
+  &:not([theme='invert']) {
+    background-color: transparent;
+  }
 }
 
 SProgressBar[theme='default'] {
