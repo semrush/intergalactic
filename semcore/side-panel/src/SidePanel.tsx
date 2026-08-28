@@ -248,10 +248,14 @@ function Back(
   props: Intergalactic.InternalTypings.InferComponentProps<NSSidePanel.Back.Component>,
 ) {
   const SBack = Root;
-  const { styles } = props;
+  const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft} />,
+    <SBack render={ButtonLink} color='text-hint' size={100} addonLeft={ArrowLeft}>
+      <ButtonLink.Text ellipsis>
+        <Children />
+      </ButtonLink.Text>
+    </SBack>,
   );
 }
 
