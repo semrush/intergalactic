@@ -2,6 +2,7 @@ import WarningIcon from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import { DateRangeComparator } from '@semcore/ui/date-picker';
 import Dropdown from '@semcore/ui/dropdown';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -44,7 +45,9 @@ const Demo = () => {
             </DateRangeComparator.Periods>
           </DateRangeComparator.Body>
           <DateRangeComparator.Footer>
-            Place for a hint, useful message or controls.
+            <Text size={200}>
+              Place for a hint, useful message or controls.
+            </Text>
           </DateRangeComparator.Footer>
           <Dropdown.Notice
             aria-labelledby='comparator-notice-title'

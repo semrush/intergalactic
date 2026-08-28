@@ -3415,8 +3415,8 @@
       "bulk-textarea",
       "color-picker",
       "feature-popover",
-      "notice",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
       "wizard"
     ]
@@ -3505,8 +3505,8 @@
       "checkbox",
       "date-picker",
       "dropdown",
-      "notice",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
       "pagination",
       "radio",
