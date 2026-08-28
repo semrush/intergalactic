@@ -13,11 +13,13 @@ type ExampleProps = NSRadioCards.Props & {
   description?: string;
   showIconAddon?: boolean;
   dot?: boolean;
+  uncontrolled?: boolean;
 };
 
 const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: ExampleProps } = (props: ExampleProps) => {
   const {
     value,
+    defaultValue,
     disabled,
     disabledCard = 'none',
     text = 'Lost and Vital',
@@ -26,53 +28,87 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
     showIconAddon = true,
     'aria-label': ariaLabel = 'Radio cards',
     dot = false,
+    uncontrolled = false,
   } = props;
 
-  const [selected, setSelected] = React.useState(value);
+  /*
+    In uncontrolled mode `value` is not passed to RadioCards at all, so the component
+    manages its own state from `defaultValue`. Pass `defaultValue: undefined` alongside
+    to render the group with no initial selection.
+  */
+  const [selected, setSelected] = React.useState(uncontrolled ? defaultValue : value);
 
   React.useEffect(() => {
-    setSelected(value);
-  }, [value]);
+    if (!uncontrolled) {
+      setSelected(value);
+    }
+  }, [value, uncontrolled]);
 
   const handleChange: NSRadioCards.Props['onChange'] = (newValue, event) => {
     setSelected(newValue);
     props.onChange?.(newValue, event);
   };
 
+  const cards = (
+    <>
+      <RadioCards.Item
+        value='1'
+        text='All'
+        textAddon='~90,000,000'
+        dot={dot ? 'New' : undefined}
+        disabled={disabledCard === '1'}
+      />
+      <RadioCards.Item
+        value='2'
+        text='Best'
+        textAddon='300'
+        description='Most valuable backlinks'
+        iconAddon={<Fire />}
+        disabled={disabledCard === '2'}
+      />
+      <RadioCards.Item
+        value='3'
+        text='Top New'
+        textAddon='100'
+        description='Recently acquired backlinks'
+        disabled={disabledCard === '3'}
+      />
+      <RadioCards.Item
+        value='4'
+        text={text}
+        textAddon={textAddon}
+        description={description}
+        iconAddon={showIconAddon ? <ThumbUp /> : undefined}
+        disabled={disabledCard === '4'}
+      />
+    </>
+  );
+
   return (
     <Flex direction='column' gap={4}>
-      <RadioCards aria-label={ariaLabel} name='radio-cards' value={selected} disabled={disabled} onChange={handleChange}>
-        <RadioCards.Item
-          value='1'
-          text='All'
-          textAddon='~90,000,000'
-          dot={dot ? 'New' : undefined}
-          disabled={disabledCard === '1'}
-        />
-        <RadioCards.Item
-          value='2'
-          text='Best'
-          textAddon='300'
-          description='Most valuable backlinks'
-          iconAddon={<Fire />}
-          disabled={disabledCard === '2'}
-        />
-        <RadioCards.Item
-          value='3'
-          text='Top New'
-          textAddon='100'
-          description='Recently acquired backlinks'
-          disabled={disabledCard === '3'}
-        />
-        <RadioCards.Item
-          value='4'
-          text={text}
-          textAddon={textAddon}
-          description={description}
-          iconAddon={showIconAddon ? <ThumbUp /> : undefined}
-          disabled={disabledCard === '4'}
-        />
-      </RadioCards>
+      {uncontrolled
+        ? (
+            <RadioCards
+              aria-label={ariaLabel}
+              name='radio-cards'
+              defaultValue={defaultValue}
+              disabled={disabled}
+              onChange={handleChange}
+            >
+              {cards}
+            </RadioCards>
+          )
+        : (
+            <RadioCards
+              aria-label={ariaLabel}
+              name='radio-cards'
+              value={selected}
+              disabled={disabled}
+              onChange={handleChange}
+            >
+              {cards}
+            </RadioCards>
+          )}
       <Text size={200} use='secondary'>Selected value: {selected || '(none)'}</Text>
     </Flex>
   );
@@ -81,6 +117,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
 export const defaultRadioCardsProps: ExampleProps = {
   'aria-label': 'Radio cards',
   'value': '2',
+  'uncontrolled': false,
   'disabled': false,
   'disabledCard': '3',
   'text': 'Lost and Vital',

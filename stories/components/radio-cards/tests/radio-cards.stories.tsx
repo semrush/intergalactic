@@ -20,7 +20,16 @@ export const RadioCardAllProps: StoryObj<typeof defaultRadioCardsProps> = {
     'value': {
       control: { type: 'select' },
       options: ['1', '2', '3', '4'],
-      description: 'Currently selected radio card value (group)',
+      description: 'Currently selected radio card value (group). Applied only in controlled mode',
+    },
+    'uncontrolled': {
+      control: { type: 'boolean' },
+      description: 'Renders the group in uncontrolled mode: value is not passed down and RadioCards manages its own state from defaultValue',
+    },
+    'defaultValue': {
+      control: { type: 'select' },
+      options: [undefined, '1', '2', '3', '4'],
+      description: 'Initially selected radio card value (RadioCards defaultValue prop). Used only when uncontrolled is enabled; leave unset to render with no initial selection',
     },
     'disabled': {
       control: { type: 'boolean' },
