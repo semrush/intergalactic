@@ -8,7 +8,7 @@ STooltip {
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 140));
   border-radius: var(--intergalactic-popper-rounded, 6px);
-  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.35 0.006 140));
+  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.004 140));
   box-sizing: border-box;
   box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
   padding: var(--intergalactic-spacing-content-padding-medium, 12px);

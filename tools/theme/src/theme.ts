@@ -735,9 +735,9 @@ export const theme: Theme = {
       chart_palette_order_8: {
         value: colors.mint['200'].value,
         description: '8 color in the default list of colors for charts.',
-      }, // stopped here
+      },
       chart_palette_order_9: {
-        value: colors.blue['400'].value,
+        value: colors.blue['500'].value,
         description: '9 color in the default list of colors for charts.',
       },
       chart_palette_order_10: {
@@ -819,6 +819,10 @@ export const theme: Theme = {
       chart_x_axis_accent_period_active: {
         value: neutral.opaqueAt(L_BG_LIGHT),
         description: 'Background color for the clickable date on the X-axis of the chart grid.',
+      },
+      chart_x_axis_accent_tick: {
+        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        description: 'Background color for the accent tick on the X-axis.',
       },
       control_checkbox_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
@@ -3337,6 +3341,7 @@ type SemanticColors = {
     x: {
       axis: {
         accent: {
+          tick: Value;
           period: {
             active: Value;
           };

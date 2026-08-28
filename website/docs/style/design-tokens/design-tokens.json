@@ -539,7 +539,7 @@
   },
   {
     "name": "--intergalactic-border-secondary-invert",
-    "value": "oklch(0.989 0.019 140 / 0.232)",
+    "value": "oklch(0.994 0.011 140 / 0.283)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
   },
@@ -796,7 +796,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.58 0.168 278.2)",
+    "value": "oklch(0.53 0.157 279.2)",
     "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -922,6 +922,12 @@
     "name": "--intergalactic-chart-x-axis-accent-period-active",
     "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background color for the clickable date on the X-axis of the chart grid.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-x-axis-accent-tick",
+    "value": "oklch(0.96 0.001 180)",
+    "description": "Background color for the accent tick on the X-axis.",
     "components": []
   },
   {
@@ -2733,7 +2739,7 @@
   },
   {
     "name": "--intergalactic-tag-secondary-border-invert",
-    "value": "oklch(0.989 0.019 140 / 0.232)",
+    "value": "oklch(0.994 0.011 140 / 0.283)",
     "description": "Inverted border color of the secondary Tag.",
     "components": [
       "tag"
@@ -3095,7 +3101,7 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.35 0.006 140)",
+    "value": "oklch(0.4 0.004 140)",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
@@ -3216,7 +3222,7 @@
   },
   {
     "name": "--intergalactic-box-shadow-chart-dot-elevated",
-    "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
+    "value": "0px 0px 2px 0px oklch(0.137 0.026 175.7 / 0.161), 0px 1px 2px 0px oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Shadow of the elevated chart dot.",
     "components": [
       "d3-chart"
