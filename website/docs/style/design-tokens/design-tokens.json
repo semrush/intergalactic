@@ -489,6 +489,7 @@
       "base-trigger",
       "bulk-textarea",
       "button",
+      "color-picker",
       "counter",
       "d3-chart",
       "date-picker",
@@ -2994,6 +2995,7 @@
       "bulk-textarea",
       "card",
       "checkbox",
+      "color-picker",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -3410,6 +3412,7 @@
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea",
+      "color-picker",
       "feature-popover",
       "fullscreen-modal",
       "notice-bubble",
@@ -3450,7 +3453,9 @@
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "components": [
+      "color-picker"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
@@ -3476,6 +3481,7 @@
       "base-trigger",
       "button",
       "checkbox",
+      "color-picker",
       "dropdown",
       "dropdown-menu",
       "input",
@@ -3509,6 +3515,7 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "color-picker",
       "fullscreen-modal",
       "notice-bubble",
       "pagination"
