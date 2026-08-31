@@ -70,6 +70,8 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
     componentRef?.(this);
 
     this.setAccordion();
+
+    this.recalculateCellStyle();
   }
 
   componentDidUpdate(prevProps: DataTableRowProps<Data, UniqKeyType>) {
