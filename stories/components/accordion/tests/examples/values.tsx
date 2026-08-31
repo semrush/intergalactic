@@ -1,5 +1,4 @@
 import Accordion from '@semcore/ui/accordion';
-import { Box } from '@semcore/ui/base-components';
 import React from 'react';
 
 type ValueType = null | number | string | Array<number | string | null>;
@@ -13,26 +12,26 @@ const Demo = () => {
       onChange={(newValue: ValueType) => setValue(newValue)}
     >
       <Accordion.Item value={0}>
-        <Accordion.Item.Toggle pb={2}>
+        <Accordion.Item.Toggle>
           <Accordion.Item.ToggleButton>
             <Accordion.Item.Chevron />
             Number: 0
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse data-test-id='number'>
-          <Box pt={3} px={5} pb={6}>Section with value = 0 (number)</Box>
+          Section with value = 0 (number)
         </Accordion.Item.Collapse>
       </Accordion.Item>
 
       <Accordion.Item value='one'>
-        <Accordion.Item.Toggle pb={2}>
+        <Accordion.Item.Toggle>
           <Accordion.Item.ToggleButton>
             <Accordion.Item.Chevron />
             String: "one"
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse data-test-id='string'>
-          <Box pt={3} px={5} pb={6}>Section with value = "one" (string)</Box>
+          Section with value = "one" (string
         </Accordion.Item.Collapse>
       </Accordion.Item>
     </Accordion>
