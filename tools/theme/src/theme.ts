@@ -657,15 +657,15 @@ export const theme: Theme = {
         description: 'Official YouTube brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
       },
       chart_data_critical: {
-        value: colors.red['400'].value,
+        value: colors.red['300'].value,
         description: 'Critical data color for charts.',
       },
       chart_data_success: {
-        value: colors.green['300'].value,
+        value: colors.salad['200'].value,
         description: 'Success data color for charts.',
       },
       chart_data_warning: {
-        value: colors.orange['300'].value,
+        value: colors.orange['200'].value,
         description: 'Warning data color for charts.',
       },
       chart_grid_bar_chart_base_bg: {
@@ -725,11 +725,11 @@ export const theme: Theme = {
         description: '5 color in the default list of colors for charts.',
       },
       chart_palette_order_6: {
-        value: colors.red['300'].value,
+        value: colors.blue['200'].value,
         description: '6 color in the default list of colors for charts.',
       },
       chart_palette_order_7: {
-        value: colors.blue['200'].value,
+        value: colors.pink['300'].value,
         description: '7 color in the default list of colors for charts.',
       },
       chart_palette_order_8: {
@@ -757,7 +757,7 @@ export const theme: Theme = {
         description: '13 color in the default list of colors for charts.',
       },
       chart_palette_order_14: {
-        value: colors.red['400'].value,
+        value: colors.pink['200'].value,
         description: '14 color in the default list of colors for charts.',
       },
       chart_palette_order_15: {
@@ -777,7 +777,7 @@ export const theme: Theme = {
         description: '18 color in the default list of colors for charts.',
       },
       chart_palette_order_19: {
-        value: colors.red['500'].value,
+        value: colors.pink['500'].value,
         description: '19 color in the default list of colors for charts.',
       },
       chart_palette_order_20: {
