@@ -1,6 +1,10 @@
 SColorPickerPopper {
-  max-width: calc(var(--intergalactic-spacing-4x, 16px) * 2 + 28px * 6 + 4px * 6);
-  padding: var(--intergalactic-spacing-4x, 16px);
+  max-width: calc(var(--intergalactic-form-control-m, 32px) * 6 + var(--intergalactic-spacing-content-gap-xsmall, 2px) * 5 + var(--intergalactic-spacing-content-padding-large, 16px) * 2 + 2px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
 }
 
 SItemContainer {
@@ -8,15 +12,16 @@ SItemContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: var(--intergalactic-form-control-m, 32px);
+  height: var(--intergalactic-form-control-m, 32px);
   border-radius: 50%;
   border: 1px solid transparent;
   outline-color: transparent;
   cursor: pointer;
+  box-sizing: border-box;
 
   &:hover {
-    border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 
   &::after {
@@ -25,7 +30,6 @@ SItemContainer {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    box-shadow: inset 0px 0px 1px var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
     background: var(--value);
   }
 }
@@ -47,7 +51,7 @@ SItemContainer[displayLabel] {
 
 SItemContainer:not([value]) {
   &::after {
-    border: 0.9px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 
   &::before {
@@ -58,7 +62,7 @@ SItemContainer:not([value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 22px;
-    background: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+    background: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
     z-index: 0;
   }
 }
@@ -67,21 +71,17 @@ SColorsContainer, SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--intergalactic-spacing-1x, 4px);
+  gap: var(--intergalactic-spacing-content-gap-xsmall, 2px);
+
+  &:empty {
+    display: none;
+  }
 }
 
 SPaletteManager {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: var(--intergalactic-spacing-3x, 12px);
-  /* disable-tokens-validator */
-  margin-left: calc(var(--intergalactic-spacing-1x, 4px) - 1px);
-}
-
-SInputContainer {
-  display: flex;
-  align-items: center;
+  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
 }
 
 SPlusButton {
@@ -107,6 +107,7 @@ SDefaultTrigger {
   align-items: center;
   outline-color: transparent;
   cursor: pointer;
+  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
   border: 0;
   background: transparent;
   padding: 0;
@@ -114,17 +115,16 @@ SDefaultTrigger {
 
 STriggerCircle {
   position: relative;
-  width: 16px;
-  height: 16px;
-  /* disable-tokens-validator */
-  margin-right: calc(var(--intergalactic-spacing-1x, 4px) + 1px);
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: var(--data-value);
   border: 1px solid transparent;
+  box-sizing: content-box;
 }
 
 STriggerCircle:not([data-value]) {
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 
   &::before {
     content: '';
@@ -133,10 +133,13 @@ STriggerCircle:not([data-value]) {
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
-    height: 16px;
-    background: #E0E1E9;
-    z-index: 1;
+    height: 20px;
+    background: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
+}
+
+SChevronDownM {
+  fill: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899))
 }
 
 SCloseIcon {
@@ -163,11 +166,14 @@ SLabel {
 }
 
 SItemColor {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   background: var(--data-value);
+  box-sizing: border-box;
+  margin: 5px;
+  flex-shrink: 0;
 }
 
 SConfirmColor[hidden],
