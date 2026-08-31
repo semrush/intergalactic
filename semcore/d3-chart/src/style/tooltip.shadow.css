@@ -35,10 +35,10 @@ SDot {
 
 SDotCircle[color] {
   background-color: var(--color);
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  border: 1px solid var(--intergalactic-chart-grid-border, #ffffff);
+  box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + 0.2) c h);
 }
 
 

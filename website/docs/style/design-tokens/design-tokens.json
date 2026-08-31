@@ -657,7 +657,7 @@
   },
   {
     "name": "--intergalactic-chart-data-success",
-    "value": "oklch(0.82 0.19 143)",
+    "value": "oklch(0.82 0.15 170)",
     "description": "Success data color for charts.",
     "components": []
   },
@@ -3494,6 +3494,7 @@
       "base-trigger",
       "button",
       "checkbox",
+      "d3-chart",
       "dropdown",
       "dropdown-menu",
       "input",

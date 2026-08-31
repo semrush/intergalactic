@@ -13,7 +13,7 @@ SLegendItem[disabled]:hover {
 
 SPointShape[color] {
   background-color: var(--color);
-  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
   flex-shrink: 0;
 }
 
@@ -31,7 +31,8 @@ SPointShape[shape='Circle'][size='m'] {
   margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
-SPointShape[shape='Line'][size='l'] {
+/* TODO: Remove */
+/* SPointShape[shape='Line'][size='l'] {
   width: 16px;
   height: 4px;
   border-radius: 3px;
@@ -57,7 +58,7 @@ SPointShape[shape='Square'][size='m'] {
   height: 12px;
   border-radius: 2px;
   margin-top: 4px;
-}
+} */
 
 SPointShape[shape='Pattern'] {
   background-color: transparent;
