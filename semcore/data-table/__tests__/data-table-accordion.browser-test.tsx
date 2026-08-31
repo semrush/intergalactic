@@ -117,7 +117,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowUp');
       await expect(locators.toggle(page).nth(0)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
+      // wait for the closing animation to end, not just for the content to hide:
+      // the row keeps the expanded attribute — and with it the active background and
+      // the left accent border — until expandedForAnimation resets
+      await expect(page.locator('[data-ui-name="Row.Cell"][expanded]')).toHaveCount(0);
+      await expect(locators.chart(page, 'Chart')).toHaveCount(0);
       await expect(page).toHaveScreenshot();
     });
 

@@ -533,7 +533,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   row={row}
                   rowIndex={rowIndex}
                   gridRowIndex={gridRowIndex}
-                  expanded={expanded}
+                  expanded={expanded || expandedForAnimation}
                   isAccordionRow={isAccordionRow}
                   isCellHidden={isCellHidden}
                   withAccordion={withAccordion}
@@ -570,7 +570,7 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                 gridRowIndex={gridRowIndex}
                 columnIndex={index}
                 column={column}
-                expanded={expanded}
+                expanded={expanded || expandedForAnimation}
                 withAccordion={withAccordion}
                 accordionRowIndex={accordionRowIndex}
                 rows={rows}
@@ -606,6 +606,10 @@ export class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
             duration={accordionDuration ?? 200}
             sideIndents={sideIndents}
             data-filled-columns={filledColumns}
+
+            position='sticky'
+            left={0}
+            wMax={scrollAreaRef.current?.clientWidth}
           >
             <SCell
               aria-colindex={1}

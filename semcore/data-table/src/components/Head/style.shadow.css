@@ -42,14 +42,14 @@ SHead[sticky] SColumn, SHead[sticky] SGroup {
 }
 
 SHead[compact] SColumn {
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
 SGroup, SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   box-sizing: border-box;
   height: 100%;
   position: relative;
@@ -61,46 +61,53 @@ SGroup, SColumn {
 SGroup {
   justify-content: center;
   text-align: center;
-  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.001 180));
+  background-color: var(--intergalactic-table-th-primary-cell, oklch(1 0 0));
+
+  &[isSorted] {
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    font-weight: var(--intergalactic-bold, 700);
+  }
 }
 
 SGroup[use='primary'] {
-  padding: var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
 
   &:has(~ SColumn[visibleSort]) {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180));
+    background-color: var(--intergalactic-table-th-primary-cell-active, oklch(1 0 0));
   }
 }
 SGroup[use='secondary'] {
-  padding: var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
-  border-left: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border-left: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
-  border-right: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border-right: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SColumn[use='primary'] {
-  padding: var(--intergalactic-spacing-3x, 12px);
-  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
-  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.001 180));
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px);
+  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  background-color: var(--intergalactic-table-th-primary-cell, oklch(1 0 0));
 
   SSortWrapper::before {
     background: linear-gradient(
       270deg,
-      var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180)) 67.5%,
+      var(--intergalactic-table-th-primary-cell-active, oklch(1 0 0)) 67.5%,
       rgba(224, 225, 233, 0) 105%
     );
   }
 
   &[visibleSort] {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180));
+    background-color: var(--intergalactic-table-th-primary-cell-active, oklch(1 0 0));
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    font-weight: var(--intergalactic-bold, 700);
 
     SSortWrapper {
-      flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+      flex-basis: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + 16px);
       opacity: 1;
 
       &::before {
@@ -130,7 +137,7 @@ SColumn[use='primary'] {
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
-  border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-table-border-accent */
+  border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.137 0.026 175.7 / 0.161));
   background-color: var(--intergalactic-table-th-secondary-cell, oklch(1 0 0));
 
   SSortWrapper::before {
@@ -143,7 +150,7 @@ SColumn[use='secondary'] {
 
   &[visibleSort] {
     SSortWrapper {
-      flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+      flex-basis: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + 16px);
       opacity: 1;
 
       &::before {
@@ -210,20 +217,20 @@ SSortWrapper:before {
 
 SSortButton {
   display: none;
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.1 0.023 159.1 / 0.433));
+  fill: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   position: absolute;
   right: 0;
-  margin-left: var(--intergalactic-spacing-1x, 4px);
+  margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 SHead[sideIndents='wide'] {
   SColumn:first-child {
-    padding-left: var(--intergalactic-spacing-5x, 20px);
+    padding-left: var(--intergalactic-spacing-content-padding-xlarge, 20px);
   }
   SColumn:last-child {
-    padding-right: var(--intergalactic-spacing-5x, 20px);
+    padding-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
   }
 }
 
@@ -256,10 +263,10 @@ SGroup[fixed='left'][shadowVertical='start'] {
   border-right-color: transparent;
 
   &[use='primary'] {
-    padding-right: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
+    padding-right: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + 5px);
   }
   &[use='secondary'] {
-    padding-right: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
+    padding-right: calc(var(--intergalactic-spacing-content-padding-small, 8px) + 5px);
   }
 
   &:after {
@@ -277,10 +284,10 @@ SGroup[fixed='right'][shadowVertical='end'] {
   border-left-color: transparent;
 
   &[use='primary'] {
-    padding-left: calc(var(--intergalactic-spacing-3x, 12px) + 5px);
+    padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + 5px);
   }
   &[use='secondary'] {
-    padding-left: calc(var(--intergalactic-spacing-2x, 8px) + 5px);
+    padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + 5px);
   }
 
   &:after {
