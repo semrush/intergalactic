@@ -2,7 +2,7 @@
 
 SLineGauge {
   height: 8px;
-  background-color: var(--base-bg-color, var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.137 0.026 175.7 / 0.161)));
+  background-color: var(--base-bg-color, var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.88 0.002 175.6)));
   border-radius: var(--intergalactic-chart-rounded, 2px);
   overflow: hidden;
   position: relative;
@@ -48,7 +48,7 @@ SLineSegmentItem {
 }
 
 SAnimationLine {
-  background-color: var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.137 0.026 175.7 / 0.161));
+  background-color: var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.88 0.002 175.6));
   transition: all var(--intergalactic-duration-extra-slow, 500) ease-in-out;
   animation-name: move-line;
   animation-duration: 0.5s;

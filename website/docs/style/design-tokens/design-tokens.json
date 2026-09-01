@@ -559,7 +559,6 @@
       "radio",
       "select",
       "side-panel",
-      "slider",
       "spin",
       "tab-line",
       "tab-panel",
@@ -589,7 +588,6 @@
       "date-picker",
       "dropdown",
       "notice",
-      "slider",
       "tooltip"
     ]
   },
@@ -1415,14 +1413,17 @@
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Background color of the ProgressBar.",
     "components": [
-      "progress-bar"
+      "progress-bar",
+      "slider"
     ]
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
     "value": "oklch(0.88 0.002 175.6)",
     "description": "Hover state of the background color of the ProgressBar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert",
@@ -2302,7 +2303,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-base-bg",
-    "value": "oklch(0.137 0.026 175.7 / 0.161)",
+    "value": "oklch(0.88 0.002 175.6)",
     "description": "Default background color of a bar in the BarChart.",
     "components": [
       "d3-chart",
