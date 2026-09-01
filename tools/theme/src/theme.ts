@@ -399,6 +399,10 @@ export const theme: Theme = {
         value: colors.gray['50'].value,
         description: 'Background color of the unavailable Badge.',
       },
+      badge_text_primary_DEFAULT: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Primary text color for Badge.',
+      },
       badge_text_primary_invert: {
         value: '{semanticTokens.colors.text_primary_invert}',
         description: 'Inverted primary text color for Badge.',
@@ -667,6 +671,34 @@ export const theme: Theme = {
       chart_data_warning: {
         value: colors.orange['200'].value,
         description: 'Warning data color for charts.',
+      },
+      chart_data_new: {
+        value: colors.green['200'].value,
+        description: 'Color for the "New" data on the chart.',
+      },
+      chart_data_lost: {
+        value: colors.red['300'].value,
+        description: 'Color for the "Lost" data on the chart.',
+      },
+      chart_data_intent_commercial: {
+        value: colors.violet['300'].value,
+        description: 'Color for the commercial data intent on the chart.',
+      },
+      chart_data_intent_informational: {
+        value: colors.blue['400'].value,
+        description: 'Color for the informational data intent on the chart.',
+      },
+      chart_data_intent_navigational: {
+        value: colors.green['200'].value,
+        description: 'Color for the navigational data intent on the chart.',
+      },
+      chart_data_intent_task: {
+        value: colors.pink['300'].value,
+        description: 'Color for the task data intent on the chart.',
+      },
+      chart_data_intent_transactional: {
+        value: colors.yellow['200'].value,
+        description: 'Color for the transactional data intent on the chart.',
       },
       chart_grid_bar_chart_base_bg: {
         value: neutral.at(L_BG_LIGHT),
@@ -3273,6 +3305,15 @@ type SemanticColors = {
       success: Value;
       warning: Value;
       critical: Value;
+      lost: Value;
+      new: Value;
+      intent: {
+        informational: Value;
+        navigational: Value;
+        commercial: Value;
+        transactional: Value;
+        task: Value;
+      };
     };
     palette: {
       order: {
@@ -3411,6 +3452,7 @@ type SemanticColors = {
     };
     text: {
       primary: {
+        DEFAULT: Value;
         invert: Value;
       };
       secondary: Value;

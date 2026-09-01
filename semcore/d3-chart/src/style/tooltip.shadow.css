@@ -38,7 +38,7 @@ SDotCircle[color] {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + 0.2) c h);
+  box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + 0.15) c h);
 }
 
 
