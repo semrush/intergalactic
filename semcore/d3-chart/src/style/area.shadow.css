@@ -1,7 +1,7 @@
 @import './var.css';
 
 SArea {
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
   fill-opacity: 0.2;
 }
 
@@ -19,7 +19,7 @@ SArea[transparent] {
 }
 
 SAreaLine {
-  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
+  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
   stroke-width: 3;
   fill: transparent;
 }

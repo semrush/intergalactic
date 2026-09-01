@@ -1,5 +1,6 @@
 import CopyM from '@semcore/icon/Copy/m';
 import { Box, Flex } from '@semcore/ui/base-components';
+import Link from '@semcore/ui/link';
 import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -150,6 +151,36 @@ const TimeCell = ({ value }: any) => {
   return <FormattedTime value={value} />;
 };
 
+const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
+
+const UrlLinkCell = ({ value, headerRef }: any) => {
+  const pageUrl = value?.toString?.() || '';
+
+  if (!pageUrl || pageUrl === 'n/a') {
+    return null;
+  }
+
+  return (
+    <Link
+      href={pageUrl}
+      target='_blank'
+      rel='noopener noreferrer'
+      wMin={0}
+    >
+      <Link.Text
+        wMin={0}
+        ellipsis={Boolean(headerRef)}
+        ellipsis:cropPosition='middle'
+        ellipsis:containerElement={headerRef ?? undefined}
+        ellipsis:recalculateContainerWidth={(width: number) => width - 16}
+      >
+        {removeProtocol(pageUrl)}
+      </Link.Text>
+      <Link.ExternalIcon />
+    </Link>
+  );
+};
+
 export {
   CopyCell,
   StatusCell,
@@ -158,4 +189,5 @@ export {
   Currency,
   DateCell,
   TimeCell,
+  UrlLinkCell,
 };

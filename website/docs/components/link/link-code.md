@@ -88,3 +88,15 @@ If a link has no visible text, it's important to add a [hint](../../utils/hint/h
 </script>
 
 :::
+
+## External links
+
+By default, the `Link` with a text as a child will add an `ExternalIcon` automatically. If you use the component in an expanded form, you will need to add the `ExternalIcon` yourself.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/link/docs/examples/external_links.tsx';
+</script>
+
+:::

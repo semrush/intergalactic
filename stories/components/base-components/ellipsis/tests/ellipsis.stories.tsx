@@ -53,7 +53,7 @@ const commonArgTypes = {
   },
 } as const;
 
-export const TableLink: StoryObj = {
+export const TableLink = {
   render: TableLinkExample,
 };
 

@@ -17,17 +17,16 @@ SFullscreenOverlay {
 
   SClose {
     position: absolute;
-    top: 17px;
-    right: 24px;
+    top: var(--intergalactic-spacing-content-padding-large, 16px);
+    right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   }
 
   SBack {
     cursor: pointer;
     position: absolute;
     z-index: 1;
-    top: 8px;
-    left: 32px;
-    margin-bottom: var(--intergalactic-spacing-3x, 12px);
+    top: var(--intergalactic-spacing-content-padding-small, 8px);
+    left: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   }
 
   STitle,
@@ -38,33 +37,30 @@ SFullscreenOverlay {
   STitle {
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 117%);
-    font-weight: var(--intergalactic-bold, 700);
+    font-weight: var(--intergalactic-semi-bold, 600);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  }
-
-  SDescription {
-    font-size: var(--intergalactic-fs-100, 12px);
-    line-height: var(--intergalactic-lh-100, 133%);
-    color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   }
 
   SHeader {
     display: flex;
     flex-direction: column;
-    gap: var(--intergalactic-spacing-2x, 8px);
+    gap: var(--intergalactic-spacing-content-gap-large, 8px);
     align-items: flex-start;
-    padding-left: var(--intergalactic-spacing-8x, 32px);
-    padding-bottom: var(--intergalactic-spacing-4x, 16px);
-    padding-right: calc(var(--intergalactic-spacing-20x, 80px) - var(--intergalactic-spacing-2x, 8px));
-    padding-top: var(--intergalactic-spacing-10x, 40px);
-    box-shadow: inset 0 -1px 0 var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-    box-sizing: border-box;
+
+    padding-left: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    padding-bottom: var(--intergalactic-spacing-content-padding-large, 16px);
+    padding-right: 72px;
+    padding-top: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 
   SFooter {
     min-height: 52px;
-    box-shadow: inset 0 1px 1px 0 var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-    box-sizing: border-box;
+    border-top: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
   }
 
   SBody {
@@ -74,10 +70,10 @@ SFullscreenOverlay {
   }
 
   SSection {
-    padding-top: var(--intergalactic-spacing-6x, 24px);
-    padding-bottom: var(--intergalactic-spacing-6x, 24px);
-    padding-left: var(--intergalactic-spacing-8x, 32px);
-    padding-right: var(--intergalactic-spacing-8x, 32px);
+    padding-top: var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
+    padding-bottom: var(--intergalactic-spacing-content-padding-xlarge-extended, 24px);
+    padding-left: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+    padding-right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
     flex: 1 1 auto;
   }
 

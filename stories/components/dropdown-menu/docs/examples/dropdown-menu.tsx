@@ -48,7 +48,7 @@ const Demo = () => {
               <Text>
                 If the problem persists, please contact us at
                 {' '}
-                <Link inline href='mailto:feedback@semrush.com'>
+                <Link href='mailto:feedback@semrush.com'>
                   feedback@semrush.com
                 </Link>
               </Text>

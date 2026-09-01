@@ -278,9 +278,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
           '@d3-chart'],
-      }, async ({ page, browserName }) => {
+      }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
-        const stylesActiveHovered = await getStylesActiveHovered(page);
         const cellSelectedActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-active');
         const cellAccordionBg = await getCssVarColor(page, '--intergalactic-table-td-cell-accordion');
 
@@ -292,12 +291,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.collapse(page).waitFor({ state: 'visible' });
         await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
 
-        const parentCellBg = browserName === 'firefox'
-          ? cellSelectedActiveBg
-          : stylesActiveHovered[1];
-
         await checkStyles(cells, {
-          'background-color': parentCellBg,
+          'background-color': cellSelectedActiveBg,
         });
 
         await checkStyles(accordion, {

@@ -1,4 +1,6 @@
 {
   "confirm": "Opslaan",
-  "discard": "Annuleren"
+  "discard": "Annuleren",
+  "increment": "Nummer verhogen",
+  "decrement": "Nummer verlagen"
 }
