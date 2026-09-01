@@ -921,7 +921,7 @@ export const theme: Theme = {
       },
 
       progress_bar_bg_DEFAULT: {
-        value: neutral.at(L_BG_LIGHT),
+        value: neutral.opaqueAt(L_BG_MEDIUM),
         description: 'Background color of the ProgressBar.',
       },
       progress_bar_bg_hover: {
@@ -1427,7 +1427,7 @@ export const theme: Theme = {
         description: 'Background color for the hover state of a bar on the chart grid.',
       },
       chart_grid_bar_chart_base_bg: {
-        value: neutral.at(L_BG_LIGHT),
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Default background color of a bar in the BarChart.',
       },
       chart_grid_period_bg: {
