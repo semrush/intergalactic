@@ -3476,8 +3476,8 @@
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
+      "color-picker",
       "d3-chart"
-      "color-picker"
     ]
   },
   {
@@ -3505,8 +3505,8 @@
       "base-trigger",
       "button",
       "checkbox",
-      "d3-chart",
       "color-picker",
+      "d3-chart",
       "dropdown",
       "dropdown-menu",
       "input",
@@ -3541,8 +3541,8 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
-      "d3-chart",
       "color-picker",
+      "d3-chart",
       "fullscreen-modal",
       "notice-bubble",
       "pagination"

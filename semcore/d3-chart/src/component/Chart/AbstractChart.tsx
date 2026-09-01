@@ -25,7 +25,7 @@ import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.ty
 
 export type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
-  highlightedLine: number;
+  highlightedItem: number;
   withTrend: boolean;
 
   plotWidth: number;
@@ -65,7 +65,7 @@ export abstract class AbstractChart<
       this.observer = new ResizeObserver(this.handleResize);
     }
 
-    this.setHighlightedLine = this.setHighlightedLine.bind(this);
+    this.setHighlightedItem = this.setHighlightedItem.bind(this);
     this.handleChangeVisible = this.handleChangeVisible.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -75,7 +75,7 @@ export abstract class AbstractChart<
 
     this.state = {
       dataDefinitions: this.getDefaultDataDefinitions(),
-      highlightedLine: -1,
+      highlightedItem: -1,
       withTrend: false,
       plotWidth: 0,
       plotHeight: 0,
@@ -329,8 +329,8 @@ export abstract class AbstractChart<
     return valueScale;
   }
 
-  protected setHighlightedLine(index: number) {
-    this.setState({ highlightedLine: index });
+  protected setHighlightedItem(index: number) {
+    this.setState({ highlightedItem: index });
   }
 
   protected handleChangeVisible(id: string, isVisible: boolean) {
@@ -352,11 +352,11 @@ export abstract class AbstractChart<
   }
 
   protected handleMouseEnter(id: string) {
-    this.setHighlightedLine(this.state.dataDefinitions.findIndex((line) => line.id === id));
+    this.setHighlightedItem(this.state.dataDefinitions.findIndex((line) => line.id === id));
   }
 
   protected handleMouseLeave() {
-    this.setHighlightedLine(-1);
+    this.setHighlightedItem(-1);
   }
 
   protected resolveColor(id: string, index: number) {
@@ -404,13 +404,14 @@ export abstract class AbstractChart<
       return null;
     }
 
-    const { dataDefinitions, withTrend } = this.state;
+    const { dataDefinitions, withTrend, highlightedItem } = this.state;
     const lProps = {
       ...this.defaultLegendProps(),
       ...legendProps,
     };
 
-    const commonLegendProps: LegendFlexProps | LegendTableProps = {
+    const commonLegendProps: (LegendFlexProps | LegendTableProps) & { highlightedItem: State['highlightedItem'] } = {
+      highlightedItem,
       'dataHints': this.dataHints,
       'items': dataDefinitions,
       'size': lProps.size,

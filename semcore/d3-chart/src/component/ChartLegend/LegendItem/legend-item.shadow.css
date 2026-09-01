@@ -11,6 +11,10 @@ SLegendItem[disabled]:hover {
   cursor: default;
 }
 
+SLegendItem[transparent] {
+  opacity: 0.3;
+}
+
 SPointShape[color] {
   background-color: var(--color);
   margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);

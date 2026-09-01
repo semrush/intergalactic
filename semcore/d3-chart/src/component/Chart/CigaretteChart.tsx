@@ -230,7 +230,7 @@ class CigaretteChartComponent extends AbstractChart<
   renderChart() {
     const { invertAxis, data, uid, duration, patterns, onClick } =
       this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
     const { plotWidth, plotHeight } = this;
 
     this.offset = 0;
@@ -277,7 +277,7 @@ class CigaretteChartComponent extends AbstractChart<
               direction={invertAxis ? 'horizontal' : 'vertical'}
               onClick={onClick}
               hovered={
-                highlightedLine === index ? true : highlightedLine === -1 ? undefined : false
+                highlightedItem === index ? true : highlightedItem === -1 ? undefined : false
               }
             />
           );

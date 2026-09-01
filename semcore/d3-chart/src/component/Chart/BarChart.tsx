@@ -85,7 +85,7 @@ class BarChartComponent extends AbstractChart<
 
   renderChart() {
     const { groupKey, type = 'group', invertAxis } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     if (dataDefinitions.length === 1) {
       const item = dataDefinitions[0];
@@ -116,7 +116,7 @@ class BarChartComponent extends AbstractChart<
 
               const commonBarComponentProps: BarProps = {
                 color: item.color,
-                transparent: highlightedLine !== -1 && highlightedLine !== index,
+                transparent: highlightedItem !== -1 && highlightedItem !== index,
                 onClick: this.handleClickBar,
               };
 
@@ -143,7 +143,7 @@ class BarChartComponent extends AbstractChart<
 
               const commonBarComponentProps: BarProps = {
                 color: item.color,
-                transparent: highlightedLine !== -1 && highlightedLine !== index,
+                transparent: highlightedItem !== -1 && highlightedItem !== index,
                 onClick: this.handleClickBar,
               };
 
