@@ -581,6 +581,7 @@ class RowRoot<Data extends DataTableData, UniqKeyType> extends Component<
                   selectedRows={selectedRows}
                   onSelectRow={onSelectRow}
                   fixed={nextColumn.fixed === 'left'}
+                  withoutBorder={withoutBorder}
                 />
               );
             }

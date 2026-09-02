@@ -28,6 +28,7 @@ type RowSelectorProps<UniqKeyType> = {
     event?: React.SyntheticEvent<HTMLElement>,
   ) => void;
   fixed?: boolean;
+  withoutBorder?: boolean;
 };
 
 type State = {
@@ -102,6 +103,7 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
       uid,
       selectedRows,
       fixed,
+      withoutBorder,
     } = this.props;
     const rowUniqKey = row[UNIQ_ROW_KEY];
 
@@ -128,6 +130,7 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
         data-row-selector
         fixed={fixed}
         style={style}
+        withoutBorder={withoutBorder}
       >
         <Checkbox
           checked={checked}
