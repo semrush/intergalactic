@@ -44,6 +44,7 @@ const Demo = (props: CheckboxExampleProps) => {
             gap={6}
             py={2}
             px={3}
+            bg='bg-primary-neutral'
           >
             <Text size={200}>
               Selected rows:
