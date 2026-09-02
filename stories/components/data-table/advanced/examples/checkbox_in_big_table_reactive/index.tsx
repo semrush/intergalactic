@@ -34,7 +34,7 @@ const Demo = (props: CheckboxExampleProps) => {
         // need this for FF
         tabIndex={-1}
         wMax={1000}
-        h={1000}
+        h='calc(100vh - 100px)'
         style={{
           overflow: 'auto',
           scrollPaddingTop: '44px',
