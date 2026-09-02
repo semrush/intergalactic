@@ -1441,7 +1441,7 @@ export const theme: Theme = {
         description: 'Hover state for the inverted version of the background color of the ProgressBar.',
       },
       progress_bar_pattern_gradient: {
-        value: 'linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, {semanticTokens.colors.progress.bar.bg} 0%, {semanticTokens.colors.progress.bar.bg} 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, {semanticTokens.colors.progress.bar.bg} 0%)',
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.progress.bar.bg} l c h / 0.18) 25%, {semanticTokens.colors.progress.bar.bg} 0%, {semanticTokens.colors.progress.bar.bg} 50%, oklch(from {semanticTokens.colors.progress.bar.bg} l c h / 0.18) 0%, oklch(from {semanticTokens.colors.progress.bar.bg} l c h / 0.18) 75%, {semanticTokens.colors.progress.bar.bg} 0%)',
         description: 'Null value gradient for the ProgressBar.',
       },
 
@@ -1449,8 +1449,12 @@ export const theme: Theme = {
         value: 'oklch(1 0 0)',
         description: 'Base value background for the ProgressBar. It is used to create gradients for the values.',
       },
-      progress_bar_value_gradient: {
+      progress_bar_value_gradient_DEFAULT: {
         value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 25%, {semanticTokens.colors.brand.secondary} 0%, {semanticTokens.colors.brand.secondary} 50%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 0%, oklch(from {semanticTokens.colors.brand.secondary} l c h / 0.78) 75%, {semanticTokens.colors.brand.secondary} 0%)',
+        description: 'Value with gradient for the ProgressBar.',
+      },
+      progress_bar_value_gradient_invert: {
+        value: 'linear-gradient(-45deg, oklch(from {semanticTokens.colors.brand.primary} l c h / 0.78) 25%, {semanticTokens.colors.brand.primary} 0%, {semanticTokens.colors.brand.primary} 50%, oklch(from {semanticTokens.colors.brand.primary} l c h / 0.78) 0%, oklch(from {semanticTokens.colors.brand.primary} l c h / 0.78) 75%, {semanticTokens.colors.brand.primary} 0%)',
         description: 'Value with gradient for the ProgressBar.',
       },
       scroll_area_dropdown_menu_bottom: {
@@ -3015,7 +3019,10 @@ type SemanticColors = {
         };
       };
       value: {
-        gradient: Value;
+        gradient: {
+          DEFAULT: Value;
+          invert: Value;
+        };
         bg: Value;
       };
       pattern: {
