@@ -239,6 +239,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       selectedRows,
       hasGroups,
       scrollBarInstanceRef,
+      shadowVertical,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -376,6 +377,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 columns={columns}
                 startIndex={this.startIndex}
                 rowIndex={index}
+                shadowVertical={shadowVertical}
                 handleRef={this.handleRef}
                 handleComponentRef={this.handleComponentRef}
                 getPropsToRow={this.getPropsToRow}

@@ -18,6 +18,7 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
   columns: DTColumn[];
   startIndex: number;
   rowIndex: number;
+  shadowVertical?: '' | 'end' | 'start' | 'median';
   handleRef: (index: number, row: DTRow<UniqKeyType>) => (node: HTMLElement | null) => void;
   handleComponentRef: (row: DTRow<UniqKeyType>) => (component: RowRoot<Data, UniqKeyType> | null) => void;
   getPropsToRow: (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }) => DataTableRowProps<Data, UniqKeyType>;
@@ -26,7 +27,7 @@ type RowGroupProps<Data extends DataTableData, UniqKeyType> = {
 export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.PureComponent<RowGroupProps<Data, UniqKeyType>> {
   render() {
     const SRowGroup = Box;
-    const { rows, selectedRows, columns, startIndex, rowIndex, getPropsToRow } = this.props;
+    const { rows, selectedRows, columns, startIndex, rowIndex, getPropsToRow, shadowVertical } = this.props;
 
     const groupUniqKey = rows[0][UNIQ_ROW_KEY];
 
@@ -51,6 +52,7 @@ export class RowGroup<Data extends DataTableData, UniqKeyType> extends React.Pur
               key={item[UNIQ_ROW_KEY]?.toString() ?? `gg_${groupUniqKey}_row_${i}`}
               componentRef={this.props.handleComponentRef(item)}
               {...getPropsToRow({ row: item, mergedRow: i > 0 ? true : false })}
+              shadowVertical={shadowVertical}
             />
           );
         })}
