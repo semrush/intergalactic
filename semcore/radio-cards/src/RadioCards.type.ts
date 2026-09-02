@@ -43,6 +43,8 @@ declare namespace NSRadioCards {
       description?: string;
       /** Shows a dot indicator with the specified accessible label. */
       dot?: string;
+      /** Shows a skeleton insted of text addon. */
+      loading?: boolean;
     };
 
     type Component = Intergalactic.Component<'button', Props>;

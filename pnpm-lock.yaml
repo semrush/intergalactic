@@ -1592,6 +1592,9 @@ importers:
       '@semcore/dot':
         specifier: ^17.2.1
         version: link:../dot
+      '@semcore/skeleton':
+        specifier: ^17.2.1
+        version: link:../skeleton
       '@semcore/typography':
         specifier: ^17.2.1
         version: link:../typography

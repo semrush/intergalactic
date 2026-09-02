@@ -10,14 +10,10 @@ import renderIcon from '../utils/renderIcon';
 
 export type RadioCardsJSXProps = JSXProps<Partial<NSRadioCards.Props>> & JSXProps<Partial<NSRadioCards.Item.Props>>;
 
-function getJSX({ handleControlChange, ...props }: RadioCardsJSXProps) {
+function getJSX(props: RadioCardsJSXProps) {
   return (
     <Flex bg='bg-secondary-neutral' p={3} w='100%' direction='column'>
-      <RadioCards
-        aria-label='Radio cards'
-        name='radio-cards'
-        onChange={(value) => handleControlChange?.('value', value)}
-      >
+      <RadioCards aria-label='Radio cards' name='radio-cards'>
         <RadioCards.Item value='all' text='All' textAddon='~9,000' />
         <RadioCards.Item
           value='best'

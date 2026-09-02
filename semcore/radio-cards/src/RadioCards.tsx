@@ -2,6 +2,7 @@ import { Box, Flex, NeighborLocation } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { Root, Component, createComponent, sstyled } from '@semcore/core';
 import Dot from '@semcore/dot';
+import Skeleton from '@semcore/skeleton';
 import { Text as SemcoreText } from '@semcore/typography';
 import React from 'react';
 
@@ -21,7 +22,9 @@ class RadioCardsRoot extends Component<
   static displayName = 'RadioCards';
   static style = style;
 
-  static defaultProps = ({ defaultValue }: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Component>) => ({
+  static defaultProps = ({
+    defaultValue,
+  }: Intergalactic.InternalTypings.InferComponentProps<NSRadioCards.Component>) => ({
     defaultValue: defaultValue ?? DEFAULT_VALUE,
   });
 
@@ -86,6 +89,7 @@ function Item(
   const SRadioItemHeaderText = SemcoreText;
   const SRadioItemHeaderRightAddon = SemcoreText;
   const SRadioItemDescription = SemcoreText;
+  const SRadioItemSkeleton = Skeleton;
   const {
     Children,
     styles,
@@ -99,6 +103,7 @@ function Item(
     children,
     onChange,
     name,
+    loading,
   } = props;
 
   const isAdvancedMode = children !== undefined;
@@ -120,7 +125,15 @@ function Item(
                       {text}
                     </SRadioItemHeaderText>
                   )}
-                  {textAddon && <SRadioItemHeaderRightAddon size={300}>{textAddon}</SRadioItemHeaderRightAddon>}
+                  {loading
+                    ? (
+                        <SRadioItemSkeleton w={24} h={16}>
+                          <rect x='0' y='0' rx='4' ry='4' width='100%' height='100%' />
+                        </SRadioItemSkeleton>
+                      )
+                    : (
+                        textAddon && <SRadioItemHeaderRightAddon size={300}>{textAddon}</SRadioItemHeaderRightAddon>
+                      )}
                 </SRadioItemHeaderInnerContainer>
               </SRadioItemHeader>
               {description && (

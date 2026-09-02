@@ -60,6 +60,11 @@ SRadioItemHeaderRightAddon {
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
 }
 
+SRadioItemSkeleton {
+  margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
+  vertical-align: middle;
+}
+
 SRadioItemHeaderInnerContainer {
   display: inline;
   text-align: left;

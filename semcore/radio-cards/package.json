@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@semcore/typography": "^17.2.1",
-    "@semcore/dot": "^17.2.1"
+    "@semcore/dot": "^17.2.1",
+    "@semcore/skeleton": "^17.2.1"
   },
   "peerDependencies": {
     "@semcore/base-components": "^17.2.1"
