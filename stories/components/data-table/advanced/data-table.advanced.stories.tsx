@@ -43,6 +43,11 @@ const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigReactiveTableDefaul
     options: [undefined, true, false],
     defaultValue: undefined,
   },
+  variant: {
+    control: 'select',
+    options: [undefined, 'default', 'card'],
+    defaultValue: undefined,
+  },
 };
 
 export default meta;
