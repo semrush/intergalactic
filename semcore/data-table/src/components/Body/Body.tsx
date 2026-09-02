@@ -401,7 +401,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
             // @ts-ignore
             headerHeight={`${this.getSpinnerTopOffset()}px`}
             tableInnerVerticalScroll={scrollBarInstanceRef.current?.isScrollVisible}
-            gridArea={`${hasGroups ? 3 : 2} / 1 / ${rows.length + (hasGroups ? 3 : 2)} / ${columns.length + 1}`}
+            gridArea={`${hasGroups ? 3 : 2} / 1 / span 9999 / ${columns.length + 1}`}
             tabIndex={-1}
             ref={spinnerRef}
             role='row'
