@@ -140,7 +140,7 @@ exports[`DataTable > Verify data-ui-name 1`] = `
                               "uiName": "Box",
                             },
                           ],
-                          "uiName": "Body.Row",
+                          "uiName": "Row",
                         },
                       ],
                       "uiName": "DataTable.Body",

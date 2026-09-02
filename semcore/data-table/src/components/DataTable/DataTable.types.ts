@@ -6,7 +6,7 @@ import type * as React from 'react';
 import type { ACCORDION, ROW_GROUP, UNIQ_ROW_KEY } from './DataTable';
 import type { ISelectedRows } from '../../store/SelectableRows';
 import type { DataTableBodyProps } from '../Body/Body.types';
-import type { DTRow, RowPropsInner } from '../Body/Row.types';
+import type { DTRow, DataTableRowProps } from '../Body/Row.types';
 import type { DataTableColumnProps } from '../Head/Column.types';
 import type { DataTableHeadProps } from '../Head/Head.types';
 
@@ -136,7 +136,7 @@ export type DataTableProps<
      * List of animated rows in accordion.
      * @default 20
      */
-    accordionAnimationRows?: RowPropsInner<Data, UniqKeyType>['accordionAnimationRows'];
+    accordionAnimationRows?: DataTableRowProps<Data, UniqKeyType>['accordionAnimationRows'];
 
     /**
      * Whether multiple accordion items can be open at a time, or only one.

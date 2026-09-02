@@ -1636,7 +1636,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await loadPage(page, 'stories/components/data-table/docs/examples/limited-mode.tsx', 'en', item);
 
         const columnsCount = await page.getByRole('columnheader').count();
-        const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+        const rows = page.locator('div[data-ui-name="Row"][role="row"]');
         const rowsCount = await rows.count();
         const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1656,9 +1656,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step('Verify aria attributes', async () => {
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1717,7 +1717,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx', 'en', item);
 
         const columnsCount = await page.getByRole('columnheader').count();
-        const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+        const rows = page.locator('div[data-ui-name="Row"][role="row"]');
         const rowsCount = await rows.count();
         const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1737,9 +1737,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1787,9 +1787,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1843,7 +1843,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step('Verify overlay shown and aria attributes on the last page', async () => {
           await locators.button(page, 'Last page #').click();
           const columnsCount = await page.getByRole('columnheader').count();
-          const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+          const rows = page.locator('div[data-ui-name="Row"][role="row"]');
           const rowsCount = await rows.count();
           const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1854,9 +1854,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
             await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-            const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+            const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
             if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-              const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+              const rows = page.locator('div[data-ui-name="Row"][role="row"]');
               const rowCount = await rows.count();
 
               for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -1907,7 +1907,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', item);
 
         const columnsCount = await page.getByRole('columnheader').count();
-        const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+        const rows = page.locator('div[data-ui-name="Row"][role="row"]');
         const rowsCount = await rows.count();
         const limitedContent = page.locator('div[class*="LimitOverlay"]').first();
 
@@ -1927,9 +1927,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await test.step('Verify aria attributes', async () => {
           await expect(limitedCell).toHaveAttribute('tabindex', '-1');
 
-          const visibleRowsLocator = page.locator('div[data-ui-name="Body.Row"][role="row"]:not([aria-hidden="true"])');
+          const visibleRowsLocator = page.locator('div[data-ui-name="Row"][role="row"]:not([aria-hidden="true"])');
           if (limitedRows === rowsCount && limitedColumns < columnsCount) {
-            const rows = page.locator('div[data-ui-name="Body.Row"][role="row"]');
+            const rows = page.locator('div[data-ui-name="Row"][role="row"]');
             const rowCount = await rows.count();
 
             for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {

@@ -14,6 +14,7 @@ type CheckboxExampleProps = {
   loading: boolean;
   sideIndents?: 'wide';
   compact?: boolean;
+  variant?: 'default' | 'card';
 };
 
 const selectedRows = new SelectableRows<string>();
@@ -33,7 +34,7 @@ const Demo = (props: CheckboxExampleProps) => {
         // need this for FF
         tabIndex={-1}
         wMax={1000}
-        h={1000}
+        h='calc(100vh - 100px)'
         style={{
           overflow: 'auto',
           scrollPaddingTop: '44px',
@@ -72,6 +73,7 @@ const Demo = (props: CheckboxExampleProps) => {
           loading={props.loading}
           compact={props.compact}
           sideIndents={props.sideIndents}
+          variant={props.variant}
         />
       </Box>
     </>
@@ -82,6 +84,7 @@ export const defaultProps: CheckboxExampleProps = {
   loading: false,
   sideIndents: undefined,
   compact: undefined,
+  variant: undefined,
 };
 
 Demo.defaultProps = defaultProps;

@@ -96,12 +96,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/columns-merging.tsx', 'en');
 
-    const firstRow = page.locator('[data-ui-name="Body.Row"]').first();
+    const firstRow = page.locator('[data-ui-name="Row"]').first();
     const firstCell = firstRow.locator('[data-ui-name="Row.Cell"]').nth(0);
     await firstCell.hover();
     await expect(page).toHaveScreenshot();
 
-    const secondRow = page.locator('[data-ui-name="Body.Row"]').nth(1);
+    const secondRow = page.locator('[data-ui-name="Row"]').nth(1);
     const secondCellSecondRow = secondRow.locator('[data-ui-name="Row.Cell"]').nth(1);
     await secondCellSecondRow.hover();
     await expect(page).toHaveScreenshot();

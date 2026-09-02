@@ -270,7 +270,6 @@ SCellWrapper[fixed] {
 }
 
 SSpinContainer {
-  grid-area: 2 / 1 / 20 / -1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -280,6 +279,10 @@ SSpinContainer {
 
   &:focus-visible {
     z-index: 15;
+  }
+
+  &[gridArea] {
+    grid-area: var(--gridArea);
   }
 
   &[headerHeight] {
@@ -294,10 +297,6 @@ SSpinContainer {
   &[tableInnerVerticalScroll][headerHeight] {
     top: var(--headerHeight);
   }
-
-  &[hasGroups] {
-    grid-area: 3 / 1 / 20 / -1;
-  }
 }
 
 SEmptyData {
@@ -305,7 +304,7 @@ SEmptyData {
 }
 
 SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
-  SCellWrapper:first-child SCell {
+  SCellWrapper:first-child SCell[aria-colindex="1"] {
     padding-left: var(--intergalactic-spacing-5x, 20px);
 
     &[data-aria-level] {
