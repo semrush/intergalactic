@@ -5155,6 +5155,20 @@ const iconsList = {
       ],
     },
     {
+      name: 'SlackColored',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: [
+        'slack',
+        'social',
+        'message',
+        'corporate',
+        'chat',
+        'срфе',
+        'ыдфсл',
+      ],
+    },
+    {
       name: 'Snapchat',
       size: ['l', 'm'],
       group: 'Color',
