@@ -1,4 +1,9 @@
 SDropdownNotice {
+  grid-template-areas:
+    "icon title close"
+    "text text close"
+    "actions actions close";
+
   padding-top: var(--intergalactic-spacing-content-padding-medium, 12px);
   padding-bottom: var(--intergalactic-spacing-content-padding-medium, 12px);
   border-left: none;

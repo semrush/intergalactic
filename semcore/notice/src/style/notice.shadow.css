@@ -1,5 +1,11 @@
 SNotice {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    "icon title close"
+    "icon text close"
+    "icon actions close";
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   padding: var(--intergalactic-spacing-content-padding-large, 16px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
@@ -8,7 +14,7 @@ SNotice {
   border-width: 1px;
   border-radius: var(--intergalactic-surface-rounded, 8px);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SNotice[theme='info'] {
@@ -77,11 +83,11 @@ SNotice[theme='muted'] {
 }
 
 SContent {
-  flex: 1 1 auto;
-  width: 100%;
+  display: contents;
 }
 
 SActions {
+  grid-area: actions;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -97,6 +103,7 @@ SLabel {
 }
 
 SIcon {
+  grid-area: icon;
   height: fit-content;
   display: inline-flex;
   align-items: center;
@@ -104,6 +111,7 @@ SIcon {
 }
 
 SIllustration {
+  grid-area: icon;
   height: fit-content;
   display: inline-flex;
   align-items: center;
@@ -131,15 +139,19 @@ SLabel[theme='muted'], SIcon[theme='muted'] {
 }
 
 SCloseIcon {
+  grid-area: close;
   flex-shrink: 0;
   margin-left: var(--intergalactic-spacing-content-padding-large, 16px);
 }
 
 STitle {
+  grid-area: title;
   margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
 }
 
 SText {
+  grid-area: text;
+  grid-row: span 1; /* this is for the case when there is no title in the Notice */
   margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
   margin-bottom: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }
