@@ -50,12 +50,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify notice content styles', async () => {
       const noticeContent = locators.content(page);
       const title = noticeContent.first().locator('[data-ui-name="Notice.Title"]');
-      await expect(title).toHaveCSS('margin-top', '2px');
+      await expect(title).toHaveCSS('margin-top', '4px');
       await expect(title).toHaveCSS('margin-bottom', '0px');
 
       const text = noticeContent.first().locator('[data-ui-name="Notice.Text"]');
-      await expect(text).toHaveCSS('margin-top', '4px');
-      await expect(text).toHaveCSS('margin-bottom', '4px');
+      await expect(text).toHaveCSS('margin-top', '6px');
+      await expect(text).toHaveCSS('margin-bottom', '6px');
     });
   });
 
