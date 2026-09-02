@@ -304,7 +304,7 @@ SEmptyData {
 }
 
 SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
-  SCellWrapper:first-child SCell {
+  SCellWrapper:first-child SCell[aria-colindex="1"] {
     padding-left: var(--intergalactic-spacing-5x, 20px);
 
     &[data-aria-level] {
