@@ -1,4 +1,4 @@
-import type { SelectableRows } from '@semcore/ui/data-table';
+import type { DataTableProps, SelectableRows } from '@semcore/ui/data-table';
 import { DataTable } from '@semcore/ui/data-table';
 import React from 'react';
 
@@ -26,6 +26,7 @@ type TableProps = {
   sideIndents?: 'wide';
   loading: boolean;
   compact?: boolean;
+  variant?: DataTableProps<typeof data, any, any>['variant'];
 };
 
 const headerProps = {
@@ -45,6 +46,7 @@ export const Table = (props: TableProps) => {
         sideIndents={props.sideIndents}
         loading={props.loading}
         compact={props.compact}
+        variant={props.variant}
         headerProps={headerProps}
         columns={columns}
         uniqueRowKey='id'
