@@ -27,6 +27,8 @@ type TableProps = {
   loading: boolean;
   compact?: boolean;
   variant?: DataTableProps<typeof data, any, any>['variant'];
+
+  onBlur: (e: React.FocusEvent) => void;
 };
 
 const headerProps = {
@@ -50,6 +52,7 @@ export const Table = (props: TableProps) => {
         headerProps={headerProps}
         columns={columns}
         uniqueRowKey='id'
+        onBlur={props.onBlur}
       />
     </>
   );

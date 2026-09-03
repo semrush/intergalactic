@@ -13,6 +13,13 @@ const Demo = (props: CheckboxExampleProps) => {
   const { count } = useSelectedRowsCount(selectedRows);
   const [currentPage, setCurrentPage] = React.useState(0);
   const tableRef = React.useRef<HTMLDivElement>(null);
+  const deselectAllRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleTableBlur = React.useCallback((e: React.FocusEvent) => {
+    if (e.relatedTarget === null && e.target.getAttribute('aria-label') === 'All items') {
+      deselectAllRef.current?.focus();
+    }
+  }, []);
 
   const handleDeselectAll = () => {
     selectedRows.clearAll();
@@ -51,7 +58,7 @@ const Demo = (props: CheckboxExampleProps) => {
               {' '}
               <Text bold>{count}</Text>
             </Text>
-            <Button use='tertiary' onClick={handleDeselectAll}>
+            <Button use='tertiary' onClick={handleDeselectAll} ref={deselectAllRef}>
               Deselect all
             </Button>
           </Flex>
@@ -77,6 +84,7 @@ const Demo = (props: CheckboxExampleProps) => {
             { name: 'vol', children: 'Vol.' },
           ]}
           uniqueRowKey='id'
+          onBlur={handleTableBlur}
         />
       </Box>
       <Pagination

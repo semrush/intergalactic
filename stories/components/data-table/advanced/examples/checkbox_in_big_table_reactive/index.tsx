@@ -28,6 +28,7 @@ const selectedRows = new SelectableRows<string>([], { maxAvailableCount: -1 });
 
 const Demo = (props: CheckboxExampleProps) => {
   const tableRef = React.useRef<HTMLDivElement>(null);
+  const deselectAllRef = React.useRef<HTMLButtonElement>(null);
   const maxAvailableCount = props.limitSelectedRows ? props.maxAvailableSelectedRows : -1;
 
   React.useEffect(() => {
@@ -83,7 +84,7 @@ const Demo = (props: CheckboxExampleProps) => {
             check 4 rows
           </Button>
           {selectedRowsDisplay > 0 && (
-            <Button use='tertiary' onClick={handleDeselectAll}>
+            <Button use='tertiary' onClick={handleDeselectAll} ref={deselectAllRef}>
               Deselect all
             </Button>
           )}
@@ -102,6 +103,11 @@ const Demo = (props: CheckboxExampleProps) => {
           compact={props.compact}
           sideIndents={props.sideIndents}
           variant={props.variant}
+          onBlur={(e: React.FocusEvent) => {
+            if (e.relatedTarget === null && e.target.getAttribute('aria-label') === 'All items') {
+              deselectAllRef.current?.focus();
+            }
+          }}
         />
       </Box>
     </>
