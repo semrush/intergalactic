@@ -40,6 +40,11 @@ export const RadioCardAllProps: StoryObj<typeof defaultRadioCardsProps> = {
       options: ['none', '1', '2', '3', '4'],
       description: 'Disables the card with this value, to demonstrate item-level disabled (RadioCards.Item disabled prop)',
     },
+    'loadingCard': {
+      control: { type: 'select' },
+      options: ['none', '1', '2', '3', '4'],
+      description: 'Shows a skeleton instead of the text addon on the card with this value (RadioCards.Item loading prop). Card 1 has a long addon, card 3 has no icon addon, and card 4 lets you clear textAddon - so each option covers a different layout',
+    },
     'text': {
       control: { type: 'text' },
       description: 'Text of the 4th card (RadioCards.Item text prop)',

@@ -8,6 +8,7 @@ import React from 'react';
 
 type ExampleProps = NSRadioCards.Props & {
   disabledCard?: 'none' | '1' | '2' | '3' | '4';
+  loadingCard?: 'none' | '1' | '2' | '3' | '4';
   text?: string;
   textAddon?: string;
   description?: string;
@@ -22,6 +23,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
     defaultValue,
     disabled,
     disabledCard = 'none',
+    loadingCard = 'none',
     text = 'Lost and Vital',
     textAddon = '24',
     description = 'Restore these backlinks first',
@@ -57,6 +59,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         textAddon='~90,000,000'
         dot={dot ? 'New' : undefined}
         disabled={disabledCard === '1'}
+        loading={loadingCard === '1'}
       />
       <RadioCards.Item
         value='2'
@@ -65,6 +68,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         description='Most valuable backlinks'
         iconAddon={<Fire />}
         disabled={disabledCard === '2'}
+        loading={loadingCard === '2'}
       />
       <RadioCards.Item
         value='3'
@@ -72,6 +76,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         textAddon='100'
         description='Recently acquired backlinks'
         disabled={disabledCard === '3'}
+        loading={loadingCard === '3'}
       />
       <RadioCards.Item
         value='4'
@@ -80,6 +85,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         description={description}
         iconAddon={showIconAddon ? <ThumbUp /> : undefined}
         disabled={disabledCard === '4'}
+        loading={loadingCard === '4'}
       />
     </>
   );
@@ -120,6 +126,7 @@ export const defaultRadioCardsProps: ExampleProps = {
   'uncontrolled': false,
   'disabled': false,
   'disabledCard': '3',
+  'loadingCard': 'none',
   'text': 'Lost and Vital',
   'textAddon': '24',
   'description': 'Restore these backlinks first',
