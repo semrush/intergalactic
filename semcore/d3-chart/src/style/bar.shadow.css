@@ -30,7 +30,8 @@ SBar[onClick] {
 }
 
 SBackground {
-  fill: var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.96 0.001 180));
+  fill: var(--intergalactic-chart-grid-bar-chart-base-bg, oklch(0.88 0.002 175.6));
+  opacity: 0.4;
 }
 SBackground[onClick] {
   cursor: pointer;

@@ -2,7 +2,7 @@ SProgressBar {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: var(--intergalactic-progress-bar-bg, oklch(0.96 0.001 180));
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SProgressBar[theme='dark'] {
@@ -57,7 +57,7 @@ SValue[size='l'] {
 
 
 SProgressBar[theme='invert'] {
-  background-color: var(--intergalactic-progress-bar-bg, oklch(0.96 0.001 180));
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 @keyframes loading {
@@ -73,7 +73,7 @@ SProgressBar[theme='invert'] {
 SProgressBar[animation] {
   background-color: var(--intergalactic-progress-bar-value-bg, oklch(1 0 0));
   background-image: var(--intergalactic-progress-bar-pattern-gradient,
-  linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.96 0.001 180) 0%, oklch(0.96 0.001 180) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.96 0.001 180) 0%));
+  linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.137 0.026 175.7 / 0.161) 0%, oklch(0.137 0.026 175.7 / 0.161) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.137 0.026 175.7 / 0.161) 0%));
   animation-name: loading;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
