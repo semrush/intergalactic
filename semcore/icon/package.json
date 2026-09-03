@@ -1268,6 +1268,16 @@
       "import": "./lib/color/ShopifyColored/m/index.mjs",
       "require": "./lib/color/ShopifyColored/m/index.js"
     },
+    "./color/SlackColored/l": {
+      "types": "./lib/color/SlackColored/l/index.d.ts",
+      "import": "./lib/color/SlackColored/l/index.mjs",
+      "require": "./lib/color/SlackColored/l/index.js"
+    },
+    "./color/SlackColored/m": {
+      "types": "./lib/color/SlackColored/m/index.d.ts",
+      "import": "./lib/color/SlackColored/m/index.mjs",
+      "require": "./lib/color/SlackColored/m/index.js"
+    },
     "./color/Snapchat/l": {
       "types": "./lib/color/Snapchat/l/index.d.ts",
       "import": "./lib/color/Snapchat/l/index.mjs",
