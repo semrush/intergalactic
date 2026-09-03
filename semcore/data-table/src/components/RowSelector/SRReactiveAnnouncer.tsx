@@ -23,8 +23,23 @@ export function SRReactiveAnnouncer<UniqKey>(props: Props<UniqKey>) {
     setAriaMessage(message);
   }, [props.selectedRows]);
 
+  const setMaxLimitReachedAriaCallback = React.useCallback((isExceeded: boolean) => {
+    const message = props.getI18nText(
+      isExceeded
+        ? 'DataTable.maxLimitReached:aria-live'
+        : 'DataTable.maxLimitNoLongerReached:aria-live',
+    );
+    setAriaMessage(message);
+  }, [props.selectedRows]);
+
   React.useEffect(() => {
     const unsubscribe = props.selectedRows.on(SelectableRows.SELECT_ALL_EVENT, setAriaCallback);
+
+    return unsubscribe;
+  }, [props.selectedRows]);
+
+  React.useEffect(() => {
+    const unsubscribe = props.selectedRows.on(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, setMaxLimitReachedAriaCallback);
 
     return unsubscribe;
   }, [props.selectedRows]);
