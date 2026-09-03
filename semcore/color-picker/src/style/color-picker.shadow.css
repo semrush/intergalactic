@@ -45,12 +45,14 @@ SItemContainer[selected] {
 SItemContainer[displayLabel] {
   &::after {
     background: var(--value);
+    opacity: 0.15;
   }
 }
 
 SItemContainer:not([value]) {
   &::after {
     border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    opacity: 1;
   }
 
   &::before {
