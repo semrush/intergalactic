@@ -43,7 +43,7 @@ declare namespace NSRadioCards {
       description?: string;
       /** Shows a dot indicator with the specified accessible label. */
       dot?: string;
-      /** Shows a skeleton insted of text addon. */
+      /** Shows a skeleton instead of text addon. */
       loading?: boolean;
     };
 

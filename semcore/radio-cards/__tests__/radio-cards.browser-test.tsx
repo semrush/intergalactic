@@ -18,6 +18,20 @@ export const locators = {
     const base = page.getByRole('radiogroup').locator('label');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  /* The `loading` prop swaps the text addon for a Skeleton, rendered as an SVG with role='img'. */
+  skeleton: (page: Page, cardIndex: number) =>
+    locators.cardLabel(page, cardIndex).locator('[data-ui-name="SkeletonSVG"]'),
+  textAddon: (page: Page, cardIndex: number) =>
+    locators.cardLabel(page, cardIndex).locator('[class*="SRadioItemHeaderRightAddon"]'),
+  /*
+    Both the card text and the addon render as Text, and only the addon has a style of its
+    own to key on - so the text is taken as the first Text inside the header container.
+  */
+  cardText: (page: Page, cardIndex: number) =>
+    locators
+      .cardLabel(page, cardIndex)
+      .locator('[class*="SRadioItemHeaderInnerContainer"] [data-ui-name="Text"]')
+      .first(),
 };
 
 /* =====================================================
@@ -56,6 +70,30 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.cardLabel(page, 3).click();
     await expect(page).toHaveScreenshot('selected-state-after-click.png');
+  });
+
+  test('Verify loading state renders a skeleton in place of the text addon', {
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+  }, async ({ page }) => {
+    /* Card 1 carries the longest text addon, so the fixed 24x16 skeleton is easiest to eyeball there. */
+    await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1' });
+
+    await locators.skeleton(page, 0).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot('loading-state.png');
+  });
+
+  test('Verify the skeleton wraps together with a long text', {
+    tag: [TAG.PRIORITY_MEDIUM, '@radio-cards'],
+  }, async ({ page }) => {
+    await page.setViewportSize({ width: 780, height: 500 });
+
+    await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', {
+      text: 'Lost and Vital backlinks that need restoring right now across all domains',
+      loadingCard: '4',
+    });
+
+    await locators.skeleton(page, 3).waitFor({ state: 'visible' });
+    await expect(page).toHaveScreenshot('loading-state-with-wrapped-text.png');
   });
 });
 
@@ -191,9 +229,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     const cards = locators.card(page);
     const count = await cards.count();
-
     for (let index = 0; index < count; index++) {
-      await expect(cards.nth(index)).toBeDisabled();
+      await expect(cards.nth(index)).toHaveAttribute('disabled', '');
     }
   });
 
@@ -212,6 +249,71 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await expect(locators.card(page, 3)).toBeChecked();
       await expect(locators.card(page, 1)).not.toBeChecked();
+    });
+  });
+
+  test('Verify loading card swaps its text addon for a skeleton', {
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
+
+    await test.step('The loading card shows a skeleton and drops the addon text', async () => {
+      await expect(locators.skeleton(page, 0)).toHaveCount(1);
+      await expect(locators.cardLabel(page, 0)).not.toContainText('~90,000,000');
+    });
+
+    await test.step('The skeleton is announced as a loading image', async () => {
+      await expect(locators.skeleton(page, 0)).toHaveRole('img');
+    });
+
+    await test.step('The card text itself is untouched', async () => {
+      await expect(locators.cardLabel(page, 0)).toContainText('All');
+    });
+
+    await test.step('Sibling cards keep their text addons and have no skeleton', async () => {
+      for (const [index, addon] of [[1, '300'], [2, '100']] as const) {
+        await expect(locators.skeleton(page, index)).toHaveCount(0);
+        await expect(locators.cardLabel(page, index)).toContainText(addon);
+      }
+    });
+  });
+
+  test('Verify loading card stays selectable with the mouse', {
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio-cards'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
+
+    await expect(locators.card(page, 0)).not.toBeDisabled();
+    await expect(locators.cardLabel(page, 0)).not.toHaveCSS('pointer-events', 'none');
+
+    await locators.cardLabel(page, 0).click();
+
+    await expect(locators.card(page, 0)).toBeChecked();
+    await expect(locators.card(page, 1)).not.toBeChecked();
+
+    await test.step('The skeleton survives selection', async () => {
+      await expect(locators.skeleton(page, 0)).toHaveCount(1);
+    });
+  });
+
+  test('Verify loading card stays in the keyboard navigation', {
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
+
+    await test.step('Tab still lands on the checked card', async () => {
+      await page.keyboard.press('Tab');
+
+      await expect(locators.card(page, 1)).toBeFocused();
+      await expect(locators.card(page, 1)).toBeChecked();
+    });
+
+    await test.step('ArrowLeft reaches the loading card and selects it', async () => {
+      await page.keyboard.press('ArrowLeft');
+
+      await expect(locators.card(page, 0)).toBeFocused();
+      await expect(locators.card(page, 0)).toBeChecked();
+      await expect(locators.skeleton(page, 0)).toHaveCount(1);
     });
   });
 

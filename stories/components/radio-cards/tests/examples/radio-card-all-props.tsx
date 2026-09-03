@@ -51,6 +51,14 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
     props.onChange?.(newValue, event);
   };
 
+  /*
+    `disabled` is spread in only when the card is actually disabled, never as
+    `disabled={false}`. RadioCards passes the group-level `disabled` down to every item,
+    but an item's own prop wins - so an explicit `false` here would cancel the group
+    `disabled` prop and it would look like it does nothing.
+  */
+  const itemDisabled = (cardValue: string) => (disabledCard === cardValue ? { disabled: true } : {});
+
   const cards = (
     <>
       <RadioCards.Item
@@ -58,8 +66,8 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         text='All'
         textAddon='~90,000,000'
         dot={dot ? 'New' : undefined}
-        disabled={disabledCard === '1'}
         loading={loadingCard === '1'}
+        {...itemDisabled('1')}
       />
       <RadioCards.Item
         value='2'
@@ -67,16 +75,16 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         textAddon='300'
         description='Most valuable backlinks'
         iconAddon={<Fire />}
-        disabled={disabledCard === '2'}
         loading={loadingCard === '2'}
+        {...itemDisabled('2')}
       />
       <RadioCards.Item
         value='3'
         text='Top New'
         textAddon='100'
         description='Recently acquired backlinks'
-        disabled={disabledCard === '3'}
         loading={loadingCard === '3'}
+        {...itemDisabled('3')}
       />
       <RadioCards.Item
         value='4'
@@ -84,8 +92,8 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         textAddon={textAddon}
         description={description}
         iconAddon={showIconAddon ? <ThumbUp /> : undefined}
-        disabled={disabledCard === '4'}
         loading={loadingCard === '4'}
+        {...itemDisabled('4')}
       />
     </>
   );

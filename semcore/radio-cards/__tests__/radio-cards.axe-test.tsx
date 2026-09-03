@@ -36,4 +36,25 @@ test.describe(`@radio-cards  ${TAG.ACCESSIBILITY}`, () => {
       expect(violations).toEqual([]);
     }
   });
+
+  /*
+    The `loading` prop puts a Skeleton (an SVG with role='img') inside the radio's label,
+    so check that the extra image role does not break the radiogroup semantics.
+  */
+  test('Loading', async ({ page }) => {
+    await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
+
+    {
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
+    }
+
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowLeft');
+
+      const violations = await getAccessibilityViolations({ page });
+      expect(violations).toEqual([]);
+    }
+  });
 });

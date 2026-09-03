@@ -81,6 +81,24 @@ describe('RadioCards', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
+  test('renders a skeleton instead of the text addon when loading', () => {
+    const { container, queryByText } = render(
+      <RadioCards aria-label='Radio cards' value='1'>
+        <RadioCards.Item value='1' text='All' textAddon='300' loading />
+        <RadioCards.Item value='2' text='Best' textAddon='100' />
+      </RadioCards>,
+    );
+
+    const cards = container.querySelectorAll('label');
+
+    expect(cards[0].querySelectorAll('[data-ui-name="SkeletonSVG"]')).toHaveLength(1);
+    expect(queryByText('300')).toBeNull();
+
+    /* Only the loading card is affected, its neighbour keeps the text addon. */
+    expect(cards[1].querySelectorAll('[data-ui-name="SkeletonSVG"]')).toHaveLength(0);
+    expect(queryByText('100')).not.toBeNull();
+  });
+
   test('supports keyboard navigation with ArrowRight', async () => {
     const spy = vi.fn();
 
