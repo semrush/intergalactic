@@ -7,7 +7,7 @@ import React from 'react';
 
 type CheckboxExampleProps = { animationDuration: number; loading: boolean; sideIndents?: 'wide'; compact?: boolean };
 
-const selectedRows = new SelectableRows<string>();
+const selectedRows = new SelectableRows<string>([], { maxAvailableCount: 7 });
 
 const Demo = (props: CheckboxExampleProps) => {
   const { count } = useSelectedRowsCount(selectedRows);
