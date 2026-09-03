@@ -724,9 +724,41 @@ export const theme: Theme = {
         value: neutral.at(L_BORDER_SECONDARY),
         description: 'Stripe color for diagonal pattern background.',
       },
-      chart_grid_text_label: {
+      chart_grid_bg_good: {
+        value: 'linear-gradient(180deg, oklch(from {baseTokens.colors.green.200} l c h / 0.1) 0%, oklch(from {baseTokens.colors.green.200} l c h / 0.09) 12.677%, oklch(from {baseTokens.colors.green.200} l c h / 0.01) 87.981%)',
+        description: 'Background gradient for chart areas with positive dynamics.',
+      },
+      chart_grid_bg_bad: {
+        value: 'linear-gradient(180deg, oklch(from {baseTokens.colors.red.300} l c h / 0.1) 0%, oklch(from {baseTokens.colors.red.300} l c h / 0.09) 12.677%, oklch(from {baseTokens.colors.red.300} l c h / 0.01) 87.981%)',
+        description: 'Background gradient for chart areas with negative dynamics.',
+      },
+      chart_grid_bg_highlight: {
+        value: 'linear-gradient(180deg, {baseTokens.colors.gray.50} 0%, {baseTokens.colors.gray.50} 41.827%, {baseTokens.colors.transparent} 100%)',
+        description: 'Background gradient for highlighted chart areas.',
+      },
+      chart_grid_bg_insight: {
+        value: 'linear-gradient(180deg, oklch(from {baseTokens.colors.violet.300} l c h / 0.1) 0%, oklch(from {baseTokens.colors.violet.300} l c h / 0.1) 12.677%, oklch(from {baseTokens.colors.violet.300} l c h / 0.01) 87.981%)',
+        description: 'Background gradient for insight chart areas.',
+      },
+      chart_grid_bg_pattern: {
+        value: 'linear-gradient(0deg, oklch(from {baseTokens.colors.gray.800} l c h / 0.1) 8.532%, {baseTokens.colors.gray.800} 29.015%)',
+        description: 'Pattern gradient for chart grid backgrounds.',
+      },
+      chart_grid_bg_potential: {
+        value: 'linear-gradient(180deg, oklch(0.941 0.018 177 / 0.4) 0%, oklch(0.909 0.041 309 / 0.4) 75%, {baseTokens.colors.transparent} 100%)',
+        description: 'Background gradient for potential chart areas.',
+      },
+      chart_grid_line_forecast: {
+        value: 'linear-gradient(90deg, {baseTokens.colors.violet.300} 0%, {baseTokens.colors.green.100} 100%)',
+        description: 'Forecast line color on the chart grid.',
+      },
+      chart_grid_text_label_DEFAULT: {
         value: neutral.opaqueAt(L_TEXT_SECONDARY),
         description: 'Text label on the chart grid.',
+      },
+      chart_grid_text_label_accent: {
+        value: neutral.opaqueAt(L_TEXT_PRIMARY),
+        description: 'Text label with accent on the chart grid.',
       },
       chart_grid_x_axis: {
         value: neutral.at(L_BORDER_PRIMARY),
@@ -2045,6 +2077,10 @@ export const theme: Theme = {
         value: `0px 0px 2px 0px ${neutral.opaqueAt(L_BORDER_PRIMARY)}, 0px 1px 2px 0px ${neutral.opaqueAt(L_BORDER_PRIMARY)}`,
         description: 'Shadow of the elevated chart dot.',
       },
+      box_shadow_chart_elevated: {
+        value: '0px 0px 2px 0px oklch(from {baseTokens.colors.gray.800} l c h / 0.165), 0px 1px 2px 0px oklch(from {baseTokens.colors.gray.800} l c h / 0.165)',
+        description: 'Shadow of elevated elements on charts.',
+      },
       box_shadow_control_elevated: {
         value: `0px 0px 1px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}, 0px 1px 3px 0px ${neutral.opaqueAt(L_BORDER_SECONDARY)}`,
         description: 'Shadow of the Switch toggle.',
@@ -3352,6 +3388,7 @@ type SemanticColors = {
     };
     grid: {
       line: Value;
+      line_forecast: Value;
       x: {
         axis: Value;
       };
@@ -3363,7 +3400,10 @@ type SemanticColors = {
         };
       };
       text: {
-        label: Value;
+        label: {
+          DEFAULT: Value;
+          accent: Value;
+        };
       };
       bar: {
         chart: {
@@ -3376,6 +3416,14 @@ type SemanticColors = {
       period: {
         bg: Value;
         pattern: Value;
+      };
+      bg: {
+        good: Value;
+        bad: Value;
+        highlight: Value;
+        insight: Value;
+        pattern: Value;
+        potential: Value;
       };
       border: Value;
     };
@@ -3499,6 +3547,7 @@ type SemanticShadows = {
         hover: Value;
       };
       chart: {
+        elevated: Value;
         dot: {
           elevated: Value;
         };

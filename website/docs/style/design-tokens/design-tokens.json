@@ -139,16 +139,15 @@
     "name": "--intergalactic-badge-text-primary",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Primary text color for Badge.",
-    "components": [
-      "feature-highlight"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-badge-text-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted primary text color for Badge.",
     "components": [
-      "badge"
+      "badge",
+      "feature-highlight"
     ]
   },
   {
@@ -765,12 +764,60 @@
     ]
   },
   {
+    "name": "--intergalactic-chart-grid-bg-good",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.82 0.15 170) l c h / 0.1) 0%, oklch(from oklch(0.82 0.15 170) l c h / 0.09) 12.677%, oklch(from oklch(0.82 0.15 170) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for chart areas with positive dynamics.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-bad",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.74 0.19 22) l c h / 0.1) 0%, oklch(from oklch(0.74 0.19 22) l c h / 0.09) 12.677%, oklch(from oklch(0.74 0.19 22) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for chart areas with negative dynamics.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-highlight",
+    "value": "linear-gradient(180deg, oklch(0.97 0.001 180) 0%, oklch(0.97 0.001 180) 41.827%, rgb(0 0 0 / 0) 100%)",
+    "description": "Background gradient for highlighted chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-insight",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.74 0.17 303) l c h / 0.1) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.1) 12.677%, oklch(from oklch(0.74 0.17 303) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for insight chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-pattern",
+    "value": "linear-gradient(0deg, oklch(from oklch(0.23 0.01 140) l c h / 0.1) 8.532%, oklch(0.23 0.01 140) 29.015%)",
+    "description": "Pattern gradient for chart grid backgrounds.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-potential",
+    "value": "linear-gradient(180deg, oklch(0.941 0.018 177 / 0.4) 0%, oklch(0.909 0.041 309 / 0.4) 75%, rgb(0 0 0 / 0) 100%)",
+    "description": "Background gradient for potential chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-line-forecast",
+    "value": "linear-gradient(90deg, oklch(0.74 0.17 303) 0%, oklch(0.9 0.11 175) 100%)",
+    "description": "Forecast line color on the chart grid.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-chart-grid-text-label",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
     ]
+  },
+  {
+    "name": "--intergalactic-chart-grid-text-label-accent",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Text label with accent on the chart grid.",
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
@@ -1155,8 +1202,7 @@
     "value": "oklch(0 0 140)",
     "description": "Active (selected) state of the regular primary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1164,8 +1210,7 @@
     "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the regular primary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1264,7 +1309,6 @@
     "description": "Background of the regular secondary control.",
     "components": [
       "button",
-      "feature-highlight",
       "inline-input"
     ]
   },
@@ -1273,8 +1317,7 @@
     "value": "oklch(0.145 0.027 176.1 / 0.135)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1282,8 +1325,7 @@
     "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the regular secondary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1484,8 +1526,7 @@
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Primary text color for form controls.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1493,8 +1534,7 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted primary text color for form controls.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -3091,6 +3131,7 @@
     "components": [
       "d3-chart",
       "date-picker",
+      "feature-highlight",
       "notice-bubble"
     ]
   },
@@ -3293,6 +3334,12 @@
     ]
   },
   {
+    "name": "--intergalactic-box-shadow-chart-elevated",
+    "value": "0px 0px 2px 0px oklch(from oklch(0.23 0.01 140) l c h / 0.165), 0px 1px 2px 0px oklch(from oklch(0.23 0.01 140) l c h / 0.165)",
+    "description": "Shadow of elevated elements on charts.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-box-shadow-control-elevated",
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow of the Switch toggle.",
@@ -3431,7 +3478,6 @@
       "d3-chart",
       "dropdown",
       "dropdown-menu",
-      "feature-highlight",
       "input-tags",
       "pills",
       "wizard"
@@ -3906,7 +3952,9 @@
     "name": "--intergalactic-border-feature-highlight-secondary",
     "value": "linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))",
     "description": "Secondary border for highlighted controls.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-feature-highlight",
@@ -3928,37 +3976,49 @@
     "name": "--intergalactic-control-primary-feature-highlight-active",
     "value": "linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.58 0.168 278.2))",
     "description": "Active (selected) state of the highlighted primary control.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight",
     "value": "linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.969 0.016 267.7))",
     "description": "Background of the highlighted secondary control.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight-hover",
     "value": "linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))",
     "description": "Hover state of the highlighted secondary control.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-feature-highlight-active",
     "value": "linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))",
     "description": "Active (selected) state of the highlighted secondary control.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-text-feature-highlight",
     "value": "linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2))",
     "description": "Text for highlighted features.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-text-feature-highlight-hover-active",
     "value": "linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2))",
     "description": "Text for hover and active states of highlighted features.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-feature-highlight",
@@ -3972,7 +4032,9 @@
     "name": "--intergalactic-icon-primary-feature-highlight-hover-active",
     "value": "oklch(0.53 0.26 296)",
     "description": "Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight",
