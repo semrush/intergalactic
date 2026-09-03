@@ -257,6 +257,10 @@ SCell {
 
 SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCell[name='SELECT_ALL_ROWS'] {
   cursor: pointer;
+
+  &[disabled] {
+    cursor: default;
+  }
 }
 
 SCheckboxCell[aria-hidden] {

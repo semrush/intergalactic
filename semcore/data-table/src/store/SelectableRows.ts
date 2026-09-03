@@ -1,4 +1,5 @@
 import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
+import logger from '@semcore/core/lib/utils/logger';
 
 import type { DTRow } from '../components/Body/Row.types';
 import { UNIQ_ROW_KEY } from '../components/DataTable/DataTable';
@@ -14,6 +15,11 @@ export interface ISelectedRows<UniqKeyType> {
 
   /** Check if the row is selected */
   isChecked(key: UniqKeyType): boolean;
+
+  /**
+   * Check is exceeded max available selectable rows.
+   */
+  isExceeded(): boolean;
 
   /** Replace the list of keys.  */
   replace(value: UniqKeyType[]): void;
@@ -49,6 +55,15 @@ type Events<UniqRowKeyType> = {
   [SelectableRows.TOGGLE_EVENT]: (val: UniqRowKeyType) => void;
   [SelectableRows.SELECT_ALL_EVENT]: () => void;
   [SelectableRows.SET_INDETERMINATE_EVENT]: () => void;
+  [SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT]: (isExceeded: boolean) => void;
+};
+
+type Options = {
+  /**
+   * Max available rows to select. Once exceeded, unselected checkboxes will be disabled.
+   * @default -1 - unlimited.
+   */
+  maxAvailableCount?: number;
 };
 
 export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowKeyType>> implements ISelectedRows<UniqRowKeyType> {
@@ -56,18 +71,25 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
   private availableKeys = new Set<UniqRowKeyType>();
 
+  private maxAvailableCount = -1;
+
   private lastSelectedRow: UniqRowKeyType | null = null;
 
   public static TOGGLE_EVENT = 'toggle_selected_row' as const;
   public static SELECT_ALL_EVENT = 'select_all_selected_rows' as const;
   public static SET_INDETERMINATE_EVENT = 'set_indeterminate' as const;
+  public static MAX_LIMIT_REACHED_CHANGE_EVENT = 'set_exceeded_max_limit' as const;
 
   public isPressedShift: boolean = false;
 
-  constructor(initValues: UniqRowKeyType[] = []) {
+  constructor(initValues: UniqRowKeyType[] = [], options: Options = {}) {
     super();
 
     this.values = new Set<UniqRowKeyType>(initValues);
+
+    if (options.maxAvailableCount !== undefined) {
+      this.maxAvailableCount = options.maxAvailableCount;
+    }
   }
 
   public setAvailableKeys(value: UniqRowKeyType[]): void {
@@ -80,6 +102,10 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
   public isChecked(key: UniqRowKeyType): boolean {
     return this.values.has(key);
+  }
+
+  public isExceeded(): boolean {
+    return this.maxAvailableCount >= 0 && this.values.size >= this.maxAvailableCount;
   }
 
   public replace(value: UniqRowKeyType[]): void {
@@ -128,10 +154,15 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
   public selectAll(): void {
     for (const key of this.availableKeys.values()) {
-      this.values.add(key);
-      this.emit(SelectableRows.TOGGLE_EVENT, key);
+      if (this.maxAvailableCount === -1 || this.values.size < this.maxAvailableCount) {
+        this.values.add(key);
+        this.emit(SelectableRows.TOGGLE_EVENT, key);
+      }
     }
 
+    if (this.values.size === this.maxAvailableCount) {
+      this.emit(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, true);
+    }
     this.emit(SelectableRows.SELECT_ALL_EVENT);
   }
 
@@ -142,6 +173,9 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
       this.emit(SelectableRows.TOGGLE_EVENT, key);
     }
 
+    if (this.maxAvailableCount > -1) {
+      this.emit(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, false);
+    }
     this.emit(SelectableRows.SELECT_ALL_EVENT);
   }
 
@@ -149,6 +183,10 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
     for (const key of this.availableKeys.values()) {
       this.values.delete(key);
       this.emit(SelectableRows.TOGGLE_EVENT, key);
+    }
+
+    if (this.maxAvailableCount > -1 && this.availableKeys.size > 0) {
+      this.emit(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, false);
     }
 
     this.emit(SelectableRows.SELECT_ALL_EVENT);
@@ -182,21 +220,34 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
   private toggleOneRow(isSelected: boolean, key: UniqRowKeyType): void {
     if (isSelected) {
-      if (!this.isIndeterminate()) {
-        this.emit(SelectableRows.SET_INDETERMINATE_EVENT);
-      }
+      if (this.maxAvailableCount === -1 || this.values.size < this.maxAvailableCount) {
+        if (!this.isIndeterminate()) {
+          this.emit(SelectableRows.SET_INDETERMINATE_EVENT);
+        }
 
-      this.values.add(key);
+        this.values.add(key);
 
-      if (this.isAllSelected()) {
-        this.emit(SelectableRows.SELECT_ALL_EVENT);
+        if (this.isAllSelected()) {
+          this.emit(SelectableRows.SELECT_ALL_EVENT);
+        }
+        if (this.values.size === this.maxAvailableCount) {
+          this.emit(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, true);
+        }
+      } else {
+        logger.warn(true, 'The maximum number of rows to select has been exceeded', 'DataTable.SelectableRowsStore');
       }
     } else {
       if (this.isAllSelected()) {
         this.emit(SelectableRows.SET_INDETERMINATE_EVENT);
       }
 
+      const isExceeded = this.isExceeded();
+
       this.values.delete(key);
+
+      if (isExceeded && !this.isExceeded()) {
+        this.emit(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, false);
+      }
 
       if (this.values.size === 0) {
         this.emit(SelectableRows.SELECT_ALL_EVENT);

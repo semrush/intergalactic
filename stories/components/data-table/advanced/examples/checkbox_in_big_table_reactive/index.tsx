@@ -4,24 +4,36 @@ import {
 } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import { SelectableRows } from '@semcore/ui/data-table';
+import Notice from '@semcore/ui/notice';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 import { Table } from './table';
-import { ScreenReaderSelectedAllAnnouncement, useSelectedRowsCount } from '../../../docs/examples/checkbox-in-table';
+import {
+  ScreenReaderSelectedAllAnnouncement,
+  useExceededMaxLimit,
+  useSelectedRowsCount,
+} from '../../../docs/examples/checkbox-in-table';
 
 type CheckboxExampleProps = {
   loading: boolean;
   sideIndents?: 'wide';
   compact?: boolean;
   variant?: 'default' | 'card';
+  maxAvailableSelectedRows: number;
 };
 
-const selectedRows = new SelectableRows<string>();
+const selectedRows = new SelectableRows<string>([], { maxAvailableCount: -1 });
 
 const Demo = (props: CheckboxExampleProps) => {
-  const { count: selectedRowsDisplay } = useSelectedRowsCount(selectedRows);
   const tableRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    // @ts-expect-error this is private property
+    selectedRows.maxAvailableCount = props.maxAvailableSelectedRows;
+  }, [props.maxAvailableSelectedRows]);
+
+  const { count: selectedRowsDisplay } = useSelectedRowsCount(selectedRows);
+  const { isExceeded } = useExceededMaxLimit(selectedRows);
 
   const handleDeselectAll = () => {
     selectedRows.clearAll();
@@ -66,6 +78,11 @@ const Demo = (props: CheckboxExampleProps) => {
               Deselect all
             </Button>
           )}
+          {isExceeded && (
+            <Notice theme='warning' px={2} py={0}>
+              <Notice.Text>Max allowed selectable rows have been exceeded</Notice.Text>
+            </Notice>
+          )}
         </Flex>
         <Table
           selectedRows={selectedRows}
@@ -85,6 +102,7 @@ export const defaultProps: CheckboxExampleProps = {
   sideIndents: undefined,
   compact: undefined,
   variant: undefined,
+  maxAvailableSelectedRows: -1,
 };
 
 Demo.defaultProps = defaultProps;

@@ -127,6 +127,20 @@ Demo.defaultProps = defaultProps;
 
 export default Demo;
 
+export const useExceededMaxLimit = (selectedRows: SelectableRows<any>) => {
+  const [isExceeded, setIsExceeded] = React.useState(false);
+
+  React.useEffect(() => {
+    const unsubscribe = selectedRows.on(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, (isExceeded: boolean) => {
+      setIsExceeded(isExceeded);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  return { isExceeded };
+};
+
 export const useSelectedRowsCount = (selectedRows: SelectableRows<any>) => {
   const [count, setCount] = React.useState(0);
 

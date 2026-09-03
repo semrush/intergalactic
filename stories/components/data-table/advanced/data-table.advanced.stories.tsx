@@ -48,6 +48,10 @@ const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigReactiveTableDefaul
     options: [undefined, 'default', 'card'],
     defaultValue: undefined,
   },
+  maxAvailableSelectedRows: {
+    control: 'number',
+    defaultValue: -1,
+  },
 };
 
 export default meta;
