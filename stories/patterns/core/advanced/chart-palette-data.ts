@@ -7,3 +7,10 @@ export const chartPaletteLines = Array.from({ length: 20 }, (_, i) => ({
     ]),
   ),
 }));
+
+export const chartSemanticLines = Array.from({ length: 20 }, (_, i) => ({
+  x: i,
+  critical: Math.abs(Math.sin(Math.exp(i) + 0.2)) * 10,
+  success: Math.abs(Math.sin(Math.exp(i) + 1.5)) * 10,
+  warning: Math.abs(Math.sin(Math.exp(i) + 3)) * 10,
+}));

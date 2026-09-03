@@ -240,7 +240,6 @@
       "input",
       "modal",
       "side-panel",
-      "slider",
       "tab-panel",
       "textarea"
     ]
@@ -490,6 +489,7 @@
       "base-trigger",
       "bulk-textarea",
       "button",
+      "color-picker",
       "counter",
       "d3-chart",
       "date-picker",
@@ -499,7 +499,6 @@
       "fullscreen-modal",
       "input",
       "side-panel",
-      "slider",
       "tab-panel",
       "textarea",
       "time-picker"
@@ -532,7 +531,6 @@
       "date-picker",
       "dropdown",
       "notice",
-      "slider",
       "tooltip"
     ]
   },
@@ -650,19 +648,19 @@
   },
   {
     "name": "--intergalactic-chart-data-critical",
-    "value": "oklch(0.64 0.226 24.5)",
+    "value": "oklch(0.74 0.19 22)",
     "description": "Critical data color for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-data-success",
-    "value": "oklch(0.74 0.17 170)",
+    "value": "oklch(0.82 0.19 143)",
     "description": "Success data color for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-data-warning",
-    "value": "oklch(0.74 0.19 53)",
+    "value": "oklch(0.82 0.156 61.6)",
     "description": "Warning data color for charts.",
     "components": []
   },
@@ -777,13 +775,13 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-6",
-    "value": "oklch(0.74 0.19 22)",
+    "value": "oklch(0.82 0.088 272.1)",
     "description": "6 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-7",
-    "value": "oklch(0.82 0.088 272.1)",
+    "value": "oklch(0.74 0.225 330)",
     "description": "7 color in the default list of colors for charts.",
     "components": []
   },
@@ -827,7 +825,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-14",
-    "value": "oklch(0.64 0.226 24.5)",
+    "value": "oklch(0.82 0.18 330)",
     "description": "14 color in the default list of colors for charts.",
     "components": []
   },
@@ -857,7 +855,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-19",
-    "value": "oklch(0.53 0.206 27.3)",
+    "value": "oklch(0.53 0.217 330)",
     "description": "19 color in the default list of colors for charts.",
     "components": []
   },
@@ -1093,8 +1091,7 @@
     "components": [
       "button",
       "dropdown",
-      "feature-highlight",
-      "slider"
+      "feature-highlight"
     ]
   },
   {
@@ -1110,8 +1107,7 @@
     "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the regular primary control.",
     "components": [
-      "button",
-      "slider"
+      "button"
     ]
   },
   {
@@ -1257,37 +1253,49 @@
     "name": "--intergalactic-control-slider-bar-bg",
     "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
     "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-value-bg",
     "value": "oklch(0.23 0.01 140)",
     "description": "Filled part of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-bg",
     "value": "#ffffff",
     "description": "Knob fill color of the Slider.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-border",
     "value": "oklch(0.23 0.01 140)",
     "description": "Knob border color of the Slider in its normal state.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-border-hover",
     "value": "oklch(0.32 0.007 140)",
     "description": "Knob border color of the Slider in its hover state.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-rating-icon",
@@ -2110,7 +2118,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
-    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.157 0.029 176 / 0.11) 0%)",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 0%, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 75%, oklch(0.157 0.029 176 / 0.11) 0%)",
     "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2127,6 +2135,14 @@
   {
     "name": "--intergalactic-progress-bar-value-gradient",
     "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 75%, oklch(0.22 0.01 140) 0%)",
+    "description": "Value with gradient for the ProgressBar.",
+    "components": [
+      "progress-bar"
+    ]
+  },
+  {
+    "name": "--intergalactic-progress-bar-value-gradient-invert",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 75%, oklch(0.74 0.17 303) 0%)",
     "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2987,6 +3003,7 @@
       "bulk-textarea",
       "card",
       "checkbox",
+      "color-picker",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -3403,6 +3420,7 @@
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea",
+      "color-picker",
       "feature-popover",
       "fullscreen-modal",
       "notice-bubble",
@@ -3443,7 +3461,9 @@
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "components": [
+      "color-picker"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
@@ -3469,6 +3489,7 @@
       "base-trigger",
       "button",
       "checkbox",
+      "color-picker",
       "dropdown",
       "dropdown-menu",
       "input",
@@ -3502,6 +3523,7 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "color-picker",
       "fullscreen-modal",
       "notice-bubble",
       "pagination"
