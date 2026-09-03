@@ -50,9 +50,6 @@ const Demo = (props: TableInTableProps) => {
 
   const { count: selectedRowsCount } = useSelectedRowsCount(selectedRows);
   const { isExceeded } = useExceededMaxLimit(selectedRows);
-  // the store doesn't emit anything when the limit itself changes,
-  // so derive it here to keep the Storybook control in sync
-  const isLimitReached = isExceeded || (maxAvailableCount >= 0 && selectedRowsCount >= maxAvailableCount);
 
   const [expanded] = React.useState(() => {
     const map = new Map<number, Set<string>>();
@@ -94,7 +91,7 @@ const Demo = (props: TableInTableProps) => {
         <Button use='tertiary' onClick={() => selectedRows.clearAllAvailable()}>
           Deselect this page
         </Button>
-        {isLimitReached && (
+        {isExceeded && (
           <Notice theme='warning' px={2} py={0}>
             <Notice.Text>Max allowed selectable rows have been exceeded</Notice.Text>
           </Notice>
