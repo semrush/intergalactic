@@ -32,7 +32,12 @@ exports[`SidePanel > Verify data-ui-name 1`] = `
                           "uiName": "Link.Addon",
                         },
                         {
-                          "children": [],
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "ButtonLink.Text",
+                            },
+                          ],
                           "uiName": "Link.Text",
                         },
                       ],

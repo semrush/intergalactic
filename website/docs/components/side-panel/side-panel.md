@@ -30,11 +30,11 @@ Use [Modal dialogs](/components/modal/modal) to show important information or re
 Component consists of the following:
 
 1. `SidePanel.Header`
-3. `SidePanel.Title`
-4. `SidePanel.Close`
-5. `SidePanel.Body`
-6. `SidePanel.Footer`
-7. `SidePanel.Overlay`
+2. `SidePanel.Title`
+3. `SidePanel.Close`
+4. `SidePanel.Body`
+5. `SidePanel.Footer`
+6. `SidePanel.Overlay`
 
 ## Trigger
 

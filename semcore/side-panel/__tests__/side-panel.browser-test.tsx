@@ -12,9 +12,11 @@ export const locators = {
   header: (page: Page) => page.locator('[data-ui-name="SidePanel.Header"]'),
   body: (page: Page) => page.locator('[data-ui-name="SidePanel.Body"]'),
   footer: (page: Page) => page.locator('[data-ui-name="SidePanel.Footer"]'),
-  title: (page: Page) => page.locator('h6[data-ui-name="SidePanel.Title"]'),
-  backButton: (page: Page) => page.locator('h6[data-ui-name="SidePanel.Title"] [data-ui-name="ButtonLink"]'),
-  titleText: (page: Page) => page.locator('h6[data-ui-name="SidePanel.Title"] [data-ui-name="Text"]'),
+  // Title renders as h6 by default, but examples may override the tag (e.g. tag={Flex}),
+  // so the locators must not depend on the rendered tag name.
+  title: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"]'),
+  backButton: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"] [data-ui-name="ButtonLink"]'),
+  titleText: (page: Page) => page.locator('[data-ui-name="SidePanel.Title"] [data-ui-name="Text"]'),
   dialog: (page: Page) => page.getByRole('dialog'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 
@@ -89,9 +91,11 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(locators.body(page)).toHaveCSS('padding-bottom', '16px');
       });
 
-      await test.step('Verify body styles', async () => {
+      await test.step('Verify footer styles', async () => {
         await expect(locators.footer(page)).toHaveCSS('padding-top', '8px');
-        await expect(locators.footer(page)).toHaveCSS('padding-top', '8px');
+        await expect(locators.footer(page)).toHaveCSS('padding-bottom', '8px');
+        await expect(locators.footer(page)).toHaveCSS('padding-left', '24px');
+        await expect(locators.footer(page)).toHaveCSS('padding-right', '24px');
       });
 
       const box = await locators.title(page).boundingBox();
