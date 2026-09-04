@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.0] - 2026-09-04
+
+### Added
+
+- `SlackColored` icon
+
+### Fixed
+
+- Incorrect exported types for all icons.
+- Prevent applying `color` when the corresponding CSS variable is
+undefined.
+
 ## [17.2.0] - 2026-06-05
 
 ### Added

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.4.2] - 2026-09-04
+
+### Fixed
+
+- The aria-invalod attribute for the invalid state was missing.
+
 ## [17.4.1] - 2026-07-24
 
 ### Fixed

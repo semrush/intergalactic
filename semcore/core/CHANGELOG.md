@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.1] - 2026-09-04
+
+### Fixed
+
+- Style merging mechanism.
+- Performance regression for `useScrollBarWidth` hook.
+
 ## [17.3.0] - 2026-07-30
 
 ### Added

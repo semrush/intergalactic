@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.3.1] - 2026-09-04
+
+### Fixed
+
+- Update base background of the Chart.Bar and CompactHorizontalBar.
+- Some states in the Cigarette with empty values.
+- The cigarette tooltip displayed hardcoded text instead of the value
+from the props.
+
 ## [17.3.0] - 2026-06-26
 
 ### Fixed

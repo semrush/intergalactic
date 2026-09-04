@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [17.2.4] - 2026-09-04
+
+### Changed
+
+- Refactor component types. Deprecated atomic types. Atomic types are
+part of `NSTimePicker` namespace.
+
 ## [17.2.3] - 2026-07-24
 
 ### Fixed
