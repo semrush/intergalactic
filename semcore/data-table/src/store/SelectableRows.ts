@@ -180,12 +180,18 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
   }
 
   public clearAllAvailable(): void {
+    let atLeastOneDeleted = false;
+
     for (const key of this.availableKeys.values()) {
-      this.values.delete(key);
+      const isDeleted = this.values.delete(key);
       this.emit(SelectableRows.TOGGLE_EVENT, key);
+
+      if (!atLeastOneDeleted && isDeleted) {
+        atLeastOneDeleted = true;
+      }
     }
 
-    if (this.maxAvailableCount > -1 && this.availableKeys.size > 0) {
+    if (this.maxAvailableCount > -1 && atLeastOneDeleted) {
       this.emit(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, false);
     }
 
