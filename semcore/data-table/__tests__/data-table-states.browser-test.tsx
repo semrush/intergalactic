@@ -787,18 +787,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
 
       await test.step('Verify action bar when one checkbox is checked and unchecked', async () => {
-        firstColumnCells.nth(3).click();
+        await firstColumnCells.nth(3).click();
         await expect(collapse).toBeVisible();
         await expect(region).toHaveAttribute('role', 'region');
 
-        firstColumnCells.nth(3).click();
+        await firstColumnCells.nth(3).click();
         await expect(collapse).toBeHidden();
 
-        firstColumnCells.nth(3).click();
+        await firstColumnCells.nth(3).click();
         await expect(collapse).toBeVisible();
 
-        const button = page.locator('[data-ui-name="Button"]');
-        button.click();
+        await deselectAllButton.click();
         await expect(collapse).toBeHidden();
       });
 
@@ -819,46 +818,59 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(selectAllCheckbox).not.toBeChecked();
       });
 
-      await test.step('Verify action bar when all items on next page checked', async () => {
+      // the example is configured with maxAvailableCount: 7, so a cross-page select all
+      // stops at 7 of the 23 rows instead of selecting every row on the page
+      await test.step('Verify select all on the next page stops at maxAvailableCount', async () => {
         await selectAllCheckbox.click();
 
-        await expect(selectedRowsCount).toHaveText('10');
-        await expect(selectAllCheckbox).toBeChecked();
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        await expect(selectedRowsCount).toHaveText('7');
+        await expect(rowCheckboxes.nth(0).locator('input')).toBeChecked();
+        await expect(rowCheckboxes.nth(1).locator('input')).toBeChecked();
+        await expect(rowCheckboxes.nth(2).locator('input')).not.toBeChecked();
       });
 
-      await test.step('Verify action bar when one item on next page unchecked', async () => {
+      await test.step('Verify rows above the limit are disabled and the header is not fully checked', async () => {
+        await expect(rowCheckboxes.nth(2).locator('input')).toBeDisabled();
+        await expect(rowCheckboxes.nth(3).locator('input')).toBeDisabled();
+        await expect(rowCheckboxes.nth(4).locator('input')).toBeDisabled();
+
+        await expect(selectAllCheckbox).not.toBeChecked();
+        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+      });
+
+      await test.step('Verify unchecking a row below the limit re-enables the rest', async () => {
         await rowCheckboxes.first().click();
 
-        await expect(rowCheckboxes.first()).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
-        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        for (let i = 1; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        await expect(rowCheckboxes.first().locator('input')).not.toBeChecked();
+        await expect(selectedRowsCount).toHaveText('6');
+        await expect(rowCheckboxes.nth(2).locator('input')).toBeEnabled();
+        await expect(rowCheckboxes.nth(3).locator('input')).toBeEnabled();
       });
 
-      await test.step('Verify action bar when next page opened', async () => {
+      await test.step('Verify the selected count survives paging', async () => {
         await nextButton.click();
 
         await expect(selectAllCheckbox).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
+        await expect(selectedRowsCount).toHaveText('6');
         for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
       });
 
-      await test.step('Verify indeterminate state saved when prev button is opened', async () => {
+      await test.step('Verify the selection state is restored when the prev page is opened', async () => {
         await prevButton.click();
+
         await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        await expect(rowCheckboxes.first()).not.toBeChecked();
-        for (let i = 1; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+        await expect(rowCheckboxes.first().locator('input')).not.toBeChecked();
+        await expect(rowCheckboxes.nth(1).locator('input')).toBeChecked();
       });
 
-      await test.step('Verify checked state on all pages changes to undhecked by click on Deselect all', async () => {
+      await test.step('Verify the first page is still fully checked', async () => {
         await prevButton.click();
-        await expect(selectAllCheckbox).toBeChecked();
 
+        await expect(selectAllCheckbox).toBeChecked();
+      });
+
+      await test.step('Verify Deselect all clears the selection on every page', async () => {
         await deselectAllButton.click();
 
         await expect(collapse).toBeHidden();
@@ -873,6 +885,192 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
+    test('Verify checkboxes are disabled when maxAvailableCount is reached', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        maxAvailableSelectedRows: 2,
+      });
+
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      // the native input carries checked/disabled; it is visually hidden, so clicks go to the wrapper
+      const selectAllInput = selectAllCheckbox.locator('input');
+      const rowInput = (index: number) => rowCheckboxes.nth(index).locator('input');
+
+      await test.step('Verify nothing is disabled before the limit is reached', async () => {
+        await expect(selectAllInput).toBeEnabled();
+        await expect(rowInput(0)).toBeEnabled();
+        await expect(rowInput(1)).toBeEnabled();
+        await expect(rowInput(2)).toBeEnabled();
+      });
+
+      await test.step('Verify checkboxes stay enabled while under the limit', async () => {
+        await rowCheckboxes.nth(0).click();
+
+        await expect(rowInput(0)).toBeChecked();
+        await expect(rowInput(1)).toBeEnabled();
+        await expect(rowInput(2)).toBeEnabled();
+      });
+
+      await test.step('Verify unselected rows are disabled once the limit is reached', async () => {
+        await rowCheckboxes.nth(1).click();
+
+        await expect(rowInput(1)).toBeChecked();
+        await expect(rowInput(2)).toBeDisabled();
+        await expect(rowInput(3)).toBeDisabled();
+      });
+
+      await test.step('Verify already selected rows stay clickable so they can be unselected', async () => {
+        await expect(rowInput(0)).toBeEnabled();
+        await expect(rowInput(1)).toBeEnabled();
+      });
+
+      await test.step('Verify the indeterminate header checkbox is disabled at the limit', async () => {
+        await expect(selectAllInput).toBeDisabled();
+      });
+
+      await test.step('Verify unselecting a row re-enables everything', async () => {
+        await rowCheckboxes.nth(0).click();
+
+        await expect(rowInput(0)).not.toBeChecked();
+        await expect(rowInput(2)).toBeEnabled();
+        await expect(rowInput(3)).toBeEnabled();
+        await expect(selectAllInput).toBeEnabled();
+      });
+    });
+
+    test('Verify select all respects maxAvailableCount and deselect all stays available', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        maxAvailableSelectedRows: 3,
+      });
+
+      const collapse = locators.collapse(page);
+      const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const selectAllInput = selectAllCheckbox.locator('input');
+      const rowInput = (index: number) => rowCheckboxes.nth(index).locator('input');
+
+      await test.step('Verify select all stops at the limit instead of selecting every row', async () => {
+        await selectAllCheckbox.click();
+
+        await expect(selectedRowsCount).toHaveText('3');
+        await expect(rowInput(0)).toBeChecked();
+        await expect(rowInput(1)).toBeChecked();
+        await expect(rowInput(2)).toBeChecked();
+        await expect(rowInput(3)).not.toBeChecked();
+      });
+
+      await test.step('Verify the header checkbox is not fully checked when the selection was capped', async () => {
+        await expect(selectAllInput).not.toBeChecked();
+        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+      });
+
+      await test.step('Verify a capped selection can still be cleared from the action bar', async () => {
+        await collapse.getByRole('button', { name: 'Deselect all' }).click();
+
+        await expect(selectedRowsCount).toBeHidden();
+        await expect(rowInput(0)).not.toBeChecked();
+        await expect(rowInput(3)).toBeEnabled();
+      });
+    });
+
+    test('Verify header checkbox stays enabled when the limit is spent on another page', {
+      tag: [TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      // by design: the header checkbox is only disabled in the indeterminate state. With the
+      // limit spent on another page it stays enabled, so the click reports the limit instead of
+      // silently offering nothing — it just must not change the selection
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        pagination: true,
+        pageSize: 5,
+        maxAvailableSelectedRows: 2,
+      });
+
+      const selectedRowsCount = locators.collapse(page).locator('[data-ui-name="Text"]').nth(1);
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const selectAllInput = selectAllCheckbox.locator('input');
+      const nextButton = page.locator('[data-ui-name="Pagination.NextPage"]');
+
+      await test.step('Verify the header checkbox is disabled while this page is partially selected', async () => {
+        await rowCheckboxes.nth(0).click();
+        await rowCheckboxes.nth(1).click();
+
+        await expect(selectedRowsCount).toHaveText('2');
+        await expect(selectAllInput).toBeDisabled();
+      });
+
+      await test.step('Verify it becomes enabled on a page with nothing selected', async () => {
+        await nextButton.click();
+
+        await expect(rowCheckboxes).toHaveCount(5);
+        await expect(selectAllInput).toBeEnabled();
+        await expect(selectAllInput).not.toBeChecked();
+      });
+
+      await test.step('Verify clicking it does not select anything beyond the limit', async () => {
+        await selectAllCheckbox.click();
+
+        await expect(selectedRowsCount).toHaveText('2');
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
+      });
+
+      await test.step('Verify the rows on that page are disabled', async () => {
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i).locator('input')).toBeDisabled();
+      });
+    });
+
+    test('Verify a fully checked header checkbox stays clickable at the limit', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      // regression guard: the header checkbox used to be disabled whenever the limit was
+      // reached, which blocked deselect-all once every visible row was selected
+      await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
+        pagination: true,
+        pageSize: 5,
+        maxAvailableSelectedRows: 5,
+      });
+
+      const selectedRowsCount = locators.collapse(page).locator('[data-ui-name="Text"]').nth(1);
+      const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
+      const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const selectAllInput = selectAllCheckbox.locator('input');
+
+      await test.step('Verify all rows of the page are selected and the limit is reached', async () => {
+        await selectAllCheckbox.click();
+
+        await expect(selectedRowsCount).toHaveText('5');
+        await expect(selectAllInput).toBeChecked();
+      });
+
+      await test.step('Verify the checked header checkbox is still enabled', async () => {
+        await expect(selectAllInput).toBeEnabled();
+      });
+
+      await test.step('Verify clicking it deselects every row', async () => {
+        await selectAllCheckbox.click();
+
+        await expect(selectAllInput).not.toBeChecked();
+        await expect(selectedRowsCount).toBeHidden();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
+      });
+    });
+
     test('Verify table with checkbox keyboard interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
@@ -881,12 +1079,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
       const firstHeader = locators.getHeadColumn(page, 1);
-      const firstColumnCells = page.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
       const headerCheckbox = firstHeader.locator('input');
       const collapse = locators.collapse(page);
       const selectedRowsCount = collapse.locator('[data-ui-name="Text"]').nth(1);
+      const deselectAllButton = collapse.getByRole('button', { name: 'Deselect all' });
       const selectAllCheckbox = page.locator('[data-ui-name="DataTable.Head"] [data-ui-name="Checkbox"]');
       const rowCheckboxes = page.locator('[data-ui-name="DataTable.Body"] [data-ui-name="Checkbox"]');
+      const prevButton = page.locator('[data-ui-name="Pagination.PrevPage"]');
 
       await test.step('Verify checkbox in header focused by tab', async () => {
         await page.keyboard.press('Tab');
@@ -922,68 +1121,56 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         for (let i = 0; i < await rowCheckboxes.count(); i++)
           await expect(rowCheckboxes.nth(i)).not.toBeChecked();
       });
-      await test.step('Verify panel when activating Select all on text page', async () => {
+      // the example is configured with maxAvailableCount: 7, so activating select all on the
+      // second page tops the selection up to 7 instead of checking every row on the page
+      await test.step('Verify activating Select all on the next page stops at maxAvailableCount', async () => {
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Shift+Tab');
         await page.keyboard.press('Space');
-        await expect(selectedRowsCount).toHaveText('10');
+
+        await expect(selectedRowsCount).toHaveText('7');
+        await expect(selectAllCheckbox).not.toBeChecked();
+        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
+        await expect(rowCheckboxes.nth(0).locator('input')).toBeChecked();
+        await expect(rowCheckboxes.nth(1).locator('input')).toBeChecked();
+      });
+
+      await test.step('Verify rows above the limit are disabled', async () => {
+        for (let i = 2; i < await rowCheckboxes.count(); i++) {
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
+          await expect(rowCheckboxes.nth(i).locator('input')).toBeDisabled();
+        }
+      });
+
+      // reaching the limit disables the header checkbox while it holds focus, so the grid drops
+      // out of the tab order here — the remaining steps focus the pagination and action bar
+      // controls explicitly instead of walking there with Tab
+      if (browserName === 'webkit') return; // because of pagination bug in safari
+
+      await test.step('Verify the previous page keeps its selection', async () => {
+        await prevButton.focus();
+        await page.keyboard.press('Enter');
+
+        await expect(selectedRowsCount).toHaveText('7');
         await expect(selectAllCheckbox).toBeChecked();
         for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+          await expect(rowCheckboxes.nth(i).locator('input')).toBeChecked();
       });
 
-      await test.step('Verify counter on the panel decreased and indeterminate state when uncheck one checkbox', async () => {
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('ArrowDown');
-        await page.keyboard.press('Space');
-        await expect(rowCheckboxes.nth(0)).toBeChecked();
-
-        await expect(rowCheckboxes.nth(1)).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
-        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        for (let i = 2; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
+      await test.step('Verify the header checkbox is operable again on a fully selected page', async () => {
+        await expect(selectAllCheckbox.locator('input')).toBeEnabled();
       });
-      await test.step('Verify panel when opening next page', async () => {
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).not.toBeChecked();
-        await expect(selectedRowsCount).toHaveText('9');
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).not.toBeChecked();
-      });
-      await test.step('Verify panel state saved on prev pages', async () => {
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).toHaveClass(/indeterminate/);
-        await expect(rowCheckboxes.nth(0)).toBeChecked();
 
-        await expect(rowCheckboxes.nth(1)).not.toBeChecked();
-        for (let i = 2; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i)).toBeChecked();
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Space');
-      });
-      if (browserName === 'webkit') return; // because of pagination bus in safari
-
-      await test.step('Verify panel hides when press Deselect all', async () => {
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Shift+Tab');
-        await page.keyboard.press('Space');
+      await test.step('Verify panel hides when Deselect all is activated', async () => {
+        await deselectAllButton.focus();
+        await page.keyboard.press('Enter');
 
         await expect(collapse).toBeHidden();
         await expect(selectedRowsCount).toBeHidden();
         await expect(selectAllCheckbox).not.toBeChecked();
-
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).not.toBeChecked();
-
-        await page.keyboard.press('Space');
-        await expect(selectAllCheckbox).not.toBeChecked();
+        for (let i = 0; i < await rowCheckboxes.count(); i++)
+          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
       });
     });
 
