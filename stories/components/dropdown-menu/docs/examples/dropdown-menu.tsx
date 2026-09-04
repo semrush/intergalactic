@@ -3,7 +3,6 @@ import Button from '@semcore/ui/button';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Link from '@semcore/ui/link';
 import SpinContainer from '@semcore/ui/spin-container';
-import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -42,16 +41,16 @@ const Demo = () => {
             px={3}
           >
             <DropdownMenu.Notice.Content>
-              <Text tag='strong' mb={1} style={{ display: 'block' }} id='export-notice-title'>
+              <DropdownMenu.Notice.Title id='export-notice-title'>
                 Export failed
-              </Text>
-              <Text>
+              </DropdownMenu.Notice.Title>
+              <DropdownMenu.Notice.Text>
                 If the problem persists, please contact us at
                 {' '}
                 <Link href='mailto:feedback@semrush.com'>
                   feedback@semrush.com
                 </Link>
-              </Text>
+              </DropdownMenu.Notice.Text>
             </DropdownMenu.Notice.Content>
           </DropdownMenu.Notice>
         </SpinContainer>

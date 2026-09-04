@@ -92,7 +92,7 @@ SActions {
   display: flex;
   align-items: center;
   gap: var(--intergalactic-spacing-content-gap-large, 8px);
-  margin-top: var(--intergalactic-spacing-content-padding-medium, 12px);
+  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
 SLabel {
@@ -147,11 +147,15 @@ SCloseIcon {
 STitle {
   grid-area: title;
   margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+
+  &[gridArea] {
+    grid-area: var(--gridArea);
+  }
 }
 
 SText {
   grid-area: text;
   grid-row: span 1; /* this is for the case when there is no title in the Notice */
-  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
-  margin-bottom: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+  margin-bottom: var(--intergalactic-spacing-content-padding-xsmall, 4px);
 }

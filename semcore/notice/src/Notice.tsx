@@ -73,10 +73,12 @@ class RootNotice extends Component<
     return { theme };
   }
 
-  getCloseIconProps() {
-    const { getI18nText } = this.asProps;
+  getTitleProps() {
+    const { icon } = this.asProps;
 
-    return { getI18nText };
+    return {
+      gridArea: icon !== undefined ? 'title' : 'icon',
+    };
   }
 
   getCloseProps() {

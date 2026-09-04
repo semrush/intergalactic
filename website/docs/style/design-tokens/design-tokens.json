@@ -3374,7 +3374,6 @@
     "description": "Extended extra small padding for content inside controls and surfaces.",
     "components": [
       "counter",
-      "notice",
       "pills"
     ]
   },
@@ -3408,7 +3407,6 @@
       "input",
       "input-tags",
       "modal",
-      "notice",
       "pills",
       "tab-panel",
       "textarea",
