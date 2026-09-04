@@ -4,7 +4,6 @@ import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import type { WithI18nEnhanceProps } from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
-import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import logger from '@semcore/core/lib/utils/logger';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import CloseIconM from '@semcore/icon/Close/m';
@@ -14,10 +13,6 @@ import React from 'react';
 import type { NSNotice } from './Notice.type';
 import style from './style/notice.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
-function isCustomTheme(theme: string) {
-  return !['danger', 'warning', 'success', 'info', 'muted'].includes(theme);
-}
 
 class RootNotice extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSNotice.Component>,
@@ -40,7 +35,6 @@ class RootNotice extends Component<
       map: Number.parseInt,
       prop: 'duration',
     }),
-    resolveColorEnhance(),
   ] as const;
 
   static defaultProps = {
@@ -74,15 +68,17 @@ class RootNotice extends Component<
   }
 
   getLabelProps() {
-    const { theme, resolveColor } = this.asProps;
+    const { theme } = this.asProps;
 
-    return { theme, resolveColor };
+    return { theme };
   }
 
-  getCloseIconProps() {
-    const { getI18nText } = this.asProps;
+  getTitleProps() {
+    const { icon } = this.asProps;
 
-    return { getI18nText };
+    return {
+      gridArea: icon !== undefined ? 'title' : 'icon',
+    };
   }
 
   getCloseProps() {
@@ -93,9 +89,9 @@ class RootNotice extends Component<
 
   render() {
     const SNotice = Root;
-    const { Children, styles, hidden, theme, resolveColor, getI18nText } = this.asProps;
-    const color = resolveColor(theme);
-    const useTheme = isCustomTheme(theme) ? 'custom' : theme;
+    const SIcon = Box;
+    const SIllustration = Box;
+    const { Children, styles, hidden, theme, getI18nText, icon, illustration } = this.asProps;
 
     let ariaLabel: string | undefined = getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification');
 
@@ -109,12 +105,16 @@ class RootNotice extends Component<
       <SNotice
         render={FadeInOut}
         visible={!hidden}
-        use:theme={useTheme}
-        backgroundColor={color}
         role={role}
         aria-label={ariaLabel}
         ref={this.ref}
+        __excludeProps={['icon', 'illustration']}
       >
+        {icon !== undefined && (
+          // @ts-expect-error we use theme in css-only
+          <SIcon theme={theme}>{icon}</SIcon>
+        )}
+        {illustration !== undefined && (<SIllustration>{illustration}</SIllustration>)}
         <Children />
       </SNotice>,
     );
@@ -124,11 +124,9 @@ class RootNotice extends Component<
 function Label(
   props: Intergalactic.InternalTypings.InferChildComponentProps<NSNotice.Label.Component, typeof RootNotice, 'Label'>,
 ) {
-  const { styles, theme, resolveColor } = props;
+  const { styles } = props;
   const SLabel = Root;
-  const useTheme = isCustomTheme(theme) ? 'custom' : theme;
-  const color = resolveColor(theme);
-  return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} color={color} />);
+  return sstyled(styles)(<SLabel render={Box} />);
 }
 
 function Title(

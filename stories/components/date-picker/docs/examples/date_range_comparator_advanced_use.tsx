@@ -2,6 +2,7 @@ import WarningIcon from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import { DateRangeComparator } from '@semcore/ui/date-picker';
 import Dropdown from '@semcore/ui/dropdown';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -44,25 +45,23 @@ const Demo = () => {
             </DateRangeComparator.Periods>
           </DateRangeComparator.Body>
           <DateRangeComparator.Footer>
-            Place for a hint, useful message or controls.
+            <Text size={200}>
+              Place for a hint, useful message or controls.
+            </Text>
           </DateRangeComparator.Footer>
           <Dropdown.Notice
             aria-labelledby='comparator-notice-title'
             theme='warning'
             style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+            icon={<WarningIcon />}
           >
-            <Dropdown.Notice.Content>
-              <Flex mb={1}>
-                <Dropdown.Notice.Label>
-                  <WarningIcon />
-                </Dropdown.Notice.Label>
-                <Dropdown.Notice.Title>
-                  Warning
-                </Dropdown.Notice.Title>
-              </Flex>
+            <Dropdown.Notice.Title>
+              Warning
+            </Dropdown.Notice.Title>
+            <Dropdown.Notice.Text>
               If you change your location, all previously collected data for this article will be
               lost.
-            </Dropdown.Notice.Content>
+            </Dropdown.Notice.Text>
           </Dropdown.Notice>
         </DateRangeComparator.Popper>
       </DateRangeComparator>

@@ -1,6 +1,12 @@
 SNotice {
-  display: flex;
-  padding: var(--intergalactic-spacing-4x, 16px);
+  display: grid;
+  grid-template-areas:
+    "icon title close"
+    "icon text close"
+    "icon actions close";
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   box-sizing: border-box;
@@ -8,6 +14,7 @@ SNotice {
   border-width: 1px;
   border-radius: var(--intergalactic-surface-rounded, 8px);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SNotice[theme='info'] {
@@ -76,63 +83,79 @@ SNotice[theme='muted'] {
 }
 
 SContent {
-  flex: 1 1 auto;
-  width: 100%;
+  display: contents;
 }
 
 SActions {
+  grid-area: actions;
   flex-shrink: 0;
-  margin-top: var(--intergalactic-spacing-3x, 12px);
+  display: flex;
+  align-items: center;
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }
 
 SLabel {
-  min-height: var(--intergalactic-form-control-m, 32px);
   height: fit-content;
-  margin-right: var(--intergalactic-spacing-2x, 8px);
   display: inline-flex;
   align-items: center;
+  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
 }
 
-SLabel[theme='info'] {
+SIcon {
+  grid-area: icon;
+  height: fit-content;
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--intergalactic-spacing-content-padding-small, 8px);
+}
+
+SIllustration {
+  grid-area: icon;
+  height: fit-content;
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+}
+
+SLabel[theme='info'], SIcon[theme='info'] {
   color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
-SLabel[theme='danger'] {
+SLabel[theme='danger'], SIcon[theme='danger'] {
   color: var(--intergalactic-icon-primary-critical, oklch(0.552 0.226 28.7 / 0.848));
 }
 
-SLabel[theme='warning'] {
+SLabel[theme='warning'], SIcon[theme='warning'] {
   color: var(--intergalactic-icon-primary-warning, oklch(0.728 0.188 51.8));
 }
 
-SLabel[theme='success'] {
+SLabel[theme='success'], SIcon[theme='success'] {
   color: var(--intergalactic-icon-primary-success, oklch(0.595 0.124 165.4));
 }
 
-SLabel[theme='muted'] {
+SLabel[theme='muted'], SIcon[theme='muted'] {
   color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
 }
 
-SLabel[theme='custom'] {
-  color: var(--color);
-}
-
 SCloseIcon {
+  grid-area: close;
   flex-shrink: 0;
-  margin-left: var(--intergalactic-spacing-4x, 16px);
-}
-
-SNotice[theme='custom'] {
-  background-color: var(--backgroundColor);
-  border-color: var(--backgroundColor);
+  margin-left: var(--intergalactic-spacing-content-padding-large, 16px);
 }
 
 STitle {
-  margin-top: var(--intergalactic-spacing-05x, 2px);
-  margin-bottom: var(--intergalactic-spacing-05x, 2px);
+  grid-area: title;
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+
+  &[gridArea] {
+    grid-area: var(--gridArea);
+  }
 }
 
 SText {
-  margin-top: var(--intergalactic-spacing-1x, 4px);
-  margin-bottom: var(--intergalactic-spacing-1x, 4px);
+  grid-area: text;
+  grid-row: span 1; /* this is for the case when there is no title in the Notice */
+  margin-top: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
+  margin-bottom: var(--intergalactic-spacing-content-padding-xsmall-extended, 6px);
 }

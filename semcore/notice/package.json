@@ -33,6 +33,7 @@
     "@semcore/core": "workspace:*",
     "@semcore/base-components": "workspace:*",
     "@semcore/icon": "workspace:*",
+    "@semcore/illustration": "workspace:*",
     "@semcore/testing-utils": "workspace:*"
   }
 }
