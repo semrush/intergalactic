@@ -38,6 +38,7 @@
     "@semcore/spin-container": "workspace:*",
     "@semcore/tooltip": "workspace:*",
     "@semcore/base-components": "workspace:*",
+    "@semcore/link": "workspace:*",
     "@semcore/icon": "workspace:*",
     "@types/node": "18.16.15",
     "csstype": "3.1.3"

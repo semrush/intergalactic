@@ -141,7 +141,7 @@ class RootLink extends Component<NSLink.Props, typeof RootLink.enhance, never, {
   }
 
   private isUrl(value: string): boolean {
-    return value.startsWith('//') || value.toLowerCase().startsWith('http');
+    return value.startsWith('//') || value.toLowerCase().startsWith('https://') || value.toLowerCase().startsWith('http://');
   }
 
   private get themeFallback(): NSLink.Props['theme'] {
