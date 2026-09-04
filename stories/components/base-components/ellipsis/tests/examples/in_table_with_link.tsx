@@ -44,7 +44,7 @@ const data = [{
 }];
 
 const pageLimit = 10;
-const recalculateContainerWidth = (width: number) => width - 55;
+const recalculateContainerWidth = (width: number) => width - 65;
 
 /** Which string goes into `link.text`. */
 export type TextPreset =
