@@ -267,6 +267,7 @@ class HeadRoot<
 
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
+    const isDisabledCheckbox = this.isDisabledCheckbox && indeterminate;
 
     return sstyled(styles)(
       <>
@@ -283,14 +284,14 @@ class HeadRoot<
           {selectedRows && (
             <SHeadCheckboxCol
               name={SELECT_ALL}
-              onClick={!this.isDisabledCheckbox ? this.handleClickSelectAll(!areAllRowsSelected) : undefined}
+              onClick={!isDisabledCheckbox ? this.handleClickSelectAll(!areAllRowsSelected) : undefined}
               // @ts-expect-error use it for css only
-              disabled={this.isDisabledCheckbox}
+              disabled={isDisabledCheckbox}
             >
               <Checkbox
                 checked={areAllRowsSelected}
                 indeterminate={indeterminate}
-                disabled={this.isDisabledCheckbox}
+                disabled={isDisabledCheckbox}
                 aria-label={getI18nText('DataTable.Header.selectAllCheckbox:aria-label')}
                 onChange={this.handleSelectAll}
               >
