@@ -155,14 +155,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify svg dimensions', async () => {
         const svg = locators.dateRangePickerTrigger(page, 4).locator('svg');
-        await checkStyle(svg, { paddingLeft: '8px', paddingRight: '8px' });
+        await checkStyle(svg, { paddingLeft: '12px', paddingRight: '6px' });
         await expect(svg).toHaveAttribute('width', '16');
         await expect(svg).toHaveAttribute('height', '16');
       });
 
       await test.step('Verify trigger separator padding', async () => {
         const separator = page.locator('[data-ui-name="DateRange.RangeSep"]').nth(1);
-        await checkStyle(separator, { paddingRight: '8px' });
+        await checkStyle(separator, { paddingRight: '12px' });
       });
 
       await test.step('Enter dates and open popper', async () => {
@@ -179,14 +179,14 @@ test.describe(`${TAG.VISUAL}`, () => {
           locator: locators.cells(page, 0),
           expectedStyles: {
             ...defaultCellStyles,
-            margin: '4px 0px 0px',
+            margin: '0px',
           },
         },
         {
           locator: locators.cells(page, 10),
           expectedStyles: {
             ...defaultCellStyles,
-            margin: '4px 0px 0px',
+            margin: '0px',
           },
         },
       ];
@@ -208,7 +208,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
         const cell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
-        await checkStyle(cell.nth(1), { margin: '4px 0px 0px', width: '32px', height: '32px' });
+        await checkStyle(cell.nth(1), { margin: '0px', width: '32px', height: '32px' });
       });
 
       await test.step('Verify style for Apply picker button', async () => {

@@ -5,13 +5,19 @@ import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 declare namespace NSLink {
-  type Props = NSBox.Props & NSText.BaseProps & {
-  /**
-   * CSS property of the display link (inline|inline-block)
-   * @default false
-   * @deprecated. You should use default inline-flex for all cases.
-   */
-    inline?: boolean;
+  type Theme = 'default' | 'light' | 'accent' | 'invert';
+  type Props = NSBox.Props & Intergalactic.InternalTypings.EfficientOmit<NSText.Props, 'use'> & {
+
+    /**
+     * @deprecated. Use `theme` instead.
+     */
+    use?: 'primary' | 'secondary';
+
+    /**
+     * Theme of Link.
+     * @default 'default'.
+     */
+    theme?: Theme;
     /**
    * Sets the link to the disabled state
    */
@@ -36,13 +42,24 @@ declare namespace NSLink {
    * @default top
    */
     hintPlacement?: NSHint.Props['placement'];
+    /** Flag to mark a link as external. Use it in SSR. */
+    isExternal?: boolean;
   };
   type State = {
     ariaLabelledByContent: string;
   };
 
+  type DefaultProps = {
+    theme: 'default';
+  };
+
   namespace Text {
-    type Props = NSText.Props;
+    type Props = Intergalactic.InternalTypings.EfficientOmit<NSText.Props, 'use'> & {
+      /**
+       * @deprecated. Use `theme` on the root level.
+       */
+      use?: 'primary' | 'secondary';
+    };
 
     type Component = Intergalactic.Component<'span', Props>;
   }
@@ -56,6 +73,7 @@ declare namespace NSLink {
   type Component = Intergalactic.Component<'a', Props> & {
     Text: Text.Component;
     Addon: Addon.Component;
+    ExternalIcon: typeof Icon;
   };
 }
 

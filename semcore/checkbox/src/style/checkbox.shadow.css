@@ -9,12 +9,16 @@ SLabel {
   }
 
   SText {
-    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
 
     &[disabled] {
       opacity: var(--intergalactic-disabled-opacity, 0.4);
     }
+  }
+
+  SText[size='l'] {
+    margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
   }
 
   SText[color] {
@@ -44,9 +48,9 @@ SCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+    background: var(--intergalactic-control-checkbox-bg-normal, oklch(1 0 0));
     border: 1px solid;
-    border-radius: var(--intergalactic-addon-rounded, 4px);
+    border-radius: var(--intergalactic-checkbox-rounded, 4px);
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
     outline-color: transparent;
   }
@@ -54,7 +58,7 @@ SCheckbox {
   &::after {
     content: '';
     position: absolute;
-    top: 1px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -64,31 +68,27 @@ SCheckbox {
   }
 
   &[state='normal']:before {
-    border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-  }
-
-  &[state='normal']:focus-visible:before {
-    border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+    border-color: var(--intergalactic-control-checkbox-border, oklch(0.137 0.026 175.7 / 0.161));
   }
 }
 
 SCheckbox[size='l'] {
   margin-top: var(--intergalactic-spacing-05x, 2px);
-  width: 20px;
-  height: 20px;
+  width: var(--intergalactic-spacing-5x, 20px);
+  height: var(--intergalactic-spacing-5x, 20px);
 
   &[checked]::after {
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+    background-image: var(--intergalactic-assets-checkmark-l, url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg=="));
   }
 }
 
 SCheckbox[size='m'] {
   margin-top: var(--intergalactic-spacing-05x, 2px);
-  width: 16px;
-  height: 16px;
+  width: var(--intergalactic-spacing-4x, 16px);
+  height: var(--intergalactic-spacing-4x, 16px);
 
   &[checked]::after {
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+    background-image: var(--intergalactic-assets-checkmark-m, url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4="));
   }
 }
 
@@ -103,16 +103,15 @@ SText[size='m'] {
   line-height: var(--intergalactic-lh-200, 142%);
 }
 
-
 SControl[checked]~SCheckbox[state='normal']:before,
 SControl[checked]~SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
 }
 
 SControl[indeterminate]~SCheckbox[state='normal']:before {
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
 }
 
 SCheckbox[state='invalid'],
@@ -137,15 +136,14 @@ SControl[disabled] ~ SCheckbox[state='invalid'] > SInvalidPattern {
   cursor: default;
 }
 
-SControl[checked]~SCheckbox {
-  &[state='invalid']:before {
-    background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5));
-    border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5));
-  }
+SControl[checked]~SCheckbox[state='invalid']:before,
+SControl[indeterminate]~SCheckbox[state='invalid']:before {
+  background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5));
+  border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5));
 }
 
 SControl[indeterminate]~SCheckbox:after {
-  background-color: #ffffff;
+  background-color: var(--intergalactic-control-checkbox-checkmark, oklch(1 0 0));
   margin: auto;
   /* disable-tokens-validator */
   border-radius: 1px;
@@ -153,17 +151,14 @@ SControl[indeterminate]~SCheckbox:after {
 
 SControl[indeterminate]~SCheckbox[size='l']:after {
   width: 12px;
-  height: 2px;
+  /* disable-tokens-validator */
+  height: 1.5px;
 }
 
 SControl[indeterminate]~SCheckbox[size='m']:after {
   width: 8px;
-  height: 2px;
-}
-
-SControl[indeterminate]~SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5));
-  border-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5));
+  /* disable-tokens-validator */
+  height: 1.5px;
 }
 
 SCheckbox[checked][theme][state='normal']:before {
@@ -186,7 +181,8 @@ SControl[indeterminate]~SCheckbox[theme][state='normal']:before {
 }
 
 SInvalidPattern {
-  height: calc(100% - 2px);
+  height: calc(100% - var(--intergalactic-spacing-05x, 2px));
+  /* disable-tokens-validator */
   margin: 1px 0 1px 1px;
   border-bottom-left-radius: var(--intergalactic-rounded-small, 4px);
   border-top-left-radius: var(--intergalactic-rounded-small, 4px);

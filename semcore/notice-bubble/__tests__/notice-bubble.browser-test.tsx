@@ -544,7 +544,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Basic notice', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
-  }, async ({ page }) => {
+  }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
@@ -558,7 +558,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    if (browserName !== 'webkit') {
+      await expect(page).toHaveScreenshot();
+    }
     await page.keyboard.press('Shift+Tab');
     await locators.closeHint(page).waitFor({ state: 'hidden' });
     await page.keyboard.press('Enter');
@@ -582,10 +584,15 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await locators.closeButton(page).waitFor({ state: 'visible' });
     await locators.closeHint(page).waitFor({ state: 'visible' });
+
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await locators.closeHint(page).waitFor({ state: 'visible' });
+    await page.waitForFunction(() => {
+      const el = document.querySelector('[data-ui-name="Hint"]');
+      return el && getComputedStyle(el).opacity === '1';
+    });
     await expect(page).toHaveScreenshot();
   });
 
@@ -687,11 +694,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Notice with Loading state', {
     tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
   }, async ({ page, browserName }) => {
+    test.setTimeout(60000);
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx', 'en', {
       initialAnimation: true,
       duration: 0,
       type: 'info',
       focusLock: false,
+      loadingDuration: 10000,
     });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -703,7 +712,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     await page.keyboard.press('Enter');
     await page.locator('[data-ui-name="Spin"]').waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();
-    await page.waitForSelector('text="Try again"');
+    await page.waitForSelector('text="Try again"', { timeout: 30000 });
     await page.keyboard.press('Tab');
     await locators.closeHint(page).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot();

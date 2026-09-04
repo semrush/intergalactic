@@ -2,11 +2,6 @@ SProgressBar {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: var(--intergalactic-progress-bar-bg, oklch(0.96 0.001 180));
-}
-
-SProgressBar[theme='dark'] {
-  background-color: var(--intergalactic-progress-bar-bg-invert, oklch(0.45 0.004 143.7));
 }
 
 SValue {
@@ -14,8 +9,6 @@ SValue {
   top: 0;
   left: 0;
   background-color: var(--intergalactic-progress-bar-value-bg, oklch(1 0 0));
-  background-image: var(--intergalactic-progress-bar-value-gradient,
-  linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 0%, oklch(from oklch(0.74 0.17 303) calc(l - 0.05) c h) 75%, oklch(0.74 0.17 303) 0%));
   overflow: hidden;
 
   animation-name: loading;
@@ -26,9 +19,12 @@ SValue {
   width: var(--width);
   animation-duration: var(--duration);
   transition-duration: var(--duration);
-}
 
-SValue[theme] {
+  &[stopAnimation] {
+    animation-name: none;
+  }
+}
+SProgressBar[theme] SValue[colorBg] {
   background-color: var(--colorBg);
   background-image: var(--colorBg);
 }
@@ -54,12 +50,6 @@ SValue[size='l'] {
   background-size: 16px 16px;
 }
 
-
-
-SProgressBar[theme='invert'] {
-  background-color: var(--intergalactic-progress-bar-bg, oklch(0.96 0.001 180));
-}
-
 @keyframes loading {
   from {
     background-position: 0 0;
@@ -71,13 +61,43 @@ SProgressBar[theme='invert'] {
 }
 
 SProgressBar[animation] {
-  background-color: var(--intergalactic-progress-bar-value-bg, oklch(1 0 0));
   background-image: var(--intergalactic-progress-bar-pattern-gradient,
-  linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.96 0.001 180) 0%, oklch(0.96 0.001 180) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.96 0.001 180) 0%));
+  linear-gradient(-45deg, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 0%, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 75%, oklch(0.157 0.029 176 / 0.11) 0%));
   animation-name: loading;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-duration: var(--duration);
+  
+  &:not([theme='invert']) {
+    background-color: transparent;
+  }
+}
+
+SProgressBar[theme='default'] {
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.157 0.029 176 / 0.11));
+
+  SValue {
+    background-image: var(--intergalactic-progress-bar-value-gradient,
+    linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 75%, oklch(0.22 0.01 140) 0%));
+  }
+}
+
+SProgressBar[theme='invert'] {
+  background-color: var(--intergalactic-progress-bar-bg-invert, oklch(0.987 0.023 140 / 0.212));
+
+  SValue {
+    background-image: var(--intergalactic-progress-bar-value-gradient-invert,
+    linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 75%, oklch(0.74 0.17 303) 0%));
+  }
+}
+
+SProgressBar[theme='brand'] {
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.157 0.029 176 / 0.11));
+
+  SValue {
+    background-image: var(--intergalactic-progress-bar-value-gradient-invert,
+    linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 75%, oklch(0.74 0.17 303) 0%));
+  }
 }
 
 SProgressBar[theme='custom'] {

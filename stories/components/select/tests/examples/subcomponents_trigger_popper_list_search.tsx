@@ -109,7 +109,7 @@ export const defaultProps: SelectComponentConfigProps = {
   triggerSize: 'm',
   triggerDisabled: undefined,
   triggerState: undefined,
-  triggerLoading: undefined,
+  triggerLoading: false,
 
   // List
   listSize: 'm',

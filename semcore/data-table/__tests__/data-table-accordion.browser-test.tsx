@@ -20,7 +20,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with custom component styles', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
       const cellActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-active');
@@ -94,11 +97,16 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion and custom component inside after keyboard interactions ', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en', { h: '100%' });
 
       await page.keyboard.press('Tab');
+      await expect(locators.toggle(page).nth(0)).toBeFocused();
+
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
       await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
@@ -107,6 +115,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowUp');
+      await expect(locators.toggle(page).nth(0)).toBeFocused();
       await page.keyboard.press('Enter');
       await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
       await expect(page).toHaveScreenshot();
@@ -114,7 +123,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify table component inside accordion', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -137,7 +148,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with renderCell function for parent', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button-link',
+        '@button',
+        '@d3-chart',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-render-cell.tsx', 'en');
 
@@ -181,7 +197,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     variantWithScrollBar.forEach((item) => {
       test(`Verify accordion with fixed Column withScrollBar=${item.withScrollBar}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@widget-empty',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
 
@@ -299,7 +317,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify accordion with themed rows', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@widget-empty',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/themed-parent-rows.tsx', 'en');
       const stylesExpanded = await getStylesExpanded(page);
@@ -402,7 +424,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify accordion with themed cells', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/colored-parent-cells', 'en');
       const stylesActiveHovered = await getStylesActiveHovered(page);
@@ -511,7 +536,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify table in table with sorting', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -575,7 +602,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     variantJustifyContent.forEach((item) => {
       test(`Verify accordion with justifyContent=${item.justifyContent}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@typography',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/for-animation-and-justify-content-test', 'en', item);
 
@@ -603,7 +632,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@ellipsis'],
+        '@ellipsis',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -687,7 +718,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@data-table',
-        '@ellipsis'],
+        '@ellipsis',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -755,7 +788,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify base keyboard interactions with accordion ', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -810,7 +846,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify base mouse interactions with accordion', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -865,7 +904,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     test('Verify accordion attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@d3-chart',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -903,7 +945,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table',
         '@select',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@checkbox',
+        '@inline-edit',
+        '@inline-input',
+        '@tooltip',
+        '@typography',
+        '@widget-empty',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-interactive-elements-in-cell-with-toggle.tsx', 'en');
 
@@ -930,7 +983,18 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table',
         '@select',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@checkbox',
+        '@inline-edit',
+        '@inline-input',
+        '@tooltip',
+        '@typography',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-interactive-elements-in-cell-with-toggle.tsx', 'en');
 
@@ -1047,7 +1111,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@ellipsis'],
+        '@ellipsis',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/with-sorting.tsx', 'en');
 
@@ -1428,7 +1494,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify accordion toggle mode works correctly with nested tables', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.FUNCTIONAL,
-      '@data-table'],
+      '@data-table',
+      '@typography',
+      '@widget-empty',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/table-in-table-in-table.tsx', 'en', {
       accordionMode: 'toggle',
@@ -1470,7 +1539,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify accordion after skeleton in table cell', {
     tag: [TAG.PRIORITY_HIGH,
-      '@data-table'],
+      '@data-table',
+      '@typography',
+      '@widget-empty',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/table-in-table/table-in-table-in-table.tsx', 'en', {
       withSkeletonsAndAsyncDataLoading: true,

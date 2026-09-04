@@ -1,8 +1,7 @@
 SHighlightedPill {
   border: 1px solid transparent;
   background:
-    linear-gradient(white, white) padding-box,
-    var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
+    linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
   z-index: 1;
@@ -46,14 +45,12 @@ SHighlightedPill {
   }
 
   &:hover {
-    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
+    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))) padding-box, var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
   }
 
   &[selected] {
     background:
-      var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))) padding-box,
-      var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1))) border-box;
+      var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))) padding-box, var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1))) border-box;
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-color: transparent;

@@ -73,11 +73,11 @@ SRangeIndicator {
 }
 
 SRangeIndicator[range='value'] {
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.64 0.152 276.7));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.01 140));
 }
 
 SRangeIndicator[range='compare'] {
-  background-color: var(--intergalactic-date-picker-cell-comparison-active, oklch(0.64 0.223 299.3));
+  background-color: var(--intergalactic-date-picker-cell-comparison-active, oklch(0.74 0.117 274.1));
 }
 
 SRangeIndicator[disabled] {
@@ -136,7 +136,7 @@ SInputMask[noHumanizedDate] SMask {
 }
 
 SDateRange SInputMask:focus-within SMask {
-  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.524 0.266 263.1 / 0.116));
+  background-color: var(--intergalactic-bg-highlight-focus, oklch(0.525 0.265 263 / 0.077));
 }
 
 SRangeSep[fulfilled],

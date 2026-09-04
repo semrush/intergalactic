@@ -46,7 +46,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Radio and Select UX pattern', {
-    tag: [TAG.PRIORITY_MEDIUM, '@radio', '@select'],
+    tag: [TAG.PRIORITY_MEDIUM, '@radio', '@select', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx', 'en');
 
@@ -67,7 +67,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Radio and Select UX pattern keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio', '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio', '@select', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx', 'en');
 
@@ -104,7 +104,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Radio and Select UX pattern mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio', '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio', '@select', '@base-components', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/radio-and-select.tsx', 'en');
 

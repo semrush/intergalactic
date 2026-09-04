@@ -7,9 +7,8 @@ import React from 'react';
 const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 
 const defaultTags = ['bob@email.com', 'alice@domain.net', 'mary@website.com', 'steve@company.com'];
-type ExampleInputTagsProps = NSInputTags.Tag.Props;
 
-const Demo = (props: ExampleInputTagsProps) => {
+const Demo = (props: NSInputTags.Tag.Props) => {
   const [tags, setTags] = React.useState(defaultTags);
   const [value, setValue] = React.useState('');
 
@@ -49,19 +48,24 @@ const Demo = (props: ExampleInputTagsProps) => {
         Participants
       </Text>
       <InputTags mt={2} onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-        {tags.map((tag, idx) => (
-          <InputTags.Tag
-            key={idx}
-            size={props.size}
-            theme={props.theme}
-            disabled={props.disabled}
-            editable={props.editable}
-            color={isValidEmail(tag) ? 'green-500' : 'red-500'}
-          >
-            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-            <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
-          </InputTags.Tag>
-        ))}
+        {tags.map((tag, idx) => {
+          const tagProps = (props.theme === 'primary' || props.theme === undefined)
+            ? { theme: props.theme, color: isValidEmail(tag) ? 'green-500' : 'red-500' }
+            : { theme: props.theme };
+
+          return (
+            <InputTags.Tag
+              key={idx}
+              size={props.size}
+              disabled={props.disabled}
+              editable={props.editable}
+              {...tagProps}
+            >
+              <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+              <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
+            </InputTags.Tag>
+          );
+        })}
         <InputTags.Value
           id='email'
           placeholder='Add email'
@@ -75,9 +79,8 @@ const Demo = (props: ExampleInputTagsProps) => {
   );
 };
 
-export const defaultPropsEmail: ExampleInputTagsProps = {
+export const defaultPropsEmail: NSInputTags.Tag.Props = {
   size: 'l',
-  theme: 'primary',
   disabled: false,
   editable: undefined,
 };

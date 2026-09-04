@@ -11,7 +11,7 @@ SButton {
   text-decoration: none;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid transparent;
+  border: none;
   box-shadow: none;
   cursor: pointer;
   box-sizing: border-box;
@@ -20,7 +20,7 @@ SButton {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   font-weight: var(--intergalactic-medium, 500);
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-control-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   min-width: fit-content;
 
   &::-moz-focus-inner {
@@ -49,213 +49,204 @@ SButton[size='s'] {
 }
 
 SButton[size='m'] {
-  height: var(--intergalactic-form-control-m, 28px);
+  height: var(--intergalactic-form-control-m, 32px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
+SButton[size='m']:has(SAddon:only-child) {
+  width: var(--intergalactic-form-control-m, 32px);
+  min-width: var(--intergalactic-form-control-m, 32px);
+}
+
 SButton[size='l'] {
-  height: var(--intergalactic-form-control-l, 40px);
+  height: var(--intergalactic-form-control-l, 44px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
 
+SButton[size='l']:has(SAddon:only-child) {
+  width: var(--intergalactic-form-control-l, 44px);
+  min-width: var(--intergalactic-form-control-l, 44px);
+}
+
 SButton[theme='primary-info'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-color: var(--intergalactic-control-primary-info-hover, oklch(0.32 0.007 140));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-color: var(--intergalactic-control-primary-info-active, oklch(0 0 140));
   }
 }
 
 SButton[theme='primary-success'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-color: var(--intergalactic-control-primary-success, oklch(0.64 0.161 170));
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-color: var(--intergalactic-control-primary-success-hover, oklch(0.6 0.155 170));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-color: var(--intergalactic-control-primary-success-active, oklch(0.58 0.151 170));
   }
 }
 
 SButton[theme='primary-brand'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  background-color: var(--intergalactic-control-primary-brand, oklch(0.64 0.223 299.3));
+  color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
+  background-color: var(--intergalactic-control-primary-brand, oklch(0.74 0.17 303));
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-primary-brand-hover, oklch(0.6 0.244 297.8));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
+    background-color: var(--intergalactic-control-primary-brand-hover, oklch(0.72 0.181 302.3));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-primary-brand-active, oklch(0.58 0.254 297.1));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
+    background-color: var(--intergalactic-control-primary-brand-active, oklch(0.7 0.191 301.5));
   }
 }
 
 SButton[theme='primary-warning'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  background-color: var(--intergalactic-control-primary-brand, oklch(0.64 0.223 299.3));
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  background-color: var(--intergalactic-control-primary-brand, oklch(0.74 0.17 303));
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-primary-brand-hover, oklch(0.6 0.244 297.8));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    background-color: var(--intergalactic-control-primary-brand-hover, oklch(0.72 0.181 302.3));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-primary-brand-active, oklch(0.58 0.254 297.1));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    background-color: var(--intergalactic-control-primary-brand-active, oklch(0.7 0.191 301.5));
   }
 }
 
 SButton[theme='primary-danger'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-color: var(--intergalactic-control-primary-critical, oklch(0.64 0.226 24.5));
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-color: var(--intergalactic-control-primary-critical-hover, oklch(0.6 0.219 25.5));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-color: var(--intergalactic-control-primary-critical-active, oklch(0.58 0.215 26));
   }
 }
 
 SButton[theme='primary-invert'] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   background-color: var(--intergalactic-control-primary-invert, oklch(1 0 0));
 
   &:hover {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
     background-color: var(--intergalactic-control-primary-invert-hover, oklch(0.96 0.001 180));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
     background-color: var(--intergalactic-control-primary-invert-active, oklch(0.94 0.002 180));
   }
 }
 
 SButton[theme='secondary-muted'] {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-  border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.177 0.033 175.6 / 0.028));
+  color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
+  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.166 0.031 175.8 / 0.097));
 
   &:hover {
     background-color: var(--intergalactic-control-secondary-neutral-hover,
-    oklch(0.176 0.033 175.6 / 0.056));
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    oklch(0.151 0.028 176.1 / 0.123));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   &:active,
   &[active] {
     background-color: var(--intergalactic-control-secondary-neutral-active,
-    oklch(0.176 0.033 175.7 / 0.084));
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  }
-}
-
-SButton[theme='secondary-info'] {
-  background-color: var(--intergalactic-control-secondary-info, oklch(0.527 0.264 262.9 / 0.039));
-  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-
-  &:hover {
-    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
-    background-color: var(--intergalactic-control-secondary-info-hover, oklch(0.525 0.265 263 / 0.077));
-  }
-
-  &:active,
-  &[active] {
-    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
-    background-color: var(--intergalactic-control-secondary-info-active, oklch(0.524 0.266 263.1 / 0.116));
+    oklch(0.145 0.027 176.1 / 0.135));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 }
 
 SButton[theme='secondary-invert'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  border-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391));
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-color: var(--intergalactic-control-secondary-invert, oklch(0.969 0.057 140 / 0.118));
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-secondary-invert-hover, oklch(0.976 0.043 140 / 0.145));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    background-color: var(--intergalactic-control-secondary-invert-hover, oklch(0.98 0.036 140 / 0.164));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
     background-color: var(--intergalactic-control-secondary-invert-active,
-    oklch(0.983 0.03 140 / 0.183));
+    oklch(0.986 0.025 140 / 0.203));
   }
 }
 
 SButton[theme='tertiary-info'] {
-  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+  color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
   background-color: var(--intergalactic-control-tertiary-info, transparent);
 
   &:hover {
-    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
-    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.525 0.265 263 / 0.077));
+    color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
+    background-color: var(--intergalactic-control-tertiary-info-hover, oklch(0.526 0.264 263 / 0.058));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
-    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.524 0.266 263.1 / 0.116));
+    color: var(--intergalactic-text-link-accent, oklch(0.6 0.166 277.7));
+    background-color: var(--intergalactic-control-tertiary-info-active, oklch(0.525 0.265 263 / 0.077));
   }
 }
 
 SButton[theme='tertiary-muted'] {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-control-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
   background-color: var(--intergalactic-control-tertiary-neutral, transparent);
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.176 0.033 175.6 / 0.056));
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.177 0.033 175.6 / 0.042));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   &:active,
   &[active] {
     background-color: var(--intergalactic-control-tertiary-neutral-active,
-    oklch(0.176 0.033 175.7 / 0.084));
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    oklch(0.176 0.033 175.6 / 0.056));
+    color: var(--intergalactic-control-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 }
 
 SButton[theme='tertiary-invert'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
   background-color: var(--intergalactic-control-tertiary-invert, transparent);
 
   &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-tertiary-invert-hover, oklch(0.976 0.043 140 / 0.145));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    background-color: var(--intergalactic-control-tertiary-invert-hover, oklch(0.98 0.036 140 / 0.164));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-tertiary-invert-active, oklch(0.983 0.03 140 / 0.183));
+    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    background-color: var(--intergalactic-control-tertiary-invert-active, oklch(0.986 0.025 140 / 0.203));
   }
 }
 
@@ -266,15 +257,11 @@ SButton[neighborLocation='right'] {
 
 SButton[neighborLocation='both'] {
   border-radius: 0;
-  /* disable-tokens-validator */
-  margin-left: -1px;
 }
 
 SButton[neighborLocation='left'] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  /* disable-tokens-validator */
-  margin-left: -1px;
 }
 
 SButton[neighborLocation='both'],
@@ -282,12 +269,12 @@ SButton[neighborLocation='left'] {
   position: relative;
 
   &:after {
-    background-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.008 147.4 / 0.391));
-  }
+    background-color: var(--intergalactic-border-primary-invert, oklch(0.995 0.009 144.4 / 0.347));
+  } /* TODO: need to add a new variables for neighbor location borders based on the final UI */
 
   &[theme='secondary-muted'] {
     &:after {
-      background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+      background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: need to add a new variables for neighbor location borders based on the final UI */
     }
   }
 }
@@ -296,10 +283,10 @@ SButton+SButton[neighborLocation='both']:after,
 SButton+SButton[neighborLocation='left']:after {
   content: '';
   position: absolute;
-  top: -1px;
-  left: -1px;
+  top: 0;
+  left: 0;
   width: 1px;
-  height: calc(100% + 2px);
+  height: 100%;
 }
 
 SSpin {
@@ -328,27 +315,40 @@ SText {
 }
 
 SText[size='m'] {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
-  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
   line-height: var(--intergalactic-lh-200, 142%);
-}
-
-SText[size='l'] {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
-  margin-right: var(--intergalactic-spacing-2x, 8px);
-  line-height: var(--intergalactic-lh-300, 150%);
 
   &:only-child {
-    margin-left: var(--intergalactic-spacing-3x, 12px);
-    margin-right: var(--intergalactic-spacing-3x, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:first-child {
-    margin-left: var(--intergalactic-spacing-3x, 12px);
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:last-child {
-    margin-right: var(--intergalactic-spacing-3x, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
+  }
+}
+
+SText[size='l'] {
+  margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
+  line-height: var(--intergalactic-lh-300, 150%);
+
+  &:only-child {
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
+  }
+
+  &:first-child {
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+  }
+
+  &:last-child {
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 }
 
@@ -361,38 +361,30 @@ SAddon {
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-    /* -1px - for border width */
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:not(:only-child):last-child {
-    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
-    /* -1px - for border width */
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:only-child {
-    margin-left: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
-    /* -1px - for border width */
-    margin-right: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
-    /* -1px - for border width */
+    margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+    margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
   }
 }
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: calc(var(--intergalactic-spacing-3x, 12px) - 1px);
-    /* -1px - for border width */
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:not(:only-child):last-child {
-    margin-right: calc(var(--intergalactic-spacing-3x, 12px) - 1px);
-    /* -1px - for border width */
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 
   &:only-child {
-    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
-    /* -1px - for border width */
-    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
-    /* -1px - for border width */
+    margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
+    margin-right: var(--intergalactic-spacing-content-padding-medium, 12px);
   }
 }

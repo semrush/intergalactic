@@ -3,13 +3,25 @@ SButtonLink {
   font-family: inherit;
 }
 
-SButtonLink[use='primary']:not([color]) {
-  color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+SButtonLink[use='primary'] {
+  &:not([color]) {
+    color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
+  }
+
+  SText {
+    text-decoration-color: transparent;
+  }
 
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
+    &:not([color]) {
+      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
+    }
+
+    SText {
+      text-decoration-color: currentColor;
+    }
   }
 }
 
@@ -19,11 +31,11 @@ SButtonLink[use='secondary']:not([color]) {
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
+    color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
   }
 }
 
 SButtonLink[use='secondary'] SText {
-  text-decoration-style: dashed;
+  text-decoration-style: dotted;
   text-decoration-color: currentColor;
 }

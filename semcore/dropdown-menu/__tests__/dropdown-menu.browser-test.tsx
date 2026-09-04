@@ -80,6 +80,8 @@ export const locators = {
   },
   popper: (page: Page) =>
     page.locator('[data-ui-name="DropdownMenu.Popper"]'),
+  list: (page: Page) =>
+    page.locator('[data-ui-name="DropdownMenu.List"]'),
   hint: (page: Page) =>
     page.locator('[data-ui-name="Hint"]'),
   actions: (page: Page) =>
@@ -100,6 +102,18 @@ const pressKeyMultipleTimes = async (page: Page, key: string, times: number) => 
   }
 };
 
+const scrollVirtualMenuToItem = async (page: Page, index: number) => {
+  const rowHeight = 52;
+  const scrollContainer = page.locator('[data-is-virtual="true"] [data-ui-name="ScrollArea.Container"]');
+
+  await scrollContainer.evaluate((el, { index, rowHeight }) => {
+    const element = el as HTMLElement;
+
+    element.scrollTop = index * rowHeight;
+    element.dispatchEvent(new Event('scroll', { bubbles: true }));
+  }, { index, rowHeight });
+};
+
 /* =====================================================
 @visual
 Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -107,7 +121,8 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify focus on base dropdown menu', {
     tag: [TAG.PRIORITY_HIGH,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/the_second_method.tsx', 'en');
 
@@ -145,6 +160,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown-menu',
+      '@button',
+      '@link',
+      '@spin-container',
+      '@typography',
       '@notice'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/dropdown-menu.tsx', 'en');
@@ -174,12 +193,20 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify base dropdown with size=${item.size} disabledAll=${item.disabledAll} stretch=${item.stretch} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@divider'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', item);
       const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
 
       await expect(page).toHaveScreenshot();
+      await expect(locators.list(page).first()).toHaveCSS(
+        'max-height',
+        item.size === 'l' ? '306px' : '246px',
+      );
 
       if (item.size == 'm') {
         await test.step('Verify styles of M size', async () => {
@@ -231,7 +258,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify multiselect dropdown with size=${item.size} disabledAll=${item.disabledAll} stretch=${item.stretch} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', item);
 
@@ -267,7 +297,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify selectable radio dropdown with size=${item.size} disabledAll=${item.disabledAll} stretch=${item.stretch} visible=${item.visible}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', item);
       const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
@@ -360,7 +393,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify menu items types with badges, icons and other content', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button',
+      '@badge',
+      '@counter',
+      '@switch',
+      '@tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/tests/examples/list_item_types.tsx', 'en');
 
@@ -398,7 +436,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify padding between item badge', async () => {
       const ItemAddon = locators.itemInGroup(page).nth(4).locator('[data-ui-name="DropdownMenu.Item.Text"]');
       await checkStyles(ItemAddon, {
-        'margin-right': '4px',
+        'margin-right': '6px',
       });
     });
 
@@ -414,7 +452,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify focus on dropdown menu with actions in items ', {
     tag: [TAG.PRIORITY_HIGH,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/item_actions.tsx', 'en');
 
@@ -463,7 +504,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify focus on Selectable radio', {
     tag: [TAG.PRIORITY_HIGH,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx', 'en');
 
@@ -486,7 +530,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Selectable radio after mouse interaction', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@button'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx', 'en');
 
@@ -525,7 +572,8 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Multiselect items focus', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx', 'en');
 
@@ -551,7 +599,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/tests/examples/with_ellipsis.tsx', 'en', { hintPlacement: 'bottom' });
 
@@ -594,7 +644,15 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify virtual scroll by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@button-trigger',
+      '@button',
+      '@divider',
+      '@select',
+      '@typography'],
   }, async ({ page, browserName }) => {
     if (browserName != 'chromium') test.skip();
     await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en');
@@ -637,11 +695,20 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Virtual scroll by Mouse ', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@button-trigger',
+      '@button',
+      '@divider',
+      '@select',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en');
 
     await locators.button(page).click();
+    await page.waitForTimeout(200);
     await locators.menuitemradio(page, 'project 33').waitFor({ state: 'visible' });
     await expect(locators.menuitemradio(page, 'project 33')).toHaveAttribute('aria-checked', 'true');
     await expect(locators.menuitemradio(page, 'project 32')).toHaveAttribute('aria-checked', 'false');
@@ -657,7 +724,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     await locators.menuitemradio(page, 'project 42').scrollIntoViewIfNeeded();
     await expect(locators.menuitemradio(page, 'project 42')).toBeInViewport();
-    await expect(locators.menuitemradio(page, 'project 36')).toBeVisible();
+    await expect(locators.menuitemradio(page, 'project 44')).toBeVisible();
     if (browserName === 'firefox') return; // every scroll on ff differs on some pixels(not stable) so visual regression skipped for it
     await expect(page).toHaveScreenshot();
   });
@@ -666,7 +733,15 @@ test.describe(`${TAG.VISUAL} `, () => {
     test('Verify keyboard interactions with menu with sticky groups', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@base-trigger',
+        '@button-trigger',
+        '@button',
+        '@divider',
+        '@select',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/docs/examples/sticky_groups.tsx', 'en');
 
@@ -709,7 +784,15 @@ test.describe(`${TAG.VISUAL} `, () => {
     test('Verify mouse interactions with menu with sticky groups', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@base-trigger',
+        '@button-trigger',
+        '@button',
+        '@divider',
+        '@select',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/docs/examples/sticky_groups.tsx', 'en');
 
@@ -755,7 +838,12 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     for (const size of ['m', 'l'] as const) {
       test(`Verify nothing-found status appearance with size ${size}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@dropdown-menu'],
+        tag: [
+          TAG.PRIORITY_MEDIUM,
+          '@dropdown-menu',
+          '@button',
+          '@select',
+        ],
       }, async ({ page }) => {
         await loadPage(page, statusItemStory, 'en', { showSearch: true, size });
 
@@ -782,7 +870,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse interactions with Base dropdown menu', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/basic.tsx', 'en');
 
@@ -825,7 +914,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard interactions with Base dropdown menu', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/basic.tsx', 'en');
 
@@ -881,6 +971,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown-menu',
+      '@button',
+      '@link',
+      '@spin-container',
+      '@typography',
       '@notice'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/dropdown-menu.tsx', 'en');
@@ -927,7 +1021,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Keyboard interaction when items with action buttons', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/item_actions.tsx', 'en');
 
@@ -1056,7 +1153,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Keyboard interaction in nested menus with focusable elements', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@button',
+      '@divider',
+      '@input-number'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/nested_with_focusable.tsx', 'en');
 
@@ -1126,7 +1228,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse interaction in nested menus with focusable elements', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@button',
+      '@divider',
+      '@input-number'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/nested_with_focusable.tsx', 'en');
 
@@ -1164,7 +1271,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Keyboard interaction when On Visible controlled', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/tests/examples/on-visible-2nd.tsx', 'en');
 
@@ -1186,7 +1294,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse interaction when On Visible controlled', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/tests/examples/on-visible-2nd.tsx', 'en');
 
@@ -1201,7 +1310,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Selectable radio keyboard interaction', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx', 'en');
 
@@ -1283,7 +1395,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Multiselect items keyboard interaction', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx', 'en');
 
@@ -1328,7 +1441,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Multiselect items mouse interaction', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx', 'en');
 
@@ -1367,26 +1481,39 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Items render in DD with Virtual scroll ', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@button-trigger',
+      '@button',
+      '@divider',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/project-selector.tsx', 'en', { visibleItems: 10 });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    await locators.menuitemradio(page, 'project 38').waitFor({ state: 'visible' });
-    await expect(page.getByText('project 38').first()).toBeVisible();
+    await scrollVirtualMenuToItem(page, 36);
+    await locators.menuitemradio(page, 'project 36').waitFor({ state: 'visible' });
+    await expect(page.getByText('project 36').first()).toBeVisible();
+    await locators.menuitemradio(page, 'project 33').focus();
     await pressKeyMultipleTimes(page, 'ArrowUp', 40);
     await expect(locators.menuitemradio(page, 'project 0')).toBeFocused();
 
     await page.keyboard.press('Enter');
-    await locators.menuitemradio(page, 'project 10').waitFor({ state: 'visible' });
-    await expect(page.getByText('project 10').first()).toBeVisible();
+    await locators.menuitemradio(page, 'project 9').waitFor({ state: 'visible' });
+    await expect(page.getByText('project 9').first()).toBeVisible();
   });
 
   test('Verify Focus on input search when menu opened by keyboard ', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-trigger',
+      '@filter-trigger',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/tests/examples/test-with-content-on-page.tsx', 'en');
 
@@ -1401,7 +1528,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Focus on input search when menu opened by mouse ', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown-menu'],
+      '@dropdown-menu',
+      '@base-trigger',
+      '@filter-trigger',
+      '@select'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/tests/examples/test-with-content-on-page.tsx', 'en');
 
@@ -1416,7 +1546,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus order', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@counter',
+        '@ellipsis',
+        '@input-tags',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/advanced/examples/input_tags_trigger.tsx', 'en');
 
@@ -1454,7 +1590,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus when all items disabled by keyboard', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
         size: 'm',
@@ -1478,7 +1618,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus skips first disabled item by keyboard', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
         size: 'm',
@@ -1502,7 +1646,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus skips first disabled item by mouse and arrow', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@divider'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
         size: 'm',
@@ -1521,7 +1669,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus when all items disabled in multiselect by keyboard', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', {
         size: 'm',
@@ -1550,7 +1701,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus when all items disabled in selectable by keyboard', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
         size: 'm',
@@ -1589,7 +1743,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify ArrowUp reaches all enabled selectable items when first items are disabled', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
         size: 'm',
@@ -1648,7 +1805,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify arrows skip disabled last selectable item', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
         size: 'm',
@@ -1684,7 +1844,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus skips first disabled item in nested menu', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@dropdown-menu'],
+        '@dropdown-menu',
+        '@base-components',
+        '@flex-box',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/nested-menu-props.tsx', 'en', {
         size: 'm',
@@ -1735,7 +1898,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     };
 
     test('Verify screen-reader result count when items are found', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.ACCESSIBILITY, '@dropdown-menu'],
+      tag: [
+        TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        TAG.ACCESSIBILITY,
+        '@dropdown-menu',
+        '@button',
+        '@select',
+      ],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true });
 
@@ -1753,7 +1923,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify visible "Nothing found" when no items match', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@dropdown-menu'],
+      tag: [
+        TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@dropdown-menu',
+        '@button',
+        '@select',
+      ],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true });
 
@@ -1770,7 +1946,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify loading state text is shown', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+      tag: [
+        TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@dropdown-menu',
+        '@button',
+        '@select',
+      ],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'loading' });
 
@@ -1784,7 +1966,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify error state text is shown', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+      tag: [
+        TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@dropdown-menu',
+        '@button',
+        '@select',
+      ],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'error' });
 
@@ -1800,7 +1988,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify custom children override the default status text', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@dropdown-menu'],
+      tag: [
+        TAG.PRIORITY_MEDIUM,
+        TAG.MOUSE,
+        '@dropdown-menu',
+        '@button',
+        '@select',
+      ],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', {
         showSearch: true,

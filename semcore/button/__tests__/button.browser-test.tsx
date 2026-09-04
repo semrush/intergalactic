@@ -73,7 +73,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesPrimary.forEach((item) => {
     test(`Verify Base example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@button'],
+        '@button',
+        '@base-components',
+        '@flex-box',
+        '@badge'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-base.tsx', 'en', normalizeThemeProps(item));
 
@@ -91,8 +94,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -133,7 +136,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
         '@base-components',
-        '@neighbor-location'],
+        '@neighbor-location',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-neighbor-location.tsx', 'en', normalizeThemeProps(item));
 
@@ -151,8 +155,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -193,7 +197,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Addon only example size=${item.size} theme=${item.theme} disabled=${item.disabled} active=${item.active} loading=${item.loading} hintPlacement=${item.hintPlacement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@button',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@tooltip',
+        '@hint'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/button/tests/examples/button-icon-only.tsx', 'en', normalizeThemeProps(item));
       const hint = page.locator('div[data-ui-name="Hint"]');
@@ -279,8 +286,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -340,8 +347,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -469,8 +476,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }
@@ -530,8 +537,8 @@ test.describe(`${TAG.VISUAL} `, () => {
             const hasAddon = await addon.count();
 
             if (hasText && !hasAddon) {
-              await expect(text).toHaveCSS('margin-left', item.size === 'm' ? '8px' : '12px');
-              await expect(text).toHaveCSS('margin-right', item.size === 'm' ? '8px' : '12px');
+              await expect(text).toHaveCSS('margin-left', '12px');
+              await expect(text).toHaveCSS('margin-right', '12px');
               await expect(text).toHaveCSS('font-size', item.size === 'm' ? '14px' : '16px');
             }
           }

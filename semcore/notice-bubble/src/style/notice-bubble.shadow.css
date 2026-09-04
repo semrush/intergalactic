@@ -1,28 +1,28 @@
 SBubble,
 SView {
   position: relative;
-  margin-bottom: var(--intergalactic-spacing-3x, 12px);
-  padding: var(--intergalactic-spacing-3x, 12px);
-  padding-right: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px));
+  margin-bottom: var(--intergalactic-spacing-content-gap-xlarge, 12px);
+  padding: var(--intergalactic-spacing-content-padding-large, 16px);
+  padding-right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   width: 100%;
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
   box-sizing: border-box;
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  gap: var(--intergalactic-spacing-2x, 8px);
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
   &[type='info'] {
-    background: var(--intergalactic-bg-primary-invert, oklch(0.23 0.01 140));
+    background: var(--intergalactic-notice-bubble-bg-info, oklch(0.23 0.01 140));
   }
 
   &[type='warning'] {
-    background: var(--intergalactic-bg-primary-critical, oklch(0.64 0.226 24.5));
+    background: var(--intergalactic-notice-bubble-bg-critical, oklch(0.64 0.226 24.5));
   }
 }
 
 SContent {
   flex-direction: column;
-  gap: var(--intergalactic-spacing-2x, 8px);
+  gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
   flex: 1;
 }
 
@@ -49,12 +49,12 @@ SDismiss[use] {
 }
 SIcon {
   justify-content: center;
-  align-items: center;
-  height: var(--intergalactic-spacing-5x, 20px);
+  align-items: flex-start;
+  margin-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
 }
 
 SNoticeBubble {
-  width: 300px;
+  width: 320px;
   position: fixed;
   right: var(--intergalactic-spacing-3x, 12px);
   top: var(--intergalactic-spacing-3x, 12px);
@@ -71,7 +71,7 @@ SNoticeBubble[disablePortal] {
 }
 
 SMessage a {
-  color: var(--intergalactic-text-link-invert, oklch(0.75 0.125 265.3));
+  color: var(--intergalactic-text-link-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-text-link-primary-invert */
 }
 
 SNoticeAriaLiveWrapper {

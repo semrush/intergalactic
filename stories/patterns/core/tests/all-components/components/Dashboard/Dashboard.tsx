@@ -26,6 +26,7 @@ import VennMockData from '../../../../../../components/d3-chart/__mocks__/venn';
 import FeedbackRatingFormExample
   from '../../../../../ux-patterns/feedback-rating/docs/examples/feedback_rating_form';
 import PrimaryTable from '../Tables/PrimaryTable';
+import { SecondaryTable } from '../Tables/SecondaryTable';
 
 export type DashboardProps = {
   showPrimaryTableFooter?: boolean;
@@ -169,7 +170,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
           </Flex>
         </Flex>
 
-        <Flex gap={4} mb={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+        <Flex gap={2} mb={2} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
           <Card tag='section' style={{ ...cardSectionStyle('1 1 calc(50% - 8px)'), minWidth: 'min(100%, 360px)' }}>
             <Card.Body>
               <Flex gap={6} w='100%'>
@@ -201,7 +202,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                         {item.label}
                       </Text>
                       <Flex alignItems='baseline' gap={1} mt={1}>
-                        <Link size={500} fontWeight='bold' color='text-large-info' href='https://semrush.com' target='_blank'>
+                        <Link size={500} fontWeight='bold' href='https://semrush.com' target='_blank'>
                           {item.value}
                         </Link>
                         <Text size={100} color={item.deltaColor} noWrap>
@@ -253,7 +254,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                         {item.label}
                       </Text>
                       <Flex alignItems='baseline' gap={1} mt={1}>
-                        <Link size={500} fontWeight='bold' color='text-large-info' href='https://semrush.com' target='_blank'>
+                        <Link size={500} fontWeight='bold' href='https://semrush.com' target='_blank'>
                           {item.value}
                         </Link>
                         <Text size={100} color={item.deltaColor} noWrap>
@@ -268,8 +269,8 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
           </Card>
         </Flex>
 
-        <Flex direction='column' gap={4} mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
-          <Flex gap={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+        <Flex direction='column' gap={2} mb={2} style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Flex gap={2} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
             <Card tag='section' style={cardSectionStyle('4 1 calc(33.333% - 11px)')}>
               <Card.Header>
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
@@ -366,7 +367,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
             </Card>
           </Flex>
 
-          <Flex gap={4} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Flex gap={2} flexWrap style={{ width: '100%', boxSizing: 'border-box' }}>
             <Card tag='section' style={cardSectionStyle('3 1 calc(33.333% - 11px)')}>
               <Card.Header>
                 <Flex justifyContent='space-between' alignItems='flex-start' w='100%'>
@@ -458,7 +459,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
             </Card>
           </Flex>
 
-          <Flex gap={4} flexWrap alignItems='stretch' style={{ width: '100%', boxSizing: 'border-box' }}>
+          <Flex gap={2} flexWrap alignItems='stretch' style={{ width: '100%', boxSizing: 'border-box' }}>
             <Card
               tag='section'
               style={{
@@ -600,7 +601,7 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
           </Flex>
         </Flex>
 
-        <Flex gap={4} flexWrap alignItems='stretch' mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
+        <Flex gap={2} flexWrap alignItems='stretch' mb={4} style={{ width: '100%', boxSizing: 'border-box' }}>
           <Card
             tag='section'
             style={{
@@ -680,6 +681,14 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
 
         {showPrimaryTableFooter && (
           <Box mt={8} w='100%'>
+            <Card w='100%' mb={4}>
+              <Card.Header>
+                <Card.Title tag='h3'>Keywords</Card.Title>
+              </Card.Header>
+              <Card.Body p={0} pb={1}>
+                <SecondaryTable />
+              </Card.Body>
+            </Card>
             <PrimaryTable />
           </Box>
         )}

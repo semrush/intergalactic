@@ -595,6 +595,10 @@
     "value": "16px"
   },
   {
+    "name": "--intergalactic-fs-350",
+    "value": "18px"
+  },
+  {
     "name": "--intergalactic-fs-400",
     "value": "20px"
   },
@@ -628,6 +632,11 @@
     "name": "--intergalactic-lh-300",
     "value": "150%",
     "description": "Use with font-size-300."
+  },
+  {
+    "name": "--intergalactic-lh-350",
+    "value": "150%",
+    "description": "Use with font-size-350."
   },
   {
     "name": "--intergalactic-lh-400",
@@ -777,17 +786,27 @@
   {
     "name": "--intergalactic-screen-small",
     "value": "768px",
-    "description": "Small screens (phones and small tablets)."
+    "description": "Switch to mobile layout behavior."
   },
   {
     "name": "--intergalactic-screen-medium",
-    "value": "1200px",
-    "description": "Medium screens (tablets and small laptops)."
+    "value": "1280px",
+    "description": "Desktop layout. Sidebar expands"
   },
   {
     "name": "--intergalactic-screen-large",
     "value": "1920px",
     "description": "Large screens (tablets and laptops)."
+  },
+  {
+    "name": "--intergalactic-screen-layout-compact",
+    "value": "1200px",
+    "description": "Low and medium density interfaces."
+  },
+  {
+    "name": "--intergalactic-screen-layout-data-heavy",
+    "value": "1500px",
+    "description": "High density interfaces."
   },
   {
     "name": "--intergalactic-duration-extra-slow",
@@ -815,6 +834,24 @@
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)"
   },
   {
+    "name": "--intergalactic-easings-fast",
+    "value": "cubic-bezier(0.5, 0, 0, 1.12)",
+    "description": "Should be used for fast animation timing function"
+  },
+  {
+    "name": "--intergalactic-easings-medium",
+    "value": "cubic-bezier(0.5, 0, 0, 1.09)",
+    "description": "Should be used for medium animation timing function"
+  },
+  {
+    "name": "--intergalactic-assets-checkmark-m",
+    "value": "url(\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuMzEwNyAyLjE2NzkxTDQuNjQ2NDUgNy44MzIxMkwxLjY4OTM0IDQuODc1MDEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0id2hpdGUiLz48L3N2Zz4=\")"
+  },
+  {
+    "name": "--intergalactic-assets-checkmark-l",
+    "value": "url(\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==\")"
+  },
+  {
     "name": "--intergalactic-violet-400",
     "value": "oklch(0.64 0.223 299.3)"
   },
@@ -837,5 +874,97 @@
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",
     "value": "oklch(1 0 0 / 0.7)"
+  },
+  {
+    "name": "--intergalactic-border-tooltip-invert",
+    "value": "oklch(0.35 0.006 140)"
+  },
+  {
+    "name": "--intergalactic-border-table-accent",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+  },
+  {
+    "name": "--intergalactic-border-date-picker-range-comparison",
+    "value": "oklch(0.74 0.117 274.1)"
+  },
+  {
+    "name": "--intergalactic-tooltip-default",
+    "value": "oklch(1 0 0)"
+  },
+  {
+    "name": "--intergalactic-tooltip-invert",
+    "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-tooltip-warning",
+    "value": "oklch(0.958 0.029 5.7)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-bg",
+    "value": "oklch(0.92 0.052 303.1)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot",
+    "value": "oklch(0.74 0.17 303)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot-outer-border",
+    "value": "oklch(0.92 0.052 303.1)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-dot-neutral-outer-border",
+    "value": "oklch(0.74 0.17 303)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-accent-bg",
+    "value": "oklch(0.92 0.052 303.1)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-accent-dot-outer-border",
+    "value": "oklch(0.92 0.052 303.1)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-neutral-bg",
+    "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
+    "value": "oklch(0.74 0.17 303)"
+  },
+  {
+    "name": "--intergalactic-slider-rating-normal",
+    "value": "oklch(0.8 0.003 169.6)"
+  },
+  {
+    "name": "--intergalactic-slider-rating-hover-active",
+    "value": "oklch(0.66 0.212 300.1)"
+  },
+  {
+    "name": "--intergalactic-radio-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+  },
+  {
+    "name": "--intergalactic-radio-bg-normal",
+    "value": "oklch(1 0 0)"
+  },
+  {
+    "name": "--intergalactic-radio-bg-selected",
+    "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-text-link",
+    "value": "oklch(0.1 0.03 137 / 0.899)"
+  },
+  {
+    "name": "--intergalactic-text-link-hover-active",
+    "value": "oklch(0.1 0.03 137 / 0.899)"
+  },
+  {
+    "name": "--intergalactic-text-link-invert",
+    "value": "oklch(0.999 0.001 180 / 0.949)"
+  },
+  {
+    "name": "--intergalactic-text-link-invert-hover",
+    "value": "oklch(0.999 0.001 180 / 0.949)"
   }
 ]

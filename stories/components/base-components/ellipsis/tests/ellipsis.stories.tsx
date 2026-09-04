@@ -49,11 +49,11 @@ const commonArgTypes = {
   },
   size: {
     control: { type: 'select' },
-    options: [undefined, 100, 200, 300, 400, 500, 600, 700, 800],
+    options: [undefined, 100, 200, 300, 350, 400, 500, 600, 700, 800],
   },
 } as const;
 
-export const TableLink: StoryObj = {
+export const TableLink = {
   render: TableLinkExample,
 };
 

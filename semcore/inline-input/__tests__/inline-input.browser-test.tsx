@@ -22,22 +22,6 @@ export const locators = {
 
 };
 
-// Matches the CSS fallback colors after the test bundle normalizes them.
-const cssVarColorFallbacks: Record<string, string> = {
-  '--intergalactic-bg-primary-neutral': 'oklch(1 0 0)',
-};
-
-const getCssVarColor = async (page: Page, varName: string) => {
-  return page.evaluate(({ name, fallback }) => {
-    const probe = document.createElement('div');
-    probe.style.backgroundColor = fallback ? `var(${name}, ${fallback})` : `var(${name})`;
-    document.body.appendChild(probe);
-    const color = getComputedStyle(probe).backgroundColor;
-    probe.remove();
-    return color;
-  }, { name: varName, fallback: cssVarColorFallbacks[varName] });
-};
-
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -61,9 +45,9 @@ test.describe(`${TAG.VISUAL} `, () => {
       const confirm = flex.locator('[data-ui-name="InlineInput.ConfirmControl"]');
       const cancel = flex.locator('[data-ui-name="InlineInput.CancelControl"]');
 
-      await expect(value.first()).toHaveCSS('padding', '0px 4px');
+      await expect(value.first()).toHaveCSS('padding', '4px');
       await expect(confirm.first()).toHaveCSS('padding', '0px 4px');
-      await expect(cancel.first()).toHaveCSS('padding', '0px 4px');
+      await expect(cancel.first()).toHaveCSS('padding', '0px 4px 0px 0px');
 
       await expect(page).toHaveScreenshot();
     });
@@ -90,9 +74,9 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
 
-      await expect(value.first()).toHaveCSS('padding', '0px 4px');
+      await expect(value.first()).toHaveCSS('padding', '4px');
       await expect(confirm.first()).toHaveCSS('padding', '0px 4px');
-      await expect(cancel.first()).toHaveCSS('padding', '0px 4px');
+      await expect(cancel.first()).toHaveCSS('padding', '0px 4px 0px 0px');
       await expect(addon.first()).toHaveCSS('padding', '0px 4px');
     });
   });
@@ -109,7 +93,6 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@input-number'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
-      const bgPrimary = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
 
       const flex = await page.locator('[data-testid="no-controls"]');
       const value = flex.locator('[data-ui-name="InlineInput.Value"]');
@@ -117,11 +100,11 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('Tab');
       await expect(page).toHaveScreenshot();
 
-      await expect(value.first()).toHaveCSS('padding', '0px 4px');
+      await expect(value.first()).toHaveCSS('padding', '4px');
       await expect(input.first()).toHaveCSS('align-items', 'center');
       await expect(input.first()).toHaveCSS('vertical-align', 'middle');
       await expect(input.first()).toHaveCSS('padding', '1px');
-      await expect(input.first()).toHaveCSS('background-color', bgPrimary);
+      await expect(input.first()).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
     });
   });
 
@@ -151,15 +134,20 @@ test.describe(`${TAG.VISUAL} `, () => {
     await loadPage(page, 'stories/components/inline-input/docs/examples/basic_usage.tsx', 'en');
 
     const inlineInput = page.locator('[data-ui-name="InlineInput"]');
-    const addon = page.locator('[data-ui-name="InlineInput.Addon"]');
     const value = page.locator('[data-ui-name="InlineInput.Value"]');
 
     const save = inlineInput.locator('[data-ui-name="InlineInput.ConfirmControl"]');
+    const cancel = inlineInput.locator('[data-ui-name="InlineInput.CancelControl"]');
 
     await test.step('Verify Hint shown on Hover and Focus is on Input', async () => {
       await expect(value).toHaveAttribute('value', 'John Doe');
+      await expect(save).toBeHidden();
+      await expect(cancel).toBeHidden();
 
-      await addon.click();
+      await value.click();
+      await expect(value).toBeFocused();
+      await expect(save).toBeVisible();
+      await expect(cancel).toBeVisible();
       await save.hover();
       await page.waitForSelector('text="Save"');
 
@@ -539,11 +527,17 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     await loadPage(page, 'stories/components/inline-input/docs/examples/basic_usage.tsx', 'en');
 
     const save = locators.inlineInput(page).locator('[data-ui-name="InlineInput.ConfirmControl"]');
+    const cancel = locators.inlineInput(page).locator('[data-ui-name="InlineInput.CancelControl"]');
 
-    await test.step('Verify input focuses when clicking on addon', async () => {
+    await test.step('Verify Save and Cancel appear when clicking on input', async () => {
       await expect(locators.value(page)).toHaveAttribute('value', 'John Doe');
-      await locators.addon(page).click();
+      await expect(save).toBeHidden();
+      await expect(cancel).toBeHidden();
+
+      await locators.value(page).click();
       await expect(locators.value(page)).toBeFocused();
+      await expect(save).toBeVisible();
+      await expect(cancel).toBeVisible();
     });
 
     await test.step('Verify focuse removes when clicking on button', async () => {

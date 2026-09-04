@@ -22,7 +22,7 @@ SText {
       background: none;
       outline: none;
       text-decoration: none;
-      color: var(--intergalactic-text-link, oklch(0.53 0.21 263));
+      color: var(--intergalactic-text-link, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary */
       border-bottom-width: 1px;
       border-bottom-style: solid;
       border-color: transparent;
@@ -31,8 +31,8 @@ SText {
       &:hover {
         outline: none;
         text-decoration: none;
-        color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
-        border-color: var(--intergalactic-text-link-hover-active, oklch(0.51 0.202 263));
+        color: var(--intergalactic-text-link-hover-active, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary-hover-active */
+        border-color: var(--intergalactic-text-link-hover-active, oklch(0.1 0.03 137 / 0.899)); /* TODO: --intergalactic-text-link-primary-hover-active */
       }
 
       &:focus {
@@ -58,7 +58,7 @@ SText {
         display: inline-block;
         position: absolute;
         left: 0;
-        color: var(--intergalactic-icon-secondary-neutral, oklch(0.104 0.023 162.3 / 0.385));
+        color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
         font-family: Georgia, Times, 'Times New Roman', serif;
       }
 
@@ -374,6 +374,11 @@ SText[size='300'] {
       margin-left: var(--intergalactic-spacing-05x, 2px);
     }
   }
+}
+
+SText[size='350'] {
+  font-size: var(--intergalactic-fs-350, 18px);
+  line-height: var(--intergalactic-lh-350, 150%);
 }
 
 SText[size='400'] {
