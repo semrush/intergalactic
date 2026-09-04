@@ -10,6 +10,7 @@ import IconOtherElementsExample from './examples/icons_in_other_elements_example
 import IconPayExample from './examples/icons_pay';
 import IconPlatformExample from './examples/icons_platform';
 import IconTypesExample from './examples/icons_regular';
+import StrokeWidthExample, { defaultProps as StrokeWidthProps } from './examples/stroke-width';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta = {
@@ -43,6 +44,11 @@ export const IconOtherElements: StoryObj = {
 export const IconPlatform: StoryObj = {
   render: IconPlatformExample,
   play: playWrapper(iconPlatform),
+};
+
+export const StrokeWidth: StoryObj<typeof StrokeWidthProps> = {
+  render: StrokeWidthExample,
+  args: StrokeWidthProps,
 };
 
 export const IconMarginProps: StoryObj<typeof iconPropsDefaults> = {
