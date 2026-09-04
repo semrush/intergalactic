@@ -35,6 +35,7 @@ class HeadRoot<
 
   private unsubscribeSelectAll: undefined | (() => void) = undefined;
   private unsubscribeSetIndeterminate: undefined | (() => void) = undefined;
+  private unsubscribeMaxLimitReached: undefined | (() => void) = undefined;
 
   componentDidMount() {
     const { selectedRows } = this.asProps;
@@ -49,12 +50,17 @@ class HeadRoot<
       this.unsubscribeSetIndeterminate = selectedRows.on(SelectableRows.SET_INDETERMINATE_EVENT, () => {
         this.forceUpdate();
       });
+
+      this.unsubscribeMaxLimitReached = selectedRows.on(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, () => {
+        this.forceUpdate();
+      });
     }
   }
 
   componentWillUnmount() {
     this.unsubscribeSelectAll?.();
     this.unsubscribeSetIndeterminate?.();
+    this.unsubscribeMaxLimitReached?.();
 
     this.columnStyle.clear();
   }
@@ -233,6 +239,16 @@ class HeadRoot<
     }
   }
 
+  get isDisabledCheckbox() {
+    const { selectedRows } = this.asProps;
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      return selectedRows.isExceeded();
+    }
+
+    return false;
+  }
+
   get selectableRows(): DTRow<UniqKeyType>[] {
     const { columns, flatRows } = this.asProps;
     const mappedFlatRows = flatRows
@@ -251,6 +267,7 @@ class HeadRoot<
 
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
+    const isDisabledCheckbox = this.isDisabledCheckbox && indeterminate;
 
     return sstyled(styles)(
       <>
@@ -267,11 +284,14 @@ class HeadRoot<
           {selectedRows && (
             <SHeadCheckboxCol
               name={SELECT_ALL}
-              onClick={this.handleClickSelectAll(!areAllRowsSelected)}
+              onClick={!isDisabledCheckbox ? this.handleClickSelectAll(!areAllRowsSelected) : undefined}
+              // @ts-expect-error use it for css only
+              disabled={isDisabledCheckbox}
             >
               <Checkbox
                 checked={areAllRowsSelected}
                 indeterminate={indeterminate}
+                disabled={isDisabledCheckbox}
                 aria-label={getI18nText('DataTable.Header.selectAllCheckbox:aria-label')}
                 onChange={this.handleSelectAll}
               >

@@ -41,6 +41,7 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
   };
 
   private unsubscribeToggle: undefined | (() => void) = undefined;
+  private unsubscribeMaxLimitReached: undefined | (() => void) = undefined;
 
   constructor(props: RowSelectorProps<UniqKeyType>) {
     super(props);
@@ -59,11 +60,26 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
           this.setState({ checked: selectedRows.has(row[UNIQ_ROW_KEY]) });
         }
       });
+
+      this.unsubscribeMaxLimitReached = selectedRows.on(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, () => {
+        this.forceUpdate();
+      });
     }
   }
 
   componentWillUnmount(): void {
     this.unsubscribeToggle?.();
+    this.unsubscribeMaxLimitReached?.();
+  }
+
+  get isDisabledCheckbox() {
+    const { selectedRows, row } = this.props;
+
+    if (selectedRows && !Array.isArray(selectedRows)) {
+      return selectedRows.isExceeded() && !selectedRows.has(row[UNIQ_ROW_KEY]);
+    }
+
+    return false;
   }
 
   handleSelectRow = (value: boolean, event?: React.SyntheticEvent<HTMLElement>) => {
@@ -121,7 +137,8 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
         column={{ name: SELECT_ALL, fixed }}
         columnIndex={0}
         gridRowIndex={gridRowIndex}
-        onClick={this.handleClickCheckbox(!checked)}
+        onClick={this.isDisabledCheckbox ? undefined : this.handleClickCheckbox(!checked)}
+        disabled={this.isDisabledCheckbox}
         expanded={expanded}
         isAccordionRow={isAccordionRow}
         aria-hidden={isCellHidden}
@@ -134,6 +151,7 @@ export class RowSelector<UniqKeyType> extends React.PureComponent<RowSelectorPro
       >
         <Checkbox
           checked={checked}
+          disabled={this.isDisabledCheckbox}
           aria-labelledby={`${uid}_${rowUniqKey}_1`}
           onChange={this.handleSelectRow}
         >

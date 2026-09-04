@@ -48,6 +48,15 @@ const checkboxArgTypes: Partial<ArgTypes<typeof checkboxInBigReactiveTableDefaul
     options: [undefined, 'default', 'card'],
     defaultValue: undefined,
   },
+  limitSelectedRows: {
+    control: 'boolean',
+    defaultValue: false,
+  },
+  maxAvailableSelectedRows: {
+    control: 'number',
+    defaultValue: 3,
+    if: { arg: 'limitSelectedRows', truthy: true },
+  },
 };
 
 export default meta;
@@ -93,6 +102,17 @@ export const AccordionWithManyRows: StoryObj<typeof accordionTableInTableDefault
 
 export const AccordionWithPagination: StoryObj<TableInTableProps> = {
   render: AccordionWithPaginationExample,
+  argTypes: {
+    limitSelectedRows: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    maxAvailableSelectedRows: {
+      control: 'number',
+      defaultValue: 3,
+      if: { arg: 'limitSelectedRows', truthy: true },
+    },
+  },
   args: {
     ...tableInTableDefaultProps,
   },

@@ -7,12 +7,19 @@ import React from 'react';
 
 type CheckboxExampleProps = { animationDuration: number; loading: boolean; sideIndents?: 'wide'; compact?: boolean };
 
-const selectedRows = new SelectableRows<string>();
+const selectedRows = new SelectableRows<string>([], { maxAvailableCount: 7 });
 
 const Demo = (props: CheckboxExampleProps) => {
   const { count } = useSelectedRowsCount(selectedRows);
   const [currentPage, setCurrentPage] = React.useState(0);
   const tableRef = React.useRef<HTMLDivElement>(null);
+  const deselectAllRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleTableBlur = React.useCallback((e: React.FocusEvent) => {
+    if (e.relatedTarget === null && e.target.getAttribute('aria-label') === 'All items') {
+      deselectAllRef.current?.focus();
+    }
+  }, []);
 
   const handleDeselectAll = () => {
     selectedRows.clearAll();
@@ -51,7 +58,7 @@ const Demo = (props: CheckboxExampleProps) => {
               {' '}
               <Text bold>{count}</Text>
             </Text>
-            <Button use='tertiary' onClick={handleDeselectAll}>
+            <Button use='tertiary' onClick={handleDeselectAll} ref={deselectAllRef}>
               Deselect all
             </Button>
           </Flex>
@@ -77,6 +84,7 @@ const Demo = (props: CheckboxExampleProps) => {
             { name: 'vol', children: 'Vol.' },
           ]}
           uniqueRowKey='id'
+          onBlur={handleTableBlur}
         />
       </Box>
       <Pagination
@@ -126,6 +134,20 @@ export const defaultProps: CheckboxExampleProps = {
 Demo.defaultProps = defaultProps;
 
 export default Demo;
+
+export const useExceededMaxLimit = (selectedRows: SelectableRows<any>) => {
+  const [isExceeded, setIsExceeded] = React.useState(false);
+
+  React.useEffect(() => {
+    const unsubscribe = selectedRows.on(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, (isExceeded: boolean) => {
+      setIsExceeded(isExceeded);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  return { isExceeded };
+};
 
 export const useSelectedRowsCount = (selectedRows: SelectableRows<any>) => {
   const [count, setCount] = React.useState(0);
