@@ -22,7 +22,7 @@ import InlineNumberInput from '../../../../../components/inline-input/docs/examp
 import InputClear from '../../../../../components/input/docs/examples/input_with_the_clearing_ability';
 import InputNumberDemo from '../../../../../components/input-number/docs/examples/range_of_values';
 import InputTags from '../../../../../components/input-tags/docs/examples/entering_and_editing_tags';
-import LinkAllStatesExample from '../../../../../components/link/docs/examples/all_states';
+import LinkAllStatesExample from '../../../../../components/link/advanced/examples/all_states';
 import LinkColorLinksExample from '../../../../../components/link/docs/examples/color_links';
 import BasicNoticeExample from '../../../../../components/notice/docs/examples/basic_notice';
 import PillsBasicExample, {
