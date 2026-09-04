@@ -21,7 +21,7 @@ const Demo = (props: NSSidePanel.Props) => {
       >
         <SidePanel.Header>
           <SidePanel.Title ellipsis={false} tag={Flex} alignItems='start'>
-            <ButtonLink theme='light' size={300} addonLeft={ArrowLeft} mr={2} title='Back to {Step}' />
+            <ButtonLink use='secondary' size={300} addonLeft={ArrowLeft} mr={2} title='Back to {Step}' />
             SidePanel title
           </SidePanel.Title>
         </SidePanel.Header>
