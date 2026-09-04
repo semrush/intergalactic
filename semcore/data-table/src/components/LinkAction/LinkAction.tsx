@@ -97,14 +97,15 @@ export class LinkAction extends React.PureComponent<IProps> {
       acc[`ellipsis:${key}`] = value;
       return acc;
     }, {});
+    const isExternalLink = this.isExternalLink(link.href, link.text);
 
     return (
       <Box display={link.ellipsisSettings ? 'flex' : 'inline'} overflow='hidden'>
-        <Link href={link.href} display={link.ellipsisSettings ? 'block' : 'inline'} overflow='hidden'>
+        <Link href={link.href} display={link.ellipsisSettings ? 'block' : 'inline'} overflow='hidden' isExternal={isExternalLink}>
           <Link.Text {...ellipsisProps}>
             {link.text}
           </Link.Text>
-          {this.isExternalLink(link.href, link.text) && <Link.ExternalIcon />}
+          {isExternalLink && <Link.ExternalIcon />}
         </Link>
         <Flex display='inline-flex' alignItems='center' hMax={20}>
           <Divider orientation='vertical' mx={1} my={1} hMin={0} />
