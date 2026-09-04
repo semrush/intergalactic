@@ -333,7 +333,7 @@ class CigaretteChartComponent extends AbstractChart<
                   <HoverRect.Tooltip.Dot mr={2} color={item.color}>
                     {item.label}
                   </HoverRect.Tooltip.Dot>
-                  { showPercentColumn && <Text textAlign='end' color='text-secondary'>{this.percentValue(data, item.id)}</Text> }
+                  { showPercentColumn && <Text textAlign='end' color='text-secondary-invert'>{this.percentValue(data, item.id)}</Text> }
                   <Text textAlign='end' bold>{this.tooltipValueFormatter(data[item.id])}</Text>
                 </STooltipChildrenWrapper>,
               ),
@@ -356,7 +356,7 @@ class CigaretteChartComponent extends AbstractChart<
                           <HoverRect.Tooltip.Dot mr={2} color={item.color} style={style}>
                             {item.label}
                           </HoverRect.Tooltip.Dot>
-                          { showPercentColumn && <Text textAlign='end' color='text-secondary' style={style}>{this.percentValue(data, item.id)}</Text> }
+                          { showPercentColumn && <Text textAlign='end' color='text-secondary-invert' style={style}>{this.percentValue(data, item.id)}</Text> }
                           <Text textAlign='end' bold style={style}>{this.tooltipValueFormatter(data[item.id])}</Text>
                         </React.Fragment>
                       )
@@ -406,7 +406,7 @@ class CigaretteChartComponent extends AbstractChart<
     return (
       <>
         <Box mt={2} mr={2}>Total</Box>
-        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
+        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary-invert'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
         <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
       </>
     );
