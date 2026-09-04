@@ -19,7 +19,7 @@ const icons = [
   },
   {
     text: 'Keywords',
-    icon: InfoM,
+    icon: SearchM,
   },
   {
     text: 'Keywords',
@@ -76,16 +76,13 @@ const Demo = (props: StrokeWidthProps) => {
               stroke-width: ${props.regularWdith}px;
             }
             .bold & {
-                stroke-width: ${props.boldWdith}px;
-            }
-            .boldAlt & {
-                stroke-width: ${props.boldAltWdith}px;
+              stroke-width: ${props.boldWdith}px;
             }
           }
         `}
       </style>
 
-      {['regular', 'bold', 'boldAlt'].map((cl) => <IconList key={cl} cl={cl} />)}
+      {['regular', 'bold'].map((cl) => <IconList key={cl} cl={cl} />)}
 
     </Flex>
   );
@@ -94,13 +91,11 @@ const Demo = (props: StrokeWidthProps) => {
 export type StrokeWidthProps = {
   regularWdith: number;
   boldWdith: number;
-  boldAltWdith: number;
 };
 
 export const defaultProps: StrokeWidthProps = {
-  regularWdith: 1.25,
-  boldWdith: 1.75,
-  boldAltWdith: 2,
+  regularWdith: 1.5,
+  boldWdith: 1.85,
 };
 
 Demo.defaultProps = defaultProps;
