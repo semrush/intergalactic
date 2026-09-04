@@ -1143,9 +1143,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       });
 
-      // reaching the limit disables the header checkbox while it holds focus, so the grid drops
-      // out of the tab order here — the remaining steps focus the pagination and action bar
-      // controls explicitly instead of walking there with Tab
       if (browserName === 'webkit') return; // because of pagination bug in safari
 
       await test.step('Verify the previous page keeps its selection', async () => {
