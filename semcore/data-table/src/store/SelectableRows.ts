@@ -162,8 +162,9 @@ export class SelectableRows<UniqRowKeyType> extends EventEmitter<Events<UniqRowK
 
     if (this.values.size === this.maxAvailableCount) {
       this.emit(SelectableRows.MAX_LIMIT_REACHED_CHANGE_EVENT, true);
+    } else {
+      this.emit(SelectableRows.SELECT_ALL_EVENT);
     }
-    this.emit(SelectableRows.SELECT_ALL_EVENT);
   }
 
   public clearAll(): void {
