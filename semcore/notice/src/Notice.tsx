@@ -74,10 +74,10 @@ class RootNotice extends Component<
   }
 
   getTitleProps() {
-    const { icon } = this.asProps;
+    const { icon, illustration } = this.asProps;
 
     return {
-      gridArea: icon !== undefined ? 'title' : 'icon',
+      gridArea: (icon !== undefined || illustration !== undefined) ? 'title' : 'icon',
     };
   }
 
