@@ -114,9 +114,15 @@ export default defineConfig([
     },
   },
   {
-    files: ['tools/**/*', 'website/**/*', 'stories/**/*', '.ci/**/*', 'semcore/**/__tests__/**/*'],
+    files: ['tools/**/*', 'website/**/*', 'stories/**/*', 'figma/src/**/*', '.ci/**/*', 'semcore/**/__tests__/**/*'],
     rules: {
       'no-console': 'off',
+    },
+  },
+  {
+    files: ['figma/mappings/**/Icon.figma.{jsx,tsx}'],
+    rules: {
+      'import/order': 'off',
     },
   },
 ]);
