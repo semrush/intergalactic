@@ -1587,6 +1587,28 @@ importers:
         specifier: workspace:*
         version: link:../../tools/testing-utils
 
+  semcore/radio-cards:
+    dependencies:
+      '@semcore/dot':
+        specifier: ^17.2.1
+        version: link:../dot
+      '@semcore/skeleton':
+        specifier: ^17.2.1
+        version: link:../skeleton
+      '@semcore/typography':
+        specifier: ^17.2.1
+        version: link:../typography
+    devDependencies:
+      '@semcore/base-components':
+        specifier: workspace:*
+        version: link:../base-components
+      '@semcore/core':
+        specifier: workspace:*
+        version: link:../core
+      '@semcore/testing-utils':
+        specifier: workspace:*
+        version: link:../../tools/testing-utils
+
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
@@ -1989,6 +2011,9 @@ importers:
       '@semcore/radio':
         specifier: ^17.2.1
         version: link:../radio
+      '@semcore/radio-cards':
+        specifier: ^18.0.0
+        version: link:../radio-cards
       '@semcore/select':
         specifier: ^17.4.1
         version: link:../select

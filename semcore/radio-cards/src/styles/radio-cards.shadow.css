@@ -1,0 +1,71 @@
+SRadioCards {
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+}
+
+SRadioItem {
+  position: relative;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
+  align-items: flex-start;
+
+  border-radius: var(--intergalactic-pills-rounded, 6px);
+  background: var(--intergalactic-control-presets-bg, oklch(1 0 0));
+  box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07));
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid var(--intergalactic-control-presets-border-hover, oklch(0.137 0.026 175.7 / 0.161));
+  }
+
+  &:has(SRadioItemControl[checked]) {
+    border: 1px solid var(--intergalactic-control-presets-border-selected, oklch(0.23 0.01 140));
+  }
+
+  &:has(SRadioItemControl[disabled]) {
+    pointer-events: none;
+    opacity: var(--intergalactic-disabled-opacity, 0.4);
+  }
+
+  &:has(:focus-visible) {
+    @mixin focus-outline-mixin;
+  }
+}
+
+SRadioItemControl {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0)
+}
+
+SRadioItemHeader {
+  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+}
+
+SRadioItemDescription {
+  text-align: left;
+}
+
+SRadioItemHeaderLeftAddon {
+  transform: translateY(4px);
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+}
+
+SRadioItemHeaderRightAddon {
+  margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
+  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+}
+
+SRadioItemSkeleton {
+  margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
+  vertical-align: middle;
+}
+
+SRadioItemHeaderInnerContainer {
+  display: inline;
+  text-align: left;
+}

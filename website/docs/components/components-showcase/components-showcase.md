@@ -248,6 +248,12 @@ const group = {
     disabled: false,
     type: 'components',
   },
+  radioCards: {
+    title: 'RadioCards',
+    route: '../../components/radio-cards/radio-cards',
+    disabled: false,
+    type: 'components',
+  },
   scrollArea: {
     title: 'ScrollArea',
     route: '../../components/scroll-area/scroll-area',
