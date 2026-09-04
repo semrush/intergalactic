@@ -136,6 +136,12 @@
     ]
   },
   {
+    "name": "--intergalactic-badge-text-primary",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Primary text color for Badge.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-badge-text-primary-invert",
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted primary text color for Badge.",
@@ -356,7 +362,6 @@
     "components": [
       "accordion",
       "bulk-textarea",
-      "d3-chart",
       "drag-and-drop",
       "input",
       "notice",
@@ -383,7 +388,9 @@
     "name": "--intergalactic-bg-secondary-invert",
     "value": "oklch(0.969 0.057 140 / 0.118)",
     "description": "Inverted version of the secondary background of the interface which contains the main data and information.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-success",
@@ -536,7 +543,7 @@
   },
   {
     "name": "--intergalactic-border-secondary-invert",
-    "value": "oklch(0.989 0.019 140 / 0.232)",
+    "value": "oklch(0.994 0.011 140 / 0.283)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
   },
@@ -654,7 +661,7 @@
   },
   {
     "name": "--intergalactic-chart-data-success",
-    "value": "oklch(0.82 0.19 143)",
+    "value": "oklch(0.82 0.15 170)",
     "description": "Success data color for charts.",
     "components": []
   },
@@ -662,6 +669,48 @@
     "name": "--intergalactic-chart-data-warning",
     "value": "oklch(0.82 0.156 61.6)",
     "description": "Warning data color for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-new",
+    "value": "oklch(0.82 0.15 170)",
+    "description": "Color for the \"New\" data on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-lost",
+    "value": "oklch(0.74 0.19 22)",
+    "description": "Color for the \"Lost\" data on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-commercial",
+    "value": "oklch(0.74 0.17 303)",
+    "description": "Color for the commercial data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-informational",
+    "value": "oklch(0.58 0.168 278.2)",
+    "description": "Color for the informational data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-navigational",
+    "value": "oklch(0.82 0.15 170)",
+    "description": "Color for the navigational data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-task",
+    "value": "oklch(0.74 0.225 330)",
+    "description": "Color for the task data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-transactional",
+    "value": "oklch(0.82 0.18 80)",
+    "description": "Color for the transactional data intent on the chart.",
     "components": []
   },
   {
@@ -715,12 +764,60 @@
     ]
   },
   {
+    "name": "--intergalactic-chart-grid-bg-good",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.82 0.15 170) l c h / 0.1) 0%, oklch(from oklch(0.82 0.15 170) l c h / 0.09) 12.677%, oklch(from oklch(0.82 0.15 170) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for chart areas with positive dynamics.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-bad",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.74 0.19 22) l c h / 0.1) 0%, oklch(from oklch(0.74 0.19 22) l c h / 0.09) 12.677%, oklch(from oklch(0.74 0.19 22) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for chart areas with negative dynamics.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-highlight",
+    "value": "linear-gradient(180deg, oklch(0.97 0.001 180) 0%, oklch(0.97 0.001 180) 41.827%, rgb(0 0 0 / 0) 100%)",
+    "description": "Background gradient for highlighted chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-insight",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.74 0.17 303) l c h / 0.1) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.1) 12.677%, oklch(from oklch(0.74 0.17 303) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for insight chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-pattern",
+    "value": "linear-gradient(0deg, oklch(from oklch(0.23 0.01 140) l c h / 0.1) 8.532%, oklch(0.23 0.01 140) 29.015%)",
+    "description": "Pattern gradient for chart grid backgrounds.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-potential",
+    "value": "linear-gradient(180deg, oklch(0.941 0.018 177 / 0.4) 0%, oklch(0.909 0.041 309 / 0.4) 75%, rgb(0 0 0 / 0) 100%)",
+    "description": "Background gradient for potential chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-line-forecast",
+    "value": "linear-gradient(90deg, oklch(0.74 0.17 303) 0%, oklch(0.9 0.11 175) 100%)",
+    "description": "Forecast line color on the chart grid.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-chart-grid-text-label",
     "value": "oklch(0.088 0.026 147.7 / 0.583)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
     ]
+  },
+  {
+    "name": "--intergalactic-chart-grid-text-label-accent",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Text label with accent on the chart grid.",
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
@@ -793,7 +890,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.58 0.168 278.2)",
+    "value": "oklch(0.53 0.157 279.2)",
     "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -919,6 +1016,12 @@
     "name": "--intergalactic-chart-x-axis-accent-period-active",
     "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background color for the clickable date on the X-axis of the chart grid.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-x-axis-accent-tick",
+    "value": "oklch(0.96 0.001 180)",
+    "description": "Background color for the accent tick on the X-axis.",
     "components": []
   },
   {
@@ -2748,7 +2851,7 @@
   },
   {
     "name": "--intergalactic-tag-secondary-border-invert",
-    "value": "oklch(0.989 0.019 140 / 0.232)",
+    "value": "oklch(0.994 0.011 140 / 0.283)",
     "description": "Inverted border color of the secondary Tag.",
     "components": [
       "tag"
@@ -3034,6 +3137,7 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary text.",
     "components": [
+      "d3-chart",
       "date-picker",
       "feature-highlight",
       "notice-bubble"
@@ -3066,7 +3170,9 @@
     "name": "--intergalactic-text-secondary-invert",
     "value": "oklch(0.997 0.004 165.9 / 0.684)",
     "description": "Inverted version of the secondary text.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-text-success",
@@ -3094,6 +3200,7 @@
     "description": "Inverted version of the default Tooltip background.",
     "components": [
       "base-components",
+      "d3-chart",
       "tooltip"
     ]
   },
@@ -3107,10 +3214,11 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.35 0.006 140)",
+    "value": "oklch(0.4 0.004 140)",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
+      "d3-chart",
       "tooltip"
     ]
   },
@@ -3223,6 +3331,20 @@
     "name": "--intergalactic-box-shadow-card-hover",
     "value": "3px 3px 10px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Hover state for the shadow of the Card with hover state.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-box-shadow-chart-dot-elevated",
+    "value": "0px 0px 2px 0px oklch(0.137 0.026 175.7 / 0.161), 0px 1px 2px 0px oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Shadow of the elevated chart dot.",
+    "components": [
+      "d3-chart"
+    ]
+  },
+  {
+    "name": "--intergalactic-box-shadow-chart-elevated",
+    "value": "0px 0px 2px 0px oklch(from oklch(0.23 0.01 140) l c h / 0.165), 0px 1px 2px 0px oklch(from oklch(0.23 0.01 140) l c h / 0.165)",
+    "description": "Shadow of elevated elements on charts.",
     "components": []
   },
   {
@@ -3361,6 +3483,7 @@
       "base-components",
       "bulk-textarea",
       "counter",
+      "d3-chart",
       "dropdown",
       "dropdown-menu",
       "input-tags",
@@ -3401,6 +3524,7 @@
       "bulk-textarea",
       "button",
       "card",
+      "d3-chart",
       "dropdown",
       "fullscreen-modal",
       "input",
@@ -3462,7 +3586,8 @@
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
-      "color-picker"
+      "color-picker",
+      "d3-chart"
     ]
   },
   {
@@ -3472,6 +3597,7 @@
     "components": [
       "base-trigger",
       "bulk-textarea",
+      "d3-chart",
       "date-picker",
       "dropdown-menu",
       "inline-input",
@@ -3490,6 +3616,7 @@
       "button",
       "checkbox",
       "color-picker",
+      "d3-chart",
       "dropdown",
       "dropdown-menu",
       "input",
@@ -3508,6 +3635,7 @@
       "breadcrumbs",
       "button",
       "checkbox",
+      "d3-chart",
       "date-picker",
       "dropdown",
       "fullscreen-modal",
@@ -3524,6 +3652,7 @@
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
       "color-picker",
+      "d3-chart",
       "fullscreen-modal",
       "notice-bubble",
       "pagination"
@@ -3534,6 +3663,7 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
+      "d3-chart",
       "pagination",
       "tab-line"
     ]

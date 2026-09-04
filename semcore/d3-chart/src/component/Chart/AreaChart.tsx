@@ -67,7 +67,7 @@ class AreaChartComponent extends AbstractChart<
 
   renderChart() {
     const { groupKey, curve, showDots, stacked, onClickArea } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     if (stacked) {
       return (
@@ -80,7 +80,7 @@ class AreaChartComponent extends AbstractChart<
                   y={item.id}
                   key={item.id}
                   color={item.color}
-                  transparent={highlightedLine !== -1 && highlightedLine !== index}
+                  transparent={highlightedItem !== -1 && highlightedItem !== index}
                   curve={curve}
                   onClick={onClickArea}
                 >
@@ -101,7 +101,7 @@ class AreaChartComponent extends AbstractChart<
             y={item.id}
             key={item.id}
             color={item.color}
-            transparent={highlightedLine !== -1 && highlightedLine !== index}
+            transparent={highlightedItem !== -1 && highlightedItem !== index}
             curve={curve}
             onClick={onClickArea}
           >

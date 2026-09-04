@@ -10,8 +10,13 @@ SDot {
   stroke-width: 1px;
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
-  transition-property: cx, cy, x, y;
+  transition-property: cx, cy, x, y, filter;
   transition-timing-function: ease-in-out;
+}
+
+SDot[active] {
+  box-shadow: var(--intergalactic-box-shadow-chart-dot-elevated, 0px 0px 2px 0px oklch(0.137 0.026 175.7 / 0.161), 0px 1px 2px 0px oklch(0.137 0.026 175.7 / 0.161));
+  filter: drop-shadow(0px 0px 1px oklch(0.176 0.033 175.7 / 0.07)) drop-shadow(0px 1px 3px oklch(0.176 0.033 175.7 / 0.07));
 }
 
 SDot[hide] {
