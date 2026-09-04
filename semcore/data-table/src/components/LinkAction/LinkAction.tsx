@@ -68,7 +68,7 @@ export class LinkAction extends React.PureComponent<IProps> {
   }
 
   private isUrl(value: string): boolean {
-    return value.startsWith('//') || value.toLowerCase().startsWith('http');
+    return value.startsWith('//') || value.toLowerCase().startsWith('https://') || value.toLowerCase().startsWith('http://');
   }
 
   private isExternalLink(href: string, text: string) {
@@ -97,6 +97,7 @@ export class LinkAction extends React.PureComponent<IProps> {
       acc[`ellipsis:${key}`] = value;
       return acc;
     }, {});
+
     return (
       <Box display={link.ellipsisSettings ? 'flex' : 'inline'} overflow='hidden'>
         <Link href={link.href} display={link.ellipsisSettings ? 'block' : 'inline'} overflow='hidden'>
