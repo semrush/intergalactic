@@ -3365,6 +3365,7 @@
       "dropdown-menu",
       "input-tags",
       "pills",
+      "side-panel",
       "wizard"
     ]
   },
@@ -3388,6 +3389,7 @@
       "fullscreen-modal",
       "modal",
       "pills",
+      "side-panel",
       "wizard"
     ]
   },
@@ -3424,6 +3426,7 @@
       "feature-popover",
       "fullscreen-modal",
       "notice-bubble",
+      "side-panel",
       "wizard"
     ]
   },
@@ -3442,7 +3445,8 @@
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
     "components": [
-      "fullscreen-modal"
+      "fullscreen-modal",
+      "side-panel"
     ]
   },
   {
@@ -3526,7 +3530,8 @@
       "color-picker",
       "fullscreen-modal",
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "side-panel"
     ]
   },
   {

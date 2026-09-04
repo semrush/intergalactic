@@ -22,7 +22,6 @@ export const AdditionalStates: StoryObj<typeof defaultSidePanelDemoProps> = {
     withAdditionalHeaderContent: { control: { type: 'boolean' } },
     withTooltipInBody: { control: { type: 'boolean' } },
     withFooter: { control: { type: 'boolean' } },
-    backText: { control: { type: 'text' } },
     backWMax: { control: { type: 'number' } },
   },
 };
