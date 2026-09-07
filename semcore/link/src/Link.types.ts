@@ -14,17 +14,8 @@ declare namespace NSLink {
     use?: 'primary' | 'secondary';
 
     /**
-     * Type of Link.
-     *
-     * Primary. The vast majority of links. Tables with URLs and keywords, metrics in the summary.
-     *
-     * Secondary. Links such as 'Learn more', 'Show more', secondary information, opening hints.
-     *
-     * Accent. Use ONLY for action links within the texts. Limits, prompts indicating what to do, and options in the controls.
-     *
-     * Invert. Use on dark backgrounds.
-     *
-     * @default 'primary'.
+     * Theme of Link.
+     * @default 'default'.
      */
     theme?: Theme;
     /**
