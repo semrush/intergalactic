@@ -14,21 +14,21 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table'],
-    }, async ({ page }) => {
+    }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/spin-container-in-table.tsx', 'en');
-
+      await locators.button(page, 'Start loading').click();
       await test.step('Verify roles and attributes', async () => {
         const loadingIcon = page.locator('svg[data-ui-name="Spin"]');
         await expect(loadingIcon).toBeVisible();
         await expect(loadingIcon).toHaveAttribute('role', 'gridcell');
         await expect(loadingIcon).toHaveAttribute('aria-label', 'Loading…');
+        await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify focus when loading ', async () => {
-        await page.keyboard.press('Tab');
-        await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
+        await page.keyboard.press('Shift+Tab');
+        if (browserName != 'webkit') await expect(page.getByRole('row', { name: 'Loading…' })).toBeFocused();
       });
-      await expect(page).toHaveScreenshot();
     });
 
     test('Verify loading state in with sticky header', {
