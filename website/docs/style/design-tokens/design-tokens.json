@@ -657,13 +657,17 @@
     "name": "--intergalactic-chart-data-critical",
     "value": "oklch(0.74 0.19 22)",
     "description": "Critical data color for charts.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-data-success",
     "value": "oklch(0.82 0.15 170)",
     "description": "Success data color for charts.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-data-warning",
@@ -1022,7 +1026,9 @@
     "name": "--intergalactic-chart-x-axis-accent-tick",
     "value": "oklch(0.96 0.001 180)",
     "description": "Background color for the accent tick on the X-axis.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-bg-normal",

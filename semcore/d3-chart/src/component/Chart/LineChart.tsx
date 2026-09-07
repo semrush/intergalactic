@@ -82,7 +82,7 @@ class LineChartComponent extends AbstractChart<
             curve={curve}
             onClick={onClickLine}
           >
-            {showDots && <Line.Dots display />}
+            <Line.Dots display={showDots} />
             {area?.[item.id] && (
               <Line.Area area={area[item.id]} y0='y0' y1='y1' curve={areaCurve} />
             )}
@@ -104,6 +104,7 @@ class LineChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
               dataItem,
+              index: xIndex,
             }),
           };
         }}

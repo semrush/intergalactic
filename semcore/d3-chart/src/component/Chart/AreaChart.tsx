@@ -84,7 +84,7 @@ class AreaChartComponent extends AbstractChart<
                   curve={curve}
                   onClick={onClickArea}
                 >
-                  {showDots && <StackedArea.Area.Dots display />}
+                  <StackedArea.Area.Dots display={showDots} />
                 </StackedArea.Area>
               )
             );
@@ -105,7 +105,7 @@ class AreaChartComponent extends AbstractChart<
             curve={curve}
             onClick={onClickArea}
           >
-            {showDots && <Area.Dots display />}
+            <Area.Dots display={showDots} />
           </Area>
         )
       );
@@ -124,6 +124,7 @@ class AreaChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
               dataItem,
+              index: xIndex,
             }),
           };
         }}

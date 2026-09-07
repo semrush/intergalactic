@@ -22,23 +22,18 @@ STitle {
 SDotGroup {
   display: flex;
   align-items: center;
-  margin-bottom: var(--intergalactic-spacing-content-gap-large, 8px);
-}
-
-SDotGroup:last-of-type {
-  margin-bottom: 0;
 }
 
 SDot {
   margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
-SDotCircle[color] {
+SDotCircle[color][lightness] {
   background-color: var(--color);
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + 0.15) c h);
+  box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + var(--lightness)) c h);
 }
 
 

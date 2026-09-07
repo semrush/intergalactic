@@ -182,6 +182,7 @@ class BarChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
               dataItem,
+              index,
             }),
           };
         }}

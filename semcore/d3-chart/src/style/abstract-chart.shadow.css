@@ -7,7 +7,7 @@ SChart {
 
 STooltipChildrenWrapper {
   display: grid;
-  column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
   &[columnsCount='2'] {
     grid-template-columns: auto minmax(28px, max-content);
@@ -15,5 +15,26 @@ STooltipChildrenWrapper {
 
   &[columnsCount='3'] {
     grid-template-columns: auto minmax(28px, max-content) minmax(28px, max-content);
+  }
+}
+
+STooltipDeltaWrapper {
+  gap: var(--intergalactic-spacing-content-gap-xsmall, 2px);
+  justify-content: flex-end;
+
+  &[trend='upward'] {
+    color: var(--intergalactic-chart-data-success, oklch(0.82 0.15 170));
+  }
+
+  &[trend='downward'] {
+    color: var(--intergalactic-chart-data-critical, oklch(0.74 0.19 22));
+  }
+
+  &[trend='stable'] {
+    color: var(--intergalactic-text-secondary-invert, oklch(0.997 0.004 165.9 / 0.684));
+  }
+
+  STooltipDeltaIcon {
+    align-self: center;
   }
 }

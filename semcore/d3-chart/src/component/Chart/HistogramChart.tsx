@@ -170,6 +170,7 @@ class HistogramChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverRect.Tooltip,
               dataItem,
+              index,
             }),
           };
         }}
