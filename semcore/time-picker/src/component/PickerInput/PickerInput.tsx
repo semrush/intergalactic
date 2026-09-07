@@ -90,13 +90,14 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
   handleVisibleChange = (visible: boolean) => this.setState({ visible });
 
   render() {
+    const SPickerSelect = Select;
     const SPickerInput = Root;
     const { styles, step, onSelect, time, size, disabled, onVisibleChange, ariaLabel, ...other } = this.asProps;
     const { dirtyValue, visible } = this.state;
     const value = dirtyValue === undefined ? time : dirtyValue;
 
     return sstyled(styles)(
-      <Select
+      <SPickerSelect
         {...other}
         interaction='focus'
         size={size}
@@ -121,7 +122,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
           onKeyDown={this.handleKeyDown}
         />
         <Select.Menu hMax={180}>{getOptions(this.minMax, step)}</Select.Menu>
-      </Select>,
+      </SPickerSelect>,
     );
   }
 }
