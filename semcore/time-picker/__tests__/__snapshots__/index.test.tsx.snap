@@ -6,44 +6,49 @@ exports[`TimePicker > Verify data-ui-name 1`] = `
     {
       "children": [
         {
-          "children": [],
-          "uiName": "TimePicker.Hours",
-        },
-        {
-          "children": [],
-          "uiName": "TimePicker.Separator",
-        },
-        {
-          "children": [],
-          "uiName": "TimePicker.Minutes",
-        },
-        {
           "children": [
+            {
+              "children": [],
+              "uiName": "TimePicker.Hours",
+            },
+            {
+              "children": [],
+              "uiName": "TimePicker.Separator",
+            },
+            {
+              "children": [],
+              "uiName": "TimePicker.Minutes",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": null,
+                },
+              ],
+              "uiName": "TimePicker.Format",
+            },
+            {
+              "children": [],
+              "uiName": "Box",
+            },
+            {
+              "children": [],
+              "uiName": "Box",
+            },
             {
               "children": [],
               "uiName": null,
             },
           ],
-          "uiName": "TimePicker.Format",
+          "uiName": "TimePicker",
         },
         {
           "children": [],
           "uiName": "Box",
-        },
-        {
-          "children": [],
-          "uiName": "Box",
-        },
-        {
-          "children": [],
-          "uiName": null,
         },
       ],
-      "uiName": "TimePicker",
-    },
-    {
-      "children": [],
-      "uiName": "Box",
+      "uiName": null,
     },
   ],
   "uiName": null,
