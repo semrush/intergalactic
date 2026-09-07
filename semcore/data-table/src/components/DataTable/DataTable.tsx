@@ -926,6 +926,9 @@ class DataTableRoot<
       this.calculateVerticalShadow();
       this.calculateStickyHeaderAnimation();
       this.calculateContainerHeight();
+      this.setState({
+        scrollOffset: this.getScrollOffsetValue(),
+      });
     }, 0);
 
     this.asProps.onResize?.(entries, observer);
@@ -1060,7 +1063,7 @@ class DataTableRoot<
       return [0, 0];
     }
 
-    return this.columns.reduce(
+    const offsets = this.columns.reduce(
       (acc, column) => {
         if (column.fixed === 'left') {
           acc[0] += this.headerNodesMap.get(column.name)?.current?.getBoundingClientRect().width ?? 0;
@@ -1072,6 +1075,8 @@ class DataTableRoot<
       },
       [0, 0] as [leftOffset: number, rightOffset: number],
     );
+
+    return offsets;
   };
 
   private getFixedStyle = (
