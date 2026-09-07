@@ -267,7 +267,7 @@ class HeadRoot<
 
     const areAllRowsSelected = this.areAllRowsSelected;
     const indeterminate = this.isIndeterminate && !areAllRowsSelected;
-    const isDisabledCheckbox = this.isDisabledCheckbox && indeterminate;
+    const isDisabledCheckbox = this.isDisabledCheckbox && (indeterminate || !areAllRowsSelected);
 
     return sstyled(styles)(
       <>

@@ -982,14 +982,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
     });
 
-    test('Verify header checkbox stays enabled when the limit is spent on another page', {
+    test('Verify header checkbox disabled when the limit is spent on another page', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
         '@data-table'],
     }, async ({ page }) => {
-      // by design: the header checkbox is only disabled in the indeterminate state. With the
-      // limit spent on another page it stays enabled, so the click reports the limit instead of
-      // silently offering nothing — it just must not change the selection
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         pagination: true,
         pageSize: 5,
@@ -1002,28 +999,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const selectAllInput = selectAllCheckbox.locator('input');
       const nextButton = page.locator('[data-ui-name="Pagination.NextPage"]');
 
-      await test.step('Verify the header checkbox is disabled while this page is partially selected', async () => {
+      await test.step('Verify the header checkbox is enabled while this page is partly selected', async () => {
         await rowCheckboxes.nth(0).click();
+
+        await expect(selectedRowsCount).toHaveText('1');
+        await expect(selectAllInput).toBeEnabled();
+      });
+
+      await test.step('Verify the header checkbox is disabled while this page is fully selected', async () => {
         await rowCheckboxes.nth(1).click();
 
         await expect(selectedRowsCount).toHaveText('2');
         await expect(selectAllInput).toBeDisabled();
       });
 
-      await test.step('Verify it becomes enabled on a page with nothing selected', async () => {
+      await test.step('Verify it becomes disabled on other page', async () => {
         await nextButton.click();
 
         await expect(rowCheckboxes).toHaveCount(5);
-        await expect(selectAllInput).toBeEnabled();
+        await expect(selectAllInput).toBeDisabled();
         await expect(selectAllInput).not.toBeChecked();
-      });
-
-      await test.step('Verify clicking it does not select anything beyond the limit', async () => {
-        await selectAllCheckbox.click();
-
-        await expect(selectedRowsCount).toHaveText('2');
-        for (let i = 0; i < await rowCheckboxes.count(); i++)
-          await expect(rowCheckboxes.nth(i).locator('input')).not.toBeChecked();
       });
 
       await test.step('Verify the rows on that page are disabled', async () => {
