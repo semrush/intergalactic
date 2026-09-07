@@ -4,7 +4,7 @@ import InfoM from '@semcore/icon/Info/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import SearchM from '@semcore/icon/Search/m';
 import WarningM from '@semcore/icon/Warning/m';
-import { Flex, Box } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
@@ -35,67 +35,56 @@ const icons = [
   },
 ];
 
-const IconList = (props: { cl: string }) => (
-  <Flex className={props.cl} direction='column' gap={4}>
-    <Text size={400} semibold>
-      {props.cl}
-    </Text>
-
-    {
-      icons.map((el, ind) => {
-        const Icon = el.icon;
-        return (
-          <Flex
-            key={ind}
-            gap={1}
-            tag={Text}
-            size={200}
-            alignItems='center'
-            bold={props.cl.includes('bold')}
-          >
-            {el.text}
-            <Icon color='transparent' />
-          </Flex>
-        );
-      })
-    }
-
-  </Flex>
-);
-
-const Demo = (props: StrokeWidthProps) => {
+const IconList = (props: { cl: 'bold' | 'regular' | 'custom' } & StrokeWidthProps) => {
   return (
-    <Flex gap={20}>
-      <style>
-        {`
-          path, circle, line {
-            
-            stroke: #777978;
+    <Flex direction='column' gap={4}>
+      <Text size={400} semibold>
+        {props.cl}
+      </Text>
 
-            .regular & {
-              stroke-width: ${props.regularWdith}px;
-            }
-            .bold & {
-              stroke-width: ${props.boldWdith}px;
-            }
-          }
-        `}
-      </style>
-
-      {['regular', 'bold'].map((cl) => <IconList key={cl} cl={cl} />)}
+      {
+        icons.map((el, ind) => {
+          const Icon = el.icon;
+          return (
+            <Flex
+              key={ind}
+              gap={1}
+              tag={Text}
+              size={200}
+              alignItems='center'
+              bold={props.cl.includes('bold')}
+            >
+              {el.text}
+              <Icon color='transparent' weight={props.cl !== 'custom' ? props.cl : undefined} strokeWidth={props.cl === 'custom' ? `${props.customWidth}px` : undefined} />
+            </Flex>
+          );
+        })
+      }
 
     </Flex>
   );
 };
 
+const Demo = (props: StrokeWidthProps) => {
+  return (
+    <Flex gap={20}>
+      <IconList key='regular' cl='regular' {...props} />
+      <IconList key='bold' cl='bold' {...props} />
+      <IconList key='custom' cl='custom' {...props} />
+    </Flex>
+  );
+};
+
 export type StrokeWidthProps = {
-  regularWdith: number;
-  boldWdith: number;
+  regularWidth: number;
+  boldWidth: number;
+  customWidth: number;
 };
 
 export const defaultProps: StrokeWidthProps = {
-  regularWdith: 1.5,
-  boldWdith: 1.85,
+  regularWidth: 1.5,
+  boldWidth: 1.85,
+  customWidth: 1.5,
 };
 
 Demo.defaultProps = defaultProps;
