@@ -926,7 +926,9 @@ class DataTableRoot<
       this.calculateVerticalShadow();
       this.calculateStickyHeaderAnimation();
       this.calculateContainerHeight();
-      this.getScrollOffsetValue();
+      this.setState({
+        scrollOffset: this.getScrollOffsetValue(),
+      });
     }, 0);
 
     this.asProps.onResize?.(entries, observer);
