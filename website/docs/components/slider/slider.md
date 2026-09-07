@@ -37,23 +37,7 @@ Larger slider knobs and bars make using sliders easier and faster.
 
 ## Appearance
 
-### Sizes
-
-Default component sizes:
-
-- Bar height: 4px
-- Knob size: 20px * 20px
-
-### Styles
-
-Default component styles:
-
-- Bar color: `--progress-bar-bg`
-- Progress and knob color: `--control-primary-info`
-
-![](static/default.png)
-
-## Value labels
+### Value labels
 
 You can display values under the input.
 
@@ -72,11 +56,10 @@ On touch devices, the values should appear above the finger while manipulating t
 
 Table: Slider states
 
-| State        | Description         | Appearance example         |
-| ------------ | ------------------- | -------------------------- |
-| Default      | Knob size is `20px * 20px`.        | ![](static/default.png)      |
-| Hover        | The color of the bar changes to `--progress-bar-bg-hover`. The slider knob changes color to `--control-primary-info-hover`. The cursor changes to `pointer`. | ![](static/bar-hover.png) ![](static/hover.png) |
-| Active/Focus | The slider knob scales to `30px * 30px`. Clicking anywhere on the bar pulls up the slider and sets it to the `active` state.   | ![](static/active.png)      |
+| State        | Appearance example                              |
+| ------------ | ----------------------------------------------- |
+| Default      | ![](static/default.png)                         |
+| Hover/Active | ![](static/bar-hover.png) ![](static/hover.png) |
 
 ### Linked input
 

@@ -30,22 +30,26 @@ Our ProgressBar has three sizes.
 
 Table: ProgressBar sizes and styles
 
-| Size (height in px) | Appearance example   | Border-radius token     | Where to use        |
-| ------------------- | -------------------- | ----------------------- | ------------------- |
-| S (4px)    | ![](static/size-s.png) | `--rounded-medium`  | Use in widgets inside reports/products.                               |
-| M (8px)    | ![](static/size-m.png) | `--rounded-medium`  | Use inside the product.                                               |
-| L (12px)    | ![](static/size-l.png) | `--rounded-medium` | Use in modal windows or the start screen. |
+| Size (height in px) | Appearance example     | Where to use                              |
+| ------------------- | ---------------------- | ----------------------------------------- |
+| S (4px)             | ![](static/size-s.png) | Use in widgets inside reports/products.   |
+| M (8px)             | ![](static/size-m.png) | Use inside the product.                   |
+| L (12px)            | ![](static/size-l.png) | Use in modal windows or the start screen. |
 
 ### Themes
 
-ProgressBar offers two themes: `dark` and `invert`, which are suitable for light and dark/colored backgrounds respectively. Both themes use the `--progress-bar-value` token for color with a gradient pattern to indicate progress.
+ProgressBar offers three themes: `default` and `brand` for light backgrounds, and `invert` for dark/colored ones.
+
+`brand` shares the light background of `default` but fills the value with the brand color, so use it when the progress itself should be accented.
 
 Table: ProgressBar themes
 
-| Theme  | Appearance example       | Background token            |
-| ------ | ------------------------ | --------------------------- |
-| Invert | ![](static/size-l.png)   | `--progress-bar-bg`         |
-| Dark   | ![](static/dark-theme.png) | `--progress-bar-bg-invert`|
+| Theme   | Appearance example                       |
+| ------- | ---------------------------------------- |
+| Default | ![](static/default-theme.png){width=300} |
+| Brand   | ![](static/brand-theme.png){width=300}   |
+| Invert  | ![](static/invert-theme.png){width=300}  |
+
 
 ## Interaction
 
@@ -55,11 +59,11 @@ The ProgressBar has three states:
 
 Table: ProgressBar states
 
-| State | Appearance example  |
-| ----- | ------------------- |
-| 0% – The progress bar is colored in gray and animated. | ![](static/loading-gray.png) |
-| 1-99% – The progress bar is partially filled and the pattern is animated. | ![](static/size-l.png) |
-| 100% – The progress bar is static and green. | ![](static/loaded.png) |
+| State                                                                     | Appearance example           |
+| ------------------------------------------------------------------------- | ---------------------------- |
+| 0% – The progress bar is colored in gray and animated.                    | ![](static/loading-gray.png) |
+| 1-99% – The progress bar is partially filled and the pattern is animated. | ![](static/size-l.png)       |
+| 100% – The progress bar is static and completely filled.                  | ![](static/loaded.png)       |
 
 The progress bar shouldn't remain in the 100% state. Once the process is completed, either a success message should be displayed, or the user should be provided with further actions.
 

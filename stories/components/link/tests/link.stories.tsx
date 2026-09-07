@@ -127,7 +127,7 @@ export const LinkHint: StoryObj<typeof defaultLinkHintProps> = {
       control: { type: 'text' },
       description: 'Hint content. Falls back to aria-label, then to aria-labelledby content',
     },
-    use: {
+    theme: {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'accent', undefined],
       description: 'Setting this drops `color`, which would otherwise override the use colors',

@@ -1,7 +1,7 @@
 import CalendarIconM from '@semcore/icon/CalendarCheck/m';
-import Link from '@semcore/link';
 import { ButtonLink } from '@semcore/ui/button';
 import { DataTable, LinkAction } from '@semcore/ui/data-table';
+import Link from '@semcore/ui/link';
 import React from 'react';
 
 const Demo = () => {

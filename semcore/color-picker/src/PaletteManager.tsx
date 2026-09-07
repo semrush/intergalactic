@@ -117,7 +117,7 @@ class PaletteManagerRoot extends Component<
 
     return sstyled(styles)(
       <>
-        <Divider mt={3} mb={3} />
+        <Divider />
         {Children.origin
           ? (
               <Children />
@@ -242,52 +242,48 @@ class InputColor extends Component<
     return sstyled(styles)(
       <SPaletteManager>
         <SItemColor data-value={valueColor} />
-        <SInputContainer>
-          <span aria-hidden='true'>#</span>
-          <SInput>
-            <Input ml={1} w={135} state={state} size={size} onKeyDown={this.handlekeyDown}>
-              <SInputValue
-                render={Input.Value}
-                placeholder='FFFFFF'
-                aria-label={getI18nText('colorField')}
-                onChange={this.handlerChange}
-                maxLength={7}
-                onFocus={onFocus}
-                onBlur={onBlur}
-              />
-              <SConfirmColor
-                aria-hidden='true'
-                aria-label={getI18nText('colorFieldConfirm')}
-                // @ts-expect-error our runtime can override props via `use:`, but its not available in types
-                use:tabIndex={-1}
-                tag={ButtonLink}
-                onClick={this.handlerAdd}
-                mt={1}
-                p={0}
-                hidden={!focus}
-              >
-                <ButtonLink.Addon p={0}>
-                  <CheckM color='green-300' />
-                </ButtonLink.Addon>
-              </SConfirmColor>
-              <SClearConfirm
-                aria-hidden='true'
-                aria-label={getI18nText('colorFieldClear')}
-                // @ts-expect-error our runtime can override props via `use:`, but its not available in types
-                use:tabIndex={-1}
-                tag={ButtonLink}
-                onClick={this.handlerCancel}
-                mt={1}
-                px={2}
-                hidden={!focus}
-              >
-                <ButtonLink.Addon p={0}>
-                  <CloseM color='gray-300' />
-                </ButtonLink.Addon>
-              </SClearConfirm>
-            </Input>
-          </SInput>
-        </SInputContainer>
+        <span aria-hidden='true'>#</span>
+        <Input state={state} size={size} onKeyDown={this.handlekeyDown}>
+          <SInputValue
+            render={Input.Value}
+            placeholder='FFFFFF'
+            aria-label={getI18nText('colorField')}
+            onChange={this.handlerChange}
+            maxLength={7}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />
+          <SConfirmColor
+            aria-hidden='true'
+            aria-label={getI18nText('colorFieldConfirm')}
+            // @ts-expect-error our runtime can override props via `use:`, but its not available in types
+            use:tabIndex={-1}
+            tag={ButtonLink}
+            onClick={this.handlerAdd}
+            mt={1}
+            p={0}
+            hidden={!focus}
+          >
+            <ButtonLink.Addon p={0}>
+              <CheckM color='green-300' />
+            </ButtonLink.Addon>
+          </SConfirmColor>
+          <SClearConfirm
+            aria-hidden='true'
+            aria-label={getI18nText('colorFieldClear')}
+            // @ts-expect-error our runtime can override props via `use:`, but its not available in types
+            use:tabIndex={-1}
+            tag={ButtonLink}
+            onClick={this.handlerCancel}
+            mt={1}
+            px={2}
+            hidden={!focus}
+          >
+            <ButtonLink.Addon p={0}>
+              <CloseM color='gray-300' />
+            </ButtonLink.Addon>
+          </SClearConfirm>
+        </Input>
       </SPaletteManager>,
     );
   }

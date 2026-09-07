@@ -1,7 +1,7 @@
+import IconM from '@semcore/icon/Cards/m';
 import ButtonLink from '@semcore/ui/button';
 import type { CellRenderProps } from '@semcore/ui/data-table';
 import { LinkAction, DataTable } from '@semcore/ui/data-table';
-import IconM from '@semcore/ui/icon/Cards/m';
 import Link from '@semcore/ui/link';
 import Pagination from '@semcore/ui/pagination';
 import React from 'react';

@@ -147,6 +147,7 @@ SSegmentIndicator {
 
 SText {
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  min-width: 0.8em;
 }
 
 SAddon {
