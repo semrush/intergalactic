@@ -20,7 +20,7 @@ SInputField>ol {
 
   &:empty::before {
     content: '1. ' attr(data-placeholder);
-    color: var(--intergalactic-text-placeholder, oklch(0.098 0.023 157.4 / 0.457));
+    color: var(--intergalactic-text-placeholder, oklch(0.109 0.023 165.5 / 0.337));
     position: absolute;
     white-space: pre-wrap;
     padding-left: var(--intergalactic-spacing-content-padding-medium, 12px);
@@ -48,7 +48,7 @@ SInputField>ol {
       display: inline-block;
 
       text-align: right;
-      color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+      color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
       margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
       font-variant-numeric: normal;
       font-weight: 300;

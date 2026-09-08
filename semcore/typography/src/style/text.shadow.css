@@ -5,15 +5,15 @@ SText {
   &[formatTags] {
 
     & abbr {
-      color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
-      text-decoration: underline dashed var(--intergalactic-text-hint, oklch(0.088 0.026 147.7 / 0.583));
+      color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+      text-decoration: underline dashed var(--intergalactic-text-hint, oklch(0.097 0.023 156.5 / 0.468));
 
       &:active,
       &:hover,
       &:focus {
         outline: none;
-        color: var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
-        text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, oklch(0.086 0.026 145.8 / 0.605));
+        color: var(--intergalactic-text-hint-hover-active, oklch(0.095 0.024 154.8 / 0.492));
+        text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, oklch(0.095 0.024 154.8 / 0.492));
       }
     }
 
@@ -66,7 +66,7 @@ SText {
         display: block;
         font-style: normal;
         margin-top: var(--intergalactic-spacing-4x, 16px);
-        color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+        color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
         font-size: var(--intergalactic-fs-300, 16px);
         line-height: var(--intergalactic-lh-300, 1.5);
       }
@@ -83,7 +83,7 @@ SText {
         &:before {
           position: absolute;
           left: 0;
-          color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+          color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
         }
       }
 
@@ -184,7 +184,7 @@ SText {
     & h5,
     & h6 {
       & small {
-        color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+        color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
         font-weight: 300;
         font-size: 100%;
       }
@@ -473,7 +473,7 @@ SText[use='primary'] {
 }
 
 SText[use='secondary'] {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
 }
 
 SText[disabled] {

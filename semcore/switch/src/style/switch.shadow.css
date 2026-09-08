@@ -171,7 +171,7 @@ SAddon[neighborLocation='right'] {
 }
 
 SAddon[neighborLocation='left'] {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
 }
 
 SAddon[neighborLocation='left']:nth-child(2) {
@@ -180,7 +180,7 @@ SAddon[neighborLocation='left']:nth-child(2) {
 
 SSwitch[checked] {
   & SAddon[neighborLocation='right'] {
-    color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
   }
 
   & SAddon[neighborLocation='right']:nth-last-child(2) {
