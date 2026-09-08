@@ -1,4 +1,6 @@
-SPickerSelect {
+SPickerInputWrapper {
+  display: contents;
+
   SPickerInput[size='m'] {
     width: 19px;
     margin: 0 var(--intergalactic-spacing-2x, 8px);

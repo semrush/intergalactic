@@ -90,39 +90,41 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
   handleVisibleChange = (visible: boolean) => this.setState({ visible });
 
   render() {
-    const SPickerSelect = Select;
+    const SPickerInputWrapper = 'div';
     const SPickerInput = Root;
     const { styles, step, onSelect, time, size, disabled, onVisibleChange, ariaLabel, ...other } = this.asProps;
     const { dirtyValue, visible } = this.state;
     const value = dirtyValue === undefined ? time : dirtyValue;
 
     return sstyled(styles)(
-      <SPickerSelect
-        {...other}
-        interaction='focus'
-        size={size}
-        onChange={callAllEventHandlers(onSelect, this.handleSelect)}
-        onVisibleChange={callAllEventHandlers(onVisibleChange, this.handleVisibleChange)}
-        visible={visible}
-        value={time}
-        defaultHighlightedIndex={time ? null : 0}
-      >
-        <SPickerInput
-          render={Select.Trigger}
-          tag={Input.Value}
-          ref={this.inputRef}
-          inputMode='numeric'
+      <SPickerInputWrapper>
+        <Select
+          {...other}
+          interaction='focus'
           size={size}
-          disabled={disabled}
-          neighborLocation={false}
-          value={value}
-          aria-label={ariaLabel}
-          onChange={this.handleChange}
-          onBlur={this.handleBlur}
-          onKeyDown={this.handleKeyDown}
-        />
-        <Select.Menu hMax={180}>{getOptions(this.minMax, step)}</Select.Menu>
-      </SPickerSelect>,
+          onChange={callAllEventHandlers(onSelect, this.handleSelect)}
+          onVisibleChange={callAllEventHandlers(onVisibleChange, this.handleVisibleChange)}
+          visible={visible}
+          value={time}
+          defaultHighlightedIndex={time ? null : 0}
+        >
+          <SPickerInput
+            render={Select.Trigger}
+            tag={Input.Value}
+            ref={this.inputRef}
+            inputMode='numeric'
+            size={size}
+            disabled={disabled}
+            neighborLocation={false}
+            value={value}
+            aria-label={ariaLabel}
+            onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            onKeyDown={this.handleKeyDown}
+          />
+          <Select.Menu hMax={180}>{getOptions(this.minMax, step)}</Select.Menu>
+        </Select>
+      </SPickerInputWrapper>,
     );
   }
 }
