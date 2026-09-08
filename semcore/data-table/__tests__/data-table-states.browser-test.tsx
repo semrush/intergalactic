@@ -768,6 +768,40 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(locators.getCell(page, 2, 1)).not.toBeFocused();
       });
     });
+
+    test('Verify mouse interaction in loading state does not steal focus and does not scroll to the table', {
+      tag: [TAG.PRIORITY_HIGH,
+        TAG.MOUSE,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/loading-with-sort-and-scroll.tsx', 'en');
+
+      const spin = page.locator('svg[data-ui-name="Spin"]');
+      const spinContainer = page.getByRole('row', { name: 'Loading…' });
+
+      await locators.dataTable(page).waitFor({ state: 'visible' });
+      await locators.button(page, 'Start loading').click();
+      await spin.waitFor({ state: 'visible' });
+
+      await test.step('Verify click in the loading table does not move focus to the spinner', async () => {
+        const sortButton = locators.sortButton(page, 4);
+
+        await sortButton.click();
+
+        await expect(spinContainer).not.toBeFocused();
+        await expect(sortButton).toBeFocused();
+      });
+
+      await test.step('Verify page is not scrolled back to the table when loading is finished', async () => {
+        await spinContainer.click();
+        await page.evaluate(() => window.scrollTo(0, 0));
+        expect(await page.evaluate(() => window.scrollY)).toBe(0);
+
+        await spin.waitFor({ state: 'hidden', timeout: 10000 });
+
+        expect(await page.evaluate(() => window.scrollY)).toBe(0);
+      });
+    });
   });
 
   test.describe('Selectable rows ', () => {
