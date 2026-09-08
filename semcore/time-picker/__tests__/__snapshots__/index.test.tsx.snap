@@ -8,16 +8,26 @@ exports[`TimePicker > Verify data-ui-name 1`] = `
         {
           "children": [
             {
-              "children": [],
-              "uiName": "TimePicker.Hours",
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "TimePicker.Hours",
+                },
+              ],
+              "uiName": null,
             },
             {
               "children": [],
               "uiName": "TimePicker.Separator",
             },
             {
-              "children": [],
-              "uiName": "TimePicker.Minutes",
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "TimePicker.Minutes",
+                },
+              ],
+              "uiName": null,
             },
             {
               "children": [

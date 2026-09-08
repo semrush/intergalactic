@@ -20,8 +20,14 @@ export const WidgetEmptyInCell: Story = {
   render: WidgetEmptyInCellExample,
 };
 
-export const NothingFoundWithFixedColumnWidth: Story = {
+export const NothingFoundWithFixedColumnWidth: StoryObj<{ loading: boolean }> = {
   render: NothingFoundWithFixedColumnWidthExample,
+  args: {
+    loading: false,
+  },
+  argTypes: {
+    loading: { type: 'boolean' },
+  },
 };
 
 export const EmptyStateSortable: Story = {
