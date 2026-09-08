@@ -61,6 +61,7 @@ SRadioItemHeaderRightAddon {
 }
 
 SRadioItemSkeleton {
+  display: inline-block;
   margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
   vertical-align: middle;
 }

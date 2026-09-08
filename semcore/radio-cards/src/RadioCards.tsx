@@ -89,7 +89,7 @@ function Item(
   const SRadioItemHeaderText = SemcoreText;
   const SRadioItemHeaderRightAddon = SemcoreText;
   const SRadioItemDescription = SemcoreText;
-  const SRadioItemSkeleton = Skeleton;
+  const SRadioItemSkeleton = Box;
   const {
     Children,
     styles,
@@ -127,8 +127,10 @@ function Item(
                   )}
                   {loading
                     ? (
-                        <SRadioItemSkeleton w={24} h={16}>
-                          <rect x='0' y='0' rx='4' ry='4' width='100%' height='100%' />
+                        <SRadioItemSkeleton>
+                          <Skeleton w={24} h={16}>
+                            <rect x='0' y='0' rx='4' ry='4' width='100%' height='100%' />
+                          </Skeleton>
                         </SRadioItemSkeleton>
                       )
                     : (
