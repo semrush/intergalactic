@@ -16,7 +16,7 @@
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1"
+    "@semcore/base-components": "^17.2.2"
   },
   "repository": {
     "type": "git",
