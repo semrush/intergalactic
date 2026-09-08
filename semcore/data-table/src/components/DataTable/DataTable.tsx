@@ -829,7 +829,7 @@ class DataTableRoot<
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (this.asProps.loading) {
+    if (this.asProps.loading && lastInteraction.isKeyboard()) {
       this.spinnerRef.current?.focus();
       e.currentTarget.setAttribute('tabIndex', '-1');
 

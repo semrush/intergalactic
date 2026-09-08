@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import Spin from '@semcore/spin';
@@ -213,7 +213,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   };
 
   handleFocusSpinContainer = () => {
-    this.spinContainerIsFocused = true;
+    if (lastInteraction.isKeyboard()) {
+      this.spinContainerIsFocused = true;
+    }
   };
 
   handleBlurSpinContainer = () => {
