@@ -301,6 +301,12 @@ SSpinContainer {
   &[tableInnerVerticalScroll][headerHeight] {
     top: var(--headerHeight);
   }
+
+  &[isDataEmpty] {
+    position: absolute;
+    inset: 0;
+    top: var(--headerHeight);
+  }
 }
 
 SEmptyData {

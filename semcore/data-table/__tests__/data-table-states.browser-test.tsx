@@ -701,6 +701,42 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(hasScroll).toBe(true);
     });
 
+    test('Verify loading state of empty table with nothing found', {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/nothing-found-with-fixed-column-width.tsx', 'en', { loading: true });
+
+      const table = locators.dataTable(page);
+      const header = locators.row(page, 1);
+      const spinContainer = page.getByRole('row', { name: 'Loading…' });
+
+      await test.step('Verify spinner and empty state are both rendered', async () => {
+        await expect(page.locator('svg[data-ui-name="Spin"]')).toBeVisible();
+        await expect(locators.button(page, 'Clear filters')).toBeVisible();
+      });
+
+      await test.step('Verify spinner is positioned relatively to the table', async () => {
+        await expect(table).toHaveCSS('position', 'relative');
+        await expect(spinContainer).toHaveCSS('position', 'absolute');
+      });
+
+      await test.step('Verify spinner covers the empty table area below the header', async () => {
+        const tableBox = (await table.boundingBox())!;
+        const headerBox = (await header.boundingBox())!;
+        const spinBox = (await spinContainer.boundingBox())!;
+
+        // spinner spans the whole table width and does not overflow it
+        expect(Math.abs(spinBox.x - tableBox.x)).toBeLessThanOrEqual(1);
+        expect(Math.abs(spinBox.width - tableBox.width)).toBeLessThanOrEqual(1);
+
+        // spinner starts below the header and stays inside the table
+        expect(spinBox.y).toBeGreaterThanOrEqual(headerBox.y + headerBox.height - 1);
+        expect(spinBox.y + spinBox.height).toBeLessThanOrEqual(tableBox.y + tableBox.height + 1);
+        expect(spinBox.height).toBeGreaterThan(0);
+      });
+    });
+
     test('Verify focus after loading is finished', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
