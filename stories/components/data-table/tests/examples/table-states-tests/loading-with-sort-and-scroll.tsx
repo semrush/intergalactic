@@ -10,7 +10,7 @@ const Demo = () => {
     ['vol', 'desc'],
   );
   const [loading, setLoading] = React.useState(false);
-  const timeoutRef = React.useRef();
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
 
   const sortedData = React.useMemo(
     () =>
