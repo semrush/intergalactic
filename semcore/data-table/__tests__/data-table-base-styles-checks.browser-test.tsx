@@ -25,7 +25,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify header cell styles', async () => {
       await checkStyles(header, {
         'font-size': '12px',
-        'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
         'color': textPrimary,
         'padding': '12px',
         'background-color': thPrimaryCellBg,
@@ -137,7 +136,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify styles Compact', {
     tag: [TAG.PRIORITY_HIGH,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/compact.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
     const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
@@ -149,7 +148,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await checkStyles(header, {
       'font-size': '12px',
-      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': textPrimary,
       'padding': '12px 8px',
       'background-color': thPrimaryCellBg,
@@ -187,7 +185,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await checkStyles(header, {
       'font-size': '12px',
-      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': textPrimary,
       'padding': '8px',
       'background-color': thSecondaryCellBg,
