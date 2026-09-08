@@ -7,3 +7,21 @@ SHoverRect, SHoverRect:focus-visible {
   outline: none;
   fill: var(--intergalactic-chart-grid-bar-chart-hover, oklch(0.177 0.033 175.6 / 0.042));
 }
+
+STick {
+  font-size: var(--intergalactic-fs-100, 12px);
+  fill: var(--intergalactic-chart-grid-text-label, oklch(0.088 0.026 147.7 / 0.583));
+  transform: translateY(12px);
+  text-anchor: middle;
+  dominant-baseline: hanging;
+
+  tspan {
+    dominant-baseline: hanging;
+  }
+
+  cursor: default;
+}
+
+STickHover {
+  fill: var(--intergalactic-chart-x-axis-accent-tick, oklch(0.96 0.001 180));
+}

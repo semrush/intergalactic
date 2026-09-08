@@ -59,7 +59,7 @@ class DonutChartComponent extends AbstractChart<
 
   renderChart() {
     const { innerRadius, halfsize, innerLabel, onClickPie } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
 
@@ -73,7 +73,7 @@ class DonutChartComponent extends AbstractChart<
               dataKey={item.id}
               name={item.label}
               color={item.color}
-              active={highlightedLine === index}
+              active={highlightedItem === index}
             />
           );
         })}

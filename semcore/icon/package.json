@@ -1498,6 +1498,26 @@
       "import": "./lib/DesktopChart/m/index.mjs",
       "require": "./lib/DesktopChart/m/index.js"
     },
+    "./DiffDown/l": {
+      "types": "./lib/DiffDown/l/index.d.ts",
+      "import": "./lib/DiffDown/l/index.mjs",
+      "require": "./lib/DiffDown/l/index.js"
+    },
+    "./DiffDown/m": {
+      "types": "./lib/DiffDown/m/index.d.ts",
+      "import": "./lib/DiffDown/m/index.mjs",
+      "require": "./lib/DiffDown/m/index.js"
+    },
+    "./DiffUp/l": {
+      "types": "./lib/DiffUp/l/index.d.ts",
+      "import": "./lib/DiffUp/l/index.mjs",
+      "require": "./lib/DiffUp/l/index.js"
+    },
+    "./DiffUp/m": {
+      "types": "./lib/DiffUp/m/index.d.ts",
+      "import": "./lib/DiffUp/m/index.mjs",
+      "require": "./lib/DiffUp/m/index.js"
+    },
     "./Document/l": {
       "types": "./lib/Document/l/index.d.ts",
       "import": "./lib/Document/l/index.mjs",

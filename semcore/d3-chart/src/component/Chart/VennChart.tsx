@@ -71,7 +71,7 @@ class VennChartComponent extends AbstractChart<
 
   renderChart() {
     const { data, onClickVennItem } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
     const checkedLegendItemsMap = checkedLegendItems.reduce<Record<string, LegendItem>>(
@@ -102,7 +102,7 @@ class VennChartComponent extends AbstractChart<
               dataKey={item.id}
               name={item.label}
               color={item.color}
-              transparent={highlightedLine !== -1 && highlightedLine !== index}
+              transparent={highlightedItem !== -1 && highlightedItem !== index}
             />
           );
         })}

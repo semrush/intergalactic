@@ -6,6 +6,8 @@ import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
+import DiffDown from '@semcore/icon/DiffDown/m';
+import DiffUp from '@semcore/icon/DiffUp/m';
 import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
@@ -25,7 +27,7 @@ import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.ty
 
 export type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
-  highlightedLine: number;
+  highlightedItem: number;
   withTrend: boolean;
 
   plotWidth: number;
@@ -65,7 +67,7 @@ export abstract class AbstractChart<
       this.observer = new ResizeObserver(this.handleResize);
     }
 
-    this.setHighlightedLine = this.setHighlightedLine.bind(this);
+    this.setHighlightedItem = this.setHighlightedItem.bind(this);
     this.handleChangeVisible = this.handleChangeVisible.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -75,7 +77,7 @@ export abstract class AbstractChart<
 
     this.state = {
       dataDefinitions: this.getDefaultDataDefinitions(),
-      highlightedLine: -1,
+      highlightedItem: -1,
       withTrend: false,
       plotWidth: 0,
       plotHeight: 0,
@@ -329,8 +331,8 @@ export abstract class AbstractChart<
     return valueScale;
   }
 
-  protected setHighlightedLine(index: number) {
-    this.setState({ highlightedLine: index });
+  protected setHighlightedItem(index: number) {
+    this.setState({ highlightedItem: index });
   }
 
   protected handleChangeVisible(id: string, isVisible: boolean) {
@@ -352,26 +354,18 @@ export abstract class AbstractChart<
   }
 
   protected handleMouseEnter(id: string) {
-    this.setHighlightedLine(this.state.dataDefinitions.findIndex((line) => line.id === id));
+    this.setHighlightedItem(this.state.dataDefinitions.findIndex((line) => line.id === id));
   }
 
   protected handleMouseLeave() {
-    this.setHighlightedLine(-1);
+    this.setHighlightedItem(-1);
   }
 
   protected resolveColor(id: string, index: number) {
     return this.props.colorMap?.[id] ?? `chart-palette-order-${index + 1}`;
   }
 
-  protected tooltipValueFormatter(
-    value?: string | number | typeof interpolateValue | Date,
-  ): string {
-    const { tooltipValueFormatter } = this.asProps;
-
-    if (tooltipValueFormatter) {
-      return tooltipValueFormatter(value);
-    }
-
+  private defaultTooltipFormatter(value?: unknown): string {
     if (value === undefined || value === interpolateValue) {
       return NOT_A_VALUE;
     }
@@ -381,10 +375,26 @@ export abstract class AbstractChart<
     }
 
     if (value instanceof Date) {
-      return value.toDateString();
+      return new Intl.DateTimeFormat('en', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      }).format(value);
+    }
+
+    if (typeof value === 'number' && !Number.isNaN(value)) {
+      return Number.isInteger(value) ? `${value}` : value.toFixed(1);
     }
 
     return value.toString();
+  }
+
+  protected tooltipValueFormatter(value?: unknown): string {
+    const { tooltipValueFormatter } = this.asProps;
+
+    if (tooltipValueFormatter) return tooltipValueFormatter(value);
+
+    return this.defaultTooltipFormatter(value);
   }
 
   protected defaultLegendProps(): Partial<BaseLegendProps> {
@@ -404,13 +414,14 @@ export abstract class AbstractChart<
       return null;
     }
 
-    const { dataDefinitions, withTrend } = this.state;
+    const { dataDefinitions, withTrend, highlightedItem } = this.state;
     const lProps = {
       ...this.defaultLegendProps(),
       ...legendProps,
     };
 
-    const commonLegendProps: LegendFlexProps | LegendTableProps = {
+    const commonLegendProps: (LegendFlexProps | LegendTableProps) & { highlightedItem: State['highlightedItem'] } = {
+      highlightedItem,
       'dataHints': this.dataHints,
       'items': dataDefinitions,
       'size': lProps.size,
@@ -508,27 +519,53 @@ export abstract class AbstractChart<
     );
   }
 
+  protected getPercentDelta(key: string, index: number) {
+    if (index === 0) return null;
+
+    const { data } = this.asProps;
+
+    if (!Array.isArray(data)) return null;
+
+    const prev = data[index - 1][key];
+    const curr = data[index][key];
+
+    if (typeof prev !== 'number' || typeof curr !== 'number') return null;
+
+    if (prev === 0) return curr === 0 ? 0 : null;
+
+    const percent = ((curr - prev) / prev) * 100;
+
+    return Number(percent.toFixed(1));
+  }
+
   protected getTooltipChildren<D extends ObjectData>(options: {
     Tooltip: typeof HoverLine['Tooltip'] | typeof HoverRect['Tooltip'];
     dataItem: D;
+    index: number;
   }) {
-    const STooltipChildrenWrapper = Root;
-    const { Tooltip, dataItem } = options;
+    const STooltipChildrenWrapper = Box;
+    const { Tooltip, dataItem, index } = options;
 
-    const { styles, groupKey } = this.asProps;
+    const { styles, groupKey, showDeltaPercentInTooltip } = this.asProps;
     const { dataDefinitions } = this.state;
-    const title = dataItem[groupKey as keyof D]?.toString();
+    const title = this.defaultTooltipFormatter(dataItem[groupKey as keyof D]);
+
+    const percentDeltas = showDeltaPercentInTooltip
+      ? dataDefinitions.map(({ id }) => this.getPercentDelta(id, index))
+      : [];
+    const hasNoPercentDeltas = percentDeltas.length === 0 || percentDeltas.every((value) => value === null);
 
     return sstyled(styles)(
       <Flex direction='column'>
         { title && <Tooltip.Title>{title}</Tooltip.Title> }
 
         <STooltipChildrenWrapper
-          render={Box}
-          columnsCount='2'
-          __excludeProps={['data']}
+          // @ts-ignore
+          columnsCount={hasNoPercentDeltas ? 2 : 3}
         >
-          {dataDefinitions.map((item) => {
+          {dataDefinitions.map((item, idx) => {
+            const delta = percentDeltas[idx] ?? null;
+
             return (
               item.checked && (
                 <Fragment key={item.id}>
@@ -536,6 +573,7 @@ export abstract class AbstractChart<
                     {item.label}
                   </Tooltip.Dot>
                   <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id] as string)}</Text>
+                  {this.renderTooltipPercentDelta(delta)}
                 </Fragment>
               )
             );
@@ -544,6 +582,32 @@ export abstract class AbstractChart<
           {this.renderTooltipTotalLine(dataItem)}
         </STooltipChildrenWrapper>
       </Flex>,
+    );
+  }
+
+  protected renderTooltipPercentDelta(delta: number | null) {
+    if (delta === null) return null;
+
+    const { styles } = this.asProps;
+    const STooltipDeltaWrapper = Flex;
+    let STooltipDeltaIcon = DiffDown;
+
+    const trend: 'upward' | 'downward' | 'stable' = delta !== 0
+      ? delta > 0
+        ? 'upward'
+        : 'downward'
+      : 'stable';
+
+    if (delta > 0) STooltipDeltaIcon = DiffUp;
+
+    return sstyled(styles)(
+      <STooltipDeltaWrapper
+        // @ts-ignore
+        trend={trend}
+      >
+        {delta !== 0 && <STooltipDeltaIcon width={8.5} height={8.5} />}
+        <Text size={100}>{ delta && `${delta}%`}</Text>
+      </STooltipDeltaWrapper>,
     );
   }
 
@@ -559,7 +623,7 @@ export abstract class AbstractChart<
     return (
       <>
         <Box mt={2} mr={2}>Total</Box>
-        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
+        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : this.tooltipValueFormatter(total)}</Text>
       </>
     );
   }
