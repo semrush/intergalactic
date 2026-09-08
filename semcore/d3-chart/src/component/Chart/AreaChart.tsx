@@ -7,6 +7,8 @@ import React from 'react';
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
+import type { ObjectData } from './AbstractChart.type';
+import { HIGHLIGHT } from './AbstractChart.type';
 import type { AreaChartData, AreaChartProps, AreaChartType, AreaChartDefaultProps } from './AreaChart.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
@@ -84,7 +86,7 @@ class AreaChartComponent extends AbstractChart<
                   curve={curve}
                   onClick={onClickArea}
                 >
-                  {showDots && <StackedArea.Area.Dots display />}
+                  <StackedArea.Area.Dots display={showDots ? true : this.displayDots} />
                 </StackedArea.Area>
               )
             );
@@ -105,7 +107,7 @@ class AreaChartComponent extends AbstractChart<
             curve={curve}
             onClick={onClickArea}
           >
-            {showDots && <Area.Dots display />}
+            <Area.Dots display={showDots ? true : this.displayDots} />
           </Area>
         )
       );
@@ -134,6 +136,10 @@ class AreaChartComponent extends AbstractChart<
   protected getLegendAriaLabel(): string {
     return this.asProps.getI18nText('legendForChart', { chartType: 'Area' });
   }
+
+  protected displayDots = (i: number, isActive: boolean, noAround: boolean, data: ObjectData): boolean => {
+    return isActive || noAround || Boolean(data[HIGHLIGHT]);
+  };
 }
 
 /**

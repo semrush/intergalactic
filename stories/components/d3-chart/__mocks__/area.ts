@@ -1,16 +1,16 @@
-import { interpolateValue } from '@semcore/ui/d3-chart';
+import { interpolateValue, GOOD, HIGHLIGHT, BAD, INSIGHTFUL } from '@semcore/ui/d3-chart';
 
 export default {
   Default: [
     { time: new Date(2025, 0, 1), line: 3 },
     { time: new Date(2025, 0, 5), line: 7 },
     { time: new Date(2025, 0, 10), line: 1 },
-    { time: new Date(2025, 0, 15), line: 9 },
+    { time: new Date(2025, 0, 15), line: 9, [HIGHLIGHT]: GOOD },
     { time: new Date(2025, 0, 20), line: 4 },
-    { time: new Date(2025, 0, 25), line: 6 },
+    { time: new Date(2025, 0, 25), line: 6, [HIGHLIGHT]: INSIGHTFUL },
     { time: new Date(2025, 0, 30), line: 2 },
     { time: new Date(2025, 1, 4), line: 8 },
-    { time: new Date(2025, 1, 9), line: 0 },
+    { time: new Date(2025, 1, 9), line: 0, [HIGHLIGHT]: BAD },
     { time: new Date(2025, 1, 14), line: 5 },
   ],
   Interpolation: [

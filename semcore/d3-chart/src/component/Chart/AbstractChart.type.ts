@@ -11,6 +11,11 @@ import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
+export const GOOD = Symbol('GOOD');
+export const BAD = Symbol('BAD');
+export const INSIGHTFUL = Symbol('INSIGHTFUL');
+export const HIGHLIGHT = Symbol('HIGHLIGHT');
+
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
    * Disable hover (for transition items legend of each not hovered)
@@ -43,7 +48,9 @@ export type BaseLegendProps = BaseChartLegendProps & {
     }
   );
 
-export type ObjectData = Record<string, unknown>;
+export type ObjectData = Record<string, unknown> & {
+  [HIGHLIGHT]?: typeof GOOD | typeof BAD | typeof INSIGHTFUL;
+};
 export type ListData = ObjectData[];
 
 /**

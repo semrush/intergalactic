@@ -3,12 +3,15 @@ import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { bisector } from 'd3-array';
 import React from 'react';
 
+import { HIGHLIGHT, GOOD, BAD, INSIGHTFUL } from './component/Chart/AbstractChart.type';
 import createElement from './createElement';
 import { PatternSymbol, getPatternSymbolSize } from './Pattern';
 import style from './style/dot.shadow.css';
 import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
 
 function Dots(props) {
+  const SDotHighlight = 'circle';
+  const SDotBorder = 'circle';
   const {
     Element: SDot,
     styles,
@@ -27,6 +30,7 @@ function Dots(props) {
     resolveColor,
     patterns,
     onClick,
+    uid,
   } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = React.useState(null);
@@ -67,6 +71,22 @@ function Dots(props) {
     onClick(index, e);
   }, [scale, data, onClick]);
 
+  const resolveHighlightColor = React.useCallback((highlight) => {
+    switch (highlight) {
+      case GOOD: {
+        return resolveColor('--intergalalctic-chart-data-success');
+      }
+      case BAD: {
+        return resolveColor('--intergalalctic-chart-data-critical');
+      }
+      case INSIGHTFUL: {
+        return `url(#dotGradient_${uid})`;
+      }
+      default:
+        return '';
+    }
+  }, []);
+
   React.useEffect(() => {
     const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
       e.persist();
@@ -95,8 +115,8 @@ function Dots(props) {
     const active = i === activeIndex;
     const visible =
       typeof display === 'function'
-        ? display(i, i === activeIndex, !isPrev && !isNext)
-        : display || i === activeIndex || (!isPrev && !isNext);
+        ? display(i, active, !isPrev && !isNext, d)
+        : display || active || (!isPrev && !isNext);
     const radius = radiusBase * (active ? 5 / 4 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
@@ -104,22 +124,48 @@ function Dots(props) {
     if (!patterns) {
       acc.push(
         sstyled(styles)(
-          <SDot
-            render='circle'
-            color={resolveColor(color)}
-            patternKey={patternKey}
-            patterns={patterns}
-            key={`${i}`}
-            value={d}
-            visible={visible}
-            active={active}
-            hide={hide}
-            transparent={transparent}
-            cx={d3.x()(d)}
-            cy={d3.y()(d)}
-            r={radius}
-            __excludeProps={['display', 'data', 'scale']}
-          />,
+          <React.Fragment key={i}>
+            {d[HIGHLIGHT] && (
+              <>
+                <SDotBorder
+                  visible={visible}
+                  active={active}
+                  hide={hide}
+                  transparent={transparent}
+                  cx={d3.x()(d)}
+                  cy={d3.y()(d)}
+                  r={23}
+                />
+                <SDotHighlight
+                  color={resolveHighlightColor(d[HIGHLIGHT])}
+                  value={d}
+                  visible={visible}
+                  active={active}
+                  hide={hide}
+                  transparent={transparent}
+                  cx={d3.x()(d)}
+                  cy={d3.y()(d)}
+                  r={17}
+                />
+              </>
+            )}
+            <SDot
+              render='circle'
+              color={resolveColor(color)}
+              patternKey={patternKey}
+              patterns={patterns}
+              key={`${i}`}
+              value={d}
+              visible={visible}
+              active={active}
+              hide={hide}
+              transparent={transparent}
+              cx={d3.x()(d)}
+              cy={d3.y()(d)}
+              r={radius}
+              __excludeProps={['display', 'data', 'scale']}
+            />
+          </React.Fragment>,
         ),
       );
     } else {
@@ -145,8 +191,16 @@ function Dots(props) {
     return acc;
   }, []);
   const SDots = 'g';
+  const SStopFrom = 'stop';
+  const SStopTo = 'stop';
   return sstyled(styles)(
     <SDots duration={`${duration}ms`} onClickCapture={handlerOnClick}>
+      <defs>
+        <linearGradient id={`dotGradient_${uid}`} x1='0%' y1='0%' x2='100%' y2='100%' gradientTransform='rotate(-45 0.5 0.5)'>
+          <SStopFrom offset='0%' />
+          <SStopTo offset='100%' />
+        </linearGradient>
+      </defs>
       <PatternSymbol
         color={resolveColor(color)}
         patternKey={color}

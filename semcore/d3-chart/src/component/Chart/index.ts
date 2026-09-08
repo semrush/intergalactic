@@ -1,3 +1,4 @@
+import { GOOD, BAD, INSIGHTFUL, HIGHLIGHT } from './AbstractChart.type';
 import { AreaChart } from './AreaChart';
 import { BarChart } from './BarChart';
 import { BubbleChart } from './BubbleChart';
@@ -22,4 +23,11 @@ export default {
   Radar: RadarChart,
   Cigarette: CigaretteChart,
   CompactHorizontalBar: CompactHorizontalBarChart,
+};
+
+export {
+  GOOD,
+  BAD,
+  INSIGHTFUL,
+  HIGHLIGHT,
 };
