@@ -9,6 +9,7 @@ SDataTable {
 
 SDataTable[isDataEmpty] {
   display: block;
+  position: relative;
   align-items: unset;
   min-width: unset;
 }
