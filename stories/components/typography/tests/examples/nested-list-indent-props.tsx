@@ -11,10 +11,10 @@ type ExampleProps = {
 
 const nestedList = (
   <ol>
-    <li>
+    <li data-level='1'>
       Level 1 item
       <ol>
-        <li>
+        <li data-level='2'>
           Level 2 item
           <ol>
             <li data-level='3'>Level 3 item</li>
@@ -56,7 +56,7 @@ const Demo = (props: ExampleProps) => {
           <Text size={100} bold>
             {'<Text formatTags> — no size prop'}
           </Text>
-          <Box ref={baselineRef}>
+          <Box ref={baselineRef} data-testid='baseline-no-size'>
             <Text formatTags={formatTags}>{nestedList}</Text>
           </Box>
         </Flex>
@@ -65,7 +65,7 @@ const Demo = (props: ExampleProps) => {
           <Text size={100} bold>
             {`<Text formatTags size={${size === 'none' ? 'undefined' : sizeProp}}>`}
           </Text>
-          <Box ref={controlledRef}>
+          <Box ref={controlledRef} data-testid='controlled-with-size'>
             <Text formatTags={formatTags} size={sizeProp}>
               {nestedList}
             </Text>
