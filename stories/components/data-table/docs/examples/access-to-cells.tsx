@@ -1,4 +1,4 @@
-import CalendarIconM from '@semcore/icon/CalendarCheck/m';
+import AddCampaignIconM from '@semcore/icon/AddCampaign/m';
 import type { CellRenderProps } from '@semcore/ui/data-table';
 import { DataTable, LinkAction } from '@semcore/ui/data-table';
 import React from 'react';
@@ -21,8 +21,8 @@ const Demo = () => {
             <LinkAction
               link={{ href, text: String(props.value) }}
               actions={{
-                title: 'Open in a new tab',
-                icon: CalendarIconM,
+                title: 'Add to campaign',
+                icon: AddCampaignIconM,
                 onClick: () => {
                   alert(`Click row
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
