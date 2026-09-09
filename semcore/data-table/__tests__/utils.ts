@@ -29,7 +29,32 @@ export const locators = {
     page.locator(`[data-ui-name="Head.Column"][aria-colindex="${i}"]`),
   sortButton: (page: Page, col: any) => locators.getHeadColumn(page, col).locator('button[data-ui-name="ButtonLink"]'),
 
+  /** The text-carrying link of a LinkAction; its action links hold no `Link.Text`. */
+  linkActionLink: (page: Page, row: number, col: number) =>
+    locators.getCell(page, row, col).locator('a[data-ui-name="Link"]').first(),
+  linkActionText: (page: Page, row: number, col: number) =>
+    locators.linkActionLink(page, row, col).locator('[data-ui-name="Link.Text"]').first(),
+  linkActionExternalIcon: (page: Page, row: number, col: number) =>
+    locators.getCell(page, row, col).locator('[data-ui-name="Link.ExternalIcon"]'),
+  linkActionDivider: (page: Page, row: number, col: number) =>
+    locators.getCell(page, row, col).locator('[data-ui-name="Divider"]'),
+  /** Icon-only actions carry no text, so `title` is the only source of their name. */
+  linkActionHrefAction: (page: Page, row: number, col: number, name: string) =>
+    locators.getCell(page, row, col).getByRole('link', { name }),
+  linkActionClickAction: (page: Page, row: number, col: number, name: string) =>
+    locators.getCell(page, row, col).getByRole('button', { name }),
 };
+
+/** True while every control in the cell still sits within the cell's right edge. */
+export async function controlsFitInCell(page: Page, row: number, col: number) {
+  return locators.getCell(page, row, col).evaluate((cell) => {
+    const right = cell.getBoundingClientRect().right;
+
+    return [...cell.querySelectorAll('button, a')].every(
+      (el) => el.getBoundingClientRect().right <= right + 1,
+    );
+  });
+}
 
 export async function getColumnWidth(page: any, colIndex: any) {
   const column = await page.locator(`[aria-colindex="${colIndex}"][role="columnheader"]`);
