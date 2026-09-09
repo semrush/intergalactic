@@ -3,6 +3,12 @@ import React from 'react';
 
 import BarMockData from '../../../__mocks__/bar';
 
+const links = [
+  'https://google.com',
+  'https://semrush.com',
+  'https://wroclaw.pl',
+];
+
 const Demo = () => {
   return (
     <Chart.Bar
@@ -11,6 +17,7 @@ const Demo = () => {
       plotWidth={500}
       plotHeight={300}
       aria-label='Bar chart'
+      getLink={(index) => links[index]}
     />
   );
 };

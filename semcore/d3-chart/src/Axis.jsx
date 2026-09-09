@@ -179,9 +179,12 @@ const MAP_POSITION_TITlE = {
   },
 };
 
-function renderValue(value) {
+function renderValue(value, locale = 'en') {
   if (value instanceof Date) {
-    return value.toLocaleDateString();
+    return new Intl.DateTimeFormat(locale, {
+      day: 'numeric',
+      month: 'short',
+    }).format(value);
   }
   return value;
 }
@@ -296,6 +299,7 @@ function Ticks(props) {
     childrenPosition = 'inside',
     rootRef,
     multiline,
+    locale,
   } = props;
   const [rootRefElement, setRootRefElement] = useState(null);
 
@@ -327,7 +331,7 @@ function Ticks(props) {
   }
 
   return ticksWithLines.map(({ tick: value, lines }, i) => {
-    const displayValue = typeof children === 'function' ? undefined : renderValue(value);
+    const displayValue = typeof children === 'function' ? undefined : renderValue(value, locale);
 
     return sstyled(styles)(
       <STick
