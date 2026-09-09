@@ -577,11 +577,6 @@
     "description": "Base font family."
   },
   {
-    "name": "--intergalactic-fs-50",
-    "value": "10px",
-    "description": "Use only for text in Badge component."
-  },
-  {
     "name": "--intergalactic-fs-100",
     "value": "12px",
     "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability."
@@ -850,6 +845,11 @@
   {
     "name": "--intergalactic-assets-checkmark-l",
     "value": "url(\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIuNCAyLjQ1MjIxTDUuMzA0NCA5LjU0NzgyTDEuNjAwMDEgNS44NDM0MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==\")"
+  },
+  {
+    "name": "--intergalactic-fs-50",
+    "value": "10px",
+    "description": "Use only for text in Badge component."
   },
   {
     "name": "--intergalactic-violet-400",
