@@ -1,6 +1,9 @@
+import { sstyled } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import { line } from 'd3-shape';
 import React from 'react';
 
+import style from './style/pattern.shadow.css';
 /**
  * Object that is fully describes the pattern
  */
@@ -625,6 +628,111 @@ const resolvePattern = (patternKey: string, patternsConfig: PatternsConfig = tru
   patternIndex = patternIndex % patterns.length;
   return patterns[patternIndex];
 };
+
+export const DefaultStrokePattern = (props: { id: string }) => {
+  return (
+    <defs>
+      <pattern
+        id={props.id}
+        width='10'
+        height='8'
+        patternUnits='userSpaceOnUse'
+        patternTransform='rotate(-117)'
+      >
+        <rect
+          width='10'
+          height='8'
+          fill='transparent'
+        />
+        <line
+          x1='0'
+          y1='0'
+          x2='0'
+          y2='8'
+          stroke='#fff'
+          strokeWidth='8'
+        />
+      </pattern>
+    </defs>
+  );
+};
+export const LightStrokePattern = (props: { id: string }) => {
+  return (
+    <defs>
+      <pattern id={props.id} width='6' height='6' patternUnits='userSpaceOnUse' patternTransform='rotate(-117)'>
+        <line x1='0' y1='0' x2='0' y2='6' stroke='white' strokeWidth='3' />
+      </pattern>
+    </defs>
+  );
+};
+// export const FillPattern = (props: { id: string; color: string }) => {
+//   return (
+//     <defs>
+//       <pattern id={props.id} width='6' height='6' patternUnits='userSpaceOnUse'>
+//         <rect width='6' height='6' fill={props.color} />
+//       </pattern>
+//     </defs>
+//   );
+// };
+// export const GradientPattern = (props: { id: string; color: string; stopOpacity?: number }) => {
+//   return (
+//     <defs>
+//       <linearGradient id={`${props.id}-gradient`} x1='0%' y1='0%' x2='0%' y2='100%'>
+//         <stop offset='0%' stopColor='#fff' stopOpacity={props.stopOpacity ?? '1'} />
+//         <stop offset='0%' stopColor='#fff' stopOpacity='0.48' />
+//         <stop offset='100%' stopColor='#000' stopOpacity='0' />
+//       </linearGradient>
+//       <mask id={props.id}>
+//         <rect width='100%' height='100%' fill={`url(#${props.id}-gradient)`} />
+//       </mask>
+//     </defs>
+//   );
+// };
+export const StrokeMask = (props: { id: string }) => {
+  return (
+    <defs>
+      <LightStrokePattern id={`${props.id}-stroke`} />
+
+      <mask id={props.id}>
+        <rect width='100%' height='100%' fill='black' />
+        <rect width='100%' height='100%' fill={`url(#${props.id}-stroke)`} />
+      </mask>
+    </defs>
+  );
+};
+export const ForecastGradient = (props: { id: string }) => {
+  return (
+    <defs>
+      <linearGradient id={props.id} x1='0%' y1='0%' x2='0%' y2='100%'>
+        <stop offset='0%' stopColor='#000' stopOpacity='1' />
+        <stop offset='40%' stopColor='#000' stopOpacity='0.48' />
+        <stop offset='100%' stopColor='#000' stopOpacity='0' />
+      </linearGradient>
+    </defs>
+  );
+};
+export const PotentialGradient = (props: { id: string; type?: 'line' }) => {
+  const SLinearGradient = 'linearGradient';
+  const SStopFrom = 'stop';
+  const SStopTo = 'stop';
+
+  return sstyled(style)(
+    <defs>
+      <SLinearGradient
+        id={props.id}
+        x1='0%'
+        y1='0%'
+        x2={props.type === 'line' ? '100%' : '0'}
+        y2={props.type === 'line' ? '0' : '100%'}
+        gradientTransform='rotate(-45 0.5 0.5)'
+      >
+        <SStopFrom offset='0%' />
+        <SStopTo offset='100%' />
+      </SLinearGradient>
+    </defs>,
+  );
+};
+
 export const PatternFill = ({
   id,
   color,

@@ -3,9 +3,9 @@ import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { bisector } from 'd3-array';
 import React from 'react';
 
-import { HIGHLIGHT, GOOD, BAD, INSIGHTFUL } from './component/Chart/AbstractChart.type';
+import { HIGHLIGHT_DOT, GOOD, BAD, INSIGHTFUL } from './component/Chart/AbstractChart.type';
 import createElement from './createElement';
-import { PatternSymbol, getPatternSymbolSize } from './Pattern';
+import { PatternSymbol, getPatternSymbolSize, PotentialGradient } from './Pattern';
 import style from './style/dot.shadow.css';
 import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
 
@@ -77,10 +77,10 @@ function Dots(props) {
   const resolveHighlightColor = React.useCallback((highlight) => {
     switch (highlight) {
       case GOOD: {
-        return resolveColor('--intergalalctic-chart-data-success');
+        return resolveColor('--intergalactic-chart-data-success');
       }
       case BAD: {
-        return resolveColor('--intergalalctic-chart-data-critical');
+        return resolveColor('--intergalactic-chart-data-critical');
       }
       case INSIGHTFUL: {
         return `url(#dotGradient_${uid})`;
@@ -128,7 +128,7 @@ function Dots(props) {
       acc.push(
         sstyled(styles)(
           <React.Fragment key={i}>
-            {d[HIGHLIGHT] && (
+            {d[HIGHLIGHT_DOT] && (
               <>
                 <SDotBorder
                   visible={visible}
@@ -137,10 +137,10 @@ function Dots(props) {
                   transparent={transparent}
                   cx={d3.x()(d)}
                   cy={d3.y()(d)}
-                  r={23}
+                  r={11.5}
                 />
                 <SDotHighlight
-                  color={resolveHighlightColor(d[HIGHLIGHT])}
+                  color={resolveHighlightColor(d[HIGHLIGHT_DOT])}
                   value={d}
                   visible={visible}
                   active={active}
@@ -148,7 +148,7 @@ function Dots(props) {
                   transparent={transparent}
                   cx={d3.x()(d)}
                   cy={d3.y()(d)}
-                  r={17}
+                  r={8.5}
                 />
               </>
             )}
@@ -194,16 +194,9 @@ function Dots(props) {
     return acc;
   }, []);
   const SDots = 'g';
-  const SStopFrom = 'stop';
-  const SStopTo = 'stop';
   return sstyled(styles)(
     <SDots duration={`${duration}ms`} onClickCapture={handlerOnClick}>
-      <defs>
-        <linearGradient id={`dotGradient_${uid}`} x1='0%' y1='0%' x2='100%' y2='100%' gradientTransform='rotate(-45 0.5 0.5)'>
-          <SStopFrom offset='0%' />
-          <SStopTo offset='100%' />
-        </linearGradient>
-      </defs>
+      <PotentialGradient id={`dotGradient_${uid}`} />
       { patterns && (
         <PatternSymbol
           color={resolveColor(color)}

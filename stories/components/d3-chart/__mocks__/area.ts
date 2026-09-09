@@ -1,17 +1,21 @@
-import { interpolateValue, GOOD, HIGHLIGHT, BAD, INSIGHTFUL } from '@semcore/ui/d3-chart';
+import { interpolateValue, GOOD, HIGHLIGHT_DOT, BAD, INSIGHTFUL, IS_FORECAST, IS_POTENTIAL } from '@semcore/ui/d3-chart';
 
 export default {
   Default: [
     { time: new Date(2025, 0, 1), line: 3 },
     { time: new Date(2025, 0, 5), line: 7 },
     { time: new Date(2025, 0, 10), line: 1 },
-    { time: new Date(2025, 0, 15), line: 9, [HIGHLIGHT]: GOOD },
+    { time: new Date(2025, 0, 15), line: 9, [HIGHLIGHT_DOT]: GOOD },
     { time: new Date(2025, 0, 20), line: 4 },
-    { time: new Date(2025, 0, 25), line: 6, [HIGHLIGHT]: INSIGHTFUL },
+    { time: new Date(2025, 0, 25), line: 6, [HIGHLIGHT_DOT]: INSIGHTFUL },
     { time: new Date(2025, 0, 30), line: 2 },
     { time: new Date(2025, 1, 4), line: 8 },
-    { time: new Date(2025, 1, 9), line: 0, [HIGHLIGHT]: BAD },
-    { time: new Date(2025, 1, 14), line: 5 },
+    { time: new Date(2025, 1, 4), line: 8, [IS_FORECAST]: true },
+    { time: new Date(2025, 1, 9), line: 0, [IS_FORECAST]: true, [HIGHLIGHT_DOT]: BAD },
+    { time: new Date(2025, 1, 14), line: 5, [IS_FORECAST]: true },
+    { time: new Date(2025, 1, 14), line: 5, [IS_POTENTIAL]: true },
+    { time: new Date(2025, 1, 18), line: 7, [IS_POTENTIAL]: true },
+    { time: new Date(2025, 1, 28), line: 8, [IS_POTENTIAL]: true, [HIGHLIGHT_DOT]: INSIGHTFUL },
   ],
   Interpolation: [
     { time: new Date(2025, 0, 1), line1: 5, line2: 3 },
