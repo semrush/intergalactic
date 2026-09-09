@@ -13,11 +13,6 @@ const COL = 4;
 const HREF_ACTION = 'Open in new tab';
 const CLICK_ACTION = 'Analyze this URL';
 
-/** Middle cropping is measured in JS and only settles reliably in headless Chromium. */
-const skipUnlessChromium = (browserName: string) => {
-  if (browserName !== 'chromium') test.skip();
-};
-
 /* =====================================================
 @functional
 Keyboard access through the grid, and the truncated layout.
@@ -82,8 +77,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@ellipsis',
       '@base-components',
     ],
-  }, async ({ page, browserName }) => {
-    skipUnlessChromium(browserName);
+  }, async ({ page }) => {
     await loadPage(page, STORY, 'en', { cropPosition: 'middle' });
 
     await expect(locators.linkActionText(page, ROW, COL)).toContainText('...');
@@ -98,15 +92,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@ellipsis',
       '@base-components',
     ],
-  }, async ({ page, browserName }) => {
-    skipUnlessChromium(browserName);
-
-    // Known defect: `end` never rewrites the text, and nothing in LinkAction sets
-    // `min-width: 0`, so the link keeps its content width, overflows the cell and pushes
-    // the divider and the actions out of view. Drop `test.fail()` once that is fixed.
-    test.fail();
+  }, async ({ page }) => {
     await loadPage(page, STORY, 'en', { cropPosition: 'end' });
 
+    await expect(locators.linkActionHrefAction(page, ROW, COL, HREF_ACTION)).toBeVisible();
+    await expect(locators.linkActionClickAction(page, ROW, COL, CLICK_ACTION)).toBeVisible();
     expect(await controlsFitInCell(page, ROW, COL)).toBe(true);
   });
 
@@ -119,8 +109,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@ellipsis',
       '@base-components',
     ],
-  }, async ({ page, browserName }) => {
-    skipUnlessChromium(browserName);
+  }, async ({ page }) => {
     await loadPage(page, STORY, 'en', { withEllipsis: false });
 
     await expect(locators.linkActionHrefAction(page, ROW, COL, HREF_ACTION)).toBeVisible();
