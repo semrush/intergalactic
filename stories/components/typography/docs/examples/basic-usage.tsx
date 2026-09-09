@@ -33,6 +33,12 @@ const Demo = () => (
     <Text tag='p' mb={2} mt={0}>
       Paragraph example.
     </Text>
+    <Text size={350} tag='h6' fontWeight={500} mb={1} mt={10}>
+      H6, 18px, --fs-350
+    </Text>
+    <Text size={200} tag='p' mb={3} mt={0}>
+      Paragraph example.
+    </Text>
     <Text size={300} tag='h6' fontWeight={700} mb={1} mt={10}>
       H6, 16px, --fs-300
     </Text>
