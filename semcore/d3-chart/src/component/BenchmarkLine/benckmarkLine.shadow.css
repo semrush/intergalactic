@@ -1,0 +1,12 @@
+
+SGroup {
+  transform: translate(0, 50%);
+}
+SGroup[y] {
+  transform: translate(0, var(--y));
+  transition: transform 0.2s ease-in-out;
+}
+
+SLabel {
+  transform: translate(calc(100% - 90px), -10px);
+}
