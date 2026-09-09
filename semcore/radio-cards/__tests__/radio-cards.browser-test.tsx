@@ -95,6 +95,33 @@ test.describe(`${TAG.VISUAL}`, () => {
     await locators.skeleton(page, 3).waitFor({ state: 'visible' });
     await expect(page).toHaveScreenshot('loading-state-with-wrapped-text.png');
   });
+
+  /*
+    The docs example puts a 40x40 icon next to a two-line text block inside the card,
+    which is the layout most likely to break on card paddings and vertical alignment.
+  */
+  test('Verify the custom layout with large icons from the docs example', {
+    tag: [TAG.PRIORITY_MEDIUM, '@radio-cards'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/radio-cards/docs/examples/large-icons.tsx', 'en');
+
+    await test.step('Verify initial render', async () => {
+      await expect(locators.cardLabel(page)).toHaveCount(2);
+      await expect(page).toHaveScreenshot('large-icons-initial-render.png');
+    });
+
+    await test.step('Verify hover state', async () => {
+      await locators.cardLabel(page, 0).hover();
+      await expect(page).toHaveScreenshot('large-icons-hover-state.png');
+    });
+
+    await test.step('Verify selected state', async () => {
+      await locators.cardLabel(page, 1).click();
+
+      await expect(locators.card(page, 1)).toBeChecked();
+      await expect(page).toHaveScreenshot('large-icons-selected-state.png');
+    });
+  });
 });
 
 /* =====================================================

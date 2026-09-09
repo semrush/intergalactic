@@ -23,3 +23,13 @@ tabs: Design('radio-cards'), A11y('radio-cards-a11y'), API('radio-cards-api'), E
 </script>
 
 :::
+
+## Custom layout with large icons
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/radio-cards/docs/examples/large-icons.tsx';
+</script>
+
+:::
