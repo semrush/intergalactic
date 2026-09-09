@@ -21,6 +21,7 @@ const Demo = () => {
       plotHeight={200}
       tooltipValueFormatter={formatDate}
       aria-label='Area chart'
+      benchmarkValue={2}
     />
   );
 };

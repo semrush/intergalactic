@@ -20,6 +20,7 @@ import { Plot, XAxis, YAxis } from '../..';
 import { makeDataHintsContainer } from '../../a11y/hints';
 import style from '../../style/abstract-chart.shadow.css';
 import { interpolateValue } from '../../utils';
+import { BenchmarkLine } from '../BenchmarkLine/BenchmarkLine';
 import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
@@ -628,6 +629,14 @@ export abstract class AbstractChart<
     );
   }
 
+  protected renderBenchmarkLine() {
+    const { benchmarkValue } = this.asProps;
+
+    return (
+      <BenchmarkLine benchmarkValue={benchmarkValue} level={1} xScale={this.xScale} yScale={this.yScale} />
+    );
+  }
+
   public render() {
     const SChart = Root;
     const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip } =
@@ -654,6 +663,7 @@ export abstract class AbstractChart<
           {this.renderAxis()}
           {!showTooltip ? null : this.renderTooltip()}
           {this.renderChart()}
+          {this.renderBenchmarkLine()}
         </Plot>
       </SChart>,
     );

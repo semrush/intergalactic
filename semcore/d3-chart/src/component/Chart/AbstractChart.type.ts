@@ -72,6 +72,8 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Chart data. For all charts except Donut(Pie), Radar and Venn should be an Array
    */
   data: T;
+
+  benchmarkValue?: number | Date | string;
   /**
    * Width of plot
    * @default width is 100% of the parent element.
