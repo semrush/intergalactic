@@ -213,7 +213,7 @@ SText {
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-content-gap-xxxlarge, 24px) + var(--intergalactic-spacing-content-gap-xxlarge, 16px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-medium, 12px));
     }
 
     & ul li:before {
@@ -280,7 +280,7 @@ SText[size='100'] {
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xlarge, 20px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-small, 8px));
     }
 
     & ul li:before {
@@ -321,7 +321,7 @@ SText[size='200'] {
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xlarge, 20px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-medium, 12px));
     }
 
     & ul li:before {
@@ -363,7 +363,7 @@ SText[size='300'] {
     }
 
     & ol ol ol li {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-xlarge, 20px));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge-extended, 24px) + var(--intergalactic-spacing-content-padding-medium, 12px));
     }
 
     & ul li:before {

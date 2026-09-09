@@ -3392,6 +3392,7 @@
       "fullscreen-modal",
       "modal",
       "pills",
+      "typography",
       "wizard"
     ]
   },
@@ -3415,6 +3416,7 @@
       "textarea",
       "time-picker",
       "tooltip",
+      "typography",
       "wizard"
     ]
   },
@@ -3439,7 +3441,6 @@
     "components": [
       "bulk-textarea",
       "card",
-      "typography",
       "wizard"
     ]
   },
