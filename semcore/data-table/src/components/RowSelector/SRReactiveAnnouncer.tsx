@@ -24,12 +24,10 @@ export function SRReactiveAnnouncer<UniqKey>(props: Props<UniqKey>) {
   }, [props.selectedRows]);
 
   const setMaxLimitReachedAriaCallback = React.useCallback((isExceeded: boolean) => {
-    const message = props.getI18nText(
-      isExceeded
-        ? 'DataTable.maxLimitReached:aria-live'
-        : 'DataTable.maxLimitNoLongerReached:aria-live',
-    );
-    setAriaMessage(message);
+    if (isExceeded) {
+      const message = props.getI18nText('DataTable.maxLimitReached:aria-live');
+      setAriaMessage(message);
+    }
   }, [props.selectedRows]);
 
   React.useEffect(() => {

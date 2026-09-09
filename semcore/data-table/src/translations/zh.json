@@ -4,5 +4,6 @@
   "DataTable.Cell.AccordionToggle.collapse:aria-label": "隐藏详细信息",
   "DataTable.Header.selectAllCheckbox:aria-label": "所有项目",
   "DataTable.allItemsSelected:aria-live": "所有项目已选择",
-  "DataTable.allItemsDeselected:aria-live": "所有项目已取消选择"
+  "DataTable.allItemsDeselected:aria-live": "所有项目已取消选择",
+  "DataTable.maxLimitReached:aria-live": "已达最大限制"
 }
