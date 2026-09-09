@@ -1,10 +1,11 @@
+import type { Intergalactic } from '@semcore/core';
 import VideoListM from '@semcore/icon/VideoList/m';
 import { Flex } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
 import type { NSButtonLink } from '@semcore/ui/button';
 import React from 'react';
 
-type ExampleProps = NSButtonLink.Props & { color?: string };
+type ExampleProps = Intergalactic.InternalTypings.EfficientOmit<NSButtonLink.Props, 'formatTags'> & { color?: string };
 const Demo = (props: ExampleProps) => {
   return (
 

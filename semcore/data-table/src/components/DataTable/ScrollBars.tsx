@@ -1,3 +1,4 @@
+import type { NSScrollArea } from '@semcore/base-components';
 import { ScrollArea } from '@semcore/base-components';
 import { sstyled } from '@semcore/core';
 import React from 'react';
@@ -9,6 +10,7 @@ type Props = {
   withHeaderScrollBar?: boolean;
   topOffset?: number;
   withAnimation: boolean;
+  scrollBarInstanceRef: React.RefObject<NSScrollArea.Bar.Instance>;
 };
 
 const SCROLL_BAR_HEIGHT = 12;
@@ -16,7 +18,7 @@ const SCROLL_BAR_HEIGHT = 12;
 export class ScrollBars extends React.PureComponent<Props> {
   render() {
     const SScrollAreaBarInHeader = ScrollArea.Bar;
-    const { loading, topOffset, withHeaderScrollBar, withAnimation } = this.props;
+    const { loading, topOffset, withHeaderScrollBar, withAnimation, scrollBarInstanceRef } = this.props;
 
     return sstyled(styles)(
       <>
@@ -33,7 +35,7 @@ export class ScrollBars extends React.PureComponent<Props> {
         {!loading && (
           <>
             <ScrollArea.Bar orientation='horizontal' zIndex={20} />
-            <ScrollArea.Bar orientation='vertical' zIndex={20} />
+            <ScrollArea.Bar orientation='vertical' zIndex={20} instanceRef={scrollBarInstanceRef} />
           </>
         )}
       </>,

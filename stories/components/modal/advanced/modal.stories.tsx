@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import CloseOnlyEscOrCloseButtonExample from './examples/close_only_esc_or_close_button.tsx';
-import ModalCausesLayoutShiftExample from './examples/modal_causes_layout_shift.tsx';
+import CloseOnlyEscOrCloseButtonExample from './examples/close_only_esc_or_close_button';
+import ModalCausesLayoutShiftExample from './examples/modal_causes_layout_shift';
 import ModaliFrameExample from './examples/modal_iframe';
 import OpenModalDynamicallyExample from './examples/modal_open_dynamically';
 import ModalPreventFocusExample from './examples/modal_prevent_focus';

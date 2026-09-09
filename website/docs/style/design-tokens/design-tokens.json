@@ -146,7 +146,7 @@
   },
   {
     "name": "--intergalactic-badge-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for Badge.",
     "components": [
       "badge"
@@ -240,7 +240,6 @@
       "input",
       "modal",
       "side-panel",
-      "slider",
       "tab-panel",
       "textarea"
     ]
@@ -381,6 +380,12 @@
     ]
   },
   {
+    "name": "--intergalactic-bg-secondary-invert",
+    "value": "oklch(0.969 0.057 140 / 0.118)",
+    "description": "Inverted version of the secondary background of the interface which contains the main data and information.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-bg-secondary-success",
     "value": "oklch(0.96 0.057 179.7)",
     "description": "Secondary background of the message with success information you want to accent.",
@@ -484,6 +489,7 @@
       "base-trigger",
       "bulk-textarea",
       "button",
+      "color-picker",
       "counter",
       "d3-chart",
       "date-picker",
@@ -493,7 +499,6 @@
       "fullscreen-modal",
       "input",
       "side-panel",
-      "slider",
       "tab-panel",
       "textarea",
       "time-picker"
@@ -526,7 +531,6 @@
       "date-picker",
       "dropdown",
       "notice",
-      "slider",
       "tooltip"
     ]
   },
@@ -644,19 +648,19 @@
   },
   {
     "name": "--intergalactic-chart-data-critical",
-    "value": "oklch(0.64 0.226 24.5)",
+    "value": "oklch(0.74 0.19 22)",
     "description": "Critical data color for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-data-success",
-    "value": "oklch(0.74 0.17 170)",
+    "value": "oklch(0.82 0.19 143)",
     "description": "Success data color for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-data-warning",
-    "value": "oklch(0.74 0.19 53)",
+    "value": "oklch(0.82 0.156 61.6)",
     "description": "Warning data color for charts.",
     "components": []
   },
@@ -712,7 +716,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
@@ -736,7 +740,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-1",
-    "value": "oklch(0.58 0.168 278.2)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "1 color in the default list of colors for charts.",
     "components": [
       "d3-chart",
@@ -745,7 +749,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-2",
-    "value": "oklch(0.82 0.15 170)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "2 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -753,19 +757,19 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-3",
-    "value": "oklch(0.74 0.17 303)",
+    "value": "oklch(0.82 0.15 170)",
     "description": "3 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-4",
-    "value": "oklch(0.82 0.18 80)",
+    "value": "oklch(0.74 0.17 303)",
     "description": "4 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-5",
-    "value": "oklch(0.74 0.19 22)",
+    "value": "oklch(0.82 0.18 80)",
     "description": "5 color in the default list of colors for charts.",
     "components": []
   },
@@ -783,13 +787,13 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-8",
-    "value": "oklch(0.82 0.19 143)",
+    "value": "oklch(0.82 0.029 187.5)",
     "description": "8 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.53 0.157 279.2)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -797,91 +801,91 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-10",
-    "value": "oklch(0.74 0.17 170)",
+    "value": "oklch(0.64 0.161 170)",
     "description": "10 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-11",
-    "value": "oklch(0.74 0.17 72)",
+    "value": "oklch(0.64 0.223 299.3)",
     "description": "11 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-12",
-    "value": "oklch(0.82 0.18 330)",
+    "value": "oklch(0.74 0.036 189.2)",
     "description": "12 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-13",
-    "value": "oklch(0.64 0.22 147)",
+    "value": "oklch(0.53 0.138 59.9)",
     "description": "13 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-14",
-    "value": "oklch(0.82 0.118 303)",
+    "value": "oklch(0.82 0.18 330)",
     "description": "14 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-15",
-    "value": "oklch(0.64 0.226 24.5)",
+    "value": "oklch(0.74 0.117 274.1)",
     "description": "15 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-16",
-    "value": "oklch(0.64 0.161 170)",
+    "value": "oklch(0.74 0.17 170)",
     "description": "16 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-17",
-    "value": "oklch(0.82 0.088 272.1)",
+    "value": "oklch(0.82 0.118 303)",
     "description": "17 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-18",
-    "value": "oklch(0.74 0.23 146)",
+    "value": "oklch(0.74 0.17 72)",
     "description": "18 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-19",
-    "value": "oklch(0.64 0.16 64)",
+    "value": "oklch(0.53 0.217 330)",
     "description": "19 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-20",
-    "value": "oklch(0.82 0.13 20)",
+    "value": "oklch(0.64 0.035 189.3)",
     "description": "20 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-21",
-    "value": "oklch(0.53 0.138 59.9)",
+    "value": "oklch(0.46 0.141 280.7)",
     "description": "21 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-22",
-    "value": "oklch(0.64 0.223 299.3)",
+    "value": "oklch(0.53 0.142 170)",
     "description": "22 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-23",
-    "value": "oklch(0.64 0.262 330)",
+    "value": "oklch(0.53 0.26 296)",
     "description": "23 color in the default list of colors for charts.",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-24",
-    "value": "oklch(0.53 0.189 147)",
+    "value": "oklch(0.64 0.16 64)",
     "description": "24 color in the default list of colors for charts.",
     "components": []
   },
@@ -1111,8 +1115,7 @@
     "components": [
       "button",
       "dropdown",
-      "feature-highlight",
-      "slider"
+      "feature-highlight"
     ]
   },
   {
@@ -1128,8 +1131,7 @@
     "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the regular primary control.",
     "components": [
-      "button",
-      "slider"
+      "button"
     ]
   },
   {
@@ -1275,37 +1277,49 @@
     "name": "--intergalactic-control-slider-bar-bg",
     "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Background of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-bg-hover",
     "value": "oklch(0.92 0.002 178.5)",
     "description": "Hover state of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-bar-value-bg",
     "value": "oklch(0.23 0.01 140)",
     "description": "Filled part of the Slider bar.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-bg",
     "value": "#ffffff",
     "description": "Knob fill color of the Slider.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-border",
     "value": "oklch(0.23 0.01 140)",
     "description": "Knob border color of the Slider in its normal state.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-knob-border-hover",
     "value": "oklch(0.32 0.007 140)",
     "description": "Knob border color of the Slider in its hover state.",
-    "components": []
+    "components": [
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-rating-icon",
@@ -1446,7 +1460,7 @@
   },
   {
     "name": "--intergalactic-control-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for form controls.",
     "components": [
       "button"
@@ -1460,7 +1474,7 @@
   },
   {
     "name": "--intergalactic-control-text-tertiary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Tertiary text color for form controls.",
     "components": []
   },
@@ -2125,7 +2139,7 @@
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
-    "value": "linear-gradient(-45deg, oklch(0 0 0 / 0.1) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(0 0 0 / 0.1) 0%, oklch(0 0 0 / 0.1) 75%, oklch(0.157 0.029 176 / 0.11) 0%)",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 25%, oklch(0.157 0.029 176 / 0.11) 0%, oklch(0.157 0.029 176 / 0.11) 50%, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 0%, oklch(from oklch(0.157 0.029 176 / 0.11) l c h / 0.18) 75%, oklch(0.157 0.029 176 / 0.11) 0%)",
     "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2142,6 +2156,14 @@
   {
     "name": "--intergalactic-progress-bar-value-gradient",
     "value": "linear-gradient(-45deg, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 25%, oklch(0.22 0.01 140) 0%, oklch(0.22 0.01 140) 50%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 0%, oklch(from oklch(0.22 0.01 140) l c h / 0.78) 75%, oklch(0.22 0.01 140) 0%)",
+    "description": "Value with gradient for the ProgressBar.",
+    "components": [
+      "progress-bar"
+    ]
+  },
+  {
+    "name": "--intergalactic-progress-bar-value-gradient-invert",
+    "value": "linear-gradient(-45deg, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 25%, oklch(0.74 0.17 303) 0%, oklch(0.74 0.17 303) 50%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.78) 75%, oklch(0.74 0.17 303) 0%)",
     "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
@@ -2265,7 +2287,7 @@
   },
   {
     "name": "--intergalactic-sidebar-nav-control-text-normal",
-    "value": "oklch(0.53 0.004 149.6)",
+    "value": "oklch(0.63 0.003 157)",
     "description": "Sidebar navigation label color.",
     "components": []
   },
@@ -2809,19 +2831,19 @@
   },
   {
     "name": "--intergalactic-text-critical",
-    "value": "oklch(0.53 0.206 27.3)",
+    "value": "oklch(0.63 0.224 24.8)",
     "description": "Text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-critical-hover-active",
-    "value": "oklch(0.51 0.202 27.8)",
+    "value": "oklch(0.61 0.221 25.3)",
     "description": "Hover and active states for the text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-hint",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
@@ -2830,7 +2852,7 @@
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
-    "value": "oklch(0.086 0.026 145.8 / 0.605)",
+    "value": "oklch(0.095 0.024 154.8 / 0.492)",
     "description": "Hover and active states of the hint link text.",
     "components": [
       "typography"
@@ -2876,7 +2898,7 @@
   },
   {
     "name": "--intergalactic-text-large-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text. Use with font-size ≥20px.",
     "components": [
       "typography"
@@ -2938,7 +2960,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Default secondary link color.",
     "components": [
       "link"
@@ -2946,7 +2968,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Hover and active states for the secondary link.",
     "components": [
       "link"
@@ -2979,7 +3001,7 @@
   },
   {
     "name": "--intergalactic-text-placeholder",
-    "value": "oklch(0.098 0.023 157.4 / 0.457)",
+    "value": "oklch(0.109 0.023 165.5 / 0.337)",
     "description": "Placeholder text color for inputs and fields.",
     "components": [
       "base-trigger",
@@ -3002,6 +3024,7 @@
       "bulk-textarea",
       "card",
       "checkbox",
+      "color-picker",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -3039,7 +3062,7 @@
   },
   {
     "name": "--intergalactic-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.",
     "components": [
       "breadcrumbs",
@@ -3051,7 +3074,6 @@
       "dropdown",
       "dropdown-menu",
       "flags",
-      "fullscreen-modal",
       "pills",
       "slider",
       "switch",
@@ -3069,13 +3091,13 @@
   },
   {
     "name": "--intergalactic-text-success",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.63 0.16 170)",
     "description": "Text associated with success states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-success-hover-active",
-    "value": "oklch(0.51 0.137 170)",
+    "value": "oklch(0.61 0.156 170)",
     "description": "Hover and active states for the text associated with success states and data.",
     "components": []
   },
@@ -3384,6 +3406,7 @@
       "base-components",
       "bulk-textarea",
       "dropdown",
+      "fullscreen-modal",
       "modal",
       "pills",
       "wizard"
@@ -3400,6 +3423,7 @@
       "button",
       "card",
       "dropdown",
+      "fullscreen-modal",
       "input",
       "input-tags",
       "modal",
@@ -3417,7 +3441,9 @@
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
       "bulk-textarea",
+      "color-picker",
       "feature-popover",
+      "fullscreen-modal",
       "notice-bubble",
       "wizard"
     ]
@@ -3436,7 +3462,9 @@
     "name": "--intergalactic-spacing-content-padding-xlarge-extended",
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
-    "components": []
+    "components": [
+      "fullscreen-modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-padding-xxlarge",
@@ -3444,6 +3472,7 @@
     "description": "2x large padding for content inside controls and surfaces.",
     "components": [
       "feature-popover",
+      "fullscreen-modal",
       "modal",
       "notice-bubble",
       "wizard"
@@ -3453,7 +3482,9 @@
     "name": "--intergalactic-spacing-content-gap-xsmall",
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
-    "components": []
+    "components": [
+      "color-picker"
+    ]
   },
   {
     "name": "--intergalactic-spacing-content-gap-small",
@@ -3480,6 +3511,7 @@
       "base-trigger",
       "button",
       "checkbox",
+      "color-picker",
       "dropdown",
       "dropdown-menu",
       "input",
@@ -3495,11 +3527,13 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
+      "breadcrumbs",
       "button",
       "carousel",
       "checkbox",
       "date-picker",
       "dropdown",
+      "fullscreen-modal",
       "notice-bubble",
       "pagination",
       "radio",
@@ -3513,6 +3547,8 @@
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
       "carousel",
+      "color-picker",
+      "fullscreen-modal",
       "notice-bubble",
       "pagination"
     ]

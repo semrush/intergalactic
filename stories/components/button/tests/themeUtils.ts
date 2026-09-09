@@ -1,4 +1,4 @@
-import type { NSButton } from '@semcore/button';
+import type { NSButton } from '@semcore/ui/button';
 
 type Use = NonNullable<NSButton.Props['use']>;
 

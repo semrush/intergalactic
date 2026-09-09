@@ -1,9 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
+  "extends": "../tsconfig.json",
+  "include": [
+    "src/theme.ts",
+    "src/colors/**/*.ts"
+  ],
   "compilerOptions": {
     "lib": ["ESNext"],
-    "rootDir": "./",
-    "allowImportingTsExtensions": true
+    "rootDir": "./src",
+    "outDir": "./lib",
+
+    "composite": true,
+    "incremental": true,
+    "tsBuildInfoFile": "${configDir}/tsconfig.tsbuildinfo"
   }
 }

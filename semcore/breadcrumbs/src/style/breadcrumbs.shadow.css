@@ -3,13 +3,13 @@ SBreadcrumbs {
   align-items: center;
   padding: 0;
   margin: 0;
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
   SListContainer {
     display: contents;
     list-style: none;
 
     SSeparator {
-      margin: 0 var(--intergalactic-spacing-2x, 8px);
       color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
       display: flex;
 
@@ -31,7 +31,7 @@ SBreadcrumbs {
         position: relative;
         font-size: var(--intergalactic-fs-200, 14px);
         line-height: var(--intergalactic-lh-200, 142%);
-        color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+        color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
         text-decoration: none;
         cursor: pointer;
 

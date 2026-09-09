@@ -111,7 +111,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
       await page.waitForTimeout(500); // for chart animation is finished (webkit needs more time)
 
+      // ArrowDown must land on the accordion cell with the chart. Without waiting
+      // for the focus to actually get there, webkit screenshots the moment before
+      // and captures the focus ring on the next data row instead.
       await page.keyboard.press('ArrowDown');
+      await expect(locators.chart(page, 'Chart')).toBeFocused();
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('ArrowUp');

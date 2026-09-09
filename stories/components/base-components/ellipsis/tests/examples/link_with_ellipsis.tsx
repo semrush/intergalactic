@@ -1,5 +1,5 @@
-import type { NSText } from '@semcore/typography';
 import Link from '@semcore/ui/link';
+import type { NSText } from '@semcore/ui/typography';
 import React from 'react';
 
 type LinkEllipsisProps = {

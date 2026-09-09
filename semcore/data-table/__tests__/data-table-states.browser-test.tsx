@@ -1,8 +1,28 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 import { locators, checkStyles, getCssVarColor, getTransparentColor } from './utils';
+
+const PAGE_ORIGIN = 'https://data-table.test';
+
+const setPageOrigin = async (page: Page) => {
+  await page.route(`${PAGE_ORIGIN}/**`, (route) =>
+    route.fulfill({ contentType: 'text/html', body: '<!DOCTYPE html><html><body></body></html>' }));
+  await page.goto(`${PAGE_ORIGIN}/`);
+};
+
+const hint = (page: Page) => page.locator('[data-ui-name="Hint"]');
+
+/** Same wait as in the ellipsis tests: the hint is rendered, laid out and fully faded in. */
+const waitForHint = async (page: Page) => {
+  await hint(page).waitFor({ state: 'visible' });
+  await page.waitForFunction(() => {
+    const el = document.querySelector('[data-ui-name="Hint"]');
+    return el !== null && getComputedStyle(el).opacity === '1';
+  });
+};
 
 /* =====================================================
 @visual
@@ -232,17 +252,17 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
 
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await waitForHint(page);
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
 
       await page.keyboard.press('ArrowDown');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
     });
 
-    test(`Ellipsis with cropPosition = middle`, {
+    test(`Ellipsis with Action Link and cropPosition = middle`, {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
         '@ellipsis',
@@ -251,6 +271,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@pagination',
       ],
     }, async ({ page }) => {
+      await setPageOrigin(page);
       await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en');
       await page.waitForTimeout(250); // wait for ellipsis apply
       await page.keyboard.press('Tab');
@@ -259,13 +280,42 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('Enter');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await waitForHint(page);
       await expect(page).toHaveScreenshot();
 
       await page.keyboard.press('Escape');
       await page.keyboard.press('Escape');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
+    });
+
+    test(`Ellipsis with Action Link and cropPosition = end`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table',
+        '@ellipsis',
+        '@link',
+        '@base-components',
+        '@pagination',
+      ],
+    }, async ({ page, browserName }) => {
+      test.skip(browserName === 'webkit', 'hint is unstable shown by keyboard focus in WebKit Playwright');
+
+      await setPageOrigin(page);
+      await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en', { cropPosition: 'end' });
+      await page.waitForTimeout(250); // wait for ellipsis apply
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(200); // wait for ellipsis apply
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      await waitForHint(page);
+      await expect(page).toHaveScreenshot();
+
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
     });
   });
 

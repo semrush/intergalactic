@@ -48,8 +48,8 @@ async function transform() {
     await fs.mkdir(writeBasePath, { recursive: true });
 
     const dts = `
-import type { IconProps } from '../..${(type === 'pay' || type === 'color') ? '/../' : '/'}types/index.mjs';
-declare const Icon: React.FC<React.SVGProps<SVGSVGElement> & IconProps>;
+import type { IconComponent } from '../..${(type === 'pay' || type === 'color') ? '/../' : '/'}types';
+declare const Icon: IconComponent;
 export default Icon;
     `;
 

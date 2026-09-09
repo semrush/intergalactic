@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
@@ -12,7 +13,7 @@ import React from 'react';
 
 type AddonType = 'icon' | 'badge' | 'counter' | 'flag' | 'tag';
 
-type BasicLinktriggerProps = LinkTriggerProps & {
+type BasicLinktriggerProps = Intergalactic.InternalTypings.EfficientOmit<LinkTriggerProps, 'ellipsis' | 'formatTags'> & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
