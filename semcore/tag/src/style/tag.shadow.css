@@ -115,7 +115,7 @@ STagContainer[size="m"] {
 
   & SText {
     font-size: var(--intergalactic-fs-100, 12px);
-    line-height: var(--intergalactic-lh-100, 133%);
+    line-height: var(--intergalactic-lh-100, 1.3334);
   }
 }
 
@@ -127,7 +127,7 @@ STagContainer[size="l"] {
 
   & SText {
     font-size: var(--intergalactic-fs-200, 14px);
-    line-height: var(--intergalactic-lh-200, 142%);
+    line-height: var(--intergalactic-lh-200, 1.4286);
   }
 }
 
@@ -139,7 +139,7 @@ STagContainerClose[size="xl"] {
 
   & SText {
     font-size: var(--intergalactic-fs-300, 16px);
-    line-height: var(--intergalactic-lh-300, 150%);
+    line-height: var(--intergalactic-lh-300, 1.5);
   }
 }
 

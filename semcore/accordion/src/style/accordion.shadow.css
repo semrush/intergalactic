@@ -1,6 +1,6 @@
 SAccordion {
   flex-direction: column;
-  gap: var(--intergalactic-spacing-content-gap-xsmall);
+  gap: var(--intergalactic-spacing-content-gap-xsmall, 2px);
 }
 
 SItemToggle {
@@ -108,7 +108,7 @@ SItemCollapse {
 }
 
 SItemCollapseContainer {
-  padding: var(--intergalactic-spacing-content-padding-medium) var(--intergalactic-spacing-content-padding-xlarge);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
 }
 
 @media (prefers-reduced-motion) {
