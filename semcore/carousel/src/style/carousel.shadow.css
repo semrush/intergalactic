@@ -79,6 +79,7 @@ SIndicators {
   margin: var(--intergalactic-spacing-content-gap-xxlarge, 16px) var(--intergalactic-spacing-content-gap-small, 4px) var(--intergalactic-spacing-content-gap-small, 4px) var(--intergalactic-spacing-content-gap-small, 4px);
   outline: none;
   position: relative;
+  border-radius: var(--intergalactic-rounded-extra-small, 2px);
 }
 
 SIndicator {
