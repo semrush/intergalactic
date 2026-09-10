@@ -1,4 +1,4 @@
-import { Collapse as CollapseAnimate, Flex } from '@semcore/base-components';
+import { Collapse as CollapseAnimate, Flex, Box } from '@semcore/base-components';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
@@ -70,8 +70,10 @@ class RootAccordion extends Component<
   }
 
   render() {
-    const { Children } = this.asProps;
-    return <Children />;
+    const SAccordion = Root;
+    const { styles } = this.asProps;
+
+    return sstyled(styles)(<SAccordion render={Flex} />);
   }
 }
 export class RootItem extends Component<
@@ -131,8 +133,10 @@ export class RootItem extends Component<
   }
 
   render() {
-    const { Children } = this.asProps;
-    return <Children />;
+    const SAccordionItem = Root;
+    const { styles } = this.asProps;
+
+    return sstyled(styles)(<SAccordionItem render={Box} />);
   }
 }
 
@@ -198,17 +202,23 @@ function Collapse(
     'Collapse'
   >,
 ) {
-  const { selected } = props;
+  const SItemCollapse = Root;
+  const SItemCollapseContainer = Box;
+  const { selected, styles, Children } = props;
   const visible = selected;
 
-  return (
-    <Root
+  return sstyled(styles)(
+    <SItemCollapse
       render={CollapseAnimate}
       visible={visible}
       interactive
       inert={!visible ? '' : undefined}
       aria-hidden={!visible}
-    />
+    >
+      <SItemCollapseContainer>
+        <Children />
+      </SItemCollapseContainer>
+    </SItemCollapse>,
   );
 }
 

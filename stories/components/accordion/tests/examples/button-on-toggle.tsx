@@ -3,8 +3,6 @@ import Button from '@semcore/ui/button';
 import React from 'react';
 
 const Demo = () => {
-  const [value, onChange] = React.useState([0]);
-
   return (
     <Accordion>
       {[...new Array(2)].map((_, index) => {
@@ -12,7 +10,9 @@ const Demo = () => {
           <Accordion.Item value={index} key={index}>
             <Accordion.Item.Toggle>
               <Accordion.Item.Chevron />
-              <div>{`Toggle ${index + 1}`}</div>
+              Toggle
+              {' '}
+              {index + 1}
               <Button
                 data-testid={`button_in_toggle_${index + 1}`}
                 onClick={(e) => {

@@ -8,7 +8,7 @@ import { CardBodySkeleton } from './CardBodySkeleton';
 import type { FormTabColumnStyle } from './form-utils';
 import { RequestForm } from './RequestForm';
 import HeadingTagAccordion from '../../../../../../components/accordion/docs/examples/heading_tag';
-import NonCompactAccordion from '../../../../../../components/accordion/docs/examples/non_compact';
+import PrimaryAccordion from '../../../../../../components/accordion/docs/examples/primary_accordion';
 import BulkTextareaBasicExample from '../../../../../../components/bulk-textarea/docs/examples/basic-usage';
 import CarouselStory from '../../../../../../components/carousel/docs/examples/carousel_with_default_indicators';
 import { PaywallMessage } from '../../../../advanced/components/Components/PaywallMessage';
@@ -44,7 +44,7 @@ export function FormCards({ columnStyle, contentReady }: FormCardsProps) {
           </Card.Header>
           <Card.Body tag={Flex} direction='column'>
             <CardBodySkeleton contentReady={contentReady} h={200}>
-              <NonCompactAccordion />
+              <PrimaryAccordion />
               <Text size={300} my={3} semibold>
                 Accordion with heading tag
               </Text>

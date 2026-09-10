@@ -508,7 +508,9 @@
     "name": "--intergalactic-border-accent",
     "value": "oklch(0.23 0.01 140)",
     "description": "Accent border for the active and selected states..",
-    "components": []
+    "components": [
+      "accordion"
+    ]
   },
   {
     "name": "--intergalactic-border-primary-invert",
@@ -1758,7 +1760,6 @@
     "value": "oklch(0.092 0.024 152.2 / 0.526)",
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
-      "accordion",
       "carousel",
       "feature-highlight",
       "notice",
@@ -3370,6 +3371,7 @@
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "counter",
       "input-tags",
       "notice-bubble",
@@ -3409,6 +3411,7 @@
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "base-components",
       "bulk-textarea",
       "dropdown",
@@ -3426,6 +3429,7 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "base-components",
       "base-trigger",
       "bulk-textarea",
@@ -3451,6 +3455,7 @@
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "color-picker",
       "feature-popover",
@@ -3467,6 +3472,7 @@
     "value": "20px",
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "card",
       "notice",
@@ -3500,6 +3506,7 @@
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "color-picker",
       "typography"
     ]
@@ -3509,6 +3516,7 @@
     "value": "4px",
     "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "base-trigger",
       "bulk-textarea",
       "carousel",
@@ -3753,6 +3761,7 @@
     "value": "8px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
     "components": [
+      "accordion",
       "card",
       "d3-chart",
       "feedback-form",
@@ -3815,7 +3824,6 @@
     "value": "200",
     "description": "Use for Accordion.",
     "components": [
-      "accordion",
       "data-table"
     ]
   },
