@@ -30,12 +30,11 @@ Use [Modal dialogs](/components/modal/modal) to show important information or re
 Component consists of the following:
 
 1. `SidePanel.Header`
-2. `SidePanel.Back`
-3. `SidePanel.Title`
-4. `SidePanel.Close`
-5. `SidePanel.Body`
-6. `SidePanel.Footer`
-7. `SidePanel.Overlay`
+2. `SidePanel.Title`
+3. `SidePanel.Close`
+4. `SidePanel.Body`
+5. `SidePanel.Footer`
+6. `SidePanel.Overlay`
 
 ## Trigger
 
@@ -51,10 +50,10 @@ The trigger for opening the SidePanel can be the following:
 
 Table: SidePanel with and without overlay
 
-| Appearance example                          | Styles                                                                                                                | When to use                                                                             |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Without overlay ![](static/light-theme.png) | In this case the panel has only the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
-| With overlay ![](static/dark-theme.png)     | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`.                            | If you need to focus the user on information inside SidePanel, enable overlay.          |
+| Appearance example                          | When to use                                                                             |
+| ------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Without overlay ![](static/light-theme.png) | Use this version if you need to show additional information for a report/product/block. |
+| With overlay ![](static/dark-theme.png)     | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
 ## Appearance
 
@@ -74,10 +73,6 @@ _It can be changed, for example, when using SidePanel on a small screen where yo
 
 General recommendations for `SidePanel` content styles:
 
-- Use a `--spacing-4x` padding between the title and the content:
-
-![](static/content-paddings.png)
-
 - Choose the text size for the panel to maintain a hierarchy of headers in the content within `SidePanel`. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/typography).
 
 ![](static/hierarchy.png)
@@ -92,13 +87,6 @@ You can place common `SidePanel` controls in the footer.
 
 - Typically, any controls, CTA, or other elements like [ProgressBar](/components/progress-bar/progress-bar) can be placed there.
 - The recommended size of controls in the panel on the desktop is M. Depending on the context, use M or L controls in the panel on small screens.
-
-Footer styles:
-
-```css
-padding: var(--spacing-2x) 0;
-align-items: center;
-```
 
 ![](static/footer-paddings.png)
 
@@ -126,11 +114,7 @@ The panel can be closed with:
 - Clicking outside the area of the panel (at overlay), optional;
 - `Esc` key.
 
-### Animation
-
-SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out`.
-
-**What happens when the browser window size changes:**
+**When the browser window size changes:**
 
 - The SidePanel has a fixed width that doesn’t change when the browser window is resized. The default width of the panel is 260px, but you can change it if needed.
 - On a 320px screen, the SidePanel shouldn't occupy more than 80% of the screen width to ensure that the user can click outside of it to close it.
