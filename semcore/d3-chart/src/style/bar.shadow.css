@@ -47,7 +47,7 @@ SBarLabel {
   line-height: var(--intergalactic-lh-200, 142%);
 }
 SBarPercent {
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
   margin-right: var(--intergalactic-spacing-2x, 8px);
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);

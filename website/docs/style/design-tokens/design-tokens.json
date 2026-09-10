@@ -152,7 +152,7 @@
   },
   {
     "name": "--intergalactic-badge-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for Badge.",
     "components": [
       "badge"
@@ -811,7 +811,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
@@ -1545,7 +1545,7 @@
   },
   {
     "name": "--intergalactic-control-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for form controls.",
     "components": [
       "button"
@@ -1559,7 +1559,7 @@
   },
   {
     "name": "--intergalactic-control-text-tertiary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Tertiary text color for form controls.",
     "components": []
   },
@@ -2375,7 +2375,7 @@
   },
   {
     "name": "--intergalactic-sidebar-nav-control-text-normal",
-    "value": "oklch(0.53 0.004 149.6)",
+    "value": "oklch(0.63 0.003 157)",
     "description": "Sidebar navigation label color.",
     "components": []
   },
@@ -2919,19 +2919,19 @@
   },
   {
     "name": "--intergalactic-text-critical",
-    "value": "oklch(0.53 0.206 27.3)",
+    "value": "oklch(0.63 0.224 24.8)",
     "description": "Text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-critical-hover-active",
-    "value": "oklch(0.51 0.202 27.8)",
+    "value": "oklch(0.61 0.221 25.3)",
     "description": "Hover and active states for the text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-hint",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
@@ -2940,7 +2940,7 @@
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
-    "value": "oklch(0.086 0.026 145.8 / 0.605)",
+    "value": "oklch(0.095 0.024 154.8 / 0.492)",
     "description": "Hover and active states of the hint link text.",
     "components": [
       "typography"
@@ -2986,7 +2986,7 @@
   },
   {
     "name": "--intergalactic-text-large-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text. Use with font-size ≥20px.",
     "components": [
       "typography"
@@ -3048,7 +3048,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Default secondary link color.",
     "components": [
       "link"
@@ -3056,7 +3056,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Hover and active states for the secondary link.",
     "components": [
       "link"
@@ -3089,7 +3089,7 @@
   },
   {
     "name": "--intergalactic-text-placeholder",
-    "value": "oklch(0.098 0.023 157.4 / 0.457)",
+    "value": "oklch(0.109 0.023 165.5 / 0.337)",
     "description": "Placeholder text color for inputs and fields.",
     "components": [
       "base-trigger",
@@ -3151,7 +3151,7 @@
   },
   {
     "name": "--intergalactic-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.",
     "components": [
       "breadcrumbs",
@@ -3182,13 +3182,13 @@
   },
   {
     "name": "--intergalactic-text-success",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.63 0.16 170)",
     "description": "Text associated with success states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-success-hover-active",
-    "value": "oklch(0.51 0.137 170)",
+    "value": "oklch(0.61 0.156 170)",
     "description": "Hover and active states for the text associated with success states and data.",
     "components": []
   },
