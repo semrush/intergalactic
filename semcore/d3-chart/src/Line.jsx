@@ -5,9 +5,11 @@ import { curveLinear, line as d3Line, area as d3Area, curveCardinal } from 'd3-s
 import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
+import { DATA_TYPE, FORECAST, POTENTIAL } from './component/Chart';
+import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import Dots from './Dots';
-import { resolvePatternDasharray } from './Pattern';
+import { ForecastGradient, PotentialGradient, resolvePatternDasharray, StrokeMask } from './Pattern';
 import style from './style/line.shadow.css';
 import {
   definedData,
@@ -94,6 +96,78 @@ class LineRoot extends Component {
     onClick(index, e);
   }
 
+  renderForecast() {
+    const SLine = this.Element;
+    const {
+      styles,
+      hide,
+      color,
+      resolveColor,
+      uid,
+      size,
+      d3,
+      duration,
+      y,
+      transparent,
+    } = this.asProps;
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === FORECAST);
+
+    return sstyled(styles)(
+      <>
+        <SLine
+          aria-hidden
+          clipPath={`url(#${uid})`}
+          render='path'
+          hide={hide}
+          color={resolveColor(color)}
+          transparent={transparent}
+          d={d3(data)}
+          use:duration={`${duration}ms`}
+          strokeDasharray='4 4'
+          onClickCapture={this.handlerOnClick.bind(this)}
+          pointerEvents='stroke'
+        />
+        <ForecastGradient id={`${uid}-forecast-gradient`} />
+        <StrokeMask id={`${uid}-forecast-mask`} />
+      </>,
+    );
+  }
+
+  renderPotential() {
+    const SLine = this.Element;
+    const {
+      styles,
+      hide,
+      uid,
+      size,
+      d3,
+      duration,
+      y,
+      transparent,
+      patterns,
+    } = this.asProps;
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === POTENTIAL);
+
+    return sstyled(styles)(
+      <>
+        <SLine
+          aria-hidden
+          clipPath={`url(#${uid})`}
+          render='path'
+          hide={hide}
+          color={`url(#${uid}-potential-gradient-line)`}
+          transparent={transparent}
+          d={d3(data)}
+          use:duration={`${duration}ms`}
+          onClickCapture={this.handlerOnClick.bind(this)}
+          pointerEvents='stroke'
+          strokeDasharray='4 4'
+        />
+        <PotentialGradient id={`${uid}-potential-gradient-line`} type='line' />
+      </>,
+    );
+  }
+
   render() {
     const SLine = this.Element;
     const {
@@ -110,7 +184,7 @@ class LineRoot extends Component {
       transparent,
       patterns,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] !== FORECAST && item[DATA_TYPE] !== POTENTIAL);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');
@@ -143,6 +217,8 @@ class LineRoot extends Component {
             height={size[1]}
           />
         )}
+        {this.renderForecast()}
+        {this.renderPotential()}
       </>,
     );
   }

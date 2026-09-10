@@ -6,7 +6,7 @@ import { area, curveLinear, line } from 'd3-shape';
 import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
-import { DATA_TYPE, FORECAST, POTENTIAL } from './component/Chart/AbstractChart.type';
+import { DATA_TYPE, FORECAST, POTENTIAL } from './component/Chart';
 import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import Dots from './Dots';
