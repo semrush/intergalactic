@@ -85,14 +85,14 @@ SLabel[size='l'],
 SAdditionalLabel[size='l'],
 SCount[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 }
 
 SLabel[size='m'],
 SAdditionalLabel[size='m'],
 SCount[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
 
 SAdditionalLabel,
@@ -109,7 +109,7 @@ SAdditionalLabel {
 SAdditionalLabel::before {
   content: '';
   display: inline-block;
-  background-color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  background-color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
   height: 4px;
   width: 4px;
   border-radius: 2px;
