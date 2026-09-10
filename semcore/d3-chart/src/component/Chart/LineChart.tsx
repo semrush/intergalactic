@@ -84,7 +84,7 @@ class LineChartComponent extends AbstractChart<
             curve={curve}
             onClick={onClickLine}
           >
-            <Line.Dots display={showDots ? true : this.displayDots} />
+            <Line.Dots display={showDots || this.displayDots} />
             {area?.[item.id] && (
               <Line.Area area={area[item.id]} y0='y0' y1='y1' curve={areaCurve} />
             )}
