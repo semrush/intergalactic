@@ -187,7 +187,7 @@ class WizardRoot extends Component<
     return sstyled(styles)(
       <SWizard
         render={Modal}
-        ghost={true}
+        p={0}
         aria-label={undefined}
         ref={this.modalRef}
         aria-labelledby={this.getId()}
