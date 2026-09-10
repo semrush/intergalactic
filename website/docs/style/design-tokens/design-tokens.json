@@ -2935,7 +2935,8 @@
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart"
+      "d3-chart",
+      "typography"
     ]
   },
   {
@@ -3010,7 +3011,8 @@
     "description": "Default primary link color.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -3019,7 +3021,8 @@
     "description": "Hover and active states for the primary link.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -3081,7 +3084,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.23 0.113 296)",
+    "value": "oklch(0.63 0.228 298.9)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -3476,7 +3479,8 @@
       "counter",
       "input-tags",
       "notice-bubble",
-      "pills"
+      "pills",
+      "typography"
     ]
   },
   {
@@ -3515,6 +3519,7 @@
       "fullscreen-modal",
       "modal",
       "pills",
+      "typography",
       "wizard"
     ]
   },
@@ -3539,6 +3544,7 @@
       "textarea",
       "time-picker",
       "tooltip",
+      "typography",
       "wizard"
     ]
   },
@@ -3552,6 +3558,7 @@
       "feature-popover",
       "fullscreen-modal",
       "notice-bubble",
+      "typography",
       "wizard"
     ]
   },
@@ -3570,7 +3577,8 @@
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
     "components": [
-      "fullscreen-modal"
+      "fullscreen-modal",
+      "typography"
     ]
   },
   {
@@ -3591,7 +3599,8 @@
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
       "color-picker",
-      "d3-chart"
+      "d3-chart",
+      "typography"
     ]
   },
   {
@@ -3608,6 +3617,7 @@
       "link",
       "pagination",
       "tag",
+      "typography",
       "wizard"
     ]
   },
@@ -3647,7 +3657,8 @@
       "pagination",
       "radio",
       "select",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -3659,7 +3670,8 @@
       "d3-chart",
       "fullscreen-modal",
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "typography"
     ]
   },
   {
@@ -3669,7 +3681,8 @@
     "components": [
       "d3-chart",
       "pagination",
-      "tab-line"
+      "tab-line",
+      "typography"
     ]
   },
   {
@@ -3679,6 +3692,7 @@
     "components": [
       "pagination",
       "tab-line",
+      "typography",
       "wizard"
     ]
   },
@@ -3686,7 +3700,9 @@
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
     "value": "24px",
     "description": "3x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-layout-padding-desktop",
