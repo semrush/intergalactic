@@ -168,6 +168,10 @@ function Title(props) {
 }
 Title.style = style;
 
+const CHART_PALETTE_ORDER_TO_LIGHTNESS = {
+  'chart-palette-order-1': 0.35,
+  'DEFAULT': 0.15,
+};
 function Dot(props) {
   const { styles, color, Children } = props;
   const resolveColor = useColorResolver();
@@ -196,7 +200,10 @@ function Dot(props) {
           )
         : (
             <SDot>
-              <SDotCircle color={resolveColor(color ?? defaultColor)} />
+              <SDotCircle
+                color={resolveColor(color ?? defaultColor)}
+                lightness={CHART_PALETTE_ORDER_TO_LIGHTNESS[color] ?? CHART_PALETTE_ORDER_TO_LIGHTNESS.DEFAULT}
+              />
             </SDot>
           )}
       <Children />

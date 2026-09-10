@@ -14,3 +14,12 @@ export const chartSemanticLines = Array.from({ length: 20 }, (_, i) => ({
   success: Math.abs(Math.sin(Math.exp(i) + 1.5)) * 10,
   warning: Math.abs(Math.sin(Math.exp(i) + 3)) * 10,
 }));
+
+export const chartIntentLines = Array.from({ length: 20 }, (_, i) => ({
+  x: i,
+  commercial: Math.abs(Math.sin(Math.exp(i) + 0.4)) * 10,
+  informational: Math.abs(Math.sin(Math.exp(i) + 1.2)) * 10,
+  navigational: Math.abs(Math.sin(Math.exp(i) + 2.1)) * 10,
+  task: Math.abs(Math.sin(Math.exp(i) + 2.8)) * 10,
+  transactional: Math.abs(Math.sin(Math.exp(i) + 3.6)) * 10,
+}));

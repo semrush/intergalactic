@@ -5,11 +5,14 @@ import type { LegendProps } from './BaseLegend.type';
 import { type LegendItemKey, type LegendItemProps, type ShapeType } from './LegendItem/LegendItem.type';
 import { makeDataHintsHandlers } from '../../a11y/hints';
 
+type InnerProps = {
+  highlightedItem?: number;
+};
 export abstract class BaseLegend<
   P extends LegendProps,
   E extends readonly ((...args: any[]) => any)[] = never[],
   DP extends Intergalactic.InternalTypings.ValidDefaultProps<DP, P> = never,
-> extends Component<P, E, never, {}, {}, DP> {
+> extends Component<P, E, never, InnerProps, {}, DP> {
   componentDidMount() {
     this.setHints();
   }
@@ -43,7 +46,7 @@ export abstract class BaseLegend<
     _: {},
     index: number,
   ): LegendItemProps & Intergalactic.InternalTypings.ComponentPropsNesting<'div'> {
-    const { shape = 'Checkbox', size = 'm', patterns } = this.asProps;
+    const { shape = 'Checkbox', size = 'm', patterns, highlightedItem } = this.asProps;
     const line = this.getItem(index);
 
     return {
@@ -57,6 +60,7 @@ export abstract class BaseLegend<
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
       style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
       patterns,
+      transparent: highlightedItem !== undefined && (highlightedItem !== -1 && highlightedItem !== index),
     };
   }
 

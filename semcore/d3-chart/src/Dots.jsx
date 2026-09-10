@@ -8,6 +8,8 @@ import { PatternSymbol, getPatternSymbolSize } from './Pattern';
 import style from './style/dot.shadow.css';
 import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
 
+const BASE_RADIUS = 3.5;
+const ACTIVE_RADIUS = 4.5;
 function Dots(props) {
   const {
     Element: SDot,
@@ -23,7 +25,7 @@ function Dots(props) {
     scale,
     duration = 500,
     transparent,
-    radius: radiusBase = 4,
+    radius: radiusBase = BASE_RADIUS,
     resolveColor,
     patterns,
     onClick,
@@ -97,7 +99,7 @@ function Dots(props) {
       typeof display === 'function'
         ? display(i, i === activeIndex, !isPrev && !isNext)
         : display || i === activeIndex || (!isPrev && !isNext);
-    const radius = radiusBase * (active ? 5 / 4 : 1);
+    const radius = active ? ACTIVE_RADIUS : radiusBase;
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
 
@@ -147,13 +149,15 @@ function Dots(props) {
   const SDots = 'g';
   return sstyled(styles)(
     <SDots duration={`${duration}ms`} onClickCapture={handlerOnClick}>
-      <PatternSymbol
-        color={resolveColor(color)}
-        patternKey={color}
-        id={svgPatternId}
-        patterns={patterns}
-        x={-1 * width}
-      />
+      { patterns && (
+        <PatternSymbol
+          color={resolveColor(color)}
+          patternKey={color}
+          id={svgPatternId}
+          patterns={patterns}
+          x={-1 * width}
+        />
+      ) }
       {dots}
     </SDots>,
   );

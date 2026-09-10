@@ -76,6 +76,8 @@ export type LegendItemProps = LegendItem & {
    * Handler for focus out legend item
    */
   onBlurLegendItem: (id: LegendItemKey) => void;
+  /** Enables element transparency */
+  transparent?: boolean;
 };
 
 export type LegendItemDefaultProps = {
@@ -96,7 +98,7 @@ export type ShapeProps = LegendItem &
     }
   );
 
-export const StaticShapes = ['Circle', 'Line', 'Square', 'Pattern'] as const;
+export const StaticShapes = ['Circle', 'Pattern'] as const;
 
 export type ShapeType = 'Checkbox' | typeof StaticShapes[number];
 

@@ -35,6 +35,7 @@ export type CompactHorizontalBarChartDefaultProps = {
   showYAxis: false;
   showTooltip: true;
   showLegend: false;
+  locale: 'en';
 };
 
 export type CompactHorizontalBarChartType = Intergalactic.Component<

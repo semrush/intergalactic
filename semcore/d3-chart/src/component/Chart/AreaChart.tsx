@@ -27,6 +27,7 @@ class AreaChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
   } as const;
 
   get xScale() {
@@ -67,7 +68,7 @@ class AreaChartComponent extends AbstractChart<
 
   renderChart() {
     const { groupKey, curve, showDots, stacked, onClickArea } = this.asProps;
-    const { dataDefinitions, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedItem } = this.state;
 
     if (stacked) {
       return (
@@ -80,11 +81,11 @@ class AreaChartComponent extends AbstractChart<
                   y={item.id}
                   key={item.id}
                   color={item.color}
-                  transparent={highlightedLine !== -1 && highlightedLine !== index}
+                  transparent={highlightedItem !== -1 && highlightedItem !== index}
                   curve={curve}
                   onClick={onClickArea}
                 >
-                  {showDots && <StackedArea.Area.Dots display />}
+                  <StackedArea.Area.Dots display={showDots} />
                 </StackedArea.Area>
               )
             );
@@ -101,11 +102,11 @@ class AreaChartComponent extends AbstractChart<
             y={item.id}
             key={item.id}
             color={item.color}
-            transparent={highlightedLine !== -1 && highlightedLine !== index}
+            transparent={highlightedItem !== -1 && highlightedItem !== index}
             curve={curve}
             onClick={onClickArea}
           >
-            {showDots && <Area.Dots display />}
+            <Area.Dots display={showDots} />
           </Area>
         )
       );
@@ -124,6 +125,7 @@ class AreaChartComponent extends AbstractChart<
             children: this.getTooltipChildren({
               Tooltip: HoverLine.Tooltip,
               dataItem,
+              index: xIndex,
             }),
           };
         }}

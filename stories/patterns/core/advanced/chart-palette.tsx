@@ -2,12 +2,20 @@ import { Flex } from '@semcore/ui/base-components';
 import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
-import { chartPaletteLines, chartSemanticLines } from './chart-palette-data';
+import { chartIntentLines, chartPaletteLines, chartSemanticLines } from './chart-palette-data';
 
 const semanticColorMap = {
   critical: 'chart-data-critical',
   success: 'chart-data-success',
   warning: 'chart-data-warning',
+};
+
+const intentColorMap = {
+  commercial: 'chart-data-intent-commercial',
+  informational: 'chart-data-intent-informational',
+  navigational: 'chart-data-intent-navigational',
+  task: 'chart-data-intent-task',
+  transactional: 'chart-data-intent-transactional',
 };
 
 const Demo = () => {
@@ -31,6 +39,16 @@ const Demo = () => {
         colorMap={semanticColorMap}
         showLegend
         aria-label='Line chart with critical, success, and warning semantic colors'
+      />
+      <Chart.Line
+        data={chartIntentLines}
+        plotWidth={500}
+        plotHeight={200}
+        groupKey='x'
+        xTicksCount={chartIntentLines.length / 2}
+        colorMap={intentColorMap}
+        showLegend
+        aria-label='Line chart with commercial, informational, navigational, task, and transactional intent colors'
       />
     </Flex>
   );
