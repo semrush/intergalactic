@@ -208,6 +208,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-fixed-column.tsx', 'en', item);
 
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown'); // the keyword column is sortable, so the initial focus is in the header
         await page.keyboard.press('Enter');
         await locators.collapse(page).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
@@ -484,7 +485,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_in_merged_rows.tsx', 'en');
 
-      const spannedCell = page.locator('[data-ui-name="Body.Row"] div[aria-rowspan="3"]');
+      const spannedCell = page.locator('[data-ui-name="Row"] div[aria-rowspan="3"]');
 
       await spannedCell.click();
       await locators.collapse(page).waitFor({ state: 'visible' });
@@ -585,6 +586,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
         await new Promise((resolve) => setTimeout(resolve, 1000)); // need this for AccordionRows grid calculations after rendering
         await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowDown'); // the keyword column is sortable, so the initial focus is in the header
         await page.keyboard.press('Enter');
         await locators.rowTableInTable(page, 2, 5).waitFor({ state: 'visible' });
         await expect(page).toHaveScreenshot();
@@ -678,7 +680,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Verify child table keyboard navigation when child expanded', async () => {
         await page.keyboard.press('ArrowDown');
-        const childFirstRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Body.Row"][aria-rowindex="2"]');
+        const childFirstRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Row"][aria-rowindex="2"]');
         const childFirstCell = childFirstRow.locator('[data-ui-name="Row.Cell"][aria-colindex="1"]');
         await expect(childFirstCell).toBeFocused();
 
@@ -694,7 +696,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowDown');
         for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowRight');
 
-        const childFLastRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+        const childFLastRow = locators.dataTable(page).nth(1).locator('[data-ui-name="Row"][aria-rowindex="5"]');
         const childlastCell = childFLastRow.locator('[data-ui-name="Row.Cell"][aria-colindex="4"]');
         await expect(childlastCell).toBeFocused();
 
@@ -712,7 +714,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await locators.dataTable(page).nth(1).waitFor({ state: 'hidden' });
         await expect(sortIconKeywordAcc).toHaveAttribute('aria-expanded', 'false');
         await page.keyboard.press('ArrowDown');
-        const nextRow = locators.dataTable(page).first().locator('[data-ui-name="Body.Row"][aria-rowindex="5"]');
+        const nextRow = locators.dataTable(page).first().locator('[data-ui-name="Row"][aria-rowindex="5"]');
         const nextCell = nextRow.locator('[data-ui-name="Row.Cell"][aria-colindex="4"]').first();
         await expect(nextCell).toBeFocused();
       });
@@ -754,7 +756,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_in_merged_rows.tsx', 'en');
 
-      const spannedCell = page.locator('[data-ui-name="Body.Row"] div[aria-rowspan="3"]');
+      const spannedCell = page.locator('[data-ui-name="Row"] div[aria-rowspan="3"]');
       const showDetails = page.locator('[aria-label="Show details"]').first();
 
       await expect(locators.collapse(page)).toBeHidden();
@@ -1240,7 +1242,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       });
 
-      const rows = page.locator('[data-ui-name="Body.Row"]');
+      const rows = page.locator('[data-ui-name="Row"]');
       await page.keyboard.press('Tab');
 
       await test.step('Verify it is possible to scroll the last cell by keyboard when accordion collapsed', async () => {
@@ -1381,7 +1383,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         }
       });
 
-      const rows = page.locator('[data-ui-name="Body.Row"]');
+      const rows = page.locator('[data-ui-name="Row"]');
       await page.keyboard.press('Tab');
 
       await test.step('Verify it is possible to scroll the last cell by keyboard', async () => {

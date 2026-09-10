@@ -4,5 +4,6 @@
   "DataTable.Cell.AccordionToggle.collapse:aria-label": "詳細を非表示にする",
   "DataTable.Header.selectAllCheckbox:aria-label": "すべての項目",
   "DataTable.allItemsSelected:aria-live": "すべての項目が選択されました",
-  "DataTable.allItemsDeselected:aria-live": "すべての項目が選択解除されました"
+  "DataTable.allItemsDeselected:aria-live": "すべての項目が選択解除されました",
+  "DataTable.maxLimitReached:aria-live": "利用可能数の上限に達しました"
 }

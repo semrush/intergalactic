@@ -1,5 +1,5 @@
 import { Box } from '@semcore/base-components';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { Component, createComponent, lastInteraction, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { hasParent } from '@semcore/core/lib/utils/hasParent';
 import Spin from '@semcore/spin';
@@ -9,7 +9,7 @@ import type { BodyPropsInner, DataTableBodyProps, DataTableBodyType } from './Bo
 import { MergedColumnsCell } from './MergedCells';
 import type { RowRoot } from './Row';
 import { Row } from './Row';
-import type { DataTableRowType, DTRow, RowPropsInner } from './Row.types';
+import type { DataTableRowProps, DTRow } from './Row.types';
 import { RowGroup } from './RowGroup';
 import style from './style.shadow.css';
 import {
@@ -109,7 +109,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     });
   };
 
-  getRowProps(props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): RowPropsInner<Data, UniqKeyType> {
+  getPropsToRow = (props: { row: DTRow<UniqKeyType>; mergedRow?: boolean }): DataTableRowProps<Data, UniqKeyType> => {
     const {
       use,
       gridTemplateAreas,
@@ -190,7 +190,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       limit,
       hasGroups,
     };
-  }
+  };
 
   getSpinnerTopOffset = () => {
     const { headerHeight: propsHeaderHeight, tableContainerRef, stickyHeader } = this.asProps;
@@ -213,7 +213,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   };
 
   handleFocusSpinContainer = () => {
-    this.spinContainerIsFocused = true;
+    if (lastInteraction.isKeyboard()) {
+      this.spinContainerIsFocused = true;
+    }
   };
 
   handleBlurSpinContainer = () => {
@@ -239,6 +241,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
       selectedRows,
       hasGroups,
       scrollBarInstanceRef,
+      shadowVertical,
     } = this.asProps;
 
     let rowsToRender = rows;
@@ -341,11 +344,11 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
     const rowMarginTop = this.rowsHeightMap.get(this.startIndex - 1)?.[1];
     const needMarginTop = typeof virtualScroll === 'boolean' || (virtualScroll && !('rowHeight' in virtualScroll));
 
-    let emptyRow: DTRow<string> | null = null;
+    let emptyRow: DTRow<UniqKeyType> | null = null;
 
     if (rowsToRender.length === 0) {
       emptyRow = {
-        [UNIQ_ROW_KEY]: `${uid}_empty_data`,
+        [UNIQ_ROW_KEY]: `${uid}_empty_data` as UniqKeyType,
         [IS_EMPTY_DATA_ROW]: true,
         [ROW_INDEX]: 0,
         [GRID_ROW_INDEX]: 0,
@@ -362,7 +365,7 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
 
     return sstyled(styles)(
       <SBody render={Box} __excludeProps={['data']} ref={this.bodyRef}>
-        {emptyRow && <Body.Row row={emptyRow} isNonInteractive />}
+        {emptyRow && <Row {...this.getPropsToRow({ row: emptyRow })} isNonInteractive />}
         {needMarginTop && rowMarginTop && <Box h={rowMarginTop} />}
         {rowsToRender.map((row, index) => {
           if (Array.isArray(row)) {
@@ -376,16 +379,18 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
                 columns={columns}
                 startIndex={this.startIndex}
                 rowIndex={index}
+                shadowVertical={shadowVertical}
                 handleRef={this.handleRef}
                 handleComponentRef={this.handleComponentRef}
+                getPropsToRow={this.getPropsToRow}
               />
             );
           }
 
           return (
-            <Body.Row
+            <Row
               key={row[UNIQ_ROW_KEY]?.toString()}
-              row={row}
+              {...this.getPropsToRow({ row })}
               ref={virtualScroll ? this.handleRef(this.startIndex + index, row) : undefined}
               componentRef={this.handleComponentRef(row)}
             />
@@ -396,9 +401,10 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
           <SSpinContainer
             innerOutline
             // @ts-ignore
-            hasGroups={hasGroups}
             headerHeight={`${this.getSpinnerTopOffset()}px`}
             tableInnerVerticalScroll={scrollBarInstanceRef.current?.isScrollVisible}
+            gridArea={`${hasGroups ? 3 : 2} / 1 / span 9999 / ${columns.length + 1}`}
+            isDataEmpty={rowsToRender.length === 0}
             tabIndex={-1}
             ref={spinnerRef}
             role='row'
@@ -430,13 +436,9 @@ class BodyRoot<Data extends DataTableData, UniqKeyType> extends Component<DataTa
   }
 }
 
-type BodyComponent = DataTableBodyType & {
-  Row: DataTableRowType;
-};
+type BodyComponent = DataTableBodyType;
 
 export const Body = createComponent<
   BodyComponent,
   typeof BodyRoot
->(BodyRoot, {
-  Row,
-});
+>(BodyRoot);

@@ -53,12 +53,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         if (item.sticky) {
           await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.1 });
         }
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(0));
-          await checkScrolled(scrollBar.nth(1));
-        } else {
-          await checkScrolled(scrollBar.nth(0));
-        }
+        await checkScrolled(scrollBar.nth(0));
       });
     });
   });
@@ -76,11 +71,7 @@ test.describe(`${TAG.VISUAL}`, () => {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(200);
-
-        if (item.withScrollBar) {
-          await checkScrolled(scrollBar.nth(1));
-        } else
-          await checkScrolled(scrollBar.nth(0));
+        await checkScrolled(scrollBar.nth(0));
       });
 
       await test.step('Verify vertical scroll', async () => {
@@ -232,4 +223,49 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   // add cases when hedader has interactive element
+});
+
+/* =====================================================
+@functional
+Scroll bar geometry - no snapshots here.
+We verify offsets of the scroll bars against the fixed columns.
+===================================================== */
+test.describe(`${TAG.FUNCTIONAL}`, () => {
+  test('Verify offset of horizontal scroll bar is recalculated after table resize', {
+    tag: [TAG.PRIORITY_HIGH, '@data-table'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/real-table.tsx', 'en');
+
+    // The fixed column is sized as `minmax(139px, auto)`, so it takes the leftover space in a wide
+    // container and shrinks back to its minimum in a narrow one.
+    const fixedColumn = locators.getHeadColumn(page, 1);
+    const horizontalScrollBars = page.locator('[data-ui-name="ScrollArea.Bar"][aria-orientation="horizontal"]');
+
+    await page.setViewportSize({ width: 1500, height: 900 });
+    await expect(fixedColumn).toBeVisible();
+    const wideColumnWidth = (await fixedColumn.boundingBox())!.width;
+
+    await page.setViewportSize({ width: 800, height: 900 });
+
+    await test.step('Verify the fixed column shrinks together with the table', async () => {
+      await expect.poll(async () => (await fixedColumn.boundingBox())!.width, { timeout: 3000 }).toBeLessThan(wideColumnWidth);
+    });
+
+    await test.step('Verify horizontal scroll bars start at the end of the fixed column', async () => {
+      await expect(horizontalScrollBars.first()).toBeVisible();
+
+      const scrollBarsCount = await horizontalScrollBars.count();
+
+      for (let i = 0; i < scrollBarsCount; i++) {
+        const scrollBar = horizontalScrollBars.nth(i);
+
+        await expect.poll(async () => {
+          const scrollBarBox = (await scrollBar.boundingBox())!;
+          const columnBox = (await fixedColumn.boundingBox())!;
+
+          return Math.abs(scrollBarBox.x - (columnBox.x + columnBox.width));
+        }, { timeout: 3000 }).toBeLessThanOrEqual(1);
+      }
+    });
+  });
 });

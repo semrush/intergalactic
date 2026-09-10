@@ -18,8 +18,8 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1",
-    "@semcore/icon": "^17.2.0"
+    "@semcore/base-components": "^17.2.2",
+    "@semcore/icon": "^17.3.0"
   },
   "repository": {
     "type": "git",
