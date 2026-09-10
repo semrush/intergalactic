@@ -17,12 +17,12 @@
     "require": "./lib/cjs/index.js"
   },
   "dependencies": {
-    "@semcore/button": "^17.2.1",
+    "@semcore/button": "^17.2.2",
     "@semcore/illustration": "^17.0.1",
     "@semcore/typography": "^17.2.1"
   },
   "peerDependencies": {
-    "@semcore/base-components": "^17.2.1"
+    "@semcore/base-components": "^17.2.2"
   },
   "repository": {
     "type": "git",
