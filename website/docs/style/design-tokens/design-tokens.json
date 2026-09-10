@@ -3343,9 +3343,7 @@
     "name": "--intergalactic-box-shadow-chart-dot-elevated",
     "value": "0px 0px 2px 0px oklch(0.137 0.026 175.7 / 0.161), 0px 1px 2px 0px oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Shadow of the elevated chart dot.",
-    "components": [
-      "d3-chart"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-box-shadow-chart-elevated",
