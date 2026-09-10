@@ -175,6 +175,11 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Props for Legend
    */
   legendProps?: Partial<BaseLegendProps>;
+  /**
+   * Locale for displaying the days of a week and months, to be transferred to `Intl`
+   * @default en
+   * */
+  locale?: NavigatorLanguage['language'];
 } & (
   | {
   /**

@@ -35,35 +35,6 @@ SPointShape[shape='Circle'][size='m'] {
   margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
-/* TODO: Remove */
-/* SPointShape[shape='Line'][size='l'] {
-  width: 16px;
-  height: 4px;
-  border-radius: 3px;
-  margin-top: 9px;
-}
-
-SPointShape[shape='Line'][size='m'] {
-  width: 12px;
-  height: 4px;
-  border-radius: 3px;
-  margin-top: 8px;
-}
-
-SPointShape[shape='Square'][size='l'] {
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  margin-top: 4px;
-}
-
-SPointShape[shape='Square'][size='m'] {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  margin-top: 4px;
-} */
-
 SPointShape[shape='Pattern'] {
   background-color: transparent;
   margin-right: var(--intergalactic-spacing-content-gap-small, 4px);

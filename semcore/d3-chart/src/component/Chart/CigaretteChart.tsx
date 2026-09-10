@@ -58,6 +58,7 @@ class CigaretteChartComponent extends AbstractChart<
       showPercentValueInTooltip: false,
       minimalBarWidth: DEFAULT_MINIMAL_BAR_WIDTH,
       direction: invertAxis ? 'column' : 'row',
+      locale: 'en',
     } as const;
   };
 

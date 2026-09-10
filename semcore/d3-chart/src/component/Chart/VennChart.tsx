@@ -27,6 +27,7 @@ class VennChartComponent extends AbstractChart<
     alignItems: 'flex-start',
     marginY: 0,
     marginX: 0,
+    locale: 'en',
   } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;

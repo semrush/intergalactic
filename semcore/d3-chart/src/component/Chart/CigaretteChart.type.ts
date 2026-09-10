@@ -43,6 +43,7 @@ export type CigaretteChartDefaultProps = {
   plotHeight: CigaretteChartProps['plotHeight'];
   showPercentValueInTooltip: false;
   minimalBarWidth: 2;
+  locale: 'en';
 };
 
 export type CigaretteChartType = Intergalactic.Component<'div', CigaretteChartProps>;

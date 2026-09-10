@@ -27,6 +27,7 @@ export type VennChartDefaultProps = {
   alignItems: 'flex-start';
   marginY: 0;
   marginX: 0;
+  locale: 'en';
 };
 
 export type VennChartType = Intergalactic.Component<typeof Flex, VennChartProps>;

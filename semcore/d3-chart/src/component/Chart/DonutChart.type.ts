@@ -35,6 +35,7 @@ export type DonutChartDefaultProps = {
   innerRadius: 100;
   marginX: 0;
   marginY: 0;
+  locale: 'en';
 };
 
 export type DonutChartType = Intergalactic.Component<typeof Flex, DonutChartProps>;

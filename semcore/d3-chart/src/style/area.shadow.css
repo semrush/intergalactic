@@ -3,12 +3,6 @@
 SArea {
   fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
   fill-opacity: 0.1;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    rgba(0, 0, 0, 0.48) 60%,
-    transparent 100%
-  );
   mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.48) 60%, transparent 100%);
 }
 
