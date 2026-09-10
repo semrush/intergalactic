@@ -25,8 +25,8 @@ SDivider {
   &[use='secondary'] {
     &[orientation='horizontal'] {
       background-image: radial-gradient(circle, var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)) 0.5px, transparent 0.5px);
-      background-size: 5px 1px;
-      background-position: -2px 50%;
+      background-size: 3px 1px;
+      background-position: -1px 50%;
 
       &[theme='invert'] {
         background-image: radial-gradient(circle, var(--intergalactic-border-primary-invert, oklch(0.995 0.009 144.4 / 0.347)) 0.5px, transparent 0.5px);
@@ -35,8 +35,8 @@ SDivider {
 
     &[orientation='vertical'] {
       background-image: radial-gradient(circle, var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)) 0.5px, transparent 0.5px);
-      background-size: 1px 5px;
-      background-position: 50% -2px;
+      background-size: 1px 3px;
+      background-position: 50% -1px;
 
       &[theme='invert'] {
         background-image: radial-gradient(circle, var(--intergalactic-border-primary-invert, oklch(0.995 0.009 144.4 / 0.347)) 0.5px, transparent 0.5px);
