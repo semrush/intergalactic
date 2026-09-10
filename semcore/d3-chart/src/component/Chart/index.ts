@@ -1,4 +1,4 @@
-import { GOOD, BAD, INSIGHTFUL, HIGHLIGHT_DOT, IS_POTENTIAL, IS_FORECAST } from './AbstractChart.type';
+import { GOOD, BAD, INSIGHTFUL, HIGHLIGHT_DOT, DATA_TYPE, POTENTIAL, FORECAST } from './AbstractChart.type';
 import { AreaChart } from './AreaChart';
 import { BarChart } from './BarChart';
 import { BubbleChart } from './BubbleChart';
@@ -30,6 +30,7 @@ export {
   BAD,
   INSIGHTFUL,
   HIGHLIGHT_DOT,
-  IS_FORECAST,
-  IS_POTENTIAL,
+  DATA_TYPE,
+  FORECAST,
+  POTENTIAL,
 };

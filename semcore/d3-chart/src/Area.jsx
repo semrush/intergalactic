@@ -6,7 +6,7 @@ import { area, curveLinear, line } from 'd3-shape';
 import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
-import { IS_FORECAST, IS_POTENTIAL } from './component/Chart/AbstractChart.type';
+import { DATA_TYPE, FORECAST, POTENTIAL } from './component/Chart/AbstractChart.type';
 import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import Dots from './Dots';
@@ -124,7 +124,7 @@ class AreaRoot extends Component {
       transparent,
       resolveColor,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[IS_FORECAST]);
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === FORECAST);
 
     return sstyled(styles)(
       <>
@@ -171,7 +171,7 @@ class AreaRoot extends Component {
       y,
       transparent,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[IS_POTENTIAL]);
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === POTENTIAL);
 
     return sstyled(styles)(
       <>
@@ -228,7 +228,7 @@ class AreaRoot extends Component {
       withGradient,
     } = this.asProps;
     const advancedMode = forcedAdvancedMode || !!findComponent(Children, [Area.Line.displayName]);
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && !item[IS_FORECAST] && !item[IS_POTENTIAL]);
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] !== FORECAST && item[DATA_TYPE] !== POTENTIAL);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');

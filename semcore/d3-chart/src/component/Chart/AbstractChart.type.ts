@@ -15,8 +15,10 @@ export const GOOD = Symbol('GOOD');
 export const BAD = Symbol('BAD');
 export const INSIGHTFUL = Symbol('INSIGHTFUL');
 export const HIGHLIGHT_DOT = Symbol('HIGHLIGHT_DOT');
-export const IS_FORECAST = Symbol('FORECAST_DATA');
-export const IS_POTENTIAL = Symbol('POTENTIAL_DATA');
+
+export const DATA_TYPE = Symbol('DATA_TYPE');
+export const FORECAST = Symbol('FORECAST_DATA');
+export const POTENTIAL = Symbol('POTENTIAL_DATA');
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -50,10 +52,9 @@ export type BaseLegendProps = BaseChartLegendProps & {
     }
   );
 
-export type ObjectData = Record<string, number | typeof interpolateValue | Date | string> & {
+export type ObjectData = Record<string, number | typeof interpolateValue | Date | string | string[] | number[]> & {
   [HIGHLIGHT_DOT]?: typeof GOOD | typeof BAD | typeof INSIGHTFUL;
-  [IS_POTENTIAL]?: boolean;
-  [IS_FORECAST]?: boolean;
+  [DATA_TYPE]?: typeof POTENTIAL | typeof FORECAST;
 };
 export type ListData = ObjectData[];
 

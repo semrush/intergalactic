@@ -665,29 +665,6 @@ export const LightStrokePattern = (props: { id: string }) => {
     </defs>
   );
 };
-// export const FillPattern = (props: { id: string; color: string }) => {
-//   return (
-//     <defs>
-//       <pattern id={props.id} width='6' height='6' patternUnits='userSpaceOnUse'>
-//         <rect width='6' height='6' fill={props.color} />
-//       </pattern>
-//     </defs>
-//   );
-// };
-// export const GradientPattern = (props: { id: string; color: string; stopOpacity?: number }) => {
-//   return (
-//     <defs>
-//       <linearGradient id={`${props.id}-gradient`} x1='0%' y1='0%' x2='0%' y2='100%'>
-//         <stop offset='0%' stopColor='#fff' stopOpacity={props.stopOpacity ?? '1'} />
-//         <stop offset='0%' stopColor='#fff' stopOpacity='0.48' />
-//         <stop offset='100%' stopColor='#000' stopOpacity='0' />
-//       </linearGradient>
-//       <mask id={props.id}>
-//         <rect width='100%' height='100%' fill={`url(#${props.id}-gradient)`} />
-//       </mask>
-//     </defs>
-//   );
-// };
 export const StrokeMask = (props: { id: string }) => {
   return (
     <defs>
