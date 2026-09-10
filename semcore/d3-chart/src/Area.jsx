@@ -150,7 +150,6 @@ class AreaRoot extends Component {
           transparent={transparent}
           onClickCapture={this.handlerOnClick.bind(this)}
         />
-        {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
         <ForecastGradient id={`${uid}-forecast-gradient`} />
         <StrokeMask id={`${uid}-forecast-mask`} />
       </>,
@@ -198,7 +197,6 @@ class AreaRoot extends Component {
           onClickCapture={this.handlerOnClick.bind(this)}
         />
 
-        {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
         <PotentialGradient id={`${uid}-potential-gradient`} />
         <PotentialGradient id={`${uid}-potential-gradient-line`} type='line' />
         <StrokeMask id={`${uid}-potential-mask`} />
@@ -260,6 +258,7 @@ class AreaRoot extends Component {
           withGradient={patterns ? undefined : withGradient}
         />
         {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
+        {duration && <AnimatedClipPath duration={duration} id={`${uid}-animation`} width={0} height={size[1]} />}
         {patterns && (
           <PatternFill
             id={`${uid}-pattern`}
