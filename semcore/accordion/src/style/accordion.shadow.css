@@ -8,10 +8,10 @@ SItemToggle {
   align-items: center;
   position: relative;
   cursor: pointer;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   font-weight: var(--intergalactic-regular, 400);
 
   &[use='primary'] {
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
     background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
     border-radius: var(--intergalactic-surface-rounded, 8px);
     padding: var(--intergalactic-spacing-content-padding-small, 8px)
@@ -42,6 +42,7 @@ SItemToggle {
   }
 
   &[use='secondary'] {
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
     padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xxsmall, 2px);
 
     SItemChevron {
