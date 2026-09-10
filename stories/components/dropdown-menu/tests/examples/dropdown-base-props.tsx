@@ -1,4 +1,5 @@
 import InfoM from '@semcore/icon/Info/m';
+import WarningM from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
@@ -85,16 +86,13 @@ const Demo = (props: DropDownPropsExample) => {
       <DropdownMenu.Notice
         theme={noticeTheme}
         hidden={noticeHidden}
+        icon={showNoticeLabel ? (<WarningM />) : undefined}
+        title={noticeTitle}
       >
-        {showNoticeLabel && (
-          <DropdownMenu.Notice.Label>
-            <InfoM />
-          </DropdownMenu.Notice.Label>
-        )}
         <DropdownMenu.Notice.Content>
-          {noticeTitle && (
-            <DropdownMenu.Notice.Title>{noticeTitle}</DropdownMenu.Notice.Title>
-          )}
+          {/* {noticeTitle && ( */}
+          {/*  <DropdownMenu.Notice.Title>{noticeTitle}</DropdownMenu.Notice.Title> */}
+          {/* )} */}
           {noticeText && <DropdownMenu.Notice.Text>{noticeText}</DropdownMenu.Notice.Text>}
           {showNoticeActions && (
             <DropdownMenu.Notice.Actions>

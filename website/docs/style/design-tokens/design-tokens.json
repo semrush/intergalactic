@@ -1694,6 +1694,7 @@
     "value": "oklch(0.552 0.226 28.7 / 0.848)",
     "description": "Semantic error icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
@@ -1738,6 +1739,7 @@
     "components": [
       "accordion",
       "carousel",
+      "dropdown",
       "feature-highlight",
       "notice",
       "typography"
@@ -1757,6 +1759,7 @@
     "value": "oklch(0.595 0.124 165.4)",
     "description": "Semantic success icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
@@ -1773,6 +1776,7 @@
     "value": "oklch(0.728 0.188 51.8)",
     "description": "Semantic warning icon.",
     "components": [
+      "dropdown",
       "notice"
     ]
   },
