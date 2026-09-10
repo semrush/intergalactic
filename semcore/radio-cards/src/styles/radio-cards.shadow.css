@@ -56,13 +56,15 @@ SRadioItemHeaderLeftAddon {
 }
 
 SRadioItemHeaderRightAddon {
-  margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
   color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+}
+
+SRadioItemHeaderText {
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
 }
 
 SRadioItemSkeleton {
   display: inline-block;
-  margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
   vertical-align: middle;
 }
 
