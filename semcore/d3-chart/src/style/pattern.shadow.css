@@ -1,0 +1,10 @@
+
+SLinearGradient {
+  SStopFrom {
+    stop-color: var(--violet-300, oklch(0.74 0.17 303));
+  }
+
+  SStopTo {
+    stop-color: var(--green-100, oklch(0.9 0.11 175));
+  }
+}

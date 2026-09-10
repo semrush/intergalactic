@@ -49,7 +49,7 @@ export abstract class AbstractChart<
   /**
    * Padding from the end's of chart to the container (except axis sides)
    */
-  protected plotPadding = 6;
+  protected plotPadding = 10;
 
   protected dataHints = makeDataHintsContainer();
 
