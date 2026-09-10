@@ -31,7 +31,7 @@ const Demo = () => {
           </Accordion.Item.ToggleButton>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse data-test-id='string'>
-          Section with value = "one" (string
+          Section with value = "one" (string)
         </Accordion.Item.Collapse>
       </Accordion.Item>
     </Accordion>
