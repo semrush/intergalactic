@@ -7,6 +7,9 @@ declare namespace NSBlockquote {
     author?: React.ReactNode;
   };
 
+  /**
+   * @deprecated It will be removed in v19.
+   */
   type Component = Intergalactic.Component<'blockquote', Props>;
 }
 

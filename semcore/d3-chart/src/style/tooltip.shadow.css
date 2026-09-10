@@ -2,7 +2,7 @@
 
 STooltip {
   font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-100, 1.3334);
   position: relative;
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-radius: var(--intergalactic-popper-rounded, 6px);
