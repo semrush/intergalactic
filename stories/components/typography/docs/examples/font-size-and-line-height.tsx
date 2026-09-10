@@ -12,6 +12,9 @@ const Demo = () => (
     <Text size={300} tag='p'>
       16px / --fs-300,--lh-300
     </Text>
+    <Text size={350} tag='p'>
+      18px / --fs-350,--lh-350
+    </Text>
     <Text size={400} tag='p'>
       20px / --fs-400,--lh-400
     </Text>

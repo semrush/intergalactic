@@ -146,7 +146,7 @@
   },
   {
     "name": "--intergalactic-badge-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for Badge.",
     "components": [
       "badge"
@@ -716,7 +716,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
@@ -1436,7 +1436,7 @@
   },
   {
     "name": "--intergalactic-control-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for form controls.",
     "components": [
       "button"
@@ -1450,7 +1450,7 @@
   },
   {
     "name": "--intergalactic-control-text-tertiary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Tertiary text color for form controls.",
     "components": []
   },
@@ -2266,7 +2266,7 @@
   },
   {
     "name": "--intergalactic-sidebar-nav-control-text-normal",
-    "value": "oklch(0.53 0.004 149.6)",
+    "value": "oklch(0.63 0.003 157)",
     "description": "Sidebar navigation label color.",
     "components": []
   },
@@ -2810,28 +2810,29 @@
   },
   {
     "name": "--intergalactic-text-critical",
-    "value": "oklch(0.53 0.206 27.3)",
+    "value": "oklch(0.63 0.224 24.8)",
     "description": "Text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-critical-hover-active",
-    "value": "oklch(0.51 0.202 27.8)",
+    "value": "oklch(0.61 0.221 25.3)",
     "description": "Hover and active states for the text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-hint",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart"
+      "d3-chart",
+      "typography"
     ]
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
-    "value": "oklch(0.086 0.026 145.8 / 0.605)",
+    "value": "oklch(0.095 0.024 154.8 / 0.492)",
     "description": "Hover and active states of the hint link text.",
     "components": [
       "typography"
@@ -2877,7 +2878,7 @@
   },
   {
     "name": "--intergalactic-text-large-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text. Use with font-size ≥20px.",
     "components": [
       "typography"
@@ -2901,7 +2902,8 @@
     "description": "Default primary link color.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2910,7 +2912,8 @@
     "description": "Hover and active states for the primary link.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2939,7 +2942,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Default secondary link color.",
     "components": [
       "link"
@@ -2947,7 +2950,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Hover and active states for the secondary link.",
     "components": [
       "link"
@@ -2972,7 +2975,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.23 0.113 296)",
+    "value": "oklch(0.63 0.228 298.9)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -2980,7 +2983,7 @@
   },
   {
     "name": "--intergalactic-text-placeholder",
-    "value": "oklch(0.098 0.023 157.4 / 0.457)",
+    "value": "oklch(0.109 0.023 165.5 / 0.337)",
     "description": "Placeholder text color for inputs and fields.",
     "components": [
       "base-trigger",
@@ -3041,7 +3044,7 @@
   },
   {
     "name": "--intergalactic-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.",
     "components": [
       "breadcrumbs",
@@ -3070,13 +3073,13 @@
   },
   {
     "name": "--intergalactic-text-success",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.63 0.16 170)",
     "description": "Text associated with success states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-success-hover-active",
-    "value": "oklch(0.51 0.137 170)",
+    "value": "oklch(0.61 0.156 170)",
     "description": "Hover and active states for the text associated with success states and data.",
     "components": []
   },
@@ -3349,7 +3352,8 @@
       "counter",
       "input-tags",
       "notice-bubble",
-      "pills"
+      "pills",
+      "typography"
     ]
   },
   {
@@ -3390,6 +3394,7 @@
       "modal",
       "notice",
       "pills",
+      "typography",
       "wizard"
     ]
   },
@@ -3414,6 +3419,7 @@
       "textarea",
       "time-picker",
       "tooltip",
+      "typography",
       "wizard"
     ]
   },
@@ -3428,6 +3434,7 @@
       "fullscreen-modal",
       "notice",
       "notice-bubble",
+      "typography",
       "wizard"
     ]
   },
@@ -3447,7 +3454,8 @@
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
     "components": [
-      "fullscreen-modal"
+      "fullscreen-modal",
+      "typography"
     ]
   },
   {
@@ -3467,7 +3475,8 @@
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
-      "color-picker"
+      "color-picker",
+      "typography"
     ]
   },
   {
@@ -3483,6 +3492,7 @@
       "link",
       "pagination",
       "tag",
+      "typography",
       "wizard"
     ]
   },
@@ -3521,7 +3531,8 @@
       "pagination",
       "radio",
       "select",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -3532,7 +3543,8 @@
       "color-picker",
       "fullscreen-modal",
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "typography"
     ]
   },
   {
@@ -3541,7 +3553,8 @@
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
       "pagination",
-      "tab-line"
+      "tab-line",
+      "typography"
     ]
   },
   {
@@ -3551,6 +3564,7 @@
     "components": [
       "pagination",
       "tab-line",
+      "typography",
       "wizard"
     ]
   },
@@ -3558,7 +3572,9 @@
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
     "value": "24px",
     "description": "3x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-layout-padding-desktop",
