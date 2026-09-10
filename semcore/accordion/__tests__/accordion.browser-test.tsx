@@ -4,8 +4,19 @@ import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
+  accordion: (page: Page) => page.locator(`[data-ui-name="Accordion"]`),
+  item: (page: Page, index?: number) => {
+    const base = page.locator(`[data-ui-name="Accordion.Item"]`);
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
   collapse: (page: Page, index?: number) => {
     const base = page.locator(`[data-ui-name="Item.Collapse"]`);
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
+  // The collapse content wrapper carries the generic data-ui-name="Box",
+  // so it is addressed as the direct child of Item.Collapse.
+  collapseContainer: (page: Page, index?: number) => {
+    const base = page.locator(`[data-ui-name="Item.Collapse"] > [data-ui-name="Box"]`);
     return typeof index === 'number' ? base.nth(index) : base;
   },
   chevron: (page: Page, index?: number) => {
@@ -28,8 +39,20 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
-    { use: 'primary' },
-    { use: 'secondary' },
+    {
+      use: 'primary',
+      // In the primary variant the chevron is pulled out of the flow and pinned
+      // to the right edge of the toggle, so it has no horizontal margin.
+      chevronPosition: 'absolute',
+      chevronMarginRight: '0px',
+      togglePadding: '8px 16px 8px 20px',
+    },
+    {
+      use: 'secondary',
+      chevronPosition: 'static',
+      chevronMarginRight: '4px',
+      togglePadding: '8px 2px',
+    },
   ];
   variables.forEach((item) => {
     test(`Verify use=${item.use}`, {
@@ -38,7 +61,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@accordion'],
     },
     async ({ page }) => {
-      await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', item);
+      await loadPage(page, 'stories/components/accordion/docs/examples/basic_usage.tsx', 'en', { use: item.use });
 
       await test.step('Verify active and normal states', async () => {
         await expect(page).toHaveScreenshot();
@@ -50,18 +73,28 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify toggle margins', async () => {
+      await test.step('Verify chevron position and margins', async () => {
         const count = await locators.chevron(page).count();
         for (let i = 0; i < count; i++) {
-          await expect(locators.chevron(page, i)).toHaveCSS('margin-right', '8px');
+          await expect(locators.chevron(page, i)).toHaveCSS('position', item.chevronPosition);
+          await expect(locators.chevron(page, i)).toHaveCSS('margin-right', item.chevronMarginRight);
         }
       });
 
-      await test.step('Verify item padding', async () => {
+      await test.step('Verify toggle padding', async () => {
         const count = await locators.toggle(page).count();
         for (let i = 0; i < count; i++) {
-          await expect(locators.toggle(page, i)).toHaveCSS('padding-bottom', '8px');
+          await expect(locators.toggle(page, i)).toHaveCSS('padding', item.togglePadding);
         }
+      });
+
+      await test.step('Verify accordion stacks items in a column with a gap', async () => {
+        await expect(locators.accordion(page)).toHaveCSS('flex-direction', 'column');
+        await expect(locators.accordion(page)).toHaveCSS('row-gap', '2px');
+      });
+
+      await test.step('Verify collapse content padding', async () => {
+        await expect(locators.collapseContainer(page, 0)).toHaveCSS('padding', '12px 20px');
       });
 
       await test.step('Verify h3 tab by default', async () => {
@@ -85,16 +118,41 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('Verify custom styles for selected toggle ', {
-    tag: [TAG.PRIORITY_MEDIUM,
+  test('Verify selected item styles in primary accordion', {
+    tag: [TAG.PRIORITY_HIGH,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/custom_styles.tsx', 'en');
+    await loadPage(page, 'stories/components/accordion/docs/examples/primary_accordion.tsx', 'en');
+
+    await test.step('Verify collapsed item keeps all corners rounded', async () => {
+      await expect(locators.item(page, 0)).toHaveCSS('border-radius', '8px');
+      await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-left-radius', '8px');
+      await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-right-radius', '8px');
+    });
+
     await locators.toggle(page, 0).click();
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await locators.collapse(page, 1).waitFor({ state: 'visible' });
-    await expect(page).toHaveScreenshot();
+    await locators.collapse(page, 0).waitFor({ state: 'visible' });
+
+    await test.step('Verify expanded toggle squares its bottom corners', async () => {
+      await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-left-radius', '0px');
+      await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-right-radius', '0px');
+    });
+
+    await test.step('Verify accent border on the expanded collapse', async () => {
+      await expect(locators.collapse(page, 0)).toHaveCSS('border-left-width', '2px');
+      await expect(locators.collapse(page, 0)).toHaveCSS('border-left-style', 'solid');
+    });
+
+    await test.step('Verify expanded state snapshot', async () => {
+      await expect(page).toHaveScreenshot();
+    });
+
+    await test.step('Verify corners are restored after collapsing', async () => {
+      await locators.toggle(page, 0).click();
+      await locators.collapse(page, 0).waitFor({ state: 'hidden' });
+      await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-left-radius', '8px');
+      await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-right-radius', '8px');
+    });
   });
 
   test('Verify focus on focusable item inside accordion', {
