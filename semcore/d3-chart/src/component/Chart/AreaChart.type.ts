@@ -18,7 +18,11 @@ export type AreaChartProps = BaseChartProps<AreaChartData> & {
   showDots?: boolean;
   /** D3 curve factory for line interpolation (e.g., curveLinear, curveCardinal) */
   curve?: CurveFactory;
-  /**  Enables stacked area chart mode */
+  /**
+   * Enables stacked area chart mode
+   * @deprecated True by default. AreaChart should be only stacked.
+   * @default true
+   */
   stacked?: boolean;
   /** Callback triggered when a user clicks on a chart at a position corresponding to a data item */
   onClickArea?: (index: number, event: React.SyntheticEvent) => void;

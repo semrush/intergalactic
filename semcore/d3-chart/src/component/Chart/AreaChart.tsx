@@ -34,6 +34,7 @@ class AreaChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    stacked: true,
   } as const;
 
   get xScale() {
