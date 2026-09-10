@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RadioCards > Verify data-ui-name 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Text",
+                    },
+                  ],
+                  "uiName": "Box",
+                },
+              ],
+              "uiName": "Flex",
+            },
+          ],
+          "uiName": "RadioCards.Item",
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "uiName": null,
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "uiName": "Text",
+                    },
+                  ],
+                  "uiName": "Box",
+                },
+              ],
+              "uiName": "Flex",
+            },
+          ],
+          "uiName": "RadioCards.Item",
+        },
+      ],
+      "uiName": "RadioCards",
+    },
+  ],
+  "uiName": null,
+}
+`;

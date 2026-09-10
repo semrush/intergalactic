@@ -2,7 +2,6 @@ import Pills from '@semcore/ui/pills';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/basic_example';
-import CustomPillsExample, { defaultProps as CustomPillsProps } from './examples/custom_pills_example';
 import TabsExample, { defaultProps as TabExampleProps } from './examples/tabs_example';
 
 const meta: Meta<typeof Pills> = {
@@ -46,22 +45,4 @@ export const Tabs: StoryObj<typeof TabExampleProps> = {
     },
   },
   args: TabExampleProps,
-};
-
-export const CustomPills: StoryObj<typeof CustomPillsProps> = {
-  render: CustomPillsExample,
-  argTypes: {
-    size: {
-      control: { type: 'select' },
-      options: ['m', 'l'],
-    },
-    behavior: {
-      control: { type: 'select' },
-      options: ['manual', 'auto'],
-    },
-    disabled: {
-      control: { type: 'boolean' },
-    },
-  },
-  args: CustomPillsProps,
 };

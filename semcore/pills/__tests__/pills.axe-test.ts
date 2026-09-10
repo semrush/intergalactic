@@ -16,11 +16,4 @@ test.describe(`@pills ${TAG.ACCESSIBILITY}`, () => {
     const violations = await getAccessibilityViolations({ page });
     expect(violations).toEqual([]);
   });
-
-  test('Custom pills example', async ({ page }) => {
-    await loadPage(page, 'stories/components/pills/docs/examples/custom_pills_example.tsx', 'en');
-
-    const violations = await getAccessibilityViolations({ page });
-    expect(violations).toEqual([]);
-  });
 });

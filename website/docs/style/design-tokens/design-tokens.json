@@ -1762,6 +1762,7 @@
       "carousel",
       "feature-highlight",
       "notice",
+      "radio-cards",
       "typography"
     ]
   },
@@ -2095,19 +2096,25 @@
     "name": "--intergalactic-control-presets-bg",
     "value": "oklch(1 0 0)",
     "description": "Background of the Presets items.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-border-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the selected Preset item.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-border-hover",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the hovered Preset item.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg",
@@ -3078,6 +3085,7 @@
       "dropdown-menu",
       "flags",
       "pills",
+      "radio-cards",
       "slider",
       "switch",
       "tab-panel",
@@ -3226,6 +3234,7 @@
       "link",
       "pills",
       "radio",
+      "radio-cards",
       "slider",
       "switch",
       "tab-line",
@@ -3255,6 +3264,7 @@
     "description": "Shadow of the Switch toggle.",
     "components": [
       "pills",
+      "radio-cards",
       "switch"
     ]
   },
@@ -3435,6 +3445,7 @@
       "input-tags",
       "modal",
       "pills",
+      "radio-cards",
       "tab-panel",
       "textarea",
       "time-picker",
@@ -3465,6 +3476,7 @@
     "components": [
       "bulk-textarea",
       "card",
+      "radio-cards",
       "wizard"
     ]
   },
@@ -3512,6 +3524,7 @@
       "inline-input",
       "link",
       "pagination",
+      "radio-cards",
       "tag",
       "typography",
       "wizard"
@@ -3531,6 +3544,7 @@
       "input",
       "pills",
       "radio",
+      "radio-cards",
       "select",
       "tab-line",
       "tab-panel"
@@ -3551,6 +3565,7 @@
       "notice-bubble",
       "pagination",
       "radio",
+      "radio-cards",
       "select",
       "tag",
       "typography"
@@ -3716,7 +3731,8 @@
     "value": "6px",
     "description": "Use for rounding Pills.",
     "components": [
-      "pills"
+      "pills",
+      "radio-cards"
     ]
   },
   {
