@@ -127,8 +127,6 @@ class LineRoot extends Component {
           onClickCapture={this.handlerOnClick.bind(this)}
           pointerEvents='stroke'
         />
-
-        {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
         <ForecastGradient id={`${uid}-forecast-gradient`} />
         <StrokeMask id={`${uid}-forecast-mask`} />
       </>,
@@ -165,8 +163,6 @@ class LineRoot extends Component {
           pointerEvents='stroke'
           strokeDasharray='4 4'
         />
-
-        {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
         <PotentialGradient id={`${uid}-potential-gradient-line`} type='line' />
       </>,
     );
