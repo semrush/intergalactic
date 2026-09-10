@@ -669,7 +669,7 @@ export const theme: Theme = {
         description: 'Warning data color for charts.',
       },
       chart_grid_bar_chart_base_bg: {
-        value: neutral.at(L_BG_LIGHT),
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Default background color of a bar in the BarChart.',
       },
       chart_grid_bar_chart_hover: {

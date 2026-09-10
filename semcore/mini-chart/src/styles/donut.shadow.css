@@ -13,5 +13,5 @@ SDonutContainer {
 }
 
 SDonutContainer[animate] circle {
-  transition: all var(--intergalactic-duration-extra-slow, 500) ease-in-out;
+  transition: all var(--intergalactic-duration-extra-fast, 100) ease-in-out;
 }

@@ -666,7 +666,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-base-bg",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(0.92 0.002 178.5)",
     "description": "Default background color of a bar in the BarChart.",
     "components": [
       "d3-chart",
