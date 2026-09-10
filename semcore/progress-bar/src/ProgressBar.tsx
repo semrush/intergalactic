@@ -10,7 +10,7 @@ import style from './style/progress-bar.shadow.css';
 function isCustomTheme(theme?: string) {
   if (!theme) return false;
 
-  return !['dark', 'invert'].includes(theme);
+  return !['default', 'invert', 'brand'].includes(theme);
 }
 
 class ProgressBarRoot extends Component<
@@ -27,7 +27,7 @@ class ProgressBarRoot extends Component<
   static defaultProps = () => ({
     duration: 1000,
     size: 'm',
-    theme: 'invert',
+    theme: 'default',
     children: <ProgressBar.Value />,
   } as const);
 
@@ -73,12 +73,28 @@ function Value(
   const { styles, value, theme, duration, resolveColor } = props;
   const width = `${value}%`;
 
+  const [stopAnimation, setStopAnimation] = React.useState(value === 100);
+
+  const handleTransitionEnd = React.useCallback(() => {
+    if (value === 100) {
+      setTimeout(() => {
+        setStopAnimation(true);
+      });
+    } else {
+      setTimeout(() => {
+        setStopAnimation(false);
+      });
+    }
+  }, [value]);
+
   return sstyled(styles)(
     <SValue
       render={Box}
       use:width={width}
       use:duration={`${duration}ms`}
       colorBg={resolveColor(theme)}
+      onTransitionEnd={handleTransitionEnd}
+      stopAnimation={stopAnimation}
     />,
   );
 }

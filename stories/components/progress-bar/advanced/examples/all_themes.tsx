@@ -16,6 +16,29 @@ export default function AllThemes() {
           <ProgressBar value={100} aria-label='Progress 100%' />
         </Box>
       </Flex>
+      <Flex gap={6} flexWrap alignItems='flex-start' direction='column'>
+        <Box w={240}>
+          <ProgressBar
+            theme='brand'
+            value={0}
+            aria-label='Progress 0%, brand theme on light background'
+          />
+        </Box>
+        <Box w={240}>
+          <ProgressBar
+            theme='brand'
+            value={40}
+            aria-label='Progress 40%, brand theme on light background'
+          />
+        </Box>
+        <Box w={240}>
+          <ProgressBar
+            theme='brand'
+            value={100}
+            aria-label='Progress 100%, brand theme on light background'
+          />
+        </Box>
+      </Flex>
       <Box
         p={4}
         style={{
@@ -26,23 +49,23 @@ export default function AllThemes() {
         <Flex gap={6} flexWrap alignItems='flex-start' direction='column'>
           <Box w={240}>
             <ProgressBar
-              theme='dark'
+              theme='invert'
               value={0}
-              aria-label='Progress 0%, dark theme on dark background'
+              aria-label='Progress 0%, invert theme on dark background'
             />
           </Box>
           <Box w={240}>
             <ProgressBar
-              theme='dark'
+              theme='invert'
               value={40}
-              aria-label='Progress 40%, dark theme on dark background'
+              aria-label='Progress 40%, invert theme on dark background'
             />
           </Box>
           <Box w={240}>
             <ProgressBar
-              theme='dark'
+              theme='invert'
               value={100}
-              aria-label='Progress 100%, dark theme on dark background'
+              aria-label='Progress 100%, invert theme on dark background'
             />
           </Box>
         </Flex>

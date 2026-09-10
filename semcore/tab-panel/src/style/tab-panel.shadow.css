@@ -20,7 +20,7 @@ STabPanelItem {
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
   min-width: 0;
   height: var(--intergalactic-form-control-m, 32px);
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
   border: 1px solid transparent;
   border-bottom: none;
   border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px) 0 0;
