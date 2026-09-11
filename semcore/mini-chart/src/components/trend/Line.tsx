@@ -98,7 +98,7 @@ class TrendLineRoot extends Trend<
                 this.defaultHeight
               }`}
               fill={this.color}
-              fillOpacity={0.2}
+              fillOpacity={0.1}
               clipPath={`url(#${uid})`}
             />
           )}
@@ -109,7 +109,7 @@ class TrendLineRoot extends Trend<
               r={this.lastPointRadius}
               fill={resolveColor(lastPointColor)}
               stroke={resolveColor('chart-grid-border')}
-              strokeWidth={4}
+              strokeWidth={2}
               clipPath={`url(#${uid})`}
             />
           )}
