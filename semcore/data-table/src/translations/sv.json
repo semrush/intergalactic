@@ -4,5 +4,6 @@
   "DataTable.Cell.AccordionToggle.collapse:aria-label": "Dölj detaljer",
   "DataTable.Header.selectAllCheckbox:aria-label": "Alla objekt",
   "DataTable.allItemsSelected:aria-live": "Alla objekt valda",
-  "DataTable.allItemsDeselected:aria-live": "Alla objekt avmarkerade"
+  "DataTable.allItemsDeselected:aria-live": "Alla objekt avmarkerade",
+  "DataTable.maxLimitReached:aria-live": "Maxgränsen har uppnåtts"
 }

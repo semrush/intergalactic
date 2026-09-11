@@ -2,6 +2,7 @@ import WarningIcon from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import { MonthDateRangeComparator } from '@semcore/ui/date-picker';
 import Dropdown from '@semcore/ui/dropdown';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 const Demo = () => {
@@ -44,18 +45,18 @@ const Demo = () => {
             </MonthDateRangeComparator.Periods>
           </MonthDateRangeComparator.Body>
           <MonthDateRangeComparator.Footer>
-            Place for a hint, useful message or controls.
+            <Text size={200}>
+              Place for a hint, useful message or controls.
+            </Text>
           </MonthDateRangeComparator.Footer>
           <Dropdown.Notice
             aria-labelledby='month-notice-title'
             theme='warning'
             style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+            icon={<WarningIcon />}
           >
             <Dropdown.Notice.Content>
               <Flex mb={1}>
-                <Dropdown.Notice.Label>
-                  <WarningIcon />
-                </Dropdown.Notice.Label>
                 <Dropdown.Notice.Title>
                   Warning
                 </Dropdown.Notice.Title>

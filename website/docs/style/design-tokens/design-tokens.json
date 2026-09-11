@@ -922,6 +922,30 @@
     "components": []
   },
   {
+    "name": "--intergalactic-control-carousel-indicator",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Background color of the Carousel indicator.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-carousel-indicator-invert",
+    "value": "oklch(1 0 0)",
+    "description": "Background color of the inverted Carousel indicator.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-carousel-indicator-active",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Background color of the active Carousel indicator.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
     "name": "--intergalactic-control-checkbox-bg-normal",
     "value": "oklch(1 0 0)",
     "description": "Background color of the Checkbox.",
@@ -1721,9 +1745,7 @@
     "name": "--intergalactic-icon-primary-invert",
     "value": "oklch(0.998 0.003 173.3 / 0.808)",
     "description": "Inverted version of the primary icon.",
-    "components": [
-      "carousel"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
@@ -1814,7 +1836,6 @@
     "description": "De-emphasized icons for dense layouts (tables, tertiary actions).",
     "components": [
       "breadcrumbs",
-      "carousel",
       "drag-and-drop",
       "inline-input",
       "input",
@@ -2826,7 +2847,8 @@
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart"
+      "d3-chart",
+      "typography"
     ]
   },
   {
@@ -2901,7 +2923,8 @@
     "description": "Default primary link color.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2910,7 +2933,8 @@
     "description": "Hover and active states for the primary link.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2972,7 +2996,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.23 0.113 296)",
+    "value": "oklch(0.63 0.228 298.9)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -3318,7 +3342,6 @@
       "color-picker",
       "input",
       "input-tags",
-      "notice",
       "pills",
       "tab-line",
       "tab-panel",
@@ -3350,7 +3373,8 @@
       "counter",
       "input-tags",
       "notice-bubble",
-      "pills"
+      "pills",
+      "typography"
     ]
   },
   {
@@ -3364,7 +3388,9 @@
       "dropdown",
       "dropdown-menu",
       "input-tags",
+      "notice",
       "pills",
+      "side-panel",
       "wizard"
     ]
   },
@@ -3374,6 +3400,7 @@
     "description": "Extended extra small padding for content inside controls and surfaces.",
     "components": [
       "counter",
+      "notice",
       "pills"
     ]
   },
@@ -3387,7 +3414,10 @@
       "dropdown",
       "fullscreen-modal",
       "modal",
+      "notice",
       "pills",
+      "side-panel",
+      "typography",
       "wizard"
     ]
   },
@@ -3406,11 +3436,13 @@
       "input",
       "input-tags",
       "modal",
+      "notice",
       "pills",
       "tab-panel",
       "textarea",
       "time-picker",
       "tooltip",
+      "typography",
       "wizard"
     ]
   },
@@ -3423,7 +3455,10 @@
       "color-picker",
       "feature-popover",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
+      "side-panel",
+      "typography",
       "wizard"
     ]
   },
@@ -3434,6 +3469,7 @@
     "components": [
       "bulk-textarea",
       "card",
+      "notice",
       "wizard"
     ]
   },
@@ -3442,7 +3478,9 @@
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
     "components": [
-      "fullscreen-modal"
+      "fullscreen-modal",
+      "side-panel",
+      "typography"
     ]
   },
   {
@@ -3462,7 +3500,8 @@
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
-      "color-picker"
+      "color-picker",
+      "typography"
     ]
   },
   {
@@ -3472,12 +3511,14 @@
     "components": [
       "base-trigger",
       "bulk-textarea",
+      "carousel",
       "date-picker",
       "dropdown-menu",
       "inline-input",
       "link",
       "pagination",
       "tag",
+      "typography",
       "wizard"
     ]
   },
@@ -3507,15 +3548,18 @@
     "components": [
       "breadcrumbs",
       "button",
+      "carousel",
       "checkbox",
       "date-picker",
       "dropdown",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
       "pagination",
       "radio",
       "select",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -3523,10 +3567,13 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "carousel",
       "color-picker",
       "fullscreen-modal",
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "side-panel",
+      "typography"
     ]
   },
   {
@@ -3534,8 +3581,10 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
+      "carousel",
       "pagination",
-      "tab-line"
+      "tab-line",
+      "typography"
     ]
   },
   {
@@ -3545,6 +3594,7 @@
     "components": [
       "pagination",
       "tab-line",
+      "typography",
       "wizard"
     ]
   },
@@ -3552,7 +3602,9 @@
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
     "value": "24px",
     "description": "3x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-layout-padding-desktop",
@@ -3584,6 +3636,30 @@
     "components": [
       "badge",
       "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-carousel-indicator-rounded",
+    "value": "8px",
+    "description": "Use for rounding Carousel indicators.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-carousel-item-rounded",
+    "value": "14px",
+    "description": "Use for rounding Carousel.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-carousel-item-preview-rounded",
+    "value": "14px",
+    "description": "Use for rounding Carousel preview items.",
+    "components": [
+      "carousel"
     ]
   },
   {
@@ -3678,7 +3754,6 @@
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
     "components": [
       "card",
-      "carousel",
       "d3-chart",
       "feedback-form",
       "notice"
@@ -3719,6 +3794,7 @@
     "value": "200",
     "description": "Use for small controls like Checkbox or Radio.",
     "components": [
+      "carousel",
       "checkbox",
       "dropdown",
       "feature-highlight",

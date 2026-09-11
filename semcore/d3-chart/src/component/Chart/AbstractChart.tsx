@@ -364,7 +364,7 @@ export abstract class AbstractChart<
   }
 
   protected tooltipValueFormatter(
-    value?: string | number | typeof interpolateValue | Date,
+    value?: string | number | null | typeof interpolateValue | Date,
   ): string {
     const { tooltipValueFormatter } = this.asProps;
 

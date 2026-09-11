@@ -19,7 +19,7 @@ const Demo = (props: NSSidePanel.Props) => {
       >
         <SidePanel.Panel aria-label='SidePanel example' mt={20}>
           <SidePanel.Header>
-            <SidePanel.Title mt={3}>SidePanel Title</SidePanel.Title>
+            <SidePanel.Title>SidePanel Title</SidePanel.Title>
           </SidePanel.Header>
           <SidePanel.Body>
             <Text size={300} tag='p'>

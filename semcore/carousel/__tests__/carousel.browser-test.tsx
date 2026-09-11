@@ -55,13 +55,29 @@ test.describe(`${TAG.VISUAL} `, () => {
       await test.step('Verify Prev and Next buttons Focus and Hover styles', async () => {
         await page.keyboard.press('Tab');
         await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        });
         await locators.button(page, 'Next slide').hover();
         await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const els = document.querySelectorAll('[data-ui-name="Hint"]');
+          return els.length >= 2 && getComputedStyle(els[1]).opacity === '1';
+        });
+        await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
         await expect(page).toHaveScreenshot();
       });
 
       await test.step('Verify Carousel area focus', async () => {
         await page.keyboard.press('Tab');
+        // Prev button loses focus and hides its Hint, the hovered Next slide Hint stays.
+        // Wait for that settled state, otherwise the fading out Hint leaks into the snapshot.
+        await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(1);
+        await page.waitForFunction(() => {
+          const els = document.querySelectorAll('[data-ui-name="Hint"]');
+          return els.length === 1 && getComputedStyle(els[0]).opacity === '1';
+        });
         await expect(page).toHaveScreenshot();
       });
 
@@ -85,8 +101,16 @@ test.describe(`${TAG.VISUAL} `, () => {
         await expect(page).toHaveScreenshot();
         await page.keyboard.press('Tab');
         await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const el = document.querySelector('[data-ui-name="Hint"]');
+          return el && getComputedStyle(el).opacity === '1';
+        });
         await locators.button(page, 'Next slide').nth(1).hover();
         await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
+        await page.waitForFunction(() => {
+          const els = document.querySelectorAll('[data-ui-name="Hint"]');
+          return els.length >= 2 && getComputedStyle(els[1]).opacity === '1';
+        });
         await expect(page).toHaveScreenshot();
       });
 
@@ -566,10 +590,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         `,
       });
 
-      // Wait for styles to apply
-      await page.waitForTimeout(100);
-
       const indicator = locators.tab(page, 0);
+
+      // Wait for the transition to settle instead.
+      await expect(indicator).toHaveCSS('width', '150px');
+      await expect(indicator).toHaveCSS('height', '150px');
+
       const box = await indicator.boundingBox();
 
       // the size  overridden

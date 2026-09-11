@@ -247,6 +247,115 @@ describe('Select Trigger', () => {
   );
 });
 
+describe('Select Trigger invalid state', () => {
+  beforeEach(cleanup);
+
+  test('Verify aria-invalid is true when state is invalid', () => {
+    const { getByTestId } = render(
+      <Select state='invalid'>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    expect(getByTestId('trigger')).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  test('Verify aria-invalid is false when state is not set', () => {
+    const { getByTestId } = render(
+      <Select>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    expect(getByTestId('trigger')).toHaveAttribute('aria-invalid', 'false');
+  });
+
+  test('Verify aria-invalid is false when state is valid or normal', () => {
+    const { getByTestId, unmount } = render(
+      <Select state='valid'>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    expect(getByTestId('trigger')).toHaveAttribute('aria-invalid', 'false');
+
+    unmount();
+
+    const { getByTestId: getByTestIdNormal } = render(
+      <Select state='normal'>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    expect(getByTestIdNormal('trigger')).toHaveAttribute('aria-invalid', 'false');
+  });
+
+  test('Verify aria-invalid updates when state changes dynamically', () => {
+    const { getByTestId, rerender } = render(
+      <Select>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    expect(getByTestId('trigger')).toHaveAttribute('aria-invalid', 'false');
+
+    rerender(
+      <Select state='invalid'>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    expect(getByTestId('trigger')).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  test('Verify aria-invalid and aria-disabled coexist when both disabled and invalid', () => {
+    const { getByTestId } = render(
+      <Select state='invalid' disabled>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    const trigger = getByTestId('trigger');
+
+    expect(trigger).toHaveAttribute('aria-invalid', 'true');
+    expect(trigger).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  test('Verify aria-invalid is set on multiselect trigger', () => {
+    const { getByTestId } = render(
+      <Select multiselect state='invalid'>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu>
+          <Select.Option value='1'>Option 1</Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    expect(getByTestId('trigger')).toHaveAttribute('aria-invalid', 'true');
+  });
+});
+
 describe('Option.Checkbox', () => {
   beforeEach(cleanup);
 

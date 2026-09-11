@@ -4,5 +4,6 @@
   "DataTable.Cell.AccordionToggle.collapse:aria-label": "Ẩn bớt",
   "DataTable.Header.selectAllCheckbox:aria-label": "Tất cả các mục",
   "DataTable.allItemsSelected:aria-live": "Tất cả các mục đã được chọn",
-  "DataTable.allItemsDeselected:aria-live": "Tất cả các mục đã được bỏ chọn"
+  "DataTable.allItemsDeselected:aria-live": "Tất cả các mục đã được bỏ chọn",
+  "DataTable.maxLimitReached:aria-live": "Đã đạt giới hạn tối đa"
 }

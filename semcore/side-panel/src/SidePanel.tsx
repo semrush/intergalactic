@@ -273,7 +273,7 @@ function Header(
   const SHeader = Root;
   const { Children, styles, title } = props;
   return sstyled(styles)(
-    <SHeader render={Box} tag='header'>
+    <SHeader render={Flex} tag='header'>
       {title && <SidePanel.Title children={title} />}
       <Children />
     </SHeader>,
