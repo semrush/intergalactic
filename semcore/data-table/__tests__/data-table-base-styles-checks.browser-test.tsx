@@ -15,7 +15,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const textSecondary = await getCssVarColor(page, '--intergalactic-text-secondary', 'color');
     const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
+    const borderPrimary = await getCssVarBorder(page, '--intergalactic-border-primary');
     const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
     const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
@@ -25,10 +27,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify header cell styles', async () => {
       await checkStyles(header, {
         'font-size': '12px',
-        'color': textPrimary,
+        'color': textSecondary,
         'padding': '12px',
         'background-color': thPrimaryCellBg,
-        'border-bottom': borderSecondary,
+        'border-bottom': borderPrimary,
       });
     });
 
@@ -37,8 +39,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (browserName !== 'firefox')
         await checkStyles(header.first(), {
           'font-size': '12px',
-          'border-bottom': borderSecondary,
-          'color': textPrimary,
+          'border-bottom': borderPrimary,
+          'color': textSecondary,
           'background-color': thPrimaryCellBg,
           'padding': '12px',
         });
@@ -139,8 +141,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/compact.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const textSecondary = await getCssVarColor(page, '--intergalactic-text-secondary', 'color');
     const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
-    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-table-td-cell');
+    const borderPrimary = await getCssVarBorder(page, '--intergalactic-border-primary');
     const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
@@ -148,10 +152,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await checkStyles(header, {
       'font-size': '12px',
-      'color': textPrimary,
+      'color': textSecondary,
       'padding': '12px 8px',
       'background-color': thPrimaryCellBg,
-      'border-bottom': borderSecondary,
+      'border-bottom': borderPrimary,
     });
 
     await checkStyles(firstCell, {
@@ -174,10 +178,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/secondary-table.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const textSecondary = await getCssVarColor(page, '--intergalactic-text-secondary', 'color');
     const thSecondaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-secondary-cell');
-    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-table-td-cell');
     const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
-    const borderTableAccent = await getCssVarBorder(page, '--intergalactic-border-table-accent');
+    const borderTableAccent = await getCssVarBorder(page, '--intergalactic-table-border-accent');
     const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
@@ -185,7 +190,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await checkStyles(header, {
       'font-size': '12px',
-      'color': textPrimary,
+      'color': textSecondary,
       'padding': '8px',
       'background-color': thSecondaryCellBg,
       'border-bottom': borderTableAccent,
@@ -195,7 +200,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     if (browserName !== 'firefox')
       await checkStyles(header, {
         'font-size': '12px',
-        'color': textPrimary,
+        'color': textSecondary,
         'padding': '8px',
         'background-color': thSecondaryCellBg,
         'border-bottom': borderTableAccent,

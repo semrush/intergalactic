@@ -119,7 +119,7 @@ class HeadRoot<
 
   getGroupProps(props: any, index: number) {
     const { columns } = props;
-    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection } = this.asProps;
+    const { use, gridAreaGroupMap, children, getFixedStyle, shadowVertical, top, scrollDirection, sort } = this.asProps;
     const groupColumns = columns ?? [];
 
     const firstColumn = groupColumns[0];
@@ -134,6 +134,7 @@ class HeadRoot<
       style: this.columnStyle.get(props.name),
       scrollDirection,
       top: top && scrollDirection !== 'horizontal' ? `${top}px` : undefined,
+      sort,
     };
   }
 
