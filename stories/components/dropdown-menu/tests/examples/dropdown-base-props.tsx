@@ -1,4 +1,3 @@
-import InfoM from '@semcore/icon/Info/m';
 import WarningM from '@semcore/icon/Warning/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
@@ -35,7 +34,6 @@ type DropDownPropsExample = DropdownMenuProps & DropdownMenuListProps & {
   noticeText?: string;
   showNoticeActions?: boolean;
   noticeActionText?: string;
-  showNoticeClose?: boolean;
 };
 const Demo = (props: DropDownPropsExample) => {
   const {
@@ -63,7 +61,6 @@ const Demo = (props: DropDownPropsExample) => {
     noticeText,
     showNoticeActions,
     noticeActionText,
-    showNoticeClose,
   } = props;
 
   const [search, setSearch] = React.useState('');
@@ -89,18 +86,12 @@ const Demo = (props: DropDownPropsExample) => {
         icon={showNoticeLabel ? (<WarningM />) : undefined}
         title={noticeTitle}
       >
-        <DropdownMenu.Notice.Content>
-          {/* {noticeTitle && ( */}
-          {/*  <DropdownMenu.Notice.Title>{noticeTitle}</DropdownMenu.Notice.Title> */}
-          {/* )} */}
-          {noticeText && <DropdownMenu.Notice.Text>{noticeText}</DropdownMenu.Notice.Text>}
-          {showNoticeActions && (
-            <DropdownMenu.Notice.Actions>
-              <Button use='primary'>{noticeActionText}</Button>
-            </DropdownMenu.Notice.Actions>
-          )}
-        </DropdownMenu.Notice.Content>
-        {showNoticeClose && <DropdownMenu.Notice.Close />}
+        {noticeText && <DropdownMenu.Notice.Text>{noticeText}</DropdownMenu.Notice.Text>}
+        {showNoticeActions && (
+          <DropdownMenu.Notice.Actions>
+            <Button use='primary'>{noticeActionText}</Button>
+          </DropdownMenu.Notice.Actions>
+        )}
       </DropdownMenu.Notice>
     );
   };
@@ -207,7 +198,6 @@ export const defaultDropDownPropsExample: DropDownPropsExample = {
   noticeText: 'Additional information related to the available actions.',
   showNoticeActions: true,
   noticeActionText: 'Action',
-  showNoticeClose: false,
 };
 
 Demo.defaultProps = defaultDropDownPropsExample;
