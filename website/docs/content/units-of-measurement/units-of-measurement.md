@@ -7,7 +7,7 @@ title: Units of measurement
 * Use “s” for seconds, “m” for minutes, “h” for hours
 * Use uppercase for time
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <p>10 K</p>
         <p>3 s</p>
@@ -18,4 +18,4 @@ title: Units of measurement
         <p>3s</p>
         <p>9:45 AM</p>
     </template>
-</DosDonts>
+</DosDontsCopy>

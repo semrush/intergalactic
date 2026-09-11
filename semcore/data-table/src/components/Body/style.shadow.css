@@ -163,7 +163,7 @@ SCell {
   display: flex;
   height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   background-color: var(--intergalactic-table-td-cell, oklch(1 0 0));
   box-sizing: border-box;
@@ -268,6 +268,10 @@ SCell {
 
 SRow[accordionType='row'] > SCellWrapper > SCell, SCell[withAccordion], SCell[name='SELECT_ALL_ROWS'] {
   cursor: pointer;
+
+  &[disabled] {
+    cursor: default;
+  }
 }
 
 SCheckboxCell[aria-hidden] {
@@ -281,7 +285,6 @@ SCellWrapper[fixed] {
 }
 
 SSpinContainer {
-  grid-area: 2 / 1 / 20 / -1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,6 +294,10 @@ SSpinContainer {
 
   &:focus-visible {
     z-index: 15;
+  }
+
+  &[gridArea] {
+    grid-area: var(--gridArea);
   }
 
   &[headerHeight] {
@@ -306,8 +313,10 @@ SSpinContainer {
     top: var(--headerHeight);
   }
 
-  &[hasGroups] {
-    grid-area: 3 / 1 / 20 / -1;
+  &[isDataEmpty] {
+    position: absolute;
+    inset: 0;
+    top: var(--headerHeight);
   }
 }
 
@@ -316,7 +325,7 @@ SEmptyData {
 }
 
 SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
-  SCellWrapper:first-child SCell {
+  SCellWrapper:first-child SCell[aria-colindex="1"] {
     padding-left: var(--intergalactic-spacing-content-padding-xlarge, 20px);
 
     &[data-aria-level] {

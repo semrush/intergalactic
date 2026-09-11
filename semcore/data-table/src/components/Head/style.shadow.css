@@ -49,13 +49,13 @@ SGroup, SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
   box-sizing: border-box;
   height: 100%;
   position: relative;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   overflow: hidden;
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-100, 1.3334);
 }
 
 SGroup {
@@ -236,6 +236,10 @@ SHead[sideIndents='wide'] {
 
 SHeadCheckboxCol {
   cursor: pointer;
+
+  &[disabled] {
+    cursor: default;
+  }
 }
 
 

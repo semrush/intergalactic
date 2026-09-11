@@ -1,11 +1,15 @@
 import type { Intergalactic } from '@semcore/core';
+import type { IconProps } from '@semcore/icon';
+import type { IllustrationProps } from '@semcore/illustration';
 
 import type { NSNotice } from './Notice.type';
 
 declare namespace NSNoticeSmart {
-  type Props = NSNotice.Props & {
+  type Props = Omit<NSNotice.Props, 'icon' | 'illustration'> & {
     /**
      * A custom element for additional information
+     *
+     * @deprecated. Use icon or illustration props instead.
      */
     label?: React.ReactNode;
 
@@ -29,7 +33,13 @@ declare namespace NSNoticeSmart {
      * Callback on a click on the close button
      */
     onClose?: (event: React.SyntheticEvent) => void;
-  };
+  } & ({
+    icon?: React.ReactElement<IconProps>;
+    illustration?: never;
+  } | {
+    icon?: never;
+    illustration?: React.ElementType<IllustrationProps>;
+  });
   type DefaultProps = {
     theme: 'info';
   };
