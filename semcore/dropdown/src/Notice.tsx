@@ -39,6 +39,5 @@ class DropdownNoticeRoot extends Component<NSDropdown.Notice.Props> {
 export const DropdownNotice = createComponent<NSDropdown.Notice.Component, typeof DropdownNoticeRoot>(DropdownNoticeRoot, {
   Text: Notice.Text,
   Actions: Notice.Actions,
-  Content: Notice.Content,
   Close: Notice.Close,
 }, { parent: Notice });
