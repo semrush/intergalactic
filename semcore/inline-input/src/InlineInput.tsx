@@ -1,4 +1,4 @@
-import { Box, InvalidStateBox } from '@semcore/base-components';
+import { Box } from '@semcore/base-components';
 import { ButtonLink } from '@semcore/button';
 import type { Intergalactic } from '@semcore/core';
 import { createComponent, Component, sstyled, Root, lastInteraction } from '@semcore/core';
@@ -224,13 +224,11 @@ class InlineInputBase extends Component<
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const SInvalidPattern = InvalidStateBox;
-    const { Children, styles, state } = this.asProps;
+    const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
       <SInlineInput render={Box} ref={this.rootRef} onBlur={this.handleBlur}>
         <SUnderline>
-          {state === 'invalid' && <SInvalidPattern />}
           <Children />
         </SUnderline>
       </SInlineInput>,

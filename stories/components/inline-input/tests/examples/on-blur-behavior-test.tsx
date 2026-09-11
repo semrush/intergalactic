@@ -4,10 +4,9 @@ import React from 'react';
 
 const Example = () => {
   return (
-    <Flex direction='row' gap={2}>
+    <Flex direction='column' gap={2}>
       <InlineInput
         data-testid='onBlurBehavior-cancel'
-        w={300}
         onBlurBehavior='cancel'
         onCancel={(value: any) => console.log('Cancel:', value)}
         onChange={(value: any) => console.log('Change:', value)}
@@ -23,7 +22,6 @@ const Example = () => {
 
       <InlineInput
         data-testid='onBlurBehavior-confirm'
-        w={300}
         onBlurBehavior='confirm'
         onCancel={() => console.log('Cancel')}
         onChange={(value: any) => console.log('Change:', value)}
@@ -39,7 +37,6 @@ const Example = () => {
 
       <InlineInput
         data-testid='onBlurBehavior-none'
-        w={300}
         onBlurBehavior='none'
         onCancel={() => console.log('Cancel')}
         onChange={(value: any) => console.log('Change:', value)}

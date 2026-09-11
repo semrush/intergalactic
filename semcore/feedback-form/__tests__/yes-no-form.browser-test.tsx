@@ -45,8 +45,15 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button',
       '@dropdown',
-      '@notice'],
+      '@input',
+      '@link',
+      '@notice',
+      '@textarea',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
@@ -100,8 +107,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button',
       '@dropdown',
-      '@notice'],
+      '@input',
+      '@link',
+      '@notice',
+      '@textarea',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
@@ -239,8 +253,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@feedback-form',
+      '@base-components',
+      '@flex-box',
+      '@button',
       '@dropdown',
-      '@notice'],
+      '@input',
+      '@link',
+      '@notice',
+      '@textarea',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 

@@ -54,7 +54,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@wizard',
       '@button',
       '@input',
-      '@base-components'],
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   },
   async ({ page }) => {
     await loadPage(page, 'stories/components/wizard/docs/examples/custom_step.tsx', 'en');
@@ -76,7 +78,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@wizard',
         '@button',
         '@typography',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@radio'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en');
@@ -148,7 +152,9 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@wizard',
         '@button',
         '@typography',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@radio'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en');
@@ -232,7 +238,10 @@ test.describe(`${TAG.VISUAL}`, () => {
         TAG.PRIORITY_HIGH,
         '@wizard',
         '@typography',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@radio'],
     },
     async ({ page }) => {
       const firstStepTitle = 'PersonalInfovfdnvmdfnbmvfdnbnnmdlymmvdvd'.repeat(3);
@@ -264,7 +273,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@radio',
-      '@base-components'],
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   },
   async ({ page }) => {
     await loadPage(page, 'stories/components/wizard/tests/examples/sidebar-as-component.tsx', 'en');
@@ -307,7 +318,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       '@button',
       '@input',
       '@radio',
-      '@base-components'],
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   },
   async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/wizard/docs/examples/custom_step.tsx', 'en');
@@ -336,7 +349,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@wizard',
         '@button',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/docs/examples/basic_example.tsx', 'en');
@@ -452,7 +467,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@wizard',
         '@button',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/docs/examples/basic_example.tsx', 'en');
@@ -601,7 +618,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@wizard',
         '@button',
         '@input',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/docs/examples/custom_step.tsx', 'en');
@@ -664,7 +683,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@wizard',
         '@button',
         '@input',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/docs/examples/custom_step.tsx', 'en');
@@ -722,7 +743,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@wizard',
         '@button',
         '@radio',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en');
@@ -759,7 +782,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@wizard',
         '@button',
         '@radio',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     },
     async ({ page }) => {
       await loadPage(page, 'stories/components/wizard/tests/examples/steps_and_buttons_states.tsx', 'en');
@@ -791,7 +816,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@button',
       '@typography',
       '@radio',
-      '@base-components'],
+      '@base-components',
+      '@flex-box'],
   },
   async ({ page }) => {
     await loadPage(page, 'stories/components/wizard/tests/examples/focus-next-prev.tsx', 'en');

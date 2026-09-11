@@ -231,26 +231,48 @@ exports[`PillsFH > Verify data-ui-name 1`] = `
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [],
-              "uiName": "Pills.Item.Text",
-            },
-          ],
-          "uiName": "PillsFH.Item",
+          "children": [],
+          "uiName": "Box",
         },
         {
           "children": [
             {
-              "children": [],
-              "uiName": "HighlightedItem.Text",
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Pills.Item.Text",
+                },
+              ],
+              "uiName": "PillsFH.Item",
             },
             {
               "children": [],
-              "uiName": "HighlightedItem.Addon",
+              "uiName": "Box",
             },
           ],
-          "uiName": "PillsFH.HighlightedItem",
+          "uiName": "Box",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "HighlightedItem.Text",
+                },
+                {
+                  "children": [],
+                  "uiName": "HighlightedItem.Addon",
+                },
+              ],
+              "uiName": "PillsFH.HighlightedItem",
+            },
+            {
+              "children": [],
+              "uiName": "Box",
+            },
+          ],
+          "uiName": "Box",
         },
       ],
       "uiName": "PillsFH",

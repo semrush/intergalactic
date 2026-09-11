@@ -17,4 +17,5 @@ SEdit {
 
 SView {
   cursor: pointer;
+  border-radius: calc(var(--intergalactic-control-rounded, 6px) - 2px);
 }

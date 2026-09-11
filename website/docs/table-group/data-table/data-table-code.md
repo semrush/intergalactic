@@ -290,6 +290,7 @@ It receives props described in [`CellRenderProps`](/table-group/data-table/data-
 
 You can return either a custom React element to override the rendering entirely, or an object that will be applied as props to the cell.
 If the returned object includes a children property, it will override the default cell content—otherwise, you can use it to apply custom attributes such as theming or data attributes.
+If you have an external link and some action, then you need to use `LinkAction` from `@semcore/data-table`.
 
 ::: sandbox
 

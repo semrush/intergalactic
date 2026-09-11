@@ -14,7 +14,7 @@ const Demo = (props: TableInCardProps) => (
     <Card.Header>
       <Card.Title tag='h3'>Card Title</Card.Title>
     </Card.Header>
-    <Card.Body pt={0} px={0} pb={1}>
+    <Card.Body pt={2} px={0} pb={1}>
       <DataTable
         data={data}
         aria-label='Table in card'

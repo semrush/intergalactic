@@ -34,7 +34,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify five stars form base example styles', {
     tag: [
       TAG.PRIORITY_HIGH,
-      '@feedback-form'],
+      '@feedback-form',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
     const checkboxInput = page.getByRole('checkbox');
@@ -117,7 +119,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify feedback rating with error notice on submit', {
     tag: [
       TAG.PRIORITY_HIGH,
-      '@feedback-form'],
+      '@feedback-form',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-error-on-send.tsx', 'en');
 
@@ -133,7 +137,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify feedback rating notice with title and subtitle', {
     tag: [
       TAG.PRIORITY_HIGH,
-      '@feedback-form'],
+      '@feedback-form',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-title-and-subtitle.tsx', 'en');
 
@@ -143,7 +149,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify feedback rating notice with illustration and feature highlight notice', {
     tag: [
       TAG.PRIORITY_HIGH,
-      '@feedback-form'],
+      '@feedback-form',
+      '@button',
+      '@feature-highlight',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/with-custom-illustration-and-notice.tsx', 'en');
 
@@ -154,7 +163,12 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       '@feedback-form',
-      '@select'],
+      '@base-components',
+      '@flex-box',
+      '@button',
+      '@link',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/tests/examples/modal-width-variants.tsx', 'en');
 
@@ -191,7 +205,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@feedback-form'],
+      '@feedback-form',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 
@@ -312,7 +328,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [
       TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@feedback-form'],
+      '@feedback-form',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx', 'en');
 

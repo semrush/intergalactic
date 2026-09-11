@@ -17,7 +17,7 @@ import CustomDayExample from './examples/custom_day';
 import CustomHeaderExample from './examples/custom_header';
 import DateRangeComparatorExample from './examples/date_range_comparator';
 import DateRangeComparatorAdvanceUseExample from './examples/date_range_comparator_advanced_use';
-import DatepickerExample from './examples/datepicker';
+import DatePickerExample from './examples/datepicker';
 import DisabledDatesExample from './examples/disabled_dates';
 import MonthRangeComparatorAdvanceUseExample from './examples/month_range_comparator_advanced_use';
 import MonthRangePickerExample from './examples/monthrangepicker';
@@ -66,8 +66,8 @@ export const DateRangeComparatorAdvanceUse: StoryObj = {
 
 };
 
-export const Datepicker: StoryObj = {
-  render: DatepickerExample,
+export const DatePicker: StoryObj = {
+  render: DatePickerExample,
   play: playWrapper(DatePickerTest),
 };
 

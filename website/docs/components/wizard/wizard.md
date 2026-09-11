@@ -49,20 +49,25 @@ max-height: 700px;
 
 Table: Stepper states
 
-| State    | Appearance example       | Styles                                                                                         |
-| -------- | ------------------------ | ---------------------------------------------------------------------------------------------- |
-| Normal   | ![](static/normal.png)   | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)` |
-| Hover    | ![](static/hover.png)    | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                |
-| Active   | ![](static/active.png)   | `background-color: var(--control-primary-advertising-active)`                                  |
-| Disabled | ![](static/disabled.png) | Use `--disabled-opacity` token.                                                                |
-| Checked  | ![](static/checked.png)  | The number changes to a `Check` icon with M size.
+| State    | Appearance example       |
+| -------- | ------------------------ |
+| Normal   | ![](static/normal.png)   |
+| Hover    | ![](static/hover.png)    |
+| Active   | ![](static/active.png)   |
+| Disabled | ![](static/disabled.png) |
+| Checked  | ![](static/checked.png)  |
 
 ### Optional stepper
 
 If a step is optional, you can add an **"optional"** label to it using the following styles:
 
 ```CSS
-<Text color='text-secondary-invert' fontWeight={400} mt={1} tag='div'>
+<Text
+  color='wizard-sidebar-text-secondary'
+  fontWeight={400}
+  mt={1}
+  tag='div'
+>
     optional
 </Text>
 ```
@@ -74,9 +79,9 @@ Refer to the [example with custom step](/components/wizard/wizard-code#custom-st
 We recommend:
 
 - Using the `L` size for basic controls
-- Using the following margins
+- Using the `spacing-content-gap-xlarge` gap within the footer and the `spacing-content-gap-xxlarge-extended` gap between the footer and the content.
 
-![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500);](static/footer.png)
+![](static/footer.png)
 
 ### Collapsing panel with steps on screen less than 1060px
 

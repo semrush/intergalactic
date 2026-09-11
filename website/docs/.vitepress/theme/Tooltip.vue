@@ -31,7 +31,7 @@ export default {
   opacity: 0;
   transition: calc(var(--intergalactic-duration-popper, 200) * 1ms) all ease-in-out;
   color: var(--intergalactic-text-primary-invert, #ffffff);
-  background-color: var(--intergalactic-tooltip-invert, #191b23);
+  background-color: var(--intergalactic-tooltip-bg-invert, #191b23);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
   text-align: center;
@@ -54,7 +54,7 @@ export default {
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  border-color: transparent transparent var(--intergalactic-tooltip-invert, #191b23) transparent;
+  border-color: transparent transparent var(--intergalactic-tooltip-bg-invert, #191b23) transparent;
 }
 
 .vp-tooltip-container:has(:focus-visible) .vp-tooltip,
@@ -84,10 +84,10 @@ body:has(.vp-tooltip-container > *:first-child:hover + .vp-tooltip) .vp-tooltip-
 
 .dark .vp-tooltip {
   color: var(--intergalactic-text-primary, #191b23);
-  background-color: var(--intergalactic-tooltip-default, #ffffff);
+  background-color: var(--intergalactic-tooltip-bg-default, #ffffff);
 }
 
 .dark .vp-tooltip-arrow {
-  border-color: transparent transparent var(--intergalactic-tooltip-default, #ffffff) transparent;
+  border-color: transparent transparent var(--intergalactic-tooltip-bg-default, #ffffff) transparent;
 }
 </style>

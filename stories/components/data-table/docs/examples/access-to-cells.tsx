@@ -1,5 +1,6 @@
-import { ButtonLink } from '@semcore/ui/button';
-import { DataTable } from '@semcore/ui/data-table';
+import AddCampaignIconM from '@semcore/icon/AddCampaign/m';
+import type { CellRenderProps } from '@semcore/ui/data-table';
+import { DataTable, LinkAction } from '@semcore/ui/data-table';
 import React from 'react';
 
 const Demo = () => {
@@ -13,19 +14,23 @@ const Demo = () => {
         { name: 'cpc', children: 'CPC' },
         { name: 'vol', children: 'Vol.' },
       ]}
-      renderCell={(props) => {
+      renderCell={(props: CellRenderProps<any, any>) => {
         if (props.dataKey === 'keyword') {
+          const href = `https://${props.rawData[props.dataKey]}`;
           return (
-            <ButtonLink
-              onClick={() => {
-                alert(`Click row
+            <LinkAction
+              link={{ href, text: String(props.value) }}
+              actions={{
+                title: 'Add to campaign',
+                icon: AddCampaignIconM,
+                onClick: () => {
+                  alert(`Click row
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(props.row, null, '  ')};
                   index: ${props.rowIndex};`);
+                },
               }}
-            >
-              {props.value}
-            </ButtonLink>
+            />
           );
         }
 

@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import InputWithSubmitButtonExample from './examples/input_with_a_submit_icon';
 import InputWithTextAddonExample from './examples/input_with_a_text_addon';
+import InputWithIconAddonExample from './examples/input_with_an_icon_addon';
 import InputWithMultipleAddonsExample from './examples/input_with_multiple_addons';
+import InputWithOtherComponentInsideExample from './examples/input_with_other_component_inside';
 import InputWithTheClearingAbilityExample from './examples/input_with_the_clearing_ability';
 import LoadingStateInTheInputExample from './examples/loading_state_in_the_input';
 import PasswordInputExample from './examples/password_input';
@@ -18,6 +20,10 @@ export const InputWithSubmitButton: Story = {
   render: InputWithSubmitButtonExample,
 };
 
+export const InputWithIconAddon: Story = {
+  render: InputWithIconAddonExample,
+};
+
 export const InputWithTextAddon: Story = {
   render: InputWithTextAddonExample,
 };
@@ -27,7 +33,7 @@ export const InputWithMultipleAddons: Story = {
 };
 
 export const InputWithOtherComponentInside: Story = {
-  render: InputWithTextAddonExample,
+  render: InputWithOtherComponentInsideExample,
 };
 
 export const InputWithTheClearingAbility: Story = {

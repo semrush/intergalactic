@@ -12,7 +12,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify colored rows', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@data-table'],
+      '@data-table',
+      '@base-components',
+      '@flex-box',
+    ],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/row-themes.tsx', 'en');
     const stylesActiveHovered = await getStylesActiveHovered(page);

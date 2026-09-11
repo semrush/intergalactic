@@ -1,7 +1,9 @@
-import { Flex, Box } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
+import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
-type trendLinesProps = { lastPointRadius: number; loading?: boolean; color?: string; lastPointColor?: string; animate?: boolean };
+
+type TrendLinesProps = NSMiniChart.Trend.Line.Props;
 
 const Demo = ({
   loading,
@@ -9,7 +11,7 @@ const Demo = ({
   lastPointRadius,
   lastPointColor,
   animate,
-}: trendLinesProps) => {
+}: TrendLinesProps) => {
   const data = [10, 20, 50, 80, 45, 66];
 
   return (
@@ -18,6 +20,6 @@ const Demo = ({
     </Flex>
   );
 };
-export type { trendLinesProps };
+export type { TrendLinesProps };
 
 export default Demo;

@@ -1,9 +1,11 @@
+import InfoM from '@semcore/icon/Info/m';
 import { Flex } from '@semcore/ui/base-components';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 import type { StatusItemState } from '@semcore/ui/dropdown';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import type { DropdownMenuProps, DropdownMenuListProps } from '@semcore/ui/dropdown-menu';
+import type { NSNotice } from '@semcore/ui/notice';
 import Select from '@semcore/ui/select';
 import React from 'react';
 
@@ -22,6 +24,17 @@ type DropDownPropsExample = DropdownMenuProps & DropdownMenuListProps & {
   showSearch?: boolean;
   state?: StatusItemState;
   customChildren?: string;
+
+  // Notice functionality
+  showNotice?: boolean;
+  noticeTheme?: NSNotice.Theme;
+  noticeHidden?: boolean;
+  showNoticeLabel?: boolean;
+  noticeTitle?: string;
+  noticeText?: string;
+  showNoticeActions?: boolean;
+  noticeActionText?: string;
+  showNoticeClose?: boolean;
 };
 const Demo = (props: DropDownPropsExample) => {
   const {
@@ -41,6 +54,15 @@ const Demo = (props: DropDownPropsExample) => {
     showSearch,
     state = 'default',
     customChildren,
+    showNotice,
+    noticeTheme,
+    noticeHidden,
+    showNoticeLabel,
+    noticeTitle,
+    noticeText,
+    showNoticeActions,
+    noticeActionText,
+    showNoticeClose,
   } = props;
 
   const [search, setSearch] = React.useState('');
@@ -55,6 +77,35 @@ const Demo = (props: DropDownPropsExample) => {
   const filteredItems = items.filter((item) =>
     item.label.toLowerCase().includes(search.toLowerCase()),
   );
+
+  const renderNotice = () => {
+    if (!showNotice) return null;
+
+    return (
+      <DropdownMenu.Notice
+        theme={noticeTheme}
+        hidden={noticeHidden}
+      >
+        {showNoticeLabel && (
+          <DropdownMenu.Notice.Label>
+            <InfoM />
+          </DropdownMenu.Notice.Label>
+        )}
+        <DropdownMenu.Notice.Content>
+          {noticeTitle && (
+            <DropdownMenu.Notice.Title>{noticeTitle}</DropdownMenu.Notice.Title>
+          )}
+          {noticeText && <DropdownMenu.Notice.Text>{noticeText}</DropdownMenu.Notice.Text>}
+          {showNoticeActions && (
+            <DropdownMenu.Notice.Actions>
+              <Button use='primary'>{noticeActionText}</Button>
+            </DropdownMenu.Notice.Actions>
+          )}
+        </DropdownMenu.Notice.Content>
+        {showNoticeClose && <DropdownMenu.Notice.Close />}
+      </DropdownMenu.Notice>
+    );
+  };
 
   if (showSearch) {
     return (
@@ -90,6 +141,7 @@ const Demo = (props: DropDownPropsExample) => {
           >
             {customChildren || undefined}
           </DropdownMenu.StatusItem>
+          {renderNotice()}
         </DropdownMenu.Popper>
       </DropdownMenu>
     );
@@ -98,24 +150,34 @@ const Demo = (props: DropDownPropsExample) => {
   return (
     <Flex gap={16} direction='row'>
       <DropdownMenu size={size} visible={visible} disablePortal={disablePortal} stretch={stretch}>
-        <DropdownMenu.Trigger tag={Button}>Trigger</DropdownMenu.Trigger>
-        <DropdownMenu.Menu data-testid='m-size'>
-          <DropdownMenu.Item size={size} selected={selectedSave} disabled={disabledAll || disabledSave}>Save</DropdownMenu.Item>
-          <DropdownMenu.Item size={size} selected={selectedRename} disabled={disabledAll || disabledRename}>Rename</DropdownMenu.Item>
-          <DropdownMenu.Item size={size} selected={selectedDownload} disabled={disabledAll || disabledDownload}>Download</DropdownMenu.Item>
-          <DropdownMenu.Item size={size} selected={selectedDelete} disabled={disabledAll || disabledDelete}>Delete</DropdownMenu.Item>
-        </DropdownMenu.Menu>
+        <DropdownMenu.Trigger tag={Button} id='dropdown-base-trigger'>
+          Trigger
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Popper aria-labelledby='dropdown-base-trigger'>
+          <DropdownMenu.List data-testid='m-size'>
+            <DropdownMenu.Item size={size} selected={selectedSave} disabled={disabledAll || disabledSave}>Save</DropdownMenu.Item>
+            <DropdownMenu.Item size={size} selected={selectedRename} disabled={disabledAll || disabledRename}>Rename</DropdownMenu.Item>
+            <DropdownMenu.Item size={size} selected={selectedDownload} disabled={disabledAll || disabledDownload}>Download</DropdownMenu.Item>
+            <DropdownMenu.Item size={size} selected={selectedDelete} disabled={disabledAll || disabledDelete}>Delete</DropdownMenu.Item>
+          </DropdownMenu.List>
+          {renderNotice()}
+        </DropdownMenu.Popper>
       </DropdownMenu>
 
       <DropdownMenu size={size} visible={visible} disablePortal={disablePortal} stretch={stretch}>
-        <DropdownMenu.Trigger tag={Button}>Trigger</DropdownMenu.Trigger>
-        <DropdownMenu.Menu data-testid='l-size'>
-          <DropdownMenu.Item size={size} selected={selectedSave} disabled={disabledAll || disabledSave}>Save</DropdownMenu.Item>
-          <Divider />
-          <DropdownMenu.Item size={size} selected={selectedRename} disabled={disabledAll || disabledRename}>Rename</DropdownMenu.Item>
-          <DropdownMenu.Item size={size} selected={selectedDownload} disabled={disabledAll || disabledDownload}>Download</DropdownMenu.Item>
-          <DropdownMenu.Item size={size} selected={selectedDelete} disabled={disabledAll || disabledDelete}>Delete</DropdownMenu.Item>
-        </DropdownMenu.Menu>
+        <DropdownMenu.Trigger tag={Button} id='dropdown-divider-trigger'>
+          Trigger
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Popper aria-labelledby='dropdown-divider-trigger'>
+          <DropdownMenu.List data-testid='l-size'>
+            <DropdownMenu.Item size={size} selected={selectedSave} disabled={disabledAll || disabledSave}>Save</DropdownMenu.Item>
+            <Divider />
+            <DropdownMenu.Item size={size} selected={selectedRename} disabled={disabledAll || disabledRename}>Rename</DropdownMenu.Item>
+            <DropdownMenu.Item size={size} selected={selectedDownload} disabled={disabledAll || disabledDownload}>Download</DropdownMenu.Item>
+            <DropdownMenu.Item size={size} selected={selectedDelete} disabled={disabledAll || disabledDelete}>Delete</DropdownMenu.Item>
+          </DropdownMenu.List>
+          {renderNotice()}
+        </DropdownMenu.Popper>
       </DropdownMenu>
 
     </Flex>
@@ -139,6 +201,15 @@ export const defaultDropDownPropsExample: DropDownPropsExample = {
   showSearch: false,
   state: 'default',
   customChildren: '',
+  showNotice: false,
+  noticeTheme: 'info',
+  noticeHidden: false,
+  showNoticeLabel: false,
+  noticeTitle: 'Notice title',
+  noticeText: 'Additional information related to the available actions.',
+  showNoticeActions: true,
+  noticeActionText: 'Action',
+  showNoticeClose: false,
 };
 
 Demo.defaultProps = defaultDropDownPropsExample;

@@ -26,7 +26,7 @@ function getJSX(props: TabLineJSXProps) {
           ? [
               <TabLine.Item.Text key={1}>Analytics</TabLine.Item.Text>,
               <TabLine.Item.Addon key={2}>
-                <Badge bg='bg-primary-success'>new</Badge>
+                <Badge type='new' />
               </TabLine.Item.Addon>,
             ]
           : 'Analytics'}

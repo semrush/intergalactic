@@ -25,7 +25,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify tooltip shown on hover', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -52,7 +52,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify layouts and highlights on hover', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -103,7 +103,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify no tooltip when showTooltip=false', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -155,7 +155,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   tooltipViewTypeVariants.forEach((variant) => {
     test(`Verify tooltipViewType=${variant.name}`, {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -255,7 +255,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tiny value invisible at minimalBarWidth=0', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -273,7 +273,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tiny value visible at minimalBarWidth=10', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -291,7 +291,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify multiple tiny values get minimalBarWidth from donor', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -311,7 +311,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify equal values have equal width', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -387,7 +387,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify all tiny values get minimalBarWidth without donors', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,

@@ -154,6 +154,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     // main coverage
     { bold: true, italic: false, size: 200, use: 'primary' },
     { bold: false, italic: true, size: 300 },
+    { size: 350 },
     { semibold: true, lowercase: true, size: 400 },
     { semibold: false, medium: true, size: 500 },
     { underline: true, lineThrough: false, size: 600 },
@@ -246,6 +247,43 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify formatted nested list margins visual', async () => {
         await expect(page).toHaveScreenshot();
+      });
+    });
+  });
+
+  // Nested list indentation must be driven only by nesting depth, not by whether
+  // the size prop happens to be passed. Text has no default size, so the base
+  // formatTags block and the size-specific blocks must stay in sync.
+  const nestedListIndent = [
+    { size: 'none', thirdLevel: '36px' },
+    { size: '100', thirdLevel: '32px' },
+    { size: '200', thirdLevel: '36px' },
+    { size: '300', thirdLevel: '36px' },
+    { size: '350', thirdLevel: '36px' },
+  ];
+
+  nestedListIndent.forEach(({ size, thirdLevel }) => {
+    test(`Verify nested list indentation with size=${size}`, {
+      tag: [TAG.PRIORITY_HIGH, '@typography'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/typography/tests/examples/nested-list-indent-props.tsx', 'en', { size });
+
+      const item = (testId: string, level: 1 | 2 | 3) =>
+        page.getByTestId(testId).locator(`li[data-level="${level}"]`).first();
+
+      await test.step('Verify baseline without size prop keeps 18/26/36px indents', async () => {
+        await expect(item('baseline-no-size', 1)).toHaveCSS('padding-left', '18px');
+        await expect(item('baseline-no-size', 2)).toHaveCSS('padding-left', '26px');
+        await expect(item('baseline-no-size', 3)).toHaveCSS('padding-left', '36px');
+      });
+
+      await test.step(`Verify size=${size} keeps 18/26px on first two levels`, async () => {
+        await expect(item('controlled-with-size', 1)).toHaveCSS('padding-left', '18px');
+        await expect(item('controlled-with-size', 2)).toHaveCSS('padding-left', '26px');
+      });
+
+      await test.step(`Verify size=${size} third level indent is ${thirdLevel}`, async () => {
+        await expect(item('controlled-with-size', 3)).toHaveCSS('padding-left', thirdLevel);
       });
     });
   });

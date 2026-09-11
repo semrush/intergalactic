@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import SummaryAI from '@semcore/icon/SummaryAI/m';
 import MailSent from '@semcore/illustration/MailSent';
 import { Flex } from '@semcore/ui/base-components';
@@ -6,7 +7,7 @@ import type { NSNotice } from '@semcore/ui/notice';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-export type NoticeFHAdvancedProps = NSNotice.Props & {
+export type NoticeFHAdvancedProps = Intergalactic.InternalTypings.EfficientOmit<NSNotice.Props, 'icon' | 'illustration'> & {
   noticeText?: string;
   showTitle?: boolean;
   titleText?: string;

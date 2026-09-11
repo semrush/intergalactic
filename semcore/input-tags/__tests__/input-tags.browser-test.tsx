@@ -93,33 +93,39 @@ test.describe(`${TAG.VISUAL} `, () => {
 
         await test.step('Verify inputTagsM styles', async () => {
           await testHelpers.verifyCSSForAll(input_tags_m, {
-            'padding-left': '4px',
-            'padding-right': '6px',
+            'padding-top': '2px',
+            'padding-bottom': '2px',
+            'padding-left': '12px',
+            'padding-right': '12px',
           });
         });
 
         await test.step('Verify inputTagsL styles', async () => {
           await testHelpers.verifyCSSForAll(input_tags_l, {
-            'padding-left': '8px',
-            'padding-right': '10px',
+            'padding-top': '4px',
+            'padding-bottom': '4px',
+            'padding-left': '12px',
+            'padding-right': '12px',
           });
         });
 
         await test.step('Verify InputTags.Tag styles', async () => {
           await testHelpers.verifyCSSForAll(locators.tag(page), {
-            margin: '2px',
+            'margin-top': '2px',
+            'margin-right': '2px',
+            'margin-bottom': '2px',
+            'margin-left': '0px',
           });
         });
 
-        await test.step('Verify TagContainer.Tag styles', async () => {
-          const tagContainer = page.locator(`li[data-ui-name="TagContainer.Tag"]`);
-          await testHelpers.verifyCSSForAll(tagContainer, {
+        await test.step('Verify InputTags.Tag.Text styles', async () => {
+          await testHelpers.verifyCSSForAll(locators.inputText(page), {
             'padding-left': '4px',
-            'padding-right': '4px',
-            'border': '1px',
+            'padding-right': '2px',
+            'border-width': '1px',
           });
-          await testHelpers.verifyAttributesForAll(tagContainer, {
-            tabindex: '-1',
+          await testHelpers.verifyAttributesForAll(locators.inputText(page), {
+            tabindex: item.disabled ? '-1' : '0',
           });
         });
 

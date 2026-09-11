@@ -51,3 +51,30 @@ exports[`ButtonLink > Verify data-ui-name 1`] = `
   "uiName": null,
 }
 `;
+
+exports[`ButtonLink > Verify data-ui-name without an addon 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "ButtonLink.Text",
+                },
+              ],
+              "uiName": "Link.Text",
+            },
+          ],
+          "uiName": "ButtonLink.InnerWrapper",
+        },
+      ],
+      "uiName": "ButtonLink",
+    },
+  ],
+  "uiName": null,
+}
+`;

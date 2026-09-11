@@ -22,7 +22,7 @@ export const locators = {
   ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify multiselect selection visual state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/multiselect.tsx', 'en');
 
@@ -36,7 +36,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify multiselect with divider and sorting visual state', {
-    tag: [TAG.PRIORITY_HIGH, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/sorting_multiselect_options.tsx', 'en');
 
@@ -61,7 +61,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify multiselect with render function select all visual state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/render_function.tsx', 'en');
     const option = page.locator('[data-ui-name="Select.Option"][value="%all%"]');
@@ -83,7 +83,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify multiselect mouse selection visual state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/multiselect.tsx', 'en');
 
@@ -108,7 +108,7 @@ test.describe(`${TAG.VISUAL} `, () => {
   ===================================================== */
 test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard interactions with multiselect', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/multiselect.tsx', 'en');
 
@@ -165,7 +165,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify mouse interactions with multiselect', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/multiselect.tsx', 'en');
 
@@ -206,7 +206,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify multiselect with divider and sorting functionality', {
-    tag: [TAG.PRIORITY_HIGH, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/sorting_multiselect_options.tsx', 'en');
 
@@ -238,7 +238,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify keyboard interactions with render function', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/render_function.tsx', 'en');
     const option = page.locator('[data-ui-name="Select.Option"][value="%all%"]');
@@ -290,7 +290,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify mouse interactions with render function', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@multiselect'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/render_function.tsx', 'en');
     const option = page.locator('[data-ui-name="Select.Option"][value="%all%"]');
@@ -323,7 +323,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   });
 
   test('Verify keyboard interactions after mouse interactions', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, TAG.MOUSE, '@multiselect'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, TAG.MOUSE, '@multiselect', '@select', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/multiselect.tsx', 'en');
 

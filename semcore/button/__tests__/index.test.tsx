@@ -105,4 +105,18 @@ describe('ButtonLink', () => {
 
     expect(result).toMatchSnapshot();
   });
+
+  test('Verify data-ui-name without an addon', () => {
+    const buttonLink = (
+      <ButtonLink>
+        <ButtonLink.Text>Button link</ButtonLink.Text>
+      </ButtonLink>
+    );
+
+    const { container } = render(buttonLink);
+
+    expect(extractUIName(container)).toMatchSnapshot();
+    expect(container.querySelectorAll('[data-ui-name="Link.Text"] [data-ui-name="ButtonLink.Text"]'))
+      .toHaveLength(1);
+  });
 });

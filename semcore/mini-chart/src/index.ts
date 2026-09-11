@@ -1,16 +1,8 @@
-import { ScoreLine, ScoreDonut, ScoreSemiDonut } from './component/score';
-import type { SegmentColor } from './component/score/Line.types';
-import { TrendLine, TrendArea, TrendBar, TrendHistogram } from './component/trend';
+import { ScoreDonut, ScoreSemiDonut, ScoreLine } from './components/score';
+import { TrendLine, TrendArea, TrendBar, TrendHistogram } from './components/trend';
+import type { SegmentColor, NSMiniChart } from './types';
 
-const miniCharts: {
-  TrendLine: typeof TrendLine;
-  TrendArea: typeof TrendArea;
-  TrendBar: typeof TrendBar;
-  TrendHistogram: typeof TrendHistogram;
-  ScoreSemiDonut: typeof ScoreSemiDonut;
-  ScoreDonut: typeof ScoreDonut;
-  ScoreLine: typeof ScoreLine;
-} = {
+export default {
   TrendLine,
   TrendArea,
   TrendBar,
@@ -20,8 +12,7 @@ const miniCharts: {
   ScoreLine,
 };
 
-export default miniCharts;
-
 export type {
   SegmentColor,
+  NSMiniChart,
 };

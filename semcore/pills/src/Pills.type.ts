@@ -1,11 +1,12 @@
 import type { NSBox, NSNeighborLocation } from '@semcore/base-components';
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
+import type { NSText } from '@semcore/typography';
 import type React from 'react';
 
 declare namespace NSPills {
   // TODO: It looks like the value isn't accurate. Revise and align it with the component's logic.
   type Value = string | number | boolean | null;
-  type Props<T extends NSPills.Value = NSPills.Value> = NSNeighborLocation.Props & NSBox.Props & {
+  type Props<T extends NSPills.Value = NSPills.Value> = NSBox.Props & {
     /** Pills size */
     size?: 'l' | 'm';
     /** Disabled state */
@@ -55,7 +56,7 @@ declare namespace NSPills {
       addonRight?: React.ElementType;
     };
     namespace Text {
-      type Component = NSBox.Component;
+      type Component = NSText.Component;
     }
     namespace Addon {
       type Component = NSBox.Component;

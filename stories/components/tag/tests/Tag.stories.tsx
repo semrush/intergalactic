@@ -28,10 +28,16 @@ export const BasicProps: StoryObj<typeof defaultProps> = {
     },
     theme: {
       control: 'select',
-      options: ['primary', 'secondary', 'additional', 'muted', 'invert'],
+      options: ['primary', 'secondary', 'additional'],
+    },
+    invert: {
+      control: 'boolean',
+      description: 'Inverts the tag for dark backgrounds. Supported by all themes.',
     },
     color: {
       control: 'select',
+      // `color` is only supported by the primary theme.
+      if: { arg: 'theme', eq: 'primary' },
       options: [
         'gray-500',
         'blue-500',

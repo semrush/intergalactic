@@ -11,7 +11,7 @@ const Demo = () => {
       </Text>
       <Box mt={2} mb={4}>
         <Input size='l' w={300}>
-          <Input.Addon pr={1}>
+          <Input.Addon>
             <Text color='text-secondary' id='prefix-l'>
               Permanent text:
             </Text>
@@ -28,7 +28,7 @@ const Demo = () => {
       </Text>
       <Box mt={2}>
         <Input size='m' w={300}>
-          <Input.Addon pr={1}>
+          <Input.Addon>
             <Text color='text-secondary' id='prefix-m'>
               Permanent text:
             </Text>

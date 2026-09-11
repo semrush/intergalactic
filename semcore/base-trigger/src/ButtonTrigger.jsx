@@ -51,7 +51,7 @@ class RootButtonTrigger extends Component {
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         {(chevron || loading) && (
           <SButtonAddon>
-            {loading ? <SButtonTriggerSpin size='xs' theme={false} /> : <ChevronDown />}
+            {loading ? <SButtonTriggerSpin size='xs' /> : <ChevronDown />}
           </SButtonAddon>
         )}
       </Root>,

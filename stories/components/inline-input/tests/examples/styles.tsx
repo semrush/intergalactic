@@ -11,7 +11,7 @@ const Styles = (props: ExampleInputTagsProps) => {
   const { disabled, loading, state, autoFocus, defaultValue, placeholder, showControls, onBlurBehavior } = props;
 
   return (
-    <Flex direction='row' gap={2}>
+    <Flex direction='row' gap={2} flexWrap>
       <Flex direction='column' gap={2} w={300} data-testid='default'>
         <label htmlFor='simple'>Default</label>
 

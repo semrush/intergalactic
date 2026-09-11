@@ -33,7 +33,7 @@ exports[`Wizard > Verify data-ui-name 1`] = `
                             },
                             {
                               "children": [],
-                              "uiName": null,
+                              "uiName": "Flex",
                             },
                           ],
                           "uiName": "Wizard.Stepper",

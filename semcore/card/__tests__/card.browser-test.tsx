@@ -44,18 +44,18 @@ test.describe(`${TAG.VISUAL} `, () => {
     await test.step('Verify header paddings', async () => {
       await expect(header).toHaveCSS('padding-left', '20px');
       await expect(header).toHaveCSS('padding-right', '20px');
-      await expect(header).toHaveCSS('padding-top', '8px');
-      await expect(header).toHaveCSS('padding-bottom', '8px');
+      await expect(header).toHaveCSS('padding-top', '20px');
+      await expect(header).toHaveCSS('padding-bottom', '12px');
     });
 
     await test.step('Verify title styles', async () => {
       await expect(title).toHaveCSS('margin-right', '4px');
-      await expect(title).toHaveCSS('font-size', '16px');
-      await expect(title).toHaveCSS('font-weight', '700');
+      await expect(title).toHaveCSS('font-size', '18px');
+      await expect(title).toHaveCSS('font-weight', '600');
     });
 
     await test.step('Verify description margin', async () => {
-      await expect(description).toHaveCSS('margin-top', '8px');
+      await expect(description).toHaveCSS('margin-top', '0px');
     });
 
     await test.step('Verify body padding', async () => {

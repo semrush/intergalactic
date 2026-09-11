@@ -35,13 +35,13 @@ Table: Spin sizes and margins
 
 ### Themes
 
-Spin has two themes: `dark` and `invert` – for use on light and dark/colored backgrounds, respectively. Additionally, you can customize the Spin color as needed.
+Spin has two themes: `default` and `invert` – for use on light and dark/colored backgrounds, respectively. Additionally, you can customize the Spin color as needed.
 
 Table: Spin themes
 
 | Theme    | Appearance example        | Description                                          |
 | -------- | ------------------------- | ---------------------------------------------------- |
-| `dark`   | ![](static/dark-m.png)    | Use this theme of Spin on a light background.        |
+| `default`   | ![](static/dark-m.png)    | Use this theme of Spin on a light background.        |
 | `invert` | ![](static/invert-m.png)  | Use this theme of Spin on a dark/colored background. |
 
 ## Text placement

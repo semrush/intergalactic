@@ -1,8 +1,8 @@
 @import './var.css';
 
 SBubble {
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
-  stroke: var(--intergalactic-chart-grid-border, #fff);
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
   transition-property: cx, cy;
   transition-duration: var(--duration);
@@ -40,7 +40,7 @@ SCenter {
   text-anchor: middle;
   /* disable-tokens-validator */
   font-size: calc(var(--intergalactic-fs-100, 12px) - 1px);
-  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
+  stroke: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
 }
 
 SCenter[color] {
@@ -52,7 +52,7 @@ SCenter[transparent] {
 }
 
 SLabel {
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.58 0.168 278.2));
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 140));
 }
 
 SLabel[position='right'] {

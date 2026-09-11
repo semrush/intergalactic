@@ -146,14 +146,14 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify disabled date styles', async () => {
         await checkStyle(locators.cells(page, 0), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 2), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
@@ -165,7 +165,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
           ...selectedCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
           width: '32px',
           height: '32px',
         });
@@ -206,14 +206,14 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify hover disabled date', async () => {
         await checkStyle(locators.cells(page, 0), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 10), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
@@ -229,7 +229,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
           ...selectedCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
           width: '32px',
         });
       });

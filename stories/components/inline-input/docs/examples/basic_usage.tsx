@@ -11,7 +11,6 @@ const BasicUsage = ({
 }: NSInlineInput.Props & NSInlineInput.Value.Props): JSX.Element => {
   return (
     <InlineInput
-      w={300}
       onBlurBehavior='cancel'
       onCancel={console.log}
       onChange={console.log}
@@ -21,7 +20,7 @@ const BasicUsage = ({
       state={state}
     >
       <InlineInput.Addon htmlFor='basic-example' tag='label'>
-        User name:
+        Display name:
       </InlineInput.Addon>
       <InlineInput.Value id='basic-example' defaultValue={defaultValue} autoFocus={autoFocus} />
       <InlineInput.ConfirmControl />

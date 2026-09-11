@@ -43,6 +43,34 @@ const TRANSACTION_CATEGORY_NAMES = [
   'Public transport',
 ];
 
+const TRANSACTION_URLS = [
+  'https://www.semrush.com/blog/',
+  'https://developer.semrush.com/intergalactic/',
+  'https://www.ebay.com/deals',
+  'https://github.com/semrush/intergalactic',
+  'https://www.nytimes.com/section/technology',
+  'https://en.wikipedia.org/wiki/Web_design',
+  'https://www.mozilla.org/firefox/',
+  'https://stackoverflow.com/questions',
+  'https://www.smashingmagazine.com/',
+  'https://css-tricks.com/guides/',
+  'https://web.dev/learn/',
+  'https://www.figma.com/community',
+  'https://www.npmjs.com/package/@semcore/ui',
+  'https://react.dev/reference/react',
+  'https://www.w3.org/WAI/standards-guidelines/wcag/',
+  'https://caniuse.com/',
+  'https://www.shopify.com/blog',
+  'https://stripe.com/docs',
+  'https://www.atlassian.com/software/jira',
+  'https://www.notion.so/product',
+  'https://linear.app/changelog',
+  'https://vercel.com/templates',
+  'https://www.cloudflare.com/learning/',
+  'https://aws.amazon.com/documentation/',
+  'https://kubernetes.io/docs/home/',
+];
+
 export const data: (page: number) => DataTableData = (page: number) => {
   const data = [
     {
@@ -610,6 +638,7 @@ export const data: (page: number) => DataTableData = (page: number) => {
     return {
       ...item,
       name: TRANSACTION_CATEGORY_NAMES[idx % TRANSACTION_CATEGORY_NAMES.length],
+      url: TRANSACTION_URLS[(page * data.length + idx) % TRANSACTION_URLS.length],
       payment_intent_id: `${page}__${item.payment_intent_id}`,
     };
   });

@@ -38,7 +38,8 @@ class StatusItemRoot extends Component<
           render={Text}
           tag='div'
           key='StatusItem'
-          p={size === 'l' ? 3 : 2}
+          px={3}
+          py={size === 'l' ? 3 : 2}
           use:size={size === 'l' ? 300 : 200}
           use='secondary'
         >

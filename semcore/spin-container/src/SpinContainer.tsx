@@ -25,7 +25,7 @@ class SpinContainerRoot extends Component<
   static style = style;
   static defaultProps = {
     size: 'xxl',
-    theme: 'dark',
+    theme: 'default',
     duration: 200,
   } as const;
 

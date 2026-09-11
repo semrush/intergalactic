@@ -124,6 +124,15 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 <TypesView type="DropdownStatusItemProps" :types={...types} />
 
+## DropdownMenu.Notice
+
+A wrapper over [Dropdown.Notice](../dropdown/dropdown-api#dropdown-notice).
+
+```jsx
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+<DropdownMenu.Notice />;
+```
+
 ## Context
 
 Context of the component is available inside the render-function.

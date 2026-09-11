@@ -4,14 +4,13 @@ import React from 'react';
 
 const Demo = () => {
   return (
-    <Flex gap={8} alignItems='flex-start' direction='column'>
-      <Flex gap={2} alignItems='flex-start'>
+    <Flex gap={4} alignItems='flex-start' direction='column'>
+      <Flex ml={4} gap={2} alignItems='flex-start'>
         <Badge type='admin' />
         <Badge type='alpha' />
         <Badge type='beta' />
         <Badge type='new' />
         <Badge type='soon' />
-        <Badge type='unavailable' />
       </Flex>
       <Box
         p={4}
@@ -20,14 +19,22 @@ const Demo = () => {
         borderRadius='surface-rounded'
       >
         <Flex gap={2} alignItems='flex-start'>
-          <Badge type='admin' inverted />
-          <Badge type='alpha' inverted />
-          <Badge type='beta' inverted />
-          <Badge type='new' inverted />
-          <Badge type='soon' inverted />
-          <Badge type='unavailable' inverted />
+          <Badge type='admin' theme='invert' />
+          <Badge type='alpha' theme='invert' />
+          <Badge type='beta' theme='invert' />
+          <Badge type='new' theme='invert' />
+          <Badge type='soon' theme='invert' />
+          <Badge type='unavailable' theme='invert' />
         </Flex>
       </Box>
+      <Flex ml={4} gap={2} alignItems='flex-start'>
+        <Badge type='admin' theme='light' />
+        <Badge type='alpha' theme='light' />
+        <Badge type='beta' theme='light' />
+        <Badge type='new' theme='light' />
+        <Badge type='soon' theme='light' />
+        <Badge type='unavailable' theme='light' />
+      </Flex>
     </Flex>
   );
 };

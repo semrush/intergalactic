@@ -4,6 +4,7 @@ import BloquoteExample, { defaultProps as BloquoteProps } from './examples/block
 import FormattedNestedListMarginsExample, { defaultProps as FormattedNestedListMarginsProps } from './examples/formatted-nested-list-margins';
 import ListAxeExample from './examples/list-axe-test';
 import ListNestedExample, { defaultProps as ListNestedProps } from './examples/nested-list';
+import NestedListIndentExample, { defaultProps as NestedListIndentProps } from './examples/nested-list-indent-props';
 import TextFontAndSizeExample from './examples/text-font-size-and-weight-headers-and-paragrapsh';
 import DifferentTextPropsExample, { defaultProps as DifferentTextProps } from './examples/text-with-diff-combimations';
 
@@ -18,7 +19,7 @@ function getCommonArgTypes() {
   return {
     size: {
       control: { type: 'select' },
-      options: ['100', '200', '300', '400', '500', '600', '700', '800'],
+      options: ['100', '200', '300', '350', '400', '500', '600', '700', '800'],
     },
     noWrap: { control: { type: 'boolean' } },
     bold: { control: { type: 'boolean' } },
@@ -111,4 +112,17 @@ export const FormattedNestedListMargins: StoryObj<typeof FormattedNestedListMarg
     },
   },
   args: FormattedNestedListMarginsProps,
+};
+
+export const NestedListIndent: StoryObj<typeof NestedListIndentProps> = {
+  render: NestedListIndentExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['none', '100', '200', '300', '350'],
+      name: 'size (none = prop not passed)',
+    },
+    formatTags: { control: { type: 'boolean' } },
+  },
+  args: NestedListIndentProps,
 };

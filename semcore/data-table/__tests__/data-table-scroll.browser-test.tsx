@@ -98,7 +98,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
   variantNoFixedColumn.forEach((item) => {
     test(`Verify keyboard scroll One Level scroll sticky=${item.sticky} withScrollBar=${item.withScrollBar} wMax=${item.wMax}`, {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@data-table'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@data-table',
+        '@base-components',
+        '@flex-box',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table.tsx', 'en', { ...item, multiLevel: false });
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
@@ -150,7 +153,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variantNoFixedColumn.forEach((item) => {
     test(`Verify Mouse scroll Multi Level scroll sticky=${item.sticky} withScrollBar=${item.withScrollBar} wMax=${item.wMax}`, {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@data-table'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@data-table',
+        '@base-components',
+        '@flex-box',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/scroll-in-table.tsx', 'en', { ...item, multiLevel: true });
       const scrollBar = page.locator('[data-ui-name="ScrollArea.Bar"]');
@@ -256,8 +262,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect.poll(async () => {
           const scrollBarBox = (await scrollBar.boundingBox())!;
           const columnBox = (await fixedColumn.boundingBox())!;
+          const scrollBarMargin = 4;
 
-          return Math.abs(scrollBarBox.x - (columnBox.x + columnBox.width));
+          return Math.abs(scrollBarBox.x - scrollBarMargin - (columnBox.x + columnBox.width));
         }, { timeout: 3000 }).toBeLessThanOrEqual(1);
       }
     });

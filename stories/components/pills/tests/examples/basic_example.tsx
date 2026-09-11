@@ -31,15 +31,15 @@ const Demo = (props: PillExampleProps) => {
         <Pills.Item value={1}>
           <Pills.Item.Addon tag={Globe} />
         </Pills.Item>
-        <Pills.Item value={1}>
+        <Pills.Item value={2}>
+          <Pills.Item.Text>Badge</Pills.Item.Text>
           <Pills.Item.Addon>
-            <Pills.Item.Text>Badge</Pills.Item.Text>
             <Badge type='admin' />
           </Pills.Item.Addon>
         </Pills.Item>
-        <Pills.Item value={2} addonRight={Globe}>
+        <Pills.Item value={3} addonRight={Globe}>
         </Pills.Item>
-        <Pills.Item value={1} disabled>
+        <Pills.Item value={4} disabled>
           <Pills.Item.Addon>
             <Pills.Item.Text>Spin</Pills.Item.Text>
             <Spin size='s' />

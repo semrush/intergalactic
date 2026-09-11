@@ -26,7 +26,7 @@ const Widget: React.FC<{ title: string }> = ({ title }) => {
   }, [title]);
 
   return (
-    <Card w={240} h={280}>
+    <Card w={240} h='100%'>
       <Card.Header>
         <Card.Title>{title}</Card.Title>
       </Card.Header>
@@ -90,7 +90,7 @@ const Demo = () => {
                 gap={1}
                 justifyContent='center'
                 w={240}
-                h={280}
+                h={240}
                 direction='column'
                 p={5}
               >

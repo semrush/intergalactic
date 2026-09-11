@@ -51,7 +51,7 @@ const expectOptionsToMatch = async (page: Page, query: string) => {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify AutoSuggest keyboard navigation states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, examplePath, 'en');
 
@@ -77,7 +77,7 @@ test.describe(TAG.VISUAL, () => {
 
   (['m', 'l'] as const).forEach((size) => {
     test(`Verify AutoSuggest async loading visual state — size ${size}`, {
-      tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
+      tag: [TAG.PRIORITY_MEDIUM, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en', { size, suggestionsSource: 'async', asyncDelay: 3000 });
 
@@ -114,7 +114,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       const asyncDelay = 500;
 
       test(`Verify AutoSuggest flow — ${suggestionsSource}, ${hasPlaceholder ? 'with' : 'without'} statusItemPlaceholder`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, examplePath, 'en', { suggestionsSource, statusItemPlaceholder, asyncDelay });
 
@@ -231,7 +231,7 @@ test.describe(TAG.FUNCTIONAL, () => {
       const optionName = 'british'; // matches only "British Shorthair"
 
       test(`Verify AutoSuggest keeps suggestions hidden after selection/Escape — ${suggestionsSource}, ${hasPlaceholder ? 'with' : 'without'} statusItemPlaceholder`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@select', '@input'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@select', '@input', '@base-components', '@flex-box', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, examplePath, 'en', { suggestionsSource, statusItemPlaceholder, asyncDelay });
 
@@ -349,7 +349,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest filters suggestions incrementally as characters are typed', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en');
 
@@ -370,7 +370,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest autoFocus focuses the input and opens matches options when some value pre defined', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en', { autoFocus: true, initialValue: 'p' });
 
@@ -380,7 +380,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest defaultValue mode initializes the input and opens matches on focus', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en', { valueMode: 'defaultValue', initialValue: 'p', autoFocus: true });
 
@@ -390,7 +390,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest focus states', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await test.step('Verify matching prefilled value opens options on focus', async () => {
         await loadPage(page, examplePath, 'en', { initialValue: 'p' });
@@ -407,7 +407,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest mouse selection sets the value and editing reopens suggestions', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en');
 
@@ -437,7 +437,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest accepts regexp-like characters in query', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en');
 
@@ -451,7 +451,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest ignores stale async results', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en', { suggestionsSource: 'async', asyncDelay: 700 });
 
@@ -467,7 +467,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest highlight preserves the original case of the option', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en');
 
@@ -483,7 +483,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest renders HTML in option text as plain text', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       const dialogs: string[] = [];
       page.on('dialog', async (dialog) => {
@@ -514,7 +514,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest accepts a matching regexp-like option without crashing', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en');
 
@@ -526,7 +526,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest arrow navigation moves sequentially in an open list', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en');
 
@@ -543,7 +543,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest arrows reopen the list after Escape and highlight the first/last option', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en');
 
@@ -575,7 +575,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest readOnly prevents typing and opening suggestions', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, examplePath, 'en', { readOnly: true });
 
@@ -593,7 +593,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     const compositionInput = (page: Page) => page.getByLabel('Your pet breed');
 
     test('Verify AutoSuggest renders via explicit compound subcomponents', {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, compositionPath, 'en');
 
@@ -606,7 +606,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest custom StartTypingState renders its own content', {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, compositionPath, 'en', { customStartTyping: true });
 
@@ -616,7 +616,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest custom SuggestionItem overrides the option rendering', {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@input'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, compositionPath, 'en', { customSuggestionItem: true });
 
@@ -630,7 +630,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest popper width and max-height are configurable', {
-      tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
+      tag: [TAG.PRIORITY_MEDIUM, '@select', '@input', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, compositionPath, 'en', { width: 320, popperWidth: 420, popperMaxHeight: 120 });
 
@@ -647,7 +647,7 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify AutoSuggest custom LoadingState renders its own content', {
-      tag: [TAG.PRIORITY_MEDIUM, '@select', '@input'],
+      tag: [TAG.PRIORITY_MEDIUM, '@select', '@input', '@base-components', '@flex-box', '@typography', '@spin'],
     }, async ({ page }) => {
       await loadPage(page, compositionPath, 'en', {
         suggestionsSource: 'async',

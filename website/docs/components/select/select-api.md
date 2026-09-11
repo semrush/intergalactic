@@ -124,4 +124,13 @@ import Select from '@semcore/ui/select';
 <Select.StatusItem />;
 ```
 
+## Select.Notice
+
+A wrapper over [DropdownMenu.Notice](../dropdown-menu/dropdown-menu-api#dropdownmenu-notice).
+
+```jsx
+import Select from '@semcore/ui/select';
+<Select.Notice />;
+```
+
 <script setup>import { data as types } from '@types.data.ts';</script>

@@ -50,7 +50,7 @@ class SwitchRoot extends Component<
   };
 
   getValueProps() {
-    const { theme, uid, disabled } = this.asProps;
+    const { theme, uid, disabled, size } = this.asProps;
     const { active } = this.state;
 
     return {
@@ -60,6 +60,7 @@ class SwitchRoot extends Component<
       uid,
       active,
       disabled,
+      size,
     };
   }
 
@@ -172,6 +173,7 @@ class Value extends Component<
             <SToggle
               // @ts-expect-error
               neighborLocation={neighborLocation}
+              size={other.size}
               checked={inputProps.checked}
               active={active}
               use:theme={useTheme}

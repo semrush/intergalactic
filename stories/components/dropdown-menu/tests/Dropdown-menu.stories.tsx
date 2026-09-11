@@ -41,7 +41,8 @@ const commonArgTypes = {
   locale: {
     control: { type: 'select' },
     options: ['ko', 'pl'],
-  }, disabledAll: {
+  },
+  disabledAll: {
     control: { type: 'boolean' },
   },
   showSearch: {
@@ -56,6 +57,47 @@ const commonArgTypes = {
   customChildren: {
     control: { type: 'text' },
     description: 'Custom DropdownMenu.StatusItem text (overrides the default i18n text)',
+  },
+} as const;
+
+const noticeArgTypes = {
+  showNotice: {
+    control: { type: 'boolean' },
+    description: 'Render DropdownMenu.Notice below the list',
+    table: { category: 'Notice' },
+  },
+  noticeTheme: {
+    control: { type: 'select' },
+    options: ['info', 'muted', 'warning', 'danger', 'success'],
+    table: { category: 'Notice props' },
+  },
+  noticeHidden: {
+    control: { type: 'boolean' },
+    table: { category: 'Notice props' },
+  },
+  showNoticeLabel: {
+    control: { type: 'boolean' },
+    table: { category: 'Notice content' },
+  },
+  noticeTitle: {
+    control: { type: 'text' },
+    table: { category: 'Notice content' },
+  },
+  noticeText: {
+    control: { type: 'text' },
+    table: { category: 'Notice content' },
+  },
+  showNoticeActions: {
+    control: { type: 'boolean' },
+    table: { category: 'Notice content' },
+  },
+  noticeActionText: {
+    control: { type: 'text' },
+    table: { category: 'Notice content' },
+  },
+  showNoticeClose: {
+    control: { type: 'boolean' },
+    table: { category: 'Notice content' },
   },
 } as const;
 
@@ -96,10 +138,10 @@ export const MultiselectProps: StoryObj<typeof defaultDropDownMultiselectPropsEx
   render: MultiselectPropsExample,
   argTypes: {
     ...commonArgTypes,
+    ...noticeArgTypes,
     disabledFirstItem: {
       control: { type: 'boolean' },
     },
-
   },
   args: defaultDropDownMultiselectPropsExample,
 };
@@ -108,6 +150,7 @@ export const DropdownBaseProps: StoryObj<typeof defaultDropDownPropsExample> = {
   render: DropdownBasePropsExample,
   argTypes: {
     ...commonArgTypes,
+    ...noticeArgTypes,
 
     disabledSave: {
       control: { type: 'boolean' },

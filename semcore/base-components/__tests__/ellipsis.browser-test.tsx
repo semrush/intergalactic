@@ -5,6 +5,11 @@ import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
   link: (page: Page) => page.getByRole('link'),
+  linkText: (page: Page) => {
+    const link = locators.link(page);
+
+    return link.locator('[data-ui-name="Link.Text"]');
+  },
   text: (page: Page) => page.locator('[data-ui-name="Text"]'),
   hint: (page: Page) => page.locator('[data-ui-name="Hint"]'),
 };
@@ -27,6 +32,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 2 }, size: 100 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle', 'ellipsis:lastRequiredSymbols': 7 }, size: 200 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 300 },
+      { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 350 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 400 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 500 },
       { ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 600 },
@@ -237,7 +243,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/async_init.tsx', 'en');
 
-    const textElement = locators.link(page);
+    const textElement = locators.linkText(page);
     await expect(textElement).toHaveText('');
 
     await expect(textElement).toHaveText(link, { timeout: 1000 });

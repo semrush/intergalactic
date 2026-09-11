@@ -16,6 +16,16 @@ export const locators = {
   tabpanel: (page: Page) => page.getByRole('tablist'),
 };
 
+const waitForHint = async (page: Page, text: string) => {
+  await page.locator('[data-ui-name="Hint"]').filter({ hasText: text }).waitFor({ state: 'visible' });
+  await page.waitForFunction((text) => {
+    const hint = Array.from(document.querySelectorAll<HTMLElement>('[data-ui-name="Hint"]'))
+      .find((el) => el.textContent?.includes(text));
+
+    return hint && getComputedStyle(hint).opacity === '1';
+  }, text);
+};
+
 /* =====================================================
   @visual
   Visual states, hover and focus styles, paddings, margins, and snapshots.
@@ -39,21 +49,27 @@ test.describe(`${TAG.VISUAL} `, () => {
     await expect(page).toHaveScreenshot();
 
     await test.step('Verify tab panel styles', async () => {
-      const countText = await locators.text(page).count();
-      for (let i = 0; i < countText; i++) {
-        await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '8px');
-        await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '8px');
+      const countTabs = await locators.tabPanels(page).count();
+      for (let i = 0; i < countTabs; i++) {
+        // Spacing between an addon and the text comes from the tab gap
+        await expect(locators.tabPanels(page).nth(i)).toHaveCSS('column-gap', '6px');
+        // Space around the tab content comes from its own padding
+        await expect(locators.tabPanels(page).nth(i)).toHaveCSS('padding-left', '12px');
+        await expect(locators.tabPanels(page).nth(i)).toHaveCSS('padding-right', '12px');
       }
 
-      await expect(locators.addons(page).nth(0)).toHaveCSS('margin-left', '8px');
-      await expect(locators.addons(page).nth(2)).toHaveCSS('margin-left', '8px');
-      await expect(locators.addons(page).nth(4)).toHaveCSS('margin-left', '8px');
-      await expect(locators.addons(page).nth(7)).toHaveCSS('margin-left', '8px');
+      // Per-child margins were replaced by the gap and padding above and must not come back
+      const countText = await locators.text(page).count();
+      for (let i = 0; i < countText; i++) {
+        await expect(locators.text(page).nth(i)).toHaveCSS('margin-right', '0px');
+        await expect(locators.text(page).nth(i)).toHaveCSS('margin-left', '0px');
+      }
 
-      await expect(locators.addons(page).nth(1)).toHaveCSS('margin-right', '8px');
-      await expect(locators.addons(page).nth(3)).toHaveCSS('margin-right', '8px');
-      await expect(locators.addons(page).nth(5)).toHaveCSS('margin-right', '8px');
-      await expect(locators.addons(page).nth(6)).toHaveCSS('margin-right', '8px');
+      const countAddons = await locators.addons(page).count();
+      for (let i = 0; i < countAddons; i++) {
+        await expect(locators.addons(page).nth(i)).toHaveCSS('margin-right', '0px');
+        await expect(locators.addons(page).nth(i)).toHaveCSS('margin-left', '0px');
+      }
     });
   });
 
@@ -105,8 +121,11 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@counter',
         '@badge'],
     }, async ({ page }) => {
+      const focusedHintText = 'Facebook';
+      const hoveredHintText = 'Instagram Instagram';
+
       await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', item);
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(200);
 
       await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
@@ -114,18 +133,24 @@ test.describe(`${TAG.VISUAL} `, () => {
       await page.keyboard.press('ArrowLeft');
       await page.waitForTimeout(100);
 
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
-      await page.waitForFunction(() => {
-        const el = document.querySelector('[data-ui-name="Hint"]');
-        return el && getComputedStyle(el).opacity === '1';
-      });
+      const focusedTab = locators.tabPanels(page).first();
+      const focusedText = locators.text(page).first();
+
+      await expect(focusedTab).toBeFocused();
+      await expect.poll(async () => {
+        return focusedText.evaluate((el) => {
+          const element = el as HTMLElement;
+
+          return element.scrollWidth > element.clientWidth || element.childNodes.length > 1;
+        });
+      }).toBe(true);
+
+      await focusedTab.evaluate((el) => (el as HTMLElement).blur());
+      await focusedTab.focus();
+      await waitForHint(page, focusedHintText);
 
       await locators.tabPanels(page).nth(1).hover();
-      await page.locator('[data-ui-name="Hint"]').nth(1).waitFor({ state: 'visible' });
-      await page.waitForFunction(() => {
-        const els = document.querySelectorAll('[data-ui-name="Hint"]');
-        return els.length >= 2 && getComputedStyle(els[1]).opacity === '1';
-      });
+      await waitForHint(page, hoveredHintText);
 
       await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(2);
       await expect(page).toHaveScreenshot();

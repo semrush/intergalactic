@@ -6,17 +6,30 @@ exports[`PillGroup > Verify data-ui-name 1`] = `
     {
       "children": [
         {
+          "children": [],
+          "uiName": "Box",
+        },
+        {
           "children": [
             {
-              "children": [],
-              "uiName": "Pills.Item.Addon",
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Pills.Item.Addon",
+                },
+                {
+                  "children": [],
+                  "uiName": "Pills.Item.Text",
+                },
+              ],
+              "uiName": "Pills.Item",
             },
             {
               "children": [],
-              "uiName": "Pills.Item.Text",
+              "uiName": "Box",
             },
           ],
-          "uiName": "Pills.Item",
+          "uiName": "Box",
         },
       ],
       "uiName": "Pills",

@@ -28,7 +28,7 @@ const Demo = () => {
             id='2addon-example'
           />
           {value && (
-            <Input.Addon pl={2} pr={1}>
+            <Input.Addon>
               <ButtonLink
                 addonLeft={CloseM}
                 use='secondary'
@@ -37,7 +37,7 @@ const Demo = () => {
               />
             </Input.Addon>
           )}
-          <Input.Addon px={2}>
+          <Input.Addon>
             <Link>Forgot?</Link>
           </Input.Addon>
           <Input.Addon>

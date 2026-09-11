@@ -97,7 +97,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Button use = ${item.use} showBadge=${item.showBadge} showIcon=${item.showIcon} disabled=${item.disabled} size=${item.size} active=${item.active} loading=${item.loading} useBadge=${item.useBadge} `, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@button'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@button', '@base-components', '@flex-box'],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/button.tsx', 'en', item);
 
@@ -140,7 +140,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Pills disabled=${item.disabled} size=${item.size} showBadge=${item.showBadge}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@pills'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@pills', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/pills/pills.tsx', 'en', item);
 
@@ -185,7 +185,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Input disabled=${item.disabled} size=${item.size} state=${item.state} showBadge=${item.showBadge}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@input'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@input', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/input.tsx', 'en', item);
 
@@ -223,7 +223,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Switch disabled=${item.disabled} size=${item.size}  checked=${item.checked} showBadge=${item.showBadge}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@switch'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@switch', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/switch-fh.tsx', 'en', item);
 
@@ -259,7 +259,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test.describe(`DataTableFH`, () => {
     test('Verify Data table styles', {
-      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@data-table'],
+      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@data-table', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-highlight/docs/examples/data-table.tsx', 'en');
 
@@ -297,7 +297,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Tabline disabled = ${item.disabled} size = ${item.size} showBadge = ${item.showBadge}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@tabline'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@tabline', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/tabline.tsx', 'en', item);
 
@@ -338,7 +338,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Radio disabled=${item.disabled} size=${item.size} state=${item.state} showBadge=${item.showBadge} showIcon=${item.showIcon}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@radio'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@radio', '@base-components', '@flex-box', '@typography'],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/radio.tsx', 'en', item);
 
@@ -390,7 +390,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Checkbox disabled = ${item.disabled} size = ${item.size} state = ${item.state} checked = ${item.checked} showBadge = ${item.showBadge}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@checkbox'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@checkbox', '@base-components', '@flex-box', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/checkbox.tsx', 'en', item);
 
@@ -440,7 +440,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Select disabled=${item.disabled} size=${item.size} state=${item.state} showBadge=${item.showBadge}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@select'],
+        tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@feature-highlight', '@select', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/select.tsx', 'en', item);
 
@@ -491,7 +491,7 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     variables.forEach((item) => {
       test(`Verify Notice showTitle=${item.showTitle} showActions=${item.showActions} iconType=${item.iconType} `, {
-        tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice'],
+        tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice', '@base-components', '@flex-box', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice/notice.tsx', 'en', item);
 
@@ -502,7 +502,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     });
 
     test('Verify Notice advanced mode rendering', {
-      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice'],
+      tag: [TAG.PRIORITY_HIGH, '@feature-highlight', '@notice', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-highlight/tests/examples/notice/notice-advanced-mode.tsx', 'en');
 

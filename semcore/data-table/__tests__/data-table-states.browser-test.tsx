@@ -1,8 +1,28 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
+import type { Page } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 import { locators, checkStyles, getCssVarColor, getTransparentColor } from './utils';
+
+const PAGE_ORIGIN = 'https://data-table.test';
+
+const setPageOrigin = async (page: Page) => {
+  await page.route(`${PAGE_ORIGIN}/**`, (route) =>
+    route.fulfill({ contentType: 'text/html', body: '<!DOCTYPE html><html><body></body></html>' }));
+  await page.goto(`${PAGE_ORIGIN}/`);
+};
+
+const hint = (page: Page) => page.locator('[data-ui-name="Hint"]');
+
+/** Same wait as in the ellipsis tests: the hint is rendered, laid out and fully faded in. */
+const waitForHint = async (page: Page) => {
+  await hint(page).waitFor({ state: 'visible' });
+  await page.waitForFunction(() => {
+    const el = document.querySelector('[data-ui-name="Hint"]');
+    return el !== null && getComputedStyle(el).opacity === '1';
+  });
+};
 
 /* =====================================================
 @visual
@@ -13,7 +33,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify loading state of table', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@button',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/spin-container-in-table.tsx', 'en');
       await locators.button(page, 'Start loading').click();
@@ -33,7 +56,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify loading state in with sticky header', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -50,7 +79,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify skeleton in table', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@button',
+        '@skeleton',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/skeleton-in-table.tsx', 'en');
 
@@ -75,7 +108,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify empty table state', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@button',
+        '@widget-empty',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/empty-table.tsx', 'en');
       const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
@@ -121,7 +157,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@card'],
+          '@card',
+          '@d3-chart',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx', 'en', item);
 
@@ -165,7 +203,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify table in table card styles when variant=${item.variant} use=${item.use} and  compact=${item.compact}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@card'],
+          '@card',
+          '@d3-chart',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/card/tests/examples/table-with-accordions-in-card.tsx', 'en', item);
 
@@ -199,7 +239,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
         '@ellipsis',
-        '@base-components'],
+        '@base-components',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/multiple_use.tsx', 'en');
 
@@ -210,23 +252,26 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
 
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await waitForHint(page);
       await expect(page).toHaveScreenshot();
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
 
       await page.keyboard.press('ArrowDown');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
     });
 
-    test(`Ellipsis with cropPosition = middle`, {
+    test(`Ellipsis with Action Link and cropPosition = middle`, {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
         '@ellipsis',
         '@link',
-        '@base-components'],
+        '@base-components',
+        '@pagination',
+      ],
     }, async ({ page }) => {
+      await setPageOrigin(page);
       await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en');
       await page.waitForTimeout(250); // wait for ellipsis apply
       await page.keyboard.press('Tab');
@@ -234,15 +279,43 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
-
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'visible' });
+      await page.keyboard.press('Enter');
+      await waitForHint(page);
       await expect(page).toHaveScreenshot();
 
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.locator('[data-ui-name="Hint"]').waitFor({ state: 'hidden' });
-      await expect(page.locator('[data-ui-name="Hint"]')).toHaveCount(0);
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
+    });
+
+    test(`Ellipsis with Action Link and cropPosition = end`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table',
+        '@ellipsis',
+        '@link',
+        '@base-components',
+        '@pagination',
+      ],
+    }, async ({ page, browserName }) => {
+      test.skip(browserName === 'webkit', 'hint is unstable shown by keyboard focus in WebKit Playwright');
+
+      await setPageOrigin(page);
+      await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/in_table_with_link.tsx', 'en', { cropPosition: 'end' });
+      await page.waitForTimeout(250); // wait for ellipsis apply
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(200); // wait for ellipsis apply
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      await waitForHint(page);
+      await expect(page).toHaveScreenshot();
+
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
+      await hint(page).waitFor({ state: 'hidden' });
+      await expect(hint(page)).toHaveCount(0);
     });
   });
 
@@ -250,7 +323,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify limited state for table with accordion keyboard and mouse interactions`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
@@ -305,7 +384,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify limited state for checkbox in table `, {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx', 'en', { rowsLimit: 0, columnsLimit: 0 });
 
@@ -317,7 +402,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('SelectableRows', () => {
     test('Verify sideIndents=wide  and compact', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         sideIndents: 'wide',
@@ -337,7 +428,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify SelectableRows with fixed-left column — checkbox cell positioning', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -362,7 +459,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify SelectableRows with fixed-left column — checkbox stays pinned on horizontal scroll', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -394,7 +497,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify SelectableRows with fixed-left column — selection persists after scroll', {
       tag: [TAG.PRIORITY_MEDIUM,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -420,7 +529,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify SelectableRows with fixed-left column and accordion rows', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         fixedColumns: true,
@@ -486,7 +601,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@tooltip'],
+        '@tooltip',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
       const cellSelectedBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected');
@@ -542,7 +661,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('SelectableRows (legacy API)', () => {
     test('Verify SelectableRows row highlight on selection', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
       if (browserName == 'firefox') return;
@@ -560,7 +685,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify sideIndents=wide and compact', {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', {
         sideIndents: 'wide', reactive: false,
@@ -580,7 +711,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify SelectableRows select all rows highlight', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
       const cellSelectedHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-hover');
@@ -603,7 +740,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test('Verify color on hover when merged rows with SelectableRows', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       if (browserName === 'firefox') test.skip();
 
@@ -648,7 +791,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await firstRowCheckbox.click();
         await locators.collapse(page).waitFor({ state: 'visible' });
         for (let row = 2; row <= 3; row++) {
-          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedHoverBg });
+          await checkStyles(locators.getCell(page, row, 1), { 'background-color': cellSelectedBg });
         }
       });
 
@@ -685,7 +828,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Loading states', () => {
     test('Verify empty table scroll\'s state when column width is defined', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@widget-empty',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/nothing-found-with-fixed-column-width.tsx', 'en');
 
@@ -740,7 +888,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify focus after loading is finished', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@button',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/table-states-tests/loading-in-scroll.tsx', 'en');
       const spin = page.locator('svg[data-ui-name="Spin"]');
@@ -818,7 +968,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify table with checkbox attributes and mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1139,7 +1295,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify table with checkbox keyboard interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1242,6 +1404,17 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
 
         '@data-table',
+
+        '@base-components',
+
+        '@flex-box',
+
+        '@button',
+
+        '@pagination',
+
+        '@typography',
+
       ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en');
@@ -1274,6 +1447,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         TAG.MOUSE,
         '@data-table',
+        '@button',
+        '@pagination',
+        '@typography',
       ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
@@ -1299,7 +1475,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@data-table',
-        '@tooltip'],
+        '@tooltip',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/selectable_with_merged_rows.tsx', 'en');
 
@@ -1352,7 +1532,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement when all rows selected via header checkbox', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1373,7 +1559,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement on partial row selection', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/checkbox-in-table.tsx', 'en');
 
@@ -1402,7 +1594,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows checkbox attributes and mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1463,7 +1661,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows keyboard navigation and selection', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1515,7 +1719,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with pagination mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
@@ -1610,7 +1820,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with pagination keyboard interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, pagination: true });
 
@@ -1685,6 +1901,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         TAG.MOUSE,
         '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
       ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
@@ -1724,6 +1945,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         TAG.MOUSE,
         '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
       ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
@@ -1752,7 +1978,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with merged rows mouse interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -1801,7 +2033,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify SelectableRows with merged rows keyboard interaction', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false, mergedRows: true });
 
@@ -1839,7 +2077,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement when all rows selected via header checkbox', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1855,7 +2099,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify aria-live announcement on partial row selection', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@pagination',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/checkbox.tsx', 'en', { reactive: false });
 
@@ -1880,7 +2130,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     variantState.forEach((item) => {
       test(`Verify limited state for base table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button',
+          '@typography',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/docs/examples/limited-mode.tsx', 'en', item);
 
@@ -1961,7 +2216,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       test(`Verify limited state for checkbox in table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button',
+          '@pagination',
+          '@typography',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/checkboxes.tsx', 'en', item);
 
@@ -2151,7 +2412,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       test(`Verify limited state for accordion in table when rowsLimit=${item.rowsLimit} columnsLimit=${item.columnsLimit}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button',
+          '@typography',
+          '@widget-empty',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', item);
 
@@ -2234,7 +2501,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for base table keyboard interactions when overlay has one interactive element`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/limited-mode.tsx', 'en', { rowsLimit: 2, columnsLimit: 1 });
 
@@ -2279,7 +2551,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for base table keyboard interactions when overlay has few interactive element`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/sortable-table.tsx', 'en', { rowsLimit: 2, columnsLimit: 1 });
 
@@ -2316,7 +2593,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for table with rows and columns merging keyboard interactions when overlay without interactive element`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@typography',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/row-and-column-merging.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });
 
@@ -2352,7 +2633,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test(`Verify limited state for table with accordion keyboard and mouse interactions`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button',
+        '@typography',
+        '@widget-empty',
+      ],
     }, async ({ page, browserName }) => {
       test.skip(browserName === 'webkit', 'Flaky focus handling in webkit');
       await loadPage(page, 'stories/components/data-table/tests/examples/limited-mode/accordion.tsx', 'en', { rowsLimit: 1, columnsLimit: 2 });

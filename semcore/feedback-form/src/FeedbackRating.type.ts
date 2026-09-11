@@ -1,6 +1,6 @@
 import type { Intergalactic } from '@semcore/core';
 import type { IllustrationProps } from '@semcore/illustration';
-import type Notice from '@semcore/notice';
+import type { NSNotice } from '@semcore/notice';
 import type { Text } from '@semcore/typography';
 import type React from 'react';
 
@@ -50,7 +50,7 @@ declare namespace NSFeedbackRating {
     /** Illustration element */
     Illustration?: Intergalactic.Component<'svg', IllustrationProps>;
     /** Notice component */
-    Notice?: typeof Notice;
+    Notice?: NSNotice.Component;
   };
   type DefaultProps = {
     onSubmit: () => void;

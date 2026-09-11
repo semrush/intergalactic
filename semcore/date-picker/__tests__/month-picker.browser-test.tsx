@@ -113,14 +113,14 @@ test.describe(`${TAG.VISUAL}`, () => {
         const nonSelectedCell = page.locator('[data-ui-name="CalendarMonths.Unit"]:not([class*="Selected"])').first();
         await checkStyle(nonSelectedCell, {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell, {
           ...selectedCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
           width: '60px',
           height: '32px',
         });

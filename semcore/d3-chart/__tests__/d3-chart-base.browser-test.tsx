@@ -243,7 +243,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test.describe('Hover Line and Tooltip', () => {
     test('Verify Tooltip controlled appearing', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/tooltip-control.tsx', 'en');
       await page.waitForTimeout(500); // wait for finish animation
@@ -367,14 +367,14 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify custom shape as leged item', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/custom-shape-as-legenditem.tsx', 'en');
       await expect(page).toHaveScreenshot();
     });
 
     test('Verify leged table view', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/table-view.tsx', 'en');
 
@@ -620,7 +620,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Dots', () => {
     test('Verify dots radius', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/tooltip.tsx', 'en');
 
@@ -638,7 +638,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe('Chart legend', () => {
     test('Verify checkbox roles and attributes', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/tests/examples/chart-legend/customizable_legend.tsx', 'en');
 

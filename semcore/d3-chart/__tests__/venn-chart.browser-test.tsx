@@ -28,7 +28,7 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify basic usage', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/venn-chart/basic-usage.tsx', 'en');
 
@@ -42,7 +42,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Venn usage', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/venn-chart/venn.tsx', 'en');
 
@@ -83,7 +83,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify setting orientation', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@venn-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@venn-chart', '@d3-chart', '@base-components', '@flex-box', '@button'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -111,7 +111,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill hover styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@venn-chart', '@d3-chart', '@chart-legend', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -132,7 +132,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill focus styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@venn-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@venn-chart', '@d3-chart', '@chart-legend', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -159,7 +159,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes on venn circles', {
-    tag: [TAG.PRIORITY_HIGH, '@venn-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@venn-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/venn-chart/basic-usage.tsx', 'en');
 

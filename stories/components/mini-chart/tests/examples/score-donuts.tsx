@@ -1,8 +1,9 @@
 import { Flex } from '@semcore/ui/base-components';
+import type { NSMiniChart } from '@semcore/ui/mini-chart';
 import MiniChart from '@semcore/ui/mini-chart';
 import React from 'react';
 
-type scoreDonutsProps = { value: number; loading?: boolean; color?: string; baseBgColor?: string; animate?: boolean };
+type ScoreDonutsProps = NSMiniChart.Score.Donut.Props;
 
 const Demo = ({
   value = 4,
@@ -10,7 +11,7 @@ const Demo = ({
   color,
   baseBgColor,
   animate,
-}: scoreDonutsProps) => {
+}: ScoreDonutsProps) => {
   return (
 
     <Flex flexWrap={true} alignItems='flex-end'>
@@ -21,5 +22,5 @@ const Demo = ({
   );
 };
 
-export type { scoreDonutsProps };
+export type { ScoreDonutsProps };
 export default Demo;

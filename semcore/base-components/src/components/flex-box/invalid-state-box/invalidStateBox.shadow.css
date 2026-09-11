@@ -4,7 +4,6 @@ SPattern {
   position: absolute;
   background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.7 0.21 23) 0, oklch(0.7 0.21 23) 1px, transparent 0, transparent 50%));
   background-size: 6px 6px;
-  background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-bottom-left-radius: calc(var(--intergalactic-control-rounded, 6px) - 2px);
   border-top-left-radius: calc(var(--intergalactic-control-rounded, 6px) - 2px);
 }

@@ -59,7 +59,7 @@ const Demo = (props: TabLineDefProps) => {
           </TabLine.Item.Addon>
           <TabLine.Item.Text {...props.ellipsis} hint={props.hintProps}>Instagram Instagram</TabLine.Item.Text>
           <TabLine.Item.Addon>
-            <Badge type='new'>new</Badge>
+            <Badge type='new' />
           </TabLine.Item.Addon>
         </TabLine.Item>
         <TabLine.Item

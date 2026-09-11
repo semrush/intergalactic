@@ -20,7 +20,7 @@ const Demo = () => {
               <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                 Menu item 3
               </DropdownMenu.Item.Content>
-              <DropdownMenu.Actions gap={1}>
+              <DropdownMenu.Actions gap='var(--intergalactic-spacing-content-gap-medium)'>
                 <DropdownMenu.Item tag={Button} addonLeft={PlusM} title='Add new' />
                 <DropdownMenu.Item tag={Button} addonLeft={TrashM} title='Delete' />
               </DropdownMenu.Actions>
@@ -32,7 +32,7 @@ const Demo = () => {
             placement='right-start'
             interaction={DropdownMenu.nestedMenuInteraction}
             timeout={[0, 300]}
-            offset={[-11, 12]}
+            offset={[-11, 17]}
           >
             <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
               Menu item 4

@@ -10,7 +10,7 @@ import type { Property } from 'csstype';
 declare namespace NSText {
   type BaseProps = {
     /** Font size and line-heights */
-    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
+    size?: 100 | 200 | 300 | 350 | 400 | 500 | 600 | 700 | 800;
     /**
      * The text will not be wrapped on a new line and will be cut off with ellipsis
      * @deprecated use ellipsis prop instead

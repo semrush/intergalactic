@@ -570,6 +570,7 @@ const DropdownMenu = createComponent(
     Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
     Group: Dropdown.Group,
     StatusItem: Dropdown.StatusItem,
+    Notice: Dropdown.Notice,
   },
   {
     parent: [Dropdown],

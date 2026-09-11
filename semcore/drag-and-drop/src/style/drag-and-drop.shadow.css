@@ -19,7 +19,7 @@ SDraggable[draggable] {
     display: none;
     pointer-events: none;
     background-image: radial-gradient(circle at center,
-    var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526)) 1px,
+    var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262)) 1px,
     transparent 0);
     background-size: 6px 6px;
     background-position: 2px 2px;

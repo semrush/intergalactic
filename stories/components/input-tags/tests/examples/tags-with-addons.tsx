@@ -1,24 +1,25 @@
 import Check from '@semcore/icon/Check/m';
 import Edit from '@semcore/icon/Edit/m';
-import { Box, Flex } from '@semcore/ui/base-components';
+import { Flex } from '@semcore/ui/base-components';
 import InputTags from '@semcore/ui/input-tags';
 import type { NSInputTags } from '@semcore/ui/input-tags';
 import React from 'react';
 
-type ExampleInputTagsProps = NSInputTags.Tag.Props;
+const Demo = (props: NSInputTags.Tag.Props) => {
+  const tagProps = props.color
+    ? ({ theme: 'primary', color: props.color } as const)
+    : { theme: props.theme };
 
-const Demo = (props: ExampleInputTagsProps) => {
   return (
     <Flex direction='column' gap={2}>
       <Flex direction='column' gap={2} data-testid='normal-state' w={450}>
         <InputTags size='m' state='normal' disabled={props.disabled}>
           <InputTags.Tag
             size={props.size}
-            theme={props.theme}
             disabled={props.disabled}
             interactive={props.interactive}
-            color={props.color}
             addonRight={Edit}
+            {...tagProps}
           >
             <InputTags.Tag.Text>
               <InputTags.Tag.Addon>
@@ -31,14 +32,11 @@ const Demo = (props: ExampleInputTagsProps) => {
 
           <InputTags.Tag
             size={props.size}
-            theme={props.theme}
             disabled={props.disabled}
-
             interactive={props.interactive}
-
-            color={props.color}
             addonLeft={Edit}
             active
+            {...tagProps}
           >
             <InputTags.Tag.Text>
               Addon text and close
@@ -48,12 +46,9 @@ const Demo = (props: ExampleInputTagsProps) => {
 
           <InputTags.Tag
             size={props.size}
-            theme={props.theme}
             disabled={props.disabled}
-
             interactive={props.interactive}
-
-            color={props.color}
+            {...tagProps}
           >
             <InputTags.Tag.Text>
               <InputTags.Tag.Circle
@@ -71,12 +66,9 @@ const Demo = (props: ExampleInputTagsProps) => {
 
           <InputTags.Tag
             size={props.size}
-            theme={props.theme}
             disabled={props.disabled}
-
             interactive={props.interactive}
-
-            color={props.color}
+            {...tagProps}
           >
             <InputTags.Tag.Text>
               <InputTags.Tag.Addon>
@@ -88,10 +80,9 @@ const Demo = (props: ExampleInputTagsProps) => {
 
           <InputTags.Tag
             size={props.size}
-            theme={props.theme}
             disabled={props.disabled}
             interactive={props.interactive}
-            color={props.color}
+            {...tagProps}
           >
             <InputTags.Tag.Text>
               <InputTags.Tag.Addon>
@@ -108,14 +99,12 @@ const Demo = (props: ExampleInputTagsProps) => {
   );
 };
 
-export const defaultPropsEmail: ExampleInputTagsProps = {
+export const defaultPropsEmail: NSInputTags.Tag.Props = {
   size: 'l',
-  theme: 'primary',
   disabled: undefined,
   addonRight: undefined,
   addonLeft: undefined,
   interactive: undefined,
-  color: 'gray-500',
 };
 
 Demo.defaultProps = defaultPropsEmail;

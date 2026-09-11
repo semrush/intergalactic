@@ -22,7 +22,7 @@ const Demo = () => {
                 placement='right-start'
                 interaction={DropdownMenu.nestedMenuInteraction}
                 timeout={[0, 300]}
-                offset={[-11, 12]}
+                offset={[-11, 17]}
               >
                 <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                   {item}
@@ -35,7 +35,7 @@ const Demo = () => {
                     <DropdownMenu.Item>Item 4.1.3</DropdownMenu.Item>
                   </DropdownMenu.List>
                   <Divider my={1} />
-                  <Box p={2}>
+                  <Box px={3} py={2}>
                     <InputNumber w='50%' neighborLocation='right'>
                       <InputNumber.Value min={min} max={max} placeholder={min.toString()} />
                       <InputNumber.Controls />

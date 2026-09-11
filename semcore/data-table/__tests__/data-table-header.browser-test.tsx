@@ -16,7 +16,11 @@ test.describe(`${TAG.VISUAL}`, () => {
         TAG.KEYBOARD,
         '@data-table',
         '@select',
-        '@tooltip'],
+        '@tooltip',
+        '@link-trigger',
+        '@base-trigger',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -46,7 +50,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify styles when long text and icons in header when use=${item.use}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@base-components'],
+          '@base-components',
+          '@button-link',
+          '@button',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/long-header-ellipsis.tsx', 'en', item);
 
@@ -118,7 +126,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Multi level Header', () => {
     test('Verify border and Long title with and without Ellipsis correctly', {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@button-link',
+        '@button',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-borders.tsx', 'en');
 
@@ -145,7 +157,15 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table',
         '@select',
         '@tooltip',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@flex-box',
+        '@link-trigger',
+        '@base-trigger',
+        '@button-link',
+        '@button',
+        '@checkbox',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 
@@ -158,7 +178,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     test(`Verify sorting styles`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
 
@@ -173,7 +199,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify mouse interactions with sorting', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
 
@@ -203,7 +235,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@tooltip',
         '@checkbox',
         '@ellipsis',
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@link',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-interactive-header.tsx', 'en');
 
@@ -323,7 +362,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
         '@tooltip',
         '@checkbox',
-        '@ellipsis'],
+        '@ellipsis',
+        '@base-components',
+        '@flex-box',
+        '@button-link',
+        '@button',
+        '@link',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-interactive-header.tsx', 'en');
 
@@ -385,7 +431,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.KEYBOARD,
         '@data-table',
         '@select',
-        '@tooltip'],
+        '@tooltip',
+        '@link-trigger',
+        '@base-trigger',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -434,7 +484,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         TAG.MOUSE,
         '@data-table',
         '@select',
-        '@tooltip'],
+        '@tooltip',
+        '@link-trigger',
+        '@base-trigger',
+        '@typography',
+      ],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/docs/examples/customizing-header.tsx', 'en');
 
@@ -459,7 +513,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       test('Verify keyboard sorting without changing size', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.KEYBOARD,
-          '@data-table'],
+          '@data-table',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
 
@@ -497,7 +553,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         tag: [TAG.PRIORITY_HIGH,
           TAG.KEYBOARD,
           TAG.MOUSE,
-          '@data-table'],
+          '@data-table',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
 
@@ -521,7 +579,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       test('Verify mouse sorting without changing size', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.MOUSE,
-          '@data-table'],
+          '@data-table',
+          '@typography',
+        ],
       }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
         if (browserName === 'firefox') test.skip();
@@ -656,7 +716,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       test('Verify sorting with undefined as default value by mouse interactions', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.MOUSE,
-          '@data-table'],
+          '@data-table',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/sorting-default-undefined.tsx', 'en');
 
@@ -697,7 +759,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       test('Verify sorting with undefined as default value by keyboard interactions', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.KEYBOARD,
-          '@data-table'],
+          '@data-table',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/sorting-default-undefined.tsx', 'en');
 
@@ -742,7 +806,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         tag: [TAG.PRIORITY_HIGH,
           TAG.KEYBOARD,
           '@data-table',
-          '@tooltip'],
+          '@tooltip',
+          '@button-link',
+          '@button',
+          '@link',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/sorting-with-interactive.tsx', 'en');
 
@@ -777,7 +846,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@select',
         '@tooltip',
         '@link',
-        '@data-table'],
+        '@data-table',
+        '@base-components',
+        '@flex-box',
+        '@link-trigger',
+        '@base-trigger',
+        '@button-link',
+        '@button',
+        '@checkbox',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 
@@ -880,7 +957,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
         '@select',
         '@tooltip',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@flex-box',
+        '@link-trigger',
+        '@base-trigger',
+        '@button-link',
+        '@button',
+        '@checkbox',
+      ],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 
@@ -949,7 +1034,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       test('Verify keyboard interactions with sorting', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.KEYBOARD,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button-link',
+          '@button',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
 
@@ -992,7 +1083,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         tag: [TAG.PRIORITY_HIGH,
           TAG.KEYBOARD,
           TAG.MOUSE,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button-link',
+          '@button',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
 
@@ -1017,7 +1114,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       test('Verify mouse interactions with sorting', {
         tag: [TAG.PRIORITY_HIGH,
           TAG.MOUSE,
-          '@data-table'],
+          '@data-table',
+          '@base-components',
+          '@flex-box',
+          '@button-link',
+          '@button',
+          '@typography',
+        ],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/multi-level-sorting.tsx', 'en');
 

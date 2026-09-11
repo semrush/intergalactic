@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import MathPlusAltL from '@semcore/icon/MathPlusAlt/l';
 import MathPlusAltM from '@semcore/icon/MathPlusAlt/m';
 import Badge from '@semcore/ui/badge';
@@ -10,20 +11,34 @@ import React from 'react';
 
 type AddonType = 'icon' | 'badge' | 'counter' | 'spin';
 
-type BasicLinkProps = NSLink.Props & {
+type BasicLinkProps = Intergalactic.InternalTypings.EfficientOmit<NSLink.Props, 'ellipsis' | 'formatTags'> & {
   text?: string;
   showAddonLeft?: boolean;
   showAddonRight?: boolean;
-  showAddonLeftLink2?: boolean;
-  showAddonRightLink2?: boolean;
   href?: string;
+  /** Marks the link as external explicitly, bypassing host-based auto-detection. */
+  isExternal?: boolean;
+  /**
+   * How the link text is passed down.
+   * 'slot' wraps it in `<Link.Text>` (the default, and what most consumers do);
+   * 'string' passes a bare string child, the only way to exercise the
+   * children-based branch of the external-link auto-detection.
+   * Ignored while an addon is shown — an addon requires the text to live in `<Link.Text>`.
+   */
+  childrenMode?: 'slot' | 'string';
   title?: string;
   ellipsis?: NSText.EllipsisProps;
   hintPlacement?: 'top' | 'bottom' | 'left' | 'right';
   addonLeftType?: AddonType;
   addonRightType?: AddonType;
-  merged?: boolean;
-  addonPassMethod?: 'slot' | 'prop';
+  /**
+   * How an icon addon reaches the Link:
+   * 'children' renders `<Link.Addon><IconAddon /></Link.Addon>`,
+   * 'tag' hands it over as the `addonLeft` / `addonRight` prop.
+   * Only icons can go through the props — they take a component, so badge, counter and
+   * spin always stay children.
+   */
+  addonPassMethod?: 'children' | 'tag';
   w?: number;
   containerW?: number;
 };
@@ -31,6 +46,7 @@ type BasicLinkProps = NSLink.Props & {
 const Demo = (props: BasicLinkProps) => {
   const {
     text = 'Link example',
+    theme,
     showAddonLeft = false,
     showAddonRight = false,
     disabled,
@@ -38,6 +54,8 @@ const Demo = (props: BasicLinkProps) => {
     enableVisited,
     noWrap,
     href = '#',
+    isExternal,
+    childrenMode = 'slot',
     size = 300,
     color,
     w,
@@ -46,8 +64,7 @@ const Demo = (props: BasicLinkProps) => {
     hintPlacement,
     addonLeftType = 'icon',
     addonRightType = 'icon',
-    merged = false,
-    addonPassMethod = 'slot',
+    addonPassMethod = 'children',
     containerW,
   } = props;
 
@@ -68,9 +85,7 @@ const Demo = (props: BasicLinkProps) => {
     counterSize = 'm';
   }
 
-  const renderAddon = (show: boolean, type: AddonType) => {
-    if (!show) return null;
-
+  const renderAddon = (type: AddonType) => {
     switch (type) {
       case 'badge':
         return <Link.Addon><Badge type='new' /></Link.Addon>;
@@ -80,18 +95,55 @@ const Demo = (props: BasicLinkProps) => {
         return <Link.Addon><Spin size={spinSize} /></Link.Addon>;
       case 'icon':
       default:
-        if (addonPassMethod === 'prop') return null;
-        if (merged) return <Link.Addon tag={IconAddon} />;
         return <Link.Addon><IconAddon /></Link.Addon>;
     }
   };
 
-  const propAddonLeft = addonPassMethod === 'prop' && showAddonLeft && addonLeftType === 'icon'
-    ? IconAddon
-    : undefined;
-  const propAddonRight = addonPassMethod === 'prop' && showAddonRight && addonRightType === 'icon'
-    ? IconAddon
-    : undefined;
+  // Only an icon can travel through addonLeft/addonRight — the props take a component.
+  const passesAsTag = (show: boolean, type: AddonType) =>
+    show && addonPassMethod === 'tag' && type === 'icon';
+
+  const addonLeftProp = passesAsTag(showAddonLeft, addonLeftType) ? IconAddon : undefined;
+  const addonRightProp = passesAsTag(showAddonRight, addonRightType) ? IconAddon : undefined;
+
+  // string child next to <Link.Addon> is not a supported composition — with addons
+  // the text always has to be wrapped in <Link.Text>, so the slot wins over childrenMode.
+  const asString = childrenMode === 'string' && !showAddonLeft && !showAddonRight;
+
+  /**
+   * Link injects the external icon on its own only for a plain string child that is not
+   * already a URL. Every other composition is the consumer's job, so the slot mode has to
+   * append `<Link.ExternalIcon />` the way the docs examples do. The icon takes its size
+   * from the parent through getExternalIconProps(), so it needs no props here.
+   *
+   * `isUrl` mirrors the component's own check. Same-host absolute URLs would read as
+   * external here and not in the component, but none of the story's href presets is
+   * same-host, so the story never hits that gap.
+   */
+  const isUrl = (value: string) => value.startsWith('//') || value.toLowerCase().startsWith('http');
+  const needsExternalIcon = !asString && (isExternal ?? isUrl(href));
+
+  /**
+   * Builds the Link with only the slots that are switched on.
+   *
+   * Writing the slots as JSX would hand Link an array of `[null, text, null]` even with
+   * both addons off, and an array reads differently from a lone child. Spreading a
+   * filtered list through createElement keeps an addon-free link a one-child link.
+   */
+  const renderLink = (linkProps: Record<string, unknown>, textNode: React.ReactNode) => {
+    const nodes = [
+      showAddonLeft && !addonLeftProp ? renderAddon(addonLeftType) : null,
+      textNode,
+      showAddonRight && !addonRightProp ? renderAddon(addonRightType) : null,
+      needsExternalIcon ? <Link.ExternalIcon /> : null,
+    ].filter(Boolean);
+
+    return React.createElement(
+      Link,
+      { ...linkProps, addonLeft: addonLeftProp, addonRight: addonRightProp },
+      ...nodes,
+    );
+  };
 
   const ellipsisW = ellipsis && !containerW ? (w || (numSize < 600 ? 150 : 300)) : undefined;
 
@@ -100,54 +152,53 @@ const Demo = (props: BasicLinkProps) => {
     linkDisplayValue = 'inline-block';
   }
 
+  const sharedLinkProps = {
+    theme,
+    href,
+    isExternal,
+    size,
+    disabled,
+    active,
+    enableVisited,
+    noWrap,
+    color,
+    title,
+    w: noWrap ? w : undefined,
+  };
+
+  // theme='invert' paints the link almost white for use on dark surfaces, so without a
+  // dark background here it would be invisible against the default page.
+  const inverted = theme === 'invert';
+
   return (
-    <Text tag='div' size={size} style={containerW ? { width: containerW } : undefined}>
-      <Link
-        href={href}
-        size={size}
-        disabled={disabled}
-        active={active}
-        enableVisited={enableVisited}
-        noWrap={noWrap}
-        color={color}
-        title={title}
-        w={noWrap ? w : undefined}
-        display={linkDisplayValue}
-        addonLeft={propAddonLeft}
-        addonRight={propAddonRight}
-      >
-        {renderAddon(showAddonLeft, addonLeftType)}
-        <Link.Text
-          size={size}
-          {...(ellipsisW !== undefined && { w: ellipsisW })}
-          {...ellipsis}
-          hint:placement={hintPlacement}
-        >
-          {text}
-        </Link.Text>
-        {renderAddon(showAddonRight, addonRightType)}
-      </Link>
+    <Text
+      tag='div'
+      size={size}
+      bg={inverted ? 'bg-primary-invert' : undefined}
+      p={inverted ? 4 : undefined}
+      style={containerW ? { width: containerW } : undefined}
+    >
+      {renderLink(
+        { ...sharedLinkProps, display: linkDisplayValue },
+        asString
+          ? text
+          : (
+              <Link.Text
+                size={size}
+                {...(ellipsisW !== undefined && { w: ellipsisW })}
+                {...ellipsis}
+                hint:placement={hintPlacement}
+              >
+                {text}
+              </Link.Text>
+            ),
+      )}
 
       {`${numSize} `}
-      <Link
-        href={href}
-        size={size}
-        disabled={disabled}
-        active={active}
-        enableVisited={enableVisited}
-        noWrap={noWrap}
-        color={color}
-        title={title}
-        w={noWrap ? w : undefined}
-        addonLeft={propAddonLeft}
-        addonRight={propAddonRight}
-      >
-        {renderAddon(showAddonLeft, addonLeftType)}
-        <Link.Text size={size}>
-          {text}
-        </Link.Text>
-        {renderAddon(showAddonRight, addonRightType)}
-      </Link>
+      {renderLink(
+        sharedLinkProps,
+        asString ? text : <Link.Text size={size}>{text}</Link.Text>,
+      )}
     </Text>
   );
 };
@@ -155,14 +206,14 @@ const Demo = (props: BasicLinkProps) => {
 export const defaultProps: BasicLinkProps = {
   text: 'Link example',
   href: '#',
+  theme: 'default',
   size: 300,
   showAddonLeft: false,
   showAddonRight: false,
 
   addonLeftType: 'icon',
   addonRightType: 'icon',
-  merged: false,
-  addonPassMethod: 'slot',
+  addonPassMethod: 'children',
   ellipsis: {
     ellipsis: true,
   },
