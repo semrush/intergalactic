@@ -8,4 +8,27 @@ SDropdownNotice {
   border-bottom-right-radius: calc(var(--intergalactic-rounded-small, 4px) + 1px);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+
+  flex-direction: column;
+  gap: 0;
+
+  SIcon[theme='info'] {
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+  }
+
+  SIcon[theme='danger'] {
+    color: var(--intergalactic-icon-primary-critical, oklch(0.552 0.226 28.7 / 0.848));
+  }
+
+  SIcon[theme='warning'] {
+    color: var(--intergalactic-icon-primary-warning, oklch(0.728 0.188 51.8));
+  }
+
+  SIcon[theme='success'] {
+    color: var(--intergalactic-icon-primary-success, oklch(0.595 0.124 165.4));
+  }
+
+  SIcon[theme='muted'] {
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+  }
 }

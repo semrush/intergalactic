@@ -95,10 +95,6 @@ const noticeArgTypes = {
     control: { type: 'text' },
     table: { category: 'Notice content' },
   },
-  showNoticeClose: {
-    control: { type: 'boolean' },
-    table: { category: 'Notice content' },
-  },
 } as const;
 
 export const WithFocusableTrigger: Story = {
