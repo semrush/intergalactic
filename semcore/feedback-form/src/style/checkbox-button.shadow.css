@@ -1,6 +1,7 @@
 SCheckboxButton {
   margin-top: var(--intergalactic-spacing-2x, 8px);
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  /* add background-color: var(--intergalactic-control-checkbox-button-bg-normal); */
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-control-checkbox-button-border */
   border-radius: var(--intergalactic-rounded-medium, 6px);
 
   label {
@@ -12,10 +13,10 @@ SCheckboxButton {
 
 SCheckboxButton:hover, SCheckboxButton[checked] {
   cursor: pointer;
-  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
-  background-color: rgba(0, 143, 248, 0.10);
+  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2)); /* TODO: --intergalactic-control-checkbox-button-border-selected */
+  background-color: rgba(0, 143, 248, 0.10); /* TODO: --intergalactic-control-checkbox-button-bg-hover on :hover:not([checked]), --intergalactic-control-checkbox-button-bg-selected on [checked] */
 }
 
 SCheckboxButton[checked]:hover {
-  background-color: rgba(0, 143, 248, 0.20);
+  background-color: rgba(0, 143, 248, 0.20); /* TODO: --intergalactic-control-checkbox-button-bg-selected-hover */
 }

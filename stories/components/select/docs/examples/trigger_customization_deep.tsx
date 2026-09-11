@@ -26,8 +26,12 @@ const Demo = () => {
         <Select.Menu hMax={180}>
           {flags.map((value) => (
             <Select.Option key={value} value={value}>
-              <Flags iso2={value as keyof typeof iso2Name} mr={2} />
-              {formatName(iso2Name[value])}
+              <Select.Option.Addon>
+                <Flags iso2={value as keyof typeof iso2Name} />
+              </Select.Option.Addon>
+              <Select.Option.Text>
+                {formatName(iso2Name[value])}
+              </Select.Option.Text>
             </Select.Option>
           ))}
         </Select.Menu>

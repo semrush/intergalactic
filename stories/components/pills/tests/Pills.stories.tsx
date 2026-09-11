@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import BasicUsageExample, { defaultProps as BasicUsageProps } from './examples/basic_example';
 import PillsAmountExample, { defaultProps as PillsAmountProps } from './examples/different-amount-of-pills';
+import DynamicPillsExample, { defaultProps as DynamicPillsProps } from './examples/dynamic-pills';
 
 const meta: Meta<typeof Pills> = {
   title: 'Components/Pills/Tests',
@@ -37,4 +38,27 @@ export const PillsAmount: StoryObj<typeof PillsAmountProps> = {
     },
   },
   args: PillsAmountProps,
+};
+
+export const DynamicPills: StoryObj<typeof DynamicPillsProps> = {
+  render: DynamicPillsExample,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['m', 'l'],
+    },
+    behavior: {
+      control: { type: 'select' },
+      options: ['manual', 'auto'],
+    },
+    label: {
+      control: { type: 'text' },
+      description: 'Applied through React — triggers a re-render, indicator is recalculated',
+    },
+    domLabel: {
+      control: { type: 'text' },
+      description: 'Applied straight to the DOM — no re-render, only ResizeObserver can notice',
+    },
+  },
+  args: DynamicPillsProps,
 };

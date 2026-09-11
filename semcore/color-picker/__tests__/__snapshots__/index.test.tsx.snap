@@ -98,79 +98,69 @@ exports[`ColorPicker > Verify data-ui-name 1`] = `
               "uiName": "Box",
             },
             {
+              "children": [],
+              "uiName": null,
+            },
+            {
               "children": [
                 {
                   "children": [],
-                  "uiName": null,
+                  "uiName": "PaletteManager.InputColor",
                 },
                 {
                   "children": [
                     {
                       "children": [
                         {
-                          "children": [],
-                          "uiName": "PaletteManager.InputColor",
-                        },
-                        {
                           "children": [
                             {
                               "children": [
                                 {
-                                  "children": [
-                                    {
-                                      "children": [
-                                        {
-                                          "children": [],
-                                          "uiName": null,
-                                        },
-                                      ],
-                                      "uiName": "Check",
-                                    },
-                                  ],
-                                  "uiName": "ButtonLink.Addon",
+                                  "children": [],
+                                  "uiName": null,
                                 },
                               ],
-                              "uiName": "Input.Addon.InnerWrapper",
+                              "uiName": "Check",
                             },
                           ],
-                          "uiName": "Input.Addon",
-                        },
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "children": [
-                                    {
-                                      "children": [
-                                        {
-                                          "children": [],
-                                          "uiName": null,
-                                        },
-                                      ],
-                                      "uiName": "Close",
-                                    },
-                                  ],
-                                  "uiName": "ButtonLink.Addon",
-                                },
-                              ],
-                              "uiName": "Input.Addon.InnerWrapper",
-                            },
-                          ],
-                          "uiName": "Input.Addon",
-                        },
-                        {
-                          "children": [],
-                          "uiName": null,
+                          "uiName": "ButtonLink.Addon",
                         },
                       ],
-                      "uiName": "Input",
+                      "uiName": "Input.Addon.InnerWrapper",
                     },
                   ],
+                  "uiName": "Input.Addon",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [],
+                                  "uiName": null,
+                                },
+                              ],
+                              "uiName": "Close",
+                            },
+                          ],
+                          "uiName": "ButtonLink.Addon",
+                        },
+                      ],
+                      "uiName": "Input.Addon.InnerWrapper",
+                    },
+                  ],
+                  "uiName": "Input.Addon",
+                },
+                {
+                  "children": [],
                   "uiName": null,
                 },
               ],
-              "uiName": null,
+              "uiName": "Input",
             },
           ],
           "uiName": "Box",

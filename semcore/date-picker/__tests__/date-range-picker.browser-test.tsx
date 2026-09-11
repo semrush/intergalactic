@@ -57,16 +57,35 @@ test.describe(`${TAG.VISUAL}`, () => {
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
 
+      const inputs = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
+      const fromInput = inputs.nth(0);
+      const toInput = inputs.nth(1);
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.keyboard.type('052020');
+      await expect(fromInput).toBeFocused();
+
+      // Partially filled date: month, day and only 2 of 4 year digits.
+      await page.keyboard.type('052020', { delay: 50 });
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-      await page.keyboard.type('2005292020');
+
+      // Finish the "from" year, then fill the "to" date. The mask moves focus
+      // between the inputs itself, so type each date separately and assert the
+      // value in between: streaming all digits at once races with the mask
+      // re-render and silently produces a different date.
+      await page.keyboard.type('20', { delay: 50 });
+      await expect(fromInput).toHaveValue('05/20/2020');
+
+      await expect(toInput).toBeFocused();
+      await page.keyboard.type('05292020', { delay: 50 });
+      await expect(toInput).toHaveValue('05/29/2020');
+
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Shift+Tab');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
 
       await page.keyboard.press('Tab');
+      await expect(fromInput).toBeFocused();
       await page.keyboard.press('ArrowRight');
       for (let i = 0; i < 5; i++) await page.keyboard.press('Backspace');
       await expect(page).toHaveScreenshot({ clip: screenshotsClip });
@@ -155,14 +174,14 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify svg dimensions', async () => {
         const svg = locators.dateRangePickerTrigger(page, 4).locator('svg');
-        await checkStyle(svg, { paddingLeft: '8px', paddingRight: '8px' });
+        await checkStyle(svg, { paddingLeft: '12px', paddingRight: '6px' });
         await expect(svg).toHaveAttribute('width', '16');
         await expect(svg).toHaveAttribute('height', '16');
       });
 
       await test.step('Verify trigger separator padding', async () => {
         const separator = page.locator('[data-ui-name="DateRange.RangeSep"]').nth(1);
-        await checkStyle(separator, { paddingRight: '8px' });
+        await checkStyle(separator, { paddingRight: '12px' });
       });
 
       await test.step('Enter dates and open popper', async () => {
@@ -179,14 +198,14 @@ test.describe(`${TAG.VISUAL}`, () => {
           locator: locators.cells(page, 0),
           expectedStyles: {
             ...defaultCellStyles,
-            margin: '4px 0px 0px',
+            margin: '0px',
           },
         },
         {
           locator: locators.cells(page, 10),
           expectedStyles: {
             ...defaultCellStyles,
-            margin: '4px 0px 0px',
+            margin: '0px',
           },
         },
       ];
@@ -208,7 +227,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         await locators.button(page, 'Apply').waitFor({ state: 'visible' });
 
         const cell = page.locator('[data-ui-name="CalendarDays.Unit"][class*="Selected"]');
-        await checkStyle(cell.nth(1), { margin: '4px 0px 0px', width: '32px', height: '32px' });
+        await checkStyle(cell.nth(1), { margin: '0px', width: '32px', height: '32px' });
       });
 
       await test.step('Verify style for Apply picker button', async () => {
@@ -223,12 +242,25 @@ test.describe(`${TAG.VISUAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
       const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
+      const fromInput = input.nth(0);
+      const toInput = input.nth(1);
 
       await page.keyboard.press('Tab');
-      await expect(input.first()).toBeFocused();
-      await page.keyboard.type('0505202310052023');
+      await expect(fromInput).toBeFocused();
+
+      // Type each date separately and assert the masked value in between:
+      // typing the whole range in one stream races with the mask re-render and
+      // loses keystrokes, which silently produces a different calendar view.
+      await page.keyboard.type('05052023', { delay: 50 });
+      await expect(fromInput).toHaveValue('05/05/2023');
+
+      await expect(toInput).toBeFocused();
+      await page.keyboard.type('10052023', { delay: 50 });
+      await expect(toInput).toHaveValue('10/05/2023');
+
       await page.keyboard.press('Enter');
       await locators.button(page, 'Apply').waitFor({ state: 'visible' });
+      await expect(locators.title(page).first()).toHaveText('October 2023');
       await expect(page).toHaveScreenshot();
     });
   });

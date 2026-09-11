@@ -15,7 +15,15 @@ const Demo = (props: PillExampleProps) => {
       <Text size={200} id='pills-basic-usage'>
         Your opinion
       </Text>
-      <Pills mt={2} value={choice} onChange={setChoice} aria-labelledby='pills-basic-usage' size={props.size} disabled={props.disabled} behavior={props.behavior}>
+      <Pills
+        mt={2}
+        value={choice}
+        onChange={setChoice}
+        aria-labelledby='pills-basic-usage'
+        size={props.size}
+        disabled={props.disabled}
+        behavior={props.behavior}
+      >
         <Pills.Item value='like'>
           <Pills.Item.Addon tag={ThumbUpM} />
           <Pills.Item.Text>Like</Pills.Item.Text>

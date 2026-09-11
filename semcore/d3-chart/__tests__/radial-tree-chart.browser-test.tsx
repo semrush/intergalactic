@@ -97,7 +97,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@radial-tree-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@radial-tree-chart', '@d3-chart', '@base-components', '@flex-box', '@select'],
   }, async ({ page }) => {
     await loadPage(
       page,

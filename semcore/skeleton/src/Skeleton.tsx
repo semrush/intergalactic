@@ -10,11 +10,6 @@ import type { NSSkeleton } from './Skeleton.type';
 import style from './style/skeleton.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
-const MAP_COLOR_THEME = {
-  dark: 'rgba(255, 255, 255, 0.3)',
-  invert: 'rgba(224, 225, 233, 0.8)',
-};
-
 class SkeletonRoot extends Component<
   Intergalactic.InternalTypings.InferComponentProps<NSSkeleton.RenderComponent>,
   typeof SkeletonRoot.enhance,
@@ -27,6 +22,7 @@ class SkeletonRoot extends Component<
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
+    theme: 'default',
     duration: 2000,
   } as const;
 
@@ -62,7 +58,7 @@ class SkeletonSVG extends Component<
   static style = style;
 
   static defaultProps = {
-    theme: 'invert',
+    theme: 'default',
     duration: 2000,
   } as const;
 
@@ -96,16 +92,6 @@ class SkeletonSVG extends Component<
     if (target && svg) {
       svg.setAttribute('width', '100%');
     }
-  }
-
-  setContext() {
-    const { theme } = this.asProps;
-
-    if (!theme) return {};
-
-    return {
-      gradientUrl: MAP_COLOR_THEME[theme],
-    };
   }
 
   render() {
@@ -144,6 +130,7 @@ function Text(
       {[...Array(amountLine)].map((_el, index) =>
         sstyled(styles)(
           <SText
+            fill='#fff'
             tag='rect'
             rx='4'
             ry='4'

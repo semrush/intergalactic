@@ -48,9 +48,9 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
 
       expect(paddingTop).toBe('24px');
-      expect(paddingRight).toBe('32px');
+      expect(paddingRight).toBe('40px');
       expect(paddingBottom).toBe('24px');
-      expect(paddingLeft).toBe('32px');
+      expect(paddingLeft).toBe('40px');
     });
 
     await test.step('Verify paddings for second section', async () => {
@@ -72,9 +72,9 @@ test.describe(`${TAG.VISUAL} `, () => {
         });
 
       expect(paddingTop).toBe('24px');
-      expect(paddingRight).toBe('32px');
+      expect(paddingRight).toBe('40px');
       expect(paddingBottom).toBe('24px');
-      expect(paddingLeft).toBe('32px');
+      expect(paddingLeft).toBe('40px');
     });
   });
 

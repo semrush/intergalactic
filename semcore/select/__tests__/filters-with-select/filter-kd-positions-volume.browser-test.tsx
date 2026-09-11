@@ -18,7 +18,7 @@ const locators = {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify filter KD positions volume visual states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number', '@base-components', '@flex-box', '@base-trigger', '@filter-trigger', '@button', '@divider', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
@@ -57,7 +57,7 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify filter KD positions volume keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@input-number', '@base-components', '@flex-box', '@base-trigger', '@filter-trigger', '@button', '@divider', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 
@@ -185,7 +185,7 @@ test.describe(TAG.FUNCTIONAL, () => {
   });
 
   test('Verify filter KD positions volume mouse navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input-number'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@input-number', '@base-components', '@flex-box', '@base-trigger', '@filter-trigger', '@button', '@divider', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/presets.tsx', 'en');
 

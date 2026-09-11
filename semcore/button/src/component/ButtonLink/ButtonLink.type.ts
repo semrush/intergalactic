@@ -6,7 +6,7 @@ import type { NSText } from '@semcore/typography';
 import type { NSButton } from '../Button/Button.type';
 
 declare namespace NSButtonLink {
-  type Props = Intergalactic.InternalTypings.EfficientOmit<NSLink.Props, 'enableVisited'> & {
+  type Props = Intergalactic.InternalTypings.EfficientOmit<NSLink.Props, 'enableVisited' | 'use' | 'theme'> & {
   /**
    *  Button link type
    * @default primary

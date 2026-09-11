@@ -188,7 +188,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars) => {
     test(`Verify line chart with config ${vars.name}`, {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -272,7 +272,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify curve prop', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -319,7 +319,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify time scale with tooltip', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -348,7 +348,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify custom tooltip', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -373,7 +373,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify patterns and symbols for dots mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -399,7 +399,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify patterns and symbols for dots keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@line-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@line-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -489,7 +489,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     };
 
     test('Verify chart auto-sizes to its container and aspect derives the height', {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await test.step('Without plotWidth/plotHeight the Plot renders with a measured (non-zero) size', async () => {
         // useExplicitPlotWidth is false by default - chart receives no plotWidth/plotHeight.
@@ -516,7 +516,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hMin clamps the aspect-derived height to the minimum', {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       // aspect 10 -> computed height (~width/10) is well below 120, so hMin must clamp it
       await loadPage(page, STORY, 'en', { aspect: 10, hMin: 120 });
@@ -529,7 +529,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify hMax clamps the aspect-derived height to the maximum', {
-      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@responsive'],
+      tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       // aspect 0.5 -> computed height (~2*width) is well above 180, so hMax must clamp it
       await loadPage(page, STORY, 'en', { aspect: 0.5, hMax: 180 });
@@ -542,7 +542,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify explicit plotWidth takes priority over container measurement', {
-      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive'],
+      tag: [TAG.PRIORITY_HIGH, '@line-chart', '@d3-chart', '@responsive', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       // useExplicitPlotWidth passes plotWidth straight to the chart; the 500px Box is ignored for width
       await loadPage(page, STORY, 'en', { useExplicitPlotWidth: true, plotWidth: 250 });

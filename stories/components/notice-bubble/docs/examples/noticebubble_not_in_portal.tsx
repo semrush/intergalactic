@@ -15,7 +15,7 @@ const Demo = (props: NotInPortalNoticeBubbleProps) => {
         <>
           Link was moved to
           {' '}
-          <Link href='#'>Cats from outer space group</Link>
+          <Link href='#' theme='invert'>Cats from outer space group</Link>
         </>
       ),
       initialAnimation: props.initialAnimation,

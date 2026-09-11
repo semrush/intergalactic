@@ -32,8 +32,13 @@ exports[`SidePanel > Verify data-ui-name 1`] = `
                           "uiName": "Link.Addon",
                         },
                         {
-                          "children": [],
-                          "uiName": "ButtonLink.Text",
+                          "children": [
+                            {
+                              "children": [],
+                              "uiName": "ButtonLink.Text",
+                            },
+                          ],
+                          "uiName": "Link.Text",
                         },
                       ],
                       "uiName": "SidePanel.Back.InnerWrapper",

@@ -5,5 +5,5 @@ SHoverLine, SHoverLine:focus-visible {
 
 SHoverRect, SHoverRect:focus-visible {
   outline: none;
-  fill: var(--intergalactic-chart-grid-bar-chart-hover, oklch(0.177 0.033 175.6 / 0.028));
+  fill: var(--intergalactic-chart-grid-bar-chart-hover, oklch(0.177 0.033 175.6 / 0.042));
 }

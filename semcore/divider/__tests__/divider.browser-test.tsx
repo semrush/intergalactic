@@ -47,7 +47,7 @@ test.describe(`${TAG.VISUAL} `, () => {
       screenshotsClip.y -= 4;
       screenshotsClip.width += 8;
       screenshotsClip.height += 8;
-      await expect(page).toHaveScreenshot({ clip: screenshotsClip });
+      await expect(page).toHaveScreenshot({ clip: screenshotsClip, scale: 'device' });
       const divider = page.getByRole('separator');
 
       if (item.orientation == 'horizontal') {

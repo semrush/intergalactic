@@ -6,12 +6,8 @@ import Notice from '@semcore/ui/notice';
 import React from 'react';
 
 const Demo = () => (
-  <Flex direction='column'>
-    <Notice aria-label='Notice' mb={2}>
-      <Notice.Label>
-        <Coffee width='130' height='130' />
-      </Notice.Label>
-
+  <Flex direction='column' gap={2}>
+    <Notice aria-label='Notice' illustration={<Coffee width='120' height='120' />}>
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
@@ -21,7 +17,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' mr={2}>
+          <Button use='primary'>
             Button
           </Button>
           <Button>Button</Button>
@@ -30,11 +26,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='muted' aria-label='New feature announcement' mb={2}>
-      <Notice.Label>
-        <MailSent width='130' height='130' />
-      </Notice.Label>
-
+    <Notice theme='muted' aria-label='New feature announcement' illustration={<MailSent width='120' height='120' />}>
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
@@ -44,7 +36,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' mr={2}>
+          <Button use='primary'>
             Button
           </Button>
           <Button>Button</Button>
@@ -53,11 +45,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='warning' aria-label='New feature announcement' mb={2}>
-      <Notice.Label>
-        <MailSent width='130' height='130' />
-      </Notice.Label>
-
+    <Notice theme='warning' aria-label='New feature announcement' illustration={<Coffee width='120' height='120' />}>
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
@@ -70,7 +58,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='success' mr={2}>
+          <Button use='primary' theme='success'>
             Button
           </Button>
           <Button>Button</Button>
@@ -79,11 +67,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='danger' aria-label='New feature announcement' mb={2}>
-      <Notice.Label>
-        <Coffee width='130' height='130' />
-      </Notice.Label>
-
+    <Notice theme='danger' aria-label='New feature announcement' illustration={<Coffee width='120' height='120' />}>
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
@@ -96,7 +80,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='danger' mr={2}>
+          <Button use='primary' theme='danger'>
             Button
           </Button>
           <Button>Button</Button>
@@ -105,11 +89,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='success' aria-label='New feature announcement' mb={2}>
-      <Notice.Label>
-        <Coffee width='130' height='130' />
-      </Notice.Label>
-
+    <Notice theme='success' aria-label='New feature announcement' illustration={<Coffee width='120' height='120' />}>
       <Notice.Content>
         <Notice.Title>Your subscription has expired</Notice.Title>
 
@@ -119,7 +99,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='success' mr={2}>
+          <Button use='primary' theme='success'>
             Button
           </Button>
           <Button>Button</Button>

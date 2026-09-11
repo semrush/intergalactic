@@ -26,7 +26,7 @@ const Demo = () => {
               </Text>
             ))}
           <Flex justifyContent='center' mt={8}>
-            <Button use='primary' theme='success' size='l' onClick={closeModal}>
+            <Button use='primary' size='l' onClick={closeModal}>
               Got it!
             </Button>
           </Flex>

@@ -56,7 +56,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify size=${item.size} state=${item.state} theme=${item.theme} color=${item.color} disabled=${item.disabled} checked=${item.checked} indeterminate=${item.indeterminate}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@checkbox'],
+        '@checkbox', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/checkbox/tests/examples/states.tsx', 'en', item);
 
@@ -89,7 +89,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         );
         await expect(locators.checkboxText(page)).toHaveCSS(
           'margin-left',
-          '8px',
+          '6px',
         );
         await expect(locators.checkboxText(page)).toHaveCSS(
           'font-size',
@@ -103,7 +103,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify checkbox group styles', {
     tag: [TAG.PRIORITY_HIGH,
-      '@checkbox'],
+      '@checkbox', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/tests/examples/groups.tsx', 'en');
 
@@ -127,7 +127,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Partial selection mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@checkbox'],
+      '@checkbox', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -145,7 +145,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Partial selection keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@checkbox'],
+      '@checkbox', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -162,7 +162,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       TAG.KEYBOARD,
       '@checkbox',
       '@link',
-      '@tooltip'],
+      '@tooltip', '@base-components', '@flex-box', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 
@@ -202,7 +202,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Checkbox group mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@checkbox'],
+      '@checkbox', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/basic_usage.tsx', 'en');
 
@@ -247,7 +247,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Checkbox group keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@checkbox'],
+      '@checkbox', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/basic_usage.tsx', 'en');
 
@@ -301,7 +301,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Partial selection mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@checkbox'],
+      '@checkbox', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -366,7 +366,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Partial selection keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@checkbox'],
+      '@checkbox', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/partial_selection.tsx', 'en');
 
@@ -438,7 +438,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@checkbox',
       '@link',
-      '@tooltip'],
+      '@tooltip', '@base-components', '@flex-box', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 
@@ -487,7 +487,7 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@checkbox',
       '@link',
-      '@tooltip'],
+      '@tooltip', '@base-components', '@flex-box', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 

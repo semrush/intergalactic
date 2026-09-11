@@ -10,7 +10,7 @@ SContent {
 }
 
 SList SList {
-  margin-top: var(--intergalactic-spacing-2x, 8px);
+  margin-top: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SItem {
@@ -18,11 +18,11 @@ SItem {
 }
 
 SItem + SItem {
-  margin-top: var(--intergalactic-spacing-2x, 8px);
+  margin-top: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SMarker {
-  margin-right: var(--intergalactic-spacing-2x, 8px);
-  color: var(--intergalactic-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
+  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   line-height: normal;
 }

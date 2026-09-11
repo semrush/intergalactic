@@ -73,8 +73,8 @@ test.describe(`${TAG.VISUAL}`, () => {
           await expect(calendar).toHaveAttribute('width', '16');
           await expect(calendar).toHaveAttribute('height', '16');
           await checkStyle(calendar, {
-            paddingLeft: '8px',
-            paddingRight: '8px',
+            paddingLeft: '12px',
+            paddingRight: '6px',
           });
         }
       });
@@ -82,7 +82,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await test.step('Verify style of available date', async () => {
         await checkStyle(locators.cells(page, 2), {
           ...defaultCellStyles,
-          margin: '4px 0px 0px',
+          margin: '0px',
         });
       });
 
@@ -98,7 +98,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify style of selected date', async () => {
         await checkStyle(selectedCell.nth(0), {
-          margin: '4px 0px 0px',
+          margin: '0px',
           width: '32px',
           height: '32px',
         });

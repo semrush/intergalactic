@@ -1,4 +1,3 @@
-import type { NSBox } from '@semcore/ui/base-components';
 import { Flex } from '@semcore/ui/base-components';
 import Divider from '@semcore/ui/divider';
 import type { NSDivider } from '@semcore/ui/divider';
@@ -24,7 +23,6 @@ const Demo = (props: DividerStylesExample) => {
   );
 };
 export const baseExampleProps: DividerStylesExample = {
-
   orientation: 'horizontal',
   use: 'primary',
   theme: 'default',

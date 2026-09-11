@@ -21,7 +21,7 @@ const Demo = (props: NSSidePanel.Props) => {
         <SidePanel.Overlay>
           <SidePanel.Panel>
             <SidePanel.Header>
-              <SidePanel.Title mt={3}>Taking the Stage</SidePanel.Title>
+              <SidePanel.Title>Taking the Stage</SidePanel.Title>
             </SidePanel.Header>
             <SidePanel.Body>
               <Text size={300} tag='p'>

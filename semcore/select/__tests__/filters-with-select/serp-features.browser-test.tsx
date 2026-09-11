@@ -25,7 +25,7 @@ const locators = {
   ===================================================== */
 test.describe(TAG.VISUAL, () => {
   test('Verify SERP features mouse interaction states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@select', '@base-components', '@flex-box', '@scroll-area', '@base-trigger', '@filter-trigger', '@button', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
@@ -84,7 +84,7 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify SERP features keyboard interaction states', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@scroll-area', '@base-trigger', '@filter-trigger', '@button', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 
@@ -147,7 +147,7 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify SERP features keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@select', '@base-components', '@flex-box', '@scroll-area', '@base-trigger', '@filter-trigger', '@button', '@button-link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx', 'en');
 

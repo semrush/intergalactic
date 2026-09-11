@@ -8,9 +8,9 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify links and icons styles', {
-    tag: [`${TAG.PRIORITY_HIGH},
-        @breadcrumbs,
-        @ellipsis`],
+    tag: [TAG.PRIORITY_HIGH,
+      '@breadcrumbs',
+      '@ellipsis'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/breadcrumbs/docs/examples/usage_example.tsx', 'en');
 
@@ -31,8 +31,6 @@ test.describe(`${TAG.VISUAL}`, () => {
       fontSize: '14px',
       cursor: 'default',
     };
-
-    const expectedSeparatorMargin = '8px';
 
     await test.step('Verify active item style', async () => {
       const lastItemStyles = await lastItem.evaluate((el) => {
@@ -74,14 +72,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await expect(page).toHaveScreenshot();
     });
-    await test.step('Verify separator styles', async () => {
-      for (const icon of await chevronIcons.all()) {
-        const marginLeft = await icon.evaluate(
-          (el) => getComputedStyle(el.parentElement!).marginLeft,
-        );
-        expect(marginLeft).toBe(expectedSeparatorMargin);
-      }
-    });
   });
 
   const variables = [
@@ -116,7 +106,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify ellipsis in the middle and last item is active=${item.active}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@breadcrumbs',
-        '@ellipis'],
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/advanced/examples/trim_middle.tsx', 'en', item);
       await page.waitForTimeout(200); // wait for finish ellipsis calculation

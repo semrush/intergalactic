@@ -75,7 +75,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars, index) => {
     test(`Verify bubble chart ${vars.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -104,7 +104,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify bubble chart implementation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(
       page,
@@ -128,7 +128,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify color customization', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bubble-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@bubble-chart', '@d3-chart', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -144,7 +144,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern interactions by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -205,7 +205,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify bubble circles count and attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@bubble-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await test.step('Verify basic usage example', async () => {
       await loadPage(
@@ -248,7 +248,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify onClick callback in bubble circle', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@bubble-chart', '@d3-chart', '@typography'],
   }, async ({ page }) => {
     const messages: string[] = [];
     page.on('console', (msg) => {

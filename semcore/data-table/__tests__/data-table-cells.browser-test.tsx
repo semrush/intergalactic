@@ -12,7 +12,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify long text in cells and wrap and ellipsis', {
     tag: [TAG.PRIORITY_HIGH,
       '@data-table',
-      '@ellipsis'],
+      '@ellipsis',
+      '@base-components',
+      '@flex-box',
+      '@button',
+      '@link',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/long-text-in-cells.tsx', 'en');
 
@@ -21,7 +27,13 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify overflow=hidden visual finctionality', {
     tag: [TAG.PRIORITY_LOW,
-      '@data-table'],
+      '@data-table',
+      '@base-components',
+      '@flex-box',
+      '@button',
+      '@ellipsis',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/overflow_in_cells.tsx', 'en');
     await page.setViewportSize({ width: 768, height: 1024 });
@@ -30,7 +42,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify colored cells', {
     tag: [TAG.PRIORITY_MEDIUM,
-      '@data-table'],
+      '@data-table',
+      '@base-components',
+      '@flex-box',
+    ],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/row_cell_states.tsx', 'en');
     await page.keyboard.press('Tab');
@@ -60,7 +75,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@data-table',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@button',
+      '@checkbox',
+      '@link',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/interactive-elements-in-cells.tsx', 'en');
 
@@ -136,7 +159,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@select',
       '@tooltip',
       '@checkbox',
-      '@data-table'],
+      '@data-table',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@button',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
 
@@ -197,7 +226,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@select',
       '@tooltip',
       '@checkbox',
-      '@data-table'],
+      '@data-table',
+      '@base-components',
+      '@flex-box',
+      '@button-link',
+      '@button',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/dd-select-in-cell.tsx', 'en');
 
@@ -355,7 +390,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown',
-      '@spin'],
+      '@spin',
+      '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx', 'en');
 

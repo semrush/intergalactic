@@ -9,7 +9,7 @@ type PaymentStatusProps = {
   status: 'success' | 'failed' | 'pending';
   short?: boolean;
   testIdPrefix?: string;
-} & Omit<NSTag.Props, 'color'>;
+};
 
 const colorsMap = {
   success: 'green-500',

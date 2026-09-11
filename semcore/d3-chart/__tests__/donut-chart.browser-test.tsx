@@ -50,7 +50,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((item) => {
     test(`Verify donut chart ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -108,7 +108,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   halfsizeVariables.forEach((item, index) => {
     test(`Verify semi-donut ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -139,7 +139,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify donut controlled highlight interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -162,7 +162,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify donut legend and pattern fill interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -206,7 +206,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
   test('Verify semi-donut with labels', {
-    tag: [TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/semi-donut.tsx', 'en');
 
@@ -225,7 +225,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await test.step('Verify pies have aria-hidden attribute in basic usage', async () => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/donut-chart/basic-usage.tsx', 'en');
@@ -303,7 +303,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   showLegendCombinations.forEach((item) => {
     test(`Verify showLegend prop: ${item.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@donut-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       const testProps: any = {
         data: item.data,
@@ -330,7 +330,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify onClick callback in donut pie', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@donut-chart', '@d3-chart', '@base-components', '@flex-box', '@checkbox'],
   }, async ({ page }) => {
     const messages: string[] = [];
     page.on('console', (msg) => {

@@ -68,7 +68,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify scale', {
-    tag: [TAG.PRIORITY_MEDIUM, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@radar-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/scale.tsx', 'en');
 
@@ -103,7 +103,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify long label', {
-    tag: [TAG.PRIORITY_MEDIUM, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@radar-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/radar-chart/label-long.tsx', 'en');
 
@@ -114,7 +114,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify custom label', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@base-components', '@flex-box', '@tag'],
   }, async ({ page, browserName }) => {
     if (browserName === 'webkit') return;
 
@@ -177,7 +177,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify rotation', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@slider'],
   }, async ({ page, browserName }) => {
     if (browserName === 'webkit') return;
 
@@ -199,7 +199,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radar-chart', '@d3-chart', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(
       page,

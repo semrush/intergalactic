@@ -54,7 +54,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     ];
     variables.forEach((item) => {
       test(`Verify RadioGroup size ${item.size}, theme ${item.theme}, disabled ${item.disabled}`, {
-        tag: [TAG.PRIORITY_HIGH, '@radio'],
+        tag: [TAG.PRIORITY_HIGH, '@radio', '@base-components', '@flex-box', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/radio/docs/examples/radiogroup_example.tsx', 'en', item);
 
@@ -87,7 +87,7 @@ test.describe(`${TAG.VISUAL}`, () => {
                   return { fontSize: s.fontSize, marginLeft: s.marginLeft };
                 });
                 expect(styles.fontSize).toBe('14px');
-                expect(styles.marginLeft).toBe('8px');
+                expect(styles.marginLeft).toBe('6px');
               }
             });
           } else {
@@ -159,7 +159,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     variables.forEach((item) => {
       const priority = item.disabled && item.size === 'l' ? TAG.PRIORITY_MEDIUM : TAG.PRIORITY_HIGH;
       test(`Verify Radio size ${item.size}, state ${item.state}, disabled ${item.disabled}, checked ${item.checked}`, {
-        tag: [priority, '@radio'],
+        tag: [priority, '@radio', '@base-components', '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/radio/tests/examples/radio-props.tsx', 'en', item);
 
@@ -191,7 +191,7 @@ test.describe(`${TAG.VISUAL}`, () => {
                   return { fontSize: s.fontSize, marginLeft: s.marginLeft };
                 });
                 expect(styles.fontSize).toBe('14px');
-                expect(styles.marginLeft).toBe('8px');
+                expect(styles.marginLeft).toBe('6px');
               }
             });
           } else {
@@ -254,7 +254,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse interactions for radio with group', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio/docs/examples/radiogroup_example.tsx', 'en');
 
@@ -291,7 +291,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify keyboard interactions for radio with group', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio', '@base-components', '@flex-box', '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/radio/docs/examples/radiogroup_example.tsx', 'en');
 
@@ -358,7 +358,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify actions when interactive element in text', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio', '@base-components', '@flex-box', '@link', '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/radio/tests/examples/radiogroup_example_with_link.tsx', 'en');
 
@@ -482,7 +482,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify actions when interactive element in text with tooltip', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radio'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radio', '@button-link', '@link', '@tooltip', '@description-tooltip', '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/radio/tests/examples/additional_props_for_input_tooltip.tsx', 'en');
     if (browserName == 'webkit') test.skip();

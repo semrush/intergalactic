@@ -1,3 +1,4 @@
+import type { Intergalactic } from '@semcore/core';
 import CheckM from '@semcore/icon/Check/m';
 import { Box } from '@semcore/ui/base-components';
 import { ButtonLink } from '@semcore/ui/button';
@@ -5,7 +6,7 @@ import type { NSButtonLink } from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-type ExampleProps = NSButtonLink.Props & { color?: string };
+type ExampleProps = Intergalactic.InternalTypings.EfficientOmit<NSButtonLink.Props, 'formatTags'> & { color?: string };
 const Demo = (props: ExampleProps) => {
   return (
     <>

@@ -7,12 +7,8 @@ import Notice from '@semcore/ui/notice';
 import React from 'react';
 
 const Demo = () => (
-  <Flex direction='column'>
-    <Notice aria-label='Notice' mb={2}>
-      <Notice.Label>
-        <Question />
-      </Notice.Label>
-
+  <Flex direction='column' gap={2}>
+    <Notice aria-label='Notice' icon={<Question />}>
       <Notice.Content>
         <Notice.Title>New keyboard shortcuts are available</Notice.Title>
 
@@ -22,7 +18,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' mr={2}>
+          <Button use='primary'>
             Learn more
           </Button>
           <Button>Close</Button>
@@ -31,11 +27,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='muted' aria-label='New muted feature announcement' mb={2}>
-      <Notice.Label>
-        <Question />
-      </Notice.Label>
-
+    <Notice theme='muted' aria-label='New muted feature announcement' icon={<Question />}>
       <Notice.Content>
         <Notice.Title>Data export is in progress</Notice.Title>
 
@@ -45,7 +37,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' mr={2}>
+          <Button use='primary'>
             View details
           </Button>
           <Button>Close</Button>
@@ -54,11 +46,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='warning' aria-label='New warning feature announcement' mb={2}>
-      <Notice.Label>
-        <Question />
-      </Notice.Label>
-
+    <Notice theme='warning' aria-label='New warning feature announcement' icon={<Question />}>
       <Notice.Content>
         <Notice.Title>Payment method expires soon</Notice.Title>
 
@@ -68,7 +56,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='success' mr={2}>
+          <Button use='primary' theme='success'>
             Update payment method
           </Button>
           <Button>Close</Button>
@@ -77,11 +65,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='danger' aria-label='New danger feature announcement' mb={2}>
-      <Notice.Label>
-        <Warning />
-      </Notice.Label>
-
+    <Notice theme='danger' aria-label='New danger feature announcement' icon={<Warning />}>
       <Notice.Content>
         <Notice.Title>API request limit reached</Notice.Title>
 
@@ -91,7 +75,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='danger' mr={2}>
+          <Button use='primary' theme='danger'>
             Increase limit
           </Button>
           <Button>Close</Button>
@@ -100,11 +84,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='success' aria-label='New success feature announcement' mb={2}>
-      <Notice.Label>
-        <ThumbUpM />
-      </Notice.Label>
-
+    <Notice theme='success' aria-label='New success feature announcement' icon={<ThumbUpM />}>
       <Notice.Content>
         <Notice.Title>Backup completed successfully</Notice.Title>
 
@@ -114,7 +94,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='success' mr={2}>
+          <Button use='primary' theme='success'>
             View backup history
           </Button>
           <Button>Close</Button>

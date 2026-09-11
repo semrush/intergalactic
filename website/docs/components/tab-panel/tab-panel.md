@@ -29,8 +29,7 @@ Component consists of the following:
 
 ### Sizes
 
-The TabPanel.Item has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
-Addons before and after the text have a margin of 8px.
+TabPanel has only one size.
 
 ![](static/tab-m.png)
 
@@ -61,14 +60,13 @@ We recommend adding links to tabs so that users can open different tabs of the r
 
 Table: TabPanel states
 
-| State           | Appearance     | Styles     |
-| --------------- | -------------- | ---------- |
-| Normal          | ![](static/normal-active.png)            | `color: var(--text-secondary)`    |
-| Hover           | ![](static/hover.png)                     | `color: var(--text-primary)`    |
-| Active          | ![](static/normal-active.png)            | `color: var(--text-link)`, `border-width: 1px 1px 0px 1px`, `border-style: solid`, `border-color: var(--border-primary)` `border-radius: 6px 6px 0px 0px`                                                        |
-| Disabled        | ![](static/disabled.png)               | Use the `--disabled-opacity` token.     |
-| Initial loading | ![](static/initial-loading.png) | When indicating that data is being loaded for the first time in the counter inside `TabPanel.Item`, use [Skeleton](/components/skeleton/skeleton) with the size of the text's line-height.                 |
-| Loading         | ![](static/loading.png)                 | When showing that data in the counter inside `TabPanel.Item` is currently being loaded, use [Spin](/components/spin/spin) with the smallest size (same as in [Button](/components/button/button)).|
+| State                        | Appearance                                                                                                                                                                                                                 |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <nobr>Normal & Active</nobr> | ![](static/normal-active.png)                                                                                                                                                                                              |
+| Hover                        | ![](static/hover.png)                                                                                                                                                                                                      |
+| Disabled                     | ![](static/disabled.png)                                                                                                                                                                                                   |
+| Initial loading              | When indicating that data is being loaded for the first time in the counter inside `TabPanel.Item`, use [Skeleton](/components/skeleton/skeleton) with the size of the text's line-height. ![](static/initial-loading.png) |
+| Loading                      | When showing that data in the counter inside `TabPanel.Item` is currently being loaded, use [Spin](/components/spin/spin) with the smallest size (same as in [Button](/components/button/button)). ![](static/loading.png) |
 
 ## Usage in UX/UI
 

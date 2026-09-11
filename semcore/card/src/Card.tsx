@@ -51,7 +51,7 @@ function Title(
 
   return sstyled(styles)(
     <>
-      <STitle render={Text}>
+      <STitle render={Text} size={350} semibold use='primary'>
         <Children />
         {innerHint && (
           <SInfo>

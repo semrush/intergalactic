@@ -3,7 +3,7 @@ import type { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps, LinkTriggerPr
 import type { PropGetterFn, Intergalactic } from '@semcore/core';
 import type Divider from '@semcore/divider';
 import type Dropdown from '@semcore/dropdown';
-import type { StatusItemComponent } from '@semcore/dropdown';
+import type { StatusItemComponent, DropdownNoticeComponent } from '@semcore/dropdown';
 import type {
   DropdownMenuContext,
   DropdownMenuItemProps,
@@ -162,6 +162,7 @@ declare const Select: IntergalacticSelectComponent & {
   Divider: typeof Divider;
   InputSearch: typeof InputSearch;
   Input: typeof InputSearch;
+  Notice: DropdownNoticeComponent;
 };
 
 declare const wrapSelect: <PropsExtending extends {}>(

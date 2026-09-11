@@ -46,7 +46,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
               flex='0 0 auto'
               style={{
                 borderRadius: '50%',
-                background: 'orange',
+                background: 'var(--intergalactic-illustration-violet)',
               }}
             />
             <div>

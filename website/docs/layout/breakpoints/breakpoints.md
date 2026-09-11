@@ -12,22 +12,16 @@ Most of Semrush products are designed to work with data on the desktop, so adapt
 Most of the core components can be used on the smaller screens. You need to increase their size to the biggest (`L`) for ease of use on touch devices. You can find the examples in the [Example tab](/layout/breakpoints/breakpoints-code).
 :::
 
-If you're adding adaptivity to your interface, then use breakpoints described in the following section. Remember to stretch the content in each range, except for really wide screens where we recommend limiting the maximum content width to 1920px.
+If you're adding adaptivity to your interface, then use breakpoints described in the following section.
 
 ## Breakpoints system
-
-::: warning
-These variables and their values are outdated and will be updated soon.
-:::
 
 Here is a list of the main breakpoints we recommend using in the interfaces:
 
 | Token                  | Default value | Usage                                                |
 | ---------------------- | ------------- | ---------------------------------------------------- |
-| `screen-extra-small`   | `320px`       | The smallest possible breakpoint for mobile devices. |
-| `screen-small`         | `768px`       | The most common breakpoint for tablet devices.       |
-| `screen-medium`        | `1200px`      | Our main breakpoint for desktop devices.             |
-| `screen-large`         | `1920px`      | Breakpoint for large desktop screens.                |
+| `screen-small`         | `768px`       | Breakpoint for small screens: tablet, mobile.       |
+| `screen-medium`        | `1280px`      | Breakpoint for wide screens: desktop, tablet.             |
 
 ## Page layout
 

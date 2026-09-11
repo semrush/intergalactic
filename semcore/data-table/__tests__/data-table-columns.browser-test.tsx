@@ -92,7 +92,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test('Verify head column shadow for fixed columns with different screen sizes', {
     tag: [TAG.PRIORITY_HIGH,
-      '@data-table'],
+      '@data-table',
+      '@base-components',
+      '@flex-box',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/fixed_columns_width_with_shadows.tsx', 'en');
 
@@ -227,7 +230,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify merged columns and interactive cells', {
     tag: [TAG.PRIORITY_MEDIUM,
       '@data-table',
-      '@link'],
+      '@link',
+      '@button-link',
+      '@button',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/access-to-cells.tsx', 'en');
 
@@ -245,7 +251,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify column\'s aria-sort and aria-describedby attributes ', {
     tag: [TAG.PRIORITY_HIGH,
-      '@data-table'],
+      '@data-table',
+      '@typography',
+    ],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/sorting.tsx', 'en');
 

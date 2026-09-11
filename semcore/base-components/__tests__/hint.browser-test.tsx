@@ -41,7 +41,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   ];
   placementVariants.forEach((variant) => {
     test(`Verify hint with placement= ${variant.placement}`, {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@hint'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@hint', '@base-components'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', variant);
 
@@ -60,7 +60,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify hint focus state', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint', '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
     await page.waitForTimeout(100);
@@ -96,7 +96,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify cursor anchoring', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint', '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/tests/examples/cursor_anchoring.tsx', 'en');
 
@@ -116,7 +116,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify word wrapping', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@hint', '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/tests/examples/word-wrap.tsx', 'en');
 
@@ -143,7 +143,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify hint shows on hover and hides on mouse leave', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@hint'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@hint', '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
@@ -163,7 +163,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify hint shows on focus and hides on esc', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint', '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 
@@ -194,7 +194,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify hint hides on blur', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@hint', '@base-components'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
     if (browserName == 'firefox') test.skip();
@@ -213,7 +213,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify custom timeout delays', {
-    tag: [TAG.PRIORITY_MEDIUM, '@hint'],
+    tag: [TAG.PRIORITY_MEDIUM, '@hint', '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/tests/examples/base-example-props.tsx', 'en', { timeout: 1000 });
 
@@ -229,7 +229,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify hint z-index stacking', {
-    tag: [TAG.PRIORITY_MEDIUM, '@hint'],
+    tag: [TAG.PRIORITY_MEDIUM, '@hint', '@base-components'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/hint/docs/examples/basic-usage.tsx', 'en');
 

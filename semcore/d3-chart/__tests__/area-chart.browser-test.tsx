@@ -94,7 +94,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   variables.forEach((vars, index) => {
     test(`Verify area chart ${vars.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -145,7 +145,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   dataVariations.forEach((dataVariant) => {
     test(`Verify area chart ${dataVariant.description}`, {
-      tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -179,7 +179,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify chart with no data and single data', {
-    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/edge-cases.tsx', 'en');
 
@@ -218,7 +218,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area when part of the chart has no data or only one value', {
-    tag: [TAG.PRIORITY_HIGH, '@stacked-area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/edge-cases.tsx', 'en');
 
@@ -236,7 +236,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area chart rendering', {
-    tag: [TAG.PRIORITY_MEDIUM, '@stacked-area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/stacked-area.tsx', 'en');
 
@@ -248,7 +248,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify legend and pattern fill hover and focus styles', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@area-chart', '@d3-chart', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -274,7 +274,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify stacked area chart legend hover styles', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@stacked-area-chart', '@d3-chart', '@base-components', '@flex-box', '@chart-legend', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/stacked-area-chart/legend-and-pattern-fill.tsx', 'en');
 
@@ -294,7 +294,7 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify props configurations behavior', {
-    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -392,7 +392,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify click handler (onClickArea)', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@area-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     const consoleMessages: string[] = [];
 
@@ -422,7 +422,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify legend checkbox attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@area-chart', '@d3-chart', '@chart-legend'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/d3-chart/docs/examples/area-chart/legend-and-pattern-fill.tsx', 'en');
 

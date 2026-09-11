@@ -21,7 +21,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@time-picker',
       '@checkbox',
       '@date-picker',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx', 'en');
 
@@ -55,7 +58,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
       '@checkbox',
       '@date-picker',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx', 'en');
 

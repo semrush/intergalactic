@@ -4,8 +4,14 @@ SRadio {
   cursor: pointer;
 
   SText {
-    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  }
+
+  &[size='l'] {
+    SText {
+      margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+    }
   }
 
   SText[color] {
@@ -33,7 +39,7 @@ SValue {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+    background: var(--intergalactic-control-radio-bg-normal, oklch(1 0 0));
     border: 1px solid;
     border-radius: 50%;
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
@@ -51,7 +57,7 @@ SValue {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+    background: var(--intergalactic-control-radio-bg-normal, oklch(1 0 0));
   }
 }
 
@@ -83,7 +89,7 @@ SValue[size='l'] {
 }
 
 SValue[state='normal']::before {
-  border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border-color: var(--intergalactic-control-radio-border, oklch(0.137 0.026 175.7 / 0.161));
 }
 
 SValue[state='invalid']::before {
@@ -106,14 +112,13 @@ SControl:checked~SValue[size='l']::after {
 }
 
 SControl:focus-visible+SValue[state='normal']::before {
-  border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
   @mixin focus-outline-mixin;
 }
 
 SControl:checked~SValue::before,
 SControl:checked:focus-visible~SValue::before {
-  border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+  border-color: var(--intergalactic-control-radio-bg-selected, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-radio-bg-selected, oklch(0.23 0.01 140));
 }
 
 SControl:focus-visible+SValue[state='invalid']::before {
@@ -143,6 +148,6 @@ SInvalidPattern {
     border-radius: 50%;
     background-image: var(--intergalactic-border-critical-pattern, repeating-linear-gradient(315deg, oklch(0.7 0.21 23) 0, oklch(0.7 0.21 23) 1px, transparent 0, transparent 50%));
     background-size: 6px 6px;
-    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+    background-color: var(--intergalactic-control-radio-bg-normal, oklch(1 0 0));
   }
 }
