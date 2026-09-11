@@ -9,6 +9,7 @@ SAxis[hide] {
 STick {
   font-size: var(--intergalactic-fs-100, 12px);
   fill: var(--intergalactic-chart-grid-text-label, oklch(0.097 0.023 156.5 / 0.468));
+  font-variant-numeric: tabular-nums;
 }
 STick[primaryText] {
   fill: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
@@ -20,7 +21,9 @@ STick[hide] {
 
 SGrid {
   fill: transparent;
-  stroke: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  stroke: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  stroke-dasharray: 0 4;
+  stroke-linecap: round;
 }
 
 STitle {
