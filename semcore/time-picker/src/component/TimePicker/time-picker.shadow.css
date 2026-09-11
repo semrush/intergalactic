@@ -1,34 +1,40 @@
-STimePicker {
-  position: relative;
-  width: auto;
-  outline: none;
+STimePickerWrapper {
+  display: contents;
 
-  SPickerInput {
-    box-sizing: content-box;
-    text-align: center;
-    z-index: 1;
-    height: 1.5em;
+  STimePicker {
+    position: relative;
+    width: auto;
+    outline: none;
 
-    &[placeholder] {
-      text-overflow: initial;
-    }
-    &:focus {
-      outline: none;
-      background-color: var(--intergalactic-bg-highlight-focus, oklch(0.525 0.265 263 / 0.077));
+    SPickerInput {
+      box-sizing: content-box;
+      text-align: center;
+      z-index: 1;
+      height: 1.5em;
+
+      &[placeholder] {
+        text-overflow: initial;
+      }
+
+      &:focus {
+        outline: none;
+        background-color: var(--intergalactic-bg-highlight-focus, oklch(0.525 0.265 263 / 0.077));
+      }
     }
   }
-}
 
-STimePicker[disabled] {
-  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
-  cursor: default;
-  pointer-events: none;
-}
+  STimePicker[disabled] {
+    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    cursor: default;
+    pointer-events: none;
+  }
 
-STimePickerSeparator {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-}
+  STimePickerSeparator {
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  }
 
-STimePickerSeparator[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.4);
+  STimePickerSeparator[disabled] {
+    opacity: var(--intergalactic-disabled-opacity, 0.4);
+    pointer-events: none;
+  }
 }

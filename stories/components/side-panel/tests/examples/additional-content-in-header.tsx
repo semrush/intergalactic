@@ -1,4 +1,5 @@
-import Button from '@semcore/ui/button';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import Button, { ButtonLink } from '@semcore/ui/button';
 import SidePanel from '@semcore/ui/side-panel';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
@@ -20,9 +21,8 @@ export default function Demo() {
           <SidePanel.Close />
 
           <SidePanel.Header>
-            <SidePanel.Back>Back</SidePanel.Back>
-
             <SidePanel.Title ellipsis={false}>
+              <ButtonLink color='text-hint' size={100} addonLeft={ArrowLeft} mr={2} />
               <Text>Static text: </Text>
               <Text use='secondary' ellipsis={withEllipsis} w={80}>{dynamicText}</Text>
             </SidePanel.Title>

@@ -14,23 +14,23 @@ With this type of case, all words are capitalized, except for minor words that a
   * Tabs
   * Pills
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <img src="./static/tabs-dont.png" style="margin: auto; border-radius: 0" alt="A line of tool tabs with non-capitalized titles 'Audience pverview', 'Traffic journey', and 'Top pages'." />
     </template>
     <template #do>
         <img src="./static/tabs-do.png" style="margin: auto; border-radius: 0" alt="A line of tool tabs with capitalized titles 'Audience Overview', 'Traffic Journey', and 'Top Pages'." />
     </template>
-</DosDonts>
+</DosDontsCopy>
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
         <img src="./static/card-dont.png" style="margin: auto; border-radius: 0" alt="A line of tool tabs with non-capitalized titles 'Audience pverview', 'Traffic journey', and 'Top pages'." />
     </template>
     <template #do>
         <img src="./static/card-do.png" style="margin: auto; border-radius: 0" alt="A line of tool tabs with capitalized titles 'Audience Overview', 'Traffic Journey', and 'Top Pages'." />
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ### Words to capitalize
 * Major words: nouns, verbs, adjectives, adverbs, pronouns, and all words of 4 letters or more
@@ -47,7 +47,7 @@ With this type of case, all words are capitalized, except for minor words that a
 * “To” in an infinitive
 * “Report” and “tool” if they aren't part of the title
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
       <p>Sign up for Our Newsletter</p>
       <p>Award-winning Platform</p>
@@ -64,7 +64,7 @@ With this type of case, all words are capitalized, except for minor words that a
       <p>Get Started with Semrush</p>
       <p>Organic Positions report</p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 ## Sentence case
 With this type of case, most words in a titles or headings are in lowercase. You should capitalize only:
@@ -75,96 +75,96 @@ With this type of case, most words in a titles or headings are in lowercase. You
 * Modal window titles
 
 <!-- vale DevDocs.Contractions = NO -->
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
       <img src="./static/modal-dont.png" style="margin: auto; border-radius: 0;" alt="A modal window with a capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
     </template>
     <template #do>
       <img src="./static/modal-do.png" style="margin: auto; border-radius: 0;" alt="A modal window with a non-capitalized title 'Delete Selected Files?', a subtitle 'They cannot be restored.', and buttons 'Delete' and 'Cancel'." />
     </template>
-</DosDonts>
+</DosDontsCopy>
 <!-- vale DevDocs.Contractions = YES -->
 
 * Notice titles
 
 <!-- vale DevDocs.Please = NO -->
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
       <img src="./static/notice-dont.png" style="margin: auto; border-radius: 0;" alt="A notice with capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
     </template>
     <template #do>
       <img src="./static/notice-do.png" style="margin: auto; border-radius: 0;" alt="A notice with a non-capitalized title 'Your Subscription Has Expired' and body text 'To unlock your projects, please upgrade your subscription.'" />
     </template>
-</DosDonts>
+</DosDontsCopy>
 <!-- vale DevDocs.Please = YES -->
 
 * Buttons
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
-      <img src="./static/button-dont.png" style="margin: auto; border-radius: 0;" alt="A button with capitalized text 'Your Bad Button'" />
+      <img src="./static/button-dont.png" style="margin: auto; width: 140px; border-radius: 0;" alt="A button with capitalized text 'Your Bad Button'" />
      </template>
     <template #do>
-      <img src="./static/button-do.png" style="margin: auto; border-radius: 0;" alt="A button with non-capitalized text 'Good button'" />
+      <img src="./static/button-do.png" style="margin: auto; width: 140px;border-radius: 0;" alt="A button with non-capitalized text 'Good button'" />
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 * Field labels
 * Checkboxes
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
       <img src="./static/label-dont.png" style="margin: 0 auto 16px; border-radius: 0" alt="A field label element with capitailized text 'Email Address'" />
       </template>
     <template #do>
       <img src="./static/label-do.png" style="margin: 0 auto 16px; border-radius: 0" alt="A field label element with non-capitailized text 'Email Address'" />
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 * Menus
 * Dropdown items
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
       <img src="./static/menu-dont.png" style="margin: auto" alt="A menu list with capitalized text 'My profile, Subscription info, Log out'" />
     </template>
     <template #do>
       <img src="./static/menu-do.png" style="margin: auto" alt="A menu list with non-capitalized text 'My profile, Subscription info, Log out'" />
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 * Tags
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
-      <img src="./static/tag-dont.png" style="margin: auto" alt="A tag element with capitalized text 'Add tag'" />
+      <img src="./static/tag-dont.png" style="margin: auto; width: 90px;" alt="A tag element with capitalized text 'Add tag'" />
     </template>
     <template #do>
-      <img src="./static/tag-do.png" style="margin: auto" alt="A tag element with non-capitalized text 'Add tag'" />
+      <img src="./static/tag-do.png" style="margin: auto; width: 90px;" alt="A tag element with non-capitalized text 'Add tag'" />
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 * Links
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
       <p><span style="color: var(--intergalactic-text-link)">Contact Us</span></p>
     </template>
     <template #do>
       <p><span style="color: var(--intergalactic-text-link)">Contact us</span></p>
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 * Bulleted and numbered lists
 
-<DosDonts>
+<DosDontsCopy>
     <template #dont>
       <img src="./static/list-dont.png" style="margin: auto" alt="A menu list with capitalized text 'My profile, Subscription info, Log out'" />
     </template>
     <template #do>
       <img src="./static/list-do.png" style="margin: auto" alt="A menu list with non-capitalized text 'My profile, Subscription info, Log out'" />
     </template>
-</DosDonts>
+</DosDontsCopy>
 
 * Filter names (including filters in the report headers)
 * Company business units (Marketing department, R&D unit)

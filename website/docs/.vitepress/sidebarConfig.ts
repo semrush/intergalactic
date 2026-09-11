@@ -114,34 +114,122 @@ export const sideBarConfig: SidebarConfig = [
         collapsed: true,
         items: [
           {
-            link: '/content/capitalization/capitalization',
-            activeMatch: '/content/capitalization/',
-            text: 'Capitalization',
+            link: '/content/content-principles/content-principles',
+            activeMatch: '/content/content-principles/',
+            text: 'Content principles',
           },
           {
-            link: '/content/date-format/date-format',
-            activeMatch: '/content/date-format/',
-            text: 'Date format',
+            text: 'Style & grammar',
+            collapsed: true,
+            items: [
+              {
+                link: '/content/voice-and-style/voice-and-style',
+                activeMatch: '/content/voice-and-style/',
+                text: 'Voice and style',
+              },
+              {
+                link: '/content/grammar/grammar',
+                activeMatch: '/content/grammar/',
+                text: 'Grammar',
+              },
+              {
+                link: '/content/capitalization/capitalization',
+                activeMatch: '/content/capitalization/',
+                text: 'Capitalization',
+              },
+              {
+                link: '/content/date-format/date-format',
+                activeMatch: '/content/date-format/',
+                text: 'Date format',
+              },
+              {
+                link: '/content/file-extensions/file-extensions',
+                activeMatch: '/content/file-extensions/',
+                text: 'File extensions',
+              },
+              {
+                link: '/content/numbers/numbers',
+                activeMatch: '/content/numbers/',
+                text: 'Numbers',
+              },
+              {
+                link: '/content/punctuation/punctuation',
+                activeMatch: '/content/punctuation/',
+                text: 'Punctuation and special symbols',
+              },
+              {
+                link: '/content/units-of-measurement/units-of-measurement',
+                activeMatch: '/content/units-of-measurement/',
+                text: 'Units of measurement',
+              },
+            ],
           },
           {
-            link: '/content/file-extensions/file-extensions',
-            activeMatch: '/content/file-extensions/',
-            text: 'File extensions',
+            text: 'UX patterns',
+            collapsed: true,
+            items: [
+              {
+                link: '/content/onboarding/onboarding',
+                activeMatch: '/content/onboarding/',
+                text: 'Onboarding',
+              },
+              {
+                link: '/content/pricing-and-sales/pricing-and-sales',
+                activeMatch: '/content/pricing-and-sales/',
+                text: 'Pricing and sales',
+              },
+              {
+                link: '/content/feedback/feedback',
+                activeMatch: '/content/feedback/',
+                text: 'Feedback',
+              },
+              {
+                link: '/content/system-states/system-states',
+                activeMatch: '/content/system-states/',
+                text: 'System states',
+              },
+              {
+                link: '/content/warnings/warnings',
+                activeMatch: '/content/warnings/',
+                text: 'Warnings',
+              },
+              {
+                link: '/content/errors/errors',
+                activeMatch: '/content/errors/',
+                text: 'Errors',
+              },
+              {
+                link: '/content/lists/lists',
+                activeMatch: '/content/lists/',
+                text: 'Lists',
+              },
+              {
+                link: '/content/modals/modals',
+                activeMatch: '/content/modals/',
+                text: 'Modals',
+              },
+            ],
           },
           {
-            link: '/content/numbers/numbers',
-            activeMatch: '/content/numbers/',
-            text: 'Numbers',
+            text: 'UI elements',
+            collapsed: true,
+            items: [
+              {
+                link: '/content/placeholders/placeholders',
+                activeMatch: '/content/placeholders/',
+                text: 'Placeholders',
+              },
+              {
+                link: '/content/buttons/buttons',
+                activeMatch: '/content/buttons/',
+                text: 'Buttons',
+              },
+            ],
           },
           {
-            link: '/content/punctuation/punctuation',
-            activeMatch: '/content/punctuation/',
-            text: 'Punctuation and special symbols',
-          },
-          {
-            link: '/content/units-of-measurement/units-of-measurement',
-            activeMatch: '/content/units-of-measurement/',
-            text: 'Units of measurement',
+            link: '/content/glossary/glossary',
+            activeMatch: '/content/glossary/',
+            text: 'Glossary',
           },
         ],
       },

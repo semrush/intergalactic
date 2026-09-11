@@ -12,7 +12,7 @@ const Demo = () => {
       <SidePanel visible={visible} onClose={() => setVisible(false)} disablePortal>
         <SidePanel.Panel aria-label='Taking the stage' mt={20}>
           <SidePanel.Header>
-            <SidePanel.Title mt={3}>SidePanel Title</SidePanel.Title>
+            <SidePanel.Title>SidePanel Title</SidePanel.Title>
           </SidePanel.Header>
           <SidePanel.Body>
             <Text size={300} tag='p'>

@@ -216,7 +216,7 @@ class FeedbackYesNo extends React.PureComponent {
         }}
       >
         <Notice.Label mr={3} aria-hidden={true}>
-          <FeedbackIllustration />
+          <FeedbackIllustration primaryColor='illustration-blue' />
         </Notice.Label>
         <Notice.Content>
           <Text mr={4}>Do you find our Design System useful?</Text>

@@ -1,8 +1,10 @@
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import FileExportM from '@semcore/icon/FileExport/m';
 import { Box, Flex } from '@semcore/ui/base-components';
-import Button from '@semcore/ui/button';
+import Button, { ButtonLink } from '@semcore/ui/button';
 import SidePanel from '@semcore/ui/side-panel';
 import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
 export type SidePanelDemoProps = {
@@ -12,7 +14,6 @@ export type SidePanelDemoProps = {
   withAdditionalHeaderContent?: boolean;
   withTooltipInBody?: boolean;
   withFooter?: boolean;
-  backText?: string;
   backWMax?: number;
   animationsDisabled?: boolean;
   forcedAdvancedMode?: boolean;
@@ -25,22 +26,26 @@ export const defaultSidePanelDemoProps: SidePanelDemoProps = {
   withAdditionalHeaderContent: false,
   withTooltipInBody: false,
   withFooter: false,
-  backText: 'Go to Tool Name',
   animationsDisabled: false,
   forcedAdvancedMode: false,
 };
 
 const Demo = (props: SidePanelDemoProps) => {
   const [visible, setVisible] = React.useState(false);
-  const backText = props.backText ?? defaultSidePanelDemoProps.backText;
+  const ellipsisProps = {
+    'ellipsis': props.ellipsisTitle,
+    'ellipsis:maxLine': props.ellipsisMaxLine && props.ellipsisMaxLine > 1 ? props.ellipsisMaxLine : undefined,
+  };
 
   const content = (
     <>
       {props.withClose && <SidePanel.Close />}
       <SidePanel.Header>
-        <SidePanel.Back wMax={props.backWMax}>{backText}</SidePanel.Back>
-        <SidePanel.Title w={100} ellipsis={props.ellipsisTitle} ellipsis:maxLine={props.ellipsisMaxLine}>
-          Heading 6, 16px Heading 6, 16px
+        <SidePanel.Title ellipsis={false}>
+          <ButtonLink color='text-hint' size={100} addonLeft={ArrowLeft} mr={2} />
+          <Text w={100} {...ellipsisProps}>
+            Heading 6, 16px Heading 6, 16px
+          </Text>
         </SidePanel.Title>
         {props.withAdditionalHeaderContent && (
           <Flex direction='column'>
@@ -61,9 +66,9 @@ const Demo = (props: SidePanelDemoProps) => {
         )}
       </SidePanel.Body>
       {props.withFooter && (
-        <SidePanel.Footer justifyContent='center' pt={2}>
+        <SidePanel.Footer>
           <Button use='primary'>Primary</Button>
-          <Button ml={2}>Cancel</Button>
+          <Button>Cancel</Button>
         </SidePanel.Footer>
       )}
     </>

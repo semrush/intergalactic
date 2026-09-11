@@ -37,7 +37,7 @@ const Demo = () => {
       .map((item, index) => {
         return {
           id: item,
-          label: `Bar ${index + 1}}`,
+          label: `Bar ${index + 1}`,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
         };
