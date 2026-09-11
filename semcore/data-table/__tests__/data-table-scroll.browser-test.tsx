@@ -262,8 +262,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect.poll(async () => {
           const scrollBarBox = (await scrollBar.boundingBox())!;
           const columnBox = (await fixedColumn.boundingBox())!;
+          const scrollBarMargin = 4;
 
-          return Math.abs(scrollBarBox.x - (columnBox.x + columnBox.width));
+          return Math.abs(scrollBarBox.x - scrollBarMargin - (columnBox.x + columnBox.width));
         }, { timeout: 3000 }).toBeLessThanOrEqual(1);
       }
     });
