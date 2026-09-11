@@ -54,19 +54,6 @@ export default defineConfig([
       'react/no-unescaped-entities': 'off',
       'react/no-find-dom-node': 'off',
 
-      // IMPORTS
-      'no-restricted-imports': [
-        'error',
-        {
-          paths: [
-            {
-              name: 'vitest',
-              message: 'Please use @semcore/testing-utils/vitest instead of importing from vitest directly.',
-            },
-          ],
-        },
-      ],
-
       // TYPESCRIPT
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
@@ -117,6 +104,28 @@ export default defineConfig([
     files: ['tools/**/*', 'website/**/*', 'stories/**/*', '.ci/**/*', 'semcore/**/__tests__/**/*'],
     rules: {
       'no-console': 'off',
+    },
+  },
+  {
+    files: ['stories/**/*.{ts,tsx}', 'playground/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: 'vitest',
+              message: 'Please use @semcore/testing-utils/vitest instead of importing from vitest directly.',
+            },
+          ],
+          patterns: [
+            {
+              regex: '^@semcore\\/(?!ui\\/|icon|illustration)',
+              message: 'Please use imports from @package/ui/* (except @semcore/icon and @semcore/illustration)',
+            },
+          ],
+        },
+      ],
     },
   },
 ]);
