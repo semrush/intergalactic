@@ -28,12 +28,10 @@ Table: Comparison table of criteria for Notice and NoticeBubble
 
 ## Component composition
 
-![](static/notice-composition.png)
-
-Component consists of the following:
+![](static/notice-composition.png){style="width: 65%; float: right"}
 
 1. `Notice.Content`.
-2. `Notice.Label` (optional). It can be an [icon](/style/icon/icon), [badge](/components/badge/badge) or illustration that accompanies the message.
+2. `Notice.Label` (optional). [Icon](/style/icon/icon), [badge](/components/badge/badge) or [illustration](../../style/illustration/illustration) that accompanies the message.
 3. `Notice.Close` (optional).
 4. `Notice.Title` (optional).
 5. `Notice.Text`.

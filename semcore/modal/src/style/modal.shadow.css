@@ -68,7 +68,7 @@ SOverlay {
   & SOverlay {
     background: var(--intergalactic-overlay-secondary, oklch(0.118 0.023 170.1 / 0.262));
   }
-  
+
 }
 
 @media (max-width: 767px) {

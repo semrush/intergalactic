@@ -13,7 +13,7 @@ export function getCurrentVersion(theme: Ref<any, any>, route: Route) {
 }
 
 export function getVersionedBaseLink(currentVersion: string): string {
-  const link = currentVersion === latest ? '/intergalactic/' : `/intergalactic/${currentVersion}/`;
+  const link = currentVersion === latest || !currentVersion ? '/intergalactic/' : `/intergalactic/${currentVersion}/`;
 
   return link;
 }

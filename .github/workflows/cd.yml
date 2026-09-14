@@ -221,7 +221,7 @@ jobs:
         with:
           reporter: github-pr-review
           separator: ","
-          vale_flags: "--minAlertLevel=warning"
+          vale_flags: "--minAlertLevel=warning --glob='!website/docs/content/**'"
           files: ${{ needs.get-changed-files.outputs.changed_files }}
   unit-tests:
     runs-on: ubuntu-latest

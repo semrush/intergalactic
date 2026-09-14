@@ -1,4 +1,6 @@
-import Button from '@semcore/ui/button';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import { Flex } from '@semcore/ui/base-components';
+import Button, { ButtonLink } from '@semcore/ui/button';
 import SidePanel from '@semcore/ui/side-panel';
 import type { NSSidePanel } from '@semcore/ui/side-panel';
 import React from 'react';
@@ -17,14 +19,16 @@ const Demo = (props: NSSidePanel.Props) => {
         closable={props.closable}
         disablePreventScroll={props.disablePreventScroll}
       >
-        <SidePanel.Header h='64px'>
-          <SidePanel.Back>Go to Tool Name</SidePanel.Back>
-          <SidePanel.Title mt={3}>SidePanel title</SidePanel.Title>
+        <SidePanel.Header>
+          <SidePanel.Title ellipsis={false} tag={Flex} alignItems='start'>
+            <ButtonLink use='secondary' size={300} addonLeft={ArrowLeft} mr={2} title='Back to {Step}' />
+            SidePanel title
+          </SidePanel.Title>
         </SidePanel.Header>
         <SidePanel.Body>Content</SidePanel.Body>
-        <SidePanel.Footer justifyContent='center' pt={2} h='80px'>
+        <SidePanel.Footer>
           <Button size='l' use='primary'>Got it!</Button>
-          <Button size='l' ml={2}>Cancel</Button>
+          <Button size='l'>Cancel</Button>
         </SidePanel.Footer>
       </SidePanel>
     </>
