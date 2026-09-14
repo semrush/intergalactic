@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.1] - 2026-09-09
+
+### Fixed
+
+- Values for `progress-bar` and `chart-base-bg` variables have become
+darker.
+
 ## [2.3.0] - 2026-07-09
 
 ### Fixed

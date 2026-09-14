@@ -2,7 +2,6 @@ SWizard {
   max-width: 980px;
   max-height: 700px;
   display: flex;
-  padding: 0;
   background: transparent;
 }
 

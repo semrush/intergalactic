@@ -12,7 +12,7 @@ export default {
     Cats: 3524,
     Dogs: interpolateValue,
     Capybaras: 6135,
-    Hamsters: null,
+    Hamsters: 0,
     Birds: 1823,
   },
 };

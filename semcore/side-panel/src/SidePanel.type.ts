@@ -103,6 +103,9 @@ declare namespace NSSidePanel {
 
   type Component = Intergalactic.Component<'div', Props, Ctx> & {
     Header: Header.Component;
+    /**
+     * @deprecated. Use ButtonLink instead.
+     */
     Back: Back.Component;
     Body: Body.Component;
     Footer: Footer.Component;

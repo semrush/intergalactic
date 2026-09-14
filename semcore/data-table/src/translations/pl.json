@@ -4,5 +4,6 @@
   "DataTable.Cell.AccordionToggle.collapse:aria-label": "Ukryj szczegóły",
   "DataTable.Header.selectAllCheckbox:aria-label": "Wszystkie przedmioty",
   "DataTable.allItemsSelected:aria-live": "Wszystkie przedmioty wybrane",
-  "DataTable.allItemsDeselected:aria-live": "Wszystkie przedmioty odznaczone"
+  "DataTable.allItemsDeselected:aria-live": "Wszystkie przedmioty odznaczone",
+  "DataTable.maxLimitReached:aria-live": "Osiągnięto maksymalny limit"
 }

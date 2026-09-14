@@ -395,10 +395,6 @@ export const theme: Theme = {
         value: colors.gray['50'].value,
         description: 'Background color of the unavailable Badge.',
       },
-      badge_text_primary_DEFAULT: {
-        value: '{semanticTokens.colors.text_primary_DEFAULT}',
-        description: 'Primary text color for Badge.',
-      },
       badge_text_primary_invert: {
         value: '{semanticTokens.colors.text_primary_invert}',
         description: 'Inverted primary text color for Badge.',
@@ -661,7 +657,7 @@ export const theme: Theme = {
         description: 'Critical data color for charts.',
       },
       chart_data_success: {
-        value: colors.green['200'].value,
+        value: colors.salad['200'].value,
         description: 'Success data color for charts.',
       },
       chart_data_warning: {
@@ -883,6 +879,18 @@ export const theme: Theme = {
       chart_x_axis_accent_tick: {
         value: neutral.at(L_BG_SECONDARY_ACTIVE),
         description: 'Background color for the accent tick on the X-axis.',
+      },
+      control_carousel_indicator_DEFAULT: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Background color of the Carousel indicator.',
+      },
+      control_carousel_indicator_invert_DEFAULT: {
+        value: '{semanticTokens.colors.control_primary_invert_DEFAULT}',
+        description: 'Background color of the inverted Carousel indicator.',
+      },
+      control_carousel_indicator_active: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Background color of the active Carousel indicator.',
       },
       control_checkbox_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
@@ -2231,6 +2239,18 @@ export const theme: Theme = {
         value: `${RADII.small}px`,
         description: 'Corner radius for Badge and compact status chips—aligned with small rounded controls.',
       },
+      'carousel-indicator': {
+        value: `${RADII.medium + 2}px`,
+        description: 'Use for rounding Carousel indicators.',
+      },
+      'carousel-item': {
+        value: `${RADII.large + 2}px`,
+        description: 'Use for rounding Carousel.',
+      },
+      'carousel-item-preview': {
+        value: `${RADII.large + 2}px`,
+        description: 'Use for rounding Carousel preview items.',
+      },
       'chart': {
         value: `${RADII['extra-small']}px`,
         description: 'Use for rounding big and small charts like bar, histogram and others.',
@@ -2542,6 +2562,9 @@ export type SemanticTokens = {
   radii: {
     'addon': Value;
     'badge': Value;
+    'carousel-indicator': Value;
+    'carousel-item': Value;
+    'carousel-item-preview': Value;
     'chart': Value;
     'checkbox': Value;
     'counter': Value;
@@ -2790,6 +2813,15 @@ type SemanticColors = {
         hover: {
           active: Value;
         };
+      };
+    };
+    carousel: {
+      indicator: {
+        DEFAULT: Value;
+        active: Value;
+      };
+      indicator_invert: {
+        DEFAULT: Value;
       };
     };
     checkbox: {
@@ -3509,7 +3541,6 @@ type SemanticColors = {
     };
     text: {
       primary: {
-        DEFAULT: Value;
         invert: Value;
       };
       secondary: Value;

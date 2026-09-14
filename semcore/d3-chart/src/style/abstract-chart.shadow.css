@@ -23,7 +23,7 @@ STooltipDeltaWrapper {
   justify-content: flex-end;
 
   &[trend='upward'] {
-    color: var(--intergalactic-chart-data-success, oklch(0.82 0.15 170));
+    color: var(--intergalactic-chart-data-success, oklch(0.82 0.19 143));
   }
 
   &[trend='downward'] {
