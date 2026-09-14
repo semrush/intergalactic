@@ -10,7 +10,7 @@ SFeaturePopover {
 
   &[theme='accent'] {
     background-color: var(--intergalactic-feature-popover-bg-accent, oklch(0.92 0.052 303.1));
-    color: var(--intergalactic-feature-popover-text, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-feature-popover-text, oklch(0.23 0.01 140));
   }
   &[theme='neutral'] {
     background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140));

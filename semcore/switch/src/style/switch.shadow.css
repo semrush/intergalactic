@@ -76,9 +76,9 @@ SSwitch[disabled] {
 }
 
 SToggle {
-  background: var(--intergalactic-control-switch-bg, oklch(0.166 0.031 175.8 / 0.097));
+  background: var(--intergalactic-control-switch-bg, oklch(0.176 0.033 175.6 / 0.056));
   position: relative;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -167,7 +167,7 @@ SAddon {
 }
 
 SAddon[neighborLocation='right'] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 }
 
 SAddon[neighborLocation='left'] {
@@ -175,7 +175,7 @@ SAddon[neighborLocation='left'] {
 }
 
 SAddon[neighborLocation='left']:nth-child(2) {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 }
 
 SSwitch[checked] {
@@ -184,11 +184,11 @@ SSwitch[checked] {
   }
 
   & SAddon[neighborLocation='right']:nth-last-child(2) {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   }
 
   & SAddon[neighborLocation='left'] {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   }
 }
 

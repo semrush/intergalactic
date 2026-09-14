@@ -22,7 +22,7 @@ SText {
       background: none;
       outline: none;
       text-decoration: none;
-      color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
+      color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 140));
       border-bottom-width: 1px;
       border-bottom-style: solid;
       border-color: transparent;
@@ -31,8 +31,8 @@ SText {
       &:hover {
         outline: none;
         text-decoration: none;
-        color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
-        border-color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
+        color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 140));
+        border-color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 140));
       }
 
       &:focus {
@@ -58,7 +58,7 @@ SText {
         display: inline-block;
         position: absolute;
         left: 0;
-        color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+        color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
         font-family: Georgia, Times, 'Times New Roman', serif;
       }
 
@@ -103,7 +103,7 @@ SText {
 
     & ul:not(ul[start], ul[reversed], ul[type]) li:not(SText):before {
       content: '';
-      background-color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+      background-color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
     }
 
     & ol:not(ol[start], ol[reversed], ol[type]):has(+ p),
@@ -469,7 +469,7 @@ SText[textAlign] {
 }
 
 SText[use='primary'] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 }
 
 SText[use='secondary'] {

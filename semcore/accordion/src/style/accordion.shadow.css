@@ -6,7 +6,7 @@ SItemToggle {
 }
 
 SItemToggle[use][use] {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   font-weight: var(--intergalactic-regular, 400);
 }
 SItemToggle[use][use='primary'] {
@@ -27,7 +27,7 @@ SItemChevron {
   margin-right: var(--intergalactic-spacing-2x, 8px);
   transform: rotate(0deg);
   transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
-  fill: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+  fill: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
 
   &[selected] {
     transform: rotate(90deg);

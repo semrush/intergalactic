@@ -20,7 +20,7 @@ SHeader {
 
 STitle {
   font-size: var(--intergalactic-fs-200, 14px);
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   height: 32px;
   width: 100%;
   display: flex;
@@ -45,7 +45,7 @@ SButton SInner {
 }
 
 SInputMask {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   line-height: normal;
   padding-right: var(--intergalactic-spacing-2x, 8px);
   transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
@@ -141,7 +141,7 @@ SDateRange SInputMask:focus-within SMask {
 
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 }
 
 SRangeComparatorHeader {

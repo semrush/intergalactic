@@ -10,7 +10,7 @@ SBreadcrumbs {
     list-style: none;
 
     SSeparator {
-      color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+      color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
       display: flex;
 
       &:last-child {
@@ -37,12 +37,12 @@ SBreadcrumbs {
 
         &:hover {
           text-decoration: underline;
-          color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+          color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
         }
       }
 
       SBreadcrumbsItem[active] {
-        color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+        color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
         cursor: default;
         &:hover {
           text-decoration: none;

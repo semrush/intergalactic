@@ -933,11 +933,11 @@
   },
   {
     "name": "--intergalactic-slider-rating-normal",
-    "value": "oklch(0.8 0.003 169.6)"
+    "value": "oklch(0.092 0.024 152.2 / 0.526)"
   },
   {
     "name": "--intergalactic-slider-rating-hover-active",
-    "value": "oklch(0.66 0.212 300.1)"
+    "value": "oklch(0.22 0.01 140)"
   },
   {
     "name": "--intergalactic-radio-border",
@@ -953,11 +953,11 @@
   },
   {
     "name": "--intergalactic-text-link",
-    "value": "oklch(0.1 0.03 137 / 0.899)"
+    "value": "oklch(0.23 0.01 140)"
   },
   {
     "name": "--intergalactic-text-link-hover-active",
-    "value": "oklch(0.1 0.03 137 / 0.899)"
+    "value": "oklch(0.23 0.01 140)"
   },
   {
     "name": "--intergalactic-text-link-invert",

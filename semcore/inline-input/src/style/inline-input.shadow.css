@@ -11,19 +11,19 @@ SInlineInput {
   box-sizing: border-box;
 
   SConfirmIcon:not([color]) {
-    color: var(--intergalactic-icon-secondary-success, oklch(0.787 0.16 167.8 / 0.898));
+    color: var(--intergalactic-icon-secondary-success, oklch(0.8 0.155 170));
   }
 
   SConfirmIcon:not([color]):hover {
-    color: var(--intergalactic-icon-secondary-success-hover-active, oklch(0.673 0.139 166.3));
+    color: var(--intergalactic-icon-secondary-success-hover-active, oklch(0.66 0.163 170));
   }
 
   SCancelIcon:not([color]) {
-    color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+    color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
   }
 
   SCancelIcon:not([color]):hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.1 0.023 159.1 / 0.433));
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.003 159.3));
   }
 
   SValue {
@@ -36,7 +36,7 @@ SInlineInput {
     padding: var(--intergalactic-spacing-1x, 4px);
     border: none;
     box-sizing: border-box;
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
     font-size: inherit;
     line-height: 1.2;
     text-overflow: ellipsis;
@@ -46,7 +46,7 @@ SInlineInput {
     text-decoration-line: underline;
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
-    text-decoration-color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    text-decoration-color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
     text-underline-offset: 17%;
 
     &:focus, &:focus-visible {
@@ -95,7 +95,7 @@ SUnderline {
 }
 
 SInlineInput:hover:not(:focus-within):not([disabled]) SUnderline {
-  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.166 0.031 175.8 / 0.097));
+  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.176 0.033 175.6 / 0.056));
 }
 
 SInlineInput:hover:not(:focus-within):not([disabled]) SAddon,
@@ -109,7 +109,7 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
   padding: 0 var(--intergalactic-spacing-content-gap-small, 4px);
 }
 

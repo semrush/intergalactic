@@ -11,7 +11,7 @@ SMask {
   letter-spacing: 0.1em;
   text-overflow: inherit;
   white-space: nowrap;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 }
 
 SMask[data-neighbor-location='left'],

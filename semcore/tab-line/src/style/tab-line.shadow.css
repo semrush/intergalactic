@@ -37,7 +37,7 @@ STabLineItem {
   cursor: pointer;
   border: none;
   background: transparent;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   gap: var(--intergalactic-spacing-content-gap-medium, 6px);
   font-weight: var(--intergalactic-medium, 500);
 

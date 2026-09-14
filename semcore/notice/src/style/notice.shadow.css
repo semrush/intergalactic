@@ -7,7 +7,7 @@ SNotice {
   border-style: solid;
   border-width: 1px;
   border-radius: var(--intergalactic-surface-rounded, 8px);
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
@@ -16,10 +16,10 @@ SNotice[theme='info'] {
   border-color: var(--intergalactic-border-info, oklch(0.524 0.265 263 / 0.096));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.088 0.026 147.7 / 0.583));
+      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.53 0.004 149.6));
     }
   }
 }
@@ -29,10 +29,10 @@ SNotice[theme='danger'] {
   border-color: var(--intergalactic-border-critical, oklch(0.63 0.255 24.3 / 0.104));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-critical, oklch(0.552 0.226 28.7 / 0.848));
+    color: var(--intergalactic-icon-primary-critical, oklch(0.58 0.215 26));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-critical-hover-active, oklch(0.511 0.209 28.7 / 0.91));
+      color: var(--intergalactic-icon-primary-critical-hover-active, oklch(0.53 0.206 27.3));
     }
   }
 }
@@ -42,10 +42,10 @@ SNotice[theme='warning'] {
   border-color: var(--intergalactic-border-warning, oklch(0.806 0.17 74.5 / 0.241));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-warning, oklch(0.728 0.188 51.8));
+    color: var(--intergalactic-icon-primary-warning, oklch(0.73 0.191 52.4));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-warning-hover-active, oklch(0.531 0.169 39.3));
+      color: var(--intergalactic-icon-primary-warning-hover-active, oklch(0.53 0.174 43.6));
     }
   }
 }
@@ -55,10 +55,10 @@ SNotice[theme='success'] {
   border-color: var(--intergalactic-border-success, oklch(0.874 0.177 168.2 / 0.25));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-success, oklch(0.595 0.124 165.4));
+    color: var(--intergalactic-icon-primary-success, oklch(0.58 0.151 170));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-success-hover-active, oklch(0.545 0.115 164.9));
+      color: var(--intergalactic-icon-primary-success-hover-active, oklch(0.53 0.142 170));
     }
   }
 }
@@ -68,10 +68,10 @@ SNotice[theme='muted'] {
   border-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.088 0.026 147.7 / 0.583));
+      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.53 0.004 149.6));
     }
   }
 }
@@ -111,23 +111,23 @@ SIllustration {
 }
 
 SLabel[theme='info'], SIcon[theme='info'] {
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
 }
 
 SLabel[theme='danger'], SIcon[theme='danger'] {
-  color: var(--intergalactic-icon-primary-critical, oklch(0.552 0.226 28.7 / 0.848));
+  color: var(--intergalactic-icon-primary-critical, oklch(0.58 0.215 26));
 }
 
 SLabel[theme='warning'], SIcon[theme='warning'] {
-  color: var(--intergalactic-icon-primary-warning, oklch(0.728 0.188 51.8));
+  color: var(--intergalactic-icon-primary-warning, oklch(0.73 0.191 52.4));
 }
 
 SLabel[theme='success'], SIcon[theme='success'] {
-  color: var(--intergalactic-icon-primary-success, oklch(0.595 0.124 165.4));
+  color: var(--intergalactic-icon-primary-success, oklch(0.58 0.151 170));
 }
 
 SLabel[theme='muted'], SIcon[theme='muted'] {
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
 }
 
 SCloseIcon {

@@ -68,10 +68,10 @@ SOptionCheckbox[theme][indeterminate]:before {
 }
 
 SOptionCheckbox[selected] {
-  background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.525 0.265 263 / 0.077));
+  background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.176 0.033 175.6 / 0.056));
 
   &:hover {
-    background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.52 0.268 263.2 / 0.191));
+    background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.176 0.033 175.7 / 0.084));
   }
 }
 

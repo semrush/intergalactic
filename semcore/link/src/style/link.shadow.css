@@ -20,7 +20,7 @@ SLink {
   }
 
   &[theme='default'] {
-    color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 140));
 
     & SText {
       text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.002 174.1));
@@ -29,7 +29,7 @@ SLink {
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
+      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 140));
 
       & SText {
         text-decoration-color: currentColor;

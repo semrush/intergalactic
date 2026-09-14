@@ -6,7 +6,7 @@ SDropdownPopper {
   border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
   white-space: normal;
   box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 
 
   SDropdownItem {
@@ -21,7 +21,7 @@ SDropdownPopper {
   
   SDropdownItem:not(button) {
     width: 100%;
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 
     &:hover {
       background-color: var(--intergalactic-dropdown-menu-item-hover, oklch(0.177 0.033 175.6 / 0.042));
@@ -68,11 +68,11 @@ SDropdownPopper {
   }
 
   SDropdownItem[selected]:not(SDropdownItem[isMenuItemCheckbox]) {
-    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.525 0.265 263 / 0.077));
+    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.176 0.033 175.6 / 0.056));
     box-shadow: 2px 0px 0px 0px var(--intergalactic-dropdown-menu-item-selected-box-shadow, oklch(0.23 0.01 140)) inset;
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.52 0.268 263.2 / 0.191));
+      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.176 0.033 175.7 / 0.084));
     }
   }
 
@@ -177,11 +177,11 @@ SDropdownPopper {
   SDropdownItemContainer[sticky] {
     position: sticky;
     top: 0;
-    background-color: var(--intergalactic-dropdown-menu-item, oklch(1 0 0));
+    background-color: var(--intergalactic-dropdown-menu-item, transparent);
     z-index: 2;
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item, oklch(1 0 0));
+      background-color: var(--intergalactic-dropdown-menu-item, transparent);
     }
   }
 }

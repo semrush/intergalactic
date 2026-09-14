@@ -9,7 +9,7 @@ SOverlay {
   overflow: hidden;
   background: var(--intergalactic-overlay-primary, oklch(0.109 0.023 165.5 / 0.337));
   -webkit-overflow-scrolling: touch;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 }
 
 SPanel {

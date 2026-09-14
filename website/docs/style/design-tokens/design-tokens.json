@@ -475,7 +475,6 @@
       "base-trigger",
       "bulk-textarea",
       "color-picker",
-      "feedback-form",
       "input",
       "input-tags",
       "textarea"
@@ -495,7 +494,6 @@
       "date-picker",
       "divider",
       "dropdown",
-      "feedback-form",
       "fullscreen-modal",
       "input",
       "side-panel",
@@ -983,39 +981,49 @@
   },
   {
     "name": "--intergalactic-control-checkbox-button-bg-hover",
-    "value": "oklch(0.527 0.264 262.9 / 0.039)",
+    "value": "oklch(0.177 0.033 175.6 / 0.042)",
     "description": "Hover state of the Checkbox button background.",
-    "components": []
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-button-bg-normal",
-    "value": "oklch(1 0 0)",
+    "value": "transparent",
     "description": "Normal state of the Checkbox button background.",
-    "components": []
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-button-bg-selected",
-    "value": "oklch(0.525 0.265 263 / 0.077)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Selected state of the Checkbox button background.",
     "components": []
   },
   {
     "name": "--intergalactic-control-checkbox-button-bg-selected-hover",
-    "value": "oklch(0.525 0.265 263 / 0.077)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Hover for a selected state of the Checkbox button background.",
-    "components": []
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-button-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Checkbox button in its normal state.",
-    "components": []
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-button-border-selected",
-    "value": "oklch(0.7 0.131 275.2)",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the Checkbox button in its active state.",
-    "components": []
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-control-radio-bg-normal",
@@ -1226,7 +1234,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
-    "value": "oklch(0.166 0.031 175.8 / 0.097)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background of the regular secondary control.",
     "components": [
       "button",
@@ -1235,7 +1243,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral-active",
-    "value": "oklch(0.145 0.027 176.1 / 0.135)",
+    "value": "oklch(0.157 0.029 176 / 0.11)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": [
       "button"
@@ -1243,7 +1251,7 @@
   },
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
-    "value": "oklch(0.151 0.028 176.1 / 0.123)",
+    "value": "oklch(0.176 0.033 175.7 / 0.084)",
     "description": "Hover state of the regular secondary control.",
     "components": [
       "button"
@@ -1323,19 +1331,23 @@
   },
   {
     "name": "--intergalactic-control-slider-rating-icon",
-    "value": "oklch(0.8 0.003 169.6)",
+    "value": "oklch(0.092 0.024 152.2 / 0.526)",
     "description": "Icon color for the SliderRating component in its normal state.",
-    "components": []
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-control-slider-rating-icon-hover-active",
-    "value": "oklch(0.66 0.212 300.1)",
+    "value": "oklch(0.22 0.01 140)",
     "description": "Icon color for the SliderRating component in its hovered and active states.",
-    "components": []
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-bg",
-    "value": "oklch(0.166 0.031 175.8 / 0.097)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Subtle background of the Switch control.",
     "components": [
       "switch"
@@ -1444,7 +1456,7 @@
   },
   {
     "name": "--intergalactic-control-text-primary",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Primary text color for form controls.",
     "components": [
       "button"
@@ -1572,7 +1584,7 @@
   },
   {
     "name": "--intergalactic-dot-text",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Text color of the Dot.",
     "components": [
       "dot"
@@ -1580,7 +1592,7 @@
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
-    "value": "oklch(1 0 0)",
+    "value": "transparent",
     "description": "Default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown"
@@ -1596,7 +1608,7 @@
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected",
-    "value": "oklch(0.525 0.265 263 / 0.077)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Active (selected) state of the default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown",
@@ -1613,7 +1625,7 @@
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
-    "value": "oklch(0.52 0.268 263.2 / 0.191)",
+    "value": "oklch(0.176 0.033 175.7 / 0.084)",
     "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown",
@@ -1670,7 +1682,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-text",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Text color of the FeaturePopover.",
     "components": [
       "feature-popover"
@@ -1715,7 +1727,7 @@
   },
   {
     "name": "--intergalactic-icon-primary-critical",
-    "value": "oklch(0.552 0.226 28.7 / 0.848)",
+    "value": "oklch(0.58 0.215 26)",
     "description": "Semantic error icon.",
     "components": [
       "notice"
@@ -1723,7 +1735,7 @@
   },
   {
     "name": "--intergalactic-icon-primary-critical-hover-active",
-    "value": "oklch(0.511 0.209 28.7 / 0.91)",
+    "value": "oklch(0.53 0.206 27.3)",
     "description": "Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.",
     "components": [
       "notice"
@@ -1731,31 +1743,31 @@
   },
   {
     "name": "--intergalactic-icon-primary-info",
-    "value": "oklch(0.372 0.253 264.1 / 0.598)",
+    "value": "oklch(0.58 0.168 278.2)",
     "description": "Primary link-lookalike icon.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-primary-info-hover-active",
-    "value": "oklch(0.322 0.222 264.1 / 0.641)",
+    "value": "oklch(0.53 0.157 279.2)",
     "description": "Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-primary-invert",
-    "value": "oklch(0.998 0.003 173.3 / 0.808)",
+    "value": "oklch(0.85 0.002 173.3)",
     "description": "Inverted version of the primary icon.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
-    "value": "oklch(0.998 0.003 169.6 / 0.746)",
+    "value": "oklch(0.8 0.003 169.6)",
     "description": "Hover and active (selected) states of the inverted version of the primary icon.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-primary-neutral",
-    "value": "oklch(0.092 0.024 152.2 / 0.526)",
+    "value": "oklch(0.58 0.003 153.3)",
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
       "accordion",
@@ -1767,7 +1779,7 @@
   },
   {
     "name": "--intergalactic-icon-primary-neutral-hover-active",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.53 0.004 149.6)",
     "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.",
     "components": [
       "feature-highlight",
@@ -1776,7 +1788,7 @@
   },
   {
     "name": "--intergalactic-icon-primary-success",
-    "value": "oklch(0.595 0.124 165.4)",
+    "value": "oklch(0.58 0.151 170)",
     "description": "Semantic success icon.",
     "components": [
       "notice"
@@ -1784,7 +1796,7 @@
   },
   {
     "name": "--intergalactic-icon-primary-success-hover-active",
-    "value": "oklch(0.545 0.115 164.9)",
+    "value": "oklch(0.53 0.142 170)",
     "description": "Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.",
     "components": [
       "notice"
@@ -1792,7 +1804,7 @@
   },
   {
     "name": "--intergalactic-icon-primary-warning",
-    "value": "oklch(0.728 0.188 51.8)",
+    "value": "oklch(0.73 0.191 52.4)",
     "description": "Semantic warning icon.",
     "components": [
       "notice"
@@ -1800,7 +1812,7 @@
   },
   {
     "name": "--intergalactic-icon-primary-warning-hover-active",
-    "value": "oklch(0.531 0.169 39.3)",
+    "value": "oklch(0.53 0.174 43.6)",
     "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.",
     "components": [
       "notice"
@@ -1808,19 +1820,19 @@
   },
   {
     "name": "--intergalactic-icon-secondary-critical",
-    "value": "oklch(0.628 0.258 29.2 / 0.415)",
+    "value": "oklch(0.8 0.145 20.5)",
     "description": "Softer error icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-critical-hover-active",
-    "value": "oklch(0.628 0.257 28.5 / 0.763)",
+    "value": "oklch(0.66 0.23 24)",
     "description": "Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-info",
-    "value": "oklch(0.475 0.281 264.1 / 0.339)",
+    "value": "oklch(0.8 0.095 272.6)",
     "description": "Secondary link-lookalike icon.",
     "components": []
   },
@@ -1832,7 +1844,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
-    "value": "oklch(0.118 0.023 170.1 / 0.262)",
+    "value": "oklch(0.8 0.003 169.6)",
     "description": "De-emphasized icons for dense layouts (tables, tertiary actions).",
     "components": [
       "breadcrumbs",
@@ -1846,7 +1858,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-neutral-hover-active",
-    "value": "oklch(0.1 0.023 159.1 / 0.433)",
+    "value": "oklch(0.66 0.003 159.3)",
     "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
     "components": [
       "data-table",
@@ -1857,7 +1869,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-success",
-    "value": "oklch(0.787 0.16 167.8 / 0.898)",
+    "value": "oklch(0.8 0.155 170)",
     "description": "Softer success icon for dense UI or inline hints where the surface should stay calm.",
     "components": [
       "inline-input"
@@ -1865,7 +1877,7 @@
   },
   {
     "name": "--intergalactic-icon-secondary-success-hover-active",
-    "value": "oklch(0.673 0.139 166.3)",
+    "value": "oklch(0.66 0.163 170)",
     "description": "Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.",
     "components": [
       "inline-input"
@@ -1873,19 +1885,19 @@
   },
   {
     "name": "--intergalactic-icon-secondary-warning",
-    "value": "oklch(0.735 0.184 53.9 / 0.757)",
+    "value": "oklch(0.8 0.164 59.4)",
     "description": "Softer warning icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-warning-hover-active",
-    "value": "oklch(0.662 0.193 43.7)",
+    "value": "oklch(0.66 0.2 48)",
     "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-invert",
-    "value": "oklch(0.994 0.009 143.7 / 0.336)",
+    "value": "oklch(0.45 0.004 143.7)",
     "description": "Softer inverted icon for dense UI or inline hints where the surface should stay calm.",
     "components": []
   },
@@ -2061,7 +2073,7 @@
   },
   {
     "name": "--intergalactic-control-pills-bg-hover",
-    "value": "oklch(0.151 0.028 176.1 / 0.123)",
+    "value": "oklch(0.176 0.033 175.7 / 0.084)",
     "description": "Hover state of the Pills background.",
     "components": [
       "pills"
@@ -2069,7 +2081,7 @@
   },
   {
     "name": "--intergalactic-control-pills-bg-normal",
-    "value": "oklch(0.166 0.031 175.8 / 0.097)",
+    "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background of the Pills in its normal state.",
     "components": [
       "pills"
@@ -2309,7 +2321,7 @@
   },
   {
     "name": "--intergalactic-spin-bg",
-    "value": "oklch(0.118 0.023 170.1 / 0.262)",
+    "value": "oklch(0.8 0.003 169.6)",
     "description": "Track color of the Spin loader.",
     "components": [
       "spin"
@@ -2317,7 +2329,7 @@
   },
   {
     "name": "--intergalactic-spin-bg-invert",
-    "value": "oklch(0.998 0.003 173.3 / 0.808)",
+    "value": "oklch(0.85 0.002 173.3)",
     "description": "Inverted track color of the Spin loader.",
     "components": [
       "spin"
@@ -2919,7 +2931,7 @@
   },
   {
     "name": "--intergalactic-text-link-primary",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Default primary link color.",
     "components": [
       "button",
@@ -2929,7 +2941,7 @@
   },
   {
     "name": "--intergalactic-text-link-primary-hover-active",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Hover and active states for the primary link.",
     "components": [
       "button",
@@ -3017,7 +3029,7 @@
   },
   {
     "name": "--intergalactic-text-primary",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Default body and UI copy; strongest reading emphasis for primary content.",
     "components": [
       "accordion",
@@ -3140,7 +3152,7 @@
   },
   {
     "name": "--intergalactic-tooltip-text",
-    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "value": "oklch(0.23 0.01 140)",
     "description": "Text color of the default Tooltip.",
     "components": [
       "tooltip"
@@ -3432,6 +3444,7 @@
       "button",
       "card",
       "dropdown",
+      "feedback-form",
       "fullscreen-modal",
       "input",
       "input-tags",
@@ -3552,6 +3565,7 @@
       "checkbox",
       "date-picker",
       "dropdown",
+      "feedback-form",
       "fullscreen-modal",
       "notice",
       "notice-bubble",
@@ -3689,6 +3703,7 @@
       "button",
       "dropdown-menu",
       "feature-highlight",
+      "feedback-form",
       "inline-edit",
       "inline-input",
       "input",

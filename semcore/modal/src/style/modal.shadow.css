@@ -6,14 +6,14 @@ SWindow {
   margin: auto;
   padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
   box-shadow: var(--intergalactic-box-shadow-modal, 0px 1px 5px 0px oklch(0.176 0.033 175.7 / 0.07));
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 
   &:focus {
     outline: none;
   }
 
   STitle {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 1.1667);
     font-weight: var(--intergalactic-semi-bold, 600);

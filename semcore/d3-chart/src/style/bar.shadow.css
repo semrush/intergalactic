@@ -42,7 +42,7 @@ SBarAnnotation {
   justify-content: space-between;
 }
 SBarLabel {
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   margin-right: auto;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 1.4286);
@@ -57,7 +57,7 @@ SBarValue {
   min-width: 52px;
   display: flex;
   justify-content: flex-end;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 1.4286);
   text-align: right;

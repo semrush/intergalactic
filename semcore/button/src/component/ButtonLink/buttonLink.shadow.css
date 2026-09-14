@@ -5,7 +5,7 @@ SButtonLink {
 
 SButtonLink[use='primary'] {
   &:not([color]) {
-    color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 140));
   }
 
   SText {
@@ -16,7 +16,7 @@ SButtonLink[use='primary'] {
   &:active,
   &:hover {
     &:not([color]) {
-      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.1 0.03 137 / 0.899));
+      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 140));
     }
 
     SText {
@@ -31,7 +31,7 @@ SButtonLink[use='secondary']:not([color]) {
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-link-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 140));
   }
 }
 

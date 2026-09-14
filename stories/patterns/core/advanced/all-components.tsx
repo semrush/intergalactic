@@ -5,6 +5,7 @@ import React from 'react';
 
 import { Components } from './components/Components';
 import { Graphics } from './components/Graphics';
+import { Palette } from './components/Palette';
 import { PopupsDialogs } from './components/PopupsDialogs';
 import PageHeader from '../../../components/product-head/docs/examples/extended_example';
 import { Dashboard } from '../tests/all-components/components/Dashboard';
@@ -34,12 +35,16 @@ function Demo({ defaultTab = 1 }: { defaultTab?: number }) {
         <TabLine.Item value={4}>
           Graphics
         </TabLine.Item>
+        <TabLine.Item value={5}>
+          Palette
+        </TabLine.Item>
       </TabLine>
 
       {tab === 1 && <Dashboard showPrimaryTableFooter />}
       {tab === 2 && <Components />}
       {tab === 3 && <PopupsDialogs />}
       {tab === 4 && <Graphics />}
+      {tab === 5 && <Palette />}
     </Box>
   );
 }

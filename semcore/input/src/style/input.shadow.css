@@ -37,7 +37,7 @@ SValue {
   padding: 0;
   border: none;
   box-sizing: border-box;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   font-size: inherit;
   text-overflow: ellipsis;
   font-family: inherit;
@@ -85,14 +85,14 @@ SAddon {
   flex: 0 0 auto;
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
   height: 100%;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
 }
 
 SAddon[interactive] {
   cursor: pointer;
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.1 0.023 159.1 / 0.433));
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.003 159.3));
   }
 }
 

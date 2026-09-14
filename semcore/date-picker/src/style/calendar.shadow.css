@@ -48,7 +48,7 @@ SCalendarUnit {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   box-shadow: none;
   overflow: visible;
   user-select: none;
@@ -71,7 +71,7 @@ SCalendarUnit {
   margin: 0;
 
   &:hover {
-    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
     background-color: var(--intergalactic-date-picker-cell-hover, oklch(0.97 0.001 180));
   }
 }
@@ -102,7 +102,7 @@ SCalendarUnit[selected] {
   background-color: var(--intergalactic-date-picker-cell-range, oklch(0.96 0.001 180));
   border-radius: 0;
   transition: border-radius 0s 0s;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 
   &:hover {
     background-color: var(--intergalactic-date-picker-cell-range-hover, oklch(0.9 0.002 177));
@@ -113,7 +113,7 @@ SCalendarUnit[highlighted] {
   background-color: var(--intergalactic-date-picker-cell-range, oklch(0.96 0.001 180));
   border-radius: 0;
   transition: border-radius 0s 0s;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
 
   &:hover {
     background-color: var(--intergalactic-date-picker-cell-range-hover, oklch(0.9 0.002 177));

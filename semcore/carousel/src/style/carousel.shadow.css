@@ -138,7 +138,7 @@ SNext {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.092 0.024 152.2 / 0.526));
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
 
   SPrevButton span:has(> svg:only-child),
   SNextButton span:has(> svg:only-child) {

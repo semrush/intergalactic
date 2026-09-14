@@ -1,6 +1,6 @@
 STextarea {
   height: auto;
-  color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
   border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   border-radius: var(--intergalactic-control-rounded, 6px);
   width: 100%;
