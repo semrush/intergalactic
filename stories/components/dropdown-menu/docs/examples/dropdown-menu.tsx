@@ -40,19 +40,15 @@ const Demo = () => {
             aria-labelledby='export-notice-title'
             theme='warning'
             px={3}
+            title='Export failed'
           >
-            <DropdownMenu.Notice.Content>
-              <Text tag='strong' mb={1} style={{ display: 'block' }} id='export-notice-title'>
-                Export failed
-              </Text>
-              <Text>
-                If the problem persists, please contact us at
-                {' '}
-                <Link href='mailto:feedback@semrush.com'>
-                  feedback@semrush.com
-                </Link>
-              </Text>
-            </DropdownMenu.Notice.Content>
+            <DropdownMenu.Notice.Text>
+              If the problem persists, please contact us at
+              {' '}
+              <Link href='mailto:feedback@semrush.com'>
+                feedback@semrush.com
+              </Link>
+            </DropdownMenu.Notice.Text>
           </DropdownMenu.Notice>
         </SpinContainer>
       </DropdownMenu.Popper>

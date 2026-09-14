@@ -48,7 +48,6 @@ export type SelectBasicProps = Omit<
   noticeText?: string;
   showNoticeActions?: boolean;
   noticeActionText?: string;
-  showNoticeClose?: boolean;
 };
 
 const Demo = (props: SelectBasicProps) => {
@@ -91,7 +90,6 @@ const Demo = (props: SelectBasicProps) => {
     noticeText = 'Additional information related to the available options.',
     showNoticeActions = true,
     noticeActionText = 'Action',
-    showNoticeClose = false,
 
     ...restProps
   } = props;
@@ -128,22 +126,15 @@ const Demo = (props: SelectBasicProps) => {
     <Select.Notice
       theme={noticeTheme}
       hidden={noticeHidden}
+      icon={showNoticeLabel ? (<InfoM />) : undefined}
+      title={noticeTitle}
     >
-      {showNoticeLabel && (
-        <Select.Notice.Label>
-          <InfoM />
-        </Select.Notice.Label>
+      {noticeText && <Select.Notice.Text>{noticeText}</Select.Notice.Text>}
+      {showNoticeActions && (
+        <Select.Notice.Actions>
+          <Button use='primary'>{noticeActionText}</Button>
+        </Select.Notice.Actions>
       )}
-      <Select.Notice.Content>
-        {noticeTitle && <Select.Notice.Title>{noticeTitle}</Select.Notice.Title>}
-        {noticeText && <Select.Notice.Text>{noticeText}</Select.Notice.Text>}
-        {showNoticeActions && (
-          <Select.Notice.Actions>
-            <Button use='primary'>{noticeActionText}</Button>
-          </Select.Notice.Actions>
-        )}
-      </Select.Notice.Content>
-      {showNoticeClose && <Select.Notice.Close />}
     </Select.Notice>
   );
 
@@ -261,7 +252,6 @@ export const defaultProps: SelectBasicProps = {
   noticeText: 'Additional information related to the available options.',
   showNoticeActions: true,
   noticeActionText: 'Action',
-  showNoticeClose: false,
 };
 
 Demo.defaultProps = defaultProps;

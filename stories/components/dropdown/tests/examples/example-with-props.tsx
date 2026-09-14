@@ -25,7 +25,6 @@ type DropdownExampleProps =
     noticeText?: string;
     showNoticeActions?: boolean;
     noticeActionText?: string;
-    showNoticeClose?: boolean;
   };
 const Demo = (props: DropdownExampleProps) => (
   <Flex p={30}>
@@ -73,24 +72,15 @@ const Demo = (props: DropdownExampleProps) => (
           <Dropdown.Notice
             theme={props.noticeTheme}
             hidden={props.noticeHidden}
+            icon={props.showNoticeLabel ? (<InfoM />) : undefined}
+            title={props.noticeTitle}
           >
-            {props.showNoticeLabel && (
-              <Dropdown.Notice.Label>
-                <InfoM />
-              </Dropdown.Notice.Label>
+            {props.noticeText && <Dropdown.Notice.Text>{props.noticeText}</Dropdown.Notice.Text>}
+            {props.showNoticeActions && (
+              <Dropdown.Notice.Actions>
+                <Button use='primary'>{props.noticeActionText}</Button>
+              </Dropdown.Notice.Actions>
             )}
-            <Dropdown.Notice.Content>
-              {props.noticeTitle && (
-                <Dropdown.Notice.Title>{props.noticeTitle}</Dropdown.Notice.Title>
-              )}
-              {props.noticeText && <Dropdown.Notice.Text>{props.noticeText}</Dropdown.Notice.Text>}
-              {props.showNoticeActions && (
-                <Dropdown.Notice.Actions>
-                  <Button use='primary'>{props.noticeActionText}</Button>
-                </Dropdown.Notice.Actions>
-              )}
-            </Dropdown.Notice.Content>
-            {props.showNoticeClose && <Dropdown.Notice.Close />}
           </Dropdown.Notice>
         )}
       </Dropdown.Popper>
@@ -121,7 +111,6 @@ export const defaultDropdownExampleProps: DropdownExampleProps = {
   noticeText: 'Additional information related to the dropdown content.',
   showNoticeActions: true,
   noticeActionText: 'Action',
-  showNoticeClose: false,
 };
 
 Demo.defaultProps = defaultDropdownExampleProps;

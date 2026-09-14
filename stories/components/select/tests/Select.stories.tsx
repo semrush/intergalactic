@@ -141,10 +141,6 @@ export const BasicPropsAndTriggerAddons: StoryObj<typeof BasicProps> = {
       control: { type: 'text' },
       table: { category: 'Notice content' },
     },
-    showNoticeClose: {
-      control: { type: 'boolean' },
-      table: { category: 'Notice content' },
-    },
   },
   args: BasicProps,
 };

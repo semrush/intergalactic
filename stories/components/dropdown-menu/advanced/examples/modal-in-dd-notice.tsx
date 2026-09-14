@@ -40,12 +40,12 @@ const Demo = () => {
               <DropdownMenu.Item onClick={handleClick}>CSV</DropdownMenu.Item>
               <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
             </DropdownMenu.List>
-            <DropdownMenu.Notice px={3} theme='warning'>
-              <DropdownMenu.Notice.Content>
+            <DropdownMenu.Notice px={3} theme='warning' title='Unsaved changes'>
+              <DropdownMenu.Notice.Actions>
                 <Button onClick={handleOpen} use='primary'>
                   Open modal
                 </Button>
-              </DropdownMenu.Notice.Content>
+              </DropdownMenu.Notice.Actions>
             </DropdownMenu.Notice>
           </SpinContainer>
         </DropdownMenu.Popper>
