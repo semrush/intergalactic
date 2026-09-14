@@ -388,7 +388,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion'],
   }, async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/tests/examples/default-values.tsx', 'en');
+    await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
     await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
   });
 
