@@ -127,8 +127,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    */
   yTicksCount?: number;
   /** Enables multiline tick labels for X axis, applicable only for band scales */
+  /** @deprecated has no effect since v.18 */
   multilineXTicks?: boolean;
   /** Enables multiline tick labels for Y axis, applicable only for band scales */
+  /** @deprecated has no effect since v.18 */
   multilineYTicks?: boolean;
   /**
    * Group key for all array-based charts (for get keys of items for legend except that group key)
@@ -137,8 +139,8 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   /**
    * function for format axis item text
    */
-  axisXValueFormatter?: (value: unknown) => string;
-  axisYValueFormatter?: (value: unknown) => string;
+  axisXValueFormatter?: (value: unknown) => React.ReactNode;
+  axisYValueFormatter?: (value: unknown) => React.ReactNode;
   /**
    * Function for format text for tooltip
    */
