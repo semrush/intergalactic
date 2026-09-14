@@ -1,4 +1,5 @@
 import type { Property } from 'csstype';
+import type * as React from 'react';
 
 import type { BodyPropsInner } from '../Body/Body.types';
 import type { DataTableCellProps } from '../Body/Cell.types';
@@ -100,4 +101,5 @@ export type ColumnPropsInner<
   onClick: DataTableCellProps<Data, UniqKeyType>['onClick'];
   shadowVertical?: BodyPropsInner<Data, UniqKeyType>['shadowVertical'];
   scrollDirection?: 'horizontal' | 'vertical' | 'both';
+  headerNodesMap: Map<string, React.RefObject<HTMLDivElement>>;
 };

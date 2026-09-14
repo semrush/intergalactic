@@ -3352,7 +3352,6 @@
       "color-picker",
       "input",
       "input-tags",
-      "notice",
       "pills",
       "tab-line",
       "tab-panel",
@@ -3399,6 +3398,7 @@
       "dropdown",
       "dropdown-menu",
       "input-tags",
+      "notice",
       "pills",
       "side-panel",
       "wizard"
@@ -3410,6 +3410,7 @@
     "description": "Extended extra small padding for content inside controls and surfaces.",
     "components": [
       "counter",
+      "notice",
       "pills"
     ]
   },
@@ -3423,6 +3424,7 @@
       "dropdown",
       "fullscreen-modal",
       "modal",
+      "notice",
       "pills",
       "side-panel",
       "typography",
@@ -3444,6 +3446,7 @@
       "input",
       "input-tags",
       "modal",
+      "notice",
       "pills",
       "radio-cards",
       "tab-panel",
@@ -3463,6 +3466,7 @@
       "color-picker",
       "feature-popover",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
       "side-panel",
       "typography",
@@ -3476,6 +3480,7 @@
     "components": [
       "bulk-textarea",
       "card",
+      "notice",
       "radio-cards",
       "wizard"
     ]
@@ -3562,6 +3567,7 @@
       "date-picker",
       "dropdown",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
       "pagination",
       "radio",

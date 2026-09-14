@@ -4,12 +4,13 @@ import { DataTable } from '@semcore/ui/data-table';
 import { NoData } from '@semcore/ui/widget-empty';
 import React from 'react';
 
-const Demo = () => {
+const Demo = (props: { loading?: boolean }) => {
   return (
     <Box w='100%' position='absolute' left={0}>
       <DataTable
         data={[]}
         aria-label='Empty table example'
+        loading={props.loading}
         w='100%'
         columns={[
           { name: 'keyword', children: 'keyword', gtcWidth: 'minmax(150px, 1fr)' },

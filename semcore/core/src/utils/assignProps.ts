@@ -84,10 +84,10 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
     newProps.forwardRef = newProps.ref;
   }
 
-  if (source.style && props.style) {
+  if (source.style || props.style) {
     newProps.style = {
-      ...source.style,
-      ...props.style,
+      ...(source.style ?? {}),
+      ...(props.style ?? {}),
     };
   }
 

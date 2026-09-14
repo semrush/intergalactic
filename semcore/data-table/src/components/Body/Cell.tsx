@@ -1,5 +1,4 @@
 import { Box, Flex } from '@semcore/base-components';
-import type { Intergalactic } from '@semcore/core';
 import { Root, sstyled, createComponent, Component } from '@semcore/core';
 import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { isFocusInside } from '@semcore/core/lib/utils/focus-lock/isFocusInside';
@@ -105,7 +104,7 @@ class CellRoot<Data extends DataTableData, UniqKeyType>
         gridArea={gridArea}
         fixed={column.fixed}
         style={style}
-        shadowVertical={column.showShadowVertical ? shadowVertical : undefined}
+        shadowVertical={shadowVertical}
       >
         <SCell
           ref={this.cellRef}

@@ -275,7 +275,7 @@ class FeedbackRatingRoot extends Component<
           alignItems={notificationTitle ? 'flex-start' : 'center'}
         >
           <NoticeComponent.Label mr={3} aria-hidden={true}>
-            <Illustration />
+            <Illustration primaryColor={Illustration === FeedbackIllustration ? 'illustration-blue' : undefined} />
           </NoticeComponent.Label>
           <NoticeComponent.Content>
             {notificationTitle ? <NoticeComponent.Title>{notificationTitle}</NoticeComponent.Title> : null}
