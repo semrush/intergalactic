@@ -27,7 +27,6 @@ type DropDownPropsExample = DropdownMenuProps & DropdownMenuListProps & {
   noticeText?: string;
   showNoticeActions?: boolean;
   noticeActionText?: string;
-  showNoticeClose?: boolean;
 };
 const Demo = (props: DropDownPropsExample) => {
   const [selected, setSelected] = React.useState<number[]>([0, 1]);
@@ -45,26 +44,17 @@ const Demo = (props: DropDownPropsExample) => {
       <DropdownMenu.Notice
         theme={props.noticeTheme}
         hidden={props.noticeHidden}
+        icon={props.showNoticeLabel ? (<InfoM />) : undefined}
+        title={props.noticeTitle}
       >
-        {props.showNoticeLabel && (
-          <DropdownMenu.Notice.Label>
-            <InfoM />
-          </DropdownMenu.Notice.Label>
+        {props.noticeText && (
+          <DropdownMenu.Notice.Text>{props.noticeText}</DropdownMenu.Notice.Text>
         )}
-        <DropdownMenu.Notice.Content>
-          {props.noticeTitle && (
-            <DropdownMenu.Notice.Title>{props.noticeTitle}</DropdownMenu.Notice.Title>
-          )}
-          {props.noticeText && (
-            <DropdownMenu.Notice.Text>{props.noticeText}</DropdownMenu.Notice.Text>
-          )}
-          {props.showNoticeActions && (
-            <DropdownMenu.Notice.Actions>
-              <Button use='primary'>{props.noticeActionText}</Button>
-            </DropdownMenu.Notice.Actions>
-          )}
-        </DropdownMenu.Notice.Content>
-        {props.showNoticeClose && <DropdownMenu.Notice.Close />}
+        {props.showNoticeActions && (
+          <DropdownMenu.Notice.Actions>
+            <Button use='primary'>{props.noticeActionText}</Button>
+          </DropdownMenu.Notice.Actions>
+        )}
       </DropdownMenu.Notice>
     );
   };
@@ -179,7 +169,6 @@ export const defaultDropDownMultiselectPropsExample: DropDownPropsExample = {
   noticeText: 'Additional information related to the available actions.',
   showNoticeActions: true,
   noticeActionText: 'Action',
-  showNoticeClose: false,
 };
 
 Demo.defaultProps = defaultDropDownMultiselectPropsExample;

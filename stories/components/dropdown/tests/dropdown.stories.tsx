@@ -110,10 +110,6 @@ export const ExampleWithProps: StoryObj<typeof defaultDropdownExampleProps> = {
       control: { type: 'text' },
       table: { category: 'Notice content' },
     },
-    showNoticeClose: {
-      control: { type: 'boolean' },
-      table: { category: 'Notice content' },
-    },
   },
   args: defaultDropdownExampleProps,
 };
