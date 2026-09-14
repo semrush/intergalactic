@@ -677,7 +677,7 @@ export const theme: Theme = {
         description: 'Border for distinguishing data sets and chart dots on the chart grid.',
       },
       chart_grid_line: {
-        value: neutral.at(L_BORDER_SECONDARY),
+        value: neutral.at(L_BORDER_PRIMARY),
         description: 'Grid and axis guide lines for charts.',
       },
       chart_grid_period_bg: {

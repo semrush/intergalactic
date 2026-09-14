@@ -8,19 +8,44 @@ SAxis[hide] {
 
 STick {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-chart-grid-text-label, oklch(0.097 0.023 156.5 / 0.468));
-}
-STick[primaryText] {
-  fill: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-}
+  font-variant-numeric: tabular-nums;
+  line-height: var(--intergalactic-lh-100, 133%);
+  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
 
-STick[hide] {
-  display: none;
+  &[position='bottom'] {
+    text-align: center;
+  }
+
+  &[position='left'] {
+    text-align: end;
+    align-content: center;
+    dominant-baseline: central;
+  }
+
+  &[position='top'] {
+    text-align: center;
+    align-content: end;
+  }
+
+  &[position='right'] {
+    align-content: center;
+    dominant-baseline: central;
+  }
+
+  &[hide] {
+    display: none;
+  }
+
+  &[primaryText] {
+    color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
+  }
 }
 
 SGrid {
   fill: transparent;
-  stroke: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  stroke: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  stroke-dasharray: 0 4;
+  stroke-linecap: round;
 }
 
 STitle {
@@ -53,56 +78,6 @@ STitle[position='right'][verticalWritingMode],
 STitle[position='left'][verticalWritingMode] {
   writing-mode: vertical-rl;
   transform: none;
-}
-
-STick[position='top'] {
-  transform: translateY(-12px);
-  text-anchor: middle;
-}
-
-STick[position='bottom'] {
-  transform: translateY(12px);
-  text-anchor: middle;
-  dominant-baseline: hanging;
-
-  tspan {
-    dominant-baseline: hanging;
-  }
-}
-
-STick[position='right'] {
-  transform: translateX(16px);
-  dominant-baseline: middle;
-
-  tspan {
-    dominant-baseline: middle;
-  }
-
-  &[multiline] {
-    dominant-baseline: auto;
-
-    tspan {
-      dominant-baseline: auto;
-    }
-  }
-}
-
-STick[position='left'] {
-  transform: translateX(-16px);
-  text-anchor: end;
-  dominant-baseline: middle;
-
-  tspan {
-    dominant-baseline: middle;
-  }
-
-  &[multiline] {
-    dominant-baseline: auto;
-
-    tspan {
-      dominant-baseline: auto;
-    }
-  }
 }
 
 STick[position='custom_0'] {
