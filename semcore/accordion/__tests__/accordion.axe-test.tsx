@@ -20,14 +20,6 @@ test.describe(`@accordion ${TAG.ACCESSIBILITY}`, () => {
     }
   });
 
-  test('Custom styles', async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/custom_styles.tsx', 'en');
-
-    const violations = await getAccessibilityViolations({ page });
-
-    expect(violations).toEqual([]);
-  });
-
   test('Heading tag', async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/heading_tag.tsx', 'en');
 
@@ -36,12 +28,21 @@ test.describe(`@accordion ${TAG.ACCESSIBILITY}`, () => {
     expect(violations).toEqual([]);
   });
 
-  test('Non compact', async ({ page }) => {
-    await loadPage(page, 'stories/components/accordion/docs/examples/non_compact.tsx', 'en');
+  test('Primary accordion', async ({ page }) => {
+    await loadPage(page, 'stories/components/accordion/docs/examples/primary_accordion.tsx', 'en');
 
-    const violations = await getAccessibilityViolations({ page });
+    {
+      const violations = await getAccessibilityViolations({ page });
 
-    expect(violations).toEqual([]);
+      expect(violations).toEqual([]);
+    }
+    {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      const violations = await getAccessibilityViolations({ page });
+
+      expect(violations).toEqual([]);
+    }
   });
 
   test('One section opening', async ({ page }) => {
