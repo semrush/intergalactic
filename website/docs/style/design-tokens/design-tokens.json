@@ -3554,6 +3554,7 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "breadcrumbs",
       "button",
       "carousel",

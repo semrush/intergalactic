@@ -59,7 +59,7 @@ SItemToggle {
 
 SItemToggleButton {
   flex: 1;
-  gap: var(--intergalactic-spacing-content-gap-large);
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SItemChevron {
