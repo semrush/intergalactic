@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import GridAxisPropsExample, { defaultProps as BasicUsageProps } from './examples/d3-chart/grid-axis-props';
+import HoveredTickExample, { defaultProps as HoveredTickProps } from './examples/d3-chart/hovered-tick';
 import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
 import ReferenceLinePropsExample from './examples/d3-chart/reference-line-props';
+import TooltipDefaultFormatExample, { defaultProps as TooltipDefaultFormatProps } from './examples/d3-chart/tooltip-default-format';
 import XAsisiRenderDelayedExample from './examples/d3-chart/xAxis-ticks-render-delayed';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/Tests/D3-Chart',
@@ -51,4 +54,22 @@ export const ReferenceLineProps: StoryObj = {
 
 export const XAsisiRenderDelayed: StoryObj = {
   render: XAsisiRenderDelayedExample,
+};
+
+export const HoveredTick: StoryObj<typeof HoveredTickProps> = {
+  render: HoveredTickExample,
+  argTypes: {
+    hoverType: { control: 'select', options: ['Line', 'Rect'] },
+    hideTickHover: { control: 'boolean' },
+    hideHoverLine: { control: 'boolean' },
+    width: { control: { type: 'number' } },
+    height: { control: { type: 'number' } },
+  },
+  args: HoveredTickProps,
+};
+
+export const TooltipDefaultFormat: StoryObj<typeof TooltipDefaultFormatProps> = {
+  render: TooltipDefaultFormatExample,
+  argTypes: getChartArgTypes(),
+  args: TooltipDefaultFormatProps,
 };

@@ -111,6 +111,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    */
   showTotalInTooltip?: boolean;
   /**
+   * Show the percentage change from the previous point in the tooltip
+   */
+  showDeltaPercentInTooltip?: boolean;
+  /**
    * Scale for xAxis (see more in d3-scale)
    */
   xScale?: unknown;
@@ -171,6 +175,11 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Props for Legend
    */
   legendProps?: Partial<BaseLegendProps>;
+  /**
+   * Locale for displaying the days of a week and months, to be transferred to `Intl`
+   * @default en
+   * */
+  locale?: NavigatorLanguage['language'];
 } & (
   | {
   /**

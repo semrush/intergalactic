@@ -23,6 +23,8 @@ export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   showYAxis: true,
   showTooltip: true,
   showTotalInTooltip: true,
+  showDeltaPercentInTooltip: false,
+  locale: 'en',
   xTicksCount: 10,
   yTicksCount: 10,
   multilineXTicks: false,
@@ -75,7 +77,7 @@ export const getChartArgTypes = (additionalControls?: any) => {
     'showLegend': { control: { type: 'boolean' } },
 
     'legendProps.size': { control: 'select', options: ['m', 'l'] },
-    'legendProps.shape': { control: 'select', options: ['Checkbox', 'Circle', 'Line', 'Square', 'Pattern'] },
+    'legendProps.shape': { control: 'select', options: ['Checkbox', 'Circle', 'Pattern'] },
     'legendProps.disableHoverItems': { control: 'boolean' },
     'legendProps.disableSelectItems': { control: 'boolean' },
     'legendProps.legendType': { control: 'select', options: ['Flex', 'Table'] },
@@ -84,6 +86,10 @@ export const getChartArgTypes = (additionalControls?: any) => {
     'showTooltip': { control: { type: 'boolean' } },
     'showTotalInTooltip': { control: { type: 'boolean' } },
     'showPercentValueInTooltip': { control: { type: 'boolean' } },
+    'showDeltaPercentInTooltip': { control: { type: 'boolean' } },
+    // Only locales shipped with the d3-chart a11y translations are safe here:
+    // an unsupported locale (e.g. 'ru') makes PlotA11yModule throw.
+    'locale': { control: 'select', options: ['en', 'de', 'fr', 'ja'] },
     'tooltipViewType': { control: 'select', options: ['all', 'single'] },
     'xTicksCount': { control: { type: 'number' } },
     'yTicksCount': { control: { type: 'number' } },

@@ -36,6 +36,7 @@ export type BubbleChartDefaultProps = {
   showXAxis: true;
   showYAxis: true;
   showTooltip: true;
+  locale: 'en';
 };
 
 export type BubbleChartType = Intergalactic.Component<typeof Flex, BubbleChartProps>;
