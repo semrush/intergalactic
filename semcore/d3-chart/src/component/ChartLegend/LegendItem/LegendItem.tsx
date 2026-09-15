@@ -52,8 +52,20 @@ class LegendItemRoot extends Component<
   }
 
   getShapeProps() {
-    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem, onFocusLegendItem, onBlurLegendItem } =
-      this.asProps;
+    const {
+      checked,
+      color,
+      shape,
+      label,
+      id,
+      size,
+      resolveColor,
+      patterns,
+      onChangeLegendItem,
+      onFocusLegendItem,
+      onBlurLegendItem,
+    } = this.asProps;
+
     return {
       label,
       shape,
@@ -82,7 +94,7 @@ class LegendItemRoot extends Component<
   }
 
   getIconProps() {
-    const props = this.asProps;
+    const { onMouseEnter, onMouseLeave, ...props } = this.asProps;
 
     return {
       ...props,
@@ -96,7 +108,7 @@ class LegendItemRoot extends Component<
   }
 
   getLabelProps() {
-    const { id, checked, color: _color, onChangeLegendItem, shape: _shape, ...props } = this.asProps;
+    const { id, checked, color: _color, onChangeLegendItem, shape: _shape, onMouseEnter, onMouseLeave, ...props } = this.asProps;
 
     return {
       ...props,
