@@ -49,6 +49,26 @@ export const IconPlatform: StoryObj = {
 export const StrokeWidth: StoryObj<typeof StrokeWidthProps> = {
   render: StrokeWidthExample,
   args: StrokeWidthProps,
+  argTypes: {
+    regularWidth: {
+      control: {
+        type: 'number',
+        step: 0.05,
+      },
+    },
+    boldWidth: {
+      control: {
+        type: 'number',
+        step: 0.05,
+      },
+    },
+    customWidth: {
+      control: {
+        type: 'number',
+        step: 0.05,
+      },
+    },
+  },
 };
 
 export const IconMarginProps: StoryObj<typeof iconPropsDefaults> = {
