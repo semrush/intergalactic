@@ -170,7 +170,7 @@ STag[theme="secondary"],
 STagContainerClose[theme="secondary"] {
   color: var(--intergalactic-tag-secondary-text, #6a6c6a);
   background-color: var(--intergalactic-tag-secondary-bg-normal, #ffffff);
-  border-color: var(--intergalactic-tag-secondary-border, oklch(0.95 0.002 180));
+  border-color: var(--intergalactic-tag-secondary-border, oklch(0.95 0.006 215.8));
 
   &::before,
   &::after {
@@ -188,7 +188,7 @@ STag[theme="additional"],
 STagContainerClose[theme="additional"] {
   color: var(--intergalactic-tag-additional-text, #6a6c6a);
   background-color: var(--intergalactic-tag-additional-bg-normal, oklch(1 0 0));
-  border-color: var(--intergalactic-tag-additional-border, oklch(0.95 0.002 180));
+  border-color: var(--intergalactic-tag-additional-border, oklch(0.95 0.006 215.8));
   border-style: dashed;
 
   &::before,
@@ -199,28 +199,28 @@ STagContainerClose[theme="additional"] {
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-additional-bg-hover-active, oklch(0.97 0.001 180));
+    background-color: var(--intergalactic-tag-additional-bg-hover-active, oklch(0.97 0.004 215.3));
   }
 }
 
 STag[theme="primary-invert"],
 STagContainerClose[theme="primary-invert"] {
-  background-color: var(--intergalactic-tag-primary-bg-invert-normal, oklch(0.969 0.057 140 / 0.118));
+  background-color: var(--intergalactic-tag-primary-bg-invert-normal, oklch(0.916 0.055 225.3 / 0.127));
   color: var(--intergalactic-tag-primary-text-invert, #ffffff);
   border-color: transparent;
 
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-primary-bg-invert-hover-active, oklch(0.99 0.017 140 / 0.242));
+    background-color: var(--intergalactic-tag-primary-bg-invert-hover-active, oklch(0.928 0.046 225.1 / 0.264));
   }
 }
 
 STag[theme="secondary-invert"],
 STagContainerClose[theme="secondary-invert"] {
   background-color: var(--intergalactic-tag-secondary-bg-invert-normal, transparent);
-  color: var(--intergalactic-tag-secondary-text-invert, oklch(0.997 0.004 165.9 / 0.684));
-  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.989 0.019 140 / 0.232));
+  color: var(--intergalactic-tag-secondary-text-invert, oklch(0.959 0.028 221.4 / 0.721));
+  border-color: var(--intergalactic-tag-secondary-border-invert, oklch(0.928 0.047 225.1 / 0.253));
 
   &::before,
   &::after {
@@ -230,15 +230,15 @@ STagContainerClose[theme="secondary-invert"] {
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-secondary-bg-invert-hover-active, oklch(0.98 0.036 140 / 0.164));
+    background-color: var(--intergalactic-tag-secondary-bg-invert-hover-active, oklch(0.923 0.05 225.2 / 0.178));
   }
 }
 
 STag[theme="additional-invert"],
 STagContainerClose[theme="additional-invert"] {
   background-color: var(--intergalactic-tag-additional-bg-invert-normal, transparent);
-  color: var(--intergalactic-tag-additional-text-invert, oklch(0.997 0.004 165.9 / 0.684));
-  border-color: var(--intergalactic-tag-additional-border-invert, oklch(0.995 0.009 144.4 / 0.347));
+  color: var(--intergalactic-tag-additional-text-invert, oklch(0.959 0.028 221.4 / 0.721));
+  border-color: var(--intergalactic-tag-additional-border-invert, oklch(0.932 0.044 225.1 / 0.378));
   border-style: dashed;
 
   &::before,
@@ -249,7 +249,7 @@ STagContainerClose[theme="additional-invert"] {
   &[interactiveView]:hover,
   &[interactiveView]:active,
   &[active] {
-    background-color: var(--intergalactic-tag-additional-bg-invert-hover-active, oklch(0.98 0.036 140 / 0.164));
+    background-color: var(--intergalactic-tag-additional-bg-invert-hover-active, oklch(0.923 0.05 225.2 / 0.178));
   }
 }
 
@@ -263,7 +263,7 @@ SText {
 SText:focus-visible {
   box-shadow: var(
     --intergalactic-keyboard-focus,
-    0px 0px 0px 3px oklch(0.424 0.269 264.2 / 0.469)
+    0px 0px 0px 3px oklch(from oklch(0.23 0.01 225) l c h / 0.5)
   );
   z-index: 1;
 }

@@ -5,15 +5,15 @@ SText {
   &[formatTags] {
 
     & abbr {
-      color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
-      text-decoration: underline dashed var(--intergalactic-text-hint, oklch(0.097 0.023 156.5 / 0.468));
+      color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+      text-decoration: underline dashed var(--intergalactic-text-hint, oklch(0.247 0.049 230.2 / 0.524));
 
       &:active,
       &:hover,
       &:focus {
         outline: none;
-        color: var(--intergalactic-text-hint-hover-active, oklch(0.095 0.024 154.8 / 0.492));
-        text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, oklch(0.095 0.024 154.8 / 0.492));
+        color: var(--intergalactic-text-hint-hover-active, oklch(0.243 0.049 230.4 / 0.548));
+        text-decoration: underline dashed var(--intergalactic-text-hint-hover-active, oklch(0.243 0.049 230.4 / 0.548));
       }
     }
 
@@ -22,7 +22,7 @@ SText {
       background: none;
       outline: none;
       text-decoration: none;
-      color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 140));
+      color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 225));
       border-bottom-width: 1px;
       border-bottom-style: solid;
       border-color: transparent;
@@ -31,8 +31,8 @@ SText {
       &:hover {
         outline: none;
         text-decoration: none;
-        color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 140));
-        border-color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 140));
+        color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 225));
+        border-color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 225));
       }
 
       &:focus {
@@ -58,7 +58,7 @@ SText {
         display: inline-block;
         position: absolute;
         left: 0;
-        color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
+        color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.02 220.2));
         font-family: Georgia, Times, 'Times New Roman', serif;
       }
 
@@ -66,7 +66,7 @@ SText {
         display: block;
         font-style: normal;
         margin-top: var(--intergalactic-spacing-4x, 16px);
-        color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+        color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
         font-size: var(--intergalactic-fs-300, 16px);
         line-height: var(--intergalactic-lh-300, 1.5);
       }
@@ -83,7 +83,7 @@ SText {
         &:before {
           position: absolute;
           left: 0;
-          color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+          color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
         }
       }
 
@@ -103,7 +103,7 @@ SText {
 
     & ul:not(ul[start], ul[reversed], ul[type]) li:not(SText):before {
       content: '';
-      background-color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
+      background-color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
     }
 
     & ol:not(ol[start], ol[reversed], ol[type]):has(+ p),
@@ -184,7 +184,7 @@ SText {
     & h5,
     & h6 {
       & small {
-        color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+        color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
         font-weight: 300;
         font-size: 100%;
       }
@@ -469,11 +469,11 @@ SText[textAlign] {
 }
 
 SText[use='primary'] {
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
 }
 
 SText[use='secondary'] {
-  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
 }
 
 SText[disabled] {

@@ -56,7 +56,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='success'>
+          <Button use='primary'>
             Update payment method
           </Button>
           <Button>Close</Button>
@@ -94,7 +94,7 @@ const Demo = () => (
         </Notice.Text>
 
         <Notice.Actions>
-          <Button use='primary' theme='success'>
+          <Button use='primary'>
             View backup history
           </Button>
           <Button>Close</Button>

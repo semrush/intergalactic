@@ -2,11 +2,11 @@ SChartSkeleton {
   height: 200px;
   width: 100%;
   mask-image: var(--bgPattern);
-  background-color: var(--intergalactic-skeleton-bg, oklch(0.94 0.002 180));
+  background-color: var(--intergalactic-skeleton-bg, oklch(0.94 0.007 216.1));
 }
 
 SChartSkeleton[theme='invert'] {
-  background-color: var(--intergalactic-skeleton-bg-invert, oklch(0.5 0.004 147.4));
+  background-color: var(--intergalactic-skeleton-bg-invert, oklch(0.5 0.022 225));
 }
 
 SChartSkeleton[bgPosition] {

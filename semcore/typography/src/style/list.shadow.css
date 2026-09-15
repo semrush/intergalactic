@@ -23,6 +23,6 @@ SItem + SItem {
 
 SMarker {
   margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
   line-height: normal;
 }

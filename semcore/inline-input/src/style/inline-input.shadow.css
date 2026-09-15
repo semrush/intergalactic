@@ -19,11 +19,11 @@ SInlineInput {
   }
 
   SCancelIcon:not([color]) {
-    color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
+    color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.02 220.2));
   }
 
   SCancelIcon:not([color]):hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.003 159.3));
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.024 223.6));
   }
 
   SValue {
@@ -36,7 +36,7 @@ SInlineInput {
     padding: var(--intergalactic-spacing-1x, 4px);
     border: none;
     box-sizing: border-box;
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
     font-size: inherit;
     line-height: 1.2;
     text-overflow: ellipsis;
@@ -46,7 +46,7 @@ SInlineInput {
     text-decoration-line: underline;
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
-    text-decoration-color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+    text-decoration-color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
     text-underline-offset: 17%;
 
     &:focus, &:focus-visible {
@@ -54,7 +54,7 @@ SInlineInput {
     }
 
     &::placeholder {
-      color: var(--intergalactic-text-placeholder, oklch(0.109 0.023 165.5 / 0.337));
+      color: var(--intergalactic-text-placeholder, oklch(0.282 0.055 228.7 / 0.386));
     }
 
     &[disabled] {
@@ -95,7 +95,7 @@ SUnderline {
 }
 
 SInlineInput:hover:not(:focus-within):not([disabled]) SUnderline {
-  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.176 0.033 175.6 / 0.056));
+  background-color: var(--intergalactic-control-secondary-neutral, oklch(0.351 0.065 223 / 0.066));
 }
 
 SInlineInput:hover:not(:focus-within):not([disabled]) SAddon,
@@ -109,7 +109,7 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.02 220.2));
   padding: 0 var(--intergalactic-spacing-content-gap-small, 4px);
 }
 

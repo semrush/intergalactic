@@ -12,7 +12,7 @@ SBadge {
   letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--intergalactic-badge-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.993 0.005 215.6 / 0.956));
 }
 
 SBadge[theme='default'] {
@@ -33,18 +33,18 @@ SBadge[theme='default'] {
   }
 
   &[type='soon'] {
-    background-color: var(--intergalactic-badge-accent-soon, oklch(0.64 0.003 157.8));
+    background-color: var(--intergalactic-badge-accent-soon, oklch(0.64 0.025 224.1));
   }
 
   &[type='unavailable'] {
-    color: var(--intergalactic-badge-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
-    background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.001 180));
+    color: var(--intergalactic-badge-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+    background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.004 215.3));
   }
 }
 
 SBadge[theme='invert'] {
-  color: var(--intergalactic-badge-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  background-color: var(--intergalactic-badge-bg-invert, oklch(0.969 0.057 140 / 0.118));
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.993 0.005 215.6 / 0.956));
+  background-color: var(--intergalactic-badge-bg-invert, oklch(0.916 0.055 225.3 / 0.127));
 }
 
 SBadge[theme='light'] {
@@ -65,11 +65,11 @@ SBadge[theme='light'] {
     background-color: var(--intergalactic-badge-light-new, oklch(0.9 0.11 175));
   }
   &[type='soon'] {
-    color: var(--intergalactic-badge-light-soon-text, oklch(0.46 0.004 144.4));
-    background-color: var(--intergalactic-badge-light-soon, oklch(0.9 0.002 177));
+    color: var(--intergalactic-badge-light-soon-text, oklch(0.46 0.02 225));
+    background-color: var(--intergalactic-badge-light-soon, oklch(0.9 0.011 217.3));
   }
   &[type='unavailable'] {
-    color: var(--intergalactic-badge-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
-    background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.001 180));
+    color: var(--intergalactic-badge-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+    background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.004 215.3));
   }
 }

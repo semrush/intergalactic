@@ -3,7 +3,7 @@ SCard {
   background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   padding: 0;
   border-radius: var(--intergalactic-surface-rounded, 8px);
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
 
   STitle {
     margin: 0 var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-1x, 4px) 0;
@@ -20,7 +20,7 @@ SCard {
     margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 1.4286);
-    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
   }
 
   SHeader {
@@ -31,7 +31,7 @@ SCard {
   }
 
   SBody {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
     padding: var(--intergalactic-spacing-content-padding-xlarge, 20px);
   }
 }

@@ -8,11 +8,11 @@ SView {
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
   box-sizing: border-box;
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  color: var(--intergalactic-text-primary-invert, oklch(0.993 0.005 215.6 / 0.956));
   gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
   &[type='info'] {
-    background: var(--intergalactic-notice-bubble-bg-info, oklch(0.23 0.01 140));
+    background: var(--intergalactic-notice-bubble-bg-info, oklch(0.23 0.01 225));
   }
 
   &[type='warning'] {
@@ -71,7 +71,7 @@ SNoticeBubble[disablePortal] {
 }
 
 SMessage a {
-  color: var(--intergalactic-text-link-invert, oklch(0.999 0.001 180 / 0.949)); /* TODO: --intergalactic-text-link-primary-invert */
+  color: var(--intergalactic-text-link-invert, oklch(0.993 0.005 215.6 / 0.956)); /* TODO: --intergalactic-text-link-primary-invert */
 }
 
 SNoticeAriaLiveWrapper {

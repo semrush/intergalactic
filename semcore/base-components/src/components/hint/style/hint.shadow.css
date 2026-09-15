@@ -8,14 +8,14 @@ SHintPopper {
   opacity: 0;
   pointer-events: none;
 
-  background: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 140));
-  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.35 0.006 140));
-  color: var(--intergalactic-tooltip-text-invert, oklch(0.999 0.001 180 / 0.949));
+  background: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 225));
+  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.35 0.015 225));
+  color: var(--intergalactic-tooltip-text-invert, oklch(0.993 0.005 215.6 / 0.956));
   padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-small, 8px);
   border-radius: var(--intergalactic-rounded-small, 4px);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 1.3334);
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
 
   animation-fill-mode: both;
   animation-timing-function: var(--timingFunction);

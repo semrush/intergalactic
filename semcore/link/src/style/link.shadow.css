@@ -20,16 +20,16 @@ SLink {
   }
 
   &[theme='default'] {
-    color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 140));
+    color: var(--intergalactic-text-link-primary, oklch(0.23 0.01 225));
 
     & SText {
-      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.002 174.1));
+      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.015 218.5));
     }
 
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 140));
+      color: var(--intergalactic-text-link-primary-hover-active, oklch(0.23 0.01 225));
 
       & SText {
         text-decoration-color: currentColor;
@@ -37,7 +37,7 @@ SLink {
     }
   }
   &[theme='light'] {
-    color: var(--intergalactic-text-link-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    color: var(--intergalactic-text-link-secondary, oklch(0.247 0.049 230.2 / 0.524));
 
     & SText {
       text-decoration-color: transparent;
@@ -46,7 +46,7 @@ SLink {
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-secondary-hover-active, oklch(0.097 0.023 156.5 / 0.468));
+      color: var(--intergalactic-text-link-secondary-hover-active, oklch(0.247 0.049 230.2 / 0.524));
 
       & SText {
         text-decoration-color: currentColor;
@@ -71,16 +71,16 @@ SLink {
     }
   }
   &[theme='invert'] {
-    color: var(--intergalactic-text-link-primary-invert, oklch(0.999 0.001 180 / 0.949));
+    color: var(--intergalactic-text-link-primary-invert, oklch(0.993 0.005 215.6 / 0.956));
 
     & SText {
-      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.002 174.1));
+      text-decoration-color: var(--intergalactic-text-link-primary-underline, oklch(0.86 0.015 218.5));
     }
 
     &[active],
     &:hover,
     &:active {
-      color: var(--intergalactic-text-link-primary-invert-hover-active, oklch(0.999 0.001 180 / 0.949));
+      color: var(--intergalactic-text-link-primary-invert-hover-active, oklch(0.993 0.005 215.6 / 0.956));
 
       & SText {
         text-decoration-color: currentColor;

@@ -7,9 +7,9 @@ SOverlay {
   margin: 0;
   display: flex;
   overflow: hidden;
-  background: var(--intergalactic-overlay-primary, oklch(0.109 0.023 165.5 / 0.337));
+  background: var(--intergalactic-overlay-primary, oklch(from oklch(0.46 0.02 225) l c h / 0.4));
   -webkit-overflow-scrolling: touch;
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
 }
 
 SPanel {
@@ -26,7 +26,7 @@ SPanel {
 }
 
 SPanel[placement='top'] {
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
   width: 100%;
   margin-bottom: auto;
   top: 0;
@@ -34,7 +34,7 @@ SPanel[placement='top'] {
 }
 
 SPanel[placement='right'] {
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
   height: 100vh;
   margin-left: auto;
   top: 0;
@@ -42,7 +42,7 @@ SPanel[placement='right'] {
 }
 
 SPanel[placement='bottom'] {
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
   width: 100%;
   margin-top: auto;
   bottom: 0;
@@ -50,7 +50,7 @@ SPanel[placement='bottom'] {
 }
 
 SPanel[placement='left'] {
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
   height: 100vh;
   margin-right: auto;
   top: 0;
@@ -74,7 +74,7 @@ SHeader {
   padding-right: var(--intergalactic-spacing-14x, 56px);
   padding-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
   min-height: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-3x, 12px));
-  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
   box-sizing: border-box;
   flex-shrink: 0;
   flex-direction: column;
@@ -87,7 +87,7 @@ SFooter {
   justify-content: center;
   align-items: center;
   gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
-  border-top: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border-top: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
 }
 
 SBody {

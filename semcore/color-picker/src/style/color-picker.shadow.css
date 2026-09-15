@@ -21,7 +21,7 @@ SItemContainer {
   box-sizing: border-box;
 
   &:hover {
-    border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
   }
 
   &::after {
@@ -39,7 +39,7 @@ SItemContainer:hover>SCloseIcon {
 }
 
 SItemContainer[selected] {
-  border: 1px solid var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+  border: 1px solid var(--intergalactic-border-info-active, oklch(0.23 0.01 225));
 }
 
 SItemContainer[displayLabel] {
@@ -51,7 +51,7 @@ SItemContainer[displayLabel] {
 
 SItemContainer:not([value]) {
   &::after {
-    border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
     opacity: 1;
   }
 
@@ -63,7 +63,7 @@ SItemContainer:not([value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 22px;
-    background: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    background: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
     z-index: 0;
   }
 }
@@ -95,11 +95,11 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.177 0.033 175.6 / 0.042));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.363 0.068 222.8 / 0.05));
   }
 
   &:active {
-    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.176 0.033 175.6 / 0.056));
+    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.351 0.065 223 / 0.066));
   }
 }
 
@@ -125,7 +125,7 @@ STriggerCircle {
 }
 
 STriggerCircle:not([data-value]) {
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
 
   &::before {
     content: '';
@@ -135,12 +135,12 @@ STriggerCircle:not([data-value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 20px;
-    background: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    background: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
   }
 }
 
 SChevronDownM {
-  fill: var(--intergalactic-text-primary, oklch(0.23 0.01 140))
+  fill: var(--intergalactic-text-primary, oklch(0.23 0.01 225))
 }
 
 SCloseIcon {
@@ -170,7 +170,7 @@ SItemColor {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
   background: var(--data-value);
   box-sizing: border-box;
   margin: 5px;

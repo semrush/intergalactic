@@ -3,10 +3,10 @@ SDropdownPopper {
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
   white-space: normal;
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
 
 
   SDropdownItem {
@@ -21,10 +21,10 @@ SDropdownPopper {
   
   SDropdownItem:not(button) {
     width: 100%;
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item-hover, oklch(0.177 0.033 175.6 / 0.042));
+      background-color: var(--intergalactic-dropdown-menu-item-hover, oklch(0.363 0.068 222.8 / 0.05));
     }
   }
 
@@ -48,14 +48,14 @@ SDropdownPopper {
       display: inline-block;
       background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
       transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
-      border-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+      border-color: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
     }
 
     &[selected]::after {
       background-repeat: no-repeat;
       background-position: center center;
-      background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-      border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
+      background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 225));
+      border-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 225));
     }
     
     &[selected][size='m']::after {
@@ -68,11 +68,11 @@ SDropdownPopper {
   }
 
   SDropdownItem[selected]:not(SDropdownItem[isMenuItemCheckbox]) {
-    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.176 0.033 175.6 / 0.056));
-    box-shadow: 2px 0px 0px 0px var(--intergalactic-dropdown-menu-item-selected-box-shadow, oklch(0.23 0.01 140)) inset;
+    background-color: var(--intergalactic-dropdown-menu-item-selected, oklch(0.351 0.065 223 / 0.066));
+    box-shadow: 2px 0px 0px 0px var(--intergalactic-dropdown-menu-item-selected-box-shadow, oklch(0.23 0.01 225)) inset;
 
     &:hover {
-      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.176 0.033 175.7 / 0.084));
+      background-color: var(--intergalactic-dropdown-menu-item-selected-hover, oklch(0.339 0.063 223.5 / 0.097));
     }
   }
 
@@ -145,7 +145,7 @@ SDropdownPopper {
   }
 
   SDropdownItem[variant='hint'] {
-    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
     cursor: default;
 
     &:hover {
@@ -171,7 +171,7 @@ SDropdownPopper {
   }
 
   SGroupHint {
-    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
   }
 
   SDropdownItemContainer[sticky] {

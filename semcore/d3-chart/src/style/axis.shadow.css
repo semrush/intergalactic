@@ -1,5 +1,5 @@
 SAxis {
-  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.002 175.6));
+  stroke: var(--intergalactic-chart-grid-x-axis, oklch(0.88 0.013 217.9));
 }
 
 SAxis[hide] {
@@ -8,10 +8,10 @@ SAxis[hide] {
 
 STick {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-chart-grid-text-label, oklch(0.097 0.023 156.5 / 0.468));
+  fill: var(--intergalactic-chart-grid-text-label, oklch(0.247 0.049 230.2 / 0.524));
 }
 STick[primaryText] {
-  fill: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+  fill: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
 }
 
 STick[hide] {
@@ -20,12 +20,12 @@ STick[hide] {
 
 SGrid {
   fill: transparent;
-  stroke: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  stroke: var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
 }
 
 STitle {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-text-hint, oklch(0.097 0.023 156.5 / 0.468));
+  fill: var(--intergalactic-text-hint, oklch(0.247 0.049 230.2 / 0.524));
   transform-origin: var(--transform-origin);
 }
 

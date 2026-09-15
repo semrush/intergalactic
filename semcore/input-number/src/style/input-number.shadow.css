@@ -18,7 +18,7 @@ SUp,
 SDown {
   padding: 0;
   width: 16px;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.003 169.6));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.02 220.2));
   box-sizing: border-box;
   display: inline-flex;
   justify-content: center;
@@ -31,7 +31,7 @@ SDown {
   }
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.003 159.3));
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.024 223.6));
   }
 }
 

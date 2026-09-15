@@ -49,7 +49,7 @@ SGroup, SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
   box-sizing: border-box;
   height: 100%;
   position: relative;
@@ -61,14 +61,14 @@ SGroup, SColumn {
 SGroup {
   justify-content: center;
   text-align: center;
-  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.001 180));
+  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.003 215));
 }
 
 SGroup[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
 
   &:has(~ SColumn[visibleSort]) {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180));
+    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.005 215.6));
   }
 }
 SGroup[use='secondary'] {
@@ -76,28 +76,28 @@ SGroup[use='secondary'] {
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
-  border-left: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border-left: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
-  border-right: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border-right: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
 }
 
 SColumn[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
-  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
-  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.001 180));
+  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
+  background-color: var(--intergalactic-table-th-primary-cell, oklch(0.98 0.003 215));
 
   SSortWrapper::before {
     background: linear-gradient(
       270deg,
-      var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180)) 67.5%,
+      var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.005 215.6)) 67.5%,
       rgba(224, 225, 233, 0) 105%
     );
   }
 
   &[visibleSort] {
-    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.001 180));
+    background-color: var(--intergalactic-table-th-primary-cell-hover, oklch(0.96 0.005 215.6));
 
     SSortWrapper {
       flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
@@ -130,7 +130,7 @@ SColumn[use='primary'] {
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
-  border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.137 0.026 175.7 / 0.161)); /* TODO: --intergalactic-table-border-accent */
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, oklch(0.324 0.062 225.5 / 0.189)); /* TODO: --intergalactic-table-border-accent */
   background-color: var(--intergalactic-table-th-secondary-cell, oklch(1 0 0));
 
   SSortWrapper::before {
@@ -210,7 +210,7 @@ SSortWrapper:before {
 
 SSortButton {
   display: none;
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.003 159.3));
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.024 223.6));
   position: absolute;
   right: 0;
   margin-left: var(--intergalactic-spacing-1x, 4px);
@@ -270,7 +270,7 @@ SGroup[fixed='left'][shadowVertical='start'] {
     display: block;
     right: 0;
     background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
+    linear-gradient(to right, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
   }
 }
 SColumn[fixed='right'][shadowVertical='median'],
@@ -291,6 +291,6 @@ SGroup[fixed='right'][shadowVertical='end'] {
     display: block;
     left: 0;
     background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
+    linear-gradient(to left, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
   }
 }

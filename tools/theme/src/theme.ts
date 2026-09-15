@@ -404,7 +404,7 @@ export const theme: Theme = {
         description: 'Secondary text color for Badge.',
       },
       bg_highlight_focus: {
-        value: focus.opaqueAt(L_BG_SECONDARY_ACTIVE),
+        value: highlight.opaqueAt(L_BG_SECONDARY_ACTIVE),
         description: 'Focusing values in the input.',
       },
       bg_highlight_results: {
@@ -568,7 +568,7 @@ export const theme: Theme = {
         description: 'Subtle secondary border in the informational message.',
       },
       border_info_active: {
-        value: info.at(L_BORDER_ACTIVE),
+        value: focus.at(L_BORDER_STRONG),
         description: 'Active border in focused input filed.',
       },
       border_primary_DEFAULT: {
@@ -1217,7 +1217,7 @@ export const theme: Theme = {
       header_border_primary: { value: '{semanticTokens.colors.border.primary}' },
       header_border_secondary: { value: '{semanticTokens.colors.border.primary}' },
       icon_non_interactive: {
-        value: neutral.opaqueAt(L_ICON_NON_INTERACTIVE),
+        value: neutral.at(L_ICON_NON_INTERACTIVE),
         description: 'Color for the default non-interactive icon.',
       },
       icon_primary_critical_DEFAULT: {
@@ -1361,7 +1361,7 @@ export const theme: Theme = {
         description: 'Color for keyboard focus outline styles to use on the dark and color background.',
       },
       keyboard_focus_outline: {
-        value: focus.opaqueAt(L_BORDER_FOCUS),
+        value: focus.at(L_BORDER_STRONG),
         description: 'Color for default keyboard focus outline styles.',
       },
       keyboard_focus_valid_outline: {
@@ -1393,11 +1393,11 @@ export const theme: Theme = {
         description: 'Use as a secondary cover of the content under the messages about limitations.',
       },
       overlay_primary: {
-        value: neutral.opaqueAt(0.74),
+        value: `oklch(from ${colors.gray['600'].value} l c h / 0.4)`,
         description: 'Use for cover the content under the modal dialogs.',
       },
       overlay_secondary: {
-        value: neutral.opaqueAt(0.8),
+        value: `oklch(from ${colors.gray['600'].value} l c h / 0.3)`,
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       page_bg: {
@@ -2052,7 +2052,7 @@ export const theme: Theme = {
         description: 'Keyboard focus styles for use on dark backgrounds.',
       },
       keyboard_focus_DEFAULT: {
-        value: '0px 0px 0px 3px {semanticTokens.colors.keyboard.focus.outline}',
+        value: '0px 0px 0px 3px oklch(from {semanticTokens.colors.keyboard.focus.outline} l c h / 0.5)',
         description: 'Default keyboard focus box-shadow styles.',
       },
     },

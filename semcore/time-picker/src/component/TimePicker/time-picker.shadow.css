@@ -18,19 +18,19 @@ STimePickerWrapper {
 
       &:focus {
         outline: none;
-        background-color: var(--intergalactic-bg-highlight-focus, oklch(0.525 0.265 263 / 0.077));
+        background-color: var(--intergalactic-bg-highlight-focus, oklch(0.508 0.293 286.9 / 0.067));
       }
     }
   }
 
   STimePicker[disabled] {
-    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
     cursor: default;
     pointer-events: none;
   }
 
   STimePickerSeparator {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
   }
 
   STimePickerSeparator[disabled] {

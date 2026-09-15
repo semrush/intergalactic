@@ -7,7 +7,7 @@ SNotice {
   border-style: solid;
   border-width: 1px;
   border-radius: var(--intergalactic-surface-rounded, 8px);
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
   gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
@@ -16,10 +16,10 @@ SNotice[theme='info'] {
   border-color: var(--intergalactic-border-info, oklch(0.524 0.265 263 / 0.096));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.53 0.004 149.6));
+      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.53 0.023 225));
     }
   }
 }
@@ -64,14 +64,14 @@ SNotice[theme='success'] {
 }
 
 SNotice[theme='muted'] {
-  background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
-  border-color: var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.003 215));
+  border-color: var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
 
   & SCloseIcon {
-    color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
+    color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.53 0.004 149.6));
+      color: var(--intergalactic-icon-primary-neutral-hover-active, oklch(0.53 0.023 225));
     }
   }
 }
@@ -111,7 +111,7 @@ SIllustration {
 }
 
 SLabel[theme='info'], SIcon[theme='info'] {
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
 }
 
 SLabel[theme='danger'], SIcon[theme='danger'] {
@@ -127,7 +127,7 @@ SLabel[theme='success'], SIcon[theme='success'] {
 }
 
 SLabel[theme='muted'], SIcon[theme='muted'] {
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
 }
 
 SCloseIcon {

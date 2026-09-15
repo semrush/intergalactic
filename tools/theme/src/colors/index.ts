@@ -22,7 +22,10 @@ export type Lightness = typeof lightnessNames[number];
 // =============================================================================
 // Base color scales
 export const baseColors: Record<Colors, ColorScale> = {
-  'gray': new ColorScale(['oklch(0.94 0.002 180)', 'oklch(0.40 0.004 140)', 'oklch(0.22 0.01 140)'], 'p3'),
+  'gray': new ColorScale(
+    ['oklch(0.979 0.003 215)', 'oklch(0.807 0.02 220)', 'oklch(0.602 0.026 225)'],
+    'p3',
+  ),
   'mint': new ColorScale(
     ['oklch(0.935 0.019 184.9)', 'oklch(0.736 0.036 189.338)', 'oklch(0.4 0.032 189.338)'],
     'p3',
@@ -109,7 +112,7 @@ export const semanticColors = {
   error: baseColors.red,
   warning: baseColors.orange,
   info: baseColors.blue,
-  focus: baseColors.blue,
+  focus: baseColors.gray,
   advertising: baseColors.violet,
   highlight: baseColors.violet,
   brand: baseColors.violet,
@@ -181,8 +184,8 @@ export const L_BG_SELECTED_HOVER = 0.9;
 
 /** Background levels */
 export const L_BG_LIGHT = 0.96;
-export const L_BG_MEDIUM = 0.92; // Midlight?
-export const L_BG_STRONG = 0.64; // Heavy? Dark?
+export const L_BG_MEDIUM = 0.92;
+export const L_BG_STRONG = 0.64;
 
 export const L_BG_SKELETON = 0.94;
 
@@ -201,7 +204,7 @@ export const L_BG_BUTTON_STRONG = 0.23;
 export const L_BG_BUTTON_STRONG_HOVER = 0.32;
 export const L_BG_BUTTON_STRONG_ACTIVE = 0;
 
-/** Button secondary bg         | ⚠️ APCA 60+ under white */
+/** Button secondary bg         | ⚠️ APCA 90+ on secondary bg */
 export const L_BG_BUTTON_SECONDARY = 0.96;
 export const L_BG_BUTTON_SECONDARY_HOVER = 0.94;
 export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.92;

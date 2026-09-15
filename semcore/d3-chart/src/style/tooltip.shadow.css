@@ -6,14 +6,14 @@ STooltip {
   position: relative;
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   border-radius: var(--intergalactic-popper-rounded, 6px);
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.176 0.033 175.7 / 0.07));
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
   box-sizing: border-box;
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
   padding: var(--intergalactic-spacing-3x, 12px);
 }
 
 STitle {
-  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
   margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
@@ -35,7 +35,7 @@ SDotCircle[color] {
 
 
 SFooter {
-  background: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.001 180));
+  background: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.003 215));
   padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-3x, 12px);
   border-radius: 0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px);
   margin: var(--intergalactic-spacing-3x, 12px) calc(-1 * var(--intergalactic-spacing-3x, 12px)) calc(-1 * var(--intergalactic-spacing-3x, 12px));

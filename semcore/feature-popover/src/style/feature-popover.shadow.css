@@ -5,16 +5,16 @@ SFeaturePopover {
   padding-left: var(--intergalactic-spacing-content-padding-large, 16px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.176 0.033 175.7 / 0.07));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
   position: relative;
 
   &[theme='accent'] {
     background-color: var(--intergalactic-feature-popover-bg-accent, oklch(0.92 0.052 303.1));
-    color: var(--intergalactic-feature-popover-text, oklch(0.23 0.01 140));
+    color: var(--intergalactic-feature-popover-text, oklch(0.23 0.01 225));
   }
   &[theme='neutral'] {
-    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 140));
-    color: var(--intergalactic-feature-popover-text-invert, oklch(0.999 0.001 180 / 0.949));
+    background-color: var(--intergalactic-feature-popover-bg-neutral, oklch(0.23 0.01 225));
+    color: var(--intergalactic-feature-popover-text-invert, oklch(0.993 0.005 215.6 / 0.956));
   }
 }
 

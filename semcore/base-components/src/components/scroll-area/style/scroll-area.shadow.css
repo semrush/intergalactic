@@ -32,14 +32,14 @@ SShadowHorizontal[size] {
   &[themeLeft='dark'] {
     &:before {
       background: var(--intergalactic-scroll-area-shadow-left,
-      linear-gradient(to right, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
+      linear-gradient(to right, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
     }
   }
 
   &[themeRight='dark'] {
     &:after {
       background: var(--intergalactic-scroll-area-shadow-right,
-      linear-gradient(to left, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
+      linear-gradient(to left, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
     }
   }
 
@@ -112,14 +112,14 @@ SShadowVertical[size] {
   &[themeTop='dark'] {
     &:before {
       background: var(--intergalactic-scroll-area-shadow-top,
-      linear-gradient(to bottom, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
+      linear-gradient(to bottom, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
     }
   }
 
   &[themeBottom='dark'] {
     &:after {
       background: var(--intergalactic-scroll-area-shadow-bottom,
-      linear-gradient(to top, oklch(from oklch(0.23 0.01 140) l c h / 0.08) 20.55%, transparent 100%));
+      linear-gradient(to top, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
     }
   }
 

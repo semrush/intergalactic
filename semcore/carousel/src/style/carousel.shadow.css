@@ -89,7 +89,7 @@ SIndicator {
   flex-shrink: 0;
   width: 12px;
   height: 12px;
-  background-color: var(--intergalactic-control-carousel-indicator, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-carousel-indicator, oklch(0.23 0.01 225));
   border-radius: var(--intergalactic-carousel-indicator-rounded, 8px);
   opacity: 0.25;
   object-fit: cover;
@@ -104,7 +104,7 @@ SIndicator {
 
   &[active] {
     width: 24px;
-    background-color: var(--intergalactic-control-carousel-indicator-active, oklch(0.23 0.01 140));
+    background-color: var(--intergalactic-control-carousel-indicator-active, oklch(0.23 0.01 225));
     opacity: 1;
   }
 }
@@ -127,7 +127,7 @@ SIndicator[inverted] {
   }
 
   &[active] {
-    background-color: var(--intergalactic-control-carousel-indicator-active, oklch(0.23 0.01 140));
+    background-color: var(--intergalactic-control-carousel-indicator-active, oklch(0.23 0.01 225));
     opacity: 1;
   }
 }
@@ -138,7 +138,7 @@ SNext {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.003 153.3));
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
 
   SPrevButton span:has(> svg:only-child),
   SNextButton span:has(> svg:only-child) {

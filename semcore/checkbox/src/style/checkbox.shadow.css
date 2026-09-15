@@ -10,7 +10,7 @@ SLabel {
 
   SText {
     margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 140));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
 
     &[disabled] {
       opacity: var(--intergalactic-disabled-opacity, 0.4);
@@ -68,7 +68,7 @@ SCheckbox {
   }
 
   &[state='normal']:before {
-    border-color: var(--intergalactic-control-checkbox-border, oklch(0.137 0.026 175.7 / 0.161));
+    border-color: var(--intergalactic-control-checkbox-border, oklch(0.324 0.062 225.5 / 0.189));
   }
 }
 
@@ -105,13 +105,13 @@ SText[size='m'] {
 
 SControl[checked]~SCheckbox[state='normal']:before,
 SControl[checked]~SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
-  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 225));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 225));
 }
 
 SControl[indeterminate]~SCheckbox[state='normal']:before {
-  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
-  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 225));
+  border-color: var(--intergalactic-control-checkbox-bg-selected, oklch(0.23 0.01 225));
 }
 
 SCheckbox[state='invalid'],

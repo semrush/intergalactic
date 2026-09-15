@@ -13,7 +13,7 @@ STrigger {
       top: 50%;
       transform: translateY(-50%);
       width: 1px;
-      background-color: var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+      background-color: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
       transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out;
     }
 
@@ -60,7 +60,7 @@ SWrapper {
   &::after {
     content: '';
     position: absolute;
-    border: 1px solid var(--intergalactic-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
     border-radius: var(--intergalactic-control-rounded, 6px);
     inset: 0;
     z-index: 1;
@@ -70,14 +70,14 @@ SWrapper {
   &[empty]:active,
   &[empty][active],
   &[empty]:has(STrigger:focus-visible) {
-    background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
+    background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.005 215.6));
 
     STrigger {
       background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
     }
 
     &::after {
-      border-color: var(--intergalactic-border-info-active, oklch(0.7 0.131 275.2));
+      border-color: var(--intergalactic-border-info-active, oklch(0.23 0.01 225));
     }
   }
 
@@ -94,7 +94,7 @@ SWrapper {
     border: none;
 
     &[active], &:active {
-      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.001 180));
+      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.005 215.6));
     }
   }
 }
