@@ -228,13 +228,13 @@ function splitTextByWidth(measurer) {
   };
 }
 
+const measurer = new TextMeasurer();
+
 class AxisRoot extends Component {
   static displayName = 'Axis';
 
   static style = style;
   static defaultProps = {};
-
-  measurer = new TextMeasurer();
 
   get ticks() {
     const { ticks, indexScale, scale } = this.asProps;
@@ -256,7 +256,7 @@ class AxisRoot extends Component {
       ticks: this.ticks,
       indexScale,
       position,
-      splitTextByWidth: splitTextByWidth(this.measurer),
+      splitTextByWidth: splitTextByWidth(measurer),
     };
   }
 

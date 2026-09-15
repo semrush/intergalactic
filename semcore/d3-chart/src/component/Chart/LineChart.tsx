@@ -27,6 +27,7 @@ class LineChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
   } as const;
 
   protected get xScale() {
@@ -49,7 +50,7 @@ class LineChartComponent extends AbstractChart<
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30 } = this.asProps;
+    const { yScale, marginX = 32 } = this.asProps;
     const { plotHeight } = this;
 
     if (yScale) {

@@ -44,11 +44,59 @@ export const locators = {
     const base = page.locator('[data-ui-name="Area.Dots"]');
     return typeof index === 'number' ? base.nth(index) : base;
   },
-  legendItem: (page: Page, text?: string, index?: number) => {
-    const base = text ? page.getByText(text) : page.locator('[data-ui-name="LegendFlex.LegendItem"]');
-    return typeof index === 'number' ? base.nth(index) : base;
-  },
-  legendFlex: (page: Page) => page.locator('[data-ui-name="LegendFlex"]'),
+  /**
+   * The hovered tick pill is rendered by plain svg tags, so it has no data-ui-name.
+   * It is the only rounded rect drawn inside the plot, which makes `rect[rx]` a
+   * stable structural anchor that survives style and class-name changes.
+   */
+  hoveredTick: (page: Page) => page.locator('svg[data-ui-name="Plot"] g:has(> rect[rx])'),
+  hoveredTickRect: (page: Page) => locators.hoveredTick(page).locator('rect'),
+  hoveredTickText: (page: Page) => locators.hoveredTick(page).locator('text'),
+  diffUp: (page: Page) => page.locator('[data-ui-name="DiffUp"]'),
+  diffDown: (page: Page) => page.locator('[data-ui-name="DiffDown"]'),
+};
+
+const HOVERED_TICK_EXAMPLE = 'stories/components/d3-chart/tests/examples/d3-chart/hovered-tick.tsx';
+const AREA_CHART_EXAMPLE = 'stories/components/d3-chart/tests/examples/area-chart/basic-usage.tsx';
+
+const deltaProps = {
+  showDeltaPercentInTooltip: true,
+  showTotalInTooltip: false,
+  // The example's custom formatter renders values as dates, which only adds noise here.
+  useCustomValueFormatter: false,
+  duration: 0,
+};
+
+const hoverPlotCenter = async (page: Page) => {
+  const plot = locators.plot(page).first();
+  await plot.waitFor({ state: 'visible' });
+
+  const box = await plot.boundingBox();
+  if (!box) throw new Error('Bounding box not found');
+
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+
+  return box;
+};
+
+/**
+ * Dots give the exact position of a data point, so the hovered index needs no
+ * coordinate math. The first 10 dots belong to the first series, one per point.
+ *
+ * The move is driven through `page.mouse` rather than `locator.hover()`: the
+ * neighbouring area path is painted over the dots, so hover() would fail
+ * Playwright's actionability check even though the chart handles the event.
+ */
+const hoverAreaPoint = async (page: Page, index: number, expectedTitle: string) => {
+  await locators.plot(page).first().waitFor({ state: 'visible' });
+
+  const dot = await locators.areaDots(page, index).boundingBox();
+  if (!dot) throw new Error(`Bounding box not found for dot ${index}`);
+
+  await page.mouse.move(dot.x + dot.width / 2, dot.y + dot.height / 2);
+
+  // Guards against a silent miss: every assertion below relies on the hovered point.
+  await expect(page.locator('[data-ui-name="HoverLine.Tooltip.Title"]')).toHaveText(expectedTitle);
 };
 
 /* =====================================================
@@ -294,90 +342,35 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
   });
 
-  test.describe('Chart legend', () => {
-    const legendPropsCombinations = [
-      {
-        description: ' size M, Checkbox shape',
-        size: 'm',
-        shape: 'Checkbox',
-      },
-      {
-        description: ' size L, Checkbox shape',
-        size: 'l',
-        shape: 'Checkbox',
-      },
-      {
-        description: ' size M, Circle shape',
-        size: 'm',
-        shape: 'Circle',
-      },
-      {
-        description: ' size L, Circle shape',
-        size: 'l',
-        shape: 'Circle',
-      },
-      {
-        description: ' size M, Square shape',
-        size: 'm',
-        shape: 'Square',
-      },
-      {
-        description: ' size L, Square shape',
-        size: 'l',
-        shape: 'Square',
-      },
-      {
-        description: ' size M, Line shape',
-        size: 'm',
-        shape: 'Line',
-      },
-      {
-        description: ' size L, Line shape',
-        size: 'l',
-        shape: 'Line',
-      },
-      {
-        description: ' size M, Pattern shape',
-        size: 'm',
-        shape: 'Pattern',
-      },
-      {
-        description: ' size L, Pattern shape',
-        size: 'l',
-        shape: 'Pattern',
-      },
-    ];
-
-    legendPropsCombinations.forEach((props) => {
-      test(`Verify legend with ${props.description}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+  test.describe('Hovered tick', () => {
+    (['Line', 'Rect'] as const).forEach((hoverType) => {
+      test(`Verify the tick pill appears under the hovered tick for Hover${hoverType}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
       }, async ({ page }) => {
-        await loadPage(
-          page,
-          'stories/components/d3-chart/tests/examples/chart-legend/customizable_legend.tsx',
-          'en',
-          props,
-        );
+        await loadPage(page, HOVERED_TICK_EXAMPLE, 'en', { hoverType });
 
-        await test.step('Verify legend renders correctly', async () => {
-          await locators.legendFlex(page).waitFor({ state: 'visible' });
-          await expect(page).toHaveScreenshot();
-        });
+        await hoverPlotCenter(page);
+
+        await expect(locators.hoveredTickText(page)).toHaveCount(1);
+        await expect(locators.hoveredTickRect(page)).toHaveCount(1);
+        await expect(page).toHaveScreenshot();
       });
     });
+  });
 
-    test('Verify custom shape as leged item', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+  test.describe('Tooltip percent delta', () => {
+    test('Verify upward deltas render with the DiffUp icon', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/custom-shape-as-legenditem.tsx', 'en');
-      await expect(page).toHaveScreenshot();
-    });
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
-    test('Verify leged table view', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend', '@typography'],
-    }, async ({ page }) => {
-      await loadPage(page, 'stories/components/d3-chart/docs/examples/chart-legend/table-view.tsx', 'en');
+      // Point 3: line grows by 100%, line2 by 33.3%.
+      await hoverAreaPoint(page, 3, 'January 16, 2024');
 
+      await expect(locators.diffUp(page)).toHaveCount(2);
+      await expect(locators.diffDown(page)).toHaveCount(0);
+      await expect(page.getByText('100%', { exact: true })).toBeVisible();
+      await expect(page.getByText('33.3%', { exact: true })).toBeVisible();
       await expect(page).toHaveScreenshot();
     });
   });
@@ -631,26 +624,260 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         const dot = locators.lineDots(page, i);
         const radius = await dot.getAttribute('r');
         expect(radius).not.toBeNull();
-        expect(Number(radius)).toBeCloseTo(4, 1);
+        // Default base radius, see BASE_RADIUS in Dots.jsx.
+        expect(Number(radius)).toBeCloseTo(3.5, 1);
       }
+    });
+
+    test('Verify hovered dot grows to the active radius', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/tooltip.tsx', 'en');
+
+      const plot = locators.plot(page).first();
+      await plot.waitFor({ state: 'visible' });
+
+      const box = await plot.boundingBox();
+      if (!box) throw new Error('Bounding box not found');
+
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+
+      // Exactly one dot is active at a time and it uses ACTIVE_RADIUS.
+      const activeDots = page.locator('[data-ui-name="Line.Dots"][r="4.5"]');
+      await expect(activeDots).toHaveCount(1);
+    });
+
+    test('Verify a dot still appears on hover when showDots is disabled', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart', '@line-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+        'en',
+        { showDots: false, duration: 0 },
+      );
+
+      const plot = locators.plot(page).first();
+      await plot.waitFor({ state: 'visible' });
+
+      const box = await plot.boundingBox();
+      if (!box) throw new Error('Bounding box not found');
+
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+
+      // `showDots` is now forwarded as `display`, so the active dot is still rendered.
+      await expect(locators.lineDots(page).first()).toBeVisible();
     });
   });
 
-  test.describe('Chart legend', () => {
-    test('Verify checkbox roles and attributes', {
-      tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
+  test.describe('Hovered tick', () => {
+    (['Line', 'Rect'] as const).forEach((hoverType) => {
+      test(`Verify hideTickHover removes the tick pill for Hover${hoverType}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+      }, async ({ page }) => {
+        await loadPage(page, HOVERED_TICK_EXAMPLE, 'en', { hoverType, hideTickHover: true });
+
+        await hoverPlotCenter(page);
+
+        await expect(locators.hoveredTickText(page)).toHaveCount(0);
+        await expect(locators.hoveredTickRect(page)).toHaveCount(0);
+      });
+
+      test(`Verify the tick pill is rendered on hover for Hover${hoverType}`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+      }, async ({ page }) => {
+        await loadPage(page, HOVERED_TICK_EXAMPLE, 'en', { hoverType });
+
+        await hoverPlotCenter(page);
+
+        await expect(locators.hoveredTickText(page)).toHaveCount(1);
+        await expect(locators.hoveredTickRect(page)).toHaveCount(1);
+      });
+    });
+
+    test('Verify the tick pill stays inside the plot on the first and the last tick', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
-      await loadPage(page, 'stories/components/d3-chart/tests/examples/chart-legend/customizable_legend.tsx', 'en');
+      await loadPage(
+        page,
+        HOVERED_TICK_EXAMPLE,
+        'en',
+        { hoverType: 'Line' },
+      );
 
-      const checkboxes = page.locator('[data-ui-name="LegendFlex.LegendItem"][shape="Checkbox"]');
-      const checkboxesInputs = checkboxes.locator('input');
-      const inputsCount = await checkboxesInputs.count();
-      expect(inputsCount).toBeGreaterThan(0);
+      const plot = locators.plot(page).first();
+      await plot.waitFor({ state: 'visible' });
 
-      for (let i = 0; i < inputsCount; i++) {
-        const checkboxInput = checkboxesInputs.nth(i);
-        await expect(checkboxInput).toHaveAttribute('aria-invalid', 'false');
+      const plotBox = await plot.boundingBox();
+      if (!plotBox) throw new Error('Bounding box not found');
+
+      // The story is 500px wide with a 40px margin, so the scale range is [40, 460]
+      // and the edge ticks sit at 8% and 92% of the plot width.
+      for (const [name, ratio] of [['first', 0.08], ['last', 0.92]] as const) {
+        await test.step(`Verify the pill on the ${name} tick`, async () => {
+          await page.mouse.move(plotBox.x + plotBox.width * ratio, plotBox.y + plotBox.height / 2);
+
+          const pill = locators.hoveredTickRect(page).first();
+          await expect(pill).toBeVisible();
+
+          const pillBox = await pill.boundingBox();
+          if (!pillBox) throw new Error('Pill bounding box not found');
+
+          expect(pillBox.x).toBeGreaterThanOrEqual(plotBox.x - 1);
+          expect(pillBox.x + pillBox.width).toBeLessThanOrEqual(plotBox.x + plotBox.width + 1);
+        });
       }
+    });
+
+    test('Verify the hover line renders notch caps on both ends', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        HOVERED_TICK_EXAMPLE,
+        'en',
+        { hoverType: 'Line' },
+      );
+
+      await hoverPlotCenter(page);
+
+      const hoverLine = page.locator('g[data-ui-name="HoverLine"]');
+      await expect(hoverLine).toHaveAttribute('aria-hidden', 'true');
+      // Two notch caps plus the line itself.
+      await expect(hoverLine.locator('line')).toHaveCount(3);
+    });
+
+    test('Verify hideHoverLine removes the hover line and the tick pill', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        HOVERED_TICK_EXAMPLE,
+        'en',
+        { hoverType: 'Line', hideHoverLine: true },
+      );
+
+      await hoverPlotCenter(page);
+
+      await expect(page.locator('g[data-ui-name="HoverLine"]')).toHaveCount(0);
+      await expect(locators.hoveredTickText(page)).toHaveCount(0);
+    });
+
+    test('Verify hovering the axis area below the plot keeps the tooltip open', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        HOVERED_TICK_EXAMPLE,
+        'en',
+        { hoverType: 'Rect' },
+      );
+
+      const plot = locators.plot(page).first();
+      await plot.waitFor({ state: 'visible' });
+
+      const box = await plot.boundingBox();
+      if (!box) throw new Error('Bounding box not found');
+
+      // Below the value area but still inside the plot: the tick label zone.
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height - 20);
+
+      await expect(locators.hoveredTickText(page)).toHaveCount(1);
+    });
+  });
+
+  /**
+   * Percent deltas are exercised on the area chart example, whose data already
+   * covers every common branch relative to the previous point:
+   *
+   *   index 0 -> line 2,  line2 3  : no previous point, both deltas are `null`
+   *   index 1 -> line 4,  line2 3  : +100% and an unchanged value (stable)
+   *   index 3 -> line 6,  line2 4  : +100% and +33.3%, both upward
+   *   index 6 -> line 6,  line2 2  : -14.3% and -60%, both downward
+   */
+  test.describe('Tooltip percent delta', () => {
+    test('Verify upward deltas render with the DiffUp icon', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
+
+      await hoverAreaPoint(page, 3, 'January 16, 2024');
+
+      await expect(locators.diffUp(page)).toHaveCount(2);
+      await expect(locators.diffDown(page)).toHaveCount(0);
+      await expect(page.getByText('100%', { exact: true })).toBeVisible();
+      await expect(page.getByText('33.3%', { exact: true })).toBeVisible();
+    });
+
+    test('Verify downward deltas render with the DiffDown icon', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
+
+      await hoverAreaPoint(page, 6, 'January 31, 2024');
+
+      await expect(locators.diffDown(page)).toHaveCount(2);
+      await expect(locators.diffUp(page)).toHaveCount(0);
+      await expect(page.getByText('-14.3%', { exact: true })).toBeVisible();
+      await expect(page.getByText('-60%', { exact: true })).toBeVisible();
+    });
+
+    test('Verify an unchanged value renders a stable delta without an icon', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
+
+      // line grows by 100%, line2 stays at 3.
+      await hoverAreaPoint(page, 1, 'January 6, 2024');
+
+      await expect(locators.diffUp(page)).toHaveCount(1);
+      await expect(locators.diffDown(page)).toHaveCount(0);
+    });
+
+    test('Verify the first data point renders no delta column', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
+
+      await hoverAreaPoint(page, 0, 'January 1, 2024');
+
+      await expect(locators.diffUp(page).or(locators.diffDown(page))).toHaveCount(0);
+    });
+
+    test('Verify no delta is rendered when showDeltaPercentInTooltip is off', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+        ...deltaProps,
+        showDeltaPercentInTooltip: false,
+      });
+
+      await hoverAreaPoint(page, 3, 'January 16, 2024');
+
+      await expect(locators.diffUp(page).or(locators.diffDown(page))).toHaveCount(0);
+    });
+  });
+
+  test.describe('Tooltip default formatting', () => {
+    test('Verify a Date group key is formatted through Intl for the given locale', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/d3-chart/tooltip-default-format.tsx',
+        'en',
+        { locale: 'de' },
+      );
+
+      const plot = locators.plot(page).first();
+      await plot.waitFor({ state: 'visible' });
+
+      const box = await plot.boundingBox();
+      if (!box) throw new Error('Bounding box not found');
+
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+
+      await expect(page.getByText('15. März 2024')).toBeVisible();
     });
   });
 });

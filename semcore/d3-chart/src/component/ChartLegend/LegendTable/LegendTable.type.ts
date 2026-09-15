@@ -19,6 +19,8 @@ export type LegendTableDefaultProps = {
 export type LegendColumnProps = {
   index: number;
   size: LSize;
+  /** Enables element transparency */
+  transparent?: boolean;
 };
 
 export type LegendTableType = Intergalactic.Component<typeof Box, LegendTableProps> & {

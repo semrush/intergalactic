@@ -202,7 +202,7 @@ function Dot(props) {
             <SDot>
               <SDotCircle
                 color={resolveColor(color ?? defaultColor)}
-                lightness={CHART_PALETTE_ORDER_TO_LIGHTNESS[color] ?? CHART_PALETTE_ORDER_TO_LIGHTNESS.DEFAULT}
+                lightness={CHART_PALETTE_ORDER_TO_LIGHTNESS[color ?? defaultColor] ?? CHART_PALETTE_ORDER_TO_LIGHTNESS.DEFAULT}
               />
             </SDot>
           )}

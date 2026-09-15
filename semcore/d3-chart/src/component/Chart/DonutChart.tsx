@@ -27,6 +27,7 @@ class DonutChartComponent extends AbstractChart<
     innerRadius: 100,
     marginX: 0,
     marginY: 0,
+    locale: 'en',
   } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;

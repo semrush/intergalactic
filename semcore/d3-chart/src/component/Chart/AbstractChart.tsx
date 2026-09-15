@@ -365,7 +365,9 @@ export abstract class AbstractChart<
     return this.props.colorMap?.[id] ?? `chart-palette-order-${index + 1}`;
   }
 
-  private defaultTooltipFormatter(value?: unknown): string {
+  protected defaultTooltipFormatter(value?: unknown): string {
+    const { locale } = this.asProps;
+
     if (value === undefined || value === interpolateValue) {
       return NOT_A_VALUE;
     }
@@ -375,7 +377,7 @@ export abstract class AbstractChart<
     }
 
     if (value instanceof Date) {
-      return new Intl.DateTimeFormat('en', {
+      return new Intl.DateTimeFormat(locale, {
         month: 'long',
         day: 'numeric',
         year: 'numeric',
@@ -630,7 +632,7 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip } =
+    const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip, locale } =
       this.asProps;
     const { plotWidth, plotHeight } = this;
 
@@ -649,6 +651,7 @@ export abstract class AbstractChart<
           patterns={patterns}
           duration={duration}
           eventEmitter={eventEmitter}
+          locale={locale}
           {...extractedAriaProps}
         >
           {this.renderAxis()}

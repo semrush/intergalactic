@@ -25,6 +25,7 @@ export type RadarChartDefaultProps = {
   showXAxis: true;
   showYAxis: true;
   showTooltip: true;
+  locale: 'en';
 };
 
 export type RadarChartType = Intergalactic.Component<typeof Flex, RadarChartProps>;

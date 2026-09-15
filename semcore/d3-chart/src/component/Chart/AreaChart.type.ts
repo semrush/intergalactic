@@ -33,6 +33,7 @@ export type AreaChartDefaultProps = {
   showXAxis: true;
   showYAxis: true;
   showTooltip: true;
+  locale: 'en';
 };
 
 export type AreaChartType = Intergalactic.Component<typeof Flex, Intergalactic.InternalTypings.EfficientOmit<AreaChartProps, 'showLegend'> & { showLegend?: boolean } & AriaNameProps>;

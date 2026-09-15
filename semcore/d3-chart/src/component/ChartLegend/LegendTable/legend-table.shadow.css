@@ -17,3 +17,7 @@ SColumnItem[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
   text-align: right;
 }
+
+SColumnItem[transparent] {
+  opacity: 0.3;
+}

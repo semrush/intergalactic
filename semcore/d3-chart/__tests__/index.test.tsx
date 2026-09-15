@@ -16,6 +16,7 @@ import {
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
 import { getIndexFromData } from '../src/utils';
+import { TextMeasurer } from '../src/utils/TextMeasurer';
 
 const width = 500;
 const height = 500;
@@ -137,8 +138,9 @@ describe('YAxis', () => {
   test(
     'Should support call children function for Ticks how many ticks are passed',
     () => {
-      /* It's called 4 times since after the initial render, re-render is triggered to have an access to rootRef to calculate multiline lines */
-      expect.assertions(4);
+      /* Called once per tick. Measuring multiline ticks no longer needs a rootRef,
+         so the extra re-render after the initial render is gone. */
+      expect.assertions(2);
 
       render(
         <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
@@ -811,5 +813,281 @@ describe('ChartLegend', () => {
     expect(counter).not.toBeNull();
     await user.click(counter!);
     expect(onChangeHandler).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('TextMeasurer', () => {
+  test('should measure text and reuse the cached result for the same text and font size', () => {
+    const measurer = new TextMeasurer();
+    const appendSpy = vi.spyOn(document.body, 'appendChild');
+
+    const first = measurer.measure('Capybara');
+    const second = measurer.measure('Capybara');
+
+    expect(second).toBe(first);
+    expect(appendSpy).toHaveBeenCalledTimes(1);
+
+    measurer.measure('Capybara', 16);
+    expect(appendSpy).toHaveBeenCalledTimes(2);
+
+    measurer.measure('Another label');
+    expect(appendSpy).toHaveBeenCalledTimes(3);
+
+    appendSpy.mockRestore();
+  });
+
+  test('should not leave the temporary svg node in the document', () => {
+    const measurer = new TextMeasurer();
+    const before = document.body.childElementCount;
+
+    measurer.measure('Some tick label');
+
+    expect(document.body.childElementCount).toBe(before);
+  });
+});
+
+/**
+ * `showDeltaPercentInTooltip` renders a third tooltip column with the percentage
+ * change relative to the previous data point.
+ *
+ * The data below is shaped so that every branch of `getPercentDelta` is reachable
+ * by hovering a specific bar (the chart is 500px wide and has 5 categories, so
+ * each band is ~100px):
+ *
+ *   x=60  -> Point 0: no previous point, both deltas are `null`
+ *   x=150 -> Point 1: `first` grows (+50%), `second` declines (-50%)
+ *   x=250 -> Point 2: both values unchanged -> delta `0`
+ *   x=350 -> Point 3: `first` drops to 0 (-100%), `second` grows (+20%)
+ *   x=440 -> Point 4: previous `first` is 0 -> `null`, `second` unchanged -> `0`
+ */
+describe('Chart tooltip percent delta', () => {
+  const deltaData = [
+    { category: 'Point 0', first: 100, second: 50 },
+    { category: 'Point 1', first: 150, second: 25 },
+    { category: 'Point 2', first: 150, second: 25 },
+    { category: 'Point 3', first: 0, second: 30 },
+    { category: 'Point 4', first: 75, second: 30 },
+  ];
+
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  const hoverBarChart = (clientX: number, props: Record<string, unknown> = {}) => {
+    const { container } = render(
+      <Chart.Bar
+        data={deltaData}
+        groupKey='category'
+        plotWidth={width}
+        plotHeight={300}
+        showDeltaPercentInTooltip
+        showTooltip
+        showTotalInTooltip={false}
+        duration={0}
+        aria-label='Bar chart'
+        {...props}
+      />,
+    );
+
+    const plot = container.querySelector('svg[data-ui-name="Plot"]');
+    expect(plot).not.toBeNull();
+
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(plot!, { clientX, clientY: 150 });
+
+    const tooltip = document.querySelector('[data-ui-name="HoverRect.Tooltip"]');
+    expect(tooltip).not.toBeNull();
+
+    return tooltip!;
+  };
+
+  const getTitle = (tooltip: Element) =>
+    tooltip.querySelector('[data-ui-name="HoverRect.Tooltip.Title"]')?.textContent;
+
+  const getChildrenWrapper = (tooltip: Element) =>
+    tooltip.querySelector('[class*="STooltipChildrenWrapper"]')!;
+
+  const getColumnsCount = (tooltip: Element) =>
+    Array.from(getChildrenWrapper(tooltip).classList)
+      .find((className) => className.includes('columnsCount'))
+      ?.match(/columnsCount_(\d)/)?.[1];
+
+  const getDeltas = (tooltip: Element) =>
+    Array.from(tooltip.querySelectorAll('[class*="STooltipDeltaWrapper"]')).map((node) => ({
+      trend: Array.from(node.classList)
+        .find((className) => className.includes('_trend_'))
+        ?.match(/_trend_(\w+?)_/)?.[1],
+      text: node.textContent,
+      icon: node.querySelector('svg')?.getAttribute('data-ui-name') ?? null,
+    }));
+
+  test('should not render delta cells for the first data point and fall back to two columns', () => {
+    const tooltip = hoverBarChart(60);
+
+    expect(getTitle(tooltip)).toBe('Point 0');
+    expect(getColumnsCount(tooltip)).toBe('2');
+    expect(getDeltas(tooltip)).toHaveLength(0);
+  });
+
+  test('should render upward and downward deltas with the matching icon and sign', () => {
+    const tooltip = hoverBarChart(150);
+
+    expect(getTitle(tooltip)).toBe('Point 1');
+    expect(getColumnsCount(tooltip)).toBe('3');
+    expect(getDeltas(tooltip)).toEqual([
+      { trend: 'upward', text: '50%', icon: 'DiffUp' },
+      { trend: 'downward', text: '-50%', icon: 'DiffDown' },
+    ]);
+  });
+
+  test('should render a -100% delta when the value drops to zero', () => {
+    const tooltip = hoverBarChart(350);
+
+    expect(getTitle(tooltip)).toBe('Point 3');
+    expect(getDeltas(tooltip)).toEqual([
+      { trend: 'downward', text: '-100%', icon: 'DiffDown' },
+      { trend: 'upward', text: '20%', icon: 'DiffUp' },
+    ]);
+  });
+
+  test('should mark an unchanged value as stable and render it without an icon', () => {
+    const tooltip = hoverBarChart(250);
+    const deltas = getDeltas(tooltip);
+
+    expect(getTitle(tooltip)).toBe('Point 2');
+    expect(deltas).toHaveLength(2);
+    deltas.forEach((delta) => {
+      expect(delta.trend).toBe('stable');
+      expect(delta.icon).toBeNull();
+    });
+  });
+
+  test('should not render delta cells at all when showDeltaPercentInTooltip is off', () => {
+    const tooltip = hoverBarChart(150, { showDeltaPercentInTooltip: false });
+
+    expect(getColumnsCount(tooltip)).toBe('2');
+    expect(getDeltas(tooltip)).toHaveLength(0);
+  });
+
+  /**
+   * Known defect: a stable delta renders as `0` instead of `0%`.
+   *
+   * `renderTooltipPercentDelta` builds the label as `{delta && `${delta}%`}`, so a
+   * delta of `0` short-circuits to the number `0`, which React renders verbatim.
+   * Remove `.fails` once the label is built unconditionally.
+   */
+  test.fails('should render a stable delta as "0%"', () => {
+    const tooltip = hoverBarChart(250);
+
+    expect(getDeltas(tooltip).map((delta) => delta.text)).toEqual(['0%', '0%']);
+  });
+
+  /**
+   * Known defect: the tooltip grid loses its alignment on mixed rows.
+   *
+   * `hasNoPercentDeltas` is only true when *every* delta is `null`, so a single
+   * resolvable delta switches the grid to three columns. Series whose delta is
+   * `null` still render only two cells, so every following cell shifts one column
+   * to the left. At Point 4 the previous `first` value is 0 -> delta `null`, while
+   * `second` is unchanged -> delta `0`, which yields 5 cells in a 3-column grid.
+   * Remove `.fails` once null deltas render a placeholder cell.
+   */
+  test.fails('should keep every row aligned when only some series have a delta', () => {
+    const tooltip = hoverBarChart(440);
+
+    expect(getTitle(tooltip)).toBe('Point 4');
+    expect(getColumnsCount(tooltip)).toBe('3');
+    // 2 series x 3 columns
+    expect(getChildrenWrapper(tooltip).children).toHaveLength(6);
+  });
+});
+
+/**
+ * Without a custom `tooltipValueFormatter` the chart falls back to
+ * `AbstractChart.defaultTooltipFormatter`.
+ */
+describe('Chart tooltip default formatting', () => {
+  const formatData = [
+    { time: new Date('2024-01-01T00:00:00Z'), integer: 10, fractional: 1234.5678 },
+    { time: new Date('2024-03-15T00:00:00Z'), integer: 20, fractional: 0.049 },
+    { time: new Date('2024-07-04T00:00:00Z'), integer: 30, fractional: 99.95 },
+  ];
+
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  const hoverLineChart = (props: Record<string, unknown> = {}) => {
+    const { container } = render(
+      <Chart.Line
+        data={formatData}
+        groupKey='time'
+        plotWidth={width}
+        plotHeight={300}
+        showTooltip
+        showTotalInTooltip={false}
+        duration={0}
+        aria-label='Line chart'
+        {...props}
+      />,
+    );
+
+    const plot = container.querySelector('svg[data-ui-name="Plot"]');
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(plot!, { clientX: 250, clientY: 150 });
+
+    const tooltip = document.querySelector('[data-ui-name="HoverLine.Tooltip"]');
+    expect(tooltip).not.toBeNull();
+
+    return tooltip!;
+  };
+
+  const getTitle = (tooltip: Element) =>
+    tooltip.querySelector('[data-ui-name="HoverLine.Tooltip.Title"]')?.textContent;
+
+  const getValues = (tooltip: Element) =>
+    Array.from(tooltip.querySelectorAll('[data-ui-name="Text"]')).map((node) => node.textContent);
+
+  test.each([
+    ['en', 'March 15, 2024'],
+    ['de', '15. März 2024'],
+    ['ja', '2024年3月15日'],
+  ])('should format a Date group key through Intl for locale %s', (locale, expected) => {
+    expect(getTitle(hoverLineChart({ locale }))).toBe(expected);
+  });
+
+  test('should render integers as is and round fractional values to one decimal', () => {
+    expect(getValues(hoverLineChart())).toEqual(['20', '0.0']);
+  });
+
+  test('should let tooltipValueFormatter override the built-in formatting', () => {
+    const tooltipValueFormatter = vi.fn(() => 'formatted');
+
+    expect(getValues(hoverLineChart({ tooltipValueFormatter }))).toEqual([
+      'formatted',
+      'formatted',
+    ]);
+    expect(tooltipValueFormatter).toHaveBeenCalled();
+  });
+
+  test('should run the total line through the value formatter', () => {
+    const tooltip = hoverLineChart({ showTotalInTooltip: true });
+
+    // 20 + 0.049 = 20.049 -> rounded to one decimal place.
+    expect(getValues(tooltip)).toContain('20.0');
   });
 });
