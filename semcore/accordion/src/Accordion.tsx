@@ -188,10 +188,11 @@ function ToggleButton(
     'ToggleButton'
   >,
 ) {
+  const SItemToggleButton = Root;
   const { styles } = props;
 
   return sstyled(styles)(
-    <Root render={Flex} alignItems='center' role='button' />,
+    <SItemToggleButton render={Flex} alignItems='center' role='button' />,
   );
 }
 

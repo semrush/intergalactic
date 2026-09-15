@@ -28,16 +28,12 @@ SItemToggle {
       background-color: var(--intergalactic-bg-secondary-neutral-hover, oklch(0.97 0.001 180));
     }
 
-    SItemChevron {
-      position: absolute;
-      top: 50%;
-      right: var(--intergalactic-spacing-content-padding-large, 16px);
-      flex-shrink: 0;
-      transform: translateY(-50%) rotate(0deg);
+    SItemToggleButton {
+      justify-content: space-between;
+    }
 
-      &[selected] {
-        transform: translateY(-50%) rotate(90deg);
-      }
+    SItemChevron {
+      order: 1;
     }
   }
 
@@ -45,7 +41,12 @@ SItemToggle {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
     padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xxsmall, 2px);
 
+    SItemToggleButton {
+      justify-content: unset;
+    }
+
     SItemChevron {
+      order: 0;
       margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
     }
   }
@@ -54,6 +55,11 @@ SItemToggle {
     opacity: var(--intergalactic-disabled-opacity, 0.4);
     cursor: default;
   }
+}
+
+SItemToggleButton {
+  flex: 1;
+  gap: var(--intergalactic-spacing-content-gap-large);
 }
 
 SItemChevron {
@@ -101,23 +107,12 @@ SAccordionItem {
   }
 }
 
-
-SItemCollapse {
-  &[visible] {
-    border-left: 2px solid var(--intergalactic-border-accent, oklch(0.23 0.01 140));
-  }
-}
-
 SItemCollapseContainer {
   padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
 }
 
 @media (prefers-reduced-motion) {
   SItemChevron {
-    transition: none;
-  }
-
-  SItemToggle[use='primary']::before {
     transition: none;
   }
 }
