@@ -6,10 +6,19 @@ import type React from 'react';
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
-import type { PlotEventEmitter } from '../../utils';
+import type { interpolateValue, PlotEventEmitter } from '../../utils';
 import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+
+export const GOOD = Symbol('GOOD');
+export const BAD = Symbol('BAD');
+export const INSIGHTFUL = Symbol('INSIGHTFUL');
+export const HIGHLIGHT_DOT = Symbol('HIGHLIGHT_DOT');
+
+export const DATA_TYPE = Symbol('DATA_TYPE');
+export const FORECAST = Symbol('FORECAST_DATA');
+export const POTENTIAL = Symbol('POTENTIAL_DATA');
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -43,7 +52,10 @@ export type BaseLegendProps = BaseChartLegendProps & {
     }
   );
 
-export type ObjectData = Record<string, unknown>;
+export type ObjectData = Record<string, number | typeof interpolateValue | Date | string | string[] | number[]> & {
+  [HIGHLIGHT_DOT]?: typeof GOOD | typeof BAD | typeof INSIGHTFUL;
+  [DATA_TYPE]?: typeof POTENTIAL | typeof FORECAST;
+};
 export type ListData = ObjectData[];
 
 /**

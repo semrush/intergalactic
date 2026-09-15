@@ -3,10 +3,9 @@ import type { Intergalactic } from '@semcore/core';
 import type { ScaleLinear, ScaleTime } from 'd3-scale';
 import type { CurveFactory } from 'd3-shape';
 
-import type { AriaNameProps, BaseChartProps } from './AbstractChart.type';
-import type { interpolateValue } from '../../utils';
+import type { AriaNameProps, BaseChartProps, ObjectData } from './AbstractChart.type';
 
-export type AreaChartData = Array<Record<string, number | typeof interpolateValue | Date>>;
+export type AreaChartData = Array<ObjectData>;
 
 export type AreaChartProps = BaseChartProps<AreaChartData> & {
   /** Field name that groups the data points */
@@ -19,7 +18,11 @@ export type AreaChartProps = BaseChartProps<AreaChartData> & {
   showDots?: boolean;
   /** D3 curve factory for line interpolation (e.g., curveLinear, curveCardinal) */
   curve?: CurveFactory;
-  /**  Enables stacked area chart mode */
+  /**
+   * Enables stacked area chart mode
+   * @deprecated True by default. AreaChart should be only stacked.
+   * @default true
+   */
   stacked?: boolean;
   /** Callback triggered when a user clicks on a chart at a position corresponding to a data item */
   onClickArea?: (index: number, event: React.SyntheticEvent) => void;
