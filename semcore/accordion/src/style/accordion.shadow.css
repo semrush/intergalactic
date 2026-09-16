@@ -42,10 +42,10 @@ SItemToggle {
   &[use='secondary'] {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
     padding:
-      var(--intergalactic-spacing-content-gap-large)
-      var(--intergalactic-spacing-content-padding-xxsmall)
-      var(--intergalactic-spacing-content-padding-small)
-      var(--intergalactic-spacing-content-padding-xxsmall);
+      var(--intergalactic-spacing-content-gap-large, 8px)
+      var(--intergalactic-spacing-content-padding-xxsmall, 2px)
+      var(--intergalactic-spacing-content-padding-small, 8px)
+      var(--intergalactic-spacing-content-padding-xxsmall, 2px);
 
     SItemToggleButton {
       gap: var(--intergalactic-spacing-content-gap-small, 4px);
