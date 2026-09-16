@@ -366,7 +366,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       for (let i = 0; i < count; i++) {
         const dot = locators.areaDots(page, i);
         await expect(dot).toHaveAttribute('aria-hidden', 'true');
-        await expect(dot).toHaveAttribute('r', '4');
+        await expect(dot).toHaveAttribute('r', '3.5');
       }
     });
 

@@ -5,17 +5,17 @@ import React from 'react';
 
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-function formatDate(value: any) {
-  const options = {
-    month: 'short' as const,
-    day: 'numeric' as const,
-  };
-
-  return new Intl.DateTimeFormat('en', options).format(value);
+/**
+ * `tooltipValueFormatter` is applied to series values, not to the tooltip title, so it has
+ * to format numbers. The title is always rendered by the built-in formatter, which prints
+ * the `Date` group key as a date.
+ */
+function formatValue(value: any) {
+  return `${value} clicks`;
 }
 
 type AreaChartStoryProps = AreaChartProps & {
-  /** Set to false to fall back to the built-in tooltip value formatter. */
+  /** Set to true to replace the built-in tooltip value formatter with `formatValue`. */
   useCustomValueFormatter?: boolean;
   /**
    * Swaps in a dataset where `line` drops to 0 in the middle.
@@ -49,7 +49,7 @@ const Demo = (props: AreaChartStoryProps) => {
         {...(chartProps as AreaChartProps)}
         aria-label='Area chart'
         {...(withZeroValue ? { data: dataWithZeroValue } : {})}
-        {...(useCustomValueFormatter ? { tooltipValueFormatter: formatDate } : {})}
+        {...(useCustomValueFormatter ? { tooltipValueFormatter: formatValue } : {})}
         onClickArea={onClickHandler}
       />
     </Box>
@@ -94,9 +94,9 @@ export const defaultProps = getChartProps<AreaChartStoryProps>({
   stacked: false,
   groupKey: 'time',
   data,
-  // Keep the custom formatter on by default so existing snapshots stay stable.
-  // Browser tests flip it off to exercise the built-in formatter.
-  useCustomValueFormatter: true,
+  // Off by default: the tooltip then shows the date in the title and plain numbers in the
+  // values, which is what the built-in formatter does.
+  useCustomValueFormatter: false,
   withZeroValue: false,
 });
 

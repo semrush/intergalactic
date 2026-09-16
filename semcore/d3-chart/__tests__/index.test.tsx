@@ -12,6 +12,7 @@ import {
   makeDataHintsContainer,
   Chart,
   ChartLegend,
+  HoverLine,
   // @ts-ignore
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
@@ -1074,6 +1075,46 @@ describe('Chart tooltip default formatting', () => {
     expect(getValues(hoverLineChart())).toEqual(['20', '0.0']);
   });
 
+  /**
+   * The hovered point is the middle one, so only its values matter.
+   */
+  const hoverValues = (first: number, second: number) =>
+    getValues(
+      hoverLineChart({
+        data: [
+          { time: new Date('2024-01-01T00:00:00Z'), first: 0, second: 0 },
+          { time: new Date('2024-03-15T00:00:00Z'), first, second },
+          { time: new Date('2024-07-04T00:00:00Z'), first: 5, second: 5 },
+        ],
+      }),
+    );
+
+  test('should round to one decimal place rather than truncate', () => {
+    // 7.899934 only reaches 7.9 by rounding; truncating would leave 7.8.
+    expect(hoverValues(1.739139, 7.899934)).toEqual(['1.7', '7.9']);
+  });
+
+  test('should round negative values away from zero the same way', () => {
+    expect(hoverValues(-1.739139, -7.899934)).toEqual(['-1.7', '-7.9']);
+  });
+
+  test('should round a value that carries more digits than the axis shows', () => {
+    expect(hoverValues(1234.5678, 0.96)).toEqual(['1234.6', '1.0']);
+  });
+
+  test('should format a numeric group key in the title as well', () => {
+    const tooltip = hoverLineChart({
+      groupKey: 'step',
+      data: [
+        { step: 0, first: 1 },
+        { step: 2.56, first: 2 },
+        { step: 5, first: 3 },
+      ],
+    });
+
+    expect(getTitle(tooltip)).toBe('2.6');
+  });
+
   test('should let tooltipValueFormatter override the built-in formatting', () => {
     const tooltipValueFormatter = vi.fn(() => 'formatted');
 
@@ -1089,5 +1130,141 @@ describe('Chart tooltip default formatting', () => {
 
     // 20 + 0.049 = 20.049 -> rounded to one decimal place.
     expect(getValues(tooltip)).toContain('20.0');
+  });
+});
+
+/**
+ * The tooltip dot is drawn in the series colour on an inverted (dark) tooltip.
+ * `chart-palette-order-1` is itself a dark neutral, so the only thing separating it
+ * from the tooltip background is the 1px ring drawn by
+ * `box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + var(--lightness)) c h)`.
+ * That is why `chart-palette-order-1` gets a stronger lightness offset than the rest.
+ */
+describe('Tooltip.Dot ring lightness', () => {
+  const dotData = [
+    { x: 0, y: 2 },
+    { x: 1, y: 5 },
+    { x: 2, y: 3 },
+    { x: 3, y: 7 },
+  ];
+
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  /**
+   * The dot has to be read from inside a rendered Tooltip: `TooltipDotRenderContext`
+   * only resets its colour index when a Tooltip provides it, so a standalone
+   * `Tooltip.Dot` would inherit whatever index previous renders left behind.
+   */
+  const hoverAndReadDots = (ui: React.ReactElement) => {
+    const { container } = render(ui);
+
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(container.querySelector('svg[data-ui-name="Plot"]')!, {
+      clientX: 200,
+      clientY: 100,
+    });
+
+    const circles = document.querySelectorAll('[class*="SDotCircle"]');
+    expect(circles.length).toBeGreaterThan(0);
+
+    // sstyled passes `color` and `lightness` down as generated custom properties.
+    return Array.from(circles).map((circle) => {
+      const style = circle.getAttribute('style') ?? '';
+
+      return {
+        color: style.match(/--color_\w+:\s*([^;]+)/)?.[1]?.trim(),
+        lightness: style.match(/--lightness_\w+:\s*([^;]+)/)?.[1]?.trim(),
+      };
+    });
+  };
+
+  const hoverAndReadDot = (ui: React.ReactElement) => hoverAndReadDots(ui)[0];
+
+  const readHighLevelDot = () =>
+    hoverAndReadDot(
+      <Chart.Line
+        data={dotData}
+        groupKey='x'
+        plotWidth={400}
+        plotHeight={200}
+        showTooltip
+        duration={0}
+        aria-label='Line chart'
+      />,
+    );
+
+  const readLowLevelDot = () => {
+    const xScale = scaleLinear().range([40, 360]).domain([0, 3]);
+    const yScale = scaleLinear().range([160, 40]).domain([0, 10]);
+
+    return hoverAndReadDot(
+      <Plot data={dotData} scale={[xScale, yScale]} width={400} height={200}>
+        <HoverLine.Tooltip x='x' wMin={100}>
+          {({ xIndex }: any) => ({
+            children: xIndex !== null
+              ? <HoverLine.Tooltip.Dot mr={4}>Line</HoverLine.Tooltip.Dot>
+              : <></>,
+          })}
+        </HoverLine.Tooltip>
+      </Plot>,
+    );
+  };
+
+  test('should paint both the high and the low level dot in chart-palette-order-1', () => {
+    expect(readHighLevelDot().color).toContain('chart-palette-order-1');
+    cleanup();
+    expect(readLowLevelDot().color).toContain('chart-palette-order-1');
+  });
+
+  test('should use the stronger ring when the chart passes the colour explicitly', () => {
+    expect(readHighLevelDot().lightness).toBe('0.35');
+  });
+
+  /**
+   * Only `chart-palette-order-1` needs the stronger offset. Every other palette colour
+   * is light enough against the inverted tooltip to read with the default one.
+   */
+  test('should use the default ring for every colour but chart-palette-order-1', () => {
+    const dots = hoverAndReadDots(
+      <Chart.Line
+        data={dotData.map((d) => ({ ...d, second: d.y * 2 }))}
+        groupKey='x'
+        plotWidth={400}
+        plotHeight={200}
+        showTooltip
+        duration={0}
+        aria-label='Line chart'
+      />,
+    );
+
+    expect(dots).toHaveLength(2);
+    expect(dots[0]).toMatchObject({ lightness: '0.35' });
+    expect(dots[1].color).toContain('chart-palette-order-2');
+    expect(dots[1].lightness).toBe('0.15');
+  });
+
+  /**
+   * The ring offset has to follow the colour the dot is painted with, not the `color`
+   * prop: `chart-palette-order-1` is a dark neutral that matches the inverted tooltip
+   * background, so the 1px ring is the only thing separating the two. Looking the offset
+   * up by the prop alone would drop a low-level `<Tooltip.Dot>` (which falls back to that
+   * very colour) to the weaker 0.15 and make it disappear.
+   */
+  test('should ring the implicit colour exactly like the explicit one', () => {
+    const lowLevel = readLowLevelDot();
+    cleanup();
+    const highLevel = readHighLevelDot();
+
+    expect(lowLevel.lightness).toBe('0.35');
+    expect(lowLevel.lightness).toBe(highLevel.lightness);
   });
 });

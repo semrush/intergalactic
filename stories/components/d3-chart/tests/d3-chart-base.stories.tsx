@@ -5,6 +5,7 @@ import HoveredTickExample, { defaultProps as HoveredTickProps } from './examples
 import PlotAndA11yPropsExample from './examples/d3-chart/plot-props';
 import ReferenceLinePropsExample from './examples/d3-chart/reference-line-props';
 import TooltipDefaultFormatExample, { defaultProps as TooltipDefaultFormatProps } from './examples/d3-chart/tooltip-default-format';
+import TooltipDeltaEdgeCasesExample, { defaultProps as TooltipDeltaEdgeCasesProps } from './examples/d3-chart/tooltip-delta-edge-cases';
 import XAsisiRenderDelayedExample from './examples/d3-chart/xAxis-ticks-render-delayed';
 import { getChartArgTypes } from './examples/stories_props_helper';
 
@@ -68,7 +69,13 @@ export const HoveredTick: StoryObj<typeof HoveredTickProps> = {
   args: HoveredTickProps,
 };
 
-export const TooltipDefaultFormat: StoryObj<typeof TooltipDefaultFormatProps> = {
+export const TooltipDeltaEdgeCases = {
+  render: TooltipDeltaEdgeCasesExample,
+  argTypes: getChartArgTypes(),
+  args: TooltipDeltaEdgeCasesProps,
+};
+
+export const TooltipDefaultFormat = {
   render: TooltipDefaultFormatExample,
   argTypes: getChartArgTypes(),
   args: TooltipDefaultFormatProps,
