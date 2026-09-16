@@ -46,8 +46,8 @@ const Demo = () => {
                 children: (
                   <>
                     <Radar.Tooltip.Title>{data.categories[index]}</Radar.Tooltip.Title>
-                    <Radar.Tooltip.Dot>{data['data_1'][index]}</Radar.Tooltip.Dot>
-                    <Radar.Tooltip.Dot>{data['data_2'][index]}</Radar.Tooltip.Dot>
+                    <Radar.Tooltip.Dot color='chart-palette-order-1'>{data['data_1'][index]}</Radar.Tooltip.Dot>
+                    <Radar.Tooltip.Dot color='chart-palette-order-2'>{data['data_2'][index]}</Radar.Tooltip.Dot>
                   </>
                 ),
               };
