@@ -1063,12 +1063,47 @@ describe('Chart tooltip default formatting', () => {
   const getValues = (tooltip: Element) =>
     Array.from(tooltip.querySelectorAll('[data-ui-name="Text"]')).map((node) => node.textContent);
 
+  /**
+   * These pin the format as it ships today, which has no weekday in it. Adding the
+   * weekday changes all three, see the `.fails` test below.
+   */
   test.each([
     ['en', 'March 15, 2024'],
     ['de', '15. März 2024'],
     ['ja', '2024年3月15日'],
   ])('should format a Date group key through Intl for locale %s', (locale, expected) => {
     expect(getTitle(hoverLineChart({ locale }))).toBe(expected);
+  });
+
+  test('should print the month name in full rather than a numeric date', () => {
+    const title = getTitle(hoverLineChart());
+
+    expect(title).toContain('March');
+    // A numeric date such as 3/15/2024 would mean the long format was dropped.
+    expect(title).not.toMatch(/\d+\/\d+\/\d+/);
+  });
+
+  test('should drop the time from the date', () => {
+    expect(getTitle(hoverLineChart())).not.toMatch(/\d{1,2}:\d{2}/);
+  });
+
+  /**
+   * Known gap: the default date format carries no weekday.
+   *
+   * `defaultTooltipFormatter` builds the date from `{ month: 'long', day: 'numeric',
+   * year: 'numeric' }`, so it prints "March 15, 2024" where the requirement asks for the
+   * full weekday name as well. Remove `.fails` once `weekday: 'long'` is added to those
+   * options, and update the locale cases above, which currently pin the shorter format.
+   */
+  test.fails('should print the full weekday name in the date', () => {
+    const expected = new Intl.DateTimeFormat('en', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }).format(new Date('2024-03-15T00:00:00Z'));
+
+    expect(getTitle(hoverLineChart())).toBe(expected);
   });
 
   test('should render integers as is and round fractional values to one decimal', () => {
