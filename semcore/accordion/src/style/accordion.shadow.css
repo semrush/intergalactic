@@ -18,6 +18,7 @@ SItemToggle {
       var(--intergalactic-spacing-content-padding-large, 16px)
       var(--intergalactic-spacing-content-padding-small, 8px)
       var(--intergalactic-spacing-content-padding-xlarge, 20px);
+      
 
     &:has(SItemChevron[selected]) {
       border-bottom-left-radius: 0;
@@ -29,6 +30,7 @@ SItemToggle {
     }
 
     SItemToggleButton {
+      gap: var(--intergalactic-spacing-content-gap-large, 8px);
       justify-content: space-between;
     }
 
@@ -39,15 +41,19 @@ SItemToggle {
 
   &[use='secondary'] {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-    padding: var(--intergalactic-spacing-content-padding-small, 8px) var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+    padding:
+      var(--intergalactic-spacing-content-gap-large)
+      var(--intergalactic-spacing-content-padding-xxsmall)
+      var(--intergalactic-spacing-content-padding-small)
+      var(--intergalactic-spacing-content-padding-xxsmall);
 
     SItemToggleButton {
+      gap: var(--intergalactic-spacing-content-gap-small, 4px);
       justify-content: unset;
     }
 
     SItemChevron {
       order: 0;
-      margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
     }
   }
 
@@ -59,7 +65,6 @@ SItemToggle {
 
 SItemToggleButton {
   flex: 1;
-  gap: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
 SItemChevron {
@@ -103,6 +108,12 @@ SAccordionItem {
       &::before {
         transition-duration: calc(var(--duration) * 1ms);
       }
+    }
+  }
+
+  &[use='secondary'] {
+    SItemCollapse {
+      border-left: 2px solid var(--intergalactic-border-accent, oklch(0.23 0.01 140));
     }
   }
 }
