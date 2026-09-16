@@ -110,6 +110,7 @@ class HoverLineRoot extends Hover {
 
   render() {
     const { hideHoverLine } = this.asProps;
+    const { xIndex, yIndex } = this.state;
 
     const isHide =
       typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
@@ -120,7 +121,6 @@ class HoverLineRoot extends Hover {
 
     const SHoverLine = this.Element;
     const { styles, x, y, data, scale, dataHints, hideTickHover } = this.asProps;
-    const { xIndex, yIndex } = this.state;
     const [xScale, yScale] = scale;
 
     const xRange = xScale.range();

@@ -6,6 +6,7 @@ import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import cssToIntDefault from '@semcore/core/lib/utils/cssToIntDefault';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
+import Divider from '@semcore/divider';
 import DiffDown from '@semcore/icon/DiffDown/m';
 import DiffUp from '@semcore/icon/DiffUp/m';
 import { Text } from '@semcore/typography';
@@ -24,6 +25,8 @@ import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import type { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import type { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
+
+type TooltipPercentDeltaTrend = 'upward' | 'downward' | 'stable' | 'unknown';
 
 export type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
@@ -378,14 +381,20 @@ export abstract class AbstractChart<
 
     if (value instanceof Date) {
       return new Intl.DateTimeFormat(locale, {
-        month: 'long',
+        month: 'short',
         day: 'numeric',
         year: 'numeric',
       }).format(value);
     }
 
     if (typeof value === 'number' && !Number.isNaN(value)) {
-      return Number.isInteger(value) ? `${value}` : value.toFixed(1);
+      return Number.isInteger(value)
+        ? `${value}`
+        : new Intl.NumberFormat(locale, {
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1,
+            roundingMode: 'halfExpand',
+          }).format(value);
     }
 
     return value.toString();
@@ -535,7 +544,7 @@ export abstract class AbstractChart<
 
     if (prev === 0) return curr === 0 ? 0 : null;
 
-    const percent = ((curr - prev) / prev) * 100;
+    const percent = ((curr - prev) / Math.abs(prev)) * 100;
 
     return Number(percent.toFixed(1));
   }
@@ -555,7 +564,8 @@ export abstract class AbstractChart<
     const percentDeltas = showDeltaPercentInTooltip
       ? dataDefinitions.map(({ id }) => this.getPercentDelta(id, index))
       : [];
-    const hasNoPercentDeltas = percentDeltas.length === 0 || percentDeltas.every((value) => value === null);
+    const hasPercentDeltas = percentDeltas.length > 0 && percentDeltas.some((value) => value !== null);
+    const columnsCount = hasPercentDeltas ? 3 : 2;
 
     return sstyled(styles)(
       <Flex direction='column'>
@@ -563,7 +573,7 @@ export abstract class AbstractChart<
 
         <STooltipChildrenWrapper
           // @ts-ignore
-          columnsCount={hasNoPercentDeltas ? 2 : 3}
+          columnsCount={columnsCount}
         >
           {dataDefinitions.map((item, idx) => {
             const delta = percentDeltas[idx] ?? null;
@@ -575,7 +585,7 @@ export abstract class AbstractChart<
                     {item.label}
                   </Tooltip.Dot>
                   <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id] as string)}</Text>
-                  {this.renderTooltipPercentDelta(delta)}
+                  {hasPercentDeltas && this.renderTooltipPercentDelta(delta)}
                 </Fragment>
               )
             );
@@ -587,46 +597,47 @@ export abstract class AbstractChart<
     );
   }
 
+  private getTooltipPercentDeltaTrend(delta: number | null): TooltipPercentDeltaTrend {
+    if (delta === null) return 'unknown';
+    if (delta > 0) return 'upward';
+    if (delta < 0) return 'downward';
+    return 'stable';
+  }
+
   protected renderTooltipPercentDelta(delta: number | null) {
-    if (delta === null) return null;
-
     const { styles } = this.asProps;
+    const trend = this.getTooltipPercentDeltaTrend(delta);
     const STooltipDeltaWrapper = Flex;
-    let STooltipDeltaIcon = DiffDown;
-
-    const trend: 'upward' | 'downward' | 'stable' = delta !== 0
-      ? delta > 0
-        ? 'upward'
-        : 'downward'
-      : 'stable';
-
-    if (delta > 0) STooltipDeltaIcon = DiffUp;
+    const STooltipDeltaIcon = trend === 'upward' ? DiffUp : DiffDown;
 
     return sstyled(styles)(
       <STooltipDeltaWrapper
         // @ts-ignore
         trend={trend}
       >
-        {delta !== 0 && <STooltipDeltaIcon width={8.5} height={8.5} />}
-        <Text size={100}>{ delta && `${delta}%`}</Text>
+        {(trend === 'upward' || trend === 'downward') && <STooltipDeltaIcon width={8.5} height={8.5} />}
+        {trend !== 'unknown' && <Text size={100}>{delta}%</Text>}
       </STooltipDeltaWrapper>,
     );
   }
 
   protected renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
-    const { showTotalInTooltip } = this.asProps;
+    const { showTotalInTooltip, styles } = this.asProps;
 
     if (!showTotalInTooltip) {
       return null;
     }
 
+    const STooltipDivider = Divider;
+
     const total = this.totalValue(dataItem);
 
-    return (
+    return sstyled(styles)(
       <>
-        <Box mt={2} mr={2}>Total</Box>
-        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : this.tooltipValueFormatter(total)}</Text>
-      </>
+        <STooltipDivider theme='invert' />
+        <Box mr={2}>Total</Box>
+        <Text textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : this.tooltipValueFormatter(total)}</Text>
+      </>,
     );
   }
 
