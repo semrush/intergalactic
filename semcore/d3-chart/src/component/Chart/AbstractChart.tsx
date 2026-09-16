@@ -381,7 +381,8 @@ export abstract class AbstractChart<
 
     if (value instanceof Date) {
       return new Intl.DateTimeFormat(locale, {
-        month: 'short',
+        weekday: 'long',
+        month: 'long',
         day: 'numeric',
         year: 'numeric',
       }).format(value);
