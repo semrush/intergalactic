@@ -31,6 +31,10 @@ export const locators = {
     const base = page.getByRole('heading');
     return typeof index === 'number' ? base.nth(index) : base;
   },
+  toggleButton: (page: Page, index?: number) => {
+    const base = page.locator(`[data-ui-name="Item.ToggleButton"]`);
+    return typeof index === 'number' ? base.nth(index) : base;
+  },
 };
 
 /* =====================================================
@@ -41,16 +45,17 @@ test.describe(`${TAG.VISUAL}`, () => {
   const variables = [
     {
       use: 'primary',
-      // In the primary variant the chevron is pulled out of the flow and pinned
-      // to the right edge of the toggle, so it has no horizontal margin.
-      chevronPosition: 'absolute',
-      chevronMarginRight: '0px',
+      // The chevron stays in the flow: `order` moves it after the label and
+      // `justify-content: space-between` on the toggle button pins it to the right edge.
+      chevronOrder: '1',
+      toggleButtonGap: '8px',
       togglePadding: '8px 16px 8px 20px',
     },
     {
       use: 'secondary',
-      chevronPosition: 'static',
-      chevronMarginRight: '4px',
+      // Here the chevron leads the label, separated only by the toggle button gap.
+      chevronOrder: '0',
+      toggleButtonGap: '4px',
       togglePadding: '8px 2px',
     },
   ];
@@ -73,11 +78,19 @@ test.describe(`${TAG.VISUAL}`, () => {
         await expect(page).toHaveScreenshot();
       });
 
-      await test.step('Verify chevron position and margins', async () => {
+      await test.step('Verify chevron placement', async () => {
         const count = await locators.chevron(page).count();
         for (let i = 0; i < count; i++) {
-          await expect(locators.chevron(page, i)).toHaveCSS('position', item.chevronPosition);
-          await expect(locators.chevron(page, i)).toHaveCSS('margin-right', item.chevronMarginRight);
+          await expect(locators.chevron(page, i)).toHaveCSS('order', item.chevronOrder);
+          // The spacing comes from the toggle button gap, never from a margin on the chevron.
+          await expect(locators.chevron(page, i)).toHaveCSS('margin-right', '0px');
+        }
+      });
+
+      await test.step('Verify gap between chevron and label', async () => {
+        const count = await locators.toggleButton(page).count();
+        for (let i = 0; i < count; i++) {
+          await expect(locators.toggleButton(page, i)).toHaveCSS('column-gap', item.toggleButtonGap);
         }
       });
 
@@ -138,9 +151,16 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-right-radius', '0px');
     });
 
-    await test.step('Verify accent border on the expanded collapse', async () => {
-      await expect(locators.collapse(page, 0)).toHaveCSS('border-left-width', '2px');
-      await expect(locators.collapse(page, 0)).toHaveCSS('border-left-style', 'solid');
+    await test.step('Verify accent bar is shown on the expanded item', async () => {
+      // In the primary variant the accent bar is the item's ::before overlay,
+      // toggled through opacity, so it cannot be read from a regular locator.
+      const bar = await locators.item(page, 0).evaluate((el) => {
+        const styles = getComputedStyle(el, '::before');
+        return { width: styles.width, opacity: styles.opacity };
+      });
+
+      expect(bar.width).toBe('2px');
+      expect(bar.opacity).toBe('1');
     });
 
     await test.step('Verify expanded state snapshot', async () => {
@@ -152,6 +172,15 @@ test.describe(`${TAG.VISUAL}`, () => {
       await locators.collapse(page, 0).waitFor({ state: 'hidden' });
       await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-left-radius', '8px');
       await expect(locators.toggle(page, 0)).toHaveCSS('border-bottom-right-radius', '8px');
+    });
+
+    await test.step('Verify accent bar is hidden after collapsing', async () => {
+      // The bar fades out, so poll until the opacity transition settles.
+      await expect
+        .poll(async () =>
+          locators.item(page, 0).evaluate((el) => getComputedStyle(el, '::before').opacity),
+        )
+        .toBe('0');
     });
   });
 
