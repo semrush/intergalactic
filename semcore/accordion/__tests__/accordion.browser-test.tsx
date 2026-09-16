@@ -154,13 +154,18 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify accent bar is shown on the expanded item', async () => {
       // In the primary variant the accent bar is the item's ::before overlay,
       // toggled through opacity, so it cannot be read from a regular locator.
-      const bar = await locators.item(page, 0).evaluate((el) => {
-        const styles = getComputedStyle(el, '::before');
-        return { width: styles.width, opacity: styles.opacity };
-      });
+      // The bar fades in, so poll until the opacity transition settles.
+      await expect
+        .poll(async () =>
+          locators.item(page, 0).evaluate((el) => getComputedStyle(el, '::before').opacity),
+        )
+        .toBe('1');
 
-      expect(bar.width).toBe('2px');
-      expect(bar.opacity).toBe('1');
+      const width = await locators
+        .item(page, 0)
+        .evaluate((el) => getComputedStyle(el, '::before').width);
+
+      expect(width).toBe('2px');
     });
 
     await test.step('Verify expanded state snapshot', async () => {
