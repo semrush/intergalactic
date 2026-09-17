@@ -7,6 +7,7 @@ const Demo = () => {
     <Card w='700px'>
       <Card.Body pt={0} px={0} pb={1}>
         <DataTable
+          aria-label='Loading and scroll'
           variant='card'
           data={data}
           w='100%'
