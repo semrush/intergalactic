@@ -9,16 +9,16 @@ const Demo = () => {
     <Accordion value={value} onChange={(value: any) => onChange(value)}>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 1}>
-          <Accordion.Item.Toggle pb={2}>
+          <Accordion.Item.Toggle>
             <Accordion.Item.ToggleButton>
-              <Accordion.Item.Chevron mr={2} />
+              <Accordion.Item.Chevron />
               Section
               {' '}
               {index + 1}
             </Accordion.Item.ToggleButton>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse preserveNode>
-            <Box pt={3} px={6} pb={6}>
+            <Box>
               {`This is section ${index + 1}`}
               ,
               {' '}
