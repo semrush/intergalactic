@@ -1,21 +1,17 @@
 SHighlightedInput[state='normal'] {
   SOutline {
-    background: linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border-color: transparent;
+    border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 
     &::before {
       content: "";
       position: absolute;
       z-index: -1;
       inset: 0;
-      margin: -3px;
+      margin: -4px;
       padding: 3px;
       border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-      background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
+      background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
       mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
       mask-composite: exclude;
 
@@ -27,6 +23,7 @@ SHighlightedInput[state='normal'] {
 
   &:has(SValue:focus-visible) SOutline {
     outline: none;
+    border-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
 
     &::before {
       opacity: 1;
@@ -52,10 +49,10 @@ SHighlightedInput[state='normal'] {
 @supports not (-webkit-mask-composite: xor) {
   SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline {
     outline: none;
-    border-color: #7078FC;
+    border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
     box-shadow:
-      0 0 0 0 #ffffff,
-      0 0 0 2px #7078FC;
+      0 0 0 2px #ffffff,
+      0 0 0 4px #59ddaa;
   }
 
   SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline::before {

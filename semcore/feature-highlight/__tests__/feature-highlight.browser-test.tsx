@@ -407,7 +407,7 @@ test.describe(`${TAG.VISUAL} `, () => {
             await expectBackgroundImageToContainToken(
               page,
               styles.backgroundImage,
-              featureHighlightTokens.border,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
 
@@ -416,7 +416,7 @@ test.describe(`${TAG.VISUAL} `, () => {
             await expectBackgroundImageToContainToken(
               page,
               stylesSelected.backgroundImage,
-              featureHighlightTokens.border,
+              featureHighlightTokens.focusOutline,
             );
             await expect(page).toHaveScreenshot();
 
