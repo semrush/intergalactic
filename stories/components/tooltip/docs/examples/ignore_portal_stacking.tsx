@@ -49,25 +49,23 @@ const Demo = () => {
         </Tooltip>
       </Modal>
       <Select>
-        <Select.Trigger placeholder='Select option' mt={2} id='select-with-tooltips' />
+        <Select.Trigger
+          placeholder='Select option with tooltip'
+          aria-label='Select option with tooltip'
+          mt={2}
+          id='select-with-tooltips'
+        />
         <Select.Menu>
           <Tooltip w='100px' timeout={[0, 50]} ignorePortalsStacking placement='left'>
             {options.map((option, index) => (
-              <Select.Option
-                value={option}
-                key={index}
-                tag={Tooltip.Trigger}
-              >
+              <Select.Option value={option} key={index} tag={Tooltip.Trigger}>
                 {option}
               </Select.Option>
             ))}
-            <Tooltip.Popper w={200}>
-              Tooltip Content
-            </Tooltip.Popper>
+            <Tooltip.Popper w={200}>Tooltip Content</Tooltip.Popper>
           </Tooltip>
         </Select.Menu>
       </Select>
-
     </Flex>
   );
 };
