@@ -3941,7 +3941,7 @@
   },
   {
     "name": "--intergalactic-control-primary-feature-highlight-active",
-    "value": "{semanticTokens.colors.control_primary_brand_info}",
+    "value": "oklch(0 0 140)",
     "description": "Active (selected) state of the highlighted primary control.",
     "components": [
       "feature-highlight"

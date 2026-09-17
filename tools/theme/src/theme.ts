@@ -2302,7 +2302,7 @@ export const theme: Theme = {
       description: 'Hover state of the highlighted primary control.',
     },
     'control_primary_feature-highlight_active': {
-      value: '{semanticTokens.colors.control_primary_brand_info}',
+      value: '{semanticTokens.colors.control_primary_info_active}',
       description: 'Active (selected) state of the highlighted primary control.',
     },
     'control_secondary_feature-highlight_DEFAULT': {

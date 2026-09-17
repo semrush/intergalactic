@@ -13,8 +13,8 @@ SHighlightedCheckbox:not([state="invalid"]) {
   }
 
   &:active input[data-ui-name="CheckboxFH.Value"]:is(:checked, :indeterminate) + [data-ui-name="Value.CheckMark"] {
-    background-color: var(--intergalactic-control-primary-feature-highlight-active, {semanticTokens.colors.control_primary_brand_info});
-    border-color: var(--intergalactic-control-primary-feature-highlight-active, {semanticTokens.colors.control_primary_brand_info});
+    background-color: var(--intergalactic-control-primary-feature-highlight-active, oklch(0 0 140));
+    border-color: var(--intergalactic-control-primary-feature-highlight-active, oklch(0 0 140));
   }
 
   [data-ui-name="Value.CheckMark"]::before,
