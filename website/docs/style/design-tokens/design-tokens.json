@@ -231,7 +231,6 @@
       "color-picker",
       "counter",
       "d3-chart",
-      "data-table",
       "drag-and-drop",
       "dropdown",
       "feature-highlight",
@@ -492,6 +491,7 @@
       "color-picker",
       "counter",
       "d3-chart",
+      "data-table",
       "date-picker",
       "divider",
       "dropdown",
@@ -1850,7 +1850,6 @@
     "value": "oklch(0.1 0.023 159.1 / 0.433)",
     "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
     "components": [
-      "data-table",
       "inline-input",
       "input",
       "input-number"
@@ -2351,14 +2350,26 @@
   {
     "name": "--intergalactic-table-border-accent",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
-    "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table.",
-    "components": []
+    "description": "Accent borders in the table, e.g. for the accordion.",
+    "components": [
+      "data-table"
+    ]
+  },
+  {
+    "name": "--intergalactic-table-border-accordion-accent",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Accent left border for the table.",
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell",
     "value": "oklch(1 0 0)",
     "description": "Background of the default cell in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-accordion",
@@ -2490,13 +2501,13 @@
   },
   {
     "name": "--intergalactic-table-th-gradient",
-    "value": "linear-gradient(to right, transparent 0%, oklch(0.9 0.002 177) 100%)",
+    "value": "linear-gradient(to right, transparent 0%, #ffffff 100%)",
     "description": "Background gradient for sorting icon that absolute positioned in the table head.",
     "components": []
   },
   {
     "name": "--intergalactic-table-th-primary-cell",
-    "value": "oklch(0.98 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the header cell in the primary Table.",
     "components": [
       "data-table"
@@ -2504,17 +2515,17 @@
   },
   {
     "name": "--intergalactic-table-th-primary-cell-active",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the active header cell in the primary Table.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-table-th-primary-cell-hover",
-    "value": "oklch(0.96 0.001 180)",
-    "description": "Background of the hovered header cell in the primary Table.",
     "components": [
       "data-table"
     ]
+  },
+  {
+    "name": "--intergalactic-table-th-primary-cell-hover",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the hovered header cell in the primary Table.",
+    "components": []
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
@@ -3074,6 +3085,7 @@
       "card",
       "counter",
       "d3-chart",
+      "data-table",
       "date-picker",
       "dropdown",
       "dropdown-menu",
@@ -3373,6 +3385,7 @@
     "components": [
       "accordion",
       "counter",
+      "data-table",
       "input-tags",
       "notice-bubble",
       "pills",
@@ -3387,6 +3400,7 @@
       "base-components",
       "bulk-textarea",
       "counter",
+      "data-table",
       "dropdown",
       "dropdown-menu",
       "input-tags",
@@ -3414,6 +3428,7 @@
       "accordion",
       "base-components",
       "bulk-textarea",
+      "data-table",
       "dropdown",
       "fullscreen-modal",
       "modal",
@@ -3435,6 +3450,7 @@
       "bulk-textarea",
       "button",
       "card",
+      "data-table",
       "dropdown",
       "fullscreen-modal",
       "input",
@@ -3458,6 +3474,7 @@
       "accordion",
       "bulk-textarea",
       "color-picker",
+      "data-table",
       "feature-popover",
       "fullscreen-modal",
       "notice",
@@ -3475,6 +3492,7 @@
       "accordion",
       "bulk-textarea",
       "card",
+      "data-table",
       "notice",
       "wizard"
     ]
@@ -3508,6 +3526,7 @@
     "components": [
       "accordion",
       "color-picker",
+      "data-table",
       "typography"
     ]
   },
@@ -3520,6 +3539,7 @@
       "base-trigger",
       "bulk-textarea",
       "carousel",
+      "data-table",
       "date-picker",
       "dropdown-menu",
       "inline-input",
@@ -3559,6 +3579,7 @@
       "button",
       "carousel",
       "checkbox",
+      "data-table",
       "date-picker",
       "dropdown",
       "fullscreen-modal",
@@ -3578,6 +3599,7 @@
     "components": [
       "carousel",
       "color-picker",
+      "data-table",
       "fullscreen-modal",
       "notice-bubble",
       "pagination",
