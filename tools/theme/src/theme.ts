@@ -2269,78 +2269,78 @@ export const theme: Theme = {
     },
   },
   featureHighlight: {
-    'badge_feature-highlight_accent': {
+    'feature-highlight_badge_accent': {
       value: '{semanticTokens.colors.brand_secondary}',
       description: 'Accent background for Badge.',
     },
-    'bg_primary_feature-highlight_DEFAULT': {
+    'feature-highlight_bg_primary_DEFAULT': {
       value: '{semanticTokens.colors.bg_primary_DEFAULT}',
       description: 'Primary background for highlighted controls.',
     },
-    'bg_primary_feature-highlight_hover_active': {
+    'feature-highlight_bg_primary_hover_active': {
       value: '{semanticTokens.colors.bg_primary_hover}',
       description: 'Primary background for hover and active (selected) state of highlighted controls.',
     },
-    'bg_secondary_feature-highlight': {
+    'feature-highlight_bg_secondary': {
       value: '{baseTokens.colors.violet.100}',
       description: 'Secondary background for the highlighted message.',
     },
-    'border_feature-highlight_DEFAULT': {
+    'feature-highlight_border_DEFAULT': {
       value: '{semanticTokens.colors.border_primary}',
       description: 'Primary border for highlighted controls.',
     },
-    'border_feature-highlight_active': {
+    'feature-highlight_border_active': {
       value: '{semanticTokens.colors.brand_secondary}',
       description: 'Primary border for the active state of highlighted controls.',
     },
-    'border_feature-highlight_secondary': {
+    'feature-highlight_border_secondary': {
       value: '{semanticTokens.colors.border_secondary}',
       description: 'Secondary border for highlighted controls.',
     },
-    'control_primary_feature-highlight_DEFAULT': {
+    'feature-highlight_control_primary_DEFAULT': {
       value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
       description: 'Background of the highlighted primary control.',
     },
-    'control_primary_feature-highlight_hover': {
+    'feature-highlight_control_primary_hover': {
       value: '{semanticTokens.colors.control_primary_info_hover}',
       description: 'Hover state of the highlighted primary control.',
     },
-    'control_primary_feature-highlight_active': {
+    'feature-highlight_control_primary_active': {
       value: '{semanticTokens.colors.control_primary_info_active}',
       description: 'Active (selected) state of the highlighted primary control.',
     },
-    'control_secondary_feature-highlight_DEFAULT': {
+    'feature-highlight_control_secondary_DEFAULT': {
       value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
       description: 'Background of the highlighted secondary control.',
     },
-    'control_secondary_feature-highlight_hover': {
+    'feature-highlight_control_secondary_hover': {
       value: '{semanticTokens.colors.control_secondary_neutral_hover}',
       description: 'Hover state of the highlighted secondary control.',
     },
-    'control_secondary_feature-highlight_active': {
+    'feature-highlight_control_secondary_active': {
       value: '{semanticTokens.colors.control_secondary_neutral_active}',
       description: 'Active (selected) state of the highlighted secondary control.',
     },
-    'text_feature-highlight_DEFAULT': {
+    'feature-highlight_text_DEFAULT': {
       value: '{semanticTokens.colors.text_primary_DEFAULT}',
       description: 'Text for highlighted features.',
     },
-    'text_feature-highlight_hover_active': {
+    'feature-highlight_text_hover_active': {
       value: '{semanticTokens.colors.text_primary_DEFAULT}',
       description: 'Text for hover and active states of highlighted features.',
     },
-    'icon_primary_feature-highlight_DEFAULT': {
+    'feature-highlight_icon_primary_DEFAULT': {
       value: '{semanticTokens.colors.brand_secondary}',
     },
-    'icon_primary_feature-highlight_hover_active': {
+    'feature-highlight_icon_primary_hover_active': {
       value: '{semanticTokens.colors.brand_secondary}',
       description: 'Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.',
     },
-    'keyboard_focus_feature-highlight_DEFAULT': {
-      value: '3px solid {featureHighlight.keyboard.focus.feature-highlight.outline}',
+    'feature-highlight_keyboard_focus_DEFAULT': {
+      value: '3px solid {featureHighlight.feature-highlight.keyboard.focus.outline}',
       description: 'Keyboard focus styles for highlighted controls.',
     },
-    'keyboard_focus_feature-highlight_outline': {
+    'feature-highlight_keyboard_focus_outline': {
       value: 'linear-gradient(90deg in oklch, {baseTokens.colors.green.200}, {baseTokens.colors.green.200})',
       description: 'Color for keyboard focus outline styles for highlighted controls.',
     },
@@ -2361,11 +2361,64 @@ export const theme: Theme = {
       500: colors.blue['500'],
     },
     table: { td: { cell: { actions: { accordion: { value: '{semanticTokens.colors.table_td_cell_accordion}' } } } } },
-    keyboard: { focus: { outline: { invert: { value: '{semanticTokens.colors.keyboard_focus_invert_outline}' } } } },
+    keyboard: {
+      focus: {
+        'outline': { invert: { value: '{semanticTokens.colors.keyboard_focus_invert_outline}' } },
+        'feature-highlight': {
+          DEFAULT: { value: '{featureHighlight.feature-highlight.keyboard.focus.DEFAULT}' },
+          outline: { value: '{featureHighlight.feature-highlight.keyboard.focus.outline}' },
+        },
+      },
+    },
+    badge: {
+      'feature-highlight': {
+        accent: { value: '{featureHighlight.feature-highlight.badge.accent}' },
+      },
+    },
+    bg: {
+      primary: {
+        'feature-highlight': {
+          DEFAULT: { value: '{featureHighlight.feature-highlight.bg.primary.DEFAULT}' },
+          hover: { active: { value: '{featureHighlight.feature-highlight.bg.primary.hover.active}' } },
+        },
+      },
+      secondary: {
+        'feature-highlight': { value: '{featureHighlight.feature-highlight.bg.secondary}' },
+      },
+    },
     border: {
-      tooltip: { invert: { value: '{semanticTokens.colors.tooltip_border_invert}' } },
-      table: { accent: { value: '{semanticTokens.colors.table_border_accent}' } },
-      date: { picker: { range: { comparison: { value: '{semanticTokens.colors.date_picker_border_range_comparison}' } } } },
+      'tooltip': { invert: { value: '{semanticTokens.colors.tooltip_border_invert}' } },
+      'table': { accent: { value: '{semanticTokens.colors.table_border_accent}' } },
+      'date': { picker: { range: { comparison: { value: '{semanticTokens.colors.date_picker_border_range_comparison}' } } } },
+      'feature-highlight': {
+        DEFAULT: { value: '{featureHighlight.feature-highlight.border.DEFAULT}' },
+        active: { value: '{featureHighlight.feature-highlight.border.active}' },
+        secondary: { value: '{featureHighlight.feature-highlight.border.secondary}' },
+      },
+    },
+    control: {
+      primary: {
+        'feature-highlight': {
+          DEFAULT: { value: '{featureHighlight.feature-highlight.control.primary.DEFAULT}' },
+          hover: { value: '{featureHighlight.feature-highlight.control.primary.hover}' },
+          active: { value: '{featureHighlight.feature-highlight.control.primary.active}' },
+        },
+      },
+      secondary: {
+        'feature-highlight': {
+          DEFAULT: { value: '{featureHighlight.feature-highlight.control.secondary.DEFAULT}' },
+          hover: { value: '{featureHighlight.feature-highlight.control.secondary.hover}' },
+          active: { value: '{featureHighlight.feature-highlight.control.secondary.active}' },
+        },
+      },
+    },
+    icon: {
+      primary: {
+        'feature-highlight': {
+          DEFAULT: { value: '{featureHighlight.feature-highlight.icon.primary.DEFAULT}' },
+          hover: { active: { value: '{featureHighlight.feature-highlight.icon.primary.hover.active}' } },
+        },
+      },
     },
     tooltip: {
       default: { value: '{semanticTokens.colors.tooltip_bg_default}' },
@@ -2408,13 +2461,17 @@ export const theme: Theme = {
       },
     },
     text: {
-      link: {
+      'link': {
         DEFAULT: { value: '{semanticTokens.colors.text_link_primary_DEFAULT}' },
         hover: { active: { value: '{semanticTokens.colors.text_link_primary_hover_active}' } },
         invert: {
           DEFAULT: { value: '{semanticTokens.colors.text_link_primary_invert_DEFAULT}' },
           hover: { value: '{semanticTokens.colors.text_link_primary_invert_hover_active}' },
         },
+      },
+      'feature-highlight': {
+        DEFAULT: { value: '{featureHighlight.feature-highlight.text.DEFAULT}' },
+        hover: { active: { value: '{featureHighlight.feature-highlight.text.hover.active}' } },
       },
     },
   },
@@ -3532,39 +3589,23 @@ type SemanticShadows = {
 };
 
 export type FeatureHighlight = {
-  badge: {
-    'feature-highlight': { accent: Value };
-  };
-  bg: {
-    primary: {
-      'feature-highlight': { DEFAULT: Value; hover: { active: Value } };
+  'feature-highlight': {
+    badge: { accent: Value };
+    bg: {
+      primary: { DEFAULT: Value; hover: { active: Value } };
+      secondary: Value;
     };
-    secondary: {
-      'feature-highlight': Value;
+    border: { DEFAULT: Value; active: Value; secondary: Value };
+    control: {
+      primary: { DEFAULT: Value; active: Value; hover: Value };
+      secondary: { DEFAULT: Value; active: Value; hover: Value };
     };
-  };
-  border: {
-    'feature-highlight': { DEFAULT: Value; active: Value; secondary: Value };
-  };
-  control: {
-    primary: {
-      'feature-highlight': { DEFAULT: Value; active: Value; hover: Value };
+    text: { DEFAULT: Value; hover: { active: Value } };
+    icon: {
+      primary: { DEFAULT: Value; hover: { active: Value } };
     };
-    secondary: {
-      'feature-highlight': { DEFAULT: Value; active: Value; hover: Value };
-    };
-  };
-  text: {
-    'feature-highlight': { DEFAULT: Value; hover: { active: Value } };
-  };
-  icon: {
-    primary: {
-      'feature-highlight': { DEFAULT: Value; hover: { active: Value } };
-    };
-  };
-  keyboard: {
-    focus: {
-      'feature-highlight': {
+    keyboard: {
+      focus: {
         DEFAULT: Value;
         outline: Value;
       };
@@ -3577,11 +3618,41 @@ type Deprecates = {
   violet: { 400: Value; 500: Value };
   blue: { 400: Value; 500: Value };
   table: { td: { cell: { actions: { accordion: Value } } } };
-  keyboard: { focus: { outline: { invert: Value } } };
+  keyboard: {
+    focus: {
+      'outline': { invert: Value };
+      'feature-highlight': { DEFAULT: Value; outline: Value };
+    };
+  };
+  badge: {
+    'feature-highlight': { accent: Value };
+  };
+  bg: {
+    primary: {
+      'feature-highlight': { DEFAULT: Value; hover: { active: Value } };
+    };
+    secondary: {
+      'feature-highlight': Value;
+    };
+  };
   border: {
-    tooltip: { invert: Value };
-    table: { accent: Value };
-    date: { picker: { range: { comparison: Value } } };
+    'tooltip': { invert: Value };
+    'table': { accent: Value };
+    'date': { picker: { range: { comparison: Value } } };
+    'feature-highlight': { DEFAULT: Value; active: Value; secondary: Value };
+  };
+  control: {
+    primary: {
+      'feature-highlight': { DEFAULT: Value; active: Value; hover: Value };
+    };
+    secondary: {
+      'feature-highlight': { DEFAULT: Value; active: Value; hover: Value };
+    };
+  };
+  icon: {
+    primary: {
+      'feature-highlight': { DEFAULT: Value; hover: { active: Value } };
+    };
   };
   tooltip: {
     default: Value;
@@ -3620,7 +3691,7 @@ type Deprecates = {
     };
   };
   text: {
-    link: {
+    'link': {
       DEFAULT: Value;
       hover: { active: Value };
       invert: {
@@ -3628,6 +3699,7 @@ type Deprecates = {
         hover: Value;
       };
     };
+    'feature-highlight': { DEFAULT: Value; hover: { active: Value } };
   };
 };
 

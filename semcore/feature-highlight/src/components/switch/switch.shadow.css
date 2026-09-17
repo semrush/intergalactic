@@ -8,7 +8,7 @@ SToggle {
     inset: 0;
     padding: 2px;
     border-radius: inherit;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
     opacity: 0;
@@ -22,7 +22,7 @@ SToggle {
 
 SToggle[checked] {
   color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
-  background-color: var(--intergalactic-control-primary-feature-highlight, oklch(0.23 0.01 140));
+  background-color: var(--intergalactic-feature-highlight-control-primary, oklch(0.23 0.01 140));
 }
 
 SToggle:has(SInput:focus-visible) {

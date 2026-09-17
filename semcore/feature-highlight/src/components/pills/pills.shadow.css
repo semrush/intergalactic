@@ -12,7 +12,7 @@ SHighlightedPill {
     border-radius: calc(var(--intergalactic-rounded-small, 4px) + 3px);
     pointer-events: none;
     background-color: transparent;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
 

@@ -64,7 +64,7 @@ function HighlightedItemAddon(
         ? (<Children />)
         : (
             <>
-              <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
+              <SummaryAI color='--intergalactic-feature-highlight-icon-primary' />
               <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}

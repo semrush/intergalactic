@@ -2,19 +2,19 @@ SHighlightedCheckbox:not([state="invalid"]) {
   [data-ui-name="Value.CheckMark"] {
     position: relative;
     transform: translate(0);
-    border: 1px solid var(--intergalactic-border-feature-highlight, oklch(0.137 0.026 175.7 / 0.161));
+    border: 1px solid var(--intergalactic-feature-highlight-border, oklch(0.137 0.026 175.7 / 0.161));
     border-radius: var(--intergalactic-checkbox-rounded, 4px);
     background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   }
 
   input[data-ui-name="CheckboxFH.Value"]:is(:checked, :indeterminate) + [data-ui-name="Value.CheckMark"] {
-    background-color: var(--intergalactic-control-primary-feature-highlight, oklch(0.23 0.01 140));
-    border-color: var(--intergalactic-control-primary-feature-highlight, oklch(0.23 0.01 140));
+    background-color: var(--intergalactic-feature-highlight-control-primary, oklch(0.23 0.01 140));
+    border-color: var(--intergalactic-feature-highlight-control-primary, oklch(0.23 0.01 140));
   }
 
   &:active input[data-ui-name="CheckboxFH.Value"]:is(:checked, :indeterminate) + [data-ui-name="Value.CheckMark"] {
-    background-color: var(--intergalactic-control-primary-feature-highlight-active, oklch(0 0 140));
-    border-color: var(--intergalactic-control-primary-feature-highlight-active, oklch(0 0 140));
+    background-color: var(--intergalactic-feature-highlight-control-primary-active, oklch(0 0 140));
+    border-color: var(--intergalactic-feature-highlight-control-primary-active, oklch(0 0 140));
   }
 
   [data-ui-name="Value.CheckMark"]::before,
@@ -29,7 +29,7 @@ SHighlightedCheckbox:not([state="invalid"]) {
     border-radius: calc(var(--intergalactic-checkbox-rounded, 4px) + 3px);
     pointer-events: none;
     background-color: transparent;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
     opacity: 0;

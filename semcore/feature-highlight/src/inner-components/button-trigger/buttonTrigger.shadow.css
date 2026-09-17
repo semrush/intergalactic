@@ -1,5 +1,5 @@
 SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
-  border-color: var(--intergalactic-border-feature-highlight, oklch(0.137 0.026 175.7 / 0.161));
+  border-color: var(--intergalactic-feature-highlight-border, oklch(0.137 0.026 175.7 / 0.161));
   z-index: 1;
 
   &::before {
@@ -11,7 +11,7 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
     background-color: transparent;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
     opacity: 0;
@@ -24,12 +24,12 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
 
   &:active,
   &[active] {
-    border-color: var(--intergalactic-border-feature-highlight-active, oklch(0.22 0.01 140));
+    border-color: var(--intergalactic-feature-highlight-border-active, oklch(0.22 0.01 140));
   }
 
   &:focus-visible {
     outline: none;
-    border-color: var(--intergalactic-border-feature-highlight, oklch(0.137 0.026 175.7 / 0.161));
+    border-color: var(--intergalactic-feature-highlight-border, oklch(0.137 0.026 175.7 / 0.161));
 
     &::before {
       opacity: 1;

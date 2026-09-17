@@ -19,7 +19,7 @@ SHighlightedItem {
     padding: 2px;
     box-sizing: content-box;
     pointer-events: none;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
     opacity: 0;
@@ -31,10 +31,10 @@ SHighlightedItem {
 
   &[selected]::after,
   &:hover:not(:focus-visible)::after {
-    background-color: var(--intergalactic-border-feature-highlight-active, oklch(0.22 0.01 140));
+    background-color: var(--intergalactic-feature-highlight-border-active, oklch(0.22 0.01 140));
   }
 }
 
 SCaret {
-  background: var(--intergalactic-border-feature-highlight-active, oklch(0.22 0.01 140));
+  background: var(--intergalactic-feature-highlight-border-active, oklch(0.22 0.01 140));
 }

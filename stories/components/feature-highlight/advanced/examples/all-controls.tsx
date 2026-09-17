@@ -87,7 +87,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
               <RadioFH.Value />
               <RadioFH.Text>
                 First option
-                <Box tag={SummaryAI} color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
+                <Box tag={SummaryAI} color='--intergalactic-feature-highlight-icon-primary' ml={2} style={{ verticalAlign: -3 }} />
               </RadioFH.Text>
               <RadioFH.AnimatedSparkles count={props.animatedSparkleCount} />
             </RadioFH>
@@ -99,7 +99,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
           <RadioFH.Value />
           <RadioFH.Text>
             First option
-            <Box tag={SummaryAI} color='--intergalactic-icon-primary-feature-highlight' ml={2} style={{ verticalAlign: -3 }} />
+            <Box tag={SummaryAI} color='--intergalactic-feature-highlight-icon-primary' ml={2} style={{ verticalAlign: -3 }} />
           </RadioFH.Text>
           <RadioFH.AnimatedSparkles count={props.animatedSparkleCount} />
         </RadioFH>
@@ -116,7 +116,7 @@ const Demo = (props: ExampleButtonHihlightProps) => {
                   First option
                   <Box
                     tag={SummaryAI}
-                    color='--intergalactic-icon-primary-feature-highlight'
+                    color='--intergalactic-feature-highlight-icon-primary'
                     ml={2}
                     style={{ verticalAlign: -3 }}
                   />
@@ -186,7 +186,7 @@ const columnsPrimary = [
     name: 'kd',
     children: (
       <>
-        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
+        <SummaryAI color='--intergalactic-feature-highlight-icon-primary' />
         KD %
       </>
     ),
@@ -211,7 +211,7 @@ const columnsSecondary = [
     name: 'kd',
     children: (
       <>
-        <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
+        <SummaryAI color='--intergalactic-feature-highlight-icon-primary' />
         KD %
       </>
     ),

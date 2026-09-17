@@ -3907,7 +3907,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-badge-feature-highlight-accent",
+    "name": "--intergalactic-feature-highlight-badge-accent",
     "value": "oklch(0.22 0.01 140)",
     "description": "Accent background for Badge.",
     "components": [
@@ -3915,19 +3915,19 @@
     ]
   },
   {
-    "name": "--intergalactic-bg-primary-feature-highlight",
+    "name": "--intergalactic-feature-highlight-bg-primary",
     "value": "{semanticTokens.colors.bg_primary_DEFAULT}",
     "description": "Primary background for highlighted controls.",
     "components": []
   },
   {
-    "name": "--intergalactic-bg-primary-feature-highlight-hover-active",
+    "name": "--intergalactic-feature-highlight-bg-primary-hover-active",
     "value": "{semanticTokens.colors.bg_primary_hover}",
     "description": "Primary background for hover and active (selected) state of highlighted controls.",
     "components": []
   },
   {
-    "name": "--intergalactic-bg-secondary-feature-highlight",
+    "name": "--intergalactic-feature-highlight-bg-secondary",
     "value": "oklch(0.9 0.065 303)",
     "description": "Secondary background for the highlighted message.",
     "components": [
@@ -3935,7 +3935,7 @@
     ]
   },
   {
-    "name": "--intergalactic-border-feature-highlight",
+    "name": "--intergalactic-feature-highlight-border",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Primary border for highlighted controls.",
     "components": [
@@ -3943,7 +3943,7 @@
     ]
   },
   {
-    "name": "--intergalactic-border-feature-highlight-active",
+    "name": "--intergalactic-feature-highlight-border-active",
     "value": "oklch(0.22 0.01 140)",
     "description": "Primary border for the active state of highlighted controls.",
     "components": [
@@ -3951,13 +3951,13 @@
     ]
   },
   {
-    "name": "--intergalactic-border-feature-highlight-secondary",
+    "name": "--intergalactic-feature-highlight-border-secondary",
     "value": "oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Secondary border for highlighted controls.",
     "components": []
   },
   {
-    "name": "--intergalactic-control-primary-feature-highlight",
+    "name": "--intergalactic-feature-highlight-control-primary",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the highlighted primary control.",
     "components": [
@@ -3965,13 +3965,13 @@
     ]
   },
   {
-    "name": "--intergalactic-control-primary-feature-highlight-hover",
+    "name": "--intergalactic-feature-highlight-control-primary-hover",
     "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the highlighted primary control.",
     "components": []
   },
   {
-    "name": "--intergalactic-control-primary-feature-highlight-active",
+    "name": "--intergalactic-feature-highlight-control-primary-active",
     "value": "oklch(0 0 140)",
     "description": "Active (selected) state of the highlighted primary control.",
     "components": [
@@ -3979,7 +3979,7 @@
     ]
   },
   {
-    "name": "--intergalactic-control-secondary-feature-highlight",
+    "name": "--intergalactic-feature-highlight-control-secondary",
     "value": "oklch(0.166 0.031 175.8 / 0.097)",
     "description": "Background of the highlighted secondary control.",
     "components": [
@@ -3987,7 +3987,7 @@
     ]
   },
   {
-    "name": "--intergalactic-control-secondary-feature-highlight-hover",
+    "name": "--intergalactic-feature-highlight-control-secondary-hover",
     "value": "oklch(0.151 0.028 176.1 / 0.123)",
     "description": "Hover state of the highlighted secondary control.",
     "components": [
@@ -3995,7 +3995,7 @@
     ]
   },
   {
-    "name": "--intergalactic-control-secondary-feature-highlight-active",
+    "name": "--intergalactic-feature-highlight-control-secondary-active",
     "value": "oklch(0.145 0.027 176.1 / 0.135)",
     "description": "Active (selected) state of the highlighted secondary control.",
     "components": [
@@ -4003,38 +4003,38 @@
     ]
   },
   {
-    "name": "--intergalactic-text-feature-highlight",
+    "name": "--intergalactic-feature-highlight-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text for highlighted features.",
     "components": []
   },
   {
-    "name": "--intergalactic-text-feature-highlight-hover-active",
+    "name": "--intergalactic-feature-highlight-text-hover-active",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text for hover and active states of highlighted features.",
     "components": []
   },
   {
-    "name": "--intergalactic-icon-primary-feature-highlight",
+    "name": "--intergalactic-feature-highlight-icon-primary",
     "value": "oklch(0.22 0.01 140)",
     "components": [
       "feature-highlight"
     ]
   },
   {
-    "name": "--intergalactic-icon-primary-feature-highlight-hover-active",
+    "name": "--intergalactic-feature-highlight-icon-primary-hover-active",
     "value": "oklch(0.22 0.01 140)",
     "description": "Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
     "components": []
   },
   {
-    "name": "--intergalactic-keyboard-focus-feature-highlight",
+    "name": "--intergalactic-feature-highlight-keyboard-focus",
     "value": "3px solid linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))",
     "description": "Keyboard focus styles for highlighted controls.",
     "components": []
   },
   {
-    "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
+    "name": "--intergalactic-feature-highlight-keyboard-focus-outline",
     "value": "linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))",
     "description": "Color for keyboard focus outline styles for highlighted controls.",
     "components": [

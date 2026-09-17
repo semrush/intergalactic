@@ -1,5 +1,5 @@
 SHighlightedNotice[beforeVisibility] {
-  background-color: var(--intergalactic-bg-secondary-feature-highlight, oklch(0.9 0.065 303));
+  background-color: var(--intergalactic-feature-highlight-bg-secondary, oklch(0.9 0.065 303));
   border-color: transparent;
   background-clip: padding-box;
   position: relative;
@@ -14,7 +14,7 @@ SHighlightedNotice[beforeVisibility] {
     border-radius: inherit;
     visibility: var(--beforeVisibility);
 
-    border-color: var(--intergalactic-bg-secondary-feature-highlight, oklch(0.9 0.065 303));
+    border-color: var(--intergalactic-feature-highlight-bg-secondary, oklch(0.9 0.065 303));
   }
 
   &:after {
@@ -46,7 +46,7 @@ SHighlightedNotice[beforeVisibility] {
   }
 
   & SLabel {
-    color: var(--intergalactic-icon-primary-feature-highlight, oklch(0.22 0.01 140));
+    color: var(--intergalactic-feature-highlight-icon-primary, oklch(0.22 0.01 140));
   }
 
   & SCloseIcon {

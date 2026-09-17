@@ -23,7 +23,7 @@ function HighlightAddon(props: Intergalactic.InternalTypings.InferComponentProps
   const { Children, children: hasChildren } = props;
   return (
     <Root render={Input.Addon}>
-      {hasChildren ? (<Children />) : (<SummaryAI color='--intergalactic-icon-primary-feature-highlight' />)}
+      {hasChildren ? (<Children />) : (<SummaryAI color='--intergalactic-feature-highlight-icon-primary' />)}
     </Root>
   );
 }

@@ -25,15 +25,15 @@ SHighlightedButton[theme='primary-highlighted'] {
 SHighlightedButton[theme='secondary-highlighted'] {
   color: var(--intergalactic-text-primary-feature-highlight, undefined);
 
-  background-color: var(--intergalactic-control-secondary-feature-highlight, oklch(0.166 0.031 175.8 / 0.097));
+  background-color: var(--intergalactic-feature-highlight-control-secondary, oklch(0.166 0.031 175.8 / 0.097));
 
   &:hover {
-    background-color: var(--intergalactic-control-secondary-feature-highlight-hover, oklch(0.151 0.028 176.1 / 0.123));
+    background-color: var(--intergalactic-feature-highlight-control-secondary-hover, oklch(0.151 0.028 176.1 / 0.123));
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-control-secondary-feature-highlight-active, oklch(0.145 0.027 176.1 / 0.135));
+    background-color: var(--intergalactic-feature-highlight-control-secondary-active, oklch(0.145 0.027 176.1 / 0.135));
   }
 
   &:focus-visible {
@@ -54,7 +54,7 @@ SHighlightedButton {
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
 
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
 
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
