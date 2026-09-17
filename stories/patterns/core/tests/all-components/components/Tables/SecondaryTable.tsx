@@ -1,9 +1,8 @@
 import IconM from '@semcore/icon/Cards/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import { Flex } from '@semcore/ui/base-components';
-import ButtonLink from '@semcore/ui/button';
+import type { CellRenderProps } from '@semcore/ui/data-table';
 import { DataTable, LinkAction } from '@semcore/ui/data-table';
-import Link from '@semcore/ui/link';
 import React from 'react';
 
 const removeProtocol = (url: string): string => url.replace(/^(http|https):\/\//, '');
@@ -15,9 +14,9 @@ const parseKd = (kd: string) => {
 
 const KEYWORD_URLS = [
   'https://www.semrush.com/blog/',
-  'https://developer.semrush.com/intergalactic/',
-  'https://www.ebay.com/deals',
-  'https://github.com/semrush/intergalactic',
+  'intergalactic/',
+  '',
+  'n/a',
   'https://www.nytimes.com/section/technology',
   'https://en.wikipedia.org/wiki/Web_design',
   'https://www.mozilla.org/firefox/',
@@ -92,7 +91,7 @@ export function SecondaryTable() {
           justifyContent: 'flex-end',
         },
       ]}
-      renderCell={(props) => {
+      renderCell={(props: CellRenderProps<any, any>) => {
         if (props.columnName === 'url') {
           const pageUrl = props.value?.toString?.() || '';
 
@@ -101,12 +100,14 @@ export function SecondaryTable() {
           }
 
           return (
-            <LinkAction>
-              <Link href={pageUrl}>
-                {removeProtocol(pageUrl)}
-              </Link>
-              <ButtonLink addonLeft={IconM} use='tertiary' theme='muted' />
-            </LinkAction>
+            <LinkAction
+              link={{ href: pageUrl, text: removeProtocol(pageUrl) }}
+              actions={{
+                title: 'Open in a new tab',
+                icon: IconM,
+                href: pageUrl,
+              }}
+            />
           );
         }
 

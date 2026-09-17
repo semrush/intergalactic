@@ -35,35 +35,6 @@ SPointShape[shape='Circle'][size='m'] {
   margin-top: var(--intergalactic-spacing-content-gap-small, 4px);
 }
 
-/* TODO: Remove */
-/* SPointShape[shape='Line'][size='l'] {
-  width: 16px;
-  height: 4px;
-  border-radius: 3px;
-  margin-top: 9px;
-}
-
-SPointShape[shape='Line'][size='m'] {
-  width: 12px;
-  height: 4px;
-  border-radius: 3px;
-  margin-top: 8px;
-}
-
-SPointShape[shape='Square'][size='l'] {
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  margin-top: 4px;
-}
-
-SPointShape[shape='Square'][size='m'] {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  margin-top: 4px;
-} */
-
 SPointShape[shape='Pattern'] {
   background-color: transparent;
   margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
@@ -90,14 +61,14 @@ SLabel[size='l'],
 SAdditionalLabel[size='l'],
 SCount[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 }
 
 SLabel[size='m'],
 SAdditionalLabel[size='m'],
 SCount[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 }
 
 SAdditionalLabel,

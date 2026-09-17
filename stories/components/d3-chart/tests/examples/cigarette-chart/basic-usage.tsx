@@ -9,8 +9,7 @@ const data: Record<string, number | typeof interpolateValue> = {
   Cats: 3524,
   Dogs: interpolateValue,
   Capybaras: 6135,
-  // @ts-ignore
-  Hamsters: null,
+  Hamsters: 0,
   Birds: 1823,
 };
 
@@ -58,6 +57,32 @@ export const dataOverflow = {
   X: 1,
   Y: 2,
   Z: 3,
+};
+
+// Zero at the first position — the rounded left/top corner must belong to the first visible bar
+export const dataFirstEmpty = {
+  X: 0,
+  Y: 2,
+};
+
+// All n/a
+export const dataNA = {
+  Dogs: interpolateValue,
+  Cats: interpolateValue,
+
+};
+
+// Zero at the last position — the rounded right/bottom corner must belong to the last visible bar
+export const dataLastZero = {
+  X: 3,
+  Y: 5,
+  Z: 0,
+};
+
+// All values are zero — expects the "no data" placeholder, no tooltip
+export const dataEmpty = {
+  X: 0,
+  Y: 0,
 };
 
 const Demo = ({

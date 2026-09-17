@@ -30,6 +30,7 @@ class BarChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
   } as const;
 
   get xScale() {
@@ -267,7 +268,7 @@ class BarChartComponent extends AbstractChart<
   private get categoryScale() {
     const {
       marginY = 40,
-      marginX = 24,
+      marginX = 32,
       invertAxis,
       data,
       groupKey,
@@ -291,7 +292,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   private get valueScale() {
-    const { marginY = 40, marginX = 24, invertAxis, type } = this.asProps;
+    const { marginY = 40, marginX = 32, invertAxis, type } = this.asProps;
     const { plotWidth, plotHeight } = this;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);

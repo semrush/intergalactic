@@ -14,7 +14,12 @@ function formatDate(value: any) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
-const Demo = (props: AreaChartProps) => {
+type AreaChartStoryProps = AreaChartProps & {
+  /** Set to false to fall back to the built-in tooltip value formatter. */
+  useCustomValueFormatter?: boolean;
+};
+
+const Demo = (props: AreaChartStoryProps) => {
   const onClickHandler = (index: number, event: React.SyntheticEvent) => {
     const clickedItem = data[index];
     console.log('Clicked area chart point:');
@@ -22,7 +27,7 @@ const Demo = (props: AreaChartProps) => {
     console.log('→ Data item:', clickedItem);
     console.log('→ Event:', event);
   };
-  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+  const { plotWidth, plotHeight, useCustomValueFormatter, ...chartProps } = getPropsToChart(props);
   return (
     <Box
       border='1px solid #ddd'
@@ -33,9 +38,9 @@ const Demo = (props: AreaChartProps) => {
       overflow='auto'
     >
       <Chart.Area
-        {...chartProps}
+        {...(chartProps as AreaChartProps)}
         aria-label='Area chart'
-        tooltipValueFormatter={formatDate}
+        {...(useCustomValueFormatter ? { tooltipValueFormatter: formatDate } : {})}
         onClickArea={onClickHandler}
       />
     </Box>
@@ -55,11 +60,14 @@ const data = [
   { time: new Date('2024-02-15'), line: 10, line2: 8 },
 ];
 
-export const defaultProps = getChartProps<AreaChartProps>({
+export const defaultProps = getChartProps<AreaChartStoryProps>({
   showDots: true,
   stacked: false,
   groupKey: 'time',
   data,
+  // Keep the custom formatter on by default so existing snapshots stay stable.
+  // Browser tests flip it off to exercise the built-in formatter.
+  useCustomValueFormatter: true,
 });
 
 Demo.defaultProps = defaultProps;

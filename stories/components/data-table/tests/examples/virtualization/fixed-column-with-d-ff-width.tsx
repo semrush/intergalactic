@@ -33,9 +33,9 @@ const Demo = () => {
         columns={[
           { name: 'keyword', children: 'Keyword', fixed: 'left', gtcWidth: '150px' },
           { name: 'kd', children: 'KD,%', fixed: 'left', gtcWidth: '200px' },
-          { name: 'kd', children: 'KD,%', gtcWidth: '200px' },
+          { name: 'kd1', children: 'KD,%', gtcWidth: '200px' },
           { name: 'cpc', children: 'CPC', gtcWidth: '300px' },
-          { name: 'cpc', children: 'CPC', gtcWidth: '100px' },
+          { name: 'cpc1', children: 'CPC', gtcWidth: '100px' },
           { name: 'vol', children: 'Vol.', gtcWidth: '80px', fixed: 'right' },
 
         ]}

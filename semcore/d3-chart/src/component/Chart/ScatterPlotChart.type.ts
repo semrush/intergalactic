@@ -29,6 +29,7 @@ export type ScatterPlotChartDefaultProps = {
   showYAxis: true;
   showTooltip: true;
   showLegend: false;
+  locale: 'en';
 };
 
 export type ScatterPlotChartType = Intergalactic.Component<typeof Flex, ScatterPlotChartProps>;

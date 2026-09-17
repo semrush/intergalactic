@@ -17,7 +17,7 @@ SSwitch[size] {
 
 SSwitch[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 
   & SToggle {
     width: 28px;
@@ -33,7 +33,7 @@ SSwitch[size='m'] {
 
 SSwitch[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 
   & SToggle {
     width: 36px;
@@ -49,7 +49,7 @@ SSwitch[size='l'] {
 
 SSwitch[size='xl'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 
   & SToggle {
     width: 44px;

@@ -31,6 +31,7 @@ class ScatterPlotChartComponent extends AbstractChart<
     showYAxis: true,
     showTooltip: true,
     showLegend: false,
+    locale: 'en',
   } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;

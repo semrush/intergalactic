@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import AdvancedFeaturesDemoExample from './examples/advanced_features_demo';
 import AsyncInitExample from './examples/async_init';
 import CopyFullTextExample from './examples/copy_full_text';
-import TableLinkExample from './examples/in_table_with_link';
+import TableLinkExample, { defaultProps as TableLinkExampleProps } from './examples/in_table_with_link';
 import LinkExample, { defaultProps as LinkExampleProps } from './examples/link_with_ellipsis';
 import ObserveChildrenMutationsExample from './examples/observe_children_mutations';
 import TextExample from './examples/text_cases';
@@ -53,8 +53,39 @@ const commonArgTypes = {
   },
 } as const;
 
-export const TableLink = {
+export const TableLink: StoryObj<typeof TableLinkExampleProps> = {
   render: TableLinkExample,
+  argTypes: {
+    textPreset: {
+      control: { type: 'select' },
+      options: ['urlWithoutProtocol', 'fullUrl', 'short', 'longWithSpaces', 'longWithoutSpaces', 'startsWithHttp', 'custom'],
+      description: 'Text rendered inside the link. Pick `custom` to type your own in `customText`.',
+    },
+    customText: {
+      control: { type: 'text' },
+      description: 'Used only when `textPreset` is `custom`.',
+    },
+    hrefPreset: {
+      control: { type: 'select' },
+      options: ['external', 'sameOrigin', 'relative'],
+      description: 'Link target: another host, the current host, or an internal path. `sameOrigin` also switches the URL-derived text presets to the current origin.',
+    },
+    cropPosition: {
+      control: { type: 'select' },
+      options: ['middle', 'end'],
+      description: 'Where the dots go. `end` currently pushes the divider and the actions out of the cell — Ellipsis rewrites the text only for `middle`.',
+    },
+    withEllipsis: {
+      control: { type: 'boolean' },
+      description: 'Turn Ellipsis off to see LinkAction wrap instead of truncate.',
+    },
+    actionsCount: {
+      control: { type: 'inline-radio' },
+      options: [1, 2],
+      description: '`1` passes a single action object, `2` passes a tuple.',
+    },
+  },
+  args: TableLinkExampleProps,
 };
 
 export const Link: StoryObj<typeof LinkExampleProps> = {

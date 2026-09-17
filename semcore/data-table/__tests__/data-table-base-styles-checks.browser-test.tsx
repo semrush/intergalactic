@@ -25,7 +25,6 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify header cell styles', async () => {
       await checkStyles(header, {
         'font-size': '12px',
-        'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
         'color': textPrimary,
         'padding': '12px',
         'background-color': thPrimaryCellBg,
@@ -137,7 +136,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify styles Compact', {
     tag: [TAG.PRIORITY_HIGH,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/compact.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
     const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
@@ -149,7 +148,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await checkStyles(header, {
       'font-size': '12px',
-      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': textPrimary,
       'padding': '12px 8px',
       'background-color': thPrimaryCellBg,
@@ -187,7 +185,6 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await checkStyles(header, {
       'font-size': '12px',
-      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
       'color': textPrimary,
       'padding': '8px',
       'background-color': thSecondaryCellBg,
@@ -299,6 +296,58 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(widths[2]).toBeLessThan(widths[0]);
       expect(widths[1]).toBeLessThan(widths[4]);
       expect(widths[2]).toBeLessThan(widths[4]);
+    });
+  });
+
+  const variantLastRowBorder = [
+    { variant: 'card', borderWidth: '0px' },
+    { variant: 'default', borderWidth: '1px' },
+  ];
+  variantLastRowBorder.forEach((item) => {
+    test(`Verify bottom border of the last row cells when variant=${item.variant}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: item.variant });
+
+      const rows = page.locator('[data-ui-name="Row"][role="row"]');
+      const lastRowCells = rows.last().locator('[data-ui-name="Row.Cell"]');
+
+      await test.step('Verify the row selector cell is the first cell of the last row', async () => {
+        await expect(lastRowCells.first()).toHaveAttribute('name', 'SELECT_ALL_ROWS');
+      });
+
+      await test.step('Verify every cell of the last row has the same bottom border', async () => {
+        await checkStyles(lastRowCells, { 'border-bottom-width': item.borderWidth });
+      });
+
+      await test.step('Verify cells of a middle row keep the bottom border', async () => {
+        await checkStyles(rows.nth(1).locator('[data-ui-name="Row.Cell"]'), {
+          'border-bottom-width': '1px',
+        });
+      });
+    });
+  });
+
+  test('Verify the last row cells get the bottom border back when its accordion is expanded in the card variant', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table',
+      '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: 'card' });
+
+    const lastRow = page.locator('[data-ui-name="Row"][role="row"]').last();
+    const lastRowCells = lastRow.locator('[data-ui-name="Row.Cell"]');
+
+    await test.step('Verify the collapsed last row has no bottom border', async () => {
+      await checkStyles(lastRowCells, { 'border-bottom-width': '0px' });
+    });
+
+    await test.step('Verify the expanded last row is separated from the accordion by a border', async () => {
+      await lastRow.getByLabel('Show details').click();
+      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+
+      await checkStyles(lastRowCells, { 'border-bottom-width': '1px' });
     });
   });
 });

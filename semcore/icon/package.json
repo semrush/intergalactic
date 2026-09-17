@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "17.2.0",
+  "version": "17.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.mjs",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
     "clean": "rm -rf ./lib"
   },
   "peerDependencies": {
-    "@semcore/core": "^17.2.0"
+    "@semcore/core": "^17.3.1"
   },
   "repository": {
     "type": "git",
@@ -1267,6 +1267,16 @@
       "types": "./lib/color/ShopifyColored/m/index.d.ts",
       "import": "./lib/color/ShopifyColored/m/index.mjs",
       "require": "./lib/color/ShopifyColored/m/index.js"
+    },
+    "./color/SlackColored/l": {
+      "types": "./lib/color/SlackColored/l/index.d.ts",
+      "import": "./lib/color/SlackColored/l/index.mjs",
+      "require": "./lib/color/SlackColored/l/index.js"
+    },
+    "./color/SlackColored/m": {
+      "types": "./lib/color/SlackColored/m/index.d.ts",
+      "import": "./lib/color/SlackColored/m/index.mjs",
+      "require": "./lib/color/SlackColored/m/index.js"
     },
     "./color/Snapchat/l": {
       "types": "./lib/color/Snapchat/l/index.d.ts",
