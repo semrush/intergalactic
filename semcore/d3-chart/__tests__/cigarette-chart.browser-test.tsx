@@ -332,7 +332,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify zero value not in DOM', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,

@@ -6,15 +6,30 @@ exports[`Accordion > Verify data-ui-name 1`] = `
     {
       "children": [
         {
-          "children": [],
-          "uiName": "Item.ToggleButton",
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Item.ToggleButton",
+                },
+              ],
+              "uiName": "Item.Toggle",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "uiName": "Box",
+                },
+              ],
+              "uiName": "Item.Collapse",
+            },
+          ],
+          "uiName": "Accordion.Item",
         },
       ],
-      "uiName": "Item.Toggle",
-    },
-    {
-      "children": [],
-      "uiName": "Item.Collapse",
+      "uiName": "Accordion",
     },
   ],
   "uiName": null,

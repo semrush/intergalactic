@@ -44,7 +44,7 @@ function GroupControl({ groupName, controls, groupPropName, onControlChange, isO
       <Accordion.Item value={0}>
         <Accordion.Item.Toggle className={styles.fullWidthItem}>
           <Accordion.Item.ToggleButton>
-            <Accordion.Item.Chevron mr={2} color='var(--intergalactic-icon-secondary-neutral)' />
+            <Accordion.Item.Chevron color='var(--intergalactic-icon-secondary-neutral)' />
             <Text size={200} fontWeight={500}>
               {groupName}
             </Text>
