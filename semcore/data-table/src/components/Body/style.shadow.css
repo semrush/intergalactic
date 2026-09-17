@@ -273,6 +273,15 @@ SCellWrapper[fixed] {
   z-index: 2;
 }
 
+@keyframes align-spin-container {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(max(0px, calc(var(--global-table-height) - 100vh)));
+  }
+}
+
 SSpinContainer {
   display: flex;
   align-items: center;
@@ -290,12 +299,16 @@ SSpinContainer {
   }
 
   &[headerHeight] {
-    position: sticky;
-    top: 0;
     height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
     min-height: min(100vh, calc(var(--global-table-height) - var(--headerHeight)));
     max-width: 100vw;
-    left: 0;
+
+    animation-name: align-spin-container;
+    animation-timeline: --table-sticky-timeline;
+    animation-range-start: exit-crossing 0px;
+    animation-range-end: exit-crossing max(0px, calc(100% - 100vh));
+    animation-timing-function: linear;
+    animation-fill-mode: both;
   }
 
   &[tableInnerVerticalScroll][headerHeight] {
