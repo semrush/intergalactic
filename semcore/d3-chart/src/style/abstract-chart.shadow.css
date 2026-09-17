@@ -8,13 +8,22 @@ SChart {
 STooltipChildrenWrapper {
   display: grid;
   gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  align-items: center;
 
   &[columnsCount='2'] {
     grid-template-columns: auto minmax(28px, max-content);
+
+    STooltipDivider {
+      grid-column: span 2;
+    }
   }
 
   &[columnsCount='3'] {
     grid-template-columns: auto minmax(28px, max-content) minmax(28px, max-content);
+
+    STooltipDivider {
+      grid-column: span 3;
+    }
   }
 }
 

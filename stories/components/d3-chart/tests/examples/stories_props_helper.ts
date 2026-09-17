@@ -87,9 +87,7 @@ export const getChartArgTypes = (additionalControls?: any) => {
     'showTotalInTooltip': { control: { type: 'boolean' } },
     'showPercentValueInTooltip': { control: { type: 'boolean' } },
     'showDeltaPercentInTooltip': { control: { type: 'boolean' } },
-    // Only locales shipped with the d3-chart a11y translations are safe here:
-    // an unsupported locale (e.g. 'ru') makes PlotA11yModule throw.
-    'locale': { control: 'select', options: ['en', 'de', 'fr', 'ja'] },
+    'locale': { control: 'select', options: ['de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'sv', 'tr', 'vi', 'zh', 'uk'] },
     'tooltipViewType': { control: 'select', options: ['all', 'single'] },
     'xTicksCount': { control: { type: 'number' } },
     'yTicksCount': { control: { type: 'number' } },

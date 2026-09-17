@@ -35,6 +35,10 @@ const Demo = (props: HoveredTickStoryProps) => {
     height = 300,
   } = props;
 
+  // `hideHoverLine` is read by `HoverLine`/`HoverRect` at runtime, but it is missing from the
+  // public `HoverProps` type (it is only declared on `HoverLine.Tooltip`), hence the cast.
+  const hoverProps = { hideTickHover, hideHoverLine } as { hideTickHover?: boolean };
+
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
@@ -55,11 +59,7 @@ const Demo = (props: HoveredTickStoryProps) => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <HoverRect
-          x='category'
-          hideTickHover={hideTickHover}
-          hideHoverLine={hideHoverLine}
-        />
+        <HoverRect x='category' {...hoverProps} />
         <Bar x='category' y='value' />
       </Plot>
     );
@@ -78,11 +78,7 @@ const Demo = (props: HoveredTickStoryProps) => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <HoverLine
-        x='x'
-        hideTickHover={hideTickHover}
-        hideHoverLine={hideHoverLine}
-      />
+      <HoverLine x='x' {...hoverProps} />
       <Line x='x' y='value'>
         <Line.Dots display />
       </Line>

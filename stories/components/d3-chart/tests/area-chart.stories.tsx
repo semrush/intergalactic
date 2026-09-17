@@ -16,6 +16,9 @@ export const AnimatedDots: StoryObj = {
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    useCustomValueFormatter: { control: 'boolean' },
+    withZeroValue: { control: 'boolean' },
+  }),
   args: areaExampleProps,
 };

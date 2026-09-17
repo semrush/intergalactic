@@ -329,7 +329,6 @@ export function Dashboard({ showPrimaryTableFooter = false }: DashboardProps) {
                       showDots
                       showLegend
                       legendProps={dashboardAreaChart.legendProps}
-                      tooltipValueFormatter={formatAreaAxis}
                       axisXValueFormatter={formatAreaAxis}
                       aria-label='Area chart'
                     />

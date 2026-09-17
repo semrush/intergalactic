@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -181,13 +181,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { shape: 'Checkbox' });
 
-      const inputs = locators.checkboxInput(page);
-      const count = await inputs.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        await expect(inputs.nth(i)).toHaveAttribute('aria-invalid', 'false');
-      }
+      await expectEachToHaveAttribute(locators.checkboxInput(page), 'aria-invalid', 'false');
     });
 
     test('Verify an item is toggled by its checkbox and by its label', {
@@ -310,23 +304,22 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     /**
-     * Known defect: dimming stops at the LegendItem cell.
-     *
-     * `SLegendItem[transparent]` dims the label, but `legend-table.shadow.css` has no
-     * matching rule for `SColumnItem`, so the value cells of a dimmed row stay at full
-     * opacity and the row reads as half faded. LegendFlex has no such split because its
-     * count/additionalInfo live inside the item. Remove `.fail()` once the columns dim too.
+     * A dimmed row has to fade as a whole. The label lives inside `SLegendItem` while the
+     * values are its grid siblings, so each side carries its own `transparent` rule and
+     * they are easy to let drift apart.
      */
     test('Verify the value columns of a dimmed row are dimmed as well', {
       tag: [TAG.PRIORITY_MEDIUM, '@d3-chart', '@chart-legend'],
     }, async ({ page }) => {
-      test.fail();
-
       await loadPage(page, TABLE_EXAMPLE, 'en', { highlightedItem: 0, columnsCount: 2 });
 
-      // Row 1 is dimmed, so both of its value cells (index 2 and 3) should be dimmed too.
+      // Row 1 is dimmed, so both of its value cells (index 2 and 3) are dimmed too.
       await expect(locators.tableColumn(page, 2)).toHaveClass(/_transparent_/);
       await expect(locators.tableColumn(page, 3)).toHaveClass(/_transparent_/);
+
+      // The highlighted row stays fully opaque.
+      await expect(locators.tableColumn(page, 0)).not.toHaveClass(/_transparent_/);
+      await expect(locators.tableColumn(page, 1)).not.toHaveClass(/_transparent_/);
     });
   });
 });
