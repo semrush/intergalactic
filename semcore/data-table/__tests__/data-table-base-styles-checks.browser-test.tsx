@@ -186,25 +186,44 @@ test.describe(`${TAG.VISUAL}`, () => {
     const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
+    /* The actively sorted column is highlighted, so it is checked apart from the rest. */
+    const sortedHeader = page.locator('[data-ui-name="Head.Column"][aria-sort]');
+    const unsortedHeader = page.locator('[data-ui-name="Head.Column"]:not([aria-sort])');
     const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
-    await checkStyles(header, {
+    const headerBaseStyles = {
       'font-size': '12px',
-      'color': textSecondary,
       'padding': '8px',
       'background-color': thSecondaryCellBg,
       'border-bottom': borderTableAccent,
+    };
+
+    await checkStyles(unsortedHeader, {
+      ...headerBaseStyles,
+      'color': textSecondary,
+      'font-weight': '400',
+    });
+
+    await checkStyles(sortedHeader, {
+      ...headerBaseStyles,
+      'color': textPrimary,
+      'font-weight': '700',
     });
 
     await header.first().hover();
-    if (browserName !== 'firefox')
-      await checkStyles(header, {
-        'font-size': '12px',
+    if (browserName !== 'firefox') {
+      await checkStyles(unsortedHeader, {
+        ...headerBaseStyles,
         'color': textSecondary,
-        'padding': '8px',
-        'background-color': thSecondaryCellBg,
-        'border-bottom': borderTableAccent,
+        'font-weight': '400',
       });
+
+      await checkStyles(sortedHeader, {
+        ...headerBaseStyles,
+        'color': textPrimary,
+        'font-weight': '700',
+      });
+    }
 
     await checkStyles(firstCell, {
       'font-size': '14px',
