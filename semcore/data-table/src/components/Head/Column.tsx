@@ -310,8 +310,9 @@ export class Column<
     const isSorted = sortBy === name && !!sortDirection;
 
     const SSortIcon = isSorted ? SORTING_ICON[sortDirection] : SORTING_ICON[this.defaultDirection];
+    const SSortIndicator = SSortIcon;
 
-    const visibleSort = Boolean(sortable) && (this.state.sortVisible || isSorted);
+    const visibleSort = isSorted || (Boolean(sortable) && this.state.sortVisible);
 
     const ariaDescribedBy = [];
     if (sortable) {
@@ -343,18 +344,26 @@ export class Column<
       >
         <Children />
 
-        {sortable && (
-          <SSortWrapper ref={this.sortWrapperRef}>
-            <SSortButton
-              aria-label={ariaSortValue}
-              size={100}
-              use='primary'
-              onClick={this.handleSortClick}
-            >
-              <SSortButton.Addon tag={SSortIcon} />
-            </SSortButton>
-          </SSortWrapper>
-        )}
+        {sortable
+          ? (
+              <SSortWrapper ref={this.sortWrapperRef}>
+                <SSortButton
+                  aria-label={ariaSortValue}
+                  size={100}
+                  use='primary'
+                  onClick={this.handleSortClick}
+                >
+                  <SSortButton.Addon tag={SSortIcon} />
+                </SSortButton>
+              </SSortWrapper>
+            )
+          : (
+              isSorted && (
+                <SSortWrapper ref={this.sortWrapperRef}>
+                  <SSortIndicator />
+                </SSortWrapper>
+              )
+            )}
       </SColumn>,
     );
   }
