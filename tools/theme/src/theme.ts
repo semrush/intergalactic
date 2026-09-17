@@ -2269,80 +2269,81 @@ export const theme: Theme = {
     },
   },
   featureHighlight: {
-    'feature-highlight_badge_accent': {
-      value: '{semanticTokens.colors.brand_secondary}',
-      description: 'Accent background for Badge.',
-    },
-    'feature-highlight_bg_primary_DEFAULT': {
-      value: '{semanticTokens.colors.bg_primary_DEFAULT}',
-      description: 'Primary background for highlighted controls.',
-    },
-    'feature-highlight_bg_primary_hover_active': {
-      value: '{semanticTokens.colors.bg_primary_hover}',
-      description: 'Primary background for hover and active (selected) state of highlighted controls.',
-    },
-    'feature-highlight_bg_secondary': {
-      value: '{baseTokens.colors.violet.100}',
-      description: 'Secondary background for the highlighted message.',
-    },
-    'feature-highlight_border_DEFAULT': {
-      value: '{semanticTokens.colors.border_primary}',
-      description: 'Primary border for highlighted controls.',
-    },
-    'feature-highlight_border_active': {
-      value: '{semanticTokens.colors.brand_secondary}',
-      description: 'Primary border for the active state of highlighted controls.',
-    },
-    'feature-highlight_border_secondary': {
-      value: '{semanticTokens.colors.border_secondary}',
-      description: 'Secondary border for highlighted controls.',
-    },
-    'feature-highlight_control_primary_DEFAULT': {
-      value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
-      description: 'Background of the highlighted primary control.',
-    },
-    'feature-highlight_control_primary_hover': {
-      value: '{semanticTokens.colors.control_primary_info_hover}',
-      description: 'Hover state of the highlighted primary control.',
-    },
-    'feature-highlight_control_primary_active': {
-      value: '{semanticTokens.colors.control_primary_info_active}',
-      description: 'Active (selected) state of the highlighted primary control.',
-    },
-    'feature-highlight_control_secondary_DEFAULT': {
-      value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
-      description: 'Background of the highlighted secondary control.',
-    },
-    'feature-highlight_control_secondary_hover': {
-      value: '{semanticTokens.colors.control_secondary_neutral_hover}',
-      description: 'Hover state of the highlighted secondary control.',
-    },
-    'feature-highlight_control_secondary_active': {
-      value: '{semanticTokens.colors.control_secondary_neutral_active}',
-      description: 'Active (selected) state of the highlighted secondary control.',
-    },
-    'feature-highlight_text_DEFAULT': {
-      value: '{semanticTokens.colors.text_primary_DEFAULT}',
-      description: 'Text for highlighted features.',
-    },
-    'feature-highlight_text_hover_active': {
-      value: '{semanticTokens.colors.text_primary_DEFAULT}',
-      description: 'Text for hover and active states of highlighted features.',
-    },
-    'feature-highlight_icon_primary_DEFAULT': {
-      value: '{semanticTokens.colors.brand_secondary}',
-    },
-    'feature-highlight_icon_primary_hover_active': {
-      value: '{semanticTokens.colors.brand_secondary}',
-      description: 'Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.',
-    },
-    'feature-highlight_keyboard_focus_DEFAULT': {
-      value: '3px solid {featureHighlight.feature-highlight.keyboard.focus.outline}',
-      description: 'Keyboard focus styles for highlighted controls.',
-    },
-    'feature-highlight_keyboard_focus_outline': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.green.200}, {baseTokens.colors.green.200})',
-      description: 'Color for keyboard focus outline styles for highlighted controls.',
+    'feature-highlight': {
+      badge_accent: {
+        value: '{semanticTokens.colors.brand_secondary}',
+        description: 'Accent background for Badge.',
+      },
+      bg_primary_DEFAULT: {
+        value: '{semanticTokens.colors.bg_primary_DEFAULT}',
+        description: 'Primary background for highlighted controls.',
+      },
+      bg_primary_hover_active: {
+        value: '{semanticTokens.colors.bg_primary_hover}',
+        description: 'Primary background for hover and active (selected) state of highlighted controls.',
+      },
+      bg_secondary: {
+        value: '{baseTokens.colors.violet.100}',
+        description: 'Secondary background for the highlighted message.',
+      },
+      border_primary_DEFAULT: {
+        value: '{semanticTokens.colors.border_primary}',
+        description: 'Primary border for highlighted controls.',
+      },
+      border_primary_active: {
+        value: '{semanticTokens.colors.brand_secondary}',
+        description: 'Primary border for the active state of highlighted controls.',
+      },
+      border_secondary: {
+        value: '{semanticTokens.colors.border_secondary}',
+        description: 'Secondary border for highlighted controls.',
+      },
+      control_primary_DEFAULT: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Background of the highlighted primary control.',
+      },
+      control_primary_hover: {
+        value: '{semanticTokens.colors.control_primary_info_hover}',
+        description: 'Hover state of the highlighted primary control.',
+      },
+      control_primary_active: {
+        value: '{semanticTokens.colors.control_primary_info_active}',
+        description: 'Active (selected) state of the highlighted primary control.',
+      },
+      control_secondary_DEFAULT: {
+        value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
+        description: 'Background of the highlighted secondary control.',
+      },
+      control_secondary_hover: {
+        value: '{semanticTokens.colors.control_secondary_neutral_hover}',
+        description: 'Hover state of the highlighted secondary control.',
+      },
+      control_secondary_active: {
+        value: '{semanticTokens.colors.control_secondary_neutral_active}',
+        description: 'Active (selected) state of the highlighted secondary control.',
+      },
+      text_DEFAULT: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Text for highlighted features.',
+      },
+      text_hover_active: {
+        value: '{semanticTokens.colors.text_primary_DEFAULT}',
+        description: 'Text for hover and active states of highlighted features.',
+      },
+      icon_primary_DEFAULT: {
+        value: '{semanticTokens.colors.brand_secondary}',
+      },
+      icon_primary_hover_active: {
+        value: '{semanticTokens.colors.brand_secondary}',
+      },
+      keyboard_focus_DEFAULT: {
+        value: '3px solid {featureHighlight.feature-highlight.keyboard.focus.outline}',
+        description: 'Keyboard focus styles for highlighted controls.',
+      },
+      keyboard_focus_outline: {
+        value: 'linear-gradient(90deg in oklch, {baseTokens.colors.green.200}, {baseTokens.colors.green.200})',
+        description: 'Color for keyboard focus outline styles for highlighted controls.',
+      },
     },
   },
   deprecates: {
@@ -2391,8 +2392,8 @@ export const theme: Theme = {
       'table': { accent: { value: '{semanticTokens.colors.table_border_accent}' } },
       'date': { picker: { range: { comparison: { value: '{semanticTokens.colors.date_picker_border_range_comparison}' } } } },
       'feature-highlight': {
-        DEFAULT: { value: '{featureHighlight.feature-highlight.border.DEFAULT}' },
-        active: { value: '{featureHighlight.feature-highlight.border.active}' },
+        DEFAULT: { value: '{featureHighlight.feature-highlight.border.primary.DEFAULT}' },
+        active: { value: '{featureHighlight.feature-highlight.border.primary.active}' },
         secondary: { value: '{featureHighlight.feature-highlight.border.secondary}' },
       },
     },
@@ -2426,6 +2427,12 @@ export const theme: Theme = {
       warning: { value: '{semanticTokens.colors.tooltip_bg_warning}' },
     },
     feature: {
+      highlight: {
+        border: {
+          DEFAULT: { value: '{featureHighlight.feature-highlight.border.primary.DEFAULT}' },
+          active: { value: '{featureHighlight.feature-highlight.border.primary.active}' },
+        },
+      },
       popover: {
         bg: {
           DEFAULT: { value: '{semanticTokens.colors.feature_popover_bg_accent}' },
@@ -2587,7 +2594,9 @@ export type SemanticTokens = {
 export type Theme = {
   baseTokens: BaseTokens;
   semanticTokens: SemanticTokens;
-  featureHighlight: Record<FlattenPaths<FeatureHighlight>, Value>;
+  featureHighlight: {
+    'feature-highlight': Record<FlattenPaths<FeatureHighlight>, Value>;
+  };
   deprecates: Deprecates;
 };
 
@@ -3589,26 +3598,27 @@ type SemanticShadows = {
 };
 
 export type FeatureHighlight = {
-  'feature-highlight': {
-    badge: { accent: Value };
-    bg: {
-      primary: { DEFAULT: Value; hover: { active: Value } };
-      secondary: Value;
-    };
-    border: { DEFAULT: Value; active: Value; secondary: Value };
-    control: {
-      primary: { DEFAULT: Value; active: Value; hover: Value };
-      secondary: { DEFAULT: Value; active: Value; hover: Value };
-    };
-    text: { DEFAULT: Value; hover: { active: Value } };
-    icon: {
-      primary: { DEFAULT: Value; hover: { active: Value } };
-    };
-    keyboard: {
-      focus: {
-        DEFAULT: Value;
-        outline: Value;
-      };
+  badge: { accent: Value };
+  bg: {
+    primary: { DEFAULT: Value; hover: { active: Value } };
+    secondary: Value;
+  };
+  border: {
+    primary: { DEFAULT: Value; active: Value };
+    secondary: Value;
+  };
+  control: {
+    primary: { DEFAULT: Value; active: Value; hover: Value };
+    secondary: { DEFAULT: Value; active: Value; hover: Value };
+  };
+  text: { DEFAULT: Value; hover: { active: Value } };
+  icon: {
+    primary: { DEFAULT: Value; hover: { active: Value } };
+  };
+  keyboard: {
+    focus: {
+      DEFAULT: Value;
+      outline: Value;
     };
   };
 };
@@ -3660,6 +3670,9 @@ type Deprecates = {
     warning: Value;
   };
   feature: {
+    highlight: {
+      border: { DEFAULT: Value; active: Value };
+    };
     popover: {
       bg: { DEFAULT: Value };
       dot: {

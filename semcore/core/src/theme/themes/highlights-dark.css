@@ -6,9 +6,9 @@
   /* Secondary background for the highlighted message. */
   --intergalactic-feature-highlight-bg-secondary: linear-gradient(90deg, #f9f2ff, #e9f7ff);
   /* Primary border for highlighted controls. */
-  --intergalactic-feature-highlight-border: linear-gradient(90deg, #c695ff, #2bb3ff);
+  --intergalactic-feature-highlight-border-primary: linear-gradient(90deg, #c695ff, #2bb3ff);
   /* Primary border for the active state of highlighted controls. */
-  --intergalactic-feature-highlight-border-active: linear-gradient(90deg, #ab6cfe, #008ff8);
+  --intergalactic-feature-highlight-border-primary-active: linear-gradient(90deg, #ab6cfe, #008ff8);
   /* Secondary border for highlighted controls. */
   --intergalactic-feature-highlight-border-secondary: linear-gradient(90deg, #dcb8ff, #8ecdff);
   /* Background of the highlighted primary control. */

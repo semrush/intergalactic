@@ -1,5 +1,5 @@
 SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
-  border-color: var(--intergalactic-feature-highlight-border, oklch(0.137 0.026 175.7 / 0.161));
+  border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   z-index: 1;
 
   &::before {
@@ -24,12 +24,12 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
 
   &:active,
   &[active] {
-    border-color: var(--intergalactic-feature-highlight-border-active, oklch(0.22 0.01 140));
+    border-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
   }
 
   &:focus-visible {
     outline: none;
-    border-color: var(--intergalactic-feature-highlight-border, oklch(0.137 0.026 175.7 / 0.161));
+    border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
 
     &::before {
       opacity: 1;

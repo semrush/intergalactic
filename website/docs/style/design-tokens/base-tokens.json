@@ -968,6 +968,14 @@
     "value": "oklch(0.958 0.029 5.7)"
   },
   {
+    "name": "--intergalactic-feature-highlight-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+  },
+  {
+    "name": "--intergalactic-feature-highlight-border-active",
+    "value": "oklch(0.22 0.01 140)"
+  },
+  {
     "name": "--intergalactic-feature-popover-bg",
     "value": "oklch(0.92 0.052 303.1)"
   },

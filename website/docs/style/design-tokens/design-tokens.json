@@ -3935,7 +3935,7 @@
     ]
   },
   {
-    "name": "--intergalactic-feature-highlight-border",
+    "name": "--intergalactic-feature-highlight-border-primary",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Primary border for highlighted controls.",
     "components": [
@@ -3943,7 +3943,7 @@
     ]
   },
   {
-    "name": "--intergalactic-feature-highlight-border-active",
+    "name": "--intergalactic-feature-highlight-border-primary-active",
     "value": "oklch(0.22 0.01 140)",
     "description": "Primary border for the active state of highlighted controls.",
     "components": [
@@ -4024,7 +4024,6 @@
   {
     "name": "--intergalactic-feature-highlight-icon-primary-hover-active",
     "value": "oklch(0.22 0.01 140)",
-    "description": "Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.",
     "components": []
   },
   {

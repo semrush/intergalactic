@@ -31,10 +31,10 @@ SHighlightedItem {
 
   &[selected]::after,
   &:hover:not(:focus-visible)::after {
-    background-color: var(--intergalactic-feature-highlight-border-active, oklch(0.22 0.01 140));
+    background-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
   }
 }
 
 SCaret {
-  background: var(--intergalactic-feature-highlight-border-active, oklch(0.22 0.01 140));
+  background: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
 }
