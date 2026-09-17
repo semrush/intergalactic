@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -181,13 +181,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, FLEX_EXAMPLE, 'en', { shape: 'Checkbox' });
 
-      const inputs = locators.checkboxInput(page);
-      const count = await inputs.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        await expect(inputs.nth(i)).toHaveAttribute('aria-invalid', 'false');
-      }
+      await expectEachToHaveAttribute(locators.checkboxInput(page), 'aria-invalid', 'false');
     });
 
     test('Verify an item is toggled by its checkbox and by its label', {

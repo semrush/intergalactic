@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -361,13 +361,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.plot(page).waitFor({ state: 'visible' });
       await page.waitForTimeout(500);
 
-      const count = await locators.areaDots(page).count();
-      await expect(count).toBe(10);
-      for (let i = 0; i < count; i++) {
-        const dot = locators.areaDots(page, i);
-        await expect(dot).toHaveAttribute('aria-hidden', 'true');
-        await expect(dot).toHaveAttribute('r', '3.5');
-      }
+      await expect(locators.areaDots(page)).toHaveCount(10);
+      await expectEachToHaveAttribute(locators.areaDots(page), 'aria-hidden', 'true');
+      await expectEachToHaveAttribute(locators.areaDots(page), 'r', '3.5');
     });
 
     await test.step('Verify no unneeded attributes on DOM nodes', async () => {
@@ -430,14 +426,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await locators.plot(page).waitFor({ state: 'visible' });
 
       const checkboxes = page.locator('[data-ui-name="LegendFlex.LegendItem"][shape="Checkbox"]');
-      const checkboxesInputs = checkboxes.locator('input');
-      const count = await checkboxesInputs.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        const checkboxesInput = checkboxesInputs.nth(i);
-        await expect(checkboxesInput).toHaveAttribute('aria-invalid', 'false');
-      }
+      await expectEachToHaveAttribute(checkboxes.locator('input'), 'aria-invalid', 'false');
     });
   });
 });

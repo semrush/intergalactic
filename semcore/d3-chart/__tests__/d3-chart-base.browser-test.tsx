@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -80,6 +80,26 @@ const readHoverTrigger = async (page: Page) => {
       y2: Number(l.getAttribute('y2')),
     })),
   }));
+};
+
+/**
+ * Asserts every match defines the given attributes, whatever their values.
+ *
+ * Like `expectEachToHaveAttribute`, it reads one DOM snapshot instead of walking the
+ * collection by index. The failure lists `#index.attribute` for each miss.
+ */
+const expectEachToDefineAttributes = async (locator: ReturnType<Page['locator']>, attributes: string[]) => {
+  await expect(locator).not.toHaveCount(0);
+
+  const missing = await locator.evaluateAll(
+    (elements, names) =>
+      elements.flatMap((element, index) =>
+        names.filter((name) => element.getAttribute(name) === null).map((name) => `#${index}.${name}`),
+      ),
+    attributes,
+  );
+
+  expect(missing).toEqual([]);
 };
 
 const deltaProps = {
@@ -515,59 +535,19 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       });
       await locators.plot(page).waitFor({ state: 'visible' });
 
-      const ticks = locators.axisTicks(page);
-      const ticksCount = await ticks.count();
-      expect(ticksCount).toBeGreaterThan(0);
+      // `data-ui-name` is what every locator below already selects on, so asserting it
+      // again would only restate the query.
+      await expectEachToHaveAttribute(locators.axisTicks(page), 'aria-hidden', 'true');
+      await expectEachToDefineAttributes(locators.axisTicks(page), ['x', 'y']);
 
-      for (let i = 0; i < ticksCount; i++) {
-        const tick = ticks.nth(i);
-        await expect(tick).toHaveAttribute('aria-hidden', 'true');
-        await expect(tick).toHaveAttribute('data-ui-name', 'Axis.Ticks');
-        const x = await tick.getAttribute('x');
-        const y = await tick.getAttribute('y');
-        expect(x).not.toBeNull();
-        expect(y).not.toBeNull();
-      }
+      await expectEachToHaveAttribute(locators.axis(page), 'aria-hidden', 'true');
+      await expectEachToDefineAttributes(locators.axis(page), ['x1', 'y1']);
 
-      const axes = locators.axis(page);
-      const axesCount = await axes.count();
-      expect(axesCount).toBeGreaterThan(0);
+      await expectEachToHaveAttribute(locators.axisTitle(page), 'aria-hidden', 'true');
+      await expectEachToDefineAttributes(locators.axisTitle(page), ['x', 'y']);
 
-      for (let i = 0; i < axesCount; i++) {
-        const axis = axes.nth(i);
-        await expect(axis).toHaveAttribute('aria-hidden', 'true');
-        await expect(axis).toHaveAttribute('data-ui-name', 'Axis');
-        const x1 = await axis.getAttribute('x1');
-        const y1 = await axis.getAttribute('y1');
-        expect(x1).not.toBeNull();
-        expect(y1).not.toBeNull();
-      }
-
-      const titles = locators.axisTitle(page);
-      const titleCount = await titles.count();
-      expect(titleCount).toBeGreaterThan(0);
-
-      for (let i = 0; i < titleCount; i++) {
-        const title = titles.nth(i);
-        await expect(title).toHaveAttribute('aria-hidden', 'true');
-        const x = await title.getAttribute('x');
-        const y = await title.getAttribute('y');
-        expect(x).not.toBeNull();
-        expect(y).not.toBeNull();
-      }
-
-      const grids = locators.axisGrid(page);
-      const gridCount = await grids.count();
-      expect(gridCount).toBeGreaterThan(0);
-
-      for (let i = 0; i < gridCount; i++) {
-        const grid = grids.nth(i);
-        await expect(grid).toHaveAttribute('aria-hidden', 'true');
-        const x1 = await grid.getAttribute('x1');
-        const y1 = await grid.getAttribute('y1');
-        expect(x1).not.toBeNull();
-        expect(y1).not.toBeNull();
-      }
+      await expectEachToHaveAttribute(locators.axisGrid(page), 'aria-hidden', 'true');
+      await expectEachToDefineAttributes(locators.axisGrid(page), ['x1', 'y1']);
     });
 
     test('Verify yHide=true hides at least one axis via display:none', {
@@ -626,11 +606,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         await expect(pattern).toHaveAttribute('y', '0');
       }
 
-      const patternDotsCount = await page.locator('[data-ui-name="Area.Dots"][svg]').count();
-      for (let i = 0; i < patternDotsCount; i++) {
-        const patternDot = locators.areaDots(page, i);
-        await expect(patternDot).toHaveAttribute('aria-hidden', 'true');
-      }
+      // The example draws no dots at rest (`showDots` is not set), so the hovered point is
+      // the only one that renders. With patterns on, a dot is a `<use>` of the pattern
+      // symbol rather than a circle.
+      await hoverPlotCenter(page);
+
+      const patternDots = page.locator('use[data-ui-name="Area.Dots"]');
+      await expect(patternDots).not.toHaveCount(0);
+      await expectEachToHaveAttribute(patternDots, 'aria-hidden', 'true');
+      await expectEachToDefineAttributes(patternDots, ['href', 'x', 'y']);
     });
   });
 
