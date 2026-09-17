@@ -1,3 +1,4 @@
+import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import Icon from '@semcore/icon/Video/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
@@ -978,29 +979,24 @@ describe('Chart tooltip percent delta', () => {
   });
 
   /**
-   * Known defect: a stable delta renders as `0` instead of `0%`.
-   *
-   * `renderTooltipPercentDelta` builds the label as `{delta && `${delta}%`}`, so a
-   * delta of `0` short-circuits to the number `0`, which React renders verbatim.
-   * Remove `.fails` once the label is built unconditionally.
+   * A stable delta keeps the percent sign: `renderTooltipPercentDelta` gates the label
+   * on the trend rather than on the value, so a delta of `0` cannot short-circuit into
+   * a bare number.
    */
-  test.fails('should render a stable delta as "0%"', () => {
+  test('should render a stable delta as "0%"', () => {
     const tooltip = hoverBarChart(250);
 
     expect(getDeltas(tooltip).map((delta) => delta.text)).toEqual(['0%', '0%']);
   });
 
   /**
-   * Known defect: the tooltip grid loses its alignment on mixed rows.
-   *
-   * `hasNoPercentDeltas` is only true when *every* delta is `null`, so a single
-   * resolvable delta switches the grid to three columns. Series whose delta is
-   * `null` still render only two cells, so every following cell shifts one column
-   * to the left. At Point 4 the previous `first` value is 0 -> delta `null`, while
-   * `second` is unchanged -> delta `0`, which yields 5 cells in a 3-column grid.
-   * Remove `.fails` once null deltas render a placeholder cell.
+   * A single resolvable delta switches the grid to three columns, and a series whose
+   * delta is `null` still has to fill its third cell — `renderTooltipPercentDelta`
+   * emits an empty wrapper for the `unknown` trend. At Point 4 the previous `first`
+   * value is 0 -> delta `null`, while `second` is unchanged -> delta `0`, which is the
+   * mixed row that would otherwise leave a hole and shift the grid.
    */
-  test.fails('should keep every row aligned when only some series have a delta', () => {
+  test('should keep every row aligned when only some series have a delta', () => {
     const tooltip = hoverBarChart(440);
 
     expect(getTitle(tooltip)).toBe('Point 4');
@@ -1064,13 +1060,13 @@ describe('Chart tooltip default formatting', () => {
     Array.from(tooltip.querySelectorAll('[data-ui-name="Text"]')).map((node) => node.textContent);
 
   /**
-   * These pin the format as it ships today, which has no weekday in it. Adding the
-   * weekday changes all three, see the `.fails` test below.
+   * The default date format spells out both the weekday and the month, and carries no
+   * time, in whatever locale is asked for.
    */
   test.each([
-    ['en', 'March 15, 2024'],
-    ['de', '15. März 2024'],
-    ['ja', '2024年3月15日'],
+    ['en', 'Friday, March 15, 2024'],
+    ['de', 'Freitag, 15. März 2024'],
+    ['ja', '2024年3月15日金曜日'],
   ])('should format a Date group key through Intl for locale %s', (locale, expected) => {
     expect(getTitle(hoverLineChart({ locale }))).toBe(expected);
   });
@@ -1087,15 +1083,7 @@ describe('Chart tooltip default formatting', () => {
     expect(getTitle(hoverLineChart())).not.toMatch(/\d{1,2}:\d{2}/);
   });
 
-  /**
-   * Known gap: the default date format carries no weekday.
-   *
-   * `defaultTooltipFormatter` builds the date from `{ month: 'long', day: 'numeric',
-   * year: 'numeric' }`, so it prints "March 15, 2024" where the requirement asks for the
-   * full weekday name as well. Remove `.fails` once `weekday: 'long'` is added to those
-   * options, and update the locale cases above, which currently pin the shorter format.
-   */
-  test.fails('should print the full weekday name in the date', () => {
+  test('should print the full weekday name in the date', () => {
     const expected = new Intl.DateTimeFormat('en', {
       weekday: 'long',
       month: 'long',
@@ -1103,7 +1091,52 @@ describe('Chart tooltip default formatting', () => {
       year: 'numeric',
     }).format(new Date('2024-03-15T00:00:00Z'));
 
+    expect(expected).toBe('Friday, March 15, 2024');
     expect(getTitle(hoverLineChart())).toBe(expected);
+  });
+
+  /**
+   * The weekday is abbreviated in neither the name nor the punctuation: "Fri" or "Fri."
+   * would mean `weekday: 'short'` slipped into the options.
+   */
+  test('should spell the weekday out rather than abbreviate it', () => {
+    const title = getTitle(hoverLineChart());
+
+    expect(title).toMatch(/^Friday, /);
+    expect(title).not.toMatch(/\bFri\b\.?/);
+  });
+
+  /**
+   * `locale` is documented as defaulting to `en`, and that default has to hold
+   * independently of the locale the host machine happens to run under — passing
+   * `undefined` straight to `Intl` would silently follow the system instead.
+   */
+  test('should fall back to en rather than to the runtime locale', () => {
+    expect(getTitle(hoverLineChart())).toBe('Friday, March 15, 2024');
+  });
+
+  test('should take the locale from the i18n context when no prop is given', () => {
+    const { container } = render(
+      <I18nProvider value='de'>
+        <Chart.Line
+          data={formatData}
+          groupKey='time'
+          plotWidth={width}
+          plotHeight={300}
+          showTooltip
+          showTotalInTooltip={false}
+          duration={0}
+          aria-label='Line chart'
+        />
+      </I18nProvider>,
+    );
+
+    const plot = container.querySelector('svg[data-ui-name="Plot"]');
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(plot!, { clientX: 250, clientY: 150 });
+
+    const tooltip = document.querySelector('[data-ui-name="HoverLine.Tooltip"]');
+    expect(getTitle(tooltip!)).toBe('Freitag, 15. März 2024');
   });
 
   test('should render integers as is and round fractional values to one decimal', () => {
@@ -1133,8 +1166,30 @@ describe('Chart tooltip default formatting', () => {
     expect(hoverValues(-1.739139, -7.899934)).toEqual(['-1.7', '-7.9']);
   });
 
+  /**
+   * `Intl.NumberFormat` groups thousands by default, so the rounded value keeps the
+   * locale's group separator rather than being printed as a bare number.
+   */
   test('should round a value that carries more digits than the axis shows', () => {
-    expect(hoverValues(1234.5678, 0.96)).toEqual(['1234.6', '1.0']);
+    expect(hoverValues(1234.5678, 0.96)).toEqual(['1,234.6', '1.0']);
+  });
+
+  test.each([
+    ['en', '1,234.6'],
+    ['de', '1.234,6'],
+  ])('should group the thousands the way locale %s does', (locale, expected) => {
+    const values = getValues(
+      hoverLineChart({
+        locale,
+        data: [
+          { time: new Date('2024-01-01T00:00:00Z'), first: 0 },
+          { time: new Date('2024-03-15T00:00:00Z'), first: 1234.5678 },
+          { time: new Date('2024-07-04T00:00:00Z'), first: 5 },
+        ],
+      }),
+    );
+
+    expect(values).toEqual([expected]);
   });
 
   test('should format a numeric group key in the title as well', () => {
@@ -1165,6 +1220,81 @@ describe('Chart tooltip default formatting', () => {
 
     // 20 + 0.049 = 20.049 -> rounded to one decimal place.
     expect(getValues(tooltip)).toContain('20.0');
+  });
+});
+
+/**
+ * The one decimal place default has to hold for every chart that renders a tooltip, not
+ * only for the ones built on `AbstractChart.getTooltipChildren`. Each chart type below
+ * owns its `renderTooltip`, so each needs its own guard against the formatter being
+ * dropped from it.
+ */
+describe('Chart tooltip numeric formatting across chart types', () => {
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  const hoverFirstShape = (chart: React.ReactElement, selector: string) => {
+    const { container } = render(chart);
+
+    const shape = container.querySelector(selector);
+    expect(shape, `nothing matched "${selector}"`).not.toBeNull();
+
+    // Keep fireEvent: these tooltips open on a raw svg mouse event, and the shapes are
+    // overlapped, so userEvent's actionability checks would reject the hover.
+    fireEvent.mouseMove(shape!);
+    fireEvent.mouseEnter(shape!);
+
+    return container;
+  };
+
+  test('should round the Donut tooltip value to one decimal place', () => {
+    hoverFirstShape(
+      <Chart.Donut
+        data={{ a: 1234.5678, b: 7.899934 }}
+        plotWidth={400}
+        plotHeight={300}
+        showTooltip
+        duration={0}
+        aria-label='Donut chart'
+      />,
+      'svg path',
+    );
+
+    const tooltip = document.querySelector('[data-ui-name="Donut.Tooltip"]');
+    expect(tooltip?.textContent).toContain('1,234.6');
+    expect(tooltip?.textContent).not.toContain('1234.5678');
+  });
+
+  test('should round the ScatterPlot tooltip values to one decimal place', () => {
+    hoverFirstShape(
+      <Chart.ScatterPlot
+        data={[{ x: 1.739139, y: 7.899934 }]}
+        groupKey='x'
+        plotWidth={400}
+        plotHeight={300}
+        showTooltip
+        duration={0}
+        aria-label='Scatter plot'
+      />,
+      'svg circle',
+    );
+
+    const text = Array.from(document.querySelectorAll('[data-ui-name="ScatterPlot.Tooltip"]'))
+      .map((node) => node.textContent)
+      .join(' ');
+
+    expect(text).toContain('1.7');
+    expect(text).toContain('7.9');
+    expect(text).not.toContain('1.739139');
+    expect(text).not.toContain('7.899934');
   });
 });
 

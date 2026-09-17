@@ -388,7 +388,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
       // Point 3: line grows by 100%, line2 by 33.3%.
-      await hoverAreaPoint(page, 3, 'January 16, 2024');
+      await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
 
       await expect(locators.diffUp(page)).toHaveCount(2);
       await expect(locators.diffDown(page)).toHaveCount(0);
@@ -905,7 +905,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
-      await hoverAreaPoint(page, 3, 'January 16, 2024');
+      await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
 
       await expect(locators.diffUp(page)).toHaveCount(2);
       await expect(locators.diffDown(page)).toHaveCount(0);
@@ -918,7 +918,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
-      await hoverAreaPoint(page, 6, 'January 31, 2024');
+      await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
 
       await expect(locators.diffDown(page)).toHaveCount(2);
       await expect(locators.diffUp(page)).toHaveCount(0);
@@ -946,13 +946,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         );
 
       // Jan 16: both series grow. Jan 6: one grows, the other stays put.
-      await hoverAreaPoint(page, 3, 'January 16, 2024');
+      await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
       const upward = await readTrendColours();
 
-      await hoverAreaPoint(page, 6, 'January 31, 2024');
+      await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
       const downward = await readTrendColours();
 
-      await hoverAreaPoint(page, 1, 'January 6, 2024');
+      await hoverAreaPoint(page, 1, 'Saturday, January 6, 2024');
       const stable = (await readTrendColours()).find((d) => d.trend === 'stable');
 
       expect(upward.every((d) => d.trend === 'upward')).toBe(true);
@@ -1024,12 +1024,14 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('A move below 0.05% collapses into a stable zero', async () => {
         // 10000 -> 10004 is +0.04%, which rounds away and reads as no change at all.
-        expect(diffAfter('roundsToZero')).toMatchObject({ text: '0', trend: 'stable' });
+        // A stable delta still carries the percent sign, it just loses the icon.
+        expect(diffAfter('roundsToZero')).toMatchObject({ text: '0%', trend: 'stable' });
       });
 
-      await test.step('A negative baseline flips the sign of a growing value', async () => {
-        // -10 -> -5 is an improvement, yet dividing by -10 renders it as a red -50%.
-        expect(diffAfter('negativeBase')).toMatchObject({ text: '-50%', trend: 'downward' });
+      await test.step('A negative baseline keeps the sign of the actual move', async () => {
+        // -10 -> -5 is an improvement, and dividing by |prev| keeps it a green +50%
+        // instead of flipping it into a red decline.
+        expect(diffAfter('negativeBase')).toMatchObject({ text: '50%', trend: 'upward' });
       });
     });
 
@@ -1039,7 +1041,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
       // line grows by 100%, line2 stays at 3.
-      await hoverAreaPoint(page, 1, 'January 6, 2024');
+      await hoverAreaPoint(page, 1, 'Saturday, January 6, 2024');
 
       await expect(locators.diffUp(page)).toHaveCount(1);
       await expect(locators.diffDown(page)).toHaveCount(0);
@@ -1050,31 +1052,26 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
-      await hoverAreaPoint(page, 0, 'January 1, 2024');
+      await hoverAreaPoint(page, 0, 'Monday, January 1, 2024');
 
       await expect(locators.diffUp(page).or(locators.diffDown(page))).toHaveCount(0);
     });
 
     /**
-     * Known defect: a row without a delta breaks the grid alignment.
-     *
-     * `hasNoPercentDeltas` only stays true when *every* delta is null, so a single
-     * resolvable delta switches the tooltip to three columns. Rows whose delta is null
-     * still render two cells, and CSS Grid pulls the next row's label into the empty
-     * third slot, shifting everything after it by one cell.
+     * A single resolvable delta switches the tooltip to three columns, so every row has
+     * to fill all three even when its own delta is null: `renderTooltipPercentDelta`
+     * emits an empty wrapper for the `unknown` trend, which keeps the cell count a whole
+     * number of rows and stops CSS Grid from pulling the next label into the hole.
      *
      * With `withZeroValue` the `line` series has no delta on Jan 16 (its previous value
-     * is 0) while `line2` does, so the row reads `line | 6 | line2` instead of ending
-     * after the value. Remove `test.fail()` once null deltas render a placeholder cell.
+     * is 0) while `line2` does, which is exactly the mixed case that would break.
      */
     test('Verify rows stay aligned when only some series have a delta', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
     }, async ({ page }) => {
-      test.fail();
-
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', { ...deltaProps, withZeroValue: true });
 
-      await hoverAreaPoint(page, 3, 'January 16, 2024');
+      await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
 
       const grid = await page
         .locator('[class*="STooltipChildrenWrapper"]')
@@ -1096,8 +1093,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         });
 
       expect(grid.columns).toBe(3);
-      // A partially filled row leaves a hole, so the cell count stops being a whole
-      // number of rows and everything after the hole shifts one column to the left.
+      // A partially filled row would leave a hole, and the cell count would stop being a
+      // whole number of rows with everything after it shifted one column to the left.
       expect(grid.cellCount % grid.columns).toBe(0);
       // Both series labels must still start their own row.
       expect(grid.firstColumnTexts).toEqual(['line', 'line2']);
@@ -1111,7 +1108,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         showDeltaPercentInTooltip: false,
       });
 
-      await hoverAreaPoint(page, 3, 'January 16, 2024');
+      await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
 
       await expect(locators.diffUp(page).or(locators.diffDown(page))).toHaveCount(0);
     });
@@ -1248,7 +1245,37 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 
-      await expect(page.getByText('15. März 2024')).toBeVisible();
+      // Exact text: the weekday and the full month name both have to be there.
+      await expect(page.locator('[data-ui-name="HoverLine.Tooltip.Title"]')).toHaveText(
+        'Freitag, 15. März 2024',
+      );
+    });
+
+    test('Verify the default date carries the full weekday and month and no time', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/d3-chart/tooltip-default-format.tsx',
+        'en',
+      );
+
+      const plot = locators.plot(page).first();
+      await plot.waitFor({ state: 'visible' });
+
+      const box = await plot.boundingBox();
+      if (!box) throw new Error('Bounding box not found');
+
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+
+      const title = page.locator('[data-ui-name="HoverLine.Tooltip.Title"]');
+      await expect(title).toHaveText('Friday, March 15, 2024');
+
+      const text = (await title.textContent()) ?? '';
+      // A numeric date (3/15/2024) or a leftover clock (00:00) would both mean the
+      // long, time-less format was dropped.
+      expect(text).not.toMatch(/\d+\/\d+\/\d+/);
+      expect(text).not.toMatch(/\d{1,2}:\d{2}/);
     });
   });
 });

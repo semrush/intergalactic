@@ -17,21 +17,19 @@ import { getChartProps, getPropsToChart } from '../stories_props_helper';
  * overHundred    |      1 |      5 | +400%      — growth past 100%
  * huge           |      1 |    100 | +9900%     — does the column still fit?
  * fraction       |    100 |  100.5 | +0.5%      — one decimal place
- * roundsToZero   |  10000 |  10004 | +0.04% rounds to 0 -> shown as a stable "0"
+ * roundsToZero   |  10000 |  10004 | +0.04% rounds to 0 -> shown as a stable "0%"
  * shrank         |    100 |     50 | -50%
  * droppedToZero  |    100 |      0 | -100%
  * fromZero       |      0 |      7 | no diff    — cannot divide by 0, cell stays empty
- * zeroToZero     |      0 |      0 | 0          — stable
- * unchanged      |     50 |     50 | 0          — stable
- * negativeBase   |    -10 |     -5 | -50%       — value grew, but the sign flips it red
+ * zeroToZero     |      0 |      0 | 0%         — stable
+ * unchanged      |     50 |     50 | 0%         — stable
+ * negativeBase   |    -10 |     -5 | +50%       — dividing by |prev| keeps growth green
  *
- * Three rows are worth a decision:
+ * Two rows are worth a decision:
  *  - `roundsToZero` turns a real change into "no change" once it rounds below 0.05%;
- *  - `negativeBase` reads as a decline although -10 -> -5 is an improvement, because the
- *    formula divides by a negative baseline;
- *  - `fromZero` has no diff cell at all, and since the tooltip is a three column grid the
- *    rows below it shift one cell to the left. Everything from `zeroToZero` down is
- *    misaligned, which is the clearest way to see that defect by eye.
+ *  - `fromZero` carries no percentage, because there is nothing to divide by. Its cell is
+ *    still rendered, just empty, which is what keeps the three column grid aligned —
+ *    every row below it has to start its own line.
  */
 const data = [
   {
