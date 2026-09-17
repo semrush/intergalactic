@@ -1,11 +1,5 @@
 SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(white, white) padding-box,
-    var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  position: relative;
+  border-color: var(--intergalactic-border-feature-highlight, oklch(0.137 0.026 175.7 / 0.161));
   z-index: 1;
 
   &::before {
@@ -16,38 +10,26 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
     margin: -5px;
     padding: 2px;
     border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
-
+    background-color: transparent;
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
-
     opacity: 0;
     transform: scale(0.96);
     pointer-events: none;
-
     transition:
       opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
       transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
-  &:hover {
-    background: var(--intergalactic-bg-primary-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.929 0.037 268))) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
-  }
-
   &:active,
   &[active] {
-    background:
-      linear-gradient(white, white) padding-box,
-      var(--intergalactic-control-primary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.74 0.117 274.1))) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border-color: transparent;
+    border-color: var(--intergalactic-border-feature-highlight-active, oklch(0.22 0.01 140));
   }
 
   &:focus-visible {
     outline: none;
-    border-color: transparent;
+    border-color: var(--intergalactic-border-feature-highlight, oklch(0.137 0.026 175.7 / 0.161));
 
     &::before {
       opacity: 1;
@@ -72,12 +54,11 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
 
 /* Firefox fallback */
 @supports not (-webkit-mask-composite: xor) {
-
   SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]):focus-visible {
     outline: none;
     box-shadow:
       0 0 0 2px #ffffff,
-      0 0 0 4px #7078FC;
+      0 0 0 4px #59ddaa;
   }
 
   SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]):focus-visible::before {

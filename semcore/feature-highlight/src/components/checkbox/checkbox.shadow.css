@@ -2,55 +2,59 @@ SHighlightedCheckbox:not([state="invalid"]) {
   [data-ui-name="Value.CheckMark"] {
     position: relative;
     transform: translate(0);
-
-    border: 1px solid transparent;
-    border-radius: var(--intergalactic-addon-rounded, 4px);
-    background: linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    border: 1px solid var(--intergalactic-border-feature-highlight, oklch(0.137 0.026 175.7 / 0.161));
+    border-radius: var(--intergalactic-checkbox-rounded, 4px);
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
   }
 
-  input[data-ui-name="CheckboxFH.Value"]:checked + [data-ui-name="Value.CheckMark"] {
-    border-color: transparent;
-    background: var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) padding-box, var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
+  input[data-ui-name="CheckboxFH.Value"]:is(:checked, :indeterminate) + [data-ui-name="Value.CheckMark"] {
+    background-color: var(--intergalactic-control-primary-feature-highlight, oklch(0.23 0.01 140));
+    border-color: var(--intergalactic-control-primary-feature-highlight, oklch(0.23 0.01 140));
   }
 
-  [data-ui-name="Value.CheckMark"]::before {
+  &:active input[data-ui-name="CheckboxFH.Value"]:is(:checked, :indeterminate) + [data-ui-name="Value.CheckMark"] {
+    background-color: var(--intergalactic-control-primary-feature-highlight-active, {semanticTokens.colors.control_primary_brand_info});
+    border-color: var(--intergalactic-control-primary-feature-highlight-active, {semanticTokens.colors.control_primary_brand_info});
+  }
+
+  [data-ui-name="Value.CheckMark"]::before,
+  input[data-ui-name="CheckboxFH.Value"]:is(:checked, :indeterminate) + [data-ui-name="Value.CheckMark"]::before {
     content: "";
     position: absolute;
     z-index: -1;
     inset: 0;
     margin: -5px;
     padding: 1px;
-    border-width: 2px;
-    border-radius: calc(var(--intergalactic-addon-rounded, 4px) + 3px);
-    border-color: transparent;
+    border: none;
+    border-radius: calc(var(--intergalactic-checkbox-rounded, 4px) + 3px);
     pointer-events: none;
-    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
+    background-color: transparent;
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
-
     opacity: 0;
     transform: scale(0.9);
-
     transition:
       opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
       transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
-  input[data-ui-name="CheckboxFH.Value"]:checked:not(:focus-visible)+[data-ui-name="Value.CheckMark"]::before {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  input[data-ui-name="CheckboxFH.Value"]:focus-visible+[data-ui-name="Value.CheckMark"]::before {
+  input[data-ui-name="CheckboxFH.Value"]:focus-visible + [data-ui-name="Value.CheckMark"]::before {
     opacity: 1;
     transform: scale(1);
   }
+}
 
-  input[data-ui-name="CheckboxFH.Value"]:checked:focus-visible+[data-ui-name="Value.CheckMark"]::before {
-    border-color: transparent;
-    background: linear-gradient(white, white) padding-box, var(--intergalactic-border-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
+/* Firefox fallback */
+@supports not (-webkit-mask-composite: xor) {
+  SHighlightedCheckbox:not([state="invalid"]) input[data-ui-name="CheckboxFH.Value"]:focus-visible + [data-ui-name="Value.CheckMark"] {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #ffffff,
+      0 0 0 4px #59ddaa;
+  }
+
+  SHighlightedCheckbox:not([state="invalid"]) input[data-ui-name="CheckboxFH.Value"]:focus-visible + [data-ui-name="Value.CheckMark"]::before {
+    display: none;
   }
 }

@@ -644,6 +644,10 @@ export const theme: Theme = {
         value: gray.at(0.22),
         description: 'Secondary brand accent for paired brand treatments (secondary marks, duo-tone lockups).',
       },
+      brand_tertiary: {
+        value: green.at(0.82),
+        description: 'Tertiary brand accent for logos and branded surfaces.',
+      },
       brand_twitter: {
         value: '#1d9bf0',
         description: 'Official Twitter brand fill for logos and icons in approved placements; follow the platform brand rules for size and clear space.',
@@ -2261,68 +2265,71 @@ export const theme: Theme = {
     },
   },
   featureHighlight: {
+    'badge_feature-highlight_accent': {
+      value: '{semanticTokens.colors.brand_secondary}',
+      description: 'Accent background for Badge.',
+    },
     'bg_primary_feature-highlight_DEFAULT': {
-      value: '{baseTokens.colors.gray.white}',
+      value: '{semanticTokens.colors.bg_primary_DEFAULT}',
       description: 'Primary background for highlighted controls.',
     },
     'bg_primary_feature-highlight_hover_active': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.50}, {baseTokens.colors.blue.75})',
+      value: '{semanticTokens.colors.bg_primary_hover}',
       description: 'Primary background for hover and active (selected) state of highlighted controls.',
     },
     'bg_secondary_feature-highlight': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.50}, {baseTokens.colors.blue.75})',
+      value: '{baseTokens.colors.violet.100}',
       description: 'Secondary background for the highlighted message.',
     },
     'border_feature-highlight_DEFAULT': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.200}, {baseTokens.colors.blue.200})',
+      value: '{semanticTokens.colors.border_primary}',
       description: 'Primary border for highlighted controls.',
     },
     'border_feature-highlight_active': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.300}, {baseTokens.colors.blue.300})',
+      value: '{semanticTokens.colors.brand_secondary}',
       description: 'Primary border for the active state of highlighted controls.',
     },
     'border_feature-highlight_secondary': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.300}, {baseTokens.colors.blue.300})',
+      value: '{semanticTokens.colors.border_secondary}',
       description: 'Secondary border for highlighted controls.',
     },
     'control_primary_feature-highlight_DEFAULT': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.400}, {baseTokens.colors.blue.300})',
+      value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
       description: 'Background of the highlighted primary control.',
     },
     'control_primary_feature-highlight_hover': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.400}, {baseTokens.colors.blue.300})',
+      value: '{semanticTokens.colors.control_primary_info_hover}',
       description: 'Hover state of the highlighted primary control.',
     },
     'control_primary_feature-highlight_active': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.400}, {baseTokens.colors.blue.400})',
+      value: '{semanticTokens.colors.control_primary_brand_info}',
       description: 'Active (selected) state of the highlighted primary control.',
     },
     'control_secondary_feature-highlight_DEFAULT': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.50}, {baseTokens.colors.blue.50})',
+      value: '{semanticTokens.colors.control_secondary_neutral_DEFAULT}',
       description: 'Background of the highlighted secondary control.',
     },
     'control_secondary_feature-highlight_hover': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.100}, {baseTokens.colors.blue.100})',
+      value: '{semanticTokens.colors.control_secondary_neutral_hover}',
       description: 'Hover state of the highlighted secondary control.',
     },
     'control_secondary_feature-highlight_active': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.100}, {baseTokens.colors.blue.100})',
+      value: '{semanticTokens.colors.control_secondary_neutral_active}',
       description: 'Active (selected) state of the highlighted secondary control.',
     },
     'text_feature-highlight_DEFAULT': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.500}, {baseTokens.colors.blue.500})',
+      value: '{semanticTokens.colors.text_primary_DEFAULT}',
       description: 'Text for highlighted features.',
     },
     'text_feature-highlight_hover_active': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.500}, {baseTokens.colors.blue.500})',
+      value: '{semanticTokens.colors.text_primary_DEFAULT}',
       description: 'Text for hover and active states of highlighted features.',
     },
     'icon_primary_feature-highlight_DEFAULT': {
-      value: highlight.at(L_ICON_PRIMARY),
-      description: 'Primary highlighted icon.',
+      value: '{semanticTokens.colors.brand_secondary}',
     },
     'icon_primary_feature-highlight_hover_active': {
-      value: highlight.at(L_ICON_PRIMARY_HOVER),
+      value: '{semanticTokens.colors.brand_secondary}',
       description: 'Violet background color for the hover and active states of the primary highlighted icon. It’s created using a CSS filter with a brightness(0.8), applied to the violet-500 color.',
     },
     'keyboard_focus_feature-highlight_DEFAULT': {
@@ -2330,7 +2337,7 @@ export const theme: Theme = {
       description: 'Keyboard focus styles for highlighted controls.',
     },
     'keyboard_focus_feature-highlight_outline': {
-      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.violet.300}, {baseTokens.colors.blue.400})',
+      value: 'linear-gradient(90deg in oklch, {baseTokens.colors.green.200}, {baseTokens.colors.green.200})',
       description: 'Color for keyboard focus outline styles for highlighted controls.',
     },
   },
@@ -3124,6 +3131,7 @@ type SemanticColors = {
   brand: {
     primary: Value;
     secondary: Value;
+    tertiary: Value;
     gradient: Value;
     pinterest: Value;
     instagram: Value;
@@ -3517,6 +3525,9 @@ type SemanticShadows = {
 };
 
 export type FeatureHighlight = {
+  badge: {
+    'feature-highlight': { accent: Value };
+  };
   bg: {
     primary: {
       'feature-highlight': { DEFAULT: Value; hover: { active: Value } };

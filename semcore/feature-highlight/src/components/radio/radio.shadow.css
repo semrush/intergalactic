@@ -4,8 +4,21 @@ SHighlightedRadio {
 
 SHighlightedRadio:not([state="invalid"]) {
   [data-ui-name="Value.RadioMark"] {
+    border: 1px solid var(--intergalactic-border-feature-highlight, oklch(0.137 0.026 175.7 / 0.161));
     border-radius: 50%;
-    background: var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1)));
+    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
+    background-image: none;
+  }
+
+  input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"] {
+    background-color: var(--intergalactic-control-primary-feature-highlight, oklch(0.23 0.01 140));
+    border-color: var(--intergalactic-control-primary-feature-highlight, oklch(0.23 0.01 140));
+    background-image: none;
+  }
+
+  &:active input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"] {
+    background-color: var(--intergalactic-control-primary-feature-highlight-active, {semanticTokens.colors.control_primary_brand_info});
+    border-color: var(--intergalactic-control-primary-feature-highlight-active, {semanticTokens.colors.control_primary_brand_info});
   }
 
   [data-ui-name="Value.RadioMark"]::before {
@@ -18,7 +31,8 @@ SHighlightedRadio:not([state="invalid"]) {
     border-radius: 50%;
     border-width: 0;
     pointer-events: none;
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
+    background-color: transparent;
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
 
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
@@ -32,21 +46,9 @@ SHighlightedRadio:not([state="invalid"]) {
       transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
   }
 
-  [data-ui-name="Value.RadioMark"]::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
-    background: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
-    top: 50%;
-    left: 50%;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-
-    transition:
-      width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"]::before {
+    background-color: transparent;
+    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
   }
 
   input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
@@ -57,14 +59,12 @@ SHighlightedRadio:not([state="invalid"]) {
   }
 }
 
-
-
 /* Firefox fallback */
 @supports not (-webkit-mask-composite: xor) {
   SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"] {
     outline: none;
     box-shadow: 0 0 0 2px #ffffff,
-      0 0 0 4px #7078FC;
+      0 0 0 4px #59ddaa;
   }
 
   SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
