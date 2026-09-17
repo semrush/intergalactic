@@ -10,7 +10,7 @@ export const allowedScopes = async () => {
   const semcoreComponents = (await fs.readdir(resolvePath(dirname, '..', '..', '..', '..', 'semcore'))).filter(filterFsEntries);
   const semcoreBaseComponents = (await fs.readdir(resolvePath(dirname, '..', '..', '..', '..', 'semcore', 'base-components', 'src', 'components'))).filter(filterFsEntries);
   const toolsComponents = (await fs.readdir(resolvePath(dirname, '..', '..', '..', '..', 'tools'))).filter(filterFsEntries);
-  const specialScopes = ['global', 'chore', 'ci', 'website', 'docs', 'tests', 'stories'];
+  const specialScopes = ['global', 'chore', 'ci', 'website', 'docs', 'tests', 'stories', 'figma'];
 
   return {
     specialScopes,

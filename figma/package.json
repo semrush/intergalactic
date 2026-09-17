@@ -1,0 +1,12 @@
+{
+  "name": "figma",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "figma-publish": "npx figma connect publish",
+    "figma-publish-custom": "npx figma connect publish --config figma-custom.config.json"
+  },
+  "devDependencies": {
+    "@figma/code-connect": "^1.4.3"
+  }
+}

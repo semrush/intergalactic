@@ -1,0 +1,13 @@
+{
+  "codeConnect": {
+    "include": [
+      "mappings/**/*.figma.ts"
+    ],
+    "label": "React",
+    "parser": "custom",
+    "parserCommand": "pnpm tsm src/parser.ts",
+    "paths": {
+      "@semcore/ui/*": ["semcore/*/src"]
+    }
+  }
+}
