@@ -50,32 +50,36 @@ const data = {
 };
 
 /**
- * Same set layout as `data`, with decimals added. Hover each area and compare the value in
- * the tooltip with the expectation:
+ * `data` scaled by 10, with decimal tails added, so the diagram keeps the shape it has by
+ * default and only the numbers change. An intersection must never exceed the sets it
+ * belongs to, otherwise the layout degenerates into overlapping blobs — which is why the
+ * values cannot simply be replaced with arbitrary decimals.
  *
- * area    | raw value | expected  | actually shown
- * --------|-----------|-----------|----------------
- * G       | 1234.5678 |   1,234.6 | 1234.5678
- * F       |    7.8999 |       7.9 | 7.8999
- * C       | 2000.0004 |   2,000.0 | 2000.0004
- * U       |    0.4999 |       0.5 | 0.4999
- * G/F     |    1.7391 |       1.7 | 1.7391
- * G/C     |  100000   | 100,000   | 100000       <- integer: only the grouping is missing
- * F/C     |   99.95   |     100.0 | 99.95
- * G/F/C   |   50      |      50   | 50           <- integer: looks correct either way
+ * Hover each area and compare the value in the tooltip with the expectation:
  *
- * The integer rows are why the defect is easy to miss: a Venn chart built on whole numbers
+ * area    | raw value | expected | actually shown
+ * --------|-----------|----------|----------------
+ * G       | 2004.5678 |  2,004.6 | 2004.5678
+ * F       | 2000.049  |  2,000.0 | 2000.049
+ * C       | 4999.95   |  5,000.0 | 4999.95     <- rounds across the thousand boundary
+ * U       |    1.7391 |      1.7 | 1.7391
+ * G/F     | 1000.4999 |  1,000.5 | 1000.4999
+ * G/C     |  999.96   |  1,000.0 | 999.96
+ * F/C     | 1000.04   |  1,000.0 | 1000.04
+ * G/F/C   | 1000      |  1,000   | 1000        <- integer: only the grouping is missing
+ *
+ * The integer row is why the defect is easy to miss: a Venn chart built on whole numbers
  * renders almost identically with and without the formatter.
  */
 const fractionalData = {
-  'G': 1234.5678,
-  'F': 7.8999,
-  'C': 2000.0004,
-  'U': 0.4999,
-  'G/F': 1.7391,
-  'G/C': 100000,
-  'F/C': 99.95,
-  'G/F/C': 50,
+  'G': 2004.5678,
+  'F': 2000.049,
+  'C': 4999.95,
+  'U': 1.7391,
+  'G/F': 1000.4999,
+  'G/C': 999.96,
+  'F/C': 1000.04,
+  'G/F/C': 1000,
 };
 
 const legendProps = {
