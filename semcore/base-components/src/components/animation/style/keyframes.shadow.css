@@ -290,3 +290,9 @@ SCollapse {
     transform: var(--transformStart);
   }
 }
+
+@media (prefers-reduced-motion) {
+  SCollapse {
+    transition: none;
+  }
+}
