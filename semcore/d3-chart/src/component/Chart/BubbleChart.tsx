@@ -140,7 +140,7 @@ class BubbleChartComponent extends AbstractChart<
                   <Text>Y axis</Text>
                   <Text textAlign='end'>{data[index].y}</Text>
                   <Text>Value</Text>
-                  <Text textAlign='end'>{this.tooltipValueFormatter(data[index].value)}</Text>
+                  <Text textAlign='end'>{data[index].value}</Text>
                 </STooltipChildrenWrapper>
               </Flex>,
             ),
