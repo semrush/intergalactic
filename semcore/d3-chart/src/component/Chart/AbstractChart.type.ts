@@ -149,9 +149,13 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   axisXValueFormatter?: (value: unknown) => string;
   axisYValueFormatter?: (value: unknown) => string;
   /**
-   * Function for format text for tooltip
+   * Function to format values in tooltip
    */
   tooltipValueFormatter?: (value?: unknown) => string;
+  /**
+   * Function to format tooltip's title
+   */
+  tooltipTitleFormatter?: (title?: unknown) => string;
   /**
    * Custom event emitter. Could be useful to handle event on few charts at the same time.
    */

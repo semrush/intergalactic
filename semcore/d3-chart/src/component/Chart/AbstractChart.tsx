@@ -407,6 +407,14 @@ export abstract class AbstractChart<
     return this.defaultTooltipFormatter(value);
   }
 
+  protected tooltipTitleFormatter(value?: unknown): string {
+    const { tooltipTitleFormatter } = this.asProps;
+
+    if (tooltipTitleFormatter) return tooltipTitleFormatter(value);
+
+    return this.defaultTooltipFormatter(value);
+  }
+
   protected defaultLegendProps(): Partial<BaseLegendProps> {
     return {
       legendType: 'Flex',
@@ -566,7 +574,7 @@ export abstract class AbstractChart<
 
     const { styles, groupKey, showDeltaPercentInTooltip, data } = this.asProps;
     const { dataDefinitions } = this.state;
-    const title = this.defaultTooltipFormatter(dataItem[groupKey as keyof D]);
+    const title = this.tooltipTitleFormatter(dataItem[groupKey as keyof D]);
 
     const percentDeltas = showDeltaPercentInTooltip
       ? dataDefinitions.map(({ id }) => this.getPercentDelta(id, index, data))
@@ -623,7 +631,7 @@ export abstract class AbstractChart<
         trend={trend}
       >
         {(trend === 'upward' || trend === 'downward') && <STooltipDeltaIcon width={8.5} height={8.5} />}
-        {trend !== 'unknown' && <Text size={100}>{delta}%</Text>}
+        {trend !== 'unknown' && <Text size={100}>{Math.abs(delta!)}%</Text>}
       </STooltipDeltaWrapper>,
     );
   }

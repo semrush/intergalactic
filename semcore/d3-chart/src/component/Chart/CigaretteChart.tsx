@@ -389,9 +389,7 @@ class CigaretteChartComponent extends AbstractChart<
           return {
             children: sstyled(styles)(
               <Flex direction='column'>
-                {tooltipTitle && (
-                  <HoverRect.Tooltip.Title>{tooltipTitle}</HoverRect.Tooltip.Title>
-                )}
+                {tooltipTitle && (<HoverRect.Tooltip.Title>{this.tooltipTitleFormatter(tooltipTitle)}</HoverRect.Tooltip.Title>)}
 
                 <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
                   {dataDefinitions.map((item) => {

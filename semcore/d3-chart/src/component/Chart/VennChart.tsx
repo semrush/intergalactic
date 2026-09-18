@@ -138,7 +138,7 @@ class VennChartComponent extends AbstractChart<
           return {
             children: (
               <>
-                <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
+                <Venn.Tooltip.Title>{this.tooltipTitleFormatter(name)}</Venn.Tooltip.Title>
                 <Text bold>{this.tooltipValueFormatter(data[dataKey])}</Text>
               </>
             ),
