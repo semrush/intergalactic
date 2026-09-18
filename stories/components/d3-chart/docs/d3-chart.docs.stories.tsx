@@ -7,6 +7,7 @@ import AxesTitlesExample from './examples/d3-chart/axes-titles';
 import AxesValuesExample from './examples/d3-chart/axis-values';
 import BaseExample from './examples/d3-chart/base';
 import ChartLegendExample from './examples/d3-chart/chart-legend';
+import CustomDeltaPercentCalculationExample from './examples/d3-chart/custom-delta-percent-calculation';
 import CustomPatternsExample from './examples/d3-chart/custom-patterns';
 import EnforcingPatternsExample from './examples/d3-chart/enforcing-patterns';
 import ExportToImageExample from './examples/d3-chart/export-to-image';
@@ -100,4 +101,8 @@ export const Tooltip: StoryObj = {
 
 export const TooltipControl: StoryObj = {
   render: TooltipControlExample,
+};
+
+export const CustomDeltaPercentCalculation: StoryObj = {
+  render: CustomDeltaPercentCalculationExample,
 };
