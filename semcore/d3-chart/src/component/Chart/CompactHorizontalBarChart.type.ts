@@ -11,7 +11,7 @@ export type CompactHorizontalBarChartData = Array<Record<BarKey, number | string
 
 export type CompactHorizontalBarChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<CompactHorizontalBarChartData>,
-  'showTotalInTooltip'
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
 > & {
   /** Field name from data array for the x-axis values */
   x: string;

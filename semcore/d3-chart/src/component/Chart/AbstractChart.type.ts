@@ -52,7 +52,8 @@ export type BaseLegendProps = BaseChartLegendProps & {
     }
   );
 
-export type ObjectData = Record<string, number | typeof interpolateValue | Date | string | string[] | number[]> & {
+export type ObjectDataKey = string;
+export type ObjectData = Record<ObjectDataKey, number | typeof interpolateValue | Date | string | string[] | number[]> & {
   [HIGHLIGHT_DOT]?: typeof GOOD | typeof BAD | typeof INSIGHTFUL;
   [DATA_TYPE]?: typeof POTENTIAL | typeof FORECAST;
 };
@@ -126,6 +127,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Show the percentage change from the previous point in the tooltip
    */
   showDeltaPercentInTooltip?: boolean;
+  /**
+   * Overrides the default percentage delta calculation.
+   */
+  getPercentDelta?: (key: ObjectDataKey, index: number, data: T) => number | null;
   /**
    * Scale for xAxis (see more in d3-scale)
    */

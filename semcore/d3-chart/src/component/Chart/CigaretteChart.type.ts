@@ -10,7 +10,7 @@ export type CigaretteChartData = Record<CigaretteChartDataKey, number | typeof i
 
 export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<CigaretteChartData>,
-  'xScale' | 'yScale'
+  'xScale' | 'yScale' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
 > & {
   /** Title text displayed in the tooltip */
   tooltipTitle?: string;
