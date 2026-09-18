@@ -1,17 +1,15 @@
-import { interpolateValue } from '@semcore/ui/d3-chart';
+import { interpolateValue, GOOD, HIGHLIGHT_DOT, BAD, INSIGHTFUL, DATA_TYPE, FORECAST, POTENTIAL } from '@semcore/ui/d3-chart';
 
 export default {
   Default: [
     { time: new Date(2025, 0, 1), line: 3 },
     { time: new Date(2025, 0, 5), line: 7 },
-    { time: new Date(2025, 0, 10), line: 1 },
-    { time: new Date(2025, 0, 15), line: 9 },
+    { time: new Date(2025, 0, 10), line: 5 },
+    { time: new Date(2025, 0, 15), line: 9, [HIGHLIGHT_DOT]: GOOD } as const,
     { time: new Date(2025, 0, 20), line: 4 },
     { time: new Date(2025, 0, 25), line: 6 },
-    { time: new Date(2025, 0, 30), line: 2 },
+    { time: new Date(2025, 0, 30), line: 2, [HIGHLIGHT_DOT]: BAD } as const,
     { time: new Date(2025, 1, 4), line: 8 },
-    { time: new Date(2025, 1, 9), line: 0 },
-    { time: new Date(2025, 1, 14), line: 5 },
   ],
   Interpolation: [
     { time: new Date(2025, 0, 1), line1: 5, line2: 3 },
@@ -44,5 +42,27 @@ export default {
     { x: 3, y: null },
     { x: 4, y: 1 },
     { x: 5, y: null },
+  ],
+  Forecast: [
+    { time: new Date(2025, 0, 1), line: 3 },
+    { time: new Date(2025, 0, 5), line: 7 },
+    { time: new Date(2025, 0, 10), line: 1 },
+    { time: new Date(2025, 0, 15), line: 9 },
+    { time: new Date(2025, 0, 20), line: 4 },
+    { time: new Date(2025, 0, 25), line: 6 },
+    { time: new Date(2025, 0, 25), line: 6, [DATA_TYPE]: FORECAST } as const,
+    { time: new Date(2025, 0, 30), line: 2, [DATA_TYPE]: FORECAST } as const,
+    { time: new Date(2025, 1, 4), line: 8, [DATA_TYPE]: FORECAST } as const,
+  ],
+  Potential: [
+    { time: new Date(2025, 0, 1), line: 3 },
+    { time: new Date(2025, 0, 5), line: 7 },
+    { time: new Date(2025, 0, 10), line: 1 },
+    { time: new Date(2025, 0, 15), line: 9 },
+    { time: new Date(2025, 0, 20), line: 4 },
+    { time: new Date(2025, 1, 14), line: 5 },
+    { time: new Date(2025, 1, 14), line: 5, [DATA_TYPE]: POTENTIAL } as const,
+    { time: new Date(2025, 1, 18), line: 7, [DATA_TYPE]: POTENTIAL } as const,
+    { time: new Date(2025, 1, 28), line: 8, [DATA_TYPE]: POTENTIAL, [HIGHLIGHT_DOT]: INSIGHTFUL } as const,
   ],
 };
