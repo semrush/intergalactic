@@ -227,6 +227,18 @@ class CigaretteChartComponent extends AbstractChart<
     return scaleLinear([plotHeight, 0]);
   }
 
+  get isNoData() {
+    const { data } = this.asProps;
+    const items = this.computeCigaretteItems();
+    const noData = items.every((item) => {
+      const value = data[item.id];
+
+      return value === interpolateValue || value === 0;
+    });
+
+    return noData;
+  }
+
   renderChart() {
     const { invertAxis, data, uid, duration, patterns, onClick } =
       this.asProps;
@@ -237,51 +249,84 @@ class CigaretteChartComponent extends AbstractChart<
 
     const items = this.computeCigaretteItems();
 
-    return (
-      <>
-        {items.map((item, index) => {
-          const { visualWidth, id } = item;
-          const value = data[id];
+    if (this.isNoData) {
+      const height = invertAxis ? plotHeight - DEFAULT_GAP * 2 : plotWidth - DEFAULT_GAP * 2;
+      const width = Math.max(0, (invertAxis ? plotWidth : plotHeight));
+      const y = DEFAULT_GAP;
+      const x = 0;
+      const r = height < 28 ? 2 : 4;
 
-          if (value === interpolateValue || value === null) {
-            return null;
-          }
-
-          const height = invertAxis ? plotHeight - DEFAULT_GAP * 2 : plotWidth - DEFAULT_GAP * 2;
-          const width = visualWidth;
-          const y = DEFAULT_GAP;
-          const x = this.offset;
-          const r = height < 28 ? 2 : 4;
-
-          this.offset += visualWidth;
-
-          if (index < items.length - 1) {
-            this.offset += DEFAULT_GAP;
-          }
-
-          return (
+      return (
+        <>
+          <g>
             <Cigarette
-              key={item.id}
-              dataKey={item.id}
-              index={index}
+              key='empty_cigarette'
+              index={0}
               y={invertAxis ? y : x}
               x={invertAxis ? x : y}
               width={invertAxis ? width : height}
               height={invertAxis ? height : width}
               uid={uid}
-              hide={!item.checked}
+              hide={false}
               duration={duration}
-              r={index === 0 || index === dataDefinitions.length - 1 ? r : 0}
-              color={item.color}
+              r={r}
+              color='--intergalactic-chart-palette-order-null'
               patterns={patterns}
               direction={invertAxis ? 'horizontal' : 'vertical'}
-              onClick={onClick}
-              hovered={
-                highlightedLine === index ? true : highlightedLine === -1 ? undefined : false
-              }
+              hovered={false}
             />
-          );
-        })}
+          </g>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <g>
+          {items.map((item, index) => {
+            const { visualWidth, id } = item;
+            const value = data[id];
+
+            if (value === interpolateValue || value === 0) {
+              return null;
+            }
+
+            const height = invertAxis ? plotHeight - DEFAULT_GAP * 2 : plotWidth - DEFAULT_GAP * 2;
+            const width = visualWidth;
+            const y = DEFAULT_GAP;
+            const x = this.offset;
+            const r = height < 28 ? 2 : 4;
+
+            this.offset += visualWidth;
+
+            if (index < items.length - 1) {
+              this.offset += DEFAULT_GAP;
+            }
+
+            return (
+              <Cigarette
+                key={`${item.id}_${index}_${items.length}`}
+                dataKey={item.id}
+                index={index}
+                y={invertAxis ? y : x}
+                x={invertAxis ? x : y}
+                width={invertAxis ? width : height}
+                height={invertAxis ? height : width}
+                uid={uid}
+                hide={!item.checked}
+                duration={duration}
+                r={r}
+                color={item.color}
+                patterns={patterns}
+                direction={invertAxis ? 'horizontal' : 'vertical'}
+                onClick={onClick}
+                hovered={
+                  highlightedLine === index ? true : highlightedLine === -1 ? undefined : false
+                }
+              />
+            );
+          })}
+        </g>
 
         <AnimatedClipPath
           aria-hidden
@@ -302,7 +347,7 @@ class CigaretteChartComponent extends AbstractChart<
     const { dataDefinitions, pX, pY } = this.state;
     const STooltipChildrenWrapper = Root;
 
-    if (!showTooltip) {
+    if (!showTooltip || this.isNoData) {
       return null;
     }
 

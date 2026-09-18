@@ -20,7 +20,7 @@ SButton {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   font-weight: var(--intergalactic-medium, 500);
-  color: var(--intergalactic-control-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-control-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
   min-width: fit-content;
 
   &::-moz-focus-inner {
@@ -218,7 +218,7 @@ SButton[theme='tertiary-info'] {
 }
 
 SButton[theme='tertiary-muted'] {
-  color: var(--intergalactic-control-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+  color: var(--intergalactic-control-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
   background-color: var(--intergalactic-control-tertiary-neutral, transparent);
 
   &:hover {
@@ -317,7 +317,7 @@ SText {
 SText[size='m'] {
   margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
   margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
 
   &:only-child {
     margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);
@@ -336,7 +336,7 @@ SText[size='m'] {
 SText[size='l'] {
   margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
   margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
-  line-height: var(--intergalactic-lh-300, 150%);
+  line-height: var(--intergalactic-lh-300, 1.5);
 
   &:only-child {
     margin-left: var(--intergalactic-spacing-content-padding-medium, 12px);

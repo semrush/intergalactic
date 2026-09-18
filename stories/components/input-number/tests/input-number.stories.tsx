@@ -21,7 +21,7 @@ export const Basic: StoryObj<typeof baseExampleProps> = {
     },
     locale: {
       control: { type: 'select' },
-      options: ['de', 'ko'],
+      options: ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'sv', 'tr', 'vi', 'zh'],
     },
     disabledValue: {
       control: { type: 'boolean' },

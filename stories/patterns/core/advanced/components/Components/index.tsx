@@ -6,7 +6,7 @@ import React from 'react';
 
 import { PaywallMessage } from './PaywallMessage';
 import HeadingTagAccordion from '../../../../../components/accordion/docs/examples/heading_tag';
-import NonCompactAccordion from '../../../../../components/accordion/docs/examples/non_compact';
+import PrimaryAccordion from '../../../../../components/accordion/docs/examples/primary_accordion';
 import BadgeMainTypesExample from '../../../../../components/badge/docs/examples/badge_main_types';
 import BreadcrumbsUsageExample from '../../../../../components/breadcrumbs/docs/examples/usage_example';
 import ButtonAllButtons from '../../../../../components/button/advanced/examples/all-buttons';
@@ -22,7 +22,7 @@ import InlineNumberInput from '../../../../../components/inline-input/docs/examp
 import InputClear from '../../../../../components/input/docs/examples/input_with_the_clearing_ability';
 import InputNumberDemo from '../../../../../components/input-number/docs/examples/range_of_values';
 import InputTags from '../../../../../components/input-tags/docs/examples/entering_and_editing_tags';
-import LinkAllStatesExample from '../../../../../components/link/docs/examples/all_states';
+import LinkAllStatesExample from '../../../../../components/link/advanced/examples/all_states';
 import LinkColorLinksExample from '../../../../../components/link/docs/examples/color_links';
 import BasicNoticeExample from '../../../../../components/notice/docs/examples/basic_notice';
 import PillsBasicExample, {
@@ -117,7 +117,7 @@ export function Components() {
             <Card.Title tag='h3'>FAQ</Card.Title>
           </Card.Header>
           <Card.Body tag={Flex} direction='column'>
-            <NonCompactAccordion />
+            <PrimaryAccordion />
             <Text size={300} my={3} semibold>
               Accordion with heading tag
             </Text>

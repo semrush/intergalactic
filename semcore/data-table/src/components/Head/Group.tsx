@@ -32,8 +32,9 @@ export class Group extends Component<
   render() {
     const SGroupContainer = Box;
     const SGroup = Root;
-    const { styles, Children, title, columns, withConfig } = this.asProps;
+    const { styles, Children, title, columns, withConfig, sort } = this.asProps;
     const groupColumns = columns ?? [];
+    const isSorted = groupColumns.some((column) => column.name === sort?.[0]);
 
     return sstyled(styles)(
       <SGroupContainer data-group-container>
@@ -42,6 +43,7 @@ export class Group extends Component<
           style={style}
           __excludeProps={['title']}
           id={this.groupId}
+          isSorted={isSorted}
         >
           {withConfig ? <Children /> : title}
         </SGroup>

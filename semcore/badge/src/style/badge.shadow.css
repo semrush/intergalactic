@@ -37,7 +37,7 @@ SBadge[theme='default'] {
   }
 
   &[type='unavailable'] {
-    color: var(--intergalactic-badge-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    color: var(--intergalactic-badge-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
     background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.001 180));
   }
 }
@@ -69,7 +69,7 @@ SBadge[theme='light'] {
     background-color: var(--intergalactic-badge-light-soon, oklch(0.9 0.002 177));
   }
   &[type='unavailable'] {
-    color: var(--intergalactic-badge-text-secondary, oklch(0.088 0.026 147.7 / 0.583));
+    color: var(--intergalactic-badge-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
     background-color: var(--intergalactic-badge-bg-unavailable, oklch(0.97 0.001 180));
   }
 }

@@ -15,7 +15,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/base.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const textSecondary = await getCssVarColor(page, '--intergalactic-text-secondary', 'color');
     const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
+    const borderPrimary = await getCssVarBorder(page, '--intergalactic-border-primary');
     const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
     const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
@@ -25,11 +27,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     await test.step('Verify header cell styles', async () => {
       await checkStyles(header, {
         'font-size': '12px',
-        'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
-        'color': textPrimary,
+        'color': textSecondary,
         'padding': '12px',
         'background-color': thPrimaryCellBg,
-        'border-bottom': borderSecondary,
+        'border-bottom': borderPrimary,
       });
     });
 
@@ -38,8 +39,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       if (browserName !== 'firefox')
         await checkStyles(header.first(), {
           'font-size': '12px',
-          'border-bottom': borderSecondary,
-          'color': textPrimary,
+          'border-bottom': borderPrimary,
+          'color': textSecondary,
           'background-color': thPrimaryCellBg,
           'padding': '12px',
         });
@@ -137,11 +138,13 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify styles Compact', {
     tag: [TAG.PRIORITY_HIGH,
       '@data-table'],
-  }, async ({ page, browserName }) => {
+  }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/compact.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const textSecondary = await getCssVarColor(page, '--intergalactic-text-secondary', 'color');
     const thPrimaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-primary-cell');
-    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-table-td-cell');
+    const borderPrimary = await getCssVarBorder(page, '--intergalactic-border-primary');
     const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
@@ -149,11 +152,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     await checkStyles(header, {
       'font-size': '12px',
-      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
-      'color': textPrimary,
+      'color': textSecondary,
       'padding': '12px 8px',
       'background-color': thPrimaryCellBg,
-      'border-bottom': borderSecondary,
+      'border-bottom': borderPrimary,
     });
 
     await checkStyles(firstCell, {
@@ -176,33 +178,52 @@ test.describe(`${TAG.VISUAL}`, () => {
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/secondary-table.tsx', 'en');
     const textPrimary = await getCssVarColor(page, '--intergalactic-text-primary', 'color');
+    const textSecondary = await getCssVarColor(page, '--intergalactic-text-secondary', 'color');
     const thSecondaryCellBg = await getCssVarColor(page, '--intergalactic-table-th-secondary-cell');
-    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-bg-primary-neutral');
+    const cellDefaultBg = await getCssVarColor(page, '--intergalactic-table-td-cell');
     const borderSecondary = await getCssVarBorder(page, '--intergalactic-border-secondary');
-    const borderTableAccent = await getCssVarBorder(page, '--intergalactic-border-table-accent');
+    const borderTableAccent = await getCssVarBorder(page, '--intergalactic-table-border-accent');
     const cellHoverBg = await getCssVarColor(page, '--intergalactic-table-td-cell-hover');
 
     const header = page.locator('[data-ui-name="Head.Column"]');
+    /* The actively sorted column is highlighted, so it is checked apart from the rest. */
+    const sortedHeader = page.locator('[data-ui-name="Head.Column"][aria-sort]');
+    const unsortedHeader = page.locator('[data-ui-name="Head.Column"]:not([aria-sort])');
     const firstCell = page.locator('[data-ui-name="Row.Cell"]').first();
 
-    await checkStyles(header, {
+    const headerBaseStyles = {
       'font-size': '12px',
-      'line-height': browserName === 'firefox' ? '15.9667px' : '15.96px',
-      'color': textPrimary,
       'padding': '8px',
       'background-color': thSecondaryCellBg,
       'border-bottom': borderTableAccent,
+    };
+
+    await checkStyles(unsortedHeader, {
+      ...headerBaseStyles,
+      'color': textSecondary,
+      'font-weight': '400',
+    });
+
+    await checkStyles(sortedHeader, {
+      ...headerBaseStyles,
+      'color': textPrimary,
+      'font-weight': '700',
     });
 
     await header.first().hover();
-    if (browserName !== 'firefox')
-      await checkStyles(header, {
-        'font-size': '12px',
-        'color': textPrimary,
-        'padding': '8px',
-        'background-color': thSecondaryCellBg,
-        'border-bottom': borderTableAccent,
+    if (browserName !== 'firefox') {
+      await checkStyles(unsortedHeader, {
+        ...headerBaseStyles,
+        'color': textSecondary,
+        'font-weight': '400',
       });
+
+      await checkStyles(sortedHeader, {
+        ...headerBaseStyles,
+        'color': textPrimary,
+        'font-weight': '700',
+      });
+    }
 
     await checkStyles(firstCell, {
       'font-size': '14px',
@@ -299,6 +320,58 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(widths[2]).toBeLessThan(widths[0]);
       expect(widths[1]).toBeLessThan(widths[4]);
       expect(widths[2]).toBeLessThan(widths[4]);
+    });
+  });
+
+  const variantLastRowBorder = [
+    { variant: 'card', borderWidth: '0px' },
+    { variant: 'default', borderWidth: '1px' },
+  ];
+  variantLastRowBorder.forEach((item) => {
+    test(`Verify bottom border of the last row cells when variant=${item.variant}`, {
+      tag: [TAG.PRIORITY_HIGH,
+        '@data-table'],
+    }, async ({ page }) => {
+      await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: item.variant });
+
+      const rows = page.locator('[data-ui-name="Row"][role="row"]');
+      const lastRowCells = rows.last().locator('[data-ui-name="Row.Cell"]');
+
+      await test.step('Verify the row selector cell is the first cell of the last row', async () => {
+        await expect(lastRowCells.first()).toHaveAttribute('name', 'SELECT_ALL_ROWS');
+      });
+
+      await test.step('Verify every cell of the last row has the same bottom border', async () => {
+        await checkStyles(lastRowCells, { 'border-bottom-width': item.borderWidth });
+      });
+
+      await test.step('Verify cells of a middle row keep the bottom border', async () => {
+        await checkStyles(rows.nth(1).locator('[data-ui-name="Row.Cell"]'), {
+          'border-bottom-width': '1px',
+        });
+      });
+    });
+  });
+
+  test('Verify the last row cells get the bottom border back when its accordion is expanded in the card variant', {
+    tag: [TAG.PRIORITY_HIGH,
+      '@data-table',
+      '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: 'card' });
+
+    const lastRow = page.locator('[data-ui-name="Row"][role="row"]').last();
+    const lastRowCells = lastRow.locator('[data-ui-name="Row.Cell"]');
+
+    await test.step('Verify the collapsed last row has no bottom border', async () => {
+      await checkStyles(lastRowCells, { 'border-bottom-width': '0px' });
+    });
+
+    await test.step('Verify the expanded last row is separated from the accordion by a border', async () => {
+      await lastRow.getByLabel('Show details').click();
+      await locators.chart(page, 'Chart').waitFor({ state: 'visible' });
+
+      await checkStyles(lastRowCells, { 'border-bottom-width': '1px' });
     });
   });
 });

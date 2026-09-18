@@ -5,7 +5,7 @@ STooltip {
   box-sizing: border-box;
   color: var(--intergalactic-tooltip-text, oklch(0.1 0.03 137 / 0.899));
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   word-wrap: break-word;
   max-width: 228px;
   font-weight: normal;

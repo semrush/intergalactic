@@ -64,7 +64,13 @@ export class Column<
   };
 
   componentDidMount() {
-    const { parent, sticky, changeSortSize, name, sort, scrollDirection } = this.asProps;
+    const { parent, sticky, changeSortSize, name, sort, scrollDirection, headerNodesMap } = this.asProps;
+    const columnElement = this.columnRef.current;
+    const columnName = columnElement?.getAttribute('name');
+
+    if (columnElement && columnName) {
+      headerNodesMap.set(columnName, this.columnRef);
+    }
 
     if (parent && sticky && scrollDirection !== 'horizontal') {
       const columnElement = this.columnRef.current;
@@ -88,6 +94,15 @@ export class Column<
       prevProps.sort?.[0] !== this.asProps.sort?.[0]
     ) {
       this.changeTemplateColumnBySort();
+    }
+  }
+
+  componentWillUnmount(): void {
+    const columnElement = this.columnRef.current;
+    const columnName = columnElement?.getAttribute('name');
+
+    if (columnName) {
+      this.asProps.headerNodesMap.delete(columnName);
     }
   }
 
@@ -295,8 +310,9 @@ export class Column<
     const isSorted = sortBy === name && !!sortDirection;
 
     const SSortIcon = isSorted ? SORTING_ICON[sortDirection] : SORTING_ICON[this.defaultDirection];
+    const SSortIndicator = SSortIcon;
 
-    const visibleSort = Boolean(sortable) && (this.state.sortVisible || isSorted);
+    const visibleSort = isSorted || (Boolean(sortable) && this.state.sortVisible);
 
     const ariaDescribedBy = [];
     if (sortable) {
@@ -328,18 +344,26 @@ export class Column<
       >
         <Children />
 
-        {sortable && (
-          <SSortWrapper ref={this.sortWrapperRef}>
-            <SSortButton
-              aria-label={ariaSortValue}
-              size={100}
-              color='--intergalactic-icon-primary-neutral'
-              onClick={this.handleSortClick}
-            >
-              <SSortButton.Addon tag={SSortIcon} />
-            </SSortButton>
-          </SSortWrapper>
-        )}
+        {sortable
+          ? (
+              <SSortWrapper ref={this.sortWrapperRef}>
+                <SSortButton
+                  aria-label={ariaSortValue}
+                  size={100}
+                  use='primary'
+                  onClick={this.handleSortClick}
+                >
+                  <SSortButton.Addon tag={SSortIcon} />
+                </SSortButton>
+              </SSortWrapper>
+            )
+          : (
+              isSorted && (
+                <SSortWrapper ref={this.sortWrapperRef}>
+                  <SSortIndicator />
+                </SSortWrapper>
+              )
+            )}
       </SColumn>,
     );
   }

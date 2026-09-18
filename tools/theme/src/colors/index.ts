@@ -210,10 +210,10 @@ export const L_BG_BUTTON_SECONDARY_ACTIVE = 0.9;
 /** Text primary      | ⚠️ APCA 90+ on secondary bg */
 export const L_TEXT_PRIMARY = 0.23;
 /** Text secondary    | ⚠️ APCA 60+ on secondary bg ?? */
-export const L_TEXT_SECONDARY = 0.53;
-export const L_TEXT_SECONDARY_HOVER = 0.51;
+export const L_TEXT_SECONDARY = 0.63;
+export const L_TEXT_SECONDARY_HOVER = 0.61;
 /** Text placeholder  | ⚠️ APCA 30+ on secondary bg */
-export const L_TEXT_PLACEHOLDER = 0.64;
+export const L_TEXT_PLACEHOLDER = 0.74;
 
 /** Text accent colors */
 export const L_TEXT_ACCENT = 0.6;

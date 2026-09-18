@@ -3,10 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicUsageTest } from './__tests__/basic-usage.test';
 import BasicExample, { defaultProps as BasicExampleProps } from './examples/basic_usage';
-import CustomStylesExample from './examples/custom_styles';
 import HeadingTagExample from './examples/heading_tag';
-import NonCompactExample from './examples/non_compact';
 import OneSectionOpeningExample from './examples/one_section_opening';
+import PrimaryAccordionExample from './examples/primary_accordion';
 import SeoExample from './examples/seo';
 import { playWrapper } from '../../../utils/playWrapper';
 
@@ -46,16 +45,13 @@ export const Basic: StoryObj<typeof BasicExampleProps> = {
   play: playWrapper(BasicUsageTest),
 };
 
-export const CustomStyles: Story = {
-  render: CustomStylesExample,
-};
-
 export const HeadingTag: Story = {
   render: HeadingTagExample,
 };
 
-export const NonCompact: Story = {
-  render: NonCompactExample,
+export const PrimaryAccordion: Story = {
+  name: 'Primary accordion',
+  render: PrimaryAccordionExample,
 };
 
 export const OneSectionOpening: Story = {

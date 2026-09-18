@@ -20,16 +20,17 @@ In our design system, we use the [Inter](https://fonts.google.com/specimen/Inter
 
 Table: Font size and line height
 
-| px   | em      | Font size tokens | Line height tokens |
-| ---- | ------- | ---------------- | ------------------ |
-| 12px | 0.75em  | `--fs-100`       | `--lh-100`         |
-| 14px | 0.875em | `--fs-200`       | `--lh-200`         |
-| 16px | 1em     | `--fs-300`       | `--lh-300`         |
-| 20px | 1.25em  | `--fs-400`       | `--lh-400`         |
-| 24px | 1.5em   | `--fs-500`       | `--lh-500`         |
-| 32px | 2em     | `--fs-600`       | `--lh-600`         |
-| 36px | 2.25em  | `--fs-700`       | `--lh-700`         |
-| 48px | 3em     | `--fs-800`       | `--lh-800`         |
+| px   | Font size tokens | Line height tokens |
+| ---- | ---------------- | ------------------ |
+| 12px | `--fs-100`       | `--lh-100`         |
+| 14px | `--fs-200`       | `--lh-200`         |
+| 16px | `--fs-300`       | `--lh-300`         |
+| 18px | `--fs-350`       | `--lh-350`         |
+| 20px | `--fs-400`       | `--lh-400`         |
+| 24px | `--fs-500`       | `--lh-500`         |
+| 32px | `--fs-600`       | `--lh-600`         |
+| 36px | `--fs-700`       | `--lh-700`         |
+| 48px | `--fs-800`       | `--lh-800`         |
 
 ::: sandbox
 

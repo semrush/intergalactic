@@ -103,10 +103,6 @@ export const theme: Theme = {
       },
     },
     fontSizes: {
-      50: {
-        value: '10px',
-        description: 'Use only for text in Badge component.',
-      }, /* TODO: remove */
       100: {
         value: '12px',
         description: 'Use this font-size with caution for text in some additional messages. Always check its contrast and readability.',
@@ -138,39 +134,39 @@ export const theme: Theme = {
     },
     lineHeights: {
       100: {
-        value: '133%',
+        value: '1.3334',
         description: 'Use with font-size-100.',
       },
       200: {
-        value: '142%',
+        value: '1.4286',
         description: 'Use with font-size-200.',
       },
       300: {
-        value: '150%',
+        value: '1.5',
         description: 'Use with font-size-300.',
       },
       350: {
-        value: '150%',
+        value: '1.3334',
         description: 'Use with font-size-350.',
       },
       400: {
-        value: '120%',
+        value: '1.2',
         description: 'Use with font-size-400.',
       },
       500: {
-        value: '117%',
+        value: '1.1667',
         description: 'Use with font-size-500.',
       },
       600: {
-        value: '125%',
+        value: '1.25',
         description: 'Use with font-size-600.',
       },
       700: {
-        value: '110%',
+        value: '1.1112',
         description: 'Use with font-size-700.',
       },
       800: {
-        value: '117%',
+        value: '1.16667',
         description: 'Use with font-size-800.',
       },
     },
@@ -819,6 +815,18 @@ export const theme: Theme = {
       chart_x_axis_accent_period_active: {
         value: neutral.opaqueAt(L_BG_LIGHT),
         description: 'Background color for the clickable date on the X-axis of the chart grid.',
+      },
+      control_carousel_indicator_DEFAULT: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Background color of the Carousel indicator.',
+      },
+      control_carousel_indicator_invert_DEFAULT: {
+        value: '{semanticTokens.colors.control_primary_invert_DEFAULT}',
+        description: 'Background color of the inverted Carousel indicator.',
+      },
+      control_carousel_indicator_active: {
+        value: '{semanticTokens.colors.control_primary_info_DEFAULT}',
+        description: 'Background color of the active Carousel indicator.',
       },
       control_checkbox_bg_normal: {
         value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
@@ -1555,7 +1563,11 @@ export const theme: Theme = {
       },
       table_border_accent: {
         value: neutral.opaqueAt(L_BORDER_PRIMARY),
-        description: 'Accent borders in the Table: for the accordion in the table and for the header of the secondary table.',
+        description: 'Accent borders in the table, e.g. for the accordion.',
+      },
+      table_border_accordion_accent: {
+        value: '{semanticTokens.colors.dropdown_menu_item_selected_box_shadow}',
+        description: 'Accent left border for the table.',
       },
       table_td_cell_DEFAULT: {
         value: neutral.at(L_BG_PRIMARY),
@@ -1626,19 +1638,19 @@ export const theme: Theme = {
         description: 'Background of the hovered cell with warning information in the Table.',
       },
       table_th_gradient: {
-        value: `linear-gradient(to right, transparent 0%, ${colors.gray['100'].value} 100%)`,
+        value: 'linear-gradient(to right, transparent 0%, {baseTokens.colors.gray.white} 100%)',
         description: 'Background gradient for sorting icon that absolute positioned in the table head.',
       },
       table_th_primary_cell_DEFAULT: {
-        value: neutral.at(L_BG_SECONDARY),
+        value: neutral.at(L_BG_PRIMARY),
         description: 'Background of the header cell in the primary Table.',
       },
       table_th_primary_cell_active: {
-        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        value: neutral.at(L_BG_PRIMARY),
         description: 'Background of the active header cell in the primary Table.',
       },
       table_th_primary_cell_hover: {
-        value: neutral.at(L_BG_SECONDARY_ACTIVE),
+        value: neutral.at(L_BG_PRIMARY),
         description: 'Background of the hovered header cell in the primary Table.',
       },
       table_th_secondary_cell: {
@@ -1910,7 +1922,7 @@ export const theme: Theme = {
         description: 'Hover and active states for the accent link.',
       },
       text_link_visited: {
-        value: violet.at(L_TEXT_PRIMARY),
+        value: violet.at(L_TEXT_SECONDARY),
         description: 'Visited link state so users can tell visited destinations apart from default links.',
       },
       text_placeholder: {
@@ -2159,6 +2171,18 @@ export const theme: Theme = {
         value: `${RADII.small}px`,
         description: 'Corner radius for Badge and compact status chips—aligned with small rounded controls.',
       },
+      'carousel-indicator': {
+        value: `${RADII.medium + 2}px`,
+        description: 'Use for rounding Carousel indicators.',
+      },
+      'carousel-item': {
+        value: `${RADII.large + 2}px`,
+        description: 'Use for rounding Carousel.',
+      },
+      'carousel-item-preview': {
+        value: `${RADII.large + 2}px`,
+        description: 'Use for rounding Carousel preview items.',
+      },
       'chart': {
         value: `${RADII['extra-small']}px`,
         description: 'Use for rounding big and small charts like bar, histogram and others.',
@@ -2315,6 +2339,12 @@ export const theme: Theme = {
     },
   },
   deprecates: {
+    fs: {
+      50: {
+        value: '10px',
+        description: 'Use only for text in Badge component.',
+      },
+    },
     violet: {
       400: colors.violet['400'],
       500: colors.violet['500'],
@@ -2383,7 +2413,7 @@ export const theme: Theme = {
   },
 };
 
-type FontSize = '50' | '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
+type FontSize = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
 type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
@@ -2464,6 +2494,9 @@ export type SemanticTokens = {
   radii: {
     'addon': Value;
     'badge': Value;
+    'carousel-indicator': Value;
+    'carousel-item': Value;
+    'carousel-item-preview': Value;
     'chart': Value;
     'checkbox': Value;
     'counter': Value;
@@ -2712,6 +2745,15 @@ type SemanticColors = {
         hover: {
           active: Value;
         };
+      };
+    };
+    carousel: {
+      indicator: {
+        DEFAULT: Value;
+        active: Value;
+      };
+      indicator_invert: {
+        DEFAULT: Value;
       };
     };
     checkbox: {
@@ -3039,6 +3081,9 @@ type SemanticColors = {
   table: {
     border: {
       accent: Value;
+      accordion: {
+        accent: Value;
+      };
     };
     th: {
       primary: {
@@ -3517,6 +3562,7 @@ export type FeatureHighlight = {
 };
 
 type Deprecates = {
+  fs: { 50: Value };
   violet: { 400: Value; 500: Value };
   blue: { 400: Value; 500: Value };
   table: { td: { cell: { actions: { accordion: Value } } } };

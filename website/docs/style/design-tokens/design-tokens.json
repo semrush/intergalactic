@@ -146,7 +146,7 @@
   },
   {
     "name": "--intergalactic-badge-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for Badge.",
     "components": [
       "badge"
@@ -231,7 +231,6 @@
       "color-picker",
       "counter",
       "d3-chart",
-      "data-table",
       "drag-and-drop",
       "dropdown",
       "feature-highlight",
@@ -492,6 +491,7 @@
       "color-picker",
       "counter",
       "d3-chart",
+      "data-table",
       "date-picker",
       "divider",
       "dropdown",
@@ -508,7 +508,9 @@
     "name": "--intergalactic-border-accent",
     "value": "oklch(0.23 0.01 140)",
     "description": "Accent border for the active and selected states..",
-    "components": []
+    "components": [
+      "accordion"
+    ]
   },
   {
     "name": "--intergalactic-border-primary-invert",
@@ -716,7 +718,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
@@ -920,6 +922,30 @@
     "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background color for the clickable date on the X-axis of the chart grid.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-control-carousel-indicator",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Background color of the Carousel indicator.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-carousel-indicator-invert",
+    "value": "oklch(1 0 0)",
+    "description": "Background color of the inverted Carousel indicator.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-carousel-indicator-active",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Background color of the active Carousel indicator.",
+    "components": [
+      "carousel"
+    ]
   },
   {
     "name": "--intergalactic-control-checkbox-bg-normal",
@@ -1436,7 +1462,7 @@
   },
   {
     "name": "--intergalactic-control-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text color for form controls.",
     "components": [
       "button"
@@ -1450,7 +1476,7 @@
   },
   {
     "name": "--intergalactic-control-text-tertiary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Tertiary text color for form controls.",
     "components": []
   },
@@ -1721,9 +1747,7 @@
     "name": "--intergalactic-icon-primary-invert",
     "value": "oklch(0.998 0.003 173.3 / 0.808)",
     "description": "Inverted version of the primary icon.",
-    "components": [
-      "carousel"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
@@ -1736,7 +1760,6 @@
     "value": "oklch(0.092 0.024 152.2 / 0.526)",
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
-      "accordion",
       "carousel",
       "feature-highlight",
       "notice",
@@ -1814,7 +1837,6 @@
     "description": "De-emphasized icons for dense layouts (tables, tertiary actions).",
     "components": [
       "breadcrumbs",
-      "carousel",
       "drag-and-drop",
       "inline-input",
       "input",
@@ -1828,7 +1850,6 @@
     "value": "oklch(0.1 0.023 159.1 / 0.433)",
     "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
     "components": [
-      "data-table",
       "inline-input",
       "input",
       "input-number"
@@ -2266,7 +2287,7 @@
   },
   {
     "name": "--intergalactic-sidebar-nav-control-text-normal",
-    "value": "oklch(0.53 0.004 149.6)",
+    "value": "oklch(0.63 0.003 157)",
     "description": "Sidebar navigation label color.",
     "components": []
   },
@@ -2329,14 +2350,26 @@
   {
     "name": "--intergalactic-table-border-accent",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
-    "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table.",
-    "components": []
+    "description": "Accent borders in the table, e.g. for the accordion.",
+    "components": [
+      "data-table"
+    ]
+  },
+  {
+    "name": "--intergalactic-table-border-accordion-accent",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Accent left border for the table.",
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell",
     "value": "oklch(1 0 0)",
     "description": "Background of the default cell in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-accordion",
@@ -2468,13 +2501,13 @@
   },
   {
     "name": "--intergalactic-table-th-gradient",
-    "value": "linear-gradient(to right, transparent 0%, oklch(0.9 0.002 177) 100%)",
+    "value": "linear-gradient(to right, transparent 0%, #ffffff 100%)",
     "description": "Background gradient for sorting icon that absolute positioned in the table head.",
     "components": []
   },
   {
     "name": "--intergalactic-table-th-primary-cell",
-    "value": "oklch(0.98 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the header cell in the primary Table.",
     "components": [
       "data-table"
@@ -2482,17 +2515,17 @@
   },
   {
     "name": "--intergalactic-table-th-primary-cell-active",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the active header cell in the primary Table.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-table-th-primary-cell-hover",
-    "value": "oklch(0.96 0.001 180)",
-    "description": "Background of the hovered header cell in the primary Table.",
     "components": [
       "data-table"
     ]
+  },
+  {
+    "name": "--intergalactic-table-th-primary-cell-hover",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the hovered header cell in the primary Table.",
+    "components": []
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
@@ -2810,28 +2843,29 @@
   },
   {
     "name": "--intergalactic-text-critical",
-    "value": "oklch(0.53 0.206 27.3)",
+    "value": "oklch(0.63 0.224 24.8)",
     "description": "Text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-critical-hover-active",
-    "value": "oklch(0.51 0.202 27.8)",
+    "value": "oklch(0.61 0.221 25.3)",
     "description": "Hover and active states for the text associated with critical states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-hint",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart"
+      "d3-chart",
+      "typography"
     ]
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
-    "value": "oklch(0.086 0.026 145.8 / 0.605)",
+    "value": "oklch(0.095 0.024 154.8 / 0.492)",
     "description": "Hover and active states of the hint link text.",
     "components": [
       "typography"
@@ -2877,7 +2911,7 @@
   },
   {
     "name": "--intergalactic-text-large-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Secondary text. Use with font-size ≥20px.",
     "components": [
       "typography"
@@ -2901,7 +2935,8 @@
     "description": "Default primary link color.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2910,7 +2945,8 @@
     "description": "Hover and active states for the primary link.",
     "components": [
       "button",
-      "link"
+      "link",
+      "typography"
     ]
   },
   {
@@ -2939,7 +2975,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Default secondary link color.",
     "components": [
       "link"
@@ -2947,7 +2983,7 @@
   },
   {
     "name": "--intergalactic-text-link-secondary-hover-active",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Hover and active states for the secondary link.",
     "components": [
       "link"
@@ -2972,7 +3008,7 @@
   },
   {
     "name": "--intergalactic-text-link-visited",
-    "value": "oklch(0.23 0.113 296)",
+    "value": "oklch(0.63 0.228 298.9)",
     "description": "Visited link state so users can tell visited destinations apart from default links.",
     "components": [
       "link"
@@ -2980,7 +3016,7 @@
   },
   {
     "name": "--intergalactic-text-placeholder",
-    "value": "oklch(0.098 0.023 157.4 / 0.457)",
+    "value": "oklch(0.109 0.023 165.5 / 0.337)",
     "description": "Placeholder text color for inputs and fields.",
     "components": [
       "base-trigger",
@@ -3041,7 +3077,7 @@
   },
   {
     "name": "--intergalactic-text-secondary",
-    "value": "oklch(0.088 0.026 147.7 / 0.583)",
+    "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Supporting text: captions, metadata, hints in flowing copy—visually quieter than primary body text.",
     "components": [
       "breadcrumbs",
@@ -3049,6 +3085,7 @@
       "card",
       "counter",
       "d3-chart",
+      "data-table",
       "date-picker",
       "dropdown",
       "dropdown-menu",
@@ -3070,13 +3107,13 @@
   },
   {
     "name": "--intergalactic-text-success",
-    "value": "oklch(0.53 0.142 170)",
+    "value": "oklch(0.63 0.16 170)",
     "description": "Text associated with success states and data.",
     "components": []
   },
   {
     "name": "--intergalactic-text-success-hover-active",
-    "value": "oklch(0.51 0.137 170)",
+    "value": "oklch(0.61 0.156 170)",
     "description": "Hover and active states for the text associated with success states and data.",
     "components": []
   },
@@ -3318,7 +3355,6 @@
       "color-picker",
       "input",
       "input-tags",
-      "notice",
       "pills",
       "tab-line",
       "tab-panel",
@@ -3347,10 +3383,13 @@
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "counter",
+      "data-table",
       "input-tags",
       "notice-bubble",
-      "pills"
+      "pills",
+      "typography"
     ]
   },
   {
@@ -3361,10 +3400,13 @@
       "base-components",
       "bulk-textarea",
       "counter",
+      "data-table",
       "dropdown",
       "dropdown-menu",
       "input-tags",
+      "notice",
       "pills",
+      "side-panel",
       "wizard"
     ]
   },
@@ -3374,6 +3416,7 @@
     "description": "Extended extra small padding for content inside controls and surfaces.",
     "components": [
       "counter",
+      "notice",
       "pills"
     ]
   },
@@ -3382,12 +3425,17 @@
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "base-components",
       "bulk-textarea",
+      "data-table",
       "dropdown",
       "fullscreen-modal",
       "modal",
+      "notice",
       "pills",
+      "side-panel",
+      "typography",
       "wizard"
     ]
   },
@@ -3396,21 +3444,25 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
       "card",
+      "data-table",
       "dropdown",
       "fullscreen-modal",
       "input",
       "input-tags",
       "modal",
+      "notice",
       "pills",
       "tab-panel",
       "textarea",
       "time-picker",
       "tooltip",
+      "typography",
       "wizard"
     ]
   },
@@ -3419,11 +3471,16 @@
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "color-picker",
+      "data-table",
       "feature-popover",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
+      "side-panel",
+      "typography",
       "wizard"
     ]
   },
@@ -3432,8 +3489,11 @@
     "value": "20px",
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "card",
+      "data-table",
+      "notice",
       "wizard"
     ]
   },
@@ -3442,7 +3502,9 @@
     "value": "24px",
     "description": "Extended extra large padding for content inside controls and surfaces.",
     "components": [
-      "fullscreen-modal"
+      "fullscreen-modal",
+      "side-panel",
+      "typography"
     ]
   },
   {
@@ -3462,7 +3524,10 @@
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
-      "color-picker"
+      "accordion",
+      "color-picker",
+      "data-table",
+      "typography"
     ]
   },
   {
@@ -3470,14 +3535,18 @@
     "value": "4px",
     "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "base-trigger",
       "bulk-textarea",
+      "carousel",
+      "data-table",
       "date-picker",
       "dropdown-menu",
       "inline-input",
       "link",
       "pagination",
       "tag",
+      "typography",
       "wizard"
     ]
   },
@@ -3505,17 +3574,22 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "breadcrumbs",
       "button",
+      "carousel",
       "checkbox",
+      "data-table",
       "date-picker",
       "dropdown",
       "fullscreen-modal",
+      "notice",
       "notice-bubble",
       "pagination",
       "radio",
       "select",
-      "tag"
+      "tag",
+      "typography"
     ]
   },
   {
@@ -3523,10 +3597,14 @@
     "value": "12px",
     "description": "Extra large gap between elements, rows, or columns.",
     "components": [
+      "carousel",
       "color-picker",
+      "data-table",
       "fullscreen-modal",
       "notice-bubble",
-      "pagination"
+      "pagination",
+      "side-panel",
+      "typography"
     ]
   },
   {
@@ -3534,8 +3612,10 @@
     "value": "16px",
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
+      "carousel",
       "pagination",
-      "tab-line"
+      "tab-line",
+      "typography"
     ]
   },
   {
@@ -3545,6 +3625,7 @@
     "components": [
       "pagination",
       "tab-line",
+      "typography",
       "wizard"
     ]
   },
@@ -3552,7 +3633,9 @@
     "name": "--intergalactic-spacing-content-gap-xxxlarge",
     "value": "24px",
     "description": "3x large gap between elements, rows, or columns.",
-    "components": []
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-spacing-layout-padding-desktop",
@@ -3584,6 +3667,30 @@
     "components": [
       "badge",
       "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-carousel-indicator-rounded",
+    "value": "8px",
+    "description": "Use for rounding Carousel indicators.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-carousel-item-rounded",
+    "value": "14px",
+    "description": "Use for rounding Carousel.",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
+    "name": "--intergalactic-carousel-item-preview-rounded",
+    "value": "14px",
+    "description": "Use for rounding Carousel preview items.",
+    "components": [
+      "carousel"
     ]
   },
   {
@@ -3677,8 +3784,8 @@
     "value": "8px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
     "components": [
+      "accordion",
       "card",
-      "carousel",
       "d3-chart",
       "feedback-form",
       "notice"
@@ -3719,6 +3826,7 @@
     "value": "200",
     "description": "Use for small controls like Checkbox or Radio.",
     "components": [
+      "carousel",
       "checkbox",
       "dropdown",
       "feature-highlight",
@@ -3739,7 +3847,6 @@
     "value": "200",
     "description": "Use for Accordion.",
     "components": [
-      "accordion",
       "data-table"
     ]
   },
