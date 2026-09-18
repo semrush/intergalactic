@@ -1,3 +1,4 @@
+import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import Icon from '@semcore/icon/Video/m';
 import { runDependencyCheckTests } from '@semcore/testing-utils/shared-tests';
 import { render, fireEvent, cleanup, queryAllByAttribute, queryByAttribute, userEvent } from '@semcore/testing-utils/testing-library';
@@ -12,10 +13,12 @@ import {
   makeDataHintsContainer,
   Chart,
   ChartLegend,
+  HoverLine,
   // @ts-ignore
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
 import { getIndexFromData } from '../src/utils';
+import { TextMeasurer } from '../src/utils/TextMeasurer';
 
 const width = 500;
 const height = 500;
@@ -137,8 +140,9 @@ describe('YAxis', () => {
   test(
     'Should support call children function for Ticks how many ticks are passed',
     () => {
-      /* It's called 4 times since after the initial render, re-render is triggered to have an access to rootRef to calculate multiline lines */
-      expect.assertions(4);
+      /* Called once per tick. Measuring multiline ticks no longer needs a rootRef,
+         so the extra re-render after the initial render is gone. */
+      expect.assertions(2);
 
       render(
         <Plot data={ChartOptions.line.data} scale={[xScale, yScale]} width={100} height={100}>
@@ -811,5 +815,621 @@ describe('ChartLegend', () => {
     expect(counter).not.toBeNull();
     await user.click(counter!);
     expect(onChangeHandler).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('TextMeasurer', () => {
+  test('should measure text and reuse the cached result for the same text and font size', () => {
+    const measurer = new TextMeasurer();
+    const appendSpy = vi.spyOn(document.body, 'appendChild');
+
+    const first = measurer.measure('Capybara');
+    const second = measurer.measure('Capybara');
+
+    expect(second).toBe(first);
+    expect(appendSpy).toHaveBeenCalledTimes(1);
+
+    measurer.measure('Capybara', 16);
+    expect(appendSpy).toHaveBeenCalledTimes(2);
+
+    measurer.measure('Another label');
+    expect(appendSpy).toHaveBeenCalledTimes(3);
+
+    appendSpy.mockRestore();
+  });
+
+  test('should not leave the temporary svg node in the document', () => {
+    const measurer = new TextMeasurer();
+    const before = document.body.childElementCount;
+
+    measurer.measure('Some tick label');
+
+    expect(document.body.childElementCount).toBe(before);
+  });
+});
+
+/**
+ * `showDeltaPercentInTooltip` renders a third tooltip column with the percentage
+ * change relative to the previous data point.
+ *
+ * The data below is shaped so that every branch of `getPercentDelta` is reachable
+ * by hovering a specific bar (the chart is 500px wide and has 5 categories, so
+ * each band is ~100px):
+ *
+ *   x=60  -> Point 0: no previous point, both deltas are `null`
+ *   x=150 -> Point 1: `first` grows (+50%), `second` declines (-50%)
+ *   x=250 -> Point 2: both values unchanged -> delta `0`
+ *   x=350 -> Point 3: `first` drops to 0 (-100%), `second` grows (+20%)
+ *   x=440 -> Point 4: previous `first` is 0 -> `null`, `second` unchanged -> `0`
+ */
+describe('Chart tooltip percent delta', () => {
+  const deltaData = [
+    { category: 'Point 0', first: 100, second: 50 },
+    { category: 'Point 1', first: 150, second: 25 },
+    { category: 'Point 2', first: 150, second: 25 },
+    { category: 'Point 3', first: 0, second: 30 },
+    { category: 'Point 4', first: 75, second: 30 },
+  ];
+
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  const hoverBarChart = (clientX: number, props: Record<string, unknown> = {}) => {
+    const { container } = render(
+      <Chart.Bar
+        data={deltaData}
+        groupKey='category'
+        plotWidth={width}
+        plotHeight={300}
+        showDeltaPercentInTooltip
+        showTooltip
+        showTotalInTooltip={false}
+        duration={0}
+        aria-label='Bar chart'
+        {...props}
+      />,
+    );
+
+    const plot = container.querySelector('svg[data-ui-name="Plot"]');
+    expect(plot).not.toBeNull();
+
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(plot!, { clientX, clientY: 150 });
+
+    const tooltip = document.querySelector('[data-ui-name="HoverRect.Tooltip"]');
+    expect(tooltip).not.toBeNull();
+
+    return tooltip!;
+  };
+
+  const getTitle = (tooltip: Element) =>
+    tooltip.querySelector('[data-ui-name="HoverRect.Tooltip.Title"]')?.textContent;
+
+  const getChildrenWrapper = (tooltip: Element) =>
+    tooltip.querySelector('[class*="STooltipChildrenWrapper"]')!;
+
+  const getColumnsCount = (tooltip: Element) =>
+    Array.from(getChildrenWrapper(tooltip).classList)
+      .find((className) => className.includes('columnsCount'))
+      ?.match(/columnsCount_(\d)/)?.[1];
+
+  const getDeltas = (tooltip: Element) =>
+    Array.from(tooltip.querySelectorAll('[class*="STooltipDeltaWrapper"]')).map((node) => ({
+      trend: Array.from(node.classList)
+        .find((className) => className.includes('_trend_'))
+        ?.match(/_trend_(\w+?)_/)?.[1],
+      text: node.textContent,
+      icon: node.querySelector('svg')?.getAttribute('data-ui-name') ?? null,
+    }));
+
+  test('should not render delta cells for the first data point and fall back to two columns', () => {
+    const tooltip = hoverBarChart(60);
+
+    expect(getTitle(tooltip)).toBe('Point 0');
+    expect(getColumnsCount(tooltip)).toBe('2');
+    expect(getDeltas(tooltip)).toHaveLength(0);
+  });
+
+  test('should render upward and downward deltas with the matching icon and sign', () => {
+    const tooltip = hoverBarChart(150);
+
+    expect(getTitle(tooltip)).toBe('Point 1');
+    expect(getColumnsCount(tooltip)).toBe('3');
+    expect(getDeltas(tooltip)).toEqual([
+      { trend: 'upward', text: '50%', icon: 'DiffUp' },
+      { trend: 'downward', text: '-50%', icon: 'DiffDown' },
+    ]);
+  });
+
+  test('should render a -100% delta when the value drops to zero', () => {
+    const tooltip = hoverBarChart(350);
+
+    expect(getTitle(tooltip)).toBe('Point 3');
+    expect(getDeltas(tooltip)).toEqual([
+      { trend: 'downward', text: '-100%', icon: 'DiffDown' },
+      { trend: 'upward', text: '20%', icon: 'DiffUp' },
+    ]);
+  });
+
+  test('should mark an unchanged value as stable and render it without an icon', () => {
+    const tooltip = hoverBarChart(250);
+    const deltas = getDeltas(tooltip);
+
+    expect(getTitle(tooltip)).toBe('Point 2');
+    expect(deltas).toHaveLength(2);
+    deltas.forEach((delta) => {
+      expect(delta.trend).toBe('stable');
+      expect(delta.icon).toBeNull();
+    });
+  });
+
+  test('should not render delta cells at all when showDeltaPercentInTooltip is off', () => {
+    const tooltip = hoverBarChart(150, { showDeltaPercentInTooltip: false });
+
+    expect(getColumnsCount(tooltip)).toBe('2');
+    expect(getDeltas(tooltip)).toHaveLength(0);
+  });
+
+  /**
+   * A stable delta keeps the percent sign: `renderTooltipPercentDelta` gates the label
+   * on the trend rather than on the value, so a delta of `0` cannot short-circuit into
+   * a bare number.
+   */
+  test('should render a stable delta as "0%"', () => {
+    const tooltip = hoverBarChart(250);
+
+    expect(getDeltas(tooltip).map((delta) => delta.text)).toEqual(['0%', '0%']);
+  });
+
+  /**
+   * A single resolvable delta switches the grid to three columns, and a series whose
+   * delta is `null` still has to fill its third cell — `renderTooltipPercentDelta`
+   * emits an empty wrapper for the `unknown` trend. At Point 4 the previous `first`
+   * value is 0 -> delta `null`, while `second` is unchanged -> delta `0`, which is the
+   * mixed row that would otherwise leave a hole and shift the grid.
+   */
+  test('should keep every row aligned when only some series have a delta', () => {
+    const tooltip = hoverBarChart(440);
+
+    expect(getTitle(tooltip)).toBe('Point 4');
+    expect(getColumnsCount(tooltip)).toBe('3');
+    // 2 series x 3 columns
+    expect(getChildrenWrapper(tooltip).children).toHaveLength(6);
+  });
+});
+
+/**
+ * Without a custom `tooltipValueFormatter` the chart falls back to
+ * `AbstractChart.defaultTooltipFormatter`.
+ */
+describe('Chart tooltip default formatting', () => {
+  const formatData = [
+    { time: new Date('2024-01-01T00:00:00Z'), integer: 10, fractional: 1234.5678 },
+    { time: new Date('2024-03-15T00:00:00Z'), integer: 20, fractional: 0.049 },
+    { time: new Date('2024-07-04T00:00:00Z'), integer: 30, fractional: 99.95 },
+  ];
+
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  const hoverLineChart = (props: Record<string, unknown> = {}) => {
+    const { container } = render(
+      <Chart.Line
+        data={formatData}
+        groupKey='time'
+        plotWidth={width}
+        plotHeight={300}
+        showTooltip
+        showTotalInTooltip={false}
+        duration={0}
+        aria-label='Line chart'
+        {...props}
+      />,
+    );
+
+    const plot = container.querySelector('svg[data-ui-name="Plot"]');
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(plot!, { clientX: 250, clientY: 150 });
+
+    const tooltip = document.querySelector('[data-ui-name="HoverLine.Tooltip"]');
+    expect(tooltip).not.toBeNull();
+
+    return tooltip!;
+  };
+
+  const getTitle = (tooltip: Element) =>
+    tooltip.querySelector('[data-ui-name="HoverLine.Tooltip.Title"]')?.textContent;
+
+  const getValues = (tooltip: Element) =>
+    Array.from(tooltip.querySelectorAll('[data-ui-name="Text"]')).map((node) => node.textContent);
+
+  /**
+   * The default date format spells out both the weekday and the month, and carries no
+   * time, in whatever locale is asked for.
+   */
+  test.each([
+    ['en', 'Friday, March 15, 2024'],
+    ['de', 'Freitag, 15. März 2024'],
+    ['ja', '2024年3月15日金曜日'],
+  ])('should format a Date group key through Intl for locale %s', (locale, expected) => {
+    expect(getTitle(hoverLineChart({ locale }))).toBe(expected);
+  });
+
+  test('should print the month name in full rather than a numeric date', () => {
+    const title = getTitle(hoverLineChart());
+
+    expect(title).toContain('March');
+    // A numeric date such as 3/15/2024 would mean the long format was dropped.
+    expect(title).not.toMatch(/\d+\/\d+\/\d+/);
+  });
+
+  test('should drop the time from the date', () => {
+    expect(getTitle(hoverLineChart())).not.toMatch(/\d{1,2}:\d{2}/);
+  });
+
+  test('should print the full weekday name in the date', () => {
+    const expected = new Intl.DateTimeFormat('en', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }).format(new Date('2024-03-15T00:00:00Z'));
+
+    expect(expected).toBe('Friday, March 15, 2024');
+    expect(getTitle(hoverLineChart())).toBe(expected);
+  });
+
+  /**
+   * The weekday is abbreviated in neither the name nor the punctuation: "Fri" or "Fri."
+   * would mean `weekday: 'short'` slipped into the options.
+   */
+  test('should spell the weekday out rather than abbreviate it', () => {
+    const title = getTitle(hoverLineChart());
+
+    expect(title).toMatch(/^Friday, /);
+    expect(title).not.toMatch(/\bFri\b\.?/);
+  });
+
+  /**
+   * `locale` is documented as defaulting to `en`, and that default has to hold
+   * independently of the locale the host machine happens to run under — passing
+   * `undefined` straight to `Intl` would silently follow the system instead.
+   */
+  test('should fall back to en rather than to the runtime locale', () => {
+    expect(getTitle(hoverLineChart())).toBe('Friday, March 15, 2024');
+  });
+
+  test('should take the locale from the i18n context when no prop is given', () => {
+    const { container } = render(
+      <I18nProvider value='de'>
+        <Chart.Line
+          data={formatData}
+          groupKey='time'
+          plotWidth={width}
+          plotHeight={300}
+          showTooltip
+          showTotalInTooltip={false}
+          duration={0}
+          aria-label='Line chart'
+        />
+      </I18nProvider>,
+    );
+
+    const plot = container.querySelector('svg[data-ui-name="Plot"]');
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(plot!, { clientX: 250, clientY: 150 });
+
+    const tooltip = document.querySelector('[data-ui-name="HoverLine.Tooltip"]');
+    expect(getTitle(tooltip!)).toBe('Freitag, 15. März 2024');
+  });
+
+  test('should render integers as is and round fractional values to one decimal', () => {
+    expect(getValues(hoverLineChart())).toEqual(['20', '0.0']);
+  });
+
+  /**
+   * The hovered point is the middle one, so only its values matter.
+   */
+  const hoverValues = (first: number, second: number) =>
+    getValues(
+      hoverLineChart({
+        data: [
+          { time: new Date('2024-01-01T00:00:00Z'), first: 0, second: 0 },
+          { time: new Date('2024-03-15T00:00:00Z'), first, second },
+          { time: new Date('2024-07-04T00:00:00Z'), first: 5, second: 5 },
+        ],
+      }),
+    );
+
+  test('should round to one decimal place rather than truncate', () => {
+    // 7.899934 only reaches 7.9 by rounding; truncating would leave 7.8.
+    expect(hoverValues(1.739139, 7.899934)).toEqual(['1.7', '7.9']);
+  });
+
+  test('should round negative values away from zero the same way', () => {
+    expect(hoverValues(-1.739139, -7.899934)).toEqual(['-1.7', '-7.9']);
+  });
+
+  /**
+   * `Intl.NumberFormat` groups thousands by default, so the rounded value keeps the
+   * locale's group separator rather than being printed as a bare number.
+   */
+  test('should round a value that carries more digits than the axis shows', () => {
+    expect(hoverValues(1234.5678, 0.96)).toEqual(['1,234.6', '1.0']);
+  });
+
+  test.each([
+    ['en', '1,234.6'],
+    ['de', '1.234,6'],
+  ])('should group the thousands the way locale %s does', (locale, expected) => {
+    const values = getValues(
+      hoverLineChart({
+        locale,
+        data: [
+          { time: new Date('2024-01-01T00:00:00Z'), first: 0 },
+          { time: new Date('2024-03-15T00:00:00Z'), first: 1234.5678 },
+          { time: new Date('2024-07-04T00:00:00Z'), first: 5 },
+        ],
+      }),
+    );
+
+    expect(values).toEqual([expected]);
+  });
+
+  test('should format a numeric group key in the title as well', () => {
+    const tooltip = hoverLineChart({
+      groupKey: 'step',
+      data: [
+        { step: 0, first: 1 },
+        { step: 2.56, first: 2 },
+        { step: 5, first: 3 },
+      ],
+    });
+
+    expect(getTitle(tooltip)).toBe('2.6');
+  });
+
+  test('should let tooltipValueFormatter override the built-in formatting', () => {
+    const tooltipValueFormatter = vi.fn(() => 'formatted');
+
+    expect(getValues(hoverLineChart({ tooltipValueFormatter }))).toEqual([
+      'formatted',
+      'formatted',
+    ]);
+    expect(tooltipValueFormatter).toHaveBeenCalled();
+  });
+
+  test('should run the total line through the value formatter', () => {
+    const tooltip = hoverLineChart({ showTotalInTooltip: true });
+
+    // 20 + 0.049 = 20.049 -> rounded to one decimal place.
+    expect(getValues(tooltip)).toContain('20.0');
+  });
+});
+
+/**
+ * The one decimal place default has to hold for every chart that renders a tooltip, not
+ * only for the ones built on `AbstractChart.getTooltipChildren`. Each chart type below
+ * owns its `renderTooltip`, so each needs its own guard against the formatter being
+ * dropped from it.
+ */
+describe('Chart tooltip numeric formatting across chart types', () => {
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  const hoverFirstShape = (chart: React.ReactElement, selector: string) => {
+    const { container } = render(chart);
+
+    const shape = container.querySelector(selector);
+    expect(shape, `nothing matched "${selector}"`).not.toBeNull();
+
+    // Keep fireEvent: these tooltips open on a raw svg mouse event, and the shapes are
+    // overlapped, so userEvent's actionability checks would reject the hover.
+    fireEvent.mouseMove(shape!);
+    fireEvent.mouseEnter(shape!);
+
+    return container;
+  };
+
+  test('should round the Donut tooltip value to one decimal place', () => {
+    hoverFirstShape(
+      <Chart.Donut
+        data={{ a: 1234.5678, b: 7.899934 }}
+        plotWidth={400}
+        plotHeight={300}
+        showTooltip
+        duration={0}
+        aria-label='Donut chart'
+      />,
+      'svg path',
+    );
+
+    const tooltip = document.querySelector('[data-ui-name="Donut.Tooltip"]');
+    expect(tooltip?.textContent).toContain('1,234.6');
+    expect(tooltip?.textContent).not.toContain('1234.5678');
+  });
+
+  test('should round the ScatterPlot tooltip values to one decimal place', () => {
+    hoverFirstShape(
+      <Chart.ScatterPlot
+        data={[{ x: 1.739139, y: 7.899934 }]}
+        groupKey='x'
+        plotWidth={400}
+        plotHeight={300}
+        showTooltip
+        duration={0}
+        aria-label='Scatter plot'
+      />,
+      'svg circle',
+    );
+
+    const text = Array.from(document.querySelectorAll('[data-ui-name="ScatterPlot.Tooltip"]'))
+      .map((node) => node.textContent)
+      .join(' ');
+
+    expect(text).toContain('1.7');
+    expect(text).toContain('7.9');
+    expect(text).not.toContain('1.739139');
+    expect(text).not.toContain('7.899934');
+  });
+});
+
+/**
+ * The tooltip dot is drawn in the series colour on an inverted (dark) tooltip.
+ * `chart-palette-order-1` is itself a dark neutral, so the only thing separating it
+ * from the tooltip background is the 1px ring drawn by
+ * `box-shadow: 0 0 0 1px oklch(from var(--color) calc(l + var(--lightness)) c h)`.
+ * That is why `chart-palette-order-1` gets a stronger lightness offset than the rest.
+ */
+describe('Tooltip.Dot ring lightness', () => {
+  const dotData = [
+    { x: 0, y: 2 },
+    { x: 1, y: 5 },
+    { x: 2, y: 3 },
+    { x: 3, y: 7 },
+  ];
+
+  let rafSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    cleanup();
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
+  });
+
+  afterEach(() => {
+    rafSpy.mockRestore();
+  });
+
+  /**
+   * The dot has to be read from inside a rendered Tooltip: `TooltipDotRenderContext`
+   * only resets its colour index when a Tooltip provides it, so a standalone
+   * `Tooltip.Dot` would inherit whatever index previous renders left behind.
+   */
+  const hoverAndReadDots = (ui: React.ReactElement) => {
+    const { container } = render(ui);
+
+    // Keep fireEvent: the hovered index is resolved from explicit SVG coordinates.
+    fireEvent.mouseMove(container.querySelector('svg[data-ui-name="Plot"]')!, {
+      clientX: 200,
+      clientY: 100,
+    });
+
+    const circles = document.querySelectorAll('[class*="SDotCircle"]');
+    expect(circles.length).toBeGreaterThan(0);
+
+    // sstyled passes `color` and `lightness` down as generated custom properties.
+    return Array.from(circles).map((circle) => {
+      const style = circle.getAttribute('style') ?? '';
+
+      return {
+        color: style.match(/--color_\w+:\s*([^;]+)/)?.[1]?.trim(),
+        lightness: style.match(/--lightness_\w+:\s*([^;]+)/)?.[1]?.trim(),
+      };
+    });
+  };
+
+  const hoverAndReadDot = (ui: React.ReactElement) => hoverAndReadDots(ui)[0];
+
+  const readHighLevelDot = () =>
+    hoverAndReadDot(
+      <Chart.Line
+        data={dotData}
+        groupKey='x'
+        plotWidth={400}
+        plotHeight={200}
+        showTooltip
+        duration={0}
+        aria-label='Line chart'
+      />,
+    );
+
+  const readLowLevelDot = () => {
+    const xScale = scaleLinear().range([40, 360]).domain([0, 3]);
+    const yScale = scaleLinear().range([160, 40]).domain([0, 10]);
+
+    return hoverAndReadDot(
+      <Plot data={dotData} scale={[xScale, yScale]} width={400} height={200}>
+        <HoverLine.Tooltip x='x' wMin={100}>
+          {({ xIndex }: any) => ({
+            children: xIndex !== null
+              ? <HoverLine.Tooltip.Dot mr={4}>Line</HoverLine.Tooltip.Dot>
+              : <></>,
+          })}
+        </HoverLine.Tooltip>
+      </Plot>,
+    );
+  };
+
+  test('should paint both the high and the low level dot in chart-palette-order-1', () => {
+    expect(readHighLevelDot().color).toContain('chart-palette-order-1');
+    cleanup();
+    expect(readLowLevelDot().color).toContain('chart-palette-order-1');
+  });
+
+  test('should use the stronger ring when the chart passes the colour explicitly', () => {
+    expect(readHighLevelDot().lightness).toBe('0.35');
+  });
+
+  /**
+   * Only `chart-palette-order-1` needs the stronger offset. Every other palette colour
+   * is light enough against the inverted tooltip to read with the default one.
+   */
+  test('should use the default ring for every colour but chart-palette-order-1', () => {
+    const dots = hoverAndReadDots(
+      <Chart.Line
+        data={dotData.map((d) => ({ ...d, second: d.y * 2 }))}
+        groupKey='x'
+        plotWidth={400}
+        plotHeight={200}
+        showTooltip
+        duration={0}
+        aria-label='Line chart'
+      />,
+    );
+
+    expect(dots).toHaveLength(2);
+    expect(dots[0]).toMatchObject({ lightness: '0.35' });
+    expect(dots[1].color).toContain('chart-palette-order-2');
+    expect(dots[1].lightness).toBe('0.15');
+  });
+
+  /**
+   * The ring offset has to follow the colour the dot is painted with, not the `color`
+   * prop: `chart-palette-order-1` is a dark neutral that matches the inverted tooltip
+   * background, so the 1px ring is the only thing separating the two. Looking the offset
+   * up by the prop alone would drop a low-level `<Tooltip.Dot>` (which falls back to that
+   * very colour) to the weaker 0.15 and make it disappear.
+   */
+  test('should ring the implicit colour exactly like the explicit one', () => {
+    const lowLevel = readLowLevelDot();
+    cleanup();
+    const highLevel = readHighLevelDot();
+
+    expect(lowLevel.lightness).toBe('0.35');
+    expect(lowLevel.lightness).toBe(highLevel.lightness);
   });
 });

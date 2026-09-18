@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -57,14 +57,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await page.mouse.move(hoverX, hoverY);
 
-      const lines = locators.line(page);
-      const count = await lines.count();
-      await expect(count).not.toBeNull();
-
-      for (let i = 0; i < count; i++) {
-        const line = lines.nth(i);
-        await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.line(page), 'aria-hidden', 'true');
       await expect(page).toHaveScreenshot();
     });
   });

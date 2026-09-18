@@ -13,6 +13,8 @@ export type HoverProps = Context & {
   x?: string;
   /** Field name from `data` array item for the YAxis */
   y?: string;
+  /** Hide tick hover */
+  hideTickHover?: boolean;
 };
 
 type HoverTooltip = (<X, Y>(

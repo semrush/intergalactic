@@ -28,7 +28,7 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <HoverLine x='category' />
+      <HoverLine x='category' hideTickHover />
       <HoverRect x='category' />
       <Bar x='category' y='bar' />
       <Line
