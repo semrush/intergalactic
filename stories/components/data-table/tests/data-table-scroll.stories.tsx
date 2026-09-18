@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import CampaingsTableExample from './examples/scroll-tests/campaigns-table';
 import FixedOffsetStaleOnContentChangeExample from './examples/scroll-tests/fixed-offset-stale-on-content-change';
 import FolderTableExample from './examples/scroll-tests/folder-table';
+import LoadingAndScrollExample from './examples/scroll-tests/loading-and-scroll';
 import RealTableExample from './examples/scroll-tests/real-table';
 import ScrollInTableExample, { defaultProps as scrollInTableDefaultProps } from './examples/scroll-tests/scroll-in-table';
 import type { ScrollInTableProps } from './examples/scroll-tests/scroll-in-table';
@@ -167,4 +168,8 @@ export const StickyHeaderHiddenColumn: Story = {
 
 export const FixedOffsetStaleOnContentChange: Story = {
   render: FixedOffsetStaleOnContentChangeExample,
+};
+
+export const LoadingAndScroll: Story = {
+  render: LoadingAndScrollExample,
 };
