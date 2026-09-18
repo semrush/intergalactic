@@ -1,7 +1,6 @@
 import RadioCards from '@semcore/ui/radio-cards';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import AdvancedExample from './examples/advanced';
 import BasicExample from './examples/basic';
 import LargeIconsExample from './examples/large-icons';
 
@@ -14,10 +13,6 @@ export default meta;
 
 export const BasicRadioCardsExample: StoryObj = {
   render: BasicExample,
-};
-
-export const AdvancedRadioCardsExample: StoryObj = {
-  render: AdvancedExample,
 };
 
 export const LargeIconsRadioCardsExample: StoryObj = {

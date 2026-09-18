@@ -66,6 +66,7 @@ SRadioItemHeaderText {
 SRadioItemSkeleton {
   display: inline-block;
   vertical-align: middle;
+  padding-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
 }
 
 SRadioItemHeaderInnerContainer {

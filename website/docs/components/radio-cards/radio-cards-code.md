@@ -14,17 +14,7 @@ tabs: Design('radio-cards'), A11y('radio-cards-a11y'), API('radio-cards-api'), E
 
 :::
 
-## Advanced usage
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/radio-cards/docs/examples/advanced.tsx';
-</script>
-
-:::
-
-## Custom layout with large icons
+## Custom layout with large addon
 
 ::: sandbox
 

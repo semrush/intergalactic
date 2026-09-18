@@ -10,8 +10,8 @@ tabs: Design('radio-cards'), A11y('radio-cards-a11y'), API('radio-cards-api'), E
 
 **RadioCards** is a component designed for:
 
-- Switching between filter presets in reports, that is, predefined values of Pills, FilterTrigger, and other filters.
-- Switching between different report views.
+- switching between predefined sets of filter values in reports
+- switching between different reports and report views
 
 ## Component composition
 
@@ -24,12 +24,20 @@ tabs: Design('radio-cards'), A11y('radio-cards-a11y'), API('radio-cards-api'), E
 4. `iconAddon` (optional)
 5. `description` (optional)
 
+## Appearance
+
+RadioCards have two options of addon size and position:
+
+1. A small icon before the title — to highlight one item.
+![small addon](static/small-addon.png)
+2. A larger icon, illustration, or mini chart addon in the left part of the item — to illustrate and distinguish the items ([live example](./radio-cards-code#custom-layout-with-large-addon)).
+![large addon](static/large-addons.png)
 
 ## Interaction
 
 RadioCards behave like [Radio](../radio/radio): user can select only one at a time.
 
-You can either set a default selected item on page load, or not select any item, depending on your case.
+It's not mandatory for one item to be selected by default on page load. You can select one or leave all items unselected, depending on your case.
 
 ### States
 
@@ -46,10 +54,10 @@ Table: RadioCards item states
 
 ## Use in UX/UI
 
-If your RadioCards have 4 or more items, stretch them to full page width.
+If your RadioCards have 4 or more items, stretch them to the full page width.
 
 ![](static/stretch.png)
 
-If your RadioCards have 3 or less items, we recommend setting a fixed width limit for the whole group. This makes it easier for the user to compare and interact with the items.
+If your RadioCards have 3 or less items, set a fixed width limit for the whole group. This makes it easier for the user to compare and interact with the items.
 
 ![](static/limit-3.png)
