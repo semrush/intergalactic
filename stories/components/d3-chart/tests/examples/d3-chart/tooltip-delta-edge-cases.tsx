@@ -63,38 +63,20 @@ const data = [
 type DeltaData = (typeof data)[number];
 
 /**
- * Percent changes as a backend would hand them over: only the series it managed to
- * compute. Everything else is simply absent from the response.
- */
-const deltasFromApi: Record<string, number> = {
-  overHundred: 400,
-  huge: 9900,
-  fraction: 0.5,
-};
-
-/**
  * Variants for the `getPercentDelta` prop, which replaces the built-in delta calculation.
  *
- * `custom` is what a correct override looks like: every path ends in a number or `null`.
+ * Every variant honours the declared contract — each one is annotated `: number | null`
+ * and TypeScript accepts it. What they show is what the chart does with returns that are
+ * valid yet unusable, and where an override stops matching the built-in behaviour.
  *
- * The other three all end up returning `undefined`, which is neither a number nor `null`.
- * `AbstractChart.getPercentDelta` only guards against `null`
- * (`if (customDelta === null) return null`) before calling `customDelta.toFixed(1)`, so the
- * chart throws `TypeError: Cannot read properties of undefined (reading 'toFixed')` while
- * rendering the tooltip. The chart itself mounts fine — it breaks on hover. And because the
- * deltas for every series are computed in one pass, a single missing value takes down the
- * whole tooltip, not just its own row.
- *
- * Each variant reaches `undefined` the way real product code does:
- *
- * variant          | how `undefined` appears              | hover to reproduce
- * -----------------|--------------------------------------|-------------------
- * returnsUndefined | function falls off the end           | second group
- * apiLookup        | key missing from the response        | second group
- * mirrorsBuiltIn   | bare `return` on the first point     | FIRST group
+ * variant            | what it demonstrates                        | hover
+ * -------------------|---------------------------------------------|-------------
+ * custom             | a correct override, for reference            | second group
+ * divideByZero       | `NaN` and `Infinity` are valid numbers       | second group
+ * includesFirstPoint | an override also runs for index 0            | FIRST group
  */
 const deltaOverrides = {
-  custom: (key: string, index: number, chartData: DeltaData[]) => {
+  custom: (key: string, index: number, chartData: DeltaData[]): number | null => {
     if (index === 0) return null;
 
     const prev = chartData[index - 1]?.[key as keyof DeltaData];
@@ -105,51 +87,55 @@ const deltaOverrides = {
     return ((curr - prev) / Math.abs(prev)) * 100;
   },
 
-  returnsUndefined: (key: string, index: number, chartData: DeltaData[]) => {
-    // Only one series is handled; every other one falls through and yields `undefined`.
-    if (key === 'overHundred') {
-      const prev = chartData[index - 1]?.[key as keyof DeltaData] as number;
-      const curr = chartData[index]?.[key as keyof DeltaData] as number;
+  /**
+   * The built-in formula written without the zero guard — the single most likely omission
+   * when someone reimplements it. The return type is still satisfied, because `NaN` and
+   * `Infinity` are both of type `number`, so neither TypeScript nor the chart rejects them.
+   *
+   * On the second group this dataset produces both: `zeroToZero` goes 0 -> 0, which is
+   * `0 / 0` -> `NaN`, and `fromZero` goes 0 -> 7, which is `7 / 0` -> `Infinity`. The
+   * tooltip prints them verbatim as `NaN%` and `Infinity%`, and `NaN` is additionally
+   * classified as the `stable` trend, so it is greyed out as though nothing had changed.
+   */
+  divideByZero: (key: string, index: number, chartData: DeltaData[]): number | null => {
+    if (index === 0) return null;
 
-      return ((curr - prev) / prev) * 100;
-    }
+    const prev = chartData[index - 1]?.[key as keyof DeltaData];
+    const curr = chartData[index]?.[key as keyof DeltaData];
+
+    if (typeof prev !== 'number' || typeof curr !== 'number') return null;
+
+    return ((curr - prev) / prev) * 100;
   },
 
   /**
-   * The delta is computed server side and the chart only looks it up. This is the most
-   * common reason to override the calculation at all, and the shortest way to the bug:
-   * indexing an object returns `undefined` for a missing key, never `null`. A series the
-   * backend skipped — a metric added last week, a period still being recalculated — is
-   * enough. The same happens with `.find()`, `Map.get()` and an out-of-range index.
+   * The built-in formula without its first-point guard, to show that the guard is not
+   * applied to overrides at all.
+   *
+   * The built-in path starts with `if (index === 0) return null`, but that line sits
+   * *after* the custom branch, so an override is called with `index === 0` too. Comparing
+   * the first point with itself yields a valid `0`, which is enough to make the difference
+   * visible: hover the FIRST group and every series shows `0%`, where `off` renders no
+   * delta column at all.
+   *
+   * On the second group this is identical to `off` by design — it is the same formula, and
+   * with a two point dataset there is nothing else it could differ on. The first group is
+   * the whole point of this variant.
    */
-  apiLookup: (key: string) => deltasFromApi[key],
-
-  /**
-   * A copy of the built-in formula, written on the assumption that the chart filters the
-   * first point out on its own — as the built-in path does with `if (index === 0) return
-   * null`. It does not: that guard sits *after* the custom branch, so the override is
-   * called with `index === 0` too. `chartData[-1]` is `undefined`, the early exit is a bare
-   * `return`, and the very first point of the chart throws. Hover the FIRST group.
-   */
-  mirrorsBuiltIn: (key: string, index: number, chartData: DeltaData[]) => {
-    const previous = chartData[index - 1];
-
-    if (!previous) return;
-
-    const prev = previous[key as keyof DeltaData];
+  includesFirstPoint: (key: string, index: number, chartData: DeltaData[]): number | null => {
+    const previous = chartData[Math.max(index - 1, 0)]?.[key as keyof DeltaData];
     const curr = chartData[index]?.[key as keyof DeltaData];
 
-    if (typeof prev !== 'number' || typeof curr !== 'number' || prev === 0) return null;
+    if (typeof previous !== 'number' || typeof curr !== 'number' || previous === 0) return null;
 
-    return ((curr - prev) / Math.abs(prev)) * 100;
+    return ((curr - previous) / Math.abs(previous)) * 100;
   },
 };
 
 type DeltaEdgeCasesStoryProps = BarChartProps & {
   /**
-   * `off` keeps the built-in calculation. `custom` replaces it with a correct override.
-   * `returnsUndefined` reproduces the crash described above: pick it, then hover the
-   * second bar group.
+   * `off` keeps the built-in calculation, the rest replace it. See `deltaOverrides` for
+   * what each one demonstrates and which bar group to hover.
    */
   deltaOverride?: 'off' | keyof typeof deltaOverrides;
 };

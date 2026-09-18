@@ -443,6 +443,16 @@ The calculation compares each data point with the preceding one:
 - If the previous value is `0`, the delta returns `0` when the current value is also `0`; otherwise, it returns `null`.
 - Results are rounded to one decimal place.
 
+In the example below each series covers one of these rules: `traffic` shows growth, decline and an unchanged value, `rounded` shows the rounding to one decimal place, and `zeroBaseline` shows both outcomes of a zero previous value. Hovering the first point shows no delta for any series.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/default-delta-percent-calculation.tsx';
+</script>
+
+:::
+
 ### Customizing the calculation
 
 To customize how percentage deltas are calculated, pass a `getPercentDelta` callback. This allows you to change the reference point or implement custom calculation logic based on your data.
