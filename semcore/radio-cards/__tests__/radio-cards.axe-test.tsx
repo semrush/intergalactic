@@ -21,7 +21,7 @@ test.describe(`@radio-cards  ${TAG.ACCESSIBILITY}`, () => {
   });
 
   test('Advanced', async ({ page }) => {
-    await loadPage(page, 'stories/components/radio-cards/docs/examples/advanced.tsx', 'en');
+    await loadPage(page, 'stories/components/radio-cards/tests/examples/advanced.tsx', 'en');
 
     {
       const violations = await getAccessibilityViolations({ page });
