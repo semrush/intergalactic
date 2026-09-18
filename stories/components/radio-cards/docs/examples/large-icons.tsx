@@ -1,5 +1,4 @@
-import { Box } from '@semcore/base-components';
-import { Flex } from '@semcore/ui/base-components';
+import { Box, Flex } from '@semcore/ui/base-components';
 import RadioCards from '@semcore/ui/radio-cards';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';

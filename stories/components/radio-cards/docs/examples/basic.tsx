@@ -1,5 +1,5 @@
-import { Box } from '@semcore/base-components';
 import Fire from '@semcore/icon/Fire/m';
+import { Box } from '@semcore/ui/base-components';
 import RadioCards from '@semcore/ui/radio-cards';
 import React, { useState } from 'react';
 
