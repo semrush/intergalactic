@@ -164,8 +164,8 @@ function withDataTypeTails(points: any[], groupKey: string, mode?: DataTypeMode)
   return result;
 }
 
-function withHighlights(base: readonly any[], mode?: HighlightDotsMode) {
-  if (!mode || mode === 'none') return base;
+function withHighlights(base: readonly any[], mode?: HighlightDotsMode): any[] {
+  if (!mode || mode === 'none') return [...base];
   const points = base.map((point) => ({ ...point }));
   highlightTargets[mode].forEach(([index, highlight]) => {
     if (points[index]) points[index] = { ...points[index], [HIGHLIGHT_DOT]: highlight };
@@ -199,12 +199,7 @@ const Demo = (props: LineChartStoryProps) => {
   const groupKey = (chartProps as LineChartProps).groupKey ?? 'x';
 
   const chartData = React.useMemo(
-    () =>
-      withDataTypeTails(
-        withHighlights(suppliedData ?? data, highlightDots) as any[],
-        groupKey,
-        dataType,
-      ),
+    () => withDataTypeTails(withHighlights(suppliedData ?? data, highlightDots), groupKey, dataType),
     [suppliedData, highlightDots, dataType, groupKey],
   );
 
