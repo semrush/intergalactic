@@ -22,7 +22,7 @@ const ItemContent = (props: ItemContentProps) => {
           h={40}
           style={{
             borderRadius: 'var(--intergalactic-addon-rounded)',
-            background: 'var(--intergalactic-bg-primary-muted)',
+            background: 'var(--intergalactic-bg-secondary-neutral)',
             flexShrink: 0,
           }}
         />
