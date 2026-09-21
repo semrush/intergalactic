@@ -31,6 +31,8 @@ export const BasicUsage = {
     hMin: { control: { type: 'number', min: 0, max: 600, step: 10 } },
     hMax: { control: { type: 'number', min: 0, max: 600, step: 10 } },
     useExplicitPlotWidth: { control: 'boolean' },
+    showDots: { control: 'boolean' },
+    highlightDots: { control: 'select', options: ['none', 'good', 'bad', 'insightful', 'mixed'] },
   }),
   args: BasicUsageProps,
 };
