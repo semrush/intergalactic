@@ -18,8 +18,8 @@ import { getChartProps, getPropsToChart } from '../stories_props_helper';
  * huge           |      1 |    100 | +9900%     — does the column still fit?
  * fraction       |    100 |  100.5 | +0.5%      — one decimal place
  * roundsToZero   |  10000 |  10004 | +0.04% rounds to 0 -> shown as a stable "0%"
- * shrank         |    100 |     50 | -50%
- * droppedToZero  |    100 |      0 | -100%
+ * shrank         |    100 |     50 | 50%        — declines show no minus, only DiffDown
+ * droppedToZero  |    100 |      0 | 100%       — a drop to zero, also downward
  * fromZero       |      0 |      7 | no diff    — cannot divide by 0, cell stays empty
  * zeroToZero     |      0 |      0 | 0%         — stable
  * unchanged      |     50 |     50 | 0%         — stable

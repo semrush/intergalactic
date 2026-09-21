@@ -881,7 +881,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
    *   index 0 -> line 2,  line2 3  : no previous point, both deltas are `null`
    *   index 1 -> line 4,  line2 3  : +100% and an unchanged value (stable)
    *   index 3 -> line 6,  line2 4  : +100% and +33.3%, both upward
-   *   index 6 -> line 6,  line2 2  : -14.3% and -60%, both downward
+   *   index 6 -> line 6,  line2 2  : 14.3% and 60% declines, both downward
+   *
+   * The text is printed through `Math.abs`, so a decline shows no minus sign — only the
+   * DiffDown icon and the trend colour tell the direction.
    */
   test.describe('Tooltip percent delta', () => {
     test('Verify upward deltas render with the DiffUp icon', {
@@ -906,8 +909,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await expect(locators.diffDown(page)).toHaveCount(2);
       await expect(locators.diffUp(page)).toHaveCount(0);
-      await expect(page.getByText('-14.3%', { exact: true })).toBeVisible();
-      await expect(page.getByText('-60%', { exact: true })).toBeVisible();
+      // The value is printed through `Math.abs`: the DiffDown icon carries the direction.
+      await expect(page.getByText('14.3%', { exact: true })).toBeVisible();
+      await expect(page.getByText('60%', { exact: true })).toBeVisible();
+      await expect(page.getByText('-14.3%', { exact: true })).toHaveCount(0);
     });
 
     /**
@@ -1260,6 +1265,56 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       // long, time-less format was dropped.
       expect(text).not.toMatch(/\d+\/\d+\/\d+/);
       expect(text).not.toMatch(/\d{1,2}:\d{2}/);
+    });
+
+    /**
+     * `tooltipTitleFormatter` replaces the title only. The `titleFormat` control of the
+     * story maps onto the `Intl` option sets a product usually asks for once the built-in
+     * weekday is too much detail.
+     */
+    const titleFormats: Array<[string, string]> = [
+      ['off', 'Friday, March 15, 2024'],
+      ['withoutWeekday', 'March 15, 2024'],
+      ['short', 'Mar 15'],
+      ['monthAndYear', 'March 2024'],
+    ];
+
+    for (const [titleFormat, expected] of titleFormats) {
+      test(`Verify tooltipTitleFormatter renders the ${titleFormat} title`, {
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+      }, async ({ page }) => {
+        await loadPage(
+          page,
+          'stories/components/d3-chart/tests/examples/d3-chart/tooltip-default-format.tsx',
+          'en',
+          { titleFormat },
+        );
+
+        await hoverPlotCenter(page);
+
+        await expect(page.locator('[data-ui-name="HoverLine.Tooltip.Title"]')).toHaveText(expected);
+      });
+    }
+
+    test('Verify tooltipTitleFormatter leaves the series values alone', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart'],
+    }, async ({ page }) => {
+      await loadPage(
+        page,
+        'stories/components/d3-chart/tests/examples/d3-chart/tooltip-default-format.tsx',
+        'en',
+        { titleFormat: 'short' },
+      );
+
+      await hoverPlotCenter(page);
+
+      const tooltip = page.locator('[data-ui-name="HoverLine.Tooltip"]').first();
+      await expect(page.locator('[data-ui-name="HoverLine.Tooltip.Title"]')).toHaveText('Mar 15');
+
+      // The values keep the built-in numeric formatting: one decimal place, no dates.
+      const text = (await tooltip.textContent()) ?? '';
+      expect(text).toContain('3.1');
+      expect(text).not.toContain('1970');
     });
   });
 });
