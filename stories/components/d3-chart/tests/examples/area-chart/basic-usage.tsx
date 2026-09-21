@@ -31,7 +31,13 @@ export type CurveName = keyof typeof curves;
 export type HighlightDotsMode = 'none' | 'good' | 'bad' | 'insightful' | 'mixed';
 export type DataTypeMode = 'none' | 'forecast' | 'potential' | 'both';
 
-type AreaChartStoryProps = AreaChartProps & {
+type AreaChartStoryProps = Omit<AreaChartProps, 'patterns'> & {
+  /**
+   * Storybook's boolean control produces `false`, which `PatternsConfig` does not include —
+   * it treats "off" as absent. Falsy behaves as off at runtime, so the story widens the type
+   * rather than forcing the control to emit `undefined`.
+   */
+  patterns?: AreaChartProps['patterns'] | false;
   /** Set to true to replace the built-in tooltip value formatter with `formatValue`. */
   useCustomValueFormatter?: boolean;
   /**
