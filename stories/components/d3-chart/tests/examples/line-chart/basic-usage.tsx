@@ -32,8 +32,8 @@ const highlightTargets: Record<Exclude<HighlightDotsMode, 'none'>, Array<[number
   ],
 };
 
-function withHighlights(base: readonly any[], mode?: HighlightDotsMode) {
-  if (!mode || mode === 'none') return base;
+function withHighlights(base: readonly any[], mode?: HighlightDotsMode): any[] {
+  if (!mode || mode === 'none') return [...base];
   const points = base.map((point) => ({ ...point }));
   highlightTargets[mode].forEach(([index, highlight]) => {
     if (points[index]) points[index] = { ...points[index], [HIGHLIGHT_DOT]: highlight };
