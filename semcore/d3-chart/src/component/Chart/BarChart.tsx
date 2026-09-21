@@ -30,6 +30,7 @@ class BarChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    maxBarSize: 12,
   } as const;
 
   get xScale() {
@@ -84,7 +85,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { groupKey, type = 'group', invertAxis } = this.asProps;
+    const { groupKey, type = 'group', invertAxis, maxBarSize } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     if (dataDefinitions.length === 1) {
@@ -100,6 +101,7 @@ class BarChartComponent extends AbstractChart<
               key={item.id}
               color={item.color}
               onClick={this.handleClickBar}
+              maxBarSize={maxBarSize}
             />
             {this.renderTrend(item.id)}
           </>
@@ -118,6 +120,7 @@ class BarChartComponent extends AbstractChart<
                 color: item.color,
                 transparent: highlightedLine !== -1 && highlightedLine !== index,
                 onClick: this.handleClickBar,
+                maxBarSize,
               };
 
               if (invertAxis) {
@@ -145,6 +148,7 @@ class BarChartComponent extends AbstractChart<
                 color: item.color,
                 transparent: highlightedLine !== -1 && highlightedLine !== index,
                 onClick: this.handleClickBar,
+                maxBarSize,
               };
 
               if (invertAxis) {

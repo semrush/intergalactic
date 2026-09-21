@@ -36,7 +36,7 @@ class GroupBarRoot extends Component {
       .range([0, scaleToBand(xyScale).bandwidth()])
       .domain(domain)
       .paddingInner(0.1)
-      .paddingOuter(0.1);
+      .paddingOuter(0.9);
   }
 
   getBarProps({ y }, index) {
