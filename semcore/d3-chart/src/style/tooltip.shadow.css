@@ -44,3 +44,8 @@ SFooter {
   border-radius: 0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px);
   margin: var(--intergalactic-spacing-content-gap-xlarge, 12px) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px)) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px));
 }
+
+SDotPattern {
+  stroke-width: 1px;
+  stroke: rgba(255, 255, 255, 0.35);
+}

@@ -187,12 +187,14 @@ function Dot(props) {
   const SDotGroup = Root;
   const SDot = Box;
   const SDotCircle = Box;
+  const SDotPattern = PatternSymbol;
+
   return sstyled(styles)(
     <SDotGroup render={Box} use:color={undefined} __excludeProps={['data', 'scale']}>
       {patterns
         ? (
             <SDot>
-              <PatternSymbol
+              <SDotPattern
                 color={resolveColor(color ?? defaultColor)}
                 patternKey={color ?? defaultColor}
               />

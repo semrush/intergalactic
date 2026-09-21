@@ -67,7 +67,7 @@ class RadarChartComponent extends AbstractChart<
           return {
             children: (
               <>
-                <Radar.Tooltip.Title>{data[groupKey]?.[index]}</Radar.Tooltip.Title>
+                <Radar.Tooltip.Title>{this.tooltipTitleFormatter(data[groupKey]?.[index])}</Radar.Tooltip.Title>
 
                 {dataDefinitions.map((item) => {
                   const value = data[item.id]?.[index];
