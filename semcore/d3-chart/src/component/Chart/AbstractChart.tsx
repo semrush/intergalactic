@@ -13,7 +13,7 @@ import { Text } from '@semcore/typography';
 import type { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import React, { Fragment } from 'react';
 
-import type { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
+import type { BaseChartProps, BaseLegendProps, ListData, ObjectData, ObjectDataKey } from './AbstractChart.type';
 // @ts-ignore
 import type { HoverLine, HoverRect } from '../..';
 // @ts-ignore
@@ -389,13 +389,11 @@ export abstract class AbstractChart<
     }
 
     if (typeof value === 'number' && !Number.isNaN(value)) {
-      return Number.isInteger(value)
-        ? `${value}`
-        : new Intl.NumberFormat(locale, {
-            minimumFractionDigits: 1,
-            maximumFractionDigits: 1,
-            roundingMode: 'halfExpand',
-          }).format(value);
+      return new Intl.NumberFormat(locale, {
+        minimumFractionDigits: Number.isInteger(value) ? 0 : 1,
+        maximumFractionDigits: Number.isInteger(value) ? 0 : 1,
+        roundingMode: 'halfExpand',
+      }).format(value);
     }
 
     return value.toString();
@@ -405,6 +403,14 @@ export abstract class AbstractChart<
     const { tooltipValueFormatter } = this.asProps;
 
     if (tooltipValueFormatter) return tooltipValueFormatter(value);
+
+    return this.defaultTooltipFormatter(value);
+  }
+
+  protected tooltipTitleFormatter(value?: unknown): string {
+    const { tooltipTitleFormatter } = this.asProps;
+
+    if (tooltipTitleFormatter) return tooltipTitleFormatter(value);
 
     return this.defaultTooltipFormatter(value);
   }
@@ -531,10 +537,18 @@ export abstract class AbstractChart<
     );
   }
 
-  protected getPercentDelta(key: string, index: number) {
-    if (index === 0) return null;
+  protected getPercentDelta(key: ObjectDataKey, index: number, data: Data) {
+    const { getPercentDelta: customGetPercenDelta } = this.asProps;
 
-    const { data } = this.asProps;
+    if (customGetPercenDelta) {
+      const customDelta = customGetPercenDelta(key, index, data);
+
+      if (customDelta === null) return null;
+
+      return Number(customDelta.toFixed(1));
+    }
+
+    if (index === 0) return null;
 
     if (!Array.isArray(data)) return null;
 
@@ -558,12 +572,12 @@ export abstract class AbstractChart<
     const STooltipChildrenWrapper = Box;
     const { Tooltip, dataItem, index } = options;
 
-    const { styles, groupKey, showDeltaPercentInTooltip } = this.asProps;
+    const { styles, groupKey, showDeltaPercentInTooltip, data } = this.asProps;
     const { dataDefinitions } = this.state;
-    const title = this.defaultTooltipFormatter(dataItem[groupKey as keyof D]);
+    const title = this.tooltipTitleFormatter(dataItem[groupKey as keyof D]);
 
     const percentDeltas = showDeltaPercentInTooltip
-      ? dataDefinitions.map(({ id }) => this.getPercentDelta(id, index))
+      ? dataDefinitions.map(({ id }) => this.getPercentDelta(id, index, data))
       : [];
     const hasPercentDeltas = percentDeltas.length > 0 && percentDeltas.some((value) => value !== null);
     const columnsCount = hasPercentDeltas ? 3 : 2;
@@ -585,7 +599,7 @@ export abstract class AbstractChart<
                   <Tooltip.Dot mr={2} color={item.color}>
                     {item.label}
                   </Tooltip.Dot>
-                  <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id] as string)}</Text>
+                  <Text textAlign='end' bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
                   {hasPercentDeltas && this.renderTooltipPercentDelta(delta)}
                 </Fragment>
               )
@@ -617,7 +631,7 @@ export abstract class AbstractChart<
         trend={trend}
       >
         {(trend === 'upward' || trend === 'downward') && <STooltipDeltaIcon width={8.5} height={8.5} />}
-        {trend !== 'unknown' && <Text size={100}>{delta}%</Text>}
+        {trend !== 'unknown' && <Text size={100}>{Math.abs(delta!)}%</Text>}
       </STooltipDeltaWrapper>,
     );
   }

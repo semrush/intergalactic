@@ -95,7 +95,7 @@ class DonutChartComponent extends AbstractChart<
           return {
             children: (
               <>
-                <Donut.Tooltip.Title>{title?.label || dataKey}</Donut.Tooltip.Title>
+                <Donut.Tooltip.Title>{this.tooltipTitleFormatter(title?.label || dataKey)}</Donut.Tooltip.Title>
                 <Flex justifyContent='space-between'>
                   <Text bold>{this.tooltipValueFormatter(data[dataKey])}</Text>
                 </Flex>

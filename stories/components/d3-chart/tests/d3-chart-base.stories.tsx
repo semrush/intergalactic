@@ -71,7 +71,12 @@ export const HoveredTick: StoryObj<typeof HoveredTickProps> = {
 
 export const TooltipDeltaEdgeCases = {
   render: TooltipDeltaEdgeCasesExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    deltaOverride: {
+      control: 'select',
+      options: ['off', 'custom', 'divideByZero', 'includesFirstPoint'],
+    },
+  }),
   args: TooltipDeltaEdgeCasesProps,
 };
 
