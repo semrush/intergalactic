@@ -47,5 +47,5 @@ SFooter {
 
 SDotPattern {
   stroke-width: 1px;
-  stroke: rgba(255, 255, 255, 0.35);
+  stroke: oklch(from var(--intergalactic-chart-grid-border, #ffffff) l c h / 0.5);
 }
