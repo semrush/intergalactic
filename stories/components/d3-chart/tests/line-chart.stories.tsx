@@ -33,6 +33,11 @@ export const BasicUsage = {
     useExplicitPlotWidth: { control: 'boolean' },
     showDots: { control: 'boolean' },
     highlightDots: { control: 'select', options: ['none', 'good', 'bad', 'insightful', 'mixed'] },
+    dataType: { control: 'select', options: ['none', 'forecast', 'potential', 'both'] },
+    // Variants label the numeric group key. Date-shaped titles live in the Tooltip-Format story.
+    titleFormat: { control: 'select', options: ['off', 'point', 'week', 'padded'] },
+    // Needs showDeltaPercentInTooltip to be on.
+    deltaOverride: { control: 'select', options: ['off', 'custom', 'divideByZero', 'includesFirstPoint'] },
   }),
   args: BasicUsageProps,
 };
