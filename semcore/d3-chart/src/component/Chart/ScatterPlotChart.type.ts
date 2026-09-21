@@ -9,7 +9,7 @@ export type ScatterPlotChartData = Array<Record<string, number | typeof interpol
 
 export type ScatterPlotChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<ScatterPlotChartData>,
-  'showTotalInTooltip'
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
 > & {
   /** Field name that groups the data points */
   groupKey: string;

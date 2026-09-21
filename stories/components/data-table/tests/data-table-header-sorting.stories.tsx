@@ -29,8 +29,20 @@ export const SortingWithInteractive: Story = {
 
 export const OneLevelSortingProps: StoryObj<OneLevelHeaderSortingProps> = {
   render: OneLevelSortingPropsExample,
+  argTypes: {
+    use: { control: 'inline-radio', options: ['primary', 'secondary'] },
+    sideIndents: { control: 'inline-radio', options: [undefined, 'wide'] },
+    compact: { control: 'boolean' },
+    loading: { control: 'boolean' },
+    sticky: { control: 'boolean' },
+    withScrollBar: { control: 'boolean' },
+    h: { control: 'text' },
+    wMax: { control: 'text' },
+    defaultGridTemplateColumnWidth: { control: 'select', options: ['auto', 'min-content', 'max-content', '100px', '150px', '200px', '1fr'] },
+  },
   args: {
     ...oneLevelHeaderSortingProps,
+    use: 'primary',
   },
 };
 

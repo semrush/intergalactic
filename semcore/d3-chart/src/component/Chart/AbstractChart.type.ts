@@ -52,7 +52,8 @@ export type BaseLegendProps = BaseChartLegendProps & {
     }
   );
 
-export type ObjectData = Record<string, number | typeof interpolateValue | Date | string | string[] | number[]> & {
+export type ObjectDataKey = string;
+export type ObjectData = Record<ObjectDataKey, number | typeof interpolateValue | Date | string | string[] | number[]> & {
   [HIGHLIGHT_DOT]?: typeof GOOD | typeof BAD | typeof INSIGHTFUL;
   [DATA_TYPE]?: typeof POTENTIAL | typeof FORECAST;
 };
@@ -127,6 +128,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    */
   showDeltaPercentInTooltip?: boolean;
   /**
+   * Overrides the default percentage delta calculation.
+   */
+  getPercentDelta?: (key: ObjectDataKey, index: number, data: T) => number | null;
+  /**
    * Scale for xAxis (see more in d3-scale)
    */
   xScale?: unknown;
@@ -156,9 +161,13 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
   axisXValueFormatter?: (value: unknown) => string;
   axisYValueFormatter?: (value: unknown) => string;
   /**
-   * Function for format text for tooltip
+   * Function to format values in tooltip
    */
   tooltipValueFormatter?: (value?: unknown) => string;
+  /**
+   * Function to format tooltip's title
+   */
+  tooltipTitleFormatter?: (title?: unknown) => string;
   /**
    * Custom event emitter. Could be useful to handle event on few charts at the same time.
    */

@@ -13,6 +13,12 @@ type CustomizableLegendProps = LegendFlexProps & {
    * `-1` highlights nothing. Normally driven by the parent chart on item hover.
    */
   highlightedItem?: number;
+  /**
+   * `LegendFlexProps` is a union (`suffix` XOR trend props), so trend fields cannot be read
+   * from it directly. The story declares them as optional controls of its own.
+   */
+  trendIsVisible?: boolean;
+  onTrendIsVisibleChange?: (isVisible: boolean) => void;
 };
 
 const Demo = (props: CustomizableLegendProps) => {

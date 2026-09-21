@@ -389,9 +389,7 @@ class CigaretteChartComponent extends AbstractChart<
           return {
             children: sstyled(styles)(
               <Flex direction='column'>
-                {tooltipTitle && (
-                  <HoverRect.Tooltip.Title>{tooltipTitle}</HoverRect.Tooltip.Title>
-                )}
+                {tooltipTitle && (<HoverRect.Tooltip.Title>{this.tooltipTitleFormatter(tooltipTitle)}</HoverRect.Tooltip.Title>)}
 
                 <STooltipChildrenWrapper render={Box} columnsCount={showPercentColumn ? '3' : '2'} __excludeProps={['data']}>
                   {dataDefinitions.map((item) => {
@@ -409,7 +407,7 @@ class CigaretteChartComponent extends AbstractChart<
                     );
                   })}
 
-                  {this.renderTooltipTotalLine(data)}
+                  {this.renderTooltipTotalLine()}
                 </STooltipChildrenWrapper>
               </Flex>,
             ),
@@ -440,21 +438,22 @@ class CigaretteChartComponent extends AbstractChart<
     return NOT_A_VALUE;
   }
 
-  protected override renderTooltipTotalLine<D extends ObjectData>(dataItem: D) {
-    const { showTotalInTooltip, showPercentValueInTooltip } = this.asProps;
+  protected override renderTooltipTotalLine() {
+    const { showTotalInTooltip, showPercentValueInTooltip, styles } = this.asProps;
 
     if (!showTotalInTooltip) {
       return null;
     }
-
+    const STooltipDivider = Divider;
     const total = this.totalValue();
 
-    return (
+    return sstyled(styles)(
       <>
-        <Box mt={2} mr={2}>Total</Box>
-        { showPercentValueInTooltip && total !== 0 && <Text mt={2} textAlign='end' color='text-secondary-invert'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
-        <Text mt={2} textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : total}</Text>
-      </>
+        <STooltipDivider theme='invert' />
+        <Box mr={2}>Total</Box>
+        { showPercentValueInTooltip && total !== 0 && <Text textAlign='end' color='text-secondary-invert'>{Number.isNaN(total) ? NOT_A_VALUE : '100%'}</Text> }
+        <Text textAlign='end' bold>{Number.isNaN(total) ? NOT_A_VALUE : this.tooltipValueFormatter(total)}</Text>
+      </>,
     );
   }
 

@@ -20,11 +20,10 @@ export const LegendTableData: StoryObj<typeof legendTableArgs> = {
   args: legendTableArgs,
 };
 
-export const CustomizableLegend: StoryObj<typeof args> = {
+export const CustomizableLegend = {
   render: CustomizableLegendExample,
   argTypes: {
     'size': { control: 'select', options: ['m', 'l'] },
-    // 'Line' and 'Square' were removed from ShapeType.
     'shape': { control: 'select', options: ['Checkbox', 'Circle', 'Pattern'] },
     'direction': { control: 'select', options: ['row', 'column'] },
     'patterns': { control: 'boolean' },
