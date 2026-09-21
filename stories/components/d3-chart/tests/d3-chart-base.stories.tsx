@@ -82,6 +82,11 @@ export const TooltipDeltaEdgeCases = {
 
 export const TooltipDefaultFormat = {
   render: TooltipDefaultFormatExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    titleFormat: {
+      control: 'select',
+      options: ['off', 'withoutWeekday', 'short', 'monthAndYear'],
+    },
+  }),
   args: TooltipDefaultFormatProps,
 };

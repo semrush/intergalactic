@@ -36,8 +36,35 @@ const data = [
   { time: new Date('2024-07-04T00:00:00Z'), roundsDown: 9.8412, roundsUp: 0.96, halfway: 8.25, whole: 5, sparse: 7 },
 ];
 
-const Demo = (props: LineChartProps) => {
-  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props) as any;
+/**
+ * Variants for `tooltipTitleFormatter`, which formats the tooltip title only and leaves
+ * the series values to `tooltipValueFormatter`.
+ *
+ * `off` keeps the built-in format, which spells out the weekday: "Friday, March 15, 2024".
+ * The others are the shapes a product normally asks for once the weekday is too much
+ * detail — a monthly report has no use for it.
+ */
+const titleFormats = {
+  withoutWeekday: { year: 'numeric', month: 'long', day: 'numeric' },
+  short: { month: 'short', day: 'numeric' },
+  monthAndYear: { year: 'numeric', month: 'long' },
+} as const;
+
+type TooltipFormatStoryProps = LineChartProps & {
+  /** Which `tooltipTitleFormatter` to pass, or `off` to keep the built-in title. */
+  titleFormat?: 'off' | keyof typeof titleFormats;
+};
+
+const Demo = (props: TooltipFormatStoryProps) => {
+  const { plotWidth, plotHeight, titleFormat, ...chartProps } = getPropsToChart(props) as any;
+
+  const options = titleFormat && titleFormat !== 'off'
+    ? titleFormats[titleFormat as keyof typeof titleFormats]
+    : undefined;
+
+  const tooltipTitleFormatter = options
+    ? (value: unknown) => new Intl.DateTimeFormat('en', options).format(value as Date)
+    : undefined;
 
   return (
     <Box
@@ -51,19 +78,22 @@ const Demo = (props: LineChartProps) => {
       <Chart.Line
         {...chartProps}
         aria-label='Line chart with default tooltip formatting'
+        {...(tooltipTitleFormatter ? { tooltipTitleFormatter } : {})}
       />
     </Box>
   );
 };
 
-export const defaultProps = getChartProps<LineChartProps>({
+export const defaultProps = getChartProps<TooltipFormatStoryProps>({
   groupKey: 'time',
   data,
   showDots: true,
   showLegend: true,
   showTotalInTooltip: false,
   duration: 0,
-} as LineChartProps);
+  // Off by default: the browser tests assert the built-in title on this story.
+  titleFormat: 'off',
+} as TooltipFormatStoryProps);
 
 Demo.defaultProps = defaultProps;
 
