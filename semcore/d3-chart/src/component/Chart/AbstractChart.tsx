@@ -545,7 +545,7 @@ export abstract class AbstractChart<
 
       if (customDelta === null) return null;
 
-      return Number(customDelta.toFixed(1));
+      return customDelta;
     }
 
     if (index === 0) return null;
@@ -559,9 +559,7 @@ export abstract class AbstractChart<
 
     if (prev === 0) return curr === 0 ? 0 : null;
 
-    const percent = ((curr - prev) / Math.abs(prev)) * 100;
-
-    return Number(percent.toFixed(1));
+    return ((curr - prev) / Math.abs(prev)) * 100;
   }
 
   protected getTooltipChildren<D extends ObjectData>(options: {
@@ -624,6 +622,7 @@ export abstract class AbstractChart<
     const trend = this.getTooltipPercentDeltaTrend(delta);
     const STooltipDeltaWrapper = Flex;
     const STooltipDeltaIcon = trend === 'upward' ? DiffUp : DiffDown;
+    const displayedDelta = delta !== null ? this.defaultTooltipFormatter(Math.abs(delta)) : null;
 
     return sstyled(styles)(
       <STooltipDeltaWrapper
@@ -631,7 +630,7 @@ export abstract class AbstractChart<
         trend={trend}
       >
         {(trend === 'upward' || trend === 'downward') && <STooltipDeltaIcon width={8.5} height={8.5} />}
-        {trend !== 'unknown' && <Text size={100}>{Math.abs(delta!)}%</Text>}
+        {trend !== 'unknown' && displayedDelta && <Text size={100}>{displayedDelta}%</Text>}
       </STooltipDeltaWrapper>,
     );
   }
