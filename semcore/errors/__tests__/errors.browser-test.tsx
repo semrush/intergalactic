@@ -46,7 +46,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Veriry custom error states', {
     tag: [TAG.PRIORITY_HIGH,
       '@errors',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/errors/tests/examples/custom-error-cases.tsx', 'en');
 

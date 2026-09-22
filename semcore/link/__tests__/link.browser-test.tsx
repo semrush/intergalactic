@@ -262,7 +262,13 @@ test.describe(` ${TAG.VISUAL}`, () => {
     ].join(' ');
 
     test(`Verify Link in all sizes: ${name}`, {
-      tag: [TAG.PRIORITY_HIGH, '@link', '@ellipsis'],
+      tag: [TAG.PRIORITY_HIGH, '@link', '@ellipsis',
+        '@badge',
+        '@base-components',
+        '@counter',
+        '@flex-box',
+        '@spin',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, sizesStoryPath, 'en', {
         addonLeft,
@@ -281,7 +287,11 @@ test.describe(` ${TAG.VISUAL}`, () => {
   // Section 2: detail matrix - the `state` column carries default/active/disabled, so a
   DETAIL_MATRIX.forEach((row) => {
     test(`Verify single Link: ${detailTestName(row)}`, {
-      tag: [TAG.PRIORITY_HIGH, '@link', '@ellipsis'],
+      tag: [TAG.PRIORITY_HIGH, '@link', '@ellipsis',
+        '@badge',
+        '@counter',
+        '@spin',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, storyPath, 'en', detailProps(row));
       await page.waitForTimeout(200); // Finish for ellipsis apply
@@ -308,7 +318,11 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   // Section 3: residual — noWrap is the one prop neither matrix carries
   test('Verify Link: noWrap without ellipsis', {
-    tag: [TAG.PRIORITY_HIGH, '@link'],
+    tag: [TAG.PRIORITY_HIGH, '@link',
+      '@badge',
+      '@counter',
+      '@spin',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 400, noWrap: true, ellipsis: { ellipsis: false }, w: 200,
@@ -330,7 +344,9 @@ test.describe(` ${TAG.VISUAL}`, () => {
   });
 
   test('Verify default link styles when links inside the text', {
-    tag: [TAG.PRIORITY_HIGH, '@link', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@link', '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/link/docs/examples/link_in_content.tsx', 'en');
 
@@ -392,7 +408,11 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
   test('Verify disabled link', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@link'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@link',
+      '@badge',
+      '@counter',
+      '@spin',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', { disabled: true });
 
@@ -414,7 +434,11 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
 
   noHintVariants.forEach(({ desc, vars }) => {
     test(`Verify no hint appears: ${desc}`, {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link',
+        '@badge',
+        '@counter',
+        '@spin',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, storyPath, 'en', { ...vars, size: 300, text: longText });
       await page.waitForTimeout(200);
@@ -485,7 +509,11 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
 
   constrainedWidthCases.forEach(({ desc, props, width, addonIndex }) => {
     test(`Verify constrained Link.Text width: ${desc}`, {
-      tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link'],
+      tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@link',
+        '@badge',
+        '@counter',
+        '@spin',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, storyPath, 'en', { ...constrainedLinkProps, ...props });
       await page.waitForTimeout(200);
@@ -523,7 +551,11 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
 
   externalLinkCases.forEach(({ desc, props, external }) => {
     test(`Verify external link detection: ${desc}`, {
-      tag: [TAG.PRIORITY_HIGH, '@link'],
+      tag: [TAG.PRIORITY_HIGH, '@link',
+        '@badge',
+        '@counter',
+        '@spin',
+        '@typography'],
     }, async ({ page }) => {
       await loadPageWithOrigin(page, { ...props, ellipsis: { ellipsis: false } });
       const link = locators.link(page).first();
@@ -537,7 +569,11 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify external link detection from string children', {
-    tag: [TAG.PRIORITY_HIGH, '@link'],
+    tag: [TAG.PRIORITY_HIGH, '@link',
+      '@badge',
+      '@counter',
+      '@spin',
+      '@typography'],
   }, async ({ page }) => {
     await loadPageWithOrigin(page, {
       childrenMode: 'string',
@@ -553,7 +589,10 @@ test.describe(`@link ${TAG.FUNCTIONAL}`, () => {
 
   hintPlacements.forEach((hintPlacement) => {
     test(`Verify hint placement: ${hintPlacement}`, {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@link'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@link',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, hintStoryPath, 'en', { hintPlacement, count: 1 });
       await page.locator('body').evaluate((body) => {

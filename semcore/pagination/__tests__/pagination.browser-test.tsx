@@ -193,7 +193,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify pages input by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pagination'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@pagination',
+      '@base-components',
+      '@button',
+      '@button-link',
+      '@flex-box'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/pagination/tests/examples/interactive-icon-in-input.tsx', 'en');
 
@@ -274,7 +278,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     await expect(page).toHaveScreenshot();
   });
   test('Verify custom view when buttons and inputs have addons', {
-    tag: [TAG.PRIORITY_HIGH, '@pagination'],
+    tag: [TAG.PRIORITY_HIGH, '@pagination',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/pagination/tests/examples/pages-and-input-custom-styles.tsx', 'en');
 

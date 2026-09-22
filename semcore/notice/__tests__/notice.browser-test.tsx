@@ -22,7 +22,10 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify roles and attributes and styles', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, '@notice',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice/docs/examples/basic_notice.tsx', 'en');
 
@@ -60,7 +63,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify notice with icon prop', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, '@notice',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice/docs/examples/basic_notice.tsx', 'en');
 
@@ -96,7 +102,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify NoticeSmart media variations', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, '@notice',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page }) => {
     for (const media of ['none', 'icon', 'illustration']) {
       await test.step(`Verify NoticeSmart with media set to ${media}`, async () => {
@@ -107,7 +116,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify NoticeSmart content combinations', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, '@notice',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page }) => {
     await test.step('Verify NoticeSmart without title', async () => {
       await loadPage(page, SMART_STORY, 'en', { title: '' });
@@ -131,7 +143,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify notice with big illustrations', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, '@notice',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice/tests/examples/notice_big_illustration.tsx', 'en');
 
@@ -142,7 +157,16 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Feedback notice', {
-    tag: [TAG.PRIORITY_HIGH, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, '@notice',
+      '@base-components',
+      '@button',
+      '@dropdown',
+      '@feedback-form',
+      '@flex-box',
+      '@input',
+      '@link',
+      '@textarea',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
@@ -152,7 +176,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify NoticeSmart after mouse and keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@notice',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
     const closeNotif = page.getByText('Close notification');
@@ -184,7 +211,16 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Feedback notice closed by action button', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice',
+      '@base-components',
+      '@button',
+      '@dropdown',
+      '@feedback-form',
+      '@flex-box',
+      '@input',
+      '@link',
+      '@textarea',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/feedback-yes-no/docs/examples/feedback-yes-no-example.tsx', 'en');
 
@@ -198,7 +234,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe(`NoticeSmart `, () => {
     test('Verify hidden prop hides notice', {
-      tag: [TAG.PRIORITY_HIGH, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await test.step('Verify notice is visible by default', async () => {
         await loadPage(page, SMART_STORY, 'en');
@@ -212,7 +251,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify closable prop and closing by click', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await test.step('Verify close button is absent when closable is false', async () => {
         await loadPage(page, SMART_STORY, 'en', { closable: false });
@@ -227,7 +269,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify close button is reachable by keyboard', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, SMART_STORY, 'en');
 
@@ -249,7 +294,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify actions are rendered only when passed', {
-      tag: [TAG.PRIORITY_HIGH, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await test.step('Verify actions are present by default', async () => {
         await loadPage(page, SMART_STORY, 'en');
@@ -263,7 +311,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify title and text are rendered only when passed', {
-      tag: [TAG.PRIORITY_HIGH, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await test.step('Verify title and text are present by default', async () => {
         await loadPage(page, SMART_STORY, 'en');
@@ -285,7 +336,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify media element is rendered according to media prop', {
-      tag: [TAG.PRIORITY_HIGH, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await test.step('Verify only one media element is rendered for icon', async () => {
         await loadPage(page, SMART_STORY, 'en', { media: 'icon' });
@@ -306,7 +360,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe(`NoticeSmart docs example `, () => {
     test('Verify NoticeSmart roles and attributes', {
-      tag: [TAG.PRIORITY_HIGH, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/notice/docs/examples/noticesmart.tsx', 'en');
 
@@ -335,7 +392,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test.describe(`Notice illustrations `, () => {
     test('Verify medium illustrations keep their default size and stay left of the content', {
-      tag: [TAG.PRIORITY_HIGH, '@notice'],
+      tag: [TAG.PRIORITY_HIGH, '@notice',
+        '@base-components',
+        '@button',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/notice/tests/examples/notice_medium_illustration.tsx', 'en');
 
