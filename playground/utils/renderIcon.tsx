@@ -48,8 +48,8 @@ const SizeToIconMap = {
     after: <ArrowRightM />,
   },
   l: {
-    before: <CheckL />,
-    after: <ArrowRightL />,
+    before: <CheckM />,
+    after: <ArrowRightM />,
   },
 };
 

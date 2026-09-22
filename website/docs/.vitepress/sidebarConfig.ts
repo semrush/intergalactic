@@ -443,6 +443,11 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Radio',
           },
           {
+            link: '/components/radio-cards/radio-cards',
+            activeMatch: '/components/radio-cards/',
+            text: 'RadioCards',
+          },
+          {
             link: '/components/scroll-area/scroll-area',
             activeMatch: '/components/scroll-area/',
             text: 'ScrollArea',
