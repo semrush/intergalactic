@@ -430,6 +430,53 @@ You can access `PatternFill` and `PatternSymbol` components for low level use.
 
 :::
 
+## Delta percentage
+
+Charts support displaying percentage delta values, allowing you to track how a metric changes between data points.
+
+By default, the percentage delta is calculated relative to the previous data point. You can customize this behavior using the `getPercentDelta` prop to define your own calculation logic.
+
+The calculation compares each data point with the preceding one:
+
+- The first data point returns `null` because there is no previous value to compare against.
+- If either value is not a `number`, the delta returns `null`.
+- If the previous value is `0`, the delta returns `0` when the current value is also `0`; otherwise, it returns `null`.
+- Results are rounded to one decimal place.
+
+In the example below each series covers one of these rules: `traffic` shows growth, decline and an unchanged value, `rounded` shows the rounding to one decimal place, and `zeroBaseline` shows both outcomes of a zero previous value. Hovering the first point shows no delta for any series.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/default-delta-percent-calculation.tsx';
+</script>
+
+:::
+
+### Customizing the calculation
+
+To customize how percentage deltas are calculated, pass a `getPercentDelta` callback. This allows you to change the reference point or implement custom calculation logic based on your data.
+
+The callback receives three parameters:
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `key` | `ObjectDataKey` | The key of the data property being evaluated. |
+| `index` | `number` | The index of the current data point. |
+| `data` | `Data` | The complete chart data. |
+
+The callback must return a `number` representing the percentage delta or `null` when the delta cannot be calculated (for example, due to missing values or other edge cases).
+
+The following example calculates the percentage delta relative to the first data point instead of the previous one:
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/d3-chart/custom-delta-percent-calculation.tsx';
+</script>
+
+:::
+
 ## Accessible data summary
 
 ### Data formatting

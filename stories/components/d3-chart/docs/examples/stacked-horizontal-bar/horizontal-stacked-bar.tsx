@@ -37,11 +37,11 @@ const Demo = () => {
               <>
                 <HoverRect.Tooltip.Title>{data[yIndex].bar}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>Category 1</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='chart-palette-order-1' mr={4}>Category 1</HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex].Category1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>Category 2</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='chart-palette-order-2' mr={4}>Category 2</HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex].Category2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>

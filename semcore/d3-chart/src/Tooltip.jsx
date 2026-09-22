@@ -168,6 +168,10 @@ function Title(props) {
 }
 Title.style = style;
 
+const CHART_PALETTE_ORDER_TO_LIGHTNESS = {
+  'chart-palette-order-1': 0.35,
+  'DEFAULT': 0.15,
+};
 function Dot(props) {
   const { styles, color, Children } = props;
   const resolveColor = useColorResolver();
@@ -183,12 +187,14 @@ function Dot(props) {
   const SDotGroup = Root;
   const SDot = Box;
   const SDotCircle = Box;
+  const SDotPattern = PatternSymbol;
+
   return sstyled(styles)(
     <SDotGroup render={Box} use:color={undefined} __excludeProps={['data', 'scale']}>
       {patterns
         ? (
             <SDot>
-              <PatternSymbol
+              <SDotPattern
                 color={resolveColor(color ?? defaultColor)}
                 patternKey={color ?? defaultColor}
               />
@@ -196,7 +202,10 @@ function Dot(props) {
           )
         : (
             <SDot>
-              <SDotCircle color={resolveColor(color ?? defaultColor)} />
+              <SDotCircle
+                color={resolveColor(color ?? defaultColor)}
+                lightness={CHART_PALETTE_ORDER_TO_LIGHTNESS[color ?? defaultColor] ?? CHART_PALETTE_ORDER_TO_LIGHTNESS.DEFAULT}
+              />
             </SDot>
           )}
       <Children />

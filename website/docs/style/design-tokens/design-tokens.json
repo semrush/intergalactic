@@ -231,7 +231,6 @@
       "color-picker",
       "counter",
       "d3-chart",
-      "data-table",
       "drag-and-drop",
       "dropdown",
       "feature-highlight",
@@ -356,7 +355,6 @@
     "components": [
       "accordion",
       "bulk-textarea",
-      "d3-chart",
       "drag-and-drop",
       "input",
       "notice",
@@ -383,7 +381,9 @@
     "name": "--intergalactic-bg-secondary-invert",
     "value": "oklch(0.969 0.057 140 / 0.118)",
     "description": "Inverted version of the secondary background of the interface which contains the main data and information.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-success",
@@ -492,6 +492,7 @@
       "color-picker",
       "counter",
       "d3-chart",
+      "data-table",
       "date-picker",
       "divider",
       "dropdown",
@@ -508,7 +509,9 @@
     "name": "--intergalactic-border-accent",
     "value": "oklch(0.23 0.01 140)",
     "description": "Accent border for the active and selected states..",
-    "components": []
+    "components": [
+      "accordion"
+    ]
   },
   {
     "name": "--intergalactic-border-primary-invert",
@@ -536,7 +539,7 @@
   },
   {
     "name": "--intergalactic-border-secondary-invert",
-    "value": "oklch(0.989 0.019 140 / 0.232)",
+    "value": "oklch(0.994 0.011 140 / 0.283)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
   },
@@ -650,18 +653,64 @@
     "name": "--intergalactic-chart-data-critical",
     "value": "oklch(0.74 0.19 22)",
     "description": "Critical data color for charts.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-data-success",
     "value": "oklch(0.82 0.19 143)",
     "description": "Success data color for charts.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-data-warning",
     "value": "oklch(0.82 0.156 61.6)",
     "description": "Warning data color for charts.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-new",
+    "value": "oklch(0.82 0.15 170)",
+    "description": "Color for the \"New\" data on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-lost",
+    "value": "oklch(0.74 0.19 22)",
+    "description": "Color for the \"Lost\" data on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-commercial",
+    "value": "oklch(0.74 0.17 303)",
+    "description": "Color for the commercial data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-informational",
+    "value": "oklch(0.58 0.168 278.2)",
+    "description": "Color for the informational data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-navigational",
+    "value": "oklch(0.82 0.15 170)",
+    "description": "Color for the navigational data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-task",
+    "value": "oklch(0.74 0.225 330)",
+    "description": "Color for the task data intent on the chart.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-data-intent-transactional",
+    "value": "oklch(0.82 0.18 80)",
+    "description": "Color for the transactional data intent on the chart.",
     "components": []
   },
   {
@@ -715,12 +764,60 @@
     ]
   },
   {
+    "name": "--intergalactic-chart-grid-bg-good",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.82 0.15 170) l c h / 0.1) 0%, oklch(from oklch(0.82 0.15 170) l c h / 0.09) 12.677%, oklch(from oklch(0.82 0.15 170) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for chart areas with positive dynamics.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-bad",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.74 0.19 22) l c h / 0.1) 0%, oklch(from oklch(0.74 0.19 22) l c h / 0.09) 12.677%, oklch(from oklch(0.74 0.19 22) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for chart areas with negative dynamics.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-highlight",
+    "value": "linear-gradient(180deg, oklch(0.97 0.001 180) 0%, oklch(0.97 0.001 180) 41.827%, rgb(0 0 0 / 0) 100%)",
+    "description": "Background gradient for highlighted chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-insight",
+    "value": "linear-gradient(180deg, oklch(from oklch(0.74 0.17 303) l c h / 0.1) 0%, oklch(from oklch(0.74 0.17 303) l c h / 0.1) 12.677%, oklch(from oklch(0.74 0.17 303) l c h / 0.01) 87.981%)",
+    "description": "Background gradient for insight chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-pattern",
+    "value": "linear-gradient(0deg, oklch(from oklch(0.23 0.01 140) l c h / 0.1) 8.532%, oklch(0.23 0.01 140) 29.015%)",
+    "description": "Pattern gradient for chart grid backgrounds.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-bg-potential",
+    "value": "linear-gradient(180deg, oklch(0.941 0.018 177 / 0.4) 0%, oklch(0.909 0.041 309 / 0.4) 75%, rgb(0 0 0 / 0) 100%)",
+    "description": "Background gradient for potential chart areas.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-line-forecast",
+    "value": "linear-gradient(90deg, oklch(0.74 0.17 303) 0%, oklch(0.9 0.11 175) 100%)",
+    "description": "Forecast line color on the chart grid.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-chart-grid-text-label",
     "value": "oklch(0.097 0.023 156.5 / 0.468)",
     "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
     ]
+  },
+  {
+    "name": "--intergalactic-chart-grid-text-label-accent",
+    "value": "oklch(0.1 0.03 137 / 0.899)",
+    "description": "Text label with accent on the chart grid.",
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
@@ -793,7 +890,7 @@
   },
   {
     "name": "--intergalactic-chart-palette-order-9",
-    "value": "oklch(0.58 0.168 278.2)",
+    "value": "oklch(0.53 0.157 279.2)",
     "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
@@ -920,6 +1017,14 @@
     "value": "oklch(0.176 0.033 175.6 / 0.056)",
     "description": "Background color for the clickable date on the X-axis of the chart grid.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-chart-x-axis-accent-tick",
+    "value": "oklch(0.96 0.001 180)",
+    "description": "Background color for the accent tick on the X-axis.",
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-control-carousel-indicator",
@@ -1758,10 +1863,10 @@
     "value": "oklch(0.092 0.024 152.2 / 0.526)",
     "description": "Default icon weight on normal backgrounds—stronger emphasis than secondary icons.",
     "components": [
-      "accordion",
       "carousel",
       "feature-highlight",
       "notice",
+      "radio-cards",
       "typography"
     ]
   },
@@ -1849,7 +1954,6 @@
     "value": "oklch(0.1 0.023 159.1 / 0.433)",
     "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
     "components": [
-      "data-table",
       "inline-input",
       "input",
       "input-number"
@@ -2095,19 +2199,25 @@
     "name": "--intergalactic-control-presets-bg",
     "value": "oklch(1 0 0)",
     "description": "Background of the Presets items.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-border-selected",
     "value": "oklch(0.23 0.01 140)",
     "description": "Border color of the selected Preset item.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-control-presets-border-hover",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
     "description": "Border color of the hovered Preset item.",
-    "components": []
+    "components": [
+      "radio-cards"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg",
@@ -2350,14 +2460,26 @@
   {
     "name": "--intergalactic-table-border-accent",
     "value": "oklch(0.137 0.026 175.7 / 0.161)",
-    "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table.",
-    "components": []
+    "description": "Accent borders in the table, e.g. for the accordion.",
+    "components": [
+      "data-table"
+    ]
+  },
+  {
+    "name": "--intergalactic-table-border-accordion-accent",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Accent left border for the table.",
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell",
     "value": "oklch(1 0 0)",
     "description": "Background of the default cell in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-accordion",
@@ -2489,13 +2611,13 @@
   },
   {
     "name": "--intergalactic-table-th-gradient",
-    "value": "linear-gradient(to right, transparent 0%, oklch(0.9 0.002 177) 100%)",
+    "value": "linear-gradient(to right, transparent 0%, #ffffff 100%)",
     "description": "Background gradient for sorting icon that absolute positioned in the table head.",
     "components": []
   },
   {
     "name": "--intergalactic-table-th-primary-cell",
-    "value": "oklch(0.98 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the header cell in the primary Table.",
     "components": [
       "data-table"
@@ -2503,17 +2625,17 @@
   },
   {
     "name": "--intergalactic-table-th-primary-cell-active",
-    "value": "oklch(0.96 0.001 180)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the active header cell in the primary Table.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-table-th-primary-cell-hover",
-    "value": "oklch(0.96 0.001 180)",
-    "description": "Background of the hovered header cell in the primary Table.",
     "components": [
       "data-table"
     ]
+  },
+  {
+    "name": "--intergalactic-table-th-primary-cell-hover",
+    "value": "oklch(1 0 0)",
+    "description": "Background of the hovered header cell in the primary Table.",
+    "components": []
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
@@ -2769,7 +2891,7 @@
   },
   {
     "name": "--intergalactic-tag-secondary-border-invert",
-    "value": "oklch(0.989 0.019 140 / 0.232)",
+    "value": "oklch(0.994 0.011 140 / 0.283)",
     "description": "Inverted border color of the secondary Tag.",
     "components": [
       "tag"
@@ -3058,6 +3180,7 @@
     "value": "oklch(0.999 0.001 180 / 0.949)",
     "description": "Inverted version of the primary text.",
     "components": [
+      "d3-chart",
       "date-picker",
       "feature-highlight",
       "notice-bubble"
@@ -3073,11 +3196,13 @@
       "card",
       "counter",
       "d3-chart",
+      "data-table",
       "date-picker",
       "dropdown",
       "dropdown-menu",
       "flags",
       "pills",
+      "radio-cards",
       "slider",
       "switch",
       "tab-panel",
@@ -3090,7 +3215,9 @@
     "name": "--intergalactic-text-secondary-invert",
     "value": "oklch(0.997 0.004 165.9 / 0.684)",
     "description": "Inverted version of the secondary text.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-text-success",
@@ -3118,6 +3245,7 @@
     "description": "Inverted version of the default Tooltip background.",
     "components": [
       "base-components",
+      "d3-chart",
       "tooltip"
     ]
   },
@@ -3131,10 +3259,11 @@
   },
   {
     "name": "--intergalactic-tooltip-border-invert",
-    "value": "oklch(0.35 0.006 140)",
+    "value": "oklch(0.4 0.004 140)",
     "description": "Border of the Tooltip with dark theme.",
     "components": [
       "base-components",
+      "d3-chart",
       "tooltip"
     ]
   },
@@ -3226,6 +3355,7 @@
       "link",
       "pills",
       "radio",
+      "radio-cards",
       "slider",
       "switch",
       "tab-line",
@@ -3250,11 +3380,24 @@
     "components": []
   },
   {
+    "name": "--intergalactic-box-shadow-chart-dot-elevated",
+    "value": "0px 0px 2px 0px oklch(0.137 0.026 175.7 / 0.161), 0px 1px 2px 0px oklch(0.137 0.026 175.7 / 0.161)",
+    "description": "Shadow of the elevated chart dot.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-box-shadow-chart-elevated",
+    "value": "0px 0px 2px 0px oklch(from oklch(0.23 0.01 140) l c h / 0.165), 0px 1px 2px 0px oklch(from oklch(0.23 0.01 140) l c h / 0.165)",
+    "description": "Shadow of elevated elements on charts.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-box-shadow-control-elevated",
     "value": "0px 0px 1px 0px oklch(0.176 0.033 175.7 / 0.07), 0px 1px 3px 0px oklch(0.176 0.033 175.7 / 0.07)",
     "description": "Shadow of the Switch toggle.",
     "components": [
       "pills",
+      "radio-cards",
       "switch"
     ]
   },
@@ -3370,10 +3513,13 @@
     "value": "2px",
     "description": "Tiny padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "counter",
+      "data-table",
       "input-tags",
       "notice-bubble",
       "pills",
+      "radio-cards",
       "typography"
     ]
   },
@@ -3385,6 +3531,8 @@
       "base-components",
       "bulk-textarea",
       "counter",
+      "d3-chart",
+      "data-table",
       "dropdown",
       "dropdown-menu",
       "input-tags",
@@ -3409,8 +3557,10 @@
     "value": "8px",
     "description": "Small padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "base-components",
       "bulk-textarea",
+      "data-table",
       "dropdown",
       "fullscreen-modal",
       "modal",
@@ -3426,11 +3576,14 @@
     "value": "12px",
     "description": "Medium padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "base-components",
       "base-trigger",
       "bulk-textarea",
       "button",
       "card",
+      "d3-chart",
+      "data-table",
       "dropdown",
       "fullscreen-modal",
       "input",
@@ -3438,6 +3591,7 @@
       "modal",
       "notice",
       "pills",
+      "radio-cards",
       "tab-panel",
       "textarea",
       "time-picker",
@@ -3451,8 +3605,10 @@
     "value": "16px",
     "description": "Large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "color-picker",
+      "data-table",
       "feature-popover",
       "fullscreen-modal",
       "notice",
@@ -3467,9 +3623,12 @@
     "value": "20px",
     "description": "Extra large padding for content inside controls and surfaces.",
     "components": [
+      "accordion",
       "bulk-textarea",
       "card",
+      "data-table",
       "notice",
+      "radio-cards",
       "wizard"
     ]
   },
@@ -3500,7 +3659,10 @@
     "value": "2px",
     "description": "Extra small gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "color-picker",
+      "d3-chart",
+      "data-table",
       "typography"
     ]
   },
@@ -3509,14 +3671,18 @@
     "value": "4px",
     "description": "Small gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "base-trigger",
       "bulk-textarea",
       "carousel",
+      "d3-chart",
+      "data-table",
       "date-picker",
       "dropdown-menu",
       "inline-input",
       "link",
       "pagination",
+      "radio-cards",
       "tag",
       "typography",
       "wizard"
@@ -3531,11 +3697,13 @@
       "button",
       "checkbox",
       "color-picker",
+      "d3-chart",
       "dropdown",
       "dropdown-menu",
       "input",
       "pills",
       "radio",
+      "radio-cards",
       "select",
       "tab-line",
       "tab-panel"
@@ -3546,10 +3714,13 @@
     "value": "8px",
     "description": "Large gap between content elements inside controls, rows, or columns.",
     "components": [
+      "accordion",
       "breadcrumbs",
       "button",
       "carousel",
       "checkbox",
+      "d3-chart",
+      "data-table",
       "date-picker",
       "dropdown",
       "fullscreen-modal",
@@ -3557,6 +3728,7 @@
       "notice-bubble",
       "pagination",
       "radio",
+      "radio-cards",
       "select",
       "tag",
       "typography"
@@ -3569,6 +3741,8 @@
     "components": [
       "carousel",
       "color-picker",
+      "d3-chart",
+      "data-table",
       "fullscreen-modal",
       "notice-bubble",
       "pagination",
@@ -3582,6 +3756,7 @@
     "description": "2x large gap between elements, rows, or columns.",
     "components": [
       "carousel",
+      "d3-chart",
       "pagination",
       "tab-line",
       "typography"
@@ -3722,7 +3897,8 @@
     "value": "6px",
     "description": "Use for rounding Pills.",
     "components": [
-      "pills"
+      "pills",
+      "radio-cards"
     ]
   },
   {
@@ -3753,6 +3929,7 @@
     "value": "8px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
     "components": [
+      "accordion",
       "card",
       "d3-chart",
       "feedback-form",
@@ -3815,7 +3992,6 @@
     "value": "200",
     "description": "Use for Accordion.",
     "components": [
-      "accordion",
       "data-table"
     ]
   },

@@ -10,7 +10,7 @@ export type VennChartData = Record<DataKey, number>;
 
 export type VennChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<VennChartData>,
-  'showTotalInTooltip'
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
 > & {
   /** Internal */
   groupKey?: never;
@@ -27,6 +27,7 @@ export type VennChartDefaultProps = {
   alignItems: 'flex-start';
   marginY: 0;
   marginX: 0;
+  locale: 'en';
 };
 
 export type VennChartType = Intergalactic.Component<typeof Flex, VennChartProps>;

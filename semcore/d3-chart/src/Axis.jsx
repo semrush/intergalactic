@@ -4,6 +4,7 @@ import React from 'react';
 import createElement from './createElement';
 import style from './style/axis.shadow.css';
 import { scaleOfBandwidth } from './utils';
+import { TextMeasurer } from './utils/TextMeasurer';
 
 const TICK_MARGIN_X = 16;
 const TICK_MARGIN_Y = 8;
@@ -226,6 +227,7 @@ class AxisRoot extends Component {
       ticks: this.ticks,
       indexScale,
       position,
+      splitTextByWidth: splitTextByWidth(measurer),
     };
   }
 
