@@ -19,6 +19,12 @@ export const BasicUsage = {
   argTypes: getChartArgTypes({
     useCustomValueFormatter: { control: 'boolean' },
     withZeroValue: { control: 'boolean' },
+    showDots: { control: 'boolean' },
+    stacked: { control: 'boolean' },
+    singleSeries: { control: 'boolean' },
+    curveName: { control: 'select', options: ['linear', 'cardinal', 'monotoneX', 'step', 'basis'] },
+    highlightDots: { control: 'select', options: ['none', 'good', 'bad', 'insightful', 'mixed'] },
+    dataType: { control: 'select', options: ['none', 'forecast', 'potential', 'both'] },
   }),
   args: areaExampleProps,
 };
