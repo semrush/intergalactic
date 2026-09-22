@@ -37,6 +37,7 @@ import Pagination from './entries/Pagination';
 import Pills from './entries/Pills';
 import ProgressBar from './entries/ProgressBar';
 import Radio from './entries/Radio';
+import RadioCards from './entries/RadioCards';
 import Spin from './entries/Spin';
 import SpinContainer from './entries/SpinContainer';
 import Switch from './entries/Switch';
@@ -71,6 +72,7 @@ const registry = {
   Pills,
   ProgressBar,
   Radio,
+  RadioCards,
   Spin,
   SpinContainer,
   Switch,
