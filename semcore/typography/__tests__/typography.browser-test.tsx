@@ -56,7 +56,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify List supports custom marker and Item content', {
-    tag: [TAG.PRIORITY_HIGH, '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/list-with-custom-bullets.tsx', 'en');
 
@@ -83,7 +85,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify List with custom bullets', {
-    tag: [TAG.PRIORITY_HIGH, '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/list-with-custom-content.tsx', 'en');
 
@@ -103,7 +107,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify text styles with tags', {
-    tag: [TAG.PRIORITY_HIGH, '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/text-styles.tsx', 'en');
 
@@ -113,7 +119,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Additional information styles', {
-    tag: [TAG.PRIORITY_MEDIUM, '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, '@typography',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/typography/docs/examples/additional-information.tsx', 'en');
 
@@ -185,7 +193,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify counter in limits', {
-    tag: [TAG.PRIORITY_LOW, '@counter', '@typography'],
+    tag: [TAG.PRIORITY_LOW, '@counter', '@typography',
+      '@base-components',
+      '@flex-box',
+      '@progress-bar'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_limits.tsx', 'en');
 
@@ -264,7 +275,9 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   nestedListIndent.forEach(({ size, thirdLevel }) => {
     test(`Verify nested list indentation with size=${size}`, {
-      tag: [TAG.PRIORITY_HIGH, '@typography'],
+      tag: [TAG.PRIORITY_HIGH, '@typography',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/typography/tests/examples/nested-list-indent-props.tsx', 'en', { size });
 

@@ -81,7 +81,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   variables.forEach((item) => {
     test(`Verify base truncation and last item is active=${item.active}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@breadcrumbs'],
+        '@breadcrumbs',
+        '@ellipsis'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/breadcrumbs/tests/examples/item-truncation.tsx', 'en', item);
 

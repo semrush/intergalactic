@@ -30,7 +30,12 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify counter in filters', {
     tag: [TAG.PRIORITY_HIGH,
-      '@counter'],
+      '@counter',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@filter-trigger',
+      '@dropdown'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_filters.tsx', 'en');
 
@@ -44,7 +49,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify counter in dots', {
     tag: [TAG.PRIORITY_HIGH,
-      '@counter', '@dot'],
+      '@counter', '@dot',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_dot.tsx', 'en');
 
@@ -65,7 +71,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify counter in forms', {
     tag: [TAG.PRIORITY_HIGH,
-      '@counter', '@textarea'],
+      '@counter', '@textarea',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/counter/docs/examples/counter_in_forms.tsx', 'en');
 

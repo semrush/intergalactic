@@ -25,7 +25,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.KEYBOARD,
       '@input',
       '@typography',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/input-phone/docs/examples/unknown_country_and_number_format.tsx', 'en');
 
@@ -41,7 +44,11 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.KEYBOARD,
       '@input',
       '@typography',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flags',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/input-phone/docs/examples/known_country_but_the_number_format_is_unknown.tsx', 'en');
 
@@ -61,7 +68,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@input',
       '@typography',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/input-phone/docs/examples/unknown_country_and_number_format.tsx', 'en');
 
@@ -90,7 +100,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@input',
       '@typography',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flags',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/input-phone/docs/examples/known_country_but_the_number_format_is_unknown.tsx', 'en');
 

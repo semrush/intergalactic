@@ -67,7 +67,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
       if (merged) descParts.push('merged');
 
       test(`Verify Link Trigger size=${size}, ${descParts.join(', ')}, ${ellipsisDesc}`, {
-        tag: [TAG.PRIORITY_HIGH, '@link-trigger', '@ellipsis'],
+        tag: [TAG.PRIORITY_HIGH, '@base-trigger', '@link-trigger', '@badge', '@counter', '@ellipsis', '@flags', '@tag', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, storyPath, 'en', {
           size, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
@@ -108,7 +108,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   // Section 2: Residual tests - disabled, loading, mixed addon types
   test('Verify Link Trigger: disabled with counter addon', {
-    tag: [TAG.PRIORITY_HIGH, '@link-trigger'],
+    tag: [TAG.PRIORITY_HIGH, '@base-trigger', '@link-trigger', '@badge', '@counter', '@flags', '@tag', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 300, disabled: true, showAddonLeft: true, addonLeftType: 'counter',
@@ -118,7 +118,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
   });
 
   test('Verify Link Trigger: loading ', {
-    tag: [TAG.PRIORITY_HIGH, '@link-trigger'],
+    tag: [TAG.PRIORITY_HIGH, '@base-trigger', '@link-trigger', '@badge', '@counter', '@flags', '@tag', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 300, loading: true, showAddonLeft: true, addonLeftType: 'icon',
@@ -128,7 +128,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
   });
 
   test('Verify Link Trigger: mixed addon types', {
-    tag: [TAG.PRIORITY_HIGH, '@link-trigger'],
+    tag: [TAG.PRIORITY_HIGH, '@base-trigger', '@link-trigger', '@badge', '@counter', '@flags', '@tag', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 300, showAddonLeft: true, addonLeftType: 'badge',
@@ -164,7 +164,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
     selectSizes.forEach((size) => {
       selectAddonCombos.forEach(({ desc, loading = false, ...addons }) => {
         test(`Verify LinkTrigger inside Select truncates with ${desc}, size=${size}`, {
-          tag: [TAG.PRIORITY_HIGH, '@link-trigger', '@select', '@ellipsis'],
+          tag: [TAG.PRIORITY_HIGH, '@base-trigger', '@link-trigger', '@badge', '@base-components', '@flex-box', '@counter', '@ellipsis', '@flags', '@select', '@tag', '@typography'],
         }, async ({ page }) => {
           await loadPage(
             page,
@@ -195,7 +195,7 @@ test.describe(` ${TAG.VISUAL}`, () => {
     noHintSizes.forEach((size) => {
       noHintVariants.forEach(({ desc, vars, text }) => {
         test(`Verify no hint appears: size=${size}, ${desc}`, {
-          tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@link-trigger'],
+          tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@base-trigger', '@ellipsis', '@link-trigger', '@badge', '@counter', '@flags', '@tag', '@typography'],
         }, async ({ page }) => {
           await loadPage(page, storyPath, 'en', { ...vars, size, text });
           await page.waitForTimeout(100);
@@ -231,7 +231,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@base-trigger',
       '@link-trigger',
-      '@select'],
+      '@base-components',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
@@ -260,7 +263,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@base-trigger',
       '@link-trigger',
-      '@select'],
+      '@base-components',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 
@@ -290,7 +296,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@base-trigger',
       '@link-trigger',
-      '@select'],
+      '@base-components',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-trigger/docs/link-trigger/examples/link-trigger.tsx', 'en');
 

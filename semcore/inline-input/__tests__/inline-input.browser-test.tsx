@@ -36,7 +36,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify active state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, {
       tag: [TAG.PRIORITY_HIGH,
         '@inline-input',
-        '@input-number'],
+        '@input-number',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
 
@@ -62,7 +64,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify disabled state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, {
       tag: [TAG.PRIORITY_HIGH,
         '@inline-input',
-        '@input-number'],
+        '@input-number',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
 
@@ -90,7 +94,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify loading state=${item.state}  default-value = ${item.defaultValue} placeholder = ${item.placeholder} styles and focus`, {
       tag: [TAG.PRIORITY_HIGH,
         '@inline-input',
-        '@input-number'],
+        '@input-number',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en', item);
 
@@ -187,7 +193,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@inline-input',
-      '@input-number'],
+      '@input-number',
+      '@inline-edit',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/docs/examples/inheriting_text_size.tsx', 'en');
 
@@ -259,7 +267,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify onBlurBehavior by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@inline-input'],
+      '@inline-input',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/tests/examples/on-blur-behavior-test.tsx', 'en');
 
@@ -318,7 +328,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify onBlurBehavior by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@inline-input'],
+      '@inline-input',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/tests/examples/on-blur-behavior-test.tsx', 'en');
 
@@ -387,7 +399,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Confirm and Cancel and onChange activate by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@inline-input'],
+      '@inline-input',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/tests/examples/on-blur-behavior-test.tsx', 'en');
 
@@ -441,7 +455,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Confirm and Cancel and onChange activate by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@inline-input'],
+      '@inline-input',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/tests/examples/on-blur-behavior-test.tsx', 'en');
 
@@ -678,7 +694,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       TAG.MOUSE,
       '@inline-input',
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-input/tests/examples/styles.tsx', 'en');
 

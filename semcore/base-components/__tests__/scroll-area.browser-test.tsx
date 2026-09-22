@@ -38,7 +38,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
 
@@ -67,7 +68,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
 
@@ -87,7 +89,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -127,7 +130,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.KEYBOARD,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/dynamic_virtual_list.tsx', 'en');
 
@@ -159,7 +165,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/with-observe-parent-size.tsx', 'en');
 
@@ -181,6 +189,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@base-components',
       '@scroll-area',
+      '@flex-box',
       '@button'],
   }, async ({ page }) => {
     const logs: string[] = [];
@@ -207,7 +216,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.KEYBOARD,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
     const scrollContainer = page.locator('[data-ui-name="ScrollArea.Container"]');
@@ -225,7 +235,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/docs/examples/basic_usage.tsx', 'en');
 
@@ -303,7 +314,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@base-components',
-        '@scroll-area'],
+        '@scroll-area',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/scroll-props.tsx', 'en', item);
 
@@ -325,7 +337,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@base-components',
-        '@scroll-area'],
+        '@scroll-area',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/scroll-area/tests/examples/scroll-props.tsx', 'en', item);
 
@@ -351,7 +364,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify scrollArea relative height after resize', {
     tag: [TAG.PRIORITY_MEDIUM,
       '@base-components',
-      '@scroll-area'],
+      '@scroll-area',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/scroll-area/advanced/examples/relative_container_height.tsx', 'en');
 

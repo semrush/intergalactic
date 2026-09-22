@@ -33,7 +33,14 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@dropdown',
       '@select',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@divider',
+      '@filter-trigger',
+      '@flex-box',
+      '@input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/advanced-filters/docs/examples/filters-with-filter-conditions.tsx', 'en');
 
@@ -72,7 +79,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@dropdown',
       '@select',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@divider',
+      '@filter-trigger',
+      '@flex-box',
+      '@input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/advanced-filters/docs/examples/filters-with-filter-conditions.tsx', 'en');
 
@@ -242,7 +256,14 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@dropdown',
       '@select',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@divider',
+      '@filter-trigger',
+      '@flex-box',
+      '@input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/advanced-filters/docs/examples/filters-with-filter-conditions.tsx', 'en');
 

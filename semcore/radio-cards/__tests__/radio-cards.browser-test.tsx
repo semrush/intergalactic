@@ -40,7 +40,10 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify default, hover, focus and disabled states', {
-    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en');
 
@@ -64,7 +67,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify selected state after click', {
-    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en');
 
@@ -73,7 +79,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify loading state renders a skeleton in place of the text addon', {
-    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     /* Card 1 carries the longest text addon, so the fixed 24x16 skeleton is easiest to eyeball there. */
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1' });
@@ -83,7 +92,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify the skeleton wraps together with a long text', {
-    tag: [TAG.PRIORITY_MEDIUM, '@radio-cards'],
+    tag: [TAG.PRIORITY_MEDIUM, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await page.setViewportSize({ width: 780, height: 500 });
 
@@ -101,7 +113,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     which is the layout most likely to break on card paddings and vertical alignment.
   */
   test('Verify the custom layout with large icons from the docs example', {
-    tag: [TAG.PRIORITY_MEDIUM, '@radio-cards'],
+    tag: [TAG.PRIORITY_MEDIUM, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/docs/examples/large-icons.tsx', 'en');
 
@@ -131,7 +146,10 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify click selects a card', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en');
 
@@ -144,7 +162,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify disabled card cannot be selected', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en');
 
@@ -160,7 +181,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     Nothing sets a `tabindex` attribute, so this is asserted via focus, not attributes.
   */
   test('Verify a single tab stop lands on the checked card', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en');
 
@@ -187,7 +211,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify ArrowRight skips the disabled card', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en');
 
@@ -202,7 +229,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify ArrowLeft navigation and wrap-around', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { disabledCard: 'none' });
 
@@ -248,7 +278,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify group disabled prop disables every card', {
-    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { disabled: true });
 
@@ -262,7 +295,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify uncontrolled usage with defaultValue', {
-    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { uncontrolled: true, defaultValue: '2', disabledCard: 'none' });
 
@@ -280,7 +316,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify loading card swaps its text addon for a skeleton', {
-    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
 
@@ -306,7 +345,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify loading card stays selectable with the mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
 
@@ -324,7 +366,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify loading card stays in the keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { loadingCard: '1', disabledCard: 'none' });
 
@@ -345,7 +390,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify uncontrolled usage without an initial value', {
-    tag: [TAG.PRIORITY_HIGH, '@radio-cards'],
+    tag: [TAG.PRIORITY_HIGH, '@radio-cards',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/radio-cards/tests/examples/radio-card-all-props.tsx', 'en', { uncontrolled: true, disabledCard: 'none' });
 

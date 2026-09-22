@@ -56,7 +56,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Base example looks good in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', item);
 
@@ -69,7 +70,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Side panel with Header and Footer looks good in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@base-components',
+        '@button-link',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/advanced_example.tsx', 'en', item);
 
@@ -113,7 +117,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Internal component inside positioned correclty in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx', 'en', item);
 
@@ -126,7 +131,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Side panel with disabled overlay in each placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@side-panel',
-        '@button'],
+        '@button',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/side-panel/docs/examples/disabling_overlay.tsx', 'en', item);
 
@@ -140,7 +146,8 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify No Close button when no SidePanel.Close and closable = false', {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', { closable: false });
 
@@ -154,7 +161,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Close button shown when SidePanel.Close and closable = false', {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true });
 
@@ -169,7 +181,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Close button looks good when SidePanel.Close and closable = true', {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true });
 
@@ -185,7 +202,12 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@side-panel',
       '@ellipsis',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@button',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     const titleText = 'Heading 6, 16px Heading 6, 16px';
 
@@ -222,7 +244,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify back button stays intact while long title text truncates via ellipsis', {
-    tag: [TAG.PRIORITY_HIGH, '@side-panel', '@ellipsis', '@button'],
+    tag: [TAG.PRIORITY_HIGH, '@side-panel', '@ellipsis', '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -273,7 +300,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/advanced_example.tsx', 'en');
 
@@ -333,7 +363,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/tests/examples/side-panel-additional-states.tsx', 'en', { withClose: true });
 
@@ -372,7 +407,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx', 'en', { closable: false });
 
@@ -400,7 +436,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/access_to_internal_components.tsx', 'en', { closable: false });
 
@@ -432,7 +469,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', { closable: false });
 
@@ -460,7 +498,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@side-panel',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/side-panel/docs/examples/basic_example.tsx', 'en', { closable: false });
 
@@ -499,7 +542,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@ellipsis'],
+      '@ellipsis',
+      '@button'],
   }, async ({ page }) => {
     const asyncTitle = 'My Article Title';
     const errors = collectRuntimeErrors(page);
@@ -525,7 +569,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@side-panel',
-      '@ellipsis'],
+      '@ellipsis',
+      '@button'],
   }, async ({ page }) => {
     const initialTitle = 'My Article Title';
     const errors = collectRuntimeErrors(page);

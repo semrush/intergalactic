@@ -39,7 +39,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   placement.forEach((item) => {
     test(`Verify Feature popover when placement = ${item.placement}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@feature-popover'],
+        '@feature-popover',
+        '@base-components',
+        '@button',
+        '@dropdown-menu',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx', 'en', item);
 
@@ -65,7 +70,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   closeIcon.forEach((item) => {
     test(`Verify Feature popover styles with closeIcon = ${item.closeIcon} and theme = ${item.theme}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@feature-popover'],
+        '@feature-popover',
+        '@base-components',
+        '@button',
+        '@dropdown-menu',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en', item);
 
@@ -93,7 +103,12 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test(`Verify Feature popover styles with medium illustration`, {
     tag: [TAG.PRIORITY_HIGH,
-      '@feature-popover'],
+      '@feature-popover',
+      '@base-components',
+      '@button',
+      '@dropdown-menu',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-medium-illustration.tsx', 'en', { disablePortal: false });
 
@@ -113,7 +128,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Base example with Close keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@feature-popover'],
+      '@feature-popover',
+      '@base-components',
+      '@button',
+      '@dropdown-menu',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
 
@@ -176,7 +196,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Base example without Close keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@feature-popover'],
+      '@feature-popover',
+      '@base-components',
+      '@button',
+      '@dropdown-menu',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en', { closeIcon: false });
 
@@ -208,7 +233,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Base example with Close mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@feature-popover'],
+      '@feature-popover',
+      '@base-components',
+      '@button',
+      '@dropdown-menu',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/docs/examples/Basic.tsx', 'en');
 
@@ -259,7 +289,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify Focus order when disablePortal = false', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@feature-popover'],
+      '@feature-popover',
+      '@base-components',
+      '@button',
+      '@dropdown-menu',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx', 'en', { disablePortal: false });
 
@@ -282,7 +317,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   autoFocus.forEach((item) => {
     test(`Verify Feature popover when autoFocus = ${item.autoFocus}`, {
       tag: [TAG.PRIORITY_MEDIUM,
-        '@feature-popover'],
+        '@feature-popover',
+        '@base-components',
+        '@button',
+        '@dropdown-menu',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/feature-popover/tests/examples/base-usage-with-all-props.tsx', 'en', item);
 
