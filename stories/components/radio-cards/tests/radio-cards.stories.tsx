@@ -22,6 +22,10 @@ export const RadioCardAllProps: StoryObj<typeof defaultRadioCardsProps> = {
       control: { type: 'text' },
       description: 'Accessible name for the radio group',
     },
+    'name': {
+      control: { type: 'text' },
+      description: 'Radio cards group name, shared by every radio input in the group',
+    },
     'value': {
       control: { type: 'select' },
       options: ['1', '2', '3', '4'],

@@ -17,11 +17,12 @@ type ExampleProps = NSRadioCards.Props & {
   uncontrolled?: boolean;
 };
 
-const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: ExampleProps } = (props: ExampleProps) => {
+const Demo = (props: ExampleProps) => {
   const {
     value,
     defaultValue,
     disabled,
+    name = 'radio-cards',
     disabledCard = 'none',
     loadingCard = 'none',
     text = 'Lost and Vital',
@@ -57,7 +58,8 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
     but an item's own prop wins - so an explicit `false` here would cancel the group
     `disabled` prop and it would look like it does nothing.
   */
-  const itemDisabled = (cardValue: string) => (disabledCard === cardValue ? { disabled: true } : {});
+  const itemDisabled = (cardValue: NSRadioCards.Value) =>
+    disabledCard === cardValue ? { disabled: true } : {};
 
   const cards = (
     <>
@@ -104,7 +106,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         ? (
             <RadioCards
               aria-label={ariaLabel}
-              name='radio-cards'
+              name={name}
               defaultValue={defaultValue}
               disabled={disabled}
               onChange={handleChange}
@@ -115,7 +117,7 @@ const Demo: ((props: ExampleProps) => React.ReactElement) & { defaultProps: Exam
         : (
             <RadioCards
               aria-label={ariaLabel}
-              name='radio-cards'
+              name={name}
               value={selected}
               disabled={disabled}
               onChange={handleChange}
