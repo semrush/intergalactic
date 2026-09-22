@@ -17,19 +17,21 @@ class LegendTableRoot extends BaseLegend<LegendTableProps, [], LegendTableDefaul
 
   render() {
     const SLegendTable = Root;
-    const { styles, Children, size = 'm', items } = this.asProps;
+    const { styles, Children, size = 'm', items, highlightedItem } = this.asProps;
     const columnsCount = items[0]?.columns.length;
 
     return sstyled(styles)(
       <SLegendTable render={Box} columns-count={columnsCount + 1} role='group'>
         {items.map(({ id, columns = [] }, _index) => {
+          const isTransparent = highlightedItem !== undefined && (highlightedItem !== -1 && highlightedItem !== _index);
+
           return (
             <React.Fragment key={id}>
               <Children />
               {columns.map((item, index) => {
                 return (
                   <React.Fragment key={`${id}__${index}`}>
-                    <LegendTable.Column index={index} size={size} styles={styles}>
+                    <LegendTable.Column index={index} size={size} styles={styles} transparent={isTransparent}>
                       {item}
                     </LegendTable.Column>
                   </React.Fragment>

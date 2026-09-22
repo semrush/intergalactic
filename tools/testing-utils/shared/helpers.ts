@@ -1,4 +1,5 @@
-import type { Page } from 'playwright';
+import { expect } from '@playwright/test';
+import type { Locator, Page } from 'playwright';
 
 import { e2eStandToHtml } from '../e2e-stand';
 
@@ -13,4 +14,19 @@ export async function loadPage(page: Page, examplePath: string, lang: string, pr
   }
 
   await page.setContent(htmlContent);
+}
+
+export async function expectEachToHaveAttribute(
+  locator: Locator,
+  attribute: string,
+  value: string,
+) {
+  await expect(locator).not.toHaveCount(0);
+
+  const actual = await locator.evaluateAll(
+    (elements, name) => elements.map((element) => element.getAttribute(name)),
+    attribute,
+  );
+
+  expect(actual).toEqual(actual.map(() => value));
 }

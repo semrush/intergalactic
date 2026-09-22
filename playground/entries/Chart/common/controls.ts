@@ -4,7 +4,7 @@ const Direction = ['row', 'column', 'row-reverse', 'column-reverse'] as const;
 const AlignItems = ['flex-start', 'center', 'flex-end'] as const;
 const LegendDirection = ['row', 'column'] as const;
 const Size = ['m', 'l'] as const;
-const Shape = ['Checkbox', 'Line', 'Circle', 'Square', 'Pattern'] as const;
+const Shape = ['Checkbox', 'Circle', 'Pattern'] as const;
 
 export type CommonChartProps = {
   direction: (typeof Direction)[number];
