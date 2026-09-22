@@ -1,7 +1,16 @@
 import { Box } from '@semcore/ui/base-components';
+import type { LegendTableProps } from '@semcore/ui/d3-chart';
 import { ChartLegendTable } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
+
+/**
+ * `highlightedItem` is an internal prop of `BaseLegend` — it dims every row except the
+ * highlighted one, but it is declared on the component's inner props, not on the public
+ * `LegendTableProps`. Declaring it here keeps the story typed and the prop greppable,
+ * instead of silencing the whole JSX node with a suppression comment.
+ */
+type LegendTableWithHighlight = LegendTableProps & { highlightedItem?: number };
 
 type LegendTableStoryProps = {
   size?: 'm' | 'l';
@@ -55,16 +64,17 @@ const Demo = (props: LegendTableStoryProps) => {
         ],
   }));
 
+  const legendProps: LegendTableWithHighlight = {
+    items,
+    size,
+    onChangeVisibleItem,
+    'aria-label': 'Chart legend',
+    highlightedItem,
+  };
+
   return (
     <Box w={w}>
-      <ChartLegendTable
-        items={items}
-        size={size}
-        onChangeVisibleItem={onChangeVisibleItem}
-        aria-label='Chart legend'
-        // @ts-ignore internal prop, exposed here to inspect the dimmed state
-        highlightedItem={highlightedItem}
-      />
+      <ChartLegendTable {...legendProps} />
     </Box>
   );
 };

@@ -56,7 +56,8 @@ type TooltipFormatStoryProps = LineChartProps & {
 };
 
 const Demo = (props: TooltipFormatStoryProps) => {
-  const { plotWidth, plotHeight, titleFormat, ...chartProps } = getPropsToChart(props) as any;
+  const { plotWidth, plotHeight, titleFormat, ...chartProps } =
+    getPropsToChart<TooltipFormatStoryProps>(props);
 
   const options = titleFormat && titleFormat !== 'off'
     ? titleFormats[titleFormat as keyof typeof titleFormats]

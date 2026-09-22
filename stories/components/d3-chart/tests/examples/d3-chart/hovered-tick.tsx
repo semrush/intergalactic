@@ -36,8 +36,12 @@ const Demo = (props: HoveredTickStoryProps) => {
   } = props;
 
   // `hideHoverLine` is read by `HoverLine`/`HoverRect` at runtime, but it is missing from the
-  // public `HoverProps` type (it is only declared on `HoverLine.Tooltip`), hence the cast.
-  const hoverProps = { hideTickHover, hideHoverLine } as { hideTickHover?: boolean };
+  // public `HoverProps` type (it is only declared on `HoverLine.Tooltip`), so it is declared
+  // here instead of being cast away — both props must stay visible in the type.
+  const hoverProps: { hideTickHover?: boolean; hideHoverLine?: boolean } = {
+    hideTickHover,
+    hideHoverLine,
+  };
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])

@@ -968,8 +968,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     /**
      * Pins the behaviour of the awkward inputs, all read off the edge-case example.
      * None of these is a crash, but two of them are judgement calls worth noticing if
-     * they ever change: a sub-0.05% move collapses into a stable "0", and a negative
-     * baseline turns growth into a red decline because the formula divides by it.
+     * they ever change: a sub-0.05% move shows as "0.0%" yet still points upward, and a
+     * negative baseline keeps growth green because the formula divides by `Math.abs(prev)`.
+     *
+     * Both the grouping separator and the decimal place come from `defaultTooltipFormatter`,
+     * which runs `Intl.NumberFormat` under the chart's `locale` — these expectations are
+     * written for `en` and would need adjusting for a locale with other separators.
      */
     test('Verify how the diff handles extreme and awkward values', {
       tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart'],
@@ -1004,22 +1008,22 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await test.step('Growth beyond 100% keeps its full value', async () => {
         expect(diffAfter('overHundred')).toMatchObject({ text: '400%', trend: 'upward' });
-        expect(diffAfter('huge')).toMatchObject({ text: '9900%', trend: 'upward' });
+        expect(diffAfter('huge')).toMatchObject({ text: '9,900%', trend: 'upward' });
       });
 
       await test.step('Fractions keep one decimal place', async () => {
         expect(diffAfter('fraction')).toMatchObject({ text: '0.5%', trend: 'upward' });
       });
 
-      await test.step('A move below 0.05% collapses into a stable zero', async () => {
-        // 10000 -> 10004 is +0.04%, which rounds away and reads as no change at all.
-        // A stable delta still carries the percent sign, it just loses the icon.
-        expect(diffAfter('roundsToZero')).toMatchObject({ text: '0%', trend: 'stable' });
+      await test.step('A move below 0.05% rounds to zero but keeps its direction', async () => {
+        // 10000 -> 10004 is +0.04%. Rounding happens on the way to the screen, not in the
+        // delta itself, so the number reads "0.0%" while the trend is still computed from
+        // the raw 0.04 and keeps the upward icon — a tiny move no longer passes for "no
+        // change", which it did while the delta was rounded with `toFixed(1)` first.
+        expect(diffAfter('roundsToZero')).toMatchObject({ text: '0.0%', trend: 'upward' });
       });
 
       await test.step('A negative baseline keeps the sign of the actual move', async () => {
-        // -10 -> -5 is an improvement, and dividing by |prev| keeps it a green +50%
-        // instead of flipping it into a red decline.
         expect(diffAfter('negativeBase')).toMatchObject({ text: '50%', trend: 'upward' });
       });
     });
@@ -1082,10 +1086,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         });
 
       expect(grid.columns).toBe(3);
-      // A partially filled row would leave a hole, and the cell count would stop being a
-      // whole number of rows with everything after it shifted one column to the left.
       expect(grid.cellCount % grid.columns).toBe(0);
-      // Both series labels must still start their own row.
       expect(grid.firstColumnTexts).toEqual(['line', 'line2']);
     });
 
@@ -1165,18 +1166,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       await hoverPlotCenter(page);
 
-      // Bar charts hover through HoverRect, which has to highlight the tick all the same.
       await expect(page.locator('[data-ui-name="Tooltip.Trigger"]').first()).toHaveJSProperty('tagName', 'rect');
       await expect(locators.hoveredTickText(page)).toHaveText('Category 2');
     });
   });
 
-  /**
-   * The tooltip is inverted, and `chart-palette-order-1` is a dark neutral that matches
-   * its background, so the 1px ring is the only thing separating the two. The unit tests
-   * cover which offset each colour is given; these check the other half of the chain —
-   * that the rule applies and the relative colour actually resolves in the browser.
-   */
   test.describe('Tooltip dot ring', () => {
     const readDotRings = (page: Page) =>
       page.locator('[class*="SDotCircle"]').evaluateAll((els) =>
