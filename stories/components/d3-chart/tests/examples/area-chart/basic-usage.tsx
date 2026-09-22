@@ -5,16 +5,29 @@ import React from 'react';
 
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-function formatDate(value: any) {
-  const options = {
-    month: 'short' as const,
-    day: 'numeric' as const,
-  };
-
-  return new Intl.DateTimeFormat('en', options).format(value);
+/**
+ * `tooltipValueFormatter` is applied to series values, not to the tooltip title, so it has
+ * to format numbers. The title is always rendered by the built-in formatter, which prints
+ * the `Date` group key as a date.
+ */
+function formatValue(value: any) {
+  return `${value} clicks`;
 }
 
-const Demo = (props: AreaChartProps) => {
+type AreaChartStoryProps = AreaChartProps & {
+  /** Set to true to replace the built-in tooltip value formatter with `formatValue`. */
+  useCustomValueFormatter?: boolean;
+  /**
+   * Swaps in a dataset where `line` drops to 0 in the middle.
+   *
+   * `getPercentDelta` cannot divide by a previous value of 0, so that series has no
+   * delta on the next point while `line2` still has one. Together with
+   * `showDeltaPercentInTooltip` this is the mixed row that no other dataset produces.
+   */
+  withZeroValue?: boolean;
+};
+
+const Demo = (props: AreaChartStoryProps) => {
   const onClickHandler = (index: number, event: React.SyntheticEvent) => {
     const clickedItem = data[index];
     console.log('Clicked area chart point:');
@@ -22,7 +35,7 @@ const Demo = (props: AreaChartProps) => {
     console.log('→ Data item:', clickedItem);
     console.log('→ Event:', event);
   };
-  const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
+  const { plotWidth, plotHeight, useCustomValueFormatter, withZeroValue, ...chartProps } = getPropsToChart(props);
   return (
     <Box
       border='1px solid #ddd'
@@ -33,9 +46,10 @@ const Demo = (props: AreaChartProps) => {
       overflow='auto'
     >
       <Chart.Area
-        {...chartProps}
+        {...(chartProps as AreaChartProps)}
         aria-label='Area chart'
-        tooltipValueFormatter={formatDate}
+        {...(withZeroValue ? { data: dataWithZeroValue } : {})}
+        {...(useCustomValueFormatter ? { tooltipValueFormatter: formatValue } : {})}
         onClickArea={onClickHandler}
       />
     </Box>
@@ -55,11 +69,35 @@ const data = [
   { time: new Date('2024-02-15'), line: 10, line2: 8 },
 ];
 
-export const defaultProps = getChartProps<AreaChartProps>({
+/**
+ * Same shape as `data`, but `line` sits at 0 on Jan 11.
+ *
+ * Hovering Jan 16 then gives `line` no delta (its previous value is 0) while `line2`
+ * still has one, so the tooltip switches to three columns and the `line` row only fills
+ * two of them.
+ */
+const dataWithZeroValue = [
+  { time: new Date('2024-01-01'), line: 2, line2: 3 },
+  { time: new Date('2024-01-06'), line: 4, line2: 3 },
+  { time: new Date('2024-01-11'), line: 0, line2: 3 },
+  { time: new Date('2024-01-16'), line: 6, line2: 4 },
+  { time: new Date('2024-01-21'), line: 5, line2: 3 },
+  { time: new Date('2024-01-26'), line: 7, line2: 5 },
+  { time: new Date('2024-01-31'), line: 6, line2: 2 },
+  { time: new Date('2024-02-05'), line: 8, line2: 5 },
+  { time: new Date('2024-02-10'), line: 9, line2: 7 },
+  { time: new Date('2024-02-15'), line: 10, line2: 8 },
+];
+
+export const defaultProps = getChartProps<AreaChartStoryProps>({
   showDots: true,
   stacked: false,
   groupKey: 'time',
   data,
+  // Off by default: the tooltip then shows the date in the title and plain numbers in the
+  // values, which is what the built-in formatter does.
+  useCustomValueFormatter: false,
+  withZeroValue: false,
 });
 
 Demo.defaultProps = defaultProps;

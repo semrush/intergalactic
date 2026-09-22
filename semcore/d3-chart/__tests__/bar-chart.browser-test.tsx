@@ -1185,7 +1185,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       for (const dot of dots) {
         await expect(dot).toHaveAttribute('aria-hidden', 'true');
-        await expect(dot).toHaveAttribute('r', '4');
+        await expect(dot).toHaveAttribute('r', '3.5');
       }
     });
   });

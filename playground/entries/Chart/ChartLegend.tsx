@@ -114,7 +114,7 @@ const entry: PlaygroundEntry<ChartLegendJSXProps> = {
     shape: {
       type: 'select',
       value: 'Checkbox',
-      options: ['Checkbox', 'Line', 'Circle', 'Square'],
+      options: ['Checkbox', 'Circle', 'Pattern'],
       displayName: 'Shape',
     },
     withIcon: {

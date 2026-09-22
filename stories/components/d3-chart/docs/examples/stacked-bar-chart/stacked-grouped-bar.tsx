@@ -38,20 +38,20 @@ const Demo = () => {
                 <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
                 <Text bold>Group 1</Text>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>a</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='chart-palette-order-1' mr={4}>a</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].a}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>b</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='chart-palette-order-2' mr={4}>b</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].b}</Text>
                 </Flex>
                 <Text bold>Group 2</Text>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>c</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='chart-palette-order-3' mr={4}>c</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].c}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>d</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='chart-palette-order-4' mr={4}>d</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].d}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
