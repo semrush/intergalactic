@@ -876,6 +876,30 @@
     "value": "oklch(1 0 0 / 0.7)"
   },
   {
+    "name": "--intergalactic-keyboard-focus-feature-highlight",
+    "value": "3px solid linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))"
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
+    "value": "linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))"
+  },
+  {
+    "name": "--intergalactic-badge-feature-highlight-accent",
+    "value": "oklch(0.22 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-bg-primary-feature-highlight",
+    "value": "{semanticTokens.colors.bg_primary_DEFAULT}"
+  },
+  {
+    "name": "--intergalactic-bg-primary-feature-highlight-hover-active",
+    "value": "{semanticTokens.colors.bg_primary_hover}"
+  },
+  {
+    "name": "--intergalactic-bg-secondary-feature-highlight",
+    "value": "oklch(0.9 0.065 303)"
+  },
+  {
     "name": "--intergalactic-border-tooltip-invert",
     "value": "oklch(0.4 0.004 140)"
   },
@@ -888,6 +912,50 @@
     "value": "oklch(0.74 0.117 274.1)"
   },
   {
+    "name": "--intergalactic-border-feature-highlight",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+  },
+  {
+    "name": "--intergalactic-border-feature-highlight-active",
+    "value": "oklch(0.22 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-border-feature-highlight-secondary",
+    "value": "oklch(0.176 0.033 175.7 / 0.07)"
+  },
+  {
+    "name": "--intergalactic-control-primary-feature-highlight",
+    "value": "oklch(0.23 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-control-primary-feature-highlight-hover",
+    "value": "oklch(0.32 0.007 140)"
+  },
+  {
+    "name": "--intergalactic-control-primary-feature-highlight-active",
+    "value": "oklch(0 0 140)"
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight",
+    "value": "oklch(0.166 0.031 175.8 / 0.097)"
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight-hover",
+    "value": "oklch(0.151 0.028 176.1 / 0.123)"
+  },
+  {
+    "name": "--intergalactic-control-secondary-feature-highlight-active",
+    "value": "oklch(0.145 0.027 176.1 / 0.135)"
+  },
+  {
+    "name": "--intergalactic-icon-primary-feature-highlight",
+    "value": "oklch(0.22 0.01 140)"
+  },
+  {
+    "name": "--intergalactic-icon-primary-feature-highlight-hover-active",
+    "value": "oklch(0.22 0.01 140)"
+  },
+  {
     "name": "--intergalactic-tooltip-default",
     "value": "oklch(1 0 0)"
   },
@@ -898,6 +966,14 @@
   {
     "name": "--intergalactic-tooltip-warning",
     "value": "oklch(0.958 0.029 5.7)"
+  },
+  {
+    "name": "--intergalactic-feature-highlight-border",
+    "value": "oklch(0.137 0.026 175.7 / 0.161)"
+  },
+  {
+    "name": "--intergalactic-feature-highlight-border-active",
+    "value": "oklch(0.22 0.01 140)"
   },
   {
     "name": "--intergalactic-feature-popover-bg",
@@ -966,5 +1042,13 @@
   {
     "name": "--intergalactic-text-link-invert-hover",
     "value": "oklch(0.999 0.001 180 / 0.949)"
+  },
+  {
+    "name": "--intergalactic-text-feature-highlight",
+    "value": "oklch(0.1 0.03 137 / 0.899)"
+  },
+  {
+    "name": "--intergalactic-text-feature-highlight-hover-active",
+    "value": "oklch(0.1 0.03 137 / 0.899)"
   }
 ]
