@@ -8,20 +8,26 @@ SHoverRect, SHoverRect:focus-visible {
   fill: var(--intergalactic-chart-grid-bar-chart-hover, oklch(0.177 0.033 175.6 / 0.042));
 }
 
-STick {
+SHoveredTickWrapper {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-chart-grid-text-label, oklch(0.097 0.023 156.5 / 0.468));
-  transform: translateY(12px);
-  text-anchor: middle;
-  dominant-baseline: hanging;
+  font-variant-numeric: tabular-nums;
+  line-height: var(--intergalactic-lh-100, 133%);
+  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
 
-  tspan {
-    dominant-baseline: hanging;
+  text-align: center;
+
+  &[data-is-first='true'] {
+    text-align: start;
   }
 
-  cursor: default;
-}
+  &[data-is-last='true'] {
+    text-align: end;
+  }
 
-STickHover {
-  fill: var(--intergalactic-chart-x-axis-accent-tick, oklch(0.96 0.001 180));
+  SHoveredTick {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 6px;
+    background-color: var(--intergalactic-chart-x-axis-accent-tick, oklch(0.96 0.001 180));
+  }
 }

@@ -4,7 +4,6 @@ import React from 'react';
 import createElement from './createElement';
 import style from './style/axis.shadow.css';
 import { scaleOfBandwidth } from './utils';
-import { TextMeasurer } from './utils/TextMeasurer';
 
 const TICK_MARGIN_X = 16;
 const TICK_MARGIN_Y = 8;
@@ -227,7 +226,6 @@ class AxisRoot extends Component {
       ticks: this.ticks,
       indexScale,
       position,
-      splitTextByWidth: splitTextByWidth(measurer),
     };
   }
 
@@ -296,6 +294,11 @@ function Ticks(props) {
       dataHintsHandler.addKeyLabelGetter('horizontal', labelGetter);
     }
   }
+
+  dataHintsHandler.setTickPosition(
+    isXScale ? 'horizontal' : 'vertical',
+    { width: tickWidth, height: tickHeight },
+  );
 
   return ticks.map((value, i) => {
     const displayValue = typeof children === 'function' ? undefined : renderValue(value, locale);

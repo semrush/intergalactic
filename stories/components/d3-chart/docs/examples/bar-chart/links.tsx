@@ -21,7 +21,7 @@ const Demo = () => {
       axisXValueFormatter={(value) => {
         if (typeof value === 'string') {
           const href = links[value];
-          return href ? <Link href={href}>{value}</Link> : value;
+          return href ? <Link position='static' href={href}>{value}</Link> : value;
         }
       }}
     />
