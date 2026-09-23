@@ -529,7 +529,6 @@
     "components": [
       "card",
       "color-picker",
-      "d3-chart",
       "data-table",
       "date-picker",
       "dropdown",
