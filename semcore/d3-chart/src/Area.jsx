@@ -27,6 +27,30 @@ import {
   invert,
 } from './utils';
 
+function getDataOfType(data, type, y) {
+  const result = [];
+  let prevPoint = null;
+  let insideRun = false;
+
+  data.forEach((item) => {
+    const valid = item[y] !== interpolateValue;
+
+    if (valid && item[DATA_TYPE] === type) {
+      if (!insideRun && prevPoint !== null) result.push(prevPoint);
+
+      result.push(item);
+
+      insideRun = true;
+    } else {
+      insideRun = false;
+    }
+
+    if (valid) prevPoint = item;
+  });
+
+  return result;
+}
+
 class AreaRoot extends Component {
   static displayName = 'Area';
   static style = style;
@@ -124,7 +148,7 @@ class AreaRoot extends Component {
       transparent,
       resolveColor,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === FORECAST);
+    const data = getDataOfType(this.asProps.data, FORECAST, y);
 
     return sstyled(styles)(
       <>
@@ -170,7 +194,7 @@ class AreaRoot extends Component {
       y,
       transparent,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === POTENTIAL);
+    const data = getDataOfType(this.asProps.data, POTENTIAL, y);
 
     return sstyled(styles)(
       <>
