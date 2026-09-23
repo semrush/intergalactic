@@ -1,3 +1,5 @@
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M15 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM12 24a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="3" r="2" fill="#191B23" stroke="#191B23" stroke-width="1.85"/>
+<circle cx="12" cy="12" r="2" fill="#191B23" stroke="#191B23" stroke-width="1.85"/>
+<circle cx="12" cy="21" r="2" fill="#191B23" stroke="#191B23" stroke-width="1.85"/>
 </svg>

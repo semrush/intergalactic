@@ -1,1 +1,4 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9 2a1 1 0 1 0 0 2h3.661L6 10.586 1.707 6.293A1 1 0 0 0 .293 7.707l5 5a1 1 0 0 0 1.414 0L14 5.49V9a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1H9Z"/></svg>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 7L5.99293 11.9929C5.99683 11.9968 6.00317 11.9968 6.00707 11.9929L15 3" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M9 3H14.99C14.9955 3 15 3.00448 15 3.01V9" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

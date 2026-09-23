@@ -1,1 +1,16 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 7a2 2 0 0 0-2-2H9V3.72A2 2 0 0 0 10 2a2 2 0 1 0-4 0 2 2 0 0 0 1 1.72V5H4a2 2 0 0 0-2 2 2 2 0 1 0 0 4v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3a2 2 0 0 0 0-4ZM4 14V7h8v7H4Zm2-6a1 1 0 0 0-1 1v1a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Zm3.293.293A1 1 0 0 1 11 9v1a1 1 0 0 1-2 0V9a1 1 0 0 1 .293-.707Z"/></svg>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_11339_6505)">
+<rect x="3" y="6" width="10" height="9" rx="0.01" stroke="#191B23" stroke-width="1.5"/>
+<path d="M1 9C1 8.44772 1.44772 8 2 8V10C1.44772 10 1 9.55228 1 9Z" stroke="#191B23" stroke-width="1.5"/>
+<path d="M15 9C15 9.55228 14.5523 10 14 10L14 8C14.5523 8 15 8.44772 15 9Z" stroke="#191B23" stroke-width="1.5"/>
+<path d="M6 9V10" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M10 9V10" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M8 2V6" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="8" cy="2" r="1" stroke="#191B23" stroke-width="1.5"/>
+</g>
+<defs>
+<clipPath id="clip0_11339_6505">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

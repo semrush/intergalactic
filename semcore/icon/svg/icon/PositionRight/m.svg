@@ -1,1 +1,14 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9 12a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H9ZM3 5a1 1 0 0 0 1 1h2a1 1 0 0 0 0-2H4a1 1 0 0 0-1 1Zm1 4a1 1 0 1 1 0-2h2a1 1 0 0 1 0 2H4Zm-1 2a1 1 0 0 0 1 1h2a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M0 15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v14ZM14 2H2v12h12V2Z"/></svg>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_11336_3884)">
+<rect x="1" y="1" width="14" height="14" rx="0.01" stroke="#191B23" stroke-width="1.5"/>
+<path d="M4 5H6" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M4 8H6" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M4 11H6" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="12" y="5" width="6" height="3" rx="0.01" transform="rotate(90 12 5)" fill="#191B23" stroke="#191B23" stroke-width="1.5"/>
+</g>
+<defs>
+<clipPath id="clip0_11336_3884">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

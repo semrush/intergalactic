@@ -1,66 +1,47 @@
-import CheckM from '@semcore/icon/Check/m';
-import CloseM from '@semcore/icon/Close/m';
-import InfoM from '@semcore/icon/Info/m';
-import MathPlusM from '@semcore/icon/MathPlus/m';
-import SearchM from '@semcore/icon/Search/m';
-import WarningM from '@semcore/icon/Warning/m';
+import type { IconComponent } from '@semcore/icon';
 import { Flex } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
 import React from 'react';
 
-const icons = [
-  {
-    text: 'Keywords',
-    icon: InfoM,
-  },
-  {
-    text: 'Limit reached',
-    icon: WarningM,
-  },
-  {
-    text: 'Keywords',
-    icon: SearchM,
-  },
-  {
-    text: 'Keywords',
-    icon: MathPlusM,
-  },
-  {
-    text: 'Keywords',
-    icon: CloseM,
-  },
-  {
-    text: 'Keywords',
-    icon: CheckM,
-  },
-];
+// @ts-ignore
+import { flatIconList } from '../../../../../website/docs/style/icon/icons';
+
+type IconObj = {
+  m: IconComponent;
+  l: IconComponent;
+};
 
 const IconList = (props: { cl: 'bold' | 'regular' | 'custom' } & StrokeWidthProps) => {
+  const icons = flatIconList() as IconObj[];
+
   return (
     <Flex direction='column' gap={4}>
       <Text size={400} semibold>
         {props.cl}
       </Text>
-
       {
-        icons.map((el, ind) => {
-          const Icon = el.icon;
+        Object.entries(icons).map(([iconName, iconObj]) => {
+          const Icon = iconObj.m;
+
           return (
             <Flex
-              key={ind}
-              gap={1}
+              key={iconName}
+              gap={1.5}
+              alignItems='center'
               tag={Text}
               size={200}
-              alignItems='center'
               bold={props.cl.includes('bold')}
             >
-              {el.text}
-              <Icon color='transparent' weight={props.cl !== 'custom' ? props.cl : undefined} strokeWidth={props.cl === 'custom' ? `${props.customWidth}px` : undefined} />
+              <Icon
+                color='transparent'
+                weight={props.cl !== 'custom' ? props.cl : undefined}
+                strokeWidth={props.cl === 'custom' ? `${props.customWidth}px` : undefined}
+              />
+              {iconName}
             </Flex>
           );
         })
       }
-
     </Flex>
   );
 };
