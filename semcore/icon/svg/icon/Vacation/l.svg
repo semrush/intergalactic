@@ -1,1 +1,9 @@
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12h3V9h-3v3Zm4 6-2 2-2-2 2-2 2 2Zm-8-3a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9 0h6a1 1 0 1 1 0 2v3h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2 1 1 0 1 1-2 0H9a1 1 0 1 1-2 0 2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2V2a1 1 0 0 1 0-2Zm4 2v3h-2V2h2Zm4 5v14H7V7h10Z"/></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="6" y="6" width="12" height="16" rx="0.01" stroke="#191B23" stroke-width="1.85"/>
+<path d="M8 23V22" stroke="#191B23" stroke-width="1.85" stroke-linecap="round"/>
+<path d="M16 23V22" stroke="#191B23" stroke-width="1.85" stroke-linecap="round"/>
+<path d="M10 6V1M10 1H14M10 1H9M14 1V6M14 1H15" stroke="#191B23" stroke-width="1.85" stroke-linecap="round"/>
+<rect x="13" y="10" width="1" height="1" stroke="#191B23" stroke-width="1.85"/>
+<rect x="14" y="17.292" width="1" height="1" transform="rotate(45 14 17.292)" stroke="#191B23" stroke-width="1.85"/>
+<circle cx="10" cy="15" r="1" fill="#191B23" stroke="#191B23" stroke-width="1.85"/>
+</svg>

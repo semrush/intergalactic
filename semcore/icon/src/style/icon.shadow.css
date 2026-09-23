@@ -10,4 +10,10 @@ SIcon {
   &[color] {
     color: var(--color);
   }
+
+  &[strokeWidth] {
+    path, circle, line {
+      stroke-width: var(--strokeWidth);
+    }
+  }
 }

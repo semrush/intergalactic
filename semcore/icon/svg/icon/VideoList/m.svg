@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <path d="M1 1a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2H1ZM1 5a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2H1ZM0 10a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H1a1 1 0 0 1-1-1ZM12.448 9.884l-2.407 1.35a.4.4 0 0 1-.596-.35V8.187a.4.4 0 0 1 .596-.35l2.407 1.35a.4.4 0 0 1 0 .697Z"/>
-  <path fill-rule="evenodd" d="M5 9.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0ZM10.5 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" clip-rule="evenodd"/>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 2H9" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M1 6H4" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M1 10H2" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="10.5" cy="9.5" r="4.5" stroke="#191B23" stroke-width="1.5"/>
+<path d="M11.933 9.5209C11.9402 9.52462 11.9402 9.53495 11.933 9.53867L9.86478 10.6048C9.85812 10.6082 9.8502 10.6034 9.8502 10.5959L9.8502 8.46366C9.8502 8.45617 9.85812 8.45134 9.86478 8.45477L11.933 9.5209Z" fill="#191B23" stroke="#191B23" stroke-width="1.5"/>
 </svg>
