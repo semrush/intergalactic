@@ -165,7 +165,7 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button-link',
         '@button',
         '@checkbox',
-      ],
+        '@description-tooltip'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 
@@ -242,7 +242,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@link',
         '@typography',
-      ],
+        '@description-tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-interactive-header.tsx', 'en');
 
@@ -369,7 +369,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button',
         '@link',
         '@typography',
-      ],
+        '@description-tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/one-level-interactive-header.tsx', 'en');
 
@@ -811,7 +811,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           '@button',
           '@link',
           '@typography',
-        ],
+          '@description-tooltip'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/sorting/sorting-with-interactive.tsx', 'en');
 
@@ -854,7 +854,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button-link',
         '@button',
         '@checkbox',
-      ],
+        '@description-tooltip'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 
@@ -965,7 +965,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@button-link',
         '@button',
         '@checkbox',
-      ],
+        '@description-tooltip'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/header-tests/multi-level-with-interactive.tsx', 'en');
 

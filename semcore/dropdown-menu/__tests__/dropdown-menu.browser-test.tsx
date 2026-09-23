@@ -197,7 +197,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components',
         '@flex-box',
         '@button',
-        '@divider'],
+        '@divider',
+        '@select'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', item);
       const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
@@ -261,7 +262,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@dropdown-menu',
         '@base-components',
         '@flex-box',
-        '@button'],
+        '@button',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', item);
 
@@ -300,7 +302,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@dropdown-menu',
         '@base-components',
         '@flex-box',
-        '@button'],
+        '@button',
+        '@select'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', item);
       const itemHoverBg = await getCssVarColor(page, '--intergalactic-dropdown-menu-item-hover');
@@ -398,7 +401,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@badge',
       '@counter',
       '@switch',
-      '@tooltip'],
+      '@tooltip',
+      '@flags'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown-menu/tests/examples/list_item_types.tsx', 'en');
 
@@ -843,7 +847,9 @@ test.describe(`${TAG.VISUAL} `, () => {
           '@dropdown-menu',
           '@button',
           '@select',
-        ],
+          '@base-components',
+          '@divider',
+          '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, statusItemStory, 'en', { showSearch: true, size });
 
@@ -1594,7 +1600,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@base-components',
         '@flex-box',
         '@button',
-        '@divider'],
+        '@divider',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
         size: 'm',
@@ -1622,7 +1629,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@base-components',
         '@flex-box',
         '@button',
-        '@divider'],
+        '@divider',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
         size: 'm',
@@ -1650,7 +1658,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@base-components',
         '@flex-box',
         '@button',
-        '@divider'],
+        '@divider',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/dropdown-base-props.tsx', 'en', {
         size: 'm',
@@ -1672,7 +1681,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@base-components',
         '@flex-box',
-        '@button'],
+        '@button',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/multiselect-props.tsx', 'en', {
         size: 'm',
@@ -1704,7 +1714,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@base-components',
         '@flex-box',
-        '@button'],
+        '@button',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
         size: 'm',
@@ -1746,7 +1757,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@base-components',
         '@flex-box',
-        '@button'],
+        '@button',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
         size: 'm',
@@ -1808,7 +1820,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@base-components',
         '@flex-box',
-        '@button'],
+        '@button',
+        '@select'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown-menu/tests/examples/selectable-props.tsx', 'en', {
         size: 'm',
@@ -1905,7 +1918,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@button',
         '@select',
-      ],
+        '@base-components',
+        '@divider',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true });
 
@@ -1929,7 +1944,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@button',
         '@select',
-      ],
+        '@base-components',
+        '@divider',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true });
 
@@ -1952,7 +1969,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@button',
         '@select',
-      ],
+        '@base-components',
+        '@divider',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'loading' });
 
@@ -1972,7 +1991,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@button',
         '@select',
-      ],
+        '@base-components',
+        '@divider',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', { showSearch: true, state: 'error' });
 
@@ -1994,7 +2015,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@dropdown-menu',
         '@button',
         '@select',
-      ],
+        '@base-components',
+        '@divider',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, statusItemStory, 'en', {
         showSearch: true,

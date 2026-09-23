@@ -27,7 +27,8 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesInputNumber.forEach((item) => {
     test(`Verify active Input Number with state= ${item.state} size=${item.size} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@input-number'],
+        '@input-number',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
 
@@ -47,7 +48,8 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesInputNumberAddon.forEach((item) => {
     test(`Verify Input Number with Addon and state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} locale=${item.locale} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@input-number'],
+        '@input-number',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-number/tests/examples/basic_example_addon.tsx', 'en', item);
 
@@ -66,7 +68,8 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesInputdisabledValueStates.forEach((item) => {
     test(`Verify not active Input Number with state= ${item.state} size=${item.size} disabledValue=${item.disabledValue} readOnly=${item.readOnly} showControls=${item.showControls} value=${item.value} placeholder=${item.placeholder}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@input-number'],
+        '@input-number',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
       await expect(page).toHaveScreenshot();
@@ -75,7 +78,11 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify custom appearance', {
     tag: [TAG.PRIORITY_HIGH,
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-number/docs/examples/appearance_customization.tsx', 'en');
 
@@ -104,7 +111,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify range of values appearance', {
     tag: [TAG.PRIORITY_HIGH,
       '@input-number',
-      '@base-components'],
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-number/docs/examples/range_of_values.tsx', 'en');
 
@@ -135,7 +144,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   variablesInputNumber.forEach((item) => {
     test(`Verify Base example interactions with min= ${item.min} max=${item.max} step=${item.step} `, {
       tag: [TAG.PRIORITY_HIGH,
-        '@input-number'],
+        '@input-number',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', item);
 
@@ -272,7 +282,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify focused wheel changes value with decimal step and respects boundaries', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@input-number'],
+      '@input-number',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-number/tests/examples/basic_example.tsx', 'en', {
       max: 1,
@@ -321,7 +332,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard interactions with custom appearance', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-number/docs/examples/appearance_customization.tsx', 'en');
 
@@ -362,7 +377,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify mouse interactions with custom appearance', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-number/docs/examples/appearance_customization.tsx', 'en');
 
@@ -387,7 +406,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify input range keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-number/docs/examples/range_of_values.tsx', 'en');
 

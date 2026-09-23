@@ -80,7 +80,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify slider between options by keyboard', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/slider/docs/examples/customized_options_view.tsx', 'en');
 
@@ -97,7 +100,12 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify slider with input validation states', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@slider'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@slider',
+      '@base-components',
+      '@flex-box',
+      '@input-number',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/slider/docs/examples/numeric_slider.tsx', 'en');
 
@@ -122,7 +130,10 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard navigation between options', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/slider/docs/examples/customized_options_view.tsx', 'en');
 
@@ -168,7 +179,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify slider with input by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@slider'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@slider',
+      '@base-components',
+      '@flex-box',
+      '@input-number',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/slider/docs/examples/numeric_slider.tsx', 'en');
 
@@ -202,7 +218,12 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify slider with input by keyboard', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@slider',
+      '@base-components',
+      '@flex-box',
+      '@input-number',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/slider/docs/examples/numeric_slider.tsx', 'en');
 

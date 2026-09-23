@@ -34,7 +34,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@drag-and-drop',
-        '@card'],
+        '@card',
+        '@bar-chart',
+        '@base-components',
+        '@d3-chart',
+        '@flex-box',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/tests/examples/with-cards-all-props.tsx', 'en', item);
 
@@ -57,7 +62,11 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@drag-and-drop',
       '@button',
       '@dropdown-menu',
-      '@counter'],
+      '@counter',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
@@ -80,7 +89,11 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@drag-and-drop',
       '@button',
       '@dropdown-menu',
-      '@counter'],
+      '@counter',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
@@ -132,7 +145,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@drag-and-drop',
-        '@card'],
+        '@card',
+        '@bar-chart',
+        '@base-components',
+        '@d3-chart',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
@@ -172,7 +190,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@drag-and-drop',
-        '@card'],
+        '@card',
+        '@bar-chart',
+        '@base-components',
+        '@d3-chart',
+        '@flex-box',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_cards.tsx', 'en');
 
@@ -222,7 +245,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         '@drag-and-drop',
         '@button',
         '@dropdown-menu',
-        '@counter'],
+        '@counter',
+        '@base-components',
+        '@button-link',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 
@@ -273,7 +300,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
         '@drag-and-drop',
         '@button',
         '@dropdown-menu',
-        '@counter'],
+        '@counter',
+        '@base-components',
+        '@button-link',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx', 'en');
 

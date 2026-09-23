@@ -25,7 +25,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
       '@button',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx', 'en');
 
@@ -45,7 +49,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
       '@button',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-search/docs/examples/search-by-button.tsx', 'en');
 
@@ -66,7 +74,11 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@input',
       '@button',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-search/docs/examples/search-with-select.tsx', 'en');
 
@@ -92,7 +104,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@input',
       '@button',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx', 'en');
 
@@ -111,7 +127,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@input',
       '@button',
-      '@tooltip'],
+      '@tooltip',
+      '@base-components',
+      '@button-link',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/filters/filter-search/docs/examples/dynamic_search.tsx', 'en');
 

@@ -26,7 +26,23 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@product-head',
         '@button',
         '@tooltip',
-      ],
+        '@base-components',
+        '@base-trigger',
+        '@breadcrumbs',
+        '@button-link',
+        '@description-tooltip',
+        '@dropdown-menu',
+        '@flags',
+        '@flex-box',
+        '@inline-edit',
+        '@inline-input',
+        '@input',
+        '@link',
+        '@link-trigger',
+        '@modal',
+        '@select',
+        '@typography',
+        '@wizard'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/product-head/docs/examples/extended_example/index.tsx', 'en');
 
@@ -40,7 +56,16 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@product-head',
       '@button',
-    ],
+      '@base-components',
+      '@base-trigger',
+      '@button-link',
+      '@description-tooltip',
+      '@flex-box',
+      '@link',
+      '@link-trigger',
+      '@select',
+      '@tooltip',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/product-head/advanced/examples/long-long-title.tsx', 'en');
     await page.locator('[data-ui-name="Text"]').nth(1).waitFor({ state: 'visible' });
@@ -59,7 +84,13 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@button',
       '@tooltip',
       '@breadcrumbs',
-    ],
+      '@base-trigger',
+      '@button-link',
+      '@description-tooltip',
+      '@link',
+      '@link-trigger',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/product-head/tests/examples/test_example.tsx', 'en');
 
@@ -79,7 +110,23 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@product-head',
       '@button',
       '@tooltip',
-    ],
+      '@base-components',
+      '@base-trigger',
+      '@breadcrumbs',
+      '@button-link',
+      '@description-tooltip',
+      '@dropdown-menu',
+      '@flags',
+      '@flex-box',
+      '@inline-edit',
+      '@inline-input',
+      '@input',
+      '@link',
+      '@link-trigger',
+      '@modal',
+      '@select',
+      '@typography',
+      '@wizard'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/product-head/docs/examples/extended_example/index.tsx', 'en');
 

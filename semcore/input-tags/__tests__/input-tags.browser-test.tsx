@@ -77,7 +77,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       { state: 'invalid', size: 'l', disabled: false },
     ].forEach((item) => {
       test(`Verify InputTags state ${item.state}, size ${item.size}, disabled ${item.disabled}, unfocused and focused`, {
-        tag: [TAG.PRIORITY_HIGH, '@input-tags', '@ellipsis'],
+        tag: [TAG.PRIORITY_HIGH, '@input-tags', '@ellipsis',
+          '@base-components',
+          '@flex-box',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', item);
 
@@ -178,7 +181,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       { theme: 'primary', size: 'xl', disabled: false, editable: true },
     ].forEach((item) => {
       test(`Verify InputTags.Tag ${item.theme} and ${item.size} size and disabled ${item.disabled} and editable ${item.editable}`, {
-        tag: [TAG.PRIORITY_HIGH, '@input-tags'],
+        tag: [TAG.PRIORITY_HIGH, '@input-tags',
+          '@base-components',
+          '@flex-box',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en', item);
 
@@ -208,7 +214,9 @@ test.describe(`${TAG.VISUAL} `, () => {
       { theme: 'primary', size: 'xl', disabled: false, interactive: true },
     ].forEach((item) => {
       test(`Verify InputTags.Tag with addon ${item.theme} and ${item.size} size and disabled ${item.disabled} and interactive ${item.interactive}`, {
-        tag: [TAG.PRIORITY_HIGH, '@input-tags'],
+        tag: [TAG.PRIORITY_HIGH, '@input-tags',
+          '@base-components',
+          '@flex-box'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/input-tags/tests/examples/tags-with-addons.tsx', 'en', item);
 
@@ -231,7 +239,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@input-tags',
-        '@ellipsis'],
+        '@ellipsis',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
@@ -261,7 +272,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     test('Verify wrapping emails in tags without width limitation and email validation', {
       tag: [TAG.PRIORITY_HIGH,
-        '@input-tags'],
+        '@input-tags',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en');
 
@@ -296,7 +310,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@input-tags',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
@@ -325,7 +342,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@input-tags',
-        '@select'],
+        '@select',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
@@ -367,7 +387,10 @@ test.describe(`${TAG.VISUAL} `, () => {
     test('Verify input tag with default value', {
       tag: [TAG.PRIORITY_MEDIUM,
         '@input-tags',
-        '@ellipsis'],
+        '@ellipsis',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', { defaultValue: 'default value add something', value: undefined });
 
@@ -393,7 +416,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input-tags',
-      '@ellipsis'],
+      '@ellipsis',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
@@ -483,7 +509,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input-tags',
-      '@ellipsis'],
+      '@ellipsis',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx', 'en');
 
@@ -612,7 +641,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify wrapping emails in tags without width limitation and email validation mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
-      '@input-tag'],
+      '@input-tag',
+      '@base-components',
+      '@flex-box',
+      '@input-tags',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en');
 
@@ -663,7 +696,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify wrapping emails in tags without width limitation and email validation keyboard interactions', {
     tag: [TAG.PRIORITY_HIGH,
-      '@input-tag'],
+      '@input-tag',
+      '@base-components',
+      '@flex-box',
+      '@input-tags',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx', 'en');
 
@@ -745,7 +782,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input-tags',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
@@ -831,7 +871,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input-tags',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx', 'en');
 
@@ -946,7 +989,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input-tags',
-      '@ellipsis'],
+      '@ellipsis',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-tags/tests/examples/entering_and_editing_tags.tsx', 'en', { delimiters: [']', '/', '['] });
 

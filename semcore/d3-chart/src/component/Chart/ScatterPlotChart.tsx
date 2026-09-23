@@ -1,4 +1,5 @@
-import { createComponent } from '@semcore/core';
+import { Box } from '@semcore/base-components';
+import { createComponent, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import { type ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
@@ -31,6 +32,7 @@ class ScatterPlotChartComponent extends AbstractChart<
     showYAxis: true,
     showTooltip: true,
     showLegend: false,
+    locale: 'en',
   } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;
@@ -119,19 +121,24 @@ class ScatterPlotChartComponent extends AbstractChart<
         return (
           <ScatterPlot.Tooltip key={item.id} x={groupKey} y={item.id} wMin={100}>
             {({ index, x, y }: any) => {
+              const { styles } = this.asProps;
+              const STooltipChildrenWrapper = Box;
+
               return {
-                children: (
+                children: sstyled(styles)(
                   <>
                     <ScatterPlot.Tooltip.Dot color={item.color}>Data</ScatterPlot.Tooltip.Dot>
-                    <Text tag='div'>
-                      X axis
-                      {this.tooltipValueFormatter(data[index][x])}
-                    </Text>
-                    <Text tag='div'>
-                      Y axis
-                      {this.tooltipValueFormatter(data[index][y])}
-                    </Text>
-                  </>
+                    <STooltipChildrenWrapper
+                      // @ts-ignore
+                      columnsCount={2}
+                      mt={2}
+                    >
+                      <Text>X axis</Text>
+                      <Text textAlign='end'>{this.tooltipValueFormatter(data[index][x])}</Text>
+                      <Text>Y axis</Text>
+                      <Text textAlign='end'>{this.tooltipValueFormatter(data[index][y])}</Text>
+                    </STooltipChildrenWrapper>
+                  </>,
                 ),
               };
             }}

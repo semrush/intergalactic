@@ -45,7 +45,9 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify simple use visual states', {
-    tag: [TAG.PRIORITY_HIGH, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, '@inline-edit',
+      '@inline-input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
@@ -76,7 +78,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify editable tag with save button hover', {
-    tag: [TAG.PRIORITY_MEDIUM, '@inline-edit'],
+    tag: [TAG.PRIORITY_MEDIUM, '@inline-edit',
+      '@inline-input',
+      '@tag'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/editable_tag.tsx', 'en');
 
@@ -91,7 +95,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify edit and view settings', {
-    tag: [TAG.PRIORITY_HIGH, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, '@inline-edit',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/tests/examples/test_use.tsx', 'en');
 
@@ -115,7 +121,9 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify base example keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@inline-edit',
+      '@inline-input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
@@ -179,7 +187,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify base example mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit',
+      '@inline-input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
@@ -226,7 +236,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify inline input interactions after page scrolling', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@inline-edit'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@inline-edit',
+      '@inline-input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/simple_use.tsx', 'en');
 
@@ -251,7 +263,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify editable tag keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@inline-edit',
+      '@inline-input',
+      '@tag'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/editable_tag.tsx', 'en');
 
@@ -346,7 +360,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify editable tag mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit',
+      '@inline-input',
+      '@tag'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/editable_tag.tsx', 'en');
 
@@ -376,7 +392,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify pseudo network mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit',
+      '@base-components',
+      '@flex-box',
+      '@inline-input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/pseudo_network_interaction.tsx', 'en');
 
@@ -405,7 +425,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify pseudo network keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@inline-edit',
+      '@base-components',
+      '@flex-box',
+      '@inline-input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/docs/examples/pseudo_network_interaction.tsx', 'en');
 
@@ -447,7 +471,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify edit and view settings functionality', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@inline-edit',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/inline-edit/tests/examples/test_use.tsx', 'en');
 

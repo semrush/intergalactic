@@ -43,7 +43,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   pairwiseVariables.forEach((props) => {
     test(`Verify select basic props and addons: ${props.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@base-components', '@flex-box', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@base-components', '@flex-box', '@typography',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/basic_props_and_trigger_addons.tsx', 'en', props);
 
@@ -98,7 +99,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify indeterminate checkbox has default size when Select size is omitted', {
-    tag: [TAG.PRIORITY_HIGH, '@select', '@checkbox'],
+    tag: [TAG.PRIORITY_HIGH, '@select', '@checkbox',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/tests/examples/options_checkbox_group_and_hint.tsx', 'en', {
       omitSize: true,
@@ -141,7 +145,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   subcomponentsConfigVariables.forEach((props) => {
     test(`Verify select subcomponents: ${props.description}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select'],
+      tag: [TAG.PRIORITY_HIGH, '@select',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/subcomponents_trigger_popper_list_search.tsx', 'en', props);
 
@@ -781,7 +786,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   interactionVariables.forEach((item) => {
     test(`Verify select with interaction = ${item.interaction}`, {
-      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@base-components', '@flex-box', '@typography'],
+      tag: [TAG.PRIORITY_HIGH, '@select', '@badge', '@base-components', '@flex-box', '@typography',
+        '@button'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/select/tests/examples/basic_props_and_trigger_addons.tsx', 'en', item);
 

@@ -27,15 +27,3 @@ Don't forget to add role `tabpanel` and `aria-labelledby` to the content of each
 </script>
 
 :::
-
-## Custom pills
-
-You can place additional information like some metrics inside `Pills.Item`. In this case, we recommend using Pills strictly as **tabs**.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/pills/docs/examples/custom_pills_example.tsx';
-</script>
-
-:::

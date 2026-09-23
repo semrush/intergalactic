@@ -232,7 +232,11 @@ We verify offsets of the scroll bars against the fixed columns.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify offset of horizontal scroll bar is recalculated after table resize', {
-    tag: [TAG.PRIORITY_HIGH, '@data-table'],
+    tag: [TAG.PRIORITY_HIGH, '@data-table',
+      '@base-components',
+      '@card',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/scroll-tests/real-table.tsx', 'en');
 

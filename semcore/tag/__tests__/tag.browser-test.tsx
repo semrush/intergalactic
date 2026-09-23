@@ -128,14 +128,18 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify grouping More than 5 tags', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+    tag: [TAG.PRIORITY_MEDIUM, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/grouping_tags_more.tsx', 'en');
     await expect(page).toHaveScreenshot();
   });
 
   test('Verify tag with ellipsis visual', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+    tag: [TAG.PRIORITY_MEDIUM, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/tests/examples/tag-with-ellipsis.tsx', 'en');
     await expect(page).toHaveScreenshot();
@@ -149,7 +153,9 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Editing tag by mouse inside inline-edit', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag',
+      '@inline-edit',
+      '@inline-input'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/editing_tag.tsx', 'en');
 
@@ -185,7 +191,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Removing tags by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/removing_tag.tsx', 'en');
 
@@ -213,7 +221,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Removing tags by keyboard', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tag/docs/examples/removing_tag.tsx', 'en');
 
@@ -245,7 +255,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify tag with ellipsis hint appearing', {
-    tag: [TAG.PRIORITY_MEDIUM, '@tag'],
+    tag: [TAG.PRIORITY_MEDIUM, '@tag',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/tag/tests/examples/tag-with-ellipsis.tsx', 'en');
     if (browserName == 'webkit') test.skip();
