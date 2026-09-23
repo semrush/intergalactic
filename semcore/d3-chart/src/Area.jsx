@@ -142,7 +142,6 @@ class AreaRoot extends Component {
       d3Line,
       color,
       uid,
-      size,
       duration,
       y,
       transparent,
@@ -174,8 +173,8 @@ class AreaRoot extends Component {
           transparent={transparent}
           onClickCapture={this.handlerOnClick.bind(this)}
         />
-        <ForecastGradient id={`${uid}-forecast-gradient`} />
-        <StrokeMask id={`${uid}-forecast-mask`} />
+        <ForecastGradient id={`${uid}-forecast-gradient`} color={resolveColor(color)} />
+        <StrokeMask id={`${uid}-forecast-mask`} color={resolveColor(color)} />
       </>,
     );
   }
