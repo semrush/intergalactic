@@ -8,7 +8,6 @@ import createElement from './createElement';
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
-import { TextMeasurer } from './utils/TextMeasurer';
 
 const STROKE_WIDTH = 1;
 const NOTCH_WIDTH = 9;
@@ -28,8 +27,6 @@ class Hover extends Component {
     yIndex: null,
   };
 
-  measurer = new TextMeasurer();
-
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
   handlerMouseMoveRoot = trottle((e, currentTarget, isTickUnder) => {
@@ -39,10 +36,8 @@ class Hover extends Component {
     const [pX, pY] = eventToPoint(e, rootRef.current);
     const vX = invert(xScale, pX);
     const vY = invert(yScale, pY);
-    const xIndex =
-      x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
-    const yIndex =
-      y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
+    const xIndex = x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
+    const yIndex = y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
     const state = { xIndex, yIndex, patterns };
 
     const { x: xRect, y: yRect, height } = rootRef.current.getBoundingClientRect();
@@ -89,10 +84,7 @@ class Hover extends Component {
       e.persist();
       this.handlerMouseMoveRoot(e, e.currentTarget, isTickUnder);
     });
-    this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
-      'onMouseLeaveChart',
-      this.handlerMouseLeaveRoot,
-    );
+    this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe('onMouseLeaveChart', this.handlerMouseLeaveRoot);
   }
 
   componentWillUnmount() {
@@ -112,8 +104,7 @@ class HoverLineRoot extends Hover {
     const { hideHoverLine } = this.asProps;
     const { xIndex, yIndex } = this.state;
 
-    const isHide =
-      typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
+    const isHide = typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
 
     if (isHide) {
       return null;
@@ -140,11 +131,12 @@ class HoverLineRoot extends Hover {
                 </SHoverLine>
                 {!hideTickHover && (
                   <HoveredTick
+                    width={dataHints.tickSize.horizontal?.width}
+                    height={dataHints.tickSize.horizontal?.height}
                     tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
                     value={data[xIndex]?.[x]}
                     isFirstTick={xIndex === 0}
                     isLastTick={xIndex === data.length - 1}
-                    textMeasurer={this.measurer}
                     styles={styles}
                     x={x1}
                     y={yRange[0]}
@@ -207,9 +199,10 @@ class HoverRectRoot extends Hover {
             />
             {!hideTickHover && (
               <HoveredTick
+                width={dataHints.tickSize.horizontal?.width}
+                height={dataHints.tickSize.horizontal?.height}
                 tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
                 value={data[xIndex]?.[x]}
-                textMeasurer={this.measurer}
                 styles={styles}
                 x={xScale(data[xIndex][x]) + (xStep * (1 - xPaddingInner)) / 2}
                 y={yRange[0]}
@@ -233,84 +226,39 @@ class HoverRectRoot extends Hover {
   }
 }
 
+const HOVERED_TICK_MARGIN_Y = 8;
+const HOVERED_TICK_PADDING_Y = 3;
 const HOVERED_TICK_PADDING_X = 12;
-const HOVERED_TICK_PADDING_Y = 4;
-const HOVERED_TOCK_BORDER_RADIUS = 6;
 
 function HoveredTick(props) {
-  const {
-    paddingX = HOVERED_TICK_PADDING_X,
-    paddingY = HOVERED_TICK_PADDING_Y,
-    borderRadius = HOVERED_TOCK_BORDER_RADIUS,
-    tickFormatter,
-    value,
-    isFirstTick = false,
-    isLastTick = false,
-    textMeasurer,
-    styles,
-    x,
-    y,
-  } = props;
-  const STickWrapper = 'g';
-  const STickHover = 'rect';
-  const STick = 'text';
+  const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, y, width, height } = props;
+  const SHoveredTickWrapper = 'foreignObject';
+  const SHoveredTick = 'span';
 
   const formattedValue = tickFormatter(value);
 
-  const { width: textWidth, height: textHeight } = formattedValue !== undefined
-    ? textMeasurer.measure(formattedValue)
-    : { width: 0, height: 0 };
-
-  const hoverX = isFirstTick
-    ? x - NOTCH_DELTA
-    : isLastTick
-      ? x - textWidth - paddingX * 2 + NOTCH_DELTA
-      : x - paddingX - textWidth / 2;
-
+  const w = width + HOVERED_TICK_PADDING_X * 2;
   const tickX = isFirstTick
-    ? x + paddingX + textWidth / 2 - NOTCH_DELTA
+    ? x
     : isLastTick
-      ? x - textWidth / 2 - paddingX + NOTCH_DELTA
-      : x;
-
-  const hoverPos = {
-    x: hoverX,
-    y: y + textHeight / 2 - paddingY / 2,
-    width: textWidth + paddingX * 2,
-    height: textHeight + paddingY * 2,
-  };
-
-  const tickPos = {
-    x: tickX,
-    y: y,
-  };
+      ? x - w
+      : x - w / 2;
+  const tickY = y + HOVERED_TICK_MARGIN_Y - HOVERED_TICK_PADDING_Y;
 
   return sstyled(styles)(
-    <STickWrapper>
-      <STickHover
-        {...hoverPos}
-        rx={borderRadius}
-      />
-      <STick
-        {...tickPos}
-      >
-        {formattedValue}
-      </STick>
-    </STickWrapper>,
+    <SHoveredTickWrapper x={tickX} y={tickY} width={w} height={height} data-is-first={isFirstTick} data-is-last={isLastTick}>
+      <SHoveredTick>{formattedValue}</SHoveredTick>
+    </SHoveredTickWrapper>,
   );
 }
 
 function HoverLineTooltip(props) {
   const SHoverLineTooltip = Root;
-  return sstyled(props.styles)(
-    <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
-  );
+  return sstyled(props.styles)(<SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />);
 }
 function HoverRectTooltip(props) {
   const SHoverRectTooltip = Root;
-  return sstyled(props.styles)(
-    <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
-  );
+  return sstyled(props.styles)(<SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />);
 }
 
 const HoverLine = createElement(HoverLineRoot, {
