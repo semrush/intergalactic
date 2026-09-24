@@ -1,5 +1,6 @@
 import { sstyled } from '@semcore/core';
 import trottle from '@semcore/core/lib/utils/rafTrottle';
+import { useUID } from '@semcore/core/lib/utils/uniqueID';
 import { bisector } from 'd3-array';
 import React from 'react';
 
@@ -33,8 +34,8 @@ function Dots(props) {
     resolveColor,
     patterns,
     onClick,
-    uid,
   } = props;
+  const uid = useUID();
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = React.useState(null);
   const patternKey = color || getChartDefaultColorName(0);
@@ -88,7 +89,7 @@ function Dots(props) {
       default:
         return '';
     }
-  }, []);
+  }, [uid, resolveColor]);
 
   React.useEffect(() => {
     const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
