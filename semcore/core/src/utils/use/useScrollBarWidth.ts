@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import canUseDOM from '../canUseDOM';
+
 type Dimension = 'vertical' | 'horizontal';
 
 const state: Record<Dimension, number> = { vertical: 0, horizontal: 0 };
@@ -7,12 +9,15 @@ const listeners = new Set<() => void>();
 
 let rafId: number | null = null;
 let inited = false;
+let observer: ResizeObserver | null = null;
 
 function measure() {
-  if (!window.visualViewport) return;
+  if (!canUseDOM()) return;
 
-  const nextVertical = window.innerWidth - window.visualViewport.width;
-  const nextHorizontal = window.innerHeight - window.visualViewport.height;
+  const root = document.documentElement;
+
+  const nextVertical = window.innerWidth - root.clientWidth;
+  const nextHorizontal = window.innerHeight - root.clientHeight;
 
   if (nextVertical === state.vertical && nextHorizontal === state.horizontal) return;
 
@@ -32,13 +37,34 @@ function handleResize() {
 }
 
 function init() {
-  if (inited) return;
+  if (inited || !canUseDOM()) return;
 
   inited = true;
 
   measure();
 
   window.addEventListener('resize', handleResize);
+
+  if (typeof ResizeObserver !== 'undefined') {
+    observer = new ResizeObserver(handleResize);
+    observer.observe(document.documentElement);
+  }
+}
+
+function destroy() {
+  if (!inited) return;
+
+  inited = false;
+
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  window.removeEventListener('resize', handleResize);
+
+  observer?.disconnect();
+  observer = null;
 }
 
 function subscribe(onStoreChange: () => void) {
@@ -50,7 +76,7 @@ function subscribe(onStoreChange: () => void) {
     listeners.delete(onStoreChange);
 
     if (listeners.size === 0) {
-      window.removeEventListener('resize', handleResize);
+      destroy();
     }
   };
 }
@@ -65,9 +91,11 @@ export function useScrollBarWidth(vertical = true): number {
   useEffect(() => {
     const onChange = () => setValue(state[dimRef.current]);
 
+    const unsubscribe = subscribe(onChange);
+
     onChange();
 
-    return subscribe(onChange);
+    return unsubscribe;
   }, []);
 
   return value;
