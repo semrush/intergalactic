@@ -1,6 +1,5 @@
 import { sstyled } from '@semcore/core';
 import propsForElement from '@semcore/core/lib/utils/propsForElement';
-import { line } from 'd3-shape';
 import React from 'react';
 
 import style from './style/pattern.shadow.css';

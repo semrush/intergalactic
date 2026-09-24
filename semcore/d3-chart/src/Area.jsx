@@ -133,7 +133,7 @@ class AreaRoot extends Component {
   }
 
   renderForecast() {
-    const SArea = this.Element;
+    const SArea = SvgElement;
     const SAreaLine = SvgElement;
     const {
       styles,
@@ -163,8 +163,8 @@ class AreaRoot extends Component {
         />
         <SArea
           aria-hidden
+          tag='path'
           clipPath={`url(#${uid})`}
-          render='path'
           d={d3(data)}
           hide={hide}
           pattern={`url(#${uid}-forecast-gradient)`}
@@ -180,7 +180,7 @@ class AreaRoot extends Component {
   }
 
   renderPotential() {
-    const SArea = this.Element;
+    const SArea = SvgElement;
     const SAreaLine = SvgElement;
     const {
       styles,
@@ -209,8 +209,8 @@ class AreaRoot extends Component {
         />
         <SArea
           aria-hidden
+          tag='path'
           clipPath={`url(#${uid})`}
-          render='path'
           d={d3(data)}
           hide={hide}
           pattern={`url(#${uid}-potential-gradient)`}
