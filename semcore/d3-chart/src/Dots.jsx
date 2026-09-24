@@ -16,6 +16,7 @@ const ACTIVE_RADIUS = 4.5;
 function Dots(props) {
   const SDotHighlight = 'circle';
   const SDotBorder = 'circle';
+  const SDotBackdrop = 'circle';
   const {
     Element: SDot,
     styles,
@@ -152,6 +153,14 @@ function Dots(props) {
                   r={8.5}
                 />
               </>
+            )}
+            {transparent && (
+              <SDotBackdrop
+                hide={hide}
+                cx={d3.x()(d)}
+                cy={d3.y()(d)}
+                r={radius}
+              />
             )}
             <SDot
               render='circle'
