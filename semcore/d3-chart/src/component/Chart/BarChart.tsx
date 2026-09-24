@@ -112,7 +112,7 @@ class BarChartComponent extends AbstractChart<
     if (type === 'group') {
       return (
         <>
-          <GroupBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined}>
+          <GroupBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined} maxBarSize={maxBarSize}>
             {dataDefinitions.map((item, index) => {
               const BarComponent = invertAxis ? GroupBar.HorizontalBar : GroupBar.Bar;
 

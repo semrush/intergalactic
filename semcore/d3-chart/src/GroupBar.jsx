@@ -12,7 +12,7 @@ class GroupBarRoot extends Component {
   static displayName = 'GroupBar';
 
   getScaleGroup() {
-    const { Children, scale, scaleGroup, x } = this.asProps;
+    const { Children, scale, scaleGroup, x, maxBarSize } = this.asProps;
     // TODO: love that hack (by lsroman) ❤�
     const xyScale = x ? scale[0] : scale[1];
 
@@ -32,11 +32,16 @@ class GroupBarRoot extends Component {
       return acc;
     }, []);
 
+    const groupWidth = scaleToBand(xyScale).bandwidth();
+    const paddingOuter = maxBarSize !== undefined && maxBarSize < groupWidth
+      ? 1 - (maxBarSize / groupWidth)
+      : 0.1;
+
     return scaleBand()
       .range([0, scaleToBand(xyScale).bandwidth()])
       .domain(domain)
       .paddingInner(0.1)
-      .paddingOuter(0.9);
+      .paddingOuter(paddingOuter);
   }
 
   getBarProps({ y }, index) {
