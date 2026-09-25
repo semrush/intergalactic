@@ -24,13 +24,13 @@ STimePickerWrapper {
   }
 
   STimePicker[disabled] {
-    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
     cursor: default;
     pointer-events: none;
   }
 
   STimePickerSeparator {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 
   STimePickerSeparator[disabled] {

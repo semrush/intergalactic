@@ -8,7 +8,7 @@ STitle {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   margin: 0;
 }
 

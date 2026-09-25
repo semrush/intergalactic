@@ -1,5 +1,5 @@
 SPopper {
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SPopper:focus-visible {

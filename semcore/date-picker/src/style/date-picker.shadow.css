@@ -20,7 +20,7 @@ SHeader {
 
 STitle {
   font-size: var(--intergalactic-fs-200, 14px);
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   height: 32px;
   width: 100%;
   display: flex;
@@ -45,7 +45,7 @@ SButton SInner {
 }
 
 SInputMask {
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   line-height: normal;
   padding-right: var(--intergalactic-spacing-2x, 8px);
   transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
@@ -64,7 +64,7 @@ SInputMask SValue {
 }
 
 SIndicator {
-  color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
 }
 
 SRangeIndicator {
@@ -73,7 +73,7 @@ SRangeIndicator {
 }
 
 SRangeIndicator[range='value'] {
-  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.01 225));
+  background-color: var(--intergalactic-date-picker-cell-active, oklch(0.23 0.009 245));
 }
 
 SRangeIndicator[range='compare'] {
@@ -141,11 +141,11 @@ SDateRange SInputMask:focus-within SMask {
 
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SRangeComparatorHeader {
-  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   padding: var(--intergalactic-spacing-4x, 16px);
 }
 
@@ -154,7 +154,7 @@ SRangeCalendar {
 }
 
 SFooter {
-  border-top: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   padding: var(--intergalactic-spacing-4x, 16px);
 }
 

@@ -1,49 +1,49 @@
 [
   {
     "name": "--gray-50",
-    "value": "oklch(0.97 0.004 215.3)",
+    "value": "oklch(0.97 0.005 232.2)",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
   },
   {
     "name": "--gray-75",
-    "value": "oklch(0.93 0.008 216.4)"
+    "value": "oklch(0.93 0.007 233.2)"
   },
   {
     "name": "--gray-100",
-    "value": "oklch(0.9 0.011 217.3)",
+    "value": "oklch(0.9 0.009 234)",
     "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
   },
   {
     "name": "--gray-200",
-    "value": "oklch(0.82 0.019 219.6)"
+    "value": "oklch(0.82 0.016 237.4)"
   },
   {
     "name": "--gray-300",
-    "value": "oklch(0.74 0.022 221.6)"
+    "value": "oklch(0.74 0.02 240.5)"
   },
   {
     "name": "--gray-400",
-    "value": "oklch(0.64 0.025 224.1)"
+    "value": "oklch(0.64 0.022 243.8)"
   },
   {
     "name": "--gray-450",
-    "value": "oklch(0.58 0.025 225)"
+    "value": "oklch(0.58 0.022 245)"
   },
   {
     "name": "--gray-500",
-    "value": "oklch(0.53 0.023 225)"
+    "value": "oklch(0.53 0.02 245)"
   },
   {
     "name": "--gray-600",
-    "value": "oklch(0.46 0.02 225)"
+    "value": "oklch(0.46 0.018 245)"
   },
   {
     "name": "--gray-700",
-    "value": "oklch(0.33 0.014 225)"
+    "value": "oklch(0.33 0.013 245)"
   },
   {
     "name": "--gray-800",
-    "value": "oklch(0.23 0.01 225)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--gray-white",
@@ -877,11 +877,11 @@
   },
   {
     "name": "--intergalactic-border-tooltip-invert",
-    "value": "oklch(0.4 0.017 225)"
+    "value": "oklch(0.4 0.015 245)"
   },
   {
     "name": "--intergalactic-border-table-accent",
-    "value": "oklch(0.324 0.062 225.5 / 0.189)"
+    "value": "oklch(0.277 0.066 242.6 / 0.18)"
   },
   {
     "name": "--intergalactic-border-date-picker-range-comparison",
@@ -893,7 +893,7 @@
   },
   {
     "name": "--intergalactic-tooltip-invert",
-    "value": "oklch(0.23 0.01 225)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-tooltip-warning",
@@ -925,7 +925,7 @@
   },
   {
     "name": "--intergalactic-feature-popover-neutral-bg",
-    "value": "oklch(0.23 0.01 225)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-feature-popover-neutral-dot-outer-border",
@@ -933,15 +933,15 @@
   },
   {
     "name": "--intergalactic-slider-rating-normal",
-    "value": "oklch(0.229 0.046 229.9 / 0.58)"
+    "value": "oklch(0.193 0.05 246 / 0.562)"
   },
   {
     "name": "--intergalactic-slider-rating-hover-active",
-    "value": "oklch(0.22 0.01 225)"
+    "value": "oklch(0.22 0.008 245)"
   },
   {
     "name": "--intergalactic-radio-border",
-    "value": "oklch(0.324 0.062 225.5 / 0.189)"
+    "value": "oklch(0.277 0.066 242.6 / 0.18)"
   },
   {
     "name": "--intergalactic-radio-bg-normal",
@@ -949,22 +949,22 @@
   },
   {
     "name": "--intergalactic-radio-bg-selected",
-    "value": "oklch(0.23 0.01 225)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-text-link",
-    "value": "oklch(0.23 0.01 225)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-text-link-hover-active",
-    "value": "oklch(0.23 0.01 225)"
+    "value": "oklch(0.23 0.009 245)"
   },
   {
     "name": "--intergalactic-text-link-invert",
-    "value": "oklch(0.993 0.005 215.6 / 0.956)"
+    "value": "oklch(0.991 0.005 232.5 / 0.959)"
   },
   {
     "name": "--intergalactic-text-link-invert-hover",
-    "value": "oklch(0.993 0.005 215.6 / 0.956)"
+    "value": "oklch(0.991 0.005 232.5 / 0.959)"
   }
 ]

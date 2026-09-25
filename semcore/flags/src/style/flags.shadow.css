@@ -12,7 +12,7 @@ SFlags {
     display: block;
     width: 14px;
     height: 11px;
-    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.96 0.005 215.6));
+    background-color: var(--intergalactic-bg-secondary-neutral-active, oklch(0.96 0.005 232.5));
     z-index: -1;
   }
 }
@@ -21,7 +21,7 @@ SFlags[data-capital-letters] {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: var(--intergalactic-bg-primary-neutral-active, oklch(0.96 0.005 215.6));
+  background: var(--intergalactic-bg-primary-neutral-active, oklch(0.96 0.005 232.5));
 
   &::before {
     content: attr(data-capital-letters);
@@ -30,6 +30,6 @@ SFlags[data-capital-letters] {
     font-size: calc(var(--intergalactic-fs-50, 10px) - 2px);
     line-height: normal;
     font-weight: var(--intergalactic-bold, 700);
-    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
   }
 }

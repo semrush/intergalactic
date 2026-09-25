@@ -5,17 +5,17 @@ STooltip {
   line-height: var(--intergalactic-lh-100, 1.3334);
   font-variant-numeric: tabular-nums;
   position: relative;
-  color: var(--intergalactic-text-primary-invert, oklch(0.993 0.005 215.6 / 0.956));
-  background-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
+  background-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.009 245));
   border-radius: var(--intergalactic-popper-rounded, 6px);
-  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.017 225));
+  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.015 245));
   box-sizing: border-box;
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.324 0.077 242.1 / 0.079));
   padding: var(--intergalactic-spacing-content-padding-medium, 12px);
 }
 
 STitle {
-  color: var(--intergalactic-text-secondary-invert, oklch(0.959 0.028 221.4 / 0.721));
+  color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
   margin-bottom: var(--intergalactic-spacing-content-gap-large, 8px);
 }
 
@@ -38,8 +38,8 @@ SDotCircle[color][lightness] {
 
 
 SFooter {
-  background: var(--intergalactic-bg-secondary-invert, oklch(0.916 0.055 225.3 / 0.127));
-  color: var(--intergalactic-text-secondary-invert, oklch(0.959 0.028 221.4 / 0.721));
+  background: var(--intergalactic-bg-secondary-invert, oklch(0.907 0.048 245.2 / 0.129));
+  color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
   padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-medium, 12px);
   border-radius: 0 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px);
   margin: var(--intergalactic-spacing-content-gap-xlarge, 12px) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px)) calc(-1 * var(--intergalactic-spacing-content-gap-xlarge, 12px));

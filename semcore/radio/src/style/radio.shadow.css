@@ -5,7 +5,7 @@ SRadio {
 
   SText {
     margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 
   &[size='l'] {
@@ -89,7 +89,7 @@ SValue[size='l'] {
 }
 
 SValue[state='normal']::before {
-  border-color: var(--intergalactic-control-radio-border, oklch(0.324 0.062 225.5 / 0.189));
+  border-color: var(--intergalactic-control-radio-border, oklch(0.277 0.066 242.6 / 0.18));
 }
 
 SValue[state='invalid']::before {
@@ -117,8 +117,8 @@ SControl:focus-visible+SValue[state='normal']::before {
 
 SControl:checked~SValue::before,
 SControl:checked:focus-visible~SValue::before {
-  border-color: var(--intergalactic-control-radio-bg-selected, oklch(0.23 0.01 225));
-  background-color: var(--intergalactic-control-radio-bg-selected, oklch(0.23 0.01 225));
+  border-color: var(--intergalactic-control-radio-bg-selected, oklch(0.23 0.009 245));
+  background-color: var(--intergalactic-control-radio-bg-selected, oklch(0.23 0.009 245));
 }
 
 SControl:focus-visible+SValue[state='invalid']::before {

@@ -62,7 +62,7 @@ SValue[size='l'] {
 
 SProgressBar[animation] {
   background-image: var(--intergalactic-progress-bar-pattern-gradient,
-  linear-gradient(-45deg, oklch(from oklch(0.332 0.062 224.2 / 0.128) l c h / 0.18) 25%, oklch(0.332 0.062 224.2 / 0.128) 0%, oklch(0.332 0.062 224.2 / 0.128) 50%, oklch(from oklch(0.332 0.062 224.2 / 0.128) l c h / 0.18) 0%, oklch(from oklch(0.332 0.062 224.2 / 0.128) l c h / 0.18) 75%, oklch(0.332 0.062 224.2 / 0.128) 0%));
+  linear-gradient(-45deg, oklch(from oklch(0.291 0.069 241.9 / 0.123) l c h / 0.18) 25%, oklch(0.291 0.069 241.9 / 0.123) 0%, oklch(0.291 0.069 241.9 / 0.123) 50%, oklch(from oklch(0.291 0.069 241.9 / 0.123) l c h / 0.18) 0%, oklch(from oklch(0.291 0.069 241.9 / 0.123) l c h / 0.18) 75%, oklch(0.291 0.069 241.9 / 0.123) 0%));
   animation-name: loading;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -73,16 +73,16 @@ SProgressBar[animation] {
 }
 
 SProgressBar[theme='default'] {
-  background-color: var(--intergalactic-progress-bar-bg, oklch(0.332 0.062 224.2 / 0.128));
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.291 0.069 241.9 / 0.123));
 
   SValue {
     background-image: var(--intergalactic-progress-bar-value-gradient,
-    linear-gradient(-45deg, oklch(from oklch(0.22 0.01 225) l c h / 0.78) 25%, oklch(0.22 0.01 225) 0%, oklch(0.22 0.01 225) 50%, oklch(from oklch(0.22 0.01 225) l c h / 0.78) 0%, oklch(from oklch(0.22 0.01 225) l c h / 0.78) 75%, oklch(0.22 0.01 225) 0%));
+    linear-gradient(-45deg, oklch(from oklch(0.22 0.008 245) l c h / 0.78) 25%, oklch(0.22 0.008 245) 0%, oklch(0.22 0.008 245) 50%, oklch(from oklch(0.22 0.008 245) l c h / 0.78) 0%, oklch(from oklch(0.22 0.008 245) l c h / 0.78) 75%, oklch(0.22 0.008 245) 0%));
   }
 }
 
 SProgressBar[theme='invert'] {
-  background-color: var(--intergalactic-progress-bar-bg-invert, oklch(0.927 0.047 225.1 / 0.231));
+  background-color: var(--intergalactic-progress-bar-bg-invert, oklch(0.919 0.042 245.1 / 0.234));
 
   SValue {
     background-image: var(--intergalactic-progress-bar-value-gradient-invert,
@@ -91,7 +91,7 @@ SProgressBar[theme='invert'] {
 }
 
 SProgressBar[theme='brand'] {
-  background-color: var(--intergalactic-progress-bar-bg, oklch(0.332 0.062 224.2 / 0.128));
+  background-color: var(--intergalactic-progress-bar-bg, oklch(0.291 0.069 241.9 / 0.123));
 
   SValue {
     background-image: var(--intergalactic-progress-bar-value-gradient-invert,

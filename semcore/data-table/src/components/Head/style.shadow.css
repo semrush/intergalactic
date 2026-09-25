@@ -49,7 +49,7 @@ SGroup, SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
-  color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
   box-sizing: border-box;
   height: 100%;
   position: relative;
@@ -64,7 +64,7 @@ SGroup {
   background-color: var(--intergalactic-table-th-primary-cell, oklch(1 0 0));
 
   &[isSorted] {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     font-weight: var(--intergalactic-bold, 700);
   }
 }
@@ -81,16 +81,16 @@ SGroup[use='secondary'] {
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='left'], SColumn[borders='left'] {
-  border-left: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  border-left: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 }
 
 SGroup[borders='both'], SColumn[borders='both'], SGroup[borders='right'], SColumn[borders='right'] {
-  border-right: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  border-right: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 }
 
 SColumn[use='primary'] {
   padding: var(--intergalactic-spacing-content-padding-medium, 12px);
-  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   background-color: var(--intergalactic-table-th-primary-cell, oklch(1 0 0));
 
   SSortWrapper::before {
@@ -102,13 +102,13 @@ SColumn[use='primary'] {
   }
 
   &[isSorted] {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     font-weight: var(--intergalactic-bold, 700);
   }
 
   &[visibleSort] {
     background-color: var(--intergalactic-table-th-primary-cell-active, oklch(1 0 0));
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
     SSortWrapper {
       flex-basis: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + 16px);
@@ -141,7 +141,7 @@ SColumn[use='primary'] {
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-content-padding-small, 8px);
-  border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.324 0.062 225.5 / 0.189));
+  border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.277 0.066 242.6 / 0.18));
   background-color: var(--intergalactic-table-th-secondary-cell, oklch(1 0 0));
 
   SSortWrapper::before {
@@ -154,12 +154,12 @@ SColumn[use='secondary'] {
 
 
   &[isSorted] {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     font-weight: var(--intergalactic-bold, 700);
   }
 
   &[visibleSort] {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
     SSortWrapper {
       flex-basis: calc(var(--intergalactic-spacing-content-padding-xsmall, 4px) + 16px);
@@ -229,7 +229,7 @@ SSortWrapper:before {
 
 SSortButton, SSortIndicator {
   display: none;
-  fill: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  fill: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   position: absolute;
   right: 0;
   margin-left: var(--intergalactic-spacing-content-gap-small, 4px);
@@ -289,7 +289,7 @@ SGroup[fixed='left'][shadowVertical='start'] {
     display: block;
     right: 0;
     background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
+    linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
 }
 SColumn[fixed='right'][shadowVertical='median'],
@@ -310,6 +310,6 @@ SGroup[fixed='right'][shadowVertical='end'] {
     display: block;
     left: 0;
     background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
+    linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
 }

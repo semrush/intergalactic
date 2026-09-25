@@ -6,8 +6,8 @@ SWizard {
 }
 
 SSidebar {
-  background: var(--intergalactic-wizard-sidebar-bg, oklch(0.23 0.01 225));
-  color: var(--intergalactic-wizard-sidebar-text-primary, oklch(0.993 0.005 215.6 / 0.956));
+  background: var(--intergalactic-wizard-sidebar-bg, oklch(0.23 0.009 245));
+  color: var(--intergalactic-wizard-sidebar-text-primary, oklch(0.991 0.005 232.5 / 0.959));
   padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px) var(--intergalactic-spacing-content-padding-small, 8px);
   max-width: 220px;
   flex-shrink: 0;
@@ -35,11 +35,11 @@ SSidebar {
     }
 
     &:hover {
-      background: var(--intergalactic-wizard-sidebar-control-hover, oklch(0.36 0.016 225));
+      background: var(--intergalactic-wizard-sidebar-control-hover, oklch(0.36 0.014 245));
       z-index: 2;
     }
     &[active] {
-      background: var(--intergalactic-wizard-sidebar-control-active, oklch(0.4 0.017 225));
+      background: var(--intergalactic-wizard-sidebar-control-active, oklch(0.4 0.015 245));
     }
     &:disabled,
     &[disabled] {
@@ -63,7 +63,7 @@ SSidebar {
         overflow: auto;
       }
       &[active]:hover SStepDescription {
-        background: var(--intergalactic-wizard-sidebar-control-active, oklch(0.4 0.017 225));
+        background: var(--intergalactic-wizard-sidebar-control-active, oklch(0.4 0.015 245));
       }
     }
   }

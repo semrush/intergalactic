@@ -5,15 +5,15 @@ SWindow {
   box-sizing: border-box;
   margin: auto;
   padding: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
-  box-shadow: var(--intergalactic-box-shadow-modal, 0px 1px 5px 0px oklch(0.344 0.064 223.3 / 0.081));
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  box-shadow: var(--intergalactic-box-shadow-modal, 0px 1px 5px 0px oklch(0.324 0.077 242.1 / 0.079));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
   &:focus {
     outline: none;
   }
 
   STitle {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 1.1667);
     font-weight: var(--intergalactic-semi-bold, 600);
@@ -61,12 +61,12 @@ SOverlay {
   left: 0;
   right: 0;
   margin: 0;
-  background: var(--intergalactic-overlay-primary, oklch(from oklch(0.46 0.02 225) l c h / 0.4));
+  background: var(--intergalactic-overlay-primary, oklch(from oklch(0.46 0.018 245) l c h / 0.4));
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: var(--intergalactic-overlay-secondary, oklch(from oklch(0.46 0.02 225) l c h / 0.3));
+    background: var(--intergalactic-overlay-secondary, oklch(from oklch(0.46 0.018 245) l c h / 0.3));
   }
 
 }

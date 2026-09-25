@@ -11,8 +11,8 @@ SItemToggle {
   font-weight: var(--intergalactic-regular, 400);
 
   &[use='primary'] {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
-    background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.003 215));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+    background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.004 232));
     border-radius: var(--intergalactic-surface-rounded, 8px);
     padding: var(--intergalactic-spacing-content-padding-small, 8px)
       var(--intergalactic-spacing-content-padding-large, 16px)
@@ -26,7 +26,7 @@ SItemToggle {
     }
 
     &:hover {
-      background-color: var(--intergalactic-bg-secondary-neutral-hover, oklch(0.97 0.004 215.3));
+      background-color: var(--intergalactic-bg-secondary-neutral-hover, oklch(0.97 0.005 232.2));
     }
 
     SItemToggleButton {
@@ -40,7 +40,7 @@ SItemToggle {
   }
 
   &[use='secondary'] {
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
     padding:
       var(--intergalactic-spacing-content-gap-large, 8px)
       var(--intergalactic-spacing-content-padding-xxsmall, 2px)
@@ -70,7 +70,7 @@ SItemToggleButton {
 SItemChevron {
   transform: rotate(0deg);
   transition: transform calc(var(--intergalactic-duration-fast, 200) * 1ms) var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12));
-  fill: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  fill: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
   &[selected] {
     transform: rotate(90deg);
@@ -82,7 +82,7 @@ SAccordionItem {
     position: relative;
     overflow: clip;
     border-radius: var(--intergalactic-surface-rounded, 8px);
-    background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.003 215));
+    background-color: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.004 232));
 
     &::before {
       content: '';
@@ -93,7 +93,7 @@ SAccordionItem {
       width: 2px;
       z-index: 1;
       opacity: 0;
-      background-color: var(--intergalactic-border-accent, oklch(0.23 0.01 225));
+      background-color: var(--intergalactic-border-accent, oklch(0.23 0.009 245));
       transition-property: opacity;
       transition-timing-function: var(--intergalactic-easings-fast, cubic-bezier(0.5, 0, 0, 1.12));
     }
@@ -113,7 +113,7 @@ SAccordionItem {
 
   &[use='secondary'] {
     SItemCollapse {
-      border-left: 2px solid var(--intergalactic-border-accent, oklch(0.23 0.01 225));
+      border-left: 2px solid var(--intergalactic-border-accent, oklch(0.23 0.009 245));
     }
   }
 }

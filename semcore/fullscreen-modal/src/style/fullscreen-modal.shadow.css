@@ -38,7 +38,7 @@ SFullscreenOverlay {
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 1.1667);
     font-weight: var(--intergalactic-semi-bold, 600);
-    color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+    color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   }
 
   SHeader {
@@ -51,12 +51,12 @@ SFullscreenOverlay {
     padding-bottom: var(--intergalactic-spacing-content-padding-large, 16px);
     padding-right: 72px;
     padding-top: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
-    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    border-bottom: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 
   SFooter {
     min-height: 52px;
-    border-top: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    border-top: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
     padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xxlarge, 40px);
     justify-content: center;
     align-items: center;

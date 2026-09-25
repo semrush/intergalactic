@@ -1465,7 +1465,7 @@ export const theme: Theme = {
         description: 'Use for the secondary modal dialogs that were opened upon the other modal dialogs.',
       },
       page_bg: {
-        value: neutral.at(0.97),
+        value: neutral.at(0.98),
         description: 'Background fill for the whole product page.',
       },
       control_pills_bg_hover: {

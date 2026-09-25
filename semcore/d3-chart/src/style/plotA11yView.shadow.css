@@ -2,8 +2,8 @@ SPlotA11yView {
   position: relative;
   display: block;
   background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
-  border: 3px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
+  border: 3px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   font-size: var(--intergalactic-fs-50, 10px);
   z-index: var(--intergalactic-z-index-overlay, 500);
   padding: 2px;
@@ -21,6 +21,6 @@ SPlotA11yView {
   }
 
   table, td, th {
-    border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 }

@@ -3,26 +3,26 @@ STooltip {
   padding: var(--intergalactic-spacing-content-padding-medium, 12px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
-  color: var(--intergalactic-tooltip-text, oklch(0.23 0.01 225));
+  color: var(--intergalactic-tooltip-text, oklch(0.23 0.009 245));
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 1.4286);
   word-wrap: break-word;
   max-width: 228px;
   font-weight: normal;
   white-space: normal;
-  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.344 0.064 223.3 / 0.081));
+  box-shadow: var(--intergalactic-box-shadow-popper, 1px 1px 10px 0px oklch(0.324 0.077 242.1 / 0.079));
 }
 
 /* stylelint-disable-next-line no-duplicate-selectors */
 STooltip {
   background-color: var(--intergalactic-tooltip-bg-default, oklch(1 0 0));
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
 }
 
 STooltip[theme='invert'] {
-  color: var(--intergalactic-tooltip-text-invert, oklch(0.993 0.005 215.6 / 0.956));
-  background-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 225));
-  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.017 225));
+  color: var(--intergalactic-tooltip-text-invert, oklch(0.991 0.005 232.5 / 0.959));
+  background-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.009 245));
+  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.015 245));
 }
 
 STooltip[theme='warning'] {
@@ -43,7 +43,7 @@ SArrow {
 
 /* stylelint-disable-next-line no-duplicate-selectors */
 SArrow {
-  border-color: var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
+  border-color: var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
 
   /* stylelint-disable-next-line no-duplicate-selectors */
   &:before {
@@ -52,10 +52,10 @@ SArrow {
 }
 
 SArrow[theme='invert'] {
-  border-color: var(--intergalactic-tooltip-border-invert, oklch(0.4 0.017 225));
+  border-color: var(--intergalactic-tooltip-border-invert, oklch(0.4 0.015 245));
 
   &::before {
-    border-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 225));
+    border-color: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.009 245));
   }
 }
 

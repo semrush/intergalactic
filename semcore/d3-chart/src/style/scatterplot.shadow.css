@@ -1,7 +1,7 @@
 @import './var.css';
 
 SScatterPlot {
-  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 225));
+  fill: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.009 245));
   transition-property: cx, cy;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;

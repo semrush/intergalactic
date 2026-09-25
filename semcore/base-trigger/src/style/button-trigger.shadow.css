@@ -1,11 +1,11 @@
 SButtonAddon {
   width: var(--intergalactic-spacing-3x, 12px);
   height: var(--intergalactic-spacing-3x, 12px);
-  color: var(--intergalactic-icon-non-interactive, oklch(0.6 0.026 225));
+  color: var(--intergalactic-icon-non-interactive, oklch(0.6 0.023 245));
   position: relative;
   left: var(--intergalactic-spacing-05x, 2px);
 }
 
 SButtonTriggerSpin {
-  fill: var(--intergalactic-icon-non-interactive, oklch(0.6 0.026 225));
+  fill: var(--intergalactic-icon-non-interactive, oklch(0.6 0.023 245));
 }

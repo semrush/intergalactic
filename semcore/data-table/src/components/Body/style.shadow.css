@@ -60,7 +60,7 @@ SCellWrapper {
     bottom: 0;
     width: 2px;
     z-index: 20;
-    background-color: var(--intergalactic-table-border-accordion-accent, oklch(0.23 0.01 225));
+    background-color: var(--intergalactic-table-border-accordion-accent, oklch(0.23 0.009 245));
   }
 }
 
@@ -71,7 +71,7 @@ SCollapseRow[gridArea] > SCellWrapper, SRow[isAccordionRow] > SCellWrapper {
 
 SCollapseRow[gridArea] > SCellWrapper > SCell:not([withoutBorder]),
 SAccordionRows > SRow[isAccordionRow]:last-child > SCellWrapper > SCell:not([withoutBorder]) {
-  border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.324 0.062 225.5 / 0.189)); /* TODO: --intergalactic-table-border-accent */
+  border-bottom: 1px solid var(--intergalactic-table-border-accent, oklch(0.277 0.066 242.6 / 0.18)); /* TODO: --intergalactic-table-border-accent */
 }
 
 SCollapseRow > SCellWrapper > SCell {
@@ -80,7 +80,7 @@ SCollapseRow > SCellWrapper > SCell {
 
 SRow[accordionType='row'][expanded] > SCellWrapper > SCell:not([theme]),
 SCell:not([theme])[expanded][withAccordion] {
-  background-color: var(--intergalactic-table-td-cell-active, oklch(0.96 0.005 215.6));
+  background-color: var(--intergalactic-table-td-cell-active, oklch(0.96 0.005 232.5));
 }
 
 SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWrapper > SCell:not([theme]) {
@@ -92,7 +92,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   :not(SRowGroup:has([data-row-selector="true"] input:checked)) > SRow:not([accordionType='row'][expanded]):hover:not([isNonInteractive]):not(:has([data-row-selector="true"] input:checked)):not([aria-hidden]):not(:has(SLimitOverlayCellWrapper:hover)) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([expanded][withAccordion]):not([aria-hidden]),
   SRowGroup:has(SCell:hover):not(:has([data-row-selector="true"] input:checked)) > SRow:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([expanded][withAccordion]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-hover, oklch(0.97 0.004 215.3));
+    background-color: var(--intergalactic-table-td-cell-hover, oklch(0.97 0.005 232.2));
   }
 
   /* MUTED THEME */
@@ -102,7 +102,7 @@ SCollapseRow > SCellWrapper > SCell:not([theme]), SRow[isAccordionRow] > SCellWr
   SRowGroup:has(SCell[data-grouped-by='rowgroup']:hover) > SRow:not([accordionType='row'][expanded])[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell:not([theme]):not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([accordionType='row'][expanded]):not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup'][theme='muted']:not([aria-hidden]),
   SRowGroup:has(SCell:hover) > SRow:not([accordionType='row'][expanded])[theme='muted']:not([isNonInteractive]):not([aria-hidden]) > SCellWrapper > SCell[data-grouped-by='rowgroup']:not([theme]):not([aria-hidden]) {
-    background-color: var(--intergalactic-table-td-cell-active, oklch(0.96 0.005 215.6));
+    background-color: var(--intergalactic-table-td-cell-active, oklch(0.96 0.005 232.5));
   }
 
   /* INFO THEME */
@@ -164,10 +164,10 @@ SCell {
   height: 100%;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 1.4286);
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   background-color: var(--intergalactic-table-td-cell, oklch(1 0 0));
   box-sizing: border-box;
-  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
+  border-bottom: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
   white-space: pre-wrap;
   word-break: break-word;
   font-variant-numeric: tabular-nums;
@@ -212,10 +212,10 @@ SCell {
   }
 
   &[theme='muted'] {
-    background-color: var(--intergalactic-table-td-cell-unread, oklch(0.98 0.003 215));
+    background-color: var(--intergalactic-table-td-cell-unread, oklch(0.98 0.004 232));
 
     &[expanded][withAccordion] {
-      background-color: var(--intergalactic-table-td-cell-active, oklch(0.96 0.005 215.6));
+      background-color: var(--intergalactic-table-td-cell-active, oklch(0.96 0.005 232.5));
     }
   }
 
@@ -253,12 +253,12 @@ SCell {
 
   &[borders='both'],
   &[borders='left'] {
-    border-left: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
+    border-left: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
   }
 
   &[borders='both'],
   &[borders='right'] {
-    border-right: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
+    border-right: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
   }
 
   &[innerOutline]:focus-visible {
@@ -352,7 +352,7 @@ SCollapseRow {
     bottom: 0;
     width: 2px;
     z-index: 20;
-    background-color: var(--intergalactic-table-border-accordion-accent, oklch(0.23 0.01 225));
+    background-color: var(--intergalactic-table-border-accordion-accent, oklch(0.23 0.009 245));
   }
 }
 
@@ -378,7 +378,7 @@ SCellWrapper[fixed='left'][shadowVertical='start'] {
     display: block;
     right: 0;
     background: var(--intergalactic-scroll-area-shadow-left,
-    linear-gradient(to right, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
+    linear-gradient(to right, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
   SCell {
     margin-right: 5px;
@@ -391,7 +391,7 @@ SCellWrapper[fixed='right'][shadowVertical='end'] {
     display: block;
     left: 0;
     background: var(--intergalactic-scroll-area-shadow-right,
-    linear-gradient(to left, oklch(from oklch(0.23 0.01 225) l c h / 0.08) 20.55%, transparent 100%));
+    linear-gradient(to left, oklch(from oklch(0.23 0.009 245) l c h / 0.08) 20.55%, transparent 100%));
   }
 
   SCell {

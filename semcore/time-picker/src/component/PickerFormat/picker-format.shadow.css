@@ -19,7 +19,7 @@ SPickerFormat {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
   background-color: var(--intergalactic-control-tertiary-neutral, transparent);
 
   &::before {
@@ -29,20 +29,20 @@ SPickerFormat {
     top: 50%;
     transform: translateY(-50%);
     width: 1px;
-    background-color: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    background-color: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
     transition: height calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-out; /* TODO: Sync with animationin FilterTrigger */
   }
 
   &:hover {
     cursor: pointer;
-    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.363 0.068 222.8 / 0.05));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.375 0.09 242.7 / 0.05));
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
-    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.351 0.065 223 / 0.066));
+    color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
+    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.344 0.082 242.3 / 0.065));
   }
 }
 

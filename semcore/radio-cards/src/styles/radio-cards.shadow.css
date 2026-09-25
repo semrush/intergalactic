@@ -12,16 +12,16 @@ SRadioItem {
 
   border-radius: var(--intergalactic-pills-rounded, 6px);
   background: var(--intergalactic-control-presets-bg, oklch(1 0 0));
-  box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.344 0.064 223.3 / 0.081), 0px 1px 3px 0px oklch(0.344 0.064 223.3 / 0.081));
+  box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.324 0.077 242.1 / 0.079), 0px 1px 3px 0px oklch(0.324 0.077 242.1 / 0.079));
   cursor: pointer;
   border: 1px solid transparent;
 
   &:hover {
-    border: 1px solid var(--intergalactic-control-presets-border-hover, oklch(0.324 0.062 225.5 / 0.189));
+    border: 1px solid var(--intergalactic-control-presets-border-hover, oklch(0.277 0.066 242.6 / 0.18));
   }
 
   &:has(SRadioItemControl[checked]) {
-    border: 1px solid var(--intergalactic-control-presets-border-selected, oklch(0.23 0.01 225));
+    border: 1px solid var(--intergalactic-control-presets-border-selected, oklch(0.23 0.009 245));
   }
 
   &:has(SRadioItemControl[disabled]) {
@@ -52,11 +52,11 @@ SRadioItemDescription {
 
 SRadioItemHeaderLeftAddon {
   transform: translateY(4px);
-  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.022 245));
 }
 
 SRadioItemHeaderRightAddon {
-  color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+  color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));
 }
 
 SRadioItemHeaderText {

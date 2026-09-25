@@ -13,7 +13,7 @@ SHighlightedBadge {
   letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--intergalactic-badge-text-primary-invert, oklch(0.993 0.005 215.6 / 0.956));
+  color: var(--intergalactic-badge-text-primary-invert, oklch(0.991 0.005 232.5 / 0.959));
 }
 
 SHighlightedBadge[use='accent'] {

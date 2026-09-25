@@ -37,18 +37,18 @@ SValue {
   padding: 0;
   border: none;
   box-sizing: border-box;
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
   font-size: inherit;
   text-overflow: ellipsis;
   font-family: inherit;
   background: transparent;
 
   &::placeholder {
-    color: var(--intergalactic-text-placeholder, oklch(0.282 0.055 228.7 / 0.386));
+    color: var(--intergalactic-text-placeholder, oklch(0.242 0.062 245.8 / 0.371));
   }
 
   &:not(:disabled):read-only~SOutline {
-    background: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.003 215));
+    background: var(--intergalactic-bg-secondary-neutral, oklch(0.98 0.004 232));
   }
 
   &:disabled {
@@ -85,14 +85,14 @@ SAddon {
   flex: 0 0 auto;
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
   height: 100%;
-  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.02 220.2));
+  color: var(--intergalactic-icon-secondary-neutral, oklch(0.8 0.017 238.3));
 }
 
 SAddon[interactive] {
   cursor: pointer;
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.024 223.6));
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, oklch(0.66 0.022 243.2));
   }
 }
 
@@ -140,7 +140,7 @@ SInput:has(SValue:focus-visible) {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    border-color: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 
   &:has(SValue:focus-visible) SOutline {
@@ -148,7 +148,7 @@ SInput[state='normal'] {
       outline-offset: 0;
       transition-property: outline-color, outline-width;
     }
-    border-color: var(--intergalactic-border-info-active, oklch(0.23 0.01 225));
+    border-color: var(--intergalactic-border-info-active, oklch(0.23 0.009 245));
   }
 }
 

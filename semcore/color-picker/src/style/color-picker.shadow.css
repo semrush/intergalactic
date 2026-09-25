@@ -21,7 +21,7 @@ SItemContainer {
   box-sizing: border-box;
 
   &:hover {
-    border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 
   &::after {
@@ -39,7 +39,7 @@ SItemContainer:hover>SCloseIcon {
 }
 
 SItemContainer[selected] {
-  border: 1px solid var(--intergalactic-border-info-active, oklch(0.23 0.01 225));
+  border: 1px solid var(--intergalactic-border-info-active, oklch(0.23 0.009 245));
 }
 
 SItemContainer[displayLabel] {
@@ -51,7 +51,7 @@ SItemContainer[displayLabel] {
 
 SItemContainer:not([value]) {
   &::after {
-    border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
     opacity: 1;
   }
 
@@ -63,7 +63,7 @@ SItemContainer:not([value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 22px;
-    background: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    background: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
     z-index: 0;
   }
 }
@@ -95,11 +95,11 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.363 0.068 222.8 / 0.05));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, oklch(0.375 0.09 242.7 / 0.05));
   }
 
   &:active {
-    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.351 0.065 223 / 0.066));
+    background-color: var(--intergalactic-control-tertiary-neutral-active, oklch(0.344 0.082 242.3 / 0.065));
   }
 }
 
@@ -125,7 +125,7 @@ STriggerCircle {
 }
 
 STriggerCircle:not([data-value]) {
-  border: 1px solid var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  border: 1px solid var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 
   &::before {
     content: '';
@@ -135,12 +135,12 @@ STriggerCircle:not([data-value]) {
     transform: translate(-50%, -50%) rotate(45deg);
     width: 1px;
     height: 20px;
-    background: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    background: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
   }
 }
 
 SChevronDownM {
-  fill: var(--intergalactic-text-primary, oklch(0.23 0.01 225))
+  fill: var(--intergalactic-text-primary, oklch(0.23 0.009 245))
 }
 
 SCloseIcon {
@@ -170,7 +170,7 @@ SItemColor {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1px solid var(--intergalactic-border-secondary, oklch(0.344 0.064 223.3 / 0.081));
+  border: 1px solid var(--intergalactic-border-secondary, oklch(0.324 0.077 242.1 / 0.079));
   background: var(--data-value);
   box-sizing: border-box;
   margin: 5px;

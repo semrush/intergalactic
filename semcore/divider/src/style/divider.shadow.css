@@ -15,31 +15,31 @@ SDivider {
   }
 
   &[use='primary'] {
-    background-color: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+    background-color: var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18));
 
     &[theme='invert'] {
-      background-color: var(--intergalactic-border-primary-invert, oklch(0.932 0.044 225.1 / 0.378));
+      background-color: var(--intergalactic-border-primary-invert, oklch(0.925 0.039 245 / 0.382));
     }
   }
 
   &[use='secondary'] {
     &[orientation='horizontal'] {
-      background-image: radial-gradient(circle, var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189)) 0.5px, transparent 0.5px);
+      background-image: radial-gradient(circle, var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18)) 0.5px, transparent 0.5px);
       background-size: 3px 1px;
       background-position: -1px 50%;
 
       &[theme='invert'] {
-        background-image: radial-gradient(circle, var(--intergalactic-border-primary-invert, oklch(0.932 0.044 225.1 / 0.378)) 0.5px, transparent 0.5px);
+        background-image: radial-gradient(circle, var(--intergalactic-border-primary-invert, oklch(0.925 0.039 245 / 0.382)) 0.5px, transparent 0.5px);
       }
     }
 
     &[orientation='vertical'] {
-      background-image: radial-gradient(circle, var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189)) 0.5px, transparent 0.5px);
+      background-image: radial-gradient(circle, var(--intergalactic-border-primary, oklch(0.277 0.066 242.6 / 0.18)) 0.5px, transparent 0.5px);
       background-size: 1px 3px;
       background-position: 50% -1px;
 
       &[theme='invert'] {
-        background-image: radial-gradient(circle, var(--intergalactic-border-primary-invert, oklch(0.932 0.044 225.1 / 0.378)) 0.5px, transparent 0.5px);
+        background-image: radial-gradient(circle, var(--intergalactic-border-primary-invert, oklch(0.925 0.039 245 / 0.382)) 0.5px, transparent 0.5px);
       }
     }
   }

@@ -22,7 +22,7 @@ SPrevPage {
 }
 
 SLabel {
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 SLabel:not(:first-child) {
@@ -40,13 +40,13 @@ STotalPages {
 STotalPagesLabel {
   margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
   margin-right: var(--intergalactic-spacing-content-gap-small, 4px);
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 }
 
 STotalLastPages {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 1.4286);
-  color: var(--intergalactic-text-primary, oklch(0.23 0.01 225));
+  color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
 
   &[size='l'] {
     font-size: var(--intergalactic-fs-300, 16px);
