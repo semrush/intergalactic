@@ -63,7 +63,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month Range Trigger', () => {
     test('Verify trigger when entering date manually', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -105,7 +108,11 @@ test.describe(`${TAG.VISUAL}`, () => {
     triggerVariables.forEach((item) => {
       test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
         tag: [TAG.PRIORITY_HIGH,
-          '@date-picker'],
+          '@date-picker',
+          '@base-components',
+          '@button',
+          '@flex-box',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/date-picker/tests/examples/month-range-trigger.tsx', 'en', item);
         await page.keyboard.press('Tab');
@@ -122,7 +129,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month range', () => {
     test('Verify Month RangePicker styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -196,7 +206,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('Month range', () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -269,7 +282,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Month RangePicker mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
 
@@ -365,7 +381,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify Month RangePicker keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/monthrangepicker.tsx', 'en');
       const buttons = page.locator('[data-ui-name="Button"]');

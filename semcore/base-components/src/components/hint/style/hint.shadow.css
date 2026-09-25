@@ -9,7 +9,7 @@ SHintPopper {
   pointer-events: none;
 
   background: var(--intergalactic-tooltip-bg-invert, oklch(0.23 0.01 225));
-  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.35 0.015 225));
+  border: 1px solid var(--intergalactic-tooltip-border-invert, oklch(0.4 0.017 225));
   color: var(--intergalactic-tooltip-text-invert, oklch(0.993 0.005 215.6 / 0.956));
   padding: var(--intergalactic-spacing-content-padding-xsmall, 4px) var(--intergalactic-spacing-content-padding-small, 8px);
   border-radius: var(--intergalactic-rounded-small, 4px);

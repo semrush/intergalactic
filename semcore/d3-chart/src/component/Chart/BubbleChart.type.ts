@@ -19,7 +19,7 @@ export type BubbleChartData = Array<{
 
 export type BubbleChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<BubbleChartData>,
-  'showTotalInTooltip'
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
 > & {
   /** Field name that groups the data points */
   groupKey?: never;
@@ -36,6 +36,7 @@ export type BubbleChartDefaultProps = {
   showXAxis: true;
   showYAxis: true;
   showTooltip: true;
+  locale: 'en';
 };
 
 export type BubbleChartType = Intergalactic.Component<typeof Flex, BubbleChartProps>;

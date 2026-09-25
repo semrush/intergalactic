@@ -26,7 +26,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@divider',
       '@button',
       '@base-components',
-    ],
+      '@pagination'],
   }, async ({ page }) => {
     // Smoke check that the composition survives a real render pass.
     await loadPage(page, STORY, 'en');
@@ -45,7 +45,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@link',
       '@button',
       '@base-components',
-    ],
+      '@pagination'],
   }, async ({ page }) => {
     await loadPage(page, STORY, 'en');
 
@@ -76,7 +76,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@link',
       '@ellipsis',
       '@base-components',
-    ],
+      '@pagination'],
   }, async ({ page }) => {
     await loadPage(page, STORY, 'en', { cropPosition: 'middle' });
 
@@ -91,7 +91,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@link',
       '@ellipsis',
       '@base-components',
-    ],
+      '@pagination'],
   }, async ({ page }) => {
     await loadPage(page, STORY, 'en', { cropPosition: 'end' });
 
@@ -108,7 +108,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@button',
       '@ellipsis',
       '@base-components',
-    ],
+      '@pagination'],
   }, async ({ page }) => {
     await loadPage(page, STORY, 'en', { withEllipsis: false });
 

@@ -42,7 +42,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   // value=<case>, value=0, value=100 and the no value state.
   barMatrix.forEach((item) => {
     test(`Verify progress bar with background customization with value=${item.value}, size=${item.size}, theme=${item.theme}`, {
-      tag: [TAG.PRIORITY_HIGH, '@progress-bar'],
+      tag: [TAG.PRIORITY_HIGH, '@progress-bar',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, BAR_EXAMPLE, 'en', item);
 
@@ -54,7 +57,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test(`Verify progress bar value customization with value=${deprecatedValueTheme.value}, size=${deprecatedValueTheme.size}, valueTheme=${deprecatedValueTheme.valueTheme}`, {
-    tag: [TAG.PRIORITY_MEDIUM, '@progress-bar'],
+    tag: [TAG.PRIORITY_MEDIUM, '@progress-bar',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BAR_EXAMPLE, 'en', deprecatedValueTheme);
 
@@ -65,7 +71,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify all themes on light and dark backgrounds', {
-    tag: [TAG.PRIORITY_HIGH, '@progress-bar'],
+    tag: [TAG.PRIORITY_HIGH, '@progress-bar',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/progress-bar/advanced/examples/all_themes.tsx', 'en');
     await expect(stand(page)).toHaveScreenshot();

@@ -18,7 +18,7 @@ export type BaseChartLegendProps = NSFlex.Props &
      */
     shape?: ShapeType;
     /**
-     * Handler for change visible for data items. Doesn't work if Shape one of 'Circle' | 'Line' | 'Square'
+     * Handler for change visible for data items. Doesn't work if `shape` is 'Circle'.
      */
     onChangeVisibleItem?: (key: LegendItemKey, isVisible: boolean) => void;
 

@@ -43,7 +43,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     textVariants.forEach((variant) => {
       const ellipsisDesc = variant.ellipsis.ellipsis === true ? 'true' : JSON.stringify(variant.ellipsis);
       test(`Verify ellipsis on text with ellipsis: ${ellipsisDesc}, size: ${variant.size}`, {
-        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
+        tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
 
@@ -74,7 +74,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
     noEllipsisVariants.forEach((variant) => {
       test(`Verify no hint appears when ellipsis: ${variant.description}`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis', '@typography'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
         await page.waitForTimeout(100);
@@ -89,7 +89,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify basic ellipsis usage', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@tag', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
     await page.waitForTimeout(100);
@@ -108,7 +108,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify search highlight works well', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@flex-box', '@input', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/with_search_selection.tsx', 'en');
 
@@ -116,7 +116,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify no extra space when cropPosition end and text is not truncated', {
-    tag: [TAG.PRIORITY_HIGH, '@ellipsis', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@base-components', '@ellipsis', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', {
       ellipsis: { cropPosition: 'end' },
@@ -140,7 +140,7 @@ test.describe(`${TAG.VISUAL}`, () => {
   ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify hint shows full text on hover and hides on mouse leave', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@ellipsis'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@base-components', '@ellipsis', '@tag'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
 
@@ -160,7 +160,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify hint shows and hide via keyboard interaction', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en');
     await locators.link(page).waitFor({ state: 'visible' });
@@ -181,7 +181,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify no hint when text is not truncated', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/link_with_ellipsis.tsx', 'en', { ellipsis: false });
     await page.waitForTimeout(100);
@@ -193,7 +193,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify required last symbols preservation', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/with_required_last_symbols.tsx', 'en');
     await page.waitForTimeout(100);
@@ -213,7 +213,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify hint positioning near truncated text', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@tag'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/docs/examples/basic_usage.tsx', 'en');
     await page.waitForTimeout(100);
@@ -237,7 +237,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify observe with undefined init value', {
-    tag: [TAG.PRIORITY_HIGH, '@ellipsis'],
+    tag: [TAG.PRIORITY_HIGH, '@base-components', '@ellipsis', '@link'],
   }, async ({ page }) => {
     const link = 'https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis';
 
@@ -253,7 +253,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify observe children truncation', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@flex-box', '@button', '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/observe_children_mutations.tsx', 'en');
 
@@ -323,7 +323,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   noEllipsisVariants.forEach((variant) => {
     test(`Verify no hint appears when: ${variant.description}`, {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@ellipsis', '@typography'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@base-components', '@ellipsis', '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-components/ellipsis/tests/examples/trim_with_special_text_size.tsx', 'en', variant);
       await page.waitForTimeout(100);
@@ -371,7 +371,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }
 
     test('Verify full text is copied from end-crop ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
       if (browserName == 'webkit') test.skip(); // doesnt work properly for webkit in headless mode
@@ -391,7 +391,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify full text is copied from middle-crop ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
       if (browserName == 'webkit') test.skip(); // doesnt work properly in headless mode
@@ -411,7 +411,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify full link is copied from middle-crop link ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
       if (browserName != 'chromium') test.skip();
@@ -428,7 +428,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
     test('Verify full link is copied from end-crop link ellipsis', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@ellipsis', '@link'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@base-components', '@ellipsis', '@flex-box', '@link', '@notice', '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, storyPath, 'en');
       if (browserName != 'chromium') test.skip(); // doesnt work properly  in headless mode

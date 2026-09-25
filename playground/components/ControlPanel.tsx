@@ -1,7 +1,6 @@
 import Accordion from '@semcore/ui/accordion';
 import { Box } from '@semcore/ui/base-components';
 import { Text } from '@semcore/ui/typography';
-import type { PropsWithChildren } from 'react';
 import React from 'react';
 
 import BooleanControl from './Controls/BooleanControl';
@@ -20,10 +19,6 @@ type ControlsExceptGroupControl = Exclude<
   GroupControlType<PlaygroundComponentProps>
 >;
 
-interface IControlWrapperProps extends PropsWithChildren {
-  displayName?: string;
-}
-
 interface IGroupControlProps extends GroupControlType<PlaygroundComponentProps> {
   groupPropName: string;
   onControlChange: IControlPanelProps['onControlChange'];
@@ -40,11 +35,11 @@ interface IControlPanelProps {
 
 function GroupControl({ groupName, controls, groupPropName, onControlChange, isOpenedByDefault }: IGroupControlProps) {
   return (
-    <Accordion defaultValue={isOpenedByDefault ? 0 : undefined}>
+    <Accordion className={styles.fullWidthItem} defaultValue={isOpenedByDefault ? 0 : undefined}>
       <Accordion.Item value={0}>
-        <Accordion.Item.Toggle className={styles.fullWidthItem}>
+        <Accordion.Item.Toggle>
           <Accordion.Item.ToggleButton>
-            <Accordion.Item.Chevron mr={2} color='var(--intergalactic-icon-secondary-neutral)' />
+            <Accordion.Item.Chevron color='var(--intergalactic-icon-secondary-neutral)' />
             <Text size={200} fontWeight={500}>
               {groupName}
             </Text>
@@ -52,7 +47,6 @@ function GroupControl({ groupName, controls, groupPropName, onControlChange, isO
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse
           w='100%'
-          className={styles.fullWidthItem}
           role='group'
           aria-label={groupName}
           overflowHidden={false}

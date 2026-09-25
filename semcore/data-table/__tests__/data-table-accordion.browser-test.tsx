@@ -23,7 +23,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table',
         '@button',
         '@d3-chart',
-      ],
+        '@line-chart',
+        '@responsive'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
       const cellActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-active');
@@ -100,7 +101,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@data-table',
         '@button',
         '@d3-chart',
-      ],
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en', { h: '100%' });
 
@@ -121,7 +123,11 @@ test.describe(`${TAG.VISUAL}`, () => {
       await page.keyboard.press('ArrowUp');
       await expect(locators.toggle(page).nth(0)).toBeFocused();
       await page.keyboard.press('Enter');
-      await locators.chart(page, 'Chart').waitFor({ state: 'hidden' });
+      // wait for the closing animation to end, not just for the content to hide:
+      // the row keeps the expanded attribute — and with it the active background and
+      // the left accent border — until expandedForAnimation resets
+      await expect(page.locator('[data-ui-name="Row.Cell"][expanded]')).toHaveCount(0);
+      await expect(locators.chart(page, 'Chart')).toHaveCount(0);
       await expect(page).toHaveScreenshot();
     });
 
@@ -157,7 +163,8 @@ test.describe(`${TAG.VISUAL}`, () => {
         '@button',
         '@d3-chart',
         '@widget-empty',
-      ],
+        '@line-chart',
+        '@responsive'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-render-cell.tsx', 'en');
 
@@ -225,7 +232,13 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify table with checkbox and accordion not in 1st cell', {
       tag: [TAG.PRIORITY_HIGH,
         '@data-table',
-        '@pagination'],
+        '@pagination',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@notice',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
       const stylesActiveHovered = await getStylesActiveHovered(page);
@@ -282,7 +295,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify checkbox and accordion in first cell mouse interactions when variant=${item.variant} and sedeIndents=${item.sideIndents}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@data-table',
-          '@d3-chart'],
+          '@d3-chart',
+          '@line-chart',
+          '@responsive'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', item);
         const cellSelectedActiveBg = await getCssVarColor(page, '--intergalactic-table-td-cell-selected-active');
@@ -797,7 +812,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
         '@button',
         '@d3-chart',
-      ],
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -855,7 +871,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
         '@button',
         '@d3-chart',
-      ],
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -913,7 +930,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@data-table',
         '@button',
         '@d3-chart',
-      ],
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-button-not-in-accordion-cell.tsx', 'en');
 
@@ -962,7 +980,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@tooltip',
         '@typography',
         '@widget-empty',
-      ],
+        '@description-tooltip'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-interactive-elements-in-cell-with-toggle.tsx', 'en');
 
@@ -1000,7 +1018,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         '@tooltip',
         '@typography',
         '@widget-empty',
-      ],
+        '@description-tooltip'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/tests/examples/accordion-tests/with-component/with-interactive-elements-in-cell-with-toggle.tsx', 'en');
 
@@ -1051,7 +1069,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@data-table',
-        '@pagination'],
+        '@pagination',
+        '@animation',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@notice',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_pagination.tsx', 'en');
 

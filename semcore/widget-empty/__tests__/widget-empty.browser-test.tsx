@@ -75,7 +75,11 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify WidgetEmpty with actions', {
-    tag: [TAG.PRIORITY_HIGH, '@widget-empty'],
+    tag: [TAG.PRIORITY_HIGH, '@widget-empty',
+      '@base-components',
+      '@button',
+      '@card',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/custom_examples_actions.tsx', 'en');
 
@@ -85,7 +89,8 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test('Verify WidgetEmpty custom examples', {
-    tag: [TAG.PRIORITY_MEDIUM, '@widget-empty'],
+    tag: [TAG.PRIORITY_MEDIUM, '@widget-empty',
+      '@card'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/custom-examples.tsx', 'en');
 
@@ -95,7 +100,14 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test(`Verify WidgetError with i18n`, {
-    tag: [TAG.PRIORITY_MEDIUM, '@widget-empty'],
+    tag: [TAG.PRIORITY_MEDIUM, '@widget-empty',
+      '@base-components',
+      '@button',
+      '@card',
+      '@flex-box',
+      '@link',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/error_example.tsx', 'en');
 
@@ -112,7 +124,13 @@ test.describe(TAG.VISUAL, () => {
   });
 
   test(`Verify WidgetNoData with i18n `, {
-    tag: [TAG.PRIORITY_MEDIUM, '@widget-empty'],
+    tag: [TAG.PRIORITY_MEDIUM, '@widget-empty',
+      '@base-components',
+      '@button',
+      '@card',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/nodata_example.tsx', 'en');
 
@@ -136,7 +154,11 @@ test.describe(TAG.VISUAL, () => {
   ===================================================== */
 test.describe(TAG.FUNCTIONAL, () => {
   test('Verify WidgetEmpty with actions keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, '@widget-empty', TAG.KEYBOARD],
+    tag: [TAG.PRIORITY_HIGH, '@widget-empty', TAG.KEYBOARD,
+      '@base-components',
+      '@button',
+      '@card',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/custom_examples_actions.tsx', 'en');
 
@@ -147,7 +169,14 @@ test.describe(TAG.FUNCTIONAL, () => {
   });
 
   test('Verify WidgetError with actions keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, '@widget-empty', TAG.KEYBOARD],
+    tag: [TAG.PRIORITY_HIGH, '@widget-empty', TAG.KEYBOARD,
+      '@base-components',
+      '@button',
+      '@card',
+      '@flex-box',
+      '@link',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/error_example.tsx', 'en');
 
@@ -159,7 +188,13 @@ test.describe(TAG.FUNCTIONAL, () => {
   });
 
   test('Verify WidgetNoData with actions keyboard navigation', {
-    tag: [TAG.PRIORITY_HIGH, '@widget-empty', TAG.KEYBOARD],
+    tag: [TAG.PRIORITY_HIGH, '@widget-empty', TAG.KEYBOARD,
+      '@base-components',
+      '@button',
+      '@card',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/widget-empty/docs/examples/nodata_example.tsx', 'en');
 

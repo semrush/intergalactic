@@ -83,7 +83,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@checkbox',
       '@link',
       '@typography',
-    ],
+      '@description-tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/cells-tests/interactive-elements-in-cells.tsx', 'en');
 

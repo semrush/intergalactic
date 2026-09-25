@@ -223,7 +223,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify date format in bar chart', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -283,7 +284,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify trend line', {
-      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart'],
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@bar-chart', '@d3-chart',
+        '@line-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -935,7 +937,8 @@ test.describe(`${TAG.VISUAL}`, () => {
     });
 
     test('Verify stacked horizontal bar chart with negative values', {
-      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+      tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
+        '@horizontal-bar-chart'],
     }, async ({ page }) => {
       await loadPage(
         page,
@@ -1161,7 +1164,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify trend line attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart',
+      '@line-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1185,7 +1189,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
       for (const dot of dots) {
         await expect(dot).toHaveAttribute('aria-hidden', 'true');
-        await expect(dot).toHaveAttribute('r', '4');
+        await expect(dot).toHaveAttribute('r', '3.5');
       }
     });
   });
@@ -1234,7 +1238,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify HorizontalBar aria-hidden attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
+      '@horizontal-bar-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -1255,7 +1260,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify HorizontalBar.Background aria-hidden attributes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, '@bar-chart', '@d3-chart', '@base-components', '@flex-box', '@typography',
+      '@horizontal-bar-chart'],
   }, async ({ page }) => {
     await loadPage(
       page,

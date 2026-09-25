@@ -1,7 +1,28 @@
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
+
+/**
+ * Asserts every match is kept out of the accessibility tree.
+ *
+ * `aria-hidden` on an ancestor hides the whole subtree, so checking the attribute on each
+ * element itself would fail the moment decorative shapes get wrapped in a group — which is
+ * exactly what happened when the hover line became a `<g>` holding three `<line>` children
+ * plus its end caps. What matters is that nothing here reaches a screen reader, not which
+ * node carries the attribute.
+ */
+const expectEachToBeHiddenFromA11y = async (locator: Locator) => {
+  await expect(locator).not.toHaveCount(0);
+
+  const exposed = await locator.evaluateAll((elements) =>
+    elements
+      .map((element, index) => (element.closest('[aria-hidden="true"]') ? null : index))
+      .filter((index) => index !== null),
+  );
+
+  expect(exposed).toEqual([]);
+};
 
 export const locators = {
   plot: (page: Page) => page.locator('svg[data-ui-name="Plot"]'),
@@ -57,14 +78,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await page.mouse.move(hoverX, hoverY);
 
-      const lines = locators.line(page);
-      const count = await lines.count();
-      await expect(count).not.toBeNull();
-
-      for (let i = 0; i < count; i++) {
-        const line = lines.nth(i);
-        await expect(line.first()).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToBeHiddenFromA11y(locators.line(page));
       await expect(page).toHaveScreenshot();
     });
   });

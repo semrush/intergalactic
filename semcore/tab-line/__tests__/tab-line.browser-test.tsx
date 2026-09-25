@@ -34,7 +34,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components',
 
         '@counter',
-        '@badge'],
+        '@badge',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
 
@@ -98,7 +99,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@base-components',
 
         '@counter',
-        '@badge'],
+        '@badge',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
 
@@ -138,7 +140,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@ellipsis',
         '@hint',
         '@counter',
-        '@badge'],
+        '@badge',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', item);
       await page.waitForTimeout(100);
@@ -174,7 +177,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify automatic tabs activation by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 
@@ -221,7 +227,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify automatic tabs activation by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 
@@ -253,7 +262,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify manual tabs activation by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
@@ -289,7 +301,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify manual tabs activation by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@tab-line'],
+      '@tab-line',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
@@ -338,7 +353,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@base-components',
 
       '@counter',
-      '@badge'],
+      '@badge',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-line/tests/examples/tab_line_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 

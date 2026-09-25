@@ -57,7 +57,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Keyboard navigation when No palette', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/base-no-palette-manager.tsx', 'en');
 
@@ -81,7 +84,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify input validation in palette manager', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/palettemanager.tsx', 'en');
 
@@ -101,7 +107,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify base styles', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/basic_example.tsx', 'en');
 
@@ -232,7 +241,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify default item states for active and background colors', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/label-and-color-expanded.tsx', 'en');
 
@@ -264,7 +275,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify predefined palette ', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/predefined_palette.tsx', 'en');
 
@@ -290,7 +304,10 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify ColorPicker.Colors', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/color-picker-props.tsx', 'en');
 
@@ -309,7 +326,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify ColorPicker.Item PaletteManager.Item and ColorPicker.Input', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/input-color-and-items-props.tsx', 'en');
 
@@ -331,7 +350,13 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@color-picker',
       '@input',
-      '@tag'],
+      '@tag',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@filter-trigger',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 
@@ -350,7 +375,10 @@ We verify states, visibility, and attributes.
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Roles and attributes', {
     tag: [TAG.PRIORITY_HIGH,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/basic_example.tsx', 'en');
 
@@ -467,7 +495,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse navigation when No palette', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/base-no-palette-manager.tsx', 'en');
 
@@ -503,7 +534,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Keyboard navigation when No palette', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/base-no-palette-manager.tsx', 'en');
 
@@ -569,7 +603,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify mouse navigation when palette manager presents', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/palettemanager.tsx', 'en');
 
@@ -623,7 +660,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify keyboard navigation when palette manager presents', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/docs/examples/palettemanager.tsx', 'en');
 
@@ -692,7 +732,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Colors and Palette.Manager props', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@color-picker'],
+      '@color-picker',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/colors-and-palette-manager-colors-props.tsx', 'en');
 
@@ -793,7 +835,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@color-picker',
       '@input',
-      '@tag'],
+      '@tag',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@filter-trigger',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 
@@ -822,7 +870,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.FUNCTIONAL,
       '@color-picker',
       '@input',
-      '@tag'],
+      '@tag',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@filter-trigger',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/color-picker/tests/examples/triggers.tsx', 'en');
 

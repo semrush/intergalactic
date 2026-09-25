@@ -20,7 +20,10 @@ export const locators = {
   ===================================================== */
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify InputMask basic example', {
-    tag: [TAG.PRIORITY_HIGH, '@input-mask'],
+    tag: [TAG.PRIORITY_HIGH, '@input-mask',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-mask/docs/examples/inputmask.tsx', 'en');
 
@@ -37,7 +40,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify InputMask Aliases example', {
-    tag: [TAG.PRIORITY_HIGH, '@input-mask'],
+    tag: [TAG.PRIORITY_HIGH, '@input-mask',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-mask/docs/examples/aliases.tsx', 'en');
 
@@ -49,7 +55,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   });
 
   test('Verify InputMask Pipe example', {
-    tag: [TAG.PRIORITY_HIGH, '@input-mask'],
+    tag: [TAG.PRIORITY_HIGH, '@input-mask',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/input-mask/docs/examples/pipe.tsx', 'en');
 

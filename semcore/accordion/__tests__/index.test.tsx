@@ -216,4 +216,38 @@ describe('Accordion', (test) => {
     await userEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });
+
+  test('Verify onChange is not triggered by change events bubbling from the content', async () => {
+    const spy = vi.fn();
+
+    const { getByTestId } = render(
+      <Accordion onChange={spy} defaultValue={1}>
+        <Accordion.Item value={1}>
+          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
+          <Accordion.Item.Collapse>
+            <input data-testid='inner-input' />
+          </Accordion.Item.Collapse>
+        </Accordion.Item>
+      </Accordion>,
+    );
+
+    await userEvent.type(getByTestId('inner-input'), 'abc');
+
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  test('Verify onChange is not forwarded to the root DOM node', () => {
+    const { container } = render(
+      <Accordion onChange={vi.fn()} defaultValue={1}>
+        <Accordion.Item value={1}>
+          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
+        </Accordion.Item>
+      </Accordion>,
+    );
+
+    const root = container.firstElementChild as HTMLElement;
+    const propsKey = Object.keys(root).find((key) => key.startsWith('__reactProps$'));
+
+    expect(propsKey && (root as any)[propsKey].onChange).toBeFalsy();
+  });
 });

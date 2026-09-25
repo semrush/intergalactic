@@ -1,0 +1,75 @@
+SRadioCards {
+  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+}
+
+SRadioItem {
+  position: relative;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: var(--intergalactic-spacing-content-gap-small, 4px);
+  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
+  align-items: flex-start;
+
+  border-radius: var(--intergalactic-pills-rounded, 6px);
+  background: var(--intergalactic-control-presets-bg, oklch(1 0 0));
+  box-shadow: var(--intergalactic-box-shadow-control-elevated, 0px 0px 1px 0px oklch(0.344 0.064 223.3 / 0.081), 0px 1px 3px 0px oklch(0.344 0.064 223.3 / 0.081));
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid var(--intergalactic-control-presets-border-hover, oklch(0.324 0.062 225.5 / 0.189));
+  }
+
+  &:has(SRadioItemControl[checked]) {
+    border: 1px solid var(--intergalactic-control-presets-border-selected, oklch(0.23 0.01 225));
+  }
+
+  &:has(SRadioItemControl[disabled]) {
+    pointer-events: none;
+    opacity: var(--intergalactic-disabled-opacity, 0.4);
+  }
+
+  &:has(:focus-visible) {
+    @mixin focus-outline-mixin;
+  }
+}
+
+SRadioItemControl {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0)
+}
+
+SRadioItemHeader {
+  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+}
+
+SRadioItemDescription {
+  text-align: left;
+}
+
+SRadioItemHeaderLeftAddon {
+  transform: translateY(4px);
+  color: var(--intergalactic-icon-primary-neutral, oklch(0.58 0.025 225));
+}
+
+SRadioItemHeaderRightAddon {
+  color: var(--intergalactic-text-secondary, oklch(0.247 0.049 230.2 / 0.524));
+}
+
+SRadioItemHeaderText {
+  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
+}
+
+SRadioItemSkeleton {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+}
+
+SRadioItemHeaderInnerContainer {
+  display: inline;
+  text-align: left;
+}

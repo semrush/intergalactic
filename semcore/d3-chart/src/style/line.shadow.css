@@ -2,7 +2,7 @@
 
 SLine {
   fill: transparent;
-  stroke-width: 3;
+  stroke-width: 2;
   stroke: var(--intergalactic-chart-palette-order-1, oklch(0.23 0.01 225));
   transition-property: d;
   transition-duration: var(--duration);
@@ -23,7 +23,7 @@ SLine[transparent] {
 
 SNull {
   fill: transparent;
-  stroke: var(--intergalactic-border-primary, oklch(0.324 0.062 225.5 / 0.189));
+  stroke: var(--intergalactic-chart-palette-order-null, oklch(0.9 0.011 217.3));
   stroke-dasharray: 4;
 }
 

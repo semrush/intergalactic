@@ -29,7 +29,10 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Base example margins and paddings', {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/basic_example.tsx', 'en');
 
@@ -85,7 +88,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@ellipsis',
-    ],
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/ellipsis.tsx', 'en');
 
@@ -100,7 +103,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@button',
       '@base-trigger',
       '@link-trigger',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 
@@ -118,7 +124,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@button',
-      '@pills'],
+      '@pills',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/tests/examples/different-cards.tsx', 'en');
 
@@ -228,7 +236,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@card',
       '@button',
-      '@tooltip'],
+      '@tooltip',
+      '@description-tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/tests/examples/card_with_description_tooltip_in_body', 'en');
 
@@ -249,7 +258,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@card',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     const standPath = 'stories/components/card/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -298,7 +310,13 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@card',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@base-trigger',
+      '@link-trigger',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/card/docs/examples/complex_example.tsx', 'en');
 

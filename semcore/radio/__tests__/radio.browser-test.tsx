@@ -482,7 +482,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify actions when interactive element in text with tooltip', {
-    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radio', '@button-link', '@link', '@tooltip', '@description-tooltip', '@typography'],
+    tag: [TAG.PRIORITY_MEDIUM, TAG.KEYBOARD, '@radio', '@button-link', '@link', '@tooltip', '@description-tooltip', '@typography',
+      '@button'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/radio/tests/examples/additional_props_for_input_tooltip.tsx', 'en');
     if (browserName == 'webkit') test.skip();

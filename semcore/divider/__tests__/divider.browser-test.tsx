@@ -38,7 +38,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   variablesActive.forEach((item) => {
     test(`Verify divider with orientation=${item.orientation} use=${item.use} theme=${item.theme} w=${item.w} h=${item.h}}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/divider/tests/examples/divider-styles.tsx', 'en', item);
       const flex = page.locator('[data-testid="wrap"]');
@@ -71,7 +73,16 @@ test.describe(`${TAG.VISUAL} `, () => {
   test.describe('Complex examples', () => {
     test('Verify horizontal divider renders in complex examples', {
       tag: [TAG.PRIORITY_HIGH,
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@description-tooltip',
+        '@flex-box',
+        '@link',
+        '@skeleton',
+        '@tooltip',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/patterns/ux-patterns/summary/docs/examples/default-summary-example.tsx', 'en');
       await expect(page).toHaveScreenshot();
@@ -79,7 +90,16 @@ test.describe(`${TAG.VISUAL} `, () => {
 
     test('Verify vertical divider renders in complex examples', {
       tag: [TAG.PRIORITY_HIGH,
-        '@divider'],
+        '@divider',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@description-tooltip',
+        '@flex-box',
+        '@link',
+        '@mini-chart',
+        '@tooltip',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/patterns/ux-patterns/summary/docs/examples/summary-with-minitrend.tsx', 'en');
       await expect(page).toHaveScreenshot();

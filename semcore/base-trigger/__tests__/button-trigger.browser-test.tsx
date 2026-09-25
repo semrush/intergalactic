@@ -44,7 +44,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify Base case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@button-trigger'],
+        '@button-trigger',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/base.tsx', 'en', item);
 
@@ -123,7 +125,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test(`Verify With addons case size=${item.size} disabled=${item.disabled} loading=${item.loading} state=${item.state} active=${item.active} empty=${item.empty} placeholder=${item.placeholder} chevron=${item.chevron}`, {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
-        '@button-trigger'],
+        '@button-trigger',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/base-trigger/tests/examples/button-trigger/with-addons.tsx', 'en', item);
 
@@ -221,6 +225,7 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@base-components',
+        '@flex-box',
         '@neighbor-location',
         '@button-trigger'],
     }, async ({ page }) => {
@@ -314,6 +319,8 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@base-trigger',
         '@button-trigger',
+        '@base-components',
+        '@flex-box',
         '@select',
         '@dropdown'],
     }, async ({ page }) => {
@@ -431,7 +438,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@base-trigger',
       '@button-trigger',
-      '@select'],
+      '@base-components',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
@@ -459,7 +469,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@base-trigger',
       '@button-trigger',
-      '@select'],
+      '@base-components',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/select/docs/examples/basic_usage.tsx', 'en');
 
