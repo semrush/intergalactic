@@ -442,6 +442,33 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  /**
+   * The redesign's three data-level decorations in one shot: the dashed forecast tail, the
+   * gradient-filled potential tail, and the highlight rings.
+   *
+   * The functional tests next door already assert the wiring — that the dash attribute is
+   * there and that the gradient reference resolves to a real `linearGradient`. What no
+   * attribute can say is whether the gradient actually paints a visible ramp, whether the
+   * dash rhythm reads as a forecast, and whether the ring sits concentric with its dot.
+   * That is what this baseline is for.
+   *
+   * Deliberately one test rather than three, so the branch gains 3 PNGs instead of 9.
+   */
+  test('Verify forecast, potential and highlighted dots render', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'both', highlightDots: 'mixed', duration: 0 },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    await expect(page).toHaveScreenshot();
+  });
 });
 
 /* =====================================================
@@ -466,6 +493,169 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  /**
+   * Guards the redesign value rather than just letting the screenshots carry it: the data
+   * line went from 3 to 2. Snapshots do notice a change in line weight, but only as pixels
+   * that moved, and this branch regenerated 427 of them at once — exactly the setting in
+   * which a wrong stroke width gets baked into the baselines unnoticed.
+   *
+   * `stroke-width: 2` in the stylesheet is unitless, which in SVG means user units. The
+   * Plot carries no viewBox, so one user unit is one pixel and `toHaveCSS` reads back
+   * '2px'.
+   *
+   * Asserted on every line, not just the first: the forecast and potential segments added
+   * by the redesign are separate `SLine` paths, and they have to keep the same weight as
+   * the main line or the series visibly changes thickness partway along.
+   */
+  test('Verify data line stroke width is 2px', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'both' },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    const lines = page.locator('path[data-ui-name="Line"]');
+    await expect(lines).not.toHaveCount(0);
+
+    for (let i = 0; i < (await lines.count()); i++) {
+      await expect(lines.nth(i)).toHaveCSS('stroke-width', '2px');
+    }
+  });
+
+  /**
+   * `DATA_TYPE` markers pull points out of the main line into their own segments
+   * (`Line.renderForecast` / `Line.renderPotential`), which is what lets them be dashed
+   * while the rest of the series stays solid.
+   *
+   * The point count is the part worth asserting: it is the only thing that distinguishes
+   * "the tail was moved into its own path" from "the tail is drawn twice, once in the main
+   * path and once on top of it". The two look identical in a screenshot.
+   *
+   * Only the dash is checked on the forecast segment, not its colour — see the note on
+   * `renderForecast` about the gradient it defines but never references.
+   */
+  test('Verify forecast and potential render as separate dashed segments', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'both', duration: 0 },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    const lines = page.locator('path[data-ui-name="Line"]');
+
+    await test.step('Each series renders a main, a forecast and a potential path', async () => {
+      // Two series in the story dataset, three paths each.
+      await expect(lines).toHaveCount(6);
+    });
+
+    await test.step('The tail segments are dashed and the main line is not', async () => {
+      const dashed = await lines.evaluateAll((paths) =>
+        paths.map((path) => path.getAttribute('stroke-dasharray')),
+      );
+
+      expect(dashed.filter((value) => value === '4 4')).toHaveLength(4);
+      expect(dashed.filter((value) => value === null)).toHaveLength(2);
+    });
+
+    await test.step('The main line stops before the tail instead of drawing it twice', async () => {
+      // The generator is curveLinear, so `d` is "M x,y L x,y …" and the number of `L`
+      // commands is one less than the number of points on that path.
+      const pointCounts = await lines.evaluateAll((paths) =>
+        paths
+          .map((path) => path.getAttribute('d'))
+          .filter((d): d is string => Boolean(d))
+          .map((d) => (d.match(/L/g)?.length ?? 0) + 1),
+      );
+
+      // 20 base points per series; each tail branches off the last one and adds two more.
+      expect(pointCounts.filter((count) => count === 20)).toHaveLength(2);
+      expect(pointCounts.filter((count) => count === 3)).toHaveLength(4);
+    });
+  });
+
+  /**
+   * The potential segment is the one place in Line that paints with a gradient rather than
+   * the series colour, so the reference has to resolve — a typo in the id would leave the
+   * path silently unpainted, which a screenshot shows as "the line is missing" without
+   * saying why.
+   *
+   * The id is built from a generated `uid`, so it cannot be hardcoded: the reference is
+   * read off the path and the gradient is then looked up by it.
+   */
+  test('Verify the potential segment is painted by a gradient that exists', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'potential', duration: 0 },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    // Both tail segments are dashed and both are rendered even when their half of the data
+    // is empty — an empty `d3Line([])` returns null, so requiring `d` is what picks out the
+    // potential path rather than the forecast one sitting next to it.
+    const potential = page.locator('path[data-ui-name="Line"][stroke-dasharray="4 4"][d]').first();
+    const stroke = await potential.evaluate((el) => getComputedStyle(el).stroke);
+
+    expect(stroke).toMatch(/^url\(".*-potential-gradient-line"\)$/);
+
+    const gradientId = stroke.slice('url("#'.length, -'")'.length);
+    await expect(page.locator(`linearGradient[id="${gradientId}"]`)).toHaveCount(1);
+  });
+
+  /**
+   * `LineChart.displayDots` is LineChart's own callback, and its `HIGHLIGHT_DOT` branch is
+   * the reason a highlighted point stays visible on an otherwise dot-less line. The
+   * hover branch of the same callback is already covered in d3-chart-base.browser-test.tsx.
+   *
+   * `showDots` has to stay off: `display={showDots || this.displayDots}` short-circuits on
+   * a truthy `showDots` and the callback never runs. The story dataset is contiguous, so
+   * the `noAround` branch cannot add dots of its own.
+   *
+   * FIXME — currently failing, and the assertions below are the intended behaviour, not the
+   * observed one. `Line` renders `this.Element` three times (the main path plus the
+   * forecast and potential segments), and `createElement` appends the component's children
+   * after every one of them, so `Line.Dots` is mounted three times over. One highlighted
+   * point in a two-series chart therefore paints 6 dots, 6 rings and 6 halos stacked at the
+   * same coordinate instead of 2 of each.
+   *
+   * Same defect class as the area-duplicate-render investigation. Flip this back to `test`
+   * once the duplication is fixed — the expected numbers here are already the correct ones.
+   */
+  test.fixme('Verify a highlighted dot is shown while showDots is off', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    const STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
+
+    await test.step('No highlight means no dots at all', async () => {
+      await loadPage(page, STORY, 'en', { showDots: false, highlightDots: 'none', duration: 0 });
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+
+      await expect(locators.dots(page)).toHaveCount(0);
+    });
+
+    await test.step('A single highlighted point brings back that point on each series', async () => {
+      await loadPage(page, STORY, 'en', { showDots: false, highlightDots: 'good', duration: 0 });
+      await locators.plot(page).first().waitFor({ state: 'visible' });
+
+      // The marker sits on the datum, which both series share, so one marked point means
+      // one dot per series — and one ring and one halo to go with each.
+      await expect(locators.dots(page)).toHaveCount(2);
+      await expect(page.locator('circle[r="11.5"]')).toHaveCount(2);
+      await expect(page.locator('circle[r="8.5"]')).toHaveCount(2);
+    });
+  });
+
   test('Verify Line.Null attributes', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
@@ -481,6 +671,34 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       const nullLine = locators.lineNull(page);
       await expect(nullLine).toHaveAttribute('aria-hidden', 'true');
     });
+  });
+
+  /**
+   * The gap line moved off `--intergalactic-border-primary` onto the chart-specific
+   * `--intergalactic-chart-palette-order-null`, so it now reads as a muted piece of the
+   * chart palette instead of a generic border.
+   *
+   * The asserted value is the declared fallback: `loadPage` renders the story without the
+   * theme stylesheet, so the custom property is unset and the fallback is what paints. That
+   * still pins the value shipped in line.shadow.css, which is what changed.
+   *
+   * Kept apart from 'Verify Line.Null attributes' on purpose — that test currently fails on
+   * a strict-mode violation (Line.Null is rendered three times over, see the FIXME above),
+   * and this assertion should not be blocked behind it. `.first()` here is a deliberate
+   * narrowing to one of the copies, not an endorsement of there being three.
+   */
+  test('Verify Line.Null is painted with the null-series palette colour', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/line-area-with-empty.tsx',
+      'en',
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    await expect(locators.lineNull(page).first()).toHaveCSS('stroke', 'oklch(0.9 0.002 177)');
+    await expect(locators.lineNull(page).first()).toHaveCSS('stroke-dasharray', '4px');
   });
 
   /* -----------------------------------------------------
