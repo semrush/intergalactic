@@ -295,7 +295,7 @@ function Ticks(props) {
     }
   }
 
-  dataHintsHandler.setTickPosition(
+  dataHintsHandler.setTickSize(
     isXScale ? 'horizontal' : 'vertical',
     { width: tickWidth, height: tickHeight },
   );

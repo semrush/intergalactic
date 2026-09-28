@@ -174,7 +174,7 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
     setPointsDensity: (horizontalAxes: number, verticalAxes: number) => {
       mutableContainer.pointsDensity = { verticalAxes, horizontalAxes };
     },
-    setTickPosition: (axe: 'vertical' | 'horizontal', payload: { width: number; height: number }) => {
+    setTickSize: (axe: 'vertical' | 'horizontal', payload: { width: number; height: number }) => {
       mutableContainer.tickSize[axe] = payload;
     },
   };
