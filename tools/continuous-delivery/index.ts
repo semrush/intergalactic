@@ -29,9 +29,9 @@ export const initPrerelease = async () => {
 
   await packages.updateVersions(changelog.data);
 
-  await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
+  // await gitUtils.initNewPrerelease(changelog.data.version, packages.list);
 };
-
+initPrerelease();
 export const initPackagePrerelease = async (pack: SeparatedPackage) => {
   const COMPONENT_NAME = `@semcore/${pack}`;
   const prevReleaseTag = await gitUtils.getPrevPackageTag(pack);
