@@ -1803,13 +1803,13 @@
   },
   {
     "name": "--intergalactic-footer-bg",
-    "value": "oklch(0.97 0.005 232.2)",
+    "value": "oklch(0.98 0.004 232)",
     "description": "Background fill for the product page footer.",
     "components": []
   },
   {
     "name": "--intergalactic-header-bg",
-    "value": "oklch(0.97 0.005 232.2)",
+    "value": "oklch(0.98 0.004 232)",
     "components": []
   },
   {
@@ -2171,7 +2171,7 @@
   },
   {
     "name": "--intergalactic-page-bg",
-    "value": "oklch(0.97 0.005 232.2)",
+    "value": "oklch(0.98 0.004 232)",
     "description": "Background fill for the whole product page.",
     "components": []
   },
@@ -2367,7 +2367,7 @@
   },
   {
     "name": "--intergalactic-sidebar-nav-bg",
-    "value": "oklch(0.97 0.005 232.2)",
+    "value": "oklch(0.98 0.004 232)",
     "description": "Background fill for the product page sidebar.",
     "components": []
   },
