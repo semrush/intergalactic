@@ -22,7 +22,9 @@ export const locators = {
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify body paddings', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -80,7 +82,8 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify navigation when no footer and 1 zone in body', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx', 'en');
 
@@ -100,7 +103,9 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify dual zone render and styles', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -121,7 +126,9 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test('Verify header is fixed when scrolling body', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -265,7 +272,13 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   headerVariations.forEach((config) => {
     test(`Verify header configuration: ${config.testName}`, {
-      tag: [TAG.PRIORITY_HIGH, '@fullscreen-modal'],
+      tag: [TAG.PRIORITY_HIGH, '@fullscreen-modal',
+        '@button',
+        '@button-link',
+        '@description-tooltip',
+        '@link',
+        '@tooltip',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/header/configurable-header.tsx', 'en', config);
 
@@ -375,7 +388,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard navigation when no footer and 1 zone in body', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx', 'en');
 
@@ -413,7 +427,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify mouse navigation when no footer and 1 zone in body', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/basic_fullscreen.headers_use.tsx', 'en');
 
@@ -441,7 +456,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard navigation footer and 2 zones in body', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/docs/examples/example_of_a_dual-zone_modal_window.tsx', 'en');
 
@@ -469,7 +486,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify modal can be closed by ESC when no closable button', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button',
+      '@button-link',
+      '@description-tooltip',
+      '@link',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     const config = {
       closable: false,
@@ -505,7 +528,11 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@fullscreen-modal',
       '@button',
       '@toooltip',
-      '@link'],
+      '@link',
+      '@button-link',
+      '@description-tooltip',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     const config = {
 
@@ -539,7 +566,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify there is only one closable element when closable = true and no Close button', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button',
+      '@button-link',
+      '@description-tooltip',
+      '@link',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     const config = {
       closable: true,
@@ -571,7 +604,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify no closable elements when closable = false and no Close button', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button',
+      '@button-link',
+      '@description-tooltip',
+      '@link',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     const config = {
       closable: false,
@@ -601,7 +640,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
 
   test('Verify body scroll is restored after modal close (no inline style pollution)', {
     tag: [TAG.PRIORITY_HIGH,
-      '@fullscreen-modal'],
+      '@fullscreen-modal',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/fullscreen-modal/tests/examples/scroll-test.tsx', 'en');
 

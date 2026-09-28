@@ -21,7 +21,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@dot',
         '@button',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@base-trigger',
+        '@flex-box',
+        '@link-trigger',
+        '@pills'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/sizes-and-positions.tsx', 'en', item);
 
@@ -51,7 +56,12 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@dot',
         '@button',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@base-trigger',
+        '@flex-box',
+        '@link-trigger',
+        '@pills'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dot/tests/examples/with-counter-sizes-and-positions.tsx', 'en', item);
       if (item.size == 'l') test.skip();// the size L is not actual for dot with counter

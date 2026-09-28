@@ -162,7 +162,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       TAG.KEYBOARD,
       '@checkbox',
       '@link',
-      '@tooltip', '@base-components', '@flex-box', '@button-link'],
+      '@tooltip', '@base-components', '@flex-box', '@button-link',
+      '@button',
+      '@description-tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 
@@ -438,7 +440,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@checkbox',
       '@link',
-      '@tooltip', '@base-components', '@flex-box', '@button-link'],
+      '@tooltip', '@base-components', '@flex-box', '@button-link',
+      '@button',
+      '@description-tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 
@@ -487,7 +491,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@checkbox',
       '@link',
-      '@tooltip', '@base-components', '@flex-box', '@button-link'],
+      '@tooltip', '@base-components', '@flex-box', '@button-link',
+      '@button',
+      '@description-tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx', 'en');
 

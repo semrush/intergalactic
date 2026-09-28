@@ -14,6 +14,8 @@ test.describe('@functional @popper', () => {
         TAG.KEYBOARD,
         '@base-components',
         '@popper',
+        '@base-trigger',
+        '@button-trigger',
         '@input',
         '@dropdown-menu'],
     }, async ({ page }) => {
@@ -38,6 +40,8 @@ test.describe('@functional @popper', () => {
         TAG.MOUSE,
         '@base-components',
         '@popper',
+        '@base-trigger',
+        '@button-trigger',
         '@input',
         '@dropdown-menu'],
     }, async ({ page }) => {
@@ -219,6 +223,7 @@ test.describe('@functional @popper', () => {
       TAG.KEYBOARD,
       '@base-components',
       '@popper',
+      '@flex-box',
       '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/docs/examples/show-hide.tsx', 'en');
@@ -344,6 +349,7 @@ test.describe('@functional @popper', () => {
       '@base-components',
       '@popper',
       '@base-trigger',
+      '@button-trigger',
       '@dropdown-menu',
       '@input'],
   }, async ({ page, browserName }) => {
@@ -368,7 +374,10 @@ test.describe('@functional @popper', () => {
       TAG.KEYBOARD,
       '@base-components',
       '@popper',
+      '@flex-box',
       '@base-trigger',
+      '@button-trigger',
+      '@button',
       '@dropdown-menu',
       '@input'],
   }, async ({ page }) => {
@@ -407,6 +416,8 @@ test.describe('@functional @popper', () => {
         TAG.MOUSE,
         '@base-components',
         '@popper',
+        '@flex-box',
+        '@base-trigger',
         '@tooltip',
         '@button',
         '@card'],
@@ -457,6 +468,8 @@ test.describe('@functional @popper', () => {
         TAG.MOUSE,
         '@base-components',
         '@popper',
+        '@flex-box',
+        '@base-trigger',
         '@tooltip',
         '@button',
         '@card'],
@@ -503,6 +516,8 @@ test.describe('@functional @popper', () => {
       tag: [TAG.PRIORITY_MEDIUM,
         '@base-components',
         '@popper',
+        '@flex-box',
+        '@base-trigger',
         '@tooltip',
         '@button',
         '@card'],
@@ -524,6 +539,7 @@ test.describe('@functional @popper', () => {
         TAG.KEYBOARD,
         '@base-components',
         '@popper',
+        '@flex-box',
         '@tooltip',
         '@button',
         '@card'],
@@ -577,6 +593,7 @@ test.describe('@functional @popper', () => {
         TAG.KEYBOARD,
         '@base-components',
         '@popper',
+        '@flex-box',
         '@tooltip',
         '@button',
         '@card'],
@@ -613,6 +630,7 @@ test.describe('@functional @popper', () => {
         TAG.KEYBOARD,
         '@base-components',
         '@popper',
+        '@flex-box',
         '@tooltip',
         '@button',
         '@card'],
@@ -687,6 +705,7 @@ test.describe('@functional @popper', () => {
       TAG.KEYBOARD,
       '@base-components',
       '@popper',
+      '@flex-box',
       '@select',
       '@input',
       '@typography'],
@@ -807,7 +826,10 @@ test.describe('@functional @popper', () => {
       TAG.MOUSE,
       '@base-components',
       '@popper',
-      '@button'],
+      '@flex-box',
+      '@button',
+      '@tooltip',
+      '@description-tooltip'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/page-resizing.tsx', 'en');
 
@@ -858,6 +880,7 @@ test.describe(`${TAG.VISUAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       '@base-components',
       '@popper',
+      '@flex-box',
       '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/base-components/popper/tests/examples/placement.tsx', 'en');
