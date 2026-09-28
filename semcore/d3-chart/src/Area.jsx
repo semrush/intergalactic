@@ -220,7 +220,7 @@ class AreaRoot extends Component {
           onClickCapture={this.handlerOnClick.bind(this)}
         />
 
-        <PotentialGradient id={`${uid}-potential-gradient`} />
+        <PotentialGradient id={`${uid}-potential-gradient`} type='area' />
         <PotentialGradient id={`${uid}-potential-gradient-line`} type='line' />
         <StrokeMask id={`${uid}-potential-mask`} />
       </>,

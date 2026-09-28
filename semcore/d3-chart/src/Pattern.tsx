@@ -687,11 +687,20 @@ export const ForecastGradient = (props: { id: string; color: string }) => {
     </defs>
   );
 };
-export const PotentialGradient = (props: { id: string; type?: 'line' }) => {
+export const PotentialGradient = (props: { id: string; type?: 'line' | 'area' }) => {
   const SLinearGradient = 'linearGradient';
   const SStopFrom = 'stop';
   const SStopTo = 'stop';
   const isLine = props.type === 'line';
+  const isArea = props.type === 'area';
+
+  let gradientTransform = 'rotate(-90 0.5 0.5)';
+
+  if (isLine) {
+    gradientTransform = '';
+  } else if (isArea) {
+    gradientTransform = 'rotate(-30 0.5 0.5)';
+  }
 
   return sstyled(style)(
     <defs>
@@ -701,9 +710,10 @@ export const PotentialGradient = (props: { id: string; type?: 'line' }) => {
         y1='0%'
         x2={isLine ? '100%' : '0'}
         y2={isLine ? '0' : '100%'}
+        gradientTransform={gradientTransform}
       >
         <SStopFrom offset='0%' stopOpacity={1} />
-        <SStopTo offset='100%' stopOpacity={0} />
+        <SStopTo offset='100%' stopOpacity={isArea ? 0 : 1} />
       </SLinearGradient>
     </defs>,
   );
