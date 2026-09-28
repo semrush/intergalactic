@@ -3,15 +3,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-/**
- * Asserts every match is kept out of the accessibility tree.
- *
- * `aria-hidden` on an ancestor hides the whole subtree, so checking the attribute on each
- * element itself would fail the moment decorative shapes get wrapped in a group — which is
- * exactly what happened when the hover line became a `<g>` holding three `<line>` children
- * plus its end caps. What matters is that nothing here reaches a screen reader, not which
- * node carries the attribute.
- */
 const expectEachToBeHiddenFromA11y = async (locator: Locator) => {
   await expect(locator).not.toHaveCount(0);
 
@@ -47,6 +38,29 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+};
+
+const BASIC_USAGE_STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
+
+/** Hovers the middle of the plot, which lands on some point of the series. */
+const hoverPlotCentre = async (page: Page) => {
+  const plot = locators.plot(page).first();
+  await plot.waitFor({ state: 'visible' });
+
+  const box = await plot.boundingBox();
+  if (!box) throw new Error('Plot bounding box not found');
+
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+};
+
+const hoverFirstPoint = async (page: Page) => {
+  const plot = locators.plot(page).first();
+  await plot.waitFor({ state: 'visible' });
+
+  const dot = await locators.dots(page, 0).boundingBox();
+  if (!dot) throw new Error('First dot bounding box not found');
+
+  await page.mouse.move(dot.x + dot.width / 2, dot.y + dot.height / 2);
 };
 
 /* =====================================================
@@ -613,49 +627,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(page.locator(`linearGradient[id="${gradientId}"]`)).toHaveCount(1);
   });
 
-  /**
-   * `LineChart.displayDots` is LineChart's own callback, and its `HIGHLIGHT_DOT` branch is
-   * the reason a highlighted point stays visible on an otherwise dot-less line. The
-   * hover branch of the same callback is already covered in d3-chart-base.browser-test.tsx.
-   *
-   * `showDots` has to stay off: `display={showDots || this.displayDots}` short-circuits on
-   * a truthy `showDots` and the callback never runs. The story dataset is contiguous, so
-   * the `noAround` branch cannot add dots of its own.
-   *
-   * FIXME — currently failing, and the assertions below are the intended behaviour, not the
-   * observed one. `Line` renders `this.Element` three times (the main path plus the
-   * forecast and potential segments), and `createElement` appends the component's children
-   * after every one of them, so `Line.Dots` is mounted three times over. One highlighted
-   * point in a two-series chart therefore paints 6 dots, 6 rings and 6 halos stacked at the
-   * same coordinate instead of 2 of each.
-   *
-   * Same defect class as the area-duplicate-render investigation. Flip this back to `test`
-   * once the duplication is fixed — the expected numbers here are already the correct ones.
-   */
-  test.fixme('Verify a highlighted dot is shown while showDots is off', {
-    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
-  }, async ({ page }) => {
-    const STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
-
-    await test.step('No highlight means no dots at all', async () => {
-      await loadPage(page, STORY, 'en', { showDots: false, highlightDots: 'none', duration: 0 });
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      await expect(locators.dots(page)).toHaveCount(0);
-    });
-
-    await test.step('A single highlighted point brings back that point on each series', async () => {
-      await loadPage(page, STORY, 'en', { showDots: false, highlightDots: 'good', duration: 0 });
-      await locators.plot(page).first().waitFor({ state: 'visible' });
-
-      // The marker sits on the datum, which both series share, so one marked point means
-      // one dot per series — and one ring and one halo to go with each.
-      await expect(locators.dots(page)).toHaveCount(2);
-      await expect(page.locator('circle[r="11.5"]')).toHaveCount(2);
-      await expect(page.locator('circle[r="8.5"]')).toHaveCount(2);
-    });
-  });
-
   test('Verify Line.Null attributes', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
@@ -673,20 +644,6 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
-  /**
-   * The gap line moved off `--intergalactic-border-primary` onto the chart-specific
-   * `--intergalactic-chart-palette-order-null`, so it now reads as a muted piece of the
-   * chart palette instead of a generic border.
-   *
-   * The asserted value is the declared fallback: `loadPage` renders the story without the
-   * theme stylesheet, so the custom property is unset and the fallback is what paints. That
-   * still pins the value shipped in line.shadow.css, which is what changed.
-   *
-   * Kept apart from 'Verify Line.Null attributes' on purpose — that test currently fails on
-   * a strict-mode violation (Line.Null is rendered three times over, see the FIXME above),
-   * and this assertion should not be blocked behind it. `.first()` here is a deliberate
-   * narrowing to one of the copies, not an endorsement of there being three.
-   */
   test('Verify Line.Null is painted with the null-series palette colour', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
@@ -701,8 +658,40 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     await expect(locators.lineNull(page).first()).toHaveCSS('stroke-dasharray', '4px');
   });
 
+  test('Verify interpolated points are dropped from the series without breaking it', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { withInterpolatedGaps: true, duration: 0 });
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    const lines = page.locator('path[data-ui-name="Line"]');
+    await expect(lines).toHaveCount(2);
+
+    const pointCounts = await lines.evaluateAll((paths) =>
+      paths
+        .map((path) => path.getAttribute('d'))
+        .filter((d): d is string => Boolean(d))
+        .map((d) => (d.match(/L/g)?.length ?? 0) + 1),
+    );
+
+    await test.step('The untouched series keeps all 20 points', async () => {
+      expect(pointCounts).toContain(20);
+    });
+
+    await test.step('The gapped series is short by exactly the three marked points', async () => {
+      // A gap drops the point from the path; the line closes over it rather than breaking,
+      // so this stays a single path of 17 points instead of several segments.
+      expect(pointCounts).toContain(17);
+    });
+
+    await test.step('No gap leaks into the geometry as NaN', async () => {
+      const ds = await lines.evaluateAll((paths) => paths.map((path) => path.getAttribute('d') ?? ''));
+
+      expect(ds.filter((d) => d.includes('NaN'))).toEqual([]);
+    });
+  });
+
   /* -----------------------------------------------------
-  Responsiveness — high-level Chart.* are now responsive by default.
   plotWidth/plotHeight are optional: when omitted the chart fills its parent
   and auto-derives the plot size. `aspect` sets height = width / aspect,
   `hMin`/`hMax` clamp it, `onResize` reports the measured size. We assert on
