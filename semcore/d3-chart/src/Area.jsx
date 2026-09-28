@@ -267,6 +267,8 @@ class AreaRoot extends Component {
             transparent={transparent}
           />
         )}
+        {this.renderForecast()}
+        {this.renderPotential()}
         <SArea
           aria-hidden
           clipPath={`url(#${uid})`}
@@ -290,8 +292,6 @@ class AreaRoot extends Component {
             patterns={patterns}
           />
         )}
-        {this.renderForecast()}
-        {this.renderPotential()}
       </>,
     );
   }
