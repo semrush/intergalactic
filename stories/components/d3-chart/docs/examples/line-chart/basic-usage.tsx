@@ -24,6 +24,7 @@ const Demo = () => {
         aria-label='Line chart'
       />
       <Chart.Line
+        showDeltaPercentInTooltip={true}
         data={LineMockData.Potential}
         plotWidth={500}
         plotHeight={200}
