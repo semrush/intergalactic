@@ -37,21 +37,12 @@ export type HighlightDotsMode = 'none' | 'good' | 'bad' | 'insightful' | 'mixed'
 export type DataTypeMode = 'none' | 'forecast' | 'potential' | 'both';
 
 type AreaChartStoryProps = Omit<AreaChartProps, 'patterns'> & {
-  /**
-   * Storybook's boolean control produces `false`, which `PatternsConfig` does not include —
-   * it treats "off" as absent. Falsy behaves as off at runtime, so the story widens the type
-   * rather than forcing the control to emit `undefined`.
-   */
   patterns?: AreaChartProps['patterns'] | false;
   /** Set to true to replace the built-in tooltip value formatter with `formatValue`. */
   useCustomValueFormatter?: boolean;
   /**
    * Swaps in a dataset where `line` drops to 0 in the middle.
-   *
-   * `getPercentDelta` cannot divide by a previous value of 0, so that series has no
-   * delta on the next point while `line2` still has one. Together with
-   * `showDeltaPercentInTooltip` this is the mixed row that no other dataset produces.
-   */
+    */
   withZeroValue?: boolean;
   /** D3 curve factory, chosen by name — see `curves`. */
   curveName?: CurveName;
@@ -69,11 +60,12 @@ type AreaChartStoryProps = Omit<AreaChartProps, 'patterns'> & {
    */
   dataType?: DataTypeMode;
   /**
+   * Replaces three mid-run values with `interpolateValue`, so the chart bridges the gap
+   * instead of breaking the line.
+   */
+  withInterpolatedGaps?: boolean;
+  /**
    * Drops `line2` so only one series is left.
-   *
-   * In non-stacked mode `AreaChart` turns the fill gradient on only when exactly one series
-   * is checked, so with the default two-series dataset `withGradient` is always false and the
-   * gradient cannot be seen without unchecking a legend item by hand.
    */
   singleSeries?: boolean;
 };
@@ -88,15 +80,21 @@ const Demo = (props: AreaChartStoryProps) => {
     highlightDots,
     dataType,
     singleSeries,
+    withInterpolatedGaps,
+    data,
     ...chartProps
   } = getPropsToChart(props);
 
-  const chartData = dataPipeline({
-    withZeroValue,
-    withSingleSeries: singleSeries,
-    highlightDots,
-    dataType,
-  });
+  const chartData = dataPipeline(
+    {
+      withZeroValue,
+      withSingleSeries: singleSeries,
+      highlightDots,
+      dataType,
+      withInterpolatedGaps,
+    },
+    data,
+  );
 
   const onClickHandler = (index: number, event: React.SyntheticEvent) => {
     const clickedItem = chartData[index];
@@ -130,8 +128,7 @@ const Demo = (props: AreaChartStoryProps) => {
 
 export const defaultProps = getChartProps<AreaChartStoryProps>({
   showDots: true,
-  // Mirrors the component default. `stacked` is deprecated and always true by default, so
-  // the story has to render that path unless the control is flipped off.
+  // Mirrors the component default. `stacked` is deprecated and always true by default
   stacked: true,
   patterns: false,
   groupKey: 'time',
@@ -144,6 +141,7 @@ export const defaultProps = getChartProps<AreaChartStoryProps>({
   highlightDots: 'none',
   dataType: 'none',
   singleSeries: false,
+  withInterpolatedGaps: false,
 });
 
 Demo.defaultProps = defaultProps;

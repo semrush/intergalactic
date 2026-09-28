@@ -1,13 +1,15 @@
 import { Box } from '@semcore/ui/base-components';
 import type { LineChartProps } from '@semcore/ui/d3-chart';
-import { BAD, Chart, GOOD, HIGHLIGHT_DOT, INSIGHTFUL } from '@semcore/ui/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import dataPipeline, { base as baseData, type HighlightDotsMode } from './__mocks__';
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-export type HighlightDotsMode = 'none' | 'good' | 'bad' | 'insightful' | 'mixed';
+export type { HighlightDotsMode };
 
 type LineChartStoryProps = LineChartProps & {
+  /** Hands `plotWidth` to the chart instead of letting it measure its container. */
   useExplicitPlotWidth?: boolean;
   /**
    * Marks points with `HIGHLIGHT_DOT`, the same data-level marker `AreaChart` uses.
@@ -19,27 +21,6 @@ type LineChartStoryProps = LineChartProps & {
    */
   highlightDots?: HighlightDotsMode;
 };
-
-/** Indices in the generated dataset that each mode marks. */
-const highlightTargets: Record<Exclude<HighlightDotsMode, 'none'>, Array<[number, symbol]>> = {
-  good: [[4, GOOD]],
-  bad: [[9, BAD]],
-  insightful: [[14, INSIGHTFUL]],
-  mixed: [
-    [4, GOOD],
-    [9, BAD],
-    [14, INSIGHTFUL],
-  ],
-};
-
-function withHighlights(base: readonly any[], mode?: HighlightDotsMode): any[] {
-  if (!mode || mode === 'none') return [...base];
-  const points = base.map((point) => ({ ...point }));
-  highlightTargets[mode].forEach(([index, highlight]) => {
-    if (points[index]) points[index] = { ...points[index], [HIGHLIGHT_DOT]: highlight };
-  });
-  return points;
-}
 
 const Demo = (props: LineChartStoryProps) => {
   const [measuredSize, setMeasuredSize] = React.useState<[number, number] | null>(null);
@@ -55,11 +36,12 @@ const Demo = (props: LineChartStoryProps) => {
     plotHeight,
     useExplicitPlotWidth,
     highlightDots,
+    data,
     ...chartProps
   } = getPropsToChart(props);
   const chartData = React.useMemo(
-    () => withHighlights((chartProps as LineChartProps).data ?? data, highlightDots),
-    [(chartProps as LineChartProps).data, highlightDots],
+    () => dataPipeline({ highlightDots }, data),
+    [data, highlightDots],
   );
 
   const handleResize: NonNullable<LineChartProps['onResize']> = (size, entries) => {
@@ -104,17 +86,9 @@ const Demo = (props: LineChartStoryProps) => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    line1: Math.abs(Math.sin(Math.exp(i))) * 10,
-    line2: Math.abs(Math.cos(Math.exp(i))) * 10,
-  }));
-
 export const defaultProps = getChartProps<LineChartStoryProps>({
   groupKey: 'x',
-  data,
+  data: baseData,
   showDots: true,
   showLegend: true,
   useExplicitPlotWidth: false,

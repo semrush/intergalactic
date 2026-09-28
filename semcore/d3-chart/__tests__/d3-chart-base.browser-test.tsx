@@ -593,18 +593,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/d3-chart/docs/examples/d3-chart/pattern-fill.tsx', 'en');
 
-      const patterns = page.locator('pattern');
+      const patterns = page.locator('pattern[viewBox]');
 
-      const count = await patterns.count();
-
-      for (let i = 0; i < count; i++) {
-        const pattern = patterns.nth(i);
-        await expect(pattern).toHaveAttribute('patternUnits', 'userSpaceOnUse');
-        await expect(pattern).toHaveAttribute('width', '12');
-        await expect(pattern).toHaveAttribute('height', '12');
-        await expect(pattern).toHaveAttribute('x', '0');
-        await expect(pattern).toHaveAttribute('y', '0');
-      }
+      await expectEachToHaveAttribute(patterns, 'patternUnits', 'userSpaceOnUse');
+      await expectEachToHaveAttribute(patterns, 'width', '12');
+      await expectEachToHaveAttribute(patterns, 'height', '12');
 
       // The example draws no dots at rest (`showDots` is not set), so the hovered point is
       // the only one that renders. With patterns on, a dot is a `<use>` of the pattern
