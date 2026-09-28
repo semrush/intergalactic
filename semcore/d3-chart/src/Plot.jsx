@@ -31,6 +31,8 @@ class PlotRoot extends Component {
 
   rootRef = React.createRef();
 
+  tickSize = React.createRef({});
+
   dataStructureHints = this.props.dataHints || makeDataHintsContainer();
   dataHintsHandler = makeDataHintsHandlers(this.dataStructureHints);
 
@@ -59,6 +61,13 @@ class PlotRoot extends Component {
     this.eventEmitter.emit('onMouseLeaveChart', e);
   };
 
+  setTickSize(axis, size) {
+    this.tickSize.current = {
+      ...this.tickSize.current,
+      [axis]: size,
+    };
+  }
+
   setContext() {
     const { scale, data, width, height, locale, resolveColor, patterns, duration } = this.asProps;
 
@@ -84,6 +93,12 @@ class PlotRoot extends Component {
         patterns,
         duration,
         plotId: this.plotId,
+        meta: {
+          ticks: {
+            setSize: this.setTickSize.bind(this),
+            getSize: () => this.tickSize.current,
+          },
+        },
       },
     };
   }

@@ -43,10 +43,6 @@ export type DataStructureHints = {
     horizontalAxes: number;
   } | null;
   dataType: SerializableDataType | null;
-  tickSize: {
-    vertical: null | { width: number; height: number };
-    horizontal: null | { width: number; height: number };
-  };
 };
 export type DataSummarizationConfig = {
   trendTangens: {
@@ -106,10 +102,6 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
   },
   dataType: null,
   pointsDensity: null,
-  tickSize: {
-    vertical: null,
-    horizontal: null,
-  },
 });
 
 export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
@@ -173,9 +165,6 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
     },
     setPointsDensity: (horizontalAxes: number, verticalAxes: number) => {
       mutableContainer.pointsDensity = { verticalAxes, horizontalAxes };
-    },
-    setTickSize: (axe: 'vertical' | 'horizontal', payload: { width: number; height: number }) => {
-      mutableContainer.tickSize[axe] = payload;
     },
   };
   return handler;

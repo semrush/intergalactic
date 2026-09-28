@@ -101,7 +101,7 @@ class HoverLineRoot extends Hover {
   static displayName = 'HoverLine';
 
   render() {
-    const { hideHoverLine } = this.asProps;
+    const { hideHoverLine, meta } = this.asProps;
     const { xIndex, yIndex } = this.state;
 
     const isHide = typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
@@ -119,6 +119,8 @@ class HoverLineRoot extends Hover {
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
 
+    const tickSize = meta.ticks.getSize();
+
     return sstyled(styles)(
       <>
         {xIndex !== null
@@ -131,8 +133,8 @@ class HoverLineRoot extends Hover {
                 </SHoverLine>
                 {!hideTickHover && (
                   <HoveredTick
-                    width={dataHints.tickSize.horizontal?.width}
-                    height={dataHints.tickSize.horizontal?.height}
+                    width={tickSize.horizontal?.width}
+                    height={tickSize.horizontal?.height}
                     tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
                     value={data[xIndex]?.[x]}
                     isFirstTick={xIndex === 0}
@@ -170,7 +172,7 @@ class HoverRectRoot extends Hover {
     }
 
     const SHoverRect = this.Element;
-    const { styles, x, y, data, scale, dataHints, hideTickHover } = this.asProps;
+    const { styles, x, y, data, scale, dataHints, hideTickHover, meta } = this.asProps;
     const { xIndex, yIndex } = this.state;
     const [xScale, yScale] = scale;
 
@@ -183,6 +185,8 @@ class HoverRectRoot extends Hover {
     const xPaddingInner = xBand.paddingInner();
     const yStep = yBand.step();
     const yPaddingInner = yBand.paddingInner();
+
+    const tickSize = meta.ticks.getSize();
 
     return sstyled(styles)(
       <>
@@ -199,8 +203,8 @@ class HoverRectRoot extends Hover {
             />
             {!hideTickHover && (
               <HoveredTick
-                width={dataHints.tickSize.horizontal?.width}
-                height={dataHints.tickSize.horizontal?.height}
+                width={tickSize.horizontal?.width}
+                height={tickSize.horizontal?.height}
                 tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
                 value={data[xIndex]?.[x]}
                 styles={styles}

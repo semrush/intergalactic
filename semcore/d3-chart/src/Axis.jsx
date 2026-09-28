@@ -263,6 +263,7 @@ function Ticks(props) {
     locale,
     primaryText,
     size,
+    meta,
   } = props;
 
   const isXScale = indexScale === 0;
@@ -295,10 +296,7 @@ function Ticks(props) {
     }
   }
 
-  dataHintsHandler.setTickSize(
-    isXScale ? 'horizontal' : 'vertical',
-    { width: tickWidth, height: tickHeight },
-  );
+  meta.ticks.setSize(isXScale ? 'horizontal' : 'vertical', { width: tickWidth, height: tickHeight });
 
   return ticks.map((value, i) => {
     const displayValue = typeof children === 'function' ? undefined : renderValue(value, locale);
