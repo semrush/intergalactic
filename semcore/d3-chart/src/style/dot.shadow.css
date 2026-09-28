@@ -28,10 +28,16 @@ SDot[color] {
   fill: var(--color);
 }
 
-SDotHighlight[color] {
-  opacity: 0.4;
-  fill: var(--color);
-}
+SDotHighlight {
+  &[color] {
+    opacity: 0.4;
+    fill: var(--color);
+  }
+
+  &[transparent] {
+    opacity: 0.12;
+  }
+} 
 
 SDotBorder {
   fill: none;
@@ -39,8 +45,25 @@ SDotBorder {
   stroke: var(--intergalactic-chart-grid-line, oklch(0.95 0.002 180));
   opacity: 0.5;
   stroke-dasharray: 2;
+
+  &[transparent] {
+    opacity: 0.15;
+  }
 }
 
 SDot[transparent] {
   opacity: 0.3;
+}
+
+SDotBackdrop {
+  stroke-width: 1px;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  fill: var(--intergalactic-chart-grid-border, #ffffff);
+  transition-property: cx, cy;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
+
+  &[hide] {
+    display: none
+  }
 }

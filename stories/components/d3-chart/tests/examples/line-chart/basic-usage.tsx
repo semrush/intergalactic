@@ -1,11 +1,12 @@
 import { Box } from '@semcore/ui/base-components';
 import type { LineChartProps } from '@semcore/ui/d3-chart';
-import { BAD, Chart, DATA_TYPE, FORECAST, GOOD, HIGHLIGHT_DOT, INSIGHTFUL, POTENTIAL } from '@semcore/ui/d3-chart';
+import { Chart, DATA_TYPE, FORECAST, POTENTIAL } from '@semcore/ui/d3-chart';
 import React from 'react';
 
+import dataPipeline, { base as baseData, type HighlightDotsMode } from './__mocks__';
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-export type HighlightDotsMode = 'none' | 'good' | 'bad' | 'insightful' | 'mixed';
+export type { HighlightDotsMode };
 export type DataTypeMode = 'none' | 'forecast' | 'potential' | 'both';
 
 type LineChartStoryProps = LineChartProps & {
@@ -40,18 +41,6 @@ type LineChartStoryProps = LineChartProps & {
    * for what each variant demonstrates.
    */
   deltaOverride?: 'off' | keyof typeof deltaOverrides;
-};
-
-/** Indices in the generated dataset that each mode marks. */
-const highlightTargets: Record<Exclude<HighlightDotsMode, 'none'>, Array<[number, symbol]>> = {
-  good: [[4, GOOD]],
-  bad: [[9, BAD]],
-  insightful: [[14, INSIGHTFUL]],
-  mixed: [
-    [4, GOOD],
-    [9, BAD],
-    [14, INSIGHTFUL],
-  ],
 };
 
 /**
@@ -164,15 +153,6 @@ function withDataTypeTails(points: any[], groupKey: string, mode?: DataTypeMode)
   return result;
 }
 
-function withHighlights(base: readonly any[], mode?: HighlightDotsMode): any[] {
-  if (!mode || mode === 'none') return [...base];
-  const points = base.map((point) => ({ ...point }));
-  highlightTargets[mode].forEach(([index, highlight]) => {
-    if (points[index]) points[index] = { ...points[index], [HIGHLIGHT_DOT]: highlight };
-  });
-  return points;
-}
-
 const Demo = (props: LineChartStoryProps) => {
   const [measuredSize, setMeasuredSize] = React.useState<[number, number] | null>(null);
   const onClickHandler = () => {
@@ -199,7 +179,7 @@ const Demo = (props: LineChartStoryProps) => {
   const groupKey = (chartProps as LineChartProps).groupKey ?? 'x';
 
   const chartData = React.useMemo(
-    () => withDataTypeTails(withHighlights(suppliedData ?? data, highlightDots), groupKey, dataType),
+    () => withDataTypeTails(dataPipeline({ highlightDots }, suppliedData ?? baseData), groupKey, dataType),
     [suppliedData, highlightDots, dataType, groupKey],
   );
 
@@ -258,17 +238,9 @@ const Demo = (props: LineChartStoryProps) => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    line1: Math.abs(Math.sin(Math.exp(i))) * 10,
-    line2: Math.abs(Math.cos(Math.exp(i))) * 10,
-  }));
-
 export const defaultProps = getChartProps<LineChartStoryProps>({
   groupKey: 'x',
-  data,
+  data: baseData,
   showDots: true,
   showLegend: true,
   useExplicitPlotWidth: false,

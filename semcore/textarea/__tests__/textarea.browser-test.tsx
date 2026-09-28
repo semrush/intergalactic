@@ -37,7 +37,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@textarea',
         '@base-components',
-        '@typography'],
+        '@typography',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en', item);
 
@@ -75,7 +76,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.MOUSE,
       '@textarea',
       '@base-components',
-      '@typography'],
+      '@typography',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en');
 
@@ -97,7 +99,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@textarea',
       '@base-components',
-      '@typography'],
+      '@typography',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/textarea/docs/examples/textarea_with_auto_height.tsx', 'en');
     const getNumberOfLines = () => locators.textarea(page).evaluate((el) => {

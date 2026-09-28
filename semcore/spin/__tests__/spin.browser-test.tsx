@@ -56,7 +56,9 @@ Snapshots are always scoped to the spin area, never the whole page.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify all sizes and stroke widths', {
-    tag: [TAG.PRIORITY_HIGH, '@spin'],
+    tag: [TAG.PRIORITY_HIGH, '@spin',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, ALL_SIZES_EXAMPLE, 'en');
 
@@ -91,7 +93,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify default theme', {
-    tag: [TAG.PRIORITY_HIGH, '@spin'],
+    tag: [TAG.PRIORITY_HIGH, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
 
@@ -103,7 +108,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify invert theme on inverted background', {
-    tag: [TAG.PRIORITY_HIGH, '@spin'],
+    tag: [TAG.PRIORITY_HIGH, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
 
@@ -115,7 +123,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify custom color themes', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     test.slow();
 
@@ -147,7 +158,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify centered spin inside a flex parent', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { centered: true, size: 'xl' });
 
@@ -179,7 +193,10 @@ Attributes, themes, locales - no snapshots here.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify aria-label is localized', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'de', { locale: 'de' });
 
@@ -187,7 +204,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify deprecated theme="dark" still renders as default', {
-    tag: [TAG.PRIORITY_HIGH, '@spin'],
+    tag: [TAG.PRIORITY_HIGH, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
     const defaultStroke = await computed(locators.circle(locators.spin(page, 0)), 'stroke');
@@ -199,7 +219,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify invert theme resolves to a different color than default', {
-    tag: [TAG.PRIORITY_HIGH, '@spin'],
+    tag: [TAG.PRIORITY_HIGH, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
     const defaultStroke = await computed(locators.circle(locators.spin(page, 1)), 'stroke');
@@ -212,7 +235,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify animations are disabled with prefers-reduced-motion', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await loadPage(page, BASE_EXAMPLE, 'en');
@@ -226,7 +252,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify spin attributes inside table', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@spin'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@spin',
+      '@button',
+      '@data-table'],
   }, async ({ page }) => {
     await loadPage(page, BASIC_EXAMPLE, 'en');
 

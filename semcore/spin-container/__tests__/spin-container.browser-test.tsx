@@ -73,7 +73,10 @@ Snapshots are always scoped to the container area, never the whole page.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify all sizes and themes', {
-    tag: [TAG.PRIORITY_HIGH, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, ALL_SIZES_EXAMPLE, 'en');
 
@@ -102,7 +105,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify default theme overlay', {
-    tag: [TAG.PRIORITY_HIGH, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
 
@@ -114,7 +121,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify invert theme overlay on inverted background', {
-    tag: [TAG.PRIORITY_HIGH, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'invert' });
 
@@ -126,7 +137,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify custom overlay backgrounds', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin-container'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     test.slow();
 
@@ -158,7 +173,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify overlay is not rendered when loading is false', {
-    tag: [TAG.PRIORITY_HIGH, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { loading: false });
 
@@ -169,7 +188,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify advanced mode with custom overlay content', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin-container'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', {
       advancedMode: true,
@@ -193,7 +216,11 @@ Keyboard and mouse interactions, attributes and prop forwarding - no snapshots h
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify content is inert and unreachable by keyboard while loading', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { loading: true });
 
@@ -212,7 +239,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify content is reachable by keyboard when not loading', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { loading: false });
 
@@ -223,7 +254,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify size and theme are forwarded to the nested Spin', {
-    tag: [TAG.PRIORITY_HIGH, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await test.step('Verify size', async () => {
       await loadPage(page, BASE_EXAMPLE, 'en', { size: 'xs' });
@@ -242,7 +277,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify deprecated theme="dark" renders as default', {
-    tag: [TAG.PRIORITY_HIGH, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
     const defaultBackground = await computed(
@@ -260,7 +299,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify duration prop drives the overlay animation', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin-container'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { duration: 1000 });
 
@@ -268,7 +311,11 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify box props', {
-    tag: [TAG.PRIORITY_MEDIUM, '@spin-container'],
+    tag: [TAG.PRIORITY_MEDIUM, '@spin-container',
+      '@base-components',
+      '@flex-box',
+      '@input',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { w: 250, h: 250, m: 4, p: 4 });
 
@@ -281,7 +328,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify spin container attributes when loading and not loading', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@spin-container'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@spin-container',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, CONTENT_EXAMPLE, 'en');
 

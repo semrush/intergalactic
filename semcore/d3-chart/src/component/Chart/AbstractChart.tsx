@@ -545,7 +545,7 @@ export abstract class AbstractChart<
 
       if (customDelta === null) return null;
 
-      return Number(customDelta.toFixed(1));
+      return customDelta;
     }
 
     if (index === 0) return null;

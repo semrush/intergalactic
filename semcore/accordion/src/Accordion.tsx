@@ -73,7 +73,7 @@ class RootAccordion extends Component<
     const SAccordion = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(<SAccordion render={Flex} />);
+    return sstyled(styles)(<SAccordion __excludeProps={['onChange']} render={Flex} />);
   }
 }
 export class RootItem extends Component<

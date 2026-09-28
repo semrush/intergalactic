@@ -41,7 +41,15 @@ export const locators = {
 test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Filters include exclude', {
     tag: [TAG.PRIORITY_HIGH,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@filter-trigger',
+      '@flex-box',
+      '@radio',
+      '@textarea',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx', 'en');
 
@@ -74,7 +82,15 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard interactios', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@filter-trigger',
+      '@flex-box',
+      '@radio',
+      '@textarea',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx', 'en');
 
@@ -169,7 +185,15 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify mouse interactions', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@filter-trigger',
+      '@flex-box',
+      '@radio',
+      '@textarea',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx', 'en');
 

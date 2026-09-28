@@ -233,7 +233,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       '@link',
       '@button-link',
       '@button',
-    ],
+      '@link-action'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/docs/examples/access-to-cells.tsx', 'en');
 

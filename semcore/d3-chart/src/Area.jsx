@@ -27,6 +27,30 @@ import {
   invert,
 } from './utils';
 
+function getDataOfType(data, type, y) {
+  const result = [];
+  let prevPoint = null;
+  let insideRun = false;
+
+  data.forEach((item) => {
+    const valid = item[y] !== interpolateValue;
+
+    if (valid && item[DATA_TYPE] === type) {
+      if (!insideRun && prevPoint !== null) result.push(prevPoint);
+
+      result.push(item);
+
+      insideRun = true;
+    } else {
+      insideRun = false;
+    }
+
+    if (valid) prevPoint = item;
+  });
+
+  return result;
+}
+
 class AreaRoot extends Component {
   static displayName = 'Area';
   static style = style;
@@ -109,7 +133,7 @@ class AreaRoot extends Component {
   }
 
   renderForecast() {
-    const SArea = this.Element;
+    const SArea = SvgElement;
     const SAreaLine = SvgElement;
     const {
       styles,
@@ -118,13 +142,12 @@ class AreaRoot extends Component {
       d3Line,
       color,
       uid,
-      size,
       duration,
       y,
       transparent,
       resolveColor,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === FORECAST);
+    const data = getDataOfType(this.asProps.data, FORECAST, y);
 
     return sstyled(styles)(
       <>
@@ -140,8 +163,8 @@ class AreaRoot extends Component {
         />
         <SArea
           aria-hidden
+          tag='path'
           clipPath={`url(#${uid})`}
-          render='path'
           d={d3(data)}
           hide={hide}
           pattern={`url(#${uid}-forecast-gradient)`}
@@ -150,14 +173,14 @@ class AreaRoot extends Component {
           transparent={transparent}
           onClickCapture={this.handlerOnClick.bind(this)}
         />
-        <ForecastGradient id={`${uid}-forecast-gradient`} />
-        <StrokeMask id={`${uid}-forecast-mask`} />
+        <ForecastGradient id={`${uid}-forecast-gradient`} color={resolveColor(color)} />
+        <StrokeMask id={`${uid}-forecast-mask`} color={resolveColor(color)} />
       </>,
     );
   }
 
   renderPotential() {
-    const SArea = this.Element;
+    const SArea = SvgElement;
     const SAreaLine = SvgElement;
     const {
       styles,
@@ -170,7 +193,7 @@ class AreaRoot extends Component {
       y,
       transparent,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === POTENTIAL);
+    const data = getDataOfType(this.asProps.data, POTENTIAL, y);
 
     return sstyled(styles)(
       <>
@@ -186,8 +209,8 @@ class AreaRoot extends Component {
         />
         <SArea
           aria-hidden
+          tag='path'
           clipPath={`url(#${uid})`}
-          render='path'
           d={d3(data)}
           hide={hide}
           pattern={`url(#${uid}-potential-gradient)`}
@@ -197,7 +220,7 @@ class AreaRoot extends Component {
           onClickCapture={this.handlerOnClick.bind(this)}
         />
 
-        <PotentialGradient id={`${uid}-potential-gradient`} />
+        <PotentialGradient id={`${uid}-potential-gradient`} type='area' />
         <PotentialGradient id={`${uid}-potential-gradient-line`} type='line' />
         <StrokeMask id={`${uid}-potential-mask`} />
       </>,
@@ -244,6 +267,8 @@ class AreaRoot extends Component {
             transparent={transparent}
           />
         )}
+        {this.renderForecast()}
+        {this.renderPotential()}
         <SArea
           aria-hidden
           clipPath={`url(#${uid})`}
@@ -267,8 +292,6 @@ class AreaRoot extends Component {
             patterns={patterns}
           />
         )}
-        {this.renderForecast()}
-        {this.renderPotential()}
       </>,
     );
   }
