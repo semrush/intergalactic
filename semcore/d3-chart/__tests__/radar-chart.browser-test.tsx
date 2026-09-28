@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -231,35 +231,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify labels have aria-hidden attribute', async () => {
       await locators.plot(page).waitFor({ state: 'visible' });
-      const labels = locators.polygonLabels(page);
-      const count = await labels.count();
-
-      for (let i = 0; i < count; i++) {
-        const label = labels.nth(i);
-        await expect(label.first()).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.polygonLabels(page), 'aria-hidden', 'true');
     });
 
     await test.step('Verify Line.Polygon elements have aria-hidden attribute', async () => {
-      const linePolygons = locators.linePolygon(page);
-      const count = await linePolygons.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        const linePoly = linePolygons.nth(i);
-        await expect(linePoly.first()).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.linePolygon(page), 'aria-hidden', 'true');
     });
 
     await test.step('Verify Polygon.Line elements have aria-hidden attribute', async () => {
-      const polygonLines = locators.polygonLine(page);
-      const count = await polygonLines.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        const polyLine = polygonLines.nth(i);
-        await expect(polyLine.first()).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.polygonLine(page), 'aria-hidden', 'true');
     });
   });
 

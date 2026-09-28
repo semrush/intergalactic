@@ -192,7 +192,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   test('Verify focus on focusable item inside accordion', {
     tag: [
       TAG.PRIORITY_MEDIUM,
-      '@accordion'],
+      '@accordion',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
     await page.keyboard.press('Tab');
@@ -316,7 +318,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify items render in DOM and focusable elements not focused when collapsed with preserveNode prop', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@accordion'],
+      '@accordion',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/accordion/docs/examples/seo.tsx', 'en');
 
@@ -382,7 +386,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@accordion'],
+      '@accordion',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/button-on-toggle.tsx', 'en');
 
@@ -404,7 +409,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
   test('Verify values with different types', {
     tag: [TAG.PRIORITY_HIGH,
-      '@accordion'],
+      '@accordion',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
 
@@ -420,7 +427,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify default value', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.MOUSE,
-      '@accordion'],
+      '@accordion',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/values.tsx', 'en');
     await expect(page.locator('[data-test-id="default-value"]')).toBeVisible();
@@ -488,7 +497,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@accordion',
       '@base-components',
-      '@animation'],
+      '@animation',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/accordion/tests/examples/accordion-collapse-duration.tsx', 'en');
 

@@ -60,7 +60,14 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(TAG.VISUAL, () => {
   test.describe('Tooltip', () => {
     test('Verify Base example', {
-      tag: [TAG.PRIORITY_HIGH, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, '@tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@description-tooltip',
+        '@flex-box',
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
 
@@ -83,7 +90,11 @@ test.describe(TAG.VISUAL, () => {
     });
 
     test('Verify Nested trigger', {
-      tag: [TAG.PRIORITY_HIGH, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, '@tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/nested.tsx', 'en');
 
@@ -95,7 +106,13 @@ test.describe(TAG.VISUAL, () => {
     });
 
     test('Verify ignore portal stacking', {
-      tag: [TAG.PRIORITY_MEDIUM, '@tooltip'],
+      tag: [TAG.PRIORITY_MEDIUM, '@tooltip',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@input',
+        '@modal',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/ignore_portal_stacking.tsx', 'en');
 
@@ -116,7 +133,11 @@ test.describe(TAG.VISUAL, () => {
     });
 
     test('Verify Singleton tooltip shown by keyboard interactions', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip',
+        '@base-components',
+        '@flex-box',
+        '@select',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/singleton.tsx', 'en');
 
@@ -138,7 +159,14 @@ test.describe(TAG.VISUAL, () => {
 
     tooltipThemeVariables.forEach((item) => {
       test(`Verify theme=${item.tooltipTheme}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@tooltip'],
+        tag: [TAG.PRIORITY_MEDIUM, '@tooltip',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@description-tooltip',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 
@@ -165,7 +193,14 @@ test.describe(TAG.VISUAL, () => {
 
     tooltipPlacementVariables.forEach((item) => {
       test(`Verify placement=${item.tooltipPlacement}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@tooltip'],
+        tag: [TAG.PRIORITY_MEDIUM, '@tooltip',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@description-tooltip',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 
@@ -188,7 +223,13 @@ test.describe(TAG.VISUAL, () => {
 
   test.describe('Description tooltip', () => {
     test('Verify Informer', {
-      tag: [TAG.PRIORITY_HIGH, '@tooltip', '@description-tooltip'],
+      tag: [TAG.PRIORITY_HIGH, '@tooltip', '@description-tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@flex-box',
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/patterns/ux-patterns/informer/docs/examples/basic-usage.tsx', 'en');
 
@@ -209,7 +250,13 @@ test.describe(TAG.VISUAL, () => {
     });
 
     test('Verify Base example', {
-      tag: [TAG.PRIORITY_HIGH, '@tooltip', '@description-tooltip'],
+      tag: [TAG.PRIORITY_HIGH, '@tooltip', '@description-tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@flex-box',
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
 
@@ -232,7 +279,13 @@ test.describe(TAG.VISUAL, () => {
 
     descriptionThemeVariables.forEach((item) => {
       test(`Verify theme=${item.descriptionTheme}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@tooltip', '@description-tooltip'],
+        tag: [TAG.PRIORITY_MEDIUM, '@tooltip', '@description-tooltip',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 
@@ -256,7 +309,14 @@ test.describe(TAG.VISUAL, () => {
 
     hintThemeVariables.forEach((item) => {
       test(`Verify theme=${item.hintTheme}`, {
-        tag: [TAG.PRIORITY_MEDIUM, '@tooltip', '@hint'],
+        tag: [TAG.PRIORITY_MEDIUM, '@tooltip', '@hint',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@description-tooltip',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 
@@ -286,7 +346,14 @@ We verify states, visibility, and attributes.
 test.describe(TAG.FUNCTIONAL, () => {
   test.describe('Tooltip', () => {
     test('Verify mouse interactions with Base example', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@description-tooltip',
+        '@flex-box',
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
 
@@ -321,7 +388,14 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify keyboard interactions with Base example', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@description-tooltip',
+        '@flex-box',
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
 
@@ -350,7 +424,11 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify keyboard interactions with Nested trigger', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/nested.tsx', 'en');
 
@@ -375,7 +453,11 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify mouse interactions with Nested trigger', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/nested.tsx', 'en');
 
@@ -412,7 +494,14 @@ test.describe(TAG.FUNCTIONAL, () => {
 
     tooltipInteractionVariables.forEach((item) => {
       test(`Verify interaction=${item.tooltipInteraction}`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@tooltip'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@tooltip',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@description-tooltip',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 
@@ -473,7 +562,11 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify Singleton tooltip shown by mouse interactions', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip',
+        '@base-components',
+        '@flex-box',
+        '@select',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/singleton.tsx', 'en');
 
@@ -501,7 +594,13 @@ test.describe(TAG.FUNCTIONAL, () => {
 
   test.describe('Description tooltip', () => {
     test('Verify keyboard interactions with Informer Example', {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip', '@description-tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@tooltip', '@description-tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@flex-box',
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/patterns/ux-patterns/informer/docs/examples/basic-usage.tsx', 'en');
 
@@ -587,7 +686,13 @@ test.describe(TAG.FUNCTIONAL, () => {
     });
 
     test('Verify mouse interactions with Base example', {
-      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip', '@description-tooltip'],
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@tooltip', '@description-tooltip',
+        '@base-components',
+        '@button',
+        '@button-link',
+        '@flex-box',
+        '@link',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/tooltip/docs/examples/basic_usage.tsx', 'en');
 
@@ -631,7 +736,13 @@ test.describe(TAG.FUNCTIONAL, () => {
 
     descriptionInteractionVariables.forEach((item) => {
       test(`Verify interaction=${item.descriptionInteraction}`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@tooltip', '@description-tooltip'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@tooltip', '@description-tooltip',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 
@@ -725,7 +836,14 @@ test.describe(TAG.FUNCTIONAL, () => {
 
     hintThemeVariables.forEach((item) => {
       test(`Verify hint=${item.hintTheme} mouse interaction`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@tooltip', '@hint'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@tooltip', '@hint',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@description-tooltip',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 
@@ -752,7 +870,14 @@ test.describe(TAG.FUNCTIONAL, () => {
         });
       });
       test(`Verify hint=${item.hintTheme} keyboard interaction`, {
-        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@tooltip', '@hint'],
+        tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@tooltip', '@hint',
+          '@base-components',
+          '@button',
+          '@button-link',
+          '@description-tooltip',
+          '@flex-box',
+          '@link',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/tooltip/tests/examples/configurable_tooltip.tsx', 'en', item);
 

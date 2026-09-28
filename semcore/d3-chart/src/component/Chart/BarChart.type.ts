@@ -40,6 +40,7 @@ export type BarChartDefaultProps = {
   showYAxis: true;
   showTooltip: true;
   maxBarSize: 12;
+  locale: 'en';
 };
 
 export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps & AriaNameProps>;

@@ -1,6 +1,6 @@
 import type { Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
-import { loadPage } from '@semcore/testing-utils/shared/helpers';
+import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
 export const locators = {
@@ -165,14 +165,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
 
     await test.step('Verify venn circles have aria-hidden attribute', async () => {
       await locators.plot(page).first().waitFor({ state: 'visible' });
-      const venns = locators.vennCircle(page);
-      const count = await venns.count();
-      expect(count).toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        const venn = venns.nth(i);
-        await expect(venn.first()).toHaveAttribute('aria-hidden', 'true');
-      }
+      await expectEachToHaveAttribute(locators.vennCircle(page), 'aria-hidden', 'true');
     });
   });
 

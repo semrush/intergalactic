@@ -1,4 +1,5 @@
-import { createComponent } from '@semcore/core';
+import { Box, Flex } from '@semcore/base-components';
+import { createComponent, sstyled } from '@semcore/core';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import { scaleLinear, type ScaleLinear } from 'd3-scale';
@@ -29,6 +30,7 @@ class BubbleChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    locale: 'en',
   } as const;
 
   protected get dataKeys(): string[] {
@@ -122,26 +124,25 @@ class BubbleChartComponent extends AbstractChart<
     return (
       <Bubble.Tooltip>
         {({ index, data }: any) => {
+          const { styles } = this.asProps;
+          const STooltipChildrenWrapper = Box;
+
           return {
-            children: (
-              <>
+            children: sstyled(styles)(
+              <Flex direction='column'>
                 <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
-                <Text tag='div'>
-                  X axis
-                  {' '}
-                  {data[index].x}
-                </Text>
-                <Text tag='div'>
-                  Y axis
-                  {' '}
-                  {data[index].y}
-                </Text>
-                <Text tag='div'>
-                  Value
-                  {' '}
-                  {data[index].value}
-                </Text>
-              </>
+                <STooltipChildrenWrapper
+                  // @ts-ignore
+                  columnsCount={2}
+                >
+                  <Text>X axis</Text>
+                  <Text textAlign='end'>{data[index].x}</Text>
+                  <Text>Y axis</Text>
+                  <Text textAlign='end'>{data[index].y}</Text>
+                  <Text>Value</Text>
+                  <Text textAlign='end'>{data[index].value}</Text>
+                </STooltipChildrenWrapper>
+              </Flex>,
             ),
           };
         }}

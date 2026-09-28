@@ -26,7 +26,10 @@ test.describe(`${TAG.VISUAL} `, () => {
       TAG.KEYBOARD,
       '@input',
       '@tooltip',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx', 'en');
 
@@ -57,7 +60,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       TAG.KEYBOARD,
       '@input',
       '@tooltip',
-      '@button'],
+      '@button',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx', 'en');
 

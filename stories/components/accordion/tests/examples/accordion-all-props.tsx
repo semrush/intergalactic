@@ -4,9 +4,6 @@ import { Flex } from '@semcore/ui/base-components';
 import React from 'react';
 
 type ExampleProps = NSAccordion.Props & {
-  /** Root animation duration. Omitted by default so the component falls back
-   * to the `--intergalactic-duration-accordion` CSS variable. */
-  duration?: number;
   /** Per-Collapse animation duration. Omitted by default so the root duration applies. */
   collapseDuration?: number;
 

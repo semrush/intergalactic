@@ -39,6 +39,7 @@ export type LineChartDefaultProps = {
   showXAxis: true;
   showYAxis: true;
   showTooltip: true;
+  locale: 'en';
 };
 
 export type LineChartType = Intergalactic.Component<typeof Flex, LineChartProps>;

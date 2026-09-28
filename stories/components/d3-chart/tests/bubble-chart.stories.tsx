@@ -14,7 +14,9 @@ export default meta;
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    fractionalValues: { control: 'boolean' },
+  }),
   args: BasicUsageProps,
 };
 

@@ -44,7 +44,10 @@ The pulse animation is frozen with duration=0 to keep screenshots stable.
 ===================================================== */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify every chart skeleton pattern', {
-    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0 });
 
@@ -60,7 +63,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify type=monotone for Line and Area', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0, type: 'monotone' });
 
@@ -73,7 +79,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify layout=vertical for Bar and Histogram', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0, layout: 'vertical' });
 
@@ -86,7 +95,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify halfsize donut', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { duration: 0, halfsize: true });
 
@@ -104,7 +116,10 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   textCases.forEach((item) => {
     test(`Verify theme=${item.theme}, amount=${item.amount}`, {
-      tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+      tag: [TAG.PRIORITY_HIGH, '@skeleton',
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, BASE_EXAMPLE, 'en', {
         ...item,
@@ -118,7 +133,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify chart skeletons on inverted background', {
-    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', {
       duration: 0,
@@ -136,7 +154,10 @@ Attributes, props forwarding, locales and resizing - no snapshots here.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify root attributes', {
-    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en');
 
@@ -149,7 +170,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify duration prop drives the pulse animation', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { duration: 500 });
 
@@ -160,7 +184,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify hidden prop renders nothing', {
-    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { hidden: true });
 
@@ -169,7 +196,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify aria-label is localized', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'de', { locale: 'de' });
 
@@ -177,7 +207,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Skeleton.Text amount renders the requested number of lines', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { amount: 4 });
 
@@ -186,7 +219,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify theme changes the fill of Skeleton', {
-    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
     const defaultFill = await computed(locators.skeleton(page, 0), 'fill');
@@ -199,7 +235,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify theme changes the color of chart skeletons', {
-    tag: [TAG.PRIORITY_HIGH, '@skeleton'],
+    tag: [TAG.PRIORITY_HIGH, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { theme: 'default' });
     const defaultChart = locators.chart(page, 'LineChartSkeleton').getByRole('img');
@@ -216,7 +255,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify observeParentSize follows the parent width', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { observeParentSize: true, parentWidth: 200 });
 
@@ -238,7 +280,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify w prop pins the skeleton width regardless of the parent', {
-    tag: [TAG.PRIORITY_MEDIUM, '@skeleton'],
+    tag: [TAG.PRIORITY_MEDIUM, '@skeleton',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, BASE_EXAMPLE, 'en', { w: 300, parentWidth: 200 });
 

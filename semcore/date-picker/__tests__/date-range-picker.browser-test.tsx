@@ -47,7 +47,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify trigger states when entering sate manually', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/datepicker.tsx', 'en');
 
@@ -104,7 +106,10 @@ test.describe(`${TAG.VISUAL}`, () => {
       test(`Verify trigger size=${item.size} state=${item.state} disabled=${item.disabled} neighborLocation=${item.neighborLocation}`, {
         tag: [TAG.PRIORITY_HIGH,
           '@date-picker',
-          '@base-components'],
+          '@base-components',
+          '@button',
+          '@flex-box',
+          '@typography'],
       }, async ({ page }) => {
         await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-trigger.tsx', 'en', item);
         await page.keyboard.press('Tab');
@@ -121,7 +126,10 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify trigger input width grows after entering date with locale=pt', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-trigger.tsx', 'pt', {
         size: 'm', state: 'normal', disabled: false, neighborLocation: 'right',
@@ -164,7 +172,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify date range picker styles', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
 
@@ -238,7 +248,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify date range picker opened by keyboard', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
       const input = page.locator('input[data-ui-name="DateRangePicker.Trigger"]');
@@ -269,7 +281,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify all date range picker props work good', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-picker.tsx', 'en');
 
@@ -289,7 +303,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify  date range picker period work good', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/tests/examples/day-range-picker-perios-props.tsx', 'en');
       await page.keyboard.press('Tab');
@@ -304,7 +320,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Verify Week picker trigger when entering date manually', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/week_picker.tsx', 'en');
 
@@ -326,7 +344,9 @@ test.describe(`${TAG.VISUAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/week_picker.tsx', 'en');
 
@@ -356,7 +376,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
 
@@ -510,7 +532,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
 
@@ -625,7 +649,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/custom_date_ranges.tsx', 'en');
       if (browserName == 'webkit') test.skip(); // todo refactor to support webkit specifics in focus
@@ -821,7 +847,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
         '@date-picker',
-        '@base-components'],
+        '@base-components',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/week_picker.tsx', 'en');
       await page.keyboard.press('Tab');

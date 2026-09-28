@@ -27,7 +27,13 @@ test.describe(`${TAG.VISUAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@input-tags',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@button',
+      '@counter',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx', 'en');
 
@@ -75,7 +81,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@input-tags',
-      '@select'],
+      '@select',
+      '@base-components',
+      '@button',
+      '@counter',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx', 'en');
 

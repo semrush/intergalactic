@@ -23,6 +23,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       tag: [TAG.PRIORITY_HIGH,
         '@animation',
         '@base-components',
+        '@flex-box',
         '@button'],
     }, async ({ page }) => {
       await loadPage(
