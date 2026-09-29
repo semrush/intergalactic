@@ -43,16 +43,13 @@
   }
 
   .controlPanel {
-    padding: 0 0 var(--intergalactic-spacing-3x) var(--intergalactic-spacing-6x);
     border: none;
+    padding: 0;
+    grid-template-columns: 72px auto;
   }
 
   .fullWidthItem {
     grid-column: 1 / -1;
-  }
-
-  [data-ui-name="Item.Collapse"] [data-ui-name="Box"] {
-    grid-template-columns: 72px auto;
   }
 }
 

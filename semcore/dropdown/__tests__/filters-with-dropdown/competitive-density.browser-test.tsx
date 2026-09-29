@@ -42,7 +42,13 @@ test.describe(`${TAG.VISUAL} `, () => {
   test('Verify Competitive density pattern', {
     tag: [TAG.PRIORITY_HIGH,
       '@dropdown',
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@filter-trigger',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/basic-example.tsx', 'en');
 
@@ -75,7 +81,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       '@dropdown',
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@filter-trigger',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/basic-example.tsx', 'en');
 
@@ -143,7 +155,13 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
       '@dropdown',
-      '@input-number'],
+      '@input-number',
+      '@base-components',
+      '@base-trigger',
+      '@button',
+      '@filter-trigger',
+      '@flex-box',
+      '@typography'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/patterns/filters/filter-custom-range/docs/examples/basic-example.tsx', 'en');
 

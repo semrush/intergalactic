@@ -64,7 +64,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('MonthRangeComparator range', () => {
     test('Verify month range comparator styles', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
       const defaultCellStyles = await getCalendarCellDefaultStyles(page);
@@ -123,7 +125,9 @@ test.describe(`${TAG.VISUAL}`, () => {
     test('Month range comparator filled state', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -151,7 +155,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   test.describe('Month Range comparator with advanced use', () => {
     test('Verify mouse intearctions and styles of advanced use', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@dropdown',
+        '@flex-box',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/month_range_comparator_advanced_use.tsx', 'en');
 
@@ -192,7 +200,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test.describe('MonthRangeComparator range', () => {
     test('Verify roles and attributes', {
       tag: [TAG.PRIORITY_HIGH,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -292,7 +302,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Month range comparator mouse interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
 
@@ -394,7 +406,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     test('Month range comparator keyboard interactions', {
       tag: [TAG.PRIORITY_HIGH,
         TAG.KEYBOARD,
-        '@date-picker'],
+        '@date-picker',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/date-picker/docs/examples/date_range_comparator.tsx', 'en');
       const buttons = page.locator('[data-ui-name="Button"]');

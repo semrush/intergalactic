@@ -58,6 +58,7 @@
     "@semcore/radio": "^17.2.1",
     "@semcore/select": "^17.4.2",
     "@semcore/input-tags": "^17.2.2",
+    "@semcore/radio-cards": "^18.0.0",
     "@semcore/side-panel": "^17.2.2",
     "@semcore/slider": "^17.2.2",
     "@semcore/skeleton": "^17.2.2",
@@ -655,6 +656,11 @@
       "types": "./radio/index.d.ts",
       "import": "./radio/index.mjs",
       "require": "./radio/index.cjs"
+    },
+    "./radio-cards": {
+      "types": "./radio-cards/index.d.ts",
+      "import": "./radio-cards/index.mjs",
+      "require": "./radio-cards/index.cjs"
     },
     "./select": {
       "types": "./select/index.d.ts",
