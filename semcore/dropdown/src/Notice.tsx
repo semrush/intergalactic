@@ -1,5 +1,5 @@
 import { Flex } from '@semcore/base-components';
-import { Component, createComponent, Root, sstyled } from '@semcore/core';
+import { Component, createComponent, type Intergalactic, Root, sstyled } from '@semcore/core';
 import Notice, { type NSNotice } from '@semcore/notice';
 import { Text } from '@semcore/typography';
 import React from 'react';
@@ -19,7 +19,7 @@ class DropdownNoticeRoot extends Component<NSDropdown.Notice.Props> {
 
     return sstyled(styles)(
       <SDropdownNotice render={Notice} use:icon={undefined}>
-        <Flex alignItems='baseline' gap={2}>
+        <Flex alignItems='flex-start' gap={2}>
           {Boolean(icon) && (
             <SIcon
             // @ts-expect-error for css styles only
@@ -36,8 +36,16 @@ class DropdownNoticeRoot extends Component<NSDropdown.Notice.Props> {
   }
 }
 
+function NoticeText(props: Intergalactic.InternalTypings.InferComponentProps<NSNotice.Text.Component>) {
+  const SDropdownNoticeText = Root;
+
+  return sstyled(props.styles)(
+    <SDropdownNoticeText render={Notice.Text} />,
+  );
+}
+
 export const DropdownNotice = createComponent<NSDropdown.Notice.Component, typeof DropdownNoticeRoot>(DropdownNoticeRoot, {
-  Text: Notice.Text,
+  Text: NoticeText,
   Actions: Notice.Actions,
   Close: Notice.Close,
 }, { parent: Notice });
