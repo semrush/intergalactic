@@ -191,6 +191,8 @@ class LineRoot extends Component {
 
     return sstyled(styles)(
       <>
+        {this.renderForecast()}
+        {this.renderPotential()}
         <SLine
           aria-hidden
           clipPath={`url(#${uid})`}
@@ -215,8 +217,6 @@ class LineRoot extends Component {
             height={size[1]}
           />
         )}
-        {this.renderForecast()}
-        {this.renderPotential()}
       </>,
     );
   }
