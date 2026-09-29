@@ -33,7 +33,7 @@ SValue {
   /* hack for firefox */
   min-width: 0;
   width: 100%;
-  height: 100%;
+  height: inherit;
   padding: 0;
   border: none;
   box-sizing: border-box;
@@ -118,10 +118,12 @@ SInput SAddon:nth-last-child(2) {
 
 SValue[size='m'] {
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
+  line-height: var(--intergalactic-form-control-m, 32px);
 }
 
 SValue[size='l'] {
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
+  line-height: var(--intergalactic-form-control-l, 44px);
 }
 
 SInput[size='m'] {
