@@ -18,7 +18,7 @@ class DropdownNoticeRoot extends Component<NSDropdown.Notice.Props> {
     const STitle = Text;
 
     return sstyled(styles)(
-      <SDropdownNotice render={Notice} use:icon={undefined}>
+      <SDropdownNotice render={Notice} use:icon={undefined} __excludeProps={['title']}>
         <Flex alignItems='flex-start' gap={2}>
           {Boolean(icon) && (
             <SIcon
