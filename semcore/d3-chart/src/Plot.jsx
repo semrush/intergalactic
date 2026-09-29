@@ -10,6 +10,7 @@ import { PlotA11yModule } from './a11y/PlotA11yModule';
 import style from './style/plot.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { eventToPoint, uniqueId } from './utils';
+import { Meta } from './utils/Meta';
 
 class PlotRoot extends Component {
   static displayName = 'Plot';
@@ -18,6 +19,8 @@ class PlotRoot extends Component {
   constructor(props) {
     super(props);
     this.eventEmitter = props.eventEmitter || new EventEmitter();
+
+    this.meta = new Meta();
   }
 
   static defaultProps = () => ({
@@ -30,8 +33,6 @@ class PlotRoot extends Component {
   plotId = uniqueId();
 
   rootRef = React.createRef();
-
-  tickSize = React.createRef({});
 
   dataStructureHints = this.props.dataHints || makeDataHintsContainer();
   dataHintsHandler = makeDataHintsHandlers(this.dataStructureHints);
@@ -61,13 +62,6 @@ class PlotRoot extends Component {
     this.eventEmitter.emit('onMouseLeaveChart', e);
   };
 
-  setTickSize(axis, size) {
-    this.tickSize.current = {
-      ...this.tickSize.current,
-      [axis]: size,
-    };
-  }
-
   setContext() {
     const { scale, data, width, height, locale, resolveColor, patterns, duration } = this.asProps;
 
@@ -93,12 +87,7 @@ class PlotRoot extends Component {
         patterns,
         duration,
         plotId: this.plotId,
-        meta: {
-          ticks: {
-            setSize: this.setTickSize.bind(this),
-            getSize: () => this.tickSize.current,
-          },
-        },
+        meta: this.meta,
       },
     };
   }

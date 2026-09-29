@@ -24,6 +24,17 @@ SHoveredTickWrapper {
     text-align: end;
   }
 
+  &[position='top'] {
+    SHoveredTickContent {
+      align-content: end;
+    }
+  }
+
+  /* FF fix */
+  SHoveredTickContent {
+    height: 100%;
+  }
+
   SHoveredTick {
     display: inline-block;
     padding: 3px 12px;

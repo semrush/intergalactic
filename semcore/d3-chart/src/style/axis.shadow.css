@@ -7,10 +7,17 @@ SAxis[hide] {
 }
 
 STick {
+  display: block;
   font-size: var(--intergalactic-fs-100, 12px);
   font-variant-numeric: tabular-nums;
   line-height: var(--intergalactic-lh-100, 1.3334);
   color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  overflow: visible;
+
+  /* FF fix */
+  [data-tick-content] {
+    height: 100%;
+  }
 
   &[position='bottom'] {
     text-align: center;
@@ -18,18 +25,27 @@ STick {
 
   &[position='left'] {
     text-align: end;
-    align-content: center;
     dominant-baseline: central;
+
+    [data-tick-content] {
+      align-content: center;
+    }
   }
 
   &[position='top'] {
     text-align: center;
-    align-content: end;
+
+    [data-tick-content] {
+      align-content: end;
+    }
   }
 
   &[position='right'] {
-    align-content: center;
     dominant-baseline: central;
+
+    [data-tick-content] {
+      align-content: center;
+    }
   }
 
   &[hide] {

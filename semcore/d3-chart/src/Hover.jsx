@@ -13,9 +13,12 @@ const STROKE_WIDTH = 1;
 const NOTCH_WIDTH = 9;
 const NOTCH_DELTA = NOTCH_WIDTH / 2 - STROKE_WIDTH / 4;
 
-function formatValue(value) {
+function formatValue(locale, value) {
   if (value instanceof Date) {
-    return value.toLocaleDateString();
+    return new Intl.DateTimeFormat(locale ?? 'en', {
+      day: 'numeric',
+      month: 'short',
+    }).format(value);
   }
   return value;
 }
@@ -101,7 +104,7 @@ class HoverLineRoot extends Hover {
   static displayName = 'HoverLine';
 
   render() {
-    const { hideHoverLine, meta } = this.asProps;
+    const { hideHoverLine, meta, locale } = this.asProps;
     const { xIndex, yIndex } = this.state;
 
     const isHide = typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
@@ -119,8 +122,6 @@ class HoverLineRoot extends Hover {
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
 
-    const tickSize = meta.ticks.getSize();
-
     return sstyled(styles)(
       <>
         {xIndex !== null
@@ -133,15 +134,15 @@ class HoverLineRoot extends Hover {
                 </SHoverLine>
                 {!hideTickHover && (
                   <HoveredTick
-                    width={tickSize.horizontal?.width}
-                    height={tickSize.horizontal?.height}
-                    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
+                    size={meta.getTicksSize('horizontal')}
+                    position={meta.getTicksPosition('horizontal')}
+                    tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue.bind(null, locale)}
                     value={data[xIndex]?.[x]}
                     isFirstTick={xIndex === 0}
                     isLastTick={xIndex === data.length - 1}
                     styles={styles}
                     x={x1}
-                    y={yRange[0]}
+                    yRange={yRange}
                   />
                 )}
               </>
@@ -165,14 +166,14 @@ class HoverRectRoot extends Hover {
   static displayName = 'HoverRect';
 
   render() {
-    const { hideHoverLine } = this.asProps;
+    const { hideHoverLine, meta } = this.asProps;
 
     if (hideHoverLine) {
       return null;
     }
 
     const SHoverRect = this.Element;
-    const { styles, x, y, data, scale, dataHints, hideTickHover, meta } = this.asProps;
+    const { styles, x, y, data, scale, dataHints, hideTickHover, locale } = this.asProps;
     const { xIndex, yIndex } = this.state;
     const [xScale, yScale] = scale;
 
@@ -185,8 +186,6 @@ class HoverRectRoot extends Hover {
     const xPaddingInner = xBand.paddingInner();
     const yStep = yBand.step();
     const yPaddingInner = yBand.paddingInner();
-
-    const tickSize = meta.ticks.getSize();
 
     return sstyled(styles)(
       <>
@@ -203,13 +202,13 @@ class HoverRectRoot extends Hover {
             />
             {!hideTickHover && (
               <HoveredTick
-                width={tickSize.horizontal?.width}
-                height={tickSize.horizontal?.height}
-                tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue}
+                size={meta.getTicksSize('horizontal')}
+                position={meta.getTicksPosition('horizontal')}
+                tickFormatter={dataHints.titles.getHorizontalAxesTitle ?? formatValue.bind(null, locale)}
                 value={data[xIndex]?.[x]}
                 styles={styles}
                 x={xScale(data[xIndex][x]) + (xStep * (1 - xPaddingInner)) / 2}
-                y={yRange[0]}
+                yRange={yRange}
               />
             )}
           </>
@@ -235,23 +234,37 @@ const HOVERED_TICK_PADDING_Y = 3;
 const HOVERED_TICK_PADDING_X = 12;
 
 function HoveredTick(props) {
-  const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, y, width, height } = props;
+  const { tickFormatter, value, isFirstTick = false, isLastTick = false, styles, x, yRange, size, position } = props;
+
+  if (size?.width === undefined || size?.height === undefined || position === null) return null;
+
+  const { width, height } = size;
+
   const SHoveredTickWrapper = 'foreignObject';
+  const SHoveredTickContent = 'div';
   const SHoveredTick = 'span';
 
   const formattedValue = tickFormatter(value);
 
   const w = width + HOVERED_TICK_PADDING_X * 2;
-  const tickX = isFirstTick
-    ? x
-    : isLastTick
-      ? x - w
-      : x - w / 2;
-  const tickY = y + HOVERED_TICK_MARGIN_Y - HOVERED_TICK_PADDING_Y;
+  const tickX = isFirstTick ? x : isLastTick ? x - w : x - w / 2;
+  const tickY = position === 'top'
+    ? yRange[1] - height - HOVERED_TICK_MARGIN_Y + HOVERED_TICK_PADDING_Y
+    : yRange[0] + HOVERED_TICK_MARGIN_Y - HOVERED_TICK_PADDING_Y;
 
   return sstyled(styles)(
-    <SHoveredTickWrapper x={tickX} y={tickY} width={w} height={height} data-is-first={isFirstTick} data-is-last={isLastTick}>
-      <SHoveredTick>{formattedValue}</SHoveredTick>
+    <SHoveredTickWrapper
+      x={tickX}
+      y={tickY}
+      width={w}
+      height={height}
+      data-is-first={isFirstTick}
+      data-is-last={isLastTick}
+      position={position}
+    >
+      <SHoveredTickContent>
+        <SHoveredTick>{formattedValue}</SHoveredTick>
+      </SHoveredTickContent>
     </SHoveredTickWrapper>,
   );
 }

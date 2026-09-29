@@ -1,4 +1,7 @@
 import { Component, sstyled } from '@semcore/core';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 import React from 'react';
 
 import createElement from './createElement';
@@ -200,6 +203,28 @@ function renderValue(value, locale = 'en') {
   return value;
 }
 
+const TickForeignObject = React.forwardRef(function (
+  { children, isRenderProp, 'aria-hidden': ariaHidden, ...props },
+  ref,
+) {
+  const contentRef = React.useRef(null);
+  const [interactive, setInteractive] = React.useState(false);
+
+  useEnhancedEffect(() => {
+    if (!isRenderProp || !contentRef.current) return;
+
+    setInteractive(getFocusableIn(contentRef.current).length > 0);
+  }, []);
+
+  return (
+    <foreignObject ref={ref} aria-hidden={interactive ? undefined : true} {...propsForElement(props, 'foreignObject')}>
+      <div ref={contentRef} data-tick-content>
+        {children}
+      </div>
+    </foreignObject>
+  );
+});
+
 class AxisRoot extends Component {
   static displayName = 'Axis';
 
@@ -241,8 +266,7 @@ class AxisRoot extends Component {
     const SAxis = this.Element;
     const { styles, position, scale, hide, indexScale } = this.asProps;
 
-    const pos =
-      MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
+    const pos = MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
 
     return sstyled(styles)(<SAxis render='line' hide={hide} {...pos(scale, position)} />);
   }
@@ -266,7 +290,10 @@ function Ticks(props) {
     meta,
   } = props;
 
+  const isRenderProp = typeof children === 'function';
+
   const isXScale = indexScale === 0;
+  const axis = isXScale ? 'horizontal' : 'vertical';
 
   const [_, plotHeight] = size;
   const currentScale = scale[indexScale];
@@ -284,7 +311,7 @@ function Ticks(props) {
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TICK[position] ? position : `custom_${indexScale}`;
 
-  if (typeof children === 'function') {
+  if (isRenderProp) {
     const labelGetter = (value) => {
       const result = children({ value });
       return result.value ?? result.children;
@@ -296,16 +323,18 @@ function Ticks(props) {
     }
   }
 
-  meta.ticks.setSize(isXScale ? 'horizontal' : 'vertical', { width: tickWidth, height: tickHeight });
+  meta.setTicksSize(axis, { width: tickWidth, height: tickHeight });
+  meta.setTicksVisibility(axis, !hide);
+  meta.setTicksPosition(axis, position);
 
   return ticks.map((value, i) => {
-    const displayValue = typeof children === 'function' ? undefined : renderValue(value, locale);
+    const displayValue = isRenderProp ? undefined : renderValue(value, locale);
 
     return sstyled(styles)(
       <STick
         key={i}
         index={i}
-        render='foreignObject'
+        render={TickForeignObject}
         childrenPosition={childrenPosition}
         width={tickWidth}
         height={tickHeight}
@@ -313,6 +342,7 @@ function Ticks(props) {
         hide={hide}
         primaryText={primaryText}
         value={value}
+        isRenderProp={isRenderProp}
         __excludeProps={['data', 'scale', 'format', 'value']}
         {...pos(scale, value, position, { width: tickWidth, height: tickHeight })}
       >
@@ -334,9 +364,7 @@ function Grid(props) {
   }
 
   return ticks.map((value, i) => {
-    return sstyled(styles)(
-      <SGrid key={i} render='line' {...MAP_POSITION_GRID[indexScale](scale, value)} />,
-    );
+    return sstyled(styles)(<SGrid key={i} render='line' {...MAP_POSITION_GRID[indexScale](scale, value)} />);
   });
 }
 
