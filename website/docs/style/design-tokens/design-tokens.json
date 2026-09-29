@@ -724,8 +724,7 @@
     "value": "oklch(0.92 0.008 233.5)",
     "description": "Default background color of a bar in the BarChart.",
     "components": [
-      "d3-chart",
-      "mini-chart"
+      "d3-chart"
     ]
   },
   {
@@ -741,8 +740,7 @@
     "value": "#ffffff",
     "description": "Border for distinguishing data sets and chart dots on the chart grid.",
     "components": [
-      "d3-chart",
-      "mini-chart"
+      "d3-chart"
     ]
   },
   {
@@ -3674,7 +3672,6 @@
     "value": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
     "components": [
-      "mini-chart",
       "progress-bar",
       "slider"
     ]
