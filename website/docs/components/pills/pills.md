@@ -73,17 +73,6 @@ Table: States for adding new item case in Pills
 | Normal | ![](static/pills-add-normal.png) |
 | Hover  | ![](static/pills-add-hover.png)  |
 
-### Pills as summary
-
-In some products, pills can act as a block with shared metrics. Their differences from the default pills are:
-
-- Increased height due to content.
-- Additional controls inside, usually for adding/moving data by clicking on a link.
-
-![](static/pills-summary.png)
-
-For a live example, refer to the [Custom pills](/components/pills/pills-code#custom-pills).
-
 ## Usage in UX/UI
 
 Pills are used for:
