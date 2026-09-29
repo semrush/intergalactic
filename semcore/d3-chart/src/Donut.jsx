@@ -84,6 +84,7 @@ function transitionRadiusPie({
 }
 
 const increaseFactor = 8;
+const donutThickness = 12;
 
 function getOuterRadius({ size, halfsize }) {
   const [width, height] = size;
@@ -97,19 +98,19 @@ class DonutRoot extends Component {
   static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = ({
-    innerRadius = 0,
+    innerRadius: innerRadiusProp,
     paddingAngle = 0,
     outerRadius,
     halfsize = false,
     $rootProps: { size },
   }) => {
-    const d3Arc = arc()
-      .outerRadius(outerRadius || getOuterRadius({ size, halfsize, outerRadius }))
-      .innerRadius(innerRadius)
-      .padAngle(paddingAngle);
+    const radius = outerRadius || getOuterRadius({ size, halfsize });
+    const innerRadius = innerRadiusProp ?? Math.max(radius - donutThickness, 0);
+
+    const d3Arc = arc().outerRadius(radius).innerRadius(innerRadius).padAngle(paddingAngle);
 
     const d3ArcOut = arc()
-      .outerRadius((outerRadius || getOuterRadius({ size, halfsize })) + increaseFactor)
+      .outerRadius(radius + increaseFactor)
       .innerRadius(innerRadius)
       .padAngle(paddingAngle);
 
@@ -180,8 +181,9 @@ class DonutRoot extends Component {
   };
 
   animationActivePie = ({ data, active, selector, element }) => {
-    const { duration, innerRadius, d3Arc, paddingAngle } = this.asProps;
+    const { duration, d3Arc, paddingAngle } = this.asProps;
     const outerRadius = d3Arc.outerRadius()();
+    const innerRadius = d3Arc.innerRadius()();
     const outerRadiusStartEnd = active
       ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
       : [+element.dataset['currentRadius'] || outerRadius, outerRadius];
