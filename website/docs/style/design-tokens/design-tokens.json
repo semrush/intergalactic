@@ -712,8 +712,8 @@
     "components": []
   },
   {
-    "name": "--intergalactic-chart-grid-bar-chart-base-bg",
-    "value": "oklch(0.96 0.005 232.5)",
+    "name": "--intergalactic-chart-grid-bar-base-bg",
+    "value": "oklch(0.92 0.008 233.5)",
     "description": "Default background color of a bar in the BarChart.",
     "components": [
       "d3-chart",
@@ -721,7 +721,7 @@
     ]
   },
   {
-    "name": "--intergalactic-chart-grid-bar-chart-hover",
+    "name": "--intergalactic-chart-grid-bar-hover",
     "value": "oklch(0.375 0.09 242.7 / 0.05)",
     "description": "Background color for the hover state of a bar on the chart grid.",
     "components": [
@@ -1364,7 +1364,7 @@
   },
   {
     "name": "--intergalactic-control-select-trigger-active",
-    "value": "oklch(0.96 0.005 232.5)",
+    "value": "oklch(1 0 0)",
     "description": "Background of the Select trigger in its active state.",
     "components": [
       "base-trigger"

@@ -692,11 +692,11 @@ export const theme: Theme = {
         value: colors.yellow['200'].value,
         description: 'Color for the transactional data intent on the chart.',
       },
-      chart_grid_bar_chart_base_bg: {
-        value: neutral.at(L_BG_LIGHT),
+      chart_grid_bar_base_bg: {
+        value: neutral.at(L_BG_MEDIUM),
         description: 'Default background color of a bar in the BarChart.',
       },
-      chart_grid_bar_chart_hover: {
+      chart_grid_bar_hover: {
         value: neutral.opaqueAt(L_BG_PRIMARY_HOVER),
         description: 'Background color for the hover state of a bar on the chart grid.',
       },
@@ -1053,7 +1053,7 @@ export const theme: Theme = {
         description: 'Hover state of the regular secondary control.',
       },
       control_select_trigger_active: {
-        value: '{semanticTokens.colors.bg_primary_neutral_active}',
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Background of the Select trigger in its active state.',
       },
       control_select_trigger_hover: {
@@ -2425,6 +2425,16 @@ export const theme: Theme = {
       400: colors.blue['400'],
       500: colors.blue['500'],
     },
+    chart: {
+      grid: {
+        bar: {
+          chart: {
+            base: { bg: { value: '{semanticTokens.colors.chart_grid_bar_base_bg}' } },
+            hover: { value: '{semanticTokens.colors.chart_grid_bar_hover}' },
+          },
+        },
+      },
+    },
     table: { td: { cell: { actions: { accordion: { value: '{semanticTokens.colors.table_td_cell_accordion}' } } } } },
     keyboard: { focus: { outline: { invert: { value: '{semanticTokens.colors.keyboard_focus_invert_outline}' } } } },
     border: {
@@ -3454,11 +3464,9 @@ type SemanticColors = {
         };
       };
       bar: {
-        chart: {
-          hover: Value;
-          base: {
-            bg: Value;
-          };
+        hover: Value;
+        base: {
+          bg: Value;
         };
       };
       period: {
@@ -3665,6 +3673,16 @@ type Deprecates = {
   fs: { 50: Value };
   violet: { 400: Value; 500: Value };
   blue: { 400: Value; 500: Value };
+  chart: {
+    grid: {
+      bar: {
+        chart: {
+          base: { bg: Value };
+          hover: Value;
+        };
+      };
+    };
+  };
   table: { td: { cell: { actions: { accordion: Value } } } };
   keyboard: { focus: { outline: { invert: Value } } };
   border: {

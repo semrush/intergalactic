@@ -868,6 +868,14 @@
     "value": "oklch(0.53 0.157 279.2)"
   },
   {
+    "name": "--intergalactic-chart-grid-bar-chart-base-bg",
+    "value": "oklch(0.92 0.008 233.5)"
+  },
+  {
+    "name": "--intergalactic-chart-grid-bar-chart-hover",
+    "value": "oklch(0.375 0.09 242.7 / 0.05)"
+  },
+  {
     "name": "--intergalactic-table-td-cell-actions-accordion",
     "value": "oklch(1 0 0)"
   },

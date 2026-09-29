@@ -70,7 +70,7 @@ SWrapper {
   &[empty]:active,
   &[empty][active],
   &[empty]:has(STrigger:focus-visible) {
-    background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.005 232.5));
+    background-color: var(--intergalactic-control-select-trigger-active, oklch(1 0 0));
 
     STrigger {
       background: var(--intergalactic-control-select-trigger-normal, oklch(1 0 0));
@@ -94,7 +94,7 @@ SWrapper {
     border: none;
 
     &[active], &:active {
-      background-color: var(--intergalactic-control-select-trigger-active, oklch(0.96 0.005 232.5));
+      background-color: var(--intergalactic-control-select-trigger-active, oklch(1 0 0));
     }
   }
 }
