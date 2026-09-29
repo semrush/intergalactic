@@ -330,7 +330,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   variantLastRowBorder.forEach((item) => {
     test(`Verify bottom border of the last row cells when variant=${item.variant}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@data-table'],
+        '@data-table',
+        '@d3-chart',
+        '@line-chart',
+        '@responsive'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: item.variant });
 
@@ -356,7 +359,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify the last row cells get the bottom border back when its accordion is expanded in the card variant', {
     tag: [TAG.PRIORITY_HIGH,
       '@data-table',
-      '@d3-chart'],
+      '@d3-chart',
+      '@line-chart',
+      '@responsive'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/advanced/examples/accordion_with_checkbox.tsx', 'en', { variant: 'card' });
 

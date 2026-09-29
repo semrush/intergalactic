@@ -37,7 +37,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@base-components',
 
       '@counter',
-      '@badge'],
+      '@badge',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en');
 
@@ -79,7 +80,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       '@base-components',
 
       '@counter',
-      '@badge'],
+      '@badge',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { disabled: true });
 
@@ -119,7 +121,8 @@ test.describe(`${TAG.VISUAL} `, () => {
         '@ellipsis',
         '@hint',
         '@counter',
-        '@badge'],
+        '@badge',
+        '@typography'],
     }, async ({ page }) => {
       const focusedHintText = 'Facebook';
       const hoveredHintText = 'Instagram Instagram';
@@ -245,7 +248,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify manual tabs activation by keyboard', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@tab-panel'],
+      '@tab-panel',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
@@ -279,7 +285,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify manual tabs activation by mouse', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@tab-panel'],
+      '@tab-panel',
+      '@badge',
+      '@counter',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { behavior: 'manual' });
 
@@ -329,7 +338,8 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
       '@base-components',
 
       '@counter',
-      '@badge'],
+      '@badge',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/tab-panel/tests/examples/tab_panel_item_addons_and_props.tsx', 'en', { behavior: 'auto' });
 

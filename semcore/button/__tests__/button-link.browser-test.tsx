@@ -89,7 +89,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
       if (merged) descParts.push('merged');
 
       test(`Verify ButtonLink size=${size}, ${descParts.join(', ')}, ${ellipsisDesc}`, {
-        tag: [TAG.PRIORITY_HIGH, '@button-link', '@ellipsis', '@badge', '@counter', '@spin', '@typography'],
+        tag: [TAG.PRIORITY_HIGH, '@button-link', '@ellipsis', '@badge', '@counter', '@spin', '@typography',
+          '@button'],
       }, async ({ page }) => {
         await loadPage(page, storyPath, 'en', {
           size, ...addonVars, text: longText, ...ellipsisVars, ...extraVars,
@@ -140,7 +141,10 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   // Section 2: Residual tests - disabled, loading, mixed addon types
   test('Verify ButtonLink: disabled with counter addon', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@counter', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@button-link', '@counter', '@typography',
+      '@button',
+      '@badge',
+      '@spin'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 300, disabled: true, showAddonLeft: true, addonLeftType: 'counter',
@@ -150,7 +154,11 @@ test.describe(` ${TAG.VISUAL}`, () => {
   });
 
   test('Verify ButtonLink: disabled+active with success and addons', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@button-link', '@typography',
+      '@button',
+      '@badge',
+      '@counter',
+      '@spin'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 300, disabled: true, active: true, showAddonLeft: true, showAddonRight: true,
@@ -161,7 +169,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
   });
 
   test('Verify ButtonLink: mixed addon types', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@badge', '@counter', '@spin', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@button-link', '@badge', '@counter', '@spin', '@typography',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       size: 300, showAddonLeft: true, addonLeftType: 'badge',
@@ -195,7 +204,12 @@ test.describe(` ${TAG.VISUAL}`, () => {
     noHintSizes.forEach((size) => {
       noHintVariants.forEach(({ desc, vars, text }) => {
         test(`Verify no hint appears: size=${size}, ${desc}`, {
-          tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@button-link'],
+          tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, TAG.KEYBOARD, '@ellipsis', '@button-link',
+            '@button',
+            '@badge',
+            '@counter',
+            '@spin',
+            '@typography'],
         }, async ({ page }) => {
           await loadPage(page, storyPath, 'en', { ...vars, size, text });
           await page.waitForTimeout(100);
@@ -221,7 +235,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   // Section 4: Icon-only ButtonLink
   test('Verify ButtonLink: icon-only with hint', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, iconOnlyPath, 'en', { use: 'primary' });
     await locators.button(page).first().waitFor({ state: 'visible' });
@@ -241,7 +256,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
   });
 
   test('Verify ButtonLink: icon-only disabled', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box'],
+    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, iconOnlyPath, 'en', { disabled: true, size: 300 });
     await locators.button(page).first().waitFor({ state: 'visible' });
@@ -250,7 +266,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
 
   // Section 5: In-text
   test('Verify ButtonLink inside text', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box', '@typography',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, inTextPath, 'en', { size: 300 });
 
@@ -262,7 +279,8 @@ test.describe(` ${TAG.VISUAL}`, () => {
   });
 
   test('Verify ButtonLink inside text disabled', {
-    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box', '@typography'],
+    tag: [TAG.PRIORITY_HIGH, '@button-link', '@base-components', '@flex-box', '@typography',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, inTextPath, 'en', { size: 300, disabled: true });
     await expect(page).toHaveScreenshot();
@@ -275,7 +293,12 @@ Keyboard and mouse interactions — no snapshots here.
 ===================================================== */
 test.describe(`@button-link ${TAG.FUNCTIONAL}`, () => {
   test('Verify hint shown on focus and hover with ellipsis', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@ellipsis', '@button-link'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, TAG.MOUSE, '@ellipsis', '@button-link',
+      '@button',
+      '@badge',
+      '@counter',
+      '@spin',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', {
       ellipsis: { 'ellipsis:cropPosition': 'middle' }, size: 300,
@@ -311,7 +334,12 @@ test.describe(`@button-link ${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify disabled ButtonLink cannot be focused', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@button-link'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@button-link',
+      '@button',
+      '@badge',
+      '@counter',
+      '@spin',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, storyPath, 'en', { disabled: true });
 

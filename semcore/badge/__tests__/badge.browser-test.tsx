@@ -9,7 +9,9 @@ Visual states, hover and focus styles, paddings, margins, and snapshots.
 test.describe(`${TAG.VISUAL}`, () => {
   test(`Verify all main types, invert and light styles`, {
     tag: [TAG.PRIORITY_HIGH,
-      '@badge'],
+      '@badge',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/badge/docs/examples/badge_main_types.tsx', 'en');
     await expect(page).toHaveScreenshot();
@@ -17,7 +19,11 @@ test.describe(`${TAG.VISUAL}`, () => {
 
   test(`Verify localizations`, {
     tag: [TAG.PRIORITY_HIGH,
-      '@badge'],
+      '@badge',
+      '@base-components',
+      '@flex-box',
+      '@select',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/badge/tests/examples/badge_i18n_example.tsx', 'en');
     await page.keyboard.press('Tab');
