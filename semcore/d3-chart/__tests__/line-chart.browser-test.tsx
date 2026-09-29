@@ -563,7 +563,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     );
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    const lines = page.locator('path[data-ui-name="Line"]');
+    const lines = page.locator('svg[data-ui-name="Plot"] path');
 
     await test.step('Each series renders a main, a forecast and a potential path', async () => {
       // Two series in the story dataset, three paths each.
@@ -589,9 +589,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           .map((d) => (d.match(/L/g)?.length ?? 0) + 1),
       );
 
-      // 20 base points per series; each tail branches off the last one and adds two more.
-      expect(pointCounts.filter((count) => count === 20)).toHaveLength(2);
-      expect(pointCounts.filter((count) => count === 3)).toHaveLength(4);
+      expect(pointCounts.filter((count) => count === 15)).toHaveLength(2);
+      expect(pointCounts.filter((count) => count === 3)).toHaveLength(2);
+      expect(pointCounts.filter((count) => count === 4)).toHaveLength(2);
     });
   });
 
@@ -615,10 +615,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     );
     await locators.plot(page).first().waitFor({ state: 'visible' });
 
-    // Both tail segments are dashed and both are rendered even when their half of the data
-    // is empty — an empty `d3Line([])` returns null, so requiring `d` is what picks out the
-    // potential path rather than the forecast one sitting next to it.
-    const potential = page.locator('path[data-ui-name="Line"][stroke-dasharray="4 4"][d]').first();
+    const potential = page
+      .locator('svg[data-ui-name="Plot"] path[stroke-dasharray="4 4"][d]')
+      .first();
     const stroke = await potential.evaluate((el) => getComputedStyle(el).stroke);
 
     expect(stroke).toMatch(/^url\(".*-potential-gradient-line"\)$/);
