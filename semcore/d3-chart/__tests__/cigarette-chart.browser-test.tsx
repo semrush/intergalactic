@@ -175,7 +175,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify empty state', {
-    tag: [TAG.PRIORITY_MEDIUM, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_MEDIUM, '@cigarette-chart', '@d3-chart',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await test.step('Verify horizontal empty state', async () => {
       await loadPage(
@@ -212,7 +214,9 @@ We verify states, visibility, and attributes.
 ===================================================== */
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify custom tooltip title', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     const tooltipTitle = 'Custom cigarette tooltip title';
 
@@ -332,7 +336,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify zero value not in DOM', {
-    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, '@cigarette-chart', '@d3-chart', '@base-components', '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,
@@ -347,7 +351,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify empty state when all values are zero', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@cigarette-chart', '@d3-chart',
+      '@base-components',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(
       page,

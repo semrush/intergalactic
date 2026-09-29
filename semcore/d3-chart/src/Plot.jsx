@@ -44,8 +44,10 @@ class PlotRoot extends Component {
       const [minX, maxX] = xScale.range();
       const [maxY, minY] = yScale.range();
 
-      if (pX >= minX && pX <= maxX && pY >= minY && pY <= maxY) {
-        this.eventEmitter.emit('onMouseMoveChart', e, this.rootRef.current);
+      if (pX >= minX && pX <= maxX && pY >= minY) {
+        const isTickUnder = pY >= maxY;
+
+        this.eventEmitter.emit('onMouseMoveChart', e, this.rootRef.current, isTickUnder);
       } else {
         this.eventEmitter.emit('onMouseLeaveChart', e);
       }
@@ -77,6 +79,7 @@ class PlotRoot extends Component {
         eventEmitter: this.eventEmitter,
         rootRef: this.rootRef,
         dataHintsHandler: this.dataHintsHandler,
+        dataHints: this.dataStructureHints,
         resolveColor,
         patterns,
         duration,

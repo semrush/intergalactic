@@ -6,7 +6,7 @@ const Demo = () => {
     <DataTable
       data={data}
       use='secondary'
-      sort={['kd', 'desc']}
+      sort={['kd', 'asc']}
       aria-label='Secondary'
       columns={[
         { name: 'keyword', children: 'Keyword' },
@@ -20,10 +20,10 @@ const Demo = () => {
 
 const data = [
   {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
+    keyword: 'www.ebay.com',
+    kd: '10',
+    cpc: '$0.65',
+    vol: '47,354,640',
   },
   {
     keyword: 'www.ebay.com',
@@ -32,22 +32,22 @@ const data = [
     vol: '65,457,920',
   },
   {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
+    keyword: 'ebay buy',
+    kd: '75.89',
+    cpc: '$0',
+    vol: '21,644,290',
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '77.8',
+    cpc: '$1.25',
+    vol: '32,500,000',
   },
   {
     keyword: 'ebay buy',
     kd: '-',
     cpc: '$0',
     vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
   },
 ];
 

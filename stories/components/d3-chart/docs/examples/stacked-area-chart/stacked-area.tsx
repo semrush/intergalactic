@@ -52,15 +52,15 @@ const Demo = () => {
                   })}
                 </HoverLine.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverLine.Tooltip.Dot mr={4}>Stack 1</HoverLine.Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot color='chart-palette-order-1' mr={4}>Stack 1</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverLine.Tooltip.Dot mr={4}>Stack 2</HoverLine.Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot color='chart-palette-order-2' mr={4}>Stack 2</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverLine.Tooltip.Dot mr={4}>Stack 3</HoverLine.Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot color='chart-palette-order-3' mr={4}>Stack 3</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack3}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>

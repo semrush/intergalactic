@@ -31,6 +31,7 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
     showYAxis: false,
     showTooltip: true,
     showLegend: false,
+    locale: 'en',
   } as const;
 
   static enhance = [i18nEnhance(localizedMessages)] as const;

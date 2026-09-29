@@ -38,11 +38,11 @@ const Demo = () => {
               <>
                 <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4}>Positive</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='blue-400' mr={4}>Positive</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar1}</Text>
                 </Flex>
                 <Flex justifyContent='space-between' mt={2}>
-                  <HoverRect.Tooltip.Dot mr={4}>Negative</HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot color='red-300' mr={4}>Negative</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar2}</Text>
                 </Flex>
               </>

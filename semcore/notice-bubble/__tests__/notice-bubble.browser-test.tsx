@@ -22,7 +22,9 @@ export const locators = {
 test.describe(`${TAG.FUNCTIONAL}`, () => {
   test('Verify Notice with interactive inside keyboard interactions when focusLock = undefined',
     {
-      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+      tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
+        '@button',
+        '@link'],
     },
     async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
@@ -117,7 +119,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
 
   test('Verify Notice with interactive inside keyboard interactions when focusLock = true', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       focusLock: true,
@@ -174,7 +178,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Notice with interactive inside mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       focusLock: false,
@@ -203,7 +209,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Notice without interactive with duration keyboard interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: true,
@@ -237,7 +246,10 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Notice without interactive with duration mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: false,
@@ -285,7 +297,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify auto-close timer pauses on keyboard focus and resumes on blur', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       initialAnimation: false,
@@ -317,7 +331,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify timer stays paused on mouse leave while keyboard focus is inside the notice', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, TAG.KEYBOARD, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       initialAnimation: false,
@@ -350,7 +366,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Replace last notice by keyboard', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx', 'en', {
       initialAnimation: false,
@@ -372,7 +389,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify Replace last notice by mouse', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx', 'en', {
       initialAnimation: true,
@@ -395,7 +413,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify multiple managers work with same SM2 container - mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
       initialAnimation: false,
@@ -428,7 +448,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify replace last notice in SM2 container without initial animation - mouse interactions', {
-    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
       initialAnimation: false,
@@ -468,7 +490,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify multiple managers keyboard interactions in SM2 container', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
       initialAnimation: false,
@@ -501,7 +525,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
   });
 
   test('Verify notices disappear in SM2 container aftre duration is passed', {
-    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
       initialAnimation: false,
@@ -543,7 +569,9 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
  */
 test.describe(`${TAG.VISUAL}`, () => {
   test('Verify Basic notice', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx', 'en', {
       initialAnimation: true,
@@ -569,7 +597,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Notice with Undo action', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/undo_action.tsx', 'en', {
       initialAnimation: true,
@@ -597,7 +627,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Notice not in portal', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx', 'en', {
       initialAnimation: true,
@@ -616,7 +648,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Notice with Reload action', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/reload_action.tsx', 'en', {
       initialAnimation: true,
@@ -640,7 +673,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Notice with Completion state', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/completion_state.tsx', 'en', {
       initialAnimation: true,
@@ -658,7 +694,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Notice with Success state', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx', 'en', {
       initialAnimation: true,
@@ -674,7 +711,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Notice with Failture state', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button'],
   }, async ({ page, browserName }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/failure_notice.tsx', 'en', {
       initialAnimation: true,
@@ -692,7 +730,11 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Notice with Loading state', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@spin'],
   }, async ({ page, browserName }) => {
     test.setTimeout(60000);
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx', 'en', {
@@ -719,7 +761,10 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify notice with illustration', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@base-components',
+      '@button',
+      '@flex-box'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx', 'en', {
       initialAnimation: true,
@@ -738,7 +783,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Warning notice without interactive element', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button',
+      '@spin'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/no_connection_notice.tsx', 'en', {
       initialAnimation: true,
@@ -754,7 +801,8 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify Warning notice with interactive element', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/no_connection_notice_with_action.tsx', 'en', {
       initialAnimation: true,
@@ -773,7 +821,9 @@ test.describe(`${TAG.VISUAL}`, () => {
   });
 
   test('Verify notice bubble in SM2 container', {
-    tag: [TAG.PRIORITY_HIGH, '@notice-bubble'],
+    tag: [TAG.PRIORITY_HIGH, '@notice-bubble',
+      '@button',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/notice-bubble/docs/examples/notice_in_sm2.tsx', 'en', {
       initialAnimation: true,

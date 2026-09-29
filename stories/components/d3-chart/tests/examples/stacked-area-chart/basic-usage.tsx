@@ -6,21 +6,18 @@ import React from 'react';
 import StackedAreaMockData from '../../../__mocks__/stacked-area';
 import { getChartProps, getPropsToChart } from '../stories_props_helper';
 
-const formatDate = (type: 'axis' | 'tooltip') => (value: any) => {
-  const options =
-    type === 'axis'
-      ? {
-          month: 'short' as const,
-          day: 'numeric' as const,
-        }
-      : {
-          year: 'numeric' as const,
-          month: 'long' as const,
-          day: 'numeric' as const,
-        };
-
-  return new Intl.DateTimeFormat('en', options).format(value);
-};
+/**
+ * Only the X axis carries dates. The tooltip title is rendered by the built-in formatter
+ * from the `Date` group key, and the tooltip *values* are the numbers of each stack, so
+ * `tooltipValueFormatter` must never be handed a date formatter: `Intl.DateTimeFormat`
+ * reads a plain number as a millisecond timestamp and turns every value into
+ * "January 1, 1970".
+ */
+const formatAxisDate = (value: any) =>
+  new Intl.DateTimeFormat('en', {
+    month: 'short',
+    day: 'numeric',
+  }).format(value);
 
 const Demo = (props: AreaChartProps) => {
   const { plotWidth, plotHeight, ...chartProps } = getPropsToChart(props);
@@ -36,8 +33,7 @@ const Demo = (props: AreaChartProps) => {
     >
       <Chart.Area
         {...chartProps}
-        tooltipValueFormatter={formatDate('tooltip')}
-        axisXValueFormatter={formatDate('axis')}
+        axisXValueFormatter={formatAxisDate}
         aria-label='Stacked area chart'
       />
     </Box>

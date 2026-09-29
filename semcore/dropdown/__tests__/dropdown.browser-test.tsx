@@ -43,7 +43,12 @@ test.describe(`${TAG.VISUAL} `, () => {
   variables.forEach((item) => {
     test(`Verify Dropdown when placement=${item.placement} and stretch=${item.stretch}`, {
       tag: [TAG.PRIORITY_HIGH,
-        '@dropdown'],
+        '@dropdown',
+        '@base-components',
+        '@button',
+        '@flex-box',
+        '@tooltip',
+        '@typography'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', item);
       await page.keyboard.press('Tab');
@@ -56,7 +61,12 @@ test.describe(`${TAG.VISUAL} `, () => {
 
   test(`Verify Dropdown with offSet`, {
     tag: [TAG.PRIORITY_HIGH,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { offset: 100 });
     await page.keyboard.press('Tab');
@@ -76,7 +86,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard interactios when interaction undefined', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/docs/examples/basic_usage.tsx', 'en');
 
@@ -115,7 +127,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify mouse interactios when interaction undefined', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/docs/examples/basic_usage.tsx', 'en');
 
@@ -141,7 +155,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify keyboard interaction when interaction = focus', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/docs/examples/focus_interaction.tsx', 'en');
 
@@ -172,7 +188,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify mouse interaction  when interaction = focus', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@button',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/docs/examples/focus_interaction.tsx', 'en');
 
@@ -194,7 +212,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { interaction: 'hover' });
 
@@ -226,7 +249,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { interaction: 'click' });
 
@@ -273,7 +301,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { interaction: 'none' });
 
@@ -298,7 +331,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { visible: false });
 
@@ -322,7 +360,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify dropdown when visible = true', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { visible: true });
 
@@ -340,7 +383,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { defaultVisible: true });
 
@@ -365,7 +413,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
       TAG.MOUSE,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { disableEnforceFocus: true });
 
@@ -405,7 +458,12 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify dropdown when focusLoop = true', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@base-components',
+      '@button',
+      '@flex-box',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/example-with-props.tsx', 'en', { focusLoop: true });
 
@@ -428,7 +486,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify dropdown when disableEnforceFocus=false and autoFocus =true', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@button',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/disable-enforce-focus-and-auto-focus.tsx', 'en', { autoFocus: true, disableEnforceFocus: false });
 
@@ -452,7 +513,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify dropdown when disableEnforceFocus=true and autoFocus =true', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@button',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/disable-enforce-focus-and-auto-focus.tsx', 'en', { autoFocus: true, disableEnforceFocus: true });
 
@@ -476,7 +540,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify dropdown when disableEnforceFocus=false and autoFocus =false', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@button',
+      '@tooltip',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/disable-enforce-focus-and-auto-focus.tsx', 'en', { autoFocus: false, disableEnforceFocus: false });
 
@@ -500,7 +567,9 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify dropdown keyboard interactions when trigger is input and Dropdown.Item inside', {
     tag: [TAG.PRIORITY_MEDIUM,
       TAG.KEYBOARD,
-      '@dropdown'],
+      '@dropdown',
+      '@input',
+      '@link'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/dropdown/tests/examples/input-as-trigger.tsx', 'en');
 

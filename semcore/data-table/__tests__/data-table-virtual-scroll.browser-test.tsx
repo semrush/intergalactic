@@ -148,7 +148,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.KEYBOARD,
       '@data-table',
       '@d3-chart',
-    ],
+      '@line-chart',
+      '@responsive'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx', 'en');
 
@@ -193,7 +194,8 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       TAG.MOUSE,
       '@data-table',
       '@d3-chart',
-    ],
+      '@line-chart',
+      '@responsive'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/data-table/tests/examples/virtualization/accordion-inside-table.tsx', 'en');
 

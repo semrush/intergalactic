@@ -34,7 +34,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Ellipsis in Text with trimType = ${item.trim} maxLine=${item.maxLine} and tooltip=${item.tooltip}`, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@ellipsis'],
+        '@ellipsis',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/ellipsis/docs/examples/advanced_use.tsx', 'en', item);
 
@@ -55,7 +57,9 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@ellipsis',
-        '@link'],
+        '@link',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page, browserName }) => {
       await loadPage(page, 'stories/components/ellipsis/docs/examples/basic_usage.tsx', 'en', item);
 
@@ -86,7 +90,9 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Ellipsis position with cursor anchoring with trimType = ${item.trim} `, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@ellipsis'],
+        '@ellipsis',
+        '@base-components',
+        '@flex-box'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/ellipsis/docs/examples/tooltip-cursor-anchoring.tsx', 'en', item);
 
@@ -103,7 +109,8 @@ test.describe(`${TAG.VISUAL} `, () => {
     test(`Verify Ellipsis in table cell with Text and trimType = ${item.trim} `, {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
-        '@ellipsis'],
+        '@ellipsis',
+        '@data-table'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/ellipsis/docs/examples/multiple_use.tsx', 'en', item);
 
@@ -123,7 +130,8 @@ test.describe(`${TAG.VISUAL} `, () => {
       tag: [TAG.PRIORITY_HIGH,
         TAG.MOUSE,
         '@ellipsis',
-        '@data-table'],
+        '@data-table',
+        '@link'],
     }, async ({ page }) => {
       await loadPage(page, 'stories/components/ellipsis/test/examples/in_table_with_link.tsx', 'en', item);
 
@@ -167,7 +175,10 @@ test.describe(`${TAG.FUNCTIONAL} `, () => {
   test('Verify multiple tags in one component', {
     tag: [TAG.PRIORITY_HIGH,
       TAG.MOUSE,
-      '@ellipsis'],
+      '@ellipsis',
+      '@base-components',
+      '@flex-box',
+      '@typography'],
   }, async ({ page }) => {
     await loadPage(page, 'stories/components/ellipsis/test/examples/multiple_tags_in_one_components.tsx', 'en');
 

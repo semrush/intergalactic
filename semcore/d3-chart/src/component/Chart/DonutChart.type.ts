@@ -11,7 +11,7 @@ export type DonutChartData = Record<DataKey, number>;
 
 export type DonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<DonutChartData>,
-  'showTotalInTooltip'
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
 > & {
   /** Internal */
   groupKey?: never;
@@ -35,6 +35,7 @@ export type DonutChartDefaultProps = {
   innerRadius: 100;
   marginX: 0;
   marginY: 0;
+  locale: 'en';
 };
 
 export type DonutChartType = Intergalactic.Component<typeof Flex, DonutChartProps>;
