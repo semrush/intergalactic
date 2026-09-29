@@ -98,7 +98,7 @@ class LineRoot extends Component {
   }
 
   renderForecast() {
-    const SLine = this.Element;
+    const SLine = SvgElement;
     const {
       styles,
       hide,
@@ -117,7 +117,7 @@ class LineRoot extends Component {
         <SLine
           aria-hidden
           clipPath={`url(#${uid})`}
-          render='path'
+          tag='path'
           hide={hide}
           color={resolveColor(color)}
           transparent={transparent}
@@ -134,7 +134,7 @@ class LineRoot extends Component {
   }
 
   renderPotential() {
-    const SLine = this.Element;
+    const SLine = SvgElement;
     const {
       styles,
       hide,
@@ -151,7 +151,7 @@ class LineRoot extends Component {
         <SLine
           aria-hidden
           clipPath={`url(#${uid})`}
-          render='path'
+          tag='path'
           hide={hide}
           color={`url(#${uid}-potential-gradient-line)`}
           transparent={transparent}
