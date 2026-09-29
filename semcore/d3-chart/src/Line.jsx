@@ -20,6 +20,7 @@ import {
   getChartDefaultColorName,
   eventToPoint,
   invert,
+  getDataOfType,
 } from './utils';
 
 class LineRoot extends Component {
@@ -104,13 +105,12 @@ class LineRoot extends Component {
       color,
       resolveColor,
       uid,
-      size,
       d3,
       duration,
       y,
       transparent,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === FORECAST);
+    const data = getDataOfType(this.asProps.data, FORECAST, y);
 
     return sstyled(styles)(
       <>
@@ -139,14 +139,12 @@ class LineRoot extends Component {
       styles,
       hide,
       uid,
-      size,
       d3,
       duration,
       y,
       transparent,
-      patterns,
     } = this.asProps;
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] === POTENTIAL);
+    const data = getDataOfType(this.asProps.data, POTENTIAL, y);
 
     return sstyled(styles)(
       <>

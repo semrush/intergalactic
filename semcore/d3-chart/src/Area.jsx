@@ -25,31 +25,8 @@ import {
   interpolateValue,
   eventToPoint,
   invert,
+  getDataOfType,
 } from './utils';
-
-function getDataOfType(data, type, y) {
-  const result = [];
-  let prevPoint = null;
-  let insideRun = false;
-
-  data.forEach((item) => {
-    const valid = item[y] !== interpolateValue;
-
-    if (valid && item[DATA_TYPE] === type) {
-      if (!insideRun && prevPoint !== null) result.push(prevPoint);
-
-      result.push(item);
-
-      insideRun = true;
-    } else {
-      insideRun = false;
-    }
-
-    if (valid) prevPoint = item;
-  });
-
-  return result;
-}
 
 class AreaRoot extends Component {
   static displayName = 'Area';
@@ -188,7 +165,6 @@ class AreaRoot extends Component {
       d3,
       d3Line,
       uid,
-      size,
       duration,
       y,
       transparent,
