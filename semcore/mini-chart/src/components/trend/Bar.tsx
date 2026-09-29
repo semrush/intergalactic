@@ -9,6 +9,7 @@ import { Trend } from './Trend';
 import style from '../../styles/skeleton.shadow.css';
 import type { NSMiniChart } from '../../types';
 
+const TOP_RADIUS = 1;
 class TrendBarRoot extends Trend<
   Intergalactic.InternalTypings.InferComponentProps<NSMiniChart.Trend.Bar.Component>,
   typeof TrendBarRoot.enhance,
@@ -58,23 +59,22 @@ class TrendBarRoot extends Trend<
               color = resolveColor(barItem.color);
             }
 
+            const x = step * index;
+            const y = this.defaultHeight - barItem.value;
+            const width = isHistogram ? step : step * 0.8;
+            const height = barItem.value;
+            const r = Math.max(0, Math.min(TOP_RADIUS, width / 2, height));
+
             return (
-              <rect
+              <path
                 key={index}
-                x={step * index}
-                y={this.defaultHeight - barItem.value}
-                width={isHistogram ? step : step * 0.8}
-                height={barItem.value}
+                d={`M${x},${y + height} V${y + r} A${r},${r} 0 0 1 ${x + r},${y} H${x + width - r} A${r},${r} 0 0 1 ${x + width},${y + r} V${y + height} Z`}
                 fill={color}
               >
                 {animate && !loading && (
-                  <animate
-                    attributeName='y'
-                    values={`${this.defaultHeight};${this.defaultHeight - barItem.value}`}
-                    dur='500ms'
-                  />
+                  <animateTransform attributeName='transform' type='translate' values={`0 ${height};0 0`} dur='500ms' />
                 )}
-              </rect>
+              </path>
             );
           })}
         </svg>
@@ -88,10 +88,7 @@ class TrendBarRoot extends Trend<
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendBar = createComponent<
-  NSMiniChart.Trend.Bar.Component,
-  typeof TrendBarRoot
->(TrendBarRoot);
+export const TrendBar = createComponent<NSMiniChart.Trend.Bar.Component, typeof TrendBarRoot>(TrendBarRoot);
 
 TrendBar.displayName = 'MiniChart.TrendBar';
 
@@ -100,10 +97,7 @@ TrendBar.displayName = 'MiniChart.TrendBar';
  *
  * {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-api#trend-charts|API} | {@link https://developer.semrush.com/intergalactic/data-display/mini-chart/mini-chart-code|Examples}
  */
-export const TrendHistogram = createComponent<
-  NSMiniChart.Trend.Bar.Component,
-  typeof TrendBarRoot
->(
+export const TrendHistogram = createComponent<NSMiniChart.Trend.Bar.Component, typeof TrendBarRoot>(
   TrendBarRoot,
   {},
   {
