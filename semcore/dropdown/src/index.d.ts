@@ -7,7 +7,7 @@ declare namespace NSDropdown {
 
   namespace Notice {
     type Props = NSNotice.Props & {
-      title: React.ReactNode;
+      title?: React.ReactNode;
     };
 
     type Component = Intergalactic.Component<'div', Props> & {
