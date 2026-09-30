@@ -6,24 +6,19 @@ SHighlightedButton[theme='primary-highlighted'] {
     color: var(--intergalactic-brand-tertiary, oklch(0.82 0.15 170));
   }
 
-  &:hover {
-    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-primary-info-hover, oklch(0.32 0.007 140));
-  }
-
-  &:active,
-  &[active] {
-    color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-color: var(--intergalactic-control-primary-info-active, oklch(0 0 140));
-  }
-
   &:focus-visible {
-    outline: none;
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
+    outline-width: 3px;
   }
 }
 
 SHighlightedButton[theme='secondary-highlighted'] {
-  color: var(--intergalactic-text-primary-feature-highlight, undefined);
+  color: var(--intergalactic-feature-highlight-text, oklch(0.1 0.03 137 / 0.899));
+
+  &:focus-visible {
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
+    outline-width: 3px;
+  }
 
   background-color: var(--intergalactic-feature-highlight-control-secondary, oklch(0.166 0.031 175.8 / 0.097));
 
@@ -35,37 +30,10 @@ SHighlightedButton[theme='secondary-highlighted'] {
   &[active] {
     background-color: var(--intergalactic-feature-highlight-control-secondary-active, oklch(0.145 0.027 176.1 / 0.135));
   }
-
-  &:focus-visible {
-    outline: none;
-  }
 }
 
 SHighlightedButton {
   position: relative;
-  /* isolation: isolate; */
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: -5px;
-    padding: 2px;
-    border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
-
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-
-    opacity: 0;
-    transform: scale(0.96);
-
-    transition:
-      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
-  }
 
   &[neighborLocation='left']::before {
     border-top-left-radius: 0;
@@ -79,24 +47,5 @@ SHighlightedButton {
 
   &[neighborLocation='both']::before {
     border-radius: 0;
-  }
-}
-
-SHighlightedButton:focus-visible::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Firefox fallback */
-@supports not (-webkit-mask-composite: xor) {
-  SHighlightedButton:focus-visible {
-    outline: none;
-    box-shadow:
-      0 0 0 2px #ffffff,
-      0 0 0 4px #59ddaa;
-  }
-
-  SHighlightedButton:focus-visible::before {
-    display: none;
   }
 }

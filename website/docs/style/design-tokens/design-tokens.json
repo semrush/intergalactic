@@ -1238,8 +1238,7 @@
     "value": "oklch(0 0 140)",
     "description": "Active (selected) state of the regular primary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -1247,8 +1246,7 @@
     "value": "oklch(0.32 0.007 140)",
     "description": "Hover state of the regular primary control.",
     "components": [
-      "button",
-      "feature-highlight"
+      "button"
     ]
   },
   {
@@ -3874,7 +3872,6 @@
       "bulk-textarea",
       "button",
       "dropdown-menu",
-      "feature-highlight",
       "inline-edit",
       "inline-input",
       "input",
@@ -4147,24 +4144,12 @@
     ]
   },
   {
-    "name": "--intergalactic-feature-highlight-control-checkbox-bg-selected",
-    "value": "oklch(0.82 0.15 170)",
-    "description": "Background color of the checked Checkbox of highlighted features.",
-    "components": [
-      "feature-highlight"
-    ]
-  },
-  {
-    "name": "--intergalactic-feature-highlight-control-checkbox-mark-selected",
-    "value": "oklch(0.23 0.01 140)",
-    "description": "Color for the Mark of the checked Checkbox of highlighted features.",
-    "components": []
-  },
-  {
     "name": "--intergalactic-feature-highlight-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text for highlighted features.",
-    "components": []
+    "components": [
+      "feature-highlight"
+    ]
   },
   {
     "name": "--intergalactic-feature-highlight-text-hover-active",

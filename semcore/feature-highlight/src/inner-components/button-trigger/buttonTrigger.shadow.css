@@ -1,67 +1,12 @@
 SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
-  border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-  z-index: 1;
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: -5px;
-    padding: 2px;
-    border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
-    background-color: transparent;
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-    opacity: 0;
-    transform: scale(0.96);
-    pointer-events: none;
-    transition:
-      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  &:focus-visible {
+    border: 1px solid var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
+    outline-width: 3px;
   }
 
   &:active,
   &[active] {
     border-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
-  }
-
-  &:focus-visible {
-    outline: none;
-    border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-
-    &::before {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  &[neighborLocation='left']::before {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  &[neighborLocation='right']::before {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  &[neighborLocation='both']::before {
-    border-radius: 0;
-  }
-}
-
-/* Firefox fallback */
-@supports not (-webkit-mask-composite: xor) {
-  SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]):focus-visible {
-    outline: none;
-    box-shadow:
-      0 0 0 2px #ffffff,
-      0 0 0 4px #59ddaa;
-  }
-
-  SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]):focus-visible::before {
-    display: none;
   }
 }
