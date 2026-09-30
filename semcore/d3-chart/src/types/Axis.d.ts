@@ -7,7 +7,7 @@ import type { IntergalacticD3Component } from './Plot';
 export interface IXAxisProps extends XAxisProps, UnknownProperties {}
 export type XAxisProps = Context & {
   /** The position of the axis relative chart
-   * @default 'button' */
+   * @default 'bottom' */
   position?: 'top' | 'right' | 'bottom' | 'left' | number;
   /** Element hide property
    * @default false */
@@ -38,7 +38,8 @@ export type AxisTicksProps = Context & {
   hide?: boolean;
   /** Values for axis ticks */
   ticks?: any[];
-  /** Enables multiline tick labels, applicable only for band scales  */
+  /** Enables multiline tick labels, applicable only for band scales */
+  /** @deprecated has no effect since v.18 */
   multiline?: boolean;
   /**
    * Enable `--intergalactic-text-primary` color for ticks

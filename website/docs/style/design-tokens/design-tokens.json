@@ -529,7 +529,6 @@
     "components": [
       "card",
       "color-picker",
-      "d3-chart",
       "data-table",
       "date-picker",
       "dropdown",
@@ -741,7 +740,7 @@
   },
   {
     "name": "--intergalactic-chart-grid-line",
-    "value": "oklch(0.95 0.002 180)",
+    "value": "oklch(0.88 0.002 175.6)",
     "description": "Grid and axis guide lines for charts.",
     "components": [
       "d3-chart"

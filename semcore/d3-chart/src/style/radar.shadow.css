@@ -1,12 +1,12 @@
 SAxis {
-  stroke: var(--intergalactic-chart-grid-line, oklch(0.95 0.002 180));
+  stroke: var(--intergalactic-chart-grid-line, oklch(0.88 0.002 175.6));
   stroke-width: 1;
   fill: transparent;
 }
 
 SAxisLine,
 SAxisTick {
-  stroke: var(--intergalactic-chart-grid-line, oklch(0.95 0.002 180));
+  stroke: var(--intergalactic-chart-grid-line, oklch(0.88 0.002 175.6));
   stroke-width: 1;
   stroke-dasharray: 2;
   fill: transparent;
