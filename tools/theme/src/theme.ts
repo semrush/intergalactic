@@ -2409,11 +2409,11 @@ export const theme: Theme = {
         value: '{semanticTokens.colors.brand_secondary}',
       },
       keyboard_focus_DEFAULT: {
-        value: '3px solid {featureHighlight.feature-highlight.keyboard.focus.outline}',
+        value: `3px solid ${colors.green['200'].value}`,
         description: 'Keyboard focus styles for highlighted controls.',
       },
       keyboard_focus_outline: {
-        value: 'linear-gradient(90deg in oklch, {baseTokens.colors.green.200}, {baseTokens.colors.green.200})',
+        value: `${colors.green['200'].value}`,
         description: 'Color for keyboard focus outline styles for highlighted controls.',
       },
     },

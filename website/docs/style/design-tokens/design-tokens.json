@@ -3861,8 +3861,7 @@
     "value": "4px",
     "description": "Use for rounding Checkbox.",
     "components": [
-      "checkbox",
-      "feature-highlight"
+      "checkbox"
     ]
   },
   {
@@ -4148,6 +4147,20 @@
     ]
   },
   {
+    "name": "--intergalactic-feature-highlight-control-checkbox-bg-selected",
+    "value": "oklch(0.82 0.15 170)",
+    "description": "Background color of the checked Checkbox of highlighted features.",
+    "components": [
+      "feature-highlight"
+    ]
+  },
+  {
+    "name": "--intergalactic-feature-highlight-control-checkbox-mark-selected",
+    "value": "oklch(0.23 0.01 140)",
+    "description": "Color for the Mark of the checked Checkbox of highlighted features.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-feature-highlight-text",
     "value": "oklch(0.1 0.03 137 / 0.899)",
     "description": "Text for highlighted features.",
@@ -4173,13 +4186,13 @@
   },
   {
     "name": "--intergalactic-feature-highlight-keyboard-focus",
-    "value": "3px solid linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))",
+    "value": "3px solid oklch(0.82 0.15 170)",
     "description": "Keyboard focus styles for highlighted controls.",
     "components": []
   },
   {
     "name": "--intergalactic-feature-highlight-keyboard-focus-outline",
-    "value": "linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))",
+    "value": "oklch(0.82 0.15 170)",
     "description": "Color for keyboard focus outline styles for highlighted controls.",
     "components": [
       "feature-highlight"

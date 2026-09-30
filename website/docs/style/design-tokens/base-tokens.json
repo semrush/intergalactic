@@ -877,11 +877,11 @@
   },
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight",
-    "value": "3px solid linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))"
+    "value": "3px solid oklch(0.82 0.15 170)"
   },
   {
     "name": "--intergalactic-keyboard-focus-feature-highlight-outline",
-    "value": "linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170))"
+    "value": "oklch(0.82 0.15 170)"
   },
   {
     "name": "--intergalactic-badge-feature-highlight-accent",

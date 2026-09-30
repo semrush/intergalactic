@@ -32,7 +32,7 @@ SHighlightedRadio:not([state="invalid"]) {
     border-width: 0;
     pointer-events: none;
     background-color: transparent;
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
 
     mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
     mask-composite: exclude;
@@ -48,7 +48,7 @@ SHighlightedRadio:not([state="invalid"]) {
 
   input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"]::before {
     background-color: transparent;
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, linear-gradient(90deg in oklch, oklch(0.82 0.15 170), oklch(0.82 0.15 170)));
+    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
   }
 
   input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
