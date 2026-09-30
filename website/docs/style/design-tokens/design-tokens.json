@@ -3019,7 +3019,7 @@
   },
   {
     "name": "--intergalactic-text-large-info",
-    "value": "oklch(0.6 0.166 277.7)",
+    "value": "oklch(0.23 0.009 245)",
     "description": "Link text with font-size ≥20px.",
     "components": [
       "d3-chart"
@@ -3027,7 +3027,7 @@
   },
   {
     "name": "--intergalactic-text-large-info-hover-active",
-    "value": "oklch(0.6 0.166 277.7)",
+    "value": "oklch(0.23 0.009 245)",
     "description": "Hover and active states of the link text with font-size ≥20px.",
     "components": []
   },

@@ -1930,11 +1930,11 @@ export const theme: Theme = {
         description: 'Hover and active states of the text with font-size ≥20px associated with critical states and data.',
       },
       text_large_info_DEFAULT: {
-        value: info.at(L_TEXT_ACCENT),
+        value: '{semanticTokens.colors.text.link.primary}',
         description: 'Link text with font-size ≥20px.',
       },
       text_large_info_hover_active: {
-        value: info.at(L_TEXT_ACCENT),
+        value: '{semanticTokens.colors.text.link.primary_hover_active}',
         description: 'Hover and active states of the link text with font-size ≥20px.',
       },
       text_large_secondary: {
