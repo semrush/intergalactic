@@ -159,7 +159,8 @@ class AreaRoot extends Component {
           color={resolveColor(color)}
           use:duration={`${duration}ms`}
           transparent={transparent}
-          strokeDasharray='4 4'
+          strokeDasharray='0 4'
+          strokeLinecap='round'
         />
         <SArea
           aria-hidden

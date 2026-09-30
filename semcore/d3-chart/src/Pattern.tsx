@@ -658,8 +658,14 @@ export const DefaultStrokePattern = (props: { id: string }) => {
 export const LightStrokePattern = (props: { id: string }) => {
   return (
     <defs>
-      <pattern id={props.id} width='6' height='6' patternUnits='userSpaceOnUse' patternTransform='rotate(40)'>
-        <line x1='3' y1='0' x2='3' y2='6' stroke='white' strokeWidth='4' />
+      <pattern
+        id={props.id}
+        width='4'
+        height='4'
+        patternUnits='userSpaceOnUse'
+        patternTransform='rotate(60)'
+      >
+        <line x1='3' y1='0' x2='3' y2='4' stroke='white' strokeWidth='2' />
       </pattern>
     </defs>
   );
@@ -680,9 +686,8 @@ export const ForecastGradient = (props: { id: string; color: string }) => {
   return (
     <defs>
       <linearGradient id={props.id} x1='0%' y1='0%' x2='0%' y2='100%'>
-        <stop offset='0%' stopColor={props.color} stopOpacity='1' />
-        <stop offset='40%' stopColor={props.color} stopOpacity='0.48' />
-        <stop offset='100%' stopColor='#fff' stopOpacity='0' />
+        <stop offset='0%' stopColor={props.color} stopOpacity='0.4' />
+        <stop offset='100%' stopColor='#fff' stopOpacity='0.1' />
       </linearGradient>
     </defs>
   );
