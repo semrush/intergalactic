@@ -247,7 +247,11 @@ function HoveredTick(props) {
   const formattedValue = tickFormatter(value);
 
   const w = width + HOVERED_TICK_PADDING_X * 2;
-  const tickX = isFirstTick ? x : isLastTick ? x - w : x - w / 2;
+  const tickX = isFirstTick
+    ? x
+    : isLastTick
+      ? x - w
+      : x - w / 2;
   const tickY = position === 'top'
     ? yRange[1] - height - HOVERED_TICK_MARGIN_Y + HOVERED_TICK_PADDING_Y
     : yRange[0] + HOVERED_TICK_MARGIN_Y - HOVERED_TICK_PADDING_Y;

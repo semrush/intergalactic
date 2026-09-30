@@ -10,7 +10,7 @@ type TicksMeta = {
   }
 };
 
-export class Meta {
+export class ChartMetaData {
   private ticks: TicksMeta = {
     horizontal: {
       size: null,
