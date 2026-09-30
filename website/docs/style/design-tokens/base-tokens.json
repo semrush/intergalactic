@@ -889,11 +889,11 @@
   },
   {
     "name": "--intergalactic-bg-primary-feature-highlight",
-    "value": "{semanticTokens.colors.bg_primary_DEFAULT}"
+    "value": "oklch(1 0 0)"
   },
   {
     "name": "--intergalactic-bg-primary-feature-highlight-hover-active",
-    "value": "{semanticTokens.colors.bg_primary_hover}"
+    "value": "oklch(0.97 0.001 180)"
   },
   {
     "name": "--intergalactic-bg-secondary-feature-highlight",

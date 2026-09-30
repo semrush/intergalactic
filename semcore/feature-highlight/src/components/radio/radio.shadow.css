@@ -1,77 +1,7 @@
-SHighlightedRadio {
-  position: relative;
-}
-
 SHighlightedRadio:not([state="invalid"]) {
-  [data-ui-name="Value.RadioMark"] {
-    border: 1px solid var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
-    border-radius: 50%;
-    background-color: var(--intergalactic-bg-primary-neutral, oklch(1 0 0));
-    background-image: none;
-  }
-
-  input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"] {
-    background-color: var(--intergalactic-feature-highlight-control-primary, oklch(0.23 0.01 140));
-    border-color: var(--intergalactic-feature-highlight-control-primary, oklch(0.23 0.01 140));
-    background-image: none;
-  }
-
-  &:active input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"] {
-    background-color: var(--intergalactic-feature-highlight-control-primary-active, oklch(0 0 140));
-    border-color: var(--intergalactic-feature-highlight-control-primary-active, oklch(0 0 140));
-  }
-
-  [data-ui-name="Value.RadioMark"]::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: 0;
-    padding: 2px;
-    border-radius: 50%;
-    border-width: 0;
-    pointer-events: none;
-    background-color: transparent;
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-
-    opacity: 0;
-    transform: scale(0.9);
-
-    transition:
-      margin calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
-  }
-
-  input[data-ui-name="RadioFH.Value"]:checked + [data-ui-name="Value.RadioMark"]::before {
-    background-color: transparent;
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-  }
-
   input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
-    margin: -4px;
-    opacity: 1;
-    transform: scale(1);
-    transition: inherit;
-  }
-}
+    @mixin focus-outline-mixin;
 
-/* Firefox fallback */
-@supports not (-webkit-mask-composite: xor) {
-  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"] {
-    outline: none;
-    box-shadow: 0 0 0 2px #ffffff,
-      0 0 0 4px #59ddaa;
-  }
-
-  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
-    display: none;
-  }
-
-  SHighlightedRadio:not([state="invalid"]) input[data-ui-name="RadioFH.Value"]:checked:focus-visible + [data-ui-name="Value.RadioMark"]::before {
-    display: none;
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
   }
 }

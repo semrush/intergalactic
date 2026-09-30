@@ -1,51 +1,6 @@
-SHighlightedPill {
-  z-index: 1;
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: -5px;
-    padding: 2px;
-    border-radius: calc(var(--intergalactic-rounded-small, 4px) + 3px);
-    pointer-events: none;
-    background-color: transparent;
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-
-    opacity: 0;
-    transform: scale(0.96);
-
-    transition:
-      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
-  }
-}
-
 SPills {
   SHighlightedPill:focus-visible {
-    outline: none;
-
-    &::before {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-}
-
-/* Firefox fallback */
-@supports not (-webkit-mask-composite: xor) {
-  SHighlightedPill:focus-visible {
-    outline: none;
-    box-shadow:
-      0 0 0 2px #ffffff,
-      0 0 0 4px #59ddaa;
-  }
-
-  SHighlightedPill:focus-visible::before {
-    display: none;
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
+    outline-width: 3px;
   }
 }

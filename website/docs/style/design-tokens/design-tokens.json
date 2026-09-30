@@ -233,7 +233,6 @@
       "d3-chart",
       "drag-and-drop",
       "dropdown",
-      "feature-highlight",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -4057,13 +4056,13 @@
   },
   {
     "name": "--intergalactic-feature-highlight-bg-primary",
-    "value": "{semanticTokens.colors.bg_primary_DEFAULT}",
+    "value": "oklch(1 0 0)",
     "description": "Primary background for highlighted controls.",
     "components": []
   },
   {
     "name": "--intergalactic-feature-highlight-bg-primary-hover-active",
-    "value": "{semanticTokens.colors.bg_primary_hover}",
+    "value": "oklch(0.97 0.001 180)",
     "description": "Primary background for hover and active (selected) state of highlighted controls.",
     "components": []
   },
@@ -4101,9 +4100,7 @@
     "name": "--intergalactic-feature-highlight-control-primary",
     "value": "oklch(0.23 0.01 140)",
     "description": "Background of the highlighted primary control.",
-    "components": [
-      "feature-highlight"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-feature-highlight-control-primary-hover",
@@ -4115,9 +4112,7 @@
     "name": "--intergalactic-feature-highlight-control-primary-active",
     "value": "oklch(0 0 140)",
     "description": "Active (selected) state of the highlighted primary control.",
-    "components": [
-      "feature-highlight"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-feature-highlight-control-secondary",

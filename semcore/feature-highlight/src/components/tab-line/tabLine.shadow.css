@@ -1,37 +1,8 @@
-SHighlightedItem {
-  &:focus-visible {
-    outline: none;
-
-    &::before {
-      opacity: 1;
-      transform: scale(1);
+STabLineFH {
+  SHighlightedItem {
+    &:focus-visible {
+      outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
     }
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    height: auto;
-    width: calc(100% + 4px);
-    margin: -4px;
-    padding: 2px;
-    box-sizing: content-box;
-    pointer-events: none;
-    background-image: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-    opacity: 0;
-    transform: scale(0.96);
-    transition:
-      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
-  }
-
-  &[selected]::after,
-  &:hover:not(:focus-visible)::after {
-    background-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
   }
 }
 

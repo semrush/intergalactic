@@ -15,7 +15,10 @@ class TabLineFHRoot extends Component<
   static style = style;
 
   render() {
-    return (<Root render={TabLine} />);
+    const { styles } = this.asProps;
+    const STabLineFH = Root;
+
+    return sstyled(styles)(<STabLineFH render={TabLine} />);
   }
 }
 

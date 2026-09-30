@@ -2347,11 +2347,11 @@ export const theme: Theme = {
         description: 'Accent background for Badge.',
       },
       bg_primary_DEFAULT: {
-        value: '{semanticTokens.colors.bg_primary_DEFAULT}',
+        value: '{semanticTokens.colors.bg_primary_neutral_DEFAULT}',
         description: 'Primary background for highlighted controls.',
       },
       bg_primary_hover_active: {
-        value: '{semanticTokens.colors.bg_primary_hover}',
+        value: '{semanticTokens.colors.bg_primary_neutral_hover}',
         description: 'Primary background for hover and active (selected) state of highlighted controls.',
       },
       bg_secondary: {
