@@ -167,6 +167,7 @@ class TriggerButton extends Component {
 
   render() {
     const STrigger = Root;
+    const STriggerAddon = FilterTrigger.Addon;
     const { Children, styles, empty, triggerRef } = this.asProps;
 
     return sstyled(styles)(
@@ -185,7 +186,7 @@ class TriggerButton extends Component {
           [FilterTrigger.Addon, FilterTrigger.Counter],
           empty,
         )}
-        {empty && <FilterTrigger.Addon tag={ChevronDown} />}
+        {empty && <STriggerAddon tag={ChevronDown} />}
       </STrigger>,
     );
   }
