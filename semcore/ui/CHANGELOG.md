@@ -1,3 +1,270 @@
+## [18.0.0] - 2026-09-30
+
+### @semcore/wizard
+
+- **BREAK** New theme applied.
+
+### @semcore/widget-empty
+
+- **BREAK** New theme applied.
+
+### @semcore/typography
+
+- **BREAK** New theme applied.
+
+### @semcore/tooltip
+
+- **BREAK** New theme applied.
+
+### @semcore/time-picker
+
+- **BREAK** New theme applied.
+
+### @semcore/textarea
+
+- **BREAK** New theme applied.
+
+### @semcore/tag
+
+- **BREAK** New theme applied.
+
+### @semcore/tab-panel
+
+- **BREAK** New theme applied.
+
+### @semcore/tab-line
+
+- **BREAK** New theme applied.
+
+### @semcore/switch
+
+- **BREAK** New theme applied.
+
+### @semcore/spin-container
+
+- **BREAK** New theme applied.
+
+### @semcore/spin
+
+- **BREAK** New theme applied.
+
+### @semcore/slider
+
+- **BREAK** New theme applied.
+
+### @semcore/skeleton
+
+- **BREAK** New theme applied.
+
+### @semcore/side-panel
+
+- **BREAK** New theme applied.
+
+### @semcore/select
+
+- **BREAK** New theme applied.
+
+### @semcore/radio
+
+- **BREAK** New theme applied.
+
+### @semcore/progress-bar
+
+- **BREAK** New theme applied.
+
+### @semcore/product-head
+
+- **BREAK** New theme applied.
+
+### @semcore/pills
+
+- **BREAK** New theme applied.
+
+### @semcore/pagination
+
+- **BREAK** New theme applied.
+
+### @semcore/notice-bubble
+
+- **BREAK** New theme applied.
+
+### @semcore/notice
+
+- **BREAK** New theme applied.
+
+### @semcore/modal
+
+- **BREAK** New theme applied.
+
+### @semcore/mini-chart
+
+- **BREAK** New theme applied.
+- **BREAK** Update `MiniChart.Score` typings to enforce either `value`/`color`
+props or custom `children`, preventing unsupported prop combinations.
+
+### @semcore/link
+
+- **BREAK** New theme applied.
+
+### @semcore/input-tags
+
+- **BREAK** New theme applied.
+
+### @semcore/input-number
+
+- **BREAK** New theme applied.
+
+### @semcore/input-mask
+
+- **BREAK** New theme applied.
+
+### @semcore/input
+
+- **BREAK** New theme applied.
+
+### @semcore/inline-input
+
+- **BREAK** New theme applied.
+
+### @semcore/inline-edit
+
+- **BREAK** New theme applied.
+
+### @semcore/illustration
+
+- **BREAK** New theme applied.
+
+### @semcore/icon
+
+- **BREAK** New theme applied.
+
+### @semcore/fullscreen-modal
+
+- **BREAK** New theme applied.
+
+### @semcore/flags
+
+- **BREAK** New theme applied.
+
+### @semcore/feedback-form
+
+- **BREAK** New theme applied.
+
+### @semcore/feature-popover
+
+- **BREAK** New theme applied.
+
+### @semcore/feature-highlight
+
+- **BREAK** New theme applied.
+
+### @semcore/errors
+
+- **BREAK** New theme applied.
+
+### @semcore/ellipsis
+
+- **BREAK** New theme applied.
+
+### @semcore/dropdown-menu
+
+- **BREAK** New theme applied.
+
+### @semcore/dropdown
+
+- **BREAK** New theme applied.
+
+### @semcore/drag-and-drop
+
+- **BREAK** New theme applied.
+
+### @semcore/dot
+
+- **BREAK** New theme applied.
+
+### @semcore/divider
+
+- **BREAK** New theme applied.
+
+### @semcore/date-picker
+
+- **BREAK** New theme applied.
+
+### @semcore/data-table
+
+- **BREAK** New theme applied.
+
+### @semcore/d3-chart
+
+- **BREAK** New theme applied.
+
+### @semcore/counter
+
+- **BREAK** New theme applied.
+
+### @semcore/core
+
+- **BREAK** New theme applied.
+
+### @semcore/color-picker
+
+- **BREAK** New theme applied.
+
+### @semcore/checkbox
+
+- **BREAK** New theme applied.
+
+### @semcore/carousel
+
+- **BREAK** New theme applied.
+
+### @semcore/card
+
+- **BREAK** New theme applied.
+
+### @semcore/button
+
+- **BREAK** New theme applied.
+
+### @semcore/bulk-textarea
+
+- **BREAK** New theme applied.
+
+### @semcore/breadcrumbs
+
+- **BREAK** New theme applied.
+
+### @semcore/base-trigger
+
+- **BREAK** New theme applied.
+
+### @semcore/badge
+
+- **BREAK** New theme applied.
+- **BREAK** Added new property `theme`: `default | light | invert`.
+- **BREAK** Removed outdated flag `inverted`.
+
+### @semcore/base-components
+
+- **BREAK** **animation**: New theme applied.
+- **BREAK** **breakpoints**: New theme applied.
+- **BREAK** **flex-box**: New theme applied.
+- **BREAK** **grid**: New theme applied.
+- **BREAK** **hint**: New theme applied.
+- **BREAK** **neighbor-location**: New theme applied.
+- **BREAK** **outside-click**: New theme applied.
+- **BREAK** **popper**: New theme applied.
+- **BREAK** **portal**: New theme applied.
+- **BREAK** **scroll-area**: New theme applied.
+
+### @semcore/add-filter
+
+- **BREAK** New theme applied.
+
+### @semcore/accordion
+
+- **BREAK** New theme applied.
+
 ## [17.6.0] - 2026-09-10
 
 ### @semcore/drag-and-drop
