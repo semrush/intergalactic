@@ -99,6 +99,6 @@ SWrapper {
   }
 
   STriggerAddon {
-    color: var(--intergalactic-icon-non-interactive);
+    color: var(--intergalactic-icon-non-interactive, oklch(0.094 0.024 153.9 / 0.503));
   }
 }
