@@ -84,8 +84,16 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
-  height: 100%;
+  height: inherit;
   color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
+
+  &[size='m'] {
+    line-height: var(--intergalactic-form-control-m, 32px);
+  }
+
+  &[size='l'] {
+    line-height: var(--intergalactic-form-control-l, 44px);
+  }
 }
 
 SAddon[interactive] {
