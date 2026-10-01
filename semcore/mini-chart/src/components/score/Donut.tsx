@@ -106,7 +106,7 @@ class DonutRoot extends Component<
                 patternTransform={`rotate(${stripeAngle})`}
               >
                 <rect width={STRIPE_PERIOD} height={STRIPE_PERIOD} fill={resolveColor(baseBgColor)} />
-                <rect width={STRIPE_WIDTH} height={STRIPE_PERIOD} fill='#00110C' fillOpacity={0.11} />
+                <rect width={STRIPE_WIDTH} height={STRIPE_PERIOD} fill={resolveColor('bg-primary-neutral')} fillOpacity={0.4} />
               </pattern>
             )}
           </defs>
