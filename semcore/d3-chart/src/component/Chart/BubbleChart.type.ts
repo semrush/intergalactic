@@ -19,7 +19,7 @@ export type BubbleChartData = Array<{
 
 export type BubbleChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<BubbleChartData>,
-  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta' | 'deltaPercentGrowthColor'
 > & {
   /** Field name that groups the data points */
   groupKey?: never;
