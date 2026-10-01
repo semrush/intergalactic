@@ -8,7 +8,11 @@ export type RadarChartData = Record<string, string[] | number[]>;
 
 export type RadarChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<RadarChartData>,
-  'showTotalInTooltip' | 'showPercentValueInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
+  | 'showTotalInTooltip'
+  | 'showPercentValueInTooltip'
+  | 'showDeltaPercentInTooltip'
+  | 'getPercentDelta'
+  | 'deltaPercentGrowthColor'
 > & {
   groupKey: string;
   scale?: ScaleLinear<any, any>;
