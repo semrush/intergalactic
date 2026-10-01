@@ -30,6 +30,7 @@ class BarChartComponent extends AbstractChart<
     showXAxis: true,
     showYAxis: true,
     showTooltip: true,
+    maxBarSize: 12,
     locale: 'en',
   } as const;
 
@@ -85,7 +86,7 @@ class BarChartComponent extends AbstractChart<
   }
 
   renderChart() {
-    const { groupKey, type = 'group', invertAxis } = this.asProps;
+    const { groupKey, type = 'group', invertAxis, maxBarSize } = this.asProps;
     const { dataDefinitions, highlightedItem } = this.state;
 
     if (dataDefinitions.length === 1) {
@@ -101,6 +102,7 @@ class BarChartComponent extends AbstractChart<
               key={item.id}
               color={item.color}
               onClick={this.handleClickBar}
+              maxBarSize={maxBarSize}
             />
             {this.renderTrend(item.id)}
           </>
@@ -111,7 +113,7 @@ class BarChartComponent extends AbstractChart<
     if (type === 'group') {
       return (
         <>
-          <GroupBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined}>
+          <GroupBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined} maxBarSize={maxBarSize}>
             {dataDefinitions.map((item, index) => {
               const BarComponent = invertAxis ? GroupBar.HorizontalBar : GroupBar.Bar;
 
@@ -119,6 +121,7 @@ class BarChartComponent extends AbstractChart<
                 color: item.color,
                 transparent: highlightedItem !== -1 && highlightedItem !== index,
                 onClick: this.handleClickBar,
+                maxBarSize,
               };
 
               if (invertAxis) {
@@ -146,6 +149,7 @@ class BarChartComponent extends AbstractChart<
                 color: item.color,
                 transparent: highlightedItem !== -1 && highlightedItem !== index,
                 onClick: this.handleClickBar,
+                maxBarSize,
               };
 
               if (invertAxis) {

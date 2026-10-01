@@ -16,7 +16,7 @@ export const HorizontalBarProps: StoryObj = {
     barColor: { control: 'color' },
     barRadius: { control: { type: 'number', min: 0, max: 20, step: 1 } },
     barTransparent: { control: 'boolean' },
-    maxBarSize: { control: { type: 'number', min: 10, max: 100, step: 5 } },
+    maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
     duration: { control: { type: 'number', min: 0, max: 2000, step: 100 } },
     primaryText: { control: 'boolean' },
   },
@@ -25,6 +25,8 @@ export const HorizontalBarProps: StoryObj = {
 
 export const BasicUsage = {
   render: BasicUsageExample,
-  argTypes: getChartArgTypes(),
+  argTypes: getChartArgTypes({
+    maxBarSize: { control: { type: 'number', min: 0, max: 100, step: 1 } },
+  }),
   args: BasicUsageProps,
 };
