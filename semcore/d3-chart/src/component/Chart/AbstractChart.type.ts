@@ -120,6 +120,12 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    */
   getPercentDelta?: (key: ObjectDataKey, index: number, data: T) => number | null;
   /**
+   * Defines a color of the growing percentage delta in the tooltip.
+   * Use `critical` when an increase isn't a positive change.
+   * @default success
+   */
+  deltaPercentGrowthColor?: 'success' | 'critical';
+  /**
    * Scale for xAxis (see more in d3-scale)
    */
   xScale?: unknown;
