@@ -54,7 +54,7 @@ To highlight a [Checkbox](../../components/checkbox/checkbox), use the `Checkbox
 
 You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
+You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-feature-highlight-icon-primary` color after the text label.
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
@@ -72,7 +72,7 @@ When using the `feature-highlight` tokens in the `color` property of icons and o
 
 ## DataTable
 
-To highlight a [table column](../../table-group/data-table/data-table), display the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color in the column header.
+To highlight a [table column](../../table-group/data-table/data-table), display the `SummaryAI` icon with the `--intergalactic-feature-highlight-icon-primary` color in the column header.
 
 If the column title doesn't mention the promotion, add a `ScreenReaderOnly` text to the column header.
 
@@ -140,7 +140,7 @@ To highlight a [Radio button](../../components/radio/radio), use the `RadioFH` c
 
 You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
+You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-feature-highlight-icon-primary` color after the text label.
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
@@ -178,7 +178,7 @@ To highlight a [Switch](../../components/switch/switch), use the `SwitchFH` comp
 
 You can enable animation on click (`AnimatedSparkles` component). It's possible to change the number of animated sparkles (`count` prop).
 
-You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-icon-primary-feature-highlight` color after the text label.
+You can add more accent by displaying the `SummaryAI` icon with the `--intergalactic-feature-highlight-icon-primary` color after the text label.
 
 If the control's label doesn't mention the promotion, add an accessible description with `aria-describedby` and `ScreenReaderOnly`.
 
