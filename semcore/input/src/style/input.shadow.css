@@ -1,7 +1,7 @@
 SInput {
   display: inline-flex;
   width: 100%;
-  align-items: center;
+  align-items: baseline;
   position: relative;
   z-index: 0;
   vertical-align: middle;
@@ -33,7 +33,7 @@ SValue {
   /* hack for firefox */
   min-width: 0;
   width: 100%;
-  height: inherit;
+  height: 100%;
   padding: 0;
   border: none;
   box-sizing: border-box;
@@ -84,16 +84,8 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
-  height: inherit;
+  height: 100%;
   color: var(--intergalactic-icon-secondary-neutral, oklch(0.118 0.023 170.1 / 0.262));
-
-  &[size='m'] {
-    line-height: var(--intergalactic-form-control-m, 32px);
-  }
-
-  &[size='l'] {
-    line-height: var(--intergalactic-form-control-l, 44px);
-  }
 }
 
 SAddon[interactive] {
@@ -126,12 +118,10 @@ SInput SAddon:nth-last-child(2) {
 
 SValue[size='m'] {
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
-  line-height: var(--intergalactic-form-control-m, 32px);
 }
 
 SValue[size='l'] {
   padding: 0 var(--intergalactic-spacing-content-padding-medium, 12px);
-  line-height: var(--intergalactic-form-control-l, 44px);
 }
 
 SInput[size='m'] {
