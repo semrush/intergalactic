@@ -3,15 +3,6 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
 
-/**
- * Asserts every match is kept out of the accessibility tree.
- *
- * `aria-hidden` on an ancestor hides the whole subtree, so checking the attribute on each
- * element itself would fail the moment decorative shapes get wrapped in a group — which is
- * exactly what happened when the hover line became a `<g>` holding three `<line>` children
- * plus its end caps. What matters is that nothing here reaches a screen reader, not which
- * node carries the attribute.
- */
 const expectEachToBeHiddenFromA11y = async (locator: Locator) => {
   await expect(locator).not.toHaveCount(0);
 
@@ -47,6 +38,29 @@ export const locators = {
     return typeof index === 'number' ? base.nth(index) : base;
   },
   tooltip: (page: Page) => page.locator('[data-ui-name="Line.Tooltip"], [data-ui-name="HoverLine.Tooltip"]'),
+};
+
+const BASIC_USAGE_STORY = 'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx';
+
+/** Hovers the middle of the plot, which lands on some point of the series. */
+const hoverPlotCentre = async (page: Page) => {
+  const plot = locators.plot(page).first();
+  await plot.waitFor({ state: 'visible' });
+
+  const box = await plot.boundingBox();
+  if (!box) throw new Error('Plot bounding box not found');
+
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+};
+
+const hoverFirstPoint = async (page: Page) => {
+  const plot = locators.plot(page).first();
+  await plot.waitFor({ state: 'visible' });
+
+  const dot = await locators.dots(page, 0).boundingBox();
+  if (!dot) throw new Error('First dot bounding box not found');
+
+  await page.mouse.move(dot.x + dot.width / 2, dot.y + dot.height / 2);
 };
 
 /* =====================================================
@@ -442,6 +456,33 @@ test.describe(`${TAG.VISUAL}`, () => {
       await expect(page).toHaveScreenshot();
     });
   });
+
+  /**
+   * The redesign's three data-level decorations in one shot: the dashed forecast tail, the
+   * gradient-filled potential tail, and the highlight rings.
+   *
+   * The functional tests next door already assert the wiring — that the dash attribute is
+   * there and that the gradient reference resolves to a real `linearGradient`. What no
+   * attribute can say is whether the gradient actually paints a visible ramp, whether the
+   * dash rhythm reads as a forecast, and whether the ring sits concentric with its dot.
+   * That is what this baseline is for.
+   *
+   * Deliberately one test rather than three, so the branch gains 3 PNGs instead of 9.
+   */
+  test('Verify forecast, potential and highlighted dots render', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'both', highlightDots: 'mixed', duration: 0 },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    await expect(page).toHaveScreenshot();
+  });
 });
 
 /* =====================================================
@@ -466,6 +507,125 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  /**
+   * Guards the redesign value rather than just letting the screenshots carry it: the data
+   * line went from 3 to 2. Snapshots do notice a change in line weight, but only as pixels
+   * that moved, and this branch regenerated 427 of them at once — exactly the setting in
+   * which a wrong stroke width gets baked into the baselines unnoticed.
+   *
+   * `stroke-width: 2` in the stylesheet is unitless, which in SVG means user units. The
+   * Plot carries no viewBox, so one user unit is one pixel and `toHaveCSS` reads back
+   * '2px'.
+   *
+   * Asserted on every line, not just the first: the forecast and potential segments added
+   * by the redesign are separate `SLine` paths, and they have to keep the same weight as
+   * the main line or the series visibly changes thickness partway along.
+   */
+  test('Verify data line stroke width is 2px', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'both' },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    const lines = page.locator('path[data-ui-name="Line"]');
+    await expect(lines).not.toHaveCount(0);
+
+    for (let i = 0; i < (await lines.count()); i++) {
+      await expect(lines.nth(i)).toHaveCSS('stroke-width', '2px');
+    }
+  });
+
+  /**
+   * `DATA_TYPE` markers pull points out of the main line into their own segments
+   * (`Line.renderForecast` / `Line.renderPotential`), which is what lets them be dashed
+   * while the rest of the series stays solid.
+   *
+   * The point count is the part worth asserting: it is the only thing that distinguishes
+   * "the tail was moved into its own path" from "the tail is drawn twice, once in the main
+   * path and once on top of it". The two look identical in a screenshot.
+   *
+   * Only the dash is checked on the forecast segment, not its colour — see the note on
+   * `renderForecast` about the gradient it defines but never references.
+   */
+  test('Verify forecast and potential render as separate dashed segments', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'both', duration: 0 },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    const lines = page.locator('svg[data-ui-name="Plot"] path');
+
+    await test.step('Each series renders a main, a forecast and a potential path', async () => {
+      // Two series in the story dataset, three paths each.
+      await expect(lines).toHaveCount(6);
+    });
+
+    await test.step('The tail segments are dashed and the main line is not', async () => {
+      const dashed = await lines.evaluateAll((paths) =>
+        paths.map((path) => path.getAttribute('stroke-dasharray')),
+      );
+
+      expect(dashed.filter((value) => value === '4 4')).toHaveLength(4);
+      expect(dashed.filter((value) => value === null)).toHaveLength(2);
+    });
+
+    await test.step('The main line stops before the tail instead of drawing it twice', async () => {
+      // The generator is curveLinear, so `d` is "M x,y L x,y …" and the number of `L`
+      // commands is one less than the number of points on that path.
+      const pointCounts = await lines.evaluateAll((paths) =>
+        paths
+          .map((path) => path.getAttribute('d'))
+          .filter((d): d is string => Boolean(d))
+          .map((d) => (d.match(/L/g)?.length ?? 0) + 1),
+      );
+
+      expect(pointCounts.filter((count) => count === 15)).toHaveLength(2);
+      expect(pointCounts.filter((count) => count === 3)).toHaveLength(2);
+      expect(pointCounts.filter((count) => count === 4)).toHaveLength(2);
+    });
+  });
+
+  /**
+   * The potential segment is the one place in Line that paints with a gradient rather than
+   * the series colour, so the reference has to resolve — a typo in the id would leave the
+   * path silently unpainted, which a screenshot shows as "the line is missing" without
+   * saying why.
+   *
+   * The id is built from a generated `uid`, so it cannot be hardcoded: the reference is
+   * read off the path and the gradient is then looked up by it.
+   */
+  test('Verify the potential segment is painted by a gradient that exists', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/basic-usage.tsx',
+      'en',
+      { dataType: 'potential', duration: 0 },
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    const potential = page
+      .locator('svg[data-ui-name="Plot"] path[stroke-dasharray="4 4"][d]')
+      .first();
+    const stroke = await potential.evaluate((el) => getComputedStyle(el).stroke);
+
+    expect(stroke).toMatch(/^url\(".*-potential-gradient-line"\)$/);
+
+    const gradientId = stroke.slice('url("#'.length, -'")'.length);
+    await expect(page.locator(`linearGradient[id="${gradientId}"]`)).toHaveCount(1);
+  });
+
   test('Verify Line.Null attributes', {
     tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
   }, async ({ page }) => {
@@ -483,8 +643,54 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     });
   });
 
+  test('Verify Line.Null is painted with the null-series palette colour', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(
+      page,
+      'stories/components/d3-chart/tests/examples/line-chart/line-area-with-empty.tsx',
+      'en',
+    );
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    await expect(locators.lineNull(page).first()).toHaveCSS('stroke', 'oklch(0.9 0.002 177)');
+    await expect(locators.lineNull(page).first()).toHaveCSS('stroke-dasharray', '4px');
+  });
+
+  test('Verify interpolated points are dropped from the series without breaking it', {
+    tag: [TAG.PRIORITY_MEDIUM, '@line-chart', '@d3-chart'],
+  }, async ({ page }) => {
+    await loadPage(page, BASIC_USAGE_STORY, 'en', { withInterpolatedGaps: true, duration: 0 });
+    await locators.plot(page).first().waitFor({ state: 'visible' });
+
+    const lines = page.locator('path[data-ui-name="Line"]');
+    await expect(lines).toHaveCount(2);
+
+    const pointCounts = await lines.evaluateAll((paths) =>
+      paths
+        .map((path) => path.getAttribute('d'))
+        .filter((d): d is string => Boolean(d))
+        .map((d) => (d.match(/L/g)?.length ?? 0) + 1),
+    );
+
+    await test.step('The untouched series keeps all 20 points', async () => {
+      expect(pointCounts).toContain(20);
+    });
+
+    await test.step('The gapped series is short by exactly the three marked points', async () => {
+      // A gap drops the point from the path; the line closes over it rather than breaking,
+      // so this stays a single path of 17 points instead of several segments.
+      expect(pointCounts).toContain(17);
+    });
+
+    await test.step('No gap leaks into the geometry as NaN', async () => {
+      const ds = await lines.evaluateAll((paths) => paths.map((path) => path.getAttribute('d') ?? ''));
+
+      expect(ds.filter((d) => d.includes('NaN'))).toEqual([]);
+    });
+  });
+
   /* -----------------------------------------------------
-  Responsiveness — high-level Chart.* are now responsive by default.
   plotWidth/plotHeight are optional: when omitted the chart fills its parent
   and auto-derives the plot size. `aspect` sets height = width / aspect,
   `hMin`/`hMax` clamp it, `onResize` reports the measured size. We assert on

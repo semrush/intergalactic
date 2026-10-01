@@ -445,9 +445,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
           await expect(svg).toHaveAttribute(attr, value);
         }
 
-        const path = svg.locator('path');
-
-        await expect(path).toHaveAttribute('aria-hidden', 'true');
+        await expectEachToHaveAttribute(svg.locator('path'), 'aria-hidden', 'true');
       });
 
       await test.step('Verify data attributes and accessibility structure', async () => {
@@ -512,10 +510,7 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
         for (const [attr, value] of svgAttributes) {
           await expect(svg).toHaveAttribute(attr, value);
         }
-
-        const path = svg.locator('path');
-
-        await expect(path).toHaveAttribute('aria-hidden', 'true');
+        await expectEachToHaveAttribute(svg.locator('path'), 'aria-hidden', 'true');
       });
     });
   });
