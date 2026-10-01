@@ -708,6 +708,10 @@ export const theme: Theme = {
         value: neutral.at(L_BORDER_SECONDARY),
         description: 'Grid and axis guide lines for charts.',
       },
+      chart_grid_dot_outer_border: {
+        value: 'oklch(from {semanticTokens.colors.border.accent.DEFAULT} l c h / 0.1)',
+        description: 'Outer border for the dots highlighting forecast, bad or good insights.',
+      },
       chart_grid_period_bg: {
         value: neutral.at(L_BG_LIGHT),
         description: 'Use for highlighting a period on the chart grid.',
@@ -3436,6 +3440,9 @@ type SemanticColors = {
     };
     grid: {
       line: Value;
+      dot: {
+        outer_border: Value;
+      };
       line_forecast: Value;
       x: {
         axis: Value;

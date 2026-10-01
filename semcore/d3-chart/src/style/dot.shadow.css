@@ -42,12 +42,11 @@ SDotHighlight {
 SDotBorder {
   fill: none;
   stroke-width: 1px;
-  stroke: var(--intergalactic-chart-grid-line, oklch(0.95 0.002 180));
-  opacity: 0.5;
+  stroke: var(--intergalactic-chart-grid-dot-outer-border, oklch(from oklch(0.23 0.01 140) l c h / 0.1));
   stroke-dasharray: 2;
 
   &[transparent] {
-    opacity: 0.15;
+    opacity: 0.03;
   }
 }
 
