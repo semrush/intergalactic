@@ -44,6 +44,18 @@ SButton SInner {
   justify-content: flex-start;
 }
 
+SSingleDateInput {
+  &[size='l'] {
+    SInputMask {
+      padding-right: var(--intergalactic-spacing-3x, 12px);
+
+      &:has(SHumanizedDate) {
+        padding-right: var(--intergalactic-spacing-2x, 8px);
+      }
+    }
+  }
+}
+
 SInputMask {
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   line-height: normal;
