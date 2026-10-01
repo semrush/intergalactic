@@ -8,7 +8,7 @@ SHighlightedButton[theme='primary-highlighted'] {
 
   &:focus-visible {
     outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-    outline-width: 3px;
+    outline-width: 2px;
   }
 }
 
@@ -17,7 +17,7 @@ SHighlightedButton[theme='secondary-highlighted'] {
 
   &:focus-visible {
     outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-    outline-width: 3px;
+    outline-width: 2px;
   }
 
   background-color: var(--intergalactic-feature-highlight-control-secondary, oklch(0.166 0.031 175.8 / 0.097));

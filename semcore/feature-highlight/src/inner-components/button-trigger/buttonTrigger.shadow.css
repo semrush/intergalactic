@@ -2,7 +2,7 @@ SHighlightedButtonTrigger:not([state="invalid"]):not([state="valid"]) {
   &:focus-visible {
     border-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
     outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-    outline-width: 3px;
+    outline-width: 2px;
   }
 
   &:active,

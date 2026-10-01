@@ -1,6 +1,6 @@
 SPills {
   SHighlightedPill:focus-visible {
     outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
-    outline-width: 3px;
+    outline-width: 2px;
   }
 }
