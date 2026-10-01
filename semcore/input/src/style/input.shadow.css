@@ -1,7 +1,7 @@
 SInput {
   display: inline-flex;
   width: 100%;
-  align-items: baseline;
+  align-items: center;
   position: relative;
   z-index: 0;
   vertical-align: middle;
@@ -33,7 +33,6 @@ SValue {
   /* hack for firefox */
   min-width: 0;
   width: 100%;
-  height: 100%;
   padding: 0;
   border: none;
   box-sizing: border-box;
@@ -41,6 +40,7 @@ SValue {
   font-size: inherit;
   text-overflow: ellipsis;
   font-family: inherit;
+  line-height: inherit;
   background: transparent;
 
   &::placeholder {
@@ -126,11 +126,13 @@ SValue[size='l'] {
 
 SInput[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 1.4286);
   height: var(--intergalactic-form-control-m, 32px);
 }
 
 SInput[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 1.5);
   height: var(--intergalactic-form-control-l, 44px);
 }
 
