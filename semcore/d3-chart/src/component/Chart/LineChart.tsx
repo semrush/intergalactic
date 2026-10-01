@@ -7,7 +7,7 @@ import type { ObjectData } from './AbstractChart.type';
 import { HIGHLIGHT_DOT } from './AbstractChart.type';
 import type { LineChartData, LineChartDefaultProps, LineChartProps, LineChartType } from './LineChart.type';
 // @ts-ignore
-import { Line, minMax, HoverLine } from '../..';
+import { Line, minMax, HoverLine, ReferenceLine, ReferenceStripes } from '../..';
 import type { ChartState } from './AbstractChart';
 import { AbstractChart } from './AbstractChart';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -113,6 +113,32 @@ class LineChartComponent extends AbstractChart<
           };
         }}
       </HoverLine.Tooltip>
+    );
+  }
+
+  protected renderReference() {
+    const { referenceLine, referenceArea } = this.asProps;
+
+    if (!referenceLine && !referenceArea) {
+      return null;
+    }
+
+    return (
+      <>
+        {referenceLine && (
+          <ReferenceLine value={referenceLine.value} area={referenceLine.area} />
+        )}
+
+        {referenceArea && (
+          <ReferenceStripes
+            value={referenceArea.value[0]}
+            endValue={referenceArea.value[1]}
+            use={referenceArea.use}
+            title={referenceArea.title}
+            subTitle={referenceArea.subTitle}
+          />
+        )}
+      </>
     );
   }
 

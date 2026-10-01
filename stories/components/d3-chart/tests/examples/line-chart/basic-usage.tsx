@@ -32,6 +32,13 @@ type LineChartStoryProps = LineChartProps & {
    */
   deltaOverride?: 'off' | keyof typeof deltaOverrides;
   withInterpolatedGaps?: boolean;
+
+  withReferenceLine?: boolean;
+  withReferenceArea?: boolean;
+
+  referenceLineArea?: number;
+  referenceAreaUse?: 'neutral' | 'insight' | 'good' | 'bad';
+  referenceAreaWithTitles?: boolean;
 };
 
 /**
@@ -110,6 +117,11 @@ const Demo = (props: LineChartStoryProps) => {
     titleFormat,
     deltaOverride,
     withInterpolatedGaps,
+    withReferenceLine,
+    withReferenceArea,
+    referenceLineArea,
+    referenceAreaUse,
+    referenceAreaWithTitles,
     ...chartProps
   } = getPropsToChart(props);
 
@@ -155,6 +167,21 @@ const Demo = (props: LineChartStoryProps) => {
     ...(getPercentDelta ? { getPercentDelta } : {}),
   };
 
+  if (withReferenceLine) {
+    responsiveChartProps.referenceLine = { value: '3', area: referenceLineArea || undefined };
+  }
+
+  if (withReferenceArea) {
+    const use = referenceAreaUse ?? 'insight' as const;
+
+    responsiveChartProps.referenceArea = {
+      value: ['12', '16'],
+      use,
+      title: referenceAreaWithTitles ? 'Good' : undefined,
+      subTitle: referenceAreaWithTitles ? '+10%' : undefined,
+    };
+  }
+
   const showResponsiveInfo = aspect || hMin || hMax || useExplicitPlotWidth;
 
   return (
@@ -193,6 +220,9 @@ export const defaultProps = getChartProps<LineChartStoryProps>({
   withInterpolatedGaps: false,
   titleFormat: 'off',
   deltaOverride: 'off',
+  withReferenceLine: false,
+  withReferenceArea: false,
+  referenceAreaWithTitles: false,
 });
 
 Demo.defaultProps = defaultProps;

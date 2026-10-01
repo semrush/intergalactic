@@ -659,6 +659,10 @@ export abstract class AbstractChart<
     );
   }
 
+  protected renderReference(): React.ReactNode {
+    return null;
+  }
+
   public render() {
     const SChart = Root;
     const { styles, data, patterns, a11yAltTextConfig, duration, eventEmitter, showTooltip, locale } =
@@ -684,6 +688,7 @@ export abstract class AbstractChart<
           {...extractedAriaProps}
         >
           {this.renderAxis()}
+          {this.renderReference()}
           {!showTooltip ? null : this.renderTooltip()}
           {this.renderChart()}
         </Plot>

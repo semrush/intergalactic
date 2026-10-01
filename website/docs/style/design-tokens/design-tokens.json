@@ -773,9 +773,7 @@
     "name": "--intergalactic-chart-grid-period-pattern",
     "value": "oklch(0.95 0.006 232.7)",
     "description": "Stripe color for diagonal pattern background.",
-    "components": [
-      "d3-chart"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-bg-good",
@@ -831,7 +829,9 @@
     "name": "--intergalactic-chart-grid-text-label-accent",
     "value": "oklch(0.102 0.021 230.9 / 0.9)",
     "description": "Text label with accent on the chart grid.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
