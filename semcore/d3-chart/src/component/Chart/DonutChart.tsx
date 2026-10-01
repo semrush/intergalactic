@@ -24,6 +24,7 @@ class DonutChartComponent extends AbstractChart<
   static defaultProps = {
     direction: 'row-reverse',
     alignItems: 'flex-start',
+    innerRadius: 100,
     marginX: 0,
     marginY: 0,
     locale: 'en',

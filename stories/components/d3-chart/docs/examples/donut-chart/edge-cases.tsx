@@ -6,7 +6,7 @@ import DonutMockData from '../../../__mocks__/donut';
 const Demo = () => {
   return (
     <Plot width={300} height={300} data={data}>
-      <Donut>
+      <Donut innerRadius={100}>
         <Donut.EmptyData />
         <Donut.Pie dataKey='a' name='a' />
         <Donut.Pie dataKey='b' name='b' />

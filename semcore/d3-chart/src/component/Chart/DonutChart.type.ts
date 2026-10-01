@@ -32,6 +32,7 @@ export type DonutChartProps = Intergalactic.InternalTypings.EfficientOmit<
 export type DonutChartDefaultProps = {
   direction: 'row-reverse';
   alignItems: 'flex-start';
+  innerRadius: 100;
   marginX: 0;
   marginY: 0;
   locale: 'en';
