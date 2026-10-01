@@ -45,7 +45,7 @@ const Demo = () => {
   return (
     <Flex direction='row' gap={5}>
       <Plot width={width} height={height} data={data} dataHints={dataHints} patterns>
-        <Donut>
+        <Donut innerRadius={height / 2 - 50}>
           {legendItems.filter((item) => item.checked).length === 0 && <Donut.EmptyData />}
           {legendItems.map((item, index) => {
             return (

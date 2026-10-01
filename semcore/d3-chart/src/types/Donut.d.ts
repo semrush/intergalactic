@@ -9,7 +9,7 @@ import type { TooltipType } from './Tooltip';
 export interface IDonutProps extends DonutProps, UnknownProperties {}
 export type DonutProps = Context & {
   /** Inner radius
-   * @default 12
+   * @default 0
    * */
   innerRadius?: number;
   /** Outer radius
