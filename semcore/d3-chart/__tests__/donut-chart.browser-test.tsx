@@ -1,4 +1,4 @@
-import type { Page } from '@semcore/testing-utils/playwright';
+import type { Locator, Page } from '@semcore/testing-utils/playwright';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { expectEachToHaveAttribute, loadPage } from '@semcore/testing-utils/shared/helpers';
 import { TAG } from '@semcore/testing-utils/shared/tags';
@@ -16,6 +16,32 @@ export const locators = {
   legend: (page: Page) => page.getByLabel('Chart legend'),
   legendItem: (page: Page, text?: string) =>
     text ? page.getByText(text) : page.locator('[data-ui-name="Legend.Item"], [data-ui-name="LegendTable.LegendItem"], [data-ui-name="LegendFlex.LegendItem"]'),
+};
+
+/**
+The center of a donut pie is empty, so .hover() misses the segment and times out.
+Hover over the middle of the ring instead.
+*/
+const hoverPie = async (pie: Locator) => {
+  const box = await pie.boundingBox();
+
+  if (!box) throw new Error('Donut.Pie is not rendered');
+
+  const point = await pie.evaluate((path: SVGPathElement) => {
+    const totalLength = path.getTotalLength();
+    const onOuterArc = path.getPointAtLength(totalLength * 0.25);
+    const onInnerArc = path.getPointAtLength(totalLength * 0.75);
+    const svgPoint = path.ownerSVGElement!.createSVGPoint();
+
+    svgPoint.x = (onOuterArc.x + onInnerArc.x) / 2;
+    svgPoint.y = (onOuterArc.y + onInnerArc.y) / 2;
+
+    const { x, y } = svgPoint.matrixTransform(path.getScreenCTM()!);
+
+    return { x, y };
+  });
+
+  await pie.hover({ position: { x: point.x - box.x, y: point.y - box.y } });
 };
 
 /* =====================================================
@@ -68,7 +94,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify pie highlights on hover', async () => {
         const pies = locators.pie(page);
-        await pies.nth(1).hover();
+        await hoverPie(pies.nth(1));
 
         if (item.showTooltip) {
           const tooltip = page.locator('[data-ui-name="Donut.Tooltip"]');
@@ -126,7 +152,7 @@ test.describe(`${TAG.VISUAL}`, () => {
 
       await test.step('Verify pie highlights on hover', async () => {
         const pies = locators.pie(page);
-        await pies.nth(1).hover();
+        await hoverPie(pies.nth(1));
 
         if (item.showTooltip) {
           const tooltip = page.locator('[data-ui-name="Donut.Tooltip"]');
