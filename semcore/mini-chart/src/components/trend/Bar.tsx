@@ -37,9 +37,31 @@ class TrendBarRoot extends Trend<
     return data;
   }
 
+  getBarWidth(step: number) {
+    const { isHistogram } = this.asProps;
+
+    return isHistogram ? step : step * 0.8;
+  }
+
+  getBarPath(x: number, width: number, height: number) {
+    const bottom = this.defaultHeight;
+    const top = bottom - height;
+    const r = Math.max(0, Math.min(TOP_RADIUS, width / 2, height));
+
+    return [
+      `M${x},${bottom}`,
+      `V${top + r}`,
+      `A${r},${r} 0 0 1 ${x + r},${top}`,
+      `H${x + width - r}`,
+      `A${r},${r} 0 0 1 ${x + width},${top + r}`,
+      `V${bottom}`,
+      'Z',
+    ].join(' ');
+  }
+
   render() {
     const STrendBar = Root;
-    const { styles, resolveColor, isHistogram, animate, loading } = this.asProps;
+    const { styles, resolveColor, animate, loading } = this.asProps;
     const step = this.defaultWidth / this.data.length;
     const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
@@ -60,15 +82,13 @@ class TrendBarRoot extends Trend<
             }
 
             const x = step * index;
-            const y = this.defaultHeight - barItem.value;
-            const width = isHistogram ? step : step * 0.8;
+            const width = this.getBarWidth(step);
             const height = barItem.value;
-            const r = Math.max(0, Math.min(TOP_RADIUS, width / 2, height));
 
             return (
               <path
                 key={index}
-                d={`M${x},${y + height} V${y + r} A${r},${r} 0 0 1 ${x + r},${y} H${x + width - r} A${r},${r} 0 0 1 ${x + width},${y + r} V${y + height} Z`}
+                d={this.getBarPath(x, width, height)}
                 fill={color}
               >
                 {animate && !loading && (

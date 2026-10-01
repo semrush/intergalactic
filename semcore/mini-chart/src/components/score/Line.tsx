@@ -105,14 +105,13 @@ class LineRoot extends Component<
             // @ts-ignore
             animate={animate && !loading}
           >
-            {Array.from({ length: segments }, (_, i) =>
+            {Array(segments).fill(null).map((_, i) =>
               sstyled(styles)(
                 <SScoreSegment
                   key={i}
                   segment-color={i < value ? segmentColor : segmentBaseColor}
                 />,
-              ),
-            )}
+              ))}
           </SScoreSegments>
         </SLineGauge>,
       );
