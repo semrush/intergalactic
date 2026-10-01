@@ -6,6 +6,7 @@ import ConfigurableTooltipExample, {
   defaultProps as ConfigurableTooltipProps,
 } from './examples/configurable_tooltip';
 import InteractiveInTooltipsExample from './examples/interactive-in-tooltip';
+import ScrollBarWidthExample from './examples/scroll-bar-width';
 import ValidationErrorsExample from './examples/validation-error';
 
 const meta: Meta<typeof Tooltip> = {
@@ -79,4 +80,8 @@ export const TooltipInteractions: Story = {
 
 export const ValidationErrors: Story = {
   render: ValidationErrorsExample,
+};
+
+export const ScrollBarWidth: Story = {
+  render: ScrollBarWidthExample,
 };
