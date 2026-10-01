@@ -1,104 +1,39 @@
 SHighlightedButton[theme='primary-highlighted'] {
-  color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  background-image: linear-gradient(90deg,
-  var(--intergalactic-violet-500, oklch(0.53 0.26 296)),
-  var(--intergalactic-blue-500, oklch(0.53 0.157 279.2)),
-  var(--intergalactic-violet-400, oklch(0.64 0.223 299.3)),
-  var(--intergalactic-blue-400, oklch(0.58 0.168 278.2)));
-  background-position-x: 99%;
-  background-size: 300%;
-  transition: background-position-x 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  color: var(--intergalactic-control-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
+  background-color: var(--intergalactic-control-primary-info, oklch(0.23 0.01 140));
 
-  &:hover {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-position-x: 1%;
-  }
-
-  &:active,
-  &[active] {
-    color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-    background-image: var(--intergalactic-control-primary-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.64 0.223 299.3), oklch(0.58 0.168 278.2)));
-    background-size: 100%;
+  [data-ui-name='SummaryAI'] {
+    color: var(--intergalactic-brand-tertiary, oklch(0.82 0.15 170));
   }
 
   &:focus-visible {
-    outline: none;
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
+    outline-width: 2px;
   }
 }
 
 SHighlightedButton[theme='secondary-highlighted'] {
-  color: var(--intergalactic-icon-primary-feature-highlight, oklch(0.58 0.254 297.1));
+  color: var(--intergalactic-feature-highlight-text, oklch(0.1 0.03 137 / 0.899));
 
-  background:
-    var(--intergalactic-control-secondary-feature-highlight, linear-gradient(90deg in oklch, oklch(0.97 0.019 303.4), oklch(0.969 0.016 267.7))) padding-box,
-    var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-
-  & SText {
-    background-color: var(--intergalactic-icon-primary-feature-highlight, oklch(0.58 0.254 297.1));
-    background-image: var(--intergalactic-text-feature-highlight, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2)));
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  &:focus-visible {
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
+    outline-width: 2px;
   }
 
+  background-color: var(--intergalactic-feature-highlight-control-secondary, oklch(0.166 0.031 175.8 / 0.097));
+
   &:hover {
-    background:
-      var(--intergalactic-control-secondary-feature-highlight-hover, linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))) padding-box,
-      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
-
-    color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
-
-    & SText {
-      background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
-      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2)));
-    }
+    background-color: var(--intergalactic-feature-highlight-control-secondary-hover, oklch(0.151 0.028 176.1 / 0.123));
   }
 
   &:active,
   &[active] {
-    background:
-      var(--intergalactic-control-secondary-feature-highlight-active, linear-gradient(90deg in oklch, oklch(0.9 0.065 303), oklch(0.898 0.054 268.3))) padding-box,
-      var(--intergalactic-border-feature-highlight-secondary, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.74 0.117 274.1))) border-box;
-
-    color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
-
-    & SText {
-      background-color: var(--intergalactic-icon-primary-feature-highlight-hover-active, oklch(0.53 0.26 296));
-      background-image: var(--intergalactic-text-feature-highlight-hover-active, linear-gradient(90deg in oklch, oklch(0.53 0.26 296), oklch(0.53 0.157 279.2)));
-    }
-  }
-
-  &:focus-visible {
-    outline: none;
+    background-color: var(--intergalactic-feature-highlight-control-secondary-active, oklch(0.145 0.027 176.1 / 0.135));
   }
 }
 
 SHighlightedButton {
   position: relative;
-  /* isolation: isolate; */
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    margin: -5px;
-    padding: 2px;
-    border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
-
-    background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
-
-    mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-    mask-composite: exclude;
-
-    opacity: 0;
-    transform: scale(0.96);
-
-    transition:
-      opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out,
-      transform calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
-  }
 
   &[neighborLocation='left']::before {
     border-top-left-radius: 0;
@@ -112,24 +47,5 @@ SHighlightedButton {
 
   &[neighborLocation='both']::before {
     border-radius: 0;
-  }
-}
-
-SHighlightedButton:focus-visible::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Firefox fallback */
-@supports not (-webkit-mask-composite: xor) {
-  SHighlightedButton:focus-visible {
-    outline: none;
-    box-shadow:
-      0 0 0 2px #ffffff,
-      0 0 0 4px #7078FC;
-  }
-
-  SHighlightedButton:focus-visible::before {
-    display: none;
   }
 }
