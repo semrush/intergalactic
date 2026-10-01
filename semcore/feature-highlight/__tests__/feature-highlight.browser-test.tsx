@@ -228,7 +228,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     variables.forEach((item) => {
       test(`Verify Switch disabled=${item.disabled} size=${item.size}  checked=${item.checked} showBadge=${item.showBadge}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@switch', '@base-components', '@flex-box'],
-      }, async ({ page }) => {
+      }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/switch-fh.tsx', 'en', item);
 
         const toggle = locators.switchToggle(page);
@@ -239,11 +239,17 @@ test.describe(`${TAG.VISUAL} `, () => {
         } else {
           await test.step('Verify focus and toggle', async () => {
             await page.keyboard.press('Tab');
-            await expectFeatureHighlightFocusOutline(page, toggle);
+            // Webkit doesn't move focus to checkbox based controls with Tab,
+            // so the focus outline can only be verified in the other browsers.
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, toggle);
+            }
             await expect(page).toHaveScreenshot();
 
             await page.keyboard.press('Space');
-            await expectFeatureHighlightFocusOutline(page, toggle);
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, toggle);
+            }
             await expect(page).toHaveScreenshot();
           });
         }
@@ -371,7 +377,7 @@ test.describe(`${TAG.VISUAL} `, () => {
     variables.forEach((item) => {
       test(`Verify Checkbox disabled = ${item.disabled} size = ${item.size} state = ${item.state} checked = ${item.checked} showBadge = ${item.showBadge}`, {
         tag: [TAG.PRIORITY_HIGH, TAG.KEYBOARD, '@feature-highlight', '@checkbox', '@base-components', '@flex-box', '@typography'],
-      }, async ({ page }) => {
+      }, async ({ page, browserName }) => {
         await loadPage(page, 'stories/components/feature-highlight/tests/examples/checkbox.tsx', 'en', item);
 
         const value = locators.checkboxMark(page);
@@ -383,11 +389,17 @@ test.describe(`${TAG.VISUAL} `, () => {
         } else {
           await test.step('Verify focus and toggle', async () => {
             await page.keyboard.press('Tab');
-            await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+            // Webkit doesn't move focus to checkbox based controls with Tab,
+            // so the focus outline can only be verified in the other browsers.
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+            }
             await expect(page).toHaveScreenshot();
 
             await page.keyboard.press('Enter');
-            await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+            if (browserName !== 'webkit') {
+              await expectFeatureHighlightFocusOutline(page, value.first(), '::before');
+            }
             await expect(page).toHaveScreenshot();
 
             // The second checkbox is a regular one, it keeps the default focus outline.
