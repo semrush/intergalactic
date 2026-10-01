@@ -1,4 +1,6 @@
 SHighlightedRadio:not([state="invalid"]) {
+  position: relative;
+
   input[data-ui-name="RadioFH.Value"]:focus-visible + [data-ui-name="Value.RadioMark"]::before {
     @mixin focus-outline-mixin;
 
