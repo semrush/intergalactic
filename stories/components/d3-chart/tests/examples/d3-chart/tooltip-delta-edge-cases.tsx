@@ -173,6 +173,7 @@ export const defaultProps = getChartProps<DeltaEdgeCasesStoryProps>({
   showTotalInTooltip: false,
   showLegend: false,
   duration: 0,
+  deltaPercentGrowthColor: 'success',
   // Off by default: the browser tests screenshot and assert this story, and the
   // `returnsUndefined` variant deliberately throws.
   deltaOverride: 'off',
