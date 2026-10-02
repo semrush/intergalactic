@@ -36,6 +36,7 @@ class AreaChartComponent extends AbstractChart<
     showTooltip: true,
     stacked: true,
     locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   get xScale() {

@@ -30,6 +30,7 @@ class LineChartComponent extends AbstractChart<
     showYAxis: true,
     showTooltip: true,
     locale: 'en',
+    deltaPercentGrowthColor: 'success',
   } as const;
 
   protected get xScale() {

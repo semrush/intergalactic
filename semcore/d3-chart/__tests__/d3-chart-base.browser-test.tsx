@@ -110,6 +110,27 @@ const deltaProps = {
   duration: 0,
 };
 
+/**
+ * Trend and resolved colour of every delta cell in the open tooltip, in render order.
+ *
+ * The trend is read off the generated class rather than an attribute: `sstyled` turns the
+ * `trend` / `deltaPercentGrowthColor` props into class names and leaves nothing on the DOM.
+ */
+const readTrendColours = (page: Page) =>
+  page.locator('[class*="STooltipDeltaWrapper"]').evaluateAll((els) =>
+    els.map((el) => ({
+      trend: Array.from(el.classList).find((c) => c.includes('_trend_'))?.match(/_trend_(\w+?)_/)?.[1],
+      color: getComputedStyle(el).color,
+    })),
+  );
+
+/**
+ * The muted colour a `stable` delta falls back to. It is the tooltip's own secondary text
+ * colour, so it is read from the title instead of being hard-coded.
+ */
+const readTooltipTitleColour = (page: Page) =>
+  page.locator('[data-ui-name="HoverLine.Tooltip.Title"]').evaluate((el) => getComputedStyle(el).color);
+
 const hoverPlotCenter = async (page: Page) => {
   const plot = locators.plot(page).first();
   await plot.waitFor({ state: 'visible' });
@@ -914,23 +935,15 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
     }, async ({ page }) => {
       await loadPage(page, AREA_CHART_EXAMPLE, 'en', deltaProps);
 
-      const readTrendColours = () =>
-        page.locator('[class*="STooltipDeltaWrapper"]').evaluateAll((els) =>
-          els.map((el) => ({
-            trend: Array.from(el.classList).find((c) => c.includes('_trend_'))?.match(/_trend_(\w+?)_/)?.[1],
-            color: getComputedStyle(el).color,
-          })),
-        );
-
       // Jan 16: both series grow. Jan 6: one grows, the other stays put.
       await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
-      const upward = await readTrendColours();
+      const upward = await readTrendColours(page);
 
       await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
-      const downward = await readTrendColours();
+      const downward = await readTrendColours(page);
 
       await hoverAreaPoint(page, 1, 'Saturday, January 6, 2024');
-      const stable = (await readTrendColours()).find((d) => d.trend === 'stable');
+      const stable = (await readTrendColours(page)).find((d) => d.trend === 'stable');
 
       expect(upward.every((d) => d.trend === 'upward')).toBe(true);
       expect(downward.every((d) => d.trend === 'downward')).toBe(true);
@@ -944,13 +957,105 @@ test.describe(`${TAG.FUNCTIONAL}`, () => {
       expect(hueOf(downward[0].color)).toBeLessThan(60);
 
       // A stable diff is not coloured like a trend, it uses the tooltip's secondary text.
-      const titleColour = await page
-        .locator('[data-ui-name="HoverLine.Tooltip.Title"]')
-        .evaluate((el) => getComputedStyle(el).color);
+      const titleColour = await readTooltipTitleColour(page);
 
       expect(stable!.color).toBe(titleColour);
       expect(stable!.color).not.toBe(upward[0].color);
       expect(stable!.color).not.toBe(downward[0].color);
+    });
+
+    /**
+     * `deltaPercentGrowthColor='critical'` is for metrics where growing is the bad outcome
+     * — bounce rate, error rate, cost. It swaps the two trend colours and nothing else.
+     *
+     * Rather than naming the colours, the test reads both modes and asserts they are each
+     * other's mirror: whatever `success` paints a decline is what `critical` has to paint
+     * growth. That needs no knowledge of the palette, so a theme change cannot break it,
+     * and it fails the moment the swap stops happening or starts leaking a third colour.
+     */
+    test('Verify deltaPercentGrowthColor=critical swaps the two trend colours', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
+        '@area-chart',
+        '@base-components',
+        '@flex-box'],
+    }, async ({ page }) => {
+      const readBothTrends = async (deltaPercentGrowthColor: 'success' | 'critical') => {
+        await loadPage(page, AREA_CHART_EXAMPLE, 'en', { ...deltaProps, deltaPercentGrowthColor });
+
+        // Jan 16: both series grow. Jan 31: both decline.
+        await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
+        const upward = await readTrendColours(page);
+
+        await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
+        const downward = await readTrendColours(page);
+
+        return { upward, downward };
+      };
+
+      const success = await readBothTrends('success');
+      const critical = await readBothTrends('critical');
+
+      // The direction is untouched — only the colour carries the new meaning.
+      expect(critical.upward.every((d) => d.trend === 'upward')).toBe(true);
+      expect(critical.downward.every((d) => d.trend === 'downward')).toBe(true);
+
+      expect(critical.upward[0].color).toBe(success.downward[0].color);
+      expect(critical.downward[0].color).toBe(success.upward[0].color);
+      expect(critical.upward[0].color).not.toBe(success.upward[0].color);
+    });
+
+    test('Verify deltaPercentGrowthColor=critical keeps the icons and the printed values', {
+      tag: [TAG.PRIORITY_HIGH, TAG.MOUSE, '@d3-chart',
+        '@area-chart',
+        '@base-components',
+        '@flex-box'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+        ...deltaProps,
+        deltaPercentGrowthColor: 'critical',
+      });
+
+      await hoverAreaPoint(page, 3, 'Tuesday, January 16, 2024');
+
+      await expect(locators.diffUp(page)).toHaveCount(2);
+      await expect(locators.diffDown(page)).toHaveCount(0);
+      await expect(page.getByText('100%', { exact: true })).toBeVisible();
+      await expect(page.getByText('33.3%', { exact: true })).toBeVisible();
+
+      await hoverAreaPoint(page, 6, 'Wednesday, January 31, 2024');
+
+      await expect(locators.diffDown(page)).toHaveCount(2);
+      await expect(locators.diffUp(page)).toHaveCount(0);
+      // Still printed through `Math.abs`, so still no minus sign.
+      await expect(page.getByText('14.3%', { exact: true })).toBeVisible();
+      await expect(page.getByText('-14.3%', { exact: true })).toHaveCount(0);
+    });
+
+    /**
+     * A `stable` delta has no direction to reinterpret, so `critical` must leave it on the
+     * muted secondary colour instead of pulling it into either trend palette.
+     */
+    test('Verify deltaPercentGrowthColor=critical leaves a stable delta muted', {
+      tag: [TAG.PRIORITY_MEDIUM, TAG.MOUSE, '@d3-chart',
+        '@area-chart',
+        '@base-components',
+        '@flex-box'],
+    }, async ({ page }) => {
+      await loadPage(page, AREA_CHART_EXAMPLE, 'en', {
+        ...deltaProps,
+        deltaPercentGrowthColor: 'critical',
+      });
+
+      // Jan 6: `line` grows while `line2` stays put, so both cases are in one tooltip.
+      await hoverAreaPoint(page, 1, 'Saturday, January 6, 2024');
+      const deltas = await readTrendColours(page);
+      const stable = deltas.find((d) => d.trend === 'stable');
+      const upward = deltas.find((d) => d.trend === 'upward');
+
+      expect(stable).toBeDefined();
+      expect(upward).toBeDefined();
+      expect(stable!.color).toBe(await readTooltipTitleColour(page));
+      expect(stable!.color).not.toBe(upward!.color);
     });
 
     /**
