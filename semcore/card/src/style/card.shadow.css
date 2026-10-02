@@ -24,14 +24,14 @@ SCard {
   }
 
   SHeader {
-    padding-top: var(--intergalactic-spacing-content-padding-xlarge, 20px);
-    padding-bottom: var(--intergalactic-spacing-content-padding-medium, 12px);
-    padding-left: var(--intergalactic-spacing-content-padding-xlarge, 20px);
-    padding-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+    padding-top: var(--intergalactic-spacing-content-padding-xl, 20px);
+    padding-bottom: var(--intergalactic-spacing-content-padding-m, 12px);
+    padding-left: var(--intergalactic-spacing-content-padding-xl, 20px);
+    padding-right: var(--intergalactic-spacing-content-padding-xl, 20px);
   }
 
   SBody {
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-    padding: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+    padding: var(--intergalactic-spacing-content-padding-xl, 20px);
   }
 }

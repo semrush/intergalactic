@@ -1,13 +1,13 @@
 SRadioCards {
-  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  gap: var(--intergalactic-spacing-content-gap-s, 8px);
 }
 
 SRadioItem {
   position: relative;
   flex-direction: column;
   flex: 1 0 0;
-  gap: var(--intergalactic-spacing-content-gap-small, 4px);
-  padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-xlarge, 20px);
+  gap: var(--intergalactic-spacing-content-gap-xs, 4px);
+  padding: var(--intergalactic-spacing-content-padding-m, 12px) var(--intergalactic-spacing-content-padding-xl, 20px);
   align-items: flex-start;
 
   border-radius: var(--intergalactic-pills-rounded, 6px);
@@ -43,7 +43,7 @@ SRadioItemControl {
 }
 
 SRadioItemHeader {
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+  gap: var(--intergalactic-spacing-content-gap-xs-extended, 6px);
 }
 
 SRadioItemDescription {
@@ -60,13 +60,13 @@ SRadioItemHeaderRightAddon {
 }
 
 SRadioItemHeaderText {
-  margin-right: var(--intergalactic-spacing-content-gap-medium, 6px);
+  margin-right: var(--intergalactic-spacing-content-gap-xs-extended, 6px);
 }
 
 SRadioItemSkeleton {
   display: inline-block;
   vertical-align: middle;
-  padding-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+  padding-top: var(--intergalactic-spacing-content-padding-xxs, 2px);
 }
 
 SRadioItemHeaderInnerContainer {

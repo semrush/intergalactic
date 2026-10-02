@@ -1,15 +1,15 @@
 SBubble,
 SView {
   position: relative;
-  margin-bottom: var(--intergalactic-spacing-content-gap-xlarge, 12px);
-  padding: var(--intergalactic-spacing-content-padding-large, 16px);
-  padding-right: var(--intergalactic-spacing-content-padding-xxlarge, 40px);
+  margin-bottom: var(--intergalactic-spacing-content-gap-m, 12px);
+  padding: var(--intergalactic-spacing-content-padding-l, 16px);
+  padding-right: var(--intergalactic-spacing-content-padding-xxxl, 40px);
   width: 100%;
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
   box-sizing: border-box;
   color: var(--intergalactic-text-primary-invert, oklch(0.999 0.001 180 / 0.949));
-  gap: var(--intergalactic-spacing-content-gap-large, 8px);
+  gap: var(--intergalactic-spacing-content-gap-s, 8px);
 
   &[type='info'] {
     background: var(--intergalactic-notice-bubble-bg-info, oklch(0.23 0.01 140));
@@ -22,7 +22,7 @@ SView {
 
 SContent {
   flex-direction: column;
-  gap: var(--intergalactic-spacing-content-gap-xlarge, 12px);
+  gap: var(--intergalactic-spacing-content-gap-m, 12px);
   flex: 1;
 }
 
@@ -50,7 +50,7 @@ SDismiss[use] {
 SIcon {
   justify-content: center;
   align-items: flex-start;
-  margin-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
+  margin-top: var(--intergalactic-spacing-content-padding-xxs, 2px);
 }
 
 SNoticeBubble {

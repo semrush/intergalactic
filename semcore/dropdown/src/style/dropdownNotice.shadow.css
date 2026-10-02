@@ -1,6 +1,6 @@
 SDropdownNotice {
-  padding-top: var(--intergalactic-spacing-content-padding-medium, 12px);
-  padding-bottom: var(--intergalactic-spacing-content-padding-medium, 12px);
+  padding-top: var(--intergalactic-spacing-content-padding-m, 12px);
+  padding-bottom: var(--intergalactic-spacing-content-padding-m, 12px);
   border-left: none;
   border-right: none;
   border-bottom: none;

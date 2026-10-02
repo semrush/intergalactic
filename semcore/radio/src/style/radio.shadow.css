@@ -4,13 +4,13 @@ SRadio {
   cursor: pointer;
 
   SText {
-    margin-left: var(--intergalactic-spacing-content-gap-medium, 6px);
+    margin-left: var(--intergalactic-spacing-content-gap-xs-extended, 6px);
     color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
   }
 
   &[size='l'] {
     SText {
-      margin-left: var(--intergalactic-spacing-content-gap-large, 8px);
+      margin-left: var(--intergalactic-spacing-content-gap-s, 8px);
     }
   }
 
