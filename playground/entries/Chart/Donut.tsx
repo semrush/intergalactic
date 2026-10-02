@@ -13,7 +13,6 @@ type DonutChartProps = {
   legendProps: Omit<LegendChartProps, 'direction'>;
   donutProps: {
     halfsize: boolean;
-    innerRadius: number;
     innerLabel: string;
   };
 };
@@ -71,11 +70,6 @@ const entry: PlaygroundEntry<DonutChartJSXProps> = {
           type: 'boolean',
           value: false,
           displayName: 'Half size',
-        },
-        innerRadius: {
-          type: 'text-number',
-          value: 60,
-          displayName: 'Inner Radius',
         },
         innerLabel: {
           type: 'text',
