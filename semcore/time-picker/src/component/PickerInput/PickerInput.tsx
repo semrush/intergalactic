@@ -34,7 +34,6 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
   static style = style;
   static defaultProps = (_: PickerInputProps) => ({
     placeholder: '00',
-    offset: [-8, 4],
   });
 
   state: State = {
@@ -95,6 +94,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
     const { styles, step, onSelect, time, size, disabled, onVisibleChange, ariaLabel, ...other } = this.asProps;
     const { dirtyValue, visible } = this.state;
     const value = dirtyValue === undefined ? time : dirtyValue;
+    const offset = size === 'm' ? [-8, 9] : [-10, 13];
 
     return sstyled(styles)(
       <SPickerInputWrapper>
@@ -107,6 +107,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
           visible={visible}
           value={time}
           defaultHighlightedIndex={time ? null : 0}
+          offset={offset}
         >
           <SPickerInput
             render={Select.Trigger}
