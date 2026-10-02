@@ -6,10 +6,19 @@ import type React from 'react';
 import type { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import type { PlotSummarizerConfig } from '../../Plot';
-import type { PlotEventEmitter } from '../../utils';
+import type { interpolateValue, PlotEventEmitter } from '../../utils';
 import type { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import type { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import type { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+
+export const GOOD = Symbol('GOOD');
+export const BAD = Symbol('BAD');
+export const INSIGHTFUL = Symbol('INSIGHTFUL');
+export const HIGHLIGHT_DOT = Symbol('HIGHLIGHT_DOT');
+
+export const DATA_TYPE = Symbol('DATA_TYPE');
+export const FORECAST = Symbol('FORECAST_DATA');
+export const POTENTIAL = Symbol('POTENTIAL_DATA');
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -44,7 +53,10 @@ export type BaseLegendProps = BaseChartLegendProps & {
   );
 
 export type ObjectDataKey = string;
-export type ObjectData = Record<ObjectDataKey, unknown>;
+export type ObjectData = Record<ObjectDataKey, number | typeof interpolateValue | Date | string | string[] | number[]> & {
+  [HIGHLIGHT_DOT]?: typeof GOOD | typeof BAD | typeof INSIGHTFUL;
+  [DATA_TYPE]?: typeof POTENTIAL | typeof FORECAST;
+};
 export type ListData = ObjectData[];
 
 /**
@@ -119,6 +131,12 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Overrides the default percentage delta calculation.
    */
   getPercentDelta?: (key: ObjectDataKey, index: number, data: T) => number | null;
+  /**
+   * Defines a color of the growing percentage delta in the tooltip.
+   * Use `critical` when an increase isn't a positive change.
+   * @default success
+   */
+  deltaPercentGrowthColor?: 'success' | 'critical';
   /**
    * Scale for xAxis (see more in d3-scale)
    */

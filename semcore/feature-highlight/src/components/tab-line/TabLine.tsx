@@ -15,7 +15,10 @@ class TabLineFHRoot extends Component<
   static style = style;
 
   render() {
-    return (<Root render={TabLine} />);
+    const { styles } = this.asProps;
+    const STabLineFH = Root;
+
+    return sstyled(styles)(<STabLineFH render={TabLine} />);
   }
 }
 
@@ -67,7 +70,7 @@ function HighlightedAddon(
         ? (<Children />)
         : (
             <>
-              <SummaryAI color='--intergalactic-icon-primary-feature-highlight' />
+              <SummaryAI color='--intergalactic-feature-highlight-icon-primary' />
               <AnimatedSparkles show={clicked} count={animatedSparkleCount} />
             </>
           )}
