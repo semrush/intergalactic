@@ -1,1 +1,9 @@
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.048v1a3 3 0 0 1 0 6v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a3 3 0 1 1 0-6v-1a2 2 0 0 1 2-2h5v-2.22a3 3 0 1 1 2 0v2.22h5a2 2 0 0 1 2 2Zm-7.444-7.831a1 1 0 1 0-1.112 1.663 1 1 0 0 0 1.112-1.663ZM3.293 14.341A1 1 0 0 0 4 16.048v-2a1 1 0 0 0-.707.293ZM6 11.048v10h12v-10H6Zm14.707 3.293a1 1 0 0 0-.707-.293v2a1 1 0 0 0 .707-1.707ZM9 13.05a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1Zm6 0a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1Z"/></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="4" r="2" stroke="#191B23" stroke-width="1.85"/>
+<path d="M12 6V10" stroke="#191B23" stroke-width="1.85" stroke-linecap="round"/>
+<rect x="5" y="10" width="14" height="12" rx="0.01" stroke="#191B23" stroke-width="1.85"/>
+<path d="M2 15C2 13.8954 2.89543 13 4 13H5V17H4C2.89543 17 2 16.1046 2 15Z" stroke="#191B23" stroke-width="1.85"/>
+<path d="M22 15C22 16.1046 21.1046 17 20 17L19 17L19 13L20 13C21.1046 13 22 13.8954 22 15Z" stroke="#191B23" stroke-width="1.85"/>
+<path d="M9 14V16" stroke="#191B23" stroke-width="1.85" stroke-linecap="round"/>
+<path d="M15 14V16" stroke="#191B23" stroke-width="1.85" stroke-linecap="round"/>
+</svg>

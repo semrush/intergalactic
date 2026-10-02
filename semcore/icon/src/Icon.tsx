@@ -52,6 +52,19 @@ export type IconProps = {
    * @default 4
    */
   scaleIndent?: number;
+
+  /**
+   * Predefined `stroke-width`
+   * @default `regular`
+   */
+  weight?: 'regular' | 'bold';
+
+  /**
+   * CSS `stroke-width` property
+   *
+   * @internal
+   */
+  strokeWidth?: string;
 };
 
 function calculateIndentStyles(props: IconProps, scaleIndent: number) {
@@ -85,6 +98,8 @@ function Icon({
   ml,
   mr,
   mx,
+  weight,
+  strokeWidth,
   ...props
 }: React.SVGProps<SVGSVGElement> & IconProps, ref: React.Ref<SVGSVGElement>) {
   const SIcon = 'svg';
@@ -95,6 +110,7 @@ function Icon({
   const sstyles = sstyled(styles);
   const { className, style } = sstyles.cn('SIcon', {
     'use:color': color,
+    'use:strokeWidth': strokeWidth ?? (weight === 'bold' ? '1.85px' : '1.5px'),
   });
 
   const indentStyles: React.CSSProperties = React.useMemo(() => {

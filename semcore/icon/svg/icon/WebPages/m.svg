@@ -1,1 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 3a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-.5 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2Zm0 2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2ZM4 6a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H4Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 0a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1h11ZM9 4h2V2H2v2h7ZM2 5v5h9V5H2Z"/><path d="M3 13a1 1 0 1 0 0 2h12a1 1 0 0 0 1-1V4a1 1 0 1 0-2 0v9H3Z"/></svg>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="11" height="10" rx="0.01" stroke="#191B23" stroke-width="1.5"/>
+<rect x="4" y="7.5" width="1" height="1" rx="0.01" fill="#191B23" stroke="#191B23" stroke-width="1.5"/>
+<path d="M7 8H10" stroke="#191B23" stroke-width="1.5"/>
+<path d="M1 5L12 5" stroke="#191B23" stroke-width="1.5"/>
+<path d="M9.4999 3H9.5" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M3 14H14.99C14.9955 14 15 13.9955 15 13.99V4" stroke="#191B23" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
