@@ -11,7 +11,7 @@ export type CompactHorizontalBarChartData = Array<Record<BarKey, number | string
 
 export type CompactHorizontalBarChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<CompactHorizontalBarChartData>,
-  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta'
+  'showTotalInTooltip' | 'showDeltaPercentInTooltip' | 'getPercentDelta' | 'deltaPercentGrowthColor'
 > & {
   /** Field name from data array for the x-axis values */
   x: string;
@@ -38,7 +38,4 @@ export type CompactHorizontalBarChartDefaultProps = {
   locale: 'en';
 };
 
-export type CompactHorizontalBarChartType = Intergalactic.Component<
-  typeof Flex,
-  CompactHorizontalBarChartProps
->;
+export type CompactHorizontalBarChartType = Intergalactic.Component<typeof Flex, CompactHorizontalBarChartProps>;

@@ -6,10 +6,16 @@ import { area, curveLinear, line } from 'd3-shape';
 import React from 'react';
 
 import AnimatedClipPath from './AnimatedClipPath';
+import { DATA_TYPE, FORECAST, POTENTIAL } from './component/Chart';
 import { SvgElement } from './component/SvgElement';
 import createElement from './createElement';
 import Dots from './Dots';
-import { PatternFill } from './Pattern';
+import {
+  PatternFill,
+  ForecastGradient,
+  PotentialGradient,
+  StrokeMask,
+} from './Pattern';
 import style from './style/area.shadow.css';
 import {
   definedData,
@@ -19,6 +25,7 @@ import {
   interpolateValue,
   eventToPoint,
   invert,
+  getDataOfType,
 } from './utils';
 
 class AreaRoot extends Component {
@@ -102,6 +109,101 @@ class AreaRoot extends Component {
     onClick(index, e);
   }
 
+  renderForecast() {
+    const SArea = SvgElement;
+    const SAreaLine = SvgElement;
+    const {
+      styles,
+      hide,
+      d3,
+      d3Line,
+      color,
+      uid,
+      duration,
+      y,
+      transparent,
+      resolveColor,
+    } = this.asProps;
+    const data = getDataOfType(this.asProps.data, FORECAST, y);
+
+    return sstyled(styles)(
+      <>
+        <SAreaLine
+          tag='path'
+          aria-hidden
+          clipPath={`url(#${uid}-animation)`}
+          d={d3Line(data)}
+          color={resolveColor(color)}
+          use:duration={`${duration}ms`}
+          transparent={transparent}
+          strokeDasharray='0 4'
+          strokeLinecap='round'
+        />
+        <SArea
+          aria-hidden
+          tag='path'
+          clipPath={`url(#${uid})`}
+          d={d3(data)}
+          hide={hide}
+          pattern={`url(#${uid}-forecast-gradient)`}
+          mask={`url(#${uid}-forecast-mask)`}
+          use:duration={`${duration}ms`}
+          transparent={transparent}
+          onClickCapture={this.handlerOnClick.bind(this)}
+        />
+        <ForecastGradient id={`${uid}-forecast-gradient`} color={resolveColor(color)} />
+        <StrokeMask id={`${uid}-forecast-mask`} color={resolveColor(color)} />
+      </>,
+    );
+  }
+
+  renderPotential() {
+    const SArea = SvgElement;
+    const SAreaLine = SvgElement;
+    const {
+      styles,
+      hide,
+      d3,
+      d3Line,
+      uid,
+      duration,
+      y,
+      transparent,
+    } = this.asProps;
+    const data = getDataOfType(this.asProps.data, POTENTIAL, y);
+
+    return sstyled(styles)(
+      <>
+        <SAreaLine
+          tag='path'
+          aria-hidden
+          clipPath={`url(#${uid}-animation)`}
+          d={d3Line(data)}
+          color={`url(#${uid}-potential-gradient-line)`}
+          use:duration={`${duration}ms`}
+          transparent={transparent}
+          strokeDasharray='4 4'
+        />
+        <SArea
+          aria-hidden
+          tag='path'
+          clipPath={`url(#${uid})`}
+          d={d3(data)}
+          hide={hide}
+          pattern={`url(#${uid}-potential-gradient)`}
+          mask={`url(#${uid}-potential-mask)`}
+          use:duration={`${duration}ms`}
+          transparent={transparent}
+          onClickCapture={this.handlerOnClick.bind(this)}
+        />
+
+        <PotentialGradient id={`${uid}-potential-gradient`} type='area' />
+        <PotentialGradient id={`${uid}-potential-gradient-line`} type='line' />
+        <StrokeMask id={`${uid}-potential-mask`} />
+      </>,
+    );
+  }
+
   render() {
     const SArea = this.Element;
     const SAreaLine = SvgElement;
@@ -121,9 +223,10 @@ class AreaRoot extends Component {
       forcedAdvancedMode,
       resolveColor,
       patterns,
+      withGradient,
     } = this.asProps;
     const advancedMode = forcedAdvancedMode || !!findComponent(Children, [Area.Line.displayName]);
-    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue && item[DATA_TYPE] !== FORECAST && item[DATA_TYPE] !== POTENTIAL);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');
@@ -141,6 +244,8 @@ class AreaRoot extends Component {
             transparent={transparent}
           />
         )}
+        {this.renderForecast()}
+        {this.renderPotential()}
         <SArea
           aria-hidden
           clipPath={`url(#${uid})`}
@@ -152,8 +257,10 @@ class AreaRoot extends Component {
           use:duration={`${duration}ms`}
           transparent={transparent}
           onClickCapture={this.handlerOnClick.bind(this)}
+          withGradient={patterns ? undefined : withGradient}
         />
         {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
+        {duration && <AnimatedClipPath duration={duration} id={`${uid}-animation`} width={0} height={size[1]} />}
         {patterns && (
           <PatternFill
             id={`${uid}-pattern`}

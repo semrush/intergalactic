@@ -13,12 +13,33 @@ export default meta;
 export const AnimatedDots: StoryObj = {
   render: AnimatedDotsExample,
 };
+const storyKnob = { table: { category: 'Story data knobs' } } as const;
 
 export const BasicUsage = {
   render: BasicUsageExample,
   argTypes: getChartArgTypes({
-    useCustomValueFormatter: { control: 'boolean' },
-    withZeroValue: { control: 'boolean' },
+    showDots: { control: 'boolean' },
+    stacked: { control: 'boolean' },
+
+    useCustomValueFormatter: { control: 'boolean', ...storyKnob },
+    withZeroValue: { control: 'boolean', ...storyKnob },
+    singleSeries: { control: 'boolean', ...storyKnob },
+    withInterpolatedGaps: { control: 'boolean', ...storyKnob },
+    curveName: {
+      control: 'select',
+      options: ['linear', 'cardinal', 'monotoneX', 'step', 'basis'],
+      ...storyKnob,
+    },
+    highlightDots: {
+      control: 'select',
+      options: ['none', 'good', 'bad', 'insightful', 'mixed'],
+      ...storyKnob,
+    },
+    dataType: {
+      control: 'select',
+      options: ['none', 'forecast', 'potential', 'both'],
+      ...storyKnob,
+    },
   }),
   args: areaExampleProps,
 };
