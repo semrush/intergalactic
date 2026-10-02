@@ -663,7 +663,7 @@ export const LightStrokePattern = (props: { id: string }) => {
         width='4'
         height='4'
         patternUnits='userSpaceOnUse'
-        patternTransform='rotate(60)'
+        patternTransform='rotate(40)'
       >
         <line x1='3' y1='0' x2='3' y2='4' stroke='white' strokeWidth='2' />
       </pattern>
