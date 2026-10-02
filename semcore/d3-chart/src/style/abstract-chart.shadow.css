@@ -43,6 +43,16 @@ STooltipDeltaWrapper {
     color: var(--intergalactic-text-secondary-invert, oklch(0.953 0.025 240.1 / 0.726));
   }
 
+  &[deltaPercentGrowthColor='critical'] {
+    &[trend='upward'] {
+      color: var(--intergalactic-chart-data-critical, oklch(0.74 0.19 22));
+    }
+
+    &[trend='downward'] {
+      color: var(--intergalactic-chart-data-success, oklch(0.82 0.19 143));
+    }
+  }
+
   STooltipDeltaIcon {
     align-self: center;
   }

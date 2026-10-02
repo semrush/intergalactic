@@ -13,6 +13,10 @@ import {
 } from 'd3-scale';
 import type React from 'react';
 
+import type { FORECAST, POTENTIAL } from './component/Chart';
+import { DATA_TYPE } from './component/Chart';
+import type { ObjectData, ObjectDataKey } from './component/Chart/AbstractChart.type';
+
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;
   const rect = svgRoot.getBoundingClientRect();
@@ -341,3 +345,27 @@ type Events = {
 };
 
 export const PlotEventEmitter = EventEmitter<Events>;
+
+export function getDataOfType(data: ObjectData[], type: typeof FORECAST | typeof POTENTIAL, y: ObjectDataKey) {
+  const result: ObjectData[] = [];
+  let prevPoint: ObjectData | null = null;
+  let insideRun = false;
+
+  data.forEach((item) => {
+    const valid = item[y] !== interpolateValue;
+
+    if (valid && item[DATA_TYPE] === type) {
+      if (!insideRun && prevPoint !== null) result.push(prevPoint);
+
+      result.push(item);
+
+      insideRun = true;
+    } else {
+      insideRun = false;
+    }
+
+    if (valid) prevPoint = item;
+  });
+
+  return result;
+}
