@@ -18,17 +18,20 @@ class LegendTableRoot extends BaseLegend<LegendTableProps, [], LegendTableDefaul
   render() {
     const SLegendTable = Root;
     const { styles, Children, size = 'm', items, highlightedItem } = this.asProps;
-    const columnsCount = items[0]?.columns.length;
+    const direction = 'columns' in items[0] ? 'columns' : 'rows';
+    const additionsCount = ('columns' in items[0]) ? items[0]?.columns.length : items[0]?.rows.length;
 
     return sstyled(styles)(
-      <SLegendTable render={Box} columns-count={columnsCount + 1} role='group'>
-        {items.map(({ id, columns = [] }, _index) => {
+      <SLegendTable render={Box} additions-count={additionsCount} role='group' direction={direction}>
+        {items.map((item, _index) => {
+          const id = item.id;
+          const additions = ('columns' in item) ? item.columns : item.rows;
           const isTransparent = highlightedItem !== undefined && (highlightedItem !== -1 && highlightedItem !== _index);
 
           return (
             <React.Fragment key={id}>
               <Children />
-              {columns.map((item, index) => {
+              {additions.map((item, index) => {
                 return (
                   <React.Fragment key={`${id}__${index}`}>
                     <LegendTable.Column index={index} size={size} styles={styles} transparent={isTransparent}>
@@ -51,7 +54,6 @@ function ColumnComponent(props: LegendColumnProps & IRootComponentProps) {
 
   return sstyled(styles)(
     <SColumnItem
-      style={{ gridColumnStart: `${index + 2}`, gridColumnEnd: `${index + 3}` }}
       render={Box}
       size={size}
     >

@@ -93,6 +93,9 @@ export * from './component/ChartLegend/LegendTable/LegendTable.type';
 export * from './component/ChartLegend/LegendItem/LegendItem.type';
 
 // @ts-ignore
+export * from './component/Metric/Metric.type';
+
+// @ts-ignore
 export * from './Pattern';
 
 export { default as Chart } from './component/Chart';

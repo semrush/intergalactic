@@ -4,6 +4,7 @@ export { default as Chart } from './component/Chart';
 export * from './component/Chart';
 export { default as StackGroupBar } from './component/StackGroupBar/StackGroupBar';
 export { SvgElement } from './component/SvgElement';
+export { default as Metric } from './component/Metric/Metric';
 export { XAxis, YAxis } from './Axis';
 
 export { default as Line } from './Line';

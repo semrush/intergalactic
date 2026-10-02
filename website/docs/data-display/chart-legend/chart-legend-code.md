@@ -31,3 +31,13 @@ You can set your custom SVG shape for a LegendItem.
 </script>
 
 :::
+
+## Legend with some metrics
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/chart-legend/legend-with-metrics.tsx';
+</script>
+
+:::

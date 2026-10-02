@@ -58,7 +58,6 @@ export abstract class BaseLegend<
       onChangeLegendItem: this.onChangeLegendItem(shape),
       onMouseEnter: line.checked ? this.bindOnMouseEnterItem(line.id) : undefined,
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
-      style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
       patterns,
       transparent: highlightedItem !== undefined && (highlightedItem !== -1 && highlightedItem !== index),
     };

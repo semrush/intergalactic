@@ -11,6 +11,7 @@ type LegendTableStoryProps = {
   highlightedItem?: number;
   /** How many value columns to render: 1 renders the value, 2 adds the percent before it. */
   columnsCount?: 1 | 2;
+  itemsCount?: number;
 };
 
 /**
@@ -33,7 +34,8 @@ const formatValue = (value: number) => `${(value / 1000).toFixed(1)}K`;
 const formatPercent = (value: number) => `${Math.round((value / total) * 100)}%`;
 
 const Demo = (props: LegendTableStoryProps) => {
-  const { size = 'm', w = 185, highlightedItem = -1, columnsCount = 2 } = props;
+  const { size = 'm', w = 185, highlightedItem = -1, columnsCount = 2, itemsCount = 6 } = props;
+  const visibleRows = rows.slice(0, itemsCount);
   const [checked, setChecked] = React.useState<Record<string, boolean>>(
     () => Object.fromEntries(rows.map((row) => [row.id, true])),
   );
@@ -42,7 +44,7 @@ const Demo = (props: LegendTableStoryProps) => {
     setChecked((prev) => ({ ...prev, [id]: isVisible }));
   };
 
-  const items = rows.map((row) => ({
+  const items = visibleRows.map((row) => ({
     id: row.id,
     label: row.label,
     color: row.color,
@@ -74,6 +76,7 @@ export const defaultProps: LegendTableStoryProps = {
   w: 185,
   highlightedItem: -1,
   columnsCount: 2,
+  itemsCount: 6,
 };
 
 Demo.defaultProps = defaultProps;
