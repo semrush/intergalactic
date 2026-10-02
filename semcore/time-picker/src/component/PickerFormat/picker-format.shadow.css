@@ -52,7 +52,7 @@ SPickerFormat[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
 
   &::before {
-    height: 18px;
+    height: 16px;
   }
 }
 
@@ -62,7 +62,7 @@ SPickerFormat[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
 
   &::before {
-    height: 28px;
+    height: 24px;
   }
 }
 
