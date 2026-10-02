@@ -18,6 +18,7 @@ export const LegendTableData: StoryObj<typeof legendTableArgs> = {
     w: { control: { type: 'number', min: 120, max: 400, step: 1 } },
     highlightedItem: { control: { type: 'number', min: -1, max: 5, step: 1 } },
     columnsCount: { control: 'select', options: [1, 2] },
+    itemsCount: { control: { type: 'number', min: 0, max: 6, step: 1 } },
   },
   args: legendTableArgs,
 };
@@ -51,6 +52,7 @@ export const CustomizableLegend = {
     'direction': { control: 'select', options: ['row', 'column'] },
     'patterns': { control: 'boolean' },
     'items': { control: 'object' },
+    'itemsCount': { control: { type: 'number', min: 0, max: 5, step: 1 } },
     'highlightedItem': { control: { type: 'number', min: -1, max: 4, step: 1 } },
     'withTrend': { control: 'boolean' },
     'trendLabel': { control: 'text' },

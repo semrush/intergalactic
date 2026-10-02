@@ -19,10 +19,11 @@ type CustomizableLegendProps = LegendFlexProps & {
    */
   trendIsVisible?: boolean;
   onTrendIsVisibleChange?: (isVisible: boolean) => void;
+  itemsCount?: number;
 };
 
 const Demo = (props: CustomizableLegendProps) => {
-  const { withSuffix, withTrend, trendIsVisible, items, onChangeVisibleItem, ...rest } = props;
+  const { withSuffix, withTrend, trendIsVisible, items, itemsCount, onChangeVisibleItem, ...rest } = props;
   const [trendVisible, setTrendVisible] = React.useState(trendIsVisible ?? true);
   // `checked` has to be owned here, otherwise the checkboxes render as controlled
   // inputs that never toggle.
@@ -37,7 +38,10 @@ const Demo = (props: CustomizableLegendProps) => {
     onChangeVisibleItem?.(id, isVisible);
   };
 
-  const checkableItems = (items ?? []).map((item: LegendFlexProps['items'][number]) => ({
+  const sourceItems = items ?? [];
+  const visibleItems = itemsCount === undefined ? sourceItems : sourceItems.slice(0, itemsCount);
+
+  const checkableItems = visibleItems.map((item: LegendFlexProps['items'][number]) => ({
     ...item,
     checked: !unchecked[item.id],
   }));
@@ -76,6 +80,7 @@ export const defaultProps = {
   'trendLabel': '',
   'trendIsVisible': true,
   'highlightedItem': -1,
+  'itemsCount': 5,
   'aria-label': 'Chart legend',
   'items': Array.from(data).map((item, index) => {
     return {
