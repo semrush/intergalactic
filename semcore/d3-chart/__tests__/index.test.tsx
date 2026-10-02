@@ -23,6 +23,7 @@ import {
   Chart,
   ChartLegend,
   HoverLine,
+  Donut,
   // @ts-ignore
 } from '../src';
 import { PlotA11yView } from '../src/a11y/PlotA11yView';
@@ -745,6 +746,106 @@ describe('Chart.Donut', () => {
     expect(pies.length).toBeGreaterThan(0);
 
     await userEvent.click(pies[0]);
+  });
+});
+
+const DONUT_THICKNESS = 12;
+const DONUT_INCREASE_FACTOR = 8;
+
+const getPieGeometry = (pie: Element) => {
+  const d = pie.getAttribute('d') ?? '';
+  const radii = [...new Set([...d.matchAll(/A([\d.]+),/g)].map((match) => Number(match[1])))];
+  const outerRadius = Math.max(...radii);
+  const innerRadius = radii.length > 1 ? Math.min(...radii) : 0;
+
+  return { outerRadius, innerRadius, thickness: outerRadius - innerRadius };
+};
+
+const renderDonut = (
+  donutProps: Record<string, unknown> = {},
+  [plotWidth, plotHeight]: [number, number] = [300, 300],
+) => {
+  const { container } = render(
+    <Plot width={plotWidth} height={plotHeight} data={ChartOptions.donut.data}>
+      <Donut {...donutProps}>
+        <Donut.Pie dataKey='a' name='Pie 1' />
+        <Donut.Pie dataKey='b' name='Pie 2' />
+        <Donut.Pie dataKey='c' name='Pie 3' />
+      </Donut>
+    </Plot>,
+  );
+
+  return queryAllByAttribute('data-ui-name', container, 'Donut.Pie').map(getPieGeometry);
+};
+
+describe('Donut geometry', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('should render a 12px thick ring by default', async () => {
+    const [pie] = renderDonut();
+
+    // outerRadius = (300 - DONUT_INCREASE_FACTOR * 2) / 2 = 142
+    expect(pie.outerRadius).toBe(142);
+    expect(pie.innerRadius).toBe(142 - DONUT_THICKNESS);
+    expect(pie.thickness).toBe(DONUT_THICKNESS);
+  });
+
+  test.concurrent('should keep the 12px thickness regardless of the plot size', async () => {
+    const sizes: [number, number][] = [
+      [300, 300],
+      [120, 120],
+      [60, 60],
+      [40, 40], // the smallest plot where a 12px ring still fits
+    ];
+
+    for (const size of sizes) {
+      const [pie] = renderDonut({}, size);
+
+      expect(pie.thickness, `plot ${size[0]}x${size[1]}`).toBe(DONUT_THICKNESS);
+    }
+  });
+
+  test.concurrent('should keep the 12px thickness for a semi donut', async () => {
+    const [pie] = renderDonut({ halfsize: true }, [300, 150]);
+
+    expect(pie.thickness).toBe(DONUT_THICKNESS);
+  });
+
+  test.concurrent('should let an explicit innerRadius override the default', async () => {
+    const [pie] = renderDonut({ innerRadius: 50 });
+
+    expect(pie.innerRadius).toBe(50);
+    expect(pie.outerRadius).toBe(142);
+  });
+
+  test.concurrent('should render a full pie when innerRadius is explicitly 0', async () => {
+    const [pie] = renderDonut({ innerRadius: 0 });
+
+    expect(pie.innerRadius).toBe(0);
+    expect(pie.thickness).toBe(142);
+  });
+
+  test.concurrent('should clamp the inner radius to 0 instead of going negative', async () => {
+    const [pie] = renderDonut({}, [30, 30]);
+
+    expect(pie.outerRadius).toBe(7);
+    expect(pie.innerRadius).toBe(0);
+  });
+
+  test.concurrent('should expand an active pie outwards keeping its inner edge', async () => {
+    const { container } = render(
+      <Plot width={300} height={300} data={ChartOptions.donut.data}>
+        <Donut>
+          <Donut.Pie active dataKey='a' name='Pie 1' />
+          <Donut.Pie dataKey='b' name='Pie 2' />
+        </Donut>
+      </Plot>,
+    );
+    const [activePie, idlePie] = queryAllByAttribute('data-ui-name', container, 'Donut.Pie').map(getPieGeometry);
+
+    expect(activePie.innerRadius).toBe(idlePie.innerRadius);
+    expect(activePie.outerRadius).toBe(idlePie.outerRadius + DONUT_INCREASE_FACTOR);
+    expect(activePie.thickness).toBe(DONUT_THICKNESS + DONUT_INCREASE_FACTOR);
   });
 });
 
