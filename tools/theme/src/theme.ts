@@ -1449,7 +1449,7 @@ export const theme: Theme = {
         description: 'Background of the NoticeBubble.',
       },
       overlay_limitation_primary: {
-        value: `oklch(from ${neutral.at(0.97)} l c h / 0.7)`,
+        value: `oklch(from {semanticTokens.colors.page.bg} l c h / 0.7)`,
         description: 'Use as a primary cover of the content under the messages about limitations.',
       },
       overlay_limitation_secondary: {

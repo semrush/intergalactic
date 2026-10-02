@@ -236,7 +236,7 @@ export const L_ICON_SECONDARY = 0.8;
 export const L_ICON_SECONDARY_HOVER = 0.66; // Delete with minor
 
 /** Border primary    | ⚠️ APCA 15+ on secondary bg */
-export const L_BORDER_PRIMARY = 0.88; // inputs, buttons, table header, tab-line, divider
+export const L_BORDER_PRIMARY = 0.88; // inputs, buttons, checkboxes, radio, table header, tab-line, divider
 export const L_BORDER_PRIMARY_DIMMED = 0.95; // for dimmed borders with opacity (notice, tag)
 /** Border secondary */
 export const L_BORDER_SECONDARY = 0.95; // divider, cell borders, card header
