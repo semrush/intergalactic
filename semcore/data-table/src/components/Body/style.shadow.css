@@ -15,31 +15,31 @@ SAccordionRows {
 
 SBody[compact] {
   SCell {
-    padding: var(--intergalactic-spacing-content-padding-medium, 12px) var(--intergalactic-spacing-content-padding-small, 8px);
+    padding: var(--intergalactic-spacing-content-padding-m, 12px) var(--intergalactic-spacing-content-padding-s, 8px);
   }
 
   SCell[data-aria-level] {
-    padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
+    padding-left: calc(var(--intergalactic-spacing-content-padding-s, 8px) + ((var(--intergalactic-spacing-content-padding-l, 16px) + var(--intergalactic-spacing-content-padding-xs, 4px) + var(--intergalactic-spacing-content-padding-xxs, 2px)) * (var(--data-aria-level) - 1)));
   }
 
   SRow {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-s, 8px) + ((var(--intergalactic-spacing-content-padding-l, 16px) + var(--intergalactic-spacing-content-padding-xs, 4px) + var(--intergalactic-spacing-content-padding-xxs, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
   SRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xl, 20px) + ((var(--intergalactic-spacing-content-padding-l, 16px) + var(--intergalactic-spacing-content-padding-xs, 4px) + var(--intergalactic-spacing-content-padding-xxs, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
   SCollapseRow[sideIndents='wide'] {
     SCellWrapper:first-child SCell[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-large, 16px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xl, 20px) + ((var(--intergalactic-spacing-content-padding-l, 16px) + var(--intergalactic-spacing-content-padding-xs, 4px) + var(--intergalactic-spacing-content-padding-xxs, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
   SCell SAccordionToggle {
-    margin-right: var(--intergalactic-spacing-content-gap-large, 8px);
+    margin-right: var(--intergalactic-spacing-content-gap-s, 8px);
   }
 }
 
@@ -176,8 +176,8 @@ SCell {
   overflow: hidden;
 
   SAccordionToggle {
-    margin-right: var(--intergalactic-spacing-content-gap-xlarge, 12px);
-    margin-left: calc(var(--intergalactic-spacing-content-gap-xsmall, 2px) * -1);
+    margin-right: var(--intergalactic-spacing-content-gap-m, 12px);
+    margin-left: calc(var(--intergalactic-spacing-content-gap-xxs, 2px) * -1);
     height: fit-content;
 
     svg {
@@ -194,20 +194,20 @@ SCell {
   }
 
   &[use='primary'] {
-    padding: var(--intergalactic-spacing-content-padding-medium, 12px);
+    padding: var(--intergalactic-spacing-content-padding-m, 12px);
     min-height: 45px;
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-medium, 12px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-m, 12px) + ((var(--intergalactic-spacing-content-padding-xl, 20px) + var(--intergalactic-spacing-content-padding-xs, 4px) + var(--intergalactic-spacing-content-padding-xxs, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
   &[use='secondary'] {
-    padding: var(--intergalactic-spacing-content-padding-small, 8px);
+    padding: var(--intergalactic-spacing-content-padding-s, 8px);
     min-height: 37px;
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-small, 8px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-s, 8px) + ((var(--intergalactic-spacing-content-padding-xl, 20px) + var(--intergalactic-spacing-content-padding-xs, 4px) + var(--intergalactic-spacing-content-padding-xxs, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
@@ -326,15 +326,15 @@ SEmptyData {
 
 SRow[sideIndents='wide'], SCollapseRow[sideIndents='wide'] {
   SCellWrapper:first-child SCell[aria-colindex="1"] {
-    padding-left: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+    padding-left: var(--intergalactic-spacing-content-padding-xl, 20px);
 
     &[data-aria-level] {
-      padding-left: calc(var(--intergalactic-spacing-content-padding-xlarge, 20px) + ((var(--intergalactic-spacing-content-padding-xlarge, 20px) + var(--intergalactic-spacing-content-padding-xsmall, 4px) + var(--intergalactic-spacing-content-padding-xxsmall, 2px)) * (var(--data-aria-level) - 1)));
+      padding-left: calc(var(--intergalactic-spacing-content-padding-xl, 20px) + ((var(--intergalactic-spacing-content-padding-xl, 20px) + var(--intergalactic-spacing-content-padding-xs, 4px) + var(--intergalactic-spacing-content-padding-xxs, 2px)) * (var(--data-aria-level) - 1)));
     }
   }
 
   SCellWrapper:last-child SCell {
-    padding-right: var(--intergalactic-spacing-content-padding-xlarge, 20px);
+    padding-right: var(--intergalactic-spacing-content-padding-xl, 20px);
   }
 }
 

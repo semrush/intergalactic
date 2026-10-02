@@ -5,10 +5,10 @@ STabLine {
   max-width: 100%;
 
   &[size='m'] {
-    gap: var(--intergalactic-spacing-content-gap-xxlarge, 16px);
+    gap: var(--intergalactic-spacing-content-gap-l, 16px);
   }
   &[size='l'] {
-    gap: var(--intergalactic-spacing-content-gap-xxlarge-extended, 20px);
+    gap: var(--intergalactic-spacing-content-gap-xl, 20px);
   }
 }
 
@@ -38,7 +38,7 @@ STabLineItem {
   border: none;
   background: transparent;
   color: var(--intergalactic-text-primary, oklch(0.1 0.03 137 / 0.899));
-  gap: var(--intergalactic-spacing-content-gap-medium, 6px);
+  gap: var(--intergalactic-spacing-content-gap-xs-extended, 6px);
   font-weight: var(--intergalactic-medium, 500);
 
   &::-moz-focus-inner {
