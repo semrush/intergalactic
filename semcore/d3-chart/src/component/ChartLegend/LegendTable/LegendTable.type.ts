@@ -9,7 +9,7 @@ export type LegendTableProps = Intergalactic.InternalTypings.EfficientOmit<Legen
   /**
    * Legend items
    */
-  items: Array<LegendItem & { columns: Array<React.ReactNode> }>;
+  items: Array<LegendItem & ({ columns: Array<React.ReactNode> } | { rows: Array<React.ReactNode> })>;
 };
 
 export type LegendTableDefaultProps = {

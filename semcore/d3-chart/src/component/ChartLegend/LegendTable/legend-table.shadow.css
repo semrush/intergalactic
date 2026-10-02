@@ -1,21 +1,30 @@
-SLegendTable[columns-count] {
+SLegendTable[additions-count] {
   font-variant-numeric: tabular-nums;
   display: grid;
-  grid-template-columns: auto 0.2fr;
   align-items: center;
-  height: fit-content;
   grid-column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
   grid-row-gap: var(--intergalactic-spacing-content-gap-large, 8px);
+
+  &[direction='columns'] {
+    grid-template-columns: auto repeat(var(--additions-count), 0.2fr);
+    height: fit-content;
+
+    & > SColumnItem {
+      text-align: right;
+    }
+  }
+  &[direction='rows'] {
+    grid-template-rows: auto repeat(var(--additions-count), 0.2fr);
+    grid-auto-flow: column;
+  }
 }
 
 SColumnItem[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  text-align: right;
 }
 
 SColumnItem[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  text-align: right;
 }
 
 SColumnItem[transparent] {
