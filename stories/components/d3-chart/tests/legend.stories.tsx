@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import CustomizableLegendExample, { defaultProps as args } from './examples/chart-legend/customizable_legend';
 import LegendTableDataExample, { defaultProps as legendTableArgs } from './examples/chart-legend/legend-table-data';
+import LegendWithMetricsExample, { defaultProps as legendWithMetricsArgs } from './examples/chart-legend/legend-with-metrics';
+import { getChartArgTypes } from './examples/stories_props_helper';
 
 const meta: Meta = {
   title: 'Components/d3Charts/tests/ChartLegend',
@@ -18,6 +20,27 @@ export const LegendTableData: StoryObj<typeof legendTableArgs> = {
     columnsCount: { control: 'select', options: [1, 2] },
   },
   args: legendTableArgs,
+};
+
+export const LegendWithMetrics = {
+  render: LegendWithMetricsExample,
+  argTypes: getChartArgTypes({
+    'metricsPerItem': { control: 'select', options: [1, 2] },
+    'diffIcon': { control: 'select', options: ['none', 'up', 'down', 'mixed'] },
+    'diffUse': { control: 'select', options: ['good', 'bad', 'neutral', 'mixed'] },
+    'diffValue': { control: 'text' },
+    'metricLink': { control: 'select', options: ['none', 'single', 'all'] },
+    'href': { control: 'text' },
+    'highlightedItem': { control: { type: 'number', min: -1, max: 2, step: 1 } },
+    'legendPosition': { control: 'select', options: ['bottom', 'right'] },
+    'w': { control: { type: 'number' } },
+    'aria-label': { control: 'text' },
+    // The chart's own legend can only build `columns`, so this story always renders its own
+    // rows legend and forces `showLegend={false}` — the control would do nothing.
+    'showLegend': { table: { disable: true } },
+    'legendProps.legendType': { table: { disable: true } },
+  }),
+  args: legendWithMetricsArgs,
 };
 
 export const CustomizableLegend = {
