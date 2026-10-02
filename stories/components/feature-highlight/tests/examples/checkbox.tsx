@@ -59,7 +59,7 @@ const Demo = (props: CheckboxFHAdvancedProps) => {
                 {showIcon && (
                   <Box
                     tag={SummaryAI}
-                    color='--intergalactic-icon-primary-feature-highlight'
+                    color='--intergalactic-feature-highlight-icon-primary'
                     ml={2}
                     style={{ verticalAlign: -3 }}
                   />

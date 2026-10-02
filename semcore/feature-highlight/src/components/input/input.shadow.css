@@ -1,64 +1,11 @@
 SHighlightedInput[state='normal'] {
   SOutline {
-    background: linear-gradient(white, white) padding-box,
-      var(--intergalactic-border-feature-highlight, linear-gradient(90deg in oklch, oklch(0.82 0.118 303), oklch(0.82 0.088 272.1))) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border-color: transparent;
-
-    &::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      margin: -3px;
-      padding: 3px;
-      border-radius: calc(var(--intergalactic-control-rounded, 6px) + 3px);
-
-      background-image: var(--intergalactic-keyboard-focus-feature-highlight-outline, linear-gradient(90deg in oklch, oklch(0.74 0.17 303), oklch(0.58 0.168 278.2)));
-      mask: linear-gradient(0deg, #fff, #fff) content-box, linear-gradient(0deg, #fff, #fff);
-      mask-composite: exclude;
-
-      opacity: 0;
-
-      transition: opacity calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
-    }
+    border-color: var(--intergalactic-feature-highlight-border-primary, oklch(0.137 0.026 175.7 / 0.161));
   }
 
   &:has(SValue:focus-visible) SOutline {
-    outline: none;
-
-    &::before {
-      opacity: 1;
-    }
-  }
-
-  &[neighborLocation='left'] SOutline::before {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  &[neighborLocation='right'] SOutline::before {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  &[neighborLocation='both'] SOutline::before {
-    border-radius: 0;
-  }
-}
-
-/* Firefox fallback */
-@supports not (-webkit-mask-composite: xor) {
-  SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline {
-    outline: none;
-    border-color: #7078FC;
-    box-shadow:
-      0 0 0 0 #ffffff,
-      0 0 0 2px #7078FC;
-  }
-
-  SHighlightedInput[state='normal']:has(SValue:focus-visible) SOutline::before {
-    display: none;
+    outline-color: var(--intergalactic-feature-highlight-keyboard-focus-outline, oklch(0.82 0.15 170));
+    outline-width: 2px;
+    border-color: var(--intergalactic-feature-highlight-border-primary-active, oklch(0.22 0.01 140));
   }
 }

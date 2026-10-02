@@ -620,7 +620,7 @@ export abstract class AbstractChart<
   }
 
   protected renderTooltipPercentDelta(delta: number | null) {
-    const { styles } = this.asProps;
+    const { styles, deltaPercentGrowthColor } = this.asProps;
     const trend = this.getTooltipPercentDeltaTrend(delta);
     const STooltipDeltaWrapper = Flex;
     const STooltipDeltaIcon = trend === 'upward' ? DiffUp : DiffDown;
@@ -629,6 +629,7 @@ export abstract class AbstractChart<
       <STooltipDeltaWrapper
         // @ts-ignore
         trend={trend}
+        deltaPercentGrowthColor={deltaPercentGrowthColor}
       >
         {(trend === 'upward' || trend === 'downward') && <STooltipDeltaIcon width={8.5} height={8.5} />}
         {trend !== 'unknown' && <Text size={100}>{Math.abs(delta!)}%</Text>}

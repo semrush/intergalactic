@@ -82,7 +82,7 @@ In some products, pills can act as a block with shared metrics. Their difference
 
 ![](static/pills-summary.png)
 
-For a live example, refer to the [Custom pills](/components/pills/pills-code#custom-pills).
+<!-- For a live example, refer to the [Custom pills](/components/pills/pills-code#custom-pills). -->
 
 ## Usage in UX/UI
 
