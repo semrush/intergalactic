@@ -34,7 +34,7 @@ abstract class AbstractPickerInput extends Component<PickerInputProps, [], {}, {
   static style = style;
   static defaultProps = (_: PickerInputProps) => ({
     placeholder: '00',
-    offset: [-8, 4],
+    offset: [-8, 9],
   });
 
   state: State = {
