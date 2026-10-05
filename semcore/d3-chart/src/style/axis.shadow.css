@@ -11,7 +11,7 @@ STick {
   font-size: var(--intergalactic-fs-100, 12px);
   font-variant-numeric: tabular-nums;
   line-height: var(--intergalactic-lh-100, 1.3334);
-  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  color: var(--intergalactic-chart-grid-text-label, oklch(0.097 0.023 156.5 / 0.468));
   overflow: visible;
 
   /* FF fix */
@@ -66,7 +66,7 @@ SGrid {
 
 STitle {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-text-hint, oklch(0.097 0.023 156.5 / 0.468));
+  fill: var(--intergalactic-chart-grid-text-label, oklch(0.097 0.023 156.5 / 0.468));
   transform-origin: var(--transform-origin);
 }
 

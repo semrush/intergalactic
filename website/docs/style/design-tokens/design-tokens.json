@@ -2986,7 +2986,6 @@
     "description": "Supplementary helper text near controls (short guidance), distinct from placeholder text inside inputs.",
     "components": [
       "button",
-      "d3-chart",
       "typography"
     ]
   },
