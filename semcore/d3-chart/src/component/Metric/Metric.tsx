@@ -37,7 +37,7 @@ class MetricRoot extends Component<
     const { styles, value, diffValue, href, diffIcon: DiffIcon } = this.asProps;
 
     return sstyled(styles)(
-      <SMetric render={Flex} gap={1} alignItems='baseline' __excludeProps={['value', 'href']}>
+      <SMetric mt={-2} pt={2} render={Flex} gap={1} alignItems='baseline' __excludeProps={['value', 'href']}>
         {href
           ? (<Link href={href}><Link.Text size={500} bold>{value}</Link.Text></Link>)
           : (<Text size={500} bold>{value}</Text>)}

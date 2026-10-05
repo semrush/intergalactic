@@ -2,7 +2,7 @@ import DiffDown from '@semcore/icon/DiffDown/m';
 import DiffUp from '@semcore/icon/DiffUp/m';
 import { Flex } from '@semcore/ui/base-components';
 import type { BaseLegendProps, LegendTableProps, LineChartProps } from '@semcore/ui/d3-chart';
-import { Chart, ChartLegendTable, Metric } from '@semcore/ui/d3-chart';
+import { Chart, Metric } from '@semcore/ui/d3-chart';
 import React from 'react';
 
 import LineMockData from '../../../__mocks__/line';
@@ -16,7 +16,7 @@ export type MetricLinkMode = 'none' | 'single' | 'all';
 
 export type LegendPosition = 'bottom' | 'right';
 
-type LegendTableWithHighlight = LegendTableProps & { highlightedItem?: number };
+type LegendTableWithHighlight = LegendTableProps;
 
 type LegendWithMetricsStoryProps = Omit<
   LineChartProps,
@@ -135,18 +135,16 @@ const Demo = (props: LegendWithMetricsStoryProps) => {
     setHoveredItem(-1);
   };
 
-  const tableProps: LegendTableWithHighlight = {
-    items,
+  const tableProps: Partial<BaseLegendProps> = {
+    'legendType': 'Table',
+    'legendMap': items.reduce((acc, item) => {
+      // @ts-expect-error this is just an exapmle
+      acc[item.id] = item;
+      return acc;
+    }, {}),
     size,
     shape,
     ...(patterns ? { patterns: true as const } : {}),
-    ...(w ? { w } : {}),
-    ...(title ? { title } : {}),
-    'highlightedItem': activeItem,
-    ...(disableSelectItems ? {} : { onChangeVisibleItem: handleChangeVisibleItem }),
-    ...(disableHoverItems
-      ? {}
-      : { onMouseEnterItem: handleMouseEnterItem, onMouseLeaveItem: handleMouseLeaveItem }),
     'aria-label': legendAriaLabel ?? 'Chart legend with metrics',
   };
 
@@ -163,11 +161,11 @@ const Demo = (props: LegendWithMetricsStoryProps) => {
         groupKey='x'
         plotWidth={plotWidth}
         plotHeight={plotHeight}
-        showLegend={false}
+        showLegend={true}
+        legendProps={tableProps}
         {...(patterns ? { patterns: true as const } : {})}
         aria-label='Line chart with a metrics legend'
       />
-      <ChartLegendTable {...tableProps} />
     </Flex>
   );
 };

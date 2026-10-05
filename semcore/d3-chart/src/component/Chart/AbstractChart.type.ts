@@ -240,5 +240,5 @@ type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
      * Flag for uncheck some items by default
      */
     defaultChecked?: boolean;
-  } & (T extends 'Table' ? { columns?: React.ReactNode[] } : { columns?: never })
+  } & (T extends 'Table' ? ({ columns?: React.ReactNode[] } | { rows?: React.ReactNode[] }) : { columns?: never; rows?: never })
 >;

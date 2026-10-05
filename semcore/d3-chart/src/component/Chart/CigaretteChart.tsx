@@ -6,7 +6,7 @@ import trottle from '@semcore/core/lib/utils/rafTrottle';
 import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Divider from '@semcore/divider';
 import { Text } from '@semcore/typography';
-import { scaleThreshold, scaleLinear, scaleBand } from 'd3-scale';
+import { scaleThreshold, scaleLinear } from 'd3-scale';
 import React from 'react';
 
 import type { CigaretteChartData, CigaretteChartDataKey, CigaretteChartDefaultProps, CigaretteChartProps, CigaretteChartType } from './CigaretteChart.type';
@@ -105,12 +105,16 @@ class CigaretteChartComponent extends AbstractChart<
   }
 
   protected override getDefaultDataDefinitions(): Array<
-    LegendItem & { columns: React.ReactNode[] }
+    LegendItem & ({ columns: React.ReactNode[] } | { rows: React.ReactNode[] })
   > {
     const dataDefinitions = super.getDefaultDataDefinitions();
 
     return dataDefinitions.map((dataDef) => {
-      dataDef.columns = dataDef.columns.slice(1);
+      if ('columns' in dataDef) {
+        dataDef.columns = dataDef.columns.slice(1);
+      } else if ('rows' in dataDef) {
+        dataDef.rows = dataDef.rows.slice(1);
+      }
       return dataDef;
     });
   }
