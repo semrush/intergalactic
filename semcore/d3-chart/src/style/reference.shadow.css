@@ -5,7 +5,7 @@ SReferenceLine {
 
 STitle {
   font-size: var(--intergalactic-fs-100, 12px);
-  fill: var(--intergalactic-chart-grid-text-label, oklch(0.097 0.023 156.5 / 0.468));
+  fill: var(--intergalactic-chart-grid-text-label, oklch(from oklch(0.089 0.025 149.5 / 0.56) l c h / 0.4));
   transform-origin: var(--transform-origin);
 }
 

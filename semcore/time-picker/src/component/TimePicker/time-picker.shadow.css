@@ -24,7 +24,7 @@ STimePickerWrapper {
   }
 
   STimePicker[disabled] {
-    color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+    color: var(--intergalactic-text-secondary, oklch(0.089 0.025 149.5 / 0.56));
     cursor: default;
     pointer-events: none;
   }

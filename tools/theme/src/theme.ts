@@ -753,7 +753,7 @@ export const theme: Theme = {
         description: 'Forecast line color on the chart grid.',
       },
       chart_grid_text_label_DEFAULT: {
-        value: neutral.opaqueAt(L_TEXT_SECONDARY),
+        value: 'oklch(from {semanticTokens.colors.text.secondary} l c h / 0.4)',
         description: 'Text label on the chart grid.',
       },
       chart_grid_text_label_accent: {

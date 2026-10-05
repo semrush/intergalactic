@@ -49,7 +49,7 @@ SGroup, SColumn {
   display: flex;
   align-items: flex-start;
   font-size: var(--intergalactic-fs-100, 12px);
-  color: var(--intergalactic-text-secondary, oklch(0.097 0.023 156.5 / 0.468));
+  color: var(--intergalactic-text-secondary, oklch(0.089 0.025 149.5 / 0.56));
   box-sizing: border-box;
   height: 100%;
   position: relative;
