@@ -749,8 +749,8 @@ describe('Chart.Donut', () => {
   });
 });
 
-const DONUT_THICKNESS = 12;
-const DONUT_INCREASE_FACTOR = 8;
+const DONUT_THICKNESS = 16;
+const DONUT_INCREASE_FACTOR = 4;
 
 const getPieGeometry = (pie: Element) => {
   const d = pie.getAttribute('d') ?? '';
@@ -781,21 +781,21 @@ const renderDonut = (
 describe('Donut geometry', () => {
   beforeEach(cleanup);
 
-  test.concurrent('should render a 12px thick ring by default', async () => {
+  test.concurrent('should render a 16px thick ring by default', async () => {
     const [pie] = renderDonut();
 
-    // outerRadius = (300 - DONUT_INCREASE_FACTOR * 2) / 2 = 142
-    expect(pie.outerRadius).toBe(142);
-    expect(pie.innerRadius).toBe(142 - DONUT_THICKNESS);
+    // outerRadius = (300 - DONUT_INCREASE_FACTOR * 2) / 2 = 146
+    expect(pie.outerRadius).toBe(146);
+    expect(pie.innerRadius).toBe(146 - DONUT_THICKNESS);
     expect(pie.thickness).toBe(DONUT_THICKNESS);
   });
 
-  test.concurrent('should keep the 12px thickness regardless of the plot size', async () => {
+  test.concurrent('should keep the 16px thickness regardless of the plot size', async () => {
     const sizes: [number, number][] = [
       [300, 300],
       [120, 120],
       [60, 60],
-      [40, 40], // the smallest plot where a 12px ring still fits
+      [40, 40], // the smallest plot where a 16px ring still fits
     ];
 
     for (const size of sizes) {
@@ -805,7 +805,7 @@ describe('Donut geometry', () => {
     }
   });
 
-  test.concurrent('should keep the 12px thickness for a semi donut', async () => {
+  test.concurrent('should keep the 16px thickness for a semi donut', async () => {
     const [pie] = renderDonut({ halfsize: true }, [300, 150]);
 
     expect(pie.thickness).toBe(DONUT_THICKNESS);
@@ -815,20 +815,20 @@ describe('Donut geometry', () => {
     const [pie] = renderDonut({ innerRadius: 50 });
 
     expect(pie.innerRadius).toBe(50);
-    expect(pie.outerRadius).toBe(142);
+    expect(pie.outerRadius).toBe(146);
   });
 
   test.concurrent('should render a full pie when innerRadius is explicitly 0', async () => {
     const [pie] = renderDonut({ innerRadius: 0 });
 
     expect(pie.innerRadius).toBe(0);
-    expect(pie.thickness).toBe(142);
+    expect(pie.thickness).toBe(146);
   });
 
   test.concurrent('should clamp the inner radius to 0 instead of going negative', async () => {
     const [pie] = renderDonut({}, [30, 30]);
 
-    expect(pie.outerRadius).toBe(7);
+    expect(pie.outerRadius).toBe(11);
     expect(pie.innerRadius).toBe(0);
   });
 
