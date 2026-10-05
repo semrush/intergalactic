@@ -18,6 +18,11 @@ class LegendTableRoot extends BaseLegend<LegendTableProps, [], LegendTableDefaul
   render() {
     const SLegendTable = Root;
     const { styles, Children, size = 'm', items, highlightedItem } = this.asProps;
+
+    if (!items[0]) {
+      return null;
+    }
+
     const direction = 'columns' in items[0] ? 'columns' : 'rows';
     const additionsCount = ('columns' in items[0]) ? items[0]?.columns.length : items[0]?.rows.length;
 
