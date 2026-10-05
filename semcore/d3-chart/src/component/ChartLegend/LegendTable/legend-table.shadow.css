@@ -5,7 +5,7 @@ SLegendTable[additions-count] {
   grid-column-gap: var(--intergalactic-spacing-content-gap-large, 8px);
   grid-row-gap: var(--intergalactic-spacing-content-gap-large, 8px);
 
-  &[direction='columns'] {
+  &[additions-direction='columns'] {
     grid-template-columns: auto repeat(var(--additions-count), 0.2fr);
     height: fit-content;
 
@@ -13,7 +13,7 @@ SLegendTable[additions-count] {
       text-align: right;
     }
   }
-  &[direction='rows'] {
+  &[additions-direction='rows'] {
     grid-template-rows: auto repeat(var(--additions-count), 0.2fr);
     grid-auto-flow: column;
   }
