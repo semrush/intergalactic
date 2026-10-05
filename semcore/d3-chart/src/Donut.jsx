@@ -83,8 +83,8 @@ function transitionRadiusPie({
     });
 }
 
-const increaseFactor = 8;
-const donutThickness = 12;
+const increaseFactor = 4;
+const donutThickness = 16;
 
 function getOuterRadius({ size, halfsize }) {
   const [width, height] = size;
