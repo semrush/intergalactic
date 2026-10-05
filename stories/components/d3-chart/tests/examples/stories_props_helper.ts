@@ -24,8 +24,8 @@ export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   showTooltip: true,
   showTotalInTooltip: true,
   showDeltaPercentInTooltip: false,
-  // `success` is the component default: growth is green, decline is red. Switching the
-  // control to `critical` swaps the two, for metrics where growing is the bad outcome.
+  // `good` is the component default: growth is green, decline is red. Switching the
+  // control to `good` swaps the two, for metrics where growing is the bad outcome.
   deltaPercentGrowthColor: 'good',
   locale: 'en',
   xTicksCount: 10,
@@ -90,7 +90,7 @@ export const getChartArgTypes = (additionalControls?: any) => {
     'showTotalInTooltip': { control: { type: 'boolean' } },
     'showPercentValueInTooltip': { control: { type: 'boolean' } },
     'showDeltaPercentInTooltip': { control: { type: 'boolean' } },
-    'deltaPercentGrowthColor': { control: 'select', options: ['success', 'critical'] },
+    'deltaPercentGrowthColor': { control: 'select', options: ['good', 'bad'] },
     'locale': { control: 'select', options: ['de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'sv', 'tr', 'vi', 'zh', 'uk'] },
     'tooltipViewType': { control: 'select', options: ['all', 'single'] },
     'xTicksCount': { control: { type: 'number' } },
