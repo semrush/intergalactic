@@ -28,7 +28,7 @@ class DropdownNoticeRoot extends Component<NSDropdown.Notice.Props> {
               {icon}
             </SIcon>
           )}
-          <STitle bold size={300}>{title}</STitle>
+          <STitle bold size={200}>{title}</STitle>
         </Flex>
         <Children />
       </SDropdownNotice>,

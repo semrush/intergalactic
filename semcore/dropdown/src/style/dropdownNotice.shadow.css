@@ -13,7 +13,7 @@ SDropdownNotice {
   gap: 0;
 
   SIcon {
-    margin-top: var(--intergalactic-spacing-content-padding-xsmall, 4px);
+    margin-top: var(--intergalactic-spacing-content-padding-xxsmall, 2px);
     height: var(--intergalactic-spacing-4x, 16px);
 
     &[theme='info'] {
