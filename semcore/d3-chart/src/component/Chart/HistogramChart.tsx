@@ -28,7 +28,7 @@ class HistogramChartComponent extends AbstractChart<
     showYAxis: true,
     showTooltip: true,
     locale: 'en',
-    deltaPercentGrowthColor: 'success',
+    deltaPercentGrowthColor: 'good',
   } as const;
 
   get xScale() {

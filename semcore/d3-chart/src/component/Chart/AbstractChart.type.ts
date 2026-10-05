@@ -124,7 +124,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = NSFlex.Props & {
    * Use `critical` when an increase isn't a positive change.
    * @default success
    */
-  deltaPercentGrowthColor?: 'success' | 'critical';
+  deltaPercentGrowthColor?: 'good' | 'bad';
   /**
    * Scale for xAxis (see more in d3-scale)
    */

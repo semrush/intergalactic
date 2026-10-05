@@ -106,7 +106,7 @@ export const defaultProps = getChartProps<DeltaEdgeCasesStoryProps>({
   showTotalInTooltip: false,
   showLegend: false,
   duration: 0,
-  deltaPercentGrowthColor: 'success',
+  deltaPercentGrowthColor: 'good',
   // Off by default: the browser tests screenshot and assert the built-in calculation
   // on this story, so the overrides stay opt-in from the Storybook panel.
   deltaOverride: 'off',

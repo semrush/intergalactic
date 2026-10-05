@@ -26,7 +26,7 @@ export const baseChartProps: StoryChartProps<BaseChartProps<any>> = {
   showDeltaPercentInTooltip: false,
   // `success` is the component default: growth is green, decline is red. Switching the
   // control to `critical` swaps the two, for metrics where growing is the bad outcome.
-  deltaPercentGrowthColor: 'success',
+  deltaPercentGrowthColor: 'good',
   locale: 'en',
   xTicksCount: 10,
   yTicksCount: 10,
