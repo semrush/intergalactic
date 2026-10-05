@@ -5,7 +5,7 @@ import React from 'react';
 const Demo = () => {
   return (
     <InlineInput>
-      <InlineInput.Value />
+      <InlineInput.Value defaultValue='Custom text' />
       <InlineInput.ConfirmControl id='confirm' title='For love' icon={SerpM} />
       <InlineInput.CancelControl id='cancel' title='DRAIN THE SWAMP!' icon={SerpM} />
     </InlineInput>
