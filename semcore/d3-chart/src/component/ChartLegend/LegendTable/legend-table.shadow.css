@@ -19,14 +19,18 @@ SLegendTable[additions-count] {
   }
 }
 
-SColumnItem[size='l'] {
-  font-size: var(--intergalactic-fs-300, 16px);
-}
+SColumnItem {
+  cursor: pointer;
 
-SColumnItem[size='m'] {
-  font-size: var(--intergalactic-fs-200, 14px);
-}
+  &[size='l'] {
+    font-size: var(--intergalactic-fs-300, 16px);
+  }
 
-SColumnItem[transparent] {
-  opacity: 0.3;
+  &[size='m'] {
+    font-size: var(--intergalactic-fs-200, 14px);
+  }
+
+  &[transparent] {
+    opacity: 0.3;
+  }
 }
