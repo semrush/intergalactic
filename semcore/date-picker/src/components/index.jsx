@@ -56,7 +56,7 @@ export function Prev({ children, Children, styles }) {
   const SPrevButton = Root;
 
   return sstyled(styles)(
-    <SPrevButton render={Button} use='tertiary' theme='muted' size='l'>
+    <SPrevButton render={Button} use='tertiary' theme='muted'>
       {children
         ? (
             <Children />
@@ -74,7 +74,7 @@ export function Next({ children, Children, styles }) {
   const SNextButton = Root;
 
   return sstyled(styles)(
-    <SNextButton render={Button} use='tertiary' theme='muted' size='l'>
+    <SNextButton render={Button} use='tertiary' theme='muted'>
       {children
         ? (
             <Children />
