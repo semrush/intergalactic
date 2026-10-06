@@ -38,7 +38,7 @@ STabLineItem {
   border: none;
   background: transparent;
   color: var(--intergalactic-text-primary, oklch(0.23 0.009 245));
-  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  gap: var(--intergalactic-spacing-1-5x, 6px);
   font-weight: var(--intergalactic-medium, 500);
 
   &::-moz-focus-inner {

@@ -25,14 +25,14 @@ SCounter[size='m'] {
   height: 20px;
   min-width: 20px;
   font-size: var(--intergalactic-fs-100, 12px);
-  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  padding: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-1-5x, 6px);
 }
 
 SCounter[size='l'] {
   height: 24px;
   min-width: 24px;
   font-size: var(--intergalactic-fs-200, 14px);
-  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  padding: var(--intergalactic-spacing-05x, 2px) var(--intergalactic-spacing-1-5x, 6px);
 }
 
 SCounter[theme] {

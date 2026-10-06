@@ -82,7 +82,7 @@ SColorsContainer, SColors {
 SPaletteManager {
   display: flex;
   align-items: center;
-  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  gap: var(--intergalactic-spacing-1-5x, 6px);
 }
 
 SPlusButton {
@@ -108,7 +108,7 @@ SDefaultTrigger {
   align-items: center;
   outline-color: transparent;
   cursor: pointer;
-  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  gap: var(--intergalactic-spacing-1-5x, 6px);
   border: 0;
   background: transparent;
   padding: 0;

@@ -17,7 +17,7 @@ STabPanelItem {
   position: relative;
   bottom: -1px;
   display: inline-flex;
-  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  gap: var(--intergalactic-spacing-1-5x, 6px);
   min-width: 0;
   height: var(--intergalactic-form-control-m, 32px);
   color: var(--intergalactic-text-secondary, oklch(0.209 0.055 246.6 / 0.505));

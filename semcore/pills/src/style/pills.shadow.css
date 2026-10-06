@@ -50,7 +50,7 @@ SPill {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  gap: var(--intergalactic-spacing-1-5x, 6px);
   padding: 0 var(--intergalactic-spacing-3x, 12px);
 
   border-style: solid;
@@ -116,7 +116,7 @@ SPillSeparator {
   align-self: center;
 
   width: 1px;
-  height: calc(100% - calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) * 2);
+  height: calc(100% - var(--intergalactic-spacing-1-5x, 6px) * 2);
   background-color: var(--intergalactic-control-pills-border, oklch(0.277 0.066 242.6 / 0.18));
 
   &[size='l'] {

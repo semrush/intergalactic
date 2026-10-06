@@ -119,11 +119,11 @@ SDropdownPopper {
   SDropdownItem[size='m'] {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 1.4286);
-    padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-3x, 12px);
+    padding: var(--intergalactic-spacing-1-5x, 6px) var(--intergalactic-spacing-3x, 12px);
     min-height: 32px;
 
     &[isMenuItemCheckbox] {
-      padding-left: calc(var(--intergalactic-spacing-3x, 12px) + var(--intergalactic-spacing-4x, 16px) + calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)));
+      padding-left: calc(var(--intergalactic-spacing-3x, 12px) + var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-1-5x, 6px));
       /* padding before + checkbox + padding after */
 
       &::before,

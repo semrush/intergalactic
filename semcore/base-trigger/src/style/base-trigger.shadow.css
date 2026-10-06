@@ -67,7 +67,7 @@ SInner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  gap: var(--intergalactic-spacing-1-5x, 6px);
   height: 100%;
   width: 100%;
 }

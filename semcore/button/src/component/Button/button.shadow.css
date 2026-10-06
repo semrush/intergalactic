@@ -315,8 +315,8 @@ SText {
 }
 
 SText[size='m'] {
-  margin-left: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
-  margin-right: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  margin-left: var(--intergalactic-spacing-1-5x, 6px);
+  margin-right: var(--intergalactic-spacing-1-5x, 6px);
   line-height: var(--intergalactic-lh-200, 1.4286);
 
   &:only-child {
@@ -334,8 +334,8 @@ SText[size='m'] {
 }
 
 SText[size='l'] {
-  margin-left: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
-  margin-right: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  margin-left: var(--intergalactic-spacing-1-5x, 6px);
+  margin-right: var(--intergalactic-spacing-1-5x, 6px);
   line-height: var(--intergalactic-lh-300, 1.5);
 
   &:only-child {

@@ -209,6 +209,10 @@ export const theme: Theme = {
         value: `${SCALE_INDENT}px`,
         description: '4px',
       },
+      '1_5': {
+        value: `${SCALE_INDENT * 1.5}px`,
+        description: '6px',
+      },
       '2': {
         value: `${SCALE_INDENT * 2}px`,
         description: '8px',
@@ -2499,7 +2503,7 @@ export const theme: Theme = {
 type FontSize = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type LineHeight = '100' | '200' | '300' | '350' | '400' | '500' | '600' | '700' | '800';
 type FontWeight = 'semi-bold' | 'bold' | 'regular' | 'medium';
-type Spacing = '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
+type Spacing = '05' | '1' | '1_5' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '14' | '20' | '24' | '30';
 type Radii = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 type Breakpoints = 'extra-small' | 'small' | 'medium' | 'large' | 'layout-compact' | 'layout-data-heavy';
 type Durations = 'extra-slow' | 'slow' | 'medium' | 'fast' | 'extra-fast';

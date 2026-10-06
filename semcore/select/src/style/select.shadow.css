@@ -1,6 +1,6 @@
 SOptionCheckbox {
   margin-top: var(--intergalactic-spacing-05x, 2px);
-  margin-right: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  margin-right: var(--intergalactic-spacing-1-5x, 6px);
   margin-bottom: auto;
   position: relative;
   flex-shrink: 0;
